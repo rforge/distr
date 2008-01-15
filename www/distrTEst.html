@@ -1,0 +1,346 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-15">
+  <meta name="GENERATOR" content="Mozilla/1.5 [de]">
+  <title>Package "distrTEst"</title>
+</head>
+<body
+ style="background-image: url(http://www.uni-bayreuth.de/departments/math/org/mathe7/papier.gif);">
+<div style="text-align: left;">
+<span style="color: rgb(0, 0, 0);">Previous page: <a
+ href="../mathe7.html">Mathematical Statistics (MATHE VII) -
+Organization</a>
+</span>
+<hr>
+<h1><span style="color: rgb(0, 0, 0);"><a name="top"></a> <a
+ href="http://www.uni-bayreuth.de/departments/math/org/mathe7/mathe7.html"><img
+ style="border: 0px solid ; width: 198px; height: 127px;"
+ src="http://www.uni-bayreuth.de/departments/math/org/mathe7/logo.gif"
+ alt="[Picture: logo]"></a><big style="color: rgb(0, 0, 153);">R-Package
+<span style="color: rgb(51, 51, 255);">"distrTEst"</span></big>
+<a href="http://www.r-project.org/"> <img
+ style="border: 0px solid ; width: 152px; height: 101px;" alt="R-Logo"
+ src="RLOGO.jpg"></a></span></h1>
+</div>
+<hr style="width: 100%; height: 2px;">
+<div style="text-align: justify;"> Version: 2.0<br>
+Release Date: 2008-01-15 <br>
+Authors: <a
+ href="mailto:peter.ruckdeschel@uni-bayreuth.de?subject=%5Bdistr%5D">Peter
+Ruckdeschel</a>, <a
+ href="mailto:matthias.kohl@stamats.de?subject=%5Bdistr%5D">Matthias
+Kohl</a>, <a href="mailto:statho3@web.de?subject=%5Bdistr%5D">Thomas
+Stabla</a>, <a href="mailto:fcampi@gmx.de?subject=%5Bdistr%5D">Florian
+Camphausen</a>
+<br>
+Required R-Version: <br>
+<ul>
+  <li>&gt;=2.2.0 for versions 1.6-2.0</li>
+</ul>
+Dependencies: requires package <span style="color: rgb(51, 102, 255);">"setRNG"</span>
+version &gt;= 2006.2-1 by <a
+ href="mailto:pgilbert@bank-banque-canada.ca">Paul Gilbert</a>
+available from <a href="http://cran.r-project.org/mirrors.html">CRAN</a>;
+<br>
+as well as packages <a href="distr.html"><span
+ style="color: rgb(51, 102, 255);">"distr"</span></a> version &gt;= 1.9
+and <a href="distrSim.html"><span style="color: rgb(51, 102, 255);">"distrSim"</span></a>
+version &gt;= 1.9 by the authors of this package, <br>
+and "<span style="color: rgb(51, 102, 255);">startupmsg</span>" by <a
+ href="mailto:peter.ruckdeschel@uni-bayreuth.de?subject=%5Bstartupmsg%5D">Peter
+Ruckdeschel</a> also available from <a
+ href="http://cran.r-project.org/mirrors.html">CRAN</a>; it also
+suggests package <a href="distrEx.html"><span
+ style="color: rgb(51, 102, 255);">"distrEx"</span></a>
+<br>
+version &gt;= 0.4-4 by the authors of this package;
+<hr style="width: 100%; height: 2px;">
+<h2>What is "distrTEst" meant for?</h2>
+<div style="text-align: justify; color: rgb(0, 0, 0);"> The aim of
+package "<span style="color: rgb(51, 102, 255);">distrTEst</span>" is
+to bring together in one object all information about the data (from an
+object of class "<span style="color: rgb(51, 102, 255);">Dataclass</span>")
+and the corresponding statistical<br>
+procedure (estimator/test) as well as the results of a corresponding
+evaluation. (By now, only estimators are implemented) <br>
+To this end a class <span style="color: rgb(51, 102, 255);">Evaluation</span>
+is defined where we gather the results, the data, the call with which
+the object
+was filled, the estimator.<br>
+Objects of class <span style="color: rgb(51, 102, 255);">Evaluation</span>
+with identical data slots may be gathered in an objects of class <span
+ style="color: rgb(51, 102, 255);">Evaluationlist</span>.<br>
+To generate an object of this class we use the method <span
+ style="color: rgb(51, 102, 255);">evaluate</span>. Also special <span
+ style="color: rgb(51, 102, 255);">plot</span>, <span
+ style="color: rgb(51, 102, 255);">print</span>, <span
+ style="color: rgb(51, 102, 255);">show</span> and <span
+ style="color: rgb(51, 102, 255);">summary</span> methods are
+available;&nbsp; <br>
+all slots are accessed/modified by accessor/replacement functions.<br>
+</div>
+<br>
+</div>
+<hr style="width: 100%; height: 2px;"><br>
+<h2>Manual</h2>
+<br>
+<div style="text-align: justify; color: rgb(0, 0, 0);">for version
+prior to 1.8, a somewhat more detailed manual to this package in <a
+ href="distr.pdf">pdf-format</a>
+is available here;<br>
+from version 1.8 on, we have converted this manual into a common
+vignette to packages <span style="color: rgb(51, 102, 255);">distr</span>,
+<span style="color: rgb(51, 102, 255);">distrEx</span>, <span
+ style="color: rgb(51, 102, 255);">distrSim</span>, <span
+ style="color: rgb(51, 102, 255);">distrTEst</span>, <span
+ style="color: rgb(51, 102, 255);">distrTeach</span>,<br>
+which is available in the mere documentation package<big><big> <a
+ href="distrDoc.html">distrDoc</a></big></big>. To use it you may type<br>
+<pre style="color: rgb(51, 51, 255);">        require("distrDoc"); V&lt;-vignette("distr"); print(V); edit(V) </pre>
+</div>
+<br>
+<hr style="width: 100%; height: 2px;">
+<h2>License</h2>
+<div style="text-align: justify;"><span style="color: rgb(0, 0, 0);">This
+software is distributed under the terms of the GNU GENERAL</span><br
+ style="color: rgb(0, 0, 0);">
+<span style="color: rgb(0, 0, 0);">PUBLIC LICENSE Version 2, June 1991,
+confer</span> <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a><br>
+</div>
+<br>
+<hr style="width: 100%; height: 2px;">
+<h2>Download</h2>
+<h3 style="text-align: justify; color: rgb(0, 0, 0);">Windows</h3>
+<ul style="text-align: justify; color: rgb(0, 0, 0);">
+  <li>for version &gt;= 2.0 use<br>
+    <pre><span style="color: rgb(51, 102, 255);">install.packages("distrTEst", repos = "R-Forge.R-project.org")</span></pre>
+  </li>
+  <li>as&nbsp;<a href="v1.9/distrTEst_1.9.zip">Win-Zip-File for R
+&gt;=2.2.0</a>
+(Version 1.9)</li>
+  <li>as&nbsp;<a href="v1.8/distrTEst_1.8.zip">Win-Zip-File for R
+&gt;=2.2.0</a>
+(Version 1.8)</li>
+  <li>as <a href="v1.7/distrTEst_1.7.zip">Win-Zip-File for R &gt;=2.2.0</a>
+(Version 1.7)</li>
+  <li>as <a href="v1.6/distr_1.6.zip">Win-Zip-File for R &gt;=2.2.0</a>
+(Version 1.6)</li>
+</ul>
+<ul style="text-align: justify; color: rgb(0, 0, 0);">
+  <li>to be installed by
+    <ul>
+      <li>the R-gui File picker [Packages -&gt;Install package(s)
+from local zip-files...] or <br>
+      </li>
+      <li style="color: rgb(51, 102, 255);">
+        <pre>install.packages("distrTEst", &lt;path to the file distr.zip in your File system&gt;, NULL)</pre>
+      </li>
+    </ul>
+  </li>
+  <li>to be removed by <br>
+    <pre style="color: rgb(51, 102, 255);" wrap="">remove.packages("distrTEst")</pre>
+  </li>
+  <li>to be used by <br>
+    <pre><span style="color: rgb(51, 102, 255);">library("</span><span
+ style="color: rgb(51, 102, 255);">distrTEst</span><span
+ style="color: rgb(51, 102, 255);">")</span> <br></pre>
+or
+    <pre><span style="color: rgb(51, 102, 255);">require("distrTEst</span><span
+ style="color: rgb(51, 102, 255);">")</span> <br></pre>
+  </li>
+</ul>
+<h3 style="text-align: justify; color: rgb(0, 0, 0);">Linux</h3>
+<ul style="text-align: justify; color: rgb(0, 0, 0);">
+  <li>for version &gt;= 2.0 use<br>
+    <pre><span style="color: rgb(51, 102, 255);">install.packages("distrTEst", repos = "R-Forge.R-project.org")</span></pre>
+  </li>
+  <li>as <a href="v1.9/distrTEst_1.9.tar.gz">Linux-tar-gz-File for R
+&gt;=2.2.0</a> (Version 1.9)</li>
+  <li>as <a href="v1.8/distrTEst_1.8.tar.gz">Linux-tar-gz-File for R
+&gt;=2.2.0</a> (Version 1.8)</li>
+  <li>as <a href="v1.7/distrTEst_1.7.tar.gz">Linux-tar-gz-File for R
+&gt;=2.2.0</a> (Version 1.7)</li>
+  <li>as <a href="v1.6/distrTEst_1.6.tar.gz">Linux-tar-gz-File for R
+&gt;=2.2.0</a><span style="text-decoration: underline;"></span>
+(Version 1.6)</li>
+</ul>
+<ul style="text-align: justify; color: rgb(0, 0, 0);">
+  <li>to be installed by<br>
+    <pre><span style="color: rgb(51, 102, 255);">R CMD INSTALL distrTEst_1.x.tar.gz</span><br
+ style="color: rgb(51, 102, 255);"><br></pre>
+  </li>
+  <li>to be removed by<br>
+    <pre style="color: rgb(51, 102, 255);" wrap="">R CMD REMOVE distrTEst</pre>
+  </li>
+  <li>to be used as under Windows </li>
+</ul>
+<h3 style="text-align: justify; color: rgb(0, 0, 0);">Sources</h3>
+<ul style="text-align: justify; color: rgb(0, 0, 0);">
+  <li>included into the .tar.gz.file<br>
+    <span style="color: rgb(0, 0, 0);"></span></li>
+  <li><span style="color: rgb(0, 0, 0);">for R version 1.7 see web-page
+to </span> <a href="distr.html"><span
+ style="color: rgb(51, 102, 255);">"distr"</span></a> <span
+ style="color: rgb(0, 0, 0);"></span><br>
+  </li>
+</ul>
+<br>
+<hr
+ style="width: 100%; height: 2px; margin-left: 0px; margin-right: 0px; color: rgb(0, 0, 0);">
+<h2 style="text-align: center; color: rgb(0, 0, 153);">Demos</h2>
+<span style="color: rgb(0, 0, 0);">also see</span> demo("distr") and
+demo("distrTEst") --- a<span style="color: rgb(0, 0, 0);">fter
+installation of "distr"/"distrSim"/"distrTEst"</span><br>
+<br>
+<ul style="text-align: justify; color: rgb(0, 0, 0);">
+  <li>A simulation example:<br>
+    <a href="SimulateandEstimate.R">SimulateandEstimate.R</a><br>
+  </li>
+</ul>
+<br>
+<br style="color: rgb(0, 0, 0);">
+<hr style="width: 100%; height: 2px; color: rgb(0, 0, 0);">
+<h2 style="text-align: center; color: rgb(0, 0, 153);">Version history:</h2>
+<br>
+<h3 style="text-align: left; color: rgb(0, 0, 0);">Changes from distr
+1.5 to distrTEst 1.7 <br>
+</h3>
+<ul style="text-align: left;">
+  <li><span style="color: rgb(0, 0, 0);">additional "<span
+ style="color: rgb(51, 102, 255);">...</span>" included into
+function evaluate </span></li>
+</ul>
+<h3 style="text-align: left; color: rgb(0, 0, 0);">Changes from 1.7 to
+1.8 <br>
+</h3>
+<ul style="text-align: left;">
+  <li><span style="color: rgb(0, 0, 0);">evaluation method&nbsp; for
+class "<span style="color: rgb(51, 102, 255);">Contsimulation</span>" <br>
+    </span></li>
+  <li><span style="color: rgb(0, 0, 0);">extended/modified class
+definition for class "<span style="color: rgb(51, 102, 255);">Evaluation</span>":</span></li>
+  <ul>
+    <li><span style="color: rgb(0, 0, 0);">slot <span
+ style="color: rgb(51, 102, 255);">result</span> in
+"<span style="color: rgb(51, 102, 255);">Evaluation</span>" class now
+of class "<span style="color: rgb(51, 102, 255);">DataframeorNULL</span>"</span></li>
+    <li><span style="color: rgb(0, 0, 0);">slot <span
+ style="color: rgb(51, 102, 255);">call.ev</span> in "<span
+ style="color: rgb(51, 102, 255);">Evaluation</span>"
+class now of class "<span style="color: rgb(51, 102, 255);">CallorNULL</span>"</span></li>
+    <li><span style="color: rgb(0, 0, 0);">new slot <span
+ style="color: rgb(51, 102, 255);">Data</span> of class
+"Dataclass", but which in turn, in case of simulations, has an empty <span
+ style="color: rgb(51, 102, 255);">Data</span>-slot <br>
+(to be able to check whether all Data sets of
+an object of class "<span style="color: rgb(51, 102, 255);">Evaluation
+List</span>" coincide)</span></li>
+  </ul>
+  <li><span style="color: rgb(0, 0, 0);">new class "<span
+ style="color: rgb(51, 102, 255);">EvaluationList</span>" with
+slots name ("character") and <span style="color: rgb(51, 102, 255);">Elist</span>
+("list") </span><br>
+    <span style="color: rgb(0, 0, 0);"></span><span
+ style="color: rgb(0, 0, 0);"> to gather the results of several
+evaluations on the same data set</span></li>
+  <li><span style="color: rgb(0, 0, 0);">revised <span
+ style="color: rgb(51, 102, 255);">plot</span> </span><span
+ style="color: rgb(0, 0, 0);">method </span><span
+ style="color: rgb(0, 0, 0);"> for class "<span
+ style="color: rgb(51, 102, 255);">Evaluation</span>" to account for
+multivariate results</span></li>
+  <li><span style="color: rgb(0, 0, 0);"><span
+ style="color: rgb(51, 102, 255);">print</span>,<span
+ style="color: rgb(51, 102, 255);"> plot</span>, <span
+ style="color: rgb(51, 102, 255);">summary</span>, <span
+ style="color: rgb(51, 102, 255);">show</span> </span><span
+ style="color: rgb(0, 0, 0);">methods </span><span
+ style="color: rgb(0, 0, 0);">for "<span
+ style="color: rgb(51, 102, 255);">EvaluationList</span>" with flexible
+optional arguments<br>
+    </span></li>
+  <li><span style="color: rgb(0, 0, 0);"><span
+ style="color: rgb(51, 102, 255);">Data()</span> as an accessor to slot
+    <span style="color: rgb(51, 102, 255);">Data</span> for "<span
+ style="color: rgb(51, 102, 255);">Evaluation</span>" class and <br>
+&nbsp; to the common <span style="color: rgb(51, 102, 255);">Data</span>
+slot of "<span style="color: rgb(51, 102, 255);">EvaluationList</span>"
+class <br>
+    </span></li>
+  <li><span style="color: rgb(0, 0, 0);"><span
+ style="color: rgb(51, 102, 255);">savedata</span> now allows for more
+flexible filenames, but retains the old convention<br>
+by default</span><br>
+  </li>
+</ul>
+<br>
+<h3 style="text-align: left; color: rgb(0, 0, 0);">Changes from 1.8 to
+1.9 </h3>
+<ul style="color: rgb(0, 0, 0); text-align: left;">
+  <li>in demo, made calls to <span style="color: rgb(51, 102, 255);">uniroot()</span>,
+    <span style="color: rgb(51, 102, 255);">integrate()</span>, <span
+ style="color: rgb(51, 102, 255);">optim(ize)()</span> compliant to <a
+ href="https://stat.ethz.ch/pipermail/r-devel/2007-May/045791.html">https://stat.ethz.ch/pipermail/r-devel/2007-May/045791.html</a><a
+ href="https://stat.ethz.ch/pipermail/r-devel/2007-May/045791.html">l</a></li>
+  <li><font size="-1"><big>cleaning up of source files:</big></font></li>
+  <ul>
+    <li><font size="-1"><big>adapted the naming of the .R files to the
+use of the (later written) extension packages </big></font><font
+ size="-1"><big><br>
+(and according to <a
+ href="http://tolstoy.newcastle.edu.au/R/help/06/03/22558.html">http://tolstoy.newcastle.edu.au/R/help/06/03/22558.html</a>)</big></font></li>
+    <li><font size="-1"><big>checked all source file to adhere to the
+80char's-per-line rule</big></font></li>
+  </ul>
+  <li><font size="-1"><big>mentioned in package-help: startup
+messages may now also be suppressed by</big></font><br>
+    <font size="-1"><big>&nbsp;<span style="color: rgb(51, 102, 255);">suppressPackageStartupMessages()</span>
+(from package <span style="color: rgb(51, 102, 255);">'base'</span>)</big></font><br>
+  </li>
+</ul>
+<h3 style="text-align: left; color: rgb(0, 0, 0);">Changes from 1.9 to
+2.0<br>
+</h3>
+<ul>
+  <li>TEMPLATE</li>
+</ul>
+<hr style="width: 100%; height: 2px; color: rgb(0, 0, 0);">
+<h2 style="text-align: center; color: rgb(0, 0, 153);"><br>
+</h2>
+<ul style="color: rgb(0, 0, 0); text-align: left;">
+  <ul>
+  </ul>
+</ul>
+<br>
+<hr style="width: 100%; height: 2px;">
+<h2 style="text-align: center; color: rgb(0, 0, 153);">Our plans for
+the next version:</h2>
+<ul style="text-align: left; color: rgb(0, 0, 0);">
+  <li>generalize it to cope with semiparametric models</li>
+  <li>implement statistical tests</li>
+  <li>new class SimulationStudy that incorporates product-type
+designs&nbsp; Estimators x Situations<br>
+  </li>
+</ul>
+<br style="color: rgb(0, 0, 0);">
+<hr style="width: 100%; height: 2px; color: rgb(0, 0, 0);">
+<h2 style="text-align: center; color: rgb(0, 0, 153);">Things we invite
+other people to do</h2>
+<ul style="text-align: left;">
+  <li><span style="color: rgb(0, 0, 0);"></span><br>
+  </li>
+</ul>
+<ul>
+  <span style="color: rgb(51, 102, 255);"></span>
+</ul>
+<hr style="width: 100%; height: 2px; color: rgb(0, 0, 0);">
+<div style="text-align: justify; color: rgb(0, 0, 0);">This page is
+maintained by <a
+ href="mailto:peter.ruckdeschel@uni-bayreuth.de?subject=distr-package">Peter
+Ruckdeschel</a>
+and last updated on 2008-01-15.<br>
+</div>
+</body>
+</html>
