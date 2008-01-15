@@ -1,9 +1,0 @@
-distrTeach-package	0distrTeach-package
-distrTeach	0distrTeach-package
-illustrateCLT	IllustCLT
-illustrateCLT.tcl	IllustCLT
-illustrateLLN	IllustLLN
-plotCLT	plotCLT
-plotCLT,AbscontDistribution-method	plotCLT
-plotCLT,DiscreteDistribution-method	plotCLT
-plotCLT-methods	plotCLT
