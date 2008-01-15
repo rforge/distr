@@ -97,33 +97,41 @@ This family currently comprises the packages<br>
 It also contains package <span style="color: rgb(51, 102, 255);">startupmsg</span><br>
 Besides the packages the project also contains the following folders<br>
 <ul>
-  <li>pkg/Mail<br>
+<li>pkg/Mail<br>
 this folder contains important mails sent to Mailing lists R-devel and
 R-packages<br>
-  </li>
-  <li>pkg/utils contains <br>
-  </li>
-  <ul>
-    <li>some utility R-functions for package development under Windows <br>
---- see <a href="../pkg/utils/README-R-utils">README-R-utils</a>&nbsp;</li>
-    <li>some utility batch files for building packages under various
+</li>
+<li>pkg/utils contains <br>
+</li>
+<ul>
+<li>some utility R-functions for package development under Windows <br>
+--- see <a
+href="http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/pkg/utils/README-R-utils?root=distr&amp;view=markup">README-R-utils</a>&nbsp;</li>
+<li>some utility batch files for building packages under various
 versions of R under Windows<br>
---- see <a href="../pkg/utils/README-batchfiles">README-batchfiles</a></li>
-  </ul>
+--- see <a
+href="http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/pkg/utils/README-batchfiles?root=distr&amp;view=markup">README-batchfiles</a></li>
+</ul>
 </ul>
 Also the informative (non-formatted ASCII-)-Files<br>
 <ul>
-  <li><a href="NEWS">NEWS</a> [a global, detailed NEWS for the whole
+<li><a
+href="http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/www/NEWS?root=distr&amp;view=markup">NEWS</a>
+[a global, detailed NEWS for the whole
 distrXXX project for developpers upto version 2.0]<a href="NEWS"><br>
-    </a></li>
-  <li><a href="WISHLIST">WISHLIST</a> (partly in German) </li>
-  <li><a href="TOBEDONE-PROJEKTE">TOBEDONE-PROJEKTE</a> (partly in
+</a></li>
+<li><a
+href="http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/www/WISHLIST?root=distr&amp;view=markup">WISHLIST</a>
+(partly in German) </li>
+<li><a
+href="http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/www/TOBEDONE-PROJEKTE?root=distr&amp;view=markup">TOBEDONE-PROJEKTE</a>
+(partly in
 German) </li>
 </ul>
 should be interesting.<br>
 </div>
 </div>
-<br>
+<br><br>
 <ul>
   <span style="color: rgb(51, 102, 255);"></span>
 </ul>
