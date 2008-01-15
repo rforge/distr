@@ -1,0 +1,126 @@
+illustrateLLN           package:distrTeach           R Documentation
+
+_F_u_n_c_t_i_o_n_s _f_o_r _I_l_l_u_s_t_r_a_t_i_n_g _t_h_e _L_L_N
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Functions for generating a sequence of plots of randomly generated
+     replicates of  arithmetic means for sums of iid r.v. distributed
+     according to a prescribed discrete or  absolutely continuous
+     distribution. A line for the expectation and CLT based (pointwise)
+     95%-confidence bands are also plotted and the empirical coverage
+     of this band by the replicated plotted so far is indicated.
+
+_U_s_a_g_e:
+
+     illustrateLLN(Distr = Norm(),n = c(1,3,5,10,25,50,100,500,1000,10000), 
+                 m = 50, step = 1, sleep = 0, withConf = TRUE, 
+                 withCover = (length(n)<=12), withEline = TRUE, withLegend = TRUE,
+                 CLTorCheb = "CLT",  coverage = 0.95, ...,  col.Eline = "blue", 
+                 lwd.Eline = par("lwd"), lty.Eline = par("lty"), col.Conf = "red", 
+                 lwd.Conf = par("lwd"), lty.Conf = 2, cex.Cover = 0.7, 
+                 cex.legend = 0.8)
+
+_A_r_g_u_m_e_n_t_s:
+
+   Distr: object of class '"UnivariateDistribution"':  distribution of
+          the summands
+
+       n: vector of integers: sample sizes to be considered
+
+       m: integer: (total) number of replicates to be plotted
+          subsequently
+
+    step: integer: number of replicates to be drawn at once
+
+   sleep: numeric: pause in seconds between subsequent plots 
+
+withEline: logical: shall a line for the limiting expectation  (in case
+          of class 'Cauchy' instead: median) be drawn?
+
+withConf: logical: shall (CLT-based) confidence bands be plotted?
+
+withCover: logical: shall empirical coverage of (CLT-based) confidence 
+          bands be printed?
+
+withLegend: logical: shall a legend be included?
+
+CLTorCheb: character: type of confidence interval -"CLT" or
+          "Chebyshev"; partial matching is used; if this fails "CLT" is
+          used.
+
+coverage: numerical: nominal coverage of the confidence bands  -to be
+          in (0,1)
+
+col.Eline: character or integer code; color for confidence bands
+
+lwd.Eline: integer code (see 'par');  line width of the confidence
+          bands
+
+lty.Eline: integer code (see 'par');  line type of the confidence bands
+
+col.Conf: character or integer code; color for confidence bands
+
+lwd.Conf: integer code (see 'par');  line width of the confidence bands
+
+lty.Conf: integer code (see 'par');  line type of the confidence bands
+
+cex.Cover: magnification w.r.t. the current setting of 'cex'  to be
+          used for empirical coverages; as in  'par'
+
+cex.legend: magnification w.r.t. the current setting of 'cex'  to be
+          used for the legend as in  'par'
+
+     ...: further arguments to be passed to 'matplot', 'matlines',
+          'abline'
+
+_D_e_t_a_i_l_s:
+
+     'illustrateLLN' generates a sequence of plots. Any parameters of
+     'plot.default' may be passed on to this particular 'plot' method. 
+
+     There are default 'main' titles as well as 'xlab' and 'ylab'
+     annotations.
+
+     In all title arguments, the following patterns are substituted:
+
+   '"%_C"' class of argument 'x'
+
+   '"%_P"' parameters of 'x' in form of a comma-separated list of
+        <value>'s coerced to character
+
+   '"%_Q"' parameters of 'x' in form of a comma-separated list of
+        <value>'s coerced to character and in parenthesis - unless
+        empty; then ""
+
+   '"%_N"' parameters of 'x' in form of a comma-separated list <name> =
+        <value> coerced to character
+
+   '"%_A"' deparsed argument 'x'
+
+   '"%_D"' time/date-string when the plot was generated
+
+   '"%_X"' the expression 'bar(X)[n]==~~sum(X[i],i==1,n)/n'
+
+     If not explicitly set, 'col.Eline', 'col.Conf' are set  to 'col'
+     if this arg is given and else to their default values as given
+     above. Similarly for 'cex', 'lwd' and 'lty'.
+
+_V_a_l_u_e:
+
+     void
+
+_A_u_t_h_o_r(_s):
+
+     Peter Ruckdeschel Peter.Ruckdeschel@uni-bayreuth.de
+
+_E_x_a_m_p_l_e_s:
+
+     illustrateLLN(Distr = Unif())
+     illustrateLLN(Distr = Pois(lambda = 2))
+     illustrateLLN(Distr = Pois(lambda = 2)+Unif())
+     illustrateLLN(Td(3), m = 50, col.Eline = "green", lwd = 2, cex = 0.6, main = 
+      "My LLN %C%Q", sub = "generated %D")
+     illustrateLLN(Td(3), m = 50, CLTorCheb = "Chebyshev") 
+     illustrateLLN(Td(3), m = 50, CLTorCheb = "Chebyshev", coverage = 0.75) 
+

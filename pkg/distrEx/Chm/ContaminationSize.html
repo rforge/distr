@@ -1,0 +1,137 @@
+<html><head><title>Generic Function for the Computation of the Convex Contamination 
+(Pseudo-)Distance of Two Distributions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>ContaminationSize(distrEx)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   ContaminationSize">
+<param name="keyword" value="R:   ContaminationSize-methods">
+<param name="keyword" value="R:   ContaminationSize,AbscontDistribution,AbscontDistribution-method">
+<param name="keyword" value="R:   ContaminationSize,DiscreteDistribution,DiscreteDistribution-method">
+<param name="keyword" value=" Generic Function for the Computation of the Convex Contamination 
+(Pseudo-)Distance of Two Distributions">
+</object>
+
+
+<h2>Generic Function for the Computation of the Convex Contamination 
+(Pseudo-)Distance of Two Distributions</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Generic function for the computation of convex contamination (pseudo-)distance 
+of two probability distributions <i>P</i> and <i>Q</i>. That is, the 
+minimal size <i>0 &lt;= epsilon &lt;= 1</i> is computed such that 
+there exists some probability distribution <i>R</i> with
+</p><p align="center"><i>Q = (1 - epsilon)P + epsilon R</i></p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ContaminationSize(e1, e2, ...)
+## S4 method for signature 'AbscontDistribution,
+##   AbscontDistribution':
+ContaminationSize(e1,e2)
+## S4 method for signature 'DiscreteDistribution,
+##   DiscreteDistribution':
+ContaminationSize(e1,e2)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>e1</code></td>
+<td>
+object of class <code>"Distribution"</code> </td></tr>
+<tr valign="top"><td><code>e2</code></td>
+<td>
+object of class <code>"Distribution"</code> </td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+further arguments to be used in particular methods (not in package <STRONG>distrEx</STRONG>)</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Computes the distance from <code>e1</code> to <code>e2</code> respectively
+<i>P</i> to <i>Q</i>. This is not really a distance as it is not symmetric!
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A list containing the following components:
+</p>
+<table summary="R argblock">
+<tr valign="top"><td><code>e1</code></td>
+<td>
+object of class <code>"Distribution"</code>; ideal distribution  </td></tr>
+<tr valign="top"><td><code>e2</code></td>
+<td>
+object of class <code>"Distribution"</code>; 'contaminated' distribution </td></tr>
+<tr valign="top"><td><code>size.of.contamination</code></td>
+<td>
+size of contamination </td></tr>
+</table>
+
+<h3>Methods</h3>
+
+<dl>
+<dt>e1 = "AbscontDistribution", e2 = "AbscontDistribution":</dt><dd>convex contamination (pseudo-)distance of two absolutely
+continuous univariate distributions.
+</dd>
+<dt>e1 = "DiscreteDistribution", e2 = "DiscreteDistribution":</dt><dd>convex contamination (pseudo-)distance of two discrete 
+univariate distributions.
+</dd>
+</dl>
+
+<h3>Author(s)</h3>
+
+<p>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Huber, P.J. (1981) <EM>Robust Statistics</EM>. New York: Wiley.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="KolmogorovDist.html">KolmogorovDist</a></code>, <code><a href="TotalVarDist.html">TotalVarDist</a></code>, 
+<code><a href="HellingerDist.html">HellingerDist</a></code>, <code><a onclick="findlink('distr', 'Distribution-class.html')" style="text-decoration: underline; color: blue; cursor: hand">Distribution-class</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ContaminationSize(Norm(), Norm(mean=0.1))
+ContaminationSize(Pois(), Pois(1.5))
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>distrEx</em> version 1.9 <a href="00Index.html">Index]</a></div>
+
+</body></html>

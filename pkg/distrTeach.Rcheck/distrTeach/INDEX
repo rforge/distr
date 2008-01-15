@@ -1,0 +1,4 @@
+distrTeach-package      distrTeach -- Teaching Extensions of package
+                        distr
+illustrateCLT           Functions for Illustrating the CLT
+illustrateLLN           Functions for Illustrating the LLN

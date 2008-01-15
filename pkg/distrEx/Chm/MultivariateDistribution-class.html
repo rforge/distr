@@ -1,0 +1,104 @@
+<html><head><title>Multivariate Distributions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>MultivariateDistribution-class(distrEx)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   MultivariateDistribution-class">
+<param name="keyword" value="R:   show,MultivariateDistribution-method">
+<param name="keyword" value="R:   plot,MultivariateDistribution-method">
+<param name="keyword" value=" Multivariate Distributions">
+</object>
+
+
+<h2>Multivariate Distributions</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The class of multivariate distributions. One has at least to 
+specify the image space of the distribution and a function generating
+(pseudo-)random numbers. The slot <code>q</code> is usually filled with 
+<code>NULL</code> for dimensions <code>&gt; 1</code>.
+</p>
+
+
+<h3>Objects from the Class</h3>
+
+<p>
+Objects can be created by calls of the form <code>new("MultivariateDistribution", ...)</code>.
+</p>
+
+
+<h3>Slots</h3>
+
+<dl>
+<dt><code>img</code>:</dt><dd>Object of class <code>"rSpace"</code>. 
+Image space of the distribution. Usually an object of 
+class <code>"EuclideanSpace"</code>.</dd>
+<dt><code>param</code>:</dt><dd>Object of class <code>"OptionalParameter"</code>.
+Optional parameter of the multivariate distribution.</dd>
+<dt><code>r</code>:</dt><dd>Object of class <code>"function"</code>: 
+generates (pseudo-)random numbers</dd>
+<dt><code>d</code>:</dt><dd>Object of class <code>"OptionalFunction"</code>: 
+optional density function</dd>
+<dt><code>p</code>:</dt><dd>Object of class <code>"OptionalFunction"</code>: 
+optional cumulative distribution function </dd>
+<dt><code>q</code>:</dt><dd>Object of class <code>"OptionalFunction"</code>: 
+optional quantile function </dd>
+</dl>
+
+<h3>Extends</h3>
+
+<p>
+Class <code>"Distribution"</code>, directly.
+</p>
+
+
+<h3>Methods</h3>
+
+<dl>
+<dt>show</dt><dd><code>signature(object = "MultivariateDistribution")</code></dd>
+
+
+<dt>plot</dt><dd><code>signature(object = "MultivariateDistribution")</code>:
+not yet implemented.</dd>
+</dl>
+
+<h3>Author(s)</h3>
+
+<p>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a onclick="findlink('distr', 'Distribution-class.html')" style="text-decoration: underline; color: blue; cursor: hand">Distribution-class</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# Dirac-measure in (0,0)
+new("MultivariateDistribution")
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>distrEx</em> version 1.9 <a href="00Index.html">Index]</a></div>
+
+</body></html>

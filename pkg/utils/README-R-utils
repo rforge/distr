@@ -1,0 +1,103 @@
+#####################################################
+# Howto to R - utils -- version 2.0 (150108)
+#####################################################
+
+########### R - Utils
+
+### finde.R : 
+#
+# searches for a given pattern (possibly with regular expressions)
+# in all files with a given file extension in a given folder
+# Syntax 
+
+finde(x = "nchar", dir="C:/rtest/distrEx/R", ext = "R")
+## args: x : pattern; dir: folder; ext: file extension
+
+### ladealles.R
+#
+# sources in all .R - files from a given folder
+# Syntax 
+
+ladeall(DIR="distr", develDir = "C:/rtest")
+## args: DIR :     relative path to folder starting from develDir
+##       develDir: development folder (absolute path) 
+
+### setNewRVersion.R
+
+# automatically updates date and version information in a series
+# of package files: 
+#       + for pkgname in packs: 
+#         in DESCRIPTION  
+#             * package version 
+#             * Date
+#             * required R version
+#         if pkgname == distrDoc:
+#            in distr.Rnw file  
+#               * change pkg-, pkgEx- version  
+#         if withHTML  in .html file
+#             * on top : 
+#               - package version 
+#               - release Date
+#               - required R version
+# no longer from version 2.0 on:
+#             * at "Download" (if not already there)
+#                - Win-zip-file      information and URL-link
+#                - Linux-tar-gz-file information and URL-link 
+# end: no longer from version 2.0 on
+#             * at "Changes" (if not already there)
+#                - header "Changes from <old-pkg-version> to <pkg-version>
+#                - template list
+#             * on bottom of file:  
+#                - "last updated on" - Date 
+#       + if rkurs:             
+#         in rkurs.tex:   
+#             * package version of distr-family
+# Syntax 
+
+setNewversion(dev.dir = "C:/rtest/",
+              distrFam.dir = paste(dev.dir,"distr/pkg",sep = "", collapse = ""),
+              robKalmam.dir = paste(dev.dir,"robKalman/pkg",sep = "", 
+                                    collapse = ""), 
+              pkgv = "2.0", 
+              pkgExv = pkgv, 
+              pkgStv = "0.5", 
+              pkgrKv = "0.2", 
+              pkgBv = "2.4",
+              packs = c("startupmsg",
+                        "distr",
+                        "distrEx",
+                        "distrDoc",
+                        "distrSim", 
+                        "distrTEst", 
+                        "distrTeach", 
+                        "robKalman", 
+                        "Benchmark"), 
+              packDirs = c(rep(distrFam.dir,7),
+                          robKalman.dir,
+                          dev.dir),
+              rkurs = TRUE,
+              rkursDir = "D:/Eigene Dateien/Arbeit/R-Kurs/",
+              withHTML = TRUE, 
+              HTMLDir = "C:/rtest/distr/www/",
+              robKalmanDir = "C:/rtest/pkg/robKalman/www/",
+              gtRv = "2.2.0", gtRKv = "2.3.0")
+
+## args: dev.dir:       folder where the packages are developped (as folders...)
+##       distrFam.dir:  subfolder of dev.dir of the distrXXX family of packages
+##       robKalman.dir: subfolder of dev.dir of package robKalman
+##       pkgv:          version of distr, distrSim, distrTEst, distrDoc 
+##       pkgExv:        version of distrEx
+##       pkgStv:        version of startupmsg
+##       pkgrKv:        version of robKalman
+##       pkgBv:         version of Benchmark
+##       packs:         vector of (names of) packages to be updated
+##       packDirs:      vector of (names of) folders to the packages to be updated
+##       rkurs:         is R-Kurs to be updated?
+##       rkursDir:      folder of R-Kurs
+##       withHTML:      are HTML files to be updated?
+##       HTMLDir:       folder of HTML files 
+##       robKalmanDir:  folder of robKalman files 
+##       gtRv:          required R version for distr-family
+##       gtRKv:         required R version for robKalman
+
+

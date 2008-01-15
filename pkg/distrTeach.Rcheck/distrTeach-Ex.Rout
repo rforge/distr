@@ -1,0 +1,201 @@
+
+R version 2.6.0 RC (2007-10-01 r43043)
+Copyright (C) 2007 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+
+R ist freie Software und kommt OHNE JEGLICHE GARANTIE.
+Sie sind eingeladen, es unter bestimmten Bedingungen weiter zu verbreiten.
+Tippen Sie 'license()' or 'licence()' für Details dazu.
+
+R ist ein Gemeinschaftsprojekt mit vielen Beitragenden.
+Tippen Sie 'contributors()' für mehr Information und 'citation()',
+um zu erfahren, wie R oder R packages in Publikationen zitiert werden können.
+
+Tippen Sie 'demo()' für einige Demos, 'help()' für on-line Hilfe, oder
+'help.start()' für eine HTML Browserschnittstelle zur Hilfe.
+Tippen Sie 'q()', um R zu verlassen.
+
+> ### * <HEADER>
+> ###
+> attach(NULL, name = "CheckExEnv")
+> assign("nameEx", 
++        local({
++ 	   s <- "__{must remake R-ex/*.R}__"
++            function(new) {
++                if(!missing(new)) s <<- new else s
++            }
++        }),
++        pos = "CheckExEnv")
+> ## Add some hooks to label plot pages for base and grid graphics
+> assign("base_plot_hook",
++        function() {
++            pp <- par(c("mfg","mfcol","oma","mar"))
++            if(all(pp$mfg[1:2] == c(1, pp$mfcol[2]))) {
++                outer <- (oma4 <- pp$oma[4]) > 0; mar4 <- pp$mar[4]
++                mtext(sprintf("help(\"%s\")", nameEx()), side = 4,
++                      line = if(outer)max(1, oma4 - 1) else min(1, mar4 - 1),
++               outer = outer, adj = 1, cex = .8, col = "orchid", las=3)
++            }
++        },
++        pos = "CheckExEnv")
+> assign("grid_plot_hook",
++        function() {
++            pushViewport(viewport(width=unit(1, "npc") - unit(1, "lines"),
++                                  x=0, just="left"))
++            grid.text(sprintf("help(\"%s\")", nameEx()),
++                      x=unit(1, "npc") + unit(0.5, "lines"),
++                      y=unit(0.8, "npc"), rot=90,
++                      gp=gpar(col="orchid"))
++        },
++        pos = "CheckExEnv")
+> setHook("plot.new",     get("base_plot_hook", pos = "CheckExEnv"))
+> setHook("persp",        get("base_plot_hook", pos = "CheckExEnv"))
+> setHook("grid.newpage", get("grid_plot_hook", pos = "CheckExEnv"))
+> assign("cleanEx",
++        function(env = .GlobalEnv) {
++ 	   rm(list = ls(envir = env, all.names = TRUE), envir = env)
++            RNGkind("default", "default")
++ 	   set.seed(1)
++    	   options(warn = 1)
++ 	   .CheckExEnv <- as.environment("CheckExEnv")
++ 	   delayedAssign("T", stop("T used instead of TRUE"),
++ 		  assign.env = .CheckExEnv)
++ 	   delayedAssign("F", stop("F used instead of FALSE"),
++ 		  assign.env = .CheckExEnv)
++ 	   sch <- search()
++ 	   newitems <- sch[! sch %in% .oldSearch]
++ 	   for(item in rev(newitems))
++                eval(substitute(detach(item), list(item=item)))
++ 	   missitems <- .oldSearch[! .oldSearch %in% sch]
++ 	   if(length(missitems))
++ 	       warning("items ", paste(missitems, collapse=", "),
++ 		       " have been removed from the search path")
++        },
++        pos = "CheckExEnv")
+> assign("ptime", proc.time(), pos = "CheckExEnv")
+> grDevices::postscript("distrTeach-Ex.ps")
+> assign("par.postscript", graphics::par(no.readonly = TRUE), pos = "CheckExEnv")
+> options(contrasts = c(unordered = "contr.treatment", ordered = "contr.poly"), pager="console")
+> options(warn = 1)    
+> library('distrTeach')
+Lade nötiges Paket: distr
+Lade nötiges Paket: startupmsg
+:startupmsg> Utilities for start-up messages (version 0.5)
+
+:startupmsg> For more information see ?"startupmsg", NEWS("startupmsg")
+:startupmsg> 
+
+:distr> Object orientated implementation of distributions (version 2.0)
+
+:distr> Attention: Arithmetics on distribution objects are understood as
+:distr> operations on corresponding random variables (r.v.s); see distrARITH().
+:distr> Some functions from package 'stats' are intentionally masked
+:distr> ---see distrMASK().
+:distr> Note that global options are controlled by distroptions()
+:distr> ---c.f. ?"distroptions".
+
+:distr> For more information see ?"distr", NEWS("distr"), as well as
+:distr>   http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/
+:distr> Package "distrDoc" provides a vignette to this package as well as
+:distr> to several extension packages; try vignette("distr").
+:distr> 
+
+Lade nötiges Paket: distrEx
+Lade nötiges Paket: evd
+:distrEx> Extensions of package distr (version 2.0)
+
+:distrEx> Note: Packages "e1071", "moments", "fBasics" should be attached
+:distrEx> /before/ package "distrEx". See distrExMASK().
+
+:distrEx> For more information see ?"distrEx", NEWS("distrEx"), as well as
+:distrEx>   http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/
+:distrEx> Package "distrDoc" provides a vignette to this package as well as
+:distrEx> to several related packages; try vignette("distr").
+:distrEx> 
+
+:distrTeach> Extensions of package distr for teaching Stochastics/Statistics
+:distrTeach> in secondary school (version 2.0)
+
+:distrTeach> For more information see ?"distrTeach", NEWS("distrTeach"), as well as
+:distrTeach>   http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/
+:distrTeach> Package "distrDoc" provides a vignette to this package as well as
+:distrTeach> to several related packages; try vignette("distr").
+:distrTeach> 
+
+> 
+> assign(".oldSearch", search(), pos = 'CheckExEnv')
+> assign(".oldNS", loadedNamespaces(), pos = 'CheckExEnv')
+> cleanEx(); nameEx("IllustCLT")
+> ### * IllustCLT
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: illustrateCLT
+> ### Title: Functions for Illustrating the CLT
+> ### Aliases: illustrateCLT illustrateCLT.tcl
+> ### Keywords: distribution methods dynamic
+> 
+> ### ** Examples
+> 
+> distroptions("DefaultNrFFTGridPointsExponent" = 13)
+> illustrateCLT(Distr = Unif(), len = 20)
+> distroptions("DefaultNrFFTGridPointsExponent" = 12)
+> illustrateCLT(Distr = Pois(lambda = 2), len = 20)
+> distroptions("DefaultNrFFTGridPointsExponent" = 13)
+> illustrateCLT(Distr = Pois(lambda = 2)+Unif(), len = 20)
+> illustrateCLT.tcl(Distr = Unif(), k = 4, "Unif()")
+> 
+> 
+> 
+> cleanEx(); nameEx("IllustLLN")
+> ### * IllustLLN
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: illustrateLLN
+> ### Title: Functions for Illustrating the LLN
+> ### Aliases: illustrateLLN
+> ### Keywords: distribution methods dynamic
+> 
+> ### ** Examples
+> 
+> illustrateLLN(Distr = Unif())
+> illustrateLLN(Distr = Pois(lambda = 2))
+> illustrateLLN(Distr = Pois(lambda = 2)+Unif())
+> illustrateLLN(Td(3), m = 50, col.Eline = "green", lwd = 2, cex = 0.6, main = 
++  "My LLN %C%Q", sub = "generated %D")
+> illustrateLLN(Td(3), m = 50, CLTorCheb = "Chebyshev") 
+> illustrateLLN(Td(3), m = 50, CLTorCheb = "Chebyshev", coverage = 0.75) 
+> 
+> 
+> 
+> cleanEx(); nameEx("plotCLT")
+> ### * plotCLT
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plotCLT
+> ### Title: Generic Plot Function for Illustrating the CLT
+> ### Aliases: plotCLT plotCLT-methods plotCLT,AbscontDistribution-method
+> ###   plotCLT,DiscreteDistribution-method
+> ### Keywords: internal methods hplot distribution
+> 
+> ### ** Examples
+> 
+> illustrateCLT(Distr = Unif(), len = 20)
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  37.18 0.33 46.83 NA NA 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

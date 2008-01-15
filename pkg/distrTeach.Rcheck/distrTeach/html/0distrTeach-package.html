@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: distrTeach &ndash; Teaching Extensions of package distr</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for distrTeach-package {distrTeach}"><tr><td>distrTeach-package {distrTeach}</td><td align="right">R Documentation</td></tr></table>
+<h2>distrTeach &ndash; Teaching Extensions of package distr</h2>
+
+
+<h3>Description</h3>
+
+<p>
+<span class="pkg">distrTeach</span> provides some illustrations based on package <span class="pkg">distr</span>
+for teaching Stochastics / Statistics in secondary school; so far the following
+has been implemented
+<ul>
+<li><code>illustrateLLT</code>: function for the generation of LLN - visualizations
+<li><code>illustrateCLT</code>: function for the generation of CLT - visualizations
+<li><code>plotCLT</code>: Generic function for the plotting of CLT-approximations
+</ul>
+<p>
+as well as a Tcl/Tk based demo for<code>illustrateCLT</code>
+</p>
+
+
+<h3>Details</h3>
+
+<p>
+<table summary="Rd table">
+<tr>
+  <td align="left">Package: </td>  <td align="left"> distrTeach</td>
+</tr>
+<tr>
+  <td align="left"> Version: </td>  <td align="left"> 2.0 </td>
+</tr>
+<tr>
+  <td align="left"> Date: </td>  <td align="left"> 2008-01-15 </td>
+</tr>
+<tr>
+  <td align="left"> Depends: </td>  <td align="left"> R(&gt;= 2.2.0), methods, distr(&gt;= 1.8), evd, startupmsg</td>
+</tr>
+<tr>
+  <td align="left"> Suggests: </td>  <td align="left"> tcltk</td>
+</tr>
+<tr>
+  <td align="left"> SaveImage: </td>  <td align="left"> no</td>
+</tr>
+<tr>
+  <td align="left"> LazyLoad: </td>  <td align="left"> yes</td>
+</tr>
+<tr>
+  <td align="left"> License: </td>  <td align="left"> GPL (version 2 or later)</td>
+</tr>
+<tr>
+  <td align="left"> URL: </td>  <td align="left"> http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/</td>
+</tr>
+</table>
+
+
+<h3>Classes</h3>
+
+<p>
+<pre>
+
+Teaching Classes
+
+</pre>
+</p>
+
+
+<h3>Functions</h3>
+
+<p>
+<pre>
+
+</pre>
+</p>
+
+
+<h3>Generating Functions</h3>
+
+<p>
+<pre>
+
+
+</pre>
+</p>
+
+
+<h3>Methods</h3>
+
+<p>
+<pre>
+
+illustration:
+illustrateLLT           function for the generation of LLN - visualizations
+illustrateCLT           function for the generation of CLT - visualizations
+plotCLT                 Generic function for the plotting of CLT-approximations
+
+</pre>
+</p>
+
+
+<h3>Demos</h3>
+
+<p>
+Demos are available &mdash; see <code>demo(package="distrTeach")</code>.
+</p>
+
+
+<h3>Start-up-Banner</h3>
+
+<p>
+You may suppress the start-up banner/message completely by setting 
+<code>options("StartupBanner"="off")</code> somewhere before loading this package by 
+<code>library</code> or <code>require</code> in your R-code / R-session.
+</p>
+<p>
+If option <code>"StartupBanner"</code> is not defined (default) or setting    
+<code>options("StartupBanner"=NULL)</code> or 
+<code>options("StartupBanner"="complete")</code> the complete start-up banner is 
+displayed.
+</p>
+<p>
+For any other value of option <code>"StartupBanner"</code> (i.e., not in 
+<code>c(NULL,"off","complete")</code>) only the version information is displayed.
+</p>
+<p>
+The same can be achieved by wrapping the <code>library</code> or <code>require</code>  call 
+into either <code>suppressStartupMessages()</code> or 
+<code>onlytypeStartupMessages(.,atypes="version")</code>.  
+</p>
+<p>
+As for general <code>packageStartupMessage</code>'s, you may also suppress all
+the start-up banner by wrapping the <code>library</code> or <code>require</code> 
+call into <code>suppressPackageStartupMessages()</code> from 
+<span class="pkg">startupmsg</span>-version 0.5 on.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a> and <br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@uni-bayreuth.de">Peter.Ruckdeschel@uni-bayreuth.de</a>,<br> 
+Eleonara Feist <a href="mailto:eleonoragerber@gmx.de">eleonoragerber@gmx.de</a>, and, <br>
+Anja Hueller <a href="mailto:anja_h86@web.de">anja_h86@web.de</a><br>  
+</p>
+<p>
+<EM>Maintainer:</EM>  Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@uni-bayreuth.de">Peter.Ruckdeschel@uni-bayreuth.de</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+P. Ruckdeschel, M. Kohl, T. Stabla, F. Camphausen (2006):
+S4 Classes for Distributions, {em R News}, {em 6}(2), 2-6. 
+<a href="http://CRAN.R-project.org/doc/Rnews/Rnews_2006-2.pdf">http://CRAN.R-project.org/doc/Rnews/Rnews_2006-2.pdf</a>
+</p>
+<p>
+a vignette for packages <span class="pkg">distr</span>, <span class="pkg">distrSim</span>, <span class="pkg">distrTEst</span>, 
+and <span class="pkg">distrTeach</span> is included into the mere documentation package <span class="pkg">distrDoc</span> 
+and may be called by <code>require("distrDoc");vignette("distr")</code>
+</p>
+<p>
+a homepage to this package is available under<br>
+<a href="http://distr.r-forge.r-project.org/">http://distr.r-forge.r-project.org/</a> and the pages ...
+</p>
+<p>
+M. Kohl (2005): <EM>Numerical Contributions to the Asymptotic 
+Theory of Robustness.</EM> PhD Thesis. Bayreuth. Available as 
+<a href="http://www.stamats.de/ThesisMKohl.pdf">http://www.stamats.de/ThesisMKohl.pdf</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="../../distr/html/distr.html">distr</a></code> 
+<code><a href="../../distrEx/html/distrEx.html">distrEx</a></code>
+</p>
+
+
+
+<hr><div align="center">[Package <em>distrTeach</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

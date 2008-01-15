@@ -1,0 +1,129 @@
+distrTeach-package        package:distrTeach        R Documentation
+
+_d_i_s_t_r_T_e_a_c_h - _T_e_a_c_h_i_n_g _E_x_t_e_n_s_i_o_n_s _o_f _p_a_c_k_a_g_e _d_i_s_t_r
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     'distrTeach' provides some illustrations based on package 'distr'
+     for teaching Stochastics / Statistics in secondary school; so far
+     the following has been implemented
+
+        *  'illustrateLLT': function for the generation of LLN -
+           visualizations
+
+        *  'illustrateCLT': function for the generation of CLT -
+           visualizations
+
+        *  'plotCLT': Generic function for the plotting of
+           CLT-approximations
+
+     as well as a Tcl/Tk based demo for'illustrateCLT'
+
+_D_e_t_a_i_l_s:
+
+
+       Package:    distrTeach
+       Version:    2.0
+       Date:       2008-01-15
+       Depends:    R(>= 2.2.0), methods, distr(>= 1.8), evd, startupmsg
+       Suggests:   tcltk
+       SaveImage:  no
+       LazyLoad:   yes
+       License:    GPL (version 2 or later)
+       URL:        http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/
+
+_C_l_a_s_s_e_s:
+
+
+
+     Teaching Classes
+
+
+
+_F_u_n_c_t_i_o_n_s:
+
+
+
+
+
+_G_e_n_e_r_a_t_i_n_g _F_u_n_c_t_i_o_n_s:
+
+
+
+
+
+
+_M_e_t_h_o_d_s:
+
+
+
+     illustration:
+     illustrateLLT           function for the generation of LLN -
+     visualizations
+     illustrateCLT           function for the generation of CLT -
+     visualizations
+     plotCLT                 Generic function for the plotting of
+     CLT-approximations
+
+
+
+_D_e_m_o_s:
+
+     Demos are available - see 'demo(package="distrTeach")'.
+
+_S_t_a_r_t-_u_p-_B_a_n_n_e_r:
+
+     You may suppress the start-up banner/message completely by setting
+      'options("StartupBanner"="off")' somewhere before loading this
+     package by  'library' or 'require' in your R-code / R-session.
+
+     If option '"StartupBanner"' is not defined (default) or setting   
+      'options("StartupBanner"=NULL)' or 
+     'options("StartupBanner"="complete")' the complete start-up banner
+     is  displayed.
+
+     For any other value of option '"StartupBanner"' (i.e., not in 
+     'c(NULL,"off","complete")') only the version information is
+     displayed.
+
+     The same can be achieved by wrapping the 'library' or 'require' 
+     call  into either 'suppressStartupMessages()' or 
+     'onlytypeStartupMessages(.,atypes="version")'.  
+
+     As for general 'packageStartupMessage''s, you may also suppress
+     all the start-up banner by wrapping the 'library' or 'require' 
+     call into 'suppressPackageStartupMessages()' from 
+     'startupmsg'-version 0.5 on.
+
+_A_u_t_h_o_r(_s):
+
+     Matthias Kohl Matthias.Kohl@stamats.de and 
+      Peter Ruckdeschel Peter.Ruckdeschel@uni-bayreuth.de,
+       Eleonara Feist eleonoragerber@gmx.de, and, 
+      Anja Hueller anja_h86@web.de
+
+
+     _Maintainer:_  Peter Ruckdeschel Peter.Ruckdeschel@uni-bayreuth.de
+
+_R_e_f_e_r_e_n_c_e_s:
+
+     P. Ruckdeschel, M. Kohl, T. Stabla, F. Camphausen (2006): S4
+     Classes for Distributions, {\em R News}, {\em 6}(2), 2-6.  <URL:
+     http://CRAN.R-project.org/doc/Rnews/Rnews_2006-2.pdf>
+
+     a vignette for packages 'distr', 'distrSim', 'distrTEst',  and
+     'distrTeach' is included into the mere documentation package
+     'distrDoc'  and may be called by
+     'require("distrDoc");vignette("distr")'
+
+     a homepage to this package is available under
+      <URL: http://distr.r-forge.r-project.org/> and the pages ...
+
+     M. Kohl (2005): _Numerical Contributions to the Asymptotic  Theory
+     of Robustness._ PhD Thesis. Bayreuth. Available as  <URL:
+     http://www.stamats.de/ThesisMKohl.pdf>
+
+_S_e_e _A_l_s_o:
+
+     'distr'  'distrEx'
+

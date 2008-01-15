@@ -1,0 +1,45 @@
+plotCLT              package:distrTeach              R Documentation
+
+_G_e_n_e_r_i_c _P_l_o_t _F_u_n_c_t_i_o_n _f_o_r _I_l_l_u_s_t_r_a_t_i_n_g _t_h_e _C_L_T
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Generic 'plot' function for generating the plots of
+     'illustrateCLT'.
+
+_U_s_a_g_e:
+
+     plotCLT(Tn, ...)
+     ## S4 method for signature 'AbscontDistribution':
+     plotCLT(Tn, k, summands="")
+     ## S4 method for signature 'DiscreteDistribution':
+     plotCLT(Tn, k, summands="")
+
+_A_r_g_u_m_e_n_t_s:
+
+      Tn: object of class '"AbscontDistribution"' or class
+          '"DiscreteDistribution"': distribution of the summands
+
+       k: integer: number off summands to be plotted as graphics title
+
+summands: character: name of the summands
+
+     ...: addtional arguments for methods not yet implemented 
+
+_V_a_l_u_e:
+
+     void
+
+_A_u_t_h_o_r(_s):
+
+     Peter Ruckdeschel Peter.Ruckdeschel@uni-bayreuth.de
+      Matthias Kohl Matthias.Kohl@stamats.de
+
+_S_e_e _A_l_s_o:
+
+     'illustrateCLT'
+
+_E_x_a_m_p_l_e_s:
+
+     illustrateCLT(Distr = Unif(), len = 20)
+

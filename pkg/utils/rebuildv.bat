@@ -1,0 +1,3 @@
+REM ***rebuildv*** makes all my package in version %1...
+call Rversions %1
+call rebuild

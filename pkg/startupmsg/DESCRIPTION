@@ -1,0 +1,11 @@
+Package: startupmsg
+Version: 0.5
+Date: 2008-01-15
+Title: Utilities for start-up messages
+Description: Utilities for start-up messages
+Author: Peter Ruckdeschel
+Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@uni-bayreuth.de>
+Depends: R(>= 1.8.0)
+SaveImage: no
+LazyLoad: yes
+License: GPL (version 2 or later)

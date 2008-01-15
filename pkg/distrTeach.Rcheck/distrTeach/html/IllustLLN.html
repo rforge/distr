@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Functions for Illustrating the LLN</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for illustrateLLN {distrTeach}"><tr><td>illustrateLLN {distrTeach}</td><td align="right">R Documentation</td></tr></table>
+<h2>Functions for Illustrating the LLN</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Functions for generating a sequence of plots of
+randomly generated replicates of 
+<i>arithmetic means</i>
+for sums of iid r.v. distributed according to a prescribed discrete or 
+absolutely continuous distribution. A line for the expectation and CLT based
+(pointwise) 95%-confidence bands are also plotted and the empirical coverage
+of this band by the replicated plotted so far is indicated.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>illustrateLLN(Distr = Norm(),n = c(1,3,5,10,25,50,100,500,1000,10000), 
+            m = 50, step = 1, sleep = 0, withConf = TRUE, 
+            withCover = (length(n)&lt;=12), withEline = TRUE, withLegend = TRUE,
+            CLTorCheb = "CLT",  coverage = 0.95, ...,  col.Eline = "blue", 
+            lwd.Eline = par("lwd"), lty.Eline = par("lty"), col.Conf = "red", 
+            lwd.Conf = par("lwd"), lty.Conf = 2, cex.Cover = 0.7, 
+            cex.legend = 0.8)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>Distr</code></td>
+<td>
+object of class <code>"UnivariateDistribution"</code>: 
+distribution of the summands</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+vector of integers: sample sizes to be considered</td></tr>
+<tr valign="top"><td><code>m</code></td>
+<td>
+integer: (total) number of replicates to be plotted subsequently</td></tr>
+<tr valign="top"><td><code>step</code></td>
+<td>
+integer: number of replicates to be drawn at once</td></tr>
+<tr valign="top"><td><code>sleep</code></td>
+<td>
+numeric: pause in seconds between subsequent plots </td></tr>
+<tr valign="top"><td><code>withEline</code></td>
+<td>
+logical: shall a line for the limiting expectation 
+(in case of class <code>Cauchy</code> instead: median)
+be drawn?</td></tr>
+<tr valign="top"><td><code>withConf</code></td>
+<td>
+logical: shall (CLT-based) confidence bands be plotted?</td></tr>
+<tr valign="top"><td><code>withCover</code></td>
+<td>
+logical: shall empirical coverage of (CLT-based) confidence 
+bands be printed?</td></tr>
+<tr valign="top"><td><code>withLegend</code></td>
+<td>
+logical: shall a legend be included?</td></tr>
+<tr valign="top"><td><code>CLTorCheb</code></td>
+<td>
+character: type of confidence interval &mdash;"CLT" or
+"Chebyshev"; partial matching is used; if this fails
+"CLT" is used.</td></tr>
+<tr valign="top"><td><code>coverage</code></td>
+<td>
+numerical: nominal coverage of the confidence bands 
+&mdash;to be in (0,1)</td></tr>
+<tr valign="top"><td><code>col.Eline</code></td>
+<td>
+character or integer code; color for confidence bands</td></tr>
+<tr valign="top"><td><code>lwd.Eline</code></td>
+<td>
+integer code (see <code><a href="../../graphics/html/par.html">par</a></code>); 
+line width of the confidence bands</td></tr>
+<tr valign="top"><td><code>lty.Eline</code></td>
+<td>
+integer code (see <code><a href="../../graphics/html/par.html">par</a></code>); 
+line type of the confidence bands</td></tr>
+<tr valign="top"><td><code>col.Conf</code></td>
+<td>
+character or integer code; color for confidence bands</td></tr>
+<tr valign="top"><td><code>lwd.Conf</code></td>
+<td>
+integer code (see <code><a href="../../graphics/html/par.html">par</a></code>); 
+line width of the confidence bands</td></tr>
+<tr valign="top"><td><code>lty.Conf</code></td>
+<td>
+integer code (see <code><a href="../../graphics/html/par.html">par</a></code>); 
+line type of the confidence bands</td></tr>
+<tr valign="top"><td><code>cex.Cover</code></td>
+<td>
+magnification w.r.t. the current setting of <code>cex</code> 
+to be used for empirical coverages; as in 
+<code><a href="../../stats/html/par.html">par</a></code></td></tr>
+<tr valign="top"><td><code>cex.legend</code></td>
+<td>
+magnification w.r.t. the current setting of <code>cex</code> 
+to be used for the legend as in 
+<code><a href="../../stats/html/par.html">par</a></code></td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+further arguments to be passed to <code>matplot</code>,
+<code>matlines</code>, <code>abline</code></td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<code>illustrateLLN</code> generates a sequence of plots.
+Any parameters of <code>plot.default</code> may be passed on to this particular
+<code>plot</code> method. 
+</p>
+<p>
+There are default <code>main</code> titles as well as <code>xlab</code> and <code>ylab</code>
+annotations.
+</p>
+<p>
+In all title arguments, the following patterns are substituted:
+<ul>
+<dt><code>"%C"</code></dt><dd>class of argument <code>x</code></dd>
+<dt><code>"%P"</code></dt><dd>parameters of <code>x</code> in form of a comma-separated list of
+&lt;value&gt;'s coerced to character</dd>
+<dt><code>"%Q"</code></dt><dd>parameters of <code>x</code> in form of a comma-separated list of
+&lt;value&gt;'s coerced to character and in parenthesis &mdash; unless
+empty; then ""</dd>
+<dt><code>"%N"</code></dt><dd>parameters of <code>x</code> in form of a comma-separated list
+&lt;name&gt; = &lt;value&gt; coerced to character</dd>
+<dt><code>"%A"</code></dt><dd>deparsed argument <code>x</code></dd>
+<dt><code>"%D"</code></dt><dd>time/date-string when the plot was generated</dd>
+<dt><code>"%X"</code></dt><dd>the expression
+<i><code>bar(X)[n]==~~sum(X[i],i==1,n)/n</code></i></dd>
+</ul>
+
+<p>
+If not explicitly set, <code>col.Eline</code>, <code>col.Conf</code> are set 
+to <code>col</code> if this arg is given and else to their default values as given
+above. Similarly for <code>cex</code>, <code>lwd</code> and <code>lty</code>.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+void</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@uni-bayreuth.de">Peter.Ruckdeschel@uni-bayreuth.de</a>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+illustrateLLN(Distr = Unif())
+illustrateLLN(Distr = Pois(lambda = 2))
+illustrateLLN(Distr = Pois(lambda = 2)+Unif())
+illustrateLLN(Td(3), m = 50, col.Eline = "green", lwd = 2, cex = 0.6, main = 
+ "My LLN %C%Q", sub = "generated %D")
+illustrateLLN(Td(3), m = 50, CLTorCheb = "Chebyshev") 
+illustrateLLN(Td(3), m = 50, CLTorCheb = "Chebyshev", coverage = 0.75) 
+</pre>
+
+
+
+<hr><div align="center">[Package <em>distrTeach</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

@@ -1,0 +1,323 @@
+\documentclass{article}
+\usepackage[ae,hyper]{Rd}
+\begin{document}
+\HeaderA{distrTeach-package}{distrTeach -- Teaching Extensions of package distr}{distrTeach.Rdash.package}
+\aliasA{distrTeach}{distrTeach-package}{distrTeach}
+\keyword{package}{distrTeach-package}
+\begin{Description}\relax
+\pkg{distrTeach} provides some illustrations based on package \pkg{distr}
+for teaching Stochastics / Statistics in secondary school; so far the following
+has been implemented
+\Itemize{
+\item \code{illustrateLLT}: function for the generation of LLN - visualizations
+\item  \code{illustrateCLT}: function for the generation of CLT - visualizations
+\item  \code{plotCLT}: Generic function for the plotting of CLT-approximations
+}
+as well as a Tcl/Tk based demo for\code{illustrateCLT}
+\end{Description}
+\begin{Details}\relax
+\Tabular{ll}{
+Package: & distrTeach\\
+Version: & 2.0 \\
+Date: & 2008-01-15 \\
+Depends: & R(>= 2.2.0), methods, distr(>= 1.8), evd, startupmsg\\
+Suggests: & tcltk\\
+SaveImage: & no\\
+LazyLoad: & yes\\
+License: & GPL (version 2 or later)\\
+URL: & http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/\\
+}
+\end{Details}
+\begin{Section}{Classes}
+\begin{alltt}
+
+Teaching Classes
+
+\end{alltt}
+\end{Section}
+\begin{Section}{Functions}
+\begin{alltt}
+
+\end{alltt}
+\end{Section}
+\begin{Section}{Generating Functions}
+\begin{alltt}
+
+
+\end{alltt}
+\end{Section}
+\begin{Section}{Methods}
+\begin{alltt}
+
+illustration:
+illustrateLLT           function for the generation of LLN - visualizations
+illustrateCLT           function for the generation of CLT - visualizations
+plotCLT                 Generic function for the plotting of CLT-approximations
+
+\end{alltt}
+\end{Section}
+\begin{Section}{Demos}
+Demos are available --- see \code{demo(package="distrTeach")}.
+\end{Section}
+\begin{Section}{Start-up-Banner}
+You may suppress the start-up banner/message completely by setting 
+\code{options("StartupBanner"="off")} somewhere before loading this package by 
+\code{library} or \code{require} in your R-code / R-session.
+
+If option \code{"StartupBanner"} is not defined (default) or setting    
+\code{options("StartupBanner"=NULL)} or 
+\code{options("StartupBanner"="complete")} the complete start-up banner is 
+displayed.
+
+For any other value of option \code{"StartupBanner"} (i.e., not in 
+\code{c(NULL,"off","complete")}) only the version information is displayed.
+
+The same can be achieved by wrapping the \code{library} or \code{require}  call 
+into either \code{suppressStartupMessages()} or 
+\code{onlytypeStartupMessages(.,atypes="version")}.  
+
+As for general \code{packageStartupMessage}'s, you may also suppress all
+the start-up banner by wrapping the \code{library} or \code{require} 
+call into \code{suppressPackageStartupMessages()} from 
+\pkg{startupmsg}-version 0.5 on.
+\end{Section}
+\begin{Author}\relax
+Matthias Kohl \email{Matthias.Kohl@stamats.de} and \\
+Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de},\\ 
+Eleonara Feist \email{eleonoragerber@gmx.de}, and, \\
+Anja Hueller \email{anja_h86@web.de}\\  
+
+\emph{Maintainer:}  Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de}
+\end{Author}
+\begin{References}\relax
+P. Ruckdeschel, M. Kohl, T. Stabla, F. Camphausen (2006):
+S4 Classes for Distributions, {\em R News}, {\em 6}(2), 2-6. 
+\url{http://CRAN.R-project.org/doc/Rnews/Rnews_2006-2.pdf}
+
+
+a vignette for packages \pkg{distr}, \pkg{distrSim}, \pkg{distrTEst}, 
+and \pkg{distrTeach} is included into the mere documentation package \pkg{distrDoc} 
+and may be called by \code{require("distrDoc");vignette("distr")}
+
+a homepage to this package is available under\\
+\url{http://distr.r-forge.r-project.org/} and the pages ...
+
+M. Kohl (2005): \emph{Numerical Contributions to the Asymptotic 
+Theory of Robustness.} PhD Thesis. Bayreuth. Available as 
+\url{http://www.stamats.de/ThesisMKohl.pdf}
+\end{References}
+\begin{SeeAlso}\relax
+\code{\LinkA{distr}{distr}} 
+\code{\LinkA{distrEx}{distrEx}}
+\end{SeeAlso}
+
+\HeaderA{illustrateCLT}{Functions for Illustrating the CLT}{illustrateCLT}
+\methaliasA{illustrateCLT.tcl}{illustrateCLT}{illustrateCLT.tcl}
+\keyword{distribution}{illustrateCLT}
+\keyword{methods}{illustrateCLT}
+\keyword{dynamic}{illustrateCLT}
+\begin{Description}\relax
+Functions for generating a sequence of plots of
+the density and cdf of the consecutive standardized and centered sums of iid 
+r.v. distributed according to a prescribed discrete or absolutely continuous 
+distribution compared to the standard normal --- uses the generic function 
+\code{plotCLT}.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}illustrateCLT(Distr, len, sleep = 0)
+illustrateCLT.tcl(Distr, k, Distrname)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{Distr}] object of class \code{"AbscontDistribution"}, 
+\code{"LatticeDistribution"} or \code{"DiscreteDistribution"}: distribution of 
+the summands
+\item[\code{len}] integer: up to which number of summands plots are generated
+\item[\code{k}] integer: number of summands for which a plot is to be generated
+\item[\code{Distrname}] character: name of the summand distribution to be used as 
+title in the plot
+\item[\code{sleep}] numeric: pause in seconds between subsequent plots 
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+\code{illustrateCLT} generates a sequence of plots, while 
+\code{illustrateCLT.tcl} may be used with Tcl/Tk-widgets as in demo 
+\code{illustCLT\_tcl.R}.
+\end{Details}
+\begin{Value}
+void
+\end{Value}
+\begin{Author}\relax
+Matthias Kohl \email{Matthias.Kohl@stamats.de}\\
+Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de}
+\end{Author}
+\begin{SeeAlso}\relax
+\code{\LinkA{plotCLT}{plotCLT}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+distroptions("DefaultNrFFTGridPointsExponent" = 13)
+illustrateCLT(Distr = Unif(), len = 20)
+distroptions("DefaultNrFFTGridPointsExponent" = 12)
+illustrateCLT(Distr = Pois(lambda = 2), len = 20)
+distroptions("DefaultNrFFTGridPointsExponent" = 13)
+illustrateCLT(Distr = Pois(lambda = 2)+Unif(), len = 20)
+illustrateCLT.tcl(Distr = Unif(), k = 4, "Unif()")
+\end{ExampleCode}
+\end{Examples}
+
+\HeaderA{illustrateLLN}{Functions for Illustrating the LLN}{illustrateLLN}
+\keyword{distribution}{illustrateLLN}
+\keyword{methods}{illustrateLLN}
+\keyword{dynamic}{illustrateLLN}
+\begin{Description}\relax
+Functions for generating a sequence of plots of
+randomly generated replicates of 
+\eqn{\bar X_n= \frac{1}{n} \sum_{i=1}^n X_i}{arithmetic means}
+for sums of iid r.v. distributed according to a prescribed discrete or 
+absolutely continuous distribution. A line for the expectation and CLT based
+(pointwise) 95\%-confidence bands are also plotted and the empirical coverage
+of this band by the replicated plotted so far is indicated.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}illustrateLLN(Distr = Norm(),n = c(1,3,5,10,25,50,100,500,1000,10000), 
+            m = 50, step = 1, sleep = 0, withConf = TRUE, 
+            withCover = (length(n)<=12), withEline = TRUE, withLegend = TRUE,
+            CLTorCheb = "CLT",  coverage = 0.95, ...,  col.Eline = "blue", 
+            lwd.Eline = par("lwd"), lty.Eline = par("lty"), col.Conf = "red", 
+            lwd.Conf = par("lwd"), lty.Conf = 2, cex.Cover = 0.7, 
+            cex.legend = 0.8)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{Distr}] object of class \code{"UnivariateDistribution"}: 
+distribution of the summands
+\item[\code{n}] vector of integers: sample sizes to be considered
+\item[\code{m}] integer: (total) number of replicates to be plotted subsequently
+\item[\code{step}] integer: number of replicates to be drawn at once
+\item[\code{sleep}] numeric: pause in seconds between subsequent plots 
+\item[\code{withEline}] logical: shall a line for the limiting expectation 
+(in case of class \code{Cauchy} instead: median)
+be drawn?
+\item[\code{withConf}] logical: shall (CLT-based) confidence bands be plotted?
+\item[\code{withCover}] logical: shall empirical coverage of (CLT-based) confidence 
+bands be printed?
+\item[\code{withLegend}] logical: shall a legend be included?
+\item[\code{CLTorCheb}] character: type of confidence interval ---"CLT" or
+"Chebyshev"; partial matching is used; if this fails
+"CLT" is used.
+\item[\code{coverage}] numerical: nominal coverage of the confidence bands 
+---to be in (0,1)
+\item[\code{col.Eline}] character or integer code; color for confidence bands
+\item[\code{lwd.Eline}] integer code (see \code{\LinkA{par}{par}}); 
+line width of the confidence bands
+\item[\code{lty.Eline}] integer code (see \code{\LinkA{par}{par}}); 
+line type of the confidence bands
+\item[\code{col.Conf}] character or integer code; color for confidence bands
+\item[\code{lwd.Conf}] integer code (see \code{\LinkA{par}{par}}); 
+line width of the confidence bands
+\item[\code{lty.Conf}] integer code (see \code{\LinkA{par}{par}}); 
+line type of the confidence bands
+\item[\code{cex.Cover}] magnification w.r.t. the current setting of \code{cex} 
+to be used for empirical coverages; as in 
+\code{\LinkA{par}{par}}
+\item[\code{cex.legend}] magnification w.r.t. the current setting of \code{cex} 
+to be used for the legend as in 
+\code{\LinkA{par}{par}}
+\item[\code{...}] further arguments to be passed to \code{matplot},
+\code{matlines}, \code{abline}
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+\code{illustrateLLN} generates a sequence of plots.
+Any parameters of \code{plot.default} may be passed on to this particular
+\code{plot} method. 
+
+There are default \code{main} titles as well as \code{xlab} and \code{ylab}
+annotations.
+
+In all title arguments, the following patterns are substituted:
+\Itemize{
+\item[\code{"\%C"}] class of argument \code{x}
+\item[\code{"\%P"}] parameters of \code{x} in form of a comma-separated list of
+<value>'s coerced to character
+\item[\code{"\%Q"}] parameters of \code{x} in form of a comma-separated list of
+<value>'s coerced to character and in parenthesis --- unless
+empty; then ""
+\item[\code{"\%N"}] parameters of \code{x} in form of a comma-separated list
+<name> = <value> coerced to character
+\item[\code{"\%A"}] deparsed argument \code{x}
+\item[\code{"\%D"}] time/date-string when the plot was generated
+\item[\code{"\%X"}] the expression
+\eqn{\bar X_n=\sum_{i=1}^n X_i/n}{\code{bar(X)[n]==\textasciitilde{}\textasciitilde{}sum(X[i],i==1,n)/n}}
+}
+
+If not explicitly set, \code{col.Eline}, \code{col.Conf} are set 
+to \code{col} if this arg is given and else to their default values as given
+above. Similarly for \code{cex}, \code{lwd} and \code{lty}.
+\end{Details}
+\begin{Value}
+void
+\end{Value}
+\begin{Author}\relax
+Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de}
+\end{Author}
+\begin{Examples}
+\begin{ExampleCode}
+illustrateLLN(Distr = Unif())
+illustrateLLN(Distr = Pois(lambda = 2))
+illustrateLLN(Distr = Pois(lambda = 2)+Unif())
+illustrateLLN(Td(3), m = 50, col.Eline = "green", lwd = 2, cex = 0.6, main = 
+ "My LLN %C%Q", sub = "generated %D")
+illustrateLLN(Td(3), m = 50, CLTorCheb = "Chebyshev") 
+illustrateLLN(Td(3), m = 50, CLTorCheb = "Chebyshev", coverage = 0.75) 
+\end{ExampleCode}
+\end{Examples}
+
+\HeaderA{plotCLT}{Generic Plot Function for Illustrating the CLT}{plotCLT}
+\aliasA{plotCLT,AbscontDistribution-method}{plotCLT}{plotCLT,AbscontDistribution.Rdash.method}
+\aliasA{plotCLT,DiscreteDistribution-method}{plotCLT}{plotCLT,DiscreteDistribution.Rdash.method}
+\aliasA{plotCLT-methods}{plotCLT}{plotCLT.Rdash.methods}
+\keyword{internal}{plotCLT}
+\keyword{methods}{plotCLT}
+\keyword{hplot}{plotCLT}
+\keyword{distribution}{plotCLT}
+\begin{Description}\relax
+Generic 'plot' function for generating the plots of 'illustrateCLT'.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}plotCLT(Tn, ...)
+## S4 method for signature 'AbscontDistribution':
+plotCLT(Tn, k, summands="")
+## S4 method for signature 'DiscreteDistribution':
+plotCLT(Tn, k, summands="")
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{Tn}] object of class \code{"AbscontDistribution"} or class
+\code{"DiscreteDistribution"}: distribution of the summands
+\item[\code{k}] integer: number off summands to be plotted as graphics title
+\item[\code{summands}] character: name of the summands
+\item[\code{...}] addtional arguments for methods not yet implemented 
+\end{ldescription}
+\end{Arguments}
+\begin{Value}
+void
+\end{Value}
+\begin{Author}\relax
+Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de}\\
+Matthias Kohl \email{Matthias.Kohl@stamats.de}
+\end{Author}
+\begin{SeeAlso}\relax
+\code{\LinkA{illustrateCLT}{illustrateCLT}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+illustrateCLT(Distr = Unif(), len = 20)
+\end{ExampleCode}
+\end{Examples}
+
+\end{document}

@@ -1,0 +1,3 @@
+REM ***pmake*** makes a package...
+call rebuildv R-2.5.1
+call rebuildv R-2.6.0rc
