@@ -1,0 +1,135 @@
+<html><head><title>Class "Cauchy"</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>Cauchy-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   Cauchy-class">
+<param name="keyword" value="R:   Cauchy">
+<param name="keyword" value="R:   initialize,Cauchy-method">
+<param name="keyword" value=" Class 'Cauchy'">
+</object>
+
+
+<h2>Class 'Cauchy'</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The Cauchy distribution with location <i>l</i>, by default <i>=0</i>, and scale <i>s</i> , by default <i>=1</i>,has
+density
+</p><p align="center"><i>f(x) = 1 / (pi s (1 + ((x-l)/s)^2))</i></p><p>
+for all <i>x</i>.
+C.f. <code><a onclick="findlink('stats', 'Cauchy.html')" style="text-decoration: underline; color: blue; cursor: hand">rcauchy</a></code>
+</p>
+
+
+<h3>Objects from the Class</h3>
+
+<p>
+Objects can be created by calls of the form <code>Cauchy(location, scale)</code>.
+This object is a Cauchy distribution.
+</p>
+
+
+<h3>Slots</h3>
+
+<dl>
+<dt><code>img</code>:</dt><dd>Object of class <code>"Reals"</code>: The domain of this distribution has got dimension 1
+and the name "Real Space". </dd>
+<dt><code>param</code>:</dt><dd>Object of class <code>"CauchyParameter"</code>: the parameter of this distribution (location and scale),
+declared at its instantiation </dd>
+<dt><code>r</code>:</dt><dd>Object of class <code>"function"</code>: generates random numbers (calls function <code>rcauchy</code>)</dd>
+<dt><code>d</code>:</dt><dd>Object of class <code>"function"</code>: density function (calls function <code>dcauchy</code>)</dd>
+<dt><code>p</code>:</dt><dd>Object of class <code>"function"</code>: cumulative function (calls function <code>pcauchy</code>)</dd>
+<dt><code>q</code>:</dt><dd>Object of class <code>"function"</code>: inverse of the cumulative function (calls function <code>qcauchy</code>)</dd>
+</dl>
+
+<h3>Extends</h3>
+
+<p>
+Class <code>"AbscontDistribution"</code>, directly.<br>
+Class <code>"UnivariateDistribution"</code>, by class <code>"AbscontDistribution"</code>.<br>
+Class <code>"Distribution"</code>, by class <code>"AbscontDistribution"</code>.
+</p>
+
+
+<h3>Is-Relations</h3>
+
+<p>
+By means of <code>setIs</code>, R ``knows'' that a distribution object <code>obj</code> of class <code>"Cauchy"</code> with location 0 and scale 1 also is
+a T distribution with parameters <code>df = 1, ncp = 0</code>.
+</p>
+
+
+<h3>Methods</h3>
+
+<dl>
+<dt>initialize</dt><dd><code>signature(.Object = "Cauchy")</code>: initialize method </dd>
+<dt>location</dt><dd><code>signature(object = "Cauchy")</code>: returns the slot <code>location</code> of the parameter of the distribution </dd>
+<dt>location&lt;-</dt><dd><code>signature(object = "Cauchy")</code>: modifies the slot <code>location</code> of the parameter of the distribution </dd>
+<dt>scale</dt><dd><code>signature(object = "Cauchy")</code>: returns the slot <code>scale</code> of the parameter of the distribution </dd>
+<dt>scale&lt;-</dt><dd><code>signature(object = "Cauchy")</code>: modifies the slot <code>scale</code> of the parameter of the distribution </dd>
+<dt>+</dt><dd><code>signature(e1 = "Cauchy", e2 = "Cauchy")</code>: For the Cauchy distribution the exact convolution formula is
+implemented thereby improving the general numerical approximation.</dd>
+<dt>*</dt><dd><code>signature(e1 = "Cauchy", e2 = "numeric")</code></dd>
+<dt>+</dt><dd><code>signature(e1 = "Cauchy", e2 = "numeric")</code>: 
+For the Cauchy location scale family we use its closedness under affine linear transformations.</dd>
+</dl>
+<p>
+further arithmetic methods see <a href="operators-methods.html">operators-methods</a>
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Thomas Stabla <a href="mailto:statho3@web.de">statho3@web.de</a>,<br> 
+Florian Camphausen <a href="mailto:fcampi@gmx.de">fcampi@gmx.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@uni-bayreuth.de">Peter.Ruckdeschel@uni-bayreuth.de</a>,<br> 
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="CauchyParameter-class.html">CauchyParameter-class</a></code>
+<code><a href="AbscontDistribution-class.html">AbscontDistribution-class</a></code>
+<code><a href="Reals-class.html">Reals-class</a></code>
+<code><a onclick="findlink('stats', 'Cauchy.html')" style="text-decoration: underline; color: blue; cursor: hand">rcauchy</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+C &lt;- Cauchy(location = 1, scale = 1) # C is a Cauchy distribution with location=1 and scale=1.
+r(C)(1) # one random number generated from this distribution, e.g. 4.104603
+d(C)(1) # Density of this distribution is 0.3183099 for x=1.
+p(C)(1) # Probability that x&lt;1 is 0.5.
+q(C)(.1) # Probability that x&lt;-2.077684 is 0.1.
+location(C) # location of this distribution is 1.
+location(C) &lt;- 2 # location of this distribution is now 2.
+is(C,"Td") # no
+C0 &lt;- Cauchy() # standard, i.e. location = 0, scale = 1
+is(C0,"Td") # yes
+as(C0,"Td") 
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>distr</em> version 1.9 <a href="00Index.html">Index]</a></div>
+
+</body></html>

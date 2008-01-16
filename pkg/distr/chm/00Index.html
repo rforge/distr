@@ -1,0 +1,1303 @@
+<html><head><title>Object orientated implementation of distributions</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head><body>
+<h1>Object orientated implementation of distributions
+<img class="toplogo" src="logo.jpg" alt="[R logo]"></h1>
+
+<hr>
+
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value=".. contents">
+</object>
+
+<h2>Help pages for package &lsquo;distr&rsquo; version 1.9</h2>
+
+<p align="center">
+<a href="#"></a>
+<a href="# "> </a>
+<a href="#A">A</a>
+<a href="#B">B</a>
+<a href="#C">C</a>
+<a href="#D">D</a>
+<a href="#E">E</a>
+<a href="#F">F</a>
+<a href="#G">G</a>
+<a href="#H">H</a>
+<a href="#I">I</a>
+<a href="#K">K</a>
+<a href="#L">L</a>
+<a href="#M">M</a>
+<a href="#N">N</a>
+<a href="#O">O</a>
+<a href="#P">P</a>
+<a href="#Q">Q</a>
+<a href="#R">R</a>
+<a href="#S">S</a>
+<a href="#T">T</a>
+<a href="#U">U</a>
+<a href="#W">W</a>
+</p>
+<table width="100%">
+</table>
+
+<h2><a name=" ">--   --</a></h2>
+
+<table width="100%">
+<tr><td width="25%"><a href="0distr-package.html">distr-package</a></td>
+<td>distr - object orientated implementation of distributions </td></tr>
+</table>
+
+<h2><a name="">--  --</a></h2>
+
+<table width="100%">
+<tr><td width="25%"><a href="operators-methods.html">*,AbscontDistribution,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">*,AffLinAbscontDistribution,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">*,AffLinDiscreteDistribution,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">*,AffLinLatticeDistribution,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">*,Cauchy,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">*,DExp,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">*,Dirac,Dirac-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">*,Dirac,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">*,Dirac,UnivariateDistribution-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">*,DiscreteDistribution,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">*,Exp,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">*,ExpOrGammaOrChisq,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">*,LatticeDistribution,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">*,Lnorm,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">*,Logis,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">*,Norm,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">*,numeric,UnivariateDistribution-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">*,Unif,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">*,UnivariateDistribution,Dirac-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">*,UnivariateDistribution,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">*,Weibull,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,AbscontDistribution,AbscontDistribution-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,AbscontDistribution,DiscreteDistribution-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,AbscontDistribution,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,AffLinAbscontDistribution,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,AffLinDiscreteDistribution,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,AffLinLatticeDistribution,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,Binom,Binom-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,Cauchy,Cauchy-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,Cauchy,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,Chisq,Chisq-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,Dirac,Dirac-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,Dirac,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,Dirac,UnivariateDistribution-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,DiscreteDistribution,AbscontDistribution-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,DiscreteDistribution,DiscreteDistribution-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,DiscreteDistribution,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,ExpOrGammaOrChisq,ExpOrGammaOrChisq-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,LatticeDistribution,DiscreteDistribution-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,LatticeDistribution,LatticeDistribution-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,LatticeDistribution,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,Logis,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,Nbinom,Nbinom-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,Norm,Norm-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,Norm,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,numeric,UnivariateDistribution-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,Pois,Pois-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,Unif,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,UnivariateDistribution,Dirac-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,UnivariateDistribution,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">+,UnivariateDistribution,UnivariateDistribution-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">-,Dirac,Dirac-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">-,Norm,missing-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">-,numeric,UnivariateDistribution-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">-,UnivariateDistribution,missing-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">-,UnivariateDistribution,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">-,UnivariateDistribution,UnivariateDistribution-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">/,Dirac,Dirac-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">/,numeric,Dirac-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">/,UnivariateDistribution,numeric-method</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+</table>
+
+<h2><a name="A">-- A --</a></h2>
+
+<table width="100%">
+<tr><td width="25%"><a href="Math-methods.html">abs,AbscontDistribution-method</a></td>
+<td>Methods for Functions from group &lsquo;Math&rsquo; in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Math-methods.html">abs,DiscreteDistribution-method</a></td>
+<td>Methods for Functions from group &lsquo;Math&rsquo; in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="AbscontDistribution-class.html">AbscontDistribution-class</a></td>
+<td>Class "AbscontDistribution"</td></tr>
+<tr><td width="25%"><a href="AbscontDistribution-class.html">AffLinAbscontDistribution-class</a></td>
+<td>Class "AbscontDistribution"</td></tr>
+<tr><td width="25%"><a href="DiscreteDistribution-class.html">AffLinDiscreteDistribution-class</a></td>
+<td>Class "DiscreteDistribution"</td></tr>
+<tr><td width="25%"><a href="AbscontDistribution-class.html">AffLinDistribution-class</a></td>
+<td>Class "AbscontDistribution"</td></tr>
+<tr><td width="25%"><a href="LatticeDistribution-class.html">AffLinLatticeDistribution-class</a></td>
+<td>Class "LatticeDistribution"</td></tr>
+<tr><td width="25%"><a href="distrARITH.html">ARITHMETICS</a></td>
+<td>Arithmetics on Distributions</td></tr>
+</table>
+
+<h2><a name="B">-- B --</a></h2>
+
+<table width="100%">
+<tr><td width="25%"><a href="Beta-class.html">Beta</a></td>
+<td>Class "Beta"</td></tr>
+<tr><td width="25%"><a href="Beta-class.html">Beta-class</a></td>
+<td>Class "Beta"</td></tr>
+<tr><td width="25%"><a href="BetaParameter-class.html">BetaParameter-class</a></td>
+<td>Class "BetaParameter"</td></tr>
+<tr><td width="25%"><a href="Binom-class.html">Binom</a></td>
+<td>Class "Binom" </td></tr>
+<tr><td width="25%"><a href="Binom-class.html">Binom-class</a></td>
+<td>Class "Binom" </td></tr>
+<tr><td width="25%"><a href="BinomParameter-class.html">BinomParameter-class</a></td>
+<td>Class "BinomParameter"</td></tr>
+</table>
+
+<h2><a name="C">-- C --</a></h2>
+
+<table width="100%">
+<tr><td width="25%"><a href="Cauchy-class.html">Cauchy</a></td>
+<td>Class "Cauchy"</td></tr>
+<tr><td width="25%"><a href="Cauchy-class.html">Cauchy-class</a></td>
+<td>Class "Cauchy"</td></tr>
+<tr><td width="25%"><a href="CauchyParameter-class.html">CauchyParameter-class</a></td>
+<td>Class "CauchyParameter"</td></tr>
+<tr><td width="25%"><a href="Chisq-class.html">Chisq</a></td>
+<td>Class "Chisq"</td></tr>
+<tr><td width="25%"><a href="Chisq-class.html">Chisq-class</a></td>
+<td>Class "Chisq"</td></tr>
+<tr><td width="25%"><a href="ChisqParameter-class.html">ChisqParameter-class</a></td>
+<td>Class "ChisqParameter"</td></tr>
+<tr><td width="25%"><a href="LatticeDistribution-class.html">coerce,AffLinLatticeDistribution,AffLinDiscreteDistribution-method</a></td>
+<td>Class "LatticeDistribution"</td></tr>
+<tr><td width="25%"><a href="DistrList-class.html">coerce,Distribution,DistrList-method</a></td>
+<td>List of distributions</td></tr>
+<tr><td width="25%"><a href="LatticeDistribution-class.html">coerce,LatticeDistribution,DiscreteDistribution-method</a></td>
+<td>Class "LatticeDistribution"</td></tr>
+<tr><td width="25%"><a href="UnivarDistrList-class.html">coerce,UnivariateDistribution,UnivarDistrList-method</a></td>
+<td>List of univariate distributions</td></tr>
+<tr><td width="25%"><a href="versionmanagement.html">conv2NewVersion</a></td>
+<td>Methods for Version Management in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="versionmanagement.html">conv2NewVersion,ANY-method</a></td>
+<td>Methods for Version Management in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="versionmanagement.html">conv2NewVersion,LatticeDistribution-method</a></td>
+<td>Methods for Version Management in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="versionmanagement.html">conv2NewVersion-methods</a></td>
+<td>Methods for Version Management in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="ConvPow.html">convpow</a></td>
+<td>Distribution of the sum of univariate i.i.d r.v's</td></tr>
+<tr><td width="25%"><a href="ConvPow.html">convpow,AbscontDistribution-method</a></td>
+<td>Distribution of the sum of univariate i.i.d r.v's</td></tr>
+<tr><td width="25%"><a href="ConvPow.html">convpow,Binom-method</a></td>
+<td>Distribution of the sum of univariate i.i.d r.v's</td></tr>
+<tr><td width="25%"><a href="ConvPow.html">convpow,Cauchy-method</a></td>
+<td>Distribution of the sum of univariate i.i.d r.v's</td></tr>
+<tr><td width="25%"><a href="ConvPow.html">convpow,Dirac-method</a></td>
+<td>Distribution of the sum of univariate i.i.d r.v's</td></tr>
+<tr><td width="25%"><a href="ConvPow.html">convpow,ExpOrGammaOrChisq-method</a></td>
+<td>Distribution of the sum of univariate i.i.d r.v's</td></tr>
+<tr><td width="25%"><a href="ConvPow.html">convpow,LatticeDistribution-method</a></td>
+<td>Distribution of the sum of univariate i.i.d r.v's</td></tr>
+<tr><td width="25%"><a href="ConvPow.html">convpow,Nbinom-method</a></td>
+<td>Distribution of the sum of univariate i.i.d r.v's</td></tr>
+<tr><td width="25%"><a href="ConvPow.html">convpow,Norm-method</a></td>
+<td>Distribution of the sum of univariate i.i.d r.v's</td></tr>
+<tr><td width="25%"><a href="ConvPow.html">convpow,Pois-method</a></td>
+<td>Distribution of the sum of univariate i.i.d r.v's</td></tr>
+<tr><td width="25%"><a href="ConvPow.html">convpow-methods</a></td>
+<td>Distribution of the sum of univariate i.i.d r.v's</td></tr>
+</table>
+
+<h2><a name="D">-- D --</a></h2>
+
+<table width="100%">
+<tr><td width="25%"><a href="d-methods.html">d</a></td>
+<td>Methods for Function d in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="d-methods.html">d,Distribution-method</a></td>
+<td>Methods for Function d in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="d-methods.html">d-methods</a></td>
+<td>Methods for Function d in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="distroptions.html">DefaultNrFFTGridPointsExponent</a></td>
+<td>functions to change the global variables of the package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="distroptions.html">DefaultNrGridPoints</a></td>
+<td>functions to change the global variables of the package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="DExp-class.html">DExp</a></td>
+<td>Class "DExp"</td></tr>
+<tr><td width="25%"><a href="DExp-class.html">DExp-class</a></td>
+<td>Class "DExp"</td></tr>
+<tr><td width="25%"><a href="df-methods.html">df</a></td>
+<td>Methods for Function df in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="df-methods.html">df,Chisq-method</a></td>
+<td>Methods for Function df in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="df-methods.html">df,ChisqParameter-method</a></td>
+<td>Methods for Function df in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="df-methods.html">df,Td-method</a></td>
+<td>Methods for Function df in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="df-methods.html">df,TParameter-method</a></td>
+<td>Methods for Function df in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="df-methods.html">df-methods</a></td>
+<td>Methods for Function df in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="df1-methods.html">df1</a></td>
+<td>Methods for Function df1 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="df1-methods.html">df1,Fd-method</a></td>
+<td>Methods for Function df1 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="df1-methods.html">df1,FParameter-method</a></td>
+<td>Methods for Function df1 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="df1-methods.html">df1-methods</a></td>
+<td>Methods for Function df1 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="df1-methods.html">df1&lt;-,Fd-method</a></td>
+<td>Methods for Function df1 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="df1-methods.html">df1&lt;-,FParameter-method</a></td>
+<td>Methods for Function df1 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="df1-methods.html">df1&lt;--methods</a></td>
+<td>Methods for Function df1 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="df2-methods.html">df2</a></td>
+<td>Methods for Function df2 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="df2-methods.html">df2,Fd-method</a></td>
+<td>Methods for Function df2 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="df2-methods.html">df2,FParameter-method</a></td>
+<td>Methods for Function df2 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="df2-methods.html">df2-methods</a></td>
+<td>Methods for Function df2 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="df2-methods.html">df2&lt;-,Fd-method</a></td>
+<td>Methods for Function df2 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="df2-methods.html">df2&lt;-,FParameter-method</a></td>
+<td>Methods for Function df2 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="df2-methods.html">df2&lt;--methods</a></td>
+<td>Methods for Function df2 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="df-methods.html">df&lt;-,Chisq-method</a></td>
+<td>Methods for Function df in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="df-methods.html">df&lt;-,ChisqParameter-method</a></td>
+<td>Methods for Function df in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="df-methods.html">df&lt;-,Td-method</a></td>
+<td>Methods for Function df in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="df-methods.html">df&lt;-,TParameter-method</a></td>
+<td>Methods for Function df in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="df-methods.html">df&lt;--methods</a></td>
+<td>Methods for Function df in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="dim-methods.html">dim</a></td>
+<td>Methods for Function dim in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="dim-methods.html">dim,UnivariateDistribution-method</a></td>
+<td>Methods for Function dim in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="dim-methods.html">dim-methods</a></td>
+<td>Methods for Function dim in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="dimension-methods.html">dimension</a></td>
+<td>Methods for Function dimension in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="dimension-methods.html">dimension,EuclideanSpace-method</a></td>
+<td>Methods for Function dimension in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="dimension-methods.html">dimension-methods</a></td>
+<td>Methods for Function dimension in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="dimension-methods.html">dimension&lt;-,EuclideanSpace-method</a></td>
+<td>Methods for Function dimension in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="dimension-methods.html">dimension&lt;--methods</a></td>
+<td>Methods for Function dimension in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Dirac-class.html">Dirac</a></td>
+<td>Class "Dirac"  </td></tr>
+<tr><td width="25%"><a href="Dirac-class.html">Dirac-class</a></td>
+<td>Class "Dirac"  </td></tr>
+<tr><td width="25%"><a href="DiracParameter-class.html">DiracParameter-class</a></td>
+<td>Class "DiracParameter"</td></tr>
+<tr><td width="25%"><a href="DiscreteDistribution-class.html">DiscreteDistribution</a></td>
+<td>Class "DiscreteDistribution"</td></tr>
+<tr><td width="25%"><a href="DiscreteDistribution-class.html">DiscreteDistribution-class</a></td>
+<td>Class "DiscreteDistribution"</td></tr>
+<tr><td width="25%"><a href="0distr-package.html">distr</a></td>
+<td>distr - object orientated implementation of distributions </td></tr>
+<tr><td width="25%"><a href="distrARITH.html">distrARITH</a></td>
+<td>Arithmetics on Distributions</td></tr>
+<tr><td width="25%"><a href="Distribution-class.html">Distribution-class</a></td>
+<td>Class "Distribution"</td></tr>
+<tr><td width="25%"><a href="DistrList.html">DistrList</a></td>
+<td>Generating function for DistrList-class</td></tr>
+<tr><td width="25%"><a href="DistrList-class.html">DistrList-class</a></td>
+<td>List of distributions</td></tr>
+<tr><td width="25%"><a href="distrMASK.html">distrMASK</a></td>
+<td>Masking of/by other functions in package "distr"</td></tr>
+<tr><td width="25%"><a href="distroptions.html">distroptions</a></td>
+<td>functions to change the global variables of the package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="distroptions.html">DistrResolution</a></td>
+<td>functions to change the global variables of the package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="DExp-class.html">DoubleExponential</a></td>
+<td>Class "DExp"</td></tr>
+</table>
+
+<h2><a name="E">-- E --</a></h2>
+
+<table width="100%">
+<tr><td width="25%"><a href="EuclideanSpace-class.html">EuclideanSpace</a></td>
+<td>Class "EuclideanSpace" </td></tr>
+<tr><td width="25%"><a href="EuclideanSpace-class.html">EuclideanSpace-class</a></td>
+<td>Class "EuclideanSpace" </td></tr>
+<tr><td width="25%"><a href="Exp-class.html">Exp</a></td>
+<td>Class "Exp"</td></tr>
+<tr><td width="25%"><a href="Math-methods.html">exp,AbscontDistribution-method</a></td>
+<td>Methods for Functions from group &lsquo;Math&rsquo; in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Math-methods.html">exp,DiscreteDistribution-method</a></td>
+<td>Methods for Functions from group &lsquo;Math&rsquo; in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Exp-class.html">Exp-class</a></td>
+<td>Class "Exp"</td></tr>
+<tr><td width="25%"><a href="ExpParameter-class.html">ExpParameter-class</a></td>
+<td>Class "ExpParameter"</td></tr>
+</table>
+
+<h2><a name="F">-- F --</a></h2>
+
+<table width="100%">
+<tr><td width="25%"><a href="Fd-class.html">Fd</a></td>
+<td>Class "Fd"</td></tr>
+<tr><td width="25%"><a href="Fd-class.html">Fd-class</a></td>
+<td>Class "Fd"</td></tr>
+<tr><td width="25%"><a href="FParameter-class.html">FParameter-class</a></td>
+<td>Class "FParameter"</td></tr>
+</table>
+
+<h2><a name="G">-- G --</a></h2>
+
+<table width="100%">
+<tr><td width="25%"><a href="Math-methods.html">gamma,AbscontDistribution-method</a></td>
+<td>Methods for Functions from group &lsquo;Math&rsquo; in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Math-methods.html">gamma,DiscreteDistribution-method</a></td>
+<td>Methods for Functions from group &lsquo;Math&rsquo; in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Math-methods.html">gamma-methods</a></td>
+<td>Methods for Functions from group &lsquo;Math&rsquo; in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Gammad-class.html">Gammad</a></td>
+<td>Class "Gammad"</td></tr>
+<tr><td width="25%"><a href="Gammad-class.html">Gammad-class</a></td>
+<td>Class "Gammad"</td></tr>
+<tr><td width="25%"><a href="GammaParameter-class.html">GammaParameter-class</a></td>
+<td>Class "GammaParameter"</td></tr>
+<tr><td width="25%"><a href="gap-methods.html">gaps</a></td>
+<td>Methods for Functions gaps and setgaps in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="gap-methods.html">gaps,AbscontDistribution-method</a></td>
+<td>Methods for Functions gaps and setgaps in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="gap-methods.html">gaps-methods</a></td>
+<td>Methods for Functions gaps and setgaps in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="gap-methods.html">gaps&lt;-,AbscontDistribution-method</a></td>
+<td>Methods for Functions gaps and setgaps in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="gap-methods.html">gaps&lt;--methods</a></td>
+<td>Methods for Functions gaps and setgaps in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Geom-class.html">Geom</a></td>
+<td>Class "Geom" </td></tr>
+<tr><td width="25%"><a href="Geom-class.html">Geom-class</a></td>
+<td>Class "Geom" </td></tr>
+<tr><td width="25%"><a href="GeomParameter-class.html">GeomParameter-class</a></td>
+<td>Class "GeomParameter"</td></tr>
+<tr><td width="25%"><a href="distroptions.html">getdistrOption</a></td>
+<td>functions to change the global variables of the package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="getLow.html">getLow</a></td>
+<td>getLow, getUp functions of package distr</td></tr>
+<tr><td width="25%"><a href="getLow.html">getLow,AbscontDistribution-method</a></td>
+<td>getLow, getUp functions of package distr</td></tr>
+<tr><td width="25%"><a href="getLow.html">getLow,DiscreteDistribution-method</a></td>
+<td>getLow, getUp functions of package distr</td></tr>
+<tr><td width="25%"><a href="getLow.html">getLow-methods</a></td>
+<td>getLow, getUp functions of package distr</td></tr>
+<tr><td width="25%"><a href="getLow.html">getUp</a></td>
+<td>getLow, getUp functions of package distr</td></tr>
+<tr><td width="25%"><a href="getLow.html">getUp,AbscontDistribution-method</a></td>
+<td>getLow, getUp functions of package distr</td></tr>
+<tr><td width="25%"><a href="getLow.html">getUp,DiscreteDistribution-method</a></td>
+<td>getLow, getUp functions of package distr</td></tr>
+<tr><td width="25%"><a href="getLow.html">getUp-methods</a></td>
+<td>getLow, getUp functions of package distr</td></tr>
+</table>
+
+<h2><a name="H">-- H --</a></h2>
+
+<table width="100%">
+<tr><td width="25%"><a href="Hyper-class.html">Hyper</a></td>
+<td>Class "Hyper" </td></tr>
+<tr><td width="25%"><a href="Hyper-class.html">Hyper-class</a></td>
+<td>Class "Hyper" </td></tr>
+<tr><td width="25%"><a href="HyperParameter-class.html">HyperParameter-class</a></td>
+<td>Class "HyperParameter"</td></tr>
+</table>
+
+<h2><a name="I">-- I --</a></h2>
+
+<table width="100%">
+<tr><td width="25%"><a href="img-methods.html">img</a></td>
+<td>Methods for Function img in Package &lsquo;distr&rsquo;</td></tr>
+<tr><td width="25%"><a href="img-methods.html">img,Distribution-method</a></td>
+<td>Methods for Function img in Package &lsquo;distr&rsquo;</td></tr>
+<tr><td width="25%"><a href="img-methods.html">img-methods</a></td>
+<td>Methods for Function img in Package &lsquo;distr&rsquo;</td></tr>
+<tr><td width="25%"><a href="AbscontDistribution-class.html">initialize,AbscontDistribution-method</a></td>
+<td>Class "AbscontDistribution"</td></tr>
+<tr><td width="25%"><a href="AbscontDistribution-class.html">initialize,AffLinAbscontDistribution-method</a></td>
+<td>Class "AbscontDistribution"</td></tr>
+<tr><td width="25%"><a href="DiscreteDistribution-class.html">initialize,AffLinDiscreteDistribution-method</a></td>
+<td>Class "DiscreteDistribution"</td></tr>
+<tr><td width="25%"><a href="LatticeDistribution-class.html">initialize,AffLinLatticeDistribution-method</a></td>
+<td>Class "LatticeDistribution"</td></tr>
+<tr><td width="25%"><a href="Beta-class.html">initialize,Beta-method</a></td>
+<td>Class "Beta"</td></tr>
+<tr><td width="25%"><a href="BetaParameter-class.html">initialize,BetaParameter-method</a></td>
+<td>Class "BetaParameter"</td></tr>
+<tr><td width="25%"><a href="Binom-class.html">initialize,Binom-method</a></td>
+<td>Class "Binom" </td></tr>
+<tr><td width="25%"><a href="BinomParameter-class.html">initialize,BinomParameter-method</a></td>
+<td>Class "BinomParameter"</td></tr>
+<tr><td width="25%"><a href="Cauchy-class.html">initialize,Cauchy-method</a></td>
+<td>Class "Cauchy"</td></tr>
+<tr><td width="25%"><a href="CauchyParameter-class.html">initialize,CauchyParameter-method</a></td>
+<td>Class "CauchyParameter"</td></tr>
+<tr><td width="25%"><a href="Chisq-class.html">initialize,Chisq-method</a></td>
+<td>Class "Chisq"</td></tr>
+<tr><td width="25%"><a href="ChisqParameter-class.html">initialize,ChisqParameter-method</a></td>
+<td>Class "ChisqParameter"</td></tr>
+<tr><td width="25%"><a href="DExp-class.html">initialize,DExp-method</a></td>
+<td>Class "DExp"</td></tr>
+<tr><td width="25%"><a href="Dirac-class.html">initialize,Dirac-method</a></td>
+<td>Class "Dirac"  </td></tr>
+<tr><td width="25%"><a href="DiracParameter-class.html">initialize,DiracParameter-method</a></td>
+<td>Class "DiracParameter"</td></tr>
+<tr><td width="25%"><a href="DiscreteDistribution-class.html">initialize,DiscreteDistribution-method</a></td>
+<td>Class "DiscreteDistribution"</td></tr>
+<tr><td width="25%"><a href="EuclideanSpace-class.html">initialize,EuclideanSpace-method</a></td>
+<td>Class "EuclideanSpace" </td></tr>
+<tr><td width="25%"><a href="Exp-class.html">initialize,Exp-method</a></td>
+<td>Class "Exp"</td></tr>
+<tr><td width="25%"><a href="ExpParameter-class.html">initialize,ExpParameter-method</a></td>
+<td>Class "ExpParameter"</td></tr>
+<tr><td width="25%"><a href="Fd-class.html">initialize,Fd-method</a></td>
+<td>Class "Fd"</td></tr>
+<tr><td width="25%"><a href="FParameter-class.html">initialize,FParameter-method</a></td>
+<td>Class "FParameter"</td></tr>
+<tr><td width="25%"><a href="Gammad-class.html">initialize,Gammad-method</a></td>
+<td>Class "Gammad"</td></tr>
+<tr><td width="25%"><a href="GammaParameter-class.html">initialize,GammaParameter-method</a></td>
+<td>Class "GammaParameter"</td></tr>
+<tr><td width="25%"><a href="Geom-class.html">initialize,Geom-method</a></td>
+<td>Class "Geom" </td></tr>
+<tr><td width="25%"><a href="GeomParameter-class.html">initialize,GeomParameter-method</a></td>
+<td>Class "GeomParameter"</td></tr>
+<tr><td width="25%"><a href="Hyper-class.html">initialize,Hyper-method</a></td>
+<td>Class "Hyper" </td></tr>
+<tr><td width="25%"><a href="HyperParameter-class.html">initialize,HyperParameter-method</a></td>
+<td>Class "HyperParameter"</td></tr>
+<tr><td width="25%"><a href="LatticeDistribution-class.html">initialize,LatticeDistribution-method</a></td>
+<td>Class "LatticeDistribution"</td></tr>
+<tr><td width="25%"><a href="Lnorm-class.html">initialize,Lnorm-method</a></td>
+<td>Class "Lnorm"</td></tr>
+<tr><td width="25%"><a href="LnormParameter-class.html">initialize,LnormParameter-method</a></td>
+<td>Class "LnormParameter"</td></tr>
+<tr><td width="25%"><a href="Logis-class.html">initialize,Logis-method</a></td>
+<td>Class "Logis"</td></tr>
+<tr><td width="25%"><a href="LogisParameter-class.html">initialize,LogisParameter-method</a></td>
+<td>Class "LogisParameter"</td></tr>
+<tr><td width="25%"><a href="Naturals-class.html">initialize,Naturals-method</a></td>
+<td>Class "Naturals" </td></tr>
+<tr><td width="25%"><a href="Nbinom-class.html">initialize,Nbinom-method</a></td>
+<td>Class "Nbinom" </td></tr>
+<tr><td width="25%"><a href="NbinomParameter-class.html">initialize,NbinomParameter-method</a></td>
+<td>Class "NbinomParameter"</td></tr>
+<tr><td width="25%"><a href="Norm-class.html">initialize,Norm-method</a></td>
+<td>Class "Norm"</td></tr>
+<tr><td width="25%"><a href="NormParameter-class.html">initialize,NormParameter-method</a></td>
+<td>Class "NormParameter"</td></tr>
+<tr><td width="25%"><a href="Pois-class.html">initialize,Pois-method</a></td>
+<td>Class "Pois" </td></tr>
+<tr><td width="25%"><a href="PoisParameter-class.html">initialize,PoisParameter-method</a></td>
+<td>Class "PoisParameter"</td></tr>
+<tr><td width="25%"><a href="Reals-class.html">initialize,Reals-method</a></td>
+<td>Class "Reals" </td></tr>
+<tr><td width="25%"><a href="Td-class.html">initialize,Td-method</a></td>
+<td>Class "Td"</td></tr>
+<tr><td width="25%"><a href="TParameter-class.html">initialize,TParameter-method</a></td>
+<td>Class "TParameter"</td></tr>
+<tr><td width="25%"><a href="Unif-class.html">initialize,Unif-method</a></td>
+<td>Class "Unif"</td></tr>
+<tr><td width="25%"><a href="UnifParameter-class.html">initialize,UnifParameter-method</a></td>
+<td>Class "UnifParameter"</td></tr>
+<tr><td width="25%"><a href="UniNormParameter-class.html">initialize,UniNormParameter-method</a></td>
+<td>Class "UniNormParameter"</td></tr>
+<tr><td width="25%"><a href="UnivariateDistribution-class.html">initialize,UnivariateDistribution-method</a></td>
+<td>Class "UnivariateDistribution"</td></tr>
+<tr><td width="25%"><a href="Weibull-class.html">initialize,Weibull-method</a></td>
+<td>Class "Weibull"</td></tr>
+<tr><td width="25%"><a href="WeibullParameter-class.html">initialize,WeibullParameter-method</a></td>
+<td>Class "WeibullParameter"</td></tr>
+<tr><td width="25%"><a href="versionmanagement.html">isOldVersion</a></td>
+<td>Methods for Version Management in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="versionmanagement.html">isOldVersion,ANY-method</a></td>
+<td>Methods for Version Management in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="versionmanagement.html">isOldVersion-methods</a></td>
+<td>Methods for Version Management in Package &lsquo;distr&rsquo; </td></tr>
+</table>
+
+<h2><a name="K">-- K --</a></h2>
+
+<table width="100%">
+<tr><td width="25%"><a href="k-methods.html">k</a></td>
+<td>Methods for Function k in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="k-methods.html">k,Hyper-method</a></td>
+<td>Methods for Function k in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="k-methods.html">k,HyperParameter-method</a></td>
+<td>Methods for Function k in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="k-methods.html">k-methods</a></td>
+<td>Methods for Function k in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="k-methods.html">k&lt;-,Hyper-method</a></td>
+<td>Methods for Function k in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="k-methods.html">k&lt;-,HyperParameter-method</a></td>
+<td>Methods for Function k in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="k-methods.html">k&lt;--methods</a></td>
+<td>Methods for Function k in Package &lsquo;distr&rsquo; </td></tr>
+</table>
+
+<h2><a name="L">-- L --</a></h2>
+
+<table width="100%">
+<tr><td width="25%"><a href="lambda-methods.html">lambda</a></td>
+<td>Methods for Function lambda  in Package &lsquo;distr&rsquo;</td></tr>
+<tr><td width="25%"><a href="lambda-methods.html">lambda,Pois-method</a></td>
+<td>Methods for Function lambda  in Package &lsquo;distr&rsquo;</td></tr>
+<tr><td width="25%"><a href="lambda-methods.html">lambda,PoisParameter-method</a></td>
+<td>Methods for Function lambda  in Package &lsquo;distr&rsquo;</td></tr>
+<tr><td width="25%"><a href="lambda-methods.html">lambda-methods</a></td>
+<td>Methods for Function lambda  in Package &lsquo;distr&rsquo;</td></tr>
+<tr><td width="25%"><a href="lambda-methods.html">lambda&lt;-,Pois-method</a></td>
+<td>Methods for Function lambda  in Package &lsquo;distr&rsquo;</td></tr>
+<tr><td width="25%"><a href="lambda-methods.html">lambda&lt;-,PoisParameter-method</a></td>
+<td>Methods for Function lambda  in Package &lsquo;distr&rsquo;</td></tr>
+<tr><td width="25%"><a href="lambda-methods.html">lambda&lt;--methods</a></td>
+<td>Methods for Function lambda  in Package &lsquo;distr&rsquo;</td></tr>
+<tr><td width="25%"><a href="DExp-class.html">Laplace</a></td>
+<td>Class "DExp"</td></tr>
+<tr><td width="25%"><a href="Lattice-class.html">Lattice</a></td>
+<td>Class "Lattice" </td></tr>
+<tr><td width="25%"><a href="LatticeDistribution-class.html">lattice</a></td>
+<td>Class "LatticeDistribution"</td></tr>
+<tr><td width="25%"><a href="LatticeDistribution-class.html">lattice,LatticeDistribution-method</a></td>
+<td>Class "LatticeDistribution"</td></tr>
+<tr><td width="25%"><a href="Lattice-class.html">Lattice-class</a></td>
+<td>Class "Lattice" </td></tr>
+<tr><td width="25%"><a href="LatticeDistribution-class.html">lattice-method</a></td>
+<td>Class "LatticeDistribution"</td></tr>
+<tr><td width="25%"><a href="LatticeDistribution-class.html">LatticeDistribution</a></td>
+<td>Class "LatticeDistribution"</td></tr>
+<tr><td width="25%"><a href="LatticeDistribution-class.html">LatticeDistribution-class</a></td>
+<td>Class "LatticeDistribution"</td></tr>
+<tr><td width="25%"><a href="Length-methods.html">Length</a></td>
+<td>Methods for Function Length in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Length-methods.html">Length,Lattice-method</a></td>
+<td>Methods for Function Length in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Length-methods.html">Length,LatticeDistribution-method</a></td>
+<td>Methods for Function Length in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Length-methods.html">Length-methods</a></td>
+<td>Methods for Function Length in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Length-methods.html">Length&lt;-,Lattice-method</a></td>
+<td>Methods for Function Length in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Length-methods.html">Length&lt;-,LatticeDistribution-method</a></td>
+<td>Methods for Function Length in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Length-methods.html">Length&lt;--methods</a></td>
+<td>Methods for Function Length in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Math-methods.html">lgamma,AbscontDistribution-method</a></td>
+<td>Methods for Functions from group &lsquo;Math&rsquo; in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Math-methods.html">lgamma,DiscreteDistribution-method</a></td>
+<td>Methods for Functions from group &lsquo;Math&rsquo; in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Math-methods.html">lgamma-methods</a></td>
+<td>Methods for Functions from group &lsquo;Math&rsquo; in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="liesIn-methods.html">liesIn</a></td>
+<td>Methods for Function liesIn in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="liesIn-methods.html">liesIn,EuclideanSpace,numeric-method</a></td>
+<td>Methods for Function liesIn in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="liesIn-methods.html">liesIn,Naturals,numeric-method</a></td>
+<td>Methods for Function liesIn in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="liesIn-methods.html">liesIn-methods</a></td>
+<td>Methods for Function liesIn in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="liesInSupport.html">liesInSupport</a></td>
+<td>Generic Function for Testing the Support of a Distribution </td></tr>
+<tr><td width="25%"><a href="liesInSupport.html">liesInSupport,AbscontDistribution,matrix-method</a></td>
+<td>Generic Function for Testing the Support of a Distribution </td></tr>
+<tr><td width="25%"><a href="liesInSupport.html">liesInSupport,AbscontDistribution,numeric-method</a></td>
+<td>Generic Function for Testing the Support of a Distribution </td></tr>
+<tr><td width="25%"><a href="liesInSupport.html">liesInSupport,DiscreteDistribution,matrix-method</a></td>
+<td>Generic Function for Testing the Support of a Distribution </td></tr>
+<tr><td width="25%"><a href="liesInSupport.html">liesInSupport,DiscreteDistribution,numeric-method</a></td>
+<td>Generic Function for Testing the Support of a Distribution </td></tr>
+<tr><td width="25%"><a href="liesInSupport.html">liesInSupport-methods</a></td>
+<td>Generic Function for Testing the Support of a Distribution </td></tr>
+<tr><td width="25%"><a href="Lnorm-class.html">Lnorm</a></td>
+<td>Class "Lnorm"</td></tr>
+<tr><td width="25%"><a href="Lnorm-class.html">Lnorm-class</a></td>
+<td>Class "Lnorm"</td></tr>
+<tr><td width="25%"><a href="LnormParameter-class.html">LnormParameter-class</a></td>
+<td>Class "LnormParameter"</td></tr>
+<tr><td width="25%"><a href="location-methods.html">location</a></td>
+<td>Methods for Function location in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="location-methods.html">location,Cauchy-method</a></td>
+<td>Methods for Function location in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="location-methods.html">location,CauchyParameter-method</a></td>
+<td>Methods for Function location in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="location-methods.html">location,Dirac-method</a></td>
+<td>Methods for Function location in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="location-methods.html">location,DiracParameter-method</a></td>
+<td>Methods for Function location in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="location-methods.html">location,Logis-method</a></td>
+<td>Methods for Function location in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="location-methods.html">location,LogisParameter-method</a></td>
+<td>Methods for Function location in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="location-methods.html">location-methods</a></td>
+<td>Methods for Function location in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="location-methods.html">location&lt;-,Cauchy-method</a></td>
+<td>Methods for Function location in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="location-methods.html">location&lt;-,CauchyParameter-method</a></td>
+<td>Methods for Function location in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="location-methods.html">location&lt;-,Dirac-method</a></td>
+<td>Methods for Function location in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="location-methods.html">location&lt;-,DiracParameter-method</a></td>
+<td>Methods for Function location in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="location-methods.html">location&lt;-,Logis-method</a></td>
+<td>Methods for Function location in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="location-methods.html">location&lt;-,LogisParameter-method</a></td>
+<td>Methods for Function location in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="location-methods.html">location&lt;--methods</a></td>
+<td>Methods for Function location in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Math-methods.html">log,AbscontDistribution-method</a></td>
+<td>Methods for Functions from group &lsquo;Math&rsquo; in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Math-methods.html">log,DiscreteDistribution-method</a></td>
+<td>Methods for Functions from group &lsquo;Math&rsquo; in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Math-methods.html">log-methods</a></td>
+<td>Methods for Functions from group &lsquo;Math&rsquo; in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Math-methods.html">log10,AbscontDistribution-method</a></td>
+<td>Methods for Functions from group &lsquo;Math&rsquo; in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Math-methods.html">log10,DiscreteDistribution-method</a></td>
+<td>Methods for Functions from group &lsquo;Math&rsquo; in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Math-methods.html">log10-methods</a></td>
+<td>Methods for Functions from group &lsquo;Math&rsquo; in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Logis-class.html">Logis</a></td>
+<td>Class "Logis"</td></tr>
+<tr><td width="25%"><a href="Logis-class.html">Logis-class</a></td>
+<td>Class "Logis"</td></tr>
+<tr><td width="25%"><a href="LogisParameter-class.html">LogisParameter-class</a></td>
+<td>Class "LogisParameter"</td></tr>
+</table>
+
+<h2><a name="M">-- M --</a></h2>
+
+<table width="100%">
+<tr><td width="25%"><a href="m-methods.html">m</a></td>
+<td>Methods for Function m in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="m-methods.html">m,Hyper-method</a></td>
+<td>Methods for Function m in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="m-methods.html">m,HyperParameter-method</a></td>
+<td>Methods for Function m in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="m-methods.html">m-methods</a></td>
+<td>Methods for Function m in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="m-methods.html">m&lt;-,Hyper-method</a></td>
+<td>Methods for Function m in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="m-methods.html">m&lt;-,HyperParameter-method</a></td>
+<td>Methods for Function m in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="m-methods.html">m&lt;--methods</a></td>
+<td>Methods for Function m in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="distrMASK.html">MASKING</a></td>
+<td>Masking of/by other functions in package "distr"</td></tr>
+<tr><td width="25%"><a href="Math-methods.html">Math,AbscontDistribution-method</a></td>
+<td>Methods for Functions from group &lsquo;Math&rsquo; in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Math-methods.html">Math,DiscreteDistribution-method</a></td>
+<td>Methods for Functions from group &lsquo;Math&rsquo; in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Math-methods.html">Math-methods</a></td>
+<td>Methods for Functions from group &lsquo;Math&rsquo; in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Max-methods.html">Max</a></td>
+<td>Methods for Function Max in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Max-methods.html">Max,Unif-method</a></td>
+<td>Methods for Function Max in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Max-methods.html">Max,UnifParameter-method</a></td>
+<td>Methods for Function Max in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Max-methods.html">Max-methods</a></td>
+<td>Methods for Function Max in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Max-methods.html">Max&lt;-,Unif-method</a></td>
+<td>Methods for Function Max in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Max-methods.html">Max&lt;-,UnifParameter-method</a></td>
+<td>Methods for Function Max in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Max-methods.html">Max&lt;--methods</a></td>
+<td>Methods for Function Max in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="mean-methods.html">mean</a></td>
+<td>Methods for Function mean in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="mean-methods.html">mean,Norm-method</a></td>
+<td>Methods for Function mean in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="mean-methods.html">mean,NormParameter-method</a></td>
+<td>Methods for Function mean in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="mean-methods.html">mean-methods</a></td>
+<td>Methods for Function mean in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="mean-methods.html">mean&lt;-,Norm-method</a></td>
+<td>Methods for Function mean in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="mean-methods.html">mean&lt;-,NormParameter-method</a></td>
+<td>Methods for Function mean in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="mean-methods.html">mean&lt;--methods</a></td>
+<td>Methods for Function mean in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="meanlog-methods.html">meanlog</a></td>
+<td>Methods for Function meanlog in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="meanlog-methods.html">meanlog,Lnorm-method</a></td>
+<td>Methods for Function meanlog in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="meanlog-methods.html">meanlog,LnormParameter-method</a></td>
+<td>Methods for Function meanlog in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="meanlog-methods.html">meanlog-methods</a></td>
+<td>Methods for Function meanlog in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="meanlog-methods.html">meanlog&lt;-,Lnorm-method</a></td>
+<td>Methods for Function meanlog in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="meanlog-methods.html">meanlog&lt;-,LnormParameter-method</a></td>
+<td>Methods for Function meanlog in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="meanlog-methods.html">meanlog&lt;--methods</a></td>
+<td>Methods for Function meanlog in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Min-methods.html">Min</a></td>
+<td>Methods for Function Min in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Min-methods.html">Min,Unif-method</a></td>
+<td>Methods for Function Min in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Min-methods.html">Min,UnifParameter-method</a></td>
+<td>Methods for Function Min in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Min-methods.html">Min-methods</a></td>
+<td>Methods for Function Min in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Min-methods.html">Min&lt;-,Unif-method</a></td>
+<td>Methods for Function Min in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Min-methods.html">Min&lt;-,UnifParameter-method</a></td>
+<td>Methods for Function Min in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Min-methods.html">Min&lt;--methods</a></td>
+<td>Methods for Function Min in Package &lsquo;distr&rsquo; </td></tr>
+</table>
+
+<h2><a name="N">-- N --</a></h2>
+
+<table width="100%">
+<tr><td width="25%"><a href="n-methods.html">n</a></td>
+<td>Methods for Function n in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="n-methods.html">n,Hyper-method</a></td>
+<td>Methods for Function n in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="n-methods.html">n,HyperParameter-method</a></td>
+<td>Methods for Function n in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="n-methods.html">n-methods</a></td>
+<td>Methods for Function n in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="n-methods.html">n&lt;-,Hyper-method</a></td>
+<td>Methods for Function n in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="n-methods.html">n&lt;-,HyperParameter-method</a></td>
+<td>Methods for Function n in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="n-methods.html">n&lt;--methods</a></td>
+<td>Methods for Function n in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="name-methods.html">name</a></td>
+<td>Methods for Function name in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="name-methods.html">name,Parameter-method</a></td>
+<td>Methods for Function name in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="name-methods.html">name,rSpace-method</a></td>
+<td>Methods for Function name in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="name-methods.html">name-methods</a></td>
+<td>Methods for Function name in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="name-methods.html">name&lt;-,Parameter-method</a></td>
+<td>Methods for Function name in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="name-methods.html">name&lt;-,rSpace-method</a></td>
+<td>Methods for Function name in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="name-methods.html">name&lt;--methods</a></td>
+<td>Methods for Function name in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Naturals-class.html">Naturals</a></td>
+<td>Class "Naturals" </td></tr>
+<tr><td width="25%"><a href="Naturals-class.html">Naturals-class</a></td>
+<td>Class "Naturals" </td></tr>
+<tr><td width="25%"><a href="Nbinom-class.html">Nbinom</a></td>
+<td>Class "Nbinom" </td></tr>
+<tr><td width="25%"><a href="Nbinom-class.html">Nbinom-class</a></td>
+<td>Class "Nbinom" </td></tr>
+<tr><td width="25%"><a href="NbinomParameter-class.html">NbinomParameter-class</a></td>
+<td>Class "NbinomParameter"</td></tr>
+<tr><td width="25%"><a href="ncp-methods.html">ncp</a></td>
+<td>Methods for Function ncp in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="ncp-methods.html">ncp,Beta-method</a></td>
+<td>Methods for Function ncp in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="ncp-methods.html">ncp,BetaParameter-method</a></td>
+<td>Methods for Function ncp in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="ncp-methods.html">ncp,Chisq-method</a></td>
+<td>Methods for Function ncp in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="ncp-methods.html">ncp,ChisqParameter-method</a></td>
+<td>Methods for Function ncp in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="ncp-methods.html">ncp,Fd-method</a></td>
+<td>Methods for Function ncp in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="ncp-methods.html">ncp,FParameter-method</a></td>
+<td>Methods for Function ncp in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="ncp-methods.html">ncp,Td-method</a></td>
+<td>Methods for Function ncp in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="ncp-methods.html">ncp,TParameter-method</a></td>
+<td>Methods for Function ncp in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="ncp-methods.html">ncp-methods</a></td>
+<td>Methods for Function ncp in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="ncp-methods.html">ncp&lt;-,Beta-method</a></td>
+<td>Methods for Function ncp in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="ncp-methods.html">ncp&lt;-,BetaParameter-method</a></td>
+<td>Methods for Function ncp in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="ncp-methods.html">ncp&lt;-,Chisq-method</a></td>
+<td>Methods for Function ncp in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="ncp-methods.html">ncp&lt;-,ChisqParameter-method</a></td>
+<td>Methods for Function ncp in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="ncp-methods.html">ncp&lt;-,Fd-method</a></td>
+<td>Methods for Function ncp in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="ncp-methods.html">ncp&lt;-,FParameter-method</a></td>
+<td>Methods for Function ncp in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="ncp-methods.html">ncp&lt;-,Td-method</a></td>
+<td>Methods for Function ncp in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="ncp-methods.html">ncp&lt;-,TParameter-method</a></td>
+<td>Methods for Function ncp in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="ncp-methods.html">ncp&lt;--methods</a></td>
+<td>Methods for Function ncp in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Norm-class.html">Norm</a></td>
+<td>Class "Norm"</td></tr>
+<tr><td width="25%"><a href="Norm-class.html">Norm-class</a></td>
+<td>Class "Norm"</td></tr>
+<tr><td width="25%"><a href="NormParameter-class.html">NormParameter-class</a></td>
+<td>Class "NormParameter"</td></tr>
+</table>
+
+<h2><a name="O">-- O --</a></h2>
+
+<table width="100%">
+<tr><td width="25%"><a href="operators-methods.html">operators</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="operators-methods.html">operators-methods</a></td>
+<td>Methods for operators +,-,*,/ in Package distr</td></tr>
+<tr><td width="25%"><a href="OptionalParameter-class.html">OptionalMatrix-class</a></td>
+<td>Classes "OptionalParameter", "OptionalMatrix" </td></tr>
+<tr><td width="25%"><a href="OptionalParameter-class.html">OptionalParameter-class</a></td>
+<td>Classes "OptionalParameter", "OptionalMatrix" </td></tr>
+</table>
+
+<h2><a name="P">-- P --</a></h2>
+
+<table width="100%">
+<tr><td width="25%"><a href="p-methods.html">p</a></td>
+<td>Methods for Function p in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="p-methods.html">p,Distribution-method</a></td>
+<td>Methods for Function p in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="p-methods.html">p-methods</a></td>
+<td>Methods for Function p in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="p.l-methods.html">p.l</a></td>
+<td>Methods for Function p.l in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="p.l-methods.html">p.l,DiscreteDistribution-method</a></td>
+<td>Methods for Function p.l in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="p.l-methods.html">p.l-methods</a></td>
+<td>Methods for Function p.l in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="param-methods.html">param</a></td>
+<td>Methods for Function param in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="param-methods.html">param,Distribution-method</a></td>
+<td>Methods for Function param in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="param-methods.html">param-methods</a></td>
+<td>Methods for Function param in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Parameter-class.html">Parameter-class</a></td>
+<td>Class "Parameter"</td></tr>
+<tr><td width="25%"><a href="pivot-methods.html">pivot</a></td>
+<td>Methods for Function pivot in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="pivot-methods.html">pivot,Lattice-method</a></td>
+<td>Methods for Function pivot in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="pivot-methods.html">pivot,LatticeDistribution-method</a></td>
+<td>Methods for Function pivot in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="pivot-methods.html">pivot-methods</a></td>
+<td>Methods for Function pivot in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="pivot-methods.html">pivot&lt;-,Lattice-method</a></td>
+<td>Methods for Function pivot in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="pivot-methods.html">pivot&lt;-,LatticeDistribution-method</a></td>
+<td>Methods for Function pivot in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="pivot-methods.html">pivot&lt;--methods</a></td>
+<td>Methods for Function pivot in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="plot-methods.html">plot</a></td>
+<td>Methods for Function plot in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="plot-methods.html">plot,AbscontDistribution-method</a></td>
+<td>Methods for Function plot in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="plot-methods.html">plot,DiscreteDistribution-method</a></td>
+<td>Methods for Function plot in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="plot-methods.html">plot,DistrList-method</a></td>
+<td>Methods for Function plot in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="plot-methods.html">plot-methods</a></td>
+<td>Methods for Function plot in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Pois-class.html">Pois</a></td>
+<td>Class "Pois" </td></tr>
+<tr><td width="25%"><a href="Pois-class.html">Pois-class</a></td>
+<td>Class "Pois" </td></tr>
+<tr><td width="25%"><a href="PoisParameter-class.html">PoisParameter-class</a></td>
+<td>Class "PoisParameter"</td></tr>
+<tr><td width="25%"><a href="print-methods.html">print,UnivariateDistribution-method</a></td>
+<td>Methods for Functions print/show in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="print-methods.html">print-methods</a></td>
+<td>Methods for Functions print/show in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="prob-methods.html">prob</a></td>
+<td>Methods for Function prob in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="prob-methods.html">prob,Binom-method</a></td>
+<td>Methods for Function prob in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="prob-methods.html">prob,BinomParameter-method</a></td>
+<td>Methods for Function prob in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="prob-methods.html">prob,Geom-method</a></td>
+<td>Methods for Function prob in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="prob-methods.html">prob,GeomParameter-method</a></td>
+<td>Methods for Function prob in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="prob-methods.html">prob,Nbinom-method</a></td>
+<td>Methods for Function prob in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="prob-methods.html">prob,NbinomParameter-method</a></td>
+<td>Methods for Function prob in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="prob-methods.html">prob-methods</a></td>
+<td>Methods for Function prob in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="prob-methods.html">prob&lt;-,Binom-method</a></td>
+<td>Methods for Function prob in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="prob-methods.html">prob&lt;-,BinomParameter-method</a></td>
+<td>Methods for Function prob in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="prob-methods.html">prob&lt;-,Geom-method</a></td>
+<td>Methods for Function prob in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="prob-methods.html">prob&lt;-,GeomParameter-method</a></td>
+<td>Methods for Function prob in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="prob-methods.html">prob&lt;-,Nbinom-method</a></td>
+<td>Methods for Function prob in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="prob-methods.html">prob&lt;-,NbinomParameter-method</a></td>
+<td>Methods for Function prob in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="prob-methods.html">prob&lt;--methods</a></td>
+<td>Methods for Function prob in Package &lsquo;distr&rsquo; </td></tr>
+</table>
+
+<h2><a name="Q">-- Q --</a></h2>
+
+<table width="100%">
+<tr><td width="25%"><a href="q-methods.html">q</a></td>
+<td>Methods for Function q in Package &lsquo;distr&rsquo;</td></tr>
+<tr><td width="25%"><a href="q-methods.html">q,Distribution-method</a></td>
+<td>Methods for Function q in Package &lsquo;distr&rsquo;</td></tr>
+<tr><td width="25%"><a href="q-methods.html">q-methods</a></td>
+<td>Methods for Function q in Package &lsquo;distr&rsquo;</td></tr>
+<tr><td width="25%"><a href="q.r-methods.html">q.r</a></td>
+<td>Methods for Function q.r in Package &lsquo;distr&rsquo;</td></tr>
+<tr><td width="25%"><a href="q.r-methods.html">q.r,DiscreteDistribution-method</a></td>
+<td>Methods for Function q.r in Package &lsquo;distr&rsquo;</td></tr>
+<tr><td width="25%"><a href="q.r-methods.html">q.r-methods</a></td>
+<td>Methods for Function q.r in Package &lsquo;distr&rsquo;</td></tr>
+</table>
+
+<h2><a name="R">-- R --</a></h2>
+
+<table width="100%">
+<tr><td width="25%"><a href="r-methods.html">r</a></td>
+<td>Methods for Function r in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="r-methods.html">r,Distribution-method</a></td>
+<td>Methods for Function r in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="r-methods.html">r-methods</a></td>
+<td>Methods for Function r in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="rate-methods.html">rate</a></td>
+<td>Methods for Function rate in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="rate-methods.html">rate,DExp-method</a></td>
+<td>Methods for Function rate in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="rate-methods.html">rate,Exp-method</a></td>
+<td>Methods for Function rate in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="rate-methods.html">rate,ExpParameter-method</a></td>
+<td>Methods for Function rate in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="rate-methods.html">rate-methods</a></td>
+<td>Methods for Function rate in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="rate-methods.html">rate&lt;-,DExp-method</a></td>
+<td>Methods for Function rate in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="rate-methods.html">rate&lt;-,Exp-method</a></td>
+<td>Methods for Function rate in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="rate-methods.html">rate&lt;-,ExpParameter-method</a></td>
+<td>Methods for Function rate in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="rate-methods.html">rate&lt;--methods</a></td>
+<td>Methods for Function rate in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Reals-class.html">Reals</a></td>
+<td>Class "Reals" </td></tr>
+<tr><td width="25%"><a href="Reals-class.html">Reals-class</a></td>
+<td>Class "Reals" </td></tr>
+<tr><td width="25%"><a href="rSpace-class.html">rSpace-class</a></td>
+<td>Class "rSpace" </td></tr>
+<tr><td width="25%"><a href="RtoDPQ.html">RtoDPQ</a></td>
+<td>Default procedure to fill slots d,p,q given r for a.c. distributions</td></tr>
+<tr><td width="25%"><a href="RtoDPQ.d.html">RtoDPQ.d</a></td>
+<td>Default procedure to fill slots d,p,q given r for discrete distributions</td></tr>
+<tr><td width="25%"><a href="distroptions.html">RtoDPQ.e</a></td>
+<td>functions to change the global variables of the package &lsquo;distr&rsquo; </td></tr>
+</table>
+
+<h2><a name="S">-- S --</a></h2>
+
+<table width="100%">
+<tr><td width="25%"><a href="scale-methods.html">scale</a></td>
+<td>Methods for Function scale in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="scale-methods.html">scale,Cauchy-method</a></td>
+<td>Methods for Function scale in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="scale-methods.html">scale,CauchyParameter-method</a></td>
+<td>Methods for Function scale in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="scale-methods.html">scale,Chisq-method</a></td>
+<td>Methods for Function scale in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="scale-methods.html">scale,Gammad-method</a></td>
+<td>Methods for Function scale in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="scale-methods.html">scale,GammaParameter-method</a></td>
+<td>Methods for Function scale in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="scale-methods.html">scale,Logis-method</a></td>
+<td>Methods for Function scale in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="scale-methods.html">scale,LogisParameter-method</a></td>
+<td>Methods for Function scale in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="scale-methods.html">scale,Weibull-method</a></td>
+<td>Methods for Function scale in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="scale-methods.html">scale,WeibullParameter-method</a></td>
+<td>Methods for Function scale in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="scale-methods.html">scale-methods</a></td>
+<td>Methods for Function scale in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="scale-methods.html">scale&lt;-,Cauchy-method</a></td>
+<td>Methods for Function scale in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="scale-methods.html">scale&lt;-,CauchyParameter-method</a></td>
+<td>Methods for Function scale in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="scale-methods.html">scale&lt;-,Gammad-method</a></td>
+<td>Methods for Function scale in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="scale-methods.html">scale&lt;-,GammaParameter-method</a></td>
+<td>Methods for Function scale in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="scale-methods.html">scale&lt;-,Logis-method</a></td>
+<td>Methods for Function scale in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="scale-methods.html">scale&lt;-,LogisParameter-method</a></td>
+<td>Methods for Function scale in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="scale-methods.html">scale&lt;-,Weibull-method</a></td>
+<td>Methods for Function scale in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="scale-methods.html">scale&lt;-,WeibullParameter-method</a></td>
+<td>Methods for Function scale in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="scale-methods.html">scale&lt;--methods</a></td>
+<td>Methods for Function scale in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="sd-methods.html">sd</a></td>
+<td>Methods for Function sd in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="sd-methods.html">sd,Norm-method</a></td>
+<td>Methods for Function sd in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="sd-methods.html">sd,NormParameter-method</a></td>
+<td>Methods for Function sd in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="sd-methods.html">sd-methods</a></td>
+<td>Methods for Function sd in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="sd-methods.html">sd&lt;-,Norm-method</a></td>
+<td>Methods for Function sd in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="sd-methods.html">sd&lt;-,NormParameter-method</a></td>
+<td>Methods for Function sd in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="sd-methods.html">sd&lt;--methods</a></td>
+<td>Methods for Function sd in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="sdlog-methods.html">sdlog</a></td>
+<td>Methods for Function sdlog in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="sdlog-methods.html">sdlog,Lnorm-method</a></td>
+<td>Methods for Function sdlog in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="sdlog-methods.html">sdlog,LnormParameter-method</a></td>
+<td>Methods for Function sdlog in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="sdlog-methods.html">sdlog-methods</a></td>
+<td>Methods for Function sdlog in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="sdlog-methods.html">sdlog&lt;-,Lnorm-method</a></td>
+<td>Methods for Function sdlog in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="sdlog-methods.html">sdlog&lt;-,LnormParameter-method</a></td>
+<td>Methods for Function sdlog in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="sdlog-methods.html">sdlog&lt;--methods</a></td>
+<td>Methods for Function sdlog in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="gap-methods.html">setgaps</a></td>
+<td>Methods for Functions gaps and setgaps in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="gap-methods.html">setgaps,AbscontDistribution-method</a></td>
+<td>Methods for Functions gaps and setgaps in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="gap-methods.html">setgaps-methods</a></td>
+<td>Methods for Functions gaps and setgaps in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape-methods.html">shape</a></td>
+<td>Methods for Function shape in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape-methods.html">shape,Chisq-method</a></td>
+<td>Methods for Function shape in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape-methods.html">shape,Exp-method</a></td>
+<td>Methods for Function shape in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape-methods.html">shape,Gammad-method</a></td>
+<td>Methods for Function shape in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape-methods.html">shape,GammaParameter-method</a></td>
+<td>Methods for Function shape in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape-methods.html">shape,Weibull-method</a></td>
+<td>Methods for Function shape in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape-methods.html">shape,WeibullParameter-method</a></td>
+<td>Methods for Function shape in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape-methods.html">shape-methods</a></td>
+<td>Methods for Function shape in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape1-methods.html">shape1</a></td>
+<td>Methods for Function shape1 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape1-methods.html">shape1,Beta-method</a></td>
+<td>Methods for Function shape1 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape1-methods.html">shape1,BetaParameter-method</a></td>
+<td>Methods for Function shape1 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape1-methods.html">shape1-methods</a></td>
+<td>Methods for Function shape1 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape1-methods.html">shape1&lt;-,Beta-method</a></td>
+<td>Methods for Function shape1 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape1-methods.html">shape1&lt;-,BetaParameter-method</a></td>
+<td>Methods for Function shape1 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape1-methods.html">shape1&lt;--methods</a></td>
+<td>Methods for Function shape1 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape2-methods.html">shape2</a></td>
+<td>Methods for Function shape2 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape2-methods.html">shape2,Beta-method</a></td>
+<td>Methods for Function shape2 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape2-methods.html">shape2,BetaParameter-method</a></td>
+<td>Methods for Function shape2 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape2-methods.html">shape2-methods</a></td>
+<td>Methods for Function shape2 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape2-methods.html">shape2&lt;-,Beta-method</a></td>
+<td>Methods for Function shape2 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape2-methods.html">shape2&lt;-,BetaParameter-method</a></td>
+<td>Methods for Function shape2 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape2-methods.html">shape2&lt;--methods</a></td>
+<td>Methods for Function shape2 in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape-methods.html">shape&lt;-,Gammad-method</a></td>
+<td>Methods for Function shape in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape-methods.html">shape&lt;-,GammaParameter-method</a></td>
+<td>Methods for Function shape in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape-methods.html">shape&lt;-,Weibull-method</a></td>
+<td>Methods for Function shape in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape-methods.html">shape&lt;-,WeibullParameter-method</a></td>
+<td>Methods for Function shape in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="shape-methods.html">shape&lt;--methods</a></td>
+<td>Methods for Function shape in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="DistrList-class.html">show,DistrList-method</a></td>
+<td>List of distributions</td></tr>
+<tr><td width="25%"><a href="print-methods.html">show,UnivariateDistribution-method</a></td>
+<td>Methods for Functions print/show in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="print-methods.html">show-methods</a></td>
+<td>Methods for Functions print/show in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="simplifyr-methods.html">simplifyr</a></td>
+<td>Methods for Function simplifyr in Package &lsquo;distr&rsquo;</td></tr>
+<tr><td width="25%"><a href="simplifyr-methods.html">simplifyr,UnivariateDistribution-method</a></td>
+<td>Methods for Function simplifyr in Package &lsquo;distr&rsquo;</td></tr>
+<tr><td width="25%"><a href="simplifyr-methods.html">simplifyr-methods</a></td>
+<td>Methods for Function simplifyr in Package &lsquo;distr&rsquo;</td></tr>
+<tr><td width="25%"><a href="size-methods.html">size</a></td>
+<td>Methods for Function size in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="size-methods.html">size,Binom-method</a></td>
+<td>Methods for Function size in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="size-methods.html">size,BinomParameter-method</a></td>
+<td>Methods for Function size in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="size-methods.html">size,Geom-method</a></td>
+<td>Methods for Function size in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="size-methods.html">size,Nbinom-method</a></td>
+<td>Methods for Function size in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="size-methods.html">size,NbinomParameter-method</a></td>
+<td>Methods for Function size in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="size-methods.html">size-methods</a></td>
+<td>Methods for Function size in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="size-methods.html">size&lt;-,Binom-method</a></td>
+<td>Methods for Function size in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="size-methods.html">size&lt;-,BinomParameter-method</a></td>
+<td>Methods for Function size in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="size-methods.html">size&lt;-,Geom-method</a></td>
+<td>Methods for Function size in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="size-methods.html">size&lt;-,Nbinom-method</a></td>
+<td>Methods for Function size in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="size-methods.html">size&lt;-,NbinomParameter-method</a></td>
+<td>Methods for Function size in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="size-methods.html">size&lt;--methods</a></td>
+<td>Methods for Function size in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="standardMethods.html">standardMethods</a></td>
+<td>Utility to automatically generate accessor and replacement functions</td></tr>
+<tr><td width="25%"><a href="support-methods.html">support</a></td>
+<td>Methods for Function support in Package &lsquo;distr&rsquo;</td></tr>
+<tr><td width="25%"><a href="support-methods.html">support,DiscreteDistribution-method</a></td>
+<td>Methods for Function support in Package &lsquo;distr&rsquo;</td></tr>
+<tr><td width="25%"><a href="support-methods.html">support-methods</a></td>
+<td>Methods for Function support in Package &lsquo;distr&rsquo;</td></tr>
+</table>
+
+<h2><a name="T">-- T --</a></h2>
+
+<table width="100%">
+<tr><td width="25%"><a href="Td-class.html">Td</a></td>
+<td>Class "Td"</td></tr>
+<tr><td width="25%"><a href="Td-class.html">Td-class</a></td>
+<td>Class "Td"</td></tr>
+<tr><td width="25%"><a href="TParameter-class.html">TParameter-class</a></td>
+<td>Class "TParameter"</td></tr>
+<tr><td width="25%"><a href="distroptions.html">TruncQuantile</a></td>
+<td>functions to change the global variables of the package &lsquo;distr&rsquo; </td></tr>
+</table>
+
+<h2><a name="U">-- U --</a></h2>
+
+<table width="100%">
+<tr><td width="25%"><a href="Unif-class.html">Unif</a></td>
+<td>Class "Unif"</td></tr>
+<tr><td width="25%"><a href="Unif-class.html">Unif-class</a></td>
+<td>Class "Unif"</td></tr>
+<tr><td width="25%"><a href="UnifParameter-class.html">UnifParameter-class</a></td>
+<td>Class "UnifParameter"</td></tr>
+<tr><td width="25%"><a href="UniNormParameter-class.html">UniNormParameter-class</a></td>
+<td>Class "UniNormParameter"</td></tr>
+<tr><td width="25%"><a href="UnivarDistrList.html">UnivarDistrList</a></td>
+<td>Generating function for UnivarDistrList-class</td></tr>
+<tr><td width="25%"><a href="UnivarDistrList-class.html">UnivarDistrList-class</a></td>
+<td>List of univariate distributions</td></tr>
+<tr><td width="25%"><a href="UnivariateDistribution-class.html">UnivariateDistribution-class</a></td>
+<td>Class "UnivariateDistribution"</td></tr>
+</table>
+
+<h2><a name="W">-- W --</a></h2>
+
+<table width="100%">
+<tr><td width="25%"><a href="distroptions.html">WarningArith</a></td>
+<td>functions to change the global variables of the package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="distroptions.html">WarningSim</a></td>
+<td>functions to change the global variables of the package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="Weibull-class.html">Weibull</a></td>
+<td>Class "Weibull"</td></tr>
+<tr><td width="25%"><a href="Weibull-class.html">Weibull-class</a></td>
+<td>Class "Weibull"</td></tr>
+<tr><td width="25%"><a href="WeibullParameter-class.html">WeibullParameter-class</a></td>
+<td>Class "WeibullParameter"</td></tr>
+<tr><td width="25%"><a href="width-methods.html">width</a></td>
+<td>Methods for Function width in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="width-methods.html">width,Lattice-method</a></td>
+<td>Methods for Function width in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="width-methods.html">width,LatticeDistribution-method</a></td>
+<td>Methods for Function width in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="width-methods.html">width-methods</a></td>
+<td>Methods for Function width in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="width-methods.html">width&lt;-,Lattice-method</a></td>
+<td>Methods for Function width in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="width-methods.html">width&lt;-,LatticeDistribution-method</a></td>
+<td>Methods for Function width in Package &lsquo;distr&rsquo; </td></tr>
+<tr><td width="25%"><a href="width-methods.html">width&lt;--methods</a></td>
+<td>Methods for Function width in Package &lsquo;distr&rsquo; </td></tr>
+</table>
+</body></html>

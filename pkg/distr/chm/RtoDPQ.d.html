@@ -1,0 +1,126 @@
+<html><head><title>Default procedure to fill slots d,p,q given r for discrete distributions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>RtoDPQ.d(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   RtoDPQ.d">
+<param name="keyword" value=" Default procedure to fill slots dpq given r for discrete distributions">
+</object>
+
+
+<h2>Default procedure to fill slots dpq given r for discrete distributions</h2>
+
+
+<h3>Description</h3>
+
+<p>
+function to do get empirical density, cumulative distribution and quantile function from random numbers
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+RtoDPQ.d(r, e = getdistrOption("RtoDPQ.e"))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>r</code></td>
+<td>
+the random number generator </td></tr>
+<tr valign="top"><td><code>e</code></td>
+<td>
+<i>10^e</i> numbers are generated, a higher number leads to a better result. </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<code>RtoDPQ.d</code> generates <i>10^e</i> random numbers, by default <i>e =</i>
+<code>RtoDPQ.e</code> which are used to produce a density, cdf and
+quantile function.
+Of course, the results are usually not exact as they rely on random numbers.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+RtoDPQ returns a list of functions.
+</p>
+<table summary="R argblock">
+<tr valign="top"><td><code>dfun </code></td>
+<td>
+density </td></tr>
+<tr valign="top"><td><code>pfun </code></td>
+<td>
+cumulative distribution function </td></tr>
+<tr valign="top"><td><code>qfun </code></td>
+<td>
+quantile function </td></tr>
+</table>
+
+<h3>Note</h3>
+
+<p>
+Use RtoDPQ for absolutely continuous and RtoDPQ.d for discrete
+distributions.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Thomas Stabla <a href="mailto:statho3@web.de">statho3@web.de</a>,<br> 
+Florian Camphausen <a href="mailto:fcampi@gmx.de">fcampi@gmx.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@uni-bayreuth.de">Peter.Ruckdeschel@uni-bayreuth.de</a>,<br>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="UnivariateDistribution-class.html">UnivariateDistribution-class</a></code>, 
+<code><a onclick="findlink('stats', 'density.html')" style="text-decoration: underline; color: blue; cursor: hand">density</a></code>, 
+<code><a onclick="findlink('stats', 'approxfun.html')" style="text-decoration: underline; color: blue; cursor: hand">approxfun</a></code>, 
+<code><a onclick="findlink('stats', 'ecdf.html')" style="text-decoration: underline; color: blue; cursor: hand">ecdf</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+rn2 &lt;- function(n){rnorm(n)^2}
+x &lt;- RtoDPQ(r = rn2, e = 4, n = 512)
+# returns density, cumulative distribution and quantile function of
+# squared standard  normal distribution
+
+x$dfun(4)
+RtoDPQ(r = rn2, e = 5, n = 1024) # for a better result
+
+rp2 &lt;- function(n){rpois(n, lambda = 1)^2}
+x &lt;- RtoDPQ.d(r = rp2, e = 5)
+# returns density, cumulative distribution and quantile function of
+# squared Poisson distribution with parameter lambda=1
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>distr</em> version 1.9 <a href="00Index.html">Index]</a></div>
+
+</body></html>
