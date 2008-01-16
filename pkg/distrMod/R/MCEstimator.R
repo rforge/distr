@@ -1,0 +1,35 @@
+## Determine estimator by minimizing a given criterion
+MCEstimator <- function(x, ParamFamily, criterion, interval, par, ...){
+    if(!is.numeric(x))
+      stop(gettext("'x' has to be a numeric vector"))
+    if(!is(ParamFamily, "ParamFamily"))
+      stop(gettext("'ParamFamily' has to be of class 'ParamFamily'"))
+    if(!is.function(criterion))
+      stop(gettext("'criterion' has to be a function"))
+
+    fun <- function(theta, Data, ParamFamily, criterion, ...){
+        criterion(Data, modifyParam(ParamFamily)(theta), ...)
+    }
+
+    if(dimension(param(ParamFamily)) == 1){
+        res <- optimize(f = fun, interval = interval, Data = x, 
+                      ParamFamily = ParamFamily, criterion = criterion, ...)
+        theta <- res$minimum
+        names(theta) <- names(main(ParamFamily))
+        crit <- res$objectiv
+    }else{
+        if(missing(par)) par <- main(ParamFamily)
+        res <- optim(par = par, fn = fun, Data = x, ParamFamily = ParamFamily, 
+                      criterion = criterion, ...)
+        theta <- res$par
+        names(theta) <- names(main(ParamFamily))
+        crit <- res$value
+    }
+
+    structure(list("estimate" = theta, "criterion" = crit), class = "MCEstimator")
+}
+
+## print method for objects of class MCEstimator
+print.MCEstimator <- function(x, digits = getOption("digits"), ...){
+  print(x$estimate)
+}
