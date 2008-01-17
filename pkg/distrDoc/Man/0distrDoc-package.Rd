@@ -13,7 +13,7 @@ packages \pkg{distr}, \pkg{distrEx}, \pkg{distrSim}, \pkg{distrTEst}.
 \tabular{ll}{
 Package: \tab distrDoc\cr
 Version: \tab 2.0 \cr
-Date: \tab 2008-01-15 \cr
+Date: \tab 2008-01-17 \cr
 Depends: \tab R(>= 2.2.0), tools, distr(>= 1.8.0), startupmsg\cr
 Suggests: \tab distrEx(>= 0.4-4), distrSim(>= 1.8.0), distrTEst(>= 1.8.0), Biobase\cr
 SaveImage: \tab no\cr

@@ -58,7 +58,7 @@ of R-Packages&nbsp;<span style="color: rgb(51, 51, 255);"></span></big>
 </div>
 <hr style="width: 100%; height: 2px;">
 <div style="text-align: justify;"> Version: 2.0<br>
-Release Date: 2008-01-15 <br>
+Release Date: 2008-01-17 <br>
 Authors: <a
  href="mailto:peter.ruckdeschel@uni-bayreuth.de?subject=%5Bdistr%5D">Peter
 Ruckdeschel</a>, <a
@@ -141,7 +141,7 @@ should be interesting.<br>
 maintained by <a
  href="mailto:peter.ruckdeschel@uni-bayreuth.de?subject=distr-package">Peter
 Ruckdeschel</a>
-and last updated on 2008-01-17.
+and last updated on 2008-01-17.<br>
 </div>
 
 <p> The <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. </p>

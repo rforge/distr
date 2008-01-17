@@ -21,7 +21,7 @@ as well as a Tcl/Tk based demo for\code{illustrateCLT}
 \tabular{ll}{
 Package: \tab distrTeach\cr
 Version: \tab 2.0 \cr
-Date: \tab 2008-01-15 \cr
+Date: \tab 2008-01-17 \cr
 Depends: \tab R(>= 2.2.0), methods, distr(>= 1.8), evd, startupmsg\cr
 Suggests: \tab tcltk\cr
 SaveImage: \tab no\cr

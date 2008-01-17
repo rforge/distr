@@ -14,7 +14,7 @@ as introduced there to describe the distributions under which simulations are pe
 \tabular{ll}{
 Package: \tab distrSim\cr
 Version: \tab 2.0 \cr
-Date: \tab 2008-01-15 \cr
+Date: \tab 2008-01-17 \cr
 Depends: \tab R(>= 2.2.0), methods, graphics, setRNG(>= 2006.2-1), startupmsg, 
 distr(>=1.8)\cr
 Suggests: \tab distrEx(>= 0.4-4)\cr

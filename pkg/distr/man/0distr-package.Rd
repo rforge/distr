@@ -44,7 +44,7 @@ corresponding image distributions.
 \tabular{ll}{
 Package: \tab distr\cr
 Version: \tab 2.0 \cr
-Date: \tab 2008-01-15 \cr
+Date: \tab 2008-01-17 \cr
 Depends: \tab R(>= 2.2.0), methods, graphics, startupmsg\cr
 Imports: \tab stats\cr
 SaveImage: \tab no\cr
