@@ -45,7 +45,8 @@ provided Utilities: (all to be called in devel dir)
 
 #  SYNTAX: rebuild [R-ver] [Rver2] [+]
 #   * performs pmake <pkgname> [R-ver] [Rver2] [+]  / pmakeDoc [R-ver] [Rver2] [+]
-#     to packages startupmsg, distr, distrEx, distrSim, distrTEst, distrDoc (in this order)
+#     to packages startupmsg, distr, distrEx, distrTeach, distrMod,
+#                 distrSim, distrTEst, distrDoc (in this order)
 #
 #   args: as pmake 
 

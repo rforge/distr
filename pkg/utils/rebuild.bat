@@ -24,6 +24,7 @@ call pmake startupmsg >pmake-startupmsg.log
 call pmake distr %1 %2 %3 >pmake-distr.log
 call pmake distrEx %1 %2 %3 >pmake-distrEx.log
 call pmake distrTeach %1 %2 %3 >pmake-distrTeach.log
+call pmake distrMod %1 %2 %3 >pmake-distrMod.log
 call pmake distrSim %1 %2 %3 >pmake-distrSim.log
 call pmake distrTEst %1 %2 %3 >pmake-distrTEst.log
 call pmakeDoc %1 %2 %3 >pmake-distrDoc.log
