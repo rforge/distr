@@ -92,6 +92,7 @@ This family currently comprises the packages<br>
   </li>
   <li><a href="distrDoc.html"><span style="color: rgb(51, 102, 255);">distrDoc</span></a><br>
     <span style="color: rgb(51, 102, 255);"></span></li>
+  <li><a href="distrMod.html"><span style="color: rgb(51, 102, 255);">distrMod</span></a></li>
   <li><a href="distrTeach.html"><span style="color: rgb(51, 102, 255);">distrTeach</span></a></li>
 </ul>
 It also contains package <span style="color: rgb(51, 102, 255);">startupmsg</span><br>
@@ -140,7 +141,7 @@ should be interesting.<br>
 maintained by <a
  href="mailto:peter.ruckdeschel@uni-bayreuth.de?subject=distr-package">Peter
 Ruckdeschel</a>
-and last updated on 2008-01-15.
+and last updated on 2008-01-17.
 </div>
 
 <p> The <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. </p>
