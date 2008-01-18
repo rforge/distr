@@ -10,4 +10,4 @@ Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@uni-bayreuth.de>
 SaveImage: no
 LazyLoad: yes
 License: GPL (version 2 or later)
-URL: http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/
+URL: http://distr.r-forge.r-project.org/

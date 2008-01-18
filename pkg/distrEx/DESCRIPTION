@@ -10,5 +10,5 @@ Maintainer: Matthias Kohl <Matthias.Kohl@stamats.de>
 SaveImage: no
 LazyLoad: yes
 License: GPL (version 2 or later)
-URL: http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/
+URL: http://distr.r-forge.r-project.org/
 Packaged: Fri Jun  8 00:12:57 2007; Peter

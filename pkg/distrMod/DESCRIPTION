@@ -10,4 +10,4 @@ Suggests: MASS
 SaveImage: no
 LazyLoad: yes
 License: GPL (version 2 or later)
-URL: https://r-forge.r-project.org/projects/distrmod/
+URL: http://distr.r-forge.r-project.org/
