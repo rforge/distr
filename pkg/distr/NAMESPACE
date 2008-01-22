@@ -12,7 +12,7 @@ export("Beta", "Binom", "Cauchy", "Chisq",
        "Lattice", "DiscreteDistribution",
        "LatticeDistribution", "EuclideanSpace", "Reals", 
        "Naturals", "standardMethods", 
-       "distrARITH", "distrMASK")
+       "distrARITH", "distrMASK", "getLabel")
 export("DistrList", "UnivarDistrList") 
 exportClasses("rSpace", "EuclideanSpace", "Reals", 
               "Naturals")

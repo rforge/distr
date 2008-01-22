@@ -1,0 +1,411 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HEAD></HEAD><HTML><BODY>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package distrMod:  Contents">
+<param name="Local" value="00Index.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package distrMod:  R objects">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distrMod-package">
+<param name="Local" value="0distrMod-package.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="addProp<-">
+<param name="Local" value="ProbFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="addProp<-,ProbFamily-method">
+<param name="Local" value="ProbFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="dimension,ParamFamParameter-method">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distribution">
+<param name="Local" value="ProbFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distribution,ProbFamily-method">
+<param name="Local" value="ProbFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="DistributionSymmetry-class">
+<param name="Local" value="DistributionSymmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distrMod">
+<param name="Local" value="0distrMod-package.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distrModOptions">
+<param name="Local" value="distrModOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distrSymm">
+<param name="Local" value="ProbFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distrSymm,ProbFamily-method">
+<param name="Local" value="ProbFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="EllipticalSymmetry">
+<param name="Local" value="EllipticalSymmetry.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="EllipticalSymmetry-class">
+<param name="Local" value="EllipticalSymmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="getdistrModOption">
+<param name="Local" value="distrModOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist,AbscontDistribution,numeric-method">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist,DiscreteDistribution,numeric-method">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist,numeric,AbscontDistribution-method">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist,numeric,DiscreteDistribution-method">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="hSmooth">
+<param name="Local" value="distrModOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="KolmogorovDist">
+<param name="Local" value="KolmogorovDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="KolmogorovDist,numeric,UnivariateDistribution-method">
+<param name="Local" value="KolmogorovDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="KolmogorovDist,UnivariateDistribution,numeric-method">
+<param name="Local" value="KolmogorovDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="length,ParamFamParameter-method">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="main">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="main,ParamFamily-method">
+<param name="Local" value="ParamFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="main,ParamFamParameter-method">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="main<-">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="main<-,ParamFamParameter-method">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="MCEstimator">
+<param name="Local" value="MCEstimator.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="MDEstimator">
+<param name="Local" value="MDEstimator.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="MLEstimator">
+<param name="Local" value="MLEstimator.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="modifyParam">
+<param name="Local" value="ParamFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="modifyParam,ParamFamily-method">
+<param name="Local" value="ParamFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="name,ProbFamily-method">
+<param name="Local" value="ProbFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="name<-,ProbFamily-method">
+<param name="Local" value="ProbFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="nDiscretize">
+<param name="Local" value="distrModOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="NoSymmetry">
+<param name="Local" value="NoSymmetry.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="NoSymmetry-class">
+<param name="Local" value="NoSymmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="nuisance">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="nuisance,ParamFamily-method">
+<param name="Local" value="ParamFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="nuisance,ParamFamParameter-method">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="nuisance<-">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="nuisance<-,ParamFamParameter-method">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OptionalNumeric-class">
+<param name="Local" value="OptionalNumeric-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="param,ParamFamily-method">
+<param name="Local" value="ParamFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ParamFamily">
+<param name="Local" value="ParamFamily.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ParamFamily-class">
+<param name="Local" value="ParamFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ParamFamParameter">
+<param name="Local" value="ParamFamParameter.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ParamFamParameter-class">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plot,ParamFamily-method">
+<param name="Local" value="ParamFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ProbFamily-class">
+<param name="Local" value="ProbFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="props">
+<param name="Local" value="ProbFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="props,ProbFamily-method">
+<param name="Local" value="ProbFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="props<-">
+<param name="Local" value="ProbFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="props<-,ProbFamily-method">
+<param name="Local" value="ProbFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="show,ParamFamily-method">
+<param name="Local" value="ParamFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="show,ParamFamParameter-method">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="show,Symmetry-method">
+<param name="Local" value="Symmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="SphericalSymmetry">
+<param name="Local" value="SphericalSymmetry.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="SphericalSymmetry-class">
+<param name="Local" value="SphericalSymmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="SymmCenter">
+<param name="Local" value="Symmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="SymmCenter,Symmetry-method">
+<param name="Local" value="Symmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Symmetry-class">
+<param name="Local" value="Symmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist,AbscontDistribution,numeric-method">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist,DiscreteDistribution,numeric-method">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist,numeric,AbscontDistribution-method">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist,numeric,DiscreteDistribution-method">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trafo">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trafo,ParamFamily-method">
+<param name="Local" value="ParamFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trafo,ParamFamParameter-method">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trafo<-">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trafo<-,ParamFamParameter-method">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="type">
+<param name="Local" value="Symmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="type,Symmetry-method">
+<param name="Local" value="Symmetry-class.html">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package distrMod:  Titles">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Class for Elliptically Symmetric Distributions">
+<param name="Local" value="EllipticalSymmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Class for Non-symmetric Distributions">
+<param name="Local" value="NoSymmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Class for Spherical Symmetric Distributions">
+<param name="Local" value="SphericalSymmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Class of Symmetries">
+<param name="Local" value="Symmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Class of Symmetries for Distributions">
+<param name="Local" value="DistributionSymmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distrMod -- probability models ">
+<param name="Local" value="0distrMod-package.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Family of probability measures">
+<param name="Local" value="ProbFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Function to change the global variables of the package `distrMod' ">
+<param name="Local" value="distrModOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Function to compute maximum likelihood estimators ">
+<param name="Local" value="MLEstimator.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Function to compute minimum criterion estimators ">
+<param name="Local" value="MCEstimator.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Function to compute minimum distance estimators ">
+<param name="Local" value="MDEstimator.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for EllipticalSymmetry-class">
+<param name="Local" value="EllipticalSymmetry.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for NoSymmetry-class">
+<param name="Local" value="NoSymmetry.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for ParamFamily-class">
+<param name="Local" value="ParamFamily.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for ParamFamParameter-class">
+<param name="Local" value="ParamFamParameter.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for SphericalSymmetry-class">
+<param name="Local" value="SphericalSymmetry.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Methods for the computation of the Hellinger distance between (empirical) data and distributions">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Methods for the computation of the Kolmogorov distance between (empirical) data and distributions">
+<param name="Local" value="KolmogorovDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Methods for the computation of the total variation distance between (empirical) data and distributions">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Optional numeric">
+<param name="Local" value="OptionalNumeric-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Parameter of a parametric family of probability measures">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Parametric family of probability measures.">
+<param name="Local" value="ParamFamily-class.html">
+</OBJECT>
+</UL>
+</UL>
+</BODY></HTML>
