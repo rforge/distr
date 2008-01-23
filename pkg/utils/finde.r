@@ -1,4 +1,4 @@
-finde <- function(x = "nchar", dir="C:/rtest/distrEx/R", ext = "R"){
+finde <- function(x = "nchar", dir="C:/rtest/distr/pkg/distr/R", ext = "R"){
 ow <- getwd()
 setwd(dir)
 cat("\n")
@@ -13,5 +13,5 @@ DIR <- grep(paste("\\.", ext, sep=""), dir(), value=TRUE)
 s = lapply(DIR,findL)
 setwd(ow)
 }
-finde(x="TruncQ", dir ="C:/rtest/distr/R")
+finde(x=".makeQNew", dir ="C:/rtest/distr/pkg/distr/R")
 

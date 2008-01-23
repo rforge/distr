@@ -640,7 +640,10 @@ return(f)
   mfun <- if (Cont) .makeQc else
           .makeQd
   ix <- .isEqual01(px.l)
-  xx <- px.l[!ix]; yy <- x[!ix]
+  if(!is.finite(yR)||Cont)
+     {xx <- px.l[!ix]; yy <- x[!ix]}
+  else  
+     {xx <- px.l; yy <- x}
   q.l <- mfun(x = xx, y = yy, yleft = yL, yright = yR)
   rm(xx,yy)
   if(notwithLLarg){

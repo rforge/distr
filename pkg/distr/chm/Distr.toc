@@ -858,6 +858,10 @@
 <param name="Local" value="distroptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="getLabel">
+<param name="Local" value="getLabel.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="getLow">
 <param name="Local" value="getLow.html">
 </OBJECT>
@@ -2781,6 +2785,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Internal functions of package distr">
 <param name="Local" value="internals.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Labels for distribution objects">
+<param name="Local" value="getLabel.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="List of distributions">
