@@ -1,1 +1,0 @@
-GLaw.o: GLaw.c
