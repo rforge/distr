@@ -1,0 +1,347 @@
+<html><head><title>Generic Function for the Computation of (Conditional) Expectations</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>E(distrEx)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   E">
+<param name="keyword" value="R:   E-methods">
+<param name="keyword" value="R:   E,UnivariateDistribution,missing,missing-method">
+<param name="keyword" value="R:   E,AbscontDistribution,missing,missing-method">
+<param name="keyword" value="R:   E,DiscreteDistribution,missing,missing-method">
+<param name="keyword" value="R:   E,AffLinDistribution,missing,missing-method">
+<param name="keyword" value="R:   E,AffLinAbscontDistribution,missing,missing-method">
+<param name="keyword" value="R:   E,AffLinDiscreteDistribution,missing,missing-method">
+<param name="keyword" value="R:   E,AffLinLatticeDistribution,missing,missing-method">
+<param name="keyword" value="R:   E,MultivariateDistribution,missing,missing-method">
+<param name="keyword" value="R:   E,DiscreteMVDistribution,missing,missing-method">
+<param name="keyword" value="R:   E,UnivariateDistribution,function,missing-method">
+<param name="keyword" value="R:   E,AbscontDistribution,function,missing-method">
+<param name="keyword" value="R:   E,DiscreteDistribution,function,missing-method">
+<param name="keyword" value="R:   E,MultivariateDistribution,function,missing-method">
+<param name="keyword" value="R:   E,DiscreteMVDistribution,function,missing-method">
+<param name="keyword" value="R:   E,UnivariateCondDistribution,missing,numeric-method">
+<param name="keyword" value="R:   E,AbscontCondDistribution,missing,numeric-method">
+<param name="keyword" value="R:   E,DiscreteCondDistribution,missing,numeric-method">
+<param name="keyword" value="R:   E,UnivariateCondDistribution,function,numeric-method">
+<param name="keyword" value="R:   E,AbscontCondDistribution,function,numeric-method">
+<param name="keyword" value="R:   E,DiscreteCondDistribution,function,numeric-method">
+<param name="keyword" value="R:   E,Beta,missing,missing-method">
+<param name="keyword" value="R:   E,Binom,missing,missing-method">
+<param name="keyword" value="R:   E,Cauchy,missing,missing-method">
+<param name="keyword" value="R:   E,Chisq,missing,missing-method">
+<param name="keyword" value="R:   E,Dirac,missing,missing-method">
+<param name="keyword" value="R:   E,DExp,missing,missing-method">
+<param name="keyword" value="R:   E,Exp,missing,missing-method">
+<param name="keyword" value="R:   E,Fd,missing,missing-method">
+<param name="keyword" value="R:   E,Gammad,missing,missing-method">
+<param name="keyword" value="R:   E,Geom,missing,missing-method">
+<param name="keyword" value="R:   E,Hyper,missing,missing-method">
+<param name="keyword" value="R:   E,Logis,missing,missing-method">
+<param name="keyword" value="R:   E,Lnorm,missing,missing-method">
+<param name="keyword" value="R:   E,Nbinom,missing,missing-method">
+<param name="keyword" value="R:   E,Norm,missing,missing-method">
+<param name="keyword" value="R:   E,Pois,missing,missing-method">
+<param name="keyword" value="R:   E,Td,missing,missing-method">
+<param name="keyword" value="R:   E,Unif,missing,missing-method">
+<param name="keyword" value="R:   E,Weibull,missing,missing-method">
+<param name="keyword" value=" Generic Function for the Computation of (Conditional) Expectations">
+</object>
+
+
+<h2>Generic Function for the Computation of (Conditional) Expectations</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Generic function for the computation of (conditional) expectations.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+E(object, fun, cond, ...)
+
+## S4 method for signature 'UnivariateDistribution,
+##   function, missing':
+E(object, fun, cond, useApply = TRUE, ...)
+
+## S4 method for signature 'AbscontDistribution, function,
+##   missing':
+E(object, fun, cond, useApply = TRUE, ...)
+
+## S4 method for signature 'DiscreteDistribution, function,
+##   missing':
+E(object, fun, cond, useApply = TRUE, ...)
+
+## S4 method for signature 'AffLinDistribution, missing,
+##   missing':
+E(object)
+
+## S4 method for signature 'MultivariateDistribution,
+##   function, missing':
+E(object, fun, cond, useApply = TRUE, ...)
+
+## S4 method for signature 'DiscreteMVDistribution,
+##   function, missing':
+E(object, fun, cond, useApply = TRUE, ...)
+
+## S4 method for signature 'AbscontCondDistribution,
+##   missing, numeric':
+E(object, cond, useApply = TRUE)
+
+## S4 method for signature 'DiscreteCondDistribution,
+##   missing, numeric':
+E(object, cond, useApply = TRUE)
+
+## S4 method for signature 'UnivariateCondDistribution,
+##   function, numeric':
+E(object, fun, cond, withCond = FALSE, useApply = TRUE, ...)
+
+## S4 method for signature 'AbscontCondDistribution,
+##   function, numeric':
+E(object, fun, cond, withCond = FALSE, useApply = TRUE, ...)
+
+## S4 method for signature 'DiscreteCondDistribution,
+##   function, numeric':
+E(object, fun, cond, withCond = FALSE, useApply = TRUE, ...)
+
+## S4 method for signature 'DiscreteCondDistribution,
+##   function, numeric':
+E(object, fun, cond, withCond = FALSE, useApply = TRUE, ...)
+
+## S4 method for signature 'Beta, missing, missing':
+E(object, fun, cond)
+## S4 method for signature 'Binom, missing, missing':
+E(object, fun, cond)
+## S4 method for signature 'Cauchy, missing, missing':
+E(object, fun, cond)
+## S4 method for signature 'Chisq, missing, missing':
+E(object, fun, cond)
+## S4 method for signature 'Dirac, missing, missing':
+E(object, fun, cond)
+## S4 method for signature 'DExp, missing, missing':
+E(object, fun, cond)
+## S4 method for signature 'Exp, missing, missing':
+E(object, fun, cond)
+## S4 method for signature 'Fd, missing, missing':
+E(object, fun, cond)
+## S4 method for signature 'Gammad, missing, missing':
+E(object, fun, cond)
+## S4 method for signature 'Geom, missing, missing':
+E(object, fun, cond)
+## S4 method for signature 'Hyper, missing, missing':
+E(object, fun, cond)
+## S4 method for signature 'Logis, missing, missing':
+E(object, fun, cond)
+## S4 method for signature 'Lnorm, missing, missing':
+E(object, fun, cond)
+## S4 method for signature 'Nbinom, missing, missing':
+E(object, fun, cond)
+## S4 method for signature 'Norm, missing, missing':
+E(object, fun, cond)
+## S4 method for signature 'Pois, missing, missing':
+E(object, fun, cond)
+## S4 method for signature 'Unif, missing, missing':
+E(object, fun, cond)
+## S4 method for signature 'Td, missing, missing':
+E(object, fun, cond)
+## S4 method for signature 'Weibull, missing, missing':
+E(object, fun, cond)
+
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+object of class <code>"Distribution"</code></td></tr>
+<tr valign="top"><td><code>fun</code></td>
+<td>
+if missing the (conditional) expectation is computed
+else the (conditional) expection of <code>fun</code> is computed. </td></tr>
+<tr valign="top"><td><code>cond</code></td>
+<td>
+if not missing the conditional expectation 
+given <code>cond</code> is computed. </td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+additional arguments to <code>fun</code> </td></tr>
+<tr valign="top"><td><code>useApply</code></td>
+<td>
+logical: should <code>sapply</code>, respectively <code>apply</code> 
+be used to evaluate <code>fun</code>. </td></tr>
+<tr valign="top"><td><code>withCond</code></td>
+<td>
+logical: is <code>cond</code> in the argument list of <code>fun</code>. </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+The precision of the computations can be controlled via 
+certain global options; cf. <code><a href="distrExOptions.html">distrExOptions</a></code>.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+The (conditional) expectation is computed.</p>
+
+<h3>Methods</h3>
+
+<dl>
+<dt>object = "UnivariateDistribution", fun = "missing", cond = "missing":</dt><dd>expectation of univariate distributions using crude Monte-Carlo integration. </dd>
+
+
+<dt>object = "AbscontDistribution", fun = "missing", cond = "missing":</dt><dd>expectation of absolutely continuous univariate distributions
+using <code>distrExIntegrate</code>. </dd>
+
+
+<dt>object = "DiscreteDistribution", fun = "missing", cond = "missing":</dt><dd>expectation of discrete univariate distributions using <code>support</code>
+and <code>sum</code>.</dd>
+
+
+<dt>object = "MultivariateDistribution", fun = "missing", cond = "missing":</dt><dd>expectation of multivariate distributions using crude Monte-Carlo integration. </dd>
+
+
+<dt>object = "DiscreteMVDistribution", fun = "missing", cond = "missing":</dt><dd>expectation of discrete multivariate distributions. The computation is based
+on <code>support</code> and <code>sum</code>.</dd>
+
+
+<dt>object = "UnivariateDistribution", fun = "function", cond = "missing":</dt><dd>expectation of <code>fun</code> under univariate distributions using 
+crude Monte-Carlo integration. </dd>
+
+
+<dt>object = "AbscontDistribution", fun = "function", cond = "missing":</dt><dd>expectation of <code>fun</code> under absolutely continuous 
+univariate distributions using <code>distrExIntegrate</code>. </dd>
+
+
+<dt>object = "DiscreteDistribution", fun = "function", cond = "missing":</dt><dd>expectation of <code>fun</code> under discrete univariate 
+distributions using <code>support</code> and <code>sum</code>. </dd>
+
+
+<dt>object = "MultivariateDistribution", fun = "function", cond = "missing":</dt><dd>expectation of multivariate distributions using crude Monte-Carlo integration. </dd>
+
+
+<dt>object = "DiscreteMVDistribution", fun = "function", cond = "missing":</dt><dd>expectation of <code>fun</code> under discrete multivariate 
+distributions. The computation is based on <code>support</code> and <code>sum</code>. </dd>  
+</p>
+
+<dt>object = "UnivariateCondDistribution", fun = "missing", cond = "numeric":</dt><dd>conditional expectation for univariate conditional distributions given <code>cond</code>. 
+The integral is computed using crude Monte-Carlo integration. </dd>
+
+
+<dt>object = "AbscontCondDistribution", fun = "missing", cond = "numeric":</dt><dd>conditional expectation for absolutely continuous, univariate 
+conditional distributions given <code>cond</code>. The computation
+is based on <code>distrExIntegrate</code>. </dd>
+
+
+<dt>object = "DiscreteCondDistribution", fun = "missing", cond = "numeric":</dt><dd>conditional expectation for discrete, univariate conditional 
+distributions given <code>cond</code>. The computation is based 
+on <code>support</code> and <code>sum</code>. </dd>
+
+
+<dt>object = "UnivariateCondDistribution", fun = "function", cond = "numeric":</dt><dd>conditional expectation of <code>fun</code> under univariate conditional distributions 
+given <code>cond</code>. The integral is computed using crude Monte-Carlo integration. </dd>
+
+
+<dt>object = "AbscontCondDistribution", fun = "function", cond = "numeric":</dt><dd>conditional expectation of <code>fun</code> under absolutely continuous, 
+univariate conditional distributions given <code>cond</code>. The
+computation is based on <code>distrExIntegrate</code>. </dd>
+
+
+<dt>object = "DiscreteCondDistribution", fun = "function", cond = "numeric":</dt><dd>conditional expectation of <code>fun</code> under discrete, univariate 
+conditional distributions given <code>cond</code>. The computation is
+based on <code>support</code> and <code>sum</code>. </dd>
+
+
+<dt>object = "Beta", fun = "missing", cond = "missing":</dt><dd>for noncentrality 0 exact evaluation using explicit expressions.</dd>
+<dt>object = "Binom", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt>object = "Cauchy", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt>object = "Chisq", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt>object = "Dirac", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt>object = "DExp", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt>object = "Exp", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt>object = "Fd", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt>object = "Gammad", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt>object = "Geom", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt>object = "Hyper", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt>object = "Logis", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt>object = "Lnorm", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt>object = "Nbinom", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt>object = "Norm", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt>object = "Pois", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt>object = "Unif", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt>object = "Td", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt>object = "Weibull", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
+</dl>
+
+<h3>Author(s)</h3>
+
+<p>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a> and Peter Ruckdeschel <a href="mailto:peter.ruckdeschel@uni-bayreuth.de">peter.ruckdeschel@uni-bayreuth.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="distrExIntegrate.html">distrExIntegrate</a></code>, <code><a href="m1df.html">m1df</a></code>, <code><a href="m2df.html">m2df</a></code>,
+<code><a onclick="findlink('distr', 'Distribution-class.html')" style="text-decoration: underline; color: blue; cursor: hand">Distribution-class</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# mean of Exp(1) distribution
+E &lt;- Exp() 
+
+E(E) ## uses explicit terms
+E(as(E,"AbscontDistribution")) ## uses numerical integration
+E(as(E,"UnivariateDistribution")) ## uses simulations
+E(E, fun = function(x){2*x^2}) ## uses simulations
+
+# the same operator for discrete distributions:
+P &lt;- Pois(lambda=2)
+
+E(P) ## uses explicit terms
+E(as(P,"DiscreteDistribution")) ## uses sums
+E(as(P,"UnivariateDistribution")) ## uses simulations
+E(P, fun = function(x){2*x^2}) ## uses simulations
+
+# second moment of N(1,4)
+E(Norm(mean=1, sd=2), fun = function(x){x^2})
+E(Norm(mean=1, sd=2), fun = function(x){x^2}, useApply = FALSE)
+
+# conditional distribution of a linear model
+D1 &lt;- LMCondDistribution(theta = 1) 
+E(D1, cond = 1)
+E(Norm(mean=1))
+E(D1, function(x){x^2}, cond = 1)
+E(Norm(mean=1), fun = function(x){x^2})
+E(D1, function(x, cond){cond*x^2}, cond = 2, withCond = TRUE, useApply = FALSE)
+E(Norm(mean=2), function(x){2*x^2})
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>distrEx</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>
