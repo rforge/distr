@@ -10,7 +10,7 @@ cload(filename)
 \arguments{
   \item{filename}{ the filename which was declared at the instantiaton of the Dataclass }
 }
-\details{}
+\details{ Uses function \code{load} to load the comment file from a saved \code{Dataclass} object. }
 \value{ no value is returned }
 
 \author{
