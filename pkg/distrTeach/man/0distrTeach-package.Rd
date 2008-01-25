@@ -89,7 +89,7 @@ As for general \code{packageStartupMessage}'s, you may also suppress all
 Matthias Kohl \email{Matthias.Kohl@stamats.de} and \cr
 Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de},\cr 
 Eleonara Feist \email{eleonoragerber@gmx.de}, and, \cr
-Anja Hueller \email{anja_h86@web.de}\cr  
+Anja Hueller \email{anja\_h86@web.de}\cr  
 
 \emph{Maintainer:}  Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de}
 }
