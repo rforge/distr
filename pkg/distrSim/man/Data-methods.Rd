@@ -9,7 +9,7 @@
 \alias{Data<-,Simulation-method}
 \alias{Data<-,Contsimulation-method}
 \title{ Methods for Function Data in Package `distrSim' }
-\description{}
+\description{ Methods to access and change the \code{Data}-slot }
 \section{Methods}{\describe{
 \item{Data}{\code{signature(object = "Dataclass")}: returns the data }
 \item{Data<-}{\code{signature(object = "Dataclass")}: changes the data (does not work with a simulation or a contsimulation
