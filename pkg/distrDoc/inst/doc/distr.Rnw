@@ -45,7 +45,7 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 %,version \pkgExversion}
 \author{\small Peter Ruckdeschel\thanks{Universit\"at Bayreuth}
 \\[-.5ex]
-\small Matthias Kohl\thanks{SIRS-Lab GmbH, Jena}
+\small Matthias Kohl\thanks{Universit\"at Bayreuth}
 \\[-.5ex]
 \small Thomas Stabla\thanks{Hans-Sachs-Gymnasium N\"urnberg}
 \\[-.5ex]
