@@ -13,7 +13,8 @@ REM                        (else just against R-ver2 if given or R-ver if given 
 REM           all args are positional, i.e. they only apply if all preceding args are given
 REM 
 REM 
-cd .. 
+REM 
+REM ALSO add the utils folder to your path
 REM 
 echo.
 echo ##########################################
@@ -94,7 +95,4 @@ echo ----------------------------------------------------------------
 )
 echo FERTIG!!!
 echo ----------------------------------------------------------------
-REM
-cd utils
-REM
 echo on
