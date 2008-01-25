@@ -162,14 +162,14 @@ Distribution Object of Class: AbscontDistribution
 > Zs
 \end{Sinput}
 \begin{Soutput}
- [1]  5.667431  5.208900  8.443915 11.217042 10.706007 11.402484  9.917219
- [8]  8.703289  5.250524  6.465690  8.959585 11.428092 15.003523  6.981240
-[15] 12.521099  7.386556  8.463118  8.202232  5.868897  6.194615  8.435278
-[22]  7.102098 10.197731 10.121649  4.625566  5.764789  5.712407  5.253985
-[29]  6.196750  3.774712  3.500700  7.638510  4.176284  9.127932  8.093388
-[36]  8.993626  6.742212 10.646248 12.907687  4.232714  8.360050  5.907766
-[43]  7.561678  8.216865 12.185686 12.398646  7.824056  8.091921  7.873152
-[50]  6.667474
+ [1]  9.368665  7.009492  8.681044  7.638800  5.948332  8.484756 10.141577
+ [8]  7.125149  4.206934  6.686592  9.795605  8.859790  9.547660  4.370129
+[15]  6.862772 11.677068  4.768626  7.738503  8.312697  5.328832  3.570804
+[22]  7.637009  4.404166  8.271208 14.552217  6.817530  5.627259 10.627528
+[29]  5.830270  9.101205  4.127078 13.712132  7.517051  7.110819  4.160900
+[36]  6.827977  9.649462  4.656837  8.588488  3.504020 10.058272  7.280270
+[43] 11.477774  8.752581  8.886697 10.917025 12.798755  8.262264  7.922088
+[50]  7.869214
 \end{Soutput}
 \end{Schunk}
 \includegraphics{distr-exam1}
@@ -738,13 +738,13 @@ evaluated twice in a row gives two different results, compare
 >   d(sin(A1 + A2))(0.1)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.3750362
+[1] 0.3779053
 \end{Soutput}
 \begin{Sinput}
 >   d(sin(A1 + A2))(0.1)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.3856991
+[1] 0.3763678
 \end{Soutput}
 \begin{Sinput}
 >   sin(A1 + A2)
@@ -1044,8 +1044,8 @@ the \code{Data} slot of a simulation \code{X} with ``new'' random numbers is
 +     }
 \end{Sinput}
 \begin{Soutput}
- [1]  0.19385155  1.04971460  0.26875306 -1.21543310 -0.33446264  1.40384448
- [7]  0.05914475  1.60924972 -0.48418635 -0.63854907
+ [1] -1.0403320 -0.3282460  0.8154291  1.1568184  0.7075162 -1.7771224
+ [7] -1.8527333  0.3176103  1.7405217 -0.1277648
 \end{Soutput}
 \end{Schunk}
 %
@@ -1147,8 +1147,6 @@ is available for \code{X} of class \code{Beta} (for noncentrality $0$),
 +      print(E(D4, cond = 1))
 +      print(E(D4, cond = 1, useApply = FALSE))
 +      print(E(as(D4, "UnivariateCondDistribution"), cond = 1))
-+      print(E(as(D4, "UnivariateCondDistribution"), cond = 1,
-+        useApply = FALSE))
 +      print(E(D4, function(x){x^2}, cond = 2))
 +      print(E(D4, function(x){x^2}, cond = 2, useApply = FALSE))
 +      print(E(N, function(x){x^2}))
@@ -1167,3 +1165,1775 @@ is available for \code{X} of class \code{Beta} (for noncentrality $0$),
 +     cat("\n functionality not (yet) available; ")
 +     cat("you have to install package \"distrEx\" first.\n")
 +     }
+\end{Sinput}
+\begin{Soutput}
+[1] 0.9999998
+[1] 0.9999998
+[1] 0.9985952
+[1] 4.999993
+[1] 4.999993
+[1] 4.999993
+[1] 4.968028
+[1] 9.999987
+[1] 9.999987
+[1] 9.999987
+[1] 10.02531
+Distribution Object of Class: AffLinLatticeDistribution
+[1] 2
+\end{Soutput}
+\end{Schunk}
+%
+%
+\subsubsection{Variance}
+The next-common functional is the variance. In order to keep a unified
+notation we will use the same name as for the empirical variance, i.e.,
+ \code{var}.
+\paragraph{masking \pkg{stats}-method \code{var}}
+To cope with the different argument structure of the empirical variance,
+i.e. \code{var(x, y = NULL, na.rm = FALSE, use)}  and our functional variance, 
+i.e., 
+\code{var(x, fun = function(t) {t}, cond, withCond = FALSE, useApply = TRUE, ...)}
+we have to mask the original \pkg{stats}-method:
+\begin{Schunk}
+\begin{Sinput}
+>   var <- function(x , ...)
++        {dots <- list(...)
++         if(hasArg(y)) y <- dots$"y"
++         na.rm <- ifelse(hasArg(na.rm), dots$"na.rm", FALSE)
++         if(!hasArg(use))
++              use <- ifelse (na.rm, "complete.obs","all.obs")
++         else use <- dots$"use"
++         if(hasArg(y))
++            stats::var(x = x, y = y, na.rm = na.rm, use)
++         else
++            stats::var(x = x, y = NULL, na.rm = na.rm, use)
++         }
+\end{Sinput}
+\end{Schunk}
+before registering \code{var} as generic function.
+Doing so, if the \code{x} (or the first) argument of \code{var}
+is not of class \code{UnivariateDistribution}, \code{var} behaves identically to
+the \pkg{stats} package
+\paragraph{default method} if \code{x} is of class \code{UnivariateDistribution}, 
+\code{var} just returns the variance of distribution \code{X} --- or 
+of \code{fun(X)} if a function is passed as argument fun, or, if a condition 
+argument \code{cond} (for $Y=y$),  ${\rm Var}\,[X|Y=y]$ respectively 
+${\rm Var}\,[f(X)|Y=y]$ --- just as for \code{E}. \\
+For an object \code{Y} of a subclass of class 
+union \code{AffLinDistribution}, we determine the variance as 
+\code{Y@a\textasciicircum2 * var(Y@X0)} and hence use analytic terms for \code{X0} if
+available.
+\paragraph{exact evaluation} is provided for specific distributions if no 
+function and no condition argument is given:
+this is available for \code{X} of class \code{Beta} (for noncentrality $0$), 
+\code{Binom}, \code{Cauchy}, \code{Chisq},\code{Dirac}, \code{Exp}, \code{Fd}, 
+\code{Gammad}, \code{Geom}, \code{Hyper}, \code{Logis}, \code{Lnorm}, 
+\code{Nbinom}, \code{Norm}, \code{Pois}, \code{Unif}, \code{Td}, \code{Weibull}.
+\subsubsection{Further functionals}
+By the same techniques we provide the following functionals for univariate 
+distributions:
+\begin{itemize}
+  \item standard deviation: \code{sd}
+  \item skewness: \code{skewness}  
+  (code contributed by G. Jay Kerns, {\small \tt gkerns@ysu.edu})
+  \item kurtosis: \code{kurtosis} 
+   (code contributed by G. Jay Kerns, {\small \tt gkerns@ysu.edu})
+  \item median: \code{median} (not for function/condition arguments)
+  \item median of absolute deviations: \code{mad} (not for function/condition 
+  arguments)
+  \item interquartile range: \code{IQR} (not for function/condition arguments)
+\end{itemize}
+%
+\subsection[Truncated moments (in package distrEx)]{Truncated moments 
+(in package \pkg{distrEx})}\label{m1df}
+%
+For Robust Statistics, the first two truncated moments are very useful. These 
+are realized as generic functions \code{m1df} and \code{m2df}: They use the 
+expectation operator for general univariate distributions, but are overloaded 
+for most specific distributions:
+\begin{itemize}
+  \item \code{Binom}
+  \item \code{Pois}
+  \item \code{Norm}
+  \item \code{Exp}
+  \item \code{Chisq}
+\end{itemize}
+%
+\subsection[Distances (in package distrEx)]{Distances (in package %
+ \pkg{distrEx})}\label{Distances}
+%
+For several purposes like Goodness-of-fit tests or minimum-distance estimators, 
+distances between distributions are useful. This applies in particular to Robust 
+Statistics. In package \pkg{distrEx}, we provide the follwoing distances:
+\begin{itemize}
+  \item Kolmogoroff distance
+  \item total variation distance
+  \item Hellinger distance
+  \item convex-contamination ``distance'' (asymmetric!) defined as
+  $$
+d(Q,P):=\inf\{r>0\,|\, \exists \;\mbox{probability } H:\quad Q=(1-r)P+rH \}
+  $$
+\end{itemize}
+\subsection[Functions for demos (in package distrEx)]{Functions for demos 
+(in package \pkg{distrEx})}\label{Demos}
+%
+To illustrate the possibilities with packages \pkg{distr} and \pkg{distrEx} we 
+include two major demos to \pkg{distrEx}, each with extra code to it ---
+one for the CLT and one for the LLN.
+
+From version 2.0 on, we have started a new package \pkg{distrTeach}, which
+is to use the capabilities of packages \pkg{distr} and \pkg{distrEx} for
+illustrating topics of Stochastics and Statistics as taught in secondary
+school. So far we have moved the illustrations for the CLT and the LLN 
+just mentioned to it.
+
+\subsubsection{CLT for arbitrary summand distribution}
+
+By means of our convolution algortithm as well as with the operators \code{E} 
+and \code{sd} an illustration for the CLT is readily written: 
+function \code{illustrateCLT}, respectively demo \code{illustCLT}.
+For plotting, we have particular methods for discrete and absolute continuous 
+distributions. The user may specify a given summand distribution, an upper 
+limit for the consecutive sums to be considered and a pause between the 
+corresponding plots in seconds. From version 1.9 on, we also include a 
+\code{TclTk}-based version of this demo, where the user may enter the 
+distribution argument (i.e.; the summands' distribution) into a text line and 
+control the sample size by a slider in some widget: \code{illustCLT\_tcl}
+
+\subsubsection{LLN for arbitrary summand distribution}
+
+From version 1.9 on, similarly, we provide an illustration for the LLN:
+function \code{illustrateLLN}, respectively demo \code{illustLLN}.
+The user may specify a vector of sample sizes to be 
+considered, the number of replicates to be drawn and a pause between the 
+corresponding plots in seconds, also, optionally, the limiting expectation
+(in case of class \code{Cauchy}: the non-limiting median) is drawn as a line and
+Chebyshev/CLT-based (pointwise) confidence bands and their respective empirical 
+coverages are displayed. 
+
+\subsubsection{Deconvolution example}
+
+To illustrate conditional distributions and their implementation in 
+\linebreak[4]\pkg{distrEx}, we consider the following situation:
+We consider a signal $X\sim P^X$ which is disturbed by noise 
+$\varepsilon\sim P^\varepsilon$, independent from $X$; in fact we observe
+$Y=X+\varepsilon$ and want to reconstruct $X$ by means of $Y$. By means of the 
+generating function \code{PrognCondDistribution}
+of package \pkg{distrEx}, for absolutely continuous $P^X, P^\varepsilon$, we may 
+determine the factorized conditional distribution $P^{X|Y=y}$, and based on this 
+either its (posterior) mode oder (posterior) expectation; also see
+\code{demo(Prognose, package="distrEx")}.
+
+\section{Options}\label{options}
+\subsection[Options for distr]{Options for \pkg{distr}}
+Analogously to the \code{options} command in {\sf R} you may specify a number of
+global ``constants'' to be used within the package. These include
+\begin{itemize}
+  \item \code{DefaultNrFFTGridPointsExponent}: the binary logarithm of the 
+        number of grid-points used in FFT ---default $12$
+  \item \code{DefaultNrGridPoints}: number of grid-points used for a continuous 
+        variable ---default $4096$
+  \item \code{DistrResolution}: the finest step length that is permitted for a 
+        grid for a discrete variable ---default $1{\rm e-}\!06$
+  \item \code{RtoDPQ.e}: For simulational determination of \code{d}, \code{p} 
+         and \code{q}, $10^{\rm RtoDPQ.e}$ random variables are
+  simulated ---default $5$
+  \item \code{TruncQuantile}: to work with compact support, random variables are 
+        truncated to their lower/upper
+  \code{TruncQuantile}-quantile   ---default $1{\rm e-}\!05$.\\
+  From version 1.9 on, for $\varepsilon={\tt \code{TruncQuantile}}$, we use calls of form 
+  \code{q(X)(eps, lower.tail = FALSE)} instead of   \code{q(X)(1-eps)} to gain higher
+  precision.
+  \item \code{warningSim}: controls whether a warning issued at printing/showing 
+        a \code{Distribution} object the slots of which have been
+  filled starting with simulations ---default \code{TRUE}
+  \item \code{warningArith}: controls whether a warning issued at
+   printing/showing a \code{Distribution} object produced by arithmetics
+  operating on distributions ---default \code{TRUE}
+\end{itemize}
+All current options may be inspected by \code{distroptions()}  and modified by
+ \linebreak[4] \code{distroptions("<options-name>"=<value>)}.\\
+As \code{options},  \code{distroptions("<options-name>")} returns a list of
+ length $1$ with the value of the corresponding option,
+so here, just as \code{getOption},  \code{getdistrOption("<options-name>")} will
+ be preferable, which only returns the value.
+%\newline0??????
+\subsection[Options for distrEx]{Options for \pkg{distrEx}}\label{distrExoptions}
+Up to version {\tt 0.4-4} we used the function
+ \code{distrExOptions(arg = "missing", value = -1)} to manage some global 
+ options for \pkg{distrEx}, i.e.:\\
+\code{distrExOptions()} returns a list of these options,
+\code{distrExOptions(arg=x)} returns option \code{x}, and
+\code{distrExOptions(arg=x,value=y)} sets the value of option \code{x} to
+ {\tt y}.\\
+ From version {\tt 1.9} on, we use a mechanism analogue to the
+  \code{distroptions}/\code{getdistrOption} commands: 
+You may specify certain
+global output options to be used within the package with
+ \code{distrExoptions}/\code{getdistrExOption}. These include
+\begin{itemize}
+  \item \code{MCIterations}: number of Monte-Carlo iterations used for crude
+          Monte-Carlo integration.
+  \item \code{GLIntegrateTruncQuantile}: If \code{integrate} fails and there are
+          infinite integration limits, the function \code{GLIntegrate} is
+          called inside of \code{distrExIntegrate} with the corresponding
+          quantiles  \code{GLIntegrateTruncQuantile} resp.\
+          \code{1-GLIntegrateTruncQuantile} as finite integration limits.
+  \item \code{GLIntegrateOrder}: The order used for the Gau{\ss{}}-Legendre
+          integration inside of \code{distrExIntegrate}.
+  \item \code{ElowerTruncQuantile}: The lower limit of integration used inside
+       of \code{E} which corresponds to the \code{ElowerTruncQuantile}-quantile.
+  \item \code{EupperTruncQuantile}: The upper limit of integration used inside 
+          of \code{E} which corresponds to the
+          \code{(1-ElowerTruncQuantile)}-quantile.
+  \item \code{ErelativeTolerance}: The relative tolerance used inside of 
+        \code{E} when calling\linebreak[4] \code{distrExIntegrate}.
+  \item \code{m1dfLowerTruncQuantile}: The lower limit of integration used 
+        inside of \code{m1df} which corresponds to the
+          \code{m1dfLowerTruncQuantile}-quantile.
+  \item \code{m1dfRelativeTolerance}: The relative tolerance used inside of
+          \code{m1df} when calling \code{distrExIntegrate}.
+  \item \code{m2dfLowerTruncQuantile}: The lower limit of integration used 
+        inside of \code{m2df} which corresponds to the
+          \code{m2dfLowerTruncQuantile}-quantile.
+  \item \code{m2dfRelativeTolerance}: The relative tolerance used inside of
+          \code{m2df} when calling \code{distrExIntegrate}.
+\end{itemize}
+
+%We are planning to switch to \code{distroptions}/\code{getdistrOption}-like 
+% commands in the next release of this package.
+%
+\subsection[Options for distrSim]{Options for \pkg{distrSim}}
+Just as with to the \code{distroptions}/\code{getdistrOption} commands you 
+may specify certain global output options to be used within the package with 
+\code{distrSimoptions}/\linebreak[4] \code{getdistrSimOption}. These include
+\begin{itemize}
+  \item \code{MaxNumberofPlottedObs} the maximal number of observation plotted 
+  in a plot of an object of class \code{Dataclass}; defaults to 4000
+
+  \item \code{MaxNumberofPlottedObsDims}: the maximum number of observations to 
+  be plotted in a plot of an object of class \code{Dataclass}
+  and descendants; defaults to 6.
+  \item \code{MaxNumberofPlottedRuns}: the maximum number of runs to be plotted 
+  in a plot of an object of class \code{Dataclass}
+  and descendants (one run/panel); defaults to 6.
+  \item \code{MaxNumberofSummarizedObsDims}: the maximum number of observations 
+  to be summarized of an object of class \code{Dataclass}
+  and descendants; defaults to 6.
+  \item \code{MaxNumberofSummarizedRuns}: the maximum number of runs to be
+   summarized of an object of class \code{Dataclass}
+  and descendants; defaults to 6.
+\end{itemize}
+%
+\subsection[Options for distrTEst]{Options for \pkg{distrTEst}}
+Just as with to the \code{distroptions}/\code{getdistrOption} commands you may 
+specify certain
+global output options to be used within the package with 
+\code{distrTEstoptions}/ \linebreak[4]\code{getdistrTEstOption}. These include
+\begin{itemize}
+  \item \code{MaxNumberofPlottedEvaluations}:  the maximal number of evaluations 
+  to be plotted
+  in a plot of an object of class \code{EvaluationList}; defaults to 6
+  \item \code{MaxNumberofPlottedEvaluationDims}: the maximal number of
+   evaluation dimensions to be plotted in a plot of an
+         object of class \code{Evaluation}; defaults to 6
+  \item \code{MaxNumberofSummarizedEvaluations}: the  maximal number of 
+  evaluations to be summarized of an object of class
+  \code{EvaluationList}; defaults to 15
+  \item \code{MaxNumberofPrintedEvaluations}: the maximal number of evaluations
+   printed of an object of class
+  \code{EvaluationList}; defaults to 15
+\end{itemize}
+
+%??????1
+
+\section{Startup Messages}
+%
+For the management of startup messages, from version~1.7, we use package 
+\pkg{startupmsg}:
+When loading/attaching packages \pkg{distr}, \pkg{distrEx}, \pkg{distrSim}, or 
+\pkg{distrTEst} for each package a disclaimer is displayed.
+
+You may suppress these start-up banners/messages completely by setting 
+\linebreak[4]\code{options("StartupBanner"="off")}
+somewhere before loading this package by \code{library} or \code{require} in 
+your R-code / R-session.
+
+If option \code{"StartupBanner"} is not defined (default) or setting\linebreak[4]
+\code{options("StartupBanner" = NULL)} or %\linebreak[4]
+\code{options("StartupBanner" = "complete")}
+the complete start-up banner is displayed.
+
+For any other value of option \code{"StartupBanner"} (i.e., not in 
+\linebreak[3]\code{c(NULL, "off", "complete")})
+only the version information is displayed.
+
+The same can be achieved by wrapping the \code{library} or \code{require}  
+call into either
+ \linebreak[4]\code{onlytypeStartupMessages(<code>, atypes="version")} 
+ or\linebreak[4] \code{suppressStartupMessages(<code>)}.
+%
+
+\section[System/version requirements]{System/version requirements, license,
+ etc.\ }
+%
+\subsection{System requirements}
+%
+As our package is completely written in {\sf R}, there are no dependencies
+on the underlying OS; of course, there is the usual speed gain
+possible on recent machines. We have tested our package on a Pentium~II with
+ 233 MHz, on Pentium~III's with 0.8--2.1 GHz, and on an Athlon with 2.5 GHz 
+ giving a reasonable performance.
+
+\subsection{Required version of {\sf R}}
+Contrary to the hardware required,
+if you want to use \code{library} or \code{require} to use  \pkg{distr} 
+within {\sf R} code, you need at least {\sf R} Version {\tt 1.8.1},
+as we make use of name space operations only available from that version on;
+also, the command \code{setClassUnion}, which is used in some sources, is only
+ available from that version on.\\
+%
+On the other hand, if the package may be pasted in by \code{source}, the code 
+works with {\sf R} from
+version {\tt 1.7.0} on ---but without using name-spaces, which is only available
+ from {\tt 1.8.0} on.
+Due to some changes in {\sf R} from version {\tt 1.8.1} to {\tt 1.9.0} and from 
+{\tt 1.9.1} to {\tt 2.0.0}, we have to provide different
+ {\tt zip}/{\tt tar.gz}-Files for these versions.\\
+Versions of \pkg{distr} from version number {\tt 1.5} onwards are only
+supplied for {\sf R} Version {\tt 2.0.1 patched} and later.
+After a reorganization, versions of \pkg{distr} from version number {\tt 1.6} 
+onwards are only supplied for {\sf R} Version {\tt 2.2.0 patched} and later.
+
+
+\subsection{Dependencies}
+In package \pkg{distrEx}, we need 
+\href{mailto:alec_stephenson@hotmail.com}{Alec Stephenson's} package \pkg{evd} 
+for the extreme  value distributions implemented therein. 
+In package \pkg{distrSim}, and conseqently also in package \pkg{distrTEst} we 
+use \href{mailto:pgilbert@bank-banque-canada.ca}{Paul Gilbert's}  
+package \pkg{setRNG}
+to be installed from \href{http://cran.r-project.org/mirrors.html}{\tt CRAN}
+for the control of the seed of the random number generator in our simulation 
+classes.
+More precisely, for our version $\le$ {\tt 1.6}  we need his
+ version $<$ {\tt 2006.2-1},
+and for our version $\ge$ {\tt 1.7} we need his version $\ge$ {\tt 2006.2-1}.
+
+From package version {\tt 1.7}/{\tt 0.4-3} on, we also need package
+ \pkg{startupmsg} by the first of the present authors, which also is available 
+ on \href{http://cran.r-project.org/mirrors.html}{\tt CRAN}.
+
+\subsection{License}
+This software is distributed under the terms of the GNU GENERAL
+PUBLIC LICENSE Version 2, June 1991, confer\newline
+%\href{http://www.gnu.org/copyleft/gpl.html}%
+%{\tt http://www.gnu.org/copyleft/gpl.html}
+\href{http://www.gnu.org/copyleft/gpl.html}%
+{\footnotesize \tt http://www.gnu.org/copyleft/gpl.html}
+
+\section{Details to the implementation}
+\begin{itemize}
+\item As the normal distribution is closed under affine transformations, we have 
+overloaded the corresponding methods. 
+%The same goes for the exponential distribution under scale transformations.
+\item For the general convolution algorithm for univariate probability 
+distribution functions/densities by means of FFT, which we use in the 
+overloaded {\tt "+"}-operator, confer~\cite{K:R:S:04}.
+\item Exact convolution methods are implemented for the normal, the Poisson, 
+the binomial, the negative binomial, the Gamma (and the \code{Exp}), and 
+the {$\chi^2$} distribution
+\item Exact formulae for scale transformations are implemented for 
+the Exp-/Gamma-distribution, the Weibull and the log-normal distribution
+(the latter two from version 1.9 on). 
+\item Exact formulae for affine linear transformations are available for
+the normal, the logistic and the Cauchy distribution (the latter two from
+version 1.9 on).  
+\item Instances of any class transparent to the user are initialized 
+by\linebreak[4] {\tt<classname>([<slotname>=<value>,...])}
+where except for class \code{DataClass} in package \pkg{distrSim} all classes 
+have default values for all their slots; in \code{DataClass},
+the slot \code{Data} has to be specified.
+\item
+As suggested in \cite{OOPGent} all slots are accessed and modified by 
+corresponding accessor- and replacement functions ---templates for which were 
+produced by \code{standardMethods}.
+
+{\bf We strongly discourage the use of the \code{@}-operator to modify
+or even access slots \code{r}, \code{d}, \code{p}, and \code{q}, confer
+Example~{\ref{destrex}}.}
+\end{itemize}
+%
+\section{A general utility}
+%
+Following \cite{OOPGent}, the programmer of {\tt S4}-classes should provide
+accessor and replacement functions for the inspection/modification of
+any newly introduced slot. This can be quite a task when you have a 
+lot of classes/slots.
+As these functions all have the same structure, it would be nice
+to automatically generate templates for them.
+Faced with this problem in developing this package, Thomas Stabla
+has written such a utility, \code{standardMethods} ---which the authors
+of this package recommend for any developer of {\tt S4}-classes.
+For more details, see \code{?standardMethods}.
+
+\section{Odds and Ends}
+\subsection[What should be done and what we could do]%
+{What should be done and what we could do ---for version $>$\pkgversion}
+\begin{itemize}
+\item application of analytic FourierTransforms instead of FFT where
+appropriate ---perhaps also to be controlled
+by a parameter/option
+\item use the \code{q}-slot applied to \code{runif} in \code{simplifyr} 
+for continuous distributions
+\item further exact formulae for binary arithmetic operations like \code{"*"}
+%\item derivation of a class \code{LatticeDistribution} from 
+%\code{DiscreteDistribution} to be able to easily apply FFT
+\item redo the math-method for discrete distributions when only slot \code{r} %
+is given
+%\item better documentation for method \code{evaluate} / class \code{Evaluation}
+%\item adaptation of class \code{Evaluation} / method \code{evaluate} to be more flexible
+%\item use of  \code{initialize} in generating functions
+\item generating function for new distribution classes to ease inclusion of 
+new distributions
+\item goodness of fit tests for distribution-objects
+\item use of $\tt \backslash$\code{S4method} in documentation
+\item overloading binary operators of group \code{Math2} for independent 
+distributions
+\item defining a subgroup of \code{Math2} of invertible binary operators
+%%\item better use of \code{concept} in rd-files
+%\item suggestion by \href{mailto:kouros.owzar@duke.edu}{Kouros Owzar}: 
+%in case of parameters of dimension $p>1$
+%---as in case of ${\cal N}(\mu,\sigma^2)$--- possibility to %
+%access/replace that parameter  as a vector
+\end{itemize}
+\subsection{What should be done but for which we lack the know-how}
+\begin{itemize}
+  \item multivariate distributions
+  \item conditional distributions
+  \item copula
+\end{itemize}
+%
+\section{Acknowledgement}
+In order to give our acknowledgements their due place
+in the manual, we insert them before some rather
+extensive presentation of examples, because otherwise
+they would probably get lost or overseen by most of the
+readers.
+
+We thank Martin M\"achler and Josef Leydold for their
+helpful suggestions in conceiving the package.
+John Chambers also gave several helpful hints and
+insights when responding to our requests concerning the
+{\tt S4}-class concept in {\tt r-devel}/ {\tt r-help}.
+We got stimulating replies to an RFC on {\tt r-devel} by
+Duncan Murdoch and Gregory Warnes.
+We also thank Paul Gilbert for drawing our attention to his package
+ {\tt setRNG} and making it available as stand-alone version.
+In the last few days before the release on {\tt CRAN}, Kurt Hornik and
+Uwe Ligges were very kind, helping us to find the clue how to
+pass all necessary checks by {\tt R CMD check}.
+We also thank G. Jay Kerns for contributing code for
+the skewness and kurtosis functionals.
+
+Last not least a big "thank you" to Torsten Hothorn as editor
+of {\tt R-News}, for his patience with our endless versions
+until we finally came to a publishable version.
+%\input{distrack}
+%
+\section{Examples}
+\subsection{$12$-fold convolution of uniform $(0,1)$ variables}
+\begin{footnotesize}
+  Code also available under\newline %
+  {\href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/NormApprox.R}%
+  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}$%
+  {\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
+  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}%
+  {\tt /mathe7/DISTR/NormApprox.R}}}}}\\[2ex]
+\end{footnotesize}
+\begin{small}
+  This example shows how easily we may get the distribution of the sum of $12$
+  ${\rm i.i.d.}$ ${\rm ufo}(0,1)$--variables minus $6$--- which was used as a 
+  fast generator of ${\cal N}(0,1)$--variables in times when evaluations of 
+  $\exp$, $\log$, $\sin$ and $\tan$ were expensive, confer
+  \cite{Ric:88}, example~C, p.~163. The user should not be confused by
+   expressions  like {\tt U+U}: this {\em does not\/} mean {\tt 2U}
+  but rather convolution of two independent identically distributed 
+  random variables.
+\end{small}
+\begin{Schunk}
+\begin{Sinput}
+> require(distr)
+> N <- Norm(0,1)
+> U <- Unif(0,1)
+> U2 <- U + U 
+> U4 <- U2 + U2
+> U8 <- U4 + U4
+> U12 <- U4 + U8
+> NormApprox <- U12 - 6
+> x <- seq(-4,4,0.001)
+> opar <- par()
+> par(mfrow = c(2,1))
+> plot(x, d(NormApprox)(x),
++      type = "l",
++      xlab = "",
++      ylab = "Density",
++      main = "Exact and approximated density")
+> lines(x, d(N)(x),
++       col = "red")
+> legend("topleft",
++        legend = c("NormApprox", "Norm(0,1)"),
++        fill = c("black", "red"))
+> plot(x, d(NormApprox)(x) - d(N)(x),
++      type = "l",
++      xlab = "",
++      ylab = "\"black\" - \"red\"",
++      col = "darkgreen",
++      main = "Error")
+> lines(c(-4,4), c(0,0))
+> par(opar)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{distr-NormApprox}
+\subsection{Comparison of exact convolution to FFT for normal distributions}\label{Convex}
+\begin{footnotesize}
+  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/ConvolutionNormalDistr.R}%
+  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
+  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/ConvolutionNormalDistr.R}}}}\\[2ex]
+\end{footnotesize}
+\begin{small}
+  This example illustrates the exactness of the numerical algorithm used to 
+  compute the convolution: We know that ${\cal L}({\tt A+B})={\cal N}(5,13)$ --- 
+  if the second argument of ${\cal N}$ is the variance
+\end{small}
+\begin{Schunk}
+\begin{Sinput}
+> require(distr)
+> ## initialize two normal distributions
+> A <- Norm(mean=1, sd=2)
+> B <- Norm(mean=4, sd=3) 
+> ## convolution via addition of moments
+> AB <- A+B
+> ## casting of A,B as absolutely continuous distributions
+> ## that is, ``forget'' that A,B are normal distributions
+> A1 <- as(A, "AbscontDistribution")
+> B1 <- as(B, "AbscontDistribution")
+> ## for higher precision we change the global variable
+> ## "TruncQuantile" from 1e-5 to 1e-8
+> oldeps <- getdistrOption("TruncQuantile")
+> eps <- 1e-8
+> distroptions("TruncQuantile" = eps)
+> ## support of A1+B1 for FFT convolution is
+> ## [q(A1)(TruncQuantile), 
+> ##  q(B1)(TruncQuantile, lower.tail = FALSE)]
+> 
+> ## convolution via FFT
+> AB1 <- A1+B1
+> #############################
+> ## plots of the results
+> #############################
+> par(mfrow=c(1,3))
+> low <- q(AB)(1e-15)
+> upp <- q(AB)(1e-15, lower.tail = FALSE)
+> x <- seq(from = low, to = upp, length = 10000)
+> ## densities
+> plot(x, d(AB)(x), type = "l", lwd = 5)
+> lines(x , d(AB1)(x), col = "orange", lwd = 1)
+> title("Densities")
+> legend("topleft", legend=c("exact", "FFT"), 
++         fill=c("black", "orange"))
+> ## cdfs
+> plot(x, p(AB)(x), type = "l", lwd = 5)
+> lines(x , p(AB1)(x), col = "orange", lwd = 1)
+> title("CDFs")
+> legend("topleft", legend=c("exact", "FFT"), 
++         fill=c("black", "orange"))
+> ## quantile functions
+> x <- seq(from = eps, to = 1-eps, length = 1000)
+> plot(x, q(AB)(x), type = "l", lwd = 5)
+> lines(x , q(AB1)(x), col = "orange", lwd = 1) 
+> title("Quantile functions")
+> legend("topleft", legend=c("exact", "FFT"), 
++         fill=c("black", "orange"))
+> ## Since the plots of the results show no 
+> ## recognizable differencies, we also compute 
+> ## the total variation distance of the densities 
+> ## and the Kolmogorov distance of the cdfs
+> 
+> ## total variation distance of densities
+> total.var <- function(z, N1, N2){
++     0.5*abs(d(N1)(z) - d(N2)(z))
++ }
+> dv <- integrate(total.var, lower=-Inf, upper=Inf, rel.tol=1e-8, N1=AB, N2=AB1)
+> cat("Total variation distance of densities:\t")
+\end{Sinput}
+\begin{Soutput}
+Total variation distance of densities:	
+\end{Soutput}
+\begin{Sinput}
+> print(dv) # 4.25e-07
+\end{Sinput}
+\begin{Soutput}
+4.250016e-07 with absolute error < 1.8e-09
+\end{Soutput}
+\begin{Sinput}
+> ### meanwhile realized in package "distrEx" 
+> ### as TotalVarDist(N1,N2)
+> 
+> ## Kolmogorov distance of cdfs 
+> ## the distance is evaluated on a random grid
+> z <- r(Unif(Min=low, Max=upp))(1e5)
+> dk <- max(abs(p(AB)(z)-p(AB1)(z)))
+> cat("Kolmogorov distance of cdfs:\t", dk, "\n") 
+\end{Sinput}
+\begin{Soutput}
+Kolmogorov distance of cdfs:	 2.028311e-07 
+\end{Soutput}
+\begin{Sinput}
+> # 2.03e-07
+> 
+> ### meanwhile realized in package "distrEx" 
+> ### as KolmogorovDist(N1,N2)
+> 
+> ## old distroptions
+> distroptions("TruncQuantile" = oldeps)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{distr-ConvolutionNormalDistr}
+\subsection{Comparison of FFT to {\tt RtoDPQ}}\label{compex}
+\begin{footnotesize}
+  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/ComparisonFFTandRtoDPQ.R}%
+  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
+  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/ComparisonFFTandRtoDPQ.R}}}}\\[2ex]
+\end{footnotesize}
+\begin{small}
+  This example illustrates the exactness (or rather not--so--exactness) of the 
+  simulational default algorithm used to compute the distribution of 
+  transformations of group {\tt math}.
+\end{small}
+\begin{Schunk}
+\begin{Sinput}
+> require(distr)
+> ################################
+> ## Comparison 1 - FFT and RtoDPQ 
+> ################################
+> 
+> N1 <- Norm(0,3)
+> N2 <- Norm(0,4)
+> rnew1 <- function(n) r(N1)(n) + r(N2)(n) 
+> X <- N1 + N2 
+>      # exact formula -> N(0,5)
+> Y <- N1 + as(N2, "AbscontDistribution") 
+>      # appoximated with FFT
+> Z <- new("AbscontDistribution", r = rnew1) 
+>      # appoximated with RtoDPQ
+> 
+> # density-plot
+> 
+> x <- seq(-15,15,0.01)
+> plot(x, d(X)(x),
++      type = "l",
++      lwd = 3,
++      xlab = "",
++      ylab = "density",
++      main = "Comparison 1",     
++      col = "black")
+> lines(x, d(Y)(x),
++      col = "yellow")
+> lines(x, d(Z)(x),
++      col = "red")
+> legend("topleft",
++   legend = c("Exact", "FFT-Approximation", 
++              "RtoDPQ-Approximation"),
++        fill = c("black", "yellow", "red"))
+> ############################################
+> ## Comparison 2 - "Exact" Formula and RtoDPQ
+> ############################################
+> 
+> B <- Binom(size = 6, prob = 0.5) * 10
+> N <- Norm()
+> rnew2 <- function(n) r(B)(n) + r(N)(n)
+> Y <- B + N 
+>      # "exact" formula
+> Z <- new("AbscontDistribution", r = rnew2) 
+>      # appoximated with RtoDPQ
+> 
+> # density-plot
+> 
+> x  <- seq(-5,65,0.01)
+> plot(x, d(Y)(x),
++      type = "l",
++      xlab = "",
++      ylab = "density",
++      main = "Comparison 2",
++      col = "black")
+> lines(x, d(Z)(x),
++      col = "red")
+> legend("topleft",
++        legend = c("Exact", "RtoDQP-Approximation"),
++        fill = c("black", "red"))
+\end{Sinput}
+\end{Schunk}
+\includegraphics{distr-ComparisonFFTandRtoDPQ}
+\subsection{Comparison of exact and approximate stationary regressor distribution}\label{statex}
+\begin{footnotesize}
+  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/StationaryRegressorDistr.R}%
+  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
+  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/StationaryRegressorDistr.R}}}}\\[2ex]
+\end{footnotesize}
+\begin{small}
+  Another illustration for the use of package {\tt "distr"}.
+  In case of a stationary AR(1)--model, for non--normal innovation distribution, 
+  the stationary distribution of the observations must be approximated by finite 
+  convolutions. That these approximations give fairly good results for
+  approximations down to small orders is exemplified by the Gaussian case where 
+  we may compare the approximation to the exact stationary distribution.
+\end{small}
+\begin{Schunk}
+\begin{Sinput}
+> require(distr)
+> ## Approximation of the stationary regressor 
+> ## distribution of an AR(1) process 
+> ##       X_t = phi X_{t-1} + V_t 
+> ## where V_t i.i.d N(0,1) and phi\in(0,1)
+> ## We obtain 
+> ##    X_t = \sum_{j=1}^\infty phi^j V_{t-j}
+> ## i.e., X_t \sim N(0,1/(1-phi^2))
+> phi <- 0.5
+> ## casting of V as absolutely continuous distributions
+> ## that is, ``forget'' that V is a normal distribution
+> V <- as(Norm(), "AbscontDistribution")
+> ## for higher precision we change the global variable
+> ## "TruncQuantile" from 1e-5 to 1e-8
+> oldeps <- getdistrOption("TruncQuantile")
+> eps <- 1e-8
+> distroptions("TruncQuantile" = eps)
+> ## Computation of the approximation 
+> ##      H=\sum_{j=1}^n phi^j V_{t-j}
+> ## of the stationary regressor distribution 
+> ## (via convolution using FFT)
+> H <- V
+> n <- 15 
+> ## may take some time
+> for(i in 1:n){Vi <- phi^i*V; H <- H + Vi } 
+> ## the stationary regressor distribution (exact)
+> X <- Norm(sd=sqrt(1/(1-phi^2)))
+> #############################
+> ## plots of the results
+> #############################
+> par(mfrow=c(1,3))
+> low <- q(X)(1e-15)
+> upp <- q(X)(1e-15, lower.tail = FALSE)
+> x <- seq(from = low, to = upp, length = 10000)
+> ## densities
+> plot(x, d(X)(x),type = "l", lwd = 5)
+> lines(x , d(H)(x), col = "orange", lwd = 1)
+> title("Densities")
+> legend("topleft", legend=c("exact", "FFT"), 
++         fill=c("black", "orange"))
+> ## cdfs
+> plot(x, p(X)(x),type = "l", lwd = 5)
+> lines(x , p(H)(x), col = "orange", lwd = 1)
+> title("CDFs")
+> legend("topleft", legend=c("exact", "FFT"), 
++         fill=c("black", "orange"))
+> ## quantile functions
+> x <- seq(from = eps, to = 1-eps, length = 1000)
+> plot(x, q(X)(x),type = "l", lwd = 5)
+> lines(x , q(H)(x), col = "orange", lwd = 1)
+> title("Quantile functions")
+> legend( "topleft", 
++         legend=c("exact", "FFT"), 
++         fill=c("black", "orange"))
+> ## Since the plots of the results show no 
+> ## recognizable differencies, we also compute 
+> ## the total variation distance of the densities 
+> ## and the Kolmogorov distance of the cdfs
+> 
+> ## total variation distance of densities
+> total.var <- function(z, N1, N2){
++     0.5*abs(d(N1)(z) - d(N2)(z))
++ }
+> dv <- integrate(f = total.var, lower = -Inf, 
++                 upper = Inf, rel.tol = 1e-5, 
++                 N1=X, N2=H)
+> cat("Total variation distance of densities:\t")
+\end{Sinput}
+\begin{Soutput}
+Total variation distance of densities:	
+\end{Soutput}
+\begin{Sinput}
+> print(dv) # <1.0e-05
+\end{Sinput}
+\begin{Soutput}
+6.552447e-05 with absolute error < 5.5e-06
+\end{Soutput}
+\begin{Sinput}
+> ### meanwhile realized in package "distrEx" 
+> ### as TotalVarDist(N1,N2)
+> 
+> 
+> ## Kolmogorov distance of cdfs 
+> ## the distance is evaluated on a random grid
+> z <- r(Unif(Min=low, Max=upp))(1e5)
+> dk <- max(abs(p(X)(z)-p(H)(z)))
+> cat("Kolmogorov distance of cdfs:\t", dk, "\n") 
+\end{Sinput}
+\begin{Soutput}
+Kolmogorov distance of cdfs:	 6.5379e-05 
+\end{Soutput}
+\begin{Sinput}
+> # ~5e-06
+> 
+> ### meanwhile realized in package "distrEx" 
+> ### as KolmogorovDist(N1,N2)
+> 
+> 
+> ## old distroptions
+> distroptions("TruncQuantile" = oldeps)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{distr-StationaryRegressorDistr}
+\subsection{Truncation and Huberization/winsorization}\label{truncex}
+\begin{footnotesize}
+  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/huberize.R}%
+    {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
+  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/huberize.R}}}}\\[2ex]
+\href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/truncate.R}%
+    {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
+    {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/truncate.R}}}}\\[2ex]
+\end{footnotesize}
+\begin{small}
+The operations of truncation and Huberization play a crucial role in Robust 
+Statistics, but also arise in many other contexts like censoring etc; they may 
+now be formulated quite generally as shown in this example. With the slots
+ {\tt d}, {\tt p} and {\tt q} of class {\tt UnivariateDistribution} being
+{\tt OptionalFunction} from version {\tt 1.4} on, it would be no problem to 
+return a corresponding distribution object now.
+\end{small}
+\begin{Schunk}
+\begin{Sinput}
+> require(distr)
+> if(!isGeneric("Huberize")) 
++     setGeneric("Huberize", 
++        function(object, lower, upper) 
++                 standardGeneric("Huberize")
++                 )
+\end{Sinput}
+\begin{Soutput}
+[1] "Huberize"
+\end{Soutput}
+\begin{Sinput}
+> setMethod("Huberize",
++           signature(object = "AbscontDistribution", 
++           lower = "numeric", upper = "numeric"),
++           function(object, lower, upper){
++             ## new random number function
++             rnew = function(n){
++               rn = r(object)(n)
++               ifelse(rn < lower, lower, 
++                      ifelse(rn >= upper, upper, rn))
++             }
++ 
++             ## new cdf 
++             pnew = function(x)
++               ifelse(x < lower, 0, 
++                      ifelse(x >= upper, 1, p(object)(x)))
++ 
++             ## new quantile function
++             plower = p(object)(lower)
++             pupper = p(object)(upper)
++             qnew = function(x)
++               ifelse(x < plower,
++                      ifelse(x < 0, NA, -Inf),
++                      ifelse(x >= pupper,
++                             ifelse(x > 1, NA, upper),
++                             q(object)(x)))
++ 
++             new("UnivariateDistribution",
++                 r = rnew, p = pnew, q = qnew, d = NULL)
++           })
+\end{Sinput}
+\begin{Soutput}
+[1] "Huberize"
+\end{Soutput}
+\begin{Sinput}
+> # Example
+> # Normal(0,1)-Distribution huberized at -0.5 and 1
+> N = Norm()
+> HN = Huberize(N, -0.5, 1)
+> # some huberized randomnumbers
+> r(HN)(10)
+\end{Sinput}
+\begin{Soutput}
+ [1]  1.0000000  0.7060386  1.0000000  0.2907470  0.8230530  0.8482795
+ [7]  0.4026078  0.8987039  0.5820899 -0.3140811
+\end{Soutput}
+\begin{Sinput}
+> ## plot is not (yet) available for class
+> ## UnivariateDistribution, i.e. distrib's
+> ## which are neither a.c. nor discrete 
+> ## (here HN is a mixture of a.c. and discrete 
+> ## distributions)
+> 
+> # cdf of huberized Normal-Distribution
+> # and of Normal-Distribution
+> oldpar = par()
+> par(mfrow = c(1,2))
+> x = seq(-1.5, 1.5, length = 1000)
+> plot(x, p(HN)(x),
++      type = "l",
++      lwd = 5,
++      ylab = "CDF")
+> points(c(-0.5,1),p(HN)(c(-0.5,1)),pch=16, cex=2)
+> points(c(-0.5,1),c(0,p(HN)(0.999)),pch=21,cex=2)
+> lines(x, p(N)(x),
++       lwd = 2,
++       col = "red")
+> legend("topleft",
++        legend = c("N(0,1)", "N(0,1) huberized"),
++        fill = c("red", "black"))
+> # quantile functions
+> x = seq(0, 1, length = 1000)
+> plot(x, q(HN)(x),
++      type = "l",
++      lwd = 5,
++      ylab = "Quantiles",
++      ylim = c(-2.5,3))
+> lines(c(0,p(HN)(-0.5)),-c(1,1)*0.5, lwd = 5)
+> points(0,-0.5,pch=20,cex=2)
+> lines(x, q(N)(x),
++       lwd = 2,
++       col = "red")
+> legend("topleft",
++        legend = c("N(0,1)", "N(0,1) huberized"),
++        fill = c("red", "black"))
+> par(oldpar)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{distr-huberize}
+\begin{Schunk}
+\begin{Sinput}
+> require(distr)
+> if(!isGeneric("Truncate")) 
++     setGeneric("Truncate", 
++        function(object, lower, upper) 
++                 standardGeneric("Truncate")
++                 )
+\end{Sinput}
+\begin{Soutput}
+[1] "Truncate"
+\end{Soutput}
+\begin{Sinput}
+> setMethod("Truncate",
++           signature(object = "AbscontDistribution", 
++           lower = "numeric", upper = "numeric"),
++           function(object, lower, upper){
++             ## new random number function
++             rnew = function(n){
++               rn = r(object)(n)
++               while(TRUE){
++                 rn[rn < lower] = NA
++                 rn[rn > upper] = NA
++                 index = is.na(rn)
++                 if(!(any(index))) break
++                 rn[index] = r(object)(sum(index))
++               }
++               rn
++             }
++ 
++             ## new cdf 
++             plower = p(object)(lower)
++             pupper = p(object)(upper)
++             pnew = function(x)
++               ifelse(x < lower, 0, 
++                      ifelse(x >= upper, 1, 
++                      (p(object)(x) - plower)/(pupper - plower)))
++ 
++ 
++             ## new density 
++             lostmass = plower + 1 - pupper
++ 
++             dnew = function(x) 
++               ifelse(x < lower, 0, 
++                      ifelse(x >= upper, 0, 
++                          d(object)(x)/(1-lostmass)))
++ 
++             # new quantile
++             qfun1 <- function(x){
++               if(x == 0) return(lower)
++               if(x == 1) return(upper)
++               fun <- function(t) pnew(t) - x
++               uniroot(f = fun, interval = c(lower, upper))$root
++             }
++             qfun2 <- function(x)
++               sapply(x, qfun1)
++ 
++             return(new("AbscontDistribution", r = rnew, 
++                    d = dnew, p = pnew, q = qfun2))            
++           })
+\end{Sinput}
+\begin{Soutput}
+[1] "Truncate"
+\end{Soutput}
+\begin{Sinput}
+> # Example
+> # Normal(0,1)-Distribution truncated at -0.5 and 1
+> 
+> N = Norm()
+> Z = Truncate(N, -0.5, 1)
+> # the truncated Distribution
+> 
+> plot(Z, lwd=5, withSweave = TRUE)
+> # some truncated randomnumbers
+> 
+> r(Z)(10)
+\end{Sinput}
+\begin{Soutput}
+ [1] -0.4412463  0.2456303  0.9868237  0.2450146  0.1987208  0.4091190
+ [7] -0.4703257  0.1557724 -0.3101479  0.5733542
+\end{Soutput}
+\begin{Sinput}
+> oldpar = par()
+> par(mfrow = c(1,2))
+> # cdf of truncated Normal-Distribution
+> # and of Normal-Distribution
+> 
+> x = seq(-1.5, 1.5, length = 1000)
+> plot(x, p(Z)(x),
++      type = "l",
++      lwd = 5,
++      xlab = "",
++      ylab = "CDF")
+> lines(x, p(N)(x),
++       lwd = 2,
++       col = "red")
+> legend("topleft",
++        legend = c("N(0,1)", "N(0,1) truncated"),
++        fill = c("red", "black"))
+> # density of truncated Normal-Distribution
+> # and of Normal-Distribution
+> 
+> x = seq(-1.5, 1.5, length = 1000)
+> plot(x, d(Z)(x),
++      type = "l",
++      lwd = 5,
++      xlab = "",
++      ylab = "density")
+> lines(x, d(N)(x),
++       lwd = 2,
++       col = "red")
+> legend("topleft", legend = c("N(0,1)", "N(0,1) truncated"),
++        fill = c("red", "black"))
+> par(oldpar)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{distr-truncate}
+\subsection{Distribution of minimum and maximum of two independent random variables}\label{minmaxex}
+\begin{footnotesize}
+  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/minandmax.R}%
+  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
+  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/minandmax.R}}}}\\[2ex]
+\end{footnotesize}
+\begin{small}
+As in the preceding example, we illustrate the use of package {\tt "distr"} by
+ making available widely necessary operations: Minimum and maximum of two 
+ independent random variables.
+\end{small}
+\begin{Schunk}
+\begin{Sinput}
+> require(distr)
+> if(!isGeneric("Minimum")) 
++     setGeneric("Minimum", 
++     function(e1, e2) standardGeneric("Minimum"))
+\end{Sinput}
+\begin{Soutput}
+[1] "Minimum"
+\end{Soutput}
+\begin{Sinput}
+> setMethod("Minimum",
++           signature(e1 = "AbscontDistribution", 
++           e2 = "AbscontDistribution"),
++           function(e1, e2){
++             ## new random number function
++             rnew <- function(n){
++               rn1 <- r(e1)(n)
++               rn2 <- r(e2)(n)
++               
++               ifelse(rn1 < rn2, rn1, rn2)
++             }
++ 
++             ## new cdf 
++             pnew <- function(x){
++               p1 <- p(e1)(x)
++               p2 <- p(e2)(x)
++               p1 + p2 - p1 * p2
++             }
++ 
++             ## new density 
++             dnew <- function(x){
++               d1 <- d(e1)(x)
++               d2 <- d(e2)(x)
++               p1 <- p(e1)(x)
++               p2 <- p(e2)(x)
++               d1 + d2 - d1 * p2 - p1 * d2
++             }
++ 
++             ## new quantile function
++             lower1 <- q(e1)(0)
++             lower2 <- q(e2)(0)
++             upper1 <- q(e1)(1)
++             upper2 <- q(e2)(1)
++             lower <- min(lower1, lower2)
++             upper <- min(upper1, upper2)
++ 
++             maxquantile = min(q(e1)(1e-6, lower.tail = FALSE), 
++                               q(e2)(1e-6, lower.tail = FALSE))
++             minquantile = min(q(e1)(1e-6), 
++                               q(e2)(1e-6)) 
++             
++             qfun1 <- function(x){
++               if(x == 0) return(lower)
++               if(x == 1) return(upper)
++               fun <- function(t) pnew(t) - x
++               uniroot(f = fun, 
++                   interval = c(maxquantile, 
++                                minquantile))$root
++             }
++             qfun2 <- function(x)
++               sapply(x, qfun1)
++ 
++             return(new("AbscontDistribution", r = rnew, 
++                    d = dnew, p = pnew, q = qfun2))            
++           })
+\end{Sinput}
+\begin{Soutput}
+[1] "Minimum"
+\end{Soutput}
+\begin{Sinput}
+> if(!isGeneric("Maximum")) setGeneric("Maximum", 
++     function(e1, e2) standardGeneric("Maximum"))
+\end{Sinput}
+\begin{Soutput}
+[1] "Maximum"
+\end{Soutput}
+\begin{Sinput}
+> setMethod("Maximum",
++           signature(e1 = "AbscontDistribution", 
++                     e2 = "AbscontDistribution"),
++           function(e1, e2){
++             ## new random number function
++             rnew <- function(n){
++               rn1 <- r(e1)(n)
++               rn2 <- r(e2)(n)
++               
++               ifelse(rn1 > rn2, rn1, rn2)
++             }
++ 
++             ## new cdf 
++             pnew <- function(x){
++               p1 <- p(e1)(x)
++               p2 <- p(e2)(x)
++               p1 * p2
++             }
++ 
++             ## new density 
++             dnew <- function(x){
++               d1 <- d(e1)(x)
++               d2 <- d(e2)(x)
++               p1 <- p(e1)(x)
++               p2 <- p(e2)(x)
++               d1 * p2 + p1 * d2
++             }
++ 
++             ## new quantile function
++             lower1 <- q(e1)(0)
++             lower2 <- q(e2)(0)
++             upper1 <- q(e1)(1)
++             upper2 <- q(e2)(1)
++             lower <- max(lower1, lower2)
++             upper <- max(upper1, upper2)
++ 
++             maxquantile = max(q(e1)(1e-6, lower.tail = FALSE), 
++                               q(e2)(1e-6, lower.tail = FALSE))
++ 
++             minquantile = max(q(e1)(1e-6), q(e2)(1e-6)) 
++             print(c(minquantile,maxquantile))
++             
++             qfun1 <- function(x){
++               if(x == 0) return(lower)
++               if(x == 1) return(upper)
++               fun <- function(t) pnew(t) - x
++               uniroot(f = fun, interval = c(maxquantile, 
++                                         minquantile))$root
++             }
++             qfun2 <- function(x)
++               sapply(x, qfun1)
++             
++             return(new("AbscontDistribution", r = rnew, 
++                    d = dnew, p = pnew, q = qfun2))            
++           })
+\end{Sinput}
+\begin{Soutput}
+[1] "Maximum"
+\end{Soutput}
+\begin{Sinput}
+> # Example
+> 
+> N <- Norm(mean = 0, sd = 1)
+> U <- Unif(Min = 0, Max = 1)
+> Y <- Maximum(N, U)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.000001 4.753424
+\end{Soutput}
+\begin{Sinput}
+> distroptions("TruncQuantile"=1e-6)
+> plot(Y, lwd = 3, withSweave = TRUE)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{distr-minandmax}
+\begin{Schunk}
+\begin{Sinput}
+> Z <- Minimum(N,U)
+> plot(Z, lwd = 3, withSweave = TRUE)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{distr-min}
+\subsection{Instructive destructive example}\label{destrex}
+\begin{footnotesize}
+  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/destructive.R}%
+  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
+  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/destructive.R}}}}\\[2ex]
+\end{footnotesize}
+\begin{Schunk}
+\begin{Sinput}
+> ##########################################################
+> ## Demo: Instructive destructive example
+> ##########################################################
+> require(distr)
+> ## package "distr" encourages 
+> ## consistency but does not 
+> ## enforce it---so in general  
+> ## d o   n o t   m o d i f y
+> ## slots d,p,q,r!
+> 
+> N <- Norm()
+> B <- Binom()
+> N@d <- B@d
+> plot(N, lwd = 3, withSweave = TRUE) 
+\end{Sinput}
+\end{Schunk}
+\includegraphics{distr-destructive}
+\subsection{A simulation example}\label{simex}
+{\bf needs packages \pkg{distrSim}/\pkg{distrTEst}}\\[2ex]
+\begin{footnotesize}
+  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/SimulateandEstimate.R}%
+  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
+  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/SimulateandEstimate.R}}}}\\[2ex]
+\end{footnotesize}
+\begin{Schunk}
+\begin{Sinput}
+> have.distrTEst <- suppressWarnings(require(distrTEst)) 
+>     ### also loads distrSim
+> if (have.distrTEst)
++    { sim <- new("Simulation",
++                 seed = setRNG(),
++                 distribution = Norm(mean = 0, sd = 1),
++                 filename="sim_01",
++                 runs = 1000,
++                 samplesize = 30)
++      
++      contsim <- new("Contsimulation",
++                     seed = setRNG(),
++                     distribution.id = Norm(mean = 0, sd = 1),
++                     distribution.c = Norm(mean = 0, sd = 9),
++                     rate = 0.1,
++                     filename="contsim_01",
++                     runs = 1000,
++                     samplesize = 30)
++      
++      simulate(sim)
++      simulate(contsim)
++      
++      print(sim)
++      summary(contsim)
++      plot(contsim)
++    } else {
++     cat("\n functionality not (yet) available; ")
++     cat("you have to install package \"distrTEst\" first.\n")
++    }
+\end{Sinput}
+\begin{Soutput}
+filename of Simulation: sim_01
+Seed:  Kind: Mersenne-Twister
+       Normal Kind: Inversion
+       first 6 numbers:  0219174720	 0832852060	-0367270457
+                         1203614763	-0381113721	-0406760514
+number of runs: 1000
+dimension of the observations: 1
+size of sample: 30
+object was generated by version: 1.9
+Distribution:
+Distribution Object of Class: Norm
+mean :  0 
+sd :  1 
+name of simulation: contsim_01
+rate of contamination: 0.100000
+real Data:
+dimension of the observations: 1
+number of runs: 1000
+size of sample: 30
+\end{Soutput}
+\end{Schunk}
+\includegraphics{distr-SimulateandEstimate}
+\begin{Schunk}
+\begin{Sinput}
+> have.distrTEst <- suppressWarnings(require("distrTEst"))
+> if (have.distrTEst)
++    { psim <- function(theta,y,m0){
++        mean(pmin(pmax(-m0, y - theta), m0))
++        }
++      mestimator <- function(x, m = 0.7) {
++        uniroot(f = psim,
++                lower = -20,
++                upper = 20,
++                tol = 1e-10,
++                y = x,
++                m0 = m,
++                maxiter = 20)$root
++        }
++      
++      result.id.mean <- evaluate(sim, mean)
++      result.id.mest <- evaluate(sim, mestimator)
++      result.id.median <- evaluate(sim, median)
++      
++      
++      result.cont.mean <- evaluate(contsim, mean)
++      result.cont.mest <- evaluate(contsim, mestimator)
++      result.cont.median <- evaluate(contsim, median)
++      
++      elist <- EvaluationList(result.cont.mean,
++                              result.cont.mest,
++                              result.cont.median) 
++      
++      print(elist)
++      summary(elist)
++      plot(elist, cex = 0.7, las = 2)
++    } else {
++     cat("\n functionality not (yet) available; ")
++     cat("you have to install package \"distrTEst\" first.\n")
++    }
+\end{Sinput}
+\begin{Soutput}
+An EvaluationList Object
+name of Evaluation List: a list of "Evaluation" objects
+name of Dataobject: object
+name of Datafile: contsim_01
+----------------------------------
+An Evaluation Object
+estimator: mean
+Result: 'data.frame':	1000 obs. of  2 variables:
+ $ mean.id: num   0.1160  0.0734 -0.0394  0.3083 -0.4329 ...
+ $ mean.re: num   0.1101  0.0607 -0.0178  1.0008 -0.8484 ...
+----------------------------------
+An Evaluation Object
+estimator: mestimator
+Result: 'data.frame':	1000 obs. of  2 variables:
+ $ mstm.id: num   0.0918 -0.0166 -0.1179  0.3220 -0.4794 ...
+ $ mstm.re: num   0.09181  0.00166 -0.09665  0.43387 -0.51671 ...
+----------------------------------
+An Evaluation Object
+estimator: median
+Result: 'data.frame':	1000 obs. of  2 variables:
+ $ medn.id: num   0.115 -0.052 -0.187  0.276 -0.559 ...
+ $ medn.re: num   0.115 -0.052 -0.187  0.393 -0.644 ...
+name of Evaluation List: a list of "Evaluation" objects
+name of Dataobject: object
+name of Datafile: contsim_01
+----------------------------------
+name of Evaluation: object
+estimator: mean
+Result:
+    mean.id              mean.re         
+ Min.   :-0.5616058   Min.   :-1.957068  
+ 1st Qu.:-0.1203653   1st Qu.:-0.340242  
+ Median :-0.0004505   Median : 0.000640  
+ Mean   :-0.0008881   Mean   : 0.001126  
+ 3rd Qu.: 0.1174231   3rd Qu.: 0.337632  
+ Max.   : 0.4990808   Max.   : 1.855655  
+----------------------------------
+name of Evaluation: object
+estimator: mestimator
+Result:
+    mstm.id            mstm.re         
+ Min.   :-0.64380   Min.   :-0.633798  
+ 1st Qu.:-0.12234   1st Qu.:-0.145106  
+ Median :-0.00292   Median :-0.008916  
+ Mean   :-0.00426   Mean   :-0.006063  
+ 3rd Qu.: 0.11964   3rd Qu.: 0.134464  
+ Max.   : 0.59266   Max.   : 0.729585  
+----------------------------------
+name of Evaluation: object
+estimator: median
+Result:
+    medn.id             medn.re         
+ Min.   :-0.832080   Min.   :-0.832080  
+ 1st Qu.:-0.141513   1st Qu.:-0.158251  
+ Median : 0.005928   Median :-0.002369  
+ Mean   :-0.001718   Mean   :-0.004914  
+ 3rd Qu.: 0.137187   3rd Qu.: 0.150849  
+ Max.   : 0.602801   Max.   : 0.703493  
+\end{Soutput}
+\end{Schunk}
+\includegraphics{distr-elist}
+\par
+\begin{footnotesize}
+Output by \code{plot}/\code{show}-method for an object of class \code{Evaluation}
+\begin{Schunk}
+\begin{Sinput}
+> result.cont.mest
+\end{Sinput}
+\begin{Soutput}
+An Evaluation Object
+name of Dataobject: object
+name of Datafile: contsim_01
+estimator: mestimator
+Result: 'data.frame':	1000 obs. of  2 variables:
+ $ mstm.id: num   0.0918 -0.0166 -0.1179  0.3220 -0.4794 ...
+ $ mstm.re: num   0.09181  0.00166 -0.09665  0.43387 -0.51671 ...
+\end{Soutput}
+\end{Schunk}
+\end{footnotesize}
+\begin{footnotesize}
+Output by \code{summary}-method for an object of class \code{EvaluationList}
+\begin{Schunk}
+\begin{Sinput}
+> summary(elist)
+\end{Sinput}
+\begin{Soutput}
+name of Evaluation List: a list of "Evaluation" objects
+name of Dataobject: object
+name of Datafile: contsim_01
+----------------------------------
+name of Evaluation: object
+estimator: mean
+Result:
+    mean.id              mean.re         
+ Min.   :-0.5616058   Min.   :-1.957068  
+ 1st Qu.:-0.1203653   1st Qu.:-0.340242  
+ Median :-0.0004505   Median : 0.000640  
+ Mean   :-0.0008881   Mean   : 0.001126  
+ 3rd Qu.: 0.1174231   3rd Qu.: 0.337632  
+ Max.   : 0.4990808   Max.   : 1.855655  
+----------------------------------
+name of Evaluation: object
+estimator: mestimator
+Result:
+    mstm.id            mstm.re         
+ Min.   :-0.64380   Min.   :-0.633798  
+ 1st Qu.:-0.12234   1st Qu.:-0.145106  
+ Median :-0.00292   Median :-0.008916  
+ Mean   :-0.00426   Mean   :-0.006063  
+ 3rd Qu.: 0.11964   3rd Qu.: 0.134464  
+ Max.   : 0.59266   Max.   : 0.729585  
+----------------------------------
+name of Evaluation: object
+estimator: median
+Result:
+    medn.id             medn.re         
+ Min.   :-0.832080   Min.   :-0.832080  
+ 1st Qu.:-0.141513   1st Qu.:-0.158251  
+ Median : 0.005928   Median :-0.002369  
+ Mean   :-0.001718   Mean   :-0.004914  
+ 3rd Qu.: 0.137187   3rd Qu.: 0.150849  
+ Max.   : 0.602801   Max.   : 0.703493  
+\end{Soutput}
+\end{Schunk}
+\end{footnotesize}
+\begin{small}
+In this example we present a standard robust simulation study that --- in variations --- arises in almost
+every paper on Robust Statistics. We do this with the tools provided by our package\ldots
+\end{small}
+\subsection{Expectation of a given function under a given distribution}
+\begin{footnotesize}
+  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/Expectation.R}%
+  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
+  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/Expectation.R}}}}\\[2ex]
+  This code is for illustration only; in the mean-time, the expectation- and 
+  variance operators implemented in this example have been included to package
+   \pkg{distrEx} where their functionality has further been extended.
+\end{footnotesize}
+\begin{small}
+As in examples~\ref{truncex} and \ref{minmaxex}, we illustrate the use of 
+package {\tt "distr"} by implementing a general evaluation of expectation 
+and variance under a given distribution.
+\end{small}
+\begin{Schunk}
+\begin{Sinput}
+> have.distrEx <- suppressWarnings(require("distrEx"))
+> if (have.distrEx) 
++    {         
++      # Example
++      id <- function(x) x
++      sq <- function(x) x^2
++      
++      # Expectation and Variance of Binom(6,0.5)
++      B <- Binom(6, 0.5)
++      print(E(B, id))
++      print(E(B, sq) - E(B, id)^2)
++      
++      # Expectation and Variance of Norm(1,1)
++      N <- Norm(1, 1)
++      print(E(N, id))
++      print(E(N, sq) - E(N, id)^2)
++    } else {
++     cat("\n functionality not (yet) available; ")
++     cat("you have to install package \"distrEx\" first.\n")
++    }
+\end{Sinput}
+\begin{Soutput}
+[1] 3
+[1] 1.5
+[1] 0.9999998
+[1] 0.9999944
+\end{Soutput}
+\end{Schunk}
+\subsection{$n$-fold convolution of absolutely continuous distributions}\label{exe10}
+\begin{footnotesize}
+  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/nFoldConvolution.R}%
+  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
+  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/nFoldConvolution.R}}}}\\[2ex]
+\end{footnotesize}
+\begin{small}
+Might be useful for teaching the CLT: a straightforward implementation of the 
+$n$--fold convolution of an
+arbitrary implemented absolutely continuous distribution --- to show accuracy 
+of our method we compare it to the
+exact formula valid for $n$-fold convolution of normal distributions.\\
+From version 1.9 this is integrated to package \pkg{distr}.
+\end{small}
+\begin{Schunk}
+\begin{Sinput}
+> ##########################################################
+> ## Demo: n-fold convolution of absolutely continuous 
+> ##       probability distributions
+> ##########################################################
+> require(distr)
+> if(!isGeneric("convpow")) 
++     setGeneric("convpow", 
++     function(D1,...) standardGeneric("convpow"))
+> ##########################################################
+> ## Function for n-fold convolution
+> ## -- absolute continuous distribution -- 
+> ##########################################################
+> 
+> ##implentation of Algorithm 3.4. of 
+> # Kohl, M., Ruckdeschel, P., Stabla, T. (2005): 
+> #   General purpose convolution algorithm for distributions 
+> #   in S4-Classes by means of FFT.
+> # Technical report, Feb. 2005. Also available in
+> # http://www.uni-bayreuth.de/departments/math/org/mathe7/
+> #       /RUCKDESCHEL/pubs/comp.pdf
+> 
+> 
+> setMethod("convpow",
++           signature(D1 = "AbscontDistribution"),
++           function(D1, N){
++             if((N < 1)||(!identical(floor(N), N)))
++               stop("N has to be a natural greater than 0")
++             
++             m <- getdistrOption("DefaultNrFFTGridPointsExponent")
++ 
++     ##STEP 1
++ 
++             lower <- ifelse((q(D1)(0) > - Inf), q(D1)(0), 
++                      q(D1)(getdistrOption("TruncQuantile"))) 
++             upper <- ifelse((q(D1)(1) < Inf), q(D1)(1), 
++                      q(D1)(getdistrOption("TruncQuantile"), lower.tail = FALSE))
++ 
++     ##STEP 2
++ 
++             M <- 2^m
++             h <- (upper-lower)/M
++             if(h > 0.01)
++               warning(paste("Grid for approxfun too wide, ", 
++               "increase DefaultNrFFTGridPointsExponent", sep=""))
++             x <- seq(from = lower, to = upper, by = h)
++             p1 <- p(D1)(x)
++ 
++     ##STEP 3
++ 
++             p1 <- p1[2:(M + 1)] - p1[1:M]
++ 
++     ##STEP 4
++     
++             ## computation of DFT
++             pn <- c(p1, numeric((N-1)*M))
++             fftpn <- fft(pn)
++ 
++     ##STEP 5
++ 
++             ## convolution theorem for DFTs
++             pn <- Re(fft(fftpn^N, inverse = TRUE)) / (N*M)
++             pn <- (abs(pn) >= .Machine$double.eps)*pn
++             i.max <- N*M-(N-2)
++             pn <- c(0,pn[1:i.max])
++             dn <- pn / h
++             pn <- cumsum(pn)
++ 
++     ##STEP 6(density)
++ 
++             ## density 
++             x <- c(N*lower,seq(from = N*lower+N/2*h, 
++                    to = N*upper-N/2*h, by=h),N*upper)
++             dnfun1 <- approxfun(x = x, y = dn, yleft = 0, yright = 0)
++ 
++     ##STEP 7(density)
++  
++             standardizer <- sum(dn[2:i.max]) + (dn[1]+dn[i.max+1]) / 2
++             dnfun2 <- function(x) dnfun1(x) / standardizer
++ 
++     ##STEP 6(cdf)
++     
++             ## cdf with continuity correction h/2
++             pnfun1 <- approxfun(x = x+0.5*h, y = pn, 
++                         yleft = 0, yright = pn[i.max+1])
++ 
++     ##STEP 7(cdf)
++    
++             pnfun2 <- function(x) pnfun1(x) / pn[i.max+1]
++ 
++ 
++             ## quantile with continuity correction h/2
++             yleft <- ifelse(((q(D1)(0) == -Inf)|
++                              (q(D1)(0) == -Inf)), 
++                              -Inf, N*lower)
++             yright <- ifelse(((q(D1)(1) == Inf)|
++                               (q(D1)(1) == Inf)), 
++                               Inf, N*upper)    
++             w0 <- options("warn")
++             options(warn = -1)
++             qnfun1 <- approxfun(x = pnfun2(x+0.5*h), 
++                         y = x+0.5*h, yleft = yleft, yright = yright)
++             qnfun2 <- function(x){ 
++             ind1 <- (x == 0)*(1:length(x))
++             ind2 <- (x == 1)*(1:length(x))
++             y <- qnfun1(x)
++             y <- replace(y, ind1[ind1 != 0], yleft)
++             y <- replace(y, ind2[ind2 != 0], yright)
++             return(y)
++             }
++             options(w0)
++ 
++             rnew = function(N) apply(matrix(r(e1)(n*N), 
++                                      ncol=N), 1, sum)
++ 
++             return(new("AbscontDistribution", r = rnew, 
++                        d = dnfun1, p = pnfun2, q = qnfun2))
++ })
+\end{Sinput}
+\begin{Soutput}
+[1] "convpow"
+\end{Soutput}
+\begin{Sinput}
+> ## initialize a normal distribution
+> A <- Norm(mean=0, sd=1)
+> ## convolution power
+> N <- 10 
+> ## convolution via FFT
+> AN <- convpow(as(A,"AbscontDistribution"), N)
+> ##  ... for the normal distribution , 'convpow' has an "exact"
+> ##      method by version 1.9 so the as(.,.)  is needed to
+> ##      see how the algorithm above works
+> 
+> ## convolution exact
+> AN1 <- Norm(mean=0, sd=sqrt(N))
+> ## plots of the results
+> eps <- getdistrOption("TruncQuantile")
+> par(mfrow=c(1,3))
+> low <- q(AN1)(eps)
+> upp <- q(AN1)(eps, lower.tail = FALSE)
+> x <- seq(from = low, to = upp, length = 10000)
+> ## densities
+> plot(x, d(AN1)(x), type = "l", lwd = 5)
+> lines(x , d(AN)(x), col = "orange", lwd = 1)
+> title("Densities")
+> legend("topleft", legend=c("exact", "FFT"), 
++         fill=c("black", "orange"))
+> ## cdfs
+> plot(x, p(AN1)(x), type = "l", lwd = 5)
+> lines(x , p(AN)(x), col = "orange", lwd = 1)
+> title("CDFs")
+> legend("topleft", legend=c("exact", "FFT"), 
++         fill=c("black", "orange"))
+> ## quantile functions
+> x <- seq(from = eps, to = 1-eps, length = 1000)
+> plot(x, q(AN1)(x), type = "l", lwd = 5)
+> lines(x , q(AN)(x), col = "orange", lwd = 1) 
+> title("Quantile functions")
+> legend("topleft", 
++        legend = c("exact", "FFT"), 
++         fill = c("black", "orange"))
+\end{Sinput}
+\end{Schunk}
+\includegraphics{distr-nFoldConvolution}
+%-------------------------------------------------------------------------------
+\begin{thebibliography}{8}
+
+\bibitem{Beng:03}
+Bengtsson H. 
+\newblock The {R.oo} package - object-oriented programming with references using 
+standard {R} code.
+\newblock In: Hornik K., Leisch F. and Zeileis A. (Eds.) {\em
+  Proceedings of the 3rd International Workshop on Distributed Statistical
+  Computing (DSC 2003)\/}. Vienna, Austria.
+\newblock Published as http://www.ci.tuwien.ac.at/Conferences/DSC-2003/ 
+
+\bibitem{Cham:98}
+Chambers J.M. 
+\newblock {\em {Programming with data. A guide to the S language}\/}.
+\newblock {Springer}.
+\newblock http://cm.bell-labs.com/stat/Sbook/index.html
+
+\bibitem{OOPGent}
+Gentleman R.
+\newblock {\em Object Orientated Programming. Slides of a Short Course held in 
+Auckland\/}.
+\newblock http://www.stat.auckland.ac.nz/S-Workshop/Gentleman/Methods.pdf
+
+\bibitem{MK:05}
+Kohl M. 
+\newblock {\em Numerical Contributions to the Asymptotic Theory of Robustness\/}. 
+\newblock {Dissertation}, Universit\"at Bayreuth. 
+\newblock See also http://stamats.de/ThesisMKohl.pdf
+
+\bibitem{K:R:S:04}
+Kohl M., Ruckdeschel P. and Stabla T.
+\newblock {General Purpose Convolution Algorithm for Distributions in S4-Classes 
+by means of FFT}.
+\newblock unpublished manual
+
+\bibitem{NumR:92}
+Press W.H., Teukolsky S.A., Vetterling W.T. and Flannery B.P.
+\newblock {\em {Numerical recipes in C. The art of scientific computing.}\/}
+\newblock {Cambridge Univ. Press}, 2. Aufl.
+
+\bibitem{Ric:88}
+Rice J.A. 
+\newblock {\em {Mathematical statistics and data analysis}\/}.
+\newblock The Wadsworth \& Brooks/Cole Statistics/Probability Series.
+  {Wadsworth \& Brooks/Cole Advanced Books \& Software}, Pacific Grove,
+  California.
+
+\bibitem{R:K:S:C:04}
+Ruckdeschel P., Kohl M., Stabla T., and Camphausen F. 
+\newblock {S4 Classes for Distributions.} 
+\newblock {\em R-News\/}, {\bf 6}(2): 10--13.
+\newblock http://CRAN.R-project.org/doc/Rnews/Rnews\_2006-2.pdf
+%\newblock See also {http://www.uni-bayreuth.de/departments/math/org/mathe7/RUCKDESCHEL/pubs/distr.pdf}
+
+\end{thebibliography}
+% -------------------------------------------------------------------------------
+\end{document}
+% -------------------------------------------------------------------------------

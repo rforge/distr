@@ -37,48 +37,11 @@
 /rgb { setrgbcolor } def
 /s   { scalefont setfont } def
 % end   .ps.prolog
-% begin encoding
-/WinAnsiEncoding [
- /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
- /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
- /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
- /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
- /space /exclam /quotedbl /numbersign /dollar /percent /ampersand /quoteright
- /parenleft /parenright /asterisk /plus /comma /minus /period /slash
- /zero /one /two /three /four /five /six /seven
- /eight /nine /colon /semicolon /less /equal /greater /question
- /at /A /B /C /D /E /F /G
- /H /I /J /K /L /M /N /O
- /P /Q /R /S /T /U /V /W
- /X /Y /Z /bracketleft /backslash /bracketright /asciicircum /underscore
- /grave /a /b /c /d /e /f /g
- /h /i /j /k /l /m /n /o
- /p /q /r /s /t /u /v /w
- /x /y /z /braceleft /bar /braceright /asciitilde /.notdef
- /Euro /.notdef /quotesinglbase /florin /quotedblbase /ellipsis /dagger /daggerdbl
- /circumflex /perthousand /Scaron /guilsinglleft /OE /.notdef /Zcaron /.notdef
- /.notdef /quoteleft /quoteright /quotedblleft /quotedblright /bullet /endash /emdash
- /tilde /trademark /scaron /guilsinglright /oe /.notdef /zcaron /Ydieresis
- /space /exclamdown /cent /sterling /currency /yen /brokenbar /section
- /dieresis /copyright /ordfeminine /guillemotleft /logicalnot /hyphen /registered /macron
- /degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph /periodcentered
- /cedilla /onesuperior /ordmasculine /guillemotright /onequarter /onehalf /threequarters /questiondown
- /Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla
- /Egrave /Eacute /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex /Idieresis
- /Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /multiply
- /Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /germandbls
- /agrave /aacute /acircumflex /atilde /adieresis /aring /ae /ccedilla
- /egrave /eacute /ecircumflex /edieresis /igrave /iacute /icircumflex /idieresis
- /eth /ntilde /ograve /oacute /ocircumflex /otilde /odieresis /divide
- /oslash /ugrave /uacute /ucircumflex /udieresis /yacute /thorn /ydieresis
-]
- def
-% end encoding
 %%IncludeResource: font Helvetica
 /Helvetica findfont
 dup length dict begin
   {1 index /FID ne {def} {pop pop} ifelse} forall
-  /Encoding WinAnsiEncoding def
+  /Encoding ISOLatin1Encoding def
   currentdict
   end
 /Font1 exch definefont pop
@@ -86,7 +49,7 @@ dup length dict begin
 /Helvetica-Bold findfont
 dup length dict begin
   {1 index /FID ne {def} {pop pop} ifelse} forall
-  /Encoding WinAnsiEncoding def
+  /Encoding ISOLatin1Encoding def
   currentdict
   end
 /Font2 exch definefont pop
@@ -94,7 +57,7 @@ dup length dict begin
 /Helvetica-Oblique findfont
 dup length dict begin
   {1 index /FID ne {def} {pop pop} ifelse} forall
-  /Encoding WinAnsiEncoding def
+  /Encoding ISOLatin1Encoding def
   currentdict
   end
 /Font3 exch definefont pop
@@ -102,7 +65,7 @@ dup length dict begin
 /Helvetica-BoldOblique findfont
 dup length dict begin
   {1 index /FID ne {def} {pop pop} ifelse} forall
-  /Encoding WinAnsiEncoding def
+  /Encoding ISOLatin1Encoding def
   currentdict
   end
 /Font4 exch definefont pop
@@ -1210,8 +1173,8 @@ o
 0 setgray
 81.50 12.36 (x) .5 0 0 t
 8.55 220.75 (d\(x\)) .5 0 90 t
-/ps 10 def /Font2 findfont 10 s
-81.50 408.93 (Density of AbscontDistribution\(\)) .5 0 0 t
+/ps 10 def /Font1 findfont 10 s
+14.81 409.95 (Density of AbscontDistribution) 0 0 0 t
 182.97 48.47 268.04 393.03 cl
 182.97 48.47 268.04 393.03 cl
 0 setgray
@@ -2312,8 +2275,8 @@ o
 0 setgray
 225.50 12.36 (q) .5 0 0 t
 152.55 220.75 (p\(q\)) .5 0 90 t
-/ps 10 def /Font2 findfont 10 s
-225.50 408.93 (CDF of AbscontDistribution\(\)) .5 0 0 t
+/ps 10 def /Font1 findfont 10 s
+165.21 408.93 (CDF of AbscontDistribution) 0 0 0 t
 326.97 48.47 412.04 393.03 cl
 0.00 0.00 432.00 432.00 cl
 0 setgray
@@ -2400,8 +2363,8 @@ o
 0 setgray
 369.50 12.36 (p) .5 0 0 t
 296.55 220.75 (q\(p\)) .5 0 90 t
-/ps 10 def /Font2 findfont 10 s
-369.50 408.93 (Quantile function of AbscontDistribution\(\)) .5 0 0 t
+/ps 10 def /Font1 findfont 10 s
+281.96 409.11 (Quantile function of AbscontDistribution) 0 0 0 t
 326.97 48.47 412.04 393.03 cl
 0 setgray
 2.25 setlinewidth

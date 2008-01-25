@@ -1055,8 +1055,6 @@ if (have.distrEx)
      print(E(D4, cond = 1))
      print(E(D4, cond = 1, useApply = FALSE))
      print(E(as(D4, "UnivariateCondDistribution"), cond = 1))
-     print(E(as(D4, "UnivariateCondDistribution"), cond = 1,
-       useApply = FALSE))
      print(E(D4, function(x){x^2}, cond = 2))
      print(E(D4, function(x){x^2}, cond = 2, useApply = FALSE))
      print(E(N, function(x){x^2}))
