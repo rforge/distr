@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2007.12.8)  25 JAN 2008 10:07
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2007.12.8)  11 FEB 2008 14:58
 entering extended mode
  file:line:error style messages enabled.
  %&-line parsing enabled.
@@ -120,10 +120,10 @@ Package hyperref Info: Link coloring ON on input line 3120.
 File: hpdftex.def 2007/02/07 v6.75r Hyperref driver for pdfTeX
 \Fld@listcount=\count97
 )
-(/home/btm722/RTOP/r-devel/R/share/texmf/Sweave.sty
+(/home/btm722/RTOP/R-2-6-branch/share/texmf/Sweave.sty
 
-LaTeX Warning: You have requested package `/home/btm722/RTOP/r-devel/R/share/te
-xmf/Sweave',
+LaTeX Warning: You have requested package `/home/btm722/RTOP/R-2-6-branch/share
+/texmf/Sweave',
                but the package provides `Sweave'.
 
 Package: Sweave 
@@ -159,7 +159,7 @@ Style option: `fancyvrb' v2.6, with DG/SPQR fixes <1998/07/17> (tvz)
 \FV@OutFile=\write3
 
 No file fancyvrb.cfg.
-) (/home/btm722/RTOP/r-devel/R/share/texmf/upquote.sty
+) (/home/btm722/RTOP/R-2-6-branch/share/texmf/upquote.sty
 Package: upquote 2003/08/11 v1.1 Covington's upright-quote modification to verb
 atim and verb
 
@@ -361,12 +361,13 @@ File: distr-exam1.pdf Graphic file (type pdf)
  <use distr-exam1.pdf> [5 <./distr-exam1.pdf>] [6]
 LaTeX Font Info:    Try loading font information for TS1+aer on input line 290.
 
- (/home/btm722/RTOP/r-devel/R/share/texmf/ts1aer.fd
+ (/home/btm722/RTOP/R-2-6-branch/share/texmf/ts1aer.fd
 File: ts1aer.fd 
 )
 LaTeX Font Info:    Font shape `TS1/aer/m/n' in size <10.95> not available
 (Font)              Font shape `TS1/cmr/m/n' tried instead on input line 290.
- [7]
+
+[7]
 Underfull \hbox (badness 10000) in paragraph at lines 307--311
 
  []
@@ -421,7 +422,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 659--661
 
 LaTeX Font Info:    Try loading font information for TS1+aett on input line 680
 .
-(/home/btm722/RTOP/r-devel/R/share/texmf/ts1aett.fd
+(/home/btm722/RTOP/R-2-6-branch/share/texmf/ts1aett.fd
 File: ts1aett.fd 
 )
 LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 680
@@ -1010,46 +1011,47 @@ Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
 [69] [70] [71] [72] <distr-nFoldConvolution.pdf, id=902, 433.62pt x 433.62pt>
 File: distr-nFoldConvolution.pdf Graphic file (type pdf)
 
-<use distr-nFoldConvolution.pdf> (./distr.brf)
+<use distr-nFoldConvolution.pdf>
+No file distr.brf.
 \tf@brf=\write6
 \openout6 = `distr.brf'.
 
- [73] [74 <./distr-nFoldConvolution.pdf>] [75] (./distr.aux) ) 
+[73] [74 <./distr-nFoldConvolution.pdf>] [75] (./distr.aux) ) 
 Here is how much of TeX's memory you used:
- 5030 strings out of 95062
- 70628 string characters out of 1182216
- 118850 words of memory out of 1500000
+ 5028 strings out of 95062
+ 70644 string characters out of 1182216
+ 117856 words of memory out of 1500000
  7836 multiletter control sequences out of 10000+50000
  65321 words of font info for 147 fonts, out of 1200000 for 2000
  28 hyphenation exceptions out of 8191
  35i,11n,42p,796b,515s stack positions out of 5000i,500n,6000p,200000b,5000s
- </home/btm722/.t
-exmf-var/fonts/pk/ljfour/jknappen/ec/tctt0900.600pk> </home/btm722/.texmf-var/f
-onts/pk/ljfour/jknappen/ec/tcst1095.600pk> </home/btm722/.texmf-var/fonts/pk/lj
-four/jknappen/ec/tctt1095.600pk> </home/btm722/.texmf-var/fonts/pk/ljfour/jknap
-pen/ec/tcrm1095.600pk></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmbx10.p
-fb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmbx12.pfb></usr/share/texm
-f-texlive/fonts/type1/bluesky/cm/cmcsc10.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/bluesky/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi
-12.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi8.pfb></usr/share/t
-exmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/t
-ype1/bluesky/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr1
-7.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr6.pfb></usr/share/tex
-mf-texlive/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type
-1/bluesky/cm/cmr9.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsltt10
-.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmss10.pfb></usr/share/te
-xmf-texlive/fonts/type1/bluesky/cm/cmss12.pfb></usr/share/texmf-texlive/fonts/t
-ype1/bluesky/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cms
-y6.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy7.pfb></usr/share/t
-exmf-texlive/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/t
-ype1/bluesky/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmt
-t10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmtt12.pfb></usr/share
-/texmf-texlive/fonts/type1/bluesky/cm/cmtt8.pfb></usr/share/texmf-texlive/fonts
-/type1/bluesky/cm/cmtt9.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/ams/m
-sbm10.pfb>
-Output written on distr.pdf (75 pages, 3727206 bytes).
+ </home/btm722/.te
+xmf-var/fonts/pk/ljfour/jknappen/ec/tctt0900.600pk> </home/btm722/.texmf-var/fo
+nts/pk/ljfour/jknappen/ec/tcst1095.600pk> </home/btm722/.texmf-var/fonts/pk/ljf
+our/jknappen/ec/tctt1095.600pk> </home/btm722/.texmf-var/fonts/pk/ljfour/jknapp
+en/ec/tcrm1095.600pk></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmbx10.pf
+b></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmbx12.pfb></usr/share/texmf
+-texlive/fonts/type1/bluesky/cm/cmcsc10.pfb></usr/share/texmf-texlive/fonts/typ
+e1/bluesky/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi1
+2.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi8.pfb></usr/share/te
+xmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/bluesky/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr17
+.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr6.pfb></usr/share/texm
+f-texlive/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1
+/bluesky/cm/cmr9.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsltt10.
+pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmss10.pfb></usr/share/tex
+mf-texlive/fonts/type1/bluesky/cm/cmss12.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/bluesky/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy
+6.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy7.pfb></usr/share/te
+xmf-texlive/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/bluesky/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmtt
+10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmtt12.pfb></usr/share/
+texmf-texlive/fonts/type1/bluesky/cm/cmtt8.pfb></usr/share/texmf-texlive/fonts/
+type1/bluesky/cm/cmtt9.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/ams/ms
+bm10.pfb>
+Output written on distr.pdf (75 pages, 3722782 bytes).
 PDF statistics:
- 1068 PDF objects out of 1200 (max. 8388607)
+ 1057 PDF objects out of 1200 (max. 8388607)
  170 named destinations out of 1000 (max. 131072)
  644 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -37,7 +37,7 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 % -------------------------------------------------------------------------------
 %
 % -------------------------------------------------------------------------------
-\usepackage{/home/btm722/RTOP/r-devel/R/share/texmf/Sweave}
+\usepackage{/home/btm722/RTOP/R-2-6-branch/share/texmf/Sweave}
 \begin{document}
 % -------------------------------------------------------------------------------
 \title{{\tt S4} Classes for Distributions---a manual for packages \pkg{distr}, 
@@ -46,7 +46,7 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 %,version \pkgExversion}
 \author{\small Peter Ruckdeschel\thanks{Universit\"at Bayreuth}
 \\[-.5ex]
-\small Matthias Kohl\thanks{SIRS-Lab GmbH, Jena}
+\small Matthias Kohl\thanks{Universit\"at Bayreuth}
 \\[-.5ex]
 \small Thomas Stabla\thanks{Hans-Sachs-Gymnasium N\"urnberg}
 \\[-.5ex]
@@ -162,14 +162,14 @@ Distribution Object of Class: AbscontDistribution
 > Zs
 \end{Sinput}
 \begin{Soutput}
- [1]  9.368665  7.009492  8.681044  7.638800  5.948332  8.484756 10.141577
- [8]  7.125149  4.206934  6.686592  9.795605  8.859790  9.547660  4.370129
-[15]  6.862772 11.677068  4.768626  7.738503  8.312697  5.328832  3.570804
-[22]  7.637009  4.404166  8.271208 14.552217  6.817530  5.627259 10.627528
-[29]  5.830270  9.101205  4.127078 13.712132  7.517051  7.110819  4.160900
-[36]  6.827977  9.649462  4.656837  8.588488  3.504020 10.058272  7.280270
-[43] 11.477774  8.752581  8.886697 10.917025 12.798755  8.262264  7.922088
-[50]  7.869214
+ [1]  9.583522  5.760863  4.586821  9.671523 10.184617  6.671626 11.308596
+ [8] 10.259039  8.620391  9.266103  6.137884  9.212599  6.310778  4.779054
+[15] 10.361798  5.921485  9.898045 11.812265  8.129715  8.939559 10.041912
+[22] 11.097108  4.982937  6.392265  5.234740  7.400847  9.891949  6.835444
+[29]  8.198753  9.470395 10.115712  8.003811  9.776559 10.141899  8.046085
+[36]  4.230669  4.322238 10.413106  7.606284  8.630528  7.696034 10.977124
+[43]  7.436554  5.415405  7.494048  3.985271 10.368345  9.069012  8.746756
+[50]  4.300697
 \end{Soutput}
 \end{Schunk}
 \includegraphics{distr-exam1}
@@ -738,13 +738,13 @@ evaluated twice in a row gives two different results, compare
 >   d(sin(A1 + A2))(0.1)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.3779053
+[1] 0.3740882
 \end{Soutput}
 \begin{Sinput}
 >   d(sin(A1 + A2))(0.1)
 \end{Sinput}
 \begin{Soutput}
-[1] 0.3763678
+[1] 0.3771733
 \end{Soutput}
 \begin{Sinput}
 >   sin(A1 + A2)
@@ -1044,8 +1044,8 @@ the \code{Data} slot of a simulation \code{X} with ``new'' random numbers is
 +     }
 \end{Sinput}
 \begin{Soutput}
- [1] -1.0403320 -0.3282460  0.8154291  1.1568184  0.7075162 -1.7771224
- [7] -1.8527333  0.3176103  1.7405217 -0.1277648
+ [1] -0.1392444  0.9913888 -0.5837797  1.0035252  0.5203470  1.2997501
+ [7] -0.2720116 -1.5294220 -1.0296274  0.8272632
 \end{Soutput}
 \end{Schunk}
 %
@@ -1169,15 +1169,15 @@ is available for \code{X} of class \code{Beta} (for noncentrality $0$),
 \begin{Soutput}
 [1] 0.9999998
 [1] 0.9999998
-[1] 0.9985952
+[1] 1.002169
 [1] 4.999993
 [1] 4.999993
 [1] 4.999993
-[1] 4.968028
+[1] 4.998883
 [1] 9.999987
 [1] 9.999987
 [1] 9.999987
-[1] 10.02531
+[1] 10.04819
 Distribution Object of Class: AffLinLatticeDistribution
 [1] 2
 \end{Soutput}
@@ -1787,7 +1787,7 @@ Total variation distance of densities:
 > cat("Kolmogorov distance of cdfs:\t", dk, "\n") 
 \end{Sinput}
 \begin{Soutput}
-Kolmogorov distance of cdfs:	 2.028311e-07 
+Kolmogorov distance of cdfs:	 2.028447e-07 
 \end{Soutput}
 \begin{Sinput}
 > # 2.03e-07
@@ -1980,7 +1980,7 @@ Total variation distance of densities:
 > cat("Kolmogorov distance of cdfs:\t", dk, "\n") 
 \end{Sinput}
 \begin{Soutput}
-Kolmogorov distance of cdfs:	 6.5379e-05 
+Kolmogorov distance of cdfs:	 6.537913e-05 
 \end{Soutput}
 \begin{Sinput}
 > # ~5e-06
@@ -2066,8 +2066,8 @@ return a corresponding distribution object now.
 > r(HN)(10)
 \end{Sinput}
 \begin{Soutput}
- [1]  1.0000000  0.7060386  1.0000000  0.2907470  0.8230530  0.8482795
- [7]  0.4026078  0.8987039  0.5820899 -0.3140811
+ [1] -0.5000000 -0.5000000 -0.5000000 -0.5000000  1.0000000  0.2557124
+ [7]  0.2650877  1.0000000 -0.1573428  1.0000000
 \end{Soutput}
 \begin{Sinput}
 > ## plot is not (yet) available for class
@@ -2190,8 +2190,8 @@ return a corresponding distribution object now.
 > r(Z)(10)
 \end{Sinput}
 \begin{Soutput}
- [1] -0.4412463  0.2456303  0.9868237  0.2450146  0.1987208  0.4091190
- [7] -0.4703257  0.1557724 -0.3101479  0.5733542
+ [1]  0.99243949 -0.39802125 -0.44887172  0.47013391  0.64504241  0.24878399
+ [7] -0.27100859  0.56510709  0.06886364  0.70602072
 \end{Soutput}
 \begin{Sinput}
 > oldpar = par()
@@ -2468,8 +2468,8 @@ As in the preceding example, we illustrate the use of package {\tt "distr"} by
 filename of Simulation: sim_01
 Seed:  Kind: Mersenne-Twister
        Normal Kind: Inversion
-       first 6 numbers:  0219174720	 0832852060	-0367270457
-                         1203614763	-0381113721	-0406760514
+       first 6 numbers:  0976845445	-0516670189	-1392529084
+                        -0699941700	-0235280630	-1238824437
 number of runs: 1000
 dimension of the observations: 1
 size of sample: 30
@@ -2534,20 +2534,20 @@ name of Datafile: contsim_01
 An Evaluation Object
 estimator: mean
 Result: 'data.frame':	1000 obs. of  2 variables:
- $ mean.id: num   0.1160  0.0734 -0.0394  0.3083 -0.4329 ...
- $ mean.re: num   0.1101  0.0607 -0.0178  1.0008 -0.8484 ...
+ $ mean.id: num  -0.117  0.396  0.338 -0.253  0.057 ...
+ $ mean.re: num  -0.760  1.329  0.461 -0.308  0.213 ...
 ----------------------------------
 An Evaluation Object
 estimator: mestimator
 Result: 'data.frame':	1000 obs. of  2 variables:
- $ mstm.id: num   0.0918 -0.0166 -0.1179  0.3220 -0.4794 ...
- $ mstm.re: num   0.09181  0.00166 -0.09665  0.43387 -0.51671 ...
+ $ mstm.id: num  -0.1820  0.4360  0.3429 -0.1990  0.0863 ...
+ $ mstm.re: num  -0.186  0.517  0.265 -0.184  0.181 ...
 ----------------------------------
 An Evaluation Object
 estimator: median
 Result: 'data.frame':	1000 obs. of  2 variables:
- $ medn.id: num   0.115 -0.052 -0.187  0.276 -0.559 ...
- $ medn.re: num   0.115 -0.052 -0.187  0.393 -0.644 ...
+ $ medn.id: num  -0.309  0.475  0.345 -0.131  0.268 ...
+ $ medn.re: num  -0.309  0.538  0.337 -0.103  0.294 ...
 name of Evaluation List: a list of "Evaluation" objects
 name of Dataobject: object
 name of Datafile: contsim_01
@@ -2555,35 +2555,35 @@ name of Datafile: contsim_01
 name of Evaluation: object
 estimator: mean
 Result:
-    mean.id              mean.re         
- Min.   :-0.5616058   Min.   :-1.957068  
- 1st Qu.:-0.1203653   1st Qu.:-0.340242  
- Median :-0.0004505   Median : 0.000640  
- Mean   :-0.0008881   Mean   : 0.001126  
- 3rd Qu.: 0.1174231   3rd Qu.: 0.337632  
- Max.   : 0.4990808   Max.   : 1.855655  
+    mean.id             mean.re          
+ Min.   :-0.526755   Min.   :-1.8731564  
+ 1st Qu.:-0.129545   1st Qu.:-0.3552225  
+ Median : 0.002286   Median :-0.0005924  
+ Mean   : 0.002662   Mean   :-0.0086643  
+ 3rd Qu.: 0.126838   3rd Qu.: 0.3210953  
+ Max.   : 0.575479   Max.   : 1.9230853  
 ----------------------------------
 name of Evaluation: object
 estimator: mestimator
 Result:
-    mstm.id            mstm.re         
- Min.   :-0.64380   Min.   :-0.633798  
- 1st Qu.:-0.12234   1st Qu.:-0.145106  
- Median :-0.00292   Median :-0.008916  
- Mean   :-0.00426   Mean   :-0.006063  
- 3rd Qu.: 0.11964   3rd Qu.: 0.134464  
- Max.   : 0.59266   Max.   : 0.729585  
+    mstm.id             mstm.re          
+ Min.   :-0.624523   Min.   :-0.6141990  
+ 1st Qu.:-0.140876   1st Qu.:-0.1562896  
+ Median : 0.001766   Median :-0.0002841  
+ Mean   : 0.003251   Mean   :-0.0010734  
+ 3rd Qu.: 0.143902   3rd Qu.: 0.1659375  
+ Max.   : 0.702542   Max.   : 0.7925977  
 ----------------------------------
 name of Evaluation: object
 estimator: median
 Result:
-    medn.id             medn.re         
- Min.   :-0.832080   Min.   :-0.832080  
- 1st Qu.:-0.141513   1st Qu.:-0.158251  
- Median : 0.005928   Median :-0.002369  
- Mean   :-0.001718   Mean   :-0.004914  
- 3rd Qu.: 0.137187   3rd Qu.: 0.150849  
- Max.   : 0.602801   Max.   : 0.703493  
+    medn.id              medn.re         
+ Min.   :-0.6574990   Min.   :-0.669955  
+ 1st Qu.:-0.1629814   1st Qu.:-0.179325  
+ Median : 0.0058676   Median : 0.002479  
+ Mean   : 0.0005533   Mean   :-0.003186  
+ 3rd Qu.: 0.1541772   3rd Qu.: 0.174250  
+ Max.   : 0.7377982   Max.   : 0.743363  
 \end{Soutput}
 \end{Schunk}
 \includegraphics{distr-elist}
@@ -2600,8 +2600,8 @@ name of Dataobject: object
 name of Datafile: contsim_01
 estimator: mestimator
 Result: 'data.frame':	1000 obs. of  2 variables:
- $ mstm.id: num   0.0918 -0.0166 -0.1179  0.3220 -0.4794 ...
- $ mstm.re: num   0.09181  0.00166 -0.09665  0.43387 -0.51671 ...
+ $ mstm.id: num  -0.1820  0.4360  0.3429 -0.1990  0.0863 ...
+ $ mstm.re: num  -0.186  0.517  0.265 -0.184  0.181 ...
 \end{Soutput}
 \end{Schunk}
 \end{footnotesize}
@@ -2619,35 +2619,35 @@ name of Datafile: contsim_01
 name of Evaluation: object
 estimator: mean
 Result:
-    mean.id              mean.re         
- Min.   :-0.5616058   Min.   :-1.957068  
- 1st Qu.:-0.1203653   1st Qu.:-0.340242  
- Median :-0.0004505   Median : 0.000640  
- Mean   :-0.0008881   Mean   : 0.001126  
- 3rd Qu.: 0.1174231   3rd Qu.: 0.337632  
- Max.   : 0.4990808   Max.   : 1.855655  
+    mean.id             mean.re          
+ Min.   :-0.526755   Min.   :-1.8731564  
+ 1st Qu.:-0.129545   1st Qu.:-0.3552225  
+ Median : 0.002286   Median :-0.0005924  
+ Mean   : 0.002662   Mean   :-0.0086643  
+ 3rd Qu.: 0.126838   3rd Qu.: 0.3210953  
+ Max.   : 0.575479   Max.   : 1.9230853  
 ----------------------------------
 name of Evaluation: object
 estimator: mestimator
 Result:
-    mstm.id            mstm.re         
- Min.   :-0.64380   Min.   :-0.633798  
- 1st Qu.:-0.12234   1st Qu.:-0.145106  
- Median :-0.00292   Median :-0.008916  
- Mean   :-0.00426   Mean   :-0.006063  
- 3rd Qu.: 0.11964   3rd Qu.: 0.134464  
- Max.   : 0.59266   Max.   : 0.729585  
+    mstm.id             mstm.re          
+ Min.   :-0.624523   Min.   :-0.6141990  
+ 1st Qu.:-0.140876   1st Qu.:-0.1562896  
+ Median : 0.001766   Median :-0.0002841  
+ Mean   : 0.003251   Mean   :-0.0010734  
+ 3rd Qu.: 0.143902   3rd Qu.: 0.1659375  
+ Max.   : 0.702542   Max.   : 0.7925977  
 ----------------------------------
 name of Evaluation: object
 estimator: median
 Result:
-    medn.id             medn.re         
- Min.   :-0.832080   Min.   :-0.832080  
- 1st Qu.:-0.141513   1st Qu.:-0.158251  
- Median : 0.005928   Median :-0.002369  
- Mean   :-0.001718   Mean   :-0.004914  
- 3rd Qu.: 0.137187   3rd Qu.: 0.150849  
- Max.   : 0.602801   Max.   : 0.703493  
+    medn.id              medn.re         
+ Min.   :-0.6574990   Min.   :-0.669955  
+ 1st Qu.:-0.1629814   1st Qu.:-0.179325  
+ Median : 0.0058676   Median : 0.002479  
+ Mean   : 0.0005533   Mean   :-0.003186  
+ 3rd Qu.: 0.1541772   3rd Qu.: 0.174250  
+ Max.   : 0.7377982   Max.   : 0.743363  
 \end{Soutput}
 \end{Schunk}
 \end{footnotesize}
