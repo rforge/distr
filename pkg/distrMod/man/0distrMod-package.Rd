@@ -101,3 +101,4 @@ call into \code{suppressPackageStartupMessages()} from
 \section{Demos}{
 none so far ...
 }
+\keyword{package}
