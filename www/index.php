@@ -66,7 +66,7 @@ Ruckdeschel</a>, <a
 Kohl</a>, <a href="mailto:statho3@web.de?subject=%5Bdistr%5D">Thomas
 Stabla</a>, <a href="mailto:fcampi@gmx.de?subject=%5Bdistr%5D">Florian
 Camphausen</a>, <a href="mailto:eleonoragerber@gmx.de">Eleonara Feist</a>,
-<a href="mailto:anja_h86@web.de">Anja Hüller</a>
+<a href="mailto:anja_h86@web.de">Anja Hueller</a>
 <br>
 Required R-Version: <br>
 <ul>
