@@ -1,6 +1,7 @@
 ## generating function
 L2ParamFamily <- function(name, distribution = Norm(), distrSymm, 
-                          main = 0, nuisance, trafo, param, props = character(0), 
+                          main = 0, nuisance, trafo, param, props = character(0),
+                          modifyParam = function(theta){ Norm(mean=theta) },
                           L2deriv = EuclRandVarList(RealRandVariable(list(function(x){x}), Domain = Reals())),
                           L2derivSymm, L2derivDistr, L2derivDistrSymm, FisherInfo){
     if(missing(name)) 
@@ -53,12 +54,13 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
     }
     if(ncol(FisherInfo) != dims)
         stop(paste("dimension of 'FisherInfo' should be", dims))
-    
+
     L2Fam <- new("L2ParamFamily")
     L2Fam@name <- name
     L2Fam@distribution <- distribution
     L2Fam@distrSymm <- distrSymm
     L2Fam@param <- param
+    L2Fam@modifyParam <- modifyParam
     L2Fam@props <- props
     L2Fam@L2deriv <- L2deriv
     L2Fam@L2derivSymm <- L2derivSymm

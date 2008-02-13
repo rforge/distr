@@ -7,9 +7,10 @@
 }
 \usage{
 L2ParamFamily(name, distribution = Norm(), distrSymm,
-        main = 0, nuisance, trafo, param, props = character(0), 
-        L2deriv = EuclRandVarList(RealRandVariable(list(function(x) {x}), 
-                                                   Domain = Reals())), 
+        main = 0, nuisance, trafo, param, props = character(0),
+        modifyParam = function(theta){ Norm(mean=theta) },
+        L2deriv = EuclRandVarList(RealRandVariable(list(function(x) {x}),
+                                                   Domain = Reals())),
         L2derivSymm, L2derivDistr, L2derivDistrSymm, FisherInfo)
 }
 \arguments{
@@ -23,6 +24,9 @@ L2ParamFamily(name, distribution = Norm(), distrSymm,
   \item{trafo}{ matrix: transformation of the parameter }
   \item{param}{ object of class \code{"ParamFamParameter"}:
     parameter of the family }
+  \item{modifyParam}{ function: mapping from the parameter space 
+  (represented by \code{"param"}) to the distribution space 
+  (represented by \code{"distribution"}). }
   \item{props}{ character vector: properties of the family }
   \item{L2deriv}{ object of class \code{"EuclRandVariable"}: 
     L2 derivative of the family }

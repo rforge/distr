@@ -34,6 +34,9 @@
       symmetry of \code{distribution}. }
     \item{\code{param}:}{ object of class \code{"ParamFamParameter"}:
       parameter of the family. }
+    \item{\code{modifyParam}:}{Object of class \code{"function"}:
+      mapping from the parameter space (represented by \code{"param"}) 
+      to the distribution space (represented by \code{"distribution"}). }
     \item{\code{props}:}{ object of class \code{"character"}:
       properties of the family. }
     \item{\code{L2deriv}:}{ object of class \code{"EuclRandVariable"}:

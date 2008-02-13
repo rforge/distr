@@ -21,10 +21,8 @@
 ################################
 
 ### from Matthias' thesis / ROptEst
-
 ## optional numeric
 setClassUnion("OptionalNumeric", c("numeric", "NULL"))
-
 
 
 ################################
@@ -144,6 +142,8 @@ setClass("ParamFamily",
                       param = new("ParamFamParameter", main = 0, trafo = as.matrix(1))),
             contains = "ProbFamily")
 
+### from Matthias' thesis / ROptEst
+## L2-differentiable parametric family of probability measures
 setClass("L2ParamFamily",
             representation(L2deriv = "EuclRandVarList",
                            L2derivSymm = "FunSymmList",

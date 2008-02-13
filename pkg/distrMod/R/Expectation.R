@@ -1,3 +1,4 @@
+## why did I choose "L2ParamFamily and not "ParamFamily?
 setMethod("E", signature(object = "L2ParamFamily", 
                          fun = "EuclRandVariable", 
                          cond = "missing"),
