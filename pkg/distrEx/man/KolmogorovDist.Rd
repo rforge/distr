@@ -5,6 +5,8 @@
 \alias{KolmogorovDist,AbscontDistribution,DiscreteDistribution-method}
 \alias{KolmogorovDist,DiscreteDistribution,DiscreteDistribution-method}
 \alias{KolmogorovDist,DiscreteDistribution,AbscontDistribution-method}
+\alias{KolmogorovDist,numeric,UnivariateDistribution-method}
+\alias{KolmogorovDist,UnivariateDistribution,numeric-method}
 
 \title{Generic function for the computation of the Kolmogorov distance of two distributions}
 \description{
@@ -23,18 +25,20 @@ KolmogorovDist(e1, e2, ...)
 \S4method{KolmogorovDist}{AbscontDistribution,DiscreteDistribution}(e1,e2)
 \S4method{KolmogorovDist}{DiscreteDistribution,AbscontDistribution}(e1,e2)
 \S4method{KolmogorovDist}{DiscreteDistribution,DiscreteDistribution}(e1,e2)
+\S4method{KolmogorovDist}{numeric,UnivariateDistribution}(e1, e2)
+\S4method{KolmogorovDist}{UnivariateDistribution,numeric}(e1, e2)
 }
 \arguments{
-  \item{e1}{ object of class \code{"Distribution"} }
-  \item{e2}{ object of class \code{"Distribution"} }
+  \item{e1}{ object of class \code{"Distribution"} or class \code{"numeric"} }
+  \item{e2}{ object of class \code{"Distribution"} or class \code{"numeric"} }
   \item{\dots}{ further arguments to be used in particular methods (not in package \pkg{distrEx})}
 }
 %\details{}
 \value{
   A list containing the following components:
-  \item{e1}{ object of class \code{"Distribution"}; distribution 1  }
-  \item{e2}{ object of class \code{"Distribution"}; distribution 2}
-  \item{Kolmogorov.distance}{ Kolmogorov distance of \code{e1} and \code{e2}}
+  \item{e1}{ object of class \code{"Distribution"} or \code{"numeric"} }
+  \item{e2}{ object of class \code{"Distribution"} or \code{"numeric"} }
+  \item{Kolmogorov distance}{ Kolmogorov distance of \code{e1} and \code{e2}}
 }
 \section{Methods}{
 \describe{
@@ -60,13 +64,22 @@ KolmogorovDist(e1, e2, ...)
     a (pseudo-)random and a deterministic grid in combination
     with the support of \code{e1}.
   }
+  \item{e1 = "numeric", e2 = "UnivariateDistribution":}{
+    Kolmogorov distance between (empirical) data and a univariate 
+    distribution. The computation is based on \code{ks.test}.
+  }
+  \item{e1 = "UnivariateDistribution", e2 = "numeric":}{
+    Kolmogorov distance between (empirical) data and a univariate 
+    distribution. The computation is based on \code{ks.test}.
+  }
 }}
 \references{
     Huber, P.J. (1981) \emph{Robust Statistics}. New York: Wiley.
-    
+
     Rieder, H. (1994) \emph{Robust Asymptotic Statistics}. New York: Springer.
 }
-\author{Matthias Kohl \email{Matthias.Kohl@stamats.de}}
+\author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
+        Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de}}
 %\note{ ~~further notes~~ }
 \seealso{\code{\link{ContaminationSize}}, \code{\link{TotalVarDist}}, 
     \code{\link{HellingerDist}}, \code{\link[distr]{Distribution-class}}}
@@ -75,6 +88,9 @@ KolmogorovDist(Norm(), Gumbel())
 KolmogorovDist(Norm(), Td(10))
 KolmogorovDist(Norm(mean = 50, sd = sqrt(25)), Binom(size = 100))
 KolmogorovDist(Pois(10), Binom(size = 20)) 
+KolmogorovDist(Norm(), rnorm(100))
+KolmogorovDist((rbinom(50, size = 20, prob = 0.5)-10)/sqrt(5), Norm())
+KolmogorovDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5))
 }
 \concept{distance}
 \keyword{distribution}

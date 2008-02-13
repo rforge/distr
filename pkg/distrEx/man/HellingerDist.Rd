@@ -5,6 +5,10 @@
 \alias{HellingerDist,AbscontDistribution,DiscreteDistribution-method}
 \alias{HellingerDist,DiscreteDistribution,DiscreteDistribution-method}
 \alias{HellingerDist,DiscreteDistribution,AbscontDistribution-method}
+\alias{HellingerDist,numeric,DiscreteDistribution-method}
+\alias{HellingerDist,DiscreteDistribution,numeric-method}
+\alias{HellingerDist,numeric,AbscontDistribution-method}
+\alias{HellingerDist,AbscontDistribution,numeric-method}
 
 \title{Generic function for the computation of the Hellinger distance of two distributions}
 \description{
@@ -21,18 +25,56 @@ HellingerDist(e1, e2, ...)
 \S4method{HellingerDist}{AbscontDistribution,DiscreteDistribution}(e1,e2)
 \S4method{HellingerDist}{DiscreteDistribution,AbscontDistribution}(e1,e2)
 \S4method{HellingerDist}{DiscreteDistribution,DiscreteDistribution}(e1,e2)
+\S4method{HellingerDist}{numeric,DiscreteDistribution}(e1, e2)
+\S4method{HellingerDist}{DiscreteDistribution,numeric}(e1, e2)
+\S4method{HellingerDist}{numeric,AbscontDistribution}(e1, e2, asis.smooth.discretize = "discretize", 
+            n.discr = getdistrModOption("nDiscretize"), low.discr = getLow(e2),
+            up.discr = getUp(e2), h.smooth = getdistrModOption("hSmooth"))
+\S4method{HellingerDist}{AbscontDistribution,numeric}(e1, e2, asis.smooth.discretize = "discretize", 
+            n.discr = getdistrModOption("nDiscretize"), low.discr = getLow(e2),
+            up.discr = getUp(e2), h.smooth = getdistrModOption("hSmooth"))
 }
 \arguments{
-  \item{e1}{ object of class \code{"Distribution"} }
-  \item{e2}{ object of class \code{"Distribution"} }
+  \item{e1}{ object of class \code{"Distribution"} or class \code{"numeric"} }
+  \item{e2}{ object of class \code{"Distribution"} or class \code{"numeric"} }
+  \item{asis.smooth.discretize}{ possible methods are \code{"asis"}, 
+    \code{"smooth"} and \code{"discretize"}. Default is \code{"discretize"}.}
+  \item{n.discr}{ if \code{asis.smooth.discretize} is equal to 
+    \code{"discretize"} one has to specify the number of lattice points 
+    used to discretize the abs. cont. distribution.}
+  \item{low.discr}{ if \code{asis.smooth.discretize} is equal to 
+    \code{"discretize"} one has to specify the lower end point of the lattice 
+    used to discretize the abs. cont. distribution.}
+  \item{up.discr}{ if \code{asis.smooth.discretize} is equal to 
+    \code{"discretize"} one has to specify the upper end point of the lattice 
+    used to discretize the abs. cont. distribution.}
+  \item{h.smooth}{ if \code{asis.smooth.discretize} is equal to 
+    \code{"smooth"} -- i.e., the empirical distribution of the provided 
+    data should be smoothed -- one has to specify this parameter.}
   \item{\dots}{ further arguments to be used in particular methods (not in package \pkg{distrEx})}
 }
-%\details{}
+\details{
+  In case we want to compute the Hellinger distance between (empirical) data
+  and an abs. cont. distribution, we can specify the parameter \code{asis.smooth.discretize}
+  to avoid trivial distances (distance = 1).
+
+  Using \code{asis.smooth.discretize = "discretize"}, which is the default,
+  leads to a discretization of the provided abs. cont. distribution and 
+  the distance is computed between the provided data and the discretized
+  distribution.
+
+  Using \code{asis.smooth.discretize = "smooth"} causes smoothing of the
+  empirical distribution of the provided data. This is, the empirical
+  data is convoluted with the normal distribution \code{Norm(mean = 0, sd = h.smooth)}
+  which leads to an abs. cont. distribution. Afterwards the distance 
+  between the smoothed empirical distribution and the provided abs. cont.
+  distribution is computed.
+}
 \value{
   A list containing the following components:
-  \item{e1}{ object of class \code{"Distribution"}; distribution 1  }
-  \item{e2}{ object of class \code{"Distribution"}; distribution 2}
-  \item{Hellinger.distance}{ Hellinger distance of \code{e1} and \code{e2}}
+  \item{e1}{ object of class \code{"Distribution"} or \code{"numeric"} }
+  \item{e2}{ object of class \code{"Distribution"} or \code{"numeric"} }
+  \item{Hellinger distance}{ Hellinger distance of \code{e1} and \code{e2}}
 }
 \section{Methods}{
 \describe{
@@ -40,24 +82,44 @@ HellingerDist(e1, e2, ...)
     Hellinger distance of two absolutely continuous 
     univariate distributions which is computed using \code{distrExintegrate}.
   }
-
   \item{e1 = "AbscontDistribution", e2 = "DiscreteDistribution":}{
     Hellinger distance of absolutely continuous and discrete
     univariate distributions (are mutually singular; i.e., 
-    have distance \code{=1}).}
-
+    have distance \code{=1}).
+  }
   \item{e1 = "DiscreteDistribution", e2 = "DiscreteDistribution":}{
     Hellinger distance of two discrete univariate distributions
     which is computed using \code{support} and \code{sum}.
   }
-
   \item{e1 = "DiscreteDistribution", e2 = "AbscontDistribution":}{
     \crHellinger distance of discrete and absolutely continuous 
     univariate distributions (are mutually singular; i.e., 
-    have distance \code{=1}).}
+    have distance \code{=1}).
+  }
+  \item{e1 = "numeric", e2 = "DiscreteDistribution":}{
+    Hellinger distance between (empirical) data and a discrete 
+    distribution.
+  }
+  \item{e1 = "DiscreteDistribution", e2 = "numeric":}{
+    Hellinger distance between (empirical) data and a discrete
+    distribution.
+  }
+  \item{e1 = "numeric", e2 = "AbscontDistribution":}{
+    Hellinger distance between (empirical) data and an abs. cont. 
+    distribution.
+  }
+  \item{e1 = "AbscontDistribution", e1 = "numeric":}{
+    Hellinger distance between (empirical) data and an abs. cont. 
+    distribution.
+  }
 }}
-\references{Rieder, H. (1994) \emph{Robust Asymptotic Statistics}. New York: Springer.}
-\author{Matthias Kohl \email{Matthias.Kohl@stamats.de}}
+\references{
+    Huber, P.J. (1981) \emph{Robust Statistics}. New York: Wiley.
+
+    Rieder, H. (1994) \emph{Robust Asymptotic Statistics}. New York: Springer.
+}
+\author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
+        Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de}}
 %\note{ ~~further notes~~ }
 \seealso{\code{\link{distrExIntegrate}}, \code{\link{ContaminationSize}}, 
     \code{\link{TotalVarDist}}, \code{\link{KolmogorovDist}}, 
@@ -67,6 +129,16 @@ HellingerDist(Norm(), Gumbel())
 HellingerDist(Norm(), Td(10))
 HellingerDist(Norm(mean = 50, sd = sqrt(25)), Binom(size = 100)) # mutually singular
 HellingerDist(Pois(10), Binom(size = 20)) 
+
+x <- rnorm(100)
+HellingerDist(Norm(), x)
+HellingerDist(x, Norm(), asis.smooth.discretize = "smooth")
+
+y <- (rbinom(50, size = 20, prob = 0.5)-10)/sqrt(5)
+HellingerDist(y, Norm())
+HellingerDist(y, Norm(), asis.smooth.discretize = "smooth")
+
+HellingerDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5))
 }
 \concept{distance}
 \keyword{distribution}

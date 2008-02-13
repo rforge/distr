@@ -27,26 +27,64 @@ setMethod("HellingerDist", signature(e1 = "AbscontDistribution",
                     dfun1 = d(e1), dfun2 = d(e2), rel.tol=.Machine$double.eps^0.3) 
         options(warn = owarn)
 
-        return(list(e1 = e1, e2 = e2, Hellinger.distance = res^.5))  # ^.5 added P.R. 19-12-06
+        return(list(e1 = e1, e2 = e2, "Hellinger distance" = res^.5))  # ^.5 added P.R. 19-12-06
     })
 setMethod("HellingerDist", signature(e1 = "DiscreteDistribution", 
                                      e2 = "DiscreteDistribution"),
     function(e1, e2){
         owarn <- getOption("warn"); options(warn = -1)
         supp <- union(support(e1), support(e2))
-                         
+
         res <- 0.5*sum((sqrt(d(e1)(supp))-sqrt(d(e2)(supp)))^2)  
         options(warn = owarn)
 
-        return(list(e1 = e1, e2 = e2, Hellinger.distance = res^.5)) # ^.5 added P.R. 19-12-06
+        return(list(e1 = e1, e2 = e2, "Hellinger distance" = res^.5)) # ^.5 added P.R. 19-12-06
     })
 setMethod("HellingerDist", signature(e1 = "DiscreteDistribution", 
                                      e2 = "AbscontDistribution"),
     function(e1, e2){ 
-        return(list(e1 = e1, e2 = e2, Hellinger.distance = 1))
+        return(list(e1 = e1, e2 = e2, "Hellinger distance" = 1))
     })
 setMethod("HellingerDist", signature(e1 = "AbscontDistribution", 
                                      e2 = "DiscreteDistribution"),
     function(e1, e2){ 
-        return(list(e1 = e1, e2 = e2, Hellinger.distance = 1))
+        return(list(e1 = e1, e2 = e2, "Hellinger distance" = 1))
+    })
+## Hellinger distance
+setMethod("HellingerDist", signature(e1 = "numeric",
+                                     e2 = "DiscreteDistribution"),
+    function(e1, e2){
+        d1 <- table(e1)/length(e1)
+        d2 <- d(e2)(sort(unique(e1)))
+        e21 <- setdiff(support(e2), unique(e1))
+        d21 <- d(e2)(e21)
+        res <- sqrt(1/2)*sqrt(sum((sqrt(d1)-sqrt(d2))^2) + sum(d21))
+        names(res) <- "Hellinger distance"
+        return(list(e1 = e1, e2 = e2, "Hellinger distance" = res))
+    })
+setMethod("HellingerDist", signature(e1 = "DiscreteDistribution",
+                                     e2 = "numeric"),
+    function(e1, e2){
+        return(HellingerDist(e2, e1))
+    })
+
+## to avoid trivial distances (distance = 1)
+## abs.cont. distributions may be discretized
+## resp. empirical distributions may be smoothed
+## (by convolution with a normal distribution)
+setMethod("HellingerDist", signature(e1 = "numeric",
+                                     e2 = "AbscontDistribution"),
+    function(e1, e2, asis.smooth.discretize = "discretize", n.discr =
+             getdistrModOption("nDiscretize"), low.discr = getLow(e2),
+             up.discr = getUp(e2), h.smooth = getdistrModOption("hSmooth")){
+        .asis.smooth.discretize.distance(e1, e2, asis.smooth.discretize, n.discr,
+                 low.discr, up.discr, h.smooth, HellingerDist)
+    })
+setMethod("HellingerDist", signature(e1 = "AbscontDistribution",
+                                     e2 = "numeric"),
+    function(e1, e2, asis.smooth.discretize = "discretize", n.discr =
+             getdistrModOption("nDiscretize"), low.discr = getLow(e1),
+             up.discr = getUp(e1), h.smooth = getdistrModOption("hSmooth")){
+        return(HellingerDist(e2, e1, asis.smooth.discretize = asis.smooth.discretize, 
+                  low.discr = low.discr, up.discr = up.discr, h.smooth = h.smooth))
     })
