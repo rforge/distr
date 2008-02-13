@@ -70,12 +70,7 @@ HellingerDist(e1, e2, ...)
   between the smoothed empirical distribution and the provided abs. cont.
   distribution is computed.
 }
-\value{
-  A list containing the following components:
-  \item{e1}{ object of class \code{"Distribution"} or \code{"numeric"} }
-  \item{e2}{ object of class \code{"Distribution"} or \code{"numeric"} }
-  \item{Hellinger distance}{ Hellinger distance of \code{e1} and \code{e2}}
-}
+\value{ Hellinger distance of \code{e1} and \code{e2} }
 \section{Methods}{
 \describe{
   \item{e1 = "AbscontDistribution", e2 = "AbscontDistribution":}{

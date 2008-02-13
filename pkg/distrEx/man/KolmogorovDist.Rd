@@ -34,12 +34,7 @@ KolmogorovDist(e1, e2, ...)
   \item{\dots}{ further arguments to be used in particular methods (not in package \pkg{distrEx})}
 }
 %\details{}
-\value{
-  A list containing the following components:
-  \item{e1}{ object of class \code{"Distribution"} or \code{"numeric"} }
-  \item{e2}{ object of class \code{"Distribution"} or \code{"numeric"} }
-  \item{Kolmogorov distance}{ Kolmogorov distance of \code{e1} and \code{e2}}
-}
+\value{ Kolmogorov distance of \code{e1} and \code{e2} }
 \section{Methods}{
 \describe{
   \item{e1 = "AbscontDistribution", e2 = "AbscontDistribution":}{

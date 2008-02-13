@@ -27,10 +27,11 @@ setMethod("KolmogorovDist", signature(e1 = "AbscontDistribution",
         x <- union(x1, x2) 
 
         res <- max(abs(p(e1)(x)-p(e2)(x)))
+        names(res) <- "Kolmogorov distance"
         options(warn = owarn)
 
 
-        return(list(e1 = e1, e2 = e2, Kolmogorov.distance = res))
+        return(res)
     })
 
 setMethod("KolmogorovDist", signature(e1 = "DiscreteDistribution",
@@ -40,10 +41,10 @@ setMethod("KolmogorovDist", signature(e1 = "DiscreteDistribution",
         supp <- union(support(e1), support(e2))
 
         res <- max(abs(p(e1)(supp)-p(e2)(supp)))
+        names(res) <- "Kolmogorov distance"
         options(warn = owarn)
 
-
-        return(list(e1 = e1, e2 = e2, Kolmogorov.distance = res))
+        return(res)
     })
 
 setMethod("KolmogorovDist", signature(e1 = "DiscreteDistribution",
@@ -63,9 +64,10 @@ setMethod("KolmogorovDist", signature(e1 = "DiscreteDistribution",
         x <- union(x1, x2) 
 
         res <- max(abs(p(e1)(x)-p(e2)(x)))
+        names(res) <- "Kolmogorov distance"
         options(warn = owarn)
 
-        return(list(e1 = e1, e2 = e2, Kolmogorov.distance = res))
+        return(res)
     })
 
 setMethod("KolmogorovDist", signature(e1 = "AbscontDistribution",
@@ -79,9 +81,10 @@ setMethod("KolmogorovDist", signature(e1 = "numeric",
     function(e1, e2){
         owarn <- options(warn = -1)
         res <- ks.test(e1, e2@p)$statistic
-        options(owarn)
         names(res) <- "Kolmogorov distance"
-        return(list(e1 = e1, e2 = e2, "Kolmogorov distance" = res))
+        options(owarn)
+
+        return(res)
     })
 
 setMethod("KolmogorovDist", signature(e1 = "UnivariateDistribution",

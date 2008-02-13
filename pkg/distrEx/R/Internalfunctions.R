@@ -65,10 +65,7 @@
     if (ASD == 1) return(distance(x, Distribution))
     if (ASD == 2){
         Dx <- .smoothDistr(.empiricalDistribution(x), h = h.smooth)
-        Di <- distance(Dx, Distribution) 
-        res <- Di[[3]]
-        names(res) <- names(Di)[3]
-        return(res)
+        return(distance(Dx, Distribution))
     }
     if (ASD == 3){
         DD <- .discretizeDistr(D = Distribution, x = x, n = n.discr, lower = low.discr, upper = up.discr)

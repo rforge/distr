@@ -1,5 +1,5 @@
 ###############################################################################
-## Method: TotalVarDist                                        
+## Method: TotalVarDist
 ## total variation distance of two distributions
 ###############################################################################
 setMethod("TotalVarDist", signature(e1 = "AbscontDistribution", 
@@ -24,10 +24,11 @@ setMethod("TotalVarDist", signature(e1 = "AbscontDistribution",
         owarn <- getOption("warn"); options(warn = -1)
         integrand <- function(x, dfun1, dfun2){ 0.5*abs(dfun1(x)-dfun2(x)) }
         res <- distrExIntegrate(integrand, lower = lower, upper = upper, 
-                    dfun1 = d(e1), dfun2 = d(e2), rel.tol=.Machine$double.eps^0.3) 
+                    dfun1 = d(e1), dfun2 = d(e2), rel.tol=.Machine$double.eps^0.3)
+        names(res) <- "total variation distance"
         options(warn = owarn)
 
-        return(list(e1 = e1, e2 = e2, total.variation.distance = res))
+        return(res)
     })
 setMethod("TotalVarDist", signature(e1 = "DiscreteDistribution",
                                     e2 = "DiscreteDistribution"),
@@ -36,21 +37,27 @@ setMethod("TotalVarDist", signature(e1 = "DiscreteDistribution",
         supp <- union(support(e1), support(e2))
 
         res <- 0.5*sum(abs(d(e1)(supp)-d(e2)(supp)))
+        names(res) <- "total variation distance"
         options(warn = owarn)
 
-        return(list(e1 = e1, e2 = e2, total.variation.distance = res))
+        return(res)
     })
 setMethod("TotalVarDist", signature(e1 = "DiscreteDistribution",
                                     e2 = "AbscontDistribution"),
-    function(e1, e2){ 
-        return(list(e1 = e1, e2 = e2, total.variation.distance = 1))
+    function(e1, e2){
+        res <- 1
+        names(res) <- "total variation distance"
+
+        return(res)
     })
 setMethod("TotalVarDist", signature(e1 = "AbscontDistribution",
                                     e2 = "DiscreteDistribution"),
     function(e1, e2){ 
-        return(list(e1 = e1, e2 = e2, total.variation.distance = 1))
+        res <- 1
+        names(res) <- "total variation distance"
+
+        return(res)
     })
-## total variation distance
 setMethod("TotalVarDist", signature(e1 = "numeric",
                                     e2 = "DiscreteDistribution"),
     function(e1, e2){
@@ -60,7 +67,8 @@ setMethod("TotalVarDist", signature(e1 = "numeric",
         d21 <- d(e2)(e21)
         res <- 1/2*(sum(abs(d2-d1))+sum(d21))
         names(res) <- "Total variation distance"
-        return(list(e1 = e1, e2 = e2, total.variation.distance = res))
+
+        return(res)
     })
 setMethod("TotalVarDist", signature(e1 = "DiscreteDistribution",
                                     e2 = "numeric"),

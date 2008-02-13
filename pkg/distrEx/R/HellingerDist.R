@@ -24,10 +24,11 @@ setMethod("HellingerDist", signature(e1 = "AbscontDistribution",
         owarn <- getOption("warn"); options(warn = -1)
         integrand <- function(x, dfun1, dfun2){ 0.5*(sqrt(dfun1(x))-sqrt(dfun2(x)))^2 }
         res <- distrExIntegrate(integrand, lower = lower, upper = upper, 
-                    dfun1 = d(e1), dfun2 = d(e2), rel.tol=.Machine$double.eps^0.3) 
+                    dfun1 = d(e1), dfun2 = d(e2), rel.tol=.Machine$double.eps^0.3)
+        names(res) <- "Hellinger distance"
         options(warn = owarn)
 
-        return(list(e1 = e1, e2 = e2, "Hellinger distance" = res^.5))  # ^.5 added P.R. 19-12-06
+        return(sqrt(res))  # ^.5 added P.R. 19-12-06
     })
 setMethod("HellingerDist", signature(e1 = "DiscreteDistribution", 
                                      e2 = "DiscreteDistribution"),
@@ -36,19 +37,26 @@ setMethod("HellingerDist", signature(e1 = "DiscreteDistribution",
         supp <- union(support(e1), support(e2))
 
         res <- 0.5*sum((sqrt(d(e1)(supp))-sqrt(d(e2)(supp)))^2)  
+        names(res) <- "Hellinger distance"
         options(warn = owarn)
 
-        return(list(e1 = e1, e2 = e2, "Hellinger distance" = res^.5)) # ^.5 added P.R. 19-12-06
+        return(sqrt(res)) # ^.5 added P.R. 19-12-06
     })
 setMethod("HellingerDist", signature(e1 = "DiscreteDistribution", 
                                      e2 = "AbscontDistribution"),
-    function(e1, e2){ 
-        return(list(e1 = e1, e2 = e2, "Hellinger distance" = 1))
+    function(e1, e2){
+        res <- 1
+        names(res) <- "Hellinger distance"
+
+        return(res)
     })
 setMethod("HellingerDist", signature(e1 = "AbscontDistribution", 
                                      e2 = "DiscreteDistribution"),
     function(e1, e2){ 
-        return(list(e1 = e1, e2 = e2, "Hellinger distance" = 1))
+        res <- 1
+        names(res) <- "Hellinger distance"
+
+        return(res)
     })
 ## Hellinger distance
 setMethod("HellingerDist", signature(e1 = "numeric",
@@ -60,7 +68,8 @@ setMethod("HellingerDist", signature(e1 = "numeric",
         d21 <- d(e2)(e21)
         res <- sqrt(1/2)*sqrt(sum((sqrt(d1)-sqrt(d2))^2) + sum(d21))
         names(res) <- "Hellinger distance"
-        return(list(e1 = e1, e2 = e2, "Hellinger distance" = res))
+
+        return(res)
     })
 setMethod("HellingerDist", signature(e1 = "DiscreteDistribution",
                                      e2 = "numeric"),
