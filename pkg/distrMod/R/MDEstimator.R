@@ -1,12 +1,11 @@
 ## Implementation of minimum distance estimation
-MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist, interval, par, ...){
+MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist, dist.name, interval, par, ...){
     res <- MCEstimator(x = x, ParamFamily = ParamFamily, criterion = distance,
                 interval = interval, par = par, ...)
-    dist.name <- names(distance(x, ParamFamily@distribution))
-    if(is.null(dist.name))
-      names(res)[2] <- "distance"
-    else
-      names(res)[2] <- dist.name
+    if(missing(dist.name))
+      dist.name <- names(distance(x, ParamFamily@distribution))
+    names(res)[2] <- "distance"
+    if(!is.null(dist.name)) names(res$distance) <- dist.name
     class(res) <- c("MDEstimator", "MCEstimator")
 
     return(res)

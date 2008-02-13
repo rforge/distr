@@ -1,5 +1,5 @@
 ## Determine estimator by minimizing a given criterion
-MCEstimator <- function(x, ParamFamily, criterion, interval, par, ...){
+MCEstimator <- function(x, ParamFamily, criterion, crit.name, interval, par, ...){
     if(!is.numeric(x))
       stop(gettext("'x' has to be a numeric vector"))
     if(!is(ParamFamily, "ParamFamily"))
@@ -24,6 +24,10 @@ MCEstimator <- function(x, ParamFamily, criterion, interval, par, ...){
         theta <- res$par
         names(theta) <- names(main(ParamFamily))
         crit <- res$value
+        if(missing(crit.name))
+          names(crit) <- as.character(match.call()$criterion)
+        else
+          names(crit) <- crit.name
     }
 
     structure(list("estimate" = theta, "criterion" = crit), class = "MCEstimator")

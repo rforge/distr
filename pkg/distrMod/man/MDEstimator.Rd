@@ -7,7 +7,7 @@
   minimum distance estimators.
 }
 \usage{
-MDEstimator(x, ParamFamily, distance = KolmogorovDist, interval, par, ...)
+MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name, interval, par, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -15,6 +15,7 @@ MDEstimator(x, ParamFamily, distance = KolmogorovDist, interval, par, ...)
   \item{ParamFamily}{ object of class \code{"ParamFamily"} }
   \item{distance}{ (generic) function: to compute distance beetween (emprical)
   data and objects of class \code{"Distribution"}. }
+  \item{dist.name}{ optional name of distance }
   \item{interval}{ interval used by \code{optimize} }
   \item{par}{ initial parameter values used by \code{optim}; if \code{missing}
     the parameter of \code{ParamFamily} are used. }
