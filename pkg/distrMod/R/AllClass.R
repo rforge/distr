@@ -25,11 +25,28 @@
 ## optional numeric
 setClassUnion("OptionalNumeric", c("numeric", "NULL"))
 
+
+
 ################################
 ##
-## space classes 
+## classes
 ##
 ################################
+### from Matthias' thesis / ROptEst
+## positive definite, symmetric matrices with finite entries
+setClass("PosDefSymmMatrix", contains = "matrix",
+            prototype = prototype(matrix(1)),
+            validity = function(object){
+                if(nrow(object) != ncol(object))
+                    stop("no square matrix")
+                if(any(!is.finite(object)))
+                    stop("inifinite or missing values in matrix")
+                if(!isTRUE(all.equal(object, t(object), .Machine$double.eps^0.5)))
+                    stop("matrix is not symmetric")
+                if(!all(eigen(object)$values > 100*.Machine$double.eps))
+                   stop("matrix is (numerically) not positive definite")
+               return(TRUE)
+            })
 
 
 ### from Matthias' thesis / ROptEst
@@ -56,6 +73,30 @@ setClass("EllipticalSymmetry", contains = "DistributionSymmetry",
 setClass("SphericalSymmetry", contains = "EllipticalSymmetry", 
             prototype = prototype(type = "spherically symmetric distribution",
                                   SymmCenter = numeric(0)))
+
+## list of symmetry types
+setClass(Class = "DistrSymmList", 
+            prototype = prototype(list(new("NoSymmetry"))), 
+            contains = "list",
+            validity = function(object){
+                nrvalues <- length(object)
+                for(i in 1:nrvalues)
+                    if(!is(object[[i]], "DistributionSymmetry")) 
+                        stop("element ", i, " is no 'DistributionSymmetry'")
+                return(TRUE) 
+            })
+
+## list of symmetry types
+setClass(Class = "FunSymmList", 
+            prototype = prototype(list(new("NonSymmetric"))), 
+            contains = "list",
+            validity = function(object){
+                nrvalues <- length(object)
+                for(i in 1:nrvalues)
+                    if(!is(object[[i]], "FunctionSymmetry")) 
+                        stop("element ", i, " is no 'FunctionSymmetry'")
+                return(TRUE) 
+            })
 
 ### from Matthias' thesis / ROptEst
 ## Parameter of a parametric family of probability measures
@@ -102,5 +143,53 @@ setClass("ParamFamily",
                       props = character(0),
                       param = new("ParamFamParameter", main = 0, trafo = as.matrix(1))),
             contains = "ProbFamily")
+
+setClass("L2ParamFamily",
+            representation(L2deriv = "EuclRandVarList",
+                           L2derivSymm = "FunSymmList",
+                           L2derivDistr = "DistrList",
+                           L2derivDistrSymm = "DistrSymmList",
+                           FisherInfo = "PosDefSymmMatrix"), 
+            prototype(name = "L_2 differentiable parametric family of probability measures",
+                      distribution = new("Norm"),
+                      distrSymm = new("NoSymmetry"),
+                      modifyParam = function(theta){ Norm(mean=theta) }, ### <- new !!! (not in thesis!)
+                      param = new("ParamFamParameter", main = 0, trafo = matrix(1)),
+                      props = character(0),
+                      L2deriv = EuclRandVarList(RealRandVariable(Map = list(function(x){x}), 
+                                                                 Domain = Reals())),
+                      L2derivSymm = new("FunSymmList"),
+                      L2derivDistr = UnivarDistrList(new("Norm")),
+                      L2derivDistrSymm = new("DistrSymmList"),
+                      FisherInfo = new("PosDefSymmMatrix", matrix(1))),
+            contains = "ParamFamily", 
+            validity = function(object){
+                if(is(object@distribution, "UnivariateCondDistribution"))
+                    stop("conditional distributions are not allowed in slot 'distribution'")
+
+                if(!is(object@distrSymm, "NoSymmetry")){
+                    if(!is(object@distrSymm@SymmCenter, "numeric"))
+                        stop("slot 'SymmCenter' of 'distrSymm' has to be of class 'numeric'")
+                    if(length(object@distrSymm@SymmCenter) != dimension(img(object@distribution)))
+                        stop("slot 'SymmCenter' of 'distrSymm' has wrong dimension")
+                }
+
+                dims <- length(object@param)
+                if(ncol(object@FisherInfo) != dims)
+                    stop(paste("dimension of 'FisherInfo' should be", dims))
+                nrvalues <- numberOfMaps(object@L2deriv)
+                if(nrvalues != length(object@L2derivSymm))
+                    stop("number of Maps of 'L2deriv' != length of 'L2derivSymm'")
+                if(nrvalues != length(object@L2derivDistr))
+                    stop("number of Maps of 'L2deriv' != length of 'L2derivDistr'")
+                if(nrvalues != length(object@L2derivDistrSymm))
+                    stop("number of Maps of 'L2deriv' != length of 'L2derivDistrSymm'")
+                if(dimension(Domain(object@L2deriv[[1]])) != dimension(img(object@distribution)))
+                    stop("dimension of 'Domain' of 'L2deriv' != dimension of 'img' of 'distribution'")
+                if(dimension(object@L2deriv) != dims)
+                    stop("dimension of 'L2deriv' != dimension of parameters")
+
+                return(TRUE) 
+            })
 ## end Matthias' thesis
 ###############################################

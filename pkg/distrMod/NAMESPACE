@@ -7,14 +7,18 @@ export("NoSymmetry", "EllipticalSymmetry", "SphericalSymmetry",
        "ParamFamParameter", "ParamFamily",
        "distrModOptions", "getdistrModOption",
        "MCEstimator", "MLEstimator", "MDEstimator")
-exportClasses("OptionalNumeric", 
+exportClasses("OptionalNumeric",
+              "PosDefSymmMatrix",
               "Symmetry", "DistributionSymmetry",
               "NoSymmetry", "EllipticalSymmetry", "SphericalSymmetry",
+              "DistrSymmList", "FunSymmList",
               "ParamFamParameter",
-              "ProbFamily", "ParamFamily")
+              "ProbFamily", "ParamFamily", "L2ParamFamily")
 exportMethods("type", "SymmCenter", "distrSymm",
               "distribution", "props", "props<-", "addProp<-", "main", "main<-",
               "nuisance", "nuisance<-", "trafo", "trafo<-", "modifyParam",
               "dimension", "show", "plot", "param",
+              "L2deriv", "L2derivSymm", "L2derivDistr", "L2derivDistrSymm", 
+              "FisherInfo", "checkL2deriv",
               "KolmogorovDist", "HellingerDist", "TotalVarDist")
 S3method(print, MCEstimator)
