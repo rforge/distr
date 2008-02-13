@@ -3,10 +3,6 @@ import("startupmsg")
 import("distr")
 import("distrEx")
 
-export("NoSymmetry", "EllipticalSymmetry", "SphericalSymmetry",
-       "ParamFamParameter", "ParamFamily",
-       "distrModOptions", "getdistrModOption",
-       "MCEstimator", "MLEstimator", "MDEstimator")
 exportClasses("OptionalNumeric",
               "PosDefSymmMatrix",
               "Symmetry", "DistributionSymmetry",
@@ -18,8 +14,18 @@ exportClasses("OptionalNumeric",
 exportMethods("type", "SymmCenter", "distrSymm",
               "distribution", "props", "props<-", "addProp<-", "main", "main<-",
               "nuisance", "nuisance<-", "trafo", "trafo<-", "modifyParam",
-              "dimension", "show", "plot", "param",
-              "L2deriv", "L2derivSymm", "L2derivDistr", "L2derivDistrSymm", 
+              "dimension", "show", "plot", "param", "E", "name",
+              "L2deriv", "L2derivSymm", "L2derivDistr", "L2derivDistrSymm",
               "FisherInfo", "checkL2deriv",
               "KolmogorovDist", "HellingerDist", "TotalVarDist")
 S3method(print, MCEstimator)
+export("PosDefSymmMatrix")
+export("distrModOptions", "getdistrModOption",
+       "MCEstimator", "MLEstimator", "MDEstimator")
+export("NoSymmetry", "EllipticalSymmetry", "SphericalSymmetry",
+       "NonSymmetric", "EvenSymmetric", "OddSymmetric",
+       "DistrSymmList", "FunSymmList") 
+export("ParamFamParameter", "ParamFamily", "L2ParamFamily",
+       "BinomFamily", "PoisFamily", "NormLocationFamily",
+       "GumbelLocationFamily", "NormScaleFamily", "ExpScaleFamily",
+       "LnormScaleFamily", "GammaFamily", "NormLocationScaleFamily")
