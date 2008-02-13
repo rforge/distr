@@ -17,8 +17,7 @@ exportMethods("type", "SymmCenter", "distrSymm",
               "nuisance", "nuisance<-", "trafo", "trafo<-", "modifyParam",
               "dimension", "show", "plot", "param", "E", "name",
               "L2deriv", "L2derivSymm", "L2derivDistr", "L2derivDistrSymm",
-              "FisherInfo", "checkL2deriv",
-              "KolmogorovDist", "HellingerDist", "TotalVarDist")
+              "FisherInfo", "checkL2deriv")
 S3method(print, MCEstimator)
 export("PosDefSymmMatrix")
 export("distrModOptions", "getdistrModOption",

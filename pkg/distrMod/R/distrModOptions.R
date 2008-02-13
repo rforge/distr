@@ -1,7 +1,4 @@
-.distrModOptions <- list(
-    nDiscretize = 100,
-    hSmooth = 0.05
-    )
+.distrModOptions <- list()
 
 
 distrModOptions <- function(...) {
