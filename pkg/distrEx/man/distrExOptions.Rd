@@ -11,6 +11,8 @@
 \alias{m1dfRelativeTolerance}
 \alias{m2dfLowerTruncQuantile}
 \alias{m2dfRelativeTolerance}
+\alias{nDiscretize}
+\alias{hSmooth}
 
 \title{Function to change the global variables of the package `distrEx' }
 \description{With \code{distrExOptions} you can inspect and change 
@@ -55,6 +57,11 @@ getdistrExOption(x)
     of \code{m2df} which corresponds to the \code{m2dfLowerTruncQuantile}-quantile. }
   \item{m2dfRelativeTolerance:}{ The relative tolerance used inside of \code{m2df}
     when calling \code{distrExIntegrate}. }
+  \item{nDiscretize:}{ number of support values used for the discretization
+    of objects of class \code{"AbscontDistribution"}. }
+  \item{hSmooth:}{ smoothing parameter to smooth objects of class 
+    \code{"DiscreteDistribution"}. This is done via convolution with the
+    normal distribution \code{Norm(mean = 0, sd = hSmooth)}.}
 }
 }
 %\references{}

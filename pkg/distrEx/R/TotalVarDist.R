@@ -75,16 +75,16 @@ setMethod("TotalVarDist", signature(e1 = "DiscreteDistribution",
 setMethod("TotalVarDist", signature(e1 = "numeric",
                                     e2 = "AbscontDistribution"),
      function(e1, e2, asis.smooth.discretize = "discretize", n.discr =
-             getdistrModOption("nDiscretize"), low.discr = getLow(e2),
-             up.discr = getUp(e2), h.smooth = getdistrModOption("hSmooth")){
+             getdistrExOption("nDiscretize"), low.discr = getLow(e2),
+             up.discr = getUp(e2), h.smooth = getdistrExOption("hSmooth")){
         .asis.smooth.discretize.distance(e1, e2, asis.smooth.discretize, n.discr,
                  low.discr, up.discr, h.smooth, TotalVarDist)
      })
 setMethod("TotalVarDist", signature(e1 = "AbscontDistribution",
                                      e2 = "numeric"),
     function(e1, e2, asis.smooth.discretize = "discretize", n.discr =
-             getdistrModOption("nDiscretize"), low.discr = getLow(e1),
-             up.discr = getUp(e1), h.smooth = getdistrModOption("hSmooth")){
+             getdistrExOption("nDiscretize"), low.discr = getLow(e1),
+             up.discr = getUp(e1), h.smooth = getdistrExOption("hSmooth")){
         return(TotalVarDist(e2, e1, asis.smooth.discretize = asis.smooth.discretize, 
                   low.discr = low.discr, up.discr = up.discr, h.smooth = h.smooth))
     })

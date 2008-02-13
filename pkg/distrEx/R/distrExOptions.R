@@ -8,7 +8,9 @@
     m1dfLowerTruncQuantile = 0,
     m1dfRelativeTolerance = .Machine$double.eps^0.25,
     m2dfLowerTruncQuantile = 0,
-    m2dfRelativeTolerance = .Machine$double.eps^0.25
+    m2dfRelativeTolerance = .Machine$double.eps^0.25,
+    nDiscretize = 100,
+    hSmooth = 0.05
 )
 
 distrExOptions <- function(...) {
