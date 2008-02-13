@@ -11,6 +11,7 @@ exportClasses("OptionalNumeric",
               "PosDefSymmMatrix",
               "Symmetry", "DistributionSymmetry",
               "NoSymmetry", "EllipticalSymmetry", "SphericalSymmetry",
+              "FunctionSymmetry", "NonSymmetric", "EvenSymmetric", "OddSymmetric",
               "DistrSymmList", "FunSymmList",
               "ParamFamParameter",
               "ProbFamily", "ParamFamily", "L2ParamFamily")

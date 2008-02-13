@@ -72,6 +72,24 @@ setClass("SphericalSymmetry", contains = "EllipticalSymmetry",
             prototype = prototype(type = "spherically symmetric distribution",
                                   SymmCenter = numeric(0)))
 
+## symmetry of functions
+setClass("FunctionSymmetry", contains = c("Symmetry", "VIRTUAL"))
+
+## non-symmetric functions
+setClass("NonSymmetric", contains = "FunctionSymmetry", 
+            prototype = prototype(type = "non-symmetric function",
+                                  SymmCenter = NULL))
+
+## even functions
+setClass("EvenSymmetric", contains = "FunctionSymmetry", 
+            prototype = prototype(type = "even function",
+                                  SymmCenter = numeric(0)))
+
+## odd functions
+setClass("OddSymmetric", contains = "FunctionSymmetry", 
+            prototype = prototype(type = "odd function",
+                                  SymmCenter = numeric(0)))
+
 ## list of symmetry types
 setClass(Class = "DistrSymmList", 
             prototype = prototype(list(new("NoSymmetry"))), 
