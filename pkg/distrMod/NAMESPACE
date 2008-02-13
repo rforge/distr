@@ -2,6 +2,7 @@ import("methods")
 import("startupmsg")
 import("distr")
 import("distrEx")
+import("RandVar")
 
 exportClasses("OptionalNumeric",
               "PosDefSymmMatrix",
