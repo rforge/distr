@@ -12,12 +12,22 @@ exportClasses("OptionalNumeric",
               "DistrSymmList", "FunSymmList",
               "ParamFamParameter",
               "ProbFamily", "ParamFamily", "L2ParamFamily")
+exportClasses("RiskType", 
+              "asRisk", "asCov", "trAsCov", "asHampel", "asBias", "asGRisk",
+              "asMSE", "asUnOvShoot",
+              "fiRisk", "fiCov", "trFiCov", "fiHampel", "fiMSE", "fiBias",
+              "fiUnOvShoot")
+exportClasses("BiasType", "onesidedBiasType", "asymmetricBiasType", 
+              "symmetricBiasType")
 exportMethods("type", "SymmCenter", "distrSymm",
               "distribution", "props", "props<-", "addProp<-", "main", "main<-",
               "nuisance", "nuisance<-", "trafo", "trafo<-", "modifyParam",
               "dimension", "show", "plot", "param", "E", "name",
               "L2deriv", "L2derivSymm", "L2derivDistr", "L2derivDistrSymm",
               "FisherInfo", "checkL2deriv")
+exportMethods("bound", "width")
+exportMethods("nu", "nu<-", "name", "name<-",
+              "sign", "sign<-")
 S3method(print, MCEstimator)
 export("PosDefSymmMatrix")
 export("distrModOptions", "getdistrModOption",
@@ -29,3 +39,7 @@ export("ParamFamParameter", "ParamFamily", "L2ParamFamily",
        "BinomFamily", "PoisFamily", "NormLocationFamily",
        "GumbelLocationFamily", "NormScaleFamily", "ExpScaleFamily",
        "LnormScaleFamily", "GammaFamily", "NormLocationScaleFamily")
+export("asCov", "trAsCov", "asHampel", "asBias", "asMSE", "asUnOvShoot", 
+       "fiCov", "trFiCov", "fiHampel", "fiMSE", "fiBias", "fiUnOvShoot")
+export(symmetricBias, asymmetricBias, 
+       positiveBias, negativeBias)
