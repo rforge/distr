@@ -61,3 +61,32 @@ setMethod("show", "ParamFamily",
             show(object@props)
         }
     })
+setMethod("show", "RiskType", 
+    function(object){
+        cat(paste("An object of class", dQuote(class(object)), "\n"))
+        cat("risk type:\t", object@type, "\n")
+    })
+setMethod("show", "asUnOvShoot", 
+    function(object){
+        cat(paste("An object of class", dQuote(class(object)), "\n"))
+        cat("risk type:\t", object@type, "\n")
+        cat("width:\t", object@width, "\n")
+    })
+setMethod("show", "asHampel", 
+    function(object){
+        cat(paste("An object of class", dQuote(class(object)), "\n"))
+        cat("risk type:\t", object@type, "\n")
+        cat("bound:\t", object@bound, "\n")
+    })
+setMethod("show", "fiUnOvShoot", 
+    function(object){
+        cat(paste("An object of class", dQuote(class(object)), "\n"))
+        cat("risk type:\t", object@type, "\n")
+        cat("width:\t", object@width, "\n")
+    })
+setMethod("show", "fiHampel", 
+    function(object){
+        cat(paste("An object of class", dQuote(class(object)), "\n"))
+        cat("risk type:\t", object@type, "\n")
+        cat("bound:\t", object@bound, "\n")
+    })
