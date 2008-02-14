@@ -300,14 +300,14 @@ setClass("fiUnOvShoot", representation(width = "numeric"),
 setClass("BiasType", representation(name = "character"),
           contains = "VIRTUAL")
 
-setClass("symmetricBiasType", prototype = prototype(name = "symmetric bias"),
+setClass("symmetricBias", prototype = prototype(name = "symmetric bias"),
           contains = "BiasType")
 
-setClass("onesidedBiasType", representation(sign = "numeric"),
+setClass("onesidedBias", representation(sign = "numeric"),
           prototype = prototype(name = "positive bias", sign = 1),
           contains = "BiasType")
 
-setClass("asymmetricBiasType", 
+setClass("asymmetricBias", 
           representation(nu = "numeric"), ### weights acc. to paper
           prototype = prototype(name = "asymmetric bias", nu = c(1,1)),
           contains = "BiasType")
