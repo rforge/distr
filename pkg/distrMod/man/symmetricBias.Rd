@@ -23,7 +23,7 @@
 }
 \author{Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de}}
 %\note{}
-\seealso{\code{\link{symmetricBiasType-class}}}
+\seealso{\code{\link{symmetricBias-class}}}
 \examples{
 symmetricBias()
 
