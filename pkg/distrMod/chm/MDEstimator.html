@@ -24,7 +24,7 @@ minimum distance estimators.
 <h3>Usage</h3>
 
 <pre>
-MDEstimator(x, ParamFamily, distance = KolmogorovDist, interval, par, ...)
+MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name, interval, par, ...)
 </pre>
 
 
@@ -41,6 +41,9 @@ object of class <code>"ParamFamily"</code> </td></tr>
 <td>
 (generic) function: to compute distance beetween (emprical)
 data and objects of class <code>"Distribution"</code>. </td></tr>
+<tr valign="top"><td><code>dist.name</code></td>
+<td>
+optional name of distance </td></tr>
 <tr valign="top"><td><code>interval</code></td>
 <td>
 interval used by <code>optimize</code> </td></tr>

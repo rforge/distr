@@ -311,4 +311,3 @@ setClass("asymmetricBias",
           representation(nu = "numeric"), ### weights acc. to paper
           prototype = prototype(name = "asymmetric bias", nu = c(1,1)),
           contains = "BiasType")
-

@@ -79,9 +79,17 @@ if(!isGeneric("bound")){
 if(!isGeneric("width")){ 
     setGeneric("width", function(object) standardGeneric("width"))
 }
+
 if(!isGeneric("sign")){
     setGeneric("sign", function(x) standardGeneric("sign"))
 }
 if(!isGeneric("nu")){
     setGeneric("nu", function(object) standardGeneric("nu"))
+}
+
+if(!isGeneric("sign<-")){
+    setGeneric("sign<-", function(object,value) standardGeneric("sign<-"))
+}
+if(!isGeneric("nu<-")){
+    setGeneric("nu<-", function(object,value) standardGeneric("nu<-"))
 }

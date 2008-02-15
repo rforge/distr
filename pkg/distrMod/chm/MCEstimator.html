@@ -28,7 +28,7 @@ case of minimum distance estimators.
 <h3>Usage</h3>
 
 <pre>
-MCEstimator(x, ParamFamily, criterion, interval, par, ...)
+MCEstimator(x, ParamFamily, criterion, crit.name, interval, par, ...)
 </pre>
 
 
@@ -44,6 +44,9 @@ object of class <code>"ParamFamily"</code> </td></tr>
 <tr valign="top"><td><code>criterion</code></td>
 <td>
 function: criterion to minimize; see Details section. </td></tr>
+<tr valign="top"><td><code>crit.name</code></td>
+<td>
+optional name for criterion. </td></tr>
 <tr valign="top"><td><code>interval</code></td>
 <td>
 interval used by <code>optimize</code> </td></tr>
@@ -125,23 +128,28 @@ MCEstimator(x = x, ParamFamily = G, criterion = negLoglikelihood)
 
 ## Kolmogorov(-Smirnov) minimum distance estimator
 ## Note: you can also use function MDEstimator!
-MCEstimator(x = x, ParamFamily = G, criterion = KolmogorovDist)
+MCEstimator(x = x, ParamFamily = G, criterion = KolmogorovDist, 
+            crit.name = "Kolmogorov distance")
 
 ## Total variation minimum distance estimator
 ## Note: you can also use function MDEstimator!
 ## discretize Gamma distribution
-MCEstimator(x = x, ParamFamily = G, criterion = TotalVarDist)
+MCEstimator(x = x, ParamFamily = G, criterion = TotalVarDist, 
+            crit.name = "Total variation distance")
 
 ## or smooth empirical distribution (takes some time!)
-#MCEstimator(x = x, ParamFamily = G, criterion = TotalVarDist, asis.smooth.discretize = "smooth")
+#MCEstimator(x = x, ParamFamily = G, criterion = TotalVarDist, 
+#            asis.smooth.discretize = "smooth", crit.name = "Total variation distance")
 
 ## Hellinger minimum distance estimator
 ## Note: you can also use function MDEstimator!
 ## discretize Gamma distribution
-MCEstimator(x = x, ParamFamily = G, criterion = HellingerDist)
+MCEstimator(x = x, ParamFamily = G, criterion = HellingerDist, 
+            crit.name = "Hellinger Distance")
 
 ## or smooth empirical distribution (takes some time!)
-#MCEstimator(x = x, ParamFamily = G, criterion = HellingerDist, asis.smooth.discretize = "smooth")
+#MCEstimator(x = x, ParamFamily = G, criterion = HellingerDist, 
+#            asis.smooth.discretize = "smooth", crit.name = "Hellinger distance")
 </pre>
 
 

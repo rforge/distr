@@ -25,7 +25,7 @@ exportMethods("type", "SymmCenter", "distrSymm",
               "L2deriv", "L2derivSymm", "L2derivDistr", "L2derivDistrSymm",
               "FisherInfo", "checkL2deriv")
 exportMethods("bound", "width")
-exportMethods("nu", "name", "sign")
+exportMethods("nu", "name", "sign", "nu<-", "name<-", "sign<-")
 S3method(print, MCEstimator)
 export("PosDefSymmMatrix")
 export("distrModOptions", "getdistrModOption",
@@ -39,4 +39,4 @@ export("ParamFamParameter", "ParamFamily", "L2ParamFamily",
        "LnormScaleFamily", "GammaFamily", "NormLocationScaleFamily")
 export("asCov", "trAsCov", "asHampel", "asBias", "asMSE", "asUnOvShoot", 
        "fiCov", "trFiCov", "fiHampel", "fiMSE", "fiBias", "fiUnOvShoot")
-export(onesidedBias, symmetricBias, asymmetricBias)
+export(positiveBias, negativeBias, symmetricBias, asymmetricBias)
