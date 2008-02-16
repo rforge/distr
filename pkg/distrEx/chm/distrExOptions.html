@@ -17,6 +17,8 @@
 <param name="keyword" value="R:   m1dfRelativeTolerance">
 <param name="keyword" value="R:   m2dfLowerTruncQuantile">
 <param name="keyword" value="R:   m2dfRelativeTolerance">
+<param name="keyword" value="R:   nDiscretize">
+<param name="keyword" value="R:   hSmooth">
 <param name="keyword" value=" Function to change the global variables of the package &lsquo;distrEx&rsquo;">
 </object>
 
@@ -85,6 +87,11 @@ when calling <code>distrExIntegrate</code>. </dd>
 of <code>m2df</code> which corresponds to the <code>m2dfLowerTruncQuantile</code>-quantile. </dd>
 <dt>m2dfRelativeTolerance:</dt><dd>The relative tolerance used inside of <code>m2df</code>
 when calling <code>distrExIntegrate</code>. </dd>
+<dt>nDiscretize:</dt><dd>number of support values used for the discretization
+of objects of class <code>"AbscontDistribution"</code>. </dd>
+<dt>hSmooth:</dt><dd>smoothing parameter to smooth objects of class 
+<code>"DiscreteDistribution"</code>. This is done via convolution with the
+normal distribution <code>Norm(mean = 0, sd = hSmooth)</code>.</dd>
 </dl>
 
 <h3>Author(s)</h3>

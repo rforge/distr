@@ -62,6 +62,10 @@
 <param name="Local" value="asRisk-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="asSemivar-class">
+<param name="Local" value="asSemivar-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="asUnOvShoot">
 <param name="Local" value="asUnOvShoot.html">
 </OBJECT>
@@ -783,6 +787,10 @@
 <param name="Local" value="asMSE.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for asSemivar-class">
+<param name="Local" value="asSemivar.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for asUnOvShoot-class">
 <param name="Local" value="asUnOvShoot.html">
 </OBJECT>
@@ -879,10 +887,6 @@
 <param name="Local" value="positiveBias.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Generating function for onesidedBiasType-class">
-<param name="Local" value="negativeBias.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for ParamFamily-class">
 <param name="Local" value="ParamFamily.html">
 </OBJECT>
@@ -953,6 +957,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Risk">
 <param name="Local" value="RiskType-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Semivariance Risk Type">
+<param name="Local" value="asSemivar-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Standardized Asymptotic Bias">

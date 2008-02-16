@@ -11,6 +11,8 @@
 <param name="keyword" value="R:   KolmogorovDist,AbscontDistribution,DiscreteDistribution-method">
 <param name="keyword" value="R:   KolmogorovDist,DiscreteDistribution,DiscreteDistribution-method">
 <param name="keyword" value="R:   KolmogorovDist,DiscreteDistribution,AbscontDistribution-method">
+<param name="keyword" value="R:   KolmogorovDist,numeric,UnivariateDistribution-method">
+<param name="keyword" value="R:   KolmogorovDist,UnivariateDistribution,numeric-method">
 <param name="keyword" value=" Generic function for the computation of the Kolmogorov distance of two distributions">
 </object>
 
@@ -47,6 +49,12 @@ KolmogorovDist(e1,e2)
 ## S4 method for signature 'DiscreteDistribution,
 ##   DiscreteDistribution':
 KolmogorovDist(e1,e2)
+## S4 method for signature 'numeric,
+##   UnivariateDistribution':
+KolmogorovDist(e1, e2)
+## S4 method for signature 'UnivariateDistribution,
+##   numeric':
+KolmogorovDist(e1, e2)
 </pre>
 
 
@@ -55,10 +63,10 @@ KolmogorovDist(e1,e2)
 <table summary="R argblock">
 <tr valign="top"><td><code>e1</code></td>
 <td>
-object of class <code>"Distribution"</code> </td></tr>
+object of class <code>"Distribution"</code> or class <code>"numeric"</code> </td></tr>
 <tr valign="top"><td><code>e2</code></td>
 <td>
-object of class <code>"Distribution"</code> </td></tr>
+object of class <code>"Distribution"</code> or class <code>"numeric"</code> </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 further arguments to be used in particular methods (not in package <span class="pkg">distrEx</span>)</td></tr>
@@ -67,19 +75,7 @@ further arguments to be used in particular methods (not in package <span class="
 <h3>Value</h3>
 
 <p>
-A list containing the following components:
-</p>
-<table summary="R argblock">
-<tr valign="top"><td><code>e1</code></td>
-<td>
-object of class <code>"Distribution"</code>; distribution 1  </td></tr>
-<tr valign="top"><td><code>e2</code></td>
-<td>
-object of class <code>"Distribution"</code>; distribution 2</td></tr>
-<tr valign="top"><td><code>Kolmogorov.distance</code></td>
-<td>
-Kolmogorov distance of <code>e1</code> and <code>e2</code></td></tr>
-</table>
+Kolmogorov distance of <code>e1</code> and <code>e2</code></p>
 
 <h3>Methods</h3>
 
@@ -102,12 +98,19 @@ univariate distributions. It is computed using a union of
 a (pseudo-)random and a deterministic grid in combination
 with the support of <code>e1</code>.
 </dd>
+<dt>e1 = "numeric", e2 = "UnivariateDistribution":</dt><dd>Kolmogorov distance between (empirical) data and a univariate 
+distribution. The computation is based on <code>ks.test</code>.
+</dd>
+<dt>e1 = "UnivariateDistribution", e2 = "numeric":</dt><dd>Kolmogorov distance between (empirical) data and a univariate 
+distribution. The computation is based on <code>ks.test</code>.
+</dd>
 </dl>
 
 <h3>Author(s)</h3>
 
 <p>
-Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@uni-bayreuth.de">Peter.Ruckdeschel@uni-bayreuth.de</a>
 </p>
 
 
@@ -136,6 +139,9 @@ KolmogorovDist(Norm(), Gumbel())
 KolmogorovDist(Norm(), Td(10))
 KolmogorovDist(Norm(mean = 50, sd = sqrt(25)), Binom(size = 100))
 KolmogorovDist(Pois(10), Binom(size = 20)) 
+KolmogorovDist(Norm(), rnorm(100))
+KolmogorovDist((rbinom(50, size = 20, prob = 0.5)-10)/sqrt(5), Norm())
+KolmogorovDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5))
 </pre>
 
 <script Language="JScript">

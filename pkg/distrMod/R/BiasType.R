@@ -18,14 +18,14 @@ asymmetricBias <- function(name = "asymmetric Bias", nu = c(1,1))
 
 setMethod("name", "BiasType", function(object) object@name)
 setReplaceMethod("name", "BiasType", 
-                  function(object, value) object@name <- value)
+                  function(object, value) {object@name <- value; object})
 
 
 setMethod("sign", "onesidedBias", function(x) x@sign)
 setReplaceMethod("sign", "onesidedBias", 
                   function(object, value) 
                      {if (abs(trunc(value))!=1) stop("Left value has to be +-1")
-                      object@sign <- value}
+                      object@sign <- value; object}
                   )
 
 setMethod("nu", "asymmetricBias", function(object) object@nu)
@@ -34,7 +34,7 @@ setReplaceMethod("nu", "asymmetricBias",
                      { if(!length(value)==2 || any(value>1) || 
                             any (value<=0) || max(value)<1 )   
                            stop("Left value has to be in (0,1]x(0,1] with maximum 1")
-                       object@nu <- value}
+                       object@nu <- value; object}
                   )
 
 

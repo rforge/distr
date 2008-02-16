@@ -18,6 +18,7 @@ exportClasses("RiskType",
               "fiRisk", "fiCov", "trFiCov", "fiHampel", "fiMSE", "fiBias",
               "fiUnOvShoot")
 exportClasses("BiasType", "onesidedBias", "asymmetricBias", "symmetricBias")
+exportClasses("asSemivar")
 exportMethods("type", "SymmCenter", "distrSymm",
               "distribution", "props", "props<-", "addProp<-", "main", "main<-",
               "nuisance", "nuisance<-", "trafo", "trafo<-", "modifyParam",
@@ -39,4 +40,4 @@ export("ParamFamParameter", "ParamFamily", "L2ParamFamily",
        "LnormScaleFamily", "GammaFamily", "NormLocationScaleFamily")
 export("asCov", "trAsCov", "asHampel", "asBias", "asMSE", "asUnOvShoot", 
        "fiCov", "trFiCov", "fiHampel", "fiMSE", "fiBias", "fiUnOvShoot")
-export(positiveBias, negativeBias, symmetricBias, asymmetricBias)
+export(positiveBias, negativeBias, symmetricBias, asymmetricBias, asSemivar)

@@ -1,7 +1,7 @@
 \name{negativeBias}
 \alias{negativeBias}
 
-\title{Generating function for onesidedBiasType-class}
+\title{Generating function for onesidedBias-class}
 \description{
   Generates an object of class \code{"onesidedBias"}.
 }

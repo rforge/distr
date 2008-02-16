@@ -292,6 +292,11 @@ setClass("fiUnOvShoot", representation(width = "numeric"),
 ## end Matthias' thesis
 ###############################################
 
+setClass("asSemivar", representation(sign = "numeric"), 
+          contains = "asGRisk",
+          prototype = prototype(type = "asymptotic Semivariance",
+          sign = 1))
+
 ################################################################################
 ## Bias Classes
 ################################################################################

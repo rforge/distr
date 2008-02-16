@@ -334,6 +334,10 @@
 <param name="Local" value="HellingerDist.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist,AbscontDistribution,numeric-method">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="HellingerDist,DiscreteDistribution,AbscontDistribution-method">
 <param name="Local" value="HellingerDist.html">
 </OBJECT>
@@ -342,8 +346,24 @@
 <param name="Local" value="HellingerDist.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist,DiscreteDistribution,numeric-method">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist,numeric,AbscontDistribution-method">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist,numeric,DiscreteDistribution-method">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="HellingerDist-methods">
 <param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="hSmooth">
+<param name="Local" value="distrExOptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="initialize,Gumbel-method">
@@ -435,6 +455,14 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="KolmogorovDist,DiscreteDistribution,DiscreteDistribution-method">
+<param name="Local" value="KolmogorovDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="KolmogorovDist,numeric,UnivariateDistribution-method">
+<param name="Local" value="KolmogorovDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="KolmogorovDist,UnivariateDistribution,numeric-method">
 <param name="Local" value="KolmogorovDist.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -846,6 +874,10 @@
 <param name="Local" value="Condition-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="nDiscretize">
+<param name="Local" value="distrExOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="plot,MultivariateDistribution-method">
 <param name="Local" value="MultivariateDistribution-class.html">
 </OBJECT>
@@ -1050,11 +1082,27 @@
 <param name="Local" value="TotalVarDist.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist,AbscontDistribution,numeric-method">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="TotalVarDist,DiscreteDistribution,AbscontDistribution-method">
 <param name="Local" value="TotalVarDist.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="TotalVarDist,DiscreteDistribution,DiscreteDistribution-method">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist,DiscreteDistribution,numeric-method">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist,numeric,AbscontDistribution-method">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist,numeric,DiscreteDistribution-method">
 <param name="Local" value="TotalVarDist.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
