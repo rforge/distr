@@ -18,9 +18,10 @@ finde(x = "nchar", dir="C:/rtest/distrEx/R", ext = "R")
 # sources in all .R - files from a given folder
 # Syntax 
 
-ladeall(DIR="distr", develDir = "C:/rtest")
+ladeall(DIR="distr", develDir = "C:/rtest", pattern = "")
 ## args: DIR :     relative path to folder starting from develDir
 ##       develDir: development folder (absolute path) 
+##       pattern:  regexpr. for files to be sourced in
 
 ### setNewRVersion.R
 

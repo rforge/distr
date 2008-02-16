@@ -1,8 +1,8 @@
- ladeall <- function(DIR="distr", develDir = "C:/rtest/distr/pkg"){
+ ladeall <- function(DIR="distr", develDir = "C:/rtest/distr/pkg",pattern=""){
  od <- getwd()
  print(file.path(develDir,DIR, "R"))
  setwd(file.path(develDir,DIR, "R"))
- lapply(grep(".R$",dir(),value=T),source)
+ lapply(grep(paste(pattern,".R$",sep="",collapse=""),dir(),value=T),source)
  setwd(od)
 }
 
