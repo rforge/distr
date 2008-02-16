@@ -62,6 +62,10 @@
 <param name="Local" value="asRisk-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="asSemivar">
+<param name="Local" value="asSemivar.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="asSemivar-class">
 <param name="Local" value="asSemivar-class.html">
 </OBJECT>
@@ -550,12 +554,20 @@
 <param name="Local" value="onesidedBias-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sign,asSemivar-method">
+<param name="Local" value="asSemivar-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="sign,onesidedBias-method">
 <param name="Local" value="onesidedBias-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="sign<-">
 <param name="Local" value="onesidedBias-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sign<-,asSemivar-method">
+<param name="Local" value="asSemivar-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="sign<-,onesidedBias-method">

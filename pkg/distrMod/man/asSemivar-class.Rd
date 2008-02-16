@@ -1,6 +1,8 @@
 \name{asSemivar-class}
 \docType{class}
 \alias{asSemivar-class}
+\alias{sign,asSemivar-method}
+\alias{sign<-,asSemivar-method}
 
 \title{Semivariance Risk Type}
 \description{Class for semi-variance risk.}
@@ -16,7 +18,12 @@
   }
 }
 \section{Methods}{
-No methods defined with class "asSemivar" in the signature.
+  \describe{
+    \item{sign}{\code{signature(object = "asSemivar")}: 
+      accessor function for slot \code{sign}. }
+    \item{sign<-}{\code{signature(object = "asSemivar", value = "numeric")}: 
+      replacement function for slot \code{sign}. }
+        }
 }
 \section{Extends}{
 Class \code{"asGRisk"}, directly.\cr
