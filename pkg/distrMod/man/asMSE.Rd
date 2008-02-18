@@ -5,7 +5,11 @@
 \description{
   Generates an object of class \code{"asMSE"}.
 }
-\usage{asMSE()}
+\usage{asMSE(biastype = symmetricBias())}
+\arguments{
+  \item{biastype}{a bias type of class \code{BiasType}}
+}
+
 %\details{}
 \value{Object of class \code{"asMSE"}}
 \references{ 
@@ -21,7 +25,7 @@
 asMSE()
 
 ## The function is currently defined as
-function(){ new("asMSE") }
+function(biastype = symmetricBias()){ new("asMSE", biastype = biastype) }
 }
 \concept{asymptotic mean square error}
 \concept{risk}

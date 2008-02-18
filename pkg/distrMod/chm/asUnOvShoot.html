@@ -22,7 +22,7 @@ Generates an object of class <code>"asUnOvShoot"</code>.
 
 <h3>Usage</h3>
 
-<pre>asUnOvShoot(width = 1.960)</pre>
+<pre>asUnOvShoot(width = 1.960, biastype = symmetricBias())</pre>
 
 
 <h3>Arguments</h3>
@@ -31,6 +31,9 @@ Generates an object of class <code>"asUnOvShoot"</code>.
 <tr valign="top"><td><code>width</code></td>
 <td>
 positive real: half the width of given confidence interval. </td></tr>
+<tr valign="top"><td><code>biastype</code></td>
+<td>
+a bias type of class <code>BiasType</code></td></tr>
 </table>
 
 <h3>Value</h3>
@@ -69,7 +72,8 @@ Bayreuth: Dissertation.
 asUnOvShoot()
 
 ## The function is currently defined as
-function(width = 1.960){ new("asUnOvShoot", width = width) }
+function(width = 1.960, biastype = symmetricBias()){ 
+     new("asUnOvShoot", width = width, biastype = biastype) }
 </pre>
 
 

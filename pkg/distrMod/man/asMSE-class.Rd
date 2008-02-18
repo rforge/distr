@@ -13,11 +13,14 @@
   \describe{
     \item{\code{type}:}{Object of class \code{"character"}: 
       \dQuote{asymptotic mean square error}. }
+    \item{\code{biastype}:}{Object of class \code{"BiasType"}: 
+      symmetric, one-sided or asymmetric }
   }
 }
 \section{Extends}{
 Class \code{"asGRisk"}, directly.\cr
-Class \code{"asRisk"}, by class \code{"asGRisk"}.\cr
+Class \code{"asRiskwithBias"}, by class \code{"asGRisk"}.\cr
+Class \code{"asRisk"}, by class \code{"asRiskwithBias"}.\cr
 Class \code{"RiskType"}, by class \code{"asGRisk"}.
 }
 \section{Methods}{

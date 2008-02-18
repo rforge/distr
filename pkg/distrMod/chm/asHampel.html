@@ -22,7 +22,7 @@ Generates an object of class <code>"asHampel"</code>.
 
 <h3>Usage</h3>
 
-<pre>asHampel(bound = Inf)</pre>
+<pre>asHampel(bound = Inf, biastype = symmetricBias())</pre>
 
 
 <h3>Arguments</h3>
@@ -31,6 +31,9 @@ Generates an object of class <code>"asHampel"</code>.
 <tr valign="top"><td><code>bound</code></td>
 <td>
 positive real: bias bound </td></tr>
+<tr valign="top"><td><code>biastype</code></td>
+<td>
+a bias type of class <code>BiasType</code></td></tr>
 </table>
 
 <h3>Value</h3>
@@ -73,7 +76,8 @@ Bayreuth: Dissertation.
 asHampel()
 
 ## The function is currently defined as
-function(bound = Inf){ new("asHampel", bound = bound) }
+function(bound = Inf, biastype = symmetricBias()){ 
+    new("asHampel", bound = bound, biastype = biastype) }
 </pre>
 
 

@@ -8,6 +8,8 @@
 \section{Slots}{
   \describe{
     \item{\code{type}:}{Object of class \code{"character"}. }
+    \item{\code{biastype}:}{Object of class \code{"BiasType"}: 
+      symmetric, one-sided or asymmetric }
   }
 }
 \section{Extends}{
@@ -19,7 +21,7 @@ No methods defined with class "asGRisk" in the signature.
 }
 \references{
   Ruckdeschel, P. and Rieder, H. (2004) Optimal Influence Curves for
-  General Loss Functions. Statistics & Decisions (submitted).
+  General Loss Functions. Statistics & Decisions \emph{22}, 201-223.
 }
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de}}
 %\note{}

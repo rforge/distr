@@ -5,9 +5,10 @@
 \description{
   Generates an object of class \code{"asUnOvShoot"}.
 }
-\usage{asUnOvShoot(width = 1.960)}
+\usage{asUnOvShoot(width = 1.960, biastype = symmetricBias())}
 \arguments{
   \item{width}{ positive real: half the width of given confidence interval. }
+  \item{biastype}{ a bias type of class \code{BiasType}}
 }
 %\details{}
 \value{Object of class \code{"asUnOvShoot"}}
@@ -24,7 +25,8 @@
 asUnOvShoot()
 
 ## The function is currently defined as
-function(width = 1.960){ new("asUnOvShoot", width = width) }
+function(width = 1.960, biastype = symmetricBias()){ 
+     new("asUnOvShoot", width = width, biastype = biastype) }
 }
 \concept{asymptotic risk}
 \concept{risk}

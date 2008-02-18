@@ -20,10 +20,13 @@
       \dQuote{trace of asymptotic covariance for given bias bound}. }
     \item{\code{bound}:}{Object of class \code{"numeric"}: 
       given positive bias bound. }
+    \item{\code{biastype}:}{Object of class \code{"BiasType"}: 
+      symmetric, one-sided or asymmetric }
   }
 }
 \section{Extends}{
-Class \code{"asRisk"}, directly.\cr
+Class \code{"asRiskwithBias"}, directly.\cr
+Class \code{"asRisk"}, by class \code{"asRiskwithBias"}.
 Class \code{"RiskType"}, by class \code{"asRisk"}.
 }
 \section{Methods}{

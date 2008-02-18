@@ -14,10 +14,13 @@
   \describe{
     \item{\code{type}:}{Object of class \code{"character"}:
       \dQuote{asymptotic bias}. }
+    \item{\code{biastype}:}{Object of class \code{"BiasType"}: 
+      symmetric, one-sided or asymmetric }
   }
 }
 \section{Extends}{
-Class \code{"asRisk"}, directly.\cr
+Class \code{"asRiskwithBias"}, directly.\cr
+Class \code{"asRisk"}, by class \code{"asRiskwithBias"}\cr
 Class \code{"RiskType"}, by class \code{"asRisk"}.
 }
 %\section{Methods}{}

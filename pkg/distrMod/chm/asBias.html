@@ -22,8 +22,16 @@ Generates an object of class <code>"asBias"</code>.
 
 <h3>Usage</h3>
 
-<pre>asBias()</pre>
+<pre>asBias(biastype = symmetricBias())</pre>
 
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>biastype</code></td>
+<td>
+a bias type of class <code>BiasType</code></td></tr>
+</table>
 
 <h3>Value</h3>
 
@@ -61,7 +69,7 @@ Bayreuth: Dissertation.
 asBias()
 
 ## The function is currently defined as
-function(){ new("asBias") }
+function(biastype = symmetricBias()){ new("asBias",biastype = biastype) }
 </pre>
 
 

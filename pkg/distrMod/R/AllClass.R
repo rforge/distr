@@ -214,8 +214,34 @@ setClass("L2ParamFamily",
                 return(TRUE) 
             })
 
+
+################################################################################
+## Bias Classes
+################################################################################
+
+### from session 10-01-08 : class Bias type
+setClass("BiasType", representation(name = "character"),
+          contains = "VIRTUAL")
+
+setClass("symmetricBias", prototype = prototype(name = "symmetric bias"),
+          contains = "BiasType")
+
+setClass("onesidedBias", representation(sign = "numeric"),
+          prototype = prototype(name = "positive bias", sign = 1),
+          contains = "BiasType")
+
+setClass("asymmetricBias", 
+          representation(nu = "numeric"), ### weights acc. to paper
+          prototype = prototype(name = "asymmetric bias", nu = c(1,1)),
+          contains = "BiasType")
+
+################################################################################
+## Risk Classes
+################################################################################
+
 ## risks (e.g., risk of estimator)
-setClass("RiskType", representation(type = "character"), contains = "VIRTUAL")
+setClass("RiskType", representation(type = "character"), 
+          contains = "VIRTUAL")
 ## asymptotic risk
 setClass("asRisk", contains = c("RiskType", "VIRTUAL"))
 ## asymptotic covariance
@@ -224,24 +250,33 @@ setClass("asCov", contains = "asRisk",
 ## trace of asymptotic covariance
 setClass("trAsCov", contains = "asRisk", 
             prototype = prototype(type = "trace of asymptotic covariance"))
+
+## asymptotic risk with bias
+
+setClass("asRiskwithBias", representation(biastype = "BiasType"),
+          prototype = prototype(type = "asymptotic risk with bias",
+                             biastype = new("symmetricBias")),
+          contains = c("asRisk"))
+
 ## asymptotic Hampel risk
 setClass("asHampel", representation(bound = "numeric"), 
             prototype = prototype(bound = Inf, 
                              type = "trace of asymptotic covariance for given bias bound"),
-            contains = "asRisk", 
+            contains = "asRiskwithBias", 
             validity = function(object){
                 if(any(object@bound <= 0))
                     stop("'bound' has to be positive")
                 else TRUE
             })
 ## asymptotic bias
-setClass("asBias", contains = "asRisk", 
+setClass("asBias", representation(biastype = "BiasType"),
+            contains = "asRiskwithBias", 
             prototype = prototype(type = "asymptotic bias"))
 
 ## convex asymptotic risk
-setClass("asGRisk", contains = c("asRisk", "VIRTUAL")) 
+setClass("asGRisk", contains = "asRiskwithBias") 
 ## asymptotic mean square error
-setClass("asMSE", contains = "asGRisk", 
+setClass("asMSE", contains = "asGRisk",
             prototype = prototype(type = "asymptotic mean square error"))
 ## asymptotic under-/overshoot probability
 setClass("asUnOvShoot", representation(width = "numeric"), 
@@ -292,27 +327,7 @@ setClass("fiUnOvShoot", representation(width = "numeric"),
 ## end Matthias' thesis
 ###############################################
 
-setClass("asSemivar", representation(sign = "numeric"), 
+setClass("asSemivar", 
           contains = "asGRisk",
           prototype = prototype(type = "asymptotic Semivariance",
-          sign = 1))
-
-################################################################################
-## Bias Classes
-################################################################################
-
-### from session 10-01-08 : class Bias type
-setClass("BiasType", representation(name = "character"),
-          contains = "VIRTUAL")
-
-setClass("symmetricBias", prototype = prototype(name = "symmetric bias"),
-          contains = "BiasType")
-
-setClass("onesidedBias", representation(sign = "numeric"),
-          prototype = prototype(name = "positive bias", sign = 1),
-          contains = "BiasType")
-
-setClass("asymmetricBias", 
-          representation(nu = "numeric"), ### weights acc. to paper
-          prototype = prototype(name = "asymmetric bias", nu = c(1,1)),
-          contains = "BiasType")
+          biastype =  new("onesidedBias")))

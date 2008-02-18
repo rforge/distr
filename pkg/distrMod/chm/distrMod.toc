@@ -62,6 +62,10 @@
 <param name="Local" value="asRisk-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="asRiskwithBias-class">
+<param name="Local" value="asRiskwithBias-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="asSemivar">
 <param name="Local" value="asSemivar.html">
 </OBJECT>
@@ -86,8 +90,24 @@
 <param name="Local" value="asymmetricBias-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="biastype">
+<param name="Local" value="asRiskwithBias-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="biastype,asRiskwithBias-method">
+<param name="Local" value="asRiskwithBias-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="BiasType-class">
 <param name="Local" value="BiasType-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="biastype<-">
+<param name="Local" value="asRiskwithBias-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="biastype<-,asRiskwithBias-method">
+<param name="Local" value="asRiskwithBias-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="BinomFamily">
@@ -688,7 +708,7 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Aymptotic risk">
-<param name="Local" value="asRisk-class.html">
+<param name="Local" value="asRiskwithBias-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Bias Type">

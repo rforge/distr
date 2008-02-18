@@ -93,3 +93,11 @@ if(!isGeneric("sign<-")){
 if(!isGeneric("nu<-")){
     setGeneric("nu<-", function(object,value) standardGeneric("nu<-"))
 }
+
+if(!isGeneric("biastype")){
+    setGeneric("biastype", function(object) standardGeneric("biastype"))
+}
+
+if(!isGeneric("biastype<-")){
+    setGeneric("biastype<-", function(object,value) standardGeneric("biastype<-"))
+}

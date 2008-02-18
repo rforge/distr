@@ -18,7 +18,7 @@ exportClasses("RiskType",
               "fiRisk", "fiCov", "trFiCov", "fiHampel", "fiMSE", "fiBias",
               "fiUnOvShoot")
 exportClasses("BiasType", "onesidedBias", "asymmetricBias", "symmetricBias")
-exportClasses("asSemivar")
+exportClasses("asSemivar", "asRiskwithBias")
 exportMethods("type", "SymmCenter", "distrSymm",
               "distribution", "props", "props<-", "addProp<-", "main", "main<-",
               "nuisance", "nuisance<-", "trafo", "trafo<-", "modifyParam",
@@ -26,7 +26,7 @@ exportMethods("type", "SymmCenter", "distrSymm",
               "L2deriv", "L2derivSymm", "L2derivDistr", "L2derivDistrSymm",
               "FisherInfo", "checkL2deriv")
 exportMethods("bound", "width")
-exportMethods("nu", "name", "sign", "nu<-", "name<-", "sign<-")
+exportMethods("nu", "name", "sign", "nu<-", "name<-", "sign<-", "biastype", "biastype<-")
 S3method(print, MCEstimator)
 export("PosDefSymmMatrix")
 export("distrModOptions", "getdistrModOption",
@@ -40,4 +40,5 @@ export("ParamFamParameter", "ParamFamily", "L2ParamFamily",
        "LnormScaleFamily", "GammaFamily", "NormLocationScaleFamily")
 export("asCov", "trAsCov", "asHampel", "asBias", "asMSE", "asUnOvShoot", 
        "fiCov", "trFiCov", "fiHampel", "fiMSE", "fiBias", "fiUnOvShoot")
-export(positiveBias, negativeBias, symmetricBias, asymmetricBias, asSemivar)
+export("positiveBias", "negativeBias", "symmetricBias", 
+       "asymmetricBias", "asSemivar")

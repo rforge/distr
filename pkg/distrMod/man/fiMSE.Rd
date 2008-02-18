@@ -5,7 +5,7 @@
 \description{
   Generates an object of class \code{"fiMSE"}.
 }
-\usage{asMSE()}
+\usage{fiMSE()}
 %\details{}
 \value{Object of class \code{"fiMSE"}}
 \references{ 
