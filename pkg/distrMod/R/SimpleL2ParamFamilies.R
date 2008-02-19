@@ -40,7 +40,7 @@ PoisFamily <- function(lambda = 1, trafo){
     name <- "Poisson family"
     distribution <- Pois(lambda = lambda)
     distrSymm <- NoSymmetry()
-    param <- ParamFamParameter(name = "positive mean",  
+    param <- ParamFamParameter(name = "positive mean",
                             main = lambda, trafo = trafo)
     modifyParam <- function(theta){ Pois(lambda = theta) }
     props <- character(0)
@@ -102,7 +102,7 @@ GumbelLocationFamily <- function(loc = 0, scale = 1, trafo){
                "with location parameter 'loc'")
     fct <- function(x){ (1 - exp(-(x-loc)/scale))/scale }
     body(fct) <- substitute({ (1 - exp(-(x-loc)/scale))/scale }, 
-                         list(loc = loc, scale = scale))                
+                         list(loc = loc, scale = scale))
     L2deriv <- EuclRandVarList(RealRandVariable(Map = list(fct), Domain = Reals()))
     L2derivSymm <- FunSymmList(NonSymmetric())
     L2derivDistr <- UnivarDistrList((1-Exp(rate=1))/scale)
@@ -130,7 +130,7 @@ NormScaleFamily <- function(sd = 1, mean = 0, trafo){
                "the group of transformations 'g(y) = sd*y'",
                "with scale parameter 'sd'")
     fct <- function(x){ (((x-mean)/sd)^2 - 1)/sd }
-    body(fct) <- substitute({ (((x-mean)/sd)^2 - 1)/sd }, list(sd = sd, mean = mean))                
+    body(fct) <- substitute({ (((x-mean)/sd)^2 - 1)/sd }, list(sd = sd, mean = mean))
     L2deriv <- EuclRandVarList(RealRandVariable(Map = list(fct), Domain = Reals()))
     L2derivSymm <- FunSymmList(EvenSymmetric(SymmCenter = mean))
     L2derivDistr <- UnivarDistrList((Chisq(df = 1, ncp = 0)-1)/sd)
@@ -186,7 +186,7 @@ LnormScaleFamily <- function(meanlog = 0, sdlog = 1, trafo){
                "with scale parameter 'scale = exp(meanlog)'")
     fct <- function(x){ exp(-meanlog)*(log(x)-meanlog)/sdlog^2 }
     body(fct) <- substitute({ exp(-meanlog)*(log(x) - meanlog)/sdlog^2 },
-                       list(meanlog = meanlog, sdlog = sdlog))                
+                       list(meanlog = meanlog, sdlog = sdlog))
     L2deriv <- EuclRandVarList(RealRandVariable(Map = list(fct), Domain = Reals()))
     L2derivSymm <- FunSymmList(NonSymmetric())
     L2derivDistr <- UnivarDistrList(Norm(mean=0, sd=exp(-meanlog)/sdlog^2))
@@ -246,9 +246,9 @@ NormLocationScaleFamily <- function(mean = 0, sd = 1, trafo){
                "the group of transformations 'g(x) = sd*x + mean'",
                "with location parameter 'mean' and scale parameter 'sd'")
     fct1 <- function(x){ (x - mean)/sd^2 }
-    body(fct1) <- substitute({ (x - mean)/sd^2 }, list(mean = mean, sd = sd))                
+    body(fct1) <- substitute({ (x - mean)/sd^2 }, list(mean = mean, sd = sd))
     fct2 <- function(x){ (((x-mean)/sd)^2 - 1)/sd }
-    body(fct2) <- substitute({ (((x-mean)/sd)^2 - 1)/sd }, list(sd = sd, mean = mean))                
+    body(fct2) <- substitute({ (((x-mean)/sd)^2 - 1)/sd }, list(sd = sd, mean = mean))
     L2deriv <- EuclRandVarList(RealRandVariable(Map = list(fct1, fct2), Domain = Reals()))
     L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter = mean), EvenSymmetric(SymmCenter = mean))
     L2derivDistr <- UnivarDistrList(Norm(mean=0, sd=1/sd), (Chisq(df = 1, ncp = 0)-1)/sd)
@@ -256,8 +256,8 @@ NormLocationScaleFamily <- function(mean = 0, sd = 1, trafo){
     FisherInfo <- PosDefSymmMatrix(matrix(c(1/sd^2, 0, 0, 2/sd^2), ncol=2))
 
     L2ParamFamily(name = name, distribution = distribution, 
-        distrSymm = distrSymm, param = param, props = props, 
-        L2deriv = L2deriv, L2derivSymm = L2derivSymm, 
+        distrSymm = distrSymm, param = param, modifyParam = modifyParam, 
+        props = props, L2deriv = L2deriv, L2derivSymm = L2derivSymm, 
         L2derivDistr = L2derivDistr, L2derivDistrSymm = L2derivDistrSymm,
         FisherInfo = FisherInfo)
 }
