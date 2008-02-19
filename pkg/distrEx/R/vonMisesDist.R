@@ -4,9 +4,9 @@
 ###############################################################################
 setMethod("vonMisesDist", signature(e1 = "UnivariateDistribution",
                                     e2 = "UnivariateDistribution"),
-    function(e1, e2, mu = e2, ... ){
+    function(e1, e2, mu = e2, useApply = FALSE, ... ){
         owarn <- getOption("warn"); options(warn = -1)
-        res <- E(mu, fun = function(t) {(p(e1)(t)-p(e2)(t))^2}, useApply = FALSE, ...)^.5
+        res <- E(mu, fun = function(t) {(p(e1)(t)-p(e2)(t))^2}, useApply = useApply, ...)^.5
         names(res) <- "vonMises distance"
         options(warn = owarn)
         return(res)

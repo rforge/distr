@@ -35,7 +35,7 @@ where <i>&lt;=</i> is coordinatewise on <i>R^m</i>.
 vonMisesDist(e1, e2, ...)
 ## S4 method for signature 'UnivariateDistribution,
 ##   UnivariateDistribution':
-vonMisesDist(e1, e2, mu = e2, ...)
+vonMisesDist(e1, e2, mu = e2, useApply = FALSE, ...)
 ## S4 method for signature 'numeric,
 ##   UnivariateDistribution':
 vonMisesDist(e1, e2, mu = e2, ...)
@@ -54,6 +54,9 @@ object of class <code>"Distribution"</code> </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 further arguments to be used e.g. by <code>E()</code></td></tr>
+<tr valign="top"><td><code>useApply</code></td>
+<td>
+logical; to be passed to <code><a href="E.html">E</a>()</code></td></tr>
 <tr valign="top"><td><code>mu</code></td>
 <td>
 object of class <code>"Distribution"</code>; integration measure; defaulting to <code>e2</code> </td></tr>

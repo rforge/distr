@@ -17,13 +17,14 @@
 }
 \usage{
 vonMisesDist(e1, e2, ...)
-\S4method{vonMisesDist}{UnivariateDistribution,UnivariateDistribution}(e1, e2, mu = e2, ...)
+\S4method{vonMisesDist}{UnivariateDistribution,UnivariateDistribution}(e1, e2, mu = e2, useApply = FALSE, ...)
 \S4method{vonMisesDist}{numeric,UnivariateDistribution}(e1, e2, mu = e2, ...)
 }
 \arguments{
   \item{e1}{ object of class \code{"Distribution"} or class \code{"numeric"} }
   \item{e2}{ object of class \code{"Distribution"} }
   \item{\dots}{ further arguments to be used e.g. by \code{E()}}
+  \item{useApply}{ logical; to be passed to \code{\link{E}()}}
   \item{mu}{ object of class \code{"Distribution"}; integration measure; defaulting to \code{e2} }
 }
 %\details{}
