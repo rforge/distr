@@ -116,6 +116,8 @@ KolmogorovDist          Generic function for the computation of the
                         Kolmogorov distance of two distributions
 TotalVarDist            Generic function for the computation of the
                         total variation distance of two distributions
+vonMisesDist            Generic function for the computation of the
+                        von Mises distance of two distributions
 
 liesInSupport           Generic function for testing the support of a
                         distribution

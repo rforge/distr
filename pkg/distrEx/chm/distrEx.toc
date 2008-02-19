@@ -1221,6 +1221,22 @@
 <param name="Name" value="var-methods">
 <param name="Local" value="Var.html">
 </OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="vonMisesDist">
+<param name="Local" value="vonMisesDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="vonMisesDist,numeric,UnivariateDistribution-method">
+<param name="Local" value="vonMisesDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="vonMisesDist,UnivariateDistribution,UnivariateDistribution-method">
+<param name="Local" value="vonMisesDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="vonMisesDist-methods">
+<param name="Local" value="vonMisesDist.html">
+</OBJECT>
 </UL>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Package distrEx:  Titles">
@@ -1321,6 +1337,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generic function for the computation of the total variation distance of two distributions">
 <param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generic function for the computation of the vonMises distance of two distributions">
+<param name="Local" value="vonMisesDist.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generic Functions for the Computation of Functionals">

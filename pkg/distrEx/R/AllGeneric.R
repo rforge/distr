@@ -127,6 +127,11 @@ if(!isGeneric("HellingerDist")){
    setGeneric("HellingerDist", 
                function(e1, e2, ...) standardGeneric("HellingerDist"))
 }
+if(!isGeneric("vonMisesDist")){
+   setGeneric("vonMisesDist", 
+               function(e1, e2, ...) standardGeneric("vonMisesDist"))
+}
+
 if(!isGeneric("ConvexContamination")){ 
    setGeneric("ConvexContamination", 
                function(e1, e2, size) standardGeneric("ConvexContamination"))

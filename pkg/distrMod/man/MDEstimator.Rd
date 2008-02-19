@@ -64,6 +64,12 @@ G <- ParamFamily(name = "Gamma family",
 ## Kolmogorov(-Smirnov) minimum distance estimator
 MDEstimator(x = x, ParamFamily = G, distance = KolmogorovDist)
 
+## von Mises minimum distance estimator with default mu
+MDEstimator(x = x, ParamFamily = G, distance = vonMisesDist)
+
+## von Mises minimum distance estimator with mu = N(0,1)
+MDEstimator(x = x, ParamFamily = G, distance = vonMisesDist, mu = Norm())
+
 ## Total variation minimum distance estimator
 ## gamma distributions are discretized
 MDEstimator(x = x, ParamFamily = G, distance = TotalVarDist)
