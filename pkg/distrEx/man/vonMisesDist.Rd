@@ -4,7 +4,7 @@
 \alias{vonMisesDist,UnivariateDistribution,UnivariateDistribution-method}
 \alias{vonMisesDist,numeric,UnivariateDistribution-method}
 
-\title{Generic function for the computation of the vonMises distance of two distributions}
+\title{Generic function for the computation of the von Mises distance of two distributions}
 \description{
   Generic function for the computation of the von Mises distance \eqn{d_\mu}{d_{mu}}
   of two distributions \eqn{P} and \eqn{Q} where the distributions are defined 
