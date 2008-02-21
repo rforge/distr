@@ -22,7 +22,7 @@ exportMethods("ConvexContamination",
               "TotalVarDist", 
               "KolmogorovDist", 
               "HellingerDist",
-              "vonMisesDist") 
+              "CvMDist") 
 exportMethods("support", 
               "cond", 
               "Range",
