@@ -68,13 +68,13 @@ setMethod("print", "SeqDataFrames",
             nobsDims <- obsDim(x)
             nobs <- samplesize(x)
             if(short) {
-               nruns <- min(runs(x),distrSimoption("MaxNumberofPrintedRuns")) 
-               nobsDims <- min(obsDim(x),distrSimoption("MaxNumberofPrintedObsDims")) 
-               obs <- lapply(x@data, function(y) min(nrow(y),distrSimoption("MaxNumberofPrintedObs")))
+               nruns <- min(runs(x),getdistrSimOption("MaxNumberofPrintedRuns")) 
+               nobsDims <- min(obsDim(x),getdistrSimOption("MaxNumberofPrintedObsDims")) 
+               nobs <- lapply(x@data, function(y) min(nrow(y),getdistrSimOption("MaxNumberofPrintedObs")))
                }
             for(k in 1:nruns){
                 cat(names(x)[k],":\n")
-                print(x@data[1:obs[[k]],1:nobsDims])}            
+                print(x@data[[k]][1:nobs[k],1:nobsDims])}            
           })
 
 setMethod("show", "SeqDataFrames",

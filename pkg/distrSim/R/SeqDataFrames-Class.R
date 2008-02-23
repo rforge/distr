@@ -1,8 +1,8 @@
-seqDataFrames <- function(...) new("SeqDataFrames", ...)
+seqDataFrames <- function(...) new("SeqDataFrames", data=list(...))
 
 ## Access methods
 
-setMethod("samplesize", "SeqDataFrames", function(object) numeric(lapply(object@data,function(y) nrow(y))))
+setMethod("samplesize", "SeqDataFrames", function(object) as.numeric(lapply(object@data,function(y) nrow(y))))
 setMethod("obsDim", "SeqDataFrames", function(object) ncol(object@data[[1]]))
 setMethod("runs", "SeqDataFrames", function(object) length(object@data))
 setMethod("obsdimnames", "SeqDataFrames", function(object) colnames(object@data[[1]]))

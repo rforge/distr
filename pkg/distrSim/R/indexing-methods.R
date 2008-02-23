@@ -21,15 +21,16 @@ setMethod("[", "SeqDataFrames", function(x, i, j, k, drop = FALSE){
           }})
 
 setReplaceMethod("[", "SeqDataFrames", function(x, i, j, k, value){
+          if(missing(k)) k <- 1:length(x@data)
           if(length(k)==1){
              if((k<=length(x@data))||!is(try(x@data[[k]],silent=TRUE),"try-error"))
                 {zl <- x@data
                  z  <- zl[[k]]
                  if (missing(i))
-                    {
-                     if(!is.null(dim(value)))
-                         z <- data.frame(matrix(NA,nrow(value),ncol(x@data[[1]])))
-                         else z <- data.frame(matrix(NA,length(value),ncol(x@data[[1]])))
+                    { i <- 1:nrow(z)
+                     #if(!is.null(dim(value)))
+                     #    z <- data.frame(matrix(NA,nrow(value),ncol(x@data[[1]])))
+                     #    else z <- data.frame(matrix(NA,length(value),ncol(x@data[[1]])))
                     }
                  z[i,j] <- value
                  zl[[k]] <- z
@@ -45,7 +46,6 @@ setReplaceMethod("[", "SeqDataFrames", function(x, i, j, k, value){
 
           if(missing(j)) j <- 1:ncol(x@data[[1]])
           if(missing(i)) i <- lapply(1:length(x@data),function(y) 1:nrow(x@data[[y]]))
-          if(missing(k)) k <- 1:length(x@data)
 
           if(is(value, "SeqDataFrames")) value <- value@data
 
@@ -71,8 +71,8 @@ setReplaceMethod("[", "SeqDataFrames", function(x, i, j, k, value){
 
           zl <- x@data
           for(kk in 1:kll)
-                 {z <- x@data[[kl0[kk]]]
-                  z[c(unlist(i)),j] <- value[kk]
+                 {z <- zl[[kl0[kk]]]
+                  z[c(unlist(i[[kl0[kk]]])),j] <- value[kk]
                   zl[[kl0[kk]]] <- z
                   }
           x@data <-  zl
