@@ -18,6 +18,10 @@
 <param name="Local" value="vectororNULL-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ArrayorNULLorVectororDataframeorSeqDataFrames-class">
+<param name="Local" value="vectororNULL-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="cload">
 <param name="Local" value="cload.html">
 </OBJECT>
@@ -95,11 +99,27 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Dataclass">
-<param name="Local" value="Dataclass-class.html">
+<param name="Local" value="Dataclass.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Dataclass,ArrayorNULLorVector-method">
+<param name="Local" value="Dataclass.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Dataclass,DataframeorSeqDataFrames-method">
+<param name="Local" value="Dataclass.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Dataclass-class">
 <param name="Local" value="Dataclass-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Dataclass-method">
+<param name="Local" value="Dataclass.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="DataframeorSeqDataFrames-class">
+<param name="Local" value="vectororNULL-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="distribution">
@@ -178,6 +198,10 @@
 <param name="Local" value="0distrSim-package.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distrSimMASK">
+<param name="Local" value="distrSimMASK.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="distrSimoptions">
 <param name="Local" value="distrSimOptions.html">
 </OBJECT>
@@ -246,6 +270,10 @@
 <param name="Local" value="Simulation-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="MASKING">
+<param name="Local" value="distrSimMASK.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="MatrixorNULLorVector-class">
 <param name="Local" value="vectororNULL-class.html">
 </OBJECT>
@@ -290,6 +318,14 @@
 <param name="Local" value="name-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="names,SeqDataFrames-method">
+<param name="Local" value="SeqDataFrame-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="names<-,SeqDataFrames-method">
+<param name="Local" value="SeqDataFrame-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="obsDim">
 <param name="Local" value="obsDim-methods.html">
 </OBJECT>
@@ -298,8 +334,28 @@
 <param name="Local" value="obsDim-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="obsDim,SeqDataFrames-method">
+<param name="Local" value="obsDim-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="obsDim-methods">
 <param name="Local" value="obsDim-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="obsdimnames">
+<param name="Local" value="SeqDataFrame-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="obsdimnames,SeqDataFrames-method">
+<param name="Local" value="SeqDataFrame-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="obsdimnames-method">
+<param name="Local" value="SeqDataFrame-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="obsdimnames<-,SeqDataFrames-method">
+<param name="Local" value="SeqDataFrame-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="plot,Contsimulation-method">
@@ -324,6 +380,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="print,Dataclass-method">
 <param name="Local" value="print-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="print,SeqDataFrames-method">
+<param name="Local" value="SeqDataFrame-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="print,Simulation-method">
@@ -358,11 +418,47 @@
 <param name="Local" value="rate-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="rbind">
+<param name="Local" value="SeqDataFrame-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="rbind,ANY-method">
+<param name="Local" value="SeqDataFrame-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="rbind,SeqDataFrames-method">
+<param name="Local" value="SeqDataFrame-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="rbind-method">
+<param name="Local" value="SeqDataFrame-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="runnames">
+<param name="Local" value="SeqDataFrame-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="runnames,SeqDataFrames-method">
+<param name="Local" value="SeqDataFrame-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="runnames-method">
+<param name="Local" value="SeqDataFrame-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="runnames<-,SeqDataFrames-method">
+<param name="Local" value="SeqDataFrame-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="runs">
 <param name="Local" value="runs-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="runs,Dataclass-method">
+<param name="Local" value="runs-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="runs,SeqDataFrames-method">
 <param name="Local" value="runs-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -391,6 +487,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="samplesize,Dataclass-method">
+<param name="Local" value="samplesize-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="samplesize,SeqDataFrames-method">
 <param name="Local" value="samplesize-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -466,12 +566,28 @@
 <param name="Local" value="seed-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="SeqDataFrames">
+<param name="Local" value="SeqDataFrame-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="seqDataFrames">
+<param name="Local" value="SeqDataFrame-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="SeqDataFrames-class">
+<param name="Local" value="SeqDataFrame-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="show,Contsimulation-method">
 <param name="Local" value="print-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="show,Dataclass-method">
 <param name="Local" value="print-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="show,SeqDataFrames-method">
+<param name="Local" value="SeqDataFrame-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="show,Simulation-method">
@@ -525,6 +641,30 @@
 <param name="Name" value="vectororNULL-class">
 <param name="Local" value="vectororNULL-class.html">
 </OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="[">
+<param name="Local" value="indexing-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="[,SeqDataFrames-method">
+<param name="Local" value="indexing-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="[-methods">
+<param name="Local" value="indexing-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="[<-">
+<param name="Local" value="indexing-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="[<-,SeqDataFrames-method">
+<param name="Local" value="indexing-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="[<--methods">
+<param name="Local" value="indexing-methods.html">
+</OBJECT>
 </UL>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Package distrSim:  Titles">
@@ -539,11 +679,15 @@
 <param name="Local" value="Dataclass-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Class "SeqDataFrames" ">
+<param name="Local" value="SeqDataFrame-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Class "Simulation" ">
 <param name="Local" value="Simulation-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Classes "vectororNULL",  "MatrixorNULLorVector", and "ArrayorNULLorVector"">
+<param name="Name" value="Classes "vectororNULL",  "MatrixorNULLorVector", "ArrayorNULLorVector", "DataframeorSeqDataFrame" and        "ArrayorNULLorVectororDataframeorSeqDataFrames"">
 <param name="Local" value="vectororNULL-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -557,6 +701,18 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="functions to change the global variables of the package `distrSim' ">
 <param name="Local" value="distrSimOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for "Dataclass" ">
+<param name="Local" value="Dataclass.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Indexing methods for SeqDataFrames objects in Package `distrSim'">
+<param name="Local" value="indexing-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Masking of/by other functions in package "distrSim"">
+<param name="Local" value="distrSimMASK.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Methods for Function Data in Package `distrSim' ">

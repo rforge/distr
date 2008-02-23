@@ -3,9 +3,41 @@
 ## Class: Dataclass
 ##
 ################################
+setClass("SeqDataFrames", representation(data = "list"),
+          prototype = list(data.frame(1)),
+          validity = function(object){
+               len <- length(object@data)
+               if (len > 1)
+                  { if (!all(lapply(object@data, is.data.frame)))
+                        stop("all elements must be data frames")
+                    f <- function(y) {list(ncol(y), names(y))}
+                    g <- function(y) identical(f(y), f(object@data[[1]]))
+                    if (!all(lapply(object@data, g)))
+                        stop("all elements must have the same column structure")     
+                  }
+              return(TRUE) }
+    )
 
+
+################################
+##
+## Some Class Unions
+##
+################################
+
+
+setClassUnion("ArrayorNULLorVectororDataframeorSeqDataFrames",c("array", "NULL",
+               "vector", "data.frame", "SeqDataFrames"))
+setClassUnion("DataframeorSeqDataFrames",c("data.frame", "SeqDataFrames"))
 setClassUnion("ArrayorNULLorVector",c("array", "NULL","vector"))
 setClassUnion("MatrixorNULLorVector",c("matrix", "NULL","vector"))
+
+################################
+##
+## Class: Dataclass
+##
+################################
+
 
 .pkgv <- as.character(
          {if ("distrSim" %in% row.names(installed.packages()))
@@ -20,7 +52,7 @@ setClassUnion("MatrixorNULLorVector",c("matrix", "NULL","vector"))
 setClass("Dataclass",
          representation(filename = "vectororNULL",
 #old:                        Data = "vectororNULL",
-                        Data = "ArrayorNULLorVector",
+                        Data = "ArrayorNULLorVectororDataframeorSeqDataFrames",
                         obsDim ="numeric",   ### new v.1.8
                         runs = "numeric",
                         samplesize = "numeric",

@@ -1,7 +1,6 @@
 \name{Dataclass-class}
 \docType{class}
 \alias{Dataclass-class}
-\alias{Dataclass}
 \alias{initialize,Dataclass-method}
 \title{Class "Dataclass" }
 \description{
@@ -10,7 +9,8 @@
   stored in a unified way.
 }
 \section{Objects from the Class}{
-  Objects can be created by calls of the form \code{Dataclass(filename = "Data-set", Data, name = "Data-Set")}. 
+  Objects can be created by calls to the generating function, method 
+  \code{Dataclass(Data, filename = "Data-set", name = "Data-Set")}. 
   A Dataclass-object includes, aside from the actual data, a filename
   and the size of the sample, the observation dimension, and the number of runs, which give the
   number of rows and columns (and, if more than one run, slices) 
@@ -22,8 +22,9 @@
       Object of class \code{"character"}: the filename the data shall be saved}
     \item{\code{name}:}{
       Object of class \code{"character"}: a name for the Data}
-    \item{\code{Data}:}{Object of class \code{"ArrayorNULLorVector"}:
-      the actual data, either of type "NULL" (means no data) or "vector"}
+    \item{\code{Data}:}{Object of class \code{"ArrayorNULLorVectororDataframeorSeqDataFrames"}:
+      the actual data, either of type "NULL" (means no data) or "vector" or "array" 
+      or "Dataframe" or "SeqDataFrames"}
     \item{\code{obsDim}:}{Object of class \code{"numeric"}:
       the observation dimension of the data}
     \item{\code{runs}:}{Object of class \code{"numeric"}:

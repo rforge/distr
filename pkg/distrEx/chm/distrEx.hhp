@@ -17,6 +17,7 @@ AbscontCondDistribution-class.html
 Condition-class.html
 ContaminationSize.html
 ConvexContamination.html
+CvMDist.html
 DiscreteCondDistribution-class.html
 DiscreteMVDistribution-class.html
 DiscreteMVDistribution.html
@@ -46,4 +47,3 @@ liesInSupport.html
 m1df.html
 m2df.html
 make01.html
-vonMisesDist.html

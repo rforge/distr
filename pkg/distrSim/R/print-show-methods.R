@@ -62,3 +62,20 @@ setMethod("print","Contsimulation",
 setMethod("show", "Contsimulation",
           function(object)print(object))
 
+setMethod("print", "SeqDataFrames",
+          function(x, ..., short = FALSE){
+            nruns <- runs(x)
+            nobsDims <- obsDim(x)
+            nobs <- samplesize(x)
+            if(short) {
+               nruns <- min(runs(x),distrSimoption("MaxNumberofPrintedRuns")) 
+               nobsDims <- min(obsDim(x),distrSimoption("MaxNumberofPrintedObsDims")) 
+               obs <- lapply(x@data, function(y) min(nrow(y),distrSimoption("MaxNumberofPrintedObs")))
+               }
+            for(k in 1:nruns){
+                cat(names(x)[k],":\n")
+                print(x@data[1:obs[[k]],1:nobsDims])}            
+          })
+
+setMethod("show", "SeqDataFrames",
+          function(object) print(object))

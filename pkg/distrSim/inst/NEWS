@@ -3,6 +3,15 @@
 ######################################################################
 
 ##############
+v 2.0
+##############
+
+* new class SeqDataFrames to bundle data frames with same column structure
+  (e.g. several runs of an experiment); behaves just as an ordinary 3dim
+  array but may have varying first dimensions (=sample sizes) and
+  varying data types for the columns.
+
+##############
 v 1.9 
 ##############
 

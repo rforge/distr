@@ -1,0 +1,131 @@
+<html><head><title>Generic function for the computation of the Cramer - von Mises  distance of two distributions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>CvMDist(distrEx)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   CvMDist">
+<param name="keyword" value="R:   CvMDist-methods">
+<param name="keyword" value="R:   CvMDist,UnivariateDistribution,UnivariateDistribution-method">
+<param name="keyword" value="R:   CvMDist,numeric,UnivariateDistribution-method">
+<param name="keyword" value=" Generic function for the computation of the Cramer - von Mises  distance of two distributions">
+</object>
+
+
+<h2>Generic function for the computation of the Cramer - von Mises  distance of two distributions</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Generic function for the computation of the Cramer - von Mises  distance <i>d_{mu}</i>
+of two distributions <i>P</i> and <i>Q</i> where the distributions are defined 
+on a finite-dimensional Euclidean space <i>(R^m, B^m)</i>
+with <i>B^m</i> the Borel-<i>sigma</i>-algebra on <i>R^m</i>.
+The Cramer - von Mises  distance is defined as
+</p><p align="center"><i>d_{mu}(P,Q)^2=int (P({y in R^m | y &lt;= x})-Q({y in R^m | y &lt;= x}))^2 mu(dx)</i></p><p>
+where <i>&lt;=</i> is coordinatewise on <i>R^m</i>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+CvMDist(e1, e2, ...)
+## S4 method for signature 'UnivariateDistribution,
+##   UnivariateDistribution':
+CvMDist(e1, e2, mu = e2, useApply = FALSE, ...)
+## S4 method for signature 'numeric,
+##   UnivariateDistribution':
+CvMDist(e1, e2, mu = e2, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>e1</code></td>
+<td>
+object of class <code>"Distribution"</code> or class <code>"numeric"</code> </td></tr>
+<tr valign="top"><td><code>e2</code></td>
+<td>
+object of class <code>"Distribution"</code> </td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+further arguments to be used e.g. by <code>E()</code></td></tr>
+<tr valign="top"><td><code>useApply</code></td>
+<td>
+logical; to be passed to <code><a href="E.html">E</a>()</code></td></tr>
+<tr valign="top"><td><code>mu</code></td>
+<td>
+object of class <code>"Distribution"</code>; integration measure; defaulting to <code>e2</code> </td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+Cramer - von Mises  distance of <code>e1</code> and <code>e2</code></p>
+
+<h3>Methods</h3>
+
+<dl>
+<dt>e1 = "UnivariateDistribution", e2 = "UnivariateDistribution":</dt><dd>Cramer - von Mises  distance of two univariate distributions.
+</dd>
+<dt>e1 = "numeric", e2 = "UnivariateDistribution":</dt><dd>Cramer - von Mises  distance between the empirical formed from a data set (e1) and a 
+univariate distribution. 
+</dd>
+</dl>
+
+<h3>Author(s)</h3>
+
+<p>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@uni-bayreuth.de">Peter.Ruckdeschel@uni-bayreuth.de</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Rieder, H. (1994) <EM>Robust Asymptotic Statistics</EM>. New York: Springer.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="ContaminationSize.html">ContaminationSize</a></code>, <code><a href="TotalVarDist.html">TotalVarDist</a></code>, 
+<code><a href="HellingerDist.html">HellingerDist</a></code>, <code><a href="KolmogorovDist.html">KolmogorovDist</a></code>,
+<code><a onclick="findlink('distr', 'Distribution-class.html')" style="text-decoration: underline; color: blue; cursor: hand">Distribution-class</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+CvMDist(Norm(), Gumbel())
+CvMDist(Norm(), Gumbel(), mu = Norm())
+CvMDist(Norm(), Td(10))
+CvMDist(Norm(mean = 50, sd = sqrt(25)), Binom(size = 100))
+CvMDist(Pois(10), Binom(size = 20)) 
+CvMDist(rnorm(100),Norm())
+CvMDist((rbinom(50, size = 20, prob = 0.5)-10)/sqrt(5), Norm())
+CvMDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5))
+CvMDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5), mu = Pois())
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>distrEx</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

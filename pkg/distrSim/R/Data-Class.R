@@ -17,8 +17,30 @@
 ##
 ################################
 
-Dataclass <- function(filename = NULL, Data, name = "Data-Set") 
-{if(!is(Data,"array") & !is(Data,"vector"))
+## Access methods
+
+setMethod("filename", "Dataclass", function(object) object@filename)
+setMethod("Data", "Dataclass", function(object) object@Data)
+setMethod("runs", "Dataclass", function(object) object@runs)
+setMethod("samplesize", "Dataclass", function(object) object@samplesize)
+setMethod("obsDim", "Dataclass", function(object) object@obsDim)### new v.1.8
+setMethod("name", "Dataclass", function(object) object@name)### new v.1.8
+setMethod("getVersion", "Dataclass", 
+           function(object) object@version)### new v.1.8
+
+setMethod("Dataclass","DataframeorSeqDataFrames", function(Data, filename = NULL, name = "Data-Set"){ 
+ runs0 <- runs(Data)
+ obsDim0 <- obsDim(Data)
+ dimnames0 <- obsDimnames(Data)
+ rnames <- names(Data)
+ dnames <- obsDimnames(Data)
+ samplesize0 <- samplesize(Data)
+ new("Dataclass", filename = filename, Data = Data0, runs = runs0, 
+     obsDim = obsDim0, samplesize = samplesize0, name = name)
+})
+
+setMethod("Dataclass","ArrayorNULLorVector", function(Data, filename = NULL, name = "Data-Set") 
+{if(is.null(Data))
     stop("generating an object of class \"Dataclasss\" requires data of type \"array\" or \"vector\"")
 
  runs0 <- 1
@@ -52,20 +74,10 @@ Dataclass <- function(filename = NULL, Data, name = "Data-Set")
                 dimnames = dimnames0)       
  new("Dataclass", filename = filename, Data = Data0, runs = runs0, 
      obsDim = obsDim0, samplesize = samplesize0, name = name)
-}
+})
 
  
 
-## Access methods
-
-setMethod("filename", "Dataclass", function(object) object@filename)
-setMethod("Data", "Dataclass", function(object) object@Data)
-setMethod("runs", "Dataclass", function(object) object@runs)
-setMethod("samplesize", "Dataclass", function(object) object@samplesize)
-setMethod("obsDim", "Dataclass", function(object) object@obsDim)### new v.1.8
-setMethod("name", "Dataclass", function(object) object@name)### new v.1.8
-setMethod("getVersion", "Dataclass", 
-           function(object) object@version)### new v.1.8
 
 ## Replacement methods
 

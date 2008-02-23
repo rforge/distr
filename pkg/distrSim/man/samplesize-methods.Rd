@@ -4,6 +4,7 @@
 \alias{samplesize<--methods}
 \alias{samplesize}
 \alias{samplesize<-}
+\alias{samplesize,SeqDataFrames-method}
 \alias{samplesize,Dataclass-method}
 \alias{samplesize<-,Simulation-method}
 \alias{samplesize<-,Contsimulation-method}
@@ -12,6 +13,7 @@
 
 \section{Methods}{\describe{
 
+\item{samplesize}{\code{signature(object = "SeqDataFrames")}: returns the size[s] of the sample[s] }
 \item{samplesize}{\code{signature(object = "Dataclass")}: returns the size of the sample }
 \item{samplesize<-}{\code{signature(object = "Simulation")}: changes the size of the sample }
 \item{samplesize<-}{\code{signature(object = "Contsimulation")}: changes the size of the sample }

@@ -1,0 +1,129 @@
+<html><head><title>Class "SeqDataFrames"</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>SeqDataFrames-class(distrSim)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   SeqDataFrames-class">
+<param name="keyword" value="R:   SeqDataFrames">
+<param name="keyword" value="R:   seqDataFrames">
+<param name="keyword" value="R:   obsdimnames">
+<param name="keyword" value="R:   obsdimnames-method">
+<param name="keyword" value="R:   obsdimnames,SeqDataFrames-method">
+<param name="keyword" value="R:   obsdimnames<-,SeqDataFrames-method">
+<param name="keyword" value="R:   names,SeqDataFrames-method">
+<param name="keyword" value="R:   names<-,SeqDataFrames-method">
+<param name="keyword" value="R:   runnames">
+<param name="keyword" value="R:   runnames-method">
+<param name="keyword" value="R:   runnames,SeqDataFrames-method">
+<param name="keyword" value="R:   runnames<-,SeqDataFrames-method">
+<param name="keyword" value="R:   print,SeqDataFrames-method">
+<param name="keyword" value="R:   show,SeqDataFrames-method">
+<param name="keyword" value="R:   rbind">
+<param name="keyword" value="R:   rbind-method">
+<param name="keyword" value="R:   rbind,ANY-method">
+<param name="keyword" value="R:   rbind,SeqDataFrames-method">
+<param name="keyword" value=" Class 'SeqDataFrames'">
+</object>
+
+
+<h2>Class 'SeqDataFrames'</h2>
+
+
+<h3>Description</h3>
+
+<p>
+An object of type "SeqDataFrames" is a list of data frames, all of which
+with the same numbers and names of columns (ideally with the same data-types
+for the columns), but with possibly varying number of rows;
+with correponding index operators it behaves like a three-dimensional array
+with dimensions sample size x observation dimension x runs.
+</p>
+
+
+<h3>Details</h3>
+
+<p>
+There is a validity method checking for each member of the list being
+a data frame and for the accordance of the
+column structures of the data frames.
+</p>
+
+
+<h3>Objects from the Class</h3>
+
+<p>
+Objects can be created by calls of the form 
+<code>SeqDataFrames(...)</code>, where the ... are a list of dataframes
+with according column structure.
+</p>
+
+
+<h3>Slots</h3>
+
+<dl>
+<dt><code>data</code>:</dt><dd>a list of data frames</dd>
+</dl>
+
+<h3>Methods</h3>
+
+<dl>
+<dt>[</dt><dd><code>signature(x = "SeqDataFrames")</code>:
+returns (slices of) the data</dd>
+<dt>[&lt;-</dt><dd><code>signature(x = "SeqDataFrames")</code>:
+modifies (slices of) the data</dd>
+<dt>print</dt><dd><code>signature(x = "SeqDataFrames", obs0 = NULL,
+                   dims0 = NULL, runs0 = NULL,  short = FALSE, ...)</code>:
+slices can be printed and, if argument <code>short== TRUE</code>
+only a bounded number of dimensions is shown.   
+</dd>
+<dt>show</dt><dd><code>signature(object = "SeqDataFrames")</code>: a call to
+<code>print(x)</code></dd>
+<dt>names</dt><dd><code>signature(x = "SeqDataFrames")</code>:
+returns the names of the runs</dd>
+<dt>runnames</dt><dd><code>signature(x = "SeqDataFrames")</code>:
+returns the names of the runs</dd>
+<dt>obsdimnames</dt><dd><code>signature(x = "SeqDataFrames")</code>:
+returns the names of the observation dimensions</dd>
+<dt>obsDim</dt><dd><code>signature(x = "SeqDataFrames")</code>:
+returns the dimension of the observations</dd>
+<dt>runs</dt><dd><code>signature(x = "SeqDataFrames")</code>:
+returns the number of runs</dd>
+<dt>samplesize</dt><dd><code>signature(x = "SeqDataFrames")</code>:
+returns the size of the samples for each run</dd>
+<dt>rbind</dt><dd><code>signature(x = "SeqDataFrames")</code>:
+concatenates different a list of <code>SeqDataFrames</code> object (with 
+the same column structure) to a new object of class <code>SeqDataFrames</code>
+to do so we mask the <code>rbind</code> method from package <span class="pkg">base</span></dd>
+</dl>
+
+<h3>Author(s)</h3>
+
+<p>
+Thomas Stabla <a href="mailto:statho3@web.de">statho3@web.de</a>,<br> 
+Florian Camphausen <a href="mailto:fcampi@gmx.de">fcampi@gmx.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@uni-bayreuth.de">Peter.Ruckdeschel@uni-bayreuth.de</a>,<br> 
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="indexing-methods.html">[-methods</a></code>
+<code><a href="print-methods.html">print-methods</a></code>
+<code><a href="summary-methods.html">summary-methods</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+</pre>
+
+
+
+<hr><div align="center">[Package <em>distrSim</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

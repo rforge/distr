@@ -27,11 +27,13 @@ URL: \tab http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/\cr
 }
 \section{Classes}{
 \preformatted{
+"SeqDataFrame"
+      slots: data(list[of dataframes with common column structure])
 "Dataclass"
       slots: [<name>(<class>)] 
       filename(vectororNULL), 
       name(character), 
-      Data(ArrayorNULLorVector), 
+      Data(ArrayorNULLorVectororDataframeorSeqDataFrames), 
       runs(numeric), 
       samplesize(numeric),
       obsDim(numeric)      

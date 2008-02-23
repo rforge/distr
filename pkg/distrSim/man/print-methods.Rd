@@ -13,6 +13,8 @@
 
 \section{Methods}{\describe{
 
+\item{print}{\code{signature(x = "SeqDataFrames")}: extra argument \code{short = FALSE}; if \code{TRUE}
+ the output is cut according to \code{distrSimoptions}.}
 
 \item{print}{\code{signature(x = "Dataclass")}: returns name, filename, the observation dimension, the number of runs 
  and the size of the sample, and, if from a version > 1.8, also the package version under which the object was generated}
@@ -24,7 +26,7 @@
               seed, the contamination rate and the distributions}
 
 \item{show}{\code{signature(x = "Dataclass")}, \code{signature(x = "Simulation")},
-            \code{signature(x = "Contsimulation")}: as corresponding \code{print} method}
+            \code{signature(x = "Contsimulation"), \code{signature(x = "SeqDataFrames")}}: as corresponding \code{print} method}
 
 }}
 \keyword{print}

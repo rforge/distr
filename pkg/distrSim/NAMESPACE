@@ -5,9 +5,10 @@ import("distr")
 import("startupmsg")
 
 export("cload", "Dataclass", "Simulation", "Contsimulation",
-              "distrSimoptions", "getdistrSimOption")
+              "distrSimoptions", "getdistrSimOption", "seqDataFrames", "distrSimMASK")
 exportClasses("vectororNULL", "Dataclass", "Simulation", "Contsimulation",
-              "MatrixorNULLorVector","ArrayorNULLorVector")
+              "SeqDataFrames", "MatrixorNULLorVector","ArrayorNULLorVector",
+              "ArrayorNULLorVectororDataframeorSeqDataFrames","DataframeorSeqDataFrames")
 exportMethods("filename", "filename<-", "Data", "Data<-", "runs", "runs<-", 
               "samplesize", "samplesize<-", "savedata", "seed", "seed<-",
               "distribution", "distribution<-", "ind", "Data.id", "Data.c",
@@ -15,3 +16,4 @@ exportMethods("filename", "filename<-", "Data", "Data<-", "runs", "runs<-",
               "distribution.c", "distribution.c<-", "name", "name<-")
 exportMethods("initialize", "print", "plot", "summary", "simulate", "show",
               "obsDim", "conv2NewVersion", "getVersion")
+exportMethods("[", "[<-", "rbind", "names", "runnames", "obsdimnames")

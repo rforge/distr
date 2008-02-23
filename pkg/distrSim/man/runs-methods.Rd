@@ -4,6 +4,7 @@
 \alias{runs<--methods}
 \alias{runs}
 \alias{runs<-}
+\alias{runs,SeqDataFrames-method}
 \alias{runs,Dataclass-method}
 \alias{runs<-,Simulation-method}
 \alias{runs<-,Contsimulation-method}
@@ -12,6 +13,7 @@
 
 \section{Methods}{\describe{
 
+\item{runs}{\code{signature(object = "SeqDataFrames")}: returns the number of runs }
 \item{runs}{\code{signature(object = "Dataclass")}: returns the number of runs }
 \item{runs<-}{\code{signature(object = "Simulation")}: changes the number of runs }
 \item{runs<-}{\code{signature(object = "Contsimulation")}: changes the number of runs }

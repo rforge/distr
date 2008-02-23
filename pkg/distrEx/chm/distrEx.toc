@@ -70,6 +70,22 @@
 <param name="Local" value="ConvexContamination.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="CvMDist">
+<param name="Local" value="CvMDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="CvMDist,numeric,UnivariateDistribution-method">
+<param name="Local" value="CvMDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="CvMDist,UnivariateDistribution,UnivariateDistribution-method">
+<param name="Local" value="CvMDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="CvMDist-methods">
+<param name="Local" value="CvMDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="dim">
 <param name="Local" value="dim-methods.html">
 </OBJECT>
@@ -1221,22 +1237,6 @@
 <param name="Name" value="var-methods">
 <param name="Local" value="Var.html">
 </OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="vonMisesDist">
-<param name="Local" value="vonMisesDist.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="vonMisesDist,numeric,UnivariateDistribution-method">
-<param name="Local" value="vonMisesDist.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="vonMisesDist,UnivariateDistribution,UnivariateDistribution-method">
-<param name="Local" value="vonMisesDist.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="vonMisesDist-methods">
-<param name="Local" value="vonMisesDist.html">
-</OBJECT>
 </UL>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Package distrEx:  Titles">
@@ -1327,6 +1327,10 @@
 <param name="Local" value="ContaminationSize.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generic function for the computation of the Cramer - von Mises  distance of two distributions">
+<param name="Local" value="CvMDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generic function for the computation of the Hellinger distance of two distributions">
 <param name="Local" value="HellingerDist.html">
 </OBJECT>
@@ -1337,10 +1341,6 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generic function for the computation of the total variation distance of two distributions">
 <param name="Local" value="TotalVarDist.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Generic function for the computation of the vonMises distance of two distributions">
-<param name="Local" value="vonMisesDist.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generic Functions for the Computation of Functionals">

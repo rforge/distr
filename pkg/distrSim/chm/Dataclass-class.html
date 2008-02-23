@@ -6,7 +6,6 @@
 
 <table width="100%"><tr><td>Dataclass-class(distrSim)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   Dataclass-class">
-<param name="keyword" value="R:   Dataclass">
 <param name="keyword" value="R:   initialize,Dataclass-method">
 <param name="keyword" value=" Class 'Dataclass'">
 </object>
@@ -27,7 +26,8 @@ stored in a unified way.
 <h3>Objects from the Class</h3>
 
 <p>
-Objects can be created by calls of the form <code>Dataclass(filename = "Data-set", Data, name = "Data-Set")</code>. 
+Objects can be created by calls to the generating function, method 
+<code>Dataclass(Data, filename = "Data-set", name = "Data-Set")</code>. 
 A Dataclass-object includes, aside from the actual data, a filename
 and the size of the sample, the observation dimension, and the number of runs, which give the
 number of rows and columns (and, if more than one run, slices) 
@@ -40,8 +40,9 @@ of the data array.
 <dl>
 <dt><code>filename</code>:</dt><dd>Object of class <code>"character"</code>: the filename the data shall be saved</dd>
 <dt><code>name</code>:</dt><dd>Object of class <code>"character"</code>: a name for the Data</dd>
-<dt><code>Data</code>:</dt><dd>Object of class <code>"ArrayorNULLorVector"</code>:
-the actual data, either of type "NULL" (means no data) or "vector"</dd>
+<dt><code>Data</code>:</dt><dd>Object of class <code>"ArrayorNULLorVectororDataframeorSeqDataFrames"</code>:
+the actual data, either of type "NULL" (means no data) or "vector" or "array" 
+or "Dataframe" or "SeqDataFrames"</dd>
 <dt><code>obsDim</code>:</dt><dd>Object of class <code>"numeric"</code>:
 the observation dimension of the data</dd>
 <dt><code>runs</code>:</dt><dd>Object of class <code>"numeric"</code>:
@@ -164,6 +165,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center">[Package <em>distrSim</em> version 1.9 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distrSim</em> version 2.0 <a href="00Index.html">Index]</a></div>
 
 </body></html>

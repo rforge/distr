@@ -41,6 +41,27 @@ if(!isGeneric("samplesize<-"))
    setGeneric("samplesize<-", 
                function(object, value) standardGeneric("samplesize<-"))
 
+### new 2.0
+if(!isGeneric("Dataclass")) 
+    setGeneric("Dataclass", 
+              function(Data,...) standardGeneric("Dataclass"))
+
+rbind <- function(x, ...) base::rbind(x,...)
+
+if(!isGeneric("rbind")) 
+    setGeneric("rbind", 
+              function(x,...) standardGeneric("rbind"))
+
+if(!isGeneric("obsdimnames")) 
+    setGeneric("obsdimnames", function(object) standardGeneric("obsdimnames"))
+if(!isGeneric("obsdimnames<-")) 
+    setGeneric("obsdimnames<-", function(object, value) standardGeneric("obsdimnames<-"))
+if(!isGeneric("runnames")) 
+    setGeneric("runnames", function(object) standardGeneric("runnames"))
+if(!isGeneric("runnames<-")) 
+    setGeneric("runnames<-", function(object, value) standardGeneric("runnames<-"))
+
+
 # general methods
 
 ## moved to distr version 1.9
