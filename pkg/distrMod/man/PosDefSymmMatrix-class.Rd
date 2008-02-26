@@ -1,13 +1,15 @@
 \name{PosDefSymmMatrix-class}
 \docType{class}
 \alias{PosDefSymmMatrix-class}
+\alias{PosSemDefSymmMatrix-class}
 
-\title{Positive-definite, symmetric matrices}
-\description{The class of positive-definite, symmetric matrices.}
+\title{Positive-[Semi-]definite, symmetric matrices}
+\description{The class of positive-[semi-]definite, symmetric matrices.}
 \section{Objects from the Class}{
-  Objects can be created by calls of the form \code{new("PosDefSymmMatrix", ...)}.
-  More frequently they are created via the generating function 
-  \code{PosDefSymmMatrix}. 
+  Objects can be created by calls of the form \code{new("PosSemDefSymmMatrix", ...)}
+  resp. \code{new("PosDefSymmMatrix", ...)}.
+  More frequently they are created via the generating functions
+  \code{PosSemDefSymmMatrix} resp. \code{PosDefSymmMatrix}. 
 }
 \section{Slots}{
   \describe{
@@ -16,6 +18,7 @@
   }
 }
 \section{Extends}{
+[Class \code{"PosSemDefSymmMatrix"}, directly]
 Class \code{"matrix"}, from data part.\cr
 Class \code{"structure"}, by class \code{"matrix"}.\cr
 Class \code{"array"}, by class \code{"matrix"}.\cr
@@ -24,13 +27,15 @@ Class \code{"vector"}, by class "matrix", with explicit coerce.
 }
 %\section{Methods}{}
 %\references{}
-\author{Matthias Kohl \email{Matthias.Kohl@stamats.de}}
+\author{Matthias Kohl \email{Matthias.Kohl@stamats.de},
+Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de}}
 %\note{}
 \seealso{\code{\link{PosDefSymmMatrix}}, \code{\link[methods:StructureClasses]{matrix-class}}}
 \examples{
 new("PosDefSymmMatrix", diag(2))
 }
 \concept{positive-definite matrix}
+\concept{positive-semi-definite matrix}
 \concept{symmetric matrix}
 \keyword{classes}
 \keyword{array}

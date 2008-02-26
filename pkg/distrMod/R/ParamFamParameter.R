@@ -9,6 +9,7 @@ ParamFamParameter <- function(name, main = numeric(0), nuisance, trafo){
         trafo <- diag(length(main)+length(nuisance))
 
     dimension <- length(main) + length(nuisance)
+    if(!is.function(trafo)){
     if(ncol(trafo) != dimension)
         stop("invalid transformation:\n", 
              "number of columns of 'trafo' not equal to ", 
@@ -19,7 +20,7 @@ ParamFamParameter <- function(name, main = numeric(0), nuisance, trafo){
              "dimension of the parameter")
     if(any(!is.finite(trafo)))
         stop("infinite or missing values in 'trafo'")
-
+    }
     PFP <- new("ParamFamParameter")
     PFP@name <- name
     PFP@main <- main
@@ -32,7 +33,9 @@ ParamFamParameter <- function(name, main = numeric(0), nuisance, trafo){
 ## access methods
 setMethod("main", "ParamFamParameter", function(object) object@main)
 setMethod("nuisance", "ParamFamParameter", function(object) object@nuisance)
-setMethod("trafo", "ParamFamParameter", function(object) object@trafo)
+setMethod("trafo", "ParamFamParameter", function(object){ 
+   if(is.function(object@trafo)) return(object@trafo(object@main, object@nuisance))
+   else return(object@trafo)})  
 
 ## replace methods
 setReplaceMethod("main", "ParamFamParameter", 
@@ -57,7 +60,7 @@ setReplaceMethod("nuisance", "ParamFamParameter",
     })
 setReplaceMethod("trafo", "ParamFamParameter", 
     function(object, value){ 
-        object@trafo <- value
+      if(!is.function(value)){
         if(any(!is.finite(value)))
             stop("infinite or missing values in 'value'")
         dimension <- length(object@main) + length(object@nuisance)
@@ -65,7 +68,9 @@ setReplaceMethod("trafo", "ParamFamParameter",
             warning("number of columns of 'value' not equal to dimension of the parameters\n")
         if(nrow(value) > dimension)
             warning("number of rows of 'value' larger than dimension of the parameters\n")
-        object
+        }
+      object@trafo <- value
+      object
     })
 
 ## method length

@@ -34,6 +34,7 @@ LnormScaleFamily.html
 MCEstimator.html
 MDEstimator.html
 MLEstimator.html
+MatrixorFunction-class.html
 NoSymmetry-class.html
 NoSymmetry.html
 NonSymmetric-class.html
@@ -75,6 +76,7 @@ asymmetricBias-class.html
 asymmetricBias.html
 checkL2deriv.html
 distrModOptions.html
+existsPIC.html
 fiBias-class.html
 fiBias.html
 fiCov-class.html
@@ -86,9 +88,11 @@ fiMSE.html
 fiRisk-class.html
 fiUnOvShoot-class.html
 fiUnOvShoot.html
+isKerAinKerB.html
 negativeBias.html
 onesidedBias-class.html
 positiveBias.html
+solve-methods.html
 symmetricBias-class.html
 symmetricBias.html
 trAsCov-class.html

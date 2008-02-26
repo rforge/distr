@@ -15,6 +15,9 @@
 \alias{E,L2ParamFamily,EuclRandVariable,missing-method}
 \alias{E,L2ParamFamily,EuclRandMatrix,missing-method}
 \alias{E,L2ParamFamily,EuclRandVarList,missing-method}
+\alias{modifyModel}
+\alias{modifyModel-methods}
+\alias{modifyModel,L2ParamFamily,ParamFamParameter-method}
 \alias{plot,L2ParamFamily-method}
 
 \title{L2 differentiable parametric family}
@@ -87,6 +90,9 @@ Class \code{"ProbFamily"}, by class \code{"ParamFamily"}.
 
     \item{plot}{\code{signature(x = "L2ParamFamily")}: 
       plot of \code{distribution} and \code{L2deriv}. }
+
+    \item{modifyModel}{\code{signature(model = "L2ParamFamily", param = "ParamFamParameter")}:
+      moves the L2-parametric Family \code{model} to parameter \code{param} }
   }
 }
 \references{

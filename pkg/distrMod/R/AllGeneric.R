@@ -101,3 +101,14 @@ if(!isGeneric("biastype")){
 if(!isGeneric("biastype<-")){
     setGeneric("biastype<-", function(object,value) standardGeneric("biastype<-"))
 }
+
+if(!isGeneric("solve")){
+    setGeneric("solve", function(a,b,...) standardGeneric("solve"))
+}
+
+if(!isGeneric("modifyModel")){
+    setGeneric("modifyModel", function(model, param, ...) standardGeneric("modifyModel"))
+}
+if(!isGeneric("existsPIC")){
+    setGeneric("existsPIC", function(object,...) standardGeneric("existsPIC"))
+}

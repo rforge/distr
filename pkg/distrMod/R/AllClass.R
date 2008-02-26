@@ -27,6 +27,7 @@
 ### from Matthias' thesis / ROptEst
 ## optional numeric
 setClassUnion("OptionalNumeric", c("numeric", "NULL"))
+setClassUnion("MatrixorFunction", c("matrix", "function"))
 
 
 ################################
@@ -36,7 +37,7 @@ setClassUnion("OptionalNumeric", c("numeric", "NULL"))
 ################################
 ### from Matthias' thesis / ROptEst
 ## positive definite, symmetric matrices with finite entries
-setClass("PosDefSymmMatrix", contains = "matrix",
+setClass("PosSemDefSymmMatrix", contains = "matrix",
             prototype = prototype(matrix(1)),
             validity = function(object){
                 if(nrow(object) != ncol(object))
@@ -45,11 +46,20 @@ setClass("PosDefSymmMatrix", contains = "matrix",
                     stop("inifinite or missing values in matrix")
                 if(!isTRUE(all.equal(object, t(object), .Machine$double.eps^0.5)))
                     stop("matrix is not symmetric")
-                if(!all(eigen(object)$values > 100*.Machine$double.eps))
-                   stop("matrix is (numerically) not positive definite")
+                if(!all(eigen(object)$values > -100*.Machine$double.eps))
+                   stop("matrix is (numerically) not positive semi - definite")
                return(TRUE)
             })
 
+## positive definite, symmetric matrices with finite entries
+setClass("PosDefSymmMatrix", contains = "PosSemDefSymmMatrix",
+            validity = function(object){
+               if(!all(eigen(object)$values > 100*.Machine$double.eps))
+                   stop("matrix is (numerically) not positive definite")
+               valid <- getValidity(getClass("PosSemDefSymmMatrix"))
+               valid(as(object, "PosSemDefSymmMatrix"))
+               return(TRUE)
+            })
 
 ### from Matthias' thesis / ROptEst
 ## class of symmetries
@@ -123,12 +133,14 @@ setClass(Class = "FunSymmList",
 setClass("ParamFamParameter",
             representation(main = "numeric",
                            nuisance = "OptionalNumeric",
-                           trafo = "matrix"),
+                           trafo = "MatrixorFunction"),
             prototype(name = "parameter of a parametric family of probability measures",
                       main = numeric(0), nuisance = NULL, trafo = new("matrix")),
             contains = "Parameter",
             validity = function(object){
+                if(is.matrix(object@trafo)){
                 dimension <- length(object@main) + length(object@nuisance)
+                
                 if(ncol(object@trafo) != dimension)
                     stop("invalid transformation:\n",
                          "number of columns of 'trafo' not equal to ",
@@ -138,7 +150,7 @@ setClass("ParamFamParameter",
                          "number of rows of 'trafo' larger than ",
                          "dimension of the parameter")
                 if(any(!is.finite(object@trafo)))
-                    stop("infinite or missing values in 'trafo'")
+                    stop("infinite or missing values in 'trafo'")}
                 return(TRUE)
             })
 
@@ -154,36 +166,45 @@ setClass("ProbFamily", representation(name = "character",
 ## parametric family of probability measures
 setClass("ParamFamily",
             representation(param = "ParamFamParameter",
-                           modifyParam = "function"    ### <- new !!! (not in thesis!)
+                           modifyParam = "function"
+                           ### <- new !!! (not in thesis!)
+                           ### a function with argument theta
+                           ###  returning distribution P_theta    
                            ),
             prototype(name = "parametric family of probability measures",
                       distribution = new("Norm"),
                       distrSymm = new("NoSymmetry"),
                       modifyParam = function(theta){ Norm(mean=theta) }, ### <- new !!! (not in thesis!)
                       props = character(0),
-                      param = new("ParamFamParameter", main = 0, trafo = as.matrix(1))),
+                      param = new("ParamFamParameter", main = 0, trafo = matrix(1))),
             contains = "ProbFamily")
 
 ### from Matthias' thesis / ROptEst
 ## L2-differentiable parametric family of probability measures
 setClass("L2ParamFamily",
             representation(L2deriv = "EuclRandVarList",
+                           L2deriv.fct = "function", ## new: a function in theta which produces L2deriv
                            L2derivSymm = "FunSymmList",
                            L2derivDistr = "DistrList",
                            L2derivDistrSymm = "DistrSymmList",
-                           FisherInfo = "PosDefSymmMatrix"), 
+                           FisherInfo = "PosSemDefSymmMatrix",
+                           FisherInfo.fct = "function" ## new: a function in theta which produces FisherInfo
+                           ), 
             prototype(name = "L_2 differentiable parametric family of probability measures",
                       distribution = new("Norm"),
                       distrSymm = new("NoSymmetry"),
                       modifyParam = function(theta){ Norm(mean=theta) }, ### <- new !!! (not in thesis!)
                       param = new("ParamFamParameter", main = 0, trafo = matrix(1)),
                       props = character(0),
-                      L2deriv = EuclRandVarList(RealRandVariable(Map = list(function(x){x}), 
+                      L2deriv.fct = function(theta) {f <- function(x) {x-theta} 
+                                                     return(f)},
+                      L2deriv = EuclRandVarList(RealRandVariable(Map = list(function(x)x), 
                                                                  Domain = Reals())),
                       L2derivSymm = new("FunSymmList"),
                       L2derivDistr = UnivarDistrList(new("Norm")),
                       L2derivDistrSymm = new("DistrSymmList"),
-                      FisherInfo = new("PosDefSymmMatrix", matrix(1))),
+                      FisherInfo.fct = function(theta)return(1),
+                      FisherInfo = new("PosDefSymmMatrix")),
             contains = "ParamFamily", 
             validity = function(object){
                 if(is(object@distribution, "UnivariateCondDistribution"))
@@ -195,6 +216,9 @@ setClass("L2ParamFamily",
                     if(length(object@distrSymm@SymmCenter) != dimension(img(object@distribution)))
                         stop("slot 'SymmCenter' of 'distrSymm' has wrong dimension")
                 }
+
+                if(!is(object@FisherInfo, "PosDefSymmMatrix")) 
+                    warning("Fisher information is singular; not all parameter directions can be inferred.")    
 
                 dims <- length(object@param)
                 if(ncol(object@FisherInfo) != dims)

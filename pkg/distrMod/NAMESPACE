@@ -4,7 +4,8 @@ import("distr")
 import("distrEx")
 import("RandVar")
 
-exportClasses("OptionalNumeric",
+exportClasses("OptionalNumeric","MatrixorFunction",
+              "PosSemDefSymmMatrix",
               "PosDefSymmMatrix",
               "Symmetry", "DistributionSymmetry",
               "NoSymmetry", "EllipticalSymmetry", "SphericalSymmetry",
@@ -27,8 +28,11 @@ exportMethods("type", "SymmCenter", "distrSymm",
               "FisherInfo", "checkL2deriv")
 exportMethods("bound", "width")
 exportMethods("nu", "name", "sign", "nu<-", "name<-", "sign<-", "biastype", "biastype<-")
+exportMethods("solve")
+exportMethods("existsPIC")
+exportMethods("modifyModel")
 S3method(print, MCEstimator)
-export("PosDefSymmMatrix")
+export("PosDefSymmMatrix","PosSemDefSymmMatrix")
 export("distrModOptions", "getdistrModOption",
        "MCEstimator", "MLEstimator", "MDEstimator")
 export("NoSymmetry", "EllipticalSymmetry", "SphericalSymmetry",
@@ -42,3 +46,4 @@ export("asCov", "trAsCov", "asHampel", "asBias", "asMSE", "asUnOvShoot",
        "fiCov", "trFiCov", "fiHampel", "fiMSE", "fiBias", "fiUnOvShoot")
 export("positiveBias", "negativeBias", "symmetricBias", 
        "asymmetricBias", "asSemivar")
+export("isKerAinKerB")

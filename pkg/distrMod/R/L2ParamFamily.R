@@ -1,11 +1,19 @@
 ## generating function
-L2ParamFamily <- function(name, distribution = Norm(), distrSymm, 
-                          main = 0, nuisance, trafo, param, props = character(0),
+L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
+                          main = main(param), nuisance = nuisance(param),
+                          trafo = trafo(param),
+                          param = ParamFamParameter(name = paste("Parameter of", name),
+                                   main = main, nuisance = nuisance, trafo = trafo),
+                          props = character(0),
                           modifyParam = function(theta){ Norm(mean=theta) },
-                          L2deriv = EuclRandVarList(RealRandVariable(list(function(x){x}), Domain = Reals())),
-                          L2derivSymm, L2derivDistr, L2derivDistrSymm, FisherInfo){
-    if(missing(name)) 
+                          L2deriv.fct,
+                          L2derivSymm, L2derivDistr, L2derivDistrSymm,
+                          FisherInfo.fct = function(theta)1,
+                          FisherInfo = FisherInfo.fct(param)){
+    if(missing(name))
         name <- "L_2 differentiable parametric family of probability measures"
+    if(missing(param)&&missing(main))
+       param <- ParamFamParameter(name = "location", main = 0, trafo =matrix(1))
     if(missing(distrSymm)) distrSymm <- NoSymmetry()
     if(!is(distrSymm, "NoSymmetry")){
         if(!is(distrSymm@SymmCenter, "numeric"))
@@ -13,9 +21,17 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
         if(length(distrSymm@SymmCenter) != dimension(img(distribution)))
             stop("slot 'SymmCenter' of 'distrSymm' has wrong dimension")
     }
-    if(missing(param)) 
-        param <- ParamFamParameter(name = paste("Parameter of", name), 
-                                   main = main, nuisance = nuisance, trafo = trafo)
+#    if(missing(param))
+#        param <- ParamFamParameter(name = paste("Parameter of", name),
+#                                   main = main, nuisance = nuisance, trafo = trafo)
+    if(missing(L2deriv.fct))
+       L2deriv.fct <- function(param) {force(theta <- param@main)
+                                       return(function(x) {x-theta})}
+    fct <- L2deriv.fct(param)
+    L2deriv <- if(!is.list(fct))
+       EuclRandVarList(RealRandVariable(list(fct), Domain = Reals())) else
+       EuclRandVarList(RealRandVariable(fct, Domain = Reals()))
+
     if(missing(L2derivSymm)){
         nrvalues <- numberOfMaps(L2deriv)
         L <- vector("list", nrvalues)
@@ -47,10 +63,10 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
         stop("dimension of 'L2deriv' != dimension of parameters")
 
     if(missing(FisherInfo)){
-        L2 <- as(diag(dims) %*% L2deriv, "EuclRandVariable")        
-        FisherInfo <- PosDefSymmMatrix(E(object = distribution, fun = L2 %*% t(L2)))
+        L2 <- as(diag(dims) %*% L2deriv, "EuclRandVariable")
+        FisherInfo <- PosSemDefSymmMatrix(E(object = distribution, fun = L2 %*% t(L2)))
     }else{
-        FisherInfo <- PosDefSymmMatrix(FisherInfo)
+        FisherInfo <- PosSemDefSymmMatrix(FisherInfo)
     }
     if(ncol(FisherInfo) != dims)
         stop(paste("dimension of 'FisherInfo' should be", dims))
@@ -62,10 +78,12 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
     L2Fam@param <- param
     L2Fam@modifyParam <- modifyParam
     L2Fam@props <- props
+    L2Fam@L2deriv.fct <- L2deriv.fct
     L2Fam@L2deriv <- L2deriv
     L2Fam@L2derivSymm <- L2derivSymm
     L2Fam@L2derivDistr <- L2derivDistr
     L2Fam@L2derivDistrSymm <- L2derivDistrSymm
+    L2Fam@FisherInfo.fct <- FisherInfo.fct
     L2Fam@FisherInfo <- FisherInfo
 
     return(L2Fam)
@@ -98,3 +116,21 @@ setMethod("checkL2deriv", "L2ParamFamily",
  
         return(list(maximum.deviation = prec))
     })
+
+### move model from one parameter to the next...
+setMethod("modifyModel", signature(model = "L2ParamFamily", param = "ParamFamParameter"), 
+          function(model, param, ...){
+          existsPIC(M <- L2ParamFamily(name = object@name, 
+                        distribution = object@distribution, 
+                        distrSymm = object@distrSymm, 
+                        param = param, 
+                        props = object@props,
+                        modifyParam = object@modifyparam,
+                        L2deriv.fct = object@L2deriv.fct,
+                        L2derivSymm = object@L2derivSymm, 
+                        L2derivDistr = object@L2derivDistr, 
+                        L2derivDistrSymm = object@L2derivDistrSymm, 
+                        FisherInfo.fct = object@FisherInfo.fct))
+          return(M)
+          })
+

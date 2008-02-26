@@ -20,6 +20,9 @@
 <param name="keyword" value="R:   E,L2ParamFamily,EuclRandVariable,missing-method">
 <param name="keyword" value="R:   E,L2ParamFamily,EuclRandMatrix,missing-method">
 <param name="keyword" value="R:   E,L2ParamFamily,EuclRandVarList,missing-method">
+<param name="keyword" value="R:   modifyModel">
+<param name="keyword" value="R:   modifyModel-methods">
+<param name="keyword" value="R:   modifyModel,L2ParamFamily,ParamFamParameter-method">
 <param name="keyword" value="R:   plot,L2ParamFamily-method">
 <param name="keyword" value=" L2 differentiable parametric family">
 </object>
@@ -122,6 +125,10 @@ expectation of <code>fun</code> under the distribution of <code>object</code>. <
 
 <dt>plot</dt><dd><code>signature(x = "L2ParamFamily")</code>: 
 plot of <code>distribution</code> and <code>L2deriv</code>. </dd>
+
+
+<dt>modifyModel</dt><dd><code>signature(model = "L2ParamFamily", param = "ParamFamParameter")</code>:
+moves the L2-parametric Family <code>model</code> to parameter <code>param</code> </dd>
 </dl>
 
 <h3>Author(s)</h3>

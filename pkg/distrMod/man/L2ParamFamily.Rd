@@ -6,12 +6,16 @@
   Generates an object of class \code{"L2ParamFamily"}.
 }
 \usage{
-L2ParamFamily(name, distribution = Norm(), distrSymm,
-        main = 0, nuisance, trafo, param, props = character(0),
-        modifyParam = function(theta){ Norm(mean=theta) },
-        L2deriv = EuclRandVarList(RealRandVariable(list(function(x) {x}),
-                                                   Domain = Reals())),
-        L2derivSymm, L2derivDistr, L2derivDistrSymm, FisherInfo)
+L2ParamFamily(name, distribution = Norm(), distrSymm, 
+                          main = main(param), nuisance = nuisance(param), 
+                          trafo = trafo(param), 
+                          param = ParamFamParameter(name = paste("Parameter of", name), 
+                                   main = main, nuisance = nuisance, trafo = trafo), 
+                          props = character(0),
+                          modifyParam = function(theta){ Norm(mean=theta) },
+                          L2deriv.fct,
+                          L2derivSymm, L2derivDistr, L2derivDistrSymm, 
+                          FisherInfo.fct, FisherInfo = FisherInfo.fct(param))
 }
 \arguments{
   \item{name}{ character string: name of the family }
@@ -28,15 +32,22 @@ L2ParamFamily(name, distribution = Norm(), distrSymm,
   (represented by \code{"param"}) to the distribution space 
   (represented by \code{"distribution"}). }
   \item{props}{ character vector: properties of the family }
-  \item{L2deriv}{ object of class \code{"EuclRandVariable"}: 
-    L2 derivative of the family }
+  \item{L2deriv.fct}{ function: mapping from the parameter space (argument
+    \code{param} of class \code{"ParamFamParameter"}) to a mapping observation
+    \code{x} to value of the L2derivative, which is then used to fill slot
+    \code{L2deriv}; \code{L2deriv.fct} is used by \code{modifyModel} to 
+    move the L2deriv according to a change in the parameter }
   \item{L2derivSymm}{ object of class \code{"FunSymmList"}: 
     symmetry of the maps contained in \code{L2deriv} }
   \item{L2derivDistr}{ object of class \code{"UnivarDistrList"}: 
     distribution of \code{L2deriv} }
   \item{L2derivDistrSymm}{ object of class \code{"DistrSymmList"}: 
     symmetry of the distributions contained in \code{L2derivDistr} }
-  \item{FisherInfo}{ object of class \code{"PosDefSymmMatrix"}:
+  \item{FisherInfo.fct}{function: mapping from the parameter space (argument
+    \code{param} of class \code{"ParamFamParameter"}) to the set of positive
+    semidefinite matrices; \code{FisherInfo.fct} is used by \code{modifyModel} to 
+    move the Fisher information according to a change in the parameter } 
+  \item{FisherInfo}{ object of class \code{"PosSemDefSymmMatrix"}:
     Fisher information of the family }
 }
 \details{
