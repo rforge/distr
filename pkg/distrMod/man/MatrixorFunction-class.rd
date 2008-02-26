@@ -3,7 +3,7 @@
 \alias{MatrixorFunction-class}
 
 \title{MatrixorFunction-class}
-\description{Optional object of class \code{"matrix"} of of class \code{"function"}.}
+\description{Object of class \code{"matrix"} or of class \code{"function"}.}
 \section{Objects from the Class}{A virtual Class: No objects may be created from it.}
 %\section{Methods}{}
 %\references{}
