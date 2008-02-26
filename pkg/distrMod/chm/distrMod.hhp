@@ -28,8 +28,15 @@ FunSymmList.html
 FunctionSymmetry-class.html
 GammaFamily.html
 GumbelLocationFamily.html
+L2GroupFamily-class.html
+L2LocationFamily-class.html
+L2LocationFamily.html
+L2LocationScaleFamily-class.html
+L2LocationScaleFamily.html
 L2ParamFamily-class.html
 L2ParamFamily.html
+L2ScaleFamily-class.html
+L2ScaleFamily.html
 LnormScaleFamily.html
 MCEstimator.html
 MDEstimator.html

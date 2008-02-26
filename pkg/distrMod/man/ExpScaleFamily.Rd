@@ -11,7 +11,7 @@ ExpScaleFamily(rate = 1, trafo)
 }
 \arguments{
   \item{rate}{ rate }
-  \item{trafo}{ matrix: optional transformation of the parameter }
+  \item{trafo}{ function in \code{param} or matrix: optional transformation of the parameter }
 }
 \details{
   The slots of the corresponding L2 differentiable 

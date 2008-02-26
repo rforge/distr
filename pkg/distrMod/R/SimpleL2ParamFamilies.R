@@ -290,6 +290,7 @@ NormLocationScaleFamily <- function(mean = 0, sd = 1, trafo){
                    body(fct2) <- substitute({ (((x-mean)/sd)^2 - 1)/sd }, 
                                               list(sd = sd, mean = mean))
                    return(list(fct1, fct2))}
+
     L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter = mean), EvenSymmetric(SymmCenter = mean))
     L2derivDistr <- UnivarDistrList(Norm(mean=0, sd=1/sd), (Chisq(df = 1, ncp = 0)-1)/sd)
     L2derivDistrSymm <- DistrSymmList(SphericalSymmetry(), NoSymmetry())
@@ -303,4 +304,92 @@ NormLocationScaleFamily <- function(mean = 0, sd = 1, trafo){
         props = props, L2deriv.fct = L2deriv.fct, L2derivSymm = L2derivSymm, 
         L2derivDistr = L2derivDistr, L2derivDistrSymm = L2derivDistrSymm,
         FisherInfo.fct = FisherInfo.fct)
+}
+
+if(FALSE){
+################################################################################
+## Group Models with central distribution Norm(0,1)
+################################################################################
+
+##################################################################
+## Normal location family
+##################################################################
+NormLocationFamily <- function(mean = 0, sd = 1, trafo){ 
+    L2LocationFamily(loc = mean, scale = sd, name = "normal location family", 
+                     L2derivDistr.0 = Norm(mean = 0, sd=1/sd),
+                     FisherInfo.0 = 1, trafo = trafo)
+}
+
+##################################################################
+## Normal scale family
+##################################################################
+NormScaleFamily <- function(sd = 1, mean = 0, trafo){ 
+    L2ScaleFamily(loc = mean, scale = sd, name = "normal scale family", 
+                  L2derivDistr.0 = (Chisq(df = 1, ncp = 0)-1)/sd,
+                  FisherInfo.0 = 2, trafo = trafo)
+}
+
+##################################################################
+## Normal location and scale family
+##################################################################
+NormLocationScaleFamily <- function(mean = 0, sd = 1, trafo){ 
+    L2LocationScaleFamily(loc = mean, scale = sd, 
+              name = "normal location and scale family", 
+              L2derivDistr.0 = list( Norm(mean = 0, sd=1/sd), 
+                                    (Chisq(df = 1, ncp = 0)-1)/sd),
+              FisherInfo.0 = diag(c(1,2)), trafo = trafo)
+}
+
+###############################################################################
+# other location and / or scale models
+###############################################################################
+
+##################################################################
+## Exponential scale family
+##################################################################
+ExpScaleFamily <- function(rate = 1, trafo){ 
+    L2ScaleFamily(loc = 0, scale = 1/rate, name = "Exponential scale family", 
+                  centraldistribution = Exp(rate = 1),
+                  LogDeriv = function(x)  x-1,  
+                  L2derivDistr.0 = (Exp(rate = 1)-1)*rate,
+                  FisherInfo.0 = 1, 
+                  distrSymm = NoSymmetry(), 
+                  L2derivSymm = FunSymmList(NoSymmetry()), 
+                  L2derivDistrSymm = DistrSymmList(NoSymmetry()),
+                  trafo = trafo)
+}
+
+
+##################################################################
+## Lognormal scale family
+##################################################################
+LnormScaleFamily <- function(meanlog = 0, sdlog = 1, trafo){ 
+    L2ScaleFamily(loc = 0, scale = exp(meanlog), 
+                  name = "lognormal scale family", 
+                  centraldistribution = Lnorm(meanlog = 0, sdlog = sdlog),
+                  LogDeriv = function(x)  (log(x)/sdlog^2+1)/x,  
+                  L2derivDistr.0 = Norm(mean=0, sd=exp(-meanlog)/sdlog^2),
+                  FisherInfo.0 = 1/sdlog^2, 
+                  distrSymm = NoSymmetry(), 
+                  L2derivSymm = FunSymmList(NoSymmetry()), 
+                  L2derivDistrSymm = SphericalSymmetry(SymmCenter = 0),
+                  trafo = trafo)
+}
+
+##################################################################
+## Gumbel location family
+##################################################################
+GumbelLocationFamily <- function(loc = 0, scale = 1, trafo){ 
+    L2LocationFamily(loc = loc, scale = scale, 
+                     name = "Gumbel location family", 
+                     centraldistribution = Lnorm(meanlog = 0, sdlog = sdlog),
+                     LogDeriv = function(x)  (log(x)/sdlog^2+1)/x,  
+                     L2derivDistr.0 = (1 - Exp(rate = 1))/scale,
+                     FisherInfo.0 = 1/scale^2, 
+                     distrSymm = NoSymmetry(), 
+                     L2derivSymm = FunSymmList(NoSymmetry()), 
+                     L2derivDistrSymm = DistrSymmList(NoSymmetry()),
+                     trafo = trafo)
+}
+
 }

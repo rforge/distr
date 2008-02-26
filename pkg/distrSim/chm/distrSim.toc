@@ -643,27 +643,27 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="[">
-<param name="Local" value="indexing-methods.html">
+<param name="Local" value="subsetting-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="[,SeqDataFrames-method">
-<param name="Local" value="indexing-methods.html">
+<param name="Local" value="subsetting-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="[-methods">
-<param name="Local" value="indexing-methods.html">
+<param name="Local" value="subsetting-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="[<-">
-<param name="Local" value="indexing-methods.html">
+<param name="Local" value="subsetting-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="[<-,SeqDataFrames-method">
-<param name="Local" value="indexing-methods.html">
+<param name="Local" value="subsetting-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="[<--methods">
-<param name="Local" value="indexing-methods.html">
+<param name="Local" value="subsetting-methods.html">
 </OBJECT>
 </UL>
 <LI> <OBJECT type="text/sitemap">
@@ -705,10 +705,6 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for "Dataclass" ">
 <param name="Local" value="Dataclass.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Indexing methods for SeqDataFrames objects in Package `distrSim'">
-<param name="Local" value="indexing-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Masking of/by other functions in package "distrSim"">
@@ -793,6 +789,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Methods for Version Management in Package `distrSim' ">
 <param name="Local" value="versionmanagement.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Subsetting/Indexing methods for SeqDataFrames objects in Package `distrSim'">
+<param name="Local" value="subsetting-methods.html">
 </OBJECT>
 </UL>
 </UL>

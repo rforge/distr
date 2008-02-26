@@ -12,7 +12,7 @@ NormScaleFamily(sd = 1, mean = 0, trafo)
 \arguments{
   \item{sd}{ standard deviation }
   \item{mean}{ mean }
-  \item{trafo}{ matrix: transformation of the parameter }
+  \item{trafo}{ function in \code{param} or matrix: transformation of the parameter }
 }
 \details{
   The slots of the corresponding L2 differentiable 

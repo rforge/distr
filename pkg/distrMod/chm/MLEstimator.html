@@ -63,14 +63,14 @@ as criterion which should be minimized.
 <h3>Value</h3>
 
 <p>
-An object of S3-class <code>"MLEstimator"</code> which inherits from 
-class <code>"MCEstimator"</code>, a list with two components
+An object of S3-class <code>"MCEstimate"</code> which inherits from 
+class <code>"Estimate"</code>, a list with two components
 </p>
 <table summary="R argblock">
 <tr valign="top"><td><code>estimate</code></td>
 <td>
 maximum likelihood parameter estimate </td></tr>
-<tr valign="top"><td><code>negative log-likelihood</code></td>
+<tr valign="top"><td><code>criterion</code></td>
 <td>
 minimum value of the negative log-likelihood </td></tr>
 </table>
@@ -115,10 +115,17 @@ G &lt;- ParamFamily(name = "Gamma family",
 
 ## implementation of ML-estimator of package MASS
 library(MASS)
-fitdistr(x, "gamma")
+(res1 &lt;- fitdistr(x, "gamma"))
+
+## comparison
+## shape
 res$estimate[2]
 ## rate
 1/res$estimate[1]
+## log-likelihood
+res1$loglik
+## negative log-likelihood
+res$criterion
 </pre>
 
 <script Language="JScript">

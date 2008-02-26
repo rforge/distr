@@ -12,7 +12,7 @@ GumbelLocationFamily(loc = 0, scale = 1, trafo)
 \arguments{
   \item{loc}{ location parameter }
   \item{scale}{ scale parameter }
-  \item{trafo}{ matrix: transformation of the parameter }
+  \item{trafo}{ function in \code{param} or matrix: transformation of the parameter }
 }
 \details{
   The slots of the corresponding L2 differentiable 

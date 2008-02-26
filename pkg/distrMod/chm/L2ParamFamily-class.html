@@ -65,12 +65,24 @@ to the distribution space (represented by <code>"distribution"</code>). </dd>
 properties of the family. </dd>
 <dt><code>L2deriv</code>:</dt><dd>object of class <code>"EuclRandVariable"</code>:
 L2 derivative of the family. </dd>
+<dt><code>L2deriv.fct</code>:</dt><dd>object of class <code>"function"</code>: mapping from 
+the parameter space (argument <code>param</code> of class 
+<code>"ParamFamParameter"</code>) to a mapping from observation <code>x</code> to the  
+value of the L2derivative; <code>L2deriv.fct</code> is then used from observation
+<code>x</code> to value of the L2derivative; <code>L2deriv.fct</code> is used by 
+<code>modifyModel</code> to  move the L2deriv according to a change in the 
+parameter </dd>
 <dt><code>L2derivSymm</code>:</dt><dd>object of class <code>"FunSymmList"</code>:
 symmetry of the maps included in <code>L2deriv</code>. </dd>
 <dt><code>L2derivDistr</code>:</dt><dd>object of class <code>"UnivarDistrList"</code>:
 list which includes the distribution of <code>L2deriv</code>. </dd>
 <dt><code>L2derivDistrSymm</code>:</dt><dd>object of class <code>"DistrSymmList"</code>:
 symmetry of the distributions included in <code>L2derivDistr</code>. </dd>
+<dt><code>FisherInfo.fct</code>:</dt><dd>object of class <code>"function"</code>: 
+mapping from the parameter space (argument  <code>param</code> of class 
+<code>"ParamFamParameter"</code>) to the set of positive
+semidefinite matrices; <code>FisherInfo.fct</code> is used by <code>modifyModel</code> to 
+move the Fisher information according to a change in the parameter </dd> 
 <dt><code>FisherInfo</code>:</dt><dd>object of class <code>"PosDefSymmMatrix"</code>:
 Fisher information of the family. </dd>
 </dl>

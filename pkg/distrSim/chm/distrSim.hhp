@@ -29,7 +29,6 @@ distribution.c-methods.html
 distribution.id-methods.html
 filename-methods.html
 ind-methods.html
-indexing-methods.html
 name-methods.html
 obsDim-methods.html
 plot-methods.html
@@ -40,6 +39,7 @@ samplesize-methods.html
 savedata-methods.html
 seed-methods.html
 simulate-methods.html
+subsetting-methods.html
 summary-methods.html
 vectororNULL-class.html
 versionmanagement.html

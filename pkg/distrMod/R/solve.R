@@ -7,7 +7,8 @@ setMethod("solve", signature(a = "ANY", b = "ANY"), function(a,b, generalized = 
              d1.0 <- (d1 < tol) + 0.0
              d1.1 <- 1/pmax(d1, d1.0)
              d <- (1-d1.0) * d1.1
-             a.m <- a.svd$v %*% diag(d) %*% t(a.svd$u)
+             d <- if (length(d)==1) diag(d) else d
+             a.m <- a.svd$v %*% d %*% t(a.svd$u)
              if (!missing(b))
                 if(!(length(b)==nrow(a))) stop("non-conformable arguments")
              erg <- if (missing(b)) a.m else a.m%*%b
@@ -23,7 +24,8 @@ setMethod("solve", signature(a = "PosSemDefSymmMatrix", b = "ANY"), function(a,b
             d1.0 <- (d1 < tol) + 0.0
             d1.1 <- 1/pmax(d1, d1.0)
             d <- (1-d1.0) * d1.1
-            A <- er$vectors %*% diag(d) %*% t(er$vectors)
+            d <- if (length(d)==1) diag(d) else d
+            A <- er$vectors %*% d %*% t(er$vectors)
             if(missing(b)) return(A)
             else return(A%*%b)}
 })

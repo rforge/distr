@@ -1,4 +1,4 @@
-\name{Indexing-methods}
+\name{Subsetting-methods}
 \docType{methods}
 \alias{[}
 \alias{[<-}
@@ -6,7 +6,7 @@
 \alias{[<--methods}
 \alias{[,SeqDataFrames-method}
 \alias{[<-,SeqDataFrames-method}
-\title{ Indexing methods for SeqDataFrames objects in Package `distrSim'}
+\title{ Subsetting/Indexing methods for SeqDataFrames objects in Package `distrSim'}
 \description{Operators acting on \code{SeqDataFrames} objects to extract
      or replace parts.}
 \usage{ "["(x,i,j,k, drop = FALSE) # is: #  x[i,j, k, drop = FALSE]
@@ -33,6 +33,15 @@
 \value{again an object of class \code{SeqDataFrame} with the prescribed indices / values}
 \seealso{\code{help("[",package="base")}}
 \keyword{methods}
+\examples{
+s0 <- matrix(1:6,3,2)
+d0 <- data.frame(s0)
+d1 <- data.frame(s0 + 3)
+SF <- seqDataFrames(s0, s1)
+SF[1,2,1]
+
+}
+\concept{subsetting}
 \concept{indexing}
 \concept{accessor function}
 \concept{replacement function}

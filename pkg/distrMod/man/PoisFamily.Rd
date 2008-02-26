@@ -11,7 +11,7 @@ PoisFamily(lambda = 1, trafo)
 }
 \arguments{
   \item{lambda}{ positive mean }
-  \item{trafo}{ matrix: transformation of the parameter }
+  \item{trafo}{ function in \code{param} or matrix: transformation of the parameter }
 }
 \details{
   The slots of the corresponding L2 differentiable 

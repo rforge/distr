@@ -1,21 +1,21 @@
-<html><head><title>Indexing methods for SeqDataFrames objects in Package &lsquo;distrSim&rsquo;</title>
+<html><head><title>Subsetting/Indexing methods for SeqDataFrames objects in Package &lsquo;distrSim&rsquo;</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
 </head>
 <body>
 
-<table width="100%"><tr><td>Indexing-methods(distrSim)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>Subsetting-methods(distrSim)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   [">
 <param name="keyword" value="R:   [<-">
 <param name="keyword" value="R:   [-methods">
 <param name="keyword" value="R:   [<--methods">
 <param name="keyword" value="R:   [,SeqDataFrames-method">
 <param name="keyword" value="R:   [<-,SeqDataFrames-method">
-<param name="keyword" value=" Indexing methods for SeqDataFrames objects in Package &lsquo;distrSim&rsquo;">
+<param name="keyword" value=" Subsetting/Indexing methods for SeqDataFrames objects in Package &lsquo;distrSim&rsquo;">
 </object>
 
 
-<h2>Indexing methods for SeqDataFrames objects in Package &lsquo;distrSim&rsquo;</h2>
+<h2>Subsetting/Indexing methods for SeqDataFrames objects in Package &lsquo;distrSim&rsquo;</h2>
 
 
 <h3>Description</h3>
@@ -78,6 +78,18 @@ replacement method for indices for objects of class <code>SeqDataFrames</code></
 <p>
 <code>help("[",package="base")</code>
 </p>
+
+
+<h3>Examples</h3>
+
+<pre>
+s0 &lt;- matrix(1:6,3,2)
+d0 &lt;- data.frame(s0)
+d1 &lt;- data.frame(s0 + 3)
+SF &lt;- seqDataFrames(s0, s1)
+SF[1,2,1]
+
+</pre>
 
 
 

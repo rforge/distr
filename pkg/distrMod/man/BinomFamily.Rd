@@ -13,7 +13,7 @@ BinomFamily(size = 1, prob = 0.5, trafo)
 \arguments{
   \item{size}{ number of trials }
   \item{prob}{ probability of success }
-  \item{trafo}{ matrix: transformation of the parameter }
+  \item{trafo}{ function in \code{param} or matrix: transformation of the parameter }
 }
 \details{
   The slots of the corresponding L2 differentiable 

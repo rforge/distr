@@ -25,7 +25,7 @@ L2ParamFamily(name, distribution = Norm(), distrSymm,
       symmetry of \code{distribution}. }
   \item{main}{ numeric vector: main parameter }
   \item{nuisance}{ numeric vector: nuisance parameter }
-  \item{trafo}{ matrix: transformation of the parameter }
+  \item{trafo}{ function in \code{param} or matrix: transformation of the parameter }
   \item{param}{ object of class \code{"ParamFamParameter"}:
     parameter of the family }
   \item{modifyParam}{ function: mapping from the parameter space 
@@ -33,9 +33,9 @@ L2ParamFamily(name, distribution = Norm(), distrSymm,
   (represented by \code{"distribution"}). }
   \item{props}{ character vector: properties of the family }
   \item{L2deriv.fct}{ function: mapping from the parameter space (argument
-    \code{param} of class \code{"ParamFamParameter"}) to a mapping observation
-    \code{x} to value of the L2derivative, which is then used to fill slot
-    \code{L2deriv}; \code{L2deriv.fct} is used by \code{modifyModel} to 
+    \code{param} of class \code{"ParamFamParameter"}) to a mapping from 
+    observation \code{x} to the value of the L2derivative;  
+    \code{L2deriv.fct} is used by \code{modifyModel} to 
     move the L2deriv according to a change in the parameter }
   \item{L2derivSymm}{ object of class \code{"FunSymmList"}: 
     symmetry of the maps contained in \code{L2deriv} }

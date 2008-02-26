@@ -6,7 +6,8 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
                                    main = main, nuisance = nuisance, trafo = trafo),
                           props = character(0),
                           modifyParam = function(theta){ Norm(mean=theta) },
-                          L2deriv.fct,
+                          L2deriv.fct = function(param) {force(theta <- param@main)
+                                       return(function(x) {x-theta})},
                           L2derivSymm, L2derivDistr, L2derivDistrSymm,
                           FisherInfo.fct = function(theta){ 1 },
                           FisherInfo = FisherInfo.fct(param)){
@@ -14,6 +15,10 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
         name <- "L_2 differentiable parametric family of probability measures"
     if(missing(param)&&missing(main))
        param <- ParamFamParameter(name = "location", main = 0, trafo =matrix(1))
+    if(missing(param))
+        param <- ParamFamParameter(name = paste("Parameter of", name),
+                                   main = main, nuisance = nuisance, 
+                                   trafo = trafo)
     if(missing(distrSymm)) distrSymm <- NoSymmetry()
     if(!is(distrSymm, "NoSymmetry")){
         if(!is(distrSymm@SymmCenter, "numeric"))
@@ -21,12 +26,6 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
         if(length(distrSymm@SymmCenter) != dimension(img(distribution)))
             stop("slot 'SymmCenter' of 'distrSymm' has wrong dimension")
     }
-#    if(missing(param))
-#        param <- ParamFamParameter(name = paste("Parameter of", name),
-#                                   main = main, nuisance = nuisance, trafo = trafo)
-    if(missing(L2deriv.fct))
-       L2deriv.fct <- function(param) {force(theta <- param@main)
-                                       return(function(x) {x-theta})}
     fct <- L2deriv.fct(param)
     L2deriv <- if(!is.list(fct))
        EuclRandVarList(RealRandVariable(list(fct), Domain = Reals())) else
@@ -40,8 +39,10 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
     }
     if(is(distribution, "UnivariateCondDistribution"))
         stop("conditional distributions are not allowed in slot 'distribution'")
+
     if(missing(L2derivDistr))
-        L2derivDistr <- imageDistr(RandVar = L2deriv, distr = distribution)
+         L2derivDistr <- imageDistr(RandVar = L2deriv, distr = distribution)
+
     if(missing(L2derivDistrSymm)){
         nrvalues <- length(L2derivDistr)
         L <- vector("list", nrvalues)

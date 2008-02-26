@@ -330,12 +330,40 @@
 <param name="Local" value="L2ParamFamily-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="L2GroupParamFamily-class">
+<param name="Local" value="L2GroupFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="L2LocationFamily">
+<param name="Local" value="L2LocationFamily.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="L2LocationFamily-class">
+<param name="Local" value="L2LocationFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="L2LocationScaleFamily">
+<param name="Local" value="L2LocationScaleFamily.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="L2LocationScaleFamily-class">
+<param name="Local" value="L2LocationScaleFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="L2ParamFamily">
 <param name="Local" value="L2ParamFamily.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="L2ParamFamily-class">
 <param name="Local" value="L2ParamFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="L2ScaleFamily">
+<param name="Local" value="L2ScaleFamily.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="L2ScaleFamily-class">
+<param name="Local" value="L2ScaleFamily-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="length,ParamFamParameter-method">
@@ -955,8 +983,20 @@
 <param name="Local" value="GumbelLocationFamily.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for L2LocationFamily-class">
+<param name="Local" value="L2LocationFamily.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for L2LocationScaleFamily-class">
+<param name="Local" value="L2LocationScaleFamily.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for L2ParamFamily-class">
 <param name="Local" value="L2ParamFamily.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for L2ScaleFamily-class">
+<param name="Local" value="L2ScaleFamily.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for lognormal scale families">
@@ -1033,6 +1073,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="L2 differentiable parametric family">
 <param name="Local" value="L2ParamFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="L2 differentiable parametric group family">
+<param name="Local" value="L2ScaleFamily-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="List of Symmetries for a List of Distributions">

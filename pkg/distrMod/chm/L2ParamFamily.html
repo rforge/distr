@@ -58,7 +58,7 @@ numeric vector: main parameter </td></tr>
 numeric vector: nuisance parameter </td></tr>
 <tr valign="top"><td><code>trafo</code></td>
 <td>
-matrix: transformation of the parameter </td></tr>
+function in <code>param</code> or matrix: transformation of the parameter </td></tr>
 <tr valign="top"><td><code>param</code></td>
 <td>
 object of class <code>"ParamFamParameter"</code>:
@@ -74,9 +74,9 @@ character vector: properties of the family </td></tr>
 <tr valign="top"><td><code>L2deriv.fct</code></td>
 <td>
 function: mapping from the parameter space (argument
-<code>param</code> of class <code>"ParamFamParameter"</code>) to a mapping observation
-<code>x</code> to value of the L2derivative, which is then used to fill slot
-<code>L2deriv</code>; <code>L2deriv.fct</code> is used by <code>modifyModel</code> to 
+<code>param</code> of class <code>"ParamFamParameter"</code>) to a mapping from 
+observation <code>x</code> to the value of the L2derivative;  
+<code>L2deriv.fct</code> is used by <code>modifyModel</code> to 
 move the L2deriv according to a change in the parameter </td></tr>
 <tr valign="top"><td><code>L2derivSymm</code></td>
 <td>
