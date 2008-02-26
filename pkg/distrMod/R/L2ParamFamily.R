@@ -8,7 +8,7 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
                           modifyParam = function(theta){ Norm(mean=theta) },
                           L2deriv.fct,
                           L2derivSymm, L2derivDistr, L2derivDistrSymm,
-                          FisherInfo.fct = function(theta)1,
+                          FisherInfo.fct = function(theta){ 1 },
                           FisherInfo = FisherInfo.fct(param)){
     if(missing(name))
         name <- "L_2 differentiable parametric family of probability measures"
