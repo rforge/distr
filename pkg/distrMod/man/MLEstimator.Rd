@@ -59,9 +59,16 @@ G <- ParamFamily(name = "Gamma family",
 
 ## implementation of ML-estimator of package MASS
 library(MASS)
-fitdistr(x, "gamma")
+(res1 <- fitdistr(x, "gamma"))
+
+## comparison
+## shape
 res$estimate[2]
 ## rate
 1/res$estimate[1]
+## log-likelihood
+res1$loglik
+## negative log-likelihood
+res$criterion
 }
 \keyword{univar}
