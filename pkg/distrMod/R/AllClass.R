@@ -140,17 +140,19 @@ setClass("ParamFamParameter",
             validity = function(object){
                 if(is.matrix(object@trafo)){
                 dimension <- length(object@main) + length(object@nuisance)
-                
-                if(ncol(object@trafo) != dimension)
-                    stop("invalid transformation:\n",
-                         "number of columns of 'trafo' not equal to ",
-                         "dimension of the parameter")
-                if(nrow(object@trafo) > dimension)
-                    stop("invalid transformation:\n",
-                         "number of rows of 'trafo' larger than ",
-                         "dimension of the parameter")
-                if(any(!is.finite(object@trafo)))
-                    stop("infinite or missing values in 'trafo'")}
+
+                if(is.matrix(object@trafo)){
+                    if(ncol(object@trafo) != dimension)
+                        stop("invalid transformation:\n",
+                             "number of columns of 'trafo' not equal to ",
+                             "dimension of the parameter")
+                    if(nrow(object@trafo) > dimension)
+                        stop("invalid transformation:\n",
+                             "number of rows of 'trafo' larger than ",
+                             "dimension of the parameter")
+                    if(any(!is.finite(object@trafo)))
+                        stop("infinite or missing values in 'trafo'")}
+                }
                 return(TRUE)
             })
 
