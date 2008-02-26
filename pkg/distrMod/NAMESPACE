@@ -31,7 +31,7 @@ exportMethods("nu", "name", "sign", "nu<-", "name<-", "sign<-", "biastype", "bia
 exportMethods("solve")
 exportMethods("existsPIC")
 exportMethods("modifyModel")
-S3method(print, MCEstimator)
+S3method(print, Estimate)
 export("PosDefSymmMatrix","PosSemDefSymmMatrix")
 export("distrModOptions", "getdistrModOption",
        "MCEstimator", "MLEstimator", "MDEstimator")

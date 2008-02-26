@@ -30,10 +30,10 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name, interval, par, ...
           names(crit) <- crit.name
     }
 
-    structure(list("estimate" = theta, "criterion" = crit), class = "MCEstimator")
+    structure(list("estimate" = theta, "criterion" = crit), class = c("MCEstimate", "Estimate"))
 }
 
-## print method for objects of class MCEstimator
-print.MCEstimator <- function(x, digits = getOption("digits"), ...){
+## print method for objects of class Estimate
+print.Estimate <- function(x, digits = getOption("digits"), ...){
   print(x$estimate)
 }

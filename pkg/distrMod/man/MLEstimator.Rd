@@ -26,10 +26,10 @@ MLEstimator(x, ParamFamily, interval, par, ...)
   as criterion which should be minimized.
 }
 \value{
-  An object of S3-class \code{"MLEstimator"} which inherits from 
-  class \code{"MCEstimator"}, a list with two components
+  An object of S3-class \code{"MCEstimate"} which inherits from 
+  class \code{"Estimate"}, a list with two components
   \item{estimate}{ maximum likelihood parameter estimate }
-  \item{negative log-likelihood}{ minimum value of the negative log-likelihood }
+  \item{criterion}{ minimum value of the negative log-likelihood }
 }
 %\references{  }
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr

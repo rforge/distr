@@ -30,9 +30,10 @@ MCEstimator(x, ParamFamily, criterion, crit.name, interval, par, ...)
   and possibly \code{\dots}.
 }
 \value{
-  An object of S3-class \code{"MCEstimator"}, a list with two components
+  An object of S3-class \code{"MCEstimate"} which inherits from class \code{"Estimate"}, 
+  a list with two components
   \item{estimate}{ minimum criterion parameter estimate }
-  \item{critierion}{ minimum value of the criterion }
+  \item{criterion}{ minimum value of the criterion }
 }
 %\references{  }
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr

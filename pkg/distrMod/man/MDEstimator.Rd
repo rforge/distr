@@ -29,10 +29,10 @@ MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name, interval, par,
   \code{TotalVarDist} or \code{HellingerDist}.
 }
 \value{
-  An object of S3-class \code{"MDEstimator"} which inherits from 
-  class \code{"MCEstimator"}, a list with two components
+  An object of S3-class \code{"MCEstimate"} which inherits from 
+  class \code{"Estimate"}, a list with two components
   \item{estimate}{ maximum likelihood parameter estimate }
-  \item{distance resp. name of the distance }{ minimum value of the distance }
+  \item{criterion}{ minimum value of the distance }
 }
 \references{
     Huber, P.J. (1981) \emph{Robust Statistics}. New York: Wiley.
