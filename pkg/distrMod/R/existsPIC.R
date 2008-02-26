@@ -18,7 +18,7 @@ isTRUE(all.equal(Pi.kerB.perp%*%Pi.kerA.perp, Pi.kerB.perp, tolerance = tol ))
 }
 
 setMethod("existsPIC", "L2ParamFamily", function(object, warning = TRUE, tol = .Machine$double.eps){
-if(!isKerAinKerB(object@FisherInfo, object@param@trafo, tol = tol))
+if(!isKerAinKerB(object@FisherInfo, trafo(object), tol = tol))
   {if(warning)
       warning("trafo of parameter is not (locally) identifyable for parameter theta.")
       return(FALSE)}
