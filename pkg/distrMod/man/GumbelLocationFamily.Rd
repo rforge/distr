@@ -3,7 +3,7 @@
 
 \title{Generating function for Gumbel location families}
 \description{
-  Generates an object of class \code{"L2ParamFamily"} which
+  Generates an object of class \code{"L2LocationFamily"} which
   represents a Gumbel location family.
 }
 \usage{
@@ -18,7 +18,7 @@ GumbelLocationFamily(loc = 0, scale = 1, trafo)
   The slots of the corresponding L2 differentiable 
   parameteric family are filled.
 }
-\value{Object of class \code{"L2ParamFamily"}}
+\value{Object of class \code{"L2LocationFamily"}}
 \references{
   Kohl, M. (2005) \emph{Numerical Contributions to 
   the Asymptotic Theory of Robustness}. Bayreuth: Dissertation.

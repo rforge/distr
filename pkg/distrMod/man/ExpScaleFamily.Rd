@@ -3,7 +3,7 @@
 
 \title{Generating function for exponential scale families}
 \description{
-  Generates an object of class \code{"L2ParamFamily"} which
+  Generates an object of class \code{"L2ScaleFamily"} which
   represents an exponential scale family.
 }
 \usage{
@@ -18,7 +18,7 @@ ExpScaleFamily(rate = 1, trafo)
   parameteric family are filled. The scale parameter corresponds
   to \eqn{1/\code{rate}}.
 }
-\value{Object of class \code{"L2ParamFamily"}}
+\value{Object of class \code{"L2ScaleFamily"}}
 \references{
   Kohl, M. (2005) \emph{Numerical Contributions to the Asymptotic Theory of Robustness}. 
   Bayreuth: Dissertation.

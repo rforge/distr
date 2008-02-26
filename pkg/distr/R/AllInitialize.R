@@ -592,7 +592,7 @@ setMethod("initialize", "Norm",
 
 ## Class: lognormal distribution
 setMethod("initialize", "Lnorm",
-          function(.Object, meanlog = 0, sdlog = 1) {
+          function(.Object, meanlog = 0, sdlog = 1, .withArith = FALSE) {
             .Object@img <- new("Reals")
             .Object@param <- new("LnormParameter", meanlog = meanlog, 
                                   sdlog = sdlog)
@@ -620,7 +620,7 @@ setMethod("initialize", "Lnorm",
                                     lower.tail = lower.tail, log.p = log.p) },
                              list(meanlogSub = meanlog, sdlogSub = sdlog)
                                           )
-            .Object@.withArith <- FALSE
+            .Object@.withArith <- .withArith
             .Object
           })
 

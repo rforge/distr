@@ -15,6 +15,7 @@ Title=R Help for package distrMod
 0distrMod-package.html
 BiasType-class.html
 BinomFamily.html
+CauchyLocationScaleFamily.html
 DistrSymmList-class.html
 DistrSymmList.html
 DistributionSymmetry-class.html

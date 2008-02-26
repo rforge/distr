@@ -70,6 +70,47 @@ PoisFamily <- function(lambda = 1, trafo){
 }
 
 ##################################################################
+## Gamma family
+##################################################################
+GammaFamily <- function(scale = 1, shape = 1, trafo){ 
+    name <- "Gamma family"
+    distribution <- Gammad(scale = scale, shape = shape)
+    distrSymm <- NoSymmetry()
+    param <- ParamFamParameter(name = "scale and shape",  
+                        main = c(scale, shape), trafo = trafo)
+    modifyParam <- function(theta){ Gammad(scale = theta[1], shape = theta[2]) }
+    props <- c("The Gamma family is scale invariant via the parametrization",
+               "'(nu,shape)=(log(scale),shape)'")
+    L2deriv.fct <- function(param){
+                   scale <- main(param)[1]
+                   shape <- main(param)[2]
+                   fct1 <- function(x){}
+                   fct2 <- function(x){}
+                   body(fct1) <- substitute({ (x/scale - shape)/scale },
+                        list(scale = scale, shape = shape))
+                   body(fct2) <- substitute({ (log(x/scale) - digamma(shape)) },
+                        list(scale = scale, shape = shape))
+                   return(list(fct1, fct2))}
+    L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter = scale*shape), NonSymmetric())
+    L2derivDistr <- UnivarDistrList((Gammad(scale = 1, shape = shape) - shape)/scale, 
+                                         (log(Gammad(scale = 1, shape = shape)) - digamma(shape)))
+    L2derivDistrSymm <- DistrSymmList(NoSymmetry(), NoSymmetry())
+    FisherInfo.fct <- function(param){
+                   scale <- main(param)[1]
+                   shape <- main(param)[2]
+                   PosDefSymmMatrix(matrix(c(shape/scale^2, 1/scale, 
+                                            1/scale, trigamma(shape)), ncol=2))}
+
+    L2ParamFamily(name = name, distribution = distribution, 
+        distrSymm = distrSymm, param = param, modifyParam = modifyParam,
+        props = props, L2deriv.fct = L2deriv.fct, L2derivSymm = L2derivSymm,
+        L2derivDistr = L2derivDistr, L2derivDistrSymm = L2derivDistrSymm,
+        FisherInfo.fct = FisherInfo.fct)
+}
+
+if(FALSE){
+
+##################################################################
 ## Normal location family
 ##################################################################
 NormLocationFamily <- function(mean = 0, sd = 1, trafo){ 
@@ -229,44 +270,6 @@ LnormScaleFamily <- function(meanlog = 0, sdlog = 1, trafo){
         FisherInfo.fct = FisherInfo.fct)
 }
 
-##################################################################
-## Gamma family
-##################################################################
-GammaFamily <- function(scale = 1, shape = 1, trafo){ 
-    name <- "Gamma family"
-    distribution <- Gammad(scale = scale, shape = shape)
-    distrSymm <- NoSymmetry()
-    param <- ParamFamParameter(name = "scale and shape",  
-                        main = c(scale, shape), trafo = trafo)
-    modifyParam <- function(theta){ Gammad(scale = theta[1], shape = theta[2]) }
-    props <- c("The Gamma family is scale invariant via the parametrization",
-               "'(nu,shape)=(log(scale),shape)'")
-    L2deriv.fct <- function(param){
-                   scale <- main(param)[1]
-                   shape <- main(param)[2]
-                   fct1 <- function(x){}
-                   fct2 <- function(x){}
-                   body(fct1) <- substitute({ (x/scale - shape)/scale },
-                        list(scale = scale, shape = shape))
-                   body(fct2) <- substitute({ (log(x/scale) - digamma(shape)) },
-                        list(scale = scale, shape = shape))
-                   return(list(fct1, fct2))}
-    L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter = scale*shape), NonSymmetric())
-    L2derivDistr <- UnivarDistrList((Gammad(scale = 1, shape = shape) - shape)/scale, 
-                                         (log(Gammad(scale = 1, shape = shape)) - digamma(shape)))
-    L2derivDistrSymm <- DistrSymmList(NoSymmetry(), NoSymmetry())
-    FisherInfo.fct <- function(param){
-                   scale <- main(param)[1]
-                   shape <- main(param)[2]
-                   PosDefSymmMatrix(matrix(c(shape/scale^2, 1/scale, 
-                                            1/scale, trigamma(shape)), ncol=2))}
-
-    L2ParamFamily(name = name, distribution = distribution, 
-        distrSymm = distrSymm, param = param, modifyParam = modifyParam,
-        props = props, L2deriv.fct = L2deriv.fct, L2derivSymm = L2derivSymm,
-        L2derivDistr = L2derivDistr, L2derivDistrSymm = L2derivDistrSymm,
-        FisherInfo.fct = FisherInfo.fct)
-}
 
 ##################################################################
 ## Normal location and scale family
@@ -306,7 +309,8 @@ NormLocationScaleFamily <- function(mean = 0, sd = 1, trafo){
         FisherInfo.fct = FisherInfo.fct)
 }
 
-if(FALSE){
+}
+if(TRUE){
 ################################################################################
 ## Group Models with central distribution Norm(0,1)
 ################################################################################
@@ -354,7 +358,7 @@ ExpScaleFamily <- function(rate = 1, trafo){
                   L2derivDistr.0 = (Exp(rate = 1)-1)*rate,
                   FisherInfo.0 = 1, 
                   distrSymm = NoSymmetry(), 
-                  L2derivSymm = FunSymmList(NoSymmetry()), 
+                  L2derivSymm = FunSymmList(NonSymmetric()), 
                   L2derivDistrSymm = DistrSymmList(NoSymmetry()),
                   trafo = trafo)
 }
@@ -364,17 +368,18 @@ ExpScaleFamily <- function(rate = 1, trafo){
 ## Lognormal scale family
 ##################################################################
 LnormScaleFamily <- function(meanlog = 0, sdlog = 1, trafo){ 
-    L2ScaleFamily(loc = 0, scale = exp(meanlog), 
+    L2ScaleFamily(loc = 0, scale = exp(meanlog),  
                   name = "lognormal scale family", 
                   centraldistribution = Lnorm(meanlog = 0, sdlog = sdlog),
-                  LogDeriv = function(x)  (log(x)/sdlog^2+1)/x,  
-                  L2derivDistr.0 = Norm(mean=0, sd=exp(-meanlog)/sdlog^2),
+                  LogDeriv = function(x) log(x)/sdlog^2/x,  
+                  L2derivDistr.0 = Norm(mean=0, sd=1/sdlog),
                   FisherInfo.0 = 1/sdlog^2, 
                   distrSymm = NoSymmetry(), 
-                  L2derivSymm = FunSymmList(NoSymmetry()), 
+                  L2derivSymm = FunSymmList(NonSymmetric()), 
                   L2derivDistrSymm = SphericalSymmetry(SymmCenter = 0),
                   trafo = trafo)
 }
+
 
 ##################################################################
 ## Gumbel location family
@@ -382,14 +387,26 @@ LnormScaleFamily <- function(meanlog = 0, sdlog = 1, trafo){
 GumbelLocationFamily <- function(loc = 0, scale = 1, trafo){ 
     L2LocationFamily(loc = loc, scale = scale, 
                      name = "Gumbel location family", 
-                     centraldistribution = Lnorm(meanlog = 0, sdlog = sdlog),
-                     LogDeriv = function(x)  (log(x)/sdlog^2+1)/x,  
+                     centraldistribution = Gumbel(loc = 0, scale = scale),
+                     LogDeriv = function(x)  (1-exp(-(x-loc)/scale))/scale,  
                      L2derivDistr.0 = (1 - Exp(rate = 1))/scale,
                      FisherInfo.0 = 1/scale^2, 
                      distrSymm = NoSymmetry(), 
-                     L2derivSymm = FunSymmList(NoSymmetry()), 
+                     L2derivSymm = FunSymmList(NonSymmetric()), 
                      L2derivDistrSymm = DistrSymmList(NoSymmetry()),
                      trafo = trafo)
+}
+
+
+##################################################################
+## Cauchy location scale family
+##################################################################
+CauchyLocationScaleFamily <- function(loc = 0, scale = 1, trafo){ 
+    L2LocationScaleFamily(loc = loc, scale = scale, 
+                  name = "Cauchy Location and scale family", 
+                  centraldistribution = Cauchy(),
+                  LogDeriv = function(x)  2*x/(x^2+1),  
+                  trafo = trafo)
 }
 
 }

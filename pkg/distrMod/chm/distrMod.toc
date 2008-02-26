@@ -126,6 +126,10 @@
 <param name="Local" value="fiHampel-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="CauchyLocationScaleFamily">
+<param name="Local" value="CauchyLocationScaleFamily.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="checkL2deriv">
 <param name="Local" value="checkL2deriv.html">
 </OBJECT>
@@ -933,6 +937,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for Binomial families">
 <param name="Local" value="BinomFamily.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for Cauchy location and scale families">
+<param name="Local" value="CauchyLocationScaleFamily.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for DistrSymmList-class">

@@ -33,7 +33,7 @@ exportMethods("nu", "name", "sign", "nu<-", "name<-", "sign<-", "biastype", "bia
 exportMethods("solve")
 exportMethods("existsPIC")
 exportMethods("modifyModel")
-S3method(print, Estimate)
+S3method(print, MCEstimator)
 export("PosDefSymmMatrix","PosSemDefSymmMatrix")
 export("distrModOptions", "getdistrModOption",
        "MCEstimator", "MLEstimator", "MDEstimator")
@@ -50,3 +50,4 @@ export("positiveBias", "negativeBias", "symmetricBias",
        "asymmetricBias", "asSemivar")
 export("isKerAinKerB")
 export("L2LocationFamily", "L2ScaleFamily", "L2LocationScaleFamily")
+export("CauchyLocationScaleFamily")

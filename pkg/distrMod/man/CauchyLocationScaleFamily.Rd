@@ -1,17 +1,17 @@
-\name{NormLocationScaleFamily}
-\alias{NormLocationScaleFamily}
+\name{CauchyLocationScaleFamily}
+\alias{CauchyLocationScaleFamily}
 
-\title{Generating function for normal location and scale families}
+\title{Generating function for Cauchy location and scale families}
 \description{
   Generates an object of class \code{"L2LocationScaleFamily"} which
   represents a normal location and scale family.
 }
 \usage{
-NormLocationScaleFamily(mean = 0, sd = 1, trafo)
+CauchyLocationScaleFamily(loc = 0, scale = 1, trafo)
 }
 \arguments{
-  \item{mean}{ mean }
-  \item{sd}{ standard deviation }
+  \item{loc}{ location }
+  \item{scale}{ scale }
   \item{trafo}{ function in \code{param} or matrix: transformation of the parameter }
 }
 \details{
@@ -25,13 +25,13 @@ NormLocationScaleFamily(mean = 0, sd = 1, trafo)
 }
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de}}
 %\note{}
-\seealso{\code{\link{L2ParamFamily-class}}, \code{\link[distr]{Norm-class}}}
+\seealso{\code{\link{L2ParamFamily-class}}, \code{\link[distr]{Cauchy-class}}}
 \examples{
-(N1 <- NormLocationScaleFamily())
-plot(N1)
-FisherInfo(N1)
-checkL2deriv(N1)
+(C1 <- CauchyLocationScaleFamily())
+plot(C1)
+FisherInfo(C1)
+checkL2deriv(C1)
 }
-\concept{normal location model}
-\concept{location model}
+\concept{Cauchy location and scale model}
+\concept{location  and scale model}
 \keyword{models}

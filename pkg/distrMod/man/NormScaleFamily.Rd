@@ -3,7 +3,7 @@
 
 \title{Generating function for normal scale families}
 \description{
-  Generates an object of class \code{"L2ParamFamily"} which
+  Generates an object of class \code{"L2ScaleFamily"} which
   represents a normal scale family.
 }
 \usage{
@@ -18,7 +18,7 @@ NormScaleFamily(sd = 1, mean = 0, trafo)
   The slots of the corresponding L2 differentiable 
   parameteric family are filled.
 }
-\value{Object of class \code{"L2ParamFamily"}}
+\value{Object of class \code{"L2ScaleFamily"}}
 \references{
   Kohl, M. (2005) \emph{Numerical Contributions to 
   the Asymptotic Theory of Robustness}. Bayreuth: Dissertation.
