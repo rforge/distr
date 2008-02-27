@@ -330,7 +330,7 @@ setMethod("initialize", "Dirac",
             body(.Object@q) <- substitute( 
                 { if (log.p) p <- exp(p)
                   if(any((p < 0)|(p > 1))) 
-                     warning("q Method of class Dirac produced NaN's.")
+                     warning("q Method of class Dirac produced NaNs.")
                   q0 <- ifelse((p < 0)|(p > 1), NaN, locationSub) 
                   return(q0)
                 },
