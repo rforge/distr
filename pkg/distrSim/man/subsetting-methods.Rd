@@ -1,17 +1,17 @@
 \name{Subsetting-methods}
 \docType{methods}
 \alias{[-methods}
-\alias{[<-methods}
+\alias{[<--methods}
 \alias{[,SeqDataFrames-method}
 \alias{[<-,SeqDataFrames-method}
 \title{ Subsetting/Indexing methods for SeqDataFrames objects in Package `distrSim'}
 \description{Operators acting on \code{SeqDataFrames} objects to extract
      or replace parts.}
 \usage{
-# "["(x,i,j,k, drop = FALSE) # is: #  x[i,j, k, drop = FALSE]
+## "["(x,i,j,k, drop = FALSE) # is: #  x[i,j,k, drop = FALSE]
 \S4method{"["}{SeqDataFrames}(x, i, j, k, ..., drop = FALSE)
 
-# "[<-"(x,i,j,k, value)      # is: #  x[i,j, k] <- value
+## "[<-"(x,i,j,k, value)      # is: #  x[i,j,k] <- value
 \S4method{[<-}{SeqDataFrames}(x, i, j, k, value)
 }
 \arguments{
@@ -20,8 +20,8 @@
   \item{i}{ observation index; may be missing}
   \item{j}{ observation dimension index; may be missing}
   \item{k}{ run index; may be missing}
-  \item{drop} {as in the general indexing functions}
-  \item{value} {modication to be assigned to}
+  \item{drop}{ as in the general indexing functions}
+  \item{value}{ modication to be assigned to}
 }
 \section{Methods}{
   \describe{
