@@ -1,5 +1,6 @@
 # generating function for class 'PosDefSymmMatrix'
-PosSemDefSymmMatrix <- function(mat){ 
+PosSemDefSymmMatrix <- function(mat){
+    if(is(mat, "PosDefSymmMatrix")) return(as(mat, "PosSemDefSymmMatrix"))
     if(!is.matrix(mat)) mat <- as.matrix(mat)
     new("PosSemDefSymmMatrix", mat)
 }

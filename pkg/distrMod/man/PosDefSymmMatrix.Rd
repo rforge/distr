@@ -24,17 +24,6 @@ PosSemDefSymmMatrix(1)
 PosSemDefSymmMatrix(diag(2))
 PosDefSymmMatrix(1)
 PosDefSymmMatrix(diag(2))
-
-## The functions are currently defined as
-function(mat){ 
-    if(!is.matrix(mat)) mat <- as.matrix(mat)
-    new("PosSemDefSymmMatrix", mat)
-}
-#resp.
-function(mat){ 
-    if(!is.matrix(mat)) mat <- as.matrix(mat)
-    new("PosDefSymmMatrix", mat)
-}
 }
 \concept{positive-semi-definite matrix}
 \concept{positive-definite matrix}
