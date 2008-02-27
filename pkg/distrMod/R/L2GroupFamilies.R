@@ -26,7 +26,7 @@ L2LocationFamily <- function(loc = 0, scale = 1, name, centraldistribution = Nor
     modifyParam <- function(theta){}
     body(modifyParam) <- substitute({ scale*centraldistribution+theta },
                                       list(scale = scale))
-    props <- c("The", name, "is invariant under",
+    props <- c(paste("The", name, "is invariant under"),
                "the group of transformations 'g(x) = x + loc'",
                "with location parameter 'loc'")
     L2deriv.fct <- function(param){
@@ -108,7 +108,7 @@ L2ScaleFamily <- function(scale = 1, loc = 0, name, centraldistribution = Norm()
     modifyParam <- function(theta){}
     body(modifyParam) <- substitute({ theta*centraldistribution+loc },
                                       list(loc = loc))
-    props <- c("The", name, "is invariant under",
+    props <- c(paste("The", name, "is invariant under"),
                "the group of transformations 'g(y) = scale*y'",
                "with scale parameter 'scale'")
     L2deriv.fct <- function(param){
@@ -191,7 +191,7 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
     param <- ParamFamParameter(name = "location and scale", main = c(loc, scale),
                                trafo = trafo)
     modifyParam <- function(theta){theta[2]*centraldistribution+theta[1] }
-    props <- c("The", name, "is invariant under",
+    props <- c(paste("The", name, "is invariant under"),
                "the group of transformations 'g(x) = scale*x + loc'",
                "with location parameter 'loc' and scale parameter 'scale'")
 

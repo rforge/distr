@@ -376,7 +376,7 @@ LnormScaleFamily <- function(meanlog = 0, sdlog = 1, trafo){
                   FisherInfo.0 = 1/sdlog^2, 
                   distrSymm = NoSymmetry(), 
                   L2derivSymm = FunSymmList(NonSymmetric()), 
-                  L2derivDistrSymm = SphericalSymmetry(SymmCenter = 0),
+                  L2derivDistrSymm <- DistrSymmList(SphericalSymmetry(SymmCenter = 0)),
                   trafo = trafo)
 }
 
