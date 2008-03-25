@@ -5,10 +5,11 @@
 \description{
   Generates an object of class \code{"asHampel"}.
 }
-\usage{asHampel(bound = Inf, biastype = symmetricBias())}
+\usage{asHampel(bound = Inf, biastype = symmetricBias(), normtype = NormType())}
 \arguments{
   \item{bound}{ positive real: bias bound }
   \item{biastype}{ a bias type of class \code{BiasType}}
+  \item{normtype}{ a norm type of class \code{NormType}}
 }
 %\details{}
 \value{Object of class \code{asHampel}}
@@ -28,8 +29,8 @@
 asHampel()
 
 ## The function is currently defined as
-function(bound = Inf, biastype = symmetricBias()){ 
-    new("asHampel", bound = bound, biastype = biastype) }
+function(bound = Inf, biastype = symmetricBias(), normtype = NormType()){ 
+    new("asHampel", bound = bound, biastype = biastype, normtype = normtype) }
 }
 \concept{Hampel risk}
 \concept{risk}

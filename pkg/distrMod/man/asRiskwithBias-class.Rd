@@ -3,6 +3,12 @@
 \alias{asRiskwithBias-class}
 \alias{biastype,asRiskwithBias-method}
 \alias{biastype<-,asRiskwithBias-method}
+\alias{normtype,asRiskwithBias-method}
+\alias{normtype<-,asRiskwithBias-method}
+\alias{norm,asRiskwithBias-method}
+\alias{normtype}
+\alias{normtype<-}
+\alias{norm}
 \alias{biastype}
 \alias{biastype<-}
 
@@ -13,6 +19,7 @@
   \describe{
     \item{\code{type}:}{Object of class \code{"character"}.}
     \item{\code{biastype}:}{Object of class \code{"BiasType"}.}
+    \item{\code{normtype}:}{Object of class \code{"NormType"}.}
   }
 }
 \section{Extends}{
@@ -24,6 +31,12 @@ Class \code{"RiskType"}, directly.
       accessor function for slot \code{biastype}. }
     \item{biastype<-}{\code{signature(object = "asRiskwithBias", value = "BiasType")}: 
       replacement function for slot \code{biastype}. }
+      accessor function for slot \code{fct} of the slot \code{normtype}. }
+    \item{normtype}{\code{signature(object = "asRiskwithBias")}: 
+      accessor function for slot \code{normtype}. }
+    \item{normtype<-}{\code{signature(object = "asRiskwithBias", value = "NormType")}: 
+      replacement function for slot \code{normtype}. }
+    \item{norm}{\code{signature(object = "asRiskwithBias")}: 
         }
 }
 \references{

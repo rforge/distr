@@ -5,9 +5,10 @@
 \description{
   Generates an object of class \code{"asBias"}.
 }
-\usage{asBias(biastype = symmetricBias())}
+\usage{asBias(biastype = symmetricBias(), normtype = NormType())}
 \arguments{
   \item{biastype}{ a bias type of class \code{BiasType}}
+  \item{normtype}{ a norm type of class \code{NormType}}
 }
 
 %\details{}
@@ -25,7 +26,8 @@
 asBias()
 
 ## The function is currently defined as
-function(biastype = symmetricBias()){ new("asBias",biastype = biastype) }
+function(biastype = symmetricBias(), normtype = NormType()){ 
+     new("asBias",biastype = biastype, normtype = normtype) }
 }
 \concept{asymptotic bias}
 \concept{risk}

@@ -112,3 +112,32 @@ if(!isGeneric("modifyModel")){
 if(!isGeneric("existsPIC")){
     setGeneric("existsPIC", function(object,...) standardGeneric("existsPIC"))
 }
+
+if(!isGeneric("norm")){
+    setGeneric("norm", function(x,...) standardGeneric("norm"))
+}
+
+if(!isGeneric("normtype")){
+    setGeneric("normtype", function(object) standardGeneric("normtype"))
+}
+
+if(!isGeneric("normtype<-")){
+    setGeneric("normtype<-", function(object,value) standardGeneric("normtype<-"))
+}
+
+if(!isGeneric("QuadForm")){
+    setGeneric("QuadForm", function(object) standardGeneric("QuadForm"))
+}
+if(!isGeneric("QuadForm<-")){
+    setGeneric("QuadForm<-", function(object,value) standardGeneric("QuadForm<-"))
+}
+
+if(!isGeneric("fct<-")){
+    setGeneric("fct<-", function(object,value) standardGeneric("fct<-"))
+}
+if(!isGeneric("fct")){
+    setGeneric("fct", function(object) standardGeneric("fct"))
+}
+if(!isGeneric("updateNorm")){
+    setGeneric("updateNorm", function(normtype, ...) standardGeneric("updateNorm"))
+}

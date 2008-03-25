@@ -2,7 +2,7 @@
  od <- getwd()
  print(file.path(develDir,DIR, "R"))
  setwd(file.path(develDir,DIR, "R"))
- lapply(grep(paste(pattern,".R$",sep="",collapse=""),dir(),value=T),source)
+ lapply(grep(paste(pattern,".R$",sep="",collapse=""),dir(),value=T),function(...) {print(...);source(...)})
  setwd(od)
 }
 

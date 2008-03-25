@@ -60,6 +60,53 @@ setMethod("Minimum",
                    d = dnew, p = pnew, q = qfun2))            
           })
 
+setMethod("Minimum",
+          signature(e1 = "AbscontDistribution", 
+          e2 = "numeric"),
+          function(e1, e2){
+            if ((e2 <= 0) || !isTRUE(all.equal(e2,floor(e2))))
+               stop("second argument needs to be a positive natural")
+            
+            ## new random number function
+            
+            
+            rnew <- function(n){
+              rn1 <- matrix(r(e1)(n*e2),n,e2)
+              apply(rn1,1,min) 
+            }
+
+            ## new cdf  
+            pnew <- function(x){
+              1 - (p(e1)(x, lower.tail = FALSE))^e2
+            }
+
+            ## new density 
+            dnew <- function(x){
+              e2 * (p(e1)(x, lower.tail = FALSE))^(e2-1) * (d(e1)(x))
+            }
+
+            ## new quantile function
+            lower <- q(e1)(0)
+            upper <- q(e1)(1)
+
+            maxquantile = q(e1)(1e-6, lower.tail = FALSE)
+            minquantile = q(e1)(1e-6)
+            
+            qfun1 <- function(x){
+              if(x == 0) return(lower)
+              if(x == 1) return(upper)
+              fun <- function(t) pnew(t) - x
+              uniroot(f = fun, 
+                  interval = c(maxquantile, 
+                               minquantile))$root
+            }
+            qfun2 <- function(x)
+              sapply(x, qfun1)
+
+            return(new("AbscontDistribution", r = rnew, 
+                   d = dnew, p = pnew, q = qfun2))            
+          })
+
 
 if(!isGeneric("Maximum")) setGeneric("Maximum", 
     function(e1, e2) standardGeneric("Maximum"))
@@ -118,6 +165,53 @@ setMethod("Maximum",
                    d = dnew, p = pnew, q = qfun2))            
           })
 
+setMethod("Maximum",
+          signature(e1 = "AbscontDistribution", 
+          e2 = "numeric"),
+          function(e1, e2){
+            if ((e2 <= 0) || !isTRUE(all.equal(e2,floor(e2))))
+               stop("second argument needs to be a positive natural")
+            
+            ## new random number function
+            
+            
+            rnew <- function(n){
+              rn1 <- matrix(r(e1)(n*e2),n,e2)
+              apply(rn1,1,max) 
+            }
+
+            ## new cdf  
+            pnew <- function(x){
+              p(e1)(x)^e2
+            }
+
+            ## new density 
+            dnew <- function(x){
+              e2 * (p(e1)(x))^(e2-1) * (d(e1)(x))
+            }
+
+            ## new quantile function
+            lower <- q(e1)(0)
+            upper <- q(e1)(1)
+
+            maxquantile = q(e1)(1e-6, lower.tail = FALSE)
+            minquantile = q(e1)(1e-6)
+            
+            qfun1 <- function(x){
+              if(x == 0) return(lower)
+              if(x == 1) return(upper)
+              fun <- function(t) pnew(t) - x
+              uniroot(f = fun, 
+                  interval = c(maxquantile, 
+                               minquantile))$root
+            }
+            qfun2 <- function(x)
+              sapply(x, qfun1)
+
+            return(new("AbscontDistribution", r = rnew, 
+                   d = dnew, p = pnew, q = qfun2))            
+          })
+
 
 # Example
 
@@ -130,12 +224,23 @@ plot(Y)
 cat("Hit <enter> to continue...")
 readline()
 
+Y0 <- Maximum(N, 10)
+plot(Y0)
+
+cat("Hit <enter> to continue...")
+readline()
+
 Z <- Minimum(N,U)
 plot(Z)
 
 cat("Hit <enter> to continue...")
 readline()
 
+Z0 <- Maximum(N, 10)
+plot(Z0)
+
+cat("Hit <enter> to continue...")
+readline()
 
 setMethod("Minimum", signature(e1 = "DiscreteDistribution", 
                                e2 = "DiscreteDistribution"),
@@ -183,7 +288,43 @@ setMethod("Minimum", signature(e1 = "DiscreteDistribution",
                    q = qnew, support = supp))            
     })
 
-## Implementation von Maximum
+setMethod("Minimum", signature(e1 = "DiscreteDistribution", 
+                               e2 = "numeric"),
+    function(e1, e2){
+            if ((e2 <= 0) || !isTRUE(all.equal(e2,floor(e2))))
+               stop("second argument needs to be a positive natural")
+
+        ## new support
+        supp <- support(e1)
+        len <- length(supp)
+
+        
+        ## new random number function
+        rnew <- function(n){
+              rn1 <- matrix(r(e1)(n*e2),n,e2)
+              apply(rn1,1,min) 
+        }
+
+        ## new cdf 
+        pnew <- function(x){
+              1 - (p(e1)(x, lower.tail = FALSE))^e2
+        }
+
+        ## new density 
+        ## P(m=x)=P(m<=x)-P(m<x)
+        dnew <- function(x){
+             (pnew(x)-pnew(x-getdistrOption("DistrResolution")))*(d(e1)(x)>0)
+        }
+
+        ## new quantile function  
+        cumprob <- pnew(supp)
+        qnew <- function(x){ supp[sum(cumprob<x)+1] }        
+
+        return(new("DiscreteDistribution", r = rnew, d = dnew, p = pnew, 
+                   q = qnew, support = supp))            
+    })
+
+## Implementation of Maximum
 setMethod("Maximum", signature(e1 = "DiscreteDistribution", 
                                e2 = "DiscreteDistribution"),
     function(e1, e2){
@@ -227,6 +368,41 @@ setMethod("Maximum", signature(e1 = "DiscreteDistribution",
                    q = qnew, support = supp))            
     })
 
+setMethod("Maximum", signature(e1 = "DiscreteDistribution", 
+                               e2 = "numeric"),
+    function(e1, e2){
+            if ((e2 <= 0) || !isTRUE(all.equal(e2,floor(e2))))
+               stop("second argument needs to be a positive natural")
+
+        ## new support
+        supp <- support(e1)
+        len <- length(supp)
+
+        
+        ## new random number function
+        rnew <- function(n){
+              rn1 <- matrix(r(e1)(n*e2),n,e2)
+              apply(rn1,1,max) 
+        }
+
+        ## new cdf 
+        pnew <- function(x){
+              (p(e1)(x))^e2
+        }
+
+        ## new density 
+        ## P(m=x)=P(m<=x)-P(m<x)
+        dnew <- function(x){
+             (pnew(x)-pnew(x-getdistrOption("DistrResolution")))*(d(e1)(x)>0)
+        }
+
+        ## new quantile function  
+        cumprob <- pnew(supp)
+        qnew <- function(x){ supp[sum(cumprob<x)+1] }        
+
+        return(new("DiscreteDistribution", r = rnew, d = dnew, p = pnew, 
+                   q = qnew, support = supp))            
+    })
 
 B1 <- Binom(6, 0.5)
 B2 <- Binom(6, 0.5)
@@ -237,5 +413,18 @@ plot(C)
 cat("Hit <enter> to continue...")
 readline()
 
-D <- Minimum(B1,B2)
+C0 <- Maximum(B1, 10)
+plot(C0)
+
+cat("Hit <enter> to continue...")
+readline()
+
+D <- Minimum(B1, B2)
 plot(D)
+
+cat("Hit <enter> to continue...")
+readline()
+
+D0 <- Minimum(B1, 10)
+plot(D0)
+

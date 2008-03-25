@@ -198,6 +198,10 @@
 <param name="Local" value="EllipticalSymmetry-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="EuclideanNorm">
+<param name="Local" value="norms.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="EvenSymmetric">
 <param name="Local" value="EvenSymmetric.html">
 </OBJECT>
@@ -220,6 +224,22 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="ExpScaleFamily">
 <param name="Local" value="ExpScaleFamily.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fct">
+<param name="Local" value="NormType-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fct,NormType-method">
+<param name="Local" value="NormType-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fct<-">
+<param name="Local" value="NormType-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fct<-,NormType-method">
+<param name="Local" value="NormType-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="fiBias">
@@ -296,6 +316,14 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="GumbelLocationFamily">
 <param name="Local" value="GumbelLocationFamily.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="InfoNorm">
+<param name="Local" value="InfoNorm.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="InfoNorm-class">
+<param name="Local" value="QFnorm-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="isKerAinKerB">
@@ -438,12 +466,20 @@
 <param name="Local" value="BiasType-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="name,NormType-method">
+<param name="Local" value="NormType-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="name,ProbFamily-method">
 <param name="Local" value="ProbFamily-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="name<-,BiasType-method">
 <param name="Local" value="BiasType-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="name<-,NormType-method">
+<param name="Local" value="NormType-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="name<-,ProbFamily-method">
@@ -462,6 +498,14 @@
 <param name="Local" value="NonSymmetric-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="norm">
+<param name="Local" value="asRiskwithBias-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="norm,asRiskwithBias-method">
+<param name="Local" value="asRiskwithBias-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="NormLocationFamily">
 <param name="Local" value="NormLocationFamily.html">
 </OBJECT>
@@ -472,6 +516,30 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="NormScaleFamily">
 <param name="Local" value="NormScaleFamily.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="NormType">
+<param name="Local" value="NormType.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="normtype">
+<param name="Local" value="asRiskwithBias-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="normtype,asRiskwithBias-method">
+<param name="Local" value="asRiskwithBias-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="NormType-class">
+<param name="Local" value="NormType-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="normtype<-">
+<param name="Local" value="asRiskwithBias-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="normtype<-,asRiskwithBias-method">
+<param name="Local" value="asRiskwithBias-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="NoSymmetry">
@@ -606,8 +674,44 @@
 <param name="Local" value="ProbFamily-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="QFNorm">
+<param name="Local" value="QFNorm.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="QFNorm-class">
+<param name="Local" value="QFnorm-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="QuadForm">
+<param name="Local" value="QFnorm-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="QuadForm,QFNorm-method">
+<param name="Local" value="QFnorm-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="QuadForm<-">
+<param name="Local" value="QFnorm-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="QuadForm<-,QFNorm-method">
+<param name="Local" value="QFnorm-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="QuadFormNorm">
+<param name="Local" value="norms.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="RiskType-class">
 <param name="Local" value="RiskType-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="SelfNorm">
+<param name="Local" value="SelfNorm.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="SelfNorm-class">
+<param name="Local" value="QFnorm-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="show,asHampel-method">
@@ -772,6 +876,22 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="type,Symmetry-method">
 <param name="Local" value="Symmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="updateNorm">
+<param name="Local" value="NormType-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="updateNorm,InfoNorm-method">
+<param name="Local" value="QFnorm-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="updateNorm,NormType-method">
+<param name="Local" value="NormType-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="updateNorm,SelfNorm-method">
+<param name="Local" value="QFnorm-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="width">
@@ -991,6 +1111,10 @@
 <param name="Local" value="GumbelLocationFamily.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for InfoNorm-class">
+<param name="Local" value="InfoNorm.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for L2LocationFamily-class">
 <param name="Local" value="L2LocationFamily.html">
 </OBJECT>
@@ -1027,6 +1151,10 @@
 <param name="Local" value="NormScaleFamily.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for NormType-class">
+<param name="Local" value="NormType.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for NoSymmetry-class">
 <param name="Local" value="NoSymmetry.html">
 </OBJECT>
@@ -1049,6 +1177,14 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for Poisson families">
 <param name="Local" value="PoisFamily.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for QFNorm-class">
+<param name="Local" value="QFNorm.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for SelfNorm-class">
+<param name="Local" value="SelfNorm.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for SphericalSymmetry-class">
@@ -1105,6 +1241,18 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Methods for Function solve in Package `distrMod' ">
 <param name="Local" value="solve-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Norm classes for norms based on quadratic forms">
+<param name="Local" value="QFnorm-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Norm functions">
+<param name="Local" value="norms.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Norm Type">
+<param name="Local" value="NormType-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="onesided Bias Type">

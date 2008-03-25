@@ -29,6 +29,7 @@ FunSymmList.html
 FunctionSymmetry-class.html
 GammaFamily.html
 GumbelLocationFamily.html
+InfoNorm.html
 L2GroupFamily-class.html
 L2LocationFamily-class.html
 L2LocationFamily.html
@@ -50,6 +51,8 @@ NonSymmetric.html
 NormLocationFamily.html
 NormLocationScaleFamily.html
 NormScaleFamily.html
+NormType-class.html
+NormType.html
 OddSymmetric-class.html
 OddSymmetric.html
 OptionalNumeric-class.html
@@ -61,7 +64,10 @@ PoisFamily.html
 PosDefSymmMatrix-class.html
 PosDefSymmMatrix.html
 ProbFamily-class.html
+QFNorm.html
+QFnorm-class.html
 RiskType-class.html
+SelfNorm.html
 SphericalSymmetry-class.html
 SphericalSymmetry.html
 Symmetry-class.html
@@ -98,6 +104,7 @@ fiUnOvShoot-class.html
 fiUnOvShoot.html
 isKerAinKerB.html
 negativeBias.html
+norms.html
 onesidedBias-class.html
 positiveBias.html
 solve-methods.html

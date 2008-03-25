@@ -8,18 +8,21 @@ asCov <- function(){ new("asCov") }
 trAsCov <- function(){ new("trAsCov") }
 
 ## generating function
-asHampel <- function(bound = Inf, biastype = symmetricBias()){ 
-   new("asHampel", bound = bound, biastype = biastype) }
+asHampel <- function(bound = Inf, biastype = symmetricBias(), 
+                     normtype = NormType()){ 
+   new("asHampel", bound = bound, biastype = biastype, 
+                   normtype = normtype) }
 
 ## access method
 setMethod("bound", "asHampel", function(object) object@bound)
 
 ## generating function
-asBias <- function(biastype = symmetricBias()){ 
-          new("asBias", biastype = biastype) }
+asBias <- function(biastype = symmetricBias(), normtype = NormType()){ 
+          new("asBias", biastype = biastype, normtype = normtype) }
 
 ## generating function
-asMSE <- function(biastype = symmetricBias()){ new("asMSE", biastype = biastype) }
+asMSE <- function(biastype = symmetricBias(), normtype = NormType()){ 
+                  new("asMSE", biastype = biastype, normtype = normtype) }
 
 ## generating function
 asUnOvShoot <- function(width = 1.960, biastype = symmetricBias())
@@ -54,11 +57,16 @@ fiUnOvShoot <- function(width = 1.960){ new("fiUnOvShoot", width = width) }
 setMethod("width", "fiUnOvShoot", function(object) object@width)
 
 
-## access method
+## access methods
 setMethod("biastype", "asRiskwithBias", function(object) object@biastype)
+setMethod("normtype", "asRiskwithBias", function(object) object@normtype)
+setMethod("norm", "asRiskwithBias", function(x, ...) x@normtype@fct)
+
 ## replacement method
 setReplaceMethod("biastype", "asRiskwithBias", function(object,value) {
                   object@biastype <- value; object})
+setReplaceMethod("normtype", "asRiskwithBias", function(object, value) 
+                  {object@normtype <- value; object})
 
 ###############################################################################
 # Semivariance Risk

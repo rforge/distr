@@ -15,6 +15,8 @@
       \dQuote{asymptotic mean square error}. }
     \item{\code{biastype}:}{Object of class \code{"BiasType"}: 
       symmetric, one-sided or asymmetric }
+    \item{\code{normtype}:}{Object of class \code{"NormType"}: 
+      norm in which a multivariate parameter is considered}
   }
 }
 \section{Extends}{

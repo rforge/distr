@@ -18,6 +18,11 @@
     invisible()
 }
 
+## norms to be used in prototype already
+EuclideanNorm <- function(x) sqrt(colSums(x^2))
+QuadFormNorm <- function(x, A) sqrt(colSums(x*(A %*% x)))
+
+
 ################################
 ##
 ## Optional..-classes
@@ -260,6 +265,22 @@ setClass("L2LocationScaleFamily",
             contains = "L2GroupParamFamily")
 
 ################################################################################
+## Norm Classes
+################################################################################
+
+setClass("NormType", representation(name = "character", fct = "function"),
+          prototype = prototype(name = "EuclideanNorm", fct = EuclideanNorm))
+
+setClass("QFNorm", representation(QuadForm = "PosSemDefSymmMatrix"),
+          prototype = prototype(name = "(Semi)Norm based on quadratic form",
+                      QuadForm = new("PosSemDefSymmMatrix", matrix(1,1,1)), 
+                      fct = QuadFormNorm), 
+          contains = "NormType")
+
+setClass("InfoNorm", contains = "QFNorm")
+setClass("SelfNorm", contains = "QFNorm")
+
+################################################################################
 ## Bias Classes
 ################################################################################
 
@@ -297,9 +318,12 @@ setClass("trAsCov", contains = "asRisk",
 
 ## asymptotic risk with bias
 
-setClass("asRiskwithBias", representation(biastype = "BiasType"),
+setClass("asRiskwithBias", representation(biastype = "BiasType", 
+                                          normtype = "NormType"),
           prototype = prototype(type = "asymptotic risk with bias",
-                             biastype = new("symmetricBias")),
+                             biastype = new("symmetricBias"),
+                             normtype = new("NormType", name = "EuclideanNorm", 
+                                             fct = EuclideanNorm)),
           contains = c("asRisk"))
 
 ## asymptotic Hampel risk
@@ -313,7 +337,7 @@ setClass("asHampel", representation(bound = "numeric"),
                 else TRUE
             })
 ## asymptotic bias
-setClass("asBias", representation(biastype = "BiasType"),
+setClass("asBias",
             contains = "asRiskwithBias", 
             prototype = prototype(type = "asymptotic bias"))
 
