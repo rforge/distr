@@ -92,7 +92,7 @@ if(!isGeneric("cond")){
 }
 
 if(!isGeneric("Range")){ 
-   setGeneric("Range", function(object) standardGeneric("Range"))
+   setGeneric("Range", function(object, ...) standardGeneric("Range"))
 }
 
 if(!isGeneric("loc")){

@@ -1,31 +1,33 @@
 require(distr)
 
+## argument names conformal to use in distrEx
+
 if(!isGeneric("Range"))
     setGeneric("Range",
-    function(e1, e2) standardGeneric("Range"))
+    function(object, ...) standardGeneric("Range"))
     
 
 setMethod("Range",
-          signature(e1 = "AbscontDistribution",
+          signature(object = "AbscontDistribution",
           e2 = "numeric"),
-          function(e1, e2){
+          function(object, e2){
             if ((e2 <= 0) || !isTRUE(all.equal(e2,floor(e2))))
                stop("second argument needs to be a positive natural")
 
             ## new random number function
             rnew <- function(n){
-              rn1 <- matrix(r(e1)(n*e2),n,e2)
+              rn1 <- matrix(r(object)(n*e2),n,e2)
               m <- apply(rn1,1,min)
               M <- apply(rn1,1,max)
               M-m
             }
 
-            fnt <- function(u0,s) d(e1)(s)*(p(e1)(s+u0)-p(e1)(s))^(e2-1)*e2
+            fnt <- function(u0,s) d(object)(s)*(p(object)(s+u0)-p(object)(s))^(e2-1)*e2
             fu <- function(u) integrate(fnt, lower=-Inf, upper=Inf, u0=u)$value*(u>0)
-            fnt0 <- function(u0,s) d(e1)(s)*d(e1)(s+u0)*(p(e1)(s+u0)-p(e1)(s))^(e2-2)*e2*(e2-1)
+            fnt0 <- function(u0,s) d(object)(s)*d(object)(s+u0)*(p(object)(s+u0)-p(object)(s))^(e2-2)*e2*(e2-1)
             fu0 <- function(u) integrate(fnt0, lower=-Inf, upper=Inf, u0=u)$value*(u>0)
             xgrid <- seq(0,
-                         q(e1)(1e-6, lower.tail = FALSE)-q(e1)(1e-6),
+                         q(object)(1e-6, lower.tail = FALSE)-q(object)(1e-6),
                          length = getdistrOption("DefaultNrGridPoints")/10)
             fx <- sapply(xgrid, fu)
             pnew <- approxfun(xgrid, fx, yleft = 0, yright = 1)
@@ -33,11 +35,11 @@ setMethod("Range",
             dnew <- approxfun(xgrid, fx0, yleft = 0, yright = 0)
 
             ## new quantile function
-            lower <- q(e1)(0)
-            upper <- q(e1)(1)
+            lower <- q(object)(0)
+            upper <- q(object)(1)
 
-            maxquantile = q(e1)(1e-6, lower.tail = FALSE)
-            minquantile = q(e1)(1e-6)
+            maxquantile = q(object)(1e-6, lower.tail = FALSE)
+            minquantile = q(object)(1e-6)
 
             qfun1 <- function(x){
               if(x == 0) return(lower)
@@ -63,30 +65,30 @@ cat("Hit <enter> to continue...")
 readline()
 
 setMethod("Range",
-          signature(e1 = "DiscreteDistribution",
+          signature(object = "DiscreteDistribution",
           e2 = "numeric"),
-          function(e1, e2){
+          function(object, e2){
             if ((e2 <= 0) || !isTRUE(all.equal(e2,floor(e2))))
                stop("second argument needs to be a positive natural")
 
-            supp <- support(e1)
+            supp <- support(object)
             suppnew <- sort(unique(as.vector(outer(supp,supp,"-"))))
             suppnew <- suppnew[suppnew>=0]
             print(suppnew)
             
             ## new random number function
             rnew <- function(n){
-              rn1 <- matrix(r(e1)(n*e2),n,e2)
+              rn1 <- matrix(r(object)(n*e2),n,e2)
               m <- apply(rn1,1,min)
               M <- apply(rn1,1,max)
               M-m
             }
 
-            fnt <- function(u0,s) (p(e1)(s+u0)-p(e1)(s)+d(e1)(s))^e2 -
-                                  (p(e1)(s+u0)-p(e1)(s))^e2
+            fnt <- function(u0,s) (p(object)(s+u0)-p(object)(s)+d(object)(s))^e2 -
+                                  (p(object)(s+u0)-p(object)(s))^e2
             pnew <- function(x) sapply(x, function(u) sum(fnt(u, s = supp)))*(x>=0)
             dnew <- function(x){
-             (pnew(x)-pnew(x-getdistrOption("DistrResolution")*100))*(d(e1)(x)>0)*(x>=0)
+             (pnew(x)-pnew(x-getdistrOption("DistrResolution")*100))*(d(object)(x)>0)*(x>=0)
               }
 
             cumprob <- pnew(suppnew)
