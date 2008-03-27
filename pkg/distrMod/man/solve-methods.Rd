@@ -22,7 +22,7 @@
           side(s) of the linear system.  If missing, \code{b} is taken to be
           an identity matrix and \code{solve} will return the inverse of
           \code{a}.}
-  \item{...}{ further arguments to be passed to specific methods (see \code{\link[base]{solve}}).}
+  \item{\dots}{ further arguments to be passed to specific methods (see \code{\link[base]{solve}}).}
   \item{generalized}{ logical: should generalized / Moore-Penrose inverses be used? }
   \item{tol}{ the tolerance for detecting linear dependencies in the
           columns of \code{a}.  Default is \code{.Machine$double.eps}.}

@@ -138,6 +138,3 @@ if(!isGeneric("fct<-")){
 if(!isGeneric("fct")){
     setGeneric("fct", function(object) standardGeneric("fct"))
 }
-if(!isGeneric("updateNorm")){
-    setGeneric("updateNorm", function(normtype, ...) standardGeneric("updateNorm"))
-}

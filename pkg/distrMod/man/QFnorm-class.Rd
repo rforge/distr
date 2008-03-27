@@ -5,8 +5,6 @@
 \alias{SelfNorm-class}
 \alias{QuadForm,QFNorm-method}
 \alias{QuadForm<-,QFNorm-method}
-\alias{updateNorm,InfoNorm-method}
-\alias{updateNorm,SelfNorm-method}
 \alias{QuadForm}
 \alias{QuadForm<-}
 
@@ -34,12 +32,6 @@ class \code{"QFNorm"}, directly (and do not have extra slots).
       accessor function for slot \code{QuadForm}. }
     \item{QuadForm<-}{\code{signature(object = "QFNorm")}: 
       replacement function for slot \code{QuadForm}. }
-    \item{updateNorm}{\code{signature(object = "InfoNorm")}: 
-      udates the norm in the information-standardized case; just used
-      internally in the opt-IC-Algorithm. }
-    \item{updateNorm}{\code{signature(object = "SelfNorm")}: 
-      udates the norm in the self-standardized case; just used
-      internally in the opt-IC-Algorithm. }
         }
 }
 \references{

@@ -35,7 +35,7 @@ exportMethods("solve")
 exportMethods("existsPIC")
 exportMethods("modifyModel")
 exportMethods("norm",  "QuadForm<-", "QuadForm", "fct", 
-              "fct<-", "normtype", "normtype<-", "updateNorm")
+              "fct<-", "normtype", "normtype<-")
 S3method(print, Estimate)
 export("PosDefSymmMatrix","PosSemDefSymmMatrix")
 export("distrModOptions", "getdistrModOption",

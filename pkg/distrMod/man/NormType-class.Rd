@@ -7,8 +7,6 @@
 \alias{fct<-}
 \alias{fct,NormType-method}
 \alias{fct<-,NormType-method}
-\alias{updateNorm,NormType-method}
-\alias{updateNorm}
 
 \title{Norm Type}
 \description{Class of norm types.}
@@ -30,10 +28,6 @@ the generating function \code{\link{NormType}}}
       accessor function for slot \code{fct}. }
     \item{fct<-}{\code{signature(object = "NormType", value = "function")}: 
       replacement function for slot \code{fct}. }
-    \item{updateNorm}{\code{signature(object = "NormType")}: 
-      udates the norm in the self/information-standardized case; just used
-      internally in the opt-IC-Algorithm; in case of a "default" - "NormType" argument
-      the object is returned unchanged. }
         }
 }
 \references{

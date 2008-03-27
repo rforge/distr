@@ -1,4 +1,3 @@
-
 setMethod("name", signature = "NormType", function(object) object@name)
 setReplaceMethod("name", signature = "NormType", function(object,value) 
         {object@name <- value; object})
@@ -28,11 +27,4 @@ SelfNorm <- function(){A <- PosSemDefSymmMatrix(matrix(1))
             new("SelfNorm", name =  "Information matrix Norm", 
                  fct = function(x) QuadFormNorm(x, A = A), 
                  QuadForm = A)}
-
-setMethod("updateNorm", "NormType", function(normtype, ...) normtype)
-setMethod("updateNorm", "InfoNorm", function(normtype, FI, ...)
-           {QuadForm(normtype) <- FI; normtype})
-setMethod("updateNorm", "SelfNorm", function(normtype, L2, stand, 
-                                             cent, clip, Distr, norm, ...)
-           {Cv <- .asCovMB(L2, stand, cent, clip, Distr, norm)
-            QuadForm(normtype) <- Cv; normtype})                                 
+                          

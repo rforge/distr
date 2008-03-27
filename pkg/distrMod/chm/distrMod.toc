@@ -878,22 +878,6 @@
 <param name="Local" value="Symmetry-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="updateNorm">
-<param name="Local" value="NormType-class.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="updateNorm,InfoNorm-method">
-<param name="Local" value="QFnorm-class.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="updateNorm,NormType-method">
-<param name="Local" value="NormType-class.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="updateNorm,SelfNorm-method">
-<param name="Local" value="QFnorm-class.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="width">
 <param name="Local" value="asUnOvShoot-class.html">
 </OBJECT>
