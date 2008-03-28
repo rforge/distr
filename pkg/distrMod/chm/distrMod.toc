@@ -810,6 +810,18 @@
 <param name="Local" value="SphericalSymmetry-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sqrt">
+<param name="Local" value="sqrt-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sqrt,PosSemDefSymmMatrix-method">
+<param name="Local" value="sqrt-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sqrt-methods">
+<param name="Local" value="sqrt-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="SymmCenter">
 <param name="Local" value="Symmetry-class.html">
 </OBJECT>
@@ -1225,6 +1237,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Methods for Function solve in Package `distrMod' ">
 <param name="Local" value="solve-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Methods for Function sqrt in Package `distrMod' ">
+<param name="Local" value="sqrt-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Norm classes for norms based on quadratic forms">

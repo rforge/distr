@@ -31,7 +31,7 @@ exportMethods("type", "SymmCenter", "distrSymm",
               "FisherInfo", "checkL2deriv")
 exportMethods("bound", "width")
 exportMethods("nu", "name", "sign", "nu<-", "name<-", "sign<-", "biastype", "biastype<-")
-exportMethods("solve")
+exportMethods("solve", "sqrt")
 exportMethods("existsPIC")
 exportMethods("modifyModel")
 exportMethods("norm",  "QuadForm<-", "QuadForm", "fct", 
