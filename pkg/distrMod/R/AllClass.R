@@ -32,7 +32,7 @@ QuadFormNorm <- function(x, A) sqrt(colSums(x*(A %*% x)))
 ### from Matthias' thesis / ROptEst
 ## optional numeric
 setClassUnion("OptionalNumeric", c("numeric", "NULL"))
-setClassUnion("MatrixorFunction", c("matrix", "function"))
+setClassUnion("MatrixorFunction", c("matrix", "OptionalFunction"))
 
 
 ################################
@@ -143,6 +143,9 @@ setClass("ParamFamParameter",
                       main = numeric(0), nuisance = NULL, trafo = new("matrix")),
             contains = "Parameter",
             validity = function(object){
+                if(! ((is.matrix(object@trafo)) || is.function(object@trafo)))
+                   stop("invalid transformation:\n", 
+                        "should be a matrix or a function") 
                 if(is.matrix(object@trafo)){
                 dimension <- length(object@main) + length(object@nuisance)
 
