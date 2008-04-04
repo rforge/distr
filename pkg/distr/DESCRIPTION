@@ -7,7 +7,6 @@ Author: Florian Camphausen, Matthias Kohl, Peter Ruckdeschel, Thomas Stabla
 Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@uni-bayreuth.de>
 Depends: R(>= 2.2.0), methods, graphics, startupmsg
 Imports: stats
-SaveImage: no
 LazyLoad: yes
 License: GPL (version 2 or later)
 URL: http://distr.r-forge.r-project.org/

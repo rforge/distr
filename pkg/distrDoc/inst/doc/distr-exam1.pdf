@@ -2,10 +2,10 @@
 %Å‚Å„ÅœÅ”\r
 1 0 obj
 <<
-/CreationDate (D:20080227190523)
-/ModDate (D:20080227190523)
+/CreationDate (D:20080404102135)
+/ModDate (D:20080404102135)
 /Title (R Graphics Output)
-/Producer (R 2.6.2)
+/Producer (R 2.8.0)
 /Creator (R)
 >>
 endobj
@@ -1097,7 +1097,7 @@ BT
 0.000 0.000 0.000 rg
 /F2 1 Tf 8.00 0.00 -0.00 8.00 79.50 12.36 Tm (x) Tj
 /F2 1 Tf 0.00 8.00 -8.00 0.00 8.55 213.86 Tm (d\(x\)) Tj
-/F2 1 Tf 10.00 0.00 -0.00 10.00 14.81 409.95 Tm (Density of AbscontDistribution) Tj
+/F2 1 Tf 10.00 0.00 -0.00 10.00 14.84 409.95 Tm (Density of AbscontDistribution) Tj
 ET
 Q q 182.97 48.47 85.08 344.56 re W n
 Q q 182.97 48.47 85.08 344.56 re W n
@@ -2156,7 +2156,7 @@ BT
 0.000 0.000 0.000 rg
 /F2 1 Tf 8.00 0.00 -0.00 8.00 223.28 12.36 Tm (q) Tj
 /F2 1 Tf 0.00 8.00 -8.00 0.00 152.55 213.64 Tm (p\(q\)) Tj
-/F2 1 Tf 10.00 0.00 -0.00 10.00 165.21 408.93 Tm (CDF of AbscontDistribution) Tj
+/F2 1 Tf 10.00 0.00 -0.00 10.00 165.23 408.93 Tm (CDF of AbscontDistribution) Tj
 ET
 Q q 326.97 48.47 85.08 344.56 re W n
 Q q
@@ -2203,7 +2203,7 @@ BT
 0.000 0.000 0.000 rg
 /F2 1 Tf 8.00 0.00 -0.00 8.00 367.28 12.36 Tm (p) Tj
 /F2 1 Tf 0.00 8.00 -8.00 0.00 296.55 213.64 Tm (q\(p\)) Tj
-/F2 1 Tf 10.00 0.00 -0.00 10.00 281.96 409.11 Tm (Quantile function of AbscontDistribution) Tj
+/F2 1 Tf 10.00 0.00 -0.00 10.00 281.99 409.11 Tm (Quantile function of AbscontDistribution) Tj
 ET
 Q q 326.97 48.47 85.08 344.56 re W n
 0.000 0.000 0.000 RG
