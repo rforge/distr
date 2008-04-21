@@ -1,5 +1,5 @@
 <html><head><title>Utilities for start-up messages</title>
-<meta http-equiv="Content-Type" content="text/html; charset=">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
 </head>
 <body>
@@ -100,18 +100,18 @@ character vectors (which are pasted together with no separator)</td></tr>
 <h3>Details</h3>
 
 <p>
-<code>readVersionInformation</code> and <code>readURLInformation</code> read the &lsquo;<TT>DESCRIPTION</TT>&rsquo; file of the package.
+<code>readVersionInformation</code> and <code>readURLInformation</code> read the &lsquo;<span class="file">DESCRIPTION</span>&rsquo; file of the package.
 <code>readVersionInformation</code> returns a list with elements <code>ver</code> and <code>title</code> for the version and title 
-to be found in the &lsquo;<TT>DESCRIPTION</TT>&rsquo; file; if there is a <code>URL</code> entry it is returned by <code>readURLInformation</code>
+to be found in the &lsquo;<span class="file">DESCRIPTION</span>&rsquo; file; if there is a <code>URL</code> entry it is returned by <code>readURLInformation</code>
 else <code>readURLInformation</code> returns <code>NULL</code>.
 </p>
 <p>
-If there is a &lsquo;<TT>NEWS</TT>&rsquo; in the package main folder, <code>pointertoNEWS</code> returns a string with an expression how
+If there is a &lsquo;<span class="file">NEWS</span>&rsquo; in the package main folder, <code>pointertoNEWS</code> returns a string with an expression how
 to retrieve this file from within R, else <code>pointertoNEWS</code>  returns <code>NULL</code>.
 </p>
 <p>
 <code>infoShow</code> displays the file <code>filename</code> in the package main folder using <code>file.show</code> &ndash; if it exists;
-<code>NEWS</code> in particular displays the &lsquo;<TT>NEWS</TT>&rsquo; file; takes up an idea by Andy Liaw.
+<code>NEWS</code> in particular displays the &lsquo;<span class="file">NEWS</span>&rsquo; file; takes up an idea by Andy Liaw.
 </p>
 <p>
 A new sub-condition <code>StartupMessage</code> to <code>message</code> is introduced, 
@@ -138,7 +138,7 @@ The user may suppress the start-up messages produced by these utilities as follo
 suppresses all messages issued by <code>startupMessage</code> in the expression <code>expr</code> within the parentheses
 <li><code>suppressPackageStartupMessages(expr)</code>: 
 from package version 0.5 on, is the same as <code>suppressStartupMessages</code> for our start-up banners, but more 
-generally suppresses all messages of S3-class <code>packageStartupMessage</code> (from <STRONG>base</STRONG> package)
+generally suppresses all messages of S3-class <code>packageStartupMessage</code> (from <span class="pkg">base</span> package)
 <li><code>onlyversionStartupMessages(expr, atypes="version")</code> 
 only shows messages issued by <code>startupMessage</code> in the expression <code>expr</code> within the parentheses, if
 there slot <code>type</code> is contained in the <code>atypes</code> argument

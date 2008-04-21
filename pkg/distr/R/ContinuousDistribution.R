@@ -258,6 +258,7 @@ setMethod("exp", "AbscontDistribution",
                         if (log) dx <- log(dx)                    
                     } 
                     dx <- if (log) dx - (x>0) * log(abs(x1)) else  dx/abs(x1) 
+                    return(dx)
             }
             
             pnew <- function(q, lower.tail = TRUE, log.p = FALSE){
