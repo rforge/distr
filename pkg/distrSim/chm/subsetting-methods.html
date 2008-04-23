@@ -5,8 +5,6 @@
 <body>
 
 <table width="100%"><tr><td>Subsetting-methods(distrSim)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
-<param name="keyword" value="R:   [">
-<param name="keyword" value="R:   [<-">
 <param name="keyword" value="R:   [-methods">
 <param name="keyword" value="R:   [<--methods">
 <param name="keyword" value="R:   [,SeqDataFrames-method">
@@ -28,8 +26,12 @@ or replace parts.
 
 <h3>Usage</h3>
 
-<pre> "["(x,i,j,k, drop = FALSE) # is: #  x[i,j, k, drop = FALSE]
-        "[&lt;-"(x,i,j,k, value)      # is: #  x[i,j, k] &lt;- value
+<pre>
+## "["(x,i,j,k, drop = FALSE) # is: #  x[i,j,k, drop = FALSE]
+\S4method{"["}{SeqDataFrames}(x, i, j, k, ..., drop = FALSE)
+
+## "[&lt;-"(x,i,j,k, value)      # is: #  x[i,j,k] &lt;- value
+\S4method{[&lt;-}{SeqDataFrames}(x, i, j, k, value)
 </pre>
 
 
@@ -38,7 +40,7 @@ or replace parts.
 <table summary="R argblock">
 <tr valign="top"><td><code>x</code></td>
 <td>
-object of class <code>SeqDataFrame</code> from which to extract element(s) or in which to
+object of class <code>SeqDataFrames</code> from which to extract element(s) or in which to
 replace element(s).</td></tr>
 <tr valign="top"><td><code>i</code></td>
 <td>
@@ -51,18 +53,16 @@ observation dimension index; may be missing</td></tr>
 run index; may be missing</td></tr>
 <tr valign="top"><td><code>drop</code></td>
 <td>
-</td></tr>
+as in the general indexing functions</td></tr>
 <tr valign="top"><td><code>value</code></td>
 <td>
-</td></tr>
+modication to be assigned to</td></tr>
 </table>
-<p>
- {modication to be assigned to}</p>
 
 <h3>Value</h3>
 
 <p>
-again an object of class <code>SeqDataFrame</code> with the prescribed indices / values</p>
+again an object of class <code>SeqDataFrames</code> with the prescribed indices / values</p>
 
 <h3>Methods</h3>
 
@@ -76,7 +76,7 @@ replacement method for indices for objects of class <code>SeqDataFrames</code></
 <h3>See Also</h3>
 
 <p>
-<code>help("[",package="base")</code>
+<code><a onclick="findlink('base', '"[".html')" style="text-decoration: underline; color: blue; cursor: hand">"["</a></code>
 </p>
 
 
@@ -91,6 +91,15 @@ SF[1,2,1]
 
 </pre>
 
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
 
 
 <hr><div align="center">[Package <em>distrSim</em> version 2.0 <a href="00Index.html">Index]</a></div>

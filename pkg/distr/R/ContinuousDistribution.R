@@ -276,14 +276,30 @@ setMethod("exp", "AbscontDistribution",
                     return(px)
             }
 
-            px.l <- pnew(x.g + 0.5*h)
-            px.u <- pnew(x.g + 0.5*h, lower.tail = FALSE)
-            
-            yL <- exp(q(x)(0))
-            yR <- exp(q(x)(1))
+            qnew <- function(p, lower.tail = TRUE, log.p = FALSE){
+                    if (.inArgs("log.p", p(x)) && .inArgs("lower.tail", p(x))){
+                         qx <- exp(q(x)(p, log.p = log.p, 
+                                    lower.tail = lower.tail))                  
+                    }else{
+                         if (log.p) p <- exp(p)
+                         if (.inArgs("lower.tail", p(x)))
+                              qx <- q(x)(p, lower.tail = lower.tail) 
+                         else{if (lower.tail) p <- 1 - p
+                              qx <- q(x)(p)}                   
+                         qx <- exp(qx)
+                    }
+                    return(qx)
+            }
 
-            qnew <- .makeQNew(x.g + 0.5*h, px.l, px.u,
-                            notwithLLarg = FALSE,  yL, yR)
+
+#            px.l <- pnew(x.g + 0.5*h)
+#            px.u <- pnew(x.g + 0.5*h, lower.tail = FALSE)
+#            
+#            yL <- exp(q(x)(0))
+#            yR <- exp(q(x)(1))
+#
+#            qnew <- .makeQNew(x.g + 0.5*h, px.l, px.u,
+#                            notwithLLarg = FALSE,  yL, yR)
 
             object <- new("AbscontDistribution", r = rnew, p = pnew,
                            q = qnew, d = dnew, gaps = gapsnew, 
@@ -339,14 +355,29 @@ setMethod("log", "AbscontDistribution", function(x){
                     return(px)
             }
 
-            px.l <- pnew(x.g + 0.5*h)
-            px.u <- pnew(x.g + 0.5*h, lower.tail = FALSE)
-            
-            yL <- log(q(x)(0))
-            yR <- log(q(x)(1))
+            qnew <- function(p, lower.tail = TRUE, log.p = FALSE){
+                    if (.inArgs("log.p", p(x)) && .inArgs("lower.tail", p(x))){
+                         qx <- log(q(x)(p, log.p = log.p, 
+                                    lower.tail = lower.tail))                  
+                    }else{
+                         if (log.p) p <- exp(p)
+                         if (.inArgs("lower.tail", p(x)))
+                              qx <- q(x)(p, lower.tail = lower.tail) 
+                         else{if (lower.tail) p <- 1 - p
+                              qx <- q(x)(p)}                   
+                         qx <- log(qx)
+                    }
+                    return(qx)
+            }
 
-            qnew <- .makeQNew(x.g + 0.5*h, px.l, px.u,
-                            notwithLLarg = FALSE,  yL, yR)
+#            px.l <- pnew(x.g + 0.5*h)
+#            px.u <- pnew(x.g + 0.5*h, lower.tail = FALSE)
+#            
+#            yL <- log(q(x)(0))
+#            yR <- log(q(x)(1))
+#
+#            qnew <- .makeQNew(x.g + 0.5*h, px.l, px.u,
+#                            notwithLLarg = FALSE,  yL, yR)
             
             object <- new("AbscontDistribution", r = rnew, p = pnew,
                            q = qnew, d = dnew, gaps = gapsnew, 

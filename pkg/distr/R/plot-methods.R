@@ -170,6 +170,10 @@ setMethod("plot", "AbscontDistribution",
 
 
      owarn <- getOption("warn"); options(warn = -1)
+
+     if(is.finite(q(x)(0))) {grid <- c(q(x)(0),grid); pxg <- c(0,pxg)}
+     if(is.finite(q(x)(1))) {grid <- c(grid,q(x)(1)); pxg <- c(pxg,1)}
+
      do.call(plot, c(list(x = grid, pxg, type = "l", 
           ylim = ylim2, ylab = "p(q)", xlab = "q", log = logpd), 
           dots.without.pch))
@@ -221,16 +225,19 @@ setMethod("plot", "AbscontDistribution",
      owarn <- getOption("warn"); options(warn = -1)
          lines(po,xo, ...)
      if (verticals && !is.null(gaps(x))){
-         do.call(lines, c(list(rep(pu1,2), c(gaps(x)[,1],gaps(x)[,2]), 
+         pu <- rep(pu1,3)
+         xu <- c(gaps(x)[,1],gaps(x)[,2],rep(NA,ndots))
+         o <- order(pu)
+         do.call(lines, c(list(pu[o], xu[o], 
                  col = col.vert), dots.without.pch))    
      }
      options(warn = owarn)
 
      
      if(!is.null(gaps(x)) && do.points){
-        do.call(points, c(list(x = pu1, y = gaps(x)[,1], pch = pch.u, 
+        do.call(points, c(list(x = pu1, y = gaps(x)[,1], pch = pch.a, 
                 cex = cex.points, col = col.points), dots.for.points) )
-        do.call(points, c(list(x = pu1, y = gaps(x)[,2], pch = pch.a,
+        do.call(points, c(list(x = pu1, y = gaps(x)[,2], pch = pch.u,
                 cex = cex.points, col = col.points), dots.for.points) )
      }   
      if (mainL)
@@ -243,7 +250,6 @@ setMethod("plot", "AbscontDistribution",
      par(opar)
    }
    )
-
 # -------- DiscreteDistribution -------- #
 
 setMethod("plot", "DiscreteDistribution",
@@ -447,6 +453,8 @@ setMethod("plot", "DiscreteDistribution",
                   cex = cex.points, col = col.points), dots.for.points))
        
        ngrid <- length(supp)
+       
+       if(ngrid>1){
        supp0 <- supp[1:(ngrid-1)]
 
        owarn <- getOption("warn"); options(warn = -1)
@@ -468,6 +476,8 @@ setMethod("plot", "DiscreteDistribution",
           do.call(points, c(list(x = p(x)(supp[-length(supp)]),
                   y = supp[-1], pch = pch.u, cex = cex.points, 
                   col = col.points), dots.for.points))
+       }
+       
        if (mainL)
            mtext(text = main, side = 3, cex = cex.main, adj = .5, 
                  outer = TRUE, padj = 1.4, col = col.main)                            

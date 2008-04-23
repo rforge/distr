@@ -269,6 +269,10 @@ setMethod("Math", "DiscreteDistribution",
                            .withSim = TRUE, .withArith = TRUE)
             object
           })
+setMethod("Math", "Dirac",
+          function(x){ loc <- location(x)
+                       lc <- callGeneric(loc)
+                       Dirac(lc)})
 
 ## exact: abs for discrete distributions
 setMethod("abs", "DiscreteDistribution",
@@ -348,9 +352,23 @@ setMethod("exp", "DiscreteDistribution",
 
             prob <- dnew(supportnew)
             
-            qnew <- .makeQNew(supportnew, cumsum(prob), 
-                            rev(cumsum(rev(prob))), notwithLLarg = x@.withSim, 
-                            min(supportnew), max(supportnew), Cont = FALSE)
+            qnew <- function(p, lower.tail = TRUE, log.p = FALSE){
+                    if (.inArgs("log.p", p(x)) && .inArgs("lower.tail", p(x))){
+                         qx <- exp(q(x)(p, log.p = log.p, 
+                                    lower.tail = lower.tail))                  
+                    }else{
+                         if (log.p) p <- exp(p)
+                         if (.inArgs("lower.tail", p(x)))
+                              qx <- q(x)(p, lower.tail = lower.tail)
+                         else{if (lower.tail) p <- 1 - p
+                              qx <- q(x)(p)}                   
+                         qx <- exp(qx)
+                    }
+                    return(qx)
+            }
+                    #.makeQNew(supportnew, cumsum(prob), 
+                    #        rev(cumsum(rev(prob))), notwithLLarg = x@.withSim, 
+                    #        min(supportnew), max(supportnew), Cont = FALSE)
 
             object <- new("DiscreteDistribution", r = rnew, p = pnew,
                            q = qnew, d = dnew, support = supportnew, 
@@ -399,15 +417,34 @@ setMethod("log", "DiscreteDistribution", function(x){
 
             prob <- dnew(supportnew)
             
-            qnew <- .makeQNew(supportnew, cumsum(prob), 
-                            rev(cumsum(rev(prob))), notwithLLarg = x@.withSim, 
-                            min(supportnew), max(supportnew), Cont = FALSE)
+            qnew <- function(p, lower.tail = TRUE, log.p = FALSE){
+                    if (.inArgs("log.p", p(x)) && .inArgs("lower.tail", p(x))){
+                         qx <- log(q(x)(p, log.p = log.p, 
+                                    lower.tail = lower.tail))                  
+                    }else{
+                         if (log.p) p <- exp(p)
+                         if (.inArgs("lower.tail", p(x)))
+                              qx <- q(x)(p, lower.tail = lower.tail)
+                         else{if (lower.tail) p <- 1 - p
+                              qx <- q(x)(p)}                   
+                         qx <- log(qx)
+                    }
+                    return(qx)
+            }
+
+                 # .makeQNew(supportnew, cumsum(prob), 
+                 #           rev(cumsum(rev(prob))), notwithLLarg = x@.withSim, 
+                 #           min(supportnew), max(supportnew), Cont = FALSE)
 
             object <- new("DiscreteDistribution", r = rnew, p = pnew,
                            q = qnew, d = dnew, support = supportnew, 
                            .withSim = x@.withSim, .withArith = TRUE)
             object
           })
+
+setMethod("log", "Dirac",
+          function(x){ loc <- location(x) 
+                       Dirac(log(loc))})
 
 setMethod("log10", "DiscreteDistribution",
           function(x) log(x)/log(10))

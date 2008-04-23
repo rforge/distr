@@ -642,19 +642,11 @@
 <param name="Local" value="vectororNULL-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="[">
-<param name="Local" value="subsetting-methods.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="[,SeqDataFrames-method">
 <param name="Local" value="subsetting-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="[-methods">
-<param name="Local" value="subsetting-methods.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="[<-">
 <param name="Local" value="subsetting-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">

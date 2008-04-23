@@ -118,12 +118,14 @@ function(e1,e2){
           -Inf else lower
      yR <-  if ((q(e1)(1) ==  Inf)||(q(e2)(1) ==  Inf))
            Inf else upper
+     
      ## contintuity correction
      px.l <- pfun(x + 0.5*h)
      px.u <- pfun(x + 0.5*h, lower.tail = FALSE)
 
-#     print(px.l)
-#     print(px.u)
+#     print(summary(x))
+#     print(summary(px.l))
+#     print(summary(px.u))
      qfun <- .makeQNew(x + 0.5*h, px.l, px.u,
                        .notwithLArg(e1)||.notwithLArg(e1), yL, yR)
 
