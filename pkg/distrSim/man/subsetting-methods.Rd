@@ -8,10 +8,10 @@
 \description{Operators acting on \code{SeqDataFrames} objects to extract
      or replace parts.}
 \usage{
-## "["(x,i,j,k, drop = FALSE) # is: #  x[i,j,k, drop = FALSE]
-\S4method{"["}{SeqDataFrames}(x, i, j, k, ..., drop = FALSE)
+## "["(x,i,j,k, drop = FALSE) # is: x[i,j,k, drop = FALSE]
+\S4method{[}{SeqDataFrames}(x, i, j, k, drop = FALSE)
 
-## "[<-"(x,i,j,k, value)      # is: #  x[i,j,k] <- value
+## "[<-"(x,i,j,k, value)      # is: x[i,j,k] <- value
 \S4method{[<-}{SeqDataFrames}(x, i, j, k, value)
 }
 \arguments{
