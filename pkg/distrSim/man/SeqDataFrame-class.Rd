@@ -85,8 +85,7 @@ column structures of the data frames.}
 \code{\link{print-methods}}
 \code{\link{summary-methods}}
 }
-\examples{
-}
+%\examples{}
 \keyword{manip}
 \concept{S4 data class}
 \concept{S4 simulation class}
