@@ -228,8 +228,10 @@ setMethod("plot", "AbscontDistribution",
          pu <- rep(pu1,3)
          xu <- c(gaps(x)[,1],gaps(x)[,2],rep(NA,ndots))
          o <- order(pu)
+         dots.without.pch0 <- dots.without.pch
+         dots.without.pch0 $col <- NULL
          do.call(lines, c(list(pu[o], xu[o], 
-                 col = col.vert), dots.without.pch))    
+                 col = col.vert), dots.without.pch0))    
      }
      options(warn = owarn)
 
@@ -486,8 +488,11 @@ setMethod("plot", "DiscreteDistribution",
        title(main = inner.q, line = lineT, cex.main = cex.inner,
              col.main = col.inner)
 
+       dots.without.pch0 <- dots.without.pch
+       dots.without.pch0 $col <- NULL
+
        do.call(lines, c(list(x = c(0,p(x)(supp[1])), y = rep(supp[1],2),  
-                  col = col.vert), dots.without.pch))           
+                  col = col.vert), dots.without.pch0))           
 
        if(do.points)
           {do.call(points, c(list(x = p(x)(supp[-length(supp)]),
@@ -497,8 +502,13 @@ setMethod("plot", "DiscreteDistribution",
                   cex = cex.points, col = col.points), dots.for.points))}           
         
        if(verticals && ngrid>1)
-          do.call(lines, c(list(x = rep(p(x)(supp[1]),2), y = c(supp[1],supp[2]),  
-                  col = col.vert), dots.without.pch))           
+          {dots.without.pch0 <- dots.without.pch
+           dots.without.pch0 $col <- NULL
+
+           do.call(lines, c(list(x = rep(p(x)(supp[1]),2), y = c(supp[1],supp[2]),  
+                  col = col.vert), dots.without.pch0))
+          }
+                             
        
        if (mainL)
            mtext(text = main, side = 3, cex = cex.main, adj = .5, 

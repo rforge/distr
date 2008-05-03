@@ -475,11 +475,11 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="AbscontDistribution">
-<param name="Local" value="AbscontDistribution.html">
+<param name="Local" value="ContDistribution.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="AbscontDistribution-class">
-<param name="Local" value="AbscontDistribution-class.html">
+<param name="Local" value="ContDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="AcDcLcDistribution-class">
@@ -535,7 +535,7 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="AffLinAbscontDistribution-class">
-<param name="Local" value="AbscontDistribution-class.html">
+<param name="Local" value="ContDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="AffLinDiscreteDistribution-class">
@@ -543,7 +543,7 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="AffLinDistribution-class">
-<param name="Local" value="AbscontDistribution-class.html">
+<param name="Local" value="ContDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="AffLinLatticeDistribution-class">
@@ -1215,11 +1215,11 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="initialize,AbscontDistribution-method">
-<param name="Local" value="AbscontDistribution-class.html">
+<param name="Local" value="ContDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="initialize,AffLinAbscontDistribution-method">
-<param name="Local" value="AbscontDistribution-class.html">
+<param name="Local" value="ContDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="initialize,AffLinDiscreteDistribution-method">
@@ -3136,7 +3136,7 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Class "AbscontDistribution"">
-<param name="Local" value="AbscontDistribution-class.html">
+<param name="Local" value="ContDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Class "Beta"">
@@ -3376,7 +3376,7 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function "AbscontDistribution"">
-<param name="Local" value="AbscontDistribution.html">
+<param name="Local" value="ContDistribution.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function "DiscreteDistribution"">

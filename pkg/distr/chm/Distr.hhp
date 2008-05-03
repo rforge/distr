@@ -13,8 +13,6 @@ Title=R Help for package distr
 [FILES]
 00Index.html
 0distr-package.html
-AbscontDistribution-class.html
-AbscontDistribution.html
 Beta-class.html
 BetaParameter-class.html
 Binom-class.html
@@ -23,6 +21,8 @@ Cauchy-class.html
 CauchyParameter-class.html
 Chisq-class.html
 ChisqParameter-class.html
+ContDistribution-class.html
+ContDistribution.html
 ConvPow.html
 DExp-class.html
 Dirac-class.html

@@ -16,7 +16,7 @@ Truncate(object, ...)
 }
 \arguments{
   \item{object}{distribution object}
-  \item{...}{not yet used; takes up \code{lower}, 
+  \item{\dots}{not yet used; takes up \code{lower}, 
   \code{upper}, \code{withSimplify}.}
   \item{lower}{numeric; lower truncation point}
   \item{upper}{numeric; upper truncation point}

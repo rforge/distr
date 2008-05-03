@@ -13,8 +13,9 @@
 \title{ Methods for Functions gaps and setgaps in Package `distr' }
 \description{[set]gaps-methods}
 \usage{gaps(object)
+gaps(object)
 gaps(object) <- value
-%setgaps(object, ...)
+setgaps(object, ...)
 \S4method{gaps}{AbscontDistribution}(object)
 %\S4method{gaps<-}{AbscontDistribution}(object, value)
 \S4method{setgaps}{AbscontDistribution}(object, exactq = 6, 
@@ -22,6 +23,7 @@ gaps(object) <- value
 }
 \arguments{
   \item{object}{object of class  \code{"AbscontDistribution"} (or subclasses)}
+  \item{\dots}{further arguments to be passed to \code{setgaps}; not yet used.}
   \item{value}{\eqn{n \times 2}{n x 2} matrix \code{m} of numerics where 
                \code{c(t(m))} is an ordered vector; value to be assigned to slot 
                \code{gaps}}

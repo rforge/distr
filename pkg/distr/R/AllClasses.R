@@ -886,17 +886,20 @@ setClass("UnivarMixingDistribution",
 setClass("UnivarLebDecDistribution",
             representation = representation(mixCoeff = "numeric",
                              mixDistr = "UnivarDistrList"),
-            prototype = prototype(mixCoeff = c("acWeight"=1,"discreteWeight"=0),
-                                  mixDistr = new("UnivarDistrList",list("acPart" = new("Norm"),
-                                                  "discretePart" = new("Dirac"))
+            prototype = prototype(mixCoeff = c("acWeight" = 1, 
+                                               "discreteWeight" = 0),
+                                  mixDistr = new("UnivarDistrList",
+                                              list("acPart" = new("Norm"),
+                                                   "discretePart" = new("Dirac")
+                                                   )
                                   )),
             contains = "UnivarMixingDistribution",
             validity = function(object){
                 if (length(object@mixCoeff)!=2)
                     stop("number of mixing components is not 2")
-                if (!is(object@mixDistr[[1]],"AbscontDistribution"))
+                if (!is(object@mixDistr[[1]], "AbscontDistribution"))
                     stop("first component must be absolutely continuous")
-                if (!is(object@mixDistr[[2]],"DiscreteDistribution"))
+                if (!is(object@mixDistr[[2]], "DiscreteDistribution"))
                     stop("second component must be discrete")
                 return(TRUE)
             })
@@ -904,7 +907,8 @@ setClass("UnivarLebDecDistribution",
 setClass("AffLinUnivarLebDecDistribution",
           representation = representation(a = "numeric", b = "numeric",
           X0 = "UnivarLebDecDistribution"),
-          prototype = prototype(a = 1, b = 0, X0 = new("UnivarLebDecDistribution")),
+          prototype = prototype(a = 1, b = 0, 
+                                X0 = new("UnivarLebDecDistribution")),
           contains = "UnivarLebDecDistribution"
           )
 

@@ -51,7 +51,7 @@ flat.LCD <- function(..., mixCoeff = NULL, withgaps = getdistrOption("withgaps")
     dnew.c <- .dmixfun(mixDistr = mixDistr.c, mixCoeff = mixCoeff.c)
     qnew.c <- .qmixfun(mixDistr = mixDistr.c, mixCoeff = mixCoeff.c,
                        Cont = TRUE, pnew = pnew.c)
-    .withSim   <- any(as.logical(lapply(ldots, function(x) x@.withSim)))
+    .withSim   <- any(as.logical(lapply(ldots, function(x) x@.withSim)))    
     f.c <- AbscontDistribution( r = rnew.c, d = dnew.c, p = pnew.c,
                 q = qnew.c, 
                 .withSim = .withSim, .withArith = TRUE)

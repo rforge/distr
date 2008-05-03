@@ -29,7 +29,7 @@
 \arguments{
   \item{D1}{an object of (a sub)class (of) \code{"AbscontDistribution"} or  
             \code{"LatticeDistribution"} or of \code{"UnivarLebDecDistribution"}}
-  \item{...}{not yet used; meanwhile takes up N }
+  \item{\dots}{not yet used; meanwhile takes up N }
   \item{N}{ an integer or 0 (for 0 returns Dirac(0), for 1 D1)}
   }
 \details{

@@ -1,6 +1,6 @@
 setNewEmail <- function(
               Email.old = "Peter.Ruckdeschel@web.de",
-              Email.new = "Peter.Ruckdeschel@web.de",
+              Email.new = "Peter.Ruckdeschel@itwm.fraunhofer.de",
               dev.dir = "C:/rtest/",
               packs = c("startupmsg",
                         "distr",
@@ -43,14 +43,15 @@ if (rkurs)
 
 changeInList <- function(mylist){
     lapply(mylist, function(x) {
-            xx <- readLines(x); 
+            print(x)
+            xx <- readLines(x) 
             xx <- gsub(Email.old,Email.new, xx, ignore.case=TRUE)
             writeLines(xx, con=x)})}
 
 for(i in 1:length(packs))
    {
     setwd(packs.dir[i])
-    
+    print(gettextf("----: %s",packs.dir[i]))
     #DESCRIPTION file
     xx <-  readLines(paste(packs[i],"/DESCRIPTION",sep=""))
     xx <- gsub(Email.old,Email.new, xx, ignore.case=TRUE)

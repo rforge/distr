@@ -263,7 +263,7 @@ setMethod("plot", "UnivarLebDecDistribution",
              pu <- c(rep(pu1,3), pxg[i.not.gap])
         }
         #
-        o <- order(pu)
+        o <- order(pu,xu)
         po <- pu[o]
         xo <- xu[o]
      }else{
@@ -303,6 +303,15 @@ setMethod("plot", "UnivarLebDecDistribution",
         do.call(points, c(list(x = pu1, y = gaps(x)[,2], pch = pch.u,
                 cex = cex.points, col = col.points), dots.for.points) )
 
+     }
+
+     if(do.points){
+        if(is.finite(q(x)(0))) 
+           do.call(points, c(list(x = 0, y = q(x)(0), pch = pch.u,
+                cex = cex.points, col = col.points), dots.for.points) )
+        if(is.finite(q(x)(1))) 
+           do.call(points, c(list(x = 1, y = q(x)(1), pch = pch.a,
+                cex = cex.points, col = col.points), dots.for.points) )
      }
      if (mainL)
          mtext(text = main, side = 3, cex = cex.main, adj = .5,

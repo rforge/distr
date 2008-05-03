@@ -76,9 +76,10 @@ if \code{e2} = \eqn{n}, returns the distribution of \code{max(X1,X2,...,Xn)}, if
 }}
 \seealso{\code{\link{Huberize}}, \code{\link{Truncate}}}
 \examples{
-plot(Minimum(Norm(),Pois()))
 plot(Maximum(Unif(0,1), Minimum(Unif(0,1), Unif(0,1))))
 plot(Minimum(Exp(4),4))
+## a sometimes lengthy example...
+\dontrun{plot(Minimum(Norm(),Pois()))}
 }
 \keyword{distribution}
 \keyword{methods}

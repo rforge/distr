@@ -65,10 +65,12 @@ function(e1,e2){
              e2 <- as(e2, "UnivarLebDecDistribution")
 
          if( is(e2,"AbscontDistribution"))
-             e2 <- as(as(e2,"AbscontDistribution"), "UnivarLebDecDistribution")
+             e2 <- as(as(e2, "AbscontDistribution"), 
+                      "UnivarLebDecDistribution")
 
          if( is(e2,"DiscreteDistribution"))
-             e2 <- as(as(e2,"DiscreteDistribution"), "UnivarLebDecDistribution")
+             e2 <- as(as(e2, "DiscreteDistribution"), 
+                      "UnivarLebDecDistribution")
 
          if (discreteWeight(e2)>getdistrOption("TruncQuantile"))
             if (d.discrete(e2)(0)>getdistrOption("TruncQuantile"))

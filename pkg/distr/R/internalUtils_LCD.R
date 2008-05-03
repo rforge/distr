@@ -2,31 +2,34 @@
 
 .mergegaps <- function(gaps, support){
  if(is.null(gaps)) return(NULL)
- mm <- rbind(cbind(gaps[,1],1),cbind(gaps[,2],2),cbind(support,3))
+ mm <- rbind(cbind(gaps[ ,1],1),
+             cbind(gaps[ ,2],2),
+             cbind(support,3))
  mm <- mm[order(mm[,1]),]
  jj <- 0
  ein <- FALSE
  gaps.new <- mm
  for(j in 1:nrow(mm))
-  {if (mm[j,2]==1 & !ein){
+  {if (mm[j,2] == 1 & !ein){
        jj <- jj + 1
        ein <- TRUE
        gaps.new[jj,1] <- mm[j,1]
        }
-   if (mm[j,2]==3 &  ein){
+   if (mm[j,2] == 3 &  ein){
        gaps.new[jj,2] <- mm[j,1]
        jj <- jj + 1
        gaps.new[jj,1] <- mm[j,1]
        }
-   if (mm[j,2]==2)       {
+   if (mm[j,2] == 2)       {
        ein <- FALSE
        gaps.new[jj,2] <- mm[j,1]
        }
    }
- ga <- gaps.new[1:jj,,drop=FALSE]
+ ga <- gaps.new[1:jj,,drop = FALSE]
  if(jj>0){
- ln <- seq(jj)
- ga <- matrix(ga[ln[ga[,1]!=ga[,2]],],ncol=2)}
+    ln <- seq(jj)
+    ga <- matrix(ga[ln[ga[,1] != ga[,2]], ], ncol = 2)
+    }
  else ga <- NULL
  return(ga)
 
@@ -35,46 +38,48 @@
 .mergegaps2 <- function(gaps1, gaps2){
  if(is.null(gaps1)) return(NULL)
  if(is.null(gaps2)) return(NULL)
- mm <- rbind(cbind(gaps1[,1],1),cbind(gaps1[,2],2),cbind(gaps2[,1],3),
-             cbind(gaps2[,2],4))
- mm <- mm[order(mm[,1]),]
+ mm <- rbind(cbind(gaps1[ ,1],1), 
+             cbind(gaps1[ ,2],2),
+             cbind(gaps2[ ,1],3),
+             cbind(gaps2[ ,2],4))
+ mm <- mm[order(mm[ ,1]), ]
  jj <- 0
  state1 <- 0
  state2 <- 0
  gaps.new <- mm
  for(j in 1:nrow(mm))
-  {if (mm[j,2]==1 && state2 == 0){
+  {if (mm[j,2] == 1 && state2 == 0){
         state1 <- 1
        }
-   if (mm[j,2]==1 && state2 == 1){
+   if (mm[j,2] == 1 && state2 == 1){
         jj <- jj + 1
         gaps.new[jj,1] <- mm[j,1]
         state1 <- 1
        }
-   if (mm[j,2]==2 && state2 == 1){
-       gaps.new[jj,2] <- mm[j,1]
-       state1 <- 0
+   if (mm[j,2] == 2 && state2 == 1){
+        gaps.new[jj,2] <- mm[j,1]
+        state1 <- 0
        }
-   if (mm[j,2]==2 && state2 == 0){
-       state1 <- 0
+   if (mm[j,2] == 2 && state2 == 0){
+        state1 <- 0
        }
-   if (mm[j,2]==3 && state1 == 0){
+   if (mm[j,2] == 3 && state1 == 0){
         state2 <- 1
        }
-   if (mm[j,2]==3 && state1 == 1){
+   if (mm[j,2] == 3 && state1 == 1){
         jj <- jj + 1
         gaps.new[jj,1] <- mm[j,1]
         state2 <- 1
        }
-   if (mm[j,2]==4 && state1 == 1){
-       gaps.new[jj,2] <- mm[j,1]
-       state2 <- 0
+   if (mm[j,2] == 4 && state1 == 1){
+        gaps.new[jj,2] <- mm[j,1]
+        state2 <- 0
        }
-   if (mm[j,2]==4 && state1 == 0){
-       state2 <- 0
+   if (mm[j,2] == 4 && state1 == 0){
+        state2 <- 0
        }
    }
- erg <- if(jj>0) gaps.new[1:jj,] else NULL
+ erg <- if (jj > 0) gaps.new[1:jj, ] else NULL
  return(erg)
 
 }

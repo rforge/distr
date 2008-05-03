@@ -8,7 +8,7 @@
 \title{Class "DiscreteDistribution"}
 \description{The \code{DiscreteDistribution}-class is the mother-class of the class \code{LatticeDistribution}.}
 \section{Objects from the Class}{
-Objects can be created by calls to \code{new("DiscreteDistribution",...)}, but more
+Objects can be created by calls to \code{new("DiscreteDistribution", ...)}, but more
 easily is the use of the generating function \code{"DiscreteDistribution"}.
 This generating function, from version 1.9 on, has been moved to this package from package \pkg{distrEx}.
 }

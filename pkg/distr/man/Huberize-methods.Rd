@@ -12,7 +12,7 @@ Huberize(object, ...)
 }
 \arguments{
   \item{object}{distribution object}
-  \item{...}{further arguments for \code{Huberize}; takes up \code{lower}, 
+  \item{\ldots}{further arguments for \code{Huberize}; takes up \code{lower}, 
   \code{upper}, \code{withSimplify}.}
   \item{lower}{numeric; lower truncation point}
   \item{upper}{numeric; upper truncation point}

@@ -119,16 +119,18 @@ AbscontDistribution <- function(r = NULL, d = NULL, p = NULL, q = NULL,
                  p <- .Q2P(q, ngrid = ngrid)
              }
           else
-             {if(is.null(low1))
-                 {i <- 0; x0 <- -1
-                  while(p(x0)> ep && i < 20) x0 <- x0 * 2
-                  low1 <- x0}
-              if(is.null(up1))
-                 {i <- 0; x0 <- 1
-                  while(p(x0)< 1-ep && i < 20) x0 <- x0 * 2
-                  up1 <- x0}
-              q <- .P2Q(p = p, ql = low1, qu=up1,  ngrid = ngrid,
-                       qL = low, qU = up)
+             {if(is.null(q))
+                 {if(is.null(low1))
+                     {i <- 0; x0 <- -1
+                      while(p(x0)> ep && i < 20) x0 <- x0 * 2
+                      low1 <- x0}
+                  if(is.null(up1))
+                     {i <- 0; x0 <- 1
+                      while(p(x0)< 1-ep && i < 20) x0 <- x0 * 2
+                      up1 <- x0}
+                  q <- .P2Q(p = p, ql = low1, qu=up1,  ngrid = ngrid,
+                            qL = low, qU = up)
+                  }          
               }
          }
      }

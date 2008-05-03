@@ -94,11 +94,11 @@ with weight less than <code>getdistrOption("TruncQuantile")</code>).
 
 <pre>
 Mix1 &lt;- UnivarMixingDistribution(Norm(),Binom(2,.3),
-  UnivarLebDecDistribution(acPart = Chisq(df = 2),discretePart =Negbinom(3,.09),
+  UnivarLebDecDistribution(acPart = Chisq(df = 2), discretePart = Nbinom(3,.09),
                            acWeight = 0.3),
-  Norm()-Chisq(df=3), mixCoeff=c(0,0,0.2,0.8),simplifyD = FALSE)
+  Norm()-Chisq(df=3), mixCoeff=c(0,0,0.2,0.8), withSimplify = FALSE)
 Mix2 &lt;- UnivarMixingDistribution(Norm(),Mix1, DExp(2),
-        mixCoeff = c(0,0.2,0.8),simplifyD = FALSE)
+        mixCoeff = c(0,0.2,0.8), withSimplify = FALSE)
 Mix2        
 simplifyD(Mix2)
 </pre>

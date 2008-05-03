@@ -42,17 +42,9 @@ Abscont-/Discrete-/UnivarLebDec-Distribution object</td></tr>
 <h3>Details</h3>
 
 <p>
-This method is used by our multiplication, division and exponentiation
-(<code>"*"</code>, <code>"/"</code> <code>"^"</code>) - methods.
-</p>
-
-
-<h3>Value</h3>
-
-<p>
-the positive and negative part of the distribution together with
-corresponding weights; more specifically for class
-<dl>"AbscontDistribution"</dl>{a list with components <code>"neg"</code> and 
+There are particular return types for the following classes
+<dl>
+<dt>"AbscontDistribution"</dt><dd>a list with components <code>"neg"</code> and 
 <code>"pos"</code> for the respective negative and positive part; each of these
 parts in its turn is a list with components <code>D</code> for the distribution
 (in this case of class <code>"AbscontDistribution"</code> again) and <code>w</code> 
@@ -60,8 +52,8 @@ for the weight of the respective part; if the weight of
 the negative part is 0, the corresponding distribution is set to 
 <code>-abs(Norm())</code>, and respectively, if the weight of the positive part 
 is 0, the corresponding distribution is set to 
-<code>abs(Norm())</code>.}
-<dl>"DiscreteDistribution"</dl>{a list with components <code>"neg"</code>, 
+<code>abs(Norm())</code>.</dd>
+<dt>"DiscreteDistribution"</dt><dd>a list with components <code>"neg"</code>, 
 <code>"pos"</code> and <code>"0"</code> for the respective negative, positive and zero 
 part; each of these parts in its turn is a list with components <code>D</code> for 
 the distribution (in this case of class <code>"DiscreteDistribution"</code> again)
@@ -70,8 +62,8 @@ the zero part is always <code>Dirac(0)</code>, if the weight of
 the negative part is 0, the corresponding distribution is set to 
 <code>Dirac(-1)</code>, and respectively, if the weight of the positive part 
 is 0, the corresponding distribution is set to 
-<code>Dirac(1)</code>.}
-<dl>"UnivarLebDecDistribution"</dl>{a list with components <code>"neg"</code>, 
+<code>Dirac(1)</code>.</dd>
+<dt>"UnivarLebDecDistribution"</dt><dd>a list with components <code>"neg"</code>, 
 <code>"pos"</code> and <code>"0"</code> for the respective negative, positive and zero 
 part; each of these parts in its turn is a list with components <code>D</code> for 
 the distribution (in case of components <code>"neg"</code>, 
@@ -80,12 +72,25 @@ the distribution of the zero part is always <code>Dirac(0)</code>)
 and <code>w</code> for the weight of the respective part; it is build up by calling
 <code>decomposePM</code> for <code>acPart(object)</code> and <code>discretePart(object)</code>
 separately, hence if weights of some parts are zero the corresponding
-procedure mentionned for these methods applies.}</p>
+procedure mentionned for these methods applies.</dd>
+</dl>
+
+<p>
+Method <code>decomposePM</code> is used by our multiplication, division and exponentiation
+(<code>"*"</code>, <code>"/"</code> <code>"^"</code>) - methods.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+the positive and negative part of the distribution together with
+corresponding weights as a list.</p>
 
 <h3>See Also</h3>
 
 <p>
-<code><a href="AbscontDistribution-class.html">AbscontDistribution-class</a></code>, 
+<code><a href="ContDistribution-class.html">AbscontDistribution-class</a></code>, 
 <code><a href="DiscreteDistribution-class.html">DiscreteDistribution-class</a></code>,
 <code><a href="UnivarLebDecDistribution-class.html">UnivarLebDecDistribution-class</a></code>,
 <code><a href="operators-methods.html">operators-methods</a></code>

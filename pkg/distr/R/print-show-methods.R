@@ -61,7 +61,7 @@ setMethod("showobj", "DistrList",
     function(object){
         txt <- gettextf("An object of class \"%s\"\n", class(object))
         for(i in 1:length(object)){
-            s <- showobj(object[[i]]);
+            s <- showobj(object[[i]])
             les <- length(s)
             if(les >1)
                  st <- c(gettextf("[[%i]] ",i), rep("      :",les-1))
@@ -131,7 +131,7 @@ setMethod("show", "UnivarLebDecDistribution",
            objs <- as.character(deparse(           
            match.call(
                    call = sys.call(sys.parent(1)))$object))
-           cat(showobj(object=object,objs=objs))
+           cat(showobj(object = object, objs = objs))
           if(object@.withArith && getdistrOption("WarningArith")) 
             {msga <- gettext(
      "arithmetics on distributions are understood as operations on r.v.'s\n")
@@ -148,6 +148,8 @@ setMethod("show", "UnivarLebDecDistribution",
 
 setMethod("showobj", "UnivarLebDecDistribution",
           function(object, objs){
+              if(missing(objs)) objs <- "" 
+              else if(length(grep("<S4 object ", objs))) objs <- ""
               txt <- gettextf("An object of class \"%s\"\n", class(object))
               txt <- c(txt,
                        gettextf("--- a Lebesgue decomposed distribution:\n\n"))

@@ -476,7 +476,8 @@ return(outC)
                  if(is.null(e1@gaps)) 
                     gapsnew <- NULL
                  else {gapsnew <- e1@gaps * e2
-                       if (e2 < 0) gapsnew <- gapsnew[rev(seq(nrow(gaps))),c(2,1)] }
+                       if (e2 < 0) gapsnew <- 
+                             gapsnew[rev(seq(nrow(gaps))),c(2,1),drop = FALSE] }
                  
                  dnew <- .makeD(substitute(e1, list(e1 = e1)),
                                 substitute(alist(x = x / e2), list(e2 = e2)),
@@ -495,7 +496,8 @@ return(outC)
                  if(is.null(e1@gaps)) 
                     gapsnew <- NULL
                  else {gapsnew <- e1@gaps * e2
-                       if (e2 < 0) gapsnew <- gapsnew[,c(2,1)] }
+                       if (e2 < 0) gapsnew <- 
+                            gapsnew[rev(seq(nrow(gaps))),c(2,1), drop = FALSE] }
 
                  dnew <- .makeD(substitute(e1, list(e1 = e1)),
                                 substitute(alist(x = x / e2), list(e2 = e2)),

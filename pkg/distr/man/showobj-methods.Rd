@@ -17,6 +17,7 @@ showobj(object, ...)
 \S4method{showobj}{UnivarLebDecDistribution}(object,objs)
 }
 \arguments{
+  \item{\dots}{further parameters for \code{showobj}; not yet used.}
   \item{object}{distribution [list] object}
   \item{objs}{a character capturing the input from \code{show}, \code{print}}
 }
