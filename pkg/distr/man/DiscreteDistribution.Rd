@@ -27,7 +27,7 @@
 
 
 \author{
-  Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de},\cr
+  Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de},\cr
   Matthias Kohl \email{Matthias.Kohl@stamats.de}
   }
 

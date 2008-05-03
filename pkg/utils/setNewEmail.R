@@ -1,5 +1,5 @@
 setNewEmail <- function(
-              Email.old = "Peter.Ruckdeschel@web.de",
+              Email.old = "Peter.Ruckdeschel@itwm.fraunhofer.de",
               Email.new = "Peter.Ruckdeschel@itwm.fraunhofer.de",
               dev.dir = "C:/rtest/",
               packs = c("startupmsg",
@@ -10,7 +10,7 @@ setNewEmail <- function(
                         "distrTEst", 
                         "distrTeach", 
                         "distrMod", 
-                        "robKalman", 
+                        "", 
                         "Benchmark",
                         "RobAStBase",
                         "RandVar",
@@ -37,25 +37,30 @@ names(packs.HTML.dir) <- packs
 ### R-Kurs
 if (rkurs)
    {xx <- readLines(paste(rkursDir,"rkurs.tex", sep = ""))
-    xx <- gsub(Email.old,Email.new, xx, ignore.case=TRUE)
-    writeLines(xx, con=paste(rkursDir,"rkurs.tex", sep = ""))
+    if(length(grep(Email.old,xx, ignore.case=TRUE)))
+       {xx <- gsub(Email.old,Email.new, xx, ignore.case=TRUE)
+        writeLines(xx, con=paste(rkursDir,"rkurs.tex", sep = ""))}
    }
 
 changeInList <- function(mylist){
     lapply(mylist, function(x) {
             print(x)
             xx <- readLines(x) 
-            xx <- gsub(Email.old,Email.new, xx, ignore.case=TRUE)
-            writeLines(xx, con=x)})}
+            if(length(grep(Email.old, xx, ignore.case=TRUE)))
+               {xx <- gsub(Email.old,Email.new, xx, ignore.case=TRUE)
+               writeLines(xx, con=x)}
+               })
+            }
 
 for(i in 1:length(packs))
    {
     setwd(packs.dir[i])
-    print(gettextf("----: %s",packs.dir[i]))
+    print(gettextf("----: %s/%s",packs.dir[i],packs[i]))
     #DESCRIPTION file
     xx <-  readLines(paste(packs[i],"/DESCRIPTION",sep=""))
-    xx <- gsub(Email.old,Email.new, xx, ignore.case=TRUE)
-    writeLines(xx, con=paste(packs[i],"/DESCRIPTION",sep=""))
+    if(length(grep(Email.old, xx, ignore.case=TRUE)))
+         {xx <- gsub(Email.old,Email.new, xx, ignore.case=TRUE)
+          writeLines(xx, con=paste(packs[i],"/DESCRIPTION",sep=""))}
 
     lapply(exts, function(y) changeInList(list.files(pattern = y, 
                  ignore.case=TRUE, recursive = TRUE)))

@@ -57,10 +57,10 @@ type(character), SymmCenter(ANY)
 not specified yet...
 }
 \author{
-Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de},\cr 
+Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de},\cr 
 Matthias Kohl \email{Matthias.Kohl@stamats.de}\cr
 
-\emph{Maintainer:} Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}
+\emph{Maintainer:} Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}
 }
 
 \references{

@@ -87,11 +87,11 @@ As for general \code{packageStartupMessage}'s, you may also suppress all
 
 \author{
 Matthias Kohl \email{Matthias.Kohl@stamats.de} and \cr
-Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de},\cr 
+Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de},\cr 
 Eleonara Feist \email{eleonoragerber@gmx.de}, and, \cr
 Anja Hueller \email{anja\_h86@web.de}\cr  
 
-\emph{Maintainer:}  Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}
+\emph{Maintainer:}  Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}
 }
 \references{
 P. Ruckdeschel, M. Kohl, T. Stabla, F. Camphausen (2006):

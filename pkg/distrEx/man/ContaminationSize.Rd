@@ -51,7 +51,7 @@ ContaminationSize(e1, e2, ...)
 }
 \references{Huber, P.J. (1981) \emph{Robust Statistics}. New York: Wiley.}
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
-        Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
+        Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{ ~~further notes~~ }
 \seealso{\code{\link{KolmogorovDist}}, \code{\link{TotalVarDist}}, 
     \code{\link{HellingerDist}}, \code{\link[distr]{Distribution-class}}}

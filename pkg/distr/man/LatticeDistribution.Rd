@@ -115,7 +115,7 @@ function \code{RtoDPQ.d} then approximates the three remaining slots \code{d},
 }
 
 
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
+\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 
 \note{ Working with a computer, we use a finite interval as support which
 carries at least mass \code{1-getdistrOption("TruncQuantile")}. }

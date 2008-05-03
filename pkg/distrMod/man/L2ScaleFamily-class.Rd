@@ -65,7 +65,7 @@ Class \code{"ProbFamily"}, by class \code{"ParamFamily"}.
   Kohl, M. (2005) \emph{Numerical Contributions to the Asymptotic Theory of Robustness}. 
   Bayreuth: Dissertation.
 }
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
+\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}
 \seealso{\code{\link{L2ScaleFamily}}, \code{\link{ParamFamily-class}}}
 \examples{

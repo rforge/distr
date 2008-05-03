@@ -17,7 +17,7 @@
   Mathematical Methods in Statistics \emph{14}(1), 105-131.
 
 }
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
+\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}
 \seealso{\code{\link{onesidedBias-class}}}
 \examples{

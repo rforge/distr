@@ -25,7 +25,7 @@ getdistrModOption(x)
 %}
 %\references{}
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
-        Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
+        Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}
 \seealso{\code{\link[base]{options}}, \code{\link[base]{getOption}}}
 %\examples{}

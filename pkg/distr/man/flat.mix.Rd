@@ -23,7 +23,7 @@ and, as well as the quantile function, is also created on the basis of \eqn{n} p
 }
 
 \author{
-  Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
+  Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 
 \note{ Use \code{RtoDPQ} for absolutely continuous and \code{RtoDPQ.d} for discrete distributions. }
 

@@ -41,7 +41,7 @@ getdistrSimOption(x)
 }
 }
 %\references{}
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
+\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}
 \seealso{\code{\link[base]{options}}, \code{\link[base]{getOption}},
 \code{\link[distr]{distroptions}}, \code{\link[distr]{getdistrOption}}}

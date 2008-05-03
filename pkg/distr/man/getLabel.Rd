@@ -13,7 +13,7 @@ getLabel(x, withnames = TRUE)
 }
 
 \author{
-  Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
+  Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 
 \section{Remark}{The need for this helper function (external to our 
         \code{plot} methods) was brought to our attention in a mail 

@@ -20,7 +20,7 @@ argument \code{withSimplify} is \code{TRUE} and the resulting
 object would have one mixing component with probability (almost) 1,
 \code{UnivarMixingDistribution} will return this component.}
 %\references{}
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
+\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}
 \seealso{\code{\link{UnivarMixingDistribution-class}},
   \code{\link{simplifyD}}}

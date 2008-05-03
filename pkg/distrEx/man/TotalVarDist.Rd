@@ -119,7 +119,7 @@ TotalVarDist(e1, e2, ...)
     Rieder, H. (1994) \emph{Robust Asymptotic Statistics}. New York: Springer.
 }
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
-        Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
+        Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{ ~~further notes~~ }
 \seealso{\code{\link{TotalVarDist-methods}}, \code{\link{ContaminationSize}}, 
     \code{\link{KolmogorovDist}}, \code{\link{HellingerDist}}, 

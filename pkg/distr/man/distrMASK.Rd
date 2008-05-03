@@ -16,7 +16,7 @@ distrMASK(library = NULL)
 \value{no value is returned
 }
 
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
+\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 \examples{
 distrMASK()
 }

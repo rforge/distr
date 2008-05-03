@@ -27,12 +27,12 @@ URL: \tab http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/\cr
 The idea to split off a common vignette for a set of packages 
  in a particular documentation package is due to Seth Falcon.}
 \author{
-Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de},\cr 
+Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de},\cr 
 Thomas Stabla \email{statho3@web.de},\cr 
 Florian Camphausen \email{fcampi@gmx.de},\cr
 Matthias Kohl \email{Matthias.Kohl@stamats.de}\cr
 
-\emph{Maintainer:} Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}
+\emph{Maintainer:} Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}
 }
 
 \seealso{see mails "[Rd] package vignettes, suggests and R CMD check"

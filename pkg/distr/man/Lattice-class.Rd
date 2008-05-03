@@ -63,7 +63,7 @@ Class \code{"rSpace"}, directly.\cr
 }
 
 \author{
-  Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
+  Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 
 \seealso{
 \code{\link{rSpace-class}}

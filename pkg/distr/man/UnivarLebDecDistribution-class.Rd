@@ -196,7 +196,7 @@ in partiucalar methods for \code{"*"}, \code{"/"},
  class union.   
 }
 \author{
-  Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}
+  Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}
   }
 
 \seealso{

@@ -35,7 +35,7 @@ truncated to lower/upper \code{TruncQuantile} if infinite.}
 
 
 \author{
-  Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}
+  Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}
   }
 
 \keyword{methods}

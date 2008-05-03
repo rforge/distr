@@ -349,7 +349,7 @@ of class \code{numeric} to \code{Integer}, to be used as
 \code{x <- c(1,34,2,-3); as(x,"Integer")}.}
 
 \author{
-  Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}
+  Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}
   }
 
 \seealso{

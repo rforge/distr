@@ -28,7 +28,7 @@ Class \code{"vector"}, by class "matrix", with explicit coerce.
 %\section{Methods}{}
 %\references{}
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de},
-Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
+Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}
 \seealso{\code{\link{PosDefSymmMatrix}}, \code{\link[methods:StructureClasses]{matrix-class}}}
 \examples{

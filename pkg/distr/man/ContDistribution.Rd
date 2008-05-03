@@ -84,7 +84,7 @@ Of course all other slots may be specified as arguments.}
 
 
 \author{
-  Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}
+  Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}
   }
 
 

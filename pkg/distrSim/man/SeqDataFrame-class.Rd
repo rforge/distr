@@ -76,7 +76,7 @@ column structures of the data frames.}
 \author{
   Thomas Stabla \email{statho3@web.de},\cr 
   Florian Camphausen \email{fcampi@gmx.de},\cr
-  Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de},\cr 
+  Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de},\cr 
   Matthias Kohl \email{Matthias.Kohl@stamats.de}
   }
 
