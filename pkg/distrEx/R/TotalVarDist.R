@@ -96,3 +96,27 @@ setMethod("TotalVarDist", signature(e1 = "AbscontDistribution",
         return(TotalVarDist(e2, e1, asis.smooth.discretize = asis.smooth.discretize, 
                   low.discr = low.discr, up.discr = up.discr, h.smooth = h.smooth))
     })
+#### new from version 2.0 on: Distance for Mixing Distributions
+setMethod("TotalVarDist",  signature(e1 = "AcDcLcDistribution",
+                                     e2 = "AcDcLcDistribution"),
+           function(e1, e2){
+           if( is(e1,"AbscontDistribution"))
+               e1 <- as(as(e1,"AbscontDistribution"), "UnivarLebDecDistribution")
+           if( is(e2,"AbscontDistribution"))
+               e2 <- as(as(e2,"AbscontDistribution"), "UnivarLebDecDistribution")
+           if(is(e1,"DiscreteDistribution"))
+               e1 <- as(as(e1,"DiscreteDistribution"), "UnivarLebDecDistribution")
+           if(is(e2,"DiscreteDistribution"))
+               e2 <- as(as(e2,"DiscreteDistribution"), "UnivarLebDecDistribution")
+              ac1 <- acPart(e1); ac2 <- acPart(e2)
+              ac1d <- ac1@d; ac2d <- ac2@d
+              ac1@d <- function(x) ac1d(x)*acWeight(e1)
+              ac2@d <- function(x) ac2d(x)*acWeight(e2)
+              dc1 <- discretePart(e1); dc2 <- discretePart(e2)
+              dc1d <- dc1@d; dc2d <- dc2@d
+              dc1@d <- function(x) dc1d(x)*discreteWeight(e1)
+              dc2@d <- function(x) dc2d(x)*discreteWeight(e2)
+              res <- TotalVarDist(ac1,ac2) + TotalVarDist(dc1,dc2)
+              names(res) <- "total variation distance"
+              res
+              })

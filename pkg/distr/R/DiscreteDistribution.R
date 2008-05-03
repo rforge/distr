@@ -314,140 +314,32 @@ setMethod("abs", "DiscreteDistribution",
 
 ## exact: abs for discrete distributions
 setMethod("exp", "DiscreteDistribution",
-          function(x){
-            rnew <- function(n, ...){}
-            body(rnew) <- substitute({ exp(g(n, ...)) },
-                                         list(g = x@r))
-
-            supportnew <- sort(exp(support(x)))
-
-            xx <- x
-            dnew <- function(x, log = FALSE){
-                    o.warn <- getOption("warn"); options(warn = -1)
-                    x1 <- ifelse (x <= 0, 1, x) 
-                    if (.inArgs("log", d(xx)))
-                        dx <- (x>0) * d(xx)(log(x1), log) 
-                    else{
-                        dx <- (x>0) * d(xx)(log(x1)) 
-                        if (log) dx <- log(dx)                    
-                    } 
-                    options(warn = o.warn)
-                    return(dx)
-            }
-            
-            pnew <- function(q, lower.tail = TRUE, log.p = FALSE){
-                    q1 <- ifelse (q <= 0, 0, q) 
-                    if (.inArgs("log.p", p(x)) && .inArgs("lower.tail", p(x))){
-                         px <- p(x)(log(q1), log.p = log.p, 
-                                    lower.tail = lower.tail)                  
-                    }else{
-                         if (.inArgs("lower.tail", p(x)))
-                              px <- p(x)(log(q1), lower.tail = lower.tail) 
-                         else{px <- p(x)(log(q1)) 
-                              if (lower.tail) px <- 1 - px}                   
-                         if (log.p) px <- log(px)
-                    }
-                    return(px)
-            }
-
-            prob <- dnew(supportnew)
-            
-            qnew <- function(p, lower.tail = TRUE, log.p = FALSE){
-                    if (.inArgs("log.p", p(x)) && .inArgs("lower.tail", p(x))){
-                         qx <- exp(q(x)(p, log.p = log.p, 
-                                    lower.tail = lower.tail))                  
-                    }else{
-                         if (log.p) p <- exp(p)
-                         if (.inArgs("lower.tail", p(x)))
-                              qx <- q(x)(p, lower.tail = lower.tail)
-                         else{if (lower.tail) p <- 1 - p
-                              qx <- q(x)(p)}                   
-                         qx <- exp(qx)
-                    }
-                    return(qx)
-            }
-                    #.makeQNew(supportnew, cumsum(prob), 
-                    #        rev(cumsum(rev(prob))), notwithLLarg = x@.withSim, 
-                    #        min(supportnew), max(supportnew), Cont = FALSE)
-
-            object <- new("DiscreteDistribution", r = rnew, p = pnew,
-                           q = qnew, d = dnew, support = supportnew, 
-                           .withSim = x@.withSim, .withArith = TRUE)
-            object
-          })
+           function(x) .expm.d(x))
 
 
 ### preliminary to export special functions
 if (getRversion()>='2.6.0'){ 
 
-setMethod("log", "DiscreteDistribution", function(x){
-            if (p(x)(0)>0)
-                stop("With positive probability log(x) is not well defined.")                
-            rnew = function(n, ...){}
-            body(rnew) <- substitute({ log(g(n, ...)) }, list(g = x@r))
-
-            supportnew <- sort(log(support(x)))
-
-            xx <- x
-            dnew <- function(x, log = FALSE){
-                    o.warn <- getOption("warn"); options(warn = -1)
-                    if (.inArgs("log", d(xx)))
-                        dx <- d(xx)(exp(x), log) 
-                    else{
-                        dx <- d(xx)(exp(x)) 
-                        if (log) dx <- log(dx)                    
-                    } 
-                    options(warn = o.warn)
-                    return(dx)
-            }
-            
-            pnew <- function(q, lower.tail = TRUE, log.p = FALSE){
-                    if (.inArgs("log.p", p(x)) && .inArgs("lower.tail", p(x))){
-                              px <- p(x)(exp(q), log.p = log.p, 
-                                                 lower.tail = lower.tail) 
-                    }else{
-                         if (.inArgs("lower.tail", p(x)))
-                              px <- p(x)(exp(q), lower.tail = lower.tail) 
-                         else{px <- p(x)(exp(q)) 
-                              if (lower.tail) px <- 1 - px}                   
-                         if (log.p) px <- log(px)
-                    }
-                    return(px)
-            }
-
-            prob <- dnew(supportnew)
-            
-            qnew <- function(p, lower.tail = TRUE, log.p = FALSE){
-                    if (.inArgs("log.p", p(x)) && .inArgs("lower.tail", p(x))){
-                         qx <- log(q(x)(p, log.p = log.p, 
-                                    lower.tail = lower.tail))                  
-                    }else{
-                         if (log.p) p <- exp(p)
-                         if (.inArgs("lower.tail", p(x)))
-                              qx <- q(x)(p, lower.tail = lower.tail)
-                         else{if (lower.tail) p <- 1 - p
-                              qx <- q(x)(p)}                   
-                         qx <- log(qx)
-                    }
-                    return(qx)
-            }
-
-                 # .makeQNew(supportnew, cumsum(prob), 
-                 #           rev(cumsum(rev(prob))), notwithLLarg = x@.withSim, 
-                 #           min(supportnew), max(supportnew), Cont = FALSE)
-
-            object <- new("DiscreteDistribution", r = rnew, p = pnew,
-                           q = qnew, d = dnew, support = supportnew, 
-                           .withSim = x@.withSim, .withArith = TRUE)
-            object
-          })
+setMethod("log", "DiscreteDistribution",
+           function(x) {
+           xs <- as.character(deparse(match.call(
+                 call = sys.call(sys.parent(1)))$x))
+           ep <- getdistrOption("TruncQuantile")
+           if(p(x)(0)>ep) 
+                stop(gettextf("log(%s) is not well-defined with positive probability ", xs))
+           else return(.logm.d(x))})
 
 setMethod("log", "Dirac",
-          function(x){ loc <- location(x) 
+          function(x){ xs <- as.character(deparse(match.call(
+                             call = sys.call(sys.parent(1)))$x))
+                       loc <- location(x) 
+                       ep <- getdistrOption("TruncQuantile")
+                       if(loc < ep) 
+                          stop(gettextf("log(%s) is not well-defined with positive probability ", xs))                       
                        Dirac(log(loc))})
 
 setMethod("log10", "DiscreteDistribution",
-          function(x) log(x)/log(10))
+          function(x) log(x = x)/log(x = 10))
 
 setMethod("lgamma", "DiscreteDistribution",
           function(x){
@@ -467,3 +359,4 @@ setMethod("gamma", "DiscreteDistribution",
             object
           })
 }          
+

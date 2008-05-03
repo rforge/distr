@@ -77,9 +77,9 @@ an object of class \code{"Contsimulation"}.
 \author{
   Thomas Stabla \email{statho3@web.de},\cr 
   Florian Camphausen \email{fcampi@gmx.de},\cr
-  Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de},\cr 
+  Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de},\cr 
   Matthias Kohl \email{Matthias.Kohl@stamats.de}\cr
-  \emph{Maintainer:}  Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de}
+  \emph{Maintainer:}  Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}
   }
 
 \section{Start-up-Banner}{

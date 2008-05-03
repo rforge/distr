@@ -1,6 +1,7 @@
 import("methods")
 import("stats")
 importFrom("graphics", "plot")
+importFrom("sfsmisc", "D1ss")
 import("startupmsg")
 
 export("Beta", "Binom", "Cauchy", "Chisq",  
@@ -13,6 +14,7 @@ export("Beta", "Binom", "Cauchy", "Chisq",
        "LatticeDistribution", "EuclideanSpace", "Reals", 
        "Naturals", "standardMethods", 
        "distrARITH", "distrMASK", "getLabel")
+export("AbscontDistribution")
 export("DistrList", "UnivarDistrList") 
 exportClasses("rSpace", "EuclideanSpace", "Reals", 
               "Naturals")
@@ -60,4 +62,17 @@ exportMethods("Max", "Max<-", "Min", "Min<-", "d", "df",
               "width<-", "Length<-", "liesInSupport",
               "isOldVersion", "conv2NewVersion", "gaps",
               "gaps<-", "setgaps", "getLow", "getUp")
-
+exportClasses("UnivarMixingDistribution",
+              "UnivarLebDecDistribution",
+              "AffLinUnivarLebDecDistribution",
+              "AcDcLcDistribution")
+exportMethods("mixCoeff", "mixCoeff<-", "mixDistr", "mixDistr<-",
+              "discretePart", "discretePart<-", "acPart", "acPart<-",
+              "discreteWeight", "discreteWeight<-", "acWeight", "acWeight<-",
+              "p.discrete", "d.discrete", "q.discrete", "r.discrete",
+              "p.ac", "d.ac", "q.ac", "r.ac")
+exportMethods("decomposePM", "simplifyD", "showobj")
+exportMethods("Truncate","Minimum","Maximum","Huberize")
+export("UnivarMixingDistribution", "UnivarLebDecDistribution")
+export("RtoDPQ.LC", "flat.LCD", "flat.mix")
+exportMethods("abs","exp","^")

@@ -8,6 +8,12 @@ v 2.0
 
 * moved teaching illustrations to new package 'distrTeach'
 
+* E methods for class[es] '[AffLin]UnivarLebDecDistribution'
+
+* distance methods for class '[AffLin]UnivarLebDecDistribution'
+
+* CvM distance is implemented
+
 ##############
 v 1.9 
 ##############

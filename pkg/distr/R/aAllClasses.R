@@ -9,6 +9,15 @@ setClassUnion("OptionalMatrix",
 
 ################################
 ##
+## utility classes 
+##
+################################
+
+setClass("Integer", contains ="numeric",
+          validity = function(object) all(.isInteger(object)))
+
+################################
+##
 ## space classes 
 ##
 ################################
@@ -835,10 +844,14 @@ setClass("AffLinLatticeDistribution",
           )
 
 
-setClassUnion("AffLinDistribution", c("AffLinAbscontDistribution", 
-               "AffLinDiscreteDistribution"))
 
-# list of univariate distributions
+
+################################
+##
+## Distribution List classes 
+##
+################################
+
 setClass("UnivarDistrList", 
             prototype = prototype(list(new("Norm"))), 
             contains = "DistrList", 
@@ -849,3 +862,60 @@ setClass("UnivarDistrList",
                         stop("element ", i, " is no 'UniveriateDistribution'")
                 return(TRUE) 
             })
+
+
+#### new from version 2.0: Mixing Distributions
+
+################################
+##
+## Mixing Distribution classes 
+##
+################################
+
+setClass("UnivarMixingDistribution",
+            representation = representation(mixCoeff = "numeric",
+                             mixDistr = "UnivarDistrList"),
+            prototype = prototype(mixCoeff = 1, mixDistr = new("UnivarDistrList")),
+            contains = "UnivariateDistribution",
+            validity = function(object){
+                if(any(object@mixCoeff<0) || sum(object@mixCoeff)>1)
+                   stop("mixing coefficients are no probabilities")
+                return(TRUE)
+            })
+
+setClass("UnivarLebDecDistribution",
+            representation = representation(mixCoeff = "numeric",
+                             mixDistr = "UnivarDistrList"),
+            prototype = prototype(mixCoeff = c("acWeight"=1,"discreteWeight"=0),
+                                  mixDistr = new("UnivarDistrList",list("acPart" = new("Norm"),
+                                                  "discretePart" = new("Dirac"))
+                                  )),
+            contains = "UnivarMixingDistribution",
+            validity = function(object){
+                if (length(object@mixCoeff)!=2)
+                    stop("number of mixing components is not 2")
+                if (!is(object@mixDistr[[1]],"AbscontDistribution"))
+                    stop("first component must be absolutely continuous")
+                if (!is(object@mixDistr[[2]],"DiscreteDistribution"))
+                    stop("second component must be discrete")
+                return(TRUE)
+            })
+
+setClass("AffLinUnivarLebDecDistribution",
+          representation = representation(a = "numeric", b = "numeric",
+          X0 = "UnivarLebDecDistribution"),
+          prototype = prototype(a = 1, b = 0, X0 = new("UnivarLebDecDistribution")),
+          contains = "UnivarLebDecDistribution"
+          )
+
+################################
+##
+## virtual Distribution class Unions 
+##
+################################
+
+setClassUnion("AcDcLcDistribution", c("AbscontDistribution",
+               "DiscreteDistribution", "UnivarLebDecDistribution"))
+
+setClassUnion("AffLinDistribution", c("AffLinAbscontDistribution",
+               "AffLinDiscreteDistribution", "AffLinUnivarLebDecDistribution"))

@@ -123,9 +123,8 @@ Further packages built on top of package "<span
  style="color: rgb(51, 102, 255);"> &nbsp;</span><span
  style="color: rgb(51, 102, 255);"></span></big></big></big><big><big><big><a
  href="distrTeach.html"><span style="color: rgb(51, 102, 255);">distrTeach,</span></a><span
- style="color: rgb(51, 102, 255);"></span></big></big></big><big><big><big>&nbsp;&nbsp;</big></big></big><a
- href="distrTeach.html"><big><big><big><a href="distrMod.html"><span
- style="color: rgb(51, 102, 255);"></span></a></big></big></big></a><big><big><big>
+ style="color: rgb(51, 102, 255);"></span></big></big></big><big><big><big>&nbsp;&nbsp;</big></big></big><big><big><big><a
+ href="distrMod.html"><span style="color: rgb(51, 102, 255);"></span></a></big></big></big><big><big><big>
 </big></big></big></div>
 </div>
 <br>
@@ -950,19 +949,73 @@ with size 1</big></font></li>
 2.0<br>
 </h3>
 <ul>
-  <li>TEMPLATE</li>
+  <li>&nbsp; made calls to 'uniroot()', 'integrate()', 'optim(ize)()'
+compliant to <br>
+&nbsp; <a
+ href="https://stat.ethz.ch/pipermail/r-devel/2007-May/045791.html">https://stat.ethz.ch/pipermail/r-devel/2007-May/045791.html</a><br>
+  </li>
+  <li>&nbsp;new generating function 'AbscontDistribution'<br>
+  </li>
+  <li>&nbsp;new class 'UnivarMixingDistribution' for mixing
+distributions with<br>
+&nbsp;&nbsp; methods / functions:<br>
+  </li>
+  <ul>
+    <li>'UnivarMixingDistribution' (generating function) <br>
+    </li>
+    <li>flat.mix to make out of it a distribution of class
+'UnivarLebDecDistribution'&nbsp;&nbsp;&nbsp; <br>
+    </li>
+  </ul>
+  <li>&nbsp;new class 'AffLinUnivarLebDecDistribution' for affine
+linear transformations <br>
+of 'UnivarLebDecDistribution' (in particular for use with E())<br>
+  </li>
+  <li>&nbsp;new class union 'AcDcLcDistribution' as common mother
+class<br>
+&nbsp;&nbsp; for 'UnivarLebDecDistribution', 'AbscontDistribution',<br>
+&nbsp; 'DiscreteDistribution';&nbsp; corresponding methods / functions:<br>
+  </li>
+  <li>&nbsp;enhanced arithmetic: (for 'AcDcLcDistribution')<br>
+  </li>
+  <ul>
+    <li>&nbsp;convolution for 'UnivarLebDecDistribution'</li>
+    <li>&nbsp;affine linear trafos for 'UnivarLebDecDistribution'</li>
+    <li>&nbsp;'numeric' / 'AcDcLcDistribution'</li>
+    <li>'numeric' ^ 'AcDcLcDistribution'^</li>
+    <li>'AcDcLcDistribution' ^ 'numeric'</li>
+    <li>binary operations for independent distributions:<br>
+    </li>
+    <ul>
+      <li>'AcDcLcDistribution' * 'AcDcLcDistribution' <br>
+      </li>
+      <li>'AcDcLcDistribution' / 'AcDcLcDistribution'</li>
+      <li>'AcDcLcDistribution' ^ 'AcDcLcDistribution'</li>
+    </ul>
+    <li>(better) exact transformations for exp() and log()</li>
+    <li>Minimum Maximum Truncation Huberization</li>
+    <li>convpow for 'UnivarLebDecDistribution'</li>
+  </ul>
+  <li>new generating function 'AbscontDistribution' <br>
+  </li>
+  <li>&nbsp;'decomposePM' decomposes distributions in positive /
+negative part<br>
+&nbsp;&nbsp; (and in Dirac(0) if discrete) <br>
+  </li>
+  <li>&nbsp;'simplifyD' tries to cast to simpler classes (e.g. if a
+weight is 0)<br>
+    <br>
+  </li>
 </ul>
 <hr style="width: 100%; height: 2px; color: rgb(0, 0, 0);">
 <h2 style="text-align: center; color: rgb(0, 0, 153);">Our plans for
 the next version:</h2>
 <ul>
-  <li>generating function for new distribution classes to ease
-inclusion of new distributions</li>
-  <li>use of <span style="color: rgb(51, 102, 255);">\S4method</span>
-in documentation</li>
   <li>overloading binary operators of group <span
  style="color: rgb(51, 102, 255);">Math2 </span>for independent
-distributions</li>
+distributions<br>
+[done partially as for version 2.0]<br>
+  </li>
   <li>defining a subgroup of <span style="color: rgb(51, 102, 255);">Math2</span>
 of invertible binary operators </li>
   <li><font size="-1"><big>application of analytic Fourier Transforms
@@ -975,7 +1028,9 @@ by a parameter/option</big></font></li>
  style="color: rgb(51, 102, 255);">simplifyr</span> for continuous
 distributions</big></font></li>
   <li><font size="-1"><big>further exact formulae for binary arithmetic
-operations like <span style="color: rgb(51, 102, 255);">"*"</span></big></font></li>
+operations like <span style="color: rgb(51, 102, 255);">"*"<br>
+    </span></big></font>[done partially as for version 2.0]<br>
+  </li>
   <li><font size="-1"><big>redo the <span
  style="color: rgb(51, 102, 255);">initialize</span>- and the <span
  style="color: rgb(51, 102, 255);">math</span>-method for discrete

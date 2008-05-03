@@ -6,9 +6,14 @@
                       RtoDPQ.e = 5, 
                       # new Warning-items P.R. 28.03.06
                       WarningArith = TRUE,
-                      WarningSim = TRUE
+                      WarningSim = TRUE,
+                      ## new Items from 2.0:
+                      withgaps = TRUE,
+                      simplifyD = TRUE
                       )
   
+.OkTyp <-  c("DiscreteDistribution","AbscontDistribution",
+             "UnivarLebDecDistribution", "UnivarMixingDistribution")
 
 
 

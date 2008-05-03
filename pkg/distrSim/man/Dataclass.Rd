@@ -23,7 +23,7 @@
 
 
 \author{
-  Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de},\cr
+  Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de},\cr
   }
 
 \seealso{

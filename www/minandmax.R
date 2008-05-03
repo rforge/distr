@@ -1,3 +1,7 @@
+### these functions have been integrated
+### to the regular package distr from version 2.0 on
+### [though in a somewhat modified version
+
 require(distr)                                 
 
 if(!isGeneric("Minimum")) 

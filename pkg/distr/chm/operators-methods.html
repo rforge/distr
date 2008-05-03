@@ -13,9 +13,11 @@
 <param name="keyword" value="R:   +,AbscontDistribution,numeric-method">
 <param name="keyword" value="R:   +,DiscreteDistribution,numeric-method">
 <param name="keyword" value="R:   +,LatticeDistribution,numeric-method">
+<param name="keyword" value="R:   +,UnivarLebDecDistribution,numeric-method">
 <param name="keyword" value="R:   +,AffLinAbscontDistribution,numeric-method">
 <param name="keyword" value="R:   +,AffLinDiscreteDistribution,numeric-method">
 <param name="keyword" value="R:   +,AffLinLatticeDistribution,numeric-method">
+<param name="keyword" value="R:   +,AffLinUnivarLebDecDistribution,numeric-method">
 <param name="keyword" value="R:   +,Cauchy,numeric-method">
 <param name="keyword" value="R:   +,Dirac,numeric-method">
 <param name="keyword" value="R:   +,Norm,numeric-method">
@@ -25,12 +27,14 @@
 <param name="keyword" value="R:   -,UnivariateDistribution,UnivariateDistribution-method">
 <param name="keyword" value="R:   -,numeric,UnivariateDistribution-method">
 <param name="keyword" value="R:   *,UnivariateDistribution,numeric-method">
+<param name="keyword" value="R:   *,AbscontDistribution,numeric-method">
 <param name="keyword" value="R:   *,DiscreteDistribution,numeric-method">
 <param name="keyword" value="R:   *,LatticeDistribution,numeric-method">
+<param name="keyword" value="R:   *,UnivarLebDecDistribution,numeric-method">
 <param name="keyword" value="R:   *,AffLinAbscontDistribution,numeric-method">
 <param name="keyword" value="R:   *,AffLinDiscreteDistribution,numeric-method">
 <param name="keyword" value="R:   *,AffLinLatticeDistribution,numeric-method">
-<param name="keyword" value="R:   *,AbscontDistribution,numeric-method">
+<param name="keyword" value="R:   *,AffLinUnivarLebDecDistribution,numeric-method">
 <param name="keyword" value="R:   *,DExp,numeric-method">
 <param name="keyword" value="R:   *,Exp,numeric-method">
 <param name="keyword" value="R:   *,ExpOrGammaOrChisq,numeric-method">
@@ -50,6 +54,7 @@
 <param name="keyword" value="R:   +,DiscreteDistribution,DiscreteDistribution-method">
 <param name="keyword" value="R:   +,LatticeDistribution,DiscreteDistribution-method">
 <param name="keyword" value="R:   +,LatticeDistribution,LatticeDistribution-method">
+<param name="keyword" value="R:   +,UnivarLebDecDistribution,UnivarLebDecDistribution-method">
 <param name="keyword" value="R:   +,Binom,Binom-method">
 <param name="keyword" value="R:   +,Cauchy,Cauchy-method">
 <param name="keyword" value="R:   +,Chisq,Chisq-method">
@@ -65,8 +70,15 @@
 <param name="keyword" value="R:   *,Dirac,Dirac-method">
 <param name="keyword" value="R:   *,Dirac,UnivariateDistribution-method">
 <param name="keyword" value="R:   *,UnivariateDistribution,Dirac-method">
+<param name="keyword" value="R:   *,AcDcLcDistribution,AcDcLcDistribution-method">
 <param name="keyword" value="R:   /,Dirac,Dirac-method">
 <param name="keyword" value="R:   /,numeric,Dirac-method">
+<param name="keyword" value="R:   /,numeric,AcDcLcDistribution-method">
+<param name="keyword" value="R:   /,AcDcLcDistribution,AcDcLcDistribution-method">
+<param name="keyword" value="R:   ^,AcDcLcDistribution,numeric-method">
+<param name="keyword" value="R:   ^,AcDcLcDistribution,Integer-method">
+<param name="keyword" value="R:   ^,AcDcLcDistribution,AcDcLcDistribution-method">
+<param name="keyword" value="R:   ^,numeric,AcDcLcDistribution-method">
 <param name="keyword" value=" Methods for operators +-*/ in Package distr">
 </object>
 
@@ -111,12 +123,16 @@ class <code>"AffLinAbscontDistribution"</code>; exact</dd>
 class <code>"AffLinDiscreteDistribution"</code>; exact</dd>
 <dt><code>+</code></dt><dd><code>signature(e1 = "LatticeDistribution", e2 = "numeric")</code> result  of 
 class <code>"AffLinLatticeDistribution"</code>; exact</dd>
+<dt><code>+</code></dt><dd><code>signature(e1 = "UnivarLebDecDistribution", e2 = "numeric")</code> result of 
+class <code>"AffLinUnivarLebDecDistribution"</code>; exact</dd>
 <dt><code>+</code></dt><dd><code>signature(e1 = "AffLinAbscontDistribution", e2 = "numeric")</code> result again of 
 class <code>"AffLinAbscontDistribution"</code>; exact</dd>
 <dt><code>+</code></dt><dd><code>signature(e1 = "AffLinDiscreteDistribution", e2 = "numeric")</code> result again of 
 class <code>"AffLinDiscreteDistribution"</code>; exact</dd>
 <dt><code>+</code></dt><dd><code>signature(e1 = "AffLinLatticeDistribution", e2 = "numeric")</code> result again of 
 class <code>"AffLinLatticeDistribution"</code>; exact</dd>
+<dt><code>+</code></dt><dd><code>signature(e1 = "AffLinUnivarLebDecDistribution", e2 = "numeric")</code> result of 
+class <code>"AffLinUnivarLebDecDistribution"</code>; exact</dd>
 <dt><code>+</code></dt><dd><code>signature(e1 = "Cauchy", e2 = "numeric")</code> result again of class <code>"Cauchy"</code>; exact</dd>
 <dt><code>+</code></dt><dd><code>signature(e1 = "Dirac", e2 = "numeric")</code> result again of class <code>"Dirac"</code>; exact</dd>
 <dt><code>+</code></dt><dd><code>signature(e1 = "Norm", e2 = "numeric")</code> result again of class <code>"Norm"</code>; exact</dd>
@@ -135,12 +151,16 @@ class <code>"AffLinAbscontDistribution"</code>; exact</dd>
 class <code>"AffLinDiscreteDistribution"</code>; exact</dd>
 <dt><code>*</code></dt><dd><code>signature(e1 = "LatticeDistribution", e2 = "numeric")</code> result  of 
 class <code>"AffLinLatticeDistribution"</code>; exact</dd>
+<dt><code>*</code></dt><dd><code>signature(e1 = "UnivarLebDecDistribution", e2 = "numeric")</code> result of 
+class <code>"AffLinUnivarLebDecDistribution"</code>; exact</dd>
 <dt><code>*</code></dt><dd><code>signature(e1 = "AffLinAbscontDistribution", e2 = "numeric")</code> result again of 
 class <code>"AffLinAbscontDistribution"</code>; exact</dd>
 <dt><code>*</code></dt><dd><code>signature(e1 = "AffLinDiscreteDistribution", e2 = "numeric")</code> result again of 
 class <code>"AffLinDiscreteDistribution"</code>; exact</dd>
 <dt><code>*</code></dt><dd><code>signature(e1 = "AffLinLatticeDistribution", e2 = "numeric")</code> result again of 
 class <code>"AffLinLatticeDistribution"</code>; exact</dd>
+<dt><code>*</code></dt><dd><code>signature(e1 = "AffLinUnivarLebDecDistribution", e2 = "numeric")</code> result of 
+class <code>"AffLinUnivarLebDecDistribution"</code>; exact</dd>
 <dt><code>*</code></dt><dd><code>signature(e1 = "DExp", e2 = "numeric")</code> if <code>abs(e2)&gt;0</code> result again of class <code>"DExp"</code>; exact</dd>
 <dt><code>*</code></dt><dd><code>signature(e1 = "Exp", e2 = "numeric")</code> if <code>e2&gt;0</code> result again of class <code>"Exp"</code>; exact</dd>
 <dt><code>*</code></dt><dd><code>signature(e1 = "ExpOrGammaOrChisq", e2 = "numeric")</code> if <code>e1</code> is a Gamma distribution and <code>e2&gt;0</code> 
@@ -173,6 +193,10 @@ if the larger lattice-width is an integer multiple of the smaller(in abs. value)
 <code>"DiscreteDistribution"</code>; is generated by explicite convolution</dd>
 <dt><code>+</code></dt><dd><code>signature(e1 = "LatticeDistribution", e2 = "DiscreteDistribution")</code> assumes <code>e1</code>, <code>e2</code> independent; result again of class 
 <code>"DiscreteDistribution"</code>; is generated by explicite convolution</dd>
+<dt><code>+</code></dt><dd><code>signature(e1 = "UnivarLebDecDistribution", e2 = "UnivarLebDecDistribution")</code> assumes <code>e1</code>, <code>e2</code> independent; result again of class 
+<code>"UnivarLebDecDistribution"</code>; is generated by separate explicite convolution of a.c. and discrete parts of <code>e1</code> and <code>e2</code>
+and subsequent flattening with <code><a href="flat.LCD.html">flat.LCD</a></code>; if <code>getdistrOption("withSimplify")</code> is  <code>TRUE</code>, result is piped
+through a call to <code><a href="simplifyD-methods.html">simplifyD</a></code></dd>
 <dt><code>+</code></dt><dd><code>signature(e1 = "Binom", e2 = "Binom")</code> assumes <code>e1</code>, <code>e2</code> independent; 
 if <code>prob(e1)==prob(e2)</code>, result again of class 
 <code>"Binom"</code>; uses the convolution formula for binomial distributions; exact</dd>
@@ -201,8 +225,69 @@ result again of class <code>"Dirac"</code>; exact</dd>
 result again of class <code>"Dirac"</code>; exact</dd>
 <dt><code>*</code></dt><dd><code>signature(e1 = "Dirac", e2 = "UnivariateDistribution")</code>  translated to <code>e2 * location(e1)</code>; 
 result again of class <code>"Dirac"</code>; exact</dd>
+<dt><code>*</code></dt><dd><code>signature(e1 = "AcDcLcDistribution", e2 = "AcDcLcDistribution")</code>: by means of <code><a href="decomposePM-methods.html">decomposePM</a></code>
+<code>e1</code> and <code>e2</code> are decomposed into positive and negative parts; of these, convolutions of the
+corresponding logarithms are computed separately and finally <code>exp</code> is applied to them, again separately;
+the resulting mixing components are then ``flattened'' to one object of class 
+<code>UnivarLebDecDistribution</code> by <code><a href="flat.LCD.html">flat.LCD</a></code> which according to <code>getdistrOption(withSimplify)</code> gets piped through
+a call to <code><a href="simplifyD-methods.html">simplifyD</a></code>.
+</dd>
 <dt><code>/</code></dt><dd><code>signature(e1 = "Dirac", e2 = "Dirac")</code>  result again of class <code>"Dirac"</code>; exact</dd>
 <dt><code>/</code></dt><dd><code>signature(e1 = "numeric", e2 = "Dirac")</code>  result again of class <code>"Dirac"</code>; exact</dd>
+<dt><code>/</code></dt><dd><code>signature(e1 = "numeric", e2 = "AcDcLcDistribution")</code>: if <code>d.discrete(e2)(0)*discreteWeight(e2)&gt;0</code>
+throws an error (would give division by 0 with positive probability); else by means of <code><a href="decomposePM-methods.html">decomposePM</a></code>
+<code>e2</code> is decomposed into positive and negative parts; then, similarly the result obtains as for 
+<code>"*"(signature(e1 = "AcDcLcDistribution", e2 = "AcDcLcDistribution"))</code> by the exp-log trick
+and is ``flattened'' to one object of class 
+<code>UnivarLebDecDistribution</code> by <code><a href="flat.LCD.html">flat.LCD</a></code> and 
+according to <code>getdistrOption(withSimplify)</code> is piped through
+a call to <code><a href="simplifyD-methods.html">simplifyD</a></code>; exact..
+</dd>
+<dt><code>/</code></dt><dd><code>signature(e1 = "AcDcLcDistribution", e2 = "AcDcLcDistribution")</code>: translated to <code>e1 * (1/e2)</code>.
+</dd>
+<dt><code>^</code></dt><dd><code>signature(e1 = "AcDcLcDistribution", e2 = "Integer")</code>: if <code>e2=0</code> returns <code>Dirac(1)</code>;
+if <code>e2=1</code> returns <code>e1</code>; if <code>e2&lt;0</code> translated to <code>(1/e1)^(-e2)</code>; exact. 
+</dd>
+<dt><code>^</code></dt><dd><code>signature(e1 = "AcDcLcDistribution", e2 = "numeric")</code>: if <code>e2</code> is integer uses preceding
+item; else if <code>e1&lt; 0</code> with positive probability, throughs an error; else
+the result obtains similarly to 
+<code>"*"(signature(e1 = "AcDcLcDistribution", e2 = "AcDcLcDistribution"))</code> by the exp-log trick
+and is ``flattened'' to one object of class 
+<code>UnivarLebDecDistribution</code> by <code><a href="flat.LCD.html">flat.LCD</a></code> and 
+according to <code>getdistrOption(withSimplify)</code> is piped through
+a call to <code><a href="simplifyD-methods.html">simplifyD</a></code>; exact.
+</dd>
+<dt><code>^</code></dt><dd><code>signature(e1 = "AcDcLcDistribution", e2 = "AcDcLcDistribution")</code>: 
+if <code>e1</code> is negative with positive probability, 
+throws an error if <code>e2</code> is non-integer
+with positive probability; if <code>e1</code> is 0 with positive probability
+throws an error if <code>e2</code> is non-integer with positive probability. 
+if  <code>e2</code> is integer with probability 1 uses 
+<code>DiscreteDistribution(supp=e1^(Dirac(x))</code> for each <code>x</code> in <code>support(e2)</code>,
+builds up a corresponding mixing distribution; the latter is ``flattened'' to one object of class 
+<code>UnivarLebDecDistribution</code> by <code><a href="flat.LCD.html">flat.LCD</a></code> and 
+according to <code>getdistrOption(withSimplify)</code> is piped through
+a call to <code><a href="simplifyD-methods.html">simplifyD</a></code>.
+Else the result obtains similarly to <code>"*"(signature(e1 = "AcDcLcDistribution", 
+                e2 = "AcDcLcDistribution"))</code> by the exp-log trick
+and is ``flattened'' to one object of class 
+<code>UnivarLebDecDistribution</code> by <code><a href="flat.LCD.html">flat.LCD</a></code> and 
+according to <code>getdistrOption(withSimplify)</code> is piped through
+a call to <code><a href="simplifyD-methods.html">simplifyD</a></code>; exact.
+</dd>
+<dt><code>^</code></dt><dd><code>signature(e1 = "numeric", e2 = "AcDcLcDistribution")</code>: 
+if <code>e1</code> is negative, throws an error if <code>e2</code> is non-integer
+with positive probability; if <code>e1</code> is 0 throws an error if
+<code>e2</code> is non-integer with positive probability. 
+if  <code>e2</code> is integer with probability 1 uses 
+<code>DiscreteDistribution(supp=e1^support(e2), prob=discrete.d(supp))</code>
+else the result obtains similarly to <code>"*"(signature(e1 = "AcDcLcDistribution", 
+                e2 = "AcDcLcDistribution"))</code> by the exp-log trick
+and is ``flattened'' to one object of class 
+<code>UnivarLebDecDistribution</code> by <code><a href="flat.LCD.html">flat.LCD</a></code> and 
+according to <code>getdistrOption(withSimplify)</code> is piped through
+a call to <code><a href="simplifyD-methods.html">simplifyD</a></code>; exact.
+</dd>
 </dl>
 
 <h3>See Also</h3>
@@ -238,6 +323,11 @@ N - a
 a * N
 a * P
 N / a + sin( a * P - N)
+N * P
+N / N
+N ^ P
+1.2 ^ N
+abs(N) ^ 1.3
 </pre>
 
 <script Language="JScript">

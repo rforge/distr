@@ -1,0 +1,88 @@
+<html><head><title>Generating function for Class "UnivarMixingDistribution"</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>UnivarMixingDistribution(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   UnivarMixingDistribution">
+<param name="keyword" value=" Generating function for Class 'UnivarMixingDistribution'">
+</object>
+
+
+<h2>Generating function for Class 'UnivarMixingDistribution'</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Generates an object of class <code>"UnivarMixingDistribution"</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>UnivarMixingDistribution(..., mixCoeff, 
+                                withSimplify = getdistrOption("simplifyD"))</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>...</code></td>
+<td>
+Objects of class <code>"UnivariateDistribution"</code> (or subclasses)</td></tr>
+<tr valign="top"><td><code>mixCoeff</code></td>
+<td>
+Objects of class <code>"numeric"</code> : a vector of 
+probabilities for the mixing components (must be of same length as
+arguments in ...).</td></tr>
+<tr valign="top"><td><code>withSimplify</code></td>
+<td>
+<code>"logical"</code>: shall the return value be piped through a 
+call to <code>simplifyD</code>?</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+If <code>mixCoeff</code> is missing, all elements in <code>...</code>
+are equally weighted.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+Object of class <code>"UnivarMixingDistribution"</code>, or if 
+argument <code>withSimplify</code> is <code>TRUE</code> and the resulting 
+object would have one mixing component with probability (almost) 1,
+<code>UnivarMixingDistribution</code> will return this component.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@web.de">Peter.Ruckdeschel@web.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="UnivarMixingDistribution-class.html">UnivarMixingDistribution-class</a></code>,
+<code><a href="simplifyD-methods.html">simplifyD</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+mylist &lt;- UnivarMixingDistribution(Binom(3,.3), Dirac(2), Norm(), 
+          mixCoeff=c(1/4,1/5,11/20))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>distr</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

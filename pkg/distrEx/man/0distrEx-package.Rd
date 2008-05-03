@@ -196,7 +196,7 @@ As for general \code{packageStartupMessage}'s, you may also suppress all
 
 \author{
 Matthias Kohl \email{Matthias.Kohl@stamats.de} and \cr
-Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de},\cr 
+Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de},\cr 
 
 \emph{Maintainer:}  Matthias Kohl \email{Matthias.Kohl@stamats.de}
 }

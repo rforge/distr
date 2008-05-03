@@ -2,6 +2,8 @@
 \docType{methods}
 \alias{plot}
 \alias{plot-methods}
+\alias{plot,AffLinUnivarLebDecDistribution-method}
+\alias{plot,UnivarLebDecDistribution-method}
 \alias{plot,AbscontDistribution-method}
 \alias{plot,DiscreteDistribution-method}
 \alias{plot,DistrList-method}
@@ -24,10 +26,28 @@
      col.points = par("col"), col.hor = par("col"), col.vert = par("col"), 
      col.main = par("col.main"), col.inner = par("col.main"), 
      col.sub = par("col.sub"),  cex.points = 2.0, pch.u = 21, pch.a = 16)
+\S4method{plot}{AffLinUnivarLebDecDistribution}(x, y = NULL, width = 16, 
+     height = 9, withSweave = FALSE, xlim = NULL, ylim = NULL, ngrid = 1000,
+     verticals = TRUE, do.points = TRUE, main = FALSE, inner = TRUE, sub = FALSE,
+     bmar = par("mar")[1], tmar = par("mar")[3], ..., cex.main = par("cex.main"), 
+     cex.inner = 1.2, cex.sub = par("cex.sub"), col.points = par("col"),
+     col.hor = par("col"), col.vert = par("col"), col.main = par("col.main"), 
+     col.inner = par("col.main"), col.sub = par("col.sub"),  cex.points = 2.0,
+     pch.u = 21, pch.a = 16)
+\S4method{plot}{UnivarLebDecDistribution}(x, y = NULL, width = 16, 
+     height = 9, withSweave = FALSE, xlim = NULL, ylim = NULL, ngrid = 1000,
+     verticals = TRUE, do.points = TRUE, main = FALSE, inner = TRUE, sub = FALSE,
+     bmar = par("mar")[1], tmar = par("mar")[3], ..., cex.main = par("cex.main"), 
+     cex.inner = 1.2, cex.sub = par("cex.sub"), col.points = par("col"),
+     col.hor = par("col"), col.vert = par("col"), col.main = par("col.main"), 
+     col.inner = par("col.main"), col.sub = par("col.sub"),  cex.points = 2.0,
+     pch.u = 21, pch.a = 16)
 \S4method{plot}{DistrList}(x, y = NULL, ...)
 }
 \arguments{
   \item{x}{object of class 
+            \code{"AffLinUnivarLebDecDistribution"} or class
+            \code{"UnivarLebDecDistribution"} or class
             \code{"AbscontDistribution"} or class
             \code{"DiscreteDistribution"} or class
             \code{"DistrList"}: (list of) distribution(s) to be plotted }
@@ -88,6 +108,10 @@
 }
 \details{
 \describe{
+\item{plot}{\code{signature(object = "AffLinUnivarLebDecDistribution")}: plots  
+   cumulative distribution function and the quantile function }
+\item{plot}{\code{signature(object = "UnivarLebDecDistribution")}: plots  
+   cumulative distribution function and the quantile function }
 \item{plot}{\code{signature(object = "AbscontDistribution")}: plots density, 
    cumulative distribution function and the quantile function }
 \item{plot}{\code{signature(object = "DiscreteDistribution")}: plots probability 
@@ -164,6 +188,14 @@ Ch <- Chisq(); setgaps(Ch); plot(Ch, do.points = FALSE)
 setgaps(Ch, exactq = 3); plot(Ch, verticals = FALSE)
 plot(Ch, cex = 1.2, pch.u = 20, pch.a = 10, col.points = "green", 
      col.vert = "red")
+
+## some distribution with gaps
+wg <- flat.mix(UnivarMixingDistribution(Unif(0,1),Unif(4,5), 
+               withSimplify=FALSE))
+# some Lebesgue decomposed distribution 
+mymix <- UnivarLebDecDistribution(acPart = wg, discretePart = Binom(4,.4),
+         acWeight = 0.4)
+plot(mymix)         
 }
 \seealso{\code{\link[stats]{plot}},\code{\link[stats]{plot.default}}, 
          \code{\link[stats]{plot.stepfun}},  \code{\link[stats]{par}}}

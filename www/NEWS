@@ -7,6 +7,9 @@ News: --- v 2.0
 %------------------------------------------------------------------
 ::::all packages::::
 %------------------------------------------------------------------
+
+from now on, use Rforge for (developper) NEWS 
+
 ..P..
 150108: * created new package 'distrTeach'
         * moved teaching functions 'illustrateLLN()', 'illustrateCLT[.tcl]'

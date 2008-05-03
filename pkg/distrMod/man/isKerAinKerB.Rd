@@ -23,7 +23,7 @@ isKerAinKerB(A, B, tol = .Machine$double.eps)
 }
 \value{logical}
 %\references{}
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de}}
+\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
 \examples{
 ma <- cbind(1,1,c(1,1,7))
 D <- t(ma \%*\% c(0,1,-1))

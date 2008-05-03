@@ -5,7 +5,6 @@
 <body>
 
 <table width="100%"><tr><td>DiscreteDistribution-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
-<param name="keyword" value="R:   DiscreteDistribution">
 <param name="keyword" value="R:   DiscreteDistribution-class">
 <param name="keyword" value="R:   AffLinDiscreteDistribution-class">
 <param name="keyword" value="R:   initialize,DiscreteDistribution-method">
@@ -24,52 +23,11 @@ The <code>DiscreteDistribution</code>-class is the mother-class of the class <co
 </p>
 
 
-<h3>Usage</h3>
-
-<pre>
-  DiscreteDistribution(supp, prob, .withArith=FALSE, .withSim=FALSE)
-  DiscreteDistribution(supp)
-</pre>
-
-
-<h3>Arguments</h3>
-
-<table summary="R argblock">
-<tr valign="top"><td><code>supp</code></td>
-<td>
-numeric vector which forms the support 
-of the discrete distribution. </td></tr>
-<tr valign="top"><td><code>prob</code></td>
-<td>
-vector of probability weights for the 
-elements of <code>supp</code>.</td></tr>
-<tr valign="top"><td><code>.withArith</code></td>
-<td>
-normally not set by the user, but if determining the entries <code>supp</code>, <code>prob</code>
-distributional arithmetics was involved, you may set this to <code>TRUE</code>.</td></tr>
-<tr valign="top"><td><code>.withSim</code></td>
-<td>
-normally not set by the user, but if determining the entries <code>supp</code>, <code>prob</code>
-simulations were involved, you may set this to <code>TRUE</code>.</td></tr>
-</table>
-
-<h3>Details</h3>
-
-<p>
-If <code>prob</code> is missing, all elements in <code>supp</code>
-are equally weighted.
-</p>
-
-
-<h3>Value</h3>
-
-<p>
-Object of class <code>"DiscreteDistribution"</code></p>
-
 <h3>Objects from the Class</h3>
 
 <p>
-Objects can be created by calls of the generating function <code>"DiscreteDistribution"</code>.
+Objects can be created by calls to <code>new("DiscreteDistribution",...)</code>, but more
+easily is the use of the generating function <code>"DiscreteDistribution"</code>.
 This generating function, from version 1.9 on, has been moved to this package from package <span class="pkg">distrEx</span>.
 </p>
 
@@ -104,7 +62,13 @@ Class <code>"Distribution"</code>, by class <code>"UnivariateDistribution"</code
 <dl>
 <dt>initialize</dt><dd><code>signature(.Object = "DiscreteDistribution")</code>: initialize method </dd>
 <dt>Math</dt><dd><code>signature(x = "DiscreteDistribution")</code>: application of a mathematical function, e.g. <code>sin</code> or
-<code>exp</code> (does not work with <code>log</code>!), to this discrete distribution</dd>
+<code>tan</code> to this discrete distribution</dd>
+<code>abs</code>{<code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>abs(x)</code>.}
+<code>exp</code>{<code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>exp(x)</code>.}
+<code>log</code>{<code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>log(x)</code>.}
+<code>log10</code>{<code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>log10(x)</code>.}
+<code>gamma</code>{<code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>gamma(x)</code>.}
+<code>lgamma</code>{<code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>lgamma(x)</code>.}
 <dt>-</dt><dd><code>signature(e1 = "DiscreteDistribution")</code>: application of `-' to this discrete distribution</dd>
 <dt>*</dt><dd><code>signature(e1 = "DiscreteDistribution", e2 = "numeric")</code>: multiplication of this discrete distribution
 by an object of class `numeric'</dd>
@@ -165,9 +129,25 @@ the class of the return value of methods
 <dt>-</dt><dd><code>signature(e1 = "numeric", e2 = "AffLinDiscreteDistribution")</code></dd>
 </ul>
 <p>
-There also is a class union of <code>"AffLinAbscontDistribution"</code> and
-<code>"AffLinDiscreteDistribution"</code> called <code>"AffLinDistribution"</code>
+There also is a class union of <code>"AffLinAbscontDistribution"</code>,
+<code>"AffLinDiscreteDistribution"</code>, <code>"AffLinUnivarLebDecDistribution"</code>
+and called <code>"AffLinDistribution"</code>
 which is used for functionals.
+</p>
+
+
+<h3>Internal virtual superclass "AcDcLcDistribution"</h3>
+
+<p>
+As many operations should be valid no matter whether the operands
+are of class <code>"AbscontDistribution"</code>,
+<code>"DiscreteDistribution"</code>, or <code>"UnivarLebDecDistribution"</code>,
+there is a class union of these classes called <code>"AcDcLcDistribution"</code>;
+in partiucalar methods for <code>"*"</code>, <code>"/"</code>, 
+<code>"^"</code> (see <a href="operators-methods.html">operators-methods</a>) and methods
+<code><a href="MinMaximum-methods.html">Minimum</a></code>, <code>Maximum</code>, <code><a href="Truncate-methods.html">Truncate</a></code>, and
+<code><a href="Huberize-methods.html">Huberize</a></code>, and <code><a href="ConvPow.html">convpow</a></code> are defined for this 
+class union.
 </p>
 
 
@@ -183,7 +163,7 @@ Working with a computer, we use a finite interval as support which carries at le
 <p>
 Thomas Stabla <a href="mailto:statho3@web.de">statho3@web.de</a>,<br> 
 Florian Camphausen <a href="mailto:fcampi@gmx.de">fcampi@gmx.de</a>,<br>
-Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@uni-bayreuth.de">Peter.Ruckdeschel@uni-bayreuth.de</a>,<br> 
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@web.de">Peter.Ruckdeschel@web.de</a>,<br> 
 Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
 </p>
 

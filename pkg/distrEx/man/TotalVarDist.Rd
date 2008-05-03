@@ -9,6 +9,7 @@
 \alias{TotalVarDist,DiscreteDistribution,numeric-method}
 \alias{TotalVarDist,numeric,AbscontDistribution-method}
 \alias{TotalVarDist,AbscontDistribution,numeric-method}
+\alias{TotalVarDist,AcDcLcDistribution,AcDcLcDistribution-method}
 
 \title{Generic function for the computation of the total variation distance of two distributions}
 \description{
@@ -32,6 +33,7 @@ TotalVarDist(e1, e2, ...)
 \S4method{TotalVarDist}{AbscontDistribution,numeric}(e1, e2, asis.smooth.discretize = "discretize", 
             n.discr = getdistrModOption("nDiscretize"), low.discr = getLow(e2),
             up.discr = getUp(e2), h.smooth = getdistrModOption("hSmooth"))
+\S4method{TotalVarDist}{AcDcLcDistribution,AcDcLcDistribution-method}(e1, e2)
 }
 \arguments{
   \item{e1}{ object of class \code{"Distribution"} or \code{"numeric"} }
@@ -106,6 +108,10 @@ TotalVarDist(e1, e2, ...)
     Total variation distance between (empirical) data and an abs. cont. 
     distribution.
   }
+  \item{e1 = "AcDcLcDistribution", e2 = "AcDcLcDistribution":}{
+    Total variation distance of mixed discrete and absolutely continuous
+    univariate distributions.
+  }
 }}
 \references{
     Huber, P.J. (1981) \emph{Robust Statistics}. New York: Wiley.
@@ -113,7 +119,7 @@ TotalVarDist(e1, e2, ...)
     Rieder, H. (1994) \emph{Robust Asymptotic Statistics}. New York: Springer.
 }
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
-        Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de}}
+        Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
 %\note{ ~~further notes~~ }
 \seealso{\code{\link{TotalVarDist-methods}}, \code{\link{ContaminationSize}}, 
     \code{\link{KolmogorovDist}}, \code{\link{HellingerDist}}, 

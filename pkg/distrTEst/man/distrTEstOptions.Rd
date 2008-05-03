@@ -40,7 +40,7 @@ getdistrTEstOption(x)
 }
 }
 %\references{}
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de}}
+\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
 %\note{}
 \seealso{\code{\link[base]{options}}, \code{\link[base]{getOption}},
 \code{\link[distr]{distroptions}}, \code{\link[distr]{getdistrOption}}}

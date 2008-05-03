@@ -92,6 +92,18 @@ The same goes for the space classes.
 All slots should be inspected / modified by means of corresponding 
 accessor- /replacement functions; e.g. \code{mean(X) <- 3}
 
+Again to enhance accuracy, from version 2.0 on, we also provide
+subclasses \code{UnivarMixingDistribution} to support mixing distributions,
+\code{UnivarLebDecDistribution}, to support Lebesgue decomposed distributions
+(with a discrete and an a.c. part) as well as \code{AffLinUnivarLebDecDistribution},
+for corresponding affine linear transformations.
+Class \code{UnivarLebDecDistribution} is closed under arithmetical operations 
+   +  "/", "*" for pairs of independent variables 
+   +  "+", "-" for pairs of independent variables 
+   +  affine linear transformations
+   +  truncation, huberization, min/max 
+which are all now available analytically.\cr
+
 (see Parameter classes).
 
 \preformatted{
@@ -104,6 +116,9 @@ r(function), d(OptionalFunction), p(OptionalFunction), q(OptionalFunction),
 
 "Distribution"
 |>"UnivariateDistribution"
+|>|>"UnivarMixingDistribution"
+|>|>|>"UnivarLebDecDistribution"
+|>|>|>|>"AffLinUnivarLebDecDistribution"
 |>|>"AbscontDistribution"
 |>|>|>"AffLinAbscontDistribution"
 |>|>|>"Beta"
@@ -131,11 +146,15 @@ r(function), d(OptionalFunction), p(OptionalFunction), q(OptionalFunction),
 |>|>|>|>"Pois"
 
 "AffLinDistribution" = union ( "AffLinAbscontDistribution", 
-                               "AffLinDiscreteDistribution" )
+                               "AffLinDiscreteDistribution",
+                               "AffLinUnivarLebDecDistribution" )
 
 "DistrList" 
 |>"UnivarDistrList"
 
+"AcDcLc" = union ( "AbscontDistribution", 
+                   "DiscreteDistribution",
+                   "UnivarLebDecDistribution" )
 
 Parameter classes
 
@@ -191,6 +210,16 @@ RtoDPQ                  Default procedure to fill slots d,p,q given r
                         for a.c. distributions
 RtoDPQ.d                Default procedure to fill slots d,p,q given r 
                         for discrete distributions
+RtoDPQ.LC               Default procedure to fill slots d,p,q given r 
+                        for Lebesgue decomposed distributions
+decomposePM             decomposes a distribution into positive and negative
+                        part and, if discrete, into part '0'
+simplifyD               tries to reduce/simplify mixing distribution using
+                        that certain weights are 0         
+flat.LCD                makes a single UnivarLebDecDistribution out of
+                        a list of UnivarLebDecDistribution with corresp. weights
+flat.mix                makes a single UnivarLebDecDistribution out of
+                        a list of a UnivarMixingDistribution
 distroptions            Functions to change the global variables of the
                         package 'distr'
 standardMethods         Utility to automatically generate accessor and 
@@ -217,12 +246,12 @@ Uwe Ligges, Torsten Hothorn, and Seth Falcon for their help
 in preparing this package.}
 
 \author{
-Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de},\cr 
+Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de},\cr 
 Thomas Stabla \email{statho3@web.de},\cr 
 Florian Camphausen \email{fcampi@gmx.de},\cr
 Matthias Kohl \email{Matthias.Kohl@stamats.de}\cr
 
-\emph{Maintainer:} Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de}
+\emph{Maintainer:} Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}
 }
 
 \references{
@@ -239,7 +268,7 @@ and may be called by
 %\url{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/distr.pdf}
 
 a homepage to this package is available under\cr
-\url{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/}
+\url{http://distr.r-forge.r-project.org/}
 
 }
 

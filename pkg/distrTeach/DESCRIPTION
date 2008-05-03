@@ -6,7 +6,7 @@ Description: Extensions of package distr and some additional functionality
 Depends: R(>= 2.2.0), methods, distr(>= 2.0), distrEx(>= 2.0), startupmsg
 Suggests: tcltk
 Author: Peter Ruckdeschel, Matthias Kohl, Anja Hueller, Eleonara Feist
-Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@uni-bayreuth.de>
+Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@web.de>
 LazyLoad: yes
 License: GPL (version 2 or later)
 URL: http://distr.r-forge.r-project.org/

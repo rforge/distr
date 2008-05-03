@@ -1,14 +1,14 @@
 ##setMethod("+", c("AbscontDistribution","DiscreteDistribution"),
 ##          function(e1,e2){               
 ##            rfun = function(n) r(e1)(n) + r(e2)(n)
-##            new("AbscontDistribution", r = rfun)
+##            AbscontDistribution( r = rfun)
 ##          })
 
 
 ##setMethod("+", c("DiscreteDistribution","AbscontDistribution"),
 ##          function(e1,e2){
 ##            rfun = function(n) r(e1)(n) + r(e2)(n)
-##            new("AbscontDistribution", r = rfun)
+##            AbscontDistribution(r = rfun)
 ##          })
 
 
@@ -129,7 +129,8 @@ function(e1,e2){
      qfun <- .makeQNew(x + 0.5*h, px.l, px.u,
                        .notwithLArg(e1)||.notwithLArg(e1), yL, yR)
 
-     object <- new("AbscontDistribution", r = rfun, d = dfun, p = pfun,
+     object <- AbscontDistribution( r = rfun, d = dfun, p = pfun,
                     q = qfun, .withSim = FALSE, .withArith = TRUE)
      object
      }) 
+

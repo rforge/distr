@@ -433,14 +433,31 @@ setMethod("plot", "DiscreteDistribution",
                   cex = cex.points, col = col.points), dots.for.points))
        
        owarn <- getOption("warn"); options(warn = -1)
-       do.call(plot, c(list(x = stepfun(x = supp, y = c(0,p(x)(supp))), 
+
+       ngrid <- length(supp)
+
+       supp1 <- if(ngrid>1) supp else c(-max(1,abs(supp))*.08,0)+supp
+       psupp1 <- c(0,p(x)(supp1))
+
+       do.call(plot, c(list(x = stepfun(x = supp1, y = psupp1), 
                      main = "", verticals = verticals, 
-                     do.points = do.points, 
+                     do.points = FALSE, 
                      ylim = ylim2, ylab = "p(q)", xlab = "q", 
-                     cex.points = cex.points, pch = pch.a, 
-                     col.points = col.points,
                      col.hor = col.hor, col.vert = col.vert, 
                      log = logpd), dots.without.pch))
+       if(do.points)
+          {if(ngrid>1){
+              do.call(points, c(list(x = supp, y = psupp1[1:ngrid], pch = pch.u, 
+                  cex = cex.points, col = col.points), dots.for.points))
+              do.call(points, c(list(x = supp, y = psupp1[2:(ngrid+1)], pch = pch.a, 
+                  cex = cex.points, col = col.points), dots.for.points))
+              }else{
+              do.call(points, c(list(x = supp, y = 0, pch = pch.u, 
+                  cex = cex.points, col = col.points), dots.for.points))           
+              do.call(points, c(list(x = supp, y = 1, pch = pch.a, 
+                  cex = cex.points, col = col.points), dots.for.points))           
+              }
+           }       
        options(warn = owarn)
 
        
@@ -452,15 +469,12 @@ setMethod("plot", "DiscreteDistribution",
                   y = c(0,p(x)(supp[-length(supp)])), pch = pch.u, 
                   cex = cex.points, col = col.points), dots.for.points))
        
-       ngrid <- length(supp)
        
-       if(ngrid>1){
-       supp0 <- supp[1:(ngrid-1)]
-
        owarn <- getOption("warn"); options(warn = -1)
-       do.call(plot, c(list(x = stepfun(p(x)(supp0), 
-                            supp, right = TRUE), 
-            main = "", xlim = ylim2, ylab = "q(p)", xlab = "p", 
+       do.call(plot, c(list(x = stepfun(c(0,p(x)(supp)), 
+                            c(NA,supp,NA), right = TRUE), 
+            main = "", xlim = ylim2, ylim = c(min(supp),max(supp)),
+            ylab = "q(p)", xlab = "p", 
             verticals = verticals, do.points = do.points, 
             cex.points = cex.points, pch = pch.a, 
             col.points = col.points,
@@ -472,11 +486,19 @@ setMethod("plot", "DiscreteDistribution",
        title(main = inner.q, line = lineT, cex.main = cex.inner,
              col.main = col.inner)
 
+       do.call(lines, c(list(x = c(0,p(x)(supp[1])), y = rep(supp[1],2),  
+                  col = col.vert), dots.without.pch))           
+
        if(do.points)
-          do.call(points, c(list(x = p(x)(supp[-length(supp)]),
+          {do.call(points, c(list(x = p(x)(supp[-length(supp)]),
                   y = supp[-1], pch = pch.u, cex = cex.points, 
                   col = col.points), dots.for.points))
-       }
+           do.call(points, c(list(x = 0, y = supp[1], pch = pch.u, 
+                  cex = cex.points, col = col.points), dots.for.points))}           
+        
+       if(verticals && ngrid>1)
+          do.call(lines, c(list(x = rep(p(x)(supp[1]),2), y = c(supp[1],supp[2]),  
+                  col = col.vert), dots.without.pch))           
        
        if (mainL)
            mtext(text = main, side = 3, cex = cex.main, adj = .5, 

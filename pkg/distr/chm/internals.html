@@ -8,6 +8,16 @@
 <param name="keyword" value="R:   internals_for_distr">
 <param name="keyword" value="R:   .is.vector.lattice">
 <param name="keyword" value="R:   .is.consistent">
+<param name="keyword" value="R:   .isInteger">
+<param name="keyword" value="R:   .isNatural">
+<param name="keyword" value="R:   .isNatural0">
+<param name="keyword" value="R:   .mergegaps">
+<param name="keyword" value="R:   .mergegaps2">
+<param name="keyword" value="R:   .pmixfun">
+<param name="keyword" value="R:   .dmixfun">
+<param name="keyword" value="R:   .qmixfun">
+<param name="keyword" value="R:   .rmixfun">
+<param name="keyword" value="R:   .loupmixfun">
 <param name="keyword" value="R:   .make.lattice.es.vector">
 <param name="keyword" value="R:   .presubs">
 <param name="keyword" value="R:   .inArgs">
@@ -33,6 +43,14 @@
 <param name="keyword" value="R:   .plusm">
 <param name="keyword" value="R:   .getObjName">
 <param name="keyword" value="R:   .discretizeP">
+<param name="keyword" value="R:   .expm.d">
+<param name="keyword" value="R:   .expm.c">
+<param name="keyword" value="R:   .logm.d">
+<param name="keyword" value="R:   .logm.c">
+<param name="keyword" value="R:   .P2D">
+<param name="keyword" value="R:   .P2Q">
+<param name="keyword" value="R:   .D2P">
+<param name="keyword" value="R:   .Q2P">
 <param name="keyword" value=" Internal functions of package distr">
 </object>
 
@@ -60,10 +78,14 @@ These functions are used internally by package distr.
 .isIn(p0, pmat, tol = min( getdistrOption("TruncQuantile")/2,
                                           .Machine$double.eps^.7
                                           ))
+.isInteger(x, tol = .Machine$double.eps)
+.isNatural(x, tol = .Machine$double.eps)
+.isNatural0(x, tol = .Machine$double.eps)
 .setEqual(x, y, tol = 1e-7)
 .presubs(inp, frompat, topat)
-.makeD(object, argList,  stand = NULL)
-.makeP(object, argList,  sign = TRUE, correct = NULL)
+.makeD(object, argList,  stand = NULL, fac = NULL)
+.makeP(object, argList,  sign = TRUE, correct = NULL, fac =
+                 NULL, fac2 = NULL)
 .makeQ(object, lastCall, sign = TRUE, Cont = TRUE)
 .plusm(e1, e2, Dclass = "DiscreteDistribution")
 .multm(e1, e2, Dclass = "DiscreteDistribution")
@@ -81,6 +103,22 @@ These functions are used internally by package distr.
 .makePNew(x, dx, h = NULL, notwithLLarg = FALSE,
                       Cont = TRUE, myPf = NULL, pxl = NULL, pxu = NULL)
 .makeQNew(x, px.l, px.u, notwithLLarg = FALSE, yL , yR, Cont = TRUE)
+.mergegaps(gaps, support)
+.mergegaps2(gaps1, gaps2)
+.pmixfun(mixDistr, mixCoeff)
+.dmixfun(mixDistr, mixCoeff, withStand = FALSE, supp = NULL)
+.rmixfun(mixDistr, mixCoeff)
+.qmixfun(mixDistr, mixCoeff, Cont = TRUE, pnew)
+.loupmixfun(mixDistr)
+.expm.d(e1)
+.expm.c(e1)
+.logm.d(e1)
+.logm.c(e1)
+.P2D (p, xx, ql, qu, ngrid = getdistrOption("DefaultNrGridPoints"))
+.P2Q (p, xx, ql,qu, ngrid = getdistrOption("DefaultNrGridPoints"), 
+                qL = -Inf, qU = Inf)
+.D2P (d, xx, ql, qu,  ngrid = getdistrOption("DefaultNrGridPoints"))
+.Q2P (q, ngrid = getdistrOption("DefaultNrGridPoints"))
 </pre>
 
 
@@ -145,6 +183,12 @@ the moment</td></tr>
 <td>
 unevaluated R-code to correct for right-continuity 
 (for multiplication with negative numerics at the moment)</td></tr>
+<tr valign="top"><td><code>fac</code></td>
+<td>
+factor to be multiplied with the return value</td></tr>
+<tr valign="top"><td><code>fac2</code></td>
+<td>
+factor to be added to the return value</td></tr>
 <tr valign="top"><td><code>lastCall</code></td>
 <td>
 unevaluated R-Code &mdash;gives how the result of a call to 
@@ -212,6 +256,55 @@ parenthesized subexpressions of <code>pattern</code>.  For
 also contain <code>"\U"</code> or <code>"\L"</code> to convert the rest of the
 replacement to upper or lower case; (as argument <code>replacement</code> 
 in <code><a onclick="findlink('base', 'grep.html')" style="text-decoration: underline; color: blue; cursor: hand">gsub</a></code>&mdash; but possibly of length &gt;1).</td></tr>
+<tr valign="top"><td><code>gaps,gaps1,gaps2</code></td>
+<td>
+matrices <code>m</code> with two columns, 
+such that <code>t(m)</code>, interpreted as vector, is ordered</td></tr>
+<tr valign="top"><td><code>support</code></td>
+<td>
+support vector of a univariate discrete distribution</td></tr>
+<tr valign="top"><td><code>mixDistr</code></td>
+<td>
+an object of class <code>UnivarDistrList</code></td></tr>
+<tr valign="top"><td><code>mixCoeff</code></td>
+<td>
+an object of class <code>numeric</code>; a probability vector</td></tr>
+<tr valign="top"><td><code>pnew</code></td>
+<td>
+a function <code>function(q, lower.tail = TRUE, log.p = FALSE</code>
+realizing slot <code>p</code> in a distribution object.</td></tr>
+<tr valign="top"><td><code>withStand</code></td>
+<td>
+logical; if <code>TRUE</code> a standardization is made such
+that the sum of the values of the result evaluated at argument <code>supp</code> is 1</td></tr>
+<tr valign="top"><td><code>supp</code></td>
+<td>
+NULL or <code>numeric</code>; if <code>withStand</code> is <code>TRUE</code> used
+to standardize such that the result is a probability density.</td></tr>
+<tr valign="top"><td><code>p</code></td>
+<td>
+slot <code>p</code> of an object of class <code>"AbscontDistribution"</code></td></tr>
+<tr valign="top"><td><code>d</code></td>
+<td>
+slot <code>d</code> of an object of class <code>"AbscontDistribution"</code></td></tr>
+<tr valign="top"><td><code>q</code></td>
+<td>
+slot <code>q</code> of an object of class <code>"AbscontDistribution"</code></td></tr>
+<tr valign="top"><td><code>xx</code></td>
+<td>
+a given grid of x-values for functions <code>p</code>, <code>d</code> to be
+evaluated at</td></tr>
+<tr valign="top"><td><code>ql,qu</code></td>
+<td>
+lower and upper <code>getdistrOption("TruncQuantile")</code>-quantile of
+the distribution; also, if argument <code>xx</code> is missing, left and right endpoint
+of a regular grid of <code>ngrid</code> gridpoints to be used in place of <code>xx</code>.</td></tr>
+<tr valign="top"><td><code>qL,qU</code></td>
+<td>
+argmin / argmax of p()-method</td></tr>
+<tr valign="top"><td><code>ngrid</code></td>
+<td>
+number of gridpoints</td></tr>
 </table>
 
 <h3>Details</h3>
@@ -293,7 +386,47 @@ In case of a continuous distribution it produces a cdf with
 In case of a discrete distribution it produces a step function 
 (using <code>.makeQd</code>). Special care is taken for left continuity...
 In case of a continuous distribution it produces a quantile function with 
-<code>approxfun</code>.
+<code>approxfun</code>. 
+</p>
+<p>
+<code>.isInteger</code>, <code>.isNatural</code>, and <code>.isNatural0</code> test for each 
+coordinate of argument <code>x</code> whether it
+is integer [natural / natural or 0] or not.
+</p>
+<p>
+<code>.mergegaps</code> modifies the gaps matrix of an a.c. distribution according to
+the support slot of a discrete distribution; if necessary, a gap interval
+[a,b] is split into [a,c],[c,b] if <code>a&lt;c&lt;b</code>.
+<code>.mergegaps2</code> merges two gap matrices of two a.c. distributions <code>X1</code> 
+and <code>X2</code> such that in the intervals of the resulting gap matrix, 
+neither <code>X1</code> nor <code>X2</code> carries mass.
+</p>
+<p>
+<code>.pmixfun</code>, <code>.dmixfun</code>, <code>.rmixfun</code>, and <code>.qmixfun</code>
+fill the slots <code>p</code>, <code>d</code>, <code>r</code>, and <code>q</code>
+of a corresponding mixing distribution according to the arguments
+in <code>mixDistr</code>, <code>mixCoeff</code>.
+</p>
+<p>
+<code>.loupmixfun</code> finds commun lower and upper bounds for the support of
+the mixing distribution.
+<code>.expm.d,.expm.c</code> for discrete, resp. a.c. argument <code>e1</code> fill the 
+slots <code>p</code>, <code>d</code>, <code>r</code>, and <code>q</code>
+of the transformation <code>exp(e1)</code> exactly.
+<code>.logm.d,.logm.c</code> for discrete, resp. a.c. argument <code>e1</code> fill the 
+slots <code>p</code>, <code>d</code>, <code>r</code>, and <code>q</code>
+of the transformation <code>log(e1)</code> exactly.
+</p>
+<p>
+For objects of class <code><a href="AbscontDistribution.html">AbscontDistribution</a></code>,
+<code>.P2D</code> and <code>.P2Q</code> reconstruct function slots <code>d</code> resp. 
+<code>q</code> from function slot <code>p</code>
+by means of function <code>D1ss</code> from package <span class="pkg">sfsmisc</span>;
+and of function <code>.makeQNew</code>,  respectively. The other way round, 
+<code>.D2P</code> and <code>.Q2P</code> reconstruct function slot <code>p</code> from 
+from function slots  <code>d</code> resp. <code>q</code> 
+by means of function <code>.makePNew</code> and explicite numeric inversion,  
+respectively.
 </p>
 
 
@@ -346,19 +479,79 @@ a function with args <code>q, lower.tail = TRUE,
 <td>
 a function with args <code>p, lower.tail = TRUE, 
        log.p = FALSE</code></td></tr>
+<tr valign="top"><td><code>.isInteger,.isNatural,.isNatural0</code></td>
+<td>
+<code>logical</code> (same length as argument <code>x</code>)</td></tr>
+<tr valign="top"><td><code>.mergegaps,.mergegaps2</code></td>
+<td>
+a <code>gaps</code>-matrix, i.e.; a matrix <code>m</code> with two columns, 
+such that <code>t(m)</code>, interpreted as vector, is ordered</td></tr>
+<tr valign="top"><td><code>.pmixfun</code></td>
+<td>
+slot <code>p</code> for a mixing distribution, i.e. a function 
+<code>function(q, lower.tail = TRUE, log.p = FALSE)</code>, which
+is  the cdf of the distribution</td></tr>
+<tr valign="top"><td><code>.dmixfun</code></td>
+<td>
+slot <code>d</code> for a mixing distribution, i.e. a function 
+<code>function(x, log = FALSE)</code>, which
+is  the density of the distribution</td></tr>
+<tr valign="top"><td><code>.qmixfun</code></td>
+<td>
+slot <code>q</code> for a mixing distribution, i.e. a function 
+<code>function(p, lower.tail = TRUE, log.p = FALSE)</code>, which
+is  the quantile function of the distribution</td></tr>
+<tr valign="top"><td><code>.rmixfun</code></td>
+<td>
+slot <code>r</code> for a mixing distribution, i.e. a function 
+<code>function(n)</code> generating r.v.'s according to the distribution</td></tr>
+<tr valign="top"><td><code>.loupmixfun</code></td>
+<td>
+a list of four components: <code>qL</code>, the minimal value of 
+<code>q(x)(0)</code>, <code>ql</code>, the minimal value of 
+<code>q(x)(getdistrOption("TruncQuantile"))</code>, <code>qU</code>, the maximal value of 
+<code>q(x)(1)</code>, <code>qu</code>, the maximal value of 
+<code>q(x)(getdistrOption("TruncQuantile"), lower.tail = FALSE)</code>,
+<code>x</code> running through the members of <code>mixDistr</code> in each case.</td></tr>
+<tr valign="top"><td><code>.expm.d,.logm.d</code></td>
+<td>
+an object of class <code>"DiscreteDistribution"</code>.</td></tr>
+<tr valign="top"><td><code>.expm.c,.logm.c</code></td>
+<td>
+an object of class <code>"AbscontDistribution"</code>.</td></tr>
 </table>
+<p>
+ 
+<code>.P2D</code>{a density <code>d</code> as function <code>function(x,  log = FALSE)</code>}
+<code>.P2Q</code>{a quantile function <code>q</code> as function <code>function(p, 
+            lower.tail = TRUE, log.p = FALSE)</code>} 
+<code>.D2P, .Q2P</code>{a cdf <code>p</code> as function <code>function(q, 
+            lower.tail = TRUE, log.p = FALSE)</code>}</p>
+
+<h3>Internal classes</h3>
+
+<p>
+For the ease of method dispatch, there is an internal
+S4 class <code>Integer</code>, which is a subclass of <code>numeric</code> and has a 
+straightforward validity method. There is a coerce method to coerce objects
+of class <code>numeric</code> to <code>Integer</code>, to be used as  
+<code>x &lt;- c(1,34,2,-3); as(x,"Integer")</code>.
+</p>
+
 
 <h3>Author(s)</h3>
 
 <p>
-Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@uni-bayreuth.de">Peter.Ruckdeschel@uni-bayreuth.de</a>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@web.de">Peter.Ruckdeschel@web.de</a>
 </p>
 
 
 <h3>See Also</h3>
 
 <p>
-<code><a href="LatticeDistribution-class.html">LatticeDistribution</a></code>,
+<code><a href="AbscontDistribution.html">AbscontDistribution</a></code>,
+<code><a href="DiscreteDistribution.html">DiscreteDistribution</a></code>,
+<code><a href="LatticeDistribution.html">LatticeDistribution</a></code>,
 <code><a href="RtoDPQ.html">RtoDPQ</a></code>,
 <code><a href="RtoDPQ.d.html">RtoDPQ.d</a></code>,
 <code><a href="ConvPow.html">convpow</a></code>,

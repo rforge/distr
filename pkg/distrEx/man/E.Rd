@@ -10,14 +10,19 @@
 \alias{E,AffLinLatticeDistribution,missing,missing-method}
 \alias{E,MultivariateDistribution,missing,missing-method}
 \alias{E,DiscreteMVDistribution,missing,missing-method}
+\alias{E,UnivarLebDecDistribution,missing,missing-method}
+\alias{E,AffLinUnivarLebDecDistribution,missing,missing-method}
 \alias{E,UnivariateDistribution,function,missing-method}
 \alias{E,AbscontDistribution,function,missing-method}
 \alias{E,DiscreteDistribution,function,missing-method}
 \alias{E,MultivariateDistribution,function,missing-method}
 \alias{E,DiscreteMVDistribution,function,missing-method}
+\alias{E,UnivarLebDecDistribution,function,missing-method}
 \alias{E,UnivariateCondDistribution,missing,numeric-method}
 \alias{E,AbscontCondDistribution,missing,numeric-method}
 \alias{E,DiscreteCondDistribution,missing,numeric-method}
+\alias{E,UnivarLebDecDistribution,missing,ANY-method}
+\alias{E,UnivarLebDecDistribution,function,ANY-method}
 \alias{E,UnivariateCondDistribution,function,numeric-method}
 \alias{E,AbscontCondDistribution,function,numeric-method}
 \alias{E,DiscreteCondDistribution,function,numeric-method}
@@ -55,6 +60,8 @@ E(object, fun, cond, ...)
 \S4method{E}{DiscreteDistribution,function,missing}(object, fun, cond, useApply = TRUE, ...)
 
 \S4method{E}{AffLinDistribution,missing,missing}(object)
+
+\S4method{E}{AffLinUnivarLebDecDistribution,missing,missing}(object)
 
 \S4method{E}{MultivariateDistribution,function,missing}(object, fun, cond, useApply = TRUE, ...)
 
@@ -129,9 +136,27 @@ E(object, fun, cond, ...)
     expectation of discrete multivariate distributions. The computation is based
     on \code{support} and \code{sum}.}
 
+  \item{object = "UnivariateDistribution", fun = "missing", cond = "missing":}{ 
+    expectation of univariate Lebesgue decomposed distributions
+    by separate calculations for discrete and absolutely continuous part. }
+
+  \item{object = "AffLinDistribution", fun = "missing", cond = "missing":}{
+        expectation of an affine linear transformation \eqn{aX+b} as
+        \eqn{a E[X]+b} for \code{X} either \code{"DiscreteDistribution"}
+        or \code{"AbscontDistribution"}.
+        }
+  \item{object = "AffLinUnivarLebDecDistribution", fun = "missing", cond = "missing":}{
+        expectation of an affine linear transformation \eqn{aX+b} as
+        \eqn{a E[X]+b} for \code{X} either \code{"UnivarLebDecDistribution"}.
+        }
+
   \item{object = "UnivariateDistribution", fun = "function", cond = "missing":}{ 
     expectation of \code{fun} under univariate distributions using 
     crude Monte-Carlo integration. }
+
+  \item{object = "UnivariateDistribution", fun = "function", cond = "missing":}{ 
+    expectation of \code{fun} under univariate Lebesgue decomposed distributions
+    by separate calculations for discrete and absolutely continuous part. }
 
   \item{object = "AbscontDistribution", fun = "function", cond = "missing":}{ 
     expectation of \code{fun} under absolutely continuous 
@@ -250,6 +275,11 @@ E(D1, function(x){x^2}, cond = 1)
 E(Norm(mean=1), fun = function(x){x^2})
 E(D1, function(x, cond){cond*x^2}, cond = 2, withCond = TRUE, useApply = FALSE)
 E(Norm(mean=2), function(x){2*x^2})
+
+# some Lebesgue decomposed distribution 
+mymix <- UnivarLebDecDistribution(acPart = Norm(), discretePart = Binom(4,.4),
+         acWeight = 0.4)
+E(mymix)
 }
 \concept{expectation}
 \concept{conditional expectation}

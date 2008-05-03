@@ -87,7 +87,7 @@ above. Similarly for \code{cex}, \code{lwd} and \code{lty}.
 }
 
 
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de}}
+\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
 \examples{
 illustrateLLN(Distr = Unif())
 illustrateLLN(Distr = Pois(lambda = 2))

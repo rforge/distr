@@ -23,6 +23,12 @@ ladeall(DIR="distr", develDir = "C:/rtest", pattern = "")
 ##       develDir: development folder (absolute path) 
 ##       pattern:  regexpr. for files to be sourced in
 
+### setNewEmail.R
+
+# automatically changes an e-mail adress in all (Text)-
+# package files: (with extension .R, .Rd, .Html, .htm, .TeX, .Rnw)
+# and in corresponding HTML-folders as well as in the DESCRIPTION files
+
 ### setNewRVersion.R
 
 # automatically updates date and version information in a series

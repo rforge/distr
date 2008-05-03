@@ -52,7 +52,7 @@ Class \code{"RiskType"}, directly.
   Bayreuth: Dissertation.
 }
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de},
-Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de}}
+Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
 %\note{}
 \seealso{\code{\link{asRisk-class}}}
 %\examples{}

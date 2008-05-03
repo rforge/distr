@@ -16,7 +16,7 @@ distrSimMASK(library = NULL)
 \value{no value is returned
 }
 
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de}}
+\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
 \examples{
 distrSimMASK()
 }

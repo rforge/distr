@@ -7,6 +7,7 @@
 <table width="100%"><tr><td>convpow-methods(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   convpow">
 <param name="keyword" value="R:   convpow-methods">
+<param name="keyword" value="R:   convpow,AcDcLcDistribution-method">
 <param name="keyword" value="R:   convpow,AbscontDistribution-method">
 <param name="keyword" value="R:   convpow,LatticeDistribution-method">
 <param name="keyword" value="R:   convpow,Norm-method">
@@ -35,6 +36,8 @@ i.i.d r.v's by means of DFT
 
 <pre>
   convpow(D1,...)
+  ## S4 method for signature 'AcDcLcDistribution':
+  convpow(D1,N)
   ## S4 method for signature 'AbscontDistribution':
   convpow(D1,N)
   ## S4 method for signature 'LatticeDistribution':
@@ -48,13 +51,13 @@ i.i.d r.v's by means of DFT
 <tr valign="top"><td><code>D1</code></td>
 <td>
 an object of (a sub)class (of) <code>"AbscontDistribution"</code> or  
-<code>"LatticeDistribution"</code></td></tr>
+<code>"LatticeDistribution"</code> or of <code>"UnivarLebDecDistribution"</code></td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 not yet used; meanwhile takes up N </td></tr>
 <tr valign="top"><td><code>N</code></td>
 <td>
-an integer </td></tr>
+an integer or 0 (for 0 returns Dirac(0), for 1 D1)</td></tr>
 </table>
 
 <h3>Details</h3>
@@ -62,7 +65,13 @@ an integer </td></tr>
 <p>
 in the methods implemented a second argument <code>N</code> is obligatory;
 the general methods use a general purpose convolution algorithm for 
-distributions by means of D/FFT.
+distributions by means of D/FFT. In case of an argument of class 
+<code>"UnivarLebDecDistribution"</code>, the result will in generally be
+again of class <code>"UnivarLebDecDistribution"</code>. However, if <code>acWeight(D1)</code>
+is positive, <code>discreteWeight(convpow(D1,N))</code> will decay exponentially
+in <code>N</code>, hence from some (small) <i>N_0</i> on, the result will be of
+class <code>"AbscontDistribution"</code>. This is used algorithmically, too, as 
+then only the a.c. part needs to be convolved.
 </p>
 
 
@@ -91,7 +100,7 @@ convolution formulae:
 <h3>Author(s)</h3>
 
 <p>
-Peter Ruckdeschel <a href="mailto:peter.ruckdeschel@uni-bayreuth.de">peter.ruckdeschel@uni-bayreuth.de</a><br>
+Peter Ruckdeschel <a href="mailto:peter.ruckdeschel@web.de">peter.ruckdeschel@web.de</a><br>
 Matthias Kohl <a href="mailto:matthias.kohl@stamats.de">matthias.kohl@stamats.de</a>
 Thomas Stabla <a href="mailto:statho3@web.de">statho3@web.de</a>
 </p>

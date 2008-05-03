@@ -498,7 +498,7 @@ kurtosis(x, ...)
 
 }}
 %\references{ ~put references to the literature/web site here ~ }
-\author{Peter Ruckdeschel \email{peter.ruckdeschel@uni-bayreuth.de}}
+\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
 %\note{ ~~further notes~~ }
 
 \section{Caveat}{

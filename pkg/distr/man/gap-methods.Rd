@@ -7,6 +7,7 @@
 \alias{setgaps}
 \alias{gaps<-}
 \alias{gaps,AbscontDistribution-method}
+\alias{gaps,UnivarLebDecDistribution-method}
 \alias{gaps<-,AbscontDistribution-method}
 \alias{setgaps,AbscontDistribution-method}
 \title{ Methods for Functions gaps and setgaps in Package `distr' }

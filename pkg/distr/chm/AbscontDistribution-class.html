@@ -25,8 +25,7 @@ The <code>AbscontDistribution</code>-class is the mother-class of the classes <c
 <code>Weibull</code>. Further absolutely continuous distributions can be defined either by declaration of
 own random number generator, density, cumulative distribution and quantile functions, or as result of a 
 convolution of two absolutely continuous distributions or by application of a mathematical operator to an absolutely
-continuous distribution. An additional way is, to specify only the random number generator. The function <code>RtoDPQ</code> then 
-approximates the three remaining slots d, p and q by random sampling.
+continuous distribution.
 </p>
 
 
@@ -34,7 +33,8 @@ approximates the three remaining slots d, p and q by random sampling.
 
 <p>
 Objects can be created by calls of the form <code>new("AbscontDistribution", r, d, p, q)</code>.
-The result of this call is an absolutely continuous distribution.
+More comfortably, you may use the generating function <code><a href="AbscontDistribution.html">AbscontDistribution</a></code>.
+The result of these calls is an absolutely continuous distribution.
 </p>
 
 
@@ -125,9 +125,25 @@ the class of the return value of methods
 <dt>-</dt><dd><code>signature(e1 = "numeric", e2 = "AffLinAbscontDistribution")</code></dd>
 </ul>
 <p>
-There also is a class union of <code>"AffLinAbscontDistribution"</code> and
-<code>"AffLinDiscreteDistribution"</code> called <code>"AffLinDistribution"</code>
+There also is a class union of <code>"AffLinAbscontDistribution"</code>,
+<code>"AffLinDiscreteDistribution"</code>, <code>"AffLinUnivarLebDecDistribution"</code>
+and called <code>"AffLinDistribution"</code>
 which is used for functionals.
+</p>
+
+
+<h3>Internal virtual superclass "AcDcLcDistribution"</h3>
+
+<p>
+As many operations should be valid no matter whether the operands
+are of class <code>"AbscontDistribution"</code>,
+<code>"DiscreteDistribution"</code>, or <code>"UnivarLebDecDistribution"</code>,
+there is a class union of these classes called <code>"AcDcLcDistribution"</code>;
+in partiucalar methods for <code>"*"</code>, <code>"/"</code>, 
+<code>"^"</code> (see <a href="operators-methods.html">operators-methods</a>) and methods
+<code><a href="MinMaximum-methods.html">Minimum</a></code>, <code>Maximum</code>, <code><a href="Truncate-methods.html">Truncate</a></code>, and
+<code><a href="Huberize-methods.html">Huberize</a></code>, and <code><a href="ConvPow.html">convpow</a></code> are defined for this 
+class union.
 </p>
 
 
@@ -136,7 +152,7 @@ which is used for functionals.
 <p>
 Thomas Stabla <a href="mailto:statho3@web.de">statho3@web.de</a>,<br> 
 Florian Camphausen <a href="mailto:fcampi@gmx.de">fcampi@gmx.de</a>,<br>
-Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@uni-bayreuth.de">Peter.Ruckdeschel@uni-bayreuth.de</a>,<br> 
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@web.de">Peter.Ruckdeschel@web.de</a>,<br> 
 Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
 </p>
 
@@ -144,6 +160,7 @@ Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de
 <h3>See Also</h3>
 
 <p>
+<code><a href="AbscontDistribution.html">AbscontDistribution</a></code>
 <code><a href="Parameter-class.html">Parameter-class</a></code>
 <code><a href="UnivariateDistribution-class.html">UnivariateDistribution-class</a></code>
 <code><a href="Beta-class.html">Beta-class</a></code>

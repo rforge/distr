@@ -22,7 +22,7 @@ for \eqn{J= {\rm E} (\Lambda',1)' (\Lambda',1) w}{J= E (Lambda',1)' (Lambda',1) 
 \eqn{w={\rm min}(1, b/|(\Lambda',1)|}{w=min(1, b/|(Lambda',1)|)}], it suffices to check that
 \eqn{{\rm ker }I}{ker I} is a subset of \eqn{{\rm ker }D_\theta}{ker D_theta}. This is done by
 a call to \code{isKerAinKerB}.}
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de}}
+\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
 \seealso{
 \code{\link{isKerAinKerB}}}
 \references{

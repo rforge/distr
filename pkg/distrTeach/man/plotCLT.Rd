@@ -25,7 +25,7 @@
 \code{\link{illustrateCLT}}
 }
 
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de}\cr
+\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}\cr
 Matthias Kohl \email{Matthias.Kohl@stamats.de} }
 \examples{
 illustrateCLT(Distr = Unif(), len = 20)

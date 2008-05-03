@@ -1,0 +1,110 @@
+<html><head><title>Methods for function simplifyD in Package &lsquo;distr&rsquo;</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>simplifyD-methods(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   simplifyD-methods">
+<param name="keyword" value="R:   simplifyD">
+<param name="keyword" value="R:   simplifyD,AbscontDistribution-method">
+<param name="keyword" value="R:   simplifyD,DiscreteDistribution-method">
+<param name="keyword" value="R:   simplifyD,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   simplifyD,UnivarMixingDistribution-method">
+<param name="keyword" value=" Methods for function simplifyD in Package &lsquo;distr&rsquo;">
+</object>
+
+
+<h2>Methods for function simplifyD in Package &lsquo;distr&rsquo;</h2>
+
+
+<h3>Description</h3>
+
+<p>
+simplifyD-methods
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+simplifyD(object)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+distribution object</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+generating functions <code><a href="UnivarMixingDistribution.html">UnivarMixingDistribution</a></code>
+<code><a href="MinMaximum-methods.html">Minimum</a></code>, <code>Maximum</code>, <code><a href="Truncate-methods.html">Truncate</a></code>, and
+<code><a href="Huberize-methods.html">Huberize</a></code> have an argument  <code>withSimplify</code> which
+decides whether the respective result is filtered by/piped through a 
+call to <code>simplifyD</code>.
+By default this argument is set to the distr-option 
+<code>getdistrOption("simplifyD"</code> (for the inspection and modification of such
+global options see <code><a href="distroptions.html">distroptions</a></code>). Depending on whether or not this 
+option is <code>TRUE</code>, also arithmetic operations <code>"+"</code>, <code>"*"</code>, <code>"/"</code>,
+<code>"^"</code> and group <code>Math</code> give results filtered by/piped through a call 
+to <code>simplifyD</code>.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+the corresponding, possibly simplified distribution</p>
+
+<h3>Methods</h3>
+
+<dl>
+<dt>simplifyD</dt><dd><code>signature(object = "AbscontDistribution")</code>: 
+returns <code>object</code> unchanged</dd>
+<dt>simplifyD</dt><dd><code>signature(object = "DiscreteDistribution")</code>: 
+returns <code>object</code> unchanged</dd>
+<dt>simplifyD</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code>: 
+checks whether <code>acWeight</code> or <code>discreteWeight</code> is approximately
+(i.e.; up to <code>getdistrOption("TruncQuantile")</code>) zero and if so,
+accordingly returns <code>discretePart(object)</code> or <code>acPart(object)</code>,
+respectively.</dd>
+<dt>simplifyD</dt><dd><code>signature(object = "UnivarMixingDistribution")</code>: 
+returns the flattened version of <code>object</code> (using <code><a href="flat.mix.html">flat.mix</a></code>).
+before doing so, it checks whether any component carries weight  approximately
+(i.e.; up to <code>getdistrOption("TruncQuantile")</code>) one (in slot <code>mixCoeff</code>) 
+and if so, returns this component; else, if not all weights are below
+<code>getdistrOption("TruncQuantile")</code>), it filters out those components
+with weight less than <code>getdistrOption("TruncQuantile")</code>).
+</dd></dl>
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="Huberize-methods.html">Huberize</a></code>, <code><a href="MinMaximum-methods.html">Minimum</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+Mix1 &lt;- UnivarMixingDistribution(Norm(),Binom(2,.3),
+  UnivarLebDecDistribution(acPart = Chisq(df = 2),discretePart =Negbinom(3,.09),
+                           acWeight = 0.3),
+  Norm()-Chisq(df=3), mixCoeff=c(0,0,0.2,0.8),simplifyD = FALSE)
+Mix2 &lt;- UnivarMixingDistribution(Norm(),Mix1, DExp(2),
+        mixCoeff = c(0,0.2,0.8),simplifyD = FALSE)
+Mix2        
+simplifyD(Mix2)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>distr</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

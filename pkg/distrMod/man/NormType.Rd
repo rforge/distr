@@ -18,7 +18,7 @@
   Kohl, M. (2005) \emph{Numerical Contributions to the Asymptotic Theory of Robustness}. 
   Bayreuth: Dissertation.
 }
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de}}
+\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
 %\note{}
 \seealso{\code{\link{NormType-class}}}
 \examples{

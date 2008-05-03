@@ -37,7 +37,7 @@ MCEstimator(x, ParamFamily, criterion, crit.name, interval, par, ...)
 }
 %\references{  }
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
-        Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de}}
+        Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
 %\note{}
 \seealso{\code{\link{ParamFamily-class}}, \code{\link{ParamFamily}} }
 \examples{

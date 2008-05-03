@@ -7,6 +7,7 @@
 \alias{KolmogorovDist,DiscreteDistribution,AbscontDistribution-method}
 \alias{KolmogorovDist,numeric,UnivariateDistribution-method}
 \alias{KolmogorovDist,UnivariateDistribution,numeric-method}
+\alias{KolmogorovDist,AcDcLcDistribution,AcDcLcDistribution-method}
 
 \title{Generic function for the computation of the Kolmogorov distance of two distributions}
 \description{
@@ -27,6 +28,7 @@ KolmogorovDist(e1, e2, ...)
 \S4method{KolmogorovDist}{DiscreteDistribution,DiscreteDistribution}(e1,e2)
 \S4method{KolmogorovDist}{numeric,UnivariateDistribution}(e1, e2)
 \S4method{KolmogorovDist}{UnivariateDistribution,numeric}(e1, e2)
+\S4method{KolmogorovDist}{AcDcLcDistribution,AcDcLcDistribution-method}(e1, e2)
 }
 \arguments{
   \item{e1}{ object of class \code{"Distribution"} or class \code{"numeric"} }
@@ -67,6 +69,13 @@ KolmogorovDist(e1, e2, ...)
     Kolmogorov distance between (empirical) data and a univariate 
     distribution. The computation is based on \code{ks.test}.
   }
+  \item{e1 = "AcDcLcDistribution", e2 = "AcDcLcDistribution":}{
+    Kolmogorov distance of mixed discrete and absolutely continuous
+    univariate distributions. It is computed using a union of 
+     the discrete part, a (pseudo-)random and
+     a deterministic grid in combination
+    with the support of \code{e1}.
+  }
 }}
 \references{
     Huber, P.J. (1981) \emph{Robust Statistics}. New York: Wiley.
@@ -74,7 +83,7 @@ KolmogorovDist(e1, e2, ...)
     Rieder, H. (1994) \emph{Robust Asymptotic Statistics}. New York: Springer.
 }
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
-        Peter Ruckdeschel \email{Peter.Ruckdeschel@uni-bayreuth.de}}
+        Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
 %\note{ ~~further notes~~ }
 \seealso{\code{\link{ContaminationSize}}, \code{\link{TotalVarDist}}, 
     \code{\link{HellingerDist}}, \code{\link[distr]{Distribution-class}}}

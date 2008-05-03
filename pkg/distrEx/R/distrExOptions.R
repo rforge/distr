@@ -39,3 +39,4 @@ distrExOptions <- function(...) {
 }
 
 getdistrExOption <- function(x) distrExOptions(x)[[1]]
+distrExoptions <- distrExOptions 

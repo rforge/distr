@@ -65,7 +65,8 @@ setMethod("initialize", "GeomParameter",
 setMethod("initialize", "AbscontDistribution",
           function(.Object, r = NULL, d = NULL, p = NULL, q = NULL, 
                    gaps = NULL, param = NULL, img = new("Reals"),
-                   .withSim = FALSE, .withArith = FALSE) {
+                   .withSim = FALSE, .withArith = FALSE,
+                   low1 = NULL, up1 = NULL, low = -Inf, up =Inf) {
 
             ## don't use this if the call is new("AbscontDistribution")
             LL <- length(sys.calls())
@@ -96,9 +97,21 @@ setMethod("initialize", "AbscontDistribution",
               pfun <- dpq$pfun}
             
             if(is.null(q)) {
-              .withSim <- TRUE
-              if(dpq.approx == 0) {dpq <- RtoDPQ(r)}
-              qfun <- dpq$qfun}
+               ## quantile function
+               rN <- NULL
+               if(is.null(up1)) up1 <- max(rN <- r(10^getdistrOption("RtoDPQ.e")))
+               if(is.null(low1)) {
+                 low1 <- if(is.null(rN)) min(r(10^getdistrOption("RtoDPQ.e")))
+                         else min(rN)}
+                         
+               h <- (up1-low1)/getdistrOption("DefaultNrFFTGridPointsExponent")
+               x <-   seq(from = low1, to = up1, by = h)
+
+               px.l <- pfun(x + 0.5*h)
+               px.u <- pfun(x + 0.5*h, lower.tail = FALSE)
+            
+               qfun <- .makeQNew(x + 0.5*h, px.l, px.u, FALSE, low, up)
+             }
             
             .Object@img <- img
             .Object@param <- param
@@ -683,10 +696,8 @@ setMethod("initialize", "Fd",
                   TQ <- getdistrOption("TruncQuantile")/2
                   xz <- qf(TQ, df1 = df1, df2 = df2, ncp = ncp, 
                            lower.tail = FALSE)
-                  xl <- c(0,xz)
                   pfun <- function(x){pf(x, df1 = df1, df2 = df2, ncp = ncp)}
-                  dfun <- P2D(pfun, xl, 
-                              ngrid = getdistrOption("DefaultNrGridPoints"))
+                  dfun <- .P2D(p=pfun, ql = 0, qu = xz)
                 # by means of simulations
                 # rfun <- function(n){rf(n, df1=df1, df2=df2, ncp=ncp)}
                 # dfun <-R2D(rfun, nsim = 10^getdistrOption("RtoDPQ.e"), 

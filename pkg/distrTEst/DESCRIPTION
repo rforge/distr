@@ -8,7 +8,7 @@ Imports: stats
 Author: Florian Camphausen, Matthias Kohl, Peter Ruckdeschel, Thomas Stabla
 Description: Evaluation (S4-)classes based on package distr for evaluating 
     procedures (estimators/tests) at data/simulation in a unified way.
-Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@uni-bayreuth.de>
+Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@web.de>
 LazyLoad: yes
 License: GPL (version 2 or later)
 URL: http://distr.r-forge.r-project.org/

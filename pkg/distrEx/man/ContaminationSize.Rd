@@ -3,6 +3,7 @@
 \alias{ContaminationSize-methods}
 \alias{ContaminationSize,AbscontDistribution,AbscontDistribution-method}
 \alias{ContaminationSize,DiscreteDistribution,DiscreteDistribution-method}
+\alias{ContaminationSize,AcDcLcDistribution,AcDcLcDistribution-method}
 
 \title{Generic Function for the Computation of the Convex Contamination 
     (Pseudo-)Distance of Two Distributions}
@@ -17,6 +18,7 @@
 ContaminationSize(e1, e2, ...)
 \S4method{ContaminationSize}{AbscontDistribution,AbscontDistribution}(e1,e2)
 \S4method{ContaminationSize}{DiscreteDistribution,DiscreteDistribution}(e1,e2)
+\S4method{ContaminationSize}{AcDcLcDistribution,AcDcLcDistribution}(e1,e2)
 }
 \arguments{
   \item{e1}{ object of class \code{"Distribution"} }
@@ -41,10 +43,15 @@ ContaminationSize(e1, e2, ...)
     convex contamination (pseudo-)distance of two discrete 
     univariate distributions.
   }
+  \item{e1 = "AcDcLcDistribution", e2 = "AcDcLcDistribution":}{
+    convex contamination (pseudo-)distance of two discrete 
+    univariate distributions.
+  }
   }
 }
 \references{Huber, P.J. (1981) \emph{Robust Statistics}. New York: Wiley.}
-\author{Matthias Kohl \email{Matthias.Kohl@stamats.de}}
+\author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
+        Peter Ruckdeschel \email{Peter.Ruckdeschel@web.de}}
 %\note{ ~~further notes~~ }
 \seealso{\code{\link{KolmogorovDist}}, \code{\link{TotalVarDist}}, 
     \code{\link{HellingerDist}}, \code{\link[distr]{Distribution-class}}}

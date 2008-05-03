@@ -1,3 +1,144 @@
+###############################################################################
+# Methods for Absolutely Continuous Distributions
+###############################################################################
+
+## (c) P.R. 300408
+
+AbscontDistribution <- function(r = NULL, d = NULL, p = NULL, q = NULL,
+                   gaps = NULL, param = NULL, img = new("Reals"),
+                   .withSim = FALSE, .withArith = FALSE,
+                   low1 = NULL, up1 = NULL, low = -Inf, up =Inf,
+                   ngrid = getdistrOption("DefaultNrGridPoints"),
+                   ep = getdistrOption("TruncQuantile"),
+                   e = getdistrOption("RtoDPQ.e"),
+                   withgaps = getdistrOption("withgaps"))
+{ if(missing(r) && missing(d) && missing(p) && missing(q))
+    stop("At least one of arg's r,d,p,q must be given")
+
+  wS <- .withSim
+  wA <- .withArith
+  if(is.null(r))
+     {if(is.null(q))
+         {if(is.null(p))
+            { if(is.null(low1))
+                 {i <- 0; x0 <- -1
+                  while(d(x0)> ep && i < 20) x0 <- x0 * 2
+                  low1 <- x0}
+              if(is.null(up1))
+                 {i <- 0; x0 <- 1
+                  while(d(x0)> ep && i < 20) x0 <- x0 * 2
+                  up1 <- x0}
+              p <- .D2P(d = d, ql = low1, qu=up1,  ngrid = ngrid)
+              q <- .P2Q(p = p, ql = low1, qu=up1,  ngrid = ngrid,
+                       qL = low, qU = up)
+              r <- function(n) q(runif(n)) }
+          else
+            { if(is.null(low1))
+                 {i <- 0; x0 <- -1
+                  while(p(x0)> ep && i < 20) x0 <- x0 * 2
+                  low1 <- x0}
+              if(is.null(up1))
+                 {i <- 0; x0 <- 1
+                  while(p(x0)< 1-ep && i < 20) x0 <- x0 * 2
+                  up1 <- x0}
+
+              q <- .P2Q(p = p, ql = low1, qu=up1,  ngrid = ngrid,
+                       qL = low, qU = up)
+              r <- function(n) q(runif(n))
+              if( is.null(d))
+                 d <- .P2D(p = p, ql = low1, qu=up1,  ngrid = ngrid)
+              }
+         }
+      else
+         {if(is.null(p))
+             p <- .Q2P(q, ngrid = ngrid)
+          xseq<-seq(-5,5,0.001)
+          print(summary(p(xseq)))
+          r <- function(n) q(runif(n))
+          if( is.null(d)){
+              if(is.null(low1))
+                 low1 <- q(ep)
+              if(is.null(up1))
+                 up1 <- q(1-ep)
+              d <- .P2D(p = p, ql = low1, qu=up1,  ngrid = ngrid)
+              }
+         }
+     }
+  else
+     {if(is.null(d))
+         {if(is.null(p))
+             {if(is.null(q))
+                 {erg <- RtoDPQ(r = r, e = e, n = ngrid)
+                  wS <- TRUE
+                  d <- erg$d; p <- erg$p; q<- erg$q
+                 }
+              else
+                 {
+                  p <- .Q2P(q, ngrid = ngrid)
+                  if( is.null(d)){
+                      if(is.null(low1))
+                         low1 <- q(ep)
+                      if(is.null(up1))
+                         up1 <- q(1-ep)
+                      d <- P2D(p = p, ql = low1, qu=up1,  ngrid = ngrid)
+                      }
+                 }
+             }
+          else
+             {if(is.null(q))
+                 {if(is.null(low1))
+                     {i <- 0; x0 <- -1
+                      while(p(x0)> ep && i < 20) x0 <- x0 * 2
+                      low1 <- x0}
+                  if(is.null(up1))
+                     {i <- 0; x0 <- 1
+                      while(p(x0)< 1-ep && i < 20) x0 <- x0 * 2
+                      up1 <- x0}
+                  q <- .P2Q(p = p, ql = low1, qu=up1,  ngrid = ngrid,
+                           qL = low, qU = up)
+                  d <- .P2D(p = p, ql = low1, qu=up1,  ngrid = ngrid)
+                  }
+             }
+         }
+      else
+         {if(is.null(p))
+             {if(is.null(q))
+                 {if(is.null(low1))
+                     {i <- 0; x0 <- -1
+                      while(d(x0)> ep && i < 20) x0 <- x0 * 2
+                      low1 <- x0}
+                  if(is.null(up1))
+                     {i <- 0; x0 <- 1
+                      while(d(x0)> ep && i < 20) x0 <- x0 * 2
+                      up1 <- x0}
+                  p <- .D2P(d = d, ql = low1, qu=up1,  ngrid = ngrid)
+                  q <- .P2Q(p = p, ql = low1, qu=up1,  ngrid = ngrid,
+                           qL = low, qU = up)
+                 }
+              else
+                 p <- .Q2P(q, ngrid = ngrid)
+             }
+          else
+             {if(is.null(low1))
+                 {i <- 0; x0 <- -1
+                  while(p(x0)> ep && i < 20) x0 <- x0 * 2
+                  low1 <- x0}
+              if(is.null(up1))
+                 {i <- 0; x0 <- 1
+                  while(p(x0)< 1-ep && i < 20) x0 <- x0 * 2
+                  up1 <- x0}
+              q <- .P2Q(p = p, ql = low1, qu=up1,  ngrid = ngrid,
+                       qL = low, qU = up)
+              }
+         }
+     }
+  obj <- new("AbscontDistribution", r = r, p = p, q = q, d = d, .withSim = wS,
+      .withArith = wA, gaps = gaps, param = param, img = img)
+
+  if(is.null(gaps) && withgaps) setgaps(obj)
+  return(obj)
+  }
+
 ## Access Methods
 
 setMethod("gaps", signature(object = "AbscontDistribution"),  
@@ -107,7 +248,7 @@ function(e1,e2){
             body(rfun) <- substitute({ f(n) + g(n) },
                                      list(f = e1@r, g = e2@r))
 
-            object <- new("AbscontDistribution", r = rfun, d = dfun, p = pfun,
+            object <- AbscontDistribution(r = rfun, d = dfun, p = pfun,
                           q = qfun, .withSim = FALSE, .withArith = TRUE)
 
             rm(d2, dpe1,dpe2, ftpe1,ftpe2)
@@ -173,7 +314,7 @@ setMethod("Math", "AbscontDistribution",
             rnew <- function(n, ...){}
             body(rnew) <- substitute({ f(g(n, ...)) },
                               list(f = as.name(.Generic), g = x@r))
-            object <- new("AbscontDistribution", r = rnew,
+            object <- AbscontDistribution( r = rnew,
                            .withSim = TRUE, .withArith = TRUE)
             object
           })
@@ -224,7 +365,7 @@ setMethod("abs", "AbscontDistribution",
             qnew <- .makeQNew(x.g + 0.5*h, px.l, px.u,
                               notwithLLarg = FALSE,  lower, yR)
 
-            object <- new("AbscontDistribution", r = rnew, p = pnew,
+            object <- AbscontDistribution( r = rnew, p = pnew,
                            q = qnew, d = dnew, gaps = gapsnew, 
                            .withSim = x@.withSim, .withArith = TRUE)
             object
@@ -232,162 +373,24 @@ setMethod("abs", "AbscontDistribution",
 
 ## exact: exp for absolutly continuous distributions
 setMethod("exp", "AbscontDistribution",
-          function(x){
-            rnew <- function(n, ...){}
-            body(rnew) <- substitute({ exp(g(n, ...)) },
-                                         list(g = x@r))
-            if (is.null(gaps(x)))
-                 gapsnew <- NULL
-            else gapsnew <- exp(gaps(x))
-            
-            lower <- exp(getLow(x))
-            upper <- exp(getUp(x))
+           function(x) .expm.c(x))
 
-            n <- getdistrOption("DefaultNrFFTGridPointsExponent")
-            h <- (upper-lower)/2^n
-
-            xx <- x
-            x.g <- seq(from = lower, to = upper, by = h)
-
-            dnew <- function(x, log = FALSE){
-                    x1 <- ifelse (x <= 0, 1, x) 
-                    if (.inArgs("log", d(xx)))
-                        dx <- (x>0) * d(xx)(log(x1), log)
-                    else{
-                        dx <- (x>0) * d(xx)(log(x1))
-                        if (log) dx <- log(dx)                    
-                    } 
-                    dx <- if (log) dx - (x>0) * log(abs(x1)) else  dx/abs(x1) 
-                    return(dx)
-            }
-            
-            pnew <- function(q, lower.tail = TRUE, log.p = FALSE){
-                    q1 <- ifelse (q <= 0, 0, q) 
-                    if (.inArgs("log.p", p(x)) && .inArgs("lower.tail", p(x))){
-                              px <- p(x)(log(q1), log.p = log.p, 
-                                                 lower.tail = lower.tail) 
-                    }else{
-                         if (.inArgs("lower.tail", p(x)))
-                              px <- p(x)(log(q1), lower.tail = lower.tail) 
-                         else{px <- p(x)(log(q1)) 
-                              if (lower.tail) px <- 1 - px}                   
-                         if (log.p) px <- log(px)
-                    }
-                    return(px)
-            }
-
-            qnew <- function(p, lower.tail = TRUE, log.p = FALSE){
-                    if (.inArgs("log.p", p(x)) && .inArgs("lower.tail", p(x))){
-                         qx <- exp(q(x)(p, log.p = log.p, 
-                                    lower.tail = lower.tail))                  
-                    }else{
-                         if (log.p) p <- exp(p)
-                         if (.inArgs("lower.tail", p(x)))
-                              qx <- q(x)(p, lower.tail = lower.tail) 
-                         else{if (lower.tail) p <- 1 - p
-                              qx <- q(x)(p)}                   
-                         qx <- exp(qx)
-                    }
-                    return(qx)
-            }
-
-
-#            px.l <- pnew(x.g + 0.5*h)
-#            px.u <- pnew(x.g + 0.5*h, lower.tail = FALSE)
-#            
-#            yL <- exp(q(x)(0))
-#            yR <- exp(q(x)(1))
-#
-#            qnew <- .makeQNew(x.g + 0.5*h, px.l, px.u,
-#                            notwithLLarg = FALSE,  yL, yR)
-
-            object <- new("AbscontDistribution", r = rnew, p = pnew,
-                           q = qnew, d = dnew, gaps = gapsnew, 
-                           .withSim = x@.withSim, .withArith = TRUE)
-            object
-          })
 
 ### preliminary to export special functions
-if (getRversion()>='2.6.0'){
+if (getRversion()>='2.6.0'){ 
 
-setMethod("log", "AbscontDistribution", function(x){
-            if (p(x)(0)>0)
-                stop("With positive probability log(x) is not well defined.")                
-            rnew = function(n, ...){}
-            body(rnew) <- substitute({ log(g(n, ...)) }, list(g = x@r))
-
-            if (is.null(gaps(x)))
-                 gapsnew <- NULL
-            else gapsnew <- log(gaps(x))
-            
-            lower <- max(log(getLow(x)),
-                         log(q(x)(2*getdistrOption("TruncQuantile"))), -7)
-            upper <- log(getUp(x))
-
-            n <- getdistrOption("DefaultNrFFTGridPointsExponent")
-            h <- (upper-lower)/2^n
-
-            xx <- x
-            x.g <- seq(from = lower, to = upper, by = h)
-
-            dnew <- function(x, log = FALSE){
-                    if (.inArgs("log", d(xx)))
-                        dx <- d(xx)(exp(x), log)  
-                    else{
-                        dx <- d(xx)(exp(x)) 
-                        if (log) dx <- log(dx)                    
-                    } 
-                    dx <- if (log) dx + x else  dx*exp(x) 
-                    return(dx)
-            }
-            
-            pnew <- function(q, lower.tail = TRUE, log.p = FALSE){
-                    if (.inArgs("log.p", p(x)) && .inArgs("lower.tail", p(x))){
-                              px <- p(x)(exp(q), log.p = log.p, 
-                                                 lower.tail = lower.tail) 
-                    }else{
-                         if (.inArgs("lower.tail", p(x)))
-                              px <- p(x)(exp(q), lower.tail = lower.tail) 
-                         else{px <- p(x)(exp(q)) 
-                              if (lower.tail) px <- 1 - px}                   
-                         if (log.p) px <- log(px)
-                    }
-                    return(px)
-            }
-
-            qnew <- function(p, lower.tail = TRUE, log.p = FALSE){
-                    if (.inArgs("log.p", p(x)) && .inArgs("lower.tail", p(x))){
-                         qx <- log(q(x)(p, log.p = log.p, 
-                                    lower.tail = lower.tail))                  
-                    }else{
-                         if (log.p) p <- exp(p)
-                         if (.inArgs("lower.tail", p(x)))
-                              qx <- q(x)(p, lower.tail = lower.tail) 
-                         else{if (lower.tail) p <- 1 - p
-                              qx <- q(x)(p)}                   
-                         qx <- log(qx)
-                    }
-                    return(qx)
-            }
-
-#            px.l <- pnew(x.g + 0.5*h)
-#            px.u <- pnew(x.g + 0.5*h, lower.tail = FALSE)
-#            
-#            yL <- log(q(x)(0))
-#            yR <- log(q(x)(1))
-#
-#            qnew <- .makeQNew(x.g + 0.5*h, px.l, px.u,
-#                            notwithLLarg = FALSE,  yL, yR)
-            
-            object <- new("AbscontDistribution", r = rnew, p = pnew,
-                           q = qnew, d = dnew, gaps = gapsnew, 
-                           .withSim = x@.withSim, .withArith = TRUE)
-            object
-          })
+setMethod("log", "AbscontDistribution",
+           function(x) {
+           xs <- as.character(deparse(match.call(
+                 call = sys.call(sys.parent(1)))$x))
+           ep <- getdistrOption("TruncQuantile")
+           if(p(x)(0)>ep) 
+                stop(gettextf("log(%s) is not well-defined with positive probability ", xs))
+           else return(.logm.c(x))})
                        
                        
 setMethod("log10", "AbscontDistribution",
-          function(x) log(x)/log(10))
+          function(x) log(x=x)/log(x=10))
 
 
 
@@ -396,7 +399,7 @@ setMethod("lgamma", "AbscontDistribution",
           function(x){
             rnew = function(n, ...){}
             body(rnew) <- substitute({ lgamma(g(n, ...)) }, list(g = x@r))
-            object <- new("AbscontDistribution", r = rnew,
+            object <- AbscontDistribution( r = rnew,
                            .withSim = TRUE, .withArith = TRUE)
             object
           })
@@ -405,7 +408,7 @@ setMethod("gamma", "AbscontDistribution",
           function(x){
             rnew = function(n, ...){}
             body(rnew) <- substitute({ gamma(g(n, ...)) }, list(g = x@r))
-            object <- new("AbscontDistribution", r = rnew,
+            object <- AbscontDistribution( r = rnew,
                            .withSim = TRUE, .withArith = TRUE)
             object
           })

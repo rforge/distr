@@ -1,5 +1,6 @@
 \name{distrExOptions}
 \alias{distrExOptions}
+\alias{distrExoptions}
 \alias{getdistrExOption}
 \alias{MCIterations}
 \alias{GLIntegrateTruncQuantile}
@@ -19,6 +20,7 @@
   the global variables of the package \pkg{distrEx}. }
 \usage{
 distrExOptions(...)
+distrExoptions(...)
 getdistrExOption(x)
 }
 \arguments{
@@ -31,6 +33,10 @@ getdistrExOption(x)
   \code{distrExOptions(x)} returns the global variable \var{x}.\newline
   \code{getdistrExOption(x)} returns the global variable \var{x}.\newline
   \code{distrExOptions(x=y)} sets the value of the global variable \var{x} to \var{y}.
+}
+\section{distrExoptions}{
+For compatibility with spelling in package \pkg{distr}, \code{distrExoptions} is 
+just a synonym to \code{distrExOptions}.
 }
 \section{Global Options}{
 \describe{

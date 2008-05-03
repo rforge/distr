@@ -134,6 +134,19 @@ All slots should be inspected / modified by means of corresponding
 accessor- /replacement functions; e.g. <code>mean(X) &lt;- 3</code>
 </p>
 <p>
+Again to enhance accuracy, from version 2.0 on, we also provide
+subclasses <code>UnivarMixingDistribution</code> to support mixing distributions,
+<code>UnivarLebDecDistribution</code>, to support Lebesgue decomposed distributions
+(with a discrete and an a.c. part) as well as <code>AffLinUnivarLebDecDistribution</code>,
+for corresponding affine linear transformations.
+Class <code>UnivarLebDecDistribution</code> is closed under arithmetical operations 
++  "/", "*" for pairs of independent variables 
++  "+", "-" for pairs of independent variables 
++  affine linear transformations
++  truncation, huberization, min/max 
+which are all now available analytically.<br>
+</p>
+<p>
 (see Parameter classes).
 </p>
 <pre>
@@ -146,6 +159,9 @@ r(function), d(OptionalFunction), p(OptionalFunction), q(OptionalFunction),
 
 "Distribution"
 |&gt;"UnivariateDistribution"
+|&gt;|&gt;"UnivarMixingDistribution"
+|&gt;|&gt;|&gt;"UnivarLebDecDistribution"
+|&gt;|&gt;|&gt;|&gt;"AffLinUnivarLebDecDistribution"
 |&gt;|&gt;"AbscontDistribution"
 |&gt;|&gt;|&gt;"AffLinAbscontDistribution"
 |&gt;|&gt;|&gt;"Beta"
@@ -173,11 +189,15 @@ r(function), d(OptionalFunction), p(OptionalFunction), q(OptionalFunction),
 |&gt;|&gt;|&gt;|&gt;"Pois"
 
 "AffLinDistribution" = union ( "AffLinAbscontDistribution", 
-                               "AffLinDiscreteDistribution" )
+                               "AffLinDiscreteDistribution",
+                               "AffLinUnivarLebDecDistribution" )
 
 "DistrList" 
 |&gt;"UnivarDistrList"
 
+"AcDcLc" = union ( "AbscontDistribution", 
+                   "DiscreteDistribution",
+                   "UnivarLebDecDistribution" )
 
 Parameter classes
 
@@ -237,6 +257,16 @@ RtoDPQ                  Default procedure to fill slots d,p,q given r
                         for a.c. distributions
 RtoDPQ.d                Default procedure to fill slots d,p,q given r 
                         for discrete distributions
+RtoDPQ.LC               Default procedure to fill slots d,p,q given r 
+                        for Lebesgue decomposed distributions
+decomposePM             decomposes a distribution into positive and negative
+                        part and, if discrete, into part '0'
+simplifyD               tries to reduce/simplify mixing distribution using
+                        that certain weights are 0         
+flat.LCD                makes a single UnivarLebDecDistribution out of
+                        a list of UnivarLebDecDistribution with corresp. weights
+flat.mix                makes a single UnivarLebDecDistribution out of
+                        a list of a UnivarMixingDistribution
 distroptions            Functions to change the global variables of the
                         package 'distr'
 standardMethods         Utility to automatically generate accessor and 
@@ -317,13 +347,13 @@ confer <a href="distroptions.html">distroptions</a> .
 <h3>Author(s)</h3>
 
 <p>
-Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@uni-bayreuth.de">Peter.Ruckdeschel@uni-bayreuth.de</a>,<br> 
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@web.de">Peter.Ruckdeschel@web.de</a>,<br> 
 Thomas Stabla <a href="mailto:statho3@web.de">statho3@web.de</a>,<br> 
 Florian Camphausen <a href="mailto:fcampi@gmx.de">fcampi@gmx.de</a>,<br>
 Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a><br>
 </p>
 <p>
-<EM>Maintainer:</EM> Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@uni-bayreuth.de">Peter.Ruckdeschel@uni-bayreuth.de</a>
+<EM>Maintainer:</EM> Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@web.de">Peter.Ruckdeschel@web.de</a>
 </p>
 
 
@@ -342,7 +372,7 @@ and may be called by
 </p>
 <p>
 a homepage to this package is available under<br>
-<a href="http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/">http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/</a>
+<a href="http://distr.r-forge.r-project.org/">http://distr.r-forge.r-project.org/</a>
 </p>
 
 

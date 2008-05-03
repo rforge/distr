@@ -7,6 +7,8 @@
 <table width="100%"><tr><td>plot-methods(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   plot">
 <param name="keyword" value="R:   plot-methods">
+<param name="keyword" value="R:   plot,AffLinUnivarLebDecDistribution-method">
+<param name="keyword" value="R:   plot,UnivarLebDecDistribution-method">
 <param name="keyword" value="R:   plot,AbscontDistribution-method">
 <param name="keyword" value="R:   plot,DiscreteDistribution-method">
 <param name="keyword" value="R:   plot,DistrList-method">
@@ -45,6 +47,25 @@ plot(x, y = NULL, width = 16, height = 9,
      col.points = par("col"), col.hor = par("col"), col.vert = par("col"), 
      col.main = par("col.main"), col.inner = par("col.main"), 
      col.sub = par("col.sub"),  cex.points = 2.0, pch.u = 21, pch.a = 16)
+## S4 method for signature
+##   'AffLinUnivarLebDecDistribution':
+plot(x, y = NULL, width = 16, 
+     height = 9, withSweave = FALSE, xlim = NULL, ylim = NULL, ngrid = 1000,
+     verticals = TRUE, do.points = TRUE, main = FALSE, inner = TRUE, sub = FALSE,
+     bmar = par("mar")[1], tmar = par("mar")[3], ..., cex.main = par("cex.main"), 
+     cex.inner = 1.2, cex.sub = par("cex.sub"), col.points = par("col"),
+     col.hor = par("col"), col.vert = par("col"), col.main = par("col.main"), 
+     col.inner = par("col.main"), col.sub = par("col.sub"),  cex.points = 2.0,
+     pch.u = 21, pch.a = 16)
+## S4 method for signature 'UnivarLebDecDistribution':
+plot(x, y = NULL, width = 16, 
+     height = 9, withSweave = FALSE, xlim = NULL, ylim = NULL, ngrid = 1000,
+     verticals = TRUE, do.points = TRUE, main = FALSE, inner = TRUE, sub = FALSE,
+     bmar = par("mar")[1], tmar = par("mar")[3], ..., cex.main = par("cex.main"), 
+     cex.inner = 1.2, cex.sub = par("cex.sub"), col.points = par("col"),
+     col.hor = par("col"), col.vert = par("col"), col.main = par("col.main"), 
+     col.inner = par("col.main"), col.sub = par("col.sub"),  cex.points = 2.0,
+     pch.u = 21, pch.a = 16)
 ## S4 method for signature 'DistrList':
 plot(x, y = NULL, ...)
 </pre>
@@ -56,6 +77,8 @@ plot(x, y = NULL, ...)
 <tr valign="top"><td><code>x</code></td>
 <td>
 object of class 
+<code>"AffLinUnivarLebDecDistribution"</code> or class
+<code>"UnivarLebDecDistribution"</code> or class
 <code>"AbscontDistribution"</code> or class
 <code>"DiscreteDistribution"</code> or class
 <code>"DistrList"</code>: (list of) distribution(s) to be plotted </td></tr>
@@ -172,6 +195,10 @@ addtional arguments for <code>plot</code> &mdash; see
 <h3>Details</h3>
 
 <dl>
+<dt>plot</dt><dd><code>signature(object = "AffLinUnivarLebDecDistribution")</code>: plots  
+cumulative distribution function and the quantile function </dd>
+<dt>plot</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code>: plots  
+cumulative distribution function and the quantile function </dd>
 <dt>plot</dt><dd><code>signature(object = "AbscontDistribution")</code>: plots density, 
 cumulative distribution function and the quantile function </dd>
 <dt>plot</dt><dd><code>signature(object = "DiscreteDistribution")</code>: plots probability 
@@ -264,6 +291,14 @@ Ch &lt;- Chisq(); setgaps(Ch); plot(Ch, do.points = FALSE)
 setgaps(Ch, exactq = 3); plot(Ch, verticals = FALSE)
 plot(Ch, cex = 1.2, pch.u = 20, pch.a = 10, col.points = "green", 
      col.vert = "red")
+
+## some distribution with gaps
+wg &lt;- flat.mix(UnivarMixingDistribution(Unif(0,1),Unif(4,5), 
+               withSimplify=FALSE))
+# some Lebesgue decomposed distribution 
+mymix &lt;- UnivarLebDecDistribution(acPart = wg, discretePart = Binom(4,.4),
+         acWeight = 0.4)
+plot(mymix)         
 </pre>
 
 <script Language="JScript">

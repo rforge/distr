@@ -10,7 +10,8 @@
 \usepackage{amssymb}
 \usepackage[%
 baseurl={http://www.bioconductor.org},%
-pdftitle={S4 Classes for Distributions---a manual for packages distr, distrSim, distrTEst, and distrEx},%
+pdftitle={S4 Classes for Distributions---a manual for packages distr, distrSim, distrTEst, distrEx,
+distrMod, and distrTeach},%
 pdfauthor={Peter Ruckdeschel, Matthias Kohl, Thomas Stabla, Florian Camphausen},%
 pdfsubject={distr},%
 pdfkeywords={probability distribution,simulation,estimation},%
@@ -18,9 +19,9 @@ pagebackref,bookmarks,colorlinks,linkcolor=darkblue,citecolor=darkblue,%
 pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 %
 \markboth{\sl Packages ``{\tt distr}'', ``{\tt distrSim}'', ``{\tt distrTEst}'', 
-``{\tt distrEx}'', ``{\tt distrTeach}''}%
+``{\tt distrEx}'', ``{\tt distrTeach}'', ``{\tt distrMod}''}%
 {\sl Packages ``{\tt distr}'', ``{\tt distrSim}'', ``{\tt distrTEst}'',  
-``{\tt distrEx}'', ``{\tt distrTeach}''}
+``{\tt distrEx}'', ``{\tt distrTeach}'', ``{\tt distrMod}''}
 %
 % -------------------------------------------------------------------------------
 \newcommand{\code}[1]{{\tt #1}}
@@ -43,7 +44,7 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
         \pkg{distrEx}, \pkg{distrSim}, \pkg{distrTEst}, \pkg{distrTeach}, 
         version \pkgversion}
 %,version \pkgExversion}
-\author{\small Peter Ruckdeschel\thanks{Universit\"at Bayreuth}
+\author{\small Peter Ruckdeschel\thanks{Fraunhofer ITWM, Kaiserslautern}
 \\[-.5ex]
 \small Matthias Kohl\thanks{Universit\"at Bayreuth}
 \\[-.5ex]
@@ -51,11 +52,11 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 \\[-.5ex]
 \small Florian Camphausen\thanks{West-LB, D\"usseldorf}
 \smallskip\\
-\small Mathematisches Institut\\[-.5ex]
-\small Universit\"at Bayreuth\\[-.5ex]
-\small D-95440 Bayreuth\\[-.5ex]
+\small Fraunhofer ITWM\\[-.5ex]
+\small Fraunhofer Platz 1\\[-.5ex]
+\small D-95440 Kaiserslautern\\[-.5ex]
 \small Germany\\
-\small e-Mail: {\small \tt peter.ruckdeschel@uni-bayreuth.de}\\
+\small e-Mail: {\small \tt peter.ruckdeschel@web.de}\\
 }
 \maketitle
 % -------------------------------------------------------------------------------

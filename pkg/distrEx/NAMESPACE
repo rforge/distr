@@ -42,6 +42,6 @@ export("ConvexContamination")
 export("GLIntegrate",
        "distrExIntegrate") 
 export("distrExOptions", "getdistrExOption",
-       "distrExMASK")
+       "distrExMASK", "distrExoptions")
 export("make01","PrognCondDistribution",
        "PrognCondition")
