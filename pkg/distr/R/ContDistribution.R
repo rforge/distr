@@ -80,7 +80,7 @@ AbscontDistribution <- function(r = NULL, d = NULL, p = NULL, q = NULL,
                          low1 <- q(ep)
                       if(is.null(up1))
                          up1 <- q(1-ep)
-                      d <- P2D(p = p, ql = low1, qu=up1,  ngrid = ngrid)
+                      d <- .P2D(p = p, ql = low1, qu=up1,  ngrid = ngrid)
                       }
                  }
              }
