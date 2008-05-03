@@ -1,5 +1,5 @@
 setNewEmail <- function(
-              Email.old = "Peter.Ruckdeschel@itwm.fraunhofer.de",
+              Email.old = "Peter.Ruckdeschel@web.de",
               Email.new = "Peter.Ruckdeschel@itwm.fraunhofer.de",
               dev.dir = "C:/rtest/",
               packs = c("startupmsg",
@@ -57,10 +57,14 @@ for(i in 1:length(packs))
     setwd(packs.dir[i])
     print(gettextf("----: %s/%s",packs.dir[i],packs[i]))
     #DESCRIPTION file
-    xx <-  readLines(paste(packs[i],"/DESCRIPTION",sep=""))
+    xx <-  if(packs[i]=="") readLines(paste(packs[i],"DESCRIPTION",sep=""))
+           else readLines(paste(packs[i],"/DESCRIPTION",sep=""))
     if(length(grep(Email.old, xx, ignore.case=TRUE)))
          {xx <- gsub(Email.old,Email.new, xx, ignore.case=TRUE)
-          writeLines(xx, con=paste(packs[i],"/DESCRIPTION",sep=""))}
+          if(packs[i]=="") 
+             writeLines(xx, con=paste(packs[i],"DESCRIPTION",sep=""))
+          else 
+             writeLines(xx, con=paste(packs[i],"/DESCRIPTION",sep=""))}
 
     lapply(exts, function(y) changeInList(list.files(pattern = y, 
                  ignore.case=TRUE, recursive = TRUE)))
@@ -78,3 +82,22 @@ for(i in 1:length(packs))
 }
 
 setNewEmail()
+setNewEmail(  Email.old = "Peter.Ruckdeschel@uni-bayreuth.de",
+              Email.new = "Peter.Ruckdeschel@itwm.fraunhofer.de",
+              dev.dir = "C:/rtest/",
+              packs = c("", 
+                        "RobAStBase",
+                        "RandVar",
+                        "ROptEst",
+                        "RobLox",
+                        "RobRex",
+                        "ROptRegTS"), 
+              packs.dir = c(paste(dev.dir, c("robKalman/pkg",
+                               rep("RobASt/pkg",6)), sep="")), 
+              withHTML = TRUE, 
+              packs.HTML.dir = c(paste(dev.dir, 
+                     c("robKalman/www"),sep=""),rep("",6)), 
+              rkurs = FALSE,
+              rkursDir = "",
+              exts = c("\\.R$","\\.Rd","\\.Rnw","\\.htm$","\\.html$","\\.tex$")
+                           )

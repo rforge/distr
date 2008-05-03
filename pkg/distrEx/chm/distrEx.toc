@@ -38,6 +38,10 @@
 <param name="Local" value="ContaminationSize.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ContaminationSize,AcDcLcDistribution,AcDcLcDistribution-method">
+<param name="Local" value="ContaminationSize.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="ContaminationSize,DiscreteDistribution,DiscreteDistribution-method">
 <param name="Local" value="ContaminationSize.html">
 </OBJECT>
@@ -126,6 +130,10 @@
 <param name="Local" value="distrExOptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distrExoptions">
+<param name="Local" value="distrExOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="E">
 <param name="Local" value="E.html">
 </OBJECT>
@@ -159,6 +167,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="E,AffLinLatticeDistribution,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,AffLinUnivarLebDecDistribution,missing,missing-method">
 <param name="Local" value="E.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -282,6 +294,22 @@
 <param name="Local" value="E.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,UnivarLebDecDistribution,function,ANY-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,UnivarLebDecDistribution,function,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,UnivarLebDecDistribution,missing,ANY-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,UnivarLebDecDistribution,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="E,Weibull,missing,missing-method">
 <param name="Local" value="E.html">
 </OBJECT>
@@ -351,6 +379,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="HellingerDist,AbscontDistribution,numeric-method">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist,AcDcLcDistribution,AcDcLcDistribution-method">
 <param name="Local" value="HellingerDist.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -463,6 +495,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="KolmogorovDist,AbscontDistribution,DiscreteDistribution-method">
+<param name="Local" value="KolmogorovDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="KolmogorovDist,AcDcLcDistribution,AcDcLcDistribution-method">
 <param name="Local" value="KolmogorovDist.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -1099,6 +1135,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="TotalVarDist,AbscontDistribution,numeric-method">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist,AcDcLcDistribution,AcDcLcDistribution-method">
 <param name="Local" value="TotalVarDist.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
