@@ -55,7 +55,12 @@
 \alias{coerce,AbscontDistribution,UnivarLebDecDistribution-method}
 \alias{coerce,DiscreteDistribution,UnivarLebDecDistribution-method}
 \alias{coerce,AffLinUnivarLebDecDistribution,UnivarLebDecDistribution-method}
-
+\alias{abs,UnivarLebDecDistribution-method}
+\alias{log,UnivarLebDecDistribution-method}
+\alias{log10,UnivarLebDecDistribution-method}
+\alias{Math,UnivarLebDecDistribution-method}
+\alias{^,AcDcLcDistribution,Dirac-method}
+\alias{exp,UnivarLebDecDistribution-method}
 
 \title{Class "UnivarLebDecDistribution"}
 \description{\code{UnivarLebDecDistribution}-class is a class to formalize
@@ -189,8 +194,8 @@ As many operations should be valid no matter whether the operands
 are of class \code{"AbscontDistribution"},
   \code{"DiscreteDistribution"}, or \code{"UnivarLebDecDistribution"},
 there is a class union of these classes called \code{"AcDcLcDistribution"};
-in partiucalar methods for \code{"*"}, \code{"/"}, 
-\code{"^"} (see \link{operators-methods}) and methods
+in particular methods for \code{"*"}, \code{"/"}, 
+\code{"\^"} (see \link{operators-methods}) and methods
 \code{\link{Minimum}}, \code{Maximum}, \code{\link{Truncate}}, and
  \code{\link{Huberize}}, and \code{\link{convpow}} are defined for this 
  class union.   

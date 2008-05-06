@@ -208,8 +208,8 @@ if \code{prob(e1)==prob(e2)}, result again of class
                 \code{e1} and \code{e2} are decomposed into positive and negative parts; of these, convolutions of the
                 corresponding logarithms are computed separately and finally \code{exp} is applied to them, again separately;
                 the resulting mixing components are then ``flattened'' to one object of class 
-                \code{UnivarLebDecDistribution} by \code{\link{flat.LCD}} which according to \code{getdistrOption(withSimplify)} gets piped through
-                a call to \code{\link{simplifyD}}.
+                \code{UnivarLebDecDistribution} by \code{\link{flat.LCD}} which according to \code{getdistrOption(withSimplify)} 
+                gets piped through a call to \code{\link{simplifyD}}.
                 }
 \item{\code{/}}{\code{signature(e1 = "Dirac", e2 = "Dirac")}  result again of class \code{"Dirac"}; exact}
 \item{\code{/}}{\code{signature(e1 = "numeric", e2 = "Dirac")}  result again of class \code{"Dirac"}; exact}
