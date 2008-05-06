@@ -56,7 +56,7 @@ if(!isGeneric("dimension")){
     setGeneric("dimension", function(object) standardGeneric("dimension"))
 }
 if(!isGeneric("L2deriv")){
-    setGeneric("L2deriv", function(object) standardGeneric("L2deriv"))
+    setGeneric("L2deriv", function(object, param) standardGeneric("L2deriv"))
 }
 if(!isGeneric("L2derivSymm")){
     setGeneric("L2derivSymm", function(object) standardGeneric("L2derivSymm"))
@@ -68,7 +68,7 @@ if(!isGeneric("L2derivDistrSymm")){
     setGeneric("L2derivDistrSymm", function(object) standardGeneric("L2derivDistrSymm"))
 }
 if(!isGeneric("FisherInfo")){
-    setGeneric("FisherInfo", function(object) standardGeneric("FisherInfo"))
+    setGeneric("FisherInfo", function(object, param) standardGeneric("FisherInfo"))
 }
 if(!isGeneric("checkL2deriv")){
     setGeneric("checkL2deriv", function(L2Fam, ...) standardGeneric("checkL2deriv"))

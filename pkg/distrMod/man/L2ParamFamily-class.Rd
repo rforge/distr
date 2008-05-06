@@ -75,6 +75,11 @@ Class \code{"ProbFamily"}, by class \code{"ParamFamily"}.
     \item{L2deriv}{\code{signature(object = "L2ParamFamily")}: 
       accessor function for \code{L2deriv}. }
 
+    \item{L2deriv}{\code{signature(object = "L2ParamFamily", 
+                                   param = "ParamFamParameter")}: 
+      returns the L2derivative at \code{param}, i.e.
+      evaluates slot functoin  \code{L2deriv.fct} at \code{param}. }
+
     \item{L2derivSymm}{\code{signature(object = "L2ParamFamily")}: 
       accessor function for \code{L2derivSymm}. }
 
@@ -86,6 +91,11 @@ Class \code{"ProbFamily"}, by class \code{"ParamFamily"}.
 
     \item{FisherInfo}{\code{signature(object = "L2ParamFamily")}:
       accessor function for \code{FisherInfo}. }
+
+    \item{FisherInfo}{\code{signature(object = "L2ParamFamily", 
+                                   param = "ParamFamParameter")}: 
+      returns the Fisher Information at \code{param}, i.e.
+      evaluates slot functoin  \code{FisherInfo.fct} at \code{param}. }
 
     \item{checkL2deriv}{\code{signature(object = "L2ParamFamily")}: 
       check centering of \code{L2deriv} and compute precision 

@@ -91,11 +91,18 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
 }
 
 ## access methods
-setMethod("L2deriv", "L2ParamFamily", function(object) object@L2deriv)
+setMethod("L2deriv", signature(object = "L2ParamFamily", param = "missing"), 
+           function(object) object@L2deriv)
+setMethod("L2deriv", signature(object = "L2ParamFamily", 
+           param = "ParamFamParameter"), 
+           function(object, param) object@L2deriv.fct(param))
 setMethod("L2derivSymm", "L2ParamFamily", function(object) object@L2derivSymm)
 setMethod("L2derivDistr", "L2ParamFamily", function(object) object@L2derivDistr)
 setMethod("L2derivDistrSymm", "L2ParamFamily", function(object) object@L2derivDistrSymm)
-setMethod("FisherInfo", "L2ParamFamily", function(object) object@FisherInfo)
+setMethod("FisherInfo", signature(object = "L2ParamFamily", param = "missing"),
+           function(object) object@FisherInfo)
+setMethod("FisherInfo", signature(object = "L2ParamFamily", param = "ParamFamParameter"),
+           function(object, param) object@FisherInfo.fct(param))
 
 ## check centering of L2 derivative and Fisher Information
 setMethod("checkL2deriv", "L2ParamFamily", 
