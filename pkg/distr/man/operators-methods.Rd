@@ -63,6 +63,7 @@
 \alias{+,Logis,numeric-method}
 \alias{+,Dirac,UnivariateDistribution-method}
 \alias{+,UnivariateDistribution,Dirac-method}
+\alias{-,numeric,Beta-method}
 \alias{-,Dirac,Dirac-method}
 \alias{*,Dirac,Dirac-method}
 \alias{*,Dirac,UnivariateDistribution-method}
@@ -119,6 +120,9 @@ slots filled by \code{\link{RtoDPQ}}, \code{\link{RtoDPQ.d}}}
 \item{\code{-}}{\code{signature(e1 = "UnivariateDistribution", e2 = "numeric")} is translated to 
  \code{e1 + (-e2)}; exact}
 \item{\code{-}}{\code{signature(e1 = "numeric", e2 = "UnivariateDistribution")} is translated to \code{(-e1) + e2}; exact}
+\item{\code{-}}{\code{signature(e1 = "numeric", e2 = "Beta")} if \code{ncp(e2)==0} and \code{e1 == 1},
+an exact (central) \code{Beta(shape1 = shape2(e2), shape2 = shape1(e2))} is returned, else
+the default method is used; exact}
 \item{\code{*}}{\code{signature(e1 = "UnivariateDistribution", e2 = "numeric")} result again of class \code{"UnivariateDistribution"}; exact}
 \item{\code{*}}{\code{signature(e1 = "AbscontDistribution", e2 = "numeric")} result of 
  class \code{"AffLinAbscontDistribution"}; exact}
