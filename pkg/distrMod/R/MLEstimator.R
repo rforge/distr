@@ -28,6 +28,7 @@ MLEstimator <- function(x, ParamFamily, interval, par, ...){
         return(res)
     }
 
+    if(is(par,"Estimate")) par <- par$estimate
     res <- MCEstimator(x = x, ParamFamily = ParamFamily, criterion = negLoglikelihood,
                 interval = interval, par = par, ...)
     names(res$criterion) <- "negative log-likelihood"

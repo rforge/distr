@@ -250,6 +250,10 @@
 <param name="Local" value="operators-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="-,numeric,Beta-method">
+<param name="Local" value="operators-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="-,numeric,UnivariateDistribution-method">
 <param name="Local" value="operators-methods.html">
 </OBJECT>

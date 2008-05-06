@@ -66,6 +66,7 @@
 <param name="keyword" value="R:   +,Logis,numeric-method">
 <param name="keyword" value="R:   +,Dirac,UnivariateDistribution-method">
 <param name="keyword" value="R:   +,UnivariateDistribution,Dirac-method">
+<param name="keyword" value="R:   -,numeric,Beta-method">
 <param name="keyword" value="R:   -,Dirac,Dirac-method">
 <param name="keyword" value="R:   *,Dirac,Dirac-method">
 <param name="keyword" value="R:   *,Dirac,UnivariateDistribution-method">
@@ -144,6 +145,9 @@ class <code>"AffLinUnivarLebDecDistribution"</code>; exact</dd>
 <dt><code>-</code></dt><dd><code>signature(e1 = "UnivariateDistribution", e2 = "numeric")</code> is translated to 
 <code>e1 + (-e2)</code>; exact</dd>
 <dt><code>-</code></dt><dd><code>signature(e1 = "numeric", e2 = "UnivariateDistribution")</code> is translated to <code>(-e1) + e2</code>; exact</dd>
+<dt><code>-</code></dt><dd><code>signature(e1 = "numeric", e2 = "Beta")</code> if <code>ncp(e2)==0</code> and <code>e1 == 1</code>,
+an exact (central) <code>Beta(shape1 = shape2(e2), shape2 = shape1(e2))</code> is returned, else
+the default method is used; exact</dd>
 <dt><code>*</code></dt><dd><code>signature(e1 = "UnivariateDistribution", e2 = "numeric")</code> result again of class <code>"UnivariateDistribution"</code>; exact</dd>
 <dt><code>*</code></dt><dd><code>signature(e1 = "AbscontDistribution", e2 = "numeric")</code> result of 
 class <code>"AffLinAbscontDistribution"</code>; exact</dd>

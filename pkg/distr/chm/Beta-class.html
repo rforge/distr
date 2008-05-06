@@ -82,6 +82,9 @@ modifies the slot shape1 of the parameter of the distribution</dd>
 returns the slot shape2 of the parameter of the distribution</dd>
 <dt>shape2&lt;-</dt><dd><code>signature(object = "Beta")</code>:
 modifies the slot shape2 of the parameter of the distribution</dd>
+<dt><code>-</code></dt><dd><code>signature(e1 = "numeric", e2 = "Beta")</code> if <code>ncp(e2)==0</code> and <code>e1 == 1</code>,
+an exact (central) <code>Beta(shape1 = shape2(e2), shape2 = shape1(e2))</code> is returned, else
+the default method is used; exact</dd>
 </dl>
 
 <h3>Note</h3>
