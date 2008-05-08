@@ -47,7 +47,6 @@ Version: \tab 2.0 \cr
 Date: \tab 2008-05-08 \cr
 Depends: \tab R(>= 2.2.0), methods, graphics, startupmsg\cr
 Imports: \tab stats\cr
-SaveImage: \tab no\cr
 LazyLoad: \tab yes\cr
 License: \tab GPL (version 2 or later)\cr
 URL: \tab http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/\cr
