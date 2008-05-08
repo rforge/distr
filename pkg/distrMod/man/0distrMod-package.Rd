@@ -16,12 +16,11 @@ maximum likelihood or minimum distance estimators for probability models.
 \tabular{ll}{
 Package: \tab distrMod\cr
 Version: \tab 2.0 \cr
-Date: \tab 2008-01-17 \cr
-Depends: \tab R(>= 2.6.1), methods, graphics, startupmsg, distr(>= 1.9), distrEx(>= 1.9)\cr
-SaveImage: \tab no\cr
+Date: \tab 2008-05-08 \cr
+Depends: \tab R(>= 2.6.0), methods, startupmsg, distr(>= 2.0), distrEx(>= 2.0), RandVar(>= 0.6.2)\cr
 LazyLoad: \tab yes\cr
 License: \tab GPL (version 2 or later)\cr
-URL: \tab https://r-forge.r-project.org/projects/distrmod/\cr
+URL: \tab http://distr.r-forge.r-project.org/\cr
 }}
 
 \section{Classes}{

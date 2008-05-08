@@ -2,9 +2,11 @@
 \docType{class}
 \alias{L2ParamFamily-class}
 \alias{FisherInfo}
-\alias{FisherInfo,L2ParamFamily-method}
+\alias{FisherInfo,L2ParamFamily,missing-method}
+\alias{FisherInfo,L2ParamFamily,ParamFamParameter-method}
 \alias{L2deriv}
-\alias{L2deriv,L2ParamFamily-method}
+\alias{L2deriv,L2ParamFamily,missing-method}
+\alias{L2deriv,L2ParamFamily,ParamFamParameter-method}
 \alias{L2derivSymm}
 \alias{L2derivSymm,L2ParamFamily-method}
 \alias{L2derivDistr}
@@ -78,7 +80,7 @@ Class \code{"ProbFamily"}, by class \code{"ParamFamily"}.
     \item{L2deriv}{\code{signature(object = "L2ParamFamily", 
                                    param = "ParamFamParameter")}: 
       returns the L2derivative at \code{param}, i.e.
-      evaluates slot functoin  \code{L2deriv.fct} at \code{param}. }
+      evaluates slot function \code{L2deriv.fct} at \code{param}. }
 
     \item{L2derivSymm}{\code{signature(object = "L2ParamFamily")}: 
       accessor function for \code{L2derivSymm}. }
@@ -95,7 +97,7 @@ Class \code{"ProbFamily"}, by class \code{"ParamFamily"}.
     \item{FisherInfo}{\code{signature(object = "L2ParamFamily", 
                                    param = "ParamFamParameter")}: 
       returns the Fisher Information at \code{param}, i.e.
-      evaluates slot functoin  \code{FisherInfo.fct} at \code{param}. }
+      evaluates slot function \code{FisherInfo.fct} at \code{param}. }
 
     \item{checkL2deriv}{\code{signature(object = "L2ParamFamily")}: 
       check centering of \code{L2deriv} and compute precision 

@@ -19,6 +19,7 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name, interval, par, ...
         crit <- res$objectiv
     }else{
         if(missing(par)) par <- main(ParamFamily)
+	if(inherits(par,"Estimate")) par <- par$estimate
         res <- optim(par = par, fn = fun, Data = x, ParamFamily = ParamFamily, 
                       criterion = criterion, ...)
         theta <- res$par
