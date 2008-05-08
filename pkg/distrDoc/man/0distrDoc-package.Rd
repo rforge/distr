@@ -13,13 +13,12 @@ packages \pkg{distr}, \pkg{distrEx}, \pkg{distrSim}, \pkg{distrTEst}.
 \tabular{ll}{
 Package: \tab distrDoc\cr
 Version: \tab 2.0 \cr
-Date: \tab 2008-01-17 \cr
-Depends: \tab R(>= 2.2.0), tools, distr(>= 1.8.0), startupmsg\cr
-Suggests: \tab distrEx(>= 0.4-4), distrSim(>= 1.8.0), distrTEst(>= 1.8.0), Biobase\cr
-SaveImage: \tab no\cr
+Date: \tab 2008-05-08 \cr
+Depends: \tab R(>= 2.6.0), tools, distr(>= 2.0.0), startupmsg\cr
+Suggests: \tab distrEx(>= 2.0.0), distrSim(>= 2.0.0), distrTEst(>= 2.0.0), distrTeach(>= 2.0.0), distrMod(>= 2.0.0), Biobase\cr
 LazyLoad: \tab yes\cr
 License: \tab GPL (version 2 or later)\cr
-URL: \tab http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/\cr
+URL: \tab http://distr.r-forge.r-project.org/\cr
 }}
 
 
