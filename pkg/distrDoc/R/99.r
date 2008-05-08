@@ -9,3 +9,7 @@ buildStartupMessage(pkg="distrDoc",  library=libname,
                     VIGNETTE=gettext("This package provides a vignette to package \"distr\"\nand to several related packages; try vignette(\"distr\")."))
   invisible()
 } 
+
+### just to have it -- not to export it
+setClass("Integer", contains ="numeric",
+          validity = function(object) all(.isInteger(object)))

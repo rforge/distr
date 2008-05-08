@@ -1,13 +1,13 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2007.12.8)  4 APR 2008 10:22
+This is pdfTeX, Version 3.141592-1.40.4 (MiKTeX 2.6) (preloaded format=pdflatex 2008.2.29)  8 MAY 2008 23:45
 entering extended mode
- file:line:error style messages enabled.
- %&-line parsing enabled.
-**\nonstopmode \input /home/btm722/arbeit/Rpackages/RForge/distr/pkg/distrDoc/i
-nst/doc/distr.tex
-(/home/btm722/arbeit/Rpackages/RForge/distr/pkg/distrDoc/inst/doc/distr.tex
-(/usr/share/texmf-texlive/tex/latex/base/article.cls
+**distr.tex
+(distr.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman, ngerman, spanish, french, italian, polish, swedish, loaded.
+("C:\Programme\MiKTeX 2.6\tex\latex\base\article.cls"
 Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
-(/usr/share/texmf-texlive/tex/latex/base/size11.clo
+("C:\Programme\MiKTeX 2.6\tex\latex\base\size11.clo"
 File: size11.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -22,10 +22,10 @@ File: size11.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/usr/share/texmf-texlive/tex/latex/geometry/geometry.sty
+("C:\Programme\MiKTeX 2.6\tex\latex\geometry\geometry.sty"
 Package: geometry 2002/07/08 v3.2 Page Geometry
 
-(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+("C:\Programme\MiKTeX 2.6\tex\latex\graphics\keyval.sty"
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
@@ -37,27 +37,28 @@ Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \Gm@odd@mp=\dimen105
 \Gm@even@mp=\dimen106
 \Gm@dimlist=\toks15
-)
-(/usr/share/texmf-texlive/tex/latex/graphics/color.sty
+
+("C:\Programme\MiKTeX 2.6\tex\latex\geometry\geometry.cfg"))
+("C:\Programme\MiKTeX 2.6\tex\latex\graphics\color.sty"
 Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 
-(/etc/texmf/tex/latex/config/color.cfg
+("C:\Programme\MiKTeX 2.6\tex\latex\00miktex\color.cfg"
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 
-(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2007/01/08 v0.04d Graphics/color for pdfTeX
+("C:\Programme\MiKTeX 2.6\tex\latex\graphics\pdftex.def"
+File: pdftex.def 2007/06/12 v0.04h Graphics/color for pdfTeX
 \Gread@gobject=\count90
 ))
-(/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2006/02/20 v1.4 Provides the ifpdf switch (HO)
+("C:\Programme\MiKTeX 2.6\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2007/12/12 v1.6 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in pdf mode detected.
 )
-(/usr/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
+("C:\Programme\MiKTeX 2.6\tex\latex\amsfonts\amssymb.sty"
 Package: amssymb 2002/01/22 v2.2d
 
-(/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
+("C:\Programme\MiKTeX 2.6\tex\latex\amsfonts\amsfonts.sty"
 Package: amsfonts 2001/10/25 v2.2f
 \@emptytoks=\toks16
 \symAMSa=\mathgroup4
@@ -65,81 +66,121 @@ Package: amsfonts 2001/10/25 v2.2f
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 132.
 ))
-(/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2007/02/07 v6.75r Hypertext links for LaTeX
+("C:\Programme\MiKTeX 2.6\tex\latex\hyperref\hyperref.sty"
+Package: hyperref 2008/01/09 v6.77i Hypertext links for LaTeX
+
+("C:\Programme\MiKTeX 2.6\tex\latex\oberdiek\hycolor.sty"
+Package: hycolor 2007/04/11 v1.1 Code for color options of hyperref/bookmark (H
+O)
+)
 \@linkdim=\dimen107
 \Hy@linkcounter=\count91
 \Hy@pagecounter=\count92
 
-(/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2007/02/07 v6.75r Hyperref: PDFDocEncoding definition (HO)
+("C:\Programme\MiKTeX 2.6\tex\latex\hyperref\pd1enc.def"
+File: pd1enc.def 2008/01/09 v6.77i Hyperref: PDFDocEncoding definition (HO)
 )
-(/etc/texmf/tex/latex/config/hyperref.cfg
+("C:\Programme\MiKTeX 2.6\tex\generic\oberdiek\etexcmds.sty"
+Package: etexcmds 2007/12/12 v1.2 Prefix for e-TeX command names (HO)
+
+("C:\Programme\MiKTeX 2.6\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2007/09/09 v1.2 Providing info/warning/message (HO)
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)
+("C:\Programme\MiKTeX 2.6\tex\latex\00miktex\hyperref.cfg"
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
-(/usr/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2006/08/22 v2.4 Connects package keyval with LaTeX options (
-HO)
+("C:\Programme\MiKTeX 2.6\tex\latex\oberdiek\kvoptions.sty"
+Package: kvoptions 2007/10/18 v3.0 Keyval support for LaTeX options (HO)
 )
-Package hyperref Info: Option `bookmarks' set `true' on input line 2238.
-Package hyperref Info: Option `colorlinks' set `true' on input line 2238.
-Package hyperref Info: Option `raiselinks' set `true' on input line 2238.
-Package hyperref Info: Option `plainpages' set `true' on input line 2238.
-Package hyperref Info: Hyper figures OFF on input line 2288.
-Package hyperref Info: Link nesting OFF on input line 2293.
-Package hyperref Info: Hyper index ON on input line 2296.
-Package hyperref Info: Plain pages ON on input line 2301.
-Package hyperref Info: Backreferencing ON on input line 2306.
+Package hyperref Info: Option `bookmarks' set `true' on input line 2686.
+Package hyperref Info: Option `colorlinks' set `true' on input line 2686.
 
+
+Package hyperref Warning: Option `pagecolor' is not available anymore.
+
+Package hyperref Info: Option `raiselinks' set `true' on input line 2686.
+Package hyperref Info: Option `plainpages' set `true' on input line 2686.
+Package hyperref Info: Hyper figures OFF on input line 2722.
+Package hyperref Info: Link nesting OFF on input line 2727.
+Package hyperref Info: Hyper index ON on input line 2730.
+Package hyperref Info: Plain pages ON on input line 2735.
+Package hyperref Info: Backreferencing ON on input line 2740.
 Implicit mode ON; LaTeX internals redefined
-Package hyperref Info: Bookmarks ON on input line 2444.
-(/usr/share/texmf-texlive/tex/latex/hyperref/backref.sty
-Package: backref 2006/10/06 v1.27 Bibliographical back referencing
+Package hyperref Info: Bookmarks ON on input line 2898.
+("C:\Programme\MiKTeX 2.6\tex\latex\hyperref\backref.sty"
+Package: backref 2006/09/05 v1.28 Bibliographical back referencing
 )
-(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
+("C:\Programme\MiKTeX 2.6\tex\latex\ltxmisc\url.sty"
 \Urlmuskip=\muskip10
-Package: url 2005/06/27  ver 3.2  Verb mode for urls, etc.
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 2599.
+LaTeX Info: Redefining \url on input line 3068.
+
+("C:\Programme\MiKTeX 2.6\tex\generic\oberdiek\bitset.sty"
+Package: bitset 2007/09/28 v1.0 Data type bit set (HO)
+
+("C:\Programme\MiKTeX 2.6\tex\generic\oberdiek\intcalc.sty"
+Package: intcalc 2007/09/27 v1.1 Expandable integer calculations (HO)
+)
+("C:\Programme\MiKTeX 2.6\tex\generic\oberdiek\bigintcalc.sty"
+Package: bigintcalc 2007/11/11 v1.1 Expandable big integer calculations (HO)
+
+("C:\Programme\MiKTeX 2.6\tex\generic\oberdiek\pdftexcmds.sty"
+Package: pdftexcmds 2007/12/12 v0.3 LuaTeX support for pdfTeX utility functions
+ (HO)
+Package pdftexcmds Info: LuaTeX not detected on input line 139.
+)))
+("C:\Programme\MiKTeX 2.6\tex\generic\oberdiek\kvsetkeys.sty"
+Package: kvsetkeys 2007/09/29 v1.3 Key value parser with default handler suppor
+t (HO)
+)
 \Fld@menulength=\count93
 \Field@Width=\dimen108
 \Fld@charsize=\dimen109
-\Choice@toks=\toks17
-\Field@toks=\toks18
-Package hyperref Info: Hyper figures OFF on input line 3102.
-Package hyperref Info: Link nesting OFF on input line 3107.
-Package hyperref Info: Hyper index ON on input line 3110.
-Package hyperref Info: backreferencing ON on input line 3115.
-Package hyperref Info: Link coloring ON on input line 3120.
+\Field@toks=\toks17
+Package hyperref Info: Hyper figures OFF on input line 3949.
+Package hyperref Info: Link nesting OFF on input line 3954.
+Package hyperref Info: Hyper index ON on input line 3957.
+Package hyperref Info: backreferencing ON on input line 3962.
+Package hyperref Info: Link coloring ON on input line 3967.
+
+("C:\Programme\MiKTeX 2.6\tex\generic\oberdiek\atbegshi.sty"
+Package: atbegshi 2007/09/09 v1.6 At begin shipout hook (HO)
+)
 \Hy@abspage=\count94
 \c@Item=\count95
 \c@Hfootnote=\count96
 )
 *hyperref using driver hpdftex*
-(/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2007/02/07 v6.75r Hyperref driver for pdfTeX
+("C:\Programme\MiKTeX 2.6\tex\latex\hyperref\hpdftex.def"
+File: hpdftex.def 2008/01/09 v6.77i Hyperref driver for pdfTeX
 \Fld@listcount=\count97
 )
-(/home/btm722/RTOP/r-devel/R/share/texmf/Sweave.sty
+(C:\Programme\R\R-2.7.0pat\share\texmf\Sweave.sty
 
-LaTeX Warning: You have requested package `/home/btm722/RTOP/r-devel/R/share/te
-xmf/Sweave',
+LaTeX Warning: You have requested package `C:/Programme/R/R-2.7.0pat/share/texm
+f/Sweave',
                but the package provides `Sweave'.
 
 Package: Sweave 
-(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
+("C:\Programme\MiKTeX 2.6\tex\latex\base\ifthen.sty"
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
-(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+("C:\Programme\MiKTeX 2.6\tex\latex\graphics\graphicx.sty"
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+("C:\Programme\MiKTeX 2.6\tex\latex\graphics\graphics.sty"
 Package: graphics 2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+("C:\Programme\MiKTeX 2.6\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/etc/texmf/tex/latex/config/graphics.cfg
+("C:\Programme\MiKTeX 2.6\tex\latex\00miktex\graphics.cfg"
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: pdftex.def on input line 90.
@@ -147,7 +188,7 @@ Package graphics Info: Driver file: pdftex.def on input line 90.
 \Gin@req@height=\dimen110
 \Gin@req@width=\dimen111
 )
-(/usr/share/texmf-texlive/tex/latex/fancyvrb/fancyvrb.sty
+("C:\Programme\MiKTeX 2.6\tex\latex\fancyvrb\fancyvrb.sty"
 Package: fancyvrb 1998/07/17
 
 Style option: `fancyvrb' v2.6, with DG/SPQR fixes <1998/07/17> (tvz)
@@ -159,11 +200,11 @@ Style option: `fancyvrb' v2.6, with DG/SPQR fixes <1998/07/17> (tvz)
 \FV@OutFile=\write3
 
 No file fancyvrb.cfg.
-) (/home/btm722/RTOP/r-devel/R/share/texmf/upquote.sty
+) ("C:\Programme\MiKTeX 2.6\tex\latex\upquote\upquote.sty"
 Package: upquote 2003/08/11 v1.1 Covington's upright-quote modification to verb
 atim and verb
 
-(/usr/share/texmf-texlive/tex/latex/base/textcomp.sty
+("C:\Programme\MiKTeX 2.6\tex\latex\base\textcomp.sty"
 Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
 Package textcomp Info: Sub-encoding information:
 (textcomp)               5 = only ISO-Adobe without \textcurrency
@@ -178,7 +219,7 @@ Package textcomp Info: Sub-encoding information:
 (textcomp)             See the documentation for details.
 Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 71.
 
-(/usr/share/texmf-texlive/tex/latex/base/ts1enc.def
+("C:\Programme\MiKTeX 2.6\tex\latex\base\ts1enc.def"
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 )
 LaTeX Info: Redefining \oldstylenums on input line 266.
@@ -230,51 +271,49 @@ Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 324.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 325.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 326.
 ))
-(/usr/share/texmf-texlive/tex/latex/base/fontenc.sty
+("C:\Programme\MiKTeX 2.6\tex\latex\base\fontenc.sty"
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-(/usr/share/texmf-texlive/tex/latex/base/t1enc.def
+("C:\Programme\MiKTeX 2.6\tex\latex\base\t1enc.def"
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 ))
-(/usr/share/texmf-texlive/tex/latex/ae/ae.sty
+("C:\Programme\MiKTeX 2.6\tex\latex\ae\ae.sty"
 Package: ae 2001/02/12 1.3 Almost European Computer Modern
 
-(/usr/share/texmf-texlive/tex/latex/base/fontenc.sty
+("C:\Programme\MiKTeX 2.6\tex\latex\base\fontenc.sty"
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-(/usr/share/texmf-texlive/tex/latex/base/t1enc.def
+("C:\Programme\MiKTeX 2.6\tex\latex\base\t1enc.def"
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 )
 LaTeX Font Info:    Try loading font information for T1+aer on input line 100.
 
-(/usr/share/texmf-texlive/tex/latex/ae/t1aer.fd
+("C:\Programme\MiKTeX 2.6\tex\latex\ae\t1aer.fd"
 File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
-)))) (./distr.aux)
-\openout1 = `distr.aux'.
+)))) (distr.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 42.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 42.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 41.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 41.
-
-(/usr/share/texmf-texlive/tex/latex/base/ts1cmr.fd
+("C:\Programme\MiKTeX 2.6\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    ... okay on input line 42.
 -------------------- Geometry parameters
 paper: class default
 landscape: --
@@ -314,743 +353,473 @@ driver: pdftex
 
 (1in=72.27pt, 1cm=28.45pt)
 -----------------------
-Package hyperref Info: Link coloring ON on input line 41.
 
-(/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
-Package: nameref 2006/12/27 v2.28 Cross-referencing by name of section
+("C:\Programme\MiKTeX 2.6\tex\context\base\supp-pdf.tex"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count101
+\scratchdimen=\dimen112
+\scratchbox=\box27
+\nofMPsegments=\count102
+\nofMParguments=\count103
+\everyMPshowfont=\toks18
+\MPscratchCnt=\count104
+\MPscratchDim=\dimen113
+\MPnumerator=\count105
+\everyMPtoPDFconversion=\toks19
+)
+Package hyperref Info: Link coloring ON on input line 42.
+ ("C:\Programme\MiKTeX 2.6\tex\latex\hyperref\nameref.sty"
+Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 
-(/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
+("C:\Programme\MiKTeX 2.6\tex\latex\oberdiek\refcount.sty"
 Package: refcount 2006/02/20 v3.0 Data extraction from references (HO)
 )
-\c@section@level=\count101
+\c@section@level=\count106
 )
-LaTeX Info: Redefining \ref on input line 41.
-LaTeX Info: Redefining \pageref on input line 41.
- (./distr.out)
-(./distr.out)
+LaTeX Info: Redefining \ref on input line 42.
+LaTeX Info: Redefining \pageref on input line 42.
+ (distr.out)
+(distr.out)
 \@outlinefile=\write4
-\openout4 = `distr.out'.
-
-LaTeX Font Info:    Try loading font information for T1+aett on input line 63.
- (/usr/share/texmf-texlive/tex/latex/ae/t1aett.fd
+\AtBeginShipoutBox=\box28
+LaTeX Font Info:    Try loading font information for T1+aett on input line 64.
+ ("C:\Programme\MiKTeX 2.6\tex\latex\ae\t1aett.fd"
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 63.
+LaTeX Font Info:    Try loading font information for U+msa on input line 64.
 
-(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+("C:\Programme\MiKTeX 2.6\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2002/01/19 v2.2g AMS font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 63.
+LaTeX Font Info:    Try loading font information for U+msb on input line 64.
 
-(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
+("C:\Programme\MiKTeX 2.6\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2002/01/19 v2.2g AMS font definitions
 )
-LaTeX Font Info:    Try loading font information for T1+aess on input line 65.
+LaTeX Font Info:    Try loading font information for T1+aess on input line 66.
 
-(/usr/share/texmf-texlive/tex/latex/ae/t1aess.fd
+("C:\Programme\MiKTeX 2.6\tex\latex\ae\t1aess.fd"
 File: t1aess.fd 1997/11/16 Font definitions for T1/aess.
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./distr.toc [2])
+{psfonts.map}] (distr.toc
+[2] [3])
 \tf@toc=\write5
-\openout5 = `distr.toc'.
-
- [3] [4]
-<distr-exam1.pdf, id=343, 433.62pt x 433.62pt>
+ [4] <distr-exam1.pdf, id=379, 433.62pt x 433.62pt>
 File: distr-exam1.pdf Graphic file (type pdf)
- <use distr-exam1.pdf> [5 <./distr-exam1.pdf>] [6]
-LaTeX Font Info:    Try loading font information for TS1+aer on input line 290.
 
- (/home/btm722/RTOP/r-devel/R/share/texmf/ts1aer.fd
+<use distr-exam1.pdf> [5 <distr-exam1.pdf>] [6] [7]
+LaTeX Font Info:    Try loading font information for TS1+aer on input line 303.
+
+
+(C:\sekrtex\Texmf\Tex\Latex\R\ts1aer.fd
 File: ts1aer.fd 
 )
 LaTeX Font Info:    Font shape `TS1/aer/m/n' in size <10.95> not available
-(Font)              Font shape `TS1/cmr/m/n' tried instead on input line 290.
- [7]
-Underfull \hbox (badness 10000) in paragraph at lines 307--311
+(Font)              Font shape `TS1/cmr/m/n' tried instead on input line 303.
+
+Underfull \hbox (badness 10000) in paragraph at lines 320--324
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 312--328
+Underfull \hbox (badness 10000) in paragraph at lines 325--341
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 338--355
+Underfull \hbox (badness 10000) in paragraph at lines 351--368
 
  []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 357--375
+Underfull \hbox (badness 10000) in paragraph at lines 370--391
 
  []
 
-<distribution.pdf, id=393, 597.23125pt x 845.1575pt>
+<distribution.pdf, id=428, 597.23125pt x 845.1575pt>
 File: distribution.pdf Graphic file (type pdf)
  <use distribution.pdf>
-[9] [10 <./distribution.pdf>]
-<parameter.pdf, id=409, 597.23125pt x 845.1575pt>
+[9] [10 <distribution.pdf>] [11] [12]
+<parameter.pdf, id=456, 597.23125pt x 845.1575pt>
 File: parameter.pdf Graphic file (type pdf)
  <use parameter.pdf>
-<rspace.pdf, id=411, 597.19112pt x 845.07718pt>
+<rspace.pdf, id=458, 597.19112pt x 845.07718pt>
 File: rspace.pdf Graphic file (type pdf)
  <use rspace.pdf>
-<dataclass.pdf, id=413, 597.19112pt x 845.07718pt>
+<dataclass.pdf, id=460, 597.19112pt x 845.07718pt>
 File: dataclass.pdf Graphic file (type pdf)
  <use dataclass.pdf>
-Underfull \hbox (badness 10000) in paragraph at lines 515--576
+Underfull \hbox (badness 10000) in paragraph at lines 642--703
 
  []
 
-[11] [12 <./parameter.pdf>] [13 <./rspace.pdf> <./dataclass.pdf>]
-<evaluation.pdf, id=446, 597.19112pt x 845.07718pt>
+[13] [14 <parameter.pdf>] <evaluation.pdf, id=478, 597.19112pt x 845.07718pt>
 File: evaluation.pdf Graphic file (type pdf)
- <use evaluation.pdf>
-Underfull \hbox (badness 10000) in paragraph at lines 611--624
+
+<use evaluation.pdf> [15 <rspace.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 738--751
 
  []
 
-<EvaluationList.pdf, id=448, 614.295pt x 794.97pt>
+[16 <dataclass.pdf> <evaluation.pdf>]
+<EvaluationList.pdf, id=506, 614.295pt x 794.97pt>
 File: EvaluationList.pdf Graphic file (type pdf)
  <use EvaluationList.pdf>
-[14 <./evaluation.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 659--661
+Underfull \hbox (badness 10000) in paragraph at lines 786--788
 
  []
 
-LaTeX Font Info:    Try loading font information for TS1+aett on input line 680
+[17 <EvaluationList.pdf>]
+LaTeX Font Info:    Try loading font information for TS1+aett on input line 807
 .
-(/home/btm722/RTOP/r-devel/R/share/texmf/ts1aett.fd
+ (C:\sekrtex\Texmf\Tex\Latex\R\ts1aett.fd
 File: ts1aett.fd 
 )
-LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 680
+LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 807
 .
 
-(/usr/share/texmf-texlive/tex/latex/base/ts1cmtt.fd
+("C:\Programme\MiKTeX 2.6\tex\latex\base\ts1cmtt.fd"
 File: ts1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `TS1/aett/m/n' in size <10.95> not available
-(Font)              Font shape `TS1/cmtt/m/n' tried instead on input line 680.
- [15 <./EvaluationList.pdf>]
-Underfull \hbox (badness 6001) in paragraph at lines 687--714
+(Font)              Font shape `TS1/cmtt/m/n' tried instead on input line 807.
+
+Underfull \hbox (badness 6001) in paragraph at lines 814--845
 \T1/aer/m/n/10.95 some sub-class), giv-ing again an ob-ject \T1/aett/m/n/10.95 
 Y \T1/aer/m/n/10.95 of class \T1/aett/m/n/10.95 AbscontDistribution \T1/aer/m/n
 /10.95 or
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 687--714
+Underfull \hbox (badness 10000) in paragraph at lines 814--845
 \T1/aett/m/n/10.95 AffLinDistribution \T1/aer/m/n/10.95 of classes \T1/aett/m/n
 /10.95 AffLinAbscontDistribution \T1/aer/m/n/10.95 and
  []
 
-[16]
-Underfull \hbox (badness 10000) in paragraph at lines 756--762
+[18] [19] [20]
+Overfull \hbox (21.14304pt too wide) in paragraph at lines 960--965
+\T1/aett/m/n/10.95 MixDistr \T1/aer/m/n/10.95 of a \T1/aett/m/n/10.95 UnivarMix
+ingDistribution \T1/aer/m/n/10.95 ob-ject) into a sim-pler \T1/aett/m/n/10.95 U
+nivarLebDecDistribution\T1/aer/m/n/10.95 -
+ []
+
+[21] [22]
+Underfull \hbox (badness 10000) in paragraph at lines 1075--1081
 
  []
 
 
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@encoding' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<let>-command' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@family' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@series' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@shape' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\font@name' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\T1/aett/m/n/12' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\ignorespaces' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@encoding' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<let>-command' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@family' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@series' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@shape' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\font@name' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\T1/aett/m/n/12' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\ignorespaces' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@encoding' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<let>-command' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@family' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@series' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@shape' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\font@name' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\T1/aett/m/n/12' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\ignorespaces' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@encoding' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<let>-command' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@family' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@series' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@shape' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\font@name' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\T1/aett/m/n/12' on input line 769.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\ignorespaces' on input line 769.
-
-
-LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 77
-5.
-
-[17] <distr-cauchy1.pdf, id=485, 433.62pt x 433.62pt>
+LaTeX Font Warning: Command \footnotesize invalid in math mode on input line 11
+23.
+
+[23] [24] <distr-arith2v1.pdf, id=555, 433.62pt x 433.62pt>
+File: distr-arith2v1.pdf Graphic file (type pdf)
+
+<use distr-arith2v1.pdf> <distr-arith2v2.pdf, id=556, 433.62pt x 433.62pt>
+File: distr-arith2v2.pdf Graphic file (type pdf)
+
+<use distr-arith2v2.pdf> [25 <distr-arith2v1.pdf>]
+<distr-Hub.pdf, id=567, 433.62pt x 433.62pt>
+File: distr-Hub.pdf Graphic file (type pdf)
+ <use distr-Hub.pdf> [26 <distr-arith2v2.pdf>] <distr-Trun.pdf, id=577, 433.62p
+t x 433.62pt>
+File: distr-Trun.pdf Graphic file (type pdf)
+ <use distr-Trun.pdf>
+[27 <distr-Hub.pdf>] <distr-Min1.pdf, id=587, 433.62pt x 433.62pt>
+File: distr-Min1.pdf Graphic file (type pdf)
+
+<use distr-Min1.pdf> [28 <distr-Trun.pdf>]
+<distr-Min2.pdf, id=597, 433.62pt x 433.62pt>
+File: distr-Min2.pdf Graphic file (type pdf)
+ <use distr-Min2.pdf> [29 <distr-Min1.pdf>] <distr-Min3.pdf, id=607, 433.62pt x
+ 433.62pt>
+File: distr-Min3.pdf Graphic file (type pdf)
+ <use distr-Min3.pdf>
+[30 <distr-Min2.pdf>] [31 <distr-Min3.pdf>]
+<distr-cauchy1.pdf, id=627, 433.62pt x 433.62pt>
 File: distr-cauchy1.pdf Graphic file (type pdf)
  <use distr-cauchy1.pdf>
-<distr-cauchy2.pdf, id=486, 433.62pt x 433.62pt>
+<distr-cauchy2.pdf, id=628, 433.62pt x 433.62pt>
 File: distr-cauchy2.pdf Graphic file (type pdf)
  <use distr-cauchy2.pdf>
-[18 <./distr-cauchy1.pdf>] [19 <./distr-cauchy2.pdf>]
-<distr-plotex1.pdf, id=506, 578.16pt x 325.215pt>
+[32 <distr-cauchy1.pdf>] [33 <distr-cauchy2.pdf>]
+<distr-plotex1.pdf, id=647, 578.16pt x 325.215pt>
 File: distr-plotex1.pdf Graphic file (type pdf)
  <use distr-plotex1.pdf>
-<distr-plotex2.pdf, id=507, 578.16pt x 325.215pt>
+<distr-plotex2.pdf, id=648, 578.16pt x 325.215pt>
 File: distr-plotex2.pdf Graphic file (type pdf)
  <use distr-plotex2.pdf>
-<distr-plotex3.pdf, id=508, 578.16pt x 325.215pt>
+<distr-plotex3.pdf, id=649, 578.16pt x 325.215pt>
 File: distr-plotex3.pdf Graphic file (type pdf)
  <use distr-plotex3.pdf>
-<distr-plotex4.pdf, id=509, 578.16pt x 325.215pt>
+<distr-plotex4.pdf, id=650, 578.16pt x 325.215pt>
 File: distr-plotex4.pdf Graphic file (type pdf)
  <use distr-plotex4.pdf>
-<distr-plotex5.pdf, id=510, 578.16pt x 325.215pt>
+<distr-plotex5.pdf, id=651, 578.16pt x 325.215pt>
 File: distr-plotex5.pdf Graphic file (type pdf)
  <use distr-plotex5.pdf>
-<distr-plotex6.pdf, id=511, 578.16pt x 325.215pt>
+<distr-plotex6.pdf, id=652, 578.16pt x 325.215pt>
 File: distr-plotex6.pdf Graphic file (type pdf)
  <use distr-plotex6.pdf>
-<distr-plotex7.pdf, id=512, 578.16pt x 325.215pt>
+<distr-plotex7.pdf, id=653, 578.16pt x 325.215pt>
 File: distr-plotex7.pdf Graphic file (type pdf)
  <use distr-plotex7.pdf>
-<distr-plotex8.pdf, id=513, 578.16pt x 325.215pt>
+<distr-plotex8.pdf, id=654, 578.16pt x 325.215pt>
 File: distr-plotex8.pdf Graphic file (type pdf)
  <use distr-plotex8.pdf>
 LaTeX Font Info:    Font shape `TS1/aett/m/sl' in size <10.95> not available
-(Font)              Font shape `TS1/cmtt/m/sl' tried instead on input line 957.
+(Font)              Font shape `TS1/cmtt/m/sl' tried instead on input line 1400
+.
 
-
-<distr-plotex9.pdf, id=514, 578.16pt x 325.215pt>
+<distr-plotex9.pdf, id=655, 578.16pt x 325.215pt>
 File: distr-plotex9.pdf Graphic file (type pdf)
  <use distr-plotex9.pdf>
-<distr-plotex10.pdf, id=515, 578.16pt x 325.215pt>
+<distr-plotex10.pdf, id=656, 578.16pt x 325.215pt>
 File: distr-plotex10.pdf Graphic file (type pdf)
  <use distr-plotex10.pdf>
-[20] [21 <./distr-plotex1.pdf> <./distr-plotex2.pdf>] [22 <./distr-plotex3.pdf>
- <./distr-plotex4.pdf>] [23 <./distr-plotex5.pdf> <./distr-plotex6.pdf>]
-[24 <./distr-plotex7.pdf> <./distr-plotex8.pdf>] [25 <./distr-plotex9.pdf> <./d
-istr-plotex10.pdf>] [26]
-Overfull \hbox (16.7734pt too wide) in paragraph at lines 1079--1083
+[34] [35 <distr-plotex1.pdf> <distr-plotex2.pdf>] [36 <distr-plotex3.pdf> <dist
+r-plotex4.pdf>] [37 <distr-plotex5.pdf> <distr-plotex6.pdf>] [38 <distr-plotex7
+.pdf> <distr-plotex8.pdf>] [39 <distr-plotex9.pdf> <distr-plotex10.pdf>]
+[40]
+Overfull \hbox (16.7734pt too wide) in paragraph at lines 1522--1526
 []\T1/aett/m/n/10.95 "Exp" \T1/aer/m/n/10.95 also is a Gamma dis-tri-bu-tion wi
 th pa-ram-e-ters \T1/aett/m/n/10.95 shape = 1, scale = 1/rate(obj)
  []
 
 
-Underfull \hbox (badness 1253) in paragraph at lines 1126--1130
+Underfull \hbox (badness 1253) in paragraph at lines 1573--1577
  \T1/aer/bx/n/10.95 with a func-tion as ar-gu-ment[] \T1/aer/m/n/10.95 we pro-c
 eed just as with-out: if \T1/aett/m/n/10.95 X \T1/aer/m/n/10.95 is of class
  []
 
-[27]
-Underfull \hbox (badness 10000) in paragraph at lines 1138--1140
+[41]
+Underfull \hbox (badness 10000) in paragraph at lines 1585--1587
 
  []
 
-[28]
-Overfull \hbox (6.81467pt too wide) in paragraph at lines 1192--1198
+[42]
+Overfull \hbox (6.81467pt too wide) in paragraph at lines 1639--1645
 \T1/aer/m/n/10.95 ance, i.e., \T1/aett/m/n/10.95 var(x, fun = function(t) t, co
 nd, withCond = FALSE, useApply = TRUE,
  []
 
-[29] [30]
-Overfull \hbox (14.15865pt too wide) in paragraph at lines 1305--1313
+[43] [44]
+Overfull \hbox (14.15865pt too wide) in paragraph at lines 1754--1763
 \T1/aer/m/n/10.95 From ver-sion 1.9 on, sim-i-larly, we pro-vide an il-lus-tra-
 tion for the LLN: func-tion \T1/aett/m/n/10.95 illustrateLLN\T1/aer/m/n/10.95 ,
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1316--1326
+[45]
+Underfull \hbox (badness 10000) in paragraph at lines 1766--1776
 \T1/aer/m/n/10.95 To il-lus-trate con-di-tional dis-tri-bu-tions and their im-p
 le-men-ta-tion in
  []
 
-[31]
-Overfull \hbox (6.51851pt too wide) in paragraph at lines 1350--1353
+[46]
+Overfull \hbox (6.51851pt too wide) in paragraph at lines 1818--1821
 []\T1/aett/m/n/10.95 warningArith\T1/aer/m/n/10.95 : con-trols whether a warn-i
 ng is-sued at print-ing/showing a \T1/aett/m/n/10.95 Distribution
  []
 
 
-Underfull \hbox (badness 6220) in paragraph at lines 1354--1361
+Underfull \hbox (badness 6220) in paragraph at lines 1828--1835
 \T1/aer/m/n/10.95 All cur-rent op-tions may be in-spected by \T1/aett/m/n/10.95
  distroptions() \T1/aer/m/n/10.95 and mod-i-fied by
  []
 
 
-Overfull \hbox (4.39513pt too wide) in paragraph at lines 1354--1361
+Overfull \hbox (4.39513pt too wide) in paragraph at lines 1828--1835
 \T1/aer/m/n/10.95 the cor-re-spond-ing op-tion, so here, just as \T1/aett/m/n/1
 0.95 getOption\T1/aer/m/n/10.95 , \T1/aett/m/n/10.95 getdistrOption("<options-n
 ame>")
  []
 
-[32]
-Overfull \hbox (2.04646pt too wide) in paragraph at lines 1377--1382
+
+Overfull \hbox (2.04646pt too wide) in paragraph at lines 1851--1856
 \T1/aer/m/n/10.95 spond-ing quan-tiles \T1/aett/m/n/10.95 GLIntegrateTruncQuant
 ile \T1/aer/m/n/10.95 resp. \T1/aett/m/n/10.95 1-GLIntegrateTruncQuantile
  []
 
-
-Underfull \hbox (badness 1596) in paragraph at lines 1389--1391
+[47]
+Underfull \hbox (badness 1596) in paragraph at lines 1863--1865
 []\T1/aett/m/n/10.95 ErelativeTolerance\T1/aer/m/n/10.95 : The rel-a-tive tol-e
 r-ance used in-side of \T1/aett/m/n/10.95 E \T1/aer/m/n/10.95 when call-ing
  []
 
 
-Underfull \hbox (badness 3646) in paragraph at lines 1407--1410
+Underfull \hbox (badness 3646) in paragraph at lines 1881--1884
 \T1/aer/m/n/10.95 global out-put op-tions to be used within the pack-age with \
 T1/aett/m/n/10.95 distrSimoptions\T1/aer/m/n/10.95 /
  []
 
-[33]
-Underfull \hbox (badness 2698) in paragraph at lines 1429--1433
+[48]
+Underfull \hbox (badness 2698) in paragraph at lines 1903--1907
 \T1/aer/m/n/10.95 global out-put op-tions to be used within the pack-age with \
 T1/aett/m/n/10.95 distrTEstoptions\T1/aer/m/n/10.95 /
  []
 
 
-Underfull \hbox (badness 7486) in paragraph at lines 1457--1461
+Underfull \hbox (badness 7486) in paragraph at lines 1931--1935
 []\T1/aer/m/n/10.95 You may sup-press these start-up ban-ners/messages com-plet
 ely by set-ting
  []
 
-[34]
-Underfull \hbox (badness 10000) in paragraph at lines 1462--1466
+
+Underfull \hbox (badness 10000) in paragraph at lines 1936--1940
 []\T1/aer/m/n/10.95 If op-tion \T1/aett/m/n/10.95 "StartupBanner" \T1/aer/m/n/1
 0.95 is not de-fined (de-fault) or set-ting
  []
 
 
-Overfull \hbox (18.9709pt too wide) in paragraph at lines 1467--1470
+Overfull \hbox (18.9709pt too wide) in paragraph at lines 1941--1944
 []\T1/aer/m/n/10.95 For any other value of op-tion \T1/aett/m/n/10.95 "StartupB
 anner" \T1/aer/m/n/10.95 (i.e., not in \T1/aett/m/n/10.95 c(NULL, "off", "compl
 ete")\T1/aer/m/n/10.95 )
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1471--1476
+Underfull \hbox (badness 10000) in paragraph at lines 1945--1950
 \T1/aett/m/n/10.95 onlytypeStartupMessages(<code>, atypes="version") \T1/aer/m/
 n/10.95 or
  []
 
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 1488.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@encoding' on input line 1488.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<let>-command' on input line 1488.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 1488.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@family' on input line 1488.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 1488.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@series' on input line 1488.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 1488.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@shape' on input line 1488.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 1488.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\font@name' on input line 1488.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\T1/aess/m/n/12' on input line 1488.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\ignorespaces' on input line 1488.
-
-[35]
-Underfull \hbox (badness 10000) in paragraph at lines 1552--1558
+[49] [50]
+Underfull \hbox (badness 10000) in paragraph at lines 2028--2033
 []\T1/aer/m/n/10.95 Instances of any class trans-par-ent to the user are ini-ti
 al-ized by
  []
 
-[36]
-Overfull \hbox (3.66298pt too wide) in paragraph at lines 1584--1587
+
+Overfull \hbox (21.9969pt too wide) in paragraph at lines 2037--2043
+\T1/aer/m/n/10.95 a \T1/aett/m/n/10.95 DiscreteDistribution \T1/aer/m/n/10.95 a
+s an in-ter-me-di-ate step pro-duce a \T1/aett/m/n/10.95 UnivarMixingDistributi
+on\T1/aer/m/n/10.95 ,
+ []
+
+
+Overfull \hbox (22.48817pt too wide) in paragraph at lines 2037--2043
+\T1/aer/m/n/10.95 with one mix-ing com-po-nent for each el-e-ment of the sup-po
+rt of the \T1/aett/m/n/10.95 DiscreteDistribution\T1/aer/m/n/10.95 .
+ []
+
+[51]
+Overfull \hbox (3.66298pt too wide) in paragraph at lines 2069--2072
 []\T1/aer/m/n/10.95 application of an-a-lytic Fouri-er-Trans-forms in-stead of 
 FFT where ap-pro-pri-ate ---perhaps
  []
 
-[37]
 
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 1645.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 1645.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding),
+(hyperref)                removing `math shift' on input line 2130.
 
 
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 1645.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding),
+(hyperref)                removing `math shift' on input line 2130.
 
 
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 1645.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding),
+(hyperref)                removing `math shift' on input line 2130.
 
-[38] <distr-NormApprox.pdf, id=677, 433.62pt x 433.62pt>
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding),
+(hyperref)                removing `math shift' on input line 2130.
+
+[52] <distr-NormApprox.pdf, id=818, 433.62pt x 433.62pt>
 File: distr-NormApprox.pdf Graphic file (type pdf)
 
-<use distr-NormApprox.pdf> [39] [40 <./distr-NormApprox.pdf>] [41]
-<distr-ConvolutionNormalDistr.pdf, id=697, 433.62pt x 433.62pt>
+<use distr-NormApprox.pdf> [53] [54 <distr-NormApprox.pdf>] [55]
+<distr-ConvolutionNormalDistr.pdf, id=840, 433.62pt x 433.62pt>
 File: distr-ConvolutionNormalDistr.pdf Graphic file (type pdf)
 
-<use distr-ConvolutionNormalDistr.pdf> [42]
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 1803.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@encoding' on input line 1803.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<let>-command' on input line 1803.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 1803.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@family' on input line 1803.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 1803.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@series' on input line 1803.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 1803.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\f@shape' on input line 1803.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\<def>-command' on input line 1803.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\font@name' on input line 1803.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\T1/aett/m/n/12' on input line 1803.
-
-
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\ignorespaces' on input line 1803.
-
-[43 <./distr-ConvolutionNormalDistr.pdf>] [44]
-<distr-ComparisonFFTandRtoDPQ.pdf, id=718, 433.62pt x 433.62pt>
+<use distr-ConvolutionNormalDistr.pdf> [56] [57 <distr-ConvolutionNormalDistr.p
+df>] [58] <distr-ComparisonFFTandRtoDPQ.pdf, id=860, 433.62pt x 433.62pt>
 File: distr-ComparisonFFTandRtoDPQ.pdf Graphic file (type pdf)
 
-<use distr-ComparisonFFTandRtoDPQ.pdf> [45 <./distr-ComparisonFFTandRtoDPQ.pdf>
-] [46] [47] <distr-StationaryRegressorDistr.pdf, id=738, 433.62pt x 433.62pt>
+<use distr-ComparisonFFTandRtoDPQ.pdf> [59 <distr-ComparisonFFTandRtoDPQ.pdf>]
+[60] [61] <distr-StationaryRegressorDistr.pdf, id=881, 433.62pt x 433.62pt>
 File: distr-StationaryRegressorDistr.pdf Graphic file (type pdf)
 
-<use distr-StationaryRegressorDistr.pdf> [48] [49 <./distr-StationaryRegressorD
-istr.pdf>] [50] [51] <distr-huberize.pdf, id=764, 433.62pt x 433.62pt>
-File: distr-huberize.pdf Graphic file (type pdf)
-
-<use distr-huberize.pdf> [52 <./distr-huberize.pdf>] [53] [54]
-<distr-truncate.pdf, id=782, 433.62pt x 433.62pt>
-File: distr-truncate.pdf Graphic file (type pdf)
- <use distr-truncate.pdf>
-[55 <./distr-truncate.pdf>] [56] [57] [58]
-<distr-minandmax.pdf, id=806, 433.62pt x 433.62pt>
-File: distr-minandmax.pdf Graphic file (type pdf)
- <use distr-minandmax.pdf>
-[59] <distr-min.pdf, id=811, 433.62pt x 433.62pt>
-File: distr-min.pdf Graphic file (type pdf)
- <use distr-min.pdf> [60 <./distr-minandmax.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 2405--2410
+<use distr-StationaryRegressorDistr.pdf> [62]
+Underfull \hbox (badness 10000) in paragraph at lines 2488--2493
 
  []
 
-[61 <./distr-min.pdf>] <distr-destructive.pdf, id=832, 433.62pt x 433.62pt>
+[63 <distr-StationaryRegressorDistr.pdf>]
+<distr-destructive.pdf, id=899, 433.62pt x 433.62pt>
 File: distr-destructive.pdf Graphic file (type pdf)
 
 <use distr-destructive.pdf>
-Underfull \hbox (badness 10000) in paragraph at lines 2429--2436
+Underfull \hbox (badness 10000) in paragraph at lines 2512--2519
 
  []
 
-[62 <./distr-destructive.pdf>] [63]
-<distr-SimulateandEstimate.pdf, id=847, 635.37375pt x 274.02374pt>
+[64 <distr-destructive.pdf>] [65]
+<distr-SimulateandEstimate.pdf, id=914, 635.37375pt x 274.02374pt>
 File: distr-SimulateandEstimate.pdf Graphic file (type pdf)
 
-<use distr-SimulateandEstimate.pdf> [64 <./distr-SimulateandEstimate.pdf>]
-[65] <distr-elist.pdf, id=861, 433.62pt x 433.62pt>
+<use distr-SimulateandEstimate.pdf> [66 <distr-SimulateandEstimate.pdf>]
+[67] <distr-elist.pdf, id=929, 433.62pt x 433.62pt>
 File: distr-elist.pdf Graphic file (type pdf)
  <use distr-elist.pdf>
-[66]
+[68]
 LaTeX Font Info:    Font shape `TS1/aett/m/n' in size <9> not available
-(Font)              Font shape `TS1/cmtt/m/n' tried instead on input line 2602.
+(Font)              Font shape `TS1/cmtt/m/n' tried instead on input line 2685.
 
- [67 <./distr-elist.pdf>] [68]
+ [69 <distr-elist.pdf>] [70]
 
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 2702.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding),
+(hyperref)                removing `math shift' on input line 2785.
 
 
-Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `math shift' on input line 2702.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding),
+(hyperref)                removing `math shift' on input line 2785.
 
-[69] [70] [71] [72] <distr-nFoldConvolution.pdf, id=902, 433.62pt x 433.62pt>
+[71] [72] [73] [74] <distr-nFoldConvolution.pdf, id=970, 433.62pt x 433.62pt>
 File: distr-nFoldConvolution.pdf Graphic file (type pdf)
 
-<use distr-nFoldConvolution.pdf>
-No file distr.brf.
+<use distr-nFoldConvolution.pdf> (distr.brf)
 \tf@brf=\write6
-\openout6 = `distr.brf'.
+ [75] [76 <distr-nFoldConvolution.pdf>] [77] (distr.aux)
 
-[73] [74 <./distr-nFoldConvolution.pdf>] [75] (./distr.aux) ) 
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 5028 strings out of 95062
- 70608 string characters out of 1182216
- 118850 words of memory out of 1500000
- 7836 multiletter control sequences out of 10000+50000
- 65321 words of font info for 147 fonts, out of 1200000 for 2000
- 28 hyphenation exceptions out of 8191
- 35i,11n,42p,796b,515s stack positions out of 5000i,500n,6000p,200000b,5000s
- </home/btm722/.te
-xmf-var/fonts/pk/ljfour/jknappen/ec/tctt0900.600pk> </home/btm722/.texmf-var/fo
-nts/pk/ljfour/jknappen/ec/tcst1095.600pk> </home/btm722/.texmf-var/fonts/pk/ljf
-our/jknappen/ec/tctt1095.600pk> </home/btm722/.texmf-var/fonts/pk/ljfour/jknapp
-en/ec/tcrm1095.600pk></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmbx10.pf
-b></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmbx12.pfb></usr/share/texmf
--texlive/fonts/type1/bluesky/cm/cmcsc10.pfb></usr/share/texmf-texlive/fonts/typ
-e1/bluesky/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi1
-2.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi8.pfb></usr/share/te
-xmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/bluesky/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr17
-.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr6.pfb></usr/share/texm
-f-texlive/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1
-/bluesky/cm/cmr9.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsltt10.
-pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmss10.pfb></usr/share/tex
-mf-texlive/fonts/type1/bluesky/cm/cmss12.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/bluesky/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy
-6.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy7.pfb></usr/share/te
-xmf-texlive/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/bluesky/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmtt
-10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmtt12.pfb></usr/share/
-texmf-texlive/fonts/type1/bluesky/cm/cmtt8.pfb></usr/share/texmf-texlive/fonts/
-type1/bluesky/cm/cmtt9.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/ams/ms
-bm10.pfb>
-Output written on distr.pdf (75 pages, 3723776 bytes).
+ 6750 strings out of 95242
+ 91658 string characters out of 1184291
+ 146213 words of memory out of 1143162
+ 9257 multiletter control sequences out of 60000
+ 65811 words of font info for 149 fonts, out of 1000000 for 2000
+ 34 hyphenation exceptions out of 8191
+ 36i,11n,39p,711b,464s stack positions out of 5000i,500n,10000p,200000b,32768s
+{cm-super-ts1.enc}<C:/Programme/MiKTeX 2.6/fonts/type1/bluesky/cm/cmbx10.pfb>
+<C:/Programme/MiKTeX 2.6/fonts/type1/bluesky/cm/cmbx12.pfb><C:/Programme/MiKTeX
+ 2.6/fonts/type1/bluesky/cm/cmcsc10.pfb><C:/Programme/MiKTeX 2.6/fonts/type1/bl
+uesky/cm/cmmi10.pfb><C:/Programme/MiKTeX 2.6/fonts/type1/bluesky/cm/cmmi12.pfb>
+<C:/Programme/MiKTeX 2.6/fonts/type1/bluesky/cm/cmmi8.pfb><C:/Programme/MiKTeX 
+2.6/fonts/type1/bluesky/cm/cmr10.pfb><C:/Programme/MiKTeX 2.6/fonts/type1/blues
+ky/cm/cmr12.pfb><C:/Programme/MiKTeX 2.6/fonts/type1/bluesky/cm/cmr17.pfb><C:/P
+rogramme/MiKTeX 2.6/fonts/type1/bluesky/cm/cmr6.pfb><C:/Programme/MiKTeX 2.6/fo
+nts/type1/bluesky/cm/cmr8.pfb><C:/Programme/MiKTeX 2.6/fonts/type1/bluesky/cm/c
+mr9.pfb><C:/Programme/MiKTeX 2.6/fonts/type1/bluesky/cm/cmsltt10.pfb><C:/Progra
+mme/MiKTeX 2.6/fonts/type1/bluesky/cm/cmss10.pfb><C:/Programme/MiKTeX 2.6/fonts
+/type1/bluesky/cm/cmss12.pfb><C:/Programme/MiKTeX 2.6/fonts/type1/bluesky/cm/cm
+sy10.pfb><C:/Programme/MiKTeX 2.6/fonts/type1/bluesky/cm/cmsy6.pfb><C:/Programm
+e/MiKTeX 2.6/fonts/type1/bluesky/cm/cmsy7.pfb><C:/Programme/MiKTeX 2.6/fonts/ty
+pe1/bluesky/cm/cmsy8.pfb><C:/Programme/MiKTeX 2.6/fonts/type1/bluesky/cm/cmti10
+.pfb><C:/Programme/MiKTeX 2.6/fonts/type1/bluesky/cm/cmtt10.pfb><C:/Programme/M
+iKTeX 2.6/fonts/type1/bluesky/cm/cmtt12.pfb><C:/Programme/MiKTeX 2.6/fonts/type
+1/bluesky/cm/cmtt8.pfb><C:/Programme/MiKTeX 2.6/fonts/type1/bluesky/cm/cmtt9.pf
+b><C:/Programme/MiKTeX 2.6/fonts/type1/bluesky/ams/msbm10.pfb><C:/Programme/MiK
+TeX 2.6/fonts/type1/public/cm-super/sfrm1095.pfb><C:/Programme/MiKTeX 2.6/fonts
+/type1/public/cm-super/sfst1095.pfb><C:/Programme/MiKTeX 2.6/fonts/type1/public
+/cm-super/sftt0900.pfb><C:/Programme/MiKTeX 2.6/fonts/type1/public/cm-super/sft
+t1095.pfb>
+Output written on distr.pdf (77 pages, 3896749 bytes).
 PDF statistics:
- 1057 PDF objects out of 1200 (max. 8388607)
- 170 named destinations out of 1000 (max. 131072)
- 644 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1133 PDF objects out of 300000 (max. 8388607)
+ 182 named destinations out of 300000 (max. 131072)
+ 723 words of extra memory for PDF output out of 65536 (max. 10000000)
 

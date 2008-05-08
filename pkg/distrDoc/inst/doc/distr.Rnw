@@ -41,7 +41,7 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 \begin{document}
 % -------------------------------------------------------------------------------
 \title{{\tt S4} Classes for Distributions---a manual for packages \pkg{distr}, 
-        \pkg{distrEx}, \pkg{distrSim}, \pkg{distrTEst}, \pkg{distrTeach}, 
+        \pkg{distrEx}, \pkg{distrMod}, \pkg{distrSim}, \pkg{distrTEst}, \pkg{distrTeach}, 
         version \pkgversion}
 %,version \pkgExversion}
 \author{\small Peter Ruckdeschel\thanks{Fraunhofer ITWM, Kaiserslautern}
@@ -76,34 +76,49 @@ which themselves are again subclasses of \code{UnivariateDistribution}. %\\
 %
 By means of these classes, we may automatically generate new objects of these 
 classes for the laws of r.v.'s under standard mathematical univariate 
-transformations and under convolution of independent r.v.'s.
+transformations and under standard bivariate arithmetical operations acting
+on independent r.v.'s.
 %
-From version 1.6 on, \pkg{distr} has been split up into the smaller packages
-\pkg{distr} (only distribution-classes and -methods),  \pkg{distrSim}
-(standardized treatment of simulations, also under contaminations)
-and \pkg{distrTEst} \newline(classes and methods for evaluations of statistical
-procedures on such simulations).
+%From version 1.6 on, \pkg{distr} has been split up into the smaller packages
+%\pkg{distr} (only distribution-classes and -methods),  \pkg{distrSim}
+%(standardized treatment of simulations, also under contaminations)
+%and \pkg{distrTEst} \newline(classes and methods for evaluations of statistical
+%procedures on such simulations).
+Package \pkg{distr} in this setting works as basic package for further extensions.
+These start with package \pkg{distrEx}, covering statistical functionals like 
+expectation, variance and the median evaluated at distributions, as well as
+distances between distributions and basic support for multivariate and
+conditional distributions. Next, from version 2.0 on, comes package \pkg{distrMod}
+which uses these concepts to provide an object orientated competitor to 
+\code{fitdistr} from package \pkg{MASS} in covering estimation in statistical 
+models. Further on there are packages \pkg{distrSim} for the standardized 
+treatment of simulations, also under contaminations and package 
+\pkg{distrTEst} with classes and methods for evaluations of statistical
+procedures on such simulations. Finally, from version 2.0 on, there is package
+\pkg{distrTeach} to embody illustrations for basic stats courses using
+our distribution classes.
 
-\noindent The latter two of them require package \pkg{setRNG} by 
-\href{mailto:pgilbert@bank-banque-canada.ca}{Paul Gilbert}
-to be installed from \href{http://cran.r-project.org/mirrors.html}{\tt CRAN}. 
+%\noindent The latter two of them require package \pkg{setRNG} by 
+%\href{mailto:pgilbert@bank-banque-canada.ca}{Paul Gilbert}
+%to be installed from \href{http://cran.r-project.org/mirrors.html}{\tt CRAN}. 
 % \\
 
-\noindent Additionally, mainly contributed by \cite{MK:05}, in \pkg{distrEx} we 
-extend the functionality of \pkg{distr}, providing functionals like expectation 
-or variance and distances for distributions. Also, this package contains some 
-first steps to multivariate distributions, providing classes for discrete 
-multivariate distributions and for factorized, conditional
-distributions.
+%\noindent Additionally, mainly contributed by \cite{MK:05}, in \pkg{distrEx} we 
+%extend the functionality of \pkg{distr}, providing functionals like expectation 
+%or variance and distances for distributions. Also, this package contains some 
+%first steps to multivariate distributions, providing classes for discrete 
+%multivariate distributions and for factorized, conditional
+%distributions.
 % -------------------------------------------------------------------------------
 \end{abstract}
 % -------------------------------------------------------------------------------
 \tableofcontents
 \noindent
-{\small This document appeared in an abridged form in {\em R-News\/}, {\bf 6}(2) 
-as {\sf ``S4 Classes for Distributions''}, c.f.\ \cite{R:K:S:C:04}, which in its 
-published form refers to package versions 1.6, resp.\ 0.4-2. This document takes 
-into account the subsequent revisions and versions.}\medskip
+{\small Parts of this document appeared in an earlier and much shorter form in 
+{\em R-News\/}, {\bf 6}(2) as {\sf ``S4 Classes for Distributions''}, 
+c.f.\ \cite{R:K:S:C:04}, which in its 
+published form refers to package versions 1.6, resp.\ 0.4-2. This present document 
+takes into account the subsequent revisions and versions.}\medskip
 % -------------------------------------------------------------------------------
 \addtocounter{section}{-1}
 \section{Motivation}
@@ -227,13 +242,9 @@ unchanged and still allow for vector-valued parameters.
 Kouros Owzar  in an off-list mail raised the point, that in case of multiple 
 parameters as in case of the normal or the $\Gamma$-distribution, it might be 
 useful to be able to pass these multiple parameters in vectorized form to the 
-generating function. We, too, think that this is a good idea, but even more plan 
-to introduce a further extension package to \pkg{distr} which will cover 
-statistical models. In this package, this issue will be solved by requiring a 
-map $\theta \mapsto P_\theta$ or, in {\tt S}, a function 
-\code{function(theta){....}} which returns an object of class distribution 
-or subclass, which realizes $P_\theta$. So it will be up to the programmer or 
-user how to realize this map.
+generating function. We, too, think that this is a good idea, but have 
+shifted this question to the new extension package \pkg{distrMod} which covers
+more general treatment of statistical models, see section~\ref{distrMod}.
 % -------------------------------------------------------------------------------
 \section{Organization in classes}
 % -------------------------------------------------------------------------------
@@ -327,8 +338,10 @@ the support where the probability is $0$.\\
 
 
 Objects of classes \code{LatticeDistribution} resp.\ 
-\code{DiscreteDistribution} may be generated using the generating functions
-\code{LatticeDistribution()} resp.\ \code{DiscreteDistribution()}; see also
+\code{DiscreteDistribution}, and from version 2.0 on, also 
+\code{AbscontDistribution},  may be generated using the generating functions
+\code{LatticeDistribution()} resp.\ \code{DiscreteDistribution()}
+resp.\ \code{AbscontDistribution()}; see also
 the corresponding help.
 \\
 As subclasses of these absolutely continuous and discrete classes, we have 
@@ -342,7 +355,8 @@ of  the corresponding classes may be read off from figure~\ref{fig1c}.
 Class \code{LatticeDistribution} and slot \code{gaps}, as well as
 additional classes \code{AffLinAbscontDistribution}, 
 \code{AffLinDiscreteDistribution}, \code{AffLinLatticeDistribution} 
-(c.f.\ section~\ref{afflin}) are still lacking in this graphic so far, however.
+(c.f.\ section~\ref{afflin}) are still lacking in this graphic so far, however,
+as well as the classes introduced in version 2.0.
 \\
 
 \ifpdf
@@ -370,16 +384,13 @@ additional classes \code{AffLinAbscontDistribution},
 \vspace{-1ex}
 \end{figure}
 \fi
+
 The most powerful use of our package probably consists in operations to 
 automatically generate new slots \code{r}, \code{d}, \code{p}, and \code{q} 
 ---induced by mathematical transformations. This is discussed in some detail in 
 subsection~{\ref{methods}}.
-%
-\subsubsection{Classes for multivariate distributions and for conditional 
-distributions}
 
-In \pkg{distrEx}, we provide the following classes for handling multivariate 
-distributions:
+\subsubsection{Classes for Mixture Distributions}
 
 \paragraph{Lists of distributions}
 
@@ -389,6 +400,70 @@ all elements must be univariate distributions. For these, the usual indexing
 operations with \code{[[.]]} are available. As we will use these lists to 
 construct more general mixture distributions in some subsequent versions, we 
 have moved these routines to package \pkg{distr} from version 1.9 on.
+
+
+\paragraph{Mixing distributions}
+
+To be able to work with distributions which are neither purely absolutely continuous
+nor purely discrete, like e.g.\ the distribution of $\min(X,1)$ for 
+$X\sim{\cal N}(0,1)$, from package version 2.0 on, we support mixtures of 
+distributions. These are realized as subclasses of class \code{UnivariateDistribution}.
+To begin with, we introduce a class \code{UnivarMixingDistribution} as subclass of
+class \code{UnivariateDistribution} which additionally has two slots \code{MixCoeff}
+and \code{MixDistr}. While the former is a numeric vector taking up the mixture
+coefficients of the distribution, the latter is an object of class 
+\code{UnivarDistrList} as described below, taking up the distributions of the
+mixture components; as usual, these slots have their respective accessor and
+replacement functions. Usually, this mixing distribution will neither have 
+a Lebesgue density nor be purely discrete, having a counting density. So slot
+\code{d} as a rule will be empty. Objects of this class may be generated by
+the generating function \code{UnivarMixingDistribution()},  see also
+the corresponding help. In addition there is the function \code{flat.mix}
+to simplify such an object converting it to an object of class 
+\code{UnivarLebDecDistribution}; confer subsection~\ref{flat}.
+Note that these mixing distributions may be recursive, i.e.\ compoments of 
+slot \code{MixDistr} may again
+be of class \code{UnivarMixingDistribution}.
+<<examLis, eval = TRUE>>=
+library(distr)
+M1 <- UnivarMixingDistribution(Norm(), Pois(lambda=1), Norm(), 
+      withSimplify = FALSE)
+M2 <- UnivarMixingDistribution(M1, Norm(), M1, Norm(), withSimplify = FALSE)
+M2
+@
+
+\paragraph{Lebesgue Decomposed distributions}
+
+As seen in the above example of $\min(X,1)$, classes \code{DiscreteDistribution}
+and \code{Abscontdistribution} are not closed under arithmetic operations. To
+have such a closure, from version 2.0 on, we introduce class
+\code{UnivarLebDecDistribution}, which realizes a Lebesgue decomposition of a 
+univariate distribution into a discrete and an absolutely continuous distribution.
+Of course, we still cannot cover distributions having a non-trivial continuous
+but not absolutely continuous part like the Cantor distribution, but class 
+\code{UnivarLebDecDistribution} provides a sufficiently general compromise.
+Class \code{UnivarLebDecDistribution} is a subclass of class 
+\code{UnivarMixingDistribution}, where in addition we assume that both slots
+\code{MixCoeff} and \code{MixDistr} are of length 2, and that the first component
+of slot  \code{MixDistr} is of class \code{AbscontDistribution} while the second
+is of class \code{DiscreteDistribution}. For this class there are particular
+accessors \code{acWeight}, \code{discreteWeight} for the respective weights and
+\code{acPart}, \code{discretePart} for the respective distributions. Again there
+is a generating function \code{UnivarMixingDistribution()}.
+In addition there is the function \code{flat.LCD}
+to simplify such an object converting it to an object of class 
+\code{UnivarLebDecDistribution}; confer subsection~\ref{flat}.%
+Classes \code{AbscontDistribution}, \code{DiscreteDistribution} and
+\code{UnivarLebDecDistribution}  are grouped to a virtual class 
+(more specifically a class union)
+\code{AcDcLcDistribution}.
+
+\subsubsection{Classes for multivariate distributions and for conditional 
+distributions}
+
+In \pkg{distrEx}, we provide the following classes for handling multivariate 
+distributions:
+
 
 \paragraph{Multivariate distribution classes}
 
@@ -677,7 +752,56 @@ Consequently, the result \code{Y} of \code{Y <- a1 * X + b1} for an
 object \code{X} of (a subclass of) class \code{AffLinDiscrete\-Distribution}
 (if \code{ a != 0}) is of the same class as \code{X} but with slots
 \code{Y@a = a1 * X@a}, \code{Y@b = b1 + X@b}, \code{Y@X0 = X@X0}.
+In version 2.0, the same principle has been applied to introduce class
+\code{AffLinUnivarLebDecDistribution}. All \code{AffLin}-xxx distribution
+classes are grouped to a virtual class (more specifically a class union)
+\code{AffLinDistribution}.
 %
+\subsection{Decompositions and Flattening}\label{flat}
+%
+One of the issues when programming the distribution of the multiplication of
+independent random variables is that we have to treat positive and negative
+part (and, if nontrivial, point mass to $0$) separately. To this end, from
+version 2.0 on, there are methods \code{decomposePM} to decompose a
+discrete, an absolutely continuous or a Lebesgue decomposed distribution into
+its respective parts.  
+%
+<<examdcP, eval = TRUE>>=
+decomposePM(Norm())
+     decomposePM(Binom(2,0.3)-Binom(5,.4))
+     decomposePM(UnivarLebDecDistribution(Norm(),Binom(2,0.3)-Binom(5,.4), 
+                 acWeight = 0.3))
+@                 
+
+On the other hand, concatenating mathematical operations would easily
+yield quite complicated structures. A first thing to do is to look whether
+some components carry mass (approximately) 0. \code{simplifyD} uses this to
+cancel out such components, and if possible return simpler types; see also
+the help to this function.
+
+Also, sometimes one would like to let collapse a whole list of distributions
+(as in the \code{MixDistr} of a \code{UnivarMixingDistribution} object) 
+into a simpler \code{UnivarLebDecDistribution}-class
+form. This is what is done in the the functions \code{flat.mix} and
+\code{flat.LCD}. 
+
+<<examflat, eval = TRUE>>=
+D1 <- Norm()
+D2 <- Pois(1)
+D3 <- Binom(1,.4)
+D4 <- UnivarMixingDistribution(D1,D2,D3, mixCoeff = c(0.4,0.5,0.1), 
+      withSimplify = FALSE)
+D <- UnivarMixingDistribution(D1,D4,D1,D2, mixCoeff = c(0.4,0.3,0.1,0.2), 
+      withSimplify = FALSE)
+D
+D0<-flat.mix(D)
+D0
+@                 
+
+Many arithmetic operations described in the subsequent sections do
+this simplification on their return value, according to the global option
+\code{SimplifyD}.
+
 \subsection[The group math of unary mathematical operations]{The group 
 \code{math} of unary mathematical operations}
 %
@@ -723,7 +847,38 @@ i.e.; with exact expressions for slots \code{d}, \code{p}, and \code{q}.
 In order to facilitate automatic generation of new distributions, in particular 
 those arising as image distributions under transformations of correspondingly 
 distributed random variables, we provide ad hoc methods that should be 
-overloaded by more exact ones wherever possible: By means of the function 
+overloaded by more exact ones wherever possible. As, at least in principle
+each of these slots is sufficient for the reconstruction of the other ones,
+we follow the following strategy:
+\\
+\begin{center}
+\begin{tabular}{llll|p{10cm}}
+\code{d} & \code{p} &  \code{q} & \code{r} & reconstruction\\
+\hline
+$+$&$+$&$+$&$+$&no reconstruction necessary\\
+$+$&$+$&$+$&$-$&\code{r} as \code{q(X)(runif(n))}\\
+$+$&$+$&$-$&$+$&\code{q} by numerical inversion from \code{p}\\
+$+$&$+$&$-$&$-$&\code{q} again from \code{p} and 
+                         \code{r} again from slot \code{q}\\
+$+$&$-$&$+$&$+$&\code{p} by numerical integration from \code{d}\\
+$+$&$-$&$+$&$-$&\code{p} from \code{d}, and \code{r} from  \code{q}\\
+$+$&$-$&$-$&$+$&\code{p} from \code{d}, and \code{q} from  \code{p}\\
+$+$&$-$&$-$&$-$&\code{p} from \code{d}, 
+\code{q} from \code{p} and \code{r} from  \code{q}\\
+$-$&$+$&$+$&$+$&\code{d} by numerical differentiation (with \code{D1ss}
+from package \pkg{sfsmisc} from \code{p}\\
+$-$&$+$&$+$&$-$&\code{d} from \code{p}, \code{r} from \code{q}\\
+$-$&$+$&$-$&$+$&\code{d}, \code{q}  from \code{p}\\
+$-$&$+$&$-$&$-$&\code{d}, \code{q}  from \code{p}, \code{r} from \code{q}\\
+$-$&$-$&$+$&$+$&\code{p} by numerical inversion from \code{q},
+                \code{d} from \code{p}\\
+$-$&$-$&$+$&$-$&\code{p}, \code{r} from \code{q}, \code{d} from \code{p}\\
+$-$&$-$&$-$&$+$& use \code{RtoDPQ}\\
+$-$&$-$&$-$&$-$&not allowed\\
+\end{tabular}
+\end{center}
+\\
+More specifically, by means of the function 
 \code{RtoDPQ} we first generate $10^{\footnotesize\tt RtoDPQ.e}$
 random numbers where \code{RtoDPQ.e} is a global option of this package and is 
 discussed in section~{\ref{options}}. %
@@ -733,6 +888,13 @@ produced by numerical inversion.
 Of course the result is rather crude as it relies on the law of large numbers 
 only, but this way all transformations within the group \code{math} become 
 available.
+If the input of the transformation is of class \code{UnivarLebDecDistribution},
+\code{RtoDPQ} is replaced by \code{RtoDPQ.LC}. In this case, replicated values
+are taken as belonging to the discrete part, for which the distribution is 
+generated according to the corresponding frequencies with the generating
+function \code{DiscreteDistribution()}. With the remaining, non replicated
+values, the absolutely continuous part is reconstructed just as with \code{RtoDPQ}.
+
 Where laws under transformations can easily be computed exactly ---as for affine
 linear transformations--- we replace this procedure by the exactly transformed
 \code{d}, \code{p}, \code{q}-methods.
@@ -749,11 +911,69 @@ variables/distributions $X$ and $Y$ of any univariate distributions ---or
 in {\tt S4}-jargon: the addition operator \code{"+"} is overloaded for two 
 objects of class \code{UnivariateDistribution} and corresponding subclasses.
 %
+\subsection{Further Binary Operators}
+%
+Having implemented a class for Lebesgue decomposed distributions, we have been
+able to realize further binary operators, in particular we have exact
+analytical constructions for multiplication, division, exponentiation:
+<<arith2v1, eval = TRUE, fig = TRUE>>=
+  A1 <- Norm(); A2 <- Unif()
+  A1A2 <- A1*A2
+  plot(A1A2, withSweave = TRUE)
+@
+<<arith2v2, eval = TRUE, fig = TRUE>>=
+  A12 <- 1/(A2 + .3)
+  plot(A12, withSweave = TRUE) 
+@
+<<arith2v3, eval = TRUE, fig = TRUE>>=
+  B <- Binom(5,.2)+1
+  A1B <- A1^B
+  plot(A1B, xlim=c(-3,3), withSweave = TRUE)
+@
+<<arith2V4, fig = TRUE>>=
+  plot(1.2^A1, withSweave = TRUE)
+@
+<<arith2v5, fig = TRUE>>=
+  plot(B^A1, withSweave = TRUE)
+@
+%
+\subsection{Truncation, Pairwise Minimum/Maximum, Huberization}\label{TruncMin}
+%
+Up to version 2.0, we have had truncation, Huberization and minimum
+and maximum of random variables as illustrating demos; in particular
+the last three could not be realized in a completely satisfactory manour,
+as Lebesgue decomposed distributions had not been available before.
+Now these illustrations have moved into the package itself:
+<<Hub, eval = TRUE, fig = TRUE>>=
+H <- Huberize(Norm(),lower=-1,upper=2)
+plot(H, withSweave = TRUE)
+@
+<<Trun, eval = TRUE, fig = TRUE>>=
+T <- Truncate(Norm(),lower=-1,upper=2)
+plot(T, withSweave = TRUE)
+@
+<<Min1, eval = TRUE, fig = TRUE>>=
+M1 <- Maximum(Unif(0,1), Minimum(Unif(0,1), Unif(0,1)))
+plot(M1, withSweave = TRUE)
+@
+<<Min2, eval = TRUE, fig = TRUE>>=
+M2 <- Minimum(Exp(4),4)
+plot(M2, withSweave = TRUE)
+@
+<<Min3, eval = TRUE, fig = TRUE>>=
+M3 <- Minimum(Norm(2,2), Pois(3))
+plot(M3, withSweave = TRUE)
+@
+%
 \subsection{Overloaded generic functions}
 Methods \code{print}, \code{plot}, \code{show} and \code{summary} have been 
 overloaded for classes \code{Distribution}, \code{Dataclass}, \code{Simulation}, 
 \code{ContSimulation}, as well as \code{Evaluation} and \code{EvaluationList} to 
-produce ``pretty''  output. %\newline 0??????\\
+produce ``pretty''  output. 
+More specifically there are also particular \code{show} methods
+for classes \code{UnivarDistrList}, \code{UnivarMixingDistribution} and
+\code{UnivarLebDecDistribution}.
+%\newline 0??????\\
 \code{print}, \code{plot}, \code{show} and \code{summary} have additional, 
 optional arguments for plotting subsets of the simulations / results:
 index vectors for the dimensions, the runs, the observations, and the 
@@ -1023,8 +1243,12 @@ class \code{DiscreteDistribution} we use a sum over the support of \code{X},
 and if it is of class \code{AbscontDistribution} we use numerical 
 integration\footnote{i.e., we first try (really(!): \code{try})
 \code{integrate} and if this fails we use Gau{\ss}-Legendre integration 
-according to \cite{NumR:92}, see also \code{?distrExIntegrate}}; if we only 
-know that {\tt X} is of class \code{UnivariateDistribution} we use Monte-Carlo 
+according to \cite{NumR:92}, see also \code{?distrExIntegrate}}; 
+for {\tt X} of class \code{UnivarLebDecDistribution}, expectations
+for discrete and absolutely continuous part are evaluated separately and
+subsequently combined according to their respective weights.
+If we only  know that {\tt X} is of class \code{UnivariateDistribution} we 
+use Monte-Carlo 
 integration. This also is the default method in for class 
 \code{MultivariateDistribution}, while for \code{DiscreteMVDistribution} we 
 again use sums. For an object \code{Y} of a subclass of class 
@@ -1160,6 +1384,7 @@ Statistics. In package \pkg{distrEx}, we provide the follwoing distances:
   \item Kolmogoroff distance
   \item total variation distance
   \item Hellinger distance
+  \item Cram\'er von Mises distance
   \item convex-contamination ``distance'' (asymmetric!) defined as
   $$
 d(Q,P):=\inf\{r>0\,|\, \exists \;\mbox{probability } H:\quad Q=(1-r)P+rH \}
@@ -1190,6 +1415,7 @@ corresponding plots in seconds. From version 1.9 on, we also include a
 \code{TclTk}-based version of this demo, where the user may enter the 
 distribution argument (i.e.; the summands' distribution) into a text line and 
 control the sample size by a slider in some widget: \code{illustCLT\_tcl}
+From version 2.0 on, this functionality has moved to package \pkg{distrTeach}.
 
 \subsubsection{LLN for arbitrary summand distribution}
 
@@ -1201,6 +1427,7 @@ corresponding plots in seconds, also, optionally, the limiting expectation
 (in case of class \code{Cauchy}: the non-limiting median) is drawn as a line and
 Chebyshev/CLT-based (pointwise) confidence bands and their respective empirical 
 coverages are displayed. 
+From version 2.0 on, this functionality has moved to package \pkg{distrTeach}.
 
 \subsubsection{Deconvolution example}
 
@@ -1215,8 +1442,26 @@ determine the factorized conditional distribution $P^{X|Y=y}$, and based on this
 either its (posterior) mode oder (posterior) expectation; also see
 \code{demo(Prognose, package="distrEx")}.
 
+%
+\section[New package distrMod]{New package {\tt distrMod}}\label{distrMod}
+%
+\subsection{Model Classes}
+%
+[[[[MATTHIAS]]]
+\subsection{Estimator Classes}
+%
+[[[[MATTHIAS]]]
+%
+\subsection{Minimum Criterium Estimation}
+%
+[[[[MATTHIAS]]]
+%
+%
 \section{Options}\label{options}
+%
+%
 \subsection[Options for distr]{Options for \pkg{distr}}
+%
 Analogously to the \code{options} command in {\sf R} you may specify a number of
 global ``constants'' to be used within the package. These include
 \begin{itemize}
@@ -1241,6 +1486,12 @@ global ``constants'' to be used within the package. These include
   \item \code{warningArith}: controls whether a warning issued at
    printing/showing a \code{Distribution} object produced by arithmetics
   operating on distributions ---default \code{TRUE}
+  \item \code{withgaps}: controls whether in the return value of arithmetic
+  operations the slot \code{gaps} of an the \code{AbscontDistribution} part
+  is filled automatically based on empirical evaluations via  \code{setgaps}
+   ---default \code{TRUE}
+  \item \code{simplifyD}: controls whether in the return value of arithmetic
+  operations there is a call to \code{simplifyD} or not ---default \code{TRUE}
 \end{itemize}
 All current options may be inspected by \code{distroptions()}  and modified by
  \linebreak[4] \code{distroptions("<options-name>"=<value>)}.\\
@@ -1398,6 +1649,8 @@ onwards are only supplied for {\sf R} Version {\tt 2.2.0 patched} and later.
 
 
 \subsection{Dependencies}
+In package \pkg{distr}, from version 2.0, we make use of \code{D1ss} from
+\href{mailto:maechler@stat.math.ethz.ch}{Martin M\"achler's} package \pkg{sfsmisc}.
 In package \pkg{distrEx}, we need 
 \href{mailto:alec_stephenson@hotmail.com}{Alec Stephenson's} package \pkg{evd} 
 for the extreme  value distributions implemented therein. 
@@ -1445,6 +1698,15 @@ by\linebreak[4] {\tt<classname>([<slotname>=<value>,...])}
 where except for class \code{DataClass} in package \pkg{distrSim} all classes 
 have default values for all their slots; in \code{DataClass},
 the slot \code{Data} has to be specified.
+\item Multiplication (and Division) is implemented as corresponding
+exponentials of the convolution of the logarithms (evaluated separately
+for positive and negative parts).
+\item Exponentiation also uses the exp-log trick.
+\item Multiplication, Exponentation, and Min/Maximum of an \code{AbscontDistribution}
+and a \code{DiscreteDistribution} as an intermediate step produce
+a \code{UnivarMixingDistribution}, with one mixing component for each element
+of the support of the \code{DiscreteDistribution}. As a last step,
+this \code{UnivarMixingDistribution} is then ``flattened''.
 \item
 As suggested in \cite{OOPGent} all slots are accessed and modified by 
 corresponding accessor- and replacement functions ---templates for which were 
@@ -1480,17 +1742,17 @@ for continuous distributions
 \item further exact formulae for binary arithmetic operations like \code{"*"}
 %\item derivation of a class \code{LatticeDistribution} from 
 %\code{DiscreteDistribution} to be able to easily apply FFT
-\item redo the math-method for discrete distributions when only slot \code{r} %
-is given
+%\item redo the math-method for discrete distributions when only slot \code{r} %
+%is given
 %\item better documentation for method \code{evaluate} / class \code{Evaluation}
 %\item adaptation of class \code{Evaluation} / method \code{evaluate} to be more flexible
 %\item use of  \code{initialize} in generating functions
-\item generating function for new distribution classes to ease inclusion of 
-new distributions
+%\item generating function for new distribution classes to ease inclusion of 
+%new distributions
 \item goodness of fit tests for distribution-objects
-\item use of $\tt \backslash$\code{S4method} in documentation
-\item overloading binary operators of group \code{Math2} for independent 
-distributions
+%\item use of $\tt \backslash$\code{S4method} in documentation
+%\item overloading binary operators of group \code{Math2} for independent 
+%distributions
 \item defining a subgroup of \code{Math2} of invertible binary operators
 %%\item better use of \code{concept} in rd-files
 %\item suggestion by \href{mailto:kouros.owzar@duke.edu}{Kouros Owzar}: 
@@ -1877,371 +2139,9 @@ distroptions("TruncQuantile" = oldeps)
 
 @
 \subsection{Truncation and Huberization/winsorization}\label{truncex}
-\begin{footnotesize}
-  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/huberize.R}%
-    {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
-  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/huberize.R}}}}\\[2ex]
-\href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/truncate.R}%
-    {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
-    {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/truncate.R}}}}\\[2ex]
-\end{footnotesize}
-\begin{small}
-The operations of truncation and Huberization play a crucial role in Robust 
-Statistics, but also arise in many other contexts like censoring etc; they may 
-now be formulated quite generally as shown in this example. With the slots
- {\tt d}, {\tt p} and {\tt q} of class {\tt UnivariateDistribution} being
-{\tt OptionalFunction} from version {\tt 1.4} on, it would be no problem to 
-return a corresponding distribution object now.
-\end{small}
-<<huberize, eval = TRUE, fig = TRUE>>=
-require(distr)
-
-if(!isGeneric("Huberize")) 
-    setGeneric("Huberize", 
-       function(object, lower, upper) 
-                standardGeneric("Huberize")
-                )
-
-setMethod("Huberize",
-          signature(object = "AbscontDistribution", 
-          lower = "numeric", upper = "numeric"),
-          function(object, lower, upper){
-            ## new random number function
-            rnew = function(n){
-              rn = r(object)(n)
-              ifelse(rn < lower, lower, 
-                     ifelse(rn >= upper, upper, rn))
-            }
-
-            ## new cdf 
-            pnew = function(x)
-              ifelse(x < lower, 0, 
-                     ifelse(x >= upper, 1, p(object)(x)))
-
-            ## new quantile function
-            plower = p(object)(lower)
-            pupper = p(object)(upper)
-            qnew = function(x)
-              ifelse(x < plower,
-                     ifelse(x < 0, NA, -Inf),
-                     ifelse(x >= pupper,
-                            ifelse(x > 1, NA, upper),
-                            q(object)(x)))
-
-            new("UnivariateDistribution",
-                r = rnew, p = pnew, q = qnew, d = NULL)
-          })
-
-# Example
-# Normal(0,1)-Distribution huberized at -0.5 and 1
-N = Norm()
-HN = Huberize(N, -0.5, 1)
-
-# some huberized randomnumbers
-r(HN)(10)
-
-## plot is not (yet) available for class
-## UnivariateDistribution, i.e. distrib's
-## which are neither a.c. nor discrete 
-## (here HN is a mixture of a.c. and discrete 
-## distributions)
-
-# cdf of huberized Normal-Distribution
-# and of Normal-Distribution
-oldpar = par()
-par(mfrow = c(1,2))
-
-x = seq(-1.5, 1.5, length = 1000)
-plot(x, p(HN)(x),
-     type = "l",
-     lwd = 5,
-     ylab = "CDF")
-points(c(-0.5,1),p(HN)(c(-0.5,1)),pch=16, cex=2)
-points(c(-0.5,1),c(0,p(HN)(0.999)),pch=21,cex=2)
-
-lines(x, p(N)(x),
-      lwd = 2,
-      col = "red")
-legend("topleft",
-       legend = c("N(0,1)", "N(0,1) huberized"),
-       fill = c("red", "black"))
-
-# quantile functions
-x = seq(0, 1, length = 1000)
-plot(x, q(HN)(x),
-     type = "l",
-     lwd = 5,
-     ylab = "Quantiles",
-     ylim = c(-2.5,3))
-lines(c(0,p(HN)(-0.5)),-c(1,1)*0.5, lwd = 5)
-points(0,-0.5,pch=20,cex=2)
-
-lines(x, q(N)(x),
-      lwd = 2,
-      col = "red")
-legend("topleft",
-       legend = c("N(0,1)", "N(0,1) huberized"),
-       fill = c("red", "black"))
-
-par(oldpar)
-@
-<<truncate, eval = TRUE, fig = TRUE>>=
-require(distr)
-
-if(!isGeneric("Truncate")) 
-    setGeneric("Truncate", 
-       function(object, lower, upper) 
-                standardGeneric("Truncate")
-                )
-
-setMethod("Truncate",
-          signature(object = "AbscontDistribution", 
-          lower = "numeric", upper = "numeric"),
-          function(object, lower, upper){
-            ## new random number function
-            rnew = function(n){
-              rn = r(object)(n)
-              while(TRUE){
-                rn[rn < lower] = NA
-                rn[rn > upper] = NA
-                index = is.na(rn)
-                if(!(any(index))) break
-                rn[index] = r(object)(sum(index))
-              }
-              rn
-            }
-
-            ## new cdf 
-            plower = p(object)(lower)
-            pupper = p(object)(upper)
-            pnew = function(x)
-              ifelse(x < lower, 0, 
-                     ifelse(x >= upper, 1, 
-                     (p(object)(x) - plower)/(pupper - plower)))
-
-
-            ## new density 
-            lostmass = plower + 1 - pupper
-
-            dnew = function(x) 
-              ifelse(x < lower, 0, 
-                     ifelse(x >= upper, 0, 
-                         d(object)(x)/(1-lostmass)))
-
-            # new quantile
-            qfun1 <- function(x){
-              if(x == 0) return(lower)
-              if(x == 1) return(upper)
-              fun <- function(t) pnew(t) - x
-              uniroot(f = fun, interval = c(lower, upper))$root
-            }
-            qfun2 <- function(x)
-              sapply(x, qfun1)
-
-            return(new("AbscontDistribution", r = rnew, 
-                   d = dnew, p = pnew, q = qfun2))            
-          })
-
-# Example
-# Normal(0,1)-Distribution truncated at -0.5 and 1
-
-N = Norm()
-Z = Truncate(N, -0.5, 1)
-
-# the truncated Distribution
-
-plot(Z, lwd=5, withSweave = TRUE)
-
-# some truncated randomnumbers
-
-r(Z)(10)
-
-oldpar = par()
-par(mfrow = c(1,2))
-
-
-# cdf of truncated Normal-Distribution
-# and of Normal-Distribution
-
-x = seq(-1.5, 1.5, length = 1000)
-plot(x, p(Z)(x),
-     type = "l",
-     lwd = 5,
-     xlab = "",
-     ylab = "CDF")
-lines(x, p(N)(x),
-      lwd = 2,
-      col = "red")
-legend("topleft",
-       legend = c("N(0,1)", "N(0,1) truncated"),
-       fill = c("red", "black"))
-
-# density of truncated Normal-Distribution
-# and of Normal-Distribution
-
-x = seq(-1.5, 1.5, length = 1000)
-plot(x, d(Z)(x),
-     type = "l",
-     lwd = 5,
-     xlab = "",
-     ylab = "density")
-lines(x, d(N)(x),
-      lwd = 2,
-      col = "red")
-legend("topleft", legend = c("N(0,1)", "N(0,1) truncated"),
-       fill = c("red", "black"))
-
-
-par(oldpar)
-@
+has been integrated to the package itself, see section~\ref{TruncMin}
 \subsection{Distribution of minimum and maximum of two independent random variables}\label{minmaxex}
-\begin{footnotesize}
-  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/minandmax.R}%
-  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
-  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/minandmax.R}}}}\\[2ex]
-\end{footnotesize}
-\begin{small}
-As in the preceding example, we illustrate the use of package {\tt "distr"} by
- making available widely necessary operations: Minimum and maximum of two 
- independent random variables.
-\end{small}
-<<minandmax, eval = TRUE, fig = TRUE>>=
-require(distr)
-
-if(!isGeneric("Minimum")) 
-    setGeneric("Minimum", 
-    function(e1, e2) standardGeneric("Minimum"))
-
-setMethod("Minimum",
-          signature(e1 = "AbscontDistribution", 
-          e2 = "AbscontDistribution"),
-          function(e1, e2){
-            ## new random number function
-            rnew <- function(n){
-              rn1 <- r(e1)(n)
-              rn2 <- r(e2)(n)
-              
-              ifelse(rn1 < rn2, rn1, rn2)
-            }
-
-            ## new cdf 
-            pnew <- function(x){
-              p1 <- p(e1)(x)
-              p2 <- p(e2)(x)
-              p1 + p2 - p1 * p2
-            }
-
-            ## new density 
-            dnew <- function(x){
-              d1 <- d(e1)(x)
-              d2 <- d(e2)(x)
-              p1 <- p(e1)(x)
-              p2 <- p(e2)(x)
-              d1 + d2 - d1 * p2 - p1 * d2
-            }
-
-            ## new quantile function
-            lower1 <- q(e1)(0)
-            lower2 <- q(e2)(0)
-            upper1 <- q(e1)(1)
-            upper2 <- q(e2)(1)
-            lower <- min(lower1, lower2)
-            upper <- min(upper1, upper2)
-
-            maxquantile = min(q(e1)(1e-6, lower.tail = FALSE), 
-                              q(e2)(1e-6, lower.tail = FALSE))
-            minquantile = min(q(e1)(1e-6), 
-                              q(e2)(1e-6)) 
-            
-            qfun1 <- function(x){
-              if(x == 0) return(lower)
-              if(x == 1) return(upper)
-              fun <- function(t) pnew(t) - x
-              uniroot(f = fun, 
-                  interval = c(maxquantile, 
-                               minquantile))$root
-            }
-            qfun2 <- function(x)
-              sapply(x, qfun1)
-
-            return(new("AbscontDistribution", r = rnew, 
-                   d = dnew, p = pnew, q = qfun2))            
-          })
-
-
-if(!isGeneric("Maximum")) setGeneric("Maximum", 
-    function(e1, e2) standardGeneric("Maximum"))
-
-setMethod("Maximum",
-          signature(e1 = "AbscontDistribution", 
-                    e2 = "AbscontDistribution"),
-          function(e1, e2){
-            ## new random number function
-            rnew <- function(n){
-              rn1 <- r(e1)(n)
-              rn2 <- r(e2)(n)
-              
-              ifelse(rn1 > rn2, rn1, rn2)
-            }
-
-            ## new cdf 
-            pnew <- function(x){
-              p1 <- p(e1)(x)
-              p2 <- p(e2)(x)
-              p1 * p2
-            }
-
-            ## new density 
-            dnew <- function(x){
-              d1 <- d(e1)(x)
-              d2 <- d(e2)(x)
-              p1 <- p(e1)(x)
-              p2 <- p(e2)(x)
-              d1 * p2 + p1 * d2
-            }
-
-            ## new quantile function
-            lower1 <- q(e1)(0)
-            lower2 <- q(e2)(0)
-            upper1 <- q(e1)(1)
-            upper2 <- q(e2)(1)
-            lower <- max(lower1, lower2)
-            upper <- max(upper1, upper2)
-
-            maxquantile = max(q(e1)(1e-6, lower.tail = FALSE), 
-                              q(e2)(1e-6, lower.tail = FALSE))
-
-            minquantile = max(q(e1)(1e-6), q(e2)(1e-6)) 
-            print(c(minquantile,maxquantile))
-            
-            qfun1 <- function(x){
-              if(x == 0) return(lower)
-              if(x == 1) return(upper)
-              fun <- function(t) pnew(t) - x
-              uniroot(f = fun, interval = c(maxquantile, 
-                                        minquantile))$root
-            }
-            qfun2 <- function(x)
-              sapply(x, qfun1)
-            
-            return(new("AbscontDistribution", r = rnew, 
-                   d = dnew, p = pnew, q = qfun2))            
-          })
-
-
-# Example
-
-N <- Norm(mean = 0, sd = 1)
-U <- Unif(Min = 0, Max = 1)
-
-Y <- Maximum(N, U)
-distroptions("TruncQuantile"=1e-6)
-plot(Y, lwd = 3, withSweave = TRUE)
-@
-<<min, eval = TRUE, fig = TRUE>>=
-Z <- Minimum(N,U)
-plot(Z, lwd = 3, withSweave = TRUE)
-@
+has been integrated to the package itself, see section~\ref{TruncMin}
 \subsection{Instructive destructive example}\label{destrex}
 \begin{footnotesize}
   Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/destructive.R}%

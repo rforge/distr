@@ -3,6 +3,14 @@
 ######################################################################
 
 ##############
+v 2.0   
+##############
+ * description for new classes "UnivarMixingDistribution", 
+   "UnivarLebDecDistribution"
+ * description of new arithmetic Trunc-Min/Maximiz-Huberization methods
+ * description of new packages distrMod distrTeach
+
+##############
 v 1.9   
 ##############
 
