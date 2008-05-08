@@ -16,15 +16,13 @@ and simulation classes as introduced there to capture the situation from which t
 \tabular{ll}{
 Package: \tab distrTEst\cr
 Version: \tab 2.0 \cr
-Date: \tab 2008-01-17 \cr
-Depends: \tab R(>= 2.2.0), methods, graphics, setRNG(>= 2006.2-1), startupmsg, 
-distr(>=1.8), distrSim(>= 1.8)\cr
-Suggests: \tab distrEx(>= 0.4-4)\cr
+Date: \tab 2008-05-08 \cr
+Depends: \tab R(>= 2.6.0), methods, graphics, setRNG(>= 2006.2-1), distr(>= 2.0), distrSim(>= 2.0), startupmsg\cr
+Suggests: \tab distrEx(>= 2.0)\cr
 Imports: \tab stats\cr
-SaveImage: \tab no\cr
 LazyLoad: \tab yes\cr
 License: \tab GPL (version 2 or later)\cr
-URL: \tab http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/\cr
+URL: \tab http://distr.r-forge.r-project.org/\cr
 }}
 \section{Classes}{
 \preformatted{
