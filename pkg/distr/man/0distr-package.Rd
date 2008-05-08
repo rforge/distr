@@ -49,7 +49,7 @@ Depends: \tab R(>= 2.2.0), methods, graphics, startupmsg\cr
 Imports: \tab stats\cr
 LazyLoad: \tab yes\cr
 License: \tab GPL (version 2 or later)\cr
-URL: \tab http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/\cr
+URL: \tab http://distr.r-forge.r-project.org/\cr
 }}
 
 
