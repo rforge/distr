@@ -27,10 +27,9 @@ distrEx -- Extensions of package distr
 \tabular{ll}{
 Package: \tab distrEx\cr
 Version: \tab 2.0 \cr
-Date: \tab 2008-01-17 \cr
-Depends: \tab R(>= 2.2.0), methods, distr(>= 1.8), evd, startupmsg\cr
+Date: \tab 2008-05-08 \cr
+Depends: \tab R(>= 2.6.0), methods, distr(>= 2.0), evd, startupmsg\cr
 Suggests: \tab tcltk\cr
-SaveImage: \tab no\cr
 LazyLoad: \tab yes\cr
 License: \tab GPL (version 2 or later)\cr
 URL: \tab http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/\cr
@@ -213,7 +212,7 @@ and \pkg{distrEx} is included into the mere documentation package \pkg{distrDoc}
 and may be called by \code{require("distrDoc");vignette("distr")}
 
 a homepage to this package is available under\cr
-\url{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/distrEx.html}
+\url{http://distr.r-forge.r-project.org/}
 
 M. Kohl (2005): \emph{Numerical Contributions to the Asymptotic 
 Theory of Robustness.} PhD Thesis. Bayreuth. Available as 

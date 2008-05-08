@@ -33,7 +33,7 @@ TotalVarDist(e1, e2, ...)
 \S4method{TotalVarDist}{AbscontDistribution,numeric}(e1, e2, asis.smooth.discretize = "discretize", 
             n.discr = getdistrModOption("nDiscretize"), low.discr = getLow(e2),
             up.discr = getUp(e2), h.smooth = getdistrModOption("hSmooth"))
-\S4method{TotalVarDist}{AcDcLcDistribution,AcDcLcDistribution-method}(e1, e2)
+\S4method{TotalVarDist}{AcDcLcDistribution,AcDcLcDistribution}(e1, e2)
 }
 \arguments{
   \item{e1}{ object of class \code{"Distribution"} or \code{"numeric"} }
