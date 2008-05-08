@@ -44,7 +44,7 @@ corresponding image distributions.
 \tabular{ll}{
 Package: \tab distr\cr
 Version: \tab 2.0 \cr
-Date: \tab 2008-01-17 \cr
+Date: \tab 2008-05-08 \cr
 Depends: \tab R(>= 2.2.0), methods, graphics, startupmsg\cr
 Imports: \tab stats\cr
 SaveImage: \tab no\cr
@@ -98,8 +98,8 @@ subclasses \code{UnivarMixingDistribution} to support mixing distributions,
 (with a discrete and an a.c. part) as well as \code{AffLinUnivarLebDecDistribution},
 for corresponding affine linear transformations.
 Class \code{UnivarLebDecDistribution} is closed under arithmetical operations 
-   +  "/", "*", "\^" for pairs of independent variables 
-   +  "+", "-" for pairs of independent variables 
+   +  \code{/}, \code{*}, \code{^} for pairs of independent variables 
+   +  \code{+}, \code{-} for pairs of independent variables 
    +  affine linear transformations
    +  truncation, huberization, min/max 
 which are all now available analytically.\cr
