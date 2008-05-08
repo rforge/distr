@@ -617,32 +617,87 @@ return(f)
             return(dfun)
 }
 
+.primefun <- function(f,x, nm = NULL){
+ 
+ h <- diff(x)
+ l <- length(x)
 
+ xm <- (x[-l]+x[-1])/2
+
+ fxm <- f(xm)
+ fx <- f(x)
+ 
+ 
+ fxs  <- 2 * cumsum(fx) - fx - fx[1]
+ fxsm <- 4 * cumsum(fxm)
+
+ fxx <- c(0, (fxs[-1]+fxsm)* h / 6 )
+
+ if (is.null(nm)) nm <- fxx[l]
+
+ fx1 <- approxfun(x, fxx, yright = nm, yleft = 0)
+
+ ffx <- function(u){
+      ffy <- fx1(u) 
+      ffy[u > max(x)] <- nm 
+      ffy[u < min(x)] <- 0
+      return(ffy)
+     }
+
+ return(ffx)
+}
+
+.csimpsum <- function(fx){
+ l <- length(fx)
+ if (l%%2 == 0) {fx <- c(0,fx); l <- l+1}
+ f.even <- fx[seq(l) %% 2 == 0]
+ f.odd  <- fx[seq(l) %% 2 == 1]
+ fs    <- 2 * cumsum(f.odd) - f.odd - f.odd[1]
+ fsm   <- 4 * cumsum(f.even)
+ ff=c(0,(fs[-1]+fsm)/6 )
+ ff
+}
 
 .makePNew <- function(x, dx, h = NULL, notwithLLarg = FALSE,
                       Cont = TRUE, myPf = NULL, pxl = NULL, pxu = NULL){
 
-  p.l <- if(!is.null(pxl)) pxl else cumsum(dx)
+  xm <- min(x); xM <- max(x)
+  xs <- pmin(xM, pmax(xm,x))
+
   if (is.null (h)) h <- 0
 
   if (Cont){
          mfun <- if (is.null (myPf)) approxfun else myPf
-  }else  mfun <- .makePd
+         l <- length(x)
+         xs.u <- xs.l <- xs
+         if(l%%2==0) {
+               xs.l <- c(2*xs[1]-xs[2],xs)
+               xs.u <- c(xs, 2*xs[l]-xs[l-1])
+               l <- l+1
+               }
+         cfun <- .csimpsum
+         xs.l <- xs.l[seq(l)%%2==1]
+         xs.u <- xs.u[seq(l)%%2==1]
+  }else    {
+         mfun <- .makePd
+         cfun <- cumsum
+         xs.u <- xs.l <- xs
+  }       
+
+  p.l <- if(!is.null(pxl)) pxl else cfun(dx)
 
   ## continuity correction by h/2
   nm <- max(p.l)
-  xm <- min(x); xM <- max(x)
-  xs <- pmin(xM,pmax(xm,x))
-  p1.l <- mfun(x = xs, y = p.l, yleft = 0, yright = nm)
+  p1.l <- mfun(x = xs.l, y = p.l, yleft = 0, yright = nm)
   nm <- p1.l(max(x))
 
   if(notwithLLarg){
       ifElsePS <- substitute(if (lower.tail) p1.l(q) else 1 - p1.l(q))
   }else{
-      p.u <- if(!is.null(pxu)) pxu else rev(cumsum(rev(dx)))
+      p.u <- if(!is.null(pxu)) pxu else rev(cfun(rev(dx)))
       ## continuity correction by h/2
       if (!Cont) p.u <- c(p.u[-1],0)
-      p1.u <- mfun(x = xs, y = p.u, yright = 0, yleft = nm)
+      p1.u <- mfun(x = xs.u, y = p.u, yright = 0, yleft = nm)
       rm(p.u)
       ifElsePS <- substitute(if (lower.tail) p1.l(q) else p1.u(q))
   }

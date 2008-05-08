@@ -31,7 +31,7 @@ MLEstimator <- function(x, ParamFamily, interval, par, ...){
     res <- MCEstimator(x = x, ParamFamily = ParamFamily, criterion = negLoglikelihood,
                 interval = interval, par = par, ...)
     names(res$criterion) <- "negative log-likelihood"
-    class(res) <- c("MCEstimator", "Estimate")
+    class(res) <- c("MLEstimator", "MCEstimator", "Estimate")
 
     return(res)
 }

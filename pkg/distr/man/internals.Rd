@@ -45,6 +45,8 @@
 \alias{.P2Q}
 \alias{.D2P}
 \alias{.Q2P}
+\alias{.csimpsum}
+\alias{.primefun}
 \alias{coerce,numeric,Integer-method}
 
 \title{Internal functions of package distr}
@@ -104,6 +106,8 @@ These functions are used internally by package distr.}
                 qL = -Inf, qU = Inf)
 .D2P (d, xx, ql, qu,  ngrid = getdistrOption("DefaultNrGridPoints"))
 .Q2P (q, ngrid = getdistrOption("DefaultNrGridPoints"))
+.csimpsum(fx)
+.primefun(f,x, nm = NULL)
 }
 
 
@@ -188,6 +192,9 @@ These functions are used internally by package distr.}
  of a regular grid of \code{ngrid} gridpoints to be used in place of \code{xx}.}  
  \item{qL,qU}{argmin / argmax of p()-method}  
  \item{ngrid}{number of gridpoints}
+ \item{fx}{a vector of function evaluations multiplied by the gridwidth}
+ \item{f}{a vector of function evaluations}
+ \item{nm}{an optional right asymptotic value}
 }
 
 \details{
@@ -292,6 +299,14 @@ and of function \code{.makeQNew},  respectively. The other way round,
 from function slots  \code{d} resp. \code{q} 
 by means of function \code{.makePNew} and explicite numeric inversion,  
 respectively.  
+
+\code{.csimpsum} is used internally in \code{.makePNew} to produce
+a prime function out of function evaluations by means of vectorized
+Simpson quadrature method, returning already the function values
+of the prime function on a grid; it is to mimick the behaviour
+of \code{cumsum}. \code{.primefun} is similar but more flexible and
+produces the prime function as a function.
+
 }
 
 
@@ -341,6 +356,8 @@ respectively.
             lower.tail = TRUE, log.p = FALSE)}} 
 \code{.D2P, .Q2P}{a cdf \code{p} as function \code{function(q, 
             lower.tail = TRUE, log.p = FALSE)}}
+\code{.csimpsum}{a vector of evaluations of the prime function at the grid points}
+\code{.primefun}{the prime function as a function}
 }
 
 \section{Internal classes}{For the ease of method dispatch, there is an internal
