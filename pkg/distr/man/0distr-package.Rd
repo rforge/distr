@@ -98,7 +98,7 @@ subclasses \code{UnivarMixingDistribution} to support mixing distributions,
 (with a discrete and an a.c. part) as well as \code{AffLinUnivarLebDecDistribution},
 for corresponding affine linear transformations.
 Class \code{UnivarLebDecDistribution} is closed under arithmetical operations 
-   +  "/", "*", "^" for pairs of independent variables 
+   +  "/", "*", "\^" for pairs of independent variables 
    +  "+", "-" for pairs of independent variables 
    +  affine linear transformations
    +  truncation, huberization, min/max 

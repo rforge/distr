@@ -195,7 +195,7 @@ are of class \code{"AbscontDistribution"},
   \code{"DiscreteDistribution"}, or \code{"UnivarLebDecDistribution"},
 there is a class union of these classes called \code{"AcDcLcDistribution"};
 in particular methods for \code{"*"}, \code{"/"}, 
-\code{"\^"} (see \link{operators-methods}) and methods
+\code{"^"} (see \link{operators-methods}) and methods
 \code{\link{Minimum}}, \code{Maximum}, \code{\link{Truncate}}, and
  \code{\link{Huberize}}, and \code{\link{convpow}} are defined for this 
  class union.   

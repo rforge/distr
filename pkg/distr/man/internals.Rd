@@ -45,6 +45,7 @@
 \alias{.P2Q}
 \alias{.D2P}
 \alias{.Q2P}
+\alias{coerce,numeric,Integer-method}
 
 \title{Internal functions of package distr}
 
