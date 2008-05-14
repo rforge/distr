@@ -7,9 +7,11 @@
 <table width="100%"><tr><td>L2ParamFamily-class(distrMod)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   L2ParamFamily-class">
 <param name="keyword" value="R:   FisherInfo">
-<param name="keyword" value="R:   FisherInfo,L2ParamFamily-method">
+<param name="keyword" value="R:   FisherInfo,L2ParamFamily,missing-method">
+<param name="keyword" value="R:   FisherInfo,L2ParamFamily,ParamFamParameter-method">
 <param name="keyword" value="R:   L2deriv">
-<param name="keyword" value="R:   L2deriv,L2ParamFamily-method">
+<param name="keyword" value="R:   L2deriv,L2ParamFamily,missing-method">
+<param name="keyword" value="R:   L2deriv,L2ParamFamily,ParamFamParameter-method">
 <param name="keyword" value="R:   L2derivSymm">
 <param name="keyword" value="R:   L2derivSymm,L2ParamFamily-method">
 <param name="keyword" value="R:   L2derivDistr">
@@ -102,6 +104,12 @@ Class <code>"ProbFamily"</code>, by class <code>"ParamFamily"</code>.
 accessor function for <code>L2deriv</code>. </dd>
 
 
+<dt>L2deriv</dt><dd><code>signature(object = "L2ParamFamily", 
+                                   param = "ParamFamParameter")</code>: 
+returns the L2derivative at <code>param</code>, i.e.
+evaluates slot function <code>L2deriv.fct</code> at <code>param</code>. </dd>
+
+
 <dt>L2derivSymm</dt><dd><code>signature(object = "L2ParamFamily")</code>: 
 accessor function for <code>L2derivSymm</code>. </dd>
 
@@ -116,6 +124,12 @@ accessor function for <code>L2derivDistrSymm</code>. </dd>
 
 <dt>FisherInfo</dt><dd><code>signature(object = "L2ParamFamily")</code>:
 accessor function for <code>FisherInfo</code>. </dd>
+
+
+<dt>FisherInfo</dt><dd><code>signature(object = "L2ParamFamily", 
+                                   param = "ParamFamParameter")</code>: 
+returns the Fisher Information at <code>param</code>, i.e.
+evaluates slot function <code>FisherInfo.fct</code> at <code>param</code>. </dd>
 
 
 <dt>checkL2deriv</dt><dd><code>signature(object = "L2ParamFamily")</code>: 

@@ -8,6 +8,8 @@
 <param name="keyword" value="R:   Dirac-class">
 <param name="keyword" value="R:   Dirac">
 <param name="keyword" value="R:   initialize,Dirac-method">
+<param name="keyword" value="R:   log,Dirac-method">
+<param name="keyword" value="R:   Math,Dirac-method">
 <param name="keyword" value=" Class 'Dirac'">
 </object>
 
@@ -66,6 +68,10 @@ For the Dirac distribution these operations are trivial.</dd>
 <dt>initialize</dt><dd><code>signature(.Object = "Dirac")</code>: initialize method </dd>
 <dt>location</dt><dd><code>signature(object = "Dirac")</code>: returns the slot <code>location</code> of the parameter of the distribution </dd>
 <dt>location&lt;-</dt><dd><code>signature(object = "Dirac")</code>: modifies the slot <code>location</code> of the parameter of the distribution </dd>
+<dt>log</dt><dd><code>signature(object = "Dirac")</code>: returns an object of class <code>"Dirac"</code> distribution with log-transformed
+<code>location</code> parameter. </dd>
+<dt>Math</dt><dd><code>signature(object = "Dirac")</code>: given a <code>"Math"</code> group generic <code>fun</code> an object of class 
+<code>"Dirac"</code> distribution with <code>fun</code>-transformed <code>location</code> parameter is returned. </dd>
 </dl>
 <p>
 further arithmetic methods see <a href="operators-methods.html">operators-methods</a>

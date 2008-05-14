@@ -282,7 +282,11 @@
 <param name="Local" value="L2ParamFamily-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="FisherInfo,L2ParamFamily-method">
+<param name="Name" value="FisherInfo,L2ParamFamily,missing-method">
+<param name="Local" value="L2ParamFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="FisherInfo,L2ParamFamily,ParamFamParameter-method">
 <param name="Local" value="L2ParamFamily-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -334,7 +338,11 @@
 <param name="Local" value="L2ParamFamily-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="L2deriv,L2ParamFamily-method">
+<param name="Name" value="L2deriv,L2ParamFamily,missing-method">
+<param name="Local" value="L2ParamFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="L2deriv,L2ParamFamily,ParamFamParameter-method">
 <param name="Local" value="L2ParamFamily-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">

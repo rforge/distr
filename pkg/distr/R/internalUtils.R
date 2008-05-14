@@ -654,7 +654,7 @@ return(f)
  f.odd  <- fx[seq(l) %% 2 == 1]
  fs    <- 2 * cumsum(f.odd) - f.odd - f.odd[1]
  fsm   <- 4 * cumsum(f.even)
- ff=c(0,(fs[-1]+fsm)/6 )
+ ff=c(0,(fs[1:(l%/%2)]+fsm)/6 )
  ff
 }
 
@@ -685,7 +685,8 @@ return(f)
   }       
 
   p.l <- if(!is.null(pxl)) pxl else cfun(dx)
-
+  if(!is.null(pxl)) xs.l <- xs
+  
   ## continuity correction by h/2
   nm <- max(p.l)
   p1.l <- mfun(x = xs.l, y = p.l, yleft = 0, yright = nm)
@@ -695,7 +696,8 @@ return(f)
       ifElsePS <- substitute(if (lower.tail) p1.l(q) else 1 - p1.l(q))
   }else{
       p.u <- if(!is.null(pxu)) pxu else rev(cfun(rev(dx)))
-      ## continuity correction by h/2
+      if(!is.null(pxu)) xs.u <- xs
+    ## continuity correction by h/2
       if (!Cont) p.u <- c(p.u[-1],0)
       p1.u <- mfun(x = xs.u, y = p.u, yright = 0, yleft = nm)
       rm(p.u)

@@ -51,6 +51,9 @@
 <param name="keyword" value="R:   .P2Q">
 <param name="keyword" value="R:   .D2P">
 <param name="keyword" value="R:   .Q2P">
+<param name="keyword" value="R:   .csimpsum">
+<param name="keyword" value="R:   .primefun">
+<param name="keyword" value="R:   coerce,numeric,Integer-method">
 <param name="keyword" value=" Internal functions of package distr">
 </object>
 
@@ -119,6 +122,8 @@ These functions are used internally by package distr.
                 qL = -Inf, qU = Inf)
 .D2P (d, xx, ql, qu,  ngrid = getdistrOption("DefaultNrGridPoints"))
 .Q2P (q, ngrid = getdistrOption("DefaultNrGridPoints"))
+.csimpsum(fx)
+.primefun(f,x, nm = NULL)
 </pre>
 
 
@@ -305,6 +310,15 @@ argmin / argmax of p()-method</td></tr>
 <tr valign="top"><td><code>ngrid</code></td>
 <td>
 number of gridpoints</td></tr>
+<tr valign="top"><td><code>fx</code></td>
+<td>
+a vector of function evaluations multiplied by the gridwidth</td></tr>
+<tr valign="top"><td><code>f</code></td>
+<td>
+a vector of function evaluations</td></tr>
+<tr valign="top"><td><code>nm</code></td>
+<td>
+an optional right asymptotic value</td></tr>
 </table>
 
 <h3>Details</h3>
@@ -426,7 +440,15 @@ and of function <code>.makeQNew</code>,  respectively. The other way round,
 <code>.D2P</code> and <code>.Q2P</code> reconstruct function slot <code>p</code> from 
 from function slots  <code>d</code> resp. <code>q</code> 
 by means of function <code>.makePNew</code> and explicite numeric inversion,  
-respectively.
+respectively.  
+</p>
+<p>
+<code>.csimpsum</code> is used internally in <code>.makePNew</code> to produce
+a prime function out of function evaluations by means of vectorized
+Simpson quadrature method, returning already the function values
+of the prime function on a grid; it is to mimick the behaviour
+of <code>cumsum</code>. <code>.primefun</code> is similar but more flexible and
+produces the prime function as a function.
 </p>
 
 
@@ -526,7 +548,9 @@ an object of class <code>"AbscontDistribution"</code>.</td></tr>
 <code>.P2Q</code>{a quantile function <code>q</code> as function <code>function(p, 
             lower.tail = TRUE, log.p = FALSE)</code>} 
 <code>.D2P, .Q2P</code>{a cdf <code>p</code> as function <code>function(q, 
-            lower.tail = TRUE, log.p = FALSE)</code>}</p>
+            lower.tail = TRUE, log.p = FALSE)</code>}
+<code>.csimpsum</code>{a vector of evaluations of the prime function at the grid points}
+<code>.primefun</code>{the prime function as a function}</p>
 
 <h3>Internal classes</h3>
 

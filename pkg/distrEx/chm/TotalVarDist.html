@@ -15,6 +15,7 @@
 <param name="keyword" value="R:   TotalVarDist,DiscreteDistribution,numeric-method">
 <param name="keyword" value="R:   TotalVarDist,numeric,AbscontDistribution-method">
 <param name="keyword" value="R:   TotalVarDist,AbscontDistribution,numeric-method">
+<param name="keyword" value="R:   TotalVarDist,AcDcLcDistribution,AcDcLcDistribution-method">
 <param name="keyword" value=" Generic function for the computation of the total variation distance of two distributions">
 </object>
 
@@ -60,6 +61,9 @@ TotalVarDist(e1, e2, asis.smooth.discretize = "discretize",
 TotalVarDist(e1, e2, asis.smooth.discretize = "discretize", 
             n.discr = getdistrModOption("nDiscretize"), low.discr = getLow(e2),
             up.discr = getUp(e2), h.smooth = getdistrModOption("hSmooth"))
+## S4 method for signature 'AcDcLcDistribution,
+##   AcDcLcDistribution':
+TotalVarDist(e1, e2)
 </pre>
 
 
@@ -157,6 +161,9 @@ distribution.
 </dd>
 <dt>e1 = "AbscontDistribution", e1 = "numeric":</dt><dd>Total variation distance between (empirical) data and an abs. cont. 
 distribution.
+</dd>
+<dt>e1 = "AcDcLcDistribution", e2 = "AcDcLcDistribution":</dt><dd>Total variation distance of mixed discrete and absolutely continuous
+univariate distributions.
 </dd>
 </dl>
 

@@ -13,6 +13,7 @@
 <param name="keyword" value="R:   KolmogorovDist,DiscreteDistribution,AbscontDistribution-method">
 <param name="keyword" value="R:   KolmogorovDist,numeric,UnivariateDistribution-method">
 <param name="keyword" value="R:   KolmogorovDist,UnivariateDistribution,numeric-method">
+<param name="keyword" value="R:   KolmogorovDist,AcDcLcDistribution,AcDcLcDistribution-method">
 <param name="keyword" value=" Generic function for the computation of the Kolmogorov distance of two distributions">
 </object>
 
@@ -54,6 +55,9 @@ KolmogorovDist(e1,e2)
 KolmogorovDist(e1, e2)
 ## S4 method for signature 'UnivariateDistribution,
 ##   numeric':
+KolmogorovDist(e1, e2)
+## S4 method for signature 'AcDcLcDistribution,
+##   AcDcLcDistribution':
 KolmogorovDist(e1, e2)
 </pre>
 
@@ -103,6 +107,12 @@ distribution. The computation is based on <code>ks.test</code>.
 </dd>
 <dt>e1 = "UnivariateDistribution", e2 = "numeric":</dt><dd>Kolmogorov distance between (empirical) data and a univariate 
 distribution. The computation is based on <code>ks.test</code>.
+</dd>
+<dt>e1 = "AcDcLcDistribution", e2 = "AcDcLcDistribution":</dt><dd>Kolmogorov distance of mixed discrete and absolutely continuous
+univariate distributions. It is computed using a union of 
+the discrete part, a (pseudo-)random and
+a deterministic grid in combination
+with the support of <code>e1</code>.
 </dd>
 </dl>
 

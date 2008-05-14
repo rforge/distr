@@ -3,12 +3,17 @@
 1 0 obj
 <<
 <<<<<<< .mine
+/CreationDate (D:20080508234025)
+/ModDate (D:20080508234025)
+=======
+<<<<<<< .mine
 /CreationDate (D:20080508173923)
 /ModDate (D:20080508173923)
 =======
 /CreationDate (D:20080508234025)
 /ModDate (D:20080508234025)
 >>>>>>> .r144
+>>>>>>> .r147
 /Title (R Graphics Output)
 /Producer (R 2.7.0)
 /Creator (R)
@@ -3051,12 +3056,17 @@ Q q
 BT
 0.000 0.000 0.000 rg
 <<<<<<< .mine
+/F2 1 Tf 14.00 0.00 0.00 14.00 216.02 308.43 Tm (my Distribution: Norm\(\)) Tj
+/F2 1 Tf 10.00 0.00 0.00 10.00 148.73 7.90 Tm (this plot was correctly generated on Thu May 08 23:40:25 2008) Tj
+=======
+<<<<<<< .mine
 /F2 1 Tf 14.00 0.00 -0.00 14.00 216.02 308.43 Tm (my Distribution: Norm\(\)) Tj
 /F2 1 Tf 10.00 0.00 -0.00 10.00 150.12 7.90 Tm (this plot was correctly generated on Thu May  8 17:39:23 2008) Tj
 =======
 /F2 1 Tf 14.00 0.00 0.00 14.00 216.02 308.43 Tm (my Distribution: Norm\(\)) Tj
 /F2 1 Tf 10.00 0.00 0.00 10.00 148.73 7.90 Tm (this plot was correctly generated on Thu May 08 23:40:25 2008) Tj
 >>>>>>> .r144
+>>>>>>> .r147
 ET
 Q
 endstream
