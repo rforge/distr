@@ -80,7 +80,10 @@ function(e1,e2){
      x <- seq(from = lower, to = upper,
               length = getdistrOption("DefaultNrGridPoints"))
      h <- x[2]-x[1]
-     dpn <- outer(x, grid, function(x,y) d(e2)(x - y)) %*% probab
+           ### to avoid double accounting for density boundary 
+           ### points we jitter a little:
+     dpn <- outer(x+rnorm(x)*sd(x)*getdistrOption("DistrResolution"), 
+                  grid, function(x,y) d(e2)(x - y)) %*% probab
      
      ### treatment if density of e2 has singularities
      if(any(idx <- (dpn*h >= 10*length(dpn)))){

@@ -18,6 +18,7 @@ pdfkeywords={probability distribution,simulation,estimation},%
 pagebackref,bookmarks,colorlinks,linkcolor=darkblue,citecolor=darkblue,%
 pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 %
+\usepackage{Sweave}
 \markboth{\sl Packages ``{\tt distr}'', ``{\tt distrSim}'', ``{\tt distrTEst}'', 
 ``{\tt distrEx}'', ``{\tt distrTeach}'', ``{\tt distrMod}''}%
 {\sl Packages ``{\tt distr}'', ``{\tt distrSim}'', ``{\tt distrTEst}'',  
@@ -875,9 +876,8 @@ $-$&$-$&$+$&$+$&\code{p} by numerical inversion from \code{q},
 $-$&$-$&$+$&$-$&\code{p}, \code{r} from \code{q}, \code{d} from \code{p}\\
 $-$&$-$&$-$&$+$& use \code{RtoDPQ}\\
 $-$&$-$&$-$&$-$&not allowed\\
-\end{tabular}
+\end{tabular}\\
 \end{center}
-\\
 More specifically, by means of the function 
 \code{RtoDPQ} we first generate $10^{\footnotesize\tt RtoDPQ.e}$
 random numbers where \code{RtoDPQ.e} is a global option of this package and is 
@@ -2068,7 +2068,12 @@ distroptions("TruncQuantile" = eps)
 H <- V
 n <- 15 
 ## may take some time
+### switch off warnings [would be issued due to 
+###  very unequal variances...]
+old.warn <- getOption("warn")
+options("warn" = -1)
 for(i in 1:n){Vi <- phi^i*V; H <- H + Vi } 
+options("warn" = old.warn)
 
 ## the stationary regressor distribution (exact)
 X <- Norm(sd=sqrt(1/(1-phi^2)))
@@ -2114,10 +2119,10 @@ total.var <- function(z, N1, N2){
     0.5*abs(d(N1)(z) - d(N2)(z))
 }
 dv <- integrate(f = total.var, lower = -Inf, 
-                upper = Inf, rel.tol = 1e-5, 
+                upper = Inf, rel.tol = 1e-7, 
                 N1=X, N2=H)
 cat("Total variation distance of densities:\t")
-print(dv) # <1.0e-05
+print(dv) # ~ 5.0e-06
 
 ### meanwhile realized in package "distrEx" 
 ### as TotalVarDist(N1,N2)
@@ -2128,7 +2133,7 @@ print(dv) # <1.0e-05
 z <- r(Unif(Min=low, Max=upp))(1e5)
 dk <- max(abs(p(X)(z)-p(H)(z)))
 cat("Kolmogorov distance of cdfs:\t", dk, "\n") 
-# ~5e-06
+# ~2.5e-06
 
 ### meanwhile realized in package "distrEx" 
 ### as KolmogorovDist(N1,N2)

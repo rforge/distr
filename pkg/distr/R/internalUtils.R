@@ -477,7 +477,7 @@ return(outC)
                     gapsnew <- NULL
                  else {gapsnew <- e1@gaps * e2
                        if (e2 < 0) gapsnew <- 
-                             gapsnew[rev(seq(nrow(gaps))),c(2,1),drop = FALSE] }
+                             gapsnew[rev(seq(nrow(gapsnew))),c(2,1),drop = FALSE] }
                  
                  dnew <- .makeD(substitute(e1, list(e1 = e1)),
                                 substitute(alist(x = x / e2), list(e2 = e2)),
@@ -497,7 +497,7 @@ return(outC)
                     gapsnew <- NULL
                  else {gapsnew <- e1@gaps * e2
                        if (e2 < 0) gapsnew <- 
-                            gapsnew[rev(seq(nrow(gaps))),c(2,1), drop = FALSE] }
+                            gapsnew[rev(seq(nrow(gapsnew))),c(2,1), drop = FALSE] }
 
                  dnew <- .makeD(substitute(e1, list(e1 = e1)),
                                 substitute(alist(x = x / e2), list(e2 = e2)),
@@ -649,57 +649,58 @@ return(f)
 
 .csimpsum <- function(fx){
  l <- length(fx)
- if (l%%2 == 0) {fx <- c(0,fx); l <- l+1}
+ l2 <- l%/%2
+ if (l%%2 == 0) {
+     fx <- c(fx[1:l2],(fx[l2]+fx[l2+1])/2,fx[(l2+1):l])
+     l <- l+1}
  f.even <- fx[seq(l) %% 2 == 0]
  f.odd  <- fx[seq(l) %% 2 == 1]
  fs    <- 2 * cumsum(f.odd) - f.odd - f.odd[1]
  fsm   <- 4 * cumsum(f.even)
- ff=c(0,(fs[1:(l%/%2)]+fsm)/6 )
+ ff <- c(0,(fs[2:(l2+1)]+fsm)/3 )
  ff
 }
 
 .makePNew <- function(x, dx, h = NULL, notwithLLarg = FALSE,
                       Cont = TRUE, myPf = NULL, pxl = NULL, pxu = NULL){
 
-  xm <- min(x); xM <- max(x)
-  xs <- pmin(xM, pmax(xm,x))
-
   if (is.null (h)) h <- 0
 
+  x.u <- x.l <- x
   if (Cont){
          mfun <- if (is.null (myPf)) approxfun else myPf
          l <- length(x)
-         xs.u <- xs.l <- xs
-         if(l%%2==0) {
-               xs.l <- c(2*xs[1]-xs[2],xs)
-               xs.u <- c(xs, 2*xs[l]-xs[l-1])
+         if ((l%%2==0)&& is.null(myPf)){
+               l2 <- l/2
+               if (is.null(pxl))
+                   x.l <- c(x[1:l2],(x[l2]+x[l2+1])/2,x[l2+1,l])
+               if (is.null(pxu))
+                   x.u <- c(x[1:l2],(x[l2]+x[l2+1])/2,x[l2+1,l])
                l <- l+1
                }
          cfun <- .csimpsum
-         xs.l <- xs.l[seq(l)%%2==1]
-         xs.u <- xs.u[seq(l)%%2==1]
+         if (is.null(pxl)&& is.null(myPf))
+             x.l <- x.l[seq(l)%%2==1]
+         if (is.null(pxu)&& is.null(myPf))
+             x.u <- x.u[seq(l)%%2==1]
   }else    {
          mfun <- .makePd
          cfun <- cumsum
-         xs.u <- xs.l <- xs
   }       
 
   p.l <- if(!is.null(pxl)) pxl else cfun(dx)
-  if(!is.null(pxl)) xs.l <- xs
   
-  ## continuity correction by h/2
   nm <- max(p.l)
-  p1.l <- mfun(x = xs.l, y = p.l, yleft = 0, yright = nm)
+  p1.l <- mfun(x = x.l, y = p.l, yleft = 0, yright = nm)
   nm <- p1.l(max(x))
 
   if(notwithLLarg){
       ifElsePS <- substitute(if (lower.tail) p1.l(q) else 1 - p1.l(q))
   }else{
       p.u <- if(!is.null(pxu)) pxu else rev(cfun(rev(dx)))
-      if(!is.null(pxu)) xs.u <- xs
     ## continuity correction by h/2
       if (!Cont) p.u <- c(p.u[-1],0)
-      p1.u <- mfun(x = xs.u, y = p.u, yright = 0, yleft = nm)
+      p1.u <- mfun(x = x.u, y = p.u, yright = 0, yleft = nm)
       rm(p.u)
       ifElsePS <- substitute(if (lower.tail) p1.l(q) else p1.u(q))
   }
@@ -892,7 +893,8 @@ return(.makeQNew(xx + 0.5*h, px.l, px.u, FALSE, qL, qU))
 #determines slot p from d
 .D2P <- function(d, xx, ql, qu,  ngrid = getdistrOption("DefaultNrGridPoints"))
 {if(missing(xx))
-   {xx <- seq(ql, qu, length = ngrid)
+   { if(ngrid%%2==0) ngrid  <- ngrid+1
+     xx <- seq(ql, qu, length = ngrid)
      h <- (qu-ql)/ngrid}
  else h <- c(diff(xx),(rev(xx)[1]-rev(xx)[2]))
 
