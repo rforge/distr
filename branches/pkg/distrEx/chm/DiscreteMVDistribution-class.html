@@ -1,0 +1,114 @@
+<html><head><title>Discrete Multivariate Distributions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>DiscreteMVDistribution-class(distrEx)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   DiscreteMVDistribution-class">
+<param name="keyword" value="R:   support,DiscreteMVDistribution-method">
+<param name="keyword" value=" Discrete Multivariate Distributions">
+</object>
+
+
+<h2>Discrete Multivariate Distributions</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The class of discrete multivariate distributions.
+</p>
+
+
+<h3>Objects from the Class</h3>
+
+<p>
+Objects can be created by calls of the form <code>new("DiscreteMVDistribution", ...)</code>.
+More frequently they are created via the generating function 
+<code>DiscreteMVDistribution</code>.
+</p>
+
+
+<h3>Slots</h3>
+
+<dl>
+<dt><code>img</code>:</dt><dd>Object of class <code>"rSpace"</code>. 
+Image space of the distribution. Usually an object of 
+class <code>"EuclideanSpace"</code>.</dd>
+<dt><code>param</code>:</dt><dd>Object of class <code>"OptionalParameter"</code>.
+Optional parameter of the multivariate distribution.</dd>
+<dt><code>r</code>:</dt><dd>Object of class <code>"function"</code>: 
+generates (pseudo-)random numbers</dd>
+<dt><code>d</code>:</dt><dd>Object of class <code>"OptionalFunction"</code>: 
+optional density function</dd>
+<dt><code>p</code>:</dt><dd>Object of class <code>"OptionalFunction"</code>: 
+optional cumulative distribution function </dd>
+<dt><code>q</code>:</dt><dd>Object of class <code>"OptionalFunction"</code>: 
+optional quantile function </dd>
+<dt><code>support</code>:</dt><dd>numeric matrix whose rows form the
+support of the distribution</dd>
+</dl>
+
+<h3>Extends</h3>
+
+<p>
+Class <code>"MultivariateDistribution"</code>, directly.<br>
+Class <code>"Distribution"</code>, by class <code>"MultivariateDistribution"</code>.
+</p>
+
+
+<h3>Methods</h3>
+
+<dl>
+<dt>support</dt><dd><code>signature(object = "DiscreteMVDistribution")</code>:
+accessor function for slot <code>support</code>.</dd>
+</dl>
+
+<h3>Author(s)</h3>
+
+<p>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a onclick="findlink('distr', 'Distribution-class.html')" style="text-decoration: underline; color: blue; cursor: hand">Distribution-class</a></code>, <code><a href="MultivariateDistribution-class.html">MultivariateDistribution-class</a></code>,
+<code><a href="DiscreteMVDistribution.html">DiscreteMVDistribution</a></code>, <code><a href="E.html">E-methods</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+(D1 &lt;- new("MultivariateDistribution")) # Dirac measure in (0,0)
+r(D1)(5)
+
+(D2 &lt;- DiscreteMVDistribution(supp = matrix(c(1:5, rep(3, 5)), ncol=2, byrow=TRUE)))
+support(D2)
+r(D2)(10)
+d(D2)(support(D2))
+p(D2)(lower = c(1,1), upper = c(3,3))
+q(D2)
+param(D2)
+img(D2)
+
+e1 &lt;- E(D2) # expectation
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>distrEx</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

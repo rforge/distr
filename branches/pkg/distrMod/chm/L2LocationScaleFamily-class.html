@@ -1,0 +1,128 @@
+<html><head><title>L2 differentiable parametric group family</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>L2LocationScaleFamily-class(distrMod)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   L2LocationScaleFamily-class">
+<param name="keyword" value=" L2 differentiable parametric group family">
+</object>
+
+
+<h2>L2 differentiable parametric group family</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Class of L2 differentiable parametric group families.
+</p>
+
+
+<h3>Objects from the Class</h3>
+
+<p>
+Objects can be created by calls of the form <code>new("L2LocationScaleFamily", ...)</code>.
+More frequently they are created via the generating function 
+<code>L2LocationScaleFamily</code>.
+</p>
+
+
+<h3>Slots</h3>
+
+<dl>
+<dt><code>name</code>:</dt><dd>object of class <code>"character"</code>: 
+name of the family. </dd>
+<dt><code>distribution</code>:</dt><dd>object of class <code>"Distribution"</code>:
+member of the family. </dd>
+<dt><code>distrSymm</code>:</dt><dd>Object of class <code>"DistributionSymmetry"</code>: 
+symmetry of <code>distribution</code>. </dd>
+<dt><code>param</code>:</dt><dd>object of class <code>"ParamFamParameter"</code>:
+parameter of the family. </dd>
+<dt><code>modifyParam</code>:</dt><dd>Object of class <code>"function"</code>:
+mapping from the parameter space (represented by <code>"param"</code>) 
+to the distribution space (represented by <code>"distribution"</code>). </dd>
+<dt><code>props</code>:</dt><dd>object of class <code>"character"</code>:
+properties of the family. </dd>
+<dt><code>L2deriv</code>:</dt><dd>object of class <code>"EuclRandVariable"</code>:
+L2 derivative of the family. </dd>
+<dt><code>L2deriv.fct</code>:</dt><dd>object of class <code>"function"</code>: mapping from 
+the parameter space (argument <code>param</code> of class 
+<code>"ParamFamParameter"</code>) to a mapping from observation <code>x</code> to the  
+value of the L2derivative; <code>L2deriv.fct</code> is then used from observation
+<code>x</code> to value of the L2derivative; <code>L2deriv.fct</code> is used by 
+<code>modifyModel</code> to  move the L2deriv according to a change in the 
+parameter </dd>
+<dt><code>L2derivSymm</code>:</dt><dd>object of class <code>"FunSymmList"</code>:
+symmetry of the maps included in <code>L2deriv</code>. </dd>
+<dt><code>L2derivDistr</code>:</dt><dd>object of class <code>"UnivarDistrList"</code>:
+list which includes the distribution of <code>L2deriv</code>. </dd>
+<dt><code>L2derivDistrSymm</code>:</dt><dd>object of class <code>"DistrSymmList"</code>:
+symmetry of the distributions included in <code>L2derivDistr</code>. </dd>
+<dt><code>FisherInfo.fct</code>:</dt><dd>object of class <code>"function"</code>: 
+mapping from the parameter space (argument  <code>param</code> of class 
+<code>"ParamFamParameter"</code>) to the set of positive
+semidefinite matrices; <code>FisherInfo.fct</code> is used by <code>modifyModel</code> to 
+move the Fisher information according to a change in the parameter </dd> 
+<dt><code>FisherInfo</code>:</dt><dd>object of class <code>"PosDefSymmMatrix"</code>:
+Fisher information of the family. </dd>
+<dt><code>LogDeriv</code>:</dt><dd>object of class <code>"function"</code>: has argument <code>x</code>; 
+the negative logarithmic derivative of the density of the model distribution at 
+the "standard" parameter value. </dd>
+</dl>
+
+<h3>Extends</h3>
+
+<p>
+Class <code>"L2GroupParamFamily"</code>, directly.<br>
+Class <code>"L2ParamFamily"</code>, by class <code>"L2GroupParamFamily"</code>.<br>
+Class <code>"ParamFamily"</code>, by class <code>"L2ParamFamily"</code>.<br>
+Class <code>"ProbFamily"</code>, by class <code>"ParamFamily"</code>.
+</p>
+
+
+<h3>Methods</h3>
+
+<p>
+[kommt noch] no specific methods implemented
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Rieder, H. (1994) <EM>Robust Asymptotic Statistics</EM>. New York: Springer.
+</p>
+<p>
+Kohl, M. (2005) <EM>Numerical Contributions to the Asymptotic Theory of Robustness</EM>. 
+Bayreuth: Dissertation.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="L2LocationScaleFamily.html">L2LocationScaleFamily</a></code>, <code><a href="ParamFamily-class.html">ParamFamily-class</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+F1 &lt;- new("L2LocationScaleFamily")
+plot(F1)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>distrMod</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-15">
+  <meta name="GENERATOR" content="Mozilla/1.5 [de]">
+  <title>Package "distrDoc"</title>
+</head>
+<body style="background-image: url(papier.gif);">
+<div style="text-align: left;">
+<span style="color: rgb(0, 0, 0);"><br>
+</span>
+<h1><span style="color: rgb(0, 0, 0);"><a name="top"></a> <a
+ href="http://www.uni-bayreuth.de/departments/math/org/mathe7/mathe7.html"><img
+ style="border: 0px solid ; width: 198px; height: 127px;" src="logo.gif"
+ alt="[Picture: logo]"></a><big style="color: rgb(0, 0, 153);">R-Package
+<span style="color: rgb(51, 102, 255);">"distrDoc"<span> <a
+ href="http://www.r-project.org/"> <img
+ style="border: 0px solid ; width: 152px; height: 101px;" alt="R-Logo"
+ src="RLOGO.jpg"> </a></span></span></big> </span> </h1>
+</div>
+<hr style="width: 100%; height: 2px;">
+<div style="text-align: justify;"> Version: 2.0<br>
+Release Date: 2008-01-17 <br>
+Authors: <a
+ href="mailto:peter.ruckdeschel@uni-bayreuth.de?subject=%5Bdistr%5D">Peter
+Ruckdeschel</a>, <a
+ href="mailto:matthias.kohl@stamats.de?subject=%5Bdistr%5D">Matthias
+Kohl</a>, <a href="mailto:statho3@web.de?subject=%5Bdistr%5D">Thomas
+Stabla</a>, <a href="mailto:fcampi@gmx.de?subject=%5Bdistr%5D">Florian
+Camphausen</a><br>
+Required R-Version:
+<ul>
+  <li>&gt;=2.2.0 for version 1.8-2.0,</li>
+</ul>
+Dependencies: requires packages "<span style="color: rgb(51, 102, 255);">tools</span>"
+(standard package) as well as "<span style="color: rgb(51, 102, 255);">startupmsg</span>"
+by <a
+ href="mailto:peter.ruckdeschel@uni-bayreuth.de?subject=%5Bstartupmsg%5D">Peter
+Ruckdeschel</a> also available from <a
+ href="http://cran.r-project.org/mirrors.html">CRAN</a>;
+</div>
+<hr style="width: 100%; height: 2px;">
+<h2>What is "distrDoc" meant for?</h2>
+<div style="text-align: justify; color: rgb(0, 0, 0);"> The aim of
+package "<span style="color: rgb(51, 102, 255);">distrDoc</span>" is to
+provide a common documentation in form of a vignette "<span
+ style="color: rgb(51, 102, 255);">distr</span>" to the <span
+ style="color: rgb(51, 102, 255);">distrXXX</span>-package family.<br>
+Currently this family comprises packages <span
+ style="color: rgb(51, 102, 255);">distr</span>,
+<span style="color: rgb(51, 102, 255);">distrEx</span>, <span
+ style="color: rgb(51, 102, 255);">distrSim</span>, <span
+ style="color: rgb(51, 102, 255);">distrTEst</span>, <span
+ style="color: rgb(51, 102, 255);">distrMod</span>, <span
+ style="color: rgb(51, 102, 255);">distrTeach</span>,<br>
+You may use it e.g. as:<br>
+<pre style="color: rgb(51, 51, 255);">        require("distrDoc"); V&lt;-vignette("distr"); print(V); edit(V) </pre>
+</div>
+<br>
+<hr style="width: 100%; height: 2px;">
+<h2>License</h2>
+<div style="text-align: justify;"><span style="color: rgb(0, 0, 0);">
+This software is distributed under the terms of the GNU GENERAL</span>
+<br style="color: rgb(0, 0, 0);">
+<span style="color: rgb(0, 0, 0);">PUBLIC LICENSE Version 2, June 1991,
+confer</span> <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a><br>
+</div>
+<br>
+<hr style="width: 100%; height: 2px;">
+<h2>Download</h2>
+<h3 style="text-align: justify; color: rgb(0, 0, 0);">Windows</h3>
+<ul style="text-align: justify; color: rgb(0, 0, 0);">
+  <li>for version &gt;= 2.0 use<br>
+    <pre><span style="color: rgb(51, 102, 255);">install.packages("distr", repos = "R-Forge.R-project.org")</span></pre>
+  </li>
+  <li>as&nbsp;<a href="v1.9/distrDoc_1.9.zip">Win-Zip-File for R
+&gt;=2.2.0</a>
+(Version 1.9)</li>
+  <li>as&nbsp;<a href="v1.8/distrDoc_1.8.zip">Win-Zip-File for R
+&gt;=2.2.0</a>
+(Version 1.8)</li>
+</ul>
+<ul style="text-align: justify; color: rgb(0, 0, 0);">
+  <li>to be installed by
+    <ul>
+      <li>the R-gui File picker [Packages -&gt;Install package(s) from
+local zip-files...] or <br>
+      </li>
+      <li style="color: rgb(51, 102, 255);">
+        <pre>install.packages("distrDoc", &lt;path to the file distrDoc.zip in your File system&gt;, NULL)</pre>
+      </li>
+    </ul>
+  </li>
+  <li>to be removed by <br>
+    <pre style="color: rgb(51, 102, 255);" wrap="">remove.packages("distrDoc")</pre>
+  </li>
+  <li>to be used by <br>
+    <pre><span style="color: rgb(51, 102, 255);">library("distrDoc")</span> <br></pre>
+or
+    <pre><span style="color: rgb(51, 102, 255);">require("distrDoc")</span> <br></pre>
+  </li>
+</ul>
+<h3 style="text-align: justify; color: rgb(0, 0, 0);">Linux</h3>
+<ul style="text-align: justify; color: rgb(0, 0, 0);">
+  <li>for version &gt;= 2.0 use<br>
+    <pre><span style="color: rgb(51, 102, 255);">install.packages("distr", repos = "R-Forge.R-project.org")</span></pre>
+  </li>
+</ul>
+<ul style="text-align: justify; color: rgb(0, 0, 0);">
+  <li>as <a href="v1.9/distrDoc_1.9.tar.gz">Linux-tar-gz-File for R
+&gt;=2.2.0</a> (Version 1.9)</li>
+  <li>as <a href="v1.8/distrDoc_1.8.tar.gz">Linux-tar-gz-File for R
+&gt;=2.2.0</a> (Version 1.8)</li>
+</ul>
+<ul style="text-align: justify; color: rgb(0, 0, 0);">
+  <li>to be installed by<br>
+    <pre><span style="color: rgb(51, 102, 255);">R CMD INSTALL distrDoc_1.x.tar.gz</span><br
+ style="color: rgb(51, 102, 255);"><br></pre>
+  </li>
+  <li>to be removed by<br>
+    <pre style="color: rgb(51, 102, 255);" wrap="">R CMD REMOVE distrDoc</pre>
+  </li>
+  <li>to be used as under Windows </li>
+</ul>
+<br>
+<hr
+ style="width: 100%; height: 2px; margin-left: 0px; margin-right: 0px; color: rgb(0, 0, 0);"><br>
+<h2 style="text-align: center; color: rgb(0, 0, 153);">Version history:</h2>
+<h3 style="text-align: left; color: rgb(0, 0, 0);">First version
+(1.8)&nbsp; (2006-11-20)</h3>
+<ul>
+  <li>starting version; also see <span
+ style="color: rgb(51, 102, 255);">NEWS("distrDoc")</span></li>
+</ul>
+<h3 style="text-align: left; color: rgb(0, 0, 0);">Changes from Version
+1.8 to 1.9<br>
+</h3>
+<div style="text-align: left; color: rgb(0, 0, 0);">
+<ul>
+  <li>registration of the vignette with Windows gui according to &nbsp;
+    <a
+ href="https://stat.ethz.ch/pipermail/bioc-devel/2007-June/001171.html">https://stat.ethz.ch/pipermail/bioc-devel/2007-June/001171.html</a><br>
+  </li>
+  <li>in R-code in the vignette, made calls to <span
+ style="color: rgb(51, 102, 255);">uniroot()</span>, <span
+ style="color: rgb(51, 102, 255);">integrate()</span>, <span
+ style="color: rgb(51, 102, 255);">optim(ize)()</span> compliant to <a
+ href="https://stat.ethz.ch/pipermail/r-devel/2007-May/045791.html">https://stat.ethz.ch/pipermail/r-devel/2007-May/045791.html</a><a
+ href="https://stat.ethz.ch/pipermail/r-devel/2007-May/045791.html">l</a></li>
+  <li><font size="-1"><big>mentioned in package-help: startup
+messages may now also be suppressed by</big></font><font size="-1"><big>
+    <span style="color: rgb(51, 102, 255);">suppressPackageStartupMessages()</span>
+(from package <span style="color: rgb(51, 102, 255);">'base'</span>)</big></font></li>
+  <li>added chunk <br>
+    <pre>\SweaveOpts{keep.source=TRUE} </pre>
+to keep comments and linebreaks in source</li>
+  <li>included some documentation about new classes <span
+ style="color: rgb(51, 102, 255);">"LatticeDistribution"</span> and <span
+ style="color: rgb(51, 102, 255);">"Lattice"</span><br>
+  </li>
+</ul>
+<h3 style="text-align: left; color: rgb(0, 0, 0);">Changes from 1.9 to
+2.0<br>
+</h3>
+<ul>
+  <li>TEMPLATE</li>
+</ul>
+<hr style="width: 100%; height: 2px; color: rgb(0, 0, 0);">
+<h2 style="text-align: center; color: rgb(0, 0, 153);"><br>
+</h2>
+<hr style="width: 100%; height: 2px; color: rgb(0, 0, 0);">
+<h2 style="text-align: center; color: rgb(0, 0, 153);">Our plans for
+the next version:</h2>
+<ul>
+  <li><span style="color: rgb(51, 102, 255);"><br>
+    </span></li>
+</ul>
+<br style="color: rgb(0, 0, 0);">
+<hr style="width: 100%; height: 2px; color: rgb(0, 0, 0);">
+<h2 style="text-align: center; color: rgb(0, 0, 153);">Things we invite
+other people to do</h2>
+<ul>
+  <li><br>
+  </li>
+</ul>
+<ul>
+  <span style="color: rgb(51, 102, 255);"></span>
+</ul>
+</div>
+<hr style="width: 100%; height: 2px; color: rgb(0, 0, 0);">
+<div style="text-align: justify; color: rgb(0, 0, 0);">This page is
+maintained by <a
+ href="mailto:peter.ruckdeschel@uni-bayreuth.de?subject=distr-package">Peter
+Ruckdeschel</a> and <a href="mailto:statho3@web.de">Thomas Stabla</a>
+and last updated on 2008-01-17.<br>
+</div>
+</body>
+</html>

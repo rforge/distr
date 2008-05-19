@@ -1,0 +1,164 @@
+<html><head><title>Class "Contsimulation"</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>Contsimulation-class(distrSim)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   Contsimulation-class">
+<param name="keyword" value="R:   Contsimulation">
+<param name="keyword" value="R:   initialize,Contsimulation-method">
+<param name="keyword" value=" Class 'Contsimulation'">
+</object>
+
+
+<h2>Class 'Contsimulation'</h2>
+
+
+<h3>Description</h3>
+
+<p>
+In an object of type <code>Contsimulation</code> data can be simulated in any distribution and size. One part 
+(usually the largest) of the random numbers stems from an ideal distribution, the rest from a contaminating distribution.
+</p>
+
+
+<h3>Objects from the Class</h3>
+
+<p>
+Objects can be created by calls of the form <code>Contsimulation(filename, samplesize, runs, seed, distribution.id,
+distribution.c, rate)</code> (observation dimension is deduced from slot <code>distribution.id</code>).
+A <code>Contsimulation</code>-object includes a filename, the number of runs, the size of the sample, the seed, the distribution
+of the ideal and the contaminated data and the contamination rate. The slot Data stays empty until the method simulate has
+been used. The same goes for slots Data.id and Data.c.
+</p>
+
+
+<h3>Slots</h3>
+
+<dl>
+<dt><code>ind</code>:</dt><dd>Object of class <code>"MatrixorNULLorVector"</code>: Indicator of the same length as the data; saves whether each
+element of the data vector is contaminated or not</dd>
+<dt><code>Data.id</code>:</dt><dd>Object of class <code>"ArrayorNULLorVector"</code>: &ndash; the ideal data </dd>
+<dt><code>Data.c</code>:</dt><dd>Object of class <code>"ArrayorNULLorVector"</code>: &ndash; the contaminated data </dd>
+<dt><code>rate</code>:</dt><dd>Object of class <code>"numeric"</code>: the contamination rate, so the probability for each random number
+to be contaminated </dd>
+<dt><code>distribution.c</code>:</dt><dd>Object of class <code>"UnivariateDistribution"</code>: the distribution of the ideal data </dd>
+<dt><code>distribution.id</code>:</dt><dd>Object of class <code>"UnivariateDistribution"</code>: the distribution of the contaminated
+data </dd>
+<dt><code>seed</code>:</dt><dd>Object of class <code>"list"</code>: the seed the simulation has been generated with </dd>
+<dt><code>name</code>:</dt><dd>Object of class <code>"character"</code>: a name for the Contsimulation</dd>
+<dt><code>filename</code>:</dt><dd>Object of class <code>"character"</code>: the filename the Contsimulation shall be saved </dd>
+<dt><code>Data</code>:</dt><dd>Object of class <code>"ArrayorNULLorVector"</code>: the simulated data </dd>
+<dt><code>samplesize</code>:</dt><dd>Object of class <code>"numeric"</code>: the size of the sample, so the dimension of the data </dd>
+<dt><code>obsDim</code>:</dt><dd>Object of class <code>"numeric"</code>: the observation dimension of the data </dd>
+<dt><code>runs</code>:</dt><dd>Object of class <code>"numeric"</code>: the number of runs of the data </dd>
+</dl>
+
+<h3>Extends</h3>
+
+<p>
+Class <code>"Dataclass"</code>, directly.
+</p>
+
+
+<h3>Methods</h3>
+
+<dl>
+<dt>Data.c</dt><dd><code>signature(object = "Contsimulation")</code>: returns the contaminated data </dd>
+<dt>Data.id</dt><dd><code>signature(object = "Contsimulation")</code>: returns the ideal data </dd>
+<dt>Data&lt;-</dt><dd><code>signature(object = "Contsimulation")</code>: ERROR: A modification of simulated data is not allowed. </dd>
+<dt>filename</dt><dd><code>signature(object = "Contsimulation")</code>:  returns the the filename</dd>
+<dt>filename&lt;-</dt><dd><code>signature(object = "Contsimulation")</code>: changes the the filename</dd>
+<dt>name</dt><dd><code>signature(object = "Contsimulation")</code>:  returns the the name</dd>
+<dt>name&lt;-</dt><dd><code>signature(object = "Contsimulation")</code>:   changes the the name</dd>
+<dt>distribution.c</dt><dd><code>signature(object = "Contsimulation")</code>: returns the distribution of the contaminated data </dd>
+<dt>distribution.c&lt;-</dt><dd><code>signature(object = "Contsimulation")</code>: changes the distribution of the contaminated data</dd>
+<dt>distribution.id</dt><dd><code>signature(object = "Contsimulation")</code>: returns the distribution of the ideal data </dd>
+<dt>distribution.id&lt;-</dt><dd><code>signature(object = "Contsimulation")</code>: changes the distribution of the ideal data </dd>
+<dt>seed</dt><dd><code>signature(object = "Contsimulation")</code>: returns the seed </dd>
+<dt>seed&lt;-</dt><dd><code>signature(object = "Contsimulation")</code>: changes the seed </dd>
+<dt>ind</dt><dd><code>signature(object = "Contsimulation")</code>: returns the indicator which saves which data is contaminated </dd>
+<dt>initialize</dt><dd><code>signature(.Object = "Contsimulation")</code>: initialize method </dd>
+<dt>rate</dt><dd><code>signature(object = "Contsimulation")</code>: returns the contamination rate </dd>
+<dt>rate&lt;-</dt><dd><code>signature(object = "Contsimulation")</code>: changes the contamination rate </dd>
+<dt>obsDim</dt><dd><code>signature(object = "Contsimulation")</code>: returns the dimension of the observations</dd>
+<dt>getVersion</dt><dd><code>signature(object = "Contsimulation")</code>: returns the version of this package, under which this object was generated</dd>
+<dt>runs</dt><dd><code>signature(object = "Contsimulation")</code>: returns the number of runs </dd>
+<dt>runs&lt;-</dt><dd><code>signature(object = "Contsimulation")</code>: changes the number of runs </dd>
+<dt>samplesize</dt><dd><code>signature(object = "Contsimulation")</code>: returns the size of the sample </dd>
+<dt>samplesize&lt;-</dt><dd><code>signature(object = "Contsimulation")</code>: changes the size of the sample </dd>
+<dt>savedata</dt><dd><code>signature(object = "Contsimulation")</code>: saves the object without the data in the 
+directory of R. (After loading the data can be reproduced by using simulate.) </dd>
+<dt>simulate</dt><dd><code>signature(x = "Contsimulation")</code>: generates the random numbers for the simulation </dd>
+<dt>plot</dt><dd><code>signature(x = "Contsimulation")</code>: produces a plot of the real data matrix; ; for details confer <code><a href="plot-methods.html">plot-methods</a></code> </dd>
+<dt>print</dt><dd><code>signature(x = "Contsimulation")</code>: returns filename, seed, the observation dimension, 
+the number of runs, the size of the sample, the contamination rate and the distributions, and,
+if from a version &gt; 1.8, also the package version under which the object was generated</dd>
+<dt>summary</dt><dd><code>signature(object = "Contsimulation")</code>: returns filename, seed, number of runs, the size of the
+sample, the rate and a statistical summary for each run of the real data</dd>
+</dl>
+
+<h3>Note</h3>
+
+<p>
+Changing distributions, seed, runs, samplesize or rate deletes possibly simulated data, as it would not fit to the
+new parameters.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Thomas Stabla <a href="mailto:statho3@web.de">statho3@web.de</a>,<br> 
+Florian Camphausen <a href="mailto:fcampi@gmx.de">fcampi@gmx.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>,<br> 
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="Dataclass-class.html">Dataclass-class</a></code>
+<code><a href="Simulation-class.html">Simulation-class</a></code>
+<code><a href="savedata-methods.html">savedata-methods</a></code>
+<code><a href="plot-methods.html">plot-methods</a></code>
+<code><a href="simulate-methods.html">simulate-methods</a></code>
+<code><a href="summary-methods.html">summary-methods</a></code>
+<code><a href="versionmanagement.html">getVersion-methods</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+N &lt;- Norm() # N is a standard normal distribution.
+C &lt;- Cauchy() # C is a Cauchy distribution
+cs &lt;- Contsimulation(filename = "csim",
+                     runs = 10,
+                     samplesize = 3,
+                     seed = setRNG(),
+                     distribution.id = N,
+                     distribution.c = C,
+                     rate = 0.1)
+simulate(cs)
+# Each of the 30 random numbers is ideal (N-distributed) with
+# probability 0.9 and contaminated (C-distributed) with
+# probability = 0.1
+Data(cs)
+Data.id(cs)
+Data.c(cs)
+ind(cs)
+summary(cs)
+Data(cs) # different data
+savedata(cs) # saves the object in the working directory of R...
+load("csim") # loads it again...
+Data(cs) # ...without the data - use simulate to return it!
+</pre>
+
+
+
+<hr><div align="center">[Package <em>distrSim</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

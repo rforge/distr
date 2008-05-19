@@ -1,0 +1,103 @@
+<html><head><title>Functions for Illustrating the CLT</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>illustrateCLT(distrTeach)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   illustrateCLT">
+<param name="keyword" value="R:   illustrateCLT.tcl">
+<param name="keyword" value=" Functions for Illustrating the CLT">
+</object>
+
+
+<h2>Functions for Illustrating the CLT</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Functions for generating a sequence of plots of
+the density and cdf of the consecutive standardized and centered sums of iid 
+r.v. distributed according to a prescribed discrete or absolutely continuous 
+distribution compared to the standard normal &mdash; uses the generic function 
+<code>plotCLT</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>illustrateCLT(Distr, len, sleep = 0)
+illustrateCLT.tcl(Distr, k, Distrname)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>Distr</code></td>
+<td>
+object of class <code>"AbscontDistribution"</code>, 
+<code>"LatticeDistribution"</code> or <code>"DiscreteDistribution"</code>: distribution of 
+the summands</td></tr>
+<tr valign="top"><td><code>len</code></td>
+<td>
+integer: up to which number of summands plots are generated</td></tr>
+<tr valign="top"><td><code>k</code></td>
+<td>
+integer: number of summands for which a plot is to be generated</td></tr>
+<tr valign="top"><td><code>Distrname</code></td>
+<td>
+character: name of the summand distribution to be used as 
+title in the plot</td></tr>
+<tr valign="top"><td><code>sleep</code></td>
+<td>
+numeric: pause in seconds between subsequent plots </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<code>illustrateCLT</code> generates a sequence of plots, while 
+<code>illustrateCLT.tcl</code> may be used with Tcl/Tk-widgets as in demo 
+<code>illustCLT_tcl.R</code>.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+void</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a><br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="plotCLT.html">plotCLT</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+distroptions("DefaultNrFFTGridPointsExponent" = 13)
+illustrateCLT(Distr = Unif(), len = 20)
+distroptions("DefaultNrFFTGridPointsExponent" = 12)
+illustrateCLT(Distr = Pois(lambda = 2), len = 20)
+distroptions("DefaultNrFFTGridPointsExponent" = 13)
+illustrateCLT(Distr = Pois(lambda = 2)+Unif(), len = 20)
+illustrateCLT.tcl(Distr = Unif(), k = 4, "Unif()")
+</pre>
+
+
+
+<hr><div align="center">[Package <em>distrTeach</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

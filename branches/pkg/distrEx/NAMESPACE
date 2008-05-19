@@ -1,0 +1,47 @@
+useDynLib("distrEx")
+
+import("distr")
+import("startupmsg")
+
+exportClasses("Condition", "EuclCondition") 
+exportClasses("LMParameter",   
+              "GumbelParameter")
+exportClasses("MultivariateDistribution", 
+              "DiscreteMVDistribution",
+              "UnivariateCondDistribution",
+              "DiscreteCondDistribution", 
+              "AbscontCondDistribution",
+              "Gumbel", "PrognCondition")
+exportMethods("initialize", 
+              "show", 
+              "plot", 
+              "coerce", 
+              "dim") 
+exportMethods("ConvexContamination", 
+              "ContaminationSize", 
+              "TotalVarDist", 
+              "KolmogorovDist", 
+              "HellingerDist",
+              "CvMDist") 
+exportMethods("support", 
+              "cond", 
+              "Range",
+              "loc", "loc<-", 
+              "scale", "scale<-", 
+              "name", "name<-", 
+              "E", "var", "IQR", "skewness", "kurtosis", 
+              "sd", "median", "mad", 
+              "m1df", "m2df",
+              "liesInSupport")
+export("EuclCondition") 
+export("LMParameter")
+export("DiscreteMVDistribution",
+       "LMCondDistribution", 
+       "Gumbel")
+export("ConvexContamination")
+export("GLIntegrate",
+       "distrExIntegrate") 
+export("distrExOptions", "getdistrExOption",
+       "distrExMASK", "distrExoptions")
+export("make01","PrognCondDistribution",
+       "PrognCondition")

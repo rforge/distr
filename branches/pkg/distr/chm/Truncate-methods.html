@@ -1,0 +1,105 @@
+<html><head><title>Methods for function Truncate in Package &lsquo;distr&rsquo;</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>Truncate-methods(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   Truncate-methods">
+<param name="keyword" value="R:   Truncate">
+<param name="keyword" value="R:   Truncate,AbscontDistribution-method">
+<param name="keyword" value="R:   Truncate,DiscreteDistribution-method">
+<param name="keyword" value="R:   Truncate,UnivarLebDecDistribution-method">
+<param name="keyword" value=" Methods for function Truncate in Package &lsquo;distr&rsquo;">
+</object>
+
+
+<h2>Methods for function Truncate in Package &lsquo;distr&rsquo;</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Truncate-methods
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+Truncate(object, ...)
+## S4 method for signature 'AbscontDistribution':
+Truncate(object,lower,upper)
+## S4 method for signature 'DiscreteDistribution':
+Truncate(object,lower,upper)
+## S4 method for signature 'UnivarLebDecDistribution':
+Truncate(object,lower,upper, 
+                    withSimplify = getdistrOption("simplifyD"))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+distribution object</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+not yet used; takes up <code>lower</code>, 
+<code>upper</code>, <code>withSimplify</code>.</td></tr>
+<tr valign="top"><td><code>lower</code></td>
+<td>
+numeric; lower truncation point</td></tr>
+<tr valign="top"><td><code>upper</code></td>
+<td>
+numeric; upper truncation point</td></tr>
+<tr valign="top"><td><code>withSimplify</code></td>
+<td>
+logical; is result to be piped through a call to 
+<code><a href="simplifyD-methods.html">simplifyD</a></code>?</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+the corresponding distribution of the truncated random variable</p>
+
+<h3>Methods</h3>
+
+<dl>
+<dt>Truncate</dt><dd><code>signature(object = "AbscontDistribution")</code>: 
+returns the distribution of <code>min(upper,max(X,lower))</code>
+conditioned to <code>lower&lt;X&lt;=upper</code>, if <code>X</code> is 
+distributed according to <code>object</code>;
+the result is again of class <code>"AbscontDistribution"</code></dd>
+<dt>Truncate</dt><dd><code>signature(object = "DiscreteDistribution")</code>: 
+returns the distribution of <code>min(upper,max(X,lower))</code>
+conditioned to <code>lower&lt;X&lt;=upper</code>, if <code>X</code> is 
+distributed according to <code>object</code>;
+the result is again of class <code>"DiscreteDistribution"</code></dd>
+<dt>Truncate</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code>: 
+returns the distribution of <code>min(upper,max(X,lower))</code>
+conditioned to <code>lower&lt;X&lt;=upper</code>, if <code>X</code> is 
+distributed according to <code>object</code>;
+the result is again of class <code>"UnivarLebDecDistribution"</code></dd>
+</dl>
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="Huberize-methods.html">Huberize</a></code>, <code><a href="MinMaximum-methods.html">Minimum</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+plot(Truncate(Norm(),lower=-1,upper=2))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>distr</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>
