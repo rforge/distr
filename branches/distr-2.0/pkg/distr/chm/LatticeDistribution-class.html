@@ -1,0 +1,210 @@
+<html><head><title>Class "LatticeDistribution"</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>LatticeDistribution-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   AffLinLatticeDistribution-class">
+<param name="keyword" value="R:   LatticeDistribution-class">
+<param name="keyword" value="R:   lattice">
+<param name="keyword" value="R:   lattice-method">
+<param name="keyword" value="R:   lattice,LatticeDistribution-method">
+<param name="keyword" value="R:   initialize,LatticeDistribution-method">
+<param name="keyword" value="R:   initialize,AffLinLatticeDistribution-method">
+<param name="keyword" value="R:   coerce,LatticeDistribution,DiscreteDistribution-method">
+<param name="keyword" value="R:   coerce,AffLinLatticeDistribution,AffLinDiscreteDistribution-method">
+<param name="keyword" value=" Class 'LatticeDistribution'">
+</object>
+
+
+<h2>Class 'LatticeDistribution'</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The <code>LatticeDistribution</code>-class is the mother-class of the 
+classes <code>Binom</code>, <code>Dirac</code>, <code>Geom</code>, <code>Hyper</code>, <code>Nbinom</code> and 
+<code>Poisson</code>. It formalizes a distribution on a regular affine
+linear lattice.
+</p>
+
+
+<h3>Objects from the Class</h3>
+
+<p>
+The usual way to generate objects of class <code>LatticeDistribution</code> is to call 
+the generating function <code><a href="LatticeDistribution.html">LatticeDistribution</a></code>. <br>
+Somewhat more flexible, but also proner to inconsistencies is a call to 
+<code>new("LatticeDistribution")</code>, where you may explicitly specify random 
+number generator, (counting) density, cumulative distribution and quantile 
+functions. For conveniance, in this call to <code>new("LatticeDistribution")</code>, 
+an additional possibility is to only specify the random number generator. The 
+function <code>RtoDPQ.d</code> then approximates the three remaining slots <code>d</code>, 
+<code>p</code> and <code>q</code> by random sampling.
+</p>
+
+
+<h3>Slots</h3>
+
+<dl>
+<dt><code>img</code>:</dt><dd>Object of class <code>"Reals"</code>: the space of the image 
+of this distribution which has dimension 1 and the name "Real Space" </dd>
+<dt><code>param</code>:</dt><dd>Object of class <code>"Parameter"</code>: the parameter of 
+this distribution, having only the slot name 
+"Parameter of a discrete distribution" </dd>
+<dt><code>r</code>:</dt><dd>Object of class <code>"function"</code>: 
+generates random numbers</dd>
+<dt><code>d</code>:</dt><dd>Object of class <code>"function"</code>: 
+(counting) density/probability function</dd>
+<dt><code>p</code>:</dt><dd>Object of class <code>"function"</code>: 
+cumulative distribution function</dd>
+<dt><code>q</code>:</dt><dd>Object of class <code>"function"</code>: 
+quantile function</dd>
+<dt><code>.withArith</code>:</dt><dd>logical: used internally to issue warnings as to 
+interpretation of arithmetics</dd>
+<dt><code>.withSim</code>:</dt><dd>logical: used internally to issue warnings as 
+to accuracy</dd>
+<dt><code>support</code>:</dt><dd>Object of class <code>"numeric"</code>: a (sorted) vector 
+containing the support of the discrete
+density function</dd>
+<dt><code>lattice</code>:</dt><dd>Object of class <code>"Lattice"</code>: the lattice 
+generating the support.</dd>
+</dl>
+
+<h3>Extends</h3>
+
+<p>
+Class <code>"UnivariateDistribution"</code>, directly.<br>
+Class <code>"Distribution"</code>, by class <code>"UnivariateDistribution"</code>.
+</p>
+
+
+<h3>Methods</h3>
+
+<dl>
+<dt><code>initialize</code></dt><dd><code>signature(.Object = "LatticeDistribution")</code>: 
+initialize method </dd>
+<dt>-</dt><dd><code>signature(e1 = "LatticeDistribution")</code>: 
+application of `-' to this lattice distribution</dd>
+<dt>*</dt><dd><code>signature(e1 = "LatticeDistribution", e2 = "numeric")</code>: 
+multiplication of this lattice distribution
+by an object of class `numeric'</dd>
+<dt>/</dt><dd><code>signature(e1 = "LatticeDistribution", e2 = "numeric")</code>: 
+division of this lattice distribution by an object of class `numeric'</dd>
+<dt>+</dt><dd><code>signature(e1 = "LatticeDistribution", e2 = "numeric")</code>: 
+addition of this lattice distribution to an object of class `numeric'</dd>
+<dt>-</dt><dd><code>signature(e1 = "LatticeDistribution", e2 = "numeric")</code>: 
+subtraction of an object of class `numeric' from this lattice 
+distribution </dd>
+<dt>*</dt><dd><code>signature(e1 = "numeric", e2 = "LatticeDistribution")</code>: 
+multiplication of this lattice distribution by an object of class `numeric'</dd>
+<dt>+</dt><dd><code>signature(e1 = "numeric", e2 = "LatticeDistribution")</code>: 
+addition of this lattice distribution to an object of class `numeric'</dd>
+<dt>-</dt><dd><code>signature(e1 = "numeric", e2 = "LatticeDistribution")</code>: 
+subtraction of this lattice distribution from an object of class `numeric'</dd>
+<dt>+</dt><dd><code>signature(e1 = "LatticeDistribution", 
+    e2 = "LatticeDistribution")</code>: Convolution of two lattice distributions. 
+Slots p, d and q are approximated by grids.</dd>
+<dt>-</dt><dd><code>signature(e1 = "LatticeDistribution", 
+    e2 = "LatticeDistribution")</code>: Convolution of two lattice
+distributions. The slots p, d and q are approximated by grids.</dd>
+<dt><code>lattice</code></dt><dd>accessor method to the corresponding slot.</dd>
+<dt><code>coerce</code></dt><dd><code>signature(from = "LatticeDistribution",
+    to = "DiscreteDistribution")</code>: coerces an object from 
+<code>"LatticeDistribution"</code> to <code>"DiscreteDistribution"</code>
+thereby cancelling out support points with probability 0.</dd>
+</dl>
+
+<h3>Internal subclass "AffLinLatticeDistribution"</h3>
+
+<p>
+To enhance accuracy of several functionals on distributions,
+mainly from package <span class="pkg">distrEx</span>, there is an internally used 
+(but exported) subclass <code>"AffLinLatticeDistribution"</code> which has extra slots 
+<code>a</code>, <code>b</code> (both of class <code>"numeric"</code>),  and <code>X0</code> 
+(of class <code>"LatticeDistribution"</code>), to capture the fact 
+that the object has the same distribution as <code>a * X0 + b</code>. This is 
+the class of the return value of methods 
+<ul>
+<dt>-</dt><dd><code>signature(e1 = "LatticeDistribution")</code></dd>
+<dt>*</dt><dd><code>signature(e1 = "LatticeDistribution", e2 = "numeric")</code></dd>
+<dt>/</dt><dd><code>signature(e1 = "LatticeDistribution", e2 = "numeric")</code></dd>
+<dt>+</dt><dd><code>signature(e1 = "LatticeDistribution", e2 = "numeric")</code></dd>
+<dt>-</dt><dd><code>signature(e1 = "LatticeDistribution", e2 = "numeric")</code></dd>
+<dt>*</dt><dd><code>signature(e1 = "numeric", e2 = "LatticeDistribution")</code></dd>
+<dt>+</dt><dd><code>signature(e1 = "numeric", e2 = "LatticeDistribution")</code></dd>
+<dt>-</dt><dd><code>signature(e1 = "numeric", e2 = "LatticeDistribution")</code></dd>
+<dt>-</dt><dd><code>signature(e1 = "AffLinLatticeDistribution")</code></dd>
+<dt>*</dt><dd><code>signature(e1 = "AffLinLatticeDistribution", e2 = "numeric")</code></dd>
+<dt>/</dt><dd><code>signature(e1 = "AffLinLatticeDistribution", e2 = "numeric")</code></dd>
+<dt>+</dt><dd><code>signature(e1 = "AffLinLatticeDistribution", e2 = "numeric")</code></dd>
+<dt>-</dt><dd><code>signature(e1 = "AffLinLatticeDistribution", e2 = "numeric")</code></dd>
+<dt>*</dt><dd><code>signature(e1 = "numeric", e2 = "AffLinLatticeDistribution")</code></dd>
+<dt>+</dt><dd><code>signature(e1 = "numeric", e2 = "AffLinLatticeDistribution")</code></dd>
+<dt>-</dt><dd><code>signature(e1 = "numeric", e2 = "AffLinLatticeDistribution")</code></dd>
+</ul>
+<p>
+There is also an explicit <code>coerce</code>-method from class
+<code>"AffLinLatticeDistribution"</code> to class <code>"AffLinDiscreteDistribution"</code>
+which cancels out support points with probability 0.
+</p>
+
+
+<h3>Note</h3>
+
+<p>
+Working with a computer, we use a finite interval as support which 
+carries at least mass <code>1-getdistrOption("TruncQuantile")</code>.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="LatticeDistribution.html">LatticeDistribution</a></code>
+<code><a href="Parameter-class.html">Parameter-class</a></code>
+<code><a href="Lattice-class.html">Lattice-class</a></code>
+<code><a href="UnivariateDistribution-class.html">UnivariateDistribution-class</a></code>
+<code><a href="DiscreteDistribution-class.html">DiscreteDistribution-class</a></code>
+<code><a href="Binom-class.html">Binom-class</a></code>
+<code><a href="Dirac-class.html">Dirac-class</a></code>
+<code><a href="Geom-class.html">Geom-class</a></code>
+<code><a href="Hyper-class.html">Hyper-class</a></code>
+<code><a href="Nbinom-class.html">Nbinom-class</a></code>
+<code><a href="Pois-class.html">Pois-class</a></code>
+<code><a href="ContDistribution-class.html">AbscontDistribution-class</a></code>
+<code><a href="Reals-class.html">Reals-class</a></code>
+<code><a href="RtoDPQ.d.html">RtoDPQ.d</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+B &lt;- Binom(prob = 0.1,size = 10) # B is a Binomial distribution w/ prob=0.1 and size=10.
+P &lt;- Pois(lambda = 1) # P is a Poisson distribution with lambda = 1.
+D1 &lt;- B+1 # a new Lattice distributions with exact slots d, p, q
+D2 &lt;- D1*3 # a new Lattice distributions with exact slots d, p, q
+D3 &lt;- B+P # a new Lattice distributions with approximated slots d, p, q
+D4 &lt;- D1+P # a new Lattice distributions with approximated slots d, p, q
+support(D4) # the (approximated) support of this distribution is 1, 2, ..., 21
+r(D4)(1) # one random number generated from this distribution, e.g. 4
+d(D4)(1) # The (approximated) density for x=1 is 0.1282716.
+p(D4)(1) # The (approximated) probability that x&lt;=1 is 0.1282716.
+q(D4)(.5) # The (approximated) 50 percent quantile is 3.
+</pre>
+
+
+
+<hr><div align="center">[Package <em>distr</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

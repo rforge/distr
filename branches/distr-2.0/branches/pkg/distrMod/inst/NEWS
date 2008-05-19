@@ -1,0 +1,15 @@
+######################################################################
+#  News: to package distrMod 
+######################################################################
+
+##############
+v 2.0 
+##############
+
+* start of the package
+* includes Parametric Models
+* includes Minimum Criterium Estimators 
+   ---with particular cases 
+   +Maximum Likelihood
+   +Minimum Distance Estimators for 
+    Kolmogorov, Hellinger, Totalvariation, and Cramer von Mises distance

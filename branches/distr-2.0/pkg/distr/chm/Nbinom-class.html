@@ -1,0 +1,133 @@
+<html><head><title>Class "Nbinom"</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>Nbinom-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   Nbinom-class">
+<param name="keyword" value="R:   Nbinom">
+<param name="keyword" value="R:   initialize,Nbinom-method">
+<param name="keyword" value=" Class 'Nbinom'">
+</object>
+
+
+<h2>Class 'Nbinom'</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The negative binomial distribution with <code>size</code> <i>= n</i>, by default <i>=1</i>, and
+<code>prob</code> <i>= p</i>, by default <i>=0.5</i>, has density
+</p><p align="center"><i>d(x) = Gamma(x+n)/(Gamma(n) x!) p^n (1-p)^x</i></p><p>
+for <i>x = 0, 1, 2, ...</i>
+</p>
+<p>
+This represents the number of failures
+which occur in a sequence of Bernoulli trials before a target number
+of successes is reached.
+C.f. <code><a onclick="findlink('stats', 'NegBinomial.html')" style="text-decoration: underline; color: blue; cursor: hand">rnbinom</a></code>
+</p>
+
+
+<h3>Objects from the Class</h3>
+
+<p>
+Objects can be created by calls of the form <code>Nbinom(prob, size)</code>.
+This object is a negative binomial distribution.
+</p>
+
+
+<h3>Slots</h3>
+
+<dl>
+<dt><code>img</code>:</dt><dd>Object of class <code>"Naturals"</code>: The space of the image of this
+distribution has got dimension 1 and the name "Natural Space". </dd>
+<dt><code>param</code>:</dt><dd>Object of class <code>"NbinomParameter"</code>: the parameter of this distribution (prob, size),
+declared at its instantiation </dd>
+<dt><code>r</code>:</dt><dd>Object of class <code>"function"</code>: generates random numbers (calls function <code>rnbinom</code>) </dd>
+<dt><code>d</code>:</dt><dd>Object of class <code>"function"</code>: density function (calls function <code>dnbinom</code>) </dd>
+<dt><code>p</code>:</dt><dd>Object of class <code>"function"</code>: cumulative function (calls function <code>pnbinom</code>) </dd>
+<dt><code>q</code>:</dt><dd>Object of class <code>"function"</code>: inverse of the cumulative function (calls function <code>qnbinom</code>).
+The quantile is defined as the smallest value <i>x</i> such that
+<i>F(x) &gt;= p</i>, where <i>F</i> is the distribution function.</dd>
+<dt><code>support</code>:</dt><dd>Object of class <code>"numeric"</code>: a (sorted) vector containing the support of the discrete
+density function</dd>
+</dl>
+
+<h3>Extends</h3>
+
+<p>
+Class <code>"DiscreteDistribution"</code>, directly.<br>
+Class <code>"UnivariateDistribution"</code>, by class <code>"DiscreteDistribution"</code>.<br>
+Class <code>"Distribution"</code>, by class <code>"DiscreteDistribution"</code>.
+</p>
+
+
+<h3>Methods</h3>
+
+<dl>
+<dt>initialize</dt><dd><code>signature(.Object = "Nbinom")</code>: initialize method </dd>
+<dt>prob</dt><dd><code>signature(object = "Nbinom")</code>: returns the slot <code>prob</code> of the parameter of the distribution </dd>
+<dt>prob&lt;-</dt><dd><code>signature(object = "Nbinom")</code>: modifies the slot <code>prob</code> of the parameter of the distribution </dd>
+<dt>size</dt><dd><code>signature(object = "Nbinom")</code>: returns the slot <code>size</code> of the parameter of the distribution </dd>
+<dt>size&lt;-</dt><dd><code>signature(object = "Nbinom")</code>: modifies the slot <code>size</code> of the parameter of the distribution </dd>
+<dt>+</dt><dd><code>signature(e1 = "Nbinom", e2 = "Nbinom")</code>: 
+For the negative binomial distribution we use its closedness under convolutions.</dd>
+</dl>
+
+<h3>Note</h3>
+
+<p>
+Working with a computer, we use a finite interval as support which carries at least mass <code>1-getdistrOption("TruncQuantile")</code>.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Thomas Stabla <a href="mailto:statho3@web.de">statho3@web.de</a>,<br> 
+Florian Camphausen <a href="mailto:fcampi@gmx.de">fcampi@gmx.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>,<br> 
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="NbinomParameter-class.html">NbinomParameter-class</a></code>
+<code><a href="Geom-class.html">Geom-class</a></code>
+<code><a href="DiscreteDistribution-class.html">DiscreteDistribution-class</a></code>
+<code><a href="Naturals-class.html">Naturals-class</a></code>
+<code><a onclick="findlink('stats', 'NegBinomial.html')" style="text-decoration: underline; color: blue; cursor: hand">rnbinom</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+N &lt;- Nbinom(prob = 0.5, size = 1) # N is a binomial distribution with prob=0.5 and size=1.
+r(N)(1) # one random number generated from this distribution, e.g. 3
+d(N)(1) # Density of this distribution is  0.25 for x=1.
+p(N)(0.4) # Probability that x&lt;0.4 is 0.5.
+q(N)(.1) # x=0 is the smallest value x such that p(B)(x)&gt;=0.1.
+size(N) # size of this distribution is 1.
+size(N) &lt;- 2 # size of this distribution is now 2.
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>distr</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

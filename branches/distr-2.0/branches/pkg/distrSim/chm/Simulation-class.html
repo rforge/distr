@@ -1,0 +1,140 @@
+<html><head><title>Class "Simulation"</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>Simulation-class(distrSim)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   Simulation-class">
+<param name="keyword" value="R:   Simulation">
+<param name="keyword" value="R:   initialize,Simulation-method">
+<param name="keyword" value=" Class 'Simulation'">
+</object>
+
+
+<h2>Class 'Simulation'</h2>
+
+
+<h3>Description</h3>
+
+<p>
+In an object of type <code>Simulation</code> data can be simulated in any distribution and size.
+</p>
+
+
+<h3>Objects from the Class</h3>
+
+<p>
+Objects can be created by calls of the form <code>Simulation(filename, samplesize, runs, seed, distribution)</code>
+(observation dimension is deduced from slot <code>distribution</code>).
+A <code>Simulation</code>-object includes a filename, a name for the simulation, the number of runs, the size of the sample, the seed and the distribution of the
+random numbers. The slot <code>Data</code> stays empty until the method simulate has been used.
+</p>
+
+
+<h3>Slots</h3>
+
+<dl>
+<dt><code>seed</code>:</dt><dd>Object of class <code>"list"</code>: the seed the simulation has been generated with </dd>
+<dt><code>distribution</code>:</dt><dd>Object of class <code>"UnivariateDistribution"</code>: the distribution of the random numbers</dd>
+<dt><code>filename</code>:</dt><dd>Object of class <code>"character"</code>: the filename the simulation shall be saved </dd>
+<dt><code>name</code>:</dt><dd>Object of class <code>"character"</code>: a name for the Simulation</dd>
+<dt><code>Data</code>:</dt><dd>Object of class <code>"ArrayorNULLorVector"</code>: the simulated data </dd>
+<dt><code>samplesize</code>:</dt><dd>Object of class <code>"numeric"</code>: the size of the sample</dd>
+<dt><code>obsDim</code>:</dt><dd>Object of class <code>"numeric"</code>: the dimension of the observations of the data </dd>
+<dt><code>runs</code>:</dt><dd>Object of class <code>"numeric"</code>: the number of runs of the data </dd>
+<dt><code>version</code>:</dt><dd>Object of class <code>"character"</code>: the version of this package, under which this object was generated</dd>
+</dl>
+
+<h3>Extends</h3>
+
+<p>
+Class <code>"Dataclass"</code>, directly.
+</p>
+
+
+<h3>Methods</h3>
+
+<dl>
+<dt>Data</dt><dd><code>signature(object = "Simulation")</code>: returns the simulated data.</dd>
+<dt>Data&lt;-</dt><dd><code>signature(object = "Simulation")</code>: ERROR: A modification of simulated data is not allowed. </dd>
+<dt>filename</dt><dd><code>signature(object = "Simulation")</code>:  returns the the filename</dd>
+<dt>filename&lt;-</dt><dd><code>signature(object = "Simulation")</code>: changes the the filename</dd>
+<dt>name</dt><dd><code>signature(object = "Simulation")</code>:  returns the the name</dd>
+<dt>name&lt;-</dt><dd><code>signature(object = "Simulation")</code>:   changes the the name</dd>
+<dt>distribution</dt><dd><code>signature(object = "Simulation")</code>: returns the distribution </dd>
+<dt>distribution&lt;-</dt><dd><code>signature(object = "Simulation")</code>: changes the distribution </dd>
+<dt>seed</dt><dd><code>signature(object = "Simulation")</code>: returns the seed </dd>
+<dt>seed&lt;-</dt><dd><code>signature(object = "Simulation")</code>: changes the seed </dd>
+<dt>obsDim</dt><dd><code>signature(object = "Simulation")</code>: returns the dimension of the observations</dd>
+<dt>getVersion</dt><dd><code>signature(object = "Simulation")</code>: returns the version of this package, under which this object was generated</dd>
+<dt>runs</dt><dd><code>signature(object = "Simulation")</code>: returns the number of runs </dd>
+<dt>runs&lt;-</dt><dd><code>signature(object = "Simulation")</code>: changes the number of runs </dd>
+<dt>samplesize</dt><dd><code>signature(object = "Simulation")</code>: returns the size of the sample </dd>
+<dt>samplesize&lt;-</dt><dd><code>signature(object = "Simulation")</code>: changes the size of the sample </dd>
+<dt>savedata</dt><dd><code>signature(object = "Simulation")</code>: saves the object without the data in the directory of R
+(After loading the data can be reproduced by using simulate.) </dd>
+<dt>initialize</dt><dd><code>signature(.Object = "Simulation")</code>: initialize method </dd>
+<dt>plot</dt><dd><code>signature(x = "Simulation")</code>: produces a plot of the data matrix; for details confer <code><a href="plot-methods.html">plot-methods</a></code> </dd>
+<dt>print</dt><dd><code>signature(x = "Simulation")</code>: returns filename, seed, the observation dimension, 
+the number of runs, the size of the sample, the distribution generating the simulations, 
+and, if from a version &gt; 1.8, also the package version under which the object was generated </dd>
+<dt>show</dt><dd><code>signature(x = "Simulation")</code>: the same as <code>print</code>.</dd>
+<dt>simulate</dt><dd><code>signature(x = "Simulation")</code>: generates the random numbers for the simulation </dd>
+<dt>summary</dt><dd><code>signature(object = "Simulation")</code>: returns filename, seed, number of runs, the size of the sample
+and a statistical summary for each run </dd>
+</dl>
+
+<h3>Note</h3>
+
+<p>
+Changing distribution, seed, runs or samplesize deletes possibly simulated data, as it would not fit to the new
+parameters.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Thomas Stabla <a href="mailto:statho3@web.de">statho3@web.de</a>,<br> 
+Florian Camphausen <a href="mailto:fcampi@gmx.de">fcampi@gmx.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>,<br> 
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="Dataclass-class.html">Dataclass-class</a></code>
+<code><a href="Contsimulation-class.html">Contsimulation-class</a></code>
+<code><a href="plot-methods.html">plot-methods</a></code>
+<code><a href="print-methods.html">print-methods</a></code>
+<code><a href="summary-methods.html">summary-methods</a></code>
+<code><a href="simulate-methods.html">simulate-methods</a></code>
+<code><a href="versionmanagement.html">getVersion-methods</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+N=Norm() # N is a standard normal distribution.
+S=Simulation(filename="xyz",runs=10,samplesize=3,seed=setRNG(),distribution=N)
+Data(S) # no data yet
+simulate(S)
+Data(S) # now there are random numbers
+Data(S) # the same data as before because the seed has not changed
+seed(S)=setRNG()
+simulate(S)
+Data(S) # different data
+savedata(S) # saves the object in the directory of R...
+load("xyz") # loads it again...
+Data(S) # ...without the data - use simulate to return it!
+</pre>
+
+
+
+<hr><div align="center">[Package <em>distrSim</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

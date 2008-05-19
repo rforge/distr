@@ -1,0 +1,78 @@
+%##################################################################
+%------------------------------------------------------------------
+Peters Ideen zu neuen Versionen
+%------------------------------------------------------------------
+%##################################################################
+
+%------------------------------------------------------------------
+::::all packages::::
+%------------------------------------------------------------------
+
+%------------------------------------------------------------------
+::::    distr   ::::
+%------------------------------------------------------------------
+(1) MixingDistribution:
+    = UnterKlasse von Univariate Distributions mit slots
+      UnivariateDistrList und mix.coef 
+    nötig:  +Abgleich der Dimensionen; 
+            +spezielle Generating function
+            +spezielles show
+            +spezielles plot
+
+[erledigt: P.R. v 2.0]
+
+(2) DecomposDistribution 
+    = Unterklasse von MixingDistribution
+    nur speziell 5 Listenmitglieder: 
+     +posAbscontPart: abs.stetiger Anteil mit positivem Träger
+     +negAbscontPart: abs.stetiger Anteil mit negativem Träger
+     +negDiscretePart: diskreter Anteil mit positivem Träger
+     +posDiscretePart: diskreter Anteil mit negativem Träger 
+     +nullDiscretePart: Anteil an Dirac(0)
+     dazu: eine generische Funktion decompose
+       die beliebige Abscont- Discrete- und UnivariateMixing- Distributions
+       entsprechend zerlegt.
+
+[(anders) erledigt cf. decomposePM: P.R. v 2.0]
+
+
+(3) damit möglich: exakte Behandlung der Operationen *, /, log, ^,... 
+
+[erledigt: P.R. v 2.0]
+
+(4) besseres plot (vgl. compareplot in distrMod)
+(5) Speed Check -> wo kann man Zeit sparen?
+(6) Bedingen nach Mengen (realisiert ueber Indikatorfunktionen)
+(7) andere img-Bereiche (zB samplen aus liste ("rot", "gruen"))
+(8) mixingCoeff als d-slot einer Listen-wertigen Verteilung
+ 
+%------------------------------------------------------------------
+::::   distrEx  ::::
+%------------------------------------------------------------------
+
+%------------------------------------------------------------------
+::::  distrSim  ::::
+%------------------------------------------------------------------
+(1) Zeitreihenverteilungen
+
+%------------------------------------------------------------------
+::::  distrTEst ::::
+%------------------------------------------------------------------
+(1) realisationen von Tests (vielleicht auch nur als Beispiel)
+
+%------------------------------------------------------------------
+::::  distrDoc  ::::
+%------------------------------------------------------------------
+
+%------------------------------------------------------------------
+:::: startupmsg ::::
+%------------------------------------------------------------------
+%------------------------------------------------------------------
+::::   others   ::::
+%------------------------------------------------------------------
++++ ROptEst
+290306  neue Klasse "ParamFamily" mit slot /modifparameter/ könnte aufwendig werden, 
+  da dieser Slot in *jedem* (auch L2-)Modell individuell gesetzt werden muss...
+
+
+

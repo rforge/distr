@@ -1,0 +1,12 @@
+import("methods")
+import("distr")
+import("distrSim")
+import("startupmsg")
+
+export("EvaluationList", "distrTEstoptions", "getdistrTEstOption")
+exportClasses("numericorNULL", "Evaluation", "EvaluationList",
+              "DataframeorNULL", "CallorNULL")
+exportMethods("name", "filename", "call.ev", "result", "estimator", 
+              "savedata", "Data", "Elist")
+exportMethods("initialize", "evaluate", "plot", "print", "summary",
+              "show")

@@ -1,0 +1,160 @@
+<html><head><title>Function to compute minimum criterion estimators</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>MCEstimator(distrMod)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   MCEstimator">
+<param name="keyword" value=" Function to compute minimum criterion estimators">
+</object>
+
+
+<h2>Function to compute minimum criterion estimators</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The function <code>MCEstimator</code> provides a general way to compute 
+estimators for a given parametric family of probability measures which 
+can be obtain by minimizing a certain criterion. For instance, 
+the negative log-Likelihood in case of the maximum likelihood
+estimator or some distance between distributions like in 
+case of minimum distance estimators.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+MCEstimator(x, ParamFamily, criterion, crit.name, interval, par, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+(empirical) data </td></tr>
+<tr valign="top"><td><code>ParamFamily</code></td>
+<td>
+object of class <code>"ParamFamily"</code> </td></tr>
+<tr valign="top"><td><code>criterion</code></td>
+<td>
+function: criterion to minimize; see Details section. </td></tr>
+<tr valign="top"><td><code>crit.name</code></td>
+<td>
+optional name for criterion. </td></tr>
+<tr valign="top"><td><code>interval</code></td>
+<td>
+interval used by <code>optimize</code> </td></tr>
+<tr valign="top"><td><code>par</code></td>
+<td>
+initial parameter values used by <code>optim</code>; if <code>missing</code>
+the parameter of <code>ParamFamily</code> are used. </td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+further arguments to <code>criterion</code> or <code>optimize</code> 
+or <code>optim</code>, respectively. </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+The argument <code>criterion</code> has to be a function with arguments the 
+empirical data as well as an object of class <code>"Distribution"</code> 
+and possibly <code>...</code>.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+An object of S3-class <code>"MCEstimate"</code> which inherits from class <code>"Estimate"</code>, 
+a list with two components
+</p>
+<table summary="R argblock">
+<tr valign="top"><td><code>estimate</code></td>
+<td>
+minimum criterion parameter estimate </td></tr>
+<tr valign="top"><td><code>criterion</code></td>
+<td>
+minimum value of the criterion </td></tr>
+</table>
+
+<h3>Author(s)</h3>
+
+<p>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="ParamFamily-class.html">ParamFamily-class</a></code>, <code><a href="ParamFamily.html">ParamFamily</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## (empirical) Data
+x &lt;- rgamma(50, scale = 0.5, shape = 3)
+
+## parametric family of probability measures
+theta &lt;- c(1, 2)
+names(theta) &lt;- c("scale", "shape")
+G &lt;- ParamFamily(name = "Gamma family",
+        param = ParamFamParameter(name = "scale and shape", main = theta),
+        distribution = Gammad(scale = 1, shape = 2),
+        modifyParam = function(theta){ 
+                          Gammad(scale = theta[1], shape = theta[2]) 
+                      },
+        props = paste(c("The Gamma family is scale invariant via the",
+                  "parametrization '(nu,shape)=(log(scale),shape)'"),
+                  collapse = " "))
+
+## Maximum Likelihood estimator
+## Note: you can directly use function MLEstimator!
+negLoglikelihood &lt;- function(x, Distribution){
+    res &lt;- -sum(log(Distribution@d(x)))
+    names(res) &lt;- "Negative Log-Likelihood"
+    return(res)
+}
+MCEstimator(x = x, ParamFamily = G, criterion = negLoglikelihood)
+
+## Kolmogorov(-Smirnov) minimum distance estimator
+## Note: you can also use function MDEstimator!
+MCEstimator(x = x, ParamFamily = G, criterion = KolmogorovDist, 
+            crit.name = "Kolmogorov distance")
+
+## Total variation minimum distance estimator
+## Note: you can also use function MDEstimator!
+## discretize Gamma distribution
+MCEstimator(x = x, ParamFamily = G, criterion = TotalVarDist, 
+            crit.name = "Total variation distance")
+
+## or smooth empirical distribution (takes some time!)
+#MCEstimator(x = x, ParamFamily = G, criterion = TotalVarDist, 
+#            asis.smooth.discretize = "smooth", crit.name = "Total variation distance")
+
+## Hellinger minimum distance estimator
+## Note: you can also use function MDEstimator!
+## discretize Gamma distribution
+MCEstimator(x = x, ParamFamily = G, criterion = HellingerDist, 
+            crit.name = "Hellinger Distance")
+
+## or smooth empirical distribution (takes some time!)
+#MCEstimator(x = x, ParamFamily = G, criterion = HellingerDist, 
+#            asis.smooth.discretize = "smooth", crit.name = "Hellinger distance")
+</pre>
+
+
+
+<hr><div align="center">[Package <em>distrMod</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

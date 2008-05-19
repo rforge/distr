@@ -1,0 +1,122 @@
+<html><head><title>Class "DExp"</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>DExp-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   DExp-class">
+<param name="keyword" value="R:   DExp">
+<param name="keyword" value="R:   Laplace">
+<param name="keyword" value="R:   DoubleExponential">
+<param name="keyword" value="R:   initialize,DExp-method">
+<param name="keyword" value=" Class 'DExp'">
+</object>
+
+
+<h2>Class 'DExp'</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The double exponential or Laplace distribution with rate <i>&lambda;</i> has density
+</p><p align="center"><i>f(x) = 1/2 lambda e^(- lambda |x|)</i></p>
+<p>
+C.f. <code><a href="Exp-class.html">Exp-class</a></code>, <code><a onclick="findlink('stats', 'Exponential.html')" style="text-decoration: underline; color: blue; cursor: hand">rexp</a></code>
+</p>
+
+
+<h3>Objects from the Class</h3>
+
+<p>
+Objects can be created by calls of the form <code>DExp(rate)</code>.
+This object is a double exponential (or Laplace) distribution.
+</p>
+
+
+<h3>Slots</h3>
+
+<dl>
+<dt><code>img</code>:</dt><dd>Object of class <code>"Reals"</code>:
+The space of the image of this distribution has got dimension 1
+and the name "Real Space".</dd>
+<dt><code>param</code>:</dt><dd>Object of class <code>"ExpParameter"</code>:
+the parameter of this distribution (rate), declared at its instantiation </dd>
+<dt><code>r</code>:</dt><dd>Object of class <code>"function"</code>:
+generates random numbers (calls function rexp)</dd>
+<dt><code>d</code>:</dt><dd>Object of class <code>"function"</code>:
+density function (calls function dexp)</dd>
+<dt><code>p</code>:</dt><dd>Object of class <code>"function"</code>:
+cumulative function (calls function pexp)</dd>
+<dt><code>q</code>:</dt><dd>Object of class <code>"function"</code>:
+inverse of the cumulative function (calls function qexp)</dd>
+</dl>
+
+<h3>Extends</h3>
+
+<p>
+Class <code>"AbscontDistribution"</code>, directly.<br>
+Class <code>"UnivariateDistribution"</code>, by class <code>"AbscontDistribution"</code>.
+Class <code>"Distribution"</code>, by class <code>"AbscontDistribution"</code>.
+</p>
+
+
+<h3>Methods</h3>
+
+<dl>
+<dt>initialize</dt><dd><code>signature(.Object = "DExp")</code>:
+initialize method</dd>
+<dt>rate</dt><dd><code>signature(object = "DExp")</code>:
+returns the slot rate of the parameter of the distribution</dd>
+<dt>rate&lt;-</dt><dd><code>signature(object = "DExp")</code>:
+modifies the slot rate of the parameter of the distribution</dd>
+<dt>*</dt><dd><code>signature(e1 = "DExp", e2 = "numeric")</code>: 
+For the Laplace distribution we use its closedness under scaling transformations.</dd>
+</dl>
+
+<h3>Author(s)</h3>
+
+<p>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="Exp-class.html">Exp-class</a></code>
+<code><a href="ExpParameter-class.html">ExpParameter-class</a></code>
+<code><a href="ContDistribution-class.html">AbscontDistribution-class</a></code>
+<code><a href="Reals-class.html">Reals-class</a></code>
+<code><a onclick="findlink('stats', 'Exponential.html')" style="text-decoration: underline; color: blue; cursor: hand">rexp</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+D &lt;- DExp(rate = 1) # D is a Laplace distribution with rate = 1.
+r(D)(1) # one random number generated from this distribution, e.g. 0.4190765
+d(D)(1) # Density of this distribution is 0.1839397 for x = 1.
+p(D)(1) # Probability that x &lt; 1 is 0.8160603.
+q(D)(.1) # Probability that x &lt; -1.609438 is 0.1.
+rate(D) # rate of this distribution is 1.
+rate(D) &lt;- 2 # rate of this distribution is now 2.
+3*D ###  still a DExp -distribution
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>distr</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>
