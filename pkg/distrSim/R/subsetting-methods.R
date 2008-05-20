@@ -1,4 +1,5 @@
-setMethod("[", "SeqDataFrames", function(x, i, j, k, drop = FALSE){
+setMethod("[", signature(x = "SeqDataFrames"), 
+      function(x, i, j, k, ..., drop = FALSE){
           if(missing(k)) k <- 1:length(x@data)
           kl <- length(k)
           if (kl == 1){
@@ -7,7 +8,7 @@ setMethod("[", "SeqDataFrames", function(x, i, j, k, drop = FALSE){
                    return(daf)
               else return(new("SeqDataFrames", data = list(daf)))
           }else {
-              kn <- 1: length(x@data)
+              kn <- 1:length(x@data)
               if(!is.null(names(x@data)))
                  names(kn) <- names(x@data)
               kl0 <- kn[k]
@@ -20,7 +21,8 @@ setMethod("[", "SeqDataFrames", function(x, i, j, k, drop = FALSE){
               return(new("SeqDataFrames", data = lis))
           }})
 
-setReplaceMethod("[", "SeqDataFrames", function(x, i, j, k, value){
+setReplaceMethod("[", signature(x = "SeqDataFrames"), 
+      function(x, i, j, k, ..., value){
           if(missing(k)) k <- 1:length(x@data)
           if(length(k)==1){
              if((k<=length(x@data))||!is(try(x@data[[k]],silent=TRUE),"try-error"))

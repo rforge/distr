@@ -9,10 +9,10 @@
      or replace parts.}
 \usage{
 ## "["(x,i,j,k, drop = FALSE) # is: x[i,j,k, drop = FALSE]
-\S4method{[}{SeqDataFrames}(x, i, j, k, drop = FALSE)
+\S4method{"["}{SeqDataFrames}(x, i, j, k, ..., drop = FALSE)
 
 ## "[<-"(x,i,j,k, value)      # is: x[i,j,k] <- value
-\S4method{[<-}{SeqDataFrames}(x, i, j, k, value)
+\S4method{[<-}{SeqDataFrames}(x, i, j, k, ..., value)
 }
 \arguments{
   \item{x}{ object of class \code{SeqDataFrames} from which to extract element(s) or in which to
@@ -21,13 +21,13 @@
   \item{j}{ observation dimension index; may be missing}
   \item{k}{ run index; may be missing}
   \item{drop}{ as in the general indexing functions}
-  \item{value}{ modication to be assigned to}
+  \item{value}{ modification to be assigned to}
 }
 \section{Methods}{
   \describe{
-    \item{"["}{\code{signature(x = "SeqDataFrames")}:
+    \item{"["}{\code{signature(x = "SeqDataFrames", i = "ANY", j = "ANY", drop = "ANY")}:
       access method for indices for objects of class \code{SeqDataFrames}}
-    \item{"[<-"}{\code{signature(x = "SeqDataFrames")}:
+    \item{"[<-"}{\code{signature(x = "SeqDataFrames", i = "ANY", j = "ANY", drop = "ANY"))}:
       replacement method for indices for objects of class \code{SeqDataFrames}}
   }
 }
