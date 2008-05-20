@@ -210,3 +210,20 @@ setMethod("ConvexContamination", signature(e1 = "UnivariateDistribution",
         return(new("UnivariateDistribution", img = img(e1), r = rfun, d = NULL, 
                     p = pfun, q = qfun, .withSim = FALSE, .withArith = FALSE))
     })
+
+
+setMethod("ConvexContamination", signature(e1 = "AcDcLcDistribution",
+                                           e2 = "AcDcLcDistribution",
+                                           size = "numeric"),
+    function(e1, e2, size){
+        e1 <- as(e1, "UnivarLebDecDistribution")
+        e2 <- as(e2, "UnivarLebDecDistribution")
+
+        if(length(size) != 1)
+            stop("length of 'size' has to be 1")
+        if((size < 0)|(size > 1))
+            stop("'size' has to be in [0,1]")
+        
+        return(flat.mix(UnivarMixingDistribution(e1, e2, 
+                                    mixCoeff = c(1-size,size))))
+    })

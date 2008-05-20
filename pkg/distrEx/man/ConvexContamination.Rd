@@ -5,6 +5,7 @@
 \alias{ConvexContamination,AbscontDistribution,AbscontDistribution,numeric-method}
 \alias{ConvexContamination,AbscontDistribution,UnivariateDistribution,numeric-method}
 \alias{ConvexContamination,DiscreteDistribution,DiscreteDistribution,numeric-method}
+\alias{ConvexContamination,AcDcLcDistribution,AcDcLcDistribution,numeric-method}
 
 \title{Generic Function for Generating Convex Contaminations}
 \description{Generic function for generating convex contaminations. This is also 
@@ -32,6 +33,10 @@
 
   \item{e1 = "DiscreteDistribution", e2 = "DiscreteDistribution", size = "numeric":}{
     convex combination of two discrete univariate distributions }
+
+  \item{e1 = "AcDcLcDistribution", e2 = "AcDcLcDistribution", size = "numeric":}{
+    convex combination of two univariate distributions which may be coerced to
+    \code{"UnivarLebDecDistribution"}.}
 }}
 \references{Huber, P.J. (1981) \emph{Robust Statistics}. New York: Wiley.}
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de}}
