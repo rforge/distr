@@ -11,5 +11,5 @@ buildStartupMessage(pkg="distrDoc",  library=libname,
 } 
 
 ### just to have it -- not to export it
-setClass("Integer", contains ="numeric",
-          validity = function(object) all(.isInteger(object)))
+#setClass("Integer", contains ="numeric",
+#          validity = function(object) all(.isInteger(object)))

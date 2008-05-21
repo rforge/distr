@@ -360,12 +360,6 @@ produces the prime function as a function.
 \code{.primefun}{the prime function as a function}
 }
 
-\section{Internal classes}{For the ease of method dispatch, there is an internal
-S4 class \code{Integer}, which is a subclass of \code{numeric} and has a 
-straightforward validity method. There is a coerce method to coerce objects
-of class \code{numeric} to \code{Integer}, to be used as  
-\code{x <- c(1,34,2,-3); as(x,"Integer")}.}
-
 \author{
   Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}
   }
