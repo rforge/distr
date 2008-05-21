@@ -12,7 +12,7 @@
 \S4method{[}{SeqDataFrames}(x, i, j, k, drop = FALSE)
 
 ## "[<-"(x,i,j,k, value)      # is: x[i,j,k] <- value
-\S4method{[<-}{SeqDataFrames}(x, i, j, k, value)
+\S4method{[}{SeqDataFrames}(x, i, j, k) <- value
 }
 \arguments{
   \item{x}{ object of class \code{SeqDataFrames} from which to extract element(s) or in which to
