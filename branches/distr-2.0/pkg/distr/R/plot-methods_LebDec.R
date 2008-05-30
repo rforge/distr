@@ -92,7 +92,7 @@ setMethod("plot", "UnivarLebDecDistribution",
         col.sub <- dots$col
 
      if (!withSweave)
-          get(getOption("device"))(width = width, height = height)
+          devNew(width = width, height = height)
      omar <- par("mar")
 
      mainL <- FALSE

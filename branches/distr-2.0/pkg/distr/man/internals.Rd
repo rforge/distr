@@ -46,6 +46,7 @@
 \alias{.Q2P}
 \alias{.csimpsum}
 \alias{.primefun}
+\alias{devNew}
 
 \title{Internal functions of package distr}
 
@@ -76,7 +77,7 @@ These functions are used internally by package distr.}
 .multm(e1, e2, Dclass = "DiscreteDistribution")
 .notwithLArg(D)
 .getObjName(i = 1)
-.discretizeP(D, lower, upper, h)   
+.discretizeP(D, lower, upper, h)
 .fm(x,f)
 .fM(x,f)
 .fM2(x,f)
@@ -106,6 +107,7 @@ These functions are used internally by package distr.}
 .Q2P (q, ngrid = getdistrOption("DefaultNrGridPoints"))
 .csimpsum(fx)
 .primefun(f,x, nm = NULL)
+devNew(...)
 }
 
 
@@ -193,6 +195,7 @@ These functions are used internally by package distr.}
  \item{fx}{a vector of function evaluations multiplied by the gridwidth}
  \item{f}{a vector of function evaluations}
  \item{nm}{an optional right asymptotic value}
+ \item{...}{arguments passed through to other functions}
 }
 
 \details{
@@ -296,7 +299,7 @@ and of function \code{.makeQNew},  respectively. The other way round,
 \code{.D2P} and \code{.Q2P} reconstruct function slot \code{p} from 
 from function slots  \code{d} resp. \code{q} 
 by means of function \code{.makePNew} and explicite numeric inversion,  
-respectively.  
+respectively.
 
 \code{.csimpsum} is used internally in \code{.makePNew} to produce
 a prime function out of function evaluations by means of vectorized
@@ -305,6 +308,8 @@ of the prime function on a grid; it is to mimick the behaviour
 of \code{cumsum}. \code{.primefun} is similar but more flexible and
 produces the prime function as a function.
 
+\code{devNew} opens a new device. This function is for back compatibility
+with R versions < 2.8.0.
 }
 
 
@@ -356,11 +361,13 @@ produces the prime function as a function.
             lower.tail = TRUE, log.p = FALSE)}}
 \code{.csimpsum}{a vector of evaluations of the prime function at the grid points}
 \code{.primefun}{the prime function as a function}
+\code{devNew}{returns the return value of the device opened, usually invisible 'NULL'}
 }
 
 \author{
   Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}
-  }
+  Matthias Kohl \email{Matthias.Kohl@stamats.de}
+}
 
 \seealso{
 \code{\link{AbscontDistribution}},
@@ -371,7 +378,7 @@ produces the prime function as a function.
 \code{\link{convpow}},
 \code{\link{operators}},
 \code{\link{plot-methods}}
+\code{\link[grDevices]{dev.new}}
 }
-
 \keyword{internal}
 \concept{utilities}
