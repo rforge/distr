@@ -8,10 +8,8 @@
 \description{Operators acting on \code{SeqDataFrames} objects to extract
      or replace parts.}
 \usage{
-## "["(x,i,j,k, drop = FALSE) # is: x[i,j,k, drop = FALSE]
 \S4method{[}{SeqDataFrames}(x, i, j, k, drop = FALSE)
 
-## "[<-"(x,i,j,k, value)      # is: x[i,j,k] <- value
 \S4method{[}{SeqDataFrames}(x, i, j, k) <- value
 }
 \arguments{
@@ -34,15 +32,14 @@
 
 \value{again an object of class \code{SeqDataFrames} with the prescribed indices / values}
 \seealso{\code{\link[base]{"["}}}
-\keyword{methods}
 \examples{
 s0 <- matrix(1:6,3,2)
 d0 <- data.frame(s0)
 d1 <- data.frame(s0 + 3)
-SF <- seqDataFrames(d0, d1)
+SF <- SeqDataFrames(d0, d1)
 SF[1,2,1]
-
 }
+\keyword{methods}
 \concept{subsetting}
 \concept{indexing}
 \concept{accessor function}
