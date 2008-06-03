@@ -2,7 +2,6 @@ import("distr")
 import("distrEx")
 import("startupmsg")
 
-export("plotCLT")
 exportMethods("plotCLT") 
 export("illustrateLLN")
 export("illustrateCLT")
