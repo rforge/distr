@@ -19,7 +19,7 @@
   \item{j}{ observation dimension index; may be missing}
   \item{k}{ run index; may be missing}
   \item{drop}{ as in the general indexing functions}
-  \item{value}{ modication to be assigned to}
+  \item{value}{ modification to be assigned to}
 }
 \section{Methods}{
   \describe{

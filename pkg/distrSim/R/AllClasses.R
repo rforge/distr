@@ -8,11 +8,11 @@ setClass("SeqDataFrames", representation(data = "list"),
           validity = function(object){
                len <- length(object@data)
                if (len > 1)
-                  { if (!all(lapply(object@data, is.data.frame)))
+                  { if (!all(unlist(lapply(object@data, is.data.frame))))
                         stop("all elements must be data frames")
                     f <- function(y) {list(ncol(y), names(y))}
                     g <- function(y) identical(f(y), f(object@data[[1]]))
-                    if (!all(lapply(object@data, g)))
+                    if (!all(unlist(lapply(object@data, g))))
                         stop("all elements must have the same column structure")     
                   }
               return(TRUE) }

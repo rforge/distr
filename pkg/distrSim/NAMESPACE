@@ -5,7 +5,7 @@ import("distr")
 import("startupmsg")
 
 export("cload", "Dataclass", "Simulation", "Contsimulation",
-              "distrSimoptions", "getdistrSimOption", "seqDataFrames", "distrSimMASK")
+              "distrSimoptions", "getdistrSimOption", "SeqDataFrames", "distrSimMASK")
 exportClasses("vectororNULL", "Dataclass", "Simulation", "Contsimulation",
               "SeqDataFrames", "MatrixorNULLorVector","ArrayorNULLorVector",
               "ArrayorNULLorVectororDataframeorSeqDataFrames","DataframeorSeqDataFrames")

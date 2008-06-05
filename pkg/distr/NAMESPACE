@@ -13,7 +13,7 @@ export("Beta", "Binom", "Cauchy", "Chisq",
        "Lattice", "DiscreteDistribution",
        "LatticeDistribution", "EuclideanSpace", "Reals", 
        "Naturals", "standardMethods", 
-       "distrARITH", "distrMASK", "getLabel")
+       "distrARITH", "distrMASK", "getLabel", "devNew")
 export("AbscontDistribution")
 export("DistrList", "UnivarDistrList") 
 exportClasses("rSpace", "EuclideanSpace", "Reals", 

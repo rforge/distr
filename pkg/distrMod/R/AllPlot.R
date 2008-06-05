@@ -39,7 +39,7 @@ setMethod("plot", "L2ParamFamily",
         w0 <- options("warn")
         options(warn = -1)
         opar <- par()
-        get(getOption("device"))()
+        devNew()
         nrows <- trunc(sqrt(dims))
         ncols <- ceiling(dims/nrows)
         par(mfrow = c(nrows, ncols))

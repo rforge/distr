@@ -48,7 +48,7 @@ setMethod("plot", "AbscontDistribution",
         col.sub <- dots$col
 
      if (!withSweave)
-          get(getOption("device"))(width = width, height = height)
+          devNew(width = width, height = height)
      omar <- par("mar")
      
      mainL <- FALSE
@@ -306,7 +306,7 @@ setMethod("plot", "DiscreteDistribution",
         col.sub <- dots$col
 
      if (!withSweave)
-         get(getOption("device"))(width = width, height = height)
+         devNew(width = width, height = height)
      omar <- par("mar")
      
      mainL <- FALSE
@@ -524,9 +524,9 @@ setMethod("plot", "DiscreteDistribution",
 # -------- DistributionList   ---------- #
 
 setMethod("plot", "DistrList", 
-    function(x,y=NULL,...){ 
+    function(x, y = NULL, ...){ 
         for(i in 1:length(x)){
-            get(getOption("device"))()
+            devNew()
             plot(x[[i]],...)
         }
     })

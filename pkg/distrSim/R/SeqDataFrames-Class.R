@@ -1,4 +1,4 @@
-seqDataFrames <- function(...) new("SeqDataFrames", data=list(...))
+SeqDataFrames <- function(...) new("SeqDataFrames", data=list(...))
 
 ## Access methods
 

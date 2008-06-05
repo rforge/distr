@@ -1,6 +1,6 @@
 setMethod("[", signature(x = "SeqDataFrames"), 
       function(x, i, j, k, ..., drop = FALSE){
-          if(missing(k)) k <- 1:length(x@data)
+          if(missing(k)) k <- seq_len(length(x@data))
           kl <- length(k)
           if (kl == 1){
               daf <- "["(x@data[[k]],i,j, drop = drop)
@@ -8,13 +8,13 @@ setMethod("[", signature(x = "SeqDataFrames"),
                    return(daf)
               else return(new("SeqDataFrames", data = list(daf)))
           }else {
-              kn <- 1:length(x@data)
+              kn <- seq_len(length(x@data))
               if(!is.null(names(x@data)))
                  names(kn) <- names(x@data)
               kl0 <- kn[k]
               kll <- length(kl0)
               lis <- vector("list",kll)
-              for (kk in 1:kll)
+              for (kk in seq_len(kll))
                   {lis[[kk]] <- as.data.frame("["(x@data[[kl0[kk]]], i,j, drop = drop))
                    if(!is.null(names(x@data)))
                       names(lis)[kk] <- names(x@data)[kl0[kk]]}
@@ -23,13 +23,13 @@ setMethod("[", signature(x = "SeqDataFrames"),
 
 setReplaceMethod("[", signature(x = "SeqDataFrames"), 
       function(x, i, j, k, ..., value){
-          if(missing(k)) k <- 1:length(x@data)
+          if(missing(k)) k <- seq_len(length(x@data))
           if(length(k)==1){
              if((k<=length(x@data))||!is(try(x@data[[k]],silent=TRUE),"try-error"))
                 {zl <- x@data
                  z  <- zl[[k]]
                  if (missing(i))
-                    { i <- 1:nrow(z)
+                    { i <- seq_len(nrow(z))
                      #if(!is.null(dim(value)))
                      #    z <- data.frame(matrix(NA,nrow(value),ncol(x@data[[1]])))
                      #    else z <- data.frame(matrix(NA,length(value),ncol(x@data[[1]])))
@@ -46,21 +46,24 @@ setReplaceMethod("[", signature(x = "SeqDataFrames"),
               }
              return(x)}
 
-          if(missing(j)) j <- 1:ncol(x@data[[1]])
-          if(missing(i)) i <- lapply(1:length(x@data),function(y) 1:nrow(x@data[[y]]))
+          if(missing(j)) j <- seq_len(ncol(x@data[[1]]))
+          if(missing(i)) i <- lapply(seq_len(length(x@data)),function(y) seq_len(nrow(x@data[[y]])))
 
           if(is(value, "SeqDataFrames")) value <- value@data
 
-          kn <- 1: length(x@data)
+          kn <- seq_len(length(x@data))
           if(!is.null(names(x@data)))
                  names(kn) <- names(x@data)
           kl0 <- kn[k]
           kll <- length(kl0)
 
-          if(!is.list(i)) i <- lapply(kl0,function(y) i)
+## Is the following line correct?
+## should it be: if(!is.list(i)) i <- lapply(kl0, function(y) y)
+## or: if(!is.list(i)) i <- as.list(kl0)?
+          if(!is.list(i)) i <- lapply(kl0, function(y) i)
 
           if(is(value,"atomic"))
-             value <- lapply(1:kll,
+             value <- lapply(seq_len(kll),
                              function(y) data.frame(matrix(
                                          rep(value, length( i[[kl0[y]]])*length(j)),
                                          length(i[[kl0[y]]]),
@@ -72,7 +75,7 @@ setReplaceMethod("[", signature(x = "SeqDataFrames"),
                 value <- lapply(kl0,function(y) value)
 
           zl <- x@data
-          for(kk in 1:kll)
+          for(kk in seq_len(kll))
                  {z <- zl[[kl0[kk]]]
                   z[c(unlist(i[[kl0[kk]]])),j] <- value[kk]
                   zl[[kl0[kk]]] <- z

@@ -2,6 +2,7 @@
 \alias{internals_for_distr}
 \alias{.is.vector.lattice}
 \alias{.is.consistent}
+\alias{.isInteger}
 \alias{.isNatural}
 \alias{.isNatural0}
 \alias{.mergegaps}
