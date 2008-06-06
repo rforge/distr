@@ -83,7 +83,7 @@ setMethod("skewness", signature(x = "Chisq"),
     })
 #
 setMethod("skewness", signature(x = "Dirac"),
-    function(x){return(0)})
+    function(x, ...){return(0)})
 
 #
 setMethod("skewness", signature(x = "DExp"),

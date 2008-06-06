@@ -28,11 +28,11 @@ TotalVarDist(e1, e2, ...)
 \S4method{TotalVarDist}{numeric,DiscreteDistribution}(e1, e2)
 \S4method{TotalVarDist}{DiscreteDistribution,numeric}(e1, e2)
 \S4method{TotalVarDist}{numeric,AbscontDistribution}(e1, e2, asis.smooth.discretize = "discretize", 
-            n.discr = getdistrModOption("nDiscretize"), low.discr = getLow(e2),
-            up.discr = getUp(e2), h.smooth = getdistrModOption("hSmooth"))
+            n.discr = getdistrExOption("nDiscretize"), low.discr = getLow(e2),
+            up.discr = getUp(e2), h.smooth = getdistrExOption("hSmooth"))
 \S4method{TotalVarDist}{AbscontDistribution,numeric}(e1, e2, asis.smooth.discretize = "discretize", 
-            n.discr = getdistrModOption("nDiscretize"), low.discr = getLow(e2),
-            up.discr = getUp(e2), h.smooth = getdistrModOption("hSmooth"))
+            n.discr = getdistrExOption("nDiscretize"), low.discr = getLow(e1),
+            up.discr = getUp(e1), h.smooth = getdistrExOption("hSmooth"))
 \S4method{TotalVarDist}{AcDcLcDistribution,AcDcLcDistribution}(e1, e2)
 }
 \arguments{

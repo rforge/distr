@@ -2,13 +2,13 @@
 setMethod("E", signature(object = "UnivariateDistribution", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object, fun){
+    function(object, fun, cond){
         return(mean(r(object)(.distrExOptions$MCIterations)))
     })
 setMethod("E", signature(object = "AbscontDistribution", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object, fun){
+    function(object, fun, cond){
         integrand <- function(x, dfun){ x * dfun(x) }
         return(distrExIntegrate(f = integrand, 
                     lower = q(object)(.distrExOptions$ElowerTruncQuantile),
@@ -19,7 +19,7 @@ setMethod("E", signature(object = "AbscontDistribution",
 setMethod("E", signature(object = "DiscreteDistribution", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object, fun){
+    function(object, fun, cond){
         supp <- support(object)
         dfun <- d(object)
         return(sum(supp * dfun(supp)))
@@ -28,7 +28,7 @@ setMethod("E", signature(object = "DiscreteDistribution",
 setMethod("E", signature(object = "AffLinDistribution", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object, fun){
+    function(object, fun, cond){
              object@a * E(object@X0) + object@b
     })
 
@@ -57,13 +57,13 @@ setMethod("E", signature(object = "AffLinLatticeDistribution",
 setMethod("E", signature(object = "MultivariateDistribution", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object, fun){
+    function(object, fun, cond){
         return(colMeans(r(object)(.distrExOptions$MCIterations)))
     })
 setMethod("E", signature(object = "DiscreteMVDistribution", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object, fun){
+    function(object, fun, cond){
         supp <- support(object)
         integrand <- function(x, dfun){ x * dfun(t(x)) }
         erg <- apply(supp, 1, integrand, dfun = d(object))
@@ -75,7 +75,7 @@ setMethod("E", signature(object = "DiscreteMVDistribution",
 setMethod("E", signature(object = "UnivariateDistribution", 
                          fun = "function", 
                          cond = "missing"),
-    function(object, fun, useApply = TRUE, ...){
+    function(object, fun, cond, useApply = TRUE, ...){
         if(useApply)        
             return(mean(sapply(r(object)(.distrExOptions$MCIterations), fun, ...)))
         else
@@ -84,7 +84,7 @@ setMethod("E", signature(object = "UnivariateDistribution",
 setMethod("E", signature(object = "AbscontDistribution", 
                          fun = "function", 
                          cond = "missing"),
-    function(object, fun, useApply = TRUE, ...){
+    function(object, fun, cond, useApply = TRUE, ...){
         if(useApply){
             integrand <- function(x, dfun, fun, ...){ 
                 sapply(x, fun, ...) * dfun(x) 
@@ -103,7 +103,7 @@ setMethod("E", signature(object = "AbscontDistribution",
 setMethod("E", signature(object = "DiscreteDistribution", 
                          fun = "function", 
                          cond = "missing"),
-    function(object, fun, useApply = TRUE, ...){
+    function(object, fun, cond, useApply = TRUE, ...){
         supp <- support(object)
         if(useApply){
             integrand <- function(x, dfun, fun, ...){
@@ -119,7 +119,7 @@ setMethod("E", signature(object = "DiscreteDistribution",
 setMethod("E", signature(object = "MultivariateDistribution", 
                          fun = "function", 
                          cond = "missing"),
-    function(object, fun, useApply = TRUE, ...){
+    function(object, fun, cond, useApply = TRUE, ...){
         x <- r(object)(.distrExOptions$MCIterations)
         if(useApply)
             erg <- apply(x, 1, fun, ...)
@@ -136,7 +136,7 @@ setMethod("E", signature(object = "MultivariateDistribution",
 setMethod("E", signature(object = "DiscreteMVDistribution", 
                          fun = "function", 
                          cond = "missing"),
-    function(object, fun, useApply = TRUE, ...){
+    function(object, fun, cond, useApply = TRUE, ...){
         supp <- support(object)
         if(useApply){
             integrand <- function(x, fun, dfun, ...){ fun(x, ...) * dfun(t(x)) }
@@ -156,13 +156,13 @@ setMethod("E", signature(object = "DiscreteMVDistribution",
 setMethod("E", signature(object = "UnivariateCondDistribution", 
                          fun = "missing", 
                          cond = "numeric"),
-    function(object, cond){
+    function(object, fun, cond){
         return(mean(r(object)(.distrExOptions$MCIterations, cond)))
     })
 setMethod("E", signature(object = "AbscontCondDistribution", 
                          fun = "missing", 
                          cond = "numeric"),
-    function(object, cond, useApply = TRUE){
+    function(object, fun, cond, useApply = TRUE){
         fct <- function(x, dfun, cond){ x * dfun(x, cond) }
         if(useApply){
             integrand <- function(x, dfun, cond){ 
@@ -180,7 +180,7 @@ setMethod("E", signature(object = "AbscontCondDistribution",
 setMethod("E", signature(object = "DiscreteCondDistribution", 
                          fun = "missing",
                          cond = "numeric"),
-    function(object, cond, useApply = TRUE){
+    function(object, fun, cond, useApply = TRUE){
         supp <- support(object)(cond)
         fct <- function(x, dfun, cond){ x * dfun(x, cond) }
         if(useApply)
@@ -276,14 +276,14 @@ setMethod("E", signature(object = "DiscreteCondDistribution",
 setMethod("E", signature(object = "Norm", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object){
+    function(object, fun, cond){
         return(mean(object))
     })
 
 setMethod("E", signature(object = "Beta", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object){
+    function(object, fun, cond){
         if(!isTRUE(all.equal(ncp(object),0)))
           return(E(as(object,"AbscontDistribution"),...))
         else
@@ -293,28 +293,28 @@ setMethod("E", signature(object = "Beta",
 setMethod("E", signature(object = "Binom", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object){
+    function(object, fun, cond){
         return(size(object)*prob(object))
     })
 
 setMethod("E", signature(object = "Cauchy", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object){
+    function(object, fun, cond){
         return(NA)
     })
 
 setMethod("E", signature(object = "Chisq", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object){
+    function(object, fun, cond){
         return(df(object)+ncp(object))
     })
 
 setMethod("E", signature(object = "Dirac", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object){
+    function(object, fun, cond){
         return(location(object))
     })
 
@@ -322,14 +322,14 @@ setMethod("E", signature(object = "Dirac",
 setMethod("E", signature(object = "DExp", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object){
+    function(object, fun, cond){
         return(0)
     })
 
 setMethod("E", signature(object = "Exp", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object){
+    function(object, fun, cond){
         return(1/rate(object))
     })
 
@@ -337,7 +337,7 @@ setMethod("E", signature(object = "Exp",
 setMethod("E", signature(object = "Fd", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object){ 
+    function(object, fun, cond){ 
         df1 <- df1(object)
         df2 <- df2(object)
         d <- ncp(object)
@@ -347,56 +347,56 @@ setMethod("E", signature(object = "Fd",
 setMethod("E", signature(object = "Gammad", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object){
+    function(object, fun, cond){
         return(shape(object)*scale(object))
     })
 
 setMethod("E", signature(object = "Geom", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object){
+    function(object, fun, cond){
         return(1/ prob(object) -1)
     })
 
 setMethod("E", signature(object = "Hyper", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object){
+    function(object, fun, cond){
         return(k(object)*n(object)/(m(object)+n(object)))
     })
 
 setMethod("E", signature(object = "Logis", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object){
+    function(object, fun, cond){
         return(location(object))
     })
 
 setMethod("E", signature(object = "Lnorm", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object){
+    function(object, fun, cond){
         return(exp(meanlog(object)+sdlog(object)^2/2))
     })
 
 setMethod("E", signature(object = "Nbinom", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object){
+    function(object, fun, cond){
         return(size(object)*(1-prob(object))/prob(object))
     })
 
 setMethod("E", signature(object = "Pois", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object){
+    function(object, fun, cond){
         return(lambda(object))
     })
 
 setMethod("E", signature(object = "Td", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object){
+    function(object, fun, cond){
         ## correction thanks to G.Jay Kerns
         return(ifelse( df(object)>1, 
                        ncp(object)*sqrt(df(object)/2)*
@@ -407,13 +407,13 @@ setMethod("E", signature(object = "Td",
 setMethod("E", signature(object = "Unif", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object){
+    function(object, fun, cond){
         return((Max(object)+Min(object))/2)
     })
 
 setMethod("E", signature(object = "Weibull", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object){
+    function(object, fun, cond){
         return(scale(object)*gamma(1+1/shape(object)))
     })

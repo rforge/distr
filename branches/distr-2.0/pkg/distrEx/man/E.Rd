@@ -59,17 +59,17 @@ E(object, fun, cond, ...)
 
 \S4method{E}{DiscreteDistribution,function,missing}(object, fun, cond, useApply = TRUE, ...)
 
-\S4method{E}{AffLinDistribution,missing,missing}(object)
+\S4method{E}{AffLinDistribution,missing,missing}(object, fun, cond)
 
-\S4method{E}{AffLinUnivarLebDecDistribution,missing,missing}(object)
+\S4method{E}{AffLinUnivarLebDecDistribution,missing,missing}(object, fun, cond)
 
 \S4method{E}{MultivariateDistribution,function,missing}(object, fun, cond, useApply = TRUE, ...)
 
 \S4method{E}{DiscreteMVDistribution,function,missing}(object, fun, cond, useApply = TRUE, ...)
 
-\S4method{E}{AbscontCondDistribution,missing,numeric}(object, cond, useApply = TRUE)
+\S4method{E}{AbscontCondDistribution,missing,numeric}(object, fun, cond, useApply = TRUE)
 
-\S4method{E}{DiscreteCondDistribution,missing,numeric}(object, cond, useApply = TRUE)
+\S4method{E}{DiscreteCondDistribution,missing,numeric}(object, fun, cond, useApply = TRUE)
 
 \S4method{E}{UnivariateCondDistribution,function,numeric}(object, fun, cond, withCond = FALSE, useApply = TRUE, ...)
 
