@@ -35,8 +35,7 @@ illustrateCLT.tcl <- function(Distr, k, Distrname){
 
               ## graphical output
 
-setMethod("plotCLT","DiscreteDistribution",
-          function(Tn,k, summands = "", withInner = TRUE) {
+setMethod("plotCLT","DiscreteDistribution", function(Tn, k, summands = "") {
                 N <- Norm()
                 supp <- support(Tn)
                 supp <- supp[supp >= -5]
@@ -87,8 +86,7 @@ setMethod("plotCLT","DiscreteDistribution",
                 par(mfrow = c(1,1), mar=oldmar)
        })
 
-setMethod("plotCLT","AbscontDistribution",
-          function(Tn,k, summands = "", withInner = TRUE) {
+setMethod("plotCLT","AbscontDistribution", function(Tn,k, summands = "") {
                 N <- Norm()
                 x <- seq(-5,5,0.01)
                 dTn <- d(Tn)(x)
