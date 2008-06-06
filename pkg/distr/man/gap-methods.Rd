@@ -19,7 +19,7 @@ setgaps(object, ...)
 \S4method{gaps}{AbscontDistribution}(object)
 %\S4method{gaps<-}{AbscontDistribution}(object, value)
 \S4method{setgaps}{AbscontDistribution}(object, exactq = 6, 
-           ngrid = 50000)
+           ngrid = 50000, ...)
 }
 \arguments{
   \item{object}{object of class  \code{"AbscontDistribution"} (or subclasses)}

@@ -93,7 +93,7 @@ setMethod("kurtosis", signature(x = "Chisq"),
     })
 #
 setMethod("kurtosis", signature(x = "Dirac"),
-    function(x){return(0)})
+    function(x, ...){return(0)})
 
 #
 setMethod("kurtosis", signature(x = "DExp"),

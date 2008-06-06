@@ -29,11 +29,11 @@ HellingerDist(e1, e2, ...)
 \S4method{HellingerDist}{numeric,DiscreteDistribution}(e1, e2)
 \S4method{HellingerDist}{DiscreteDistribution,numeric}(e1, e2)
 \S4method{HellingerDist}{numeric,AbscontDistribution}(e1, e2, asis.smooth.discretize = "discretize", 
-            n.discr = getdistrModOption("nDiscretize"), low.discr = getLow(e2),
-            up.discr = getUp(e2), h.smooth = getdistrModOption("hSmooth"))
+            n.discr = getdistrExOption("nDiscretize"), low.discr = getLow(e2),
+            up.discr = getUp(e2), h.smooth = getdistrExOption("hSmooth"))
 \S4method{HellingerDist}{AbscontDistribution,numeric}(e1, e2, asis.smooth.discretize = "discretize", 
-            n.discr = getdistrModOption("nDiscretize"), low.discr = getLow(e2),
-            up.discr = getUp(e2), h.smooth = getdistrModOption("hSmooth"))
+            n.discr = getdistrExOption("nDiscretize"), low.discr = getLow(e1),
+            up.discr = getUp(e1), h.smooth = getdistrExOption("hSmooth"))
 \S4method{HellingerDist}{AcDcLcDistribution,AcDcLcDistribution}(e1,e2)
 }
 \arguments{

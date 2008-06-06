@@ -165,8 +165,8 @@ setReplaceMethod("gaps", signature(object = "AbscontDistribution"),
                    object@gaps <- value; object})
                                                              
 
-  setMethod("setgaps", signature(object = "AbscontDistribution"), 
-            function(object, exactq = 6, ngrid = 50000, ...){
+setMethod("setgaps", signature(object = "AbscontDistribution"), 
+function(object, exactq = 6, ngrid = 50000, ...){
        object1 <- object
        lower <- getLow(object, eps = getdistrOption("TruncQuantile")*2)
        upper <- getUp(object, eps = getdistrOption("TruncQuantile")*2)
@@ -196,8 +196,7 @@ setReplaceMethod("gaps", signature(object = "AbscontDistribution"),
           } else mattab.d <- NULL
           eval(substitute( "slot<-"(object,'gaps', value = mattab.d)))
        return(invisible())
-  }
-  )
+})
  
 ## Arithmetics
 

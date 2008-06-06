@@ -180,7 +180,7 @@ setMethod("var", signature(x = "Chisq"),
     })
 
 setMethod("var", signature(x = "Dirac"),
-    function(x){return(0)})
+    function(x, ...){return(0)})
 
 
 setMethod("var", signature(x = "DExp"),

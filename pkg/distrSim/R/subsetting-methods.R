@@ -1,5 +1,4 @@
-setMethod("[", signature(x = "SeqDataFrames"), 
-      function(x, i, j, k, ..., drop = FALSE){
+setMethod("[", "SeqDataFrames", function(x, i, j, k, drop = FALSE){
           if(missing(k)) k <- seq_len(length(x@data))
           kl <- length(k)
           if (kl == 1){
@@ -21,8 +20,7 @@ setMethod("[", signature(x = "SeqDataFrames"),
               return(new("SeqDataFrames", data = lis))
           }})
 
-setReplaceMethod("[", signature(x = "SeqDataFrames"), 
-      function(x, i, j, k, ..., value){
+setReplaceMethod("[", "SeqDataFrames", function(x, i, j, k, value){
           if(missing(k)) k <- seq_len(length(x@data))
           if(length(k)==1){
              if((k<=length(x@data))||!is(try(x@data[[k]],silent=TRUE),"try-error"))
