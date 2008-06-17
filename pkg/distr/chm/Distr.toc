@@ -647,7 +647,7 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="coerce,numeric,Integer-method">
-<param name="Local" value="internals.html">
+<param name="Local" value="Integer-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="coerce,UnivariateDistribution,UnivarDistrList-method">
@@ -780,6 +780,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="DefaultNrGridPoints">
 <param name="Local" value="distroptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="devNew">
+<param name="Local" value="internals.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="DExp">
@@ -1428,6 +1432,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="initialize,WeibullParameter-method">
 <param name="Local" value="WeibullParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Integer-class">
+<param name="Local" value="Integer-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="internals_for_distr">
@@ -3457,6 +3465,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Helping Methods for Functions print/show in Package `distr' ">
 <param name="Local" value="showobj-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Internal Class "Integer"">
+<param name="Local" value="Integer-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Internal functions of package distr">

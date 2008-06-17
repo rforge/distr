@@ -3,11 +3,13 @@
 ## discretize distributions
 .discretizeDistr <- function(D, x, lower, upper, n){
     y <- seq(from = lower, to = upper, length = n)
+    x <- x[x<=upper & x>=lower]
     supp <- y[-1]-(y[2]-y[1])/2
     prob <- diff(p(D)(y))
     prob[1] <- prob[1] + p(D)(y[1])
     prob[n-1] <- prob[n-1] + p(D)(y[n], lower = FALSE)
     ind <- sapply(x, function(x, y) which.min(abs(x-y)), y)
+    ind <- ind[ind<n]
     tab <- table(ind)
     if(any(tab > 1)){
         tab.names <- as.integer(names(tab))
@@ -16,16 +18,19 @@
         j <- 0
         for(i in tab.names){
             nr <- sum(ind == i)
-            if(nr == 1){
-                supp[i] <- x[which(ind == i)]
-            }else{
-                j.alt <- j
-                j <- j + nr
-                supp[i] <- NA
-                add.supp[(j.alt+1):j] <- x[which(ind == i)]
-                add.prob[(j.alt+1):j] <- prob[i]/nr
-                prob[i] <- NA
-            }
+            if(nr > 0)  
+              {
+               if(nr == 1){
+                     supp[i] <- x[which(ind == i)]
+               }else{
+                     j.alt <- j
+                     j <- j + nr
+                     supp[i] <- NA
+                     add.supp[(j.alt+1):j] <- x[which(ind == i)]
+                     add.prob[(j.alt+1):j] <- prob[i]/nr
+                     prob[i] <- NA
+                    }
+              }      
         }
         supp <- c(supp, add.supp)
         supp <- supp[!is.na(supp)]

@@ -16,14 +16,19 @@
 <param name="keyword" value="R:   E,AffLinLatticeDistribution,missing,missing-method">
 <param name="keyword" value="R:   E,MultivariateDistribution,missing,missing-method">
 <param name="keyword" value="R:   E,DiscreteMVDistribution,missing,missing-method">
+<param name="keyword" value="R:   E,UnivarLebDecDistribution,missing,missing-method">
+<param name="keyword" value="R:   E,AffLinUnivarLebDecDistribution,missing,missing-method">
 <param name="keyword" value="R:   E,UnivariateDistribution,function,missing-method">
 <param name="keyword" value="R:   E,AbscontDistribution,function,missing-method">
 <param name="keyword" value="R:   E,DiscreteDistribution,function,missing-method">
 <param name="keyword" value="R:   E,MultivariateDistribution,function,missing-method">
 <param name="keyword" value="R:   E,DiscreteMVDistribution,function,missing-method">
+<param name="keyword" value="R:   E,UnivarLebDecDistribution,function,missing-method">
 <param name="keyword" value="R:   E,UnivariateCondDistribution,missing,numeric-method">
 <param name="keyword" value="R:   E,AbscontCondDistribution,missing,numeric-method">
 <param name="keyword" value="R:   E,DiscreteCondDistribution,missing,numeric-method">
+<param name="keyword" value="R:   E,UnivarLebDecDistribution,missing,ANY-method">
+<param name="keyword" value="R:   E,UnivarLebDecDistribution,function,ANY-method">
 <param name="keyword" value="R:   E,UnivariateCondDistribution,function,numeric-method">
 <param name="keyword" value="R:   E,AbscontCondDistribution,function,numeric-method">
 <param name="keyword" value="R:   E,DiscreteCondDistribution,function,numeric-method">
@@ -79,7 +84,11 @@ E(object, fun, cond, useApply = TRUE, ...)
 
 ## S4 method for signature 'AffLinDistribution, missing,
 ##   missing':
-E(object)
+E(object, fun, cond)
+
+## S4 method for signature 'AffLinUnivarLebDecDistribution,
+##   missing, missing':
+E(object, fun, cond)
 
 ## S4 method for signature 'MultivariateDistribution,
 ##   function, missing':
@@ -91,11 +100,11 @@ E(object, fun, cond, useApply = TRUE, ...)
 
 ## S4 method for signature 'AbscontCondDistribution,
 ##   missing, numeric':
-E(object, cond, useApply = TRUE)
+E(object, fun, cond, useApply = TRUE)
 
 ## S4 method for signature 'DiscreteCondDistribution,
 ##   missing, numeric':
-E(object, cond, useApply = TRUE)
+E(object, fun, cond, useApply = TRUE)
 
 ## S4 method for signature 'UnivariateCondDistribution,
 ##   function, numeric':
@@ -215,8 +224,25 @@ and <code>sum</code>.</dd>
 on <code>support</code> and <code>sum</code>.</dd>
 
 
+<dt>object = "UnivariateDistribution", fun = "missing", cond = "missing":</dt><dd>expectation of univariate Lebesgue decomposed distributions
+by separate calculations for discrete and absolutely continuous part. </dd>
+
+
+<dt>object = "AffLinDistribution", fun = "missing", cond = "missing":</dt><dd>expectation of an affine linear transformation <i>aX+b</i> as
+<i>a E[X]+b</i> for <code>X</code> either <code>"DiscreteDistribution"</code>
+or <code>"AbscontDistribution"</code>.
+</dd>
+<dt>object = "AffLinUnivarLebDecDistribution", fun = "missing", cond = "missing":</dt><dd>expectation of an affine linear transformation <i>aX+b</i> as
+<i>a E[X]+b</i> for <code>X</code> either <code>"UnivarLebDecDistribution"</code>.
+</dd>
+
+
 <dt>object = "UnivariateDistribution", fun = "function", cond = "missing":</dt><dd>expectation of <code>fun</code> under univariate distributions using 
 crude Monte-Carlo integration. </dd>
+
+
+<dt>object = "UnivariateDistribution", fun = "function", cond = "missing":</dt><dd>expectation of <code>fun</code> under univariate Lebesgue decomposed distributions
+by separate calculations for discrete and absolutely continuous part. </dd>
 
 
 <dt>object = "AbscontDistribution", fun = "function", cond = "missing":</dt><dd>expectation of <code>fun</code> under absolutely continuous 
@@ -286,7 +312,7 @@ based on <code>support</code> and <code>sum</code>. </dd>
 <h3>Author(s)</h3>
 
 <p>
-Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a> and Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a> and Peter Ruckdeschel <a href="mailto:peter.ruckdeschel@uni-bayreuth.de">peter.ruckdeschel@uni-bayreuth.de</a>
 </p>
 
 
@@ -329,6 +355,11 @@ E(D1, function(x){x^2}, cond = 1)
 E(Norm(mean=1), fun = function(x){x^2})
 E(D1, function(x, cond){cond*x^2}, cond = 2, withCond = TRUE, useApply = FALSE)
 E(Norm(mean=2), function(x){2*x^2})
+
+# some Lebesgue decomposed distribution 
+mymix &lt;- UnivarLebDecDistribution(acPart = Norm(), discretePart = Binom(4,.4),
+         acWeight = 0.4)
+E(mymix)
 </pre>
 
 <script Language="JScript">

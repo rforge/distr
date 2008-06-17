@@ -673,9 +673,9 @@ return(f)
          if ((l%%2==0)&& is.null(myPf)){
                l2 <- l/2
                if (is.null(pxl))
-                   x.l <- c(x[1:l2],(x[l2]+x[l2+1])/2,x[l2+1:l])
+                   x.l <- c(x[1:l2],(x[l2]+x[l2+1])/2,x[(l2+1):l])
                if (is.null(pxu))
-                   x.u <- c(x[1:l2],(x[l2]+x[l2+1])/2,x[l2+1:l])
+                   x.u <- c(x[1:l2],(x[l2]+x[l2+1])/2,x[(l2+1):l])
                l <- l+1
                }
          cfun <- .csimpsum
