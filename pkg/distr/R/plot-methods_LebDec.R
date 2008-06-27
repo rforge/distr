@@ -251,6 +251,9 @@ setMethod("plot", "UnivarLebDecDistribution",
      ### fix constancy regions of p(x)
      if(isOldVersion(x)) x <- conv2NewVersion(x)
 
+     if(length(pxv))
+         do.call(lines, c(list(x = pxv, y = xv), dots.without.pch))
+     
      if(!is.null(gaps(x))){
         i.not.gap    <- !.isIn(grid,gaps(x))
         ndots <- nrow(gaps(x))
