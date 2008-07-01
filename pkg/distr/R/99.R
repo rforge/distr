@@ -9,7 +9,8 @@
                       WarningSim = TRUE,
                       ## new Items from 2.0:
                       withgaps = TRUE,
-                      simplifyD = TRUE
+                      simplifyD = TRUE,
+                      DistrCollapse = TRUE
                       )
   
 .OkTyp <-  c("DiscreteDistribution","AbscontDistribution",

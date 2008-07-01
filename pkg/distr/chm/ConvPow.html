@@ -10,6 +10,7 @@
 <param name="keyword" value="R:   convpow,AcDcLcDistribution-method">
 <param name="keyword" value="R:   convpow,AbscontDistribution-method">
 <param name="keyword" value="R:   convpow,LatticeDistribution-method">
+<param name="keyword" value="R:   convpow,DiscreteDistribution-method">
 <param name="keyword" value="R:   convpow,Norm-method">
 <param name="keyword" value="R:   convpow,Binom-method">
 <param name="keyword" value="R:   convpow,Nbinom-method">
@@ -42,6 +43,8 @@ i.i.d r.v's by means of DFT
   convpow(D1,N)
   ## S4 method for signature 'LatticeDistribution':
   convpow(D1,N)
+  ## S4 method for signature 'DiscreteDistribution':
+  convpow(D1,N)
 </pre>
 
 
@@ -72,14 +75,19 @@ is positive, <code>discreteWeight(convpow(D1,N))</code> will decay exponentially
 in <code>N</code>, hence from some (small) <i>N_0</i> on, the result will be of
 class <code>"AbscontDistribution"</code>. This is used algorithmically, too, as 
 then only the a.c. part needs to be convolved.
+In case of an argument <code>D1</code> of class <code>"DiscreteDistribution"</code>,
+for <code>N</code> equal to 0,1 we return the obvious solutions, and for <code>N==2</code> 
+the return value is <code>D1+D1</code>. For <code>N&gt;2</code>, we split up <code>N</code> into
+<code>N=N1+N2</code>, <code>N1=floor(N/2)</code> and recursively return
+<code>convpow(D1,N1)+convpow(D1,N2)</code>.
 </p>
 
 
 <h3>Value</h3>
 
 <p>
-Object of class <code>"AbscontDistribution"</code> resp. 
-<code>"LatticeDistribution"</code></p>
+Object of class <code>"AbscontDistribution"</code>, <code>"DiscreteDistribution"</code>,
+<code>"LatticeDistribution"</code> resp. <code>"AcDcLcDistribution"</code></p>
 
 <h3>further S4-Methods</h3>
 

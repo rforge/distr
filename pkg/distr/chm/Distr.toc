@@ -694,6 +694,10 @@
 <param name="Local" value="ConvPow.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="convpow,DiscreteDistribution-method">
+<param name="Local" value="ConvPow.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="convpow,ExpOrGammaOrChisq-method">
 <param name="Local" value="ConvPow.html">
 </OBJECT>
@@ -1016,6 +1020,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="distrARITH">
 <param name="Local" value="distrARITH.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="DistrCollapse">
+<param name="Local" value="distroptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Distribution-class">

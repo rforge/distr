@@ -9,6 +9,7 @@
 <param name="keyword" value="R:   getdistrOption">
 <param name="keyword" value="R:   DefaultNrGridPoints">
 <param name="keyword" value="R:   DistrResolution">
+<param name="keyword" value="R:   DistrCollapse">
 <param name="keyword" value="R:   TruncQuantile">
 <param name="keyword" value="R:   WarningSim">
 <param name="keyword" value="R:   WarningArith">
@@ -72,6 +73,8 @@ To access the value of a single option, one should use <code>getdistrOption("War
 <dl>
 <dt><code>DefaultNrGridPoints</code></dt><dd>default number of grid points in integration, default value: <code>2^12</code></dd>
 <dt><code>DistrResolution</code></dt><dd>minimal spacing between two mass points in a discrete distribution, default value: <code>1e-6</code></dd>
+<dt><code>DistrCollapse</code></dt><dd>logical; in convolving discrete distributions, shall support points
+with distance smaller than <code>DistrResolution</code> be collapsed; default value:  <code>TRUE</code></dd>
 <dt><code>TruncQuantile</code></dt><dd>argument for <code>q</code>-slot at which to truncate; also, for discrete distributions, 
 support is restricted to [<code>q(TruncQuantile)</code>,<code>q(1-TruncQuantile)</code>], default value: <code>1e-5</code></dd>
 <dt><code>DefaultNrFFTGridPointsExponent</code></dt><dd>by default, for e = <code>DefaultNrFFTGridPointsExponent</code>, 

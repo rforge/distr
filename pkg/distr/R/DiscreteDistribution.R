@@ -207,15 +207,40 @@ function(e1,e2){
             tmp <- tapply(tmptable$dx, tmptable$x, sum)
             rm(tmptable)
 
-            supp <- as.numeric(names(tmp))
-            prob <- as.numeric(tmp)
+            supp.u <- as.numeric(names(tmp))
+            prob.u <- as.numeric(tmp)
 
+            o <- order(supp.u)
+            supp <- supp.u[o]
+            prob <- prob.u[o]
+
+            #supp.u <- unique(supp)
 
             len = length(supp)
 
             if(len > 1){
-              if(min(diff(supp)) < getdistrOption("DistrResolution"))
-                stop("grid too narrow --> change DistrResolution")
+              if(min(abs(diff(supp))) < getdistrOption("DistrResolution"))
+                {if(!getdistrOption("DistrCollapse"))
+                    stop("grid too narrow --> change DistrResolution")
+                 else
+                    {supp1 <- 0*supp  
+                     prob1 <- 0*prob
+                     xo <- supp[1]-1
+                     j <- 0
+                     for(i in seq(along=supp))
+                        {if (abs(supp[i]-xo) > getdistrOption("DistrResolution")) 
+                             { j <- j+1
+                               supp1[j] <- supp[i]
+                               prob1[j] <- prob[i] 
+                               xo <- supp1[j]
+                             }
+                        else { prob1[j] <- prob1[j]+prob[i] }
+                        } 
+                     prob <- prob1[1:j]
+                     supp <- supp1[1:j]    
+                     rm(prob1,supp1,i,j,xo)
+                     }
+                }
             }
 
             rm(tmp, len)

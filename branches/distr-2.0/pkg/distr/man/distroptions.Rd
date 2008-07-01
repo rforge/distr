@@ -3,6 +3,7 @@
 \alias{getdistrOption}
 \alias{DefaultNrGridPoints}
 \alias{DistrResolution}
+\alias{DistrCollapse}
 \alias{TruncQuantile}
 \alias{WarningSim}
 \alias{WarningArith}
@@ -45,6 +46,8 @@ getdistrOption(x)
 \describe{
 \item{\code{DefaultNrGridPoints}}{default number of grid points in integration, default value: \code{2^12}}
 \item{\code{DistrResolution}}{minimal spacing between two mass points in a discrete distribution, default value: \code{1e-6}}
+\item{\code{DistrCollapse}}{logical; in convolving discrete distributions, shall support points
+with distance smaller than \code{DistrResolution} be collapsed; default value:  \code{TRUE}}
 \item{\code{TruncQuantile}}{argument for \code{q}-slot at which to truncate; also, for discrete distributions, 
  support is restricted to [\code{q(TruncQuantile)},\code{q(1-TruncQuantile)}], default value: \code{1e-5}}
 \item{\code{DefaultNrFFTGridPointsExponent}}{by default, for e = \code{DefaultNrFFTGridPointsExponent}, 
