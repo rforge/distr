@@ -48,6 +48,10 @@ getdistrOption(x)
 \item{\code{DistrResolution}}{minimal spacing between two mass points in a discrete distribution, default value: \code{1e-6}}
 \item{\code{DistrCollapse}}{logical; in convolving discrete distributions, shall support points
 with distance smaller than \code{DistrResolution} be collapsed; default value:  \code{TRUE}}
+\item{\code{DistrConvPoints}}{numeric; maximal number of support points in convolving discrete distributions;
+if \code{DistrCollapse = TRUE} each summand is discretized to this number of support points; default value:  \code{700}}
+\item{\code{DistrMaxPlotPoints}}{numeric; maximal number of support points of discrete distributions to be plotted;
+if support is larger, then for plotting it is thinned out; default value:  \code{200}}
 \item{\code{TruncQuantile}}{argument for \code{q}-slot at which to truncate; also, for discrete distributions, 
  support is restricted to [\code{q(TruncQuantile)},\code{q(1-TruncQuantile)}], default value: \code{1e-5}}
 \item{\code{DefaultNrFFTGridPointsExponent}}{by default, for e = \code{DefaultNrFFTGridPointsExponent}, 

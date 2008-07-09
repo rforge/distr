@@ -10,7 +10,9 @@
                       ## new Items from 2.0:
                       withgaps = TRUE,
                       simplifyD = TRUE,
-                      DistrCollapse = TRUE
+                      DistrCollapse = TRUE,
+                      DistrConvPoints = 700,
+                      DistrMaxPlotPoints = 200
                       )
   
 .OkTyp <-  c("DiscreteDistribution","AbscontDistribution",

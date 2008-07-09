@@ -194,6 +194,18 @@ setMethod("q.r", "DiscreteDistribution", function(object){
 
 setMethod("+", c("DiscreteDistribution","DiscreteDistribution"),
 function(e1,e2){
+            if(getdistrOption("DistrCollapse"))
+               {
+                bothdisced <- TRUE
+                if(length(support(e1)) > getdistrOption("DistrConvPoints"))
+                     e1 <- .discretizeD(e1, getdistrOption("DistrConvPoints"))
+                else bothdisced <- FALSE
+                if(length(support(e2)) > getdistrOption("DistrConvPoints"))
+                     e2 <- .discretizeD(e2, getdistrOption("DistrConvPoints"))
+                else bothdisced <- FALSE
+                if(bothdisced) return(e1+e2)
+               }
+            
             convolutedsupport <- rep(support(e1), each = length(support(e2))) +
                                  support(e2)
 
@@ -203,7 +215,7 @@ function(e1,e2){
             rm(gridvalues1,gridvalues2)
 
             tmptable <- data.frame(x = convolutedsupport, dx = convolutedvalues)
-            rm(convolutedsupport,convolutedvalues)
+            rm(convolutedsupport, convolutedvalues)
             tmp <- tapply(tmptable$dx, tmptable$x, sum)
             rm(tmptable)
 

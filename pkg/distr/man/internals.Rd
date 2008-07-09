@@ -37,6 +37,7 @@
 \alias{.plusm}
 \alias{.getObjName}
 \alias{.discretizeP}
+\alias{.discretizeD}
 \alias{.expm.d}
 \alias{.expm.c}
 \alias{.logm.d}
@@ -79,6 +80,7 @@ These functions are used internally by package distr.}
 .notwithLArg(D)
 .getObjName(i = 1)
 .discretizeP(D, lower, upper, h)
+.discretizeD(D, n)
 .fm(x,f)
 .fM(x,f)
 .fM2(x,f)
@@ -142,6 +144,7 @@ devNew(...)
   \item{Cont}{logical: \code{TRUE} if \code{object} is continuous}
   \item{DClass}{character: name of distribution class}
   \item{D}{a distribution object}
+  \item{n}{an integer: number of grid points to discretize to}
   \item{i}{an integer}
   \item{yleft, yright}{extrapolation value beyond left/right endpoint of grid}
   \item{h}{numeric: grid width}
@@ -223,8 +226,11 @@ makes an object of class \code{Lattice} out of a given (equally spaced) vector
 or if its slots \code{p,q} do not have \code{lower.tail} arguments.
 
 \code{.getObjName} returns the name of the object in the \code{i}th operand.
+
 \code{.discretizeP} discretizes \code{D} to a grid of probabilities from 
      \code{lower} to \code{upper} with width \code{h}.   
+\code{.discretizeD} discretizes \code{D} to a LatticeDistribution with
+     n gridpoints.   
 
 \code{.fm}, \code{.fM} return the smallest / biggest value in (0,1) such that
   \code{f}(x) is finite; \code{.fM2} is a variant of \code{.fM} using a 
@@ -326,6 +332,7 @@ with R versions < 2.8.0.
        \code{AbscontDistribution} according to argument \code{DClass}}
 \item{.getObjName}{\code{character}}
 \item{.discretizeP}{\code{numeric} --- the probabilities for the grid-values}
+\item{.discretizeD}{\code{LatticeDistribution} --- the discretized distribution}
 \item{.makeDd,.makePd, .makeQd}{a function with args 
        \code{x, y, yleft, yright}}
 \item{.makeD,.makeDNew}{a function with args \code{x, log = FALSE}}

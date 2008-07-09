@@ -75,6 +75,10 @@ To access the value of a single option, one should use <code>getdistrOption("War
 <dt><code>DistrResolution</code></dt><dd>minimal spacing between two mass points in a discrete distribution, default value: <code>1e-6</code></dd>
 <dt><code>DistrCollapse</code></dt><dd>logical; in convolving discrete distributions, shall support points
 with distance smaller than <code>DistrResolution</code> be collapsed; default value:  <code>TRUE</code></dd>
+<dt><code>DistrConvPoints</code></dt><dd>numeric; maximal number of support points in convolving discrete distributions;
+if <code>DistrCollapse = TRUE</code> each summand is discretized to this number of support points; default value:  <code>2000</code></dd>
+<dt><code>DistrMaxPlotPoints</code></dt><dd>numeric; maximal number of support points of discrete distributions to be plotted;
+if support is larger, then for plotting it is thinned out; default value:  <code>200</code></dd>
 <dt><code>TruncQuantile</code></dt><dd>argument for <code>q</code>-slot at which to truncate; also, for discrete distributions, 
 support is restricted to [<code>q(TruncQuantile)</code>,<code>q(1-TruncQuantile)</code>], default value: <code>1e-5</code></dd>
 <dt><code>DefaultNrFFTGridPointsExponent</code></dt><dd>by default, for e = <code>DefaultNrFFTGridPointsExponent</code>, 
