@@ -240,7 +240,7 @@ for which vector-valued parameters make no sense; rather one could gather
 several objects with possibly different parameters to a vector/list of 
 distributions. Of course, the original functions \code{rnorm} etc.\ remain 
 unchanged and still allow for vector-valued parameters.
-Kouros Owzar  in an off-list mail raised the point, that in case of multiple 
+Kouros Owzar in an off-list mail raised the point, that in case of multiple 
 parameters as in case of the normal or the $\Gamma$-distribution, it might be 
 useful to be able to pass these multiple parameters in vectorized form to the 
 generating function. We, too, think that this is a good idea, but have 
@@ -1442,26 +1442,212 @@ determine the factorized conditional distribution $P^{X|Y=y}$, and based on this
 either its (posterior) mode oder (posterior) expectation; also see
 \code{demo(Prognose, package="distrEx")}.
 
-%
+% -----------------------------------------------------------------------------
 \section[New package distrMod]{New package {\tt distrMod}}\label{distrMod}
-%
+% -----------------------------------------------------------------------------
+The package \pkg{distrMod} aims for an object orientated (S4-styple) 
+implementation of probability models and introduces several new S4-classes
+for this purpose. Moreover, it includes functions to compute minimum criterion 
+estimators -- in particular, minimum distance and maximum likelihood (i.e., 
+minimum negative log-likelihood) estimators.
+% -----------------------------------------------------------------------------
+\subsection{Symmetry Classes}
+% -----------------------------------------------------------------------------
+As symmetry is a property which usually cannot be proven via numerical 
+computations, we introduce the S4-class \code{Symmetry} and corresponding
+subclasses which may serve as slots which indicate that there exists a
+certain symmetry. So far, we have subclasses for the symmetry of distributions
+as well as for the symmetry of functions; confer Figure~\ref{figSym}.
+\ifpdf
+\begin{figure}[!ht]
+\vspace{2ex}
+  \begin{center}
+    \includegraphics[width=13cm]{Symmetry.pdf}%
+    \caption{\label{figSym}{\footnotesize Inheritance relations and slots of the 
+    corresponding \mbox{(sub-)}classes for \code{Symmetry} where we do not
+    repeat inherited slots
+    }}
+  \end{center}
+\vspace{-4ex}
+\end{figure}
+\else
+\begin{figure}[htb]
+  \begin{center}
+    \includegraphics[width=7.5cm]{Symmetry.eps}%
+    \caption{\label{figSym}{\footnotesize Inheritance relations and slots of the 
+    corresponding \mbox{(sub-)}classes for \code{Symmetry} where we do not 
+    repeat inherited slots
+    }}
+  \end{center}
+\vspace{-1ex}
+\end{figure}
+\fi
+% -----------------------------------------------------------------------------
+\newpage
 \subsection{Model Classes}
-%
-[[[[MATTHIAS]]]
-\subsection{Estimator Classes}
-%
-[[[[MATTHIAS]]]
-%
-\subsection{Minimum Criterium Estimation}
-%
-[[[[MATTHIAS]]]
-%
-%
+% -----------------------------------------------------------------------------
+Based on class \code{Distribution} and its subclasses we define classes 
+for families of probability measures. So far, we specialised this to 
+parametric families of probability measures; confer Figure~\ref{figPF}. But it 
+would also be possible to derive subclasses for other (e.g., semiparametric) 
+families of probability measures. In case of $L_2$-differentiable (i.e., 
+smoothly parameterized) parametric families we introduce several additional
+slots, in particular the slot \code{L2deriv} which is of class \code{EuclRandVarList}.
+Hence, package \pkg{distrMod} depends on package \pkg{RandVar}~\cite{MK:05}.
+\ifpdf
+\begin{figure}[!ht]
+\vspace{2ex}
+  \begin{center}
+    \includegraphics[width=10cm]{ProbFamily.pdf}%
+    \caption{\label{figPF}{\footnotesize Inheritance relations and slots of the 
+    corresponding \mbox{(sub-)}classes for \code{ProbFamily} where we do not
+    repeat inherited slots
+    }}
+  \end{center}
+\vspace{-4ex}
+\end{figure}
+\else
+\begin{figure}[htb]
+  \begin{center}
+    \includegraphics[width=7.5cm]{ProbFamily.eps}%
+    \caption{\label{figPF}{\footnotesize Inheritance relations and slots of the 
+    corresponding \mbox{(sub-)}classes for \code{Distribution} where we do not 
+    repeat inherited slots
+    }}
+  \end{center}
+\vspace{-1ex}
+\end{figure}
+\fi
+% -----------------------------------------------------------------------------
+\newpage
+\subsection{Risk Classes}
+% -----------------------------------------------------------------------------
+The risk classes are up to now (i.e, version 2.0) not used inside of the 
+distr-family. They are however used in the RobASt-family~\cite{MK:05}. We
+distinguish between various finite-sample and asymptotic risks; confer 
+Figure~\ref{figRT}. The bias and norm classes given in Figure~\ref{figBT} 
+and Figure~\ref{figNT}, respectively, occur as slots of the risk classes.
+\ifpdf
+\begin{figure}[!ht]
+\vspace{2ex}
+  \begin{center}
+    \includegraphics[width=8cm]{BiasType.pdf}%
+    \caption{\label{figBT}{\footnotesize Inheritance relations and slots of the 
+    corresponding \mbox{(sub-)}classes for \code{BiasType} where we do not
+    repeat inherited slots
+    }}
+  \end{center}
+\vspace{-4ex}
+\end{figure}
+\else
+\begin{figure}[htb]
+  \begin{center}
+    \includegraphics[width=7.5cm]{BiasType.eps}%
+    \caption{\label{figBT}{\footnotesize Inheritance relations and slots of the 
+    corresponding \mbox{(sub-)}classes for \code{BiasType} where we do not 
+    repeat inherited slots
+    }}
+  \end{center}
+\vspace{-1ex}
+\end{figure}
+\fi
+\ifpdf
+\begin{figure}[!ht]
+\vspace{2ex}
+  \begin{center}
+    \includegraphics[width=4cm]{NormType.pdf}%
+    \caption{\label{figNT}{\footnotesize Inheritance relations and slots of the 
+    corresponding \mbox{(sub-)}classes for \code{NormType} where we do not
+    repeat inherited slots
+    }}
+  \end{center}
+\vspace{-4ex}
+\end{figure}
+\else
+\begin{figure}[htb]
+  \begin{center}
+    \includegraphics[width=7.5cm]{NormType.eps}%
+    \caption{\label{figNT}{\footnotesize Inheritance relations and slots of the 
+    corresponding \mbox{(sub-)}classes for \code{NormType} where we do not 
+    repeat inherited slots
+    }}
+  \end{center}
+\vspace{-1ex}
+\end{figure}
+\fi
+\ifpdf
+\begin{figure}[!ht]
+\vspace{2ex}
+  \begin{center}
+    \includegraphics[width=13cm]{RiskType.pdf}%
+    \caption{\label{figRT}{\footnotesize Inheritance relations and slots of the 
+    corresponding \mbox{(sub-)}classes for \code{RiskType} where we do not
+    repeat inherited slots
+    }}
+  \end{center}
+\vspace{-4ex}
+\end{figure}
+\else
+\begin{figure}[htb]
+  \begin{center}
+    \includegraphics[width=7.5cm]{RiskType.eps}%
+    \caption{\label{figRT}{\footnotesize Inheritance relations and slots of the 
+    corresponding \mbox{(sub-)}classes for \code{RiskType} where we do not 
+    repeat inherited slots
+    }}
+  \end{center}
+\vspace{-1ex}
+\end{figure}
+\fi
+% -----------------------------------------------------------------------------
+\clearpage
+\subsection{Minimum Criterion Estimation}
+% -----------------------------------------------------------------------------
+The S4-classes and methods defined inside of our distr-family enable us to
+define general functions for the computation of minimum criterion estimators
+-- in particular, minimum distance and maximum likelihood (i.e., minimum 
+negative log-likelihood) estimators. The main function for this purpose is
+\code{MCEstimator}. As an example we can use the negative log-likelihood as
+criterion; i.e., compute the maximum likelihood estimator.
+<<MCEstimator, eval = TRUE>>=
+have.distrMod <- suppressWarnings(require("distrMod"))
+if (have.distrMod){
+    library(distrMod)
+    x <- rgamma(50, scale = 0.5, shape = 3)
+    G <- GammaFamily(scale = 1, shape = 2)
+    negLoglikelihood <- function(x, Distribution){
+        res <- -sum(log(Distribution@d(x)))
+        names(res) <- "Negative Log-Likelihood"
+        return(res)
+    }
+    MCEstimator(x = x, ParamFamily = G, criterion = negLoglikelihood)
+}
+@
+In case of the maximum likelihood estimator as well as in case of minimum
+distance (MD) estimation there are the function \code{MLEstimator} and 
+\code{MDEstimator} which provide user-friendly interfaces to \code{MCEstimator}.
+Hence, the maximum likelihood estimator and for instance the Kolmogorov MD 
+estimator can more easily be computed as follows.
+<<MLEstimator, eval = TRUE>>=
+if (have.distrMod){
+    MLEstimator(x = x, ParamFamily = G)
+    MDEstimator(x = x, ParamFamily = G, distance = KolmogorovDist)
+}
+@
+The results of these computations are objects of the S3-class \code{MCEstimate}
+which inherits from the S3-class \code{Estimate} and consists of a \code{list}
+with the two components
+\begin{description}
+  \item[estimate] minimum criterion parameter estimate
+  \item[criterion] minimum value of the criterion
+\end{description}
+The printing is done via \code{print.Estimate} which prints only the estimate
+component of \code{MCEstimate}.
+% -----------------------------------------------------------------------------
 \section{Options}\label{options}
-%
-%
+% -----------------------------------------------------------------------------
 \subsection[Options for distr]{Options for \pkg{distr}}
-%
+% -----------------------------------------------------------------------------
 Analogously to the \code{options} command in {\sf R} you may specify a number of
 global ``constants'' to be used within the package. These include
 \begin{itemize}
