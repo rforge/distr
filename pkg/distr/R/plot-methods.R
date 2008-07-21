@@ -1,7 +1,7 @@
 # -------- AbscontDistribution ---------- #
 
 setMethod("plot", "AbscontDistribution",
-   function(x, y = NULL, width = 16, height = 9, withSweave = FALSE,
+   function(x, y = NULL, width = 10, height = 5.5, withSweave = FALSE,
             xlim = NULL, ylim = NULL, ngrid = 1000, verticals = TRUE,
             do.points = TRUE, main = FALSE, inner = TRUE, sub = FALSE, 
             bmar = par("mar")[1], tmar = par("mar")[3], ..., 
@@ -255,7 +255,7 @@ setMethod("plot", "AbscontDistribution",
 # -------- DiscreteDistribution -------- #
 
 setMethod("plot", "DiscreteDistribution",
-    function(x, y = NULL, width = 16, height = 9, withSweave = FALSE, 
+    function(x, y = NULL, width = 10, height = 5.5, withSweave = FALSE, 
              xlim = NULL, ylim = NULL, verticals = TRUE, do.points = TRUE, 
              main = FALSE, inner = TRUE, sub = FALSE,
              bmar = par("mar")[1], tmar = par("mar")[3], ..., 
@@ -399,19 +399,6 @@ setMethod("plot", "DiscreteDistribution",
 
        dx <- d(x)(supp)
 
-       ### possibly thinning out the support
-       thin <- FALSE
-       ngrid <- length(supp)
-       ngrid0 <- getdistrOption("DistrMaxPlotPoints")
-       if (ngrid > ngrid0)
-            {nn <- seq(1,ngrid, by = ngrid %/% ngrid0)
-             thin <- TRUE
-            }else nn <- seq(ngrid)
-
-       ngrid0 <- length(nn)
-       suppn <- supp[nn]
-
-
        if(hasArg(ylim))
              {if(length(ylim) != 2) 
                  stop("Wrong length of Argument ylim") 
@@ -434,25 +421,24 @@ setMethod("plot", "DiscreteDistribution",
            }
 
        owarn <- getOption("warn"); options(warn = -1)
-       do.call(plot, c(list(x = suppn, dx[nn], type = "h", pch = pch.a,
+       do.call(plot, c(list(x = supp, dx, type = "h", pch = pch.a,
             ylim = ylim1, xlim=xlim, ylab = "d(x)", xlab = "x", 
             log = logpd), dots.without.pch))
        options(warn = owarn)
 
-       if (thin) text(suppn[1],0.3, adj=0, "[grid thinned\n out]", 
-                               cex = 0.7) 
 
        title(main = inner.d, line = lineT, cex.main = cex.inner,
              col.main = col.inner)
 
        if(do.points)
-          do.call(points, c(list(x = suppn, y = dx[nn], pch = pch.a, 
+          do.call(points, c(list(x = supp, y = dx, pch = pch.a, 
                   cex = cex.points, col = col.points), dots.for.points))
        
        owarn <- getOption("warn"); options(warn = -1)
 
+       ngrid <- length(supp)
 
-       supp1 <- if(ngrid0>1) suppn else c(-max(1,abs(suppn))*.08,0)+suppn
+       supp1 <- if(ngrid>1) supp else c(-max(1,abs(supp))*.08,0)+supp
        psupp1 <- c(0,p(x)(supp1))
 
        do.call(plot, c(list(x = stepfun(x = supp1, y = psupp1), 
@@ -462,15 +448,15 @@ setMethod("plot", "DiscreteDistribution",
                      col.hor = col.hor, col.vert = col.vert, 
                      log = logpd), dots.without.pch))
        if(do.points)
-          {if(ngrid0>1){
-              do.call(points, c(list(x = supp1, y = psupp1[1:ngrid0], pch = pch.u, 
+          {if(ngrid>1){
+              do.call(points, c(list(x = supp, y = psupp1[1:ngrid], pch = pch.u, 
                   cex = cex.points, col = col.points), dots.for.points))
-              do.call(points, c(list(x = supp1, y = psupp1[2:(ngrid0+1)], pch = pch.a, 
+              do.call(points, c(list(x = supp, y = psupp1[2:(ngrid+1)], pch = pch.a, 
                   cex = cex.points, col = col.points), dots.for.points))
               }else{
-              do.call(points, c(list(x = suppn, y = 0, pch = pch.u, 
+              do.call(points, c(list(x = supp, y = 0, pch = pch.u, 
                   cex = cex.points, col = col.points), dots.for.points))           
-              do.call(points, c(list(x = suppn, y = 1, pch = pch.a, 
+              do.call(points, c(list(x = supp, y = 1, pch = pch.a, 
                   cex = cex.points, col = col.points), dots.for.points))           
               }
            }       
@@ -481,14 +467,14 @@ setMethod("plot", "DiscreteDistribution",
              col.main = col.inner)
 
        if(do.points)
-          do.call(points, c(list(x = suppn, 
-                  y = c(0,p(x)(suppn[-length(suppn)])), pch = pch.u, 
+          do.call(points, c(list(x = supp, 
+                  y = c(0,p(x)(supp[-length(supp)])), pch = pch.u, 
                   cex = cex.points, col = col.points), dots.for.points))
        
        
        owarn <- getOption("warn"); options(warn = -1)
-       do.call(plot, c(list(x = stepfun(c(0,p(x)(suppn)), 
-                            c(NA,suppn,NA), right = TRUE), 
+       do.call(plot, c(list(x = stepfun(c(0,p(x)(supp)), 
+                            c(NA,supp,NA), right = TRUE), 
             main = "", xlim = ylim2, ylim = c(min(supp),max(supp)),
             ylab = "q(p)", xlab = "p", 
             verticals = verticals, do.points = do.points, 
@@ -505,23 +491,22 @@ setMethod("plot", "DiscreteDistribution",
        dots.without.pch0 <- dots.without.pch
        dots.without.pch0 $col <- NULL
 
-       do.call(lines, c(list(x = c(0,p(x)(suppn[1])), y = rep(suppn[1],2),  
+       do.call(lines, c(list(x = c(0,p(x)(supp[1])), y = rep(supp[1],2),  
                   col = col.vert), dots.without.pch0))           
 
        if(do.points)
-          {do.call(points, c(list(x = p(x)(suppn[-length(suppn)]),
-                  y = suppn[-1], pch = pch.u, cex = cex.points, 
+          {do.call(points, c(list(x = p(x)(supp[-length(supp)]),
+                  y = supp[-1], pch = pch.u, cex = cex.points, 
                   col = col.points), dots.for.points))
-           do.call(points, c(list(x = 0, y = suppn[1], pch = pch.u, 
+           do.call(points, c(list(x = 0, y = supp[1], pch = pch.u, 
                   cex = cex.points, col = col.points), dots.for.points))}           
         
        if(verticals && ngrid>1)
           {dots.without.pch0 <- dots.without.pch
            dots.without.pch0 $col <- NULL
 
-           do.call(lines, c(list(x = rep(p(x)(suppn[1]),2), 
-                                 y = c(suppn[1],suppn[2]),  
-                                 col = col.vert), dots.without.pch0))
+           do.call(lines, c(list(x = rep(p(x)(supp[1]),2), y = c(supp[1],supp[2]),  
+                  col = col.vert), dots.without.pch0))
           }
                              
        

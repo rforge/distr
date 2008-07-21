@@ -58,6 +58,8 @@ setReplaceMethod("[", "SeqDataFrames", function(x, i, j, k, value){
 ## Is the following line correct?
 ## should it be: if(!is.list(i)) i <- lapply(kl0, function(y) y)
 ## or: if(!is.list(i)) i <- as.list(kl0)?
+
+
           if(!is.list(i)) i <- lapply(kl0, function(y) i)
 
           if(is(value,"atomic"))

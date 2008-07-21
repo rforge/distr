@@ -177,18 +177,6 @@ setAs("AffLinLatticeDistribution","AffLinDiscreteDistribution",
 
 setMethod("+", c("LatticeDistribution", "LatticeDistribution"),
 function(e1,e2){
-
-            ### Step 0 Discretizing if too many grid points:
-
-            if(getdistrOption("DistrCollapse"))
-               {
-                if(length(support(e1)) > getdistrOption("DistrConvPoints"))
-                     e1 <- .discretizeD(e1, getdistrOption("DistrConvPoints"))
-                if(length(support(e2)) > getdistrOption("DistrConvPoints"))
-                     e2 <- .discretizeD(e2, getdistrOption("DistrConvPoints"))
-               }
-
-
             ### Step 1
 
             e1 <- as(e1, "LatticeDistribution")

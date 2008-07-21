@@ -186,21 +186,10 @@ setMethod("plot", "UnivarLebDecDistribution",
            supp <- supp[(supp >= xlim[1]) & (supp <= xlim[2])]
      }else{grid <- seq(from = lower - 0.1 * dist, to = upper + 0.1 * dist,
                        length = ngrid)
+           supp <- support(x)
      }
-     
-     ### possibly thinning out the support
-     thin <- FALSE
-     ngrid <- length(supp)
-     ngrid0 <- getdistrOption("DistrMaxPlotPoints")
-     if (ngrid > ngrid0)
-            {nn <- seq(1,ngrid, by = ngrid %/% ngrid0)
-             thin <- TRUE
-            }else nn <- seq(ngrid)
 
-     ngrid0 <- length(nn)
-     suppn <- supp[nn]
-
-     grid <- unique(sort( c(suppn, suppn-del , grid )))
+     grid <- unique(sort( c(supp, supp-del , grid )))
      pxg <- p(x)(grid)
 
 
@@ -220,11 +209,11 @@ setMethod("plot", "UnivarLebDecDistribution",
           }
 
      if(!verticals){
-         grid <- unique(sort( c(suppn-del/2, grid )))
-         grid[.isIn(grid,cbind(suppn-del/2,suppn-del/2))] <- NA
+         grid <- unique(sort( c(supp-del/2, grid )))
+         grid[.isIn(grid,cbind(supp-del/2,supp-del/2))] <- NA
          pxg <- p(x)(grid)
      }else{
-         xv <- as.vector(t(cbind(suppn-del,suppn,NA)))
+         xv <- as.vector(t(cbind(supp-del,supp,NA)))
          pxv <- p(x)(xv)
      }
 
@@ -234,12 +223,12 @@ setMethod("plot", "UnivarLebDecDistribution",
           dots.without.pch))
      options(warn = owarn)
 
-     pxg.d <- p(x)(suppn)
-     pxg.d0 <- p(x)(suppn-del)
+     pxg.d <- p(x)(supp)
+     pxg.d0 <- p(x)(supp-del)
      if(do.points){
-        do.call(points, c(list(x = suppn, y = pxg.d, pch = pch.a,
+        do.call(points, c(list(x = supp, y = pxg.d, pch = pch.a,
                   cex = cex.points, col = col.points), dots.for.points))
-        do.call(points, c(list(x = suppn-del, y = pxg.d0, pch = pch.u,
+        do.call(points, c(list(x = supp-del, y = pxg.d0, pch = pch.u,
                   cex = cex.points, col = col.points), dots.for.points))
      }
      if(verticals){
@@ -252,7 +241,7 @@ setMethod("plot", "UnivarLebDecDistribution",
 
      ### quantiles
 
-     ### fix finite nort bounds
+     ### fix finite support bounds
      ixg  <-  grid>=max(q(x)(0),lower) & grid <= min(q(x)(1),upper)
      pxg  <-   pxg[ixg]
      grid <-  grid[ixg]

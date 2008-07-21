@@ -20,9 +20,11 @@ L2LocationFamily <- function(loc = 0, scale = 1, name, centraldistribution = Nor
             if(length(distrSymm@SymmCenter) != 1)
                 stop("slot 'SymmCenter' of 'distrSymm' has wrong dimension")
                     }
-         }      
- 
-    param <- ParamFamParameter(name = "location", main = loc, trafo = trafo)
+         }
+
+    param0 <- loc
+    names(param0) <- "loc"
+    param <- ParamFamParameter(name = "location", main = param0, trafo = trafo)
     modifyParam <- function(theta){}
     body(modifyParam) <- substitute({ scale*centraldistribution+theta },
                                       list(scale = scale))
@@ -103,7 +105,10 @@ L2ScaleFamily <- function(scale = 1, loc = 0, name, centraldistribution = Norm()
             if(length(distrSymm@SymmCenter) != 1)
                 stop("slot 'SymmCenter' of 'distrSymm' has wrong dimension")
                     }
-         }      
+         }
+
+    param0 <- scale
+    names(param0) <- "scale"
     param <- ParamFamParameter(name = "scale", main = scale, trafo = trafo)
     modifyParam <- function(theta){}
     body(modifyParam) <- substitute({ theta*centraldistribution+loc },
@@ -187,8 +192,11 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
             if(length(distrSymm@SymmCenter) != 1)
                 stop("slot 'SymmCenter' of 'distrSymm' has wrong dimension")
                     }
-         }      
-    param <- ParamFamParameter(name = "location and scale", main = c(loc, scale),
+         }
+
+    param0 <- c(loc, scale)
+    names(param0) <- c("loc", "scale")
+    param <- ParamFamParameter(name = "location and scale", main = param0,
                                trafo = trafo)
     modifyParam <- function(theta){theta[2]*centraldistribution+theta[1] }
     props <- c(paste("The", name, "is invariant under"),

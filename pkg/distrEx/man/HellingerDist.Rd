@@ -89,7 +89,7 @@ HellingerDist(e1, e2, ...)
     which is computed using \code{support} and \code{sum}.
   }
   \item{e1 = "DiscreteDistribution", e2 = "AbscontDistribution":}{
-    \crHellinger distance of discrete and absolutely continuous 
+    Hellinger distance of discrete and absolutely continuous 
     univariate distributions (are mutually singular; i.e., 
     have distance \code{=1}).
   }
@@ -110,7 +110,7 @@ HellingerDist(e1, e2, ...)
     distribution.
   }
   \item{e1 = "AcDcLcDistribution", e2 = "AcDcLcDistribution":}{
-    \crHellinger distance of mixed discrete and absolutely continuous 
+    Hellinger distance of mixed discrete and absolutely continuous 
     univariate distributions.
   }
 }}

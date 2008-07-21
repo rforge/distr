@@ -112,48 +112,6 @@ setMethod("convpow",
             return(LatticeDistribution(supp=supp1,prob=newd))
 })
 
-setMethod("convpow",
-          signature(D1 = "DiscreteDistribution"),
-          function(D1, N){
-            if (N==0) return(Dirac(0))
-            if (N==1) return(D1)
-            if (N==2) return(D1+D1)
-            #
-            l2N <- floor(log(N,2))
-
-            binrep <- numeric(l2N+1)
-            Dlist <- vector("list", l2N+1)
-            N0 <- N
-            i <- 1
-            j <- 0
-
-            invbinrep <- numeric(l2N+1)
-            while(N0 >1) {
-               binrep[i] <- N0 %%2
-               if(binrep[i]) {
-                  j<-j+1
-                  invbinrep[j] <- i 
-                  }
-               N0 <- N0%/%2
-               i <- i+1}
-
-            invbinrep <- invbinrep[1:j]
-
-            D0 <- Dlist[[1]] <- D1
-            for( i in 2 : (l2N+1))
-               { Dlist[[i]] <- D0 + D0
-                 D0 <- Dlist[[i]]
-               }
-
-            D0 <- Dlist[[invbinrep[1]]]
-            if( j > 1 ){
-                for (i in 2 : j)
-                     D0 <- D0 + Dlist[[invbinrep[j]]]
-               }             
-            return(D0)
-})
-
-
 ###############################################################################
 #
 # new from 2.0: convpov for  AcDcLcDistribution

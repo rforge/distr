@@ -189,18 +189,6 @@ return(outC)
             }
    }
 
-.discretizeD <- function(D, n)
- {upper <- rev(support(D))[1]
-  lower <- support(D)[1]
-  h <- (upper-lower)/n
-  dp <- .discretizeP(D, lower, upper, h)
-  s0 <- seq(lower, upper, by = h)
-  s <- (s0[1:n]+s0[2:(n+1)])/2
-  D0 <- DiscreteDistribution(supp = s, prob = dp,
-             .withArith = D@.withArith, .withSim = D@.withSim)
-  LatticeDistribution(DiscreteDistribution=D0)
-  }
-
 
 
 #------------------------------------------------------------------------------
