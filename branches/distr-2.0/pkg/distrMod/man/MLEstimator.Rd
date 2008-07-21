@@ -42,17 +42,7 @@ MLEstimator(x, ParamFamily, interval, par, ...)
 x <- rgamma(50, scale = 0.5, shape = 3)
 
 ## parametric family of probability measures
-theta <- c(1, 2)
-names(theta) <- c("scale", "shape")
-G <- ParamFamily(name = "Gamma family",
-        param = ParamFamParameter(name = "scale and shape", main = theta),
-        distribution = Gammad(scale = 1, shape = 2),
-        modifyParam = function(theta){ 
-                          Gammad(scale = theta[1], shape = theta[2]) 
-                      },
-        props = paste(c("The Gamma family is scale invariant via the",
-                  "parametrization '(nu,shape)=(log(scale),shape)'"),
-                  collapse = " "))
+G <- GammaFamily(scale = 1, shape = 2)
 
 ## Maximum likelihood estimator
 (res <- MLEstimator(x = x, ParamFamily = G))

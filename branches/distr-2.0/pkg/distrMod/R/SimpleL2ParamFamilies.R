@@ -8,8 +8,10 @@ BinomFamily <- function(size = 1, prob = 0.5, trafo){
         distrSymm <- SphericalSymmetry(SymmCenter = size*prob)
     else
         distrSymm <- NoSymmetry()
+    param0 <- prob
+    names(param0) <- "prob"
     param <- ParamFamParameter(name = "probability of success",  
-                            main = prob, trafo = trafo)
+                               main = param0, trafo = trafo)
     modifyParam <- function(theta){ Binom(size = size, prob = theta) }
     body(modifyParam) <- substitute({ Binom(size = size, prob = theta) }, list(size = size))
     props <- c("The Binomial family is symmetric with respect to prob = 0.5;", 
@@ -45,8 +47,10 @@ PoisFamily <- function(lambda = 1, trafo){
     name <- "Poisson family"
     distribution <- Pois(lambda = lambda)
     distrSymm <- NoSymmetry()
+    param0 <- lambda
+    names(param0) <- "lambda"
     param <- ParamFamParameter(name = "positive mean",
-                            main = lambda, trafo = trafo)
+                               main = param0, trafo = trafo)
     modifyParam <- function(theta){ Pois(lambda = theta) }
     props <- character(0)
     L2deriv.fct <- function(param){
@@ -76,8 +80,10 @@ GammaFamily <- function(scale = 1, shape = 1, trafo){
     name <- "Gamma family"
     distribution <- Gammad(scale = scale, shape = shape)
     distrSymm <- NoSymmetry()
+    param0 <- c(scale, shape)
+    names(param0) <- c("scale", "shape")
     param <- ParamFamParameter(name = "scale and shape",  
-                        main = c(scale, shape), trafo = trafo)
+                        main = param0, trafo = trafo)
     modifyParam <- function(theta){ Gammad(scale = theta[1], shape = theta[2]) }
     props <- c("The Gamma family is scale invariant via the parametrization",
                "'(nu,shape)=(log(scale),shape)'")
@@ -117,7 +123,9 @@ NormLocationFamily <- function(mean = 0, sd = 1, trafo){
     name <- "normal location family"
     distribution <- Norm(mean = mean, sd = sd)
     distrSymm <- SphericalSymmetry(SymmCenter = mean)
-    param <- ParamFamParameter(name = "location", main = mean, trafo = trafo)
+    param0 <- mean
+    names(param0) <- "mean"
+    param <- ParamFamParameter(name = "location", main = param0, trafo = trafo)
     modifyParam <- function(theta){ Norm(mean = theta, sd = sd) }
     body(modifyParam) <- substitute({ Norm(mean = theta, sd = sd) }, list(sd = sd))
     props <- c("The normal location family is invariant under",
@@ -148,7 +156,9 @@ GumbelLocationFamily <- function(loc = 0, scale = 1, trafo){
     name <- "Gumbel location family"
     distribution <- Gumbel(loc = loc, scale = scale)
     distrSymm <- NoSymmetry()
-    param <- ParamFamParameter(name = "location", main = loc, trafo = trafo)
+    param0 <- loc
+    names(param0) <- "loc"
+    param <- ParamFamParameter(name = "location", main = param0, trafo = trafo)
     modifyParam <- function(theta){ Gumbel(loc = theta, scale = scale) }
     body(modifyParam) <- substitute({ Gumbel(loc = theta, scale = scale) }, list(scale = scale))
     props <- c("The Gumbel location family is invariant under",
@@ -179,7 +189,9 @@ NormScaleFamily <- function(sd = 1, mean = 0, trafo){
     name <- "normal scale family"
     distribution <- Norm(mean = mean, sd = sd)
     distrSymm <- SphericalSymmetry(SymmCenter = mean)
-    param <- ParamFamParameter(name = "scale", main = sd, trafo = trafo)
+    param0 <- sd
+    names(param0) <- "sd"
+    param <- ParamFamParameter(name = "scale", main = param0, trafo = trafo)
     modifyParam <- function(theta){ Norm(mean = mean, sd = theta) }
     body(modifyParam) <- substitute({ Norm(mean = mean, sd = theta) }, list(mean = mean))
     props <- c("The normal scale family is invariant under",
@@ -212,7 +224,9 @@ ExpScaleFamily <- function(rate = 1, trafo){
     name <- "Exponential scale family"
     distribution <- Exp(rate = rate)
     distrSymm <- NoSymmetry()
-    param <- ParamFamParameter(name = "scale", main = 1/rate, trafo = trafo)
+    param0 <- 1/rate
+    names(param0) <- "scale"
+    param <- ParamFamParameter(name = "scale", main = param0, trafo = trafo)
     modifyParam <- function(theta){ Exp(rate = 1/theta) }
     props <- c("The Exponential scale family is invariant under",
                "the group of transformations 'g(y) = scale*y'",
@@ -244,7 +258,9 @@ LnormScaleFamily <- function(meanlog = 0, sdlog = 1, trafo){
     name <- "lognormal scale family"
     distribution <- Lnorm(meanlog = meanlog, sdlog = sdlog)
     distrSymm <- NoSymmetry()
-    param <- ParamFamParameter(name = "scale", main = exp(meanlog), trafo = trafo)
+    param0 <- exp(meanlog)
+    names(param0) <- "scale"
+    param <- ParamFamParameter(name = "scale", main = param0, trafo = trafo)
     modifyParam <- function(theta){ Lnorm(meanlog = log(theta), sdlog = sdlog) }
     body(modifyParam) <- substitute({ Lnorm(meanlog = log(theta), sdlog = sdlog) }, list(sdlog = sdlog))
     props <- c("The Lognormal scale family is invariant under",
@@ -278,7 +294,9 @@ NormLocationScaleFamily <- function(mean = 0, sd = 1, trafo){
     name <- "normal location and scale family"
     distribution <- Norm(mean = mean, sd = sd)
     distrSymm <- SphericalSymmetry(SymmCenter = mean)
-    param <- ParamFamParameter(name = "location and scale", main = c(mean, sd), trafo = trafo)
+    param0 <- c(mean, sd)
+    names(param0) <- c("mean", "sd")
+    param <- ParamFamParameter(name = "location and scale", main = param0, trafo = trafo)
     modifyParam <- function(theta){ Norm(mean = theta[1], sd = theta[2]) }
     props <- c("The normal location and scale family is invariant under",
                "the group of transformations 'g(x) = sd*x + mean'",
