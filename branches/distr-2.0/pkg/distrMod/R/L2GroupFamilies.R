@@ -109,7 +109,7 @@ L2ScaleFamily <- function(scale = 1, loc = 0, name, centraldistribution = Norm()
 
     param0 <- scale
     names(param0) <- "scale"
-    param <- ParamFamParameter(name = "scale", main = scale, trafo = trafo)
+    param <- ParamFamParameter(name = "scale", main = param0, trafo = trafo)
     modifyParam <- function(theta){}
     body(modifyParam) <- substitute({ theta*centraldistribution+loc },
                                       list(loc = loc))
