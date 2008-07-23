@@ -15,6 +15,7 @@
 <param name="keyword" value="R:   HellingerDist,DiscreteDistribution,numeric-method">
 <param name="keyword" value="R:   HellingerDist,numeric,AbscontDistribution-method">
 <param name="keyword" value="R:   HellingerDist,AbscontDistribution,numeric-method">
+<param name="keyword" value="R:   HellingerDist,AcDcLcDistribution,AcDcLcDistribution-method">
 <param name="keyword" value=" Generic function for the computation of the Hellinger distance of two distributions">
 </object>
 
@@ -56,12 +57,15 @@ HellingerDist(e1, e2)
 HellingerDist(e1, e2)
 ## S4 method for signature 'numeric, AbscontDistribution':
 HellingerDist(e1, e2, asis.smooth.discretize = "discretize", 
-            n.discr = getdistrModOption("nDiscretize"), low.discr = getLow(e2),
-            up.discr = getUp(e2), h.smooth = getdistrModOption("hSmooth"))
+            n.discr = getdistrExOption("nDiscretize"), low.discr = getLow(e2),
+            up.discr = getUp(e2), h.smooth = getdistrExOption("hSmooth"))
 ## S4 method for signature 'AbscontDistribution, numeric':
 HellingerDist(e1, e2, asis.smooth.discretize = "discretize", 
-            n.discr = getdistrModOption("nDiscretize"), low.discr = getLow(e2),
-            up.discr = getUp(e2), h.smooth = getdistrModOption("hSmooth"))
+            n.discr = getdistrExOption("nDiscretize"), low.discr = getLow(e1),
+            up.discr = getUp(e1), h.smooth = getdistrExOption("hSmooth"))
+## S4 method for signature 'AcDcLcDistribution,
+##   AcDcLcDistribution':
+HellingerDist(e1,e2)
 </pre>
 
 
@@ -144,7 +148,7 @@ have distance <code>=1</code>).
 <dt>e1 = "DiscreteDistribution", e2 = "DiscreteDistribution":</dt><dd>Hellinger distance of two discrete univariate distributions
 which is computed using <code>support</code> and <code>sum</code>.
 </dd>
-<dt>e1 = "DiscreteDistribution", e2 = "AbscontDistribution":</dt><dd><br>Hellinger distance of discrete and absolutely continuous 
+<dt>e1 = "DiscreteDistribution", e2 = "AbscontDistribution":</dt><dd>Hellinger distance of discrete and absolutely continuous 
 univariate distributions (are mutually singular; i.e., 
 have distance <code>=1</code>).
 </dd>
@@ -159,6 +163,9 @@ distribution.
 </dd>
 <dt>e1 = "AbscontDistribution", e1 = "numeric":</dt><dd>Hellinger distance between (empirical) data and an abs. cont. 
 distribution.
+</dd>
+<dt>e1 = "AcDcLcDistribution", e2 = "AcDcLcDistribution":</dt><dd>Hellinger distance of mixed discrete and absolutely continuous 
+univariate distributions.
 </dd>
 </dl>
 

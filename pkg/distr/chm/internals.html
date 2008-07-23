@@ -43,7 +43,6 @@
 <param name="keyword" value="R:   .plusm">
 <param name="keyword" value="R:   .getObjName">
 <param name="keyword" value="R:   .discretizeP">
-<param name="keyword" value="R:   .discretizeD">
 <param name="keyword" value="R:   .expm.d">
 <param name="keyword" value="R:   .expm.c">
 <param name="keyword" value="R:   .logm.d">
@@ -96,7 +95,6 @@ These functions are used internally by package distr.
 .notwithLArg(D)
 .getObjName(i = 1)
 .discretizeP(D, lower, upper, h)
-.discretizeD(D, n)
 .fm(x,f)
 .fM(x,f)
 .fM2(x,f)
@@ -210,9 +208,6 @@ character: name of distribution class</td></tr>
 <tr valign="top"><td><code>D</code></td>
 <td>
 a distribution object</td></tr>
-<tr valign="top"><td><code>n</code></td>
-<td>
-an integer: number of grid points to discretize to</td></tr>
 <tr valign="top"><td><code>i</code></td>
 <td>
 an integer</td></tr>
@@ -360,12 +355,8 @@ or if its slots <code>p,q</code> do not have <code>lower.tail</code> arguments.
 </p>
 <p>
 <code>.getObjName</code> returns the name of the object in the <code>i</code>th operand.
-</p>
-<p>
 <code>.discretizeP</code> discretizes <code>D</code> to a grid of probabilities from 
 <code>lower</code> to <code>upper</code> with width <code>h</code>.   
-<code>.discretizeD</code> discretizes <code>D</code> to a LatticeDistribution with
-n gridpoints.   
 </p>
 <p>
 <code>.fm</code>, <code>.fM</code> return the smallest / biggest value in (0,1) such that
@@ -503,9 +494,6 @@ an object of class <code>DiscreteDistribution</code> or
 <tr valign="top"><td><code>.discretizeP</code></td>
 <td>
 <code>numeric</code> &mdash; the probabilities for the grid-values</td></tr>
-<tr valign="top"><td><code>.discretizeD</code></td>
-<td>
-<code>LatticeDistribution</code> &mdash; the discretized distribution</td></tr>
 <tr valign="top"><td><code>.makeDd,.makePd, .makeQd</code></td>
 <td>
 a function with args 

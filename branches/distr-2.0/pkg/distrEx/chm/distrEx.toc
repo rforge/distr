@@ -62,6 +62,10 @@
 <param name="Local" value="ConvexContamination.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ConvexContamination,AcDcLcDistribution,AcDcLcDistribution,numeric-method">
+<param name="Local" value="ConvexContamination.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="ConvexContamination,DiscreteDistribution,DiscreteDistribution,numeric-method">
 <param name="Local" value="ConvexContamination.html">
 </OBJECT>

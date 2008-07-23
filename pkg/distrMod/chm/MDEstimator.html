@@ -115,17 +115,7 @@ Rieder, H. (1994) <EM>Robust Asymptotic Statistics</EM>. New York: Springer.
 x &lt;- rgamma(50, scale = 0.5, shape = 3)
 
 ## parametric family of probability measures
-theta &lt;- c(1, 2)
-names(theta) &lt;- c("scale", "shape")
-G &lt;- ParamFamily(name = "Gamma family",
-        param = ParamFamParameter(name = "scale and shape", main = theta),
-        distribution = Gammad(scale = 1, shape = 2),
-        modifyParam = function(theta){ 
-                          Gammad(scale = theta[1], shape = theta[2]) 
-                      },
-        props = paste(c("The Gamma family is scale invariant via the",
-                  "parametrization '(nu,shape)=(log(scale),shape)'"),
-                  collapse = " "))
+G &lt;- GammaFamily(scale = 1, shape = 2)
 
 ## Kolmogorov(-Smirnov) minimum distance estimator
 MDEstimator(x = x, ParamFamily = G, distance = KolmogorovDist)

@@ -55,7 +55,7 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 \smallskip\\
 \small Fraunhofer ITWM\\[-.5ex]
 \small Fraunhofer Platz 1\\[-.5ex]
-\small D-95440 Kaiserslautern\\[-.5ex]
+\small 67663 Kaiserslautern\\[-.5ex]
 \small Germany\\
 \small e-Mail: {\small \tt Peter.Ruckdeschel@itwm.fraunhofer.de}\\
 }

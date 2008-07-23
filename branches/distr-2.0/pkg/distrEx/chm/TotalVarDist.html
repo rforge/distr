@@ -55,12 +55,12 @@ TotalVarDist(e1, e2)
 TotalVarDist(e1, e2)
 ## S4 method for signature 'numeric, AbscontDistribution':
 TotalVarDist(e1, e2, asis.smooth.discretize = "discretize", 
-            n.discr = getdistrModOption("nDiscretize"), low.discr = getLow(e2),
-            up.discr = getUp(e2), h.smooth = getdistrModOption("hSmooth"))
+            n.discr = getdistrExOption("nDiscretize"), low.discr = getLow(e2),
+            up.discr = getUp(e2), h.smooth = getdistrExOption("hSmooth"))
 ## S4 method for signature 'AbscontDistribution, numeric':
 TotalVarDist(e1, e2, asis.smooth.discretize = "discretize", 
-            n.discr = getdistrModOption("nDiscretize"), low.discr = getLow(e2),
-            up.discr = getUp(e2), h.smooth = getdistrModOption("hSmooth"))
+            n.discr = getdistrExOption("nDiscretize"), low.discr = getLow(e1),
+            up.discr = getUp(e1), h.smooth = getdistrExOption("hSmooth"))
 ## S4 method for signature 'AcDcLcDistribution,
 ##   AcDcLcDistribution':
 TotalVarDist(e1, e2)

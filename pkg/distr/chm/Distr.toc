@@ -278,10 +278,6 @@
 <param name="Local" value="internals.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".discretizeD">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
 <param name="Name" value=".discretizeP">
 <param name="Local" value="internals.html">
 </OBJECT>
