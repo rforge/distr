@@ -94,7 +94,7 @@ GammaFamily <- function(scale = 1, shape = 1, trafo){
                    fct2 <- function(x){}
                    body(fct1) <- substitute({ (x/scale - shape)/scale },
                         list(scale = scale, shape = shape))
-                   body(fct2) <- substitute({ (log(x/scale) - digamma(shape)) },
+                   body(fct2) <- substitute({ log(x/scale) - digamma(shape) },
                         list(scale = scale, shape = shape))
                    return(list(fct1, fct2))}
     L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter = scale*shape), NonSymmetric())
@@ -337,9 +337,11 @@ if(TRUE){
 ## Normal location family
 ##################################################################
 NormLocationFamily <- function(mean = 0, sd = 1, trafo){ 
-    L2LocationFamily(loc = mean, scale = sd, name = "normal location family", 
-                     L2derivDistr.0 = Norm(mean = 0, sd=1/sd),
-                     FisherInfo.0 = 1, trafo = trafo)
+    L2LocationFamily(loc = mean, name = "normal location family",
+                     centraldistribution = Norm(mean = 0, sd = sd),
+                     LogDeriv = function(x) x/sd^2,
+                     L2derivDistr.0 = Norm(mean = 0, sd = 1/sd),
+                     FisherInfo.0 = 1/sd^2, trafo = trafo)
 }
 
 ##################################################################
@@ -363,7 +365,7 @@ NormLocationScaleFamily <- function(mean = 0, sd = 1, trafo){
 }
 
 ###############################################################################
-# other location and / or scale models
+## other location and / or scale models
 ###############################################################################
 
 ##################################################################
@@ -405,10 +407,10 @@ LnormScaleFamily <- function(meanlog = 0, sdlog = 1, trafo){
 GumbelLocationFamily <- function(loc = 0, scale = 1, trafo){ 
     L2LocationFamily(loc = loc, scale = scale, 
                      name = "Gumbel location family", 
-                     centraldistribution = Gumbel(loc = 0),
-                     LogDeriv = function(x) 1 - exp(-x),
+                     centraldistribution = Gumbel(loc = 0, scale = scale),
+                     LogDeriv = function(x) (1 - exp(-x/scale))/scale,
                      L2derivDistr.0 = (1 - Exp(rate = 1))/scale,
-                     FisherInfo.0 = 1, 
+                     FisherInfo.0 = 1/scale^2, 
                      distrSymm = NoSymmetry(), 
                      L2derivSymm = FunSymmList(NonSymmetric()), 
                      L2derivDistrSymm = DistrSymmList(NoSymmetry()),

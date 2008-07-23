@@ -14,7 +14,7 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
     if(missing(name))
         name <- "L_2 differentiable parametric family of probability measures"
     if(missing(param)&&missing(main))
-       param <- ParamFamParameter(name = "location", main = 0, trafo =matrix(1))
+        param <- ParamFamParameter(name = "location", main = 0, trafo =matrix(1))
     if(missing(param))
         param <- ParamFamParameter(name = paste("Parameter of", name),
                                    main = main, nuisance = nuisance, 
