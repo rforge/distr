@@ -3,7 +3,8 @@
 \alias{distrDoc}
 \docType{package}
 \title{
-distrDoc -- documentation for packages distr, distrEx, distrSim, distrTEst
+distrDoc -- documentation for packages distr, distrEx, distrMod, 
+distrTeach, distrSim, distrTEst
 }
 \description{
 \pkg{distrDoc} provides documentation in form of a common vignette to 
