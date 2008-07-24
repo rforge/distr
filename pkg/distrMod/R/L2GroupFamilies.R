@@ -1,67 +1,64 @@
 ##################################################################
 ## L2 location family
 ##################################################################
-L2LocationFamily <- function(loc = 0, scale = 1, name, centraldistribution = Norm(),
-                             LogDeriv = function(x)x, L2derivDistr.0,
+L2LocationFamily <- function(loc = 0, name, centraldistribution = Norm(),
+                             LogDeriv = function(x) x, L2derivDistr.0,
                              FisherInfo.0, 
                              distrSymm, L2derivSymm, L2derivDistrSymm,
                              trafo, ...){
     if(missing(name))
        name <- "L2 location family"
 
-    distribution <- scale*centraldistribution+loc
- 
-    if(missing(distrSymm))
-         {distrSymm <- SphericalSymmetry(SymmCenter = loc)
+    distribution <- centraldistribution + loc
+
+    if(missing(distrSymm)){
+        distrSymm <- SphericalSymmetry(SymmCenter = loc)
     }else{
         if(!is(distrSymm, "NoSymmetry")){
             if(!is(distrSymm@SymmCenter, "numeric"))
                 stop("slot 'SymmCenter' of 'distrSymm' has to be of class 'numeric'")
             if(length(distrSymm@SymmCenter) != 1)
                 stop("slot 'SymmCenter' of 'distrSymm' has wrong dimension")
-                    }
-         }
+        }
+    }
 
     param0 <- loc
     names(param0) <- "loc"
     param <- ParamFamParameter(name = "location", main = param0, trafo = trafo)
-    modifyParam <- function(theta){}
-    body(modifyParam) <- substitute({ scale*centraldistribution+theta },
-                                      list(scale = scale))
+    modifyParam <- function(theta){ centraldistribution + theta }
     props <- c(paste("The", name, "is invariant under"),
                "the group of transformations 'g(x) = x + loc'",
                "with location parameter 'loc'")
     L2deriv.fct <- function(param){
                    loc <- main(param)
                    fct <- function(x){}
-                   body(fct) <- substitute({ LogDeriv((x - loc)/scale)/scale },
-                                             list(loc = loc, scale = scale))
+                   body(fct) <- substitute({ LogDeriv(x - loc) }, list(loc = loc))
                    return(fct)}
     L2deriv <- EuclRandVarList(RealRandVariable(list(L2deriv.fct(param)), Domain = Reals())) 
-    
-    if(missing (L2derivSymm)) 
-         {L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter = loc))
+
+    if(missing (L2derivSymm)){ 
+        L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter = loc))
     }else{
-          if(!length(L2derivSymm) == 1) 
-              stop("wrong length of argument L2derivSymm")
-         }      
-       
+        if(!length(L2derivSymm) == 1) 
+            stop("wrong length of argument L2derivSymm")
+    }
+
     L2derivDistr <- if(missing(L2derivDistr.0))
         imageDistr(RandVar = L2deriv, distr = distribution) else 
         UnivarDistrList(L2derivDistr.0)
 
-    if(missing (L2derivDistrSymm)) 
-         {L2derivDistrSymm <- DistrSymmList(SphericalSymmetry(SymmCenter = 0))
+    if(missing (L2derivDistrSymm)){ 
+        L2derivDistrSymm <- DistrSymmList(SphericalSymmetry(SymmCenter = 0))
     }else{
-          if(!length(L2derivSymm) == 1) 
-              stop("wrong length of argument L2derivSymm")
-         }      
-    
+        if(!length(L2derivSymm) == 1) 
+            stop("wrong length of argument L2derivSymm")
+    }
+
     FI0 <- if(missing(FisherInfo.0))
            E(centraldistribution, fun = function(x) LogDeriv(x)^2,
              useApply = FALSE, ...) else FisherInfo.0
-             
-    FisherInfo.fct <- function(param) PosDefSymmMatrix(FI0/scale^2)
+
+    FisherInfo.fct <- function(param) PosDefSymmMatrix(FI0)
 
     L2Fam <- new("L2LocationFamily")
     L2Fam@name <- name
@@ -87,29 +84,29 @@ L2LocationFamily <- function(loc = 0, scale = 1, name, centraldistribution = Nor
 ## L2 scale family
 ##################################################################
 L2ScaleFamily <- function(scale = 1, loc = 0, name, centraldistribution = Norm(),
-                             LogDeriv = function(x)x ,L2derivDistr.0,
-                             FisherInfo.0, 
-                             distrSymm, L2derivSymm, L2derivDistrSymm,
-                             trafo, ...){
+                          LogDeriv = function(x) x, L2derivDistr.0,
+                          FisherInfo.0,
+                          distrSymm, L2derivSymm, L2derivDistrSymm,
+                          trafo, ...){
     if(missing(name))
        name <- "L2 scale family"
 
-    distribution <- scale*centraldistribution+loc
- 
-    if(missing(distrSymm))
-         {distrSymm <- SphericalSymmetry(SymmCenter = loc)
+    distribution <- scale*centraldistribution + loc
+
+    if(missing(distrSymm)){
+        distrSymm <- SphericalSymmetry(SymmCenter = loc)
     }else{
-          if(!is(distrSymm, "NoSymmetry")){
+        if(!is(distrSymm, "NoSymmetry")){
             if(!is(distrSymm@SymmCenter, "numeric"))
                 stop("slot 'SymmCenter' of 'distrSymm' has to be of class 'numeric'")
             if(length(distrSymm@SymmCenter) != 1)
                 stop("slot 'SymmCenter' of 'distrSymm' has wrong dimension")
-                    }
-         }
+        }
+    }
 
     param0 <- scale
     names(param0) <- "scale"
-    param <- ParamFamParameter(name = "scale", main = scale, trafo = trafo)
+    param <- ParamFamParameter(name = "scale", main = param0, trafo = trafo)
     modifyParam <- function(theta){}
     body(modifyParam) <- substitute({ theta*centraldistribution+loc },
                                       list(loc = loc))
@@ -124,23 +121,23 @@ L2ScaleFamily <- function(scale = 1, loc = 0, name, centraldistribution = Norm()
                    return(fct)}
     L2deriv <- EuclRandVarList(RealRandVariable(list(L2deriv.fct(param)), Domain = Reals())) 
 
-    if(missing (L2derivSymm)) 
-         {L2derivSymm <- FunSymmList(EvenSymmetric(SymmCenter = mean))
+    if(missing (L2derivSymm)){
+        L2derivSymm <- FunSymmList(EvenSymmetric(SymmCenter = loc))
     }else{
-          if(!length(L2derivSymm) == 1) 
-              stop("wrong length of argument L2derivSymm")
-         }      
+        if(!length(L2derivSymm) == 1) 
+            stop("wrong length of argument L2derivSymm")
+    }
 
     L2derivDistr <- if(missing(L2derivDistr.0))
         imageDistr(RandVar = L2deriv, distr = distribution) else 
         UnivarDistrList(L2derivDistr.0)
 
-    if(missing (L2derivDistrSymm)) 
-         {L2derivDistrSymm <- DistrSymmList(NoSymmetry())
+    if(missing (L2derivDistrSymm)){
+        L2derivDistrSymm <- DistrSymmList(NoSymmetry())
     }else{
-          if(!length(L2derivSymm) == 1) 
-              stop("wrong length of argument L2derivSymm")
-         }      
+        if(!length(L2derivSymm) == 1) 
+            stop("wrong length of argument L2derivSymm")
+    }
 
     FI0 <- if(missing(FisherInfo.0)) 
            E(centraldistribution, fun = function(x) (x*LogDeriv(x)-1)^2,
@@ -182,17 +179,17 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
        name <- "L2 location and scale family"
 
     distribution <- scale*centraldistribution+loc
-   
-    if(missing(distrSymm))
-         {distrSymm <- SphericalSymmetry(SymmCenter = loc)
+
+    if(missing(distrSymm)){
+        distrSymm <- SphericalSymmetry(SymmCenter = loc)
     }else{
-          if(!is(distrSymm, "NoSymmetry")){
+        if(!is(distrSymm, "NoSymmetry")){
             if(!is(distrSymm@SymmCenter, "numeric"))
                 stop("slot 'SymmCenter' of 'distrSymm' has to be of class 'numeric'")
             if(length(distrSymm@SymmCenter) != 1)
                 stop("slot 'SymmCenter' of 'distrSymm' has wrong dimension")
-                    }
-         }
+        }
+    }
 
     param0 <- c(loc, scale)
     names(param0) <- c("loc", "scale")
@@ -217,42 +214,42 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
 
     L2deriv <- EuclRandVarList(RealRandVariable(L2deriv.fct(param), 
                                Domain = Reals())) 
-    
-    if(missing (L2derivSymm)) 
-         {L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter = loc),
+
+    if(missing (L2derivSymm)){
+        L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter = loc),
                                EvenSymmetric(SymmCenter = loc))
     }else{
-          if(!length(L2derivSymm) == 2) 
-              stop("wrong length of argument L2derivSymm")
-         }      
+        if(!length(L2derivSymm) == 2) 
+            stop("wrong length of argument L2derivSymm")
+    }
 
     L2derivDistr <- if (missing(L2derivDistr.0))
          imageDistr(RandVar = L2deriv, distr = distribution) else
          UnivarDistrList(L2derivDistr.0[[1]],L2derivDistr.0[[2]])
 
-    if(missing (L2derivDistrSymm)) 
-         {L2derivDistrSymm <- DistrSymmList(SphericalSymmetry(), NoSymmetry())
+    if(missing (L2derivDistrSymm)){
+        L2derivDistrSymm <- DistrSymmList(SphericalSymmetry(), NoSymmetry())
     }else{
-          if(!length(L2derivSymm) == 1) 
-              stop("wrong length of argument L2derivSymm")
-         }      
+        if(!length(L2derivSymm) == 1) 
+            stop("wrong length of argument L2derivSymm")
+    }
 
-    if(missing(FisherInfo.0)) 
-      { FI11 <- E(centraldistribution, fun = function(x) LogDeriv(x)^2,
-               useApply = FALSE, ...)
+    if(missing(FisherInfo.0)){
+        FI11 <- E(centraldistribution, fun = function(x) LogDeriv(x)^2,
+                  useApply = FALSE, ...)
         FI22 <- E(centraldistribution, fun = function(x) (x*LogDeriv(x)-1)^2,
                useApply = FALSE, ...)
-        if( is(distrSymm, "SphericalSymmetry") )               
-           { FI12 <- 0
-           } else {
-             FI12 <- E(centraldistribution, fun = function(x) x*LogDeriv(x)^2,
-                       useApply = FALSE, ...)           
-           }   
+        if( is(distrSymm, "SphericalSymmetry") ){
+            FI12 <- 0
+        }else{
+            FI12 <- E(centraldistribution, fun = function(x) x*LogDeriv(x)^2,
+                      useApply = FALSE, ...)
+        }
         FI0 <- matrix(c(FI11,FI12,FI12,FI22),2,2)
-      } else{ 
+    }else{ 
         FI0 <- FisherInfo.0 
-      }
-             
+    }
+
     FisherInfo.fct <- function(param){
                    scale <- main(param)[2]
                    PosDefSymmMatrix(FI0/scale^2)}

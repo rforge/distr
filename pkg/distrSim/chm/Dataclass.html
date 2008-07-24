@@ -29,7 +29,8 @@ Generates an object of class "Dataclass".
 ## S4 method for signature 'ArrayorNULLorVector':
 Dataclass(Data, filename = NULL, name = "Data-Set")
 ## S4 method for signature 'DataframeorSeqDataFrames':
-Dataclass(Data, filename = NULL, name = "Data-Set")
+Dataclass(Data, filename = NULL, name = "Data-Set",
+          Obsdimnames = NULL, Runnames = NULL)
 </pre>
 
 
@@ -39,15 +40,21 @@ Dataclass(Data, filename = NULL, name = "Data-Set")
 <tr valign="top"><td><code>Data</code></td>
 <td>
 the data to be filled in</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+additional parameters. </td></tr>
 <tr valign="top"><td><code>filename</code></td>
 <td>
 Object of class <code>"character"</code>: the filename the data shall be saved</td></tr>
 <tr valign="top"><td><code>name</code></td>
 <td>
 Object of class <code>"character"</code>: a name for the Data</td></tr>
-<tr valign="top"><td><code>...</code></td>
+<tr valign="top"><td><code>Obsdimnames</code></td>
 <td>
-additional parameters. </td></tr>
+optional names for the observation dimensions</td></tr>
+<tr valign="top"><td><code>Runnames</code></td>
+<td>
+optional names for the runs</td></tr>
 </table>
 
 <h3>Author(s)</h3>
@@ -62,6 +69,12 @@ Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ru
 <p>
 <code><a href="Dataclass-class.html">Dataclass-class</a></code>
 </p>
+
+
+<h3>Examples</h3>
+
+<pre>
+</pre>
 
 
 

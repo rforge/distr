@@ -49,7 +49,8 @@ setClass("PosSemDefSymmMatrix", contains = "matrix",
                     stop("no square matrix")
                 if(any(!is.finite(object)))
                     stop("inifinite or missing values in matrix")
-                if(!isTRUE(all.equal(object, t(object), .Machine$double.eps^0.5)))
+                if(!isTRUE(all.equal(object, t(object), .Machine$double.eps^0.5, 
+                                     check.attributes = FALSE)))
                     stop("matrix is not symmetric")
                 if(!all(eigen(object)$values > -100*.Machine$double.eps))
                    stop("matrix is (numerically) not positive semi - definite")

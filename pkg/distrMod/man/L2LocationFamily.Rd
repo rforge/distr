@@ -6,14 +6,13 @@
   Generates an object of class \code{"L2LocationFamily"}.
 }
 \usage{
-L2LocationFamily(loc = 0, scale = 1, name, centraldistribution = Norm(),
+L2LocationFamily(loc = 0, name, centraldistribution = Norm(),
                  LogDeriv = function(x)x,  L2derivDistr.0,
                  FisherInfo.0, distrSymm, L2derivSymm, L2derivDistrSymm,
                  trafo, ...)
 }
 \arguments{
   \item{loc}{numeric: location parameter of the model. }
-  \item{scale}{postive number: scale of the model. }
   \item{name}{character: name of the parametric family. }
   \item{centraldistribution}{object of class \code{"AbscontDistribution"}:
     central distribution; we assume from the beginning, that centraldistribution

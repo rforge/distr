@@ -8,11 +8,11 @@
 \usage{
 L2ScaleFamily(scale = 1, loc = 0,  name, centraldistribution = Norm(),
               LogDeriv = function(x)x,   L2derivDistr.0,
-                 FisherInfo.0, distrSymm, L2derivSymm, L2derivDistrSymm,
-                 trafo, ...)
+              FisherInfo.0, distrSymm, L2derivSymm, L2derivDistrSymm,
+              trafo, ...)
 }
 \arguments{
-  \item{scale}{postive number: scale parameter of the model }
+  \item{scale}{positive number: scale parameter of the model }
   \item{loc}{numeric: location parameter of the model }
   \item{name}{character: name of the parametric family. }
   \item{centraldistribution}{object of class \code{"AbscontDistribution"}:

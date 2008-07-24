@@ -7,13 +7,13 @@
 }
 \usage{
 L2LocationScaleFamily(loc = 0, scale = 1, name, centraldistribution = Norm(),
-                      LogDeriv = function(x)x,  L2derivDistr.0,
-                 FisherInfo.0, distrSymm, L2derivSymm, L2derivDistrSymm,
-                 trafo, ...)
+                      LogDeriv = function(x) x,  L2derivDistr.0,
+                      FisherInfo.0, distrSymm, L2derivSymm, L2derivDistrSymm,
+                      trafo, ...)
 }
 \arguments{
   \item{loc}{numeric: location parameter of the model. }
-  \item{scale}{postive number: scale of the model. }
+  \item{scale}{positive number: scale of the model. }
   \item{name}{character: name of the parametric family. }
   \item{centraldistribution}{object of class \code{"AbscontDistribution"}:
     central distribution; we assume by default, that centraldistribution

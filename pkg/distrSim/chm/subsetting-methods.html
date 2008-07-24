@@ -27,11 +27,11 @@ or replace parts.
 <h3>Usage</h3>
 
 <pre>
-## S4 method for signature 'SeqDataFrames':
-x[i, j, k, drop = FALSE]
+## "["(x,i,j,k, drop = FALSE) # is: x[i,j,k, drop = FALSE]
+\S4method{[}{SeqDataFrames}(x, i, j, k, drop = FALSE)
 
-## S4 method for signature 'SeqDataFrames':
-x[i, j, k] &lt;- value
+## "[&lt;-"(x,i,j,k, value)      # is: x[i,j,k] &lt;- value
+\S4method{[&lt;-}{SeqDataFrames}(x, i, j, k, value)
 </pre>
 
 
@@ -56,7 +56,7 @@ run index; may be missing</td></tr>
 as in the general indexing functions</td></tr>
 <tr valign="top"><td><code>value</code></td>
 <td>
-modification to be assigned to</td></tr>
+modication to be assigned to</td></tr>
 </table>
 
 <h3>Value</h3>
@@ -86,8 +86,9 @@ replacement method for indices for objects of class <code>SeqDataFrames</code></
 s0 &lt;- matrix(1:6,3,2)
 d0 &lt;- data.frame(s0)
 d1 &lt;- data.frame(s0 + 3)
-SF &lt;- SeqDataFrames(d0, d1)
+SF &lt;- seqDataFrames(d0, d1)
 SF[1,2,1]
+
 </pre>
 
 <script Language="JScript">

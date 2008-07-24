@@ -15,7 +15,8 @@ setAs("numeric","Integer",function(from) new("Integer",as.integer(from)))
   {    ### is x equally spaced?
     all( sapply(diff(x), function(y)
          isTRUE(all.equal(y, diff(x)[1],
-                tolerance = getdistrOption("DistrResolution")))))
+                tolerance = getdistrOption("DistrResolution"),
+                check.attributes = FALSE))))
   }
 
 ### internal help function to check consistency of lattice with support:
@@ -27,14 +28,15 @@ setAs("numeric","Integer",function(from) new("Integer",as.integer(from)))
    if (! .is.vector.lattice(support)  && eq.space)
       return(FALSE)
    ### are width of lattice and support consistent
-   if (! isTRUE(all.equal(min(ds),abs(w))))
+   if (! isTRUE(all.equal(min(ds), abs(w), check.attributes = FALSE)))
       return(FALSE)
    ### pivot is left or right endpoint of support
-   if ( isTRUE(all.equal(ms,p)) || isTRUE(all.equal(Ms,p)) )
+   if ( isTRUE(all.equal(ms, p, check.attributes = FALSE)) || isTRUE(all.equal(Ms, p, check.attributes = FALSE)) )
       return(TRUE)
 
    if (isTRUE(all.equal(min((support[1]-p)%%w,w-(support[1]-p)%%w),0,
-                         tolerance = getdistrOption("TruncQuantile"))))
+                        tolerance = getdistrOption("TruncQuantile"),
+                        check.attributes = FALSE)))
       return(TRUE)
   return(FALSE)
   }
@@ -358,7 +360,7 @@ return(outC)
 
 .plusm <- function(e1, e2, Dclass = "DiscreteDistribution"){
             if (length(e2)>1) stop("length of operator must be 1")
-            if (isTRUE(all.equal(e2,0))) return(e1)
+            if (isTRUE(all.equal(e2, 0, check.attributes = FALSE))) return(e1)
 
             if ((Dclass == "DiscreteDistribution")||
                 (Dclass == "AffLinDiscreteDistribution"))
@@ -410,8 +412,8 @@ return(outC)
 .multm <- function(e1, e2, Dclass = "DiscreteDistribution"){
             if (length(e2)>1) stop("length of operator must be 1")
 
-            if (isTRUE(all.equal(e2,1))) return(e1)
-            if (isTRUE(all.equal(e2,0)))
+            if (isTRUE(all.equal(e2, 1, check.attributes = FALSE))) return(e1)
+            if (isTRUE(all.equal(e2, 0, check.attributes = FALSE)))
                return(new("Dirac", location = 0))
 
             rnew <- function(n, ...){}
