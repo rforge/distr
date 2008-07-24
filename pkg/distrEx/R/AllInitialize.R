@@ -10,18 +10,27 @@ setMethod("initialize", "Gumbel",
         .Object@d <- function(x, ...){ dgumbel(x, loc = loc1, scale = scale1, ...) }
         body(.Object@d) <- substitute({ dgumbel(x, loc = loc1, scale = scale1, ...) },
                                      list(loc1 = loc, scale1 = scale))
-        .Object@p <- function(x, ...){ pgumbel(x, loc = loc1, scale = scale1, ...) }
-        body(.Object@p) <- substitute({ pgumbel(x, loc = loc1, scale = scale1, ...) },
+        .Object@p <- function(q, ...){ pgumbel(q, loc = loc1, scale = scale1, ...) }
+        body(.Object@p) <- substitute({ pgumbel(q, loc = loc1, scale = scale1, ...) },
                                      list(loc1 = loc, scale1 = scale))
-        .Object@q <- function(x, ...){ 
-                        if(x == 0) return(-Inf)
-                        if(x == 1) return(Inf)
-                        qgumbel(x, loc = loc1, scale = scale1, ...) 
+        .Object@q <- function(p, ...){ 
+                        ## P.R.: changed to vectorized form 
+                        p0 <- p
+                        p0[.isEqual01(p)] <- 0.5
+                        q0 <- qgumbel(p0, loc = loc1, scale = scale1, ...)
+                        q0[.isEqual01(p)] <- sign([.isEqual01(p)]-0.5)*Inf
+                        return(q0)  
                      }
-        body(.Object@q) <- substitute({ if(x == 0) return(-Inf)
-                                        if(x == 1) return(Inf)
-                                        qgumbel(x, loc = loc1, scale = scale1, ...) },
-                                     list(loc1 = loc, scale1 = scale))
+        body(.Object@q) <- substitute({                         
+                              ## P.R.: changed to vectorized form 
+                              p0 <- p
+                              p0[.isEqual01(p)] <- 0.5
+                              q0 <- qgumbel(p0, loc = loc1, 
+                                            scale = scale1, ...)
+                              q0[.isEqual01(p)] <- sign([.isEqual01(p)]-0.5)*Inf
+                              return(q0)  
+                               },
+                              list(loc1 = loc, scale1 = scale))
         .Object@.withSim   <- FALSE
         .Object@.withArith <- FALSE
         .Object

@@ -1,3 +1,5 @@
+.isEqual01 <- distr:::.isEqual01 ## for faster access due to local caching in package namespace
+
 .onLoad <- function(lib, pkg){
     require("methods", character = TRUE, quietly = TRUE)
 }

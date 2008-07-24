@@ -1,3 +1,5 @@
+.isEqual01 <- distr:::.isEqual01 ## for faster access due to local caching in package namespace
+
 .onLoad <- function(lib, pkg){
     require("methods", character = TRUE, quietly = TRUE)
 }
@@ -104,8 +106,8 @@ setClass("GumbelParameter", representation(loc = "numeric",
 setClass("Gumbel", 
             prototype = prototype(r = function(n){ rgumbel(n, loc = 0, scale = 1) },
                                   d = function(x, ...){ dgumbel(x, loc = 0, scale = 1, ...) },
-                                  p = function(x, ...){ pgumbel(x, loc = 0, scale = 1, ...) },
-                                  q = function(x, ...){ qgumbel(x, loc = 0, scale = 1, ...) },
+                                  p = function(q, ...){ pgumbel(q, loc = 0, scale = 1, ...) },
+                                  q = function(p, ...){ qgumbel(p, loc = 0, scale = 1, ...) },
                                   img = new("Reals"),
                                   param = new("GumbelParameter"),
                                   .withArith = FALSE,

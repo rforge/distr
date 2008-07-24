@@ -14,14 +14,23 @@ setMethod("initialize", "Gumbel",
         body(.Object@p) <- substitute({ pgumbel(q, loc = loc1, scale = scale1, ...) },
                                      list(loc1 = loc, scale1 = scale))
         .Object@q <- function(p, ...){ 
-                        if(p == 0) return(-Inf)
-                        if(p == 1) return(Inf)
-                        qgumbel(p, loc = loc1, scale = scale1, ...) 
+                        ## P.R.: changed to vectorized form 
+                        p0 <- p
+                        p0[.isEqual01(p)] <- 0.5
+                        q0 <- qgumbel(p0, loc = loc1, scale = scale1, ...)
+                        q0[.isEqual01(p)] <- sign([.isEqual01(p)]-0.5)*Inf
+                        return(q0)  
                      }
-        body(.Object@q) <- substitute({ if(p == 0) return(-Inf)
-                                        if(p == 1) return(Inf)
-                                        qgumbel(p, loc = loc1, scale = scale1, ...) },
-                                     list(loc1 = loc, scale1 = scale))
+        body(.Object@q) <- substitute({                         
+                              ## P.R.: changed to vectorized form 
+                              p0 <- p
+                              p0[.isEqual01(p)] <- 0.5
+                              q0 <- qgumbel(p0, loc = loc1, 
+                                            scale = scale1, ...)
+                              q0[.isEqual01(p)] <- sign([.isEqual01(p)]-0.5)*Inf
+                              return(q0)  
+                               },
+                              list(loc1 = loc, scale1 = scale))
         .Object@.withSim   <- FALSE
         .Object@.withArith <- FALSE
         .Object
