@@ -10,17 +10,17 @@ setMethod("initialize", "Gumbel",
         .Object@d <- function(x, ...){ dgumbel(x, loc = loc1, scale = scale1, ...) }
         body(.Object@d) <- substitute({ dgumbel(x, loc = loc1, scale = scale1, ...) },
                                      list(loc1 = loc, scale1 = scale))
-        .Object@p <- function(x, ...){ pgumbel(x, loc = loc1, scale = scale1, ...) }
-        body(.Object@p) <- substitute({ pgumbel(x, loc = loc1, scale = scale1, ...) },
+        .Object@p <- function(q, ...){ pgumbel(q, loc = loc1, scale = scale1, ...) }
+        body(.Object@p) <- substitute({ pgumbel(q, loc = loc1, scale = scale1, ...) },
                                      list(loc1 = loc, scale1 = scale))
-        .Object@q <- function(x, ...){ 
-                        if(x == 0) return(-Inf)
-                        if(x == 1) return(Inf)
-                        qgumbel(x, loc = loc1, scale = scale1, ...) 
+        .Object@q <- function(p, ...){ 
+                        if(p == 0) return(-Inf)
+                        if(p == 1) return(Inf)
+                        qgumbel(p, loc = loc1, scale = scale1, ...) 
                      }
-        body(.Object@q) <- substitute({ if(x == 0) return(-Inf)
-                                        if(x == 1) return(Inf)
-                                        qgumbel(x, loc = loc1, scale = scale1, ...) },
+        body(.Object@q) <- substitute({ if(p == 0) return(-Inf)
+                                        if(p == 1) return(Inf)
+                                        qgumbel(p, loc = loc1, scale = scale1, ...) },
                                      list(loc1 = loc, scale1 = scale))
         .Object@.withSim   <- FALSE
         .Object@.withArith <- FALSE
