@@ -96,6 +96,8 @@ setMethod("show", "Estimate",
         cat(paste("An object of class", dQuote(class(object)), "\n"))
         cat("estimate:\n")
         print(object@estimate)
-        if(nrow(object@Infos) > 0)
-          cat("Infos:\t", object@Infos, "\n")
+        if(nrow(object@Infos) > 0){
+          cat("Infos:\n")
+          print(object@Infos)
+        }
     })
