@@ -26,6 +26,9 @@
       additional informations. }
   }
 }
+\section{Extends}{
+Class \code{"Estimate"}, directly.
+}
 \section{Methods}{
   \describe{
     \item{criterion}{\code{signature(object = "MCEstimate")}: 
