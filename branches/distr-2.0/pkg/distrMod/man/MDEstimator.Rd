@@ -1,10 +1,10 @@
 \name{MDEstimator}
 \alias{MDEstimator}
 
-\title{ Function to compute minimum distance estimators }
+\title{ Function to compute minimum distance estimates }
 \description{
   The function \code{MDEstimator} provides a general way to compute 
-  minimum distance estimators.
+  minimum distance estimates.
 }
 \usage{
 MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name, interval, par, 

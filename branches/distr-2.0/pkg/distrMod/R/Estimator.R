@@ -1,5 +1,5 @@
 ###############################################################################
-## Determine estimator
+## Function to compute estimates
 ###############################################################################
 Estimator <- function(x, estimator, name, Infos, ...){
     if(missing(name))

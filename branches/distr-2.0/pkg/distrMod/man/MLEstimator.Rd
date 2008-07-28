@@ -1,10 +1,10 @@
 \name{MLEstimator}
 \alias{MLEstimator}
 
-\title{ Function to compute maximum likelihood estimators }
+\title{ Function to compute maximum likelihood estimates }
 \description{
   The function \code{MLEstimator} provides a general way to compute 
-  maximum likelihood estimators for a given parametric family of 
+  maximum likelihood estimates for a given parametric family of 
   probability measures. This is done by calling the function 
   \code{MCEstimator} which minimizes the negative log-Likelihood.
 }

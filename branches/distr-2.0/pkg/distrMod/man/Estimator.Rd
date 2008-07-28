@@ -1,10 +1,10 @@
 \name{Estimator}
 \alias{Estimator}
 
-\title{ Function to compute estimators }
+\title{ Function to compute estimates }
 \description{
   The function \code{Estimator} provides a general way to compute 
-  estimators.
+  estimates.
 }
 \usage{
 Estimator(x, estimator, name, Infos, ...)

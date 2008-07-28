@@ -1,10 +1,10 @@
 \name{MCEstimator}
 \alias{MCEstimator}
 
-\title{ Function to compute minimum criterion estimators }
+\title{ Function to compute minimum criterion estimates }
 \description{
   The function \code{MCEstimator} provides a general way to compute 
-  estimators for a given parametric family of probability measures which 
+  estimates for a given parametric family of probability measures which 
   can be obtain by minimizing a certain criterion. For instance, 
   the negative log-Likelihood in case of the maximum likelihood
   estimator or some distance between distributions like in 

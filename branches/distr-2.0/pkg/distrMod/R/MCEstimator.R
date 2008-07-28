@@ -1,5 +1,5 @@
 ###############################################################################
-## Determine estimator by minimizing a given criterion
+## Determine estimates by minimizing a given criterion
 ###############################################################################
 MCEstimator <- function(x, ParamFamily, criterion, crit.name, interval, par, 
                         Infos, ...){
