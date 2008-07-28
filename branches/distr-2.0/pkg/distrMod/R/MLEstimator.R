@@ -23,10 +23,17 @@
 #    return(res)
 #}
 
+## caching to speed up things:
+.inArgs <- distr:::.inArgs
+
 ## Maximum-Likelihood estimator
 MLEstimator <- function(x, ParamFamily, interval, par, Infos, ...){
     negLoglikelihood <- function(x, Distribution, ...){
-        res <- -sum(log(Distribution@d(x, ...)))
+### increase accuracy:
+        if(Distribution@.withSim||!.inArgs("log",d(Distribution)))
+           res <- -sum(log(Distribution@d(x, ...)))
+        else  
+           res <- -sum(Distribution@d(x, log = TRUE, ...))
         return(res)
     }
 
