@@ -725,8 +725,7 @@ see 'distrARITH()'; for switching off this warning see '?distroptions' in:
 print(object)
 \end{verbatim}
 This behaviour will soon be annoying so you may switch it off setting the global 
-option
-\code{WarningArith} to \code{FALSE} (see section~\ref{options}).\medksip\\
+option \code{WarningArith} to \code{FALSE} (see section~\ref{options}).\medskip\\
 %
 Function \code{distrArith()} displays the following comment
 \begin{quote} 
@@ -917,8 +916,8 @@ This is due to the fact, that all slots are filled starting from simulations.
 To explain this, a warning is issued  by default, whenever a \code{Distribution}
 object, filled by such simulations is shown or printed; this also applies to the 
 last line in the preceding code sniplet. This behaviour may again be switched 
-off by setting the global option
-\code{WarningSim} to \code{FALSE} (see section~\ref{options}).\\
+off by setting the global option \code{WarningSim} to \code{FALSE} 
+(see section~\ref{options}).\\
 
 As they are frequently needed, from version 1.9 on, math operations 
 \code{abs()}, \code{exp()}, and ---if an {\sf R}-version $\ge$ {\tt 2.6.0} is 
@@ -1614,7 +1613,7 @@ and Figure~\ref{figNT}, respectively, occur as slots of the risk classes.
 \begin{figure}[!ht]
 \vspace{2ex}
   \begin{center}
-    \includegraphics[width=8cm]{BiasType.pdf}%
+    \includegraphics[width=4cm]{BiasType.pdf}%
     \caption{\label{figBT}{\footnotesize Inheritance relations and slots of the 
     corresponding \mbox{(sub-)}classes for \code{BiasType} where we do not
     repeat inherited slots
@@ -1625,7 +1624,7 @@ and Figure~\ref{figNT}, respectively, occur as slots of the risk classes.
 \else
 \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=7.5cm]{BiasType.eps}%
+    \includegraphics[width=4cm]{BiasType.eps}%
     \caption{\label{figBT}{\footnotesize Inheritance relations and slots of the 
     corresponding \mbox{(sub-)}classes for \code{BiasType} where we do not 
     repeat inherited slots
@@ -1717,15 +1716,33 @@ if (have.distrMod){
     MDEstimator(x = x, ParamFamily = G, distance = KolmogorovDist)
 }
 @
-The results of these computations are objects of the S3-class \code{MCEstimate}
-which inherits from the S3-class \code{Estimate} and consists of a \code{list}
-with the two components
-\begin{description}
-  \item[estimate] minimum criterion parameter estimate
-  \item[criterion] minimum value of the criterion
-\end{description}
-The printing is done via \code{print.Estimate} which prints only the estimate
-component of \code{MCEstimate}.
+The results of these computations are objects of the S4-class \code{MCEstimate}
+which inherits from the S4-class \code{Estimate}. The definitions are given
+in Figure~\ref{figEst}.
+\ifpdf
+\begin{figure}[!ht]
+\vspace{2ex}
+  \begin{center}
+    \includegraphics[width=4cm]{Estimate.pdf}%
+    \caption{\label{figEst}{\footnotesize Inheritance relations and slots of the 
+    corresponding \mbox{(sub-)}classes for \code{Estimate} where we do not
+    repeat inherited slots
+    }}
+  \end{center}
+\vspace{-4ex}
+\end{figure}
+\else
+\begin{figure}[htb]
+  \begin{center}
+    \includegraphics[width=4cm]{Estimate.eps}%
+    \caption{\label{figEst}{\footnotesize Inheritance relations and slots of the 
+    corresponding \mbox{(sub-)}classes for \code{Estimate} where we do not 
+    repeat inherited slots
+    }}
+  \end{center}
+\vspace{-1ex}
+\end{figure}
+\fi
 % -----------------------------------------------------------------------------
 \section{Options}\label{options}
 % -----------------------------------------------------------------------------
