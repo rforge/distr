@@ -403,3 +403,35 @@ setClass("asSemivar",
           contains = "asGRisk",
           prototype = prototype(type = "asymptotic Semivariance",
           biastype =  new("onesidedBias")))
+
+#################################################
+## "Estimate" classes
+#################################################
+setClass("Estimate", 
+         representation(name = "character",
+                        estimate = "ANY",
+                        Infos = "matrix"),
+         prototype(name = "Estimate",
+                   estimate = numeric(0),
+                   Infos = matrix(c(character(0),character(0)), ncol=2,
+                                  dimnames=list(character(0), c("method", "message")))),
+         validity = function(object){
+            if(!is.character(object@Infos))
+                stop("'Infos' contains no matrix of characters")
+            if(ncol(object@Infos)!=2)
+                stop("'Infos' must have two columns")
+            else TRUE
+         })
+
+setClass("MCEstimate", 
+         representation(criterion = "numeric"),
+         prototype(name = "Minimum criterion estimate",
+                   estimate = numeric(0),
+                   criterion = numeric(0),
+                   Infos = matrix(c(character(0),character(0)), ncol=2,
+                                  dimnames=list(character(0), c("method", "message")))),
+         contains = "Estimate")
+
+## To Do: class MLEstimate which is compatible with class
+## mle or maybe class summary.mle of package "stats4"
+
