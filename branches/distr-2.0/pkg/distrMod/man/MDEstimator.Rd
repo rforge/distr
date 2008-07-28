@@ -76,3 +76,4 @@ distroptions(DistrResolution = 1e-6) # default
 #MDEstimator(x = x, ParamFamily = G, distance = HellingerDist, asis.smooth.discretize = "smooth")
 }
 \keyword{univar}
+\keyword{robust}
