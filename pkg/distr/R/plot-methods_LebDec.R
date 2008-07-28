@@ -248,11 +248,11 @@ setMethod("plot", "UnivarLebDecDistribution",
      if(is.finite(q(x)(0))) {grid <- c(q(x)(0),grid); pxg <- c(0,pxg)}
      if(is.finite(q(x)(1))) {grid <- c(grid,q(x)(1)); pxg <- c(pxg,1)}
 
-     ### fix constancy regions of p(x)
-     if(isOldVersion(x)) x <- conv2NewVersion(x)
-
-     if(length(pxv))
-         do.call(lines, c(list(x = pxv, y = xv), dots.without.pch))
+#     ### fix constancy regions of p(x)
+#     if(isOldVersion(x)) x <- conv2NewVersion(x)
+#
+#     if(length(pxv))
+#         do.call(lines, c(list(x = pxv, y = xv), dots.without.pch))
      
      if(!is.null(gaps(x))){
         i.not.gap    <- !.isIn(grid,gaps(x))
