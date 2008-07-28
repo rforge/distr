@@ -1,4 +1,6 @@
+###############################################################################
 ## Implementation of Maximum Likelihood estimation in i.i.d. setup
+###############################################################################
 
 # compute likelihood
 #likelihood <- function(x, Distribution, ...){
@@ -22,7 +24,7 @@
 #}
 
 ## Maximum-Likelihood estimator
-MLEstimator <- function(x, ParamFamily, interval, par, ...){
+MLEstimator <- function(x, ParamFamily, interval, par, Infos, ...){
     negLoglikelihood <- function(x, Distribution, ...){
         res <- -sum(log(Distribution@d(x, ...)))
         return(res)
@@ -30,8 +32,8 @@ MLEstimator <- function(x, ParamFamily, interval, par, ...){
 
     res <- MCEstimator(x = x, ParamFamily = ParamFamily, criterion = negLoglikelihood,
                 interval = interval, par = par, ...)
-    names(res$criterion) <- "negative log-likelihood"
-    class(res) <- c("MCEstimator", "Estimate")
+    names(res@criterion) <- "negative log-likelihood"
+    res@name <- "Maximum likelihood estimate"
 
     return(res)
 }

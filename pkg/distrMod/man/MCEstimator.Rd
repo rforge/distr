@@ -1,17 +1,18 @@
 \name{MCEstimator}
 \alias{MCEstimator}
 
-\title{ Function to compute minimum criterion estimators }
+\title{ Function to compute minimum criterion estimates }
 \description{
   The function \code{MCEstimator} provides a general way to compute 
-  estimators for a given parametric family of probability measures which 
+  estimates for a given parametric family of probability measures which 
   can be obtain by minimizing a certain criterion. For instance, 
   the negative log-Likelihood in case of the maximum likelihood
   estimator or some distance between distributions like in 
   case of minimum distance estimators.
 }
 \usage{
-MCEstimator(x, ParamFamily, criterion, crit.name, interval, par, ...)
+MCEstimator(x, ParamFamily, criterion, crit.name, interval, par, 
+            Infos, ...)
 }
 \arguments{
   \item{x}{ (empirical) data }
@@ -21,6 +22,7 @@ MCEstimator(x, ParamFamily, criterion, crit.name, interval, par, ...)
   \item{interval}{ interval used by \code{optimize} }
   \item{par}{ initial parameter values used by \code{optim}; if \code{missing}
     the parameter of \code{ParamFamily} are used. }
+  \item{Infos}{ character: optional informations about estimator }
   \item{\dots}{ further arguments to \code{criterion} or \code{optimize} 
     or \code{optim}, respectively. }
 }
@@ -30,16 +32,15 @@ MCEstimator(x, ParamFamily, criterion, crit.name, interval, par, ...)
   and possibly \code{\dots}.
 }
 \value{
-  An object of S3-class \code{"MCEstimate"} which inherits from class \code{"Estimate"}, 
-  a list with two components
-  \item{estimate}{ minimum criterion parameter estimate }
-  \item{criterion}{ minimum value of the criterion }
+  An object of S4-class \code{"MCEstimate"} which inherits from class 
+  \code{"Estimate"}.
 }
 %\references{  }
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
         Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}
-\seealso{\code{\link{ParamFamily-class}}, \code{\link{ParamFamily}} }
+\seealso{\code{\link{ParamFamily-class}}, \code{\link{ParamFamily}}, 
+         \code{\link{MCEstimate-class}} }
 \examples{
 ## (empirical) Data
 x <- rgamma(50, scale = 0.5, shape = 3)

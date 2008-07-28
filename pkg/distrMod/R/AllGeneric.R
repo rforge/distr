@@ -138,3 +138,21 @@ if(!isGeneric("fct<-")){
 if(!isGeneric("fct")){
     setGeneric("fct", function(object) standardGeneric("fct"))
 }
+if(!isGeneric("estimate")){
+    setGeneric("estimate", function(object) standardGeneric("estimate"))
+}
+if(!isGeneric("Infos")){
+    setGeneric("Infos", function(object) standardGeneric("Infos"))
+}
+if(!isGeneric("Infos<-")){
+    setGeneric("Infos<-", function(object, value) standardGeneric("Infos<-"))
+}
+if(!isGeneric("addInfo<-")){
+    setGeneric("addInfo<-", function(object, value) standardGeneric("addInfo<-"))
+}
+if(!isGeneric("criterion")){
+    setGeneric("criterion", function(object) standardGeneric("criterion"))
+}
+if(!isGeneric("criterion<-")){
+    setGeneric("criterion<-", function(object, value) standardGeneric("criterion<-"))
+}

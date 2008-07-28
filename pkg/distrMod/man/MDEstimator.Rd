@@ -1,13 +1,14 @@
 \name{MDEstimator}
 \alias{MDEstimator}
 
-\title{ Function to compute minimum distance estimators }
+\title{ Function to compute minimum distance estimates }
 \description{
   The function \code{MDEstimator} provides a general way to compute 
-  minimum distance estimators.
+  minimum distance estimates.
 }
 \usage{
-MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name, interval, par, ...)
+MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name, interval, par, 
+            Infos, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -19,6 +20,7 @@ MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name, interval, par,
   \item{interval}{ interval used by \code{optimize} }
   \item{par}{ initial parameter values used by \code{optim}; if \code{missing}
     the parameter of \code{ParamFamily} are used. }
+  \item{Infos}{ character: optional informations about estimator }
   \item{\dots}{ further arguments to \code{criterion} or \code{optimize} 
     or \code{optim}, respectively. }
 }
@@ -29,10 +31,8 @@ MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name, interval, par,
   \code{TotalVarDist} or \code{HellingerDist}.
 }
 \value{
-  An object of S3-class \code{"MCEstimate"} which inherits from 
-  class \code{"Estimate"}, a list with two components
-  \item{estimate}{ maximum likelihood parameter estimate }
-  \item{criterion}{ minimum value of the distance }
+  An object of S4-class \code{"MCEstimate"} which inherits from class 
+  \code{"Estimate"}.
 }
 \references{
     Huber, P.J. (1981) \emph{Robust Statistics}. New York: Wiley.
@@ -42,7 +42,8 @@ MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name, interval, par,
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
         Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}
-\seealso{\code{\link{ParamFamily-class}}, \code{\link{ParamFamily}}, code{\link{MCEstimator}},
+\seealso{\code{\link{ParamFamily-class}}, \code{\link{ParamFamily}}, 
+         \code{\link{MCEstimator}, \code{\link{MCEstimate-class}}},
 \code{\link[MASS]{fitdistr}} }
 \examples{
 ## (empirical) Data
@@ -75,3 +76,4 @@ distroptions(DistrResolution = 1e-6) # default
 #MDEstimator(x = x, ParamFamily = G, distance = HellingerDist, asis.smooth.discretize = "smooth")
 }
 \keyword{univar}
+\keyword{robust}

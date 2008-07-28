@@ -1,15 +1,15 @@
 \name{MLEstimator}
 \alias{MLEstimator}
 
-\title{ Function to compute maximum likelihood estimators }
+\title{ Function to compute maximum likelihood estimates }
 \description{
   The function \code{MLEstimator} provides a general way to compute 
-  maximum likelihood estimators for a given parametric family of 
+  maximum likelihood estimates for a given parametric family of 
   probability measures. This is done by calling the function 
   \code{MCEstimator} which minimizes the negative log-Likelihood.
 }
 \usage{
-MLEstimator(x, ParamFamily, interval, par, ...)
+MLEstimator(x, ParamFamily, interval, par, Infos, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -18,6 +18,7 @@ MLEstimator(x, ParamFamily, interval, par, ...)
   \item{interval}{ interval used by \code{optimize} }
   \item{par}{ initial parameter values used by \code{optim}; if \code{missing}
     the parameter of \code{ParamFamily} are used. }
+  \item{Infos}{ character: optional informations about estimator }
   \item{\dots}{ further arguments to \code{criterion} or \code{optimize} 
     or \code{optim}, respectively. }
 }
@@ -26,16 +27,15 @@ MLEstimator(x, ParamFamily, interval, par, ...)
   as criterion which should be minimized.
 }
 \value{
-  An object of S3-class \code{"MCEstimate"} which inherits from 
-  class \code{"Estimate"}, a list with two components
-  \item{estimate}{ maximum likelihood parameter estimate }
-  \item{criterion}{ minimum value of the negative log-likelihood }
+  An object of S4-class \code{"MCEstimate"} which inherits from class 
+  \code{"Estimate"}.
 }
 %\references{  }
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
         Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}
-\seealso{\code{\link{ParamFamily-class}}, \code{\link{ParamFamily}}, code{\link{MCEstimator}},
+\seealso{\code{\link{ParamFamily-class}}, \code{\link{ParamFamily}}, 
+         \code{\link{MCEstimator}, \code{\link{MCEstimate-class}}},
 \code{\link[MASS]{fitdistr}} }
 \examples{
 ## (empirical) Data
@@ -53,12 +53,12 @@ library(MASS)
 
 ## comparison
 ## shape
-res$estimate[2]
+estimate(res)[2]
 ## rate
-1/res$estimate[1]
+1/estimate(res)[1]
 ## log-likelihood
 res1$loglik
 ## negative log-likelihood
-res$criterion
+criterion(res)
 }
 \keyword{univar}

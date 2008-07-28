@@ -23,6 +23,7 @@ exportClasses("asSemivar", "asRiskwithBias")
 exportClasses("L2GroupParamFamily", "L2LocationFamily", 
               "L2ScaleFamily", "L2LocationScaleFamily")
 exportClasses("NormType", "QFNorm", "InfoNorm", "SelfNorm")
+exportClasses("Estimate", "MCEstimate")
 exportMethods("type", "SymmCenter", "distrSymm",
               "distribution", "props", "props<-", "addProp<-", "main", "main<-",
               "nuisance", "nuisance<-", "trafo", "trafo<-", "modifyParam",
@@ -36,10 +37,13 @@ exportMethods("existsPIC")
 exportMethods("modifyModel")
 exportMethods("norm",  "QuadForm<-", "QuadForm", "fct", 
               "fct<-", "normtype", "normtype<-")
-S3method(print, Estimate)
+exportMethods("name", "name<-", 
+              "estimate", 
+              "Infos", "Infos<-", "addInfo<-",
+              "criterion", "criterion<-")
 export("PosDefSymmMatrix","PosSemDefSymmMatrix")
 export("distrModOptions", "getdistrModOption",
-       "MCEstimator", "MLEstimator", "MDEstimator")
+       "Estimator", "MCEstimator", "MLEstimator", "MDEstimator")
 export("NoSymmetry", "EllipticalSymmetry", "SphericalSymmetry",
        "NonSymmetric", "EvenSymmetric", "OddSymmetric",
        "DistrSymmList", "FunSymmList") 

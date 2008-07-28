@@ -90,3 +90,14 @@ setMethod("show", "fiHampel",
         cat("risk type:\t", object@type, "\n")
         cat("bound:\t", object@bound, "\n")
     })
+
+setMethod("show", "Estimate", 
+    function(object){
+        cat(paste("An object of class", dQuote(class(object)), "\n"))
+        cat("estimate:\n")
+        print(object@estimate)
+        if(nrow(object@Infos) > 0){
+          cat("Infos:\n")
+          print(object@Infos)
+        }
+    })
