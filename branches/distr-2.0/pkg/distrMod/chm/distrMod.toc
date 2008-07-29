@@ -90,6 +90,14 @@
 <param name="Local" value="asUnOvShoot-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="asvar">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="asvar,Estimate-method">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="asymmetricBias">
 <param name="Local" value="asymmetricBias.html">
 </OBJECT>
@@ -780,6 +788,14 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="RiskType-class">
 <param name="Local" value="RiskType-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="samplesize">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="samplesize,Estimate-method">
+<param name="Local" value="Estimate-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="SelfNorm">

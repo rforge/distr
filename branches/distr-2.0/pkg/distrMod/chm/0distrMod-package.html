@@ -56,7 +56,9 @@ maximum likelihood or minimum distance estimators for probability models.
 <p>
 <pre>
 
+##########################
 ProbFamily classes
+##########################
 slots: [&lt;name&gt;(&lt;class&gt;)] 
 name(character), distribution(Distribution),
 distrSym(DistributionSymmetry), props(character)
@@ -65,14 +67,36 @@ distrSym(DistributionSymmetry), props(character)
 |&gt;"ParamFamily"
 additional slots:
 param(ParamFamParameter), modifyParam(function)
+|&gt;|&gt;"L2ParamFamily"
+additional slots:
+L2deriv(EuclRandVarList), L2deriv.fct(function), 
+L2derivSymm(FunSymmList), L2derivDistr(DistrList),
+L2derivDistrSymm(DistrSymmList), FisherInfo(PosSemDefSymmMatrix),
+FisherInfo.fct(function)
+|&gt;|&gt;|&gt;"L2GroupParamFamily"
+additional slots:
+LogDeriv(function)
+|&gt;|&gt;|&gt;|&gt;"L2LocationFamily"
+|&gt;|&gt;|&gt;|&gt;"L2ScaleFamily"
+|&gt;|&gt;|&gt;|&gt;"L2LocationScaleFamily"
 
+##########################
+ParamFamParameter
+##########################
 "ParamFamParameter" is subclass of class "Parameter" of package "distr".
 Additional slots:
 main(numeric), nuisance(OptionalNumeric), trafo(matrix)
 
+##########################
+Class unions
+##########################
 "OptionalNumeric" = union("numeric", "NULL")
+"OptionalMatrix" = union("matrix", "NULL")
+"MatrixorFunction" = union("matrix", "OptionalFunction")
 
+##########################
 Symmetry classes
+##########################
 slots:
 type(character), SymmCenter(ANY)
 
@@ -80,6 +104,104 @@ type(character), SymmCenter(ANY)
 |&gt;"NoSymmetry"
 |&gt;"EllipticalSymmetry"
 |&gt;|&gt;"SphericalSymmetry"
+|&gt;"DistributionSymmetry"
+|&gt;"FunctionSymmetry"
+|&gt;|&gt;"NonSymmetric"
+|&gt;|&gt;"EvenSymmetric"
+|&gt;|&gt;"OddSymmetric"
+
+list thereof
+"DistrSymmList"
+"FunSymmList"
+
+##########################
+Matrix classes
+##########################
+slots:
+none
+"PosSemDefSymmMatrix" is subclass of class "matrix" of package "base".
+|&gt;"PosDefSymmMatrix"
+
+
+##########################
+Norm Classes
+##########################
+slots:
+name(character), fct(function)
+
+"NormType"
+|&gt;"QFNorm"
+Additional slots:
+QuadForm(PosSemDefSymmMatrix)
+|&gt;|&gt;"InfoNorm"
+|&gt;|&gt;"SelfNorm"
+
+##########################
+Bias Classes
+##########################
+slots:
+name(character)
+
+"BiasType"
+|&gt;"symmetricBias"
+|&gt;"onesidedBias"
+Additional slots:
+sign(numeric)
+|&gt;"asymmetricBias", 
+Additional slots:
+nu(numeric)
+
+##########################
+Risk Classes
+##########################
+slots:
+type(character)
+
+"RiskType"
+|&gt;"asRisk"
+|&gt;|&gt;"asCov"
+|&gt;|&gt;"trAsCov"
+|&gt;"fiRisk"
+|&gt;|&gt;"fiCov"
+|&gt;|&gt;"trfiCov"
+|&gt;|&gt;"fiHampel"
+Additional slots:
+bound(numeric)
+|&gt;|&gt;"fiMSE"
+|&gt;|&gt;"fiBias"
+|&gt;|&gt;"fiUnOvShoot"
+Additional slots:
+width(numeric)
+
+Risk with Bias:
+"asRiskwithBias"
+slots: biastype(BiasType), normtype(NormType),
+|&gt;"asHampel"
+Additional slots:
+bound(numeric)
+|&gt;"asBias"
+|&gt;"asGRisk"
+|&gt;|&gt;"asMSE"
+|&gt;|&gt;"asUnOvShoot"
+Additional slots:
+width(numeric)
+|&gt;|&gt;"asSemivar"
+
+
+##########################
+Estimate Classes
+##########################
+slots:
+name(character), estimate(ANY),
+samplesize(numeric), asvar(OptionalMatrix),
+Infos(matrix)
+
+"Estimate"
+|&gt;"MCEstimate", 
+Additional slots:
+criterion(numeric)
+
+
 </pre>
 </p>
 
