@@ -24,6 +24,10 @@
     \item{\code{Infos}:}{ object of class \code{"matrix"}
       with two columns named \code{method} and \code{message}:
       additional informations. }
+    \item{\code{asvar}:}{ object of class \code{"OptionalMatrix"}
+      which may contain the asymptotic (co)variance of the estimator. }
+    \item{\code{samplesize}:}{ object of class \code{"numeric"} ---
+      the samplesize at which the estimate was evaluated. }
   }
 }
 \section{Extends}{

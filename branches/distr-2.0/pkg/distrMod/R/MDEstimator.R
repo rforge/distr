@@ -13,3 +13,4 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist, dist.name,
 
     return(res)
 }
+

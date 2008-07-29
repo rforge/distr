@@ -41,6 +41,6 @@ MLEstimator <- function(x, ParamFamily, interval, par, Infos, ...){
                 interval = interval, par = par, ...)
     names(res@criterion) <- "negative log-likelihood"
     res@name <- "Maximum likelihood estimate"
-
+    res@asvar <- FisherInfo(ParamFamily, param = res@estimate)
     return(res)
 }

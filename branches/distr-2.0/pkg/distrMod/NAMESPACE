@@ -40,7 +40,8 @@ exportMethods("norm",  "QuadForm<-", "QuadForm", "fct",
 exportMethods("name", "name<-", 
               "estimate", 
               "Infos", "Infos<-", "addInfo<-",
-              "criterion", "criterion<-")
+              "criterion", "criterion<-",
+              "samplesize", "asvar")
 export("PosDefSymmMatrix","PosSemDefSymmMatrix")
 export("distrModOptions", "getdistrModOption",
        "Estimator", "MCEstimator", "MLEstimator", "MDEstimator")

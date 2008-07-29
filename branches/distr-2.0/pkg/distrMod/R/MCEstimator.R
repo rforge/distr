@@ -5,6 +5,11 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name, interval, par,
                         Infos, ...){
     if(!is.numeric(x))
       stop(gettext("'x' has to be a numeric vector"))
+    
+    if(is.null(dim(x)))
+       samplesize <- length(x)
+    else samplesize <- dim(x)[2]
+    
     if(!is(ParamFamily, "ParamFamily"))
       stop(gettext("'ParamFamily' has to be of class 'ParamFamily'"))
     if(!is.function(criterion))
@@ -47,5 +52,5 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name, interval, par,
     }
 
     new("MCEstimate", name = est.name, estimate = theta, criterion = crit,
-        Infos = Infos)
+         Infos = Infos, samplesize = samplesize)
 }

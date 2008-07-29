@@ -14,6 +14,14 @@
 <param name="Local" value="0distrMod-package.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="addInfo<-">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="addInfo<-,Estimate-method">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="addProp<-">
 <param name="Local" value="ProbFamily-class.html">
 </OBJECT>
@@ -138,6 +146,22 @@
 <param name="Local" value="L2ParamFamily-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="criterion">
+<param name="Local" value="MCEstimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="criterion,MCEstimate-method">
+<param name="Local" value="MCEstimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="criterion<-">
+<param name="Local" value="MCEstimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="criterion<-,MCEstimate-method">
+<param name="Local" value="MCEstimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="dimension,ParamFamParameter-method">
 <param name="Local" value="ParamFamParameter-class.html">
 </OBJECT>
@@ -196,6 +220,22 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="EllipticalSymmetry-class">
 <param name="Local" value="EllipticalSymmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="estimate">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="estimate,Estimate-method">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Estimate-class">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Estimator">
+<param name="Local" value="Estimator.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="EuclideanNorm">
@@ -330,6 +370,22 @@
 <param name="Local" value="QFnorm-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Infos">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Infos,Estimate-method">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Infos<-">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Infos<-,Estimate-method">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="isKerAinKerB">
 <param name="Local" value="isKerAinKerB.html">
 </OBJECT>
@@ -438,6 +494,10 @@
 <param name="Local" value="MatrixorFunction-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="MCEstimate-class">
+<param name="Local" value="MCEstimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="MCEstimator">
 <param name="Local" value="MCEstimator.html">
 </OBJECT>
@@ -474,6 +534,10 @@
 <param name="Local" value="BiasType-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="name,Estimate-method">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="name,NormType-method">
 <param name="Local" value="NormType-class.html">
 </OBJECT>
@@ -484,6 +548,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="name<-,BiasType-method">
 <param name="Local" value="BiasType-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="name<-,Estimate-method">
+<param name="Local" value="Estimate-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="name<-,NormType-method">
@@ -728,6 +796,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="show,asUnOvShoot-method">
 <param name="Local" value="asUnOvShoot-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="show,Estimate-method">
+<param name="Local" value="Estimate-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="show,fiHampel-method">
@@ -987,6 +1059,10 @@
 <param name="Local" value="0distrMod-package.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Estimate-class.">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Family of probability measures">
 <param name="Local" value="ProbFamily-class.html">
 </OBJECT>
@@ -1019,15 +1095,19 @@
 <param name="Local" value="distrModOptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Function to compute maximum likelihood estimators ">
+<param name="Name" value="Function to compute estimates ">
+<param name="Local" value="Estimator.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Function to compute maximum likelihood estimates ">
 <param name="Local" value="MLEstimator.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Function to compute minimum criterion estimators ">
+<param name="Name" value="Function to compute minimum criterion estimates ">
 <param name="Local" value="MCEstimator.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Function to compute minimum distance estimators ">
+<param name="Name" value="Function to compute minimum distance estimates ">
 <param name="Local" value="MDEstimator.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -1237,6 +1317,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="MatrixorFunction-class">
 <param name="Local" value="MatrixorFunction-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="MCEstimate-class.">
+<param name="Local" value="MCEstimate-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Methods for Function existsPIC in Package `distrMod'">

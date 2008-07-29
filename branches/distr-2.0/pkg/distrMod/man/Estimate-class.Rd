@@ -7,6 +7,10 @@
 \alias{estimate,Estimate-method}
 \alias{Infos}
 \alias{Infos,Estimate-method}
+\alias{samplesize}
+\alias{samplesize,Estimate-method}
+\alias{asvar}
+\alias{asvar,Estimate-method}
 \alias{Infos<-}
 \alias{Infos<-,Estimate-method}
 \alias{addInfo<-}
@@ -29,6 +33,10 @@
     \item{\code{Infos}:}{ object of class \code{"matrix"}
       with two columns named \code{method} and \code{message}:
       additional informations. }
+    \item{\code{asvar}:}{ object of class \code{"OptionalMatrix"}
+      which may contain the asymptotic (co)variance of the estimator. }
+    \item{\code{samplesize}:}{ object of class \code{"numeric"} ---
+      the samplesize at which the estimate was evaluated. }
   }
 }
 \section{Methods}{
@@ -41,6 +49,12 @@
 
     \item{estimate}{\code{signature(object = "Estimate")}: 
       accessor function for slot \code{estimate}. }
+
+    \item{samplesize}{\code{signature(object = "Estimate")}: 
+      accessor function for slot \code{samplesize}. }
+
+    \item{asvar}{\code{signature(object = "Estimate")}: 
+      accessor function for slot \code{asvar}. }
 
     \item{Infos}{\code{signature(object = "Estimate")}: 
       accessor function for slot \code{Infos}. }

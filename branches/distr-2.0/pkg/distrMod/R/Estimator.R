@@ -1,7 +1,7 @@
 ###############################################################################
 ## Function to compute estimates
 ###############################################################################
-Estimator <- function(x, estimator, name, Infos, ...){
+Estimator <- function(x, estimator, name, Infos, asvar = NULL, ...){
     if(missing(name))
         name <- "Some estimator"
 
@@ -13,6 +13,10 @@ Estimator <- function(x, estimator, name, Infos, ...){
         colnames(Infos) <- c("method", "message")
     }
 
+    if(is.null(dim(x)))
+         samplesize <- length(x)
+    else samplesize <- dim(x)[2]
+
     new("Estimate", name = name, estimate = estimator(x, ...),
-        Infos = Infos)
+        Infos = Infos, samplesize = samplesize, asvar = asvar)
 }

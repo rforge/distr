@@ -7,13 +7,14 @@
   estimates.
 }
 \usage{
-Estimator(x, estimator, name, Infos, ...)
+Estimator(x, estimator, name, Infos, asvar = NULL, ...)
 }
 \arguments{
   \item{x}{ (empirical) data }
   \item{estimator}{ function: estimator to be evaluated on \code{x}. }
   \item{name}{ optional name for estimator. }
   \item{Infos}{ character: optional informations about estimator }
+  \item{asvar}{ OptionalMatrix: optionally the asymptotic (co)variance of the estimator }
   \item{\dots}{ further arguments to \code{estimator}. }
 }
 \details{

@@ -29,6 +29,11 @@ setMethod("addInfo<-", "Estimate",
         object 
     })
 
+setMethod("samplesize", "Estimate", function(object) object@samplesize)
+setMethod("asvar", "Estimate", function(object) object@asvar)
+
 setMethod("criterion", "MCEstimate", function(object) object@criterion)
 setReplaceMethod("criterion", "MCEstimate", 
                   function(object, value) {object@criterion <- value; object})
+
+

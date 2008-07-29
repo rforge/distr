@@ -156,3 +156,9 @@ if(!isGeneric("criterion")){
 if(!isGeneric("criterion<-")){
     setGeneric("criterion<-", function(object, value) standardGeneric("criterion<-"))
 }
+if(!isGeneric("samplesize")){
+    setGeneric("samplesize", function(object) standardGeneric("samplesize"))
+}
+if(!isGeneric("asvar")){
+    setGeneric("asvar", function(object) standardGeneric("asvar"))
+}

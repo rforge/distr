@@ -26,7 +26,9 @@ URL: \tab http://distr.r-forge.r-project.org/\cr
 \section{Classes}{
 \preformatted{
 
+##########################
 ProbFamily classes
+##########################
 slots: [<name>(<class>)] 
 name(character), distribution(Distribution),
 distrSym(DistributionSymmetry), props(character)
@@ -35,14 +37,36 @@ distrSym(DistributionSymmetry), props(character)
 |>"ParamFamily"
 additional slots:
 param(ParamFamParameter), modifyParam(function)
+|>|>"L2ParamFamily"
+additional slots:
+L2deriv(EuclRandVarList), L2deriv.fct(function), 
+L2derivSymm(FunSymmList), L2derivDistr(DistrList),
+L2derivDistrSymm(DistrSymmList), FisherInfo(PosSemDefSymmMatrix),
+FisherInfo.fct(function)
+|>|>|>"L2GroupParamFamily"
+additional slots:
+LogDeriv(function)
+|>|>|>|>"L2LocationFamily"
+|>|>|>|>"L2ScaleFamily"
+|>|>|>|>"L2LocationScaleFamily"
 
+##########################
+ParamFamParameter
+##########################
 "ParamFamParameter" is subclass of class "Parameter" of package "distr".
 Additional slots:
 main(numeric), nuisance(OptionalNumeric), trafo(matrix)
 
+##########################
+Class unions
+##########################
 "OptionalNumeric" = union("numeric", "NULL")
+"OptionalMatrix" = union("matrix", "NULL")
+"MatrixorFunction" = union("matrix", "OptionalFunction")
 
+##########################
 Symmetry classes
+##########################
 slots:
 type(character), SymmCenter(ANY)
 
@@ -50,6 +74,104 @@ type(character), SymmCenter(ANY)
 |>"NoSymmetry"
 |>"EllipticalSymmetry"
 |>|>"SphericalSymmetry"
+|>"DistributionSymmetry"
+|>"FunctionSymmetry"
+|>|>"NonSymmetric"
+|>|>"EvenSymmetric"
+|>|>"OddSymmetric"
+
+list thereof
+"DistrSymmList"
+"FunSymmList"
+
+##########################
+Matrix classes
+##########################
+slots:
+none
+"PosSemDefSymmMatrix" is subclass of class "matrix" of package "base".
+|>"PosDefSymmMatrix"
+
+
+##########################
+Norm Classes
+##########################
+slots:
+name(character), fct(function)
+
+"NormType"
+|>"QFNorm"
+Additional slots:
+QuadForm(PosSemDefSymmMatrix)
+|>|>"InfoNorm"
+|>|>"SelfNorm"
+
+##########################
+Bias Classes
+##########################
+slots:
+name(character)
+
+"BiasType"
+|>"symmetricBias"
+|>"onesidedBias"
+Additional slots:
+sign(numeric)
+|>"asymmetricBias", 
+Additional slots:
+nu(numeric)
+
+##########################
+Risk Classes
+##########################
+slots:
+type(character)
+
+"RiskType"
+|>"asRisk"
+|>|>"asCov"
+|>|>"trAsCov"
+|>"fiRisk"
+|>|>"fiCov"
+|>|>"trfiCov"
+|>|>"fiHampel"
+Additional slots:
+bound(numeric)
+|>|>"fiMSE"
+|>|>"fiBias"
+|>|>"fiUnOvShoot"
+Additional slots:
+width(numeric)
+
+Risk with Bias:
+"asRiskwithBias"
+slots: biastype(BiasType), normtype(NormType),
+|>"asHampel"
+Additional slots:
+bound(numeric)
+|>"asBias"
+|>"asGRisk"
+|>|>"asMSE"
+|>|>"asUnOvShoot"
+Additional slots:
+width(numeric)
+|>|>"asSemivar"
+
+
+##########################
+Estimate Classes
+##########################
+slots:
+name(character), estimate(ANY),
+samplesize(numeric), asvar(OptionalMatrix),
+Infos(matrix)
+
+"Estimate"
+|>"MCEstimate", 
+Additional slots:
+criterion(numeric)
+
+
 }
 }
 \section{Methods}{

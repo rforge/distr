@@ -96,6 +96,12 @@ setMethod("show", "Estimate",
         cat(paste("An object of class", dQuote(class(object)), "\n"))
         cat("estimate:\n")
         print(object@estimate)
+        cat("samplesize:\n")
+        print(object@samplesize)
+        if(!is.null(object@asvar)){
+           cat("asymptotic (co)variance\n")
+           print(object@asvar)
+          }
         if(nrow(object@Infos) > 0){
           cat("Infos:\n")
           print(object@Infos)

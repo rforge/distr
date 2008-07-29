@@ -33,6 +33,7 @@ QuadFormNorm <- function(x, A) sqrt(colSums(x*(A %*% x)))
 ## optional numeric
 setClassUnion("OptionalNumeric", c("numeric", "NULL"))
 setClassUnion("MatrixorFunction", c("matrix", "OptionalFunction"))
+setClassUnion("OptionalMatrix", c("numeric", "matrix"))
 
 
 ################################
@@ -410,9 +411,13 @@ setClass("asSemivar",
 setClass("Estimate", 
          representation(name = "character",
                         estimate = "ANY",
+                        samplesize = "numeric",
+                        asvar = "OptionalMatrix",
                         Infos = "matrix"),
          prototype(name = "Estimate",
                    estimate = numeric(0),
+                   asvar = NULL,
+                   samplesize = 1,
                    Infos = matrix(c(character(0),character(0)), ncol=2,
                                   dimnames=list(character(0), c("method", "message")))),
          validity = function(object){

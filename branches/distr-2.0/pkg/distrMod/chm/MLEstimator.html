@@ -1,4 +1,4 @@
-<html><head><title>Function to compute maximum likelihood estimators</title>
+<html><head><title>Function to compute maximum likelihood estimates</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
 </head>
@@ -6,18 +6,18 @@
 
 <table width="100%"><tr><td>MLEstimator(distrMod)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   MLEstimator">
-<param name="keyword" value=" Function to compute maximum likelihood estimators">
+<param name="keyword" value=" Function to compute maximum likelihood estimates">
 </object>
 
 
-<h2>Function to compute maximum likelihood estimators</h2>
+<h2>Function to compute maximum likelihood estimates</h2>
 
 
 <h3>Description</h3>
 
 <p>
 The function <code>MLEstimator</code> provides a general way to compute 
-maximum likelihood estimators for a given parametric family of 
+maximum likelihood estimates for a given parametric family of 
 probability measures. This is done by calling the function 
 <code>MCEstimator</code> which minimizes the negative log-Likelihood.
 </p>
@@ -26,7 +26,7 @@ probability measures. This is done by calling the function
 <h3>Usage</h3>
 
 <pre>
-MLEstimator(x, ParamFamily, interval, par, ...)
+MLEstimator(x, ParamFamily, interval, par, Infos, ...)
 </pre>
 
 
@@ -46,6 +46,9 @@ interval used by <code>optimize</code> </td></tr>
 <td>
 initial parameter values used by <code>optim</code>; if <code>missing</code>
 the parameter of <code>ParamFamily</code> are used. </td></tr>
+<tr valign="top"><td><code>Infos</code></td>
+<td>
+character: optional informations about estimator </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 further arguments to <code>criterion</code> or <code>optimize</code> 
@@ -63,17 +66,8 @@ as criterion which should be minimized.
 <h3>Value</h3>
 
 <p>
-An object of S3-class <code>"MCEstimate"</code> which inherits from 
-class <code>"Estimate"</code>, a list with two components
-</p>
-<table summary="R argblock">
-<tr valign="top"><td><code>estimate</code></td>
-<td>
-maximum likelihood parameter estimate </td></tr>
-<tr valign="top"><td><code>criterion</code></td>
-<td>
-minimum value of the negative log-likelihood </td></tr>
-</table>
+An object of S4-class <code>"MCEstimate"</code> which inherits from class 
+<code>"Estimate"</code>.</p>
 
 <h3>Author(s)</h3>
 
@@ -86,7 +80,8 @@ Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ru
 <h3>See Also</h3>
 
 <p>
-<code><a href="ParamFamily-class.html">ParamFamily-class</a></code>, <code><a href="ParamFamily.html">ParamFamily</a></code>, code{<a href="MCEstimator.html">MCEstimator</a>},
+<code><a href="ParamFamily-class.html">ParamFamily-class</a></code>, <code><a href="ParamFamily.html">ParamFamily</a></code>, 
+<code><a href="MCEstimator.html">MCEstimator</a>, \code{<a href="MCEstimate-class.html">MCEstimate-class</a>}</code>,
 <code><a onclick="findlink('MASS', 'fitdistr.html')" style="text-decoration: underline; color: blue; cursor: hand">fitdistr</a></code>
 </p>
 
@@ -109,13 +104,13 @@ library(MASS)
 
 ## comparison
 ## shape
-res$estimate[2]
+estimate(res)[2]
 ## rate
-1/res$estimate[1]
+1/estimate(res)[1]
 ## log-likelihood
 res1$loglik
 ## negative log-likelihood
-res$criterion
+criterion(res)
 </pre>
 
 <script Language="JScript">

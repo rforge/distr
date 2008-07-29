@@ -21,6 +21,8 @@ DistrSymmList.html
 DistributionSymmetry-class.html
 EllipticalSymmetry-class.html
 EllipticalSymmetry.html
+Estimate-class.html
+Estimator.html
 EvenSymmetric-class.html
 EvenSymmetric.html
 ExpScaleFamily.html
@@ -40,6 +42,7 @@ L2ParamFamily.html
 L2ScaleFamily-class.html
 L2ScaleFamily.html
 LnormScaleFamily.html
+MCEstimate-class.html
 MCEstimator.html
 MDEstimator.html
 MLEstimator.html
