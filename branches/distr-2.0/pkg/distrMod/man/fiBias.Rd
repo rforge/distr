@@ -23,4 +23,4 @@ function(){ new("fiBias") }
 }
 \concept{finite-sample bias}
 \concept{risk}
-\keyword{}
+\keyword{robust}

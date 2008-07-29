@@ -23,4 +23,4 @@ function(SymmCenter = 0){
 }
 \concept{even function}
 \concept{symmetry}
-\keyword{}
+\keyword{math}

@@ -23,4 +23,4 @@ function(SymmCenter = 0){
 }
 \concept{odd function}
 \concept{symmetry}
-\keyword{}
+\keyword{math}

@@ -35,4 +35,4 @@ function(width = 1.960){ new("fiUnOvShoot", width = width) }
 }
 \concept{finite-sample risk}
 \concept{risk}
-\keyword{}
+\keyword{robust}

@@ -31,4 +31,4 @@ function(){ new("QFNorm") }
 }
 \concept{asymptotic covariance}
 \concept{risk}
-\keyword{}
+\keyword{math}

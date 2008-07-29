@@ -22,4 +22,4 @@ function(){ new("trFiCov") }
 }
 \concept{finite-sample covariance}
 \concept{risk}
-\keyword{}
+\keyword{robust}

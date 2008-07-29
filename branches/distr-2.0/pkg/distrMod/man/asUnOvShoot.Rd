@@ -30,4 +30,4 @@ function(width = 1.960, biastype = symmetricBias()){
 }
 \concept{asymptotic risk}
 \concept{risk}
-\keyword{}
+\keyword{robust}

@@ -34,4 +34,4 @@ function(bound = Inf, biastype = symmetricBias(), normtype = NormType()){
 }
 \concept{Hampel risk}
 \concept{risk}
-\keyword{}
+\keyword{robust}

@@ -17,4 +17,4 @@ NonSymmetric()
 function(){ new("NonSymmetric") }
 }
 \concept{symmetry}
-\keyword{}
+\keyword{math}

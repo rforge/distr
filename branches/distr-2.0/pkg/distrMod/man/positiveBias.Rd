@@ -32,4 +32,4 @@ function(){ new("onesidedBias", name = "positive Bias", sign = 1) }
 }
 \concept{bias}
 \concept{risk}
-\keyword{}
+\keyword{robust}

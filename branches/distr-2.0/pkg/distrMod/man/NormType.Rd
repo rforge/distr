@@ -26,4 +26,4 @@ NormType()
 }
 \concept{asymptotic covariance}
 \concept{risk}
-\keyword{}
+\keyword{math}

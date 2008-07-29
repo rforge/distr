@@ -32,4 +32,4 @@ function(){ new("symmetricBias", name = "symmetric Bias") }
 }
 \concept{bias}
 \concept{risk}
-\keyword{}
+\keyword{robust}

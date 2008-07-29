@@ -23,4 +23,4 @@ function(){ new("fiCov") }
 }
 \concept{finite-sample covariance}
 \concept{risk}
-\keyword{}
+\keyword{robust}
