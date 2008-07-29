@@ -18,17 +18,17 @@ setMethod("initialize", "Gumbel",
                         p0 <- p
                         p0[.isEqual01(p)] <- 0.5
                         q0 <- qgumbel(p0, loc = loc1, scale = scale1, ...)
-                        q0[.isEqual01(p)] <- sign([.isEqual01(p)]-0.5)*Inf
+                        q0[.isEqual01(p)] <- sign(p[.isEqual01(p)]-0.5)*Inf
                         return(q0)  
                      }
-        body(.Object@q) <- substitute({                         
+        body(.Object@q) <- substitute({
                               ## P.R.: changed to vectorized form 
                               p0 <- p
                               p0[.isEqual01(p)] <- 0.5
                               q0 <- qgumbel(p0, loc = loc1, 
                                             scale = scale1, ...)
-                              q0[.isEqual01(p)] <- sign([.isEqual01(p)]-0.5)*Inf
-                              return(q0)  
+                              q0[.isEqual01(p)] <- sign(p[.isEqual01(p)]-0.5)*Inf
+                              return(q0)
                                },
                               list(loc1 = loc, scale1 = scale))
         .Object@.withSim   <- FALSE
