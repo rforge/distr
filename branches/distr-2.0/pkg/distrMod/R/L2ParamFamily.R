@@ -129,16 +129,13 @@ setMethod("checkL2deriv", "L2ParamFamily",
 setMethod("modifyModel", signature(model = "L2ParamFamily", param = "ParamFamParameter"), 
           function(model, param, ...){
           existsPIC(M <- L2ParamFamily(name = model@name, 
-                        distribution = model@modifyParam(main(param)), 
-                        distrSymm = model@distrSymm, 
+                        distribution = model@modifyParam(main(param)),
                         param = param, 
                         props = model@props,
                         modifyParam = model@modifyParam,
                         L2deriv.fct = model@L2deriv.fct,
-                        L2derivSymm = model@L2derivSymm, 
-                        L2derivDistr = model@L2derivDistr, 
-                        L2derivDistrSymm = model@L2derivDistrSymm, 
-                        FisherInfo.fct = model@FisherInfo.fct))
+                        FisherInfo.fct = model@FisherInfo.fct,
+                        FisherInfo = model@FisherInfo.fct(param)))
           return(M)
           })
 
