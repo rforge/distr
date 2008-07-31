@@ -62,6 +62,7 @@
 \alias{^,AcDcLcDistribution,Dirac-method}
 \alias{exp,UnivarLebDecDistribution-method}
 \alias{sign,UnivarLebDecDistribution-method}
+\alias{sign,AcDcLcDistribution-method}
 
 \title{Class "UnivarLebDecDistribution"}
 \description{\code{UnivarLebDecDistribution}-class is a class to formalize
@@ -133,6 +134,7 @@ class \code{"Distribution"} by class \code{"UnivariateDistribution"}.
     \code{abs}{\code{signature(x = "UnivarLebDecDistribution")}:  exact image distribution of \code{abs(x)}.}
     \code{exp}{\code{signature(x = "UnivarLebDecDistribution")}:  exact image distribution of \code{exp(x)}.}
     \code{sign}{\code{signature(x = "UnivarLebDecDistribution")}:  exact image distribution of \code{sign(x)}.}
+    \code{sign}{\code{signature(x = "AcDcLcDistribution")}:  exact image distribution of \code{sign(x)}.}
     \code{log}{\code{signature(x = "UnivarLebDecDistribution")}:  exact image distribution of \code{log(x)}.}
     \code{log10}{\code{signature(x = "UnivarLebDecDistribution")}:  exact image distribution of \code{log10(x)}.}
     \item{-}{\code{signature(e1 = "UnivarLebDecDistribution")}: application of `-' to this distribution}
@@ -211,7 +213,6 @@ in particular methods for \code{"*"}, \code{"/"},
 \code{\link{UnivarMixingDistribution-class}}
 \code{\link{DiscreteDistribution-class}}
 \code{\link{AbscontDistribution-class}}
-\code{\link{AcDcLcDistribution-class}}
 \code{\link{simplifyD}}
 \code{\link{flat.LCD}}
 }
