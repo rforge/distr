@@ -315,6 +315,8 @@ if(!isGeneric("lgamma"))
    setGeneric("lgamma")
 if(!isGeneric("gamma"))
    setGeneric("gamma")
+if(!isGeneric("sign"))
+   setGeneric("sign") #, function(x, base) standardGeneric("log"))
 
 
 ### new Generics from 2.0 on (in particular for Mixing Distributions)

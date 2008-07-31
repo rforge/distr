@@ -393,6 +393,11 @@ setMethod("log", "AbscontDistribution",
 setMethod("log10", "AbscontDistribution",
           function(x) log(x=x)/log(x=10))
 
+setMethod("sign", "AbscontDistribution",
+          function(x){ 
+       DiscreteDistribution(supp=c(-1,0,1), 
+              prob=c(p(x)(0), 0, p(x)(0, lower=FALSE)))                     
+          })
 
 
 

@@ -19,19 +19,19 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name, interval, par,
         criterion(Data, modifyParam(ParamFamily)(theta), ...)
     }
 
-    if(dimension(param(ParamFamily)) == 1){
+    if(length(param(ParamFamily)) == 1){
         res <- optimize(f = fun, interval = interval, Data = x, 
                       ParamFamily = ParamFamily, criterion = criterion, ...)
         theta <- res$minimum
         names(theta) <- names(main(ParamFamily))
         crit <- res$objectiv
     }else{
-        if(missing(par)) par <- main(ParamFamily)
+        if(missing(par)) par <- c(main(ParamFamily), nuisance(ParamFamily))
         if(is(par,"Estimate")) par <- estimate(par)
         res <- optim(par = par, fn = fun, Data = x, ParamFamily = ParamFamily, 
                       criterion = criterion, ...)
         theta <- res$par
-        names(theta) <- names(main(ParamFamily))
+        names(theta) <- c(names(main(ParamFamily)),names(nuisance(ParamFamily)))
         crit <- res$value
         if(missing(crit.name))
           names(crit) <- as.character(match.call()$criterion)
@@ -51,6 +51,10 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name, interval, par,
         colnames(Infos) <- c("method", "message")
     }
 
+    lmx <- length(main(ParamFamily))
+    lnx <- length(nuisance(ParamFamily))
+    nuis.idx <- if(lnx) lmx + 1:lnx else NULL 
+
     new("MCEstimate", name = est.name, estimate = theta, criterion = crit,
-         Infos = Infos, samplesize = samplesize)
+         Infos = Infos, samplesize = samplesize, nuis.idx = nuis.idx)
 }

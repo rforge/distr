@@ -46,9 +46,9 @@ L2LocationScaleFamily(loc = 0, scale = 1, name, centraldistribution = Norm(),
   from \code{L2deriv} using \code{E}.
   If \code{distrSymm} is missing, it is set to symmetry about \code{loc}.
   If \code{L2derivSymm} is missing, its location and scale components are set 
-  odd and even about \code{loc}, respectively.
+  to no symmetry , respectively.
   if \code{L2derivDistrSymm} is missing, its location and scale components are set 
-  to symmetry about \code{loc} and to no symmetry, respectively.
+  to no  symmetry, respectively.
 }
 \value{Object of class \code{"L2LocationScaleFamily"}}
 \references{

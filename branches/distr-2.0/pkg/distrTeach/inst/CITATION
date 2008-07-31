@@ -1,20 +1,20 @@
 citHeader("To cite package distrTeach in publications use:")
 
-citEntry(entry="Article",
-         title = "S4 Classes for Distributions",
+citEntry(entry = "TechReport",
          author = personList(as.person("P. Ruckdeschel"),
                         as.person("M. Kohl"),
                         as.person("T. Stabla"),
                         as.person("F. Camphausen")),
+         title = "{S4 Classes for Distributions---a manual for packages distr, distrSim, distrTEst, distrEx,
+                 distrMod, and distrTeach}",
          language = "English",
-         year = 2006,
-         journal      = "R News",
-         year         = 2006,
-         volume       = 6,
-         number       = 2,
-         pages        = "2--6",
-         month        = "May",
-         url = "http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/distr.pdf",
-         pdf          = "http://CRAN.R-project.org/doc/Rnews/Rnews_2006-2.pdf",
-textVersion = paste("Ruckdeschel, P., Kohl, M., Stabla, T., & Camphausen, F. (2006)",
-                    "S4 Classes for Distributions"))
+         institution="{Fraunhofer ITWM}",
+         month="July",
+         year="2008",
+         address="{Kaiserslautern, Germany}",
+         URL = "http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/*checkout*/pkg/distrDoc/inst/doc/distr.pdf?root=distr",
+         textVersion = paste("Ruckdeschel, P., Kohl, M., Stabla, T., & Camphausen, F. (2006): ",
+                       "S4 Classes for Distributions---a manual for packages distr, distrSim, distrTEst, distrEx, ",
+                        "distrMod, and distrTeach")
+         )
+

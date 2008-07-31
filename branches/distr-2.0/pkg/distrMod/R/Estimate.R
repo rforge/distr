@@ -37,3 +37,15 @@ setReplaceMethod("criterion", "MCEstimate",
                   function(object, value) {object@criterion <- value; object})
 
 
+setMethod("nuisance", "Estimate", function(object) { 
+      if(is.null(object@nuis.idx))
+         return(NULL)
+      else return (object@estimate[object@nuis.idx])    
+      })
+setMethod("main", "Estimate", function(object) { 
+      if(is.null(object@nuis.idx))
+         return(object@estimate)
+      else return (object@estimate[-object@nuis.idx])    
+      })
+
+

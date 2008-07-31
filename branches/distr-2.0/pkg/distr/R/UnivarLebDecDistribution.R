@@ -363,6 +363,14 @@ setMethod("log", "UnivarLebDecDistribution",
 setMethod("log10", "UnivarLebDecDistribution",
           function(x) log(x=x)/log(x=10))
 
+setMethod("sign", "UnivarLebDecDistribution",
+          function(x){ 
+          d0 <- d.discrete(as(x,UnivarLebDecDistribution))(0)
+          DiscreteDistribution(supp=c(-1,0,1), 
+              prob=c(p(x)(-getdistrOption("TruncQuantile")),
+                     d0,
+                     p(x)(getdistrOption("TruncQuantile"), lower=FALSE)))                     
+          })
 
 #######################
 

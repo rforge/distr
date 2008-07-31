@@ -1,3 +1,4 @@
+
 ### ---------------------------
 ### "multiple-purpose generics" --- 
 ###   for  
@@ -5,6 +6,22 @@
 ###      + stats/base function
 ###      + functional method
 ### ---------------------------
+
+### intentionally mask confint for additional ... argument P.R. 28-03-06
+
+confint <- function(object , ...)
+       {dots <- list(...)
+        mc <- match.call()[-1]
+        nmc <- names(as.list(mc))
+        mc0 <- as.list(mc)[!nmc %in% c("object", "parm", "level")]
+        arglist <- list(object = object)
+        if(hasArg(parm)) arglist <- c(arglist, parm = dots$"parm")
+        if(hasArg(level)) arglist <- c(arglist, level = dots$"level")
+        else arglist <- c(arglist, level = 0.95)   
+        if(length(mc0)) arglist <- c(arglist, mc0)
+        do.call(stats::confint, arglist)
+        }   
+
 
 ## access and replace methods
 #if(!isGeneric("param<-")){ 
@@ -162,3 +179,17 @@ if(!isGeneric("samplesize")){
 if(!isGeneric("asvar")){
     setGeneric("asvar", function(object) standardGeneric("asvar"))
 }
+if(!isGeneric("asvar<-")){
+    setGeneric("asvar<-", function(object, value) standardGeneric("asvar<-"))
+}
+if(!isGeneric("nuisance")){
+    setGeneric("nuisance", function(object,... ) standardGeneric("nuisance"))
+}
+if(!isGeneric("main")){
+    setGeneric("main", function(object,... ) standardGeneric("main"))
+}
+
+if(!isGeneric("confint")){
+    setGeneric("confint", function(object,... ) standardGeneric("confint"))
+}
+

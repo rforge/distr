@@ -98,6 +98,14 @@
 <param name="Local" value="Estimate-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="asvar<-">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="asvar<-,Estimate-method">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="asymmetricBias">
 <param name="Local" value="asymmetricBias.html">
 </OBJECT>
@@ -152,6 +160,22 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="checkL2deriv,L2ParamFamily-method">
 <param name="Local" value="L2ParamFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="confint">
+<param name="Local" value="confint-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="confint,ANY-method">
+<param name="Local" value="confint-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="confint,Estimate-method">
+<param name="Local" value="confint-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="confint-methods">
+<param name="Local" value="confint-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="criterion">
@@ -454,6 +478,10 @@
 <param name="Local" value="L2LocationScaleFamily-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="L2LocationUnknownScaleFamily">
+<param name="Local" value="L2LocationUnknownScaleFamily.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="L2ParamFamily">
 <param name="Local" value="L2ParamFamily.html">
 </OBJECT>
@@ -470,6 +498,10 @@
 <param name="Local" value="L2ScaleFamily-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="L2ScaleUnknownLocationFamily">
+<param name="Local" value="L2ScaleUnknownLocationFamily.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="length,ParamFamParameter-method">
 <param name="Local" value="ParamFamParameter-class.html">
 </OBJECT>
@@ -480,6 +512,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="main">
 <param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="main,Estimate-method">
+<param name="Local" value="Estimate-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="main,ParamFamily-method">
@@ -598,8 +634,16 @@
 <param name="Local" value="NormLocationScaleFamily.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="NormLocationUnknownScaleFamily">
+<param name="Local" value="NormLocationUnknownScaleFamily.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="NormScaleFamily">
 <param name="Local" value="NormScaleFamily.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="NormScaleUnknownLocationFamily">
+<param name="Local" value="NormScaleUnknownLocationFamily.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="NormType">
@@ -652,6 +696,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="nuisance">
 <param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="nuisance,Estimate-method">
+<param name="Local" value="Estimate-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="nuisance,ParamFamily-method">
@@ -736,6 +784,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="PosSemDefSymmMatrix-class">
 <param name="Local" value="PosDefSymmMatrix-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="print,Estimate-method">
+<param name="Local" value="Estimate-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="ProbFamily-class">
@@ -1223,6 +1275,10 @@
 <param name="Local" value="L2LocationScaleFamily.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for L2LocationScaleFamily-class in nuisance situation">
+<param name="Local" value="L2ScaleUnknownLocationFamily.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for L2ParamFamily-class">
 <param name="Local" value="L2ParamFamily.html">
 </OBJECT>
@@ -1247,8 +1303,16 @@
 <param name="Local" value="NormLocationFamily.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for normal location families with unknown scale as nuisance">
+<param name="Local" value="NormLocationUnknownScaleFamily.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for normal scale families">
 <param name="Local" value="NormScaleFamily.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for normal scale families with unknown location as nuisance">
+<param name="Local" value="NormScaleUnknownLocationFamily.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for NormType-class">
@@ -1337,6 +1401,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="MCEstimate-class.">
 <param name="Local" value="MCEstimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Methods for function confint in Package `distrMod' ">
+<param name="Local" value="confint-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Methods for Function existsPIC in Package `distrMod'">

@@ -37,11 +37,21 @@ MLEstimator <- function(x, ParamFamily, interval, par, Infos, ...){
         return(res)
     }
 
+    lmx <- length(main(ParamFamily))
+    lnx <- length(nuisance(ParamFamily))
+    idx <- 1:lmx
+    
     res <- MCEstimator(x = x, ParamFamily = ParamFamily, criterion = negLoglikelihood,
                 interval = interval, par = par, ...)
     names(res@criterion) <- "negative log-likelihood"
+    if(!is.null(res@nuis.idx))
+       idx <- -res@nuis.idx
+    
     res@name <- "Maximum likelihood estimate"
     param <- ParamFamParameter(name = names(res@estimate), main = res@estimate)
-    res@asvar <- solve(FisherInfo(ParamFamily, param = param))
+    
+    asvar <- solve(FisherInfo(ParamFamily, param = param))[idx,idx]
+    
+    res@asvar <- asvar
     return(res)
 }

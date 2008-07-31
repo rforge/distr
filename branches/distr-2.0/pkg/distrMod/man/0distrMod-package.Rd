@@ -55,7 +55,7 @@ ParamFamParameter
 ##########################
 "ParamFamParameter" is subclass of class "Parameter" of package "distr".
 Additional slots:
-main(numeric), nuisance(OptionalNumeric), trafo(matrix)
+main(numeric), nuisance(OptionalNumeric), trafo(MatrixorFunction)
 
 ##########################
 Class unions
@@ -164,7 +164,7 @@ Estimate Classes
 slots:
 name(character), estimate(ANY),
 samplesize(numeric), asvar(OptionalMatrix),
-Infos(matrix)
+Infos(matrix), nuis.idx(OptionalNumeric)
 
 "Estimate"
 |>"MCEstimate", 

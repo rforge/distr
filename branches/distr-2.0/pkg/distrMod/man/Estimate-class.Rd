@@ -11,11 +11,16 @@
 \alias{samplesize,Estimate-method}
 \alias{asvar}
 \alias{asvar,Estimate-method}
+\alias{asvar<-}
+\alias{asvar<-,Estimate-method}
+\alias{nuisance,Estimate-method}
+\alias{main,Estimate-method}
 \alias{Infos<-}
 \alias{Infos<-,Estimate-method}
 \alias{addInfo<-}
 \alias{addInfo<-,Estimate-method}
 \alias{show,Estimate-method}
+\alias{print,Estimate-method}
 
 \title{Estimate-class.}
 \description{Class of estimates.}
@@ -37,6 +42,8 @@
       which may contain the asymptotic (co)variance of the estimator. }
     \item{\code{samplesize}:}{ object of class \code{"numeric"} ---
       the samplesize at which the estimate was evaluated. }
+    \item{\code{nuis.idx}:}{ object of class \code{"OptionalNumeric"}: 
+     indices of \code{estimate} belonging to the nuisance part}
   }
 }
 \section{Methods}{
@@ -55,12 +62,16 @@
 
     \item{asvar}{\code{signature(object = "Estimate")}: 
       accessor function for slot \code{asvar}. }
+    \item{asvar<-}{\code{signature(object = "Estimate")}: 
+      replacement function for slot \code{asvar}. }
+
+    \item{nuisance}{\code{signature(object = "Estimate")}: 
+      accessor function for \code{nuisance} part of slot \code{estimate}. }
+    \item{main}{\code{signature(object = "Estimate")}: 
+      accessor function for \code{main} part of slot \code{estimate}. }
 
     \item{Infos}{\code{signature(object = "Estimate")}: 
       accessor function for slot \code{Infos}. }
-
-    \item{Infos<-}{\code{signature(object = "Estimate")}: 
-      replacement function for slot \code{Infos}. }
 
     \item{Infos<-}{\code{signature(object = "Estimate")}: 
       replacement function for slot \code{Infos}. }
@@ -69,8 +80,12 @@
       function to add an information to slot \code{Infos}. }
 
     \item{show}{\code{signature(object = "Estimate")}}
+    \item{print}{\code{signature(object = "Estimate")}: just as \code{show}, 
+     but with additional arguments \code{digits}.}
   }
 }
+\note{Parts of the code for methods \code{show} and \code{print} has been
+borrowed from \code{print.fitdistr} in package \pkg{MASS} by B.D. Ripley.}
 %\references{}
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de}}
 %\note{}

@@ -413,18 +413,27 @@ setClass("Estimate",
                         estimate = "ANY",
                         samplesize = "numeric",
                         asvar = "OptionalMatrix",
-                        Infos = "matrix"),
+                        Infos = "matrix",
+                        nuis.idx = "OptionalNumeric"),
          prototype(name = "Estimate",
                    estimate = numeric(0),
                    samplesize = numeric(0),
                    asvar = NULL,
                    Infos = matrix(c(character(0),character(0)), ncol=2,
-                                  dimnames=list(character(0), c("method", "message")))),
+                                  dimnames=list(character(0), c("method", "message"))),
+                   nuis.idx = NULL),
          validity = function(object){
+            if(is.null(dim(object@estimate)))
+               len <- length(object@estimate)
+            else   
+               len <- dim(object@estimate)[1]
             if(!is.character(object@Infos))
                 stop("'Infos' contains no matrix of characters")
             if(ncol(object@Infos)!=2)
                 stop("'Infos' must have two columns")
+            if(!is.null(object@nuis.idx))
+                {if(any(nuis.idx<0) || any(nuis.idx>len))
+                   stop(gettextf("'nuis.idx' must be in 1:%d", len))}
             else TRUE
          })
 
@@ -436,7 +445,8 @@ setClass("MCEstimate",
                    asvar = NULL,
                    criterion = numeric(0),
                    Infos = matrix(c(character(0),character(0)), ncol=2,
-                                  dimnames=list(character(0), c("method", "message")))),
+                                  dimnames=list(character(0), c("method", "message"))),
+                   nuis.idx = NULL),
          contains = "Estimate")
 
 ## To Do: class MLEstimate which is compatible with class

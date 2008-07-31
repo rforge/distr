@@ -2926,6 +2926,22 @@
 <param name="Local" value="showobj-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sign,AbscontDistribution-method">
+<param name="Local" value="Math-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sign,DiscreteDistribution-method">
+<param name="Local" value="Math-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sign,UnivarLebDecDistribution-method">
+<param name="Local" value="UnivarLebDecDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sign-methods">
+<param name="Local" value="Math-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="simplifyD">
 <param name="Local" value="simplifyD-methods.html">
 </OBJECT>

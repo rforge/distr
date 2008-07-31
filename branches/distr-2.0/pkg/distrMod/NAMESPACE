@@ -27,7 +27,7 @@ exportClasses("Estimate", "MCEstimate")
 exportMethods("type", "SymmCenter", "distrSymm",
               "distribution", "props", "props<-", "addProp<-", "main", "main<-",
               "nuisance", "nuisance<-", "trafo", "trafo<-", "modifyParam",
-              "dimension", "show", "plot", "param", "E", "name",
+              "dimension", "show", "print", "plot", "param", "E", "name",
               "L2deriv", "L2derivSymm", "L2derivDistr", "L2derivDistrSymm",
               "FisherInfo", "checkL2deriv")
 exportMethods("bound", "width")
@@ -41,7 +41,8 @@ exportMethods("name", "name<-",
               "estimate", 
               "Infos", "Infos<-", "addInfo<-",
               "criterion", "criterion<-",
-              "samplesize", "asvar")
+              "samplesize", "asvar", "asvar<-", "confint")
+exportMethods("nuisance", "main") 
 export("PosDefSymmMatrix","PosSemDefSymmMatrix")
 export("distrModOptions", "getdistrModOption",
        "Estimator", "MCEstimator", "MLEstimator", "MDEstimator")
@@ -61,3 +62,5 @@ export("L2LocationFamily", "L2ScaleFamily", "L2LocationScaleFamily")
 export("CauchyLocationScaleFamily")
 export("EuclideanNorm", "QuadFormNorm")
 export("NormType", "QFNorm", "InfoNorm", "SelfNorm")
+export("NormScaleUnknownLocationFamily", "NormLocationUnknownScaleFamily")
+export("L2LocationUnknownScaleFamily", "L2ScaleUnknownLocationFamily")

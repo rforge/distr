@@ -7,14 +7,17 @@
   estimates.
 }
 \usage{
-Estimator(x, estimator, name, Infos, asvar = NULL, ...)
+Estimator(x, estimator, name, Infos, asvar = NULL, nuis.idx,
+          ...)
 }
 \arguments{
   \item{x}{ (empirical) data }
   \item{estimator}{ function: estimator to be evaluated on \code{x}. }
   \item{name}{ optional name for estimator. }
   \item{Infos}{ character: optional informations about estimator }
-  \item{asvar}{ OptionalMatrix: optionally the asymptotic (co)variance of the estimator }
+  \item{asvar}{ optionally the asymptotic (co)variance of the estimator }
+  \item{nuis.idx}{ optionally the indices of the estimate belonging 
+                  to nuisance parameter}
   \item{\dots}{ further arguments to \code{estimator}. }
 }
 \details{

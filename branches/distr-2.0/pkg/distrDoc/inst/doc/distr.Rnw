@@ -1712,7 +1712,7 @@ Hence, the maximum likelihood estimator and for instance the Kolmogorov MD
 estimator can more easily be computed as follows.
 <<MLEstimator, eval = TRUE>>=
 if (have.distrMod){
-    MLEstimator(x = x, ParamFamily = G)
+    print(MLEstimator(x = x, ParamFamily = G))
     MDEstimator(x = x, ParamFamily = G, distance = KolmogorovDist)
 }
 @

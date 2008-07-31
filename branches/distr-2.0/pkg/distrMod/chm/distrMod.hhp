@@ -37,10 +37,12 @@ L2LocationFamily-class.html
 L2LocationFamily.html
 L2LocationScaleFamily-class.html
 L2LocationScaleFamily.html
+L2LocationUnknownScaleFamily.html
 L2ParamFamily-class.html
 L2ParamFamily.html
 L2ScaleFamily-class.html
 L2ScaleFamily.html
+L2ScaleUnknownLocationFamily.html
 LnormScaleFamily.html
 MCEstimate-class.html
 MCEstimator.html
@@ -53,7 +55,9 @@ NonSymmetric-class.html
 NonSymmetric.html
 NormLocationFamily.html
 NormLocationScaleFamily.html
+NormLocationUnknownScaleFamily.html
 NormScaleFamily.html
+NormScaleUnknownLocationFamily.html
 NormType-class.html
 NormType.html
 OddSymmetric-class.html
@@ -92,6 +96,7 @@ asUnOvShoot.html
 asymmetricBias-class.html
 asymmetricBias.html
 checkL2deriv.html
+confint-methods.html
 distrModOptions.html
 existsPIC.html
 fiBias-class.html

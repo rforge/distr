@@ -44,7 +44,7 @@ L2ScaleFamily(scale = 1, loc = 0,  name, centraldistribution = Norm(),
   In case \code{FisherInfo.0} is missing, Fisher information is computed 
   from \code{L2deriv} using \code{E}.
   If \code{distrSymm} is missing, it is set to symmetry about \code{loc}.
-  If \code{L2derivSymm} is missing, it is set even about \code{loc}, and
+  If \code{L2derivSymm} is missing, it is set to no symmetry, and
   if \code{L2derivDistrSymm} is missing, it is set to no symmetry. 
 }
 \value{Object of class \code{"L2ScaleFamily"}}

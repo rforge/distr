@@ -366,6 +366,16 @@ setMethod("log", "Dirac",
 setMethod("log10", "DiscreteDistribution",
           function(x) log(x = x)/log(x = 10))
 
+setMethod("sign", "DiscreteDistribution",
+          function(x){ 
+          d0 <- d(x)(0)
+          DiscreteDistribution(supp=c(-1,0,1), 
+              prob=c(p(x)(-getdistrOption("TruncQuantile")),
+                     d0,
+                     p(x)(getdistrOption("TruncQuantile"), lower=FALSE)))                     
+          })
+
+
 setMethod("lgamma", "DiscreteDistribution",
           function(x){
             rnew = function(n, ...){}
