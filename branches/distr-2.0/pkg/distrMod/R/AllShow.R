@@ -95,7 +95,8 @@ setMethod("show", "Estimate",
     function(object){
         digits <- getOption("digits")
         cat(paste("An object of class", dQuote(class(object)), "\n"))
-        cat(gettextf("samplesize:   %d\n",object@samplesize))
+        if(length(object@samplesize) > 0)
+            cat(gettextf("samplesize:   %d\n",object@samplesize))
         if(!is.null(object@asvar)){
            cat("estimate:\n")
            l.x <- length(object@estimate)
