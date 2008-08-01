@@ -15,8 +15,8 @@ setMethod("confint", signature(object="Estimate"),
    objN <- paste(deparse(substitute(object)),sep="",collapse="")
 
    if(is.null(object@asvar))
-      { cat(gettextf("Slot 'asvar' of object %s has not (yet) been filled.\n"),
-            objN)
+      { cat(gettextf("Slot 'asvar' of object %s has not (yet) been filled.\n",
+            objN))
         return(NULL) }
 
    ldx <- length(object@estimate)
