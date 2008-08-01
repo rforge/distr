@@ -412,7 +412,9 @@ setClass("Estimate",
                    asvar = NULL,
                    Infos = matrix(c(character(0),character(0)), ncol=2,
                                   dimnames=list(character(0), c("method", "message"))),
-                   trafo = list(fct = function(x)x, mat = matrix(0)),
+                   trafo.estimate = list(fct = function(x){
+                                             list(fval = x, mat = matrix(0))}, 
+                                         mat = matrix(0)),
                    nuis.idx = NULL),
          validity = function(object){            
             if(is.null(dim(object@estimate)))
@@ -462,6 +464,8 @@ setClass("Confint",
                    confint = array(0),
                    estimate.call = call("{}"),
                    name.estimate = "",
-                   trafo.estimate = list(fct = function(x)x, mat = matrix(0)),
+                   trafo.estimate = list(fct = function(x){
+                                             list(fval = x, mat = matrix(0))}, 
+                                         mat = matrix(0)),
                    nuisance.estimate = NULL)
          )
