@@ -404,7 +404,9 @@ setClass("Estimate",
                         Infos = "matrix",
                         estimate.call = "call",
                         nuis.idx = "OptionalNumeric",
-                        trafo = "list"),
+                        trafo = "list",
+                        untransformed.estimate = "ANY",
+                        untransformed.asvar = "OptionalMatrix"),
          prototype(name = "Estimate",
                    estimate = numeric(0),
                    samplesize = numeric(0),
@@ -415,7 +417,9 @@ setClass("Estimate",
                    trafo = list(fct = function(x){
                                       list(fval = x, mat = matrix(0))}, 
                                 mat = matrix(0)),
-                   nuis.idx = NULL),
+                   nuis.idx = NULL,
+                   untransformed.estimate = NULL,
+                   untransformed.asvar = NULL),
          validity = function(object){            
             if(is.null(dim(object@estimate)))
                len <- length(object@estimate)

@@ -165,7 +165,8 @@ slots:
 name(character), estimate(ANY),
 samplesize(numeric), asvar(OptionalMatrix),
 Infos(matrix), nuis.idx(OptionalNumeric)
-estimate.call(call), trafo(list[of function, matrix])
+estimate.call(call), trafo(list[of function, matrix]),
+untransformed.estimate(ANY), untransformed.asvar(OptionalMatrix)
 
 "Estimate"
 |>"MCEstimate", 

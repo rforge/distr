@@ -72,9 +72,9 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name, interval, par,
                                main = theta[idx],
                                nuisance = nuis)    
 
-    if(missing(trafo)||is.null(trafo)) 
-         {traf1 <- ParamFamily@param@trafo
-          if(is.matrix(traf1))  
+    traf1 <- ParamFamily@param@trafo
+    if(is.null(trafo)) 
+         {if(is.matrix(traf1))  
              traf0 <- list(fct = function(x) 
                                  list(fval = traf1 %*% x, mat = traf1), 
                            mat = traf1)
@@ -89,7 +89,7 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name, interval, par,
              traf0 <- list(fct = trafo, mat = trafo(main(param))$mat)           
          } 
 
-
+    
     if(validity.check){
         if(!validParameter(ParamFamily,param))
           {warning("Optimization for MCE did not give a valid result")
@@ -101,11 +101,26 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name, interval, par,
            return(res)}
     }
 
-    if(!missing(asvar.fct))
-      {asvar <- asvar.fct(L2Fam = ParamFamily, param = param, ...)
-       res@asvar <- asvar}
+    estimate <- theta[idx]
     
-    new("MCEstimate", name = est.name, estimate = theta, criterion = crit,
-         Infos = Infos, samplesize = samplesize, nuis.idx = nuis.idx,
-         estimate.call = es.call, trafo = traf0)
+    asvar <- NULL
+    if(!missing(asvar.fct))
+       asvar <- asvar.fct(L2Fam = ParamFamily, param = param, ...)
+
+    untransformed.estimate <- theta
+    untransformed.asvar <- asvar
+
+    if(!.isUnitMatrix(traf0$mat)){
+       estimate <- traf0$fct(estimate)$fval
+       if(!is.null(asvar)){
+           asvar <- traf0$mat%*%asvar[idx,idx]%*%t(traf0$mat)
+           rownames(asvar) <- colnames(asvar) <- c(names(estimate)) 
+          }
+    }
+    
+    new("MCEstimate", name = est.name, estimate = estimate, criterion = crit,
+         asvar = asvar, Infos = Infos, samplesize = samplesize, 
+         nuis.idx = nuis.idx, estimate.call = es.call, trafo = traf0,
+         untransformed.estimate = untransformed.estimate,
+         untransformed.asvar = untransformed.asvar)
 }

@@ -14,7 +14,7 @@
   model.
 }
 \usage{
-confint(object, \dots)
+confint(object, method, \dots)
 \S4method{confint}{ANY,missing}(object, method, parm, level = 0.95, \dots)
 \S4method{confint}{Estimate,missing}(object, method, level = 0.95, \dots)
 
@@ -92,11 +92,12 @@ res1
 confint(res1)
 
 mtrafo <- function(x){
+     nms0 <- names(c(main(param(G)),nuisance(param(G))))
      nms <- c("shape","rate")
      fval0 <- c(x[2], 1/x[1])
      names(fval0) <- nms
      mat0 <- matrix( c(0, -1/x[1]^2, 1, 0), nrow = 2, ncol = 2,
-                     dimnames = list(nms,nms))                          
+                     dimnames = list(nms,nms0))                          
      list(fval = fval0, mat = mat0)}
 (res2 <- MLEstimator(x = x, ParamFamily = G, trafo = mtrafo))
  confint(res2)

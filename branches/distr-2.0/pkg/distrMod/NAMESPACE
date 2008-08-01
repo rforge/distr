@@ -44,6 +44,7 @@ exportMethods("name", "name<-",
               "Infos", "Infos<-", "addInfo<-",
               "criterion", "criterion<-",
               "samplesize", "asvar", "asvar<-")
+exportMethods("untransformed.estimate", "untransformed.asvar")
 exportMethods("confint")
 exportMethods("nuisance", "main") 
 exportMethods("validParameter")

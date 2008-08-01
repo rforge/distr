@@ -122,8 +122,10 @@ trafo(NS) <- function(param){
   mu <- param["loc"]
   sd <- param["scale"]
   fval <- c(mu/sd, sd^2)
-  names(fval) <- c("mu/sig", "sig^2")
+  nfval <- c("mu/sig", "sig^2")
+  names(fval) <- nfval
   mat <- matrix(c(1/sd,0,-mu/sd^2,2*sd),2,2)
+  dimnames(mat) <- list(nfval,c("loc","scale"))
   return(list(fval=fval, mat=mat))
 }
 

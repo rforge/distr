@@ -26,6 +26,10 @@
 <param name="Local" value="internals.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value=".show.with.sd">
+<param name="Local" value="internals.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value=".validTrafo">
 <param name="Local" value="internals.html">
 </OBJECT>
@@ -1128,6 +1132,22 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="type,Symmetry-method">
 <param name="Local" value="Symmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="untransformed.asvar">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="untransformed.asvar,Estimate-method">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="untransformed.estimate">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="untransformed.estimate,Estimate-method">
+<param name="Local" value="Estimate-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="validParameter">

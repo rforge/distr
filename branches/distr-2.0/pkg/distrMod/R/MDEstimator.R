@@ -54,9 +54,14 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist, dist.name,
 
     if(!missing(asvar.fct))
       {asvar <- asvar.fct(L2Fam = ParamFamily, param = param, ...)
-       res@asvar <- asvar}
-
-
+       res@asvar <- asvar
+       res@untransformed.asvar <- asvar
+       if(!.isUnitMatrix(res@trafo$mat)){
+            asvar <- res@trafo$mat%*%asvar[idx,idx]%*%t(res@trafo$mat)
+            rownames(asvar) <- colnames(asvar) <- c(names(estimate))
+            res@asvar <- asvar
+            }
+       }
 
     return(res)
 }

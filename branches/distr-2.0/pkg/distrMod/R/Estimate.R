@@ -7,6 +7,8 @@ setReplaceMethod("name", "Estimate",
                   function(object, value) {object@name <- value; object})
 
 setMethod("estimate", "Estimate", function(object) object@estimate)
+setMethod("untransformed.estimate", "Estimate", 
+           function(object) object@untransformed.estimate)
 setMethod("estimate.call", "Estimate", function(object) object@estimate.call)
 
 setMethod("trafo", signature(object = "Estimate", param = "missing"), 
@@ -35,6 +37,19 @@ setMethod("addInfo<-", "Estimate",
 
 setMethod("samplesize", "Estimate", function(object) object@samplesize)
 setMethod("asvar", "Estimate", function(object) object@asvar)
+setReplaceMethod("asvar", "Estimate", 
+                  function(object, value){ 
+          mat <- trafo.estimate(object)$mat
+          if(.isUnitMatrix(mat)){
+             object@asvar <- value
+          }else{   
+             object@untransformed.asvar <- value
+             object@asvar <- mat%*%valuet%*%t(mat)
+          }
+          object})
+
+setMethod("untransformed.asvar", "Estimate", function(object) 
+           object@untransformed.asvar)
 
 setMethod("criterion", "MCEstimate", function(object) object@criterion)
 setReplaceMethod("criterion", "MCEstimate", 

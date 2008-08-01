@@ -28,6 +28,10 @@
 <param name="keyword" value="R:   addInfo<-,Estimate-method">
 <param name="keyword" value="R:   show,Estimate-method">
 <param name="keyword" value="R:   print,Estimate-method">
+<param name="keyword" value="R:   untransformed.estimate">
+<param name="keyword" value="R:   untransformed.estimate,Estimate-method">
+<param name="keyword" value="R:   untransformed.asvar">
+<param name="keyword" value="R:   untransformed.asvar,Estimate-method">
 <param name="keyword" value=" Estimate-class.">
 </object>
 
@@ -69,6 +73,11 @@ which may contain the asymptotic (co)variance of the estimator. </dd>
 the samplesize at which the estimate was evaluated. </dd>
 <dt><code>nuis.idx</code>:</dt><dd>object of class <code>"OptionalNumeric"</code>: 
 indices of <code>estimate</code> belonging to the nuisance part</dd>
+<dt><code>untransformed.estimate</code>:</dt><dd>Object of class <code>"ANY"</code>:
+untransformed estimate.</dd>
+<dt><code>untransformed.asvar</code>:</dt><dd>object of class <code>"OptionalMatrix"</code>
+which may contain the asymptotic (co)variance of the untransformed 
+estimator. </dd>
 </dl>
 
 <h3>Methods</h3>
@@ -86,6 +95,10 @@ replacement function for slot <code>name</code>. </dd>
 accessor function for slot <code>estimate</code>. </dd>
 
 
+<dt>untransformed.estimate</dt><dd><code>signature(object = "Estimate")</code>: 
+accessor function for slot <code>untransformed.estimate</code>. </dd>
+
+
 <dt>estimate.call</dt><dd><code>signature(object = "Estimate")</code>: 
 accessor function for slot <code>estimate.call</code>. </dd>
 
@@ -96,8 +109,14 @@ accessor function for slot <code>samplesize</code>. </dd>
 
 <dt>asvar</dt><dd><code>signature(object = "Estimate")</code>: 
 accessor function for slot <code>asvar</code>. </dd>
+
+
 <dt>asvar&lt;-</dt><dd><code>signature(object = "Estimate")</code>: 
 replacement function for slot <code>asvar</code>. </dd>
+
+
+<dt>untransformed.asvar</dt><dd><code>signature(object = "Estimate")</code>: 
+accessor function for slot <code>untransformed.asvar</code>. </dd>
 
 
 <dt>nuisance</dt><dd><code>signature(object = "Estimate")</code>: 

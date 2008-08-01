@@ -31,7 +31,7 @@ model.
 <h3>Usage</h3>
 
 <pre>
-confint(object, ...)
+confint(object, method, ...)
 ## S4 method for signature 'ANY, missing':
 confint(object, method, parm, level = 0.95, ...)
 ## S4 method for signature 'Estimate, missing':
@@ -140,11 +140,12 @@ res1
 confint(res1)
 
 mtrafo &lt;- function(x){
+     nms0 &lt;- names(c(main(param(G)),nuisance(param(G))))
      nms &lt;- c("shape","rate")
      fval0 &lt;- c(x[2], 1/x[1])
      names(fval0) &lt;- nms
      mat0 &lt;- matrix( c(0, -1/x[1]^2, 1, 0), nrow = 2, ncol = 2,
-                     dimnames = list(nms,nms))                          
+                     dimnames = list(nms,nms0))                          
      list(fval = fval0, mat = mat0)}
 (res2 &lt;- MLEstimator(x = x, ParamFamily = G, trafo = mtrafo))
  confint(res2)

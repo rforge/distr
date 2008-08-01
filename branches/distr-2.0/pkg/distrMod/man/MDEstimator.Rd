@@ -65,7 +65,8 @@ G <- GammaFamily(scale = 1, shape = 2)
 MDEstimator(x = x, ParamFamily = G, distance = KolmogorovDist)
 
 ## von Mises minimum distance estimator with default mu
-MDEstimator(x = x, ParamFamily = G, distance = CvMDist)
+MDEstimator(x = x, ParamFamily = G, distance = CvMDist,
+            asvar.fct =.CvMMDCovariance)
 
 ## von Mises minimum distance estimator with mu = N(0,1)
 MDEstimator(x = x, ParamFamily = G, distance = CvMDist, mu = Norm())

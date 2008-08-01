@@ -46,12 +46,10 @@ MLEstimator <- function(x, ParamFamily, interval, par, Infos, trafo = NULL, pena
     lmx <- length(main(ParamFamily))
     lnx <- length(nuisance(ParamFamily))
     idx <- 1:lmx
-
-    trafo0 <- diag(lnx+lmx)
     
     res <- MCEstimator(x = x, 
                 ParamFamily = ParamFamily, criterion = negLoglikelihood,
-                interval = interval, par = par, trafo = trafo0, 
+                interval = interval, par = par, trafo = trafo, 
                 penalty = penalty, validity.check = FALSE, ...)
 
     if(!is.null(res@nuis.idx))
@@ -61,9 +59,9 @@ MLEstimator <- function(x, ParamFamily, interval, par, Infos, trafo = NULL, pena
     res@estimate.call <- es.call
     res@name <- "Maximum likelihood estimate"
 
-    param <- ParamFamParameter(name = names(res@estimate), 
-                               main = res@estimate[idx],
-                               nuisance = res@estimate[-idx])
+    param <- ParamFamParameter(name = names(res@untransformed.estimate), 
+                               main = res@untransformed.estimate[idx],
+                               nuisance = res@untransformed.estimate[-idx])
     
     if(missing(trafo)||is.null(trafo)) 
          {traf1 <- ParamFamily@param@trafo
@@ -87,8 +85,14 @@ MLEstimator <- function(x, ParamFamily, interval, par, Infos, trafo = NULL, pena
         res.estimate <- rep(NA, lnx+lmx)
         return(res)}
 
+    
     asvar <- solve(FisherInfo(ParamFamily, param = param))
     res@asvar <- asvar
+    res@untransformed.asvar <- asvar
 
+    if(!.isUnitMatrix(res@trafo$mat)){
+       res@asvar <- res@trafo$mat%*%asvar[idx,idx]%*%t(res@trafo$mat)
+    }
+    
     return(res)
 }

@@ -303,7 +303,7 @@ by means of function \code{.makePNew} and explicite numeric inversion,
 respectively.
 
 \code{.csimpsum} is used internally in \code{.makePNew} to produce
-a prime function out of function evaluations by means of vectorized
+a primitive function out of function evaluations by means of vectorized
 Simpson quadrature method, returning already the function values
 of the prime function on a grid; it is to mimick the behaviour
 of \code{cumsum}. \code{.primefun} is similar but more flexible and

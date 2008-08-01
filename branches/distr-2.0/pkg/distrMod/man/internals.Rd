@@ -4,6 +4,7 @@
 \alias{.isUnitMatrix}
 \alias{.validTrafo}
 \alias{.CvMMDCovariance}
+\alias{.show.with.sd}
 
 \title{Internal functions of package distrMod}
 
@@ -13,10 +14,13 @@ These functions are used internally by package ``distrMod''.}
 \usage{
 .inArgs(arg, fct)
 .isUnitMatrix(m)
+.csimpsum(fx)
 .validTrafo(trafo, dimension)
-.CvMMDCovariance(L2Fam, param, mu = distribution(L2Fam), expon = 3, 
-                 withplot = FALSE, N = 200,
-                 ...)
+.CvMMDCovariance(L2Fam, param, mu = distribution(L2Fam), expon=3, 
+                 withplot = FALSE, withpreIC = FALSE,
+                 N = getdistrOption("DefaultNrGridPoints")+1, ...)
+.show.with.sd(est, s)
+
 }
 
 
@@ -24,6 +28,8 @@ These functions are used internally by package ``distrMod''.}
   \item{arg}{a formal argument as character}
   \item{fct}{a function}
   \item{m}{a matrix} 
+  \item{est}{an estimator; usually a vector}
+  \item{s}{a standard deviation} 
   \item{trafo}{an object of class \code{MatrixorFunction}}
   \item{dimension}{a numeric}
   \item{L2Fam}{an object of class \code{L2ParamFamily} --- for
@@ -40,16 +46,29 @@ These functions are used internally by package ``distrMod''.}
                \eqn{\mu}{mu}- resp. \eqn{P_\theta}{P_theta}-quantiles
                for the gridpoints (see below)}
   \item{withplot}{logical: shall we plot corresponding ICs?}
+  \item{withpreIC}{logical: shall we return a list with components \code{preIC} 
+       and \code{var} or just \code{var}; here \code{var} is the corresponding
+       asymptotic variance and \code{preIC} the corresponding
+   \code{EuclRandVarList} featuring as argument \code{Curve} in \code{IC}s of
+   package \pkg{RobAStBase}}
   \item{N}{a numeric: the number of gridpoints for constructing the 
            \eqn{\mu}{mu}- resp. \eqn{P_\theta}{P_theta}-``primitive''
            function}
+ \item{fx}{a vector of function evaluations multiplied by the gridwidth}
   \item{\dots}{further argument to be passed through --- so 
               \code{.CvMMDCovariance} can digest more arguments}
 }
 
 \details{
-\code{.inArgs} checks whether an argument \code{arg} is a formal argument of 
+\code{.inArgs} (borrowed from package \pkg{distr})
+      checks whether an argument \code{arg} is a formal argument of 
      \code{fct} --- not vectorized.
+
+\code{.csimpsum} (borrowed from package \pkg{distr}) 
+produces a primitimive function out of function evaluations by means 
+of vectorized Simpson quadrature method, returning already the function values
+of the prime function on a grid; it is to mimick the behaviour
+of \code{cumsum}. 
 
 \code{.isUnitMatrix} checks whether the argument is a unit matrix. 
 
@@ -58,15 +77,21 @@ These functions are used internally by package ``distrMod''.}
 \code{.CvMMDCovariance} determines the IC resp. the as. [co]variance of 
    the corresponding Minimum CvM estimator. Still some checking / optimization /
    improvement needed.
-}
 
+\code{.show.with.sd} is code borrowed from \code{print.fitdistr} in  
+package \pkg{MASS} by B.D. Ripley. It pretty-prints estimates with corresponding
+sd's below.
+}
 
 \value{
 \item{.inArgs}{\code{logical} (length 1)}
+\item{.csimpsum}{\code{numeric} (of length half the input length)}
 \item{.isUnitMatrix}{\code{logical} (length 1)}
 \item{.validTrafo}{\code{logical} (length 1)}
 \item{.CvMMDCovariance}{corresponding as. [co]variance of 
-   the corresponding Minimum CvM estimator}
+   the corresponding Minimum CvM estimator or list withcomponents
+   \code{preIC} and \code{var} ---see above}
+\item{.show.with.sd}{\code{invisible()}}
 }
 
 \author{

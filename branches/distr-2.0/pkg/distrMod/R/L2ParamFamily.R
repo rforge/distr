@@ -11,13 +11,14 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
                           L2derivSymm, L2derivDistr, L2derivDistrSymm,
                           FisherInfo.fct = function(theta){ 1 },
                           FisherInfo = FisherInfo.fct(param)){
+     
     if(missing(name))
         name <- "L_2 differentiable parametric family of probability measures"
     if(missing(param)&&missing(main))
-        param <- ParamFamParameter(name = "location", main = 0, trafo =matrix(1))
+        param <- ParamFamParameter(name = "location", main = 0, trafo = matrix(1))
     if(missing(param))
         param <- ParamFamParameter(name = paste("Parameter of", name),
-                                   main = main, nuisance = nuisance, 
+                                   main = main, nuisance = nuisance,
                                    trafo = trafo)
     if(missing(distrSymm)) distrSymm <- NoSymmetry()
     if(!is(distrSymm, "NoSymmetry")){
@@ -30,7 +31,6 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
     L2deriv <- if(!is.list(fct))
        EuclRandVarList(RealRandVariable(list(fct), Domain = Reals())) else
        EuclRandVarList(RealRandVariable(fct, Domain = Reals()))
-
     if(missing(L2derivSymm)){
         nrvalues <- numberOfMaps(L2deriv)
         L <- vector("list", nrvalues)
@@ -65,15 +65,21 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
 
     if(missing(FisherInfo)){
         L2 <- as(diag(dims) %*% L2deriv, "EuclRandVariable")
-        FisherInfo <- PosSemDefSymmMatrix(E(object = distribution, fun = L2 %*% t(L2)))
+        FisherInfo <- PosSemDefSymmMatrix(E(object = distribution,
+                                            fun = L2 %*% t(L2)))
     }else{
         FisherInfo <- PosSemDefSymmMatrix(FisherInfo)
     }
     if(ncol(FisherInfo) != dims)
         stop(paste("dimension of 'FisherInfo' should be", dims))
 
+    parv <- c(param@main,param@nuisance)
+    nms <- names(parv)
+    
+    if(!is.null(nms))
+       dimnames(FisherInfo) <- list(nms,nms)
+
     L2Fam <- new("L2ParamFamily")
-    L2Fam@name <- name
     L2Fam@distribution <- distribution
     L2Fam@distrSymm <- distrSymm
     L2Fam@param <- param

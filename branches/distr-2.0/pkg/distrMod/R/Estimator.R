@@ -31,7 +31,7 @@ Estimator <- function(x, estimator, name, Infos, asvar = NULL, nuis.idx,
     res <- new("Estimate")
 
     res@samplesize <- samplesize
-    res@estimate <- estimate
+    res@untransformed.estimate <- estimate
     res@estimate.call <- es.call
     res@name <- name
     res@Infos <- Infos
@@ -44,9 +44,9 @@ Estimator <- function(x, estimator, name, Infos, asvar = NULL, nuis.idx,
          idm <- idm[-idx]
          mat <- diag(length(idm))}
     
-    if(is.null(names(res@estimate))) names(res@estimate) <- name.est
+    if(is.null(names(estimate))) names(estimate) <- name.est
     
-    param <- ParamFamParameter(name = names(res@estimate), 
+    param <- ParamFamParameter(name = names(estimate), 
                                main = res@estimate[idm],
                                nuisance = res@estimate[idx])
     
@@ -62,9 +62,20 @@ Estimator <- function(x, estimator, name, Infos, asvar = NULL, nuis.idx,
              res@trafo <- list(fct = trafo, mat = trafo(main(param))$mat)           
          } 
 
+    res@estimate <- estimate[idx]
+    
+    asvar <- NULL
     if(!missing(asvar.fct))
-      {asvar <- asvar.fct(L2Fam = ParamFamily, param = param, ...)
-       res@asvar <- asvar}
+       asvar <- asvar.fct(L2Fam = ParamFamily, param = param, ...)
+
+    res@untransformed.asvar <- asvar
+
+    if(!.isUnitMatrix(res@trafo$mat)){
+       res@estimate <- res@trafo$fct(estimate)
+       if(!is.null(asvar))
+           res@asvar <- res@trafo$mat%*%asvar[idx,idx]%*%t(res@trafo$mat)
+    }
+
 
     return(res)
 }

@@ -1,4 +1,25 @@
-.isUnitMatrix <- function(m){
+
+.show.with.sd <- function(est, s){
+  ### code borrowed from print.fitdistr in  package MASS by B.D. Ripley
+        digits <- getOption("digits")
+        ans <- format(base::rbind(est, s), digits=digits)
+        ans[1, ] <- sapply(ans[1, ], function(x) paste("", x))
+        ans[2, ] <- sapply(ans[2, ], function(x) paste("(", x, ")", sep=""))
+     ## only used for digits
+        dn <- dimnames(ans)
+        dn[[1]] <- rep("", 2)
+        dn[[2]] <- paste(substring("      ", 1, 
+                       (nchar(ans[2,]) - nchar(dn[[2]])) %/% 2), dn[[2]])
+        dn[[2]] <- paste(dn[[2]], substring("      ", 1, 
+                       (nchar(ans[2,]) - nchar(dn[[2]])) %/% 2))
+        dimnames(ans) <- dn
+        print(ans, quote = FALSE)
+        return(invisible())
+        }
+ ### end of borrowed code  
+
+
+.isUnitMatrix <- function(m){                                                                  
 ### checks whether m is unit matrix
               m.row <- nrow(m)
               isTRUE(all.equal(m, diag(m.row), check.attributes = FALSE))
@@ -21,17 +42,21 @@
   return(invisible())
 }
 
+##caching:
+.csimpsum <- distr:::.csimpsum
 ### still to be tested and improved:
 ## covariance for minimum CvM distance estimator acc. Ri:94, pp.132-133
 
 .CvMMDCovariance<- function(L2Fam, param, mu = distribution(L2Fam), expon=3, 
-                            withplot = FALSE, 
-                            N = 200, ... ){#getdistrOption("DefaultNrGridPoints")+1, ...){
+                            withplot = FALSE, withpreIC = FALSE,
+                            N = getdistrOption("DefaultNrGridPoints")+1, ...){
 
    # preparations:
    eps <- getdistrOption("TruncQuantile")
-   odd <- (1:N)%%2==1
 
+
+   N1 <- 2*N+1
+   odd <- (1:N1)%%2==1
 
    distr <- L2Fam@distribution
    param0 <- L2Fam@param
@@ -42,11 +67,29 @@
    if(is(distr,"DiscreteDistribution"))
        x.seq <-support(distr)
    else
-       x.seq <- seq(q(distr)(eps^expon),q(distr)(eps^expon,lower=FALSE),length=N)
+       {if(is(distr,"AbscontDistribution")){
+           x.seq0 <- seq(q(distr)(eps^expon),
+                         q(distr)(eps^expon, lower = FALSE), length = N1)
+           h0 <- x.seq0[1:2]%*%c(-1,1)
+           x.seq <- x.seq0[odd]
+          }else{ 
+           x.seq <- seq(q(distr)(eps^expon),
+                        q(distr)(eps^expon, lower = FALSE), length = N)
+          }
+       }
    if(is(mu,"DiscreteDistribution"))
        x.mu.seq <-support(distr)
    else
-       x.mu.seq <- seq(q(mu)(eps^expon),q(mu)(eps^expon,lower=FALSE),length=N)
+       {if(is(mu,"AbscontDistribution")){
+           x.mu.seq0 <- seq(q(mu)(eps^expon),
+                            q(mu)(eps^expon, lower = FALSE), length = N1)
+           h0.mu <- x.mu.seq0[1:2]%*%c(-1,1)
+           x.mu.seq <- x.mu.seq0[odd]
+          }else{ 
+           x.mu.seq <- seq(q(mu)(eps^expon),
+                        q(mu)(eps^expon, lower = FALSE), length = N)
+          }
+       }
 
    paramP <- ParamFamParameter(name = name(param0), main = main(param),
                                trafo = diag(dim0))
@@ -68,10 +111,17 @@
 
    ## Delta, formula (56), p. 133 [Ri:94]
    ##        Ptheta- primitive function for Lambda
-   L2x  <- function(x,y)  (x<=y)*evalRandVar(L2deriv, x)
 
-   Delta0 <- sapply(x.seq, function(Y){ fct <- function(x) L2x(x,y=Y)
+   if(is(distr,"AbscontDistribution")){
+      Delta0x <- sapply(x.seq0, function(x) 
+                                evalRandVar(L2deriv, x)) * 
+                 d(distr)(x.seq0)
+      Delta0 <-  h0*.csimpsum(Delta0x)   
+   }else{
+      L2x  <- function(x,y)  (x<=y)*evalRandVar(L2deriv, x)
+      Delta0 <- sapply(x.seq, function(Y){ fct <- function(x) L2x(x,y=Y)
                                         return(E(object=distr, fun = fct))})
+   }
    Delta1 <- approxfun(x.seq, Delta0, yleft = 0, yright = 0)
    if(is(distr,"DiscreteDistribution"))         
       Delta <- function(x) Delta1(x) * (x %in% support(distr))
@@ -93,34 +143,37 @@
 
    ## obtaining IC psi  (formula (51))
 
-   phix  <- function(x,y)  (x<=y)*phi(y)
-
-   psi0 <- sapply(x.mu.seq, function(X){ fct <- function(y) phix(x=X,y=y)
+   if(is(mu,"AbscontDistribution")){
+      phix <- function(x) phi(x)*d(mu)(x)
+      psi0x <- sapply(rev(x.mu.seq0), phix)
+      psi0 <-  h0.mu*rev(.csimpsum(psi0x))   
+   }else{
+      phix  <- function(x,y)  (x<=y)*phi(y)
+      psi0 <- sapply(x.mu.seq, function(X){ fct <- function(y) phix(x=X,y=y)
                                         return(E(object=mu, fun = fct))})
+   }
    psi.1 <- approxfun(x.mu.seq, psi0, yleft = 0)
    if(is(distr,"DiscreteDistribution"))
          psi <- function(x) (psi.1(x)-psi1) * (x %in% support(mu))
    else  psi <- function(x) psi.1(x)-psi1
 
-
    E2 <- E(object=distr, fun = function(x) psi(x)^2)
+   psi <- EuclRandVarList(EuclRandVariable(Map=list(psi),Domain = Reals()))
 
    ## E2 = Cov_mu (psi)
 
-   ### control: centering & standardization
-   E1 <- E(object=distr, fun = psi )
-   E3 <- E(object=distr, fun = function(x) psi(x)*evalRandVar(L2deriv, x))
-   psi.0 <- function(x) psi(x) - E1
-   psi.01 <- function(x) psi.0(x)/E3
-   if(withplot)
-       { windows()
-         plot(x.seq, psi.01(x.seq),
-                     type = if(is(distr,"DiscreteDistribution")) "p" else "l")
-       }
-   E4 <- E(object=distr, fun = function(x) psi.01(x)^2)
-   print(list(E2,E4,E2-E4))
-
-   return(E4)
+#   ### control: centering & standardization
+#   E1 <- E(object=distr, fun = psi )
+#   E3 <- E(object=distr, fun = function(x) psi(x)*evalRandVar(L2deriv, x))
+#   psi.0 <- function(x) psi(x) - E1
+#   psi.01 <- function(x) psi.0(x)/E3
+#   if(withplot)
+#       { windows()
+#         plot(x.seq, psi.01(x.seq),
+#                     type = if(is(distr,"DiscreteDistribution")) "p" else "l")
+#       }
+#   E4 <- E(object=distr, fun = function(x) psi.01(x)^2)
+#   print(list(E2,E4,E2-E4))
 
       }else{
 
@@ -133,10 +186,17 @@
 
 
    Map.Delta <- vector("list",Dim)
+   
    for(i in 1:Dim)
-       { fct0 <- function(x,y) L2deriv@Map[[i]](x)*(x<=y)
-         Delta0 <- sapply(x.seq, function(Y){ fct <- function(x) fct0(x,y=Y)
-                                        return(E(object=distr, fun = fct))})
+       { if(is(distr,"AbscontDistribution")){
+            fct0 <- sapply(x.seq0, function(x) L2deriv@Map[[i]](x)) * 
+                           d(distr)(x.seq0)
+            Delta0 <-  h0*.csimpsum(fct0)   
+         }else{
+            fct0 <- function(x,y) L2deriv@Map[[i]](x)*(x<=y)
+            Delta0 <- sapply(x.seq, function(Y){ fct <- function(x) fct0(x,y=Y)
+                                            return(E(object=distr, fun = fct))})
+         }         
          Delta1 <- approxfun(x.seq, Delta0, yleft = 0, yright = 0)
          if(is(distr,"DiscreteDistribution"))
                Delta <- function(x) Delta1(x) * (x %in% support(distr))
@@ -150,7 +210,6 @@
          assign("Delta0", Delta0, env=env.i)
          assign("Delta1", Delta1, env=env.i)
          }
-
    Delta <-  EuclRandVariable(Map = Map.Delta, Domain = Reals())
 
 
@@ -159,8 +218,8 @@
    J1 <- E(object=distr, fun = Delta)
    Delta.0 <- Delta - J1
    J <- E(object=distr, fun = Delta.0 %*%t(Delta.0))
-   print(J1)
-   print(J)
+#   print(J1)
+#   print(J)
    ### CvM-IC phi
    phi <- as(solve(J)%*%Delta.0,"EuclRandVariable")
 
@@ -180,61 +239,77 @@
    ## obtaining IC psi  (formula (51))
    Map.psi <- vector("list",Dim)
    for(i in 1:Dim)
-       { fct0 <- function(x,y) evalRandVar(phi, y)[i]*(x<=y)
-         phi0 <- sapply(x.mu.seq, function(X){ fct <- function(y) fct0(x=X,y)
-                                        return(E(object=distr, fun = fct))})
-         phi0a <- approxfun(x.mu.seq, phi0, yleft = 0)
-         env.i <- environment(phi1) <- new.env()
-         assign("i", i, env=env.i)
-         if(is(distr,"DiscreteDistribution"))
-               psi0 <- function(x) phi0a(x) * (x %in% support(mu))
-         else  psi0 <- function(x) phi0a(x)
-         Map.psi[[i]] <- psi0
-         env.i <- environment(Map.psi[[i]]) <- new.env()
-         assign("i", i, env=env.i)
-         assign("fct", fct, env=env.i)
-         assign("fct0", fct0, env=env.i)
-         assign("psi0", psi0, env=env.i)
-         assign("phi0a", phi0a, env=env.i)
-         assign("phi0", phi0, env=env.i)
-         }
+     { if(is(mu,"AbscontDistribution")){
+            fct01 <- function(x) phi@Map[[i]](x)*d(mu)(x)
+            fct0 <-  sapply(rev(x.mu.seq0),fct01)
+            phi0 <-  h0.mu*rev(.csimpsum(fct0))   
+       }else{
+            fct01 <- NULL
+            fct0 <- function(x,y) evalRandVar(phi, y)[i]*(x<=y)
+            phi0 <- sapply(x.mu.seq, 
+                           function(X){ 
+                               fct <- function(y) fct0(x = X, y)
+                               return(E(object = mu, fun = fct))
+                               })
+       }
+              
+       phi0a <- approxfun(x.mu.seq, phi0, yleft = 0)
+       env.i <- environment(phi1) <- new.env()
+       assign("i", i, env=env.i)
+       if(is(distr,"DiscreteDistribution"))
+             psi0 <- function(x) phi0a(x) * (x %in% support(mu))
+       else  psi0 <- function(x) phi0a(x)
+
+       Map.psi[[i]] <- psi0
+       env.i <- environment(Map.psi[[i]]) <- new.env()
+       assign("i", i, env=env.i)
+       assign("fct", fct, env=env.i)
+       assign("fct0", fct0, env=env.i)
+       assign("psi0", psi0, env=env.i)
+       assign("phi0a", phi0a, env=env.i)
+       assign("phi0", phi0, env=env.i)
+    }
    psi <-  EuclRandVariable(Map = Map.psi, Domain = Reals())
 
-   E2 <- E(object=distr, fun = psi %*%t(psi))
+   E2 <- E(object=distr, fun = psi %*%t(psi))   
+   psi <-  EuclRandVarList(psi)
    ## E2 = Cov_mu (psi)
 
    ### control: centering & standardization
-   E1 <- E(object=distr, fun = psi )
-   E3 <- E(object=distr, fun = psi %*%t(L2deriv))
-   psi.0 <- psi - E1
-   psi.01 <- as(solve(E3)%*%psi.0,"EuclRandVariable")
-   if(withplot)
-      { for(i in 1:Dim)
-         { windows()
-           plot(x.seq, sapply(x.seq,function(xx) evalRandVar(psi.01,xx)[i]),
-                     type = if(is(distr,"DiscreteDistribution")) "p" else "l")
-         }}
-   E4 <- E(object=distr, fun = psi.01 %*%t(psi.01))
-   print(list(E2,E4,E2-E4))
-   return(E4)
+#   E1 <- E(object=distr, fun = psi )
+#   E3 <- E(object=distr, fun = psi %*%t(L2deriv))
+#   psi.0 <- psi - E1
+#   psi.01 <- as(solve(E3)%*%psi.0,"EuclRandVariable")
+#   if(withplot)
+#      { for(i in 1:Dim)
+#         { windows()
+#           plot(x.seq, sapply(x.seq,function(xx) evalRandVar(psi.01,xx)[i]),
+#                     type = if(is(distr,"DiscreteDistribution")) "p" else "l")
+#         }}
+#   E4 <- E(object=distr, fun = psi.01 %*%t(psi.01))
    }
+  E2 <- PosSemDefSymmMatrix(E2)
+  #print(names(param(L2Fam)))
+  nms <- names(c(main(param(L2Fam)),nuisance(param(L2Fam))))
+  dimnames(E2) = list(nms,nms)
+  if(withpreIC) return(list(preIC=psi, Var=E2))
+  else return(E2)
 }
 
 ### examples:
 if(FALSE){
-P0 <- PoisFamily();.CvMMDCovariance(P0,par=1, withplot=TRUE)
-B0 <- BinomFamily(size=8, prob=0.3);.CvMMDCovariance(B0,par=0.3, withplot=TRUE)
-N0 <- NormLocationFamily();.CvMMDCovariance(N0,par=0, withplot=TRUE, N = 200)
-N1 <- NormScaleFamily();.CvMMDCovariance(N1,par=1, withplot=TRUE, N = 200)
-NS <- NormLocationScaleFamily();.CvMMDCovariance(NS,par=c(0,1), withplot=TRUE, N = 100)
-cls <- CauchyLocationScaleFamily();.CvMMDCovariance(cls,par=c(0,1), withplot=TRUE, N = 200)
+P0 <- PoisFamily();.CvMMDCovariance(P0,par=ParamFamParameter("lambda",1), withplot=TRUE)
+B0 <- BinomFamily(size=8, prob=0.3);.CvMMDCovariance(B0,par=ParamFamParameter("",.3), withplot=TRUE)
+N0 <- NormLocationFamily();.CvMMDCovariance(N0,par=ParamFamParameter("",0), withplot=TRUE, N = 200)
+N1 <- NormScaleFamily(); re=.CvMMDCovariance(N1,par=ParamFamParameter("",1), withICwithplot=TRUE, N = 200)
+NS <- NormLocationScaleFamily();.CvMMDCovariance(NS,par=ParamFamParameter("",0:1), withplot=TRUE, N = 100)
+cls <- CauchyLocationScaleFamily();.CvMMDCovariance(cls,par=ParamFamParameter("",0:1), withplot=TRUE, N = 200)
 Els <- L2LocationScaleFamily(loc = 0, scale = 1,
                   name = "Laplace Location and scale family",
                   centraldistribution = DExp(),
                   LogDeriv = function(x)  sign(x),
                   FisherInfo = diag(2),
                   trafo = trafo)
-.CvMMDCovariance(Els,par=c(0,1), withplot=TRUE, N = 100)
+.CvMMDCovariance(Els,par=ParamFamParameter("",0:1), withplot=TRUE, N = 100)
 }
 
-### todo: use .csimpsum instead of E() for continuous distributions -> faster and more accurate

@@ -59,6 +59,7 @@ L2LocationFamily <- function(loc = 0, name, centraldistribution = Norm(),
            E(centraldistribution, fun = function(x) LogDeriv(x)^2,
              useApply = FALSE, ...) else FisherInfo.0
 
+    FI0 <- matrix(FI0,1,1,dimnames=list("loc","loc"))
     FisherInfo.fct <- function(param) PosDefSymmMatrix(FI0)
 
     L2Fam <- new("L2LocationFamily")
@@ -144,6 +145,9 @@ L2ScaleFamily <- function(scale = 1, loc = 0, name, centraldistribution = Norm()
     FI0 <- if(missing(FisherInfo.0)) 
            E(centraldistribution, fun = function(x) (x*LogDeriv(x)-1)^2,
              useApply = FALSE, ...) else FisherInfo.0
+
+    FI0 <- matrix(FI0,1,1,dimnames=list("scale","scale"))
+
     FisherInfo.fct <- function(param){
                    scale <- main(param)
                    PosDefSymmMatrix(FI0/scale^2)}
@@ -251,6 +255,8 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
         FI0 <- FisherInfo.0 
     }
 
+    FI0 <- matrix(FI0,2,2,dimnames=list(names(param0),names(param0)))
+
     FisherInfo.fct <- function(param){
                    scale <- main(param)[2]
                    PosDefSymmMatrix(FI0/scale^2)}
@@ -357,6 +363,7 @@ L2LocationUnknownScaleFamily <- function(loc = 0, scale = 1, name,
     }else{ 
         FI0 <- FisherInfo.0 
     }
+    FI0 <- matrix(FI0,2,2,dimnames=list(names(param0),names(param0)))
 
     FisherInfo.fct <- function(param){
                    scale <- nuisance(param)
@@ -464,6 +471,7 @@ L2ScaleUnknownLocationFamily <- function(loc = 0, scale = 1, name,
     }else{ 
         FI0 <- FisherInfo.0 
     }
+    FI0 <- matrix(FI0,2,2,dimnames=list(names(param0),names(param0)))
 
     FisherInfo.fct <- function(param){
                    scale <- main(param)

@@ -208,3 +208,11 @@ setGeneric("confint", function(object, method, ... ) standardGeneric("confint"))
 if(!isGeneric("validParameter")){
     setGeneric("validParameter", function(object, ... ) standardGeneric("validParameter"))
 }
+if(!isGeneric("untransformed.asvar")){
+    setGeneric("untransformed.asvar", 
+                function(object) standardGeneric("untransformed.asvar"))
+}
+if(!isGeneric("untransformed.estimate")){
+    setGeneric("untransformed.estimate", 
+                function(object) standardGeneric("untransformed.estimate"))
+}

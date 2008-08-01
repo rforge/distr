@@ -105,73 +105,45 @@ setMethod("show", "Estimate",
         print(estimate.call(object), quote = FALSE)
         if(length(object@samplesize) > 0)
             cat(gettextf("samplesize:   %d\n",object@samplesize))
-               
         
         trafo.mat <- object@trafo$mat
         trafo.fct <- object@trafo$fct
-
-        l.x <- length(object@estimate)
-        idx <- 1:l.x
-           
-        names.nuisance <- NULL
-        if(!is.null(object@nuis.idx))
-            {idx <- (-object@nuis.idx)
-             names.nuisance <- names(object@estimate)[object@nuis.idx]
-        }else{
-        }
-
-        
-        
-        estimate <- object@estimate[idx]
-        
-        if(!.isUnitMatrix(trafo.mat))
-            estimate <- trafo.fct(estimate)$fval
-        
-        
-        names.estimate <- names(estimate)
         
         if(!is.null(object@asvar)){
-           traf0 <- diag(l.x)                
 
-           if(!is.null(object@nuis.idx))
-               traf0[idx,idx] <- trafo.mat
-                         
-           asvar <- traf0 %*% object@asvar %*% t(traf0)
-           rownames(asvar) <- colnames(asvar) <- c(names.estimate, 
-                                                   names.nuisance) 
+           sd0 <- sqrt(diag(object@asvar)/object@samplesize)
+           untransformed.sd0 <- sqrt(diag(object@untransformed.asvar)/object@samplesize)
 
-           sd0 <- sqrt(diag(asvar)[idx]/object@samplesize)
-           
            cat("estimate:\n")
-       
-        ### code borrowed from print.fitdistr in  package MASS by B.D. Ripley
-           ans <- format(base::rbind(estimate, sd0), digits=digits)
-           ans[1, ] <- sapply(ans[1, ], function(x) paste("", x))
-           ans[2, ] <- sapply(ans[2, ], function(x) paste("(", x, ")", sep=""))
-           ## only used for digits
-           dn <- dimnames(ans)
-           dn[[1]] <- rep("", 2)
-           dn[[2]] <- paste(substring("      ", 1, 
-                             (nchar(ans[2,]) - nchar(dn[[2]])) %/% 2), dn[[2]])
-           dn[[2]] <- paste(dn[[2]], substring("      ", 1, 
-                             (nchar(ans[2,]) - nchar(dn[[2]])) %/% 2))
-           dimnames(ans) <- dn
-           print(ans, quote = FALSE)
-       ### end of borrowed code  
+           .show.with.sd(object@estimate,sd0)
 
+           if(!is.null(object@nuis.idx)){
+              cat("nuisance parameter:\n")
+              print(nuisance(object), digits = digits, quote = FALSE)        
+           }
+           
            cat("asymptotic (co)variance:\n")
-           print(asvar, digits = digits, quote = FALSE)
+           print(object@asvar)
 
+           if(!.isUnitMatrix(trafo.mat)){
+               cat("untransformed estimate:\n")
+              .show.with.sd(object@untransformed.estimate,untransformed.sd0)
+           
+              cat("asymptotic (co)variance of untransformed estimate:\n")
+              print(object@untransformed.asvar)
+            }
         }else{
 
            cat("estimate:\n")
-           print(estimate, digits = digits, quote = FALSE)
+           print(object@estimate, digits = digits, quote = FALSE)
 
-        } 
-        if(!is.null(object@nuis.idx)){
-           cat("nuisance parameter:\n")
-           print(nuisance(object), digits = digits, quote = FALSE)        
+           if(!is.null(object@nuis.idx)){
+              cat("nuisance parameter:\n")
+              print(nuisance(object), digits = digits, quote = FALSE)        
            }
+        } 
+
+
         if(!.isUnitMatrix(trafo.mat)){
            cat("Transformation of main parameter:\n")
            print(trafo.fct)   
