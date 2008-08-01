@@ -31,6 +31,7 @@
 <a href="#R">R</a>
 <a href="#S">S</a>
 <a href="#T">T</a>
+<a href="#V">V</a>
 <a href="#W">W</a>
 </p>
 <table width="100%">
@@ -126,8 +127,12 @@
 <td>Methods for function confint in Package &lsquo;distrMod&rsquo; </td></tr>
 <tr><td width="25%"><a href="confint-methods.html">confint,ANY-method</a></td>
 <td>Methods for function confint in Package &lsquo;distrMod&rsquo; </td></tr>
+<tr><td width="25%"><a href="Confint-class.html">confint,Confint-method</a></td>
+<td>Confint-class</td></tr>
 <tr><td width="25%"><a href="confint-methods.html">confint,Estimate-method</a></td>
 <td>Methods for function confint in Package &lsquo;distrMod&rsquo; </td></tr>
+<tr><td width="25%"><a href="Confint-class.html">Confint-class</a></td>
+<td>Confint-class</td></tr>
 <tr><td width="25%"><a href="confint-methods.html">confint-methods</a></td>
 <td>Methods for function confint in Package &lsquo;distrMod&rsquo; </td></tr>
 <tr><td width="25%"><a href="MCEstimate-class.html">criterion</a></td>
@@ -181,6 +186,12 @@
 <tr><td width="25%"><a href="Estimate-class.html">estimate,Estimate-method</a></td>
 <td>Estimate-class.</td></tr>
 <tr><td width="25%"><a href="Estimate-class.html">Estimate-class</a></td>
+<td>Estimate-class.</td></tr>
+<tr><td width="25%"><a href="Estimate-class.html">estimate.call</a></td>
+<td>Estimate-class.</td></tr>
+<tr><td width="25%"><a href="Confint-class.html">estimate.call,Confint-method</a></td>
+<td>Confint-class</td></tr>
+<tr><td width="25%"><a href="Estimate-class.html">estimate.call,Estimate-method</a></td>
 <td>Estimate-class.</td></tr>
 <tr><td width="25%"><a href="Estimator.html">Estimator</a></td>
 <td>Function to compute estimates </td></tr>
@@ -368,6 +379,10 @@
 <td>Norm Type</td></tr>
 <tr><td width="25%"><a href="ProbFamily-class.html">name,ProbFamily-method</a></td>
 <td>Family of probability measures</td></tr>
+<tr><td width="25%"><a href="Confint-class.html">name.estimate</a></td>
+<td>Confint-class</td></tr>
+<tr><td width="25%"><a href="Confint-class.html">name.estimate,Confint-method</a></td>
+<td>Confint-class</td></tr>
 <tr><td width="25%"><a href="BiasType-class.html">name&lt;-,BiasType-method</a></td>
 <td>Bias Type</td></tr>
 <tr><td width="25%"><a href="Estimate-class.html">name&lt;-,Estimate-method</a></td>
@@ -424,6 +439,10 @@
 <td>Parametric family of probability measures.</td></tr>
 <tr><td width="25%"><a href="ParamFamParameter-class.html">nuisance,ParamFamParameter-method</a></td>
 <td>Parameter of a parametric family of probability measures</td></tr>
+<tr><td width="25%"><a href="Confint-class.html">nuisance.estimate</a></td>
+<td>Confint-class</td></tr>
+<tr><td width="25%"><a href="Confint-class.html">nuisance.estimate,Confint-method</a></td>
+<td>Confint-class</td></tr>
 <tr><td width="25%"><a href="ParamFamParameter-class.html">nuisance&lt;-,ParamFamParameter-method</a></td>
 <td>Parameter of a parametric family of probability measures</td></tr>
 </table>
@@ -470,6 +489,8 @@
 <td>Generating functions for PosSemDefSymmMatrix-class resp. PosDefSymmMatrix-class</td></tr>
 <tr><td width="25%"><a href="PosDefSymmMatrix-class.html">PosSemDefSymmMatrix-class</a></td>
 <td>Positive-[Semi-]definite, symmetric matrices</td></tr>
+<tr><td width="25%"><a href="Confint-class.html">print,Confint-method</a></td>
+<td>Confint-class</td></tr>
 <tr><td width="25%"><a href="Estimate-class.html">print,Estimate-method</a></td>
 <td>Estimate-class.</td></tr>
 <tr><td width="25%"><a href="ProbFamily-class.html">ProbFamily-class</a></td>
@@ -521,6 +542,8 @@
 <td>Asymptotic Hampel risk</td></tr>
 <tr><td width="25%"><a href="asUnOvShoot-class.html">show,asUnOvShoot-method</a></td>
 <td>Asymptotic under-/overshoot probability</td></tr>
+<tr><td width="25%"><a href="Confint-class.html">show,Confint-method</a></td>
+<td>Confint-class</td></tr>
 <tr><td width="25%"><a href="Estimate-class.html">show,Estimate-method</a></td>
 <td>Estimate-class.</td></tr>
 <tr><td width="25%"><a href="fiHampel-class.html">show,fiHampel-method</a></td>
@@ -586,14 +609,26 @@
 <h2><a name="T">-- T --</a></h2>
 
 <table width="100%">
-<tr><td width="25%"><a href="ParamFamParameter-class.html">trafo</a></td>
-<td>Parameter of a parametric family of probability measures</td></tr>
-<tr><td width="25%"><a href="ParamFamily-class.html">trafo,ParamFamily-method</a></td>
-<td>Parametric family of probability measures.</td></tr>
-<tr><td width="25%"><a href="ParamFamParameter-class.html">trafo,ParamFamParameter-method</a></td>
-<td>Parameter of a parametric family of probability measures</td></tr>
-<tr><td width="25%"><a href="ParamFamParameter-class.html">trafo&lt;-,ParamFamParameter-method</a></td>
-<td>Parameter of a parametric family of probability measures</td></tr>
+<tr><td width="25%"><a href="trafo-methods.html">trafo</a></td>
+<td>Methods for function trafo in Package &lsquo;distrMod&rsquo; </td></tr>
+<tr><td width="25%"><a href="trafo-methods.html">trafo,Estimate,missing-method</a></td>
+<td>Methods for function trafo in Package &lsquo;distrMod&rsquo; </td></tr>
+<tr><td width="25%"><a href="trafo-methods.html">trafo,ParamFamily,missing-method</a></td>
+<td>Methods for function trafo in Package &lsquo;distrMod&rsquo; </td></tr>
+<tr><td width="25%"><a href="trafo-methods.html">trafo,ParamFamily,ParamFamParameter-method</a></td>
+<td>Methods for function trafo in Package &lsquo;distrMod&rsquo; </td></tr>
+<tr><td width="25%"><a href="trafo-methods.html">trafo,ParamFamParameter,missing-method</a></td>
+<td>Methods for function trafo in Package &lsquo;distrMod&rsquo; </td></tr>
+<tr><td width="25%"><a href="trafo-methods.html">trafo-methods</a></td>
+<td>Methods for function trafo in Package &lsquo;distrMod&rsquo; </td></tr>
+<tr><td width="25%"><a href="Confint-class.html">trafo.estimate</a></td>
+<td>Confint-class</td></tr>
+<tr><td width="25%"><a href="Confint-class.html">trafo.estimate,Confint-method</a></td>
+<td>Confint-class</td></tr>
+<tr><td width="25%"><a href="trafo-methods.html">trafo&lt;-,ParamFamily-method</a></td>
+<td>Methods for function trafo in Package &lsquo;distrMod&rsquo; </td></tr>
+<tr><td width="25%"><a href="trafo-methods.html">trafo&lt;-,ParamFamParameter-method</a></td>
+<td>Methods for function trafo in Package &lsquo;distrMod&rsquo; </td></tr>
 <tr><td width="25%"><a href="trAsCov.html">trAsCov</a></td>
 <td>Generating function for trAsCov-class</td></tr>
 <tr><td width="25%"><a href="trAsCov-class.html">trAsCov-class</a></td>
@@ -604,10 +639,29 @@
 <td>Trace of finite-sample covariance</td></tr>
 <tr><td width="25%"><a href="Symmetry-class.html">type</a></td>
 <td>Class of Symmetries</td></tr>
+<tr><td width="25%"><a href="Confint-class.html">type,Confint-method</a></td>
+<td>Confint-class</td></tr>
 <tr><td width="25%"><a href="RiskType-class.html">type,RiskType-method</a></td>
 <td>Risk</td></tr>
 <tr><td width="25%"><a href="Symmetry-class.html">type,Symmetry-method</a></td>
 <td>Class of Symmetries</td></tr>
+</table>
+
+<h2><a name="V">-- V --</a></h2>
+
+<table width="100%">
+<tr><td width="25%"><a href="validParameter-methods.html">validParameter</a></td>
+<td>Methods for function validParameter in Package &lsquo;distrMod&rsquo; </td></tr>
+<tr><td width="25%"><a href="validParameter-methods.html">validParameter,L2LocationFamily-method</a></td>
+<td>Methods for function validParameter in Package &lsquo;distrMod&rsquo; </td></tr>
+<tr><td width="25%"><a href="validParameter-methods.html">validParameter,L2LocationScaleFamily-method</a></td>
+<td>Methods for function validParameter in Package &lsquo;distrMod&rsquo; </td></tr>
+<tr><td width="25%"><a href="validParameter-methods.html">validParameter,L2ScaleFamily-method</a></td>
+<td>Methods for function validParameter in Package &lsquo;distrMod&rsquo; </td></tr>
+<tr><td width="25%"><a href="validParameter-methods.html">validParameter,ParamFamily-method</a></td>
+<td>Methods for function validParameter in Package &lsquo;distrMod&rsquo; </td></tr>
+<tr><td width="25%"><a href="validParameter-methods.html">validParameter-methods</a></td>
+<td>Methods for function validParameter in Package &lsquo;distrMod&rsquo; </td></tr>
 </table>
 
 <h2><a name="W">-- W --</a></h2>

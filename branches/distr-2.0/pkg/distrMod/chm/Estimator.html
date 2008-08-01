@@ -25,7 +25,7 @@ estimates.
 
 <pre>
 Estimator(x, estimator, name, Infos, asvar = NULL, nuis.idx,
-          ...)
+          trafo = NULL, asvar.fct, ...)
 </pre>
 
 
@@ -51,6 +51,18 @@ optionally the asymptotic (co)variance of the estimator </td></tr>
 <td>
 optionally the indices of the estimate belonging 
 to nuisance parameter</td></tr>
+<tr valign="top"><td><code>trafo</code></td>
+<td>
+an object of class <code>MatrixorFunction</code> &ndash; a transformation
+for the main parameter</td></tr>
+<tr valign="top"><td><code>asvar.fct</code></td>
+<td>
+optionally: a function to determine the corresponding
+asymptotic variance; if given, <code>asvar.fct</code> takes arguments
+<code>L2Fam</code>((the parametric model as object of class <code>L2ParamFamily</code>)) 
+and <code>param</code> (the parameter value as object of class 
+<code>ParamFamParameter</code>); arguments are called by name; <code>asvar.fct</code>
+may also process further arguments passed through the <code>...</code> argument</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 further arguments to <code>estimator</code>. </td></tr>
@@ -73,7 +85,8 @@ An object of S4-class <code>"Estimate"</code>.</p>
 <h3>Author(s)</h3>
 
 <p>
-Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
 </p>
 
 

@@ -40,6 +40,8 @@ More frequently they are created via the generating functions
 name of the estimator. </dd>
 <dt><code>estimate</code>:</dt><dd>Object of class <code>"ANY"</code>:
 estimate.</dd>
+<dt><code>estimate.call</code>:</dt><dd>Object of class <code>"call"</code>:
+call by which estimate was produced.</dd>
 <dt><code>criterion</code>:</dt><dd>Object of class <code>"numeric"</code>:
 minimum value of the considered criterion.</dd>
 <dt><code>Infos</code>:</dt><dd>object of class <code>"matrix"</code>
@@ -49,6 +51,8 @@ additional informations. </dd>
 which may contain the asymptotic (co)variance of the estimator. </dd>
 <dt><code>samplesize</code>:</dt><dd>object of class <code>"numeric"</code> &mdash;
 the samplesize at which the estimate was evaluated. </dd>
+<dt><code>nuis.idx</code>:</dt><dd>object of class <code>"OptionalNumeric"</code>: 
+indices of <code>estimate</code> belonging to the nuisance part</dd>
 </dl>
 
 <h3>Extends</h3>
@@ -72,7 +76,8 @@ replacement function for slot <code>criterion</code>. </dd>
 <h3>Author(s)</h3>
 
 <p>
-Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
 </p>
 
 

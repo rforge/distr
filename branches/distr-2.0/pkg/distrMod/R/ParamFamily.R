@@ -32,8 +32,25 @@ setMethod("modifyParam", "ParamFamily", function(object) object@modifyParam)
 ## wrapped access methods
 setMethod("main", "ParamFamily", function(object) main(param(object)))
 setMethod("nuisance", "ParamFamily", function(object) nuisance(param(object)))
-setMethod("trafo", "ParamFamily", function(object) trafo(param(object)))
+setMethod("trafo", signature(object = "ParamFamily", param = "missing"), 
+                   function(object, param){ param0 <- object@param 
+                                            return(trafo(param0))})
+setMethod("trafo", signature(object = "ParamFamily", param = "ParamFamParameter"), 
+   function(object, param){
+        if(is.function(trafo(object))) 
+             return(list(fct = trafo(object), 
+                         mat = (trafo(object)(main(param)))$mat))
+        else return(list(fct = function(x) trafo(object)%*%x, 
+                         mat = trafo(objcet)))
+   })  
 
 ## replace methods
 #setReplaceMethod("param", "ParamFamily", 
 #    function(object, value){ object@param <- value; object })
+setReplaceMethod("trafo", "ParamFamily", 
+    function(object, value){ 
+        param <- object@param
+        trafo(param) <-  value
+        object <- modifyModel(object, param)
+        object
+    })

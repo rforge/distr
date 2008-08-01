@@ -10,6 +10,8 @@
 <param name="keyword" value="R:   name<-,Estimate-method">
 <param name="keyword" value="R:   estimate">
 <param name="keyword" value="R:   estimate,Estimate-method">
+<param name="keyword" value="R:   estimate.call">
+<param name="keyword" value="R:   estimate.call,Estimate-method">
 <param name="keyword" value="R:   Infos">
 <param name="keyword" value="R:   Infos,Estimate-method">
 <param name="keyword" value="R:   samplesize">
@@ -56,6 +58,8 @@ More frequently they are created via the generating function
 name of the estimator. </dd>
 <dt><code>estimate</code>:</dt><dd>Object of class <code>"ANY"</code>:
 estimate.</dd>
+<dt><code>estimate.call</code>:</dt><dd>Object of class <code>"call"</code>:
+call by which estimate was produced.</dd>
 <dt><code>Infos</code>:</dt><dd>object of class <code>"matrix"</code>
 with two columns named <code>method</code> and <code>message</code>:
 additional informations. </dd>
@@ -80,6 +84,10 @@ replacement function for slot <code>name</code>. </dd>
 
 <dt>estimate</dt><dd><code>signature(object = "Estimate")</code>: 
 accessor function for slot <code>estimate</code>. </dd>
+
+
+<dt>estimate.call</dt><dd><code>signature(object = "Estimate")</code>: 
+accessor function for slot <code>estimate.call</code>. </dd>
 
 
 <dt>samplesize</dt><dd><code>signature(object = "Estimate")</code>: 
@@ -126,7 +134,8 @@ borrowed from <code>print.fitdistr</code> in package <span class="pkg">MASS</spa
 <h3>Author(s)</h3>
 
 <p>
-Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
 </p>
 
 

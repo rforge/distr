@@ -45,9 +45,11 @@ confint(object, level = 0.95, ...)
 <table summary="R argblock">
 <tr valign="top"><td><code>object</code></td>
 <td>
-a fitted model object.</td></tr>
+in default / signature <code>ANY</code> case: a fitted model object,
+in signature <code>Estimate</code> case, an object of class <code>Estimate</code></td></tr>
 <tr valign="top"><td><code>parm</code></td>
 <td>
+only used in default / signature <code>ANY</code> case: 
 a specification of which parameters are to be given
 confidence intervals, either a vector of numbers or a vector of
 names.  If missing, all parameters are considered.</td></tr>
@@ -62,28 +64,43 @@ additional argument(s) for methods.</td></tr>
 <h3>Details</h3>
 
 <p>
-<code>confint</code> is a generic function.  The default method
-(signature <code>ANY</code>) uses the S3 generic of package <span class="pkg">stats</span>,
-see <code><a onclick="findlink('stats', 'confint.html')" style="text-decoration: underline; color: blue; cursor: hand">confint</a></code>. The method for signature <code>Estimate</code>
-will return a corresponding confidence interval assuming
+<code>confint</code> is a generic function.  Its behavior differs according to
+its arguments.
+<ul>
+<dt>signature <code>ANY</code>:</dt><dd>the default method;
+uses the S3 generic of package <span class="pkg">stats</span>,
+see <code><a onclick="findlink('stats', 'confint.html')" style="text-decoration: underline; color: blue; cursor: hand">confint</a></code>.</dd>
+<dt>signature <code>Estimate</code>:</dt><dd>will return a corresponding confidence interval assuming
 asymptotic normality, and hence needs suitably filled slot <code>asvar</code>
-in argument <code>object</code>.
-</p>
-
+in argument <code>object</code>. Besides the actual bounds, organized in 
+an array just as in the S3 generic, the return value also captures 
+the name of the estimator for which it is produced, as well as the corresponding
+call producing the estimator, and the corresponding 
+<code>trafo</code> and <code>nuisance</code> slots/parts.</dd>
+</ul>
 
 <h3>Value</h3>
 
-<p>
+<table summary="R argblock">
+<tr valign="top"><td><code>signature <code>ANY</code>:</code></td>
+<td>
 A matrix (or vector) with columns giving lower and upper confidence
 limits for each parameter. These will be labelled as (1-level)/2 and
-1 - (1-level)/2 in % (by default 2.5% and 97.5%).</p>
+1 - (1-level)/2 in % (by default 2.5% and 97.5%).</td></tr>
+<tr valign="top"><td><code>signature <code>Estimate</code>:</code></td>
+<td>
+An object of class <code>Confint</code></td></tr>
+</table>
+<p>
+
+normal-bracket39bracket-normal</p>
 
 <h3>See Also</h3>
 
 <p>
 <code><a onclick="findlink('stats', 'confint.html')" style="text-decoration: underline; color: blue; cursor: hand">confint</a></code>,
 <code><a onclick="findlink('MASS', 'confint.glm.html')" style="text-decoration: underline; color: blue; cursor: hand">confint.glm</a></code> and <code><a onclick="findlink('MASS', 'confint.nls.html')" style="text-decoration: underline; color: blue; cursor: hand">confint.nls</a></code> in
-package <span class="pkg">MASS</span>.
+package <span class="pkg">MASS</span>, <code><a href="Confint-class.html">Confint-class</a></code>.
 </p>
 
 

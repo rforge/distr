@@ -26,7 +26,7 @@ probability measures. This is done by calling the function
 <h3>Usage</h3>
 
 <pre>
-MLEstimator(x, ParamFamily, interval, par, Infos, ...)
+MLEstimator(x, ParamFamily, interval, par, Infos, trafo = NULL, penalty = 0, ...)
 </pre>
 
 
@@ -49,6 +49,13 @@ the parameter of <code>ParamFamily</code> are used. </td></tr>
 <tr valign="top"><td><code>Infos</code></td>
 <td>
 character: optional informations about estimator </td></tr>
+<tr valign="top"><td><code>trafo</code></td>
+<td>
+an object of class <code>MatrixorFunction</code> &ndash; a transformation
+for the main parameter</td></tr>
+<tr valign="top"><td><code>penalty</code></td>
+<td>
+(non-negative) numeric: penalizes non valid parameter-values</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 further arguments to <code>criterion</code> or <code>optimize</code> 

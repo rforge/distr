@@ -1,8 +1,32 @@
+.isUnitMatrix <- function(m){
+### checks whether m is unit matrix
+              m.row <- nrow(m)
+              isTRUE(all.equal(m, diag(m.row), check.attributes = FALSE))
+              }
+
+.validTrafo <- function(trafo, dimension){
+##checks whether trafo is valid
+  if(!is.function(trafo)){
+    if(ncol(trafo) != dimension)
+        stop("invalid transformation:\n", 
+             "number of columns of 'trafo' not equal to ", 
+             "dimension of the parameter")
+    if(nrow(trafo) > dimension)
+        stop("invalid transformation:\n",
+             "number of rows of 'trafo' larger than ", 
+             "dimension of the parameter")
+    if(any(!is.finite(trafo)))
+        stop("infinite or missing values in 'trafo'")
+    }
+  return(invisible())
+}
+
 ### still to be tested and improved:
 ## covariance for minimum CvM distance estimator acc. Ri:94, pp.132-133
 
-.CvMMDCovariance<- function(L2Fam, par, mu, expon=3, withplot=FALSE,
-   N = getdistrOption("DefaultNrGridPoints")+1){
+.CvMMDCovariance<- function(L2Fam, param, mu = distribution(L2Fam), expon=3, 
+                            withplot = FALSE, 
+                            N = 200, ... ){#getdistrOption("DefaultNrGridPoints")+1, ...){
 
    # preparations:
    eps <- getdistrOption("TruncQuantile")
@@ -10,8 +34,8 @@
 
 
    distr <- L2Fam@distribution
-   param <- L2Fam@param
-   dim0 <- dimension(param)
+   param0 <- L2Fam@param
+   dim0 <- dimension(param0)
 
    if(missing(mu)) mu <- distr
 
@@ -24,7 +48,7 @@
    else
        x.mu.seq <- seq(q(mu)(eps^expon),q(mu)(eps^expon,lower=FALSE),length=N)
 
-   paramP <- ParamFamParameter(name = name(param), main = par,
+   paramP <- ParamFamParameter(name = name(param0), main = main(param),
                                trafo = diag(dim0))
    L2deriv0 <- L2deriv(L2Fam, param = paramP)
 
@@ -49,7 +73,8 @@
    Delta0 <- sapply(x.seq, function(Y){ fct <- function(x) L2x(x,y=Y)
                                         return(E(object=distr, fun = fct))})
    Delta1 <- approxfun(x.seq, Delta0, yleft = 0, yright = 0)
-   if(is(distr,"DiscreteDistribution"))         Delta <- function(x) Delta1(x) * (x %in% support(distr))
+   if(is(distr,"DiscreteDistribution"))         
+      Delta <- function(x) Delta1(x) * (x %in% support(distr))
    else  Delta <- function(x) Delta1(x)
 
 

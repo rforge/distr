@@ -25,7 +25,7 @@ minimum distance estimates.
 
 <pre>
 MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name, interval, par, 
-            Infos, ...)
+            Infos, trafo = NULL, penalty = 0, asvar.fct, ...)
 </pre>
 
 
@@ -55,6 +55,21 @@ the parameter of <code>ParamFamily</code> are used. </td></tr>
 <tr valign="top"><td><code>Infos</code></td>
 <td>
 character: optional informations about estimator </td></tr>
+<tr valign="top"><td><code>trafo</code></td>
+<td>
+an object of class <code>MatrixorFunction</code> &ndash; a transformation
+for the main parameter</td></tr>
+<tr valign="top"><td><code>penalty</code></td>
+<td>
+(non-negative) numeric: penalizes non valid parameter-values</td></tr>
+<tr valign="top"><td><code>asvar.fct</code></td>
+<td>
+optionally: a function to determine the corresponding
+asymptotic variance; if given, <code>asvar.fct</code> takes arguments
+<code>L2Fam</code>((the parametric model as object of class <code>L2ParamFamily</code>)) 
+and <code>param</code> (the parameter value as object of class 
+<code>ParamFamParameter</code>); arguments are called by name; <code>asvar.fct</code>
+may also process further arguments passed through the <code>...</code> argument</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 further arguments to <code>criterion</code> or <code>optimize</code> 

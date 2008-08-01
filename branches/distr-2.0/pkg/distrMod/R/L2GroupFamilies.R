@@ -24,6 +24,7 @@ L2LocationFamily <- function(loc = 0, name, centraldistribution = Norm(),
 
     param0 <- loc
     names(param0) <- "loc"
+    if(missing(trafo)) trafo <- matrix(1)
     param <- ParamFamParameter(name = "location", main = param0, trafo = trafo)
     modifyParam <- function(theta){ centraldistribution + theta }
     props <- c(paste("The", name, "is invariant under"),
@@ -106,6 +107,7 @@ L2ScaleFamily <- function(scale = 1, loc = 0, name, centraldistribution = Norm()
 
     param0 <- scale
     names(param0) <- "scale"
+    if(missing(trafo)) trafo <- matrix(1)
     param <- ParamFamParameter(name = "scale", main = param0, trafo = trafo)
     modifyParam <- function(theta){}
     body(modifyParam) <- substitute({ theta*centraldistribution+loc },
@@ -193,6 +195,7 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
 
     param0 <- c(loc, scale)
     names(param0) <- c("loc", "scale")
+    if(missing(trafo)) trafo <- diag(2)
     param <- ParamFamParameter(name = "location and scale", main = param0,
                                trafo = trafo)
     modifyParam <- function(theta){theta[2]*centraldistribution+theta[1] }
@@ -298,6 +301,7 @@ L2LocationUnknownScaleFamily <- function(loc = 0, scale = 1, name,
 
     param0 <- c(loc, scale)
     names(param0) <- c("loc", "scale")
+    if(missing(trafo)) trafo <- matrix(1)
     param <- ParamFamParameter(name = "location and scale", main = param0[1],
                                nuisance = param0[2], trafo = trafo)
     modifyParam <- function(theta){theta[2]*centraldistribution+theta[1] }
@@ -404,6 +408,7 @@ L2ScaleUnknownLocationFamily <- function(loc = 0, scale = 1, name,
 
     param0 <- c(scale, loc)
     names(param0) <- c("scale", "loc")
+    if(missing(trafo)) trafo <- matrix(1)
     param <- ParamFamParameter(name = "scale and location", main = param0[1],
                                nuisance = param0[2], trafo = trafo)
     modifyParam <- function(theta){theta[1]*centraldistribution+theta[2] }

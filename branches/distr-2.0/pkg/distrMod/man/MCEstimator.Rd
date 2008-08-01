@@ -12,7 +12,8 @@
 }
 \usage{
 MCEstimator(x, ParamFamily, criterion, crit.name, interval, par, 
-            Infos, ...)
+            Infos, trafo = NULL, penalty = 0, validity.check = TRUE,
+            asvar.fct, ...)
 }
 \arguments{
   \item{x}{ (empirical) data }
@@ -23,6 +24,17 @@ MCEstimator(x, ParamFamily, criterion, crit.name, interval, par,
   \item{par}{ initial parameter values used by \code{optim}; if \code{missing}
     the parameter of \code{ParamFamily} are used. }
   \item{Infos}{ character: optional informations about estimator }
+  \item{trafo}{ an object of class \code{MatrixorFunction} -- a transformation
+  for the main parameter}
+  \item{penalty}{(non-negative) numeric: penalizes non valid parameter-values}
+  \item{validity.check}{logical: shall return parameter value be checked for
+  validity? Defaults to yes (\code{TRUE})}
+  \item{asvar.fct}{optionally: a function to determine the corresponding
+    asymptotic variance; if given, \code{asvar.fct} takes arguments
+    \code{L2Fam}((the parametric model as object of class \code{L2ParamFamily})) 
+    and \code{param} (the parameter value as object of class 
+    \code{ParamFamParameter}); arguments are called by name; \code{asvar.fct}
+     may also process further arguments passed through the \code{\dots} argument}              
   \item{\dots}{ further arguments to \code{criterion} or \code{optimize} 
     or \code{optim}, respectively. }
 }

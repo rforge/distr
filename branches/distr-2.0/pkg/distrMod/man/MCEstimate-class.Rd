@@ -19,6 +19,8 @@
       name of the estimator. }
     \item{\code{estimate}:}{Object of class \code{"ANY"}:
       estimate.}
+    \item{\code{estimate.call}:}{Object of class \code{"call"}:
+      call by which estimate was produced.}
     \item{\code{criterion}:}{Object of class \code{"numeric"}:
       minimum value of the considered criterion.}
     \item{\code{Infos}:}{ object of class \code{"matrix"}
@@ -28,6 +30,8 @@
       which may contain the asymptotic (co)variance of the estimator. }
     \item{\code{samplesize}:}{ object of class \code{"numeric"} ---
       the samplesize at which the estimate was evaluated. }
+    \item{\code{nuis.idx}:}{ object of class \code{"OptionalNumeric"}: 
+     indices of \code{estimate} belonging to the nuisance part}
   }
 }
 \section{Extends}{
@@ -43,7 +47,8 @@ Class \code{"Estimate"}, directly.
   }
 }
 %\references{}
-\author{Matthias Kohl \email{Matthias.Kohl@stamats.de}}
+\author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
+Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}
 \seealso{\code{\link{Estimate-class}}, \code{\link{MCEstimator}}, 
          \code{\link{MDEstimator}}, \code{\link{MLEstimator}}}

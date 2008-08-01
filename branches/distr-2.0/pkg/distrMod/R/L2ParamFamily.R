@@ -128,14 +128,16 @@ setMethod("checkL2deriv", "L2ParamFamily",
 ### move model from one parameter to the next...
 setMethod("modifyModel", signature(model = "L2ParamFamily", param = "ParamFamParameter"), 
           function(model, param, ...){
-          existsPIC(M <- L2ParamFamily(name = model@name, 
-                        distribution = model@modifyParam(main(param)),
+          M <- L2ParamFamily(name = model@name, 
+                        distribution = model@modifyParam(main(param)), 
                         param = param, 
                         props = model@props,
                         modifyParam = model@modifyParam,
                         L2deriv.fct = model@L2deriv.fct,
-                        FisherInfo.fct = model@FisherInfo.fct,
-                        FisherInfo = model@FisherInfo.fct(param)))
+                        L2derivDistr = model@L2derivDistr, 
+                        FisherInfo.fct = model@FisherInfo.fct
+                        )
+          M1 <- existsPIC(M)
           return(M)
           })
 

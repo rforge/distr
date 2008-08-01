@@ -17,7 +17,7 @@ ParamFamily(name, distribution = Norm(), distrSymm, modifyParam,
       symmetry of \code{distribution}. }
   \item{main}{ numeric vector: main parameter }
   \item{nuisance}{ numeric vector: nuisance parameter }
-  \item{trafo}{ matrix: transformation of the parameters }
+  \item{trafo}{ MatrixorFunction: transformation of the parameters }
   \item{param}{ object of class \code{"ParamFamParameter"}:
     parameter of the family }
   \item{modifyParam}{ function: mapping from the parameter space 

@@ -16,6 +16,7 @@ Title=R Help for package distrMod
 BiasType-class.html
 BinomFamily.html
 CauchyLocationScaleFamily.html
+Confint-class.html
 DistrSymmList-class.html
 DistrSymmList.html
 DistributionSymmetry-class.html
@@ -110,6 +111,7 @@ fiMSE.html
 fiRisk-class.html
 fiUnOvShoot-class.html
 fiUnOvShoot.html
+internals.html
 isKerAinKerB.html
 negativeBias.html
 norms.html
@@ -123,3 +125,5 @@ trAsCov-class.html
 trAsCov.html
 trFiCov-class.html
 trFiCov.html
+trafo-methods.html
+validParameter-methods.html

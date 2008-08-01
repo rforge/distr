@@ -149,21 +149,9 @@ setClass("ParamFamParameter",
                    stop("invalid transformation:\n", 
                         "should be a matrix or a function") 
                 if(is.matrix(object@trafo)){
-                dimension <- length(object@main) + length(object@nuisance)
-
-                if(is.matrix(object@trafo)){
-                    if(ncol(object@trafo) != dimension)
-                        stop("invalid transformation:\n",
-                             "number of columns of 'trafo' not equal to ",
-                             "dimension of the parameter")
-                    if(nrow(object@trafo) > dimension)
-                        stop("invalid transformation:\n",
-                             "number of rows of 'trafo' larger than ",
-                             "dimension of the parameter")
-                    if(any(!is.finite(object@trafo)))
-                        stop("infinite or missing values in 'trafo'")}
-                }
-                return(TRUE)
+                dimension <- length(object@main) #+ length(object@nuisance)
+                .validTrafo(object@trafo, dimension) ### check validity
+                return(TRUE)}
             })
 
 ### from Matthias' thesis / ROptEst
@@ -414,15 +402,19 @@ setClass("Estimate",
                         samplesize = "numeric",
                         asvar = "OptionalMatrix",
                         Infos = "matrix",
-                        nuis.idx = "OptionalNumeric"),
+                        estimate.call = "call",
+                        nuis.idx = "OptionalNumeric",
+                        trafo = "list"),
          prototype(name = "Estimate",
                    estimate = numeric(0),
                    samplesize = numeric(0),
+                   estimate.call = call("{}"),
                    asvar = NULL,
                    Infos = matrix(c(character(0),character(0)), ncol=2,
                                   dimnames=list(character(0), c("method", "message"))),
+                   trafo = list(fct = function(x)x, mat = matrix(0)),
                    nuis.idx = NULL),
-         validity = function(object){
+         validity = function(object){            
             if(is.null(dim(object@estimate)))
                len <- length(object@estimate)
             else   
@@ -432,7 +424,7 @@ setClass("Estimate",
             if(ncol(object@Infos)!=2)
                 stop("'Infos' must have two columns")
             if(!is.null(object@nuis.idx))
-                {if(any(nuis.idx<0) || any(nuis.idx>len))
+                {if(any(object@nuis.idx<0) || any(object@nuis.idx>len))
                    stop(gettextf("'nuis.idx' must be in 1:%d", len))}
             else TRUE
          })
@@ -443,12 +435,33 @@ setClass("MCEstimate",
                    estimate = numeric(0),
                    samplesize = numeric(0),
                    asvar = NULL,
+                   estimate.call = call("{}"),
                    criterion = numeric(0),
                    Infos = matrix(c(character(0),character(0)), ncol=2,
                                   dimnames=list(character(0), c("method", "message"))),
-                   nuis.idx = NULL),
+                   nuis.idx = NULL,
+                   trafo = list(fct = function(x)x, mat = matrix(0))),
          contains = "Estimate")
 
 ## To Do: class MLEstimate which is compatible with class
 ## mle or maybe class summary.mle of package "stats4"
 
+#################################################
+## "Confint" classes
+#################################################
+
+setClass("Confint", 
+         representation(type = "character",
+                        confint = "array",
+                        estimate.call = "call",
+                        name.estimate = "character",
+                        trafo.estimate = "list",
+                        nuisance.estimate = "OptionalNumeric"
+                        ),
+         prototype(type = "",
+                   confint = array(0),
+                   estimate.call = call("{}"),
+                   name.estimate = "",
+                   trafo.estimate = list(fct = function(x)x, mat = matrix(0)),
+                   nuisance.estimate = NULL)
+         )

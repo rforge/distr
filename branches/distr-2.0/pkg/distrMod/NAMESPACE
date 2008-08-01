@@ -24,6 +24,7 @@ exportClasses("L2GroupParamFamily", "L2LocationFamily",
               "L2ScaleFamily", "L2LocationScaleFamily")
 exportClasses("NormType", "QFNorm", "InfoNorm", "SelfNorm")
 exportClasses("Estimate", "MCEstimate")
+exportClasses("Confint")
 exportMethods("type", "SymmCenter", "distrSymm",
               "distribution", "props", "props<-", "addProp<-", "main", "main<-",
               "nuisance", "nuisance<-", "trafo", "trafo<-", "modifyParam",
@@ -38,11 +39,14 @@ exportMethods("modifyModel")
 exportMethods("norm",  "QuadForm<-", "QuadForm", "fct", 
               "fct<-", "normtype", "normtype<-")
 exportMethods("name", "name<-", 
-              "estimate", 
+              "estimate", "estimate.call", 
+              "name.estimate", "trafo.estimate", "nuisance.estimate", 
               "Infos", "Infos<-", "addInfo<-",
               "criterion", "criterion<-",
-              "samplesize", "asvar", "asvar<-", "confint")
+              "samplesize", "asvar", "asvar<-")
+exportMethods("confint")
 exportMethods("nuisance", "main") 
+exportMethods("validParameter")
 export("PosDefSymmMatrix","PosSemDefSymmMatrix")
 export("distrModOptions", "getdistrModOption",
        "Estimator", "MCEstimator", "MLEstimator", "MDEstimator")

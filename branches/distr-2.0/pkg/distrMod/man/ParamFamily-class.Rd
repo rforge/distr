@@ -8,7 +8,7 @@
 \alias{modifyParam,ParamFamily-method}
 \alias{plot,ParamFamily-method}
 \alias{show,ParamFamily-method}
-\alias{trafo,ParamFamily-method}
+%\alias{trafo,ParamFamily-method}
 
 \title{Parametric family of probability measures.}
 \description{Class of parametric families of probability measures.}
@@ -47,7 +47,7 @@ Class \code{"ProbFamily"}, directly.
       wrapped accessor function for slot \code{nuisance} 
       of slot \code{param}. }
 
-    \item{trafo}{\code{signature(object = "ParamFamily")}: 
+    \item{trafo}{\code{signature(object = "ParamFamily", param = "missing")}: 
       wrapped accessor function for slot \code{trafo} 
       of slot \code{param}. }
 

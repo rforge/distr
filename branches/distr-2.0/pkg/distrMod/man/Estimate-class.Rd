@@ -5,6 +5,8 @@
 \alias{name<-,Estimate-method}
 \alias{estimate}
 \alias{estimate,Estimate-method}
+\alias{estimate.call}
+\alias{estimate.call,Estimate-method}
 \alias{Infos}
 \alias{Infos,Estimate-method}
 \alias{samplesize}
@@ -35,6 +37,8 @@
       name of the estimator. }
     \item{\code{estimate}:}{Object of class \code{"ANY"}:
       estimate.}
+    \item{\code{estimate.call}:}{Object of class \code{"call"}:
+      call by which estimate was produced.}
     \item{\code{Infos}:}{ object of class \code{"matrix"}
       with two columns named \code{method} and \code{message}:
       additional informations. }
@@ -56,6 +60,9 @@
 
     \item{estimate}{\code{signature(object = "Estimate")}: 
       accessor function for slot \code{estimate}. }
+
+    \item{estimate.call}{\code{signature(object = "Estimate")}: 
+      accessor function for slot \code{estimate.call}. }
 
     \item{samplesize}{\code{signature(object = "Estimate")}: 
       accessor function for slot \code{samplesize}. }
@@ -87,7 +94,8 @@
 \note{Parts of the code for methods \code{show} and \code{print} has been
 borrowed from \code{print.fitdistr} in package \pkg{MASS} by B.D. Ripley.}
 %\references{}
-\author{Matthias Kohl \email{Matthias.Kohl@stamats.de}}
+\author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
+Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}
 \seealso{\code{\link{Estimator}}}
 \examples{

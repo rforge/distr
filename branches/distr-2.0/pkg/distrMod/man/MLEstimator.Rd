@@ -9,7 +9,7 @@
   \code{MCEstimator} which minimizes the negative log-Likelihood.
 }
 \usage{
-MLEstimator(x, ParamFamily, interval, par, Infos, ...)
+MLEstimator(x, ParamFamily, interval, par, Infos, trafo = NULL, penalty = 0, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -19,6 +19,9 @@ MLEstimator(x, ParamFamily, interval, par, Infos, ...)
   \item{par}{ initial parameter values used by \code{optim}; if \code{missing}
     the parameter of \code{ParamFamily} are used. }
   \item{Infos}{ character: optional informations about estimator }
+  \item{trafo}{ an object of class \code{MatrixorFunction} -- a transformation
+  for the main parameter}
+  \item{penalty}{(non-negative) numeric: penalizes non valid parameter-values}
   \item{\dots}{ further arguments to \code{criterion} or \code{optimize} 
     or \code{optim}, respectively. }
 }

@@ -10,6 +10,7 @@ BinomFamily <- function(size = 1, prob = 0.5, trafo){
         distrSymm <- NoSymmetry()
     param0 <- prob
     names(param0) <- "prob"
+    if(missing(trafo)) trafo <- matrix(1)
     param <- ParamFamParameter(name = "probability of success",  
                                main = param0, trafo = trafo)
     modifyParam <- function(theta){ Binom(size = size, prob = theta) }
@@ -49,6 +50,7 @@ PoisFamily <- function(lambda = 1, trafo){
     distrSymm <- NoSymmetry()
     param0 <- lambda
     names(param0) <- "lambda"
+    if(missing(trafo)) trafo <- matrix(1)
     param <- ParamFamParameter(name = "positive mean",
                                main = param0, trafo = trafo)
     modifyParam <- function(theta){ Pois(lambda = theta) }
@@ -82,6 +84,7 @@ GammaFamily <- function(scale = 1, shape = 1, trafo){
     distrSymm <- NoSymmetry()
     param0 <- c(scale, shape)
     names(param0) <- c("scale", "shape")
+    if(missing(trafo)) trafo <- diag(2)
     param <- ParamFamParameter(name = "scale and shape",  
                         main = param0, trafo = trafo)
     modifyParam <- function(theta){ Gammad(scale = theta[1], shape = theta[2]) }
@@ -339,6 +342,7 @@ GammaFamily <- function(scale = 1, shape = 1, trafo){
 ## Normal location family
 ##################################################################
 NormLocationFamily <- function(mean = 0, sd = 1, trafo){ 
+    if(missing(trafo)) trafo <- matrix(1)
     L2LocationFamily(loc = mean, name = "normal location family",
                      centraldistribution = Norm(mean = 0, sd = sd),
                      LogDeriv = function(x) x/sd^2,
@@ -353,6 +357,7 @@ NormLocationFamily <- function(mean = 0, sd = 1, trafo){
 ## Normal scale family
 ##################################################################
 NormScaleFamily <- function(sd = 1, mean = 0, trafo){ 
+    if(missing(trafo)) trafo <- matrix(1)
     L2ScaleFamily(loc = mean, scale = sd, name = "normal scale family", 
                   L2derivDistr.0 = (Chisq(df = 1, ncp = 0)-1)/sd,
                   distrSymm = SphericalSymmetry(SymmCenter = mean),
@@ -365,6 +370,7 @@ NormScaleFamily <- function(sd = 1, mean = 0, trafo){
 ## Normal location and scale family
 ##################################################################
 NormLocationScaleFamily <- function(mean = 0, sd = 1, trafo){ 
+    if(missing(trafo)) trafo <- diag(2)
     L2LocationScaleFamily(loc = mean, scale = sd, 
               name = "normal location and scale family", 
               L2derivDistr.0 = list( Norm(mean = 0, sd=1/sd), 
@@ -386,6 +392,7 @@ NormLocationScaleFamily <- function(mean = 0, sd = 1, trafo){
 ## Exponential scale family
 ##################################################################
 ExpScaleFamily <- function(rate = 1, trafo){ 
+    if(missing(trafo)) trafo <- matrix(1)
     L2ScaleFamily(loc = 0, scale = 1/rate, name = "Exponential scale family", 
                   centraldistribution = Exp(rate = 1),
                   LogDeriv = function(x)  1,
@@ -402,6 +409,7 @@ ExpScaleFamily <- function(rate = 1, trafo){
 ## Lognormal scale family
 ##################################################################
 LnormScaleFamily <- function(meanlog = 0, sdlog = 1, trafo){ 
+    if(missing(trafo)) trafo <- matrix(1)
     L2ScaleFamily(loc = 0, scale = exp(meanlog),  
                   name = "lognormal scale family", 
                   centraldistribution = Lnorm(meanlog = 0, sdlog = sdlog),
@@ -419,6 +427,7 @@ LnormScaleFamily <- function(meanlog = 0, sdlog = 1, trafo){
 ## Gumbel location family
 ##################################################################
 GumbelLocationFamily <- function(loc = 0, scale = 1, trafo){ 
+    if(missing(trafo)) trafo <- matrix(1)
     L2LocationFamily(loc = loc, scale = scale, 
                      name = "Gumbel location family", 
                      centraldistribution = Gumbel(loc = 0, scale = scale),
@@ -436,10 +445,11 @@ GumbelLocationFamily <- function(loc = 0, scale = 1, trafo){
 ## Cauchy location scale family
 ##################################################################
 CauchyLocationScaleFamily <- function(loc = 0, scale = 1, trafo){ 
+    if(missing(trafo)) trafo <- diag(2)
     L2LocationScaleFamily(loc = loc, scale = scale, 
                   name = "Cauchy Location and scale family", 
                   centraldistribution = Cauchy(),
-                  LogDeriv = function(x)  -2*x/(x^2+1),  
+                  LogDeriv = function(x)  2*x/(x^2+1),  
                   distrSymm = SphericalSymmetry(SymmCenter = loc),
                   L2derivSymm = FunSymmList(OddSymmetric(SymmCenter = loc), 
                                             EvenSymmetric(SymmCenter = loc)),
@@ -460,6 +470,7 @@ CauchyLocationScaleFamily <- function(loc = 0, scale = 1, trafo){
 ## Normal location family  with unknown scale
 ##################################################################
 NormLocationUnknownScaleFamily <- function(mean = 0, sd = 1, trafo){ 
+    if(missing(trafo)) trafo <- matrix(1)
     L2LocationUnknownScaleFamily(loc = mean, scale = sd, 
                      name = "normal location family with unknown scale (as nuisance)",
                      L2derivDistr.0 = list( Norm(mean = 0, sd=1/sd), 
@@ -477,6 +488,7 @@ NormLocationUnknownScaleFamily <- function(mean = 0, sd = 1, trafo){
 ## Normal scale family  with unknown location
 ##################################################################
 NormScaleUnknownLocationFamily <- function(sd = 1, mean = 0, trafo){ 
+    if(missing(trafo)) trafo <- matrix(1)
     L2ScaleUnknownLocationFamily(loc = mean, scale = sd, 
                   name = "normal scale family with unknown location (as nuisance)", 
                      L2derivDistr.0 = list( Norm(mean = 0, sd=1/sd), 

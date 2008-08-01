@@ -2,7 +2,14 @@
 ## Determine estimates by minimizing a given criterion
 ###############################################################################
 MCEstimator <- function(x, ParamFamily, criterion, crit.name, interval, par, 
-                        Infos, ...){
+                        Infos, trafo = NULL, penalty = 0, validity.check = TRUE,
+                        asvar.fct, ...){
+    
+    lmx <- length(main(ParamFamily))
+    lnx <- length(nuisance(ParamFamily))
+
+    es.call <- match.call()
+
     if(!is.numeric(x))
       stop(gettext("'x' has to be a numeric vector"))
     
@@ -16,7 +23,13 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name, interval, par,
       stop(gettext("'criterion' has to be a function"))
 
     fun <- function(theta, Data, ParamFamily, criterion, ...){
-        criterion(Data, modifyParam(ParamFamily)(theta), ...)
+        if(lnx)
+           names(theta) <- c(names(main(ParamFamily)),
+                             names(nuisance(ParamFamily)))
+        else  names(theta) <- names(main(ParamFamily))
+        crit <- criterion(Data, modifyParam(ParamFamily)(theta), ...)
+        critP <- crit + penalty * (1-validParameter(ParamFamily, theta))
+        return(critP)
     }
 
     if(length(param(ParamFamily)) == 1){
@@ -30,7 +43,7 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name, interval, par,
         if(is(par,"Estimate")) par <- estimate(par)
         res <- optim(par = par, fn = fun, Data = x, ParamFamily = ParamFamily, 
                       criterion = criterion, ...)
-        theta <- res$par
+        theta <- as.numeric(res$par)
         names(theta) <- c(names(main(ParamFamily)),names(nuisance(ParamFamily)))
         crit <- res$value
         if(missing(crit.name))
@@ -50,11 +63,49 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name, interval, par,
         Infos <- matrix(c(rep("MCEstimator", length(Infos)), Infos), ncol = 2)
         colnames(Infos) <- c("method", "message")
     }
+    idx <-      if(lnx) lmx + 1:lnx else 1:(lmx+lnx)
+    nuis.idx <- if(lnx) idx else NULL
+    nuis <- if(lnx) theta[-idx] else NULL
+    
+    
+    param <- ParamFamParameter(name = names(theta), 
+                               main = theta[idx],
+                               nuisance = nuis)    
 
-    lmx <- length(main(ParamFamily))
-    lnx <- length(nuisance(ParamFamily))
-    nuis.idx <- if(lnx) lmx + 1:lnx else NULL 
+    if(missing(trafo)||is.null(trafo)) 
+         {traf1 <- ParamFamily@param@trafo
+          if(is.matrix(traf1))  
+             traf0 <- list(fct = function(x) 
+                                 list(fval = traf1 %*% x, mat = traf1), 
+                           mat = traf1)
+          else
+             traf0 <- list(fct = traf1, mat = traf1(main(param))$mat)                        
+         }
+    else {if(is.matrix(trafo))
+             traf0 <- list(fct = function(x) 
+                                 list(fval = trafo %*% x, mat = trafo), 
+                           mat = trafo)
+          else
+             traf0 <- list(fct = trafo, mat = trafo(main(param))$mat)           
+         } 
 
+
+    if(validity.check){
+        if(!validParameter(ParamFamily,param))
+          {warning("Optimization for MCE did not give a valid result")
+           theta <- rep(NA, lnx+lmx)
+           res <- new("MCEstimate", name = est.name, estimate = theta, 
+                       criterion = crit, Infos = Infos, samplesize = samplesize, 
+                       nuis.idx = nuis.idx, estimate.call = es.call, 
+                       trafo = traf0)
+           return(res)}
+    }
+
+    if(!missing(asvar.fct))
+      {asvar <- asvar.fct(L2Fam = ParamFamily, param = param, ...)
+       res@asvar <- asvar}
+    
     new("MCEstimate", name = est.name, estimate = theta, criterion = crit,
-         Infos = Infos, samplesize = samplesize, nuis.idx = nuis.idx)
+         Infos = Infos, samplesize = samplesize, nuis.idx = nuis.idx,
+         estimate.call = es.call, trafo = traf0)
 }

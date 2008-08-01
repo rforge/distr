@@ -12,10 +12,10 @@
 \alias{nuisance<-}
 \alias{nuisance<-,ParamFamParameter-method}
 \alias{show,ParamFamParameter-method}
-\alias{trafo}
-\alias{trafo,ParamFamParameter-method}
-\alias{trafo<-}
-\alias{trafo<-,ParamFamParameter-method}
+%\alias{trafo}
+%\alias{trafo,ParamFamParameter-method}
+%\alias{trafo<-}
+%\alias{trafo<-,ParamFamParameter-method}
 
 \title{Parameter of a parametric family of probability measures}
 \description{Class of the parameter of parametric families 
@@ -30,7 +30,7 @@
     \item{\code{main}:}{Object of class \code{"numeric"}: main parameter. }
     \item{\code{nuisance}:}{Object of class \code{"OptionalNumeric"}:
       optional nuisance parameter. }
-    \item{\code{trafo}:}{Object of class \code{"matrix"}: 
+    \item{\code{trafo}:}{Object of class \code{"MatrixorFunction"}: 
       transformation of the parameter. }
     \item{\code{name}:}{Object of class \code{"character"}:
       name of the parameter. }

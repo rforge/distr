@@ -61,7 +61,7 @@ if(!isGeneric("nuisance<-")){
     setGeneric("nuisance<-", function(object, value) standardGeneric("nuisance<-"))
 }
 if(!isGeneric("trafo")){
-    setGeneric("trafo", function(object) standardGeneric("trafo"))
+    setGeneric("trafo", function(object, param) standardGeneric("trafo"))
 }
 if(!isGeneric("trafo<-")){
     setGeneric("trafo<-", function(object, value) standardGeneric("trafo<-"))
@@ -158,6 +158,18 @@ if(!isGeneric("fct")){
 if(!isGeneric("estimate")){
     setGeneric("estimate", function(object) standardGeneric("estimate"))
 }
+if(!isGeneric("estimate.call")){
+    setGeneric("estimate.call", function(object) standardGeneric("estimate.call"))
+}
+if(!isGeneric("name.estimate")){
+    setGeneric("name.estimate", function(object) standardGeneric("name.estimate"))
+}
+if(!isGeneric("trafo.estimate")){
+    setGeneric("trafo.estimate", function(object) standardGeneric("trafo.estimate"))
+}
+if(!isGeneric("nuisance.estimate")){
+    setGeneric("nuisance.estimate", function(object) standardGeneric("nuisance.estimate"))
+}
 if(!isGeneric("Infos")){
     setGeneric("Infos", function(object) standardGeneric("Infos"))
 }
@@ -190,6 +202,9 @@ if(!isGeneric("main")){
 }
 
 if(!isGeneric("confint")){
-    setGeneric("confint", function(object,... ) standardGeneric("confint"))
+    setGeneric("confint", function(object, ... ) standardGeneric("confint"))
 }
 
+if(!isGeneric("validParameter")){
+    setGeneric("validParameter", function(object, ... ) standardGeneric("validParameter"))
+}

@@ -165,12 +165,22 @@ slots:
 name(character), estimate(ANY),
 samplesize(numeric), asvar(OptionalMatrix),
 Infos(matrix), nuis.idx(OptionalNumeric)
+estimate.call(call), trafo(list[of function, matrix])
 
 "Estimate"
 |>"MCEstimate", 
 Additional slots:
 criterion(numeric)
 
+##########################
+Confidence interval class
+##########################
+slots:
+type(character), confint(array),
+estimate.call(call), name.estimate(character),
+trafo.estimate(list[of function, matrix]), 
+nuisance.estimate(OptionalNumeric)
+"Confint"
 
 }
 }

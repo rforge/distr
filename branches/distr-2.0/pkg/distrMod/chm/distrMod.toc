@@ -14,6 +14,22 @@
 <param name="Local" value="0distrMod-package.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value=".CvMMDCovariance">
+<param name="Local" value="internals.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value=".inArgs">
+<param name="Local" value="internals.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value=".isUnitMatrix">
+<param name="Local" value="internals.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value=".validTrafo">
+<param name="Local" value="internals.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="addInfo<-">
 <param name="Local" value="Estimate-class.html">
 </OBJECT>
@@ -170,8 +186,16 @@
 <param name="Local" value="confint-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="confint,Confint-method">
+<param name="Local" value="Confint-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="confint,Estimate-method">
 <param name="Local" value="confint-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Confint-class">
+<param name="Local" value="Confint-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="confint-methods">
@@ -263,6 +287,18 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Estimate-class">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="estimate.call">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="estimate.call,Confint-method">
+<param name="Local" value="Confint-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="estimate.call,Estimate-method">
 <param name="Local" value="Estimate-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -416,6 +452,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Infos<-,Estimate-method">
 <param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="internals_for_distrMod">
+<param name="Local" value="internals.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="isKerAinKerB">
@@ -590,6 +630,14 @@
 <param name="Local" value="ProbFamily-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="name.estimate">
+<param name="Local" value="Confint-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="name.estimate,Confint-method">
+<param name="Local" value="Confint-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="name<-,BiasType-method">
 <param name="Local" value="BiasType-class.html">
 </OBJECT>
@@ -710,6 +758,14 @@
 <param name="Local" value="ParamFamParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="nuisance.estimate">
+<param name="Local" value="Confint-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="nuisance.estimate,Confint-method">
+<param name="Local" value="Confint-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="nuisance<-">
 <param name="Local" value="ParamFamParameter-class.html">
 </OBJECT>
@@ -784,6 +840,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="PosSemDefSymmMatrix-class">
 <param name="Local" value="PosDefSymmMatrix-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="print,Confint-method">
+<param name="Local" value="Confint-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="print,Estimate-method">
@@ -864,6 +924,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="show,asUnOvShoot-method">
 <param name="Local" value="asUnOvShoot-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="show,Confint-method">
+<param name="Local" value="Confint-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="show,Estimate-method">
@@ -991,23 +1055,47 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="trafo">
-<param name="Local" value="ParamFamParameter-class.html">
+<param name="Local" value="trafo-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="trafo,ParamFamily-method">
-<param name="Local" value="ParamFamily-class.html">
+<param name="Name" value="trafo,Estimate,missing-method">
+<param name="Local" value="trafo-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="trafo,ParamFamParameter-method">
-<param name="Local" value="ParamFamParameter-class.html">
+<param name="Name" value="trafo,ParamFamily,missing-method">
+<param name="Local" value="trafo-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trafo,ParamFamily,ParamFamParameter-method">
+<param name="Local" value="trafo-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trafo,ParamFamParameter,missing-method">
+<param name="Local" value="trafo-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trafo-methods">
+<param name="Local" value="trafo-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trafo.estimate">
+<param name="Local" value="Confint-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trafo.estimate,Confint-method">
+<param name="Local" value="Confint-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="trafo<-">
-<param name="Local" value="ParamFamParameter-class.html">
+<param name="Local" value="trafo-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trafo<-,ParamFamily-method">
+<param name="Local" value="trafo-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="trafo<-,ParamFamParameter-method">
-<param name="Local" value="ParamFamParameter-class.html">
+<param name="Local" value="trafo-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="trAsCov">
@@ -1030,12 +1118,40 @@
 <param name="Local" value="Symmetry-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="type,Confint-method">
+<param name="Local" value="Confint-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="type,RiskType-method">
 <param name="Local" value="RiskType-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="type,Symmetry-method">
 <param name="Local" value="Symmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="validParameter">
+<param name="Local" value="validParameter-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="validParameter,L2LocationFamily-method">
+<param name="Local" value="validParameter-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="validParameter,L2LocationScaleFamily-method">
+<param name="Local" value="validParameter-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="validParameter,L2ScaleFamily-method">
+<param name="Local" value="validParameter-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="validParameter,ParamFamily-method">
+<param name="Local" value="validParameter-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="validParameter-methods">
+<param name="Local" value="validParameter-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="width">
@@ -1117,6 +1233,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Class of Symmetries for Functions">
 <param name="Local" value="FunctionSymmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Confint-class">
+<param name="Local" value="Confint-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Convex asymptotic risk">
@@ -1375,6 +1495,10 @@
 <param name="Local" value="checkL2deriv.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Internal functions of package distrMod">
+<param name="Local" value="internals.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="isKerAinKerB">
 <param name="Local" value="isKerAinKerB.html">
 </OBJECT>
@@ -1417,6 +1541,14 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Methods for Function sqrt in Package `distrMod' ">
 <param name="Local" value="sqrt-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Methods for function trafo in Package `distrMod' ">
+<param name="Local" value="trafo-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Methods for function validParameter in Package `distrMod' ">
+<param name="Local" value="validParameter-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Norm classes for norms based on quadratic forms">

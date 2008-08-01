@@ -7,6 +7,10 @@ setReplaceMethod("name", "Estimate",
                   function(object, value) {object@name <- value; object})
 
 setMethod("estimate", "Estimate", function(object) object@estimate)
+setMethod("estimate.call", "Estimate", function(object) object@estimate.call)
+
+setMethod("trafo", signature(object = "Estimate", param = "missing"), 
+           function(object, param) object@trafo)
 
 setMethod("Infos", "Estimate", function(object) object@Infos)
 setReplaceMethod("Infos", "Estimate", 
