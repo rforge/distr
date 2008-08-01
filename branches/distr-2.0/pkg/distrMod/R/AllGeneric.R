@@ -201,9 +201,9 @@ if(!isGeneric("main")){
     setGeneric("main", function(object,... ) standardGeneric("main"))
 }
 
-if(!isGeneric("confint")){
-    setGeneric("confint", function(object, ... ) standardGeneric("confint"))
-}
+#if(!isGeneric("confint")){
+setGeneric("confint", function(object, method, ... ) standardGeneric("confint"))
+#}
 
 if(!isGeneric("validParameter")){
     setGeneric("validParameter", function(object, ... ) standardGeneric("validParameter"))

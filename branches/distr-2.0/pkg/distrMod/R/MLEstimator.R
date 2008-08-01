@@ -49,9 +49,10 @@ MLEstimator <- function(x, ParamFamily, interval, par, Infos, trafo = NULL, pena
 
     trafo0 <- diag(lnx+lmx)
     
-    res <- MCEstimator(x = x, ParamFamily = ParamFamily, criterion = negLoglikelihood,
-                interval = interval, par = par, trafo = trafo0, penalty = penalty, 
-                validity.check = FALSE, ...)
+    res <- MCEstimator(x = x, 
+                ParamFamily = ParamFamily, criterion = negLoglikelihood,
+                interval = interval, par = par, trafo = trafo0, 
+                penalty = penalty, validity.check = FALSE, ...)
 
     if(!is.null(res@nuis.idx))
         idx <- -res@nuis.idx
@@ -60,7 +61,8 @@ MLEstimator <- function(x, ParamFamily, interval, par, Infos, trafo = NULL, pena
     res@estimate.call <- es.call
     res@name <- "Maximum likelihood estimate"
 
-    param <- ParamFamParameter(name = names(res@estimate), main = res@estimate[idx],
+    param <- ParamFamParameter(name = names(res@estimate), 
+                               main = res@estimate[idx],
                                nuisance = res@estimate[-idx])
     
     if(missing(trafo)||is.null(trafo)) 

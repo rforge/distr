@@ -2,16 +2,16 @@
 ## confint methods
 ###############################################################################
 
-#setMethod("confint", signature(object="ANY"),
-#        function(object, parm, level = 0.95, ...) {
-#        if(hasArg(parm))
-#           stats::confint(object = object, parm = parm, level = level, ...)
-#        else
-#           stats::confint(object = object, level = level, ...)
-#})
+setMethod("confint", signature(object="ANY", method="missing"),
+        function(object, method, parm, level = 0.95, ...) {
+        if(hasArg(parm))
+           stats::confint(object = object, parm = parm, level = level, ...)
+        else
+           stats::confint(object = object, level = level, ...)
+})
 
-setMethod("confint", signature(object="Estimate"),
-          function(object, level = 0.95) {
+setMethod("confint", signature(object="Estimate", method="missing"),
+          function(object, method, level = 0.95) {
    objN <- paste(deparse(substitute(object)),sep="",collapse="")
 
    if(is.null(object@asvar))
@@ -45,8 +45,9 @@ setMethod("confint", signature(object="Estimate"),
                    confint = ci)
 })
 
-setMethod("confint", signature(object="Confint"),
-           function(object) object@confint)
+setMethod("confint", signature(object="Confint", method="missing"),
+           function(object, method) object@confint)
+
 setMethod("estimate.call", signature(object="Confint"),
            function(object) object@estimate.call)
 setMethod("name.estimate", signature(object="Confint"),

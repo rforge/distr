@@ -3,7 +3,7 @@
 \alias{Confint-class}
 \alias{type,Confint-method}
 \alias{estimate.call,Confint-method}
-\alias{confint,Confint-method}
+\alias{confint,Confint,missing-method}
 \alias{name.estimate}
 \alias{name.estimate,Confint-method}
 \alias{trafo.estimate}
@@ -44,7 +44,7 @@
     \item{type}{\code{signature(object = "Confint")}: 
       accessor function for slot \code{type}. }
 
-    \item{confint}{\code{signature(object = "Confint")}: 
+    \item{confint}{\code{signature(object = "Confint", method = "missing")}: 
       accessor function for slot \code{type}. }
     
     \item{estimate.call}{\code{signature(object = "Confint")}: 

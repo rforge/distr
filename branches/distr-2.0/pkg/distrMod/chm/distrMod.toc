@@ -182,15 +182,15 @@
 <param name="Local" value="confint-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="confint,ANY-method">
+<param name="Name" value="confint,ANY,missing-method">
 <param name="Local" value="confint-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="confint,Confint-method">
+<param name="Name" value="confint,Confint,missing-method">
 <param name="Local" value="Confint-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="confint,Estimate-method">
+<param name="Name" value="confint,Estimate,missing-method">
 <param name="Local" value="confint-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">

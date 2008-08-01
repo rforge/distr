@@ -2,8 +2,8 @@
 \docType{methods}
 \alias{confint-methods}
 \alias{confint}
-\alias{confint,ANY-method}
-\alias{confint,Estimate-method}
+\alias{confint,ANY,missing-method}
+\alias{confint,Estimate,missing-method}
 \title{ Methods for function confint in Package `distrMod' }
 \description{
   Methods for function \code{confint} in package \pkg{distrMod};
@@ -15,8 +15,8 @@
 }
 \usage{
 confint(object, \dots)
-\S4method{confint}{ANY}(object, parm, level = 0.95, \dots)
-\S4method{confint}{Estimate}(object, level = 0.95, \dots)
+\S4method{confint}{ANY,missing}(object, method, parm, level = 0.95, \dots)
+\S4method{confint}{Estimate,missing}(object, method, level = 0.95, \dots)
 
 }
 \arguments{
@@ -27,25 +27,27 @@ confint(object, \dots)
     confidence intervals, either a vector of numbers or a vector of
     names.  If missing, all parameters are considered.}
   \item{level}{the confidence level required.}
+  \item{method}{not yet used (only as \code{missing}; later to allow
+                for various methods}
   \item{\dots}{additional argument(s) for methods.}
 }
 \value{
   \itemize{
-  \item{signature \code{ANY}:}{
+  \item{signature \code{ANY,missing}:}{
   A matrix (or vector) with columns giving lower and upper confidence
   limits for each parameter. These will be labelled as (1-level)/2 and
   1 - (1-level)/2 in \% (by default 2.5\% and 97.5\%).}
-  \item{signature \code{Estimate}:}{An object of class \code{Confint}}
+  \item{signature \code{Estimate,missing}:}{An object of class \code{Confint}}
   }
 }
 \details{
   \code{confint} is a generic function.  Its behavior differs according to
   its arguments.
   \itemize{
-   \item{signature \code{ANY}:}{the default method;
+   \item{signature \code{ANY,missing}:}{the default method;
    uses the S3 generic of package \pkg{stats},
     see \code{\link[stats]{confint}}.}
-    \item{signature \code{Estimate}:}{ 
+    \item{signature \code{Estimate,missing}:}{ 
   will return a corresponding confidence interval assuming
   asymptotic normality, and hence needs suitably filled slot \code{asvar}
   in argument \code{object}. Besides the actual bounds, organized in 
@@ -72,5 +74,32 @@ G <- GammaFamily(scale = 1, shape = 2)
 (res <- MLEstimator(x = x, ParamFamily = G))
 
  confint(res)
+
+### for comparison:
+require(MASS)
+(res1 <- fitdistr(x, "gamma"))
+## ad a convenient (albeit wrong)
+## S3-method for vcov:
+## --- wrong as in general cov-matrix
+##     will not be diagonal
+## but for conf-interval this does
+## not matter...
+ vcov.fitdistr <- function(object, ...){
+     v<-diag(object$sd^2)
+     rownames(v) <- colnames(v) <- names(object$estimate) 
+     v}
+res1
+confint(res1)
+
+mtrafo <- function(x){
+     nms <- c("shape","rate")
+     fval0 <- c(x[2], 1/x[1])
+     names(fval0) <- nms
+     mat0 <- matrix( c(0, -1/x[1]^2, 1, 0), nrow = 2, ncol = 2,
+                     dimnames = list(nms,nms))                          
+     list(fval = fval0, mat = mat0)}
+(res2 <- MLEstimator(x = x, ParamFamily = G, trafo = mtrafo))
+ confint(res2)
+ 
 }
 \keyword{models}
