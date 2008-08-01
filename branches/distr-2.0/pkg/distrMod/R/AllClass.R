@@ -444,7 +444,8 @@ setClass("MCEstimate",
                    nuis.idx = NULL,
                    trafo = list(fct = function(x){
                                       list(fval = x, mat = matrix(0))}, 
-                                mat = matrix(0)),
+                                mat = matrix(0))
+                   ),
          contains = "Estimate")
 
 ## To Do: class MLEstimate which is compatible with class
