@@ -412,9 +412,9 @@ setClass("Estimate",
                    asvar = NULL,
                    Infos = matrix(c(character(0),character(0)), ncol=2,
                                   dimnames=list(character(0), c("method", "message"))),
-                   trafo.estimate = list(fct = function(x){
-                                             list(fval = x, mat = matrix(0))}, 
-                                         mat = matrix(0)),
+                   trafo = list(fct = function(x){
+                                      list(fval = x, mat = matrix(0))}, 
+                                mat = matrix(0)),
                    nuis.idx = NULL),
          validity = function(object){            
             if(is.null(dim(object@estimate)))
@@ -442,7 +442,9 @@ setClass("MCEstimate",
                    Infos = matrix(c(character(0),character(0)), ncol=2,
                                   dimnames=list(character(0), c("method", "message"))),
                    nuis.idx = NULL,
-                   trafo = list(fct = function(x)x, mat = matrix(0))),
+                   trafo = list(fct = function(x){
+                                      list(fval = x, mat = matrix(0))}, 
+                                mat = matrix(0)),
          contains = "Estimate")
 
 ## To Do: class MLEstimate which is compatible with class
