@@ -1,3 +1,5 @@
+.OkTyp.flat.LCD <-  c("DiscreteDistribution", "AbscontDistribution",
+                      "UnivarLebDecDistribution", "UnivarMixingDistribution")
 
 flat.LCD <- function(..., mixCoeff = NULL, withgaps = getdistrOption("withgaps")){
     ldots <- list(...)
@@ -84,10 +86,11 @@ flat.LCD <- function(..., mixCoeff = NULL, withgaps = getdistrOption("withgaps")
 flat.mix <- function(object){
     mixDistr <- object@mixDistr
     mixCoeff <- object@mixCoeff
-    isOkTyp <- function(x) any(as.logical(lapply(.OkTyp, function(y) is(x,y))))
+    isOkTyp <- function(x) any(as.logical(lapply(.OkTyp.flat.LCD, 
+                                           function(y) is(x,y))))
     if(!all(as.logical(lapply(mixDistr, isOkTyp))))
        stop(gettextf("all list elements must be of one of the following classes\n"),
-            paste("'",.OkTyp,"'", sep ="", collapse=", "))
+            paste("'",.OkTyp.flat.LCD,"'", sep ="", collapse=", "))
     mixDistr2 <- mixDistr
     for(i in seq(length(mixDistr)))
         {if ( is(mixDistr[[i]],"UnivarMixingDistribution") &&

@@ -381,17 +381,18 @@ setMethod("exp", "AbscontDistribution",
 if (getRversion()>='2.6.0'){ 
 
 setMethod("log", "AbscontDistribution",
-           function(x) {
+           function(x, base = exp(1)) {
            xs <- as.character(deparse(match.call(
                  call = sys.call(sys.parent(1)))$x))
            ep <- getdistrOption("TruncQuantile")
+           basl <- log(base)
            if(p(x)(0)>ep) 
                 stop(gettextf("log(%s) is not well-defined with positive probability ", xs))
-           else return(.logm.c(x))})
+           else return(.logm.c(x)/basl)})
                        
                        
 setMethod("log10", "AbscontDistribution",
-          function(x) log(x=x)/log(x=10))
+          function(x) log(x = x, base = 10))
 
 setMethod("sign", "AbscontDistribution",
           function(x){ 

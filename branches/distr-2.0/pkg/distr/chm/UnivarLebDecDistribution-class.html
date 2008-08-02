@@ -67,6 +67,7 @@
 <param name="keyword" value="R:   ^,AcDcLcDistribution,Dirac-method">
 <param name="keyword" value="R:   exp,UnivarLebDecDistribution-method">
 <param name="keyword" value="R:   sign,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   sign,AcDcLcDistribution-method">
 <param name="keyword" value=" Class 'UnivarLebDecDistribution'">
 </object>
 
@@ -159,7 +160,9 @@ create a <code>"UnivarLebDecDistribution"</code> object from a <code>"DiscreteDi
 <code>abs</code>{<code>signature(x = "UnivarLebDecDistribution")</code>:  exact image distribution of <code>abs(x)</code>.}
 <code>exp</code>{<code>signature(x = "UnivarLebDecDistribution")</code>:  exact image distribution of <code>exp(x)</code>.}
 <code>sign</code>{<code>signature(x = "UnivarLebDecDistribution")</code>:  exact image distribution of <code>sign(x)</code>.}
-<code>log</code>{<code>signature(x = "UnivarLebDecDistribution")</code>:  exact image distribution of <code>log(x)</code>.}
+<code>sign</code>{<code>signature(x = "AcDcLcDistribution")</code>:  exact image distribution of <code>sign(x)</code>.}
+<code>log</code>{<code>signature(x = "UnivarLebDecDistribution")</code>:  (with optional further argument <code>base</code>, 
+defaulting to <code>exp(1)</code>) exact image distribution of <code>log(x)</code>.}
 <code>log10</code>{<code>signature(x = "UnivarLebDecDistribution")</code>:  exact image distribution of <code>log10(x)</code>.}
 <dt>-</dt><dd><code>signature(e1 = "UnivarLebDecDistribution")</code>: application of `-' to this distribution</dd>
 <dt>*</dt><dd><code>signature(e1 = "UnivarLebDecDistribution", e2 = "numeric")</code>: multiplication of this distribution
@@ -250,7 +253,6 @@ Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ru
 <code><a href="UnivarMixingDistribution-class.html">UnivarMixingDistribution-class</a></code>
 <code><a href="DiscreteDistribution-class.html">DiscreteDistribution-class</a></code>
 <code><a href="ContDistribution-class.html">AbscontDistribution-class</a></code>
-<code><a href="UnivarLebDecDistribution-class.html">AcDcLcDistribution-class</a></code>
 <code><a href="simplifyD-methods.html">simplifyD</a></code>
 <code><a href="flat.LCD.html">flat.LCD</a></code>
 </p>

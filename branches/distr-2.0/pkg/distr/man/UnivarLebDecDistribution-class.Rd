@@ -135,7 +135,8 @@ class \code{"Distribution"} by class \code{"UnivariateDistribution"}.
     \code{exp}{\code{signature(x = "UnivarLebDecDistribution")}:  exact image distribution of \code{exp(x)}.}
     \code{sign}{\code{signature(x = "UnivarLebDecDistribution")}:  exact image distribution of \code{sign(x)}.}
     \code{sign}{\code{signature(x = "AcDcLcDistribution")}:  exact image distribution of \code{sign(x)}.}
-    \code{log}{\code{signature(x = "UnivarLebDecDistribution")}:  exact image distribution of \code{log(x)}.}
+    \code{log}{\code{signature(x = "UnivarLebDecDistribution")}:  (with optional further argument \code{base}, 
+    defaulting to \code{exp(1)}) exact image distribution of \code{log(x)}.}
     \code{log10}{\code{signature(x = "UnivarLebDecDistribution")}:  exact image distribution of \code{log10(x)}.}
     \item{-}{\code{signature(e1 = "UnivarLebDecDistribution")}: application of `-' to this distribution}
     \item{*}{\code{signature(e1 = "UnivarLebDecDistribution", e2 = "numeric")}: multiplication of this distribution
