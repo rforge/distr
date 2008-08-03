@@ -1849,9 +1849,10 @@ require(MASS)
 
 The detailedness of the output of these result classes by \code{print}
 and \code{show} can be controlled via the global option \code{show.details}
-(see subsection~\ref{distrModOptions}). In case of \code{print}, this option (as well as option \code{digits}
-from package \code{base}) may also be set temporarily by transferring a corresponding
-\code{show.detalis} (resp. \code{digits}-) argument in the call to \code{print}.                                                                                
+(see subsection~\ref{distrModOptions}). In case of \code{print}, this option 
+(as well as option \code{digits} from package \code{base}) may also be set 
+temporarily by transferring a corresponding \code{show.details}- (resp.\ 
+\code{digits}-) argument in the call to \code{print}.                                                                                
 As an example, consider
 <<EstCmp, eval = TRUE>>=
 if (have.distrMod){
@@ -1937,21 +1938,21 @@ is depicted in Figure~\ref{figConf}.
 \subsection{Masking}
 % -----------------------------------------------------------------------------
 To ensure positive semidefiniteness of covariances, we have introduced
-classes \code{PosSemDesSymmMatrix} and \code{PosDesSymmMatrix}; for these
+classes \code{PosSemDefSymmMatrix} and \code{PosDesSymmMatrix}; for these
 the square root can be defined. More specifically we have overloaded
 function \code{sqrt} for these matrix classes; to do so, we had to mask
 function \code{sqrt} from package \pkg{base}. Similarly, in order to
 only use \code{ginv} when really needed, we have overloaded function \code{solve}
 (also from package \pkg{base}). For singular matrices, we now use \code{ginv},
 respetively an \code{eigen} decomposition based procedure for classes 
- \code{PosSemDesSymmMatrix} and \code{PosDesSymmMatrix}
+ \code{PosSemDefSymmMatrix} and \code{PosDesSymmMatrix}
 Both \code{sqrt} and \code{solve} retain their semantics and can be used
 without change as before in the cases where this has already been possible.
 For our confidence intervals, we had to produce a ``new'' signature for
 function \code{confint}. This is done by a wrapper masking the original 
 \code{confint} function from package \pkg{stats}, but which then defaults to
-\code{stats::confint}, so calls to the ``old'' \code{confint} should not be
-affected. The user can also inspect this intentional maskings by
+\code{stats::confint}, so calls to the ``old'' \code{confint} method should not 
+be affected. The user can also inspect this intentional maskings by
 \code{distrModMASK()}. 
 % -----------------------------------------------------------------------------
 \section{Options}\label{options}
