@@ -119,9 +119,8 @@ x &lt;- rgamma(50, scale = 0.5, shape = 3)
 G &lt;- GammaFamily(scale = 1, shape = 2)
 
 ## Maximum likelihood estimator
-(res &lt;- MLEstimator(x = x, ParamFamily = G))
-
- confint(res)
+res &lt;- MLEstimator(x = x, ParamFamily = G)
+confint(res)
 
 ### for comparison:
 require(MASS)
@@ -132,13 +131,13 @@ require(MASS)
 ##     will not be diagonal
 ## but for conf-interval this does
 ## not matter...
- vcov.fitdistr &lt;- function(object, ...){
+vcov.fitdistr &lt;- function(object, ...){
      v&lt;-diag(object$sd^2)
      rownames(v) &lt;- colnames(v) &lt;- names(object$estimate) 
      v}
-res1
-confint(res1)
 
+## explicitely transforming to
+## MASS parametrization:
 mtrafo &lt;- function(x){
      nms0 &lt;- names(c(main(param(G)),nuisance(param(G))))
      nms &lt;- c("shape","rate")
@@ -147,8 +146,21 @@ mtrafo &lt;- function(x){
      mat0 &lt;- matrix( c(0, -1/x[1]^2, 1, 0), nrow = 2, ncol = 2,
                      dimnames = list(nms,nms0))                          
      list(fval = fval0, mat = mat0)}
-(res2 &lt;- MLEstimator(x = x, ParamFamily = G, trafo = mtrafo))
- confint(res2)
+
+G2 &lt;- G
+trafo(G2) &lt;- mtrafo
+res2 &lt;- MLEstimator(x = x, ParamFamily = G2)
+
+old&lt;-getdistrModOption("show.details")
+distrModoptions("show.details" = "minimal")
+res
+res1
+res2
+confint(res)
+confint(res1)
+confint(res2)
+confint(res,level=0.99)
+distrModoptions("show.details" = old)
  
 </pre>
 

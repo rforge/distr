@@ -107,9 +107,39 @@
      but with additional arguments \code{digits}.}
   }
 }
-\note{Parts of the code for methods \code{show} and \code{print} has been
-borrowed from \code{print.fitdistr} in package \pkg{MASS} by B.D. Ripley.}
+\note{The pretty-printing code for methods \code{show} and \code{print} 
+has been borrowed from \code{print.fitdistr} in package \pkg{MASS} by B.D. Ripley.}
 %\references{}
+\section{Details for methods \code{show}, \code{print}}{
+Detailedness of output by methods \code{show}, \code{print} is controlled
+by the global option \code{show.details} to be set by 
+\code{\link{distrModoptions}}.
+
+As method \code{show} is used when inspecting an object by typing the object's 
+name into the console, \code{show} comes without extra arguments and hence 
+detailedness must be controlled  by global options. 
+
+Method \code{print} may be called with a (partially matched) argument
+\code{show.details}, and then the global option is temporarily set to this
+value.
+
+More specifically, when \code{show.detail} is matched to \code{"minimal"}
+you will be shown only the name/type of the estimator, the value of its main
+part, and, if present, the corresponding standard errors, as well as, 
+also if present, the value of the nuisance part. 
+When \code{show.detail} is matched to \code{"medium"}, you will in
+addition see the class of the estimator, its call and its sample-size
+and, if present, the asymptotic covariance matrix. Also the information
+gathered in the \code{Infos} slot is shown.
+Finally, when \code{show.detail} is matched to \code{"maximal"}, 
+and if, in addition, you estimate non-trivial (i.e. not the identity)
+transformation of the parameter of the parametric family, you will also be 
+shown this transformation in form of its function and its derivative matrix
+at the estimated parameter value, as well as the estimator (with standard errors,
+if present) and (again, if present) the corresponding asymptotic covariance
+of the untransformed, total (i.e. main and nuisance part) parameter.  
+            }
+
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
 Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}

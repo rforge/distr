@@ -99,6 +99,38 @@ length of <code>main</code>. </dd>
 <dt>show</dt><dd><code>signature(object = "ParamFamParameter")</code></dd>
 </dl>
 
+<h3>Details for methods this-is-escaped-codenormal-bracket84bracket-normal, this-is-escaped-codenormal-bracket85bracket-normal</h3>
+
+<p>
+Detailedness of output by methods <code>show</code>, <code>print</code> is controlled
+by the global option <code>show.details</code> to be set by 
+<code><a href="distrModOptions.html">distrModoptions</a></code>.
+</p>
+<p>
+As method <code>show</code> is used when inspecting an object by typing the object's 
+name into the console, <code>show</code> comes without extra arguments and hence 
+detailedness must be controlled  by global options. 
+</p>
+<p>
+Method <code>print</code> may be called with a (partially matched) argument
+<code>show.details</code>, and then the global option is temporarily set to this
+value.
+</p>
+<p>
+More specifically, when <code>show.detail</code> is matched to <code>"minimal"</code>
+only class and name as well as main and nuisance part of the
+parameter are shown. When <code>show.detail</code> is matched to <code>"medium"</code>, 
+and if you estimate non-trivial (i.e. not the identity)
+transformation of the parameter of the parametric family, you will in addition 
+be shown the derivative matrix, if the transformation is given in form of
+this matrix, while, if the transformation is in function form, you will
+only be told this.
+Finally, when <code>show.detail</code> is matched to <code>"maximal"</code>, 
+and you have a non-trivial transformation in function form, you will
+also be shown the code to this function.
+</p>
+
+
 <h3>Author(s)</h3>
 
 <p>

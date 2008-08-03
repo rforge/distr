@@ -24,7 +24,8 @@ trafo(object, param)
 trafo(object) <- value
 }
 \arguments{
-  \item{object}{}
+  \item{object}{an object of either class \code{Estimate},
+  \code{ParamFamParameter}, \code{ParamFamily}}
   \item{param}{a specification of which parameters are to be given
     confidence intervals, either a vector of numbers or a vector of
     names. If missing, all parameters are considered.}
@@ -77,9 +78,9 @@ trafo(object) <- value
   
   Slot \code{trafo} can either contain a (constant) matrix
   \eqn{D_\theta}{D_theta} or a function
-  \deqn{\tau\colon \Theta \to \tilde \Theta,\qquad \theta \mapsto \tau(\theta)}%
-  {tau:  Theta -> Theta',  theta |-> tau(theta)} of the parameter
-  \eqn{\theta'}{theta'} (i.e., only the main part of the parameter).
+  \deqn{\tau\colon \Theta' \to \tilde \Theta,\qquad \theta \mapsto \tau(\theta)}%
+  {tau:  Theta' -> TTheta,  theta |-> tau(theta)} mapping main parameter
+  \eqn{\theta'}{theta'} to some range \eqn{\tilde \Theta}{TTheta}.
 
   If {\em slot value} \code{trafo} is a function, besides \eqn{\tau(\theta)}%
   {tau(theta)}, it will also return the corresponding derivative matrix
@@ -99,7 +100,8 @@ trafo(object) <- value
     \item{\code{Estimate,missing}:}{it will return a list with entries
     \code{fct}, the function  \eqn{\tau}{tau}, and \code{mat}, the matrix
     \eqn{\frac{\partial}{\partial \theta}\tau(\theta)}{(d/d theta) (tau(theta))}.
-    function \eqn{\tau}{tau} returns the {\em slot value} \code{trafo} mentioned above
+    function \eqn{\tau}{tau} will then return the list \code{list(fval, mat)}
+    mentioned above.
     }
     \item{\code{ParamFamParameter,missing}:}{it will just return the
      corresponding matrix.}

@@ -492,7 +492,7 @@ The most important application of these classes so far is regression, where
 the distribution of the observation given the covariates is just realized as
 a \code{UnivariateCondDistribution}.
 
-\subsubsection{Parameter classes}
+\subsubsection{Parameter classes}\label{paramclass}
 %
 As most distributions come with a parameter which often is of own interest, we 
 endow the corresponding slots of a distribution class with an own parameter 
@@ -1576,6 +1576,9 @@ families of probability measures. In case of $L_2$-differentiable (i.e.,
 smoothly parameterized) parametric families we introduce several additional
 slots, in particular the slot \code{L2deriv} which is of class \code{EuclRandVarList}.
 Hence, package \pkg{distrMod} depends on package \pkg{RandVar}~\cite{MK:05}.
+% -----------------------------------------------------------------------------
+\subsubsection[ParamFamily and friends]{\code{ParamFamily} and friends}
+% -----------------------------------------------------------------------------
 \ifpdf
 \begin{figure}[!ht]
 \vspace{2ex}
@@ -1601,7 +1604,78 @@ Hence, package \pkg{distrMod} depends on package \pkg{RandVar}~\cite{MK:05}.
 \end{figure}
 \fi
 % -----------------------------------------------------------------------------
-\newpage
+\subsubsection[ParamFamParameter class]{Class \code{ParamFamParameter}}
+% -----------------------------------------------------------------------------
+In particular, to cope with partitioned parameters (with main and nuisance
+part) and to allow for smooth transformations of the parameter, we introduce
+a sub-class \code{ParamFamParameter} to our class \code{Parameter} from 
+subsection~\ref{parameterclass}. It has slots \code{main}, \code{nuisance}, 
+and \code{trafo}.  
+
+Implementaion of partial influence curves (pICs) is done via slot \code{trafo}. 
+pICs arise if we are only  interested is some possibly lower dimensional, smooth 
+(not necessarily linear or even coordinate-wise) aspect/transformation 
+  $\tau$  of the whole parameter $\theta$.
+
+The nuisance part has its own slot. It arises if there is some unknown parameter,
+the value of which is of secondary interest compared to the main aspect
+of the parameter, but knowledge of which is necessary for estimation or testing
+(e.g. an unknown scale parameter for confidence intervals about an interesting
+location parameter).
+
+To get a coherent implementation of the two concepts, nuisance and transformation
+$\tau$,  we make the following convention:
+
+The full parameter $\theta$ is first split up coordinate-wise into a main 
+parameter $\theta'$ and a nuisance parameter $\theta''$. Without loss of 
+generality, we restrict the transformation $\tau$ only to act on the main 
+parameter $\theta'$; this is no real restriction, because if we want to 
+transform the whole parameter, we only need to assume that nuisance parameter
+$\theta''$ be of length $0$.
+  
+To the implementation:  As we have given the same name \code{trafo} to
+several different objects, we have to be a little careful about what type
+of \code{trafo} we are talking about; we will try to be clear about this.
+
+Slot \code{trafo} of an object of class \code{ParamFamParameter} can either 
+contain a (constant) matrix
+ $D_\theta$ or a function
+  $\tau\colon \Theta \to \tilde \Theta,\qquad \theta \mapsto \tau(\theta)$ 
+   mapping the main parameter
+  $\theta'$ to some range $\tilde \Theta$.
+
+If {\em slot value} \code{trafo} is a function, besides the function value 
+$\tau(\theta)$, it will also return the corresponding derivative matrix
+$D_\theta=\frac{\partial}{\partial \theta}\tau(\theta)$.
+More specifically, the return value of this function \code{theta} is a
+  list with entries \code{fval}, the function value $\tau(\theta)$,
+  and \code{mat}, the derivative matrix.
+
+  In case \code{trafo} is a matrix $D$, we interpret it as such a derivative
+  matrix $\frac{\partial}{\partial \theta}\tau(\theta)$,
+  and, correspondingly, we interpet $\tau(\theta)$ as the linear mapping
+  $\tau(\theta)=D\,\theta$.\par
+
+ For several classes, \code{trafo} also denotes the accessor function to slots 
+ containing information about the transformation. According to the signature, 
+ this {\em method} \code{trafo} will return different return value types. 
+ For signature
+  \begin{itemize}
+    \item[]\code{Estimate,missing}: it will return a list with entries
+    \code{fct}, the function  $\tau$, and \code{mat}, the matrix
+    $\frac{\partial}{\partial \theta}\tau(\theta)$.
+    Function $\tau$ then returns the list \code{list(fval, mat)} mentioned above
+    
+    \item[]\code{ParamFamParameter,missing}: it will just return the
+     corresponding matrix.
+    \item[]\code{ParamFamily,missing}: being just a wrapper to signature
+    \code{ParamFamParameter,missing}, it will do the same.
+    \item[]\code{ParamFamily,ParamFamParameter}: it will return the same as 
+    signature \code{Estimate,missing}.
+  \end{itemize}  
+
+% -----------------------------------------------------------------------------
+%\newpage
 \subsection{Risk Classes}
 % -----------------------------------------------------------------------------
 The risk classes are up to now (i.e, version 2.0) not used inside of the 
@@ -1743,6 +1817,142 @@ in Figure~\ref{figEst}.
 \vspace{-1ex}
 \end{figure}
 \fi
+As an example of how a transformation $\tau$ may enter, consider the following
+reparametrization in our example: If $\theta=\mbox{(\code{shape}, \code{scale})}$, let 
+$\tau(\theta)=(\theta_2^{-1}, \theta_1)=\mbox{(\code{rate},\code{shape})}$,
+the parametrization as in B. Ripley's  
+\code{fit.distr} (confer \cite{V:R:02}) from package \pkg{MASS}. 
+This gives the following transformation
+<<mtrafo, eval = TRUE>>=
+if (have.distrMod){
+mtrafo <- function(x){
+     nms0 <- names(c(main(param(G)),nuisance(param(G))))
+     nms <- c("shape","rate")
+     fval0 <- c(x[2], 1/x[1])
+     names(fval0) <- nms
+     mat0 <- matrix( c(0, -1/x[1]^2, 1, 0), nrow = 2, ncol = 2,
+                     dimnames = list(nms,nms0))                          
+     list(fval = fval0, mat = mat0)}
+G2 <- G
+trafo(G2) <- mtrafo
+(res.Mod <- MLEstimator(x = x, ParamFamily = G2))
+}
+@
+For comparison, consider
+
+<<MASS, eval = TRUE>>=
+if (have.distrMod){
+require(MASS)
+(res.MASS <- fitdistr(x, "gamma"))
+}
+@
+
+The detailedness of the output of these result classes by \code{print}
+and \code{show} can be controlled via the global option \code{show.details}
+(see subsection~\ref{distrModOptions}). In case of \code{print}, this option (as well as option \code{digits}
+from package \code{base}) may also be set temporarily by transferring a corresponding
+\code{show.detalis} (resp. \code{digits}-) argument in the call to \code{print}.                                                                                
+As an example, consider
+<<EstCmp, eval = TRUE>>=
+if (have.distrMod){
+print(res.Mod, digits = 3, show.details = "minimal")
+print(res.MASS, digits = 3)
+}
+@
+
+The actual behavior of \code{print} and \code{show} for various option
+settings is described in detail in the corresponding 
+\code{<classname>-class}-help file, e.g. by inspecting \code{?Estimate-Class}.
+
+% -----------------------------------------------------------------------------
+\subsection{Confidence Intervals}
+% -----------------------------------------------------------------------------
+For a unified interface to confidence intervals, we have overloaded method
+\code{confint} from package \code{stats}. It now dispatches according to
+arguments \code{object} and \code{method}, where upto now we only use the
+first one and have only implemented methods for the second being \code{missing}.
+Later on, for one type of estimator in the first argument, several methods
+can be defined like asymptotic, bootstrap-based, simulation-based,
+Cornish-Fisher-based and so on. For the time being, we have implemented 
+methods for asymptotic CLT-based confidence intervals for objects of
+class \code{Estimate}. The default method (signature \code{object=ANY,method=missing})
+just uses \code{stats::confint}. Our method for class \code{Estimate}
+uses the asymptotic (co)variance (if present in slot \code{asvar}) 
+of the estimator, and then builds a symmetric CLT (i.e. Gaussian) confidence
+interval about the estimator value.
+In our example this gives
+<<CI, eval = TRUE>>=
+(ci.Mod <- confint(res.Mod))
+@
+For comparison, we add a convenient (albeit wrong) S3-method for \code{vcov} 
+---wrong as in general the covariance matrix of an estimator will not be
+diagonal; but for our coordinate-wise confidence intervals this does not 
+matter, as only the diagonal entries determine the confidence bounds.
+
+<<CIMASS, eval = TRUE>>=
+if (have.distrMod){
+vcov.fitdistr <- function(object, ...){
+     v<-diag(object$sd^2)
+     rownames(v) <- colnames(v) <- names(object$estimate) 
+     v}
+(ci.MASS <- confint(res.MASS))
+}
+@
+or again, shortly:
+<<CICmp2, eval = TRUE>>=
+if (have.distrMod){
+print(ci.Mod, digits = 3, show.details = "minimal")
+print(ci.MASS, digits = 3)
+}
+@
+\code{confint} will return objects of (S4-)class \code{Confint}, so that
+the user can easily manipulate the output within {\sf R}. The class structure
+is depicted in Figure~\ref{figConf}.
+\ifpdf
+\begin{figure}[!ht]
+\vspace{2ex}
+  \begin{center}
+%    \includegraphics[width=4cm]{Confint.pdf}%
+    \caption{\label{figConf}{\footnotesize Inheritance relations and slots of the 
+    corresponding \mbox{(sub-)}classes for \code{Estimate} where we do not
+    repeat inherited slots
+    }}
+  \end{center}
+\vspace{-4ex}
+\end{figure}
+\else
+\begin{figure}[htb]
+  \begin{center}
+%    \includegraphics[width=4cm]{Confint.eps}%
+    \caption{\label{figConf}{\footnotesize Inheritance relations and slots of the 
+    corresponding \mbox{(sub-)}classes for \code{Estimate} where we do not 
+    repeat inherited slots
+    }}
+  \end{center}
+\vspace{-1ex}
+\end{figure}
+\fi
+
+% -----------------------------------------------------------------------------
+\subsection{Masking}
+% -----------------------------------------------------------------------------
+To ensure positive semidefiniteness of covariances, we have introduced
+classes \code{PosSemDesSymmMatrix} and \code{PosDesSymmMatrix}; for these
+the square root can be defined. More specifically we have overloaded
+function \code{sqrt} for these matrix classes; to do so, we had to mask
+function \code{sqrt} from package \pkg{base}. Similarly, in order to
+only use \code{ginv} when really needed, we have overloaded function \code{solve}
+(also from package \pkg{base}). For singular matrices, we now use \code{ginv},
+respetively an \code{eigen} decomposition based procedure for classes 
+ \code{PosSemDesSymmMatrix} and \code{PosDesSymmMatrix}
+Both \code{sqrt} and \code{solve} retain their semantics and can be used
+without change as before in the cases where this has already been possible.
+For our confidence intervals, we had to produce a ``new'' signature for
+function \code{confint}. This is done by a wrapper masking the original 
+\code{confint} function from package \pkg{stats}, but which then defaults to
+\code{stats::confint}, so calls to the ``old'' \code{confint} should not be
+affected. The user can also inspect this intentional maskings by
+\code{distrModMASK()}. 
 % -----------------------------------------------------------------------------
 \section{Options}\label{options}
 % -----------------------------------------------------------------------------
@@ -1829,6 +2039,15 @@ global output options to be used within the package with
           \code{m2dfLowerTruncQuantile}-quantile.
   \item \code{m2dfRelativeTolerance}: The relative tolerance used inside of
           \code{m2df} when calling \code{distrExIntegrate}.
+\end{itemize}
+\subsection[Options for distrMod]{Options for \pkg{distrMod}}\label{distrModOptions}
+Just as with to the \code{distroptions}/\code{getdistrOption} commands you 
+may specify certain global output options to be used within the package with 
+\code{distrModoptions}/\linebreak[4] \code{getdistrModOption}. These include
+\begin{itemize}
+  \item \code{show.details} controls the detailedness of output by methods
+  \code{print} and \code{show}. Allowed values are \code{"maximal"}, 
+  \code{"medium"}, and \code{"minimal"}; defaults to "maximal".
 \end{itemize}
 
 %We are planning to switch to \code{distroptions}/\code{getdistrOption}-like 
@@ -2772,53 +2991,59 @@ legend("topleft",
 \begin{thebibliography}{8}
 
 \bibitem{Beng:03}
-Bengtsson H. 
-\newblock The {R.oo} package - object-oriented programming with references using 
+Bengtsson H. (2003):
+\newblock The {R.oo} package - object-oriented programming with references using
 standard {R} code.
 \newblock In: Hornik K., Leisch F. and Zeileis A. (Eds.) {\em
   Proceedings of the 3rd International Workshop on Distributed Statistical
   Computing (DSC 2003)\/}. Vienna, Austria.
-\newblock Published as http://www.ci.tuwien.ac.at/Conferences/DSC-2003/ 
+\newblock Published as http://www.ci.tuwien.ac.at/Conferences/DSC-2003/
 
 \bibitem{Cham:98}
-Chambers J.M. 
+Chambers J.M. (1998):
 \newblock {\em {Programming with data. A guide to the S language}\/}.
 \newblock {Springer}.
 \newblock http://cm.bell-labs.com/stat/Sbook/index.html
 
 \bibitem{OOPGent}
-Gentleman R.
-\newblock {\em Object Orientated Programming. Slides of a Short Course held in 
+Gentleman R. (2003):
+\newblock {\em Object Orientated Programming. Slides of a Short Course held in
 Auckland\/}.
 \newblock http://www.stat.auckland.ac.nz/S-Workshop/Gentleman/Methods.pdf
 
 \bibitem{MK:05}
-Kohl M. 
-\newblock {\em Numerical Contributions to the Asymptotic Theory of Robustness\/}. 
-\newblock {Dissertation}, Universit\"at Bayreuth. 
+Kohl M. (2005):
+\newblock {\em Numerical Contributions to the Asymptotic Theory of Robustness\/}.
+\newblock {Dissertation}, Universit\"at Bayreuth.
 \newblock See also http://stamats.de/ThesisMKohl.pdf
 
 \bibitem{K:R:S:04}
-Kohl M., Ruckdeschel P. and Stabla T.
-\newblock {General Purpose Convolution Algorithm for Distributions in S4-Classes 
+Kohl M., Ruckdeschel P. and Stabla T. (2004):
+\newblock {General Purpose Convolution Algorithm for Distributions in S4-Classes
 by means of FFT}.
 \newblock unpublished manual
 
 \bibitem{NumR:92}
-Press W.H., Teukolsky S.A., Vetterling W.T. and Flannery B.P.
+Press W.H., Teukolsky S.A., Vetterling W.T. and Flannery B.P. (1992):
 \newblock {\em {Numerical recipes in C. The art of scientific computing.}\/}
 \newblock {Cambridge Univ. Press}, 2. Aufl.
 
 \bibitem{Ric:88}
-Rice J.A. 
+Rice J.A. (1988):
 \newblock {\em {Mathematical statistics and data analysis}\/}.
 \newblock The Wadsworth \& Brooks/Cole Statistics/Probability Series.
   {Wadsworth \& Brooks/Cole Advanced Books \& Software}, Pacific Grove,
   California.
 
+\bibitem{V:R:02}
+Venables, W. N. and Ripley, B. D. (2002):
+\newblock {\em {Modern Applied Statistics with
+  S. Fourth Edition.\/}} 
+\newblock  Springer, New York.
+
 \bibitem{R:K:S:C:04}
-Ruckdeschel P., Kohl M., Stabla T., and Camphausen F. 
-\newblock {S4 Classes for Distributions.} 
+Ruckdeschel P., Kohl M., Stabla T., and Camphausen F.
+\newblock {S4 Classes for Distributions.}
 \newblock {\em R-News\/}, {\bf 6}(2): 10--13.
 \newblock http://CRAN.R-project.org/doc/Rnews/Rnews\_2006-2.pdf
 %\newblock See also {http://www.uni-bayreuth.de/departments/math/org/mathe7/RUCKDESCHEL/pubs/distr.pdf}

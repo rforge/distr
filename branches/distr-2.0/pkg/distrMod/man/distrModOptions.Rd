@@ -1,6 +1,7 @@
 \name{distrModOptions}
 \alias{distrModOptions}
 \alias{getdistrModOption}
+\alias{distrModoptions}
 
 \title{Function to change the global variables of the package `distrMod' }
 \description{With \code{distrModOptions} you can inspect and change 
@@ -8,27 +9,60 @@ the global variables of the package \pkg{distrMod}. }
 \usage{
 distrModOptions(...)
 getdistrModOption(x)
+distrModoptions(...)
 }
 \arguments{
-  \item{\dots}{ any options can be defined, using name = value or by passing a list of such tagged values. }
+  \item{\dots}{ any options can be defined, using name = value or by passing a 
+  list of such tagged values. }
   \item{x}{ a character string holding an option name.}
 }
-%\details{}
+\details{Invoking \code{distrModoptions()} with no arguments returns a list 
+ with the current values of the options.  To access the value of a single 
+ option, one should use \code{getdistrModOption("show.details")}, 
+ e.g., rather than \code{distrModoptions("show.details")} which is 
+ a \emph{list} of length one.}
 \value{
-  \code{distrModOptions()} returns a list of the global variables.\cr
-  \code{distrModOptions(x)} returns the global variable \var{x}.\cr
-  \code{getdistrModOption(x)} returns the global variable \var{x}.\cr
-  \code{distrModOptions(x=y)} sets the value of the global variable \var{x} to \var{y}.
+\code{distrModoptions()} returns a list of the global options of 
+\pkg{distrMod}. \cr
+\code{distrModoptions("show.details")} returns  the global option 
+\code{show.details} as a list of length 1. \cr
+\code{distrModoptions("show.details" = "minimal")} sets the value of the 
+global option  \code{show.details} to \code{"minimal"}. 
+\code{getdistrModOption("show.details")} the current value set for 
+option \code{show.details}. 
 }
-%\section{Global Options}{
-%\describe{}
-%}
+\section{distrModoptions}{
+For compatibility with spelling in package \pkg{distr}, \code{distrModoptions} is 
+just a synonym to \code{distrModoptions}.
+}
+
+\section{Currently available options}{
+\describe{
+  \item{show.details}{degree of detailedness for method \code{show} for
+  objects of classes of the \pkg{distrXXX} family of packages. Possible
+  values are
+  \itemize{
+  \item{\code{"maximal"}}{all information is shown}
+  \item{\code{"minimal"}}{only the most important information is shown}
+  \item{\code{"medium"}}{somewhere in the middle; see actual \code{show}-methods
+  for details.}
+  }}
+}
+}
 %\references{}
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
         Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}
-\seealso{\code{\link[base]{options}}, \code{\link[base]{getOption}}}
-%\examples{}
+\seealso{\code{\link[base]{options}}, \code{\link[base]{getOption}},
+\code{\link[distr]{distroptions}}, \code{\link[distr]{getdistrOption}}}
+\examples{
+distrModoptions()
+distrModoptions("show.details")
+distrModoptions("show.details" = "maximal")
+distrModOptions("show.details" = "minimal")
+# or
+getdistrModOption("show.details")
+}
 \keyword{misc}
 \keyword{distribution}
 \concept{global options}

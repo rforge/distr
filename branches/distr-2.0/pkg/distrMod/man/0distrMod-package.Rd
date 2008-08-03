@@ -63,6 +63,9 @@ Class unions
 "OptionalNumeric" = union("numeric", "NULL")
 "OptionalMatrix" = union("matrix", "NULL")
 "MatrixorFunction" = union("matrix", "OptionalFunction")
+"PrintDetails" = union("Estimate", "Confint", 
+                   "PosSemDefSymmMatrix",
+                   "ParamFamParameter", "ParamFamily")
 
 ##########################
 Symmetry classes

@@ -148,8 +148,8 @@
       psi0x <- sapply(rev(x.mu.seq0), phix)
       psi0 <-  h0.mu*rev(.csimpsum(psi0x))   
    }else{
-      phix  <- function(x,y)  (x<=y)*phi(y)
-      psi0 <- sapply(x.mu.seq, function(X){ fct <- function(y) phix(x=X,y=y)
+      phixy  <- function(x,y)  (x<=y)*phi(y)
+      psi0 <- sapply(x.mu.seq, function(X){ fct <- function(y) phixy(x=X,y=y)
                                         return(E(object=mu, fun = fct))})
    }
    psi.1 <- approxfun(x.mu.seq, psi0, yleft = 0)

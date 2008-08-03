@@ -94,6 +94,29 @@ plot of slot <code>distribution</code>. </dd>
 <dt>show</dt><dd><code>signature(object = "ParamFamily")</code></dd>
 </dl>
 
+<h3>Details for methods this-is-escaped-codenormal-bracket83bracket-normal, this-is-escaped-codenormal-bracket84bracket-normal</h3>
+
+<p>
+Detailedness of output by methods <code>show</code>, <code>print</code> is controlled
+by the global option <code>show.details</code> to be set by 
+<code><a href="distrModOptions.html">distrModoptions</a></code>.
+</p>
+<p>
+As method <code>show</code> is used when inspecting an object by typing the object's 
+name into the console, <code>show</code> comes without extra arguments and hence 
+detailedness must be controlled  by global options. 
+</p>
+<p>
+Method <code>print</code> may be called with a (partially matched) argument
+<code>show.details</code>, and then the global option is temporarily set to this
+value.
+</p>
+<p>
+For class <code>ParamFamily</code>, this becomes relevant for slot <code>param</code>.
+For details therefore confer to <code><a href="ParamFamParameter-class.html">ParamFamParameter-class</a></code>.
+</p>
+
+
 <h3>Author(s)</h3>
 
 <p>

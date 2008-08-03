@@ -1,4 +1,6 @@
-.distrModOptions <- list()
+.distrModOptions <- list(
+                         show.details = "maximal"
+                         )
 
 
 distrModOptions <- function(...) {
@@ -23,3 +25,4 @@ distrModOptions <- function(...) {
 }
 
 getdistrModOption <- function(x) distrModOptions(x)[[1]]
+distrModoptions <- distrModOptions  

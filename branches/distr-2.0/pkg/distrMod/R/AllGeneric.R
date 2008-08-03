@@ -170,6 +170,12 @@ if(!isGeneric("trafo.estimate")){
 if(!isGeneric("nuisance.estimate")){
     setGeneric("nuisance.estimate", function(object) standardGeneric("nuisance.estimate"))
 }
+if(!isGeneric("samplesize.estimate")){
+    setGeneric("samplesize.estimate", function(object) standardGeneric("samplesize.estimate"))
+}
+if(!isGeneric("call.estimate")){
+    setGeneric("call.estimate", function(object) standardGeneric("call.estimate"))
+}
 if(!isGeneric("Infos")){
     setGeneric("Infos", function(object) standardGeneric("Infos"))
 }

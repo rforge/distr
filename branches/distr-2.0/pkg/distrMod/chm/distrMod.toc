@@ -170,6 +170,14 @@
 <param name="Local" value="fiHampel-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="call.estimate">
+<param name="Local" value="Confint-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="call.estimate,Confint-method">
+<param name="Local" value="Confint-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="CauchyLocationScaleFamily">
 <param name="Local" value="CauchyLocationScaleFamily.html">
 </OBJECT>
@@ -242,7 +250,15 @@
 <param name="Local" value="0distrMod-package.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distrModMASK">
+<param name="Local" value="distrModMASK.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="distrModOptions">
+<param name="Local" value="distrModOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distrModoptions">
 <param name="Local" value="distrModOptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -296,10 +312,6 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="estimate.call">
 <param name="Local" value="Estimate-class.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="estimate.call,Confint-method">
-<param name="Local" value="Confint-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="estimate.call,Estimate-method">
@@ -458,6 +470,10 @@
 <param name="Local" value="Estimate-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="InternalClassUnions">
+<param name="Local" value="internalClassUnions-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="internals_for_distrMod">
 <param name="Local" value="internals.html">
 </OBJECT>
@@ -578,8 +594,12 @@
 <param name="Local" value="ParamFamParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="MASKING">
+<param name="Local" value="distrModMASK.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="MatrixorFunction-class">
-<param name="Local" value="MatrixorFunction-class.html">
+<param name="Local" value="internalClassUnions-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="MCEstimate-class">
@@ -790,8 +810,12 @@
 <param name="Local" value="onesidedBias-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OptionalMatrix-class">
+<param name="Local" value="internalClassUnions-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="OptionalNumeric-class">
-<param name="Local" value="OptionalNumeric-class.html">
+<param name="Local" value="internalClassUnions-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="param,ParamFamily-method">
@@ -854,6 +878,14 @@
 <param name="Local" value="Estimate-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="print,ShowDetails-method">
+<param name="Local" value="print-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="print-methods">
+<param name="Local" value="print-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="ProbFamily-class">
 <param name="Local" value="ProbFamily-class.html">
 </OBJECT>
@@ -914,6 +946,14 @@
 <param name="Local" value="Estimate-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="samplesize.estimate">
+<param name="Local" value="Confint-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="samplesize.estimate,Confint-method">
+<param name="Local" value="Confint-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="SelfNorm">
 <param name="Local" value="SelfNorm.html">
 </OBJECT>
@@ -960,6 +1000,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="show,Symmetry-method">
 <param name="Local" value="Symmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ShowDetails-class">
+<param name="Local" value="internalClassUnions-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="sign">
@@ -1255,6 +1299,14 @@
 <param name="Local" value="FunctionSymmetry-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Class unions in 'distrMod'">
+<param name="Local" value="internalClassUnions-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Common `print' Methods for S4 classes in Package `distrMod' ">
+<param name="Local" value="print-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Confint-class">
 <param name="Local" value="Confint-class.html">
 </OBJECT>
@@ -1539,8 +1591,8 @@
 <param name="Local" value="FunSymmList-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="MatrixorFunction-class">
-<param name="Local" value="MatrixorFunction-class.html">
+<param name="Name" value="Masking of/by other functions in package "distrMod"">
+<param name="Local" value="distrModMASK.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="MCEstimate-class.">
@@ -1585,10 +1637,6 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="onesided Bias Type">
 <param name="Local" value="onesidedBias-class.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Optional numeric">
-<param name="Local" value="OptionalNumeric-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Parameter of a parametric family of probability measures">

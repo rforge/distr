@@ -71,26 +71,25 @@ x <- rgamma(50, scale = 0.5, shape = 3)
 G <- GammaFamily(scale = 1, shape = 2)
 
 ## Maximum likelihood estimator
-(res <- MLEstimator(x = x, ParamFamily = G))
-
- confint(res)
+res <- MLEstimator(x = x, ParamFamily = G)
+confint(res)
 
 ### for comparison:
 require(MASS)
 (res1 <- fitdistr(x, "gamma"))
-## ad a convenient (albeit wrong)
+## add a convenient (albeit wrong)
 ## S3-method for vcov:
 ## --- wrong as in general cov-matrix
 ##     will not be diagonal
 ## but for conf-interval this does
 ## not matter...
- vcov.fitdistr <- function(object, ...){
+vcov.fitdistr <- function(object, ...){
      v<-diag(object$sd^2)
      rownames(v) <- colnames(v) <- names(object$estimate) 
      v}
-res1
-confint(res1)
 
+## explicitely transforming to
+## MASS parametrization:
 mtrafo <- function(x){
      nms0 <- names(c(main(param(G)),nuisance(param(G))))
      nms <- c("shape","rate")
@@ -99,8 +98,21 @@ mtrafo <- function(x){
      mat0 <- matrix( c(0, -1/x[1]^2, 1, 0), nrow = 2, ncol = 2,
                      dimnames = list(nms,nms0))                          
      list(fval = fval0, mat = mat0)}
-(res2 <- MLEstimator(x = x, ParamFamily = G, trafo = mtrafo))
- confint(res2)
+
+G2 <- G
+trafo(G2) <- mtrafo
+res2 <- MLEstimator(x = x, ParamFamily = G2)
+
+old<-getdistrModOption("show.details")
+distrModoptions("show.details" = "minimal")
+res
+res1
+res2
+confint(res)
+confint(res1)
+confint(res2)
+confint(res,level=0.99)
+distrModoptions("show.details" = old)
  
 }
 \keyword{models}

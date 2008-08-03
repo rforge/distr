@@ -52,7 +52,8 @@ trafo(object) &lt;- value
 <table summary="R argblock">
 <tr valign="top"><td><code>object</code></td>
 <td>
-</td></tr>
+an object of either class <code>Estimate</code>,
+<code>ParamFamParameter</code>, <code>ParamFamily</code></td></tr>
 <tr valign="top"><td><code>param</code></td>
 <td>
 a specification of which parameters are to be given
@@ -109,9 +110,9 @@ To the implementation:
 <p>
 Slot <code>trafo</code> can either contain a (constant) matrix
 <i>D_theta</i> or a function
-</p><p align="center"><i>taucolon Theta to tilde Theta,qquad theta mapsto tau(theta)</i></p><p>
-{tau:  Theta -&gt; Theta',  theta |-&gt; tau(theta)} of the parameter
-<i>theta'</i> (i.e., only the main part of the parameter).
+</p><p align="center"><i>taucolon Theta' to tilde Theta,qquad theta mapsto tau(theta)</i></p><p>
+{tau:  Theta' -&gt; TTheta,  theta |-&gt; tau(theta)} mapping main parameter
+<i>theta'</i> to some range <i>TTheta</i>.
 </p>
 <p>
 If {em slot value} <code>trafo</code> is a function, besides <i>tau(theta)</i>
@@ -134,7 +135,8 @@ return value types. For signature
 <dt><code>Estimate,missing</code>:</dt><dd>it will return a list with entries
 <code>fct</code>, the function  <i>tau</i>, and <code>mat</code>, the matrix
 <i>(d/d theta) (tau(theta))</i>.
-function <i>tau</i> returns the {em slot value} <code>trafo</code> mentioned above
+function <i>tau</i> will then return the list <code>list(fval, mat)</code>
+mentioned above.
 </dd>
 <dt><code>ParamFamParameter,missing</code>:</dt><dd>it will just return the
 corresponding matrix.</dd>
@@ -167,7 +169,7 @@ with components <code>fct</code> and <code>mat</code> (see below)</td></tr>
 </table>
 <p>
 
-normal-bracket56bracket-normal</p>
+normal-bracket59bracket-normal</p>
 
 <h3>Examples</h3>
 

@@ -63,6 +63,22 @@ Class \code{"ProbFamily"}, directly.
     \item{show}{\code{signature(object = "ParamFamily")}}
   }
 }
+\section{Details for methods \code{show}, \code{print}}{
+Detailedness of output by methods \code{show}, \code{print} is controlled
+by the global option \code{show.details} to be set by 
+\code{\link{distrModoptions}}.
+
+As method \code{show} is used when inspecting an object by typing the object's 
+name into the console, \code{show} comes without extra arguments and hence 
+detailedness must be controlled  by global options. 
+
+Method \code{print} may be called with a (partially matched) argument
+\code{show.details}, and then the global option is temporarily set to this
+value.
+
+For class \code{ParamFamily}, this becomes relevant for slot \code{param}.
+For details therefore confer to \code{\link{ParamFamParameter-class}}.
+            }
 %\references{}
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de}}
 %\note{}

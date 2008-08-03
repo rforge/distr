@@ -8,9 +8,13 @@
 
 .onAttach <- function(library, pkg){
     unlockBinding(".distrModOptions", asNamespace("distrMod"))
-    #msga <- gettext("\n")
-    #msgb <- gettext("")
-    buildStartupMessage(pkg = "distrMod", #msga, msgb, 
+    msga <- gettext(
+    "Some functions from pkg's 'base' and 'stats' are intentionally masked\n---see distrModMASK().\n"
+                   )
+    msgb <- gettext(
+    "Note that global options are controlled by distrModoptions()\n---c.f. ?\"distrModoptions\"."
+                   )
+    buildStartupMessage(pkg = "distrMod", msga, msgb, 
                         library = library, packageHelp = TRUE,
         #                    MANUAL="http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/distr.pdf",
         VIGNETTE = gettext("Package \"distrDoc\" provides a vignette to this package as well as\nto several related packages; try vignette(\"distr\").")
@@ -18,23 +22,31 @@
     invisible()
 }
 
+
+distrModMASK <- function(library = NULL) 
+{
+    infoShow(pkg = "distrMod", filename = "MASKING", library = library)
+}
+
+
 ## norms to be used in prototype already
 EuclideanNorm <- function(x) sqrt(colSums(x^2))
 QuadFormNorm <- function(x, A) sqrt(colSums(x*(A %*% x)))
 
-
 ################################
 ##
-## Optional..-classes
+## Optional..-classes  Part I --- part II follows below
 ##
 ################################
 
 ### from Matthias' thesis / ROptEst
 ## optional numeric
 setClassUnion("OptionalNumeric", c("numeric", "NULL"))
-setClassUnion("MatrixorFunction", c("matrix", "OptionalFunction"))
-setClassUnion("OptionalMatrix", c("numeric", "matrix"))
 
+## matrix or function or NULL -- a class for trafo's
+setClassUnion("MatrixorFunction", c("matrix", "OptionalFunction"))
+## matrix, numeric or NULL -- a class for covariance slots
+setClassUnion("OptionalMatrix", c("OptionalNumeric", "NULL"))
 
 ################################
 ##
@@ -462,17 +474,31 @@ setClass("MCEstimate",
 setClass("Confint", 
          representation(type = "character",
                         confint = "array",
-                        estimate.call = "call",
+                        call.estimate = "call",
                         name.estimate = "character",
+                        samplesize.estimate = "numeric",
                         trafo.estimate = "list",
                         nuisance.estimate = "OptionalNumeric"
                         ),
          prototype(type = "",
                    confint = array(0),
-                   estimate.call = call("{}"),
+                   call.estimate = call("{}"),
+                   samplesize.estimate = numeric(0),
                    name.estimate = "",
                    trafo.estimate = list(fct = function(x){
                                              list(fval = x, mat = matrix(0))}, 
                                          mat = matrix(0)),
                    nuisance.estimate = NULL)
          )
+
+################################
+##
+## Optional..-classes  Part II
+##
+################################
+
+##  used for one common print method:
+setClassUnion("ShowDetails", c("Estimate", "Confint",
+                                "PosSemDefSymmMatrix", "ParamFamily",
+                                "ParamFamParameter"))
+

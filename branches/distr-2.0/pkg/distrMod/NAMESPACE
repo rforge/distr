@@ -5,6 +5,7 @@ import("distrEx")
 import("RandVar")
 
 exportClasses("OptionalNumeric","MatrixorFunction",
+              "OptionalMatrix", "ShowDetails",
               "PosSemDefSymmMatrix",
               "PosDefSymmMatrix",
               "Symmetry", "DistributionSymmetry",
@@ -39,7 +40,7 @@ exportMethods("modifyModel")
 exportMethods("norm",  "QuadForm<-", "QuadForm", "fct", 
               "fct<-", "normtype", "normtype<-")
 exportMethods("name", "name<-", 
-              "estimate", "estimate.call", 
+              "estimate", "estimate.call", "samplesize.estimate", "call.estimate",
               "name.estimate", "trafo.estimate", "nuisance.estimate", 
               "Infos", "Infos<-", "addInfo<-",
               "criterion", "criterion<-",
@@ -48,8 +49,9 @@ exportMethods("untransformed.estimate", "untransformed.asvar")
 exportMethods("confint")
 exportMethods("nuisance", "main") 
 exportMethods("validParameter")
+export("distrModMASK")
 export("PosDefSymmMatrix","PosSemDefSymmMatrix")
-export("distrModOptions", "getdistrModOption",
+export("distrModOptions", "distrModoptions", "getdistrModOption",
        "Estimator", "MCEstimator", "MLEstimator", "MDEstimator")
 export("NoSymmetry", "EllipticalSymmetry", "SphericalSymmetry",
        "NonSymmetric", "EvenSymmetric", "OddSymmetric",

@@ -49,7 +49,6 @@ MCEstimate-class.html
 MCEstimator.html
 MDEstimator.html
 MLEstimator.html
-MatrixorFunction-class.html
 NoSymmetry-class.html
 NoSymmetry.html
 NonSymmetric-class.html
@@ -63,7 +62,6 @@ NormType-class.html
 NormType.html
 OddSymmetric-class.html
 OddSymmetric.html
-OptionalNumeric-class.html
 ParamFamParameter-class.html
 ParamFamParameter.html
 ParamFamily-class.html
@@ -98,6 +96,7 @@ asymmetricBias-class.html
 asymmetricBias.html
 checkL2deriv.html
 confint-methods.html
+distrModMASK.html
 distrModOptions.html
 existsPIC.html
 fiBias-class.html
@@ -111,12 +110,14 @@ fiMSE.html
 fiRisk-class.html
 fiUnOvShoot-class.html
 fiUnOvShoot.html
+internalClassUnions-class.html
 internals.html
 isKerAinKerB.html
 negativeBias.html
 norms.html
 onesidedBias-class.html
 positiveBias.html
+print-methods.html
 solve-methods.html
 sqrt-methods.html
 symmetricBias-class.html
