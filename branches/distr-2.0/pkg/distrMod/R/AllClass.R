@@ -428,7 +428,7 @@ setClass("Estimate",
                                   dimnames=list(character(0), c("method", "message"))),
                    trafo = list(fct = function(x){
                                       list(fval = x, mat = matrix(0))}, 
-                                mat = matrix(0)),
+                                mat = matrix(1)), ### necessary for comparison with unit matrix
                    nuis.idx = NULL,
                    untransformed.estimate = NULL,
                    untransformed.asvar = NULL),
@@ -459,8 +459,8 @@ setClass("MCEstimate",
                                   dimnames=list(character(0), c("method", "message"))),
                    nuis.idx = NULL,
                    trafo = list(fct = function(x){
-                                      list(fval = x, mat = matrix(0))}, 
-                                mat = matrix(0))
+                                      list(fval = x, mat = matrix(1))}, 
+                                mat = matrix(1))
                    ),
          contains = "Estimate")
 
@@ -486,8 +486,8 @@ setClass("Confint",
                    samplesize.estimate = numeric(0),
                    name.estimate = "",
                    trafo.estimate = list(fct = function(x){
-                                             list(fval = x, mat = matrix(0))}, 
-                                         mat = matrix(0)),
+                                             list(fval = x, mat = matrix(1))}, 
+                                         mat = matrix(1)), ### necessary for comparison with unit matrix
                    nuisance.estimate = NULL)
          )
 
