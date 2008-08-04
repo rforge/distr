@@ -103,6 +103,7 @@
       function to add an information to slot \code{Infos}. }
 
     \item{show}{\code{signature(object = "Estimate")}}
+
     \item{print}{\code{signature(object = "Estimate")}: just as \code{show}, 
      but with additional arguments \code{digits}.}
   }

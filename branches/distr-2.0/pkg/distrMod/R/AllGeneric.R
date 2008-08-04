@@ -9,7 +9,7 @@
 
 ### intentionally mask confint for additional ... argument P.R. 28-03-06
 
-confint <- function(object , ...)
+confint <- function(object, method, ...)
        {dots <- list(...)
         mc <- match.call()[-1]
         nmc <- names(as.list(mc))

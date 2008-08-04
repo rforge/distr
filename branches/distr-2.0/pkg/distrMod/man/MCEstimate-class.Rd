@@ -5,6 +5,7 @@
 \alias{criterion,MCEstimate-method}
 \alias{criterion<-}
 \alias{criterion<-,MCEstimate-method}
+\alias{show,MCEstimate-method}
 
 \title{MCEstimate-class.}
 \description{Class of minimum criterion estimates.}
@@ -44,6 +45,8 @@ Class \code{"Estimate"}, directly.
 
     \item{criterion<-}{\code{signature(object = "MCEstimate")}: 
       replacement function for slot \code{criterion}. }
+
+    \item{show}{\code{signature(object = "Estimate")}}
   }
 }
 %\references{}
