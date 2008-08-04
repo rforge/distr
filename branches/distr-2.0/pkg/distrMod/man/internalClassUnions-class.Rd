@@ -2,7 +2,7 @@
 \docType{class}
 \alias{InternalClassUnions}
 \alias{OptionalNumeric-class}
-\alias{OptionalMatrix-class}
+\alias{OptionalNumericOrMatrix-class}
 \alias{MatrixorFunction-class}
 \alias{ShowDetails-class}
 
@@ -21,7 +21,7 @@ slots of classes to be filled with varying types. In particular
       or \code{"NULL"}; it is used e.g. for slot \code{nuisance} of class
       \code{"ParamFamParameter"}, as it may or may not be present but if so
       it has to be numeric.}
-\item{\code{"OptionalMatrix"}}{may contain objects of class  
+\item{\code{"OptionalNumericOrMatrix"}}{may contain objects of class  
       \code{"OptionalNumeric"} or \code{"matrix"}; it is used e.g. for 
        slot \code{asvar} of class \code{"Estimate"}, as it may or may not be 
        present but if so it has to be a number (numeric) or a matrix.}

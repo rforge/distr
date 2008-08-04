@@ -5,7 +5,7 @@ import("distrEx")
 import("RandVar")
 
 exportClasses("OptionalNumeric","MatrixorFunction",
-              "OptionalMatrix", "ShowDetails",
+              "OptionalNumericOrMatrix", "ShowDetails",
               "PosSemDefSymmMatrix",
               "PosDefSymmMatrix",
               "Symmetry", "DistributionSymmetry",

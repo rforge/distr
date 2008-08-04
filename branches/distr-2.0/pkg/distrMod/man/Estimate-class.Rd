@@ -46,7 +46,7 @@
     \item{\code{Infos}:}{ object of class \code{"matrix"}
       with two columns named \code{method} and \code{message}:
       additional informations. }
-    \item{\code{asvar}:}{ object of class \code{"OptionalMatrix"}
+    \item{\code{asvar}:}{ object of class \code{"OptionalNumericOrMatrix"}
       which may contain the asymptotic (co)variance of the estimator. }
     \item{\code{samplesize}:}{ object of class \code{"numeric"} ---
       the samplesize at which the estimate was evaluated. }
@@ -54,7 +54,7 @@
      indices of \code{estimate} belonging to the nuisance part}
     \item{\code{untransformed.estimate}:}{Object of class \code{"ANY"}:
       untransformed estimate.}
-    \item{\code{untransformed.asvar}:}{ object of class \code{"OptionalMatrix"}
+    \item{\code{untransformed.asvar}:}{ object of class \code{"OptionalNumericOrMatrix"}
       which may contain the asymptotic (co)variance of the untransformed 
       estimator. }
   }

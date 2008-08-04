@@ -46,7 +46,7 @@ setClassUnion("OptionalNumeric", c("numeric", "NULL"))
 ## matrix or function or NULL -- a class for trafo's
 setClassUnion("MatrixorFunction", c("matrix", "OptionalFunction"))
 ## matrix, numeric or NULL -- a class for covariance slots
-setClassUnion("OptionalMatrix", c("OptionalNumeric", "NULL"))
+setClassUnion("OptionalNumericOrMatrix", c("OptionalNumeric", "matrix"))
 
 ################################
 ##
@@ -412,13 +412,13 @@ setClass("Estimate",
          representation(name = "character",
                         estimate = "ANY",
                         samplesize = "numeric",
-                        asvar = "OptionalMatrix",
+                        asvar = "OptionalNumericOrMatrix",
                         Infos = "matrix",
                         estimate.call = "call",
                         nuis.idx = "OptionalNumeric",
                         trafo = "list",
                         untransformed.estimate = "ANY",
-                        untransformed.asvar = "OptionalMatrix"),
+                        untransformed.asvar = "OptionalNumericOrMatrix"),
          prototype(name = "Estimate",
                    estimate = numeric(0),
                    samplesize = numeric(0),
