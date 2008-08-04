@@ -108,10 +108,8 @@
      but with additional arguments \code{digits}.}
   }
 }
-\note{The pretty-printing code for methods \code{show} and \code{print} 
-has been borrowed from \code{print.fitdistr} in package \pkg{MASS} by B.D. Ripley.}
 %\references{}
-\section{Details for methods \code{show}, \code{print}}{
+\section{Details for methods show, print}{
 Detailedness of output by methods \code{show}, \code{print} is controlled
 by the global option \code{show.details} to be set by 
 \code{\link{distrModoptions}}.
@@ -138,12 +136,14 @@ transformation of the parameter of the parametric family, you will also be
 shown this transformation in form of its function and its derivative matrix
 at the estimated parameter value, as well as the estimator (with standard errors,
 if present) and (again, if present) the corresponding asymptotic covariance
-of the untransformed, total (i.e. main and nuisance part) parameter.  
-            }
-
+of the untransformed, total (i.e. main and nuisance part) parameter.
+}
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
 Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
-%\note{}
+\note{
+The pretty-printing code for methods \code{show} and \code{print} 
+has been borrowed from \code{print.fitdistr} in package \pkg{MASS} by B.D. Ripley.
+}
 \seealso{\code{\link{Estimator}}}
 \examples{
 x <- rnorm(100)
