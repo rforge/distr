@@ -8,6 +8,7 @@
                    gaps = NULL, param = NULL, img = new("Reals"),
                    .withSim = FALSE, .withArith = FALSE,
                    low1 = NULL, up1 = NULL, low = -Inf, up =Inf,
+                   withStand = FALSE,
                    ngrid = getdistrOption("DefaultNrGridPoints"),
                    ep = getdistrOption("TruncQuantile"),
                    e = getdistrOption("RtoDPQ.e"),
@@ -23,6 +24,7 @@
                    gaps = NULL, param = NULL, img = new("Reals"),
                    .withSim = FALSE, .withArith = FALSE,
                    low1 = NULL, up1 = NULL, low = -Inf, up =Inf,
+                   withStand = FALSE,
                    ngrid = getdistrOption("DefaultNrGridPoints"),
                    ep = getdistrOption("TruncQuantile"),
                    e = getdistrOption("RtoDPQ.e"),
@@ -41,6 +43,8 @@
   \item{up1}{upper bound (to be the upper TruncQuantile-quantile of the distribution)} 
   \item{low}{lower bound (to be the 100-percent-quantile of the distribution)}   
   \item{up}{upper bound (to be the 100-percent-quantile of the distribution)}  
+  \item{withStand}{logical: shall we standardize argument function \code{d}
+  to integrate to 1 --- default is no resp. \code{FALSE}}  
   \item{ngrid}{number of gridpoints}
   \item{ep}{tolerance epsilon}
   \item{e}{exponent to base 10 to be used for simulations}
@@ -99,6 +103,12 @@ plot(AbscontDistribution(r = rnorm))
 plot(AbscontDistribution(d = dnorm))
 plot(AbscontDistribution(p = pnorm))
 plot(AbscontDistribution(q = qnorm))
+plot(Ac <- AbscontDistribution(d = function(x, log = FALSE){
+                                   d <- exp(-abs(x^3))
+                                   ## unstandardized!!
+                                   if(log) d <- log(d)
+                                   return(d)}, 
+                         withStand = TRUE))
 }
 \keyword{distribution}
 \concept{absolutely continuous distribution}

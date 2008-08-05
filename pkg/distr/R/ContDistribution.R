@@ -8,6 +8,7 @@ AbscontDistribution <- function(r = NULL, d = NULL, p = NULL, q = NULL,
                    gaps = NULL, param = NULL, img = new("Reals"),
                    .withSim = FALSE, .withArith = FALSE,
                    low1 = NULL, up1 = NULL, low = -Inf, up =Inf,
+                   withStand = FALSE,
                    ngrid = getdistrOption("DefaultNrGridPoints"),
                    ep = getdistrOption("TruncQuantile"),
                    e = getdistrOption("RtoDPQ.e"),
@@ -28,6 +29,36 @@ AbscontDistribution <- function(r = NULL, d = NULL, p = NULL, q = NULL,
                  {i <- 0; x0 <- 1
                   while(d(x0)> ep && i < 20) x0 <- x0 * 2
                   up1 <- x0}
+
+              ### new: allow for non standardized d functions i.e. 
+              ### possibly, int d(x) dx != 1
+              
+              if(withStand){
+                 if(is(try(
+                     stand <- integrate(d,-Inf,Inf)$value,
+                     silent=TRUE),
+                    "try-error")){
+                    if(is(try(
+                         stand <- integrate(d,low1,up1)$value,
+                         silent=TRUE),
+                         "try-error")){
+                          n1 <- 2*ngrid+1
+                          n1.odd <- seq(1,n1, by=2)
+                          n1.even <- (1:n1)[-n1.odd]
+                          x <- seq(low1,up1, length = n1)
+                          h <- diff(x)[1]
+                          dx <- d(x)
+                          stand <- (4*sum(dx[n1.even])+
+                                    2*sum(dx[n.odd])-
+                                    dx[1]-rev(dx)[1])*h/6 
+                         }
+                    }
+                  d0 <- d
+                  d1 <- function(x, log = FALSE)
+                        d0(x, log = log)/stand
+                  d <- d1                      
+                 }
+
               p <- .D2P(d = d, ql = low1, qu=up1,  ngrid = ngrid)
               q <- .P2Q(p = p, ql = low1, qu=up1,  ngrid = ngrid,
                        qL = low, qU = up)
@@ -111,6 +142,36 @@ AbscontDistribution <- function(r = NULL, d = NULL, p = NULL, q = NULL,
                      {i <- 0; x0 <- 1
                       while(d(x0)> ep && i < 20) x0 <- x0 * 2
                       up1 <- x0}
+
+              ### new: allow for non standardized d functions i.e. 
+              ### possibly, int d(x) dx != 1
+              
+              if(withStand){
+                 if(is(try(
+                     stand <- integrate(d,-Inf,Inf)$value,
+                     silent=TRUE),
+                    "try-error")){
+                    if(is(try(
+                         stand <- integrate(d,low1,up1)$value,
+                         silent=TRUE),
+                         "try-error")){
+                          n1 <- 2*ngrid+1
+                          n1.odd <- seq(1,n1, by=2)
+                          n1.even <- (1:n1)[-n1.odd]
+                          x <- seq(low1,up1, length = n1)
+                          h <- diff(x)[1]
+                          dx <- d(x)
+                          stand <- (4*sum(dx[n1.even])+
+                                    2*sum(dx[n.odd])-
+                                    dx[1]-rev(dx)[1])*h/6 
+                         }
+                    }
+                  d0 <- d
+                  d1 <- function(x, log = FALSE)
+                        d0(x, log = log)/stand
+                  d <- d1                      
+                 }
+
                   p <- .D2P(d = d, ql = low1, qu=up1,  ngrid = ngrid)
                   q <- .P2Q(p = p, ql = low1, qu=up1,  ngrid = ngrid,
                            qL = low, qU = up)
@@ -381,18 +442,24 @@ setMethod("exp", "AbscontDistribution",
 if (getRversion()>='2.6.0'){ 
 
 setMethod("log", "AbscontDistribution",
-           function(x) {
+           function(x, base = exp(1)) {
            xs <- as.character(deparse(match.call(
                  call = sys.call(sys.parent(1)))$x))
            ep <- getdistrOption("TruncQuantile")
+           basl <- log(base)
            if(p(x)(0)>ep) 
                 stop(gettextf("log(%s) is not well-defined with positive probability ", xs))
-           else return(.logm.c(x))})
+           else return(.logm.c(x)/basl)})
                        
                        
 setMethod("log10", "AbscontDistribution",
-          function(x) log(x=x)/log(x=10))
+          function(x) log(x = x, base = 10))
 
+setMethod("sign", "AbscontDistribution",
+          function(x){ 
+       DiscreteDistribution(supp=c(-1,0,1), 
+              prob=c(p(x)(0), 0, p(x)(0, lower=FALSE)))                     
+          })
 
 
 

@@ -13,6 +13,7 @@ Title=R Help for package distr
 [FILES]
 00Index.html
 0distr-package.html
+Arcsine-class.html
 Beta-class.html
 BetaParameter-class.html
 Binom-class.html

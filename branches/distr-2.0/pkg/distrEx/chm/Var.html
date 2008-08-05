@@ -32,6 +32,7 @@
 <param name="keyword" value="R:   var,Unif-method">
 <param name="keyword" value="R:   var,Weibull-method">
 <param name="keyword" value="R:   var,Td-method">
+<param name="keyword" value="R:   var,Arcsine-method">
 <param name="keyword" value="R:   sd">
 <param name="keyword" value="R:   sd-methods">
 <param name="keyword" value="R:   sd,UnivariateDistribution-method">
@@ -52,6 +53,7 @@
 <param name="keyword" value="R:   median,Lnorm-method">
 <param name="keyword" value="R:   median,Norm-method">
 <param name="keyword" value="R:   median,Unif-method">
+<param name="keyword" value="R:   median,Arcsine-method">
 <param name="keyword" value="R:   IQR">
 <param name="keyword" value="R:   IQR-methods">
 <param name="keyword" value="R:   IQR,ANY-method">
@@ -69,6 +71,7 @@
 <param name="keyword" value="R:   IQR,Logis-method">
 <param name="keyword" value="R:   IQR,Norm-method">
 <param name="keyword" value="R:   IQR,Unif-method">
+<param name="keyword" value="R:   IQR,Arcsine-method">
 <param name="keyword" value="R:   mad">
 <param name="keyword" value="R:   mad,ANY-method">
 <param name="keyword" value="R:   mad-methods">
@@ -85,6 +88,7 @@
 <param name="keyword" value="R:   mad,Logis-method">
 <param name="keyword" value="R:   mad,Norm-method">
 <param name="keyword" value="R:   mad,Unif-method">
+<param name="keyword" value="R:   mad,Arcsine-method">
 <param name="keyword" value="R:   skewness">
 <param name="keyword" value="R:   skewness-methods">
 <param name="keyword" value="R:   skewness,ANY-method">
@@ -112,6 +116,7 @@
 <param name="keyword" value="R:   skewness,Unif-method">
 <param name="keyword" value="R:   skewness,Weibull-method">
 <param name="keyword" value="R:   skewness,Td-method">
+<param name="keyword" value="R:   skewness,Arcsine-method">
 <param name="keyword" value="R:   kurtosis">
 <param name="keyword" value="R:   kurtosis-methods">
 <param name="keyword" value="R:   kurtosis,ANY-method">
@@ -139,6 +144,7 @@
 <param name="keyword" value="R:   kurtosis,Unif-method">
 <param name="keyword" value="R:   kurtosis,Weibull-method">
 <param name="keyword" value="R:   kurtosis,Td-method">
+<param name="keyword" value="R:   kurtosis,Arcsine-method">
 <param name="keyword" value=" Generic Functions for the Computation of Functionals">
 </object>
 
@@ -180,6 +186,8 @@ IQR(x)
 IQR(x)
 ## S4 method for signature 'Unif':
 IQR(x)
+## S4 method for signature 'Arcsine':
+IQR(x)
 
 median(x, ...)
 
@@ -205,6 +213,8 @@ median(x)
 median(x)
 ## S4 method for signature 'Unif':
 median(x)
+## S4 method for signature 'Arcsine':
+median(x)
 
 mad(x, ...)
 
@@ -227,6 +237,8 @@ mad(x)
 ## S4 method for signature 'Norm':
 mad(x)
 ## S4 method for signature 'Unif':
+mad(x)
+## S4 method for signature 'Arcsine':
 mad(x)
 
 sd(x, ...)
@@ -278,6 +290,8 @@ var(x, ...)
 var(x, ...)
 ## S4 method for signature 'Weibull':
 var(x, ...)
+## S4 method for signature 'Arcsine':
+var(x, ...)
 
 skewness(x, ...)
 ## S4 method for signature 'UnivariateDistribution':
@@ -322,6 +336,8 @@ skewness(x, ...)
 skewness(x, ...)
 ## S4 method for signature 'Weibull':
 skewness(x, ...)
+## S4 method for signature 'Arcsine':
+skewness(x, ...)
 
 kurtosis(x, ...)
 ## S4 method for signature 'UnivariateDistribution':
@@ -365,6 +381,8 @@ kurtosis(x, ...)
 ## S4 method for signature 'Unif':
 kurtosis(x, ...)
 ## S4 method for signature 'Weibull':
+kurtosis(x, ...)
+## S4 method for signature 'Arcsine':
 kurtosis(x, ...)
 </pre>
 
@@ -470,6 +488,9 @@ else uses method for <code>signature(x = "UnivariateDistribution")</code></dd>
 <dt><code>var</code>, <code>signature(x = "Td")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt><code>var</code>, <code>signature(x = "Unif")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt><code>var</code>, <code>signature(x = "Weibull")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt><code>var</code>, <code>signature(x = "Arcsine")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
+
+
 <dt><code>IQR</code>, <code>signature(x = "Cauchy")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt><code>IQR</code>, <code>signature(x = "Dirac")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt><code>IQR</code>, <code>signature(x = "DExp")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
@@ -478,6 +499,9 @@ else uses method for <code>signature(x = "UnivariateDistribution")</code></dd>
 <dt><code>IQR</code>, <code>signature(x = "Logis")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt><code>IQR</code>, <code>signature(x = "Norm")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt><code>IQR</code>, <code>signature(x = "Unif")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt><code>IQR</code>, <code>signature(x = "Arcsine")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
+
+
 <dt><code>median</code>, <code>signature(x = "Cauchy")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt><code>median</code>, <code>signature(x = "Dirac")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt><code>median</code>, <code>signature(x = "DExp")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
@@ -487,6 +511,9 @@ else uses method for <code>signature(x = "UnivariateDistribution")</code></dd>
 <dt><code>median</code>, <code>signature(x = "Lnorm")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt><code>median</code>, <code>signature(x = "Norm")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt><code>median</code>, <code>signature(x = "Unif")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt><code>median</code>, <code>signature(x = "Arcsine")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
+
+
 <dt><code>mad</code>, <code>signature(x = "Cauchy")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt><code>mad</code>, <code>signature(x = "Dirac")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt><code>mad</code>, <code>signature(x = "DExp")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
@@ -495,6 +522,9 @@ else uses method for <code>signature(x = "UnivariateDistribution")</code></dd>
 <dt><code>mad</code>, <code>signature(x = "Logis")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt><code>mad</code>, <code>signature(x = "Norm")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt><code>mad</code>, <code>signature(x = "Unif")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt><code>mad</code>, <code>signature(x = "Arcsine")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
+
+
 <dt><code>skewness</code>, <code>signature(x = "Beta")</code>:</dt><dd>for noncentrality 0 exact evaluation using explicit expressions.</dd>  
 <dt><code>skewness</code>, <code>signature(x = "Binom")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt><code>skewness</code>, <code>signature(x = "Cauchy")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
@@ -514,6 +544,9 @@ else uses method for <code>signature(x = "UnivariateDistribution")</code></dd>
 <dt><code>skewness</code>, <code>signature(x = "Td")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt><code>skewness</code>, <code>signature(x = "Unif")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt><code>skewness</code>, <code>signature(x = "Weibull")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt><code>skewness</code>, <code>signature(x = "Arcsine")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
+
+
 <dt><code>kurtosis</code>, <code>signature(x = "Beta")</code>:</dt><dd>for noncentrality 0 exact evaluation using explicit expressions.</dd>  
 <dt><code>kurtosis</code>, <code>signature(x = "Binom")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt><code>kurtosis</code>, <code>signature(x = "Cauchy")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
@@ -533,6 +566,7 @@ else uses method for <code>signature(x = "UnivariateDistribution")</code></dd>
 <dt><code>kurtosis</code>, <code>signature(x = "Td")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt><code>kurtosis</code>, <code>signature(x = "Unif")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt><code>kurtosis</code>, <code>signature(x = "Weibull")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt><code>kurtosis</code>, <code>signature(x = "Arcsine")</code>:</dt><dd>exact evaluation using explicit expressions.</dd>
 
 <p>
 </dl>

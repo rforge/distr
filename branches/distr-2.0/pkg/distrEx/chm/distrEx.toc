@@ -178,6 +178,10 @@
 <param name="Local" value="E.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,Arcsine,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="E,Beta,missing,missing-method">
 <param name="Local" value="E.html">
 </OBJECT>
@@ -446,6 +450,10 @@
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR,Arcsine-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="IQR,Cauchy-method">
 <param name="Local" value="Var.html">
 </OBJECT>
@@ -547,6 +555,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="kurtosis,ANY-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,Arcsine-method">
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -798,6 +810,10 @@
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mad,Arcsine-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="mad,Cauchy-method">
 <param name="Local" value="Var.html">
 </OBJECT>
@@ -871,6 +887,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="median,ANY-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median,Arcsine-method">
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -1038,6 +1058,10 @@
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,Arcsine-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="skewness,Beta-method">
 <param name="Local" value="Var.html">
 </OBJECT>
@@ -1195,6 +1219,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="var,ANY-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,Arcsine-method">
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">

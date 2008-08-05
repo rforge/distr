@@ -417,3 +417,9 @@ setMethod("E", signature(object = "Weibull",
     function(object, fun, cond){
         return(scale(object)*gamma(1+1/shape(object)))
     })
+setMethod("E", signature(object = "Arcsine", 
+                         fun = "missing", 
+                         cond = "missing"),
+    function(object, fun, cond){
+        return(0)
+    })
