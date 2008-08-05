@@ -23,6 +23,8 @@
     \item{\code{modifyParam}:}{Object of class \code{"function"}:
       mapping from the parameter space (represented by \code{"param"}) 
       to the distribution space (represented by \code{"distribution"}). }
+    \item{\code{fam.call}:}{Object of class \code{"call"}:
+      call by which parametric family was produced.}
     \item{\code{props}:}{ object of class \code{"character"}:
       properties of the family. }
     \item{\code{L2deriv}:}{ object of class \code{"EuclRandVariable"}:

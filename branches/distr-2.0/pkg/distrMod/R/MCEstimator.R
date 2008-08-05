@@ -4,11 +4,10 @@
 MCEstimator <- function(x, ParamFamily, criterion, crit.name, interval, par, 
                         Infos, trafo = NULL, penalty = 0, validity.check = TRUE,
                         asvar.fct, ...){
-    
+    es.call <- match.call()
+
     lmx <- length(main(ParamFamily))
     lnx <- length(nuisance(ParamFamily))
-
-    es.call <- match.call()
 
     if(!is.numeric(x))
       stop(gettext("'x' has to be a numeric vector"))
@@ -27,7 +26,7 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name, interval, par,
            names(theta) <- c(names(main(ParamFamily)),
                              names(nuisance(ParamFamily)))
         else  names(theta) <- names(main(ParamFamily))
-        crit <- criterion(Data, modifyParam(ParamFamily)(theta), ...)
+        crit <- criterion(Data, ParamFamily@modifyParam(theta), ...)
         critP <- crit + penalty * (1-validParameter(ParamFamily, theta))
         return(critP)
     }
@@ -42,7 +41,7 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name, interval, par,
         if(missing(par)) par <- c(main(ParamFamily), nuisance(ParamFamily))
         if(is(par,"Estimate")) par <- estimate(par)
         res <- optim(par = par, fn = fun, Data = x, ParamFamily = ParamFamily, 
-                      criterion = criterion, ...)
+                     criterion = criterion, ...)
         theta <- as.numeric(res$par)
         names(theta) <- c(names(main(ParamFamily)),names(nuisance(ParamFamily)))
         crit <- res$value
@@ -67,7 +66,6 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name, interval, par,
     nuis.idx <- if(lnx) idx else NULL
     nuis <- if(lnx) theta[-idx] else NULL
     
-    
     param <- ParamFamParameter(name = names(theta), 
                                main = theta[idx],
                                nuisance = nuis)    
@@ -89,11 +87,10 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name, interval, par,
              traf0 <- list(fct = trafo, mat = trafo(main(param))$mat)           
          } 
 
-    
     if(validity.check){
         if(!validParameter(ParamFamily,param))
-          {warning("Optimization for MCE did not give a valid result")
-           theta <- rep(NA, lnx+lmx)
+          {warning("Optimization for MCE did not give a valid result. You could try to use argument 'penalty'.")
+           theta <- as.numeric(rep(NA, lnx+lmx))
            res <- new("MCEstimate", name = est.name, estimate = theta, 
                        criterion = crit, Infos = Infos, samplesize = samplesize, 
                        nuis.idx = nuis.idx, estimate.call = es.call, 

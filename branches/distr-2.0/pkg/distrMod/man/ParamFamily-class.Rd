@@ -6,6 +6,8 @@
 \alias{param,ParamFamily-method}
 \alias{modifyParam}
 \alias{modifyParam,ParamFamily-method}
+\alias{fam.call}
+\alias{fam.call,ParamFamily-method}
 \alias{plot,ParamFamily-method}
 \alias{show,ParamFamily-method}
 %\alias{trafo,ParamFamily-method}
@@ -24,6 +26,8 @@
     \item{\code{modifyParam}:}{Object of class \code{"function"}:
       mapping from the parameter space (represented by \code{"param"}) 
       to the distribution space (represented by \code{"distribution"}). }
+    \item{\code{fam.call}:}{Object of class \code{"call"}:
+      call by which parametric family was produced.}
     \item{\code{name}:}{Object of class \code{"character"}:
       name of the family. }
     \item{\code{distribution}:}{Object of class \code{"Distribution"}:
@@ -57,6 +61,9 @@ Class \code{"ProbFamily"}, directly.
     \item{modifyParam}{\code{signature(object = "ParamFamily")}: 
       accessor function for slot \code{modifyParam}. }
 
+    \item{fam.call}{\code{signature(object = "ParamFamily")}: 
+      accessor function for slot \code{fam.call}. }
+
     \item{plot}{\code{signature(x = "ParamFamily")}: 
       plot of slot \code{distribution}. }
 
@@ -78,7 +85,7 @@ value.
 
 For class \code{ParamFamily}, this becomes relevant for slot \code{param}.
 For details therefore confer to \code{\link{ParamFamParameter-class}}.
-            }
+}
 %\references{}
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de}}
 %\note{}

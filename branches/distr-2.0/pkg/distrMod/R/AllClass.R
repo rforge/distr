@@ -178,7 +178,8 @@ setClass("ProbFamily", representation(name = "character",
 ## parametric family of probability measures
 setClass("ParamFamily",
             representation(param = "ParamFamParameter",
-                           modifyParam = "function"
+                           modifyParam = "function",
+                           fam.call = "call"
                            ### <- new !!! (not in thesis!)
                            ### a function with argument theta
                            ###  returning distribution P_theta    
@@ -187,6 +188,7 @@ setClass("ParamFamily",
                       distribution = new("Norm"),
                       distrSymm = new("NoSymmetry"),
                       modifyParam = function(theta){ Norm(mean=theta) }, ### <- new !!! (not in thesis!)
+                      fam.call = call("new", "ParamFamily"),
                       props = character(0),
                       param = new("ParamFamParameter", main = 0, trafo = matrix(1))),
             contains = "ProbFamily")
@@ -206,6 +208,7 @@ setClass("L2ParamFamily",
                       distribution = new("Norm"),
                       distrSymm = new("NoSymmetry"),
                       modifyParam = function(theta){ Norm(mean=theta) }, ### <- new !!! (not in thesis!)
+                      fam.call = call("new", "L2ParamFamily"),
                       param = new("ParamFamParameter", main = 0, trafo = matrix(1)),
                       props = character(0),
                       L2deriv.fct = function(theta) {f <- function(x) {x-theta} 
@@ -254,19 +257,23 @@ setClass("L2ParamFamily",
 setClass("L2GroupParamFamily",
             representation(LogDeriv = "function"), 
             prototype(name = "L_2 differentiable parametric group family",
+                      fam.call = call("new", "L2GroupParamFamily"),
                       Logderiv = function(x)x),
             contains = "L2ParamFamily")
 
 ## L2-differentiable (univariate) location family
 setClass("L2LocationFamily",
+            prototype = prototype(fam.call = call("new", "L2LocationFamily")),
             contains = "L2GroupParamFamily")
 
 ## L2-differentiable (univariate) location scale family
 setClass("L2ScaleFamily",
+            prototype = prototype(fam.call = call("new", "L2ScaleFamily")),
             contains = "L2GroupParamFamily")
 
 ## L2-differentiable (univariate) location and scale family
 setClass("L2LocationScaleFamily",
+            prototype = prototype(fam.call = call("new", "L2LocationScaleFamily")),
             contains = "L2GroupParamFamily")
 
 ################################################################################

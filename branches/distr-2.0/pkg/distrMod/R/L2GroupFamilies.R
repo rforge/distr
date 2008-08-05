@@ -2,10 +2,12 @@
 ## L2 location family
 ##################################################################
 L2LocationFamily <- function(loc = 0, name, centraldistribution = Norm(),
+                             modParam,
                              LogDeriv = function(x) x, L2derivDistr.0,
                              FisherInfo.0, 
                              distrSymm, L2derivSymm, L2derivDistrSymm,
                              trafo, ...){
+    f.call <- match.call()
     if(missing(name))
        name <- "L2 location family"
 
@@ -26,7 +28,8 @@ L2LocationFamily <- function(loc = 0, name, centraldistribution = Norm(),
     names(param0) <- "loc"
     if(missing(trafo)) trafo <- matrix(1)
     param <- ParamFamParameter(name = "location", main = param0, trafo = trafo)
-    modifyParam <- function(theta){ centraldistribution + theta }
+    if(missing(modParam))
+        modParam <- function(theta){ centraldistribution + theta }
     props <- c(paste("The", name, "is invariant under"),
                "the group of transformations 'g(x) = x + loc'",
                "with location parameter 'loc'")
@@ -67,7 +70,8 @@ L2LocationFamily <- function(loc = 0, name, centraldistribution = Norm(),
     L2Fam@distribution <- distribution
     L2Fam@distrSymm <- distrSymm
     L2Fam@param <- param
-    L2Fam@modifyParam <- modifyParam
+    L2Fam@modifyParam <- modParam
+    L2Fam@fam.call <- f.call
     L2Fam@props <- props
     L2Fam@LogDeriv <- LogDeriv
     L2Fam@L2deriv.fct <- L2deriv.fct
@@ -86,10 +90,16 @@ L2LocationFamily <- function(loc = 0, name, centraldistribution = Norm(),
 ## L2 scale family
 ##################################################################
 L2ScaleFamily <- function(scale = 1, loc = 0, name, centraldistribution = Norm(),
+                          modParam,
                           LogDeriv = function(x) x, L2derivDistr.0,
                           FisherInfo.0,
                           distrSymm, L2derivSymm, L2derivDistrSymm,
                           trafo, ...){
+    f.call <- match.call()
+    if(length(scale) != 1 || !is.numeric(scale))
+        stop("scale has to be a numeric of length 1")
+    if(scale < 0)
+        stop("scale has to be positive")
     if(missing(name))
        name <- "L2 scale family"
 
@@ -110,9 +120,11 @@ L2ScaleFamily <- function(scale = 1, loc = 0, name, centraldistribution = Norm()
     names(param0) <- "scale"
     if(missing(trafo)) trafo <- matrix(1)
     param <- ParamFamParameter(name = "scale", main = param0, trafo = trafo)
-    modifyParam <- function(theta){}
-    body(modifyParam) <- substitute({ theta*centraldistribution+loc },
-                                      list(loc = loc))
+    if(missing(modParam)){
+        modParam <- function(theta){}
+        body(modParam) <- substitute({ theta*centraldistribution+loc },
+                                        list(loc = loc))
+    }
     props <- c(paste("The", name, "is invariant under"),
                "the group of transformations 'g(y) = scale*y'",
                "with scale parameter 'scale'")
@@ -157,7 +169,8 @@ L2ScaleFamily <- function(scale = 1, loc = 0, name, centraldistribution = Norm()
     L2Fam@distribution <- distribution
     L2Fam@distrSymm <- distrSymm
     L2Fam@param <- param
-    L2Fam@modifyParam <- modifyParam
+    L2Fam@modifyParam <- modParam
+    L2Fam@fam.call <- f.call
     L2Fam@props <- props
     L2Fam@LogDeriv <- LogDeriv
     L2Fam@L2deriv.fct <- L2deriv.fct
@@ -177,10 +190,16 @@ L2ScaleFamily <- function(scale = 1, loc = 0, name, centraldistribution = Norm()
 ##################################################################
 L2LocationScaleFamily <- function(loc = 0, scale = 1, name, 
                              centraldistribution = Norm(),
+                             modParam,
                              LogDeriv = function(x)x, L2derivDistr.0,
                              FisherInfo.0, 
                              distrSymm, L2derivSymm, L2derivDistrSymm,
                              trafo, ...){
+    f.call <- match.call()
+    if(length(scale) != 1 || !is.numeric(scale))
+        stop("scale has to be a numeric of length 1")
+    if(scale < 0)
+        stop("scale has to be positive")
     if(missing(name))
        name <- "L2 location and scale family"
 
@@ -202,7 +221,8 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
     if(missing(trafo)) trafo <- diag(2)
     param <- ParamFamParameter(name = "location and scale", main = param0,
                                trafo = trafo)
-    modifyParam <- function(theta){theta[2]*centraldistribution+theta[1] }
+    if(missing(modParam))
+        modParam <- function(theta){theta[2]*centraldistribution+theta[1] }
     props <- c(paste("The", name, "is invariant under"),
                "the group of transformations 'g(x) = scale*x + loc'",
                "with location parameter 'loc' and scale parameter 'scale'")
@@ -266,7 +286,8 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
     L2Fam@distribution <- distribution
     L2Fam@distrSymm <- distrSymm
     L2Fam@param <- param
-    L2Fam@modifyParam <- modifyParam
+    L2Fam@modifyParam <- modParam
+    L2Fam@fam.call <- f.call
     L2Fam@props <- props
     L2Fam@LogDeriv <- LogDeriv
     L2Fam@L2deriv.fct <- L2deriv.fct
@@ -285,10 +306,16 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
 ##################################################################
 L2LocationUnknownScaleFamily <- function(loc = 0, scale = 1, name, 
                              centraldistribution = Norm(),
+                             modParam,
                              LogDeriv = function(x)x, L2derivDistr.0,
                              FisherInfo.0, 
                              distrSymm, L2derivSymm, L2derivDistrSymm,
                              trafo, ...){
+    f.call <- match.call()
+    if(length(scale) != 1 || !is.numeric(scale))
+        stop("scale has to be a numeric of length 1")
+    if(scale < 0)
+        stop("scale has to be positive")
     if(missing(name))
        name <- "L2 location with unknown scale (as nuisance) family"
 
@@ -310,7 +337,8 @@ L2LocationUnknownScaleFamily <- function(loc = 0, scale = 1, name,
     if(missing(trafo)) trafo <- matrix(1)
     param <- ParamFamParameter(name = "location and scale", main = param0[1],
                                nuisance = param0[2], trafo = trafo)
-    modifyParam <- function(theta){theta[2]*centraldistribution+theta[1] }
+    if(missing(modParam))
+        modParam <- function(theta){theta[2]*centraldistribution+theta[1] }
     props <- c(paste("The", name, "is invariant under"),
                "the group of transformations 'g(x) = scale*x + loc'",
                "with location parameter 'loc' and scale parameter 'scale'")
@@ -374,7 +402,8 @@ L2LocationUnknownScaleFamily <- function(loc = 0, scale = 1, name,
     L2Fam@distribution <- distribution
     L2Fam@distrSymm <- distrSymm
     L2Fam@param <- param
-    L2Fam@modifyParam <- modifyParam
+    L2Fam@modifyParam <- modParam
+    L2Fam@fam.call <- f.call
     L2Fam@props <- props
     L2Fam@LogDeriv <- LogDeriv
     L2Fam@L2deriv.fct <- L2deriv.fct
@@ -393,10 +422,16 @@ L2LocationUnknownScaleFamily <- function(loc = 0, scale = 1, name,
 ##################################################################
 L2ScaleUnknownLocationFamily <- function(loc = 0, scale = 1, name, 
                              centraldistribution = Norm(),
+                             modParam,
                              LogDeriv = function(x)x, L2derivDistr.0,
                              FisherInfo.0, 
                              distrSymm, L2derivSymm, L2derivDistrSymm,
                              trafo, ...){
+    f.call <- match.call()
+    if(length(scale) != 1 || !is.numeric(scale))
+        stop("scale has to be a numeric of length 1")
+    if(scale < 0)
+        stop("scale has to be positive")
     if(missing(name))
        name <- "L2 scale with unknown location (as nuisance) family"
 
@@ -418,7 +453,8 @@ L2ScaleUnknownLocationFamily <- function(loc = 0, scale = 1, name,
     if(missing(trafo)) trafo <- matrix(1)
     param <- ParamFamParameter(name = "scale and location", main = param0[1],
                                nuisance = param0[2], trafo = trafo)
-    modifyParam <- function(theta){theta[1]*centraldistribution+theta[2] }
+    if(missing(modParam))
+        modParam <- function(theta){theta[1]*centraldistribution+theta[2] }
     props <- c(paste("The", name, "is invariant under"),
                "the group of transformations 'g(x) = scale*x + loc'",
                "with location parameter 'loc' and scale parameter 'scale'")
@@ -482,7 +518,8 @@ L2ScaleUnknownLocationFamily <- function(loc = 0, scale = 1, name,
     L2Fam@distribution <- distribution
     L2Fam@distrSymm <- distrSymm
     L2Fam@param <- param
-    L2Fam@modifyParam <- modifyParam
+    L2Fam@modifyParam <- modParam
+    L2Fam@fam.call <- f.call
     L2Fam@props <- props
     L2Fam@LogDeriv <- LogDeriv
     L2Fam@L2deriv.fct <- L2deriv.fct

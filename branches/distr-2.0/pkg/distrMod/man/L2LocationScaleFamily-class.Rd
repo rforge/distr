@@ -19,6 +19,8 @@
       symmetry of \code{distribution}. }
     \item{\code{param}:}{ object of class \code{"ParamFamParameter"}:
       parameter of the family. }
+    \item{\code{fam.call}:}{Object of class \code{"call"}:
+      call by which parametric family was produced.}
     \item{\code{modifyParam}:}{Object of class \code{"function"}:
       mapping from the parameter space (represented by \code{"param"}) 
       to the distribution space (represented by \code{"distribution"}). }

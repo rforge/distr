@@ -7,6 +7,7 @@
 }
 \usage{
 L2LocationScaleFamily(loc = 0, scale = 1, name, centraldistribution = Norm(),
+                      modParam,
                       LogDeriv = function(x) x,  L2derivDistr.0,
                       FisherInfo.0, distrSymm, L2derivSymm, L2derivDistrSymm,
                       trafo, ...)
@@ -18,6 +19,9 @@ L2LocationScaleFamily(loc = 0, scale = 1, name, centraldistribution = Norm(),
   \item{centraldistribution}{object of class \code{"AbscontDistribution"}:
     central distribution; we assume by default, that centraldistribution
     is symmetric about \eqn{0}}
+  \item{modParam}{ optional function: mapping from the parameter space 
+    (represented by \code{"param"}) to the distribution space 
+    (represented by \code{"distribution"}). }
   \item{LogDeriv}{function with argument \code{x}: the negative logarithmic 
     derivative of the density of the central distribution }
   \item{L2derivDistr.0}{list of length 2 of objects of class \code{"UnivariateDistribution"}:
@@ -37,6 +41,9 @@ L2LocationScaleFamily(loc = 0, scale = 1, name, centraldistribution = Norm(),
 \details{
   If \code{name} is missing, the default 
   \dQuote{L2 location and scale family} is used.  
+  The function \code{modParam} is optional. If it is missing, it is 
+  constructed from \code{centraldistribution} using the location and
+  scale structure of the model.
   Slot \code{param} is filled accordingly with the argument 
   \code{trafo} passed to \code{L2LocationScaleFamily}.
   In case \code{L2derivDistr.0} is missing, \code{L2derivDistr} is computed 

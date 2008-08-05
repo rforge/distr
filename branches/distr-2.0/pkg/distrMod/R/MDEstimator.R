@@ -4,7 +4,7 @@
 MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist, dist.name, 
                         interval, par, Infos, trafo = NULL, penalty = 0, 
                         asvar.fct, ...){
-    
+
     es.call <- match.call()
 
     res <- MCEstimator(x = x, ParamFamily = ParamFamily, criterion = distance,
@@ -13,10 +13,10 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist, dist.name,
 
     l.e <- length(res@estimate)
     idx <- 1:l.e
-    
+
     if(!is.null(res@nuis.idx))
         idx <- -res@nuis.idx
-    
+
     res@estimate.call <- es.call
 
     if(missing(dist.name))
@@ -24,10 +24,10 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist, dist.name,
     names(res@criterion) <- dist.name
     res@name <- paste("Minimum", dist.name, "estimate", sep = " ")
 
-        
-    param <- ParamFamParameter(name = names(res@estimate), main = res@estimate[idx],
+    param <- ParamFamParameter(name = name(param(ParamFamily)), 
+                               main = res@estimate[idx],
                                nuisance = res@estimate[-idx])
-    
+
     if(missing(trafo)||is.null(trafo)) 
          {traf1 <- ParamFamily@param@trafo
           if(is.matrix(traf1))  
@@ -35,16 +35,15 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist, dist.name,
                                      list(fval = traf1 %*% x, mat = traf1), 
                                mat = traf1)
           else
-             res@trafo <- list(fct = traf1, mat = traf1(main(param))$mat)                        
+             res@trafo <- list(fct = traf1, mat = traf1(main(param))$mat)
          }
     else {if(is.matrix(trafo))
              res@trafo <- list(fct = function(x) 
                                      list(fval = trafo %*% x, mat = trafo), 
                                mat = trafo)
           else
-             res@trafo <- list(fct = trafo, mat = trafo(main(param))$mat)           
+             res@trafo <- list(fct = trafo, mat = trafo(main(param))$mat)
          } 
-
 
     if(!validParameter(ParamFamily,param))
        {warning(gettextf("Optimization for %s did not give a valid result",

@@ -50,6 +50,9 @@ G <- GammaFamily(scale = 1, shape = 2)
 ## Maximum likelihood estimator
 (res <- MLEstimator(x = x, ParamFamily = G))
 
+## Asymptotic (CLT-based) confidence interval
+confint(res)
+
 ## implementation of ML-estimator of package MASS
 library(MASS)
 (res1 <- fitdistr(x, "gamma"))

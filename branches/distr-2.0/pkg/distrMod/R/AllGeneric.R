@@ -69,6 +69,9 @@ if(!isGeneric("trafo<-")){
 if(!isGeneric("modifyParam")){
     setGeneric("modifyParam", function(object) standardGeneric("modifyParam"))
 }
+if(!isGeneric("fam.call")){
+    setGeneric("fam.call", function(object) standardGeneric("fam.call"))
+}
 if(!isGeneric("dimension")){
     setGeneric("dimension", function(object) standardGeneric("dimension"))
 }

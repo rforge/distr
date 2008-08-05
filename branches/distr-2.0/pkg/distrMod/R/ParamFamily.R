@@ -3,6 +3,7 @@
 ParamFamily <- function(name, distribution = Norm(), distrSymm,
                         modifyParam, main = 0, nuisance, trafo, param,
                         props = character(0)){
+    f.call <- match.call()
     if(missing(name))
         name <- "parametric family of probability measures"
     if(missing(distrSymm)) distrSymm <- NoSymmetry()
@@ -20,6 +21,7 @@ ParamFamily <- function(name, distribution = Norm(), distrSymm,
     PF@param <- param
     PF@props <- props
     PF@modifyParam <- modifyParam
+    PF@fam.call <- f.call
 
     return(PF)
 }
@@ -27,7 +29,14 @@ ParamFamily <- function(name, distribution = Norm(), distrSymm,
 
 ## access methods
 setMethod("param", "ParamFamily", function(object) object@param)
-setMethod("modifyParam", "ParamFamily", function(object) object@modifyParam)
+setMethod("modifyParam", "ParamFamily", 
+    function(object){
+        fun <- function(theta){}
+        body(fun) <- substitute({ validParameter(object, param = theta); fun(theta) },
+                                list(fun = object@modifyParam))
+        return(fun)
+    })
+setMethod("fam.call", "ParamFamily", function(object) object@fam.call)
 
 ## wrapped access methods
 setMethod("main", "ParamFamily", function(object) main(param(object)))
