@@ -252,6 +252,17 @@ setMethod("kurtosis", signature(x = "Beta"),
         return(6*(a^3-a^2*(2*b-1)+b^2*(b+1)-2*a*b*(b+2))/(a*b*(a+b+2)*(a+b+3)) )}
     })
 
+###################################################################################
+#kurtosis --- code P.R.:
+###################################################################################
+
+setMethod("kurtosis", signature(x = "Arcsine"),
+    function(x, ...){
+    if((hasArg(fun))||(hasArg(cond))||(!isTRUE(all.equal(ncp(x),0)))) 
+        return(kurtosis(as(x,"AbscontDistribution"),...))
+    else
+        {return(-3/2)}
+    })
 
 
 

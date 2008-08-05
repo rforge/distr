@@ -45,6 +45,7 @@
 \alias{E,Td,missing,missing-method}
 \alias{E,Unif,missing,missing-method}
 \alias{E,Weibull,missing,missing-method}
+\alias{E,Arcsine,missing,missing-method}
 
 \title{Generic Function for the Computation of (Conditional) Expectations}
 \description{
@@ -98,6 +99,7 @@ E(object, fun, cond, ...)
 \S4method{E}{Unif,missing,missing}(object, fun, cond)
 \S4method{E}{Td,missing,missing}(object, fun, cond)
 \S4method{E}{Weibull,missing,missing}(object, fun, cond)
+\S4method{E}{Arcsine,missing,missing}(object, fun, cond)
 
 }
 \arguments{
@@ -238,6 +240,8 @@ E(object, fun, cond, ...)
   \item{object = "Td", fun = "missing", cond = "missing":}{ 
     exact evaluation using explicit expressions.}
   \item{object = "Weibull", fun = "missing", cond = "missing":}{ 
+    exact evaluation using explicit expressions.}
+  \item{object = "Arcsine", fun = "missing", cond = "missing":}{ 
     exact evaluation using explicit expressions.}
 }}
 %\references{ ~put references to the literature/web site here ~ }

@@ -308,6 +308,14 @@ setMethod("var", signature(x = "Beta"),
         return(a*b/(a+b)^2/(a+b+1))}
     })
 
+setMethod("var", signature(x = "Arcsine"),
+    function(x, ...){
+    if((hasArg(fun))||(hasArg(cond))||(!isTRUE(all.equal(ncp(x),0)))) 
+        return(var(as(x,"AbscontDistribution"),...))
+    else
+        {return(1/2)}
+    })
+
 #################################################################
 # some exact medians
 #################################################################
@@ -339,6 +347,9 @@ setMethod("median", signature(x = "Lnorm"),
 setMethod("median", signature(x = "Unif"),
     function(x) (Min(x)+Max(x))/2)
 
+setMethod("median", signature(x = "Arcsine"),
+    function(x) 0)
+
 #################################################################
 # some exact IQRs
 #################################################################
@@ -367,6 +378,9 @@ setMethod("IQR", signature(x = "Logis"),
 
 setMethod("IQR", signature(x = "Unif"),
     function(x) (Max(x)-Min(x))/2)
+
+setMethod("IQR", signature(x = "Arcsine"),
+    function(x) sqrt(2))
 
 #################################################################
 # some exact mads
@@ -399,3 +413,5 @@ setMethod("mad", signature(x = "Logis"),
 setMethod("mad", signature(x = "Unif"),
     function(x) (Max(x)-Min(x))/4)
 
+setMethod("mad", signature(x = "Arcsine"),
+    function(x) sqrt(1/2))

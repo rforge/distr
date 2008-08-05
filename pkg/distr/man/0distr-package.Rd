@@ -120,6 +120,7 @@ r(function), d(OptionalFunction), p(OptionalFunction), q(OptionalFunction),
 |>|>|>|>"AffLinUnivarLebDecDistribution"
 |>|>"AbscontDistribution"
 |>|>|>"AffLinAbscontDistribution"
+|>|>|>"Arcsine"
 |>|>|>"Beta"
 |>|>|>"Cauchy"
 |>|>|>"ExpOrGammaOrChisq" (VIRTUAL)

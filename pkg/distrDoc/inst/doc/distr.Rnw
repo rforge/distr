@@ -1347,7 +1347,7 @@ integration; else we use Monte-Carlo integration.
 corresponding \code{d} respective \code{r} slots with the additional 
 argument \code{cond}.
 \paragraph{exact evaluation}
-is available for \code{X} of class \code{Beta} (for noncentrality $0$), 
+is available for \code{X} of class \code{Arcsine}, \code{Beta} (for noncentrality $0$), 
 \code{Binom}, \code{Cauchy}, \code{Chisq}, \code{Dirac}, \code{Exp}, \code{Fd}, 
 \code{Gammad}, \code{Geom}, \code{Hyper}, \code{Logis}, \code{Lnorm}, 
 \code{Nbinom}, \code{Norm}, \code{Pois}, \code{Td}, \code{Unif}, \code{Weibull}.
@@ -1422,7 +1422,7 @@ union \code{AffLinDistribution}, we determine the variance as
 available.
 \paragraph{exact evaluation} is provided for specific distributions if no 
 function and no condition argument is given:
-this is available for \code{X} of class \code{Beta} (for noncentrality $0$), 
+this is available for \code{X} of class \code{Arcsine}, \code{Beta} (for noncentrality $0$), 
 \code{Binom}, \code{Cauchy}, \code{Chisq},\code{Dirac}, \code{Exp}, \code{Fd}, 
 \code{Gammad}, \code{Geom}, \code{Hyper}, \code{Logis}, \code{Lnorm}, 
 \code{Nbinom}, \code{Norm}, \code{Pois}, \code{Unif}, \code{Td}, \code{Weibull}.

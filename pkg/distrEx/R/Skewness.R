@@ -232,6 +232,17 @@ setMethod("skewness", signature(x = "Beta"),
         return( 2*(b-a)*sqrt(a+b+1)/(a+b+2)/sqrt(a*b) ) }
     })
 
+###################################################################################
+#skewness --- code P.R.:
+###################################################################################
+
+setMethod("skewness", signature(x = "Arcsine"),
+    function(x, ...){
+    if((hasArg(fun))||(hasArg(cond))||(!isTRUE(all.equal(ncp(x),0)))) 
+        return(skewness(as(x,"AbscontDistribution"),...))
+    else
+        {return( 0 ) }
+    })
 
 
 

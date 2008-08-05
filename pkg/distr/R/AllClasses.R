@@ -598,6 +598,38 @@ setClass("Weibull",
           contains = "AbscontDistribution"
           )
 
+## Class: Arcsine distribution
+setClass("Arcsine",  
+          prototype = prototype(
+                      r = function(n){ sin((runif(n)-.5)*pi) },
+                      d = function(x, log = FALSE){ 
+                              x0 <- (abs(x)<1-.Machine$double.eps)
+                              x1 <- x^2*x0
+                              d <-  x0/sqrt(1-x1)/pi
+                              d[.isEqual(abs(x),1)] <- Inf
+                              if(log) d<- log(d)
+                              return(d)},
+                      p = function(q, lower.tail = TRUE, log.p = FALSE ){ 
+                              if(!lower.tail) q<- -q
+                              q <- pmin(pmax(q,-1),1)
+                              p <- asin(q)/pi+1/2
+                              if(log.p) p <- log(p)
+                              return(p)},
+                      q = function(p, lower.tail = TRUE, log.p = FALSE ){ 
+                              if(log.p) p <- exp(p)
+                              p1 <- p
+                              p1[p<0|p>1] <- 0.5
+                              if(!lower.tail) p1 <- 1-p1
+                              q <- sin( (p1-1/2)*pi)
+                              q[p<0|p>1] <- NA
+                              q[.isEqual(p,0)] <- -1
+                              q[.isEqual(p,1)] <-  1
+                              return(q)}                      
+                      ),
+          contains = "AbscontDistribution"
+          )
+
+
 ## inbetween-Class: AffLinAbscontDistribution
 
 setClass("AffLinAbscontDistribution", 
