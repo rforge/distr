@@ -1,7 +1,7 @@
 ############################ plot #######################
 
 setMethod("plot", "AffLinUnivarLebDecDistribution",
-    function(x, y = NULL, width = 16, height = 9, withSweave = FALSE,
+    function(x, y = NULL, width = 10, height = 5.5, withSweave = FALSE,
              xlim = NULL, ylim = NULL, ngrid = 1000,
              verticals = TRUE, do.points = TRUE,
              main = FALSE, inner = TRUE, sub = FALSE,
@@ -22,7 +22,7 @@ setMethod("plot", "AffLinUnivarLebDecDistribution",
 })
 
 setMethod("plot", "UnivarLebDecDistribution",
-    function(x, y = NULL, width = 16, height = 9, withSweave = FALSE,
+    function(x, y = NULL, width = 10, height = 5.5, withSweave = FALSE,
              xlim = NULL, ylim = NULL, ngrid = 1000,
              verticals = TRUE, do.points = TRUE,
              main = FALSE, inner = TRUE, sub = FALSE,
