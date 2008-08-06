@@ -24,9 +24,12 @@ L2LocationFamily <- function(loc = 0, name, centraldistribution = Norm(),
         }
     }
 
+    makeOKPar <- function(param) param
+    startPar <- function(x,...) c(min(x),max(x))
     param0 <- loc
     names(param0) <- "loc"
-    if(missing(trafo)) trafo <- matrix(1)
+    if(missing(trafo))  {trafo <- matrix(1)
+                         dimnames(trafo) <- list("location","location")}
     param <- ParamFamParameter(name = "location", main = param0, trafo = trafo)
     if(missing(modParam))
         modParam <- function(theta){ centraldistribution + theta }
@@ -70,6 +73,8 @@ L2LocationFamily <- function(loc = 0, name, centraldistribution = Norm(),
     L2Fam@distribution <- distribution
     L2Fam@distrSymm <- distrSymm
     L2Fam@param <- param
+    L2Fam@startPar <- startPar
+    L2Fam@makeOKPar <- makeOKPar
     L2Fam@modifyParam <- modParam
     L2Fam@fam.call <- f.call
     L2Fam@props <- props
@@ -118,7 +123,10 @@ L2ScaleFamily <- function(scale = 1, loc = 0, name, centraldistribution = Norm()
 
     param0 <- scale
     names(param0) <- "scale"
-    if(missing(trafo)) trafo <- matrix(1)
+    startPar <- function(x,...) c(.Machine$double.eps,max(x)-min(x))
+    makeOKPar <- function(param) abs(param)+.Machine$double.eps
+    if(missing(trafo))  {trafo <- matrix(1)
+                         dimnames(trafo) <- list("scale","scale")}
     param <- ParamFamParameter(name = "scale", main = param0, trafo = trafo)
     if(missing(modParam)){
         modParam <- function(theta){}
@@ -170,6 +178,8 @@ L2ScaleFamily <- function(scale = 1, loc = 0, name, centraldistribution = Norm()
     L2Fam@distrSymm <- distrSymm
     L2Fam@param <- param
     L2Fam@modifyParam <- modParam
+    L2Fam@startPar <- startPar
+    L2Fam@makeOKPar <- makeOKPar
     L2Fam@fam.call <- f.call
     L2Fam@props <- props
     L2Fam@LogDeriv <- LogDeriv
@@ -218,9 +228,19 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
 
     param0 <- c(loc, scale)
     names(param0) <- c("loc", "scale")
-    if(missing(trafo)) trafo <- diag(2)
+    if(missing(trafo))  {trafo <- diag(2)
+                         dimnames(trafo) <- list(c("location","scale"),
+                                                 c("location","scale"))}
     param <- ParamFamParameter(name = "location and scale", main = param0,
                                trafo = trafo)
+    startPar <- function(x,...) {
+                   st <- c(median(x),mad(x))
+                   names(st) <- c("loc", "scale")
+                   return(st)}
+    makeOKPar <- function(param) {
+                    st <- c(param[1],abs(param[2])+.Machine$double.eps)
+                    names(st) <- c("loc", "scale")
+                   return(st)}                   
     if(missing(modParam))
         modParam <- function(theta){theta[2]*centraldistribution+theta[1] }
     props <- c(paste("The", name, "is invariant under"),
@@ -286,6 +306,8 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
     L2Fam@distribution <- distribution
     L2Fam@distrSymm <- distrSymm
     L2Fam@param <- param
+    L2Fam@startPar <- startPar
+    L2Fam@makeOKPar <- makeOKPar
     L2Fam@modifyParam <- modParam
     L2Fam@fam.call <- f.call
     L2Fam@props <- props
@@ -334,7 +356,16 @@ L2LocationUnknownScaleFamily <- function(loc = 0, scale = 1, name,
 
     param0 <- c(loc, scale)
     names(param0) <- c("loc", "scale")
-    if(missing(trafo)) trafo <- matrix(1)
+    startPar <- function(x,...) {
+                   st <- c(median(x),mad(x))
+                   names(st) <- c("loc", "scale")
+                   return(st)}
+    makeOKPar <- function(param) {
+                    st <- c(param[1],abs(param[2])+.Machine$double.eps)
+                    names(st) <- c("loc", "scale")
+                   return(st)}                   
+    if(missing(trafo))  {trafo <- matrix(1)
+                         dimnames(trafo) <- list("location","location")}
     param <- ParamFamParameter(name = "location and scale", main = param0[1],
                                nuisance = param0[2], trafo = trafo)
     if(missing(modParam))
@@ -403,6 +434,8 @@ L2LocationUnknownScaleFamily <- function(loc = 0, scale = 1, name,
     L2Fam@distrSymm <- distrSymm
     L2Fam@param <- param
     L2Fam@modifyParam <- modParam
+    L2Fam@startPar <- startPar
+    L2Fam@makeOKPar <- makeOKPar
     L2Fam@fam.call <- f.call
     L2Fam@props <- props
     L2Fam@LogDeriv <- LogDeriv
@@ -450,7 +483,16 @@ L2ScaleUnknownLocationFamily <- function(loc = 0, scale = 1, name,
 
     param0 <- c(scale, loc)
     names(param0) <- c("scale", "loc")
-    if(missing(trafo)) trafo <- matrix(1)
+    startPar <- function(x,...) {
+                   st <- c(median(x),mad(x))
+                   names(st) <- c("loc", "scale")
+                   return(st)}
+    makeOKPar <- function(param) {
+                    st <- c(param[1],abs(param[2])+.Machine$double.eps)
+                    names(st) <- c("loc", "scale")
+                   return(st)}                   
+    if(missing(trafo))  {trafo <- matrix(1)
+                         dimnames(trafo) <- list("scale","scale")}
     param <- ParamFamParameter(name = "scale and location", main = param0[1],
                                nuisance = param0[2], trafo = trafo)
     if(missing(modParam))
@@ -518,6 +560,8 @@ L2ScaleUnknownLocationFamily <- function(loc = 0, scale = 1, name,
     L2Fam@distribution <- distribution
     L2Fam@distrSymm <- distrSymm
     L2Fam@param <- param
+    L2Fam@startPar <- startPar
+    L2Fam@makeOKPar <- makeOKPar
     L2Fam@modifyParam <- modParam
     L2Fam@fam.call <- f.call
     L2Fam@props <- props

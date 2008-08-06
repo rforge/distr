@@ -67,7 +67,7 @@ call by which estimate was produced.</dd>
 <dt><code>Infos</code>:</dt><dd>object of class <code>"matrix"</code>
 with two columns named <code>method</code> and <code>message</code>:
 additional informations. </dd>
-<dt><code>asvar</code>:</dt><dd>object of class <code>"OptionalMatrix"</code>
+<dt><code>asvar</code>:</dt><dd>object of class <code>"OptionalNumericOrMatrix"</code>
 which may contain the asymptotic (co)variance of the estimator. </dd>
 <dt><code>samplesize</code>:</dt><dd>object of class <code>"numeric"</code> &mdash;
 the samplesize at which the estimate was evaluated. </dd>
@@ -75,7 +75,7 @@ the samplesize at which the estimate was evaluated. </dd>
 indices of <code>estimate</code> belonging to the nuisance part</dd>
 <dt><code>untransformed.estimate</code>:</dt><dd>Object of class <code>"ANY"</code>:
 untransformed estimate.</dd>
-<dt><code>untransformed.asvar</code>:</dt><dd>object of class <code>"OptionalMatrix"</code>
+<dt><code>untransformed.asvar</code>:</dt><dd>object of class <code>"OptionalNumericOrMatrix"</code>
 which may contain the asymptotic (co)variance of the untransformed 
 estimator. </dd>
 </dl>
@@ -138,11 +138,13 @@ function to add an information to slot <code>Infos</code>. </dd>
 
 
 <dt>show</dt><dd><code>signature(object = "Estimate")</code></dd>
+
+
 <dt>print</dt><dd><code>signature(object = "Estimate")</code>: just as <code>show</code>, 
 but with additional arguments <code>digits</code>.</dd>
 </dl>
 
-<h3>Details for methods this-is-escaped-codenormal-bracket152bracket-normal, this-is-escaped-codenormal-bracket153bracket-normal</h3>
+<h3>Details for methods show, print</h3>
 
 <p>
 Detailedness of output by methods <code>show</code>, <code>print</code> is controlled

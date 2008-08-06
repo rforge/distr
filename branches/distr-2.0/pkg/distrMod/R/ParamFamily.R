@@ -2,7 +2,7 @@
 ### extended: new slot/argument modifyParam
 ParamFamily <- function(name, distribution = Norm(), distrSymm,
                         modifyParam, main = 0, nuisance, trafo, param,
-                        props = character(0)){
+                        props = character(0), startPar = NULL, makeOKPar = NULL){
     f.call <- match.call()
     if(missing(name))
         name <- "parametric family of probability measures"
@@ -22,6 +22,8 @@ ParamFamily <- function(name, distribution = Norm(), distrSymm,
     PF@props <- props
     PF@modifyParam <- modifyParam
     PF@fam.call <- f.call
+    if(!is.null(startPar)) PF@startPar <- startPar
+    if(!is.null(makeOKPar)) PF@makeOKPar <- makeOKPar
 
     return(PF)
 }
@@ -34,6 +36,20 @@ setMethod("modifyParam", "ParamFamily",
         fun <- function(theta){}
         body(fun) <- substitute({ validParameter(object, param = theta); fun(theta) },
                                 list(fun = object@modifyParam))
+        return(fun)
+    })
+setMethod("startPar", "ParamFamily", 
+    function(object){
+        fun <- function(x,...){}
+        body(fun) <- substitute(fun(x ,...),
+                                list(fun = object@startPar))
+        return(fun)
+    })
+setMethod("makeOKPar", "ParamFamily", 
+    function(object){
+        fun <- function(x,...){}
+        body(fun) <- substitute(fun(x ,...),
+                                list(fun = object@makeOKPar))
         return(fun)
     })
 setMethod("fam.call", "ParamFamily", function(object) object@fam.call)
@@ -50,7 +66,7 @@ setMethod("trafo", signature(object = "ParamFamily", param = "ParamFamParameter"
              return(list(fct = trafo(object), 
                          mat = (trafo(object)(main(param)))$mat))
         else return(list(fct = function(x) trafo(object)%*%x, 
-                         mat = trafo(objcet)))
+                         mat = trafo(object)))
    })  
 
 ## replace methods
@@ -59,7 +75,7 @@ setMethod("trafo", signature(object = "ParamFamily", param = "ParamFamParameter"
 setReplaceMethod("trafo", "ParamFamily", 
     function(object, value){ 
         param <- object@param
-        trafo(param) <-  value
+        param@trafo <-  value
         object <- modifyModel(object, param)
         object
     })

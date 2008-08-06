@@ -179,7 +179,9 @@ setClass("ProbFamily", representation(name = "character",
 setClass("ParamFamily",
             representation(param = "ParamFamParameter",
                            modifyParam = "function",
-                           fam.call = "call"
+                           fam.call = "call",
+                           startPar = "function",
+                           makeOKPar = "function"
                            ### <- new !!! (not in thesis!)
                            ### a function with argument theta
                            ###  returning distribution P_theta    
@@ -190,6 +192,8 @@ setClass("ParamFamily",
                       modifyParam = function(theta){ Norm(mean=theta) }, ### <- new !!! (not in thesis!)
                       fam.call = call("new", "ParamFamily"),
                       props = character(0),
+                      makeOKPar = function(param)param,
+                      startPar = function(x) {},
                       param = new("ParamFamParameter", main = 0, trafo = matrix(1))),
             contains = "ProbFamily")
 
@@ -211,6 +215,7 @@ setClass("L2ParamFamily",
                       fam.call = call("new", "L2ParamFamily"),
                       param = new("ParamFamParameter", main = 0, trafo = matrix(1)),
                       props = character(0),
+                      startPar = function(x, ...) {},
                       L2deriv.fct = function(theta) {f <- function(x) {x-theta} 
                                                      return(f)},
                       L2deriv = EuclRandVarList(RealRandVariable(Map = list(function(x)x), 

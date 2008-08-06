@@ -25,6 +25,16 @@
       to the distribution space (represented by \code{"distribution"}). }
     \item{\code{fam.call}:}{Object of class \code{"call"}:
       call by which parametric family was produced.}
+    \item{\code{makeOKPar}:}{Object of class \code{"function"}:
+           has argument \code{param} --- the (total) parameter, 
+           returns valid parameter; used if \code{optim} resp. \code{optimize}---
+           try to use ``illegal'' parameter values; then \code{makeOKPar} makes
+           a valid parameter value out of the illegal one.}
+    \item{\code{startPar}:}{Object of class \code{"function"}:
+           has argument \code{x} --- the data, 
+           returns starting parameter for \code{optim} resp. \code{optimize}---
+           a starting estimator in case parameter is multivariate
+           or a search interval in case parameter is univariate.}
     \item{\code{props}:}{ object of class \code{"character"}:
       properties of the family. }
     \item{\code{L2deriv}:}{ object of class \code{"EuclRandVariable"}:

@@ -225,3 +225,9 @@ if(!isGeneric("untransformed.estimate")){
     setGeneric("untransformed.estimate", 
                 function(object) standardGeneric("untransformed.estimate"))
 }
+if(!isGeneric("startPar")){
+    setGeneric("startPar", function(object, ...) standardGeneric("startPar"))
+}
+if(!isGeneric("makeOKPar")){
+    setGeneric("makeOKPar", function(object, ...) standardGeneric("makeOKPar"))
+}

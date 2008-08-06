@@ -5,6 +5,7 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
                           param = ParamFamParameter(name = paste("Parameter of", name),
                                    main = main, nuisance = nuisance, trafo = trafo),
                           props = character(0),
+                          startPar = NULL, makeOKPar = NULL,
                           modifyParam = function(theta){ Norm(mean=theta) },
                           L2deriv.fct = function(param) {force(theta <- param@main)
                                        return(function(x) {x-theta})},
@@ -92,6 +93,8 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
     L2Fam@L2derivDistrSymm <- L2derivDistrSymm
     L2Fam@FisherInfo.fct <- FisherInfo.fct
     L2Fam@FisherInfo <- FisherInfo
+    if(!is.null(startPar)) L2Fam@startPar <- startPar
+    if(!is.null(makeOKPar)) L2Fam@makeOKPar <- makeOKPar
 
     return(L2Fam)
 }
@@ -134,15 +137,15 @@ setMethod("checkL2deriv", "L2ParamFamily",
 ### move model from one parameter to the next...
 setMethod("modifyModel", signature(model = "L2ParamFamily", param = "ParamFamParameter"), 
           function(model, param, ...){
-          M <- L2ParamFamily(name = model@name, 
-                        distribution = model@modifyParam(main(param)), 
-                        param = param, 
-                        props = model@props,
-                        modifyParam = model@modifyParam,
-                        L2deriv.fct = model@L2deriv.fct,
-                        L2derivDistr = model@L2derivDistr, 
-                        FisherInfo.fct = model@FisherInfo.fct
-                        )
+          M <- model
+          theta <- c(main(param),nuisance(param))
+          M@distribution <- model@modifyParam(theta)
+          M@param <- param
+          fct <- M@L2deriv.fct(param)
+          M@L2deriv <- if(!is.list(fct))
+              EuclRandVarList(RealRandVariable(list(fct), Domain = Reals())) else
+              EuclRandVarList(RealRandVariable(fct, Domain = Reals()))
+          M@FisherInfo <- M@FisherInfo.fct(param)
           M1 <- existsPIC(M)
           return(M)
           })

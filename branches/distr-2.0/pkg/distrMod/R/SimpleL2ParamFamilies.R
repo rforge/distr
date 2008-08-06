@@ -19,6 +19,10 @@ BinomFamily <- function(size = 1, prob = 0.5, trafo){
     props <- c("The Binomial family is symmetric with respect to prob = 0.5;", 
                "i.e., d(Binom(size, prob))(k)=d(Binom(size,1-prob))(size-k)")
     
+    startPar <- function(x,...) c(.Machine$double.eps,1-.Machine$double.eps)
+    makeOKPar <- function(param) {if(param<=0) return(.Machine$double.eps)
+                                  if(param>=1) return(1-.Machine$double.eps)
+                                  return(param)}
     L2deriv.fct <- function(param){
                    prob <- main(param)
                    fct <- function(x){}
@@ -41,7 +45,8 @@ BinomFamily <- function(size = 1, prob = 0.5, trafo){
         distrSymm = distrSymm, param = param, modifyParam = modifyParam,
         props = props, L2deriv.fct = L2deriv.fct, L2derivSymm = L2derivSymm,
         L2derivDistr = L2derivDistr, L2derivDistrSymm = L2derivDistrSymm,
-        FisherInfo.fct = FisherInfo.fct, FisherInfo = FisherInfo)
+        FisherInfo.fct = FisherInfo.fct, FisherInfo = FisherInfo,
+        startPar = startPar, makeOKPar = makeOKPar)
     res@fam.call <- f.call
     return(res)
 }
@@ -61,6 +66,9 @@ PoisFamily <- function(lambda = 1, trafo){
                                main = param0, trafo = trafo)
     modifyParam <- function(theta){ Pois(lambda = theta) }
     props <- character(0)
+    startPar <- function(x,...) c(.Machine$double.eps,max(x))
+    makeOKPar <- function(param) {if(param<=0) return(.Machine$double.eps)
+                                  return(param)}
     L2deriv.fct <- function(param){
                    lambda <- main(param)
                    fct <- function(x){}
@@ -80,7 +88,8 @@ PoisFamily <- function(lambda = 1, trafo){
         distrSymm = distrSymm, param = param, modifyParam = modifyParam,
         props = props, L2deriv.fct = L2deriv.fct, L2derivSymm = L2derivSymm,
         L2derivDistr = L2derivDistr, L2derivDistrSymm = L2derivDistrSymm,
-        FisherInfo.fct = FisherInfo.fct, FisherInfo = FisherInfo)
+        FisherInfo.fct = FisherInfo.fct, FisherInfo = FisherInfo,
+        startPar = startPar, makeOKPar = makeOKPar)
     res@fam.call <- f.call
     return(res)
 }
@@ -101,6 +110,15 @@ GammaFamily <- function(scale = 1, shape = 1, trafo){
     modifyParam <- function(theta){ Gammad(scale = theta[1], shape = theta[2]) }
     props <- c("The Gamma family is scale invariant via the parametrization",
                "'(nu,shape)=(log(scale),shape)'")
+    startPar <- function(x,...){ x <- pmax(0,x)
+                              E1 <- mean(x)
+                              V <- var(x)
+                              st <- c(V/E1,E1^2/V)
+                              names(st) <- nms
+                              return(st)               
+                              }
+    makeOKPar <- function(param) {param <- abs(param)
+                                  return(param)}
     L2deriv.fct <- function(param){
                    scale <- main(param)[1]
                    shape <- main(param)[2]
@@ -111,9 +129,12 @@ GammaFamily <- function(scale = 1, shape = 1, trafo){
                    body(fct2) <- substitute({ log(x/scale) - digamma(shape) },
                         list(scale = scale, shape = shape))
                    return(list(fct1, fct2))}
-    L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter = scale*shape), NonSymmetric())
-    L2derivDistr <- UnivarDistrList((Gammad(scale = 1, shape = shape) - shape)/scale, 
-                                         (log(Gammad(scale = 1, shape = shape)) - digamma(shape)))
+    L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter = scale*shape),
+                               NonSymmetric())
+    L2derivDistr <- UnivarDistrList((Gammad(scale = 1, shape = shape) - 
+                                            shape)/scale, 
+                                    (log(Gammad(scale = 1, shape = shape)) - 
+                                            digamma(shape)))
     L2derivDistrSymm <- DistrSymmList(NoSymmetry(), NoSymmetry())
     FisherInfo.fct <- function(param){
                    scale <- main(param)[1]
@@ -127,10 +148,74 @@ GammaFamily <- function(scale = 1, shape = 1, trafo){
         distrSymm = distrSymm, param = param, modifyParam = modifyParam,
         props = props, L2deriv.fct = L2deriv.fct, L2derivSymm = L2derivSymm,
         L2derivDistr = L2derivDistr, L2derivDistrSymm = L2derivDistrSymm,
-        FisherInfo.fct = FisherInfo.fct, FisherInfo = FisherInfo)
+        FisherInfo.fct = FisherInfo.fct, FisherInfo = FisherInfo,
+        startPar = startPar, makeOKPar = makeOKPar)
     res@fam.call <- f.call
     return(res)
 }
+
+##################################################################
+## Beta family   :: new  08/08 P.R.
+##################################################################
+BetaFamily <- function(shape1 = 1, shape2 = 1, trafo){ 
+    f.call <- match.call()
+    name <- "Beta family"
+    distribution <- Beta(shape1=shape1, shape2 = shape2)
+    distrSymm <- NoSymmetry()
+    param0 <- c(shape1, shape2)
+    names(param0) <- nms <- c("shape1", "shape2")
+    if(missing(trafo)) {trafo <- diag(2); dimnames(trafo) <-list(nms,nms)}
+    param <- ParamFamParameter(name = "shape1 and shape2",  
+                        main = param0, trafo = trafo)
+    modifyParam <- function(theta){ Beta(shape1 = theta[1], shape2 = theta[2]) }
+    makeOKPar <- function(param) {param <- pmax(.Machine$double.eps,param)
+                                  return(param)}
+    props <- c("The Beta family is invariant in the following sense",
+               "if (x_i)~Beta(s1,s2) then (1-x_i)~Beta(s2,s1)")
+    startPar <- function(x,...){ x <- pmax(0,pmin(1,x))
+                              E1 <- mean(x)
+                              V <- var(x)
+                              D <- E1*(1-E1)/V-1
+                              st <- c(E1*D,(1-E1)*D)
+                              names(st) <- nms
+                              return(st)
+                              }
+    L2deriv.fct <- function(param){
+                   shape1 <- main(param)[1]
+                   shape2 <- main(param)[2]
+                   fct1 <- function(x){}
+                   fct2 <- function(x){}
+                   body(fct1) <- substitute({log(x)-digamma(shape1)+
+                                             digamma(shape1+shape2)},
+                        list(shape1 = shape1, shape2 = shape2))
+                   body(fct2) <- substitute({log(1-x)-digamma(shape2)+
+                                             digamma(shape1+shape2)},
+                        list(shape1 = shape1, shape2 = shape2))
+                   return(list(fct1, fct2))}
+    L2derivSymm <- FunSymmList(NonSymmetric(), NonSymmetric())
+    L2derivDistr <- UnivarDistrList(log(Beta(shape1 = shape1, shape2 = shape2))-
+                                        digamma(shape1)+digamma(shape1+shape2), 
+                                    log(Beta(shape1 = shape2, shape2 = shape1))-
+                                        digamma(shape2)+digamma(shape1+shape2))
+    L2derivDistrSymm <- DistrSymmList(NoSymmetry(), NoSymmetry())
+    FisherInfo.fct <- function(param){
+                   shape1 <- main(param)[1]
+                   shape2 <- main(param)[2]
+                   FI <- diag(trigamma(main(param)))-trigamma(sum(main(param))) 
+                   dimnames(FI) <- list(nms,nms)
+                   PosDefSymmMatrix(FI)}
+
+    FisherInfo <- FisherInfo.fct(param)
+    res <- L2ParamFamily(name = name, distribution = distribution, 
+        distrSymm = distrSymm, param = param, modifyParam = modifyParam,
+        props = props, L2deriv.fct = L2deriv.fct, L2derivSymm = L2derivSymm,
+        L2derivDistr = L2derivDistr, L2derivDistrSymm = L2derivDistrSymm,
+        FisherInfo.fct = FisherInfo.fct, FisherInfo = FisherInfo,
+        startPar = startPar, makeOKPar = makeOKPar)
+    res@fam.call <- f.call
+    return(res)
+}
+
 
 ###### old routines (became obsolete after introduction of group models)
 #
@@ -522,6 +607,7 @@ CauchyLocationScaleFamily <- function(loc = 0, scale = 1, trafo){
                                            dimnames = list(c("loc","scale"),
                                                            c("loc","scale"))),
                   trafo = trafo)
+    res@L2derivDistr <- UnivarDistrList(Arcsine(),Arcsine())
     res@fam.call <- f.call
     return(res)
 }

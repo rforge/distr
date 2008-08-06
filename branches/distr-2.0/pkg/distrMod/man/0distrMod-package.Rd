@@ -36,7 +36,8 @@ distrSym(DistributionSymmetry), props(character)
 "ProbFamily"
 |>"ParamFamily"
 additional slots:
-param(ParamFamParameter), modifyParam(function)
+param(ParamFamParameter), modifyParam(function),
+startPar(function), makeOKPar(function), fam.call(call)
 |>|>"L2ParamFamily"
 additional slots:
 L2deriv(EuclRandVarList), L2deriv.fct(function), 

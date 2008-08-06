@@ -11,18 +11,21 @@
   case of minimum distance estimators.
 }
 \usage{
-MCEstimator(x, ParamFamily, criterion, crit.name, interval, par, 
-            Infos, trafo = NULL, penalty = 0, validity.check = TRUE,
-            asvar.fct, ...)
+MCEstimator(x, ParamFamily, criterion, crit.name, 
+            startPar = NULL, Infos, trafo = NULL, 
+            penalty = 0, validity.check = TRUE, asvar.fct, ...)
 }
 \arguments{
   \item{x}{ (empirical) data }
   \item{ParamFamily}{ object of class \code{"ParamFamily"} }
   \item{criterion}{ function: criterion to minimize; see Details section. }
   \item{crit.name}{ optional name for criterion. }
-  \item{interval}{ interval used by \code{optimize} }
-  \item{par}{ initial parameter values used by \code{optim}; if \code{missing}
-    the parameter of \code{ParamFamily} are used. }
+  \item{startPar}{ initial information used by \code{optimize} resp. \code{optim};
+    i.e; if (total) parameter is of length 1, \code{startPar} is 
+    a search interval, else it is an initial parameter value; if \code{NULL}
+    slot \code{startPar} of \code{ParamFamily} is used to produce it;
+    in the multivariate case, \code{startPar} may also be of class \code{Estimate},
+    in which case slot \code{untransformed.estimate} is used.}
   \item{Infos}{ character: optional informations about estimator }
   \item{trafo}{ an object of class \code{MatrixorFunction} -- a transformation
   for the main parameter}
@@ -87,8 +90,10 @@ MCEstimator(x = x, ParamFamily = G, criterion = TotalVarDist,
 ## Hellinger minimum distance estimator
 ## Note: you can also use function MDEstimator!
 ## discretize Gamma distribution
+distroptions(DistrResolution = 1e-8)
 MCEstimator(x = x, ParamFamily = G, criterion = HellingerDist, 
-            crit.name = "Hellinger Distance")
+            crit.name = "Hellinger Distance", startPar = c(1,2))
+distroptions(DistrResolution = 1e-6)
 
 ## or smooth empirical distribution (takes some time!)
 #MCEstimator(x = x, ParamFamily = G, criterion = HellingerDist, 

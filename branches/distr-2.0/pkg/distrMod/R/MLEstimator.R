@@ -27,8 +27,8 @@
 .inArgs <- distr:::.inArgs
 
 ## Maximum-Likelihood estimator
-MLEstimator <- function(x, ParamFamily, interval, par, Infos, trafo = NULL, penalty = 0, 
-                        ...){
+MLEstimator <- function(x, ParamFamily, startPar = NULL, 
+                        Infos, trafo = NULL, penalty = 0, ...){
 
     es.call <- match.call()
 
@@ -47,9 +47,11 @@ MLEstimator <- function(x, ParamFamily, interval, par, Infos, trafo = NULL, pena
     lnx <- length(nuisance(ParamFamily))
     idx <- 1:lmx
     
+    if(is.null(startPar)) startPar <- startPar(ParamFamily)(x,...)
+
     res <- MCEstimator(x = x, 
                 ParamFamily = ParamFamily, criterion = negLoglikelihood,
-                interval = interval, par = par, trafo = trafo, 
+                startPar = startPar, trafo = trafo, 
                 penalty = penalty, validity.check = FALSE, ...)
 
     if(!is.null(res@nuis.idx))

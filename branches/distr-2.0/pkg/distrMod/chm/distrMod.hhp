@@ -13,6 +13,7 @@ Title=R Help for package distrMod
 [FILES]
 00Index.html
 0distrMod-package.html
+BetaFamily.html
 BiasType-class.html
 BinomFamily.html
 CauchyLocationScaleFamily.html

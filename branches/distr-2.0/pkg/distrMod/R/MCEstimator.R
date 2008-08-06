@@ -1,7 +1,8 @@
 ###############################################################################
 ## Determine estimates by minimizing a given criterion
 ###############################################################################
-MCEstimator <- function(x, ParamFamily, criterion, crit.name, interval, par, 
+MCEstimator <- function(x, ParamFamily, criterion, crit.name, 
+                        startPar = NULL, 
                         Infos, trafo = NULL, penalty = 0, validity.check = TRUE,
                         asvar.fct, ...){
     es.call <- match.call()
@@ -22,25 +23,28 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name, interval, par,
       stop(gettext("'criterion' has to be a function"))
 
     fun <- function(theta, Data, ParamFamily, criterion, ...){
+        vP <- validParameter(ParamFamily, theta)
+        if(!vP) theta <- makeOKPar(ParamFamily)(theta)
         if(lnx)
            names(theta) <- c(names(main(ParamFamily)),
                              names(nuisance(ParamFamily)))
         else  names(theta) <- names(main(ParamFamily))
         crit <- criterion(Data, ParamFamily@modifyParam(theta), ...)
-        critP <- crit + penalty * (1-validParameter(ParamFamily, theta))
+        critP <- crit + penalty * (1-vP)
         return(critP)
     }
 
+    if(is.null(startPar)) startPar <- startPar(ParamFamily)(x,...)
+
     if(length(param(ParamFamily)) == 1){
-        res <- optimize(f = fun, interval = interval, Data = x, 
+        res <- optimize(f = fun, interval = startPar, Data = x, 
                       ParamFamily = ParamFamily, criterion = criterion, ...)
         theta <- res$minimum
         names(theta) <- names(main(ParamFamily))
         crit <- res$objectiv
     }else{
-        if(missing(par)) par <- c(main(ParamFamily), nuisance(ParamFamily))
-        if(is(par,"Estimate")) par <- estimate(par)
-        res <- optim(par = par, fn = fun, Data = x, ParamFamily = ParamFamily, 
+        if(is(startPar,"Estimate")) startPar <- untransformed.estimate(startPar)
+        res <- optim(par = startPar, fn = fun, Data = x, ParamFamily = ParamFamily, 
                      criterion = criterion, ...)
         theta <- as.numeric(res$par)
         names(theta) <- c(names(main(ParamFamily)),names(nuisance(ParamFamily)))

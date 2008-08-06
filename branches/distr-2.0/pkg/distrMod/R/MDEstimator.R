@@ -2,13 +2,15 @@
 ## Implementation of minimum distance estimation
 ###############################################################################
 MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist, dist.name, 
-                        interval, par, Infos, trafo = NULL, penalty = 0, 
-                        asvar.fct, ...){
+                        startPar = NULL,  Infos, 
+                        trafo = NULL, penalty = 0, asvar.fct, ...){
 
     es.call <- match.call()
 
+    if(is.null(startPar)) startPar <- startPar(ParamFamily)(x,...)
+
     res <- MCEstimator(x = x, ParamFamily = ParamFamily, criterion = distance,
-                interval = interval, par = par, Infos = Infos, trafo = trafo, 
+                startPar = startPar, Infos = Infos, trafo = trafo, 
                 penalty = penalty, ...)
 
     l.e <- length(res@estimate)

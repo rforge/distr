@@ -24,8 +24,9 @@ minimum distance estimates.
 <h3>Usage</h3>
 
 <pre>
-MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name, interval, par, 
-            Infos, trafo = NULL, penalty = 0, asvar.fct, ...)
+MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name, 
+            startPar = NULL,  Infos, trafo = NULL, 
+            penalty = 0, asvar.fct, ...)
 </pre>
 
 
@@ -45,13 +46,14 @@ data and objects of class <code>"Distribution"</code>. </td></tr>
 <tr valign="top"><td><code>dist.name</code></td>
 <td>
 optional name of distance </td></tr>
-<tr valign="top"><td><code>interval</code></td>
+<tr valign="top"><td><code>startPar</code></td>
 <td>
-interval used by <code>optimize</code> </td></tr>
-<tr valign="top"><td><code>par</code></td>
-<td>
-initial parameter values used by <code>optim</code>; if <code>missing</code>
-the parameter of <code>ParamFamily</code> are used. </td></tr>
+initial information used by <code>optimize</code> resp. <code>optim</code>;
+i.e; if (total) parameter is of length 1, <code>startPar</code> is 
+a search interval, else it is an initial parameter value; if <code>NULL</code>
+slot <code>startPar</code> of <code>ParamFamily</code> is used to produce it;
+in the multivariate case, <code>startPar</code> may also be of class <code>Estimate</code>,
+in which case slot <code>untransformed.estimate</code> is used.</td></tr>
 <tr valign="top"><td><code>Infos</code></td>
 <td>
 character: optional informations about estimator </td></tr>
@@ -132,6 +134,9 @@ G &lt;- GammaFamily(scale = 1, shape = 2)
 MDEstimator(x = x, ParamFamily = G, distance = KolmogorovDist)
 
 ## von Mises minimum distance estimator with default mu
+MDEstimator(x = x, ParamFamily = G, distance = CvMDist)
+
+## von Mises minimum distance estimator with default mu
 MDEstimator(x = x, ParamFamily = G, distance = CvMDist,
             asvar.fct = distrMod:::.CvMMDCovariance)
 #*** variance routine is still in testing phase so not yet
@@ -147,8 +152,8 @@ MDEstimator(x = x, ParamFamily = G, distance = TotalVarDist)
 
 ## Hellinger minimum distance estimator
 ## gamma distributions are discretized
-distroptions(DistrResolution = 1e-8)
-MDEstimator(x = x, ParamFamily = G, distance = HellingerDist)
+distroptions(DistrResolution = 1e-10)
+MDEstimator(x = x, ParamFamily = G, distance = HellingerDist, startPar = c(1,2))
 distroptions(DistrResolution = 1e-6) # default
 ## or smoothing of emprical distribution (takes some time!)
 #MDEstimator(x = x, ParamFamily = G, distance = HellingerDist, asis.smooth.discretize = "smooth")

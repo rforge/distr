@@ -134,6 +134,10 @@
 <param name="Local" value="asymmetricBias-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="BetaFamily">
+<param name="Local" value="BetaFamily.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="biastype">
 <param name="Local" value="asRiskwithBias-class.html">
 </OBJECT>
@@ -348,6 +352,14 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="ExpScaleFamily">
 <param name="Local" value="ExpScaleFamily.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fam.call">
+<param name="Local" value="ParamFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fam.call,ParamFamily-method">
+<param name="Local" value="ParamFamily-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="fct">
@@ -594,6 +606,14 @@
 <param name="Local" value="ParamFamParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="makeOKPar">
+<param name="Local" value="ParamFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="makeOKPar,ParamFamily-method">
+<param name="Local" value="ParamFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="MASKING">
 <param name="Local" value="distrModMASK.html">
 </OBJECT>
@@ -810,11 +830,11 @@
 <param name="Local" value="onesidedBias-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="OptionalMatrix-class">
+<param name="Name" value="OptionalNumeric-class">
 <param name="Local" value="internalClassUnions-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="OptionalNumeric-class">
+<param name="Name" value="OptionalNumericOrMatrix-class">
 <param name="Local" value="internalClassUnions-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -986,6 +1006,10 @@
 <param name="Local" value="fiUnOvShoot-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="show,MCEstimate-method">
+<param name="Local" value="MCEstimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="show,ParamFamily-method">
 <param name="Local" value="ParamFamily-class.html">
 </OBJECT>
@@ -1080,6 +1104,14 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="sqrt-methods">
 <param name="Local" value="sqrt-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="startPar">
+<param name="Local" value="ParamFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="startPar,ParamFamily-method">
+<param name="Local" value="ParamFamily-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="SymmCenter">
@@ -1397,6 +1429,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for asymmetricBias-class">
 <param name="Local" value="asymmetricBias.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for Beta families">
+<param name="Local" value="BetaFamily.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for Binomial families">

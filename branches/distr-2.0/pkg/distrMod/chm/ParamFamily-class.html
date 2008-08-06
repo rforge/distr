@@ -11,6 +11,12 @@
 <param name="keyword" value="R:   param,ParamFamily-method">
 <param name="keyword" value="R:   modifyParam">
 <param name="keyword" value="R:   modifyParam,ParamFamily-method">
+<param name="keyword" value="R:   fam.call">
+<param name="keyword" value="R:   fam.call,ParamFamily-method">
+<param name="keyword" value="R:   startPar">
+<param name="keyword" value="R:   startPar,ParamFamily-method">
+<param name="keyword" value="R:   makeOKPar">
+<param name="keyword" value="R:   makeOKPar,ParamFamily-method">
 <param name="keyword" value="R:   plot,ParamFamily-method">
 <param name="keyword" value="R:   show,ParamFamily-method">
 <param name="keyword" value=" Parametric family of probability measures.">
@@ -44,6 +50,18 @@ parameter of the family. </dd>
 <dt><code>modifyParam</code>:</dt><dd>Object of class <code>"function"</code>:
 mapping from the parameter space (represented by <code>"param"</code>) 
 to the distribution space (represented by <code>"distribution"</code>). </dd>
+<dt><code>fam.call</code>:</dt><dd>Object of class <code>"call"</code>:
+call by which parametric family was produced.</dd>
+<dt><code>startPar</code>:</dt><dd>Object of class <code>"function"</code>:
+has argument <code>x</code> &mdash; the data, 
+returns starting parameter for <code>optim</code> resp. <code>optimize</code>&mdash;
+a starting estimator in case parameter is multivariate
+or a search interval in case parameter is univariate.</dd>
+<dt><code>makeOKPar</code>:</dt><dd>Object of class <code>"function"</code>:
+has argument <code>param</code> &mdash; the (total) parameter, 
+returns valid parameter; used if <code>optim</code> resp. <code>optimize</code>&mdash;
+try to use ``illegal'' parameter values; then <code>makeOKPar</code> makes
+a valid parameter value out of the illegal one.</dd>
 <dt><code>name</code>:</dt><dd>Object of class <code>"character"</code>:
 name of the family. </dd>
 <dt><code>distribution</code>:</dt><dd>Object of class <code>"Distribution"</code>:
@@ -87,6 +105,10 @@ accessor function for slot <code>param</code>. </dd>
 accessor function for slot <code>modifyParam</code>. </dd>
 
 
+<dt>fam.call</dt><dd><code>signature(object = "ParamFamily")</code>: 
+accessor function for slot <code>fam.call</code>. </dd>
+
+
 <dt>plot</dt><dd><code>signature(x = "ParamFamily")</code>: 
 plot of slot <code>distribution</code>. </dd>
 
@@ -94,7 +116,7 @@ plot of slot <code>distribution</code>. </dd>
 <dt>show</dt><dd><code>signature(object = "ParamFamily")</code></dd>
 </dl>
 
-<h3>Details for methods this-is-escaped-codenormal-bracket83bracket-normal, this-is-escaped-codenormal-bracket84bracket-normal</h3>
+<h3>Details for methods this-is-escaped-codenormal-bracket112bracket-normal, this-is-escaped-codenormal-bracket113bracket-normal</h3>
 
 <p>
 Detailedness of output by methods <code>show</code>, <code>print</code> is controlled

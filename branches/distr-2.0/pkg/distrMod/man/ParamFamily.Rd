@@ -7,7 +7,8 @@
 }
 \usage{
 ParamFamily(name, distribution = Norm(), distrSymm, modifyParam,
-            main = 0, nuisance, trafo, param, props = character(0))
+            main = 0, nuisance, trafo, param, props = character(0),
+            startPar = NULL, makeOKPar = NULL)
 }
 \arguments{
   \item{name}{ character string: name of family }
@@ -15,6 +16,16 @@ ParamFamily(name, distribution = Norm(), distrSymm, modifyParam,
     member of the family }
   \item{distrSymm}{ object of class \code{"DistributionSymmetry"}: 
       symmetry of \code{distribution}. }
+  \item{startPar}{\code{startPar} is a function in the observations \code{x}
+    returning initial information for \code{MCEstimator} used 
+    by \code{optimize} resp. \code{optim}; i.e; if (total) parameter is of 
+    length 1, \code{startPar} returns a search interval, else it returns an initial 
+    parameter value.}
+  \item{makeOKPar}{\code{makeOKPar} is a function in the (total)
+    parameter \code{param}; used if \code{optim} resp. \code{optimize}---
+           try to use ``illegal'' parameter values; then \code{makeOKPar} makes
+           a valid parameter value out of the illegal one; if \code{NULL}
+    slot \code{makeOKPar} of \code{ParamFamily} is used to produce it.}
   \item{main}{ numeric vector: main parameter }
   \item{nuisance}{ numeric vector: nuisance parameter }
   \item{trafo}{ MatrixorFunction: transformation of the parameters }
@@ -39,7 +50,8 @@ ParamFamily(name, distribution = Norm(), distrSymm, modifyParam,
 }
 \value{Object of class \code{"ParamFamily"}}
 %\references{}
-\author{Matthias Kohl \email{Matthias.Kohl@stamats.de}}
+\author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
+Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}
 \seealso{\code{\link{ParamFamily-class}}}
 \examples{
@@ -57,6 +69,7 @@ names(theta) <- "mean"
 NL <- ParamFamily(name = "Normal location family",
           param = ParamFamParameter(name = "location parameter", main = theta),
           distribution = Norm(mean = 0, sd = 1), ## sd known!
+          startPar = function(x,...) c(min(x),max(x)),
           distrSymm <- SphericalSymmetry(SymmCenter = 0),
           modifyParam = function(theta){ Norm(mean = theta, sd = 1) },
           props = paste(c("The normal location family is invariant under",
@@ -70,6 +83,7 @@ names(theta) <- "sd"
 NS <- ParamFamily(name = "Normal scale family",
           param = ParamFamParameter(name = "scale parameter", main = theta),
           distribution = Norm(mean = 0, sd = 1), ## mean known!
+          startPar = function(x,...) c(0,-min(x)+max(x)),
           distrSymm <- SphericalSymmetry(SymmCenter = 0),
           modifyParam = function(theta){ Norm(mean = 0, sd = theta) },
           props = paste(c("The normal scale family is invariant under",
@@ -84,6 +98,8 @@ NLS <- ParamFamily(name = "Normal location and scale family",
           param = ParamFamParameter(name = "location and scale parameter",
                                     main = theta),
           distribution = Norm(mean = 0, sd = 1),
+          startPar = function(x,...) c(median(x),mad(x)),
+          makeOKPar = function(param) {param[2]<-abs(param[2]); return(param)},
           distrSymm <- SphericalSymmetry(SymmCenter = 0),
           modifyParam = function(theta){
                             Norm(mean = theta[1], sd = theta[2])
@@ -101,6 +117,7 @@ names(theta) <- "prob"
 B <- ParamFamily(name = "Binomial family",
          param = ParamFamParameter(name = "probability of success", 
                                    main = theta),
+         startPar = function(x,...) c(0,1),
          distribution = Binom(size = 15, prob = 0.3), ## size known!
          modifyParam = function(theta){ Binom(size = 15, prob = theta) },
          props = paste(c("The Binomial family is symmetric with respect",
@@ -114,6 +131,7 @@ theta <- 7
 names(theta) <- "lambda"
 P <- ParamFamily(name = "Poisson family",
           param = ParamFamParameter(name = "positive mean", main = theta),
+          startPar = function(x,...) c(0,max(x)),
           distribution = Pois(lambda = 7),
           modifyParam = function(theta){ Pois(lambda = theta) })
 P
@@ -123,6 +141,7 @@ theta <- 0
 names(theta) <- "loc"
 GL <- ParamFamily(name = "Gumbel location family",
           param = ParamFamParameter(name = "location parameter", main = theta),
+          startPar = function(x,...) c(min(x),max(x)),
           distribution = Gumbel(loc = 0, scale = 1), ## scale known!
           modifyParam = function(theta){ Gumbel(loc = theta, scale = 1) },
           props = paste(c("The Gumbel location family is invariant under",
@@ -135,6 +154,7 @@ theta <- 2
 names(theta) <- "scale"
 ES <- ParamFamily(name = "Exponential scale family",
           param = ParamFamParameter(name = "scale parameter", main = theta),
+          startPar = function(x,...) c(0,max(x)-min(x)),
           distribution = Exp(rate = 1/2),
           modifyParam = function(theta){ Exp(rate = 1/theta) },
           props = paste(c("The Exponential scale family is invariant under",
@@ -148,6 +168,7 @@ theta <- 2
 names(theta) <- "scale"
 LS <- ParamFamily(name = "Lognormal scale family",
           param = ParamFamParameter(name = "scale parameter", main = theta),
+          startPar = function(x,...) c(0,max(x)-min(x)),
           distribution = Lnorm(meanlog = log(2), sdlog = 2),## sdlog known!
           modifyParam = function(theta){ 
                             Lnorm(meanlog = log(theta), sdlog = 2) 
@@ -163,6 +184,8 @@ theta <- c(1, 2)
 names(theta) <- c("scale", "shape")
 G <- ParamFamily(name = "Gamma family",
         param = ParamFamParameter(name = "scale and shape", main = theta),
+        startPar = function(x,...) {E <- mean(x); V <- var(X); c(V/E,E^2/V)},
+        makeOKPar = function(param) abs(param),
         distribution = Gammad(scale = 1, shape = 2),
         modifyParam = function(theta){ 
                           Gammad(scale = theta[1], shape = theta[2]) 

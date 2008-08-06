@@ -9,15 +9,19 @@
   \code{MCEstimator} which minimizes the negative log-Likelihood.
 }
 \usage{
-MLEstimator(x, ParamFamily, interval, par, Infos, trafo = NULL, penalty = 0, ...)
+MLEstimator(x, ParamFamily, startPar = NULL, 
+            Infos, trafo = NULL, penalty = 0, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{ (empirical) data }
   \item{ParamFamily}{ object of class \code{"ParamFamily"} }
-  \item{interval}{ interval used by \code{optimize} }
-  \item{par}{ initial parameter values used by \code{optim}; if \code{missing}
-    the parameter of \code{ParamFamily} are used. }
+  \item{startPar}{ initial information used by \code{optimize} resp. \code{optim};
+    i.e; if (total) parameter is of length 1, \code{startPar} is 
+    a search interval, else it is an initial parameter value; if \code{NULL}
+    slot \code{startPar} of \code{ParamFamily} is used to produce it;
+    in the multivariate case, \code{startPar} may also be of class \code{Estimate},
+    in which case slot \code{untransformed.estimate} is used.}
   \item{Infos}{ character: optional informations about estimator }
   \item{trafo}{ an object of class \code{MatrixorFunction} -- a transformation
   for the main parameter}

@@ -60,6 +60,18 @@ member of the family. </dd>
 symmetry of <code>distribution</code>. </dd>
 <dt><code>param</code>:</dt><dd>object of class <code>"ParamFamParameter"</code>:
 parameter of the family. </dd>
+<dt><code>fam.call</code>:</dt><dd>Object of class <code>"call"</code>:
+call by which parametric family was produced.</dd>
+<dt><code>makeOKPar</code>:</dt><dd>Object of class <code>"function"</code>:
+has argument <code>param</code> &mdash; the (total) parameter, 
+returns valid parameter; used if <code>optim</code> resp. <code>optimize</code>&mdash;
+try to use ``illegal'' parameter values; then <code>makeOKPar</code> makes
+a valid parameter value out of the illegal one.</dd>
+<dt><code>startPar</code>:</dt><dd>Object of class <code>"function"</code>:
+has argument <code>x</code> &mdash; the data, 
+returns starting parameter for <code>optim</code> resp. <code>optimize</code>&mdash;
+a starting estimator in case parameter is multivariate
+or a search interval in case parameter is univariate.</dd>
 <dt><code>modifyParam</code>:</dt><dd>Object of class <code>"function"</code>:
 mapping from the parameter space (represented by <code>"param"</code>) 
 to the distribution space (represented by <code>"distribution"</code>). </dd>

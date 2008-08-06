@@ -49,6 +49,7 @@ exportMethods("untransformed.estimate", "untransformed.asvar")
 exportMethods("confint")
 exportMethods("nuisance", "main") 
 exportMethods("validParameter")
+exportMethods("startPar", "makeOKPar")
 export("distrModMASK")
 export("PosDefSymmMatrix","PosSemDefSymmMatrix")
 export("distrModOptions", "distrModoptions", "getdistrModOption",
@@ -59,7 +60,7 @@ export("NoSymmetry", "EllipticalSymmetry", "SphericalSymmetry",
 export("ParamFamParameter", "ParamFamily", "L2ParamFamily",
        "BinomFamily", "PoisFamily", "NormLocationFamily",
        "GumbelLocationFamily", "NormScaleFamily", "ExpScaleFamily",
-       "LnormScaleFamily", "GammaFamily", "NormLocationScaleFamily")
+       "LnormScaleFamily", "GammaFamily", "BetaFamily", "NormLocationScaleFamily")
 export("asCov", "trAsCov", "asHampel", "asBias", "asMSE", "asUnOvShoot", 
        "fiCov", "trFiCov", "fiHampel", "fiMSE", "fiBias", "fiUnOvShoot")
 export("positiveBias", "negativeBias", "symmetricBias", 

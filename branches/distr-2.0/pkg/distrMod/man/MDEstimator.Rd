@@ -7,8 +7,9 @@
   minimum distance estimates.
 }
 \usage{
-MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name, interval, par, 
-            Infos, trafo = NULL, penalty = 0, asvar.fct, ...)
+MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name, 
+            startPar = NULL,  Infos, trafo = NULL, 
+            penalty = 0, asvar.fct, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -17,9 +18,12 @@ MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name, interval, par,
   \item{distance}{ (generic) function: to compute distance beetween (emprical)
   data and objects of class \code{"Distribution"}. }
   \item{dist.name}{ optional name of distance }
-  \item{interval}{ interval used by \code{optimize} }
-  \item{par}{ initial parameter values used by \code{optim}; if \code{missing}
-    the parameter of \code{ParamFamily} are used. }
+  \item{startPar}{ initial information used by \code{optimize} resp. \code{optim};
+    i.e; if (total) parameter is of length 1, \code{startPar} is 
+    a search interval, else it is an initial parameter value; if \code{NULL}
+    slot \code{startPar} of \code{ParamFamily} is used to produce it;
+    in the multivariate case, \code{startPar} may also be of class \code{Estimate},
+    in which case slot \code{untransformed.estimate} is used.}
   \item{Infos}{ character: optional informations about estimator }
   \item{trafo}{ an object of class \code{MatrixorFunction} -- a transformation
   for the main parameter}
@@ -83,8 +87,8 @@ MDEstimator(x = x, ParamFamily = G, distance = TotalVarDist)
 
 ## Hellinger minimum distance estimator
 ## gamma distributions are discretized
-distroptions(DistrResolution = 1e-8)
-MDEstimator(x = x, ParamFamily = G, distance = HellingerDist)
+distroptions(DistrResolution = 1e-10)
+MDEstimator(x = x, ParamFamily = G, distance = HellingerDist, startPar = c(1,2))
 distroptions(DistrResolution = 1e-6) # default
 ## or smoothing of emprical distribution (takes some time!)
 #MDEstimator(x = x, ParamFamily = G, distance = HellingerDist, asis.smooth.discretize = "smooth")

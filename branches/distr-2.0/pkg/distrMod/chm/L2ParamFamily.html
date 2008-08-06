@@ -29,6 +29,7 @@ L2ParamFamily(name, distribution = Norm(), distrSymm,
                           param = ParamFamParameter(name = paste("Parameter of", name), 
                                    main = main, nuisance = nuisance, trafo = trafo), 
                           props = character(0),
+                          startPar = NULL, makeOKPar = NULL,
                           modifyParam = function(theta){ Norm(mean=theta) },
                           L2deriv.fct,
                           L2derivSymm, L2derivDistr, L2derivDistrSymm, 
@@ -63,6 +64,20 @@ function in <code>param</code> or matrix: transformation of the parameter </td><
 <td>
 object of class <code>"ParamFamParameter"</code>:
 parameter of the family </td></tr>
+<tr valign="top"><td><code>startPar</code></td>
+<td>
+<code>startPar</code> is a function in the observations <code>x</code>
+returning initial information for <code>MCEstimator</code> used 
+by <code>optimize</code> resp. <code>optim</code>; i.e; if (total) parameter is of 
+length 1, <code>startPar</code> returns a search interval, else it returns an initial 
+parameter value.</td></tr>
+<tr valign="top"><td><code>makeOKPar</code></td>
+<td>
+<code>makeOKPar</code> is a function in the (total)
+parameter <code>param</code>; used if <code>optim</code> resp. <code>optimize</code>&mdash;
+try to use ``illegal'' parameter values; then <code>makeOKPar</code> makes
+a valid parameter value out of the illegal one; if <code>NULL</code>
+slot <code>makeOKPar</code> of <code>ParamFamily</code> is used to produce it.</td></tr>
 <tr valign="top"><td><code>modifyParam</code></td>
 <td>
 function: mapping from the parameter space 
@@ -129,7 +144,8 @@ Object of class <code>"L2ParamFamily"</code></p>
 <h3>Author(s)</h3>
 
 <p>
-Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
 </p>
 
 

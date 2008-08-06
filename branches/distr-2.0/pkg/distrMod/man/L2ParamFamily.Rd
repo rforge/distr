@@ -12,6 +12,7 @@ L2ParamFamily(name, distribution = Norm(), distrSymm,
                           param = ParamFamParameter(name = paste("Parameter of", name), 
                                    main = main, nuisance = nuisance, trafo = trafo), 
                           props = character(0),
+                          startPar = NULL, makeOKPar = NULL,
                           modifyParam = function(theta){ Norm(mean=theta) },
                           L2deriv.fct,
                           L2derivSymm, L2derivDistr, L2derivDistrSymm, 
@@ -28,6 +29,16 @@ L2ParamFamily(name, distribution = Norm(), distrSymm,
   \item{trafo}{ function in \code{param} or matrix: transformation of the parameter }
   \item{param}{ object of class \code{"ParamFamParameter"}:
     parameter of the family }
+  \item{startPar}{\code{startPar} is a function in the observations \code{x}
+    returning initial information for \code{MCEstimator} used 
+    by \code{optimize} resp. \code{optim}; i.e; if (total) parameter is of 
+    length 1, \code{startPar} returns a search interval, else it returns an initial 
+    parameter value.}
+  \item{makeOKPar}{\code{makeOKPar} is a function in the (total)
+    parameter \code{param}; used if \code{optim} resp. \code{optimize}---
+           try to use ``illegal'' parameter values; then \code{makeOKPar} makes
+           a valid parameter value out of the illegal one; if \code{NULL}
+    slot \code{makeOKPar} of \code{ParamFamily} is used to produce it.}
   \item{modifyParam}{ function: mapping from the parameter space 
   (represented by \code{"param"}) to the distribution space 
   (represented by \code{"distribution"}). }
@@ -72,7 +83,8 @@ L2ParamFamily(name, distribution = Norm(), distrSymm,
   Kohl, M. (2005) \emph{Numerical Contributions to the Asymptotic Theory of Robustness}. 
   Bayreuth: Dissertation.
 }
-\author{Matthias Kohl \email{Matthias.Kohl@stamats.de}}
+\author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
+Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}
 \seealso{\code{\link{L2ParamFamily-class}}}
 \examples{

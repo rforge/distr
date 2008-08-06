@@ -24,6 +24,7 @@ Generates an object of class <code>"L2LocationFamily"</code>.
 
 <pre>
 L2LocationFamily(loc = 0, name, centraldistribution = Norm(),
+                 modParam,
                  LogDeriv = function(x)x,  L2derivDistr.0,
                  FisherInfo.0, distrSymm, L2derivSymm, L2derivDistrSymm,
                  trafo, ...)
@@ -44,6 +45,11 @@ character: name of the parametric family. </td></tr>
 object of class <code>"AbscontDistribution"</code>:
 central distribution; we assume from the beginning, that centraldistribution
 is symmetric about <i>0</i>  </td></tr>
+<tr valign="top"><td><code>modParam</code></td>
+<td>
+optional function: mapping from the parameter space 
+(represented by <code>"param"</code>) to the distribution space 
+(represented by <code>"distribution"</code>). </td></tr>
 <tr valign="top"><td><code>LogDeriv</code></td>
 <td>
 function with argument <code>x</code>: the negative logarithmic 
@@ -80,7 +86,10 @@ further arguments to be passed to <code>E</code></td></tr>
 
 <p>
 If <code>name</code> is missing, the default 
-&ldquo;L2 location family&rdquo; is used.  
+&ldquo;L2 location family&rdquo; is used.
+The function <code>modParam</code> is optional. If it is missing, it is 
+constructed from <code>centraldistribution</code> using the location structure
+of the model.
 Slot <code>param</code> is filled accordingly with the argument 
 <code>trafo</code> passed to <code>L2LocationFamily</code>.
 In case <code>L2derivDistr.0</code> is missing, <code>L2derivDistr</code> is computed 
