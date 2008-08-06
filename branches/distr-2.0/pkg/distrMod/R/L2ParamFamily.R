@@ -139,16 +139,27 @@ setMethod("checkL2deriv", "L2ParamFamily",
 setMethod("modifyModel", signature(model = "L2ParamFamily", param = "ParamFamParameter"), 
           function(model, param, ...){
               theta <- c(main(param),nuisance(param))
-              M <- L2ParamFamily(name = model@name, 
-                                 distribution = model@modifyParam(theta), 
-                                 param = param, 
-                                 props = model@props,
-                                 startPar = model@startPar,
-                                 makeOKPar = model@makeOKPar,
-                                 modifyParam = model@modifyParam,
-                                 L2deriv.fct = model@L2deriv.fct,
-                                 FisherInfo.fct = model@FisherInfo.fct,
-                                 FisherInfo = model@FisherInfo.fct(param))
+              M0 <- substitute(L2ParamFamily(name = Name, 
+                                    distribution = D, 
+                                    param = P, 
+                                    props = Props,
+                                    startPar = Par0,
+                                    makeOKPar = ParOK,
+                                    modifyParam = modPar,
+                                    L2deriv.fct = L2fct,
+                                    FisherInfo.fct = F.fct,
+                                    FisherInfo = FInfo),
+                               list(Name = model@name,
+                                    D = model@modifyParam(theta),
+                                    P = param,
+                                    Props = model@props,
+                                    Par0 = model@startPar,
+                                    ParOK = model@makeOKPar,
+                                    modPar = model@modifyParam,
+                                    L2fct = model@L2deriv.fct,
+                                    F.fct = model@FisherInfo.fct,
+                                    FInfo = model@FisherInfo.fct(param)))
+              M <- eval(M0)
               M1 <- existsPIC(M)
               return(M)
           })

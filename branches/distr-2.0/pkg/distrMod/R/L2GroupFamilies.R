@@ -96,22 +96,38 @@ setMethod("modifyModel", signature(model = "L2LocationFamily", param = "ParamFam
           function(model, param, ...){
               theta <- main(param)
               if(is(model@distrSymm, "SphericalSymmetry")){
-                  M <- L2LocationFamily(loc = theta,
-                                        name = model@name, 
-                                        distribution = model@modifyParam(theta),
-                                        modParam = model@modifyParam,
-                                        L2deriv.fct = model@L2deriv.fct,
-                                        FisherInfo.fct = model@FisherInfo.fct,
-                                        trafo = param@trafo)
+                  M0 <- substitute(L2LocationFamily(loc = th,
+                                            name = Name, 
+                                            distribution = D0,
+                                            modParam = modPar,
+                                            L2deriv.fct = L2fct,
+                                            FisherInfo.fct = F.fct,
+                                            trafo = Trafo),
+                                   list(th = theta,
+                                        Name = model@name,
+                                        D0 = model@modifyParam(theta),
+                                        modPar = model@modifyParam,
+                                        L2fct = model@L2deriv.fct,
+                                        F.fct = model@FisherInfo.fct,
+                                        Trafo = param@trafo))
+                  M <- eval(M0)
               }else{
-                  M <- L2LocationFamily(loc = theta,
-                                        name = model@name, 
-                                        distribution = model@modifyParam(theta),
-                                        modParam = model@modifyParam,
-                                        L2deriv.fct = model@L2deriv.fct,
-                                        FisherInfo.fct = model@FisherInfo.fct,
-                                        distrSymm = NoSymmetry(),
-                                        trafo = param@trafo)
+                  M0 <- substitute(L2LocationFamily(loc = th,
+                                            name = Name, 
+                                            distribution = D0,
+                                            modParam = modPar,
+                                            L2deriv.fct = L2fct,
+                                            FisherInfo.fct = F.fct,
+                                            distrSymm = NoSymmetry(),
+                                            trafo = Trafo),
+                                   list(th = theta,
+                                        Name = model@name,
+                                        D0 = model@modifyParam(theta),
+                                        modPar = model@modifyParam,
+                                        L2fct = model@L2deriv.fct,
+                                        F.fct = model@FisherInfo.fct,
+                                        Trafo = param@trafo))
+                  M <- eval(M0)
               }
               M1 <- existsPIC(M)
               return(M)
@@ -227,22 +243,38 @@ setMethod("modifyModel", signature(model = "L2ScaleFamily", param = "ParamFamPar
           function(model, param, ...){
               theta <- main(param)
               if(is(model@distrSymm, "SphericalSymmetry")){
-                  M <- L2ScaleFamily(loc = theta,
-                                     name = model@name, 
-                                     distribution = model@modifyParam(theta),
-                                     modParam = model@modifyParam,
-                                     L2deriv.fct = model@L2deriv.fct,
-                                     FisherInfo.fct = model@FisherInfo.fct,
-                                     trafo = param@trafo)
+                  M0 <- substitute(L2ScaleFamily(loc = th,
+                                            name = Name, 
+                                            distribution = D0,
+                                            modParam = modPar,
+                                            L2deriv.fct = L2fct,
+                                            FisherInfo.fct = F.fct,
+                                            trafo = Trafo),
+                                   list(th = theta,
+                                        Name = model@name,
+                                        D0 = model@modifyParam(theta),
+                                        modPar = model@modifyParam,
+                                        L2fct = model@L2deriv.fct,
+                                        F.fct = model@FisherInfo.fct,
+                                        Trafo = param@trafo))
+                  M <- eval(M0)
               }else{
-                  M <- L2ScaleFamily(loc = theta,
-                                     name = model@name, 
-                                     distribution = model@modifyParam(theta),
-                                     modParam = model@modifyParam,
-                                     L2deriv.fct = model@L2deriv.fct,
-                                     FisherInfo.fct = model@FisherInfo.fct,
-                                     distrSymm = NoSymmetry(),
-                                     trafo = param@trafo)
+                  M0 <- substitute(L2ScaleFamily(loc = th,
+                                            name = Name, 
+                                            distribution = D0,
+                                            modParam = modPar,
+                                            L2deriv.fct = L2fct,
+                                            FisherInfo.fct = F.fct,
+                                            distrSymm = NoSymmetry(),
+                                            trafo = Trafo),
+                                   list(th = theta,
+                                        Name = model@name,
+                                        D0 = model@modifyParam(theta),
+                                        modPar = model@modifyParam,
+                                        L2fct = model@L2deriv.fct,
+                                        F.fct = model@FisherInfo.fct,
+                                        Trafo = param@trafo))
+                  M <- eval(M0)
               }
               M1 <- existsPIC(M)
               return(M)
@@ -653,69 +685,121 @@ setMethod("modifyModel", signature(model = "L2LocationScaleFamily", param = "Par
               theta <- c(main(param), nuisance(param))
               if(!length(nuisance(param))){
                   if(is(model@distrSymm, "SphericalSymmetry")){
-                      M <- L2LocationScaleFamily(loc = theta[1],
-                                         scale = theta[2],
-                                         name = model@name, 
-                                         distribution = model@modifyParam(theta),
-                                         modParam = model@modifyParam,
-                                         L2deriv.fct = model@L2deriv.fct,
-                                         FisherInfo.fct = model@FisherInfo.fct,
-                                         trafo = param@trafo)
+                      M0 <- substitute(L2LocationScaleFamily(loc = th1,
+                                                scale = th2,
+                                                name = Name, 
+                                                distribution = D0,
+                                                modParam = modPar,
+                                                L2deriv.fct = L2fct,
+                                                FisherInfo.fct = F.fct,
+                                                trafo = Trafo),
+                                       list(th1 = theta[1],
+                                            th2 = theta[2],
+                                            Name = model@name,
+                                            D0 = model@modifyParam(theta),
+                                            modPar = model@modifyParam,
+                                            L2fct = model@L2deriv.fct,
+                                            F.fct = model@FisherInfo.fct,
+                                            Trafo = param@trafo))
+                      M <- eval(M0)
                   }else{
-                      M <- L2LocationScaleFamily(loc = theta[1],
-                                         scale = theta[2],
-                                         name = model@name, 
-                                         distribution = model@modifyParam(theta),
-                                         modParam = model@modifyParam,
-                                         L2deriv.fct = model@L2deriv.fct,
-                                         FisherInfo.fct = model@FisherInfo.fct,
-                                         distrSymm = NoSymmetry(),
-                                         trafo = param@trafo)
+                      M0 <- substitute(L2LocationScaleFamily(loc = th1,
+                                                scale = th2,
+                                                name = Name, 
+                                                distribution = D0,
+                                                modParam = modPar,
+                                                L2deriv.fct = L2fct,
+                                                FisherInfo.fct = F.fct,
+                                                distrSymm = NoSymmetry(),
+                                                trafo = Trafo),
+                                       list(th1 = theta[1],
+                                            th2 = theta[2],
+                                            Name = model@name,
+                                            D0 = model@modifyParam(theta),
+                                            modPar = model@modifyParam,
+                                            L2fct = model@L2deriv.fct,
+                                            F.fct = model@FisherInfo.fct,
+                                            Trafo = param@trafo))
+                      M <- eval(M0)
                   }
               }else{
                   if(names(main(model)) %in% c("scale", "sd")){
                       if(is(model@distrSymm, "SphericalSymmetry")){
-                          M <- L2ScaleUnknownLocationFamily(loc = theta[2],
-                                         scale = theta[1],
-                                         name = model@name, 
-                                         distribution = model@modifyParam(theta),
-                                         modParam = model@modifyParam,
-                                         L2deriv.fct = model@L2deriv.fct,
-                                         FisherInfo.fct = model@FisherInfo.fct,
-                                         distrSymm = NoSymmetry(),
-                                         trafo = param@trafo)
+                          M0 <- substitute(L2ScaleUnknownLocationFamily(loc = th2,
+                                                    scale = th1,
+                                                    name = Name, 
+                                                    distribution = D0,
+                                                    modParam = modPar,
+                                                    L2deriv.fct = L2fct,
+                                                    FisherInfo.fct = F.fct,
+                                                    trafo = Trafo),
+                                           list(th2 = theta[2],
+                                                th1 = theta[1],
+                                                Name = model@name,
+                                                D0 = model@modifyParam(theta),
+                                                modPar = model@modifyParam,
+                                                L2fct = model@L2deriv.fct,
+                                                F.fct = model@FisherInfo.fct,
+                                                Trafo = param@trafo))
+                          M <- eval(M0)
                       }else{
-                          M <- L2ScaleUnknownLocationFamily(loc = theta[2],
-                                         scale = theta[1],
-                                         name = model@name, 
-                                         distribution = model@modifyParam(theta),
-                                         modParam = model@modifyParam,
-                                         L2deriv.fct = model@L2deriv.fct,
-                                         FisherInfo.fct = model@FisherInfo.fct,
-                                         distrSymm = NoSymmetry(),
-                                         trafo = param@trafo)
+                          M0 <- substitute(L2ScaleUnknownLocationFamily(loc = th2,
+                                                    scale = th1,
+                                                    name = Name, 
+                                                    distribution = D0,
+                                                    modParam = modPar,
+                                                    L2deriv.fct = L2fct,
+                                                    FisherInfo.fct = F.fct,
+                                                    distrSymm = NoSymmetry(),
+                                                    trafo = Trafo),
+                                           list(th2 = theta[2],
+                                                th1 = theta[1],
+                                                Name = model@name,
+                                                D0 = model@modifyParam(theta),
+                                                modPar = model@modifyParam,
+                                                L2fct = model@L2deriv.fct,
+                                                F.fct = model@FisherInfo.fct,
+                                                Trafo = param@trafo))
+                          M <- eval(M0)
                       }
                   }else{
                       if(is(model@distrSymm, "SphericalSymmetry")){
-                          M <- L2LocationUnknownScaleFamily(loc = theta[1],
-                                         scale = theta[2],
-                                         name = model@name, 
-                                         distribution = model@modifyParam(theta),
-                                         modParam = model@modifyParam,
-                                         L2deriv.fct = model@L2deriv.fct,
-                                         FisherInfo.fct = model@FisherInfo.fct,
-                                         distrSymm = NoSymmetry(),
-                                         trafo = param@trafo)
+                          M0 <- substitute(L2LocationUnknownScaleFamily(loc = th1,
+                                                    scale = th2,
+                                                    name = Name, 
+                                                    distribution = D0,
+                                                    modParam = modPar,
+                                                    L2deriv.fct = L2fct,
+                                                    FisherInfo.fct = F.fct,
+                                                    trafo = Trafo),
+                                           list(th1 = theta[1],
+                                                th2 = theta[2],
+                                                Name = model@name,
+                                                D0 = model@modifyParam(theta),
+                                                modPar = model@modifyParam,
+                                                L2fct = model@L2deriv.fct,
+                                                F.fct = model@FisherInfo.fct,
+                                                Trafo = param@trafo))
+                          M <- eval(M0)
                       }else{
-                          M <- L2LocationUnknownScaleFamily(loc = theta[1],
-                                         scale = theta[2],
-                                         name = model@name, 
-                                         distribution = model@modifyParam(theta),
-                                         modParam = model@modifyParam,
-                                         L2deriv.fct = model@L2deriv.fct,
-                                         FisherInfo.fct = model@FisherInfo.fct,
-                                         distrSymm = NoSymmetry(),
-                                         trafo = param@trafo)
+                          M0 <- substitute(L2LocationUnknownScaleFamily(loc = th1,
+                                                    scale = th2,
+                                                    name = Name, 
+                                                    distribution = D0,
+                                                    modParam = modPar,
+                                                    L2deriv.fct = L2fct,
+                                                    FisherInfo.fct = F.fct,
+                                                    distrSymm = NoSymmetry(),
+                                                    trafo = Trafo),
+                                           list(th1 = theta[1],
+                                                th2 = theta[2],
+                                                Name = model@name,
+                                                D0 = model@modifyParam(theta),
+                                                modPar = model@modifyParam,
+                                                L2fct = model@L2deriv.fct,
+                                                F.fct = model@FisherInfo.fct,
+                                                Trafo = param@trafo))
+                          M <- eval(M0)
                       }
                   }
               }
