@@ -80,9 +80,13 @@
    N1 <- 2*N+1
    odd <- (1:N1)%%2==1
 
-   distr <- L2Fam@distribution
    param0 <- L2Fam@param
    dim0 <- dimension(param0)
+   paramP <- ParamFamParameter(name = name(param0), main = main(param),
+                               trafo = diag(dim0))
+   L2Fam <- modifyModel(L2Fam, paramP)
+
+   distr <- L2Fam@distribution
 
    if(missing(mu)) mu <- distr
 
@@ -113,20 +117,15 @@
           }
        }
 
-   paramP <- ParamFamParameter(name = name(param0), main = main(param),
-                               trafo = diag(dim0))
-   L2deriv0 <- L2deriv(L2Fam, param = paramP)
-
+   L2deriv <- L2deriv(L2Fam)[[1]]
    ## are we working with a one-dim L2deriv or not?
 
-   onedim <- FALSE
-   if(!is.list(L2deriv0))
-      {onedim <- TRUE; L2deriv0 <- list(L2deriv0)}
+   onedim <- (length(L2deriv@Map)==1)
 
-   L2deriv <- EuclRandVariable(Map = L2deriv0, Domain = Reals())
-   if (! dimension(Domain(L2deriv))==1)
-      {warning("Domain of L2derivative must be one-dimensional")
-       return(NULL)}
+#   L2deriv <- EuclRandVariable(Map = L2deriv0, Domain = Reals())
+#   if (! dimension(Domain(L2deriv))==1)
+#      {warning("Domain of L2derivative must be one-dimensional")
+#       return(NULL)}
 
    if(onedim){
    ## one-dim case
@@ -174,27 +173,26 @@
       psi0 <- sapply(x.mu.seq, function(X){ fct <- function(y) phixy(x=X,y=y)
                                         return(E(object=mu, fun = fct))})
    }
-   psi.1 <- approxfun(x.mu.seq, psi0, yleft = 0)
+   psi.1 <- approxfun(x.mu.seq, psi0, yleft = 0, yright = rev(psi0)[1])
    if(is(distr,"DiscreteDistribution"))
          psi <- function(x) (psi.1(x)-psi1) * (x %in% support(mu))
    else  psi <- function(x) psi.1(x)-psi1
 
    E2 <- E(object=distr, fun = function(x) psi(x)^2)
-   psi <- EuclRandVarList(EuclRandVariable(Map=list(psi),Domain = Reals()))
-
+   L2deriv <- L2Fam@L2deriv[[1]]
    ## E2 = Cov_mu (psi)
 
 #   ### control: centering & standardization
-#   E1 <- E(object=distr, fun = psi )
-#   E3 <- E(object=distr, fun = function(x) psi(x)*evalRandVar(L2deriv, x))
-#   psi.0 <- function(x) psi(x) - E1
-#   psi.01 <- function(x) psi.0(x)/E3
-#   if(withplot)
-#       { windows()
-#         plot(x.seq, psi.01(x.seq),
-#                     type = if(is(distr,"DiscreteDistribution")) "p" else "l")
-#       }
-#   E4 <- E(object=distr, fun = function(x) psi.01(x)^2)
+   E1 <- E(object=distr, fun = psi )
+   E3 <- E(object=distr, fun = function(x) psi(x)*evalRandVar(L2deriv, x))
+   psi.0 <- function(x) psi(x) - E1
+   psi.01 <- function(x) psi.0(x)/E3
+   if(withplot)
+       { windows()
+         plot(x.seq, psi.01(x.seq),
+                     type = if(is(distr,"DiscreteDistribution")) "p" else "l")
+       }
+   E4 <- E(object=distr, fun = function(x) psi.01(x)^2)
 #   print(list(E2,E4,E2-E4))
 
       }else{
@@ -205,7 +203,6 @@
 
    ## Delta, formula (56), p. 133 [Ri:94]
    ##        Ptheta- primitive function for Lambda
-
 
    Map.Delta <- vector("list",Dim)
    
@@ -231,7 +228,13 @@
          assign("Delta", Delta, env=env.i)
          assign("Delta0", Delta0, env=env.i)
          assign("Delta1", Delta1, env=env.i)
+         if(withplot){ 
+           windows()
+           plot(x.seq, sapply(x.seq,Map.Delta[[i]]),
+                     type = if(is(distr,"DiscreteDistribution")) "p" else "l")
          }
+
+   }
    Delta <-  EuclRandVariable(Map = Map.Delta, Domain = Reals())
 
 
@@ -240,8 +243,6 @@
    J1 <- E(object=distr, fun = Delta)
    Delta.0 <- Delta - J1
    J <- E(object=distr, fun = Delta.0 %*%t(Delta.0))
-#   print(J1)
-#   print(J)
    ### CvM-IC phi
    phi <- as(solve(J)%*%Delta.0,"EuclRandVariable")
 
@@ -275,7 +276,7 @@
                                })
        }
               
-       phi0a <- approxfun(x.mu.seq, phi0, yleft = 0)
+       phi0a <- approxfun(x.mu.seq, phi0, yleft = 0, yright = rev(phi0)[1])
        env.i <- environment(phi1) <- new.env()
        assign("i", i, env=env.i)
        if(is(distr,"DiscreteDistribution"))
@@ -294,26 +295,27 @@
    psi <-  EuclRandVariable(Map = Map.psi, Domain = Reals())
 
    E2 <- E(object=distr, fun = psi %*%t(psi))   
-   psi <-  EuclRandVarList(psi)
    ## E2 = Cov_mu (psi)
 
    ### control: centering & standardization
-#   E1 <- E(object=distr, fun = psi )
-#   E3 <- E(object=distr, fun = psi %*%t(L2deriv))
-#   psi.0 <- psi - E1
-#   psi.01 <- as(solve(E3)%*%psi.0,"EuclRandVariable")
-#   if(withplot)
-#      { for(i in 1:Dim)
-#         { windows()
-#           plot(x.seq, sapply(x.seq,function(xx) evalRandVar(psi.01,xx)[i]),
-#                     type = if(is(distr,"DiscreteDistribution")) "p" else "l")
-#         }}
-#   E4 <- E(object=distr, fun = psi.01 %*%t(psi.01))
+   L2deriv <- L2Fam@L2deriv[[1]]
+   E1 <- E(object=distr, fun = psi )
+   E3 <- E(object=distr, fun = psi %*%t(L2deriv))
+   psi.0 <- psi - E1
+   psi.01 <- as(solve(E3)%*%psi.0,"EuclRandVariable")
+   if(withplot)
+      { for(i in 1:Dim)
+         { windows()
+           plot(x.mu.seq, sapply(x.mu.seq,psi.01@Map[[i]]),
+                     type = if(is(distr,"DiscreteDistribution")) "p" else "l")
+         }}
+   E4 <- E(object=distr, fun = psi.01 %*%t(psi.01))
    }
-  E2 <- PosSemDefSymmMatrix(E2)
-  #print(names(param(L2Fam)))
+  E4 <- PosSemDefSymmMatrix(E4)
+  
+  psi <-  EuclRandVarList(psi.01)
   nms <- names(c(main(param(L2Fam)),nuisance(param(L2Fam))))
-  dimnames(E2) = list(nms,nms)
+  dimnames(E4) = list(nms,nms)
   if(withpreIC) return(list(preIC=psi, Var=E2))
   else return(E2)
 }

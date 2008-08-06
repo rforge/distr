@@ -1,4 +1,5 @@
 ### some further examples:
+require(distrMod)
 
 ### Poisson Family
 P <- PoisFamily(3)
@@ -34,3 +35,9 @@ plot(my3dF)
 x <- r(my3dF)(40)*3+2
 ### evaluate the MLE:
 MLEstimator(x,my3dF)
+MDE = MDEstimator(x = x, ParamFamily = my3dF, distance = CvMDist)
+
+MDE.asvar <- distrMod:::.CvMMDCovariance(my3dF, 
+                 param = ParamFamParameter(main= estimate(MDE)),
+                 expon = 2, withplot = TRUE)
+
