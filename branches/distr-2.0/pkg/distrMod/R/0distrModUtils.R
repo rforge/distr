@@ -1,3 +1,25 @@
+.getLogDeriv <- function(distr){
+  xs <- seq(2*q(distr)(getdistrOption("TruncQuantile")^2),
+            2*q(distr)(getdistrOption("TruncQuantile")^2, lower = FALSE),
+            length = getdistrOption("DefaultNrGridPoints"))
+  m <- getdistrOption("DefaultNrGridPoints")%/%100
+  dxs<- -d(distr)(xs, log = TRUE)
+  x1 <- xs[1]; xn <- (rev(xs)[1])
+  f2xs <- approxfun(x = xs, y = D2ss(xs,dxs)$y, rule = 2)
+  f2x1 <- f2xs(x1); f2xn <- f2xs(xn);
+  f1xs <- approxfun(x = xs, y = D1ss(xs,dxs))
+  f1x1 <- f1xs(x1); f1xn <- f1xs(xn);
+  f3xs <- approxfun(x = xs, y = D2ss(xs,f1xs(xs))$y, rule = 1)
+  f3x1 <- median(f3xs(xs[1:m])); f3xn <- median(f3xs(rev(xs)[1:m]));
+  fxs <- function(x){
+       f1x0 <- f1xs(x)
+       dx1 <- (x[x<x1]-x1)
+       dxn <- (x[x>xn]-xn)
+       f1x0[x>xn] <- f1xn+f2xn*dxn+f3xn/2*dxn^2
+       f1x0[x<x1] <- f1x1+f2x1*dx1+f3x1/2*dx1^2
+       return(f1x0)}
+  return(fxs)
+}
 
 .show.with.sd <- function(est, s){
   ### code borrowed from print.fitdistr in  package MASS by B.D. Ripley

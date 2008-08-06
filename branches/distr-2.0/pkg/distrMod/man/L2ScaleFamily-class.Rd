@@ -1,7 +1,7 @@
 \name{L2ScaleFamily-class}
 \docType{class}
 \alias{L2ScaleFamily-class}
-\alias{modifyModel,L2ScaleFamily,ParamFamParameter-method}
+%\alias{modifyModel,L2ScaleFamily,ParamFamParameter-method}
 
 \title{L2 differentiable parametric group family}
 \description{Class of L2 differentiable parametric group families.}

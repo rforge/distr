@@ -11,6 +11,7 @@
 <param name="keyword" value="R:   .validTrafo">
 <param name="keyword" value="R:   .CvMMDCovariance">
 <param name="keyword" value="R:   .show.with.sd">
+<param name="keyword" value="R:   .getLogDeriv">
 <param name="keyword" value=" Internal functions of package distrMod">
 </object>
 
@@ -36,7 +37,7 @@ These functions are used internally by package ``distrMod''.
                  withplot = FALSE, withpreIC = FALSE,
                  N = getdistrOption("DefaultNrGridPoints")+1, ...)
 .show.with.sd(est, s)
-
+.getLogDeriv(distr)
 </pre>
 
 
@@ -103,6 +104,9 @@ function</td></tr>
 <tr valign="top"><td><code>fx</code></td>
 <td>
 a vector of function evaluations multiplied by the gridwidth</td></tr>
+<tr valign="top"><td><code>distr</code></td>
+<td>
+an object of class <code>AbscontDistribution</code></td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 further argument to be passed through &mdash; so 
@@ -139,11 +143,20 @@ improvement needed.
 package <span class="pkg">MASS</span> by B.D. Ripley. It pretty-prints estimates with corresponding
 sd's below.
 </p>
+<p>
+<code>.getLogDeriv</code> determines numerically the negative logarithmic derivative of the 
+density of distribution <code>distr</code>; to this end uses <code>D1ss</code>, 
+<code>D2ss</code> from Martin Maechler's package <span class="pkg">sfsmisc</span>.
+</p>
 
 
 <h3>Value</h3>
 
 <table summary="R argblock">
+<tr valign="top"><td><code>.getLogderiv</code></td>
+<td>
+a function in one argument <code>x</code> &mdash; the negative logarithmic
+derivative of the density</td></tr>
 <tr valign="top"><td><code>.inArgs</code></td>
 <td>
 <code>logical</code> (length 1)</td></tr>

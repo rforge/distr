@@ -41,6 +41,7 @@ exportMethods("name", "name<-",
               "estimate", 
               "Infos", "Infos<-", "addInfo<-",
               "criterion", "criterion<-")
+exportMethods("start.par")
 export("PosDefSymmMatrix","PosSemDefSymmMatrix")
 export("distrModOptions", "getdistrModOption",
        "Estimator", "MCEstimator", "MLEstimator", "MDEstimator")

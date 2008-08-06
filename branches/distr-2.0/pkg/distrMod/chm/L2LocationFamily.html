@@ -24,8 +24,7 @@ Generates an object of class <code>"L2LocationFamily"</code>.
 
 <pre>
 L2LocationFamily(loc = 0, name, centraldistribution = Norm(),
-                 modParam,
-                 LogDeriv = function(x)x,  L2derivDistr.0,
+                      modParam, LogDeriv,  L2derivDistr.0,
                  FisherInfo.0, distrSymm, L2derivSymm, L2derivDistrSymm,
                  trafo, ...)
 </pre>
@@ -42,9 +41,9 @@ numeric: location parameter of the model. </td></tr>
 character: name of the parametric family. </td></tr>
 <tr valign="top"><td><code>centraldistribution</code></td>
 <td>
-object of class <code>"AbscontDistribution"</code>:
-central distribution; we assume from the beginning, that centraldistribution
-is symmetric about <i>0</i>  </td></tr>
+object of class <code>"AbscontDistribution"</code>;
+we assume from the beginning, that centraldistribution
+is symmetric about its median.</td></tr>
 <tr valign="top"><td><code>modParam</code></td>
 <td>
 optional function: mapping from the parameter space 
@@ -53,7 +52,8 @@ optional function: mapping from the parameter space
 <tr valign="top"><td><code>LogDeriv</code></td>
 <td>
 function with argument <code>x</code>: the negative logarithmic 
-derivative of the density of the central distribution </td></tr>
+derivative of the density of the central distribution; if missing, it is
+determined numerically using numeric differentiation. </td></tr>
 <tr valign="top"><td><code>L2derivDistr.0</code></td>
 <td>
 object of class <code>"UnivariateDistribution"</code>:
@@ -111,6 +111,7 @@ Object of class <code>"L2LocationFamily"</code></p>
 <h3>Author(s)</h3>
 
 <p>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>,<br>
 Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
 </p>
 

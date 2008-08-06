@@ -5,6 +5,7 @@
 \alias{.validTrafo}
 \alias{.CvMMDCovariance}
 \alias{.show.with.sd}
+\alias{.getLogDeriv}
 
 \title{Internal functions of package distrMod}
 
@@ -20,7 +21,7 @@ These functions are used internally by package ``distrMod''.}
                  withplot = FALSE, withpreIC = FALSE,
                  N = getdistrOption("DefaultNrGridPoints")+1, ...)
 .show.with.sd(est, s)
-
+.getLogDeriv(distr)
 }
 
 
@@ -55,6 +56,7 @@ These functions are used internally by package ``distrMod''.}
            \eqn{\mu}{mu}- resp. \eqn{P_\theta}{P_theta}-``primitive''
            function}
  \item{fx}{a vector of function evaluations multiplied by the gridwidth}
+ \item{distr}{an object of class \code{AbscontDistribution}}
   \item{\dots}{further argument to be passed through --- so 
               \code{.CvMMDCovariance} can digest more arguments}
 }
@@ -81,9 +83,15 @@ of \code{cumsum}.
 \code{.show.with.sd} is code borrowed from \code{print.fitdistr} in  
 package \pkg{MASS} by B.D. Ripley. It pretty-prints estimates with corresponding
 sd's below.
+
+\code{.getLogDeriv} determines numerically the negative logarithmic derivative of the 
+density of distribution \code{distr}; to this end uses \code{D1ss}, 
+\code{D2ss} from Martin Maechler's package \pkg{sfsmisc}. 
 }
 
 \value{
+\item{.getLogderiv}{a function in one argument \code{x} --- the negative logarithmic
+derivative of the density}
 \item{.inArgs}{\code{logical} (length 1)}
 \item{.csimpsum}{\code{numeric} (of length half the input length)}
 \item{.isUnitMatrix}{\code{logical} (length 1)}

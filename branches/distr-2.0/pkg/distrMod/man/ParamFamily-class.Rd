@@ -82,6 +82,7 @@ Class \code{"ProbFamily"}, directly.
       plot of slot \code{distribution}. }
 
     \item{show}{\code{signature(object = "ParamFamily")}}
+
   }
 }
 \section{Details for methods \code{show}, \code{print}}{

@@ -24,10 +24,10 @@ Generates an object of class <code>"L2LocationScaleFamily"</code>.
 
 <pre>
 L2LocationScaleFamily(loc = 0, scale = 1, name, centraldistribution = Norm(),
-                      modParam,
-                      LogDeriv = function(x) x,  L2derivDistr.0,
+                      modParam, LogDeriv,  L2derivDistr.0,
                       FisherInfo.0, distrSymm, L2derivSymm, L2derivDistrSymm,
                       trafo, ...)
+
 </pre>
 
 
@@ -56,7 +56,8 @@ optional function: mapping from the parameter space
 <tr valign="top"><td><code>LogDeriv</code></td>
 <td>
 function with argument <code>x</code>: the negative logarithmic 
-derivative of the density of the central distribution </td></tr>
+derivative of the density of the central distribution; if missing, it is
+determined numerically using numeric differentiation. </td></tr>
 <tr valign="top"><td><code>L2derivDistr.0</code></td>
 <td>
 list of length 2 of objects of class <code>"UnivariateDistribution"</code>:
@@ -117,6 +118,7 @@ Object of class <code>"L2LocationScaleFamily"</code></p>
 <h3>Author(s)</h3>
 
 <p>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>,<br>
 Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
 </p>
 

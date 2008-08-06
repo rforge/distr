@@ -1,7 +1,7 @@
 \name{L2LocationFamily-class}
 \docType{class}
 \alias{L2LocationFamily-class}
-\alias{modifyModel,L2LocationFamily,ParamFamParameter-method}
+%\alias{modifyModel,L2LocationFamily,ParamFamParameter-method}
 
 \title{L2 differentiable parametric group family}
 \description{Class of L2 differentiable parametric group families.}

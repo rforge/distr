@@ -17,9 +17,9 @@
 \alias{E,L2ParamFamily,EuclRandVariable,missing-method}
 \alias{E,L2ParamFamily,EuclRandMatrix,missing-method}
 \alias{E,L2ParamFamily,EuclRandVarList,missing-method}
-\alias{modifyModel}
-\alias{modifyModel-methods}
-\alias{modifyModel,L2ParamFamily,ParamFamParameter-method}
+%\alias{modifyModel}
+%\alias{modifyModel-methods}
+%\alias{modifyModel,L2ParamFamily,ParamFamParameter-method}
 \alias{plot,L2ParamFamily-method}
 
 \title{L2 differentiable parametric family}

@@ -79,3 +79,4 @@ setReplaceMethod("trafo", "ParamFamily",
         object <- modifyModel(object, param)
         object
     })
+

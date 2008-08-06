@@ -25,10 +25,10 @@ where location is main, scale nuisance parameter.
 
 <pre>
 L2LocationUnknownScaleFamily(loc = 0, scale = 1, name, centraldistribution = Norm(),
-                      modParam,
-                      LogDeriv = function(x) x,  L2derivDistr.0,
+                      modParam, LogDeriv,  L2derivDistr.0,
                       FisherInfo.0, distrSymm, L2derivSymm, L2derivDistrSymm,
                       trafo, ...)
+
 </pre>
 
 
@@ -57,7 +57,8 @@ optional function: mapping from the parameter space
 <tr valign="top"><td><code>LogDeriv</code></td>
 <td>
 function with argument <code>x</code>: the negative logarithmic 
-derivative of the density of the central distribution </td></tr>
+derivative of the density of the central distribution; if missing, it is
+determined numerically using numeric differentiation. </td></tr>
 <tr valign="top"><td><code>L2derivDistr.0</code></td>
 <td>
 list of length 2 of objects of class <code>"UnivariateDistribution"</code>:

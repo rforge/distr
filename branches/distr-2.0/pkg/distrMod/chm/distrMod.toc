@@ -18,6 +18,10 @@
 <param name="Local" value="internals.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value=".getLogDeriv">
+<param name="Local" value="internals.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value=".inArgs">
 <param name="Local" value="internals.html">
 </OBJECT>
@@ -232,6 +236,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="criterion<-,MCEstimate-method">
 <param name="Local" value="MCEstimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="d,ProbFamily-method">
+<param name="Local" value="ProbFamily-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="dimension,ParamFamParameter-method">
@@ -639,15 +647,27 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="modifyModel">
-<param name="Local" value="L2ParamFamily-class.html">
+<param name="Local" value="modifyModel-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="modifyModel,L2LocationFamily,ParamFamParameter-method">
+<param name="Local" value="modifyModel-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="modifyModel,L2LocationScaleFamily,ParamFamParameter-method">
+<param name="Local" value="modifyModel-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="modifyModel,L2ParamFamily,ParamFamParameter-method">
-<param name="Local" value="L2ParamFamily-class.html">
+<param name="Local" value="modifyModel-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="modifyModel,L2ScaleFamily,ParamFamParameter-method">
+<param name="Local" value="modifyModel-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="modifyModel-methods">
-<param name="Local" value="L2ParamFamily-class.html">
+<param name="Local" value="modifyModel-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="modifyParam">
@@ -838,6 +858,10 @@
 <param name="Local" value="internalClassUnions-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="p,ProbFamily-method">
+<param name="Local" value="ProbFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="param,ParamFamily-method">
 <param name="Local" value="ParamFamily-class.html">
 </OBJECT>
@@ -926,6 +950,10 @@
 <param name="Local" value="ProbFamily-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="q,ProbFamily-method">
+<param name="Local" value="ProbFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="QFNorm">
 <param name="Local" value="QFNorm.html">
 </OBJECT>
@@ -952,6 +980,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="QuadFormNorm">
 <param name="Local" value="norms.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="r,ProbFamily-method">
+<param name="Local" value="ProbFamily-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="RiskType-class">
@@ -1641,6 +1673,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Methods for Function existsPIC in Package `distrMod'">
 <param name="Local" value="existsPIC.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Methods for function modifyModel in Package `distrMod' ">
+<param name="Local" value="modifyModel-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Methods for Function solve in Package `distrMod' ">

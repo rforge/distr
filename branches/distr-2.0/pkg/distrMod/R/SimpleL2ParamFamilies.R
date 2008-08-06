@@ -5,7 +5,7 @@ BinomFamily <- function(size = 1, prob = 0.5, trafo){
     f.call <- match.call()
     name <- "Binomial family"
     distribution <- Binom(size = size, prob = prob)
-    if(prob == 0.5)
+    if(distr:::.isEqual(prob,0.5))
         distrSymm <- SphericalSymmetry(SymmCenter = size*prob)
     else
         distrSymm <- NoSymmetry()
@@ -31,7 +31,7 @@ BinomFamily <- function(size = 1, prob = 0.5, trafo){
                    return(fct)}
     L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter = size*prob)) 
     L2derivDistr <- UnivarDistrList((distribution - size*prob)/(prob*(1-prob)))
-    if(prob == 0.5)
+    if(distr:::.isEqual(prob,0.5))
         L2derivDistrSymm <- DistrSymmList(SphericalSymmetry(SymmCenter = 0))
     else
         L2derivDistrSymm <- DistrSymmList(NoSymmetry())

@@ -13,6 +13,10 @@
 \alias{props,ProbFamily-method}
 \alias{props<-}
 \alias{props<-,ProbFamily-method}
+\alias{r,ProbFamily-method}
+\alias{d,ProbFamily-method}
+\alias{p,ProbFamily-method}
+\alias{q,ProbFamily-method}
 
 \title{Family of probability measures}
 \description{Class of families of probability measures.}
@@ -51,6 +55,15 @@
 
     \item{addProp<-}{\code{signature(object = "ProbFamily")}: 
       add a property to slot \code{props}. }
+
+    \item{r}{\code{signature(object = "ProbFamily")}: wrapped accessor
+      to slot \code{r} of slot \code{"Distribution"}.}
+    \item{d}{\code{signature(object = "ProbFamily")}: wrapped accessor
+      to slot \code{d} of slot \code{"Distribution"}.}
+    \item{p}{\code{signature(object = "ProbFamily")}: wrapped accessor
+      to slot \code{p} of slot \code{"Distribution"}.}
+    \item{q}{\code{signature(object = "ProbFamily")}: wrapped accessor
+      to slot \code{q} of slot \code{"Distribution"}.}
   }
 }
 %\references{}

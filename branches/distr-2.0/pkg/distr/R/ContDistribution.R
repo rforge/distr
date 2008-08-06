@@ -16,29 +16,30 @@ AbscontDistribution <- function(r = NULL, d = NULL, p = NULL, q = NULL,
 { if(missing(r) && missing(d) && missing(p) && missing(q))
     stop("At least one of arg's r,d,p,q must be given")
 
+  d1 <-  d
   wS <- .withSim
   wA <- .withArith
-  if(is.null(r))
-     {if(is.null(q))
-         {if(is.null(p))
-            { if(is.null(low1))
-                 {i <- 0; x0 <- -1
+  if(is.null(r)){
+      if(is.null(q)){
+          if(is.null(p)){
+              if(is.null(low1)){
+                  i <- 0; x0 <- -1
                   while(d(x0)> ep && i < 20) x0 <- x0 * 2
-                  low1 <- x0}
-              if(is.null(up1))
-                 {i <- 0; x0 <- 1
+                  low1 <- x0
+              }
+              if(is.null(up1)){
+                  i <- 0; x0 <- 1
                   while(d(x0)> ep && i < 20) x0 <- x0 * 2
-                  up1 <- x0}
-
+                  up1 <- x0
+              }
               ### new: allow for non standardized d functions i.e. 
               ### possibly, int d(x) dx != 1
-              
               if(withStand){
-                 if(is(try(
+                  if(is(try(
                      stand <- integrate(d,-Inf,Inf)$value,
                      silent=TRUE),
-                    "try-error")){
-                    if(is(try(
+                     "try-error")){
+                     if(is(try(
                          stand <- integrate(d,low1,up1)$value,
                          silent=TRUE),
                          "try-error")){
@@ -51,40 +52,48 @@ AbscontDistribution <- function(r = NULL, d = NULL, p = NULL, q = NULL,
                           stand <- (4*sum(dx[n1.even])+
                                     2*sum(dx[n1.odd])-
                                     dx[1]-rev(dx)[1])*h/6 
-                         }
-                    }
+                     }
+                  }
                   d0 <- d
-                  d1 <- function(x, log = FALSE)
-                        d0(x, log = log)/stand
-                  d <- d1                      
-                 }
-
-              p <- .D2P(d = d, ql = low1, qu=up1,  ngrid = ngrid)
+                  if(.inArgs("log",d0))
+                     d1 <- function(x, log = FALSE){
+                                 d00 <- d0(x, log = log)
+                                 d00 <- if(log) d00 - log(stand) else d00 / stand
+                                 return(d00)
+                           }      
+                  else
+                     d1 <- function(x, log = FALSE){
+                                 d00 <- d0(x)/stand
+                                 if(log) d00 <- log(d00) 
+                                 return(d00)
+                           }      
+              }
+              p <- .D2P(d = d1, ql = low1, qu=up1,  ngrid = ngrid)
               q <- .P2Q(p = p, ql = low1, qu=up1,  ngrid = ngrid,
-                       qL = low, qU = up)
-              r <- function(n) q(runif(n)) }
-          else
-            { if(is.null(low1))
-                 {i <- 0; x0 <- -1
+                        qL = low, qU = up)
+              r <- function(n) q(runif(n)) 
+          }else{ 
+              if(is.null(low1)){
+                  i <- 0; x0 <- -1
                   while(p(x0)> ep && i < 20) x0 <- x0 * 2
-                  low1 <- x0}
-              if(is.null(up1))
-                 {i <- 0; x0 <- 1
+                  low1 <- x0
+              }
+              if(is.null(up1)){
+                  i <- 0; x0 <- 1
                   while(p(x0)< 1-ep && i < 20) x0 <- x0 * 2
-                  up1 <- x0}
+                  up1 <- x0
+              }
 
               q <- .P2Q(p = p, ql = low1, qu=up1,  ngrid = ngrid,
                        qL = low, qU = up)
               r <- function(n) q(runif(n))
               if( is.null(d))
                  d <- .P2D(p = p, ql = low1, qu=up1,  ngrid = ngrid)
-              }
-         }
-      else
-         {if(is.null(p))
+          }
+      }else{
+          if(is.null(p))
              p <- .Q2P(q, ngrid = ngrid)
           xseq<-seq(-5,5,0.001)
-          print(summary(p(xseq)))
           r <- function(n) q(runif(n))
           if( is.null(d)){
               if(is.null(low1))
@@ -93,18 +102,15 @@ AbscontDistribution <- function(r = NULL, d = NULL, p = NULL, q = NULL,
                  up1 <- q(1-ep)
               d <- .P2D(p = p, ql = low1, qu=up1,  ngrid = ngrid)
               }
-         }
-     }
-  else
-     {if(is.null(d))
-         {if(is.null(p))
-             {if(is.null(q))
-                 {erg <- RtoDPQ(r = r, e = e, n = ngrid)
+      }
+  }else{
+      if(is.null(d)){
+          if(is.null(p)){
+              if(is.null(q)){
+                  erg <- RtoDPQ(r = r, e = e, n = ngrid)
                   wS <- TRUE
                   d <- erg$d; p <- erg$p; q<- erg$q
-                 }
-              else
-                 {
+              }else{
                   p <- .Q2P(q, ngrid = ngrid)
                   if( is.null(d)){
                       if(is.null(low1))
@@ -112,95 +118,106 @@ AbscontDistribution <- function(r = NULL, d = NULL, p = NULL, q = NULL,
                       if(is.null(up1))
                          up1 <- q(1-ep)
                       d <- .P2D(p = p, ql = low1, qu=up1,  ngrid = ngrid)
-                      }
-                 }
-             }
-          else
-             {if(is.null(q))
-                 {if(is.null(low1))
-                     {i <- 0; x0 <- -1
+                  }
+              }
+          }else{
+              if(is.null(q)){
+                  if(is.null(low1)){
+                      i <- 0; x0 <- -1
                       while(p(x0)> ep && i < 20) x0 <- x0 * 2
-                      low1 <- x0}
-                  if(is.null(up1))
-                     {i <- 0; x0 <- 1
+                      low1 <- x0
+                  }
+                  if(is.null(up1)){
+                      i <- 0; x0 <- 1
                       while(p(x0)< 1-ep && i < 20) x0 <- x0 * 2
-                      up1 <- x0}
+                      up1 <- x0
+                  }
                   q <- .P2Q(p = p, ql = low1, qu=up1,  ngrid = ngrid,
                            qL = low, qU = up)
                   d <- .P2D(p = p, ql = low1, qu=up1,  ngrid = ngrid)
-                  }
-             }
-         }
-      else
-         {if(is.null(p))
-             {if(is.null(q))
-                 {if(is.null(low1))
-                     {i <- 0; x0 <- -1
+              }
+          }
+      }else{
+          if(is.null(p)){
+              if(is.null(q)){
+                  if(is.null(low1)){
+                      i <- 0; x0 <- -1
                       while(d(x0)> ep && i < 20) x0 <- x0 * 2
-                      low1 <- x0}
-                  if(is.null(up1))
-                     {i <- 0; x0 <- 1
+                      low1 <- x0
+                      }
+                  if(is.null(up1)){
+                      i <- 0; x0 <- 1
                       while(d(x0)> ep && i < 20) x0 <- x0 * 2
-                      up1 <- x0}
+                      up1 <- x0
+                      }
 
               ### new: allow for non standardized d functions i.e. 
               ### possibly, int d(x) dx != 1
               
-              if(withStand){
-                 if(is(try(
-                     stand <- integrate(d,-Inf,Inf)$value,
-                     silent=TRUE),
-                    "try-error")){
-                    if(is(try(
-                         stand <- integrate(d,low1,up1)$value,
-                         silent=TRUE),
-                         "try-error")){
-                          n1 <- 2*ngrid+1
-                          n1.odd <- seq(1,n1, by=2)
-                          n1.even <- (1:n1)[-n1.odd]
-                          x <- seq(low1,up1, length = n1)
-                          h <- diff(x)[1]
-                          dx <- d(x)
-                          stand <- (4*sum(dx[n1.even])+
-                                    2*sum(dx[n1.odd])-
-                                    dx[1]-rev(dx)[1])*h/6 
-                         }
-                    }
-                  d0 <- d
-                  d1 <- function(x, log = FALSE)
-                        d0(x, log = log)/stand
-                  d <- d1                      
-                 }
-
-                  p <- .D2P(d = d, ql = low1, qu=up1,  ngrid = ngrid)
-                  q <- .P2Q(p = p, ql = low1, qu=up1,  ngrid = ngrid,
-                           qL = low, qU = up)
-                 }
-              else
-                 p <- .Q2P(q, ngrid = ngrid)
-             }
-          else
-             {if(is.null(q))
-                 {if(is.null(low1))
-                     {i <- 0; x0 <- -1
-                      while(p(x0)> ep && i < 20) x0 <- x0 * 2
-                      low1 <- x0}
-                  if(is.null(up1))
-                     {i <- 0; x0 <- 1
-                      while(p(x0)< 1-ep && i < 20) x0 <- x0 * 2
-                      up1 <- x0}
+                  if(withStand){
+                      if(is(try(
+                          stand <- integrate(d,-Inf,Inf)$value,
+                                silent=TRUE),
+                            "try-error")){
+                          if(is(try(
+                              stand <- integrate(d,low1,up1)$value,
+                                    silent=TRUE),
+                                "try-error")){
+                              n1 <- 2*ngrid+1
+                              n1.odd <- seq(1,n1, by=2)
+                              n1.even <- (1:n1)[-n1.odd]
+                              x <- seq(low1,up1, length = n1)
+                              h <- diff(x)[1]
+                              dx <- d(x)
+                              stand <- (4*sum(dx[n1.even])+
+                                        2*sum(dx[n1.odd])-
+                                        dx[1]-rev(dx)[1])*h/6 
+                          }
+                      }
+                      d0 <- d
+                      if(.inArgs("log",d0))
+                         d1 <- function(x, log = FALSE){
+                                     d00 <- d0(x, log = log)
+                                     d00 <- if(log) d00 - log(stand) else d00 / stand
+                                     return(d00)
+                               }      
+                      else
+                         d1 <- function(x, log = FALSE){
+                                     d00 <- d0(x)/stand
+                                     if(log) d00 <- log(d00) 
+                                     return(d00)
+                               }      
+                  }
+        
+                  p <- .D2P(d = d1, ql = low1, qu=up1,  ngrid = ngrid)
                   q <- .P2Q(p = p, ql = low1, qu=up1,  ngrid = ngrid,
                             qL = low, qU = up)
-                  }          
-              }
-         }
-     }
-  obj <- new("AbscontDistribution", r = r, p = p, q = q, d = d, .withSim = wS,
+              }else
+                  p <- .Q2P(q, ngrid = ngrid)
+          }else{
+              if(is.null(q)){
+                  if(is.null(low1)){
+                      i <- 0; x0 <- -1
+                      while(p(x0)> ep && i < 20) x0 <- x0 * 2
+                      low1 <- x0
+                  }
+                  if(is.null(up1)){
+                      i <- 0; x0 <- 1
+                      while(p(x0)< 1-ep && i < 20) x0 <- x0 * 2
+                      up1 <- x0
+                  }
+                  q <- .P2Q(p = p, ql = low1, qu=up1,  ngrid = ngrid,
+                            qL = low, qU = up)
+              }          
+          }
+      }
+  }
+  obj <- new("AbscontDistribution", r = r, p = p, q = q, d = d1, .withSim = wS,
       .withArith = wA, gaps = gaps, param = param, img = img)
 
   if(is.null(gaps) && withgaps) setgaps(obj)
   return(obj)
-  }
+}
 
 ## Access Methods
 

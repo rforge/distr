@@ -12,6 +12,7 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
                           L2derivSymm, L2derivDistr, L2derivDistrSymm,
                           FisherInfo.fct = function(theta){ 1 },
                           FisherInfo = FisherInfo.fct(param)){
+     
     f.call <- match.call()
     if(missing(name))
         name <- "L_2 differentiable parametric family of probability measures"
@@ -82,10 +83,10 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
 
     L2Fam <- new("L2ParamFamily")
     L2Fam@distribution <- distribution
+    L2Fam@fam.call <- f.call
     L2Fam@distrSymm <- distrSymm
     L2Fam@param <- param
     L2Fam@modifyParam <- modifyParam
-    L2Fam@fam.call <- f.call
     L2Fam@props <- props
     L2Fam@L2deriv.fct <- L2deriv.fct
     L2Fam@L2deriv <- L2deriv
@@ -135,31 +136,3 @@ setMethod("checkL2deriv", "L2ParamFamily",
         return(list(maximum.deviation = prec))
     })
 
-### move model from one parameter to the next...
-setMethod("modifyModel", signature(model = "L2ParamFamily", param = "ParamFamParameter"), 
-          function(model, param, ...){
-              theta <- c(main(param),nuisance(param))
-              M0 <- substitute(L2ParamFamily(name = Name, 
-                                    distribution = D, 
-                                    param = P, 
-                                    props = Props,
-                                    startPar = Par0,
-                                    makeOKPar = ParOK,
-                                    modifyParam = modPar,
-                                    L2deriv.fct = L2fct,
-                                    FisherInfo.fct = F.fct,
-                                    FisherInfo = FInfo),
-                               list(Name = model@name,
-                                    D = model@modifyParam(theta),
-                                    P = param,
-                                    Props = model@props,
-                                    Par0 = model@startPar,
-                                    ParOK = model@makeOKPar,
-                                    modPar = model@modifyParam,
-                                    L2fct = model@L2deriv.fct,
-                                    F.fct = model@FisherInfo.fct,
-                                    FInfo = model@FisherInfo.fct(param)))
-              M <- eval(M0)
-              M1 <- existsPIC(M)
-              return(M)
-          })
