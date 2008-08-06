@@ -12,7 +12,7 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
                           L2derivSymm, L2derivDistr, L2derivDistrSymm,
                           FisherInfo.fct = function(theta){ 1 },
                           FisherInfo = FisherInfo.fct(param)){
-     
+    f.call <- match.call()
     if(missing(name))
         name <- "L_2 differentiable parametric family of probability measures"
     if(missing(param)&&missing(main))
@@ -85,6 +85,7 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
     L2Fam@distrSymm <- distrSymm
     L2Fam@param <- param
     L2Fam@modifyParam <- modifyParam
+    L2Fam@fam.call <- f.call
     L2Fam@props <- props
     L2Fam@L2deriv.fct <- L2deriv.fct
     L2Fam@L2deriv <- L2deriv
@@ -137,16 +138,17 @@ setMethod("checkL2deriv", "L2ParamFamily",
 ### move model from one parameter to the next...
 setMethod("modifyModel", signature(model = "L2ParamFamily", param = "ParamFamParameter"), 
           function(model, param, ...){
-          M <- model
-          theta <- c(main(param),nuisance(param))
-          M@distribution <- model@modifyParam(theta)
-          M@param <- param
-          fct <- M@L2deriv.fct(param)
-          M@L2deriv <- if(!is.list(fct))
-              EuclRandVarList(RealRandVariable(list(fct), Domain = Reals())) else
-              EuclRandVarList(RealRandVariable(fct, Domain = Reals()))
-          M@FisherInfo <- M@FisherInfo.fct(param)
-          M1 <- existsPIC(M)
-          return(M)
+              theta <- c(main(param),nuisance(param))
+              M <- L2ParamFamily(name = model@name, 
+                                 distribution = model@modifyParam(theta), 
+                                 param = param, 
+                                 props = model@props,
+                                 startPar = model@startPar,
+                                 makeOKPar = model@makeOKPar,
+                                 modifyParam = model@modifyParam,
+                                 L2deriv.fct = model@L2deriv.fct,
+                                 FisherInfo.fct = model@FisherInfo.fct,
+                                 FisherInfo = model@FisherInfo.fct(param))
+              M1 <- existsPIC(M)
+              return(M)
           })
-

@@ -23,7 +23,7 @@
              return(param > tol)})
 
  setMethod("validParameter", signature(object = "L2LocationFamily"),
-          function(object, param, tol=.Machine$double.eps){
+          function(object, param){
           if(is(param,"ParamFamParameter"))
                 param <- main(param)
           if(!all(is.finite(param))) return(FALSE)

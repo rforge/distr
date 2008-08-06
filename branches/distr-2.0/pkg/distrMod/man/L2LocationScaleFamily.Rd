@@ -7,10 +7,10 @@
 }
 \usage{
 L2LocationScaleFamily(loc = 0, scale = 1, name, centraldistribution = Norm(),
-                      modParam,
-                      LogDeriv = function(x) x,  L2derivDistr.0,
-                      FisherInfo.0, distrSymm, L2derivSymm, L2derivDistrSymm,
-                      trafo, ...)
+                      distribution, modParam,
+                      LogDeriv = function(x) x, L2deriv.fct, L2derivDistr.0,
+                      FisherInfo.0, FisherInfo.fct, distrSymm, 
+                      L2derivSymm, L2derivDistrSymm, trafo, ...)
 }
 \arguments{
   \item{loc}{numeric: location parameter of the model. }
@@ -19,16 +19,27 @@ L2LocationScaleFamily(loc = 0, scale = 1, name, centraldistribution = Norm(),
   \item{centraldistribution}{object of class \code{"AbscontDistribution"}:
     central distribution; we assume by default, that centraldistribution
     is symmetric about \eqn{0}}
+  \item{distribution}{optional object of class \code{"AbscontDistribution"}:
+     distribution; if missing it is computed via \code{centraldistribution}. }
   \item{modParam}{ optional function: mapping from the parameter space 
     (represented by \code{"param"}) to the distribution space 
     (represented by \code{"distribution"}). }
   \item{LogDeriv}{function with argument \code{x}: the negative logarithmic 
     derivative of the density of the central distribution }
+  \item{L2deriv.fct}{ optional function: mapping from the parameter space 
+   (argument \code{param} of class \code{"ParamFamParameter"}) to a mapping 
+   from observation \code{x} to the value of the L2derivative; 
+    \code{L2deriv.fct} is used by \code{modifyModel} to 
+    move the L2deriv according to a change in the parameter }
   \item{L2derivDistr.0}{list of length 2 of objects of class \code{"UnivariateDistribution"}:
     (marginal) distributions of the coordinates of the L2derivative at the 
     central distribution }
   \item{FisherInfo.0}{object of class \code{"PosSemDefSymmMatrix"}:
     Fisher information of the model at the "standard" parameter value}
+  \item{FisherInfo.fct}{function: mapping from the parameter space (argument
+    \code{param} of class \code{"ParamFamParameter"}) to the set of positive
+    semidefinite matrices; \code{FisherInfo.fct} is used by \code{modifyModel} to 
+    move the Fisher information according to a change in the parameter } 
   \item{distrSymm}{ object of class \code{"DistributionSymmetry"}: 
       symmetry of \code{distribution}. }
   \item{L2derivSymm}{ object of class \code{"FunSymmList"}: 
@@ -64,7 +75,8 @@ L2LocationScaleFamily(loc = 0, scale = 1, name, centraldistribution = Norm(),
   Kohl, M. (2005) \emph{Numerical Contributions to the Asymptotic Theory of Robustness}. 
   Bayreuth: Dissertation.
 }
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
+\author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
+Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}
 \seealso{\code{\link{L2LocationScaleFamily-class}}}
 \examples{

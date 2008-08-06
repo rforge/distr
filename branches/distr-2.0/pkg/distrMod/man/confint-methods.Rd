@@ -16,7 +16,7 @@
 \usage{
 confint(object, method, \dots)
 \S4method{confint}{ANY,missing}(object, method, parm, level = 0.95, \dots)
-\S4method{confint}{Estimate,missing}(object, method, level = 0.95, \dots)
+\S4method{confint}{Estimate,missing}(object, method, level = 0.95)
 
 }
 \arguments{

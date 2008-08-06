@@ -17,9 +17,9 @@
  }
 \usage{
 trafo(object, param)
-\S4method{trafo}{Estimate,missing}(object)
-\S4method{trafo}{ParamFamParameter,missing}(object)
-\S4method{trafo}{ParamFamily,missing}(object)
+\S4method{trafo}{Estimate,missing}(object,param)
+\S4method{trafo}{ParamFamParameter,missing}(object,param)
+\S4method{trafo}{ParamFamily,missing}(object,param)
 \S4method{trafo}{ParamFamily,ParamFamParameter}(object,param)
 trafo(object) <- value
 }

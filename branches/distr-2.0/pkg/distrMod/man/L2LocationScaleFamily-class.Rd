@@ -1,6 +1,7 @@
 \name{L2LocationScaleFamily-class}
 \docType{class}
 \alias{L2LocationScaleFamily-class}
+\alias{modifyModel,L2LocationScaleFamily,ParamFamParameter-method}
 
 \title{L2 differentiable parametric group family}
 \description{Class of L2 differentiable parametric group families.}
@@ -69,7 +70,8 @@ Class \code{"ParamFamily"}, by class \code{"L2ParamFamily"}.\cr
 Class \code{"ProbFamily"}, by class \code{"ParamFamily"}.
 }
 \section{Methods}{
-[kommt noch] no specific methods implemented
+    \item{modifyModel}{\code{signature(model = "L2LocationScaleFamily", param = "ParamFamParameter")}:
+      moves the L2-location and scale family \code{model} to parameter \code{param} }
 }
 \references{
   Rieder, H. (1994) \emph{Robust Asymptotic Statistics}. New York: Springer.
@@ -77,7 +79,8 @@ Class \code{"ProbFamily"}, by class \code{"ParamFamily"}.
   Kohl, M. (2005) \emph{Numerical Contributions to the Asymptotic Theory of Robustness}. 
   Bayreuth: Dissertation.
 }
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
+\author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
+Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}
 \seealso{\code{\link{L2LocationScaleFamily}}, \code{\link{ParamFamily-class}}}
 \examples{
