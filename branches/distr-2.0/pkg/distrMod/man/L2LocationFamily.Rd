@@ -7,9 +7,9 @@
 }
 \usage{
 L2LocationFamily(loc = 0, name, centraldistribution = Norm(),
-                      modParam, LogDeriv,  L2derivDistr.0,
-                 FisherInfo.0, distrSymm, L2derivSymm, L2derivDistrSymm,
-                 trafo, ...)
+                 locname = "loc", modParam, LogDeriv,  
+                 L2derivDistr.0, FisherInfo.0, distrSymm, L2derivSymm, 
+                 L2derivDistrSymm, trafo, ...)
 }
 \arguments{
   \item{loc}{numeric: location parameter of the model. }
@@ -20,6 +20,8 @@ L2LocationFamily(loc = 0, name, centraldistribution = Norm(),
   \item{modParam}{ optional function: mapping from the parameter space 
     (represented by \code{"param"}) to the distribution space 
     (represented by \code{"distribution"}). }
+  \item{locname}{a character vector of length 1 containing the name
+  of the location parameter}
   \item{LogDeriv}{function with argument \code{x}: the negative logarithmic 
     derivative of the density of the central distribution; if missing, it is
     determined numerically using numeric differentiation. }

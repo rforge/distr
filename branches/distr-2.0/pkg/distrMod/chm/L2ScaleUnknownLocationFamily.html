@@ -25,9 +25,9 @@ in the situation where scale is main, location nuisance parameter.
 
 <pre>
 L2ScaleUnknownLocationFamily(loc = 0, scale = 1, name, centraldistribution = Norm(),
-                      modParam, LogDeriv,  L2derivDistr.0,
-                      FisherInfo.0, distrSymm, L2derivSymm, L2derivDistrSymm,
-                      trafo, ...)
+                      locscalename = c("loc", "scale"), modParam, LogDeriv,  
+                      L2derivDistr.0, FisherInfo.0, distrSymm, L2derivSymm, 
+                      L2derivDistrSymm, trafo, ...)
 
 </pre>
 
@@ -54,6 +54,12 @@ is symmetric about <i>0</i></td></tr>
 optional function: mapping from the parameter space 
 (represented by <code>"param"</code>) to the distribution space 
 (represented by <code>"distribution"</code>). </td></tr>
+<tr valign="top"><td><code>locscalename</code></td>
+<td>
+a character vector of length 2 containing the names
+of the location and scale parameter; either unnamed, then order must
+be <code>c(loc,scale)</code>, or named, then names must be <code>"loc"</code> and 
+<code>"scale"</code></td></tr>
 <tr valign="top"><td><code>LogDeriv</code></td>
 <td>
 function with argument <code>x</code>: the negative logarithmic 

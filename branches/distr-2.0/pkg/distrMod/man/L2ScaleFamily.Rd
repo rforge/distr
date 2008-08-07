@@ -7,9 +7,9 @@
 }
 \usage{
 L2ScaleFamily(scale = 1, loc = 0,  name, centraldistribution = Norm(),
-              modParam, LogDeriv,  L2derivDistr.0, FisherInfo.0, distrSymm, 
-              L2derivSymm, L2derivDistrSymm, trafo, ...)
-
+              locscalename = c("loc", "scale"), modParam, LogDeriv,  
+              L2derivDistr.0, FisherInfo.0, distrSymm, L2derivSymm, 
+              L2derivDistrSymm, trafo, ...)
 
 }
 \arguments{
@@ -19,6 +19,11 @@ L2ScaleFamily(scale = 1, loc = 0,  name, centraldistribution = Norm(),
   \item{centraldistribution}{object of class \code{"AbscontDistribution"}:
     central distribution; we assume from the beginning, that centraldistribution
     is symmetric about \eqn{0}  }
+  \item{locscalename}{a character vector of length 1 or 2 containing the names
+  of the scale resp. of location and scale parameter; if length is 2, 
+  \code{locscalename} is either unnamed, then order must
+  be \code{c(scale,loc)}, or named, then names must be \code{"loc"} and 
+  \code{"scale"}.}
   \item{modParam}{ optional function: mapping from the parameter space 
     (represented by \code{"param"}) to the distribution space 
     (represented by \code{"distribution"}). }

@@ -5,6 +5,11 @@
 \alias{OptionalNumericOrMatrix-class}
 \alias{MatrixorFunction-class}
 \alias{ShowDetails-class}
+\alias{L2LocationScaleUnion-class}
+\alias{locscalename}
+\alias{locscalename,L2LocationScaleUnion-method}
+\alias{locscalename<-}
+\alias{locscalename<-,L2LocationScaleUnion-method}
 
 \title{Class unions in 'distrMod'}
 \description{Class unions in package \pkg{distrMod} defined for internal 
@@ -38,6 +43,15 @@ slots of classes to be filled with varying types. In particular
        temporarily sets the global options according to the optional arguments
        \code{digits} and \code{show.details}, calls \code{show} and then re-sets
        the options to their global settings.}
+\item{\code{"L2LocationScaleUnion"}}{is a proper, but virtual in-between class
+      between class \code{"L2GroupParamFamily"} and \code{"L2LocationFamily"}, 
+      \code{"L2ScaleFamily"}, and \code{"L2LocationScaleFamily"};
+      in addition to class \code{"L2GroupParamFamily"} it has a slot
+      \code{locscalename} (with corresponding accessor and replacement method)
+      to capture the fact that location and scale 
+      parameter may carry names other than \code{"loc"} resp. \code{"scale"};
+      used to provide a common class for (parts of) methods \code{modifyModel}
+      \code{locscalename} and \code{locscalename<-}.}
 }
 }
 
@@ -52,6 +66,10 @@ slots of classes to be filled with varying types. In particular
 \code{\link{Estimate-class}},
 \code{\link{Confint-class}},
 \code{\link{PosSemDefSymmMatrix-class}},
+\code{\link{L2GroupParamFamily-class}},
+\code{\link{L2LocationFamily-class}},
+\code{\link{L2ScaleFamily-class}},
+\code{\link{L2LocationScaleFamily-class}},
 \code{\link{ParamFamParameter-class}}
 \code{\link{ParamFamily-class}}
 }

@@ -2,7 +2,7 @@
 ## L2 location family
 ##################################################################
 L2LocationFamily <- function(loc = 0, name, centraldistribution = Norm(),
-                             modParam,
+                             locname = "loc", modParam,
                              LogDeriv, L2derivDistr.0,
                              FisherInfo.0, 
                              distrSymm, L2derivSymm, L2derivDistrSymm,
@@ -11,6 +11,9 @@ L2LocationFamily <- function(loc = 0, name, centraldistribution = Norm(),
     if(missing(name))
        name <- "L2 location family"
 
+    if(!length(locname)==1) stop("argument 'locname' must be of length 1.")
+    names(locname) <- "loc"
+    
     distribution <- centraldistribution + loc
 
     if(missing(distrSymm)){
@@ -71,6 +74,7 @@ L2LocationFamily <- function(loc = 0, name, centraldistribution = Norm(),
 
     L2Fam <- new("L2LocationFamily")
     L2Fam@name <- name
+    L2Fam@locscalename <- locname
     L2Fam@distribution <- distribution
     L2Fam@distrSymm <- distrSymm
     L2Fam@param <- param
@@ -96,7 +100,7 @@ L2LocationFamily <- function(loc = 0, name, centraldistribution = Norm(),
 ## L2 scale family
 ##################################################################
 L2ScaleFamily <- function(scale = 1, loc = 0, name, centraldistribution = Norm(),
-                          modParam,
+                          locscalename = c("loc", "scale"), modParam,
                           LogDeriv, L2derivDistr.0,
                           FisherInfo.0,
                           distrSymm, L2derivSymm, L2derivDistrSymm,
@@ -108,7 +112,15 @@ L2ScaleFamily <- function(scale = 1, loc = 0, name, centraldistribution = Norm()
         stop("scale has to be positive")
     if(missing(name))
        name <- "L2 scale family"
-
+    if((length(locscalename)<1)||(length(locscalename)>2)) 
+        stop("argument 'locscalename' must be of length 1 or 2.")
+    if(length(locscalename)==1){ 
+        locscalename <- c(locscalename, "loc")
+        names(locscalename) <- c("scale", "loc")
+    }else{
+        if(!all(names(locscalename)%in% c("loc","scale")))
+           names(locscalename) <- c("loc", "scale")   
+    }       
     distribution <- scale*centraldistribution + loc
 
     if(missing(distrSymm)){
@@ -176,6 +188,7 @@ L2ScaleFamily <- function(scale = 1, loc = 0, name, centraldistribution = Norm()
 
     L2Fam <- new("L2ScaleFamily")
     L2Fam@name <- name
+    L2Fam@locscalename <- locscalename
     L2Fam@distribution <- distribution
     L2Fam@distrSymm <- distrSymm
     L2Fam@param <- param
@@ -202,7 +215,7 @@ L2ScaleFamily <- function(scale = 1, loc = 0, name, centraldistribution = Norm()
 ##################################################################
 L2LocationScaleFamily <- function(loc = 0, scale = 1, name, 
                              centraldistribution = Norm(),
-                             modParam,
+                             locscalename = c("loc", "scale"), modParam,
                              LogDeriv, L2derivDistr.0,
                              FisherInfo.0, 
                              distrSymm, L2derivSymm, L2derivDistrSymm,
@@ -216,6 +229,11 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
        name <- "L2 location and scale family"
 
     distribution <- scale*centraldistribution+loc
+
+    if(!length(locscalename)==2) 
+        stop("argument 'locscalename' must be of length 2.")
+    if(!all(names(locscalename)%in% c("loc","scale")))
+           names(locscalename) <- c("loc", "scale")   
 
     if(missing(distrSymm)){
         distrSymm <- SphericalSymmetry(SymmCenter = loc)
@@ -306,6 +324,7 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
 
     L2Fam <- new("L2LocationScaleFamily")
     L2Fam@name <- name
+    L2Fam@locscalename <- locscalename
     L2Fam@distribution <- distribution
     L2Fam@distrSymm <- distrSymm
     L2Fam@param <- param
@@ -331,7 +350,7 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
 ##################################################################
 L2LocationUnknownScaleFamily <- function(loc = 0, scale = 1, name, 
                              centraldistribution = Norm(),
-                             modParam,
+                             locscalename = c("loc", "scale"), modParam,
                              LogDeriv, L2derivDistr.0,
                              FisherInfo.0, 
                              distrSymm, L2derivSymm, L2derivDistrSymm,
@@ -343,6 +362,11 @@ L2LocationUnknownScaleFamily <- function(loc = 0, scale = 1, name,
         stop("scale has to be positive")
     if(missing(name))
        name <- "L2 location with unknown scale (as nuisance) family"
+
+    if(!length(locscalename)==2) 
+        stop("argument 'locscalename' must be of length 2.")
+    if(!all(names(locscalename)%in% c("loc","scale")))
+           names(locscalename) <- c("loc", "scale")   
 
     distribution <- scale*centraldistribution+loc
 
@@ -434,6 +458,7 @@ L2LocationUnknownScaleFamily <- function(loc = 0, scale = 1, name,
 
     L2Fam <- new("L2LocationScaleFamily")
     L2Fam@name <- name
+    L2Fam@locscalename <- locscalename
     L2Fam@distribution <- distribution
     L2Fam@distrSymm <- distrSymm
     L2Fam@param <- param
@@ -459,7 +484,7 @@ L2LocationUnknownScaleFamily <- function(loc = 0, scale = 1, name,
 ##################################################################
 L2ScaleUnknownLocationFamily <- function(loc = 0, scale = 1, name, 
                              centraldistribution = Norm(),
-                             modParam,
+                             locscalename = c("loc", "scale"), modParam,
                              LogDeriv, L2derivDistr.0,
                              FisherInfo.0, 
                              distrSymm, L2derivSymm, L2derivDistrSymm,
@@ -471,6 +496,11 @@ L2ScaleUnknownLocationFamily <- function(loc = 0, scale = 1, name,
         stop("scale has to be positive")
     if(missing(name))
        name <- "L2 scale with unknown location (as nuisance) family"
+
+    if(!length(locscalename)==2) 
+        stop("argument 'locscalename' must be of length 2.")
+    if(!all(names(locscalename)%in% c("loc","scale")))
+           names(locscalename) <- c("loc", "scale")   
 
     distribution <- scale*centraldistribution+loc
 
@@ -562,6 +592,7 @@ L2ScaleUnknownLocationFamily <- function(loc = 0, scale = 1, name,
 
     L2Fam <- new("L2LocationScaleFamily")
     L2Fam@name <- name
+    L2Fam@locscalename <- locscalename
     L2Fam@distribution <- distribution
     L2Fam@distrSymm <- distrSymm
     L2Fam@param <- param

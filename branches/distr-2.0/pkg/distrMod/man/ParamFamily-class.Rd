@@ -24,34 +24,42 @@
   \code{ParamFamily}. 
 }
 \section{Slots}{
-  \describe{
-    \item{\code{param}:}{Object of class \code{"ParamFamParameter"}:
+   \describe{
+   \item{\code{name}:}{[inherited from class \code{"ProbFamily"}] 
+      object of class \code{"character"}: 
+      name of the family. }
+    \item{\code{distribution}:}{[inherited from class \code{"ProbFamily"}] 
+      object of class \code{"Distribution"}:
+      member of the family. }
+    \item{\code{distrSymm}:}{[inherited from class \code{"ProbFamily"}] 
+      object of class \code{"DistributionSymmetry"}: 
+      symmetry of \code{distribution}. }
+    \item{\code{param}:}{
+      object of class \code{"ParamFamParameter"}:
       parameter of the family. }
-    \item{\code{modifyParam}:}{Object of class \code{"function"}:
-      mapping from the parameter space (represented by \code{"param"}) 
-      to the distribution space (represented by \code{"distribution"}). }
-    \item{\code{fam.call}:}{Object of class \code{"call"}:
+    \item{\code{fam.call}:}{
+      object of class \code{"call"}:
       call by which parametric family was produced.}
-    \item{\code{startPar}:}{Object of class \code{"function"}:
-           has argument \code{x} --- the data, 
-           returns starting parameter for \code{optim} resp. \code{optimize}---
-           a starting estimator in case parameter is multivariate
-           or a search interval in case parameter is univariate.}
-    \item{\code{makeOKPar}:}{Object of class \code{"function"}:
+    \item{\code{makeOKPar}:}{
+           object of class \code{"function"}:
            has argument \code{param} --- the (total) parameter, 
            returns valid parameter; used if \code{optim} resp. \code{optimize}---
            try to use ``illegal'' parameter values; then \code{makeOKPar} makes
            a valid parameter value out of the illegal one.}
-    \item{\code{name}:}{Object of class \code{"character"}:
-      name of the family. }
-    \item{\code{distribution}:}{Object of class \code{"Distribution"}:
-      member of the family.}
-    \item{\code{distrSymm}:}{Object of class \code{"DistributionSymmetry"}: 
-      symmetry of \code{distribution}. }
-    \item{\code{props}:}{Object of class \code{"character"}:
+    \item{\code{startPar}:}{
+           object of class \code{"function"}:
+           has argument \code{x} --- the data, 
+           returns starting parameter for \code{optim} resp. \code{optimize}---
+           a starting estimator in case parameter is multivariate
+           or a search interval in case parameter is univariate.}
+    \item{\code{modifyParam}:}{
+      object of class \code{"function"}:
+      mapping from the parameter space (represented by \code{"param"}) 
+      to the distribution space (represented by \code{"distribution"}). }
+    \item{\code{props}:}{[inherited from class \code{"ProbFamily"}]
+      object of class \code{"character"}:
       properties of the family. }
-  }
-}
+}}
 \section{Extends}{
 Class \code{"ProbFamily"}, directly.
 }

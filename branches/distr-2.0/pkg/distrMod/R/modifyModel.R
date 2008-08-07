@@ -79,7 +79,7 @@ setMethod("modifyModel", signature(model = "L2LocationFamily",
              cl.l <- length(cl)
              cl.n <- names(cl)
              fn <- paste(cl[1])
-             loc.name <- if("loc" %in% names(formals(fn))) "loc" else "mean"
+             loc.name <- locscalename(model)["loc"]
 
              if(loc.name %in% cl.n){
                 cl[loc.name] <- loc
@@ -103,8 +103,8 @@ setMethod("modifyModel", signature(model = "L2ScaleFamily",
              M@L2derivSymm <- FunSymmList(EvenSymmetric(SymmCenter = loc))
 
              fn <- paste(cl[1])
-             loc.name <- if("loc" %in% names(formals(fn))) "loc" else "mean"
-             scale.name <- if("scale" %in% names(formals(fn))) "scale" else "sd"
+             loc.name <- locscalename(model)["loc"]
+             scale.name <- locscalename(model)["scale"]
              cl.l <- length(cl)
              cl.n <- names(cl)
              if(loc.name %in% cl.n){
@@ -142,8 +142,8 @@ setMethod("modifyModel", signature(model = "L2LocationScaleFamily",
                                                  NoSymmetry())
 
              fn <- paste(cl[1])
-             loc.name <- if("loc" %in% names(formals(fn))) "loc" else "mean"
-             scale.name <- if("scale" %in% names(formals(fn))) "scale" else "sd"
+             loc.name <- locscalename(model)["loc"]
+             scale.name <- locscalename(model)["scale"]
 
              cl.l <- length(cl)
              cl.n <- names(cl)

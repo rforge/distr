@@ -230,4 +230,16 @@ if(!isGeneric("startPar")){
 }
 if(!isGeneric("makeOKPar")){
     setGeneric("makeOKPar", function(object, ...) standardGeneric("makeOKPar"))
+}              
+if(!isGeneric("locscalename")){
+    setGeneric("locscalename", function(object) standardGeneric("locscalename"))
+}
+if(!isGeneric("locscalename<-")){
+    setGeneric("locscalename<-", function(object, value) standardGeneric("locscalename<-"))
+}
+if(!isGeneric("LogDeriv")){
+    setGeneric("LogDeriv", function(object) standardGeneric("LogDeriv"))
+}
+if(!isGeneric("LogDeriv<-")){
+    setGeneric("LogDeriv<-", function(object, value) standardGeneric("LogDeriv<-"))
 }

@@ -24,8 +24,9 @@ Generates an object of class <code>"L2ScaleFamily"</code>.
 
 <pre>
 L2ScaleFamily(scale = 1, loc = 0,  name, centraldistribution = Norm(),
-              modParam, LogDeriv,  L2derivDistr.0, FisherInfo.0, distrSymm, 
-              L2derivSymm, L2derivDistrSymm, trafo, ...)
+              locscalename = c("loc", "scale"), modParam, LogDeriv,  
+              L2derivDistr.0, FisherInfo.0, distrSymm, L2derivSymm, 
+              L2derivDistrSymm, trafo, ...)
 
 </pre>
 
@@ -47,6 +48,13 @@ character: name of the parametric family. </td></tr>
 object of class <code>"AbscontDistribution"</code>:
 central distribution; we assume from the beginning, that centraldistribution
 is symmetric about <i>0</i>  </td></tr>
+<tr valign="top"><td><code>locscalename</code></td>
+<td>
+a character vector of length 1 or 2 containing the names
+of the scale resp. of location and scale parameter; if length is 2, 
+<code>locscalename</code> is either unnamed, then order must
+be <code>c(scale,loc)</code>, or named, then names must be <code>"loc"</code> and 
+<code>"scale"</code>.</td></tr>
 <tr valign="top"><td><code>modParam</code></td>
 <td>
 optional function: mapping from the parameter space 

@@ -448,6 +448,7 @@ NormLocationFamily <- function(mean = 0, sd = 1, trafo){
     body(modParam) <- substitute({ Norm(mean = theta, sd = scale) },
                                  list(scale = sd))
     res <- L2LocationFamily(loc = mean, name = "normal location family",
+                     locname = c("loc"="mean"),
                      centraldistribution = Norm(mean = 0, sd = sd),
                      modParam = modParam,
                      LogDeriv = function(x) x/sd^2,
@@ -471,6 +472,7 @@ NormScaleFamily <- function(sd = 1, mean = 0, trafo){
     body(modParam) <- substitute({ Norm(mean = loc, sd = theta) },
                                  list(loc = mean))
     res <- L2ScaleFamily(loc = mean, scale = sd, name = "normal scale family",
+                  locscalename = c("loc"="mean", "scale"="sd"), 
                   modParam = modParam, 
                   L2derivDistr.0 = (Chisq(df = 1, ncp = 0)-1)/sd,
                   distrSymm = SphericalSymmetry(SymmCenter = mean),
@@ -493,6 +495,7 @@ NormLocationScaleFamily <- function(mean = 0, sd = 1, trafo){
                                                 c("loc","scale"))}
     res <- L2LocationScaleFamily(loc = mean, scale = sd, 
               name = "normal location and scale family", 
+              locscalename = c("loc"="mean", "scale"="sd"), 
               modParam = function(theta) Norm(mean = theta[1], sd = theta[2]),
               L2derivDistr.0 = list( Norm(mean = 0, sd=1/sd), 
                                     (Chisq(df = 1, ncp = 0)-1)/sd),
@@ -521,6 +524,7 @@ ExpScaleFamily <- function(rate = 1, trafo){
     if(missing(trafo)) trafo <- matrix(1, dimnames = list("scale","scale"))
     res <- L2ScaleFamily(loc = 0, scale = 1/rate, name = "Exponential scale family", 
                   centraldistribution = Exp(rate = 1),
+                  locscalename = c("loc"="", "scale"="scale"), 
                   modParam = function(theta) Exp(rate = 1/theta),
                   LogDeriv = function(x) 1,
                   L2derivDistr.0 = (Exp(rate = 1)-1)*rate,
@@ -545,6 +549,7 @@ LnormScaleFamily <- function(meanlog = 0, sdlog = 1, trafo){
                                  list(sd1 = sdlog))
     res <- L2ScaleFamily(loc = 0, scale = exp(meanlog),  
                   name = "lognormal scale family", 
+                  locscalename = c("loc"="meanlog", "scale"="sdlog"), 
                   centraldistribution = Lnorm(meanlog = 0, sdlog = sdlog),
                   modParam = modParam,
                   LogDeriv = function(x) log(x)/x/sdlog^2 + 1/x,
@@ -629,6 +634,7 @@ NormLocationUnknownScaleFamily <- function(mean = 0, sd = 1, trafo){
                                                 c("loc"))}
     res <- L2LocationUnknownScaleFamily(loc = mean, scale = sd, 
                      name = "normal location family with unknown scale (as nuisance)",
+                     locscalename = c("loc"="mean", "scale"="sd"), 
                      modParam = function(theta) Norm(mean = theta[1], sd = theta[2]),
                      L2derivDistr.0 = list( Norm(mean = 0, sd=1/sd), 
                                     (Chisq(df = 1, ncp = 0)-1)/sd),
@@ -655,6 +661,7 @@ NormScaleUnknownLocationFamily <- function(sd = 1, mean = 0, trafo){
                                                 c("scale"))}
     res <- L2ScaleUnknownLocationFamily(loc = mean, scale = sd, 
                   name = "normal scale family with unknown location (as nuisance)", 
+                  locscalename = c("loc"="mean", "scale"="sd"), 
                   modParam = function(theta) Norm(mean = theta[2], sd = theta[1]),
                   L2derivDistr.0 = list( Norm(mean = 0, sd=1/sd), 
                                        (Chisq(df = 1, ncp = 0)-1)/sd),

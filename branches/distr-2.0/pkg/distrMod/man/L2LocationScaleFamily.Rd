@@ -7,9 +7,9 @@
 }
 \usage{
 L2LocationScaleFamily(loc = 0, scale = 1, name, centraldistribution = Norm(),
-                      modParam, LogDeriv,  L2derivDistr.0,
-                      FisherInfo.0, distrSymm, L2derivSymm, L2derivDistrSymm,
-                      trafo, ...)
+                      locscalename = c("loc", "scale"), modParam, LogDeriv,  
+                      L2derivDistr.0, FisherInfo.0, distrSymm, L2derivSymm, 
+                      L2derivDistrSymm, trafo, ...)
 
 }
 \arguments{
@@ -22,6 +22,10 @@ L2LocationScaleFamily(loc = 0, scale = 1, name, centraldistribution = Norm(),
   \item{modParam}{ optional function: mapping from the parameter space 
     (represented by \code{"param"}) to the distribution space 
     (represented by \code{"distribution"}). }
+  \item{locscalename}{a character vector of length 2 containing the names
+  of the location and scale parameter; either unnamed, then order must
+  be \code{c(loc,scale)}, or named, then names must be \code{"loc"} and 
+  \code{"scale"}}
   \item{LogDeriv}{function with argument \code{x}: the negative logarithmic 
     derivative of the density of the central distribution; if missing, it is
     determined numerically using numeric differentiation. }

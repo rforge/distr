@@ -24,9 +24,9 @@ Generates an object of class <code>"L2LocationFamily"</code>.
 
 <pre>
 L2LocationFamily(loc = 0, name, centraldistribution = Norm(),
-                      modParam, LogDeriv,  L2derivDistr.0,
-                 FisherInfo.0, distrSymm, L2derivSymm, L2derivDistrSymm,
-                 trafo, ...)
+                 locname = "loc", modParam, LogDeriv,  
+                 L2derivDistr.0, FisherInfo.0, distrSymm, L2derivSymm, 
+                 L2derivDistrSymm, trafo, ...)
 </pre>
 
 
@@ -49,6 +49,10 @@ is symmetric about its median.</td></tr>
 optional function: mapping from the parameter space 
 (represented by <code>"param"</code>) to the distribution space 
 (represented by <code>"distribution"</code>). </td></tr>
+<tr valign="top"><td><code>locname</code></td>
+<td>
+a character vector of length 1 containing the name
+of the location parameter</td></tr>
 <tr valign="top"><td><code>LogDeriv</code></td>
 <td>
 function with argument <code>x</code>: the negative logarithmic 

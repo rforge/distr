@@ -47,9 +47,12 @@ FisherInfo.fct(function)
 |>|>|>"L2GroupParamFamily"
 additional slots:
 LogDeriv(function)
-|>|>|>|>"L2LocationFamily"
-|>|>|>|>"L2ScaleFamily"
-|>|>|>|>"L2LocationScaleFamily"
+|>|>|>|>"L2LocationScaleUnion"  /VIRTUAL/
+additional slots:
+locscalename(character)
+|>|>|>|>|>"L2LocationFamily"
+|>|>|>|>|>"L2ScaleFamily"
+|>|>|>|>|>"L2LocationScaleFamily"
 
 ##########################
 ParamFamParameter
@@ -67,6 +70,8 @@ Class unions
 "PrintDetails" = union("Estimate", "Confint", 
                    "PosSemDefSymmMatrix",
                    "ParamFamParameter", "ParamFamily")
+
+
 
 ##########################
 Symmetry classes

@@ -266,20 +266,30 @@ setClass("L2GroupParamFamily",
                       Logderiv = function(x)x),
             contains = "L2ParamFamily")
 
+## virtual in-between class for common parts in modifyModel - method
+setClass("L2LocationScaleUnion",
+            representation(locscalename = "character"),
+         contains = c("L2GroupParamFamily","VIRTUAL")
+        )
+
+
 ## L2-differentiable (univariate) location family
 setClass("L2LocationFamily",
-            prototype = prototype(fam.call = call("new", "L2LocationFamily")),
-            contains = "L2GroupParamFamily")
+            prototype = prototype(locscalename = c("loc"="loc"),
+                                  fam.call = call("new", "L2LocationFamily")),
+            contains = "L2LocationScaleUnion")
 
 ## L2-differentiable (univariate) location scale family
 setClass("L2ScaleFamily",
-            prototype = prototype(fam.call = call("new", "L2ScaleFamily")),
-            contains = "L2GroupParamFamily")
+            prototype = prototype(locscalename = c("loc"="loc","scale"="scale"),
+                                  fam.call = call("new", "L2ScaleFamily")),
+            contains = "L2LocationScaleUnion")
 
 ## L2-differentiable (univariate) location and scale family
 setClass("L2LocationScaleFamily",
-            prototype = prototype(fam.call = call("new", "L2LocationScaleFamily")),
-            contains = "L2GroupParamFamily")
+            prototype = prototype(locscalename = c("loc"="loc","scale"="scale"),
+                                  fam.call = call("new", "L2LocationScaleFamily")),
+            contains = "L2LocationScaleUnion")
 
 ################################################################################
 ## Norm Classes

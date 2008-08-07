@@ -10,6 +10,11 @@
 <param name="keyword" value="R:   OptionalNumericOrMatrix-class">
 <param name="keyword" value="R:   MatrixorFunction-class">
 <param name="keyword" value="R:   ShowDetails-class">
+<param name="keyword" value="R:   L2LocationScaleUnion-class">
+<param name="keyword" value="R:   locscalename">
+<param name="keyword" value="R:   locscalename,L2LocationScaleUnion-method">
+<param name="keyword" value="R:   locscalename<-">
+<param name="keyword" value="R:   locscalename<-,L2LocationScaleUnion-method">
 <param name="keyword" value=" Class unions in 'distrMod'">
 </object>
 
@@ -53,6 +58,15 @@ sort of a ``<code>show</code> with extra arguments'', in form of a common
 temporarily sets the global options according to the optional arguments
 <code>digits</code> and <code>show.details</code>, calls <code>show</code> and then re-sets
 the options to their global settings.</dd>
+<dt><code>"L2LocationScaleUnion"</code></dt><dd>is a proper, but virtual in-between class
+between class <code>"L2GroupParamFamily"</code> and <code>"L2LocationFamily"</code>, 
+<code>"L2ScaleFamily"</code>, and <code>"L2LocationScaleFamily"</code>;
+in addition to class <code>"L2GroupParamFamily"</code> it has a slot
+<code>locscalename</code> (with corresponding accessor and replacement method)
+to capture the fact that location and scale 
+parameter may carry names other than <code>"loc"</code> resp. <code>"scale"</code>;
+used to provide a common class for (parts of) methods <code>modifyModel</code>
+<code>locscalename</code> and <code>locscalename&lt;-</code>.</dd>
 </ul>
 
 <h3>Objects from the Class</h3>
@@ -80,6 +94,10 @@ Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ru
 <code><a href="Estimate-class.html">Estimate-class</a></code>,
 <code><a href="Confint-class.html">Confint-class</a></code>,
 <code><a href="PosDefSymmMatrix-class.html">PosSemDefSymmMatrix-class</a></code>,
+<code><a href="L2GroupFamily-class.html">L2GroupParamFamily-class</a></code>,
+<code><a href="L2LocationFamily-class.html">L2LocationFamily-class</a></code>,
+<code><a href="L2ScaleFamily-class.html">L2ScaleFamily-class</a></code>,
+<code><a href="L2LocationScaleFamily-class.html">L2LocationScaleFamily-class</a></code>,
 <code><a href="ParamFamParameter-class.html">ParamFamParameter-class</a></code>
 <code><a href="ParamFamily-class.html">ParamFamily-class</a></code>
 </p>
