@@ -9,7 +9,7 @@
 L2ScaleFamily(scale = 1, loc = 0,  name, centraldistribution = Norm(),
               locscalename = c("loc", "scale"), modParam, LogDeriv,  
               L2derivDistr.0, FisherInfo.0, distrSymm, L2derivSymm, 
-              L2derivDistrSymm, trafo, ...)
+              L2derivDistrSymm, trafo)
 
 }
 \arguments{
@@ -40,8 +40,7 @@ L2ScaleFamily(scale = 1, loc = 0,  name, centraldistribution = Norm(),
     symmetry of the maps contained in \code{L2deriv} }
   \item{L2derivDistrSymm}{ object of class \code{"DistrSymmList"}: 
     symmetry of the distributions contained in \code{L2derivDistr} }
-  \item{trafo}{ matrix or  function in \code{param}: transformation of the parameter }
-  \item{...}{further arguments to be passed to \code{E}}
+  \item{trafo}{ matrix or function in \code{param}: transformation of the parameter }
 }
 \details{
   If \code{name} is missing, the default 

@@ -2,7 +2,6 @@
 ## Binomial family
 ##################################################################
 BinomFamily <- function(size = 1, prob = 0.5, trafo){ 
-    f.call <- match.call()
     name <- "Binomial family"
     distribution <- Binom(size = size, prob = prob)
     if(distr:::.isEqual(prob,0.5))
@@ -47,6 +46,9 @@ BinomFamily <- function(size = 1, prob = 0.5, trafo){
         L2derivDistr = L2derivDistr, L2derivDistrSymm = L2derivDistrSymm,
         FisherInfo.fct = FisherInfo.fct, FisherInfo = FisherInfo,
         startPar = startPar, makeOKPar = makeOKPar)
+    f.call <- substitute(BinomFamily(size = s, prob = p, 
+                         trafo = matrix(Tr, dimnames = list("prob","prob"))),
+                         list(s = size, p = prob, Tr = trafo))
     res@fam.call <- f.call
     return(res)
 }
@@ -55,7 +57,6 @@ BinomFamily <- function(size = 1, prob = 0.5, trafo){
 ## Poisson family
 ##################################################################
 PoisFamily <- function(lambda = 1, trafo){ 
-    f.call <- match.call()
     name <- "Poisson family"
     distribution <- Pois(lambda = lambda)
     distrSymm <- NoSymmetry()
@@ -90,6 +91,9 @@ PoisFamily <- function(lambda = 1, trafo){
         L2derivDistr = L2derivDistr, L2derivDistrSymm = L2derivDistrSymm,
         FisherInfo.fct = FisherInfo.fct, FisherInfo = FisherInfo,
         startPar = startPar, makeOKPar = makeOKPar)
+    f.call <- substitute(PoisFamily(lambda = l, 
+                                    trafo = matrix(Tr, dimnames = list("lambda","lambda"))),
+                         list(l = lambda, Tr = trafo))
     res@fam.call <- f.call
     return(res)
 }
@@ -98,7 +102,6 @@ PoisFamily <- function(lambda = 1, trafo){
 ## Gamma family
 ##################################################################
 GammaFamily <- function(scale = 1, shape = 1, trafo){ 
-    f.call <- match.call()
     name <- "Gamma family"
     distribution <- Gammad(scale = scale, shape = shape)
     distrSymm <- NoSymmetry()
@@ -150,6 +153,10 @@ GammaFamily <- function(scale = 1, shape = 1, trafo){
         L2derivDistr = L2derivDistr, L2derivDistrSymm = L2derivDistrSymm,
         FisherInfo.fct = FisherInfo.fct, FisherInfo = FisherInfo,
         startPar = startPar, makeOKPar = makeOKPar)
+    f.call <- substitute(GammFamily(scale = s1, shape = s2, 
+                                    trafo = matrix(Tr, ncol = 2, dimnames = DN)),
+                         list(s1 = scale, s2 = shape, Tr = trafo,
+                              DN = dimnames(trafo)))
     res@fam.call <- f.call
     return(res)
 }
@@ -158,7 +165,6 @@ GammaFamily <- function(scale = 1, shape = 1, trafo){
 ## Beta family   :: new  08/08 P.R.
 ##################################################################
 BetaFamily <- function(shape1 = 1, shape2 = 1, trafo){ 
-    f.call <- match.call()
     name <- "Beta family"
     distribution <- Beta(shape1=shape1, shape2 = shape2)
     distrSymm <- NoSymmetry()
@@ -212,6 +218,10 @@ BetaFamily <- function(shape1 = 1, shape2 = 1, trafo){
         L2derivDistr = L2derivDistr, L2derivDistrSymm = L2derivDistrSymm,
         FisherInfo.fct = FisherInfo.fct, FisherInfo = FisherInfo,
         startPar = startPar, makeOKPar = makeOKPar)
+    f.call <- substitute(BetaFamily(shape1 = s1, shape2 = s2, 
+                                    trafo = matrix(Tr, ncol = 2, dimnames = DN)),
+                         list(s1 = shape1, s2 = shape2, Tr = trafo, 
+                              DN = dimnames(trafo)))
     res@fam.call <- f.call
     return(res)
 }
@@ -442,7 +452,6 @@ BetaFamily <- function(shape1 = 1, shape2 = 1, trafo){
 ## Normal location family
 ##################################################################
 NormLocationFamily <- function(mean = 0, sd = 1, trafo){ 
-    f.call <- match.call()
     if(missing(trafo)) trafo <- matrix(1, dimnames=list("loc","loc"))
     modParam <- function(theta){}
     body(modParam) <- substitute({ Norm(mean = theta, sd = scale) },
@@ -458,6 +467,9 @@ NormLocationFamily <- function(mean = 0, sd = 1, trafo){
                      L2derivDistrSymm = DistrSymmList(SphericalSymmetry()),
                      FisherInfo.0 = matrix(1/sd^2, dimnames = list("loc","loc")),
                      trafo = trafo)
+    f.call <- substitute(NormLocationFamily(mean = m, sd = s, 
+                                            trafo = matrix(Tr, dimnames=list("loc","loc"))),
+                         list(m = mean, s = sd, Tr = trafo))
     res@fam.call <- f.call
     return(res)
 }
@@ -466,7 +478,6 @@ NormLocationFamily <- function(mean = 0, sd = 1, trafo){
 ## Normal scale family
 ##################################################################
 NormScaleFamily <- function(sd = 1, mean = 0, trafo){ 
-    f.call <- match.call()
     if(missing(trafo)) trafo <- matrix(1, dimnames=list("scale","scale"))
     modParam <- function(theta){}
     body(modParam) <- substitute({ Norm(mean = loc, sd = theta) },
@@ -477,10 +488,13 @@ NormScaleFamily <- function(sd = 1, mean = 0, trafo){
                   L2derivDistr.0 = (Chisq(df = 1, ncp = 0)-1)/sd,
                   distrSymm = SphericalSymmetry(SymmCenter = mean),
                   L2derivSymm = FunSymmList(EvenSymmetric(SymmCenter = mean)),
-                  L2derivDistrSymm = DistrSymmList(NoSymmetry()),                  
+                  L2derivDistrSymm = DistrSymmList(NoSymmetry()),
                   FisherInfo.0 = matrix(2, dimnames = list(c("scale"),
                                                            c("scale"))),
                   trafo = trafo)
+    f.call <- substitute(NormScaleFamily(sd = s, mean = m, 
+                                         trafo = matrix(Tr, dimnames=list("scale","scale"))),
+                         list(s = sd, m = mean, trafo))
     res@fam.call <- f.call
     return(res)
 }
@@ -489,7 +503,6 @@ NormScaleFamily <- function(sd = 1, mean = 0, trafo){
 ## Normal location and scale family
 ##################################################################
 NormLocationScaleFamily <- function(mean = 0, sd = 1, trafo){ 
-    f.call <- match.call()
     if(missing(trafo)) {trafo <- diag(2) 
                         dimnames(trafo) <- list(c("loc","scale"),
                                                 c("loc","scale"))}
@@ -508,6 +521,9 @@ NormLocationScaleFamily <- function(mean = 0, sd = 1, trafo){
               L2derivDistrSymm = DistrSymmList(SphericalSymmetry(), 
                                                NoSymmetry()),
               trafo = trafo)
+    f.call <- substitute(NormLocationScaleFamily(mean = m, sd = s, 
+                                                 trafo = matrix(Tr, ncol = 2, dimnames = DN)),
+                         list(m = mean, s = sd, Tr = trafo, DN = dimnames(trafo)))
     res@fam.call <- f.call
     return(res)
 }
@@ -520,7 +536,6 @@ NormLocationScaleFamily <- function(mean = 0, sd = 1, trafo){
 ## Exponential scale family
 ##################################################################
 ExpScaleFamily <- function(rate = 1, trafo){ 
-    f.call <- match.call()
     if(missing(trafo)) trafo <- matrix(1, dimnames = list("scale","scale"))
     res <- L2ScaleFamily(loc = 0, scale = 1/rate, name = "Exponential scale family", 
                   centraldistribution = Exp(rate = 1),
@@ -533,6 +548,9 @@ ExpScaleFamily <- function(rate = 1, trafo){
                   L2derivSymm = FunSymmList(EvenSymmetric(SymmCenter = 1/rate)), 
                   L2derivDistrSymm = DistrSymmList(NoSymmetry()),
                   trafo = trafo)
+    f.call <- substitute(ExpScaleFamily(rate = r, 
+                                        trafo = matrix(Tr, dimnames = list("scale","scale"))),
+                         list(r = rate, Tr = trafo))
     res@fam.call <- f.call
     return(res)
 }
@@ -542,7 +560,6 @@ ExpScaleFamily <- function(rate = 1, trafo){
 ## Lognormal scale family
 ##################################################################
 LnormScaleFamily <- function(meanlog = 0, sdlog = 1, trafo){ 
-    f.call <- match.call()
     if(missing(trafo)) trafo <- matrix(1, dimnames = list("scale","scale"))
     modParam <- function(theta){}
     body(modParam) <- substitute({ Lnorm(meanlog = log(theta), sdlog = sd1) },
@@ -560,6 +577,9 @@ LnormScaleFamily <- function(meanlog = 0, sdlog = 1, trafo){
                   L2derivSymm = FunSymmList(NonSymmetric()), 
                   L2derivDistrSymm = DistrSymmList(SphericalSymmetry(SymmCenter = 0)),
                   trafo = trafo)
+    f.call <- substitute(LnormScaleFamily(meanlog = m, sdlog = s, 
+                                          trafo = matrix(Tr, dimnames = list("scale","scale"))),
+                         list(m = meanlog, s = sdlog, Tr = trafo))
     res@fam.call <- f.call
     return(res)
 }
@@ -569,12 +589,11 @@ LnormScaleFamily <- function(meanlog = 0, sdlog = 1, trafo){
 ## Gumbel location family
 ##################################################################
 GumbelLocationFamily <- function(loc = 0, scale = 1, trafo){ 
-    f.call <- match.call()
     if(missing(trafo)) trafo <- matrix(1, dimnames = list("loc","loc"))
     modParam <- function(theta){}
     body(modParam) <- substitute({ Gumbel(loc = theta, scale = sd) },
                                  list(sd = scale))
-    res <- L2LocationFamily(loc = loc, scale = scale, 
+    res <- L2LocationFamily(loc = loc, 
                      name = "Gumbel location family", 
                      centraldistribution = Gumbel(loc = 0, scale = scale),
                      modParam = modParam,
@@ -586,6 +605,9 @@ GumbelLocationFamily <- function(loc = 0, scale = 1, trafo){
                      L2derivSymm = FunSymmList(NonSymmetric()), 
                      L2derivDistrSymm = DistrSymmList(NoSymmetry()),
                      trafo = trafo)
+    f.call <- substitute(GumbelLocationFamily(loc = l, scale = s, 
+                                              trafo = matrix(Tr, dimnames = list("loc","loc"))),
+                         list(l = loc, s = scale, Tr = trafo))
     res@fam.call <- f.call
     return(res)
 }
@@ -595,14 +617,14 @@ GumbelLocationFamily <- function(loc = 0, scale = 1, trafo){
 ## Cauchy location scale family
 ##################################################################
 CauchyLocationScaleFamily <- function(loc = 0, scale = 1, trafo){ 
-    f.call <- match.call()
     if(missing(trafo)) {trafo <- diag(2) 
                         dimnames(trafo) <- list(c("loc","scale"),
                                                 c("loc","scale"))}
     res <- L2LocationScaleFamily(loc = loc, scale = scale, 
                   name = "Cauchy Location and scale family", 
                   centraldistribution = Cauchy(),
-                  LogDeriv = function(x)  2*x/(x^2+1),  
+                  LogDeriv = function(x)  2*x/(x^2+1),
+                  L2derivDistr.0 = UnivarDistrList(Arcsine(),Arcsine()),
                   distrSymm = SphericalSymmetry(SymmCenter = loc),
                   L2derivSymm = FunSymmList(OddSymmetric(SymmCenter = loc), 
                                             EvenSymmetric(SymmCenter = loc)),
@@ -612,7 +634,10 @@ CauchyLocationScaleFamily <- function(loc = 0, scale = 1, trafo){
                                            dimnames = list(c("loc","scale"),
                                                            c("loc","scale"))),
                   trafo = trafo)
-    res@L2derivDistr <- UnivarDistrList(Arcsine(),Arcsine())
+#    res@L2derivDistr <- UnivarDistrList(Arcsine(),Arcsine())
+    f.call <- substitute(CauchyLocationScaleFamily(loc = l, scale = s, 
+                                                   trafo = matrix(Tr, ncol = 2, dimnames = DN)),
+                         list(l = loc, s = scale, Tr = trafo, DN = dimnames(trafo)))
     res@fam.call <- f.call
     return(res)
 }
@@ -628,7 +653,6 @@ CauchyLocationScaleFamily <- function(loc = 0, scale = 1, trafo){
 ## Normal location family  with unknown scale
 ##################################################################
 NormLocationUnknownScaleFamily <- function(mean = 0, sd = 1, trafo){ 
-    f.call <- match.call()
     if(missing(trafo)) {trafo <- diag(1) 
                         dimnames(trafo) <- list(c("loc"),
                                                 c("loc"))}
@@ -647,6 +671,9 @@ NormLocationUnknownScaleFamily <- function(mean = 0, sd = 1, trafo){
                      L2derivDistrSymm = DistrSymmList(SphericalSymmetry(), 
                                                       NoSymmetry()),
                      trafo = trafo)
+    f.call <- substitute(NormLocationUnknownScaleFamily(mean = m, sd = s, 
+                                                        trafo = matrix(Tr, dimnames = list("loc","loc"))),
+                         list(m = mean, s = sd, Tr = trafo))
     res@fam.call <- f.call
     return(res)
 }
@@ -655,7 +682,6 @@ NormLocationUnknownScaleFamily <- function(mean = 0, sd = 1, trafo){
 ## Normal scale family  with unknown location
 ##################################################################
 NormScaleUnknownLocationFamily <- function(sd = 1, mean = 0, trafo){ 
-    f.call <- match.call()
     if(missing(trafo)) {trafo <- diag(1) 
                         dimnames(trafo) <- list(c("scale"),
                                                 c("scale"))}
@@ -674,6 +700,9 @@ NormScaleUnknownLocationFamily <- function(sd = 1, mean = 0, trafo){
                   L2derivDistrSymm = DistrSymmList(SphericalSymmetry(), 
                                                    NoSymmetry()),
                   trafo = trafo)
+    f.call <- substitute(NormScaleUnknownLocationFamily(sd = s, mean = m, 
+                                                        trafo = matrix(Tr, dimnames = list("scale", "scale"))),
+                         list(s = sd, m = mean, Tr = trafo))
     res@fam.call <- f.call
     return(res)
 }

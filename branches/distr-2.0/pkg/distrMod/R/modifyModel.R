@@ -1,68 +1,74 @@
 ### move model from one parameter to the next...
 setMethod("modifyModel", signature(model = "L2ParamFamily", param = "ParamFamParameter"),
           function(model, param, .withCall = TRUE, ...){
-          M <- model
-          theta <- c(main(param),nuisance(param))
-          M@distribution <- model@modifyParam(theta)
-          M@param <- param
-          fct <- M@L2deriv.fct(param)
-          M@L2deriv <- if(!is.list(fct))
-              EuclRandVarList(RealRandVariable(list(fct), Domain = Reals())) else
-              EuclRandVarList(RealRandVariable(fct, Domain = Reals()))
-          M@FisherInfo <- M@FisherInfo.fct(param)
-          M@distrSymm <- NoSymmetry()
-          lapply(M@L2derivSymm, function(x) assign("x",NonSymmetric()))
-          lapply(M@L2derivDistrSymm, function(x) assign("x",NoSymmetry()))
-          M@L2derivDistr <- imageDistr(RandVar = M@L2deriv,
-                                       distr = M@distribution)
-          M1 <- existsPIC(M)
+              M <- model
+              theta <- c(main(param),nuisance(param))
+              M@distribution <- model@modifyParam(theta)
+              M@param <- param
+              fct <- M@L2deriv.fct(param)
+              M@L2deriv <- if(!is.list(fct))
+                  EuclRandVarList(RealRandVariable(list(fct), Domain = Reals())) else
+                  EuclRandVarList(RealRandVariable(fct, Domain = Reals()))
+              M@FisherInfo <- M@FisherInfo.fct(param)
+              M@distrSymm <- NoSymmetry()
+              #we loose symmetry if available ...
+              for(i in 1:length(M@L2derivSymm))
+                  M@L2derivSymm[[i]] <- NonSymmetric()
+              for(i in 1:length(M@L2derivDistrSymm))
+                  M@L2derivDistrSymm[[i]] <- NoSymmetry()
+              #did not work
+              #lapply(M@L2derivSymm, function(x) assign("x", NonSymmetric()))
+              #lapply(M@L2derivDistrSymm, function(x) assign("x",NoSymmetry()))
+              M@L2derivDistr <- imageDistr(RandVar = M@L2deriv,
+                                          distr = M@distribution)
+              M1 <- existsPIC(M)
 
-          if(paste(M@fam.call[1]) == "L2ParamFamily")
-             fam.call <- eval(substitute(
-                      call("L2ParamFamily",
-                              name = name0,
-                              distribution = distribution0,
-                              distrSymm = distrSymm0,
-                              param = param0,
-                              props = props0,
-                              startPar = startPar0,
-                              makeOKPar = makeOKPar0,
-                              modifyParam = modifyParam0,
-                              L2deriv.fct = L2deriv.fct0,
-                              L2derivSymm = L2derivSymm0,
-                              L2derivDistr =  L2derivDistr0,
-                              L2derivDistrSymm = L2derivDistrSymm0,
-                              FisherInfo.fct = FisherInfo.fct0,
-                              FisherInfo = FisherInfo0
-                           ),
-                      list(   name0 = M@name,
-                              distribution0 = M@distribution,
-                              distrSymm0 = M@distrSymm,
-                              param0 = M@param,
-                              props0 = M@props,
-                              startPar0 = M@startPar,
-                              makeOKPar0 = M@startPar,
-                              modifyParam0 = M@modifyParam,
-                              L2deriv.fct0 = M@L2deriv.fct,
-                              L2derivSymm0 = M@L2derivSymm,
-                              L2derivDistr0 = M@L2derivDistr,
-                              L2derivDistrSymm0 = M@L2derivDistrSymm,
-                              FisherInfo.fct0 = M@FisherInfo.fct,
-                              FisherInfo0 = M@FisherInfo
-                          )
-                      ))
-          else{
-             fam.call <- model@fam.call
-             par.names <- names(theta)
-             call.n <- names(fam.call)
-             w <- which(call.n %in% par.names)
-             if(length(w))
-                fam.call <- fam.call[-w]
-             fam.call <-  as.call(c(unlist(as.list(fam.call)),theta))
-          }
+              if(paste(M@fam.call[1]) == "L2ParamFamily")
+                fam.call <- eval(substitute(
+                          call("L2ParamFamily",
+                                  name = name0,
+                                  distribution = distribution0,
+                                  distrSymm = distrSymm0,
+                                  param = param0,
+                                  props = props0,
+                                  startPar = startPar0,
+                                  makeOKPar = makeOKPar0,
+                                  modifyParam = modifyParam0,
+                                  L2deriv.fct = L2deriv.fct0,
+                                  L2derivSymm = L2derivSymm0,
+                                  L2derivDistr =  L2derivDistr0,
+                                  L2derivDistrSymm = L2derivDistrSymm0,
+                                  FisherInfo.fct = FisherInfo.fct0,
+                                  FisherInfo = FisherInfo0
+                              ),
+                          list(   name0 = M@name,
+                                  distribution0 = M@distribution,
+                                  distrSymm0 = M@distrSymm,
+                                  param0 = M@param,
+                                  props0 = M@props,
+                                  startPar0 = M@startPar,
+                                  makeOKPar0 = M@startPar,
+                                  modifyParam0 = M@modifyParam,
+                                  L2deriv.fct0 = M@L2deriv.fct,
+                                  L2derivSymm0 = M@L2derivSymm,
+                                  L2derivDistr0 = M@L2derivDistr,
+                                  L2derivDistrSymm0 = M@L2derivDistrSymm,
+                                  FisherInfo.fct0 = M@FisherInfo.fct,
+                                  FisherInfo0 = M@FisherInfo
+                              )
+                          ))
+              else{
+                fam.call <- model@fam.call
+                par.names <- names(theta)
+                call.n <- names(fam.call)
+                w <- which(call.n %in% par.names)
+                if(length(w))
+                    fam.call <- fam.call[-w]
+                fam.call <-  as.call(c(unlist(as.list(fam.call)),theta))
+              }
 
-          M@fam.call <- fam.call
-          return(M)
+              M@fam.call <- fam.call
+              return(M)
           })
 
 setMethod("modifyModel", signature(model = "L2LocationFamily",

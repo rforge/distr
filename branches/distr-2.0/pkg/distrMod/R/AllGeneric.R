@@ -230,7 +230,7 @@ if(!isGeneric("startPar")){
 }
 if(!isGeneric("makeOKPar")){
     setGeneric("makeOKPar", function(object, ...) standardGeneric("makeOKPar"))
-}              
+}
 if(!isGeneric("locscalename")){
     setGeneric("locscalename", function(object) standardGeneric("locscalename"))
 }

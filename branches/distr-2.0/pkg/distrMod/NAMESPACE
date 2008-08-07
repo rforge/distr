@@ -51,7 +51,7 @@ exportMethods("confint")
 exportMethods("nuisance", "main") 
 exportMethods("validParameter")
 exportMethods("startPar", "makeOKPar")
-exportMethods("locscalename", "LogDeriv")
+exportMethods("locscalename", "locscalename<-", "LogDeriv")
 export("distrModMASK")
 export("PosDefSymmMatrix","PosSemDefSymmMatrix")
 export("distrModOptions", "distrModoptions", "getdistrModOption",
