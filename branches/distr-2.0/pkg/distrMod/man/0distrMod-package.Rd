@@ -44,6 +44,10 @@ L2deriv(EuclRandVarList), L2deriv.fct(function),
 L2derivSymm(FunSymmList), L2derivDistr(DistrList),
 L2derivDistrSymm(DistrSymmList), FisherInfo(PosSemDefSymmMatrix),
 FisherInfo.fct(function)
+|>|>|>"BinomFamily"
+|>|>|>"PoisFamily"
+|>|>|>"GammaFamily"
+|>|>|>"BetaFamily"
 |>|>|>"L2GroupParamFamily"
 additional slots:
 LogDeriv(function)
@@ -51,8 +55,15 @@ LogDeriv(function)
 additional slots:
 locscalename(character)
 |>|>|>|>|>"L2LocationFamily"
+|>|>|>|>|>|>"NormLocationFamily"
+|>|>|>|>|>|>"GumbelLocationFamily" 
 |>|>|>|>|>"L2ScaleFamily"
+|>|>|>|>|>|>"NormScaleFamily"
+|>|>|>|>|>|>"ExpScaleFamily"
+|>|>|>|>|>|>"LnormScaleFamily"
 |>|>|>|>|>"L2LocationScaleFamily"
+|>|>|>|>|>|>"NormLocationScaleFamily"
+|>|>|>|>|>|>"CauchyLocationScaleFamily"
 
 ##########################
 ParamFamParameter

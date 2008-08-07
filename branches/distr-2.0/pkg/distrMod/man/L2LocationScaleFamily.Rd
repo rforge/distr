@@ -9,7 +9,8 @@
 L2LocationScaleFamily(loc = 0, scale = 1, name, centraldistribution = Norm(),
                       locscalename = c("loc", "scale"), modParam, LogDeriv,  
                       L2derivDistr.0, FisherInfo.0, distrSymm, L2derivSymm, 
-                      L2derivDistrSymm, trafo)
+                      L2derivDistrSymm, trafo, ...,
+                      .returnClsName = NULL)
 
 }
 \arguments{
@@ -41,6 +42,12 @@ L2LocationScaleFamily(loc = 0, scale = 1, name, centraldistribution = Norm(),
   \item{L2derivDistrSymm}{ object of class \code{"DistrSymmList"}: 
     symmetry of the distributions contained in \code{L2derivDistr} }
   \item{trafo}{ matrix or  function in \code{param}: transformation of the parameter }
+  \item{...}{further arguments to be passed to \code{E}}
+   \item{.returnClsName}{ the class name of the return value; by default this
+   argument is \code{NULL} whereupon the return class will be 
+   \code{L2LocationScaleFamily}; but, internally, this generating function is also 
+   used to produce objects of class \code{NormalLocationScaleFamily}, 
+   \code{CauchyLocationScaleFamily}.} 
 }
 \details{
   If \code{name} is missing, the default 

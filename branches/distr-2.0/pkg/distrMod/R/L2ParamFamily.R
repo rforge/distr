@@ -11,7 +11,9 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
                                        return(function(x) {x-theta})},
                           L2derivSymm, L2derivDistr, L2derivDistrSymm,
                           FisherInfo.fct = function(theta){ 1 },
-                          FisherInfo = FisherInfo.fct(param)){
+                          FisherInfo = FisherInfo.fct(param),
+                          .returnClsName = NULL){
+     
     if(missing(name))
         name <- "L_2 differentiable parametric family of probability measures"
     if(missing(param)&&missing(main))
@@ -75,40 +77,45 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
 
     parv <- c(param@main,param@nuisance)
     nms <- names(parv)
-
+    
     if(!is.null(nms))
        dimnames(FisherInfo) <- list(nms,nms)
 
     f.call <- substitute(L2ParamFamily(name = N,
-                                       distribution = D,
-                                       distrSymm = DS,
-                                       param = P,
-                                       props = Props,
-                                       startPar = sP,
-                                       makeOKPar = okP,
-                                       modifyParam = modP,
-                                       L2deriv.fct = L2fct,
-                                       L2derivSymm = L2Symm,
-                                       L2derivDistr = L2D,
-                                       L2derivDistrSymm = L2DSymm,
-                                       FisherInfo.fct = Ffct,
-                                       FisherInfo = FInfo),
-                                  list(N = name, 
-                                       D = distribution,
-                                       DS = distrSymm,
-                                       P = param,
-                                       Props = props,
-                                       sP = startPar,
-                                       okP = makeOKPar,
-                                       modP = modifyParam,
-                                       L2fct = L2deriv.fct,
-                                       L2Symm = L2derivSymm,
-                                       L2D = L2derivDistr,
-                                       L2DSymm = L2derivDistrSymm,
-                                       Ffct = FisherInfo.fct,
-                                       FInfo = FisherInfo))
+               distribution = D,
+               distrSymm = DS,
+               param = P,
+               props = Props,
+               startPar = sP,
+               makeOKPar = okP,
+               modifyParam = modP,
+               L2deriv.fct = L2fct,
+               L2derivSymm = L2Symm,
+               L2derivDistr = L2D,
+               L2derivDistrSymm = L2DSymm,
+               FisherInfo.fct = Ffct,
+               FisherInfo = FInfo,
+               .returnClsName = rtn),
+          list(N = name,
+               D = distribution,
+               DS = distrSymm,
+               P = param,
+               Props = props,
+               sP = startPar,
+               okP = makeOKPar,
+               modP = modifyParam,
+               L2fct = L2deriv.fct,
+               L2Symm = L2derivSymm,
+               L2D = L2derivDistr,
+               L2DSymm = L2derivDistrSymm,
+               Ffct = FisherInfo.fct,
+               FInfo = FisherInfo,
+               rtn = .returnClsName))
+ 
 
-    L2Fam <- new("L2ParamFamily")
+    if(is.null(.returnClsName))
+       .returnClsName <- "L2ParamFamily"
+    L2Fam <- new(.returnClsName)
     L2Fam@name <- name
     L2Fam@distribution <- distribution
     L2Fam@fam.call <- f.call

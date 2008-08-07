@@ -26,7 +26,8 @@ Generates an object of class <code>"L2LocationFamily"</code>.
 L2LocationFamily(loc = 0, name, centraldistribution = Norm(),
                  locname = "loc", modParam, LogDeriv,  
                  L2derivDistr.0, FisherInfo.0, distrSymm, L2derivSymm, 
-                 L2derivDistrSymm, trafo, ...)
+                 L2derivDistrSymm, trafo, ...,
+                 .returnClsName = NULL)
 </pre>
 
 
@@ -84,6 +85,13 @@ matrix or  function in <code>param</code>: transformation of the parameter </td>
 <tr valign="top"><td><code>...</code></td>
 <td>
 further arguments to be passed to <code>E</code></td></tr>
+<tr valign="top"><td><code>.returnClsName</code></td>
+<td>
+the class name of the return value; by default this
+argument is <code>NULL</code> whereupon the return class will be 
+<code>L2LocationScaleFamily</code>; but, internally, this generating function is also 
+used to produce objects of class Classes <code>NormLocationFamily</code> and 
+<code>GumbelLocationFamily</code>.</td></tr>
 </table>
 
 <h3>Details</h3>

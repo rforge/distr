@@ -27,7 +27,8 @@ in the situation where scale is main, location nuisance parameter.
 L2ScaleUnknownLocationFamily(loc = 0, scale = 1, name, centraldistribution = Norm(),
                       locscalename = c("loc", "scale"), modParam, LogDeriv,  
                       L2derivDistr.0, FisherInfo.0, distrSymm, L2derivSymm, 
-                      L2derivDistrSymm, trafo, ...)
+                      L2derivDistrSymm, trafo, ...,
+                      .returnClsName = NULL)
 
 </pre>
 
@@ -92,6 +93,13 @@ matrix or  function in <code>param</code>: transformation of the parameter </td>
 <tr valign="top"><td><code>...</code></td>
 <td>
 further arguments to be passed to <code>E</code></td></tr>
+<tr valign="top"><td><code>.returnClsName</code></td>
+<td>
+the class name of the return value; by default this
+argument is <code>NULL</code> whereupon the return class will be 
+<code>L2LocationScaleFamily</code>; but, internally, this generating function is also 
+used to produce objects of class <code>NormalLocationScaleFamily</code>, 
+<code>CauchyLocationScaleFamily</code>.</td></tr>
 </table>
 
 <h3>Details</h3>

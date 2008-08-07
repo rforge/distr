@@ -24,6 +24,9 @@ exportClasses("asSemivar", "asRiskwithBias")
 exportClasses("L2GroupParamFamily", "L2LocationFamily", 
               "L2ScaleFamily", "L2LocationScaleFamily")
 exportClasses("L2LocationScaleUnion")
+exportClasses("BinomFamily","PoisFamily", "NormLocationFamily",
+       "GumbelLocationFamily", "NormScaleFamily", "ExpScaleFamily",
+       "LnormScaleFamily", "GammaFamily", "BetaFamily", "NormLocationScaleFamily")
 exportClasses("NormType", "QFNorm", "InfoNorm", "SelfNorm")
 exportClasses("Estimate", "MCEstimate")
 exportClasses("Confint")
@@ -51,7 +54,7 @@ exportMethods("confint")
 exportMethods("nuisance", "main") 
 exportMethods("validParameter")
 exportMethods("startPar", "makeOKPar")
-exportMethods("locscalename", "locscalename<-", "LogDeriv")
+exportMethods("locscalename", "LogDeriv")
 export("distrModMASK")
 export("PosDefSymmMatrix","PosSemDefSymmMatrix")
 export("distrModOptions", "distrModoptions", "getdistrModOption",

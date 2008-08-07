@@ -16,7 +16,8 @@ L2ParamFamily(name, distribution = Norm(), distrSymm,
                           modifyParam = function(theta){ Norm(mean=theta) },
                           L2deriv.fct,
                           L2derivSymm, L2derivDistr, L2derivDistrSymm, 
-                          FisherInfo.fct, FisherInfo = FisherInfo.fct(param))
+                          FisherInfo.fct, FisherInfo = FisherInfo.fct(param),
+                          .returnClsName = NULL)
 }
 \arguments{
   \item{name}{ character string: name of the family }
@@ -60,6 +61,11 @@ L2ParamFamily(name, distribution = Norm(), distrSymm,
     move the Fisher information according to a change in the parameter } 
   \item{FisherInfo}{ object of class \code{"PosSemDefSymmMatrix"}:
     Fisher information of the family }
+   \item{.returnClsName}{ the class name of the return value; by default this
+   argument is \code{NULL} whereupon the return class will be 
+   \code{L2ParamFamily}; but, internally, this generating function is also 
+   used to produce objects of class \code{BinomialFamily}, \code{PoisFamily}
+   \code{GammaFamily}, \code{BetaFamily}.} 
 }
 \details{
   If \code{name} is missing, the default 
