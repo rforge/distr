@@ -94,7 +94,7 @@ setMethod("modifyModel", signature(model = "L2LocationFamily",
                 names(cl)[cl.l+1] <- loc.name
              }
              M@fam.call <- cl
-             return(M)
+             return(as(M, "L2LocationFamily"))
           })
 
 setMethod("modifyModel", signature(model = "L2ScaleFamily",
@@ -128,7 +128,7 @@ setMethod("modifyModel", signature(model = "L2ScaleFamily",
                 names(cl)[cl.l] <- scale.name
              }
              M@fam.call <- cl
-             return(M)
+             return(as(M, "L2ScaleFamily"))
           })
 
 setMethod("modifyModel", signature(model = "L2LocationScaleFamily",
@@ -168,7 +168,7 @@ setMethod("modifyModel", signature(model = "L2LocationScaleFamily",
                 names(cl)[cl.l] <- scale.name
              }
              M@fam.call <- cl
-             return(M)
+             return(as(M, "L2LocationScaleFamily"))
           })
 
 setMethod("modifyModel", signature(model = "GammaFamily",
@@ -182,6 +182,6 @@ setMethod("modifyModel", signature(model = "GammaFamily",
              M@L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter = 
                                                        prod(main(param))),
                                           NonSymmetric())
-             return(M)
+             return(as(M, "GammaFamily"))
           })
 

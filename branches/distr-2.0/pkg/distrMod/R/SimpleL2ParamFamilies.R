@@ -539,22 +539,22 @@ NormLocationScaleFamily <- function(mean = 0, sd = 1, trafo){
 ##################################################################
 ## Exponential scale family
 ##################################################################
-ExpScaleFamily <- function(rate = 1, trafo){ 
+ExpScaleFamily <- function(scale = 1, trafo){ 
     if(missing(trafo)) trafo <- matrix(1, dimnames = list("scale","scale"))
-    res <- L2ScaleFamily(loc = 0, scale = 1/rate, name = "Exponential scale family", 
+    res <- L2ScaleFamily(loc = 0, scale = scale, name = "Exponential scale family", 
                   centraldistribution = Exp(rate = 1),
                   locscalename = c("loc"="", "scale"="scale"), 
                   modParam = function(theta) Exp(rate = 1/theta),
                   LogDeriv = function(x) 1,
-                  L2derivDistr.0 = (Exp(rate = 1)-1)*rate,
+                  L2derivDistr.0 = (Exp(rate = 1)-1)/scale,
                   FisherInfo.0 = matrix(1, dimnames = list("scale","scale")), 
                   distrSymm = NoSymmetry(), 
-                  L2derivSymm = FunSymmList(OddSymmetric(SymmCenter = 1/rate)), 
+                  L2derivSymm = FunSymmList(OddSymmetric(SymmCenter = scale)), 
                   L2derivDistrSymm = DistrSymmList(NoSymmetry()),
                   trafo = trafo, .returnClsName = "ExpScaleFamily")
-    f.call <- substitute(ExpScaleFamily(rate = r,
+    f.call <- substitute(ExpScaleFamily(scale = s,
                           trafo = matrix(Tr, dimnames = list("scale","scale"))),
-                         list(r = rate, Tr = trafo))
+                         list(s = scale, Tr = trafo))
     res@fam.call <- f.call
     return(res)
 }
