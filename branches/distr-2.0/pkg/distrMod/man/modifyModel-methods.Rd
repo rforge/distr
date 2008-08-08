@@ -7,6 +7,7 @@
 \alias{modifyModel,L2ScaleFamily,ParamFamParameter-method}
 \alias{modifyModel,L2LocationScaleFamily,ParamFamParameter-method}
 \alias{modifyModel,GammaFamily,ParamFamParameter-method}
+\alias{modifyModel,ExpScaleFamily,ParamFamParameter-method}
 \title{ Methods for function modifyModel in Package `distrMod' }
 \description{
   Methods for function \code{modifyModel} in package \pkg{distrMod};
@@ -22,6 +23,7 @@ modifyModel(model, param,...)
 \S4method{modifyModel}{L2LocationScaleFamily,ParamFamParameter}(model,
                        param, ...)
 \S4method{modifyModel}{GammaFamily,ParamFamParameter}(model,param, ...)
+\S4method{modifyModel}{ExpScaleFamily,ParamFamParameter}(model,param, ...)
 }
 \arguments{
   \item{model}{an object of class \code{L2ParamFamily}  --- the model to move.}
