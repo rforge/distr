@@ -553,7 +553,7 @@ ExpScaleFamily <- function(scale = 1, trafo){
                   L2derivDistrSymm = DistrSymmList(NoSymmetry()),
                   trafo = trafo, .returnClsName = "ExpScaleFamily")
     f.call <- substitute(ExpScaleFamily(scale = s,
-                          trafo = matrix(Tr, dimnames = list("scale","scale"))),
+                         trafo = matrix(Tr, dimnames = list("scale","scale"))),
                          list(s = scale, Tr = trafo))
     res@fam.call <- f.call
     return(res)

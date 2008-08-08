@@ -68,6 +68,7 @@ setMethod("modifyModel", signature(model = "L2ParamFamily", param = "ParamFamPar
           }
 
           M@fam.call <- fam.call
+          class(M) <- class(model)
           return(M)
           })
 
@@ -94,7 +95,8 @@ setMethod("modifyModel", signature(model = "L2LocationFamily",
                 names(cl)[cl.l+1] <- loc.name
              }
              M@fam.call <- cl
-             return(as(M, "L2LocationFamily"))
+             class(M) <- class(model)
+             return(M)
           })
 
 setMethod("modifyModel", signature(model = "L2ScaleFamily",
@@ -128,7 +130,8 @@ setMethod("modifyModel", signature(model = "L2ScaleFamily",
                 names(cl)[cl.l] <- scale.name
              }
              M@fam.call <- cl
-             return(as(M, "L2ScaleFamily"))
+             class(M) <- class(model)
+             return(M)
           })
 
 setMethod("modifyModel", signature(model = "L2LocationScaleFamily",
@@ -168,7 +171,8 @@ setMethod("modifyModel", signature(model = "L2LocationScaleFamily",
                 names(cl)[cl.l] <- scale.name
              }
              M@fam.call <- cl
-             return(as(M, "L2LocationScaleFamily"))
+             class(M) <- class(model)
+             return(M)
           })
 
 setMethod("modifyModel", signature(model = "GammaFamily",
@@ -176,12 +180,19 @@ setMethod("modifyModel", signature(model = "GammaFamily",
           function(model, param, ...){
              M <- modifyModel(as(model, "L2ParamFamily"), param = param,
                               .withCall = FALSE)
-             M@L2derivDistrSymm <- DistrSymmList(SphericalSymmetry(
-                                                   SymmCenter = loc),
-                                                 NoSymmetry())
              M@L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter = 
                                                        prod(main(param))),
                                           NonSymmetric())
-             return(as(M, "GammaFamily"))
+             class(M) <- class(model)
+             return(M)
+          })
+setMethod("modifyModel", signature(model = "ExpScaleFamily",
+           param = "ParamFamParameter"),
+          function(model, param, ...){
+             M <- modifyModel(as(model, "L2ParamFamily"), param = param,
+                              .withCall = FALSE)
+             M@L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter = main(param)))
+             class(M) <- class(model)
+             return(M)
           })
 
