@@ -599,7 +599,7 @@ GumbelLocationFamily <- function(loc = 0, scale = 1, trafo){
     modParam <- function(theta){}
     body(modParam) <- substitute({ Gumbel(loc = theta, scale = sd) },
                                  list(sd = scale))
-    res <- L2LocationFamily(loc = loc, scale = scale, 
+    res <- L2LocationFamily(loc = loc,  
                      name = "Gumbel location family", 
                      centraldistribution = Gumbel(loc = 0, scale = scale),
                      modParam = modParam,

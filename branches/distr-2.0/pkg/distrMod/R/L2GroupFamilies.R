@@ -6,7 +6,7 @@ L2LocationFamily <- function(loc = 0, name, centraldistribution = Norm(),
                              LogDeriv, L2derivDistr.0,
                              FisherInfo.0, 
                              distrSymm, L2derivSymm, L2derivDistrSymm,
-                             trafo, ..., .returnClsName = NULL){
+                             trafo, .returnClsName = NULL){
     if(missing(name))
        name <- "L2 location family"
 
@@ -66,38 +66,38 @@ L2LocationFamily <- function(loc = 0, name, centraldistribution = Norm(),
 
     FI0 <- if(missing(FisherInfo.0))
            E(centraldistribution, fun = function(x) LogDeriv(x)^2,
-             useApply = FALSE, ...) else FisherInfo.0
+             useApply = FALSE) else FisherInfo.0
 
     FI0 <- matrix(FI0,1,1,dimnames=list("loc","loc"))
     FisherInfo.fct <- function(param) PosDefSymmMatrix(FI0)
 
     f.call <- substitute(L2LocationFamily(loc = l,
-  	              name = N,
-  	              centraldistribution = D0,
-  	              locname = lN,
-  	              modParam = mP,
-  	              LogDeriv = lD,
-  	              L2derivDistr.0 = L2D0,
-  	              FisherInfo.0 = F.0,
-  	              distrSymm = DSymm,
-  	              L2derivSymm = L2Symm,
-  	              L2derivDistrSymm = L2DSymm,
-  	              trafo = matrix(Tr, dimnames = list("loc","loc")),
+                  name = N,
+                  centraldistribution = D0,
+                  locname = lN,
+                  modParam = mP,
+                  LogDeriv = lD,
+                  L2derivDistr.0 = L2D0,
+                  FisherInfo.0 = F.0,
+                  distrSymm = DSymm,
+                  L2derivSymm = L2Symm,
+                  L2derivDistrSymm = L2DSymm,
+                  trafo = matrix(Tr, dimnames = list("loc","loc")),
                   .returnClsName = rtn),
-  	         list(l = loc,
-  	              N = name,
-  	              D0 = centraldistribution,
-  	              lN = locname,
-  	              mP = modParam,
-  	              lD = LogDeriv,
-  	              L2D0 = L2derivDistr[[1]],
-  	              F.0 = FI0,
-  	              DSymm = distrSymm,
-  	              L2Symm = L2derivSymm,
-  	              L2DSymm = L2derivDistrSymm,
-  	              Tr = trafo,
-                  rtn = .returnClsName))    
-    
+             list(l = loc,
+                  N = name,
+                  D0 = centraldistribution,
+                  lN = locname,
+                  mP = modParam,
+                  lD = LogDeriv,
+                  L2D0 = L2derivDistr[[1]],
+                  F.0 = FI0,
+                  DSymm = distrSymm,
+                  L2Symm = L2derivSymm,
+                  L2DSymm = L2derivDistrSymm,
+                  Tr = trafo,
+                  rtn = .returnClsName))
+
     if(is.null(.returnClsName))
        .returnClsName <- "L2LocationFamily"
     L2Fam <- new(.returnClsName)
@@ -132,7 +132,7 @@ L2ScaleFamily <- function(scale = 1, loc = 0, name, centraldistribution = Norm()
                           LogDeriv, L2derivDistr.0,
                           FisherInfo.0,
                           distrSymm, L2derivSymm, L2derivDistrSymm,
-                          trafo, ..., .returnClsName = NULL){
+                          trafo, .returnClsName = NULL){
     if(length(scale) != 1 || !is.numeric(scale))
         stop("scale has to be a numeric of length 1")
     if(scale < 0)
@@ -147,7 +147,7 @@ L2ScaleFamily <- function(scale = 1, loc = 0, name, centraldistribution = Norm()
     }else{
         if(!all(names(locscalename)%in% c("loc","scale")))
            names(locscalename) <- c("loc", "scale")   
-    }       
+    }
     distribution <- scale*centraldistribution + loc
 
     if(missing(distrSymm)){
@@ -205,7 +205,7 @@ L2ScaleFamily <- function(scale = 1, loc = 0, name, centraldistribution = Norm()
 
     FI0 <- if(missing(FisherInfo.0)) 
            E(centraldistribution, fun = function(x) (x*LogDeriv(x)-1)^2,
-             useApply = FALSE, ...) else FisherInfo.0
+             useApply = FALSE) else FisherInfo.0
 
     FI0 <- matrix(FI0,1,1,dimnames=list("scale","scale"))
 
@@ -277,7 +277,7 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
                              LogDeriv, L2derivDistr.0,
                              FisherInfo.0, 
                              distrSymm, L2derivSymm, L2derivDistrSymm,
-                             trafo, ..., .returnClsName = NULL){
+                             trafo, .returnClsName = NULL){
     if(length(scale) != 1 || !is.numeric(scale))
         stop("scale has to be a numeric of length 1")
     if(scale < 0)
@@ -317,7 +317,7 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
     makeOKPar <- function(param) {
                     st <- c(param[1],abs(param[2])+.Machine$double.eps)
                     names(st) <- c("loc", "scale")
-                   return(st)}                   
+                   return(st)}
     if(missing(modParam))
         modParam <- function(theta){theta[2]*centraldistribution+theta[1] }
     props <- c(paste("The", name, "is invariant under"),
@@ -359,14 +359,14 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
 
     if(missing(FisherInfo.0)){
         FI11 <- E(centraldistribution, fun = function(x) LogDeriv(x)^2,
-                  useApply = FALSE, ...)
+                  useApply = FALSE)
         FI22 <- E(centraldistribution, fun = function(x) (x*LogDeriv(x)-1)^2,
-               useApply = FALSE, ...)
+               useApply = FALSE)
         if( is(distrSymm, "SphericalSymmetry") ){
             FI12 <- 0
         }else{
             FI12 <- E(centraldistribution, fun = function(x) x*LogDeriv(x)^2,
-                      useApply = FALSE, ...)
+                      useApply = FALSE)
         }
         FI0 <- matrix(c(FI11,FI12,FI12,FI22),2,2)
     }else{ 
@@ -443,7 +443,7 @@ L2LocationUnknownScaleFamily <- function(loc = 0, scale = 1, name,
                              LogDeriv, L2derivDistr.0,
                              FisherInfo.0, 
                              distrSymm, L2derivSymm, L2derivDistrSymm,
-                             trafo, ..., .returnClsName = NULL){
+                             trafo, .returnClsName = NULL){
     if(length(scale) != 1 || !is.numeric(scale))
         stop("scale has to be a numeric of length 1")
     if(scale < 0)
@@ -478,7 +478,7 @@ L2LocationUnknownScaleFamily <- function(loc = 0, scale = 1, name,
     makeOKPar <- function(param) {
                     st <- c(param[1],abs(param[2])+.Machine$double.eps)
                     names(st) <- c("loc", "scale")
-                   return(st)}                   
+                   return(st)}
     if(missing(trafo))  {trafo <- matrix(1)
                          dimnames(trafo) <- list("loc","loc")}
     param <- ParamFamParameter(name = "location and scale", main = param0[1],
@@ -525,14 +525,14 @@ L2LocationUnknownScaleFamily <- function(loc = 0, scale = 1, name,
 
     if(missing(FisherInfo.0)){
         FI11 <- E(centraldistribution, fun = function(x) LogDeriv(x)^2,
-                  useApply = FALSE, ...)
+                  useApply = FALSE)
         FI22 <- E(centraldistribution, fun = function(x) (x*LogDeriv(x)-1)^2,
-               useApply = FALSE, ...)
+               useApply = FALSE)
         if( is(distrSymm, "SphericalSymmetry") ){
             FI12 <- 0
         }else{
             FI12 <- E(centraldistribution, fun = function(x) x*LogDeriv(x)^2,
-                      useApply = FALSE, ...)
+                      useApply = FALSE)
         }
         FI0 <- matrix(c(FI11,FI12,FI12,FI22),2,2)
     }else{ 
@@ -544,33 +544,33 @@ L2LocationUnknownScaleFamily <- function(loc = 0, scale = 1, name,
                    scale <- nuisance(param)
                    PosDefSymmMatrix(FI0/scale^2)}
 
-f.call <- substitute(L2LocationUnknownScaleFamily(loc = l,
-  	             scale = s,
-  	             name = N,
-  	             centraldistribution = D0,
-  	             locscalename = lN,
-  	             modParam = mP,
-  	             LogDeriv = lD,
-  	             L2derivDistr.0 = L2D0,
-  	             FisherInfo.0 = F.0,
-  	             distrSymm = DSymm,
-  	             L2derivSymm = L2Symm,
-  	             L2derivDistrSymm = L2DSymm,
-  	             trafo = matrix(Tr, dimnames = list("loc","loc")),
+    f.call <- substitute(L2LocationUnknownScaleFamily(loc = l,
+                 scale = s,
+                 name = N,
+                 centraldistribution = D0,
+                 locscalename = lN,
+                 modParam = mP,
+                 LogDeriv = lD,
+                 L2derivDistr.0 = L2D0,
+                 FisherInfo.0 = F.0,
+                 distrSymm = DSymm,
+                 L2derivSymm = L2Symm,
+                 L2derivDistrSymm = L2DSymm,
+                 trafo = matrix(Tr, dimnames = list("loc","loc")),
                  .returnClsName = rtn),
-  	         list(s = scale,
-  	             l = loc,
-  	             N = name,
-  	             D0 = centraldistribution,
-  	             lN = locscalename,
-  	             mP = modParam,
-  	             lD = LogDeriv,
-  	             L2D0 = as(L2derivDistr, "list"),
-  	             F.0 = FI0,
-  	             DSymm = distrSymm,
-  	             L2Symm = L2derivSymm,
-  	             L2DSymm = L2derivDistrSymm,
-  	             Tr = trafo,
+             list(s = scale,
+                 l = loc,
+                 N = name,
+                 D0 = centraldistribution,
+                 lN = locscalename,
+                 mP = modParam,
+                 lD = LogDeriv,
+                 L2D0 = as(L2derivDistr, "list"),
+                 F.0 = FI0,
+                 DSymm = distrSymm,
+                 L2Symm = L2derivSymm,
+                 L2DSymm = L2derivDistrSymm,
+                 Tr = trafo,
                  rtn = .returnClsName))
 
     if(is.null(.returnClsName))
@@ -607,7 +607,7 @@ L2ScaleUnknownLocationFamily <- function(loc = 0, scale = 1, name,
                              LogDeriv, L2derivDistr.0,
                              FisherInfo.0, 
                              distrSymm, L2derivSymm, L2derivDistrSymm,
-                             trafo, ..., .returnClsName = NULL){
+                             trafo, .returnClsName = NULL){
     if(length(scale) != 1 || !is.numeric(scale))
         stop("scale has to be a numeric of length 1")
     if(scale < 0)
@@ -618,7 +618,7 @@ L2ScaleUnknownLocationFamily <- function(loc = 0, scale = 1, name,
     if(!length(locscalename)==2) 
         stop("argument 'locscalename' must be of length 2.")
     if(!all(names(locscalename)%in% c("loc","scale")))
-           names(locscalename) <- c("loc", "scale")   
+           names(locscalename) <- c("loc", "scale")
 
     distribution <- scale*centraldistribution+loc
 
@@ -642,7 +642,7 @@ L2ScaleUnknownLocationFamily <- function(loc = 0, scale = 1, name,
     makeOKPar <- function(param) {
                     st <- c(param[1],abs(param[2])+.Machine$double.eps)
                     names(st) <- c("loc", "scale")
-                   return(st)}                   
+                   return(st)}
     if(missing(trafo))  {trafo <- matrix(1)
                          dimnames(trafo) <- list("scale","scale")}
     param <- ParamFamParameter(name = "scale and location", main = param0[1],
@@ -689,14 +689,14 @@ L2ScaleUnknownLocationFamily <- function(loc = 0, scale = 1, name,
 
     if(missing(FisherInfo.0)){
         FI11 <- E(centraldistribution, fun = function(x) LogDeriv(x)^2,
-                  useApply = FALSE, ...)
+                  useApply = FALSE)
         FI22 <- E(centraldistribution, fun = function(x) (x*LogDeriv(x)-1)^2,
-               useApply = FALSE, ...)
+               useApply = FALSE)
         if( is(distrSymm, "SphericalSymmetry") ){
             FI12 <- 0
         }else{
             FI12 <- E(centraldistribution, fun = function(x) x*LogDeriv(x)^2,
-                      useApply = FALSE, ...)
+                      useApply = FALSE)
         }
         FI0 <- matrix(c(FI11,FI12,FI12,FI22),2,2)
     }else{ 
@@ -736,7 +736,6 @@ L2ScaleUnknownLocationFamily <- function(loc = 0, scale = 1, name,
                  L2DSymm = L2derivDistrSymm,
                  Tr = trafo,
                  rtn = .returnClsName))
-                 
     if(is.null(.returnClsName))
        .returnClsName <- "L2LocationScaleFamily"
     L2Fam <- new(.returnClsName)

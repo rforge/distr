@@ -9,8 +9,7 @@
 L2LocationFamily(loc = 0, name, centraldistribution = Norm(),
                  locname = "loc", modParam, LogDeriv,  
                  L2derivDistr.0, FisherInfo.0, distrSymm, L2derivSymm, 
-                 L2derivDistrSymm, trafo, ...,
-                 .returnClsName = NULL)
+                 L2derivDistrSymm, trafo, .returnClsName = NULL)
 }
 \arguments{
   \item{loc}{numeric: location parameter of the model. }
@@ -37,12 +36,11 @@ L2LocationFamily(loc = 0, name, centraldistribution = Norm(),
   \item{L2derivDistrSymm}{ object of class \code{"DistrSymmList"}: 
     symmetry of the distributions contained in \code{L2derivDistr} }
   \item{trafo}{ matrix or  function in \code{param}: transformation of the parameter }
-  \item{...}{further arguments to be passed to \code{E}}
-   \item{.returnClsName}{ the class name of the return value; by default this
-   argument is \code{NULL} whereupon the return class will be 
-   \code{L2LocationScaleFamily}; but, internally, this generating function is also 
-   used to produce objects of class Classes \code{NormLocationFamily} and 
-   \code{GumbelLocationFamily}.} 
+  \item{.returnClsName}{ the class name of the return value; by default this
+    argument is \code{NULL} whereupon the return class will be 
+    \code{L2LocationScaleFamily}; but, internally, this generating function is also 
+    used to produce objects of class Classes \code{NormLocationFamily} and 
+    \code{GumbelLocationFamily}.} 
 }
 \details{
   If \code{name} is missing, the default 
