@@ -1,5 +1,6 @@
 .distrModOptions <- list(
-                         show.details = "maximal"
+                         show.details = "maximal",
+                         use.generalized.inverse.by.default = TRUE
                          )
 
 

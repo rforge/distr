@@ -46,9 +46,17 @@ just a synonym to \code{distrModoptions}.
   \item{\code{"minimal"}}{only the most important information is shown}
   \item{\code{"medium"}}{somewhere in the middle; see actual \code{show}-methods
   for details.}
-  }}
-}
-}
+  }
+  The default value is \code{"maximal"}.}
+\item{use.generalized.inverse.by.default}{logical; decides whether by default
+(i.e., if argument \code{generalized} of \code{\link{solve}} is not explicitely
+set), \code{\link{solve}} is to use generalized inverses if the original 
+\code{solve}-method from package \pkg{base} fails; if the option is \code{FALSE}, 
+in case of failure, and unless argument \code{generalized} is not explicitely 
+set to \code{TRUE}, \code{solve} will throw an error as is 
+the \pkg{base}-method behavior. The default value is \code{TRUE}.  
+  }
+}}
 %\references{}
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
         Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}

@@ -49,16 +49,16 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name,
         theta <- as.numeric(res$par)
         names(theta) <- c(names(main(ParamFamily)),names(nuisance(ParamFamily)))
         crit <- res$value
-        if(missing(crit.name))
-          names(crit) <- as.character(match.call()$criterion)
-        else
-          names(crit) <- crit.name
     }
 
-    if(missing(crit.name))
+    if(missing(crit.name)){
+        names(crit) <- as.character(match.call()$criterion)
         est.name <- "Minimum criterion estimate"
-    else
+    }else{
+        names(crit) <- crit.name
         est.name <- paste("Minimum", crit.name, "estimate", sep = " ")
+    }
+
     if(missing(Infos))
         Infos <- matrix(c(character(0),character(0)), ncol=2,
                         dimnames=list(character(0), c("method", "message")))

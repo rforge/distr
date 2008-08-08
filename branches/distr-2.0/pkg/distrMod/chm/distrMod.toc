@@ -718,6 +718,10 @@
 <param name="Local" value="modifyModel-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="modifyModel,GammaFamily,ParamFamParameter-method">
+<param name="Local" value="modifyModel-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="modifyModel,L2LocationFamily,ParamFamParameter-method">
 <param name="Local" value="modifyModel-methods.html">
 </OBJECT>
