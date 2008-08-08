@@ -14,8 +14,6 @@
 \alias{NormLocationScaleFamily-class}
 \alias{CauchyLocationScaleFamily-class}
 
-%\alias{modifyModel,L2ScaleFamily,ParamFamParameter-method}
-
 \title{Internal return classes for generating functions}
 \description{internal return classes for generating functions 'L2ParamFamily' and 
 'L2LocationFamily' (and friends); used for particular method dispatch only}

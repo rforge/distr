@@ -26,7 +26,8 @@ exportClasses("L2GroupParamFamily", "L2LocationFamily",
 exportClasses("L2LocationScaleUnion")
 exportClasses("BinomFamily","PoisFamily", "NormLocationFamily",
        "GumbelLocationFamily", "NormScaleFamily", "ExpScaleFamily",
-       "LnormScaleFamily", "GammaFamily", "BetaFamily", "NormLocationScaleFamily")
+       "LnormScaleFamily", "GammaFamily", "BetaFamily", "NormLocationScaleFamily",
+       "CauchyLocationScaleFamily")
 exportClasses("NormType", "QFNorm", "InfoNorm", "SelfNorm")
 exportClasses("Estimate", "MCEstimate")
 exportClasses("Confint")
@@ -65,14 +66,14 @@ export("NoSymmetry", "EllipticalSymmetry", "SphericalSymmetry",
 export("ParamFamParameter", "ParamFamily", "L2ParamFamily",
        "BinomFamily", "PoisFamily", "NormLocationFamily",
        "GumbelLocationFamily", "NormScaleFamily", "ExpScaleFamily",
-       "LnormScaleFamily", "GammaFamily", "BetaFamily", "NormLocationScaleFamily")
+       "LnormScaleFamily", "GammaFamily", "BetaFamily", "NormLocationScaleFamily",
+       "CauchyLocationScaleFamily")
 export("asCov", "trAsCov", "asHampel", "asBias", "asMSE", "asUnOvShoot", 
        "fiCov", "trFiCov", "fiHampel", "fiMSE", "fiBias", "fiUnOvShoot")
 export("positiveBias", "negativeBias", "symmetricBias", 
        "asymmetricBias", "asSemivar")
 export("isKerAinKerB")
 export("L2LocationFamily", "L2ScaleFamily", "L2LocationScaleFamily")
-export("CauchyLocationScaleFamily")
 export("EuclideanNorm", "QuadFormNorm")
 export("NormType", "QFNorm", "InfoNorm", "SelfNorm")
 export("NormScaleUnknownLocationFamily", "NormLocationUnknownScaleFamily")
