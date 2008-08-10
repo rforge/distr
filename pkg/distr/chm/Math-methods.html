@@ -10,6 +10,7 @@
 <param name="keyword" value="R:   log10-methods">
 <param name="keyword" value="R:   lgamma-methods">
 <param name="keyword" value="R:   gamma-methods">
+<param name="keyword" value="R:   sign-methods">
 <param name="keyword" value="R:   Math,AbscontDistribution-method">
 <param name="keyword" value="R:   Math,DiscreteDistribution-method">
 <param name="keyword" value="R:   abs,AbscontDistribution-method">
@@ -18,6 +19,8 @@
 <param name="keyword" value="R:   exp,DiscreteDistribution-method">
 <param name="keyword" value="R:   log,AbscontDistribution-method">
 <param name="keyword" value="R:   log,DiscreteDistribution-method">
+<param name="keyword" value="R:   sign,AbscontDistribution-method">
+<param name="keyword" value="R:   sign,DiscreteDistribution-method">
 <param name="keyword" value="R:   log10,AbscontDistribution-method">
 <param name="keyword" value="R:   log10,DiscreteDistribution-method">
 <param name="keyword" value="R:   lgamma,AbscontDistribution-method">
@@ -57,6 +60,12 @@ function <code>abs</code> to this absolutely continouos distribution;
 (exactly)</dd>
 <dt>abs</dt><dd><code>signature(x = "DiscreteDistribution")</code>: application of 
 function <code>abs</code> to this discrete distribution; 
+(exactly)</dd>
+<dt>sign</dt><dd><code>signature(x = "AbscontDistribution")</code>: application of 
+function <code>abs</code> to this absolutely continouos distribution; 
+(exactly)</dd>
+<dt>sign</dt><dd><code>signature(x = "DiscreteDistribution")</code>: application of 
+function <code>abs</code> to this discrete continouos distribution; 
 (exactly)</dd>
 <dt>exp</dt><dd><code>signature(x = "AbscontDistribution")</code>: application of
 function <code>exp</code> to this absolutely continouos distribution;

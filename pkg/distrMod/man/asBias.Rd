@@ -31,4 +31,4 @@ function(biastype = symmetricBias(), normtype = NormType()){
 }
 \concept{asymptotic bias}
 \concept{risk}
-\keyword{}
+\keyword{robust}

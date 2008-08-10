@@ -6,5 +6,5 @@
  setwd(od)
 }
 
-ladeall()
+ladeall(DIR="distrMod", develDir = "C:/rtest/distr/branches/distr-2.0/pkg")
 

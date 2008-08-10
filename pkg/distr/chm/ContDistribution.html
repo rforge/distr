@@ -32,6 +32,7 @@ Generates an object of class  <code>"AbscontDistribution"</code>
                    gaps = NULL, param = NULL, img = new("Reals"),
                    .withSim = FALSE, .withArith = FALSE,
                    low1 = NULL, up1 = NULL, low = -Inf, up =Inf,
+                   withStand = FALSE,
                    ngrid = getdistrOption("DefaultNrGridPoints"),
                    ep = getdistrOption("TruncQuantile"),
                    e = getdistrOption("RtoDPQ.e"),
@@ -76,6 +77,10 @@ lower bound (to be the 100-percent-quantile of the distribution)</td></tr>
 <tr valign="top"><td><code>up</code></td>
 <td>
 upper bound (to be the 100-percent-quantile of the distribution)</td></tr>
+<tr valign="top"><td><code>withStand</code></td>
+<td>
+logical: shall we standardize argument function <code>d</code>
+to integrate to 1 &mdash; default is no resp. <code>FALSE</code></td></tr>
 <tr valign="top"><td><code>ngrid</code></td>
 <td>
 number of gridpoints</td></tr>
@@ -198,6 +203,12 @@ plot(AbscontDistribution(r = rnorm))
 plot(AbscontDistribution(d = dnorm))
 plot(AbscontDistribution(p = pnorm))
 plot(AbscontDistribution(q = qnorm))
+plot(Ac &lt;- AbscontDistribution(d = function(x, log = FALSE){
+                                   d &lt;- exp(-abs(x^3))
+                                   ## unstandardized!!
+                                   if(log) d &lt;- log(d)
+                                   return(d)}, 
+                         withStand = TRUE))
 </pre>
 
 

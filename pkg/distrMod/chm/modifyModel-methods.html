@@ -1,0 +1,113 @@
+<html><head><title>Methods for function modifyModel in Package &lsquo;distrMod&rsquo;</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>modifyModel-methods(distrMod)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   modifyModel-methods">
+<param name="keyword" value="R:   modifyModel">
+<param name="keyword" value="R:   modifyModel,L2ParamFamily,ParamFamParameter-method">
+<param name="keyword" value="R:   modifyModel,L2LocationFamily,ParamFamParameter-method">
+<param name="keyword" value="R:   modifyModel,L2ScaleFamily,ParamFamParameter-method">
+<param name="keyword" value="R:   modifyModel,L2LocationScaleFamily,ParamFamParameter-method">
+<param name="keyword" value="R:   modifyModel,GammaFamily,ParamFamParameter-method">
+<param name="keyword" value=" Methods for function modifyModel in Package &lsquo;distrMod&rsquo;">
+</object>
+
+
+<h2>Methods for function modifyModel in Package &lsquo;distrMod&rsquo;</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Methods for function <code>modifyModel</code> in package <span class="pkg">distrMod</span>;
+<code>modifyModel</code> moves a model from one parameter value to
+another.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+modifyModel(model, param,...)
+## S4 method for signature 'L2ParamFamily,
+##   ParamFamParameter':
+modifyModel(model,param, 
+                       .withCall = TRUE, ...)
+## S4 method for signature 'L2LocationFamily,
+##   ParamFamParameter':
+modifyModel(model,param, ...)
+## S4 method for signature 'L2ScaleFamily,
+##   ParamFamParameter':
+modifyModel(model,param, ...)
+## S4 method for signature 'L2LocationScaleFamily,
+##   ParamFamParameter':
+modifyModel(model,
+                       param, ...)
+## S4 method for signature 'GammaFamily,
+##   ParamFamParameter':
+modifyModel(model,param, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>model</code></td>
+<td>
+an object of class <code>L2ParamFamily</code>  &mdash; the model to move.</td></tr>
+<tr valign="top"><td><code>param</code></td>
+<td>
+an object of class <code>ParamFamParameter</code> &mdash; the parameter to move to.</td></tr>
+<tr valign="top"><td><code>.withCall</code></td>
+<td>
+logical: shall slot <code>fam.call</code> be updated?</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+additional argument(s) for methods; not used so far</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<code>modifyModel</code> is merely used internally for moving
+the model along modified parameter values during a model
+fit.
+</p>
+<p>
+It generally simply copies the original model and only
+modifies the affected slots, i.e. 
+<code>distribution</code>, the distribution of the observations,
+<code>param</code>, the parameter,
+<code>L2deriv</code>, the L2-derivative at the parameter,
+<code>L2FisherInfo</code>, the Fisher information at the parameter,
+the symmetry slots <code>distrSymm</code>, <code>L2derivSymm</code>, and 
+<code>L2derivDistrSymm</code>,
+and, finally, <code>L2derivDistr</code> the (marginal) distribution(s)
+of the L2derivative. By default, also slot  <code>fam.call</code> is updated.
+</p>
+<p>
+In case <code>model</code> is of class <code>L2LocationFamily</code>,
+<code>L2ScaleFamily</code>, or <code>L2LocationScaleFamily</code>,
+symmetry slots are updated to be centered about the 
+median of the (central) distribution (assuming the latter is
+symmetric about the median); as an intermediate step, these methods
+call the general <code>modifyModel</code>-method for signature <code>L2ParamFamily</code>;
+in this call, however, slot <code>fam.call</code> is not updated (this is
+the reason for argument <code>.withCall</code>); this is then
+done in the individual parts of the corresponding method.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+a corresponding instance of the model in argument <code>model</code> with moved
+parameters.</p>
+
+
+<hr><div align="center">[Package <em>distrMod</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

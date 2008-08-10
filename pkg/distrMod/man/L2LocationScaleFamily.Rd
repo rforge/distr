@@ -7,9 +7,10 @@
 }
 \usage{
 L2LocationScaleFamily(loc = 0, scale = 1, name, centraldistribution = Norm(),
-                      LogDeriv = function(x) x,  L2derivDistr.0,
-                      FisherInfo.0, distrSymm, L2derivSymm, L2derivDistrSymm,
-                      trafo, ...)
+                      locscalename = c("loc", "scale"), modParam, LogDeriv,  
+                      L2derivDistr.0, FisherInfo.0, distrSymm, L2derivSymm, 
+                      L2derivDistrSymm, trafo, .returnClsName = NULL)
+
 }
 \arguments{
   \item{loc}{numeric: location parameter of the model. }
@@ -18,8 +19,16 @@ L2LocationScaleFamily(loc = 0, scale = 1, name, centraldistribution = Norm(),
   \item{centraldistribution}{object of class \code{"AbscontDistribution"}:
     central distribution; we assume by default, that centraldistribution
     is symmetric about \eqn{0}}
+  \item{modParam}{ optional function: mapping from the parameter space 
+    (represented by \code{"param"}) to the distribution space 
+    (represented by \code{"distribution"}). }
+  \item{locscalename}{a character vector of length 2 containing the names
+  of the location and scale parameter; either unnamed, then order must
+  be \code{c(loc,scale)}, or named, then names must be \code{"loc"} and 
+  \code{"scale"}}
   \item{LogDeriv}{function with argument \code{x}: the negative logarithmic 
-    derivative of the density of the central distribution }
+    derivative of the density of the central distribution; if missing, it is
+    determined numerically using numeric differentiation. }
   \item{L2derivDistr.0}{list of length 2 of objects of class \code{"UnivariateDistribution"}:
     (marginal) distributions of the coordinates of the L2derivative at the 
     central distribution }
@@ -32,11 +41,18 @@ L2LocationScaleFamily(loc = 0, scale = 1, name, centraldistribution = Norm(),
   \item{L2derivDistrSymm}{ object of class \code{"DistrSymmList"}: 
     symmetry of the distributions contained in \code{L2derivDistr} }
   \item{trafo}{ matrix or  function in \code{param}: transformation of the parameter }
-  \item{...}{further arguments to be passed to \code{E}}
+  \item{.returnClsName}{ the class name of the return value; by default this
+    argument is \code{NULL} whereupon the return class will be 
+    \code{L2LocationScaleFamily}; but, internally, this generating function is also 
+    used to produce objects of class \code{NormalLocationScaleFamily}, 
+    \code{CauchyLocationScaleFamily}.} 
 }
 \details{
   If \code{name} is missing, the default 
   \dQuote{L2 location and scale family} is used.  
+  The function \code{modParam} is optional. If it is missing, it is 
+  constructed from \code{centraldistribution} using the location and
+  scale structure of the model.
   Slot \code{param} is filled accordingly with the argument 
   \code{trafo} passed to \code{L2LocationScaleFamily}.
   In case \code{L2derivDistr.0} is missing, \code{L2derivDistr} is computed 
@@ -46,9 +62,9 @@ L2LocationScaleFamily(loc = 0, scale = 1, name, centraldistribution = Norm(),
   from \code{L2deriv} using \code{E}.
   If \code{distrSymm} is missing, it is set to symmetry about \code{loc}.
   If \code{L2derivSymm} is missing, its location and scale components are set 
-  odd and even about \code{loc}, respectively.
+  to no symmetry , respectively.
   if \code{L2derivDistrSymm} is missing, its location and scale components are set 
-  to symmetry about \code{loc} and to no symmetry, respectively.
+  to no  symmetry, respectively.
 }
 \value{Object of class \code{"L2LocationScaleFamily"}}
 \references{
@@ -57,7 +73,8 @@ L2LocationScaleFamily(loc = 0, scale = 1, name, centraldistribution = Norm(),
   Kohl, M. (2005) \emph{Numerical Contributions to the Asymptotic Theory of Robustness}. 
   Bayreuth: Dissertation.
 }
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
+\author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
+Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}
 \seealso{\code{\link{L2LocationScaleFamily-class}}}
 \examples{

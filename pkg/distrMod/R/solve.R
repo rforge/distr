@@ -1,4 +1,5 @@
-setMethod("solve", signature(a = "ANY", b = "ANY"), function(a,b, generalized = TRUE,
+setMethod("solve", signature(a = "ANY", b = "ANY"), function(a,b, 
+             generalized = getdistrModOption("use.generalized.inverse.by.default"),
           tol = .Machine$double.eps, ...) {
                  if(!generalized) return(base::solve(a,b, tol = tol, ...))
                  else if(is(try(return(base::solve(a,b, tol = tol, ...)), 
@@ -11,7 +12,9 @@ setMethod("solve", signature(a = "ANY", b = "ANY"), function(a,b, generalized = 
              }})
 
 setMethod("solve", signature(a = "PosSemDefSymmMatrix", b = "ANY"), 
-           function(a,b, generalized = TRUE, tol = .Machine$double.eps, ...){
+           function(a,b, 
+               generalized = getdistrModOption("use.generalized.inverse.by.default"), 
+               tol = .Machine$double.eps, ...){
           if(!generalized) return(base::solve(a,b, tol = tol, ...))
           else{
             er <- eigen(a)

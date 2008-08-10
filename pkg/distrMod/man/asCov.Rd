@@ -25,4 +25,4 @@ function(){ new("asCov") }
 }
 \concept{asymptotic covariance}
 \concept{risk}
-\keyword{}
+\keyword{robust}

@@ -32,4 +32,4 @@ F1 <- new("L2ParamFamily")
 checkL2deriv(F1)
 }
 \concept{parametric family}
-\keyword{}
+\keyword{models}

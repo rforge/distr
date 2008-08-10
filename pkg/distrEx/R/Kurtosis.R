@@ -257,12 +257,7 @@ setMethod("kurtosis", signature(x = "Beta"),
 ###################################################################################
 
 setMethod("kurtosis", signature(x = "Arcsine"),
-    function(x, ...){
-    if((hasArg(fun))||(hasArg(cond))||(!isTRUE(all.equal(ncp(x),0)))) 
-        return(kurtosis(as(x,"AbscontDistribution"),...))
-    else
-        {return(-3/2)}
-    })
+    function(x, ...)return(-3/2))
 
 
 

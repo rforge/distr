@@ -24,9 +24,10 @@ Generates an object of class <code>"L2LocationScaleFamily"</code>.
 
 <pre>
 L2LocationScaleFamily(loc = 0, scale = 1, name, centraldistribution = Norm(),
-                      LogDeriv = function(x) x,  L2derivDistr.0,
-                      FisherInfo.0, distrSymm, L2derivSymm, L2derivDistrSymm,
-                      trafo, ...)
+                      locscalename = c("loc", "scale"), modParam, LogDeriv,  
+                      L2derivDistr.0, FisherInfo.0, distrSymm, L2derivSymm, 
+                      L2derivDistrSymm, trafo, .returnClsName = NULL)
+
 </pre>
 
 
@@ -47,10 +48,22 @@ character: name of the parametric family. </td></tr>
 object of class <code>"AbscontDistribution"</code>:
 central distribution; we assume by default, that centraldistribution
 is symmetric about <i>0</i></td></tr>
+<tr valign="top"><td><code>modParam</code></td>
+<td>
+optional function: mapping from the parameter space 
+(represented by <code>"param"</code>) to the distribution space 
+(represented by <code>"distribution"</code>). </td></tr>
+<tr valign="top"><td><code>locscalename</code></td>
+<td>
+a character vector of length 2 containing the names
+of the location and scale parameter; either unnamed, then order must
+be <code>c(loc,scale)</code>, or named, then names must be <code>"loc"</code> and 
+<code>"scale"</code></td></tr>
 <tr valign="top"><td><code>LogDeriv</code></td>
 <td>
 function with argument <code>x</code>: the negative logarithmic 
-derivative of the density of the central distribution </td></tr>
+derivative of the density of the central distribution; if missing, it is
+determined numerically using numeric differentiation. </td></tr>
 <tr valign="top"><td><code>L2derivDistr.0</code></td>
 <td>
 list of length 2 of objects of class <code>"UnivariateDistribution"</code>:
@@ -75,9 +88,13 @@ symmetry of the distributions contained in <code>L2derivDistr</code> </td></tr>
 <tr valign="top"><td><code>trafo</code></td>
 <td>
 matrix or  function in <code>param</code>: transformation of the parameter </td></tr>
-<tr valign="top"><td><code>...</code></td>
+<tr valign="top"><td><code>.returnClsName</code></td>
 <td>
-further arguments to be passed to <code>E</code></td></tr>
+the class name of the return value; by default this
+argument is <code>NULL</code> whereupon the return class will be 
+<code>L2LocationScaleFamily</code>; but, internally, this generating function is also 
+used to produce objects of class <code>NormalLocationScaleFamily</code>, 
+<code>CauchyLocationScaleFamily</code>.</td></tr>
 </table>
 
 <h3>Details</h3>
@@ -85,6 +102,9 @@ further arguments to be passed to <code>E</code></td></tr>
 <p>
 If <code>name</code> is missing, the default 
 &ldquo;L2 location and scale family&rdquo; is used.  
+The function <code>modParam</code> is optional. If it is missing, it is 
+constructed from <code>centraldistribution</code> using the location and
+scale structure of the model.
 Slot <code>param</code> is filled accordingly with the argument 
 <code>trafo</code> passed to <code>L2LocationScaleFamily</code>.
 In case <code>L2derivDistr.0</code> is missing, <code>L2derivDistr</code> is computed 
@@ -94,9 +114,9 @@ In case <code>FisherInfo.0</code> is missing, Fisher information is computed
 from <code>L2deriv</code> using <code>E</code>.
 If <code>distrSymm</code> is missing, it is set to symmetry about <code>loc</code>.
 If <code>L2derivSymm</code> is missing, its location and scale components are set 
-odd and even about <code>loc</code>, respectively.
+to no symmetry , respectively.
 if <code>L2derivDistrSymm</code> is missing, its location and scale components are set 
-to symmetry about <code>loc</code> and to no symmetry, respectively.
+to no  symmetry, respectively.
 </p>
 
 
@@ -108,6 +128,7 @@ Object of class <code>"L2LocationScaleFamily"</code></p>
 <h3>Author(s)</h3>
 
 <p>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>,<br>
 Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
 </p>
 

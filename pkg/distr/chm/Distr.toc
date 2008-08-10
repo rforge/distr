@@ -570,6 +570,14 @@
 <param name="Local" value="UnivarLebDecDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Arcsine">
+<param name="Local" value="Arcsine-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Arcsine-class">
+<param name="Local" value="Arcsine-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="ARITHMETICS">
 <param name="Local" value="distrARITH.html">
 </OBJECT>
@@ -1264,6 +1272,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="initialize,AffLinLatticeDistribution-method">
 <param name="Local" value="LatticeDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="initialize,Arcsine-method">
+<param name="Local" value="Arcsine-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="initialize,Beta-method">
@@ -2926,6 +2938,26 @@
 <param name="Local" value="showobj-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sign,AbscontDistribution-method">
+<param name="Local" value="Math-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sign,AcDcLcDistribution-method">
+<param name="Local" value="UnivarLebDecDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sign,DiscreteDistribution-method">
+<param name="Local" value="Math-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sign,UnivarLebDecDistribution-method">
+<param name="Local" value="UnivarLebDecDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sign-methods">
+<param name="Local" value="Math-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="simplifyD">
 <param name="Local" value="simplifyD-methods.html">
 </OBJECT>
@@ -3201,6 +3233,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Class "AbscontDistribution"">
 <param name="Local" value="ContDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Class "Arcsine"">
+<param name="Local" value="Arcsine-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Class "Beta"">

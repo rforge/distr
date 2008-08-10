@@ -1,3 +1,4 @@
+
 ### ---------------------------
 ### "multiple-purpose generics" --- 
 ###   for  
@@ -5,6 +6,22 @@
 ###      + stats/base function
 ###      + functional method
 ### ---------------------------
+
+### intentionally mask confint for additional ... argument P.R. 28-03-06
+
+confint <- function(object, method, ...)
+       {dots <- list(...)
+        mc <- match.call()[-1]
+        nmc <- names(as.list(mc))
+        mc0 <- as.list(mc)[!nmc %in% c("object", "parm", "level")]
+        arglist <- list(object = object)
+        if(hasArg(parm)) arglist <- c(arglist, parm = dots$"parm")
+        if(hasArg(level)) arglist <- c(arglist, level = dots$"level")
+        else arglist <- c(arglist, level = 0.95)   
+        if(length(mc0)) arglist <- c(arglist, mc0)
+        do.call(stats::confint, arglist)
+        }   
+
 
 ## access and replace methods
 #if(!isGeneric("param<-")){ 
@@ -44,13 +61,16 @@ if(!isGeneric("nuisance<-")){
     setGeneric("nuisance<-", function(object, value) standardGeneric("nuisance<-"))
 }
 if(!isGeneric("trafo")){
-    setGeneric("trafo", function(object) standardGeneric("trafo"))
+    setGeneric("trafo", function(object, param) standardGeneric("trafo"))
 }
 if(!isGeneric("trafo<-")){
     setGeneric("trafo<-", function(object, value) standardGeneric("trafo<-"))
 }
 if(!isGeneric("modifyParam")){
     setGeneric("modifyParam", function(object) standardGeneric("modifyParam"))
+}
+if(!isGeneric("fam.call")){
+    setGeneric("fam.call", function(object) standardGeneric("fam.call"))
 }
 if(!isGeneric("dimension")){
     setGeneric("dimension", function(object) standardGeneric("dimension"))
@@ -141,6 +161,24 @@ if(!isGeneric("fct")){
 if(!isGeneric("estimate")){
     setGeneric("estimate", function(object) standardGeneric("estimate"))
 }
+if(!isGeneric("estimate.call")){
+    setGeneric("estimate.call", function(object) standardGeneric("estimate.call"))
+}
+if(!isGeneric("name.estimate")){
+    setGeneric("name.estimate", function(object) standardGeneric("name.estimate"))
+}
+if(!isGeneric("trafo.estimate")){
+    setGeneric("trafo.estimate", function(object) standardGeneric("trafo.estimate"))
+}
+if(!isGeneric("nuisance.estimate")){
+    setGeneric("nuisance.estimate", function(object) standardGeneric("nuisance.estimate"))
+}
+if(!isGeneric("samplesize.estimate")){
+    setGeneric("samplesize.estimate", function(object) standardGeneric("samplesize.estimate"))
+}
+if(!isGeneric("call.estimate")){
+    setGeneric("call.estimate", function(object) standardGeneric("call.estimate"))
+}
 if(!isGeneric("Infos")){
     setGeneric("Infos", function(object) standardGeneric("Infos"))
 }
@@ -155,4 +193,53 @@ if(!isGeneric("criterion")){
 }
 if(!isGeneric("criterion<-")){
     setGeneric("criterion<-", function(object, value) standardGeneric("criterion<-"))
+}
+if(!isGeneric("samplesize")){
+    setGeneric("samplesize", function(object) standardGeneric("samplesize"))
+}
+if(!isGeneric("asvar")){
+    setGeneric("asvar", function(object) standardGeneric("asvar"))
+}
+if(!isGeneric("asvar<-")){
+    setGeneric("asvar<-", function(object, value) standardGeneric("asvar<-"))
+}
+if(!isGeneric("nuisance")){
+    setGeneric("nuisance", function(object,... ) standardGeneric("nuisance"))
+}
+if(!isGeneric("main")){
+    setGeneric("main", function(object,... ) standardGeneric("main"))
+}
+
+#if(!isGeneric("confint")){
+setGeneric("confint", function(object, method, ... ) standardGeneric("confint"))
+#}
+
+if(!isGeneric("validParameter")){
+    setGeneric("validParameter", function(object, ... ) standardGeneric("validParameter"))
+}
+if(!isGeneric("untransformed.asvar")){
+    setGeneric("untransformed.asvar", 
+                function(object) standardGeneric("untransformed.asvar"))
+}
+if(!isGeneric("untransformed.estimate")){
+    setGeneric("untransformed.estimate", 
+                function(object) standardGeneric("untransformed.estimate"))
+}
+if(!isGeneric("startPar")){
+    setGeneric("startPar", function(object, ...) standardGeneric("startPar"))
+}
+if(!isGeneric("makeOKPar")){
+    setGeneric("makeOKPar", function(object, ...) standardGeneric("makeOKPar"))
+}
+if(!isGeneric("locscalename")){
+    setGeneric("locscalename", function(object) standardGeneric("locscalename"))
+}
+if(!isGeneric("locscalename<-")){
+    setGeneric("locscalename<-", function(object, value) standardGeneric("locscalename<-"))
+}
+if(!isGeneric("LogDeriv")){
+    setGeneric("LogDeriv", function(object) standardGeneric("LogDeriv"))
+}
+if(!isGeneric("LogDeriv<-")){
+    setGeneric("LogDeriv<-", function(object, value) standardGeneric("LogDeriv<-"))
 }

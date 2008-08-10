@@ -71,7 +71,15 @@ Class <code>"Distribution"</code>, by class <code>"UnivariateDistribution"</code
 <dl>
 <dt>initialize</dt><dd><code>signature(.Object = "AbscontDistribution")</code>: initialize method </dd>
 <dt>Math</dt><dd><code>signature(x = "AbscontDistribution")</code>: application of a mathematical function, e.g. <code>sin</code> or
-<code>exp</code> (does not work with <code>log</code>!), to this absolutely continouos distribution</dd>
+<code>exp</code> (does not work with <code>log</code>, <code>sign</code>!), to this absolutely continouos distribution</dd>
+<code>abs</code>{<code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>abs(x)</code>.}
+<code>exp</code>{<code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>exp(x)</code>.}
+<code>sign</code>{<code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>sign(x)</code>.}
+<code>log</code>{<code>signature(x = "AbscontDistribution")</code>:  (with optional further argument <code>base</code>, 
+defaulting to <code>exp(1)</code>) exact image distribution of <code>log(x)</code>.}
+<code>log10</code>{<code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>log10(x)</code>.}
+<code>gamma</code>{<code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>gamma(x)</code>.}
+<code>lgamma</code>{<code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>lgamma(x)</code>.}
 <dt>-</dt><dd><code>signature(e1 = "AbscontDistribution")</code>: application of `-' to this absolutely continuous distribution</dd>
 <dt>*</dt><dd><code>signature(e1 = "AbscontDistribution", e2 = "numeric")</code>: multiplication of this absolutely continuous 
 distribution by an object of class `numeric'</dd>

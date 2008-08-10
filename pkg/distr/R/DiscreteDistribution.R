@@ -346,25 +346,38 @@ setMethod("exp", "DiscreteDistribution",
 if (getRversion()>='2.6.0'){ 
 
 setMethod("log", "DiscreteDistribution",
-           function(x) {
+           function(x, base = exp(1)) {
            xs <- as.character(deparse(match.call(
                  call = sys.call(sys.parent(1)))$x))
            ep <- getdistrOption("TruncQuantile")
+           basl <- log(base)
            if(p(x)(0)>ep) 
                 stop(gettextf("log(%s) is not well-defined with positive probability ", xs))
-           else return(.logm.d(x))})
+           else return(.logm.d(x)/basl)})
 
 setMethod("log", "Dirac",
-          function(x){ xs <- as.character(deparse(match.call(
+          function(x, base = exp(1)){ 
+                       xs <- as.character(deparse(match.call(
                              call = sys.call(sys.parent(1)))$x))
                        loc <- location(x) 
                        ep <- getdistrOption("TruncQuantile")
+                       basl <- log(base)
                        if(loc < ep) 
                           stop(gettextf("log(%s) is not well-defined with positive probability ", xs))                       
-                       Dirac(log(loc))})
+                       Dirac(log(loc)/basl)})
 
 setMethod("log10", "DiscreteDistribution",
-          function(x) log(x = x)/log(x = 10))
+          function(x) log(x = x, base = 10))
+
+setMethod("sign", "DiscreteDistribution",
+          function(x){ 
+          d0 <- d(x)(0)
+          DiscreteDistribution(supp=c(-1,0,1), 
+              prob=c(p(x)(-getdistrOption("TruncQuantile")),
+                     d0,
+                     p(x)(getdistrOption("TruncQuantile"), lower=FALSE)))                     
+          })
+
 
 setMethod("lgamma", "DiscreteDistribution",
           function(x){

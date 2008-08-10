@@ -7,13 +7,25 @@
   estimates.
 }
 \usage{
-Estimator(x, estimator, name, Infos, ...)
+Estimator(x, estimator, name, Infos, asvar = NULL, nuis.idx,
+          trafo = NULL, asvar.fct, ...)
 }
 \arguments{
   \item{x}{ (empirical) data }
   \item{estimator}{ function: estimator to be evaluated on \code{x}. }
   \item{name}{ optional name for estimator. }
   \item{Infos}{ character: optional informations about estimator }
+  \item{asvar}{ optionally the asymptotic (co)variance of the estimator }
+  \item{nuis.idx}{ optionally the indices of the estimate belonging 
+                  to nuisance parameter}
+  \item{trafo}{ an object of class \code{MatrixorFunction} -- a transformation
+  for the main parameter}
+  \item{asvar.fct}{optionally: a function to determine the corresponding
+    asymptotic variance; if given, \code{asvar.fct} takes arguments
+    \code{L2Fam}((the parametric model as object of class \code{L2ParamFamily})) 
+    and \code{param} (the parameter value as object of class 
+    \code{ParamFamParameter}); arguments are called by name; \code{asvar.fct}
+     may also process further arguments passed through the \code{\dots} argument}              
   \item{\dots}{ further arguments to \code{estimator}. }
 }
 \details{
@@ -25,7 +37,8 @@ Estimator(x, estimator, name, Infos, ...)
   An object of S4-class \code{"Estimate"}.
 }
 %\references{  }
-\author{Matthias Kohl \email{Matthias.Kohl@stamats.de}}
+\author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
+Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}
 \seealso{\code{\link{Estimate-class}} }
 \examples{

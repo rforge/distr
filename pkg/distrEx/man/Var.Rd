@@ -383,6 +383,7 @@ kurtosis(x, ...)
     exact evaluation using explicit expressions.}
   \item{\code{var}, \code{signature(x = "Arcsine")}:}{ 
     exact evaluation using explicit expressions.}
+
   \item{\code{IQR}, \code{signature(x = "Cauchy")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{IQR}, \code{signature(x = "Dirac")}:}{ 
@@ -401,6 +402,7 @@ kurtosis(x, ...)
     exact evaluation using explicit expressions.}
   \item{\code{IQR}, \code{signature(x = "Arcsine")}:}{ 
     exact evaluation using explicit expressions.}
+
   \item{\code{median}, \code{signature(x = "Cauchy")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{median}, \code{signature(x = "Dirac")}:}{ 
@@ -421,6 +423,7 @@ kurtosis(x, ...)
     exact evaluation using explicit expressions.}
   \item{\code{median}, \code{signature(x = "Arcsine")}:}{ 
     exact evaluation using explicit expressions.}
+
   \item{\code{mad}, \code{signature(x = "Cauchy")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{mad}, \code{signature(x = "Dirac")}:}{ 
@@ -439,7 +442,8 @@ kurtosis(x, ...)
     exact evaluation using explicit expressions.}
   \item{\code{mad}, \code{signature(x = "Arcsine")}:}{ 
     exact evaluation using explicit expressions.}
-\item{\code{skewness}, \code{signature(x = "Beta")}:}{ 
+
+  \item{\code{skewness}, \code{signature(x = "Beta")}:}{ 
     for noncentrality 0 exact evaluation using explicit expressions.}  
   \item{\code{skewness}, \code{signature(x = "Binom")}:}{ 
     exact evaluation using explicit expressions.}
@@ -479,7 +483,8 @@ kurtosis(x, ...)
     exact evaluation using explicit expressions.}
   \item{\code{skewness}, \code{signature(x = "Arcsine")}:}{ 
     exact evaluation using explicit expressions.}
-\item{\code{kurtosis}, \code{signature(x = "Beta")}:}{ 
+  
+  \item{\code{kurtosis}, \code{signature(x = "Beta")}:}{ 
     for noncentrality 0 exact evaluation using explicit expressions.}  
   \item{\code{kurtosis}, \code{signature(x = "Binom")}:}{ 
     exact evaluation using explicit expressions.}

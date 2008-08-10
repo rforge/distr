@@ -237,12 +237,7 @@ setMethod("skewness", signature(x = "Beta"),
 ###################################################################################
 
 setMethod("skewness", signature(x = "Arcsine"),
-    function(x, ...){
-    if((hasArg(fun))||(hasArg(cond))||(!isTRUE(all.equal(ncp(x),0)))) 
-        return(skewness(as(x,"AbscontDistribution"),...))
-    else
-        {return( 0 ) }
-    })
+    function(x, ...)return(0))
 
 
 

@@ -80,11 +80,9 @@ the Asymptotic Theory of Robustness</EM>. Bayreuth: Dissertation.
 <h3>Examples</h3>
 
 <pre>
-distrExOptions("EupperTruncQuantile" = 1e-15) # problem with q(Gamma())(1) = NaN
 (G1 &lt;- GammaFamily())
 FisherInfo(G1)
 checkL2deriv(G1)
-distrExOptions("EupperTruncQuantile" = 0) # default
 </pre>
 
 <script Language="JScript">

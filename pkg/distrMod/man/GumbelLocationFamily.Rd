@@ -27,13 +27,10 @@ GumbelLocationFamily(loc = 0, scale = 1, trafo)
 %\note{}
 \seealso{\code{\link{L2ParamFamily-class}}, \code{\link[distrEx]{Gumbel-class}}}
 \examples{
-distrExOptions("ElowerTruncQuantile" = 1e-15) # problem with 
-                                            # non-finite function value
 (G1 <- GumbelLocationFamily())
 plot(G1)
 Map(L2deriv(G1)[[1]])
 checkL2deriv(G1)
-distrExOptions("ElowerTruncQuantile" = 0) # default
 }
 \concept{Gumbel location model}
 \concept{location model}

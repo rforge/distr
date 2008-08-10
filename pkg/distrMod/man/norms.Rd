@@ -25,4 +25,4 @@ QuadFormNorm(mm, A = PosSemDefSymmMatrix(matrix(c(3,1,1,1),2,2)))
 }
 \concept{bias}
 \concept{risk}
-\keyword{}
+\keyword{robust}

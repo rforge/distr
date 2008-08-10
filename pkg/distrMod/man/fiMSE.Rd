@@ -23,4 +23,4 @@ function(){ new("fiMSE") }
 }
 \concept{mean square error}
 \concept{risk}
-\keyword{}
+\keyword{robust}

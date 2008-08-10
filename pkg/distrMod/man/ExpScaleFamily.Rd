@@ -7,10 +7,10 @@
   represents an exponential scale family.
 }
 \usage{
-ExpScaleFamily(rate = 1, trafo)
+ExpScaleFamily(scale = 1, trafo)
 }
 \arguments{
-  \item{rate}{ rate }
+  \item{scale}{ scale (= 1/rate) }
   \item{trafo}{ function in \code{param} or matrix: optional transformation of the parameter }
 }
 \details{

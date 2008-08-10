@@ -29,4 +29,4 @@ function(bound = Inf){ new("fiHampel", bound = bound) }
 }
 \concept{Hampel risk}
 \concept{risk}
-\keyword{}
+\keyword{robust}

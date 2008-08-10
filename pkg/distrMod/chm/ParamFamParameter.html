@@ -41,7 +41,7 @@ numeric vector: main parameter </td></tr>
 numeric vector: nuisance paramter </td></tr>
 <tr valign="top"><td><code>trafo</code></td>
 <td>
-matrix: transformation of the parameter </td></tr>
+MatrixorFunction: transformation of the parameter </td></tr>
 </table>
 
 <h3>Details</h3>
@@ -80,7 +80,10 @@ Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de
 <h3>Examples</h3>
 
 <pre>
-ParamFamParameter(main = 0, nuisance = 1, trafo = diag(c(1,2)))
+ParamFamParameter(main = 0, nuisance = 1, 
+                  trafo = function(x) list(fval = sin(x), 
+                                            mat = matrix(cos(x),1,1))
+                  )                          
 
 ## The function is currently defined as
 function(name, main = numeric(0), nuisance, trafo){
@@ -89,7 +92,7 @@ function(name, main = numeric(0), nuisance, trafo){
     if(missing(nuisance))
         nuisance &lt;- NULL
     if(missing(trafo))
-        trafo &lt;- diag(length(main)+length(nuisance))
+        trafo &lt;- diag(length(main))
 
     return(new("ParamFamParameter", name = name, main = main, 
                nuisance = nuisance, trafo = trafo))

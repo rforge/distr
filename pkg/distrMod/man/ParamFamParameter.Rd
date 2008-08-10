@@ -12,7 +12,7 @@ ParamFamParameter(name, main = numeric(0), nuisance, trafo)
   \item{name}{ character string: name of parameter }
   \item{main}{ numeric vector: main parameter }
   \item{nuisance}{ numeric vector: nuisance paramter }
-  \item{trafo}{ matrix: transformation of the parameter }
+  \item{trafo}{MatrixorFunction: transformation of the parameter }
 }
 \details{
   If \code{name} is missing, the default 
@@ -30,7 +30,10 @@ ParamFamParameter(name, main = numeric(0), nuisance, trafo)
 %\note{}
 \seealso{\code{\link{ParamFamParameter-class}}}
 \examples{
-ParamFamParameter(main = 0, nuisance = 1, trafo = diag(c(1,2)))
+ParamFamParameter(main = 0, nuisance = 1, 
+                  trafo = function(x) list(fval = sin(x), 
+                                            mat = matrix(cos(x),1,1))
+                  )                          
 
 ## The function is currently defined as
 function(name, main = numeric(0), nuisance, trafo){
@@ -39,7 +42,7 @@ function(name, main = numeric(0), nuisance, trafo){
     if(missing(nuisance))
         nuisance <- NULL
     if(missing(trafo))
-        trafo <- diag(length(main)+length(nuisance))
+        trafo <- diag(length(main))
 
     return(new("ParamFamParameter", name = name, main = main, 
                nuisance = nuisance, trafo = trafo))

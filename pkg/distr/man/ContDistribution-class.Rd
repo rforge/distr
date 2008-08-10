@@ -45,7 +45,15 @@ Class \code{"Distribution"}, by class \code{"UnivariateDistribution"}.
   \describe{
     \item{initialize}{\code{signature(.Object = "AbscontDistribution")}: initialize method }
     \item{Math}{\code{signature(x = "AbscontDistribution")}: application of a mathematical function, e.g. \code{sin} or
-    \code{exp} (does not work with \code{log}!), to this absolutely continouos distribution}
+    \code{exp} (does not work with \code{log}, \code{sign}!), to this absolutely continouos distribution}
+    \code{abs}{\code{signature(x = "AbscontDistribution")}:  exact image distribution of \code{abs(x)}.}
+    \code{exp}{\code{signature(x = "AbscontDistribution")}:  exact image distribution of \code{exp(x)}.}
+    \code{sign}{\code{signature(x = "AbscontDistribution")}:  exact image distribution of \code{sign(x)}.}
+    \code{log}{\code{signature(x = "AbscontDistribution")}:  (with optional further argument \code{base}, 
+    defaulting to \code{exp(1)}) exact image distribution of \code{log(x)}.}
+    \code{log10}{\code{signature(x = "AbscontDistribution")}:  exact image distribution of \code{log10(x)}.}
+    \code{gamma}{\code{signature(x = "AbscontDistribution")}:  exact image distribution of \code{gamma(x)}.}
+    \code{lgamma}{\code{signature(x = "AbscontDistribution")}:  exact image distribution of \code{lgamma(x)}.}
     \item{-}{\code{signature(e1 = "AbscontDistribution")}: application of `-' to this absolutely continuous distribution}
     \item{*}{\code{signature(e1 = "AbscontDistribution", e2 = "numeric")}: multiplication of this absolutely continuous 
     distribution by an object of class `numeric'}

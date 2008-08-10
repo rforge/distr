@@ -40,7 +40,9 @@ Class \code{"Distribution"}, by class \code{"UnivariateDistribution"}.
     \code{tan} to this discrete distribution}
     \code{abs}{\code{signature(x = "DiscreteDistribution")}:  exact image distribution of \code{abs(x)}.}
     \code{exp}{\code{signature(x = "DiscreteDistribution")}:  exact image distribution of \code{exp(x)}.}
-    \code{log}{\code{signature(x = "DiscreteDistribution")}:  exact image distribution of \code{log(x)}.}
+    \code{sign}{\code{signature(x = "DiscreteDistribution")}:  exact image distribution of \code{sign(x)}.}
+    \code{log}{\code{signature(x = "DiscreteDistribution")}:  (with optional further argument \code{base}, 
+    defaulting to \code{exp(1)}) exact image distribution of \code{log(x)}.}
     \code{log10}{\code{signature(x = "DiscreteDistribution")}:  exact image distribution of \code{log10(x)}.}
     \code{gamma}{\code{signature(x = "DiscreteDistribution")}:  exact image distribution of \code{gamma(x)}.}
     \code{lgamma}{\code{signature(x = "DiscreteDistribution")}:  exact image distribution of \code{lgamma(x)}.}

@@ -11,9 +11,14 @@
 <param name="keyword" value="R:   param,ParamFamily-method">
 <param name="keyword" value="R:   modifyParam">
 <param name="keyword" value="R:   modifyParam,ParamFamily-method">
+<param name="keyword" value="R:   fam.call">
+<param name="keyword" value="R:   fam.call,ParamFamily-method">
+<param name="keyword" value="R:   startPar">
+<param name="keyword" value="R:   startPar,ParamFamily-method">
+<param name="keyword" value="R:   makeOKPar">
+<param name="keyword" value="R:   makeOKPar,ParamFamily-method">
 <param name="keyword" value="R:   plot,ParamFamily-method">
 <param name="keyword" value="R:   show,ParamFamily-method">
-<param name="keyword" value="R:   trafo,ParamFamily-method">
 <param name="keyword" value=" Parametric family of probability measures.">
 </object>
 
@@ -40,18 +45,34 @@ More frequently they are created via the generating function
 <h3>Slots</h3>
 
 <dl>
-<dt><code>param</code>:</dt><dd>Object of class <code>"ParamFamParameter"</code>:
+<dt><code>name</code>:</dt><dd>[inherited from class <code>"ProbFamily"</code>] 
+object of class <code>"character"</code>: 
+name of the family. </dd>
+<dt><code>distribution</code>:</dt><dd>[inherited from class <code>"ProbFamily"</code>] 
+object of class <code>"Distribution"</code>:
+member of the family. </dd>
+<dt><code>distrSymm</code>:</dt><dd>[inherited from class <code>"ProbFamily"</code>] 
+object of class <code>"DistributionSymmetry"</code>: 
+symmetry of <code>distribution</code>. </dd>
+<dt><code>param</code>:</dt><dd>object of class <code>"ParamFamParameter"</code>:
 parameter of the family. </dd>
-<dt><code>modifyParam</code>:</dt><dd>Object of class <code>"function"</code>:
+<dt><code>fam.call</code>:</dt><dd>object of class <code>"call"</code>:
+call by which parametric family was produced.</dd>
+<dt><code>makeOKPar</code>:</dt><dd>object of class <code>"function"</code>:
+has argument <code>param</code> &mdash; the (total) parameter, 
+returns valid parameter; used if <code>optim</code> resp. <code>optimize</code>&mdash;
+try to use ``illegal'' parameter values; then <code>makeOKPar</code> makes
+a valid parameter value out of the illegal one.</dd>
+<dt><code>startPar</code>:</dt><dd>object of class <code>"function"</code>:
+has argument <code>x</code> &mdash; the data, 
+returns starting parameter for <code>optim</code> resp. <code>optimize</code>&mdash;
+a starting estimator in case parameter is multivariate
+or a search interval in case parameter is univariate.</dd>
+<dt><code>modifyParam</code>:</dt><dd>object of class <code>"function"</code>:
 mapping from the parameter space (represented by <code>"param"</code>) 
 to the distribution space (represented by <code>"distribution"</code>). </dd>
-<dt><code>name</code>:</dt><dd>Object of class <code>"character"</code>:
-name of the family. </dd>
-<dt><code>distribution</code>:</dt><dd>Object of class <code>"Distribution"</code>:
-member of the family.</dd>
-<dt><code>distrSymm</code>:</dt><dd>Object of class <code>"DistributionSymmetry"</code>: 
-symmetry of <code>distribution</code>. </dd>
-<dt><code>props</code>:</dt><dd>Object of class <code>"character"</code>:
+<dt><code>props</code>:</dt><dd>[inherited from class <code>"ProbFamily"</code>]
+object of class <code>"character"</code>:
 properties of the family. </dd>
 </dl>
 
@@ -75,7 +96,7 @@ wrapped accessor function for slot <code>nuisance</code>
 of slot <code>param</code>. </dd>
 
 
-<dt>trafo</dt><dd><code>signature(object = "ParamFamily")</code>: 
+<dt>trafo</dt><dd><code>signature(object = "ParamFamily", param = "missing")</code>: 
 wrapped accessor function for slot <code>trafo</code> 
 of slot <code>param</code>. </dd>
 
@@ -88,12 +109,41 @@ accessor function for slot <code>param</code>. </dd>
 accessor function for slot <code>modifyParam</code>. </dd>
 
 
+<dt>fam.call</dt><dd><code>signature(object = "ParamFamily")</code>: 
+accessor function for slot <code>fam.call</code>. </dd>
+
+
 <dt>plot</dt><dd><code>signature(x = "ParamFamily")</code>: 
 plot of slot <code>distribution</code>. </dd>
 
 
 <dt>show</dt><dd><code>signature(object = "ParamFamily")</code></dd>
+
+<p>
 </dl>
+
+<h3>Details for methods this-is-escaped-codenormal-bracket116bracket-normal, this-is-escaped-codenormal-bracket117bracket-normal</h3>
+
+<p>
+Detailedness of output by methods <code>show</code>, <code>print</code> is controlled
+by the global option <code>show.details</code> to be set by 
+<code><a href="distrModOptions.html">distrModoptions</a></code>.
+</p>
+<p>
+As method <code>show</code> is used when inspecting an object by typing the object's 
+name into the console, <code>show</code> comes without extra arguments and hence 
+detailedness must be controlled  by global options. 
+</p>
+<p>
+Method <code>print</code> may be called with a (partially matched) argument
+<code>show.details</code>, and then the global option is temporarily set to this
+value.
+</p>
+<p>
+For class <code>ParamFamily</code>, this becomes relevant for slot <code>param</code>.
+For details therefore confer to <code><a href="ParamFamParameter-class.html">ParamFamParameter-class</a></code>.
+</p>
+
 
 <h3>Author(s)</h3>
 

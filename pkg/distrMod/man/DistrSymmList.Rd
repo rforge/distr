@@ -28,4 +28,4 @@ function (...){
 }
 }
 \concept{symmetry}
-\keyword{}
+\keyword{distribution}

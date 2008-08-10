@@ -341,28 +341,37 @@ setMethod("exp", "UnivarLebDecDistribution",
 
 
 setMethod("log", "UnivarLebDecDistribution",
-          function(x){
+          function(x, base = exp(1)){
            xs <- as.character(deparse(match.call(
                  call = sys.call(sys.parent(1)))$x))
            ep <- getdistrOption("TruncQuantile")
+           basl <- log(base)
            if(p(x)(0)>ep) 
                 stop(gettextf("log(%s) is not well-defined with positive probability ", xs))
            
            if(acWeight(x)>1-getdistrOption("TruncQuantile")) 
               {x <- force(acPart(x))
-               return(as(log(x),"UnivarLebDecDistribution"))}    
+               return(as(log(x, base = base),"UnivarLebDecDistribution"))}    
            if(acWeight(x) < getdistrOption("TruncQuantile")) 
               {x <- force(discretePart(x))
-               return(as(log(x),"UnivarLebDecDistribution"))}    
+               return(as(log(x, base = base),"UnivarLebDecDistribution"))}    
            return(UnivarLebDecDistribution(
-                     discretePart = log(discretePart(x)),
-                     acPart = log(acPart(x)),
+                     discretePart = log(discretePart(x), base = base),
+                     acPart = log(acPart(x), base = base),
                      discreteWeight = discreteWeight(x),
                      acWeight = acWeight(x)))})
 
 setMethod("log10", "UnivarLebDecDistribution",
-          function(x) log(x=x)/log(x=10))
+          function(x) log(x = x, base = 10))
 
+setMethod("sign", "UnivarLebDecDistribution",
+          function(x){ 
+          d0 <- d.discrete(as(x,UnivarLebDecDistribution))(0)
+          DiscreteDistribution(supp=c(-1,0,1), 
+              prob=c(p(x)(-getdistrOption("TruncQuantile")),
+                     d0,
+                     p(x)(getdistrOption("TruncQuantile"), lower=FALSE)))                     
+          })
 
 #######################
 

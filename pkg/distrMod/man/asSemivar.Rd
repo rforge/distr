@@ -26,4 +26,4 @@ asSemivar()
 }
 \concept{bias}
 \concept{semivariance}
-\keyword{}
+\keyword{robust}

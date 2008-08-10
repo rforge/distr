@@ -309,12 +309,7 @@ setMethod("var", signature(x = "Beta"),
     })
 
 setMethod("var", signature(x = "Arcsine"),
-    function(x, ...){
-    if((hasArg(fun))||(hasArg(cond))||(!isTRUE(all.equal(ncp(x),0)))) 
-        return(var(as(x,"AbscontDistribution"),...))
-    else
-        {return(1/2)}
-    })
+    function(x, ...)return(1/2))
 
 #################################################################
 # some exact medians

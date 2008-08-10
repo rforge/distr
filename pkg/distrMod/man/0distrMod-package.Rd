@@ -26,7 +26,9 @@ URL: \tab http://distr.r-forge.r-project.org/\cr
 \section{Classes}{
 \preformatted{
 
+##########################
 ProbFamily classes
+##########################
 slots: [<name>(<class>)] 
 name(character), distribution(Distribution),
 distrSym(DistributionSymmetry), props(character)
@@ -34,15 +36,57 @@ distrSym(DistributionSymmetry), props(character)
 "ProbFamily"
 |>"ParamFamily"
 additional slots:
-param(ParamFamParameter), modifyParam(function)
+param(ParamFamParameter), modifyParam(function),
+startPar(function), makeOKPar(function), fam.call(call)
+|>|>"L2ParamFamily"
+additional slots:
+L2deriv(EuclRandVarList), L2deriv.fct(function), 
+L2derivSymm(FunSymmList), L2derivDistr(DistrList),
+L2derivDistrSymm(DistrSymmList), FisherInfo(PosSemDefSymmMatrix),
+FisherInfo.fct(function)
+|>|>|>"BinomFamily"
+|>|>|>"PoisFamily"
+|>|>|>"GammaFamily"
+|>|>|>"BetaFamily"
+|>|>|>"L2GroupParamFamily"
+additional slots:
+LogDeriv(function)
+|>|>|>|>"L2LocationScaleUnion"  /VIRTUAL/
+additional slots:
+locscalename(character)
+|>|>|>|>|>"L2LocationFamily"
+|>|>|>|>|>|>"NormLocationFamily"
+|>|>|>|>|>|>"GumbelLocationFamily" 
+|>|>|>|>|>"L2ScaleFamily"
+|>|>|>|>|>|>"NormScaleFamily"
+|>|>|>|>|>|>"ExpScaleFamily"
+|>|>|>|>|>|>"LnormScaleFamily"
+|>|>|>|>|>"L2LocationScaleFamily"
+|>|>|>|>|>|>"NormLocationScaleFamily"
+|>|>|>|>|>|>"CauchyLocationScaleFamily"
 
+##########################
+ParamFamParameter
+##########################
 "ParamFamParameter" is subclass of class "Parameter" of package "distr".
 Additional slots:
-main(numeric), nuisance(OptionalNumeric), trafo(matrix)
+main(numeric), nuisance(OptionalNumeric), trafo(MatrixorFunction)
 
+##########################
+Class unions
+##########################
 "OptionalNumeric" = union("numeric", "NULL")
+"OptionalMatrix" = union("matrix", "NULL")
+"MatrixorFunction" = union("matrix", "OptionalFunction")
+"PrintDetails" = union("Estimate", "Confint", 
+                   "PosSemDefSymmMatrix",
+                   "ParamFamParameter", "ParamFamily")
 
+
+
+##########################
 Symmetry classes
+##########################
 slots:
 type(character), SymmCenter(ANY)
 
@@ -50,6 +94,115 @@ type(character), SymmCenter(ANY)
 |>"NoSymmetry"
 |>"EllipticalSymmetry"
 |>|>"SphericalSymmetry"
+|>"DistributionSymmetry"
+|>"FunctionSymmetry"
+|>|>"NonSymmetric"
+|>|>"EvenSymmetric"
+|>|>"OddSymmetric"
+
+list thereof
+"DistrSymmList"
+"FunSymmList"
+
+##########################
+Matrix classes
+##########################
+slots:
+none
+"PosSemDefSymmMatrix" is subclass of class "matrix" of package "base".
+|>"PosDefSymmMatrix"
+
+
+##########################
+Norm Classes
+##########################
+slots:
+name(character), fct(function)
+
+"NormType"
+|>"QFNorm"
+Additional slots:
+QuadForm(PosSemDefSymmMatrix)
+|>|>"InfoNorm"
+|>|>"SelfNorm"
+
+##########################
+Bias Classes
+##########################
+slots:
+name(character)
+
+"BiasType"
+|>"symmetricBias"
+|>"onesidedBias"
+Additional slots:
+sign(numeric)
+|>"asymmetricBias", 
+Additional slots:
+nu(numeric)
+
+##########################
+Risk Classes
+##########################
+slots:
+type(character)
+
+"RiskType"
+|>"asRisk"
+|>|>"asCov"
+|>|>"trAsCov"
+|>"fiRisk"
+|>|>"fiCov"
+|>|>"trfiCov"
+|>|>"fiHampel"
+Additional slots:
+bound(numeric)
+|>|>"fiMSE"
+|>|>"fiBias"
+|>|>"fiUnOvShoot"
+Additional slots:
+width(numeric)
+
+Risk with Bias:
+"asRiskwithBias"
+slots: biastype(BiasType), normtype(NormType),
+|>"asHampel"
+Additional slots:
+bound(numeric)
+|>"asBias"
+|>"asGRisk"
+|>|>"asMSE"
+|>|>"asUnOvShoot"
+Additional slots:
+width(numeric)
+|>|>"asSemivar"
+
+
+##########################
+Estimate Classes
+##########################
+slots:
+name(character), estimate(ANY),
+samplesize(numeric), asvar(OptionalMatrix),
+Infos(matrix), nuis.idx(OptionalNumeric)
+estimate.call(call), trafo(list[of function, matrix]),
+untransformed.estimate(ANY), untransformed.asvar(OptionalMatrix)
+
+"Estimate"
+|>"MCEstimate", 
+Additional slots:
+criterion(numeric)
+
+##########################
+Confidence interval class
+##########################
+slots:
+type(character), confint(array),
+estimate.call(call), name.estimate(character),
+trafo.estimate(list[of function, matrix]), 
+nuisance.estimate(OptionalNumeric)
+"Confint"
+
 }
 }
 \section{Methods}{

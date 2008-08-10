@@ -23,17 +23,78 @@
 #    return(res)
 #}
 
+## caching to speed up things:
+.inArgs <- distr:::.inArgs
+
 ## Maximum-Likelihood estimator
-MLEstimator <- function(x, ParamFamily, interval, par, Infos, ...){
+MLEstimator <- function(x, ParamFamily, startPar = NULL, 
+                        Infos, trafo = NULL, penalty = 0, ...){
+
+    es.call <- match.call()
+
+
     negLoglikelihood <- function(x, Distribution, ...){
-        res <- -sum(log(Distribution@d(x, ...)))
+### increase accuracy:
+        if(Distribution@.withSim||!.inArgs("log",d(Distribution)))
+           res <- -sum(log(Distribution@d(x, ...)))
+        else  
+           res <- -sum(Distribution@d(x, log = TRUE, ...))
         return(res)
     }
 
-    res <- MCEstimator(x = x, ParamFamily = ParamFamily, criterion = negLoglikelihood,
-                interval = interval, par = par, ...)
+    
+    lmx <- length(main(ParamFamily))
+    lnx <- length(nuisance(ParamFamily))
+    idx <- 1:lmx
+    
+    if(is.null(startPar)) startPar <- startPar(ParamFamily)(x,...)
+
+    res <- MCEstimator(x = x, 
+                ParamFamily = ParamFamily, criterion = negLoglikelihood,
+                startPar = startPar, trafo = trafo, 
+                penalty = penalty, validity.check = FALSE, ...)
+
+    if(!is.null(res@nuis.idx))
+        idx <- -res@nuis.idx
+    
     names(res@criterion) <- "negative log-likelihood"
+    res@estimate.call <- es.call
     res@name <- "Maximum likelihood estimate"
 
+    param <- ParamFamParameter(name = names(res@untransformed.estimate), 
+                               main = res@untransformed.estimate[idx],
+                               nuisance = res@untransformed.estimate[-idx])
+    
+    if(missing(trafo)||is.null(trafo)) 
+         {traf1 <- ParamFamily@param@trafo
+          if(is.matrix(traf1))  
+             res@trafo <- list(fct = function(x) 
+                                     list(fval = traf1 %*% x, mat = traf1), 
+                               mat = traf1)
+          else
+             res@trafo <- list(fct = traf1, mat = traf1(main(param))$mat)                        
+         }
+    else {if(is.matrix(trafo))
+             res@trafo <- list(fct = function(x) 
+                                     list(fval = trafo %*% x, mat = trafo), 
+                               mat = trafo)
+          else
+             res@trafo <- list(fct = trafo, mat = trafo(main(param))$mat)           
+         } 
+
+    if(!validParameter(ParamFamily,param))
+       {warning("Optimization for MLE did not give a valid result")
+        res.estimate <- rep(NA, lnx+lmx)
+        return(res)}
+
+    
+    asvar <- solve(FisherInfo(ParamFamily, param = param))
+    res@asvar <- asvar
+    res@untransformed.asvar <- asvar
+
+    if(!.isUnitMatrix(res@trafo$mat)){
+       res@asvar <- res@trafo$mat%*%asvar[idx,idx]%*%t(res@trafo$mat)
+    }
+    
     return(res)
 }

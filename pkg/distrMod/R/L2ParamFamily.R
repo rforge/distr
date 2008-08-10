@@ -5,19 +5,22 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
                           param = ParamFamParameter(name = paste("Parameter of", name),
                                    main = main, nuisance = nuisance, trafo = trafo),
                           props = character(0),
+                          startPar = NULL, makeOKPar = NULL,
                           modifyParam = function(theta){ Norm(mean=theta) },
                           L2deriv.fct = function(param) {force(theta <- param@main)
                                        return(function(x) {x-theta})},
                           L2derivSymm, L2derivDistr, L2derivDistrSymm,
                           FisherInfo.fct = function(theta){ 1 },
-                          FisherInfo = FisherInfo.fct(param)){
+                          FisherInfo = FisherInfo.fct(param),
+                          .returnClsName = NULL){
+     
     if(missing(name))
         name <- "L_2 differentiable parametric family of probability measures"
     if(missing(param)&&missing(main))
-        param <- ParamFamParameter(name = "location", main = 0, trafo =matrix(1))
+        param <- ParamFamParameter(name = "location", main = 0, trafo = matrix(1))
     if(missing(param))
         param <- ParamFamParameter(name = paste("Parameter of", name),
-                                   main = main, nuisance = nuisance, 
+                                   main = main, nuisance = nuisance,
                                    trafo = trafo)
     if(missing(distrSymm)) distrSymm <- NoSymmetry()
     if(!is(distrSymm, "NoSymmetry")){
@@ -30,7 +33,6 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
     L2deriv <- if(!is.list(fct))
        EuclRandVarList(RealRandVariable(list(fct), Domain = Reals())) else
        EuclRandVarList(RealRandVariable(fct, Domain = Reals()))
-
     if(missing(L2derivSymm)){
         nrvalues <- numberOfMaps(L2deriv)
         L <- vector("list", nrvalues)
@@ -65,16 +67,58 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
 
     if(missing(FisherInfo)){
         L2 <- as(diag(dims) %*% L2deriv, "EuclRandVariable")
-        FisherInfo <- PosSemDefSymmMatrix(E(object = distribution, fun = L2 %*% t(L2)))
+        FisherInfo <- PosSemDefSymmMatrix(E(object = distribution,
+                                            fun = L2 %*% t(L2)))
     }else{
         FisherInfo <- PosSemDefSymmMatrix(FisherInfo)
     }
     if(ncol(FisherInfo) != dims)
         stop(paste("dimension of 'FisherInfo' should be", dims))
 
-    L2Fam <- new("L2ParamFamily")
+    parv <- c(param@main,param@nuisance)
+    nms <- names(parv)
+    
+    if(!is.null(nms))
+       dimnames(FisherInfo) <- list(nms,nms)
+
+    f.call <- substitute(L2ParamFamily(name = N,
+               distribution = D,
+               distrSymm = DS,
+               param = P,
+               props = Props,
+               startPar = sP,
+               makeOKPar = okP,
+               modifyParam = modP,
+               L2deriv.fct = L2fct,
+               L2derivSymm = L2Symm,
+               L2derivDistr = L2D,
+               L2derivDistrSymm = L2DSymm,
+               FisherInfo.fct = Ffct,
+               FisherInfo = FInfo,
+               .returnClsName = rtn),
+          list(N = name,
+               D = distribution,
+               DS = distrSymm,
+               P = param,
+               Props = props,
+               sP = startPar,
+               okP = makeOKPar,
+               modP = modifyParam,
+               L2fct = L2deriv.fct,
+               L2Symm = L2derivSymm,
+               L2D = L2derivDistr,
+               L2DSymm = L2derivDistrSymm,
+               Ffct = FisherInfo.fct,
+               FInfo = FisherInfo,
+               rtn = .returnClsName))
+ 
+
+    if(is.null(.returnClsName))
+       .returnClsName <- "L2ParamFamily"
+    L2Fam <- new(.returnClsName)
     L2Fam@name <- name
     L2Fam@distribution <- distribution
+    L2Fam@fam.call <- f.call
     L2Fam@distrSymm <- distrSymm
     L2Fam@param <- param
     L2Fam@modifyParam <- modifyParam
@@ -86,6 +130,8 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
     L2Fam@L2derivDistrSymm <- L2derivDistrSymm
     L2Fam@FisherInfo.fct <- FisherInfo.fct
     L2Fam@FisherInfo <- FisherInfo
+    if(!is.null(startPar)) L2Fam@startPar <- startPar
+    if(!is.null(makeOKPar)) L2Fam@makeOKPar <- makeOKPar
 
     return(L2Fam)
 }
@@ -124,21 +170,4 @@ setMethod("checkL2deriv", "L2ParamFamily",
  
         return(list(maximum.deviation = prec))
     })
-
-### move model from one parameter to the next...
-setMethod("modifyModel", signature(model = "L2ParamFamily", param = "ParamFamParameter"), 
-          function(model, param, ...){
-          existsPIC(M <- L2ParamFamily(name = model@name, 
-                        distribution = model@modifyParam(main(param)), 
-                        distrSymm = model@distrSymm, 
-                        param = param, 
-                        props = model@props,
-                        modifyParam = model@modifyParam,
-                        L2deriv.fct = model@L2deriv.fct,
-                        L2derivSymm = model@L2derivSymm, 
-                        L2derivDistr = model@L2derivDistr, 
-                        L2derivDistrSymm = model@L2derivDistrSymm, 
-                        FisherInfo.fct = model@FisherInfo.fct))
-          return(M)
-          })
 

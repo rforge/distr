@@ -1,3 +1,39 @@
+############# preparations ################
+# (.onload, .onattach ...)
+.onLoad <- function(lib, pkg) { # extended 03-28-06: P.R. 
+    require("methods", character = TRUE, quietly = TRUE)
+}
+
+
+
+.onAttach <- function(library, pkg)
+{
+  unlockBinding(".distroptions", asNamespace("distr"))
+## global variable needed for flat.R
+##  unlockBinding(".OkTyp", asNamespace("distr"))
+    msga <- gettext(
+    "Attention: Arithmetics on distribution objects are understood as\n"
+                   )
+    msgb <- gettext(
+    "operations on corresponding random variables (r.v.s); see distrARITH().\n"
+                   )
+    msgc <- gettext(
+    "Some functions from package 'stats' are intentionally masked\n---see distrMASK().\n"
+                   )
+    msgd <- gettext(
+    "Note that global options are controlled by distroptions()\n---c.f. ?\"distroptions\"."
+                   )
+buildStartupMessage(pkg = "distr", msga, msgb, msgc, msgd, library = library, 
+                    packageHelp = TRUE, 
+# MANUAL = "http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/distr.pdf",
+                    VIGNETTE = gettext(
+"Package \"distrDoc\" provides a vignette to this package as well as\nto several extension packages; try vignette(\"distr\")."
+                                      )
+                   )
+  invisible()
+} 
+
+
 ################################
 ##
 ## Optional..-classes

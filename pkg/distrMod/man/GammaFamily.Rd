@@ -26,11 +26,9 @@ GammaFamily(scale = 1, shape = 1, trafo)
 %\note{}
 \seealso{\code{\link{L2ParamFamily-class}}, \code{\link[distr]{Gamma-class}}}
 \examples{
-distrExOptions("EupperTruncQuantile" = 1e-15) # problem with q(Gamma())(1) = NaN
 (G1 <- GammaFamily())
 FisherInfo(G1)
 checkL2deriv(G1)
-distrExOptions("EupperTruncQuantile" = 0) # default
 }
 \concept{Gamma model}
 \keyword{models}

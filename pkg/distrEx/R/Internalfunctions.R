@@ -2,6 +2,7 @@
 
 ## discretize distributions
 .discretizeDistr <- function(D, x, lower, upper, n){
+    print(list(D, x, lower, upper, n))
     y <- seq(from = lower, to = upper, length = n)
     x <- x[x<=upper & x>=lower]
     supp <- y[-1]-(y[2]-y[1])/2

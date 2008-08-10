@@ -358,3 +358,13 @@ function(e1,e2){
   return(erg)                
 })
 
+  setMethod("sign", "AcDcLcDistribution",
+            function(x){ 
+            if(is(x,"AbscontDistribution")) d0 <-0
+            else if(is(x,"DiscreteDistribution")) d0 <- d(x)(0)
+            else d0 <- d.discrete(as(x,UnivarLebDecDistribution))(0)
+            DiscreteDistribution(supp=c(-1,0,1), 
+                prob=c(p(x)(-getdistrOption("TruncQuantile")),
+                       d0,
+                       p(x)(getdistrOption("TruncQuantile"), lower=FALSE)))                     
+            })
