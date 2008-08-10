@@ -140,9 +140,19 @@ setMethod("modifyModel", signature(model = "L2LocationScaleFamily",
              cl <- model@fam.call
              M <- modifyModel(as(model, "L2ParamFamily"), param = param,
                               .withCall = FALSE)
-             param0 <- c(main(param(M)),nuisance(param(M)))
-             scale <- param0["scale"]
-             loc <- median(distribution(M))
+             param0 <- c(main(param),nuisance(param))
+             if(!length(nuisance(param))){
+                loc <- main(param)[1]
+                scale <- main(param)[2]
+             }else{
+                if(names(nuisance(param)) == "loc"){
+                    loc <- nuisance(param)
+                    scale <- main(param)
+                }else{
+                    loc <- main(param)
+                    scale <- nuisance(param)
+                }
+             }
              M@distrSymm <- SphericalSymmetry(SymmCenter = loc)
              M@L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter = loc),
                                           EvenSymmetric(SymmCenter = loc))
