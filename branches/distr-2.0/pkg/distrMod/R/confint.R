@@ -42,3 +42,19 @@ setMethod("confint", signature(object="Estimate", method="missing"),
                    confint = ci)
 })
 
+if(require(stats4)){
+setMethod("confint", signature(object="mle", method="missing"),
+        function(object, method, parm, level = 0.95, ...) {
+        if(hasArg(parm))
+           stats4::confint(object = object, parm = parm, level = level, ...)
+        else
+           stats4::confint(object = object, level = level, ...)
+})
+setMethod("confint", signature(object="profile.mle", method="missing"),
+        function(object, method, parm, level = 0.95, ...) {
+        if(hasArg(parm))
+           stats4::confint(object = object, parm = parm, level = level, ...)
+        else
+           stats4::confint(object = object, level = level, ...)
+})
+}

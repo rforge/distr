@@ -1,5 +1,6 @@
 import("methods")
 import("startupmsg")
+import("MASS")
 import("distr")
 import("distrEx")
 import("RandVar")

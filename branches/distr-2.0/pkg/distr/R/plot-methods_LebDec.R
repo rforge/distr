@@ -67,8 +67,8 @@ setMethod("plot", "UnivarLebDecDistribution",
 
      ###
      if(!is.logical(inner))
-         if(!is.list(inner)||length(inner) != 3)
-            stop("Argument 'inner' must either be 'logical' or a 'list' vector of length 3")
+         if(!is.list(inner)||length(inner) != 2)
+            stop("Argument 'inner' must either be 'logical' or a 'list' vector of length 2")
 
      cex <- if (hasArg(cex)) dots$cex else 1
 
@@ -160,8 +160,8 @@ setMethod("plot", "UnivarLebDecDistribution",
                    .mpresubs(gettextf("Quantile function of %%C%%Q")) else ""
                           ### double  %% as % is special for gettextf
      }else{
-        inner.p <- .mpresubs(inner[[2]])
-        inner.q <- .mpresubs(inner[[3]])
+        inner.p <- .mpresubs(inner[[1]])
+        inner.q <- .mpresubs(inner[[2]])
      }
 
 

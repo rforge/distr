@@ -33,6 +33,11 @@
       the samplesize at which the estimate was evaluated. }
     \item{\code{nuis.idx}:}{ object of class \code{"OptionalNumeric"}: 
      indices of \code{estimate} belonging to the nuisance part}
+    \item{\code{untransformed.estimate}:}{Object of class \code{"ANY"}:
+      untransformed estimate.}
+    \item{\code{untransformed.asvar}:}{ object of class \code{"OptionalNumericOrMatrix"}
+      which may contain the asymptotic (co)variance of the untransformed 
+      estimator. }
   }
 }
 \section{Extends}{
