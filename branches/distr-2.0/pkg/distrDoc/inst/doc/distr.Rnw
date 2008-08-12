@@ -19,6 +19,21 @@ pagebackref,bookmarks,colorlinks,linkcolor=darkblue,citecolor=darkblue,%
 pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 %
 \usepackage{Sweave}
+\RequirePackage{color}
+\RequirePackage{listings}  
+%
+\lstset{fancyvrb=true,language=R,basicstyle=\color{Rcolor}\small,
+        commentstyle=\color{Rcomment}\ttfamily\itshape,
+        literate={<-}{{$\leftarrow$}}2,
+        morekeywords=[2]{Norm,Pois,lambda,p,d,r,distroptions}}
+\newcommand{\ttR}[1]{{\color{Rcolor}\tt #1\color{normal}}}
+\definecolor{Rcolor}{rgb}{0,0.5,0.5}
+\definecolor{Rout}{rgb}{0.461,0.039,0.102}
+\definecolor{Rcomment}{rgb}{0.101,0.043,0.432}
+%
+\DefineVerbatimEnvironment{Sinput}{Verbatim}{formatcom=\color{Rcolor}\lstset{fancyvrb=true}}
+\DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom=\color{Rout}\lstset{fancyvrb=false}}
+\DefineVerbatimEnvironment{Scode}{Verbatim}{fontshape=sl,formatcom=\color{Rcolor}\lstset{fancyvrb=true}}
 \markboth{\sl Packages ``{\tt distr}'', ``{\tt distrSim}'', ``{\tt distrTEst}'', 
 ``{\tt distrEx}'', ``{\tt distrTeach}'', ``{\tt distrMod}''}%
 {\sl Packages ``{\tt distr}'', ``{\tt distrSim}'', ``{\tt distrTEst}'',  
@@ -149,13 +164,18 @@ of expressions like \code{X+3Y} for objects \code{X} and \code{Y} of class
 function $f\colon \Reals^2 \to \Reals$ which is already realized as a function 
 in {\sf R}.\\
 This is possible with package \pkg{distr}. As an example, try
+<<echo=false,results=hide>>=
+## preparation: set option withSweave to true
+require(distr)
+distroptions(withSweave = TRUE)
+@
 <<exam1, eval = TRUE, fig = TRUE>>=
-library(distr)
+require(distr)
 N <- Norm(mean = 2, sd = 1.3)
 P <- Pois(lambda = 1.2)
 Z <- 2*N + 3 + P
 Z
-plot(Z, withSweave = TRUE)
+plot(Z)
 p(Z)(0.4)
 q(Z)(0.3)
 Zs <- r(Z)(50)
@@ -1001,22 +1021,22 @@ analytical constructions for multiplication, division, exponentiation:
 <<arith2v1, eval = TRUE, fig = TRUE>>=
   A1 <- Norm(); A2 <- Unif()
   A1A2 <- A1*A2
-  plot(A1A2, withSweave = TRUE)
+  plot(A1A2)
 @
 <<arith2v2, eval = TRUE, fig = TRUE>>=
   A12 <- 1/(A2 + .3)
-  plot(A12, withSweave = TRUE) 
+  plot(A12) 
 @
 <<arith2v3, eval = TRUE, fig = TRUE>>=
   B <- Binom(5,.2)+1
   A1B <- A1^B
-  plot(A1B, xlim=c(-3,3), withSweave = TRUE)
+  plot(A1B, xlim=c(-3,3))
 @
 <<arith2V4, fig = TRUE>>=
-  plot(1.2^A1, withSweave = TRUE)
+  plot(1.2^A1)
 @
 <<arith2v5, fig = TRUE>>=
-  plot(B^A1, withSweave = TRUE)
+  plot(B^A1)
 @
 %
 \subsection{Truncation, Pairwise Minimum/Maximum, Huberization}\label{TruncMin}
@@ -1028,23 +1048,23 @@ as Lebesgue decomposed distributions had not been available before.
 Now these illustrations have moved into the package itself:
 <<Hub, eval = TRUE, fig = TRUE>>=
 H <- Huberize(Norm(),lower=-1,upper=2)
-plot(H, withSweave = TRUE)
+plot(H)
 @
 <<Trun, eval = TRUE, fig = TRUE>>=
 T <- Truncate(Norm(),lower=-1,upper=2)
-plot(T, withSweave = TRUE)
+plot(T)
 @
 <<Min1, eval = TRUE, fig = TRUE>>=
 M1 <- Maximum(Unif(0,1), Minimum(Unif(0,1), Unif(0,1)))
-plot(M1, withSweave = TRUE)
+plot(M1)
 @
 <<Min2, eval = TRUE, fig = TRUE>>=
 M2 <- Minimum(Exp(4),4)
-plot(M2, withSweave = TRUE)
+plot(M2)
 @
 <<Min3, eval = TRUE, fig = TRUE>>=
 M3 <- Minimum(Norm(2,2), Pois(3))
-plot(M3, withSweave = TRUE)
+plot(M3)
 @
 %
 \subsection{Overloaded generic functions}
@@ -1120,7 +1140,7 @@ As examples consider the following 10 plots:
 
 \begin{figure}[p]
 <<plotex1, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
-plot(Binom(size = 4, prob = 0.3), withSweave = TRUE)
+plot(Binom(size = 4, prob = 0.3))
 @
 \end{figure}
 \begin{figure}[p]
@@ -1133,7 +1153,7 @@ plot(Binom(size = 4, prob = 0.3), do.points = FALSE, verticals = FALSE,
 \begin{figure}[p]
 <<plotex3, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
 plot(Binom(size = 4, prob = 0.3), main = TRUE, inner = FALSE, cex.main = 1.6,
-     tmar = 6, withSweave = TRUE)
+     tmar = 6)
 @
 \end{figure}
 
@@ -1162,7 +1182,7 @@ plot(Nbinom(size = 4,prob = 0.3), cex.points = 1.2, pch.u = 20, pch.a = 10,
 
 \begin{figure}[p]
 <<plotex7, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
-plot(Chisq(), log = "xy", ngrid = 100, withSweave = TRUE)
+plot(Chisq(), log = "xy", ngrid = 100)
 @
 \end{figure}
 
@@ -1179,7 +1199,7 @@ plot(Norm(), main = "my Distribution: \%A",
      inner = list(expression(paste(lambda, "-density of \%C(\%P)")), "CDF",
                   "Pseudo-inverse with param's \%N"),
      sub = "this plot was correctly generated on \%D",
-     cex.inner = 0.9, cex.sub = 0.8, withSweave = TRUE)
+     cex.inner = 0.9, cex.sub = 0.8)
 @
 \end{figure}
 
@@ -1187,7 +1207,7 @@ plot(Norm(), main = "my Distribution: \%A",
 <<plotex10, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
 Ch <- Chisq(); setgaps(Ch, exactq = 3)
 plot(Ch, cex = 1.2, pch.u = 20, pch.a = 10, col.points = "green", 
-     col.vert = "red", withSweave = TRUE)
+     col.vert = "red")
 @
 \end{figure}
 
@@ -1781,6 +1801,8 @@ global ``constants'' to be used within the package. These include
   \item \code{DistrCollapse}: logical; in convolving discrete distributions, 
   shall support points with distance smaller than \code{DistrResolution} be 
   collapsed; default value:  \code{TRUE}
+   \item \code{withSweave}: logical; is code run in Sweave (then no new graphic devices are opened);
+                         default value: \code{FALSE}
 \end{itemize}
 All current options may be inspected by \code{distroptions()}  and modified by
  \linebreak[4] \code{distroptions("<options-name>"=<value>)}.\\
@@ -2485,7 +2507,7 @@ require(distr)
 N <- Norm()
 B <- Binom()
 N@d <- B@d
-plot(N, lwd = 3, withSweave = TRUE) 
+plot(N, lwd = 3) 
 @
 \subsection{A simulation example}\label{simex}
 {\bf needs packages \pkg{distrSim}/\pkg{distrTEst}}\\[2ex]

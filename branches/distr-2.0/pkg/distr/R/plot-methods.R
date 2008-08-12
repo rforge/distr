@@ -1,7 +1,7 @@
 # -------- AbscontDistribution ---------- #
 
 setMethod("plot", "AbscontDistribution",
-   function(x, y = NULL, width = 10, height = 5.5, withSweave = FALSE,
+   function(x, y = NULL, width = 10, height = 5.5, withSweave = getdistrOption("withSweave"),
             xlim = NULL, ylim = NULL, ngrid = 1000, verticals = TRUE,
             do.points = TRUE, main = FALSE, inner = TRUE, sub = FALSE, 
             bmar = par("mar")[1], tmar = par("mar")[3], ..., 
@@ -9,7 +9,7 @@ setMethod("plot", "AbscontDistribution",
             cex.sub = par("cex.sub"), col.points = par("col"), 
             col.vert = par("col"), col.main = par("col.main"), 
             col.inner = par("col.main"), col.sub = par("col.sub"), 
-            cex.points = 2.0, pch.u = 21, pch.a = 16){
+            cex.points = 2.0, pch.u = 21, pch.a = 16, mfColRow = TRUE){
 
      xc <- match.call(call = sys.call(sys.parent(1)))$x
      ### manipulating the ... - argument
@@ -107,7 +107,10 @@ setMethod("plot", "AbscontDistribution",
              if (missing(bmar)) bmar <- 6 
      }
      
-     opar <- par(mfrow = c(1,3), mar = c(bmar,omar[2],tmar,omar[4]))
+     if(mfColRow)
+         opar <- par(mfrow = c(1,3), mar = c(bmar,omar[2],tmar,omar[4]))
+     else
+         opar <- par(mar = c(bmar,omar[2],tmar,omar[4]))
      
      if(is.logical(inner)){     
         inner.d <- if (inner) 
@@ -255,7 +258,7 @@ setMethod("plot", "AbscontDistribution",
 # -------- DiscreteDistribution -------- #
 
 setMethod("plot", "DiscreteDistribution",
-    function(x, y = NULL, width = 10, height = 5.5, withSweave = FALSE, 
+    function(x, y = NULL, width = 10, height = 5.5, withSweave = getdistrOption("withSweave"), 
              xlim = NULL, ylim = NULL, verticals = TRUE, do.points = TRUE, 
              main = FALSE, inner = TRUE, sub = FALSE,
              bmar = par("mar")[1], tmar = par("mar")[3], ..., 
@@ -264,7 +267,7 @@ setMethod("plot", "DiscreteDistribution",
              col.hor = par("col"), col.vert = par("col"), 
              col.main = par("col.main"), col.inner = par("col.main"), 
              col.sub = par("col.sub"),  cex.points = 2.0, 
-             pch.u = 21, pch.a = 16){
+             pch.u = 21, pch.a = 16, mfColRow = TRUE){
 
       xc <- match.call(call = sys.call(sys.parent(1)))$x
       ### manipulating the ... - argument
@@ -366,7 +369,10 @@ setMethod("plot", "DiscreteDistribution",
              if (missing(bmar)) bmar <- 6 
      }
      
-     opar <- par(mfrow = c(1,3), mar = c(bmar,omar[2],tmar,omar[4]))
+     if(mfColRow)
+        opar <- par(mfrow = c(1,3), mar = c(bmar,omar[2],tmar,omar[4]))
+     else 
+        opar <- par(mar = c(bmar,omar[2],tmar,omar[4]))
      
      if(is.logical(inner)){     
         inner.d <- if (inner) 

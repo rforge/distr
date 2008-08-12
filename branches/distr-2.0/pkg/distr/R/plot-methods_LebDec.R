@@ -1,7 +1,7 @@
 ############################ plot #######################
 
 setMethod("plot", "AffLinUnivarLebDecDistribution",
-    function(x, y = NULL, width = 10, height = 5.5, withSweave = FALSE,
+    function(x, y = NULL, width = 10, height = 5.5, withSweave = getdistrOption("withSweave"),
              xlim = NULL, ylim = NULL, ngrid = 1000,
              verticals = TRUE, do.points = TRUE,
              main = FALSE, inner = TRUE, sub = FALSE,
@@ -11,7 +11,7 @@ setMethod("plot", "AffLinUnivarLebDecDistribution",
              col.hor = par("col"), col.vert = par("col"),
              col.main = par("col.main"), col.inner = par("col.main"),
              col.sub = par("col.sub"),  cex.points = 2.0,
-             pch.u = 21, pch.a = 16){
+             pch.u = 21, pch.a = 16, mfColRow = TRUE){
 
       mc <- match.call(call = sys.call(sys.parent(1)), expand.dots = FALSE)[-1]
       mc$x <- NULL
@@ -22,17 +22,17 @@ setMethod("plot", "AffLinUnivarLebDecDistribution",
 })
 
 setMethod("plot", "UnivarLebDecDistribution",
-    function(x, y = NULL, width = 10, height = 5.5, withSweave = FALSE,
+    function(x, y = NULL, width = 10, height = 14.5, withSweave = getdistrOption("withSweave"),
              xlim = NULL, ylim = NULL, ngrid = 1000,
              verticals = TRUE, do.points = TRUE,
              main = FALSE, inner = TRUE, sub = FALSE,
              bmar = par("mar")[1], tmar = par("mar")[3], ...,
-             cex.main = par("cex.main"), cex.inner = 1.2,
+             cex.main = par("cex.main"), cex.inner = 0.9,
              cex.sub = par("cex.sub"), col.points = par("col"),
              col.hor = par("col"), col.vert = par("col"),
              col.main = par("col.main"), col.inner = par("col.main"),
              col.sub = par("col.sub"),  cex.points = 2.0,
-             pch.u = 21, pch.a = 16){
+             pch.u = 21, pch.a = 16, mfColRow = TRUE){
 
 
       mc <- match.call(call = sys.call(sys.parent(1)), expand.dots = FALSE)[-1]
@@ -151,7 +151,12 @@ setMethod("plot", "UnivarLebDecDistribution",
              if (missing(bmar)) bmar <- 6
      }
 
-     opar <- par(mfrow = c(1,2), mar = c(bmar,omar[2],tmar,omar[4]))
+     if(mfColRow){
+        opar <- par("mfrow", mar = c(bmar,omar[2],tmar,omar[4]))
+        layout(matrix(c(1,1,1,2,2,2,3,3,4,4,5,5,6,6,7,7,8,8), byrow=TRUE, 
+               nrow=3))
+     }else 
+        opar <- par(mar = c(bmar,omar[2],tmar,omar[4]))
 
      if(is.logical(inner)){
         inner.p <- if (inner)
@@ -323,6 +328,27 @@ setMethod("plot", "UnivarLebDecDistribution",
      if (subL)
          mtext(text = sub, side = 1, cex = cex.sub, adj = .5,
                outer = TRUE, line = -1.6, col = col.sub)
+               
+     mc.ac <- mc
+     if(!is.logical(inner)) mc.ac$inner <- inner[3:5] 
+     mc.ac$mfColRow <- FALSE
+     mc.ac$main <- FALSE
+     mc.ac$sub <- FALSE
+     mc.ac$x <- NULL 
+     mc.ac$withSweave <- TRUE 
+     if(is.null(mc.ac$cex.inner))  mc.ac$cex.inner <- 0.9
+     do.call(plot, c(list(acPart(x)),mc.ac))
+
+     mc.di <- mc
+     if(!is.logical(inner)) mc.di$inner <- inner[6:8] 
+     mc.di$mfColRow <- FALSE
+     mc.di$main <- FALSE
+     mc.di$sub <- FALSE
+     mc.di$x <- NULL
+     mc.di$withSweave <- TRUE 
+     if(is.null(mc.di$cex.inner))  mc.di$cex.inner <- 0.9
+     do.call(plot, c(list(discretePart(x)),mc.di))
+     
      par(opar)
    }
    )

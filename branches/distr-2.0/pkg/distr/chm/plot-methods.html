@@ -31,41 +31,41 @@ plot-methods
 <pre>plot(x,y, ...)
 ## S4 method for signature 'AbscontDistribution':
 plot(x, y = NULL, width = 10, height = 5.5,
-     withSweave = FALSE, xlim = NULL, ylim = NULL, ngrid = 1000,
+     withSweave = getdistrOption("withSweave"), xlim = NULL, ylim = NULL, ngrid = 1000,
      verticals = TRUE, do.points = TRUE, main = FALSE, inner = TRUE,
      sub = FALSE, bmar = par("mar")[1], tmar = par("mar")[3], ...,
      cex.main = par("cex.main"), cex.inner = 1.2, cex.sub = par("cex.sub"), 
      col.points = par("col"), col.vert = par("col"), col.main = par("col.main"),  
      col.inner = par("col.main"), col.sub = par("col.sub"), cex.points = 2.0, 
-     pch.u = 21, pch.a = 16)
+     pch.u = 21, pch.a = 16, mfColRow = TRUE)
 ## S4 method for signature 'DiscreteDistribution':
 plot(x, y = NULL, width = 10, height = 5.5,
-     withSweave = FALSE, xlim = NULL, ylim = NULL, verticals = TRUE,
+     withSweave = getdistrOption("withSweave"), xlim = NULL, ylim = NULL, verticals = TRUE,
      do.points = TRUE, main = FALSE, inner = TRUE, sub = FALSE, 
      bmar = par("mar")[1], tmar = par("mar")[3], ..., 
      cex.main = par("cex.main"), cex.inner = 1.2, cex.sub = par("cex.sub"), 
      col.points = par("col"), col.hor = par("col"), col.vert = par("col"), 
      col.main = par("col.main"), col.inner = par("col.main"), 
-     col.sub = par("col.sub"),  cex.points = 2.0, pch.u = 21, pch.a = 16)
+     col.sub = par("col.sub"),  cex.points = 2.0, pch.u = 21, pch.a = 16, mfColRow = TRUE)
 ## S4 method for signature
 ##   'AffLinUnivarLebDecDistribution':
 plot(x, y = NULL, width = 10, 
-     height = 5.5, withSweave = FALSE, xlim = NULL, ylim = NULL, ngrid = 1000,
+     height = 5.5, withSweave = getdistrOption("withSweave"), xlim = NULL, ylim = NULL, ngrid = 1000,
      verticals = TRUE, do.points = TRUE, main = FALSE, inner = TRUE, sub = FALSE,
      bmar = par("mar")[1], tmar = par("mar")[3], ..., cex.main = par("cex.main"), 
      cex.inner = 1.2, cex.sub = par("cex.sub"), col.points = par("col"),
      col.hor = par("col"), col.vert = par("col"), col.main = par("col.main"), 
      col.inner = par("col.main"), col.sub = par("col.sub"),  cex.points = 2.0,
-     pch.u = 21, pch.a = 16)
+     pch.u = 21, pch.a = 16, mfColRow = TRUE)
 ## S4 method for signature 'UnivarLebDecDistribution':
 plot(x, y = NULL, width = 10, 
-     height = 5.5, withSweave = FALSE, xlim = NULL, ylim = NULL, ngrid = 1000,
+     height = 5.5, withSweave = getdistrOption("withSweave"), xlim = NULL, ylim = NULL, ngrid = 1000,
      verticals = TRUE, do.points = TRUE, main = FALSE, inner = TRUE, sub = FALSE,
      bmar = par("mar")[1], tmar = par("mar")[3], ..., cex.main = par("cex.main"), 
      cex.inner = 1.2, cex.sub = par("cex.sub"), col.points = par("col"),
      col.hor = par("col"), col.vert = par("col"), col.main = par("col.main"), 
      col.inner = par("col.main"), col.sub = par("col.sub"),  cex.points = 2.0,
-     pch.u = 21, pch.a = 16)
+     pch.u = 21, pch.a = 16, mfColRow = TRUE)
 ## S4 method for signature 'DistrList':
 plot(x, y = NULL, ...)
 </pre>
@@ -184,6 +184,9 @@ unattained value; see <code><a onclick="findlink('stats', 'points.html')" style=
 <td>
 character or integer code; plotting characters or symbols for
 attained value; see <code><a onclick="findlink('stats', 'points.html')" style="text-decoration: underline; color: blue; cursor: hand">points</a></code></td></tr>
+<tr valign="top"><td><code>mfColRow</code></td>
+<td>
+shall default partition in panels be used &mdash; defaults to <code>TRUE</code></td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 addtional arguments for <code>plot</code> &mdash; see 
@@ -197,8 +200,11 @@ addtional arguments for <code>plot</code> &mdash; see
 <dl>
 <dt>plot</dt><dd><code>signature(object = "AffLinUnivarLebDecDistribution")</code>: plots  
 cumulative distribution function and the quantile function </dd>
-<dt>plot</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code>: plots  
-cumulative distribution function and the quantile function </dd>
+<dt>plot</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code>: plots a set of
+eight plots: in the first row,  it plots the 
+cumulative distribution function and the quantile function; in the second
+row the absolutely continuous part (with density, cdf and quantile fct.),
+and in the last row the discrete part (with prob.fct., cdf and quantile fct.). </dd>
 <dt>plot</dt><dd><code>signature(object = "AbscontDistribution")</code>: plots density, 
 cumulative distribution function and the quantile function </dd>
 <dt>plot</dt><dd><code>signature(object = "DiscreteDistribution")</code>: plots probability 
