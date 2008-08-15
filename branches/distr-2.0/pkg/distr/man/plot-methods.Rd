@@ -35,10 +35,10 @@
      col.inner = par("col.main"), col.sub = par("col.sub"),  cex.points = 2.0,
      pch.u = 21, pch.a = 16, mfColRow = TRUE)
 \S4method{plot}{UnivarLebDecDistribution}(x, y = NULL, width = 10, 
-     height = 5.5, withSweave = getdistrOption("withSweave"), xlim = NULL, ylim = NULL, ngrid = 1000,
+     height = 14.5, withSweave = getdistrOption("withSweave"), xlim = NULL, ylim = NULL, ngrid = 1000,
      verticals = TRUE, do.points = TRUE, main = FALSE, inner = TRUE, sub = FALSE,
      bmar = par("mar")[1], tmar = par("mar")[3], ..., cex.main = par("cex.main"), 
-     cex.inner = 1.2, cex.sub = par("cex.sub"), col.points = par("col"),
+     cex.inner = 0.9, cex.sub = par("cex.sub"), col.points = par("col"),
      col.hor = par("col"), col.vert = par("col"), col.main = par("col.main"), 
      col.inner = par("col.main"), col.sub = par("col.sub"),  cex.points = 2.0,
      pch.u = 21, pch.a = 16, mfColRow = TRUE)
