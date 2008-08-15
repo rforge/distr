@@ -10,7 +10,8 @@
                       ## new Items from 2.0:
                       withgaps = TRUE,
                       simplifyD = TRUE,
-                      DistrCollapse = TRUE
+                      DistrCollapse = TRUE,
+                      withSweave = FALSE
                       )
 distroptions <- function(...) {
   if (nargs() == 0) return(.distroptions)

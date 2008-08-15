@@ -230,7 +230,7 @@ if(!isGeneric("startPar")){
 }
 if(!isGeneric("makeOKPar")){
     setGeneric("makeOKPar", function(object, ...) standardGeneric("makeOKPar"))
-}
+}              
 if(!isGeneric("locscalename")){
     setGeneric("locscalename", function(object) standardGeneric("locscalename"))
 }
@@ -242,4 +242,10 @@ if(!isGeneric("LogDeriv")){
 }
 if(!isGeneric("LogDeriv<-")){
     setGeneric("LogDeriv<-", function(object, value) standardGeneric("LogDeriv<-"))
+}
+if(!isGeneric("mleCalc")){
+    setGeneric("mleCalc", function(x, PFam, ...) standardGeneric("mleCalc"))
+}
+if(!isGeneric("mceCalc")){
+    setGeneric("mceCalc", function(x, PFam, ...) standardGeneric("mceCalc"))
 }

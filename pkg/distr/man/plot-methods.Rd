@@ -11,37 +11,37 @@
 \description{plot-methods}
 \usage{plot(x,y, ...)
 \S4method{plot}{AbscontDistribution}(x, y = NULL, width = 10, height = 5.5,
-     withSweave = FALSE, xlim = NULL, ylim = NULL, ngrid = 1000,
+     withSweave = getdistrOption("withSweave"), xlim = NULL, ylim = NULL, ngrid = 1000,
      verticals = TRUE, do.points = TRUE, main = FALSE, inner = TRUE,
      sub = FALSE, bmar = par("mar")[1], tmar = par("mar")[3], ...,
      cex.main = par("cex.main"), cex.inner = 1.2, cex.sub = par("cex.sub"), 
      col.points = par("col"), col.vert = par("col"), col.main = par("col.main"),  
      col.inner = par("col.main"), col.sub = par("col.sub"), cex.points = 2.0, 
-     pch.u = 21, pch.a = 16)
+     pch.u = 21, pch.a = 16, mfColRow = TRUE)
 \S4method{plot}{DiscreteDistribution}(x, y = NULL, width = 10, height = 5.5,
-     withSweave = FALSE, xlim = NULL, ylim = NULL, verticals = TRUE,
+     withSweave = getdistrOption("withSweave"), xlim = NULL, ylim = NULL, verticals = TRUE,
      do.points = TRUE, main = FALSE, inner = TRUE, sub = FALSE, 
      bmar = par("mar")[1], tmar = par("mar")[3], ..., 
      cex.main = par("cex.main"), cex.inner = 1.2, cex.sub = par("cex.sub"), 
      col.points = par("col"), col.hor = par("col"), col.vert = par("col"), 
      col.main = par("col.main"), col.inner = par("col.main"), 
-     col.sub = par("col.sub"),  cex.points = 2.0, pch.u = 21, pch.a = 16)
+     col.sub = par("col.sub"),  cex.points = 2.0, pch.u = 21, pch.a = 16, mfColRow = TRUE)
 \S4method{plot}{AffLinUnivarLebDecDistribution}(x, y = NULL, width = 10, 
-     height = 5.5, withSweave = FALSE, xlim = NULL, ylim = NULL, ngrid = 1000,
+     height = 5.5, withSweave = getdistrOption("withSweave"), xlim = NULL, ylim = NULL, ngrid = 1000,
      verticals = TRUE, do.points = TRUE, main = FALSE, inner = TRUE, sub = FALSE,
      bmar = par("mar")[1], tmar = par("mar")[3], ..., cex.main = par("cex.main"), 
      cex.inner = 1.2, cex.sub = par("cex.sub"), col.points = par("col"),
      col.hor = par("col"), col.vert = par("col"), col.main = par("col.main"), 
      col.inner = par("col.main"), col.sub = par("col.sub"),  cex.points = 2.0,
-     pch.u = 21, pch.a = 16)
+     pch.u = 21, pch.a = 16, mfColRow = TRUE)
 \S4method{plot}{UnivarLebDecDistribution}(x, y = NULL, width = 10, 
-     height = 5.5, withSweave = FALSE, xlim = NULL, ylim = NULL, ngrid = 1000,
+     height = 14.5, withSweave = getdistrOption("withSweave"), xlim = NULL, ylim = NULL, ngrid = 1000,
      verticals = TRUE, do.points = TRUE, main = FALSE, inner = TRUE, sub = FALSE,
      bmar = par("mar")[1], tmar = par("mar")[3], ..., cex.main = par("cex.main"), 
-     cex.inner = 1.2, cex.sub = par("cex.sub"), col.points = par("col"),
+     cex.inner = 0.9, cex.sub = par("cex.sub"), col.points = par("col"),
      col.hor = par("col"), col.vert = par("col"), col.main = par("col.main"), 
      col.inner = par("col.main"), col.sub = par("col.sub"),  cex.points = 2.0,
-     pch.u = 21, pch.a = 16)
+     pch.u = 21, pch.a = 16, mfColRow = TRUE)
 \S4method{plot}{DistrList}(x, y = NULL, ...)
 }
 \arguments{
@@ -101,6 +101,7 @@
                unattained value; see \code{\link[stats]{points}}}              
   \item{pch.a}{character or integer code; plotting characters or symbols for
                attained value; see \code{\link[stats]{points}}}              
+  \item{mfColRow}{shall default partition in panels be used --- defaults to \code{TRUE}}
   \item{\dots}{addtional arguments for \code{plot} --- see 
                \code{\link[stats]{plot}}, 
                \code{\link[stats]{plot.default}}, 
@@ -110,8 +111,11 @@
 \describe{
 \item{plot}{\code{signature(object = "AffLinUnivarLebDecDistribution")}: plots  
    cumulative distribution function and the quantile function }
-\item{plot}{\code{signature(object = "UnivarLebDecDistribution")}: plots  
-   cumulative distribution function and the quantile function }
+\item{plot}{\code{signature(object = "UnivarLebDecDistribution")}: plots a set of
+  eight plots: in the first row,  it plots the 
+   cumulative distribution function and the quantile function; in the second
+   row the absolutely continuous part (with density, cdf and quantile fct.),
+   and in the last row the discrete part (with prob.fct., cdf and quantile fct.). }
 \item{plot}{\code{signature(object = "AbscontDistribution")}: plots density, 
    cumulative distribution function and the quantile function }
 \item{plot}{\code{signature(object = "DiscreteDistribution")}: plots probability 

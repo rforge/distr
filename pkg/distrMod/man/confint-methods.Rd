@@ -4,6 +4,8 @@
 \alias{confint}
 \alias{confint,ANY,missing-method}
 \alias{confint,Estimate,missing-method}
+\alias{confint,mle,missing-method}
+\alias{confint,profile.mle,missing-method}
 \title{ Methods for function confint in Package `distrMod' }
 \description{
   Methods for function \code{confint} in package \pkg{distrMod};
@@ -17,7 +19,8 @@
 confint(object, method, \dots)
 \S4method{confint}{ANY,missing}(object, method, parm, level = 0.95, \dots)
 \S4method{confint}{Estimate,missing}(object, method, level = 0.95)
-
+\S4method{confint}{mle,missing}(object, method, parm, level = 0.95, \dots)
+\S4method{confint}{profile.mle,missing}(object, method, parm, level = 0.95, \dots)
 }
 \arguments{
   \item{object}{in default / signature \code{ANY} case: a fitted model object,

@@ -17,6 +17,8 @@
 <param name="keyword" value="R:   RtoDPQ.e">
 <param name="keyword" value="R:   WarningArith">
 <param name="keyword" value="R:   WarningSim">
+<param name="keyword" value="R:   withSweave">
+<param name="keyword" value="R:   withgaps">
 <param name="keyword" value=" functions to change the global variables of the package &lsquo;distr&rsquo;">
 </object>
 
@@ -87,6 +89,14 @@ FFT uses <i>2^e</i> gridpoints; default value: <code>12</code></dd>
 arithmetics operating on distributions, when the corresponding distribution to be plotted/shown is obtained by such an operation;
 keep in mind that arithmetics in fact operate on random variables distributed according to the given distributions and <B>not</B>
 on corresponding cdf's or densities; default value: <code>TRUE</code></dd>
+<dt><code>withSweave</code></dt><dd>is code run in Sweave (then no new graphic devices are opened), 
+default value: <code>FALSE</code></dd>
+<dt><code>withgaps</code></dt><dd>controls whether in the return value of arithmetic
+operations the slot <code>gaps</code> of an the <code>AbscontDistribution</code> part
+is filled automatically based on empirical evaluations via  <code>setgaps</code>
+&mdash;default <code>TRUE</code></dd>
+<dt><code>simplifyD</code></dt><dd>controls whether in the return value of arithmetic
+operations there is a call to <code>simplifyD</code> or not &mdash;default <code>TRUE</code></dd>
 </dl>
 
 <h3>Author(s)</h3>

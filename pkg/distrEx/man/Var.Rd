@@ -30,6 +30,7 @@
 \alias{sd}
 \alias{sd-methods}
 \alias{sd,UnivariateDistribution-method}
+\alias{sd,Norm-method}
 \alias{median}
 \alias{median,ANY-method}
 \alias{median-methods}
@@ -192,6 +193,7 @@ mad(x, ...)
 sd(x, ...)
 
 \S4method{sd}{UnivariateDistribution}(x, fun, cond, withCond, useApply, ...)
+\S4method{sd}{Norm}(x, fun, cond, withCond = FALSE, useApply = TRUE, ...)
 
 var(x, ...)
 

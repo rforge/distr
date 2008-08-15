@@ -86,7 +86,17 @@ values are
 <dt><code>"minimal"</code></dt><dd>only the most important information is shown</dd>
 <dt><code>"medium"</code></dt><dd>somewhere in the middle; see actual <code>show</code>-methods
 for details.</dd>
-</ul></dd>
+</ul>
+<p>
+The default value is <code>"maximal"</code>.</dd>
+<dt>use.generalized.inverse.by.default</dt><dd>logical; decides whether by default
+(i.e., if argument <code>generalized</code> of <code><a href="solve-methods.html">solve</a></code> is not explicitely
+set), <code><a href="solve-methods.html">solve</a></code> is to use generalized inverses if the original 
+<code>solve</code>-method from package <span class="pkg">base</span> fails; if the option is <code>FALSE</code>, 
+in case of failure, and unless argument <code>generalized</code> is not explicitely 
+set to <code>TRUE</code>, <code>solve</code> will throw an error as is 
+the <span class="pkg">base</span>-method behavior. The default value is <code>TRUE</code>.  
+</dd>
 </dl>
 
 <h3>Author(s)</h3>

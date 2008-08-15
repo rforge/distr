@@ -2,6 +2,8 @@
 \alias{distrModOptions}
 \alias{getdistrModOption}
 \alias{distrModoptions}
+\alias{show.details}
+\alias{use.generalized.inverse.by.default}
 
 \title{Function to change the global variables of the package `distrMod' }
 \description{With \code{distrModOptions} you can inspect and change 

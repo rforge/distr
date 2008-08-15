@@ -11,6 +11,9 @@
 \alias{RtoDPQ.e}
 \alias{WarningArith}
 \alias{WarningSim}
+\alias{withSweave}
+%\alias{simplifyD}
+\alias{withgaps}
 
 \title{
   functions to change the global variables of the package `distr'
@@ -60,6 +63,14 @@ with distance smaller than \code{DistrResolution} be collapsed; default value:  
 arithmetics operating on distributions, when the corresponding distribution to be plotted/shown is obtained by such an operation;
 keep in mind that arithmetics in fact operate on random variables distributed according to the given distributions and \bold{not}
 on corresponding cdf's or densities; default value: \code{TRUE}}
+\item{\code{withSweave}}{is code run in Sweave (then no new graphic devices are opened), 
+                         default value: \code{FALSE}}
+  \item{\code{withgaps}}{controls whether in the return value of arithmetic
+  operations the slot \code{gaps} of an the \code{AbscontDistribution} part
+  is filled automatically based on empirical evaluations via  \code{setgaps}
+   ---default \code{TRUE}}
+  \item{\code{simplifyD}}{ controls whether in the return value of arithmetic
+  operations there is a call to \code{simplifyD} or not ---default \code{TRUE}}
 }
 } 
 \examples{

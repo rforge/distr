@@ -12,7 +12,7 @@
 \alias{startPar,ParamFamily-method}
 \alias{makeOKPar}
 \alias{makeOKPar,ParamFamily-method}
-\alias{plot,ParamFamily-method}
+\alias{plot,ParamFamily,ANY-method}
 \alias{show,ParamFamily-method}
 %\alias{trafo,ParamFamily-method}
 
