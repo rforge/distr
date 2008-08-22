@@ -1006,6 +1006,10 @@
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sd,Norm-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="sd,UnivariateDistribution-method">
 <param name="Local" value="Var.html">
 </OBJECT>

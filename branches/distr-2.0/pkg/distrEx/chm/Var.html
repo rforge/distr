@@ -36,6 +36,7 @@
 <param name="keyword" value="R:   sd">
 <param name="keyword" value="R:   sd-methods">
 <param name="keyword" value="R:   sd,UnivariateDistribution-method">
+<param name="keyword" value="R:   sd,Norm-method">
 <param name="keyword" value="R:   median">
 <param name="keyword" value="R:   median,ANY-method">
 <param name="keyword" value="R:   median-methods">
@@ -245,6 +246,8 @@ sd(x, ...)
 
 ## S4 method for signature 'UnivariateDistribution':
 sd(x, fun, cond, withCond, useApply, ...)
+## S4 method for signature 'Norm':
+sd(x, fun, cond, withCond = FALSE, useApply = TRUE, ...)
 
 var(x, ...)
 
