@@ -191,8 +191,6 @@ setMethod("ConvexContamination", signature(e1 = "UnivariateDistribution",
                       q(e2)(1-TruncQuantile))
         m2 <- max(m21,m22); rm(m21,m22)
 
-        cumprob.l <- pfun(supp)
-        cumprob.u <- pfun(supp, lower.tail = FALSE)
 
         qfun <- function(p, lower.tail = TRUE, log.p = FALSE){}
         body(qfun) <- substitute({ if (log.p) p <- exp(p)
