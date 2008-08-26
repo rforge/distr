@@ -1,5 +1,5 @@
 setMethod("Truncate", "AbscontDistribution",
-          function(object, lower, upper){
+          function(object, lower = -Inf, upper = Inf){
             newgaps <- gaps(object)
             if(!is.null(newgaps)){
                newgaps[,1] <- pmax(newgaps[,1],lower)
@@ -60,7 +60,7 @@ setMethod("Truncate", "AbscontDistribution",
           })
 
 setMethod("Truncate", "DiscreteDistribution",
-          function(object, lower, upper){
+          function(object, lower = -Inf, upper = Inf){
             supp <- support(object)
             newsupport <- supp[supp<=upper & supp>lower]
             if(! length(newsupport))
@@ -71,7 +71,8 @@ setMethod("Truncate", "DiscreteDistribution",
           })
 
 setMethod("Truncate", "UnivarLebDecDistribution",
-          function(object, lower, upper, withSimplify = getdistrOption("simplifyD")){
+          function(object, lower = -Inf, upper = Inf, 
+                   withSimplify = getdistrOption("simplifyD")){
             aD <- acPart(object)
             aw <- acWeight(object)
             dD <- discretePart(object)

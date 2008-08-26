@@ -41,7 +41,8 @@ MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name,
   The argument \code{distance} has to be a (generic) function with arguments 
   the empirical data as well as an object of class \code{"Distribution"} 
   and possibly \code{\dots}; e.g. \code{KolmogorovDist} (default), 
-  \code{TotalVarDist} or \code{HellingerDist}.
+  \code{TotalVarDist} or \code{HellingerDist}. Uses \code{\link{mceCalc}}
+  for method dispatch.
 }
 \value{
   An object of S4-class \code{"MCEstimate"} which inherits from class 

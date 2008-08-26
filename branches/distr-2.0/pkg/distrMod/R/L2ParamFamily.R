@@ -10,7 +10,7 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
                           L2deriv.fct = function(param) {force(theta <- param@main)
                                        return(function(x) {x-theta})},
                           L2derivSymm, L2derivDistr, L2derivDistrSymm,
-                          FisherInfo.fct = function(theta){ 1 },
+                          FisherInfo.fct,
                           FisherInfo = FisherInfo.fct(param),
                           .returnClsName = NULL){
      
@@ -44,6 +44,10 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
 
     if(missing(L2derivDistr))
          L2derivDistr <- imageDistr(RandVar = L2deriv, distr = distribution)
+    if(!is(L2derivDistr,"DistrList"))
+         L2derivDistr <- UnivarDistrList(L2derivDistr)    
+    if(!is(L2derivDistr,"UnivarDistrList"))
+         L2derivDistr <- as(L2derivDistr,"UnivarDistrList")
 
     if(missing(L2derivDistrSymm)){
         nrvalues <- length(L2derivDistr)
@@ -74,6 +78,17 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
     }
     if(ncol(FisherInfo) != dims)
         stop(paste("dimension of 'FisherInfo' should be", dims))
+
+    if(missing(FisherInfo.fct))
+        FisherInfo.fct <- function(param){
+        fct <- L2deriv.fct(param)
+        L2deriv <- if(!is.list(fct))
+           EuclRandVarList(RealRandVariable(list(fct), Domain = Reals())) else
+           EuclRandVarList(RealRandVariable(fct, Domain = Reals()))
+        L2 <- as(diag(dims) %*% L2deriv, "EuclRandVariable")
+        return(PosSemDefSymmMatrix(E(object = distribution,
+                                     fun = L2 %*% t(L2))))
+        }
 
     parv <- c(param@main,param@nuisance)
     nms <- names(parv)

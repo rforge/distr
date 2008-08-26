@@ -8,9 +8,15 @@
 <param name="keyword" value="R:   MCEstimate-class">
 <param name="keyword" value="R:   criterion">
 <param name="keyword" value="R:   criterion,MCEstimate-method">
+<param name="keyword" value="R:   criterion.fct">
+<param name="keyword" value="R:   criterion.fct,MCEstimate-method">
+<param name="keyword" value="R:   method">
+<param name="keyword" value="R:   method,MCEstimate-method">
 <param name="keyword" value="R:   criterion<-">
 <param name="keyword" value="R:   criterion<-,MCEstimate-method">
+<param name="keyword" value="R:   coerce,MCEstimate,mle-method">
 <param name="keyword" value="R:   show,MCEstimate-method">
+<param name="keyword" value="R:   profile,MCEstimate-method">
 <param name="keyword" value=" MCEstimate-class.">
 </object>
 
@@ -45,6 +51,17 @@ estimate.</dd>
 call by which estimate was produced.</dd>
 <dt><code>criterion</code>:</dt><dd>Object of class <code>"numeric"</code>:
 minimum value of the considered criterion.</dd>
+<dt><code>criterion.fct</code>:</dt><dd>Object of class <code>"function"</code>:
+the considered criterion function; used for compatibility with class
+<code>"mle"</code> from package <span class="pkg">stats4</span>; should be a function
+returning the criterion; i.e. a numeric of length 1 and should have
+as arguments all named components of argument 
+<code>untransformed.estimate</code></dd>
+<dt><code>method</code>:</dt><dd>Object of class <code>"character"</code>:
+the method by which the estimate was calculated, i.e.;
+<code>"optim"</code>, <code>"optimize"</code>, or <code>"explicit calculation"</code>; 
+used for compatibility with class <code>"mle"</code> from package 
+<span class="pkg">stats4</span>, could be any character value.</dd>
 <dt><code>Infos</code>:</dt><dd>object of class <code>"matrix"</code>
 with two columns named <code>method</code> and <code>message</code>:
 additional informations. </dd>
@@ -79,7 +96,18 @@ accessor function for slot <code>criterion</code>. </dd>
 replacement function for slot <code>criterion</code>. </dd>
 
 
+<dt>criterion.fct</dt><dd><code>signature(object = "MCEstimate")</code>: 
+accessor function for slot <code>criterion.fct</code>. </dd>
+
+
 <dt>show</dt><dd><code>signature(object = "Estimate")</code></dd>
+<dt>coerce</dt><dd><code>signature(from = "MCEstimate", to = "mle")</code>:
+create a <code>"mle"</code> object from a <code>"MCEstimate"</code> object</dd>
+<dt>profile</dt><dd><code>signature(fitted = "MCEstimate")</code>:
+coerces <code>fitted</code> to class <code>"mle"</code> and then calls
+the corresponding <code><a onclick="findlink('stats4', 'profile-methods.html')" style="text-decoration: underline; color: blue; cursor: hand">profile</a></code>-method
+from package <span class="pkg">stats4</span>; for details we confer to the corresponding
+man page.</dd>
 </dl>
 
 <h3>Author(s)</h3>
@@ -108,9 +136,21 @@ x &lt;- rgamma(50, scale = 0.5, shape = 3)
 G &lt;- GammaFamily(scale = 1, shape = 2)
 
 MDEstimator(x, G)
-MLEstimator(x, G)
+(m &lt;- MLEstimator(x, G))
+m.mle &lt;- as(m,"mle")
+par(mfrow=c(1,2))
+plot(profile(m))
 </pre>
 
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
 
 
 <hr><div align="center">[Package <em>distrMod</em> version 2.0 <a href="00Index.html">Index]</a></div>

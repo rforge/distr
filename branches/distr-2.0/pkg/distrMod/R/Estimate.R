@@ -37,14 +37,15 @@ setMethod("addInfo<-", "Estimate",
 
 setMethod("samplesize", "Estimate", function(object) object@samplesize)
 setMethod("asvar", "Estimate", function(object) object@asvar)
+
 setReplaceMethod("asvar", "Estimate", 
                   function(object, value){ 
-          mat <- trafo.estimate(object)$mat
+          mat <- trafo(object)$mat
           if(.isUnitMatrix(mat)){
              object@asvar <- value
           }else{   
              object@untransformed.asvar <- value
-             object@asvar <- mat%*%valuet%*%t(mat)
+             object@asvar <- mat%*%value%*%t(mat)
           }
           object})
 
@@ -52,6 +53,9 @@ setMethod("untransformed.asvar", "Estimate", function(object)
            object@untransformed.asvar)
 
 setMethod("criterion", "MCEstimate", function(object) object@criterion)
+setMethod("criterion.fct", "MCEstimate", function(object) object@criterion.fct)
+setMethod("method", "MCEstimate", function(object) object@method)
+
 setReplaceMethod("criterion", "MCEstimate", 
                   function(object, value) {object@criterion <- value; object})
 

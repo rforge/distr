@@ -9,9 +9,9 @@
 \description{Truncate-methods}
 \usage{
 Truncate(object, ...)
-\S4method{Truncate}{AbscontDistribution}(object,lower,upper)
-\S4method{Truncate}{DiscreteDistribution}(object,lower,upper)
-\S4method{Truncate}{UnivarLebDecDistribution}(object,lower,upper, 
+\S4method{Truncate}{AbscontDistribution}(object, lower = -Inf, upper = Inf)
+\S4method{Truncate}{DiscreteDistribution}(object, lower= -Inf, upper = Inf)
+\S4method{Truncate}{UnivarLebDecDistribution}(object, lower = -Inf, upper = Inf, 
                     withSimplify = getdistrOption("simplifyD"))
 }
 \arguments{

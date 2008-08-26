@@ -84,8 +84,8 @@ reflect the fact, that a distribution object of theses classes has the
 same distribution as \code{a*X0+b}.\cr
 
 For all particular distributions, as well as for classes
-\code{DiscreteDistribution}, \code{LatticeDistribution}, 
-\code{UnivarDistrList} and \code{DistrList}     
+\code{AbscontDistribution}, \code{DiscreteDistribution}, 
+\code{LatticeDistribution}, \code{UnivarDistrList} and \code{DistrList}     
 generating functions are provided, e.g. \code{X <- Norm(mean = 3, sd = 2)}. 
 The same goes for the space classes.
 All slots should be inspected / modified by means of corresponding 

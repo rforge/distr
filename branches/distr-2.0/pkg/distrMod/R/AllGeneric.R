@@ -14,12 +14,12 @@ confint <- function(object, method, ...)
         mc <- match.call()[-1]
         nmc <- names(as.list(mc))
         mc0 <- as.list(mc)[!nmc %in% c("object", "parm", "level")]
-        arglist <- list(object = object)
-        if(hasArg(parm)) arglist <- c(arglist, parm = dots$"parm")
-        if(hasArg(level)) arglist <- c(arglist, level = dots$"level")
-        else arglist <- c(arglist, level = 0.95)   
-        if(length(mc0)) arglist <- c(arglist, mc0)
-        do.call(stats::confint, arglist)
+        argList <- list(object = object)
+        if(hasArg(parm)) argList <- c(argList, parm = dots$"parm")
+        if(hasArg(level)) argList <- c(argList, level = dots$"level")
+        else argList <- c(argList, level = 0.95)   
+        if(length(mc0)) argList <- c(argList, mc0)
+        do.call(stats::confint, argList)
         }   
 
 
@@ -248,4 +248,10 @@ if(!isGeneric("mleCalc")){
 }
 if(!isGeneric("mceCalc")){
     setGeneric("mceCalc", function(x, PFam, ...) standardGeneric("mceCalc"))
+}
+if(!isGeneric("criterion.fct")){
+    setGeneric("criterion.fct", function(object) standardGeneric("criterion.fct"))
+}
+if(!isGeneric("method")){
+    setGeneric("method", function(object) standardGeneric("method"))
 }

@@ -7,17 +7,18 @@
 }
 \usage{
 L2ParamFamily(name, distribution = Norm(), distrSymm, 
-                          main = main(param), nuisance = nuisance(param), 
-                          trafo = trafo(param), 
-                          param = ParamFamParameter(name = paste("Parameter of", name), 
-                                   main = main, nuisance = nuisance, trafo = trafo), 
-                          props = character(0),
-                          startPar = NULL, makeOKPar = NULL,
-                          modifyParam = function(theta){ Norm(mean=theta) },
-                          L2deriv.fct,
-                          L2derivSymm, L2derivDistr, L2derivDistrSymm, 
-                          FisherInfo.fct, FisherInfo = FisherInfo.fct(param),
-                          .returnClsName = NULL)
+              main = main(param), nuisance = nuisance(param), 
+              trafo = trafo(param), 
+              param = ParamFamParameter(name = paste("Parameter of", name), 
+                       main = main, nuisance = nuisance, trafo = trafo), 
+              props = character(0),
+              startPar = NULL, makeOKPar = NULL,
+              modifyParam = function(theta){ Norm(mean=theta) },
+              L2deriv.fct = function(param) {force(theta <- param@main)
+                           return(function(x) {x-theta})},
+              L2derivSymm, L2derivDistr, L2derivDistrSymm, 
+              FisherInfo.fct, FisherInfo = FisherInfo.fct(param),
+              .returnClsName = NULL)
 }
 \arguments{
   \item{name}{ character string: name of the family }

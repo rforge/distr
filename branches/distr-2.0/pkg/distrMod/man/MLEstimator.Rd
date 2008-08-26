@@ -30,8 +30,10 @@ MLEstimator(x, ParamFamily, startPar = NULL,
     or \code{optim}, respectively. }
 }
 \details{
-  The function calls \code{MCEstimator} using the negative log-likelihood
-  as criterion which should be minimized.
+  The function uses \code{\link{mleCalc}}
+  for method dispatch; this method by default  
+  calls \code{\link{mceCalc}} using the negative log-likelihood
+  as criterion which should be minimized. 
 }
 \value{
   An object of S4-class \code{"MCEstimate"} which inherits from class 
@@ -70,5 +72,12 @@ estimate(res)[2]
 res1$loglik
 ## negative log-likelihood
 criterion(res)
+
+## (empirical) Data
+x1 <- rnorm(50, sd = 0.5, mean = 3)
+N <- NormLocationScaleFamily()
+(res2 <- MLEstimator(x = x1, ParamFamily = N))
+## compare:
+c(mean(x1),sd(x1))
 }
 \keyword{univar}

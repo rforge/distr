@@ -5,6 +5,7 @@ import("distr")
 import("distrEx")
 import("RandVar")
 
+importFrom("stats4","profile")
 exportClasses("OptionalNumeric","MatrixorFunction",
               "OptionalNumericOrMatrix", "ShowDetails",
               "PosSemDefSymmMatrix",
@@ -49,7 +50,7 @@ exportMethods("name", "name<-", "r", "d", "p", "q",
               "estimate", "estimate.call", "samplesize.estimate", "call.estimate",
               "name.estimate", "trafo.estimate", "nuisance.estimate", 
               "Infos", "Infos<-", "addInfo<-",
-              "criterion", "criterion<-",
+              "criterion", "criterion<-", "criterion.fct", "method",
               "samplesize", "asvar", "asvar<-")
 exportMethods("untransformed.estimate", "untransformed.asvar")
 exportMethods("confint")
@@ -57,6 +58,8 @@ exportMethods("nuisance", "main")
 exportMethods("validParameter")
 exportMethods("startPar", "makeOKPar")
 exportMethods("locscalename", "LogDeriv")
+exportMethods("coerce", "profile")
+exportMethods("mleCalc", "mceCalc")
 export("distrModMASK")
 export("PosDefSymmMatrix","PosSemDefSymmMatrix")
 export("distrModOptions", "distrModoptions", "getdistrModOption",
@@ -79,3 +82,4 @@ export("EuclideanNorm", "QuadFormNorm")
 export("NormType", "QFNorm", "InfoNorm", "SelfNorm")
 export("NormScaleUnknownLocationFamily", "NormLocationUnknownScaleFamily")
 export("L2LocationUnknownScaleFamily", "L2ScaleUnknownLocationFamily")
+export("meRes", "get.criterion.fct")
