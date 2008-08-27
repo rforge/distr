@@ -10,10 +10,12 @@ BinomFamily <- function(size = 1, prob = 0.5, trafo){
         distrSymm <- NoSymmetry()
     param0 <- prob
     names(param0) <- "prob"
+    param1 <- size
+    names(param1) <- "size"
     if(missing(trafo)) trafo <- matrix(1, dimnames = list("prob","prob"))
     param <- ParamFamParameter(name = "probability of success",  
-                               main = c("prob" = param0), 
-                               fixed = c("size" = size), 
+                               main = param0, 
+                               fixed = param1, 
                                trafo = trafo)
     modifyParam <- function(theta){ Binom(size = size, prob = theta) }
     body(modifyParam) <- substitute({ Binom(size = size, prob = theta) }, list(size = size))
@@ -67,7 +69,7 @@ PoisFamily <- function(lambda = 1, trafo){
     names(param0) <- "lambda"
     if(missing(trafo)) trafo <- matrix(1, dimnames = list("lambda","lambda"))
     param <- ParamFamParameter(name = "positive mean",
-                               main = c("lambda" = param0), 
+                               main = param0, 
                                trafo = trafo)
     modifyParam <- function(theta){ Pois(lambda = theta) }
     props <- character(0)

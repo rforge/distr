@@ -9,8 +9,7 @@ MLEstimator <- function(x, ParamFamily, startPar = NULL,
 
     ## preparation: getting the matched call
     es.call <- match.call()
-    dots <- match.call(call = sys.call(sys.parent(1)),
-                       expand.dots = FALSE)$"..."
+    dots <- match.call(expand.dots = FALSE)$"..."
 
 
     ## some checking

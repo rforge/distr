@@ -104,7 +104,8 @@ ParamFamParameter
 ##########################
 "ParamFamParameter" [*] is subclass of class "Parameter" of package "distr".
 Additional slots:
-main(numeric), nuisance(OptionalNumeric), trafo(MatrixorFunction)
+main(numeric), nuisance(OptionalNumeric), fixed(OptionalNumeric),
+trafo(MatrixorFunction)
 
 ##########################
 Class unions
@@ -221,6 +222,7 @@ slots:
 name(character), estimate(ANY),
 samplesize(numeric), asvar(OptionalMatrix),
 Infos(matrix), nuis.idx(OptionalNumeric)
+fixed.estimate(OptionalNumeric), 
 estimate.call(call), trafo(list[of function, matrix]),
 untransformed.estimate(ANY), 
 untransformed.asvar(OptionalMatrix)
