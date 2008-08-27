@@ -14,4 +14,6 @@ s = lapply(DIR,findL)
 setwd(ow)
 }
 finde(x=".makeQNew", dir ="C:/rtest/distr/pkg/distr/R")
+finde(x="\\.oKT", dir ="C:/rtest/distr/branches/distr-2.0/pkg/distr/R")
+finde(x="setMethod\\(\"trafo", dir ="C:/rtest/distr/branches/distr-2.0/pkg/distrMod/R")
 

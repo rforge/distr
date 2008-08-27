@@ -161,7 +161,7 @@ GammaFamily <- function(scale = 1, shape = 1, trafo){
         FisherInfo.fct = FisherInfo.fct, FisherInfo = FisherInfo,
         startPar = startPar, makeOKPar = makeOKPar, 
         .returnClsName = "GammaFamily")
-    f.call <- substitute(GammFamily(scale = s1, shape = s2,
+    f.call <- substitute(GammaFamily(scale = s1, shape = s2,
   	                           trafo = matrix(Tr, ncol = 2, dimnames = DN)),
   	                     list(s1 = scale, s2 = shape, Tr = trafo,
   	                          DN = dimnames(trafo)))
@@ -286,7 +286,7 @@ NormScaleFamily <- function(sd = 1, mean = 0, trafo){
                   trafo = trafo, .returnClsName = "NormScaleFamily")
     f.call <- substitute(NormScaleFamily(sd = s, mean = m,
                             trafo = matrix(Tr, dimnames=list("sd","sd"))),
-                         list(s = sd, m = mean, trafo))
+                         list(s = sd, m = mean, Tr = trafo))
     res@fam.call <- f.call
     return(res)
 }
