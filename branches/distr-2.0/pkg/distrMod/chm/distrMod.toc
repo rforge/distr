@@ -494,6 +494,38 @@
 <param name="Local" value="fiUnOvShoot-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fixed">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fixed,Estimate-method">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fixed,ParamFamily-method">
+<param name="Local" value="ParamFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fixed,ParamFamParameter-method">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fixed.estimate">
+<param name="Local" value="Confint-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fixed.estimate,Confint-method">
+<param name="Local" value="Confint-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fixed<-">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fixed<-,ParamFamParameter-method">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="FunctionSymmetry-class">
 <param name="Local" value="FunctionSymmetry-class.html">
 </OBJECT>
@@ -1378,6 +1410,10 @@
 <param name="Local" value="trafo-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trafo,Estimate,ParamFamParameter-method">
+<param name="Local" value="trafo-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="trafo,ParamFamily,missing-method">
 <param name="Local" value="trafo-methods.html">
 </OBJECT>
@@ -1470,6 +1506,14 @@
 <param name="Local" value="validParameter-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="validParameter,BinomFamily-method">
+<param name="Local" value="validParameter-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="validParameter,GammaFamily-method">
+<param name="Local" value="validParameter-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="validParameter,L2LocationFamily-method">
 <param name="Local" value="validParameter-methods.html">
 </OBJECT>
@@ -1483,6 +1527,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="validParameter,ParamFamily-method">
+<param name="Local" value="validParameter-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="validParameter,PoisFamily-method">
 <param name="Local" value="validParameter-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">

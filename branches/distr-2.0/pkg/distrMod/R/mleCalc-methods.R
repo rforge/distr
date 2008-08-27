@@ -84,6 +84,7 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
 
         lmx <- length(main(PFam))
         lnx <- length(nuisance(PFam))
+        fixed <- fixed(PFam)
    
        fun <- function(theta, Data, ParamFamily, criterion, ...){
                vP <- validParameter(ParamFamily, theta)
@@ -118,7 +119,8 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
     nuis <- if(lnx) theta[-idx] else NULL
     param <- ParamFamParameter(name = names(theta), 
                                main = theta[idx],
-                               nuisance = nuis)    
+                               nuisance = nuis,
+                               fixed = fixed)    
 
     crit.fct <- get.criterion.fct(theta, Data = x, ParamFam = PFam, 
                                    criterion, fun, ...)
@@ -141,7 +143,8 @@ setMethod("mleCalc", signature(x = "numeric", PFam = "BinomFamily"),
                           -sum(dbinom(x, size=size(param(PFam)), prob=prob, 
                                log=TRUE))
            param <- ParamFamParameter(name = "success probability", 
-                               main = c("prob"=theta))
+                               main = c("prob" = theta),
+                               fixed = c("size" = size))
            if(!hasArg(Infos)) Infos <- NULL
            return(meRes(x, theta, ll, param, crit.fct, Infos = Infos)) 
 })
@@ -195,7 +198,7 @@ setMethod("mleCalc", signature(x = "numeric", PFam = "NormLocationScaleFamily"),
            crit.fct <- function(mean,sd)
                            -sum(dnorm(x, mean=mean, sd = sd, log=TRUE))
            param <- ParamFamParameter(name = "location and scale parameter", 
-                               main = c("mean"= theta[1], "sd"=theta[2]))
+                               main = theta)
            if(!hasArg(Infos)) Infos <- NULL
            return(meRes(x, theta, ll, param, crit.fct, Infos = Infos)) 
 })

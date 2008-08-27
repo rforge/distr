@@ -18,6 +18,7 @@
 <param name="keyword" value="R:   samplesize,Estimate-method">
 <param name="keyword" value="R:   asvar">
 <param name="keyword" value="R:   asvar,Estimate-method">
+<param name="keyword" value="R:   fixed,Estimate-method">
 <param name="keyword" value="R:   asvar<-">
 <param name="keyword" value="R:   asvar<-,Estimate-method">
 <param name="keyword" value="R:   nuisance,Estimate-method">
@@ -73,6 +74,8 @@ which may contain the asymptotic (co)variance of the estimator. </dd>
 the samplesize at which the estimate was evaluated. </dd>
 <dt><code>nuis.idx</code>:</dt><dd>object of class <code>"OptionalNumeric"</code>: 
 indices of <code>estimate</code> belonging to the nuisance part</dd>
+<dt><code>fixed</code>:</dt><dd>object of class <code>"OptionalNumeric"</code>: 
+the fixed and known part of the parameter</dd>
 <dt><code>untransformed.estimate</code>:</dt><dd>Object of class <code>"ANY"</code>:
 untransformed estimate.</dd>
 <dt><code>untransformed.asvar</code>:</dt><dd>object of class <code>"OptionalNumericOrMatrix"</code>
@@ -125,6 +128,10 @@ accessor function for <code>nuisance</code> part of slot <code>estimate</code>. 
 accessor function for <code>main</code> part of slot <code>estimate</code>. </dd>
 
 
+<dt>fixed</dt><dd><code>signature(object = "Estimate")</code>: 
+accessor function for slot <code>fixed</code>. </dd>
+
+
 <dt>Infos</dt><dd><code>signature(object = "Estimate")</code>: 
 accessor function for slot <code>Infos</code>. </dd>
 
@@ -168,7 +175,8 @@ part, and, if present, the corresponding standard errors, as well as,
 also if present, the value of the nuisance part. 
 When <code>show.detail</code> is matched to <code>"medium"</code>, you will in
 addition see the class of the estimator, its call and its sample-size
-and, if present, the asymptotic covariance matrix. Also the information
+and, if present, the fixed part of the parameter and 
+the asymptotic covariance matrix. Also the information
 gathered in the <code>Infos</code> slot is shown.
 Finally, when <code>show.detail</code> is matched to <code>"maximal"</code>, 
 and if, in addition, you estimate non-trivial (i.e. not the identity)

@@ -39,6 +39,7 @@ setMethod("confint", signature(object="Estimate", method="missing"),
                    name.estimate = object@name,
                    trafo.estimate = object@trafo,
                    nuisance.estimate = nuisance(object),
+                   fixed.estimate = fixed(object),
                    confint = ci)
 })
 

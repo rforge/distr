@@ -11,6 +11,8 @@ setMethod("nuisance.estimate", signature(object="Confint"),
            function(object) object@nuisance.estimate)
 setMethod("trafo.estimate", signature(object="Confint"),
            function(object) object@trafo.estimate)
+setMethod("fixed.estimate", signature(object="Confint"),
+           function(object) object@fixed.estimate)
 setMethod("type", signature(object="Confint"),
            function(object) object@type)
 

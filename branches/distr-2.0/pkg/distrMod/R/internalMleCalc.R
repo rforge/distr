@@ -88,8 +88,9 @@
 
     if(!.isUnitMatrix(traf0$mat)){
        estimate <- traf0$fct(estimate)$fval
+       trafm <- traf0$mat
        if(!is.null(asvar)){
-           asvar <- traf0$mat%*%asvar[idx,idx]%*%t(traf0$mat)
+           asvar <- trafm%*%asvar[idx,idx]%*%t(trafm)
            rownames(asvar) <- colnames(asvar) <- c(names(estimate))
           }
     }
@@ -99,7 +100,8 @@
          nuis.idx = nuis.idx, estimate.call = call, trafo = traf0,
          untransformed.estimate = untransformed.estimate,
          untransformed.asvar = untransformed.asvar,
-         criterion.fct = res$crit.fct, method = res$method)
+         criterion.fct = res$crit.fct, method = res$method,
+         fixed = fixed(param))
 }
 
 ##########################################################################

@@ -18,6 +18,8 @@
 <param name="keyword" value="R:   samplesize.estimate,Confint-method">
 <param name="keyword" value="R:   nuisance.estimate">
 <param name="keyword" value="R:   nuisance.estimate,Confint-method">
+<param name="keyword" value="R:   fixed.estimate">
+<param name="keyword" value="R:   fixed.estimate,Confint-method">
 <param name="keyword" value="R:   show,Confint-method">
 <param name="keyword" value="R:   print,Confint-method">
 <param name="keyword" value=" Confint-class">
@@ -63,6 +65,9 @@ the confidence intervals are produced.</dd>
 <dt><code>nuisance.estimate</code>:</dt><dd>Object of class <code>"OptionalNumeric"</code>:
 the nuisance parameter (if any) at which the confidence 
 intervals are produced.</dd>
+<dt><code>fixed.estimate</code>:</dt><dd>Object of class <code>"OptionalNumeric"</code>:
+the fixed part of the parameter (if any) at which the confidence 
+intervals are produced.</dd>
 </dl>
 
 <h3>Methods</h3>
@@ -96,14 +101,19 @@ accessor function for slot <code>samplesize.estimate</code>. </dd>
 accessor function for slot <code>nuisance.estimate</code>. </dd>
 
 
+<dt>fixed.estimate</dt><dd><code>signature(object = "Confint")</code>: 
+accessor function for slot <code>fixed.estimate</code>. </dd>
+
+
 <dt>show</dt><dd><code>signature(object = "Confint")</code>: shows a detailed view
-of the object; slot <code>nuisance.estimate</code> is only shown if non-null,
+of the object; slots <code>nuisance.estimate</code> and
+<code>fixed.estimate</code> are only shown if non-null,
 and slot <code>trafo.estimate</code> only if different from a unit matrix.</dd>
 <dt>print</dt><dd><code>signature(object = "Confint")</code>: just as <code>show</code>, 
 but with additional arguments <code>digits</code>.</dd>
 </dl>
 
-<h3>Details for methods this-is-escaped-codenormal-bracket97bracket-normal, this-is-escaped-codenormal-bracket98bracket-normal</h3>
+<h3>Details for methods this-is-escaped-codenormal-bracket108bracket-normal, this-is-escaped-codenormal-bracket109bracket-normal</h3>
 
 <p>
 Detailedness of output by methods <code>show</code>, <code>print</code> is controlled
@@ -128,7 +138,8 @@ addition see the type of the estimator(s) for which it is produced,
 the corresponding call of the estimater, its sample size, and, if present, the 
 value of the corresponding nuisance parameter. 
 Finally, when <code>show.detail</code> is matched to <code>"maximal"</code>, additionally 
-you will be shown the transformation of the estimator (if non-trivial, i.e. the 
+you will be shown the fixed part of the parameter (if present) and 
+the transformation of the estimator (if non-trivial, i.e. the 
 identity) in form of its function code respectively of its derivative matrix.
 </p>
 

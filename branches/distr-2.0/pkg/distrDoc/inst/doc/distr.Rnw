@@ -26,7 +26,7 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
         commentstyle=\color{Rcomment}\ttfamily\itshape,
         literate={<-}{{$\leftarrow$}}2,
         morekeywords=[2]{Norm,Pois,lambda,p,d,r,distroptions}}
-\newcommand{\ttR}[1]{{\color{Rcolor}\tt #1\color{normal}}}
+%\newcommand{\ttR}[1]{{\color{Rcolor}\tt #1\color{normal}}}
 \definecolor{Rcolor}{rgb}{0,0.5,0.5}
 \definecolor{Rout}{rgb}{0.461,0.039,0.102}
 \definecolor{Rcomment}{rgb}{0.101,0.043,0.432}
@@ -1622,6 +1622,82 @@ Hence, package \pkg{distrMod} depends on package \pkg{RandVar}~\cite{MK:05}.
 \end{figure}
 \fi
 % -----------------------------------------------------------------------------
+\subsection[Parameter in a parametric family]%
+{Parameter in a parametric family: class \code{ParamFamParameter}}
+% -----------------------------------------------------------------------------
+In many applications, it is not the whole parameter of a parametric family which
+is of interest, but rather parts of it, while the rest of it either is known
+and fixed or has to be estimated as a nuisance parameter; in other situations,
+we are interested in a (smooth) transformation of the parameter. This all
+is realized in a class design for the parameter of a parametric family 
+---class \code{ParamFamParameter}, the formal class of a slot of class
+\code{ParamFamily}.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%@Matthias:
+%insert graph here 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+It has slots \code{name} (the name of the parameter), \code{main} (the interesting
+aspect of the parameter), \code{nuisance} an unknown part of the parameter of
+secondary interest, but which has to be estimated, for instance for confidence
+intervals, and \code{fixed} a known and fixed part of the parameter. Besides
+these it also has a slot \code{trafo} which also sort of
+  arises in class \code{Estimate}.
+
+  \code{trafo} realizes partial influence curves; i.e.; we are only
+  interested is some possibly lower dimensional smooth (not necessarily
+  linear or even coordinate-wise) aspect/transformation $\tau$
+  of the parameter $\theta$.
+
+  To be coherent with the corresponding {\em nuisance}
+  implementation, we make the following convention:
+
+  The full parameter $\theta$ is split up coordinate-wise
+  in a main parameter $\theta'$ and a nuisance parameter
+  $\theta''$ (which is unknown, too, hence has to be
+  estimated, but only is of secondary interest) and a fixed,
+  known part $\theta'''$.
+  
+  Without loss of generality, we restrict ourselves to the case that
+  transformation $\tau$ only acts on the main parameter
+  $\theta'$ --- if we want to transform the whole
+  parameter, we only have to assume both nuisance parameter
+  $\theta''$ and fixed known part of the parameter $\theta'''$
+  have length 0.
+  
+  \paragraph{To the implementation:} 
+  
+  Slot \code{trafo} can either contain a (constant) matrix
+  $D_\theta$ or a function
+  $$\tau\colon \Theta' \to \tilde \Theta,\qquad \theta \mapsto \tau(\theta)$$%
+mapping main parameter
+  $\theta'$ to some range $\tilde \Theta$.
+
+  If {\em slot value} \code{trafo} is a function, besides $\tau(\theta)$, 
+  it will also return the corresponding derivative matrix
+  $\frac{\partial}{\partial \theta}\tau(\theta)$. 
+  More specifically, the return value of this function \code{theta} is a
+  list with entries \code{fval}, the function value $\tau(\theta)$,
+  and \code{mat}, the derivative matrix.
+
+  In case \code{trafo} is a matrix $D$, we interpret it as such a derivative
+  matrix $\frac{\partial}{\partial \theta}\tau(\theta)$,
+  and, correspondingly, $\tau(\theta)$ is the linear mapping
+  $\tau(\theta)=D\,\theta$.\par
+
+  According to the signature, {\em method} \code{trafo} will return different
+  return value types. For signatures
+  \code{Estimate,missing}, \code{Estimate,ParamFamParameter}, and
+    \code{ParamFamily,ParamFamParameter}, it will return a list with entries
+    \code{fct}, the function  $\tau$, and \code{mat}, the matrix
+    $\frac{\partial}{\partial \theta}\tau(\theta)$.
+    function $\tau$ will then return the list \code{list(fval, mat)}
+    mentioned above.  For signatures \code{ParamFamily,missing} and 
+    \code{ParamFamParameter,missing}, it will just return the
+     corresponding matrix.
+
+% -----------------------------------------------------------------------------
 \newpage
 \subsection{Risk Classes}
 % -----------------------------------------------------------------------------
@@ -1901,6 +1977,7 @@ mtrafo <- function(x){
                      dimnames = list(nms,nms0))                          
      list(fval = fval0, mat = mat0)}
 
+set.seed(123)
 x <- rgamma(50, scale = 0.5, shape = 3)
 
 ## parametric family of probability measures

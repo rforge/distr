@@ -7,7 +7,12 @@
 }
 \usage{
 ParamFamily(name, distribution = Norm(), distrSymm, modifyParam,
-            main = 0, nuisance, trafo, param, props = character(0),
+            main = main(param), nuisance = nuisance(param),
+            fixed = fixed(param), trafo = trafo(param),
+            param = ParamFamParameter(name = paste("Parameter of", 
+                          name),  main = main, nuisance = nuisance, 
+                                  fixed = fixed, trafo = trafo),
+            props = character(0),
             startPar = NULL, makeOKPar = NULL)
 }
 \arguments{
@@ -28,7 +33,8 @@ ParamFamily(name, distribution = Norm(), distrSymm, modifyParam,
     slot \code{makeOKPar} of \code{ParamFamily} is used to produce it.}
   \item{main}{ numeric vector: main parameter }
   \item{nuisance}{ numeric vector: nuisance parameter }
-  \item{trafo}{ MatrixorFunction: transformation of the parameters }
+  \item{fixed}{ numeric vector: fixed part of the parameter }
+  \item{trafo}{ function in \code{param} or matrix: transformation of the parameter }
   \item{param}{ object of class \code{"ParamFamParameter"}:
     parameter of the family }
   \item{modifyParam}{ function: mapping from the parameter space 

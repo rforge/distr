@@ -179,6 +179,9 @@ if(!isGeneric("samplesize.estimate")){
 if(!isGeneric("call.estimate")){
     setGeneric("call.estimate", function(object) standardGeneric("call.estimate"))
 }
+if(!isGeneric("fixed.estimate")){
+    setGeneric("fixed.estimate", function(object,... ) standardGeneric("fixed.estimate"))
+}
 if(!isGeneric("Infos")){
     setGeneric("Infos", function(object) standardGeneric("Infos"))
 }
@@ -208,6 +211,18 @@ if(!isGeneric("nuisance")){
 }
 if(!isGeneric("main")){
     setGeneric("main", function(object,... ) standardGeneric("main"))
+}
+if(!isGeneric("fixed")){
+    setGeneric("fixed", function(object,... ) standardGeneric("fixed"))
+}
+if(!isGeneric("nuisance<-")){
+    setGeneric("nuisance<-", function(object, value) standardGeneric("nuisance<-"))
+}
+if(!isGeneric("main<-")){
+    setGeneric("main<-", function(object, value) standardGeneric("main<-"))
+}
+if(!isGeneric("fixed<-")){
+    setGeneric("fixed<-", function(object, value) standardGeneric("fixed<-"))
 }
 
 #if(!isGeneric("confint")){

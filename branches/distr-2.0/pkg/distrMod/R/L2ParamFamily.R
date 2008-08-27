@@ -1,9 +1,10 @@
 ## generating function
 L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
                           main = main(param), nuisance = nuisance(param),
-                          trafo = trafo(param),
-                          param = ParamFamParameter(name = paste("Parameter of", name),
-                                   main = main, nuisance = nuisance, trafo = trafo),
+                          fixed = fixed(param), trafo = trafo(param),
+                          param = ParamFamParameter(name = paste("Parameter of", 
+                                      name),  main = main, nuisance = nuisance, 
+                                              fixed = fixed, trafo = trafo),
                           props = character(0),
                           startPar = NULL, makeOKPar = NULL,
                           modifyParam = function(theta){ Norm(mean=theta) },
@@ -17,11 +18,16 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
     if(missing(name))
         name <- "L_2 differentiable parametric family of probability measures"
     if(missing(param)&&missing(main))
-        param <- ParamFamParameter(name = "location", main = 0, trafo = matrix(1))
-    if(missing(param))
-        param <- ParamFamParameter(name = paste("Parameter of", name),
-                                   main = main, nuisance = nuisance,
-                                   trafo = trafo)
+        param <- ParamFamParameter(name = "location", main = 0)
+    if(missing(param)){
+        argList <- list(name = paste("Parameter of", name),
+                                   main = main)
+        if(!missing(nuisance)) argList <- c(argList, nuisance = nuisance)                            
+        if(!missing(fixed))    argList <- c(argList, fixed = fixed)                            
+        if(!missing(trafo))    argList <- c(argList, trafo = trafo)                            
+        param <- do.call(ParamFamParameter, argList)
+        
+    }
     if(missing(distrSymm)) distrSymm <- NoSymmetry()
     if(!is(distrSymm, "NoSymmetry")){
         if(!is(distrSymm@SymmCenter, "numeric"))

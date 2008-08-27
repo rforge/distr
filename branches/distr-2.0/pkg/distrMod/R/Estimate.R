@@ -14,6 +14,19 @@ setMethod("estimate.call", "Estimate", function(object) object@estimate.call)
 setMethod("trafo", signature(object = "Estimate", param = "missing"), 
            function(object, param) object@trafo)
 
+setMethod("trafo", signature(object = "Estimate", param = "ParamFamParameter"), 
+   function(object, param){
+        if(is.function(trafo(param))) 
+             return(list(fct = trafo(param), 
+                         mat = (trafo(param)(object@untransformed.estimate))$mat))
+        else return(list(fct = function(x) trafo(param)%*%x, 
+                         mat = trafo(param)))
+           
+   })
+
+setMethod("fixed", signature(object = "Estimate"), 
+           function(object) object@fixed)
+
 setMethod("Infos", "Estimate", function(object) object@Infos)
 setReplaceMethod("Infos", "Estimate", 
     function(object, value){ 

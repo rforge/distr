@@ -13,6 +13,7 @@
 \alias{samplesize,Estimate-method}
 \alias{asvar}
 \alias{asvar,Estimate-method}
+\alias{fixed,Estimate-method}
 \alias{asvar<-}
 \alias{asvar<-,Estimate-method}
 \alias{nuisance,Estimate-method}
@@ -52,6 +53,8 @@
       the samplesize at which the estimate was evaluated. }
     \item{\code{nuis.idx}:}{ object of class \code{"OptionalNumeric"}: 
      indices of \code{estimate} belonging to the nuisance part}
+    \item{\code{fixed}:}{ object of class \code{"OptionalNumeric"}: 
+     the fixed and known part of the parameter}
     \item{\code{untransformed.estimate}:}{Object of class \code{"ANY"}:
       untransformed estimate.}
     \item{\code{untransformed.asvar}:}{ object of class \code{"OptionalNumericOrMatrix"}
@@ -93,6 +96,9 @@
     \item{main}{\code{signature(object = "Estimate")}: 
       accessor function for \code{main} part of slot \code{estimate}. }
 
+    \item{fixed}{\code{signature(object = "Estimate")}: 
+      accessor function for slot \code{fixed}. }
+
     \item{Infos}{\code{signature(object = "Estimate")}: 
       accessor function for slot \code{Infos}. }
 
@@ -128,7 +134,8 @@ part, and, if present, the corresponding standard errors, as well as,
 also if present, the value of the nuisance part. 
 When \code{show.detail} is matched to \code{"medium"}, you will in
 addition see the class of the estimator, its call and its sample-size
-and, if present, the asymptotic covariance matrix. Also the information
+and, if present, the fixed part of the parameter and 
+the asymptotic covariance matrix. Also the information
 gathered in the \code{Infos} slot is shown.
 Finally, when \code{show.detail} is matched to \code{"maximal"}, 
 and if, in addition, you estimate non-trivial (i.e. not the identity)

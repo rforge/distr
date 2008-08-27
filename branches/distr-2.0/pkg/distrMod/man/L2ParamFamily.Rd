@@ -7,10 +7,11 @@
 }
 \usage{
 L2ParamFamily(name, distribution = Norm(), distrSymm, 
-              main = main(param), nuisance = nuisance(param), 
-              trafo = trafo(param), 
-              param = ParamFamParameter(name = paste("Parameter of", name), 
-                       main = main, nuisance = nuisance, trafo = trafo), 
+              main = main(param), nuisance = nuisance(param),
+              fixed = fixed(param), trafo = trafo(param),
+              param = ParamFamParameter(name = paste("Parameter of", name),  
+                          main = main, nuisance = nuisance, 
+                          fixed = fixed, trafo = trafo),
               props = character(0),
               startPar = NULL, makeOKPar = NULL,
               modifyParam = function(theta){ Norm(mean=theta) },
@@ -28,6 +29,7 @@ L2ParamFamily(name, distribution = Norm(), distrSymm,
       symmetry of \code{distribution}. }
   \item{main}{ numeric vector: main parameter }
   \item{nuisance}{ numeric vector: nuisance parameter }
+  \item{fixed}{ numeric vector: fixed part of the parameter }
   \item{trafo}{ function in \code{param} or matrix: transformation of the parameter }
   \item{param}{ object of class \code{"ParamFamParameter"}:
     parameter of the family }

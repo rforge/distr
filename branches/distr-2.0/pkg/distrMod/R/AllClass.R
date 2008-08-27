@@ -152,9 +152,11 @@ setClass(Class = "FunSymmList",
 setClass("ParamFamParameter",
             representation(main = "numeric",
                            nuisance = "OptionalNumeric",
+                           fixed = "OptionalNumeric",
                            trafo = "MatrixorFunction"),
             prototype(name = "parameter of a parametric family of probability measures",
-                      main = numeric(0), nuisance = NULL, trafo = new("matrix")),
+                      main = numeric(0), fixed = NULL, nuisance = NULL, 
+                      trafo = new("matrix")),
             contains = "Parameter",
             validity = function(object){
                 if(! ((is.matrix(object@trafo)) || is.function(object@trafo)))
@@ -438,6 +440,7 @@ setClass("Estimate",
                         Infos = "matrix",
                         estimate.call = "call",
                         nuis.idx = "OptionalNumeric",
+                        fixed = "OptionalNumeric",
                         trafo = "list",
                         untransformed.estimate = "ANY",
                         untransformed.asvar = "OptionalNumericOrMatrix"),
@@ -452,6 +455,7 @@ setClass("Estimate",
                                       list(fval = x, mat = matrix(0))},
                                 mat = matrix(1)), ### necessary for comparison with unit matrix
                    nuis.idx = NULL,
+                   fixed = NULL,
                    untransformed.estimate = NULL,
                    untransformed.asvar = NULL),
          validity = function(object){
@@ -504,7 +508,8 @@ setClass("Confint",
                         name.estimate = "character",
                         samplesize.estimate = "numeric",
                         trafo.estimate = "list",
-                        nuisance.estimate = "OptionalNumeric"
+                        nuisance.estimate = "OptionalNumeric",
+                        fixed.estimate = "OptionalNumeric"
                         ),
          prototype(type = "",
                    confint = array(0),
@@ -514,7 +519,8 @@ setClass("Confint",
                    trafo.estimate = list(fct = function(x){
                                              list(fval = x, mat = matrix(1))},
                                          mat = matrix(1)), ### necessary for comparison with unit matrix
-                   nuisance.estimate = NULL)
+                   nuisance.estimate = NULL,
+                   fixed.estimate = NULL)
          )
 
 ################################

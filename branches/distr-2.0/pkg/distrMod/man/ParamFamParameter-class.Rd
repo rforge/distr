@@ -11,6 +11,10 @@
 \alias{nuisance,ParamFamParameter-method}
 \alias{nuisance<-}
 \alias{nuisance<-,ParamFamParameter-method}
+\alias{fixed}
+\alias{fixed,ParamFamParameter-method}
+\alias{fixed<-}
+\alias{fixed<-,ParamFamParameter-method}
 \alias{show,ParamFamParameter-method}
 %\alias{trafo}
 %\alias{trafo,ParamFamParameter-method}
@@ -30,6 +34,8 @@
     \item{\code{main}:}{Object of class \code{"numeric"}: main parameter. }
     \item{\code{nuisance}:}{Object of class \code{"OptionalNumeric"}:
       optional nuisance parameter. }
+    \item{\code{fixed}:}{Object of class \code{"OptionalNumeric"}:
+      optional fixed part of the parameter. }
     \item{\code{trafo}:}{Object of class \code{"MatrixorFunction"}: 
       transformation of the parameter. }
     \item{\code{name}:}{Object of class \code{"character"}:
@@ -53,6 +59,12 @@ Class \code{"OptionalParameter"}, by class \code{"Parameter"}.
 
     \item{nuisance<-}{\code{signature(object = "ParamFamParameter")}: 
       replacement function for slot \code{nuisance}. }
+
+    \item{fixed}{\code{signature(object = "ParamFamParameter")}: 
+      accessor function for slot \code{fixed}. }
+
+    \item{fixed<-}{\code{signature(object = "ParamFamParameter")}: 
+      replacement function for slot \code{fixed}. }
 
     \item{trafo}{\code{signature(object = "ParamFamParameter")}: 
       accessor function for slot \code{trafo}. }
@@ -95,7 +107,8 @@ and you have a non-trivial transformation in function form, you will
 also be shown the code to this function.
             }
 %\references{}
-\author{Matthias Kohl \email{Matthias.Kohl@stamats.de}}
+\author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
+Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}
 \seealso{\code{\link[distr]{Parameter-class}}}
 \examples{

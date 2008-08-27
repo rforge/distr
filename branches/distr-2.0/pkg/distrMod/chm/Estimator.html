@@ -25,7 +25,7 @@ estimates.
 
 <pre>
 Estimator(x, estimator, name, Infos, asvar = NULL, nuis.idx,
-          trafo = NULL, asvar.fct, ...)
+          trafo = NULL, fixed = NULL, asvar.fct, ...)
 </pre>
 
 
@@ -51,6 +51,9 @@ optionally the asymptotic (co)variance of the estimator </td></tr>
 <td>
 optionally the indices of the estimate belonging 
 to nuisance parameter</td></tr>
+<tr valign="top"><td><code>fixed</code></td>
+<td>
+optionally (numeric) the fixed part of the parameter</td></tr>
 <tr valign="top"><td><code>trafo</code></td>
 <td>
 an object of class <code>MatrixorFunction</code> &ndash; a transformation
