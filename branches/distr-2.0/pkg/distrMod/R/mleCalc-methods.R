@@ -133,8 +133,9 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
 
 setMethod("mleCalc", signature(x = "numeric", PFam = "BinomFamily"),
            function(x, PFam, ...){
-           theta <- mean(x)
-           ll <- -sum(dbinom(x, size=size(param(PFam)), prob=theta, log=TRUE))
+           size <- size(param(distribution(PFam)))
+           theta <- mean(x)/size
+           ll <- -sum(dbinom(x, size=size, prob=theta, log=TRUE))
            names(ll) <- "neg.Loglikelihood"
            crit.fct <- function(prob)
                           -sum(dbinom(x, size=size(param(PFam)), prob=prob, 
@@ -189,7 +190,7 @@ setMethod("mleCalc", signature(x = "numeric", PFam = "NormLocationScaleFamily"),
            sd0 <- sd(x); mn <- mean(x); 
            theta <- c(mn, sd0); 
            names(theta) <- c("mean", "sd")
-           ll <- -sum(dnorm(x, mean=mn, sd = sd0, log=TRUE))
+           ll <- -sum(dnorm(x, mean = mn, sd = sd0, log = TRUE))
            names(ll) <- "neg.Loglikelihood"
            crit.fct <- function(mean,sd)
                            -sum(dnorm(x, mean=mean, sd = sd, log=TRUE))
