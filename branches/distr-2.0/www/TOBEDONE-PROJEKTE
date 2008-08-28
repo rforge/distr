@@ -1,6 +1,6 @@
 %##################################################################
 %------------------------------------------------------------------
-Peters Ideen zu neuen Versionen
+Peter's ideas for new versions
 %------------------------------------------------------------------
 %##################################################################
 
@@ -19,7 +19,7 @@ Peters Ideen zu neuen Versionen
             +spezielles show
             +spezielles plot
 
-[erledigt: P.R. v 2.0]
+[done: P.R. v 2.0]
 
 (2) DecomposDistribution 
     = Unterklasse von MixingDistribution
@@ -73,6 +73,6 @@ Peters Ideen zu neuen Versionen
 +++ ROptEst
 290306  neue Klasse "ParamFamily" mit slot /modifparameter/ könnte aufwendig werden, 
   da dieser Slot in *jedem* (auch L2-)Modell individuell gesetzt werden muss...
-
+[done]
 
 
