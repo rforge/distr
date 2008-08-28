@@ -58,7 +58,7 @@ of R-Packages&nbsp;<span style="color: rgb(51, 51, 255);"></span></big>
 </div>
 <hr style="width: 100%; height: 2px;">
 <div style="text-align: justify;"> Version: 2.0<br>
-Release Date: 2008-01-17 <br>
+Release Date: 2008-09-05 <br>
 Authors: <a
  href="mailto:peter.ruckdeschel@uni-bayreuth.de?subject=%5Bdistr%5D">Peter
 Ruckdeschel</a>, <a
@@ -79,7 +79,7 @@ Required R-Version: <br>
  style="font-weight: bold;">distr</span></big></big> </span>is an
 umbrella project which contains all the packages of the "<span
  style="color: rgb(51, 102, 255);">distrXXX</span>"-family. These in
-return are all based on package "<span style="color: rgb(51, 102, 255);">distrXXX</span>".
+return are all based on package "<span style="color: rgb(51, 102, 255);">distr</span>".
 This family currently comprises the packages<br>
 <ul>
   <li><a href="distr.html"><span style="color: rgb(51, 102, 255);">distr</span></a><br>
@@ -131,6 +131,15 @@ German) </li>
 </ul>
 should be interesting.<br>
 </div>
+<br>
+If you want to <b>collaborate</b> (which you are welcome to do!):<br>
+<ul>
+<li> please read <a
+href="http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/www/HOWTO-collaborate.txt?root=distr&amp;view=markup">HOWTO-collaborate.txt</a>
+ [a short HOWTO for svn and R-Forge in 10]<br>
+</a></li>
+</ul>
+<br>
 </div>
 <br><br>
 <ul>
@@ -139,9 +148,9 @@ should be interesting.<br>
 <hr style="width: 100%; height: 2px; color: rgb(0, 0, 0);">
 <div style="text-align: justify; color: rgb(0, 0, 0);">This page is
 maintained by <a
- href="mailto:peter.ruckdeschel@uni-bayreuth.de?subject=distr-package">Peter
+ href="mailto:peter.ruckdeschel@itwm.fraunhofer.de?subject=distr-package">Peter
 Ruckdeschel</a>
-and last updated on 2008-01-17.<br>
+and last updated on 2008-08-28.<br>
 </div>
 
 <p> The <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. </p>
