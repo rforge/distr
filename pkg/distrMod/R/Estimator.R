@@ -2,7 +2,7 @@
 ## Function to compute estimates
 ###############################################################################
 Estimator <- function(x, estimator, name, Infos, asvar = NULL, nuis.idx,
-                      trafo = NULL, asvar.fct, ...){
+                      trafo = NULL, fixed = NULL, asvar.fct, ...){
 
     name.est <- paste(deparse(substitute(estimator)),sep="",collapse="")     
     es.call <- match.call()
@@ -35,6 +35,7 @@ Estimator <- function(x, estimator, name, Infos, asvar = NULL, nuis.idx,
     res@estimate.call <- es.call
     res@name <- name
     res@Infos <- Infos
+    res@fixed <- fixed
     
     if(missing(nuis.idx)) res@nuis.idx <- NULL
     else res@nuis.idx <- nuis.idx
@@ -48,7 +49,8 @@ Estimator <- function(x, estimator, name, Infos, asvar = NULL, nuis.idx,
     
     param <- ParamFamParameter(name = names(estimate), 
                                main = res@estimate[idm],
-                               nuisance = res@estimate[idx])
+                               nuisance = res@estimate[idx],
+                               fixed = fixed)
     
     if(missing(trafo)||is.null(trafo)) 
        res@trafo <- list(fct = function(x) 

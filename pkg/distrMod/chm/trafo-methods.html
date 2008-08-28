@@ -8,6 +8,7 @@
 <param name="keyword" value="R:   trafo-methods">
 <param name="keyword" value="R:   trafo">
 <param name="keyword" value="R:   trafo,Estimate,missing-method">
+<param name="keyword" value="R:   trafo,Estimate,ParamFamParameter-method">
 <param name="keyword" value="R:   trafo,ParamFamParameter,missing-method">
 <param name="keyword" value="R:   trafo,ParamFamily,missing-method">
 <param name="keyword" value="R:   trafo,ParamFamily,ParamFamParameter-method">
@@ -43,6 +44,8 @@ trafo(object,param)
 ## S4 method for signature 'ParamFamily,
 ##   ParamFamParameter':
 trafo(object,param)
+## S4 method for signature 'Estimate, ParamFamParameter':
+trafo(object,param)
 trafo(object) &lt;- value
 </pre>
 
@@ -56,9 +59,8 @@ an object of either class <code>Estimate</code>,
 <code>ParamFamParameter</code>, <code>ParamFamily</code></td></tr>
 <tr valign="top"><td><code>param</code></td>
 <td>
-a specification of which parameters are to be given
-confidence intervals, either a vector of numbers or a vector of
-names. If missing, all parameters are considered.</td></tr>
+an object of class <code>ParamFamParameter</code>; the parameter
+value at which to evaluate the transformation</td></tr>
 <tr valign="top"><td><code>value</code></td>
 <td>
 a matrix or a function; if it is a matrix, dimensions must
@@ -95,14 +97,16 @@ implementation, we make the following convention:
 The full parameter <i>theta</i> is split up coordinate-wise
 in a main parameter <i>theta'</i> and a nuisance parameter
 <i>theta''</i> (which is unknown, too, hence has to be
-estimated, but only is of secondary interest).
+estimated, but only is of secondary interest) and a fixed,
+known part <i>theta'''</i>.
 </p>
 <p>
 Without loss of generality, we restrict ourselves to the case that
 transformation <i>tau</i> only acts on the main parameter
 <i>theta'</i> &mdash; if we want to transform the whole
-parameter, we only have to assume nuisance parameter
-<i>theta''</i> has length 0.
+parameter, we only have to assume that both nuisance parameter
+<i>theta''</i> and fixed, known part of the parameter
+<i>theta'''</i> have length 0.
 </p>
 <p>
 To the implementation:
@@ -138,6 +142,8 @@ return value types. For signature
 function <i>tau</i> will then return the list <code>list(fval, mat)</code>
 mentioned above.
 </dd>
+<dt><code>Estimate,ParamFamParameter</code>:</dt><dd>as signature
+<code>Estimate,missing</code>.</dd>
 <dt><code>ParamFamParameter,missing</code>:</dt><dd>it will just return the
 corresponding matrix.</dd>
 <dt><code>ParamFamily,missing</code>:</dt><dd>is just wrapper to signature
@@ -156,6 +162,10 @@ The return value depends on the signature.
 <td>
 a list of length two with components
 <code>fct</code> and <code>mat</code> (see below)</td></tr>
+<tr valign="top"><td><code>signature <code>Estimate,ParamFamParameter</code>:</code></td>
+<td>
+a list of length two with components
+<code>fct</code> and <code>mat</code> (see below)</td></tr>
 <tr valign="top"><td><code>signature <code>ParamFamParameter,missing</code>:</code></td>
 <td>
 a matrix (see below)</td></tr>
@@ -169,7 +179,7 @@ with components <code>fct</code> and <code>mat</code> (see below)</td></tr>
 </table>
 <p>
 
-normal-bracket59bracket-normal</p>
+normal-bracket68bracket-normal</p>
 
 <h3>Examples</h3>
 
@@ -182,13 +192,13 @@ x &lt;- r(distribution(NS))(30)
 ## want to estimate mu/sigma, sigma^2
 ## -&gt; new trafo slot:
 trafo(NS) &lt;- function(param){
-  mu &lt;- param["loc"]
-  sd &lt;- param["scale"]
+  mu &lt;- param["mean"]
+  sd &lt;- param["sd"]
   fval &lt;- c(mu/sd, sd^2)
   nfval &lt;- c("mu/sig", "sig^2")
   names(fval) &lt;- nfval
   mat &lt;- matrix(c(1/sd,0,-mu/sd^2,2*sd),2,2)
-  dimnames(mat) &lt;- list(nfval,c("loc","scale"))
+  dimnames(mat) &lt;- list(nfval,c("mean","sd"))
   return(list(fval=fval, mat=mat))
 }
 

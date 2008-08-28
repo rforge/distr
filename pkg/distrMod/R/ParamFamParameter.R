@@ -1,10 +1,12 @@
 ### from Matthias' thesis / ROptEst
 ## generating function
-ParamFamParameter <- function(name, main = numeric(0), nuisance, trafo){
+ParamFamParameter <- function(name, main = numeric(0), nuisance, fixed, trafo){
     if(missing(name))
         name <- "parameter of a parametric family of probability measures"
     if(missing(nuisance))
         nuisance <- NULL
+    if(missing(fixed))
+        fixed <- NULL
     if(missing(trafo))
         trafo <- diag(length(main))
 
@@ -14,6 +16,7 @@ ParamFamParameter <- function(name, main = numeric(0), nuisance, trafo){
     PFP@name <- name
     PFP@main <- main
     PFP@nuisance <- nuisance
+    PFP@fixed <- fixed
     PFP@trafo <- trafo
 
     return(PFP)
@@ -22,6 +25,7 @@ ParamFamParameter <- function(name, main = numeric(0), nuisance, trafo){
 ## access methods
 setMethod("main", "ParamFamParameter", function(object) object@main)
 setMethod("nuisance", "ParamFamParameter", function(object) object@nuisance)
+setMethod("fixed", "ParamFamParameter", function(object) object@fixed)
 setMethod("trafo", signature(object = "ParamFamParameter", param = "missing"),
  function(object, param){ 
    if(is.function(object@trafo)) {
@@ -41,6 +45,11 @@ setReplaceMethod("main", "ParamFamParameter",
 setReplaceMethod("nuisance", "ParamFamParameter", 
     function(object, value){ 
         object@nuisance <- value
+        object
+    })
+setReplaceMethod("fixed", "ParamFamParameter", 
+    function(object, value){ 
+        object@fixed <- value
         object
     })
 setReplaceMethod("trafo", "ParamFamParameter", 

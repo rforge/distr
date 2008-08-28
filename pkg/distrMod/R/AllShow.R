@@ -42,6 +42,27 @@ setMethod("show", "ParamFamParameter",
                 }
             }
         }
+        if(!is.null(object@fixed) && length(object@fixed)){
+            if(length(object@main) > 1){
+                if(is.null(names(object@fixed)))
+                    cat(paste(gettextf("element %s of fixed part of param.:\t%s\n", 
+                              1:length(object@fixed), object@fixed), 
+                              collapse = ""))
+                else{
+                    cat(gettext("fixed part of param.:\n"))
+                    cat(paste(gettextf("\t%s:\t%s\n", names(object@fixed), 
+                        object@fixed), collapse = ""))
+                }
+            }else{
+                if(is.null(names(object@fixed)))
+                    cat(gettextf("fixed part of param.:\t%s\n", object@fixed))
+                else{
+                    cat(gettext("fixed part of param.:\n"))
+                    cat(gettextf("\t%s:\t%s\n", names(object@fixed), 
+                        object@fixed))
+                }
+            }
+        }
         if(!identical(all.equal(object@trafo, diag(length(object)), 
                             tolerance = .Machine$double.eps^0.5), TRUE)){
             if(getdistrModOption("show.details")!="minimal"){
@@ -136,25 +157,31 @@ setMethod("show", "Estimate",
            untransformed.sd0 <- sqrt(diag(object@untransformed.asvar)/object@samplesize)
 
            if(getdistrModOption("show.details")!="minimal")
-              cat("estimate:\n")
+              cat(gettextf("estimate:\n"))
            .show.with.sd(object@estimate,sd0)
 
            if(!is.null(object@nuis.idx)){
-              cat("nuisance parameter:\n")
+              cat(gettextf("nuisance parameter:\n"))
               print(nuisance(object), quote = FALSE)        
            }
            
+           if(!is.null(object@fixed) && 
+               getdistrModOption("show.details")!="minimal"){
+              cat(gettextf("fixed part of the parameter:\n"))
+              print(fixed(object), quote = FALSE)        
+           }
+
            if(getdistrModOption("show.details")!="minimal"){
-               cat("asymptotic (co)variance:\n")
+               cat(gettextf("asymptotic (co)variance (multiplied with samplesize):\n"))
                print(object@asvar[,])
               }
 
            if(getdistrModOption("show.details")=="maximal"){
               if(!.isUnitMatrix(trafo.mat)){
-                   cat("untransformed estimate:\n")
+                   cat(gettextf("untransformed estimate:\n"))
                    .show.with.sd(object@untransformed.estimate,untransformed.sd0)
            
-                   cat("asymptotic (co)variance of untransformed estimate:\n")
+                   cat(gettextf("asymptotic (co)variance of untransformed estimate (multiplied with samplesize):\n"))
                    print(object@untransformed.asvar[,])
                    }
             }
@@ -164,8 +191,14 @@ setMethod("show", "Estimate",
            print(object@estimate, quote = FALSE)
 
            if(!is.null(object@nuis.idx)){
-              cat("nuisance parameter:\n")
+              cat(gettextf("nuisance parameter:\n"))
               print(nuisance(object), quote = FALSE)        
+           }
+
+           if(!is.null(object@fixed) && 
+               getdistrModOption("show.details")!="minimal"){
+              cat(gettextf("fixed part of the parameter:\n"))
+              print(fixed(object), quote = FALSE)        
            }
         } 
 
@@ -201,8 +234,8 @@ setMethod("show", "Confint",
     function(object){
         cat(gettextf("A[n] %s confidence interval:\n",type(object)))
         print(confint(object), quote = FALSE)
-        if(getdistrModOption("show.details")!="minimal")
-           {cat(gettextf("Type of estimator: %s:\n", name.estimate(object)))
+        if(getdistrModOption("show.details")!="minimal"){
+            cat(gettextf("Type of estimator: %s\n", name.estimate(object)))
 
             if(length(object@samplesize.estimate) > 0)
                cat(gettextf("samplesize:   %d\n", samplesize.estimate(object)))
@@ -210,21 +243,27 @@ setMethod("show", "Confint",
             cat(gettextf("Call by which estimate was produced:\n"))
             print(call.estimate(object), quote = FALSE)
 
-            if(!is.null(nuisance.estimate(object)))
-              {cat(gettext("Nuisance parameter at which estimate was produced:\n"))
-               print(nuisance.estimate(object), quote = FALSE)}
+            if(!is.null(nuisance.estimate(object))){
+               cat(gettext("Nuisance parameter at which estimate was produced:\n"))
+               print(nuisance.estimate(object), quote = FALSE)
             }
-        if(getdistrModOption("show.details")=="maximal")        
-           {trafo.mat <- object@trafo.estimate$mat
+        }
+        if(getdistrModOption("show.details")=="maximal"){        
+            trafo.mat <- object@trafo.estimate$mat
             trafo.fct <- object@trafo.estimate$fct
         
+            if(!is.null(fixed.estimate(object))){
+               cat(gettext("Fixed part of the parameter at which estimate was produced:\n"))
+               print(fixed.estimate(object), quote = FALSE)
+            }
+
             if(!.isUnitMatrix(trafo.mat)){
                cat("Transformation of main parameter by which estimate was produced:\n")
                print(trafo.fct)   
                cat("Trafo / derivative matrix at which estimate was produced:\n")
                print(trafo.mat[,])                
-               }
-           }
+            }
+        }
 })
 
 
@@ -247,13 +286,21 @@ setMethod("print", "ShowDetails",
          new.distrModOptions <- old.distrModOptions
          new.distrModOptions$"show.details" <- show.details
          env <- asNamespace("distrMod")
-         assign(".distrModOptions", new.distrModOptions, envir = env)
+         assign.error <- FALSE
+         if(is(try(assign(".distrModOptions", new.distrModOptions, envir = env),
+                   silent = TRUE), "try-error")){
+            assign.error <- TRUE
+            old.show.details <- getdistrModOption("show.details")
+            distrModOptions("show.details" = show.details)
+         }
+                   
         # end workaround
         show(object = x)
          
         options("digits" = oldDigits)
 #        instead of distrModOptions("show.details"=old.show.details) ::
-         assign(".distrModOptions", old.distrModOptions, envir = env)
+         if(assign.error) distrModOptions("show.details" = old.show.details)
+         else  assign(".distrModOptions", old.distrModOptions, envir = env)
         })
 
 #setMethod("print", "Confint", 

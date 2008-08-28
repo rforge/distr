@@ -3,6 +3,7 @@
 \alias{ParamFamily-class}
 \alias{main,ParamFamily-method}
 \alias{nuisance,ParamFamily-method}
+\alias{fixed,ParamFamily-method}
 \alias{param,ParamFamily-method}
 \alias{modifyParam}
 \alias{modifyParam,ParamFamily-method}
@@ -71,6 +72,10 @@ Class \code{"ProbFamily"}, directly.
 
     \item{nuisance}{\code{signature(object = "ParamFamily")}: 
       wrapped accessor function for slot \code{nuisance} 
+      of slot \code{param}. }
+
+    \item{fixed}{\code{signature(object = "ParamFamily")}: 
+      wrapped accessor function for slot \code{fixed} 
       of slot \code{param}. }
 
     \item{trafo}{\code{signature(object = "ParamFamily", param = "missing")}: 

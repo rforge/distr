@@ -18,6 +18,10 @@
 <param name="Local" value="internals.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value=".get.criterion.fct">
+<param name="Local" value="internalmleHelpers.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value=".getLogDeriv">
 <param name="Local" value="internals.html">
 </OBJECT>
@@ -28,6 +32,18 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value=".isUnitMatrix">
 <param name="Local" value="internals.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value=".negLoglikelihood">
+<param name="Local" value="internalmleHelpers.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value=".process.meCalcRes">
+<param name="Local" value="internalmleHelpers.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value=".samplesize">
+<param name="Local" value="internalmleHelpers.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value=".show.with.sd">
@@ -210,6 +226,10 @@
 <param name="Local" value="L2ParamFamily-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="coerce,MCEstimate,mle-method">
+<param name="Local" value="MCEstimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="confint">
 <param name="Local" value="confint-methods.html">
 </OBJECT>
@@ -226,6 +246,14 @@
 <param name="Local" value="confint-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="confint,mle,missing-method">
+<param name="Local" value="confint-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="confint,profile.mle,missing-method">
+<param name="Local" value="confint-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Confint-class">
 <param name="Local" value="Confint-class.html">
 </OBJECT>
@@ -239,6 +267,14 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="criterion,MCEstimate-method">
+<param name="Local" value="MCEstimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="criterion.fct">
+<param name="Local" value="MCEstimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="criterion.fct,MCEstimate-method">
 <param name="Local" value="MCEstimate-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -458,6 +494,38 @@
 <param name="Local" value="fiUnOvShoot-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fixed">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fixed,Estimate-method">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fixed,ParamFamily-method">
+<param name="Local" value="ParamFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fixed,ParamFamParameter-method">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fixed.estimate">
+<param name="Local" value="Confint-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fixed.estimate,Confint-method">
+<param name="Local" value="Confint-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fixed<-">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="fixed<-,ParamFamParameter-method">
+<param name="Local" value="ParamFamParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="FunctionSymmetry-class">
 <param name="Local" value="FunctionSymmetry-class.html">
 </OBJECT>
@@ -476,6 +544,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="GammaFamily-class">
 <param name="Local" value="InternalReturnClasses-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="get.criterion.fct">
+<param name="Local" value="meRes.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="getdistrModOption">
@@ -524,6 +596,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="internals_for_distrMod">
 <param name="Local" value="internals.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="internal_mlehelpers_for_distrMod">
+<param name="Local" value="internalmleHelpers.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="isKerAinKerB">
@@ -698,6 +774,18 @@
 <param name="Local" value="internalClassUnions-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mceCalc">
+<param name="Local" value="mleCalc-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mceCalc,numeric,ParamFamily-method">
+<param name="Local" value="mleCalc-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mceCalc-methods">
+<param name="Local" value="mleCalc-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="MCEstimate-class">
 <param name="Local" value="MCEstimate-class.html">
 </OBJECT>
@@ -708,6 +796,50 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="MDEstimator">
 <param name="Local" value="MDEstimator.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="meRes">
+<param name="Local" value="meRes.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="method">
+<param name="Local" value="MCEstimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="method,MCEstimate-method">
+<param name="Local" value="MCEstimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mleCalc">
+<param name="Local" value="mleCalc-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mleCalc,numeric,BinomFamily-method">
+<param name="Local" value="mleCalc-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mleCalc,numeric,NormLocationFamily-method">
+<param name="Local" value="mleCalc-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mleCalc,numeric,NormLocationScaleFamily-method">
+<param name="Local" value="mleCalc-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mleCalc,numeric,NormScaleFamily-method">
+<param name="Local" value="mleCalc-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mleCalc,numeric,ParamFamily-method">
+<param name="Local" value="mleCalc-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mleCalc,numeric,PoisFamily-method">
+<param name="Local" value="mleCalc-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mleCalc-methods">
+<param name="Local" value="mleCalc-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="MLEstimator">
@@ -970,11 +1102,11 @@
 <param name="Local" value="ParamFamParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="plot,L2ParamFamily-method">
+<param name="Name" value="plot,L2ParamFamily,ANY-method">
 <param name="Local" value="L2ParamFamily-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="plot,ParamFamily-method">
+<param name="Name" value="plot,ParamFamily,ANY-method">
 <param name="Local" value="ParamFamily-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -1024,6 +1156,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="ProbFamily-class">
 <param name="Local" value="ProbFamily-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="profile,MCEstimate-method">
+<param name="Local" value="MCEstimate-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="props">
@@ -1090,6 +1226,10 @@
 <param name="Local" value="Estimate-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="samplesize,numeric-method">
+<param name="Local" value="meRes.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="samplesize.estimate">
 <param name="Local" value="Confint-class.html">
 </OBJECT>
@@ -1148,6 +1288,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="show,Symmetry-method">
 <param name="Local" value="Symmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="show.details">
+<param name="Local" value="distrModOptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="ShowDetails-class">
@@ -1266,6 +1410,10 @@
 <param name="Local" value="trafo-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trafo,Estimate,ParamFamParameter-method">
+<param name="Local" value="trafo-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="trafo,ParamFamily,missing-method">
 <param name="Local" value="trafo-methods.html">
 </OBJECT>
@@ -1350,7 +1498,19 @@
 <param name="Local" value="Estimate-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="use.generalized.inverse.by.default">
+<param name="Local" value="distrModOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="validParameter">
+<param name="Local" value="validParameter-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="validParameter,BinomFamily-method">
+<param name="Local" value="validParameter-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="validParameter,GammaFamily-method">
 <param name="Local" value="validParameter-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -1367,6 +1527,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="validParameter,ParamFamily-method">
+<param name="Local" value="validParameter-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="validParameter,PoisFamily-method">
 <param name="Local" value="validParameter-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -1727,8 +1891,16 @@
 <param name="Local" value="checkL2deriv.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="helper functions for mceCalc and mleCalc">
+<param name="Local" value="meRes.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Internal functions of package distrMod">
 <param name="Local" value="internals.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Internal helper functions for treating MCEstimators in package distrMod">
+<param name="Local" value="internalmleHelpers.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Internal return classes for generating functions">
@@ -1789,6 +1961,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Methods for function validParameter in Package `distrMod' ">
 <param name="Local" value="validParameter-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Methods for functions mceCalc and mleCalc in Package `distrMod' ">
+<param name="Local" value="mleCalc-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Norm classes for norms based on quadratic forms">

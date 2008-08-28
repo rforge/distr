@@ -122,10 +122,6 @@
 
    onedim <- (length(L2deriv@Map)==1)
 
-#   L2deriv <- EuclRandVariable(Map = L2deriv0, Domain = Reals())
-#   if (! dimension(Domain(L2deriv))==1)
-#      {warning("Domain of L2derivative must be one-dimensional")
-#       return(NULL)}
 
    if(onedim){
    ## one-dim case
@@ -193,6 +189,8 @@
                      type = if(is(distr,"DiscreteDistribution")) "p" else "l")
        }
    E4 <- E(object=distr, fun = function(x) psi.01(x)^2)
+   psi.01 <- EuclRandVariable(Map = list(psi.01), Domain = Reals())
+
 #   print(list(E2,E4,E2-E4))
 
       }else{
@@ -316,8 +314,8 @@
   psi <-  EuclRandVarList(psi.01)
   nms <- names(c(main(param(L2Fam)),nuisance(param(L2Fam))))
   dimnames(E4) = list(nms,nms)
-  if(withpreIC) return(list(preIC=psi, Var=E2))
-  else return(E2)
+  if(withpreIC) return(list(preIC=psi, Var=E4))
+  else return(E4)
 }
 
 ### examples:

@@ -8,7 +8,7 @@
 }
 \usage{
 Estimator(x, estimator, name, Infos, asvar = NULL, nuis.idx,
-          trafo = NULL, asvar.fct, ...)
+          trafo = NULL, fixed = NULL, asvar.fct, ...)
 }
 \arguments{
   \item{x}{ (empirical) data }
@@ -18,6 +18,7 @@ Estimator(x, estimator, name, Infos, asvar = NULL, nuis.idx,
   \item{asvar}{ optionally the asymptotic (co)variance of the estimator }
   \item{nuis.idx}{ optionally the indices of the estimate belonging 
                   to nuisance parameter}
+  \item{fixed}{ optionally (numeric) the fixed part of the parameter}
   \item{trafo}{ an object of class \code{MatrixorFunction} -- a transformation
   for the main parameter}
   \item{asvar.fct}{optionally: a function to determine the corresponding

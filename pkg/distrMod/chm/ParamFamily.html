@@ -24,7 +24,12 @@ Generates an object of class <code>"ParamFamily"</code>.
 
 <pre>
 ParamFamily(name, distribution = Norm(), distrSymm, modifyParam,
-            main = 0, nuisance, trafo, param, props = character(0),
+            main = main(param), nuisance = nuisance(param),
+            fixed = fixed(param), trafo = trafo(param),
+            param = ParamFamParameter(name = paste("Parameter of", 
+                          name),  main = main, nuisance = nuisance, 
+                                  fixed = fixed, trafo = trafo),
+            props = character(0),
             startPar = NULL, makeOKPar = NULL)
 </pre>
 
@@ -63,9 +68,12 @@ numeric vector: main parameter </td></tr>
 <tr valign="top"><td><code>nuisance</code></td>
 <td>
 numeric vector: nuisance parameter </td></tr>
+<tr valign="top"><td><code>fixed</code></td>
+<td>
+numeric vector: fixed part of the parameter </td></tr>
 <tr valign="top"><td><code>trafo</code></td>
 <td>
-MatrixorFunction: transformation of the parameters </td></tr>
+function in <code>param</code> or matrix: transformation of the parameter </td></tr>
 <tr valign="top"><td><code>param</code></td>
 <td>
 object of class <code>"ParamFamParameter"</code>:

@@ -23,7 +23,7 @@ Generates an object of class <code>"ParamFamParameter"</code>.
 <h3>Usage</h3>
 
 <pre>
-ParamFamParameter(name, main = numeric(0), nuisance, trafo)
+ParamFamParameter(name, main = numeric(0), nuisance, fixed, trafo)
 </pre>
 
 
@@ -32,16 +32,19 @@ ParamFamParameter(name, main = numeric(0), nuisance, trafo)
 <table summary="R argblock">
 <tr valign="top"><td><code>name</code></td>
 <td>
-character string: name of parameter </td></tr>
+(optional) character string: name of parameter </td></tr>
 <tr valign="top"><td><code>main</code></td>
 <td>
 numeric vector: main parameter </td></tr>
 <tr valign="top"><td><code>nuisance</code></td>
 <td>
-numeric vector: nuisance paramter </td></tr>
+(optional) numeric vector: nuisance paramter </td></tr>
+<tr valign="top"><td><code>fixed</code></td>
+<td>
+(optional) numeric vector: fixed part of the paramter </td></tr>
 <tr valign="top"><td><code>trafo</code></td>
 <td>
-MatrixorFunction: transformation of the parameter </td></tr>
+(optional) MatrixorFunction: transformation of the parameter </td></tr>
 </table>
 
 <h3>Details</h3>
@@ -66,7 +69,8 @@ Object of class <code>"ParamFamParameter"</code></p>
 <h3>Author(s)</h3>
 
 <p>
-Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
 </p>
 
 
@@ -80,23 +84,11 @@ Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de
 <h3>Examples</h3>
 
 <pre>
-ParamFamParameter(main = 0, nuisance = 1, 
+ParamFamParameter(main = 0, nuisance = 1, fixed = 2,
                   trafo = function(x) list(fval = sin(x), 
                                             mat = matrix(cos(x),1,1))
                   )                          
 
-## The function is currently defined as
-function(name, main = numeric(0), nuisance, trafo){
-    if(missing(name))
-        name &lt;- "parameter of a parametric family of probability measures"
-    if(missing(nuisance))
-        nuisance &lt;- NULL
-    if(missing(trafo))
-        trafo &lt;- diag(length(main))
-
-    return(new("ParamFamParameter", name = name, main = main, 
-               nuisance = nuisance, trafo = trafo))
-}
 </pre>
 
 

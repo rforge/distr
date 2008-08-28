@@ -1,27 +1,33 @@
 ## generating function
 L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
                           main = main(param), nuisance = nuisance(param),
-                          trafo = trafo(param),
-                          param = ParamFamParameter(name = paste("Parameter of", name),
-                                   main = main, nuisance = nuisance, trafo = trafo),
+                          fixed = fixed(param), trafo = trafo(param),
+                          param = ParamFamParameter(name = paste("Parameter of", 
+                                      name),  main = main, nuisance = nuisance, 
+                                              fixed = fixed, trafo = trafo),
                           props = character(0),
                           startPar = NULL, makeOKPar = NULL,
                           modifyParam = function(theta){ Norm(mean=theta) },
                           L2deriv.fct = function(param) {force(theta <- param@main)
                                        return(function(x) {x-theta})},
                           L2derivSymm, L2derivDistr, L2derivDistrSymm,
-                          FisherInfo.fct = function(theta){ 1 },
+                          FisherInfo.fct,
                           FisherInfo = FisherInfo.fct(param),
                           .returnClsName = NULL){
      
     if(missing(name))
         name <- "L_2 differentiable parametric family of probability measures"
     if(missing(param)&&missing(main))
-        param <- ParamFamParameter(name = "location", main = 0, trafo = matrix(1))
-    if(missing(param))
-        param <- ParamFamParameter(name = paste("Parameter of", name),
-                                   main = main, nuisance = nuisance,
-                                   trafo = trafo)
+        param <- ParamFamParameter(name = "location", main = 0)
+    if(missing(param)){
+        argList <- list(name = paste("Parameter of", name),
+                                   main = main)
+        if(!missing(nuisance)) argList <- c(argList, nuisance = nuisance)                            
+        if(!missing(fixed))    argList <- c(argList, fixed = fixed)                            
+        if(!missing(trafo))    argList <- c(argList, trafo = trafo)                            
+        param <- do.call(ParamFamParameter, argList)
+        
+    }
     if(missing(distrSymm)) distrSymm <- NoSymmetry()
     if(!is(distrSymm, "NoSymmetry")){
         if(!is(distrSymm@SymmCenter, "numeric"))
@@ -44,6 +50,10 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
 
     if(missing(L2derivDistr))
          L2derivDistr <- imageDistr(RandVar = L2deriv, distr = distribution)
+    if(!is(L2derivDistr,"DistrList"))
+         L2derivDistr <- UnivarDistrList(L2derivDistr)    
+    if(!is(L2derivDistr,"UnivarDistrList"))
+         L2derivDistr <- as(L2derivDistr,"UnivarDistrList")
 
     if(missing(L2derivDistrSymm)){
         nrvalues <- length(L2derivDistr)
@@ -74,6 +84,17 @@ L2ParamFamily <- function(name, distribution = Norm(), distrSymm,
     }
     if(ncol(FisherInfo) != dims)
         stop(paste("dimension of 'FisherInfo' should be", dims))
+
+    if(missing(FisherInfo.fct))
+        FisherInfo.fct <- function(param){
+        fct <- L2deriv.fct(param)
+        L2deriv <- if(!is.list(fct))
+           EuclRandVarList(RealRandVariable(list(fct), Domain = Reals())) else
+           EuclRandVarList(RealRandVariable(fct, Domain = Reals()))
+        L2 <- as(diag(dims) %*% L2deriv, "EuclRandVariable")
+        return(PosSemDefSymmMatrix(E(object = distribution,
+                                     fun = L2 %*% t(L2))))
+        }
 
     parv <- c(param@main,param@nuisance)
     nms <- names(parv)

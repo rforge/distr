@@ -16,8 +16,9 @@ maximum likelihood or minimum distance estimators for probability models.
 \tabular{ll}{
 Package: \tab distrMod\cr
 Version: \tab 2.0 \cr
-Date: \tab 2008-05-08 \cr
-Depends: \tab R(>= 2.6.0), methods, startupmsg, distr(>= 2.0), distrEx(>= 2.0), RandVar(>= 0.6.2)\cr
+Date: \tab 2008-08-26 \cr
+Depends: \tab R(>= 2.6.0), methods, startupmsg, distr(>= 2.0), distrEx(>= 2.0), \cr
+         \tab RandVar(>= 0.6.2), MASS, stats4\cr
 LazyLoad: \tab yes\cr
 License: \tab GPL (version 2 or later)\cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
@@ -25,6 +26,7 @@ URL: \tab http://distr.r-forge.r-project.org/\cr
 
 \section{Classes}{
 \preformatted{
+[*]: there is a generating function with the same name
 
 ##########################
 ProbFamily classes
@@ -34,43 +36,44 @@ name(character), distribution(Distribution),
 distrSym(DistributionSymmetry), props(character)
 
 "ProbFamily"
-|>"ParamFamily"
+|>"ParamFamily"     [*] 
 additional slots:
 param(ParamFamParameter), modifyParam(function),
 startPar(function), makeOKPar(function), fam.call(call)
-|>|>"L2ParamFamily"
+|>|>"L2ParamFamily" [*]
 additional slots:
 L2deriv(EuclRandVarList), L2deriv.fct(function), 
 L2derivSymm(FunSymmList), L2derivDistr(DistrList),
 L2derivDistrSymm(DistrSymmList), FisherInfo(PosSemDefSymmMatrix),
 FisherInfo.fct(function)
-|>|>|>"BinomFamily"
-|>|>|>"PoisFamily"
-|>|>|>"GammaFamily"
-|>|>|>"BetaFamily"
+|>|>|>"BinomFamily" [*]
+|>|>|>"PoisFamily"  [*]
+|>|>|>"GammaFamily" [*]
+|>|>|>"BetaFamily"  [*]
 |>|>|>"L2GroupParamFamily"
 additional slots:
 LogDeriv(function)
 |>|>|>|>"L2LocationScaleUnion"  /VIRTUAL/
 additional slots:
 locscalename(character)
-|>|>|>|>|>"L2LocationFamily"
-|>|>|>|>|>|>"NormLocationFamily"
-|>|>|>|>|>|>"GumbelLocationFamily" 
-|>|>|>|>|>"L2ScaleFamily"
-|>|>|>|>|>|>"NormScaleFamily"
-|>|>|>|>|>|>"ExpScaleFamily"
-|>|>|>|>|>|>"LnormScaleFamily"
-|>|>|>|>|>"L2LocationScaleFamily"
-|>|>|>|>|>|>"NormLocationScaleFamily"
-|>|>|>|>|>|>"CauchyLocationScaleFamily"
+|>|>|>|>|>"L2LocationFamily"            [*]
+|>|>|>|>|>|>"NormLocationFamily"        [*] 
+|>|>|>|>|>|>"GumbelLocationFamily"      [*] 
+|>|>|>|>|>"L2ScaleFamily"               [*]
+|>|>|>|>|>|>"NormScaleFamily"           [*] 
+|>|>|>|>|>|>"ExpScaleFamily"            [*] 
+|>|>|>|>|>|>"LnormScaleFamily"          [*] 
+|>|>|>|>|>"L2LocationScaleFamily"       [*]
+|>|>|>|>|>|>"NormLocationScaleFamily"   [*] 
+|>|>|>|>|>|>"CauchyLocationScaleFamily" [*] 
 
 ##########################
 ParamFamParameter
 ##########################
-"ParamFamParameter" is subclass of class "Parameter" of package "distr".
+"ParamFamParameter" [*] is subclass of class "Parameter" of package "distr".
 Additional slots:
-main(numeric), nuisance(OptionalNumeric), trafo(MatrixorFunction)
+main(numeric), nuisance(OptionalNumeric), fixed(OptionalNumeric),
+trafo(MatrixorFunction)
 
 ##########################
 Class unions
@@ -83,7 +86,6 @@ Class unions
                    "ParamFamParameter", "ParamFamily")
 
 
-
 ##########################
 Symmetry classes
 ##########################
@@ -91,26 +93,27 @@ slots:
 type(character), SymmCenter(ANY)
 
 "Symmetry"
-|>"NoSymmetry"
-|>"EllipticalSymmetry"
-|>|>"SphericalSymmetry"
+|>"NoSymmetry"          [*]
+|>"EllipticalSymmetry"  [*] 
+|>|>"SphericalSymmetry" [*]
 |>"DistributionSymmetry"
 |>"FunctionSymmetry"
-|>|>"NonSymmetric"
-|>|>"EvenSymmetric"
-|>|>"OddSymmetric"
+|>|>"NonSymmetric"      [*]
+|>|>"EvenSymmetric"     [*]
+|>|>"OddSymmetric"      [*]
 
 list thereof
-"DistrSymmList"
-"FunSymmList"
+"DistrSymmList"         [*] 
+"FunSymmList"           [*]
+
 
 ##########################
 Matrix classes
 ##########################
 slots:
 none
-"PosSemDefSymmMatrix" is subclass of class "matrix" of package "base".
-|>"PosDefSymmMatrix"
+"PosSemDefSymmMatrix" [*] is subclass of class "matrix" of package "base".
+|>"PosDefSymmMatrix"  [*]
 
 
 ##########################
@@ -119,12 +122,13 @@ Norm Classes
 slots:
 name(character), fct(function)
 
-"NormType"
-|>"QFNorm"
+"NormType"        [*]
+|>"QFNorm"        [*]
 Additional slots:
 QuadForm(PosSemDefSymmMatrix)
-|>|>"InfoNorm"
-|>|>"SelfNorm"
+|>|>"InfoNorm"    [*]
+|>|>"SelfNorm"    [*]
+
 
 ##########################
 Bias Classes
@@ -133,13 +137,14 @@ slots:
 name(character)
 
 "BiasType"
-|>"symmetricBias"
+|>"symmetricBias"   [*]
 |>"onesidedBias"
 Additional slots:
 sign(numeric)
-|>"asymmetricBias", 
+|>"asymmetricBias"  [*]
 Additional slots:
 nu(numeric)
+
 
 ##########################
 Risk Classes
@@ -149,33 +154,33 @@ type(character)
 
 "RiskType"
 |>"asRisk"
-|>|>"asCov"
-|>|>"trAsCov"
+|>|>"asCov"       [*]
+|>|>"trAsCov"     [*]
 |>"fiRisk"
-|>|>"fiCov"
-|>|>"trfiCov"
-|>|>"fiHampel"
+|>|>"fiCov"       [*]
+|>|>"trfiCov"     [*]
+|>|>"fiHampel"    [*]
 Additional slots:
 bound(numeric)
-|>|>"fiMSE"
-|>|>"fiBias"
-|>|>"fiUnOvShoot"
+|>|>"fiMSE"       [*]
+|>|>"fiBias"      [*]
+|>|>"fiUnOvShoot" [*]
 Additional slots:
 width(numeric)
 
 Risk with Bias:
 "asRiskwithBias"
 slots: biastype(BiasType), normtype(NormType),
-|>"asHampel"
+|>"asHampel"      [*]
 Additional slots:
 bound(numeric)
-|>"asBias"
+|>"asBias"        [*]
 |>"asGRisk"
-|>|>"asMSE"
-|>|>"asUnOvShoot"
+|>|>"asMSE"       [*]
+|>|>"asUnOvShoot" [*]
 Additional slots:
 width(numeric)
-|>|>"asSemivar"
+|>|>"asSemivar"   [*]
 
 
 ##########################
@@ -185,8 +190,11 @@ slots:
 name(character), estimate(ANY),
 samplesize(numeric), asvar(OptionalMatrix),
 Infos(matrix), nuis.idx(OptionalNumeric)
+fixed.estimate(OptionalNumeric), 
 estimate.call(call), trafo(list[of function, matrix]),
-untransformed.estimate(ANY), untransformed.asvar(OptionalMatrix)
+untransformed.estimate(ANY), 
+untransformed.asvar(OptionalMatrix)
+criterion.fct(function), method(character),
 
 "Estimate"
 |>"MCEstimate", 
@@ -206,8 +214,73 @@ nuisance.estimate(OptionalNumeric)
 }
 }
 \section{Methods}{
-not specified yet...
+besides accessor and replacement functions, we have
+methods 
+
+\code{solve}, \code{sqrt} for matrices
+\code{checkL2deriv}, \code{existsPIC} for class \code{L2ParamFamily}
+\code{LogDeriv} for  class \code{L2GroupParamFamily}
+
+\code{validParameter} for classes \code{ParamFamily}, \code{L2ScaleFamily},
+\code{L2LocationFamily}, and \code{L2LocationScaleFamily}
+
+\code{modifyModel} for the pairs of classes 
+\code{L2ParamFamily} and \code{ParamFamParameter},
+\code{L2LocationFamily} and \code{ParamFamParameter},
+\code{L2ScaleFamily} and \code{ParamFamParameter},
+\code{L2LocationScaleFamily} and \code{ParamFamParameter},
+\code{GammaFamily} and \code{ParamFamParameter}, and
+\code{ExpScaleFamily} and \code{ParamFamParameter}
+
+\code{mceCalc} for the pair of classes \code{numeric} and \code{ParamFamily}
+
+\code{mleCalc} for the pairs of classes
+\code{numeric} and \code{ParamFamily},
+\code{numeric} and \code{BinomFamily},
+\code{numeric} and \code{PoisFamily},
+\code{numeric} and \code{NormLocationFamily},
+\code{numeric} and \code{NormScaleFamily}, and
+\code{numeric} and \code{NormLocationScaleFamily}
+
+\code{coerce} from class \code{MCEstimate} to class \code{mle}
+
+\code{confint} for  class \code{Estimate}
+\code{profile} for  class \code{MCEstimate}
+
 }
+\section{Functions}{
+
+\preformatted{
+Management of global options:
+"distrModOptions", "distrModoptions", "getdistrModOption",
+
+check for ker of matrix: "isKerAinKerB"
+
+particular norms: "EuclideanNorm", "QuadFormNorm"
+onesided bias: "positiveBias", "negativeBias", 
+
+Estimators:
+"Estimator", "MCEstimator", "MLEstimator", "MDEstimator"
+
+special location/scale models:
+"L2LocationUnknownScaleFamily", "L2ScaleUnknownLocationFamily"
+
+some special normal models:
+"NormScaleUnknownLocationFamily", "NormLocationUnknownScaleFamily",
+}}
+
+\note{
+Some functions of packages \pkg{stats}, \pkg{base} have intentionally been masked, 
+but completely retain their functionality --- see \code{distrModMASK()}.
+
+If any of the packages \pkg{stats4}, \pkg{fBasics} is to be used  
+together with \pkg{distrMod}, the latter must be attached \emph{after} any of the 
+first mentioned. Otherwise \code{confint()} defined as \emph{method} 
+in \pkg{distrMod} may get masked.\cr  To re-mask, you 
+may use  \code{confint <- distrMod::confint}. 
+See also \code{distrModMASK()}
+}
+
 \author{
 Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de},\cr 
 Matthias Kohl \email{Matthias.Kohl@stamats.de}\cr
@@ -251,6 +324,10 @@ call into \code{suppressPackageStartupMessages()} from
 }
 
 \section{Demos}{
-none so far ...
+Demos are available --- see \code{demo(package="distrMod")}.}
+\section{Scripts}{
+Example scripts are available --- see folder \file{scripts}
+in the package folder to package \pkg{distrMod} in your library.
 }
+
 \keyword{package}

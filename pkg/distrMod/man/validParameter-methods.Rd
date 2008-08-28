@@ -6,9 +6,9 @@
 \alias{validParameter,L2ScaleFamily-method}
 \alias{validParameter,L2LocationFamily-method}
 \alias{validParameter,L2LocationScaleFamily-method}
-%\alias{validParameter,BinomialFamily-method}
-%\alias{validParameter,PoisFamily-method}
-%\alias{validParameter,GammaFamily-method}
+\alias{validParameter,BinomFamily-method}
+\alias{validParameter,PoisFamily-method}
+\alias{validParameter,GammaFamily-method}
 
 
 \title{ Methods for function validParameter in Package `distrMod' }
@@ -24,9 +24,9 @@ validParameter(object, \dots)
 \S4method{validParameter}{L2ScaleFamily}(object, param, tol=.Machine$double.eps)
 \S4method{validParameter}{L2LocationFamily}(object, param)
 \S4method{validParameter}{L2LocationScaleFamily}(object, param, tol=.Machine$double.eps)
-%\S4method{validParameter}{BinomialFamily}(object, param, tol=.Machine$double.eps)
-%\S4method{validParameter}{PoisFamily}(object, param, tol=.Machine$double.eps)
-%\S4method{validParameter}{GammaFamily}(object, param, tol=.Machine$double.eps)
+\S4method{validParameter}{BinomFamily}(object, param, tol=.Machine$double.eps)
+\S4method{validParameter}{PoisFamily}(object, param, tol=.Machine$double.eps)
+\S4method{validParameter}{GammaFamily}(object, param, tol=.Machine$double.eps)
 }
 
 \details{
@@ -44,14 +44,14 @@ method for signature
   \item{\code{L2LocationScaleFamily}}{checks if the scale parameter is finite by \code{is.finite},
   if its length is 1 or 2 (e.g. if one features as nuisance parameter), and if it is 
   strictly larger than 0 (upto argument \code{tol})}
-%  \item{\code{BinomialFamily}}{checks if the parameter is finite by \code{is.finite},
-%  if its length is 1, and if it is strictly larger than 0 and strictly smaller than 1 
-%  (upto argument \code{tol})}
-%  \item{\code{PoisFamily}}{checks if the parameter is finite by \code{is.finite},
-%  if its length is 1, and if it is strictly larger than 0 (upto argument \code{tol})}
-%  \item{\code{GammaFamily}}{checks if both parameters are finite by \code{is.finite},
-%  if their length is 1 or 2 (e.g. if one features as nuisance parameter), and if 
-%  both are strictly larger than 0 (upto argument \code{tol})}
+  \item{\code{BinomFamily}}{checks if the parameter is finite by \code{is.finite},
+  if its length is 1, and if it is strictly larger than 0 and strictly smaller than 1 
+  (upto argument \code{tol})}
+  \item{\code{PoisFamily}}{checks if the parameter is finite by \code{is.finite},
+  if its length is 1, and if it is strictly larger than 0 (upto argument \code{tol})}
+  \item{\code{GammaFamily}}{checks if both parameters are finite by \code{is.finite},
+  if their length is 1 or 2 (e.g. if one features as nuisance parameter), and if 
+  both are strictly larger than 0 (upto argument \code{tol})}
 }
 }
 \arguments{

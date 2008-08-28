@@ -45,35 +45,34 @@
           return(TRUE)
           })
 
-## classes BinomialFamily, PoisFamily and GammaFamily do not exist!
 
-# setMethod("validParameter", signature(object = "BinomialFamily"),
-#          function(object, param, tol=.Machine$double.eps){
-#          if(is(param,"ParamFamParameter"))
-#                param <- main(param)
-#          if(!all(is.finite(param))) return(FALSE)
-#          if(length(param)!=1) return(FALSE)
-#          if(param<= tol || param>= 1-tol)
-#             return(FALSE)
-#          return(TRUE)
-#          })
-# setMethod("validParameter", signature(object = "PoisFamily"),
-#          function(object, param, tol=.Machine$double.eps){
-#          if(is(param,"ParamFamParameter"))
-#                param <- main(param)
-#          if(!all(is.finite(param))) return(FALSE)
-#          if(length(param)!=1) return(FALSE)
-#          if(param<= tol) return(FALSE)
-#          return(TRUE)
-#          })
-#
-# setMethod("validParameter", signature(object = "GammaFamily"),
-#          function(object, param, tol=.Machine$double.eps){
-#          if(is(param,"ParamFamParameter"))
-#                param <- main(param)
-#          if(!all(is.finite(param))) return(FALSE)
-#          if(length(param)>2||length(param)<1) return(FALSE)
-#          if(any(param<= tol)) return(FALSE)
-#          return(TRUE)
-#          })
+ setMethod("validParameter", signature(object = "BinomFamily"),
+          function(object, param, tol=.Machine$double.eps){
+          if(is(param,"ParamFamParameter"))
+                param <- main(param)
+          if(!all(is.finite(param))) return(FALSE)
+          if(length(param)!=1) return(FALSE)
+          if(param<= tol || param>= 1-tol)
+             return(FALSE)
+          return(TRUE)
+          })
+ setMethod("validParameter", signature(object = "PoisFamily"),
+          function(object, param, tol=.Machine$double.eps){
+          if(is(param,"ParamFamParameter"))
+                param <- main(param)
+          if(!all(is.finite(param))) return(FALSE)
+          if(length(param)!=1) return(FALSE)
+          if(param<= tol) return(FALSE)
+          return(TRUE)
+          })
+
+ setMethod("validParameter", signature(object = "GammaFamily"),
+          function(object, param, tol=.Machine$double.eps){
+          if(is(param,"ParamFamParameter"))
+                param <- main(param)
+          if(!all(is.finite(param))) return(FALSE)
+          if(length(param)>2||length(param)<1) return(FALSE)
+          if(any(param<= tol)) return(FALSE)
+          return(TRUE)
+          })
 

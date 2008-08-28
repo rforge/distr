@@ -5,64 +5,39 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist, dist.name,
                         startPar = NULL,  Infos, 
                         trafo = NULL, penalty = 0, asvar.fct, ...){
 
+    ## preparation: getting the matched call
     es.call <- match.call()
+    dots <- match.call(expand.dots = FALSE)$"..."
 
+
+    ## some checking
+    if(!is.numeric(x))
+      stop(gettext("'x' has to be a numeric vector"))   
     if(is.null(startPar)) startPar <- startPar(ParamFamily)(x,...)
-
-    res <- MCEstimator(x = x, ParamFamily = ParamFamily, criterion = distance,
-                startPar = startPar, Infos = Infos, trafo = trafo, 
-                penalty = penalty, ...)
-
-    l.e <- length(res@estimate)
-    idx <- 1:l.e
-
-    if(!is.null(res@nuis.idx))
-        idx <- -res@nuis.idx
-
-    res@estimate.call <- es.call
-
     if(missing(dist.name))
       dist.name <- names(distance(x, ParamFamily@distribution))
-    names(res@criterion) <- dist.name
-    res@name <- paste("Minimum", dist.name, "estimate", sep = " ")
 
-    param <- ParamFamParameter(name = name(param(ParamFamily)), 
-                               main = res@estimate[idx],
-                               nuisance = res@estimate[-idx])
 
-    if(missing(trafo)||is.null(trafo)) 
-         {traf1 <- ParamFamily@param@trafo
-          if(is.matrix(traf1))  
-             res@trafo <- list(fct = function(x) 
-                                     list(fval = traf1 %*% x, mat = traf1), 
-                               mat = traf1)
-          else
-             res@trafo <- list(fct = traf1, mat = traf1(main(param))$mat)
-         }
-    else {if(is.matrix(trafo))
-             res@trafo <- list(fct = function(x) 
-                                     list(fval = trafo %*% x, mat = trafo), 
-                               mat = trafo)
-          else
-             res@trafo <- list(fct = trafo, mat = trafo(main(param))$mat)
-         } 
 
-    if(!validParameter(ParamFamily,param))
-       {warning(gettextf("Optimization for %s did not give a valid result",
-                         res@name))
-        res.estimate <- rep(NA, l.e)
-        return(res)}
+    ## manipulation of the arg list to method mceCalc
+    argList <- c(list(x = x, PFam = ParamFamily, criterion = distance, 
+                   startPar = startPar, penalty = penalty, 
+                   crit.name = dist.name))
+    if(missing(Infos))      Infos <- NULL
+    argList <- c(argList, Infos = Infos)
+    if(!is.null(dots))      argList <- c(argList, dots)
 
-    if(!missing(asvar.fct))
-      {asvar <- asvar.fct(L2Fam = ParamFamily, param = param, ...)
-       res@asvar <- asvar
-       res@untransformed.asvar <- asvar
-       if(!.isUnitMatrix(res@trafo$mat)){
-            asvar <- res@trafo$mat%*%asvar[idx,idx]%*%t(res@trafo$mat)
-            rownames(asvar) <- colnames(asvar) <- c(names(estimate))
-            res@asvar <- asvar
-            }
-       }
+
+    ## call to mceCalc
+    res0 <- do.call(mceCalc, argList)
+
+    ## digesting the results of mceCalc
+    names(res0$criterion) <- dist.name
+    res <- .process.meCalcRes(res0, PFam = ParamFamily, 
+                              trafo = trafo, 
+                              res.name = paste("Minimum", dist.name, 
+                                               "estimate", sep = " "), 
+                              call = es.call, asvar.fct = asvar.fct, ...)
 
     return(res)
 }

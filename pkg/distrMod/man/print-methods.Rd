@@ -48,13 +48,13 @@ x <- r(distribution(NS))(30)
 ## want to estimate mu/sigma, sigma^2
 ## -> new trafo slot:
 trafo(NS) <- function(param){
-  mu <- param["loc"]
-  sd <- param["scale"]
+  mu <- param["mean"]
+  sd <- param["sd"]
   fval <- c(mu/sd, sd^2)
   nfval <- c("mu/sig", "sig^2")
   names(fval) <- nfval
   mat <- matrix(c(1/sd,0,-mu/sd^2,2*sd),2,2)
-  dimnames(mat) <- list(nfval,c("loc","scale"))
+  dimnames(mat) <- list(nfval,c("mean","sd"))
   return(list(fval=fval, mat=mat))
 }
 print(param(NS))

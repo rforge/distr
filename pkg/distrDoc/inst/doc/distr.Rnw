@@ -26,7 +26,7 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
         commentstyle=\color{Rcomment}\ttfamily\itshape,
         literate={<-}{{$\leftarrow$}}2,
         morekeywords=[2]{Norm,Pois,lambda,p,d,r,distroptions}}
-\newcommand{\ttR}[1]{{\color{Rcolor}\tt #1\color{normal}}}
+%\newcommand{\ttR}[1]{{\color{Rcolor}\tt #1\color{normal}}}
 \definecolor{Rcolor}{rgb}{0,0.5,0.5}
 \definecolor{Rout}{rgb}{0.461,0.039,0.102}
 \definecolor{Rcomment}{rgb}{0.101,0.043,0.432}
@@ -40,7 +40,8 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 ``{\tt distrEx}'', ``{\tt distrTeach}'', ``{\tt distrMod}''}
 %
 % -------------------------------------------------------------------------------
-\newcommand{\code}[1]{{\tt #1}}
+\newcommand{\code}[1]{{\tt\color{Rcolor} #1}}
+%\newcommand{\code}[1]{\lstinline[escapechar=`]{#1}}
 \newcommand{\pkg}[1]{{\tt "#1"}}
 \newcommand{\pkgversion}{{\tt 2.0}}
 \newcommand{\pkgExversion}{{\tt 2.0}}
@@ -1621,6 +1622,82 @@ Hence, package \pkg{distrMod} depends on package \pkg{RandVar}~\cite{MK:05}.
 \end{figure}
 \fi
 % -----------------------------------------------------------------------------
+\subsection[Parameter in a parametric family]%
+{Parameter in a parametric family: class \code{ParamFamParameter}}
+% -----------------------------------------------------------------------------
+In many applications, it is not the whole parameter of a parametric family which
+is of interest, but rather parts of it, while the rest of it either is known
+and fixed or has to be estimated as a nuisance parameter; in other situations,
+we are interested in a (smooth) transformation of the parameter. This all
+is realized in a class design for the parameter of a parametric family 
+---class \code{ParamFamParameter}, the formal class of a slot of class
+\code{ParamFamily}.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%@Matthias:
+%insert graph here 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+It has slots \code{name} (the name of the parameter), \code{main} (the interesting
+aspect of the parameter), \code{nuisance} an unknown part of the parameter of
+secondary interest, but which has to be estimated, for instance for confidence
+intervals, and \code{fixed} a known and fixed part of the parameter. Besides
+these it also has a slot \code{trafo} which also sort of
+  arises in class \code{Estimate}.
+
+  \code{trafo} realizes partial influence curves; i.e.; we are only
+  interested is some possibly lower dimensional smooth (not necessarily
+  linear or even coordinate-wise) aspect/transformation $\tau$
+  of the parameter $\theta$.
+
+  To be coherent with the corresponding {\em nuisance}
+  implementation, we make the following convention:
+
+  The full parameter $\theta$ is split up coordinate-wise
+  in a main parameter $\theta'$ and a nuisance parameter
+  $\theta''$ (which is unknown, too, hence has to be
+  estimated, but only is of secondary interest) and a fixed,
+  known part $\theta'''$.
+  
+  Without loss of generality, we restrict ourselves to the case that
+  transformation $\tau$ only acts on the main parameter
+  $\theta'$ --- if we want to transform the whole
+  parameter, we only have to assume both nuisance parameter
+  $\theta''$ and fixed known part of the parameter $\theta'''$
+  have length 0.
+  
+  \paragraph{To the implementation:} 
+  
+  Slot \code{trafo} can either contain a (constant) matrix
+  $D_\theta$ or a function
+  $$\tau\colon \Theta' \to \tilde \Theta,\qquad \theta \mapsto \tau(\theta)$$%
+mapping main parameter
+  $\theta'$ to some range $\tilde \Theta$.
+
+  If {\em slot value} \code{trafo} is a function, besides $\tau(\theta)$, 
+  it will also return the corresponding derivative matrix
+  $\frac{\partial}{\partial \theta}\tau(\theta)$. 
+  More specifically, the return value of this function \code{theta} is a
+  list with entries \code{fval}, the function value $\tau(\theta)$,
+  and \code{mat}, the derivative matrix.
+
+  In case \code{trafo} is a matrix $D$, we interpret it as such a derivative
+  matrix $\frac{\partial}{\partial \theta}\tau(\theta)$,
+  and, correspondingly, $\tau(\theta)$ is the linear mapping
+  $\tau(\theta)=D\,\theta$.\par
+
+  According to the signature, {\em method} \code{trafo} will return different
+  return value types. For signatures
+  \code{Estimate,missing}, \code{Estimate,ParamFamParameter}, and
+    \code{ParamFamily,ParamFamParameter}, it will return a list with entries
+    \code{fct}, the function  $\tau$, and \code{mat}, the matrix
+    $\frac{\partial}{\partial \theta}\tau(\theta)$.
+    function $\tau$ will then return the list \code{list(fval, mat)}
+    mentioned above.  For signatures \code{ParamFamily,missing} and 
+    \code{ParamFamParameter,missing}, it will just return the
+     corresponding matrix.
+
+% -----------------------------------------------------------------------------
 \newpage
 \subsection{Risk Classes}
 % -----------------------------------------------------------------------------
@@ -1725,6 +1802,86 @@ if (have.distrMod){
     MCEstimator(x = x, ParamFamily = G, criterion = negLoglikelihood)
 }
 @
+The user can specialize the behavior of \code{MCEstimator} on two layers:
+instance-individual or class-individual.
+
+Using the first layer, we may specify model-individual starting values / 
+search intervals by
+slot \code{startPar} of class \code{ParamFamily}, pass on special control
+parameters to functions \code{optim} / \code{optimize} by a \code{...} argument
+in function \code{MCEstimator}, and we may enforce valid parameter values
+by specifying function slot \code{makeOKPar} of class \code{ParamFamily};
+also one can specify a penalty value penalizing invalid parameter values.
+E.g.; in case of the censored Poisson distribution family in demo 
+{\tt censoredPois} to this package these functions are defined as
+<<censPoisFamilyDef, eval = FALSE>>=
+    ## search interval for reasonable parameters
+    startPar <- function(x,...) c(.Machine$double.eps,max(x))
+
+    ## what to do in case of leaving the parameter domain
+    makeOKPar <- function(param) {if(param<=0) return(.Machine$double.eps)
+                                  return(param)}
+@
+
+In some situations, one would rather like to define rules for groups
+of models or to be even more flexible; this can be achieved using the 
+class-individual layer: We may use method dispatch to find
+the ``right'' function to determine the MC estimator; to this end subclasses
+to class \code{L2ParamFamily} have to be defined, which has alread been done,
+e.g. in case of  class \code{PoisFamily}. In general these sub classes will not
+have any new slots. E.g.; the code to define class \code{PoisFamily} simply is
+
+<<PoisFamilyDef, eval = FALSE>>=
+setClass("PoisFamily", contains = "L2ParamFamily")
+@
+
+For group models, like the location scale model, there may be additional
+slots and intermediate classes. E.g.,
+<<NormLocationFamily, eval = FALSE>>=
+setClass("NormLocationFamily", contains = "L2LocationFamily")
+@
+
+Then, for these subclasses, particular methods may be defined; so far,
+in package \pkg{distrMod} we have particular \code{validParameter} methods
+for classes \code{ParamFamily}, \code{L2ScaleFamily},
+\code{L2LocationFamily}, and \code{L2LocationScaleFamily}.
+E.g.; the code to signature \code{L2ScaleFamily} simply is 
+<<L2ScaleFamily, eval = FALSE>>=
+ setMethod("validParameter", signature(object = "L2ScaleFamily"),
+          function(object, param, tol=.Machine$double.eps){
+             if(is(param,"ParamFamParameter"))
+                param <- main(param)
+             if(!all(is.finite(param))) return(FALSE)
+             if(length(param)!=1) return(FALSE)
+             return(param > tol)})
+@
+
+To move the whole model from one parameter value to the other, so far we have
+\code{modifyModel} methods for classes  \code{L2ParamFamily}, 
+\code{L2LocationFamily}, \code{L2ScaleFamily}, \code{L2LocationScaleFamily},
+\code{GammaFamily}, and \code{ExpScaleFamily}, where the second argument to 
+dispatch on so for has to be of class \code{ParamFamParameter}.
+E.g.; the code to signature \code{model="GammaFamily"} is 
+<<GammaFamilyModify, eval = FALSE>>=
+setMethod("modifyModel", signature(model = "GammaFamily",
+           param = "ParamFamParameter"),
+          function(model, param, ...){
+             M <- modifyModel(as(model, "L2ParamFamily"), param = param,
+                              .withCall = FALSE)
+             M@L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter = 
+                                                       prod(main(param))),
+                                          NonSymmetric())
+             class(M) <- class(model)
+             return(M)
+          })
+@ 
+
+We also allow for particular methods within function \code{MCEstimator},
+as therein we call method \code{mceCalc}; so far there only is
+a method for \code{signature(x="numeric", PFam="ParamFamily")}
+Similarly, and more important, the same technique is applied for the wrapper 
+function \code{MLEstimator}.
+
 In case of the maximum likelihood estimator as well as in case of minimum
 distance (MD) estimation there are the function \code{MLEstimator} and 
 \code{MDEstimator} which provide user-friendly interfaces to \code{MCEstimator}.
@@ -1736,8 +1893,46 @@ if (have.distrMod){
     MDEstimator(x = x, ParamFamily = G, distance = KolmogorovDist)
 }
 @
-The results of these computations are objects of the S4-class \code{MCEstimate}
-which inherits from the S4-class \code{Estimate}. The definitions are given
+Within \code{MLEstimator}, we call method \code{mleCalc}, which then 
+dispatches according to its arguments \code{x} and \code{PFam}
+as in case of method \code{mceCalc}. So far \code{x} must inherit from
+class \code{numeric}, and there are particular methods for argument \code{PFam}
+of  classes \code{ParamFamily}, \code{BinomFamily},
+\code{PoisFamily}, \code{NormLocationFamily}, \code{NormScaleFamily}, and
+\code{NormLocationScaleFamily}. More specifically, \code{mleCalc} must have
+an extra \code{...} argument to cope with different callings from \code{MLEstimator};
+additional arguments are possible of course. The return value must be 
+a list with prescribed structure; to this end function \code{meRes()} is helpful
+which produces this structure. 
+E.g. the \code{mleCalc}-method for \code{signature(x="numeric", PFam="ParamFamily")}
+is
+<<NormScaleFam, eval = FALSE>>=
+setMethod("mleCalc", signature(x = "numeric", PFam = "NormScaleFamily"),
+           function(x, PFam, ...){
+           theta <- sd(x); mn <- mean(distribution(PFam))
+           ll <- -sum(dnorm(x, mean=mn, sd = theta, log=TRUE))
+           names(ll) <- "neg.Loglikelihood"
+           crit.fct <- function(sd)
+                         -sum(dnorm(x, mean=mn, sd = sd, log=TRUE))  
+           param <- ParamFamParameter(name = "scale parameter", 
+                               main = c("sd"=theta))
+           if(!hasArg(Infos)) Infos <- NULL
+           return(meRes(x, theta, ll, param, crit.fct, Infos = Infos))
+})
+@
+
+We also provide a coercion to class \code{mle} from package \pkg{stats4},
+hence making profiling by the \code{profile}-method therein possible.
+In order to be able to do so, we need to fill a functional slot 
+\code{criterion.fct} of class \code{MCEstimate}. In many examples this
+is straightforward, but in higher dimensions, helper function 
+\code{get.criterion.fct} can be useful, e.g. it handles the general case
+for \code{signature(PFam="ParamFamily")}.
+
+
+The results of our computations in functions\code{MCEstimator},
+\code{MDEstimator},  and \code{MLEstimator} are objects of S4-class \code{MCEstimate}
+which inherits from S4-class \code{Estimate}. The definitions are given
 in Figure~\ref{figEst}.
 \ifpdf
 \begin{figure}[!ht]
@@ -1763,6 +1958,44 @@ in Figure~\ref{figEst}.
 \vspace{-1ex}
 \end{figure}
 \fi
+For  class \code{MCEstimate}, we have a method \code{confint}, which produces
+confidence intervals (of class \code{Confint}). 
+For class \code{Confint}  as well as for class \code{Estimate} we have
+particular \code{show} and \code{print} methods where you may scale the
+output by setting global options with \code{distrModOptions}, see also 
+subsection~\ref{distrModO}.
+As example consider the following:
+<<CIex, eval = TRUE, fig = TRUE>>=
+
+## some transformation
+mtrafo <- function(x){
+     nms0 <- c("scale","shape")
+     nms <- c("shape","rate")
+     fval0 <- c(x[2], 1/x[1])
+     names(fval0) <- nms
+     mat0 <- matrix( c(0, -1/x[1]^2, 1, 0), nrow = 2, ncol = 2,
+                     dimnames = list(nms,nms0))                          
+     list(fval = fval0, mat = mat0)}
+
+set.seed(123)
+x <- rgamma(50, scale = 0.5, shape = 3)
+
+## parametric family of probability measures
+G <- GammaFamily(scale = 1, shape = 2, trafo = mtrafo)
+## MLE
+res <- MLEstimator(x = x, ParamFamily = G)
+print(res, digits = 4, show.details="maximal")
+print(res, digits = 4, show.details="medium")
+print(res, digits = 4, show.details="minimal")
+ci <- confint(res)
+print(ci, digits = 4, show.details="maximal")
+print(ci, digits = 4, show.details="medium")
+print(ci, digits = 4, show.details="minimal")
+
+## some profiling
+par(mfrow=c(2,1))
+plot(profile(res))
+@
 % -----------------------------------------------------------------------------
 \section{Options}\label{options}
 % -----------------------------------------------------------------------------
@@ -1856,7 +2089,7 @@ global output options to be used within the package with
 %We are planning to switch to \code{distroptions}/\code{getdistrOption}-like 
 % commands in the next release of this package.
 %
-\subsection[Options for distrMod]{Options for \pkg{distrMod}}
+\subsection[Options for distrMod]{Options for \pkg{distrMod}}  \label{distrModO}
 Just as with to the \code{distroptions}/\code{getdistrOption} commands you 
 may specify certain global output options to be used within the package with 
 \code{distrModoptions}/\linebreak[4] \code{getdistrModOption}. These include

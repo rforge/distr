@@ -34,10 +34,13 @@ maximum likelihood or minimum distance estimators for probability models.
   <td align="left"> Version: </td>  <td align="left"> 2.0 </td>
 </tr>
 <tr>
-  <td align="left"> Date: </td>  <td align="left"> 2008-05-08 </td>
+  <td align="left"> Date: </td>  <td align="left"> 2008-08-26 </td>
 </tr>
 <tr>
-  <td align="left"> Depends: </td>  <td align="left"> R(&gt;= 2.6.0), methods, startupmsg, distr(&gt;= 2.0), distrEx(&gt;= 2.0), RandVar(&gt;= 0.6.2)</td>
+  <td align="left"> Depends: </td>  <td align="left"> R(&gt;= 2.6.0), methods, startupmsg, distr(&gt;= 2.0), distrEx(&gt;= 2.0), </td>
+</tr>
+<tr>
+  <td align="left"> </td>  <td align="left"> RandVar(&gt;= 0.6.2), MASS, stats4</td>
 </tr>
 <tr>
   <td align="left"> LazyLoad: </td>  <td align="left"> yes</td>
@@ -55,6 +58,7 @@ maximum likelihood or minimum distance estimators for probability models.
 
 <p>
 <pre>
+[*]: there is a generating function with the same name
 
 ##########################
 ProbFamily classes
@@ -64,43 +68,44 @@ name(character), distribution(Distribution),
 distrSym(DistributionSymmetry), props(character)
 
 "ProbFamily"
-|&gt;"ParamFamily"
+|&gt;"ParamFamily"     [*] 
 additional slots:
 param(ParamFamParameter), modifyParam(function),
 startPar(function), makeOKPar(function), fam.call(call)
-|&gt;|&gt;"L2ParamFamily"
+|&gt;|&gt;"L2ParamFamily" [*]
 additional slots:
 L2deriv(EuclRandVarList), L2deriv.fct(function), 
 L2derivSymm(FunSymmList), L2derivDistr(DistrList),
 L2derivDistrSymm(DistrSymmList), FisherInfo(PosSemDefSymmMatrix),
 FisherInfo.fct(function)
-|&gt;|&gt;|&gt;"BinomFamily"
-|&gt;|&gt;|&gt;"PoisFamily"
-|&gt;|&gt;|&gt;"GammaFamily"
-|&gt;|&gt;|&gt;"BetaFamily"
+|&gt;|&gt;|&gt;"BinomFamily" [*]
+|&gt;|&gt;|&gt;"PoisFamily"  [*]
+|&gt;|&gt;|&gt;"GammaFamily" [*]
+|&gt;|&gt;|&gt;"BetaFamily"  [*]
 |&gt;|&gt;|&gt;"L2GroupParamFamily"
 additional slots:
 LogDeriv(function)
 |&gt;|&gt;|&gt;|&gt;"L2LocationScaleUnion"  /VIRTUAL/
 additional slots:
 locscalename(character)
-|&gt;|&gt;|&gt;|&gt;|&gt;"L2LocationFamily"
-|&gt;|&gt;|&gt;|&gt;|&gt;|&gt;"NormLocationFamily"
-|&gt;|&gt;|&gt;|&gt;|&gt;|&gt;"GumbelLocationFamily" 
-|&gt;|&gt;|&gt;|&gt;|&gt;"L2ScaleFamily"
-|&gt;|&gt;|&gt;|&gt;|&gt;|&gt;"NormScaleFamily"
-|&gt;|&gt;|&gt;|&gt;|&gt;|&gt;"ExpScaleFamily"
-|&gt;|&gt;|&gt;|&gt;|&gt;|&gt;"LnormScaleFamily"
-|&gt;|&gt;|&gt;|&gt;|&gt;"L2LocationScaleFamily"
-|&gt;|&gt;|&gt;|&gt;|&gt;|&gt;"NormLocationScaleFamily"
-|&gt;|&gt;|&gt;|&gt;|&gt;|&gt;"CauchyLocationScaleFamily"
+|&gt;|&gt;|&gt;|&gt;|&gt;"L2LocationFamily"            [*]
+|&gt;|&gt;|&gt;|&gt;|&gt;|&gt;"NormLocationFamily"        [*] 
+|&gt;|&gt;|&gt;|&gt;|&gt;|&gt;"GumbelLocationFamily"      [*] 
+|&gt;|&gt;|&gt;|&gt;|&gt;"L2ScaleFamily"               [*]
+|&gt;|&gt;|&gt;|&gt;|&gt;|&gt;"NormScaleFamily"           [*] 
+|&gt;|&gt;|&gt;|&gt;|&gt;|&gt;"ExpScaleFamily"            [*] 
+|&gt;|&gt;|&gt;|&gt;|&gt;|&gt;"LnormScaleFamily"          [*] 
+|&gt;|&gt;|&gt;|&gt;|&gt;"L2LocationScaleFamily"       [*]
+|&gt;|&gt;|&gt;|&gt;|&gt;|&gt;"NormLocationScaleFamily"   [*] 
+|&gt;|&gt;|&gt;|&gt;|&gt;|&gt;"CauchyLocationScaleFamily" [*] 
 
 ##########################
 ParamFamParameter
 ##########################
-"ParamFamParameter" is subclass of class "Parameter" of package "distr".
+"ParamFamParameter" [*] is subclass of class "Parameter" of package "distr".
 Additional slots:
-main(numeric), nuisance(OptionalNumeric), trafo(MatrixorFunction)
+main(numeric), nuisance(OptionalNumeric), fixed(OptionalNumeric),
+trafo(MatrixorFunction)
 
 ##########################
 Class unions
@@ -113,7 +118,6 @@ Class unions
                    "ParamFamParameter", "ParamFamily")
 
 
-
 ##########################
 Symmetry classes
 ##########################
@@ -121,26 +125,27 @@ slots:
 type(character), SymmCenter(ANY)
 
 "Symmetry"
-|&gt;"NoSymmetry"
-|&gt;"EllipticalSymmetry"
-|&gt;|&gt;"SphericalSymmetry"
+|&gt;"NoSymmetry"          [*]
+|&gt;"EllipticalSymmetry"  [*] 
+|&gt;|&gt;"SphericalSymmetry" [*]
 |&gt;"DistributionSymmetry"
 |&gt;"FunctionSymmetry"
-|&gt;|&gt;"NonSymmetric"
-|&gt;|&gt;"EvenSymmetric"
-|&gt;|&gt;"OddSymmetric"
+|&gt;|&gt;"NonSymmetric"      [*]
+|&gt;|&gt;"EvenSymmetric"     [*]
+|&gt;|&gt;"OddSymmetric"      [*]
 
 list thereof
-"DistrSymmList"
-"FunSymmList"
+"DistrSymmList"         [*] 
+"FunSymmList"           [*]
+
 
 ##########################
 Matrix classes
 ##########################
 slots:
 none
-"PosSemDefSymmMatrix" is subclass of class "matrix" of package "base".
-|&gt;"PosDefSymmMatrix"
+"PosSemDefSymmMatrix" [*] is subclass of class "matrix" of package "base".
+|&gt;"PosDefSymmMatrix"  [*]
 
 
 ##########################
@@ -149,12 +154,13 @@ Norm Classes
 slots:
 name(character), fct(function)
 
-"NormType"
-|&gt;"QFNorm"
+"NormType"        [*]
+|&gt;"QFNorm"        [*]
 Additional slots:
 QuadForm(PosSemDefSymmMatrix)
-|&gt;|&gt;"InfoNorm"
-|&gt;|&gt;"SelfNorm"
+|&gt;|&gt;"InfoNorm"    [*]
+|&gt;|&gt;"SelfNorm"    [*]
+
 
 ##########################
 Bias Classes
@@ -163,13 +169,14 @@ slots:
 name(character)
 
 "BiasType"
-|&gt;"symmetricBias"
+|&gt;"symmetricBias"   [*]
 |&gt;"onesidedBias"
 Additional slots:
 sign(numeric)
-|&gt;"asymmetricBias", 
+|&gt;"asymmetricBias"  [*]
 Additional slots:
 nu(numeric)
+
 
 ##########################
 Risk Classes
@@ -179,33 +186,33 @@ type(character)
 
 "RiskType"
 |&gt;"asRisk"
-|&gt;|&gt;"asCov"
-|&gt;|&gt;"trAsCov"
+|&gt;|&gt;"asCov"       [*]
+|&gt;|&gt;"trAsCov"     [*]
 |&gt;"fiRisk"
-|&gt;|&gt;"fiCov"
-|&gt;|&gt;"trfiCov"
-|&gt;|&gt;"fiHampel"
+|&gt;|&gt;"fiCov"       [*]
+|&gt;|&gt;"trfiCov"     [*]
+|&gt;|&gt;"fiHampel"    [*]
 Additional slots:
 bound(numeric)
-|&gt;|&gt;"fiMSE"
-|&gt;|&gt;"fiBias"
-|&gt;|&gt;"fiUnOvShoot"
+|&gt;|&gt;"fiMSE"       [*]
+|&gt;|&gt;"fiBias"      [*]
+|&gt;|&gt;"fiUnOvShoot" [*]
 Additional slots:
 width(numeric)
 
 Risk with Bias:
 "asRiskwithBias"
 slots: biastype(BiasType), normtype(NormType),
-|&gt;"asHampel"
+|&gt;"asHampel"      [*]
 Additional slots:
 bound(numeric)
-|&gt;"asBias"
+|&gt;"asBias"        [*]
 |&gt;"asGRisk"
-|&gt;|&gt;"asMSE"
-|&gt;|&gt;"asUnOvShoot"
+|&gt;|&gt;"asMSE"       [*]
+|&gt;|&gt;"asUnOvShoot" [*]
 Additional slots:
 width(numeric)
-|&gt;|&gt;"asSemivar"
+|&gt;|&gt;"asSemivar"   [*]
 
 
 ##########################
@@ -215,8 +222,11 @@ slots:
 name(character), estimate(ANY),
 samplesize(numeric), asvar(OptionalMatrix),
 Infos(matrix), nuis.idx(OptionalNumeric)
+fixed.estimate(OptionalNumeric), 
 estimate.call(call), trafo(list[of function, matrix]),
-untransformed.estimate(ANY), untransformed.asvar(OptionalMatrix)
+untransformed.estimate(ANY), 
+untransformed.asvar(OptionalMatrix)
+criterion.fct(function), method(character),
 
 "Estimate"
 |&gt;"MCEstimate", 
@@ -240,7 +250,69 @@ nuisance.estimate(OptionalNumeric)
 <h3>Methods</h3>
 
 <p>
-not specified yet...
+besides accessor and replacement functions, we have
+methods 
+</p>
+<p>
+<code>solve</code>, <code>sqrt</code> for matrices
+<code>checkL2deriv</code>, <code>existsPIC</code> for class <code>L2ParamFamily</code>
+<code>LogDeriv</code> for  class <code>L2GroupParamFamily</code>
+</p>
+<p>
+<code>validParameter</code> for classes <code>ParamFamily</code>, <code>L2ScaleFamily</code>,
+<code>L2LocationFamily</code>, and <code>L2LocationScaleFamily</code>
+</p>
+<p>
+<code>modifyModel</code> for the pairs of classes 
+<code>L2ParamFamily</code> and <code>ParamFamParameter</code>,
+<code>L2LocationFamily</code> and <code>ParamFamParameter</code>,
+<code>L2ScaleFamily</code> and <code>ParamFamParameter</code>,
+<code>L2LocationScaleFamily</code> and <code>ParamFamParameter</code>,
+<code>GammaFamily</code> and <code>ParamFamParameter</code>, and
+<code>ExpScaleFamily</code> and <code>ParamFamParameter</code>
+</p>
+<p>
+<code>mceCalc</code> for the pair of classes <code>numeric</code> and <code>ParamFamily</code>
+</p>
+<p>
+<code>mleCalc</code> for the pairs of classes
+<code>numeric</code> and <code>ParamFamily</code>,
+<code>numeric</code> and <code>BinomFamily</code>,
+<code>numeric</code> and <code>PoisFamily</code>,
+<code>numeric</code> and <code>NormLocationFamily</code>,
+<code>numeric</code> and <code>NormScaleFamily</code>, and
+<code>numeric</code> and <code>NormLocationScaleFamily</code>
+</p>
+<p>
+<code>coerce</code> from class <code>MCEstimate</code> to class <code>mle</code>
+</p>
+<p>
+<code>confint</code> for  class <code>Estimate</code>
+<code>profile</code> for  class <code>MCEstimate</code>
+</p>
+
+
+<h3>Functions</h3>
+
+<p>
+<pre>
+Management of global options:
+"distrModOptions", "distrModoptions", "getdistrModOption",
+
+check for ker of matrix: "isKerAinKerB"
+
+particular norms: "EuclideanNorm", "QuadFormNorm"
+onesided bias: "positiveBias", "negativeBias", 
+
+Estimators:
+"Estimator", "MCEstimator", "MLEstimator", "MDEstimator"
+
+special location/scale models:
+"L2LocationUnknownScaleFamily", "L2ScaleUnknownLocationFamily"
+
+some special normal models:
+"NormScaleUnknownLocationFamily", "NormLocationUnknownScaleFamily",
+</pre>
 </p>
 
 
@@ -278,7 +350,31 @@ call into <code>suppressPackageStartupMessages()</code> from
 <h3>Demos</h3>
 
 <p>
-none so far ...
+Demos are available &mdash; see <code>demo(package="distrMod")</code>.
+</p>
+
+
+<h3>Scripts</h3>
+
+<p>
+Example scripts are available &mdash; see folder &lsquo;<span class="file">scripts</span>&rsquo;
+in the package folder to package <span class="pkg">distrMod</span> in your library.
+</p>
+
+
+<h3>Note</h3>
+
+<p>
+Some functions of packages <span class="pkg">stats</span>, <span class="pkg">base</span> have intentionally been masked, 
+but completely retain their functionality &mdash; see <code>distrModMASK()</code>.
+</p>
+<p>
+If any of the packages <span class="pkg">stats4</span>, <span class="pkg">fBasics</span> is to be used  
+together with <span class="pkg">distrMod</span>, the latter must be attached <EM>after</EM> any of the 
+first mentioned. Otherwise <code>confint()</code> defined as <EM>method</EM> 
+in <span class="pkg">distrMod</span> may get masked.<br>  To re-mask, you 
+may use  <code>confint &lt;- distrMod::confint</code>. 
+See also <code>distrModMASK()</code>
 </p>
 
 

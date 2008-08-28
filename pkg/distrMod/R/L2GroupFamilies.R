@@ -29,9 +29,9 @@ L2LocationFamily <- function(loc = 0, name, centraldistribution = Norm(),
     makeOKPar <- function(param) param
     startPar <- function(x,...) c(min(x),max(x))
     param0 <- loc
-    names(param0) <- "loc"
+    names(param0) <- locname
     if(missing(trafo))  {trafo <- matrix(1)
-                         dimnames(trafo) <- list("loc","loc")}
+                         dimnames(trafo) <- list(locname,locname)}
     param <- ParamFamParameter(name = "loc", main = param0, trafo = trafo)
     if(missing(modParam))
         modParam <- function(theta){ centraldistribution + theta }
@@ -145,7 +145,8 @@ L2ScaleFamily <- function(scale = 1, loc = 0, name, centraldistribution = Norm()
         locscalename <- c(locscalename, "loc")
         names(locscalename) <- c("scale", "loc")
     }else{
-        if(!all(names(locscalename)%in% c("loc","scale")))
+        if(!all(names(locscalename)%in% c("loc","scale")) || 
+            is.null(names(locscalename)))
            names(locscalename) <- c("loc", "scale")   
     }
     distribution <- scale*centraldistribution + loc
@@ -162,12 +163,16 @@ L2ScaleFamily <- function(scale = 1, loc = 0, name, centraldistribution = Norm()
     }
 
     param0 <- scale
-    names(param0) <- "scale"
+    names(param0) <- locscalename["scale"]
+    param1 <- loc
+    names(param1) <- locscalename["loc"]
+    
     startPar <- function(x,...) c(.Machine$double.eps,max(x)-min(x))
     makeOKPar <- function(param) abs(param)+.Machine$double.eps
     if(missing(trafo))  {trafo <- matrix(1)
                          dimnames(trafo) <- list("scale","scale")}
-    param <- ParamFamParameter(name = "scale", main = param0, trafo = trafo)
+    param <- ParamFamParameter(name = "scale", main = param0, 
+                               fixed = param1, trafo = trafo)
     if(missing(modParam)){
         modParam <- function(theta){}
         body(modParam) <- substitute({ theta*centraldistribution+loc },
@@ -289,7 +294,8 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
 
     if(!length(locscalename)==2) 
         stop("argument 'locscalename' must be of length 2.")
-    if(!all(names(locscalename)%in% c("loc","scale")))
+    if(!all(names(locscalename)%in% c("loc","scale")) || 
+        is.null(names(locscalename)))
            names(locscalename) <- c("loc", "scale")   
 
     if(missing(distrSymm)){
@@ -304,19 +310,19 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
     }
 
     param0 <- c(loc, scale)
-    names(param0) <- c("loc", "scale")
+    names(param0) <- locscalename
     if(missing(trafo))  {trafo <- diag(2)
-                         dimnames(trafo) <- list(c("loc","scale"),
-                                                 c("loc","scale"))}
+                         dimnames(trafo) <- list(locscalename,
+                                                 locscalename)}
     param <- ParamFamParameter(name = "location and scale", main = param0,
                                trafo = trafo)
     startPar <- function(x,...) {
                    st <- c(median(x),mad(x))
-                   names(st) <- c("loc", "scale")
+                   names(st) <- locscalename
                    return(st)}
     makeOKPar <- function(param) {
                     st <- c(param[1],abs(param[2])+.Machine$double.eps)
-                    names(st) <- c("loc", "scale")
+                    names(st) <- locscalename
                    return(st)}
     if(missing(modParam))
         modParam <- function(theta){theta[2]*centraldistribution+theta[1] }
@@ -326,8 +332,8 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
 
     if(missing(LogDeriv)) LogDeriv <- .getLogDeriv(distribution)
     L2deriv.fct <- function(param){
-                   mean <- main(param)[1]
-                   sd <-   main(param)[2]
+                   mean <- main(param)[locscalename["loc"]]
+                   sd <-   main(param)[locscalename["scale"]]
                    fct1 <- function(x){}
                    fct2 <- function(x){}
                    body(fct1) <- substitute({ LogDeriv((x - loc)/scale)/scale },
@@ -373,10 +379,10 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
         FI0 <- FisherInfo.0 
     }
 
-    FI0 <- matrix(FI0,2,2,dimnames=list(names(param0),names(param0)))
+    FI0 <- matrix(FI0,2,2,dimnames=list(locscalename,locscalename))
 
     FisherInfo.fct <- function(param){
-                   scale <- main(param)[2]
+                   scale <- main(param)[locscalename["scale"]]
                    PosDefSymmMatrix(FI0/scale^2)}
 
 f.call <- substitute(L2LocationScaleFamily(loc = l,
@@ -453,7 +459,8 @@ L2LocationUnknownScaleFamily <- function(loc = 0, scale = 1, name,
 
     if(!length(locscalename)==2) 
         stop("argument 'locscalename' must be of length 2.")
-    if(!all(names(locscalename)%in% c("loc","scale")))
+    if(!all(names(locscalename)%in% c("loc","scale")) || 
+        is.null(names(locscalename)))
            names(locscalename) <- c("loc", "scale")   
 
     distribution <- scale*centraldistribution+loc
@@ -470,17 +477,18 @@ L2LocationUnknownScaleFamily <- function(loc = 0, scale = 1, name,
     }
 
     param0 <- c(loc, scale)
-    names(param0) <- c("loc", "scale")
+    names(param0) <- locscalename
     startPar <- function(x,...) {
                    st <- c(median(x),mad(x))
-                   names(st) <- c("loc", "scale")
+                   names(st) <- locscalename
                    return(st)}
     makeOKPar <- function(param) {
                     st <- c(param[1],abs(param[2])+.Machine$double.eps)
-                    names(st) <- c("loc", "scale")
+                    names(st) <- locscalename
                    return(st)}
     if(missing(trafo))  {trafo <- matrix(1)
-                         dimnames(trafo) <- list("loc","loc")}
+                         dimnames(trafo) <- list(locscalename["loc"],
+                                                 locscalename["loc"])}
     param <- ParamFamParameter(name = "location and scale", main = param0[1],
                                nuisance = param0[2], trafo = trafo)
     if(missing(modParam))
@@ -617,8 +625,9 @@ L2ScaleUnknownLocationFamily <- function(loc = 0, scale = 1, name,
 
     if(!length(locscalename)==2) 
         stop("argument 'locscalename' must be of length 2.")
-    if(!all(names(locscalename)%in% c("loc","scale")))
-           names(locscalename) <- c("loc", "scale")
+    if(!all(names(locscalename)%in% c("loc","scale")) || 
+        is.null(names(locscalename)))
+           names(locscalename) <- c("loc", "scale")   
 
     distribution <- scale*centraldistribution+loc
 
@@ -634,14 +643,15 @@ L2ScaleUnknownLocationFamily <- function(loc = 0, scale = 1, name,
     }
 
     param0 <- c(scale, loc)
-    names(param0) <- c("scale", "loc")
+    names(param0) <- locscalename[c("scale", "loc")]
     startPar <- function(x,...) {
                    st <- c(median(x),mad(x))
-                   names(st) <- c("loc", "scale")
+                   names(st) <- locscalename
                    return(st)}
     makeOKPar <- function(param) {
-                    st <- c(param[1],abs(param[2])+.Machine$double.eps)
-                    names(st) <- c("loc", "scale")
+                    st <- c(param[locscalename["loc"]],
+                            abs(param[locscalename["scale"]])+.Machine$double.eps)
+                    names(st) <- locscalename
                    return(st)}
     if(missing(trafo))  {trafo <- matrix(1)
                          dimnames(trafo) <- list("scale","scale")}

@@ -13,6 +13,8 @@
 \alias{samplesize.estimate,Confint-method}
 \alias{nuisance.estimate}
 \alias{nuisance.estimate,Confint-method}
+\alias{fixed.estimate}
+\alias{fixed.estimate,Confint-method}
 \alias{show,Confint-method}
 \alias{print,Confint-method}
 
@@ -42,6 +44,9 @@
     \item{\code{nuisance.estimate}:}{Object of class \code{"OptionalNumeric"}:
       the nuisance parameter (if any) at which the confidence 
       intervals are produced.}
+    \item{\code{fixed.estimate}:}{Object of class \code{"OptionalNumeric"}:
+      the fixed part of the parameter (if any) at which the confidence 
+      intervals are produced.}
   }
 }
 \section{Methods}{
@@ -67,8 +72,12 @@
     \item{nuisance.estimate}{\code{signature(object = "Confint")}: 
       accessor function for slot \code{nuisance.estimate}. }
 
+    \item{fixed.estimate}{\code{signature(object = "Confint")}: 
+      accessor function for slot \code{fixed.estimate}. }
+
     \item{show}{\code{signature(object = "Confint")}: shows a detailed view
-     of the object; slot \code{nuisance.estimate} is only shown if non-null,
+     of the object; slots \code{nuisance.estimate} and
+     \code{fixed.estimate} are only shown if non-null,
      and slot \code{trafo.estimate} only if different from a unit matrix.}
     \item{print}{\code{signature(object = "Confint")}: just as \code{show}, 
      but with additional arguments \code{digits}.}
@@ -94,7 +103,8 @@ addition see the type of the estimator(s) for which it is produced,
 the corresponding call of the estimater, its sample size, and, if present, the 
 value of the corresponding nuisance parameter. 
 Finally, when \code{show.detail} is matched to \code{"maximal"}, additionally 
-you will be shown the transformation of the estimator (if non-trivial, i.e. the 
+you will be shown the fixed part of the parameter (if present) and 
+the transformation of the estimator (if non-trivial, i.e. the 
 identity) in form of its function code respectively of its derivative matrix.
             }
 \note{The pretty-printing code for methods \code{show} and \code{print} 

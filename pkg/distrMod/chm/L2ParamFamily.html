@@ -24,17 +24,19 @@ Generates an object of class <code>"L2ParamFamily"</code>.
 
 <pre>
 L2ParamFamily(name, distribution = Norm(), distrSymm, 
-                          main = main(param), nuisance = nuisance(param), 
-                          trafo = trafo(param), 
-                          param = ParamFamParameter(name = paste("Parameter of", name), 
-                                   main = main, nuisance = nuisance, trafo = trafo), 
-                          props = character(0),
-                          startPar = NULL, makeOKPar = NULL,
-                          modifyParam = function(theta){ Norm(mean=theta) },
-                          L2deriv.fct,
-                          L2derivSymm, L2derivDistr, L2derivDistrSymm, 
-                          FisherInfo.fct, FisherInfo = FisherInfo.fct(param),
-                          .returnClsName = NULL)
+              main = main(param), nuisance = nuisance(param),
+              fixed = fixed(param), trafo = trafo(param),
+              param = ParamFamParameter(name = paste("Parameter of", name),  
+                          main = main, nuisance = nuisance, 
+                          fixed = fixed, trafo = trafo),
+              props = character(0),
+              startPar = NULL, makeOKPar = NULL,
+              modifyParam = function(theta){ Norm(mean=theta) },
+              L2deriv.fct = function(param) {force(theta &lt;- param@main)
+                           return(function(x) {x-theta})},
+              L2derivSymm, L2derivDistr, L2derivDistrSymm, 
+              FisherInfo.fct, FisherInfo = FisherInfo.fct(param),
+              .returnClsName = NULL)
 </pre>
 
 
@@ -58,6 +60,9 @@ numeric vector: main parameter </td></tr>
 <tr valign="top"><td><code>nuisance</code></td>
 <td>
 numeric vector: nuisance parameter </td></tr>
+<tr valign="top"><td><code>fixed</code></td>
+<td>
+numeric vector: fixed part of the parameter </td></tr>
 <tr valign="top"><td><code>trafo</code></td>
 <td>
 function in <code>param</code> or matrix: transformation of the parameter </td></tr>

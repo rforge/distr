@@ -3,9 +3,15 @@
 \alias{MCEstimate-class}
 \alias{criterion}
 \alias{criterion,MCEstimate-method}
+\alias{criterion.fct}
+\alias{criterion.fct,MCEstimate-method}
+\alias{method}
+\alias{method,MCEstimate-method}
 \alias{criterion<-}
 \alias{criterion<-,MCEstimate-method}
+\alias{coerce,MCEstimate,mle-method}
 \alias{show,MCEstimate-method}
+\alias{profile,MCEstimate-method}
 
 \title{MCEstimate-class.}
 \description{Class of minimum criterion estimates.}
@@ -24,6 +30,17 @@
       call by which estimate was produced.}
     \item{\code{criterion}:}{Object of class \code{"numeric"}:
       minimum value of the considered criterion.}
+    \item{\code{criterion.fct}:}{Object of class \code{"function"}:
+      the considered criterion function; used for compatibility with class
+      \code{"mle"} from package \pkg{stats4}; should be a function
+      returning the criterion; i.e. a numeric of length 1 and should have
+      as arguments all named components of argument 
+      \code{untransformed.estimate}}
+    \item{\code{method}:}{Object of class \code{"character"}:
+      the method by which the estimate was calculated, i.e.;
+      \code{"optim"}, \code{"optimize"}, or \code{"explicit calculation"}; 
+      used for compatibility with class \code{"mle"} from package 
+      \pkg{stats4}, could be any character value.}
     \item{\code{Infos}:}{ object of class \code{"matrix"}
       with two columns named \code{method} and \code{message}:
       additional informations. }
@@ -51,7 +68,17 @@ Class \code{"Estimate"}, directly.
     \item{criterion<-}{\code{signature(object = "MCEstimate")}: 
       replacement function for slot \code{criterion}. }
 
+    \item{criterion.fct}{\code{signature(object = "MCEstimate")}: 
+      accessor function for slot \code{criterion.fct}. }
+
     \item{show}{\code{signature(object = "Estimate")}}
+    \item{coerce}{\code{signature(from = "MCEstimate", to = "mle")}:
+      create a \code{"mle"} object from a \code{"MCEstimate"} object}
+    \item{profile}{\code{signature(fitted = "MCEstimate")}:
+      coerces \code{fitted} to class \code{"mle"} and then calls
+      the corresponding \code{\link[stats4:profile-methods]{profile}}-method
+      from package \pkg{stats4}; for details we confer to the corresponding
+      man page.}
   }
 }
 %\references{}
@@ -68,7 +95,10 @@ x <- rgamma(50, scale = 0.5, shape = 3)
 G <- GammaFamily(scale = 1, shape = 2)
 
 MDEstimator(x, G)
-MLEstimator(x, G)
+(m <- MLEstimator(x, G))
+m.mle <- as(m,"mle")
+par(mfrow=c(1,2))
+plot(profile(m))
 }
 \concept{estimate}
 \keyword{classes}

@@ -3,6 +3,7 @@
 \alias{trafo-methods}
 \alias{trafo}
 \alias{trafo,Estimate,missing-method}
+\alias{trafo,Estimate,ParamFamParameter-method}
 \alias{trafo,ParamFamParameter,missing-method}
 \alias{trafo,ParamFamily,missing-method}
 \alias{trafo,ParamFamily,ParamFamParameter-method}
@@ -21,14 +22,14 @@ trafo(object, param)
 \S4method{trafo}{ParamFamParameter,missing}(object,param)
 \S4method{trafo}{ParamFamily,missing}(object,param)
 \S4method{trafo}{ParamFamily,ParamFamParameter}(object,param)
+\S4method{trafo}{Estimate,ParamFamParameter}(object,param)
 trafo(object) <- value
 }
 \arguments{
   \item{object}{an object of either class \code{Estimate},
   \code{ParamFamParameter}, \code{ParamFamily}}
-  \item{param}{a specification of which parameters are to be given
-    confidence intervals, either a vector of numbers or a vector of
-    names. If missing, all parameters are considered.}
+  \item{param}{an object of class \code{ParamFamParameter}; the parameter
+  value at which to evaluate the transformation}
   \item{value}{a matrix or a function; if it is a matrix, dimensions must
   be consistent to the parametric setting; if it is function, it should
   take one argument \code{param} of class \code{ParamFamParameter} and
@@ -42,6 +43,8 @@ trafo(object) <- value
   The return value depends on the signature.
   \itemize{
   \item{signature \code{Estimate,missing}:}{a list of length two with components
+  \code{fct} and \code{mat} (see below)}
+  \item{signature \code{Estimate,ParamFamParameter}:}{a list of length two with components
   \code{fct} and \code{mat} (see below)}
   \item{signature \code{ParamFamParameter,missing}:}{a matrix (see below)}
   \item{signature \code{ParamFamily,missing}:}{a matrix (see below)}
@@ -66,13 +69,15 @@ trafo(object) <- value
   The full parameter \eqn{\theta}{theta} is split up coordinate-wise
   in a main parameter \eqn{\theta'}{theta'} and a nuisance parameter
   \eqn{\theta''}{theta''} (which is unknown, too, hence has to be
-  estimated, but only is of secondary interest).
+  estimated, but only is of secondary interest) and a fixed,
+  known part \eqn{\theta'''}{theta'''}.
   
   Without loss of generality, we restrict ourselves to the case that
   transformation \eqn{\tau}{tau} only acts on the main parameter
   \eqn{\theta'}{theta'} --- if we want to transform the whole
-  parameter, we only have to assume nuisance parameter
-  \eqn{\theta''}{theta''} has length 0.
+  parameter, we only have to assume that both nuisance parameter
+  \eqn{\theta''}{theta''} and fixed, known part of the parameter
+  \eqn{\theta'''}{theta'''} have length 0.
   
   To the implementation:
   
@@ -103,6 +108,8 @@ trafo(object) <- value
     function \eqn{\tau}{tau} will then return the list \code{list(fval, mat)}
     mentioned above.
     }
+    \item{\code{Estimate,ParamFamParameter}:}{as signature
+    \code{Estimate,missing}.}
     \item{\code{ParamFamParameter,missing}:}{it will just return the
      corresponding matrix.}
     \item{\code{ParamFamily,missing}:}{is just wrapper to signature
@@ -121,13 +128,13 @@ x <- r(distribution(NS))(30)
 ## want to estimate mu/sigma, sigma^2
 ## -> new trafo slot:
 trafo(NS) <- function(param){
-  mu <- param["loc"]
-  sd <- param["scale"]
+  mu <- param["mean"]
+  sd <- param["sd"]
   fval <- c(mu/sd, sd^2)
   nfval <- c("mu/sig", "sig^2")
   names(fval) <- nfval
   mat <- matrix(c(1/sd,0,-mu/sd^2,2*sd),2,2)
-  dimnames(mat) <- list(nfval,c("loc","scale"))
+  dimnames(mat) <- list(nfval,c("mean","sd"))
   return(list(fval=fval, mat=mat))
 }
 

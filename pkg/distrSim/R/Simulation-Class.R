@@ -24,7 +24,7 @@ Simulation <- function(filename = NULL, samplesize = 10, runs = 100,
 setMethod("seed", "Simulation", function(object) object@seed)
 setMethod("distribution", "Simulation", function(object) object@distribution)
 
-## Replace Methoden
+## Replace Methods
 setReplaceMethod("distribution", "Simulation",
                  function(object, value){
                    object <- new("Simulation",

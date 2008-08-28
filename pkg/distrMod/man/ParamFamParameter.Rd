@@ -6,13 +6,14 @@
   Generates an object of class \code{"ParamFamParameter"}.
 }
 \usage{
-ParamFamParameter(name, main = numeric(0), nuisance, trafo)
+ParamFamParameter(name, main = numeric(0), nuisance, fixed, trafo)
 }
 \arguments{
-  \item{name}{ character string: name of parameter }
+  \item{name}{ (optional) character string: name of parameter }
   \item{main}{ numeric vector: main parameter }
-  \item{nuisance}{ numeric vector: nuisance paramter }
-  \item{trafo}{MatrixorFunction: transformation of the parameter }
+  \item{nuisance}{ (optional) numeric vector: nuisance paramter }
+  \item{fixed}{ (optional) numeric vector: fixed part of the paramter }
+  \item{trafo}{(optional) MatrixorFunction: transformation of the parameter }
 }
 \details{
   If \code{name} is missing, the default 
@@ -26,27 +27,17 @@ ParamFamParameter(name, main = numeric(0), nuisance, trafo)
 }
 \value{Object of class \code{"ParamFamParameter"}}
 %\references{}
-\author{Matthias Kohl \email{Matthias.Kohl@stamats.de}}
+\author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
+Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}
 \seealso{\code{\link{ParamFamParameter-class}}}
 \examples{
-ParamFamParameter(main = 0, nuisance = 1, 
+ParamFamParameter(main = 0, nuisance = 1, fixed = 2,
                   trafo = function(x) list(fval = sin(x), 
                                             mat = matrix(cos(x),1,1))
                   )                          
 
-## The function is currently defined as
-function(name, main = numeric(0), nuisance, trafo){
-    if(missing(name))
-        name <- "parameter of a parametric family of probability measures"
-    if(missing(nuisance))
-        nuisance <- NULL
-    if(missing(trafo))
-        trafo <- diag(length(main))
+}
 
-    return(new("ParamFamParameter", name = name, main = main, 
-               nuisance = nuisance, trafo = trafo))
-}
-}
 \concept{parameter}
 \keyword{models}

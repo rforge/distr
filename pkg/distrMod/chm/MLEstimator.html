@@ -67,7 +67,9 @@ or <code>optim</code>, respectively. </td></tr>
 <h3>Details</h3>
 
 <p>
-The function calls <code>MCEstimator</code> using the negative log-likelihood
+The function uses <code><a href="mleCalc-methods.html">mleCalc</a></code>
+for method dispatch; this method by default  
+calls <code><a href="mleCalc-methods.html">mceCalc</a></code> using the negative log-likelihood
 as criterion which should be minimized.
 </p>
 
@@ -98,6 +100,40 @@ Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ru
 <h3>Examples</h3>
 
 <pre>
+#############################
+## 1. Binomial data
+#############################
+## generate a sample of contaminated data
+x &lt;- rbinom(100, size=25, prob=.25)
+
+## ML-estimate
+MLEstimator(x, BinomFamily(size = 25))
+
+#############################
+## 2. Poisson data
+#############################
+## Example: Rutherford-Geiger (1910); cf. Feller~(1968), Section VI.7 (a)
+x &lt;- c(rep(0, 57), rep(1, 203), rep(2, 383), rep(3, 525), rep(4, 532), 
+       rep(5, 408), rep(6, 273), rep(7, 139), rep(8, 45), rep(9, 27), 
+       rep(10, 10), rep(11, 4), rep(12, 0), rep(13, 1), rep(14, 1))
+
+## ML-estimate
+MLEstimator(x, PoisFamily())
+
+#############################
+## 3. Normal (Gaussian) location and scale
+#############################
+## Generate a contaminated sample
+x &lt;- rnorm(100)
+
+## ML-estimate
+MLEstimator(x, NormLocationScaleFamily())
+## compare:
+c(mean(x),sd(x))
+
+#############################
+## 4. Gamma model
+#############################
 ## (empirical) Data
 x &lt;- rgamma(50, scale = 0.5, shape = 3)
 
@@ -110,8 +146,13 @@ G &lt;- GammaFamily(scale = 1, shape = 2)
 ## Asymptotic (CLT-based) confidence interval
 confint(res)
 
+## some profiling
+par(mfrow=c(1,2))
+plot(profile(res))
+par(mfrow=c(1,1))
+
 ## implementation of ML-estimator of package MASS
-library(MASS)
+require(MASS)
 (res1 &lt;- fitdistr(x, "gamma"))
 
 ## comparison
@@ -119,10 +160,54 @@ library(MASS)
 estimate(res)[2]
 ## rate
 1/estimate(res)[1]
+
+## minor differences due to the fact that by default, fitdistr uses
+## BFGS, while we use Nelder-Mead instead
+
 ## log-likelihood
 res1$loglik
 ## negative log-likelihood
 criterion(res)
+
+## explicitely transforming to
+## MASS parametrization:
+mtrafo &lt;- function(x){
+     nms0 &lt;- names(c(main(param(G)),nuisance(param(G))))
+     nms &lt;- c("shape","rate")
+     fval0 &lt;- c(x[2], 1/x[1])
+     names(fval0) &lt;- nms
+     mat0 &lt;- matrix( c(0, -1/x[1]^2, 1, 0), nrow = 2, ncol = 2,
+                     dimnames = list(nms,nms0))                          
+     list(fval = fval0, mat = mat0)}
+
+G2 &lt;- G
+trafo(G2) &lt;- mtrafo
+res2 &lt;- MLEstimator(x = x, ParamFamily = G2)
+
+old &lt;- getdistrModOption("show.details")
+distrModoptions("show.details" = "minimal")
+res1
+res2
+
+## some profiling
+par(mfrow=c(1,2))
+plot(profile(res2))
+par(mfrow=c(1,1))
+
+#############################
+## 5. Cauchy Location Scale model
+#############################
+(C &lt;- CauchyLocationScaleFamily())
+loc.true &lt;- 1; scl.true &lt;- 2
+
+## (empirical) Data
+x &lt;- rcauchy(50, location = loc.true, scale = scl.true)
+ 
+## Maximum likelihood estimator
+(res &lt;- MLEstimator(x = x, ParamFamily = C))
+## Asymptotic (CLT-based) confidence interval
+confint(res)
+
 </pre>
 
 <script Language="JScript">

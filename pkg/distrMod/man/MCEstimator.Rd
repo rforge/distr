@@ -44,7 +44,8 @@ MCEstimator(x, ParamFamily, criterion, crit.name,
 \details{
   The argument \code{criterion} has to be a function with arguments the 
   empirical data as well as an object of class \code{"Distribution"} 
-  and possibly \code{\dots}.
+  and possibly \code{\dots}. Uses \code{\link{mceCalc}}
+  for method dispatch.
 }
 \value{
   An object of S4-class \code{"MCEstimate"} which inherits from class 
