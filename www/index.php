@@ -43,7 +43,6 @@ echo $contents; } ?>
 
 <!-- end of project description -->
 
-<!-- <p> No content added. </p> -->
 <div style="text-align: left;"><span style="color: rgb(0, 0, 0);"></span>
 <h1><span style="color: rgb(0, 0, 0);"><a name="top"></a> <a
  href="http://www.uni-bayreuth.de/departments/math/org/mathe7/mathe7.html"><img
@@ -54,7 +53,7 @@ echo $contents; } ?>
 of R-Packages&nbsp;<span style="color: rgb(51, 51, 255);"></span></big>
 <a href="http://www.r-project.org/"> <img
  style="border: 0px solid ; width: 152px; height: 101px;" alt="R-Logo"
- src="RLOGO.jpg"></a></span></h1>
+ src="Rlogo.jpg"></a></span></h1>
 </div>
 <hr style="width: 100%; height: 2px;">
 <div style="text-align: justify;"> Version: 2.0<br>

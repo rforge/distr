@@ -364,8 +364,23 @@ Objects of classes \code{LatticeDistribution} resp.\
 \code{AbscontDistribution},  may be generated using the generating functions
 \code{LatticeDistribution()} resp.\ \code{DiscreteDistribution()}
 resp.\ \code{AbscontDistribution()}; see also
-the corresponding help.
-\\
+the corresponding help. E.g., to produce a discrete distribution with
+support $(1,5,7,21)$ with corresponding probabilities $(0.1,0.1,0.6,0.2)$
+we may write
+<<DiscrDist, eval = TRUE, fig = TRUE>>=
+D <- DiscreteDistribution(supp = c(1,5,7,21), prob = c(0.1,0.1,0.6,0.2))
+D
+plot(D)
+@                 
+\newline
+and to generate an absolutely continuos distribution with density proportional
+to $e^{-|x|^3}$, we write
+<<AbscDist, eval = TRUE, fig = TRUE>>=
+AC <- AbscontDistribution(d = function(x) exp(-abs(x)^3), withStand = TRUE)
+AC
+plot(AC)
+@                 
+\newline
 As subclasses of these absolutely continuous and discrete classes, we have 
 implemented all parametric families which already exist in the  \pkg{stats} 
 package of {\sf R} in form of 
@@ -855,7 +870,7 @@ of classes \code{AffLinAbscontDistribution} and
 Consequently, the result \code{Y} of \code{Y <- a1 * X + b1} for an 
 object \code{X} of (a subclass of) class \code{AffLinDiscrete\-Distribution}
 (if \code{ a != 0}) is of the same class as \code{X} but with slots
-\code{Y@a = a1 * X@a}, \code{Y@b = b1 + X@b}, \code{Y@X0 = X@X0}.
+\code{Y@a = a1 * X@a}, \code{Y@b = b1 + a1 * X@b}, \code{Y@X0 = X@X0}.
 In version 2.0, the same principle has been applied to introduce class
 \code{AffLinUnivarLebDecDistribution}. All \code{AffLin}-xxx distribution
 classes are grouped to a virtual class (more specifically a class union)
@@ -1904,7 +1919,7 @@ an extra \code{...} argument to cope with different callings from \code{MLEstima
 additional arguments are possible of course. The return value must be 
 a list with prescribed structure; to this end function \code{meRes()} is helpful
 which produces this structure. 
-E.g. the \code{mleCalc}-method for \code{signature(x="numeric", PFam="ParamFamily")}
+E.g. the \code{mleCalc}-method for \code{signature(x="numeric", PFam="NormScaleFamily")}
 is
 <<NormScaleFam, eval = FALSE>>=
 setMethod("mleCalc", signature(x = "numeric", PFam = "NormScaleFamily"),
