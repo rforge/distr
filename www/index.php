@@ -135,7 +135,7 @@ should be interesting.<br>
 If you want to <b>collaborate</b> (which you are welcome to do!):<br>
 <ul>
 <li> please read <a
-href="http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/www/HOWTO-collaborate.txt?root=distr&amp;view=markup">HOWTO-collaborate.txt</a>
+href="http://distr.r-forge.r-project.org/HOWTO-collaborate.txt">HOWTO-collaborate.txt</a>
  [a short HOWTO for svn and R-Forge in 10]<br>
 </a></li>
 </ul>

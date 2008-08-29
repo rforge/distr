@@ -855,7 +855,7 @@ of classes \code{AffLinAbscontDistribution} and
 Consequently, the result \code{Y} of \code{Y <- a1 * X + b1} for an 
 object \code{X} of (a subclass of) class \code{AffLinDiscrete\-Distribution}
 (if \code{ a != 0}) is of the same class as \code{X} but with slots
-\code{Y@a = a1 * X@a}, \code{Y@b = b1 + X@b}, \code{Y@X0 = X@X0}.
+\code{Y@a = a1 * X@a}, \code{Y@b = b1 + a1 * X@b}, \code{Y@X0 = X@X0}.
 In version 2.0, the same principle has been applied to introduce class
 \code{AffLinUnivarLebDecDistribution}. All \code{AffLin}-xxx distribution
 classes are grouped to a virtual class (more specifically a class union)
