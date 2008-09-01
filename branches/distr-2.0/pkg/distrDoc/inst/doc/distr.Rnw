@@ -1629,7 +1629,7 @@ Hence, package \pkg{distrMod} depends on package \pkg{RandVar}~\cite{MK:05}.
   \begin{center}
     \includegraphics[width=7.5cm]{ProbFamily.eps}%
     \caption{\label{figPF}{\footnotesize Inheritance relations and slots of the 
-    corresponding \mbox{(sub-)}classes for \code{Distribution} where we do not 
+    corresponding \mbox{(sub-)}classes for \code{ProbFamily} where we do not 
     repeat inherited slots
     }}
   \end{center}
@@ -1647,12 +1647,28 @@ we are interested in a (smooth) transformation of the parameter. This all
 is realized in a class design for the parameter of a parametric family 
 ---class \code{ParamFamParameter}, the formal class of a slot of class
 \code{ParamFamily}.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%@Matthias:
-%insert graph here 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
+\ifpdf
+\begin{figure}[!ht]
+\vspace{2ex}
+  \begin{center}
+    \includegraphics[width=4cm]{ParamFamParameter.pdf}%
+    \caption{\label{figPFParam}{\footnotesize Inheritance relations and slots of 
+    \code{ParamFamParameter} where we do not repeat inherited slots
+    }}
+  \end{center}
+\vspace{-4ex}
+\end{figure}
+\else
+\begin{figure}[htb]
+  \begin{center}
+    \includegraphics[width=7.5cm]{ParamFamParameter.eps}%
+    \caption{\label{figPFParam}{\footnotesize Inheritance relations and slots of 
+    \code{ParamFamParameter} where we do not repeat inherited slots
+    }}
+  \end{center}
+\vspace{-1ex}
+\end{figure}
+\fi
 It has slots \code{name} (the name of the parameter), \code{main} (the interesting
 aspect of the parameter), \code{nuisance} an unknown part of the parameter of
 secondary interest, but which has to be estimated, for instance for confidence
@@ -1713,7 +1729,7 @@ mapping main parameter
      corresponding matrix.
 
 % -----------------------------------------------------------------------------
-\newpage
+%\newpage
 \subsection{Risk Classes}
 % -----------------------------------------------------------------------------
 The risk classes are up to now (i.e, version 2.0) not used inside of the 
@@ -1725,7 +1741,7 @@ and Figure~\ref{figNT}, respectively, occur as slots of the risk classes.
 \begin{figure}[!ht]
 \vspace{2ex}
   \begin{center}
-    \includegraphics[width=4cm]{BiasType.pdf}%
+    \includegraphics[width=7cm]{BiasType.pdf}%
     \caption{\label{figBT}{\footnotesize Inheritance relations and slots of the 
     corresponding \mbox{(sub-)}classes for \code{BiasType} where we do not
     repeat inherited slots
@@ -1736,7 +1752,7 @@ and Figure~\ref{figNT}, respectively, occur as slots of the risk classes.
 \else
 \begin{figure}[htb]
   \begin{center}
-    \includegraphics[width=4cm]{BiasType.eps}%
+    \includegraphics[width=6cm]{BiasType.eps}%
     \caption{\label{figBT}{\footnotesize Inheritance relations and slots of the 
     corresponding \mbox{(sub-)}classes for \code{BiasType} where we do not 
     repeat inherited slots
