@@ -4,13 +4,13 @@ setMethod("rbind", "ANY",  function(x,...){cal0 <- sys.call(sys.parent())[-1]
           f <- base::rbind; do.call(f,cal0)})
 
 setMethod("rbind", "SeqDataFrames",  function(x,...){
-    SL <- list(dots)
+    SL <- list(...)
     len <- length(SL)
     if (len >= 1)
        { if (!all(lapply(SL@data, is.data.frame)))
               stop("all elements must be data frames")
           f <- function(y) {list(ncol(y), names(y))}
-          g <- function(y) identical(f(y), f(object@data[[1]]))
+          g <- function(y) identical(f(y), f(y@data[[1]]))
           if (!all(lapply(SL@data, g)))
                stop("all elements must have the same column structure")
           vLl <- lapply(SL, function(y) length(y@data))
