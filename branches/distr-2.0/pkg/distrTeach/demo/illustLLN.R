@@ -12,7 +12,7 @@
 ##                  default: 0
 ##           ... ^= further arguments to plot
 
-require(distrEx)
+require(distrTeach)
 # some examples
 # distroptions("DefaultNrFFTGridPointsExponent" = 13)
 illustrateLLN(Distr = Norm(0,3), sleep = 0.1)

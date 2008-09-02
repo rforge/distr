@@ -3,7 +3,7 @@
 ### 
 
 require(tcltk) || stop("tcltk support is absent")
-require(graphics); require(stats); require(distrEx)
+require(graphics); require(stats); require(distrTeach)
 local({
 
     k    <- tclVar(1)

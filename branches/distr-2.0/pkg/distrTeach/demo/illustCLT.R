@@ -4,7 +4,7 @@
 ##           len ^= # summands at which to stop
 ##         sleep ^= duration of the pause between the different plots
 
-require(distrEx)
+require(distrTeach)
 # some examples
 # distroptions("DefaultNrFFTGridPointsExponent" = 13)
 illustrateCLT(Distr = Unif(), len = 20, sleep = 0.5)
