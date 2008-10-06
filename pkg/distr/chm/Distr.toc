@@ -2354,23 +2354,23 @@
 <param name="Local" value="plot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="plot,AbscontDistribution-method">
+<param name="Name" value="plot,AbscontDistribution,missing-method">
 <param name="Local" value="plot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="plot,AffLinUnivarLebDecDistribution-method">
+<param name="Name" value="plot,AffLinUnivarLebDecDistribution,missing-method">
 <param name="Local" value="plot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="plot,DiscreteDistribution-method">
+<param name="Name" value="plot,DiscreteDistribution,missing-method">
 <param name="Local" value="plot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="plot,DistrList-method">
+<param name="Name" value="plot,DistrList,missing-method">
 <param name="Local" value="plot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="plot,UnivarLebDecDistribution-method">
+<param name="Name" value="plot,UnivarLebDecDistribution,missing-method">
 <param name="Local" value="plot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
