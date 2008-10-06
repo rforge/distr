@@ -6,9 +6,9 @@
 
 <table width="100%"><tr><td>plot-methods(distrSim)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   plot-methods">
-<param name="keyword" value="R:   plot,Dataclass-method">
-<param name="keyword" value="R:   plot,Simulation-method">
-<param name="keyword" value="R:   plot,Contsimulation-method">
+<param name="keyword" value="R:   plot,Dataclass,missing-method">
+<param name="keyword" value="R:   plot,Simulation,missing-method">
+<param name="keyword" value="R:   plot,Contsimulation,missing-method">
 <param name="keyword" value=" Methods for Function plot in Package &lsquo;distrSim&rsquo;">
 </object>
 
@@ -26,7 +26,7 @@ plot-methods
 <h3>Methods</h3>
 
 <dl>
-<dt>plot</dt><dd><code>signature(x = "Dataclass")</code>: produces a plot of the data matrix;
+<dt>plot</dt><dd><code>signature(x = "Dataclass", y="missing")</code>: produces a plot of the data matrix;
 optional arguments: 
 <dl>
 <dt>obs0</dt><dd>the indices of observations to be plotted;&mdash; of this vector <code>runs0</code> 
@@ -46,17 +46,17 @@ typical plot arguments may be passed; some have slightly different meaning (comp
 <dt>col,cex,pch</dt><dd>may be transmitted vectorwise (for the different dimensions) or globally, using the usual recycling rules</dd>
 <dt>xlab,ylab,type</dt><dd>are ignored</dd>
 </dl></dd>
-<dt>plot</dt><dd><code>signature(x = "Simulation")</code>: 
-produces a plot of the data matrix; optional and typical plot arguments: as with <code>signature(object = "Dataclass")</code>
+<dt>plot</dt><dd><code>signature(x = "Simulation", y="missing")</code>: 
+produces a plot of the data matrix; optional and typical plot arguments: as with <code>signature(x = "Dataclass", y="missing")</code>
 </dd>
 <dt>plot</dt><dd><code>signature(x = "Contsimulation")</code>: produces a plot of the real data matrix; 
-optional arguments: as with <code>signature(x = "Dataclass")</code>;
+optional arguments: as with <code>signature(x = "Dataclass", y="missing")</code>;
 typical plot arguments may be passed; some have slightly different meaning (compare <code><a onclick="findlink('graphics', 'plot.default.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.default</a></code>):
 <dl>
-<dt>ylim</dt><dd>as with <code>signature(x = "Simulation")</code> and <code>signature(object = "Dataclass")</code> </dd>
+<dt>ylim</dt><dd>as with <code>signature(x = "Simulation", y="missing")</code> and <code>signature(x = "Dataclass", y="missing")</code> </dd>
 <dt>col,cex,pch</dt><dd>are ignored</dd>
-<dt>col.id,cex.id,pch.id</dt><dd>as <code>col,cex,pch</code> for <code>signature(object = "Dataclass")</code> but only for ideal part of the data</dd>
-<dt>col.c,cex.c,pch.c</dt><dd>as <code>col,cex,pch</code> for <code>signature(object = "Dataclass")</code> but only for contaminated part of the data</dd>
+<dt>col.id,cex.id,pch.id</dt><dd>as <code>col,cex,pch</code> for <code>signature(x = "Dataclass", y="missing")</code> but only for ideal part of the data</dd>
+<dt>col.c,cex.c,pch.c</dt><dd>as <code>col,cex,pch</code> for <code>signature(x = "Dataclass", y="missing")</code> but only for contaminated part of the data</dd>
 <dt>xlab,ylab,type</dt><dd>are ignored</dd>
 </dl>
 </dd>

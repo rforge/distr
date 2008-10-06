@@ -178,11 +178,11 @@
 <param name="Local" value="numericorNULL-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="plot,Evaluation-method">
+<param name="Name" value="plot,Evaluation,missing-method">
 <param name="Local" value="plot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="plot,EvaluationList-method">
+<param name="Name" value="plot,EvaluationList,missing-method">
 <param name="Local" value="plot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">

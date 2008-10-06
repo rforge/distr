@@ -53,6 +53,7 @@
 <param name="keyword" value="R:   .Q2P">
 <param name="keyword" value="R:   .csimpsum">
 <param name="keyword" value="R:   .primefun">
+<param name="keyword" value="R:   .IssueWarn">
 <param name="keyword" value="R:   devNew">
 <param name="keyword" value=" Internal functions of package distr">
 </object>
@@ -124,6 +125,7 @@ These functions are used internally by package distr.
 .Q2P (q, ngrid = getdistrOption("DefaultNrGridPoints"))
 .csimpsum(fx)
 .primefun(f,x, nm = NULL)
+.IssueWarn(Arith,Sim)
 devNew(...)
 </pre>
 
@@ -320,6 +322,14 @@ a vector of function evaluations</td></tr>
 <tr valign="top"><td><code>nm</code></td>
 <td>
 an optional right asymptotic value</td></tr>
+<tr valign="top"><td><code>Arith</code></td>
+<td>
+logical; slot <code>.withArith</code> of a distribution object,
+or logically-``any'' of these slots in a collection of such objects</td></tr>
+<tr valign="top"><td><code>Sim</code></td>
+<td>
+logical; slot <code>.withSim</code> of a distribution object,
+or logically-``any'' of these slots in a collection of such objects</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 arguments passed through to other functions</td></tr>
@@ -559,6 +569,7 @@ an object of class <code>"AbscontDistribution"</code>.</td></tr>
             lower.tail = TRUE, log.p = FALSE)</code>}
 <code>.csimpsum</code>{a vector of evaluations of the prime function at the grid points}
 <code>.primefun</code>{the prime function as a function}
+<code>.IssueWarn</code>{a list with two warnings to be issued each of which may be empty}
 <code>devNew</code>{returns the return value of the device opened, usually invisible 'NULL'}</p>
 
 <h3>Author(s)</h3>

@@ -102,11 +102,19 @@
 <param name="Local" value="Dataclass.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Dataclass,array-method">
+<param name="Local" value="Dataclass.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Dataclass,ArrayorNULLorVector-method">
 <param name="Local" value="Dataclass.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Dataclass,DataframeorSeqDataFrames-method">
+<param name="Local" value="Dataclass.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Dataclass,matrix-method">
 <param name="Local" value="Dataclass.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -358,15 +366,15 @@
 <param name="Local" value="SeqDataFrame-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="plot,Contsimulation-method">
+<param name="Name" value="plot,Contsimulation,missing-method">
 <param name="Local" value="plot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="plot,Dataclass-method">
+<param name="Name" value="plot,Dataclass,missing-method">
 <param name="Local" value="plot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="plot,Simulation-method">
+<param name="Name" value="plot,Simulation,missing-method">
 <param name="Local" value="plot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">

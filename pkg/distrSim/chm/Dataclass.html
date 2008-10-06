@@ -9,6 +9,8 @@
 <param name="keyword" value="R:   Dataclass-method">
 <param name="keyword" value="R:   Dataclass,DataframeorSeqDataFrames-method">
 <param name="keyword" value="R:   Dataclass,ArrayorNULLorVector-method">
+<param name="keyword" value="R:   Dataclass,array-method">
+<param name="keyword" value="R:   Dataclass,matrix-method">
 <param name="keyword" value=" Generating function for 'Dataclass'">
 </object>
 
@@ -27,6 +29,10 @@ Generates an object of class "Dataclass".
 
 <pre>Dataclass(Data, ...)
 ## S4 method for signature 'ArrayorNULLorVector':
+Dataclass(Data, filename = NULL, name = "Data-Set")
+## S4 method for signature 'array':
+Dataclass(Data, filename = NULL, name = "Data-Set")
+## S4 method for signature 'matrix':
 Dataclass(Data, filename = NULL, name = "Data-Set")
 ## S4 method for signature 'DataframeorSeqDataFrames':
 Dataclass(Data, filename = NULL, name = "Data-Set")

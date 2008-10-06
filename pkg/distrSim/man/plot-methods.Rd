@@ -1,13 +1,13 @@
 \name{plot-methods}
 \docType{methods}
 \alias{plot-methods}
-\alias{plot,Dataclass-method}
-\alias{plot,Simulation-method}
-\alias{plot,Contsimulation-method}
+\alias{plot,Dataclass,missing-method}
+\alias{plot,Simulation,missing-method}
+\alias{plot,Contsimulation,missing-method}
 \title{ Methods for Function plot in Package `distrSim' }
 \description{plot-methods}
 \section{Methods}{\describe{
-\item{plot}{\code{signature(x = "Dataclass")}: produces a plot of the data matrix;
+\item{plot}{\code{signature(x = "Dataclass", y="missing")}: produces a plot of the data matrix;
 optional arguments: 
 \describe{
 \item{obs0}{the indices of observations to be plotted;--- of this vector \code{runs0} 
@@ -26,17 +26,17 @@ typical plot arguments may be passed; some have slightly different meaning (comp
 \item{col,cex,pch}{may be transmitted vectorwise (for the different dimensions) or globally, using the usual recycling rules}
 \item{xlab,ylab,type}{are ignored}
 }}
-\item{plot}{\code{signature(x = "Simulation")}: 
-produces a plot of the data matrix; optional and typical plot arguments: as with \code{signature(object = "Dataclass")}
+\item{plot}{\code{signature(x = "Simulation", y="missing")}: 
+produces a plot of the data matrix; optional and typical plot arguments: as with \code{signature(x = "Dataclass", y="missing")}
  }
 \item{plot}{\code{signature(x = "Contsimulation")}: produces a plot of the real data matrix; 
-optional arguments: as with \code{signature(x = "Dataclass")};
+optional arguments: as with \code{signature(x = "Dataclass", y="missing")};
 typical plot arguments may be passed; some have slightly different meaning (compare \code{\link[graphics]{plot.default}}):
 \describe{
-\item{ylim}{as with \code{signature(x = "Simulation")} and \code{signature(object = "Dataclass")} }
+\item{ylim}{as with \code{signature(x = "Simulation", y="missing")} and \code{signature(x = "Dataclass", y="missing")} }
 \item{col,cex,pch}{are ignored}
-\item{col.id,cex.id,pch.id}{as \code{col,cex,pch} for \code{signature(object = "Dataclass")} but only for ideal part of the data}
-\item{col.c,cex.c,pch.c}{as \code{col,cex,pch} for \code{signature(object = "Dataclass")} but only for contaminated part of the data}
+\item{col.id,cex.id,pch.id}{as \code{col,cex,pch} for \code{signature(x = "Dataclass", y="missing")} but only for ideal part of the data}
+\item{col.c,cex.c,pch.c}{as \code{col,cex,pch} for \code{signature(x = "Dataclass", y="missing")} but only for contaminated part of the data}
 \item{xlab,ylab,type}{are ignored}
 }
  }

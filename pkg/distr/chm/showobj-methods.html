@@ -30,13 +30,14 @@ showobj-methods
 <pre>
 showobj(object, ...)
 ## S4 method for signature 'UnivariateDistribution':
-showobj(object)
+showobj(object, className = class(object)[1])
 ## S4 method for signature 'DistrList':
-showobj(object)
+showobj(object, class = class(object))
 ## S4 method for signature 'UnivarMixingDistribution':
-showobj(object)
+showobj(object, class = class(object))
 ## S4 method for signature 'UnivarLebDecDistribution':
-showobj(object,objs)
+showobj(object, class = class(object),
+objs)
 </pre>
 
 
@@ -49,6 +50,9 @@ further parameters for <code>showobj</code>; not yet used.</td></tr>
 <tr valign="top"><td><code>object</code></td>
 <td>
 distribution [list] object</td></tr>
+<tr valign="top"><td><code>className</code></td>
+<td>
+name of the class of the object</td></tr>
 <tr valign="top"><td><code>objs</code></td>
 <td>
 a character capturing the input from <code>show</code>, <code>print</code></td></tr>

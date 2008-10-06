@@ -9,7 +9,7 @@
 \alias{plot,DistrList,missing-method}
 \title{ Methods for Function plot in Package `distr' }
 \description{plot-methods}
-\usage{plot(x,y, ...)
+\usage{plot(x, ...)
 \S4method{plot}{AbscontDistribution,missing}(x, width = 10, height = 5.5,
      withSweave = getdistrOption("withSweave"), xlim = NULL, ylim = NULL, ngrid = 1000,
      verticals = TRUE, do.points = TRUE, main = FALSE, inner = TRUE,
@@ -51,7 +51,6 @@
             \code{"AbscontDistribution"} or class
             \code{"DiscreteDistribution"} or class
             \code{"DistrList"}: (list of) distribution(s) to be plotted }
-  \item{y}{not used; for compatibility with generic \code{plot}}
   \item{xlim}{the x limits (x1, x2) of the plot.  Note that \code{x1 > x2} is
               allowed and leads to a "reversed axis". As in \code{plot.default}.}
   \item{ylim}{the y limits of the plot. As in \code{plot.default}.}

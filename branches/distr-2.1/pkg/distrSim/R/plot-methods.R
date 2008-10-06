@@ -8,8 +8,8 @@
 ##   matplot(y0,Data(x),xlab="Runindex",ylab="data",type="p",pch="*",col="blue")
 ##          })
 
-setMethod("plot","Dataclass", 
-           function(x,y=NULL, obs0=1:samplesize(x), dims0=1:obsDim(x), 
+setMethod("plot",signature(x = "Dataclass", y="missing"), 
+           function(x, obs0=1:samplesize(x), dims0=1:obsDim(x), 
                     runs0=1:runs(x), ...){
 
             dots <- list(...)
@@ -104,8 +104,8 @@ setMethod("plot","Dataclass",
 
 ## changed w.r.t <1.8            
 
-setMethod("plot","Simulation", 
-           function(x, y = NULL, obs0=1:samplesize(x), dims0=1:obsDim(x), 
+setMethod("plot",signature(x="Simulation", y="missing"), 
+           function(x, obs0=1:samplesize(x), dims0=1:obsDim(x), 
                     runs0 = 1:runs(x), ...){
 
             if(is.null(Data(x)))
@@ -119,8 +119,8 @@ setMethod("plot","Simulation",
 
 ### Contsimulation-Class
 
-setMethod("plot","Contsimulation", 
-           function(x, y = NULL, obs0=1:samplesize(x), dims0=1:obsDim(x), 
+setMethod("plot",signature(x="Contsimulation", y="missing"), 
+           function(x, obs0=1:samplesize(x), dims0=1:obsDim(x), 
                     runs0=1:runs(x), ...){
 
             dots <- list(...)

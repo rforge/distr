@@ -3,12 +3,16 @@
 \alias{Dataclass-method}
 \alias{Dataclass,DataframeorSeqDataFrames-method}
 \alias{Dataclass,ArrayorNULLorVector-method}
+\alias{Dataclass,array-method}
+\alias{Dataclass,matrix-method}
 \title{Generating function for "Dataclass" }
 \description{
   Generates an object of class "Dataclass".
 }
 \usage{Dataclass(Data, ...)
 \S4method{Dataclass}{ArrayorNULLorVector}(Data, filename = NULL, name = "Data-Set")
+\S4method{Dataclass}{array}(Data, filename = NULL, name = "Data-Set")
+\S4method{Dataclass}{matrix}(Data, filename = NULL, name = "Data-Set")
 \S4method{Dataclass}{DataframeorSeqDataFrames}(Data, filename = NULL, name = "Data-Set")
 }
 \arguments{
