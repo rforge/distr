@@ -1,0 +1,106 @@
+<html><head><title>Subsetting/Indexing methods for SeqDataFrames objects in Package &lsquo;distrSim&rsquo;</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>Subsetting-methods(distrSim)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   [-methods">
+<param name="keyword" value="R:   [<--methods">
+<param name="keyword" value="R:   [,SeqDataFrames-method">
+<param name="keyword" value="R:   [<-,SeqDataFrames-method">
+<param name="keyword" value=" Subsetting/Indexing methods for SeqDataFrames objects in Package &lsquo;distrSim&rsquo;">
+</object>
+
+
+<h2>Subsetting/Indexing methods for SeqDataFrames objects in Package &lsquo;distrSim&rsquo;</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Operators acting on <code>SeqDataFrames</code> objects to extract
+or replace parts.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S4 method for signature 'SeqDataFrames':
+x[i, j, k, drop = FALSE]
+
+## S4 method for signature 'SeqDataFrames':
+x[i, j, k] &lt;- value
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+object of class <code>SeqDataFrames</code> from which to extract element(s) or in which to
+replace element(s).</td></tr>
+<tr valign="top"><td><code>i</code></td>
+<td>
+observation index; may be missing</td></tr>
+<tr valign="top"><td><code>j</code></td>
+<td>
+observation dimension index; may be missing</td></tr>
+<tr valign="top"><td><code>k</code></td>
+<td>
+run index; may be missing</td></tr>
+<tr valign="top"><td><code>drop</code></td>
+<td>
+as in the general indexing functions</td></tr>
+<tr valign="top"><td><code>value</code></td>
+<td>
+modification to be assigned to</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+again an object of class <code>SeqDataFrames</code> with the prescribed indices / values</p>
+
+<h3>Methods</h3>
+
+<dl>
+<dt>"["</dt><dd><code>signature(x = "SeqDataFrames")</code>:
+access method for indices for objects of class <code>SeqDataFrames</code></dd>
+<dt>"[&lt;-"</dt><dd><code>signature(x = "SeqDataFrames")</code>:
+replacement method for indices for objects of class <code>SeqDataFrames</code></dd>
+</dl>
+
+<h3>See Also</h3>
+
+<p>
+<code><a onclick="findlink('base', '"[".html')" style="text-decoration: underline; color: blue; cursor: hand">"["</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+s0 &lt;- matrix(1:6,3,2)
+d0 &lt;- data.frame(s0)
+d1 &lt;- data.frame(s0 + 3)
+SF &lt;- SeqDataFrames(d0, d1)
+SF[1,2,1]
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>distrSim</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

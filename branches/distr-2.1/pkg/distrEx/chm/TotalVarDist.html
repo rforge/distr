@@ -1,0 +1,229 @@
+<html><head><title>Generic function for the computation of the total variation distance of two distributions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>TotalVarDist(distrEx)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   TotalVarDist">
+<param name="keyword" value="R:   TotalVarDist-methods">
+<param name="keyword" value="R:   TotalVarDist,AbscontDistribution,AbscontDistribution-method">
+<param name="keyword" value="R:   TotalVarDist,AbscontDistribution,DiscreteDistribution-method">
+<param name="keyword" value="R:   TotalVarDist,DiscreteDistribution,DiscreteDistribution-method">
+<param name="keyword" value="R:   TotalVarDist,DiscreteDistribution,AbscontDistribution-method">
+<param name="keyword" value="R:   TotalVarDist,numeric,DiscreteDistribution-method">
+<param name="keyword" value="R:   TotalVarDist,DiscreteDistribution,numeric-method">
+<param name="keyword" value="R:   TotalVarDist,numeric,AbscontDistribution-method">
+<param name="keyword" value="R:   TotalVarDist,AbscontDistribution,numeric-method">
+<param name="keyword" value="R:   TotalVarDist,AcDcLcDistribution,AcDcLcDistribution-method">
+<param name="keyword" value=" Generic function for the computation of the total variation distance of two distributions">
+</object>
+
+
+<h2>Generic function for the computation of the total variation distance of two distributions</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Generic function for the computation of the total variation distance <i>d_v</i>
+of two distributions <i>P</i> and <i>Q</i> where the distributions may be 
+defined for an arbitrary sample space <i>(Omega, A)</i>.
+The total variation distance is defined as
+</p><p align="center"><i>d_v(P,Q)=sup{|P(B)-Q(B)| | B in A}</i></p>
+
+
+<h3>Usage</h3>
+
+<pre>
+TotalVarDist(e1, e2, ...)
+## S4 method for signature 'AbscontDistribution,
+##   AbscontDistribution':
+TotalVarDist(e1,e2)
+## S4 method for signature 'AbscontDistribution,
+##   DiscreteDistribution':
+TotalVarDist(e1,e2)
+## S4 method for signature 'DiscreteDistribution,
+##   AbscontDistribution':
+TotalVarDist(e1,e2)
+## S4 method for signature 'DiscreteDistribution,
+##   DiscreteDistribution':
+TotalVarDist(e1,e2)
+## S4 method for signature 'numeric, DiscreteDistribution':
+TotalVarDist(e1, e2)
+## S4 method for signature 'DiscreteDistribution, numeric':
+TotalVarDist(e1, e2)
+## S4 method for signature 'numeric, AbscontDistribution':
+TotalVarDist(e1, e2, asis.smooth.discretize = "discretize", 
+            n.discr = getdistrExOption("nDiscretize"), low.discr = getLow(e2),
+            up.discr = getUp(e2), h.smooth = getdistrExOption("hSmooth"))
+## S4 method for signature 'AbscontDistribution, numeric':
+TotalVarDist(e1, e2, asis.smooth.discretize = "discretize", 
+            n.discr = getdistrExOption("nDiscretize"), low.discr = getLow(e1),
+            up.discr = getUp(e1), h.smooth = getdistrExOption("hSmooth"))
+## S4 method for signature 'AcDcLcDistribution,
+##   AcDcLcDistribution':
+TotalVarDist(e1, e2)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>e1</code></td>
+<td>
+object of class <code>"Distribution"</code> or <code>"numeric"</code> </td></tr>
+<tr valign="top"><td><code>e2</code></td>
+<td>
+object of class <code>"Distribution"</code> or <code>"numeric"</code> </td></tr>
+<tr valign="top"><td><code>asis.smooth.discretize</code></td>
+<td>
+possible methods are <code>"asis"</code>, 
+<code>"smooth"</code> and <code>"discretize"</code>. Default is <code>"discretize"</code>.</td></tr>
+<tr valign="top"><td><code>n.discr</code></td>
+<td>
+if <code>asis.smooth.discretize</code> is equal to 
+<code>"discretize"</code> one has to specify the number of lattice points 
+used to discretize the abs. cont. distribution.</td></tr>
+<tr valign="top"><td><code>low.discr</code></td>
+<td>
+if <code>asis.smooth.discretize</code> is equal to 
+<code>"discretize"</code> one has to specify the lower end point of the lattice 
+used to discretize the abs. cont. distribution.</td></tr>
+<tr valign="top"><td><code>up.discr</code></td>
+<td>
+if <code>asis.smooth.discretize</code> is equal to 
+<code>"discretize"</code> one has to specify the upper end point of the lattice 
+used to discretize the abs. cont. distribution.</td></tr>
+<tr valign="top"><td><code>h.smooth</code></td>
+<td>
+if <code>asis.smooth.discretize</code> is equal to 
+<code>"smooth"</code> &ndash; i.e., the empirical distribution of the provided 
+data should be smoothed &ndash; one has to specify this parameter.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+further arguments to be used in particular methods (not in package <span class="pkg">distrEx</span>)</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+In case we want to compute the total variation distance between (empirical) data
+and an abs. cont. distribution, we can specify the parameter <code>asis.smooth.discretize</code>
+to avoid trivial distances (distance = 1).
+</p>
+<p>
+Using <code>asis.smooth.discretize = "discretize"</code>, which is the default,
+leads to a discretization of the provided abs. cont. distribution and 
+the distance is computed between the provided data and the discretized
+distribution.
+</p>
+<p>
+Using <code>asis.smooth.discretize = "smooth"</code> causes smoothing of the
+empirical distribution of the provided data. This is, the empirical
+data is convoluted with the normal distribution <code>Norm(mean = 0, sd = h.smooth)</code>
+which leads to an abs. cont. distribution. Afterwards the distance 
+between the smoothed empirical distribution and the provided abs. cont.
+distribution is computed.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+Total variation distance of <code>e1</code> and <code>e2</code></p>
+
+<h3>Methods</h3>
+
+<dl>
+<dt>e1 = "AbscontDistribution", e2 = "AbscontDistribution":</dt><dd>total variation distance of two absolutely continuous 
+univariate distributions which is computed using <code>distrExIntegrate</code>.
+</dd>
+<dt>e1 = "AbscontDistribution", e2 = "DiscreteDistribution":</dt><dd>total variation distance of absolutely continuous and discrete
+univariate distributions (are mutually singular; i.e., 
+have distance <code>=1</code>).
+</dd>
+<dt>e1 = "DiscreteDistribution", e2 = "DiscreteDistribution":</dt><dd>total variation distance of two discrete univariate distributions
+which is computed using <code>support</code> and <code>sum</code>.
+</dd>
+<dt>e1 = "DiscreteDistribution", e2 = "AbscontDistribution":</dt><dd>total variation distance of discrete and absolutely continuous 
+univariate distributions (are mutually singular; i.e., 
+have distance <code>=1</code>).
+</dd>
+<dt>e1 = "numeric", e2 = "DiscreteDistribution":</dt><dd>Total variation distance between (empirical) data and a discrete 
+distribution.
+</dd>
+<dt>e1 = "DiscreteDistribution", e2 = "numeric":</dt><dd>Total variation distance between (empirical) data and a discrete 
+distribution.
+</dd>
+<dt>e1 = "numeric", e2 = "AbscontDistribution":</dt><dd>Total variation distance between (empirical) data and an abs. cont. 
+distribution.
+</dd>
+<dt>e1 = "AbscontDistribution", e1 = "numeric":</dt><dd>Total variation distance between (empirical) data and an abs. cont. 
+distribution.
+</dd>
+<dt>e1 = "AcDcLcDistribution", e2 = "AcDcLcDistribution":</dt><dd>Total variation distance of mixed discrete and absolutely continuous
+univariate distributions.
+</dd>
+</dl>
+
+<h3>Author(s)</h3>
+
+<p>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Huber, P.J. (1981) <EM>Robust Statistics</EM>. New York: Wiley.
+</p>
+<p>
+Rieder, H. (1994) <EM>Robust Asymptotic Statistics</EM>. New York: Springer.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="TotalVarDist.html">TotalVarDist-methods</a></code>, <code><a href="ContaminationSize.html">ContaminationSize</a></code>, 
+<code><a href="KolmogorovDist.html">KolmogorovDist</a></code>, <code><a href="HellingerDist.html">HellingerDist</a></code>, 
+<code><a onclick="findlink('distr', 'Distribution-class.html')" style="text-decoration: underline; color: blue; cursor: hand">Distribution-class</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+TotalVarDist(Norm(), Gumbel())
+TotalVarDist(Norm(), Td(10))
+TotalVarDist(Norm(mean = 50, sd = sqrt(25)), Binom(size = 100)) # mutually singular
+TotalVarDist(Pois(10), Binom(size = 20)) 
+
+x &lt;- rnorm(100)
+TotalVarDist(Norm(), x)
+TotalVarDist(x, Norm(), asis.smooth.discretize = "smooth")
+
+y &lt;- (rbinom(50, size = 20, prob = 0.5)-10)/sqrt(5)
+TotalVarDist(y, Norm())
+TotalVarDist(y, Norm(), asis.smooth.discretize = "smooth")
+
+TotalVarDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5))
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>distrEx</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

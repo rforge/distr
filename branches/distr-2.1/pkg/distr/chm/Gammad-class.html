@@ -1,0 +1,122 @@
+<html><head><title>Class "Gammad"</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>Gammad-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   Gammad-class">
+<param name="keyword" value="R:   Gammad">
+<param name="keyword" value="R:   initialize,Gammad-method">
+<param name="keyword" value=" Class 'Gammad'">
+</object>
+
+
+<h2>Class 'Gammad'</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The Gammad distribution with parameters <code>shape</code> <i>= a</i>,
+by default <code>= 1</code>, and <code>scale</code> <i>= s</i>, by default <code>= 1</code>, has 
+density
+</p><p align="center"><i>d(x)= 1/(s^a Gamma(a)) x^(a-1) e^-(x/s)</i></p><p>
+for <i>x &gt; 0</i>, <i>a &gt; 0</i> and <i>s &gt; 0</i>.
+The mean and variance are
+<i>E(X) = a*s</i> and
+<i>Var(X) = a*s^2</i>. C.f. <code><a onclick="findlink('stats', 'GammaDist.html')" style="text-decoration: underline; color: blue; cursor: hand">rgamma</a></code>
+</p>
+
+
+<h3>Objects from the Class</h3>
+
+<p>
+Objects can be created by calls of the form <code>Gammad(scale, shape)</code>.
+This object is a gamma distribution.
+</p>
+
+
+<h3>Slots</h3>
+
+<dl>
+<dt><code>img</code>:</dt><dd>Object of class <code>"Reals"</code>: The space of the image of this distribution has got dimension 1
+and the name "Real Space". </dd>
+<dt><code>param</code>:</dt><dd>Object of class <code>"GammaParameter"</code>: the parameter of this distribution (scale and shape),
+declared at its instantiation </dd>
+<dt><code>r</code>:</dt><dd>Object of class <code>"function"</code>: generates random numbers (calls function rgamma)</dd>
+<dt><code>d</code>:</dt><dd>Object of class <code>"function"</code>: density function (calls function dgamma)</dd>
+<dt><code>p</code>:</dt><dd>Object of class <code>"function"</code>: cumulative function (calls function pgamma)</dd>
+<dt><code>q</code>:</dt><dd>Object of class <code>"function"</code>: inverse of the cumulative function (calls function qgamma)</dd>
+</dl>
+
+<h3>Extends</h3>
+
+<p>
+Class <code>"ExpOrGammaOrChisq"</code>, directly.<br>
+Class <code>"AbscontDistribution"</code>, by class <code>"ExpOrGammaOrChisq"</code>.<br>
+Class <code>"UnivariateDistribution"</code>, by class <code>"AbscontDistribution"</code>.<br>
+Class <code>"Distribution"</code>, by class <code>"UnivariateDistribution"</code>.
+</p>
+
+
+<h3>Methods</h3>
+
+<dl>
+<dt>initialize</dt><dd><code>signature(.Object = "Gammad")</code>: initialize method </dd>
+<dt>scale</dt><dd><code>signature(object = "Gammad")</code>: returns the slot <code>scale</code> of the parameter of the distribution </dd>
+<dt>scale&lt;-</dt><dd><code>signature(object = "Gammad")</code>: modifies the slot <code>scale</code> of the parameter of the distribution </dd>
+<dt>shape</dt><dd><code>signature(object = "Gammad")</code>: returns the slot <code>shape</code> of the parameter of the distribution </dd>
+<dt>shape&lt;-</dt><dd><code>signature(object = "Gammad")</code>: modifies the slot <code>shape</code> of the parameter of the distribution </dd>
+<dt>+</dt><dd><code>signature(e1 = "Gammad", e2 = "Gammad")</code>: 
+For the Gamma distribution we use its closedness under convolutions.</dd>
+<dt>*</dt><dd><code>signature(e1 = "Gammad", e2 = "numeric")</code>: 
+For the Gamma distribution we use its closedness under positive scaling transformations.</dd>
+</dl>
+
+<h3>Author(s)</h3>
+
+<p>
+Thomas Stabla <a href="mailto:statho3@web.de">statho3@web.de</a>,<br> 
+Florian Camphausen <a href="mailto:fcampi@gmx.de">fcampi@gmx.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>,<br> 
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="GammaParameter-class.html">GammaParameter-class</a></code>
+<code><a href="ContDistribution-class.html">AbscontDistribution-class</a></code>
+<code><a href="Reals-class.html">Reals-class</a></code>
+<code><a onclick="findlink('stats', 'GammaDist.html')" style="text-decoration: underline; color: blue; cursor: hand">rgamma</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+G &lt;- Gammad(scale=1,shape=1) # G is a gamma distribution with scale=1 and shape=1.
+r(G)(1) # one random number generated from this distribution, e.g. 0.1304441
+d(G)(1) # Density of this distribution is 0.3678794 for x=1.
+p(G)(1) # Probability that x&lt;1 is 0.6321206.
+q(G)(.1) # Probability that x&lt;0.1053605 is 0.1.
+scale(G) # scale of this distribution is 1.
+scale(G) &lt;- 2 # scale of this distribution is now 2.
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>distr</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

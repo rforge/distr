@@ -1,0 +1,96 @@
+<html><head><title>Norm classes for norms based on quadratic forms</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>QFNorm-class(distrMod)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   QFNorm-class">
+<param name="keyword" value="R:   InfoNorm-class">
+<param name="keyword" value="R:   SelfNorm-class">
+<param name="keyword" value="R:   QuadForm,QFNorm-method">
+<param name="keyword" value="R:   QuadForm<-,QFNorm-method">
+<param name="keyword" value="R:   QuadForm">
+<param name="keyword" value="R:   QuadForm<-">
+<param name="keyword" value=" Norm classes for norms based on quadratic forms">
+</object>
+
+
+<h2>Norm classes for norms based on quadratic forms</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Classes for norms based on quadratic forms
+</p>
+
+
+<h3>Objects from the Class</h3>
+
+<p>
+could be created by a call to <code>new</code>, but 
+normally one would use the generating functions <code>QFNorm</code>, 
+<code>InfoNorm</code>, and <code>SelfNorm</code>
+</p>
+
+
+<h3>Slots</h3>
+
+<dl>
+<dt><code>name</code>:</dt><dd>Object of class <code>"character"</code>.</dd>
+<dt><code>fct</code>:</dt><dd>Object of class <code>"function"</code>.</dd>
+<dt><code>QuadForm</code>:</dt><dd>Object of class <code>"PosSemDefSymmMatrix"</code>.</dd>
+</dl>
+
+<h3>Extends</h3>
+
+<p>
+<code>"QFNorm"</code> extends class <code>"NormType"</code>, directly,
+and <code>"InfoNorm"</code> and <code>"SelfNorm"</code> each extend 
+class <code>"QFNorm"</code>, directly (and do not have extra slots).
+</p>
+
+
+<h3>Methods</h3>
+
+<dl>
+<dt>QuadForm</dt><dd><code>signature(object = "QFNorm")</code>: 
+accessor function for slot <code>QuadForm</code>. </dd>
+<dt>QuadForm&lt;-</dt><dd><code>signature(object = "QFNorm")</code>: 
+replacement function for slot <code>QuadForm</code>. </dd>
+</dl>
+
+<h3>Author(s)</h3>
+
+<p>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Rieder, H. (1994) <EM>Robust Asymptotic Statistics</EM>. New York: Springer.
+</p>
+<p>
+Ruckdeschel, P. and Rieder, H. (2004) Optimal Influence Curves for
+General Loss Functions. Statistics &amp; Decisions <EM>22</EM>, 201-223.
+</p>
+<p>
+Kohl, M. (2005) <EM>Numerical Contributions to the Asymptotic Theory of Robustness</EM>. 
+Bayreuth: Dissertation.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="NormType-class.html">NormType-class</a></code>
+</p>
+
+
+
+<hr><div align="center">[Package <em>distrMod</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>
