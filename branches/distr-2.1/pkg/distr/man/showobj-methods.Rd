@@ -12,9 +12,9 @@
 \usage{
 showobj(object, ...)
 \S4method{showobj}{UnivariateDistribution}(object, className = class(object)[1])
-\S4method{showobj}{DistrList}(object, class = class(object))
-\S4method{showobj}{UnivarMixingDistribution}(object, class = class(object))
-\S4method{showobj}{UnivarLebDecDistribution}(object, class = class(object),
+\S4method{showobj}{DistrList}(object, className = class(object)[1])
+\S4method{showobj}{UnivarMixingDistribution}(object, className = class(object)[1])
+\S4method{showobj}{UnivarLebDecDistribution}(object, className = class(object)[1],
 objs)
 }
 \arguments{
