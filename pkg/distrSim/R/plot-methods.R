@@ -12,8 +12,19 @@ setMethod("plot",signature(x = "Dataclass", y="missing"),
            function(x, obs0=1:samplesize(x), dims0=1:obsDim(x), 
                     runs0=1:runs(x), ...){
 
-            dots <- list(...)
-
+            dots <- match.call(call = sys.call(sys.parent(1)), 
+                               expand.dots = FALSE)$"..."
+            doEnd <- FALSE
+            if(!is.null(dots[["panel.first"]])) 
+                {doEnd<- TRUE
+                 dots[["panel.first"]] <- substitute(pf, 
+                                         list(pf=dots[["panel.first"]]))
+                }
+            if(!is.null(dots[["panel.last"]])) 
+                {doEnd<- TRUE
+                 dots[["panel.last"]] <- substitute(pf, 
+                                         list(pf=dots[["panel.last"]]))
+                }
             lobs0 <- min(getdistrSimOption("MaxNumberofPlottedObs"), 
                          length(obs0))           
             lrun0 <- min(getdistrSimOption("MaxNumberofPlottedRuns"), 
@@ -77,13 +88,14 @@ setMethod("plot",signature(x = "Dataclass", y="missing"),
             
             for( i in 1: lrun0)
                    { if (wylim) dots[["ylim"]] <- ylim0[,i]
-                     dots[["y"]] <- x[, dims0[1:ldim0], runs0[i]]
-                     
+                     dots[["y"]] <- Data(x)[, dims0[1:ldim0], runs0[i]]                     
                      do.call("matplot", args = dots)
-                   
                     }                  
             #   }        
-
+            if(doEnd)
+               {dots[["add"]] <- TRUE;
+                par(new=T)
+                do.call("matplot", args = dots)}
             
             par(mfrow=oldpar)
             options("warn" = oldwarn)
@@ -123,7 +135,20 @@ setMethod("plot",signature(x="Contsimulation", y="missing"),
            function(x, obs0=1:samplesize(x), dims0=1:obsDim(x), 
                     runs0=1:runs(x), ...){
 
-            dots <- list(...)
+            dots <- match.call(call = sys.call(sys.parent(1)), 
+                               expand.dots = FALSE)$"..."
+            doEnd <- FALSE
+            if(!is.null(dots[["panel.first"]])) 
+                {doEnd<- TRUE
+                 dots[["panel.first"]] <- substitute(pf, 
+                                         list(pf=dots[["panel.first"]]))
+                }
+            if(!is.null(dots[["panel.last"]])) 
+                {doEnd<- TRUE
+                 dots[["panel.last"]] <- substitute(pf, 
+                                         list(pf=dots[["panel.last"]]))
+                }
+
             if(is.null(Data(x)))
                stop("No Data found -> simulate first")
             
@@ -209,10 +234,11 @@ setMethod("plot",signature(x="Contsimulation", y="missing"),
             if("col.c" %in% names(dots))
                 col.c0 <- rep(unlist(dots["col.c"]), ldim0, length = ldim0) 
 
-            if("add" %in% names(dots)) {
-                myadd <- dots["add"]; dots["add"] <- NULL
-            } else myadd <- TRUE
+            if(!("add" %in% names(dots))) {
+#                myadd <- dots["add"]; dots["add"] <- NULL
+            } else dots[["add"]] <- TRUE
             
+#            plot.new()
             for( i in 1: lrun0)
                    { ### if(wylim) 
                      dots[["ylim"]] <- ylim0[,i]
@@ -220,7 +246,7 @@ setMethod("plot",signature(x="Contsimulation", y="missing"),
                      dots[["cex"]] <- cex.id0
                      dots[["pch"]] <- pch.id0
                      dots[["col"]] <- col.id0
-                     do.call("matplot", add = myadd, args = dots)
+                     do.call("matplot", args = dots)
                    
                     if(any(x.c[,dims0[1:ldim0],runs0[i]] != Inf)) 
                        { dots[["cex"]] <- cex.c0
@@ -231,6 +257,10 @@ setMethod("plot",signature(x="Contsimulation", y="missing"),
                        }   
                    }                  
             #   }        
+            if(doEnd)
+               {dots[["add"]] <- TRUE;
+                par(new=T)
+                do.call("matplot", args = dots)}
             
             par(mfrow = oldpar)
             options("warn" = oldwarn)
