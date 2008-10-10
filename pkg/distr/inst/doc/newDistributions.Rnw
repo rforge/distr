@@ -150,7 +150,7 @@ we may write
 D <- DiscreteDistribution(supp = c(1,5,7,21), prob = c(0.1,0.1,0.6,0.2))
 D
 plot(D)
-@                 
+@
 \newline
 and to generate an absolutely continuos distribution with density proportional
 to $e^{-|x|^3}$, we write
@@ -158,7 +158,7 @@ to $e^{-|x|^3}$, we write
 AC <- AbscontDistribution(d = function(x) exp(-abs(x)^3), withStand = TRUE)
 AC
 plot(AC)
-@                 
+@
 % -------------------------------------------------------------------------------
 \section{Doing it from scratch}
 % -------------------------------------------------------------------------------
@@ -242,9 +242,9 @@ in packages \pkg{distr} and \pkg{distrEx}:
       \item\file{Functionals.R}, lines 158--165
 \lstinputlisting[firstline=158,lastline=165]{../../../distrEx/R/Functionals.R}
       \item\file{skewness.R}, lines 60--67
-\lstinputlisting[firstline=60,lastline=67]{../../../distrEx/R/skewness.R}
+\lstinputlisting[firstline=60,lastline=67]{../../../distrEx/R/Skewness.R}
       \item\file{kurtosis.R}, lines 69--77
-\lstinputlisting[firstline=69,lastline=77]{../../../distrEx/R/kurtosis.R}
+\lstinputlisting[firstline=69,lastline=77]{../../../distrEx/R/Kurtosis.R}
 \end{itemize}
 \end{enumerate}
 The procedure will be similar for \textit{any} new class of distributions.\medskip
