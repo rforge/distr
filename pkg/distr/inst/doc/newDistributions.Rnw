@@ -210,26 +210,26 @@ in packages \pkg{distr} and \pkg{distrEx}:
 
 \begin{enumerate}
 \item in \pkg{distr}, see source in \file{R/AllClasses.R},  lines 181--190
-\lstinputlisting[firstline=181,lastline=190]{../../R/AllClasses.R}
+\lstinputlisting[firstline=181,lastline=190]{../../../distr/R/AllClasses.R}
 \item in \pkg{distr}, see source in \file{R/AllClasses.R},  lines 830--857
-\lstinputlisting[firstline=830,lastline=857]{../../R/AllClasses.R}
+\lstinputlisting[firstline=830,lastline=857]{../../../distr/R/AllClasses.R}
 \item in \pkg{distr}, see source in \file{R/BinomialDistribution.R},  lines 8--16 and 43--53
-\lstinputlisting[firstline=8,lastline=16]{../../R/BinomialDistribution.R}
-\lstinputlisting[firstline=43,lastline=53]{../../R/BinomialDistribution.R}
+\lstinputlisting[firstline=8,lastline=16]{../../../distr/R/BinomialDistribution.R}
+\lstinputlisting[firstline=43,lastline=53]{../../../distr/R/BinomialDistribution.R}
      and \file{R/AllGenerics}, lines 142--146
-\lstinputlisting[firstline=142,lastline=146]{../../R/AllGenerics.R}
+\lstinputlisting[firstline=142,lastline=146]{../../../distr/R/AllGenerics.R}
 \item in \pkg{distr}, see source in \file{R/BinomialDistribution.R},  lines 18--33
-\lstinputlisting[firstline=18,lastline=33]{../../R/BinomialDistribution.R}
+\lstinputlisting[firstline=18,lastline=33]{../../../distr/R/BinomialDistribution.R}
 \item in \pkg{distr}, see source in \file{R/BinomialDistribution.R},  line 41
-\lstinputlisting[firstline=41,lastline=41]{../../R/BinomialDistribution.R}
+\lstinputlisting[firstline=41,lastline=41]{../../../distr/R/BinomialDistribution.R}
 \item in \pkg{distr}, see source in \file{R/BinomialDistribution.R},  lines 54--69
-\lstinputlisting[firstline=54,lastline=69]{../../R/BinomialDistribution.R}
+\lstinputlisting[firstline=54,lastline=69]{../../../distr/R/BinomialDistribution.R}
 \item in \pkg{distr}, see sources in
 \begin{itemize}
      \item\file{man/BinomParameter-class.Rd}
-\lstinputlisting[language=TeX,basicstyle=\color{black}\tiny]{../../man/BinomParameter-class.Rd}
+\lstinputlisting[language=TeX,basicstyle=\color{black}\tiny]{../../../distr/man/BinomParameter-class.Rd}
    \item\file{man/Binom-class.Rd} 
-  \lstinputlisting[language=TeX,basicstyle=\color{black}\tiny]{../../man/Binom-class.Rd}
+  \lstinputlisting[language=TeX,basicstyle=\color{black}\tiny]{../../../distr/man/Binom-class.Rd}
      \item {\footnotesize you could have: \file{man/Binom.Rd}
       for the generating function; in the Binomial case, documentation is in
       \file{Binom-class.Rd}; but in case of the Gumbel distribution,

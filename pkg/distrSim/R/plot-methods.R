@@ -209,7 +209,10 @@ setMethod("plot",signature(x="Contsimulation", y="missing"),
             if("col.c" %in% names(dots))
                 col.c0 <- rep(unlist(dots["col.c"]), ldim0, length = ldim0) 
 
-
+            if("add" %in% names(dots)) {
+                myadd <- dots["add"]; dots["add"] <- NULL
+            } else myadd <- TRUE
+            
             for( i in 1: lrun0)
                    { ### if(wylim) 
                      dots[["ylim"]] <- ylim0[,i]
@@ -217,7 +220,7 @@ setMethod("plot",signature(x="Contsimulation", y="missing"),
                      dots[["cex"]] <- cex.id0
                      dots[["pch"]] <- pch.id0
                      dots[["col"]] <- col.id0
-                     do.call("matplot", args = dots)
+                     do.call("matplot", add = myadd, args = dots)
                    
                     if(any(x.c[,dims0[1:ldim0],runs0[i]] != Inf)) 
                        { dots[["cex"]] <- cex.c0
