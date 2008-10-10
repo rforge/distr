@@ -4,9 +4,13 @@
 %\VignettePackage{distr}
 %
 \documentclass[11pt]{article}
-\usepackage{geometry}\usepackage{color}
+\usepackage{geometry}
 \usepackage{ifpdf}
+\usepackage{color}
 \definecolor{darkblue}{rgb}{0.0,0.0,0.75}
+\definecolor{Rcolor}{rgb}{0,0.5,0.5}
+\definecolor{Rout}{rgb}{0.461,0.039,0.102}
+\definecolor{Rcomment}{rgb}{0.101,0.043,0.432}
 \usepackage{amssymb}
 \usepackage[%
 baseurl={http://www.bioconductor.org},%
@@ -19,7 +23,6 @@ pagebackref,bookmarks,colorlinks,linkcolor=darkblue,citecolor=darkblue,%
 pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 %
 \usepackage{Sweave}
-\RequirePackage{color}
 \RequirePackage{listings}  
 %
 \lstset{fancyvrb=true,language=R,basicstyle=\color{Rcolor}\small,
@@ -27,9 +30,6 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
         literate={<-}{{$\leftarrow$}}2,
         morekeywords=[2]{Norm,Pois,lambda,p,d,r,distroptions}}
 %\newcommand{\ttR}[1]{{\color{Rcolor}\tt #1\color{normal}}}
-\definecolor{Rcolor}{rgb}{0,0.5,0.5}
-\definecolor{Rout}{rgb}{0.461,0.039,0.102}
-\definecolor{Rcomment}{rgb}{0.101,0.043,0.432}
 %
 \DefineVerbatimEnvironment{Sinput}{Verbatim}{formatcom=\color{Rcolor}\lstset{fancyvrb=true}}
 \DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom=\color{Rout}\lstset{fancyvrb=false}}
@@ -43,8 +43,8 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 \newcommand{\code}[1]{{\tt\color{Rcolor} #1}}
 %\newcommand{\code}[1]{\lstinline[escapechar=`]{#1}}
 \newcommand{\pkg}[1]{{\tt "#1"}}
-\newcommand{\pkgversion}{{\tt 2.0}}
-\newcommand{\pkgExversion}{{\tt 2.0}}
+\newcommand{\pkgversion}{{\tt 2.0.1}}
+\newcommand{\pkgExversion}{{\tt 2.0.1}}
 \newcommand{\Reals}{\mathbb{R}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
@@ -1108,10 +1108,10 @@ quantile function of a distribution. Note that all usual parameters of
 and so on. More important, you may also 
 override the automatically chosen $x$-region by passing an \code{xlim} argument:
 <<cauchy1, eval = TRUE, fig = TRUE>>=
-  plot(Cauchy(),withSweave = TRUE)
+  plot(Cauchy())
 @
 <<cauchy2, eval = TRUE, fig = TRUE>>=
-  plot(Cauchy(),xlim=c(-4,4),withSweave = TRUE)
+  plot(Cauchy(),xlim=c(-4,4))
 @
 
 Moreover you may control optional main, inner titles and subtitles with 
@@ -1161,8 +1161,7 @@ plot(Binom(size = 4, prob = 0.3))
 \end{figure}
 \begin{figure}[p]
 <<plotex2, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
-plot(Binom(size = 4, prob = 0.3), do.points = FALSE, verticals = FALSE,
-     withSweave = TRUE)
+plot(Binom(size = 4, prob = 0.3), do.points = FALSE, verticals = FALSE)
 @
 \end{figure}
 
@@ -1175,8 +1174,7 @@ plot(Binom(size = 4, prob = 0.3), main = TRUE, inner = FALSE, cex.main = 1.6,
 
 \begin{figure}[p]
 <<plotex4, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
-plot(Binom(size = 4, prob = 0.3), cex.points = 1.2, pch = 20, lwd = 2,
-     withSweave = TRUE)
+plot(Binom(size = 4, prob = 0.3), cex.points = 1.2, pch = 20, lwd = 2)
 @
 \end{figure}
 
@@ -1184,15 +1182,13 @@ plot(Binom(size = 4, prob = 0.3), cex.points = 1.2, pch = 20, lwd = 2,
 <<plotex5, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
 B <- Binom(size = 4, prob = 0.3)
 plot(B, col="red", col.points = "green", main = TRUE, col.main="blue",
-     col.sub = "orange", sub = TRUE, cex.sub = 0.6, col.inner = "brown",
-     withSweave = TRUE)
+     col.sub = "orange", sub = TRUE, cex.sub = 0.6, col.inner = "brown")
 @
 \end{figure}
 
 \begin{figure}[p]
 <<plotex6, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
-plot(Nbinom(size = 4,prob = 0.3), cex.points = 1.2, pch.u = 20, pch.a = 10,
-     withSweave = TRUE)
+plot(Nbinom(size = 4,prob = 0.3), cex.points = 1.2, pch.u = 20, pch.a = 10)
 @
 \end{figure}
 
@@ -1204,14 +1200,13 @@ plot(Chisq(), log = "xy", ngrid = 100)
 
 \begin{figure}[p]
 <<plotex8, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
-plot(Norm(), lwd=3, col = "red", ngrid = 200, lty = 3, las = 2,
-     withSweave = TRUE)
+plot(Norm(), lwd=3, col = "red", ngrid = 200, lty = 3, las = 2)
 @
 \end{figure}
 
 \begin{figure}[p]
 <<plotex9, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
-plot(Norm(), main = "my Distribution: \%A",
+plot(Norm(), panel.first = grid(), main = "my Distribution: \%A",
      inner = list(expression(paste(lambda, "-density of \%C(\%P)")), "CDF",
                   "Pseudo-inverse with param's \%N"),
      sub = "this plot was correctly generated on \%D",
