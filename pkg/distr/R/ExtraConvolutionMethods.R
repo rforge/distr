@@ -16,6 +16,8 @@
 
 setMethod("+", c("numeric", "UnivariateDistribution"),
           function(e1, e2){
+            print(class(e1))
+            print(class(e2))            
             e2 + e1
           })
 
@@ -126,6 +128,9 @@ function(e1,e2){
      px.l <- pfun(x + 0.5*h)
      px.u <- pfun(x + 0.5*h, lower.tail = FALSE)
 
+#     print(summary(x))
+#     print(summary(px.l))
+#     print(summary(px.u))
      qfun <- .makeQNew(x + 0.5*h, px.l, px.u,
                        .notwithLArg(e1)||.notwithLArg(e1), yL, yR)
 
@@ -137,6 +142,8 @@ function(e1,e2){
 
 setMethod("+", c("numeric", "LatticeDistribution"),
           function(e1, e2){
+            print(class(e1))
+            print(class(e2))            
             e2 + e1
           })
 

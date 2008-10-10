@@ -143,6 +143,8 @@ setMethod("Minimum",
         }
         mixCoeff <- c(aaw,ddw,adw,daw)
         mixCoeff <- mixCoeff/sum(mixCoeff)
+#        print(c(aaw,ddw,adw,daw,sum(c(aaw,ddw,adw,daw))))
+#        print(list(aaD,ddD,adD,daD))
         erg <- flat.LCD(aaD,ddD,adD,daD,mixCoeff=c(aaw,ddw,adw,daw))
         if(withSimplify) simplifyD(erg)
         return(erg)
