@@ -8,6 +8,6 @@ Suggests: tcltk
 Author: Peter Ruckdeschel, Matthias Kohl, Anja Hueller, Eleonara Feist
 Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
 LazyLoad: yes
-License: GPL (version 2 or later)
+License: LGPL-3
 URL: http://distr.r-forge.r-project.org/
 Packaged: Fri Jun  8 00:12:57 2007; Peter

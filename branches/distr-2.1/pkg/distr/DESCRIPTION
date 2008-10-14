@@ -8,5 +8,5 @@ Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
 Depends: R(>= 2.2.0), methods, graphics, startupmsg, sfsmisc
 Imports: stats
 LazyLoad: yes
-License: GPL (version 2 or later)
+License: LGPL-3
 URL: http://distr.r-forge.r-project.org/

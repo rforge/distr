@@ -10,5 +10,5 @@ Description: Evaluation (S4-)classes based on package distr for evaluating
     procedures (estimators/tests) at data/simulation in a unified way.
 Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
 LazyLoad: yes
-License: GPL (version 2 or later)
+License: LGPL-3
 URL: http://distr.r-forge.r-project.org/

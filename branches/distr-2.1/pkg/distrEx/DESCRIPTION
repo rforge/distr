@@ -8,5 +8,5 @@ Suggests: tcltk
 Author: Matthias Kohl, Peter Ruckdeschel
 Maintainer: Matthias Kohl <Matthias.Kohl@stamats.de>
 LazyLoad: yes
-License: GPL (version 2 or later)
+License: LGPL-3
 URL: http://distr.r-forge.r-project.org/

@@ -8,5 +8,5 @@ Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
 Depends: R(>= 2.6.0), tools, distr(>= 2.0.0), startupmsg
 Suggests: distrEx(>= 2.0.0), distrSim(>= 2.0.0), distrTEst(>= 2.0.0), distrTeach(>= 2.0.0), distrMod(>= 2.0.0), Biobase
 LazyLoad: yes
-License: GPL (version 2 or later)
+License: LGPL-3
 URL: http://distr.r-forge.r-project.org/
