@@ -43,8 +43,8 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 \newcommand{\code}[1]{{\tt\color{Rcolor} #1}}
 %\newcommand{\code}[1]{\lstinline[escapechar=`]{#1}}
 \newcommand{\pkg}[1]{{\tt "#1"}}
-\newcommand{\pkgversion}{{\tt 2.0.1}}
-\newcommand{\pkgExversion}{{\tt 2.0.1}}
+\newcommand{\pkgversion}{{\tt 2.1}}
+\newcommand{\pkgExversion}{{\tt 2.1}}
 \newcommand{\Reals}{\mathbb{R}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
