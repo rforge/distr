@@ -954,12 +954,28 @@
 <param name="Local" value="distrExOptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plot">
+<param name="Local" value="plot-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plot,MultivariateDistribution,missing-method">
+<param name="Local" value="plot-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="plot,MultivariateDistribution-method">
 <param name="Local" value="MultivariateDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plot,UnivariateCondDistribution,missing-method">
+<param name="Local" value="plot-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="plot,UnivariateCondDistribution-method">
 <param name="Local" value="UnivariateCondDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plot-methods">
+<param name="Local" value="plot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="PrognCondDistribution">
@@ -1437,6 +1453,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Methods for Function dim in Package `distrEx' ">
 <param name="Local" value="dim-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Methods for Function plot in Package `distrEx' ">
+<param name="Local" value="plot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Multivariate Distributions">

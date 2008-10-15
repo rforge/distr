@@ -65,13 +65,39 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 \newcommand{\N}{\mathbb{N}}
 \SweaveOpts{keep.source=TRUE}
 % -------------------------------------------------------------------------------
-<<setPath, results=tex, echo=FALSE>>=
-if(file.exists("myPATH")){
-   cat("\\def\\distrPATH{",readLines("myPATH")[1],"}\n",sep="")
-   cat("\\def\\distrExPATH{",readLines("myPATH")[2],"}\n",sep="")
+%
+% make necessary copies
+%
+<<makeCopies, results=tex, echo=FALSE>>=
+if(file.exists("../../../distr/AllClasses.R")&&
+   file.exists("../../../distrEx/Expectation.R")){
+   cat("\\def\\distrPATHR{../../../distr/R}\n",sep="")
+   cat("\\def\\distrPATHMAN{../../../distr/Rd}\n",sep="")
+   cat("\\def\\distrExPATHR{../../../distrEx/R}\n",sep="")
 }else{
-   cat("\\def\\distrPATH{../../../distr}\n",sep="")
-   cat("\\def\\distrExPATH{../../../distrEx}\n",sep="")
+myCopy <- function(PKG, PATH, TYPE, FILENAME, PROJECT){
+  download.file(url = paste("http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/",
+                            "*checkout*/pkg/", PKG, "/", TYPE,"/", FILENAME, 
+                            "?root=", PROJECT, sep =""),
+                destfile = paste(PATH,"/",FILENAME,sep=""))
+  rL <- readLines(paste(PATH,"/",FILENAME,sep=""))
+  writeLines(rL, con=paste(PATH,"/",FILENAME,sep=""))                          
+}
+
+FileList <- rbind(c("distr","tmp","R","AllClasses.R","distr"),
+                  c("distr","tmp","R","BinomialDistribution.R","distr"),
+                  c("distr","tmp","R","AllGenerics.R","distr"),
+                  c("distr","tmp","man","BinomParameter-class.Rd","distr"),
+                  c("distr","tmp","man","Binom-class.Rd","distr"),
+                  c("distrEx","tmp","R","Expectation.R","distr"),
+                  c("distrEx","tmp","R","Functionals.R","distr"),
+                  c("distrEx","tmp","R","Skewness.R","distr"),
+                  c("distrEx","tmp","R","Kurtosis.R","distr"))
+if(!file.exists("tmp")) dir.create("tmp")
+apply(FileList, 1, function(x) do.call(myCopy,args=as.list(x)))                  
+cat("\\def\\distrPATHR{tmp}\n",sep="")
+cat("\\def\\distrPATHMAN{tmp}\n",sep="")
+cat("\\def\\distrExPATHR{tmp}\n",sep="")
 }
 @
 %
@@ -236,27 +262,27 @@ in packages \pkg{distr} and \pkg{distrEx}:
 
 \begin{enumerate}
 \item in \pkg{distr}, see source in \file{R/AllClasses.R},  lines 181--190
-\lstinputlistingWithPath[firstline=181,lastline=190]{\distrPATH}{R/AllClasses.R}
+\lstinputlistingWithPath[firstline=181,lastline=190]{\distrPATHR}{AllClasses.R}
 \item in \pkg{distr}, see source in \file{R/AllClasses.R},  lines 830--857
-\lstinputlistingWithPath[firstline=830,lastline=857]{\distrPATH}{R/AllClasses.R}
+\lstinputlistingWithPath[firstline=830,lastline=857]{\distrPATHR}{AllClasses.R}
 \item in \pkg{distr}, see source in \file{R/BinomialDistribution.R},  lines 8--16 and 43--53
-\lstinputlistingWithPath[firstline=8,lastline=16]{\distrPATH}{R/BinomialDistribution.R}
-\lstinputlistingWithPath[firstline=43,lastline=53]{\distrPATH}{R/BinomialDistribution.R}
+\lstinputlistingWithPath[firstline=8,lastline=16]{\distrPATHR}{BinomialDistribution.R}
+\lstinputlistingWithPath[firstline=43,lastline=53]{\distrPATHR}{BinomialDistribution.R}
      and \file{R/AllGenerics}, lines 142--146
-\lstinputlistingWithPath[firstline=142,lastline=146]{\distrPATH}{R/AllGenerics.R}
+\lstinputlistingWithPath[firstline=142,lastline=146]{\distrPATHR}{AllGenerics.R}
 \item in \pkg{distr}, see source in \file{R/BinomialDistribution.R},  lines 18--33
-\lstinputlistingWithPath[firstline=18,lastline=33]{\distrPATH}{R/BinomialDistribution.R}
+\lstinputlistingWithPath[firstline=18,lastline=33]{\distrPATHR}{BinomialDistribution.R}
 \item in \pkg{distr}, see source in \file{R/BinomialDistribution.R},  line 41
-\lstinputlistingWithPath[firstline=41,lastline=41]{\distrPATH}{R/BinomialDistribution.R}
+\lstinputlistingWithPath[firstline=41,lastline=41]{\distrPATHR}{BinomialDistribution.R}
 \item in \pkg{distr}, see source in \file{R/BinomialDistribution.R},  lines 54--69
-\lstinputlistingWithPath[firstline=54,lastline=69]{\distrPATH}{R/BinomialDistribution.R}
+\lstinputlistingWithPath[firstline=54,lastline=69]{\distrPATHR}{BinomialDistribution.R}
 \item in \pkg{distr}, see sources in
 \lstset{language=TeX,basicstyle=\color{black}\tiny}
 \begin{itemize}
      \item\file{man/BinomParameter-class.Rd}
-\lstinputlistingWithPath{\distrPATH}{man/BinomParameter-class.Rd}
+\lstinputlistingWithPath{\distrPATHMAN}{BinomParameter-class.Rd}
    \item\file{man/Binom-class.Rd}
-  \lstinputlistingWithPath{\distrPATH}{man/Binom-class.Rd}
+  \lstinputlistingWithPath{\distrPATHMAN}{Binom-class.Rd}
      \item {\footnotesize you could have: \file{man/Binom.Rd}
       for the generating function; in the Binomial case, documentation is in
       \file{Binom-class.Rd}; but in case of the Gumbel distribution,
@@ -266,13 +292,13 @@ in packages \pkg{distr} and \pkg{distrEx}:
 \item in \pkg{distrEx}, see sources in
 \begin{itemize}
       \item\file{Expectation.R}, lines 293--299
-\lstinputlistingWithPath[firstline=293,lastline=299]{\distrExPATH}{R/Expectation.R}
+\lstinputlistingWithPath[firstline=293,lastline=299]{\distrExPATHR}{Expectation.R}
       \item\file{Functionals.R}, lines 158--165
-\lstinputlistingWithPath[firstline=158,lastline=165]{\distrExPATH}{R/Functionals.R}
+\lstinputlistingWithPath[firstline=158,lastline=165]{\distrExPATHR}{Functionals.R}
       \item\file{skewness.R}, lines 60--67
-\lstinputlistingWithPath[firstline=60,lastline=67]{\distrExPATH}{R/Skewness.R}
+\lstinputlistingWithPath[firstline=60,lastline=67]{\distrExPATHR}{Skewness.R}
       \item\file{kurtosis.R}, lines 69--77
-\lstinputlistingWithPath[firstline=69,lastline=77]{\distrExPATH}{R/Kurtosis.R}
+\lstinputlistingWithPath[firstline=69,lastline=77]{\distrExPATHR}{Kurtosis.R}
 \end{itemize}
 \end{enumerate}
 The procedure will be similar for \textit{any} new class of distributions.\medskip

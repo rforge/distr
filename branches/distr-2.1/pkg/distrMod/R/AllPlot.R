@@ -158,17 +158,18 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
                     cex.main = cex.inner, col.main = col.inner))
         }
 
-     if(!hasArg(cex.main)) cex.main <- par("cex.main")
-     if(!hasArg(col.main)) col.main <- par("col.main")
-     if (mainL)
-         mtext(text = main, side = 3, cex = cex.main, adj = .5,
-               outer = TRUE, padj = 1.4, col = col.main)
+        if(!hasArg(cex.main)) cex.main <- par("cex.main") else cex.main <- dots$"cex.main"
+        if(!hasArg(col.main)) col.main <- par("col.main") else col.main <- dots$"col.main"
+        if (mainL)
+            mtext(text = main, side = 3, cex = cex.main, adj = .5,
+                  outer = TRUE, padj = 1.4, col = col.main)
 
-     if(!hasArg(cex.sub)) cex.sub <- par("cex.sub")
-     if(!hasArg(col.sub)) col.sub <- par("col.sub")
-     if (subL)
-         mtext(text = sub, side = 1, cex = cex.sub, adj = .5,
-               outer = TRUE, line = -1.6, col = col.sub)
+        if(!hasArg(cex.sub)) cex.sub <- par("cex.sub") else cex.sub <- dots$"cex.sub"
+        if(!hasArg(col.sub)) col.sub <- par("col.sub") else col.sub <- dots$"col.sub"
+        if (subL)
+            mtext(text = sub, side = 1, cex = cex.sub, adj = .5,
+                  outer = TRUE, line = -1.6, col = col.sub)
+
      par(opar)
      options(w0)
      invisible()
