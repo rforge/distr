@@ -389,6 +389,7 @@ GumbelLocationFamily <- function(loc = 0, scale = 1, trafo){
                                  list(sd = scale))
     res <- L2LocationFamily(loc = loc,  
                      name = "Gumbel location family", 
+                     locname = c("loc"="loc"),
                      centraldistribution = Gumbel(loc = 0, scale = scale),
                      modParam = modParam,
                      LogDeriv = function(x) (1 - exp(-x/scale))/scale,
