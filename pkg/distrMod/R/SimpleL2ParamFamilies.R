@@ -379,7 +379,7 @@ LnormScaleFamily <- function(meanlog = 0, sdlog = 1, trafo){
                   L2derivDistrSymm = DistrSymmList(SphericalSymmetry(SymmCenter = 0)),
                   trafo = trafo, .returnClsName = "LnormScaleFamily")
     f.call <- substitute(LnormScaleFamily(meanlog = m, sdlog = s,
-                          trafo = matrix(Tr, dimnames = list("meanlog","meanlog"))),
+                          trafo = matrix(Tr, dimnames = list("scale","scale"))),
                          list(m = meanlog, s = sdlog, Tr = trafo))
     res@fam.call <- f.call
     return(res)
