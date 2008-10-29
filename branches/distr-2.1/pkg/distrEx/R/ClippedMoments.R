@@ -118,12 +118,22 @@ setMethod("m2df", "Chisq",
         return(dfr*(dfr+2)*pchisq(upper, df = (dfr+4)))
     })
 setMethod("m1df", "LatticeDistribution",
-    function(object, upper)
+    function(object, upper){
         getMethod("m1df", "DiscreteDistribution")(
               as(object, "DiscreteDistribution"), upper)
-    )
+    })
 setMethod("m2df", "LatticeDistribution",
-    function(object, upper)
+    function(object, upper){
         getMethod("m2df", "DiscreteDistribution")(
               as(object, "DiscreteDistribution"), upper)
-    )
+    })
+
+setMethod("m1df", "AffLinDistribution", 
+    function(object, upper){
+             a <- object@a
+             b <- object@b
+             if(a>0)
+                a * m1df(object@X0,(upper-b)/a) + b
+             else   
+                (-a) * m1df(-object@X0,(upper-b)/(-a)) + b
+    })

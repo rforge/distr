@@ -762,6 +762,10 @@
 <param name="Local" value="m1df.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m1df,AffLinDistribution-method">
+<param name="Local" value="m1df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="m1df,Binom-method">
 <param name="Local" value="m1df.html">
 </OBJECT>

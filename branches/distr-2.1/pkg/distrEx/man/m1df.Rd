@@ -5,6 +5,7 @@
 \alias{m1df,AbscontDistribution-method}
 \alias{m1df,DiscreteDistribution-method}
 \alias{m1df,LatticeDistribution-method}
+\alias{m1df,AffLinDistribution-method}
 \alias{m1df,Binom-method}
 \alias{m1df,Pois-method}
 \alias{m1df,Norm-method}
