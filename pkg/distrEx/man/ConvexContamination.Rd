@@ -5,6 +5,9 @@
 \alias{ConvexContamination,AbscontDistribution,AbscontDistribution,numeric-method}
 \alias{ConvexContamination,AbscontDistribution,UnivariateDistribution,numeric-method}
 \alias{ConvexContamination,DiscreteDistribution,DiscreteDistribution,numeric-method}
+\alias{ConvexContamination,LatticeDistribution,DiscreteDistribution,numeric-method}
+\alias{ConvexContamination,DiscreteDistribution,LatticeDistribution,numeric-method}
+\alias{ConvexContamination,LatticeDistribution,LatticeDistribution,numeric-method}
 \alias{ConvexContamination,AcDcLcDistribution,AcDcLcDistribution,numeric-method}
 
 \title{Generic Function for Generating Convex Contaminations}

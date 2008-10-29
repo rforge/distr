@@ -148,3 +148,17 @@ setMethod("KolmogorovDist",  signature(e1 = "AcDcLcDistribution",
 
         return(res)
     })
+setMethod("KolmogorovDist", signature(e1 = "LatticeDistribution", 
+                                         e2 = "LatticeDistribution"),
+    getMethod("KolmogorovDist", signature(e1 = "DiscreteDistribution", 
+                                         e2 = "DiscreteDistribution")))
+
+setMethod("KolmogorovDist", signature(e1 = "LatticeDistribution", 
+                                         e2 = "DiscreteDistribution"),
+    getMethod("KolmogorovDist", signature(e1 = "DiscreteDistribution", 
+                                         e2 = "DiscreteDistribution")))
+
+setMethod("KolmogorovDist", signature(e1 = "DiscreteDistribution", 
+                                         e2 = "LatticeDistribution"),
+    getMethod("KolmogorovDist", signature(e1 = "DiscreteDistribution", 
+                                         e2 = "DiscreteDistribution")))

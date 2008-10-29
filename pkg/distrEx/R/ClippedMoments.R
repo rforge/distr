@@ -117,3 +117,13 @@ setMethod("m2df", "Chisq",
         dfr <- df(object)
         return(dfr*(dfr+2)*pchisq(upper, df = (dfr+4)))
     })
+setMethod("m1df", "LatticeDistribution",
+    function(object, upper)
+        getMethod("m1df", "DiscreteDistribution")(
+              as(object, "DiscreteDistribution"), upper)
+    )
+setMethod("m2df", "LatticeDistribution",
+    function(object, upper)
+        getMethod("m2df", "DiscreteDistribution")(
+              as(object, "DiscreteDistribution"), upper)
+    )

@@ -56,3 +56,17 @@ setMethod("ContaminationSize",  signature(e1 = "AcDcLcDistribution",
               return(list(e1 = e1, e2 = e2, size.of.contamination = res))
               })
 
+setMethod("ContaminationSize", signature(e1 = "LatticeDistribution", 
+                                         e2 = "LatticeDistribution"),
+    getMethod("ContaminationSize", signature(e1 = "DiscreteDistribution", 
+                                         e2 = "DiscreteDistribution")))
+
+setMethod("ContaminationSize", signature(e1 = "LatticeDistribution", 
+                                         e2 = "DiscreteDistribution"),
+    getMethod("ContaminationSize", signature(e1 = "DiscreteDistribution", 
+                                         e2 = "DiscreteDistribution")))
+
+setMethod("ContaminationSize", signature(e1 = "DiscreteDistribution", 
+                                         e2 = "LatticeDistribution"),
+    getMethod("ContaminationSize", signature(e1 = "DiscreteDistribution", 
+                                         e2 = "DiscreteDistribution")))

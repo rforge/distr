@@ -120,3 +120,17 @@ setMethod("TotalVarDist",  signature(e1 = "AcDcLcDistribution",
               names(res) <- "total variation distance"
               res
               })
+setMethod("TotalVarDist", signature(e1 = "LatticeDistribution", 
+                                         e2 = "LatticeDistribution"),
+    getMethod("TotalVarDist", signature(e1 = "DiscreteDistribution", 
+                                         e2 = "DiscreteDistribution")))
+
+setMethod("TotalVarDist", signature(e1 = "LatticeDistribution", 
+                                         e2 = "DiscreteDistribution"),
+    getMethod("TotalVarDist", signature(e1 = "DiscreteDistribution", 
+                                         e2 = "DiscreteDistribution")))
+
+setMethod("TotalVarDist", signature(e1 = "DiscreteDistribution", 
+                                         e2 = "LatticeDistribution"),
+    getMethod("TotalVarDist", signature(e1 = "DiscreteDistribution", 
+                                         e2 = "DiscreteDistribution")))

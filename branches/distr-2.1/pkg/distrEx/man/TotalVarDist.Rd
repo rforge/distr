@@ -5,6 +5,9 @@
 \alias{TotalVarDist,AbscontDistribution,DiscreteDistribution-method}
 \alias{TotalVarDist,DiscreteDistribution,DiscreteDistribution-method}
 \alias{TotalVarDist,DiscreteDistribution,AbscontDistribution-method}
+\alias{TotalVarDist,LatticeDistribution,DiscreteDistribution-method}
+\alias{TotalVarDist,DiscreteDistribution,LatticeDistribution-method}
+\alias{TotalVarDist,LatticeDistribution,LatticeDistribution-method}
 \alias{TotalVarDist,numeric,DiscreteDistribution-method}
 \alias{TotalVarDist,DiscreteDistribution,numeric-method}
 \alias{TotalVarDist,numeric,AbscontDistribution-method}

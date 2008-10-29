@@ -225,3 +225,23 @@ setMethod("ConvexContamination", signature(e1 = "AcDcLcDistribution",
         return(flat.mix(UnivarMixingDistribution(e1, e2, 
                                     mixCoeff = c(1-size,size))))
     })
+setMethod("ConvexContamination", signature(e1 = "LatticeDistribution", 
+                                         e2 = "LatticeDistribution",
+                                           size = "numeric"),
+    getMethod("ConvexContamination", signature(e1 = "DiscreteDistribution", 
+                                         e2 = "DiscreteDistribution",
+                                           size = "numeric")))
+
+setMethod("ConvexContamination", signature(e1 = "LatticeDistribution", 
+                                         e2 = "DiscreteDistribution",
+                                           size = "numeric"),
+    getMethod("ConvexContamination", signature(e1 = "DiscreteDistribution", 
+                                         e2 = "DiscreteDistribution",
+                                           size = "numeric")))
+
+setMethod("ConvexContamination", signature(e1 = "DiscreteDistribution", 
+                                         e2 = "LatticeDistribution",
+                                           size = "numeric"),
+getMethod("ConvexContamination", signature(e1 = "DiscreteDistribution", 
+                                         e2 = "DiscreteDistribution",
+                                           size = "numeric")))

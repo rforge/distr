@@ -117,3 +117,17 @@ setMethod("HellingerDist", signature(e1 = "AcDcLcDistribution",
               res
 })
 
+setMethod("HellingerDist", signature(e1 = "LatticeDistribution", 
+                                         e2 = "LatticeDistribution"),
+    getMethod("HellingerDist", signature(e1 = "DiscreteDistribution", 
+                                         e2 = "DiscreteDistribution")))
+
+setMethod("HellingerDist", signature(e1 = "LatticeDistribution", 
+                                         e2 = "DiscreteDistribution"),
+    getMethod("HellingerDist", signature(e1 = "DiscreteDistribution", 
+                                         e2 = "DiscreteDistribution")))
+
+setMethod("HellingerDist", signature(e1 = "DiscreteDistribution", 
+                                         e2 = "LatticeDistribution"),
+    getMethod("HellingerDist", signature(e1 = "DiscreteDistribution", 
+                                         e2 = "DiscreteDistribution")))

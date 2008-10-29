@@ -5,6 +5,9 @@
 \alias{KolmogorovDist,AbscontDistribution,DiscreteDistribution-method}
 \alias{KolmogorovDist,DiscreteDistribution,DiscreteDistribution-method}
 \alias{KolmogorovDist,DiscreteDistribution,AbscontDistribution-method}
+\alias{KolmogorovDist,LatticeDistribution,DiscreteDistribution-method}
+\alias{KolmogorovDist,DiscreteDistribution,LatticeDistribution-method}
+\alias{KolmogorovDist,LatticeDistribution,LatticeDistribution-method}
 \alias{KolmogorovDist,numeric,UnivariateDistribution-method}
 \alias{KolmogorovDist,UnivariateDistribution,numeric-method}
 \alias{KolmogorovDist,AcDcLcDistribution,AcDcLcDistribution-method}

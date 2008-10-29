@@ -3,6 +3,9 @@
 \alias{ContaminationSize-methods}
 \alias{ContaminationSize,AbscontDistribution,AbscontDistribution-method}
 \alias{ContaminationSize,DiscreteDistribution,DiscreteDistribution-method}
+\alias{ContaminationSize,LatticeDistribution,DiscreteDistribution-method}
+\alias{ContaminationSize,DiscreteDistribution,LatticeDistribution-method}
+\alias{ContaminationSize,LatticeDistribution,LatticeDistribution-method}
 \alias{ContaminationSize,AcDcLcDistribution,AcDcLcDistribution-method}
 
 \title{Generic Function for the Computation of the Convex Contamination 

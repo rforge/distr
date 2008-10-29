@@ -25,6 +25,14 @@ setMethod("E", signature(object = "DiscreteDistribution",
         return(sum(supp * dfun(supp)))
     })
 
+setMethod("E", signature(object = "LatticeDistribution", 
+                         fun = "missing", 
+                         cond = "missing"),
+   getMethod("E", signature(object = "DiscreteDistribution", 
+                         fun = "missing", 
+                         cond = "missing"))
+
+
 setMethod("E", signature(object = "AffLinDistribution", 
                          fun = "missing", 
                          cond = "missing"),
@@ -116,6 +124,13 @@ setMethod("E", signature(object = "DiscreteDistribution",
         }
         return(sum(integrand(x = supp, dfun = d(object), fun = fun, ...)))
     })
+setMethod("E", signature(object = "LatticeDistribution", 
+                         fun = "function", 
+                         cond = "missing"),
+   getMethod("E", signature(object = "DiscreteDistribution", 
+                         fun = "function", 
+                         cond = "missing"))
+
 setMethod("E", signature(object = "MultivariateDistribution", 
                          fun = "function", 
                          cond = "missing"),
@@ -188,6 +203,12 @@ setMethod("E", signature(object = "DiscreteCondDistribution",
         else
             return(sum(fct(x = supp, dfun = d(object), cond = cond)))            
     })
+setMethod("E", signature(object = "LatticeDistribution", 
+                         fun = "missing", 
+                         cond = "numeric"),
+   getMethod("E", signature(object = "DiscreteDistribution", 
+                         fun = "missing", 
+                         cond = "numeric"))
 setMethod("E", signature(object = "UnivariateCondDistribution",
                          fun = "function", 
                          cond = "numeric"),
@@ -270,6 +291,13 @@ setMethod("E", signature(object = "DiscreteCondDistribution",
         return(sum(fct(x = supp, dfun = d(object), fun = fun, 
                        cond = cond, ...)))
     })
+setMethod("E", signature(object = "LatticeDistribution", 
+                         fun = "function", 
+                         cond = "numeric"),
+   getMethod("E", signature(object = "DiscreteDistribution", 
+                         fun = "function", 
+                         cond = "numeric"))
+
 
 ### added 29-03-06 P.R. 
 # some exact expectations:
