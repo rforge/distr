@@ -23,13 +23,11 @@
 \alias{E,UnivariateCondDistribution,missing,numeric-method}
 \alias{E,AbscontCondDistribution,missing,numeric-method}
 \alias{E,DiscreteCondDistribution,missing,numeric-method}
-\alias{E,LatticeCondDistribution,missing,numeric-method}
 \alias{E,UnivarLebDecDistribution,missing,ANY-method}
 \alias{E,UnivarLebDecDistribution,function,ANY-method}
 \alias{E,UnivariateCondDistribution,function,numeric-method}
 \alias{E,AbscontCondDistribution,function,numeric-method}
 \alias{E,DiscreteCondDistribution,function,numeric-method}
-\alias{E,LatticeDistribution,function,numeric-method}
 \alias{E,Beta,missing,missing-method}
 \alias{E,Binom,missing,missing-method}
 \alias{E,Cauchy,missing,missing-method}

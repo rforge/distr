@@ -14,6 +14,14 @@
 <param name="Local" value="0distrEx-package.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="*,Gumbel,numeric-method">
+<param name="Local" value="Gumbel-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="+,Gumbel,numeric-method">
+<param name="Local" value="Gumbel-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="AbscontCondDistribution-class">
 <param name="Local" value="AbscontCondDistribution-class.html">
 </OBJECT>
@@ -46,6 +54,18 @@
 <param name="Local" value="ContaminationSize.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ContaminationSize,DiscreteDistribution,LatticeDistribution-method">
+<param name="Local" value="ContaminationSize.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ContaminationSize,LatticeDistribution,DiscreteDistribution-method">
+<param name="Local" value="ContaminationSize.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ContaminationSize,LatticeDistribution,LatticeDistribution-method">
+<param name="Local" value="ContaminationSize.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="ContaminationSize-methods">
 <param name="Local" value="ContaminationSize.html">
 </OBJECT>
@@ -67,6 +87,18 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="ConvexContamination,DiscreteDistribution,DiscreteDistribution,numeric-method">
+<param name="Local" value="ConvexContamination.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ConvexContamination,DiscreteDistribution,LatticeDistribution,numeric-method">
+<param name="Local" value="ConvexContamination.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ConvexContamination,LatticeDistribution,DiscreteDistribution,numeric-method">
+<param name="Local" value="ConvexContamination.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ConvexContamination,LatticeDistribution,LatticeDistribution,numeric-method">
 <param name="Local" value="ConvexContamination.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -250,6 +282,14 @@
 <param name="Local" value="E.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,LatticeDistribution,function,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,LatticeDistribution,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="E,Lnorm,missing,missing-method">
 <param name="Local" value="E.html">
 </OBJECT>
@@ -402,7 +442,19 @@
 <param name="Local" value="HellingerDist.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist,DiscreteDistribution,LatticeDistribution-method">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="HellingerDist,DiscreteDistribution,numeric-method">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist,LatticeDistribution,DiscreteDistribution-method">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist,LatticeDistribution,LatticeDistribution-method">
 <param name="Local" value="HellingerDist.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -519,6 +571,18 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="KolmogorovDist,DiscreteDistribution,DiscreteDistribution-method">
+<param name="Local" value="KolmogorovDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="KolmogorovDist,DiscreteDistribution,LatticeDistribution-method">
+<param name="Local" value="KolmogorovDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="KolmogorovDist,LatticeDistribution,DiscreteDistribution-method">
+<param name="Local" value="KolmogorovDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="KolmogorovDist,LatticeDistribution,LatticeDistribution-method">
 <param name="Local" value="KolmogorovDist.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -714,6 +778,10 @@
 <param name="Local" value="m1df.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m1df,LatticeDistribution-method">
+<param name="Local" value="m1df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="m1df,Norm-method">
 <param name="Local" value="m1df.html">
 </OBJECT>
@@ -759,6 +827,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="m2df,Exp-method">
+<param name="Local" value="m2df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m2df,LatticeDistribution-method">
 <param name="Local" value="m2df.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -1198,7 +1270,19 @@
 <param name="Local" value="TotalVarDist.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist,DiscreteDistribution,LatticeDistribution-method">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="TotalVarDist,DiscreteDistribution,numeric-method">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist,LatticeDistribution,DiscreteDistribution-method">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist,LatticeDistribution,LatticeDistribution-method">
 <param name="Local" value="TotalVarDist.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
