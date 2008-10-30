@@ -20,12 +20,12 @@ as well as a Tcl/Tk based demo for\code{illustrateCLT}
 \details{
 \tabular{ll}{
 Package: \tab distrTeach\cr
-Version: \tab 2.0 \cr
-Date: \tab 2008-05-08 \cr
-Depends: \tab R(>= 2.2.0), methods, distr(>= 1.8), evd, startupmsg\cr
+Version: \tab 2.0.2 \cr
+Date: \tab 2008-10-30 \cr
+Depends: \tab R(>= 2.2.0), methods, distr(>= 1.8), distrEx(>= 2.0), startupmsg\cr
 Suggests: \tab tcltk\cr
 LazyLoad: \tab yes\cr
-License: \tab GPL (version 2 or later)\cr
+License: \tab LGPL-3\cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
 }
 }

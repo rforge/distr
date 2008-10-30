@@ -17,7 +17,7 @@ distrEx -- Extensions of package distr
 \item further functionals: var, sd, IQR, mad, median, skewness, kurtosis
 \item truncated moments,
 \item distances between distributions
-     (Hellinger, Kolmogorov, total variation, "convex contamination")
+     (Hellinger, Cramer von Mises, Kolmogorov, total variation, "convex contamination")
 \item lists of distributions,
 \item conditional distributions in factorized form 
 \item conditional expectations in factorized form
@@ -26,13 +26,13 @@ distrEx -- Extensions of package distr
 \details{
 \tabular{ll}{
 Package: \tab distrEx\cr
-Version: \tab 2.0 \cr
-Date: \tab 2008-05-08 \cr
+Version: \tab 2.0.2 \cr
+Date: \tab 2008-10-30 \cr
 Depends: \tab R(>= 2.6.0), methods, distr(>= 2.0), evd, startupmsg\cr
 Suggests: \tab tcltk\cr
 LazyLoad: \tab yes\cr
-License: \tab GPL (version 2 or later)\cr
-URL: \tab http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/\cr
+License: \tab LGPL-3\cr
+URL: \tab http://distr.r-forge.r-project.org/\cr
 }
 }
 \section{Classes}{
