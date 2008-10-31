@@ -682,16 +682,16 @@
 <param name="Local" value="UnivarLebDecDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="coerce,DiscreteDistribution,LatticeDistribution-method">
+<param name="Local" value="DiscreteDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="coerce,DiscreteDistribution,UnivarLebDecDistribution-method">
 <param name="Local" value="UnivarLebDecDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="coerce,Distribution,DistrList-method">
 <param name="Local" value="DistrList-class.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="coerce,LatticeDistribution,DiscreteDistribution-method">
-<param name="Local" value="LatticeDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="coerce,numeric,Integer-method">

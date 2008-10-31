@@ -42,7 +42,7 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 \SweaveOpts{keep.source=TRUE}
 % -------------------------------------------------------------------------------
 <<SweaveListingsPreparations, results=tex, echo=FALSE>>=
-source("SweaveListingUtils.R", verbose = FALSE, keep.source = FALSE)
+require(SweaveListingUtils)
 SweaveListingPreparations()
 @
 % -------------------------------------------------------------------------------

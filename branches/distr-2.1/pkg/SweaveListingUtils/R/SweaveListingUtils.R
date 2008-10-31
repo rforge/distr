@@ -4,55 +4,62 @@
 #
 ###############################################################################
 
-### default settings
+# .onLoad<-function(lib,pkg){require(methods)}
 
-.Rset <- list("language"="R","escapechar"="`",
-        "fancyvrb"="true","basicstyle"="\\color{Rcolor}\\footnotesize",
-        "commentstyle"="\\color{Rcomment}\\ttfamily\\itshape",
-        "literate"="{<-}{{$\\leftarrow$}}2",
-        "morekeywords"="[2]{Norm,Pois,lambda,p,d,r,distroptions}")
+.onAttach <- function(library, pkg)
+{
+#  if (is.null(library)) 
+#            library <- .libPaths()
+## hier kann man Code reinschreiben, der bei Attachen
+## des Pakets ausgefuehrt wird, z.B.:
 
-.Rdset <- list("language"="TeX", "basicstyle"="\\color{black}\\tiny",
-               "commentstyle"="\\ttfamily\\itshape")
-.Rcolor   <- c(0,0.5,0.5)
-.Rout     <- c(0.461,0.039,0.102)
-.Rcomment <- c(0.101,0.043,0.432)
-.pkv <- "2.0.2"
-.pkg <- "distr"
+     unlockBinding(".CacheFiles", asNamespace("SweaveListingUtils"))
+     unlockBinding(".CacheLength", asNamespace("SweaveListingUtils"))
+     unlockBinding(".SweaveListingOptions", asNamespace("SweaveListingUtils"))
+     buildStartupMessage(pkg="SweaveListingUtils", library=library, packageHelp=TRUE)
 
-.CacheLength <- 0
-.CacheFiles <- NULL
+  invisible()
+} 
+
+
 
 print.taglist <- function(x, LineLength = 80, offset.start = 0,
-                          withFinalLineBreak = TRUE){
+                          withFinalLineBreak = TRUE, first.print = NULL, ...){
    xc <- as.character(deparse(substitute(x)))
    ll <- length(x)
    LineL <- max(LineLength-2,0)
    LineBreak <- NULL
+   mi50 <- min(LineLength,50)
+   maL <- max(3*LineLength,80)
    if(ll){
       offS <- paste(rep(" ", offset.start), collapse = "")
       for(i in 1:ll){
-          cat(LineBreak)
           trystr0 <- paste(names(x[i]),x[[i]],sep = "=")
           if(i==1){
-             trystr  <- trystr0
-             ntry <- nchar(trystr) + offset.start
-             if(ntry > LineL) error(gettextf(
-                      "First element of %s is already too long", xc))
+            actstr <-  trystr  <- trystr0
+            trystr0 <- NULL
+            if(length(first.print))
+               cat(first.print)                 
           }else{
              trystr  <- paste(actstr, trystr0, sep = ",")
-             ntry <- nchar(trystr)
           }
+
+          ntry <- nchar(trystr) + offset.start
           if (ntry < LineL){
               actstr <- trystr
           }else{
-              cat(actstr,",%",sep="")
+              if(ntry > maL) stop(gettextf(
+                      "Some elements of %s are too long", 
+                       if(nchar(xc)> mi50) paste(substr(xc,1,mi50),"...") else
+                                xc))
+              if(actstr!=offS) cat(LineBreak, actstr,",%",sep="")
               LineBreak <- "\n"
               actstr <- paste(offS, trystr0, sep = "")
           }
       }
       if(nzchar(actstr)) {
-         cat("\n", actstr, sep="")
+         if(i>1) cat("\n")
+         cat(actstr, sep="")
          if(withFinalLineBreak) cat("\n")
       }
    }
@@ -78,27 +85,52 @@ taglist <- function(..., list = NULL, defname = "V"){
 
 lstset <- function(taglist, LineLength = 80){
    startS <- "\\lstset{"
-   cat(startS)
    print(taglist, LineLength = LineLength, offset.start = nchar(startS),
-         withFinalLineBreak = FALSE)
+         withFinalLineBreak = FALSE, first.print = startS)
    cat("}%\n")
    return(invisible())
 }
 
-lstsetR <- function(Rset = .Rset, LineLength = 80){
-   lstset(taglist(list=Rset), LineLength = LineLength)
+lstsetR <- function(Rset = NULL, LineLength = 80, add = TRUE){
+   if(add){
+       Rset0 <- getSweaveListingOption("Rset")
+       if(length(Rset)){
+          newnms <- names(Rset)
+          oldnms <- names(Rset0)
+          ooldnms <- oldnms[! (oldnms %in% newnms)]
+          Rset <- c(Rset, Rset0[ooldnms]) 
+       }else Rset <- Rset0   
+   }
+   if(!is(Rset, "taglist")) Rset <- taglist(list=Rset)
+   lstset(Rset, LineLength = LineLength)
    return(invisible())
 }
 
-lstsetRd <- function(Rdset = .Rdset, LineLength = 80){
-   lstset(taglist(list=Rdset), LineLength = LineLength)
+lstsetRd <- function(Rdset = NULL, LineLength = 80, add = TRUE){
+   if(add){
+       Rdset0 <- getSweaveListingOption("Rdset")
+       if(length(Rdset)){
+          newnms <- names(Rdset)
+          oldnms <- names(Rdset0)
+          ooldnms <- oldnms[! (oldnms %in% newnms)]
+          Rdset <- c(Rdset, Rdset0[ooldnms]) 
+       }else Rdset <- Rdset0   
+   }
+   if(!is(Rdset, "taglist")) Rdset <- taglist(list=Rdset)
+   lstset(Rdset, LineLength = LineLength)
    return(invisible())
 }
 
 
 SweaveListingPreparations <- function(LineLength = 80,
-   Rset = .Rset, Rdset = .Rdset, Rcolor = .Rcolor, Rout = .Rout,
-   Rcomment = .Rcomment, pkg = .pkg, pkv = .pkv, lib.loc = NULL){
+   Rset = getSweaveListingOption("Rset"), 
+   Rdset = getSweaveListingOption("Rdset"), 
+   Rcolor = getSweaveListingOption("Rcolor"), 
+   Rout = getSweaveListingOption("Rout"),
+   Rcomment = getSweaveListingOption("Rcomment"), 
+   pkg = getSweaveListingOption("pkg"), 
+   pkv = getSweaveListingOption("pkv"), 
+   lib.loc = NULL){
 
 line <- paste("%",paste(rep("-",LineLength-2),collapse=""),"%\n", sep="")
 
@@ -266,3 +298,4 @@ lstinputSourceFromRForge <- function(PKG, TYPE, FILENAME, PROJECT, from, to,
 readPkgVersion <- function(package, lib.loc = NULL){
        Dfile <- system.file("DESCRIPTION", package=package, lib.loc=lib.loc)
        return( if(nzchar(Dfile)) read.dcf(Dfile, fields="Version") else "")}
+       
