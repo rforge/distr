@@ -154,15 +154,18 @@ setMethod("modifyModel", signature(model = "L2LocationScaleFamily",
              if(!length(nuisance(param))){
                 loc <- main(param)[1]
                 scale <- main(param)[2]
+                L2derivDistr1 <- L2derivDistr(model)[[1]]*main(param(model))[2]/scale
                 L2derivDistr2 <- L2derivDistr(model)[[2]]*main(param(model))[2]/scale
              }else{
                 if(names(nuisance(param)) == "loc"){
                     loc <- nuisance(param)
                     scale <- main(param)
+                    L2derivDistr1 <- L2derivDistr(model)[[1]]*main(param(model))/scale
                     L2derivDistr2 <- L2derivDistr(model)[[2]]*main(param(model))/scale
                 }else{
                     loc <- main(param)
                     scale <- nuisance(param)
+                    L2derivDistr1 <- L2derivDistr(model)[[1]]*nuisance(param(model))/scale
                     L2derivDistr2 <- L2derivDistr(model)[[2]]*nuisance(param(model))/scale
                 }
              }
@@ -172,7 +175,7 @@ setMethod("modifyModel", signature(model = "L2LocationScaleFamily",
              M@L2derivDistrSymm <- DistrSymmList(SphericalSymmetry(
                                                    SymmCenter = loc),
                                                  NoSymmetry())
-             M@L2derivDistr[[1]] <- L2derivDistr(model)[[1]]
+             M@L2derivDistr[[1]] <- L2derivDistr1
              M@L2derivDistr[[2]] <- L2derivDistr2
              fn <- paste(cl[1])
              loc.name <- locscalename(model)["loc"]
