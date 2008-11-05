@@ -16,8 +16,9 @@ inconsistencies between vignette and documented source code
 \tabular{ll}{
 Package: \tab SweaveListingUtils\cr
 Version: \tab 0.1\cr
-Date: \tab 2008-10-31\cr
-Depends: \tab R(>= 2.7.0)\cr
+Date: \tab 2008-11-05\cr
+Depends: \tab R(>= 2.7.0), startupmsg\cr
+Imports: \tab stats\cr
 LazyLoad: \tab yes\cr
 License: \tab LGPL-3\cr
 }}

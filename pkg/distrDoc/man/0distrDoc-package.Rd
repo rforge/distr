@@ -15,7 +15,7 @@ packages \pkg{distr}, \pkg{distrEx}, \pkg{distrSim}, \pkg{distrTEst},
 \tabular{ll}{
 Package: \tab distrDoc\cr
 Version: \tab 2.0.2 \cr
-Date: \tab 2008-10-30 \cr
+Date: \tab 2008-11-05 \cr
 Depends: \tab R(>= 2.6.0), tools, distr(>= 2.0.0), startupmsg\cr
 Suggests: \tab distrEx(>= 2.0.0), distrSim(>= 2.0.0), distrTEst(>= 2.0.0), distrTeach(>= 2.0.0), distrMod(>= 2.0.0), Biobase\cr
 LazyLoad: \tab yes\cr

@@ -27,7 +27,7 @@ distrEx -- Extensions of package distr
 \tabular{ll}{
 Package: \tab distrEx\cr
 Version: \tab 2.0.2 \cr
-Date: \tab 2008-10-30 \cr
+Date: \tab 2008-11-05 \cr
 Depends: \tab R(>= 2.6.0), methods, distr(>= 2.0), evd, startupmsg\cr
 Suggests: \tab tcltk\cr
 LazyLoad: \tab yes\cr
