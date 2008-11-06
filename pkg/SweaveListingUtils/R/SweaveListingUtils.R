@@ -10,17 +10,29 @@
 {
 #  if (is.null(library)) 
 #            library <- .libPaths()
-## hier kann man Code reinschreiben, der bei Attachen
-## des Pakets ausgefuehrt wird, z.B.:
 
+     unlockBinding(".keywordsR", asNamespace("SweaveListingUtils"))
+     unlockBinding(".alreadyDefinedPkgs", asNamespace("SweaveListingUtils"))
+     unlockBinding(".tobeDefinedPkgs", asNamespace("SweaveListingUtils"))
      unlockBinding(".CacheFiles", asNamespace("SweaveListingUtils"))
      unlockBinding(".CacheLength", asNamespace("SweaveListingUtils"))
      unlockBinding(".SweaveListingOptions", asNamespace("SweaveListingUtils"))
-     buildStartupMessage(pkg="SweaveListingUtils", library=library, packageHelp=TRUE)
+     msga <- gettext(
+    "Some functions from package 'base' are intentionally masked\n---see SweaveListingMASK().\n"
+                   )
+    msgb <- gettext(
+    "Note that global options are controlled by SweaveListingoptions()\n---c.f. ?\"SweaveListingoptions\"."
+                   )
+     buildStartupMessage(pkg = "SweaveListingUtils", msga, msgb,  
+                         library = library, packageHelp = TRUE)
 
   invisible()
 } 
 
+SweaveListingMASK <- function(library = NULL) 
+{
+    infoShow(pkg = "SweaveListingUtils", filename="MASKING", library = library)
+}
 
 
 print.taglist <- function(x, LineLength = 80, offset.start = 0,
@@ -83,15 +95,14 @@ taglist <- function(..., list = NULL, defname = "V"){
   return(invisible())
 }
 
-lstset <- function(taglist, LineLength = 80){
-   startS <- "\\lstset{"
+lstset <- function(taglist, LineLength = 80, startS = "\\lstset{"){
    print(taglist, LineLength = LineLength, offset.start = nchar(startS),
          withFinalLineBreak = FALSE, first.print = startS)
    cat("}%\n")
    return(invisible())
 }
 
-lstsetR <- function(Rset = NULL, LineLength = 80, add = TRUE){
+lstsetR <- function(Rset = NULL, LineLength = 80, add = TRUE, startS = "\\lstset{"){
    if(add){
        Rset0 <- getSweaveListingOption("Rset")
        if(length(Rset)){
@@ -102,11 +113,11 @@ lstsetR <- function(Rset = NULL, LineLength = 80, add = TRUE){
        }else Rset <- Rset0   
    }
    if(!is(Rset, "taglist")) Rset <- taglist(list=Rset)
-   lstset(Rset, LineLength = LineLength)
+   lstset(Rset, LineLength = LineLength, startS = startS)
    return(invisible())
 }
 
-lstsetRd <- function(Rdset = NULL, LineLength = 80, add = TRUE){
+lstsetRd <- function(Rdset = NULL, LineLength = 80, add = TRUE, startS = "\\lstset{"){
    if(add){
        Rdset0 <- getSweaveListingOption("Rdset")
        if(length(Rdset)){
@@ -117,7 +128,7 @@ lstsetRd <- function(Rdset = NULL, LineLength = 80, add = TRUE){
        }else Rdset <- Rdset0   
    }
    if(!is(Rdset, "taglist")) Rdset <- taglist(list=Rdset)
-   lstset(Rdset, LineLength = LineLength)
+   lstset(Rdset, LineLength = LineLength, startS = startS)
    return(invisible())
 }
 
@@ -126,40 +137,47 @@ SweaveListingPreparations <- function(LineLength = 80,
    Rset = getSweaveListingOption("Rset"), 
    Rdset = getSweaveListingOption("Rdset"), 
    Rcolor = getSweaveListingOption("Rcolor"), 
+   Rbcolor = getSweaveListingOption("Rbcolor"), 
    Rout = getSweaveListingOption("Rout"),
    Rcomment = getSweaveListingOption("Rcomment"), 
    pkg = getSweaveListingOption("pkg"), 
    pkv = getSweaveListingOption("pkv"), 
    lib.loc = NULL){
 
+sws <- .SweaveListingOptions
+sws$inSweave <- TRUE
+assignInNamespace(".SweaveListingOptions", sws, "SweaveListingUtils")
 line <- paste("%",paste(rep("-",LineLength-2),collapse=""),"%\n", sep="")
 
 cat(line,"%Preparations for Sweave and Listings\n",line,"%\n", sep = "")
 cat("\\RequirePackage{color}\n")
 cat("\\definecolor{Rcolor}{rgb}{",paste(Rcolor,collapse=", "),"}\n", sep = "")
+cat("\\definecolor{Rbcolor}{rgb}{",paste(Rbcolor,collapse=", "),"}\n", sep = "")
 cat("\\definecolor{Rout}{rgb}{",paste(Rout,collapse=", "),"}\n", sep = "")
 cat("\\definecolor{Rcomment}{rgb}{",paste(Rcomment,collapse=", "),"}\n", sep = "")
 cat(line)
-cat("\\RequirePackage{listings}\n")
+writeLines(readLines(file.path(system.file(package = "SweaveListingUtils", 
+                                      lib.loc = lib.loc),
+                          "TeX", "Rdlisting.sty")))
 cat(line)
-cat("\\global\\def\\Rlstset{%\n")
-lstsetR(Rset=Rset, LineLength=LineLength)
-cat("}\n")
-cat("\\global\\def\\Rdlstset{%\n")
-lstsetRd(Rdset=Rdset, LineLength=LineLength)
-cat("}\n")
+lstsetR(Rset=Rset, LineLength=LineLength, startS ="\\lstdefinestyle{Rstyle}{")
+lstsetRd(Rdset=Rdset, LineLength=LineLength, startS ="\\lstdefinestyle{Rdstyle}{")
+cat(line)
+cat("\\global\\def\\Rlstset{\\lstset{style=Rstyle}}%\n")
+cat("\\global\\def\\Rdlstset{\\lstset{style=Rdstyle}}%\n")
 cat("\\Rlstset\n")
-cat(line)
+cat(line) 
 cat("\\DefineVerbatimEnvironment{Sinput}{Verbatim}")
-cat("%\n  {formatcom=\\color{Rcolor}\\lstset{fancyvrb=true}}\n")
+cat("%\n  {formatcom=\\color{Rcolor}\\lstset{fancyvrb=true,escapechar='}}\n")
 cat("\\DefineVerbatimEnvironment{Soutput}{Verbatim}")
-cat("%\n  {formatcom=\\color{Rout}\\footnotesize\\lstset{fancyvrb=false}}\n")
+cat("%\n  {formatcom=\\color{Rout}\\small\\lstset{fancyvrb=false}}\n")
 cat("\\DefineVerbatimEnvironment{Scode}{Verbatim}")
 cat("%\n  {fontshape=sl,formatcom=\\color{Rcolor}\\lstset{fancyvrb=true}}\n")
 cat(line)
 cat("\\ifthenelse{\\boolean{Sweave@gin}}{\\setkeys{Gin}{width=0.6\\textwidth}}{}%\n")
 cat(line)
-cat("\\newcommand{\\code}[1]{{\\tt\\color{Rcolor} #1}}\n")
+cat("\\let\\code\\lstinline\n")
+cat("\\newcommand{\\Code}[1]{{\\tt\\color{Rcolor} #1}}\n")
 cat("\\newcommand{\\file}[1]{{\\tt #1}}\n")
 cat("\\newcommand{\\pkg}[1]{{\\tt \"#1\"}}\n")
 if(missing(pkv)){
@@ -167,25 +185,31 @@ if(missing(pkv)){
         pkv <- rpkv
    }
 cat("\\newcommand{\\pkgversion}{{\\tt ",pkv,"}}\n", sep = "")
+cat(line)
+lstsetLanguage()
 cat(line,"%\n%\n",sep="")
 return(invisible())
 }
 
-readSourceFromRForge <- function(PKG, TYPE, FILENAME, PROJECT){
-  RForgeURL <- paste("http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/",
-                            "*checkout*/pkg/", PKG, "/", TYPE,"/", FILENAME,
-                            "?root=", PROJECT, sep ="")
-  if(is.null(.CacheFiles[[RForgeURL]])){
+readSourceFromRForge <- function(PKG, TYPE, FILENAME, PROJECT,
+                                 fromRForge = getSweaveListingOption("fromRForge"),
+                                 base.url = getSweaveListingOption("base.url")){
+  base.URL <- if(fromRForge) paste(base.url, PKG, "/", TYPE,"/", FILENAME,
+                                   "?root=", PROJECT, sep ="") else base.url
+  if(is.null(.CacheFiles[[base.URL]])){
     .CacheLength <<- .CacheLength + 1
-    RL <- readLines(url(RForgeURL))
-    .CacheFiles[[RForgeURL]] <<- RL
+    RL <- readLines(url(base.URL))
+    .CacheFiles[[base.URL]] <<- RL
   }
-  .CacheFiles[[RForgeURL]]
+  .CacheFiles[[base.URL]]
 }
 
 copySourceFromRForge <- function(PKG, TYPE, FILENAME, PROJECT, from, to,
-                                 offset.before = 0, offset.after = 0 ){
-   RL <- readSourceFromRForge(PKG, TYPE, FILENAME, PROJECT)
+                                 offset.before = 0, offset.after = 0,
+                                 fromRForge = getSweaveListingOption("fromRForge"),
+                                 base.url = getSweaveListingOption("base.url") ){
+   RL <- readSourceFromRForge(PKG, TYPE, FILENAME, PROJECT, 
+                              fromRForge = fromRForge, base.url = base.url)
    lR <- length(RL)
    from <- if(missing(from)) 1 else {if(is.numeric(from))
                                         max(from-offset.before,1)
@@ -207,7 +231,9 @@ copySourceFromRForge <- function(PKG, TYPE, FILENAME, PROJECT, from, to,
 lstinputSourceFromRForge <- function(PKG, TYPE, FILENAME, PROJECT, from, to,
                                  offset.before = 0, offset.after = 0,
                                  LineLength = 80,
-                                 withLines = ifelse(TYPE=="R", TRUE, FALSE)){
+                                 withLines = ifelse(TYPE=="R", TRUE, FALSE),
+                                 fromRForge = getSweaveListingOption("fromRForge"),
+                                 base.url = getSweaveListingOption("base.url")){
    line <- paste("%",paste(rep("-",LineLength-2),collapse=""),"%\n", sep="")
    dots <- match.call(call = sys.call(sys.parent(1)),
                        expand.dots = FALSE)$"..."
@@ -220,6 +246,8 @@ lstinputSourceFromRForge <- function(PKG, TYPE, FILENAME, PROJECT, from, to,
       fromL <- NULL; toL <- NULL
       offs.from <- rep(offset.before, length.out = totl)
       offs.to <- rep(offset.after, length.out = totl)
+      fromRForge <- rep(fromRForge, length.out = totl)
+      base.url <- rep(base.url, length.out = totl)
       if(!missing(from))
           fromL <- rep(as.list(from),length.out = totl)
       if(!missing(to))
@@ -231,14 +259,16 @@ lstinputSourceFromRForge <- function(PKG, TYPE, FILENAME, PROJECT, from, to,
           if(!missing(to))
               argL[[j]] <- c(argL[[j]],to = toL[[j]])
           argL[[j]] <- c(argL[[j]], offset.before = offs.from[j],
-                         offset.after = offs.to[j])
+                         offset.after = offs.to[j], 
+                         fromRForge = fromRForge[j], base.url = base.url[j])
       }
    }else {
       argL <- argL0
       if(!missing(from)) argL <- c(argL, from = from)
       if(!missing(to)) argL <- c(argL, to = to)
       argL <- list(c(argL, offset.before = offset.before,
-                        offset.after = offset.after))
+                        offset.after = offset.after, 
+                        fromRForge = fromRForge, base.url = base.url))
    }
    erg <- lapply(argL, function(x)  do.call(copySourceFromRForge, args = c(x)))
    RL <- lapply(erg, function(x) x$text)

@@ -3,5 +3,7 @@ export("taglist", "lstset", "lstsetR", "lstsetRd",
        "SweaveListingPreparations", "readSourceFromRForge",
        "copySourceFromRForge", "lstinputSourceFromRForge", 
        "readPkgVersion",  "SweaveListingOptions",
-       "SweaveListingoptions", "getSweaveListingOption")
+       "SweaveListingoptions", "getSweaveListingOption",
+       "SweaveListingMASK", "setToBeDefinedPkgs","lstsetLanguage",
+       "changeKeywordstyles", "library", "require")
 S3method(print, taglist)

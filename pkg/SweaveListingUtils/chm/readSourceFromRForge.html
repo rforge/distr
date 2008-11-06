@@ -24,7 +24,9 @@ from R forge repository
 <h3>Usage</h3>
 
 <pre>
-readSourceFromRForge(PKG, TYPE, FILENAME, PROJECT)
+readSourceFromRForge(PKG, TYPE, FILENAME, PROJECT,
+                                 fromRForge = getSweaveListingOption("fromRForge"),
+                                 base.url = getSweaveListingOption("base.url"))
 </pre>
 
 
@@ -43,6 +45,13 @@ character; the name of the source file to be downloaded</td></tr>
 <tr valign="top"><td><code>PROJECT</code></td>
 <td>
 character; the name of the R-Forge project</td></tr>
+<tr valign="top"><td><code>fromRForge</code></td>
+<td>
+logical; shall code be downloaded from an R-Forge mirror?
+Defaults to the corresponding global option</td></tr>
+<tr valign="top"><td><code>base.url</code></td>
+<td>
+character; base url from where to download the code sniplet</td></tr>
 </table>
 
 <h3>Details</h3>
@@ -77,6 +86,6 @@ readSourceFromRForge("distr","R","AllClasses.R","distr")
 
 
 
-<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.1 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.1.1 <a href="00Index.html">Index]</a></div>
 
 </body></html>

@@ -9,7 +9,9 @@ from R forge repository}
 lstinputSourceFromRForge(PKG, TYPE, FILENAME, PROJECT, from, to,
                                  offset.before = 0, offset.after = 0,
                                  LineLength = 80,
-                                 withLines = ifelse(TYPE=="R", TRUE, FALSE))
+                                 withLines = ifelse(TYPE=="R", TRUE, FALSE),
+                                 fromRForge = getSweaveListingOption("fromRForge"),
+                                 base.url = getSweaveListingOption("base.url"))
 }
 \arguments{
   \item{PKG}{character; name of package to be downloaded}
@@ -29,6 +31,9 @@ lstinputSourceFromRForge(PKG, TYPE, FILENAME, PROJECT, from, to,
   \item{LineLength}{\code{numeric} number of characters per line;
   defaults to 80;}
   \item{withLines}{logical; shall line-numbers be issued}
+  \item{fromRForge}{logical; shall code be downloaded from an R-Forge mirror?
+                    Defaults to the corresponding global option}
+  \item{base.url}{character; base url from where to download the code sniplet}
   }
 
 \details{
@@ -51,8 +56,9 @@ lstinputSourceFromRForge("distrEx","R","Skewness.R","distr",
                      from = "\\"skewness\\", signature\\\\(x = \\"Binom\\"",
                      to = "\\ \}\\\\)")
 @
-}
-within \file{.Rd} code, examples are type-set in \file{.R} style;
+} (CAVEAT: the space between backslash and right brace in the line with "to = "
+is \emph{not} intended; I simply did not find another work-around)  \cr
+Within \file{.Rd} code, examples are type-set in \file{.R} style;
 vectors are allowed for arguments \code{from}, \code{to};
 \code{lstinputSourceFromRForge} uses
 \code{\link{copySourceFromRForge}} for download / reading from cache;

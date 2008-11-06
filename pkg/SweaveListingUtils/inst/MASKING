@@ -1,0 +1,20 @@
+######################################################################
+#  On masking of and by other functions in package "SweaveListingUtils"       
+######################################################################
+
+Attention:
+
+*** intentional masking: ***
+
+To be able to use the usual calls to 'library' resp. 'require'
+but at the same time register the new symbols for "nice" printing
+with TeX package 'listings' with the possibility to "tune" the
+corresponding keywordstyle for both the package required/"library"-ed
+and respective intermediate packages loaded/attached automatically,
+we intentionally base functions 'library' and 'require' --- however 
+all these functions may still be used in exactly the same way as 
+before masking.
+
+*** non-intentional masking: ***
+
+... nothing discovered so far ...

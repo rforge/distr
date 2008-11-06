@@ -1,0 +1,120 @@
+<html><head><title>changeKeywordstyles</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>changeKeywordstyles(SweaveListingUtils)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   changeKeywordstyles">
+<param name="keyword" value=" changeKeywordstyles">
+</object>
+
+
+<h2>changeKeywordstyles</h2>
+
+
+<h3>Description</h3>
+
+<p>
+sets up / updates a table of keywordstyles to different packages
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+changeKeywordstyles(pkgs, keywordstyles)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>pkgs</code></td>
+<td>
+character; the packages for which keywordstyle information is to be changed</td></tr>
+<tr valign="top"><td><code>keywordstyles</code></td>
+<td>
+character or missing; the corresponding keywordstyle format
+strings; if missing the corresponding option <code>Keywordstyle</code> is read off
+by using<br> <code>getSweaveListingOption("Keywordstyle")</code>.<br>
+Internally, it is being cast to the same length as <code>pkgs</code> by
+<code>rep(keywordstyles, length.out = length(pkgs))</code>.
+</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Before changing the keywordstyles, we first check whether the corresponding
+package is registered at all &mdash;by looking up the
+(non-exported) vector object <code>.alreadyDefinedPkgs</code>, which is hidden in the
+namespace of this package.
+</p>
+<p>
+For changing the keywordstyle, we write out a
+<pre>
+ \lstdefinelanguage{R}%
+     {keywordstyle=[&lt;order number&gt;]&lt;keywordstyle as format string&gt;,%
+      }
+</pre>
+directive to standard out, where <code>&lt;keywordstyle as format string&gt;</code>
+is a string containing any sequence of TeX formatting commands like
+<code>"\\bfseries\\footnotesize"</code>. Note that backslashes have to be escaped.
+and <code>&lt;order number&gt;</code> is just <code>num+2</code> where <code>num</code>
+is the index of the package in the <code>.alreadyDefinedPkgs</code> vector.<br>
+</p>
+<p>
+For use in an <code>.Rnw</code> file, the call to <code>lstsetlanguage</code> should be
+wrapped into a corresponding Sweave chunk in the form
+<pre>
+&lt;&lt; /chunkname/, results=tex, echo=FALSE&gt;&gt;=
+changeKeywordstyles( ..... )
+@
+</pre>
+for example
+<pre>
+&lt;&lt;distrRegisterKeywords, results=tex, echo=FALSE&gt;&gt;=
+changeKeywordstyles(pkgs = "distr",
+                    keywordstyles = "\\bfseries\\color{blue}")
+@
+</pre>
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+<code>invisible()</code></p>
+
+<h3>Author(s)</h3>
+
+<p>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="lstsetLanguage.html">lstsetLanguage</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+require(MASS)
+lstsetLanguage(pkgs = c("MASS","stats"),
+               keywordstyles  = paste("\\bfseries\\color{",c("blue","red"),"}",
+                         sep="", collapse=""))
+changeKeywordstyles(pkgs = c("distr","distrEx"),
+                    keywordstyles = paste("\\bfseries\\color{",c("green","blue"),"}",
+                    collapse="", sep = ""))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.1 <a href="00Index.html">Index]</a></div>
+
+</body></html>

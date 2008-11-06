@@ -17,11 +17,11 @@
 <h3>Description</h3>
 
 <p>
-<span class="pkg">SweaveListingUtils</span> contains 
-provides utilities for defining R / Rd as TeX-package-listings 
-"language" and including R / Rd source file (sniplets) copied
-from R-forge in its most recent version thereby avoiding
-inconsistencies between vignette and documented source code
+Package <span class="pkg">SweaveListingUtils</span>  
+provides utilities for defining <font face="Courier New,Courier" color="#666666"><b>R</b></font> / &lsquo;<span class="file">Rd</span>&rsquo; as TeX-package-&lsquo;<span class="file">listings</span>&rsquo;
+"language" and including <font face="Courier New,Courier" color="#666666"><b>R</b></font> / &lsquo;<span class="file">.Rd</span>&rsquo; source file (sniplets) copied
+from an url, by default from svn server at R-forge in its most recent version, 
+thereby avoiding inconsistencies between vignette and documented source code
 </p>
 
 
@@ -36,18 +36,87 @@ inconsistencies between vignette and documented source code
   <td align="left"> Version: </td>  <td align="left"> 0.1</td>
 </tr>
 <tr>
-  <td align="left"> Date: </td>  <td align="left"> 2008-10-31</td>
+  <td align="left"> Date: </td>  <td align="left"> 2008-11-06</td>
 </tr>
 <tr>
   <td align="left"> Depends: </td>  <td align="left"> R(&gt;= 2.7.0)</td>
 </tr>
 <tr>
-  <td align="left"> LazyLoad: </td>  <td align="left"> yes</td>
+  <td align="left"> </p> <p> LazyLoad: </td>  <td align="left"> yes</td>
 </tr>
 <tr>
   <td align="left"> License: </td>  <td align="left"> LGPL-3</td>
 </tr>
 </table>
+
+<p>
+TeX-package &lsquo;<span class="file">listings</span>&rsquo;, confer <a href="http://www.ctan.org/tex-archive/macros/latex/contrib/listings/">http://www.ctan.org/tex-archive/macros/latex/contrib/listings/</a>,
+<a href="http://www.ctan.org/tex-archive/macros/latex/contrib/listings/listings.pdf">http://www.ctan.org/tex-archive/macros/latex/contrib/listings/listings.pdf</a>
+offers a very powerful setup for typesetting [program] code in TeX.
+</p>
+<p>
+For quite some time there has already been a corresponding language definition
+for <font face="Courier New,Courier" color="#666666"><b>R</b></font>. We enhance this definition and also introduce a corresponding 
+"language" definition file to typeset &lsquo;<span class="file">.Rd</span>&rsquo; code 
+(file &lsquo;<span class="file">Rdlistings.sty</span>&rsquo; in the &lsquo;<span class="file">TeX</span>&rsquo; subfolder of this package).
+</p>
+<p>
+In recent versions &lsquo;<span class="file">listings</span>&rsquo; also cooperates with TeX package 
+&lsquo;<span class="file">fancyvrb</span>&rsquo;, so it can be configured to enhance Sweave typesetting.
+</p>
+<p>
+Just as a first simple example, comments are recognized automatically and
+hence typeset in particular format.
+</p>
+<p>
+For pretty printing, or moreover literate programming, 
+with <span class="pkg">SweaveListingUtils</span>, assignment operators <code>&lt;-</code> and 
+<code>&lt;&lt;-</code> get typeset by one symbol each.  
+</p>
+<p>
+For a corresponding TeX preamble combining Sweave and &lsquo;<span class="file">listings</span>&rsquo;, 
+we provide command <code><a href="SweaveListingPreparations.html">SweaveListingPreparations</a></code>.
+</p>
+<p>
+As for the <font face="Courier New,Courier" color="#666666"><b>R</b></font> language definition, we allow for different keywordstyles 
+to typeset symbols from different packages. This is useful to distinguish
+mark-up for newly defined functions and alread existing ones. 
+</p>
+<p>
+More specifically, whenever in some <font face="Courier New,Courier" color="#666666"><b>R</b></font> code sniplet in some Sweave chunk, there
+is some <code>library</code> or <code>require</code> command, the corresponding symbols
+found by <code>ls()</code> afterwords in some <code>search()</code> entry position, are 
+registered as <code>&lt;comma-separated keywordlist&gt;</code> (printed as 5 items per line) 
+as a new "higher order" group of keywords by a corresponding
+<pre>
+ \lstdefinelanguage{R}%
+     {morekeywords=[&lt;order number&gt;]{ &lt;comma-separated keywordlist&gt; },%
+      sensitive=true,%
+      keywordstyle=[&lt;order number&gt;]&lt;keywordstyle as format string&gt;,%
+      }
+</pre>
+TeX directive in the automatically generated &lsquo;<span class="file">.tex</span>&rsquo; file
+where <code>&lt;order number&gt;</code> is incremented (resp. gets looked up from
+the global, non-exported  variable <code>.alreadyDefinedPkgs</code> in the package
+name space) at each instance of
+a <code>library</code> or <code>require</code> command. 
+</p>
+<p>
+To this end commands
+<code><a href="library.html">library</a></code> and 
+<code><a href="require.html">require</a></code> are masked. See also
+<code><a href="lstsetLanguage.html">lstsetLanguage</a></code>, 
+<code><a href="changeKeywordstyles.html">changeKeywordstyles</a></code>,
+and <code><a href="setToBeDefinedPkgs.html">setToBeDefinedPkgs</a></code> 
+</p>
+<p>
+As for the integration of code sniplets from an url (by default, we use
+the svn server at R-forge in its most recent version), this can be 
+useful to stay consistent with the current version of the code without
+having to update vignettes all the time. To this end, besides referencing
+by line numbers, <code><a href="lstinputSourceFromRForge.html">lstinputSourceFromRForge</a></code> also offers
+referencing by matching regular expressions.
+</p>
 
 
 <h3>Functions</h3>
@@ -65,6 +134,12 @@ readPkgVersion
 SweaveListingOptions
 getSweaveListingOption
 SweaveListingoptions
+SweaveListingMASK
+setToBeDefinedPkgs
+lstsetLanguage
+changeKeywordstyles
+library
+require
 </pre>
 </p>
 
@@ -88,6 +163,6 @@ Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ru
 
 
 
-<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.1 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.1.1 <a href="00Index.html">Index]</a></div>
 
 </body></html>

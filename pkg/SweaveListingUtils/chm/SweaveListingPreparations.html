@@ -28,6 +28,7 @@ SweaveListingPreparations(LineLength = 80,
    Rset = getSweaveListingOption("Rset"),
    Rdset = getSweaveListingOption("Rdset"),
    Rcolor = getSweaveListingOption("Rcolor"),
+   Rbcolor = getSweaveListingOption("Rbcolor"), 
    Rout = getSweaveListingOption("Rout"),
    Rcomment = getSweaveListingOption("Rcomment"),
    pkg = getSweaveListingOption("pkg"),
@@ -52,6 +53,11 @@ list or taglist; defaults to global option  <code>"Rdset"</code></td></tr>
 <td>
 numeric of length 3; defaults to global option  <code>"Rcolor"</code>;
 rgb coordinates of the color in which to print R-code</td></tr>
+<tr valign="top"><td><code>Rbcolor</code></td>
+<td>
+numeric of length 3; defaults to global option  <code>"Rbcolor"</code>;
+rgb coordinates of the color in which to print <font face="Courier New,Courier" color="#666666"><b>R</b></font> keywords
+induced by intermediate packages.</td></tr>
 <tr valign="top"><td><code>Rout</code></td>
 <td>
 numeric of length 3; defaults to global option  <code>"Rout"</code>;
@@ -89,12 +95,16 @@ still have to appear in the &lsquo;<span class="file">.Rnw</span>&rsquo; file &m
 The TeX code inserted by <code>SweaveListingPreparations</code> sets colors,
 requires TeX-package &lsquo;<span class="file">listings</span>&rsquo;,
 defines listings-settings for &lsquo;<span class="file">.R</span>&rsquo;- and &lsquo;<span class="file">.Rd</span>&rsquo;-code.
-It is to be called in an &lsquo;<span class="file">.Rnw</span>&rsquo; file and [re-]defines <code>Sinput</code>,
+For &lsquo;<span class="file">.Rd</span>&rsquo; files it uses a new 'listings'-language definition file, 
+&lsquo;<span class="file">Rdlisting.sty</span>&rsquo; to be found in subfolder &lsquo;<span class="file">TeX</span>&rsquo; in the 
+<span class="pkg">SweaveListingUtils</span> package folder.
+<code>SweaveListingPreparations</code> is to be called in an &lsquo;<span class="file">.Rnw</span>&rsquo; file and 
+[re-]defines <code>Sinput</code>,
 <code>Soutput</code>, <code>Scode</code> environments for use with TeX-package &lsquo;<span class="file">listings</span>&rsquo;,
 defines commands <code>\code</code>, <code>\file</code>, <code>\pkg</code> and sets
 the corresponding package version.<br>
 The default values are taken from
-<a href="SweaveListingOptions.html">SweaveListingOptions()</a>.
+<a href="SweaveListingOptions.html">SweaveListingOptions</a>.
 The output to stdout can be captured in an &lsquo;<span class="file">.Rnw</span>&rsquo; file as
 <pre>
 &lt;&lt; lstPreamble, results=tex, echo=FALSE&gt;&gt;=
@@ -103,7 +113,12 @@ SweaveListingPreparations()
 @
 </pre>
 to insert the corresponding preamble parts to the produced
-TeX file.
+TeX file.<br>
+If you one want to use destinct keywordstyles for packages loaded
+by <code>require</code> or <code>library</code> without adding extra arguments
+to these commands (and hence displaying the actual <font face="Courier New,Courier" color="#666666"><b>R</b></font> code),
+you have to set up a global formatting matrix  
+<code>.tobeDefinedPkgs</code> by <code><a href="setToBeDefinedPkgs.html">setToBeDefinedPkgs</a></code>.
 </p>
 
 
