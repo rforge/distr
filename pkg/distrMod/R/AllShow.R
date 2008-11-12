@@ -232,7 +232,7 @@ setMethod("show", "MCEstimate",
 
 setMethod("show", "Confint", 
     function(object){
-        if (length(type(object)<2))
+        if (length(type(object))<2)
             cat(gettextf("A[n] %s confidence interval:\n",type(object)))
         else{
             cat(gettextf("A[n] %s confidence interval:\n",type(object)[1]))
