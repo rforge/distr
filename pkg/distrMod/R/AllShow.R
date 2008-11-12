@@ -232,7 +232,12 @@ setMethod("show", "MCEstimate",
 
 setMethod("show", "Confint", 
     function(object){
-        cat(gettextf("A[n] %s confidence interval:\n",type(object)))
+        if (length(type(object)<2))
+            cat(gettextf("A[n] %s confidence interval:\n",type(object)))
+        else{
+            cat(gettextf("A[n] %s confidence interval:\n",type(object)[1]))
+            cat(gettextf("%s\n",type(object)[-1]), sep = "  ")
+        }
         print(confint(object), quote = FALSE)
         if(getdistrModOption("show.details")!="minimal"){
             cat(gettextf("Type of estimator: %s\n", name.estimate(object)))
