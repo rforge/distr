@@ -330,7 +330,8 @@ kurtosis(x, ...)
   \item{\code{mad}, \code{signature(x = "AffLinDistribution")}:}{\code{abs(x@a) * mad(x@X0)}}
 
   \item{\code{skewness}, \code{signature(x = "Any")}:}{
-    interface to the \pkg{e1071}-function \code{skewness} --- see \code{\link[e1071]{skewness}}.}
+    bias free estimation of skewness under normal distribution (default) as
+    well as sample version (by argument \code{sample.version = TRUE}).}
   \item{\code{skewness}, \code{signature(x = "UnivariateDistribution")}:}{ 
     skewness of univariate distributions using corresponding \code{E()}-method.}
   \item{\code{skewness}, \code{signature(x = "AffLinDistribution")}:}{ 
@@ -338,7 +339,8 @@ kurtosis(x, ...)
     else uses method for \code{signature(x = "UnivariateDistribution")}}
 
   \item{\code{kurtosis}, \code{signature(x = "Any")}:}{
-    interface to the \pkg{e1071}-function \code{kurtosis} --- see \code{\link[e1071]{kurtosis}}.}
+    bias free estimation of kurtosis under normal distribution (default) as
+    well as sample version (by argument \code{sample.version = TRUE}).}
   \item{\code{kurtosis}, \code{signature(x = "UnivariateDistribution")}:}{ 
     kurtosis of univariate distributions using corresponding \code{E()}-method.}
   \item{\code{kurtosis}, \code{signature(x = "AffLinDistribution")}:}{ 
@@ -570,8 +572,7 @@ mad(sin(exp(Norm()+2*Pois()))) ## weird
 \seealso{\code{\link{distrExIntegrate}}, \code{\link{m1df}}, \code{\link{m2df}},
          \code{\link[distr]{Distribution-class}},\cr
  \code{\link[stats]{sd}}, \code{\link[stats]{var}}, \code{\link[stats]{IQR}},\cr
- \code{\link[stats]{median}}, \code{\link[stats]{mad}},  \code{\link[distr]{sd}},\cr
-\code{\link[e1071]{skewness}}, \code{\link[e1071]{kurtosis}} }
+ \code{\link[stats]{median}}, \code{\link[stats]{mad}},  \code{\link[distr]{sd}} }
 \concept{functional}
 \concept{var}
 \concept{sd}
