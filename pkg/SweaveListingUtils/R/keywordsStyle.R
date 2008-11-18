@@ -190,5 +190,5 @@ library <- function(package, help, pos = 2, lib.loc = NULL,
              }else{
                 rerg <- do.call(fct, args=mc)
              }
-             return(rerg)
+             return(invisible(rerg))
 }
