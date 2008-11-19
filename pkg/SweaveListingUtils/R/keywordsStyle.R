@@ -141,7 +141,9 @@ library <- function(package, help, pos = 2, lib.loc = NULL,
              pkg <- as.character(substitute(package))
              mc <- as.list(match.call(expand.dots = FALSE))[-1]
              rerg <- .LibOrRequire(pkg, mc, base::library)
-             return(rerg)
+             if(class(rerg) == "libraryIQR") return(rerg)
+             if(logical.return) return(rerg)
+             return(invisible(rerg))
     }
 
 .LibOrRequire <- function(pkg, mc, fct){
@@ -190,5 +192,5 @@ library <- function(package, help, pos = 2, lib.loc = NULL,
              }else{
                 rerg <- do.call(fct, args=mc)
              }
-             return(invisible(rerg))
+             return(rerg)
 }
