@@ -15,8 +15,8 @@ thereby avoiding inconsistencies between vignette and documented source code
 \details{
 \tabular{ll}{
 Package: \tab SweaveListingUtils\cr
-Version: \tab 0.1\cr
-Date: \tab 2008-11-06\cr
+Version: \tab 0.1.1\cr
+Date: \tab 2008-11-19\cr
 Depends: \tab R(>= 2.7.0)\cr
 
 LazyLoad: \tab yes\cr
