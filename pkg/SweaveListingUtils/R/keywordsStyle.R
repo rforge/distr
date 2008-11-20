@@ -141,7 +141,7 @@ library <- function(package, help, pos = 2, lib.loc = NULL,
              pkg <- as.character(substitute(package))
              mc <- as.list(match.call(expand.dots = FALSE))[-1]
              rerg <- .LibOrRequire(pkg, mc, base::library)
-             if(class(rerg) == "libraryIQR") return(rerg)
+             if(class(rerg) == "libraryIQR" | class(rerg) == "packageInfo") return(rerg)
              if(logical.return) return(rerg)
              return(invisible(rerg))
     }
