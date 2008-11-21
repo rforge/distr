@@ -286,7 +286,7 @@ setMethod("+", c("LatticeDistribution", "numeric"),
 
 setMethod("*", c("LatticeDistribution", "numeric"),
           function(e1, e2) 
-             {if (isTRUE(all.equal(e2,0)))
+             {if (.isEqual(e2,0))
                   return(Dirac( location = 0 ))
               else     
                 { L <- lattice(e1)

@@ -31,6 +31,7 @@ function(e1,e2){
                        as(exp(log(e1DC$pos$D)+log(e2DC$pos$D)),
                           "UnivarLebDecDistribution")
                   else as(Dirac(1), "UnivarLebDecDistribution")
+         
          e12mm <- if(w12mm>ep)
                        as(exp(log(-e1DC$neg$D)+log(-e2DC$neg$D)),
                           "UnivarLebDecDistribution")
@@ -45,13 +46,27 @@ function(e1,e2){
                                  "UnivarLebDecDistribution")
                        else as(Dirac(-1), "UnivarLebDecDistribution")
 
+         e12pm <- .del0dmixfun(e12pm)
+         e12mp <- .del0dmixfun(e12mp)
+         
          obj <- flat.LCD(mixCoeff = mixCoeff,
                          e12pp, e12mm, e12pm, e12mp,
                          as(Dirac(0),"UnivarLebDecDistribution"))
-
+         
+         dnew <- function(x, log = FALSE, ...){
+               d0 <- dnew0(x, log = log, ...)
+               i0 <- .isEqual(x,0)
+               if(!any(i0)) return(d0)
+               if(log) d0[i0] <- lf0 else d0[i0] <- f0
+               return(d0)
+            }
          if(getdistrOption("simplifyD"))
             obj <- simplifyD(obj)
 
+         rnew <- function(n, ...){}
+         body(rnew) <- substitute({ g1(n, ...) * g2(n, ...) },
+                                    list(g1 = e1@r, g2 = e2@r)) 
+         obj@r <- rnew
          return(obj)
          })
 
@@ -88,7 +103,13 @@ function(e1,e2){
          if(getdistrOption("simplifyD"))
             e2D <- simplifyD(e2D)
 
-         e1*e2D
+         obj <- e1*e2D
+         
+         rnew <- function(n, ...){}
+         body(rnew) <- substitute({ g1 / g2(n, ...) },
+                                    list(g1 = e1, g2 = e2@r)) 
+         obj@r <- rnew
+         return(obj)
          })
 
 setMethod("/", c("AcDcLcDistribution",
@@ -105,7 +126,14 @@ function(e1,e2){
          if (discreteWeight(e2)>getdistrOption("TruncQuantile"))
          if (d.discrete(e2)(0)>getdistrOption("TruncQuantile"))
             stop(gettextf("1 / %s is not well-defined with positive probability ", e2s))
-         e1 * (1/e2)
+
+         obj <- e1 * (1/e2)
+
+         rnew <- function(n, ...){}
+         body(rnew) <- substitute({ g1(n, ...) / g2(n, ...) },
+                                    list(g1 = e1@r, g2 = e2@r)) 
+         obj@r <- rnew
+         return(obj)
          })
 
 setMethod("^", c("AcDcLcDistribution","Integer"),
@@ -152,6 +180,11 @@ function(e1,e2){
              }
            if(getdistrOption("simplifyD")) 
                 erg <- simplifyD(erg)
+
+           rnew <- function(n, ...){}
+           body(rnew) <- substitute({ g1(n, ...)^g2 },
+                                    list(g1 = e1@r, g2 = e2)) 
+           erg@r <- rnew
            return(erg)
            })
 
@@ -218,6 +251,12 @@ function(e1,e2){
   
   if(getdistrOption("simplifyD"))
             erg <- simplifyD(erg)
+
+  rnew <- function(n, ...){}
+  body(rnew) <- substitute({ g1(n, ...)^g2 },
+                            list(g1 = e1@r, g2 = e2)) 
+  erg@r <- rnew
+
   return(erg)          
   }
 )
@@ -296,6 +335,12 @@ function(e1,e2){
  le <- le1 * e2
  erg <- exp(le)
  if(getdistrOption("simplifyD")) erg <- simplifyD(erg)
+
+ rnew <- function(n, ...){}
+ body(rnew) <- substitute({ g1(n, ...)^g2(n, ...) },
+                            list(g1 = e1@r, g2 = e2@r)) 
+ erg@r <- rnew
+
  return(erg)                
 })
 
@@ -355,10 +400,16 @@ function(e1,e2){
   le <- le1 * e2
   erg <- exp(le)
   if(getdistrOption("simplifyD")) erg <- simplifyD(erg)
+
+  rnew <- function(n, ...){}
+  body(rnew) <- substitute({ g1^g2(n, ...) },
+                            list(g1 = e1, g2 = e2@r)) 
+  erg@r <- rnew
+
   return(erg)                
 })
 
-  setMethod("sign", "AcDcLcDistribution",
+setMethod("sign", "AcDcLcDistribution",
             function(x){ 
             if(is(x,"AbscontDistribution")) d0 <-0
             else if(is(x,"DiscreteDistribution")) d0 <- d(x)(0)
@@ -368,3 +419,6 @@ function(e1,e2){
                        d0,
                        p(x)(getdistrOption("TruncQuantile"), lower=FALSE)))                     
             })
+
+setMethod("sqrt", "AcDcLcDistribution",
+            function(x) x^0.5)

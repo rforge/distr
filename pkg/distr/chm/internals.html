@@ -17,6 +17,7 @@
 <param name="keyword" value="R:   .dmixfun">
 <param name="keyword" value="R:   .qmixfun">
 <param name="keyword" value="R:   .rmixfun">
+<param name="keyword" value="R:   .del0dmixfun">
 <param name="keyword" value="R:   .loupmixfun">
 <param name="keyword" value="R:   .make.lattice.es.vector">
 <param name="keyword" value="R:   .presubs">
@@ -53,6 +54,7 @@
 <param name="keyword" value="R:   .Q2P">
 <param name="keyword" value="R:   .csimpsum">
 <param name="keyword" value="R:   .primefun">
+<param name="keyword" value="R:   .IssueWarn">
 <param name="keyword" value="R:   devNew">
 <param name="keyword" value=" Internal functions of package distr">
 </object>
@@ -112,6 +114,7 @@ These functions are used internally by package distr.
 .dmixfun(mixDistr, mixCoeff, withStand = FALSE, supp = NULL)
 .rmixfun(mixDistr, mixCoeff)
 .qmixfun(mixDistr, mixCoeff, Cont = TRUE, pnew)
+.del0dmixfun(mixDistr)
 .loupmixfun(mixDistr)
 .expm.d(e1)
 .expm.c(e1)
@@ -124,6 +127,7 @@ These functions are used internally by package distr.
 .Q2P (q, ngrid = getdistrOption("DefaultNrGridPoints"))
 .csimpsum(fx)
 .primefun(f,x, nm = NULL)
+.IssueWarn(Arith,Sim)
 devNew(...)
 </pre>
 
@@ -320,6 +324,14 @@ a vector of function evaluations</td></tr>
 <tr valign="top"><td><code>nm</code></td>
 <td>
 an optional right asymptotic value</td></tr>
+<tr valign="top"><td><code>Arith</code></td>
+<td>
+logical; slot <code>.withArith</code> of a distribution object,
+or logically-``any'' of these slots in a collection of such objects</td></tr>
+<tr valign="top"><td><code>Sim</code></td>
+<td>
+logical; slot <code>.withSim</code> of a distribution object,
+or logically-``any'' of these slots in a collection of such objects</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 arguments passed through to other functions</td></tr>
@@ -428,6 +440,13 @@ in <code>mixDistr</code>, <code>mixCoeff</code>.
 <p>
 <code>.loupmixfun</code> finds commun lower and upper bounds for the support of
 the mixing distribution.
+</p>
+<p>
+<code>.del0dmixfun</code> sets (if slot <code>d.ac</code> is not <code>NULL</code>) the return
+value of slot function <code>d.ac</code> of <code>mixDistr</code> 
+for argument <code>0</code> to <code>0</code>.
+</p>
+<p>
 <code>.expm.d,.expm.c</code> for discrete, resp. a.c. argument <code>e1</code> fill the 
 slots <code>p</code>, <code>d</code>, <code>r</code>, and <code>q</code>
 of the transformation <code>exp(e1)</code> exactly.
@@ -535,6 +554,9 @@ is  the quantile function of the distribution</td></tr>
 <td>
 slot <code>r</code> for a mixing distribution, i.e. a function 
 <code>function(n)</code> generating r.v.'s according to the distribution</td></tr>
+<tr valign="top"><td><code>.deldmixfun</code></td>
+<td>
+a possibly modified argument <code>mixDistr</code></td></tr>
 <tr valign="top"><td><code>.loupmixfun</code></td>
 <td>
 a list of four components: <code>qL</code>, the minimal value of 
@@ -559,6 +581,7 @@ an object of class <code>"AbscontDistribution"</code>.</td></tr>
             lower.tail = TRUE, log.p = FALSE)</code>}
 <code>.csimpsum</code>{a vector of evaluations of the prime function at the grid points}
 <code>.primefun</code>{the prime function as a function}
+<code>.IssueWarn</code>{a list with two warnings to be issued each of which may be empty}
 <code>devNew</code>{returns the return value of the device opened, usually invisible 'NULL'}</p>
 
 <h3>Author(s)</h3>
@@ -594,6 +617,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.0 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distr</em> version 2.0.3 <a href="00Index.html">Index]</a></div>
 
 </body></html>

@@ -13,12 +13,12 @@ packages \pkg{distr}, \pkg{distrEx}, \pkg{distrSim}, \pkg{distrTEst},
 }
 \details{
 \tabular{ll}{
-Package: \tab distrDoc\cr
-Version: \tab 2.0.3 \cr
-Date: \tab 2008-11-19 \cr
-Depends: \tab R(>= 2.6.0), tools, distr(>= 2.0.0), startupmsg\cr
-Suggests: \tab distrEx(>= 2.0.0), distrSim(>= 2.0.0), distrTEst(>= 2.0.0), distrTeach(>= 2.0.0), distrMod(>= 2.0.0), Biobase\cr
-LazyLoad: \tab yes\cr
+Package: \\tab distrDoc\cr
+Version: \\tab 2.0.3\cr
+Date: \\tab 2008-11-19\cr
+Depends: \\tab R(>= 2.6.0), tools, distr(>= 2.0.0), startupmsg\cr
+LazyLoad: \\tab yes\cr
+License: \\tab LGPL-3\cr
 License: \tab LGPL-3\cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
 }}

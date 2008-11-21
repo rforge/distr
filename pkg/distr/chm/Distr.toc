@@ -310,6 +310,10 @@
 <param name="Local" value="internals.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value=".del0dmixfun">
+<param name="Local" value="internals.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value=".discretizeP">
 <param name="Local" value="internals.html">
 </OBJECT>
@@ -3092,6 +3096,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="size<--methods">
 <param name="Local" value="size-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sqrt,AcDcLcDistribution-method">
+<param name="Local" value="UnivarLebDecDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="standardMethods">

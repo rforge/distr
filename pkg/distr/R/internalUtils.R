@@ -360,7 +360,11 @@ return(outC)
 
 .plusm <- function(e1, e2, Dclass = "DiscreteDistribution"){
             if (length(e2)>1) stop("length of operator must be 1")
-            if (isTRUE(all.equal(e2, 0, check.attributes = FALSE))) return(e1)
+            if (.isEqual(e2, 0)) return(e1)
+
+            if(Dclass %in% c("AffLinDiscreteDistribution",
+                              "AffLinAbscontDistribution"))
+               if(.isEqual(e1@a,1)&&.isEqual(e1@b+e2,0)) return(e1@X0)
 
             if ((Dclass == "DiscreteDistribution")||
                 (Dclass == "AffLinDiscreteDistribution"))
@@ -412,9 +416,12 @@ return(outC)
 .multm <- function(e1, e2, Dclass = "DiscreteDistribution"){
             if (length(e2)>1) stop("length of operator must be 1")
 
-            if (isTRUE(all.equal(e2, 1, check.attributes = FALSE))) return(e1)
-            if (isTRUE(all.equal(e2, 0, check.attributes = FALSE)))
-               return(new("Dirac", location = 0))
+            if (.isEqual(e2, 1)) return(e1)
+            if (.isEqual(e2, 0))  return(new("Dirac", location = 0))
+
+            if(Dclass %in% c("AffLinDiscreteDistribution",
+                              "AffLinAbscontDistribution"))
+               if(.isEqual(e1@a*e2,1)&&.isEqual(e1@b,0)) return(e1@X0)
 
             rnew <- function(n, ...){}
             body(rnew) <- substitute({ f(n, ...) * g },
@@ -798,10 +805,26 @@ return(f)
             rnew <- function(n, ...){}
             body(rnew) <- substitute({ exp(f(n, ...)) },
                                          list(f = e1@r))
-            dnew <- .makeD(substitute(e1, list(e1 = e1)),
-                           substitute(alist(x = log(x*(x>0)+(x<=0)))),
-                           stand = substitute(x+(x==0)),
-                           fac = substitute((x>0)))
+                                    
+            
+            dnew0 <- .makeD(substitute(e1, list(e1 = e1)),
+                            substitute(alist(x = log(x*(x>0)+(x<=0)))),
+                            stand = substitute(x+(x==0)),
+                            fac = substitute((x>0)))
+
+            # extrapolation for x=0
+            x0a <- 10^(-(1:10)/4) 
+            f0a <- dnew0(x = x0a, log = FALSE)
+            f0  <- max(spline(x0a,f0a, xout = 0)$y,0)
+            lf0 <- log(f0)
+
+            dnew <- function(x, log = FALSE, ...){
+               d0 <- dnew0(x, log = log, ...)
+               i0 <- .isEqual(x,0)
+               if(!any(i0)) return(d0)
+               if(log) d0[i0] <- lf0 else d0[i0] <- f0
+               return(d0)
+            }
             pnew <- .makeP(substitute(e1, list(e1 = e1)),
                            substitute(alist(q = log(q*(q>0)+(q<=0)))),
                            fac = substitute((q>0)),
