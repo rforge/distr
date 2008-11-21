@@ -3098,7 +3098,19 @@
 <param name="Local" value="size-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sqrt,AbscontDistribution-method">
+<param name="Local" value="ContDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="sqrt,AcDcLcDistribution-method">
+<param name="Local" value="UnivarLebDecDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sqrt,DiscreteDistribution-method">
+<param name="Local" value="DiscreteDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sqrt,UnivarLebDecDistribution-method">
 <param name="Local" value="UnivarLebDecDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">

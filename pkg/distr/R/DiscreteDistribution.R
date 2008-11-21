@@ -400,5 +400,8 @@ setMethod("gamma", "DiscreteDistribution",
                            .withSim = TRUE, .withArith = TRUE)
             object
           })
+setMethod("sqrt", "DiscreteDistribution",
+            function(x) x^0.5)
+
 }          
 

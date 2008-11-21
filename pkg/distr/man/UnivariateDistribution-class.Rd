@@ -85,6 +85,7 @@ Class \code{"Distribution"}, directly.
     \item{show}{\code{signature(object = "UnivariateDistribution")}:
 
       as print}
+      }
   }
 }
 

@@ -497,4 +497,7 @@ setMethod("gamma", "AbscontDistribution",
                            .withSim = TRUE, .withArith = TRUE)
             object
           })
+setMethod("sqrt", "AbscontDistribution",
+            function(x) x^0.5)
+
 }

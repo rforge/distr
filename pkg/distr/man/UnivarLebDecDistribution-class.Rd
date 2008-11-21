@@ -63,6 +63,7 @@
 \alias{exp,UnivarLebDecDistribution-method}
 \alias{sign,UnivarLebDecDistribution-method}
 \alias{sign,AcDcLcDistribution-method}
+\alias{sqrt,UnivarLebDecDistribution-method}
 \alias{sqrt,AcDcLcDistribution-method}
 
 \title{Class "UnivarLebDecDistribution"}
