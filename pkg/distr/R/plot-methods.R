@@ -47,8 +47,9 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
      if (hasArg(col) && missing(col.sub))
         col.sub <- dots$col
 
-     if (!withSweave)
-          devNew(width = width, height = height)
+     if (!withSweave){
+           devNew(width = width, height = height)
+           }
      omar <- par("mar")
      
      mainL <- FALSE
@@ -308,8 +309,9 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
      if (hasArg(col) && missing(col.sub))
         col.sub <- dots$col
 
-     if (!withSweave)
-         devNew(width = width, height = height)
+     if (!withSweave){
+           devNew(width = width, height = height)
+           }
      omar <- par("mar")
      
      mainL <- FALSE
@@ -532,7 +534,7 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
 setMethod("plot", signature(x =  "DistrList", y = "missing"),
     function(x,  ...){ 
         for(i in 1:length(x)){
-            devNew()
+            #devNew()
             plot(x[[i]],...)
         }
     })

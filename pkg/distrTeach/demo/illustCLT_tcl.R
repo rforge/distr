@@ -4,6 +4,8 @@
 
 require(tcltk) || stop("tcltk support is absent")
 require(graphics); require(stats); require(distrTeach)
+options("newDevice"=TRUE)
+
 local({
 
     k    <- tclVar(1)

@@ -1,4 +1,5 @@
 require(distrEx) 
+options("newDevice"=TRUE)
 
 ## by M. Kohl
 ## slightly modified by P.R. [for more recent versions of our packages]

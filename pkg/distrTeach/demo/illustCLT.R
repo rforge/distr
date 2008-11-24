@@ -5,6 +5,7 @@
 ##         sleep ^= duration of the pause between the different plots
 
 require(distrTeach)
+options("newDevice"=TRUE)
 # some examples
 # distroptions("DefaultNrFFTGridPointsExponent" = 13)
 illustrateCLT(Distr = Unif(), len = 20, sleep = 0.5)

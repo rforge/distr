@@ -2270,6 +2270,10 @@
 <param name="Local" value="ncp-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="newDevice">
+<param name="Local" value="options.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Norm">
 <param name="Local" value="Norm-class.html">
 </OBJECT>
@@ -2296,6 +2300,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="OptionalParameter-class">
 <param name="Local" value="OptionalParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="options">
+<param name="Local" value="options.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="p">
@@ -3298,6 +3306,10 @@
 <param name="Name" value="Package distr:  Titles">
 </OBJECT>
 <UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="additional options in package `distr' ">
+<param name="Local" value="options.html">
+</OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Arithmetics on Distributions">
 <param name="Local" value="distrARITH.html">

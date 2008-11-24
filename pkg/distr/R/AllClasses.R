@@ -33,7 +33,6 @@ buildStartupMessage(pkg = "distr", msga, msgb, msgc, msgd, library = library,
   invisible()
 } 
 
-
 ################################
 ##
 ## Optional..-classes

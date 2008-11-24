@@ -94,8 +94,9 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
      if (hasArg(col) && missing(col.sub))
         col.sub <- dots$col
 
-     if (!withSweave)
-          devNew(width = width, height = height)
+     if (!withSweave){
+           devNew(width = width, height = height)
+           }
      omar <- par("mar")
 
      mainL <- FALSE

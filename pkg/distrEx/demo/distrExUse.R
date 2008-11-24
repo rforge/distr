@@ -1,27 +1,9 @@
-require(distrEx)
-
-### Why distrEx is useful ---  a convincing demonstration
-
-N <- Norm(mean = 2, sd = 1.3)
-P <- Pois(lambda = 1.2)
-Z <- 2 * N + 3 + P # exact transformation
-
-### examining what N, P, Z are:
-plot(Z)
-p(Z)(0.4)
-q(Z)(0.3)
-r(Z)(10)
-
-## something weird
-Znew <- sin(abs(Z)) # by simulations
-plot(Znew)
-p(Znew)(0.2)
-
 
 ####################################################################################
 # example expectation operator
 ####################################################################################
 require("distrEx")
+options("newDevice"=TRUE)
 
 D1 <- Norm(mean=2)
 m1 <- E(D1)  # = 2
