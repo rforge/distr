@@ -9,7 +9,7 @@ illustrateCLT <- function(Distr, len, sleep = 0){
             o.warn <- getOption("warn"); options(warn = -1)
             on.exit(options(o.warn))
             Sn <- Sn + Distr
-            options(warn = owarn)
+            options(warn = o.warn)
             Tn <- make01(Sn)
             plotCLT(Tn,k, summands = Distrname)
             Sys.sleep(sleep)

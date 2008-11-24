@@ -113,7 +113,7 @@ setMethod("plot",signature(x="EvaluationList",y="missing"),
            ylim0[,1:(c2*c1)] <- ylim1
         if(c3>0)
            ylim0[,c2*c1+(1:c3)] <- ylim1[,1:c3]
-        options("warn" = oldwarn) }
+        options("warn" = o.warn) }
 
   op <- par()
   on.exit(par(op))

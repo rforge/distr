@@ -130,7 +130,7 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
      
         o.warn <- options("warn")
         options(warn = -1)
-        on.exit(options(warn=o.warn))
+        on.exit(options(o.warn))
         opar <- par()
         on.exit(par(opar))
         if (!withSweave)

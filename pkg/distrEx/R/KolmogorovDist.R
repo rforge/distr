@@ -58,14 +58,15 @@ setMethod("KolmogorovDist", signature(e1 = "DiscreteDistribution",
                                 q(e2)(1-TruncQuantile)), 
                          q(e2)(1))
 
-        owarn <- getOption("warn"); options(warn = -1)
+        o.warn <- getOption("warn"); options(warn = -1)
+        on.exit(options(o.warn))
         x1 <- union(support(e1), r(e2)(1e5))
         x2 <- seq(from=lower, to=upper, length=1e5)
         x <- union(x1, x2) 
 
         res <- max(abs(p(e1)(x)-p(e2)(x)))
         names(res) <- "Kolmogorov distance"
-        options(warn = owarn)
+        options(warn = o.warn)
 
         return(res)
     })
