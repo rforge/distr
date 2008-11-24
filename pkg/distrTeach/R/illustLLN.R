@@ -70,8 +70,8 @@
 
   da <- matrix(NA,m,length(n))
   
-  omar <- par("mar")
-
+  omar <- par()
+  on.exit(par(omar))
      ## getting the parameter
 
   slots <-  slotNames(param(Distr))

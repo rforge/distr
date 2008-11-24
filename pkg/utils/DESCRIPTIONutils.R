@@ -10,12 +10,12 @@ updatePackageHelp <- function(package){
   PF     <-  readLines(con = PFfile)
   PFb    <-  grep("Package: \\\\tab", PF)
   PFc    <-  PF
-  PFc[PFb] <- paste("Package: \\\\tab ", DFF[1,"Package"], "\\cr", sep = "")
-  PFc[PFb+1] <- paste("Version: \\\\tab ", DFF[1,"Version"], "\\cr", sep = "")
-  PFc[PFb+2] <- paste("Date: \\\\tab ", DFF[1,"Date"], "\\cr", sep = "")
-  PFc[PFb+3] <- paste("Depends: \\\\tab ", DFF[1,"Depends"], "\\cr", sep = "")
-  PFc[PFb+4] <- paste("LazyLoad: \\\\tab ", DFF[1,"LazyLoad"], "\\cr", sep = "")
-  PFc[PFb+5] <- paste("License: \\\\tab ", DFF[1,"License"], "\\cr", sep = "")
+  PFc[PFb] <- paste("Package: \\tab ", DFF[1,"Package"], "\\cr", sep = "")
+  PFc[PFb+1] <- paste("Version: \\tab ", DFF[1,"Version"], "\\cr", sep = "")
+  PFc[PFb+2] <- paste("Date: \\tab ", DFF[1,"Date"], "\\cr", sep = "")
+  PFc[PFb+3] <- paste("Depends: \\tab ", DFF[1,"Depends"], "\\cr", sep = "")
+  PFc[PFb+4] <- paste("LazyLoad: \\tab ", DFF[1,"LazyLoad"], "\\cr", sep = "")
+  PFc[PFb+5] <- paste("License: \\tab ", DFF[1,"License"], "\\cr", sep = "")
   writeLines(PFc, con = PFfile)
   }}
 }
@@ -26,6 +26,7 @@ changeDescription <- function(startDir, names, values,
                               pkgs = NULL, 
                               withPackageHelpUpdate = TRUE){
   oldDir <- getwd()
+  on.exit(setwd(oldDir))
   setwd(startDir)
   
   if(is.matrix(values) && is.null(colnames(values))) 
@@ -54,7 +55,6 @@ changeDescription <- function(startDir, names, values,
        if(withPackageHelpUpdate)
           updatePackageHelp(package=file.path("pkg",x))
      })
-     setwd(oldDir)
   }
 }
 
@@ -72,7 +72,8 @@ changeDescription(startDir = "C:/rtest/distr",names=Names,
                   pkgs=Pkgs, values=Values)
 
 
-Pkgs <- c("SweaveListingUtils", "distr")
+Pkgs <- c("SweaveListingUtils", "distr", "distrEx",
+                      "distrMod", "distrTeach", "distrSim", "distrTEst")
 Names <- c("Date")
 Values <- matrix((format(Sys.time(), format="%Y-%m-%d")),1,length(Pkgs))
 colnames(Values) <- Pkgs
@@ -84,6 +85,7 @@ changeDescription(startDir = "C:/rtest/distr",names="Date",
                    
 copyDescription <- function(startDir){
   oldDir <- getwd()
+  on.exit(setwd(oldDir))
   setwd(startDir)
     # get packages
   pkgs <- dir("pkg/")
@@ -95,12 +97,12 @@ copyDescription <- function(startDir){
     FN2 <- paste("branches/distr-2.1/pkg/",x,"/DESCRIPTION",sep="")
     file.copy(from=FN2, to =FN, over=TRUE)
   })
-  setwd(oldDir)
 }
 copyDescription(startDir = "C:/rtest/distr")
 
 rmDescription2 <- function(startDir){
   oldDir <- getwd()
+  on.exit(setwd(oldDir))
   setwd(startDir)
     # get packages
   pkgs <- dir("pkg/")
@@ -111,7 +113,6 @@ rmDescription2 <- function(startDir){
     FN <- paste("pkg/",x,"/DESCRIPTION2",sep="")
     file.remove(FN)
   })
-  setwd(oldDir)
 }
 
 rmDescription2(startDir = "C:/rtest/distr")

@@ -432,9 +432,10 @@ return(outC)
                  if (e2 < 0) supportnew <- rev(supportnew)
 
                  coR <- substitute({
-                             owarn <- getOption("warn"); options(warn = -1)
+                             o.warn <- getOption("warn"); options(warn = -1)
+                             on.exit(options(warn=o.warn))
                              d0 <- object@d(x = q / e2C)
-                             options(warn = owarn)
+                             options(warn = o.warn)
                              if (!lower.tail) d0 <- -d0
                              p0 <- p0 + d0},
                              list(e2C = e2)
@@ -459,9 +460,10 @@ return(outC)
                  if (e2 < 0) supportnew <- rev(supportnew)
 
                  coR <- substitute({
-                             owarn <- getOption("warn"); options(warn = -1)
+                             o.warn <- getOption("warn"); options(warn = -1)
+                             on.exit(options(warn=o.warn))
                              d0 <- object@d(x = q / e2C)
-                             options(warn = owarn)
+                             options(warn = o.warn)
                              if (!lower.tail) d0 <- -d0
                              p0 <- p0 + d0},
                              list(e2C = e2)
@@ -726,7 +728,8 @@ return(f)
 
 .makeQNew <- function(x, px.l, px.u, notwithLLarg = FALSE, yL , yR,
                       Cont = TRUE){
-  owarn <- getOption("warn"); options(warn = -1)
+  o.warn <- getOption("warn"); options(warn = -1)
+  on.exit(options(warn=o.warn))
   mfun <- if (Cont) .makeQc else
           .makeQd
   ix <- .isEqual01(px.l)
@@ -749,7 +752,7 @@ return(f)
          rm(xx,yy)
      ifElseQS <- quote(if (lower.tail) q.l(p01) else q.u(p01))
   }
-  options(warn = owarn)
+  options(warn = o.warn)
   qfun <- function(p, lower.tail = TRUE, log.p = FALSE){}
   body(qfun) <- substitute({
           if (log.p) p <- exp(p)

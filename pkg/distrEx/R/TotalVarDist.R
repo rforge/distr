@@ -21,24 +21,24 @@ setMethod("TotalVarDist", signature(e1 = "AbscontDistribution",
         lower <- min(lower1, lower2)
         upper <- max(upper1, upper2)
 
-        owarn <- getOption("warn"); options(warn = -1)
+        o.warn <- getOption("warn"); options(warn = -1)
+        on.exit(options(warn=o.warn))
         integrand <- function(x, dfun1, dfun2){ 0.5*abs(dfun1(x)-dfun2(x)) }
         res <- distrExIntegrate(integrand, lower = lower, upper = upper, 
                     dfun1 = d(e1), dfun2 = d(e2), rel.tol=.Machine$double.eps^0.3)
         names(res) <- "total variation distance"
-        options(warn = owarn)
 
         return(res)
     })
 setMethod("TotalVarDist", signature(e1 = "DiscreteDistribution",
                                     e2 = "DiscreteDistribution"),
     function(e1, e2){
-        owarn <- getOption("warn"); options(warn = -1)
+        o.warn <- getOption("warn"); options(warn = -1)
+        on.exit(options(warn=o.warn))
         supp <- union(support(e1), support(e2))
 
         res <- 0.5*sum(abs(d(e1)(supp)-d(e2)(supp)))
         names(res) <- "total variation distance"
-        options(warn = owarn)
 
         return(res)
     })

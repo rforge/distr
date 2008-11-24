@@ -39,9 +39,12 @@ setMethod("plot",signature(x = "Dataclass", y="missing"),
                         lobs0, ldim0, lrun0))
 #            get(getOption("device"))()
 
-            oldwarn <- getOption("warn")
-            oldpar <- par()$mfrow
+            opar <- par()
+            on.exit(par(opar))
+
+            o.warn <- options("warn")
             options("warn" = -1)
+            on.exit(options(o.warn))
             par(mfrow=c(1,lrun0))
             
             y0<-1:length(obs0)
@@ -55,14 +58,14 @@ setMethod("plot",signature(x = "Dataclass", y="missing"),
             wylim <- FALSE ## with ylim-Argument
             if("ylim" %in% names(dots)) 
                 { wylim <- TRUE
-                  oldwarn <- getOption("warn"); options("warn" = -1)
+                  options("warn" = -1)
                   ylim1 <- as.matrix(dots[["ylim"]])
                   c1 <- ncol(ylim1); c2 <- ldim0%/%c1; c3 <- ldim0%%c1
                   if(c2>0)
                      ylim0[,1:(c2*c1)] <- ylim1
                   if(c3>0)
                      ylim0[,c2*c1+(1:c3)] <- ylim1[,1:c3]
-                  options("warn" = oldwarn) }  
+                  options("warn" = o.warn) }  
 
             dots["xlab"] <- gettextf("observation-index")
             dots["ylab"] <- gettextf("data")
@@ -97,8 +100,6 @@ setMethod("plot",signature(x = "Dataclass", y="missing"),
                 par(new=T)
                 do.call("matplot", args = dots)}
             
-            par(mfrow=oldpar)
-            options("warn" = oldwarn)
             
           })
 
@@ -180,8 +181,11 @@ setMethod("plot",signature(x="Contsimulation", y="missing"),
             x.c[x.c == 0] <- Inf
             
       #      get(getOption("device"))()
-            oldwarn <- getOption("warn")
-            oldpar <- par()$mfrow
+            o.warn <- getOption("warn")
+            on.exit(options(o.warn))
+            opar <- par()
+            on.exit(par(opar))
+            
             options("warn" = -1)
             par(mfrow=c(1,lrun0))
             
@@ -195,14 +199,14 @@ setMethod("plot",signature(x="Contsimulation", y="missing"),
             ### is ylim specified? changed: ylim has to be set by default...
             if("ylim" %in% names(dots)) 
                 { wylim <- TRUE
-                  oldwarn <- getOption("warn"); options("warn" = -1)
+                  options("warn" = -1)
                   ylim1 <- as.matrix(dots[["ylim"]])
                   c1 <- ncol(ylim1); c2 <- ldim0%/%c1; c3 <- ldim0%%c1
                   if(c2>0)
                      ylim0[,1:(c2*c1)] <- ylim1
                   if(c3>0)
                      ylim0[,c2*c1+(1:c3)]<- ylim1[,1:c3]
-                  options("warn" = oldwarn) }  
+                  options("warn" = o.warn) }  
             
             dots["xlab"] <- gettextf("observation-index")
             dots["ylab"] <- gettextf("data")
@@ -262,7 +266,5 @@ setMethod("plot",signature(x="Contsimulation", y="missing"),
                 par(new=T)
                 do.call("matplot", args = dots)}
             
-            par(mfrow = oldpar)
-            options("warn" = oldwarn)
           })
 

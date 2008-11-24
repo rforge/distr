@@ -1,5 +1,6 @@
 finde <- function(x = "nchar", dir="C:/rtest/distr/pkg/distr/R", ext = "R", rec = FALSE){
   ow <- getwd()
+  on.exit(setwd(ow))
   infind <- function(dir0){
     setwd(dir0)
     cat("\n")
@@ -18,7 +19,6 @@ finde <- function(x = "nchar", dir="C:/rtest/distr/pkg/distr/R", ext = "R", rec 
   s <- lapply(DIR,findL)
   }
 infind(dir)   
-setwd(ow)
 }
 finde(x=".makeQNew", dir ="C:/rtest/distr/pkg/distr/R")
 finde(x=".makeQNew", dir ="C:/rtest/distr/pkg/distr", rec=TRUE)

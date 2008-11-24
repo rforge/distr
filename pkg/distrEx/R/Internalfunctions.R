@@ -41,9 +41,9 @@
         supp[ind] <- x
     }
 
-    owarn <- options(warn = -1)
+    o.warn <- options(warn = -1)
+    on.exit(options(warn=o.warn))
     DD <- DiscreteDistribution(supp = supp, prob = prob)
-    options(owarn)
 
     return(DD)
 }

@@ -92,18 +92,21 @@ setMethod("plot",signature(x="EvaluationList",y="missing"),
                colnames(ma)[(i-1)*len0+j] <- colnames(result(evallist0[[j]]))[i]
                }
      }
-
+  
+  o.warn <- getOption("warn")
+  on.exit(options(o.warn))
+        
   main0 <- character(resdim0)
   if("main" %in% names(dots))
-      { oldwarn <- getOption("warn"); options("warn" = -1)
+      { options("warn" = -1)
         main0[1:resdim0] <- dots[["main"]]
-        options("warn" = oldwarn) }
+        options("warn" = o.warn) }
   else
       main0 <- paste(gettextf("%d. coordinate",dims1[1:resdim0]))
 
   ylim0<-matrix(0,2,resdim0)
   if("ylim" %in% names(dots))
-      { oldwarn <- getOption("warn"); options("warn" = -1)
+      { options("warn" = -1)
         ylim1 <- as.matrix(dots[["ylim"]])
         c1 <- ncol(ylim1); c2 <- resdim0%/%c1; c3 <- resdim0%%c1
         if(c2>0)
@@ -112,7 +115,8 @@ setMethod("plot",signature(x="EvaluationList",y="missing"),
            ylim0[,c2*c1+(1:c3)] <- ylim1[,1:c3]
         options("warn" = oldwarn) }
 
-  op <- par()$mfrow
+  op <- par()
+  on.exit(par(op))
   par(mfrow=c(resdim0,1))
 
 
@@ -130,6 +134,5 @@ setMethod("plot",signature(x="EvaluationList",y="missing"),
        do.call("boxplot", args = dots)
 
       }
-   par(mfrow=op)
    return(invisible())
 })

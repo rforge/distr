@@ -284,6 +284,7 @@ setMethod("print", "ShowDetails",
 
         oldDigits <- getOption("digits")
         options("digits" = digits)
+        on.exit(options("digits" = oldDigits))
         # unfortunately, within this methods, the straightforward
         #          distrModOptions("show.details"=show.details)
         # /does not work/ --- our work-around
@@ -302,7 +303,6 @@ setMethod("print", "ShowDetails",
         # end workaround
         show(object = x)
          
-        options("digits" = oldDigits)
 #        instead of distrModOptions("show.details"=old.show.details) ::
          if(assign.error) distrModOptions("show.details" = old.show.details)
          else  assign(".distrModOptions", old.distrModOptions, envir = env)
