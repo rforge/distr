@@ -169,6 +169,7 @@ require(distrEx)
 require(distrTeach)
 require(distrMod)
 distroptions(withSweave = TRUE)
+options("newDevice" = TRUE)
 @
 <<exam1, eval = TRUE, fig = TRUE>>=
 require(distr)

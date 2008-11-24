@@ -94,7 +94,7 @@ setMethod("plot",signature(x="EvaluationList",y="missing"),
      }
   
   o.warn <- getOption("warn")
-  on.exit(options(o.warn))
+  on.exit(options("warn"=o.warn))
         
   main0 <- character(resdim0)
   if("main" %in% names(dots))

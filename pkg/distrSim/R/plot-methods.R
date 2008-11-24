@@ -42,9 +42,10 @@ setMethod("plot",signature(x = "Dataclass", y="missing"),
             opar <- par()
             on.exit(par(opar))
 
-            o.warn <- options("warn")
+            o.warn <- getOption("warn")
+            on.exit(options("warn"=o.warn))
+            
             options("warn" = -1)
-            on.exit(options(o.warn))
             par(mfrow=c(1,lrun0))
             
             y0<-1:length(obs0)
@@ -182,7 +183,7 @@ setMethod("plot",signature(x="Contsimulation", y="missing"),
             
       #      get(getOption("device"))()
             o.warn <- getOption("warn")
-            on.exit(options(o.warn))
+            on.exit(options("warn"=o.warn))
             opar <- par()
             on.exit(par(opar))
             

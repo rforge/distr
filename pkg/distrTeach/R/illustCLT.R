@@ -7,7 +7,7 @@ illustrateCLT <- function(Distr, len, sleep = 0){
        Sn <- 0
        for(k in 1:len){
             o.warn <- getOption("warn"); options(warn = -1)
-            on.exit(options(o.warn))
+            on.exit(options(warn=o.warn))
             Sn <- Sn + Distr
             options(warn = o.warn)
             Tn <- make01(Sn)
@@ -25,11 +25,11 @@ illustrateCLT.tcl <- function(Distr, k, Distrname){
   else {
      Sn <- 0
      o.warn <- getOption("warn"); options(warn = -1)
-     on.exit(options(o.warn))
+     on.exit(options(warn=o.warn))
      for(j in 1:k)
          Sn <- Sn + Distr           
        }   
-  options(o.warn)
+  options(warn=o.warn)
   Tn <- make01(Sn)
   plotCLT(Tn,k, summands = Distrname)
   }

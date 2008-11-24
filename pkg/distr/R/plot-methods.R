@@ -218,7 +218,7 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
         xo <- grid
      }
      
-     o.warn <- getOption("warn"); options(warn = -1)
+     options(warn = -1)
      do.call(plot, c(list(x = po, xo, type = "n", 
           xlim = ylim, ylim = xlim, ylab = "q(p)", xlab = "p", 
           log = logq), dots.without.pch))
@@ -228,7 +228,7 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
      title(main = inner.q, line = lineT, cex.main = cex.inner,
            col.main = col.inner)
      
-     o.warn <- getOption("warn"); options(warn = -1)
+     options(warn = -1)
          lines(po,xo, ...)
      if (verticals && !is.null(gaps(x))){
          pu <- rep(pu1,3)
@@ -430,7 +430,8 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
               }
            }
 
-       o.warn <- getOption("warn"); options(warn = -1)
+       o.warn <- getOption("warn")
+       options(warn = -1)
        on.exit(options(warn=o.warn))
        do.call(plot, c(list(x = supp, dx, type = "h", pch = pch.a,
             ylim = ylim1, xlim=xlim, ylab = "d(x)", xlab = "x", 
@@ -445,7 +446,7 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
           do.call(points, c(list(x = supp, y = dx, pch = pch.a, 
                   cex = cex.points, col = col.points), dots.for.points))
        
-       o.warn <- getOption("warn"); options(warn = -1)
+       options(warn = -1)
 
        ngrid <- length(supp)
 
@@ -483,7 +484,7 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
                   cex = cex.points, col = col.points), dots.for.points))
        
        
-       o.warn <- getOption("warn"); options(warn = -1)
+       options(warn = -1)
        do.call(plot, c(list(x = stepfun(c(0,p(x)(supp)), 
                             c(NA,supp,NA), right = TRUE), 
             main = "", xlim = ylim2, ylim = c(min(supp),max(supp)),

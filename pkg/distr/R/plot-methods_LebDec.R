@@ -285,7 +285,7 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
         xo <- grid
      }
 
-     o.warn <- getOption("warn"); options(warn = -1)
+     options(warn = -1)
      do.call(plot, c(list(x = po, xo, type = "n",
           xlim = ylim, ylim = xlim, ylab = "q(p)", xlab = "p",
           log = logq), dots.without.pch))
@@ -295,7 +295,7 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
      title(main = inner.q, line = lineT, cex.main = cex.inner,
            col.main = col.inner)
 
-     o.warn <- getOption("warn"); options(warn = -1)
+     options(warn = -1)
      lines(po,xo, ...)
 #    if (verticals && !is.null(gaps(x))){
 #         do.call(lines, c(list(rep(pu1,2), c(gaps(x)[,1],gaps(x)[,2]),
