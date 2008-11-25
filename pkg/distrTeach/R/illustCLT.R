@@ -20,16 +20,16 @@ illustrateCLT.tcl <- function(Distr, k, Distrname){
   if(is.na(E(Distr)) || is.na(var(Distr)))
           stop(gettextf("Distribution %s does not have a variance/expectation.", 
                Distrname ))
-  if(is(Distr,"LatticeDistribution")||is(Distr,"AbscontDistribution"))     
+  if(is(Distr,"LatticeDistribution")||is(Distr,"AbscontDistribution"))
      Sn <- convpow(Distr,k)
   else {
      Sn <- 0
      o.warn <- getOption("warn"); options(warn = -1)
      on.exit(options(warn=o.warn))
      for(j in 1:k)
-         Sn <- Sn + Distr           
-       }   
-  options(warn=o.warn)
+         Sn <- Sn + Distr
+     options(warn=o.warn)
+  }
   Tn <- make01(Sn)
   plotCLT(Tn,k, summands = Distrname)
   }
