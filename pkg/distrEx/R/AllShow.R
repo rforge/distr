@@ -1,12 +1,14 @@
 setMethod("show", "MultivariateDistribution",
     function(object){
-        cat(gettextf("Distribution object of class: %s\n", class(object)[1]))
+        txt <- gettextf("Distribution object of class: %s\n", class(object)[1])
         parameter <- param(object)
         Names <- slotNames(parameter)
         if(length(Names) > 1){
-          for(i in Names[Names != "name"])
-            cat(i, ": ", slot(parameter, i), "\n")
+            for(i in Names[Names != "name"])
+                txt <- c(txt,
+                    gettextf("%s: %s\n", i, slot(parameter, i)))
         }
+        return(txt)
     })
 setMethod("show", "EuclCondition",
     function(object){
@@ -22,13 +24,15 @@ setMethod("show", "LMParameter",
     })
 setMethod("show", "UnivariateCondDistribution",
     function(object){
-        cat(gettextf("Distribution object of class: %s\n", class(object)[1]))
+        txt <- gettextf("Distribution object of class: %s\n", class(object)[1])
         parameter <- param(object)
         Names <- slotNames(parameter)
         if(length(Names) > 1){
-          for(i in Names[Names != "name"])
-            cat(i, ": ", slot(parameter, i), "\n")
+            for(i in Names[Names != "name"])
+                txt <- c(txt,
+                    gettextf("%s: %s\n", i, slot(parameter, i)))
         }
+        cat(txt)
         cat(gettext("## cond:\n"))
         show(object@cond)
     })
