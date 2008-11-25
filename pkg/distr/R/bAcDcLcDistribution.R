@@ -53,13 +53,6 @@ function(e1,e2){
                          e12pp, e12mm, e12pm, e12mp,
                          as(Dirac(0),"UnivarLebDecDistribution"))
          
-         dnew <- function(x, log = FALSE, ...){
-               d0 <- dnew0(x, log = log, ...)
-               i0 <- .isEqual(x,0)
-               if(!any(i0)) return(d0)
-               if(log) d0[i0] <- lf0 else d0[i0] <- f0
-               return(d0)
-            }
          if(getdistrOption("simplifyD"))
             obj <- simplifyD(obj)
 
