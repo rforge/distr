@@ -5,7 +5,8 @@
 setMethod("CvMDist", signature(e1 = "UnivariateDistribution",
                                     e2 = "UnivariateDistribution"),
     function(e1, e2, mu = e2, useApply = FALSE, ... ){
-        owarn <- getOption("warn"); options(warn = -1)
+        o.warn <- getOption("warn"); options(warn = -1)
+        on.exit(options(warn=o.warn))
         if(is.null(e1@p)){
         e1.erg <- RtoDPQ(e1@r)
         e1 <- new("UnivariateDistribution", r=e1@r, 
@@ -18,7 +19,6 @@ setMethod("CvMDist", signature(e1 = "UnivariateDistribution",
                    .withSim = TRUE, .withArith = FALSE)}
         res <- E(mu, fun = function(t) {(p(e1)(t)-p(e2)(t))^2}, useApply = useApply, ...)^.5
         names(res) <- "CvM distance"
-        options(warn = owarn)
         return(res)
     })
 
@@ -26,9 +26,9 @@ setMethod("CvMDist", signature(e1 = "UnivariateDistribution",
 setMethod("CvMDist", signature(e1 = "numeric",
                                     e2 = "UnivariateDistribution"),
     function(e1, e2, mu = e2, ...)
-        {owarn <- getOption("warn"); options(warn = -1)
+        { o.warn <- getOption("warn"); options(warn = -1)
+          on.exit(options(warn=o.warn))
           e10 <- DiscreteDistribution(e1)       
-          options(warn = owarn)
           CvMDist(e1 = e10, e2 = e2, mu = mu, ...)
          }
     )

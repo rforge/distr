@@ -33,7 +33,6 @@ buildStartupMessage(pkg = "distr", msga, msgb, msgc, msgd, library = library,
   invisible()
 } 
 
-
 ################################
 ##
 ## Optional..-classes
@@ -908,7 +907,7 @@ setClass("AffLinDiscreteDistribution",
           )
 
 setClass("AffLinLatticeDistribution", 
-          contains = c("AffLinDiscreteDistribution", "LatticeDistribution")
+          contains = c("LatticeDistribution", "AffLinDiscreteDistribution")
           )
 
 

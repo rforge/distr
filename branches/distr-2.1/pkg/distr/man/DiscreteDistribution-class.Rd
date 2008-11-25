@@ -2,8 +2,10 @@
 \docType{class}
 \alias{DiscreteDistribution-class}
 \alias{AffLinDiscreteDistribution-class}
-\alias{initialize,DiscreteDistribution-method}
+\alias{sqrt,DiscreteDistribution-method}
+\alias{initialize,DiscreteDistribution-method}                                                       
 \alias{initialize,AffLinDiscreteDistribution-method}
+\alias{coerce,DiscreteDistribution,LatticeDistribution-method}
 
 \title{Class "DiscreteDistribution"}
 \description{The \code{DiscreteDistribution}-class is the mother-class of the class \code{LatticeDistribution}.}
@@ -36,11 +38,15 @@ Class \code{"Distribution"}, by class \code{"UnivariateDistribution"}.
 \section{Methods}{
   \describe{
     \item{initialize}{\code{signature(.Object = "DiscreteDistribution")}: initialize method }
+    \item{\code{coerce}}{\code{signature(from = "DiscreteDistribution",
+    to = "LatticeDistribution")}: coerces an object from \code{"DiscreteDistribution"}
+    to \code{"LatticeDistribution"} if support of \code{from} is a lattice.}
     \item{Math}{\code{signature(x = "DiscreteDistribution")}: application of a mathematical function, e.g. \code{sin} or
     \code{tan} to this discrete distribution}
     \code{abs}{\code{signature(x = "DiscreteDistribution")}:  exact image distribution of \code{abs(x)}.}
     \code{exp}{\code{signature(x = "DiscreteDistribution")}:  exact image distribution of \code{exp(x)}.}
     \code{sign}{\code{signature(x = "DiscreteDistribution")}:  exact image distribution of \code{sign(x)}.}
+    \code{sqrt}{\code{signature(x = "DiscreteDistribution")}:  exact image distribution of \code{sqrt(x)}.}
     \code{log}{\code{signature(x = "DiscreteDistribution")}:  (with optional further argument \code{base}, 
     defaulting to \code{exp(1)}) exact image distribution of \code{log(x)}.}
     \code{log10}{\code{signature(x = "DiscreteDistribution")}:  exact image distribution of \code{log10(x)}.}

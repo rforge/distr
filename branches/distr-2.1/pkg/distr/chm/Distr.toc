@@ -86,6 +86,10 @@
 <param name="Local" value="operators-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="*,numeric,LatticeDistribution-method">
+<param name="Local" value="operators-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="*,numeric,UnivariateDistribution-method">
 <param name="Local" value="operators-methods.html">
 </OBJECT>
@@ -210,6 +214,10 @@
 <param name="Local" value="operators-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="+,numeric,LatticeDistribution-method">
+<param name="Local" value="operators-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="+,numeric,UnivariateDistribution-method">
 <param name="Local" value="operators-methods.html">
 </OBJECT>
@@ -246,6 +254,22 @@
 <param name="Local" value="operators-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="-,LatticeDistribution,LatticeDistribution-method">
+<param name="Local" value="operators-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="-,LatticeDistribution,missing-method">
+<param name="Local" value="operators-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="-,LatticeDistribution,numeric-method">
+<param name="Local" value="operators-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="-,LatticeDistribution,UnivariateDistribution-method">
+<param name="Local" value="operators-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="-,Norm,missing-method">
 <param name="Local" value="operators-methods.html">
 </OBJECT>
@@ -254,7 +278,15 @@
 <param name="Local" value="operators-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="-,numeric,LatticeDistribution-method">
+<param name="Local" value="operators-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="-,numeric,UnivariateDistribution-method">
+<param name="Local" value="operators-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="-,UnivariateDistribution,LatticeDistribution-method">
 <param name="Local" value="operators-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -275,6 +307,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value=".D2P">
+<param name="Local" value="internals.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value=".del0dmixfun">
 <param name="Local" value="internals.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -343,6 +379,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value=".isNatural0">
+<param name="Local" value="internals.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value=".IssueWarn">
 <param name="Local" value="internals.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -463,6 +503,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="/,Dirac,Dirac-method">
+<param name="Local" value="operators-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="/,LatticeDistribution,numeric-method">
 <param name="Local" value="operators-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -642,16 +686,16 @@
 <param name="Local" value="UnivarLebDecDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="coerce,DiscreteDistribution,LatticeDistribution-method">
+<param name="Local" value="DiscreteDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="coerce,DiscreteDistribution,UnivarLebDecDistribution-method">
 <param name="Local" value="UnivarLebDecDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="coerce,Distribution,DistrList-method">
 <param name="Local" value="DistrList-class.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="coerce,LatticeDistribution,DiscreteDistribution-method">
-<param name="Local" value="LatticeDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="coerce,numeric,Integer-method">
@@ -2226,6 +2270,10 @@
 <param name="Local" value="ncp-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="newDevice">
+<param name="Local" value="options.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Norm">
 <param name="Local" value="Norm-class.html">
 </OBJECT>
@@ -2252,6 +2300,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="OptionalParameter-class">
 <param name="Local" value="OptionalParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="options">
+<param name="Local" value="options.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="p">
@@ -2354,23 +2406,23 @@
 <param name="Local" value="plot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="plot,AbscontDistribution-method">
+<param name="Name" value="plot,AbscontDistribution,missing-method">
 <param name="Local" value="plot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="plot,AffLinUnivarLebDecDistribution-method">
+<param name="Name" value="plot,AffLinUnivarLebDecDistribution,missing-method">
 <param name="Local" value="plot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="plot,DiscreteDistribution-method">
+<param name="Name" value="plot,DiscreteDistribution,missing-method">
 <param name="Local" value="plot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="plot,DistrList-method">
+<param name="Name" value="plot,DistrList,missing-method">
 <param name="Local" value="plot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="plot,UnivarLebDecDistribution-method">
+<param name="Name" value="plot,UnivarLebDecDistribution,missing-method">
 <param name="Local" value="plot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -2898,6 +2950,10 @@
 <param name="Local" value="DistrList-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="show,LatticeDistribution-method">
+<param name="Local" value="print-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="show,UnivariateDistribution-method">
 <param name="Local" value="print-methods.html">
 </OBJECT>
@@ -3048,6 +3104,22 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="size<--methods">
 <param name="Local" value="size-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sqrt,AbscontDistribution-method">
+<param name="Local" value="ContDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sqrt,AcDcLcDistribution-method">
+<param name="Local" value="UnivarLebDecDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sqrt,DiscreteDistribution-method">
+<param name="Local" value="DiscreteDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sqrt,UnivarLebDecDistribution-method">
+<param name="Local" value="UnivarLebDecDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="standardMethods">
@@ -3234,6 +3306,10 @@
 <param name="Name" value="Package distr:  Titles">
 </OBJECT>
 <UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="additional options in package `distr' ">
+<param name="Local" value="options.html">
+</OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Arithmetics on Distributions">
 <param name="Local" value="distrARITH.html">
@@ -3735,7 +3811,7 @@
 <param name="Local" value="print-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for operators +,-,*,/ in Package distr">
+<param name="Name" value="Methods for operators +,-,*,/,... in Package distr">
 <param name="Local" value="operators-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">

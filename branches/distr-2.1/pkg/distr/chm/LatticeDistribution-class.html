@@ -12,7 +12,6 @@
 <param name="keyword" value="R:   lattice,LatticeDistribution-method">
 <param name="keyword" value="R:   initialize,LatticeDistribution-method">
 <param name="keyword" value="R:   initialize,AffLinLatticeDistribution-method">
-<param name="keyword" value="R:   coerce,LatticeDistribution,DiscreteDistribution-method">
 <param name="keyword" value="R:   coerce,AffLinLatticeDistribution,AffLinDiscreteDistribution-method">
 <param name="keyword" value=" Class 'LatticeDistribution'">
 </object>
@@ -111,10 +110,6 @@ Slots p, d and q are approximated by grids.</dd>
     e2 = "LatticeDistribution")</code>: Convolution of two lattice
 distributions. The slots p, d and q are approximated by grids.</dd>
 <dt><code>lattice</code></dt><dd>accessor method to the corresponding slot.</dd>
-<dt><code>coerce</code></dt><dd><code>signature(from = "LatticeDistribution",
-    to = "DiscreteDistribution")</code>: coerces an object from 
-<code>"LatticeDistribution"</code> to <code>"DiscreteDistribution"</code>
-thereby cancelling out support points with probability 0.</dd>
 </dl>
 
 <h3>Internal subclass "AffLinLatticeDistribution"</h3>
@@ -205,6 +200,6 @@ q(D4)(.5) # The (approximated) 50 percent quantile is 3.
 
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.0 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distr</em> version 2.0.2 <a href="00Index.html">Index]</a></div>
 
 </body></html>

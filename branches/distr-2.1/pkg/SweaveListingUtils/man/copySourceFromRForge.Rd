@@ -7,7 +7,9 @@ copies lines of a source file (usually \file{.R} oder \file{.Rd})
 from R forge repository}
 \usage{
 copySourceFromRForge(PKG, TYPE, FILENAME, PROJECT, from, to,
-                                 offset.before = 0, offset.after = 0 )
+                                 offset.before = 0, offset.after = 0,
+                                 fromRForge = getSweaveListingOption("fromRForge"),
+                                 base.url = getSweaveListingOption("base.url") )
 }
 \arguments{
   \item{PKG}{character; name of package to be downloaded}
@@ -26,6 +28,9 @@ copySourceFromRForge(PKG, TYPE, FILENAME, PROJECT, from, to,
                        match; defaults to 0}
   \item{offset.after}{numeric; number of lines to be included after the first
                        match; defaults to 0}
+  \item{fromRForge}{logical; shall code be downloaded from an R-Forge mirror?
+                    Defaults to the corresponding global option}
+  \item{base.url}{character; base url from where to download the code sniplet}
   }
 
 \details{

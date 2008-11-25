@@ -6,6 +6,8 @@
 \alias{loc<-,Gumbel-method}
 \alias{scale,Gumbel-method}
 \alias{scale<-,Gumbel-method}
+\alias{+,Gumbel,numeric-method}
+\alias{*,Gumbel,numeric-method}
 
 \title{Gumbel distribution}
 \description{The Gumbel cumulative distribution function with 
@@ -40,18 +42,24 @@ Class \code{"Distribution"}, by class \code{"AbscontDistribution"}.
 \section{Methods}{
   \describe{
     \item{initialize}{\code{signature(.Object = "Gumbel")}: initialize method. }
-  
+
     \item{loc}{\code{signature(object = "Gumbel")}: wrapped access method for
       slot \code{loc} of slot \code{param}. }
-    
+
     \item{scale}{\code{signature(x = "Gumbel")}: wrapped access method for
       slot \code{scale} of slot \code{param}. }
-    
+
     \item{loc<-}{\code{signature(object = "Gumbel")}: wrapped replace method for
       slot \code{loc} of slot \code{param}. }
-    
+
     \item{scale<-}{\code{signature(x = "Gumbel")}: wrapped replace method for
       slot \code{scale} of slot \code{param}. }
+
+    \item{\code{+}}{\code{signature(e1 = "Gumbel", e2 = "numeric")}: result again of 
+      class \code{"Gumbel"}; exact. }
+
+    \item{\code{*}}{\code{signature(e1 = "Gumbel", e2 = "numeric")}: result again of 
+      class \code{"Gumbel"}; exact. }
   }
 }
 \references{Johnson et al. (1995) \emph{Continuous Univariate Distributions. Vol. 2. 2nd ed.}

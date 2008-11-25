@@ -25,16 +25,16 @@ setMethod("skewness", signature(x = "UnivariateDistribution"),
 
     })
 
-  
+
 setMethod("skewness", signature(x = "AffLinDistribution"),
     function(x, fun = function(t) {t}, cond, withCond = FALSE, useApply = TRUE, ...){
         if (missing(fun) && missing(cond)){
 
-            return( skewness(x@X0, withCond = withCond, useApply = useApply, 
+            return(sign(x@a)*skewness(x@X0, withCond = withCond, useApply = useApply, 
                              ...))
 
             }
-        else return(skewness( x = as(x, sub("AffLin","",class(x))), 
+        else return(skewness(x = as(x, sub("AffLin","",class(x))), 
                     fun = fun, cond = cond, withCond = withCond, 
                     useApply = useApply, ... ))
     })

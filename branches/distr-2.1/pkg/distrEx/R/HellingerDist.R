@@ -13,24 +13,24 @@ setMethod("HellingerDist", signature(e1 = "AbscontDistribution",
         lower <- min(lower1, lower2)
         upper <- max(upper1, upper2)
 
-        owarn <- getOption("warn"); options(warn = -1)
+        o.warn <- getOption("warn"); options(warn = -1)
+        on.exit(options(warn=o.warn))
         integrand <- function(x, dfun1, dfun2){ 0.5*(sqrt(dfun1(x))-sqrt(dfun2(x)))^2 }
         res <- distrExIntegrate(integrand, lower = lower, upper = upper, 
                     dfun1 = d(e1), dfun2 = d(e2), rel.tol=.Machine$double.eps^0.3)
         names(res) <- "Hellinger distance"
-        options(warn = owarn)
 
         return(sqrt(res))  # ^.5 added P.R. 19-12-06
     })
 setMethod("HellingerDist", signature(e1 = "DiscreteDistribution", 
                                      e2 = "DiscreteDistribution"),
     function(e1, e2){
-        owarn <- getOption("warn"); options(warn = -1)
+        o.warn <- getOption("warn"); options(warn = -1)
+        on.exit(options(warn=o.warn))
         supp <- union(support(e1), support(e2))
 
         res <- 0.5*sum((sqrt(d(e1)(supp))-sqrt(d(e2)(supp)))^2)  
         names(res) <- "Hellinger distance"
-        options(warn = owarn)
 
         return(sqrt(res)) # ^.5 added P.R. 19-12-06
     })

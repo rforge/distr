@@ -7,9 +7,9 @@
 \description{
 Functions for defining how listings prints R and Rd source code}
 \usage{
-lstset(taglist, LineLength = 80)
-lstsetR(Rset = NULL, LineLength = 80, add = TRUE)
-lstsetRd(Rdset = NULL, LineLength = 80, add = TRUE)
+lstset(taglist, LineLength = 80, startS = "\\\\lstset\{")
+lstsetR(Rset = NULL, LineLength = 80, add = TRUE, startS = "\\\\lstset\{")
+lstsetRd(Rdset = NULL, LineLength = 80, add = TRUE, startS = "\\\\lstset\{")
 }
 
 \arguments{
@@ -29,6 +29,10 @@ lstsetRd(Rdset = NULL, LineLength = 80, add = TRUE)
            lists \code{getSweaveListingOption("Rset")} resp.  
            \code{getSweaveListingOption("Rdset")} (see below),
            overwriting respective entries of the default value lists.} 
+\item{startS}{character; defaults to \code{"\\\\lstset\{"}; what to do
+              by default we use \code{\\lstset}; an alternative is
+              to use \code{\\lstdefinestyle} which amounts to
+              \code{"\\\\lstdefinestyle\{"}.}
   }
 
 \details{
@@ -64,6 +68,7 @@ TeX file.
 \author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 \examples{
 lstset(taglist(A="H", b=2, 3),30)
+lstset(taglist(A="H", b=2, 3),30, startS = "\\\\lstdefinestyle{Rstyle}\{")
 lstsetR()
 lstsetRd()
 }

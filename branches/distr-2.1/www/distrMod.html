@@ -89,6 +89,11 @@ we have realized</li>
 the criterium function is then optimized using the R-functions <span
  style="color: rgb(51, 51, 255);">optim</span>, <span
  style="color: rgb(51, 51, 255);">optimize</span>, respectively.<br>
+MCEs can (but do not need to) use method dispatch; this way particular
+methods beyond numerical optimization can be used<br>
+without changing "<span style="color: rgb(51, 102, 255);">distrMod</span>"
+code<br>
+<br>
 </div>
 <br>
 </div>
@@ -174,7 +179,11 @@ or
  style="width: 100%; height: 2px; margin-left: 0px; margin-right: 0px; color: rgb(0, 0, 0);">
 <h2 style="text-align: center; color: rgb(0, 0, 153);">Demos</h2>
 <ul>
-  <li><br>
+  <li>modelExp3.R &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+illustrates how easy it is to define a new location and scale model</li>
+  <li>censoredPois.R &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; illustrates how
+easy it is to define a new L2 differentiable model<br>
+    <br>
   </li>
 </ul>
 <div style="text-align: left;"></div>
@@ -196,7 +205,7 @@ or
 <h2 style="text-align: center; color: rgb(0, 0, 153);">Our plans for
 the next version:</h2>
 <ul style="text-align: left; color: rgb(0, 0, 0);">
-  <li><br>
+  <li>new confint methods (bootstrap; simulation; variance-stabilized)<br>
   </li>
 </ul>
 <br style="color: rgb(0, 0, 0);">
@@ -215,7 +224,7 @@ other people to do</h2>
 maintained by <a
  href="mailto:peter.ruckdeschel@uni-bayreuth.de?subject=distr-package">Peter
 Ruckdeschel</a>
-and last updated on 2008-02-22.<br>
+and last updated on 2008-08-28.<br>
 </div>
 </body>
 </html>

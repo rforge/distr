@@ -6,9 +6,10 @@ illustrateCLT <- function(Distr, len, sleep = 0){
        graphics.off()
        Sn <- 0
        for(k in 1:len){
-            owarn <- getOption("warn"); options(warn = -1)
+            o.warn <- getOption("warn"); options(warn = -1)
+            on.exit(options(warn=o.warn))
             Sn <- Sn + Distr
-            options(warn = owarn)
+            options(warn = o.warn)
             Tn <- make01(Sn)
             plotCLT(Tn,k, summands = Distrname)
             Sys.sleep(sleep)
@@ -19,15 +20,16 @@ illustrateCLT.tcl <- function(Distr, k, Distrname){
   if(is.na(E(Distr)) || is.na(var(Distr)))
           stop(gettextf("Distribution %s does not have a variance/expectation.", 
                Distrname ))
-  if(is(Distr,"LatticeDistribution")||is(Distr,"AbscontDistribution"))     
+  if(is(Distr,"LatticeDistribution")||is(Distr,"AbscontDistribution"))
      Sn <- convpow(Distr,k)
   else {
      Sn <- 0
-     owarn <- getOption("warn"); options(warn = -1)
+     o.warn <- getOption("warn"); options(warn = -1)
+     on.exit(options(warn=o.warn))
      for(j in 1:k)
-         Sn <- Sn + Distr           
-     options(warn = owarn)
-       }   
+         Sn <- Sn + Distr
+     options(warn=o.warn)
+  }
   Tn <- make01(Sn)
   plotCLT(Tn,k, summands = Distrname)
   }
@@ -43,7 +45,8 @@ setMethod("plotCLT","DiscreteDistribution", function(Tn, k, summands = "") {
                 x <- seq(-5,5,0.01)
                 dTn <- d(Tn)(supp)
                 ymax <- max(1/sqrt(2*pi), dTn)
-                oldmar <- par("mar")
+                opar <- par()
+                on.exit(par(opar))
                 dw <- min(diff(supp)) 
                 facD <- min(dw*2,1)
                 thin <- FALSE
@@ -83,7 +86,6 @@ setMethod("plotCLT","DiscreteDistribution", function(Tn, k, summands = "") {
                                  sd(S[n])))), expression(italic(N)(0,1))), 
                        cex = .8, bty = "n", col = c("black", "orange"), 
                        lwd = c(4,2))
-                par(mfrow = c(1,1), mar=oldmar)
        })
 
 setMethod("plotCLT","AbscontDistribution", function(Tn,k, summands = "") {

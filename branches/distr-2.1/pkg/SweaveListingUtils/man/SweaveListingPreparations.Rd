@@ -10,6 +10,7 @@ SweaveListingPreparations(LineLength = 80,
    Rset = getSweaveListingOption("Rset"),
    Rdset = getSweaveListingOption("Rdset"),
    Rcolor = getSweaveListingOption("Rcolor"),
+   Rbcolor = getSweaveListingOption("Rbcolor"), 
    Rout = getSweaveListingOption("Rout"),
    Rcomment = getSweaveListingOption("Rcomment"),
    pkg = getSweaveListingOption("pkg"),
@@ -22,6 +23,9 @@ SweaveListingPreparations(LineLength = 80,
   \item{Rdset}{list or taglist; defaults to global option  \code{"Rdset"}}
   \item{Rcolor}{numeric of length 3; defaults to global option  \code{"Rcolor"};
                 rgb coordinates of the color in which to print R-code}
+  \item{Rbcolor}{numeric of length 3; defaults to global option  \code{"Rbcolor"};
+                 rgb coordinates of the color in which to print \R keywords
+                 induced by intermediate packages.}
   \item{Rout}{numeric of length 3; defaults to global option  \code{"Rout"};
                 rgb coordinates of the color in which to print R output}
   \item{Rcomment}{numeric of length 3; defaults to global option \code{"Rcomment"};
@@ -47,12 +51,16 @@ still have to appear in the \file{.Rnw} file --- before the corresponding
 The TeX code inserted by \code{SweaveListingPreparations} sets colors,
 requires TeX-package \file{listings},
 defines listings-settings for \file{.R}- and \file{.Rd}-code.
-It is to be called in an \file{.Rnw} file and [re-]defines \code{Sinput},
+For \file{.Rd} files it uses a new 'listings'-language definition file, 
+\file{Rdlisting.sty} to be found in subfolder \file{TeX} in the 
+\pkg{SweaveListingUtils} package folder.
+\code{SweaveListingPreparations} is to be called in an \file{.Rnw} file and 
+[re-]defines \code{Sinput},
 \code{Soutput}, \code{Scode} environments for use with TeX-package \file{listings},
 defines commands \code{\\code}, \code{\\file}, \code{\\pkg} and sets
 the corresponding package version.\cr
 The default values are taken from
-\link[=SweaveListingOptions]{SweaveListingOptions()}.
+\link[=SweaveListingOptions]{SweaveListingOptions}.
 The output to stdout can be captured in an \file{.Rnw} file as
 \preformatted{
 << lstPreamble, results=tex, echo=FALSE>>=
@@ -61,8 +69,12 @@ SweaveListingPreparations()
 @
 }
 to insert the corresponding preamble parts to the produced
-TeX file.
-
+TeX file.\cr
+If you one want to use destinct keywordstyles for packages loaded
+by \code{require} or \code{library} without adding extra arguments
+to these commands (and hence displaying the actual \R code),
+you have to set up a global formatting matrix  
+\code{.tobeDefinedPkgs} by \code{\link{setToBeDefinedPkgs}}.
 }
 
 \value{\code{invisible()}

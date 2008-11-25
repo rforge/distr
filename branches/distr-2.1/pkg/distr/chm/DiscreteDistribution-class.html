@@ -7,8 +7,10 @@
 <table width="100%"><tr><td>DiscreteDistribution-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   DiscreteDistribution-class">
 <param name="keyword" value="R:   AffLinDiscreteDistribution-class">
+<param name="keyword" value="R:   sqrt,DiscreteDistribution-method">
 <param name="keyword" value="R:   initialize,DiscreteDistribution-method">
 <param name="keyword" value="R:   initialize,AffLinDiscreteDistribution-method">
+<param name="keyword" value="R:   coerce,DiscreteDistribution,LatticeDistribution-method">
 <param name="keyword" value=" Class 'DiscreteDistribution'">
 </object>
 
@@ -61,11 +63,15 @@ Class <code>"Distribution"</code>, by class <code>"UnivariateDistribution"</code
 
 <dl>
 <dt>initialize</dt><dd><code>signature(.Object = "DiscreteDistribution")</code>: initialize method </dd>
+<dt><code>coerce</code></dt><dd><code>signature(from = "DiscreteDistribution",
+    to = "LatticeDistribution")</code>: coerces an object from <code>"DiscreteDistribution"</code>
+to <code>"LatticeDistribution"</code> if support of <code>from</code> is a lattice.</dd>
 <dt>Math</dt><dd><code>signature(x = "DiscreteDistribution")</code>: application of a mathematical function, e.g. <code>sin</code> or
 <code>tan</code> to this discrete distribution</dd>
 <code>abs</code>{<code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>abs(x)</code>.}
 <code>exp</code>{<code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>exp(x)</code>.}
 <code>sign</code>{<code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>sign(x)</code>.}
+<code>sqrt</code>{<code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>sqrt(x)</code>.}
 <code>log</code>{<code>signature(x = "DiscreteDistribution")</code>:  (with optional further argument <code>base</code>, 
 defaulting to <code>exp(1)</code>) exact image distribution of <code>log(x)</code>.}
 <code>log10</code>{<code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>log10(x)</code>.}
@@ -208,6 +214,6 @@ q.r(D2)(pp+1e-5)
 
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.0 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distr</em> version 2.0.3 <a href="00Index.html">Index]</a></div>
 
 </body></html>

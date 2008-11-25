@@ -21,14 +21,14 @@ setMethod("KolmogorovDist", signature(e1 = "AbscontDistribution",
         lower <- min(lower1, lower2)
         upper <- max(upper1, upper2)
 
-        owarn <- getOption("warn"); options(warn = -1)
+        o.warn <- getOption("warn"); options(warn = -1)
+        on.exit(options(warn=o.warn))
         x1 <- union(r(e1)(1e5), r(e2)(1e5))
         x2 <- seq(from=lower, to=upper, length=1e5)
         x <- union(x1, x2) 
 
         res <- max(abs(p(e1)(x)-p(e2)(x)))
         names(res) <- "Kolmogorov distance"
-        options(warn = owarn)
 
 
         return(res)
@@ -37,12 +37,12 @@ setMethod("KolmogorovDist", signature(e1 = "AbscontDistribution",
 setMethod("KolmogorovDist", signature(e1 = "DiscreteDistribution",
                                       e2 = "DiscreteDistribution"),
     function(e1, e2){
-        owarn <- getOption("warn"); options(warn = -1)
+        o.warn <- getOption("warn"); options(warn = -1)
+        on.exit(options(warn=o.warn))
         supp <- union(support(e1), support(e2))
 
         res <- max(abs(p(e1)(supp)-p(e2)(supp)))
         names(res) <- "Kolmogorov distance"
-        options(warn = owarn)
 
         return(res)
     })
@@ -58,14 +58,14 @@ setMethod("KolmogorovDist", signature(e1 = "DiscreteDistribution",
                                 q(e2)(1-TruncQuantile)), 
                          q(e2)(1))
 
-        owarn <- getOption("warn"); options(warn = -1)
+        o.warn <- getOption("warn"); options(warn = -1)
+        on.exit(options(warn=o.warn))
         x1 <- union(support(e1), r(e2)(1e5))
         x2 <- seq(from=lower, to=upper, length=1e5)
         x <- union(x1, x2) 
 
         res <- max(abs(p(e1)(x)-p(e2)(x)))
         names(res) <- "Kolmogorov distance"
-        options(warn = owarn)
 
         return(res)
     })
@@ -79,10 +79,11 @@ setMethod("KolmogorovDist", signature(e1 = "AbscontDistribution",
 setMethod("KolmogorovDist", signature(e1 = "numeric",
                                       e2 = "UnivariateDistribution"),
     function(e1, e2){
-        owarn <- options(warn = -1)
+        o.warn <- getOption("warn")
+        options(warn = -1)
+        on.exit(options(warn=o.warn))
         res <- ks.test(e1, e2@p)$statistic
         names(res) <- "Kolmogorov distance"
-        options(owarn)
 
         return(res)
     })
@@ -131,7 +132,8 @@ setMethod("KolmogorovDist",  signature(e1 = "AcDcLcDistribution",
         lower <- min(lower1, lower2)
         upper <- max(upper1, upper2)
 
-        owarn <- getOption("warn"); options(warn = -1)
+        o.warn <- getOption("warn"); options(warn = -1)
+        on.exit(options(warn=o.warn))
         x1 <- union(r(e1)(1e5), r(e2)(1e5))
         x2 <- seq(from=lower, to=upper, length=1e5)
         x <- union(x1, x2)
@@ -143,7 +145,6 @@ setMethod("KolmogorovDist",  signature(e1 = "AcDcLcDistribution",
 
         res <- max(abs(p(e1)(x)-p(e2)(x)))
         names(res) <- "Kolmogorov distance"
-        options(warn = owarn)
 
 
         return(res)

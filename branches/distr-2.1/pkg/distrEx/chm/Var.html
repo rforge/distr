@@ -460,13 +460,15 @@ resp. <code>help(var,package="stats")</code>.</dd>
 <dt><code>mad</code>, <code>signature(x = "AffLinDistribution")</code>:</dt><dd><code>abs(x@a) * mad(x@X0)</code></dd>
 
 
-<dt><code>skewness</code>, <code>signature(x = "Any")</code>:</dt><dd>interface to the <span class="pkg">e1071</span>-function <code>skewness</code> &mdash; see <code><a onclick="findlink('e1071', 'skewness.html')" style="text-decoration: underline; color: blue; cursor: hand">skewness</a></code>.</dd>
+<dt><code>skewness</code>, <code>signature(x = "Any")</code>:</dt><dd>bias free estimation of skewness under normal distribution (default) as
+well as sample version (by argument <code>sample.version = TRUE</code>).</dd>
 <dt><code>skewness</code>, <code>signature(x = "UnivariateDistribution")</code>:</dt><dd>skewness of univariate distributions using corresponding <code>E()</code>-method.</dd>
 <dt><code>skewness</code>, <code>signature(x = "AffLinDistribution")</code>:</dt><dd>if arguments <code>fun</code>, <code>cond</code> are missing: <code>skewness(x@X0)</code>
 else uses method for <code>signature(x = "UnivariateDistribution")</code></dd>
 
 
-<dt><code>kurtosis</code>, <code>signature(x = "Any")</code>:</dt><dd>interface to the <span class="pkg">e1071</span>-function <code>kurtosis</code> &mdash; see <code><a onclick="findlink('e1071', 'kurtosis.html')" style="text-decoration: underline; color: blue; cursor: hand">kurtosis</a></code>.</dd>
+<dt><code>kurtosis</code>, <code>signature(x = "Any")</code>:</dt><dd>bias free estimation of kurtosis under normal distribution (default) as
+well as sample version (by argument <code>sample.version = TRUE</code>).</dd>
 <dt><code>kurtosis</code>, <code>signature(x = "UnivariateDistribution")</code>:</dt><dd>kurtosis of univariate distributions using corresponding <code>E()</code>-method.</dd>
 <dt><code>kurtosis</code>, <code>signature(x = "AffLinDistribution")</code>:</dt><dd>if arguments <code>fun</code>, <code>cond</code> are missing: <code>kurtosis(x@X0)</code>
 else uses method for <code>signature(x = "UnivariateDistribution")</code></dd>
@@ -607,8 +609,7 @@ Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ru
 <code><a href="distrExIntegrate.html">distrExIntegrate</a></code>, <code><a href="m1df.html">m1df</a></code>, <code><a href="m2df.html">m2df</a></code>,
 <code><a onclick="findlink('distr', 'Distribution-class.html')" style="text-decoration: underline; color: blue; cursor: hand">Distribution-class</a></code>,<br>
 <code><a onclick="findlink('stats', 'sd.html')" style="text-decoration: underline; color: blue; cursor: hand">sd</a></code>, <code><a onclick="findlink('stats', 'var.html')" style="text-decoration: underline; color: blue; cursor: hand">var</a></code>, <code><a onclick="findlink('stats', 'IQR.html')" style="text-decoration: underline; color: blue; cursor: hand">IQR</a></code>,<br>
-<code><a onclick="findlink('stats', 'median.html')" style="text-decoration: underline; color: blue; cursor: hand">median</a></code>, <code><a onclick="findlink('stats', 'mad.html')" style="text-decoration: underline; color: blue; cursor: hand">mad</a></code>,  <code><a onclick="findlink('distr', 'sd.html')" style="text-decoration: underline; color: blue; cursor: hand">sd</a></code>,<br>
-<code><a onclick="findlink('e1071', 'skewness.html')" style="text-decoration: underline; color: blue; cursor: hand">skewness</a></code>, <code><a onclick="findlink('e1071', 'kurtosis.html')" style="text-decoration: underline; color: blue; cursor: hand">kurtosis</a></code>
+<code><a onclick="findlink('stats', 'median.html')" style="text-decoration: underline; color: blue; cursor: hand">median</a></code>, <code><a onclick="findlink('stats', 'mad.html')" style="text-decoration: underline; color: blue; cursor: hand">mad</a></code>,  <code><a onclick="findlink('distr', 'sd.html')" style="text-decoration: underline; color: blue; cursor: hand">sd</a></code>
 </p>
 
 
@@ -646,6 +647,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center">[Package <em>distrEx</em> version 2.0 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distrEx</em> version 2.0.3 <a href="00Index.html">Index]</a></div>
 
 </body></html>

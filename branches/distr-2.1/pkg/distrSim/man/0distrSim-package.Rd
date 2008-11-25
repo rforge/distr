@@ -13,12 +13,12 @@ as introduced there to describe the distributions under which simulations are pe
 \details{
 \tabular{ll}{
 Package: \tab distrSim\cr
-Version: \tab 2.0 \cr
-Date: \tab 2008-05-08 \cr
-Depends: \tab R(>= 2.6.0), methods, graphics, setRNG(>= 2006.2-1), distr(>= 2.0), startupmsg\cr
-Suggests: \tab distrEx(>= 2.0)\cr
+Version: \tab 2.1\cr
+Date: \tab 2008-11-25\cr
+Depends: \tab R(>= 2.6.0), methods, graphics, setRNG(>= 2006.2-1), distr(>=
+2.0), startupmsg\cr
 LazyLoad: \tab yes\cr
-License: \tab GPL (version 2 or later)\cr
+License: \tab LGPL-3\cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
 }
 }

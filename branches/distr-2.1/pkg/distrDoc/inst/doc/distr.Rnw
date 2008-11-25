@@ -22,36 +22,33 @@ pdfkeywords={probability distribution,simulation,estimation},%
 pagebackref,bookmarks,colorlinks,linkcolor=darkblue,citecolor=darkblue,%
 pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 %
+% -------------------------------------------------------------------------------
+\RequirePackage{listings}
 \usepackage{Sweave}
-\RequirePackage{listings}  
+% -------------------------------------------------------------------------------
+\SweaveOpts{keep.source=TRUE}
+% -------------------------------------------------------------------------------
+\definecolor{distrCol}{rgb}{0.0,0.4,0.4}
+<<SweaveListingsPreparations, results=tex, echo=FALSE>>=
+require(SweaveListingUtils)
+SweaveListingPreparations()
+setToBeDefinedPkgs(pkgs = c("distr","distrEx","distrTEst","distrSim",
+                            "distrDoc","distrTeach","distrMod","RandVar"),
+                   keywordstyles = "\\bf\\color{distrCol}")
+@
 %
-\lstset{fancyvrb=true,language=R,basicstyle=\color{Rcolor}\small,
-        commentstyle=\color{Rcomment}\ttfamily\itshape,
-        literate={<-}{{$\leftarrow$}}2,
-        morekeywords=[2]{Norm,Pois,lambda,p,d,r,distroptions}}
-%\newcommand{\ttR}[1]{{\color{Rcolor}\tt #1\color{normal}}}
+% -------------------------------------------------------------------------------
+\newcommand{\pkgExversion}{{\tt 2.0.2}}
+\newcommand{\Reals}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+% -------------------------------------------------------------------------------
 %
-\DefineVerbatimEnvironment{Sinput}{Verbatim}{formatcom=\color{Rcolor}\lstset{fancyvrb=true}}
-\DefineVerbatimEnvironment{Soutput}{Verbatim}{formatcom=\color{Rout}\lstset{fancyvrb=false}}
-\DefineVerbatimEnvironment{Scode}{Verbatim}{fontshape=sl,formatcom=\color{Rcolor}\lstset{fancyvrb=true}}
 \markboth{\sl Packages ``{\tt distr}'', ``{\tt distrSim}'', ``{\tt distrTEst}'', 
 ``{\tt distrEx}'', ``{\tt distrTeach}'', ``{\tt distrMod}''}%
 {\sl Packages ``{\tt distr}'', ``{\tt distrSim}'', ``{\tt distrTEst}'',  
 ``{\tt distrEx}'', ``{\tt distrTeach}'', ``{\tt distrMod}''}
 %
-% -------------------------------------------------------------------------------
-\newcommand{\code}[1]{{\tt\color{Rcolor} #1}}
-%\newcommand{\code}[1]{\lstinline[escapechar=`]{#1}}
-\newcommand{\pkg}[1]{{\tt "#1"}}
-\newcommand{\pkgversion}{{\tt 2.1}}
-\newcommand{\pkgExversion}{{\tt 2.1}}
-\newcommand{\Reals}{\mathbb{R}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\N}{\mathbb{N}}
-% -------------------------------------------------------------------------------
-% new from version 2.5 of R:
-% -------------------------------------------------------------------------------
-\SweaveOpts{keep.source=TRUE}
 % -------------------------------------------------------------------------------
 %
 % -------------------------------------------------------------------------------
@@ -167,8 +164,12 @@ in {\sf R}.\\
 This is possible with package \pkg{distr}. As an example, try
 <<echo=false,results=hide>>=
 ## preparation: set option withSweave to true
-require(distr)
+require(distrTEst)
+require(distrEx)
+require(distrTeach)
+require(distrMod)
 distroptions(withSweave = TRUE)
+options("newDevice" = TRUE)
 @
 <<exam1, eval = TRUE, fig = TRUE>>=
 require(distr)
@@ -972,27 +973,27 @@ we follow the following strategy:
 \\
 \begin{center}
 \begin{tabular}{llll|p{10cm}}
-\code{d} & \code{p} &  \code{q} & \code{r} & reconstruction\\
+\Code{d} & \Code{p} &  \Code{q} & \Code{r} & reconstruction\\
 \hline
 $+$&$+$&$+$&$+$&no reconstruction necessary\\
-$+$&$+$&$+$&$-$&\code{r} as \code{q(X)(runif(n))}\\
-$+$&$+$&$-$&$+$&\code{q} by numerical inversion from \code{p}\\
-$+$&$+$&$-$&$-$&\code{q} again from \code{p} and 
-                         \code{r} again from slot \code{q}\\
-$+$&$-$&$+$&$+$&\code{p} by numerical integration from \code{d}\\
-$+$&$-$&$+$&$-$&\code{p} from \code{d}, and \code{r} from  \code{q}\\
-$+$&$-$&$-$&$+$&\code{p} from \code{d}, and \code{q} from  \code{p}\\
-$+$&$-$&$-$&$-$&\code{p} from \code{d}, 
-\code{q} from \code{p} and \code{r} from  \code{q}\\
-$-$&$+$&$+$&$+$&\code{d} by numerical differentiation (with \code{D1ss}
-from package \pkg{sfsmisc} from \code{p}\\
-$-$&$+$&$+$&$-$&\code{d} from \code{p}, \code{r} from \code{q}\\
-$-$&$+$&$-$&$+$&\code{d}, \code{q}  from \code{p}\\
-$-$&$+$&$-$&$-$&\code{d}, \code{q}  from \code{p}, \code{r} from \code{q}\\
-$-$&$-$&$+$&$+$&\code{p} by numerical inversion from \code{q},
-                \code{d} from \code{p}\\
-$-$&$-$&$+$&$-$&\code{p}, \code{r} from \code{q}, \code{d} from \code{p}\\
-$-$&$-$&$-$&$+$& use \code{RtoDPQ}\\
+$+$&$+$&$+$&$-$&\Code{r} as \Code{q(X)(runif(n))}\\
+$+$&$+$&$-$&$+$&\Code{q} by numerical inversion from \Code{p}\\
+$+$&$+$&$-$&$-$&\Code{q} again from \Code{p} and 
+                         \Code{r} again from slot \Code{q}\\
+$+$&$-$&$+$&$+$&\Code{p} by numerical integration from \Code{d}\\
+$+$&$-$&$+$&$-$&\Code{p} from \Code{d}, and \Code{r} from  \Code{q}\\
+$+$&$-$&$-$&$+$&\Code{p} from \Code{d}, and \Code{q} from  \Code{p}\\
+$+$&$-$&$-$&$-$&\Code{p} from \Code{d}, 
+\Code{q} from \Code{p} and \Code{r} from  \Code{q}\\
+$-$&$+$&$+$&$+$&\Code{d} by numerical differentiation (with \Code{D1ss}
+from package \pkg{sfsmisc} from \Code{p}\\
+$-$&$+$&$+$&$-$&\Code{d} from \Code{p}, \Code{r} from \Code{q}\\
+$-$&$+$&$-$&$+$&\Code{d}, \Code{q}  from \Code{p}\\
+$-$&$+$&$-$&$-$&\Code{d}, \Code{q}  from \Code{p}, \Code{r} from \Code{q}\\
+$-$&$-$&$+$&$+$&\Code{p} by numerical inversion from \Code{q},
+                \Code{d} from \Code{p}\\
+$-$&$-$&$+$&$-$&\Code{p}, \Code{r} from \Code{q}, \Code{d} from \Code{p}\\
+$-$&$-$&$-$&$+$& use \Code{RtoDPQ}\\
 $-$&$-$&$-$&$-$&not allowed\\
 \end{tabular}\\
 \end{center}
@@ -1383,6 +1384,9 @@ is available for \code{X} of class \code{Arcsine}, \code{Beta} (for noncentralit
 \code{Gammad}, \code{Geom}, \code{Hyper}, \code{Logis}, \code{Lnorm}, 
 \code{Nbinom}, \code{Norm}, \code{Pois}, \code{Td}, \code{Unif}, \code{Weibull}.
 \paragraph{examples} $ \mbox{ }$\newline
+<<expectationPrep, eval = TRUE, echo=FALSE>>=
+SweaveListingOptions("inSweave"=TRUE)
+@
 <<expectation, eval = TRUE>>=
 have.distrEx <- suppressWarnings(require("distrEx"))
 if (have.distrEx) 
@@ -1420,9 +1424,10 @@ notation we will use the same name as for the empirical variance, i.e.,
  \code{var}.
 \paragraph{masking \pkg{stats}-method \code{var}}
 To cope with the different argument structure of the empirical variance,
-i.e. \code{var(x, y = NULL, na.rm = FALSE, use)}  and our functional variance, 
+i.e. 
+\code{var(x, y = NULL, na.rm = FALSE, use)}  and our functional variance, 
 i.e., 
-\code{var(x, fun = function(t) {t}, cond, withCond = FALSE, useApply = TRUE, ...)}
+\code$var(x, fun = function(t) {t}, cond, withCond = FALSE, useApply = TRUE, ...)$
 we have to mask the original \pkg{stats}-method:
 <<var, eval = FALSE>>=
   var <- function(x , ...)

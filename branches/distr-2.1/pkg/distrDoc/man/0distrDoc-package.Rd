@@ -8,17 +8,17 @@ distrTeach, distrSim, distrTEst
 }
 \description{
 \pkg{distrDoc} provides documentation in form of a common vignette to 
-packages \pkg{distr}, \pkg{distrEx}, \pkg{distrSim}, \pkg{distrTEst}.
+packages \pkg{distr}, \pkg{distrEx}, \pkg{distrSim}, \pkg{distrTEst},
+\pkg{distrTeach}, and \pkg{distrMod}.
 }
 \details{
 \tabular{ll}{
 Package: \tab distrDoc\cr
-Version: \tab 2.0 \cr
-Date: \tab 2008-05-08 \cr
+Version: \tab 2.1\cr
+Date: \tab 2008-11-25\cr
 Depends: \tab R(>= 2.6.0), tools, distr(>= 2.0.0), startupmsg\cr
-Suggests: \tab distrEx(>= 2.0.0), distrSim(>= 2.0.0), distrTEst(>= 2.0.0), distrTeach(>= 2.0.0), distrMod(>= 2.0.0), Biobase\cr
 LazyLoad: \tab yes\cr
-License: \tab GPL (version 2 or later)\cr
+License: \tab LGPL-3\cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
 }}
 

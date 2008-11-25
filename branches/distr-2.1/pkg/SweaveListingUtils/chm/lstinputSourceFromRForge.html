@@ -27,7 +27,9 @@ from R forge repository
 lstinputSourceFromRForge(PKG, TYPE, FILENAME, PROJECT, from, to,
                                  offset.before = 0, offset.after = 0,
                                  LineLength = 80,
-                                 withLines = ifelse(TYPE=="R", TRUE, FALSE))
+                                 withLines = ifelse(TYPE=="R", TRUE, FALSE),
+                                 fromRForge = getSweaveListingOption("fromRForge"),
+                                 base.url = getSweaveListingOption("base.url"))
 </pre>
 
 
@@ -71,6 +73,13 @@ defaults to 80;</td></tr>
 <tr valign="top"><td><code>withLines</code></td>
 <td>
 logical; shall line-numbers be issued</td></tr>
+<tr valign="top"><td><code>fromRForge</code></td>
+<td>
+logical; shall code be downloaded from an R-Forge mirror?
+Defaults to the corresponding global option</td></tr>
+<tr valign="top"><td><code>base.url</code></td>
+<td>
+character; base url from where to download the code sniplet</td></tr>
 </table>
 
 <h3>Details</h3>
@@ -94,8 +103,9 @@ lstinputSourceFromRForge("distrEx","R","Skewness.R","distr",
                      from = "\"skewness\", signature\\(x = \"Binom\"",
                      to = "\ }\\)")
 @
-</pre>
-within &lsquo;<span class="file">.Rd</span>&rsquo; code, examples are type-set in &lsquo;<span class="file">.R</span>&rsquo; style;
+</pre> (CAVEAT: the space between backslash and right brace in the line with "to = "
+is <EM>not</EM> intended; I simply did not find another work-around)  <br>
+Within &lsquo;<span class="file">.Rd</span>&rsquo; code, examples are type-set in &lsquo;<span class="file">.R</span>&rsquo; style;
 vectors are allowed for arguments <code>from</code>, <code>to</code>;
 <code>lstinputSourceFromRForge</code> uses
 <code><a href="copySourceFromRForge.html">copySourceFromRForge</a></code> for download / reading from cache;
@@ -142,6 +152,6 @@ lstinputSourceFromRForge("distr","R","BinomialDistribution.R","distr",
 
 
 
-<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.1 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.1.1 <a href="00Index.html">Index]</a></div>
 
 </body></html>

@@ -42,44 +42,49 @@ setMethod("IQR","ANY",function(x , ...)
 
 setMethod("mad","ANY",function(x , ...)
        {dots <- list(...)
-        na.rm     <- ifelse(hasArg(na.rm), dots$"na.rm", FALSE)
-        low       <-  ifelse(hasArg(low), dots$"low", FALSE)
-        high      <-  ifelse(hasArg(high), dots$"high", FALSE)
-        center    <-  ifelse(hasArg(center), dots$"center", median(x))
-        constant  <-  ifelse(hasArg(constant), dots$"constant", 1.4826)
-        stats::mad(x = x, center = center, constant = constant ,
-                   na.rm = na.rm, low = low, high = high)})
+        na.rm <- ifelse(hasArg(na.rm), dots$"na.rm", FALSE)
+        low <- ifelse(hasArg(low), dots$"low", FALSE)
+        high <- ifelse(hasArg(high), dots$"high", FALSE)
+        center <- ifelse(hasArg(center), dots$"center", median(x, na.rm = na.rm))
+        constant <- ifelse(hasArg(constant), dots$"constant", 1.4826)
+        stats::mad(x = x, center = center, constant = constant, na.rm = na.rm, low = low, high = high)}
+)
 
 
 ############################################################################
-### ------------------------------------------------
-### In this comment substitute 'xxx' by
-### 'kurtosis', 'skewness',  respectively
-### ------------------------------------------------
-### We intentionally /copy/ function 'xxx' from e1071 in order to avoid
-### the necessity to add e1071 to the 'Depends' tag in the DESCRIPTION
-### file of this package.
-### functionality of 'e1071::xxx' is completely retained, however
-###
 ### acknowledgement:
 ###     methods 'skewness' and 'kurtosis' for particular methods
 ###     have been provided by G. Jay Kerns, gkerns@ysu.edu
+###
+### replaced e1071 version by sample and bias free (under normal distribution) 
+### version for skewness and kurtosis (MK, 13 Nov. 2008)
 ############################################################################
 
 setMethod("skewness","ANY",function(x , ...)
        {dots <- list(...)
-        na.rm     <- ifelse(hasArg(na.rm), dots$"na.rm", FALSE)
-        ### definition taken from package e1071
-        if (na.rm)
-        x <- x[!is.na(x)]
-        sum((x - mean(x))^3)/(length(x) * sd(x)^3)
+        na.rm <- ifelse(hasArg(na.rm), dots$"na.rm", FALSE)
+        sample.version <- ifelse(hasArg(sample.version), dots$"sample.version", FALSE)
+        if (na.rm) x <- x[!is.na(x)]
+        M <- mean(x)
+        m3 <- mean((x-M)^3)
+        m2 <- mean((x-M)^2)
+        bias.cor <- ifelse(sample.version, 1, sqrt(n*(n-1))/(n-2))
+        bias.cor*m3/m2^(3/2)
         })
 
 setMethod("kurtosis","ANY",function(x , ...)
        {dots <- list(...)
         na.rm     <- ifelse(hasArg(na.rm), dots$"na.rm", FALSE)
-        ### definition taken from package e1071
-        if (na.rm)
-        x <- x[!is.na(x)]
-        sum((x - mean(x))^4)/(length(x) * var(x)^2) - 3
-        })
+        sample.version <- ifelse(hasArg(sample.version), dots$"sample.version", FALSE)
+        if (na.rm) x <- x[!is.na(x)]
+        M <- mean(x)
+        m4 <- mean((x-M)^4)
+        m2 <- mean((x-M)^2)
+        n <- length(x)
+        g2 <- m4/m2^2 - 3
+        if(sample.version){
+            return(g2)
+        }else{
+            ## bias free for normal distributed samples
+            return((n-1)/((n-2)*(n-3))*((n+1)*g2 + 6))
+        }})

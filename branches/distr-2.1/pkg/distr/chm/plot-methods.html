@@ -7,11 +7,11 @@
 <table width="100%"><tr><td>plot-methods(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   plot">
 <param name="keyword" value="R:   plot-methods">
-<param name="keyword" value="R:   plot,AffLinUnivarLebDecDistribution-method">
-<param name="keyword" value="R:   plot,UnivarLebDecDistribution-method">
-<param name="keyword" value="R:   plot,AbscontDistribution-method">
-<param name="keyword" value="R:   plot,DiscreteDistribution-method">
-<param name="keyword" value="R:   plot,DistrList-method">
+<param name="keyword" value="R:   plot,AffLinUnivarLebDecDistribution,missing-method">
+<param name="keyword" value="R:   plot,UnivarLebDecDistribution,missing-method">
+<param name="keyword" value="R:   plot,AbscontDistribution,missing-method">
+<param name="keyword" value="R:   plot,DiscreteDistribution,missing-method">
+<param name="keyword" value="R:   plot,DistrList,missing-method">
 <param name="keyword" value=" Methods for Function plot in Package &lsquo;distr&rsquo;">
 </object>
 
@@ -28,9 +28,9 @@ plot-methods
 
 <h3>Usage</h3>
 
-<pre>plot(x,y, ...)
-## S4 method for signature 'AbscontDistribution':
-plot(x, y = NULL, width = 10, height = 5.5,
+<pre>plot(x, y, ...)
+## S4 method for signature 'AbscontDistribution, missing':
+plot(x, width = 10, height = 5.5,
      withSweave = getdistrOption("withSweave"), xlim = NULL, ylim = NULL, ngrid = 1000,
      verticals = TRUE, do.points = TRUE, main = FALSE, inner = TRUE,
      sub = FALSE, bmar = par("mar")[1], tmar = par("mar")[3], ...,
@@ -38,8 +38,8 @@ plot(x, y = NULL, width = 10, height = 5.5,
      col.points = par("col"), col.vert = par("col"), col.main = par("col.main"),  
      col.inner = par("col.main"), col.sub = par("col.sub"), cex.points = 2.0, 
      pch.u = 21, pch.a = 16, mfColRow = TRUE)
-## S4 method for signature 'DiscreteDistribution':
-plot(x, y = NULL, width = 10, height = 5.5,
+## S4 method for signature 'DiscreteDistribution, missing':
+plot(x, width = 10, height = 5.5,
      withSweave = getdistrOption("withSweave"), xlim = NULL, ylim = NULL, verticals = TRUE,
      do.points = TRUE, main = FALSE, inner = TRUE, sub = FALSE, 
      bmar = par("mar")[1], tmar = par("mar")[3], ..., 
@@ -47,9 +47,9 @@ plot(x, y = NULL, width = 10, height = 5.5,
      col.points = par("col"), col.hor = par("col"), col.vert = par("col"), 
      col.main = par("col.main"), col.inner = par("col.main"), 
      col.sub = par("col.sub"),  cex.points = 2.0, pch.u = 21, pch.a = 16, mfColRow = TRUE)
-## S4 method for signature
-##   'AffLinUnivarLebDecDistribution':
-plot(x, y = NULL, width = 10, 
+## S4 method for signature 'AffLinUnivarLebDecDistribution,
+##   missing':
+plot(x, width = 10, 
      height = 5.5, withSweave = getdistrOption("withSweave"), xlim = NULL, ylim = NULL, ngrid = 1000,
      verticals = TRUE, do.points = TRUE, main = FALSE, inner = TRUE, sub = FALSE,
      bmar = par("mar")[1], tmar = par("mar")[3], ..., cex.main = par("cex.main"), 
@@ -57,8 +57,9 @@ plot(x, y = NULL, width = 10,
      col.hor = par("col"), col.vert = par("col"), col.main = par("col.main"), 
      col.inner = par("col.main"), col.sub = par("col.sub"),  cex.points = 2.0,
      pch.u = 21, pch.a = 16, mfColRow = TRUE)
-## S4 method for signature 'UnivarLebDecDistribution':
-plot(x, y = NULL, width = 10, 
+## S4 method for signature 'UnivarLebDecDistribution,
+##   missing':
+plot(x, width = 10, 
      height = 14.5, withSweave = getdistrOption("withSweave"), xlim = NULL, ylim = NULL, ngrid = 1000,
      verticals = TRUE, do.points = TRUE, main = FALSE, inner = TRUE, sub = FALSE,
      bmar = par("mar")[1], tmar = par("mar")[3], ..., cex.main = par("cex.main"), 
@@ -66,8 +67,8 @@ plot(x, y = NULL, width = 10,
      col.hor = par("col"), col.vert = par("col"), col.main = par("col.main"), 
      col.inner = par("col.main"), col.sub = par("col.sub"),  cex.points = 2.0,
      pch.u = 21, pch.a = 16, mfColRow = TRUE)
-## S4 method for signature 'DistrList':
-plot(x, y = NULL, ...)
+## S4 method for signature 'DistrList, missing':
+plot(x, y, ...)
 </pre>
 
 
@@ -84,7 +85,7 @@ object of class
 <code>"DistrList"</code>: (list of) distribution(s) to be plotted </td></tr>
 <tr valign="top"><td><code>y</code></td>
 <td>
-not used; for compatibility with generic <code>plot</code></td></tr>
+missing </td></tr>
 <tr valign="top"><td><code>xlim</code></td>
 <td>
 the x limits (x1, x2) of the plot.  Note that <code>x1 &gt; x2</code> is
@@ -198,16 +199,16 @@ addtional arguments for <code>plot</code> &mdash; see
 <h3>Details</h3>
 
 <dl>
-<dt>plot</dt><dd><code>signature(object = "AffLinUnivarLebDecDistribution")</code>: plots  
+<dt>plot</dt><dd><code>signature(x = "AffLinUnivarLebDecDistribution", y = "missing")</code>: plots  
 cumulative distribution function and the quantile function </dd>
-<dt>plot</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code>: plots a set of
+<dt>plot</dt><dd><code>signature(x = "UnivarLebDecDistribution", y = "missing")</code>: plots a set of
 eight plots: in the first row,  it plots the 
 cumulative distribution function and the quantile function; in the second
 row the absolutely continuous part (with density, cdf and quantile fct.),
 and in the last row the discrete part (with prob.fct., cdf and quantile fct.). </dd>
-<dt>plot</dt><dd><code>signature(object = "AbscontDistribution")</code>: plots density, 
+<dt>plot</dt><dd><code>signature(x = "AbscontDistribution", y = "missing")</code>: plots density, 
 cumulative distribution function and the quantile function </dd>
-<dt>plot</dt><dd><code>signature(object = "DiscreteDistribution")</code>: plots probability 
+<dt>plot</dt><dd><code>signature(x = "DiscreteDistribution", y = "missing")</code>: plots probability 
 function, cumulative distribution function and the quantile function</dd>
 </dl>
 <p>
@@ -318,6 +319,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.0 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distr</em> version 2.0.1 <a href="00Index.html">Index]</a></div>
 
 </body></html>

@@ -29,3 +29,18 @@ setMethod("scale<-", "Gumbel",
             stop("'value' has to be a single positive number")
         new("Gumbel", loc = loc(object), scale = value)
     })
+
+## extra methods for Gumbel distribution
+setMethod("+", c("Gumbel","numeric"),
+          function(e1, e2){
+            if (length(e2)>1) stop("length of operator must be 1")
+            new("Gumbel", loc = loc(e1) + e2, scale = scale(e1)) 
+          })
+
+setMethod("*", c("Gumbel","numeric"),
+          function(e1, e2){
+            if (length(e2)>1) stop("length of operator must be 1")
+            if (isTRUE(all.equal(e2,0))) 
+                return(new("Dirac", location = 0, .withArith = TRUE))
+            new("Gumbel", loc = loc(e1) * e2, scale = scale(e1)*abs(e2))
+          })
