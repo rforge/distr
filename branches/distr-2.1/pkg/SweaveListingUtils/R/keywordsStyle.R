@@ -51,7 +51,7 @@ lstsetLanguage <- function(pkgs, posIdx, keywordstyles, overwrite = FALSE){
            cat(kwd,sep = seps,  fill = FALSE); #cat("%\n")
            if(ml<=5) cat("\n")
            cat("},%\nkeywordstyle={[",num+2,"]",kws,"}%\n}\n", sep = "")
-           cat(paste("%\n%\n"))
+           cat(paste("%\n%\n\n"))
            .alreadyDefinedPkgs <<- c(.alreadyDefinedPkgs,pkg)
         }
         return(invisible())
@@ -90,8 +90,8 @@ lstsetLanguage <- function(pkgs, posIdx, keywordstyles, overwrite = FALSE){
 
 changeKeywordstyles <- function(pkgs, keywordstyles){
      setkws <- function(num, kws){
-        cat("\\lstdefinelanguage{R}%\n")
-        cat("{keywordstyle={[",num+2,"]",kws,"}\n}\n", sep = "")
+        cat("%\n\\lstset%\n")
+        cat("{keywordstyle={[",num+1,"]",kws,"}\n}\n", sep = "")
         }
 
      alreadyDefinedPkgs <- .alreadyDefinedPkgs

@@ -18,13 +18,18 @@
      unlockBinding(".CacheLength", asNamespace("SweaveListingUtils"))
      unlockBinding(".SweaveListingOptions", asNamespace("SweaveListingUtils"))
      msga <- gettext(
-    "Some functions from package 'base' are intentionally masked\n---see SweaveListingMASK().\n"
+    "Some functions from package 'base' are intentionally masked ---see SweaveListingMASK().\n"
                    )
     msgb <- gettext(
-    "Note that global options are controlled by SweaveListingoptions()\n---c.f. ?\"SweaveListingoptions\"."
+    "Note that global options are controlled by SweaveListingoptions() ---c.f. ?\"SweaveListingoptions\"."
                    )
+
      buildStartupMessage(pkg = "SweaveListingUtils", msga, msgb,  
-                         library = library, packageHelp = TRUE)
+                         library = library, packageHelp = TRUE,
+                    VIGNETTE = gettext(
+"There is a vignette to this package; try vignette(\"ExampleSweaveListingUtils\")."
+                                      )
+                         )
 
   invisible()
 } 
@@ -298,19 +303,19 @@ lstinputSourceFromRForge <- function(PKG, TYPE, FILENAME, PROJECT, from, to,
         if(TYPE=="man"){
           ex.from <- if(length(gr <- grep("\\\\examples\\{",RL[[k]]))) gr[1] else lR[[k]]
           ex.to <- if(length(gr <- grep("\\}",RL[[k]][ex.from:lR[[k]]]))) ex.from+gr[1]-1 else 1
-          cat(line,"\\Rdlstset\n",sep="")
-          cat("\\begin{lstlisting}\n")
+          cat(line) #,"\\Rdlstset\n",sep="")
+          cat("\\begin{lstlisting}[style=Rdstyle]\n")
           if(ex.from<=ex.to){
              writeLines(RL[[k]][1:(ex.from)])
              cat("\\end{lstlisting}\\vspace{-2ex}\n")
-             cat(line,"\\Rlstset\n",sep="")
-             cat("\\begin{lstlisting}[basicstyle = \\color{Rcolor}")
-             cat("\\scriptsize, xleftmargin = 2em]\n")
+             cat(line) # ,"\\Rlstset\n",sep="")
+             cat("\\begin{lstlisting}[style=Rstyle,")
+             cat("basicstyle = \\scriptsize\\color{Rcolor}, xleftmargin = 2em]\n")
              writeLines(RL[[k]][(ex.from+1):(ex.to-1)])
              if(ex.to <lR){
                 cat("\\end{lstlisting}\\vspace{-3ex}\n")
-                cat(line,"\\Rdlstset\n",sep="")
-                cat("\\begin{lstlisting}\n")
+                cat(line) #,"\\Rdlstset\n",sep="")
+                cat("\\begin{lstlisting}[style=Rdstyle]\n")
                 writeLines(RL[[k]][(ex.to):lR[[k]]])
                 }
           }else writeLines(RL[[k]])

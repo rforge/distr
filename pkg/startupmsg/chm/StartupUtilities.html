@@ -14,6 +14,7 @@
 <param name="keyword" value="R:   StartupMessage">
 <param name="keyword" value="R:   startupPackage">
 <param name="keyword" value="R:   startupType">
+<param name="keyword" value="R:   startupEndline">
 <param name="keyword" value="R:   startupMessage">
 <param name="keyword" value="R:   suppressStartupMessages">
 <param name="keyword" value="R:   onlytypeStartupMessages">
@@ -42,12 +43,13 @@ infoShow(pkg, filename, library=NULL)
 NEWS(pkg, library=NULL)
 
 StartupMessage(message, call = NULL, pkg="", 
-               type="version") 
+               type="version", endline = FALSE) 
 startupPackage(startupmessage) 
 startupType(startupmessage) 
+startupEndline(startupmessage) 
 
 startupMessage(..., domain = NULL, pkg = "", 
-               type="version")
+               type="version", endline = FALSE)
 
 suppressStartupMessages(expr)
 onlytypeStartupMessages(expr,atypes="version")
@@ -79,6 +81,9 @@ a call expression &ndash; the call part of an S3-object of class <code>StartupMe
 <td>
 character &ndash; the type part of an S3-object of class <code>StartupMessage</code>; currently, 
 type should be in <code>c("version","notabene","information")</code>.</td></tr>
+<tr valign="top"><td><code>endline</code></td>
+<td>
+a logical &ndash; the decision on the ending of an S3-object of class <code>StartupMessage</code></td></tr>
 <tr valign="top"><td><code>startupmessage</code></td>
 <td>
 the <code>StartupMessage</code> object whose slot <code>package</code> is to be inspected</td></tr>
@@ -118,9 +123,11 @@ A new sub-condition <code>StartupMessage</code> to <code>message</code> is intro
 with a constructor with the same name. 
 </p>
 <p>
-In addition to the slots of <code>message</code>, it also has slots <code>package</code> (for the package they are for)
-and <code>type</code> (currently in  <code>c("version","notabene","information")</code>).
-These slot may be accessed by <code>startupPackage</code> and <code>startupType</code>, respectively.
+In addition to the slots of <code>message</code>, it also has slots <code>package</code> (for the package they are for), 
+<code>type</code> (currently in  <code>c("version","notabene","information")</code>), and
+<code>endline</code> (a logical).
+These slots may be accessed by <code>startupPackage</code>, <code>startupType</code>, and
+<code>startupEndline</code>, respectively.
 </p>
 <p>
 <code>startupMessage</code> issues a start-up message which also is represented as a condition.
@@ -225,6 +232,6 @@ NEWS("stats") ## no NEWS file;
 
 
 
-<hr><div align="center">[Package <em>startupmsg</em> version 0.5 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>startupmsg</em> version 0.5.2 <a href="00Index.html">Index]</a></div>
 
 </body></html>

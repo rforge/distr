@@ -27,7 +27,7 @@ Illustration of package 'startupmsg'
 <pre>
 mySMHandler(c)
 mystartupMessage(..., domain = NULL, pkg = "", type="version", 
-                 SMHandler=mySMHandler)
+                 SMHandler=mySMHandler, endline = FALSE)
 
 buildStartupMessage(..., pkg, library=NULL, domain=NULL, 
                     packageHelp=FALSE, MANUAL = NULL, VIGNETTE = NULL,
@@ -61,6 +61,9 @@ type should be in <code>c("version","notabene","information")</code>.</td></tr>
 <td>
 function to handle the output of an object of class <code>StartupMessage</code>, defaults to <code>mySMHandler</code>;
 btw: <code>SMHandler</code> stands for /S/tartup/M/essage/Handler/</td></tr>
+<tr valign="top"><td><code>endline</code></td>
+<td>
+logical: shall there be an empty line (TRUE) or a line with linestarter in the end?</td></tr>
 <tr valign="top"><td><code>packageHelp</code></td>
 <td>
 logical: is there help available as <code>?</code><VAR>&lt;pkg-name&gt;</VAR> ?</td></tr>
@@ -184,6 +187,6 @@ buildStartupMessage(pkg="stats", msg, packageHelp=TRUE, MANUAL="demo/nlm.R")
 
 
 
-<hr><div align="center">[Package <em>startupmsg</em> version 0.5 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>startupmsg</em> version 0.5.2 <a href="00Index.html">Index]</a></div>
 
 </body></html>

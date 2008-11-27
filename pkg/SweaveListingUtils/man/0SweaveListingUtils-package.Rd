@@ -15,8 +15,8 @@ thereby avoiding inconsistencies between vignette and documented source code
 \details{
 \tabular{ll}{
 Package: \tab SweaveListingUtils\cr
-Version: \tab 0.1.1\cr
-Date: \tab 2008-11-24\cr
+Version: \tab 0.1.1 \cr
+Date: \tab 2008-11-27 \cr
 Depends: \tab R(>= 2.0.0), startupmsg\cr
 LazyLoad: \tab yes\cr
 License: \tab LGPL-3\cr
@@ -29,7 +29,8 @@ offers a very powerful setup for typesetting [program] code in TeX.
 For quite some time there has already been a corresponding language definition
 for \R. We enhance this definition and also introduce a corresponding 
 "language" definition file to typeset \file{.Rd} code 
-(file \file{Rdlistings.sty} in the \file{TeX} subfolder of this package).
+(file \file{Rdlistings.sty} in the \file{TeX} subfolder of this package,
+which is according to Duncan Murdoch's ``Parsing Rd Files'' as of Nov. 4 2008.).
 
 In recent versions \file{listings} also cooperates with TeX package 
 \file{fancyvrb}, so it can be configured to enhance Sweave typesetting.
@@ -110,6 +111,11 @@ taglist
 print.taglist
 }
 }
+\section{Example - .Rnw vignette file}{
+An example \file{.Rnw} file, \file{ExampleSweaveListingUtils.Rnw}, may 
+be found in the \file{doc} folder of this package.
+}
+
 
 \author{
 Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}\cr

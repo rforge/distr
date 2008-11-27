@@ -1,0 +1,226 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Vignette  "How to work with SweaveListingUtils"
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\VignetteIndexEntry{ExampleSweaveListingUtils}
+%\VignetteDepends{startupmsg}
+%\VignetteKeywords{Sweave,TeX package listings, listings, R-forge}
+%\VignettePackage{SweaveListingUtils}
+%
+\documentclass[10pt]{article}
+\usepackage{geometry}
+%
+\usepackage{color}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.75}
+\definecolor{distrCol}{rgb}{0.0,0.4,0.4}
+%
+\usepackage{ifpdf}
+%
+\usepackage{amssymb}
+\usepackage[%
+baseurl={r-forge.r-project.org},%
+pdftitle={How to work with SweaveListingUtils},%
+pdfauthor={Peter Ruckdeschel},%
+pdfsubject={SweaveListingUtils},%
+pdfkeywords={Sweave,TeX package listings, listings, R-forge},%
+pagebackref,bookmarks,colorlinks,linkcolor=darkblue,citecolor=darkblue,%
+pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
+%
+\markboth{\sl How to work with SweaveListingUtils}%
+{\sl How to work with SweaveListingUtils}
+%
+% -------------------------------------------------------------------------------
+\newcommand{\Reals}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+%
+% -------------------------------------------------------------------------------
+\RequirePackage{listings}
+\usepackage{Sweave}
+% -------------------------------------------------------------------------------
+\SweaveOpts{keep.source=TRUE}
+% -------------------------------------------------------------------------------
+<<SweaveListingsPreparations, results=tex, echo=FALSE>>=
+require(SweaveListingUtils)
+SweaveListingoptions(intermediate = FALSE)
+setToBeDefinedPkgs(pkgs = c("SweaveListingUtils","distr"),
+                   keywordstyles = c("\\bf\\color{blue}","\\bf\\color{red}"))
+SweaveListingPreparations()
+changeKeywordstyles(pkgs = c("SweaveListingUtils","distr"),
+                   keywordstyles = c("\\bf\\color{blue}","\\bf\\color{red}"))
+@
+% -------------------------------------------------------------------------------
+\lstdefinestyle{TeXstyle}{fancyvrb=true,escapechar=`,language=[LaTeX]TeX,%
+                        basicstyle={\color{black}\small},%
+                        keywordstyle={\bf\color{black}},%
+                        commentstyle={\color{Rcomment}\ttfamily\itshape},%
+                        literate={<-}{<-}2{<<-}{<<-}2}
+%
+% -------------------------------------------------------------------------------
+\begin{document}
+% -------------------------------------------------------------------------------
+\title{How to work with SweaveListingUtils}
+%,version \pkgExversion}
+\author{\small Peter Ruckdeschel\thanks{Fraunhofer ITWM, Kaiserslautern}
+\smallskip\\
+\small Fraunhofer ITWM\\[-.5ex]
+\small Fraunhofer Platz 1\\[-.5ex]
+\small 67663 Kaiserslautern\\[-.5ex]
+\small Germany\\
+\small e-Mail: {\small \tt Peter.Ruckdeschel@itwm.fraunhofer.de}\\
+}
+\maketitle
+% -------------------------------------------------------------------------------
+\begin{abstract}
+% -------------------------------------------------------------------------------
+In this vignette, we give short examples how to use package
+\pkg{SweaveListingUtils} in a vignette.
+% -------------------------------------------------------------------------------
+\end{abstract}
+% -------------------------------------------------------------------------------
+\section{Preparations: Preamble}
+% -------------------------------------------------------------------------------
+You should include into the preamble of your \file{.Rnw} file something like
+%
+%------------
+% use \lstinputlisting{....} 
+% to avoid that Sweave interprets the chunks in preamble.tex
+%------------
+\lstinputlisting[style=TeXstyle]{preamble.tex}
+Actually, after \code{Sweave}-ing the \file{.Rnw} file
+to a corresponding \file{.tex} file,   this should expand to something like
+%------------
+% use \lstinputlisting{....} 
+% to avoid that Sweave interprets the chunks in preambleExp.tex
+%------------
+\lstinputlisting[style=TeXstyle]{preambleExp.tex}
+% -------------------------------------------------------------------------------
+\section{Example of code coloring}
+% -------------------------------------------------------------------------------
+Any keyword of some new {\sf R} package ``loaded in'' by \code{require} 
+or \code{library} which is on the \code{search} list item of this package
+afterwords when used in \lstinline[style=TeXstyle]`\lstinline{ .... }` or
+\lstinline[style=TeXstyle]`\begin{lstlisting} .... \end{lstlisting}`
+or in some Sweave chunk is typeset in style \code{keywordstyle}.
+More specifically, with argument \code{keywordstyles} of functions
+\code{setToBeDefinedPkgs} or \code{lstsetLanguage} 
+all packages may obtain their own style; in the preamble, for instance,
+package \pkg{SweaveListingUtils} is colored blue, and 
+\pkg{distr} (to be attached just now) will be colored red.
+Also, comments are set in a different style (by default using color 
+\code{Rcomment}). Of course, instead of colors, you may use any other markup,
+like different font shapes, fonts, font sizes or whatever comes into your
+mind. For this purpose, commands \code{setToBeDefinedPkgs} and 
+\code{changeKeywordstyles} are helpful. 
+
+Note that in order to define these new keywords correctly,
+they must not be included into a 
+\lstinline[style=TeXstyle]`\begin{Schunk} .... \end{Schunk}`
+environment, so  we use
+%------------
+% use \lstinputlisting{....} 
+% to avoid that Sweave interprets the chunks in reqdistr.tex
+%------------
+\lstinputlisting[style=TeXstyle]{reqdistr.tex}
+
+<<Prepa, echo=FALSE, results=tex>>=
+require(distr)
+@
+
+%
+Example (note the different colorings):
+%------------
+% use \lstinputlisting{....} 
+% to avoid that Sweave interprets the chunks in exam1.tex
+%------------
+\lstinputlisting[style=TeXstyle]{exam1.tex}
+%
+which gives
+<<exam1, eval = TRUE>>=
+require(distr)
+N <- Norm(mean = 2, sd = 1.3)
+P <- Pois(lambda = 1.2)
+Z <- 2*N + 3 + P
+Z
+p(Z)(0.4)
+q(Z)(0.3)
+@
+
+{\bf Remark: }{\tt .Rd} keywords will be taken from file \file{Rdlistings.sty} 
+in the \file{TeX} subfolder of this package,
+which is according to Duncan Murdoch's ``Parsing Rd Files'' as of Nov. 4 2008.
+
+%
+% -------------------------------------------------------------------------------
+\section{Including Code Sniplets from R Forge}
+% -------------------------------------------------------------------------------
+When documenting code, which is not necessarily of the same package, and be it 
+{\sf R} code or {\tt .Rd}-code, we provide helper functions to integrate code 
+sniplets from an url (by default, we use the svn server at R-forge in its 
+most recent version). This can be useful to stay consistent with the current 
+version of the code without having to update vignettes all the time. 
+To this end, besides referencing by line numbers, 
+\code{lstinputSourceFromRForge} also offers
+referencing by matching regular expressions.
+
+
+For instance, to refer to some code of file \file{R/AllClasses.R}
+in package \pkg{distr}, we would use:  
+%
+%------------
+% use \lstinputlisting{....} 
+% to avoid that Sweave interprets the chunks in AllClass.tex
+%------------
+\lstinputlisting[style=TeXstyle]{AllClass.tex}
+
+% -------------------------------------------------------------------------------
+which returns
+
+<<AllClass1, echo=FALSE, results=tex>>=
+lstinputSourceFromRForge("distr","R","AllClasses.R","distr",
+                     "## Class: BinomParameter", "#-")
+@
+
+%
+Note the referencing with regular expressions instead of line numbers,
+which helps if you later on add/delete (other) code in this file.
+
+To refer to a whole \file{.Rd} file, use something like the following
+chunk:
+%
+%------------
+% use \lstinputlisting{....} 
+% to avoid that Sweave interprets the chunks in BinomParam.tex
+%------------
+\lstinputlisting[style=TeXstyle]{BinomParam.tex}
+
+giving 
+<<BinomParam, results=tex, echo=FALSE>>=
+lstinputSourceFromRForge("distr","man","BinomParameter-class.Rd","distr")
+@
+
+Note that corresponding examples are still typeset in {\sf R} style;
+however, up to now this will only be done in the (static) {\tt listings} style
+{\tt Rstyle}, as defined in the preamble; keywords from attached packages 
+will not be used. Reason for this: I do not yet know how to save a current 
+``state of style'' in a corresponding {\tt listings} style.
+
+%
+
+\begin{thebibliography}{1}
+
+\bibitem{R:K:S:C:04}
+Ruckdeschel P., Kohl M., Stabla T., and Camphausen F. 
+\newblock {S4 Classes for Distributions.} 
+\newblock {\em R-News\/}, {\bf 6}(2): 10--13.
+\newblock http://CRAN.R-project.org/doc/Rnews/Rnews\_2006-2.pdf
+%\newblock See also {http://www.uni-bayreuth.de/departments/math/org/mathe7/RUCKDESCHEL/pubs/distr.pdf}
+
+\end{thebibliography}
+
+% -------------------------------------------------------------------------------
+\end{document}
+% -------------------------------------------------------------------------------

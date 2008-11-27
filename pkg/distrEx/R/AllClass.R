@@ -8,11 +8,11 @@
 .onAttach <- function(library, pkg)
 {
 unlockBinding(".distrExOptions", asNamespace("distrEx"))
-msga <- gettext("Note: Packages \"e1071\", \"moments\", \"fBasics\" should be attached\n")
+msga <- gettext("Note: Packages \"e1071\", \"moments\", \"fBasics\" should be attached ")
 msgb <- gettext("/before/ package \"distrEx\". See distrExMASK().")
 buildStartupMessage(pkg = "distrEx", msga, msgb, library = library, packageHelp = TRUE, 
 #                    MANUAL="http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/distr.pdf",
-VIGNETTE = gettext("Package \"distrDoc\" provides a vignette to this package as well as\nto several related packages; try vignette(\"distr\")."))
+VIGNETTE = gettext("Package \"distrDoc\" provides a vignette to this package as well as to several related packages; try vignette(\"distr\")."))
   invisible()
 }
 

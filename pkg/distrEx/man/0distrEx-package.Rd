@@ -26,8 +26,8 @@ distrEx -- Extensions of package distr
 \details{
 \tabular{ll}{
 Package: \tab distrEx\cr
-Version: \tab 2.0.3\cr
-Date: \tab 2008-11-24\cr
+Version: \tab 2.0.3 \cr
+Date: \tab 2008-11-27 \cr
 Depends: \tab R(>= 2.6.0), methods, distr(>= 2.0), evd, startupmsg\cr
 LazyLoad: \tab yes\cr
 License: \tab LGPL-3\cr

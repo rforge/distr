@@ -21,11 +21,11 @@ setClassUnion("vectororNULL", c("vector","NULL"))
 {
   unlockBinding(".distrSimoptions", asNamespace("distrSim"))
     msga <- gettext(
-    "Some functions from package 'stats' are intentionally masked\n---see distrSimMASK().\n"
+    "Some functions from package 'stats' are intentionally masked ---see distrSimMASK().\n"
                    )
   buildStartupMessage(pkg="distrSim", msga, packageHelp=TRUE, library=library, 
                #     MANUAL="http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/distr.pdf",
-  VIGNETTE = gettext("Package \"distrDoc\" provides a vignette to this package as well as\nto several related packages; try vignette(\"distr\")."))
+  VIGNETTE = gettext("Package \"distrDoc\" provides a vignette to this package as well as to several related packages; try vignette(\"distr\")."))
 ###
   invisible()
 }

@@ -53,13 +53,13 @@ echo $contents; } ?>
 of R-Packages&nbsp;<span style="color: rgb(51, 51, 255);"></span></big>
 <a href="http://www.r-project.org/"> <img
  style="border: 0px solid ; width: 152px; height: 101px;" alt="R-Logo"
- src="Rlogo.jpg"></a></span></h1>
+ src="RLOGO.jpg"></a></span></h1>
 </div>
 <hr style="width: 100%; height: 2px;">
 <div style="text-align: justify;"> Version: 2.0<br>
 Release Date: 2008-09-05 <br>
 Authors: <a
- href="mailto:peter.ruckdeschel@uni-bayreuth.de?subject=%5Bdistr%5D">Peter
+ href="mailto:peter.ruckdeschel@itwm.fraunhofer.de?subject=%5Bdistr%5D">Peter
 Ruckdeschel</a>, <a
  href="mailto:matthias.kohl@stamats.de?subject=%5Bdistr%5D">Matthias
 Kohl</a>, <a href="mailto:statho3@web.de?subject=%5Bdistr%5D">Thomas
@@ -94,7 +94,8 @@ This family currently comprises the packages<br>
   <li><a href="distrMod.html"><span style="color: rgb(51, 102, 255);">distrMod</span></a></li>
   <li><a href="distrTeach.html"><span style="color: rgb(51, 102, 255);">distrTeach</span></a></li>
 </ul>
-It also contains package <span style="color: rgb(51, 102, 255);">startupmsg</span><br>
+It also contains packages <span style="color: rgb(51, 102, 255);">startupmsg</span>
+and <span style="color: rgb(51, 102, 255);">SweaveListingUtils</span> <br>
 Besides the packages the project also contains the following folders<br>
 <ul>
 <li>pkg/Mail<br>
@@ -149,7 +150,7 @@ href="http://distr.r-forge.r-project.org/HOWTO-collaborate.txt">HOWTO-collaborat
 maintained by <a
  href="mailto:peter.ruckdeschel@itwm.fraunhofer.de?subject=distr-package">Peter
 Ruckdeschel</a>
-and last updated on 2008-08-28.<br>
+and last updated on 2008-11-26.<br>
 </div>
 
 <p> The <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. </p>
