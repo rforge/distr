@@ -1,5 +1,5 @@
 Package: distrTEst
-Version: 2.0.2
+Version: 2.0.3
 Date: 2008-11-24
 Title: Estimation and Testing classes based on package distr
 Depends: R(>= 2.6.0), methods, graphics, setRNG(>= 2006.2-1), distr(>=
