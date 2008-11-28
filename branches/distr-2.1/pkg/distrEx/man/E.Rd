@@ -20,6 +20,8 @@
 \alias{E,MultivariateDistribution,function,missing-method}
 \alias{E,DiscreteMVDistribution,function,missing-method}
 \alias{E,UnivarLebDecDistribution,function,missing-method}
+\alias{E,AcDcLcDistribution,ANY,ANY-method}
+\alias{E,CompoundDistribution,missing,missing-method}
 \alias{E,UnivariateCondDistribution,missing,numeric-method}
 \alias{E,AbscontCondDistribution,missing,numeric-method}
 \alias{E,DiscreteCondDistribution,missing,numeric-method}
@@ -56,23 +58,23 @@
 \usage{
 E(object, fun, cond, ...)
 
-\S4method{E}{UnivariateDistribution,function,missing}(object, fun, cond, useApply = TRUE, ...)
+\S4method{E}{UnivariateDistribution,function,missing}(object, fun, useApply = TRUE, ...)
 
-\S4method{E}{AbscontDistribution,function,missing}(object, fun, cond, useApply = TRUE, ...)
+\S4method{E}{AbscontDistribution,function,missing}(object, fun,  useApply = TRUE, ...)
 
-\S4method{E}{DiscreteDistribution,function,missing}(object, fun, cond, useApply = TRUE, ...)
+\S4method{E}{DiscreteDistribution,function,missing}(object, fun, useApply = TRUE, ...)
 
-\S4method{E}{AffLinDistribution,missing,missing}(object, fun, cond)
+\S4method{E}{AffLinDistribution,missing,missing}(object)
 
-\S4method{E}{AffLinUnivarLebDecDistribution,missing,missing}(object, fun, cond)
+\S4method{E}{AffLinUnivarLebDecDistribution,missing,missing}(object)
 
-\S4method{E}{MultivariateDistribution,function,missing}(object, fun, cond, useApply = TRUE, ...)
+\S4method{E}{MultivariateDistribution,function,missing}(object, fun, useApply = TRUE, ...)
 
-\S4method{E}{DiscreteMVDistribution,function,missing}(object, fun, cond, useApply = TRUE, ...)
+\S4method{E}{DiscreteMVDistribution,function,missing}(object, fun, useApply = TRUE, ...)
 
-\S4method{E}{AbscontCondDistribution,missing,numeric}(object, fun, cond, useApply = TRUE)
+\S4method{E}{AbscontCondDistribution,missing,numeric}(object, cond, useApply = TRUE)
 
-\S4method{E}{DiscreteCondDistribution,missing,numeric}(object, fun, cond, useApply = TRUE)
+\S4method{E}{DiscreteCondDistribution,missing,numeric}(object, cond, useApply = TRUE)
 
 \S4method{E}{UnivariateCondDistribution,function,numeric}(object, fun, cond, withCond = FALSE, useApply = TRUE, ...)
 
@@ -82,26 +84,29 @@ E(object, fun, cond, ...)
 
 \S4method{E}{DiscreteCondDistribution,function,numeric}(object, fun, cond, withCond = FALSE, useApply = TRUE, ...)
 
-\S4method{E}{Beta,missing,missing}(object, fun, cond)
-\S4method{E}{Binom,missing,missing}(object, fun, cond)
-\S4method{E}{Cauchy,missing,missing}(object, fun, cond)
-\S4method{E}{Chisq,missing,missing}(object, fun, cond)
-\S4method{E}{Dirac,missing,missing}(object, fun, cond)
-\S4method{E}{DExp,missing,missing}(object, fun, cond)
-\S4method{E}{Exp,missing,missing}(object, fun, cond)
-\S4method{E}{Fd,missing,missing}(object, fun, cond)
-\S4method{E}{Gammad,missing,missing}(object, fun, cond)
-\S4method{E}{Geom,missing,missing}(object, fun, cond)
-\S4method{E}{Hyper,missing,missing}(object, fun, cond)
-\S4method{E}{Logis,missing,missing}(object, fun, cond)
-\S4method{E}{Lnorm,missing,missing}(object, fun, cond)
-\S4method{E}{Nbinom,missing,missing}(object, fun, cond)
-\S4method{E}{Norm,missing,missing}(object, fun, cond)
-\S4method{E}{Pois,missing,missing}(object, fun, cond)
-\S4method{E}{Unif,missing,missing}(object, fun, cond)
-\S4method{E}{Td,missing,missing}(object, fun, cond)
-\S4method{E}{Weibull,missing,missing}(object, fun, cond)
-\S4method{E}{Arcsine,missing,missing}(object, fun, cond)
+\S4method{E}{AcDcLcDistribution,ANY,ANY}(object, fun, cond, ... )
+\S4method{E}{CompoundDistribution,missing,missing}(object)
+
+\S4method{E}{Beta,missing,missing}(object)
+\S4method{E}{Binom,missing,missing}(object)
+\S4method{E}{Cauchy,missing,missing}(object)
+\S4method{E}{Chisq,missing,missing}(object)
+\S4method{E}{Dirac,missing,missing}(object)
+\S4method{E}{DExp,missing,missing}(object)
+\S4method{E}{Exp,missing,missing}(object)
+\S4method{E}{Fd,missing,missing}(object)
+\S4method{E}{Gammad,missing,missing}(object)
+\S4method{E}{Geom,missing,missing}(object)
+\S4method{E}{Hyper,missing,missing}(object)
+\S4method{E}{Logis,missing,missing}(object)
+\S4method{E}{Lnorm,missing,missing}(object)
+\S4method{E}{Nbinom,missing,missing}(object)
+\S4method{E}{Norm,missing,missing}(object)
+\S4method{E}{Pois,missing,missing}(object)
+\S4method{E}{Unif,missing,missing}(object)
+\S4method{E}{Td,missing,missing}(object)
+\S4method{E}{Weibull,missing,missing}(object)
+\S4method{E}{Arcsine,missing,missing}(object)
 
 }
 \arguments{
@@ -204,6 +209,34 @@ E(object, fun, cond, ...)
     conditional expectation of \code{fun} under discrete, univariate 
     conditional distributions given \code{cond}. The computation is
     based on \code{support} and \code{sum}. }
+
+  \item{object = "UnivarLebDecDistribution", fun = "missing", cond = "missing":}{
+        expectation by separate evaluation of expectation of discrete and
+        abs. continuous part and subsequent weighting.
+        }
+  \item{object = "UnivarLebDecDistribution", fun = "function", cond = "missing":}{
+        expectation by separate evaluation of expectation of discrete and
+        abs. continuous part and subsequent weighting.
+        }
+  \item{object = "UnivarLebDecDistribution", fun = "missing", cond = "ANY":}{
+        expectation by separate evaluation of expectation of discrete and
+        abs. continuous part and subsequent weighting.
+        }
+  \item{object = "UnivarLebDecDistribution", fun = "function", cond = "ANY":}{
+        expectation by separate evaluation of expectation of discrete and
+        abs. continuous part and subsequent weighting.
+        }
+  \item{object = "AcDcLcDistribution", fun = "ANY", cond = "ANY":}{
+        expectation by first coercing to class \code{"UnivarLebDecDistribution"}
+        and using the corresponding method.
+        }
+  \item{object = "CompoundDistribution", fun = "missing", cond = "missing":}{
+        if we are in i.i.d. situation (i.e., slot \code{SummandsDistr} is of
+        class \code{UnivariateDistribution}) the formula 
+        \eqn{E[N]E[S]} for \eqn{N} the frequency distribution and
+        \eqn{S} the summand distribution; else we coerce to 
+        \code{"UnivarLebDecDistribution"}.
+        }
 
   \item{object = "Beta", fun = "missing", cond = "missing":}{ 
     for noncentrality 0 exact evaluation using explicit expressions.}

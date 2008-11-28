@@ -170,3 +170,13 @@
   }
   return(mixDistr)
 }
+
+.ULC.cast <- function(x){
+         if( is(x,"AbscontDistribution"))
+             x <- as(as(x,"AbscontDistribution"), "UnivarLebDecDistribution")
+         if(is(x,"DiscreteDistribution"))
+             x <- as(as(x,"DiscreteDistribution"), "UnivarLebDecDistribution")
+         if(!is(x,"UnivarLebDecDistribution"))
+            x <- as(x,"UnivarLebDecDistribution")
+         return(x)
+}

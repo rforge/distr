@@ -118,6 +118,7 @@ r(function), d(OptionalFunction), p(OptionalFunction), q(OptionalFunction),
 |>|>"UnivarMixingDistribution"
 |>|>|>"UnivarLebDecDistribution"
 |>|>|>|>"AffLinUnivarLebDecDistribution"
+|>|>|>"CompoundDistribution"
 |>|>"AbscontDistribution"
 |>|>|>"AffLinAbscontDistribution"
 |>|>|>"Arcsine"
@@ -152,9 +153,13 @@ r(function), d(OptionalFunction), p(OptionalFunction), q(OptionalFunction),
 "DistrList" 
 |>"UnivarDistrList"
 
-"AcDcLc" = union ( "AbscontDistribution", 
-                   "DiscreteDistribution",
-                   "UnivarLebDecDistribution" )
+"AcDcLcDistribution" = union ( "AbscontDistribution", 
+                               "DiscreteDistribution",
+                               "UnivarLebDecDistribution",
+                               "CompoundDistribution" )
+
+"UnivDistrListOrDistribution" = union("UnivarDistrList",
+                                      "UnivariateDistribution")
 
 Parameter classes
 

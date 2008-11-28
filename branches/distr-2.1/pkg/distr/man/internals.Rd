@@ -12,6 +12,7 @@
 \alias{.qmixfun}
 \alias{.rmixfun}
 \alias{.del0dmixfun}
+\alias{.ULC.cast}
 \alias{.loupmixfun}
 \alias{.make.lattice.es.vector}
 \alias{.presubs}
@@ -100,6 +101,7 @@ These functions are used internally by package distr.}
 .qmixfun(mixDistr, mixCoeff, Cont = TRUE, pnew)
 .del0dmixfun(mixDistr)
 .loupmixfun(mixDistr)
+.ULC.cast(x)
 .expm.d(e1)
 .expm.c(e1)
 .logm.d(e1)
@@ -117,7 +119,7 @@ devNew(...)
 
 
 \arguments{
-  \item{x}{a (numeric) vector}
+  \item{x}{a (numeric) vector, or (in case of \code{.ULC.cast}) an object of class \code{"AcDcLcDistribution"}}
   \item{y}{a (numeric) vector}
   \item{f}{a function in one (numeric) argument}
   \item{lattice}{a lattice (of class \code{Lattice})}
@@ -298,6 +300,10 @@ the mixing distribution.
 value of slot function \code{d.ac} of \code{mixDistr} 
 for argument \code{0} to \code{0}.
 
+\code{.ULC.cast} coerces an object of class \code{"AcDcLcDistribution"} to
+class \code{"UnivarLebDecDistribution"}, using \code{simplifyD}.
+
+
 \code{.expm.d,.expm.c} for discrete, resp. a.c. argument \code{e1} fill the 
 slots \code{p}, \code{d}, \code{r}, and \code{q}
 of the transformation \code{exp(e1)} exactly.
@@ -367,6 +373,7 @@ with R versions < 2.8.0.
 \code{q(x)(1)}, \code{qu}, the maximal value of 
 \code{q(x)(getdistrOption("TruncQuantile"), lower.tail = FALSE)},
 \code{x} running through the members of \code{mixDistr} in each case.}
+\item{.ULC.cast}{an object of class \code{"UnivarLebDecDistribution"}.}
 \item{.expm.d,.logm.d}{an object of class \code{"DiscreteDistribution"}.} 
 \item{.expm.c,.logm.c}{an object of class \code{"AbscontDistribution"}.} 
 \code{.P2D}{a density \code{d} as function \code{function(x,  log = FALSE)}}

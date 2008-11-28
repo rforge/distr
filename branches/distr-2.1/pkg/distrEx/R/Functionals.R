@@ -43,6 +43,20 @@ setMethod("var", signature(x = "AffLinDiscreteDistribution"),
 setMethod("var", signature(x = "AffLinLatticeDistribution"),
            getMethod("var", signature(x = "AffLinDistribution")))    
 
+setMethod("var", signature(x = "CompoundDistribution"),
+    function(x, ...){
+    if((hasArg(fun))||(hasArg(cond)))
+         return(var(as(x,"UnivarLebDecDistribution"),...))
+    else{
+       S <- x@SummandsDistr
+       N <- x@NumbOfSummandsDistr
+       if(is(S,"UnivariateDistribution")){
+         return(E(N)*var(S)+ (var(S)+E(S)^2)*var(N))
+       }
+       else  return(var(simplifyD(x)))
+    }})
+
+
 ################################################################################
 #sd
 ################################################################################

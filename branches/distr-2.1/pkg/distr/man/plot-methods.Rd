@@ -6,6 +6,7 @@
 \alias{plot,UnivarLebDecDistribution,missing-method}
 \alias{plot,AbscontDistribution,missing-method}
 \alias{plot,DiscreteDistribution,missing-method}
+\alias{plot,CompoundDistribution,missing-method}
 \alias{plot,DistrList,missing-method}
 \title{ Methods for Function plot in Package `distr' }
 \description{plot-methods}
@@ -42,7 +43,8 @@
      col.hor = par("col"), col.vert = par("col"), col.main = par("col.main"), 
      col.inner = par("col.main"), col.sub = par("col.sub"),  cex.points = 2.0,
      pch.u = 21, pch.a = 16, mfColRow = TRUE)
-\S4method{plot}{DistrList,missing}(x, y, ...)
+\S4method{plot}{DistrList,missing}(x, ...)
+\S4method{plot}{CompoundDistribution,missing}(x, ...)
 }
 \arguments{
   \item{x}{object of class 
@@ -116,6 +118,9 @@
    cumulative distribution function and the quantile function; in the second
    row the absolutely continuous part (with density, cdf and quantile fct.),
    and in the last row the discrete part (with prob.fct., cdf and quantile fct.). }
+\item{plot}{\code{signature(x = "CompoundDistribution", y = "missing")}: 
+  coerces \code{x} to \code{"UnivarLebDecDistribution"} and uses the corresponding
+  method. }
 \item{plot}{\code{signature(x = "AbscontDistribution", y = "missing")}: plots density, 
    cumulative distribution function and the quantile function }
 \item{plot}{\code{signature(x = "DiscreteDistribution", y = "missing")}: plots probability 

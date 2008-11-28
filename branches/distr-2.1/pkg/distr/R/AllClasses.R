@@ -979,6 +979,18 @@ setClass("AffLinUnivarLebDecDistribution",
           contains = "UnivarLebDecDistribution"
           )
 
+         
+setClassUnion("UnivDistrListOrDistribution",
+               c("UnivarDistrList","UnivariateDistribution"))
+
+setClass("CompoundDistribution", representation=representation(
+             NumbOfSummandsDistr = "DiscreteDistribution",
+             SummandsDistr = "UnivDistrListOrDistribution"),
+          prototype=prototype(NumbOfSummandsDistr = new("Pois"),
+              SummandsDistr=new("Norm")),
+          contains = "UnivarMixingDistribution"
+         )
+
 ################################
 ##
 ## virtual Distribution class Unions 
@@ -986,7 +998,9 @@ setClass("AffLinUnivarLebDecDistribution",
 ################################
 
 setClassUnion("AcDcLcDistribution", c("AbscontDistribution",
-               "DiscreteDistribution", "UnivarLebDecDistribution"))
+               "DiscreteDistribution", "UnivarLebDecDistribution",
+               "CompoundDistribution"))
 
 setClassUnion("AffLinDistribution", c("AffLinAbscontDistribution",
                "AffLinDiscreteDistribution", "AffLinUnivarLebDecDistribution"))
+

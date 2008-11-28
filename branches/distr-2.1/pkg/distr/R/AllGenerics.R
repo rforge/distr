@@ -399,3 +399,11 @@ if(!isGeneric("Huberize"))
 
 if(!isGeneric("showobj"))
    setGeneric("showobj", function(object, ...) standardGeneric("showobj"))
+
+
+if(!isGeneric("NumbOfSummandsDistr"))
+    setGeneric("NumbOfSummandsDistr", function(object) 
+                standardGeneric("NumbOfSummandsDistr"))
+if(!isGeneric("SummandsDistr"))
+    setGeneric("SummandsDistr", function(object) 
+                standardGeneric("SummandsDistr"))

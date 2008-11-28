@@ -357,3 +357,8 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
      
    }
    )
+
+
+setMethod("plot", signature(x="CompoundDistribution", y = "missing"),
+           function(x,...) plot(simplifyD(x),...))
+

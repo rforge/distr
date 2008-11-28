@@ -40,6 +40,8 @@ exportClasses("UnivariateDistribution", "AbscontDistribution",
               "Hyper", "Logis", "Lnorm", "Nbinom", "Norm", 
               "Pois", "Td", "Unif", "Weibull", "Arcsine",
               "ExpOrGammaOrChisq")
+exportClasses("UnivDistrListOrDistribution")
+exportClasses("CompoundDistribution")
 exportClasses("DistrList", 
               "UnivarDistrList")
 exportMethods("Max", "Max<-", "Min", "Min<-", "d", "df", 
@@ -76,3 +78,5 @@ exportMethods("Truncate","Minimum","Maximum","Huberize")
 export("UnivarMixingDistribution", "UnivarLebDecDistribution")
 export("RtoDPQ.LC", "flat.LCD", "flat.mix")
 exportMethods("abs","exp","^")
+exportMethods("NumbOfSummandsDistr","SummandsDistr")
+export("CompoundDistribution")

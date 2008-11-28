@@ -40,3 +40,4 @@ setMethod("E", signature(object = "AffLinUnivarLebDecDistribution",
            getMethod("E", signature(object = "AffLinDistribution",
                          fun = "missing",
                          cond = "missing")))
+

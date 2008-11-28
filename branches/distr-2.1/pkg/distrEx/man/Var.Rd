@@ -7,6 +7,7 @@
 \alias{var,AffLinAbscontDistribution-method}
 \alias{var,AffLinDiscreteDistribution-method}
 \alias{var,AffLinLatticeDistribution-method}
+\alias{var,CompoundDistribution-method}
 \alias{var,Beta-method}
 \alias{var,Binom-method}
 \alias{var,Cauchy-method}
@@ -199,6 +200,7 @@ var(x, ...)
 
 \S4method{var}{UnivariateDistribution}(x, fun, cond, withCond, useApply, ...)
 \S4method{var}{AffLinDistribution}(x, fun, cond, withCond, useApply, ...)
+\S4method{var}{CompoundDistribution}(x, ...)
 \S4method{var}{Binom}(x, ...)
 \S4method{var}{Beta}(x, ...)
 \S4method{var}{Cauchy}(x, ...)
@@ -292,6 +294,14 @@ kurtosis(x, ...)
   \item{\code{var}, \code{signature(x = "AffLinDistribution")}:}{ 
     if arguments \code{fun}, \code{cond} are missing: \code{x@a^2 * var(x@X0)}
     else uses method for \code{signature(x = "UnivariateDistribution")}}
+  \item{\code{var}, \code{signature(x = "CompoundDistribution")}:}{ 
+        if we are in i.i.d. situation (i.e., slot \code{SummandsDistr} is of
+        class \code{UnivariateDistribution}) the formula 
+        \eqn{{\rm E}[N]{\rm var}[S]+({\rm E}[S]^2+{\rm var}(S)){\rm var}(N)}{E[N]var[S]+E[S*S]var(N)} 
+        for \eqn{N} the frequency distribution and
+        \eqn{S} the summand distribution; else we coerce to 
+        \code{"UnivarLebDecDistribution"}.
+    }
 
  \item{\code{sd}, \code{signature(x = "Any")}:}{
     interface to the \pkg{stats}-function \code{sd} --- see \code{\link[stats]{sd}}
