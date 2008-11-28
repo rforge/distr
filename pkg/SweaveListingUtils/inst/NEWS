@@ -3,6 +3,14 @@
 ######################################################################
  
 ##############
+v 0.1.1
+##############
+ 
+ * new vignette ("ExampleSweaveListingUtils") to show
+   how to use this package
+ * moved license to LGPL-3
+
+##############
 v 0.1
 ##############
 

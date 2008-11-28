@@ -3,6 +3,19 @@
 ######################################################################
  
 ##############
+v 2.0.3
+##############
+  
+  * under the hood: 
+     + enhanced plotting (correct dispatch; opening of new device is controlled
+       by option("newDevice") )
+     + after JMC's changes: gone through setIs relations to ensure 
+       "correct" inheritance
+  * moved license to LGPL-3
+  * thanks to a hint by Anja Hüller, discovered a buglet in the demos of distrTeach;
+
+
+##############
 v 2.0 
 ##############
 

@@ -3,6 +3,25 @@
 ######################################################################
  
 ##############
+v 2.0.3
+##############
+  
+  * under the hood: 
+     + enhanced plotting (correct dispatch; opening of new device is controlled
+       by option("newDevice") )
+     + after JMC's changes: 
+       +gone through setIs relations to ensure 
+        "correct" inheritance in Expectation, all the distance functionals 
+        (ContaminationSize, HellingerDist,...), m1df,m2df
+     + buglet for AffLinDistribution in Skewness
+     + corrected small bug in mad, added new implementation for 
+       skewness and kurtosis for signature "ANY"
+ 
+  * moved license to LGPL-3
+  * new methods for Gumbel distribution ...
+
+
+##############
 v 2.0 
 ##############
 

@@ -56,8 +56,8 @@ of R-Packages&nbsp;<span style="color: rgb(51, 51, 255);"></span></big>
  src="RLOGO.jpg"></a></span></h1>
 </div>
 <hr style="width: 100%; height: 2px;">
-<div style="text-align: justify;"> Version: 2.0<br>
-Release Date: 2008-09-05 <br>
+<div style="text-align: justify;"> Version: 2.0.3<br>
+Release Date: 2008-11-28 <br>
 Authors: <a
  href="mailto:peter.ruckdeschel@itwm.fraunhofer.de?subject=%5Bdistr%5D">Peter
 Ruckdeschel</a>, <a
@@ -150,7 +150,7 @@ href="http://distr.r-forge.r-project.org/HOWTO-collaborate.txt">HOWTO-collaborat
 maintained by <a
  href="mailto:peter.ruckdeschel@itwm.fraunhofer.de?subject=distr-package">Peter
 Ruckdeschel</a>
-and last updated on 2008-11-26.<br>
+and last updated on 2008-11-27.<br>
 </div>
 
 <p> The <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. </p>

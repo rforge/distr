@@ -3,6 +3,20 @@
 ######################################################################
 
 ##############
+v 2.0.3
+##############
+  
+  * under the hood: 
+     + enhanced plotting (correct dispatch; opening of new device is controlled
+       by option("newDevice") )
+     + some fix in order to cover the case of argument panel.first=grid()
+       in the ... argument (needs a delayed evaluation...)
+     + after JMC's changes: gone through setIs relations to ensure 
+       "correct" inheritance
+  * moved license to LGPL-3
+
+
+##############
 v 2.0
 ##############
 

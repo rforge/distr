@@ -3,6 +3,19 @@
 ######################################################################
 
 ##############
+v 2.0.3
+##############
+  
+  * under the hood: 
+     + enhanced plotting (correct dispatch; opening of new device is controlled
+       by option("newDevice") )
+     + after JMC's changes: gone through setIs relations to ensure 
+       "correct" inheritance
+  * moved license to LGPL-3
+  * typos fixed (Skewness.R, Kurtosis.R) instead of (skewness.R, kurtosis.R)
+
+
+##############
 v 2.0   
 ##############
  * description for new classes "UnivarMixingDistribution", 
