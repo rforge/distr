@@ -973,3 +973,20 @@ return(function(q, lower.tail = TRUE, log.p = FALSE){
        }
     return(list(msgA=c(msgA1,msgA2), msgS = c(msgS1,msgS2)))  
     }
+
+#------------------------------------------------------------------------------
+# fill a list acc. recycling rules
+#------------------------------------------------------------------------------
+.fillList <- function(list0, len = length(list0)){
+            if(len == length(list0)) 
+               return(list0)
+            i <- 0
+            ll0 <- length(list0)
+            li0 <- vector("list",len)
+            while(i < len){
+               j <- 1 + ( i %% ll0)
+               i <- i + 1
+               li0[[i]] <- list0[[j]]
+            }
+           return(li0)
+}

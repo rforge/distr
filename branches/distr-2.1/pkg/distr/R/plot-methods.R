@@ -16,6 +16,8 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
      dots <- match.call(call = sys.call(sys.parent(1)), 
                       expand.dots = FALSE)$"..."
 
+     dots$col.hor <- NULL
+
      dots.for.points <- dots[names(dots) %in% c("bg", "lwd", "lty")]
      if (length(dots.for.points) == 0 ) dots.for.points <- NULL
 
@@ -24,9 +26,10 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
          x <- .ULC.cast(x)     
      ###
      if(!is.logical(inner))
-         if(!is.list(inner)||length(inner) != 3)
-            stop("Argument 'inner' must either be 'logical' or a 'list' vector of length 3")
-
+         {if(!is.list(inner))
+            stop("Argument 'inner' must either be 'logical' or a 'list'")
+          else inner <- .fillList(inner,3)          
+         }
      cex <- if (hasArg(cex)) dots$cex else 1
 
      if (hasArg(cex) && missing(cex.points)) 
@@ -277,6 +280,7 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
       ### manipulating the ... - argument
       dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
+      dots$ngrid <- NULL
 
       dots.for.points <- dots[names(dots) %in% c("bg", "lwd", "lty")]
       if (length(dots.for.points) == 0 ) dots.for.points <- NULL
@@ -288,8 +292,10 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
          x <- .ULC.cast(x)     
       
      if(!is.logical(inner))
-         if(!is.list(inner)||length(inner) != 3)
-            stop("Argument 'inner' must either be 'logical' or a 'list' vector of length 3")
+         {if(!is.list(inner))
+            stop("Argument 'inner' must either be 'logical' or a 'list'")
+          else inner <- .fillList(inner,3)          
+         }
 
      cex <- if (hasArg(cex)) dots$cex else 1
 
@@ -533,7 +539,7 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
        if (subL)
            mtext(text = sub, side = 1, cex = cex.sub, adj = .5,
                  outer = TRUE, line = -1.6, col = col.sub)                            
-       return(invisible())
+   return(invisible())
    }
 )
 
@@ -545,4 +551,5 @@ setMethod("plot", signature(x =  "DistrList", y = "missing"),
             devNew()
             plot(x[[i]],...)
         }
+        return(invisible())
     })

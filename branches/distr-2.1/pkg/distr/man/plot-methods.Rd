@@ -67,7 +67,10 @@
               just as argument \code{main} in \code{\link{plot.default}}.}
   \item{inner}{logical: panels for density/probability function -
                         cdf - quantile function have their own titles? or \cr
-               list of length 3: titles for density/probability function -
+               list which is filled to length 3  (resp. 8 for class 
+               \code{UnivarLebDecDistribution}) if necessary
+               (possibly using recycling rules):  titles for 
+               density/probability function -
                cdf - quantile function (each of the same form as argument 
                \code{main} in \code{\link{plot.default}})} 
   \item{sub}{logical: is a sub-title to be used? or \cr

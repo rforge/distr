@@ -50,6 +50,7 @@
 \alias{.csimpsum}
 \alias{.primefun}
 \alias{.IssueWarn}
+\alias{.fillList}
 \alias{devNew}
 
 \title{Internal functions of package distr}
@@ -114,6 +115,7 @@ These functions are used internally by package distr.}
 .csimpsum(fx)
 .primefun(f,x, nm = NULL)
 .IssueWarn(Arith,Sim)
+.fillList(list0, len=length(list0))
 devNew(...)
 }
 
@@ -206,6 +208,9 @@ devNew(...)
               or logically-``any'' of these slots in a collection of such objects} 
  \item{Sim}{logical; slot \code{.withSim} of a distribution object,
               or logically-``any'' of these slots in a collection of such objects} 
+ \item{list0}{list, the elements of which are to be copied to a new list using
+              recycling if necessary}
+ \item{len}{length of the list to be filled}              
  \item{...}{arguments passed through to other functions}
 }
 
@@ -328,6 +333,9 @@ of the prime function on a grid; it is to mimick the behaviour
 of \code{cumsum}. \code{.primefun} is similar but more flexible and
 produces the prime function as a function.
 
+\code{.fillList}{fills a new list with the elements of a given list \code{list0}
+                 until length \code{len} is reached using recycling if necessary.}
+
 \code{devNew} opens a new device. This function is for back compatibility
 with R versions < 2.8.0.
 }
@@ -384,6 +392,7 @@ with R versions < 2.8.0.
 \code{.csimpsum}{a vector of evaluations of the prime function at the grid points}
 \code{.primefun}{the prime function as a function}
 \code{.IssueWarn}{a list with two warnings to be issued each of which may be empty}
+\code{.fillList}{a list}
 \code{devNew}{returns the return value of the device opened, usually invisible 'NULL'}
 }
 

@@ -32,7 +32,6 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
              col.sub = par("col.sub"),  cex.points = 2.0,
              pch.u = 21, pch.a = 16, mfColRow = TRUE){
 
-      
       mc <- match.call(call = sys.call(sys.parent(1)), expand.dots = TRUE)[-1]
       xc <- mc$x
       ### manipulating the ... - argument
@@ -45,32 +44,61 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
                                            y = "missing"))
       
       if(!is(x, "UnivarLebDecDistribution")) 
-      x <- .ULC.cast(x)
+          x <- .ULC.cast(x)
 
       if(is(x,"DiscreteDistribution")){
-         do.call(plotD, as.list(mc))
+         mcl <- as.list(mc)
+         mcl$ngrid <- NULL
+            if(!is.logical(inner)){
+                if(length(inner)!=3)
+                   {inner <- .fillList(inner, 8)
+                     mcl$inner <- inner[6:8]}
+                }                          
+         do.call(plotD, mcl)
          return(invisible())
       }
       
       if(is(x,"AbscontDistribution")){
-         do.call(plotC, as.list(mc))
+         mcl <- as.list(mc)
+         mcl$col.hor <- NULL
+            if(!is.logical(inner)){
+                if(length(inner)!=3)
+                   {inner <- .fillList(inner, 8)
+                     mcl$inner <- inner[6:8]}
+                }                          
+         do.call(plotC, as.list(mcl))
          return(invisible())
       }
       
       
       if(.isEqual(x@mixCoeff[1],0)){
          x <- x@mixDistr[[2]]
-         mc$x <- x
-         do.call(plotD, as.list(mc))
+         mcl <- as.list(mc)
+         mcl$x <- x
+         mcl$ngrid <- NULL
+            if(!is.logical(inner)){
+                if(length(inner)!=3)
+                   {inner <- .fillList(inner, 8)
+                     mcl$inner <- inner[6:8]}
+                }                          
+         do.call(plotD, as.list(mcl))
          return(invisible())
         }
 
       if(.isEqual(x@mixCoeff[1],1)){
          x <- x@mixDistr[[1]]
-         mc$x <- x
-         do.call(plotC, as.list(mc))
+         mcl <- as.list(mc)
+         mcl$x <- x
+         mcl$col.hor <- NULL
+            if(!is.logical(inner)){
+                if(length(inner)!=3)
+                   {inner <- .fillList(inner, 8)
+                     mcl$inner <- inner[6:8]}
+                }                          
+         do.call(plotC, as.list(mcl))
          return(invisible())
         }
+
 
 
 
@@ -85,9 +113,10 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
       dots.v$col <- NULL
      ###
      if(!is.logical(inner))
-         if(!is.list(inner)||length(inner) != 2)
-            stop("Argument 'inner' must either be 'logical' or a 'list' vector of length 2")
-
+         {if(!is.list(inner))
+            stop("Argument 'inner' must either be 'logical' or a 'list'")
+          else inner <- .fillList(inner,8)
+         } 
      cex <- if (hasArg(cex)) dots$cex else 1
 
      if (hasArg(cex) && missing(cex.points))
@@ -351,7 +380,11 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
                outer = TRUE, line = -1.6, col = col.sub)
                
      mc.ac <- mc
-     if(!is.logical(inner)) mc.ac$inner <- inner[3:5] 
+     if(!is.logical(inner)) 
+         mc.ac$inner <- lapply(inner[3:5], function(x) 
+                               if(is.character(x))
+                                  as.character(eval(.mpresubs(x)))
+                               else .mpresubs(x)) 
      mc.ac$mfColRow <- FALSE
      mc.ac$main <- FALSE
      mc.ac$sub <- FALSE
@@ -361,7 +394,11 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
      do.call(plotC, c(list(acPart(x)),mc.ac), envir = parent.frame(2))
 
      mc.di <- mc
-     if(!is.logical(inner)) mc.di$inner <- inner[6:8] 
+     if(!is.logical(inner)) 
+         mc.di$inner <- lapply(inner[6:8], function(x) 
+                               if(is.character(x))
+                                  as.character(eval(.mpresubs(x)))
+                               else .mpresubs(x)) 
      mc.di$mfColRow <- FALSE
      mc.di$main <- FALSE
      mc.di$sub <- FALSE
@@ -374,7 +411,6 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
      
    }
    )
-
 
 setMethod("plot", signature(x="CompoundDistribution", y = "missing"),
            function(x,...) {
