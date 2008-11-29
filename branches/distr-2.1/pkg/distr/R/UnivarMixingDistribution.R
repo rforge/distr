@@ -3,11 +3,12 @@ UnivarMixingDistribution <- function(..., mixCoeff,
    {
     ldots <- list(...)
     l <- length(ldots)
+    ep <- .Machine$double.eps
     if(missing(mixCoeff))
        mixCoeff <- rep(1,l)/l
     else{ if (l!=length(mixCoeff))
           stop("argument 'mixCoeff' and the mixing distributions must have the same length")
-          if(any(mixCoeff < 0) || sum(mixCoeff)>1)
+          if(any(mixCoeff < -ep) || sum(mixCoeff)>1+ep)
              stop("mixing coefficients are no probabilities")
         }
     mixDistr <- new("UnivarDistrList", ldots)

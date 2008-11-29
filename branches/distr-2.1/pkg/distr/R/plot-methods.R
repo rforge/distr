@@ -20,7 +20,8 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
      if (length(dots.for.points) == 0 ) dots.for.points <- NULL
 
      dots.without.pch <- dots[! (names(dots) %in% c("pch", "log"))]
-          
+     if(!is(x,"AbscontDistribution"))
+         x <- .ULC.cast(x)     
      ###
      if(!is.logical(inner))
          if(!is.list(inner)||length(inner) != 3)
@@ -235,7 +236,7 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
          xu <- c(gaps(x)[,1],gaps(x)[,2],rep(NA,ndots))
          o <- order(pu)
          dots.without.pch0 <- dots.without.pch
-         dots.without.pch0 $col <- NULL
+         dots.without.pch0$col <- NULL
          do.call(lines, c(list(pu[o], xu[o], 
                  col = col.vert), dots.without.pch0))    
      }
@@ -255,6 +256,7 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
      if (subL)
          mtext(text = sub, side = 1, cex = cex.sub, adj = .5,
                outer = TRUE, line = -1.6, col = col.sub)                            
+   return(invisible())
    }
    )
 # -------- DiscreteDistribution -------- #
@@ -282,6 +284,8 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
       dots.without.pch <- dots[! (names(dots) %in% c("pch", 
                                   "main", "sub", "log"))]
       ###
+     if(!is(x,"DiscreteDistribution"))
+         x <- .ULC.cast(x)     
       
      if(!is.logical(inner))
          if(!is.list(inner)||length(inner) != 3)
@@ -529,6 +533,7 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
        if (subL)
            mtext(text = sub, side = 1, cex = cex.sub, adj = .5,
                  outer = TRUE, line = -1.6, col = col.sub)                            
+       return(invisible())
    }
 )
 
@@ -537,7 +542,7 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
 setMethod("plot", signature(x =  "DistrList", y = "missing"),
     function(x,  ...){ 
         for(i in 1:length(x)){
-            #devNew()
+            devNew()
             plot(x[[i]],...)
         }
     })

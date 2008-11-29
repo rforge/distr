@@ -945,7 +945,8 @@ setClass("UnivarMixingDistribution",
             prototype = prototype(mixCoeff = 1, mixDistr = new("UnivarDistrList")),
             contains = "UnivariateDistribution",
             validity = function(object){
-                if(any(object@mixCoeff<0) || sum(object@mixCoeff)>1)
+                if(any(object@mixCoeff< -.Machine$double.eps) || 
+                   sum(object@mixCoeff)>1+.Machine$double.eps)
                    stop("mixing coefficients are no probabilities")
                 return(TRUE)
             })

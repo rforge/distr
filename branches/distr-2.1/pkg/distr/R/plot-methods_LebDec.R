@@ -13,12 +13,9 @@ setMethod("plot", signature(x = "AffLinUnivarLebDecDistribution", y = "missing")
              col.sub = par("col.sub"),  cex.points = 2.0,
              pch.u = 21, pch.a = 16, mfColRow = TRUE){
 
-      mc <- match.call(call = sys.call(sys.parent(1)), expand.dots = FALSE)[-1]
-      mc$x <- NULL
-      x <- as(x,"UnivarLebDecDistribution")
-      mc <- c(list(x=x), mc)
+      mc <- as.list(match.call(call = sys.call(sys.parent(1)), expand.dots = TRUE)[-1])
       do.call(getMethod("plot",
-              signature(x="UnivarLebDecDistribution",y="missing")), mc)
+              signature(x="UnivarLebDecDistribution",y="missing")), args = mc)
       return(invisible())
 })
 
@@ -35,39 +32,57 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
              col.sub = par("col.sub"),  cex.points = 2.0,
              pch.u = 21, pch.a = 16, mfColRow = TRUE){
 
-
-      mc <- match.call(call = sys.call(sys.parent(1)), expand.dots = FALSE)[-1]
+      
+      mc <- match.call(call = sys.call(sys.parent(1)), expand.dots = TRUE)[-1]
       xc <- mc$x
       ### manipulating the ... - argument
       dots <- match.call(call = sys.call(sys.parent(1)),
                        expand.dots = FALSE)$"..."
 
-      if(x@mixCoeff[1]==0){
-         mc$x <- NULL
+      plotD <- getMethod("plot", signature(x = "DiscreteDistribution", 
+                                           y = "missing"))
+      plotC <- getMethod("plot", signature(x = "AbscontDistribution", 
+                                           y = "missing"))
+      
+      if(!is(x, "UnivarLebDecDistribution")) 
+      x <- .ULC.cast(x)
+
+      if(is(x,"DiscreteDistribution")){
+         do.call(plotD, as.list(mc))
+         return(invisible())
+      }
+      
+      if(is(x,"AbscontDistribution")){
+         do.call(plotC, as.list(mc))
+         return(invisible())
+      }
+      
+      
+      if(.isEqual(x@mixCoeff[1],0)){
          x <- x@mixDistr[[2]]
-         mc <- c(list(x=x), mc)
-         do.call(getMethod("plot",signature(x = "DiscreteDistribution",
-                                            y = "missing")), mc)
+         mc$x <- x
+         do.call(plotD, as.list(mc))
          return(invisible())
         }
 
-      if(x@mixCoeff[1]==1){
-         mc$x <- NULL
+      if(.isEqual(x@mixCoeff[1],1)){
          x <- x@mixDistr[[1]]
-         mc <- c(list(x=x), mc)
-         do.call(getMethod("plot",signature(x = "AbscontDistribution",
-                                            y = "missing")), mc)
+         mc$x <- x
+         do.call(plotC, as.list(mc))
          return(invisible())
         }
 
 
 
-      dots.for.points <- dots[names(dots) %in% c("bg", "lwd", "lty")]
+      dots.for.points <- dots[names(dots) %in% c("bg", "lwd", "lty","ngrid")]
       if (length(dots.for.points) == 0 ) dots.for.points <- NULL
 
       dots.without.pch <- dots[! (names(dots) %in% c("pch",
                                   "main", "sub", "log"))]
-
+      dots.for.lines <- dots.without.pch[! (names(dots.without.pch) %in% c("panel.first",
+                                  "panel.last", "ngrid", "frame.plot"))]
+      dots.v <- dots.for.lines
+      dots.v$col <- NULL
      ###
      if(!is.logical(inner))
          if(!is.list(inner)||length(inner) != 2)
@@ -244,7 +259,7 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
      }
      if(verticals){
          do.call(lines, c(list(x = xv, y = pxv, col = col.vert),
-                 dots.without.pch))
+                 dots.v))
      }
 
      title(main = inner.p, line = lineT, cex.main = cex.inner,
@@ -288,7 +303,7 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
      options(warn = -1)
      do.call(plot, c(list(x = po, xo, type = "n",
           xlim = ylim, ylim = xlim, ylab = "q(p)", xlab = "p",
-          log = logq), dots.without.pch))
+          log = logq), dots.without.pch), envir = parent.frame(2))
      options(warn = o.warn)
 
 
@@ -296,7 +311,7 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
            col.main = col.inner)
 
      options(warn = -1)
-     lines(po,xo, ...)
+     do.call(lines, c(list(x=po, y=xo), dots.for.lines))
 #    if (verticals && !is.null(gaps(x))){
 #         do.call(lines, c(list(rep(pu1,2), c(gaps(x)[,1],gaps(x)[,2]),
 #                 col = col.vert), dots.without.pch))
@@ -309,7 +324,7 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
              xu <- c(gaps(x)[,1],gaps(x)[,2],rep(NA,ndots))
              o <- order(pu)
              do.call(lines, c(list(pu[o], xu[o],
-                     col = col.vert), dots.without.pch))
+                     col = col.vert), dots.v))
      }
      if(!is.null(gaps(x)) && do.points){
         do.call(points, c(list(x = pu1, y = gaps(x)[,1], pch = pch.a,
@@ -343,7 +358,7 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
      mc.ac$x <- NULL 
      mc.ac$withSweave <- TRUE 
      if(is.null(mc.ac$cex.inner))  mc.ac$cex.inner <- 0.9
-     do.call(plot, c(list(acPart(x)),mc.ac))
+     do.call(plotC, c(list(acPart(x)),mc.ac), envir = parent.frame(2))
 
      mc.di <- mc
      if(!is.logical(inner)) mc.di$inner <- inner[6:8] 
@@ -351,14 +366,22 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
      mc.di$main <- FALSE
      mc.di$sub <- FALSE
      mc.di$x <- NULL
+     mc.di$ngrid <- NULL
      mc.di$withSweave <- TRUE 
      if(is.null(mc.di$cex.inner))  mc.di$cex.inner <- 0.9
-     do.call(plot, c(list(discretePart(x)),mc.di))
+     do.call(plotD, c(list(discretePart(x)),mc.di), envir = parent.frame(2))
+     return(invisible())
      
    }
    )
 
 
 setMethod("plot", signature(x="CompoundDistribution", y = "missing"),
-           function(x,...) plot(simplifyD(x),...))
+           function(x,...) {
+           mc <- as.list(match.call(call = sys.call(sys.parent(1)), 
+                            expand.dots = TRUE)[-1])
+           do.call(getMethod("plot",signature(x = "UnivarLebDecDistribution", 
+                                      y = "missing")),args=mc)
+           return(invisible())
+           })
 
