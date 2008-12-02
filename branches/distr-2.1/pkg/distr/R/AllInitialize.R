@@ -66,8 +66,9 @@ setMethod("initialize", "AbscontDistribution",
           function(.Object, r = NULL, d = NULL, p = NULL, q = NULL, 
                    gaps = NULL, param = NULL, img = new("Reals"),
                    .withSim = FALSE, .withArith = FALSE,
-                   low1 = NULL, up1 = NULL, low = -Inf, up =Inf) {
-
+                   .lowerExact = FALSE, .logExact = FALSE,
+                   low1 = NULL, up1 = NULL, low = -Inf, up =Inf
+                   ) {
             ## don't use this if the call is new("AbscontDistribution")
             LL <- length(sys.calls())
             if(sys.calls()[[LL-3]] == "new(\"AbscontDistribution\")")
@@ -122,13 +123,16 @@ setMethod("initialize", "AbscontDistribution",
             .Object@gaps <- gaps
             .Object@.withSim <- .withSim
             .Object@.withArith <- .withArith
+            .Object@.logExact <- .logExact
+            .Object@.lowerExact <- .lowerExact
             .Object })
 
 ## class AffLinAbscontDistribution
 setMethod("initialize", "AffLinAbscontDistribution",
           function(.Object, r = NULL, d = NULL, p = NULL, q = NULL, gaps = NULL,
                    a = 1, b = 0, X0 = Norm(), param = NULL, img = new("Reals"),
-                   .withSim = FALSE, .withArith = FALSE) {
+                   .withSim = FALSE, .withArith = FALSE,
+                   .lowerExact = FALSE, .logExact = FALSE) {
   X <- new("AbscontDistribution", r = r, d = d, p = p, q = q, gaps = gaps, 
            param = param, img = img, .withSim = .withSim, 
            .withArith = .withArith)
@@ -151,7 +155,8 @@ setMethod("initialize", "AffLinAbscontDistribution",
 setMethod("initialize", "DiscreteDistribution",
           function(.Object, r = NULL, d = NULL, p = NULL, q = NULL, 
                     support = NULL, param = NULL, img = new("Reals"), 
-                    .withSim = FALSE, .withArith = FALSE) {
+                    .withSim = FALSE, .withArith = FALSE,
+                   .lowerExact = FALSE, .logExact = FALSE) {
 
             ## don't use this if the call is new("DiscreteDistribution")
             LL <- length(sys.calls())
@@ -208,6 +213,8 @@ setMethod("initialize", "DiscreteDistribution",
             .Object@r <- r
             .Object@.withSim <- .withSim
             .Object@.withArith <- .withArith
+            .Object@.lowerExact <- .lowerExact
+            .Object@.logExact <- .logExact
             .Object
           })
 
@@ -215,7 +222,8 @@ setMethod("initialize", "DiscreteDistribution",
 setMethod("initialize", "AffLinDiscreteDistribution",
           function(.Object, r = NULL, d = NULL, p = NULL, q = NULL, 
                    support = NULL, a = 1, b = 0, X0 = Binom(), param = NULL, 
-                   img = new("Reals"), .withSim = FALSE, .withArith = FALSE) {
+                   img = new("Reals"), .withSim = FALSE, .withArith = FALSE,
+                   .lowerExact = FALSE, .logExact = FALSE) {
    ## don't use this if the call is new("DiscreteDistribution")
    LL <- length(sys.calls())
    if(sys.calls()[[LL-3]] == "new(\"AffLinDiscreteDistribution\")")
@@ -235,6 +243,8 @@ setMethod("initialize", "AffLinDiscreteDistribution",
   .Object@r <- X@r
   .Object@.withSim <- .withSim
   .Object@.withArith <- .withArith
+  .Object@.lowerExact <- .lowerExact
+  .Object@.logExact <- .logExact
   .Object
 })
 
@@ -242,7 +252,8 @@ setMethod("initialize", "AffLinDiscreteDistribution",
 setMethod("initialize", "LatticeDistribution",
           function(.Object, r = NULL, d = NULL, p = NULL, q = NULL, 
                     support = NULL, lattice = NULL, param = NULL, 
-                    img = new("Reals"), .withSim = FALSE, .withArith = FALSE) {
+                    img = new("Reals"), .withSim = FALSE, .withArith = FALSE,
+                   .lowerExact = FALSE, .logExact = FALSE) {
 
 
              LL <- length(sys.calls())
@@ -274,6 +285,8 @@ setMethod("initialize", "LatticeDistribution",
             .Object@r <- D@r
             .Object@.withSim <- .withSim
             .Object@.withArith <- .withArith
+            .Object@.lowerExact <- .lowerExact
+            .Object@.logExact <- .logExact
             .Object
           })
 
@@ -282,7 +295,7 @@ setMethod("initialize", "AffLinLatticeDistribution",
           function(.Object, r = NULL, d = NULL, p = NULL, q = NULL, 
                    support = NULL, lattice = NULL, a = 1, b = 0, X0 = Binom(), 
                    param = NULL, img = new("Reals"), .withSim = FALSE, 
-                   .withArith = FALSE) {
+                   .withArith = FALSE, .lowerExact = FALSE, .logExact = FALSE) {
 
    LL <- length(sys.calls())
    if(sys.calls()[[LL-3]] == "new(\"AffLinLatticeDistribution\")")
@@ -305,6 +318,8 @@ setMethod("initialize", "AffLinLatticeDistribution",
   .Object@r <- X@r
   .Object@.withSim <- .withSim
   .Object@.withArith <- .withArith
+  .Object@.lowerExact <- .lowerExact
+  .Object@.logExact <- .logExact
   .Object
 })
 

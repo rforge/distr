@@ -4,9 +4,11 @@
 \title{Generating function "DiscreteDistribution"}
 \description{Generates an object of class  \code{"DiscreteDistribution"}}
 
-\synopsis{DiscreteDistribution(supp, prob, .withArith = FALSE, .withSim = FALSE)}
+\synopsis{DiscreteDistribution(supp, prob, .withArith = FALSE, .withSim = FALSE,
+                     .lowerExact = TRUE, .logExact = FALSE)}
 \usage{
-  DiscreteDistribution(supp, prob, .withArith=FALSE, .withSim=FALSE)
+  DiscreteDistribution(supp, prob, .withArith=FALSE, .withSim=FALSE, 
+                       .lowerExact = TRUE, .logExact = FALSE)
   DiscreteDistribution(supp)
 }
 \arguments{
@@ -18,6 +20,10 @@
                     distributional arithmetics was involved, you may set this to \code{TRUE}.}
   \item{.withSim}{normally not set by the user, but if determining the entries \code{supp}, \code{prob}
                   simulations were involved, you may set this to \code{TRUE}.}
+  \item{.lowerExact}{normally not set by the user: whether the \code{lower.tail=FALSE}
+                     part is calculated exactly, avoing a ``\code{1-.}''.}
+  \item{.logExact}{normally not set by the user: whether in determining slots \code{d,p,q},
+         we make particular use of a logarithmic representation to enhance accuracy.}
 }
 \details{
   If \code{prob} is missing, all elements in \code{supp}

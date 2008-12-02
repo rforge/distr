@@ -91,5 +91,7 @@ PrognCondDistribution <- function(Regr = Norm(), Error = Norm()){
                         list(qufun = qufun))
     
     return(new("AbscontCondDistribution", r = rfun, d = dfun, p = pfun, q = qfun, 
-            param = param, cond = cond))
+            param = param, cond = cond, .withSim = Error@.withSim | Regr@.withSim,
+            .withArith = TRUE, .logExact = FALSE, 
+            .lowerExact = Error@.lowerExact & Regr@.lowerExact))
 }

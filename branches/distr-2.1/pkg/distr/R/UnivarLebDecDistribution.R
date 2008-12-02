@@ -75,10 +75,11 @@ UnivarLebDecDistribution <- function(acPart, discretePart, acWeight, discreteWei
     qnew <- .makeQNew(xseq, px.l, px.u, FALSE, qL2, qU2)
     .withSim <- acPart@.withSim | discretePart@.withSim
     .withArith <- acPart@.withArith | discretePart@.withArith
+    .lowerExact <- .lowerExact(acPart) & .lowerExact(discretePart)
 
     new("UnivarLebDecDistribution", p = pnew, r = rnew, d = NULL, q = qnew,
          mixCoeff = mixCoeff, mixDistr = mixDistr, .withSim = .withSim,
-         .withArith = .withArith)
+         .withArith = .withArith, .lowerExact = .lowerExact)
 }
 
 ############################## Accessor / Replacement functions

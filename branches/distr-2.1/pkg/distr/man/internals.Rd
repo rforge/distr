@@ -51,6 +51,8 @@
 \alias{.primefun}
 \alias{.IssueWarn}
 \alias{.fillList}
+\alias{.trunc.up}
+\alias{.trunc.low}
 \alias{devNew}
 
 \title{Internal functions of package distr}
@@ -116,6 +118,8 @@ These functions are used internally by package distr.}
 .primefun(f,x, nm = NULL)
 .IssueWarn(Arith,Sim)
 .fillList(list0, len=length(list0))
+.trunc.up(object, upper)
+.trunc.low(object, lower)
 devNew(...)
 }
 
@@ -135,7 +139,7 @@ devNew(...)
   \item{tol}{an error tolerance (numeric)}
   \item{e1}{a distribution object}
   \item{e2}{a numeric}
-  \item{object}{a distribution object}
+  \item{object}{a distribution object}  
   \item{argList}{an (unevaluated) list of arguments passed to \code{m(object)}  
         where  \code{m} is in \code{d,p,q}}
   \item{stand}{factor for a (Lebesgue) density to integrate to 1}
@@ -211,6 +215,8 @@ devNew(...)
  \item{list0}{list, the elements of which are to be copied to a new list using
               recycling if necessary}
  \item{len}{length of the list to be filled}              
+ \item{lower}{lower truncation point}
+ \item{upper}{upper truncation point}
  \item{...}{arguments passed through to other functions}
 }
 
@@ -336,6 +342,12 @@ produces the prime function as a function.
 \code{.fillList}{fills a new list with the elements of a given list \code{list0}
                  until length \code{len} is reached using recycling if necessary.}
 
+\code{.trunc.up}, \code{.trunc.low}  provide common routines for
+classes \code{DiscreteDistribution} and \code{AbscontDistribution} for 
+one-sided truncation, using (for slot \code{r}) Peter Dalgaard's clever 
+log-tricks as indicated in 
+\url{http://article.gmane.org/gmane.comp.lang.r.general/126112}.
+
 \code{devNew} opens a new device. This function is for back compatibility
 with R versions < 2.8.0.
 }
@@ -393,6 +405,7 @@ with R versions < 2.8.0.
 \code{.primefun}{the prime function as a function}
 \code{.IssueWarn}{a list with two warnings to be issued each of which may be empty}
 \code{.fillList}{a list}
+\code{.trunc.up,.trunc.low}{a list with elements \code{r,p,d,q} (in this order)}
 \code{devNew}{returns the return value of the device opened, usually invisible 'NULL'}
 }
 

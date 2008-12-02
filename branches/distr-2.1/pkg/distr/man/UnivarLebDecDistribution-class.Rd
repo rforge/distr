@@ -96,6 +96,10 @@ Objects can be created by calls of the form
     \item{\code{q}:}{Object of class \code{"function"}: quantile function}
     \item{\code{.withArith}:}{logical: used internally to issue warnings as to interpretation of arithmetics}
     \item{\code{.withSim}:}{logical: used internally to issue warnings as to accuracy}
+    \item{\code{.logExact}:}{logical: used internally to flag the case where there are explicit formulae for the
+                              log version of density, cdf, and quantile function}
+    \item{\code{.lowerExact}:}{logical: used internally to flag the case where there are explicit formulae for the
+                              lower tail version of cdf and quantile function}
   }
 }
 \section{Extends}{
@@ -137,10 +141,12 @@ class \code{"Distribution"} by class \code{"UnivariateDistribution"}.
     \code{exp}{\code{signature(x = "UnivarLebDecDistribution")}:  exact image distribution of \code{exp(x)}.}
     \code{sign}{\code{signature(x = "UnivarLebDecDistribution")}:  exact image distribution of \code{sign(x)}.}
     \code{sign}{\code{signature(x = "AcDcLcDistribution")}:  exact image distribution of \code{sign(x)}.}
-    \code{sqrt}{\code{signature(x = "AcDcLcDistribution")}:  exact image distribution of \code{sqrt(x)}.}
     \code{log}{\code{signature(x = "UnivarLebDecDistribution")}:  (with optional further argument \code{base}, 
     defaulting to \code{exp(1)}) exact image distribution of \code{log(x)}.}
     \code{log10}{\code{signature(x = "UnivarLebDecDistribution")}:  exact image distribution of \code{log10(x)}.}
+    \code{sqrt}{\code{signature(x = "UnivarLebDecDistribution")}:  exact 
+         image distribution of \code{sqrt(x)}.}
+    \code{sqrt}{\code{signature(x = "AcDcLcDistribution")}:  exact image distribution of \code{sqrt(x)}.}
     \item{-}{\code{signature(e1 = "UnivarLebDecDistribution")}: application of `-' to this distribution}
     \item{*}{\code{signature(e1 = "UnivarLebDecDistribution", e2 = "numeric")}: multiplication of this distribution
     by an object of class `numeric'}

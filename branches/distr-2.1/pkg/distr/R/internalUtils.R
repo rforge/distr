@@ -52,43 +52,62 @@ setAs("numeric","Integer",function(from) new("Integer",as.integer(from)))
 #------------------------------------------------------------------------------
 
 .fM <- function(x,f){
-   xo <- x
+   owarn <- getOption("warn")
+   options("warn"=-1)
+   on.exit(options("warn"=owarn))
+   if(!.inArgs("log.p", f))
+      f0 <- f
+   else f0 <- function(x) f(log(x), log.p = TRUE)   
+   xo <-  x
    x1 <- (1+xo)/2
    i <- 1
    while( i < 30)
    { i <- i+1
-     while(f(x1) < Inf)
+     while(!is.na(f1 <- f0(x1)) && f1 < Inf)
         {xo <- x1
          x1 <- (1+x1)/2
          }
      x1 <- (x1+xo)/2}
-   xo}
+   log(xo)}
    
 .fM2 <- function(x,f){
+   owarn <- getOption("warn")
+   options("warn"=-1)
+   on.exit(options("warn"=owarn))
+   if(!.inArgs("log.p", f))
+      f0 <- function(x) f(x, lower.tail = FALSE)
+   else f0 <- function(x) f(log(x), lower.tail = FALSE, log.p = TRUE)   
    xo <- x
    x1 <- xo/2
    i <- 1
    while( i < 30)
    { i <- i+1
-     while(f(x1, lower.tail = FALSE) < Inf)
+     while(!is.na(f1 <- f0(x1)) && f1 < Inf)
         {xo <- x1
          x1 <- x1/2
          }
-     x1 <- (x1+xo)/2}
-   xo}
+     x1 <- (x1+xo)/2}   
+   log(xo)}
 
 .fm <- function(x,f){
+   owarn <- getOption("warn")
+   options("warn"=-1)
+   on.exit(options("warn"=owarn))
+   if(!.inArgs("log.p", f))
+      f0 <- f
+   else f0 <- function(x) f(log(x), log.p = TRUE)   
+   
    xo <- x
    x1 <- xo/2
    i <- 1
    while( i < 30)
    { i <- i+1
-     while(f(x1) > -Inf)
+     while(!is.na(f1 <- f0(x1)) && f1 > -Inf)
         {xo <- x1
          x1 <- x1/2
          }
      x1 <- (x1+xo)/2}
-   xo}
+   log(xo)}
    
 #------------------------------------------------------------------------------
 # .presubs : for titles etc
@@ -386,7 +405,9 @@ return(outC)
                               r = rnew, d = dnew, p = pnew,
                               q = qnew, support = supportnew,
                               a = e1@a, b = e1@b + e2, X0 = e1@X0,
-                             .withSim = FALSE, .withArith = TRUE)
+                             .withSim = FALSE, .withArith = TRUE,
+                    .logExact = .logExact(e1), .lowerExact = .lowerExact(e1)
+                     )
                 rm(supportnew)
 
             }else if (Dclass == "DiscreteDistribution"){
@@ -394,20 +415,26 @@ return(outC)
                               r = rnew, d = dnew, p = pnew,
                               q = qnew, support = supportnew,
                               a = 1, b = e2, X0 = e1,
-                             .withSim = FALSE, .withArith = TRUE)
+                             .withSim = FALSE, .withArith = TRUE,
+                    .logExact = .logExact(e1), .lowerExact = .lowerExact(e1)
+                     )
                 rm(supportnew)
 
             }else if (Dclass == "AffLinAbscontDistribution"){
                 object <- new("AffLinAbscontDistribution", 
                               r = rnew, d = dnew, p = pnew, q = qnew, 
                               gaps = gapsnew, a = e1@a, b = e1@b + e2, 
-                              X0 = e1@X0, .withSim = FALSE, .withArith = TRUE)
+                              X0 = e1@X0, .withSim = FALSE, .withArith = TRUE,
+                    .logExact = .logExact(e1), .lowerExact = .lowerExact(e1)
+                     )
 
             }else if (Dclass == "AbscontDistribution"){  
                 object <- new("AffLinAbscontDistribution", r = rnew, 
                               d = dnew, p = pnew, q = qnew, gaps = gapsnew, 
                               a = 1, b = e2, X0 = e1, .withSim = FALSE, 
-                              .withArith = TRUE)
+                              .withArith = TRUE,
+                    .logExact = .logExact(e1), .lowerExact = .lowerExact(e1)
+                     )
             }
             rm(pnew, qnew, dnew, rnew)
             object
@@ -439,7 +466,7 @@ return(outC)
                              if (!lower.tail) d0 <- -d0
                              p0 <- p0 + d0},
                              list(e2C = e2)
-                             )
+                             )                            #
 
                  dnew <- .makeD(substitute(e1, list(e1 = e1)),
                                 substitute(alist(x = x / e2), list(e2 = e2)))
@@ -452,7 +479,9 @@ return(outC)
                  object <- new(Dclass, r = rnew, d = dnew, p = pnew,
                                q = qnew, support = supportnew,
                                a = e1@a * e2, b = e2 * e1@b, X0 = e1@X0,                              
-                              .withSim = FALSE, .withArith = TRUE)
+                              .withSim = FALSE, .withArith = TRUE,
+                    .logExact = .logExact(e1), .lowerExact = .lowerExact(e1)
+                     )
                  rm(supportnew)
 
             }else if (Dclass == "DiscreteDistribution"){
@@ -480,7 +509,9 @@ return(outC)
                  object <- new("AffLinDiscreteDistribution", r = rnew, d = dnew, 
                                p = pnew, q = qnew, support = supportnew,
                                a = e2, b = 0, X0 = e1,                              
-                              .withSim = FALSE, .withArith = TRUE)
+                              .withSim = FALSE, .withArith = TRUE,
+                    .logExact = .logExact(e1), .lowerExact = .lowerExact(e1)
+                     )
                  rm(supportnew)
 
             }else if (Dclass == "AffLinAbscontDistribution"){
@@ -501,7 +532,9 @@ return(outC)
                                 sign = e2>0)
                  object <- new(Dclass, r = rnew, d = dnew, p = pnew, q = qnew, 
                                gaps = gapsnew, a = e1@a * e2, b = e2 * e1@b, 
-                               X0 = e1@X0, .withSim = FALSE, .withArith = TRUE)
+                               X0 = e1@X0, .withSim = FALSE, .withArith = TRUE,
+                    .logExact = .logExact(e1), .lowerExact = .lowerExact(e1)
+                     )
  
             }else if (Dclass == "AbscontDistribution"){
                  if(is.null(e1@gaps)) 
@@ -522,7 +555,9 @@ return(outC)
                  object <- new("AffLinAbscontDistribution", r = rnew, d = dnew, 
                                p = pnew, q = qnew, gaps = gapsnew, a = e2, 
                                b = 0, X0 = e1, .withSim = FALSE, 
-                               .withArith = TRUE)
+                               .withArith = TRUE,
+                    .logExact = .logExact(e1), .lowerExact = .lowerExact(e1)
+                     )
             }
             rm(pnew, qnew, dnew, rnew)
             object
@@ -797,7 +832,9 @@ return(f)
             object <- new("DiscreteDistribution",
                            r = rnew, d = dnew, p = pnew,
                            q = qnew, support = supportnew,
-                          .withSim = FALSE, .withArith = TRUE)
+                          .withSim = e1@.withSim, .withArith = TRUE,
+                           .lowerExact = .lowerExact(e1),
+                           .logExact = .logExact(e1))
             rm(supportnew)
             rm(pnew, qnew, dnew, rnew)
             object
@@ -838,7 +875,9 @@ return(f)
             object <- AbscontDistribution(
                            r = rnew, d = dnew, p = pnew,
                            q = qnew, gaps = gapsnew,
-                          .withSim = FALSE, .withArith = TRUE)
+                          .withSim = e1@.withSim, .withArith = TRUE,
+                          .lowerExact = .lowerExact(e1),
+                          .logExact = .logExact(e1))
             rm(gapsnew)
             rm(pnew, qnew, dnew, rnew)
             object
@@ -860,7 +899,9 @@ return(f)
             object <- new("DiscreteDistribution",
                            r = rnew, d = dnew, p = pnew,
                            q = qnew, support = supportnew,
-                          .withSim = FALSE, .withArith = TRUE)
+                          .withSim = e1@.withSim, .withArith = TRUE,
+                          .lowerExact = .lowerExact(e1),
+                          .logExact = .logExact(e1))
             rm(supportnew)
             rm(pnew, qnew, dnew, rnew)
             object
@@ -882,9 +923,11 @@ return(f)
             object <- AbscontDistribution(
                            r = rnew, d = dnew, p = pnew,
                            q = qnew, gaps = gapsnew,
-                          .withSim = FALSE, .withArith = TRUE)
-            rm(gapsnew)
-            rm(pnew, qnew, dnew, rnew)
+                           .withSim = e1@.withSim, .withArith = TRUE,
+                           .lowerExact = .lowerExact(e1),
+                           .logExact = .logExact(e1))
+           if(exists("gapsnew")) rm(gapsnew)
+           rm(pnew, qnew, dnew, rnew)
             object
           }
 
@@ -983,6 +1026,7 @@ return(function(q, lower.tail = TRUE, log.p = FALSE){
             i <- 0
             ll0 <- length(list0)
             li0 <- vector("list",len)
+            if(ll0)
             while(i < len){
                j <- 1 + ( i %% ll0)
                i <- i + 1

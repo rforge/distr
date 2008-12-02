@@ -47,3 +47,4 @@ function(object) {
            myobj <- do.call("new", args = lst)
            myobj
             })
+

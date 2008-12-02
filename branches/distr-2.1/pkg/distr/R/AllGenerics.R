@@ -407,3 +407,11 @@ if(!isGeneric("NumbOfSummandsDistr"))
 if(!isGeneric("SummandsDistr"))
     setGeneric("SummandsDistr", function(object) 
                 standardGeneric("SummandsDistr"))
+
+if(!isGeneric(".lowerExact"))
+    setGeneric(".lowerExact", function(object) 
+                standardGeneric(".lowerExact"))
+
+if(!isGeneric(".logExact"))
+    setGeneric(".logExact", function(object) 
+                standardGeneric(".logExact"))

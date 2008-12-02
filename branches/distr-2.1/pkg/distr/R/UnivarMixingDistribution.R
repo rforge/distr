@@ -19,6 +19,7 @@ UnivarMixingDistribution <- function(..., mixCoeff,
 
     .withArith <- any(as.logical(lapply(mixDistr, function(x) x@".withArith")))
     .withSim   <- any(as.logical(lapply(mixDistr, function(x) x@".withSim")))
+    .lowerExact<- all(as.logical(lapply(mixDistr, function(x) x@".lowerExact")))
 
     if (all( as.logical(lapply(mixDistr, function(x) is(x,"AbscontDistribution")))) ||
         all( as.logical(lapply(mixDistr, function(x) is(x,"DiscreteDistribution")))))
@@ -30,7 +31,7 @@ UnivarMixingDistribution <- function(..., mixCoeff,
 
     obj <- new("UnivarMixingDistribution", p = pnew, r = rnew, d = NULL, q = qnew,
          mixCoeff = mixCoeff, mixDistr = mixDistr, .withSim = .withSim,
-         .withArith = .withArith)
+         .withArith = .withArith,.lowerExact =.lowerExact)
 
     if (withSimplify)
         obj <- simplifyD(obj)

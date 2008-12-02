@@ -119,7 +119,11 @@ the result is again of class <code>"UnivarLebDecDistribution"</code></dd>
 
 <pre>
 plot(Truncate(Norm(),lower=-1,upper=2))
-plot(Truncate(Norm(),lower=15,upper=15.7))
+TN &lt;- Truncate(Norm(),lower=15,upper=15.7) ### remarkably right!
+plot(TN)
+r(TN)(30)
+TNG &lt;- Truncate(Geom(prob=0.05),lower=325,upper=329) ### remarkably right!
+plot(TNG)
 </pre>
 
 

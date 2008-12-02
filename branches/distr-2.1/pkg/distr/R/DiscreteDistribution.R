@@ -5,7 +5,7 @@
 ## (c) Matthias Kohl: revised P.R. 030707
 
 DiscreteDistribution <- function(supp, prob, .withArith = FALSE,
-     .withSim = FALSE){
+     .withSim = FALSE, .lowerExact = TRUE, .logExact = FALSE){
     if(!is.numeric(supp))
         stop("'supp' is no numeric vector")
     if(any(!is.finite(supp)))   # admit +/- Inf?
@@ -54,7 +54,8 @@ DiscreteDistribution <- function(supp, prob, .withArith = FALSE,
                       .withSim, min(supp), max(supp), Cont = FALSE)
 
     object <- new("DiscreteDistribution", r = rfun, d = dfun, q = qfun, p=pfun,
-         support = supp, .withArith = .withArith, .withSim = .withSim)
+         support = supp, .withArith = .withArith, .withSim = .withSim,
+         .lowerExact = .lowerExact, .logExact = .logExact)
 }
 
 
@@ -346,7 +347,8 @@ setMethod("abs", "DiscreteDistribution",
 
             object <- new("DiscreteDistribution", r = rnew, p = pnew,
                            q = qnew, d = dnew, support = supportnew, 
-                           .withSim = x@.withSim, .withArith = TRUE)
+                           .withSim = x@.withSim, .withArith = TRUE,
+                           .lowerExact = x@.lowerExact)
             object
           })
 

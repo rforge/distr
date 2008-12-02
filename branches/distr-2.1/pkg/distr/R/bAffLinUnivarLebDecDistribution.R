@@ -28,7 +28,9 @@ setMethod("*", c("AffLinUnivarLebDecDistribution","numeric"),
                     q = Distr@q, X0 = e1@X0, mixDistr = Distr@mixDistr,
                     mixCoeff = Distr@mixCoeff,
                     a = e1@a*e2, b = e1@b, .withSim  = e1@.withSim,
-                    .withArith = TRUE)
+                    .withArith = TRUE,
+                    .logExact = .logExact(e1), .lowerExact = .lowerExact(e1)
+                     )
           object})
 
 setMethod("+", c("AffLinUnivarLebDecDistribution","numeric"),
@@ -54,7 +56,9 @@ setMethod("+", c("AffLinUnivarLebDecDistribution","numeric"),
                     q = Distr@q, X0 = e1@X0, mixDistr = Distr@mixDistr,
                     mixCoeff = Distr@mixCoeff,
                     a = e1@a, b = e1@b+e2, .withSim  = e1@.withSim,
-                    .withArith = TRUE)
+                    .withArith = TRUE,
+                    .logExact = .logExact(e1), .lowerExact = .lowerExact(e1)
+                     )
           object})
 
 

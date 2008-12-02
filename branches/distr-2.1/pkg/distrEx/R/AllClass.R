@@ -33,8 +33,7 @@ setClass("MultivariateDistribution",
             prototype = prototype(r = function(n){ matrix(rep(c(0,0), n), ncol=2) }, 
                                   d = NULL, p = NULL, q = NULL, param = NULL,
                                   img = new("EuclideanSpace", dimension = 2),
-                                  support = matrix(c(0,0), ncol = 2), .withSim = FALSE, 
-                                  .withArith = FALSE ),
+                                  support = matrix(c(0,0), ncol = 2)),
             contains = "Distribution")
 
 # discrete mulitvariate distribution
@@ -42,8 +41,7 @@ setClass("DiscreteMVDistribution", representation(support = "matrix"),
             prototype(r = function(n){ matrix(rep(c(0,0), n), ncol=2) }, 
                       d = NULL, p = NULL, q = NULL, param = NULL,
                       img = new("EuclideanSpace", dimension = 2),
-                      support = matrix(c(0,0), ncol = 2), .withSim = FALSE, 
-                      .withArith = FALSE ),
+                      support = matrix(c(0,0), ncol = 2)),
             contains = "MultivariateDistribution")
 
 # condition
@@ -62,8 +60,7 @@ setClass("UnivariateCondDistribution",
             representation(cond = "Condition"), 
             prototype(r = function(n, cond){ rnorm(n, mean = 0, sd = 1) },
                       d = NULL, p = NULL, q = NULL, img = new("Reals"), 
-                      param = NULL, cond = new("Condition"), .withSim = FALSE, 
-                      .withArith = FALSE),
+                      param = NULL, cond = new("Condition")),
             contains = "Distribution")
 
 # absolutely continuous conditional distribution
@@ -71,8 +68,7 @@ setClass("AbscontCondDistribution",
             representation(cond = "Condition"), 
             prototype(r = function(n, cond){ rnorm(n, mean = 0, sd = 1) },
                       d = NULL, p = NULL, q = NULL, img = new("Reals"), 
-                      param = NULL, cond = new("Condition"), .withSim = FALSE, 
-                      .withArith = FALSE),
+                      param = NULL, cond = new("Condition")),
             contains = "UnivariateCondDistribution")
 
 # discrete conditional distribution
@@ -82,8 +78,7 @@ setClass("DiscreteCondDistribution",
             prototype(r = function(n, cond){ rep(0, n) },
                       d = NULL, p = NULL, q = NULL, img = new("Reals"), 
                       param = NULL, support = function(cond){0},
-                      cond = new("Condition"), .withSim = FALSE, 
-                      .withArith = FALSE),
+                      cond = new("Condition")),
             contains = "UnivariateCondDistribution")
 
 # parameter of Gumbel distribution
@@ -110,8 +105,8 @@ setClass("Gumbel",
                                   q = function(p, ...){ qgumbel(p, loc = 0, scale = 1, ...) },
                                   img = new("Reals"),
                                   param = new("GumbelParameter"),
-                                  .withArith = FALSE,
-                                  .withSim = FALSE),
+                                  .logExact = TRUE,
+                                  .lowerExact = TRUE),
             contains = "AbscontDistribution")
 
 # Parameter of a linear regression model (with intercept and scale)

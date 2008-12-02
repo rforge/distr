@@ -2,9 +2,9 @@
 \docType{class}
 \alias{DiscreteDistribution-class}
 \alias{AffLinDiscreteDistribution-class}
-\alias{sqrt,DiscreteDistribution-method}
-\alias{initialize,DiscreteDistribution-method}                                                       
+\alias{initialize,DiscreteDistribution-method}
 \alias{initialize,AffLinDiscreteDistribution-method}
+\alias{sqrt,DiscreteDistribution-method}
 \alias{coerce,DiscreteDistribution,LatticeDistribution-method}
 
 \title{Class "DiscreteDistribution"}
@@ -29,6 +29,10 @@ This generating function, from version 1.9 on, has been moved to this package fr
     \item{\code{.withSim}:}{logical: used internally to issue warnings as to accuracy}
     \item{\code{support}:}{Object of class \code{"numeric"}: a (sorted) vector containing the support of the discrete
     density function}
+    \item{\code{.logExact}:}{logical: used internally to flag the case where there are explicit formulae for the
+                              log version of density, cdf, and quantile function}
+    \item{\code{.lowerExact}:}{logical: used internally to flag the case where there are explicit formulae for the
+                              lower tail version of cdf and quantile function}
   }
 }
 \section{Extends}{
@@ -38,9 +42,9 @@ Class \code{"Distribution"}, by class \code{"UnivariateDistribution"}.
 \section{Methods}{
   \describe{
     \item{initialize}{\code{signature(.Object = "DiscreteDistribution")}: initialize method }
-    \item{\code{coerce}}{\code{signature(from = "DiscreteDistribution",
-    to = "LatticeDistribution")}: coerces an object from \code{"DiscreteDistribution"}
-    to \code{"LatticeDistribution"} if support of \code{from} is a lattice.}
+    \item{coerce}{\code{signature(from = "DiscreteDistribution", 
+                   to = "LatticeDistribution")}: coerce method to class \code{"LatticeDistribution"}
+                   (checks if support is a lattice)}
     \item{Math}{\code{signature(x = "DiscreteDistribution")}: application of a mathematical function, e.g. \code{sin} or
     \code{tan} to this discrete distribution}
     \code{abs}{\code{signature(x = "DiscreteDistribution")}:  exact image distribution of \code{abs(x)}.}

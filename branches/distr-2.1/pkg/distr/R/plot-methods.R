@@ -27,8 +27,9 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
      ###
      if(!is.logical(inner))
          {if(!is.list(inner))
-            stop("Argument 'inner' must either be 'logical' or a 'list'")
-          else inner <- .fillList(inner,3)          
+              inner <- as.list(inner)
+            #stop("Argument 'inner' must either be 'logical' or a 'list'")
+          inner <- .fillList(inner,3)          
          }
      cex <- if (hasArg(cex)) dots$cex else 1
 
@@ -293,8 +294,9 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
       
      if(!is.logical(inner))
          {if(!is.list(inner))
-            stop("Argument 'inner' must either be 'logical' or a 'list'")
-          else inner <- .fillList(inner,3)          
+              inner <- as.list(inner)
+            #stop("Argument 'inner' must either be 'logical' or a 'list'")
+          inner <- .fillList(inner,3)          
          }
 
      cex <- if (hasArg(cex)) dots$cex else 1

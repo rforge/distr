@@ -5,8 +5,7 @@
 \alias{initialize,Binom-method}
 
 \title{Class "Binom" }
-\description{The binomial distribution with \code{size} \eqn{= n}, by default 
-  \eqn{=1}, and
+\description{The binomial distribution with \code{size} \eqn{= n}, by default \eqn{=1}, and
   \code{prob} \eqn{= p}, by default \eqn{=0.5}, has density
   \deqn{p(x) = {n \choose x} {p}^{x} {(1-p)}^{n-x}}{
     p(x) = choose(n,x) p^x (1-p)^(n-x)}
@@ -20,24 +19,23 @@ This object is a binomial distribution.
 }
 \section{Slots}{
   \describe{
-    \item{\code{img}:}{Object of class \code{"Naturals"}: The space of the 
-     image of this distribution has got dimension 1 and the 
-     name "Natural Space". }
-    \item{\code{param}:}{Object of class \code{"BinomParameter"}: the parameter 
-          of this distribution (\code{prob}, \code{size}), declared at its 
-          instantiation }
-    \item{\code{r}:}{Object of class \code{"function"}: generates random 
-          numbers (calls function \code{rbinom}) }
-    \item{\code{d}:}{Object of class \code{"function"}: density function (calls 
-          function \code{dbinom}) }
-    \item{\code{p}:}{Object of class \code{"function"}: cumulative function 
-          (calls function \code{pbinom}) }
-    \item{\code{q}:}{Object of class \code{"function"}: inverse of the 
-           cumulative function (calls function \code{qbinom}).
-    The quantile is defined as the smallest value x such that F(x) >= p, where 
-            F is the cumulative function. }
-    \item{\code{support}:}{Object of class \code{"numeric"}: a (sorted) 
-            vector containing the support of the discrete density function}
+    \item{\code{img}:}{Object of class \code{"Naturals"}: The space of the image of this
+     distribution has got dimension 1 and the name "Natural Space". }
+    \item{\code{param}:}{Object of class \code{"BinomParameter"}: the parameter of this distribution (\code{prob}, \code{size}),
+     declared at its instantiation }
+    \item{\code{r}:}{Object of class \code{"function"}: generates random numbers (calls function \code{rbinom}) }
+    \item{\code{d}:}{Object of class \code{"function"}: density function (calls function \code{dbinom}) }
+    \item{\code{p}:}{Object of class \code{"function"}: cumulative function (calls function \code{pbinom}) }
+    \item{\code{q}:}{Object of class \code{"function"}: inverse of the cumulative function (calls function \code{qbinom}).
+    The quantile is defined as the smallest value x such that F(x) >= p, where F is the cumulative function. }
+    \item{\code{support}:}{Object of class \code{"numeric"}: a (sorted) vector containing the support of the discrete
+    density function}
+    \item{\code{.withArith}:}{logical: used internally to issue warnings as to interpretation of arithmetics}
+    \item{\code{.withSim}:}{logical: used internally to issue warnings as to accuracy}
+    \item{\code{.logExact}:}{logical: used internally to flag the case where there are explicit formulae for the
+                              log version of density, cdf, and quantile function}
+    \item{\code{.lowerExact}:}{logical: used internally to flag the case where there are explicit formulae for the
+                              lower tail version of cdf and quantile function}
   }
 }
 \section{Extends}{
@@ -47,19 +45,13 @@ Class \code{"Distribution"}, by class \code{"DiscreteDistribution"}.
 }
 \section{Methods}{
   \describe{
-    \item{+}{\code{signature(e1 = "Binom", e2 = "Binom")}: For two binomial 
-             distributions with equal probabilities the exact convolution 
-             formula is implemented thereby improving the general numerical 
-             accuracy.}
+    \item{+}{\code{signature(e1 = "Binom", e2 = "Binom")}: For two binomial distributions with equal probabilities
+    the exact convolution formula is implemented thereby improving the general numerical approximation.}
     \item{initialize}{\code{signature(.Object = "Binom")}: initialize method }
-    \item{prob}{\code{signature(object = "Binom")}: returns the slot \code{prob} 
-             of the parameter of the distribution }
-    \item{prob<-}{\code{signature(object = "Binom")}: modifies the slot 
-             \code{prob} of the parameter of the distribution }
-    \item{size}{\code{signature(object = "Binom")}: returns the slot \code{size} 
-             of the parameter of the distribution }
-    \item{size<-}{\code{signature(object = "Binom")}: modifies the slot 
-             \code{size} of the parameter of the distribution }
+    \item{prob}{\code{signature(object = "Binom")}: returns the slot \code{prob} of the parameter of the distribution }
+    \item{prob<-}{\code{signature(object = "Binom")}: modifies the slot \code{prob} of the parameter of the distribution }
+    \item{size}{\code{signature(object = "Binom")}: returns the slot \code{size} of the parameter of the distribution }
+    \item{size<-}{\code{signature(object = "Binom")}: modifies the slot \code{size} of the parameter of the distribution }
   }
 }
 

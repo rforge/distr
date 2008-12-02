@@ -114,9 +114,10 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
      ###
      if(!is.logical(inner))
          {if(!is.list(inner))
-            stop("Argument 'inner' must either be 'logical' or a 'list'")
-          else inner <- .fillList(inner,8)
-         } 
+              inner <- as.list(inner)
+            #stop("Argument 'inner' must either be 'logical' or a 'list'")
+          inner <- .fillList(inner,8)          
+         }
      cex <- if (hasArg(cex)) dots$cex else 1
 
      if (hasArg(cex) && missing(cex.points))

@@ -88,6 +88,8 @@ DiscreteMVDistribution <- function(supp, prob){
     MVD@support <- supp
     MVD@.withSim <- FALSE 
     MVD@.withArith <- FALSE
+    MVD@.logExact <- TRUE 
+    MVD@.lowerExact <- FALSE
     
     return(MVD)
 }
