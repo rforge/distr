@@ -18,6 +18,7 @@
 <param name="keyword" value="R:   .qmixfun">
 <param name="keyword" value="R:   .rmixfun">
 <param name="keyword" value="R:   .del0dmixfun">
+<param name="keyword" value="R:   .ULC.cast">
 <param name="keyword" value="R:   .loupmixfun">
 <param name="keyword" value="R:   .make.lattice.es.vector">
 <param name="keyword" value="R:   .presubs">
@@ -55,6 +56,9 @@
 <param name="keyword" value="R:   .csimpsum">
 <param name="keyword" value="R:   .primefun">
 <param name="keyword" value="R:   .IssueWarn">
+<param name="keyword" value="R:   .fillList">
+<param name="keyword" value="R:   .trunc.up">
+<param name="keyword" value="R:   .trunc.low">
 <param name="keyword" value="R:   devNew">
 <param name="keyword" value=" Internal functions of package distr">
 </object>
@@ -116,6 +120,7 @@ These functions are used internally by package distr.
 .qmixfun(mixDistr, mixCoeff, Cont = TRUE, pnew)
 .del0dmixfun(mixDistr)
 .loupmixfun(mixDistr)
+.ULC.cast(x)
 .expm.d(e1)
 .expm.c(e1)
 .logm.d(e1)
@@ -128,6 +133,9 @@ These functions are used internally by package distr.
 .csimpsum(fx)
 .primefun(f,x, nm = NULL)
 .IssueWarn(Arith,Sim)
+.fillList(list0, len=length(list0))
+.trunc.up(object, upper)
+.trunc.low(object, lower)
 devNew(...)
 </pre>
 
@@ -137,7 +145,7 @@ devNew(...)
 <table summary="R argblock">
 <tr valign="top"><td><code>x</code></td>
 <td>
-a (numeric) vector</td></tr>
+a (numeric) vector, or (in case of <code>.ULC.cast</code>) an object of class <code>"AcDcLcDistribution"</code></td></tr>
 <tr valign="top"><td><code>y</code></td>
 <td>
 a (numeric) vector</td></tr>
@@ -332,6 +340,19 @@ or logically-``any'' of these slots in a collection of such objects</td></tr>
 <td>
 logical; slot <code>.withSim</code> of a distribution object,
 or logically-``any'' of these slots in a collection of such objects</td></tr>
+<tr valign="top"><td><code>list0</code></td>
+<td>
+list, the elements of which are to be copied to a new list using
+recycling if necessary</td></tr>
+<tr valign="top"><td><code>len</code></td>
+<td>
+length of the list to be filled</td></tr>
+<tr valign="top"><td><code>lower</code></td>
+<td>
+lower truncation point</td></tr>
+<tr valign="top"><td><code>upper</code></td>
+<td>
+upper truncation point</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 arguments passed through to other functions</td></tr>
@@ -447,6 +468,10 @@ value of slot function <code>d.ac</code> of <code>mixDistr</code>
 for argument <code>0</code> to <code>0</code>.
 </p>
 <p>
+<code>.ULC.cast</code> coerces an object of class <code>"AcDcLcDistribution"</code> to
+class <code>"UnivarLebDecDistribution"</code>, using <code>simplifyD</code>.
+</p>
+<p>
 <code>.expm.d,.expm.c</code> for discrete, resp. a.c. argument <code>e1</code> fill the 
 slots <code>p</code>, <code>d</code>, <code>r</code>, and <code>q</code>
 of the transformation <code>exp(e1)</code> exactly.
@@ -472,6 +497,17 @@ Simpson quadrature method, returning already the function values
 of the prime function on a grid; it is to mimick the behaviour
 of <code>cumsum</code>. <code>.primefun</code> is similar but more flexible and
 produces the prime function as a function.
+</p>
+<p>
+<code>.fillList</code>{fills a new list with the elements of a given list <code>list0</code>
+until length <code>len</code> is reached using recycling if necessary.}
+</p>
+<p>
+<code>.trunc.up</code>, <code>.trunc.low</code>  provide common routines for
+classes <code>DiscreteDistribution</code> and <code>AbscontDistribution</code> for 
+one-sided truncation, using (for slot <code>r</code>) Peter Dalgaard's clever 
+log-tricks as indicated in 
+<a href="http://article.gmane.org/gmane.comp.lang.r.general/126112">http://article.gmane.org/gmane.comp.lang.r.general/126112</a>.
 </p>
 <p>
 <code>devNew</code> opens a new device. This function is for back compatibility
@@ -565,6 +601,9 @@ a list of four components: <code>qL</code>, the minimal value of
 <code>q(x)(1)</code>, <code>qu</code>, the maximal value of 
 <code>q(x)(getdistrOption("TruncQuantile"), lower.tail = FALSE)</code>,
 <code>x</code> running through the members of <code>mixDistr</code> in each case.</td></tr>
+<tr valign="top"><td><code>.ULC.cast</code></td>
+<td>
+an object of class <code>"UnivarLebDecDistribution"</code>.</td></tr>
 <tr valign="top"><td><code>.expm.d,.logm.d</code></td>
 <td>
 an object of class <code>"DiscreteDistribution"</code>.</td></tr>
@@ -582,6 +621,8 @@ an object of class <code>"AbscontDistribution"</code>.</td></tr>
 <code>.csimpsum</code>{a vector of evaluations of the prime function at the grid points}
 <code>.primefun</code>{the prime function as a function}
 <code>.IssueWarn</code>{a list with two warnings to be issued each of which may be empty}
+<code>.fillList</code>{a list}
+<code>.trunc.up,.trunc.low</code>{a list with elements <code>r,p,d,q</code> (in this order)}
 <code>devNew</code>{returns the return value of the device opened, usually invisible 'NULL'}</p>
 
 <h3>Author(s)</h3>
@@ -617,6 +658,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.0.3 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index]</a></div>
 
 </body></html>

@@ -13,6 +13,7 @@
 <param name="keyword" value="R:   var,AffLinAbscontDistribution-method">
 <param name="keyword" value="R:   var,AffLinDiscreteDistribution-method">
 <param name="keyword" value="R:   var,AffLinLatticeDistribution-method">
+<param name="keyword" value="R:   var,CompoundDistribution-method">
 <param name="keyword" value="R:   var,Beta-method">
 <param name="keyword" value="R:   var,Binom-method">
 <param name="keyword" value="R:   var,Cauchy-method">
@@ -255,6 +256,8 @@ var(x, ...)
 var(x, fun, cond, withCond, useApply, ...)
 ## S4 method for signature 'AffLinDistribution':
 var(x, fun, cond, withCond, useApply, ...)
+## S4 method for signature 'CompoundDistribution':
+var(x, ...)
 ## S4 method for signature 'Binom':
 var(x, ...)
 ## S4 method for signature 'Beta':
@@ -429,6 +432,13 @@ resp. <code>help(var,package="stats")</code>.</dd>
 <dt><code>var</code>, <code>signature(x = "UnivariateDistribution")</code>:</dt><dd>variance of univariate distributions using corresponding <code>E()</code>-method.</dd>
 <dt><code>var</code>, <code>signature(x = "AffLinDistribution")</code>:</dt><dd>if arguments <code>fun</code>, <code>cond</code> are missing: <code>x@a^2 * var(x@X0)</code>
 else uses method for <code>signature(x = "UnivariateDistribution")</code></dd>
+<dt><code>var</code>, <code>signature(x = "CompoundDistribution")</code>:</dt><dd>if we are in i.i.d. situation (i.e., slot <code>SummandsDistr</code> is of
+class <code>UnivariateDistribution</code>) the formula 
+<i>E[N]var[S]+E[S*S]var(N)</i> 
+for <i>N</i> the frequency distribution and
+<i>S</i> the summand distribution; else we coerce to 
+<code>"UnivarLebDecDistribution"</code>.
+</dd>
 
 
 <dt><code>sd</code>, <code>signature(x = "Any")</code>:</dt><dd>interface to the <span class="pkg">stats</span>-function <code>sd</code> &mdash; see <code><a onclick="findlink('stats', 'sd.html')" style="text-decoration: underline; color: blue; cursor: hand">sd</a></code>
@@ -647,6 +657,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center">[Package <em>distrEx</em> version 2.0.3 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distrEx</em> version 2.1 <a href="00Index.html">Index]</a></div>
 
 </body></html>

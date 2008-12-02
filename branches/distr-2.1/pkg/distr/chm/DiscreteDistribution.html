@@ -23,7 +23,8 @@ Generates an object of class  <code>"DiscreteDistribution"</code>
 <h3>Usage</h3>
 
 <pre>
-  DiscreteDistribution(supp, prob, .withArith=FALSE, .withSim=FALSE)
+  DiscreteDistribution(supp, prob, .withArith=FALSE, .withSim=FALSE, 
+                       .lowerExact = TRUE, .logExact = FALSE)
   DiscreteDistribution(supp)
 </pre>
 
@@ -47,6 +48,14 @@ distributional arithmetics was involved, you may set this to <code>TRUE</code>.<
 <td>
 normally not set by the user, but if determining the entries <code>supp</code>, <code>prob</code>
 simulations were involved, you may set this to <code>TRUE</code>.</td></tr>
+<tr valign="top"><td><code>.lowerExact</code></td>
+<td>
+normally not set by the user: whether the <code>lower.tail=FALSE</code>
+part is calculated exactly, avoing a ``<code>1-.</code>''.</td></tr>
+<tr valign="top"><td><code>.logExact</code></td>
+<td>
+normally not set by the user: whether in determining slots <code>d,p,q</code>,
+we make particular use of a logarithmic representation to enhance accuracy.</td></tr>
 </table>
 
 <h3>Details</h3>
@@ -101,6 +110,6 @@ plot(D2)
 
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.0 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index]</a></div>
 
 </body></html>

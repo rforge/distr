@@ -11,6 +11,7 @@
 <param name="keyword" value="R:   plot,UnivarLebDecDistribution,missing-method">
 <param name="keyword" value="R:   plot,AbscontDistribution,missing-method">
 <param name="keyword" value="R:   plot,DiscreteDistribution,missing-method">
+<param name="keyword" value="R:   plot,CompoundDistribution,missing-method">
 <param name="keyword" value="R:   plot,DistrList,missing-method">
 <param name="keyword" value=" Methods for Function plot in Package &lsquo;distr&rsquo;">
 </object>
@@ -68,7 +69,9 @@ plot(x, width = 10,
      col.inner = par("col.main"), col.sub = par("col.sub"),  cex.points = 2.0,
      pch.u = 21, pch.a = 16, mfColRow = TRUE)
 ## S4 method for signature 'DistrList, missing':
-plot(x, y, ...)
+plot(x, ...)
+## S4 method for signature 'CompoundDistribution, missing':
+plot(x, ...)
 </pre>
 
 
@@ -115,7 +118,10 @@ just as argument <code>main</code> in <code><a onclick="findlink('graphics', 'pl
 <td>
 logical: panels for density/probability function -
 cdf - quantile function have their own titles? or <br>
-list of length 3: titles for density/probability function -
+list which is filled to length 3  (resp. 8 for class 
+<code>UnivarLebDecDistribution</code>) if necessary
+(possibly using recycling rules):  titles for 
+density/probability function -
 cdf - quantile function (each of the same form as argument 
 <code>main</code> in <code><a onclick="findlink('graphics', 'plotdefault.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.default</a></code>)</td></tr>
 <tr valign="top"><td><code>sub</code></td>
@@ -206,6 +212,9 @@ eight plots: in the first row,  it plots the
 cumulative distribution function and the quantile function; in the second
 row the absolutely continuous part (with density, cdf and quantile fct.),
 and in the last row the discrete part (with prob.fct., cdf and quantile fct.). </dd>
+<dt>plot</dt><dd><code>signature(x = "CompoundDistribution", y = "missing")</code>: 
+coerces <code>x</code> to <code>"UnivarLebDecDistribution"</code> and uses the corresponding
+method. </dd>
 <dt>plot</dt><dd><code>signature(x = "AbscontDistribution", y = "missing")</code>: plots density, 
 cumulative distribution function and the quantile function </dd>
 <dt>plot</dt><dd><code>signature(x = "DiscreteDistribution", y = "missing")</code>: plots probability 
@@ -319,6 +328,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.0.1 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index]</a></div>
 
 </body></html>

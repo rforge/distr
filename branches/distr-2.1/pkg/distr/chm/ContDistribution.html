@@ -31,12 +31,13 @@ Generates an object of class  <code>"AbscontDistribution"</code>
   AbscontDistribution(r = NULL, d = NULL, p = NULL, q = NULL,
                    gaps = NULL, param = NULL, img = new("Reals"),
                    .withSim = FALSE, .withArith = FALSE,
+                    .lowerExact = FALSE, .logExact = FALSE,
+                   withgaps = getdistrOption("withgaps"),
                    low1 = NULL, up1 = NULL, low = -Inf, up =Inf,
                    withStand = FALSE,
                    ngrid = getdistrOption("DefaultNrGridPoints"),
                    ep = getdistrOption("TruncQuantile"),
-                   e = getdistrOption("RtoDPQ.e"),
-                   withgaps = getdistrOption("withgaps"))
+                   e = getdistrOption("RtoDPQ.e"))
 </pre>
 
 
@@ -101,6 +102,14 @@ distributional arithmetics was involved, you may set this to <code>TRUE</code>.<
 <td>
 normally not set by the user, but if determining the entries <code>supp</code>, <code>prob</code>
 simulations were involved, you may set this to <code>TRUE</code>.</td></tr>
+<tr valign="top"><td><code>.lowerExact</code></td>
+<td>
+normally not set by the user: whether the <code>lower.tail=FALSE</code>
+part is calculated exactly, avoing a ``<code>1-.</code>''.</td></tr>
+<tr valign="top"><td><code>.logExact</code></td>
+<td>
+normally not set by the user: whether in determining slots <code>d,p,q</code>,
+we make particular use of a logarithmic representation to enhance accuracy.</td></tr>
 </table>
 
 <h3>Details</h3>
@@ -213,6 +222,6 @@ plot(Ac &lt;- AbscontDistribution(d = function(x, log = FALSE){
 
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.0 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index]</a></div>
 
 </body></html>

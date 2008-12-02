@@ -1,4 +1,4 @@
-<html><head><title>Methods for operators +,-,*,/ in Package distr</title>
+<html><head><title>Methods for operators +,-,*,/,... in Package distr</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
 </head>
@@ -8,6 +8,7 @@
 <param name="keyword" value="R:   operators-methods">
 <param name="keyword" value="R:   operators">
 <param name="keyword" value="R:   -,UnivariateDistribution,missing-method">
+<param name="keyword" value="R:   -,LatticeDistribution,missing-method">
 <param name="keyword" value="R:   -,Norm,missing-method">
 <param name="keyword" value="R:   +,UnivariateDistribution,numeric-method">
 <param name="keyword" value="R:   +,AbscontDistribution,numeric-method">
@@ -18,19 +19,28 @@
 <param name="keyword" value="R:   +,AffLinDiscreteDistribution,numeric-method">
 <param name="keyword" value="R:   +,AffLinLatticeDistribution,numeric-method">
 <param name="keyword" value="R:   +,AffLinUnivarLebDecDistribution,numeric-method">
+<param name="keyword" value="R:   +,CompoundDistribution,numeric-method">
 <param name="keyword" value="R:   +,Cauchy,numeric-method">
 <param name="keyword" value="R:   +,Dirac,numeric-method">
 <param name="keyword" value="R:   +,Norm,numeric-method">
 <param name="keyword" value="R:   +,Unif,numeric-method">
 <param name="keyword" value="R:   +,numeric,UnivariateDistribution-method">
+<param name="keyword" value="R:   +,numeric,LatticeDistribution-method">
 <param name="keyword" value="R:   -,UnivariateDistribution,numeric-method">
 <param name="keyword" value="R:   -,UnivariateDistribution,UnivariateDistribution-method">
+<param name="keyword" value="R:   -,LatticeDistribution,numeric-method">
+<param name="keyword" value="R:   -,LatticeDistribution,LatticeDistribution-method">
+<param name="keyword" value="R:   -,LatticeDistribution,UnivariateDistribution-method">
+<param name="keyword" value="R:   -,UnivariateDistribution,LatticeDistribution-method">
+<param name="keyword" value="R:   -,AcDcLcDistribution,AcDcLcDistribution-method">
 <param name="keyword" value="R:   -,numeric,UnivariateDistribution-method">
+<param name="keyword" value="R:   -,numeric,LatticeDistribution-method">
 <param name="keyword" value="R:   *,UnivariateDistribution,numeric-method">
 <param name="keyword" value="R:   *,AbscontDistribution,numeric-method">
 <param name="keyword" value="R:   *,DiscreteDistribution,numeric-method">
 <param name="keyword" value="R:   *,LatticeDistribution,numeric-method">
 <param name="keyword" value="R:   *,UnivarLebDecDistribution,numeric-method">
+<param name="keyword" value="R:   *,CompoundDistribution,numeric-method">
 <param name="keyword" value="R:   *,AffLinAbscontDistribution,numeric-method">
 <param name="keyword" value="R:   *,AffLinDiscreteDistribution,numeric-method">
 <param name="keyword" value="R:   *,AffLinLatticeDistribution,numeric-method">
@@ -46,7 +56,9 @@
 <param name="keyword" value="R:   *,Lnorm,numeric-method">
 <param name="keyword" value="R:   *,Unif,numeric-method">
 <param name="keyword" value="R:   *,numeric,UnivariateDistribution-method">
+<param name="keyword" value="R:   *,numeric,LatticeDistribution-method">
 <param name="keyword" value="R:   /,UnivariateDistribution,numeric-method">
+<param name="keyword" value="R:   /,LatticeDistribution,numeric-method">
 <param name="keyword" value="R:   +,UnivariateDistribution,UnivariateDistribution-method">
 <param name="keyword" value="R:   +,AbscontDistribution,AbscontDistribution-method">
 <param name="keyword" value="R:   +,AbscontDistribution,DiscreteDistribution-method">
@@ -55,6 +67,7 @@
 <param name="keyword" value="R:   +,LatticeDistribution,DiscreteDistribution-method">
 <param name="keyword" value="R:   +,LatticeDistribution,LatticeDistribution-method">
 <param name="keyword" value="R:   +,UnivarLebDecDistribution,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   +,AcDcLcDistribution,AcDcLcDistribution-method">
 <param name="keyword" value="R:   +,Binom,Binom-method">
 <param name="keyword" value="R:   +,Cauchy,Cauchy-method">
 <param name="keyword" value="R:   +,Chisq,Chisq-method">
@@ -80,11 +93,11 @@
 <param name="keyword" value="R:   ^,AcDcLcDistribution,Integer-method">
 <param name="keyword" value="R:   ^,AcDcLcDistribution,AcDcLcDistribution-method">
 <param name="keyword" value="R:   ^,numeric,AcDcLcDistribution-method">
-<param name="keyword" value=" Methods for operators +-*/ in Package distr">
+<param name="keyword" value=" Methods for operators +-*/... in Package distr">
 </object>
 
 
-<h2>Methods for operators +-*/ in Package distr</h2>
+<h2>Methods for operators +-*/... in Package distr</h2>
 
 
 <h3>Description</h3>
@@ -126,6 +139,8 @@ class <code>"AffLinDiscreteDistribution"</code>; exact</dd>
 class <code>"AffLinLatticeDistribution"</code>; exact</dd>
 <dt><code>+</code></dt><dd><code>signature(e1 = "UnivarLebDecDistribution", e2 = "numeric")</code> result of 
 class <code>"AffLinUnivarLebDecDistribution"</code>; exact</dd>
+<dt><code>+</code></dt><dd><code>signature(e1 = "CompoundDistribution", e2 = "numeric")</code> result of 
+class <code>"AffLinUnivarLebDecDistribution"</code>; exact</dd>
 <dt><code>+</code></dt><dd><code>signature(e1 = "AffLinAbscontDistribution", e2 = "numeric")</code> result again of 
 class <code>"AffLinAbscontDistribution"</code>; exact</dd>
 <dt><code>+</code></dt><dd><code>signature(e1 = "AffLinDiscreteDistribution", e2 = "numeric")</code> result again of 
@@ -157,6 +172,8 @@ class <code>"AffLinDiscreteDistribution"</code>; exact</dd>
 class <code>"AffLinLatticeDistribution"</code>; exact</dd>
 <dt><code>*</code></dt><dd><code>signature(e1 = "UnivarLebDecDistribution", e2 = "numeric")</code> result of 
 class <code>"AffLinUnivarLebDecDistribution"</code>; exact</dd>
+<dt><code>*</code></dt><dd><code>signature(e1 = "CompoundDistribution", e2 = "numeric")</code> result of 
+class <code>"AffLinUnivarLebDecDistribution"</code>; exact</dd>
 <dt><code>*</code></dt><dd><code>signature(e1 = "AffLinAbscontDistribution", e2 = "numeric")</code> result again of 
 class <code>"AffLinAbscontDistribution"</code>; exact</dd>
 <dt><code>*</code></dt><dd><code>signature(e1 = "AffLinDiscreteDistribution", e2 = "numeric")</code> result again of 
@@ -184,6 +201,9 @@ result of class <code>"Weibull"</code>; exact</dd>
 <code>"UnivariateDistribution"</code>; is generated by simulations</dd>
 <dt><code>-</code></dt><dd><code>signature(e1 = "UnivariateDistribution", e2 = "UnivariateDistribution")</code> is translated to <code>(-e1) + (-e2)</code>; 
 result again of class   <code>"UnivariateDistribution"</code>; is generated by simulations</dd>
+<dt><code>-</code></dt><dd><code>signature(e1 = "AcDcLcDistribution", e2 = "AcDcLcDistribution")</code>: both operands are coerced
+to class <code>"UnivarLebDecDistribution"</code> and the corresponding method is used.
+</dd>
 <dt><code>+</code></dt><dd><code>signature(e1 = "AbscontDistribution", e2 = "AbscontDistribution")</code> assumes <code>e1</code>, <code>e2</code> independent; result again of class 
 <code>"AbscontDistribution"</code>; is generated by FFT</dd>
 <dt><code>+</code></dt><dd><code>signature(e1 = "AbscontDistribution", e2 = "DiscreteDistribution")</code> assumes <code>e1</code>, <code>e2</code> independent; result again of class 
@@ -201,6 +221,9 @@ if the larger lattice-width is an integer multiple of the smaller(in abs. value)
 <code>"UnivarLebDecDistribution"</code>; is generated by separate explicite convolution of a.c. and discrete parts of <code>e1</code> and <code>e2</code>
 and subsequent flattening with <code><a href="flat.LCD.html">flat.LCD</a></code>; if <code>getdistrOption("withSimplify")</code> is  <code>TRUE</code>, result is piped
 through a call to <code><a href="simplifyD-methods.html">simplifyD</a></code></dd>
+<dt><code>+</code></dt><dd><code>signature(e1 = "AcDcLcDistribution", e2 = "AcDcLcDistribution")</code>: both operands are coerced
+to class <code>"UnivarLebDecDistribution"</code> and the corresponding method is used.
+</dd>
 <dt><code>+</code></dt><dd><code>signature(e1 = "Binom", e2 = "Binom")</code> assumes <code>e1</code>, <code>e2</code> independent; 
 if <code>prob(e1)==prob(e2)</code>, result again of class 
 <code>"Binom"</code>; uses the convolution formula for binomial distributions; exact</dd>
@@ -345,6 +368,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.0 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index]</a></div>
 
 </body></html>

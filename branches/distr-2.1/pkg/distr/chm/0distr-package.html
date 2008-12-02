@@ -64,19 +64,22 @@ corresponding image distributions.
   <td align="left">Package: </td>  <td align="left"> distr</td>
 </tr>
 <tr>
-  <td align="left"> Version: </td>  <td align="left"> 2.0.3</td>
+  <td align="left"> Version: </td>  <td align="left"> 2.0 </td>
 </tr>
 <tr>
-  <td align="left"> Date: </td>  <td align="left"> 2008-11-24</td>
+  <td align="left"> Date: </td>  <td align="left"> 2008-05-08 </td>
 </tr>
 <tr>
-  <td align="left"> Depends: </td>  <td align="left"> R(&gt;= 2.2.0), methods, graphics, startupmsg, sfsmisc, SweaveListingUtils</td>
+  <td align="left"> Depends: </td>  <td align="left"> R(&gt;= 2.2.0), methods, graphics, startupmsg</td>
+</tr>
+<tr>
+  <td align="left"> Imports: </td>  <td align="left"> stats</td>
 </tr>
 <tr>
   <td align="left"> LazyLoad: </td>  <td align="left"> yes</td>
 </tr>
 <tr>
-  <td align="left"> License: </td>  <td align="left"> LGPL-3</td>
+  <td align="left"> License: </td>  <td align="left"> GPL (version 2 or later)</td>
 </tr>
 <tr>
   <td align="left"> URL: </td>  <td align="left"> http://distr.r-forge.r-project.org/</td>
@@ -149,7 +152,8 @@ Distribution classes
 slots: [&lt;name&gt;(&lt;class&gt;)] 
 img(rSpace), param(OptionalParameter),
 r(function), d(OptionalFunction), p(OptionalFunction), q(OptionalFunction),
-.withSim(logical), .withArith(logical)
+.withSim(logical), .withArith(logical), .logExact(logical), .lowerExact(logical)
+
 
 "Distribution"
 |&gt;"UnivariateDistribution"
@@ -366,11 +370,6 @@ and may be called by
 <code>require("distrDoc");vignette("distr")</code>
 </p>
 <p>
-a small vignette on how to generate new distributions with packages <span class="pkg">distr</span>
-and  <span class="pkg">distrEx</span> is included and may be called by 
-<code>vignette("newDistributions")</code>
-</p>
-<p>
 a homepage to this package is available under<br>
 <a href="http://distr.r-forge.r-project.org/">http://distr.r-forge.r-project.org/</a>
 </p>
@@ -397,6 +396,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.0.3 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index]</a></div>
 
 </body></html>

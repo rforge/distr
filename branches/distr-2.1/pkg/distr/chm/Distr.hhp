@@ -22,6 +22,8 @@ Cauchy-class.html
 CauchyParameter-class.html
 Chisq-class.html
 ChisqParameter-class.html
+CompoundDistribution-class.html
+CompoundDistribution.html
 ContDistribution-class.html
 ContDistribution.html
 ConvPow.html
@@ -116,7 +118,6 @@ n-methods.html
 name-methods.html
 ncp-methods.html
 operators-methods.html
-options.html
 p-methods.html
 p.l-methods.html
 param-methods.html
