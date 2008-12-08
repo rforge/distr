@@ -22,16 +22,16 @@ updatePackageHelp <- function(package){
 
 
 
-changeDescription <- function(startDir, names, values, 
-                              pkgs = NULL, 
+changeDescription <- function(startDir, names, values,
+                              pkgs = NULL,
                               withPackageHelpUpdate = TRUE){
   oldDir <- getwd()
   on.exit(setwd(oldDir))
   setwd(startDir)
-  
-  if(is.matrix(values) && is.null(colnames(values))) 
+
+  if(is.matrix(values) && is.null(colnames(values)))
      colnames(values) <- rep(pkgs, length.out = ncol(values))
-     
+
   if(is.null(pkgs)) {
      pkgs <-   pkgs <- dir("pkg/")
      idx <-  grep(".+\\.",pkgs)
@@ -43,18 +43,19 @@ changeDescription <- function(startDir, names, values,
                  file.exists(paste("pkg/",x,"/DESCRIPTION",sep="")))]
 
      if(!is.matrix(values))
-         values <- matrix(values, length(names), length(pkgs), 
+         values <- matrix(values, length(names), length(pkgs),
                       dimnames = list(names, pkgs))
-     else values <- values[,pkgs]    
+     else values <- values[,pkgs, drop = FALSE]
     # get packages
      sapply(pkgs, function(x){
        FN <- file.path("pkg",x,"DESCRIPTION")
        xx <- read.dcf(FN)
-       xx[,names] <- values[names,x]
-       write.dcf(xx, file=FN)
+       xx[, names] <- values[names, x, drop = FALSE]
+       write.dcf(xx, file = FN)
        if(withPackageHelpUpdate)
-          updatePackageHelp(package=file.path("pkg",x))
+          updatePackageHelp(package = file.path("pkg",x))
      })
+     return(invisible())
   }
 }
 
@@ -78,6 +79,16 @@ Names <- c("Date")
 Values <- matrix((format(Sys.time(), format="%Y-%m-%d")),1,length(Pkgs))
 colnames(Values) <- Pkgs
 rownames(Values) <- Names
+
+Pkgs <- "distrMod"
+Names <- c("Version", "Date")
+Values <- matrix(c("2.0.4",
+                             format(Sys.time(), format="%Y-%m-%d")),2,length(Pkgs))
+colnames(Values) <- Pkgs
+rownames(Values) <- Names
+changeDescription(startDir = "C:/rtest/distr",names=Names,
+                  pkgs=c("distrMod"), values=Values)
+
 
 
 changeDescription(startDir = "C:/rtest/distr",names="Date", 
