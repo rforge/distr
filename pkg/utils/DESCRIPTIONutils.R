@@ -80,15 +80,23 @@ Values <- matrix((format(Sys.time(), format="%Y-%m-%d")),1,length(Pkgs))
 colnames(Values) <- Pkgs
 rownames(Values) <- Names
 
-Pkgs <- "distrMod"
+Pkgs <- "distrTEst"
 Names <- c("Version", "Date")
 Values <- matrix(c("2.0.4",
                              format(Sys.time(), format="%Y-%m-%d")),2,length(Pkgs))
 colnames(Values) <- Pkgs
 rownames(Values) <- Names
 changeDescription(startDir = "C:/rtest/distr",names=Names,
-                  pkgs=c("distrMod"), values=Values)
+                  pkgs=c("distrTEst"), values=Values)
 
+Pkgs <- "RobAStBase"
+Names <- c("Version", "Date")
+Values <- matrix(c("0.1.4",
+                             format(Sys.time(), format="%Y-%m-%d")),2,length(Pkgs))
+colnames(Values) <- Pkgs
+rownames(Values) <- Names
+changeDescription(startDir = "C:/rtest/robast",names=Names,
+                  pkgs=Pkgs, values=Values)
 
 
 changeDescription(startDir = "C:/rtest/distr",names="Date", 
