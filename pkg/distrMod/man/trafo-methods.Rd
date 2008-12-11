@@ -41,7 +41,6 @@ trafo(object) <- value
 }
 \value{
   The return value depends on the signature.
-  \itemize{
   \item{signature \code{Estimate,missing}:}{a list of length two with components
   \code{fct} and \code{mat} (see below)}
   \item{signature \code{Estimate,ParamFamParameter}:}{a list of length two with components
@@ -50,7 +49,6 @@ trafo(object) <- value
   \item{signature \code{ParamFamily,missing}:}{a matrix (see below)}
   \item{signature \code{ParamFamily,ParamFamParameter}:}{a list of length two
   with components \code{fct} and \code{mat} (see below)}
-  }
 }
 \details{
   \code{trafo} is a slot of class \code{ParamFamParameter}, which
