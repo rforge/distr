@@ -13,10 +13,9 @@ as introduced there to describe the distributions under which simulations are pe
 \details{
 \tabular{ll}{
 Package: \tab distrSim\cr
-Version: \tab 2.0.3 \cr
-Date: \tab 2008-11-27 \cr
-Depends: \tab R(>= 2.6.0), methods, graphics, setRNG(>= 2006.2-1), distr(>=
-2.0), startupmsg\cr
+Version: \tab 2.0.4\cr
+Date: \tab 2009-01-12\cr
+Depends: \tab R(>= 2.6.0), methods, graphics, setRNG(>= 2006.2-1), distr(>=2.0), startupmsg\cr
 LazyLoad: \tab yes\cr
 License: \tab LGPL-3\cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
@@ -113,7 +112,7 @@ and \code{\link{getdistrSimOption}()}.
 
 \references{
 P. Ruckdeschel, M. Kohl, T. Stabla, F. Camphausen (2006):
-S4 Classes for Distributions, {\em R News}, {\em 6}(2), 2-6. 
+S4 Classes for Distributions, \emph{R News}, \emph{6}(2), 2-6. 
 \url{http://CRAN.R-project.org/doc/Rnews/Rnews_2006-2.pdf}
 
 A vignette for packages \pkg{distr}, \pkg{distrSim}, \pkg{distrTEst}, and \pkg{distrEx} 

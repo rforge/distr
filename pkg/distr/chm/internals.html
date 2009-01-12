@@ -260,7 +260,7 @@ character string if possible; (as argument <code>pattern</code> in
 a (vector of) replacement(s) for matched pattern in 
 <code>.presubs</code>. 
 Coerced to character if possible.  For <code>fixed = FALSE</code> this
-can include backreferences <code>"\1"'</code> to <code>"\9"</code> to 
+can include backreferences <code>"\1"</code> to <code>"\9"</code> to 
 parenthesized subexpressions of <code>pattern</code>.  For 
 <code>perl = TRUE</code> only, it can
 also contain <code>"\U"</code> or <code>"\L"</code> to convert the rest of the
@@ -484,79 +484,79 @@ with R versions &lt; 2.8.0.
 <table summary="R argblock">
 <tr valign="top"><td><code>.is.vector.lattice</code></td>
 <td>
-<code>logical</code> (length 1)</td></tr>
+<code>logical</code> (length 1).</td></tr>
 <tr valign="top"><td><code>.is.consistent</code></td>
 <td>
-<code>logical</code> (length 1)</td></tr>
+<code>logical</code> (length 1).</td></tr>
 <tr valign="top"><td><code>.notwithLArg</code></td>
 <td>
-<code>logical</code> (length 1)</td></tr>
+<code>logical</code> (length 1).</td></tr>
 <tr valign="top"><td><code>.make.lattice.es.vector</code></td>
 <td>
-an object of class <code>Lattice</code></td></tr>
+an object of class <code>Lattice</code>.</td></tr>
 <tr valign="top"><td><code>.inArgs</code></td>
 <td>
-<code>logical</code> (length 1)</td></tr>
+<code>logical</code> (length 1).</td></tr>
 <tr valign="top"><td><code>.isIn, .isEqual,.isEqual01</code></td>
 <td>
-vector of <code>logical</code></td></tr>
+vector of <code>logical</code>.</td></tr>
 <tr valign="top"><td><code>.fm,.fM, .fM2</code></td>
 <td>
-a <code>numeric</code> of length 1</td></tr>
+a <code>numeric</code> of length 1.</td></tr>
 <tr valign="top"><td><code>.plusm,.multm</code></td>
 <td>
 an object of class <code>DiscreteDistribution</code> or 
-<code>AbscontDistribution</code> according to argument <code>DClass</code></td></tr>
+<code>AbscontDistribution</code> according to argument <code>DClass</code>.</td></tr>
 <tr valign="top"><td><code>.getObjName</code></td>
 <td>
-<code>character</code></td></tr>
+<code>character</code>.</td></tr>
 <tr valign="top"><td><code>.discretizeP</code></td>
 <td>
-<code>numeric</code> &mdash; the probabilities for the grid-values</td></tr>
+<code>numeric</code> &mdash; the probabilities for the grid-values.</td></tr>
 <tr valign="top"><td><code>.makeDd,.makePd, .makeQd</code></td>
 <td>
 a function with args 
-<code>x, y, yleft, yright</code></td></tr>
+<code>x, y, yleft, yright</code>.</td></tr>
 <tr valign="top"><td><code>.makeD,.makeDNew</code></td>
 <td>
-a function with args <code>x, log = FALSE</code></td></tr>
+a function with args <code>x, log = FALSE</code>.</td></tr>
 <tr valign="top"><td><code>.makeP,.makePNew</code></td>
 <td>
 a function with args <code>q, lower.tail = TRUE, 
-       log.p = FALSE</code></td></tr>
+       log.p = FALSE</code>.</td></tr>
 <tr valign="top"><td><code>.makeQ,.makeQNew</code></td>
 <td>
 a function with args <code>p, lower.tail = TRUE, 
-       log.p = FALSE</code></td></tr>
+       log.p = FALSE</code>.</td></tr>
 <tr valign="top"><td><code>.isInteger,.isNatural,.isNatural0</code></td>
 <td>
-<code>logical</code> (same length as argument <code>x</code>)</td></tr>
+<code>logical</code> (same length as argument <code>x</code>).</td></tr>
 <tr valign="top"><td><code>.mergegaps,.mergegaps2</code></td>
 <td>
 a <code>gaps</code>-matrix, i.e.; a matrix <code>m</code> with two columns, 
-such that <code>t(m)</code>, interpreted as vector, is ordered</td></tr>
+such that <code>t(m)</code>, interpreted as vector, is ordered.</td></tr>
 <tr valign="top"><td><code>.pmixfun</code></td>
 <td>
 slot <code>p</code> for a mixing distribution, i.e. a function 
 <code>function(q, lower.tail = TRUE, log.p = FALSE)</code>, which
-is  the cdf of the distribution</td></tr>
+is  the cdf of the distribution.</td></tr>
 <tr valign="top"><td><code>.dmixfun</code></td>
 <td>
 slot <code>d</code> for a mixing distribution, i.e. a function 
 <code>function(x, log = FALSE)</code>, which
-is  the density of the distribution</td></tr>
+is  the density of the distribution.</td></tr>
 <tr valign="top"><td><code>.qmixfun</code></td>
 <td>
 slot <code>q</code> for a mixing distribution, i.e. a function 
 <code>function(p, lower.tail = TRUE, log.p = FALSE)</code>, which
-is  the quantile function of the distribution</td></tr>
+is  the quantile function of the distribution.</td></tr>
 <tr valign="top"><td><code>.rmixfun</code></td>
 <td>
 slot <code>r</code> for a mixing distribution, i.e. a function 
-<code>function(n)</code> generating r.v.'s according to the distribution</td></tr>
+<code>function(n)</code> generating r.v.'s according to the distribution.</td></tr>
 <tr valign="top"><td><code>.deldmixfun</code></td>
 <td>
-a possibly modified argument <code>mixDistr</code></td></tr>
+a possibly modified argument <code>mixDistr</code>.</td></tr>
 <tr valign="top"><td><code>.loupmixfun</code></td>
 <td>
 a list of four components: <code>qL</code>, the minimal value of 
@@ -571,18 +571,30 @@ an object of class <code>"DiscreteDistribution"</code>.</td></tr>
 <tr valign="top"><td><code>.expm.c,.logm.c</code></td>
 <td>
 an object of class <code>"AbscontDistribution"</code>.</td></tr>
+<tr valign="top"><td><code>.P2D</code></td>
+<td>
+a density <code>d</code> as function <code>function(x,  log = FALSE)</code>.</td></tr>
+<tr valign="top"><td><code>.P2Q</code></td>
+<td>
+a quantile function <code>q</code> as function <code>function(p, 
+            lower.tail = TRUE, log.p = FALSE)</code></td></tr>
+<tr valign="top"><td><code>.D2P, .Q2P</code></td>
+<td>
+a cdf <code>p</code> as function <code>function(q, 
+            lower.tail = TRUE, log.p = FALSE)</code>.</td></tr>
+<tr valign="top"><td><code>.csimpsum</code></td>
+<td>
+a vector of evaluations of the prime function at the grid points.</td></tr>
+<tr valign="top"><td><code>.primefun</code></td>
+<td>
+the prime function as a function.</td></tr>
+<tr valign="top"><td><code>.IssueWarn</code></td>
+<td>
+a list with two warnings to be issued each of which may be empty.</td></tr>
+<tr valign="top"><td><code>devNew</code></td>
+<td>
+returns the return value of the device opened, usually invisible 'NULL'.</td></tr>
 </table>
-<p>
- 
-<code>.P2D</code>{a density <code>d</code> as function <code>function(x,  log = FALSE)</code>}
-<code>.P2Q</code>{a quantile function <code>q</code> as function <code>function(p, 
-            lower.tail = TRUE, log.p = FALSE)</code>} 
-<code>.D2P, .Q2P</code>{a cdf <code>p</code> as function <code>function(q, 
-            lower.tail = TRUE, log.p = FALSE)</code>}
-<code>.csimpsum</code>{a vector of evaluations of the prime function at the grid points}
-<code>.primefun</code>{the prime function as a function}
-<code>.IssueWarn</code>{a list with two warnings to be issued each of which may be empty}
-<code>devNew</code>{returns the return value of the device opened, usually invisible 'NULL'}</p>
 
 <h3>Author(s)</h3>
 
@@ -617,6 +629,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.0.3 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distr</em> version 2.0.4 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

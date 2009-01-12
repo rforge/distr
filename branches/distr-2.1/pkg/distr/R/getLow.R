@@ -34,8 +34,8 @@
                                return(qe)
                           else{
                              if(.inArgs("log.p",qF))
-                                return(qF(p = .fM2(x = .5, f = q(object), 
-                                      log.p = TRUE)))
+                                return(qF(p = .fM2(x = .5, f = q(object)), 
+                                      log.p = TRUE))
                              else
                                 return(qF(p = exp(.fM2(x = .5, f = q(object)))))
                           }

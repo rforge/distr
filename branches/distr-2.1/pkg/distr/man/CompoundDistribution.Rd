@@ -12,7 +12,7 @@ CompoundDistribution(NumbOfSummandsDistr, SummandsDistr, .withSim = FALSE,
      the frequency distribution; it is checked that support is contained in
      0,1,2,\dots}
   \item{SummandsDistr}{Object of class \code{"UnivDistrListOrDistribution"},
-     that is, either of class code{"UnivarDistrList"} (non i.i.d. case) or
+     that is, either of class \code{"UnivarDistrList"} (non i.i.d. case) or
      of class \code{"UnivariateDistribution"} (i.i.d. case); 
      the summand distribution(s).}
   \item{.withSim}{logical; value of the corresponding slot.} 

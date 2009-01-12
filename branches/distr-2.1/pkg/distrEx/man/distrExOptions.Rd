@@ -29,9 +29,9 @@ getdistrExOption(x)
 }
 %\details{}
 \value{
-  \code{distrExOptions()} returns a list of the global variables.\newline
-  \code{distrExOptions(x)} returns the global variable \var{x}.\newline
-  \code{getdistrExOption(x)} returns the global variable \var{x}.\newline
+  \code{distrExOptions()} returns a list of the global variables.\cr
+  \code{distrExOptions(x)} returns the global variable \var{x}.\cr
+  \code{getdistrExOption(x)} returns the global variable \var{x}.\cr
   \code{distrExOptions(x=y)} sets the value of the global variable \var{x} to \var{y}.
 }
 \section{distrExoptions}{

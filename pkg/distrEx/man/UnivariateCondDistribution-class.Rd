@@ -32,6 +32,7 @@ Class \code{"UnivariateDistribution"}, directly.\cr
 Class \code{"Distribution"}, by class \code{"UnivariateDistribution"}.
 }
 \section{Methods}{
+  \describe{
   \item{cond}{\code{signature(object = "UnivariateCondDistribution")}:
     accessor function for slot \code{cond}.}
 
@@ -39,6 +40,7 @@ Class \code{"Distribution"}, by class \code{"UnivariateDistribution"}.
 
   \item{plot}{\code{signature(object = "UnivariateCondDistribution")}:
     not yet implemented.}
+  }
 }
 %\references{}
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de}}

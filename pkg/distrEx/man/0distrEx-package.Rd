@@ -26,8 +26,8 @@ distrEx -- Extensions of package distr
 \details{
 \tabular{ll}{
 Package: \tab distrEx\cr
-Version: \tab 2.0.3 \cr
-Date: \tab 2008-11-27 \cr
+Version: \tab 2.0.4\cr
+Date: \tab 2009-01-12\cr
 Depends: \tab R(>= 2.6.0), methods, distr(>= 2.0), evd, startupmsg\cr
 LazyLoad: \tab yes\cr
 License: \tab LGPL-3\cr
@@ -200,7 +200,7 @@ Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de},\cr
 }
 \references{
 P. Ruckdeschel, M. Kohl, T. Stabla, F. Camphausen (2006):
-S4 Classes for Distributions, {\em R News}, {\em 6}(2), 2-6. 
+S4 Classes for Distributions, \emph{R News}, \emph{6}(2), 2-6. 
 \url{http://CRAN.R-project.org/doc/Rnews/Rnews_2006-2.pdf}
 
 %a more detailed manual for \pkg{distr}, \pkg{distrSim}, \pkg{distrTEst}, and \pkg{distrEx} may be downloaded from  

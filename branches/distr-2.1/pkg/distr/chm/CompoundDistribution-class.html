@@ -1,0 +1,125 @@
+<html><head><title>Class "CompoundDistribution"</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>CompoundDistribution-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   CompoundDistribution-class">
+<param name="keyword" value="R:   NumbOfSummandsDistr">
+<param name="keyword" value="R:   SummandsDistr">
+<param name="keyword" value="R:   NumbOfSummandsDistr-methods">
+<param name="keyword" value="R:   SummandsDistr-methods">
+<param name="keyword" value="R:   NumbOfSummandsDistr,CompoundDistribution-method">
+<param name="keyword" value="R:   SummandsDistr,CompoundDistribution-method">
+<param name="keyword" value="R:   coerce,CompoundDistribution,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   UnivDistrListOrDistribution-class">
+<param name="keyword" value=" Class 'CompoundDistribution'">
+</object>
+
+
+<h2>Class 'CompoundDistribution'</h2>
+
+
+<h3>Description</h3>
+
+<p>
+<code>CompoundDistribution</code>-class is a class to formalize 
+compound distributions; it is a subclass to
+class <code>UnivarMixingDistribution</code>.
+</p>
+
+
+<h3>Objects from the Class</h3>
+
+<p>
+Objects can be created by calls of the form 
+<code>new("CompoundDistribution", ...)</code>.
+More frequently they are created via the generating function 
+<code><a href="CompoundDistribution.html">CompoundDistribution</a></code>.
+</p>
+
+
+<h3>Slots</h3>
+
+<dl>
+<dt><code>NumbOfSummandsDistr</code>:</dt><dd>Object of class <code>"DiscreteDistribution"</code>,
+the frequency distribution.</dd>
+<dt><code>SummandsDistr</code>:</dt><dd>Object of class <code>"UnivDistrListOrDistribution"</code>,
+that is, either of class code{"UnivarDistrList"} (non i.i.d. case) or
+of class <code>"UnivariateDistribution"</code> (i.i.d. case); the summand distribution(s).</dd>
+<dt><code>mixCoeff</code>:</dt><dd>Object of class <code>"numeric"</code>: a vector of 
+probabilities for the mixing components.</dd>
+<dt><code>mixDistr</code>:</dt><dd>Object of class <code>"UnivarDistrList"</code>: a list of
+univariate distributions containing the mixing components; must be of same
+length as <code>mixCoeff</code>.</dd>
+<dt><code>img</code>:</dt><dd>Object of class <code>"Reals"</code>: the space of the image of this distribution which has dimension 1
+and the name "Real Space" </dd>
+<dt><code>param</code>:</dt><dd>Object of class <code>"Parameter"</code>: the parameter of this distribution, having only the
+slot name "Parameter of a discrete distribution" </dd>
+<dt><code>r</code>:</dt><dd>Object of class <code>"function"</code>: generates random numbers</dd>
+<dt><code>d</code>:</dt><dd>fixed to <code>NULL</code></dd>
+<dt><code>p</code>:</dt><dd>Object of class <code>"function"</code>: cumulative distribution function</dd>
+<dt><code>q</code>:</dt><dd>Object of class <code>"function"</code>: quantile function</dd>
+<dt><code>.withArith</code>:</dt><dd>logical: used internally to issue warnings as to interpretation of arithmetics</dd>
+<dt><code>.withSim</code>:</dt><dd>logical: used internally to issue warnings as to accuracy</dd>
+</dl>
+
+<h3>Extends</h3>
+
+<p>
+Class <code>"UnivarMixingDistribution"</code>
+class <code>"UnivarDistribution"</code> by class <code>"UnivarMixingDistribution"</code>,
+class <code>"Distribution"</code> by class <code>"UnivariateDistribution"</code>.
+</p>
+
+
+<h3>Methods</h3>
+
+<dl>
+<dt>show</dt><dd><code>signature(object = "CompoundDistribution")</code> prints the object</dd>
+<dt>SummandsDistr</dt><dd><code>signature(object = "CompoundDistribution")</code> returns the corresponding slot</dd>
+<dt>NumbOfSummandsDistr</dt><dd><code>signature(object = "CompoundDistribution")</code> returns the corresponding slot</dd>
+</dl>
+
+<h3>setAs relations</h3>
+
+<p>
+There is a coerce method to coerce objects of class <code>"CompoundDistribution"</code> to
+class <code>UnivarLebDecDistribution</code>; this is done by a simple call to <code>simplifyD</code>.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="Parameter-class.html">Parameter-class</a></code>, 
+<code><a href="UnivariateDistribution-class.html">UnivariateDistribution-class</a></code>, 
+<code><a href="LatticeDistribution-class.html">LatticeDistribution-class</a></code>, 
+<code><a href="ContDistribution-class.html">AbscontDistribution-class</a></code>, 
+<code><a href="simplifyD-methods.html">simplifyD</a></code>, 
+<code><a href="flat.mix.html">flat.mix</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+CP &lt;- CompoundDistribution(Pois(),Norm())
+CP
+p(CP)(0.3)          
+plot(CP)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index]</a></div>
+
+</body></html>

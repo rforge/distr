@@ -6,8 +6,8 @@
 
 <table width="100%"><tr><td>plot-methods(distrTEst)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   plot-methods">
-<param name="keyword" value="R:   plot,Evaluation-method">
-<param name="keyword" value="R:   plot,EvaluationList-method">
+<param name="keyword" value="R:   plot,Evaluation,missing-method">
+<param name="keyword" value="R:   plot,EvaluationList,missing-method">
 <param name="keyword" value=" Methods for Function plot in Package &lsquo;distrTEst&rsquo;">
 </object>
 
@@ -25,8 +25,8 @@ plot-methods
 <h3>Methods</h3>
 
 <dl>
-<dt>plot</dt><dd><code>signature(object = "Evaluation")</code>: returns a boxplot of the result </dd>
-<dt>plot</dt><dd><code>signature(object = "EvaluationList")</code>: regroups the list according to
+<dt>plot</dt><dd><code>signature(x = "Evaluation", y="missing")</code>: returns a boxplot of the result </dd>
+<dt>plot</dt><dd><code>signature(x = "EvaluationList", y="missing")</code>: regroups the list according to
 the different columns/coordinates of the result of the evaluation; for each such coordinate
 a boxplot is generated containing possibly several procedures and if evaluated at a <code>Contsimulation</code>
 object also grouped into evaluations on ideal and real data. The <code>plot</code>-arguments <code>main</code>
@@ -36,6 +36,6 @@ or globally, using the usual recycling rules.</dd>
 </dl>
 
 
-<hr><div align="center">[Package <em>distrTEst</em> version 2.0 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distrTEst</em> version 2.1 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

@@ -38,7 +38,7 @@ setToBeDefinedPkgs(pkgs = c("distr","distrEx","distrTEst","distrSim",
 @
 %
 % -------------------------------------------------------------------------------
-\newcommand{\pkgExversion}{{\tt 2.0.2}}
+\newcommand{\pkgExversion}{{\tt 2.1}}
 \newcommand{\Reals}{\mathbb{R}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}

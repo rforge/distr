@@ -90,7 +90,7 @@ linear or even coordinate-wise) aspect/transformation <i>tau</i>
 of the parameter <i>theta</i>.
 </p>
 <p>
-To be coherent with the corresponding {em nuisance}
+To be coherent with the corresponding <EM>nuisance</EM>
 implementation, we make the following convention:
 </p>
 <p>
@@ -114,13 +114,13 @@ To the implementation:
 <p>
 Slot <code>trafo</code> can either contain a (constant) matrix
 <i>D_theta</i> or a function
-</p><p align="center"><i>taucolon Theta' to tilde Theta,qquad theta mapsto tau(theta)</i></p><p>
-{tau:  Theta' -&gt; TTheta,  theta |-&gt; tau(theta)} mapping main parameter
+</p><p align="center"><i>tau:  Theta' -&gt; TTheta,  theta |-&gt; tau(theta)</i></p><p> 
+mapping main parameter
 <i>theta'</i> to some range <i>TTheta</i>.
 </p>
 <p>
-If {em slot value} <code>trafo</code> is a function, besides <i>tau(theta)</i>
-{tau(theta)}, it will also return the corresponding derivative matrix
+If <EM>slot value</EM> <code>trafo</code> is a function, besides <i>tau(theta)</i>, 
+it will also return the corresponding derivative matrix
 <i>(d/d theta) (tau(theta))</i>.
 More specifically, the return value of this function <code>theta</code> is a
 list with entries <code>fval</code>, the function value <i>tau(theta)</i>,
@@ -130,10 +130,10 @@ and <code>mat</code>, the derivative matrix.
 In case <code>trafo</code> is a matrix <i>D</i>, we interpret it as such a derivative
 matrix <i>(d/d theta) (tau(theta))</i>,
 and, correspondingly, <i>tau(theta)</i> as the linear mapping
-<i>tau(theta)=D * theta</i>.par
+<i>tau(theta)=D * theta</i>.<br>
 </p>
 <p>
-According to the signature, {em method} <code>trafo</code> will return different
+According to the signature, <EM>method</EM> <code>trafo</code> will return different
 return value types. For signature
 <ul>
 <dt><code>Estimate,missing</code>:</dt><dd>it will return a list with entries
@@ -177,9 +177,6 @@ a matrix (see below)</td></tr>
 a list of length two
 with components <code>fct</code> and <code>mat</code> (see below)</td></tr>
 </table>
-<p>
-
-normal-bracket68bracket-normal</p>
 
 <h3>Examples</h3>
 
@@ -211,6 +208,6 @@ trafo(NS) &lt;- function(param){
 
 
 
-<hr><div align="center">[Package <em>distrMod</em> version 2.0 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distrMod</em> version 2.1 <a href="00Index.html">Index</a>]</div>
 
 </body></html>
