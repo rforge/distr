@@ -126,6 +126,8 @@ setMethod("convpow",
             if (N==0) return(Dirac(0))
             if (N==1) return(D1)
         e1 <- as(D1, "UnivarLebDecDistribution")
+        if(is(e1,"DiscreteDistribution")) return(convpow(e1,N))
+        if(is(e1,"AbscontDistribution")) return(convpow(e1,N))
 
         aw1 <- acWeight(e1)
         dw1 <- 1-aw1
@@ -166,7 +168,20 @@ setMethod("convpow",
 })
 #
 ###############################################################################
-
+setMethod("convpow",
+          signature(D1 = "DiscreteDistribution"),
+          function(D1, N){
+            if( !.isNatural0(N))
+              stop("N has to be a natural (or 0)")
+            if (N==0) return(Dirac(0))
+            if (N==1) return(D1)
+            if (N==2) return(D1+D1)
+            D11 <- if (N%%2==1) D1 else Dirac(0)
+            DN1 <- convpow(D1,N%/%2)
+            return((DN1+DN1)+D11)
+            })
+###############################################################################
+            
 setMethod("convpow",
           signature(D1 = "Norm"),
           function(D1, N) 
