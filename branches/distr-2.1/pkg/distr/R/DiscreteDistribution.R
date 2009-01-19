@@ -5,7 +5,7 @@
 ## (c) Matthias Kohl: revised P.R. 030707
 
 DiscreteDistribution <- function(supp, prob, .withArith = FALSE,
-     .withSim = FALSE, .lowerExact = TRUE, .logExact = FALSE){
+     .withSim = FALSE){
     if(!is.numeric(supp))
         stop("'supp' is no numeric vector")
     if(any(!is.finite(supp)))   # admit +/- Inf?
@@ -54,8 +54,7 @@ DiscreteDistribution <- function(supp, prob, .withArith = FALSE,
                       .withSim, min(supp), max(supp), Cont = FALSE)
 
     object <- new("DiscreteDistribution", r = rfun, d = dfun, q = qfun, p=pfun,
-         support = supp, .withArith = .withArith, .withSim = .withSim,
-         .lowerExact = .lowerExact, .logExact = .logExact)
+         support = supp, .withArith = .withArith, .withSim = .withSim)
 }
 
 
@@ -206,7 +205,13 @@ function(e1,e2){
             e1 <- as(e1, "LatticeDistribution")
             e2 <- as(e2, "LatticeDistribution")
             if(is(e1, "LatticeDistribution") & is(e2, "LatticeDistribution"))
-                return(e1 + e2)
+                {w1 <- width(lattice(e1))
+                 w2 <- width(lattice(e2))
+                 W <- sort(abs(c(w1,w2)))
+                 if (abs(abs(w1)-abs(w2))<getdistrOption("DistrResolution") ||
+                     W[2] %% W[1] < getdistrOption("DistrResolution") )
+                     return(e1 + e2)
+                } 
             convolutedsupport <- rep(support(e1), each = length(support(e2))) +
                                  support(e2)
 
@@ -347,8 +352,7 @@ setMethod("abs", "DiscreteDistribution",
 
             object <- new("DiscreteDistribution", r = rnew, p = pnew,
                            q = qnew, d = dnew, support = supportnew, 
-                           .withSim = x@.withSim, .withArith = TRUE,
-                           .lowerExact = x@.lowerExact)
+                           .withSim = x@.withSim, .withArith = TRUE)
             object
           })
 
