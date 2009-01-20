@@ -1,8 +1,16 @@
-UnivarMixingDistribution <- function(..., mixCoeff,
+UnivarMixingDistribution <- function(..., Dlist, mixCoeff,
                                      withSimplify = getdistrOption("simplifyD"))
    {
     ldots <- list(...)
     l <- length(ldots)
+    l0 <- 0
+    if(!missing(Dlist)){
+        Dlist <- as(Dlist, "list")
+        if(!is(try(do.call(UnivarDistrList,args = Dlist),"try-error")))
+            ldots <- c(ldots, Dlist)
+       }
+    l <- l + l0
+    mixDistr <- new("UnivarDistrList", ldots)
     ep <- .Machine$double.eps
     if(missing(mixCoeff))
        mixCoeff <- rep(1,l)/l
@@ -11,7 +19,6 @@ UnivarMixingDistribution <- function(..., mixCoeff,
           if(any(mixCoeff < -ep) || sum(mixCoeff)>1+ep)
              stop("mixing coefficients are no probabilities")
         }
-    mixDistr <- new("UnivarDistrList", ldots)
     rnew <- .rmixfun(mixDistr = mixDistr, mixCoeff = mixCoeff)
 
     pnew <- .pmixfun(mixDistr = mixDistr, mixCoeff = mixCoeff)
@@ -48,4 +55,3 @@ setReplaceMethod("mixCoeff", "UnivarMixingDistribution", function(object,value){
 setMethod("mixDistr", "UnivarMixingDistribution", function(object)object@mixDistr)
 setReplaceMethod("mixDistr", "UnivarMixingDistribution", function(object,value){
    object@mixDistr<- value; object})
-

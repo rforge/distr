@@ -202,15 +202,15 @@ setMethod("q.r", "DiscreteDistribution", function(object){
 
 setMethod("+", c("DiscreteDistribution","DiscreteDistribution"),
 function(e1,e2){
-            e1 <- as(e1, "LatticeDistribution")
-            e2 <- as(e2, "LatticeDistribution")
-            if(is(e1, "LatticeDistribution") & is(e2, "LatticeDistribution"))
-                {w1 <- width(lattice(e1))
-                 w2 <- width(lattice(e2))
+            e1.L <- as(e1, "LatticeDistribution")
+            e2.L <- as(e2, "LatticeDistribution")
+            if(is(e1.L, "LatticeDistribution") & is(e2.L, "LatticeDistribution"))
+                {w1 <- width(lattice(e1.L))
+                 w2 <- width(lattice(e2.L))
                  W <- sort(abs(c(w1,w2)))
                  if (abs(abs(w1)-abs(w2))<getdistrOption("DistrResolution") ||
                      W[2] %% W[1] < getdistrOption("DistrResolution") )
-                     return(e1 + e2)
+                     return(e1.L + e2.L)
                 } 
             convolutedsupport <- rep(support(e1), each = length(support(e2))) +
                                  support(e2)
