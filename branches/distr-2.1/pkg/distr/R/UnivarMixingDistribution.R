@@ -2,15 +2,13 @@ UnivarMixingDistribution <- function(..., Dlist, mixCoeff,
                                      withSimplify = getdistrOption("simplifyD"))
    {
     ldots <- list(...)
-    l <- length(ldots)
-    l0 <- 0
     if(!missing(Dlist)){
-        Dlist <- as(Dlist, "list")
-        if(!is(try(do.call(UnivarDistrList,args = Dlist),"try-error")))
-            ldots <- c(ldots, Dlist)
+        Dlist.L <- as(Dlist, "list")
+        if(!is(try(do.call(UnivarDistrList,args=Dlist.L),silent=TRUE),"try-error"))
+            ldots <- c(ldots, Dlist.L)
        }
-    l <- l + l0
-    mixDistr <- new("UnivarDistrList", ldots)
+    l <- length(ldots)
+    mixDistr <- do.call(UnivarDistrList,args=ldots)
     ep <- .Machine$double.eps
     if(missing(mixCoeff))
        mixCoeff <- rep(1,l)/l
