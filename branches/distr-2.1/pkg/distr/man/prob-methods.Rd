@@ -16,6 +16,8 @@
 \alias{prob<-,Nbinom-method}
 \alias{prob<-,GeomParameter-method}
 \alias{prob<-,Geom-method}
+\alias{prob,DiscreteDistribution-method}
+\alias{prob<-,DiscreteDistribution-method}
 \title{ Methods for Function prob in Package `distr' }
 \description{prob-methods}
 
@@ -38,6 +40,14 @@
 
 \item{prob}{\code{signature(object = "Geom")}: returns the slot \code{prop} of the parameter of the distribution }
 \item{prob<-}{\code{signature(object = "Geom")}: modifies the slot \code{prob} of the parameter of the distribution }
+
+\item{prob}{\code{signature(object = "DiscreteDistribution")}: returns the 
+(named) vector of probabilities for the support points of the distribution. }
+\item{prob<-}{\code{signature(object = "DiscreteDistribution")}: 
+               generates a new object of class \code{"DiscreteDistribution"} with
+               the same support as \code{object} as well as the same 
+               \code{.withSim}, \code{.withArith}, \code{.lowerExact}, 
+               \code{.logExact} slots. }
 }}
 \keyword{distribution}
 \concept{parameter}

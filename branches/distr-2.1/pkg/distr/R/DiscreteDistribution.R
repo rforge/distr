@@ -421,3 +421,19 @@ setMethod("sqrt", "DiscreteDistribution",
             function(x) x^0.5)
 
 }          
+setMethod("prob", "DiscreteDistribution", 
+function(object) {sp <- object@support
+                  pr <- object@d(sp)
+                  names(pr) <- paste(sp)
+                  return(pr)
+                  })
+## Replace Methods
+setReplaceMethod("prob", "DiscreteDistribution",  
+                  function(object, value){ 
+                  return(DiscreteDistribution(supp = object@support, 
+                             prob = value,
+                            .withArith = object@.withArith,
+                            .withSim = object@.withSim,
+                            .lowerExact = object@.lowerExact, 
+                            .logExact = object@.logExact))}
+                  )

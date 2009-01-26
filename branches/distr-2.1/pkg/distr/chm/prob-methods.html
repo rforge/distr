@@ -21,6 +21,8 @@
 <param name="keyword" value="R:   prob<-,Nbinom-method">
 <param name="keyword" value="R:   prob<-,GeomParameter-method">
 <param name="keyword" value="R:   prob<-,Geom-method">
+<param name="keyword" value="R:   prob,DiscreteDistribution-method">
+<param name="keyword" value="R:   prob<-,DiscreteDistribution-method">
 <param name="keyword" value=" Methods for Function prob in Package &lsquo;distr&rsquo;">
 </object>
 
@@ -62,9 +64,18 @@ prob-methods
 
 <dt>prob</dt><dd><code>signature(object = "Geom")</code>: returns the slot <code>prop</code> of the parameter of the distribution </dd>
 <dt>prob&lt;-</dt><dd><code>signature(object = "Geom")</code>: modifies the slot <code>prob</code> of the parameter of the distribution </dd>
+
+
+<dt>prob</dt><dd><code>signature(object = "DiscreteDistribution")</code>: returns the 
+(named) vector of probabilities for the support points of the distribution. </dd>
+<dt>prob&lt;-</dt><dd><code>signature(object = "DiscreteDistribution")</code>: 
+generates a new object of class <code>"DiscreteDistribution"</code> with
+the same support as <code>object</code> as well as the same 
+<code>.withSim</code>, <code>.withArith</code>, <code>.lowerExact</code>, 
+<code>.logExact</code> slots. </dd>
 </dl>
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

@@ -2554,6 +2554,10 @@
 <param name="Local" value="prob-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="prob,DiscreteDistribution-method">
+<param name="Local" value="prob-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="prob,Geom-method">
 <param name="Local" value="prob-methods.html">
 </OBJECT>
@@ -2583,6 +2587,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="prob<-,BinomParameter-method">
+<param name="Local" value="prob-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="prob<-,DiscreteDistribution-method">
 <param name="Local" value="prob-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">

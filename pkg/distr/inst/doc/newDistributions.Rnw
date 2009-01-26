@@ -12,6 +12,11 @@
 %
 \documentclass[10pt]{article}
 \usepackage{geometry}
+\RequirePackage{ifthen}
+\newboolean{Sweave@gin}
+\setboolean{Sweave@gin}{true}
+\newboolean{Sweave@ae}
+\setboolean{Sweave@ae}{true}
 %
 \usepackage{color}
 \definecolor{darkblue}{rgb}{0.0,0.0,0.75}
@@ -96,6 +101,7 @@ distroptions(withSweave = TRUE)
 options(width=70)
 @
 %
+
 <<exam1, eval = TRUE, fig = TRUE>>=
 require(distr)
 N <- Norm(mean = 2, sd = 1.3)
