@@ -69,7 +69,7 @@
                distributions}
   \item{main}{logical: is a main title to be used? or \cr
               just as argument \code{main} in \code{\link{plot.default}}.}
-  \item{inner}{logical: panels for density/probability function -
+  \item{inner}{logical: do panels for density/probability function -
                         cdf - quantile function have their own titles? or \cr
                list which is filled to length 3  (resp. 8 for class 
                \code{UnivarLebDecDistribution}) if necessary

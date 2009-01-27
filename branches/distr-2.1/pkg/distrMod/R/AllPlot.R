@@ -11,11 +11,33 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
              main = FALSE, inner = TRUE, sub = FALSE, 
              col.inner = par("col.main"), cex.inner = 0.8, 
              bmar = par("mar")[1], tmar = par("mar")[3], ...,
-             mfColRow = TRUE){
+             mfColRow = TRUE, to.draw.arg = NULL){
 
         xc <- match.call(call = sys.call(sys.parent(1)))$x
         dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
+        
+        dots$to.draw.arg <- NULL
+        trafO <- trafo(x@param)
+        dims <- nrow(trafO)
+        dimm <- length(x@param)
+        
+        to.draw <- 1:(3+dims)
+        dimnms  <- c(rownames(trafO))
+        if(is.null(dimnms))
+           dimnms <- paste("dim",1:dims,sep="")
+        names(to.draw) <- c("d","p","q", dimnms)
+        if(!mfColRow && ! is.null(to.draw.arg)){
+            if(is.character(to.draw.arg)) 
+                 to.draw <- pmatch(to.draw.arg, names(to.draw))
+            else if(is.numeric(to.draw.arg)) 
+                 to.draw <- to.draw.arg
+        }
+        l2dpl <- to.draw[to.draw > 3]
+        dims0 <- length(l2dpl)
+        nrows <- trunc(sqrt(dims0))
+        ncols <- ceiling(dims0/nrows)
+
         
         if(!is.logical(inner)){
           if(!is.list(inner))
@@ -55,8 +77,8 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
             }
         }
 
-        dims <- length(x@param)
-        L2deriv <- as(diag(dims) %*% x@L2deriv, "EuclRandVariable")
+        
+        L2deriv <- as(diag(dimm) %*% x@L2deriv, "EuclRandVariable")
 
         mainL <- FALSE
         subL <- FALSE
@@ -98,26 +120,42 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
      }
 
      if(is.logical(innerL)){
-        innerT <- paste(gettextf("Component "), 1:dims,
+        tnm  <- c(rownames(trafO))
+        tnms <- if(is.null(tnm)) paste(1:dims) else 
+                                 paste("'", tnm, "'", sep = "") 
+        mnm <- names(x@param@main)
+        mnms <- if(is.null(mnm)) NULL else paste("'", mnm, "' = ", sep = "") 
+        mss  <- paste(mnms, round(x@param@main, 3), collapse=", ",sep="")
+        innerT <- paste(gettextf("Component "),  tnms, 
                         gettextf(" of L_2 derivative\nof"),
                         name(x)[1],
-                        gettextf("\nwith main parameter ("),
-                        paste(round(x@param@main, 3), collapse = ", "),")")
-        if(!is.null(x@param@nuisance))
+                        gettextf("\nwith main parameter ("), mss,")")
+        if(!is.null(x@param@nuisance)){
+            nnm <- names(x@param@nuisance)
+            nnms <- if(is.null(nnm)) NULL else paste("'", nnm, "' = ", sep = "") 
             innerT <- paste(innerT,
                         gettextf("\nand nuisance parameter ("),
-                        paste(round(x@param@nuisance, 3), collapse = ", "),
+                        paste(nnms,round(x@param@nuisance, 3), collapse = ", "),
                         ")",
                         sep=""  )
-        if(!is.null(x@param@fixed))
+        }
+        if(!is.null(x@param@fixed)){
+            fnm <- names(x@param@fixed)
+            fnms <- if(is.null(fnm)) NULL else paste("'", fnm, "' = ", sep = "") 
             innerT <- paste(innerT,
                         gettextf("\nand fixed known parameter ("),
-                        paste(round(x@param@fixed, 3), collapse = ", "),
+                        paste(fnms, round(x@param@fixed, 3), collapse = ", "),
                         ")",
                         sep=""  )
+        }
      }else{
         innerT <- lapply(inner, .mpresubs)
+        if(dims0<dims){
+           innerT0 <- innerT
+           for(i in 1:dims0) innerT[to.draw[i]] <- innerT0[i]          
+        }
      }
+
 
         dotsT <- dots
         dotsT["main"] <- NULL
@@ -125,21 +163,26 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
         dotsT["col.main"] <- NULL
         dotsT["line"] <- NULL
 
-     do.call(plot, c(list(e1,withSweave = withSweave, 
+        distrpl <- (1:3)%in%to.draw
+        todrw <- as.numeric((1:3)[distrpl])
+        if(any(distrpl)){
+           lis0 <- c(list(e1,withSweave = withSweave, 
              main = main, inner = innerD, sub = sub, 
              col.inner = col.inner, cex.inner = 1.5*cex.inner),
-             dots, mfColRow=mfColRow))       
-     
+             dots, mfColRow=mfColRow)
+           lis0$to.draw.arg  <- todrw 
+           do.call(plot, args=lis0)            
+        }
         o.warn <- options("warn")
         options(warn = -1)
         on.exit(options(warn=o.warn))
         opar <- par()
         on.exit(par(opar))
+        
         if (!withSweave)
              devNew()
-        nrows <- trunc(sqrt(dims))
-        ncols <- ceiling(dims/nrows)
         
+        parArgs <- NULL
         if(mfColRow)
            parArgs <- list(mfrow = c(nrows, ncols))
 
@@ -147,18 +190,19 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
         parArgs <- c(parArgs,list(mar = c(bmar,omar[2],tmar,omar[4])))
        
      do.call(par,args=parArgs)
-        for(i in 1:dims){
-            do.call(plot, args=c(list(x=x.vec, y=sapply(x.vec, L2deriv@Map[[i]]),
+        for(i in 1:dims0){
+            indi <- l2dpl[i]-3
+            do.call(plot, args=c(list(x=x.vec, y=sapply(x.vec, L2deriv@Map[[indi]]),
                                  type = plty, lty = lty,
                                  xlab = "x",
                                  ylab = expression(paste(L[2], " derivative"))),
                                  dots))
             if(is(e1, "DiscreteDistribution")){
                 x.vec1 <- seq(from = min(x.vec), to = max(x.vec), length = 1000)
-                do.call(lines, args=c(list(x.vec1, sapply(x.vec1, L2deriv@Map[[i]]),
+                do.call(lines, args=c(list(x.vec1, sapply(x.vec1, L2deriv@Map[[indi]]),
                               lty = "dotted"),dots))
             }
-            do.call(title, args = c(list(main = innerT[i]), dotsT, line = lineT,
+            do.call(title, args = c(list(main = innerT[indi]), dotsT, line = lineT,
                     cex.main = cex.inner, col.main = col.inner))
         }
 

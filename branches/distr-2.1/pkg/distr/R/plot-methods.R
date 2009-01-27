@@ -15,7 +15,7 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
      xc <- match.call(call = sys.call(sys.parent(1)))$x
      ### manipulating the ... - argument
      dots <- match.call(call = sys.call(sys.parent(1)), 
-                      expand.dots = FALSE)$"..."
+                        expand.dots = FALSE)$"..."
 
       to.draw <- 1:3
       names(to.draw) <- c("d","p","q")
@@ -181,8 +181,8 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
              }
           }
 
+     o.warn <- getOption("warn"); options(warn = -1)
      if(1%in%to.draw){
-         o.warn <- getOption("warn"); options(warn = -1)
          on.exit(options(warn=o.warn))
          do.call(plot, c(list(x = grid, dxg, type = "l", 
              ylim = ylim1,  ylab = "d(x)", xlab = "x", log = logpd), 

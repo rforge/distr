@@ -120,7 +120,7 @@ logical: is a main title to be used? or <br>
 just as argument <code>main</code> in <code><a onclick="findlink('graphics', 'plotdefault.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.default</a></code>.</td></tr>
 <tr valign="top"><td><code>inner</code></td>
 <td>
-logical: panels for density/probability function -
+logical: do panels for density/probability function -
 cdf - quantile function have their own titles? or <br>
 list which is filled to length 3  (resp. 8 for class 
 <code>UnivarLebDecDistribution</code>) if necessary
@@ -333,6 +333,26 @@ wg &lt;- flat.mix(UnivarMixingDistribution(Unif(0,1),Unif(4,5),
 mymix &lt;- UnivarLebDecDistribution(acPart = wg, discretePart = Binom(4,.4),
          acWeight = 0.4)
 plot(mymix)         
+#
+## selection of subpanels for plotting
+N &lt;- Norm()
+par(mfrow=c(1,2))
+plot(N, mfColRow = FALSE, to.draw.arg=c("d","q"))
+plot(N, mfColRow = FALSE, to.draw.arg=c(2,3))
+par(mfrow=c(1,1))
+
+wg &lt;- flat.mix(UnivarMixingDistribution(Unif(0,1),Unif(4,5),
+               withSimplify=FALSE))
+myLC &lt;- UnivarLebDecDistribution(discretePart=Binom(3,.3), acPart = wg,
+          discreteWeight=.2)
+layout(matrix(c(rep(1,6),2,2,3,3,4,4,5,5,5,6,6,6), 
+              nrow=3, byrow=TRUE))
+plot(myLC,mfColRow = FALSE,
+     to.draw.arg=c("p","d.c","p.c","q.c", "p.d","q.d"))
+
+P &lt;- Pois(2)
+plot(as(P,"UnivarLebDecDistribution"),mfColRow = FALSE,to.draw.arg=c("d.d"))
+
 </pre>
 
 <script Language="JScript">

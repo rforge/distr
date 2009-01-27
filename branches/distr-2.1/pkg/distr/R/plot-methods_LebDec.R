@@ -284,8 +284,8 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
          pxv <- p(x)(xv)
      }
 
+     o.warn <- getOption("warn"); options(warn = -1)
      if(1 %in% to.draw){
-        o.warn <- getOption("warn"); options(warn = -1)
         on.exit(options(warn=o.warn))
         do.call(plot, c(list(x = grid, pxg, type = "l",
              ylim = ylim, ylab = "p(q)", xlab = "q", log = logpd),
