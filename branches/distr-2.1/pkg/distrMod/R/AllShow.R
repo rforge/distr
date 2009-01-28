@@ -63,7 +63,7 @@ setMethod("show", "ParamFamParameter",
                 }
             }
         }
-        if(!identical(all.equal(object@trafo, diag(length(object)), 
+        if(!identical(all.equal(trafo(object), diag(length(object)), 
                             tolerance = .Machine$double.eps^0.5), TRUE)){
             if(getdistrModOption("show.details")!="minimal"){
                if(is.function(object@trafo)){
