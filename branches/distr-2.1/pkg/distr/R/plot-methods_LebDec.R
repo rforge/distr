@@ -260,18 +260,22 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
      pxg <- p(x)(grid)
 
 
+     
      if(hasArg(ylim))
-         {if(length(ylim)!=2)
-             stop("Wrong length of Argument ylim")}
-
-     else {ylim <- c(-0.05,1.05)}
+         {if(! length(ylim) %in% c(2,4)) 
+             stop("Wrong length of Argument ylim"); 
+           if(length(ylim)==2)
+             ylim <- matrix(ylim, 2,2)
+           ylim2 <- ylim[,2];
+           }
+     else ylim2 <- c(-0.05,1.05)
 
      if(hasArg(log))
          {logpd <- dots$log
           logq <- gsub("u","y",gsub("y","x",gsub("x", "u", logpd)))
           if(length(grep("y",logpd))){
-             ylim <- c(max(min(pxg[pxg>0]), ylim[1]),
-                               ylim[2])
+             ylim2 <- c(max(min(pxg[pxg>0]), ylim2[1]),
+                               ylim2[2])
              }
           }
 
@@ -288,7 +292,7 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
      if(1 %in% to.draw){
         on.exit(options(warn=o.warn))
         do.call(plot, c(list(x = grid, pxg, type = "l",
-             ylim = ylim, ylab = "p(q)", xlab = "q", log = logpd),
+             ylim = ylim2, ylab = "p(q)", xlab = "q", log = logpd),
              dots.without.pch))
         options(warn = o.warn)
    
@@ -346,7 +350,7 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
      if(2 %in% to.draw){
         options(warn = -1)
         do.call(plot, c(list(x = po, xo, type = "n",
-             xlim = ylim, ylim = xlim, ylab = "q(p)", xlab = "p",
+             xlim = ylim2, ylim = xlim, ylab = "q(p)", xlab = "p",
              log = logq), dots.without.pch), envir = parent.frame(2))
         options(warn = o.warn)
    

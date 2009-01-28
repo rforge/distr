@@ -60,7 +60,11 @@
   \item{y}{ missing }
   \item{xlim}{the x limits (x1, x2) of the plot.  Note that \code{x1 > x2} is
               allowed and leads to a "reversed axis". As in \code{plot.default}.}
-  \item{ylim}{the y limits of the plot. As in \code{plot.default}.}
+  \item{ylim}{the y limits of the plot. Either as in \code{plot.default}
+  (i.e. a vector of length 2) or a vector of length 4, where the first two
+   elements are the values for \code{ylim} in panel "d", and the last
+   two elements are the values for \code{ylim} resp. \code{xlim} in panels "p",
+   and "q".}
   \item{width}{width (in inches) of the graphics device opened}
   \item{height}{height (in inches) of the graphics device opened}
   \item{withSweave}{logical: if \code{TRUE} (for working with \command{Sweave}) 

@@ -99,7 +99,11 @@ the x limits (x1, x2) of the plot.  Note that <code>x1 &gt; x2</code> is
 allowed and leads to a "reversed axis". As in <code>plot.default</code>.</td></tr>
 <tr valign="top"><td><code>ylim</code></td>
 <td>
-the y limits of the plot. As in <code>plot.default</code>.</td></tr>
+the y limits of the plot. Either as in <code>plot.default</code>
+(i.e. a vector of length 2) or a vector of length 4, where the first two
+elements are the values for <code>ylim</code> in panel "d", and the last
+two elements are the values for <code>ylim</code> resp. <code>xlim</code> in panels "p",
+and "q".</td></tr>
 <tr valign="top"><td><code>width</code></td>
 <td>
 width (in inches) of the graphics device opened</td></tr>

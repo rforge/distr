@@ -164,9 +164,11 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
      
      
      if(hasArg(ylim))
-         {if(length(ylim)!=2) 
+         {if(! length(ylim) %in% c(2,4)) 
              stop("Wrong length of Argument ylim"); 
-           ylim1 <- ylim; ylim2 <- ylim;
+           if(length(ylim)==2)
+             ylim <- matrix(ylim, 2,2)
+           ylim1 <- ylim[,1]; ylim2 <- ylim[,2];
            }
      else {ylim1 <- c(0,max(dxg[dxg<50])); ylim2 <- c(-0.05,1.05)}
 
@@ -240,7 +242,7 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
      if(3%in%to.draw){
         options(warn = -1)
         do.call(plot, c(list(x = po, xo, type = "n", 
-             xlim = ylim, ylim = xlim, ylab = "q(p)", xlab = "p", 
+             xlim = ylim2, ylim = xlim, ylab = "q(p)", xlab = "p", 
              log = logq), dots.without.pch))
         options(warn = o.warn)
     

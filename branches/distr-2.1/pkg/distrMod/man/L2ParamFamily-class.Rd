@@ -195,7 +195,14 @@ Class \code{"ProbFamily"}, by class \code{"ParamFamily"}.
                \code{\link[stats]{plot.stepfun}} }
 
       } 
-      }
+      if \code{\dots} contains argument \code{ylim}, this may either be
+      as in \code{plot.default} (i.e. a vector of length 2) or a vector of 
+      length 4, where the first two elements are the values for \code{ylim} 
+      in panels "d.c" and "d.d", and the last
+      two elements are the values for \code{ylim} resp. \code{xlim} in panels 
+      "p", "p.c", "p.d" and "q", "q.c", "q.d".
+    }
+
 
     \item{modifyModel}{\code{signature(model = "L2ParamFamily", param = "ParamFamParameter")}:
       moves the L2-parametric Family \code{model} to parameter \code{param} }

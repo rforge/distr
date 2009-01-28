@@ -57,24 +57,47 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
         if(!is(e1, "UnivariateDistribution")) stop("not yet implemented")
 
 
-        if(is(e1, "AbscontDistribution")){
-            lower <- ifelse(is.finite(q(e1)(0)), q(e1)(0), q(e1)(getdistrOption("TruncQuantile")))
-            upper <- ifelse(is.finite(q(e1)(1)), q(e1)(1), q(e1)(1 - getdistrOption("TruncQuantile")))
-            h <- upper - lower
-            x.vec <- seq(from = lower - 0.1*h, to = upper + 0.1*h, length = 1000)
-            plty <- "l"
-            lty <- "solid"
-        }else{
-            if(is(e1, "DiscreteDistribution")){
-                x.vec <- support(e1)
-                plty <- "p"
-                lty <- "dotted"
-            }else{
-                x.vec <- r(e1)(1000)
-                x.vec <- sort(unique(x.vec))
-                plty <- "p"
-                lty <- "dotted"
+        if(is(e1, "UnivariateDistribution")){
+           xlim <- eval(dots$xlim)
+           if(!is.null(xlim)){ 
+               xm <- min(xlim)
+               xM <- max(xlim)
             }
+            if(is(e1, "AbscontDistribution")){
+                lower <- if(is.finite(q(e1)(0))) 
+                     q(e1)(0) else q(e1)(getdistrOption("TruncQuantile"))
+                upper <- if(is.finite(q(e1)(1))) 
+                     q(e1)(1) else q(e1)(1 - getdistrOption("TruncQuantile"))
+                if(!is.null(xlim)){ 
+                  lower <- min(lower,xm)
+                  upper <- max(upper,xM)
+                }
+                h <- upper - lower
+                x.vec <- seq(from = lower - 0.1*h, to = upper + 0.1*h, length = 1000)
+                plty <- "l"
+                lty <- "solid"
+            }else{
+                if(is(e1, "DiscreteDistribution")) x.vec <- support(e1)
+                else{
+                   x.vec <- r(e1)(1000)
+                   x.vec <- sort(unique(x.vec))
+                }
+                plty <- "p"
+                lty <- "dotted"
+                if(!is.null(xlim)) x.vec <- x.vec[(x.vec>=xm) & (x.vec<=xM)]
+            }
+        }
+        dxg <- d(e1)(x.vec)
+        pxg <- p(e1)(x.vec)
+        ylim <- eval(dots$ylim)
+        if(!is.null(ylim)){ 
+               d.0 <- 1 %in% to.draw
+               d.1 <- 2 %in% to.draw | 3 %in% to.draw
+               if(! length(ylim) %in% c(2,2*(d.0+d.1+dims0))) 
+                  stop("Wrong length of Argument ylim"); 
+               ylim <- matrix(ylim, 2,d.0+d.1+dims0)
+               iy <- if(d.0+d.1==2) 1:2 else 1
+               dots$ylim <- ylim[,iy]
         }
 
         
@@ -189,9 +212,11 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
         omar <- par("mar")
         parArgs <- c(parArgs,list(mar = c(bmar,omar[2],tmar,omar[4])))
        
-     do.call(par,args=parArgs)
+        dots$ylim <- NULL
+        do.call(par,args=parArgs)
         for(i in 1:dims0){
             indi <- l2dpl[i]-3
+            if(!is.null(ylim)) dots$ylim <- ylim[,d.0+d.1+i]       
             do.call(plot, args=c(list(x=x.vec, y=sapply(x.vec, L2deriv@Map[[indi]]),
                                  type = plty, lty = lty,
                                  xlab = "x",
