@@ -1940,7 +1940,8 @@ is
 <<NormScaleFam, eval = FALSE>>=
 setMethod("mleCalc", signature(x = "numeric", PFam = "NormScaleFamily"),
            function(x, PFam, ...){
-           theta <- sd(x); mn <- mean(distribution(PFam))
+           n <- length(x)
+           theta <- sqrt((n-1)/n)*sd(x); mn <- mean(distribution(PFam))
            ll <- -sum(dnorm(x, mean=mn, sd = theta, log=TRUE))
            names(ll) <- "neg.Loglikelihood"
            crit.fct <- function(sd)
