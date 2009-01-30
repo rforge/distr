@@ -309,6 +309,9 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
         }
     }
 
+    mad.const <- 1/ if (is(distrSymm, "NoSymmetry")) 
+                        mad(centraldistribution) else q(centraldistribution)(.75)
+    
     param0 <- c(loc, scale)
     names(param0) <- locscalename
     if(missing(trafo))  {trafo <- diag(2)
@@ -316,8 +319,9 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
                                                  locscalename)}
     param <- ParamFamParameter(name = "location and scale", main = param0,
                                trafo = trafo)
+    
     startPar <- function(x,...) {
-                   st <- c(median(x),mad(x))
+                   st <- c(median(x),mad(x, constant=mad.const))
                    names(st) <- locscalename
                    return(st)}
     makeOKPar <- function(param) {
