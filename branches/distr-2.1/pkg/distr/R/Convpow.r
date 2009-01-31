@@ -66,7 +66,7 @@ setMethod("convpow",
             px.u <- pfun(x + 0.5*h, lower.tail = FALSE)
             qfun <- .makeQNew(x + 0.5*h, px.l, px.u, .notwithLArg(D1), yL, yR)
 
-            rfun = function(N) colSums(matrix(r(D1)(n*N), ncol=N))
+            rfun = function(n) colSums(matrix(r(D1)(n*N), ncol=N))
 
             object <- new("AbscontDistribution", r = rfun, d = dfun, p = pfun,
                        q = qfun, .withArith = TRUE, .withSim = FALSE)
