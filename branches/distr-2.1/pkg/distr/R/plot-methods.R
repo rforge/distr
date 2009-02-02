@@ -19,7 +19,7 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
 
       to.draw <- 1:3
       names(to.draw) <- c("d","p","q")
-      if(!mfColRow && ! is.null(to.draw.arg)){
+      if(! is.null(to.draw.arg)){
          if(is.character(to.draw.arg)) 
             to.draw <- pmatch(to.draw.arg, names(to.draw))
          else if(is.numeric(to.draw.arg)) 
@@ -127,7 +127,7 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
      }
      
      if(mfColRow)
-         opar <- par(mfrow = c(1,3), mar = c(bmar,omar[2],tmar,omar[4]))
+         opar <- par(mfrow = c(1,l.draw), mar = c(bmar,omar[2],tmar,omar[4]))
      else
          opar <- par(mar = c(bmar,omar[2],tmar,omar[4]))
      
@@ -302,7 +302,7 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
 
       to.draw <- 1:3
       names(to.draw) <- c("d","p","q")
-      if(!mfColRow && ! is.null(to.draw.arg)){
+      if(! is.null(to.draw.arg)){
          if(is.character(to.draw.arg)) 
             to.draw <- pmatch(to.draw.arg, names(to.draw))
          else if(is.numeric(to.draw.arg)) 
@@ -416,7 +416,7 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
      }
      
      if(mfColRow)
-        opar <- par(mfrow = c(1,3), mar = c(bmar,omar[2],tmar,omar[4]))
+        opar <- par(mfrow = c(1,l.draw), mar = c(bmar,omar[2],tmar,omar[4]))
      else 
         opar <- par(mar = c(bmar,omar[2],tmar,omar[4]))
      

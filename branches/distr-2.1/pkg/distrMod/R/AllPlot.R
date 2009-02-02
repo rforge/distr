@@ -27,7 +27,7 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
         if(is.null(dimnms))
            dimnms <- paste("dim",1:dims,sep="")
         names(to.draw) <- c("d","p","q", dimnms)
-        if(!mfColRow && ! is.null(to.draw.arg)){
+        if(! is.null(to.draw.arg)){
             if(is.character(to.draw.arg)) 
                  to.draw <- pmatch(to.draw.arg, names(to.draw))
             else if(is.numeric(to.draw.arg)) 

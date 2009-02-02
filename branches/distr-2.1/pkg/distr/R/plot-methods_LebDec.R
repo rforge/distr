@@ -45,7 +45,7 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
 
       to.draw <- 1:8
       names(to.draw) <- c("p","q","d.c","p.c","q.c","d.d","p.d","q.d")
-      if(!mfColRow && ! is.null(to.draw.arg)){
+      if(! is.null(to.draw.arg)){
          if(is.character(to.draw.arg)) 
             to.draw <- pmatch(to.draw.arg, names(to.draw))
          else if(is.numeric(to.draw.arg)) 
@@ -215,8 +215,35 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
 
      if(mfColRow){
         opar <- par("mfrow", mar = c(bmar,omar[2],tmar,omar[4]))
-        layout(matrix(c(1,1,1,2,2,2,3,3,4,4,5,5,6,6,7,7,8,8), byrow=TRUE, 
-               nrow=3))
+        ## common:
+        com.drw <- (1:2)[( (1:2) %in%to.draw )]
+        disc.drw <-(1:3)[( (3:5) %in%to.draw )]
+        cont.drw <-(1:3)[( (6:8) %in%to.draw )]
+        lcom.drw <- length(com.drw)
+        ldisc.drw <- length(disc.drw)
+        lcont.drw <- length(cont.drw) 
+        
+        nrw.drw <- (lcom.drw>0)+(ldisc.drw>0)+(lcont.drw>0)
+        le.drw <- c(lcom.drw,ldisc.drw,lcont.drw)
+        
+        tw.drw <- any(le.drw==2); th.drw <- any(le.drw==3);
+        cmm.drw <- (1+tw.drw)*(1+th.drw*2)
+        ma.drw <- NULL; man.drw <- 0
+        if(lcom.drw>0){
+           ma.drw <- rep( 1:lcom.drw, 
+                          each = cmm.drw/length(com.drw))
+           man.drw <- length(com.drw)
+           }
+        if(ldisc.drw>0){
+           ma.drw <- c(ma.drw, rep(1:ldisc.drw + man.drw, 
+                       each = cmm.drw/length(disc.drw)))
+           man.drw <- man.drw + length(disc.drw)
+           }
+        if(lcont.drw>0){
+           ma.drw <- c(ma.drw, rep(1:lcont.drw + man.drw, 
+                       each = cmm.drw/length(cont.drw)))
+           }
+        if(nrw.drw >0 ) layout(matrix(ma.drw, byrow=TRUE,  nrow=nrw.drw))
      }else 
         opar <- par(mar = c(bmar,omar[2],tmar,omar[4]))
 
