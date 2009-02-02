@@ -195,9 +195,38 @@ function(e1,e2){
                ###  else need common lattice
             }else{
                    W <- sort(abs(c(w1,w2)))
-                   if (W[2] %% W[1] > getdistrOption("DistrResolution"))
-                       return(as(e1, "DiscreteDistribution") +
-                              as(e2, "DiscreteDistribution"))
+                   if (W[2] %% W[1] > getdistrOption("DistrResolution")){
+                         
+                         ## check whether arrangement on common grid really
+                         ## saves something
+                         
+                         sup1 <- support(e1)
+                         sup2 <- support(e2)
+                         prob1 <- d(e1)(sup1)
+                         prob2 <- d(e2)(sup2)
+                         maxl <- length(sup1)*length(sup2) 
+                              ### length of product grid
+                         commonsup <- unique(sort(c(outer(sup1,sup2,"+"))))
+                              ### grid width of convolution grid
+                         mw <- min(diff(commonsup))
+                              ###  convolutional grid
+                         comsup <- seq(min(commonsup),max(commonsup), by=mw)
+
+                         fct <- function(sup0, prob0, bw){
+                              ### expand original grid,prob onto new width:
+                                    sup00 <- seq(min(sup0), max(sup0), by = mw)
+                                    prb0 <- 0 * sup00
+                                    ind0 <- sup00 %in% sup0
+                                    prb0[ind0] <- prob0
+                                    return(LatticeDistribution(supp = sup00,
+                                                               prob = prb0))
+                                    }
+                        if(length(comsup) < maxl)
+                           return( fct(sup1,prob1,bw)  + fct(sup2,prob2,bw))
+                        else
+                           return(as(e1, "DiscreteDistribution") +
+                                  as(e2, "DiscreteDistribution"))
+                   }
                    else
                        w <- W[1] #generate common lattice / support
                   }
