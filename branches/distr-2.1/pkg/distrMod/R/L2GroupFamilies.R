@@ -38,7 +38,7 @@ L2LocationFamily <- function(loc = 0, name, centraldistribution = Norm(),
     props <- c(paste("The", name, "is invariant under"),
                "the group of transformations 'g(x) = x + loc'",
                "with location parameter 'loc'")
-    if(missing(LogDeriv)) LogDeriv <- .getLogDeriv(distribution)
+    if(missing(LogDeriv)) LogDeriv <- .getLogDeriv(centraldistribution)
     L2deriv.fct <- function(param){
                    loc <- main(param)
                    fct <- function(x){}
@@ -181,7 +181,7 @@ L2ScaleFamily <- function(scale = 1, loc = 0, name, centraldistribution = Norm()
     props <- c(paste("The", name, "is invariant under"),
                "the group of transformations 'g(y) = scale*y'",
                "with scale parameter 'scale'")
-    if(missing(LogDeriv)) LogDeriv <- .getLogDeriv(distribution)
+    if(missing(LogDeriv)) LogDeriv <- .getLogDeriv(centraldistribution)
     L2deriv.fct <- function(param){
                    scale <- main(param)
                    fct <- function(x){}
@@ -334,7 +334,7 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
                "the group of transformations 'g(x) = scale*x + loc'",
                "with location parameter 'loc' and scale parameter 'scale'")
 
-    if(missing(LogDeriv)) LogDeriv <- .getLogDeriv(distribution)
+    if(missing(LogDeriv)) LogDeriv <- .getLogDeriv(centraldistribution)
     L2deriv.fct <- function(param){
                    mean <- main(param)[locscalename["loc"]]
                    sd <-   main(param)[locscalename["scale"]]
@@ -501,7 +501,7 @@ L2LocationUnknownScaleFamily <- function(loc = 0, scale = 1, name,
                "the group of transformations 'g(x) = scale*x + loc'",
                "with location parameter 'loc' and scale parameter 'scale'")
 
-    if(missing(LogDeriv)) LogDeriv <- .getLogDeriv(distribution)
+    if(missing(LogDeriv)) LogDeriv <- .getLogDeriv(centraldistribution)
     L2deriv.fct <- function(param){
                    mean <- main(param)
                    sd <-   nuisance(param)
@@ -667,7 +667,7 @@ L2ScaleUnknownLocationFamily <- function(loc = 0, scale = 1, name,
                "the group of transformations 'g(x) = scale*x + loc'",
                "with location parameter 'loc' and scale parameter 'scale'")
 
-    if(missing(LogDeriv)) LogDeriv <- .getLogDeriv(distribution)
+    if(missing(LogDeriv)) LogDeriv <- .getLogDeriv(centraldistribution)
     L2deriv.fct <- function(param){
                    mean <- nuisance(param)
                    sd <-   main(param)
