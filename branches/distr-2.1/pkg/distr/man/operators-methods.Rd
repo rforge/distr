@@ -75,6 +75,7 @@
 \alias{+,Norm,Norm-method}
 \alias{+,Logis,numeric-method}
 \alias{+,Dirac,UnivariateDistribution-method}
+\alias{+,Dirac,DiscreteDistribution-method}
 \alias{+,UnivariateDistribution,Dirac-method}
 \alias{-,numeric,Beta-method}
 \alias{-,Dirac,Dirac-method}
@@ -220,6 +221,8 @@ if \code{prob(e1)==prob(e2)}, result again of class
 \item{\code{+}}{\code{signature(e1 = "UnivariateDistribution", e2 = "Dirac")}  translated to \code{e1 + location(e2)}; 
          result again of class \code{"Dirac"}; exact}
 \item{\code{+}}{\code{signature(e1 = "Dirac", e2 = "UnivariateDistribution")}  translated to \code{e2 + location(e1)}; 
+         result again of class \code{"Dirac"}; exact}
+\item{\code{+}}{\code{signature(e1 = "Dirac", e2 = "DiscreteDistribution")}  translated to \code{e2 + location(e1)}; 
          result again of class \code{"Dirac"}; exact}
 \item{\code{-}}{\code{signature(e1 = "Dirac", e2 = "Dirac")}  result again of class \code{"Dirac"}; exact}
 \item{\code{*}}{\code{signature(e1 = "Dirac", e2 = "Dirac")}  result again of class \code{"Dirac"}; exact}

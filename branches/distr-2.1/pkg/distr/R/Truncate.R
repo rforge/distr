@@ -10,7 +10,9 @@ setMethod("Truncate", "AbscontDistribution",
                newgaps[,1] <- pmax(newgaps[,1],lower)
                newgaps[,2] <- pmin(newgaps[,1],upper)
                newgaps <- newgaps[newgaps[,1]<newgaps[,2],]
-               if(nrow(newgaps)==0) newgaps <- NULL}
+               newgaps <- if(nrow(newgaps)==0) NULL else 
+                            .consolidategaps(newgaps)
+               }
             
             if(lower == -Inf && upper == Inf) return(object)
 

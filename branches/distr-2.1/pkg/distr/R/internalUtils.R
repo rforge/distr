@@ -993,6 +993,65 @@ return(function(q, lower.tail = TRUE, log.p = FALSE){
 }
 
 #------------------------------------------------------------------------------
+# modify slot q for AbscontDistribution if there are gaps
+#------------------------------------------------------------------------------
+.modifyqgaps <- function(pfun, qfun, gaps, leftright = "left"){
+  p.gaps <- pfun(gaps[,1]) 
+  p.gaps.l <- pfun(gaps[,1], lower.tail = FALSE)
+  dP <- deparse(body(qfun))
+  syC <- paste(sys.calls())
+  if(length(grep("q\\.r\\(",syC[length(syC)-2])) == 0)
+     if(length(grep("q0 <- qfun", dP[2]))>0) 
+        return(qfun)
+  if(pmatch(leftright, table = c("left","right"), nomatch = 1) == 1){
+     qnew <- function(p, lower.tail = TRUE, log.p = FALSE) {
+             q0 <- qfun(p, lower.tail = lower.tail, log.p = log.p)
+             if(lower.tail){
+                if(log.p) p.gaps <- log(p.gaps)
+                for(i in 1:nrow(gaps)){
+                    i1 <- .isEqual(p,p.gaps[i])
+                    q0[i1] <- gaps[i,1]
+                    q0[p<p.gaps[i]] <- min(q0[p<p.gaps[i]],gaps[i,1])
+                    q0[p>p.gaps[i]] <- max(q0[p>p.gaps[i]],gaps[i,2])
+                }        
+             }else{
+                if(log.p) p.gaps.l <- log(p.gaps.l)
+                for(i in 1:nrow(gaps)){
+                    i1 <- .isEqual(p,p.gaps.l[i])
+                    q0[i1] <- gaps[i,2]
+                    q0[p<p.gaps.l[i]] <- max(q0[p<p.gaps.l[i]],gaps[i,2])    
+                    q0[p>p.gaps.l[i]] <- min(q0[p>p.gaps.l[i]],gaps[i,1])    
+                }        
+             }
+             return(q0)
+     }
+  }else{
+     qnew <- function(p, lower.tail = TRUE, log.p = FALSE) {
+             q0 <- qfun(p, lower.tail = lower.tail, log.p = log.p)
+             if(lower.tail){
+                if(log.p) p.gaps <- log(p.gaps)
+                for(i in 1:nrow(gaps)){
+                    i1 <- .isEqual(p,p.gaps[i])
+                    q0[i1] <- gaps[i,2]
+                    q0[p<p.gaps[i]] <- min(q0[p<p.gaps[i]],gaps[i,1])
+                    q0[p>p.gaps[i]] <- max(q0[p>p.gaps[i]],gaps[i,2])
+                }        
+             }else{
+                if(log.p) p.gaps.l <- log(p.gaps.l)
+                for(i in 1:nrow(gaps)){
+                    i1 <- .isEqual(p,p.gaps.l[i])
+                    q0[i1] <- gaps[i,1]
+                    q0[p<p.gaps.l[i]] <- max(q0[p<p.gaps.l[i]],gaps[i,2])    
+                    q0[p>p.gaps.l[i]] <- min(q0[p>p.gaps.l[i]],gaps[i,1])    
+                }        
+             }
+             return(q0)
+     }
+  }
+  return(qnew)           
+}
+
+#------------------------------------------------------------------------------
 # issue warnings in show / print as to Arith or print
 #------------------------------------------------------------------------------
 .IssueWarn <- function(Arith,Sim){

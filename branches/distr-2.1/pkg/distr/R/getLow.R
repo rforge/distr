@@ -90,3 +90,43 @@
                              lower.tail = FALSE))               
                 
                 })   
+
+ setMethod("getLow", "UnivarLebDecDistribution",
+            function(object, eps = getdistrOption("TruncQuantile")) 
+                     min(getLow(discretePart(object)),
+                         getLow(acPart(object), eps = eps)))
+ setMethod("getUp", "UnivarLebDecDistribution",
+            function(object, eps = getdistrOption("TruncQuantile")) 
+                     max(getUp(discretePart(object)),
+                         getUp(acPart(object), eps = eps)))
+
+ setMethod("getLow", "UnivarMixingDistribution",
+            function(object, eps = getdistrOption("TruncQuantile")){ 
+                     l <- length(mixCoeff)
+                     low <- Inf
+                     for(i in 1:l){
+                         if(!is(try(low0 <- getLow(mixDistr[[i]], eps = eps), 
+                                    silent = TRUE), "try-error"))
+                            low <- min(low,low0)
+                         else {
+                            if(!is(try(low0 <- getLow(mixDistr[[i]]), 
+                                       silent = TRUE), "try-error"))
+                               low <- min(low,low0)                         
+                         }
+                     }    
+                     return(low)})
+ setMethod("getUp", "UnivarMixingDistribution",
+            function(object, eps = getdistrOption("TruncQuantile")){ 
+                     l <- length(mixCoeff)
+                     up <- -Inf
+                     for(i in 1:l){
+                         if(!is(try(up0 <- getUp(mixDistr[[i]], eps = eps), 
+                                    silent = TRUE), "try-error"))
+                            up <- max(up,up0)
+                         else {
+                            if(!is(try(up0 <- getUp(mixDistr[[i]]), 
+                                       silent = TRUE), "try-error"))
+                               up <- max(up,up0)
+                         }
+                     }    
+                     return(up)})

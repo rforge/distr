@@ -95,7 +95,6 @@ AbscontDistribution <- function(r = NULL, d = NULL, p = NULL, q = NULL,
       }else{
           if(is.null(p))
              p <- .Q2P(q, ngrid = ngrid)
-          xseq <- seq(-5,5,0.001)
           r <- function(n) q(runif(n))
           if( is.null(d)){
               if(is.null(low1))
@@ -219,6 +218,8 @@ AbscontDistribution <- function(r = NULL, d = NULL, p = NULL, q = NULL,
       .withArith = wA, .lowerExact = .lowerExact, .logExact = .logExact)
 
   if(is.null(gaps) && withgaps) setgaps(obj)
+  if(!is.null(obj@gaps)) 
+     obj@q <- .modifyqgaps(pfun = obj@p, qfun = obj@q, gaps = obj@gaps)
   return(obj)
 }
 
@@ -274,6 +275,7 @@ function(object, exactq = 6, ngrid = 50000, ...){
           
           ox <- order(mattab.d[,1])
           mattab.d <- matrix(mattab.d[ox,], ncol = 2)
+          mattab.d <- .consolidategaps(mattab.d)
           } else mattab.d <- NULL
           eval(substitute( "slot<-"(object,'gaps', value = mattab.d)))
        return(invisible())
@@ -412,7 +414,8 @@ setMethod("abs", "AbscontDistribution",
             else {VZW <- gaps(x)[,1] <= 0 & gaps(x)[,2] >= 0
                   gapsnew <- t(apply(abs(gaps(x)), 1, sort))
                   gapsnew[VZW,2] <- pmin(-gaps(x)[VZW,1], gaps(x)[VZW,2])
-                  gapsnew[VZW,1] <- 0}
+                  gapsnew[VZW,1] <- 0
+                  gapsnew <- .consolidategaps(gapsnew)}
             
             lower <- max(0, getLow(x))
             upper <- max(-getLow(x) , abs(getUp(x)))
@@ -505,3 +508,19 @@ setMethod("sqrt", "AbscontDistribution",
             function(x) x^0.5)
 
 }
+
+#------------------------------------------------------------------------
+# new p.l, q.r methods
+#------------------------------------------------------------------------
+
+setMethod("p.l", signature(object = "AbscontDistribution"),  
+           function(object) p(object))
+
+setMethod("q.r", signature(object = "AbscontDistribution"),  
+           function(object){
+                if(!is.null(gaps(object))) 
+                   .modifyqgaps(pfun = p(object), qfun = q(object), 
+                                gaps = gaps(object), leftright = "right")
+                else
+                    q(object)
+            })

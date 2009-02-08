@@ -2,6 +2,8 @@
 
 .mergegaps <- function(gaps, support){
  if(is.null(gaps)) return(NULL)
+ if(length(support)==0) return(gaps)
+ 
  mm <- rbind(cbind(gaps[ ,1],1),
              cbind(gaps[ ,2],2),
              cbind(support,3))
@@ -80,16 +82,38 @@
        }
    }
  erg <- if (jj > 0) gaps.new[1:jj, ] else NULL
- return(erg)
+ return(.consolidategaps(erg))
 
 }
 
-.pmixfun <- function(mixDistr, mixCoeff){
+.consolidategaps <- function(gaps){
+ if(is.null(gaps)) return(NULL)
+ if(nrow(gaps)==0) return(NULL)
+ if(nrow(gaps)==1) return(gaps)
+ jj <- 1
+ for(j in 1:(nrow(gaps)-1)){
+   if (.isEqual(gaps[jj,2],gaps[j+1,1]))
+      gaps[jj,2] <- gaps[j+1,2]
+   else jj <- jj+1   
+ }     
+ return(gaps)
+}
+
+.pmixfun <- function(mixDistr, mixCoeff, leftright = "right"){
   l <- length(mixCoeff)
   return(function(q, lower.tail = TRUE, log.p = FALSE ){
-  p0 <- as.vector(matrix(unlist(lapply(mixDistr, function(x)
-         do.call(x@p, list(q = q, lower.tail = lower.tail)))),
-                 ncol = l, nrow = length(q)) %*% mixCoeff)
+  p0 <- as.vector(
+           matrix(unlist(
+              lapply(mixDistr, 
+                  function(x){
+                       p.lr <- if(pmatch(leftright, table=c("left","right"), 
+                                         nomatch = 2)==2) p.l(x) 
+                               else x@p
+                       do.call(p.lr, list(q = q, lower.tail = lower.tail)) 
+                  } 
+              )),
+              ncol = l, nrow = length(q)) %*% mixCoeff
+           )
   if(log.p) p0 <- log(p0)
   return(p0)               
    })
@@ -123,7 +147,8 @@
 }
 
 
-.qmixfun <- function(mixDistr, mixCoeff, Cont = TRUE, pnew){
+.qmixfun <- function(mixDistr, mixCoeff, Cont = TRUE, pnew, gaps = NULL, 
+                     leftright = "left"){
   l <- length(mixCoeff)
   loup <- .loupmixfun(mixDistr)
 
@@ -145,8 +170,11 @@
 
   px.l <- pnew(xseq, lower.tail = TRUE)
   px.u <- pnew(xseq, lower.tail = FALSE)
-
-  return(.makeQNew(xseq, px.l, px.u, TRUE, lo, up, Cont = Cont))
+  qnew <- .makeQNew(xseq, px.l, px.u, TRUE, lo, up, Cont = Cont)
+  if(!is.null(gaps)) 
+      qnew <- .modifyqgaps(pfun = pnew, qfun = qnew, gaps = gaps, 
+                           leftright = leftright)
+  return(qnew)
 }
 
 

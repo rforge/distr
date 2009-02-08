@@ -189,28 +189,28 @@ function(e1,e2){
             ### Lattice Calculations:
             w1 <- width(lattice(e1))
             w2 <- width(lattice(e2))
+            sup1 <- support(e1)
+            sup2 <- support(e2)
+            maxl <- length(sup1)*length(sup2)
+                              ### length of product grid
+            csup <- unique(sort(c(sup1,sup2)))
+                              ### grid width of convolution grid
 
-            if (abs(abs(w1)-abs(w2)) < getdistrOption("DistrResolution")){
-               w <- w1
-               ###  else need common lattice
-            }else{
+            w <- min(diff(csup))
+            commonsup <- unique(sort(c(outer(sup1,sup2,"+"))))
+                              ### grid width of convolution grid
+            mw <- min(diff(commonsup))
+            if (abs(abs(w1)-abs(w2)) > getdistrOption("DistrResolution")){
                    W <- sort(abs(c(w1,w2)))
                    if (W[2] %% W[1] > getdistrOption("DistrResolution")){
-                         
+
                          ## check whether arrangement on common grid really
                          ## saves something
-                         
-                         sup1 <- support(e1)
-                         sup2 <- support(e2)
+
                          prob1 <- d(e1)(sup1)
                          prob2 <- d(e2)(sup2)
-                         maxl <- length(sup1)*length(sup2) 
-                              ### length of product grid
-                         commonsup <- unique(sort(c(outer(sup1,sup2,"+"))))
-                              ### grid width of convolution grid
-                         mw <- min(diff(commonsup))
                               ###  convolutional grid
-                         comsup <- seq(min(commonsup),max(commonsup), by=mw)
+                         comsup <- seq(min(commonsup),max(commonsup), by = mw)
 
                          fct <- function(sup0, prob0, bw){
                               ### expand original grid,prob onto new width:
@@ -222,13 +222,13 @@ function(e1,e2){
                                                                prob = prb0))
                                     }
                         if(length(comsup) < maxl)
-                           return( fct(sup1,prob1,bw)  + fct(sup2,prob2,bw))
+                           return( fct(sup1,prob1,mw)  + fct(sup2,prob2,mw))
                         else
                            return(as(e1, "DiscreteDistribution") +
                                   as(e2, "DiscreteDistribution"))
                    }
                    else
-                       w <- W[1] #generate common lattice / support
+                       w <- mw #generate common lattice / support
                   }
 
             newlat <- NULL
@@ -276,12 +276,13 @@ function(e1,e2){
             L1 <- length(supp1)
             newd <- newd[1:L1]
 
+
             if (L1 > getdistrOption("DefaultNrGridPoints")){
                 rsum.u <- min( sum( rev(cumsum(rev(newd))) >=
                                     getdistrOption("TruncQuantile")/2)+1,
                                length(supp1)
                            )
-                rsum.l <- 1 + sum( cumsum(newd) < 
+                rsum.l <- 1 + sum( cumsum(newd) <
                                    getdistrOption("TruncQuantile")/2)
                 newd <- newd[rsum.l:rsum.u]
                 newd <- newd/sum(newd)
@@ -294,7 +295,8 @@ function(e1,e2){
                 rsum.l <- 1 + sum( cumsum(newd) < .Machine$double.eps)
                 newd <- newd[rsum.l:rsum.u]
                 newd <- newd/sum(newd)
-                supp1 <- supp1[rsum.l:rsum.u]}
+                supp1 <- supp1[rsum.l:rsum.u]
+            }
 
             return(LatticeDistribution(supp = supp1, prob = newd,
                                        lattice = newlat, .withArith = TRUE))

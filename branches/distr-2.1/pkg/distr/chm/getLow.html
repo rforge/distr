@@ -10,11 +10,15 @@
 <param name="keyword" value="R:   getUp,AbscontDistribution-method">
 <param name="keyword" value="R:   getUp,DiscreteDistribution-method">
 <param name="keyword" value="R:   getUp,LatticeDistribution-method">
+<param name="keyword" value="R:   getUp,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   getUp,UnivarMixingDistribution-method">
 <param name="keyword" value="R:   getLow">
 <param name="keyword" value="R:   getLow-methods">
 <param name="keyword" value="R:   getLow,AbscontDistribution-method">
 <param name="keyword" value="R:   getLow,DiscreteDistribution-method">
 <param name="keyword" value="R:   getLow,LatticeDistribution-method">
+<param name="keyword" value="R:   getLow,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   getLow,UnivarMixingDistribution-method">
 <param name="keyword" value=" getLow getUp functions of package distr">
 </object>
 
@@ -44,6 +48,12 @@ getUp(object,
 getUp(object)
 ## S4 method for signature 'LatticeDistribution':
 getUp(object)
+## S4 method for signature 'UnivarLebDecDistribution':
+getUp(object,
+                                      eps = getdistrOption("TruncQuantile"))
+## S4 method for signature 'UnivarMixingDistribution':
+getUp(object,
+                                      eps = getdistrOption("TruncQuantile"))
 ## S4 method for signature 'AbscontDistribution':
 getLow(object,
                                        eps = getdistrOption("TruncQuantile"))
@@ -51,6 +61,12 @@ getLow(object,
 getLow(object)
 ## S4 method for signature 'LatticeDistribution':
 getLow(object)
+## S4 method for signature 'UnivarLebDecDistribution':
+getLow(object,
+                                      eps = getdistrOption("TruncQuantile"))
+## S4 method for signature 'UnivarMixingDistribution':
+getLow(object,
+                                      eps = getdistrOption("TruncQuantile"))
 </pre>
 
 
@@ -81,6 +97,6 @@ Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ru
 
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

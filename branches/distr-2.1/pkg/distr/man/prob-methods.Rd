@@ -10,13 +10,14 @@
 \alias{prob,Nbinom-method}
 \alias{prob,GeomParameter-method}
 \alias{prob,Geom-method}
+\alias{prob,DiscreteDistribution-method}
+\alias{prob,UnivarLebDecDistribution-method}
 \alias{prob<-,BinomParameter-method}
 \alias{prob<-,Binom-method}
 \alias{prob<-,NbinomParameter-method}
 \alias{prob<-,Nbinom-method}
 \alias{prob<-,GeomParameter-method}
 \alias{prob<-,Geom-method}
-\alias{prob,DiscreteDistribution-method}
 \alias{prob<-,DiscreteDistribution-method}
 \title{ Methods for Function prob in Package `distr' }
 \description{prob-methods}
@@ -48,6 +49,14 @@
                the same support as \code{object} as well as the same 
                \code{.withSim}, \code{.withArith}, \code{.lowerExact}, 
                \code{.logExact} slots. }
+\item{prob}{\code{signature(object = "UnivarLebDecDistribution")}: returns a
+\eqn{2 \times n}{2 x n} matrix where n is the length of the support of
+the discrete part of the distribution; the first row named \code{"cond"} 
+gives the vector of  probabilities for the support points of the discrete part
+of the distribution (i.e.; conditional on being in the discrete part), the second
+row named \code{"abs"} is like the first one but multiplied with \code{discreteWeight}
+of the distribution, hence gives the absolute probabilities of the support points;
+the columns are named by the support values. }
 }}
 \keyword{distribution}
 \concept{parameter}

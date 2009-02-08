@@ -59,6 +59,7 @@
 <param name="keyword" value="R:   .fillList">
 <param name="keyword" value="R:   .trunc.up">
 <param name="keyword" value="R:   .trunc.low">
+<param name="keyword" value="R:   .modifyqgaps">
 <param name="keyword" value="R:   devNew">
 <param name="keyword" value=" Internal functions of package distr">
 </object>
@@ -114,10 +115,11 @@ These functions are used internally by package distr.
 .makeQNew(x, px.l, px.u, notwithLLarg = FALSE, yL , yR, Cont = TRUE)
 .mergegaps(gaps, support)
 .mergegaps2(gaps1, gaps2)
-.pmixfun(mixDistr, mixCoeff)
+.consolidategaps(gaps)
+.pmixfun(mixDistr, mixCoeff, leftright = "right")
 .dmixfun(mixDistr, mixCoeff, withStand = FALSE, supp = NULL)
 .rmixfun(mixDistr, mixCoeff)
-.qmixfun(mixDistr, mixCoeff, Cont = TRUE, pnew)
+.qmixfun(mixDistr, mixCoeff, Cont = TRUE, pnew, gaps = NULL, leftright = "left")
 .del0dmixfun(mixDistr)
 .loupmixfun(mixDistr)
 .ULC.cast(x)
@@ -136,6 +138,7 @@ These functions are used internally by package distr.
 .fillList(list0, len=length(list0))
 .trunc.up(object, upper)
 .trunc.low(object, lower)
+.modifyqgaps(pfun, qfun, gaps, leftright = "left")
 devNew(...)
 </pre>
 
@@ -299,13 +302,13 @@ that the sum of the values of the result evaluated at argument <code>supp</code>
 <td>
 NULL or <code>numeric</code>; if <code>withStand</code> is <code>TRUE</code> used
 to standardize such that the result is a probability density.</td></tr>
-<tr valign="top"><td><code>p</code></td>
+<tr valign="top"><td><code>p,pfun</code></td>
 <td>
 slot <code>p</code> of an object of class <code>"AbscontDistribution"</code></td></tr>
 <tr valign="top"><td><code>d</code></td>
 <td>
 slot <code>d</code> of an object of class <code>"AbscontDistribution"</code></td></tr>
-<tr valign="top"><td><code>q</code></td>
+<tr valign="top"><td><code>q,qfun</code></td>
 <td>
 slot <code>q</code> of an object of class <code>"AbscontDistribution"</code></td></tr>
 <tr valign="top"><td><code>xx</code></td>
@@ -353,6 +356,13 @@ lower truncation point</td></tr>
 <tr valign="top"><td><code>upper</code></td>
 <td>
 upper truncation point</td></tr>
+<tr valign="top"><td><code>leftright</code></td>
+<td>
+character; for slot <code>q</code>: if partially matched to <code>"right"</code> 
+function will return the right continuous version, else
+the left continuous version; for slot <code>p</code>: if partially 
+matched to <code>"left"</code> the left continuous version, else
+the right continuous version;</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 arguments passed through to other functions</td></tr>
@@ -451,6 +461,8 @@ the support slot of a discrete distribution; if necessary, a gap interval
 <code>.mergegaps2</code> merges two gap matrices of two a.c. distributions <code>X1</code> 
 and <code>X2</code> such that in the intervals of the resulting gap matrix, 
 neither <code>X1</code> nor <code>X2</code> carries mass.
+<code>.consolidategaps</code> consolidates a gap matrix, i.e. joins adjacent 
+gap intervals.  
 </p>
 <p>
 <code>.pmixfun</code>, <code>.dmixfun</code>, <code>.rmixfun</code>, and <code>.qmixfun</code>
@@ -508,6 +520,13 @@ classes <code>DiscreteDistribution</code> and <code>AbscontDistribution</code> f
 one-sided truncation, using (for slot <code>r</code>) Peter Dalgaard's clever 
 log-tricks as indicated in 
 <a href="http://article.gmane.org/gmane.comp.lang.r.general/126112">http://article.gmane.org/gmane.comp.lang.r.general/126112</a>.
+</p>
+<p>
+<code>.modifyqgaps</code> modifies slot <code>q</code> for objects of class 
+<code>AbscontDistribution</code> in the presence of gaps, i.e.; if slot
+<code>gaps</code> is not <code>NULL</code>. If argument <code>leftright</code> does not
+partially match <code>"right"</code> (default) returns the left continuous
+version of the quantile function, else the right continuous one.
 </p>
 <p>
 <code>devNew</code> opens a new device. This function is for back compatibility

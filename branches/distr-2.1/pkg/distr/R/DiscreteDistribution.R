@@ -203,6 +203,9 @@ setMethod("q.r", "DiscreteDistribution", function(object){
 
 setMethod("+", c("DiscreteDistribution","DiscreteDistribution"),
 function(e1,e2){
+            
+            if(length(support(e1))==1) return(e2+support(e1))
+            if(length(support(e2))==1) return(e1+support(e2))
             e1.L <- as(e1, "LatticeDistribution")
             e2.L <- as(e2, "LatticeDistribution")
             if(is(e1.L, "LatticeDistribution") & is(e2.L, "LatticeDistribution"))
@@ -282,6 +285,10 @@ function(e1,e2){
             object
 
           })
+
+setMethod("+", c("Dirac","DiscreteDistribution"),
+      function(e1,e2){e2+location(e1)})
+
 
 ## binary operators for discrete distributions
 

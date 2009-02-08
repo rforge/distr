@@ -15,7 +15,8 @@ export("Beta", "Binom", "Cauchy", "Chisq",
        "Naturals", "standardMethods", 
        "distrARITH", "distrMASK", "getLabel", "devNew")
 export("AbscontDistribution")
-export("DistrList", "UnivarDistrList") 
+export("DistrList", "UnivarDistrList")
+export("makeAbscontDistribution") 
 exportClasses("rSpace", "EuclideanSpace", "Reals", 
               "Naturals")
 exportClasses("Parameter")

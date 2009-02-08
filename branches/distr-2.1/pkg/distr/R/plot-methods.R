@@ -164,10 +164,14 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
      
      
      if(hasArg(ylim))
-         {if(! length(ylim) %in% c(2,4)) 
-             stop("Wrong length of Argument ylim"); 
-           if(length(ylim)==2)
-             ylim <- matrix(ylim, 2,2)
+         {if (3 %in% to.draw && any( c(1,2) %in% to.draw)){
+                 if(! length(ylim) %in% c(2,4)) 
+                     stop("Wrong length of Argument ylim")
+           }else{
+                 if(! length(ylim) == 2) 
+                     stop("Wrong length of Argument ylim")
+           }                  
+           ylim <- matrix(ylim, 2,2)
            ylim1 <- ylim[,1]; ylim2 <- ylim[,2];
            }
      else {ylim1 <- c(0,max(dxg[dxg<50])); ylim2 <- c(-0.05,1.05)}
@@ -451,12 +455,17 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
 
        dx <- d(x)(supp)
 
-       if(hasArg(ylim))
-             {if(length(ylim) != 2) 
-                 stop("Wrong length of Argument ylim") 
-              ylim1 <- ylim
-              ylim2 <- ylim
-              }else{
+     if(hasArg(ylim))
+         {if (3 %in% to.draw && any( c(1,2) %in% to.draw)){
+                 if(! length(ylim) %in% c(2,4)) 
+                     stop("Wrong length of Argument ylim")
+           }else{
+                 if(! length(ylim) == 2) 
+                     stop("Wrong length of Argument ylim")
+           }                  
+           ylim <- matrix(ylim, 2,2)
+           ylim1 <- ylim[,1]; ylim2 <- ylim[,2];
+           }else{
               ylim1 <- c(0, max(dx)) 
               ylim2 <- c(-0.05,1.05)
               }

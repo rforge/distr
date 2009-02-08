@@ -53,6 +53,7 @@
 \alias{.fillList}
 \alias{.trunc.up}
 \alias{.trunc.low}
+\alias{.modifyqgaps}
 \alias{devNew}
 
 \title{Internal functions of package distr}
@@ -98,10 +99,11 @@ These functions are used internally by package distr.}
 .makeQNew(x, px.l, px.u, notwithLLarg = FALSE, yL , yR, Cont = TRUE)
 .mergegaps(gaps, support)
 .mergegaps2(gaps1, gaps2)
-.pmixfun(mixDistr, mixCoeff)
+.consolidategaps(gaps)
+.pmixfun(mixDistr, mixCoeff, leftright = "right")
 .dmixfun(mixDistr, mixCoeff, withStand = FALSE, supp = NULL)
 .rmixfun(mixDistr, mixCoeff)
-.qmixfun(mixDistr, mixCoeff, Cont = TRUE, pnew)
+.qmixfun(mixDistr, mixCoeff, Cont = TRUE, pnew, gaps = NULL, leftright = "left")
 .del0dmixfun(mixDistr)
 .loupmixfun(mixDistr)
 .ULC.cast(x)
@@ -120,6 +122,7 @@ These functions are used internally by package distr.}
 .fillList(list0, len=length(list0))
 .trunc.up(object, upper)
 .trunc.low(object, lower)
+.modifyqgaps(pfun, qfun, gaps, leftright = "left")
 devNew(...)
 }
 
@@ -195,9 +198,9 @@ devNew(...)
  that the sum of the values of the result evaluated at argument \code{supp} is 1}
  \item{supp}{NULL or \code{numeric}; if \code{withStand} is \code{TRUE} used
  to standardize such that the result is a probability density.}
- \item{p}{slot \code{p} of an object of class \code{"AbscontDistribution"}} 
+ \item{p,pfun}{slot \code{p} of an object of class \code{"AbscontDistribution"}} 
  \item{d}{slot \code{d} of an object of class \code{"AbscontDistribution"}} 
- \item{q}{slot \code{q} of an object of class \code{"AbscontDistribution"}} 
+ \item{q,qfun}{slot \code{q} of an object of class \code{"AbscontDistribution"}} 
  \item{xx}{a given grid of x-values for functions \code{p}, \code{d} to be
  evaluated at}  
  \item{ql,qu}{lower and upper \code{getdistrOption("TruncQuantile")}-quantile of
@@ -217,6 +220,11 @@ devNew(...)
  \item{len}{length of the list to be filled}              
  \item{lower}{lower truncation point}
  \item{upper}{upper truncation point}
+ \item{leftright}{character; for slot \code{q}: if partially matched to \code{"right"} 
+                  function will return the right continuous version, else
+                  the left continuous version; for slot \code{p}: if partially 
+                  matched to \code{"left"} the left continuous version, else
+                  the right continuous version;}
  \item{...}{arguments passed through to other functions}
 }
 
@@ -298,6 +306,8 @@ the support slot of a discrete distribution; if necessary, a gap interval
 \code{.mergegaps2} merges two gap matrices of two a.c. distributions \code{X1} 
 and \code{X2} such that in the intervals of the resulting gap matrix, 
 neither \code{X1} nor \code{X2} carries mass.
+\code{.consolidategaps} consolidates a gap matrix, i.e. joins adjacent 
+gap intervals.  
 
 \code{.pmixfun}, \code{.dmixfun}, \code{.rmixfun}, and \code{.qmixfun}
 fill the slots \code{p}, \code{d}, \code{r}, and \code{q}
@@ -347,6 +357,12 @@ classes \code{DiscreteDistribution} and \code{AbscontDistribution} for
 one-sided truncation, using (for slot \code{r}) Peter Dalgaard's clever 
 log-tricks as indicated in 
 \url{http://article.gmane.org/gmane.comp.lang.r.general/126112}.
+
+\code{.modifyqgaps} modifies slot \code{q} for objects of class 
+     \code{AbscontDistribution} in the presence of gaps, i.e.; if slot
+     \code{gaps} is not \code{NULL}. If argument \code{leftright} does not
+     partially match \code{"right"} (default) returns the left continuous
+     version of the quantile function, else the right continuous one.
 
 \code{devNew} opens a new device. This function is for back compatibility
 with R versions < 2.8.0.

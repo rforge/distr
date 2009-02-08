@@ -289,11 +289,15 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
 
      
      if(hasArg(ylim))
-         {if(! length(ylim) %in% c(2,4)) 
-             stop("Wrong length of Argument ylim"); 
-           if(length(ylim)==2)
-             ylim <- matrix(ylim, 2,2)
-           ylim2 <- ylim[,2];
+         { if (any(c(2,5,8) %in% to.draw) && any( c(1,3,4,6,7) %in% to.draw)){
+                 if(! length(ylim) %in% c(2,4)) 
+                     stop("Wrong length of Argument ylim")
+           }else{
+                 if(! length(ylim) == 2) 
+                     stop("Wrong length of Argument ylim")
+           }                  
+           ylim <- matrix(ylim, 2,2)
+           ylim2 <- ylim[,2]
            }
      else ylim2 <- c(-0.05,1.05)
 

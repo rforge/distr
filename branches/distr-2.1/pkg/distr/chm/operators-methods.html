@@ -78,6 +78,7 @@
 <param name="keyword" value="R:   +,Norm,Norm-method">
 <param name="keyword" value="R:   +,Logis,numeric-method">
 <param name="keyword" value="R:   +,Dirac,UnivariateDistribution-method">
+<param name="keyword" value="R:   +,Dirac,DiscreteDistribution-method">
 <param name="keyword" value="R:   +,UnivariateDistribution,Dirac-method">
 <param name="keyword" value="R:   -,numeric,Beta-method">
 <param name="keyword" value="R:   -,Dirac,Dirac-method">
@@ -246,6 +247,8 @@ if <code>prob(e1)==prob(e2)</code>, result again of class
 result again of class <code>"Dirac"</code>; exact</dd>
 <dt><code>+</code></dt><dd><code>signature(e1 = "Dirac", e2 = "UnivariateDistribution")</code>  translated to <code>e2 + location(e1)</code>; 
 result again of class <code>"Dirac"</code>; exact</dd>
+<dt><code>+</code></dt><dd><code>signature(e1 = "Dirac", e2 = "DiscreteDistribution")</code>  translated to <code>e2 + location(e1)</code>; 
+result again of class <code>"Dirac"</code>; exact</dd>
 <dt><code>-</code></dt><dd><code>signature(e1 = "Dirac", e2 = "Dirac")</code>  result again of class <code>"Dirac"</code>; exact</dd>
 <dt><code>*</code></dt><dd><code>signature(e1 = "Dirac", e2 = "Dirac")</code>  result again of class <code>"Dirac"</code>; exact</dd>
 <dt><code>*</code></dt><dd><code>signature(e1 = "UnivariateDistribution", e2 = "Dirac")</code>  translated to <code>e1 * location(e2)</code>; 
@@ -368,6 +371,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

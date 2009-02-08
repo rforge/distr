@@ -985,8 +985,13 @@ setClass("UnivarDistrList",
 
 setClass("UnivarMixingDistribution",
             representation = representation(mixCoeff = "numeric",
-                             mixDistr = "UnivarDistrList"),
-            prototype = prototype(mixCoeff = 1, mixDistr = new("UnivarDistrList")),
+                             mixDistr = "UnivarDistrList",
+                             gaps = "OptionalMatrix",
+                             support = "numeric"),
+            prototype = prototype(mixCoeff = 1, 
+                                  mixDistr = new("UnivarDistrList"),
+                                  gaps = NULL,
+                                  support = numeric(0)),
             contains = "UnivariateDistribution",
             validity = function(object){
                 if(any(object@mixCoeff< -.Machine$double.eps) || 

@@ -7,7 +7,10 @@
 <table width="100%"><tr><td>q.r-methods(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   q.r-methods">
 <param name="keyword" value="R:   q.r">
+<param name="keyword" value="R:   q.r,AbscontDistribution-method">
 <param name="keyword" value="R:   q.r,DiscreteDistribution-method">
+<param name="keyword" value="R:   q.r,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   q.r,UnivarMixingDistribution-method">
 <param name="keyword" value=" Methods for Function q.r in Package &lsquo;distr&rsquo;">
 </object>
 
@@ -24,20 +27,25 @@ q.r-methods
 
 <h3>Methods</h3>
 
-<dl>
-<dt>q.r</dt><dd><code>signature(object  = "DiscreteDistribution")</code>: returns the 
-right-continuous quantile function, i.e.; 
+<p>
+return the right-continuous quantile function, i.e.; 
 <i>q.r(s)=sup{t|P(object&lt;=t)&lt;=s}</i>
-</dd></dl>
+<dl>
+<dt>q.r</dt><dd><code>signature(object  = "DiscreteDistribution")</code></dd> 
+<dt>q.r</dt><dd><code>signature(object  = "AbscontDistribution")</code></dd> 
+<dt>q.r</dt><dd><code>signature(object  = "UnivarLebDecDistribution")</code></dd>
+<dt>q.r</dt><dd><code>signature(object  = "UnivarMixingDistribution")</code></dd>
+</dl>
 
 <h3>See Also</h3>
 
 <p>
 <code><a href="DiscreteDistribution-class.html">DiscreteDistribution-class</a></code>
+<code><a href="UnivarLebDecDistribution-class.html">UnivarLebDecDistribution-class</a></code>
 </p>
 
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

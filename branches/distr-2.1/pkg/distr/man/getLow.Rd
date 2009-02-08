@@ -4,11 +4,15 @@
 \alias{getUp,AbscontDistribution-method}
 \alias{getUp,DiscreteDistribution-method}
 \alias{getUp,LatticeDistribution-method}
+\alias{getUp,UnivarLebDecDistribution-method}
+\alias{getUp,UnivarMixingDistribution-method}
 \alias{getLow}
 \alias{getLow-methods}
 \alias{getLow,AbscontDistribution-method}
 \alias{getLow,DiscreteDistribution-method}
 \alias{getLow,LatticeDistribution-method}
+\alias{getLow,UnivarLebDecDistribution-method}
+\alias{getLow,UnivarMixingDistribution-method}
 
 \title{getLow, getUp functions of package distr}
 
@@ -25,10 +29,18 @@ halving of \code{x=0.5} in \code{q(object)(x, lower.tail)} for \code{lower.tail}
                                       eps = getdistrOption("TruncQuantile"))
 \S4method{getUp}{DiscreteDistribution}(object)
 \S4method{getUp}{LatticeDistribution}(object)
+\S4method{getUp}{UnivarLebDecDistribution}(object,
+                                      eps = getdistrOption("TruncQuantile"))
+\S4method{getUp}{UnivarMixingDistribution}(object,
+                                      eps = getdistrOption("TruncQuantile"))
 \S4method{getLow}{AbscontDistribution}(object,
                                        eps = getdistrOption("TruncQuantile"))
 \S4method{getLow}{DiscreteDistribution}(object)
 \S4method{getLow}{LatticeDistribution}(object)
+\S4method{getLow}{UnivarLebDecDistribution}(object,
+                                      eps = getdistrOption("TruncQuantile"))
+\S4method{getLow}{UnivarMixingDistribution}(object,
+                                      eps = getdistrOption("TruncQuantile"))
 }
 \arguments{
   \item{object}{a distribution object}
