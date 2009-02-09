@@ -276,6 +276,8 @@ function(object, exactq = 6, ngrid = 50000, ...){
           ox <- order(mattab.d[,1])
           mattab.d <- matrix(mattab.d[ox,], ncol = 2)
           mattab.d <- .consolidategaps(mattab.d)
+          if(nrow(mattab.d)==0) mattab.d <- NULL
+          if(length(mattab.d)==0) mattab.d <- NULL
           } else mattab.d <- NULL
           eval(substitute( "slot<-"(object,'gaps', value = mattab.d)))
        return(invisible())

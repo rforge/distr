@@ -77,12 +77,15 @@ setMethod("convpow",
 
 setMethod("convpow",
           signature(D1 = "LatticeDistribution"),
-          function(D1, N){
+          function(D1, N, ep = getdistrOption("TruncQuantile")){
             if( !.isNatural0(N))
               stop("N has to be a natural (or 0)")
             if (N==0) return(Dirac(0))
-
             if (N==1) return(D1)
+
+            if(!is.numeric(ep)) stop("argument 'ep' must be a numeric.")
+            if(length(ep)!=1) stop("argument 'ep' must be a numeric of length 1.")
+            if((ep<0)||(ep>1)) stop("argument 'ep' must be in (0,1).")
 
             w <- width(lattice(D1))
 
@@ -98,18 +101,23 @@ setMethod("convpow",
             newd <- Re(fft(ftde1^N, inverse = TRUE)) / length(ftde1)
             newd <- (abs(newd) >= .Machine$double.eps)*newd
 
-            rsum.u <- min( sum( rev(cumsum(rev(newd))) <=
-                                getdistrOption("TruncQuantile")/2)+1,
-                           length(supp1))
-            rsum.l <- max( sum( cumsum(newd) <
-                                getdistrOption("TruncQuantile")/2),
-                          1)
+            rsum.u <- min( sum( rev(cumsum(rev(newd))) <= ep/2)+1, length(supp1))
+            rsum.l <- max( sum( cumsum(newd) < ep/2), 1)
 
             newd <- newd[rsum.l:rsum.u]
             newd <- newd/sum(newd)
             supp1 <- supp1[rsum.l:rsum.u]
-
-            return(LatticeDistribution(supp=supp1,prob=newd))
+            
+            supp2 <- supp1[newd>ep]
+            newd2 <- newd[newd>ep]
+            newd2 <- newd2/sum(newd2)
+            
+            if( length(supp1) >= 2 * length(supp2))
+               return(DiscreteDistribution(supp = supp2, prob = newd2,
+                                           .withArith = TRUE))
+            else  
+               return(LatticeDistribution(supp = supp1, prob = newd,
+                                          .withArith = TRUE))
 })
 
 ###############################################################################
@@ -165,7 +173,7 @@ setMethod("convpow",
                                }) 
                       erg <- do.call(flat.LCD, c(DList, alist(mixCoeff = db)))
                 }else{
-                      DList <- as(convpow(aD1,im)+convpow(S.d,mm-im),"UnivarLebDecDistribution")           
+                      DList <- as(convpow(aD1,im)+convpow(dD1,mm-im),"UnivarLebDecDistribution")           
                       erg <- flat.LCD(DList, mixCoeff = 1)
                       } 
                 return(erg)
@@ -187,10 +195,10 @@ setMethod("convpow",
             if (N==0) return(Dirac(0))
             if (N==1) return(D1)
             if (N==2) return(D1+D1)
-            D11 <- if (N%%2==1) D1 else Dirac(0)
             DN1 <- convpow(D1,N%/%2)
             DN1 <- DN1 + DN1
-            return(DN1+D11)
+            if (N%%2==1) DN1 <- DN1+D1 
+            return(DN1)
             })
 ###############################################################################
             

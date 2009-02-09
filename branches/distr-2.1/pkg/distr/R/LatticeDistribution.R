@@ -199,7 +199,8 @@ function(e1,e2){
             w <- min(diff(csup))
             commonsup <- unique(sort(c(outer(sup1,sup2,"+"))))
                               ### grid width of convolution grid
-            mw <- min(diff(commonsup))
+            dcs <- abs(diff(commonsup))
+            mw <- min(dcs[dcs>getdistrOption("DistrResolution")])
             if (abs(abs(w1)-abs(w2)) > getdistrOption("DistrResolution")){
                    W <- sort(abs(c(w1,w2)))
                    if (W[2] %% W[1] > getdistrOption("DistrResolution")){
@@ -276,7 +277,6 @@ function(e1,e2){
             L1 <- length(supp1)
             newd <- newd[1:L1]
 
-
             if (L1 > getdistrOption("DefaultNrGridPoints")){
                 rsum.u <- min( sum( rev(cumsum(rev(newd))) >=
                                     getdistrOption("TruncQuantile")/2)+1,
@@ -293,13 +293,21 @@ function(e1,e2){
                                length(supp1)
                            )
                 rsum.l <- 1 + sum( cumsum(newd) < .Machine$double.eps)
+
                 newd <- newd[rsum.l:rsum.u]
                 newd <- newd/sum(newd)
                 supp1 <- supp1[rsum.l:rsum.u]
             }
+            supp2 <- supp1[newd > getdistrOption("TruncQuantile")]
+            newd2 <- newd[newd  > getdistrOption("TruncQuantile")]
+            newd2 <- newd2/sum(newd2)
 
-            return(LatticeDistribution(supp = supp1, prob = newd,
-                                       lattice = newlat, .withArith = TRUE))
+            if( length(supp1) >= 2 * length(supp2))
+               return(DiscreteDistribution(supp = supp2, prob = newd2,
+                                           .withArith = TRUE))
+            else
+               return(LatticeDistribution(supp = supp1, prob = newd,
+                                          .withArith = TRUE))
           })
 
 ## extra methods

@@ -41,7 +41,8 @@ i.i.d r.v's by means of DFT
   ## S4 method for signature 'AbscontDistribution':
   convpow(D1,N)
   ## S4 method for signature 'LatticeDistribution':
-  convpow(D1,N)
+  convpow(D1,N, 
+                     ep = getdistrOption("TruncQuantile"))
   ## S4 method for signature 'DiscreteDistribution':
   convpow(D1,N)
   ## S4 method for signature 'AcDcLcDistribution':
@@ -65,7 +66,10 @@ not yet used; meanwhile takes up N </td></tr>
 an integer or 0 (for 0 returns Dirac(0), for 1 D1)</td></tr>
 <tr valign="top"><td><code>ep</code></td>
 <td>
-numeric of length 1 in (0,1) &mdash; if <code>(acWeight(object)&lt;ep)</code> 
+numeric of length 1 in (0,1) &mdash;
+for <code>"LatticeDistribution"</code>: support points will be 
+cancelled if their probability is less than <code>ep</code>;
+for <code>"UnivarLebDecDistribution"</code>: if <code>(acWeight(object)&lt;ep)</code> 
 we work with the discrete parts only, and, similarly, if
 <code>(discreteWeight(object)&lt;ep)</code> we with the absolutely continuous 
 parts only.</td></tr>

@@ -196,6 +196,7 @@ return(outC)
    x <- seq(from = lower, to = upper, by = h)
    if(TRUE){#.notwithLArg(D)){
       return(diff(p(D)(x)))
+#      return((diff(p(D)(x))+diff(rev(p(D)(x,lower=FALSE))))/2)
    }else{
       M <- q(D)(0.5);   L <- length(x)
       x.l <- x [ x <= M ];  x.u <- x [ x >= M ]

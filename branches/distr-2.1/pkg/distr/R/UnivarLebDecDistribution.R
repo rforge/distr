@@ -376,6 +376,7 @@ setMethod("*", c("UnivarLebDecDistribution","numeric"),
                     q = Distr@q, X0 = e1, mixDistr = Distr@mixDistr,
                     mixCoeff = Distr@mixCoeff,
                     a = e2, b = 0, .withSim  = e1@.withSim,
+                    .logExact = .logExact(e1), .lowerExact = .lowerExact(e1),
                     .withArith = TRUE, support= support(Distr),
                     gaps = gaps(Distr))
           object})
@@ -397,6 +398,7 @@ setMethod("+", c("UnivarLebDecDistribution","numeric"),
                     mixCoeff = Distr@mixCoeff,
                     a = 1, b = e2, .withSim  = e1@.withSim,
                     .withArith = TRUE, support= support(Distr),
+                    .logExact = .logExact(e1), .lowerExact = .lowerExact(e1),
                     gaps = gaps(Distr))
           object})
 

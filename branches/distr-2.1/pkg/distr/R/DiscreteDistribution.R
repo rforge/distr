@@ -361,7 +361,7 @@ setMethod("abs", "DiscreteDistribution",
             object <- new("DiscreteDistribution", r = rnew, p = pnew,
                            q = qnew, d = dnew, support = supportnew, 
                            .withSim = x@.withSim, .withArith = TRUE,
-                           .lowerExact = x@.lowerExact)
+                           .lowerExact = .lowerExact(x))
             object
           })
 
@@ -441,6 +441,6 @@ setReplaceMethod("prob", "DiscreteDistribution",
                              prob = value,
                             .withArith = object@.withArith,
                             .withSim = object@.withSim,
-                            .lowerExact = object@.lowerExact, 
-                            .logExact = object@.logExact))}
+                            .lowerExact = .lowerExact(object), 
+                            .logExact = .logExact(object)))}
                   )
