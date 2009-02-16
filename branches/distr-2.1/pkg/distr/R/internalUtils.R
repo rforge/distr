@@ -458,7 +458,10 @@ return(outC)
                  coR <- substitute({
                              o.warn <- getOption("warn"); options(warn = -1)
                              on.exit(options(warn=o.warn))
-                             d0 <- object@d(x = q / e2C)
+                             #
+                             x0 <- .setEqual(q / e2C, support(object))
+                             d0 <- object@d(x = x0)
+                             #
                              options(warn = o.warn)
                              if (!lower.tail) d0 <- -d0
                              p0 <- p0 + d0},
