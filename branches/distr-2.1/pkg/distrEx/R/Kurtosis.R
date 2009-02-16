@@ -60,6 +60,7 @@ setMethod("kurtosis", signature(x = "AffLinLatticeDistribution"),
 ###
 setMethod("kurtosis", signature(x = "Norm"),
     function(x,...){ 
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond)))
        return(kurtosis(as(x,"AbscontDistribution"),...))
     else
@@ -68,6 +69,7 @@ setMethod("kurtosis", signature(x = "Norm"),
 #
 setMethod("kurtosis", signature(x = "Binom"),
     function(x,  ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond)))
        return(kurtosis(as(x,"DiscreteDistribution"),...))
     else
@@ -78,6 +80,7 @@ setMethod("kurtosis", signature(x = "Binom"),
 #
 setMethod("kurtosis", signature(x = "Cauchy"),
     function(x,...){    
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond)))
       return(kurtosis(as(x,"AbscontDistribution"),...))
     else
@@ -86,6 +89,7 @@ setMethod("kurtosis", signature(x = "Cauchy"),
 #
 setMethod("kurtosis", signature(x = "Chisq"),
     function(x,...){    
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond)))
        return(kurtosis(as(x,"AbscontDistribution"),...))
     else
@@ -98,6 +102,7 @@ setMethod("kurtosis", signature(x = "Dirac"),
 #
 setMethod("kurtosis", signature(x = "DExp"),
     function(x, ...){    
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
          return(kurtosis(as(x,"AbscontDistribution"),...))
     else
@@ -106,6 +111,7 @@ setMethod("kurtosis", signature(x = "DExp"),
 #
 setMethod("kurtosis", signature(x = "Exp"),
     function(x, ...){    
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
          return(kurtosis(as(x,"AbscontDistribution"),...))
     else
@@ -115,6 +121,7 @@ setMethod("kurtosis", signature(x = "Exp"),
 #
 setMethod("kurtosis", signature(x = "Fd"),
     function(x, ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) {
          return(kurtosis(as(x,"AbscontDistribution"),...))
     }else {
@@ -139,6 +146,7 @@ setMethod("kurtosis", signature(x = "Fd"),
 #
 setMethod("kurtosis", signature(x = "Gammad"),
     function(x, ...){    
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
          return(kurtosis(as(x,"AbscontDistribution"),...))
     else
@@ -147,6 +155,7 @@ setMethod("kurtosis", signature(x = "Gammad"),
 #
 setMethod("kurtosis", signature(x = "Geom"),
     function(x, ...){    
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
          return(kurtosis(as(x,"DiscreteDistribution"),...))
     else
@@ -155,6 +164,7 @@ setMethod("kurtosis", signature(x = "Geom"),
 #
 setMethod("kurtosis", signature(x = "Hyper"),
     function(x, ...){    
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
          return(kurtosis(as(x,"DiscreteDistribution"),...))
     else
@@ -171,6 +181,7 @@ setMethod("kurtosis", signature(x = "Hyper"),
 #
 setMethod("kurtosis", signature(x = "Logis"),
     function(x, ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
         return(kurtosis(as(x,"AbscontDistribution"),...))
     else
@@ -179,6 +190,7 @@ setMethod("kurtosis", signature(x = "Logis"),
 #
 setMethod("kurtosis", signature(x = "Lnorm"),
     function(x, ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) {
         return(kurtosis(as(x,"AbscontDistribution"),...))
     } else {
@@ -189,6 +201,7 @@ setMethod("kurtosis", signature(x = "Lnorm"),
 #
 setMethod("kurtosis", signature(x = "Nbinom"),
     function(x, ...){    
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
          return(kurtosis(as(x,"DiscreteDistribution"),...))
     else
@@ -197,6 +210,7 @@ setMethod("kurtosis", signature(x = "Nbinom"),
 #
 setMethod("kurtosis", signature(x = "Pois"),
     function(x, ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
         return(kurtosis(as(x,"DiscreteDistribution"),...))
     else
@@ -205,6 +219,7 @@ setMethod("kurtosis", signature(x = "Pois"),
 #
 setMethod("kurtosis", signature(x = "Td"),
     function(x, ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))){ 
         return(kurtosis(as(x,"AbscontDistribution"),...))
     } else {
@@ -224,6 +239,7 @@ setMethod("kurtosis", signature(x = "Td"),
 #
 setMethod("kurtosis", signature(x = "Unif"),
     function(x, ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
         return(kurtosis(as(x,"AbscontDistribution"),...))
     else
@@ -232,6 +248,7 @@ setMethod("kurtosis", signature(x = "Unif"),
 #
 setMethod("kurtosis", signature(x = "Weibull"),
     function(x, ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
         return(kurtosis(as(x,"AbscontDistribution"),...))
     else
@@ -245,6 +262,7 @@ setMethod("kurtosis", signature(x = "Weibull"),
 #    
 setMethod("kurtosis", signature(x = "Beta"),
     function(x, ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))||(!isTRUE(all.equal(ncp(x),0)))) 
         return(kurtosis(as(x,"AbscontDistribution"),...))
     else
