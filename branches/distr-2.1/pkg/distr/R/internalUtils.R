@@ -460,7 +460,7 @@ return(outC)
                              on.exit(options(warn=o.warn))
                              #
                              x0 <- .setEqual(q / e2C, support(object))
-                             d0 <- object@d(x = x0)
+                             d0 <- object@d(x = x0)*(x0 %in% support(object))
                              #
                              options(warn = o.warn)
                              if (!lower.tail) d0 <- -d0

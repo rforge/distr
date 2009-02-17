@@ -140,9 +140,11 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
                    .mpresubs(gettextf("Quantile function of %%C%%Q")) else ""
                           ### double  %% as % is special for gettextf
      }else{
-        inner.d <- .mpresubs(inner[[1]])
-        inner.p <- .mpresubs(inner[[2]])
-        inner.q <- .mpresubs(inner[[3]])
+        iL <- 1:length(to.draw)
+
+        inner.d <- if(1%in%to.draw) .mpresubs(inner[[min(iL[to.draw==1])]]) else NULL
+        inner.p <- if(2%in%to.draw) .mpresubs(inner[[min(iL[to.draw==2])]]) else NULL
+        inner.q <- if(3%in%to.draw) .mpresubs(inner[[min(iL[to.draw==3])]]) else NULL
      }
 
      lower <- getLow(x, eps = getdistrOption("TruncQuantile")*2)
@@ -434,9 +436,11 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
                    .mpresubs(gettextf("Quantile function of %%C%%Q")) else ""
                           ### double  %% as % is special for gettextf
      }else{
-        inner.d <- .mpresubs(inner[[1]])
-        inner.p <- .mpresubs(inner[[2]])
-        inner.q <- .mpresubs(inner[[3]])
+        iL <- 1:length(to.draw)
+
+        inner.d <- if(1%in%to.draw) .mpresubs(inner[[min(iL[to.draw==1])]]) else NULL
+        inner.p <- if(2%in%to.draw) .mpresubs(inner[[min(iL[to.draw==2])]]) else NULL
+        inner.q <- if(3%in%to.draw) .mpresubs(inner[[min(iL[to.draw==3])]]) else NULL
      }
                               
       lower <- min(support(x))

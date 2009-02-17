@@ -154,18 +154,11 @@ Class \code{"ProbFamily"}, by class \code{"ParamFamily"}.
                           no extra device is opened and height/width are not set}
         \item{main}{logical: is a main title to be used? or \cr
                     just as argument \code{main} in \code{\link{plot.default}}.}
-        \item{inner}{logical: do panels for density/probability function -
-                        cdf - quantile function have their own titles? or \cr
-                        list which is filled to length 4  if necessary
-                       (possibly using recycling rules):  titles for 
-                        density/probability function - cdf - quantile function 
-                        and L2-derivative (each of the same form as argument 
-               \code{main} in \code{\link{plot.default}})} 
         \item{inner}{logical: do panels have their own titles? or \cr
-               character vector of / cast to length \code{3+}'number of plotted 
-               dimensions'; if argument \code{to.draw.arg} is used, this refers to 
-               a vector of length \code{length(to.draw.arg)}, the 
-               actually plotted dimensions. For further information, see also 
+               character vector of / cast to length 'number of plotted 
+               panels' with the corresponding panel titles. For further 
+               information, see also 
+               \code{\link[distr:plot-methods]{plot}} and the 
                description of argument \code{main} in \code{\link{plot.default}}.} 
         \item{sub}{logical: is a sub-title to be used? or \cr
                    just as argument \code{sub} in \code{\link{plot.default}}.}
@@ -227,6 +220,8 @@ F2 <- L2LocationScaleFamily()
 layout(matrix(c(1,2,3,3), nrow=2, byrow=TRUE))
 plot(F2,mfColRow = FALSE,
      to.draw.arg=c("p","q","loc"))
+plot(F2,mfColRow = FALSE, inner=list("empirical cdf","pseudo-inverse",
+     "L2-deriv, loc.part"), to.draw.arg=c("p","q","loc"))
 }
 \concept{parametric family}
 \keyword{classes}

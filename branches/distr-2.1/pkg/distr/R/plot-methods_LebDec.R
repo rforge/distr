@@ -254,8 +254,10 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
                    .mpresubs(gettextf("Quantile function of %%C%%Q")) else ""
                           ### double  %% as % is special for gettextf
      }else{
-        inner.p <- .mpresubs(inner[[1]])
-        inner.q <- .mpresubs(inner[[2]])
+        iL <- 1:length(to.draw[to.draw<=2])
+
+        inner.p <- if(1%in%to.draw) .mpresubs(inner[[min(iL[to.draw==1])]]) else NULL
+        inner.q <- if(2%in%to.draw) .mpresubs(inner[[min(iL[to.draw==2])]]) else NULL
      }
 
 

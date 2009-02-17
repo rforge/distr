@@ -41,12 +41,16 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
         
         if(!is.logical(inner)){
           if(!is.list(inner))
-              inner <- as.list(inner)
+              inner <-  as.list(inner)
             #stop("Argument 'inner' must either be 'logical' or a 'list'")
-           inner <- distr:::.fillList(inner,4)          
-           innerD <- inner[1:3]
-           innerL <- inner[4] 
-        }else{innerD <- innerL <- inner}
+          innerLog <- TRUE  
+          iL <- length(to.draw[to.draw <= 3])+length(l2dpl)
+          iLD <- (1:iL)[to.draw <= 3]
+          iLL <- (1:iL)[to.draw > 3]
+          inner <- distr:::.fillList(inner,iL)          
+          innerD <- if(length(iLD)) inner[iLD] else NULL
+          innerL <- if(length(iLL)) inner[iLL] else NULL
+        }else{innerLog <- innerD <- innerL <- inner}
         
         if(!is.null(dots[["lty"]]))  dots["lty"] <- NULL
         if(!is.null(dots[["type"]])) dots["type"] <- NULL
@@ -171,12 +175,10 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
                         ")",
                         sep=""  )
         }
+        innerT <- if(length(l2dpl)) innerT[l2dpl-3] else NULL
      }else{
-        innerT <- lapply(inner, .mpresubs)
-        if(dims0<dims){
-           innerT0 <- innerT
-           for(i in 1:dims0) innerT[to.draw[i]] <- innerT0[i]          
-        }
+        innerT <- lapply(innerL, .mpresubs)
+        innerD <- lapply(innerD, .mpresubs)
      }
 
 
@@ -186,15 +188,15 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
         dotsT["col.main"] <- NULL
         dotsT["line"] <- NULL
 
-        distrpl <- (1:3)%in%to.draw
+        distrpl <- (1:3) %in% to.draw
         todrw <- as.numeric((1:3)[distrpl])
         if(any(distrpl)){
-           lis0 <- c(list(e1,withSweave = withSweave, 
-             main = main, inner = innerD, sub = sub, 
-             col.inner = col.inner, cex.inner = 1.5*cex.inner),
-             dots, mfColRow=mfColRow)
+           lis0 <- c(list(e1, withSweave = withSweave, 
+                          main = main, inner = innerD, sub = sub, 
+                          col.inner = col.inner, cex.inner = 1.5*cex.inner),
+                     dots, mfColRow = mfColRow)
            lis0$to.draw.arg  <- todrw 
-           do.call(plot, args=lis0)            
+           do.call(plot, args = lis0)            
         }
         o.warn <- options("warn")
         options(warn = -1)
@@ -227,8 +229,10 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
                 do.call(lines, args=c(list(x.vec1, sapply(x.vec1, L2deriv@Map[[indi]]),
                               lty = "dotted"),dots))
             }
-            do.call(title, args = c(list(main = innerT[indi]), dotsT, line = lineT,
-                    cex.main = cex.inner, col.main = col.inner))
+            if(innerLog)
+               do.call(title, args = c(list(main = innerT[i]), dotsT, 
+                       line = lineT, cex.main = cex.inner, 
+                       col.main = col.inner))
         }
 
         if(!hasArg(cex.main)) cex.main <- par("cex.main") else cex.main <- dots$"cex.main"
