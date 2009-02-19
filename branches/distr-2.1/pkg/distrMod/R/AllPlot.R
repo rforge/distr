@@ -129,11 +129,18 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
          if (mainL) {
              if(missing(tmar))
                 tmar <- 5
-             if(missing(cex.inner))
-                cex.inner <- .65
              lineT <- 0.6
              }
      }
+     if(missing(cex.inner)){
+        cex.inner <- .65
+        cex.innerD <- 1
+     }else{
+        cex.inner <- rep(cex.inner, length.out=2)
+        cex.innerD <- cex.inner[1]
+        cex.inner <- cex.inner[2]             
+     }
+
      if (hasArg(sub)){
          subL <- TRUE
          if (is.logical(sub)){
@@ -193,7 +200,7 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
         if(any(distrpl)){
            lis0 <- c(list(e1, withSweave = withSweave, 
                           main = main, inner = innerD, sub = sub, 
-                          col.inner = col.inner, cex.inner = 1.5*cex.inner),
+                          col.inner = col.inner, cex.inner = cex.innerD),
                      dots, mfColRow = mfColRow)
            lis0$to.draw.arg  <- todrw 
            do.call(plot, args = lis0)            
