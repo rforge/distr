@@ -149,6 +149,7 @@ make01 <- function(x){
 #################################################################
 setMethod("var", signature(x = "Norm"),
     function(x,...){ 
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond)))
        return(var(as(x,"AbscontDistribution"),...))
     else
@@ -157,6 +158,7 @@ setMethod("var", signature(x = "Norm"),
 
 setMethod("var", signature(x = "Binom"),
     function(x,...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond)))
         return(var(as(x,"DiscreteDistribution"),...))
     else
@@ -165,6 +167,7 @@ setMethod("var", signature(x = "Binom"),
 
 setMethod("var", signature(x = "Cauchy"),
     function(x,...){    
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond)))
       return(var(as(x,"AbscontDistribution"),...))
     else
@@ -173,6 +176,7 @@ setMethod("var", signature(x = "Cauchy"),
 
 setMethod("var", signature(x = "Chisq"),
     function(x,...){    
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond)))
        return(var(as(x,"AbscontDistribution"),...))
     else
@@ -185,6 +189,7 @@ setMethod("var", signature(x = "Dirac"),
 
 setMethod("var", signature(x = "DExp"),
     function(x, ...){    
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
          return(var(as(x,"AbscontDistribution"),...))
     else
@@ -193,6 +198,7 @@ setMethod("var", signature(x = "DExp"),
 
 setMethod("var", signature(x = "Exp"),
     function(x, ...){    
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
          return(var(as(x,"AbscontDistribution"),...))
     else
@@ -202,6 +208,7 @@ setMethod("var", signature(x = "Exp"),
 
 setMethod("var", signature(x = "Fd"),
     function(x, ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
          return(var(as(x,"AbscontDistribution"),...))
     else
@@ -215,6 +222,7 @@ setMethod("var", signature(x = "Fd"),
 
 setMethod("var", signature(x = "Gammad"),
     function(x, ...){    
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
          return(var(as(x,"AbscontDistribution"),...))
     else
@@ -223,6 +231,7 @@ setMethod("var", signature(x = "Gammad"),
 
 setMethod("var", signature(x = "Geom"),
     function(x, ...){    
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
          return(var(as(x,"DiscreteDistribution"),...))
     else {p <- prob(x); e <- 1/p-1; return(e+e^2)}
@@ -230,6 +239,7 @@ setMethod("var", signature(x = "Geom"),
 
 setMethod("var", signature(x = "Hyper"),
     function(x, ...){    
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
          return(var(as(x,"DiscreteDistribution"),...))
     else
@@ -241,6 +251,7 @@ setMethod("var", signature(x = "Hyper"),
 
 setMethod("var", signature(x = "Logis"),
     function(x, ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
         return(var(as(x,"AbscontDistribution"),...))
     else
@@ -249,6 +260,7 @@ setMethod("var", signature(x = "Logis"),
 
 setMethod("var", signature(x = "Lnorm"),
     function(x, ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
         return(var(as(x,"AbscontDistribution"),...))
     else
@@ -257,6 +269,7 @@ setMethod("var", signature(x = "Lnorm"),
 
 setMethod("var", signature(x = "Nbinom"),
     function(x, ...){    
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
          return(var(as(x,"DiscreteDistribution"),...))
     else {p <- prob(x); e <- 1/p-1; return(size(x)*(e+e^2))}
@@ -264,6 +277,7 @@ setMethod("var", signature(x = "Nbinom"),
 
 setMethod("var", signature(x = "Pois"),
     function(x, ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
         return(var(as(x,"DiscreteDistribution"),...))
     else
@@ -272,6 +286,7 @@ setMethod("var", signature(x = "Pois"),
 
 setMethod("var", signature(x = "Td"),
     function(x, ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
         return(var(as(x,"AbscontDistribution"),...))
     else
@@ -285,6 +300,7 @@ setMethod("var", signature(x = "Td"),
 
 setMethod("var", signature(x = "Unif"),
     function(x, ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
         return(var(as(x,"AbscontDistribution"),...))
     else
@@ -293,6 +309,7 @@ setMethod("var", signature(x = "Unif"),
 
 setMethod("var", signature(x = "Weibull"),
     function(x, ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
         return(var(as(x,"AbscontDistribution"),...))
     else
@@ -301,6 +318,7 @@ setMethod("var", signature(x = "Weibull"),
     
 setMethod("var", signature(x = "Beta"),
     function(x, ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))||(!isTRUE(all.equal(ncp(x),0)))) 
         return(var(as(x,"AbscontDistribution"),...))
     else

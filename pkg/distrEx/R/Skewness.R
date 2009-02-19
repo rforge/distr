@@ -51,6 +51,7 @@ setMethod("skewness", signature(x = "AffLinLatticeDistribution"),
 #
 setMethod("skewness", signature(x = "Norm"),
     function(x,...){ 
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond)))
        return(skewness(as(x,"AbscontDistribution"),...))
     else
@@ -59,6 +60,7 @@ setMethod("skewness", signature(x = "Norm"),
 #
 setMethod("skewness", signature(x = "Binom"),
     function(x,  ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond)))
        return(skewness(as(x,"DiscreteDistribution"),...))
     else
@@ -68,6 +70,7 @@ setMethod("skewness", signature(x = "Binom"),
 #
 setMethod("skewness", signature(x = "Cauchy"),
     function(x,...){    
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond)))
       return(skewness(as(x,"AbscontDistribution"),...))
     else
@@ -76,6 +79,7 @@ setMethod("skewness", signature(x = "Cauchy"),
 #
 setMethod("skewness", signature(x = "Chisq"),
     function(x,...){    
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond)))
        return(skewness(as(x,"AbscontDistribution"),...))
     else
@@ -88,6 +92,7 @@ setMethod("skewness", signature(x = "Dirac"),
 #
 setMethod("skewness", signature(x = "DExp"),
     function(x, ...){    
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
          return(skewness(as(x,"AbscontDistribution"),...))
     else
@@ -96,6 +101,7 @@ setMethod("skewness", signature(x = "DExp"),
 #
 setMethod("skewness", signature(x = "Exp"),
     function(x, ...){    
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
          return(skewness(as(x,"AbscontDistribution"),...))
     else
@@ -105,6 +111,7 @@ setMethod("skewness", signature(x = "Exp"),
 #
 setMethod("skewness", signature(x = "Fd"),
     function(x, ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))){
          return(skewness(as(x,"AbscontDistribution"),...))
     }else {
@@ -126,6 +133,7 @@ setMethod("skewness", signature(x = "Fd"),
 #
 setMethod("skewness", signature(x = "Gammad"),
     function(x, ...){    
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
          return(skewness(as(x,"AbscontDistribution"),...))
     else
@@ -134,6 +142,7 @@ setMethod("skewness", signature(x = "Gammad"),
 #
 setMethod("skewness", signature(x = "Geom"),
     function(x, ...){    
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
          return(skewness(as(x,"DiscreteDistribution"),...))
     else
@@ -142,6 +151,7 @@ setMethod("skewness", signature(x = "Geom"),
 #
 setMethod("skewness", signature(x = "Hyper"),
     function(x, ...){    
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
          return(skewness(as(x,"DiscreteDistribution"),...))
     else
@@ -154,6 +164,7 @@ setMethod("skewness", signature(x = "Hyper"),
 #
 setMethod("skewness", signature(x = "Logis"),
     function(x, ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
         return(skewness(as(x,"AbscontDistribution"),...))
     else
@@ -162,6 +173,7 @@ setMethod("skewness", signature(x = "Logis"),
 #
 setMethod("skewness", signature(x = "Lnorm"),
     function(x, ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) {
         return(skewness(as(x,"AbscontDistribution"),...))
     } else {
@@ -172,6 +184,7 @@ setMethod("skewness", signature(x = "Lnorm"),
 #
 setMethod("skewness", signature(x = "Nbinom"),
     function(x, ...){    
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
          return(skewness(as(x,"DiscreteDistribution"),...))
     else
@@ -180,6 +193,7 @@ setMethod("skewness", signature(x = "Nbinom"),
 #
 setMethod("skewness", signature(x = "Pois"),
     function(x, ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
         return(skewness(as(x,"DiscreteDistribution"),...))
     else
@@ -188,6 +202,7 @@ setMethod("skewness", signature(x = "Pois"),
 #
 setMethod("skewness", signature(x = "Td"),
     function(x, ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) {
         return(skewness(as(x,"AbscontDistribution"),...))
     } else {
@@ -206,6 +221,7 @@ setMethod("skewness", signature(x = "Td"),
 #
 setMethod("skewness", signature(x = "Unif"),
     function(x, ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
         return(skewness(as(x,"AbscontDistribution"),...))
     else
@@ -214,6 +230,7 @@ setMethod("skewness", signature(x = "Unif"),
 #
 setMethod("skewness", signature(x = "Weibull"),
     function(x, ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
         return(skewness(as(x,"AbscontDistribution"),...))
     else
@@ -225,6 +242,7 @@ setMethod("skewness", signature(x = "Weibull"),
 #    
 setMethod("skewness", signature(x = "Beta"),
     function(x, ...){
+    fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))||(!isTRUE(all.equal(ncp(x),0)))) 
         return(skewness(as(x,"AbscontDistribution"),...))
     else

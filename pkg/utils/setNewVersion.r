@@ -29,7 +29,7 @@ setNewversion <- function(
               packs.HTML.dir = c("", paste(dev.dir, 
                      c(rep("distr/www",7),"robKalman/www"),
                                       sep=""),"",
-                     paste(dev.dir, c(rep("RobASt/www",6)), sep="")) 
+                     paste(dev.dir, c(rep("RobASt/www",6)), sep="")),
               rkurs = TRUE,
               rkursDir = "D:/Eigene Dateien/Arbeit/R-Kurs/"
                            )

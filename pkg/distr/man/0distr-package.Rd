@@ -43,8 +43,8 @@ corresponding image distributions.
 \details{
 \tabular{ll}{
 Package: \tab distr\cr
-Version: \tab 2.0.5\cr
-Date: \tab 2009-01-20\cr
+Version: \tab 2.0.6 \cr
+Date: \tab 2009-02-19 \cr
 Depends: \tab R(>= 2.2.0), methods, graphics, startupmsg, sfsmisc,
 SweaveListingUtils\cr
 LazyLoad: \tab yes\cr
