@@ -47,8 +47,8 @@
      col.inner = par("col.main"), col.sub = par("col.sub"),  cex.points = 2.0,
      pch.u = 21, pch.a = 16, mfColRow = TRUE,
      to.draw.arg = NULL)
-\S4method{plot}{DistrList,missing}(x, ...)
-\S4method{plot}{CompoundDistribution,missing}(x, ...)
+\S4method{plot}{DistrList,missing}(x, y, ...)
+\S4method{plot}{CompoundDistribution,missing}(x, y, ...)
 }
 \arguments{
   \item{x}{object of class 
@@ -137,7 +137,7 @@
 \item{plot}{\code{signature(x = "AffLinUnivarLebDecDistribution", y = "missing")}: plots  
    cumulative distribution function and the quantile function }
 \item{plot}{\code{signature(x = "UnivarLebDecDistribution", y = "missing")}: plots a set of
-  eight plots: in the first row,  it plots the 
+  eight plots: in the first row, it plots the 
    cumulative distribution function and the quantile function; in the second
    row the absolutely continuous part (with density, cdf and quantile fct.),
    and in the last row the discrete part (with prob.fct., cdf and quantile fct.). }
@@ -147,7 +147,8 @@
 \item{plot}{\code{signature(x = "AbscontDistribution", y = "missing")}: plots density, 
    cumulative distribution function and the quantile function }
 \item{plot}{\code{signature(x = "DiscreteDistribution", y = "missing")}: plots probability 
-function, cumulative distribution function and the quantile function}
+  function, cumulative distribution function and the quantile function}
+\item{plot}{\code{signature(x = "DistrList", y = "missing")}: plots a list of distributions}
 }
 Any parameters of \code{plot.default} may be passed on to this particular
 \code{plot} method. 

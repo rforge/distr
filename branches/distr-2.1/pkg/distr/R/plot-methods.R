@@ -594,7 +594,7 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
 # -------- DistributionList   ---------- #
 
 setMethod("plot", signature(x =  "DistrList", y = "missing"),
-    function(x,  ...){ 
+    function(x, ...){ 
         for(i in 1:length(x)){
             devNew()
             plot(x[[i]],...)

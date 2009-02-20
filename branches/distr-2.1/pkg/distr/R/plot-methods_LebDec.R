@@ -467,8 +467,8 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
    }
    )
 
-setMethod("plot", signature(x="CompoundDistribution", y = "missing"),
-           function(x,...) {
+setMethod("plot", signature(x = "CompoundDistribution", y = "missing"),
+           function(x, ...) {
            mc <- as.list(match.call(call = sys.call(sys.parent(1)), 
                             expand.dots = TRUE)[-1])
            do.call(getMethod("plot",signature(x = "UnivarLebDecDistribution", 
