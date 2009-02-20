@@ -13,10 +13,6 @@
 \documentclass[10pt]{article}
 \usepackage{geometry}
 \RequirePackage{ifthen}
-\newboolean{Sweave@gin}
-\setboolean{Sweave@gin}{true}
-\newboolean{Sweave@ae}
-\setboolean{Sweave@ae}{true}
 %
 \usepackage{color}
 \definecolor{darkblue}{rgb}{0.0,0.0,0.75}
@@ -45,6 +41,11 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 % -------------------------------------------------------------------------------
 \RequirePackage{listings}
 \usepackage{Sweave}
+%
+%\newboolean{Sweave@gin}
+\setboolean{Sweave@gin}{true}
+%\newboolean{Sweave@ae}
+\setboolean{Sweave@ae}{true}
 % -------------------------------------------------------------------------------
 \SweaveOpts{keep.source=TRUE}
 % -------------------------------------------------------------------------------

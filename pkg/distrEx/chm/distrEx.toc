@@ -1451,11 +1451,11 @@
 <param name="Local" value="DiscreteMVDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="distrEx -- Extensions of package distr ">
+<param name="Name" value="distrEx - Extensions of package distr">
 <param name="Local" value="0distrEx-package.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Function to change the global variables of the package `distrEx' ">
+<param name="Name" value="Function to change the global variables of the package 'distrEx'">
 <param name="Local" value="distrExOptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -1479,7 +1479,7 @@
 <param name="Local" value="LMParameter.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Generating function for the conditional distribution    of a linear regression model.">
+<param name="Name" value="Generating function for the conditional distribution of a linear regression model.">
 <param name="Local" value="LMCondDistribution.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -1487,7 +1487,7 @@
 <param name="Local" value="ConvexContamination.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Generic Function for Testing the Support of a Distribution ">
+<param name="Name" value="Generic Function for Testing the Support of a Distribution">
 <param name="Local" value="liesInSupport.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -1503,11 +1503,11 @@
 <param name="Local" value="m2df.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Generic Function for the Computation of the Convex Contamination      (Pseudo-)Distance of Two Distributions">
+<param name="Name" value="Generic Function for the Computation of the Convex Contamination (Pseudo-)Distance of Two Distributions">
 <param name="Local" value="ContaminationSize.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Generic function for the computation of the Cramer - von Mises  distance of two distributions">
+<param name="Name" value="Generic function for the computation of the Cramer - von Mises distance of two distributions">
 <param name="Local" value="CvMDist.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -1539,11 +1539,11 @@
 <param name="Local" value="distrExMASK.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function dim in Package `distrEx' ">
+<param name="Name" value="Methods for Function dim in Package 'distrEx'">
 <param name="Local" value="dim-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function plot in Package `distrEx' ">
+<param name="Name" value="Methods for Function plot in Package 'distrEx'">
 <param name="Local" value="plot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">

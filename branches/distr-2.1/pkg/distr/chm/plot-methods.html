@@ -73,9 +73,9 @@ plot(x, width = 10,
      pch.u = 21, pch.a = 16, mfColRow = TRUE,
      to.draw.arg = NULL)
 ## S4 method for signature 'DistrList, missing':
-plot(x, ...)
+plot(x, y, ...)
 ## S4 method for signature 'CompoundDistribution, missing':
-plot(x, ...)
+plot(x, y, ...)
 </pre>
 
 
@@ -230,7 +230,7 @@ addtional arguments for <code>plot</code> &mdash; see
 <dt>plot</dt><dd><code>signature(x = "AffLinUnivarLebDecDistribution", y = "missing")</code>: plots  
 cumulative distribution function and the quantile function </dd>
 <dt>plot</dt><dd><code>signature(x = "UnivarLebDecDistribution", y = "missing")</code>: plots a set of
-eight plots: in the first row,  it plots the 
+eight plots: in the first row, it plots the 
 cumulative distribution function and the quantile function; in the second
 row the absolutely continuous part (with density, cdf and quantile fct.),
 and in the last row the discrete part (with prob.fct., cdf and quantile fct.). </dd>
@@ -241,6 +241,7 @@ method. </dd>
 cumulative distribution function and the quantile function </dd>
 <dt>plot</dt><dd><code>signature(x = "DiscreteDistribution", y = "missing")</code>: plots probability 
 function, cumulative distribution function and the quantile function</dd>
+<dt>plot</dt><dd><code>signature(x = "DistrList", y = "missing")</code>: plots a list of distributions</dd>
 </dl>
 <p>
 Any parameters of <code>plot.default</code> may be passed on to this particular

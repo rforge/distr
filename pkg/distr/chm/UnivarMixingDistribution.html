@@ -22,7 +22,7 @@ Generates an object of class <code>"UnivarMixingDistribution"</code>.
 
 <h3>Usage</h3>
 
-<pre>UnivarMixingDistribution(..., mixCoeff, 
+<pre>UnivarMixingDistribution(..., Dlist, mixCoeff, 
                                 withSimplify = getdistrOption("simplifyD"))</pre>
 
 
@@ -32,6 +32,13 @@ Generates an object of class <code>"UnivarMixingDistribution"</code>.
 <tr valign="top"><td><code>...</code></td>
 <td>
 Objects of class <code>"UnivariateDistribution"</code> (or subclasses)</td></tr>
+<tr valign="top"><td><code>Dlist</code></td>
+<td>
+an optional list or object of class <code>"UnivarDistrList"</code>;
+if not missing it is appended to argument <code>...</code>; this way 
+<code>UnivarMixingDistribution</code> may also be called with a list (or 
+<code>"UnivarDistrList"</code>-object) as argument as suggested in an e-mail
+by Krunoslav Sever (thank you!)</td></tr>
 <tr valign="top"><td><code>mixCoeff</code></td>
 <td>
 Objects of class <code>"numeric"</code> : a vector of 
@@ -83,6 +90,6 @@ mylist &lt;- UnivarMixingDistribution(Binom(3,.3), Dirac(2), Norm(),
 
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.0 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distr</em> version 2.0.6 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

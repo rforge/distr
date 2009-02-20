@@ -302,202 +302,6 @@
 <param name="Local" value="operators-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".csimpsum">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".D2P">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".del0dmixfun">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".discretizeP">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".dmixfun">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".expm.c">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".expm.d">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".fM">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".fm">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".fM2">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".getObjName">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".inArgs">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".is.consistent">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".is.vector.lattice">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".isEqual">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".isEqual01">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".isIn">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".isInteger">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".isNatural">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".isNatural0">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".IssueWarn">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".logm.c">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".logm.d">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".loupmixfun">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".make.lattice.es.vector">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".makeD">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".makeDd">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".makeDNew">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".makeP">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".makePd">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".makePNew">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".makeQ">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".makeQc">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".makeQd">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".makeQNew">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".mergegaps">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".mergegaps2">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".multm">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".notwithLArg">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".P2D">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".P2Q">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".plusm">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".pmixfun">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".presubs">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".primefun">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".Q2P">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".qmixfun">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".rmixfun">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".setEqual">
-<param name="Local" value="internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="/,AcDcLcDistribution,AcDcLcDistribution-method">
 <param name="Local" value="operators-methods.html">
 </OBJECT>
@@ -698,10 +502,6 @@
 <param name="Local" value="DistrList-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="coerce,numeric,Integer-method">
-<param name="Local" value="Integer-class.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="coerce,UnivariateDistribution,UnivarDistrList-method">
 <param name="Local" value="UnivarDistrList-class.html">
 </OBJECT>
@@ -727,6 +527,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="convpow,AbscontDistribution-method">
+<param name="Local" value="ConvPow.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="convpow,AcDcLcDistribution-method">
 <param name="Local" value="ConvPow.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -836,10 +640,6 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="DefaultNrGridPoints">
 <param name="Local" value="distroptions.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="devNew">
-<param name="Local" value="internals.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="DExp">
@@ -1132,10 +932,6 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Exp-class">
 <param name="Local" value="Exp-class.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="ExpOrGammaOrChisq-class">
-<param name="Local" value="ExpOrGammaOrChisq-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="ExpParameter-class">
@@ -1496,14 +1292,6 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="initialize,WeibullParameter-method">
 <param name="Local" value="WeibullParameter-class.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Integer-class">
-<param name="Local" value="Integer-class.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="internals_for_distr">
-<param name="Local" value="internals.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="isOldVersion">
@@ -2462,6 +2250,10 @@
 <param name="Local" value="prob-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="prob,DiscreteDistribution-method">
+<param name="Local" value="prob-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="prob,Geom-method">
 <param name="Local" value="prob-methods.html">
 </OBJECT>
@@ -2491,6 +2283,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="prob<-,BinomParameter-method">
+<param name="Local" value="prob-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="prob<-,DiscreteDistribution-method">
 <param name="Local" value="prob-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -2970,30 +2766,6 @@
 <param name="Local" value="print-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="showobj">
-<param name="Local" value="showobj-methods.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="showobj,DistrList-method">
-<param name="Local" value="showobj-methods.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="showobj,UnivariateDistribution-method">
-<param name="Local" value="showobj-methods.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="showobj,UnivarLebDecDistribution-method">
-<param name="Local" value="showobj-methods.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="showobj,UnivarMixingDistribution-method">
-<param name="Local" value="showobj-methods.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="showobj-methods">
-<param name="Local" value="showobj-methods.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="sign,AbscontDistribution-method">
 <param name="Local" value="Math-methods.html">
 </OBJECT>
@@ -3226,6 +2998,14 @@
 <param name="Local" value="distroptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="WarningArith">
+<param name="Local" value="distroptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="WarningSim">
+<param name="Local" value="distroptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="WarningSim">
 <param name="Local" value="distroptions.html">
 </OBJECT>
@@ -3307,7 +3087,7 @@
 </OBJECT>
 <UL>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="additional options in package `distr' ">
+<param name="Name" value="additional options in package 'distr'">
 <param name="Local" value="options.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -3331,7 +3111,7 @@
 <param name="Local" value="BetaParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Class "Binom" ">
+<param name="Name" value="Class "Binom"">
 <param name="Local" value="Binom-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -3359,7 +3139,7 @@
 <param name="Local" value="DExp-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Class "Dirac"  ">
+<param name="Name" value="Class "Dirac"">
 <param name="Local" value="Dirac-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -3375,16 +3155,12 @@
 <param name="Local" value="Distribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Class "EuclideanSpace" ">
+<param name="Name" value="Class "EuclideanSpace"">
 <param name="Local" value="EuclideanSpace-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Class "Exp"">
 <param name="Local" value="Exp-class.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Class "ExpOrGammaOrChisq"">
-<param name="Local" value="ExpOrGammaOrChisq-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Class "ExpParameter"">
@@ -3407,7 +3183,7 @@
 <param name="Local" value="GammaParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Class "Geom" ">
+<param name="Name" value="Class "Geom"">
 <param name="Local" value="Geom-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -3415,7 +3191,7 @@
 <param name="Local" value="GeomParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Class "Hyper" ">
+<param name="Name" value="Class "Hyper"">
 <param name="Local" value="Hyper-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -3423,12 +3199,12 @@
 <param name="Local" value="HyperParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Class "Lattice" ">
+<param name="Name" value="Class "Lattice"">
 <param name="Local" value="Lattice-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Class "LatticeDistribution"">
-<param name="Local" value="LatticeDistribution.html">
+<param name="Local" value="LatticeDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Class "Lnorm"">
@@ -3447,11 +3223,11 @@
 <param name="Local" value="LogisParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Class "Naturals" ">
+<param name="Name" value="Class "Naturals"">
 <param name="Local" value="Naturals-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Class "Nbinom" ">
+<param name="Name" value="Class "Nbinom"">
 <param name="Local" value="Nbinom-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -3471,7 +3247,7 @@
 <param name="Local" value="Parameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Class "Pois" ">
+<param name="Name" value="Class "Pois"">
 <param name="Local" value="Pois-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -3479,11 +3255,11 @@
 <param name="Local" value="PoisParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Class "Reals" ">
+<param name="Name" value="Class "Reals"">
 <param name="Local" value="Reals-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Class "rSpace" ">
+<param name="Name" value="Class "rSpace"">
 <param name="Local" value="rSpace-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -3527,7 +3303,7 @@
 <param name="Local" value="WeibullParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Classes "OptionalParameter", "OptionalMatrix" ">
+<param name="Name" value="Classes "OptionalParameter", "OptionalMatrix"">
 <param name="Local" value="OptionalParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -3543,7 +3319,7 @@
 <param name="Local" value="flat.mix.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="distr -- object orientated implementation of distributions ">
+<param name="Name" value="distr - object orientated implementation of distributions">
 <param name="Local" value="0distr-package.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -3555,7 +3331,7 @@
 <param name="Local" value="flat.LCD.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="functions to change the global variables of the package `distr' ">
+<param name="Name" value="functions to change the global variables of the package 'distr'">
 <param name="Local" value="distroptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -3583,24 +3359,12 @@
 <param name="Local" value="UnivarDistrList.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Generic Function for Testing the Support of a Distribution ">
+<param name="Name" value="Generic Function for Testing the Support of a Distribution">
 <param name="Local" value="liesInSupport.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="getLow, getUp functions of package distr">
 <param name="Local" value="getLow.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Helping Methods for Functions print/show in Package `distr' ">
-<param name="Local" value="showobj-methods.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Internal Class "Integer"">
-<param name="Local" value="Integer-class.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Internal functions of package distr">
-<param name="Local" value="internals.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Labels for distribution objects">
@@ -3619,195 +3383,195 @@
 <param name="Local" value="distrMASK.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function d in Package `distr' ">
+<param name="Name" value="Methods for Function d in Package 'distr'">
 <param name="Local" value="d-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for function decomposePM in Package `distr' ">
+<param name="Name" value="Methods for function decomposePM in Package 'distr'">
 <param name="Local" value="decomposePM-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function df in Package `distr' ">
+<param name="Name" value="Methods for Function df in Package 'distr'">
 <param name="Local" value="df-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function df1 in Package `distr' ">
+<param name="Name" value="Methods for Function df1 in Package 'distr'">
 <param name="Local" value="df1-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function df2 in Package `distr' ">
+<param name="Name" value="Methods for Function df2 in Package 'distr'">
 <param name="Local" value="df2-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function dim in Package `distr' ">
+<param name="Name" value="Methods for Function dim in Package 'distr'">
 <param name="Local" value="dim-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function dimension in Package `distr' ">
+<param name="Name" value="Methods for Function dimension in Package 'distr'">
 <param name="Local" value="dimension-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for function Huberize in Package `distr' ">
+<param name="Name" value="Methods for function Huberize in Package 'distr'">
 <param name="Local" value="Huberize-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function img in Package `distr'">
+<param name="Name" value="Methods for Function img in Package 'distr'">
 <param name="Local" value="img-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function k in Package `distr' ">
+<param name="Name" value="Methods for Function k in Package 'distr'">
 <param name="Local" value="k-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function lambda  in Package `distr'">
+<param name="Name" value="Methods for Function lambda in Package 'distr'">
 <param name="Local" value="lambda-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function Length in Package `distr' ">
+<param name="Name" value="Methods for Function Length in Package 'distr'">
 <param name="Local" value="Length-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function liesIn in Package `distr' ">
+<param name="Name" value="Methods for Function liesIn in Package 'distr'">
 <param name="Local" value="liesIn-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function location in Package `distr' ">
+<param name="Name" value="Methods for Function location in Package 'distr'">
 <param name="Local" value="location-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function m in Package `distr' ">
+<param name="Name" value="Methods for Function m in Package 'distr'">
 <param name="Local" value="m-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function Max in Package `distr' ">
+<param name="Name" value="Methods for Function Max in Package 'distr'">
 <param name="Local" value="Max-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function mean in Package `distr' ">
+<param name="Name" value="Methods for Function mean in Package 'distr'">
 <param name="Local" value="mean-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function meanlog in Package `distr' ">
+<param name="Name" value="Methods for Function meanlog in Package 'distr'">
 <param name="Local" value="meanlog-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function Min in Package `distr' ">
+<param name="Name" value="Methods for Function Min in Package 'distr'">
 <param name="Local" value="Min-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function n in Package `distr' ">
+<param name="Name" value="Methods for Function n in Package 'distr'">
 <param name="Local" value="n-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function name in Package `distr' ">
+<param name="Name" value="Methods for Function name in Package 'distr'">
 <param name="Local" value="name-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function ncp in Package `distr' ">
+<param name="Name" value="Methods for Function ncp in Package 'distr'">
 <param name="Local" value="ncp-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function p in Package `distr' ">
+<param name="Name" value="Methods for Function p in Package 'distr'">
 <param name="Local" value="p-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function p.l in Package `distr' ">
+<param name="Name" value="Methods for Function p.l in Package 'distr'">
 <param name="Local" value="p.l-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function param in Package `distr' ">
+<param name="Name" value="Methods for Function param in Package 'distr'">
 <param name="Local" value="param-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function pivot in Package `distr' ">
+<param name="Name" value="Methods for Function pivot in Package 'distr'">
 <param name="Local" value="pivot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function plot in Package `distr' ">
+<param name="Name" value="Methods for Function plot in Package 'distr'">
 <param name="Local" value="plot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function prob in Package `distr' ">
+<param name="Name" value="Methods for Function prob in Package 'distr'">
 <param name="Local" value="prob-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function q in Package `distr'">
+<param name="Name" value="Methods for Function q in Package 'distr'">
 <param name="Local" value="q-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function q.r in Package `distr'">
+<param name="Name" value="Methods for Function q.r in Package 'distr'">
 <param name="Local" value="q.r-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function r in Package `distr' ">
+<param name="Name" value="Methods for Function r in Package 'distr'">
 <param name="Local" value="r-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function rate in Package `distr' ">
+<param name="Name" value="Methods for Function rate in Package 'distr'">
 <param name="Local" value="rate-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function scale in Package `distr' ">
+<param name="Name" value="Methods for Function scale in Package 'distr'">
 <param name="Local" value="scale-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function sd in Package `distr' ">
+<param name="Name" value="Methods for Function sd in Package 'distr'">
 <param name="Local" value="sd-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function sdlog in Package `distr' ">
+<param name="Name" value="Methods for Function sdlog in Package 'distr'">
 <param name="Local" value="sdlog-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function shape in Package `distr' ">
+<param name="Name" value="Methods for Function shape in Package 'distr'">
 <param name="Local" value="shape-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function shape1 in Package `distr' ">
+<param name="Name" value="Methods for Function shape1 in Package 'distr'">
 <param name="Local" value="shape1-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function shape2 in Package `distr' ">
+<param name="Name" value="Methods for Function shape2 in Package 'distr'">
 <param name="Local" value="shape2-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for function simplifyD in Package `distr' ">
+<param name="Name" value="Methods for function simplifyD in Package 'distr'">
 <param name="Local" value="simplifyD-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function simplifyr in Package `distr'">
+<param name="Name" value="Methods for Function simplifyr in Package 'distr'">
 <param name="Local" value="simplifyr-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function size in Package `distr' ">
+<param name="Name" value="Methods for Function size in Package 'distr'">
 <param name="Local" value="size-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function support in Package `distr'">
+<param name="Name" value="Methods for Function support in Package 'distr'">
 <param name="Local" value="support-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for function Truncate in Package `distr' ">
+<param name="Name" value="Methods for function Truncate in Package 'distr'">
 <param name="Local" value="Truncate-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function width in Package `distr' ">
+<param name="Name" value="Methods for Function width in Package 'distr'">
 <param name="Local" value="width-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Functions from group `Math' in Package `distr' ">
+<param name="Name" value="Methods for Functions from group 'Math' in Package 'distr'">
 <param name="Local" value="Math-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Functions gaps and setgaps in Package `distr' ">
+<param name="Name" value="Methods for Functions gaps and setgaps in Package 'distr'">
 <param name="Local" value="gap-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for functions Minimum and Maximum in Package `distr' ">
+<param name="Name" value="Methods for functions Minimum and Maximum in Package 'distr'">
 <param name="Local" value="MinMaximum-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Functions print/show in Package `distr' ">
+<param name="Name" value="Methods for Functions print/show in Package 'distr'">
 <param name="Local" value="print-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -3815,7 +3579,7 @@
 <param name="Local" value="operators-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Version Management in Package `distr' ">
+<param name="Name" value="Methods for Version Management in Package 'distr'">
 <param name="Local" value="versionmanagement.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
