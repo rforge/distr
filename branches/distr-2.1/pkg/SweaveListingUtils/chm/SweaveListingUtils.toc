@@ -171,7 +171,7 @@
 <param name="Local" value="copySourceFromRForge.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Function to change the global options of the package `SweaveListingUtils' ">
+<param name="Name" value="Function to change the global options of the package 'SweaveListingUtils'">
 <param name="Local" value="SweaveListingOptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -195,7 +195,7 @@
 <param name="Local" value="SweaveListingMASK.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Package SweaveListingUtils ">
+<param name="Name" value="Package SweaveListingUtils">
 <param name="Local" value="0SweaveListingUtils-package.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">

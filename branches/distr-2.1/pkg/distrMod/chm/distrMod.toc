@@ -1302,6 +1302,18 @@
 <param name="Local" value="Confint-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trafo.fct">
+<param name="Local" value="trafo-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trafo.fct,ParamFamily-method">
+<param name="Local" value="trafo-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trafo.fct-methods">
+<param name="Local" value="trafo-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="trafo<-">
 <param name="Local" value="trafo-methods.html">
 </OBJECT>
@@ -1312,6 +1324,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="trafo<-,ParamFamParameter-method">
 <param name="Local" value="trafo-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="trafoEst">
+<param name="Local" value="trafoEst.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="trAsCov">
@@ -1549,6 +1565,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Function to compute minimum distance estimates">
 <param name="Local" value="MDEstimator.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Function trafoEst in Package 'distrMod'">
+<param name="Local" value="trafoEst.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for asBias-class">
