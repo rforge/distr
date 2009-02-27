@@ -8,7 +8,7 @@
              .lowerExact = TRUE, .logExact = FALSE,
              .DistrCollapse = getdistrOption("DistrCollapse"),
              .DistrCollapse.Unique.Warn = 
-                  getdistrOption(".DistrCollapse.Unique.Warn"),
+                  getdistrOption("DistrCollapse.Unique.Warn"),
              .DistrResolution = getdistrOption("DistrResolution"))
          }
 \usage{
@@ -16,7 +16,7 @@
                        .lowerExact = TRUE, .logExact = FALSE,
              .DistrCollapse = getdistrOption("DistrCollapse"),
              .DistrCollapse.Unique.Warn = 
-                  getdistrOption(".DistrCollapse.Unique.Warn"),
+                  getdistrOption("DistrCollapse.Unique.Warn"),
              .DistrResolution = getdistrOption("DistrResolution"))
   DiscreteDistribution(supp)
 }
