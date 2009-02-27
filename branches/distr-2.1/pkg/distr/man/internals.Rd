@@ -54,6 +54,7 @@
 \alias{.trunc.up}
 \alias{.trunc.low}
 \alias{.modifyqgaps}
+\alias{.DistrCollapse}
 \alias{devNew}
 
 \title{Internal functions of package distr}
@@ -123,6 +124,7 @@ These functions are used internally by package distr.}
 .trunc.up(object, upper)
 .trunc.low(object, lower)
 .modifyqgaps(pfun, qfun, gaps, leftright = "left")
+.DistrCollapse(support, prob, eps = getdistrOption("DistrResolution"))
 devNew(...)
 }
 
@@ -190,6 +192,7 @@ devNew(...)
  \item{gaps,gaps1,gaps2}{matrices \code{m} with two columns, 
              such that \code{t(m)}, interpreted as vector, is ordered}         
  \item{support}{support vector of a univariate discrete distribution}         
+ \item{prob}{probability vector for a univariate discrete distribution}         
  \item{mixDistr}{an object of class \code{UnivarDistrList}}
  \item{mixCoeff}{an object of class \code{numeric}; a probability vector}
  \item{pnew}{a function \code{function(q, lower.tail = TRUE, log.p = FALSE}
@@ -422,6 +425,14 @@ with R versions < 2.8.0.
 \item{.IssueWarn}{a list with two warnings to be issued each of which may be empty.}
 \item{.fillList}{a list.}
 \item{.trunc.up,.trunc.low}{a list with elements \code{r,p,d,q} (in this order).}
+\item{.DistrCollapse}{upon a suggestion by Jacob van Etten, 
+       \email{jacobvanetten@yahoo.com}: help function to collapse the support 
+       points of a discrete distributions if they are too close to each other;
+       here argument \code{support} is the (original; already sorted) support
+       and \code{prob} a corresponding probability vector of same length.
+       Criterium for collapsing: a distance smaller than argument
+       \code{eps}.
+       }
 \item{devNew}{returns the return value of the device opened, 
 usually invisible \code{NULL}.}
 }

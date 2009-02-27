@@ -5,7 +5,12 @@
 ## (c) Matthias Kohl: revised P.R. 030707
 
 DiscreteDistribution <- function(supp, prob, .withArith = FALSE,
-     .withSim = FALSE, .lowerExact = TRUE, .logExact = FALSE){
+     .withSim = FALSE, .lowerExact = TRUE, .logExact = FALSE,
+     .DistrCollapse = 
+                  getdistrOption("DistrCollapse"),
+     .DistrCollapse.Unique.Warn = 
+                  getdistrOption(".DistrCollapse.Unique.Warn"),
+     .DistrResolution = getdistrOption("DistrResolution")){
     if(!is.numeric(supp))
         stop("'supp' is no numeric vector")
     if(any(!is.finite(supp)))   # admit +/- Inf?
@@ -24,23 +29,34 @@ DiscreteDistribution <- function(supp, prob, .withArith = FALSE,
         if(!all(prob >= 0))
             stop("'prob' contains values < 0")
     }
-    if(length(usupp <- unique(supp)) < len){
-        warning("collapsing to unique support values")
-        prob <- as.vector(tapply(prob, supp, sum))
-        supp <- sort(usupp)
-        len <- length(supp)
-        rm(usupp)
-    }else{
-        o <- order(supp)
-        supp <- supp[o]
-        prob <- prob[o]
-        rm(o)
-    }
+    
+    o <- order(supp)
+    supp <- supp[o]
+    prob <- prob[o]
+    rm(o)
 
-    if(len > 1){
-       if(min(diff(supp)) <
-          getdistrOption("DistrResolution") )
-        stop("grid too narrow --> change DistrResolution")
+    if(.DistrCollapse){
+       if (len>1 && min(diff(supp))< .DistrResolution){
+           erg <- .DistrCollapse(supp, prob, .DistrResolution)
+           if (len>length(erg$prob) && .DistrCollapse.Unique.Warn)
+               warning("collapsing to unique support values")         
+           prob <- erg$prob
+           supp <- erg$supp
+       }
+    }else{    
+       usupp <- unique(supp)
+       if(length(usupp) < len){
+          if(.DistrCollapse.Unique.Warn)
+             warning("collapsing to unique support values")
+          prob <- as.vector(tapply(prob, supp, sum))
+          supp <- sort(usupp)
+          len <- length(supp)
+          rm(usupp)
+       }
+       if(len > 1){
+          if(min(diff(supp))< .DistrResolution)
+             stop("grid too narrow --> change DistrResolution")
+       }
     }
     rm(len)
 
@@ -238,30 +254,20 @@ function(e1,e2){
 
             #supp.u <- unique(supp)
 
-            len = length(supp)
+            len <- length(supp)
 
             if(len > 1){
-              if(min(abs(diff(supp))) < getdistrOption("DistrResolution"))
-                {if(!getdistrOption("DistrCollapse"))
+               if (min(diff(supp))< getdistrOption("DistrResolution")){
+                   if (getdistrOption("DistrCollapse")){
+                       erg <- .DistrCollapse(supp, prob, 
+                                   getdistrOption("DistrResolution"))
+                       if ( len > length(erg$prob) && 
+                                getdistrOption("DistrCollapse.Unique.Warn") )
+                            warning("collapsing to unique support values")         
+                       prob <- erg$prob
+                       supp <- erg$supp
+                   }else
                     stop("grid too narrow --> change DistrResolution")
-                 else
-                    {supp1 <- 0*supp  
-                     prob1 <- 0*prob
-                     xo <- supp[1]-1
-                     j <- 0
-                     for(i in seq(along=supp))
-                        {if (abs(supp[i]-xo) > getdistrOption("DistrResolution")) 
-                             { j <- j+1
-                               supp1[j] <- supp[i]
-                               prob1[j] <- prob[i] 
-                               xo <- supp1[j]
-                             }
-                        else { prob1[j] <- prob1[j]+prob[i] }
-                        } 
-                     prob <- prob1[1:j]
-                     supp <- supp1[1:j]    
-                     rm(prob1,supp1,i,j,xo)
-                     }
                 }
             }
 

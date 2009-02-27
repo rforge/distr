@@ -166,7 +166,23 @@ class union.
 <h3>Note</h3>
 
 <p>
-Working with a computer, we use a finite interval as support which carries at least mass <code>1-getdistrOption("TruncQuantile")</code>.
+Working with a computer, we use a finite interval as support which 
+carries at least mass <code>1-getdistrOption("TruncQuantile")</code>. <br>
+</p>
+<p>
+Also, we require that support points have distance at least       
+<code>getdistrOption("DistrResoltion")</code>, if this condition fails,
+upon a suggestion by Jacob van Etten, <a href="mailto:jacobvanetten@yahoo.com">jacobvanetten@yahoo.com</a>,
+we use the global option <code>getdistrOption("DistrCollapse")</code> to
+decide whether we use collapsing or not. If we do so, we collapse support 
+points if they are too close to each other, taking
+the (left most) median among them as new support point which accumulates
+all the mass of the collapsed points. 
+With <code>getdistrOption("DistrCollapse")==FALSE</code>, we at least collapse
+points according to the result of <code>unique()</code>, and if after this
+collapsing, the minimal distance is less than <code>getdistrOption("DistrResoltion")</code>,
+we throw an error. By <code>getdistrOption("DistrCollapse.Unique.Warn")</code>,
+we control, whether we throw a warning upon collapsing or not.
 </p>
 
 
@@ -218,6 +234,6 @@ q.r(D2)(pp+1e-5)
 
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

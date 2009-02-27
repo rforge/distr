@@ -1092,3 +1092,21 @@ return(function(q, lower.tail = TRUE, log.p = FALSE){
             }
            return(li0)
 }
+
+#------------------------------------------------------------------------------
+# .DistributionAggregate by Jacob van Etten, jacobvanetten@yahoo.com
+# on a mail on Feb 27th 2009
+#------------------------------------------------------------------------------
+.DistrCollapse <- function(support, prob, 
+                              eps = getdistrOption("DistrResolution")){
+    supp <- support
+    prob <- as.vector(prob)
+    suppIncr <- diff(c(supp[1]-2*eps,supp)) < eps
+    groups <- cumsum(!suppIncr)
+    prob <- as.vector(tapply(prob, groups, sum))
+    supp <- as.vector(tapply(supp, groups, quantile, probs = 0.5, type = 1)) 
+           ### in order to get a "support member" take the leftmost median
+    return(list(supp = supp, prob = prob))
+#    newDistribution <- DiscreteDistribution(supp=supp,prob=prob)
+#    return(newDistribution)
+}

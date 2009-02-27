@@ -174,8 +174,7 @@ setMethod("initialize", "DiscreteDistribution",
             len = length(support)
 
             if(len > 1){
-              if(min(support[2:len] - support[1:(len - 1)]) < 
-                     getdistrOption("DistrResolution"))
+              if(diff(support) < getdistrOption("DistrResolution"))
                  stop("grid too narrow --> change DistrResolution")
             }
 

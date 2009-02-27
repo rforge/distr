@@ -60,6 +60,7 @@
 <param name="keyword" value="R:   .trunc.up">
 <param name="keyword" value="R:   .trunc.low">
 <param name="keyword" value="R:   .modifyqgaps">
+<param name="keyword" value="R:   .DistrCollapse">
 <param name="keyword" value="R:   devNew">
 <param name="keyword" value=" Internal functions of package distr">
 </object>
@@ -139,6 +140,7 @@ These functions are used internally by package distr.
 .trunc.up(object, upper)
 .trunc.low(object, lower)
 .modifyqgaps(pfun, qfun, gaps, leftright = "left")
+.DistrCollapse(support, prob, eps = getdistrOption("DistrResolution"))
 devNew(...)
 </pre>
 
@@ -284,6 +286,9 @@ such that <code>t(m)</code>, interpreted as vector, is ordered</td></tr>
 <tr valign="top"><td><code>support</code></td>
 <td>
 support vector of a univariate discrete distribution</td></tr>
+<tr valign="top"><td><code>prob</code></td>
+<td>
+probability vector for a univariate discrete distribution</td></tr>
 <tr valign="top"><td><code>mixDistr</code></td>
 <td>
 an object of class <code>UnivarDistrList</code></td></tr>
@@ -655,6 +660,16 @@ a list.</td></tr>
 <tr valign="top"><td><code>.trunc.up,.trunc.low</code></td>
 <td>
 a list with elements <code>r,p,d,q</code> (in this order).</td></tr>
+<tr valign="top"><td><code>.DistrCollapse</code></td>
+<td>
+upon a suggestion by Jacob van Etten, 
+<a href="mailto:jacobvanetten@yahoo.com">jacobvanetten@yahoo.com</a>: help function to collapse the support 
+points of a discrete distributions if they are too close to each other;
+here argument <code>support</code> is the (original; already sorted) support
+and <code>prob</code> a corresponding probability vector of same length.
+Criterium for collapsing: a distance smaller than argument
+<code>eps</code>.
+</td></tr>
 <tr valign="top"><td><code>devNew</code></td>
 <td>
 returns the return value of the device opened, 

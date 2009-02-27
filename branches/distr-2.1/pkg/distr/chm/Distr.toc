@@ -942,6 +942,14 @@
 <param name="Local" value="Distribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="DistributionAggregate">
+<param name="Local" value="distroptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="DistributionAggregate.Unique.Warn">
+<param name="Local" value="distroptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="DistrList">
 <param name="Local" value="DistrList.html">
 </OBJECT>

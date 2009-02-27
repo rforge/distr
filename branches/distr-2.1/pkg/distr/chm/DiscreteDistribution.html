@@ -24,7 +24,11 @@ Generates an object of class  <code>"DiscreteDistribution"</code>
 
 <pre>
   DiscreteDistribution(supp, prob, .withArith=FALSE, .withSim=FALSE, 
-                       .lowerExact = TRUE, .logExact = FALSE)
+                       .lowerExact = TRUE, .logExact = FALSE,
+             .DistrCollapse = getdistrOption("DistrCollapse"),
+             .DistrCollapse.Unique.Warn = 
+                  getdistrOption(".DistrCollapse.Unique.Warn"),
+             .DistrResolution = getdistrOption("DistrResolution"))
   DiscreteDistribution(supp)
 </pre>
 
@@ -56,6 +60,20 @@ part is calculated exactly, avoing a ``<code>1-.</code>''.</td></tr>
 <td>
 normally not set by the user: whether in determining slots <code>d,p,q</code>,
 we make particular use of a logarithmic representation to enhance accuracy.</td></tr>
+<tr valign="top"><td><code>.DistrCollapse</code></td>
+<td>
+controls whether in generating a new discrete 
+distribution, support points closer together than <code>.DistrResolution</code> are
+collapsed.</td></tr>
+<tr valign="top"><td><code>.DistrCollapse.Unique.Warn</code></td>
+<td>
+controls whether there is a warning
+whenever collapsing occurs or when two points are collapsed by a call to
+<code>unique()</code> (default behaviour if <code>.DistrCollapse</code> is <code>FALSE</code>)</td></tr>
+<tr valign="top"><td><code>.DistrResolution</code></td>
+<td>
+minimal spacing between two mass points in a discrete 
+distribution</td></tr>
 </table>
 
 <h3>Details</h3>
@@ -74,7 +92,23 @@ Object of class <code>"DiscreteDistribution"</code></p>
 <h3>Note</h3>
 
 <p>
-Working with a computer, we use a finite interval as support which carries at least mass <code>1-getdistrOption("TruncQuantile")</code>.
+Working with a computer, we use a finite interval as support which 
+carries at least mass <code>1-getdistrOption("TruncQuantile")</code>. <br>
+</p>
+<p>
+Also, we require that support points have distance at least       
+<code>.DistrResoltion</code>, if this condition fails,
+upon a suggestion by Jacob van Etten, <a href="mailto:jacobvanetten@yahoo.com">jacobvanetten@yahoo.com</a>,
+we use the global option <code>.DistrCollapse</code> to
+decide whether we use collapsing or not. If we do so, we collapse support 
+points if they are too close to each other, taking
+the (left most) median among them as new support point which accumulates
+all the mass of the collapsed points. 
+With <code>.DistrCollapse==FALSE</code>, we at least collapse
+points according to the result of <code>unique()</code>, and if after this
+collapsing, the minimal distance is less than <code>.DistrResoltion</code>,
+we throw an error. By <code>.DistrCollapse.Unique.Warn</code>,
+we control, whether we throw a warning upon collapsing or not.
 </p>
 
 
@@ -110,6 +144,6 @@ plot(D2)
 
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

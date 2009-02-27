@@ -138,7 +138,23 @@ in partiucalar methods for \code{"*"}, \code{"/"},
   Matthias Kohl \email{Matthias.Kohl@stamats.de}
   }
 
-\note{ Working with a computer, we use a finite interval as support which carries at least mass \code{1-getdistrOption("TruncQuantile")}. }
+\note{ Working with a computer, we use a finite interval as support which 
+       carries at least mass \code{1-getdistrOption("TruncQuantile")}. \cr
+       
+       Also, we require that support points have distance at least       
+       \code{getdistrOption("DistrResoltion")}, if this condition fails,
+       upon a suggestion by Jacob van Etten, \email{jacobvanetten@yahoo.com},
+       we use the global option \code{getdistrOption("DistrCollapse")} to
+       decide whether we use collapsing or not. If we do so, we collapse support 
+       points if they are too close to each other, taking
+       the (left most) median among them as new support point which accumulates
+       all the mass of the collapsed points. 
+       With \code{getdistrOption("DistrCollapse")==FALSE}, we at least collapse
+       points according to the result of \code{unique()}, and if after this
+       collapsing, the minimal distance is less than \code{getdistrOption("DistrResoltion")},
+       we throw an error. By \code{getdistrOption("DistrCollapse.Unique.Warn")},
+       we control, whether we throw a warning upon collapsing or not.       
+       }
 
 \seealso{
 \code{\link{Parameter-class}}

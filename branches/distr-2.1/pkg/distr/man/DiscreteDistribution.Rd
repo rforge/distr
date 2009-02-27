@@ -5,10 +5,19 @@
 \description{Generates an object of class  \code{"DiscreteDistribution"}}
 
 \synopsis{DiscreteDistribution(supp, prob, .withArith = FALSE, .withSim = FALSE,
-                     .lowerExact = TRUE, .logExact = FALSE)}
+             .lowerExact = TRUE, .logExact = FALSE,
+             .DistrCollapse = getdistrOption("DistrCollapse"),
+             .DistrCollapse.Unique.Warn = 
+                  getdistrOption(".DistrCollapse.Unique.Warn"),
+             .DistrResolution = getdistrOption("DistrResolution"))
+         }
 \usage{
   DiscreteDistribution(supp, prob, .withArith=FALSE, .withSim=FALSE, 
-                       .lowerExact = TRUE, .logExact = FALSE)
+                       .lowerExact = TRUE, .logExact = FALSE,
+             .DistrCollapse = getdistrOption("DistrCollapse"),
+             .DistrCollapse.Unique.Warn = 
+                  getdistrOption(".DistrCollapse.Unique.Warn"),
+             .DistrResolution = getdistrOption("DistrResolution"))
   DiscreteDistribution(supp)
 }
 \arguments{
@@ -24,6 +33,14 @@
                      part is calculated exactly, avoing a ``\code{1-.}''.}
   \item{.logExact}{normally not set by the user: whether in determining slots \code{d,p,q},
          we make particular use of a logarithmic representation to enhance accuracy.}
+\item{.DistrCollapse}{controls whether in generating a new discrete 
+     distribution, support points closer together than \code{.DistrResolution} are
+     collapsed.}
+\item{.DistrCollapse.Unique.Warn}{controls whether there is a warning
+      whenever collapsing occurs or when two points are collapsed by a call to
+      \code{unique()} (default behaviour if \code{.DistrCollapse} is \code{FALSE})}
+\item{.DistrResolution}{minimal spacing between two mass points in a discrete 
+                        distribution}
 }
 \details{
   If \code{prob} is missing, all elements in \code{supp}
@@ -37,7 +54,23 @@
   Matthias Kohl \email{Matthias.Kohl@stamats.de}
   }
 
-\note{ Working with a computer, we use a finite interval as support which carries at least mass \code{1-getdistrOption("TruncQuantile")}. }
+\note{ Working with a computer, we use a finite interval as support which 
+       carries at least mass \code{1-getdistrOption("TruncQuantile")}. \cr
+       
+       Also, we require that support points have distance at least       
+       \code{.DistrResoltion}, if this condition fails,
+       upon a suggestion by Jacob van Etten, \email{jacobvanetten@yahoo.com},
+       we use the global option \code{.DistrCollapse} to
+       decide whether we use collapsing or not. If we do so, we collapse support 
+       points if they are too close to each other, taking
+       the (left most) median among them as new support point which accumulates
+       all the mass of the collapsed points. 
+       With \code{.DistrCollapse==FALSE}, we at least collapse
+       points according to the result of \code{unique()}, and if after this
+       collapsing, the minimal distance is less than \code{.DistrResoltion},
+       we throw an error. By \code{.DistrCollapse.Unique.Warn},
+       we control, whether we throw a warning upon collapsing or not.       
+       }
 
 \seealso{
 \code{\link{DiscreteDistribution-class}}
