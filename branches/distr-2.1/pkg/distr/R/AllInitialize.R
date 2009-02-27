@@ -171,12 +171,12 @@ setMethod("initialize", "DiscreteDistribution",
             
             else .Object@support <- support
 
-            len = length(support)
-
-            if(len > 1){
-              if(diff(support) < getdistrOption("DistrResolution"))
-                 stop("grid too narrow --> change DistrResolution")
-            }
+#           len = length(support)
+#
+#            if(len > 1){
+#              if(min(diff(support)) < getdistrOption("DistrResolution"))
+#                 stop("grid too narrow --> change DistrResolution")
+#            }
 
             dpq.approx <- 0
 

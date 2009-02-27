@@ -9,7 +9,7 @@ DiscreteDistribution <- function(supp, prob, .withArith = FALSE,
      .DistrCollapse = 
                   getdistrOption("DistrCollapse"),
      .DistrCollapse.Unique.Warn = 
-                  getdistrOption(".DistrCollapse.Unique.Warn"),
+                  getdistrOption("DistrCollapse.Unique.Warn"),
      .DistrResolution = getdistrOption("DistrResolution")){
     if(!is.numeric(supp))
         stop("'supp' is no numeric vector")
