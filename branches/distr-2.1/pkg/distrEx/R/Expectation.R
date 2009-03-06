@@ -378,7 +378,7 @@ setMethod("E", signature(object = "Hyper",
                          fun = "missing", 
                          cond = "missing"),
     function(object){
-        return(k(object)*n(object)/(m(object)+n(object)))
+        return(k(object)*m(object)/(m(object)+n(object)))
     })
 
 setMethod("E", signature(object = "Logis", 
