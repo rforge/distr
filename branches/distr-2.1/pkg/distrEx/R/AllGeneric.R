@@ -137,6 +137,11 @@ if(!isGeneric("ConvexContamination")){
                function(e1, e2, size) standardGeneric("ConvexContamination"))
 }
 
+if(!isGeneric("AsymTotalVarDist")){
+   setGeneric("AsymTotalVarDist", 
+               function(e1, e2, ...) standardGeneric("AsymTotalVarDist"))
+}
+
 if(!isGeneric("E")){ 
    setGeneric("E", function(object, fun, cond, ...) standardGeneric("E"))
 }

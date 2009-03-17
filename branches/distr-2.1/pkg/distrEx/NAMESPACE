@@ -20,6 +20,7 @@ exportMethods("initialize",
 exportMethods("ConvexContamination", 
               "ContaminationSize", 
               "TotalVarDist", 
+              "AsymTotalVarDist", 
               "KolmogorovDist", 
               "HellingerDist",
               "CvMDist") 

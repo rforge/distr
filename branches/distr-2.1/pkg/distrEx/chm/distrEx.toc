@@ -26,6 +26,62 @@
 <param name="Local" value="AbscontCondDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist,AbscontDistribution,AbscontDistribution-method">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist,AbscontDistribution,DiscreteDistribution-method">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist,AbscontDistribution,numeric-method">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist,AcDcLcDistribution,AcDcLcDistribution-method">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist,DiscreteDistribution,AbscontDistribution-method">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist,DiscreteDistribution,DiscreteDistribution-method">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist,DiscreteDistribution,LatticeDistribution-method">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist,DiscreteDistribution,numeric-method">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist,LatticeDistribution,DiscreteDistribution-method">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist,LatticeDistribution,LatticeDistribution-method">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist,numeric,AbscontDistribution-method">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist,numeric,DiscreteDistribution-method">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist-methods">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="cond">
 <param name="Local" value="UnivariateCondDistribution-class.html">
 </OBJECT>
@@ -1505,6 +1561,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generic Function for the Computation of (Conditional) Expectations">
 <param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generic function for the computation of asymmetric total variation distance of two distributions">
+<param name="Local" value="AsymTotalVarDist.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generic Function for the Computation of Clipped First Moments">

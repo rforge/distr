@@ -4,35 +4,32 @@
 ###############################################################################
 setMethod("TotalVarDist", signature(e1 = "AbscontDistribution", 
                                     e2 = "AbscontDistribution"),
-    function(e1, e2){
-        TruncQuantile <- getdistrOption("TruncQuantile")  
-        lower1 <- ifelse(!is.finite(q(e1)(0)), q(e1)(TruncQuantile), q(e1)(0))
-        upper1 <- ifelse(!is.finite(q(e1)(1)), 
-                         ifelse("lower.tail" %in% names(formals(e1@q)),
-                                q(e1)(TruncQuantile, lower.tail = FALSE),
-                                q(e1)(1-TruncQuantile)), 
-                         q(e1)(1))
-        lower2 <- ifelse(!is.finite(q(e2)(0)), q(e2)(TruncQuantile), q(e2)(0))
-        upper2 <- ifelse(!is.finite(q(e2)(1)), 
-                         ifelse("lower.tail" %in% names(formals(e2@q)),
-                                q(e2)(TruncQuantile, lower.tail = FALSE),
-                                q(e2)(1-TruncQuantile)), 
-                         q(e2)(1))
-        lower <- min(lower1, lower2)
-        upper <- max(upper1, upper2)
+    function(e1, e2, rel.tol=.Machine$double.eps^0.3, 
+             TruncQuantile = getdistrOption("TruncQuantile"), 
+             IQR.fac = 15, ...){
+        ## find sensible lower and upper bounds for integration 
+        # (a) quantile based
+        low <- min(getLow(e1, eps = TruncQuantile), getLow(e2, eps = TruncQuantile))
+        up  <- max(getUp(e1, eps = TruncQuantile), getUp(e2, eps = TruncQuantile))
+        # (b) scale based
+        s0 <- min(IQR(e1),IQR(e2))*IQR.fac
+        low0 <- min(median(e1),median(e2))-s0
+        up0 <- max(median(e1),median(e2))+s0
+        # (a) & (b)
+        low <- max(low,low0); up <- min(up,up0)
 
         o.warn <- getOption("warn"); options(warn = -1)
         on.exit(options(warn=o.warn))
         integrand <- function(x, dfun1, dfun2){ 0.5*abs(dfun1(x)-dfun2(x)) }
-        res <- distrExIntegrate(integrand, lower = lower, upper = upper, 
-                    dfun1 = d(e1), dfun2 = d(e2), rel.tol=.Machine$double.eps^0.3)
+        res <- distrExIntegrate(integrand, lower = low, upper = up, 
+                    dfun1 = d(e1), dfun2 = d(e2), rel.tol = rel.tol)
         names(res) <- "total variation distance"
 
         return(res)
     })
 setMethod("TotalVarDist", signature(e1 = "DiscreteDistribution",
                                     e2 = "DiscreteDistribution"),
-    function(e1, e2){
+    function(e1, e2, ...){
         o.warn <- getOption("warn"); options(warn = -1)
         on.exit(options(warn=o.warn))
         supp <- union(support(e1), support(e2))
@@ -44,7 +41,7 @@ setMethod("TotalVarDist", signature(e1 = "DiscreteDistribution",
     })
 setMethod("TotalVarDist", signature(e1 = "DiscreteDistribution",
                                     e2 = "AbscontDistribution"),
-    function(e1, e2){
+    function(e1, e2, ...){
         res <- 1
         names(res) <- "total variation distance"
 
@@ -52,7 +49,7 @@ setMethod("TotalVarDist", signature(e1 = "DiscreteDistribution",
     })
 setMethod("TotalVarDist", signature(e1 = "AbscontDistribution",
                                     e2 = "DiscreteDistribution"),
-    function(e1, e2){ 
+    function(e1, e2, ...){ 
         res <- 1
         names(res) <- "total variation distance"
 
@@ -60,19 +57,16 @@ setMethod("TotalVarDist", signature(e1 = "AbscontDistribution",
     })
 setMethod("TotalVarDist", signature(e1 = "numeric",
                                     e2 = "DiscreteDistribution"),
-    function(e1, e2){
-        d1 <- table(e1)/length(e1)
-        d2 <- d(e2)(sort(unique(e1)))
-        e21 <- setdiff(support(e2), unique(e1))
-        d21 <- d(e2)(e21)
-        res <- 1/2*(sum(abs(d2-d1))+sum(d21))
-        names(res) <- "Total variation distance"
-
-        return(res)
+    function(e1, e2, ...){
+        t1 <- table(e1)
+        d1 <- t1/length(e1)
+        s1 <- as.numeric(names(t1))
+        e11 <- DiscreteDistribution(supp=s1, prob=d1)
+        return(TotalVarDist(e11,e2))
     })
 setMethod("TotalVarDist", signature(e1 = "DiscreteDistribution",
                                     e2 = "numeric"),
-    function(e1, e2){
+    function(e1, e2, ...){
         return(TotalVarDist(e2, e1))
     })
 
@@ -84,22 +78,35 @@ setMethod("TotalVarDist", signature(e1 = "numeric",
                                     e2 = "AbscontDistribution"),
      function(e1, e2, asis.smooth.discretize = "discretize", n.discr =
              getdistrExOption("nDiscretize"), low.discr = getLow(e2),
-             up.discr = getUp(e2), h.smooth = getdistrExOption("hSmooth")){
+             up.discr = getUp(e2), h.smooth = getdistrExOption("hSmooth"),
+             rel.tol=.Machine$double.eps^0.3, 
+             TruncQuantile = getdistrOption("TruncQuantile"), 
+             IQR.fac = 15, ...){
         .asis.smooth.discretize.distance(e1, e2, asis.smooth.discretize, n.discr,
-                 low.discr, up.discr, h.smooth, TotalVarDist)
+                 low.discr, up.discr, h.smooth, TotalVarDist, 
+                 rel.tol = rel.tol, TruncQuantile = TruncQuantile, 
+                 IQR.fac = IQR.fac, ...)
      })
 setMethod("TotalVarDist", signature(e1 = "AbscontDistribution",
                                      e2 = "numeric"),
     function(e1, e2, asis.smooth.discretize = "discretize", n.discr =
              getdistrExOption("nDiscretize"), low.discr = getLow(e1),
-             up.discr = getUp(e1), h.smooth = getdistrExOption("hSmooth")){
+             up.discr = getUp(e1), h.smooth = getdistrExOption("hSmooth"),
+             rel.tol=.Machine$double.eps^0.3, 
+             TruncQuantile = getdistrOption("TruncQuantile"), 
+             IQR.fac = 15, ...){
         return(TotalVarDist(e2, e1, asis.smooth.discretize = asis.smooth.discretize, 
-                  low.discr = low.discr, up.discr = up.discr, h.smooth = h.smooth))
+                  low.discr = low.discr, up.discr = up.discr, h.smooth = h.smooth,
+                  rel.tol=rel.tol, 
+                  TruncQuantile = TruncQuantile, 
+                 IQR.fac = IQR.fac, ... ))
     })
 #### new from version 2.0 on: Distance for Mixing Distributions
 setMethod("TotalVarDist",  signature(e1 = "AcDcLcDistribution",
                                      e2 = "AcDcLcDistribution"),
-           function(e1, e2){
+           function(e1, e2, rel.tol=.Machine$double.eps^0.3, 
+                        TruncQuantile = getdistrOption("TruncQuantile"), 
+                        IQR.fac = 15, ...){
            if( is(e1,"AbscontDistribution"))
                e1 <- as(as(e1,"AbscontDistribution"), "UnivarLebDecDistribution")
            if( is(e2,"AbscontDistribution"))
@@ -116,7 +123,9 @@ setMethod("TotalVarDist",  signature(e1 = "AcDcLcDistribution",
               dc1d <- dc1@d; dc2d <- dc2@d
               dc1@d <- function(x) dc1d(x)*discreteWeight(e1)
               dc2@d <- function(x) dc2d(x)*discreteWeight(e2)
-              res <- TotalVarDist(ac1,ac2) + TotalVarDist(dc1,dc2)
+              res <- TotalVarDist(ac1,ac2, rel.tol = rel.tol, 
+                        TruncQuantile = TruncQuantile, IQR.fac = IQR.fac, ...) + 
+                     TotalVarDist(dc1,dc2, ...)
               names(res) <- "total variation distance"
               res
               })

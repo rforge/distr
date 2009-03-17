@@ -102,7 +102,22 @@ setClass("Gumbel",
             prototype = prototype(r = function(n){ rgumbel(n, loc = 0, scale = 1) },
                                   d = function(x, ...){ dgumbel(x, loc = 0, scale = 1, ...) },
                                   p = function(q, ...){ pgumbel(q, loc = 0, scale = 1, ...) },
-                                  q = function(p, ...){ qgumbel(p, loc = 0, scale = 1, ...) },
+                                  q = function(p, ...){
+                                      mc <-  as.list(match.call(call = sys.call())[-1])
+                                      lower.tail <- mc$lower.tail                                      
+                                      if(is.null(lower.tail)) lower.tail <- TRUE
+                                      in01 <- (p>1 | p<0)
+                                      i01 <- .isEqual01(p) 
+                                      i0 <- (i01 & p<1)   
+                                      i1 <- (i01 & p>0)
+                                      ii01 <- .isEqual01(p) | in01
+                                      p0 <- p
+                                      p0[ii01] <- 0.5
+                                      q1 <- qgumbel(p0, loc = 0, scale = 1, ...) 
+                                      q[i0] <- if(lower.tail) -Inf else Inf
+                                      q[i1] <- if(!lower.tail) -Inf else Inf
+                                      q[in01] <- NaN
+                                      },
                                   img = new("Reals"),
                                   param = new("GumbelParameter"),
                                   .logExact = TRUE,

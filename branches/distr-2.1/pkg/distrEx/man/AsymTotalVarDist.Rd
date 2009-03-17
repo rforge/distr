@@ -1,53 +1,60 @@
-\name{TotalVarDist}
-\alias{TotalVarDist}
-\alias{TotalVarDist-methods}
-\alias{TotalVarDist,AbscontDistribution,AbscontDistribution-method}
-\alias{TotalVarDist,AbscontDistribution,DiscreteDistribution-method}
-\alias{TotalVarDist,DiscreteDistribution,DiscreteDistribution-method}
-\alias{TotalVarDist,DiscreteDistribution,AbscontDistribution-method}
-\alias{TotalVarDist,LatticeDistribution,DiscreteDistribution-method}
-\alias{TotalVarDist,DiscreteDistribution,LatticeDistribution-method}
-\alias{TotalVarDist,LatticeDistribution,LatticeDistribution-method}
-\alias{TotalVarDist,numeric,DiscreteDistribution-method}
-\alias{TotalVarDist,DiscreteDistribution,numeric-method}
-\alias{TotalVarDist,numeric,AbscontDistribution-method}
-\alias{TotalVarDist,AbscontDistribution,numeric-method}
-\alias{TotalVarDist,AcDcLcDistribution,AcDcLcDistribution-method}
+\name{AsymTotalVarDist}
+\alias{AsymTotalVarDist}
+\alias{AsymTotalVarDist-methods}
+\alias{AsymTotalVarDist,AbscontDistribution,AbscontDistribution-method}
+\alias{AsymTotalVarDist,AbscontDistribution,DiscreteDistribution-method}
+\alias{AsymTotalVarDist,DiscreteDistribution,DiscreteDistribution-method}
+\alias{AsymTotalVarDist,DiscreteDistribution,AbscontDistribution-method}
+\alias{AsymTotalVarDist,LatticeDistribution,DiscreteDistribution-method}
+\alias{AsymTotalVarDist,DiscreteDistribution,LatticeDistribution-method}
+\alias{AsymTotalVarDist,LatticeDistribution,LatticeDistribution-method}
+\alias{AsymTotalVarDist,numeric,DiscreteDistribution-method}
+\alias{AsymTotalVarDist,DiscreteDistribution,numeric-method}
+\alias{AsymTotalVarDist,numeric,AbscontDistribution-method}
+\alias{AsymTotalVarDist,AbscontDistribution,numeric-method}
+\alias{AsymTotalVarDist,AcDcLcDistribution,AcDcLcDistribution-method}
 
-\title{Generic function for the computation of the total variation distance of two distributions}
+\title{Generic function for the computation of asymmetric total variation distance of two distributions}
 \description{
-  Generic function for the computation of the total variation distance \eqn{d_v}
+  Generic function for the computation of asymmetric total variation distance 
+  \eqn{d_v(\rho)}{d_v(rho)}
   of two distributions \eqn{P} and \eqn{Q} where the distributions may be 
   defined for an arbitrary sample space \eqn{(\Omega,{\cal A})}{(Omega, A)}.
-  The total variation distance is defined as
-  \deqn{d_v(P,Q)=\sup_{B\in{\cal A}}|P(B)-Q(B)|}{d_v(P,Q)=\sup\{|P(B)-Q(B)| | B in A\}}
+  For given ratio of inlier and outlier probability \eqn{\rho}{rho}, this distance 
+  is defined as
+  \deqn{d_v(\rho)(P,Q)=\int (dQ-c\,dP)_+}{d_v(rho)(P,Q)=\int \max(dQ-c dP,0)}
+  for \eqn{c} defined by 
+  \deqn{\rho \int (dQ-c\,dP)_+ = \int (dQ-c\,dP)_-}{rho \int \max(dQ-c dP,0) = \int \max(c dP-dQ,0)}
+  It coincides with total variation distance for \eqn{\rho=1}{rho=1}.
 }
 \usage{
-TotalVarDist(e1, e2, ...)
-\S4method{TotalVarDist}{AbscontDistribution,AbscontDistribution}(e1,e2, 
-                        rel.tol=.Machine$double.eps^0.3, 
-                        TruncQuantile = getdistrOption("TruncQuantile"), 
-                        IQR.fac = 15, ...)
-\S4method{TotalVarDist}{AbscontDistribution,DiscreteDistribution}(e1,e2, ...)
-\S4method{TotalVarDist}{DiscreteDistribution,AbscontDistribution}(e1,e2, ...)
-\S4method{TotalVarDist}{DiscreteDistribution,DiscreteDistribution}(e1,e2, ...)
-\S4method{TotalVarDist}{numeric,DiscreteDistribution}(e1, e2, ...)
-\S4method{TotalVarDist}{DiscreteDistribution,numeric}(e1, e2, ...)
-\S4method{TotalVarDist}{numeric,AbscontDistribution}(e1, e2, asis.smooth.discretize = "discretize", 
+AsymTotalVarDist(e1, e2, ...)
+\S4method{AsymTotalVarDist}{AbscontDistribution,AbscontDistribution}(e1,e2, rho = 1,
+             rel.tol = .Machine$double.eps^0.3, maxiter=1000, Ngrid = 10000,
+             TruncQuantile = getdistrOption("TruncQuantile"),
+             IQR.fac = 15)
+\S4method{AsymTotalVarDist}{AbscontDistribution,DiscreteDistribution}(e1,e2, rho = 1, ...)
+\S4method{AsymTotalVarDist}{DiscreteDistribution,AbscontDistribution}(e1,e2, rho = 1, ...)
+\S4method{AsymTotalVarDist}{DiscreteDistribution,DiscreteDistribution}(e1,e2, rho = 1, ...)
+\S4method{AsymTotalVarDist}{numeric,DiscreteDistribution}(e1, e2, rho = 1, ...)
+\S4method{AsymTotalVarDist}{DiscreteDistribution,numeric}(e1, e2, rho  = 1, ...)
+\S4method{AsymTotalVarDist}{numeric,AbscontDistribution}(e1, e2, rho = 1, asis.smooth.discretize = "discretize", 
             n.discr = getdistrExOption("nDiscretize"), low.discr = getLow(e2),
             up.discr = getUp(e2), h.smooth = getdistrExOption("hSmooth"),
-            rel.tol = .Machine$double.eps^0.3, 
-            TruncQuantile = getdistrOption("TruncQuantile"), IQR.fac = 15, ...)
-\S4method{TotalVarDist}{AbscontDistribution,numeric}(e1, e2, asis.smooth.discretize = "discretize", 
+             rel.tol = .Machine$double.eps^0.3, maxiter=1000, Ngrid = 10000,
+             TruncQuantile = getdistrOption("TruncQuantile"),
+             IQR.fac = 15)
+\S4method{AsymTotalVarDist}{AbscontDistribution,numeric}(e1, e2,  rho = 1,
+            asis.smooth.discretize = "discretize", 
             n.discr = getdistrExOption("nDiscretize"), low.discr = getLow(e1),
             up.discr = getUp(e1), h.smooth = getdistrExOption("hSmooth"),
-            rel.tol = .Machine$double.eps^0.3, 
-            TruncQuantile = getdistrOption("TruncQuantile"), IQR.fac = 15, ...)
-\S4method{TotalVarDist}{AcDcLcDistribution,AcDcLcDistribution}(e1, e2,                         
-                        rel.tol = .Machine$double.eps^0.3, 
-                        TruncQuantile = getdistrOption("TruncQuantile"), 
-                        IQR.fac = 15, ...)
-
+             rel.tol = .Machine$double.eps^0.3, maxiter=1000, Ngrid = 10000,
+             TruncQuantile = getdistrOption("TruncQuantile"),
+             IQR.fac = 15)
+\S4method{AsymTotalVarDist}{AcDcLcDistribution,AcDcLcDistribution}(e1, e2,
+          rho = 1, rel.tol = .Machine$double.eps^0.3, maxiter=1000, Ngrid = 10000,
+             TruncQuantile = getdistrOption("TruncQuantile"),
+             IQR.fac = 15)
 }
 \arguments{
   \item{e1}{ object of class \code{"Distribution"} or \code{"numeric"} }
@@ -66,7 +73,11 @@ TotalVarDist(e1, e2, ...)
   \item{h.smooth}{ if \code{asis.smooth.discretize} is equal to 
     \code{"smooth"} -- i.e., the empirical distribution of the provided 
     data should be smoothed -- one has to specify this parameter.}
-  \item{rel.tol}{ relative accuracy requested in integration }
+  \item{rho}{ratio of inlier/outlier radius}
+  \item{rel.tol}{relative tolerance for \code{distrExIntegrate} and \code{uniroot}}
+  \item{maxiter}{parameter for \code{uniroot}}
+  \item{Ngrid}{How many grid points are to be evaluated to determine the range
+   of the likelihood ratio?},
   \item{TruncQuantile}{Quantile the quantile based integration bounds (see details)}
   \item{IQR.fac}{Factor for the scale based integration bounds (see details)}
   \item{\dots}{ further arguments to be used in particular methods (not in package \pkg{distrEx})}
@@ -82,7 +93,16 @@ TotalVarDist(e1, e2, ...)
   and \code{low.1 <- min(m1,m2)-s1*IQR.fac}, \code{up.1 <- max(m1,m2)+s1*IQR.fac}
   we determine scale based bounds; these are combined by
   \code{low <- max(low.0,low.1)}, \code{up <- max(up.0,up1)}.
-
+  
+  Again in the absolutely continuous case, to determine the range of the 
+  likelihood ratio, we evaluate this ratio on a grid constructed as follows:
+  \code{x.range <- c(seq(low, up, length=Ngrid/3),
+                     q(e1)(seq(0,1,length=Ngrid/3)*.999),
+                     q(e2)(seq(0,1,length=Ngrid/3)*.999))}  
+  
+  Finally, for both discrete and absolutely continuous case,
+  we clip this ratio downwards by \code{1e-10} and upwards by \code{1e10}
+  
   In case we want to compute the total variation distance between (empirical) data
   and an abs. cont. distribution, we can specify the parameter \code{asis.smooth.discretize}
   to avoid trivial distances (distance = 1).
@@ -98,8 +118,9 @@ TotalVarDist(e1, e2, ...)
   which leads to an abs. cont. distribution. Afterwards the distance 
   between the smoothed empirical distribution and the provided abs. cont.
   distribution is computed.
+    
 }
-\value{ Total variation distance of \code{e1} and \code{e2} }
+\value{ Asymmetric Total variation distance of \code{e1} and \code{e2} }
 \section{Methods}{
 \describe{
   \item{e1 = "AbscontDistribution", e2 = "AbscontDistribution":}{
@@ -142,31 +163,30 @@ TotalVarDist(e1, e2, ...)
   }
 }}
 \references{
-    Huber, P.J. (1981) \emph{Robust Statistics}. New York: Wiley.
-
-    Rieder, H. (1994) \emph{Robust Asymptotic Statistics}. New York: Springer.
+  to be filled; 
+  Agostinelli, C and Ruckdeschel, P. (2009): A simultaneous inlier and outlier model
+  by asymmetric total variation distance.
 }
-\author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
-        Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
+\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{ ~~further notes~~ }
 \seealso{\code{\link{TotalVarDist-methods}}, \code{\link{ContaminationSize}}, 
     \code{\link{KolmogorovDist}}, \code{\link{HellingerDist}}, 
     \code{\link[distr]{Distribution-class}}}
 \examples{
-TotalVarDist(Norm(), Gumbel())
-TotalVarDist(Norm(), Td(10))
-TotalVarDist(Norm(mean = 50, sd = sqrt(25)), Binom(size = 100)) # mutually singular
-TotalVarDist(Pois(10), Binom(size = 20)) 
+AsymTotalVarDist(Norm(), Gumbel(), rho=0.3)
+AsymTotalVarDist(Norm(), Td(10), rho=0.3)
+AsymTotalVarDist(Norm(mean = 50, sd = sqrt(25)), Binom(size = 100), rho=0.3) # mutually singular
+AsymTotalVarDist(Pois(10), Binom(size = 20), rho=0.3) 
 
 x <- rnorm(100)
-TotalVarDist(Norm(), x)
-TotalVarDist(x, Norm(), asis.smooth.discretize = "smooth")
+AsymTotalVarDist(Norm(), x, rho=0.3)
+AsymTotalVarDist(x, Norm(), asis.smooth.discretize = "smooth", rho=0.3)
 
 y <- (rbinom(50, size = 20, prob = 0.5)-10)/sqrt(5)
-TotalVarDist(y, Norm())
-TotalVarDist(y, Norm(), asis.smooth.discretize = "smooth")
+AsymTotalVarDist(y, Norm(), rho=0.3)
+AsymTotalVarDist(y, Norm(), asis.smooth.discretize = "smooth", rho=0.3)
 
-TotalVarDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5))
+AsymTotalVarDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5), rho=0.3)
 }
 \concept{distance}
 \keyword{distribution}
