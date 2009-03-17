@@ -21,6 +21,7 @@ exportMethods("ConvexContamination",
               "ContaminationSize", 
               "TotalVarDist", 
               "AsymTotalVarDist", 
+              "OAsymTotalVarDist", 
               "KolmogorovDist", 
               "HellingerDist",
               "CvMDist") 

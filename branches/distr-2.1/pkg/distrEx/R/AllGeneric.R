@@ -141,6 +141,10 @@ if(!isGeneric("AsymTotalVarDist")){
    setGeneric("AsymTotalVarDist", 
                function(e1, e2, ...) standardGeneric("AsymTotalVarDist"))
 }
+if(!isGeneric("OAsymTotalVarDist")){
+   setGeneric("OAsymTotalVarDist", 
+               function(e1, e2, ...) standardGeneric("OAsymTotalVarDist"))
+}
 
 if(!isGeneric("E")){ 
    setGeneric("E", function(object, fun, cond, ...) standardGeneric("E"))

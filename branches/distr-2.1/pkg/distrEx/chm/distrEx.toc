@@ -1094,6 +1094,62 @@
 <param name="Local" value="distrExOptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist,AbscontDistribution,AbscontDistribution-method">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist,AbscontDistribution,DiscreteDistribution-method">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist,AbscontDistribution,numeric-method">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist,AcDcLcDistribution,AcDcLcDistribution-method">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist,DiscreteDistribution,AbscontDistribution-method">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist,DiscreteDistribution,DiscreteDistribution-method">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist,DiscreteDistribution,LatticeDistribution-method">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist,DiscreteDistribution,numeric-method">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist,LatticeDistribution,DiscreteDistribution-method">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist,LatticeDistribution,LatticeDistribution-method">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist,numeric,AbscontDistribution-method">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist,numeric,DiscreteDistribution-method">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist-methods">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="plot">
 <param name="Local" value="plot-methods.html">
 </OBJECT>
@@ -1561,6 +1617,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generic Function for the Computation of (Conditional) Expectations">
 <param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generic function for the computation of (minimal) asymmetric total variation distance of two distributions">
+<param name="Local" value="OAsymTotalVarDist.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generic function for the computation of asymmetric total variation distance of two distributions">
