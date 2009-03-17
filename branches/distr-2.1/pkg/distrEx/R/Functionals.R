@@ -208,7 +208,7 @@ setMethod("var", signature(x = "DExp"),
     if((hasArg(fun))||(hasArg(cond))) 
          return(var(as(x,"AbscontDistribution"),...))
     else
-        return(2/rate(x)^2)
+        return(2)
     })
 
 setMethod("var", signature(x = "Exp"),
@@ -306,9 +306,9 @@ setMethod("var", signature(x = "Td"),
         return(var(as(x,"AbscontDistribution"),...))
     else
         {n <- df(x); d<- ncp(x)
-        ## correction thanks to G.Jay Kerns
-        return(ifelse( n>2, n/(n-2)+
-               d^2*(n/(n-2)-n/2*exp(lgamma((n-1)/2)-lgamma(n/2))^2), NA))
+        ## correction thanks to G.Jay Kerns ### corrected again P.R.
+        return(ifelse( n>2, n/(n-2)*(1+d^2)
+                           -d^2*n/2*exp(2*(lgamma((n-1)/2)-lgamma(n/2))), NA))
        }
     })
 
@@ -386,13 +386,13 @@ setMethod("IQR", signature(x = "Norm"),
     function(x) 2*qnorm(3/4)*sd(x))
 
 setMethod("IQR", signature(x = "Cauchy"),
-    function(x) 2*scale(x))
+    function(x) 2*scale(x)*qcauchy(3/4))
 
 setMethod("IQR", signature(x = "Dirac"),
     function(x) 0)
 
 setMethod("IQR", signature(x = "DExp"),
-    function(x) 2*log(2)/rate(DExp))
+    function(x) 2*log(2))
 
 setMethod("IQR", signature(x = "Exp"),
     function(x) (log(4)-log(4/3))/rate(x))
@@ -418,13 +418,13 @@ setMethod("mad", signature(x = "Norm"),
     function(x) qnorm(3/4)*sd(x))
 
 setMethod("mad", signature(x = "Cauchy"),
-    function(x)  scale(x))
+    function(x)  scale(x)*qcauchy(3/4))
 
 setMethod("mad", signature(x = "Dirac"),
     function(x) 0)
 
 setMethod("mad", signature(x = "DExp"),
-    function(x) log(2)/rate(DExp))
+    function(x) log(2))
 
 setMethod("mad", signature(x = "Exp"),
     function(x) log((1+sqrt(5))/2)/rate(x))

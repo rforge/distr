@@ -655,7 +655,8 @@ setMethod("initialize", "Lnorm",
 setMethod("initialize", "Cauchy",
           function(.Object, location = 0, scale = 1) {
             .Object@img <- new("Reals")
-            .Object@param <- new("CauchyParameter", location = location)
+            .Object@param <- new("CauchyParameter", location = location, 
+                                  scale = scale)
             .Object@r <- function(n){}
             .Object@d <- function(x, log = FALSE){}
             .Object@p <- function(q, lower.tail = TRUE, log.p = FALSE){} 
