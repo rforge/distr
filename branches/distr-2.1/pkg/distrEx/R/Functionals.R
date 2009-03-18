@@ -462,7 +462,3 @@ setMethod("mad", signature(x = "Unif"),
 setMethod("mad", signature(x = "Arcsine"),
     function(x) sqrt(1/2))
 
-setMethod("mad", signature(x = "Pareto"),
-    function(x) {a <- shape(x); b<- Min(x)
-              return(b*(sqrt(2)-1)*2^(1/a))
-    })

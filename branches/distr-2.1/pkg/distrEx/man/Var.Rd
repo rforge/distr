@@ -88,7 +88,6 @@
 \alias{mad,Norm-method}
 \alias{mad,Unif-method}
 \alias{mad,Arcsine-method}
-\alias{mad,Pareto-method}
 \alias{skewness}
 \alias{skewness-methods}
 \alias{skewness,ANY-method}
@@ -473,8 +472,6 @@ kurtosis(x, ...)
   \item{\code{mad}, \code{signature(x = "Unif")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{mad}, \code{signature(x = "Arcsine")}:}{ 
-    exact evaluation using explicit expressions.}
-  \item{\code{mad}, \code{signature(x = "Pareto")}:}{ 
     exact evaluation using explicit expressions.}
 
   \item{\code{skewness}, \code{signature(x = "Beta")}:}{ 
