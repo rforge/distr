@@ -77,12 +77,20 @@ Generic function for the computation of (conditional) expectations.
 E(object, fun, cond, ...)
 
 ## S4 method for signature 'UnivariateDistribution,
+##   missing, missing':
+E(object, Nsim = getdistrExOption("MCIterations"), ...)
+
+## S4 method for signature 'UnivariateDistribution,
 ##   function, missing':
-E(object, fun, useApply = TRUE, ...)
+E(object, fun, useApply = TRUE, Nsim = getdistrExOption("MCIterations"), ...)
 
 ## S4 method for signature 'AbscontDistribution, function,
 ##   missing':
-E(object, fun,  useApply = TRUE, ...)
+E(object, fun,  useApply = TRUE,
+             rel.tol= getdistExOption("ErelativeTolerance"), 
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+             IQR.fac = getdistrOption("IQR.fac"), ...)
 
 ## S4 method for signature 'DiscreteDistribution, function,
 ##   missing':
@@ -90,15 +98,19 @@ E(object, fun, useApply = TRUE, ...)
 
 ## S4 method for signature 'AffLinDistribution, missing,
 ##   missing':
-E(object)
+E(object,...)
 
 ## S4 method for signature 'AffLinUnivarLebDecDistribution,
 ##   missing, missing':
-E(object)
+E(object,...)
 
 ## S4 method for signature 'MultivariateDistribution,
+##   missing, missing':
+E(object, Nsim = getdistrExOption("MCIterations"), ...)
+## S4 method for signature 'MultivariateDistribution,
 ##   function, missing':
-E(object, fun, useApply = TRUE, ...)
+E(object, fun, useApply = TRUE, 
+              Nsim = getdistrExOption("MCIterations"), ...)
 
 ## S4 method for signature 'DiscreteMVDistribution,
 ##   function, missing':
@@ -106,7 +118,11 @@ E(object, fun, useApply = TRUE, ...)
 
 ## S4 method for signature 'AbscontCondDistribution,
 ##   missing, numeric':
-E(object, cond, useApply = TRUE)
+E(object, cond, useApply = TRUE,
+             rel.tol= getdistExOption("ErelativeTolerance"), 
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+             IQR.fac = getdistrOption("IQR.fac"), ...)
 
 ## S4 method for signature 'DiscreteCondDistribution,
 ##   missing, numeric':
@@ -114,66 +130,109 @@ E(object, cond, useApply = TRUE)
 
 ## S4 method for signature 'UnivariateCondDistribution,
 ##   function, numeric':
-E(object, fun, cond, withCond = FALSE, useApply = TRUE, ...)
+E(object, fun, cond, 
+              withCond = FALSE, useApply = TRUE, 
+              Nsim = getdistrExOption("MCIterations"), ...)
 
 ## S4 method for signature 'AbscontCondDistribution,
 ##   function, numeric':
-E(object, fun, cond, withCond = FALSE, useApply = TRUE, ...)
+E(object, fun, cond, 
+               withCond = FALSE, useApply = TRUE,
+             rel.tol= getdistExOption("ErelativeTolerance"), 
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+             IQR.fac = getdistrOption("IQR.fac")
+             , ...)
 
 ## S4 method for signature 'DiscreteCondDistribution,
 ##   function, numeric':
-E(object, fun, cond, withCond = FALSE, useApply = TRUE, ...)
+E(object, fun, cond, 
+             withCond = FALSE, useApply = TRUE, ...)
 
 ## S4 method for signature 'DiscreteCondDistribution,
 ##   function, numeric':
-E(object, fun, cond, withCond = FALSE, useApply = TRUE, ...)
+E(object, fun, cond, 
+             withCond = FALSE, useApply = TRUE, ...)
+             
+## S4 method for signature 'UnivarLebDecDistribution,
+##   missing, missing':
+E(object,  
+             rel.tol= getdistExOption("ErelativeTolerance"), 
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+             IQR.fac = getdistrOption("IQR.fac"), ... )
+## S4 method for signature 'UnivarLebDecDistribution,
+##   function, missing':
+E(object, fun, 
+             useApply = TRUE, rel.tol= getdistExOption("ErelativeTolerance"), 
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+             IQR.fac = getdistrOption("IQR.fac"), ... )
+## S4 method for signature 'UnivarLebDecDistribution,
+##   missing, ANY':
+E(object, cond, 
+             rel.tol= getdistExOption("ErelativeTolerance"), 
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+             IQR.fac = getdistrOption("IQR.fac"), ... )
+## S4 method for signature 'UnivarLebDecDistribution,
+##   function, ANY':
+E(object, fun, cond, 
+             useApply = TRUE, rel.tol= getdistExOption("ErelativeTolerance"), 
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+             IQR.fac = getdistrOption("IQR.fac"), ... )
 
 ## S4 method for signature 'AcDcLcDistribution, ANY, ANY':
-E(object, fun, cond, ... )
+E(object, fun, cond, 
+             rel.tol= getdistExOption("ErelativeTolerance"), 
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+             IQR.fac = getdistrOption("IQR.fac"), ... )
 ## S4 method for signature 'CompoundDistribution, missing,
 ##   missing':
-E(object)
+E(object, ...)
 
 ## S4 method for signature 'Beta, missing, missing':
-E(object)
+E(object, ...)
 ## S4 method for signature 'Binom, missing, missing':
-E(object)
+E(object, ...)
 ## S4 method for signature 'Cauchy, missing, missing':
-E(object)
+E(object, ...)
 ## S4 method for signature 'Chisq, missing, missing':
-E(object)
+E(object, ...)
 ## S4 method for signature 'Dirac, missing, missing':
-E(object)
+E(object, ...)
 ## S4 method for signature 'DExp, missing, missing':
-E(object)
+E(object, ...)
 ## S4 method for signature 'Exp, missing, missing':
-E(object)
+E(object, ...)
 ## S4 method for signature 'Fd, missing, missing':
-E(object)
+E(object, ...)
 ## S4 method for signature 'Gammad, missing, missing':
-E(object)
+E(object, ...)
 ## S4 method for signature 'Geom, missing, missing':
-E(object)
+E(object, ...)
 ## S4 method for signature 'Hyper, missing, missing':
-E(object)
+E(object, ...)
 ## S4 method for signature 'Logis, missing, missing':
-E(object)
+E(object, ...)
 ## S4 method for signature 'Lnorm, missing, missing':
-E(object)
+E(object, ...)
 ## S4 method for signature 'Nbinom, missing, missing':
-E(object)
+E(object, ...)
 ## S4 method for signature 'Norm, missing, missing':
-E(object)
+E(object, ...)
 ## S4 method for signature 'Pois, missing, missing':
-E(object)
+E(object, ...)
 ## S4 method for signature 'Unif, missing, missing':
-E(object)
+E(object, ...)
 ## S4 method for signature 'Td, missing, missing':
-E(object)
+E(object, ...)
 ## S4 method for signature 'Weibull, missing, missing':
-E(object)
+E(object, ...)
 ## S4 method for signature 'Arcsine, missing, missing':
-E(object)
+E(object, ...)
 ## S4 method for signature 'Pareto, missing, missing':
 E(object)
 
@@ -194,6 +253,22 @@ else the (conditional) expection of <code>fun</code> is computed. </td></tr>
 <td>
 if not missing the conditional expectation 
 given <code>cond</code> is computed. </td></tr>
+<tr valign="top"><td><code>Nsim</code></td>
+<td>
+number of MC simulations used to determine the expectation. </td></tr>
+<tr valign="top"><td><code>rel.tol</code></td>
+<td>
+relative tolerance for <code>distrExIntegrate</code>.</td></tr>
+<tr valign="top"><td><code>lowerTruncQuantile</code></td>
+<td>
+lower quantile for quantile based integration range.</td></tr>
+<tr valign="top"><td><code>upperTruncQuantile</code></td>
+<td>
+upper quantile for quantile based integration range.</td></tr>
+<tr valign="top"><td><code>IQR.fac</code></td>
+<td>
+factor for scale based integration range (i.e.; 
+median of the distribution <i>+-</i><code>IQR.fac</code><i>*</i>IQR).</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 additional arguments to <code>fun</code> </td></tr>

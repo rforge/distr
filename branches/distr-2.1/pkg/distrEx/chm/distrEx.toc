@@ -618,12 +618,20 @@
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR,UnivariateCondDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="IQR,UnivariateDistribution-method">
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="IQR-methods">
 <param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR.fac">
+<param name="Local" value="distrExOptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="KolmogorovDist">
@@ -1087,6 +1095,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="median,Unif-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median,UnivariateCondDistribution-method">
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">

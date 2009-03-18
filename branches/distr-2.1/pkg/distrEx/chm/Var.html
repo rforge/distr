@@ -43,6 +43,7 @@
 <param name="keyword" value="R:   median,ANY-method">
 <param name="keyword" value="R:   median-methods">
 <param name="keyword" value="R:   median,UnivariateDistribution-method">
+<param name="keyword" value="R:   median,UnivariateCondDistribution-method">
 <param name="keyword" value="R:   median,AffLinDistribution-method">
 <param name="keyword" value="R:   median,AffLinAbscontDistribution-method">
 <param name="keyword" value="R:   median,AffLinDiscreteDistribution-method">
@@ -62,6 +63,7 @@
 <param name="keyword" value="R:   IQR-methods">
 <param name="keyword" value="R:   IQR,ANY-method">
 <param name="keyword" value="R:   IQR,UnivariateDistribution-method">
+<param name="keyword" value="R:   IQR,UnivariateCondDistribution-method">
 <param name="keyword" value="R:   IQR,AffLinDistribution-method">
 <param name="keyword" value="R:   IQR,AffLinAbscontDistribution-method">
 <param name="keyword" value="R:   IQR,AffLinDiscreteDistribution-method">
@@ -173,6 +175,8 @@ IQR(x, ...)
 
 ## S4 method for signature 'UnivariateDistribution':
 IQR(x)
+## S4 method for signature 'UnivariateCondDistribution':
+IQR(x,cond)
 ## S4 method for signature 'AffLinDistribution':
 IQR(x)
 ## S4 method for signature 'DiscreteDistribution':
@@ -202,6 +206,8 @@ median(x, ...)
 
 ## S4 method for signature 'UnivariateDistribution':
 median(x)
+## S4 method for signature 'UnivariateCondDistribution':
+median(x,cond)
 ## S4 method for signature 'AffLinDistribution':
 median(x)
 ## S4 method for signature 'Cauchy':
@@ -250,8 +256,6 @@ mad(x)
 ## S4 method for signature 'Unif':
 mad(x)
 ## S4 method for signature 'Arcsine':
-mad(x)
-## S4 method for signature 'Pareto':
 mad(x)
 
 sd(x, ...)
@@ -470,6 +474,7 @@ resp. <code>help(sd,package="stats")</code>.</dd>
 <dt><code>IQR</code>, <code>signature(x = "Any")</code>:</dt><dd>interface to the <span class="pkg">stats</span>-function <code>IQR</code> &mdash; see <code><a onclick="findlink('stats', 'IQR.html')" style="text-decoration: underline; color: blue; cursor: hand">IQR</a></code>
 resp. <code>help(IQR,package="stats")</code>.</dd>
 <dt><code>IQR</code>, <code>signature(x = "UnivariateDistribution")</code>:</dt><dd>interquartile range of univariate distributions using corresponding <code>q()</code>-method.</dd>
+<dt><code>IQR</code>, <code>signature(x = "UnivariateCondDistribution")</code>:</dt><dd>interquartile range of univariate conditional distributions using corresponding <code>q()</code>-method. </dd>
 <dt><code>IQR</code>, <code>signature(x = "DiscreteDistribution")</code>:</dt><dd>interquartile range of discrete distributions using corresponding 
 <code>q()</code>-method but taking care that between upper and lower quartile 
 there is 50% probability </dd>
@@ -479,6 +484,7 @@ there is 50% probability </dd>
 <dt><code>median</code>, <code>signature(x = "Any")</code>:</dt><dd>interface to the <span class="pkg">stats</span>-function <code>median</code> &mdash; see <code><a onclick="findlink('stats', 'median.html')" style="text-decoration: underline; color: blue; cursor: hand">median</a></code>
 resp. <code>help(var,package="stats")</code>.</dd>
 <dt><code>median</code>, <code>signature(x = "UnivariateDistribution")</code>:</dt><dd>median of univariate distributions using corresponding <code>q()</code>-method. </dd>
+<dt><code>median</code>, <code>signature(x = "UnivariateCondDistribution")</code>:</dt><dd>median of univariate conditional distributions using corresponding <code>q()</code>-method. </dd>
 <dt><code>median</code>, <code>signature(x = "AffLinDistribution")</code>:</dt><dd><code>x@a * median(x@X0) + x@b </code></dd>
 
 

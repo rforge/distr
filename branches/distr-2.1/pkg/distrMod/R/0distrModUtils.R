@@ -69,13 +69,15 @@
 ### still to be tested and improved:
 ## covariance for minimum CvM distance estimator acc. Ri:94, pp.132-133
 
-.CvMMDCovariance<- function(L2Fam, param, mu = distribution(L2Fam), expon=3, 
+.CvMMDCovariance<- function(L2Fam, param, mu = distribution(L2Fam),  
                             withplot = FALSE, withpreIC = FALSE,
-                            N = getdistrOption("DefaultNrGridPoints")+1, ...){
+                            N = getdistrOption("DefaultNrGridPoints")+1,
+                            rel.tol=.Machine$double.eps^0.3, 
+                            TruncQuantile = getdistrOption("TruncQuantile"), 
+                            IQR.fac = 15, 
+                            ...){
 
    # preparations:
-   eps <- getdistrOption("TruncQuantile")
-
 
    N1 <- 2*N+1
    odd <- (1:N1)%%2==1
@@ -87,36 +89,48 @@
    L2Fam <- modifyModel(L2Fam, paramP)
 
    distr <- L2Fam@distribution
+   
+   ### get a sensible integration range:
+   low0 <- q(distr)(TruncQuantile) 
+   up0 <- q(distr)(TruncQuantile, lower.tail = FALSE) 
+   m0 <- median(distr); s0 <- IQR(distr)
+   low1 <- m0 - IQR.fac * s0
+   up1  <- m0 + IQR.fac * s0
+   low <- max(low0,low1); up <- min(up0,up1)
 
+   ### get a sensible integration range:
    if(missing(mu)) mu <- distr
+   low0.mu <- q(mu)(TruncQuantile) 
+   up0.mu <- q(mu)(TruncQuantile, lower.tail = FALSE) 
+   m0.mu <- median(mu); s0.mu <- IQR(mu)
+   low1.mu <- m0.mu - IQR.fac * s0.mu
+   up1.mu  <- m0.mu + IQR.fac * s0.mu
+   low.mu <- max(low0.mu,low1.mu); up.mu <- min(up0.mu,up1.mu)
+
 
    if(is(distr,"DiscreteDistribution"))
        x.seq <-support(distr)
    else
        {if(is(distr,"AbscontDistribution")){
-           x.seq0 <- seq(q(distr)(eps^expon),
-                         q(distr)(eps^expon, lower = FALSE), length = N1)
+           x.seq0 <- seq(low, up, length = N1)
            h0 <- x.seq0[1:2]%*%c(-1,1)
            x.seq <- x.seq0[odd]
           }else{ 
-           x.seq <- seq(q(distr)(eps^expon),
-                        q(distr)(eps^expon, lower = FALSE), length = N)
+           x.seq <- seq(low,up, length = N)
           }
        }
    if(is(mu,"DiscreteDistribution"))
-       x.mu.seq <-support(distr)
+       x.mu.seq <- support(mu)
    else
        {if(is(mu,"AbscontDistribution")){
-           x.mu.seq0 <- seq(q(mu)(eps^expon),
-                            q(mu)(eps^expon, lower = FALSE), length = N1)
+           x.mu.seq0 <- seq(low.mu, up.mu, length = N1)
            h0.mu <- x.mu.seq0[1:2]%*%c(-1,1)
            x.mu.seq <- x.mu.seq0[odd]
           }else{ 
-           x.mu.seq <- seq(q(mu)(eps^expon),
-                        q(mu)(eps^expon, lower = FALSE), length = N)
+           x.mu.seq <- seq(low.mu, up.mu, length = N)
           }
        }
-
+   
    L2deriv <- L2deriv(L2Fam)[[1]]
    ## are we working with a one-dim L2deriv or not?
 
@@ -147,9 +161,11 @@
 
    ## J = Var_Ptheta Delta
    J1 <- E(object=distr, fun = Delta)
+   print(J1)
    Delta.0 <- function(x) Delta(x) - J1
    J <- E(object=distr, fun = function(x) Delta.0(x)^2)
-
+   print(J)
+   
    ### CvM-IC phi
    phi <- function(x) Delta.0(x)/J
 
@@ -169,6 +185,7 @@
       psi0 <- sapply(x.mu.seq, function(X){ fct <- function(y) phixy(x=X,y=y)
                                         return(E(object=mu, fun = fct))})
    }
+   print(psi0)
    psi.1 <- approxfun(x.mu.seq, psi0, yleft = 0, yright = rev(psi0)[1])
    if(is(distr,"DiscreteDistribution"))
          psi <- function(x) (psi.1(x)-psi1) * (x %in% support(mu))
@@ -323,6 +340,7 @@ if(FALSE){
 P0 <- PoisFamily();.CvMMDCovariance(P0,par=ParamFamParameter("lambda",1), withplot=TRUE)
 B0 <- BinomFamily(size=8, prob=0.3);.CvMMDCovariance(B0,par=ParamFamParameter("",.3), withplot=TRUE)
 N0 <- NormLocationFamily();.CvMMDCovariance(N0,par=ParamFamParameter("",0), withplot=TRUE, N = 200)
+C0 <- L2LocationFamily(central=Cauchy());.CvMMDCovariance(C0,par=ParamFamParameter("",0), withplot=TRUE, N = 200)
 N1 <- NormScaleFamily(); re=.CvMMDCovariance(N1,par=ParamFamParameter("",1), withICwithplot=TRUE, N = 200)
 NS <- NormLocationScaleFamily();.CvMMDCovariance(NS,par=ParamFamParameter("",0:1), withplot=TRUE, N = 100)
 cls <- CauchyLocationScaleFamily();.CvMMDCovariance(cls,par=ParamFamParameter("",0:1), withplot=TRUE, N = 200)

@@ -37,6 +37,7 @@
 \alias{median,ANY-method}
 \alias{median-methods}
 \alias{median,UnivariateDistribution-method}
+\alias{median,UnivariateCondDistribution-method}
 \alias{median,AffLinDistribution-method}
 \alias{median,AffLinAbscontDistribution-method}
 \alias{median,AffLinDiscreteDistribution-method}
@@ -56,6 +57,7 @@
 \alias{IQR-methods}
 \alias{IQR,ANY-method}
 \alias{IQR,UnivariateDistribution-method}
+\alias{IQR,UnivariateCondDistribution-method}
 \alias{IQR,AffLinDistribution-method}
 \alias{IQR,AffLinAbscontDistribution-method}
 \alias{IQR,AffLinDiscreteDistribution-method}
@@ -155,6 +157,7 @@
 IQR(x, ...)
 
 \S4method{IQR}{UnivariateDistribution}(x)
+\S4method{IQR}{UnivariateCondDistribution}(x,cond)
 \S4method{IQR}{AffLinDistribution}(x)
 \S4method{IQR}{DiscreteDistribution}(x)
 \S4method{IQR}{Cauchy}(x)
@@ -171,6 +174,7 @@ IQR(x, ...)
 median(x, ...)
 
 \S4method{median}{UnivariateDistribution}(x)
+\S4method{median}{UnivariateCondDistribution}(x,cond)
 \S4method{median}{AffLinDistribution}(x)
 \S4method{median}{Cauchy}(x)
 \S4method{median}{Dirac}(x)
@@ -197,7 +201,6 @@ mad(x, ...)
 \S4method{mad}{Norm}(x)
 \S4method{mad}{Unif}(x)
 \S4method{mad}{Arcsine}(x)
-\S4method{mad}{Pareto}(x)
 
 sd(x, ...)
 
@@ -331,6 +334,8 @@ kurtosis(x, ...)
     resp. \code{help(IQR,package="stats")}.}
   \item{\code{IQR}, \code{signature(x = "UnivariateDistribution")}:}{ 
     interquartile range of univariate distributions using corresponding \code{q()}-method.}
+  \item{\code{IQR}, \code{signature(x = "UnivariateCondDistribution")}:}{ 
+    interquartile range of univariate conditional distributions using corresponding \code{q()}-method. }
   \item{\code{IQR}, \code{signature(x = "DiscreteDistribution")}:}{ 
     interquartile range of discrete distributions using corresponding 
     \code{q()}-method but taking care that between upper and lower quartile 
@@ -342,6 +347,8 @@ kurtosis(x, ...)
     resp. \code{help(var,package="stats")}.}
   \item{\code{median}, \code{signature(x = "UnivariateDistribution")}:}{ 
     median of univariate distributions using corresponding \code{q()}-method. }
+  \item{\code{median}, \code{signature(x = "UnivariateCondDistribution")}:}{ 
+    median of univariate conditional distributions using corresponding \code{q()}-method. }
   \item{\code{median}, \code{signature(x = "AffLinDistribution")}:}{\code{x@a * median(x@X0) + x@b }}
 
    \item{\code{mad}, \code{signature(x = "Any")}:}{

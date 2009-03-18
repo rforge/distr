@@ -52,9 +52,9 @@ setMethod("var", signature(x = "CompoundDistribution"),
        S <- x@SummandsDistr
        N <- x@NumbOfSummandsDistr
        if(is(S,"UnivariateDistribution")){
-         return(E(N)*var(S)+ (var(S)+E(S)^2)*var(N))
+         return(E(N)*var(S, ...)+ (var(S, ...)+E(S, ...)^2)*var(N))
        }
-       else  return(var(simplifyD(x)))
+       else  return(var(simplifyD(x),...))
     }})
 
 
@@ -105,6 +105,11 @@ setMethod("median", signature(x = "UnivariateDistribution"),
         return(q(x)(1/2))
     })
 
+setMethod("median", signature(x = "UnivariateCondDistribution"),
+    function(x, cond){
+        return(q(x)(1/2, cond = cond))
+    })
+
 setMethod("median", signature(x = "AffLinDistribution"),
     function(x) x@a * median(x@X0) + x@b) 
 
@@ -135,6 +140,11 @@ setMethod("mad", signature(x = "AffLinLatticeDistribution"),
 setMethod("IQR", signature(x = "UnivariateDistribution"),
     function(x){
         return(q(x)(3/4)-q(x)(1/4))
+    })
+
+setMethod("IQR", signature(x = "UnivariateCondDistribution"),
+    function(x, cond){
+        return(q(x)(3/4, cond = cond)-q(x)(1/4, cond = cond))
     })
 
 setMethod("IQR", signature(x = "DiscreteDistribution"),
