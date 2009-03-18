@@ -100,12 +100,13 @@ setClass("GumbelParameter", representation(loc = "numeric",
 # Gumbel distribution
 setClass("Gumbel", 
             prototype = prototype(r = function(n){ rgumbel(n, loc = 0, scale = 1) },
-                                  d = function(x, ...){ dgumbel(x, loc = 0, scale = 1, ...) },
-                                  p = function(q, ...){ pgumbel(q, loc = 0, scale = 1, ...) },
-                                  q = function(p, ...){
-                                      mc <-  as.list(match.call(call = sys.call())[-1])
-                                      lower.tail <- mc$lower.tail                                      
-                                      if(is.null(lower.tail)) lower.tail <- TRUE
+                                  d = function(x, log){ dgumbel(x, loc = 0, scale = 1, log = FALSE) },
+                                  p = function(q, lower.tail = TRUE, log.p = FALSE){ 
+                                         p0 <- pgumbel(q, loc = 0, scale = 1, lower.tail = lower.tail)
+                                         if(log.p) return(log(p0)) else return(p0) 
+                                  },
+                                  q = function(p, loc = 0, scale = 1, lower.tail = TRUE, log.p = FALSE){
+                                      p <- if(log.p) exp(p) else p
                                       in01 <- (p>1 | p<0)
                                       i01 <- .isEqual01(p) 
                                       i0 <- (i01 & p<1)   
@@ -120,7 +121,7 @@ setClass("Gumbel",
                                       },
                                   img = new("Reals"),
                                   param = new("GumbelParameter"),
-                                  .logExact = TRUE,
+                                  .logExact = FALSE,
                                   .lowerExact = TRUE),
             contains = "AbscontDistribution")
 
@@ -145,3 +146,39 @@ setClass("LMParameter",
                     stop("inifinite or missing value in 'scale'")
                 return(TRUE)
             })
+
+
+###### Pareto distribution by Nataliya Horbenko, ITWM, 18-03-09
+## Class: ParetoParameter
+setClass("ParetoParameter", 
+          representation = representation(shape = "numeric",
+                                          Min = "numeric"
+                                          ), 
+          prototype = prototype(shape = 1, Min = 1, name = 
+                      gettext("Parameter of a Pareto distribution")
+                      ), 
+          contains = "Parameter"
+          )
+
+## Class: Pareto distribution
+setClass("Pareto",  
+          prototype = prototype(
+                      r = function(n){ rpareto1(n, shape = 1, min = 1) },
+                      d = function(x, log = FALSE){ 
+                              dpareto1(x, shape = 1, min = 1, log = log) 
+                                          },
+                      p = function(q, lower.tail = TRUE, log.p = FALSE ){ 
+                              ppareto1(q, shape = 1, min = 1, 
+                                     lower.tail = lower.tail, log.p = log.p) 
+                                          },
+                      q = function(p, lower.tail = TRUE, log.p = FALSE ){ 
+                              qpareto1(p, shape = 1, min = 1, 
+                                     lower.tail = lower.tail, log.p = log.p) 
+                                          },
+                      param = new("ParetoParameter"),
+                      img = new("Reals"),
+                      .logExact = TRUE,
+                      .lowerExact = TRUE),
+          contains = "AbscontDistribution"
+          )
+

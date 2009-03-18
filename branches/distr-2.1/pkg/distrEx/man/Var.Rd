@@ -28,6 +28,7 @@
 \alias{var,Weibull-method}
 \alias{var,Td-method}
 \alias{var,Arcsine-method}
+\alias{var,Pareto-method}
 \alias{sd}
 \alias{sd-methods}
 \alias{sd,UnivariateDistribution-method}
@@ -50,6 +51,7 @@
 \alias{median,Norm-method}
 \alias{median,Unif-method}
 \alias{median,Arcsine-method}
+\alias{median,Pareto-method}
 \alias{IQR}
 \alias{IQR-methods}
 \alias{IQR,ANY-method}
@@ -68,6 +70,7 @@
 \alias{IQR,Norm-method}
 \alias{IQR,Unif-method}
 \alias{IQR,Arcsine-method}
+\alias{IQR,Pareto-method}
 \alias{mad}
 \alias{mad,ANY-method}
 \alias{mad-methods}
@@ -85,6 +88,7 @@
 \alias{mad,Norm-method}
 \alias{mad,Unif-method}
 \alias{mad,Arcsine-method}
+\alias{mad,Pareto-method}
 \alias{skewness}
 \alias{skewness-methods}
 \alias{skewness,ANY-method}
@@ -113,6 +117,7 @@
 \alias{skewness,Weibull-method}
 \alias{skewness,Td-method}
 \alias{skewness,Arcsine-method}
+\alias{skewness,Pareto-method}
 \alias{kurtosis}
 \alias{kurtosis-methods}
 \alias{kurtosis,ANY-method}
@@ -141,6 +146,7 @@
 \alias{kurtosis,Weibull-method}
 \alias{kurtosis,Td-method}
 \alias{kurtosis,Arcsine-method}
+\alias{kurtosis,Pareto-method}
 
 \title{Generic Functions for the Computation of Functionals}
 \description{
@@ -161,6 +167,7 @@ IQR(x, ...)
 \S4method{IQR}{Norm}(x)
 \S4method{IQR}{Unif}(x)
 \S4method{IQR}{Arcsine}(x)
+\S4method{IQR}{Pareto}(x)
 
 median(x, ...)
 
@@ -176,6 +183,7 @@ median(x, ...)
 \S4method{median}{Norm}(x)
 \S4method{median}{Unif}(x)
 \S4method{median}{Arcsine}(x)
+\S4method{median}{Pareto}(x)
 
 mad(x, ...)
 
@@ -190,6 +198,7 @@ mad(x, ...)
 \S4method{mad}{Norm}(x)
 \S4method{mad}{Unif}(x)
 \S4method{mad}{Arcsine}(x)
+\S4method{mad}{Pareto}(x)
 
 sd(x, ...)
 
@@ -221,6 +230,7 @@ var(x, ...)
 \S4method{var}{Unif}(x, ...)
 \S4method{var}{Weibull}(x, ...)
 \S4method{var}{Arcsine}(x, ...)
+\S4method{var}{Pareto}(x, ...)
 
 skewness(x, ...)
 \S4method{skewness}{UnivariateDistribution}(x, fun, cond, withCond, useApply, ...)
@@ -245,6 +255,7 @@ skewness(x, ...)
 \S4method{skewness}{Unif}(x, ...)
 \S4method{skewness}{Weibull}(x, ...)
 \S4method{skewness}{Arcsine}(x, ...)
+\S4method{skewness}{Pareto}(x, ...)
 
 kurtosis(x, ...)
 \S4method{kurtosis}{UnivariateDistribution}(x, fun, cond, withCond, useApply, ...)
@@ -269,6 +280,7 @@ kurtosis(x, ...)
 \S4method{kurtosis}{Unif}(x, ...)
 \S4method{kurtosis}{Weibull}(x, ...)
 \S4method{kurtosis}{Arcsine}(x, ...)
+\S4method{kurtosis}{Pareto}(x, ...)
 }
 \arguments{
   \item{x}{ object of class \code{"UnivariateDistribution"}}
@@ -397,6 +409,8 @@ kurtosis(x, ...)
     exact evaluation using explicit expressions.}
   \item{\code{var}, \code{signature(x = "Arcsine")}:}{ 
     exact evaluation using explicit expressions.}
+  \item{\code{var}, \code{signature(x = "Pareto")}:}{ 
+    exact evaluation using explicit expressions.}
 
   \item{\code{IQR}, \code{signature(x = "Cauchy")}:}{ 
     exact evaluation using explicit expressions.}
@@ -415,6 +429,8 @@ kurtosis(x, ...)
   \item{\code{IQR}, \code{signature(x = "Unif")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{IQR}, \code{signature(x = "Arcsine")}:}{ 
+    exact evaluation using explicit expressions.}
+  \item{\code{IQR}, \code{signature(x = "Pareto")}:}{ 
     exact evaluation using explicit expressions.}
 
   \item{\code{median}, \code{signature(x = "Cauchy")}:}{ 
@@ -437,6 +453,8 @@ kurtosis(x, ...)
     exact evaluation using explicit expressions.}
   \item{\code{median}, \code{signature(x = "Arcsine")}:}{ 
     exact evaluation using explicit expressions.}
+  \item{\code{median}, \code{signature(x = "Pareto")}:}{ 
+    exact evaluation using explicit expressions.}
 
   \item{\code{mad}, \code{signature(x = "Cauchy")}:}{ 
     exact evaluation using explicit expressions.}
@@ -455,6 +473,8 @@ kurtosis(x, ...)
   \item{\code{mad}, \code{signature(x = "Unif")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{mad}, \code{signature(x = "Arcsine")}:}{ 
+    exact evaluation using explicit expressions.}
+  \item{\code{mad}, \code{signature(x = "Pareto")}:}{ 
     exact evaluation using explicit expressions.}
 
   \item{\code{skewness}, \code{signature(x = "Beta")}:}{ 
@@ -497,6 +517,8 @@ kurtosis(x, ...)
     exact evaluation using explicit expressions.}
   \item{\code{skewness}, \code{signature(x = "Arcsine")}:}{ 
     exact evaluation using explicit expressions.}
+  \item{\code{skewness}, \code{signature(x = "Pareto")}:}{ 
+    exact evaluation using explicit expressions.}
   
   \item{\code{kurtosis}, \code{signature(x = "Beta")}:}{ 
     for noncentrality 0 exact evaluation using explicit expressions.}  
@@ -537,6 +559,8 @@ kurtosis(x, ...)
   \item{\code{kurtosis}, \code{signature(x = "Weibull")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{kurtosis}, \code{signature(x = "Arcsine")}:}{ 
+    exact evaluation using explicit expressions.}
+  \item{\code{kurtosis}, \code{signature(x = "Pareto")}:}{ 
     exact evaluation using explicit expressions.}
 
 }}

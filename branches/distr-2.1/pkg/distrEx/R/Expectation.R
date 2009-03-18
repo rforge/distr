@@ -439,3 +439,11 @@ setMethod("E", signature(object = "Arcsine",
     function(object){
         return(0)
     })
+
+setMethod("E", signature(object = "Pareto", 
+                         fun = "missing", 
+                         cond = "missing"),
+    function(object){a <- shape(object); b <- Min(object)
+        if(a<=1) return(Inf)
+        else return(b*a/(a-1))
+    })

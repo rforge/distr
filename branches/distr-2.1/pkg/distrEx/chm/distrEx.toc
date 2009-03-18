@@ -378,6 +378,10 @@
 <param name="Local" value="E.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,Pareto,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="E,Pois,missing,missing-method">
 <param name="Local" value="E.html">
 </OBJECT>
@@ -542,6 +546,10 @@
 <param name="Local" value="Gumbel-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="initialize,Pareto-method">
+<param name="Local" value="Pareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="IQR">
 <param name="Local" value="Var.html">
 </OBJECT>
@@ -599,6 +607,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="IQR,Norm-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR,Pareto-method">
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -747,6 +759,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="kurtosis,Norm-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,Pareto-method">
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -982,6 +998,10 @@
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mad,Pareto-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="mad,Unif-method">
 <param name="Local" value="Var.html">
 </OBJECT>
@@ -1066,6 +1086,10 @@
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median,Pareto-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="median,Unif-method">
 <param name="Local" value="Var.html">
 </OBJECT>
@@ -1076,6 +1100,22 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="median-methods">
 <param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Min,Pareto-method">
+<param name="Local" value="Pareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Min,ParetoParameter-method">
+<param name="Local" value="ParetoParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Min<-,Pareto-method">
+<param name="Local" value="Pareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Min<-,ParetoParameter-method">
+<param name="Local" value="ParetoParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="MultivariateDistribution-class">
@@ -1148,6 +1188,18 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="OAsymTotalVarDist-methods">
 <param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Pareto">
+<param name="Local" value="Pareto.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Pareto-class">
+<param name="Local" value="Pareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ParetoParameter-class">
+<param name="Local" value="ParetoParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="plot">
@@ -1228,6 +1280,30 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="sd-methods">
 <param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="shape">
+<param name="Local" value="ParetoParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="shape,Pareto-method">
+<param name="Local" value="Pareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="shape,ParetoParameter-method">
+<param name="Local" value="ParetoParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="shape<-">
+<param name="Local" value="ParetoParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="shape<-,Pareto-method">
+<param name="Local" value="Pareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="shape<-,ParetoParameter-method">
+<param name="Local" value="ParetoParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="show,EuclCondition-method">
@@ -1335,6 +1411,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="skewness,Norm-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,Pareto-method">
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -1518,6 +1598,10 @@
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,Pareto-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="var,Pois-method">
 <param name="Local" value="Var.html">
 </OBJECT>
@@ -1601,6 +1685,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for LMParameter-class">
 <param name="Local" value="LMParameter.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for Pareto-class">
+<param name="Local" value="Pareto.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for the conditional distribution of a linear regression model.">
@@ -1689,6 +1777,14 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Paramter of Gumbel distributions">
 <param name="Local" value="GumbelParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Paramter of Pareto distributions">
+<param name="Local" value="ParetoParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Pareto distribution">
+<param name="Local" value="Pareto-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Posterior distribution in convolution">

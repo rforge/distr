@@ -73,6 +73,7 @@ Distribution Classes
 |&gt;"UnivariateDistribution" (from distr)
 |&gt;|&gt;"AbscontDistribution" (from distr)
 |&gt;|&gt;|&gt;"Gumbel"
+|&gt;|&gt;|&gt;"Pareto"
 |&gt;"MultivariateDistribution"
 |&gt;|&gt;"DiscreteMVDistribution-class"
 |&gt;"UnivariateCondDistribution"
@@ -93,6 +94,7 @@ Parameter Classes
 |&gt;"Parameter" (from distr)
 |&gt;|&gt;"LMParameter"
 |&gt;|&gt;"GumbelParameter"
+|&gt;|&gt;"ParetoParameter"
 </pre>
 </p>
 
@@ -156,6 +158,11 @@ KolmogorovDist          Generic function for the computation of the
                         Kolmogorov distance of two distributions
 TotalVarDist            Generic function for the computation of the
                         total variation distance of two distributions
+AsymTotalVarDist        Generic function for the computation of the
+                        asymmetric total variation distance of two distributions
+                        (for given ratio rho of negative to positive part of deviation)
+OAsymTotalVarDist       Generic function for the computation of the minimal (in rho)
+                        asymmetric total variation distance of two distributions
 vonMisesDist            Generic function for the computation of the
                         von Mises distance of two distributions
 
@@ -204,6 +211,8 @@ Demos are available &mdash; see <code>demo(package="distrEx")</code>.
 <p>
 G. Jay Kerns, <a href="mailto:gkerns@ysu.edu">gkerns@ysu.edu</a>, has provided a major contribution,
 in particular the functionals <code>skewness</code> and <code>kurtosis</code> are due to him.
+Natalyia Horbenko, <a href="mailto:natalyia.horbenko@itwm.fraunhofer.de">natalyia.horbenko@itwm.fraunhofer.de</a> has ported
+the <span class="pkg">actuar</span> code for the Pareto distribution to this setup.
 </p>
 
 

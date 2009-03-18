@@ -344,6 +344,15 @@ setMethod("var", signature(x = "Beta"),
 setMethod("var", signature(x = "Arcsine"),
     function(x, ...)return(1/2))
 
+setMethod("var", signature(x = "Pareto"),
+    function(x, ...){
+    fun <- NULL; cond <- NULL
+    if((hasArg(fun))||(hasArg(cond))) 
+        return(var(as(x,"AbscontDistribution"),...))
+    else{ a <- shape(x); b <- Min(x)
+        if(a<=2) return(NA)
+        return(b^2 * a/(a-1)^2/(a-2))
+    }})
 #################################################################
 # some exact medians
 #################################################################
@@ -378,6 +387,11 @@ setMethod("median", signature(x = "Unif"),
 setMethod("median", signature(x = "Arcsine"),
     function(x) 0)
 
+setMethod("median", signature(x = "Pareto"),
+    function(x) {a <- shape(x); b<- Min(x)
+              return(b*2^(1/a))
+    })
+
 #################################################################
 # some exact IQRs
 #################################################################
@@ -410,6 +424,10 @@ setMethod("IQR", signature(x = "Unif"),
 setMethod("IQR", signature(x = "Arcsine"),
     function(x) sqrt(2))
 
+setMethod("IQR", signature(x = "Pareto"),
+    function(x) {a <- shape(x); b<- Min(x)
+              return(b*(4^(1/a)-(4/3)^(1/a)))
+    })
 #################################################################
 # some exact mads
 #################################################################
@@ -443,3 +461,8 @@ setMethod("mad", signature(x = "Unif"),
 
 setMethod("mad", signature(x = "Arcsine"),
     function(x) sqrt(1/2))
+
+setMethod("mad", signature(x = "Pareto"),
+    function(x) {a <- shape(x); b<- Min(x)
+              return(b*(sqrt(2)-1)*2^(1/a))
+    })

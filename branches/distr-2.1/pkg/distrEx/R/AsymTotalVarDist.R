@@ -55,8 +55,10 @@ setMethod("AsymTotalVarDist", signature(e1 = "AbscontDistribution",
        ## goal: range of density quotient d2(x)/d1(x)
        ## x-range:
        x.range <- seq(low, up, length=Ngrid/3)
-       x.range <- c(x.range, q(e1)(seq(TruncQuantile,1-TruncQuantile,length=Ngrid/3)))
-       x.range <- c(x.range, q(e2)(seq(TruncQuantile,1-TruncQuantile,length=Ngrid/3)))
+       x.range <- c(x.range, q(e1)(seq(TruncQuantile,
+                                        1-TruncQuantile,length=Ngrid/3)))
+       x.range <- c(x.range, q(e2)(seq(TruncQuantile,
+                                        1-TruncQuantile,length=Ngrid/3)))
        ## to avoid division by 0:
        d1x.range <- d10x.range <- d1(x.range)
        d1x.range <- d1x.range+(d1x.range<1e-20)

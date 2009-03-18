@@ -291,7 +291,24 @@ setMethod("kurtosis", signature(x = "Beta"),
 ###################################################################################
 
 setMethod("kurtosis", signature(x = "Arcsine"),
-    function(x, ...)return(-3/2))
+    function(x, ...){
+    fun <- NULL; cond <- NULL
+    if((hasArg(fun))||(hasArg(cond))) 
+        return(kurtosis(as(x,"AbscontDistribution"),...))
+    else    return(-3/2)
+    })
 
+setMethod("kurtosis", signature(x = "Pareto"),
+    function(x, ...){
+    fun <- NULL; cond <- NULL
+    if((hasArg(fun))||(hasArg(cond))) 
+        return(kurtosis(as(x,"AbscontDistribution"),...))
+    else{
+         a <- shape(x)
+         if(a<=4) return(NA)
+         else
+         return( 6*(a^3+a^2-6*a-2)/a/(a-3)/(a-4) ) 
+    }
+})
 
 

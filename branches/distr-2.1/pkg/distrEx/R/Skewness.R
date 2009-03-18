@@ -263,8 +263,26 @@ setMethod("skewness", signature(x = "Beta"),
 ###################################################################################
 
 setMethod("skewness", signature(x = "Arcsine"),
-    function(x, ...)return(0))
+    function(x, ...){
+    fun <- NULL; cond <- NULL
+    if((hasArg(fun))||(hasArg(cond))) 
+        return(skewness(as(x,"AbscontDistribution"),...))
+    else    return(0)    
+    })
 
+#    
+setMethod("skewness", signature(x = "Pareto"),
+    function(x, ...){
+    fun <- NULL; cond <- NULL
+    if((hasArg(fun))||(hasArg(cond))) 
+        return(skewness(as(x,"AbscontDistribution"),...))
+    else{
+         a <- shape(x)
+         if(a<=3) return(NA)
+         else
+         return( 2*(a+1)/(a-3)*sqrt(1-2/a) ) 
+    }
+})
 
 
 

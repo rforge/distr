@@ -27,7 +27,8 @@ setMethod("simplifyr", "UnivariateDistribution",
 RtoDPQ <- function(r, e = getdistrOption("RtoDPQ.e"),
                       n = getdistrOption("DefaultNrGridPoints")){
   zz <- r(10^e)
-
+  zz <- zz[!is.na(zz)]
+  
   dxy <-  xy.coords(density(zz, n = n))
   dfun <- .makeDNew(dxy$x, dxy$y, standM = "int")
 
