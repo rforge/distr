@@ -3,6 +3,22 @@
 ######################################################################
 
 ##############
+v 2.1
+##############
+
+* Rd-style:
+  + several buglets detected with the fuzzier checking mechanism
+    cf [Rd] More intensive checking of R help files, Prof Brian Ripley, 09.01.2009 10:25) 
+       [Rd] Warning: missing text for item ... in \describe? , Prof Brian Ripley,
+  + new error/warning-free checking versions (under R-2.9.0 r46589) for distrXXX family;
+
++ S4 issues:
+  JMC has changed the way matrices and arrays are treated as S4 classes
+
++ plotting
+  modified plot methods to better digest "..." (argument "add" is TRUE by default now)
+
+##############
 v 2.0.3
 ##############
   
