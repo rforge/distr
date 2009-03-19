@@ -43,6 +43,21 @@ setMethod("var", signature(x = "AffLinDiscreteDistribution"),
 setMethod("var", signature(x = "AffLinLatticeDistribution"),
            getMethod("var", signature(x = "AffLinDistribution")))    
 
+setMethod("var", signature(x = "CompoundDistribution"),
+    function(x, ...){
+    fun <- NULL; cond <- NULL
+    if((hasArg(fun))||(hasArg(cond)))
+         return(var(as(x,"UnivarLebDecDistribution"),...))
+    else{
+       S <- x@SummandsDistr
+       N <- x@NumbOfSummandsDistr
+       if(is(S,"UnivariateDistribution")){
+         return(E(N)*var(S, ...)+ (var(S, ...)+E(S, ...)^2)*var(N))
+       }
+       else  return(var(simplifyD(x),...))
+    }})
+
+
 ################################################################################
 #sd
 ################################################################################
@@ -90,6 +105,11 @@ setMethod("median", signature(x = "UnivariateDistribution"),
         return(q(x)(1/2))
     })
 
+setMethod("median", signature(x = "UnivariateCondDistribution"),
+    function(x, cond){
+        return(q(x)(1/2, cond = cond))
+    })
+
 setMethod("median", signature(x = "AffLinDistribution"),
     function(x) x@a * median(x@X0) + x@b) 
 
@@ -120,6 +140,11 @@ setMethod("mad", signature(x = "AffLinLatticeDistribution"),
 setMethod("IQR", signature(x = "UnivariateDistribution"),
     function(x){
         return(q(x)(3/4)-q(x)(1/4))
+    })
+
+setMethod("IQR", signature(x = "UnivariateCondDistribution"),
+    function(x, cond){
+        return(q(x)(3/4, cond = cond)-q(x)(1/4, cond = cond))
     })
 
 setMethod("IQR", signature(x = "DiscreteDistribution"),
@@ -193,7 +218,7 @@ setMethod("var", signature(x = "DExp"),
     if((hasArg(fun))||(hasArg(cond))) 
          return(var(as(x,"AbscontDistribution"),...))
     else
-        return(2/rate(x)^2)
+        return(2)
     })
 
 setMethod("var", signature(x = "Exp"),
@@ -291,9 +316,9 @@ setMethod("var", signature(x = "Td"),
         return(var(as(x,"AbscontDistribution"),...))
     else
         {n <- df(x); d<- ncp(x)
-        ## correction thanks to G.Jay Kerns
-        return(ifelse( n>2, n/(n-2)+
-               d^2*(n/(n-2)-n/2*exp(lgamma((n-1)/2)-lgamma(n/2))^2), NA))
+        ## correction thanks to G.Jay Kerns ### corrected again P.R.
+        return(ifelse( n>2, n/(n-2)*(1+d^2)
+                           -d^2*n/2*exp(2*(lgamma((n-1)/2)-lgamma(n/2))), NA))
        }
     })
 
@@ -329,6 +354,15 @@ setMethod("var", signature(x = "Beta"),
 setMethod("var", signature(x = "Arcsine"),
     function(x, ...)return(1/2))
 
+setMethod("var", signature(x = "Pareto"),
+    function(x, ...){
+    fun <- NULL; cond <- NULL
+    if((hasArg(fun))||(hasArg(cond))) 
+        return(var(as(x,"AbscontDistribution"),...))
+    else{ a <- shape(x); b <- Min(x)
+        if(a<=2) return(NA)
+        return(b^2 * a/(a-1)^2/(a-2))
+    }})
 #################################################################
 # some exact medians
 #################################################################
@@ -363,6 +397,11 @@ setMethod("median", signature(x = "Unif"),
 setMethod("median", signature(x = "Arcsine"),
     function(x) 0)
 
+setMethod("median", signature(x = "Pareto"),
+    function(x) {a <- shape(x); b<- Min(x)
+              return(b*2^(1/a))
+    })
+
 #################################################################
 # some exact IQRs
 #################################################################
@@ -371,13 +410,13 @@ setMethod("IQR", signature(x = "Norm"),
     function(x) 2*qnorm(3/4)*sd(x))
 
 setMethod("IQR", signature(x = "Cauchy"),
-    function(x) 2*scale(x))
+    function(x) 2*scale(x)*qcauchy(3/4))
 
 setMethod("IQR", signature(x = "Dirac"),
     function(x) 0)
 
 setMethod("IQR", signature(x = "DExp"),
-    function(x) 2*log(2)/rate(DExp))
+    function(x) 2*log(2))
 
 setMethod("IQR", signature(x = "Exp"),
     function(x) (log(4)-log(4/3))/rate(x))
@@ -395,6 +434,10 @@ setMethod("IQR", signature(x = "Unif"),
 setMethod("IQR", signature(x = "Arcsine"),
     function(x) sqrt(2))
 
+setMethod("IQR", signature(x = "Pareto"),
+    function(x) {a <- shape(x); b<- Min(x)
+              return(b*(4^(1/a)-(4/3)^(1/a)))
+    })
 #################################################################
 # some exact mads
 #################################################################
@@ -403,13 +446,13 @@ setMethod("mad", signature(x = "Norm"),
     function(x) qnorm(3/4)*sd(x))
 
 setMethod("mad", signature(x = "Cauchy"),
-    function(x)  scale(x))
+    function(x)  scale(x)*qcauchy(3/4))
 
 setMethod("mad", signature(x = "Dirac"),
     function(x) 0)
 
 setMethod("mad", signature(x = "DExp"),
-    function(x) log(2)/rate(DExp))
+    function(x) log(2))
 
 setMethod("mad", signature(x = "Exp"),
     function(x) log((1+sqrt(5))/2)/rate(x))
@@ -428,3 +471,4 @@ setMethod("mad", signature(x = "Unif"),
 
 setMethod("mad", signature(x = "Arcsine"),
     function(x) sqrt(1/2))
+

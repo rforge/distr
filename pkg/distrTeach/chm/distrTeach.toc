@@ -29,29 +29,13 @@
 <param name="Name" value="illustrateLLN">
 <param name="Local" value="IllustLLN.html">
 </OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="plotCLT">
-<param name="Local" value="plotCLT.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="plotCLT,AbscontDistribution-method">
-<param name="Local" value="plotCLT.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="plotCLT,DiscreteDistribution-method">
-<param name="Local" value="plotCLT.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="plotCLT-methods">
-<param name="Local" value="plotCLT.html">
-</OBJECT>
 </UL>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Package distrTeach:  Titles">
 </OBJECT>
 <UL>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="distrTeach -- Teaching Extensions of package distr ">
+<param name="Name" value="distrTeach - Teaching Extensions of package distr">
 <param name="Local" value="0distrTeach-package.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -61,10 +45,6 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Functions for Illustrating the LLN">
 <param name="Local" value="IllustLLN.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Generic Plot Function for Illustrating the CLT">
-<param name="Local" value="plotCLT.html">
 </OBJECT>
 </UL>
 </UL>

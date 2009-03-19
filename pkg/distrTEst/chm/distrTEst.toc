@@ -14,10 +14,6 @@
 <param name="Local" value="0distrTEst-package.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value=".convert.result.format">
-<param name="Local" value="distrTEst-internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="call.ev">
 <param name="Local" value="call.ev-methods.html">
 </OBJECT>
@@ -56,10 +52,6 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="distrTEst">
 <param name="Local" value="0distrTEst-package.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="distrTEst-internals">
-<param name="Local" value="distrTEst-internals.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="distrTEstoptions">
@@ -259,11 +251,11 @@
 </OBJECT>
 <UL>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Class "Evaluation" ">
+<param name="Name" value="Class "Evaluation"">
 <param name="Local" value="Evaluation-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Class "EvaluationList" ">
+<param name="Name" value="Class "EvaluationList"">
 <param name="Local" value="EvaluationList-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -271,59 +263,55 @@
 <param name="Local" value="numericorNULL-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="dsitrTEst -- Estimation and Testing classes based on package distr ">
+<param name="Name" value="dsitrTEst - Estimation and Testing classes based on package distr">
 <param name="Local" value="0distrTEst-package.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="functions to change the global variables of the package `distrTEst' ">
+<param name="Name" value="functions to change the global variables of the package 'distrTEst'">
 <param name="Local" value="distrTEstOptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Internal routines/objects in Package `distrTEst' ">
-<param name="Local" value="distrTEst-internals.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function call.ev in Package `distrTEst' ">
+<param name="Name" value="Methods for Function call.ev in Package 'distrTEst'">
 <param name="Local" value="call.ev-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function Data in Package `distrTEst'">
+<param name="Name" value="Methods for Function Data in Package 'distrTEst'">
 <param name="Local" value="Data-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function estimator in Package `distrTEst'">
+<param name="Name" value="Methods for Function estimator in Package 'distrTEst'">
 <param name="Local" value="estimator-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function evaluate in Package `distrTEst'">
+<param name="Name" value="Methods for Function evaluate in Package 'distrTEst'">
 <param name="Local" value="evaluate-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function filename in Package `distrTEst' ">
+<param name="Name" value="Methods for Function filename in Package 'distrTEst'">
 <param name="Local" value="filename-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function name in Package `distrTEst' ">
+<param name="Name" value="Methods for Function name in Package 'distrTEst'">
 <param name="Local" value="name-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function plot in Package `distrTEst' ">
+<param name="Name" value="Methods for Function plot in Package 'distrTEst'">
 <param name="Local" value="plot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function result in Package `distrTEst'">
+<param name="Name" value="Methods for Function result in Package 'distrTEst'">
 <param name="Local" value="result-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function savedata in Package `distrTEst' ">
+<param name="Name" value="Methods for Function savedata in Package 'distrTEst'">
 <param name="Local" value="savedata-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function summary in Package `distrTEst' ">
+<param name="Name" value="Methods for Function summary in Package 'distrTEst'">
 <param name="Local" value="summary-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Functions print and show in Package `distrTEst' ">
+<param name="Name" value="Methods for Functions print and show in Package 'distrTEst'">
 <param name="Local" value="print-methods.html">
 </OBJECT>
 </UL>

@@ -14,6 +14,16 @@ setMethod("q", "Distribution",
            function(save = "default", status = 0, runLast = TRUE) save@q)
            ### odd arg-list due to existing function in base package 
 
+setMethod("p", "Distribution", function(object) object@p)
+setMethod(".lowerExact", "Distribution", function(object){ 
+             er <- is(try(slot(object, ".lowerExact"), silent = TRUE), "try-error")
+             if(er) object <- conv2NewVersion(object)
+             object@.lowerExact})
+setMethod(".logExact", "Distribution", function(object){
+             er <- is(try(slot(object, ".logExact"), silent = TRUE), "try-error")
+             if(er) object <- conv2NewVersion(object)
+             object@.logExact})
+
 
 ################################
 ##

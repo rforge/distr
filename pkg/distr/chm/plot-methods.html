@@ -11,6 +11,7 @@
 <param name="keyword" value="R:   plot,UnivarLebDecDistribution,missing-method">
 <param name="keyword" value="R:   plot,AbscontDistribution,missing-method">
 <param name="keyword" value="R:   plot,DiscreteDistribution,missing-method">
+<param name="keyword" value="R:   plot,CompoundDistribution,missing-method">
 <param name="keyword" value="R:   plot,DistrList,missing-method">
 <param name="keyword" value=" Methods for Function plot in Package &lsquo;distr&rsquo;">
 </object>
@@ -37,7 +38,8 @@ plot(x, width = 10, height = 5.5,
      cex.main = par("cex.main"), cex.inner = 1.2, cex.sub = par("cex.sub"), 
      col.points = par("col"), col.vert = par("col"), col.main = par("col.main"),  
      col.inner = par("col.main"), col.sub = par("col.sub"), cex.points = 2.0, 
-     pch.u = 21, pch.a = 16, mfColRow = TRUE)
+     pch.u = 21, pch.a = 16, mfColRow = TRUE,
+     to.draw.arg = NULL)
 ## S4 method for signature 'DiscreteDistribution, missing':
 plot(x, width = 10, height = 5.5,
      withSweave = getdistrOption("withSweave"), xlim = NULL, ylim = NULL, verticals = TRUE,
@@ -46,7 +48,8 @@ plot(x, width = 10, height = 5.5,
      cex.main = par("cex.main"), cex.inner = 1.2, cex.sub = par("cex.sub"), 
      col.points = par("col"), col.hor = par("col"), col.vert = par("col"), 
      col.main = par("col.main"), col.inner = par("col.main"), 
-     col.sub = par("col.sub"),  cex.points = 2.0, pch.u = 21, pch.a = 16, mfColRow = TRUE)
+     col.sub = par("col.sub"),  cex.points = 2.0, pch.u = 21, pch.a = 16, mfColRow = TRUE,
+     to.draw.arg = NULL)
 ## S4 method for signature 'AffLinUnivarLebDecDistribution,
 ##   missing':
 plot(x, width = 10, 
@@ -56,7 +59,8 @@ plot(x, width = 10,
      cex.inner = 1.2, cex.sub = par("cex.sub"), col.points = par("col"),
      col.hor = par("col"), col.vert = par("col"), col.main = par("col.main"), 
      col.inner = par("col.main"), col.sub = par("col.sub"),  cex.points = 2.0,
-     pch.u = 21, pch.a = 16, mfColRow = TRUE)
+     pch.u = 21, pch.a = 16, mfColRow = TRUE,
+     to.draw.arg = NULL)
 ## S4 method for signature 'UnivarLebDecDistribution,
 ##   missing':
 plot(x, width = 10, 
@@ -66,8 +70,11 @@ plot(x, width = 10,
      cex.inner = 0.9, cex.sub = par("cex.sub"), col.points = par("col"),
      col.hor = par("col"), col.vert = par("col"), col.main = par("col.main"), 
      col.inner = par("col.main"), col.sub = par("col.sub"),  cex.points = 2.0,
-     pch.u = 21, pch.a = 16, mfColRow = TRUE)
+     pch.u = 21, pch.a = 16, mfColRow = TRUE,
+     to.draw.arg = NULL)
 ## S4 method for signature 'DistrList, missing':
+plot(x, y, ...)
+## S4 method for signature 'CompoundDistribution, missing':
 plot(x, y, ...)
 </pre>
 
@@ -92,7 +99,11 @@ the x limits (x1, x2) of the plot.  Note that <code>x1 &gt; x2</code> is
 allowed and leads to a "reversed axis". As in <code>plot.default</code>.</td></tr>
 <tr valign="top"><td><code>ylim</code></td>
 <td>
-the y limits of the plot. As in <code>plot.default</code>.</td></tr>
+the y limits of the plot. Either as in <code>plot.default</code>
+(i.e. a vector of length 2) or a vector of length 4, where the first two
+elements are the values for <code>ylim</code> in panel "d", and the last
+two elements are the values for <code>ylim</code> resp. <code>xlim</code> in panels "p",
+and "q".</td></tr>
 <tr valign="top"><td><code>width</code></td>
 <td>
 width (in inches) of the graphics device opened</td></tr>
@@ -113,9 +124,12 @@ logical: is a main title to be used? or <br>
 just as argument <code>main</code> in <code><a onclick="findlink('graphics', 'plotdefault.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.default</a></code>.</td></tr>
 <tr valign="top"><td><code>inner</code></td>
 <td>
-logical: panels for density/probability function -
+logical: do panels for density/probability function -
 cdf - quantile function have their own titles? or <br>
-list of length 3: titles for density/probability function -
+list which is filled to length 3  (resp. 8 for class 
+<code>UnivarLebDecDistribution</code>) if necessary
+(possibly using recycling rules):  titles for 
+density/probability function -
 cdf - quantile function (each of the same form as argument 
 <code>main</code> in <code><a onclick="findlink('graphics', 'plotdefault.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.default</a></code>)</td></tr>
 <tr valign="top"><td><code>sub</code></td>
@@ -188,6 +202,20 @@ attained value; see <code><a onclick="findlink('stats', 'points.html')" style="t
 <tr valign="top"><td><code>mfColRow</code></td>
 <td>
 shall default partition in panels be used &mdash; defaults to <code>TRUE</code></td></tr>
+<tr valign="top"><td><code>to.draw.arg</code></td>
+<td>
+Either <code>NULL</code> (default; everything
+is plotted) or a vector of either integers 
+(the indices of the subplots to be drawn) or characters &mdash; the names of
+the subplots to be drawn: in case of an object <code>x</code> of class 
+<code>"DiscreteDistribution"</code> or <code>"AbscontDistribution"</code> <code>c("d","p","q")</code>
+for density, c.d.f. and quantile function; in case of <code>x</code> a proper
+<code>"UnivarLebDecDistribution"</code> (with pos. weights for both discrete and
+abs. continuous part) names are 
+<code>c("p","q","d.c","p.c","q.c","d.d","p.d","q.d")</code>) 
+for c.d.f. and quantile function of the composed distribution and the respective
+three panels for the absolutely continuous and the discrete part, respectively; 
+</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 addtional arguments for <code>plot</code> &mdash; see 
@@ -202,14 +230,18 @@ addtional arguments for <code>plot</code> &mdash; see
 <dt>plot</dt><dd><code>signature(x = "AffLinUnivarLebDecDistribution", y = "missing")</code>: plots  
 cumulative distribution function and the quantile function </dd>
 <dt>plot</dt><dd><code>signature(x = "UnivarLebDecDistribution", y = "missing")</code>: plots a set of
-eight plots: in the first row,  it plots the 
+eight plots: in the first row, it plots the 
 cumulative distribution function and the quantile function; in the second
 row the absolutely continuous part (with density, cdf and quantile fct.),
 and in the last row the discrete part (with prob.fct., cdf and quantile fct.). </dd>
+<dt>plot</dt><dd><code>signature(x = "CompoundDistribution", y = "missing")</code>: 
+coerces <code>x</code> to <code>"UnivarLebDecDistribution"</code> and uses the corresponding
+method. </dd>
 <dt>plot</dt><dd><code>signature(x = "AbscontDistribution", y = "missing")</code>: plots density, 
 cumulative distribution function and the quantile function </dd>
 <dt>plot</dt><dd><code>signature(x = "DiscreteDistribution", y = "missing")</code>: plots probability 
 function, cumulative distribution function and the quantile function</dd>
+<dt>plot</dt><dd><code>signature(x = "DistrList", y = "missing")</code>: plots a list of distributions</dd>
 </dl>
 <p>
 Any parameters of <code>plot.default</code> may be passed on to this particular
@@ -306,6 +338,26 @@ wg &lt;- flat.mix(UnivarMixingDistribution(Unif(0,1),Unif(4,5),
 mymix &lt;- UnivarLebDecDistribution(acPart = wg, discretePart = Binom(4,.4),
          acWeight = 0.4)
 plot(mymix)         
+#
+## selection of subpanels for plotting
+N &lt;- Norm()
+par(mfrow=c(1,2))
+plot(N, mfColRow = FALSE, to.draw.arg=c("d","q"))
+plot(N, mfColRow = FALSE, to.draw.arg=c(2,3))
+par(mfrow=c(1,1))
+
+wg &lt;- flat.mix(UnivarMixingDistribution(Unif(0,1),Unif(4,5),
+               withSimplify=FALSE))
+myLC &lt;- UnivarLebDecDistribution(discretePart=Binom(3,.3), acPart = wg,
+          discreteWeight=.2)
+layout(matrix(c(rep(1,6),2,2,3,3,4,4,5,5,5,6,6,6), 
+              nrow=3, byrow=TRUE))
+plot(myLC,mfColRow = FALSE,
+     to.draw.arg=c("p","d.c","p.c","q.c", "p.d","q.d"))
+
+P &lt;- Pois(2)
+plot(as(P,"UnivarLebDecDistribution"),mfColRow = FALSE,to.draw.arg=c("d.d"))
+
 </pre>
 
 <script Language="JScript">
@@ -319,6 +371,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.0.1 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

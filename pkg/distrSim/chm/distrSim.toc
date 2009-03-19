@@ -671,39 +671,39 @@
 </OBJECT>
 <UL>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Class "Contsimulation" ">
+<param name="Name" value="Class "Contsimulation"">
 <param name="Local" value="Contsimulation-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Class "Dataclass" ">
+<param name="Name" value="Class "Dataclass"">
 <param name="Local" value="Dataclass-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Class "SeqDataFrames" ">
+<param name="Name" value="Class "SeqDataFrames"">
 <param name="Local" value="SeqDataFrame-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Class "Simulation" ">
+<param name="Name" value="Class "Simulation"">
 <param name="Local" value="Simulation-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Classes "vectororNULL",  "MatrixorNULLorVector", "ArrayorNULLorVector", "DataframeorSeqDataFrame" and        "ArrayorNULLorVectororDataframeorSeqDataFrames"">
+<param name="Name" value="Classes "vectororNULL", "MatrixorNULLorVector", "ArrayorNULLorVector", "DataframeorSeqDataFrame" and "ArrayorNULLorVectororDataframeorSeqDataFrames"">
 <param name="Local" value="vectororNULL-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="cload ">
+<param name="Name" value="cload">
 <param name="Local" value="cload.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="distrSim -- (S4-) classes for simulations based on package distr ">
+<param name="Name" value="distrSim - (S4-) classes for simulations based on package distr">
 <param name="Local" value="0distrSim-package.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="functions to change the global variables of the package `distrSim' ">
+<param name="Name" value="functions to change the global variables of the package 'distrSim'">
 <param name="Local" value="distrSimOptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Generating function for "Dataclass" ">
+<param name="Name" value="Generating function for "Dataclass"">
 <param name="Local" value="Dataclass.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -711,87 +711,87 @@
 <param name="Local" value="distrSimMASK.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function Data in Package `distrSim' ">
+<param name="Name" value="Methods for Function Data in Package 'distrSim'">
 <param name="Local" value="Data-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function Data.c in Package `distrSim' ">
+<param name="Name" value="Methods for Function Data.c in Package 'distrSim'">
 <param name="Local" value="Data.c-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function Data.id in Package `distrSim'">
+<param name="Name" value="Methods for Function Data.id in Package 'distrSim'">
 <param name="Local" value="Data.id-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function distribution in Package `distrSim' ">
+<param name="Name" value="Methods for Function distribution in Package 'distrSim'">
 <param name="Local" value="distribution-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function distribution.c in Package `distrSim' ">
+<param name="Name" value="Methods for Function distribution.c in Package 'distrSim'">
 <param name="Local" value="distribution.c-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function distribution.id in Package `distrSim' ">
+<param name="Name" value="Methods for Function distribution.id in Package 'distrSim'">
 <param name="Local" value="distribution.id-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function filename in Package `distrSim' ">
+<param name="Name" value="Methods for Function filename in Package 'distrSim'">
 <param name="Local" value="filename-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function ind in Package `distrSim'">
+<param name="Name" value="Methods for Function ind in Package 'distrSim'">
 <param name="Local" value="ind-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function name in Package `distrSim' ">
+<param name="Name" value="Methods for Function name in Package 'distrSim'">
 <param name="Local" value="name-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function obsDim in Package `distrSim'">
+<param name="Name" value="Methods for Function obsDim in Package 'distrSim'">
 <param name="Local" value="obsDim-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function plot in Package `distrSim' ">
+<param name="Name" value="Methods for Function plot in Package 'distrSim'">
 <param name="Local" value="plot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function print/show in Package `distrSim' ">
+<param name="Name" value="Methods for Function print/show in Package 'distrSim'">
 <param name="Local" value="print-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function rate in Package `distrSim' ">
+<param name="Name" value="Methods for Function rate in Package 'distrSim'">
 <param name="Local" value="rate-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function runs in Package `distrSim'">
+<param name="Name" value="Methods for Function runs in Package 'distrSim'">
 <param name="Local" value="runs-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function samplesize in Package `distrSim'">
+<param name="Name" value="Methods for Function samplesize in Package 'distrSim'">
 <param name="Local" value="samplesize-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function savedata in Package `distrSim' ">
+<param name="Name" value="Methods for Function savedata in Package 'distrSim'">
 <param name="Local" value="savedata-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function seed in Package `distrSim' ">
+<param name="Name" value="Methods for Function seed in Package 'distrSim'">
 <param name="Local" value="seed-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function simulate in Package `distrSim' ">
+<param name="Name" value="Methods for Function simulate in Package 'distrSim'">
 <param name="Local" value="simulate-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function summary in Package `distrSim' ">
+<param name="Name" value="Methods for Function summary in Package 'distrSim'">
 <param name="Local" value="summary-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Version Management in Package `distrSim' ">
+<param name="Name" value="Methods for Version Management in Package 'distrSim'">
 <param name="Local" value="versionmanagement.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Subsetting/Indexing methods for SeqDataFrames objects in Package `distrSim'">
+<param name="Name" value="Subsetting/Indexing methods for SeqDataFrames objects in Package 'distrSim'">
 <param name="Local" value="subsetting-methods.html">
 </OBJECT>
 </UL>

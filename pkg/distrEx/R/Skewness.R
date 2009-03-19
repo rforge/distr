@@ -119,12 +119,15 @@ setMethod("skewness", signature(x = "Fd"),
           m <- df1(x)
           n <- df2(x)
           d <- ncp(x)
-          L <- d/m
-          m2 <- 2*n^2*(m+n-2)/m/(n-2)^2/(n-4)*(1+2*L+m*L^2/(m+n-2))
-          a <-  8*n^3*(m+n-2)*(2*m+n-2)/m^2/(n-2)^3/(n-4)/(n-6)
-          b <-  1+3*L+6*m*L^2/(2*m+n-2)+2*m^2*L^3/(m+n-2)/(2*m+n-2)
-          m3 <- a*b
-          return(m3/m2^1.5)
+          #L <- d/m
+          #m2 <- 2*n^2*(m+n-2)/m/(n-2)^2/(n-4)*(1+2*L+m*L^2/(m+n-2))
+          m2 <- var(x)
+          m1 <- E(x)
+          m3 <- (n/m)^3/(n-2)/(n-4)/(n-6)*
+                  (m^3+6*m^2+8*m+3*d*(m^2+6*m+8)+3*d^2*(m+4)+d^3)
+#          a <-  8*n^3*(m+n-2)*(2*m+n-2)/m^2/(n-2)^3/(n-4)/(n-6)
+#          b <-  1+3*L+6*m*L^2/(2*m+n-2)+2*m^2*L^3/(m+n-2)/(2*m+n-2)
+          return((m3-3*m2*m1-m1^3)/m2^1.5)
         } else {
           return(NA)
         }
@@ -145,8 +148,10 @@ setMethod("skewness", signature(x = "Geom"),
     fun <- NULL; cond <- NULL
     if((hasArg(fun))||(hasArg(cond))) 
          return(skewness(as(x,"DiscreteDistribution"),...))
-    else
-        return((2-prob(x))/sqrt(1-prob(x)))
+    else{
+        p <- prob(x)
+        return((2-p)/sqrt(1-p))
+    }
     })
 #
 setMethod("skewness", signature(x = "Hyper"),
@@ -188,7 +193,10 @@ setMethod("skewness", signature(x = "Nbinom"),
     if((hasArg(fun))||(hasArg(cond))) 
          return(skewness(as(x,"DiscreteDistribution"),...))
     else
-        return((2-prob(x))/sqrt(size(x)*(1-prob(x))))
+        {
+        p <- prob(x)
+        return((2-p)/sqrt((1-p)*size(x)))
+    }
     })
 #
 setMethod("skewness", signature(x = "Pois"),
@@ -208,10 +216,10 @@ setMethod("skewness", signature(x = "Td"),
     } else {
         if (df(x)>3){
         n <- df(x); d<- ncp(x)
-        m1 <- sqrt(0.5*n)*gamma(0.5*(n-1))*d/gamma(0.5*n)
-        m2 <- n*(1+d^2)/(n-2)-m1^2
-        m3 <- m1*(n*(2*n-3+d^2)/(n-2)/(n-3)-2*m2)
-         return(m3/m2^1.5)
+        m1 <- E(x)
+        m2 <- var(x)
+        m3 <- (n/2)^1.5*(3*d+d^3)*exp(lgamma((n-3)/2)-lgamma(n/2))
+         return((m3-3*m2*m1-m1^3)/m2^1.5)
         } else {
          return(NA)
         }
@@ -255,8 +263,26 @@ setMethod("skewness", signature(x = "Beta"),
 ###################################################################################
 
 setMethod("skewness", signature(x = "Arcsine"),
-    function(x, ...)return(0))
+    function(x, ...){
+    fun <- NULL; cond <- NULL
+    if((hasArg(fun))||(hasArg(cond))) 
+        return(skewness(as(x,"AbscontDistribution"),...))
+    else    return(0)    
+    })
 
+#    
+setMethod("skewness", signature(x = "Pareto"),
+    function(x, ...){
+    fun <- NULL; cond <- NULL
+    if((hasArg(fun))||(hasArg(cond))) 
+        return(skewness(as(x,"AbscontDistribution"),...))
+    else{
+         a <- shape(x)
+         if(a<=3) return(NA)
+         else
+         return( 2*(a+1)/(a-3)*sqrt(1-2/a) ) 
+    }
+})
 
 
 

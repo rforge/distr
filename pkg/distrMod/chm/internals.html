@@ -33,11 +33,17 @@ These functions are used internally by package ``distrMod''.
 .isUnitMatrix(m)
 .csimpsum(fx)
 .validTrafo(trafo, dimension)
-.CvMMDCovariance(L2Fam, param, mu = distribution(L2Fam), expon=3, 
+.CvMMDCovariance(L2Fam, param, mu = distribution(L2Fam),  
                  withplot = FALSE, withpreIC = FALSE,
-                 N = getdistrOption("DefaultNrGridPoints")+1, ...)
+                 N = getdistrOption("DefaultNrGridPoints")+1,
+                 rel.tol=.Machine$double.eps^0.3, 
+                 TruncQuantile = getdistrOption("TruncQuantile"), 
+                 IQR.fac = 15, ...)
 .show.with.sd(est, s)
-.getLogDeriv(distr)
+.getLogDeriv(distr, 
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+                         IQR.fac = getdistrExOption("IQR.fac"))
 </pre>
 
 
@@ -79,13 +85,22 @@ Minimum CvM estimator</td></tr>
 <td>
 an object of class <code>UnivariateDistribution</code>: integration 
 measure (resp. distribution) for CvM distance</td></tr>
-<tr valign="top"><td><code>expon</code></td>
+<tr valign="top"><td><code>rel.tol</code></td>
 <td>
-a numeric: number to exponentiate 
-<code>getdistrOption("TruncQuantile")</code> 
-to get upper and lower 
-<i>mu</i>- resp. <i>P_theta</i>-quantiles
-for the gridpoints (see below)</td></tr>
+relative tolerance for <code>distrExIntegrate</code>.</td></tr>
+<tr valign="top"><td><code>TruncQuantile</code></td>
+<td>
+quantile for quantile based integration range.</td></tr>
+<tr valign="top"><td><code>lowerTruncQuantile</code></td>
+<td>
+lower quantile for quantile based integration range.</td></tr>
+<tr valign="top"><td><code>upperTruncQuantile</code></td>
+<td>
+upper quantile for quantile based integration range.</td></tr>
+<tr valign="top"><td><code>IQR.fac</code></td>
+<td>
+factor for scale based integration range (i.e.; 
+median of the distribution <i>+-</i><code>IQR.fac</code><i>*</i>IQR).</td></tr>
 <tr valign="top"><td><code>withplot</code></td>
 <td>
 logical: shall we plot corresponding ICs?</td></tr>
@@ -199,6 +214,6 @@ Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de
 
 
 
-<hr><div align="center">[Package <em>distrMod</em> version 2.0 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distrMod</em> version 2.1 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

@@ -38,16 +38,16 @@ i.i.d r.v's by means of DFT
 
 <pre>
   convpow(D1,...)
-  ## S4 method for signature 'AcDcLcDistribution':
-  convpow(D1,N)
   ## S4 method for signature 'AbscontDistribution':
   convpow(D1,N)
   ## S4 method for signature 'LatticeDistribution':
-  convpow(D1,N)
+  convpow(D1,N, 
+                     ep = getdistrOption("TruncQuantile"))
   ## S4 method for signature 'DiscreteDistribution':
   convpow(D1,N)
   ## S4 method for signature 'AcDcLcDistribution':
-  convpow(D1,N)
+  convpow(D1,N, 
+                     ep = getdistrOption("TruncQuantile"))
 </pre>
 
 
@@ -64,6 +64,15 @@ not yet used; meanwhile takes up N </td></tr>
 <tr valign="top"><td><code>N</code></td>
 <td>
 an integer or 0 (for 0 returns Dirac(0), for 1 D1)</td></tr>
+<tr valign="top"><td><code>ep</code></td>
+<td>
+numeric of length 1 in (0,1) &mdash;
+for <code>"LatticeDistribution"</code>: support points will be 
+cancelled if their probability is less than <code>ep</code>;
+for <code>"UnivarLebDecDistribution"</code>: if <code>(acWeight(object)&lt;ep)</code> 
+we work with the discrete parts only, and, similarly, if
+<code>(discreteWeight(object)&lt;ep)</code> we with the absolutely continuous 
+parts only.</td></tr>
 </table>
 
 <h3>Details</h3>
@@ -143,6 +152,6 @@ convpow(Exp()+Pois(),4)
 
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.0.6 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

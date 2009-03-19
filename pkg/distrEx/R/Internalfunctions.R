@@ -67,15 +67,15 @@
 
 ## modify distributions to avoid trivial distances
 .asis.smooth.discretize.distance <- function(x, Distribution, asis.smooth.discretize, 
-        n.discr, low.discr, up.discr, h.smooth, distance){
+        n.discr, low.discr, up.discr, h.smooth, distance, ...){
     ASD <- pmatch(asis.smooth.discretize, c("asis", "smooth", "discretize"), nomatch = 3)
-    if (ASD == 1) return(distance(x, Distribution))
+    if (ASD == 1) return(distance(x, Distribution, ...))
     if (ASD == 2){
         Dx <- .smoothDistr(.empiricalDistribution(x), h = h.smooth)
-        return(distance(Dx, Distribution))
+        return(distance(Dx, Distribution, ...))
     }
     if (ASD == 3){
         DD <- .discretizeDistr(D = Distribution, x = x, n = n.discr, lower = low.discr, upper = up.discr)
-        return(distance(x, DD))
+        return(distance(x, DD, ...))
     }
 }

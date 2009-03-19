@@ -20,6 +20,7 @@
 <param name="keyword" value="R:   m2dfRelativeTolerance">
 <param name="keyword" value="R:   nDiscretize">
 <param name="keyword" value="R:   hSmooth">
+<param name="keyword" value="R:   IQR.fac">
 <param name="keyword" value=" Function to change the global variables of the package &lsquo;distrEx&rsquo;">
 </object>
 
@@ -75,33 +76,41 @@ just a synonym to <code>distrExOptions</code>.
 
 <dl>
 <dt>MCIterations:</dt><dd>number of Monte-Carlo iterations used for crude 
-Monte-Carlo integration. </dd>
+Monte-Carlo integration; defaults to <code>1e5</code>. </dd>
 <dt>GLIntegrateTruncQuantile:</dt><dd>If <code>integrate</code> fails and there are 
 infinite integration limits, the function <code>GLIntegrate</code> is 
 called inside of <code>distrExIntegrate</code> with the corresponding quantiles 
 <code>GLIntegrateTruncQuantile</code> respectively,  
-1 - <code>GLIntegrateTruncQuantile</code> as finite integration limits. </dd>
+1 - <code>GLIntegrateTruncQuantile</code> as finite integration limits; defaults
+to <code>10*.Machine$double.eps</code>. </dd>
 <dt>GLIntegrateOrder:</dt><dd>The order used for the Gauss-Legendre integration
-inside of <code>distrExIntegrate</code>. </dd>
+inside of <code>distrExIntegrate</code>; defaults to 500. </dd>
 <dt>ElowerTruncQuantile:</dt><dd>The lower limit of integration used inside of 
-<code>E</code> which corresponds to the <code>ElowerTruncQuantile</code>-quantile. </dd>
+<code>E</code> which corresponds to the <code>ElowerTruncQuantile</code>-quantile; defaults to
+<code>1e-7</code>. </dd>
 <dt>EupperTruncQuantile:</dt><dd>The upper limit of integration used inside of 
-<code>E</code> which corresponds to the (1-<code>ElowerTruncQuantile</code>)-quantile. </dd>
+<code>E</code> which corresponds to the (1-<code>ElowerTruncQuantile</code>)-quantile; defaults to
+<code>1e-7</code>. </dd>
 <dt>ErelativeTolerance:</dt><dd>The relative tolerance used inside of <code>E</code>
-when calling <code>distrExIntegrate</code>. </dd>
+when calling <code>distrExIntegrate</code>; defaults to <code>.Machine$double.eps^0.25</code>. </dd>
 <dt>m1dfLowerTruncQuantile:</dt><dd>The lower limit of integration used inside 
-of <code>m1df</code> which corresponds to the <code>m1dfLowerTruncQuantile</code>-quantile. </dd>
+of <code>m1df</code> which corresponds to the <code>m1dfLowerTruncQuantile</code>-quantile; defaults to 0. </dd>
 <dt>m1dfRelativeTolerance:</dt><dd>The relative tolerance used inside of <code>m1df</code>
-when calling <code>distrExIntegrate</code>. </dd>
+when calling <code>distrExIntegrate</code>; defaults to <code>.Machine$double.eps^0.25</code>. </dd>
 <dt>m2dfLowerTruncQuantile:</dt><dd>The lower limit of integration used inside 
-of <code>m2df</code> which corresponds to the <code>m2dfLowerTruncQuantile</code>-quantile. </dd>
+of <code>m2df</code> which corresponds to the <code>m2dfLowerTruncQuantile</code>-quantile;
+defaults to 0. </dd>
 <dt>m2dfRelativeTolerance:</dt><dd>The relative tolerance used inside of <code>m2df</code>
-when calling <code>distrExIntegrate</code>. </dd>
+when calling <code>distrExIntegrate</code>; defaults to <code>.Machine$double.eps^0.25</code>. </dd>
 <dt>nDiscretize:</dt><dd>number of support values used for the discretization
-of objects of class <code>"AbscontDistribution"</code>. </dd>
+of objects of class <code>"AbscontDistribution"</code>; defaults to 100. </dd>
 <dt>hSmooth:</dt><dd>smoothing parameter to smooth objects of class 
 <code>"DiscreteDistribution"</code>. This is done via convolution with the
-normal distribution <code>Norm(mean = 0, sd = hSmooth)</code>.</dd>
+normal distribution <code>Norm(mean = 0, sd = hSmooth)</code>; defaults to 0.05.</dd>
+<dt>IQR.fac:</dt><dd>for determining sensible integration ranges, we use
+both quantile and scale based methods; for the scale based
+method we use the median of the distribution <i>+-</i>
+<code>IQR.fac</code><i>*</i> the IQR; defaults to 15.</dd>
 </dl>
 
 <h3>Author(s)</h3>
@@ -140,6 +149,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center">[Package <em>distrEx</em> version 2.0.4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>distrEx</em> version 2.1 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

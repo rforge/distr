@@ -71,7 +71,11 @@ setMethod("ConvexContamination", signature(e1 = "AbscontDistribution",
                             list(m1 = m1, m2 = m2, pfun = pfun)) 
     
         return(new("AbscontDistribution", r = rfun, d = dfun, p = pfun, 
-                    q = qfun, .withSim=FALSE, .withArith=FALSE))
+                    q = qfun,  
+                    .withSim = e1@.withSim|e2@.withSim, 
+                    .withArith = e1@.withArith|e2@.withArith,
+                    .logExact = FALSE, 
+                    .lowerExact = e1@.lowerExact & e2@.lowerExact))
     })
 
 setMethod("ConvexContamination", signature(e1 = "DiscreteDistribution",
@@ -144,7 +148,11 @@ setMethod("ConvexContamination", signature(e1 = "DiscreteDistribution",
                           }        
     
         return(new("DiscreteDistribution", r = rfun, d = dfun, p = pfun, q = qfun, 
-                    support = supp, .withSim=FALSE, .withArith=FALSE))
+                    support = supp,  
+                    .withSim = e1@.withSim|e2@.withSim, 
+                    .withArith = e1@.withArith|e2@.withArith,
+                    .logExact = FALSE, 
+                    .lowerExact = e1@.lowerExact & e2@.lowerExact))
     })
 
 setMethod("ConvexContamination", signature(e1 = "UnivariateDistribution",
@@ -206,7 +214,11 @@ setMethod("ConvexContamination", signature(e1 = "UnivariateDistribution",
                             list(m1 = m1, m2 = m2, pfun = pfun)) 
     
         return(new("UnivariateDistribution", img = img(e1), r = rfun, d = NULL, 
-                    p = pfun, q = qfun, .withSim = FALSE, .withArith = FALSE))
+                    p = pfun, q = qfun, 
+                    .withSim = e1@.withSim|e2@.withSim, 
+                    .withArith = e1@.withArith|e2@.withArith,
+                    .logExact = FALSE, 
+                    .lowerExact = e1@.lowerExact & e2@.lowerExact ))
     })
 
 

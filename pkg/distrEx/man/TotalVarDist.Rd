@@ -24,19 +24,30 @@
 }
 \usage{
 TotalVarDist(e1, e2, ...)
-\S4method{TotalVarDist}{AbscontDistribution,AbscontDistribution}(e1,e2)
-\S4method{TotalVarDist}{AbscontDistribution,DiscreteDistribution}(e1,e2)
-\S4method{TotalVarDist}{DiscreteDistribution,AbscontDistribution}(e1,e2)
-\S4method{TotalVarDist}{DiscreteDistribution,DiscreteDistribution}(e1,e2)
-\S4method{TotalVarDist}{numeric,DiscreteDistribution}(e1, e2)
-\S4method{TotalVarDist}{DiscreteDistribution,numeric}(e1, e2)
+\S4method{TotalVarDist}{AbscontDistribution,AbscontDistribution}(e1,e2, 
+                        rel.tol=.Machine$double.eps^0.3, 
+                        TruncQuantile = getdistrOption("TruncQuantile"), 
+                        IQR.fac = 15, ...)
+\S4method{TotalVarDist}{AbscontDistribution,DiscreteDistribution}(e1,e2, ...)
+\S4method{TotalVarDist}{DiscreteDistribution,AbscontDistribution}(e1,e2, ...)
+\S4method{TotalVarDist}{DiscreteDistribution,DiscreteDistribution}(e1,e2, ...)
+\S4method{TotalVarDist}{numeric,DiscreteDistribution}(e1, e2, ...)
+\S4method{TotalVarDist}{DiscreteDistribution,numeric}(e1, e2, ...)
 \S4method{TotalVarDist}{numeric,AbscontDistribution}(e1, e2, asis.smooth.discretize = "discretize", 
             n.discr = getdistrExOption("nDiscretize"), low.discr = getLow(e2),
-            up.discr = getUp(e2), h.smooth = getdistrExOption("hSmooth"))
+            up.discr = getUp(e2), h.smooth = getdistrExOption("hSmooth"),
+            rel.tol = .Machine$double.eps^0.3, 
+            TruncQuantile = getdistrOption("TruncQuantile"), IQR.fac = 15, ...)
 \S4method{TotalVarDist}{AbscontDistribution,numeric}(e1, e2, asis.smooth.discretize = "discretize", 
             n.discr = getdistrExOption("nDiscretize"), low.discr = getLow(e1),
-            up.discr = getUp(e1), h.smooth = getdistrExOption("hSmooth"))
-\S4method{TotalVarDist}{AcDcLcDistribution,AcDcLcDistribution}(e1, e2)
+            up.discr = getUp(e1), h.smooth = getdistrExOption("hSmooth"),
+            rel.tol = .Machine$double.eps^0.3, 
+            TruncQuantile = getdistrOption("TruncQuantile"), IQR.fac = 15, ...)
+\S4method{TotalVarDist}{AcDcLcDistribution,AcDcLcDistribution}(e1, e2,                         
+                        rel.tol = .Machine$double.eps^0.3, 
+                        TruncQuantile = getdistrOption("TruncQuantile"), 
+                        IQR.fac = 15, ...)
+
 }
 \arguments{
   \item{e1}{ object of class \code{"Distribution"} or \code{"numeric"} }
@@ -55,9 +66,23 @@ TotalVarDist(e1, e2, ...)
   \item{h.smooth}{ if \code{asis.smooth.discretize} is equal to 
     \code{"smooth"} -- i.e., the empirical distribution of the provided 
     data should be smoothed -- one has to specify this parameter.}
+  \item{rel.tol}{ relative accuracy requested in integration }
+  \item{TruncQuantile}{Quantile the quantile based integration bounds (see details)}
+  \item{IQR.fac}{Factor for the scale based integration bounds (see details)}
   \item{\dots}{ further arguments to be used in particular methods (not in package \pkg{distrEx})}
 }
 \details{
+  For distances between absolutely continuous distributions, we use numerical
+  integration; to determine sensible bounds we proceed as follows:
+  by means of \code{min(getLow(e1,eps=TruncQuantile),getLow(e2,eps=TruncQuantile))}, 
+  \code{max(getUp(e1,eps=TruncQuantile),getUp(e2,eps=TruncQuantile))} we determine
+  quantile based bounds \code{c(low.0,up.0)}, and by means of
+  \code{s1 <- max(IQR(e1),IQR(e2));} \code{m1<- median(e1);} 
+  \code{m2 <- median(e2)}
+  and \code{low.1 <- min(m1,m2)-s1*IQR.fac}, \code{up.1 <- max(m1,m2)+s1*IQR.fac}
+  we determine scale based bounds; these are combined by
+  \code{low <- max(low.0,low.1)}, \code{up <- max(up.0,up1)}.
+
   In case we want to compute the total variation distance between (empirical) data
   and an abs. cont. distribution, we can specify the parameter \code{asis.smooth.discretize}
   to avoid trivial distances (distance = 1).

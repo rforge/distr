@@ -7,6 +7,7 @@
 \alias{var,AffLinAbscontDistribution-method}
 \alias{var,AffLinDiscreteDistribution-method}
 \alias{var,AffLinLatticeDistribution-method}
+\alias{var,CompoundDistribution-method}
 \alias{var,Beta-method}
 \alias{var,Binom-method}
 \alias{var,Cauchy-method}
@@ -27,6 +28,7 @@
 \alias{var,Weibull-method}
 \alias{var,Td-method}
 \alias{var,Arcsine-method}
+\alias{var,Pareto-method}
 \alias{sd}
 \alias{sd-methods}
 \alias{sd,UnivariateDistribution-method}
@@ -35,6 +37,7 @@
 \alias{median,ANY-method}
 \alias{median-methods}
 \alias{median,UnivariateDistribution-method}
+\alias{median,UnivariateCondDistribution-method}
 \alias{median,AffLinDistribution-method}
 \alias{median,AffLinAbscontDistribution-method}
 \alias{median,AffLinDiscreteDistribution-method}
@@ -49,10 +52,12 @@
 \alias{median,Norm-method}
 \alias{median,Unif-method}
 \alias{median,Arcsine-method}
+\alias{median,Pareto-method}
 \alias{IQR}
 \alias{IQR-methods}
 \alias{IQR,ANY-method}
 \alias{IQR,UnivariateDistribution-method}
+\alias{IQR,UnivariateCondDistribution-method}
 \alias{IQR,AffLinDistribution-method}
 \alias{IQR,AffLinAbscontDistribution-method}
 \alias{IQR,AffLinDiscreteDistribution-method}
@@ -67,6 +72,7 @@
 \alias{IQR,Norm-method}
 \alias{IQR,Unif-method}
 \alias{IQR,Arcsine-method}
+\alias{IQR,Pareto-method}
 \alias{mad}
 \alias{mad,ANY-method}
 \alias{mad-methods}
@@ -112,6 +118,7 @@
 \alias{skewness,Weibull-method}
 \alias{skewness,Td-method}
 \alias{skewness,Arcsine-method}
+\alias{skewness,Pareto-method}
 \alias{kurtosis}
 \alias{kurtosis-methods}
 \alias{kurtosis,ANY-method}
@@ -140,6 +147,7 @@
 \alias{kurtosis,Weibull-method}
 \alias{kurtosis,Td-method}
 \alias{kurtosis,Arcsine-method}
+\alias{kurtosis,Pareto-method}
 
 \title{Generic Functions for the Computation of Functionals}
 \description{
@@ -149,6 +157,7 @@
 IQR(x, ...)
 
 \S4method{IQR}{UnivariateDistribution}(x)
+\S4method{IQR}{UnivariateCondDistribution}(x,cond)
 \S4method{IQR}{AffLinDistribution}(x)
 \S4method{IQR}{DiscreteDistribution}(x)
 \S4method{IQR}{Cauchy}(x)
@@ -160,10 +169,12 @@ IQR(x, ...)
 \S4method{IQR}{Norm}(x)
 \S4method{IQR}{Unif}(x)
 \S4method{IQR}{Arcsine}(x)
+\S4method{IQR}{Pareto}(x)
 
 median(x, ...)
 
 \S4method{median}{UnivariateDistribution}(x)
+\S4method{median}{UnivariateCondDistribution}(x,cond)
 \S4method{median}{AffLinDistribution}(x)
 \S4method{median}{Cauchy}(x)
 \S4method{median}{Dirac}(x)
@@ -175,6 +186,7 @@ median(x, ...)
 \S4method{median}{Norm}(x)
 \S4method{median}{Unif}(x)
 \S4method{median}{Arcsine}(x)
+\S4method{median}{Pareto}(x)
 
 mad(x, ...)
 
@@ -199,6 +211,7 @@ var(x, ...)
 
 \S4method{var}{UnivariateDistribution}(x, fun, cond, withCond, useApply, ...)
 \S4method{var}{AffLinDistribution}(x, fun, cond, withCond, useApply, ...)
+\S4method{var}{CompoundDistribution}(x, ...)
 \S4method{var}{Binom}(x, ...)
 \S4method{var}{Beta}(x, ...)
 \S4method{var}{Cauchy}(x, ...)
@@ -219,6 +232,7 @@ var(x, ...)
 \S4method{var}{Unif}(x, ...)
 \S4method{var}{Weibull}(x, ...)
 \S4method{var}{Arcsine}(x, ...)
+\S4method{var}{Pareto}(x, ...)
 
 skewness(x, ...)
 \S4method{skewness}{UnivariateDistribution}(x, fun, cond, withCond, useApply, ...)
@@ -243,6 +257,7 @@ skewness(x, ...)
 \S4method{skewness}{Unif}(x, ...)
 \S4method{skewness}{Weibull}(x, ...)
 \S4method{skewness}{Arcsine}(x, ...)
+\S4method{skewness}{Pareto}(x, ...)
 
 kurtosis(x, ...)
 \S4method{kurtosis}{UnivariateDistribution}(x, fun, cond, withCond, useApply, ...)
@@ -267,6 +282,7 @@ kurtosis(x, ...)
 \S4method{kurtosis}{Unif}(x, ...)
 \S4method{kurtosis}{Weibull}(x, ...)
 \S4method{kurtosis}{Arcsine}(x, ...)
+\S4method{kurtosis}{Pareto}(x, ...)
 }
 \arguments{
   \item{x}{ object of class \code{"UnivariateDistribution"}}
@@ -292,6 +308,14 @@ kurtosis(x, ...)
   \item{\code{var}, \code{signature(x = "AffLinDistribution")}:}{ 
     if arguments \code{fun}, \code{cond} are missing: \code{x@a^2 * var(x@X0)}
     else uses method for \code{signature(x = "UnivariateDistribution")}}
+  \item{\code{var}, \code{signature(x = "CompoundDistribution")}:}{ 
+        if we are in i.i.d. situation (i.e., slot \code{SummandsDistr} is of
+        class \code{UnivariateDistribution}) the formula 
+        \eqn{{\rm E}[N]{\rm var}[S]+({\rm E}[S]^2+{\rm var}(S)){\rm var}(N)}{E[N]var[S]+E[S*S]var(N)} 
+        for \eqn{N} the frequency distribution and
+        \eqn{S} the summand distribution; else we coerce to 
+        \code{"UnivarLebDecDistribution"}.
+    }
 
  \item{\code{sd}, \code{signature(x = "Any")}:}{
     interface to the \pkg{stats}-function \code{sd} --- see \code{\link[stats]{sd}}
@@ -310,6 +334,8 @@ kurtosis(x, ...)
     resp. \code{help(IQR,package="stats")}.}
   \item{\code{IQR}, \code{signature(x = "UnivariateDistribution")}:}{ 
     interquartile range of univariate distributions using corresponding \code{q()}-method.}
+  \item{\code{IQR}, \code{signature(x = "UnivariateCondDistribution")}:}{ 
+    interquartile range of univariate conditional distributions using corresponding \code{q()}-method. }
   \item{\code{IQR}, \code{signature(x = "DiscreteDistribution")}:}{ 
     interquartile range of discrete distributions using corresponding 
     \code{q()}-method but taking care that between upper and lower quartile 
@@ -321,6 +347,8 @@ kurtosis(x, ...)
     resp. \code{help(var,package="stats")}.}
   \item{\code{median}, \code{signature(x = "UnivariateDistribution")}:}{ 
     median of univariate distributions using corresponding \code{q()}-method. }
+  \item{\code{median}, \code{signature(x = "UnivariateCondDistribution")}:}{ 
+    median of univariate conditional distributions using corresponding \code{q()}-method. }
   \item{\code{median}, \code{signature(x = "AffLinDistribution")}:}{\code{x@a * median(x@X0) + x@b }}
 
    \item{\code{mad}, \code{signature(x = "Any")}:}{
@@ -387,6 +415,8 @@ kurtosis(x, ...)
     exact evaluation using explicit expressions.}
   \item{\code{var}, \code{signature(x = "Arcsine")}:}{ 
     exact evaluation using explicit expressions.}
+  \item{\code{var}, \code{signature(x = "Pareto")}:}{ 
+    exact evaluation using explicit expressions.}
 
   \item{\code{IQR}, \code{signature(x = "Cauchy")}:}{ 
     exact evaluation using explicit expressions.}
@@ -405,6 +435,8 @@ kurtosis(x, ...)
   \item{\code{IQR}, \code{signature(x = "Unif")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{IQR}, \code{signature(x = "Arcsine")}:}{ 
+    exact evaluation using explicit expressions.}
+  \item{\code{IQR}, \code{signature(x = "Pareto")}:}{ 
     exact evaluation using explicit expressions.}
 
   \item{\code{median}, \code{signature(x = "Cauchy")}:}{ 
@@ -426,6 +458,8 @@ kurtosis(x, ...)
   \item{\code{median}, \code{signature(x = "Unif")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{median}, \code{signature(x = "Arcsine")}:}{ 
+    exact evaluation using explicit expressions.}
+  \item{\code{median}, \code{signature(x = "Pareto")}:}{ 
     exact evaluation using explicit expressions.}
 
   \item{\code{mad}, \code{signature(x = "Cauchy")}:}{ 
@@ -487,6 +521,8 @@ kurtosis(x, ...)
     exact evaluation using explicit expressions.}
   \item{\code{skewness}, \code{signature(x = "Arcsine")}:}{ 
     exact evaluation using explicit expressions.}
+  \item{\code{skewness}, \code{signature(x = "Pareto")}:}{ 
+    exact evaluation using explicit expressions.}
   
   \item{\code{kurtosis}, \code{signature(x = "Beta")}:}{ 
     for noncentrality 0 exact evaluation using explicit expressions.}  
@@ -527,6 +563,8 @@ kurtosis(x, ...)
   \item{\code{kurtosis}, \code{signature(x = "Weibull")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{kurtosis}, \code{signature(x = "Arcsine")}:}{ 
+    exact evaluation using explicit expressions.}
+  \item{\code{kurtosis}, \code{signature(x = "Pareto")}:}{ 
     exact evaluation using explicit expressions.}
 
 }}

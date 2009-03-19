@@ -74,7 +74,7 @@ for(i in 1:length(packs))
     #man-pages
     fdx <- grep("\\-package",dir(paste(packs[i],"/man",sep="")),value=TRUE)
 
-    if (packs[i] != "startupmsg")                  
+    if (file.exists(paste(packs[i],"/man/",fdx,sep="")))                  
      { yy <-  readLines(paste(packs[i],"/man/",fdx,sep=""))
     
        yy <- gsub("Version: \\\\tab .*\\\\cr", 
@@ -119,6 +119,7 @@ for(i in 1:length(packs))
         
         hh[LUN+1] <- paste("and last updated on ",mydate,".<br>",sep="")
         
+        print(c(pk,oldV))
         if(pk!=oldV)             
         {hh1 <- character(LNE+7)
          hh1[1:LN] <- hh[1:LN]

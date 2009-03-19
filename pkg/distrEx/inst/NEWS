@@ -3,6 +3,48 @@
 ######################################################################
  
 ##############
+v 2.1
+##############
+
+* Rd-style:
+  + several buglets detected with the fuzzier checking mechanism
+    cf [Rd] More intensive checking of R help files, Prof Brian Ripley, 09.01.2009 10:25) 
+       [Rd] Warning: missing text for item ... in \describe? , Prof Brian Ripley,
+
+* FUNCTIONALS
+--Expectation
+  +expectation gains explicit arguments to set accuracy locally;
+  +also both quantile and scale based methods is used to determine
+   a sensible integration range in expectation
+--Quantiles:
+  -median and IQR are now defined for UnivariateCondDistribution
+--general bug fixes:
+  -checked and fixed functionals (stirred up by mail by Jay Kerns, gkerns@ysu.edu)
+  -bug corrected in E for Hyper (thanks to Jay G. Kerns!) ...
+  -corrected small bug in mad, added new implementation for skewness and
+   kurtosis for signature "ANY".
+  -corrected small bug in skewness for AffLinDistribution.
+
+* DISTRIBUTIONS
+  + gains distribution Pareto; ported from pkg actuar by Nataliya Horbenko
+   +new slots d,p,q for Gumbel distribution catching errors, vectorization
+      and lower.tail, log[.p] argument ...
+  + new methods for Gumbel distribution ...
+
+* DISTANCES
+  + introduced distance OAsymTotalVarDist (minimal
+         asymmetric total variation distance) 
+  + introduced new asymmetric total variation distance AsymTotalVarDist
+  + TotalVarDist and HellingerDist gain extra arguments
+    to better control the integration range and exactness
+
+* NEW FUNCTIONALS
+  + m1df for AffLinDistribution
+  + Expectation, var, IQR, median, skewness, kurtosis available for Pareto
+
++... and: had forgotten to document the plot-methods in distrExsome typo's in integration range selection
+
+##############
 v 2.0.3
 ##############
   

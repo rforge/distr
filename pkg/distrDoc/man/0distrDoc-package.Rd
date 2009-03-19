@@ -14,8 +14,8 @@ packages \pkg{distr}, \pkg{distrEx}, \pkg{distrSim}, \pkg{distrTEst},
 \details{
 \tabular{ll}{
 Package: \tab distrDoc\cr
-Version: \tab 2.0.4 \cr
-Date: \tab 2008-11-27 \cr
+Version: \tab 2.1 \cr
+Date: \tab 2008-03-19 \cr
 Depends: \tab R(>= 2.6.0), tools, distr(>= 2.0.0), startupmsg\cr
 LazyLoad: \tab yes\cr
 License: \tab LGPL-3\cr

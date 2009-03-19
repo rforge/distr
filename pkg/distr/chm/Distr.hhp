@@ -22,6 +22,8 @@ Cauchy-class.html
 CauchyParameter-class.html
 Chisq-class.html
 ChisqParameter-class.html
+CompoundDistribution-class.html
+CompoundDistribution.html
 ContDistribution-class.html
 ContDistribution.html
 ConvPow.html
@@ -55,6 +57,7 @@ Lnorm-class.html
 LnormParameter-class.html
 Logis-class.html
 LogisParameter-class.html
+MakeAbscontDistribution.html
 Math-methods.html
 Max-methods.html
 Min-methods.html

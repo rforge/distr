@@ -23,8 +23,8 @@ Organization</a>
  src="RLOGO.jpg"></a></span></h1>
 </div>
 <hr style="width: 100%; height: 2px;">
-<div style="text-align: justify;"> Version: 2.0.3<br> 
-Release Date: 2008-11-27 <br>
+<div style="text-align: justify;"> Version: 2.1<br>
+Release Date: 2009-03-19 <br>
 Authors: <a
  href="mailto:peter.ruckdeschel@uni-bayreuth.de?subject=%5Bdistr%5D">Peter
 Ruckdeschel</a>, <a
@@ -32,7 +32,7 @@ Ruckdeschel</a>, <a
 Kohl</a><br>
 Required R-Version: <br>
 <ul>
-  <li>&gt;=2.6.0 for version 2.0.3,</li>
+  <li>&gt;=2.6.0 for version 2.1,</li>
   <li>&gt;=2.2.0 for versions 1.6-2.0</li>
 </ul>
 Dependencies: requires packages <a href="distr.html"><span
@@ -187,7 +187,6 @@ easy it is to define a new L2 differentiable model<br>
     <br>
   </li>
 </ul>
-<div style="text-align: left;"></div>
 <hr style="width: 100%; height: 2px; color: rgb(0, 0, 0);">
 <h2 style="text-align: center; color: rgb(0, 0, 153);">Version history:</h2>
 <br>
@@ -202,11 +201,116 @@ easy it is to define a new L2 differentiable model<br>
   </ul>
 </ul>
 <br>
-<h3 style="text-align: left; color: rgb\(0, 0, 0\);">Changes from 2.0 to
-2.0.3<br>
+<h3 style="text-align: left;">Changes from 2.0 to
+2.1<br>
 </h3>
-
-<li> TEMPLATE </li>
+<ul>
+  <li>Rd-style:</li>
+  <ul>
+    <li>several buglets detected with the fuzzier checking mechanism</li>
+    <ul>
+      <li>cf [Rd] More intensive checking of R help files, Prof Brian
+Ripley, 09.01.2009
+10:25)</li>
+      <li>[Rd]
+Warning: missing text for item ... in \describe? , Prof Brian Ripley </li>
+    </ul>
+  </ul>
+  <li>MODEL</li>
+  <ul>
+    <li>&nbsp;added mad.const to guarantee for mad-consistency in
+location scale model <br>
+    </li>
+    <li>loc/scale model: standardization by n not by (n-1) as in case
+of sd .</li>
+    <li>minor modification, L2derivDistr in case of location and scale
+families</li>
+    <li>some modifications such that LnormScaleFamily works properly ...</li>
+    <li>bug in&nbsp; LnormScaleFamily corrected ...</li>
+    <li>modifyModel gains argument .withL2derivDistr --- <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if false needs not be calculated
+(as e.g. this is done in a particular <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; method calling the general method
+first...)</li>
+  </ul>
+  <li>TRAFO</li>
+  <ul>
+    <li>fixed some inconsistencies with slot trafo:</li>
+    <li>now when trafo is a function, we try to keep
+it as a function under moves of the parametric model...</li>
+    <li>&nbsp;we introduce</li>
+    <ul>
+      <li>a function trafo.fct() (see ?trafo.fct) to access the
+"function" aspect of
+trafo</li>
+      <li>a function trafoEst() which transforms an
+existing estimator of class "estimate" consistently (i.e. with
+corresponding untransfromed.estimate and untransformed.asvar
+information and transformed asvar)
+by a "trafo" function; see ?trafoEst&nbsp; <br>
+      </li>
+    </ul>
+  </ul>
+  <li>ESTIMATION</li>
+  <ul>
+    <li>minor correction sqrt((n-1)/n)*sd(x)</li>
+    <li>enhanced Covariance calculation for CvMDist-MDE</li>
+    <li>confint:</li>
+    <ul>
+      <li>modified output in show - Confint-class&nbsp;&nbsp; <br>
+      </li>
+      <li>new show() for 'confint'</li>
+      <li>new 'confint' methods for robust confidence intervals <br>
+      </li>
+    </ul>
+    <ul>
+    </ul>
+  </ul>
+  <li>PLOTTING</li>
+  <ul>
+    <li>fixed issue with cex.inner</li>
+    <li>fixed bug in plot-methods for argument "inner" under use
+of to.draw.arg argument</li>
+    <li>realized suggestions by A. Unwin, Augsburg;<br>
+plot for L2paramFamilies may be restricted to
+selected subplots;</li>
+    <li> L2ParamFamily plot in distrMod is now are as flexible as
+plot-methods in pkg distr</li>
+    <li> small changes in AllPlot.R in distrMod</li>
+    <li> plot-L2ParamFamily now also digests ... , in particular
+grid()</li>
+    <li> some fix in order to cover the case of argument
+panel.first=grid() in the ... argument (needs a delayed
+evaluation...)</li>
+  </ul>
+  <li>BUGFIXES</li>
+  <ul>
+    <li>some minor issues in L2GroupFamilies (if
+locscalename is missing)</li>
+  </ul>
+  <ul>
+    <li> fixed issue with MCE, MLE and MDE; these are also
+defined for ParamFamily class objects; so they need not have an
+Information slot</li>
+  </ul>
+  <ul>
+    <li> fixed a bug in L2GroupFamilies: it must be
+.getLogDeriv(centraldistribution) instead of .getLogDeriv(distribution)</li>
+  </ul>
+  <ul>
+    <li> a minor buglet object@trafo instead of
+trafo(object)</li>
+  </ul>
+  <li>LICENSE: moved license to LGPL-3</li>
+  <ul>
+  </ul>
+</ul>
+<br>
+<h3 style="text-align: left;">Changes from 2.1 to
+2.2<br>
+</h3>
+<ul>
+  <li> TEMPLATE </li>
 </ul>
 <hr style="width: 100%; height: 2px;">
 <h2 style="text-align: center; color: rgb(0, 0, 153);">Our plans for
@@ -217,7 +321,8 @@ the next version:</h2>
 </ul>
 <br style="color: rgb(0, 0, 0);">
 <hr style="width: 100%; height: 2px; color: rgb(0, 0, 0);">
-<h2 style="text-align: center; color: rgb(0, 0, 153);">Things we invite
+<h2 style="text-align: center; color: rgb(0, 0, 153);">Things we
+invite
 other people to do</h2>
 <ul style="text-align: left;">
   <li><span style="color: rgb(0, 0, 0);"></span><br>
@@ -231,7 +336,7 @@ other people to do</h2>
 maintained by <a
  href="mailto:peter.ruckdeschel@uni-bayreuth.de?subject=distr-package">Peter
 Ruckdeschel</a>
-and last updated on 2008-11-27.<br>
+and last updated on 2009-03-19.<br>
 </div>
 </body>
 </html>

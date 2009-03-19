@@ -12,6 +12,9 @@
 <param name="keyword" value="R:   trafo,ParamFamParameter,missing-method">
 <param name="keyword" value="R:   trafo,ParamFamily,missing-method">
 <param name="keyword" value="R:   trafo,ParamFamily,ParamFamParameter-method">
+<param name="keyword" value="R:   trafo.fct">
+<param name="keyword" value="R:   trafo.fct-methods">
+<param name="keyword" value="R:   trafo.fct,ParamFamily-method">
 <param name="keyword" value="R:   trafo<-">
 <param name="keyword" value="R:   trafo<-,ParamFamParameter-method">
 <param name="keyword" value="R:   trafo<-,ParamFamily-method">
@@ -46,6 +49,7 @@ trafo(object,param)
 trafo(object,param)
 ## S4 method for signature 'Estimate, ParamFamParameter':
 trafo(object,param)
+trafo.fct(object)
 trafo(object) &lt;- value
 </pre>
 
@@ -156,6 +160,9 @@ corresponding matrix.</dd>
 
 <p>
 The return value depends on the signature.
+For <code>trafo.fct</code>, we return the corresponding function 
+<i>tau()</i> (see below).
+For <code>trafo</code>, we have:
 </p>
 <table summary="R argblock">
 <tr valign="top"><td><code>signature <code>Estimate,missing</code>:</code></td>
@@ -208,6 +215,6 @@ trafo(NS) &lt;- function(param){
 
 
 
-<hr><div align="center">[Package <em>distrMod</em> version 2.0.5 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>distrMod</em> version 2.1 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

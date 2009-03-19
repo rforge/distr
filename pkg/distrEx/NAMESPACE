@@ -5,13 +5,15 @@ import("startupmsg")
 
 exportClasses("Condition", "EuclCondition") 
 exportClasses("LMParameter",   
-              "GumbelParameter")
+              "GumbelParameter",
+              "ParetoParameter")
 exportClasses("MultivariateDistribution", 
               "DiscreteMVDistribution",
               "UnivariateCondDistribution",
               "DiscreteCondDistribution", 
               "AbscontCondDistribution",
-              "Gumbel", "PrognCondition")
+              "Gumbel", "PrognCondition",
+              "Pareto")
 exportMethods("initialize", 
               "show", 
               "plot", 
@@ -20,14 +22,18 @@ exportMethods("initialize",
 exportMethods("ConvexContamination", 
               "ContaminationSize", 
               "TotalVarDist", 
+              "AsymTotalVarDist", 
+              "OAsymTotalVarDist", 
               "KolmogorovDist", 
               "HellingerDist",
               "CvMDist") 
-exportMethods("support", 
+exportMethods("support",
               "cond", 
               "Range",
               "loc", "loc<-", 
               "scale", "scale<-",
+              "Min","shape", 
+              "Min<-","shape<-",
               "+", "*",
               "name", "name<-", 
               "E", "var", "IQR", "skewness", "kurtosis", 
@@ -38,7 +44,7 @@ export("EuclCondition")
 export("LMParameter")
 export("DiscreteMVDistribution",
        "LMCondDistribution", 
-       "Gumbel")
+       "Gumbel", "Pareto")
 export("ConvexContamination")
 export("GLIntegrate",
        "distrExIntegrate") 

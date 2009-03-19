@@ -14,6 +14,7 @@ Title=R Help for package distrEx
 00Index.html
 0distrEx-package.html
 AbscontCondDistribution-class.html
+AsymTotalVarDist.html
 Condition-class.html
 ContaminationSize.html
 ConvexContamination.html
@@ -34,6 +35,10 @@ LMCondDistribution.html
 LMParameter-class.html
 LMParameter.html
 MultivariateDistribution-class.html
+OAsymTotalVarDist.html
+Pareto-class.html
+Pareto.html
+ParetoParameter-class.html
 PrognCondDistribution-class.html
 PrognCondition-class.html
 TotalVarDist.html

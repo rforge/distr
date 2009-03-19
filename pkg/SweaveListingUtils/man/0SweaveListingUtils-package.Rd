@@ -15,7 +15,7 @@ thereby avoiding inconsistencies between vignette and documented source code
 \details{
 \tabular{ll}{
 Package: \tab SweaveListingUtils\cr
-Version: \tab 0.1.1 \cr
+Version: \tab 0.2 \cr
 Date: \tab 2008-11-27 \cr
 Depends: \tab R(>= 2.0.0), startupmsg\cr
 LazyLoad: \tab yes\cr
@@ -115,7 +115,6 @@ print.taglist
 An example \file{.Rnw} file, \file{ExampleSweaveListingUtils.Rnw}, may 
 be found in the \file{doc} folder of this package.
 }
-
 
 \author{
 Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}\cr

@@ -36,7 +36,7 @@ modifyModel(model, param,...)
 ## S4 method for signature 'L2ParamFamily,
 ##   ParamFamParameter':
 modifyModel(model,param, 
-                       .withCall = TRUE, ...)
+                       .withCall = TRUE, .withL2derivDistr = TRUE, ...)
 ## S4 method for signature 'L2LocationFamily,
 ##   ParamFamParameter':
 modifyModel(model,param, ...)
@@ -68,6 +68,9 @@ an object of class <code>ParamFamParameter</code> &mdash; the parameter to move 
 <tr valign="top"><td><code>.withCall</code></td>
 <td>
 logical: shall slot <code>fam.call</code> be updated?</td></tr>
+<tr valign="top"><td><code>.withL2derivDistr</code></td>
+<td>
+logical: shall slot <code>L2derivDistr</code> be updated?</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 additional argument(s) for methods; not used so far</td></tr>
@@ -112,6 +115,6 @@ a corresponding instance of the model in argument <code>model</code> with moved
 parameters.</p>
 
 
-<hr><div align="center">[Package <em>distrMod</em> version 2.0 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distrMod</em> version 2.1 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

@@ -12,9 +12,9 @@
 <param name="keyword" value="R:   setgaps">
 <param name="keyword" value="R:   gaps<-">
 <param name="keyword" value="R:   gaps,AbscontDistribution-method">
-<param name="keyword" value="R:   gaps,UnivarLebDecDistribution-method">
 <param name="keyword" value="R:   gaps<-,AbscontDistribution-method">
 <param name="keyword" value="R:   setgaps,AbscontDistribution-method">
+<param name="keyword" value="R:   setgaps,UnivarMixingDistribution-method">
 <param name="keyword" value=" Methods for Functions gaps and setgaps in Package &lsquo;distr&rsquo;">
 </object>
 
@@ -75,11 +75,16 @@ number of gridpoints at which the density is evaluated.</td></tr>
 <dt>setgaps</dt><dd><code>signature(object = "AbscontDistribution")</code>: tries to find 
 out the gaps (where <code>d(object)</code> is approximately
 0) and fills slot <code>gaps</code> of <code>object</code> correspondingly</dd>
+<dt>setgaps</dt><dd><code>signature(object = "UnivarMixingDistribution")</code>: 
+for each mixing component, if it has a slot <code>gaps</code>, tries to find out the gaps 
+and fills slot <code>gaps</code> of the component correspondingly, and,
+subsequently merges all found gap-slots of the components to a gap-slot
+for the object, using internal function <code><a href="internals.html">.mergegaps2</a></code>.</dd>
 <dt>gaps&lt;-</dt><dd><code>signature(object = "AbscontDistribution")</code>: modifies  slot 
 <code>gaps</code> of an absolutely continuous distribution</dd>
 </dl>
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.0 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

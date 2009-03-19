@@ -19,6 +19,8 @@
 <param name="keyword" value="R:   WarningSim">
 <param name="keyword" value="R:   withSweave">
 <param name="keyword" value="R:   withgaps">
+<param name="keyword" value="R:   DistributionAggregate">
+<param name="keyword" value="R:   DistributionAggregate.Unique.Warn">
 <param name="keyword" value=" functions to change the global variables of the package &lsquo;distr&rsquo;">
 </object>
 
@@ -75,7 +77,7 @@ To access the value of a single option, one should use <code>getdistrOption("War
 <dl>
 <dt><code>DefaultNrGridPoints</code></dt><dd>default number of grid points in integration, default value: <code>2^12</code></dd>
 <dt><code>DistrResolution</code></dt><dd>minimal spacing between two mass points in a discrete distribution, default value: <code>1e-6</code></dd>
-<dt><code>DistrCollapse</code></dt><dd>logical; in convolving discrete distributions, shall support points
+<dt><code>DistrCollapse</code></dt><dd>logical; in discrete distributions, shall support points
 with distance smaller than <code>DistrResolution</code> be collapsed; default value:  <code>TRUE</code></dd>
 <dt><code>TruncQuantile</code></dt><dd>argument for <code>q</code>-slot at which to truncate; also, for discrete distributions, 
 support is restricted to [<code>q(TruncQuantile)</code>,<code>q(1-TruncQuantile)</code>], default value: <code>1e-5</code></dd>
@@ -97,6 +99,10 @@ is filled automatically based on empirical evaluations via  <code>setgaps</code>
 &mdash;default <code>TRUE</code></dd>
 <dt><code>simplifyD</code></dt><dd>controls whether in the return value of arithmetic
 operations there is a call to <code>simplifyD</code> or not &mdash;default <code>TRUE</code></dd>
+<dt><code>DistrCollapse.Unique.Warn</code></dt><dd>controls whether there is a warning
+whenever collapsing occurs or when two points are collapsed by a call to
+<code>unique()</code> (default behaviour if <code>DistrCollapse</code> is <code>FALSE</code>);
+&mdash;default <code>FALSE</code></dd>
 </dl>
 
 <h3>Author(s)</h3>
@@ -144,6 +150,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.0 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

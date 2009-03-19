@@ -42,31 +42,42 @@ The total variation distance is defined as
 TotalVarDist(e1, e2, ...)
 ## S4 method for signature 'AbscontDistribution,
 ##   AbscontDistribution':
-TotalVarDist(e1,e2)
+TotalVarDist(e1,e2, 
+                        rel.tol=.Machine$double.eps^0.3, 
+                        TruncQuantile = getdistrOption("TruncQuantile"), 
+                        IQR.fac = 15, ...)
 ## S4 method for signature 'AbscontDistribution,
 ##   DiscreteDistribution':
-TotalVarDist(e1,e2)
+TotalVarDist(e1,e2, ...)
 ## S4 method for signature 'DiscreteDistribution,
 ##   AbscontDistribution':
-TotalVarDist(e1,e2)
+TotalVarDist(e1,e2, ...)
 ## S4 method for signature 'DiscreteDistribution,
 ##   DiscreteDistribution':
-TotalVarDist(e1,e2)
+TotalVarDist(e1,e2, ...)
 ## S4 method for signature 'numeric, DiscreteDistribution':
-TotalVarDist(e1, e2)
+TotalVarDist(e1, e2, ...)
 ## S4 method for signature 'DiscreteDistribution, numeric':
-TotalVarDist(e1, e2)
+TotalVarDist(e1, e2, ...)
 ## S4 method for signature 'numeric, AbscontDistribution':
 TotalVarDist(e1, e2, asis.smooth.discretize = "discretize", 
             n.discr = getdistrExOption("nDiscretize"), low.discr = getLow(e2),
-            up.discr = getUp(e2), h.smooth = getdistrExOption("hSmooth"))
+            up.discr = getUp(e2), h.smooth = getdistrExOption("hSmooth"),
+            rel.tol = .Machine$double.eps^0.3, 
+            TruncQuantile = getdistrOption("TruncQuantile"), IQR.fac = 15, ...)
 ## S4 method for signature 'AbscontDistribution, numeric':
 TotalVarDist(e1, e2, asis.smooth.discretize = "discretize", 
             n.discr = getdistrExOption("nDiscretize"), low.discr = getLow(e1),
-            up.discr = getUp(e1), h.smooth = getdistrExOption("hSmooth"))
+            up.discr = getUp(e1), h.smooth = getdistrExOption("hSmooth"),
+            rel.tol = .Machine$double.eps^0.3, 
+            TruncQuantile = getdistrOption("TruncQuantile"), IQR.fac = 15, ...)
 ## S4 method for signature 'AcDcLcDistribution,
 ##   AcDcLcDistribution':
-TotalVarDist(e1, e2)
+TotalVarDist(e1, e2,                         
+                        rel.tol = .Machine$double.eps^0.3, 
+                        TruncQuantile = getdistrOption("TruncQuantile"), 
+                        IQR.fac = 15, ...)
+
 </pre>
 
 
@@ -103,6 +114,15 @@ used to discretize the abs. cont. distribution.</td></tr>
 if <code>asis.smooth.discretize</code> is equal to 
 <code>"smooth"</code> &ndash; i.e., the empirical distribution of the provided 
 data should be smoothed &ndash; one has to specify this parameter.</td></tr>
+<tr valign="top"><td><code>rel.tol</code></td>
+<td>
+relative accuracy requested in integration </td></tr>
+<tr valign="top"><td><code>TruncQuantile</code></td>
+<td>
+Quantile the quantile based integration bounds (see details)</td></tr>
+<tr valign="top"><td><code>IQR.fac</code></td>
+<td>
+Factor for the scale based integration bounds (see details)</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 further arguments to be used in particular methods (not in package <span class="pkg">distrEx</span>)</td></tr>
@@ -110,6 +130,18 @@ further arguments to be used in particular methods (not in package <span class="
 
 <h3>Details</h3>
 
+<p>
+For distances between absolutely continuous distributions, we use numerical
+integration; to determine sensible bounds we proceed as follows:
+by means of <code>min(getLow(e1,eps=TruncQuantile),getLow(e2,eps=TruncQuantile))</code>, 
+<code>max(getUp(e1,eps=TruncQuantile),getUp(e2,eps=TruncQuantile))</code> we determine
+quantile based bounds <code>c(low.0,up.0)</code>, and by means of
+<code>s1 &lt;- max(IQR(e1),IQR(e2));</code> <code>m1&lt;- median(e1);</code> 
+<code>m2 &lt;- median(e2)</code>
+and <code>low.1 &lt;- min(m1,m2)-s1*IQR.fac</code>, <code>up.1 &lt;- max(m1,m2)+s1*IQR.fac</code>
+we determine scale based bounds; these are combined by
+<code>low &lt;- max(low.0,low.1)</code>, <code>up &lt;- max(up.0,up1)</code>.
+</p>
 <p>
 In case we want to compute the total variation distance between (empirical) data
 and an abs. cont. distribution, we can specify the parameter <code>asis.smooth.discretize</code>
@@ -227,6 +259,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center">[Package <em>distrEx</em> version 2.0.2 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distrEx</em> version 2.1 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

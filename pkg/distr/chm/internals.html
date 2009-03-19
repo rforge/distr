@@ -18,6 +18,7 @@
 <param name="keyword" value="R:   .qmixfun">
 <param name="keyword" value="R:   .rmixfun">
 <param name="keyword" value="R:   .del0dmixfun">
+<param name="keyword" value="R:   .ULC.cast">
 <param name="keyword" value="R:   .loupmixfun">
 <param name="keyword" value="R:   .make.lattice.es.vector">
 <param name="keyword" value="R:   .presubs">
@@ -55,6 +56,11 @@
 <param name="keyword" value="R:   .csimpsum">
 <param name="keyword" value="R:   .primefun">
 <param name="keyword" value="R:   .IssueWarn">
+<param name="keyword" value="R:   .fillList">
+<param name="keyword" value="R:   .trunc.up">
+<param name="keyword" value="R:   .trunc.low">
+<param name="keyword" value="R:   .modifyqgaps">
+<param name="keyword" value="R:   .DistrCollapse">
 <param name="keyword" value="R:   devNew">
 <param name="keyword" value=" Internal functions of package distr">
 </object>
@@ -110,12 +116,14 @@ These functions are used internally by package distr.
 .makeQNew(x, px.l, px.u, notwithLLarg = FALSE, yL , yR, Cont = TRUE)
 .mergegaps(gaps, support)
 .mergegaps2(gaps1, gaps2)
-.pmixfun(mixDistr, mixCoeff)
+.consolidategaps(gaps)
+.pmixfun(mixDistr, mixCoeff, leftright = "right")
 .dmixfun(mixDistr, mixCoeff, withStand = FALSE, supp = NULL)
 .rmixfun(mixDistr, mixCoeff)
-.qmixfun(mixDistr, mixCoeff, Cont = TRUE, pnew)
+.qmixfun(mixDistr, mixCoeff, Cont = TRUE, pnew, gaps = NULL, leftright = "left")
 .del0dmixfun(mixDistr)
 .loupmixfun(mixDistr)
+.ULC.cast(x)
 .expm.d(e1)
 .expm.c(e1)
 .logm.d(e1)
@@ -128,6 +136,11 @@ These functions are used internally by package distr.
 .csimpsum(fx)
 .primefun(f,x, nm = NULL)
 .IssueWarn(Arith,Sim)
+.fillList(list0, len=length(list0))
+.trunc.up(object, upper)
+.trunc.low(object, lower)
+.modifyqgaps(pfun, qfun, gaps, leftright = "left")
+.DistrCollapse(support, prob, eps = getdistrOption("DistrResolution"))
 devNew(...)
 </pre>
 
@@ -137,7 +150,7 @@ devNew(...)
 <table summary="R argblock">
 <tr valign="top"><td><code>x</code></td>
 <td>
-a (numeric) vector</td></tr>
+a (numeric) vector, or (in case of <code>.ULC.cast</code>) an object of class <code>"AcDcLcDistribution"</code></td></tr>
 <tr valign="top"><td><code>y</code></td>
 <td>
 a (numeric) vector</td></tr>
@@ -273,6 +286,9 @@ such that <code>t(m)</code>, interpreted as vector, is ordered</td></tr>
 <tr valign="top"><td><code>support</code></td>
 <td>
 support vector of a univariate discrete distribution</td></tr>
+<tr valign="top"><td><code>prob</code></td>
+<td>
+probability vector for a univariate discrete distribution</td></tr>
 <tr valign="top"><td><code>mixDistr</code></td>
 <td>
 an object of class <code>UnivarDistrList</code></td></tr>
@@ -291,13 +307,13 @@ that the sum of the values of the result evaluated at argument <code>supp</code>
 <td>
 NULL or <code>numeric</code>; if <code>withStand</code> is <code>TRUE</code> used
 to standardize such that the result is a probability density.</td></tr>
-<tr valign="top"><td><code>p</code></td>
+<tr valign="top"><td><code>p,pfun</code></td>
 <td>
 slot <code>p</code> of an object of class <code>"AbscontDistribution"</code></td></tr>
 <tr valign="top"><td><code>d</code></td>
 <td>
 slot <code>d</code> of an object of class <code>"AbscontDistribution"</code></td></tr>
-<tr valign="top"><td><code>q</code></td>
+<tr valign="top"><td><code>q,qfun</code></td>
 <td>
 slot <code>q</code> of an object of class <code>"AbscontDistribution"</code></td></tr>
 <tr valign="top"><td><code>xx</code></td>
@@ -332,6 +348,26 @@ or logically-``any'' of these slots in a collection of such objects</td></tr>
 <td>
 logical; slot <code>.withSim</code> of a distribution object,
 or logically-``any'' of these slots in a collection of such objects</td></tr>
+<tr valign="top"><td><code>list0</code></td>
+<td>
+list, the elements of which are to be copied to a new list using
+recycling if necessary</td></tr>
+<tr valign="top"><td><code>len</code></td>
+<td>
+length of the list to be filled</td></tr>
+<tr valign="top"><td><code>lower</code></td>
+<td>
+lower truncation point</td></tr>
+<tr valign="top"><td><code>upper</code></td>
+<td>
+upper truncation point</td></tr>
+<tr valign="top"><td><code>leftright</code></td>
+<td>
+character; for slot <code>q</code>: if partially matched to <code>"right"</code> 
+function will return the right continuous version, else
+the left continuous version; for slot <code>p</code>: if partially 
+matched to <code>"left"</code> the left continuous version, else
+the right continuous version;</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 arguments passed through to other functions</td></tr>
@@ -430,6 +466,8 @@ the support slot of a discrete distribution; if necessary, a gap interval
 <code>.mergegaps2</code> merges two gap matrices of two a.c. distributions <code>X1</code> 
 and <code>X2</code> such that in the intervals of the resulting gap matrix, 
 neither <code>X1</code> nor <code>X2</code> carries mass.
+<code>.consolidategaps</code> consolidates a gap matrix, i.e. joins adjacent 
+gap intervals.  
 </p>
 <p>
 <code>.pmixfun</code>, <code>.dmixfun</code>, <code>.rmixfun</code>, and <code>.qmixfun</code>
@@ -445,6 +483,10 @@ the mixing distribution.
 <code>.del0dmixfun</code> sets (if slot <code>d.ac</code> is not <code>NULL</code>) the return
 value of slot function <code>d.ac</code> of <code>mixDistr</code> 
 for argument <code>0</code> to <code>0</code>.
+</p>
+<p>
+<code>.ULC.cast</code> coerces an object of class <code>"AcDcLcDistribution"</code> to
+class <code>"UnivarLebDecDistribution"</code>, using <code>simplifyD</code>.
 </p>
 <p>
 <code>.expm.d,.expm.c</code> for discrete, resp. a.c. argument <code>e1</code> fill the 
@@ -472,6 +514,24 @@ Simpson quadrature method, returning already the function values
 of the prime function on a grid; it is to mimick the behaviour
 of <code>cumsum</code>. <code>.primefun</code> is similar but more flexible and
 produces the prime function as a function.
+</p>
+<p>
+<code>.fillList</code> fills a new list with the elements of a given list <code>list0</code>
+until length <code>len</code> is reached using recycling if necessary.
+</p>
+<p>
+<code>.trunc.up</code>, <code>.trunc.low</code>  provide common routines for
+classes <code>DiscreteDistribution</code> and <code>AbscontDistribution</code> for 
+one-sided truncation, using (for slot <code>r</code>) Peter Dalgaard's clever 
+log-tricks as indicated in 
+<a href="http://article.gmane.org/gmane.comp.lang.r.general/126112">http://article.gmane.org/gmane.comp.lang.r.general/126112</a>.
+</p>
+<p>
+<code>.modifyqgaps</code> modifies slot <code>q</code> for objects of class 
+<code>AbscontDistribution</code> in the presence of gaps, i.e.; if slot
+<code>gaps</code> is not <code>NULL</code>. If argument <code>leftright</code> does not
+partially match <code>"right"</code> (default) returns the left continuous
+version of the quantile function, else the right continuous one.
 </p>
 <p>
 <code>devNew</code> opens a new device. This function is for back compatibility
@@ -565,6 +625,9 @@ a list of four components: <code>qL</code>, the minimal value of
 <code>q(x)(1)</code>, <code>qu</code>, the maximal value of 
 <code>q(x)(getdistrOption("TruncQuantile"), lower.tail = FALSE)</code>,
 <code>x</code> running through the members of <code>mixDistr</code> in each case.</td></tr>
+<tr valign="top"><td><code>.ULC.cast</code></td>
+<td>
+an object of class <code>"UnivarLebDecDistribution"</code>.</td></tr>
 <tr valign="top"><td><code>.expm.d,.logm.d</code></td>
 <td>
 an object of class <code>"DiscreteDistribution"</code>.</td></tr>
@@ -591,15 +654,32 @@ the prime function as a function.</td></tr>
 <tr valign="top"><td><code>.IssueWarn</code></td>
 <td>
 a list with two warnings to be issued each of which may be empty.</td></tr>
+<tr valign="top"><td><code>.fillList</code></td>
+<td>
+a list.</td></tr>
+<tr valign="top"><td><code>.trunc.up,.trunc.low</code></td>
+<td>
+a list with elements <code>r,p,d,q</code> (in this order).</td></tr>
+<tr valign="top"><td><code>.DistrCollapse</code></td>
+<td>
+upon a suggestion by Jacob van Etten, 
+<a href="mailto:jacobvanetten@yahoo.com">jacobvanetten@yahoo.com</a>: help function to collapse the support 
+points of a discrete distributions if they are too close to each other;
+here argument <code>support</code> is the (original; already sorted) support
+and <code>prob</code> a corresponding probability vector of same length.
+Criterium for collapsing: a distance smaller than argument
+<code>eps</code>.
+</td></tr>
 <tr valign="top"><td><code>devNew</code></td>
 <td>
-returns the return value of the device opened, usually invisible 'NULL'.</td></tr>
+returns the return value of the device opened, 
+usually invisible <code>NULL</code>.</td></tr>
 </table>
 
 <h3>Author(s)</h3>
 
 <p>
-Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>,
 Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
 </p>
 
@@ -629,6 +709,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.0.4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

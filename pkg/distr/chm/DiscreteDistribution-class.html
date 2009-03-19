@@ -7,9 +7,9 @@
 <table width="100%"><tr><td>DiscreteDistribution-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   DiscreteDistribution-class">
 <param name="keyword" value="R:   AffLinDiscreteDistribution-class">
-<param name="keyword" value="R:   sqrt,DiscreteDistribution-method">
 <param name="keyword" value="R:   initialize,DiscreteDistribution-method">
 <param name="keyword" value="R:   initialize,AffLinDiscreteDistribution-method">
+<param name="keyword" value="R:   sqrt,DiscreteDistribution-method">
 <param name="keyword" value="R:   coerce,DiscreteDistribution,LatticeDistribution-method">
 <param name="keyword" value=" Class 'DiscreteDistribution'">
 </object>
@@ -49,6 +49,10 @@ slot name "Parameter of a discrete distribution" </dd>
 <dt><code>.withSim</code>:</dt><dd>logical: used internally to issue warnings as to accuracy</dd>
 <dt><code>support</code>:</dt><dd>Object of class <code>"numeric"</code>: a (sorted) vector containing the support of the discrete
 density function</dd>
+<dt><code>.logExact</code>:</dt><dd>logical: used internally to flag the case where there are explicit formulae for the
+log version of density, cdf, and quantile function</dd>
+<dt><code>.lowerExact</code>:</dt><dd>logical: used internally to flag the case where there are explicit formulae for the
+lower tail version of cdf and quantile function</dd>
 </dl>
 
 <h3>Extends</h3>
@@ -63,9 +67,9 @@ Class <code>"Distribution"</code>, by class <code>"UnivariateDistribution"</code
 
 <dl>
 <dt>initialize</dt><dd><code>signature(.Object = "DiscreteDistribution")</code>: initialize method </dd>
-<dt><code>coerce</code></dt><dd><code>signature(from = "DiscreteDistribution",
-    to = "LatticeDistribution")</code>: coerces an object from <code>"DiscreteDistribution"</code>
-to <code>"LatticeDistribution"</code> if support of <code>from</code> is a lattice.</dd>
+<dt>coerce</dt><dd><code>signature(from = "DiscreteDistribution", 
+                   to = "LatticeDistribution")</code>: coerce method to class <code>"LatticeDistribution"</code>
+(checks if support is a lattice)</dd>
 <dt>Math</dt><dd><code>signature(x = "DiscreteDistribution")</code>: application of a mathematical function, e.g. <code>sin</code> or
 <code>tan</code> to this discrete distribution</dd>
 <code>abs</code>{<code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>abs(x)</code>.}
@@ -162,7 +166,23 @@ class union.
 <h3>Note</h3>
 
 <p>
-Working with a computer, we use a finite interval as support which carries at least mass <code>1-getdistrOption("TruncQuantile")</code>.
+Working with a computer, we use a finite interval as support which 
+carries at least mass <code>1-getdistrOption("TruncQuantile")</code>. <br>
+</p>
+<p>
+Also, we require that support points have distance at least       
+<code>getdistrOption("DistrResoltion")</code>, if this condition fails,
+upon a suggestion by Jacob van Etten, <a href="mailto:jacobvanetten@yahoo.com">jacobvanetten@yahoo.com</a>,
+we use the global option <code>getdistrOption("DistrCollapse")</code> to
+decide whether we use collapsing or not. If we do so, we collapse support 
+points if they are too close to each other, taking
+the (left most) median among them as new support point which accumulates
+all the mass of the collapsed points. 
+With <code>getdistrOption("DistrCollapse")==FALSE</code>, we at least collapse
+points according to the result of <code>unique()</code>, and if after this
+collapsing, the minimal distance is less than <code>getdistrOption("DistrResoltion")</code>,
+we throw an error. By <code>getdistrOption("DistrCollapse.Unique.Warn")</code>,
+we control, whether we throw a warning upon collapsing or not.
 </p>
 
 
@@ -214,6 +234,6 @@ q.r(D2)(pp+1e-5)
 
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.0.3 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
 
 </body></html>
