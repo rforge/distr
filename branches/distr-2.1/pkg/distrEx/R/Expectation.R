@@ -9,10 +9,10 @@ setMethod("E", signature(object = "AbscontDistribution",
                          fun = "missing", 
                          cond = "missing"),
     function(object,
-             rel.tol= getdistExOption("ErelativeTolerance"), 
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrOption("IQR.fac"), ...
+             IQR.fac = getdistrExOption("IQR.fac"), ...
              ){
         integrand <- function(x, dfun){ x * dfun(x) }
         
@@ -108,10 +108,10 @@ setMethod("E", signature(object = "AbscontDistribution",
                          fun = "function", 
                          cond = "missing"),
     function(object, fun, useApply = TRUE, 
-             rel.tol= getdistExOption("ErelativeTolerance"), 
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrOption("IQR.fac"), ...){
+             IQR.fac = getdistrExOption("IQR.fac"), ...){
 
         if(useApply){
             integrand <- function(x, dfun, fun, ...){ 
@@ -122,7 +122,6 @@ setMethod("E", signature(object = "AbscontDistribution",
                 fun(x, ...) * dfun(x) 
             }
         }
-
         low0 <- q(object)(lowerTruncQuantile, lower.tail = TRUE) 
         upp0 <- q(object)(upperTruncQuantile, lower.tail = FALSE)
         m <- median(object); s <- IQR(object)
@@ -209,10 +208,10 @@ setMethod("E", signature(object = "AbscontCondDistribution",
                          fun = "missing", 
                          cond = "numeric"),
     function(object, cond, useApply = TRUE,
-             rel.tol= getdistExOption("ErelativeTolerance"), 
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrOption("IQR.fac"), ...
+             IQR.fac = getdistrExOption("IQR.fac"), ...
              ){
         fct <- function(x, dfun, cond){ x * dfun(x, cond) }
         if(useApply){
@@ -269,10 +268,10 @@ setMethod("E", signature(object = "AbscontCondDistribution",
                          fun = "function", 
                          cond = "numeric"),
     function(object, fun, cond, withCond = FALSE, useApply = TRUE,
-             rel.tol= getdistExOption("ErelativeTolerance"), 
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrOption("IQR.fac")
+             IQR.fac = getdistrExOption("IQR.fac")
              , ...){
         if(withCond)
             if(useApply){

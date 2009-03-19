@@ -358,8 +358,13 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
 
     if(missing(LogDeriv)) LogDeriv <- .getLogDeriv(centraldistribution)
     L2deriv.fct <- function(param){
-                   mean <- main(param)[locscalename["loc"]]
-                   sd <-   main(param)[locscalename["scale"]]
+                   nmsL <- names(main(param))
+                   lnm <- if(locscalename["loc"] %in% nmsL)
+                             locscalename["loc"] else 1
+                   snm <- if(locscalename["scale"] %in% nmsL)
+                             locscalename["scale"] else 2          
+                   mean <- main(param)[lnm]
+                   sd <-   main(param)[snm]
                    fct1 <- function(x){}
                    fct2 <- function(x){}
                    body(fct1) <- substitute({ LogDeriv((x - loc)/scale)/scale },
@@ -408,7 +413,11 @@ L2LocationScaleFamily <- function(loc = 0, scale = 1, name,
     FI0 <- matrix(FI0,2,2,dimnames=list(locscalename,locscalename))
 
     FisherInfo.fct <- function(param){
-                   scale <- main(param)[locscalename["scale"]]
+                   nmsI <- names(main(param))
+                   if(locscalename["scale"] %in% nmsI)
+                       scale <- main(param)[locscalename["scale"]]
+                   else
+                       scale <- main(param)[2]
                    PosDefSymmMatrix(FI0/scale^2)}
 
     if(is.function(trafo))  

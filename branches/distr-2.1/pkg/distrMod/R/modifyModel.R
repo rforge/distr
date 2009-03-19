@@ -23,6 +23,7 @@ setMethod("modifyModel", signature(model = "L2ParamFamily", param = "ParamFamPar
           if(.withL2derivDistr)
              M@L2derivDistr <- imageDistr(RandVar = M@L2deriv,
                                           distr = M@distribution)      
+          
           M1 <- existsPIC(M)
 
           if(paste(M@fam.call[1]) == "L2ParamFamily")

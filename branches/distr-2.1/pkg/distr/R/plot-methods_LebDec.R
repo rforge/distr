@@ -261,12 +261,18 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
      }
 
 
-     lower <- min(getLow(x@mixDistr[[1]],
+     lower0 <- min(getLow(x@mixDistr[[1]],
                       eps = getdistrOption("TruncQuantile")*2),
                   getLow(x@mixDistr[[2]]))
-     upper <- max(getUp(x@mixDistr[[1]],
+     upper0 <- max(getUp(x@mixDistr[[1]],
                       eps = getdistrOption("TruncQuantile")*2),
                   getUp(x@mixDistr[[2]]))
+     me <- q(x)(1/2); s <- q(x)(3/4)-q(x)(1/4)
+     lower1 <- me - 6 * s
+     upper1 <- me + 6 * s
+     lower <- max(lower0, lower1)
+     upper <- min(upper0, upper1)
+
 
      ## ngrid  nr of gridpoints
      ## exactq two p-values are considered equal if difference is

@@ -87,10 +87,10 @@ E(object, fun, useApply = TRUE, Nsim = getdistrExOption("MCIterations"), ...)
 ## S4 method for signature 'AbscontDistribution, function,
 ##   missing':
 E(object, fun,  useApply = TRUE,
-             rel.tol= getdistExOption("ErelativeTolerance"), 
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrOption("IQR.fac"), ...)
+             IQR.fac = getdistrExOption("IQR.fac"), ...)
 
 ## S4 method for signature 'DiscreteDistribution, function,
 ##   missing':
@@ -119,10 +119,10 @@ E(object, fun, useApply = TRUE, ...)
 ## S4 method for signature 'AbscontCondDistribution,
 ##   missing, numeric':
 E(object, cond, useApply = TRUE,
-             rel.tol= getdistExOption("ErelativeTolerance"), 
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrOption("IQR.fac"), ...)
+             IQR.fac = getdistrExOption("IQR.fac"), ...)
 
 ## S4 method for signature 'DiscreteCondDistribution,
 ##   missing, numeric':
@@ -138,10 +138,10 @@ E(object, fun, cond,
 ##   function, numeric':
 E(object, fun, cond, 
                withCond = FALSE, useApply = TRUE,
-             rel.tol= getdistExOption("ErelativeTolerance"), 
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrOption("IQR.fac")
+             IQR.fac = getdistrExOption("IQR.fac")
              , ...)
 
 ## S4 method for signature 'DiscreteCondDistribution,
@@ -157,38 +157,38 @@ E(object, fun, cond,
 ## S4 method for signature 'UnivarLebDecDistribution,
 ##   missing, missing':
 E(object,  
-             rel.tol= getdistExOption("ErelativeTolerance"), 
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrOption("IQR.fac"), ... )
+             IQR.fac = getdistrExOption("IQR.fac"), ... )
 ## S4 method for signature 'UnivarLebDecDistribution,
 ##   function, missing':
 E(object, fun, 
-             useApply = TRUE, rel.tol= getdistExOption("ErelativeTolerance"), 
+             useApply = TRUE, rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrOption("IQR.fac"), ... )
+             IQR.fac = getdistrExOption("IQR.fac"), ... )
 ## S4 method for signature 'UnivarLebDecDistribution,
 ##   missing, ANY':
 E(object, cond, 
-             rel.tol= getdistExOption("ErelativeTolerance"), 
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrOption("IQR.fac"), ... )
+             IQR.fac = getdistrExOption("IQR.fac"), ... )
 ## S4 method for signature 'UnivarLebDecDistribution,
 ##   function, ANY':
 E(object, fun, cond, 
-             useApply = TRUE, rel.tol= getdistExOption("ErelativeTolerance"), 
+             useApply = TRUE, rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrOption("IQR.fac"), ... )
+             IQR.fac = getdistrExOption("IQR.fac"), ... )
 
 ## S4 method for signature 'AcDcLcDistribution, ANY, ANY':
 E(object, fun, cond, 
-             rel.tol= getdistExOption("ErelativeTolerance"), 
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrOption("IQR.fac"), ... )
+             IQR.fac = getdistrExOption("IQR.fac"), ... )
 ## S4 method for signature 'CompoundDistribution, missing,
 ##   missing':
 E(object, ...)

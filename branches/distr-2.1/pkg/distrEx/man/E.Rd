@@ -64,10 +64,10 @@ E(object, fun, cond, ...)
 \S4method{E}{UnivariateDistribution,function,missing}(object, fun, useApply = TRUE, Nsim = getdistrExOption("MCIterations"), ...)
 
 \S4method{E}{AbscontDistribution,function,missing}(object, fun,  useApply = TRUE,
-             rel.tol= getdistExOption("ErelativeTolerance"), 
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrOption("IQR.fac"), ...)
+             IQR.fac = getdistrExOption("IQR.fac"), ...)
 
 \S4method{E}{DiscreteDistribution,function,missing}(object, fun, useApply = TRUE, ...)
 
@@ -82,10 +82,10 @@ E(object, fun, cond, ...)
 \S4method{E}{DiscreteMVDistribution,function,missing}(object, fun, useApply = TRUE, ...)
 
 \S4method{E}{AbscontCondDistribution,missing,numeric}(object, cond, useApply = TRUE,
-             rel.tol= getdistExOption("ErelativeTolerance"), 
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrOption("IQR.fac"), ...)
+             IQR.fac = getdistrExOption("IQR.fac"), ...)
 
 \S4method{E}{DiscreteCondDistribution,missing,numeric}(object, cond, useApply = TRUE)
 
@@ -95,10 +95,10 @@ E(object, fun, cond, ...)
 
 \S4method{E}{AbscontCondDistribution,function,numeric}(object, fun, cond, 
                withCond = FALSE, useApply = TRUE,
-             rel.tol= getdistExOption("ErelativeTolerance"), 
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrOption("IQR.fac")
+             IQR.fac = getdistrExOption("IQR.fac")
              , ...)
 
 \S4method{E}{DiscreteCondDistribution,function,numeric}(object, fun, cond, 
@@ -108,31 +108,31 @@ E(object, fun, cond, ...)
              withCond = FALSE, useApply = TRUE, ...)
              
 \S4method{E}{UnivarLebDecDistribution,missing,missing}(object,  
-             rel.tol= getdistExOption("ErelativeTolerance"), 
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrOption("IQR.fac"), ... )
+             IQR.fac = getdistrExOption("IQR.fac"), ... )
 \S4method{E}{UnivarLebDecDistribution,function,missing}(object, fun, 
-             useApply = TRUE, rel.tol= getdistExOption("ErelativeTolerance"), 
+             useApply = TRUE, rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrOption("IQR.fac"), ... )
+             IQR.fac = getdistrExOption("IQR.fac"), ... )
 \S4method{E}{UnivarLebDecDistribution,missing,ANY}(object, cond, 
-             rel.tol= getdistExOption("ErelativeTolerance"), 
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrOption("IQR.fac"), ... )
+             IQR.fac = getdistrExOption("IQR.fac"), ... )
 \S4method{E}{UnivarLebDecDistribution,function,ANY}(object, fun, cond, 
-             useApply = TRUE, rel.tol= getdistExOption("ErelativeTolerance"), 
+             useApply = TRUE, rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrOption("IQR.fac"), ... )
+             IQR.fac = getdistrExOption("IQR.fac"), ... )
 
 \S4method{E}{AcDcLcDistribution,ANY,ANY}(object, fun, cond, 
-             rel.tol= getdistExOption("ErelativeTolerance"), 
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrOption("IQR.fac"), ... )
+             IQR.fac = getdistrExOption("IQR.fac"), ... )
 \S4method{E}{CompoundDistribution,missing,missing}(object, ...)
 
 \S4method{E}{Beta,missing,missing}(object, ...)

@@ -147,8 +147,13 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
         inner.q <- if(3%in%to.draw) .mpresubs(inner[[min(iL[to.draw==3])]]) else NULL
      }
 
-     lower <- getLow(x, eps = getdistrOption("TruncQuantile")*2)
-     upper <- getUp(x, eps = getdistrOption("TruncQuantile")*2)
+     lower0 <- getLow(x, eps = getdistrOption("TruncQuantile")*2)
+     upper0 <- getUp(x, eps = getdistrOption("TruncQuantile")*2)
+     me <- q(x)(1/2); s <- q(x)(3/4)-q(x)(1/4)
+     lower1 <- me - 6 * s
+     upper1 <- me + 6 * s
+     lower <- max(lower0, lower1)
+     upper <- min(upper0, upper1)
 
      ## ngrid  nr of gridpoints
      ## exactq two p-values are considered equal if difference is
