@@ -1,9 +1,12 @@
 Package: distrTeach
-Version: 2.1
+Version: 2.2
 Date: 2009-03-19
-Title: Extensions of package distr for teaching Stochastics/Statistics in secondary school
-Description: Extensions of package distr and some additional functionality
-Depends: R(>= 2.2.0), methods, distr(>= 2.0), distrEx(>= 2.0), startupmsg
+Title: Extensions of package distr for teaching Stochastics/Statistics
+        in secondary school
+Description: Extensions of package distr and some additional
+        functionality
+Depends: R(>= 2.2.0), methods, distr(>= 2.0), distrEx(>= 2.0),
+        startupmsg
 Suggests: tcltk
 Author: Peter Ruckdeschel, Matthias Kohl, Anja Hueller, Eleonara Feist
 Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
