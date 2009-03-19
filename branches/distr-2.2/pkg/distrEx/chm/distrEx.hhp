@@ -1,0 +1,55 @@
+[OPTIONS]
+Auto Index=Yes
+Contents file=distrEx.toc
+Compatibility=1.1 or later
+Compiled file=distrEx.chm
+Default topic=00Index.html
+Display compile progress=No
+Full-text search=Yes
+Full text search stop list file=..\..\..\gnuwin32\help\R.stp
+Title=R Help for package distrEx
+
+
+[FILES]
+00Index.html
+0distrEx-package.html
+AbscontCondDistribution-class.html
+AsymTotalVarDist.html
+Condition-class.html
+ContaminationSize.html
+ConvexContamination.html
+CvMDist.html
+DiscreteCondDistribution-class.html
+DiscreteMVDistribution-class.html
+DiscreteMVDistribution.html
+E.html
+EuclCondition-class.html
+EuclCondition.html
+GLIntegrate.html
+Gumbel-class.html
+Gumbel.html
+GumbelParameter-class.html
+HellingerDist.html
+KolmogorovDist.html
+LMCondDistribution.html
+LMParameter-class.html
+LMParameter.html
+MultivariateDistribution-class.html
+OAsymTotalVarDist.html
+Pareto-class.html
+Pareto.html
+ParetoParameter-class.html
+PrognCondDistribution-class.html
+PrognCondition-class.html
+TotalVarDist.html
+UnivariateCondDistribution-class.html
+Var.html
+dim-methods.html
+distrExIntegrate.html
+distrExMASK.html
+distrExOptions.html
+liesInSupport.html
+m1df.html
+m2df.html
+make01.html
+plot-methods.html

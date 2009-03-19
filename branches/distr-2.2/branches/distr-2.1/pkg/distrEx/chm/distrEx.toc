@@ -1,0 +1,1807 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HEAD></HEAD><HTML><BODY>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package distrEx:  Contents">
+<param name="Local" value="00Index.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package distrEx:  R objects">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distrEx-package">
+<param name="Local" value="0distrEx-package.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="*,Gumbel,numeric-method">
+<param name="Local" value="Gumbel-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="+,Gumbel,numeric-method">
+<param name="Local" value="Gumbel-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AbscontCondDistribution-class">
+<param name="Local" value="AbscontCondDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist,AbscontDistribution,AbscontDistribution-method">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist,AbscontDistribution,DiscreteDistribution-method">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist,AbscontDistribution,numeric-method">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist,AcDcLcDistribution,AcDcLcDistribution-method">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist,DiscreteDistribution,AbscontDistribution-method">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist,DiscreteDistribution,DiscreteDistribution-method">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist,DiscreteDistribution,LatticeDistribution-method">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist,DiscreteDistribution,numeric-method">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist,LatticeDistribution,DiscreteDistribution-method">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist,LatticeDistribution,LatticeDistribution-method">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist,numeric,AbscontDistribution-method">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist,numeric,DiscreteDistribution-method">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="AsymTotalVarDist-methods">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="cond">
+<param name="Local" value="UnivariateCondDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="cond,UnivariateCondDistribution-method">
+<param name="Local" value="UnivariateCondDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Condition-class">
+<param name="Local" value="Condition-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ContaminationSize">
+<param name="Local" value="ContaminationSize.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ContaminationSize,AbscontDistribution,AbscontDistribution-method">
+<param name="Local" value="ContaminationSize.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ContaminationSize,AcDcLcDistribution,AcDcLcDistribution-method">
+<param name="Local" value="ContaminationSize.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ContaminationSize,DiscreteDistribution,DiscreteDistribution-method">
+<param name="Local" value="ContaminationSize.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ContaminationSize,DiscreteDistribution,LatticeDistribution-method">
+<param name="Local" value="ContaminationSize.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ContaminationSize,LatticeDistribution,DiscreteDistribution-method">
+<param name="Local" value="ContaminationSize.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ContaminationSize,LatticeDistribution,LatticeDistribution-method">
+<param name="Local" value="ContaminationSize.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ContaminationSize-methods">
+<param name="Local" value="ContaminationSize.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ConvexContamination">
+<param name="Local" value="ConvexContamination.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ConvexContamination,AbscontDistribution,AbscontDistribution,numeric-method">
+<param name="Local" value="ConvexContamination.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ConvexContamination,AbscontDistribution,UnivariateDistribution,numeric-method">
+<param name="Local" value="ConvexContamination.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ConvexContamination,AcDcLcDistribution,AcDcLcDistribution,numeric-method">
+<param name="Local" value="ConvexContamination.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ConvexContamination,DiscreteDistribution,DiscreteDistribution,numeric-method">
+<param name="Local" value="ConvexContamination.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ConvexContamination,DiscreteDistribution,LatticeDistribution,numeric-method">
+<param name="Local" value="ConvexContamination.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ConvexContamination,LatticeDistribution,DiscreteDistribution,numeric-method">
+<param name="Local" value="ConvexContamination.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ConvexContamination,LatticeDistribution,LatticeDistribution,numeric-method">
+<param name="Local" value="ConvexContamination.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ConvexContamination,UnivariateDistribution,UnivariateDistribution,numeric-method">
+<param name="Local" value="ConvexContamination.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ConvexContamination-methods">
+<param name="Local" value="ConvexContamination.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="CvMDist">
+<param name="Local" value="CvMDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="CvMDist,numeric,UnivariateDistribution-method">
+<param name="Local" value="CvMDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="CvMDist,UnivariateDistribution,UnivariateDistribution-method">
+<param name="Local" value="CvMDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="CvMDist-methods">
+<param name="Local" value="CvMDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="dim">
+<param name="Local" value="dim-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="dim,DiscreteMVDistribution-method">
+<param name="Local" value="dim-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="dim-methods">
+<param name="Local" value="dim-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="DiscreteCondDistribution-class">
+<param name="Local" value="DiscreteCondDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="DiscreteMVDistribution">
+<param name="Local" value="DiscreteMVDistribution.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="DiscreteMVDistribution-class">
+<param name="Local" value="DiscreteMVDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distrEx">
+<param name="Local" value="0distrEx-package.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distrExIntegrate">
+<param name="Local" value="distrExIntegrate.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distrExMASK">
+<param name="Local" value="distrExMASK.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distrExOptions">
+<param name="Local" value="distrExOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distrExoptions">
+<param name="Local" value="distrExOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,AbscontCondDistribution,function,numeric-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,AbscontCondDistribution,missing,numeric-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,AbscontDistribution,function,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,AbscontDistribution,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,AcDcLcDistribution,ANY,ANY-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,AffLinAbscontDistribution,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,AffLinDiscreteDistribution,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,AffLinDistribution,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,AffLinLatticeDistribution,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,AffLinUnivarLebDecDistribution,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,Arcsine,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,Beta,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,Binom,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,Cauchy,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,Chisq,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,CompoundDistribution,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,DExp,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,Dirac,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,DiscreteCondDistribution,function,numeric-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,DiscreteCondDistribution,missing,numeric-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,DiscreteDistribution,function,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,DiscreteDistribution,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,DiscreteMVDistribution,function,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,DiscreteMVDistribution,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,Exp,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,Fd,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,Gammad,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,Geom,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,Hyper,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,LatticeDistribution,function,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,LatticeDistribution,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,Lnorm,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,Logis,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,MultivariateDistribution,function,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,MultivariateDistribution,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,Nbinom,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,Norm,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,Pareto,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,Pois,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,Td,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,Unif,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,UnivariateCondDistribution,function,numeric-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,UnivariateCondDistribution,missing,numeric-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,UnivariateDistribution,function,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,UnivariateDistribution,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,UnivarLebDecDistribution,function,ANY-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,UnivarLebDecDistribution,function,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,UnivarLebDecDistribution,missing,ANY-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,UnivarLebDecDistribution,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,Weibull,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E-methods">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ElowerTruncQuantile">
+<param name="Local" value="distrExOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ErelativeTolerance">
+<param name="Local" value="distrExOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="EuclCondition">
+<param name="Local" value="EuclCondition.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="EuclCondition-class">
+<param name="Local" value="EuclCondition-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="EupperTruncQuantile">
+<param name="Local" value="distrExOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="getdistrExOption">
+<param name="Local" value="distrExOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="GLIntegrate">
+<param name="Local" value="GLIntegrate.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="GLIntegrateOrder">
+<param name="Local" value="distrExOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="GLIntegrateTruncQuantile">
+<param name="Local" value="distrExOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Gumbel">
+<param name="Local" value="Gumbel.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Gumbel-class">
+<param name="Local" value="Gumbel-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="GumbelParameter-class">
+<param name="Local" value="GumbelParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist,AbscontDistribution,AbscontDistribution-method">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist,AbscontDistribution,DiscreteDistribution-method">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist,AbscontDistribution,numeric-method">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist,AcDcLcDistribution,AcDcLcDistribution-method">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist,DiscreteDistribution,AbscontDistribution-method">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist,DiscreteDistribution,DiscreteDistribution-method">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist,DiscreteDistribution,LatticeDistribution-method">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist,DiscreteDistribution,numeric-method">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist,LatticeDistribution,DiscreteDistribution-method">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist,LatticeDistribution,LatticeDistribution-method">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist,numeric,AbscontDistribution-method">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist,numeric,DiscreteDistribution-method">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="HellingerDist-methods">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="hSmooth">
+<param name="Local" value="distrExOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="initialize,Gumbel-method">
+<param name="Local" value="Gumbel-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="initialize,Pareto-method">
+<param name="Local" value="Pareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR,AffLinAbscontDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR,AffLinDiscreteDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR,AffLinDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR,AffLinLatticeDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR,ANY-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR,Arcsine-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR,Cauchy-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR,DExp-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR,Dirac-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR,DiscreteDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR,Exp-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR,Geom-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR,Logis-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR,Norm-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR,Pareto-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR,Unif-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR,UnivariateCondDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR,UnivariateDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR-methods">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR.fac">
+<param name="Local" value="distrExOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="KolmogorovDist">
+<param name="Local" value="KolmogorovDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="KolmogorovDist,AbscontDistribution,AbscontDistribution-method">
+<param name="Local" value="KolmogorovDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="KolmogorovDist,AbscontDistribution,DiscreteDistribution-method">
+<param name="Local" value="KolmogorovDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="KolmogorovDist,AcDcLcDistribution,AcDcLcDistribution-method">
+<param name="Local" value="KolmogorovDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="KolmogorovDist,DiscreteDistribution,AbscontDistribution-method">
+<param name="Local" value="KolmogorovDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="KolmogorovDist,DiscreteDistribution,DiscreteDistribution-method">
+<param name="Local" value="KolmogorovDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="KolmogorovDist,DiscreteDistribution,LatticeDistribution-method">
+<param name="Local" value="KolmogorovDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="KolmogorovDist,LatticeDistribution,DiscreteDistribution-method">
+<param name="Local" value="KolmogorovDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="KolmogorovDist,LatticeDistribution,LatticeDistribution-method">
+<param name="Local" value="KolmogorovDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="KolmogorovDist,numeric,UnivariateDistribution-method">
+<param name="Local" value="KolmogorovDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="KolmogorovDist,UnivariateDistribution,numeric-method">
+<param name="Local" value="KolmogorovDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="KolmogorovDist-methods">
+<param name="Local" value="KolmogorovDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,AffLinAbscontDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,AffLinDiscreteDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,AffLinDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,AffLinLatticeDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,ANY-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,Arcsine-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,Beta-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,Binom-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,Cauchy-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,Chisq-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,DExp-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,Dirac-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,Exp-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,Fd-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,Gammad-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,Geom-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,Hyper-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,Lnorm-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,Logis-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,Nbinom-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,Norm-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,Pareto-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,Pois-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,Td-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,Unif-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,UnivariateDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,Weibull-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis-methods">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="liesInSupport,DiscreteMVDistribution,matrix-method">
+<param name="Local" value="liesInSupport.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="liesInSupport,DiscreteMVDistribution,numeric-method">
+<param name="Local" value="liesInSupport.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="LMCondDistribution">
+<param name="Local" value="LMCondDistribution.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="LMParameter">
+<param name="Local" value="LMParameter.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="LMParameter-class">
+<param name="Local" value="LMParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="loc">
+<param name="Local" value="GumbelParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="loc,Gumbel-method">
+<param name="Local" value="Gumbel-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="loc,GumbelParameter-method">
+<param name="Local" value="GumbelParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="loc<-">
+<param name="Local" value="GumbelParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="loc<-,Gumbel-method">
+<param name="Local" value="Gumbel-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="loc<-,GumbelParameter-method">
+<param name="Local" value="GumbelParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m1df">
+<param name="Local" value="m1df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m1df,AbscontDistribution-method">
+<param name="Local" value="m1df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m1df,AffLinDistribution-method">
+<param name="Local" value="m1df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m1df,Binom-method">
+<param name="Local" value="m1df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m1df,Chisq-method">
+<param name="Local" value="m1df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m1df,DiscreteDistribution-method">
+<param name="Local" value="m1df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m1df,Exp-method">
+<param name="Local" value="m1df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m1df,LatticeDistribution-method">
+<param name="Local" value="m1df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m1df,Norm-method">
+<param name="Local" value="m1df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m1df,Pois-method">
+<param name="Local" value="m1df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m1df,UnivariateDistribution-method">
+<param name="Local" value="m1df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m1df-methods">
+<param name="Local" value="m1df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m1dfLowerTruncQuantile">
+<param name="Local" value="distrExOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m1dfRelativeTolerance">
+<param name="Local" value="distrExOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m2df">
+<param name="Local" value="m2df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m2df,AbscontDistribution-method">
+<param name="Local" value="m2df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m2df,Binom-method">
+<param name="Local" value="m2df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m2df,Chisq-method">
+<param name="Local" value="m2df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m2df,DiscreteDistribution-method">
+<param name="Local" value="m2df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m2df,Exp-method">
+<param name="Local" value="m2df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m2df,LatticeDistribution-method">
+<param name="Local" value="m2df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m2df,Norm-method">
+<param name="Local" value="m2df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m2df,Pois-method">
+<param name="Local" value="m2df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m2df,UnivariateDistribution-method">
+<param name="Local" value="m2df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m2df-methods">
+<param name="Local" value="m2df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m2dfLowerTruncQuantile">
+<param name="Local" value="distrExOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m2dfRelativeTolerance">
+<param name="Local" value="distrExOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mad">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mad,AffLinAbscontDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mad,AffLinDiscreteDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mad,AffLinDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mad,AffLinLatticeDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mad,ANY-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mad,Arcsine-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mad,Cauchy-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mad,DExp-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mad,Dirac-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mad,Exp-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mad,Geom-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mad,Logis-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mad,Norm-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mad,Unif-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mad,UnivariateDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mad-methods">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="make01">
+<param name="Local" value="make01.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="MASKING">
+<param name="Local" value="distrExMASK.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="MCIterations">
+<param name="Local" value="distrExOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median,AffLinAbscontDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median,AffLinDiscreteDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median,AffLinDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median,AffLinLatticeDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median,ANY-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median,Arcsine-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median,Cauchy-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median,DExp-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median,Dirac-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median,Exp-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median,Geom-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median,Lnorm-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median,Logis-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median,Norm-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median,Pareto-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median,Unif-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median,UnivariateCondDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median,UnivariateDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median-methods">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Min,Pareto-method">
+<param name="Local" value="Pareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Min,ParetoParameter-method">
+<param name="Local" value="ParetoParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Min<-,Pareto-method">
+<param name="Local" value="Pareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Min<-,ParetoParameter-method">
+<param name="Local" value="ParetoParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="MultivariateDistribution-class">
+<param name="Local" value="MultivariateDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="name,Condition-method">
+<param name="Local" value="Condition-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="name<-,Condition-method">
+<param name="Local" value="Condition-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="nDiscretize">
+<param name="Local" value="distrExOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist,AbscontDistribution,AbscontDistribution-method">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist,AbscontDistribution,DiscreteDistribution-method">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist,AbscontDistribution,numeric-method">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist,AcDcLcDistribution,AcDcLcDistribution-method">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist,DiscreteDistribution,AbscontDistribution-method">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist,DiscreteDistribution,DiscreteDistribution-method">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist,DiscreteDistribution,LatticeDistribution-method">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist,DiscreteDistribution,numeric-method">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist,LatticeDistribution,DiscreteDistribution-method">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist,LatticeDistribution,LatticeDistribution-method">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist,numeric,AbscontDistribution-method">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist,numeric,DiscreteDistribution-method">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="OAsymTotalVarDist-methods">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Pareto">
+<param name="Local" value="Pareto.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Pareto-class">
+<param name="Local" value="Pareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ParetoParameter-class">
+<param name="Local" value="ParetoParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plot">
+<param name="Local" value="plot-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plot,MultivariateDistribution,missing-method">
+<param name="Local" value="plot-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plot,MultivariateDistribution-method">
+<param name="Local" value="MultivariateDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plot,UnivariateCondDistribution,missing-method">
+<param name="Local" value="plot-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plot,UnivariateCondDistribution-method">
+<param name="Local" value="UnivariateCondDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plot-methods">
+<param name="Local" value="plot-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="PrognCondDistribution">
+<param name="Local" value="PrognCondDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="PrognCondDistribution-class">
+<param name="Local" value="PrognCondDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="PrognCondition">
+<param name="Local" value="PrognCondition-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="PrognCondition-class">
+<param name="Local" value="PrognCondition-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Range">
+<param name="Local" value="EuclCondition-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Range,EuclCondition-method">
+<param name="Local" value="EuclCondition-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="scale,Gumbel-method">
+<param name="Local" value="Gumbel-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="scale,GumbelParameter-method">
+<param name="Local" value="GumbelParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="scale<-,Gumbel-method">
+<param name="Local" value="Gumbel-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="scale<-,GumbelParameter-method">
+<param name="Local" value="GumbelParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sd">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sd,Norm-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sd,UnivariateDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sd-methods">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="shape">
+<param name="Local" value="ParetoParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="shape,Pareto-method">
+<param name="Local" value="Pareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="shape,ParetoParameter-method">
+<param name="Local" value="ParetoParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="shape<-">
+<param name="Local" value="ParetoParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="shape<-,Pareto-method">
+<param name="Local" value="Pareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="shape<-,ParetoParameter-method">
+<param name="Local" value="ParetoParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="show,EuclCondition-method">
+<param name="Local" value="EuclCondition-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="show,LMParameter-method">
+<param name="Local" value="LMParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="show,MultivariateDistribution-method">
+<param name="Local" value="MultivariateDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="show,PrognCondition-method">
+<param name="Local" value="PrognCondition-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="show,UnivariateCondDistribution-method">
+<param name="Local" value="UnivariateCondDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,AffLinAbscontDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,AffLinDiscreteDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,AffLinDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,AffLinLatticeDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,ANY-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,Arcsine-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,Beta-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,Binom-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,Cauchy-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,Chisq-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,DExp-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,Dirac-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,Exp-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,Fd-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,Gammad-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,Geom-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,Hyper-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,Lnorm-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,Logis-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,Nbinom-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,Norm-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,Pareto-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,Pois-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,Td-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,Unif-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,UnivariateDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,Weibull-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness-methods">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="support,DiscreteMVDistribution-method">
+<param name="Local" value="DiscreteMVDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist,AbscontDistribution,AbscontDistribution-method">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist,AbscontDistribution,DiscreteDistribution-method">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist,AbscontDistribution,numeric-method">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist,AcDcLcDistribution,AcDcLcDistribution-method">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist,DiscreteDistribution,AbscontDistribution-method">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist,DiscreteDistribution,DiscreteDistribution-method">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist,DiscreteDistribution,LatticeDistribution-method">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist,DiscreteDistribution,numeric-method">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist,LatticeDistribution,DiscreteDistribution-method">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist,LatticeDistribution,LatticeDistribution-method">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist,numeric,AbscontDistribution-method">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist,numeric,DiscreteDistribution-method">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TotalVarDist-methods">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="UnivariateCondDistribution-class">
+<param name="Local" value="UnivariateCondDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,AffLinAbscontDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,AffLinDiscreteDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,AffLinDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,AffLinLatticeDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,ANY-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,Arcsine-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,Beta-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,Binom-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,Cauchy-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,Chisq-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,CompoundDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,DExp-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,Dirac-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,Exp-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,Fd-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,Gammad-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,Geom-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,Hyper-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,Lnorm-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,Logis-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,Nbinom-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,Norm-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,Pareto-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,Pois-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,Td-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,Unif-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,UnivariateDistribution-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,Weibull-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var-methods">
+<param name="Local" value="Var.html">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package distrEx:  Titles">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Absolutely continuous conditional distribution">
+<param name="Local" value="AbscontCondDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Centering and Standardization of Univariate Distributions">
+<param name="Local" value="make01.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Conditioning by an Euclidean space.">
+<param name="Local" value="EuclCondition-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Conditions">
+<param name="Local" value="Condition-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Conditions of class 'PrognCondition'">
+<param name="Local" value="PrognCondition-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Discrete conditional distribution">
+<param name="Local" value="DiscreteCondDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Discrete Multivariate Distributions">
+<param name="Local" value="DiscreteMVDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distrEx - Extensions of package distr">
+<param name="Local" value="0distrEx-package.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Function to change the global variables of the package 'distrEx'">
+<param name="Local" value="distrExOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Gauss-Legendre Quadrature">
+<param name="Local" value="GLIntegrate.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for DiscreteMVDistribution-class">
+<param name="Local" value="DiscreteMVDistribution.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for EuclCondition-class">
+<param name="Local" value="EuclCondition.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for Gumbel-class">
+<param name="Local" value="Gumbel.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for LMParameter-class">
+<param name="Local" value="LMParameter.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for Pareto-class">
+<param name="Local" value="Pareto.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for the conditional distribution of a linear regression model.">
+<param name="Local" value="LMCondDistribution.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generic Function for Generating Convex Contaminations">
+<param name="Local" value="ConvexContamination.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generic Function for Testing the Support of a Distribution">
+<param name="Local" value="liesInSupport.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generic Function for the Computation of (Conditional) Expectations">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generic function for the computation of (minimal) asymmetric total variation distance of two distributions">
+<param name="Local" value="OAsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generic function for the computation of asymmetric total variation distance of two distributions">
+<param name="Local" value="AsymTotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generic Function for the Computation of Clipped First Moments">
+<param name="Local" value="m1df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generic function for the computation of clipped second moments">
+<param name="Local" value="m2df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generic Function for the Computation of the Convex Contamination (Pseudo-)Distance of Two Distributions">
+<param name="Local" value="ContaminationSize.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generic function for the computation of the Cramer - von Mises distance of two distributions">
+<param name="Local" value="CvMDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generic function for the computation of the Hellinger distance of two distributions">
+<param name="Local" value="HellingerDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generic function for the computation of the Kolmogorov distance of two distributions">
+<param name="Local" value="KolmogorovDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generic function for the computation of the total variation distance of two distributions">
+<param name="Local" value="TotalVarDist.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generic Functions for the Computation of Functionals">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Gumbel distribution">
+<param name="Local" value="Gumbel-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Integration of One-Dimensional Functions">
+<param name="Local" value="distrExIntegrate.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Masking of/by other functions in package "distrEx"">
+<param name="Local" value="distrExMASK.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Methods for Function dim in Package 'distrEx'">
+<param name="Local" value="dim-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Methods for Function plot in Package 'distrEx'">
+<param name="Local" value="plot-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Multivariate Distributions">
+<param name="Local" value="MultivariateDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Parameter of a linear regression model">
+<param name="Local" value="LMParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Paramter of Gumbel distributions">
+<param name="Local" value="GumbelParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Paramter of Pareto distributions">
+<param name="Local" value="ParetoParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Pareto distribution">
+<param name="Local" value="Pareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Posterior distribution in convolution">
+<param name="Local" value="PrognCondDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Univariate conditional distribution">
+<param name="Local" value="UnivariateCondDistribution-class.html">
+</OBJECT>
+</UL>
+</UL>
+</BODY></HTML>

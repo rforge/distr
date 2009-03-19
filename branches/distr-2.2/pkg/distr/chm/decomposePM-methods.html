@@ -1,0 +1,113 @@
+<html><head><title>Methods for function decomposePM in Package &lsquo;distr&rsquo;</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>decomposePM-methods(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   decomposePM-methods">
+<param name="keyword" value="R:   decomposePM">
+<param name="keyword" value="R:   decomposePM,AbscontDistribution-method">
+<param name="keyword" value="R:   decomposePM,DiscreteDistribution-method">
+<param name="keyword" value="R:   decomposePM,UnivarLebDecDistribution-method">
+<param name="keyword" value=" Methods for function decomposePM in Package &lsquo;distr&rsquo;">
+</object>
+
+
+<h2>Methods for function decomposePM in Package &lsquo;distr&rsquo;</h2>
+
+
+<h3>Description</h3>
+
+<p>
+decomposePM-methods
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+decomposePM(object)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+Abscont-/Discrete-/UnivarLebDec-Distribution object</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+There are particular return types for the following classes
+<dl>
+<dt>"AbscontDistribution"</dt><dd>a list with components <code>"neg"</code> and 
+<code>"pos"</code> for the respective negative and positive part; each of these
+parts in its turn is a list with components <code>D</code> for the distribution
+(in this case of class <code>"AbscontDistribution"</code> again) and <code>w</code> 
+for the weight of the respective part; if the weight of
+the negative part is 0, the corresponding distribution is set to 
+<code>-abs(Norm())</code>, and respectively, if the weight of the positive part 
+is 0, the corresponding distribution is set to 
+<code>abs(Norm())</code>.</dd>
+<dt>"DiscreteDistribution"</dt><dd>a list with components <code>"neg"</code>, 
+<code>"pos"</code> and <code>"0"</code> for the respective negative, positive and zero 
+part; each of these parts in its turn is a list with components <code>D</code> for 
+the distribution (in this case of class <code>"DiscreteDistribution"</code> again)
+and <code>w</code> for the weight of the respective part; while the distribution of
+the zero part is always <code>Dirac(0)</code>, if the weight of
+the negative part is 0, the corresponding distribution is set to 
+<code>Dirac(-1)</code>, and respectively, if the weight of the positive part 
+is 0, the corresponding distribution is set to 
+<code>Dirac(1)</code>.</dd>
+<dt>"UnivarLebDecDistribution"</dt><dd>a list with components <code>"neg"</code>, 
+<code>"pos"</code> and <code>"0"</code> for the respective negative, positive and zero 
+part; each of these parts in its turn is a list with components <code>D</code> for 
+the distribution (in case of components <code>"neg"</code>, 
+<code>"pos"</code> of class <code>"UnivarLebDecDistribution"</code> again, while 
+the distribution of the zero part is always <code>Dirac(0)</code>)
+and <code>w</code> for the weight of the respective part; it is build up by calling
+<code>decomposePM</code> for <code>acPart(object)</code> and <code>discretePart(object)</code>
+separately, hence if weights of some parts are zero the corresponding
+procedure mentionned for these methods applies.</dd>
+</dl>
+
+<p>
+Method <code>decomposePM</code> is used by our multiplication, division and exponentiation
+(<code>"*"</code>, <code>"/"</code> <code>"^"</code>) - methods.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+the positive and negative part of the distribution together with
+corresponding weights as a list.</p>
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="ContDistribution-class.html">AbscontDistribution-class</a></code>, 
+<code><a href="DiscreteDistribution-class.html">DiscreteDistribution-class</a></code>,
+<code><a href="UnivarLebDecDistribution-class.html">UnivarLebDecDistribution-class</a></code>,
+<code><a href="operators-methods.html">operators-methods</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+decomposePM(Norm())
+decomposePM(Binom(2,0.3)-Binom(5,.4))
+decomposePM(UnivarLebDecDistribution(Norm(),Binom(2,0.3)-Binom(5,.4), 
+            acWeight = 0.3))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index]</a></div>
+
+</body></html>

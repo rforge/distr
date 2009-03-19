@@ -1,0 +1,102 @@
+<html><head><title>Class "Arcsine"</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>Arcsine-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   Arcsine-class">
+<param name="keyword" value="R:   Arcsine">
+<param name="keyword" value="R:   initialize,Arcsine-method">
+<param name="keyword" value=" Class 'Arcsine'">
+</object>
+
+
+<h2>Class 'Arcsine'</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The Arcsine distribution has density
+</p><p align="center"><i>1/sqrt(1+x^2)/pi</i></p><p>
+for <i>-1 &lt;= x &lt;= 1</i>.
+</p>
+
+
+<h3>Objects from the Class</h3>
+
+<p>
+Objects can be created by calls of the form <code>Arcsine()</code>.
+This object is an Arcsine distribution.
+</p>
+
+
+<h3>Slots</h3>
+
+<dl>
+<dt><code>img</code>:</dt><dd>Object of class <code>"Reals"</code>:
+The space of the image of this distribution has got dimension 1 and the name "Real Space". </dd>
+<dt><code>r</code>:</dt><dd>Object of class <code>"function"</code>:
+generates random numbers (calls function rArcsine)</dd>
+<dt><code>d</code>:</dt><dd>Object of class <code>"function"</code>:
+density function (calls function dArcsine)</dd>
+<dt><code>p</code>:</dt><dd>Object of class <code>"function"</code>:
+cumulative function (calls function pArcsine)</dd>
+<dt><code>q</code>:</dt><dd>Object of class <code>"function"</code>:
+inverse of the cumulative function (calls function qArcsine)</dd>
+<dt><code>.withArith</code>:</dt><dd>logical: used internally to issue warnings as to interpretation of arithmetics</dd>
+<dt><code>.withSim</code>:</dt><dd>logical: used internally to issue warnings as to accuracy</dd>
+<dt><code>.logExact</code>:</dt><dd>logical: used internally to flag the case where there are explicit formulae for the
+log version of density, cdf, and quantile function</dd>
+<dt><code>.lowerExact</code>:</dt><dd>logical: used internally to flag the case where there are explicit formulae for the
+lower tail version of cdf and quantile function</dd>
+</dl>
+
+<h3>Extends</h3>
+
+<p>
+Class <code>"AbscontDistribution"</code>, directly. <br>
+Class <code>"UnivariateDistribution"</code>, by class <code>"AbscontDistribution"</code>. <br>
+Class <code>"Distribution"</code>, by class <code>"AbscontDistribution"</code>.
+</p>
+
+
+<h3>Methods</h3>
+
+<dl>
+<dt>initialize</dt><dd><code>signature(.Object = "Arcsine")</code>:
+initialize method</dd>
+</dl>
+
+<h3>Author(s)</h3>
+
+<p>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="ContDistribution-class.html">AbscontDistribution-class</a></code>
+<code><a href="Reals-class.html">Reals-class</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+A &lt;- Arcsine()
+# A is a Arcsine distribution with shape1 = 1 and shape2 = 1.
+r(A)(3) # three random number generated from this distribution, e.g. 0.6979795
+d(A)(c(-2,-1,-0.2,0,0.2,1,2)) # Density at x=c(-1,-0.2,0,0.2,1).
+p(A)(c(-2,-1,-0.2,0,0.2,1,2)) # cdf at q=c(-1,-0.2,0,0.2,1).
+q(A)(c(0,0.2,1,2)) # quantile function at at x=c(0,0.2,1).
+</pre>
+
+
+
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index]</a></div>
+
+</body></html>

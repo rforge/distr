@@ -1,0 +1,59 @@
+<html><head><title>Methods for Functions print and show in Package &lsquo;distrTEst&rsquo;</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>print-methods(distrTEst)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   print-methods">
+<param name="keyword" value="R:   print,Evaluation-method">
+<param name="keyword" value="R:   print,EvaluationList-method">
+<param name="keyword" value="R:   show-methods">
+<param name="keyword" value="R:   show,Evaluation-method">
+<param name="keyword" value="R:   show,EvaluationList-method">
+<param name="keyword" value=" Methods for Functions print and show in Package &lsquo;distrTEst&rsquo;">
+</object>
+
+
+<h2>Methods for Functions print and show in Package &lsquo;distrTEst&rsquo;</h2>
+
+
+<h3>Description</h3>
+
+<p>
+print/show-methods
+</p>
+
+
+<h3>Methods</h3>
+
+<dl>
+</p>
+
+<dt>print</dt><dd><code>signature(x = "Evaluation")</code>: returns the name of the data object, its filename, the estimator used and the result;
+optional arguments: 
+<dl><dt>runs0</dt><dd>the indices of runs to be summarized;</dd>
+<dt>dims0</dt><dd>the indices of result dimensions to be summarized;</dd></dl> 
+internal argument:
+<dl><dt>inList</dt><dd>decides if name of Dataobject and Datafile are printed out 
+(which is done if <code>inLIST==FALSE</code>); defaults to <code>FALSE</code> but is
+TRUE when <code>summary</code> is called from <code>summary</code>-method for <code>signature(object = "EvaluationList")</code></dd></dl>
+</dd>
+<dt>print</dt><dd><code>signature(object = "EvaluationList")</code>: after printing the name of the list, 
+for each member of the list print is executed;
+optional arguments: 
+<dl>
+<dt>eval0</dt><dd>the indices of evaluations to be summarized;&mdash; of this vector <code>eval0</code> 
+maximally <code>MaxNumberofSummarizedEvaluations</code> evaluations are summarized where <code>MaxNumberofPrintedEvaluations</code> 
+is a global option, see <code><a href="distrTEstoptions.html">distrTEstoptions</a></code></dd>
+<dt>runs0</dt><dd>the indices of runs to be summarized;</dd>
+<dt>dims0</dt><dd>the indices of observation dimensions to be summarized;</dd></dl>
+</dd>
+<dt>show</dt><dd><code>signature(x = "Evaluation")</code>: the same as <code>print</code> (without optional arguments)</dd>
+<dt>show</dt><dd><code>signature(x = "EvaluationList")</code>: the same as <code>print</code> (without optional arguments)</dd>
+</dl>
+
+
+<hr><div align="center">[Package <em>distrTEst</em> version 2.1 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

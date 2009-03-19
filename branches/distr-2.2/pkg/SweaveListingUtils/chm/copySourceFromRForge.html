@@ -1,0 +1,132 @@
+<html><head><title>copySourceFromRForge</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>copySourceFromRForge(SweaveListingUtils)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   copySourceFromRForge">
+<param name="keyword" value=" copySourceFromRForge">
+</object>
+
+
+<h2>copySourceFromRForge</h2>
+
+
+<h3>Description</h3>
+
+<p>
+copies lines of a source file (usually &lsquo;<span class="file">.R</span>&rsquo; oder &lsquo;<span class="file">.Rd</span>&rsquo;)
+from R forge repository
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+copySourceFromRForge(PKG, TYPE, FILENAME, PROJECT, from, to,
+                                 offset.before = 0, offset.after = 0,
+                                 fromRForge = getSweaveListingOption("fromRForge"),
+                                 base.url = getSweaveListingOption("base.url") )
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>PKG</code></td>
+<td>
+character; name of package to be downloaded</td></tr>
+<tr valign="top"><td><code>TYPE</code></td>
+<td>
+character; style of the source code &mdash; "man" or "R"</td></tr>
+<tr valign="top"><td><code>FILENAME</code></td>
+<td>
+character; the name of the source file to be downloaded</td></tr>
+<tr valign="top"><td><code>PROJECT</code></td>
+<td>
+character; the name of the R-Forge project</td></tr>
+<tr valign="top"><td><code>from</code></td>
+<td>
+single character  or single numeric or missing; if character,
+the starting string being searched (by <code>grep</code>, hence as regular expression);
+if numeric, the starting line number, if missing we begin with the first line
+of the file</td></tr>
+<tr valign="top"><td><code>to</code></td>
+<td>
+single character  or single numeric or missing; if character,
+the ending string being searched (by <code>grep</code>, hence as regular expression);
+if numeric, the ending line number, if missing we end with the last line
+of the file</td></tr>
+<tr valign="top"><td><code>offset.before</code></td>
+<td>
+numeric; number of lines to be included before the first
+match; defaults to 0</td></tr>
+<tr valign="top"><td><code>offset.after</code></td>
+<td>
+numeric; number of lines to be included after the first
+match; defaults to 0</td></tr>
+<tr valign="top"><td><code>fromRForge</code></td>
+<td>
+logical; shall code be downloaded from an R-Forge mirror?
+Defaults to the corresponding global option</td></tr>
+<tr valign="top"><td><code>base.url</code></td>
+<td>
+character; base url from where to download the code sniplet</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+produces a vector of characters where each component is one line of
+the original source file;
+arguments <code>from</code>, <code>to</code> may be
+<ul>
+<dt>missing</dt><dd>then the whole file (resp. from the beginning or to the end) is used</dd>
+<dt>numbers</dt><dd>then the limits are just given as line numbers</dd>
+<dt>characters</dt><dd>then file is searched for the first occurrance of a passage
+framed by <code>from</code>, <code>to</code>; uses <code>grep</code>; hence
+<a href="onclick="findlink('base', 'regex.html')" style="text-decoration: underline; color: blue; cursor: hand"">regular expressions</a> may be used which involves masking
+of (,{,\, etc.  as described in the cited reference;
+</dd></ul>
+<p>
+with offsets, additional lines may be pasted before and after the search result
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+the character content of the filtered source file,
+if nothing is found   it returns <code>invisible()</code>.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+copySourceFromRForge("distr","R","AllClasses.R","distr", from =2, to =3,
+                     offset.after=2)
+copySourceFromRForge("distr","R","AllClasses.R","distr", from ="setClass",
+                      to ="}")
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.2 <a href="00Index.html">Index]</a></div>
+
+</body></html>

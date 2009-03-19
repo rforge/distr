@@ -1,0 +1,95 @@
+<html><head><title>Generating function for Pareto-class</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>Pareto(distrEx)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   Pareto">
+<param name="keyword" value=" Generating function for Pareto-class">
+</object>
+
+
+<h2>Generating function for Pareto-class</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Generates an object of class <code>"Pareto"</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>Pareto(shape = 1, Min = 1)</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>shape</code></td>
+<td>
+positive real number: shape parameter of 
+the Pareto distribution. </td></tr>
+<tr valign="top"><td><code>Min</code></td>
+<td>
+positive real number: Min parameter
+of the Pareto distribution </td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+Object of class <code>"Pareto"</code></p>
+
+<h3>Note</h3>
+
+<p>
+The class <code>"Pareto"</code> is based on the code provided 
+by the package <span class="pkg">actuar</span> by  Vincent Goulet and Mathieu Pigeon.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Nataliya Horbenko <a href="mailto:Nataliya.Horbenko@itwm.fraunhofer.de">Nataliya.Horbenko@itwm.fraunhofer.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="Pareto-class.html">Pareto-class</a></code>, <code><a onclick="findlink('actuar', 'dpareto1.html')" style="text-decoration: underline; color: blue; cursor: hand">dpareto1</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+(P1 &lt;- Pareto(shape = 1, Min = 1))
+plot(P1)
+
+E(Pareto()) 
+E(P1, function(x){x^2})
+
+## The function is currently defined as
+function(shape = 1, Min = 1) 
+               new("Pareto", shape = shape, Min = Min)
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>distrEx</em> version 2.1 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

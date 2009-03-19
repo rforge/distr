@@ -1,0 +1,131 @@
+<html><head><title>Class "Unif"</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>Unif-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   Unif-class">
+<param name="keyword" value="R:   Unif">
+<param name="keyword" value="R:   initialize,Unif-method">
+<param name="keyword" value=" Class 'Unif'">
+</object>
+
+
+<h2>Class 'Unif'</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The uniform distribution has density
+</p><p align="center"><i>d(x) = 1/(max-min)</i></p><p>
+for <i>min</i>, by default <i>=0</i>, <i>&lt;= x &lt;= max</i>, by default <i>=1</i>.
+C.f. <code><a onclick="findlink('stats', 'Uniform.html')" style="text-decoration: underline; color: blue; cursor: hand">runif</a></code>
+</p>
+
+
+<h3>Objects from the Class</h3>
+
+<p>
+Objects can be created by calls of the form <code>Unif(Min, Max)</code>.
+This object is a uniform distribution.
+</p>
+
+
+<h3>Slots</h3>
+
+<dl>
+<dt>*</dt><dd><code>signature(e1 = "Unif", e2 = "numeric")</code>: multiplication of this uniform distribution by an object of
+class `numeric'</dd>
+<dt>+</dt><dd><code>signature(e1 = "Unif", e2 = "numeric")</code>: addition of this uniform distribution to an object of class
+`numeric'</dd>
+<dt><code>img</code>:</dt><dd>Object of class <code>"Reals"</code>: The space of the image of this distribution has got dimension 1
+and the name "Real Space". </dd>
+<dt><code>param</code>:</dt><dd>Object of class <code>"UnifParameter"</code>: the parameter of this distribution (Min and Max),
+declared at its instantiation </dd>
+<dt><code>r</code>:</dt><dd>Object of class <code>"function"</code>: generates random numbers (calls function <code>runif</code>)</dd>
+<dt><code>d</code>:</dt><dd>Object of class <code>"function"</code>: density function (calls function <code>dunif</code>)</dd>
+<dt><code>p</code>:</dt><dd>Object of class <code>"function"</code>: cumulative function (calls function <code>punif</code>)</dd>
+<dt><code>q</code>:</dt><dd>Object of class <code>"function"</code>: inverse of the cumulative function (calls function <code>qunif</code>)</dd>
+</dl>
+
+<h3>Extends</h3>
+
+<p>
+Class <code>"AbscontDistribution"</code>, directly.<br>
+Class <code>"UnivariateDistribution"</code>, by class <code>"AbscontDistribution"</code>.<br>
+Class <code>"Distribution"</code>, by class <code>"AbscontDistribution"</code>.
+</p>
+
+
+<h3>Is-Relations</h3>
+
+<p>
+By means of <code>setIs</code>, R ``knows'' that a distribution object <code>obj</code> of class <code>"Unif"</code> with Min 0 and Max 1 also is
+a Beta distribution with parameters <code>shape1 = 1, shape2 = 1, ncp = 0</code>.
+</p>
+
+
+<h3>Methods</h3>
+
+<dl>
+<dt>initialize</dt><dd><code>signature(.Object = "Unif")</code>: initialize method </dd>
+<dt>Min</dt><dd><code>signature(object = "Unif")</code>: returns the slot <code>Min</code> of the parameter of the distribution </dd>
+<dt>Min&lt;-</dt><dd><code>signature(object = "Unif")</code>: modifies the slot <code>Min</code> of the parameter of the distribution </dd>
+<dt>Max</dt><dd><code>signature(object = "Unif")</code>: returns the slot <code>Max</code> of the parameter of the distribution </dd>
+<dt>Max&lt;-</dt><dd><code>signature(object = "Unif")</code>: modifies the slot <code>Max</code> of the parameter of the distribution </dd>
+<dt>*</dt><dd><code>signature(e1 = "Unif", e2 = "numeric")</code>:
+For the uniform distribution we use its closedness under scaling transformations.</dd>
+</dl>
+
+<h3>Author(s)</h3>
+
+<p>
+Thomas Stabla <a href="mailto:statho3@web.de">statho3@web.de</a>,<br> 
+Florian Camphausen <a href="mailto:fcampi@gmx.de">fcampi@gmx.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>,<br> 
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="UnifParameter-class.html">UnifParameter-class</a></code>
+<code><a href="ContDistribution-class.html">AbscontDistribution-class</a></code>
+<code><a href="Reals-class.html">Reals-class</a></code>
+<code><a onclick="findlink('stats', 'Uniform.html')" style="text-decoration: underline; color: blue; cursor: hand">runif</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+U &lt;- Unif(Min=0,Max=2) # U is a uniform distribution with Min=0 and Max=2.
+r(U)(1) # one random number generated from this distribution, e.g. 1.984357
+d(U)(1) # Density of this distribution is 0.5 for x=1.
+p(U)(1) # Probability that x&lt;1 is 0.5.
+q(U)(.1) # Probability that x&lt;0.2 is 0.1.
+Min(U) # Min of this distribution is 0.
+Min(U) &lt;- 1 # Min of this distribution is now 1.
+Min(U) # Min of this distribution is 1.
+Min(U) &lt;- 0
+is(U/2,"Beta") # yes
+V &lt;- U/2; as(V,"Beta")
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index]</a></div>
+
+</body></html>

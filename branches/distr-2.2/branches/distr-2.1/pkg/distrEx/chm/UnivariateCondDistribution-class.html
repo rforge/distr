@@ -1,0 +1,104 @@
+<html><head><title>Univariate conditional distribution</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>UnivariateCondDistribution-class(distrEx)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   UnivariateCondDistribution-class">
+<param name="keyword" value="R:   cond">
+<param name="keyword" value="R:   cond,UnivariateCondDistribution-method">
+<param name="keyword" value="R:   plot,UnivariateCondDistribution-method">
+<param name="keyword" value="R:   show,UnivariateCondDistribution-method">
+<param name="keyword" value=" Univariate conditional distribution">
+</object>
+
+
+<h2>Univariate conditional distribution</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Class of univariate conditional distributions.
+</p>
+
+
+<h3>Objects from the Class</h3>
+
+<p>
+Objects can be created by calls of the form <code>new("UnivariateCondDistribution", ...)</code>.
+</p>
+
+
+<h3>Slots</h3>
+
+<dl>
+<dt><code>cond</code>:</dt><dd>Object of class <code>"Condition"</code>: condition </dd>
+<dt><code>img</code>:</dt><dd>Object of class <code>"rSpace"</code>: the image space. </dd>
+<dt><code>param</code>:</dt><dd>Object of class <code>"OptionalParameter"</code>: an 
+optional parameter.</dd>
+<dt><code>r</code>:</dt><dd>Object of class <code>"function"</code>: 
+generates random numbers. </dd>
+<dt><code>d</code>:</dt><dd>Object of class <code>"OptionalFunction"</code>: 
+optional conditional density function. </dd>
+<dt><code>p</code>:</dt><dd>Object of class <code>"OptionalFunction"</code>: 
+optional conditional cumulative distribution function. </dd>
+<dt><code>q</code>:</dt><dd>Object of class <code>"OptionalFunction"</code>:
+optional conditional quantile function. </dd>
+</dl>
+
+<h3>Extends</h3>
+
+<p>
+Class <code>"UnivariateDistribution"</code>, directly.<br>
+Class <code>"Distribution"</code>, by class <code>"UnivariateDistribution"</code>.
+</p>
+
+
+<h3>Methods</h3>
+
+<dl>
+<dt>cond</dt><dd><code>signature(object = "UnivariateCondDistribution")</code>:
+accessor function for slot <code>cond</code>.</dd>
+
+
+<dt>show</dt><dd><code>signature(object = "UnivariateCondDistribution")</code></dd>
+
+
+<dt>plot</dt><dd><code>signature(object = "UnivariateCondDistribution")</code>:
+not yet implemented.</dd>
+</dl>
+
+<h3>Author(s)</h3>
+
+<p>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a onclick="findlink('distr', 'Distribution-class.html')" style="text-decoration: underline; color: blue; cursor: hand">Distribution-class</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>new("UnivariateCondDistribution")</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>distrEx</em> version 2.1 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

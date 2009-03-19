@@ -1,0 +1,12 @@
+######################################################################
+#  News: to package distrTeach
+######################################################################
+ 
+##############
+v 2.0 
+##############
+
+* created new package 'distrTeach' (version to be consistent with distrXXX family)
+
+* moved teaching functions 'illustrateLLN()', 'illustrateCLT[.tcl]'
+  from package 'distrEx' to this new package

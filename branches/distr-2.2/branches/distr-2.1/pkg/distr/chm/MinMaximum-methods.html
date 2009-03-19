@@ -1,0 +1,148 @@
+<html><head><title>Methods for functions Minimum and Maximum in Package &lsquo;distr&rsquo;</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>Minimum-methods(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   Minimum-methods">
+<param name="keyword" value="R:   Minimum">
+<param name="keyword" value="R:   Maximum-methods">
+<param name="keyword" value="R:   Maximum">
+<param name="keyword" value="R:   Minimum,AbscontDistribution,AbscontDistribution-method">
+<param name="keyword" value="R:   Minimum,DiscreteDistribution,DiscreteDistribution-method">
+<param name="keyword" value="R:   Minimum,AbscontDistribution,Dirac-method">
+<param name="keyword" value="R:   Minimum,AcDcLcDistribution,AcDcLcDistribution-method">
+<param name="keyword" value="R:   Minimum,AbscontDistribution,numeric-method">
+<param name="keyword" value="R:   Minimum,DiscreteDistribution,numeric-method">
+<param name="keyword" value="R:   Minimum,AcDcLcDistribution,numeric-method">
+<param name="keyword" value="R:   Maximum,AcDcLcDistribution,AcDcLcDistribution-method">
+<param name="keyword" value="R:   Maximum,AcDcLcDistribution,numeric-method">
+<param name="keyword" value=" Methods for functions Minimum and Maximum in Package &lsquo;distr&rsquo;">
+</object>
+
+
+<h2>Methods for functions Minimum and Maximum in Package &lsquo;distr&rsquo;</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Minimum and Maximum-methods
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+Minimum(e1, e2, ...)
+Maximum(e1, e2, ...) 
+## S4 method for signature 'AbscontDistribution,
+##   AbscontDistribution':
+Minimum(e1,e2, ...)
+## S4 method for signature 'DiscreteDistribution,
+##   DiscreteDistribution':
+Minimum(e1,e2, ...)
+## S4 method for signature 'AbscontDistribution, Dirac':
+Minimum(e1,e2, 
+                   withSimplify = getdistrOption("simplifyD"))
+## S4 method for signature 'AcDcLcDistribution,
+##   AcDcLcDistribution':
+Minimum(e1,e2, 
+                   withSimplify = getdistrOption("simplifyD"))
+## S4 method for signature 'AcDcLcDistribution,
+##   AcDcLcDistribution':
+Maximum(e1,e2, 
+                   withSimplify = getdistrOption("simplifyD"))
+## S4 method for signature 'AbscontDistribution, numeric':
+Minimum(e1,e2, ...)
+## S4 method for signature 'DiscreteDistribution, numeric':
+Minimum(e1,e2, ...)
+## S4 method for signature 'AcDcLcDistribution, numeric':
+Minimum(e1,e2,
+                   withSimplify = getdistrOption("simplifyD"))
+## S4 method for signature 'AcDcLcDistribution, numeric':
+Maximum(e1,e2, 
+                   withSimplify = getdistrOption("simplifyD"))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>e1</code></td>
+<td>
+distribution object</td></tr>
+<tr valign="top"><td><code>e2</code></td>
+<td>
+distribution object or numeric</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+further arguments (to be able to call various methods  with the same
+arguments</td></tr>
+<tr valign="top"><td><code>withSimplify</code></td>
+<td>
+logical; is result to be piped through a call to 
+<code><a href="simplifyD-methods.html">simplifyD</a></code>?</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+the corresponding distribution of the minimum / maximum</p>
+
+<h3>Methods</h3>
+
+<dl>
+<dt>Minimum</dt><dd><code>signature(e1 = "AbscontDistribution", e2 = "AbscontDistribution")</code>: 
+returns the distribution of <code>min(X1,X2)</code>, if <code>X1</code>,<code>X2</code> are independent
+and distributed according to <code>e1</code> and <code>e2</code> respectively;
+the result is again of class <code>"AbscontDistribution"</code></dd>
+<dt>Minimum</dt><dd><code>signature(e1 = "DiscreteDistribution", e2 = "DiscreteDistribution")</code>: 
+returns the distribution of <code>min(X1,X2)</code>, if <code>X1</code>,<code>X2</code> are independent
+and distributed according to <code>e1</code> and <code>e2</code> respectively;
+the result is again of class <code>"DiscreteDistribution"</code></dd>
+<dt>Minimum</dt><dd><code>signature(e1 = "AbscontDistribution", e2 = "Dirac")</code>: 
+returns the distribution of <code>min(X1,X2)</code>, if <code>X1</code>,<code>X2</code> are  
+distributed according to <code>e1</code> and <code>e2</code> respectively;
+the result is of class <code>"UnivarLebDecDistribution"</code></dd>
+<dt>Minimum</dt><dd><code>signature(e1 = "AcDcLcDistribution", e2 = "AcDcLcDistribution")</code>: 
+returns the distribution of <code>min(X1,X2)</code>, if <code>X1</code>,<code>X2</code> are  
+distributed according to <code>e1</code> and <code>e2</code> respectively;
+the result is of class <code>"UnivarLebDecDistribution"</code></dd>
+<dt>Minimum</dt><dd><code>signature(e1 = "AcDcLcDistribution", e2 = "numeric")</code>: 
+if <code>e2</code> = <i>n</i>, returns the distribution of <code>min(X1,X2,...,Xn)</code>, if <code>X1</code>,<code>X2</code>, 
+..., <code>Xn</code> are i.i.d. according to <code>e1</code>;
+the result is of class <code>"UnivarLebDecDistribution"</code></dd>
+<dt>Maximum</dt><dd><code>signature(e1 = "AcDcLcDistribution", e2 = "AcDcLcDistribution")</code>: 
+returns the distribution of <code>max(X1,X2)</code>, if <code>X1</code>,<code>X2</code> are  
+distributed according to <code>e1</code> and <code>e2</code> respectively;
+translates into <code>-Minimum(-e1,-e2)</code>;
+the result is of class <code>"UnivarLebDecDistribution"</code></dd>
+<dt>Maximum</dt><dd><code>signature(e1 = "AcDcLcDistribution", e2 = "numeric")</code>: 
+if <code>e2</code> = <i>n</i>, returns the distribution of <code>max(X1,X2,...,Xn)</code>, if <code>X1</code>,<code>X2</code>, 
+..., <code>Xn</code> are i.i.d. according to <code>e1</code>; translates into 
+<code>-Minimum(-e1,e2)</code>; the result is of class <code>"UnivarLebDecDistribution"</code></dd>
+</dl>
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="Huberize-methods.html">Huberize</a></code>, <code><a href="Truncate-methods.html">Truncate</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+plot(Maximum(Unif(0,1), Minimum(Unif(0,1), Unif(0,1))))
+plot(Minimum(Exp(4),4))
+## a sometimes lengthy example...
+## Not run: plot(Minimum(Norm(),Pois()))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index]</a></div>
+
+</body></html>

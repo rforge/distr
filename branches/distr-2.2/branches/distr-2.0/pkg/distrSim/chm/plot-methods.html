@@ -1,0 +1,77 @@
+<html><head><title>Methods for Function plot in Package &lsquo;distrSim&rsquo;</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>plot-methods(distrSim)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   plot-methods">
+<param name="keyword" value="R:   plot,Dataclass-method">
+<param name="keyword" value="R:   plot,Simulation-method">
+<param name="keyword" value="R:   plot,Contsimulation-method">
+<param name="keyword" value=" Methods for Function plot in Package &lsquo;distrSim&rsquo;">
+</object>
+
+
+<h2>Methods for Function plot in Package &lsquo;distrSim&rsquo;</h2>
+
+
+<h3>Description</h3>
+
+<p>
+plot-methods
+</p>
+
+
+<h3>Methods</h3>
+
+<dl>
+<dt>plot</dt><dd><code>signature(x = "Dataclass")</code>: produces a plot of the data matrix;
+optional arguments: 
+<dl>
+<dt>obs0</dt><dd>the indices of observations to be plotted;&mdash; of this vector <code>runs0</code> 
+maximally <code>MaxNumberofPlottedObs</code> runs are plotted where <code>MaxNumberofPlottedObs</code> 
+is a global option, see <code><a href="distrSimoptions.html">distrSimoptions</a></code></dd>
+<dt>runs0</dt><dd>the indices of runs to be plotted; &mdash; of this vector <code>runs0</code> 
+maximally <code>MaxNumberofPlottedRuns</code> runs are plotted where <code>MaxNumberofPlottedRuns</code> 
+is a global option, see <code><a href="distrSimoptions.html">distrSimoptions</a></code></dd>
+<dt>dims0</dt><dd>the indices of observation dimensions to be plotted; &mdash; of this vector <code>dims0</code> 
+maximally <code>MaxNumberofPlottedObsDims</code> dimensions are plotted where <code>MaxNumberofPlottedObsDims</code> 
+is a global option, see <code><a href="distrSimoptions.html">distrSimoptions</a></code></dd>
+</dl>
+<p>
+typical plot arguments may be passed; some have slightly different meaning (compare <code><a onclick="findlink('graphics', 'plot.default.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.default</a></code>):
+<dl>
+<dt>ylim</dt><dd>may be transmitted matrixwise (in a 2 x (number of dimensions) matrix)) or globally, using the usual recycling rules</dd>
+<dt>col,cex,pch</dt><dd>may be transmitted vectorwise (for the different dimensions) or globally, using the usual recycling rules</dd>
+<dt>xlab,ylab,type</dt><dd>are ignored</dd>
+</dl></dd>
+<dt>plot</dt><dd><code>signature(x = "Simulation")</code>: 
+produces a plot of the data matrix; optional and typical plot arguments: as with <code>signature(object = "Dataclass")</code>
+</dd>
+<dt>plot</dt><dd><code>signature(x = "Contsimulation")</code>: produces a plot of the real data matrix; 
+optional arguments: as with <code>signature(x = "Dataclass")</code>;
+typical plot arguments may be passed; some have slightly different meaning (compare <code><a onclick="findlink('graphics', 'plot.default.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.default</a></code>):
+<dl>
+<dt>ylim</dt><dd>as with <code>signature(x = "Simulation")</code> and <code>signature(object = "Dataclass")</code> </dd>
+<dt>col,cex,pch</dt><dd>are ignored</dd>
+<dt>col.id,cex.id,pch.id</dt><dd>as <code>col,cex,pch</code> for <code>signature(object = "Dataclass")</code> but only for ideal part of the data</dd>
+<dt>col.c,cex.c,pch.c</dt><dd>as <code>col,cex,pch</code> for <code>signature(object = "Dataclass")</code> but only for contaminated part of the data</dd>
+<dt>xlab,ylab,type</dt><dd>are ignored</dd>
+</dl>
+</dd>
+</dl>
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>distrSim</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

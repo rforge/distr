@@ -1,0 +1,189 @@
+<html><head><title>Class "LatticeDistribution"</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>LatticeDistribution(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   LatticeDistribution">
+<param name="keyword" value=" Class 'LatticeDistribution'">
+</object>
+
+
+<h2>Class 'LatticeDistribution'</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The <code>LatticeDistribution</code>-class is the mother-class of the
+classes <code>Binom</code>, <code>Dirac</code>, <code>Geom</code>, <code>Hyper</code>, <code>Nbinom</code> and
+<code>Poisson</code>. It formalizes a distribution on a regular affine
+linear lattice.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+  LatticeDistribution(DiscreteDistribution)
+  LatticeDistribution(lattice, DiscreteDistribution)
+  LatticeDistribution(lattice, supp, prob, .withArith, .withSim, check = FALSE)
+  LatticeDistribution(lattice, supp, prob)
+  LatticeDistribution(supp)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>DiscreteDistribution</code></td>
+<td>
+an object of class <code>DiscreteDistribution</code>
+or <code>AffLinDiscreteDistribution</code> to be
+coerced to <code>LatticeDistribution</code> or <code>AffLinLatticeDistribution</code>,
+respectively</td></tr>
+<tr valign="top"><td><code>lattice</code></td>
+<td>
+lattice (of class <code>Lattice</code>) which determines the support
+of the discrete distribution. </td></tr>
+<tr valign="top"><td><code>supp</code></td>
+<td>
+numeric vector which forms the support
+of the discrete distribution. </td></tr>
+<tr valign="top"><td><code>prob</code></td>
+<td>
+vector of probability weights for the
+elements of <code>supp</code>.</td></tr>
+<tr valign="top"><td><code>.withArith</code></td>
+<td>
+normally not set by the user, but if determining the entries
+<code>supp</code>, <code>prob</code> distributional arithmetics was
+involved, you may set this to <code>TRUE</code>.</td></tr>
+<tr valign="top"><td><code>.withSim</code></td>
+<td>
+normally not set by the user, but if determining the entries
+<code>supp</code>, <code>prob</code> simulations were involved, you may
+set this to <code>TRUE</code>.</td></tr>
+<tr valign="top"><td><code>check</code></td>
+<td>
+logical: if <code>TRUE</code>, <code>LatticeDistribution()</code> throws an
+error if argument <code>lattice</code> and other arguments are
+inconsistent or if there is no way to automatically generate
+a <code>lattice</code> argument. If <code>check == FALSE</code>,
+<code>LatticeDistribution()</code>
+returns an object of <code>DiscreteDistribution</code>, ignoring
+argument <code>lattice</code></td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+For the generating function <code>LatticeDistribution()</code>, the arguments
+are processed in the following order:<br>
+Arguments <code>.withSim</code> and <code>.withArith</code> are used in any case.<br>
+If there is an argument <code>DiscreteDistribution</code> (of the respective class),
+all its slots (except for <code>.withSim</code> and <code>.withArith</code>)
+will be used for filling the slots of the object of class
+<code>LatticeDistribution()</code>/<code>AffLinLatticeDistribution()</code>.
+If in addition, there is an argument <code>lattice</code> of class <code>Lattice</code>,
+it will be checked for consistency
+with argument <code>DiscreteDistribution</code> and if oK will be used for slot
+lattice of the object of class
+<code>LatticeDistribution()</code>/<code>AffLinLatticeDistribution()</code>. In case
+there is no <code>lattice</code> argument, slot <code>lattice</code> will be constructed
+from slot <code>support</code> from argument <code>DiscreteDistribution</code>.<br>
+If there is no argument <code>DiscreteDistribution</code>, but there are arguments
+<code>supp</code> and <code>lattice</code> (the latter of class <code>Lattice</code>) then
+these are checked for consistency and if oK, generating function
+<code>DiscreteDistribution()</code> is called with arguments <code>supp</code>,
+<code>prob</code>, <code>.withArith</code>, and <code>.withSim</code> to produce an object
+of class <code>DiscreteDistribution</code> the slots of which will be used for the
+filling the slots of the object of class
+<code>LatticeDistribution()</code>/<code>AffLinLatticeDistribution()</code>.
+If in this case, argument <code>prob</code> is not given explicitely, all elements
+in <code>supp</code> are equally weighted.
+<br>
+If there is no argument <code>DiscreteDistribution</code>, but there is an argument
+<code>lattice</code> of class <code>Lattice</code> (but no argument <code>slot</code>) then
+if <code>Length(lattice)</code> is finite, a corresponding support vector <code>supp</code>
+is generated from argument <code>lattice</code> and generating function
+<code>DiscreteDistribution()</code> is called with arguments <code>supp</code>,
+<code>prob</code>, <code>.withArith</code>, and <code>.withSim</code> to produce an object
+of class <code>DiscreteDistribution</code> the slots of which will be used for the
+filling the slots of the object of class <code>LatticeDistribution()</code>.
+If in the same situation <code>Length(lattice)</code> is not finite, a finite length
+for the support vector is extracted from argument <code>prob</code> and after
+generating <code>supp</code> one procedes as in the finite <code>Length(lattice)</code>
+case. <br>
+If there is no argument <code>DiscreteDistribution</code> and no argument
+<code>lattice</code> of class <code>Lattice</code> but an argument <code>supp</code> then
+it will be checked if <code>supp</code> makes for a lattice, and if so,
+<code>DiscreteDistribution()</code> is called with arguments <code>supp</code>,
+<code>prob</code>, <code>.withArith</code>, and <code>.withSim</code> to produce an object
+of class <code>DiscreteDistribution</code> the slots of which will be used for the
+filling the slots of the object of class <code>LatticeDistribution()</code>. The
+corresponding <code>lattice</code>-slot will be filled with information from
+argument <code>supp</code>.  <br>
+The price for this flexibility of arguments, <code>LatticeDistribution()</code> may
+be called with, is that you should call <code>LatticeDistribution()</code> with
+<EM>named arguments</EM> only.<br>
+Note that internally we suppress lattice points from the support where
+the probability is 0.
+</p>
+
+
+<h3>Objects from the Class</h3>
+
+<p>
+The usual way to generate objects of class <code>LatticeDistribution</code> is to call
+the generating function <code>LatticeDistribution()</code>  (see details). <br>
+Somewhat more flexible, but also proner to inconsistencies is a call to
+<code>new("LatticeDistribution")</code>, where you may explicitly specify random
+number generator, (counting) density, cumulative distribution and quantile
+functions. For conveniance, in this call to <code>new("LatticeDistribution")</code>,
+an additional possibility is to only specify the random number generator. The
+function <code>RtoDPQ.d</code> then approximates the three remaining slots <code>d</code>,
+<code>p</code> and <code>q</code> by random sampling.
+</p>
+
+
+<h3>Note</h3>
+
+<p>
+Working with a computer, we use a finite interval as support which
+carries at least mass <code>1-getdistrOption("TruncQuantile")</code>.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="Parameter-class.html">Parameter-class</a></code>
+<code><a href="Lattice-class.html">Lattice-class</a></code>
+<code><a href="LatticeDistribution-class.html">LatticeDistribution-class</a></code>
+<code><a href="Reals-class.html">Reals-class</a></code>
+<code><a href="RtoDPQ.d.html">RtoDPQ.d</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+  LatticeDistribution(DiscreteDistribution = DiscreteDistribution(supp =
+                       c(4,3,2), prob=c(0.3,0.1,0.6)))
+  LatticeDistribution(supp = c(4,3,2))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index]</a></div>
+
+</body></html>

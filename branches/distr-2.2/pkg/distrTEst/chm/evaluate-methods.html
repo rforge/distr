@@ -1,0 +1,88 @@
+<html><head><title>Methods for Function evaluate in Package &lsquo;distrTEst&rsquo;</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>evaluate-methods(distrTEst)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   evaluate-methods">
+<param name="keyword" value="R:   evaluate">
+<param name="keyword" value="R:   evaluate,Dataclass,function-method">
+<param name="keyword" value="R:   evaluate,Contsimulation,function-method">
+<param name="keyword" value=" Methods for Function evaluate in Package &lsquo;distrTEst&rsquo;">
+</object>
+
+
+<h2>Methods for Function evaluate in Package &lsquo;distrTEst&rsquo;</h2>
+
+
+<h3>Description</h3>
+
+<p>
+evaluate-methods to produce objects of class "Evaluation"
+</p>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+the data set / simulation on which the evaluation takes place</td></tr>
+<tr valign="top"><td><code>estimator</code></td>
+<td>
+the estimation function used; should be able to deal with data in matrix 
+form <code>samplesize</code> x <code>obsDim</code>, and, should return either a 
+univariate result or a vector (with named coordinates, if possible).</td></tr>
+<tr valign="top"><td><code>resname</code></td>
+<td>
+(a vector of) character(s); the name for the univariate results or,
+in the case of multivariate results, and if the coordinates of the results
+have not yet been named, the basic name for them which is pasted to
+the coordinate number for each coordinate. </td></tr>
+<tr valign="top"><td><code>name</code></td>
+<td>
+character; the name for the Evaluation object; by default the (R-)name of the Data 
+set object. </td></tr>
+<tr valign="top"><td><code>filename</code></td>
+<td>
+character; the filename for the Evaluation object (where it is to be saved to); 
+by default the filename of the Data set object which is concatenated with
+the name of the estimator in <code><a href="savedata-methods.html">savedata</a></code>. </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<pre>
+besides the arguments determining the method dispatch, we have:
+
+evaluate(object, estimator, ..., resname = "res", 
+                       name = as.character(substitute(object)),
+                       filename = filename(object))
+
+</pre>
+</p>
+
+
+<h3>Methods</h3>
+
+<dl>
+<dt>evaluate</dt><dd><code>signature(object = "Dataclass", estimator = "function")</code>:
+creates an object of class "Evaluation", see there for further
+information</dd>          
+<dt>evaluate</dt><dd><code>signature(object = "Contsimulation", estimator = "function")</code>:
+creates an object of class "Evaluation", see there for further
+information</dd></dl>
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="Evaluation-class.html">Evaluation-class</a></code>
+</p>
+
+
+
+<hr><div align="center">[Package <em>distrTEst</em> version 2.1 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

@@ -1,0 +1,127 @@
+<html><head><title>lstset and friends</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>lstset(SweaveListingUtils)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   lstset">
+<param name="keyword" value="R:   lstsetRd">
+<param name="keyword" value="R:   lstsetR">
+<param name="keyword" value=" lstset and friends">
+</object>
+
+
+<h2>lstset and friends</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Functions for defining how listings prints R and Rd source code
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+lstset(taglist, LineLength = 80, startS = "\\lstset{")
+lstsetR(Rset = NULL, LineLength = 80, add = TRUE, startS = "\\lstset{")
+lstsetRd(Rdset = NULL, LineLength = 80, add = TRUE, startS = "\\lstset{")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>LineLength</code></td>
+<td>
+<code>numeric</code> number of characters per line for lstset and friends;
+defaults to 80</td></tr>
+<tr valign="top"><td><code>taglist</code></td>
+<td>
+S3-object of class <code>taglist</code>; arguments for
+<CODE>\lstset</CODE> of TeX package <EM>listings</EM>.</td></tr>
+<tr valign="top"><td><code>Rset</code></td>
+<td>
+object of S3-class <code>taglist</code> or named <code>list</code> of 
+<code>character</code>s; the listings settings for R-code
+(for <CODE>\lstset</CODE>); defaults to <code>NULL</code>.</td></tr>
+<tr valign="top"><td><code>Rdset</code></td>
+<td>
+object of S3-class <code>taglist</code> or named <code>list</code> of 
+<code>character</code>s;
+the listings settings for Rd-code
+(for <CODE>\lstset</CODE>); defaults to <code>NULL</code>.</td></tr>
+<tr valign="top"><td><code>add</code></td>
+<td>
+boolean; defaults to <code>TRUE</code>; if <code>TRUE</code>, argument list 
+<code>Rset</code> resp. <code>Rdset</code> will be appended to default value 
+lists <code>getSweaveListingOption("Rset")</code> resp.  
+<code>getSweaveListingOption("Rdset")</code> (see below),
+overwriting respective entries of the default value lists.</td></tr>
+<tr valign="top"><td><code>startS</code></td>
+<td>
+character; defaults to <code>"\\lstset{"</code>; what to do
+by default we use <code>\lstset</code>; an alternative is
+to use <code>\lstdefinestyle</code> which amounts to
+<code>"\\lstdefinestyle{"</code>.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<code>lstset</code> writes out to stdout a call to TeX command 
+<CODE>\lstset{arg1 = val1, arg2 = val2, .....}</CODE>
+and doing so respects a maximal number of characters per line and does not
+break <CODE>arg=val</CODE> tags.
+</p>
+<p>
+<code>lstsetR</code> and <code>lstsetRd</code> expect either
+objects of S3 class <code>taglist</code>, or <code>lists</code> of named characters as
+first arguments, which in the latter case are then converted to <code>taglist</code>;
+both <code>lstsetR</code> and <code>lstsetRd</code> use particular default values to
+define R resp. Rd output format. More
+specifically for R code, it uses 
+<a href="SweaveListingOptions.html">getSweaveListingOption("Rset")</a>,
+and for Rd code, it 
+<a href="SweaveListingOptions.html">getSweaveListingOption("Rdset")</a>,
+</p>
+<p>
+The output to stdout can be captured in an &lsquo;<span class="file">.Rnw</span>&rsquo; file as
+<pre>
+&lt;&lt; lstsetR, results=tex, echo=FALSE&gt;&gt;=
+lstsetR()
+@
+</pre>
+to insert the corresponding <CODE>\lstset</CODE> command to the produced
+TeX file.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+<code>invisible()</code></p>
+
+<h3>Author(s)</h3>
+
+<p>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+lstset(taglist(A="H", b=2, 3),30)
+lstset(taglist(A="H", b=2, 3),30, startS = "\\lstdefinestyle{Rstyle}{")
+lstsetR()
+lstsetRd()
+</pre>
+
+
+
+<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.2 <a href="00Index.html">Index]</a></div>
+
+</body></html>

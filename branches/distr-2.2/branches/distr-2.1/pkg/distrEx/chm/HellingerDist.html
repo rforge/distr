@@ -1,0 +1,267 @@
+<html><head><title>Generic function for the computation of the Hellinger distance of two distributions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>HellingerDist(distrEx)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   HellingerDist">
+<param name="keyword" value="R:   HellingerDist-methods">
+<param name="keyword" value="R:   HellingerDist,AbscontDistribution,AbscontDistribution-method">
+<param name="keyword" value="R:   HellingerDist,AbscontDistribution,DiscreteDistribution-method">
+<param name="keyword" value="R:   HellingerDist,DiscreteDistribution,DiscreteDistribution-method">
+<param name="keyword" value="R:   HellingerDist,DiscreteDistribution,AbscontDistribution-method">
+<param name="keyword" value="R:   HellingerDist,LatticeDistribution,DiscreteDistribution-method">
+<param name="keyword" value="R:   HellingerDist,DiscreteDistribution,LatticeDistribution-method">
+<param name="keyword" value="R:   HellingerDist,LatticeDistribution,LatticeDistribution-method">
+<param name="keyword" value="R:   HellingerDist,numeric,DiscreteDistribution-method">
+<param name="keyword" value="R:   HellingerDist,DiscreteDistribution,numeric-method">
+<param name="keyword" value="R:   HellingerDist,numeric,AbscontDistribution-method">
+<param name="keyword" value="R:   HellingerDist,AbscontDistribution,numeric-method">
+<param name="keyword" value="R:   HellingerDist,AcDcLcDistribution,AcDcLcDistribution-method">
+<param name="keyword" value=" Generic function for the computation of the Hellinger distance of two distributions">
+</object>
+
+
+<h2>Generic function for the computation of the Hellinger distance of two distributions</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Generic function for the computation of the Hellinger distance <i>d_h</i>
+of two distributions <i>P</i> and <i>Q</i> which may be defined for an arbitrary 
+sample space <i>(Omega, A)</i>. The Hellinger distance is defined as
+</p><p align="center"><i>0.5 int |sqrt{dP}-sqrt{dQ}|^2</i></p><p>
+where <i>sqrt{dP}</i>, respectively <i>sqrt{dQ}</i> denotes the square root 
+of the densities.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+HellingerDist(e1, e2, ...)
+## S4 method for signature 'AbscontDistribution,
+##   AbscontDistribution':
+HellingerDist(e1,e2, 
+                        rel.tol=.Machine$double.eps^0.3, 
+                        TruncQuantile = getdistrOption("TruncQuantile"), 
+                        IQR.fac = 15, ...)
+## S4 method for signature 'AbscontDistribution,
+##   DiscreteDistribution':
+HellingerDist(e1,e2, ...)
+## S4 method for signature 'DiscreteDistribution,
+##   AbscontDistribution':
+HellingerDist(e1,e2, ...)
+## S4 method for signature 'DiscreteDistribution,
+##   DiscreteDistribution':
+HellingerDist(e1,e2, ...)
+## S4 method for signature 'numeric, DiscreteDistribution':
+HellingerDist(e1, e2, ...)
+## S4 method for signature 'DiscreteDistribution, numeric':
+HellingerDist(e1, e2, ...)
+## S4 method for signature 'numeric, AbscontDistribution':
+HellingerDist(e1, e2, asis.smooth.discretize = "discretize", 
+            n.discr = getdistrExOption("nDiscretize"), low.discr = getLow(e2),
+            up.discr = getUp(e2), h.smooth = getdistrExOption("hSmooth"),
+                        rel.tol=.Machine$double.eps^0.3, 
+                        TruncQuantile = getdistrOption("TruncQuantile"), 
+                        IQR.fac = 15, ...)
+## S4 method for signature 'AbscontDistribution, numeric':
+HellingerDist(e1, e2, asis.smooth.discretize = "discretize", 
+            n.discr = getdistrExOption("nDiscretize"), low.discr = getLow(e1),
+            up.discr = getUp(e1), h.smooth = getdistrExOption("hSmooth"), 
+                        rel.tol=.Machine$double.eps^0.3, 
+                        TruncQuantile = getdistrOption("TruncQuantile"), 
+                        IQR.fac = 15, ...)
+## S4 method for signature 'AcDcLcDistribution,
+##   AcDcLcDistribution':
+HellingerDist(e1,e2, 
+                        rel.tol=.Machine$double.eps^0.3, 
+                        TruncQuantile = getdistrOption("TruncQuantile"), 
+                        IQR.fac = 15, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>e1</code></td>
+<td>
+object of class <code>"Distribution"</code> or class <code>"numeric"</code> </td></tr>
+<tr valign="top"><td><code>e2</code></td>
+<td>
+object of class <code>"Distribution"</code> or class <code>"numeric"</code> </td></tr>
+<tr valign="top"><td><code>asis.smooth.discretize</code></td>
+<td>
+possible methods are <code>"asis"</code>, 
+<code>"smooth"</code> and <code>"discretize"</code>. Default is <code>"discretize"</code>.</td></tr>
+<tr valign="top"><td><code>n.discr</code></td>
+<td>
+if <code>asis.smooth.discretize</code> is equal to 
+<code>"discretize"</code> one has to specify the number of lattice points 
+used to discretize the abs. cont. distribution.</td></tr>
+<tr valign="top"><td><code>low.discr</code></td>
+<td>
+if <code>asis.smooth.discretize</code> is equal to 
+<code>"discretize"</code> one has to specify the lower end point of the lattice 
+used to discretize the abs. cont. distribution.</td></tr>
+<tr valign="top"><td><code>up.discr</code></td>
+<td>
+if <code>asis.smooth.discretize</code> is equal to 
+<code>"discretize"</code> one has to specify the upper end point of the lattice 
+used to discretize the abs. cont. distribution.</td></tr>
+<tr valign="top"><td><code>h.smooth</code></td>
+<td>
+if <code>asis.smooth.discretize</code> is equal to 
+<code>"smooth"</code> &ndash; i.e., the empirical distribution of the provided 
+data should be smoothed &ndash; one has to specify this parameter.</td></tr>
+<tr valign="top"><td><code>rel.tol</code></td>
+<td>
+relative accuracy requested in integration </td></tr>
+<tr valign="top"><td><code>TruncQuantile</code></td>
+<td>
+Quantile the quantile based integration bounds (see details)</td></tr>
+<tr valign="top"><td><code>IQR.fac</code></td>
+<td>
+Factor for the scale based integration bounds (see details)</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+further arguments to be used in particular methods (not in package <span class="pkg">distrEx</span>)</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+For distances between absolutely continuous distributions, we use numerical
+integration; to determine sensible bounds we proceed as follows:
+by means of <code>min(getLow(e1,eps=TruncQuantile),getLow(e2,eps=TruncQuantile))</code>, 
+<code>max(getUp(e1,eps=TruncQuantile),getUp(e2,eps=TruncQuantile))</code> we determine
+quantile based bounds <code>c(low.0,up.0)</code>, and by means of
+<code>s1 &lt;- max(IQR(e1),IQR(e2));</code> <code>m1&lt;- median(e1);</code> 
+<code>m2 &lt;- median(e2)</code>
+and <code>low.1 &lt;- min(m1,m2)-s1*IQR.fac</code>, <code>up.1 &lt;- max(m1,m2)+s1*IQR.fac</code>
+we determine scale based bounds; these are combined by
+<code>low &lt;- max(low.0,low.1)</code>, <code>up &lt;- max(up.0,up1)</code>.
+</p>
+<p>
+In case we want to compute the Hellinger distance between (empirical) data
+and an abs. cont. distribution, we can specify the parameter <code>asis.smooth.discretize</code>
+to avoid trivial distances (distance = 1).
+</p>
+<p>
+Using <code>asis.smooth.discretize = "discretize"</code>, which is the default,
+leads to a discretization of the provided abs. cont. distribution and 
+the distance is computed between the provided data and the discretized
+distribution.
+</p>
+<p>
+Using <code>asis.smooth.discretize = "smooth"</code> causes smoothing of the
+empirical distribution of the provided data. This is, the empirical
+data is convoluted with the normal distribution <code>Norm(mean = 0, sd = h.smooth)</code>
+which leads to an abs. cont. distribution. Afterwards the distance 
+between the smoothed empirical distribution and the provided abs. cont.
+distribution is computed.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+Hellinger distance of <code>e1</code> and <code>e2</code></p>
+
+<h3>Methods</h3>
+
+<dl>
+<dt>e1 = "AbscontDistribution", e2 = "AbscontDistribution":</dt><dd>Hellinger distance of two absolutely continuous 
+univariate distributions which is computed using <code>distrExintegrate</code>.
+</dd>
+<dt>e1 = "AbscontDistribution", e2 = "DiscreteDistribution":</dt><dd>Hellinger distance of absolutely continuous and discrete
+univariate distributions (are mutually singular; i.e., 
+have distance <code>=1</code>).
+</dd>
+<dt>e1 = "DiscreteDistribution", e2 = "DiscreteDistribution":</dt><dd>Hellinger distance of two discrete univariate distributions
+which is computed using <code>support</code> and <code>sum</code>.
+</dd>
+<dt>e1 = "DiscreteDistribution", e2 = "AbscontDistribution":</dt><dd>Hellinger distance of discrete and absolutely continuous 
+univariate distributions (are mutually singular; i.e., 
+have distance <code>=1</code>).
+</dd>
+<dt>e1 = "numeric", e2 = "DiscreteDistribution":</dt><dd>Hellinger distance between (empirical) data and a discrete 
+distribution.
+</dd>
+<dt>e1 = "DiscreteDistribution", e2 = "numeric":</dt><dd>Hellinger distance between (empirical) data and a discrete
+distribution.
+</dd>
+<dt>e1 = "numeric", e2 = "AbscontDistribution":</dt><dd>Hellinger distance between (empirical) data and an abs. cont. 
+distribution.
+</dd>
+<dt>e1 = "AbscontDistribution", e1 = "numeric":</dt><dd>Hellinger distance between (empirical) data and an abs. cont. 
+distribution.
+</dd>
+<dt>e1 = "AcDcLcDistribution", e2 = "AcDcLcDistribution":</dt><dd>Hellinger distance of mixed discrete and absolutely continuous 
+univariate distributions.
+</dd>
+</dl>
+
+<h3>Author(s)</h3>
+
+<p>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Huber, P.J. (1981) <EM>Robust Statistics</EM>. New York: Wiley.
+</p>
+<p>
+Rieder, H. (1994) <EM>Robust Asymptotic Statistics</EM>. New York: Springer.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="distrExIntegrate.html">distrExIntegrate</a></code>, <code><a href="ContaminationSize.html">ContaminationSize</a></code>, 
+<code><a href="TotalVarDist.html">TotalVarDist</a></code>, <code><a href="KolmogorovDist.html">KolmogorovDist</a></code>, 
+<code><a onclick="findlink('distr', 'Distribution-class.html')" style="text-decoration: underline; color: blue; cursor: hand">Distribution-class</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+HellingerDist(Norm(), Gumbel())
+HellingerDist(Norm(), Td(10))
+HellingerDist(Norm(mean = 50, sd = sqrt(25)), Binom(size = 100)) # mutually singular
+HellingerDist(Pois(10), Binom(size = 20)) 
+
+x &lt;- rnorm(100)
+HellingerDist(Norm(), x)
+HellingerDist(x, Norm(), asis.smooth.discretize = "smooth")
+
+y &lt;- (rbinom(50, size = 20, prob = 0.5)-10)/sqrt(5)
+HellingerDist(y, Norm())
+HellingerDist(y, Norm(), asis.smooth.discretize = "smooth")
+
+HellingerDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5))
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>distrEx</em> version 2.1 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

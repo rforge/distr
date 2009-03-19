@@ -1,0 +1,204 @@
+<html><head><title>Internal functions of package distrMod</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>internals_for_distrMod(distrMod)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   internals_for_distrMod">
+<param name="keyword" value="R:   .inArgs">
+<param name="keyword" value="R:   .isUnitMatrix">
+<param name="keyword" value="R:   .validTrafo">
+<param name="keyword" value="R:   .CvMMDCovariance">
+<param name="keyword" value="R:   .show.with.sd">
+<param name="keyword" value="R:   .getLogDeriv">
+<param name="keyword" value=" Internal functions of package distrMod">
+</object>
+
+
+<h2>Internal functions of package distrMod</h2>
+
+
+<h3>Description</h3>
+
+<p>
+These functions are used internally by package ``distrMod''.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+.inArgs(arg, fct)
+.isUnitMatrix(m)
+.csimpsum(fx)
+.validTrafo(trafo, dimension)
+.CvMMDCovariance(L2Fam, param, mu = distribution(L2Fam), expon=3, 
+                 withplot = FALSE, withpreIC = FALSE,
+                 N = getdistrOption("DefaultNrGridPoints")+1, ...)
+.show.with.sd(est, s)
+.getLogDeriv(distr)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>arg</code></td>
+<td>
+a formal argument as character</td></tr>
+<tr valign="top"><td><code>fct</code></td>
+<td>
+a function</td></tr>
+<tr valign="top"><td><code>m</code></td>
+<td>
+a matrix</td></tr>
+<tr valign="top"><td><code>est</code></td>
+<td>
+an estimator; usually a vector</td></tr>
+<tr valign="top"><td><code>s</code></td>
+<td>
+a standard deviation</td></tr>
+<tr valign="top"><td><code>trafo</code></td>
+<td>
+an object of class <code>MatrixorFunction</code></td></tr>
+<tr valign="top"><td><code>dimension</code></td>
+<td>
+a numeric</td></tr>
+<tr valign="top"><td><code>L2Fam</code></td>
+<td>
+an object of class <code>L2ParamFamily</code> &mdash; for
+which we want to determine the IC resp. the as. [co]variance of the corresponding
+Minimum CvM estimator</td></tr>
+<tr valign="top"><td><code>param</code></td>
+<td>
+an object of class <code>ParamFamParameter</code>, the parameter value
+at which we want to determine the IC resp. the as. [co]variance of the corresponding
+Minimum CvM estimator</td></tr>
+<tr valign="top"><td><code>mu</code></td>
+<td>
+an object of class <code>UnivariateDistribution</code>: integration 
+measure (resp. distribution) for CvM distance</td></tr>
+<tr valign="top"><td><code>expon</code></td>
+<td>
+a numeric: number to exponentiate 
+<code>getdistrOption("TruncQuantile")</code> 
+to get upper and lower 
+<i>mu</i>- resp. <i>P_theta</i>-quantiles
+for the gridpoints (see below)</td></tr>
+<tr valign="top"><td><code>withplot</code></td>
+<td>
+logical: shall we plot corresponding ICs?</td></tr>
+<tr valign="top"><td><code>withpreIC</code></td>
+<td>
+logical: shall we return a list with components <code>preIC</code> 
+and <code>var</code> or just <code>var</code>; here <code>var</code> is the corresponding
+asymptotic variance and <code>preIC</code> the corresponding
+<code>EuclRandVarList</code> featuring as argument <code>Curve</code> in <code>IC</code>s of
+package <span class="pkg">RobAStBase</span></td></tr>
+<tr valign="top"><td><code>N</code></td>
+<td>
+a numeric: the number of gridpoints for constructing the 
+<i>mu</i>- resp. <i>P_theta</i>-``primitive''
+function</td></tr>
+<tr valign="top"><td><code>fx</code></td>
+<td>
+a vector of function evaluations multiplied by the gridwidth</td></tr>
+<tr valign="top"><td><code>distr</code></td>
+<td>
+an object of class <code>AbscontDistribution</code></td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+further argument to be passed through &mdash; so 
+<code>.CvMMDCovariance</code> can digest more arguments</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<code>.inArgs</code> (borrowed from package <span class="pkg">distr</span>)
+checks whether an argument <code>arg</code> is a formal argument of 
+<code>fct</code> &mdash; not vectorized.
+</p>
+<p>
+<code>.csimpsum</code> (borrowed from package <span class="pkg">distr</span>) 
+produces a primitimive function out of function evaluations by means 
+of vectorized Simpson quadrature method, returning already the function values
+of the prime function on a grid; it is to mimick the behaviour
+of <code>cumsum</code>. 
+</p>
+<p>
+<code>.isUnitMatrix</code> checks whether the argument is a unit matrix. 
+</p>
+<p>
+<code>.validTrafo</code> checks whether the argument is a valid transformation.
+</p>
+<p>
+<code>.CvMMDCovariance</code> determines the IC resp. the as. [co]variance of 
+the corresponding Minimum CvM estimator. Still some checking / optimization /
+improvement needed.
+</p>
+<p>
+<code>.show.with.sd</code> is code borrowed from <code>print.fitdistr</code> in  
+package <span class="pkg">MASS</span> by B.D. Ripley. It pretty-prints estimates with corresponding
+sd's below.
+</p>
+<p>
+<code>.getLogDeriv</code> determines numerically the negative logarithmic derivative of the 
+density of distribution <code>distr</code>; to this end uses <code>D1ss</code>, 
+<code>D2ss</code> from Martin Maechler's package <span class="pkg">sfsmisc</span>.
+</p>
+
+
+<h3>Value</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>.getLogderiv</code></td>
+<td>
+a function in one argument <code>x</code> &mdash; the negative logarithmic
+derivative of the density</td></tr>
+<tr valign="top"><td><code>.inArgs</code></td>
+<td>
+<code>logical</code> (length 1)</td></tr>
+<tr valign="top"><td><code>.csimpsum</code></td>
+<td>
+<code>numeric</code> (of length half the input length)</td></tr>
+<tr valign="top"><td><code>.isUnitMatrix</code></td>
+<td>
+<code>logical</code> (length 1)</td></tr>
+<tr valign="top"><td><code>.validTrafo</code></td>
+<td>
+<code>logical</code> (length 1)</td></tr>
+<tr valign="top"><td><code>.CvMMDCovariance</code></td>
+<td>
+corresponding as. [co]variance of 
+the corresponding Minimum CvM estimator or list withcomponents
+<code>preIC</code> and <code>var</code> &mdash;see above</td></tr>
+<tr valign="top"><td><code>.show.with.sd</code></td>
+<td>
+<code>invisible()</code></td></tr>
+</table>
+
+<h3>Author(s)</h3>
+
+<p>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="MLEstimator.html">MLEstimator</a></code>,
+<code><a href="Estimate-class.html">Estimate-class</a></code>,
+<code><a href="MCEstimate-class.html">MCEstimate-class</a></code>,
+<code><a href="Confint-class.html">Confint-class</a></code>,
+<code><a href="ParamFamParameter-class.html">ParamFamParameter-class</a></code>
+</p>
+
+
+
+<hr><div align="center">[Package <em>distrMod</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

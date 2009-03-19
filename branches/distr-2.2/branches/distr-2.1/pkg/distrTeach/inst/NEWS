@@ -1,0 +1,34 @@
+######################################################################
+#  News: to package distrTeach
+######################################################################
+ 
+##############
+v 2.1
+##############
+
+* Rd-style:
+  + several buglets detected with the fuzzier checking mechanism
+    cf [Rd] More intensive checking of R help files, Prof Brian Ripley, 09.01.2009 10:25) 
+       [Rd] Warning: missing text for item ... in \describe? , Prof Brian Ripley,
+
+##############
+v 2.0.3
+##############
+  
+  * under the hood: 
+     + enhanced plotting (correct dispatch; opening of new device is controlled
+       by option("newDevice") )
+     + after JMC's changes: gone through setIs relations to ensure 
+       "correct" inheritance
+  * moved license to LGPL-3
+  * thanks to a hint by Anja Hüller, discovered a buglet in the demos of distrTeach;
+
+
+##############
+v 2.0 
+##############
+
+* created new package 'distrTeach' (version to be consistent with distrXXX family)
+
+* moved teaching functions 'illustrateLLN()', 'illustrateCLT[.tcl]'
+  from package 'distrEx' to this new package

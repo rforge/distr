@@ -1,0 +1,91 @@
+<html><head><title>Class "CauchyParameter"</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>CauchyParameter-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   CauchyParameter-class">
+<param name="keyword" value="R:   initialize,CauchyParameter-method">
+<param name="keyword" value=" Class 'CauchyParameter'">
+</object>
+
+
+<h2>Class 'CauchyParameter'</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The parameter of a Cauchy distribution, used by Cauchy-class
+</p>
+
+
+<h3>Objects from the Class</h3>
+
+<p>
+Objects can be created by calls of the form <code>new("CauchyParameter", location, scale)</code>.
+Usually an object of this class is not needed on its own, it is generated automatically when an object of the class Cauchy
+is instantiated.
+</p>
+
+
+<h3>Slots</h3>
+
+<dl>
+<dt><code>location</code>:</dt><dd>Object of class <code>"numeric"</code>: the location of a Cauchy distribution </dd>
+<dt><code>scale</code>:</dt><dd>Object of class <code>"numeric"</code>: the scale of a Cauchy distribution </dd>
+<dt><code>name</code>:</dt><dd>Object of class <code>"character"</code>: a name / comment for the parameters </dd>
+</dl>
+
+<h3>Extends</h3>
+
+<p>
+Class <code>"Parameter"</code>, directly.
+</p>
+
+
+<h3>Methods</h3>
+
+<dl>
+<dt>initialize</dt><dd><code>signature(.Object = "CauchyParameter")</code>: initialize method </dd>
+<dt>scale</dt><dd><code>signature(object = "CauchyParameter")</code>: returns the slot <code>scale</code> of the parameter of the distribution</dd>
+<dt>scale&lt;-</dt><dd><code>signature(object = "CauchyParameter")</code>: modifies the slot <code>scale</code> of the parameter of the
+distribution </dd>
+<dt>location</dt><dd><code>signature(object = "CauchyParameter")</code>: returns the slot <code>location</code> of the parameter of the
+distribution </dd>
+<dt>location&lt;-</dt><dd><code>signature(object = "CauchyParameter")</code>: modifies the slot <code>location</code> of the parameter of the
+distribution </dd>
+</dl>
+
+<h3>Author(s)</h3>
+
+<p>
+Thomas Stabla <a href="mailto:statho3@web.de">statho3@web.de</a>,<br> 
+Florian Camphausen <a href="mailto:fcampi@gmx.de">fcampi@gmx.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>,<br> 
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="Cauchy-class.html">Cauchy-class</a></code>
+<code><a href="Parameter-class.html">Parameter-class</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+W &lt;- new("CauchyParameter",location=1,scale=1)
+location(W) # location of this distribution is 1.
+location(W) &lt;- 2 # location of this distribution is now 2.
+</pre>
+
+
+
+<hr><div align="center">[Package <em>distr</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

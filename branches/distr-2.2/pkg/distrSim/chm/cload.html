@@ -1,0 +1,92 @@
+<html><head><title>cload</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>cload(distrSim)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   cload">
+<param name="keyword" value=" cload">
+</object>
+
+
+<h2>cload</h2>
+
+
+<h3>Description</h3>
+
+<p>
+loads the comment file from a saved <code>Dataclass</code> object
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+cload(filename)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>filename</code></td>
+<td>
+the filename which was declared at the instantiaton of the Dataclass </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Uses function <code>load</code> to load the comment file from a saved <code>Dataclass</code> object.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+no value is returned</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Thomas Stabla <a href="mailto:statho3@web.de">statho3@web.de</a>,<br> 
+Florian Camphausen <a href="mailto:fcampi@gmx.de">fcampi@gmx.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>,<br> 
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="Dataclass-class.html">Dataclass-class</a></code>
+<code><a onclick="findlink('R.oo', 'Non-documented_objects.html')" style="text-decoration: underline; color: blue; cursor: hand">load</a></code>
+<code><a href="savedata-methods.html">savedata-methods</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# see Dataclass and Evaluation for examples
+## The function is currently defined as
+function(filename){
+  eval.parent(parse(text=paste("load(\"",filename,".comment\")", sep = "")))
+  }
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>distrSim</em> version 2.1 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

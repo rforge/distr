@@ -1,0 +1,88 @@
+<html><head><title>Class "ChisqParameter"</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>ChisqParameter-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   ChisqParameter-class">
+<param name="keyword" value="R:   initialize,ChisqParameter-method">
+<param name="keyword" value=" Class 'ChisqParameter'">
+</object>
+
+
+<h2>Class 'ChisqParameter'</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The parameter of a chi-squared distribution, used by Chisq-class
+</p>
+
+
+<h3>Objects from the Class</h3>
+
+<p>
+Objects can be created by calls of the form <code>new("ChisqParameter", ncp, df)</code>.
+Usually an object of this class is not needed on its own, it is generated automatically when an object of the class Chisq
+is instantiated.
+</p>
+
+
+<h3>Slots</h3>
+
+<dl>
+<dt><code>ncp</code>:</dt><dd>Object of class <code>"numeric"</code>: the ncp of a chi-squared distribution </dd>
+<dt><code>df</code>:</dt><dd>Object of class <code>"numeric"</code>: the df of a chi-squared distribution </dd>
+<dt><code>name</code>:</dt><dd>Object of class <code>"character"</code>: a name / comment for the parameters </dd>
+</dl>
+
+<h3>Extends</h3>
+
+<p>
+Class <code>"Parameter"</code>, directly.
+</p>
+
+
+<h3>Methods</h3>
+
+<dl>
+<dt>initialize</dt><dd><code>signature(.Object = "ChisqParameter")</code>: initialize method </dd>
+<dt>df</dt><dd><code>signature(object = "ChisqParameter")</code>: returns the slot <code>df</code> of the parameter of the distribution </dd>
+<dt>df&lt;-</dt><dd><code>signature(object = "ChisqParameter")</code>: modifies the slot <code>df</code> of the parameter of the distribution </dd>
+<dt>ncp</dt><dd><code>signature(object = "ChisqParameter")</code>: returns the slot <code>ncp</code> of the parameter of the distribution </dd>
+<dt>ncp&lt;-</dt><dd><code>signature(object = "ChisqParameter")</code>: modifies the slot <code>ncp</code> of the parameter of the distribution </dd>
+</dl>
+
+<h3>Author(s)</h3>
+
+<p>
+Thomas Stabla <a href="mailto:statho3@web.de">statho3@web.de</a>,<br> 
+Florian Camphausen <a href="mailto:fcampi@gmx.de">fcampi@gmx.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>,<br> 
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="Chisq-class.html">Chisq-class</a></code>
+<code><a href="Parameter-class.html">Parameter-class</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+W &lt;- new("ChisqParameter",df=1,ncp=1)
+ncp(W) # ncp of this distribution is 1.
+ncp(W) &lt;- 2 # ncp of this distribution is now 2.
+</pre>
+
+
+
+<hr><div align="center">[Package <em>distr</em> version 2.0 <a href="00Index.html">Index]</a></div>
+
+</body></html>

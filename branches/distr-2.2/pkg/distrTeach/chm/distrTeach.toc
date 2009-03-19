@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HEAD></HEAD><HTML><BODY>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package distrTeach:  Contents">
+<param name="Local" value="00Index.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package distrTeach:  R objects">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distrTeach-package">
+<param name="Local" value="0distrTeach-package.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distrTeach">
+<param name="Local" value="0distrTeach-package.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="illustrateCLT">
+<param name="Local" value="IllustCLT.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="illustrateCLT.tcl">
+<param name="Local" value="IllustCLT.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="illustrateLLN">
+<param name="Local" value="IllustLLN.html">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package distrTeach:  Titles">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distrTeach - Teaching Extensions of package distr">
+<param name="Local" value="0distrTeach-package.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Functions for Illustrating the CLT">
+<param name="Local" value="IllustCLT.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Functions for Illustrating the LLN">
+<param name="Local" value="IllustLLN.html">
+</OBJECT>
+</UL>
+</UL>
+</BODY></HTML>

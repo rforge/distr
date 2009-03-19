@@ -1,0 +1,227 @@
+<html><head><title>Generating function "AbscontDistribution"</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>AbscontDistribution(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   AbscontDistribution">
+<param name="keyword" value=" Generating function 'AbscontDistribution'">
+</object>
+
+
+<h2>Generating function 'AbscontDistribution'</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Generates an object of class  <code>"AbscontDistribution"</code>
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+  AbscontDistribution(r)
+  AbscontDistribution(r = NULL, d)
+  AbscontDistribution(r = NULL, d = NULL, p)
+  AbscontDistribution(r = NULL, d = NULL, p = NULL, d)
+  AbscontDistribution(r, d, p, q)
+  AbscontDistribution(r = NULL, d = NULL, p = NULL, q = NULL,
+                   gaps = NULL, param = NULL, img = new("Reals"),
+                   .withSim = FALSE, .withArith = FALSE,
+                    .lowerExact = FALSE, .logExact = FALSE,
+                   withgaps = getdistrOption("withgaps"),
+                   low1 = NULL, up1 = NULL, low = -Inf, up =Inf,
+                   withStand = FALSE,
+                   ngrid = getdistrOption("DefaultNrGridPoints"),
+                   ep = getdistrOption("TruncQuantile"),
+                   e = getdistrOption("RtoDPQ.e"))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>r</code></td>
+<td>
+slot <code>r</code> to be filled</td></tr>
+<tr valign="top"><td><code>d</code></td>
+<td>
+slot <code>d</code> to be filled</td></tr>
+<tr valign="top"><td><code>p</code></td>
+<td>
+slot <code>p</code> to be filled</td></tr>
+<tr valign="top"><td><code>q</code></td>
+<td>
+slot <code>q</code> to be filled</td></tr>
+<tr valign="top"><td><code>gaps</code></td>
+<td>
+slot gaps (of class <code>"matrix"</code> with two columns) to be filled 
+(i.e. <code>t(gaps)</code> must be ordered if read as vector)</td></tr>
+<tr valign="top"><td><code>param</code></td>
+<td>
+parameter (of class <code>"OptionalParameter"</code>)</td></tr>
+<tr valign="top"><td><code>img</code></td>
+<td>
+image range of the distribution (of class <code>"rSpace"</code>)</td></tr>
+<tr valign="top"><td><code>low1</code></td>
+<td>
+lower bound (to be the lower TruncQuantile-quantile of the distribution)</td></tr>
+<tr valign="top"><td><code>up1</code></td>
+<td>
+upper bound (to be the upper TruncQuantile-quantile of the distribution)</td></tr>
+<tr valign="top"><td><code>low</code></td>
+<td>
+lower bound (to be the 100-percent-quantile of the distribution)</td></tr>
+<tr valign="top"><td><code>up</code></td>
+<td>
+upper bound (to be the 100-percent-quantile of the distribution)</td></tr>
+<tr valign="top"><td><code>withStand</code></td>
+<td>
+logical: shall we standardize argument function <code>d</code>
+to integrate to 1 &mdash; default is no resp. <code>FALSE</code></td></tr>
+<tr valign="top"><td><code>ngrid</code></td>
+<td>
+number of gridpoints</td></tr>
+<tr valign="top"><td><code>ep</code></td>
+<td>
+tolerance epsilon</td></tr>
+<tr valign="top"><td><code>e</code></td>
+<td>
+exponent to base 10 to be used for simulations</td></tr>
+<tr valign="top"><td><code>withgaps</code></td>
+<td>
+logical; shall gaps be reconstructed empirically?</td></tr>
+<tr valign="top"><td><code>.withArith</code></td>
+<td>
+normally not set by the user, but if determining the entries <code>supp</code>, <code>prob</code>
+distributional arithmetics was involved, you may set this to <code>TRUE</code>.</td></tr>
+<tr valign="top"><td><code>.withSim</code></td>
+<td>
+normally not set by the user, but if determining the entries <code>supp</code>, <code>prob</code>
+simulations were involved, you may set this to <code>TRUE</code>.</td></tr>
+<tr valign="top"><td><code>.lowerExact</code></td>
+<td>
+normally not set by the user: whether the <code>lower.tail=FALSE</code>
+part is calculated exactly, avoing a ``<code>1-.</code>''.</td></tr>
+<tr valign="top"><td><code>.logExact</code></td>
+<td>
+normally not set by the user: whether in determining slots <code>d,p,q</code>,
+we make particular use of a logarithmic representation to enhance accuracy.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Minimally, only one of the slots <code>r</code>, <code>d</code>, <code>p</code> or <code>q</code> needs to be given as argument.
+The other non-given slots are then reconstructed according to the following scheme:
+</p>
+
+<table summary="Rd table">
+<tr>
+  <td align="center">r</td>  <td align="center"> d</td>  <td align="center"> p</td>  <td align="center"> q</td>  <td align="left"> proceding</td>
+</tr>
+<tr>
+  <td align="center"> -</td>  <td align="center"> -</td>  <td align="center"> -</td>  <td align="center"> -</td>  <td align="left"> excluded</td>
+</tr>
+<tr>
+  <td align="center"> -</td>  <td align="center"> +</td>  <td align="center"> -</td>  <td align="center"> -</td>  <td align="left"> p by <code>.D2P</code>, q by <code>.P2Q</code>, r by <code>q(runif(n))</code></td>
+</tr>
+<tr>
+  <td align="center"> -</td>  <td align="center"> -</td>  <td align="center"> +</td>  <td align="center"> -</td>  <td align="left"> d by <code>.P2D</code>, q by <code>.P2Q</code>, r by <code>q(runif(n))</code></td>
+</tr>
+<tr>
+  <td align="center"> -</td>  <td align="center"> +</td>  <td align="center"> +</td>  <td align="center"> -</td>  <td align="left"> q by <code>.P2Q</code>, r by <code>q(runif(n))</code></td>
+</tr>
+<tr>
+  <td align="center"> -</td>  <td align="center"> -</td>  <td align="center"> -</td>  <td align="center"> +</td>  <td align="left"> p by <code>.Q2P</code>, d by <code>.P2D</code>, r by <code>q(runif(n))</code></td>
+</tr>
+<tr>
+  <td align="center"> -</td>  <td align="center"> +</td>  <td align="center"> -</td>  <td align="center"> +</td>  <td align="left"> p by <code>.Q2P</code>, r by <code>q(runif(n))</code></td>
+</tr>
+<tr>
+  <td align="center"> -</td>  <td align="center"> -</td>  <td align="center"> +</td>  <td align="center"> +</td>  <td align="left"> d by <code>.P2D</code>, r by <code>q(runif(n))</code></td>
+</tr>
+<tr>
+  <td align="center"> -</td>  <td align="center"> +</td>  <td align="center"> +</td>  <td align="center"> +</td>  <td align="left"> r by <code>q(runif(n))</code></td>
+</tr>
+<tr>
+  <td align="center"> +</td>  <td align="center"> -</td>  <td align="center"> -</td>  <td align="center"> -</td>  <td align="left"> call to <code><a href="RtoDPQ.html">RtoDPQ</a></code></td>
+</tr>
+<tr>
+  <td align="center"> +</td>  <td align="center"> +</td>  <td align="center"> -</td>  <td align="center"> -</td>  <td align="left"> p by <code>.D2P</code>, q by <code>.P2Q</code></td>
+</tr>
+<tr>
+  <td align="center"> +</td>  <td align="center"> -</td>  <td align="center"> +</td>  <td align="center"> -</td>  <td align="left"> d by <code>.P2D</code>, q by <code>.P2Q</code></td>
+</tr>
+<tr>
+  <td align="center"> +</td>  <td align="center"> +</td>  <td align="center"> +</td>  <td align="center"> -</td>  <td align="left"> q by <code>.P2Q</code></td>
+</tr>
+<tr>
+  <td align="center"> +</td>  <td align="center"> -</td>  <td align="center"> -</td>  <td align="center"> +</td>  <td align="left"> p by <code>.Q2P</code>, d by <code>.P2D</code></td>
+</tr>
+<tr>
+  <td align="center"> +</td>  <td align="center"> +</td>  <td align="center"> -</td>  <td align="center"> +</td>  <td align="left"> p by <code>.Q2P</code></td>
+</tr>
+<tr>
+  <td align="center"> +</td>  <td align="center"> -</td>  <td align="center"> +</td>  <td align="center"> +</td>  <td align="left"> d by <code>.P2D</code></td>
+</tr>
+<tr>
+  <td align="center"> +</td>  <td align="center"> +</td>  <td align="center"> +</td>  <td align="center"> +</td>  <td align="left"> nothing</td>
+</tr>
+</table>
+<p>
+For this purpose, one may alternatively give arguments <code>low1</code> and <code>up1</code> (<code>NULL</code> each by default,
+and determined through slot <code>q</code>, resp. <code>p</code>, resp. <code>d</code>, resp. <code>r</code> in this order
+according to availability),
+for the (finite) range of values in the support of this distribution, 
+as well as the possibly infinite theoretical range given by
+arguments <code>low</code> and <code>up</code> with default values <code>-Inf</code>, <code>Inf</code>, respectively.
+Of course all other slots may be specified as arguments.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+Object of class <code>"AbscontDistribution"</code></p>
+
+<h3>Author(s)</h3>
+
+<p>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="ContDistribution-class.html">AbscontDistribution-class</a></code>,
+<code><a href="DiscreteDistribution-class.html">DiscreteDistribution-class</a></code>, 
+<code><a href="RtoDPQ.html">RtoDPQ</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+plot(Norm())
+plot(AbscontDistribution(r = rnorm))
+plot(AbscontDistribution(d = dnorm))
+plot(AbscontDistribution(p = pnorm))
+plot(AbscontDistribution(q = qnorm))
+plot(Ac &lt;- AbscontDistribution(d = function(x, log = FALSE){
+                                   d &lt;- exp(-abs(x^3))
+                                   ## unstandardized!!
+                                   if(log) d &lt;- log(d)
+                                   return(d)}, 
+                         withStand = TRUE))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

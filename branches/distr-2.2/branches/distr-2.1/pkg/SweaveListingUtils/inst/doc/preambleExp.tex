@@ -1,0 +1,100 @@
+%------------------------------------------------------------------------------%
+%Preparations for Sweave and Listings
+%------------------------------------------------------------------------------%
+%
+\RequirePackage{color}
+\definecolor{Rcolor}{rgb}{0, 0.5, 0.5}
+\definecolor{Rbcolor}{rgb}{0, 0.6, 0.6}
+\definecolor{Rout}{rgb}{0.461, 0.039, 0.102}
+\definecolor{Rcomment}{rgb}{0.101, 0.043, 0.432}
+%------------------------------------------------------------------------------%
+\lstdefinelanguage{Rd}[common]{TeX}%
+  {moretexcs={acronym,alias,arguments,author,bold,cite,%
+          code,command,concept,cr,deqn,describe,%
+          description,details,dfn,docType,dots,%
+          dontrun,dontshow,donttest,dQuote,%
+          email,emph,enc,encoding,enumerate,env,eqn,%
+          examples,file,format,item,itemize,kbd,keyword,%
+          keyword,ldots,link,linkS4class,method,name,note,%
+          option,pkg,preformatted,R,references,S3method,%
+          S4method,samp,section,seealso,source,sp,special,%
+          sQuote,strong,synopsis,tab,tabular,testonly,%
+          title,url,usage,value,var},
+   sensitive=true,%
+   morecomment=[l]\%% 2008 Peter Ruckdeschel
+}[keywords,comments]%%
+%------------------------------------------------------------------------------%
+\lstdefinestyle{Rstyle}{fancyvrb=true,escapechar=.,language=R,%
+                        basicstyle={\color{Rcolor}\small},%
+                        keywordstyle={\bf\color{Rcolor}},%
+                        commentstyle={\color{Rcomment}\ttfamily\itshape},%
+                        literate={<-}{{$\leftarrow$}}2{<<-}{{$\twoheadleftarrow$}}2,%
+                        alsoother={$},%
+                        alsoletter={.<-},%
+                        otherkeywords={!,!=,~,$,*,\&,\%/\%,\%*\%,\%\%,<-,<<-,/}}%
+\lstdefinestyle{Rdstyle}{fancyvrb=true,language=Rd,keywordstyle={\bf},%
+                         basicstyle={\color{black}\footnotesize},%
+                         commentstyle={\ttfamily\itshape},%
+                         alsolanguage=R}%
+%------------------------------------------------------------------------------%
+\global\def\Rlstset{\lstset{style=Rstyle}}%
+\global\def\Rdlstset{\lstset{style=Rdstyle}}%
+\Rlstset
+%------------------------------------------------------------------------------%
+\DefineVerbatimEnvironment{Sinput}{Verbatim}%
+  {formatcom=\color{Rcolor}\lstset{fancyvrb=true,escapechar='}}
+\DefineVerbatimEnvironment{Soutput}{Verbatim}%
+  {formatcom=\color{Rout}\small\lstset{fancyvrb=false}}
+\DefineVerbatimEnvironment{Scode}{Verbatim}%
+  {fontshape=sl,formatcom=\color{Rcolor}\lstset{fancyvrb=true}}
+%------------------------------------------------------------------------------%
+\ifthenelse{\boolean{Sweave@gin}}{\setkeys{Gin}{width=0.6\textwidth}}{}%
+%------------------------------------------------------------------------------%
+\let\code\lstinline
+\newcommand{\Code}[1]{{\tt\color{Rcolor} #1}}
+\newcommand{\file}[1]{{\tt #1}}
+\newcommand{\pkg}[1]{{\tt "#1"}}
+\newcommand{\pkgversion}{{\tt 2.0.3}}
+%------------------------------------------------------------------------------%
+% --------------------------
+% Registration of package SweaveListingUtils
+% --------------------------
+% --------------------------
+\lstset{morekeywords={[2]changeKeywordstyles,copySourceFromRForge,%
+getSweaveListingOption,lstinputSourceFromRForge,lstset,%
+lstsetLanguage,lstsetR,lstsetRd,readPkgVersion,readSourceFromRForge,%
+setToBeDefinedPkgs,SweaveListingMASK,SweaveListingoptions,%
+SweaveListingOptions,SweaveListingPreparations,%
+taglist%
+},%
+keywordstyle={[2]{\bf}}%
+}
+%
+%
+
+% --------------------------
+% Registration of package startupmsg
+% --------------------------
+\lstset{morekeywords={[3]buildStartupMessage,infoShow,mySMHandler,%
+mystartupMessage,NEWS,onlytypeStartupMessages,pointertoNEWS,%
+readURLInformation,readVersionInformation,startupMessage,%
+StartupMessage,startupPackage,startupType,suppressStartupMessages%
+},%
+keywordstyle={[3]{\bf}}%
+}
+%
+%
+
+%
+...
+snipped expanded \TeX\ code for registration of packages 
+        tools, stats, graphics, grDevices, utils, datasets, methods, base
+...
+%
+
+%------------------------------------------------------------------------------%
+%
+%%
+\lstset%
+{keywordstyle={[2]\bf\color{blue}}
+}% 

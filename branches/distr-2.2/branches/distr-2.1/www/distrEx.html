@@ -1,0 +1,512 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-15">
+  <meta name="GENERATOR" content="Mozilla/1.5 [de]">
+  <title>Package "distrEx"</title>
+</head>
+<body style="background-image: url(papier.gif);">
+<br>
+<div style="text-align: left;">
+<h1><span style="color: rgb(0, 0, 0);"><a name="top"></a> <a
+ href="http://www.uni-bayreuth.de/departments/math/org/mathe7/mathe7.html"><img
+ style="border: 0px solid ; width: 198px; height: 127px;" src="logo.gif"
+ alt="[Picture: logo]"></a><big style="color: rgb(0, 0, 153);">R-Package
+<span style="color: rgb(51, 51, 255);">"distrEx"</span></big>
+<a href="http://www.r-project.org/"><img
+ style="border: 0px solid ; width: 152px; height: 101px;" alt="R-Logo"
+ src="RLOGO.jpg"></a></span></h1>
+</div>
+<hr style="width: 100%; height: 2px;">
+<div style="text-align: justify;"> Version: 2.1<br>
+Release Date: 2009-03-19 <br>
+Authors: <a
+ href="mailto:matthias.kohl@stamats.de?subject=%5BdistrEx%5D">Matthias
+Kohl,</a>&nbsp;&nbsp; <a
+ href="mailto:peter.ruckdeschel@uni-bayreuth.de?subject=%5BdistrEx%5D">Peter
+Ruckdeschel</a><br>
+Required R-Version: <br>
+<ul>
+  <li>&gt;=2.6.0 for version 2.0.3,</li>
+  <li>&gt;=2.2.0 for versions 0.4-2 -0.4-4 and 1.8-2.0,</li>
+</ul>
+Dependencies: requires packages <span style="color: rgb(51, 102, 255);">"methods"</span>,
+<span style="color: rgb(51, 102, 255);">"evd"</span>,
+<span style="color: rgb(51, 102, 255);">"actuar"</span>
+available from <a href="http://cran.r-project.org/mirrors.html">CRAN</a>;
+<br>
+as well as package <a href="distr.html"><span
+ style="color: rgb(51, 102, 255);">"distr"</span></a>
+version &gt;= 1.9 by the authors of this package and "<span
+ style="color: rgb(51, 102, 255);">startupmsg</span>" by <a
+ href="mailto:peter.ruckdeschel@uni-bayreuth.de?subject=%5Bstartupmsg%5D">Peter
+Ruckdeschel</a>
+also available from <a href="http://cran.r-project.org/mirrors.html">CRAN</a>;
+<br>
+<hr style="width: 100%; height: 2px;">
+<h2>What is "distrEx" meant for?</h2>
+This package provides some extensions to package <a href="distr.html"><span
+ style="color: rgb(51, 102, 255);">"distr"</span></a>
+like:
+<ul>
+  <li> extreme value distribution classes, </li>
+  <li> expectations
+    <ul>
+      <li> in the form E(X) for the expectation of X where X is some
+distribution or </li>
+      <li> in the form E(X,f) for the expectation of f(X) where X is
+some distribution and f some function in X, </li>
+    </ul>
+  </li>
+  <li>further functionals: var, sd, median, IQR, mad<br>
+  </li>
+  <li>truncated moments, </li>
+  <li> distances between distributions (Hellinger, Kolmogorov, total
+variation, "convex contamination") </li>
+  <li> lists of distributions </li>
+  <li> conditional distributions in factorized form </li>
+  <li> conditional expectations in factorized form </li>
+</ul>
+<p>
+</p>
+<hr style="width: 100%; height: 2px;"><br>
+</div>
+<h2>Documentation</h2>
+<div style="text-align: justify; color: rgb(0, 0, 0);">
+more on that package may be found in Matthias' PhD Thesis <span
+ style="font-style: italic;">"Numerical Contributions to the Asymptotic
+Theory of Robustness"</span>, App. D<br>
+available on <a class="moz-txt-link-freetext"
+ href="http://stamats.de/ThesisMKohl.pdf">http://stamats.de/ThesisMKohl.pdf</a>&nbsp;
+as well as in an extensive<a href="distr.pdf"> manual </a>to the
+distrXXX packages (up to version 0.4-3)<br>
+<div style="text-align: justify; color: rgb(0, 0, 0);">from version
+0.4-3 on, we have converted this manual into a common vignette to
+packages <span style="color: rgb(51, 102, 255);">distr</span>, <span
+ style="color: rgb(51, 102, 255);">distrEx</span>, <span
+ style="color: rgb(51, 102, 255);">distrSim</span>, <span
+ style="color: rgb(51, 102, 255);">distrTEst</span>, <span
+ style="color: rgb(51, 102, 255);">distrMod, distrTeach</span>,<br>
+which is available in the mere documentation package<big><big> <a
+ href="distrDoc.html">distrDoc</a></big></big>. To use it you may type<br>
+<pre style="color: rgb(51, 51, 255);">        require("distrDoc"); V&lt;-vignette("distr"); print(V); edit(V) </pre>
+</div>
+<br>
+<hr style="width: 100%; height: 2px;">
+<h2><br>
+</h2>
+<br>
+</div>
+<hr style="width: 100%; height: 2px;">
+<h2>License</h2>
+<div style="text-align: justify;">
+<span style="color: rgb(0, 0, 0);">This software is distributed under
+the terms of the GNU GENERAL</span>
+<br style="color: rgb(0, 0, 0);">
+<span style="color: rgb(0, 0, 0);">PUBLIC LICENSE Version 2, June 1991,
+confer</span> <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a><br>
+</div>
+<br>
+<hr style="width: 100%; height: 2px;">
+<h2>Download</h2>
+<h3 style="text-align: justify; color: rgb(0, 0, 0);">Windows</h3>
+<ul style="text-align: justify; color: rgb(0, 0, 0);">
+  <li>for version &gt;= 2.0 use<br>
+    <pre><span style="color: rgb(51, 102, 255);">install.packages("distrEx", repos = "R-Forge.R-project.org")</span></pre>
+  </li>
+  <li>as <a href="v1.9/distrEx_1.9.zip">Win-Zip-File for R
+&gt;=2.2.0</a> (Version 1.9)</li>
+  <li>as <a href="v1.8/distrEx_1.8.zip">Win-Zip-File for R
+&gt;=2.2.0</a> (Version 1.8)</li>
+  <li>as <a href="Mv0.4-3/distrEx_0.4-4.zip">Win-Zip-File for R
+&gt;=2.2.0</a> (Version
+0.4-4)</li>
+  <li>as <a href="Mv0.4-3/distrEx_0.4-3.zip">Win-Zip-File for R
+&gt;=2.2.0</a> (Version
+0.4-3)</li>
+  <li>as <a href="Mv0.4-2/distrEx_0.4-2.zip">Win-Zip-File for R
+&gt;=2.2.0</a> (Version
+0.4-2)</li>
+</ul>
+<ul style="text-align: justify; color: rgb(0, 0, 0);">
+  <li>to be installed by
+    <ul>
+      <li>the R-gui File picker [Packages -&gt;Install package(s) from
+local zip-files...] or <br>
+      </li>
+      <li style="color: rgb(51, 102, 255);">
+        <pre>install.packages("distrEx", &lt;path to the file distr.zip in your File system&gt;, NULL)<br>        </pre>
+      </li>
+    </ul>
+  </li>
+  <li>to be removed by <br>
+    <pre style="color: rgb(51, 102, 255);" wrap="">remove.packages("distrEx")</pre>
+  </li>
+  <li>to be used by <br>
+    <pre><span style="color: rgb(51, 102, 255);">library("distrEx")</span> <br></pre>
+or
+    <pre><span style="color: rgb(51, 102, 255);">require("distrEx")</span> <br></pre>
+  </li>
+</ul>
+<h3 style="text-align: justify; color: rgb(0, 0, 0);">Linux</h3>
+<ul style="text-align: justify; color: rgb(0, 0, 0);">
+  <li>for version &gt;= 2.0 use<br>
+    <pre><span style="color: rgb(51, 102, 255);">install.packages("distrEx", repos = "R-Forge.R-project.org")</span></pre>
+  </li>
+  <li>as <a href="v1.9/distrEx_1.9.tar.gz">Linux-tar-gz-File for
+R &gt;=2.2.0</a> (Version 1.9)</li>
+  <li>as <a href="v1.8/distrEx_1.8.tar.gz">Linux-tar-gz-File for
+R &gt;=2.2.0</a> (Version 1.8)</li>
+  <li>as <a href="Mv0.4-3/distrEx_0.4-4.tar.gz">Linux-tar-gz-File for
+R &gt;=2.2.0</a> (Version 0.4-4)</li>
+  <li>as <a href="Mv0.4-3/distrEx_0.4-3.tar.gz">Linux-tar-gz-File for
+R &gt;=2.2.0</a> (Version 0.4-3)</li>
+  <li>as <a href="Mv0.4-2/distrEx_0.4-2.tar.gz">Linux-tar-gz-File for
+R &gt;=2.2.0</a> (Version 0.4-2)<br>
+  </li>
+</ul>
+<ul style="text-align: justify; color: rgb(0, 0, 0);">
+  <li>to be installed by<br>
+    <pre><span style="color: rgb(51, 102, 255);">R CMD INSTALL distrEx_0.4-2.tar.gz</span><br
+ style="color: rgb(51, 102, 255);"><br></pre>
+  </li>
+  <li>to be removed by<br>
+    <pre style="color: rgb(51, 102, 255);" wrap="">R CMD REMOVE distrEx</pre>
+  </li>
+  <li>to be used as under Windows </li>
+</ul>
+<h3 style="text-align: justify; color: rgb(0, 0, 0);">Sources</h3>
+<ul style="text-align: justify; color: rgb(0, 0, 0);">
+  <li>included into the .tar.gz.file<br>
+  </li>
+</ul>
+<br>
+<hr
+ style="width: 100%; height: 2px; margin-left: 0px; margin-right: 0px; color: rgb(0, 0, 0);">
+<h2 style="text-align: center; color: rgb(0, 0, 153);">Demos</h2>
+<span style="color: rgb(0, 0, 0);">also see</span> <span
+ style="color: rgb(51, 102, 255);">demo(package="distr") </span>and <span
+ style="color: rgb(51, 102, 255);">demo(package="distrEx")</span> --- <span
+ style="color: rgb(0, 0, 0);">after installation of <span
+ style="color: rgb(51, 102, 255);">"distr"</span> and <span
+ style="color: rgb(51, 102, 255);">"distrEx"</span></span><br>
+<br>
+<ul style="text-align: justify; color: rgb(0, 0, 0);">
+  <li><a href="distrExUse.R"><span
+ style="font-weight: bold; font-style: italic;">distrExUse.R</span></a>:
+an illustration of the use of these functionals in programming</li>
+  <li><a href="Prognose.R"><span
+ style="font-style: italic; font-weight: bold;">Prognose.R</span></a>:
+a deconvolution expample: let X and E be independet univariate random
+variables with [almost] arbitrary, given absolsutely continuous
+distributions. <br>
+We generate the&nbsp; (factorized) conditional distribution of X given
+X+E=y.<br>
+  </li>
+</ul>
+<br style="color: rgb(0, 0, 0);">
+<hr style="width: 100%; height: 2px; color: rgb(0, 0, 0);">
+<h2 style="text-align: center; color: rgb(0, 0, 153);">Version history:</h2>
+<p><br>
+<b><font size="4">Changes from Version 0.4-1 to Version 0.4-2</font></b></p>
+<div style="text-align: left; color: rgb(0, 0, 0);">
+<ul>
+  <li>ContaminationSize, HellingerDist, KolmogorovDist, TotalVarDist
+now return a list which consists of the corresponding distributions and
+their distance</li>
+  <li>minor changes in m1df and m2df to increase speed of computation</li>
+  <li>minor changes in DiscreteMVDistribution to increase speed of
+computation</li>
+  <li>introduction of a new parameter useApply in methods for function
+E
+with default value TRUE</li>
+</ul>
+</div>
+<br>
+<b><font size="4">Changes from Version 0.4-2 to Version 0.4-3</font></b>
+<div style="text-align: left; color: rgb(0, 0, 0);">
+<ul>
+  <li>&nbsp;Implementation of functionals:</li>
+  <ul>
+    <li>evaluation of exact expressions of E (expectation functional)
+for most specific distributions from stats package<br>
+    </li>
+    <li>var, sd methods for UnivariateDistributions; these include
+calls like <br>
+      <pre>N &lt;- Norm()</pre>
+      <pre>  var(N,function(t)abs(t)^(1/2))   # calculates Var[<code
+ class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>N<span
+ class="moz-txt-tag">|</span></code>^(1/2)] </pre>
+also (factorized) conditional variance is available<br>
+    </li>
+    <li>evaluation of exact expressions of var for most specific
+distributions from stats package</li>
+    <li>median, IQR, mad methods for UnivariateDistributions</li>
+    <li>for var, sd, median, IQR, mad:<b class="moz-txt-star"><span
+ class="moz-txt-tag"> </span>all<span class="moz-txt-tag"></span></b>
+functionality/arguments of stats methods is/are preserved and <br>
+only if first argument / argument x is of class UnivariateDistribution
+(or descendant) a different method is applied</li>
+  </ul>
+  <li>Internationalization: use of gettext, gettextf in output</li>
+  <li>C-interface .GLaw() to replace respective R-Code in
+distrExintegrate.R<br>
+  </li>
+  <li>Inclusion of demos (see above)</li>
+</ul>
+</div>
+<b><font size="4"><br>
+Changes from Version 0.4-3 to Version 0.4-4</font></b>
+<div style="text-align: left; color: rgb(0, 0, 0);">
+<ul>
+  <li>exact versions for var() + E() for DExp</li>
+  <li>dim method for DiscreteMVdistributions</li>
+</ul>
+<b><font size="4">Changes from Version 0.4-4 to Version 1.8</font>
+</b><br>
+<ul>
+  <li> besides minor changes /typo fixing essentially: changed
+version counter to the one for the other distrXXX-packages </li>
+</ul>
+<b><font size="4">Changes from Version 1.8 to Version 1.9</font>
+</b>
+<ul>
+  <li>made calls to <span style="color: rgb(51, 102, 255);">uniroot()</span>,
+    <span style="color: rgb(51, 102, 255);">integrate()</span>, <span
+ style="color: rgb(51, 102, 255);">optim(ize)()</span> compliant to <a
+ href="https://stat.ethz.ch/pipermail/r-devel/2007-May/045791.html">https://stat.ethz.ch/pipermail/r-devel/2007-May/045791.html</a><a
+ href="https://stat.ethz.ch/pipermail/r-devel/2007-May/045791.html">l</a><br>
+  </li>
+  <li>'<span style="color: rgb(51, 102, 255);">distrEx</span>' now
+behaves exactly the same as the other members of the <span
+ style="color: rgb(51, 102, 255);">distrXXX </span>family as to '<span
+ style="color: rgb(51, 102, 255);">distrExOptions()</span>', '<span
+ style="color: rgb(51, 102, 255);">getdistrExOption()</span>'<br>
+  </li>
+  <li>substantial contributions by <a href="mailto:gkerns@ysu.edu">Jay
+Kerns</a>:</li>
+  <ul>
+    <li><span style="color: rgb(51, 102, 255);">'skewness()'</span>
+&amp; <span style="color: rgb(51, 102, 255);">'kurtosis()'</span> are
+now available as functionals&nbsp;</li>
+    <li><span style="color: rgb(51, 102, 255);">'E()', 'var()'</span>
+return <span style="color: rgb(51, 102, 255);">'NA'</span> in case of
+T-distribution if not defined
+      <ul>
+      </ul>
+    </li>
+  </ul>
+  <li>some exact formulas for <span style="color: rgb(51, 102, 255);">'median()'</span>,
+    <span style="color: rgb(51, 102, 255);">'mad()'</span>, and <span
+ style="color: rgb(51, 102, 255);">'IQR()'</span><br>
+  </li>
+  <li><font size="-1"><big>moved some parts from
+from package <span style="color: rgb(51, 102, 255);">'distrEx'</span>
+to package <span style="color: rgb(51, 102, 255);">'distr'</span> <br>
+    </big></font></li>
+  <ul>
+    <li><font size="-1"><big>generating function <span
+ style="color: rgb(51, 102, 255);">'DiscreteDistribution' </span> </big></font></li>
+  </ul>
+  <ul>
+    <li><font size="-1"><big>univariate methods of <span
+ style="color: rgb(51, 102, 255);">'liesInSupport()'</span> <br>
+      </big></font></li>
+    <li><font size="-1"><big>classes <span
+ style="color: rgb(51, 102, 255);">'DistrList'</span> and <span
+ style="color: rgb(51, 102, 255);">'UnivariateDistrList'</span>&nbsp; <br>
+      </big></font></li>
+    <li><font size="-1"><big>generating functions <span
+ style="color: rgb(51, 102, 255);">EuclideanSpace()</span> ,<span
+ style="color: rgb(51, 102, 255);">Reals()</span>, <span
+ style="color: rgb(51, 102, 255);">Naturals()</span> <br>
+      </big></font></li>
+  </ul>
+  <li><font size="-1"><big>new function <span
+ style="color: rgb(51, 102, 255);">'illustrateLLN' </span></big></font>to
+illustrate LLN and demo <font size="-1"><big><span
+ style="color: rgb(51, 102, 255);">'illustLLN'</span></big></font></li>
+  <ul>
+    <li>similar preset strings substituted in both expression and
+character
+vectors as in <span style="color: rgb(51, 102, 255);">plot</span>-methods
+from package <span style="font-style: italic;">distr</span><span
+ style="color: rgb(51, 51, 255);"></span><span
+ style="color: rgb(51, 51, 255);"></span><br>
+    </li>
+  </ul>
+  <li><font size="-1"><big>enhanced <span
+ style="color: rgb(51, 102, 255);">'illustrateCLT'</span></big></font></li>
+  <ul>
+    <li><font size="-1"><big>&nbsp;<span
+ style="color: rgb(51, 102, 255);">'illustrateCLT'</span> no longer is
+a generic function but a regular function</big></font></li>
+    <li><font size="-1"><big>&nbsp;the plotting feature of <span
+ style="color: rgb(51, 102, 255);">'illustrateCLT'</span> is extracted
+and has become<br>
+a generic function <span style="color: rgb(51, 102, 255);">'plotCLT'</span>
+(now with title and the summands mentioned</big></font><font size="-1"><big>
+in the header)</big></font></li>
+    <li><font size="-1"><big>there is a TclTk-based demo now (therefore
+TclTk is a suggested package now)</big></font></li>
+    <li><font size="-1"><big>plot includes a title</big></font></li>
+    <li><font size="-1"><big>for '<span style="color: rgb(51, 51, 255);">DiscreteDistributions</span>'
+in the "d"-panel, the support is thinned out if length too long</big></font></li>
+    <li><font size="-1"><big>Komogoroff-distance is printed out<br>
+      </big></font></li>
+    <li><font size="-1"><big>replaced recursive summation in <span
+ style="color: rgb(51, 102, 255);">illustrate-CLT</span> method by <span
+ style="color: rgb(51, 102, 255);">'convpow()'</span> <br>
+(for summand distribution of class <span
+ style="color: rgb(51, 102, 255);">'LatticeDistribution'</span> / <span
+ style="color: rgb(51, 102, 255);">'AbscontDistribution'</span>)</big></font></li>
+  </ul>
+  <li><font size="-1"><big>new file MASKING and corresponding command <span
+ style="color: rgb(51, 102, 255);">'distrExMASK()'</span> to
+describe intended/non-intended maskings</big></font></li>
+  <li><font size="-1"><big>mentioned in package-help: startup messages
+may now also be suppressed by</big></font><br>
+    <font size="-1"><big><span style="color: rgb(51, 102, 255);">suppressPackageStartupMessages()</span>
+(from package <span style="color: rgb(51, 102, 255);">'base'</span>)</big></font></li>
+  <li>formals for slots <span style="color: rgb(51, 51, 255);">p,q,d</span>
+as in package <span style="color: rgb(51, 51, 255);">stats</span> to
+enhance accuracy</li>
+  <ul>
+    <li> <span style="color: rgb(51, 51, 255);">p(X)(q, [cond,]
+lower.tail =
+TRUE, log.p = FALSE)</span></li>
+    <li> <span style="color: rgb(51, 51, 255);">q(X)(p, [cond,]
+lower.tail =
+TRUE, log.p = FALSE)</span></li>
+    <li> <span style="color: rgb(51, 51, 255);">d(X)(x, [cond,] log =
+FALSE)</span></li>
+    <li> used wherever possible; <br>
+but backwards compatibility: always checked whether <span
+ style="color: rgb(51, 51, 255);">lowert.tail / log / log.p</span> are
+formals</li>
+  </ul>
+  <li> <span style="color: rgb(51, 51, 255);">E</span>-, <span
+ style="color: rgb(51, 51, 255);">var</span>-, <span
+ style="color: rgb(51, 51, 255);">IQR</span>-, <span
+ style="color: rgb(51, 51, 255);">mad</span>-, <span
+ style="color: rgb(51, 51, 255);">median</span>-, <span
+ style="color: rgb(51, 51, 255);">kurtosis</span>-, <span
+ style="color: rgb(51, 51, 255);">skewness</span>- methods
+for new class union <span style="color: rgb(51, 51, 255);">'AffLinDistribution'</span><br>
+  </li>
+</ul>
+<b><font size="4">Changes from Version 1.9 to Version 2.0<br>
+</font></b>
+<ul>
+  <li>moved all teaching illustrations for LLN and CLT to new package <a
+ href="distr.html"><span style="color: rgb(51, 102, 255);">"distrTeach"</span></a></li>
+  <li><span style="color: rgb(51, 102, 255);"><span
+ style="color: rgb(0, 0, 0);">E methods for class[es]</span>
+'[AffLin]UnivarLebDecDistribution'</span></li>
+  <li><span style="color: rgb(51, 102, 255);"><span
+ style="color: rgb(0, 0, 0);">distance methods for class</span>
+'[AffLin]UnivarLebDecDistribution'</span></li>
+  <li><span style="color: rgb(51, 102, 255);"><span
+ style="color: rgb(0, 0, 0);">CvM distance is implemented</span><br>
+    <br>
+    </span></li>
+</ul>
+<h3 style="text-align: left;">Changes from 2.0 to
+2.1<br>
+</h3>
+<ul>
+  <li>DISTRIBUTIONS</li>
+  <ul>
+    <li>gains distribution Pareto; ported from pkg actuar by Nataliya
+Horbenko</li>
+    <li>new slots d,p,q for Gumbel distribution catching errors,
+vectorization and lower.tail, log[.p] argument ...</li>
+    <li>new methods for Gumbel distribution ..</li>
+  </ul>
+  <li>FUNCTIONALS</li>
+  <ul>
+    <li>Expectation</li>
+    <ul>
+      <li>expectation gains explicit arguments to set accuracy locally;</li>
+      <li>also both quantile and scale based methods is used to
+determine a sensible integration range in expectation</li>
+    </ul>
+    <li>Quantiles:</li>
+    <ul>
+      <li>median and IQR are now defined for UnivariateCondDistribution</li>
+    </ul>
+    <li>general bug fixes:</li>
+    <ul>
+      <li>checked and fixed functionals (stirred up by mail by Jay
+Kerns)</li>
+      <li>bug corrected in E for Hyper (thanks to Jay G. Kerns!) ...</li>
+      <li>corrected small bug in mad, added new implementation for
+skewness and kurtosis for signature "ANY".</li>
+      <li>corrected small bug in skewness for AffLinDistribution.</li>
+    </ul>
+  </ul>
+  <li>DISTANCES</li>
+  <ul>
+    <li>introduced distance OAsymTotalVarDist (minimal asymmetricctotal
+variation distance)</li>
+    <li>introduced new asymmetric total variation distance
+AsymTotalVarDist</li>
+    <li>TotalVarDist and HellingerDist gain extra arguments to better
+control the integration range and exactness</li>
+  </ul>
+  <li>NEW FUNCTIONALS</li>
+  <ul>
+    <li>m1df for AffLinDistribution</li>
+    <li>Expectation, var, IQR, median, skewness, kurtosis available for
+Pareto</li>
+  </ul>
+</ul>
+... and: had forgotten to document the plot-methods in distrExsome
+typo's in integration range selection
+<ul>
+  <li>Rd-style:</li>
+  <ul>
+    <li>several buglets detected with the fuzzier checking mechanism</li>
+    <ul>
+      <li>cf [Rd] More intensive checking of R help files,
+Prof Brian Ripley, 09.01.2009 10:25) </li>
+      <li> [Rd] Warning: missing text for item ... in \describe? , Prof
+Brian Ripley,</li>
+    </ul>
+  </ul>
+  <li>LICENSE: moved license to LGPL-3<br>
+  </li>
+</ul>
+</div>
+<h3 style="text-align: left;">Changes from 2.1 to
+2.2<br>
+</h3>
+<li> TEMPLATE </li>
+<hr style="width: 100%; height: 2px; color: rgb(0, 0, 0);">
+<h2 style="text-align: center; color: rgb(0, 0, 153);">Our plans for
+the next versions:</h2>
+<ul>
+  <li>use of package <span style="color: rgb(51, 102, 255);">Matrix</span></li>
+  <li>further distances&nbsp; like Cramer von Mises distance,</li>
+  <li>better use of symmetry and group invariances</li>
+</ul>
+<div style="text-align: left; color: rgb(0, 0, 0);"><br
+ style="color: rgb(0, 0, 0);">
+<hr style="width: 100%; height: 2px; color: rgb(0, 0, 0);">
+<h2 style="text-align: center; color: rgb(0, 0, 153);">Things we
+invite
+other people to do</h2>
+<ul>
+  <li><br>
+  </li>
+</ul>
+</div>
+<hr style="width: 100%; height: 2px; color: rgb(0, 0, 0);">This page is
+maintained by <a
+ href="mailto:peter.ruckdeschel@uni-bayreuth.de?subject=distr-package">Peter
+Ruckdeschel</a>
+and last updated on 2009-03-19.<br>
+<br>
+</body>
+</html>
