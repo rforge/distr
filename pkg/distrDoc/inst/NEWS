@@ -6,6 +6,7 @@
 v 2.1
 ##############
 
+ * package now requires packages distrEx, distrMod, distrTeach, distrSim, distrTEst
  * description of new class "CompoundDistribution"
  * use of new helper package SweaveListingUtils
  * Rd-style:

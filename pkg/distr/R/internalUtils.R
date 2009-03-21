@@ -1010,21 +1010,30 @@ return(function(q, lower.tail = TRUE, log.p = FALSE){
   if(pmatch(leftright, table = c("left","right"), nomatch = 1) == 1){
      qnew <- function(p, lower.tail = TRUE, log.p = FALSE) {
              q0 <- qfun(p, lower.tail = lower.tail, log.p = log.p)
+             i0 <- seq(length=length(p))
              if(lower.tail){
                 if(log.p) p.gaps <- log(p.gaps)
                 for(i in 1:nrow(gaps)){
                     i1 <- .isEqual(p,p.gaps[i])
+                    i2 <- i0[p<p.gaps[i]]
+                    i3 <- i0[p>p.gaps[i]]
                     q0[i1] <- gaps[i,1]
-                    q0[p<p.gaps[i]] <- min(q0[p<p.gaps[i]],gaps[i,1])
-                    q0[p>p.gaps[i]] <- max(q0[p>p.gaps[i]],gaps[i,2])
+                    if(length(i2)>0)
+                       q0[i2] <- pmin(q0[i2],gaps[i,1])
+                    if(length(i3)>0)
+                       q0[i3] <- pmax(q0[i3],gaps[i,2])
                 }        
              }else{
                 if(log.p) p.gaps.l <- log(p.gaps.l)
                 for(i in 1:nrow(gaps)){
                     i1 <- .isEqual(p,p.gaps.l[i])
+                    i2 <- i0[p<p.gaps.l[i]]
+                    i3 <- i0[p>p.gaps.l[i]]
                     q0[i1] <- gaps[i,2]
-                    q0[p<p.gaps.l[i]] <- max(q0[p<p.gaps.l[i]],gaps[i,2])    
-                    q0[p>p.gaps.l[i]] <- min(q0[p>p.gaps.l[i]],gaps[i,1])    
+                    if(length(i2)>0)
+                       q0[i2] <- pmax(q0[i2],gaps[i,2])    
+                    if(length(i3)>0)
+                       q0[i3] <- pmin(q0[i3],gaps[i,1])    
                 }        
              }
              return(q0)
@@ -1032,21 +1041,30 @@ return(function(q, lower.tail = TRUE, log.p = FALSE){
   }else{
      qnew <- function(p, lower.tail = TRUE, log.p = FALSE) {
              q0 <- qfun(p, lower.tail = lower.tail, log.p = log.p)
+             i0 <- seq(length=length(p))
              if(lower.tail){
                 if(log.p) p.gaps <- log(p.gaps)
                 for(i in 1:nrow(gaps)){
                     i1 <- .isEqual(p,p.gaps[i])
+                    i2 <- i0[p<p.gaps[i]]
+                    i3 <- i0[p>p.gaps[i]]
                     q0[i1] <- gaps[i,2]
-                    q0[p<p.gaps[i]] <- min(q0[p<p.gaps[i]],gaps[i,1])
-                    q0[p>p.gaps[i]] <- max(q0[p>p.gaps[i]],gaps[i,2])
+                    if(length(i2)>0)
+                       q0[i2] <- pmin(q0[i2],gaps[i,1])
+                    if(length(i3)>0)
+                       q0[i3] <- pmax(q0[i3],gaps[i,2])
                 }        
              }else{
                 if(log.p) p.gaps.l <- log(p.gaps.l)
                 for(i in 1:nrow(gaps)){
                     i1 <- .isEqual(p,p.gaps.l[i])
+                    i2 <- i0[p<p.gaps.l[i]]
+                    i3 <- i0[p>p.gaps.l[i]]
                     q0[i1] <- gaps[i,1]
-                    q0[p<p.gaps.l[i]] <- max(q0[p<p.gaps.l[i]],gaps[i,2])    
-                    q0[p>p.gaps.l[i]] <- min(q0[p>p.gaps.l[i]],gaps[i,1])    
+                    if(length(i2)>0)
+                       q0[i2] <- pmax(q0[i2],gaps[i,2])    
+                    if(length(i3)>0)
+                       q0[i3] <- pmin(q0[i3],gaps[i,1])    
                 }        
              }
              return(q0)

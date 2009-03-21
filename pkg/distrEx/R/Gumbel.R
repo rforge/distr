@@ -44,3 +44,12 @@ setMethod("*", c("Gumbel","numeric"),
                 return(new("Dirac", location = 0, .withArith = TRUE))
             new("Gumbel", loc = loc(e1) * e2, scale = scale(e1)*abs(e2))
           })
+
+### Euler Mascheroni constant:
+EULERMASCHERONICONSTANT <- -digamma(1) ### after http://mathworld.wolfram.com/Euler-MascheroniConstant.html (48)
+
+### Apéry constant
+##local helper function:
+.fctApery <- function(n) (-1)^n*choose(2*n,n)*n^3
+##
+APERYCONSTANT <- -sum(sapply(1:50,.fctApery)^(-1))*5/2 ## after http://mathworld.wolfram.com/AperysConstant.html (8)

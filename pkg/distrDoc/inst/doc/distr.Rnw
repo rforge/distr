@@ -389,7 +389,7 @@ package of {\sf R} in form of
 {\sf R}-functions.\\
 %
 Schematically, the inheritance relations as well as the slots 
-of  the corresponding classes may be read off from figure~\ref{fig1c}. 
+of  the corresponding classes may be read off from Figure~\ref{fig1c}. 
 Class \code{LatticeDistribution} and slot \code{gaps}, as well as
 additional classes \code{AffLinAbscontDistribution}, 
 \code{AffLinDiscreteDistribution}, \code{AffLinLatticeDistribution} 
@@ -553,7 +553,7 @@ an exponential distribution non-negative?'',
 Consequently, we have a method \code{liesIn} that may answer such questions by a 
 \code{TRUE}/\code{FALSE} statement. Schematically, the inheritance relations of 
 class \code{Parameter} as well as the slots of the corresponding
-\mbox{(sub-)}classes may be read off in figure~\ref{fig4c} where we do not 
+\mbox{(sub-)}classes may be read off in Figure~\ref{fig4c} where we do not 
 repeat inherited slots.
 %
 \ifpdf
@@ -584,7 +584,7 @@ repeat inherited slots.
 The most important set to be used as parameter domain/sample space
  (\code{rSpace}) will be an Euclidean space. So \code{rSpace} and 
  \code{EuclideanSpace} are also implemented as classes,
- the structure of which may be read off in figure~\ref{fig5c}.
+ the structure of which may be read off in Figure~\ref{fig5c}.
 \begin{figure}[htb]\label{fig5}
   \begin{center}
     \ifpdf
@@ -651,7 +651,7 @@ the information needed to reproduce the simulation.
 This can be done by \code{savedata}.\\
 Schematically, the inheritance relations of class \code{Dataclass} as well as 
 the slots of the corresponding \mbox{(sub-)}classes may be read off in 
-figure~\ref{fig2c} where we do not  repeat inherited slots.
+Figure~\ref{fig2c} where we do not  repeat inherited slots.
 \begin{figure}[htb]\label{fig2}
   \begin{center}
     \ifpdf
@@ -683,7 +683,7 @@ within seconds, so that it is worth storing them.
 To organize all relevant information about these results, we introduce a class 
 \code{Evaluation} the slots of which is filled by method \code{evaluate} ---see 
 subsection~\ref{evaluate}. Schematically, the slots of this class may be read 
-off in figure~\ref{fig3c}.
+off in Figure~\ref{fig3c}.
 \begin{figure}[htb]\label{fig3}
   \begin{center}
     \ifpdf
@@ -729,7 +729,7 @@ same problem, it is natural to gather several \code{Evaluation} objects
 with results of the same range (e.g.\ a parameter space) generated on the
 same data, i.e.; on the same \code{Dataclass} object. To this end, from
 version 1.8 on, we have introduced class \code{EvaluationList}.
-Schematically, the slots of this class may be read off in figure~\ref{fig3c1}.
+Schematically, the slots of this class may be read off in Figure~\ref{fig3c1}.
 \begin{figure}[htb]\label{fig3-1}
   \begin{center}
     \ifpdf
@@ -1124,11 +1124,17 @@ we use the \code{log.p} argument to be able to simulate from
 the far out tails. To this end, from version 2.1, our distribution classes
 gain internal slots \code{.lowerExact} and \code{.logExact} which control
 whether the corresponding slot functions \code{p} and \code{q} use particular
-code for computing on the log-scale (and also using explicit representations
-as upper quantiles (instead of computing $1-{\rm lowerQuantile}$. 
+code for computing on the log-scale respectively whether they use explicit representations
+for upper quantiles (instead of computing $1-{\rm lowerQuantile}$). 
 If a corresponging distribution object has slots \code{.lowerExact} and \code{.logExact}
-both true, we may use this to produce accurate simulations, especially for
-respectively truncated distributions.
+both \code{TRUE}, we may use this to produce accurate simulations, especially for
+respectively truncated distributions:
+<<TruncExtr, eval = TRUE>>=
+N <- Norm()
+TN <- Truncate(N, 20,22)
+r(TN)(20)  ## simulation accurate although :
+p(N)(20, lower.tail = FALSE) ## prob that N>=20 
+@
 
 \subsection{Additional helper functions}
 %
@@ -1143,6 +1149,14 @@ From version 2.1 on, \code{p.l} and \code{q.r}, are also available for
 class \code{AbscontDistribution} (where \code{q.r} takes care about 
 correct treatment of gaps using helper function \code{modifyqgaps}),
 for class \code{UnivarLebDecDistribution}, and for class \code{UnivarMixingDistribution}.
+<<qrex, eval = TRUE>>=
+B <- Binom(5,0.5)
+p(B)(3)
+p.l(B)(3)
+q(B)(.5)
+q.r(B)(0.5)
+@
+
 
 Again from version 2.1 on, class \code{DiscreteDistribution} has a helper
 method \code{prob} which returns vector of probabilities for the 
@@ -1165,19 +1179,43 @@ returns exactly slot \code{p} (resp. \code{d}) the respective
 a.c./ discrete part of the object;  else the return value is weighted by 
 the respective weight of the part, i.e. \code{acWeight}/\code{discreteWeight}.
 
+<<probHN, eval = TRUE>>=
+B0 <- as(Binom(5,0.5),"DiscreteDistribution")
+   ## coercion necessary:
+   ## otherwise slot "prob" of B0 will be returned
+prob(B0)
+HN <- Huberize(N, -2,1)
+prob(HN)
+@
+
 In order to convert arbitrary univariate distributions to \code{AbscontDistribution}
 from version 2.1 on, we have function \code{makeAbscontDistribution} which
 takes slot \code{p} and uses \code{AbscontDistribution()} to generate a 
 corresponding smoothed version; to smear out mass points on the border
 of the support, these upper and lower bounds are somewhat enlarged.
+Note that in the result, slots \code{p} and \code{q} are not replaced but
+rather taken unchanged from the argument:
+
+<<makeAC, eval = TRUE, fig = TRUE>>=
+par(mfrow=c(2,3))
+plot(makeAbscontDistribution(Nbinom(5,.5)),mfColRow=FALSE)
+plot(makeAbscontDistribution(HN),mfColRow=FALSE)
+par(mfrow=c(1,1))
+@
 
 Methods \code{getLow}, \code{getUp} available for classes \code{DiscreteDistribution},
 \code{AbscontDistribution}, \code{UnivarLebDecDistribution}, and 
 \code{UnivarMixingDistribution} return ``numerical'' end points of the respective
 supports: if these distributions have finite end points, these are returned,
-else a lower/upper \code{ep}-quantile is returned, where \code{ep}, by default,
+else a lower/upper \code{eps}-quantile is returned, where \code{ep}, by default,
 is set to global options \code{TruncQuantile}.
 
+<<getLowUp, eval = TRUE>>=
+getLow(Nbinom(5,0.5))
+getUp(Nbinom(5,0.5))
+getLow(Norm(5,0.5))
+getUp(Norm(5,0.5))
+@
 
 
 %
@@ -1200,11 +1238,15 @@ evaluations may be passed using arguments \code{obs0},  \code{runs0},
 for either \pkg{distrSim} or \pkg{distrTEst}.
 
 \subsection{Plotting}
+
+\subsubsection[{Plotting for Distribution objects}]{Plotting for \code{Distribution} objects}
 For an object of class \code{Distribution},
 \code{plot} displays the density/probability function, the c.d.f.\ and the 
 quantile function of a distribution. Note that all usual parameters of 
 \code{plot} remain valid. For instance, you may increase the axis annotations 
-and so on. More important, you may also 
+and so on. \code{plot()} can also cope with \code{log}-arguments.
+
+\paragraph{\code{xlim} argument:} More importantly, you may also 
 override the automatically chosen $x$-region by passing an \code{xlim} argument:
 <<cauchy1, eval = TRUE, fig = TRUE>>=
   plot(Cauchy())
@@ -1221,7 +1263,7 @@ limits for the various panels (\code{d}, \code{p}, \code{q}, or in case of \code
 \code{d.discrete}, \code{p.discrete}, \code{q.discrete}).
 
 
-Moreover you may control optional main, inner titles and subtitles with 
+\paragraph{titles:} Moreover you may control optional main, inner titles and subtitles with 
 arguments \code{main} / \code{sub} / \code{inner}. To this end there are 
 preset strings substituted in both expression and character vectors 
 (where in the following \code{x} denotes the argument 
@@ -1242,7 +1284,9 @@ As usual you may control title sizes and colors with
 \code{cex.main} / \code{cex.inner} / \code{cex.sub} respectively with
 \code{col} / \code{col.main} / \code{col.inner} / \code{col.sub}. Additionally
 it may be helpful to control top and bottom margins with arguments
-\code{bmar}, \code{tmar}. \code{plot()} can also cope with \code{log}-arguments.
+\code{bmar}, \code{tmar}. 
+
+\paragraph{step-function features:} 
 We provide different default symbols for unattained [\code{pch.u}] / attained 
 [\code{pch.a}] one-sided limits, which may be overridden by corresponding
 arguments  \code{pch} / \code{pch.a} / \code{pch.u}.
@@ -1258,60 +1302,142 @@ package \pkg{base} as far as possible and (also for panel ``q'' for
 \code{do.points}, \code{verticals}, \code{col.points} / \code{col.vert} / 
 \code{col.hor} and \code{cex.points}.
 
-As examples consider the following 10 plots:
+As examples consider the following plots: The standard plot for
+a discrete distribution is shown in Figure~\ref{plotexPic1}.
 
-
-\begin{figure}[p]
+\begin{figure}[p] 
+\begin{center}
 <<plotex1, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
 plot(Binom(size = 4, prob = 0.3))
 @
+    \caption{\label{plotexPic1}{Standard plot for discrete distributions
+    }}
+\end{center}
 \end{figure}
-\begin{figure}[p]
+
+Omitting the point symbols at jump points (\code{do.points = FALSE})
+and the corresponding vertical lines (\code{verticals = FALSE}) 
+in the \code{p} and \code{q} panels
+gives  Figure~\ref{plotexPic2}.
+\begin{figure}[p] 
+\begin{center}
 <<plotex2, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
 plot(Binom(size = 4, prob = 0.3), do.points = FALSE, verticals = FALSE)
 @
+    \caption{\label{plotexPic2}{Plot for discrete distributions without
+    extra symbols at jump points and vertical lines
+    }}
+\end{center}
 \end{figure}
 
-\begin{figure}[p]
+Instead we might use a somewhat enlarged (\code{cex.main = 1.6}) 
+main title (\code{main = TRUE}) and omit the 
+panel titles (\code{inner = FALSE}). To this end, we should increase the
+margin between main title and panels (by \code{tmar = 6}). This
+is shown in Figure~\ref{plotexPic3}.
+
+\begin{figure}[p] 
+\begin{center}
 <<plotex3, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
 plot(Binom(size = 4, prob = 0.3), main = TRUE, inner = FALSE, cex.main = 1.6,
      tmar = 6)
 @
+    \caption{\label{plotexPic3}{Plot for discrete distributions using a main 
+    title
+    }}
+\end{center}
 \end{figure}
 
+Changing point sizes (\code{cex.points}) and line width (\code{lwd}),
+and using (default) panel titles (set \code{TRUE} by default) 
+gives a somewhat different picture
+as in Figure~\ref{plotexPic4}.
+     
 \begin{figure}[p]
+\begin{center}
 <<plotex4, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
 plot(Binom(size = 4, prob = 0.3), cex.points = 1.2, pch = 20, lwd = 2)
 @
+    \caption{\label{plotexPic4}{Plot for discrete distributions using panel 
+    titles and changed point sizes
+    }}
+\end{center}
 \end{figure}
 
+Different colors for different plot elements can be used by
+arguments \code{col} (general), \code{col.points} (jump points),
+\code{col.sub} (sub-titles), \code{col.inner} (panel titles).
+In Figure~\ref{plotexPic5}, this is shown; the figure uses main
+(\code{main = TRUE}),
+inner (\code{TRUE} by default) and sub (\code{sub = TRUE}) titles,
+using the default titles respectively.
+     
 \begin{figure}[p]
+\begin{center}
 <<plotex5, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
 B <- Binom(size = 4, prob = 0.3)
 plot(B, col="red", col.points = "green", main = TRUE, col.main="blue",
      col.sub = "orange", sub = TRUE, cex.sub = 0.6, col.inner = "brown")
 @
+    \caption{\label{plotexPic5}{Plot for discrete distributions using main, panel 
+    and sub titles with changed colors
+    }}
+\end{center}
 \end{figure}
 
+Changing plot size for marking the jump points by \code{cex.points = 1.2}
+and selecting symbols for left limits (by \code{pch.u = 20}) and
+right values (by \code{pch.a = 20}) at jump points is exemplified  in 
+Figure~\ref{plotexPic6}.
+
 \begin{figure}[p]
+\begin{center}
 <<plotex6, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
 plot(Nbinom(size = 4,prob = 0.3), cex.points = 1.2, pch.u = 20, pch.a = 10)
 @
+    \caption{\label{plotexPic6}{Plot for discrete distributions with different
+    symbols for marking jump points
+    }}
+\end{center}
 \end{figure}
 
+Using log-scale for both axes by \code{log = "xy"} and a reduced number of grid
+points for plotting by \code{ngrid = 200} is shown in 
+Figure~\ref{plotexPic7}.
+
 \begin{figure}[p]
+\begin{center}
 <<plotex7, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
 plot(Chisq(), log = "xy", ngrid = 100)
 @
+    \caption{\label{plotexPic7}{Plot for absolutely continuous distributions 
+    using log scales
+    }}
+\end{center}
 \end{figure}
 
-\begin{figure}[p]
+Changing line type by \code{lty = 3} and color by \code{col = "red"},
+axis notation orientation by \code{las = 2} and the number of grid
+points used for plotting by \code{ngrid = 200} is shown in 
+Figure~\ref{plotexPic8}.
+\begin{figure}[p] 
+\begin{center}
 <<plotex8, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
 plot(Norm(), lwd=3, col = "red", ngrid = 200, lty = 3, las = 2)
 @
+    \caption{\label{plotexPic8}{Plot for absolutely continuous distributions 
+    with different line type and reduced number of grid points
+    }}
+\end{center}
 \end{figure}
 
+You may also use hook functions in distribution plots from version 2.0 on,
+which is especially useful for plotting grids in the background as shown in  
+Figure~\ref{plotexPic9}; this plot also has non-default titles using
+preset strings substitutions (\%N, \%C, \%P, \%A, \%D).
+
 \begin{figure}[p]
+\begin{center}
 <<plotex9, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
 plot(Norm(), panel.first = grid(), main = "my Distribution: \%A",
      inner = list(expression(paste(lambda, "-density of \%C(\%P)")), "CDF",
@@ -1319,29 +1445,77 @@ plot(Norm(), panel.first = grid(), main = "my Distribution: \%A",
      sub = "this plot was correctly generated on \%D",
      cex.inner = 0.9, cex.sub = 0.8)
 @
+    \caption{\label{plotexPic9}{Plot for absolutely continuous distributions 
+    using non-standard titles and with a background grid
+    }}
+\end{center}
 \end{figure}
 
-\begin{figure}[p]
+Special care is take to correctly depict jumps in the quantile
+function / gaps in the support; from version 2.0 on you have
+function \code{setgaps()} to automatically such gaps, but in case
+of very small density values this may give some ``false positives''
+as shown for the $\chi^2$ distribution in Figure~\ref{plotexPic10}
+
+\begin{figure}[p] 
+\begin{center}
 <<plotex10, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
 Ch <- Chisq(); setgaps(Ch, exactq = 3)
 plot(Ch, cex = 1.2, pch.u = 20, pch.a = 10, col.points = "green", 
      col.vert = "red")
 @
+    \caption{\label{plotexPic10}{Plot for absolutely continuous distributions 
+    with automatic gap detection
+    }}
+\end{center}
+\end{figure}
+
+From version 2.0 on, you may override the given panel
+configuration using argument \code{mfColRow=FALSE} 
+---see Figure~\ref{plotexPic11}.
+
+\begin{figure}[p]
+\begin{center}
+<<plotex11, eval = TRUE, fig = TRUE, width=8.0,height=8.0>>=
+layout(matrix(c(1,3,2,3), nrow=2))
+plot(N, mfColRow = FALSE)
+@
+    \caption{\label{plotexPic11}{Plot for absolutely continuous distributions 
+    using non-standard panel configuration
+    }}
+\end{center}
 \end{figure}
 
 Following a suggestion by \href{mailto:unwin@math.uni-augsburg.de}{Anthony Unwin},
 from version 2.1 you may also select the panels you like to plot, using
-argument \code{to.draw.arg}.
+argument \code{to.draw.arg}; the corresponding panels are named and
+may either be given by name or by number (the rank in drawing the default
+``complete'' plot); for details
+see \code{?plot}.  As example for this panel selection, see 
+Figure~\ref{plotexPic12}.
 
+\begin{figure}[p] 
+\begin{center}
+<<plotex12, eval = TRUE, fig = TRUE, width=8.0,height=8.0>>=
+layout(matrix(c(rep(1,6),2,2,3,3,4,4,5,5,5,6,6,6), 
+                   nrow=3, byrow=TRUE))
+plot(HN, mfColRow = FALSE,
+        to.draw.arg=c("p","d.c","p.c","q.c", "p.d","q.d"))
+@
+    \caption{\label{plotexPic12}{Plot for Lebesgue decomposed distributions 
+    with user-chosen selection of plotted panels
+    }}
+\end{center}
+\end{figure}
 
-\par
+\subsubsection[{Plotting for Dataclass objects}]{Plotting for \code{Dataclass} objects}
 For objects of  class \code{Dataclass} ---or of a corresponding subclass---
  \code{plot} plots the sample against the run index and in case  of  
  \code{ContSimulation} the contaminating variables are highlighted by a 
  different color. Additional arguments controlling
  the plot as in the default \code{plot} command may be passed, 
  confer \code{help("plot-methods",package="distrSim")}.
- \par
+\subsubsection[{Plotting for Evaluation objects}]{Plotting for \code{Evaluation} objects}
  For an object of class \code{Evaluation},
 \code{plot} yields a boxplot of the results of the evaluation.
 For an object of class \code{EvaluationList},
@@ -1359,6 +1533,7 @@ of the result {\tt resDim} (e.g.\ parameter dimension), respectively a
 usual {\tt S} recycling rules.
 %\newline??????1
 
+\subsubsection[{Plotting for L2paramFamily objects}]{Plotting for \code{L2paramFamily} objects}
 In package \pkg{distrMod} we have an additional plotting method for class
 \code{L2paramFamily}; besides the underlying model distribution this also
 plots the coordinates of the $L_2$-derivative (scores function).
@@ -1403,16 +1578,10 @@ replacement function \code{seed()}, but has to take care of the correct format
 himself, confer the documentation of \code{setRNG}. One easy way to fill 
 the \code{Data} slot of a simulation \code{X} with ``new'' random numbers is
 <<simulate, eval = TRUE>>=
-have.distrSim <- suppressWarnings(require("distrSim"))
-if (have.distrSim)
-   {X <- Simulation()
-    seed(X) <- setRNG()
-    simulate(X)
-    print(Data(X)[1:10])
-   } else { 
-    cat("\n functionality not (yet) available; ")
-    cat("you have to install package \"distrSim\" first.\n")
-    }
+X <- Simulation()
+seed(X) <- setRNG()
+simulate(X)
+Data(X)[1:10]
 @
 %
 \subsection[Evaluate (in package distrTEst)]%
@@ -1503,42 +1672,47 @@ argument \code{cond}.
 \paragraph{exact evaluation}
 is available for \code{X} of class \code{Arcsine}, \code{Beta} (for noncentrality $0$), 
 \code{Binom}, \code{Cauchy}, \code{Chisq}, \code{Dirac}, \code{Exp}, \code{Fd}, 
-\code{Gammad}, \code{Geom}, \code{Hyper}, \code{Logis}, \code{Lnorm}, 
-\code{Nbinom}, \code{Norm}, \code{Pois}, \code{Td}, \code{Unif}, \code{Weibull}.
+\code{Gammad}, \code{Geom}, \code{Gumbel}, \code{Hyper}, \code{Logis}, \code{Lnorm}, 
+\code{Nbinom}, \code{Norm}, \code{Pareto}, \code{Pois}, \code{Td}, \code{Unif}, \code{Weibull}.
 \paragraph{examples} $ \mbox{ }$\newline
-<<expectationPrep, eval = TRUE, echo=FALSE>>=
-SweaveListingOptions("inSweave"=TRUE)
-@
+%<<expectationPrep, eval = TRUE, echo=FALSE>>=
+%SweaveListingOptions("inSweave"=TRUE)
+%@
 <<expectation, eval = TRUE>>=
-have.distrEx <- suppressWarnings(require("distrEx"))
-if (have.distrEx) 
-    {D4 <- LMCondDistribution(theta = 1)
-     D4  # corresponds to Norm(cond, 1)
-     N <- Norm(mean = 2)
+D4 <- LMCondDistribution(theta = 1)
+D4  # corresponds to Norm(cond, 1)
+N <- Norm(mean = 2)
 
-     print(E(D4, cond = 1))
-     print(E(D4, cond = 1, useApply = FALSE))
-     print(E(as(D4, "UnivariateCondDistribution"), cond = 1))
-     print(E(D4, function(x){x^2}, cond = 2))
-     print(E(D4, function(x){x^2}, cond = 2, useApply = FALSE))
-     print(E(N, function(x){x^2}))
-     print(E(as(N, "UnivariateDistribution"), function(x){x^2},
-       useApply = FALSE)) # crude Monte-Carlo
-     print(E(D4, function(x, cond){cond*x^2}, cond = 2,
-       withCond = TRUE))
-     print(E(D4, function(x, cond){cond*x^2}, cond = 2,
-       withCond = TRUE, useApply = FALSE))
-     print(E(N, function(x){2*x^2}))
-     print(E(as(N, "UnivariateDistribution"), function(x){2*x^2},
-       useApply = FALSE)) # crude Monte-Carlo
-     Y <- 5 * Binom(4, .25) - 3
-     print(Y); print(E(Y))  
-    } else {
-    cat("\n functionality not (yet) available; ")
-    cat("you have to install package \"distrEx\" first.\n")
-    }
+E(D4, cond = 1)
+E(D4, cond = 1, useApply = FALSE)
+E(as(D4, "UnivariateCondDistribution"), cond = 1)
+E(D4, function(x){x^2}, cond = 2)
+E(D4, function(x){x^2}, cond = 2, useApply = FALSE)
+E(N, function(x){x^2})
+E(as(N, "UnivariateDistribution"), function(x){x^2}, 
+     useApply = FALSE) # crude Monte-Carlo
+E(D4, function(x, cond){cond*x^2}, cond = 2,
+  withCond = TRUE)
+E(D4, function(x, cond){cond*x^2}, cond = 2,
+  withCond = TRUE, useApply = FALSE)
+E(N, function(x){2*x^2})
+E(as(N, "UnivariateDistribution"), function(x){2*x^2},
+  useApply = FALSE) # crude Monte-Carlo
+Y <- 5 * Binom(4, .25) - 3
+Y
+E(Y)  
 @
 %
+\paragraph{Controlling integration range:} From version 2.1 on, \code{E} gains
+arguments \code{low} and \code{upp} to restrict evaluation of the
+integrand to a given integration domain; these arguments can also
+be passed through by other functionals based on expectation, like
+\code{var}, \code{sd}, \code{skewness}, and \code{kurtosis}.
+<<expectationlow, eval = TRUE>>=
+E(Cauchy(), low=3, upp=5)
+var(Cauchy(), low=3, upp=5)
+@
+
 \paragraph{Controlling accuracy:} From version 2.1 on, our 
 expectation methods gain explicit arguments to set accuracy locally;
 i.e.; the MC-methods have an argument \code{Nsim} defaulting to 
@@ -1554,6 +1728,15 @@ lower and upper quantiles $l_0$, $u_0$. In addition, we determine scale based
 bounds as ${\rm median} \pm s_f \,{\rm IQR}$ where $s_f$ is a scaling factor
 to be passed on as argument \code{IQR.fac} which defaults to global option
 \code{IQR.fac}.
+%<<expectationPrep, eval = TRUE, echo=FALSE>>=
+%SweaveListingOptions("inSweave"=TRUE)
+%@
+<<expectation2, eval = TRUE>>=
+E(N, function(x)x^2) 
+E(N, function(x)x^2,  lowerTruncQuantile = 1e-5)
+var(Cauchy(), low =3, upperTruncQuantile = 1e-5,  IQR.fac = 10)
+var(Cauchy(), low =3, upperTruncQuantile = 1e-10, IQR.fac = 20)
+@
 
 %
 \subsubsection{Variance}
@@ -1589,7 +1772,11 @@ the \pkg{stats} package
 \code{var} just returns the variance of distribution \code{X} --- or 
 of \code{fun(X)} if a function is passed as argument fun, or, if a condition 
 argument \code{cond} (for $Y=y$),  ${\rm Var}\,[X|Y=y]$ respectively 
-${\rm Var}\,[f(X)|Y=y]$ --- just as for \code{E}. \\
+${\rm Var}\,[f(X)|Y=y]$ --- just as for \code{E}.
+The same goes for corresponding arguments controlling the accuracy 
+of \code{E} locally from version 2.1 on (see paragraph ``Controlling accuracy''):
+These may simply passed through in a call to \code{var}.  
+
 For an object \code{Y} of a subclass of class 
 union \code{AffLinDistribution}, we determine the variance as 
 \code{Y@a\textasciicircum2 * var(Y@X0)} and hence use analytic terms for \code{X0} if
@@ -1597,9 +1784,9 @@ available.
 \paragraph{exact evaluation} is provided for specific distributions if no 
 function and no condition argument is given:
 this is available for \code{X} of class \code{Arcsine}, \code{Beta} (for noncentrality $0$), 
-\code{Binom}, \code{Cauchy}, \code{Chisq},\code{Dirac}, \code{Exp}, \code{Fd}, 
-\code{Gammad}, \code{Geom}, \code{Hyper}, \code{Logis}, \code{Lnorm}, 
-\code{Nbinom}, \code{Norm}, \code{Pois}, \code{Unif}, \code{Td}, \code{Weibull}.
+\code{Binom}, \code{Cauchy}, \code{Chisq}, \code{Dirac}, \code{Exp}, \code{Fd}, 
+\code{Gammad}, \code{Geom}, \code{Gumbel}, \code{Hyper}, \code{Logis}, \code{Lnorm}, 
+\code{Nbinom}, \code{Norm}, \code{Pareto}, \code{Pois}, \code{Unif}, \code{Td}, \code{Weibull}.
 \subsubsection{Further functionals}
 By the same techniques we provide the following functionals for univariate 
 distributions:
@@ -1614,6 +1801,7 @@ distributions:
   arguments)
   \item interquartile range: \code{IQR} (not for function arguments)
 \end{itemize}
+For details, see \code{?skewness}.
 %
 \subsection[Truncated moments (in package distrEx)]{Truncated moments 
 (in package \pkg{distrEx})}\label{m1df}
@@ -1994,8 +2182,6 @@ negative log-likelihood) estimators. The main function for this purpose is
 \code{MCEstimator}. As an example we can use the negative log-likelihood as
 criterion; i.e., compute the maximum likelihood estimator.
 <<MCEstimator, eval = TRUE>>=
-have.distrMod <- suppressWarnings(require("distrMod"))
-if (have.distrMod){
     library(distrMod)
     x <- rgamma(50, scale = 0.5, shape = 3)
     G <- GammaFamily(scale = 1, shape = 2)
@@ -2005,7 +2191,6 @@ if (have.distrMod){
         return(res)
     }
     MCEstimator(x = x, ParamFamily = G, criterion = negLoglikelihood)
-}
 @
 The user can specialize the behavior of \code{MCEstimator} on two layers:
 instance-individual or class-individual.
@@ -2093,10 +2278,8 @@ distance (MD) estimation there are the function \code{MLEstimator} and
 Hence, the maximum likelihood estimator and for instance the Kolmogorov MD 
 estimator can more easily be computed as follows.
 <<MLEstimator, eval = TRUE>>=
-if (have.distrMod){
     MLEstimator(x = x, ParamFamily = G)
     MDEstimator(x = x, ParamFamily = G, distance = KolmogorovDist)
-}
 @
 Within \code{MLEstimator}, we call method \code{mleCalc}, which then 
 dispatches according to its arguments \code{x} and \code{PFam}
@@ -2172,7 +2355,7 @@ output by setting global options with \code{distrModOptions}, see also
 subsection~\ref{distrModO}.
 As example consider the following:
 <<CIex, eval = TRUE, fig = TRUE>>=
-
+require(distrMod)
 ## some transformation
 mtrafo <- function(x){
      nms0 <- c("scale","shape")
@@ -3025,72 +3208,62 @@ plot(N, lwd = 3)
   {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/SimulateandEstimate.R}}}}\\[2ex]
 \end{footnotesize}
 <<SimulateandEstimate, eval = TRUE, fig = TRUE, width=8.8,height=3.8>>=
-have.distrTEst <- suppressWarnings(require(distrTEst)) 
+require(distrTEst)
     ### also loads distrSim
-if (have.distrTEst)
-   { sim <- new("Simulation",
-                seed = setRNG(),
-                distribution = Norm(mean = 0, sd = 1),
-                filename="sim_01",
-                runs = 1000,
-                samplesize = 30)
-     
-     contsim <- new("Contsimulation",
-                    seed = setRNG(),
-                    distribution.id = Norm(mean = 0, sd = 1),
-                    distribution.c = Norm(mean = 0, sd = 9),
-                    rate = 0.1,
-                    filename="contsim_01",
-                    runs = 1000,
-                    samplesize = 30)
-     
-     simulate(sim)
-     simulate(contsim)
-     
-     print(sim)
-     summary(contsim)
-     plot(contsim)
-   } else {
-    cat("\n functionality not (yet) available; ")
-    cat("you have to install package \"distrTEst\" first.\n")
-   }
+sim <- new("Simulation",
+           seed = setRNG(),
+           distribution = Norm(mean = 0, sd = 1),
+           filename="sim_01",
+           runs = 1000,
+           samplesize = 30)
+
+contsim <- new("Contsimulation",
+               seed = setRNG(),
+               distribution.id = Norm(mean = 0, sd = 1),
+               distribution.c = Norm(mean = 0, sd = 9),
+               rate = 0.1,
+               filename="contsim_01",
+               runs = 1000,
+               samplesize = 30)
+
+simulate(sim)
+simulate(contsim)
+
+sim
+summary(contsim)
+plot(contsim)
 @
 <<elist, eval = TRUE, fig = TRUE>>=
-have.distrTEst <- suppressWarnings(require("distrTEst"))
-if (have.distrTEst)
-   { psim <- function(theta,y,m0){
-       mean(pmin(pmax(-m0, y - theta), m0))
-       }
-     mestimator <- function(x, m = 0.7) {
-       uniroot(f = psim,
-               lower = -20,
-               upper = 20,
-               tol = 1e-10,
-               y = x,
-               m0 = m,
-               maxiter = 20)$root
-       }
-     
-     result.id.mean <- evaluate(sim, mean)
-     result.id.mest <- evaluate(sim, mestimator)
-     result.id.median <- evaluate(sim, median)
-     
-     
-     result.cont.mean <- evaluate(contsim, mean)
-     result.cont.mest <- evaluate(contsim, mestimator)
-     result.cont.median <- evaluate(contsim, median)
-     
-     elist <- EvaluationList(result.cont.mean,
-                             result.cont.mest,
-                             result.cont.median) 
-     
-     print(elist)
-     summary(elist)
-     plot(elist, cex = 0.7, las = 2)
-   } else {
-    cat("\n functionality not (yet) available; ")
-    cat("you have to install package \"distrTEst\" first.\n")
-   }
+require(distrTEst)
+psim <- function(theta,y,m0){
+  mean(pmin(pmax(-m0, y - theta), m0))
+  }
+mestimator <- function(x, m = 0.7) {
+  uniroot(f = psim,
+          lower = -20,
+          upper = 20,
+          tol = 1e-10,
+          y = x,
+          m0 = m,
+          maxiter = 20)$root
+  }
+
+result.id.mean <- evaluate(sim, mean)
+result.id.mest <- evaluate(sim, mestimator)
+result.id.median <- evaluate(sim, median)
+
+
+result.cont.mean <- evaluate(contsim, mean)
+result.cont.mest <- evaluate(contsim, mestimator)
+result.cont.median <- evaluate(contsim, median)
+
+elist <- EvaluationList(result.cont.mean,
+                        result.cont.mest,
+                        result.cont.median) 
+
+elist
+summary(elist)
+plot(elist, cex = 0.7, las = 2)
 @
 \par
 \begin{footnotesize}
@@ -3124,26 +3297,20 @@ package {\tt "distr"} by implementing a general evaluation of expectation
 and variance under a given distribution.
 \end{small}
 <<Expectation, eval = TRUE>>=
-have.distrEx <- suppressWarnings(require("distrEx"))
-if (have.distrEx) 
-   {         
-     # Example
-     id <- function(x) x
-     sq <- function(x) x^2
-     
-     # Expectation and Variance of Binom(6,0.5)
-     B <- Binom(6, 0.5)
-     print(E(B, id))
-     print(E(B, sq) - E(B, id)^2)
-     
-     # Expectation and Variance of Norm(1,1)
-     N <- Norm(1, 1)
-     print(E(N, id))
-     print(E(N, sq) - E(N, id)^2)
-   } else {
-    cat("\n functionality not (yet) available; ")
-    cat("you have to install package \"distrEx\" first.\n")
-   }
+require("distrEx")
+# Example
+id <- function(x) x
+sq <- function(x) x^2
+
+# Expectation and Variance of Binom(6,0.5)
+B <- Binom(6, 0.5)
+E(B, id)
+E(B, sq) - E(B, id)^2
+
+# Expectation and Variance of Norm(1,1)
+N <- Norm(1, 1)
+E(N, id)
+E(N, sq) - E(N, id)^2
 @
 \subsection{$n$-fold convolution of absolutely continuous distributions}\label{exe10}
 \begin{footnotesize}

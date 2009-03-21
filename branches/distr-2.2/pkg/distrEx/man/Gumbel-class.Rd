@@ -60,6 +60,24 @@ Class \code{"Distribution"}, by class \code{"AbscontDistribution"}.
 
     \item{\code{*}}{\code{signature(e1 = "Gumbel", e2 = "numeric")}: result again of 
       class \code{"Gumbel"}; exact. }
+
+    \item{E}{\code{signature(object = "Gumbel", fun = "missing", cond = "missing")}: 
+      exact evaluation of expectation using explicit expressions.}
+
+     \item{var}{\code{signature(x = "Gumbel")}: 
+      exact evaluation of expectation using explicit expressions.}
+
+     \item{skewness}{\code{signature(x = "Gumbel")}: 
+      exact evaluation of expectation using explicit expressions.}
+
+     \item{kurtosis}{\code{signature(x = "Gumbel")}: 
+      exact evaluation of expectation using explicit expressions.}
+
+     \item{median}{\code{signature(x = "Gumbel")}: 
+      exact evaluation of expectation using explicit expressions.}
+
+     \item{IQR}{\code{signature(x = "Gumbel")}: 
+      exact evaluation of expectation using explicit expressions.}
   }
 }
 \references{Johnson et al. (1995) \emph{Continuous Univariate Distributions. Vol. 2. 2nd ed.}

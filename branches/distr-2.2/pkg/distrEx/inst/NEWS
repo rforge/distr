@@ -13,6 +13,8 @@ v 2.1
 
 * FUNCTIONALS
 --Expectation
+  +expectation gains (optional) low and upp arguments; 
+   these can be passed through to var, skewness, kurtosis
   +expectation gains explicit arguments to set accuracy locally;
   +also both quantile and scale based methods is used to determine
    a sensible integration range in expectation

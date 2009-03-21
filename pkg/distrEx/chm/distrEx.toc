@@ -26,6 +26,10 @@
 <param name="Local" value="AbscontCondDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="APERYCONSTANT">
+<param name="Local" value="distrExConstants.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="AsymTotalVarDist">
 <param name="Local" value="AsymTotalVarDist.html">
 </OBJECT>
@@ -342,6 +346,10 @@
 <param name="Local" value="E.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,Gumbel,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="E,Hyper,missing,missing-method">
 <param name="Local" value="E.html">
 </OBJECT>
@@ -448,6 +456,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="EuclCondition-class">
 <param name="Local" value="EuclCondition-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="EULERMASCHERONICONSTANT">
+<param name="Local" value="distrExConstants.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="EupperTruncQuantile">
@@ -602,6 +614,10 @@
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR,Gumbel-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="IQR,Logis-method">
 <param name="Local" value="Var.html">
 </OBJECT>
@@ -747,6 +763,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="kurtosis,Geom-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,Gumbel-method">
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -1078,6 +1098,10 @@
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median,Gumbel-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="median,Lnorm-method">
 <param name="Local" value="Var.html">
 </OBJECT>
@@ -1402,6 +1426,10 @@
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,Gumbel-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="skewness,Hyper-method">
 <param name="Local" value="Var.html">
 </OBJECT>
@@ -1586,6 +1614,10 @@
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,Gumbel-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="var,Hyper-method">
 <param name="Local" value="Var.html">
 </OBJECT>
@@ -1641,6 +1673,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Absolutely continuous conditional distribution">
 <param name="Local" value="AbscontCondDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Built-in Constants in package distrEx">
+<param name="Local" value="distrExConstants.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Centering and Standardization of Univariate Distributions">

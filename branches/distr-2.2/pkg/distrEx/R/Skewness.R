@@ -51,8 +51,12 @@ setMethod("skewness", signature(x = "AffLinLatticeDistribution"),
 #
 setMethod("skewness", signature(x = "Norm"),
     function(x,...){ 
-    fun <- NULL; cond <- NULL
-    if((hasArg(fun))||(hasArg(cond)))
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
+    if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
        return(skewness(as(x,"AbscontDistribution"),...))
     else
         return(0)
@@ -60,8 +64,12 @@ setMethod("skewness", signature(x = "Norm"),
 #
 setMethod("skewness", signature(x = "Binom"),
     function(x,  ...){
-    fun <- NULL; cond <- NULL
-    if((hasArg(fun))||(hasArg(cond)))
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
+    if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
        return(skewness(as(x,"DiscreteDistribution"),...))
     else
         return((1-2*prob(x))/sqrt(size(x)*prob(x)*(1-prob(x))))
@@ -70,8 +78,12 @@ setMethod("skewness", signature(x = "Binom"),
 #
 setMethod("skewness", signature(x = "Cauchy"),
     function(x,...){    
-    fun <- NULL; cond <- NULL
-    if((hasArg(fun))||(hasArg(cond)))
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
+    if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
       return(skewness(as(x,"AbscontDistribution"),...))
     else
         return(NA)
@@ -79,21 +91,29 @@ setMethod("skewness", signature(x = "Cauchy"),
 #
 setMethod("skewness", signature(x = "Chisq"),
     function(x,...){    
-    fun <- NULL; cond <- NULL
-    if((hasArg(fun))||(hasArg(cond)))
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
+    if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
        return(skewness(as(x,"AbscontDistribution"),...))
     else
         return( sqrt(8)*(df(x)+3*ncp(x))/(df(x)+2*ncp(x))^1.5)
     })
 #
 setMethod("skewness", signature(x = "Dirac"),
-    function(x, ...){return(0)})
+    function(x, ...){return(NA)})
 
 #
 setMethod("skewness", signature(x = "DExp"),
     function(x, ...){    
-    fun <- NULL; cond <- NULL
-    if((hasArg(fun))||(hasArg(cond))) 
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
+    if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))  
          return(skewness(as(x,"AbscontDistribution"),...))
     else
         return(0)
@@ -101,8 +121,12 @@ setMethod("skewness", signature(x = "DExp"),
 #
 setMethod("skewness", signature(x = "Exp"),
     function(x, ...){    
-    fun <- NULL; cond <- NULL
-    if((hasArg(fun))||(hasArg(cond))) 
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
+    if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))  
          return(skewness(as(x,"AbscontDistribution"),...))
     else
         return(2)
@@ -111,8 +135,12 @@ setMethod("skewness", signature(x = "Exp"),
 #
 setMethod("skewness", signature(x = "Fd"),
     function(x, ...){
-    fun <- NULL; cond <- NULL
-    if((hasArg(fun))||(hasArg(cond))){
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
+    if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) {
          return(skewness(as(x,"AbscontDistribution"),...))
     }else {
         if (df2(x)>6){
@@ -136,8 +164,12 @@ setMethod("skewness", signature(x = "Fd"),
 #
 setMethod("skewness", signature(x = "Gammad"),
     function(x, ...){    
-    fun <- NULL; cond <- NULL
-    if((hasArg(fun))||(hasArg(cond))) 
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
+    if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))  
          return(skewness(as(x,"AbscontDistribution"),...))
     else
         return(2/sqrt(shape(x)))
@@ -145,8 +177,12 @@ setMethod("skewness", signature(x = "Gammad"),
 #
 setMethod("skewness", signature(x = "Geom"),
     function(x, ...){    
-    fun <- NULL; cond <- NULL
-    if((hasArg(fun))||(hasArg(cond))) 
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
+    if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))  
          return(skewness(as(x,"DiscreteDistribution"),...))
     else{
         p <- prob(x)
@@ -156,8 +192,12 @@ setMethod("skewness", signature(x = "Geom"),
 #
 setMethod("skewness", signature(x = "Hyper"),
     function(x, ...){    
-    fun <- NULL; cond <- NULL
-    if((hasArg(fun))||(hasArg(cond))) 
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
+    if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))  
          return(skewness(as(x,"DiscreteDistribution"),...))
     else
        {k <- k(x);
@@ -169,8 +209,12 @@ setMethod("skewness", signature(x = "Hyper"),
 #
 setMethod("skewness", signature(x = "Logis"),
     function(x, ...){
-    fun <- NULL; cond <- NULL
-    if((hasArg(fun))||(hasArg(cond))) 
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
+    if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))  
         return(skewness(as(x,"AbscontDistribution"),...))
     else
         return(0)
@@ -178,8 +222,12 @@ setMethod("skewness", signature(x = "Logis"),
 #
 setMethod("skewness", signature(x = "Lnorm"),
     function(x, ...){
-    fun <- NULL; cond <- NULL
-    if((hasArg(fun))||(hasArg(cond))) {
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
+    if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))  {
         return(skewness(as(x,"AbscontDistribution"),...))
     } else {
         w <- exp(sdlog(x)^2)
@@ -189,8 +237,12 @@ setMethod("skewness", signature(x = "Lnorm"),
 #
 setMethod("skewness", signature(x = "Nbinom"),
     function(x, ...){    
-    fun <- NULL; cond <- NULL
-    if((hasArg(fun))||(hasArg(cond))) 
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
+    if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))  
          return(skewness(as(x,"DiscreteDistribution"),...))
     else
         {
@@ -201,8 +253,12 @@ setMethod("skewness", signature(x = "Nbinom"),
 #
 setMethod("skewness", signature(x = "Pois"),
     function(x, ...){
-    fun <- NULL; cond <- NULL
-    if((hasArg(fun))||(hasArg(cond))) 
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
+    if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))  
         return(skewness(as(x,"DiscreteDistribution"),...))
     else
         return(1/sqrt(lambda(x)))
@@ -210,8 +266,12 @@ setMethod("skewness", signature(x = "Pois"),
 #
 setMethod("skewness", signature(x = "Td"),
     function(x, ...){
-    fun <- NULL; cond <- NULL
-    if((hasArg(fun))||(hasArg(cond))) {
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
+    if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))  {
         return(skewness(as(x,"AbscontDistribution"),...))
     } else {
         if (df(x)>3){
@@ -229,8 +289,12 @@ setMethod("skewness", signature(x = "Td"),
 #
 setMethod("skewness", signature(x = "Unif"),
     function(x, ...){
-    fun <- NULL; cond <- NULL
-    if((hasArg(fun))||(hasArg(cond))) 
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
+    if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))  
         return(skewness(as(x,"AbscontDistribution"),...))
     else
         return(0)
@@ -238,8 +302,12 @@ setMethod("skewness", signature(x = "Unif"),
 #
 setMethod("skewness", signature(x = "Weibull"),
     function(x, ...){
-    fun <- NULL; cond <- NULL
-    if((hasArg(fun))||(hasArg(cond))) 
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
+    if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))  
         return(skewness(as(x,"AbscontDistribution"),...))
     else
         g1 <- gamma(1+1/shape(x))
@@ -250,7 +318,11 @@ setMethod("skewness", signature(x = "Weibull"),
 #    
 setMethod("skewness", signature(x = "Beta"),
     function(x, ...){
-    fun <- NULL; cond <- NULL
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
     if((hasArg(fun))||(hasArg(cond))||(!isTRUE(all.equal(ncp(x),0)))) 
         return(skewness(as(x,"AbscontDistribution"),...))
     else
@@ -264,8 +336,12 @@ setMethod("skewness", signature(x = "Beta"),
 
 setMethod("skewness", signature(x = "Arcsine"),
     function(x, ...){
-    fun <- NULL; cond <- NULL
-    if((hasArg(fun))||(hasArg(cond))) 
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
+    if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))  
         return(skewness(as(x,"AbscontDistribution"),...))
     else    return(0)    
     })
@@ -273,8 +349,12 @@ setMethod("skewness", signature(x = "Arcsine"),
 #    
 setMethod("skewness", signature(x = "Pareto"),
     function(x, ...){
-    fun <- NULL; cond <- NULL
-    if((hasArg(fun))||(hasArg(cond))) 
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
+    if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))  
         return(skewness(as(x,"AbscontDistribution"),...))
     else{
          a <- shape(x)
@@ -284,5 +364,19 @@ setMethod("skewness", signature(x = "Pareto"),
     }
 })
 
+setMethod("skewness", signature(x = "Gumbel"),
+    function(x, ...){
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
+    if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))  
+        return(skewness(as(x,"AbscontDistribution"),...))
+    else{
+         return( -12 * sqrt(6) * APERYCONSTANT / pi^3 ) 
+# http://mathworld.wolfram.com/GumbelDistribution.html         
+    }
+})
 
 

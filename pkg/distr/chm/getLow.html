@@ -45,9 +45,9 @@ halving of <code>x=0.5</code> in <code>q(object)(x, lower.tail)</code> for <code
 getUp(object,
                                       eps = getdistrOption("TruncQuantile"))
 ## S4 method for signature 'DiscreteDistribution':
-getUp(object)
+getUp(object, ...)
 ## S4 method for signature 'LatticeDistribution':
-getUp(object)
+getUp(object, ...)
 ## S4 method for signature 'UnivarLebDecDistribution':
 getUp(object,
                                       eps = getdistrOption("TruncQuantile"))
@@ -58,9 +58,9 @@ getUp(object,
 getLow(object,
                                        eps = getdistrOption("TruncQuantile"))
 ## S4 method for signature 'DiscreteDistribution':
-getLow(object)
+getLow(object, ...)
 ## S4 method for signature 'LatticeDistribution':
-getLow(object)
+getLow(object, ...)
 ## S4 method for signature 'UnivarLebDecDistribution':
 getLow(object,
                                       eps = getdistrOption("TruncQuantile"))
@@ -79,6 +79,11 @@ a distribution object</td></tr>
 <tr valign="top"><td><code>eps</code></td>
 <td>
 truncation point (numeric)</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+for convenience only; makes it possible to call <code>getLow</code>, 
+<code>getUp</code> with argument <code>eps</code> no matter of the class of <code>object</code>;
+is ignored in these functions.</td></tr>
 </table>
 
 <h3>Value</h3>

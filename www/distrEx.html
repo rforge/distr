@@ -418,16 +418,36 @@ for new class union <span style="color: rgb(51, 51, 255);">'AffLinDistribution'<
 <ul>
   <li>DISTRIBUTIONS</li>
   <ul>
-    <li>gains distribution Pareto; ported from pkg actuar by Nataliya
-Horbenko</li>
-    <li>new slots d,p,q for Gumbel distribution catching errors,
+    <li>Pareto:</li>
+    <ul>
+      <li>gains distribution Pareto; ported from pkg actuar by Nataliya
+Horbenko <br>
+      </li>
+      <li>with corresponding functionals E, var, IQR, median, skewness,
+kurtosis<br>
+      </li>
+    </ul>
+    <li>Gumbel:</li>
+    <ul>
+      <li>new slots d,p,q for Gumbel distribution catching errors,
 vectorization and lower.tail, log[.p] argument ...</li>
-    <li>new methods for Gumbel distribution ..</li>
+    </ul>
+    <ul>
+      <li>E, var, IQR, median, skewness, kurtosis for Gumbel<br>
+      </li>
+      <li>new methods for Gumbel distribution ..</li>
+    </ul>
   </ul>
   <li>FUNCTIONALS</li>
   <ul>
     <li>Expectation</li>
     <ul>
+      <li>expectation gains (optional) arguments low and upp for lower
+and upper bounds of the integration range;</li>
+      <ul>
+        <li>other functionals based on this may use these arguments,
+too (var, sd, skewness, kurtosis)</li>
+      </ul>
       <li>expectation gains explicit arguments to set accuracy locally;</li>
       <li>also both quantile and scale based methods is used to
 determine a sensible integration range in expectation</li>

@@ -54,12 +54,12 @@
                  }
             })
  setMethod("getLow", "DiscreteDistribution",
-            function(object) min(support(object)) )
+            function(object, ...) min(support(object)) )
  setMethod("getUp", "DiscreteDistribution",
-            function(object) max(support(object)) )
+            function(object, ...) max(support(object)) )
 
  setMethod("getLow", "LatticeDistribution",
-            function(object){ 
+            function(object, ...){ 
                 lattice <- lattice(object) 
                 qF <- q(object)
                 if(is.finite(Length(lattice)) || width(lattice)>0)
@@ -70,7 +70,7 @@
                    return(qF(p = exp(.fm(x = .5, f = q(object)))))
                 })
  setMethod("getUp", "LatticeDistribution",
-            function(object){
+            function(object, ...){
                 lattice <- lattice(object) 
                 if(is.finite(Length(lattice)) || width(lattice)<0)
                    return(max(support(object)))

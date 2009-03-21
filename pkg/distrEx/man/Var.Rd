@@ -8,6 +8,7 @@
 \alias{var,AffLinDiscreteDistribution-method}
 \alias{var,AffLinLatticeDistribution-method}
 \alias{var,CompoundDistribution-method}
+\alias{var,Arcsine-method}
 \alias{var,Beta-method}
 \alias{var,Binom-method}
 \alias{var,Cauchy-method}
@@ -18,17 +19,17 @@
 \alias{var,Fd-method}
 \alias{var,Gammad-method}
 \alias{var,Geom-method}
+\alias{var,Gumbel-method}
 \alias{var,Hyper-method}
 \alias{var,Logis-method}
 \alias{var,Lnorm-method}
 \alias{var,Nbinom-method}
 \alias{var,Norm-method}
+\alias{var,Pareto-method}
 \alias{var,Pois-method}
 \alias{var,Unif-method}
 \alias{var,Weibull-method}
 \alias{var,Td-method}
-\alias{var,Arcsine-method}
-\alias{var,Pareto-method}
 \alias{sd}
 \alias{sd-methods}
 \alias{sd,UnivariateDistribution-method}
@@ -42,17 +43,18 @@
 \alias{median,AffLinAbscontDistribution-method}
 \alias{median,AffLinDiscreteDistribution-method}
 \alias{median,AffLinLatticeDistribution-method}
+\alias{median,Arcsine-method}
 \alias{median,Cauchy-method}
 \alias{median,Dirac-method}
 \alias{median,DExp-method}
 \alias{median,Exp-method}
 \alias{median,Geom-method}
+\alias{median,Gumbel-method}
 \alias{median,Logis-method}
 \alias{median,Lnorm-method}
 \alias{median,Norm-method}
-\alias{median,Unif-method}
-\alias{median,Arcsine-method}
 \alias{median,Pareto-method}
+\alias{median,Unif-method}
 \alias{IQR}
 \alias{IQR-methods}
 \alias{IQR,ANY-method}
@@ -63,16 +65,17 @@
 \alias{IQR,AffLinDiscreteDistribution-method}
 \alias{IQR,AffLinLatticeDistribution-method}
 \alias{IQR,DiscreteDistribution-method}
+\alias{IQR,Arcsine-method}
 \alias{IQR,Cauchy-method}
 \alias{IQR,Dirac-method}
 \alias{IQR,DExp-method}
 \alias{IQR,Exp-method}
 \alias{IQR,Geom-method}
+\alias{IQR,Gumbel-method}
 \alias{IQR,Logis-method}
 \alias{IQR,Norm-method}
-\alias{IQR,Unif-method}
-\alias{IQR,Arcsine-method}
 \alias{IQR,Pareto-method}
+\alias{IQR,Unif-method}
 \alias{mad}
 \alias{mad,ANY-method}
 \alias{mad-methods}
@@ -98,6 +101,7 @@
 \alias{skewness,AffLinAbscontDistribution-method}
 \alias{skewness,AffLinDiscreteDistribution-method}
 \alias{skewness,AffLinLatticeDistribution-method}
+\alias{skewness,Arcsine-method}
 \alias{skewness,Beta-method}
 \alias{skewness,Binom-method}
 \alias{skewness,Cauchy-method}
@@ -108,17 +112,17 @@
 \alias{skewness,Fd-method}
 \alias{skewness,Gammad-method}
 \alias{skewness,Geom-method}
+\alias{skewness,Gumbel-method}
 \alias{skewness,Hyper-method}
 \alias{skewness,Logis-method}
 \alias{skewness,Lnorm-method}
 \alias{skewness,Nbinom-method}
 \alias{skewness,Norm-method} 
+\alias{skewness,Pareto-method}
 \alias{skewness,Pois-method}
 \alias{skewness,Unif-method}
 \alias{skewness,Weibull-method}
 \alias{skewness,Td-method}
-\alias{skewness,Arcsine-method}
-\alias{skewness,Pareto-method}
 \alias{kurtosis}
 \alias{kurtosis-methods}
 \alias{kurtosis,ANY-method}
@@ -127,6 +131,7 @@
 \alias{kurtosis,AffLinAbscontDistribution-method}
 \alias{kurtosis,AffLinDiscreteDistribution-method}
 \alias{kurtosis,AffLinLatticeDistribution-method}
+\alias{kurtosis,Arcsine-method}
 \alias{kurtosis,Beta-method}
 \alias{kurtosis,Binom-method}
 \alias{kurtosis,Cauchy-method}
@@ -137,17 +142,17 @@
 \alias{kurtosis,Fd-method}
 \alias{kurtosis,Gammad-method}
 \alias{kurtosis,Geom-method}
+\alias{kurtosis,Gumbel-method}
 \alias{kurtosis,Hyper-method}
 \alias{kurtosis,Logis-method}
 \alias{kurtosis,Lnorm-method}
 \alias{kurtosis,Nbinom-method}
 \alias{kurtosis,Norm-method}
+\alias{kurtosis,Pareto-method}
 \alias{kurtosis,Pois-method}
 \alias{kurtosis,Unif-method}
 \alias{kurtosis,Weibull-method}
 \alias{kurtosis,Td-method}
-\alias{kurtosis,Arcsine-method}
-\alias{kurtosis,Pareto-method}
 
 \title{Generic Functions for the Computation of Functionals}
 \description{
@@ -160,33 +165,35 @@ IQR(x, ...)
 \S4method{IQR}{UnivariateCondDistribution}(x,cond)
 \S4method{IQR}{AffLinDistribution}(x)
 \S4method{IQR}{DiscreteDistribution}(x)
+\S4method{IQR}{Arcsine}(x)
 \S4method{IQR}{Cauchy}(x)
 \S4method{IQR}{Dirac}(x)
 \S4method{IQR}{DExp}(x)
 \S4method{IQR}{Exp}(x)
 \S4method{IQR}{Geom}(x)
+\S4method{IQR}{Gumbel}(x)
 \S4method{IQR}{Logis}(x)
+\S4method{IQR}{Pareto}(x)
 \S4method{IQR}{Norm}(x)
 \S4method{IQR}{Unif}(x)
-\S4method{IQR}{Arcsine}(x)
-\S4method{IQR}{Pareto}(x)
 
 median(x, ...)
 
 \S4method{median}{UnivariateDistribution}(x)
 \S4method{median}{UnivariateCondDistribution}(x,cond)
 \S4method{median}{AffLinDistribution}(x)
+\S4method{median}{Arcsine}(x)
 \S4method{median}{Cauchy}(x)
 \S4method{median}{Dirac}(x)
 \S4method{median}{DExp}(x)
 \S4method{median}{Exp}(x)
 \S4method{median}{Geom}(x)
+\S4method{median}{Gumbel}(x)
 \S4method{median}{Logis}(x)
 \S4method{median}{Lnorm}(x)
 \S4method{median}{Norm}(x)
-\S4method{median}{Unif}(x)
-\S4method{median}{Arcsine}(x)
 \S4method{median}{Pareto}(x)
+\S4method{median}{Unif}(x)
 
 mad(x, ...)
 
@@ -212,6 +219,7 @@ var(x, ...)
 \S4method{var}{UnivariateDistribution}(x, fun, cond, withCond, useApply, ...)
 \S4method{var}{AffLinDistribution}(x, fun, cond, withCond, useApply, ...)
 \S4method{var}{CompoundDistribution}(x, ...)
+\S4method{var}{Arcsine}(x, ...)
 \S4method{var}{Binom}(x, ...)
 \S4method{var}{Beta}(x, ...)
 \S4method{var}{Cauchy}(x, ...)
@@ -222,21 +230,22 @@ var(x, ...)
 \S4method{var}{Fd}(x, ...)
 \S4method{var}{Gammad}(x, ...)
 \S4method{var}{Geom}(x, ...)
+\S4method{var}{Gumbel}(x, ...)
 \S4method{var}{Hyper}(x, ...)
 \S4method{var}{Logis}(x, ...)
 \S4method{var}{Lnorm}(x, ...)
 \S4method{var}{Nbinom}(x, ...)
 \S4method{var}{Norm}(x, ...)
+\S4method{var}{Pareto}(x, ...)
 \S4method{var}{Pois}(x, ...)
 \S4method{var}{Td}(x, ...)
 \S4method{var}{Unif}(x, ...)
 \S4method{var}{Weibull}(x, ...)
-\S4method{var}{Arcsine}(x, ...)
-\S4method{var}{Pareto}(x, ...)
 
 skewness(x, ...)
 \S4method{skewness}{UnivariateDistribution}(x, fun, cond, withCond, useApply, ...)
 \S4method{skewness}{AffLinDistribution}(x, fun, cond, withCond, useApply, ...)
+\S4method{skewness}{Arcsine}(x, ...)
 \S4method{skewness}{Binom}(x, ...)
 \S4method{skewness}{Beta}(x, ...)
 \S4method{skewness}{Cauchy}(x, ...)
@@ -247,21 +256,22 @@ skewness(x, ...)
 \S4method{skewness}{Fd}(x, ...)
 \S4method{skewness}{Gammad}(x, ...)
 \S4method{skewness}{Geom}(x, ...)
+\S4method{skewness}{Gumbel}(x, ...)
 \S4method{skewness}{Hyper}(x, ...)
 \S4method{skewness}{Logis}(x, ...)
 \S4method{skewness}{Lnorm}(x, ...)
 \S4method{skewness}{Nbinom}(x, ...)
 \S4method{skewness}{Norm}(x, ...)
+\S4method{skewness}{Pareto}(x, ...)
 \S4method{skewness}{Pois}(x, ...)
 \S4method{skewness}{Td}(x, ...)
 \S4method{skewness}{Unif}(x, ...)
 \S4method{skewness}{Weibull}(x, ...)
-\S4method{skewness}{Arcsine}(x, ...)
-\S4method{skewness}{Pareto}(x, ...)
 
 kurtosis(x, ...)
 \S4method{kurtosis}{UnivariateDistribution}(x, fun, cond, withCond, useApply, ...)
 \S4method{kurtosis}{AffLinDistribution}(x, fun, cond, withCond, useApply, ...)
+\S4method{kurtosis}{Arcsine}(x, ...)
 \S4method{kurtosis}{Binom}(x, ...)
 \S4method{kurtosis}{Beta}(x, ...)
 \S4method{kurtosis}{Cauchy}(x, ...)
@@ -272,17 +282,17 @@ kurtosis(x, ...)
 \S4method{kurtosis}{Fd}(x, ...)
 \S4method{kurtosis}{Gammad}(x, ...)
 \S4method{kurtosis}{Geom}(x, ...)
+\S4method{kurtosis}{Gumbel}(x, ...)
 \S4method{kurtosis}{Hyper}(x, ...)
 \S4method{kurtosis}{Logis}(x, ...)
 \S4method{kurtosis}{Lnorm}(x, ...)
 \S4method{kurtosis}{Nbinom}(x, ...)
 \S4method{kurtosis}{Norm}(x, ...)
+\S4method{kurtosis}{Pareto}(x, ...)
 \S4method{kurtosis}{Pois}(x, ...)
 \S4method{kurtosis}{Td}(x, ...)
 \S4method{kurtosis}{Unif}(x, ...)
 \S4method{kurtosis}{Weibull}(x, ...)
-\S4method{kurtosis}{Arcsine}(x, ...)
-\S4method{kurtosis}{Pareto}(x, ...)
 }
 \arguments{
   \item{x}{ object of class \code{"UnivariateDistribution"}}
@@ -375,6 +385,8 @@ kurtosis(x, ...)
     if arguments \code{fun}, \code{cond} are missing: \code{kurtosis(x@X0)}
     else uses method for \code{signature(x = "UnivariateDistribution")}}
 
+  \item{\code{var}, \code{signature(x = "Arcsine")}:}{ 
+    exact evaluation using explicit expressions.}
 \item{\code{var}, \code{signature(x = "Beta")}:}{ 
     for noncentrality 0 exact evaluation using explicit expressions.}  
   \item{\code{var}, \code{signature(x = "Binom")}:}{ 
@@ -395,6 +407,8 @@ kurtosis(x, ...)
     exact evaluation using explicit expressions.}
   \item{\code{var}, \code{signature(x = "Geom")}:}{ 
     exact evaluation using explicit expressions.}
+  \item{\code{var}, \code{signature(x = "Gumbel")}:}{ 
+    exact evaluation using explicit expressions.}
   \item{\code{var}, \code{signature(x = "Hyper")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{var}, \code{signature(x = "Logis")}:}{ 
@@ -405,6 +419,8 @@ kurtosis(x, ...)
     exact evaluation using explicit expressions.}
   \item{\code{var}, \code{signature(x = "Norm")}:}{ 
     exact evaluation using explicit expressions.}
+  \item{\code{var}, \code{signature(x = "Pareto")}:}{ 
+    exact evaluation using explicit expressions.}
   \item{\code{var}, \code{signature(x = "Pois")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{var}, \code{signature(x = "Td")}:}{ 
@@ -413,11 +429,9 @@ kurtosis(x, ...)
     exact evaluation using explicit expressions.}
   \item{\code{var}, \code{signature(x = "Weibull")}:}{ 
     exact evaluation using explicit expressions.}
-  \item{\code{var}, \code{signature(x = "Arcsine")}:}{ 
-    exact evaluation using explicit expressions.}
-  \item{\code{var}, \code{signature(x = "Pareto")}:}{ 
-    exact evaluation using explicit expressions.}
 
+  \item{\code{IQR}, \code{signature(x = "Arcsine")}:}{ 
+    exact evaluation using explicit expressions.}
   \item{\code{IQR}, \code{signature(x = "Cauchy")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{IQR}, \code{signature(x = "Dirac")}:}{ 
@@ -428,17 +442,19 @@ kurtosis(x, ...)
     exact evaluation using explicit expressions.}
   \item{\code{IQR}, \code{signature(x = "Geom")}:}{ 
     exact evaluation using explicit expressions.}
+  \item{\code{IQR}, \code{signature(x = "Gumbel")}:}{ 
+    exact evaluation using explicit expressions.}
   \item{\code{IQR}, \code{signature(x = "Logis")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{IQR}, \code{signature(x = "Norm")}:}{ 
     exact evaluation using explicit expressions.}
-  \item{\code{IQR}, \code{signature(x = "Unif")}:}{ 
-    exact evaluation using explicit expressions.}
-  \item{\code{IQR}, \code{signature(x = "Arcsine")}:}{ 
-    exact evaluation using explicit expressions.}
   \item{\code{IQR}, \code{signature(x = "Pareto")}:}{ 
     exact evaluation using explicit expressions.}
+  \item{\code{IQR}, \code{signature(x = "Unif")}:}{ 
+    exact evaluation using explicit expressions.}
 
+  \item{\code{median}, \code{signature(x = "Arcsine")}:}{ 
+    exact evaluation using explicit expressions.}
   \item{\code{median}, \code{signature(x = "Cauchy")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{median}, \code{signature(x = "Dirac")}:}{ 
@@ -449,19 +465,21 @@ kurtosis(x, ...)
     exact evaluation using explicit expressions.}
   \item{\code{median}, \code{signature(x = "Geom")}:}{ 
     exact evaluation using explicit expressions.}
+  \item{\code{median}, \code{signature(x = "Gumbel")}:}{ 
+    exact evaluation using explicit expressions.}
   \item{\code{median}, \code{signature(x = "Logis")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{median}, \code{signature(x = "Lnorm")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{median}, \code{signature(x = "Norm")}:}{ 
     exact evaluation using explicit expressions.}
-  \item{\code{median}, \code{signature(x = "Unif")}:}{ 
-    exact evaluation using explicit expressions.}
-  \item{\code{median}, \code{signature(x = "Arcsine")}:}{ 
-    exact evaluation using explicit expressions.}
   \item{\code{median}, \code{signature(x = "Pareto")}:}{ 
     exact evaluation using explicit expressions.}
+  \item{\code{median}, \code{signature(x = "Unif")}:}{ 
+    exact evaluation using explicit expressions.}
 
+  \item{\code{mad}, \code{signature(x = "Arcsine")}:}{ 
+    exact evaluation using explicit expressions.}
   \item{\code{mad}, \code{signature(x = "Cauchy")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{mad}, \code{signature(x = "Dirac")}:}{ 
@@ -478,9 +496,9 @@ kurtosis(x, ...)
     exact evaluation using explicit expressions.}
   \item{\code{mad}, \code{signature(x = "Unif")}:}{ 
     exact evaluation using explicit expressions.}
-  \item{\code{mad}, \code{signature(x = "Arcsine")}:}{ 
-    exact evaluation using explicit expressions.}
 
+  \item{\code{skewness}, \code{signature(x = "Arcsine")}:}{ 
+    exact evaluation using explicit expressions.}
   \item{\code{skewness}, \code{signature(x = "Beta")}:}{ 
     for noncentrality 0 exact evaluation using explicit expressions.}  
   \item{\code{skewness}, \code{signature(x = "Binom")}:}{ 
@@ -501,6 +519,8 @@ kurtosis(x, ...)
     exact evaluation using explicit expressions.}
   \item{\code{skewness}, \code{signature(x = "Geom")}:}{ 
     exact evaluation using explicit expressions.}
+  \item{\code{skewness}, \code{signature(x = "Gumbel")}:}{ 
+    exact evaluation using explicit expressions.}
   \item{\code{skewness}, \code{signature(x = "Hyper")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{skewness}, \code{signature(x = "Logis")}:}{ 
@@ -511,6 +531,8 @@ kurtosis(x, ...)
     exact evaluation using explicit expressions.}
   \item{\code{skewness}, \code{signature(x = "Norm")}:}{ 
     exact evaluation using explicit expressions.}
+  \item{\code{skewness}, \code{signature(x = "Pareto")}:}{ 
+    exact evaluation using explicit expressions.}
   \item{\code{skewness}, \code{signature(x = "Pois")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{skewness}, \code{signature(x = "Td")}:}{ 
@@ -519,11 +541,9 @@ kurtosis(x, ...)
     exact evaluation using explicit expressions.}
   \item{\code{skewness}, \code{signature(x = "Weibull")}:}{ 
     exact evaluation using explicit expressions.}
-  \item{\code{skewness}, \code{signature(x = "Arcsine")}:}{ 
-    exact evaluation using explicit expressions.}
-  \item{\code{skewness}, \code{signature(x = "Pareto")}:}{ 
-    exact evaluation using explicit expressions.}
   
+  \item{\code{kurtosis}, \code{signature(x = "Arcsine")}:}{ 
+    exact evaluation using explicit expressions.}
   \item{\code{kurtosis}, \code{signature(x = "Beta")}:}{ 
     for noncentrality 0 exact evaluation using explicit expressions.}  
   \item{\code{kurtosis}, \code{signature(x = "Binom")}:}{ 
@@ -544,6 +564,8 @@ kurtosis(x, ...)
     exact evaluation using explicit expressions.}
   \item{\code{kurtosis}, \code{signature(x = "Geom")}:}{ 
     exact evaluation using explicit expressions.}
+  \item{\code{kurtosis}, \code{signature(x = "Gumbel")}:}{ 
+    exact evaluation using explicit expressions.}
   \item{\code{kurtosis}, \code{signature(x = "Hyper")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{kurtosis}, \code{signature(x = "Logis")}:}{ 
@@ -554,6 +576,8 @@ kurtosis(x, ...)
     exact evaluation using explicit expressions.}
   \item{\code{kurtosis}, \code{signature(x = "Norm")}:}{ 
     exact evaluation using explicit expressions.}
+  \item{\code{kurtosis}, \code{signature(x = "Pareto")}:}{ 
+    exact evaluation using explicit expressions.}
   \item{\code{kurtosis}, \code{signature(x = "Pois")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{kurtosis}, \code{signature(x = "Td")}:}{ 
@@ -561,10 +585,6 @@ kurtosis(x, ...)
   \item{\code{kurtosis}, \code{signature(x = "Unif")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{kurtosis}, \code{signature(x = "Weibull")}:}{ 
-    exact evaluation using explicit expressions.}
-  \item{\code{kurtosis}, \code{signature(x = "Arcsine")}:}{ 
-    exact evaluation using explicit expressions.}
-  \item{\code{kurtosis}, \code{signature(x = "Pareto")}:}{ 
     exact evaluation using explicit expressions.}
 
 }}
