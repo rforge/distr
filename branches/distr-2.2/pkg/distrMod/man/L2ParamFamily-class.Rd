@@ -1,5 +1,7 @@
 \name{L2ParamFamily-class}
 \docType{class}
+\alias{plot}
+\alias{plot-methods}
 \alias{L2ParamFamily-class}
 \alias{FisherInfo}
 \alias{FisherInfo,L2ParamFamily,missing-method}

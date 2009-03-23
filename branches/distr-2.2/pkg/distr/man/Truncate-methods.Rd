@@ -29,7 +29,7 @@ Truncate(object, ...)
 \section{Methods}{\describe{
 \item{Truncate}{\code{signature(object = "AbscontDistribution")}: 
 returns the distribution of \code{min(upper,max(X,lower))}
-conditioned to \code{lower<X<=upper}, if \code{X} is 
+conditioned to \code{lower<=X<=upper}, if \code{X} is 
 distributed according to \code{object};
 if slot \code{.logExact} of argument \code{object} is \code{TRUE} 
 and if either there is only one-sided truncation or both truncation
@@ -47,7 +47,7 @@ the result is again of class \code{"AbscontDistribution"};
 }
 \item{Truncate}{\code{signature(object = "DiscreteDistribution")}: 
 returns the distribution of \code{min(upper,max(X,lower))}
-conditioned to \code{lower<X<=upper}, if \code{X} is 
+conditioned to \code{lower<=X<=upper}, if \code{X} is 
 distributed according to \code{object};
 the result is again of class \code{"DiscreteDistribution"}}
 \item{Truncate}{\code{signature(object = "LatticeDistribution")}: 
@@ -59,7 +59,7 @@ else we use the corresponding \code{"DiscreteDistribution"} method;
 the result is again of class \code{"LatticeDistribution"}}
 \item{Truncate}{\code{signature(object = "UnivarLebDecDistribution")}: 
 returns the distribution of \code{min(upper,max(X,lower))}
-conditioned to \code{lower<X<=upper}, if \code{X} is 
+conditioned to \code{lower<=X<=upper}, if \code{X} is 
 distributed according to \code{object};
 the result is again of class \code{"UnivarLebDecDistribution"}}
 }}

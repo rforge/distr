@@ -142,11 +142,11 @@ setMethod("Truncate", "LatticeDistribution",
                  M1 <- ceiling(abs(M-p)/abs(w))
                  m1 <- floor(abs(p-m)/abs(w))
                  s1 <- if(m1>1 && m<p) 
-                          rev(seq(from = p, by = -abs(w), length.out = m1)) else NULL
+                          rev(seq(from = p, by = -abs(w), length.out = m1+1)) else NULL
                  S1 <- if(M1>1 && M>p) 
                           seq(from = p, by = abs(w), length.out = M1)[-1] else NULL
-                 support <- c(s1,p,S1)
-                 support <- support[support<=M & support>m]
+                 support <- sort(unique(c(s1,p,S1)))
+                 support <- support[support<=M & support>=m]
                  
                  X <- LatticeDistribution(check = FALSE, 
                        DiscreteDistribution = new("DiscreteDistribution", 
@@ -167,7 +167,7 @@ setMethod("Truncate", "DiscreteDistribution",
             if((lower <= getLow(object))&&(upper >= getUp(object)))
                return(object)
             supp <- support(object)
-            newsupport <- supp[supp<=upper & supp>lower]
+            newsupport <- supp[supp<=upper & supp>=lower]
             if(! length(newsupport))
                stop("too little mass between args 'lower' and 'upper'")
             pnewsupport <- d(object)(newsupport)/sum(d(object)(newsupport))
