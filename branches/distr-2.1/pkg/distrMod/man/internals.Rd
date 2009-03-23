@@ -17,11 +17,16 @@ These functions are used internally by package ``distrMod''.}
 .isUnitMatrix(m)
 .csimpsum(fx)
 .validTrafo(trafo, dimension)
-.CvMMDCovariance(L2Fam, param, mu = distribution(L2Fam), expon=3, 
-                 withplot = FALSE, withpreIC = FALSE,
-                 N = getdistrOption("DefaultNrGridPoints")+1, ...)
+.CvMMDCovariance(L2Fam, param, mu = distribution(L2Fam), withplot = FALSE, 
+                 withpreIC = FALSE,
+                 N = getdistrOption("DefaultNrGridPoints")+1, 
+                 rel.tol = .Machine$double.eps^0.3, 
+                 TruncQuantile = getdistrOption("TruncQuantile"),
+                 IQR.fac = 15, ...)
 .show.with.sd(est, s)
-.getLogDeriv(distr)
+.getLogDeriv(distr, lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"),
+                 upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+                 IQR.fac = getdistrExOption("IQR.fac"))
 }
 
 
