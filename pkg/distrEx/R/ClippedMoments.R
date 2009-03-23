@@ -170,9 +170,18 @@ setMethod("m1df", "LatticeDistribution",
     function(object, upper, ...){
       E(as(object, "DiscreteDistribution"), upp = upper, ...)
     })
+
 setMethod("m2df", "LatticeDistribution",
     function(object, upper, ...){
-        E(as(object, "DiscreteDistribution"), fun=function(x)x^2, upp = upper, ...)
+        mc <- as.list(match.call(call = sys.call(sys.parent(1))))[-1]
+        mc1 <- mc        
+        fun0 <- if(is.null(mc$fun)) 
+                   function(x)x^2 else function(x) (eval(mc1$fun)(x))^2
+        mc$fun <- fun0
+        mc$upper <- NULL
+        mc$upp <- upper
+        mc$object <- as(object, "DiscreteDistribution")
+        return(do.call("E", args=mc ))
     })
 
 setMethod("m1df", "AffLinDistribution", 

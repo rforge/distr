@@ -914,19 +914,11 @@
 <param name="Local" value="m2df.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="m2df,AbscontDistribution-method">
-<param name="Local" value="m2df.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="m2df,Binom-method">
 <param name="Local" value="m2df.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="m2df,Chisq-method">
-<param name="Local" value="m2df.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="m2df,DiscreteDistribution-method">
 <param name="Local" value="m2df.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
