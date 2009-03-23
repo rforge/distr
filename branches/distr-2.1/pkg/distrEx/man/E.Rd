@@ -71,9 +71,9 @@ E(object, fun, cond, ...)
 
 \S4method{E}{DiscreteDistribution,function,missing}(object, fun, useApply = TRUE, ...)
 
-\S4method{E}{AffLinDistribution,missing,missing}(object,...)
+\S4method{E}{AffLinDistribution,missing,missing}(object, fun, cond, ...)
 
-\S4method{E}{AffLinUnivarLebDecDistribution,missing,missing}(object,...)
+\S4method{E}{AffLinUnivarLebDecDistribution,missing,missing}(object, fun, cond, ...)
 
 \S4method{E}{MultivariateDistribution,missing,missing}(object, Nsim = getdistrExOption("MCIterations"), ...)
 \S4method{E}{MultivariateDistribution,function,missing}(object, fun, useApply = TRUE, 
@@ -87,7 +87,7 @@ E(object, fun, cond, ...)
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
              IQR.fac = getdistrExOption("IQR.fac"), ...)
 
-\S4method{E}{DiscreteCondDistribution,missing,numeric}(object, cond, useApply = TRUE)
+\S4method{E}{DiscreteCondDistribution,missing,numeric}(object, cond, useApply = TRUE, ...)
 
 \S4method{E}{UnivariateCondDistribution,function,numeric}(object, fun, cond, 
               withCond = FALSE, useApply = TRUE, 
@@ -133,29 +133,29 @@ E(object, fun, cond, ...)
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
              IQR.fac = getdistrExOption("IQR.fac"), ... )
-\S4method{E}{CompoundDistribution,missing,missing}(object, ...)
+\S4method{E}{CompoundDistribution,missing,missing}(object, fun, cond, ...)
 
-\S4method{E}{Beta,missing,missing}(object, ...)
-\S4method{E}{Binom,missing,missing}(object, ...)
-\S4method{E}{Cauchy,missing,missing}(object, ...)
-\S4method{E}{Chisq,missing,missing}(object, ...)
-\S4method{E}{Dirac,missing,missing}(object, ...)
-\S4method{E}{DExp,missing,missing}(object, ...)
-\S4method{E}{Exp,missing,missing}(object, ...)
-\S4method{E}{Fd,missing,missing}(object, ...)
-\S4method{E}{Gammad,missing,missing}(object, ...)
-\S4method{E}{Geom,missing,missing}(object, ...)
-\S4method{E}{Hyper,missing,missing}(object, ...)
-\S4method{E}{Logis,missing,missing}(object, ...)
-\S4method{E}{Lnorm,missing,missing}(object, ...)
-\S4method{E}{Nbinom,missing,missing}(object, ...)
-\S4method{E}{Norm,missing,missing}(object, ...)
-\S4method{E}{Pois,missing,missing}(object, ...)
-\S4method{E}{Unif,missing,missing}(object, ...)
-\S4method{E}{Td,missing,missing}(object, ...)
-\S4method{E}{Weibull,missing,missing}(object, ...)
-\S4method{E}{Arcsine,missing,missing}(object, ...)
-\S4method{E}{Pareto,missing,missing}(object)
+\S4method{E}{Beta,missing,missing}(object, fun, cond, ...)
+\S4method{E}{Binom,missing,missing}(object, fun, cond, ...)
+\S4method{E}{Cauchy,missing,missing}(object, fun, cond, ...)
+\S4method{E}{Chisq,missing,missing}(object, fun, cond, ...)
+\S4method{E}{Dirac,missing,missing}(object, fun, cond, ...)
+\S4method{E}{DExp,missing,missing}(object, fun, cond, ...)
+\S4method{E}{Exp,missing,missing}(object, fun, cond, ...)
+\S4method{E}{Fd,missing,missing}(object, fun, cond, ...)
+\S4method{E}{Gammad,missing,missing}(object, fun, cond, ...)
+\S4method{E}{Geom,missing,missing}(object, fun, cond, ...)
+\S4method{E}{Hyper,missing,missing}(object, fun, cond, ...)
+\S4method{E}{Logis,missing,missing}(object, fun, cond, ...)
+\S4method{E}{Lnorm,missing,missing}(object, fun, cond, ...)
+\S4method{E}{Nbinom,missing,missing}(object, fun, cond, ...)
+\S4method{E}{Norm,missing,missing}(object, fun, cond, ...)
+\S4method{E}{Pois,missing,missing}(object, fun, cond, ...)
+\S4method{E}{Unif,missing,missing}(object, fun, cond, ...)
+\S4method{E}{Td,missing,missing}(object, fun, cond, ...)
+\S4method{E}{Weibull,missing,missing}(object, fun, cond, ...)
+\S4method{E}{Arcsine,missing,missing}(object, fun, cond, ...)
+\S4method{E}{Pareto,missing,missing}(object, fun, cond, ...)
 
 }
 \arguments{
