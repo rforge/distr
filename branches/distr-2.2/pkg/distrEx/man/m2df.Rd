@@ -2,8 +2,8 @@
 \alias{m2df}
 \alias{m2df-methods}
 \alias{m2df,UnivariateDistribution-method}
-\alias{m2df,AbscontDistribution-method}
-\alias{m2df,DiscreteDistribution-method}
+%\alias{m2df,AbscontDistribution-method}
+%\alias{m2df,DiscreteDistribution-method}
 \alias{m2df,LatticeDistribution-method}
 \alias{m2df,Binom-method}
 \alias{m2df,Pois-method}
