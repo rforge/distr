@@ -2,8 +2,8 @@
 ## Clipped first and second moments
 ###############################################################################
 setMethod("m1df", "UnivariateDistribution",
-    function(object, upper, ...){
-        return(E(object, upp=upper,...))
+    function(object, upper, ... ){
+        return(E(object, upp=upper, ...))
     })
 setMethod("m2df", "UnivariateDistribution",
     function(object, upper, ...){
@@ -14,6 +14,28 @@ setMethod("m2df", "UnivariateDistribution",
         mc$fun <- fun0
         mc$upper <- NULL
         mc$upp <- upper
+        return(do.call("E", args=mc ))
+    })
+setMethod("m1df", "AbscontDistribution",
+    function(object, upper, 
+             lowerTruncQuantile = getdistrExOption("m1dfLowerTruncQuantile"),
+             rel.tol = getdistrExOption("m1dfRelativeTolerance"), ... ){
+        return(E(object, upp=upper, lowerTruncQuantile = lowerTruncQuantile, 
+                 rel.tol = rel.tol, ...))
+    })
+setMethod("m2df", "AbscontDistribution",
+    function(object, upper, 
+             lowerTruncQuantile = getdistrExOption("m2dfLowerTruncQuantile"),
+             rel.tol = getdistrExOption("m2dfRelativeTolerance"), ...){
+        mc <- as.list(match.call(call = sys.call(sys.parent(1))))[-1]
+        mc1 <- mc        
+        fun0 <- if(is.null(mc$fun)) 
+                   function(x)x^2 else function(x) (eval(mc1$fun)(x))^2
+        mc$fun <- fun0
+        mc$upper <- NULL
+        mc$upp <- upper
+        mc$lowerTruncQuantile <- lowerTruncQuantile
+        mc$rel.tol <- rel.tol
         return(do.call("E", args=mc ))
     })
 #setMethod("m1df", "AbscontDistribution",

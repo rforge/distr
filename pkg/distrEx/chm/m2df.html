@@ -8,6 +8,7 @@
 <param name="keyword" value="R:   m2df">
 <param name="keyword" value="R:   m2df-methods">
 <param name="keyword" value="R:   m2df,UnivariateDistribution-method">
+<param name="keyword" value="R:   m2df,AbscontDistribution-method">
 <param name="keyword" value="R:   m2df,LatticeDistribution-method">
 <param name="keyword" value="R:   m2df,Binom-method">
 <param name="keyword" value="R:   m2df,Pois-method">
@@ -33,6 +34,10 @@ The moments are clipped at <code>upper</code>.
 
 <pre>
 m2df(object, upper, ...)
+## S4 method for signature 'AbscontDistribution':
+m2df(object, upper, 
+             lowerTruncQuantile = getdistrExOption("m2dfLowerTruncQuantile"),
+             rel.tol = getdistrExOption("m2dfRelativeTolerance"), ...)
 </pre>
 
 
@@ -45,6 +50,12 @@ object of class <code>"Distribution"</code> </td></tr>
 <tr valign="top"><td><code>upper</code></td>
 <td>
 clipping bound </td></tr>
+<tr valign="top"><td><code>rel.tol</code></td>
+<td>
+relative tolerance for <code>distrExIntegrate</code>.</td></tr>
+<tr valign="top"><td><code>lowerTruncQuantile</code></td>
+<td>
+lower quantile for quantile based integration range.</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 additional arguments to <code>E</code> </td></tr>

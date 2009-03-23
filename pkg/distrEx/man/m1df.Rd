@@ -2,7 +2,7 @@
 \alias{m1df}
 \alias{m1df-methods}
 \alias{m1df,UnivariateDistribution-method}
-%\alias{m1df,AbscontDistribution-method}
+\alias{m1df,AbscontDistribution-method}
 %\alias{m1df,DiscreteDistribution-method}
 \alias{m1df,LatticeDistribution-method}
 \alias{m1df,AffLinDistribution-method}
@@ -19,10 +19,15 @@
 }
 \usage{
 m1df(object, upper, ...)
+\S4method{m1df}{AbscontDistribution}(object, upper, 
+             lowerTruncQuantile = getdistrExOption("m1dfLowerTruncQuantile"),
+             rel.tol = getdistrExOption("m1dfRelativeTolerance"), ...)
 }
 \arguments{
   \item{object}{ object of class \code{"Distribution"} }
   \item{upper}{ clipping bound }
+  \item{rel.tol}{relative tolerance for \code{distrExIntegrate}.} 
+  \item{lowerTruncQuantile}{lower quantile for quantile based integration range.}
   \item{\dots}{ additional arguments to \code{E} }
 }
 \details{The precision of the computations can be controlled via 

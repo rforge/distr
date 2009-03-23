@@ -866,6 +866,10 @@
 <param name="Local" value="m1df.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m1df,AbscontDistribution-method">
+<param name="Local" value="m1df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="m1df,AffLinDistribution-method">
 <param name="Local" value="m1df.html">
 </OBJECT>
@@ -911,6 +915,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="m2df">
+<param name="Local" value="m2df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m2df,AbscontDistribution-method">
 <param name="Local" value="m2df.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">

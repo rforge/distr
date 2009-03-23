@@ -2,7 +2,7 @@
 \alias{m2df}
 \alias{m2df-methods}
 \alias{m2df,UnivariateDistribution-method}
-%\alias{m2df,AbscontDistribution-method}
+\alias{m2df,AbscontDistribution-method}
 %\alias{m2df,DiscreteDistribution-method}
 \alias{m2df,LatticeDistribution-method}
 \alias{m2df,Binom-method}
@@ -18,10 +18,15 @@
 }
 \usage{
 m2df(object, upper, ...)
+\S4method{m2df}{AbscontDistribution}(object, upper, 
+             lowerTruncQuantile = getdistrExOption("m2dfLowerTruncQuantile"),
+             rel.tol = getdistrExOption("m2dfRelativeTolerance"), ...)
 }
 \arguments{
   \item{object}{ object of class \code{"Distribution"} }
   \item{upper}{ clipping bound }
+  \item{rel.tol}{relative tolerance for \code{distrExIntegrate}.} 
+  \item{lowerTruncQuantile}{lower quantile for quantile based integration range.}
   \item{\dots}{ additional arguments to \code{E} }
 }
 \details{The precision of the computations can be controlled via 
