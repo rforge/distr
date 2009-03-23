@@ -307,7 +307,13 @@ logical: is <code>cond</code> in the argument list of <code>fun</code>. </td></t
 
 <p>
 The precision of the computations can be controlled via 
-certain global options; cf. <code><a href="distrExOptions.html">distrExOptions</a></code>.
+certain global options; cf. <code><a href="distrExOptions.html">distrExOptions</a></code>. 
+Also note that arguments <code>low</code> and <code>upp</code> should be given as
+named arguments in order to prevent them to be matched by arguments
+<code>fun</code> or <code>cond</code>. Also the result, when arguments 
+<code>low</code> or <code>upp</code> is given, is the <EM>unconditional value</EM> of the
+expectation; no conditioning with respect to <code>low &lt;= object &lt;= upp</code>
+is done.
 </p>
 
 

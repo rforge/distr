@@ -17,11 +17,12 @@
   The moments are clipped at \code{upper}.
 }
 \usage{
-m2df(object, upper)
+m2df(object, upper, ...)
 }
 \arguments{
   \item{object}{ object of class \code{"Distribution"} }
   \item{upper}{ clipping bound }
+  \item{\dots}{ additional arguments to \code{E} }
 }
 \details{The precision of the computations can be controlled via 
   certain global options; cf. \code{\link{distrExOptions}}. }
@@ -30,9 +31,12 @@ m2df(object, upper)
 }
 \section{Methods}{
 \describe{
-  \item{object = "UnivariateDistribution":}{ clipped first moment
-    for univariate distributions which is computed using 
-    crude Monte-Carlo integration. }
+  \item{object = "UnivariateDistribution":}{ %
+    %clipped first moment
+    %for univariate distributions which is computed using 
+    %crude Monte-Carlo integration. 
+     uses call \code{E(object, upp=upper, fun = function, ...)}.
+    }
 
   \item{object = "AbscontDistribution":}{ clipped first moment
     for absolutely continuous univariate distributions which is 
@@ -69,6 +73,7 @@ m2df(N1, 0)
 # Poisson distribution
 P1 <- Pois(lambda=2)
 m2df(P1, 3)
+m2df(P1, 3, fun = function(x)sin(x))
 
 # absolutely continuous distribution
 D1 <- Norm() + Exp() # convolution

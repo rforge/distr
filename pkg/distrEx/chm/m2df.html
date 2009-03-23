@@ -34,7 +34,7 @@ The moments are clipped at <code>upper</code>.
 <h3>Usage</h3>
 
 <pre>
-m2df(object, upper)
+m2df(object, upper, ...)
 </pre>
 
 
@@ -47,6 +47,9 @@ object of class <code>"Distribution"</code> </td></tr>
 <tr valign="top"><td><code>upper</code></td>
 <td>
 clipping bound </td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+additional arguments to <code>E</code> </td></tr>
 </table>
 
 <h3>Details</h3>
@@ -65,9 +68,8 @@ The second moment of <code>object</code> clipped at <code>upper</code> is comput
 <h3>Methods</h3>
 
 <dl>
-<dt>object = "UnivariateDistribution":</dt><dd>clipped first moment
-for univariate distributions which is computed using 
-crude Monte-Carlo integration. </dd>
+<dt>object = "UnivariateDistribution":</dt><dd>uses call <code>E(object, upp=upper, fun = function, ...)</code>.
+</dd>
 
 
 <dt>object = "AbscontDistribution":</dt><dd>clipped first moment
@@ -124,6 +126,7 @@ m2df(N1, 0)
 # Poisson distribution
 P1 &lt;- Pois(lambda=2)
 m2df(P1, 3)
+m2df(P1, 3, fun = function(x)sin(x))
 
 # absolutely continuous distribution
 D1 &lt;- Norm() + Exp() # convolution
@@ -134,6 +137,6 @@ E(D1, function(x){x^2})
 
 
 
-<hr><div align="center">[Package <em>distrEx</em> version 2.0.2 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distrEx</em> version 2.1 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

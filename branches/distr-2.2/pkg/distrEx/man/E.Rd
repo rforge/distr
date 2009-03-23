@@ -191,7 +191,14 @@ E(object, fun, cond, ...)
   \item{withCond}{ logical: is \code{cond} in the argument list of \code{fun}. }
 }
 \details{The precision of the computations can be controlled via 
-  certain global options; cf. \code{\link{distrExOptions}}. }
+  certain global options; cf. \code{\link{distrExOptions}}. 
+    Also note that arguments \code{low} and \code{upp} should be given as
+  named arguments in order to prevent them to be matched by arguments
+  \code{fun} or \code{cond}. Also the result, when arguments 
+  \code{low} or \code{upp} is given, is the \emph{unconditional value} of the
+  expectation; no conditioning with respect to \code{low <= object <= upp}
+  is done.}
+
 \value{
   The (conditional) expectation is computed.
 }
@@ -389,6 +396,22 @@ E(Norm(mean=1), fun = function(x){x^2})
 E(D1, function(x, cond){cond*x^2}, cond = 2, withCond = TRUE, useApply = FALSE)
 E(Norm(mean=2), function(x){2*x^2})
 
+E(as(Norm(mean=2),"AbscontDistribution"))
+### somewhat less accurate:
+E(as(Norm(mean=2),"AbscontDistribution"), 
+     lowerTruncQuantil=1e-4,upperTruncQuantil=1e-4, IQR.fac= 4)
+### even less accurate:
+E(as(Norm(mean=2),"AbscontDistribution"), 
+     lowerTruncQuantil=1e-2,upperTruncQuantil=1e-2, IQR.fac= 4)
+### no good idea, but just as an example:
+E(as(Norm(mean=2),"AbscontDistribution"), 
+     lowerTruncQuantil=1e-2,upperTruncQuantil=1e-2, IQR.fac= .1)
+
+### truncation of integration range; see also m1df...
+E(Norm(mean=2), low=2,upp=4)
+
+E(Cauchy())
+E(Cauchy(),upp=3,low=-2)
 # some Lebesgue decomposed distribution 
 mymix <- UnivarLebDecDistribution(acPart = Norm(), discretePart = Binom(4,.4),
          acWeight = 0.4)

@@ -8,8 +8,6 @@
 <param name="keyword" value="R:   m1df">
 <param name="keyword" value="R:   m1df-methods">
 <param name="keyword" value="R:   m1df,UnivariateDistribution-method">
-<param name="keyword" value="R:   m1df,AbscontDistribution-method">
-<param name="keyword" value="R:   m1df,DiscreteDistribution-method">
 <param name="keyword" value="R:   m1df,LatticeDistribution-method">
 <param name="keyword" value="R:   m1df,AffLinDistribution-method">
 <param name="keyword" value="R:   m1df,Binom-method">
@@ -35,7 +33,7 @@ The moments are clipped at <code>upper</code>.
 <h3>Usage</h3>
 
 <pre>
-m1df(object, upper)
+m1df(object, upper, ...)
 </pre>
 
 
@@ -48,6 +46,9 @@ object of class <code>"Distribution"</code> </td></tr>
 <tr valign="top"><td><code>upper</code></td>
 <td>
 clipping bound </td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+additional arguments to <code>E</code> </td></tr>
 </table>
 
 <h3>Details</h3>
@@ -66,19 +67,8 @@ The first moment of <code>object</code> clipped at <code>upper</code> is compute
 <h3>Methods</h3>
 
 <dl>
-<dt>object = "UnivariateDistribution":</dt><dd>clipped first moment
-for univariate distributions which is computed using crude 
-Monte-Carlo integration. </dd>
-
-
-<dt>object = "AbscontDistribution":</dt><dd>clipped first moment
-for absolutely continuous univariate distributions which 
-is computed using <code>distrExIntegrate</code>. </dd>
-
-
-<dt>object = "DiscreteDistribution":</dt><dd>clipped first moment
-for discrete univariate distributions which is computed 
-using <code>support</code> and <code>sum</code>. </dd>
+<dt>object = "UnivariateDistribution":</dt><dd>uses call <code>E(object, upp=upper, ...)</code>.
+</dd>
 
 
 <dt>object = "Binom":</dt><dd>clipped first moment
@@ -125,6 +115,7 @@ m1df(N1, 0)
 # Poisson distribution
 P1 &lt;- Pois(lambda=2)
 m1df(P1, 3)
+m1df(P1, 3, fun = function(x)sin(x))
 
 # absolutely continuous distribution
 D1 &lt;- Norm() + Exp() # convolution
@@ -135,6 +126,6 @@ E(D1)
 
 
 
-<hr><div align="center">[Package <em>distrEx</em> version 2.0.2 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distrEx</em> version 2.1 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

@@ -2,8 +2,8 @@
 \alias{m1df}
 \alias{m1df-methods}
 \alias{m1df,UnivariateDistribution-method}
-\alias{m1df,AbscontDistribution-method}
-\alias{m1df,DiscreteDistribution-method}
+%\alias{m1df,AbscontDistribution-method}
+%\alias{m1df,DiscreteDistribution-method}
 \alias{m1df,LatticeDistribution-method}
 \alias{m1df,AffLinDistribution-method}
 \alias{m1df,Binom-method}
@@ -18,11 +18,12 @@
   The moments are clipped at \code{upper}.
 }
 \usage{
-m1df(object, upper)
+m1df(object, upper, ...)
 }
 \arguments{
   \item{object}{ object of class \code{"Distribution"} }
   \item{upper}{ clipping bound }
+  \item{\dots}{ additional arguments to \code{E} }
 }
 \details{The precision of the computations can be controlled via 
   certain global options; cf. \code{\link{distrExOptions}}. }
@@ -31,17 +32,20 @@ m1df(object, upper)
 }
 \section{Methods}{
 \describe{
-  \item{object = "UnivariateDistribution":}{ clipped first moment
-    for univariate distributions which is computed using crude 
-    Monte-Carlo integration. }
+  \item{object = "UnivariateDistribution":}{%
+   % clipped first moment
+   % for univariate distributions which is computed using crude 
+   % Monte-Carlo integration. 
+   uses call \code{E(object, upp=upper, ...)}.
+   }
 
-  \item{object = "AbscontDistribution":}{ clipped first moment
-    for absolutely continuous univariate distributions which 
-    is computed using \code{distrExIntegrate}. }
+%  \item{object = "AbscontDistribution":}{ clipped first moment
+%    for absolutely continuous univariate distributions which 
+%    is computed using \code{distrExIntegrate}. }
 
-  \item{object = "DiscreteDistribution":}{ clipped first moment
-    for discrete univariate distributions which is computed 
-    using \code{support} and \code{sum}. }
+%  \item{object = "DiscreteDistribution":}{ clipped first moment
+%    for discrete univariate distributions which is computed 
+%    using \code{support} and \code{sum}. }
 
   \item{object = "Binom":}{ clipped first moment
     for Binomial distributions which is computed using \code{pbinom}. }
@@ -70,6 +74,7 @@ m1df(N1, 0)
 # Poisson distribution
 P1 <- Pois(lambda=2)
 m1df(P1, 3)
+m1df(P1, 3, fun = function(x)sin(x))
 
 # absolutely continuous distribution
 D1 <- Norm() + Exp() # convolution

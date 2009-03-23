@@ -391,9 +391,20 @@ setMethod("E", signature(object = "Norm",
     function(object, low = NULL, upp = NULL,...){
     if(is.null(low) && is.null(upp))
         return(mean(object))
-    else
-        return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
-    })
+    else{
+        if(is.null(low)) low <- -Inf
+        if(is.null(upp)) upp <- Inf
+        if(low == -Inf){  
+           if(upp == Inf) return(mean(object))
+           else return(m1df(object, upper = upp, ...))
+        }else{
+           E1 <- -m1df(object, upper = low, ...)
+           E2 <- if(upp == Inf) 
+                    mean(object) else m1df(object, upper = upp, ...)         
+           return(E2-E1)
+        }
+    }
+ })
 
 setMethod("E", signature(object = "Beta", 
                          fun = "missing", 
@@ -415,9 +426,20 @@ setMethod("E", signature(object = "Binom",
     if(!is.null(upp)) if(upp >= max(support(object))) upp <- NULL
     if(is.null(low) && is.null(upp))
         return(size(object)*prob(object))
-    else
-        return(E(as(object,"DiscreteDistribution"), low, up, ...))    
-    })
+    else{
+        if(is.null(low)) low <- -Inf
+        if(is.null(upp)) upp <- Inf
+        if(low == -Inf){  
+           if(upp == Inf) return(size(object)*prob(object))
+           else return(m1df(object, upper = upp, ...))
+        }else{
+           E1 <- -m1df(object, upper = low, ...)
+           E2 <- if(upp == Inf) 
+                    size(object)*prob(object) else m1df(object, upper = upp, ...)         
+           return(E2-E1)
+        }
+    }
+   })
 
 setMethod("E", signature(object = "Cauchy", 
                          fun = "missing", 
@@ -425,9 +447,20 @@ setMethod("E", signature(object = "Cauchy",
     function(object, low = NULL, upp = NULL, ...){
     if(is.null(low) && is.null(upp))
         return(NA)
-    else
-        return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
-    })
+    else{
+        if(is.null(low)) low <- -Inf
+        if(is.null(upp)) upp <- Inf
+        if(low == -Inf){  
+           if(upp == Inf) return(NA)
+           else return(-Inf)
+        }else{
+           return(if(upp == Inf) 
+                    Inf else 
+                    E(as(object,"AbscontDistribution"), low=low, upp=upp,...))
+        }
+    }
+#        return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
+  })
 
 setMethod("E", signature(object = "Chisq", 
                          fun = "missing", 
@@ -436,9 +469,20 @@ setMethod("E", signature(object = "Chisq",
     if(!is.null(low)) if(low <= 0) low <- NULL
     if(is.null(low) && is.null(upp))
         return(df(object)+ncp(object))
-    else
-        return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
-    })
+    else{
+        if(is.null(low)) low <- -Inf
+        if(is.null(upp)) upp <- Inf
+        if(low == -Inf){  
+           if(upp == Inf) return(df(object)+ncp(object))
+           else return(m1df(object, upper = upp, ...))
+        }else{
+           E1 <- -m1df(object, upper = low, ...)
+           E2 <- if(upp == Inf) 
+                    df(object)+ncp(object) else m1df(object, upper = upp, ...)         
+           return(E2-E1)
+        }
+    }
+ })
 
 setMethod("E", signature(object = "Dirac", 
                          fun = "missing", 
@@ -470,9 +514,20 @@ setMethod("E", signature(object = "Exp",
     if(!is.null(low)) if(low <= 0) low <- NULL
     if(is.null(low) && is.null(upp))
         return(1/rate(object))
-    else
-        return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
-    })
+    else{
+        if(is.null(low)) low <- -Inf
+        if(is.null(upp)) upp <- Inf
+        if(low == -Inf){  
+           if(upp == Inf) return(1/rate(object))
+           else return(m1df(object, upper = upp, ...))
+        }else{
+           E1 <- -m1df(object, upper = low, ...)
+           E2 <- if(upp == Inf) 
+                    1/rate(object) else m1df(object, upper = upp, ...)         
+           return(E2-E1)
+        }
+    }
+ })
 
 
 setMethod("E", signature(object = "Fd", 
@@ -510,7 +565,7 @@ setMethod("E", signature(object = "Geom",
     if(is.null(low) && is.null(upp))
         return(1/ prob(object) -1)
     else
-        return(E(as(object,"DiscreteDistribution"), low, up, ...))    
+        return(E(as(object,"DiscreteDistribution"), low=low, upp=upp, ...))    
     })
 
 setMethod("E", signature(object = "Hyper", 
@@ -522,7 +577,7 @@ setMethod("E", signature(object = "Hyper",
     if(is.null(low) && is.null(upp))
         return(k(object)*m(object)/(m(object)+n(object)))
     else
-        return(E(as(object,"DiscreteDistribution"), low, up, ...))    
+        return(E(as(object,"DiscreteDistribution"), low=low, upp=upp, ...))    
     })
 
 setMethod("E", signature(object = "Logis", 
@@ -555,7 +610,7 @@ setMethod("E", signature(object = "Nbinom",
     if(is.null(low) && is.null(upp))
         return(size(object)*(1-prob(object))/prob(object))
     else
-        return(E(as(object,"DiscreteDistribution"), low, up, ...))    
+        return(E(as(object,"DiscreteDistribution"), low=low, upp=upp, ...))    
     })
 
 setMethod("E", signature(object = "Pois", 
@@ -567,7 +622,7 @@ setMethod("E", signature(object = "Pois",
     if(is.null(low) && is.null(upp))
         return(lambda(object))
     else
-        return(E(as(object,"DiscreteDistribution"), low, up, ...))    
+        return(E(as(object,"DiscreteDistribution"), low=low, upp=upp, ...))    
     })
 
 setMethod("E", signature(object = "Td", 

@@ -151,10 +151,10 @@ if(!isGeneric("E")){
 }
 
 if(!isGeneric("m1df")){
-   setGeneric("m1df", function(object, upper) standardGeneric("m1df"))
+   setGeneric("m1df", function(object, upper, ...) standardGeneric("m1df"))
 }
 if(!isGeneric("m2df")){
-   setGeneric("m2df", function(object, upper) standardGeneric("m2df"))
+   setGeneric("m2df", function(object, upper, ...) standardGeneric("m2df"))
 }
 
 #if(!isGeneric("illustrateCLT")){
