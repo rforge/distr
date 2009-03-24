@@ -8,7 +8,7 @@
 %\VignetteIndexEntry{newDistributions}
 %\VignetteDepends{startupmsg}
 %\VignetteKeywords{probability distribution,estimation}
-%\VignettePackage{distr}
+%\VignettePackage{distr}                     
 %
 %
 %
@@ -19,10 +19,10 @@
 \usepackage{svn-multi}
 % Version control information:
 \svnidlong
-{$HeadURL$}
-{$LastChangedDate: 2008-12-03 13:29:19 +1234 (Wed, 03 Dec 2008) $}
+{$HeadURL: svn+ssh://ruckdeschel@svn.r-forge.r-project.org/svnroot/distr/pkg/distr/inst/doc/newDistributions.Rnw $}
+{$LastChangedDate$}
 {$LastChangedRevision$}
-{$LastChangedBy: martin $}
+{$LastChangedBy$}
 \svnid{$Id: example_main.tex 146 2008-12-03 13:29:19Z martin $}
 % Don't forget to set the svn property 'svn:keywords' to
 % 'HeadURL LastChangedDate LastChangedRevision LastChangedBy' or
