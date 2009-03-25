@@ -40,14 +40,17 @@ Pareto-class.html
 Pareto.html
 ParetoParameter-class.html
 PrognCondDistribution-class.html
+PrognCondDistribution.html
 PrognCondition-class.html
 TotalVarDist.html
 UnivariateCondDistribution-class.html
 Var.html
 dim-methods.html
+distrExConstants.html
 distrExIntegrate.html
 distrExMASK.html
 distrExOptions.html
+internals.html
 liesInSupport.html
 m1df.html
 m2df.html

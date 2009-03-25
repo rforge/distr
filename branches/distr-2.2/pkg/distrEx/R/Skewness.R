@@ -4,6 +4,10 @@
 ###################################################################################
 setMethod("skewness", signature(x = "UnivariateDistribution"),
     function(x, fun = function(t) {t}, cond, withCond = FALSE, useApply = TRUE, ...){
+        if(missing(cond)&&missing(fun)){
+           if(is(Symmetry(x),"SphericalSymmetry"))
+              return(0)
+        }
         f2 <- function(t) {fun(t)^2}
         f3 <- function(t) {fun(t)^3}
         if(missing(cond))
@@ -74,6 +78,7 @@ setMethod("skewness", signature(x = "Binom"),
     else
         return((1-2*prob(x))/sqrt(size(x)*prob(x)*(1-prob(x))))
     })
+### source: http://mathworld.wolfram.com/BinomialDistribution.html
 
 #
 setMethod("skewness", signature(x = "Cauchy"),
@@ -88,6 +93,8 @@ setMethod("skewness", signature(x = "Cauchy"),
     else
         return(NA)
     })
+### source http://mathworld.wolfram.com/CauchyDistribution.html
+
 #
 setMethod("skewness", signature(x = "Chisq"),
     function(x,...){    
@@ -101,6 +108,8 @@ setMethod("skewness", signature(x = "Chisq"),
     else
         return( sqrt(8)*(df(x)+3*ncp(x))/(df(x)+2*ncp(x))^1.5)
     })
+### source http://mathworld.wolfram.com/Chi-SquaredDistribution.html
+
 #
 setMethod("skewness", signature(x = "Dirac"),
     function(x, ...){return(NA)})
@@ -118,6 +127,8 @@ setMethod("skewness", signature(x = "DExp"),
     else
         return(0)
     })
+### source http://mathworld.wolfram.com/LaplaceDistribution.html
+
 #
 setMethod("skewness", signature(x = "Exp"),
     function(x, ...){    
@@ -131,6 +142,7 @@ setMethod("skewness", signature(x = "Exp"),
     else
         return(2)
     })
+ ### source http://mathworld.wolfram.com/ExponentialDistribution.html
 
 #
 setMethod("skewness", signature(x = "Fd"),
@@ -161,6 +173,7 @@ setMethod("skewness", signature(x = "Fd"),
         }
     }
     })
+### source (without ncp) http://mathworld.wolfram.com/F-Distribution.html
 #
 setMethod("skewness", signature(x = "Gammad"),
     function(x, ...){    
@@ -174,6 +187,7 @@ setMethod("skewness", signature(x = "Gammad"),
     else
         return(2/sqrt(shape(x)))
     })
+### source http://mathworld.wolfram.com/GammaDistribution.html
 #
 setMethod("skewness", signature(x = "Geom"),
     function(x, ...){    
@@ -189,6 +203,7 @@ setMethod("skewness", signature(x = "Geom"),
         return((2-p)/sqrt(1-p))
     }
     })
+### source http://mathworld.wolfram.com/GeometricDistribution.html
 #
 setMethod("skewness", signature(x = "Hyper"),
     function(x, ...){    
@@ -206,6 +221,7 @@ setMethod("skewness", signature(x = "Hyper"),
         return( sqrt((m+n-1)/(k*m*n)/(m+n-k))*(n-m)*(m+n-2*k)/(m+n-2) )
         }
     })
+### source http://mathworld.wolfram.com/HypergeometricDistribution.html
 #
 setMethod("skewness", signature(x = "Logis"),
     function(x, ...){
@@ -219,6 +235,7 @@ setMethod("skewness", signature(x = "Logis"),
     else
         return(0)
     })
+### source http://mathworld.wolfram.com/LogisticDistribution.html
 #
 setMethod("skewness", signature(x = "Lnorm"),
     function(x, ...){
@@ -234,6 +251,7 @@ setMethod("skewness", signature(x = "Lnorm"),
         return( sqrt(w-1)*(w+2) )
     }
     })
+### source http://mathworld.wolfram.com/LogNormalDistribution.html
 #
 setMethod("skewness", signature(x = "Nbinom"),
     function(x, ...){    
@@ -250,6 +268,7 @@ setMethod("skewness", signature(x = "Nbinom"),
         return((2-p)/sqrt((1-p)*size(x)))
     }
     })
+### source http://mathworld.wolfram.com/NegativeBinomialDistribution.html
 #
 setMethod("skewness", signature(x = "Pois"),
     function(x, ...){
@@ -263,6 +282,7 @@ setMethod("skewness", signature(x = "Pois"),
     else
         return(1/sqrt(lambda(x)))
     })
+### source http://mathworld.wolfram.com/PoissonDistribution.html
 #
 setMethod("skewness", signature(x = "Td"),
     function(x, ...){
@@ -285,6 +305,7 @@ setMethod("skewness", signature(x = "Td"),
         }
     }
     })
+### source http://mathworld.wolfram.com/NoncentralStudentst-Distribution.html
 
 #
 setMethod("skewness", signature(x = "Unif"),
@@ -299,6 +320,7 @@ setMethod("skewness", signature(x = "Unif"),
     else
         return(0)
     })
+### source http://mathworld.wolfram.com/UniformDistribution.html
 #
 setMethod("skewness", signature(x = "Weibull"),
     function(x, ...){
@@ -315,6 +337,7 @@ setMethod("skewness", signature(x = "Weibull"),
         g3 <- gamma(1+3/shape(x))
         return( (g3-3*g1*(g2-g1^2)-g1^3)/(g2-g1^2)^1.5 )
     })
+### source http://mathworld.wolfram.com/WeibullDistribution.html
 #    
 setMethod("skewness", signature(x = "Beta"),
     function(x, ...){
@@ -329,6 +352,7 @@ setMethod("skewness", signature(x = "Beta"),
         {a<-shape1(x); b<- shape2(x)
         return( 2*(b-a)*sqrt(a+b+1)/(a+b+2)/sqrt(a*b) ) }
     })
+## source: http://mathworld.wolfram.com/BetaDistribution.html
 
 ###################################################################################
 #skewness --- code P.R.:
@@ -363,6 +387,7 @@ setMethod("skewness", signature(x = "Pareto"),
          return( 2*(a+1)/(a-3)*sqrt(1-2/a) ) 
     }
 })
+### source http://mathworld.wolfram.com/ParetoDistribution.html
 
 setMethod("skewness", signature(x = "Gumbel"),
     function(x, ...){

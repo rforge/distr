@@ -16,3 +16,4 @@ UnivarDistrList <- function(...){
 # coerce to "UnivarDistrList"
 setAs(from = "UnivariateDistribution", to = "UnivarDistrList", 
     def = function(from){ new("UnivarDistrList", list(from)) })
+

@@ -108,59 +108,65 @@ which are all now available analytically.\cr
 (see Parameter classes).
 
 \preformatted{
+[*]: there is a generating function with the same name
 
+##########################
 Distribution classes
+##########################
 slots: [<name>(<class>)] 
 img(rSpace), param(OptionalParameter),
 r(function), d(OptionalFunction), p(OptionalFunction), q(OptionalFunction),
-.withSim(logical), .withArith(logical), .logExact(logical), .lowerExact(logical)
+.withSim(logical), .withArith(logical), .logExact(logical), .lowerExact(logical),
+Symmetry(DistributionSymmetry)
 
 
 "Distribution"
 |>"UnivariateDistribution"
-|>|>"UnivarMixingDistribution"
-|>|>|>"UnivarLebDecDistribution"
+|>|>"UnivarMixingDistribution"            [*]
+|>|>|>"UnivarLebDecDistribution"          [*]
 |>|>|>|>"AffLinUnivarLebDecDistribution"
-|>|>|>"CompoundDistribution"
-|>|>"AbscontDistribution"
+|>|>|>"CompoundDistribution"              [*]
+|>|>"AbscontDistribution"                 [*]
 |>|>|>"AffLinAbscontDistribution"
-|>|>|>"Arcsine"
-|>|>|>"Beta"
-|>|>|>"Cauchy"
+|>|>|>"Arcsine"                           [*]
+|>|>|>"Beta"                              [*]
+|>|>|>"Cauchy"                            [*]
 |>|>|>"ExpOrGammaOrChisq" (VIRTUAL)
-|>|>|>|>"Exp"
-|>|>|>|>"Gammad"
-|>|>|>|>"Chisq"
-|>|>|>"Fd"
-|>|>|>"Lnorm"
-|>|>|>"Logis"
-|>|>|>"Norm"
-|>|>|>"Td"
-|>|>|>"Unif"
-|>|>|>"Weibull"
-|>|>|"DiscreteDistribution"
-|>|>|>"AffLinDiscreteDistribution"
-|>|>|>"LatticeDistribution"
-|>|>|>|>"AffLinLatticeDistribution"
-|>|>|>|>"Binom"
-|>|>|>|>"Dirac"
-|>|>|>|>"Hyper"
-|>|>|>|>"NBinom"
-|>|>|>|>|>"Geom"
-|>|>|>|>"Pois"
+|>|>|>|>"Exp"                             [*]
+|>|>|>|>"Gammad"                          [*]
+|>|>|>|>"Chisq"                           [*]
+|>|>|>"Fd"                                [*]
+|>|>|>"Lnorm"                             [*]
+|>|>|>"Logis"                             [*]
+|>|>|>"Norm"                              [*]
+|>|>|>"Td"                                [*]
+|>|>|>"Unif"                              [*]
+|>|>|>"Weibull"                           [*]
+|>|>|"DiscreteDistribution"               [*]
+|>|>|>"AffLinDiscreteDistribution"        
+|>|>|>"LatticeDistribution"               [*]
+|>|>|>|>"AffLinLatticeDistribution"       
+|>|>|>|>"Binom"                           [*]
+|>|>|>|>"Dirac"                           [*]
+|>|>|>|>"Hyper"                           [*]
+|>|>|>|>"NBinom"                          [*]
+|>|>|>|>|>"Geom"                          [*]
+|>|>|>|>"Pois"                            [*]
 
 "AffLinDistribution" = union ( "AffLinAbscontDistribution", 
                                "AffLinDiscreteDistribution",
                                "AffLinUnivarLebDecDistribution" )
 
 "DistrList" 
-|>"UnivarDistrList"
+|>"UnivarDistrList"                       [*]
 
 "AcDcLc" = union ( "AbscontDistribution", 
                    "DiscreteDistribution",
                    "UnivarLebDecDistribution" )
 
+##########################
 Parameter classes
+##########################
 
 "OptionalParameter"
 |>"Parameter"
@@ -184,13 +190,50 @@ Parameter classes
 |>|>"UnifParameter"
 |>|>"WeibullParameter"
 
+##########################
 Space classes
+##########################
 
 "rSpace"
 |>"EuclideanSpace"
 |>|>"Reals"
 |>"Lattice"
 |>"Naturals"
+
+##########################
+Symmetry classes
+##########################
+slots:
+type(character), SymmCenter(ANY)
+
+"Symmetry"
+|>"NoSymmetry"          [*]
+|>"EllipticalSymmetry"  [*] 
+|>|>"SphericalSymmetry" [*]
+|>"DistributionSymmetry"
+|>"FunctionSymmetry"
+|>|>"NonSymmetric"      [*]
+|>|>"EvenSymmetric"     [*]
+|>|>"OddSymmetric"      [*]
+
+list thereof
+"DistrSymmList"         [*] 
+"FunSymmList"           [*]
+
+
+##########################
+Matrix classes
+##########################
+slots:
+none
+"PosSemDefSymmMatrix" [*] is subclass of class "matrix" of package "base".
+|>"PosDefSymmMatrix"  [*]
+
+##########################
+Class unions
+##########################
+"OptionalNumeric" = union("numeric", "NULL")
+"OptionalMatrix" = union("matrix","NULL")
 }
 }
 

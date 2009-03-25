@@ -7,6 +7,8 @@ setMethod("E", signature(object = "UnivarLebDecDistribution",
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
              IQR.fac = getdistrExOption("IQR.fac"), ...){
+        if(is(Symmetry(object),"SphericalSymmetry"))
+           return(SymmCenter(Symmetry(object)))
         I.ac <- E(acPart(object), low = low, upp = upp, rel.tol = rel.tol, 
                   lowerTruncQuantile = lowerTruncQuantile,
                   upperTruncQuantile = upperTruncQuantile,

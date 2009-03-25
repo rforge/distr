@@ -17,12 +17,22 @@ setMethod("q", "Distribution",
 setMethod("p", "Distribution", function(object) object@p)
 setMethod(".lowerExact", "Distribution", function(object){ 
              er <- is(try(slot(object, ".lowerExact"), silent = TRUE), "try-error")
-             if(er) object <- conv2NewVersion(object)
+             if(er){ object0 <- conv2NewVersion(object)
+                    eval.parent(substitute(object<-object0))
+                    return(invisible(NULL))}
              object@.lowerExact})
 setMethod(".logExact", "Distribution", function(object){
              er <- is(try(slot(object, ".logExact"), silent = TRUE), "try-error")
-             if(er) object <- conv2NewVersion(object)
+             if(er){ object0 <- conv2NewVersion(object)
+                    eval.parent(substitute(object<-object0))
+                    return(invisible(NULL))}
              object@.logExact})
+setMethod("Symmetry", "Distribution", function(object){
+             er <- is(try(slot(object, "Symmetry"), silent = TRUE), "try-error")
+             if(er){ object0 <- conv2NewVersion(object)
+                    eval.parent(substitute(object<-object0))
+                    return(invisible(NULL))}
+             object@Symmetry})
 
 
 ################################

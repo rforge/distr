@@ -23,8 +23,7 @@ Generates an object of class <code>"DiscreteMVDistribution"</code>.
 <h3>Usage</h3>
 
 <pre>
-  DiscreteMVDistribution(supp, prob)
-  DiscreteMVDistribution(supp)
+DiscreteMVDistribution(supp, prob, Symmetry = NoSymmetry())
 </pre>
 
 
@@ -39,11 +38,21 @@ of the discrete multivariate distribution. </td></tr>
 <td>
 vector of probability weights for the 
 elements of <code>supp</code>.</td></tr>
+<tr valign="top"><td><code>Symmetry</code></td>
+<td>
+you may help <font face="Courier New,Courier" color="#666666"><b>R</b></font> in calculations if you tell it whether
+the distribution is non-symmetric (default) or symmetric with respect
+to a center.</td></tr>
 </table>
 
 <h3>Details</h3>
 
 <p>
+Typical usages are
+<pre>
+     DiscreteMVDistribution(supp, prob)
+     DiscreteMVDistribution(supp)
+</pre>
 Identical rows are collapsed to unique support values. 
 If <code>prob</code> is missing, all elements in <code>supp</code>
 are equally weighted.
@@ -85,6 +94,6 @@ r(D2)(10)
 
 
 
-<hr><div align="center">[Package <em>distrEx</em> version 2.1 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distrEx</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

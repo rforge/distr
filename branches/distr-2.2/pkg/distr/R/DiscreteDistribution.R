@@ -10,7 +10,8 @@ DiscreteDistribution <- function(supp, prob, .withArith = FALSE,
                   getdistrOption("DistrCollapse"),
      .DistrCollapse.Unique.Warn = 
                   getdistrOption("DistrCollapse.Unique.Warn"),
-     .DistrResolution = getdistrOption("DistrResolution")){
+     .DistrResolution = getdistrOption("DistrResolution"),
+     Symmetry = NoSymmetry()){
     if(!is.numeric(supp))
         stop("'supp' is no numeric vector")
     if(any(!is.finite(supp)))   # admit +/- Inf?
@@ -71,7 +72,7 @@ DiscreteDistribution <- function(supp, prob, .withArith = FALSE,
 
     object <- new("DiscreteDistribution", r = rfun, d = dfun, q = qfun, p=pfun,
          support = supp, .withArith = .withArith, .withSim = .withSim,
-         .lowerExact = .lowerExact, .logExact = .logExact)
+         .lowerExact = .lowerExact, .logExact = .logExact, Symmetry = Symmetry)
 }
 
 
@@ -288,8 +289,13 @@ function(e1,e2){
                            q = qfun, support = supp,
                            .withSim = .withSim, .withArith = TRUE)
             rm(rfun, dfun, qfun, pfun)
-            object
 
+            if(is(e1@Symmetry,"SphericalSymmetry")&& 
+               is(e2@Symmetry,"SphericalSymmetry"))
+               object@Symmetry <- SphericalSymmetry(SymmCenter(e1@Symmetry)+
+                                                     SymmCenter(e2@Symmetry))   
+
+            object
           })
 
 setMethod("+", c("Dirac","DiscreteDistribution"),
@@ -302,19 +308,41 @@ setMethod("*", c("DiscreteDistribution","numeric"),
            function(e1, e2) { Distr <- .multm(e1,e2, "DiscreteDistribution")
                               if(is(Distr, "AffLinDistribution"))
                                  Distr@X0 <- e1
+
+                              if(is(e1@Symmetry,"SphericalSymmetry"))
+                                 Distr@Symmetry <- 
+                                   SphericalSymmetry(SymmCenter(e1@Symmetry)*e2)
+
                               Distr
                              })
 setMethod("+", c("DiscreteDistribution","numeric"),
            function(e1, e2) { Distr <- .plusm(e1,e2, "DiscreteDistribution")
                               if(is(Distr, "AffLinDistribution"))
                                  Distr@X0 <- e1
+
+                              if(is(e1@Symmetry,"SphericalSymmetry"))
+                                 Distr@Symmetry <- 
+                                   SphericalSymmetry(SymmCenter(e1@Symmetry)+e2)
+
                               Distr
                              })
 
 setMethod("*", c("AffLinDiscreteDistribution","numeric"),
-           function(e1, e2) .multm(e1,e2, "AffLinDiscreteDistribution"))
+           function(e1, e2) {
+                Distr <- .multm(e1,e2, "AffLinDiscreteDistribution")
+                if(is(e1@Symmetry,"SphericalSymmetry"))
+                      Distr@Symmetry <- 
+                        SphericalSymmetry(SymmCenter(e1@Symmetry)*e2)
+                Distr                
+                })
 setMethod("+", c("AffLinDiscreteDistribution","numeric"),
-           function(e1, e2) .plusm(e1,e2, "AffLinDiscreteDistribution"))
+           function(e1, e2) {
+                Distr <- .plusm(e1,e2, "AffLinDiscreteDistribution")
+                if(is(e1@Symmetry,"SphericalSymmetry"))
+                      Distr@Symmetry <- 
+                        SphericalSymmetry(SymmCenter(e1@Symmetry)*e2)
+                Distr                
+                })
 
 ## Group Math for discrete distributions
 setMethod("Math", "DiscreteDistribution",

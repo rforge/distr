@@ -67,7 +67,8 @@ setMethod("initialize", "AbscontDistribution",
                    gaps = NULL, param = NULL, img = new("Reals"),
                    .withSim = FALSE, .withArith = FALSE,
                    .lowerExact = FALSE, .logExact = FALSE,
-                   low1 = NULL, up1 = NULL, low = -Inf, up =Inf
+                   low1 = NULL, up1 = NULL, low = -Inf, up =Inf,
+                   Symmetry = NoSymmetry()
                    ) {
             ## don't use this if the call is new("AbscontDistribution")
             LL <- length(sys.calls())
@@ -125,6 +126,7 @@ setMethod("initialize", "AbscontDistribution",
             .Object@.withArith <- .withArith
             .Object@.logExact <- .logExact
             .Object@.lowerExact <- .lowerExact
+            .Object@Symmetry <- Symmetry
             .Object })
 
 ## class AffLinAbscontDistribution
@@ -132,7 +134,8 @@ setMethod("initialize", "AffLinAbscontDistribution",
           function(.Object, r = NULL, d = NULL, p = NULL, q = NULL, gaps = NULL,
                    a = 1, b = 0, X0 = Norm(), param = NULL, img = new("Reals"),
                    .withSim = FALSE, .withArith = FALSE,
-                   .lowerExact = FALSE, .logExact = FALSE) {
+                   .lowerExact = FALSE, .logExact = FALSE,
+                   Symmetry = NoSymmetry()) {
   X <- new("AbscontDistribution", r = r, d = d, p = p, q = q, gaps = gaps, 
            param = param, img = img, .withSim = .withSim, 
            .withArith = .withArith)
@@ -148,6 +151,7 @@ setMethod("initialize", "AffLinAbscontDistribution",
   .Object@r <- X@r
   .Object@.withSim <- .withSim
   .Object@.withArith <- .withArith
+  .Object@Symmetry <- Symmetry
   .Object
 })
 
@@ -156,7 +160,8 @@ setMethod("initialize", "DiscreteDistribution",
           function(.Object, r = NULL, d = NULL, p = NULL, q = NULL, 
                     support = NULL, param = NULL, img = new("Reals"), 
                     .withSim = FALSE, .withArith = FALSE,
-                   .lowerExact = FALSE, .logExact = FALSE) {
+                   .lowerExact = FALSE, .logExact = FALSE,
+                   Symmetry = NoSymmetry()) {
 
             ## don't use this if the call is new("DiscreteDistribution")
             LL <- length(sys.calls())
@@ -214,6 +219,7 @@ setMethod("initialize", "DiscreteDistribution",
             .Object@.withArith <- .withArith
             .Object@.lowerExact <- .lowerExact
             .Object@.logExact <- .logExact
+            .Object@Symmetry <- Symmetry
             .Object
           })
 
@@ -222,7 +228,8 @@ setMethod("initialize", "AffLinDiscreteDistribution",
           function(.Object, r = NULL, d = NULL, p = NULL, q = NULL, 
                    support = NULL, a = 1, b = 0, X0 = Binom(), param = NULL, 
                    img = new("Reals"), .withSim = FALSE, .withArith = FALSE,
-                   .lowerExact = FALSE, .logExact = FALSE) {
+                   .lowerExact = FALSE, .logExact = FALSE,
+                   Symmetry = NoSymmetry()) {
    ## don't use this if the call is new("DiscreteDistribution")
    LL <- length(sys.calls())
    if(sys.calls()[[LL-3]] == "new(\"AffLinDiscreteDistribution\")")
@@ -244,6 +251,7 @@ setMethod("initialize", "AffLinDiscreteDistribution",
   .Object@.withArith <- .withArith
   .Object@.lowerExact <- .lowerExact
   .Object@.logExact <- .logExact
+  .Object@Symmetry <- Symmetry
   .Object
 })
 
@@ -252,7 +260,8 @@ setMethod("initialize", "LatticeDistribution",
           function(.Object, r = NULL, d = NULL, p = NULL, q = NULL, 
                     support = NULL, lattice = NULL, param = NULL, 
                     img = new("Reals"), .withSim = FALSE, .withArith = FALSE,
-                   .lowerExact = FALSE, .logExact = FALSE) {
+                   .lowerExact = FALSE, .logExact = FALSE,
+                   Symmetry = NoSymmetry()) {
 
 
              LL <- length(sys.calls())
@@ -286,6 +295,7 @@ setMethod("initialize", "LatticeDistribution",
             .Object@.withArith <- .withArith
             .Object@.lowerExact <- .lowerExact
             .Object@.logExact <- .logExact
+            .Object@Symmetry <- Symmetry
             .Object
           })
 
@@ -294,7 +304,8 @@ setMethod("initialize", "AffLinLatticeDistribution",
           function(.Object, r = NULL, d = NULL, p = NULL, q = NULL, 
                    support = NULL, lattice = NULL, a = 1, b = 0, X0 = Binom(), 
                    param = NULL, img = new("Reals"), .withSim = FALSE, 
-                   .withArith = FALSE, .lowerExact = FALSE, .logExact = FALSE) {
+                   .withArith = FALSE, .lowerExact = FALSE, .logExact = FALSE,
+                   Symmetry = NoSymmetry()) {
 
    LL <- length(sys.calls())
    if(sys.calls()[[LL-3]] == "new(\"AffLinLatticeDistribution\")")
@@ -319,6 +330,7 @@ setMethod("initialize", "AffLinLatticeDistribution",
   .Object@.withArith <- .withArith
   .Object@.lowerExact <- .lowerExact
   .Object@.logExact <- .logExact
+  .Object@Symmetry <- Symmetry
   .Object
 })
 
@@ -582,6 +594,7 @@ setMethod("initialize", "Unif",
                              list(MinSub = Min, MaxSub = Max)
                                           )                    
             .Object@.withArith <- .withArith
+            .Object@Symmetry <- SphericalSymmetry(Min+Max/2)
             .Object
           })
 
@@ -614,6 +627,7 @@ setMethod("initialize", "Norm",
                              list(meanSub = mean, sdSub = sd)
                                           )
             .Object@.withArith <- .withArith
+            .Object@Symmetry <- SphericalSymmetry(mean)
             .Object
           })
 
@@ -686,6 +700,7 @@ setMethod("initialize", "Cauchy",
                                           )
             .Object@.withSim   <- FALSE
             .Object@.withArith <- FALSE
+            .Object@Symmetry <- SphericalSymmetry(location)
             .Object
           })
 
@@ -774,6 +789,7 @@ setMethod("initialize", "Td",
                                          list(dfSub = df, ncpSub = ncp)
                                           )
             .Object@.withArith <- FALSE
+            .Object@Symmetry <- SphericalSymmetry(0)
             .Object
           })
 
@@ -890,6 +906,7 @@ setMethod("initialize", "DExp",
                                           )
             .Object@.withSim   <- FALSE
             .Object@.withArith <- .withArith
+            .Object@Symmetry <- SphericalSymmetry(0)
             .Object
           })
 
@@ -1066,5 +1083,6 @@ setMethod("initialize", "Arcsine",
                               return(q)}                      
             .Object@.withSim   <- FALSE
             .Object@.withArith <- .withArith
+            .Object@Symmetry <- SphericalSymmetry(0)
             .Object
           })

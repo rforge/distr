@@ -34,6 +34,13 @@
     \item{\code{d}:}{\code{dpareto1}}
     \item{\code{p}:}{\code{ppareto1}}
     \item{\code{q}:}{\code{qpareto1}}
+    \item{\code{gaps}:}{(numeric) matrix or \code{NULL}}
+    \item{\code{.withArith}:}{logical: used internally to issue warnings as to interpretation of arithmetics}
+    \item{\code{.withSim}:}{logical: used internally to issue warnings as to accuracy}
+    \item{\code{.logExact}:}{logical: used internally to flag the case where there are explicit formulae for the
+                              log version of density, cdf, and quantile function}
+    \item{\code{.lowerExact}:}{logical: used internally to flag the case where there are explicit formulae for the
+                              lower tail version of cdf and quantile function}
   }
 }
 \section{Extends}{

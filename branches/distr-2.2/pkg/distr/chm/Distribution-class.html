@@ -12,6 +12,9 @@
 <param name="keyword" value="R:   .lowerExact">
 <param name="keyword" value="R:   .lowerExact-methods">
 <param name="keyword" value="R:   .lowerExact,Distribution-method">
+<param name="keyword" value="R:   Symmetry">
+<param name="keyword" value="R:   Symmetry-methods">
+<param name="keyword" value="R:   Symmetry,Distribution-method">
 <param name="keyword" value=" Class 'Distribution'">
 </object>
 
@@ -54,6 +57,8 @@ quantile function</dd>
 <dt><code>.lowerExact</code>:</dt><dd>logical: used internally to flag the case where 
 there are explicit formulae for the lower tail version of cdf and quantile 
 function</dd>
+<dt><code>Symmetry</code>:</dt><dd>object of class <code>"DistributionSymmetry"</code>;
+used internally to avoid unnecessary calculations.</dd>
 </dl>
 
 <h3>Methods</h3>
@@ -79,6 +84,10 @@ returns the corresponding slot of the converted object.</dd>
 <code>.lowerExact</code> if existing; else tries to convert the object to a 
 newer version of its class by <code><a href="versionmanagement.html">conv2NewVersion</a></code> and
 returns the corresponding slot of the converted object.</dd>
+<dt>Symmetry:</dt><dd>returns slot <code>Symmetry</code> if existing; else
+tries to convert the object to a 
+newer version of its class by <code><a href="versionmanagement.html">conv2NewVersion</a></code> and
+returns the corresponding slot of the converted object.</dd>
 </dl>
 
 <h3>Author(s)</h3>
@@ -100,6 +109,6 @@ Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de
 
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

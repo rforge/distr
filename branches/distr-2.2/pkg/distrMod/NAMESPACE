@@ -6,14 +6,10 @@ import("distrEx")
 import("RandVar")
 
 importFrom("stats4","profile")
-exportClasses("OptionalNumeric","MatrixorFunction",
+exportClasses("MatrixorFunction",
               "OptionalNumericOrMatrix", "ShowDetails",
-              "PosSemDefSymmMatrix",
-              "PosDefSymmMatrix",
-              "Symmetry", "DistributionSymmetry",
-              "NoSymmetry", "EllipticalSymmetry", "SphericalSymmetry",
               "FunctionSymmetry", "NonSymmetric", "EvenSymmetric", "OddSymmetric",
-              "DistrSymmList", "FunSymmList",
+              "FunSymmList",
               "ParamFamParameter",
               "ProbFamily", "ParamFamily", "L2ParamFamily")
 exportClasses("RiskType", 
@@ -33,8 +29,8 @@ exportClasses("BinomFamily","PoisFamily", "NormLocationFamily",
 exportClasses("NormType", "QFNorm", "InfoNorm", "SelfNorm")
 exportClasses("Estimate", "MCEstimate")
 exportClasses("Confint")
-exportMethods("type", "SymmCenter", "distrSymm",
-              "distribution", "props", "props<-", "addProp<-", "main", "main<-",
+exportMethods("distrSymm")
+exportMethods("distribution", "props", "props<-", "addProp<-", "main", "main<-",
               "nuisance", "nuisance<-", "trafo", "trafo<-", "trafo.fct", 
               "fixed", "fixed<-", "modifyParam",
               "dimension", "show", "print", "plot", "param", "E", "name",
@@ -42,7 +38,6 @@ exportMethods("type", "SymmCenter", "distrSymm",
               "FisherInfo", "checkL2deriv", "fam.call")
 exportMethods("bound", "width")
 exportMethods("nu", "name", "sign", "nu<-", "name<-", "sign<-", "biastype", "biastype<-")
-exportMethods("solve", "sqrt")
 exportMethods("existsPIC")
 exportMethods("modifyModel")
 exportMethods("norm",  "QuadForm<-", "QuadForm", "fct", 
@@ -63,12 +58,9 @@ exportMethods("coerce", "profile")
 exportMethods("mleCalc", "mceCalc")
 export("distrModMASK")
 export("trafoEst")
-export("PosDefSymmMatrix","PosSemDefSymmMatrix")
 export("distrModOptions", "distrModoptions", "getdistrModOption",
        "Estimator", "MCEstimator", "MLEstimator", "MDEstimator")
-export("NoSymmetry", "EllipticalSymmetry", "SphericalSymmetry",
-       "NonSymmetric", "EvenSymmetric", "OddSymmetric",
-       "DistrSymmList", "FunSymmList") 
+export("NonSymmetric", "EvenSymmetric", "OddSymmetric", "FunSymmList") 
 export("ParamFamParameter", "ParamFamily", "L2ParamFamily",
        "BinomFamily", "PoisFamily", "NormLocationFamily",
        "GumbelLocationFamily", "NormScaleFamily", "ExpScaleFamily",

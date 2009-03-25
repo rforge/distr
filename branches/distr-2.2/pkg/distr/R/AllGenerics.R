@@ -417,3 +417,13 @@ if(!isGeneric(".lowerExact"))
 if(!isGeneric(".logExact"))
     setGeneric(".logExact", function(object) 
                 standardGeneric(".logExact"))
+
+if(!isGeneric("type")){
+    setGeneric("type", function(object) standardGeneric("type"))
+}
+if(!isGeneric("SymmCenter")){
+    setGeneric("SymmCenter", function(object) standardGeneric("SymmCenter"))
+}
+if(!isGeneric("Symmetry")){
+    setGeneric("Symmetry", function(object) standardGeneric("Symmetry"))
+}

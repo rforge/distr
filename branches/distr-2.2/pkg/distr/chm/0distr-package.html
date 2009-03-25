@@ -64,19 +64,22 @@ corresponding image distributions.
   <td align="left">Package: </td>  <td align="left"> distr</td>
 </tr>
 <tr>
-  <td align="left"> Version: </td>  <td align="left"> 2.0 </td>
+  <td align="left"> Version: </td>  <td align="left"> 2.2</td>
 </tr>
 <tr>
-  <td align="left"> Date: </td>  <td align="left"> 2008-05-08 </td>
+  <td align="left"> Date: </td>  <td align="left"> 2009-03-19</td>
 </tr>
 <tr>
-  <td align="left"> Depends: </td>  <td align="left"> R(&gt;= 2.2.0), methods, graphics, startupmsg</td>
-</tr>
-<tr>
-  <td align="left"> Imports: </td>  <td align="left"> stats</td>
+  <td align="left"> Depends: </td>  <td align="left"> R(&gt;= 2.2.0), methods, graphics, startupmsg, sfsmisc, SweaveListingUtils</td>
 </tr>
 <tr>
   <td align="left"> LazyLoad: </td>  <td align="left"> yes</td>
+</tr>
+<tr>
+  <td align="left"> License: </td>  <td align="left"> LGPL-3</td>
+</tr>
+<tr>
+  <td align="left"> License: </td>  <td align="left"> LGPL-3</td>
 </tr>
 <tr>
   <td align="left"> License: </td>  <td align="left"> GPL (version 2 or later)</td>
@@ -147,59 +150,65 @@ which are all now available analytically.<br>
 (see Parameter classes).
 </p>
 <pre>
+[*]: there is a generating function with the same name
 
+##########################
 Distribution classes
+##########################
 slots: [&lt;name&gt;(&lt;class&gt;)] 
 img(rSpace), param(OptionalParameter),
 r(function), d(OptionalFunction), p(OptionalFunction), q(OptionalFunction),
-.withSim(logical), .withArith(logical), .logExact(logical), .lowerExact(logical)
+.withSim(logical), .withArith(logical), .logExact(logical), .lowerExact(logical),
+Symmetry(DistributionSymmetry)
 
 
 "Distribution"
 |&gt;"UnivariateDistribution"
-|&gt;|&gt;"UnivarMixingDistribution"
-|&gt;|&gt;|&gt;"UnivarLebDecDistribution"
+|&gt;|&gt;"UnivarMixingDistribution"            [*]
+|&gt;|&gt;|&gt;"UnivarLebDecDistribution"          [*]
 |&gt;|&gt;|&gt;|&gt;"AffLinUnivarLebDecDistribution"
-|&gt;|&gt;|&gt;"CompoundDistribution"
-|&gt;|&gt;"AbscontDistribution"
+|&gt;|&gt;|&gt;"CompoundDistribution"              [*]
+|&gt;|&gt;"AbscontDistribution"                 [*]
 |&gt;|&gt;|&gt;"AffLinAbscontDistribution"
-|&gt;|&gt;|&gt;"Arcsine"
-|&gt;|&gt;|&gt;"Beta"
-|&gt;|&gt;|&gt;"Cauchy"
+|&gt;|&gt;|&gt;"Arcsine"                           [*]
+|&gt;|&gt;|&gt;"Beta"                              [*]
+|&gt;|&gt;|&gt;"Cauchy"                            [*]
 |&gt;|&gt;|&gt;"ExpOrGammaOrChisq" (VIRTUAL)
-|&gt;|&gt;|&gt;|&gt;"Exp"
-|&gt;|&gt;|&gt;|&gt;"Gammad"
-|&gt;|&gt;|&gt;|&gt;"Chisq"
-|&gt;|&gt;|&gt;"Fd"
-|&gt;|&gt;|&gt;"Lnorm"
-|&gt;|&gt;|&gt;"Logis"
-|&gt;|&gt;|&gt;"Norm"
-|&gt;|&gt;|&gt;"Td"
-|&gt;|&gt;|&gt;"Unif"
-|&gt;|&gt;|&gt;"Weibull"
-|&gt;|&gt;|"DiscreteDistribution"
-|&gt;|&gt;|&gt;"AffLinDiscreteDistribution"
-|&gt;|&gt;|&gt;"LatticeDistribution"
-|&gt;|&gt;|&gt;|&gt;"AffLinLatticeDistribution"
-|&gt;|&gt;|&gt;|&gt;"Binom"
-|&gt;|&gt;|&gt;|&gt;"Dirac"
-|&gt;|&gt;|&gt;|&gt;"Hyper"
-|&gt;|&gt;|&gt;|&gt;"NBinom"
-|&gt;|&gt;|&gt;|&gt;|&gt;"Geom"
-|&gt;|&gt;|&gt;|&gt;"Pois"
+|&gt;|&gt;|&gt;|&gt;"Exp"                             [*]
+|&gt;|&gt;|&gt;|&gt;"Gammad"                          [*]
+|&gt;|&gt;|&gt;|&gt;"Chisq"                           [*]
+|&gt;|&gt;|&gt;"Fd"                                [*]
+|&gt;|&gt;|&gt;"Lnorm"                             [*]
+|&gt;|&gt;|&gt;"Logis"                             [*]
+|&gt;|&gt;|&gt;"Norm"                              [*]
+|&gt;|&gt;|&gt;"Td"                                [*]
+|&gt;|&gt;|&gt;"Unif"                              [*]
+|&gt;|&gt;|&gt;"Weibull"                           [*]
+|&gt;|&gt;|"DiscreteDistribution"               [*]
+|&gt;|&gt;|&gt;"AffLinDiscreteDistribution"        
+|&gt;|&gt;|&gt;"LatticeDistribution"               [*]
+|&gt;|&gt;|&gt;|&gt;"AffLinLatticeDistribution"       
+|&gt;|&gt;|&gt;|&gt;"Binom"                           [*]
+|&gt;|&gt;|&gt;|&gt;"Dirac"                           [*]
+|&gt;|&gt;|&gt;|&gt;"Hyper"                           [*]
+|&gt;|&gt;|&gt;|&gt;"NBinom"                          [*]
+|&gt;|&gt;|&gt;|&gt;|&gt;"Geom"                          [*]
+|&gt;|&gt;|&gt;|&gt;"Pois"                            [*]
 
 "AffLinDistribution" = union ( "AffLinAbscontDistribution", 
                                "AffLinDiscreteDistribution",
                                "AffLinUnivarLebDecDistribution" )
 
 "DistrList" 
-|&gt;"UnivarDistrList"
+|&gt;"UnivarDistrList"                       [*]
 
 "AcDcLc" = union ( "AbscontDistribution", 
                    "DiscreteDistribution",
                    "UnivarLebDecDistribution" )
 
+##########################
 Parameter classes
+##########################
 
 "OptionalParameter"
 |&gt;"Parameter"
@@ -223,13 +232,50 @@ Parameter classes
 |&gt;|&gt;"UnifParameter"
 |&gt;|&gt;"WeibullParameter"
 
+##########################
 Space classes
+##########################
 
 "rSpace"
 |&gt;"EuclideanSpace"
 |&gt;|&gt;"Reals"
 |&gt;"Lattice"
 |&gt;"Naturals"
+
+##########################
+Symmetry classes
+##########################
+slots:
+type(character), SymmCenter(ANY)
+
+"Symmetry"
+|&gt;"NoSymmetry"          [*]
+|&gt;"EllipticalSymmetry"  [*] 
+|&gt;|&gt;"SphericalSymmetry" [*]
+|&gt;"DistributionSymmetry"
+|&gt;"FunctionSymmetry"
+|&gt;|&gt;"NonSymmetric"      [*]
+|&gt;|&gt;"EvenSymmetric"     [*]
+|&gt;|&gt;"OddSymmetric"      [*]
+
+list thereof
+"DistrSymmList"         [*] 
+"FunSymmList"           [*]
+
+
+##########################
+Matrix classes
+##########################
+slots:
+none
+"PosSemDefSymmMatrix" [*] is subclass of class "matrix" of package "base".
+|&gt;"PosDefSymmMatrix"  [*]
+
+##########################
+Class unions
+##########################
+"OptionalNumeric" = union("numeric", "NULL")
+"OptionalMatrix" = union("matrix","NULL")
 </pre>
 </p>
 
@@ -419,6 +465,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

@@ -1,7 +1,6 @@
 \name{InternalClassUnions}
 \docType{class}
 \alias{InternalClassUnions}
-\alias{OptionalNumeric-class}
 \alias{OptionalNumericOrMatrix-class}
 \alias{MatrixorFunction-class}
 \alias{ShowDetails-class}
@@ -22,10 +21,6 @@
 These classes are used internally to make available methods or to allow
 slots of classes to be filled with varying types. In particular
 \itemize{
-\item{\code{"OptionalNumeric"}}{may contain objects of class  \code{"numeric"}
-      or \code{"NULL"}; it is used e.g. for slot \code{nuisance} of class
-      \code{"ParamFamParameter"}, as it may or may not be present but if so
-      it has to be numeric.}
 \item{\code{"OptionalNumericOrMatrix"}}{may contain objects of class  
       \code{"OptionalNumeric"} or \code{"matrix"}; it is used e.g. for 
        slot \code{asvar} of class \code{"Estimate"}, as it may or may not be 
@@ -65,7 +60,7 @@ slots of classes to be filled with varying types. In particular
 \code{\link{MCEstimate-class}},
 \code{\link{Estimate-class}},
 \code{\link{Confint-class}},
-\code{\link{PosSemDefSymmMatrix-class}},
+\code{\link[distr]{PosSemDefSymmMatrix-class}},
 \code{\link{L2GroupParamFamily-class}},
 \code{\link{L2LocationFamily-class}},
 \code{\link{L2ScaleFamily-class}},

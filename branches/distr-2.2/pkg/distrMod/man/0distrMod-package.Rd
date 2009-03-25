@@ -17,11 +17,8 @@ maximum likelihood or minimum distance estimators for probability models.
 Package: \tab distrMod\cr
 Version: \tab 2.2\cr
 Date: \tab 2009-03-19\cr
-Depends: \tab R(>= 2.6.0), methods, startupmsg, distr(>= 2.0), distrEx(>=
-2.0), RandVar(>= 0.6.3), MASS, stats4\cr
+Depends: \tab R(>= 2.6.0), methods, startupmsg, distr(>= 2.2), distrEx(>=2.2), RandVar(>= 0.6.3), MASS, stats4\cr
 LazyLoad: \tab yes\cr
-License: \tab LGPL-3\cr
-License: \tab LGPL-3\cr
 License: \tab LGPL-3\cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
 }}
@@ -80,8 +77,6 @@ trafo(MatrixorFunction)
 ##########################
 Class unions
 ##########################
-"OptionalNumeric" = union("numeric", "NULL")
-"OptionalMatrix" = union("matrix", "NULL")
 "MatrixorFunction" = union("matrix", "OptionalFunction")
 "PrintDetails" = union("Estimate", "Confint", 
                    "PosSemDefSymmMatrix",
@@ -89,28 +84,23 @@ Class unions
 
 
 ##########################
-Symmetry classes
+Symmetry classes            (other classes moved to package "distr")
 ##########################
 slots:
 type(character), SymmCenter(ANY)
 
-"Symmetry"
-|>"NoSymmetry"          [*]
-|>"EllipticalSymmetry"  [*] 
-|>|>"SphericalSymmetry" [*]
-|>"DistributionSymmetry"
+"Symmetry"   (from package "distr")
 |>"FunctionSymmetry"
 |>|>"NonSymmetric"      [*]
 |>|>"EvenSymmetric"     [*]
 |>|>"OddSymmetric"      [*]
 
 list thereof
-"DistrSymmList"         [*] 
 "FunSymmList"           [*]
 
 
 ##########################
-Matrix classes
+Matrix classes              (moved to package "distr")
 ##########################
 slots:
 none

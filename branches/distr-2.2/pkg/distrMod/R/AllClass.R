@@ -39,9 +39,6 @@ QuadFormNorm <- function(x, A) sqrt(colSums(x*(A %*% x)))
 ##
 ################################
 
-### from Matthias' thesis / ROptEst
-## optional numeric
-setClassUnion("OptionalNumeric", c("numeric", "NULL"))
 
 ## matrix or function or NULL -- a class for trafo's
 setClassUnion("MatrixorFunction", c("matrix", "OptionalFunction"))
@@ -54,56 +51,6 @@ setClassUnion("OptionalNumericOrMatrix", c("OptionalNumeric", "matrix"))
 ##
 ################################
 ### from Matthias' thesis / ROptEst
-## positive definite, symmetric matrices with finite entries
-setClass("PosSemDefSymmMatrix", contains = "matrix",
-            prototype = prototype(matrix(1)),
-            validity = function(object){
-                if(nrow(object) != ncol(object))
-                    stop("no square matrix")
-                if(any(!is.finite(object)))
-                    stop("inifinite or missing values in matrix")
-                if(!isTRUE(all.equal(object, t(object), .Machine$double.eps^0.5,
-                                     check.attributes = FALSE)))
-                    stop("matrix is not symmetric")
-                if(!all(eigen(object)$values > -100*.Machine$double.eps))
-                   stop("matrix is (numerically) not positive semi - definite")
-               return(TRUE)
-            })
-
-## positive definite, symmetric matrices with finite entries
-setClass("PosDefSymmMatrix", contains = "PosSemDefSymmMatrix",
-            validity = function(object){
-               if(!all(eigen(object)$values > 100*.Machine$double.eps))
-                   stop("matrix is (numerically) not positive definite")
-               valid <- getValidity(getClass("PosSemDefSymmMatrix"))
-               valid(as(object, "PosSemDefSymmMatrix"))
-               return(TRUE)
-            })
-
-### from Matthias' thesis / ROptEst
-## class of symmetries
-setClass("Symmetry", representation(type = "character",
-                                    SymmCenter = "ANY"),
-                     contains = "VIRTUAL")
-
-### from Matthias' thesis / ROptEst
-## symmetry of distributions
-setClass("DistributionSymmetry", contains = c("Symmetry", "VIRTUAL"))
-
-## no symmetry
-setClass("NoSymmetry", contains = "DistributionSymmetry",
-            prototype = prototype(type = "non-symmetric distribution",
-                                  SymmCenter = NULL))
-
-## elliptical symmetry
-setClass("EllipticalSymmetry", contains = "DistributionSymmetry",
-            prototype = prototype(type = "elliptically symmetric distribution",
-                                  SymmCenter = numeric(0)))
-
-## spherical symmetry
-setClass("SphericalSymmetry", contains = "EllipticalSymmetry",
-            prototype = prototype(type = "spherically symmetric distribution",
-                                  SymmCenter = numeric(0)))
 
 ## symmetry of functions
 setClass("FunctionSymmetry", contains = c("Symmetry", "VIRTUAL"))
@@ -123,17 +70,6 @@ setClass("OddSymmetric", contains = "FunctionSymmetry",
             prototype = prototype(type = "odd function",
                                   SymmCenter = numeric(0)))
 
-## list of symmetry types
-setClass(Class = "DistrSymmList",
-            prototype = prototype(list(new("NoSymmetry"))),
-            contains = "list",
-            validity = function(object){
-                nrvalues <- length(object)
-                for(i in 1:nrvalues)
-                    if(!is(object[[i]], "DistributionSymmetry"))
-                        stop("element ", i, " is no 'DistributionSymmetry'")
-                return(TRUE)
-            })
 
 ## list of symmetry types
 setClass(Class = "FunSymmList",

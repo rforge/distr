@@ -36,6 +36,7 @@
 <param name="keyword" value="R:   E,UnivariateCondDistribution,function,numeric-method">
 <param name="keyword" value="R:   E,AbscontCondDistribution,function,numeric-method">
 <param name="keyword" value="R:   E,DiscreteCondDistribution,function,numeric-method">
+<param name="keyword" value="R:   E,Arcsine,missing,missing-method">
 <param name="keyword" value="R:   E,Beta,missing,missing-method">
 <param name="keyword" value="R:   E,Binom,missing,missing-method">
 <param name="keyword" value="R:   E,Cauchy,missing,missing-method">
@@ -46,17 +47,17 @@
 <param name="keyword" value="R:   E,Fd,missing,missing-method">
 <param name="keyword" value="R:   E,Gammad,missing,missing-method">
 <param name="keyword" value="R:   E,Geom,missing,missing-method">
+<param name="keyword" value="R:   E,Gumbel,missing,missing-method">
 <param name="keyword" value="R:   E,Hyper,missing,missing-method">
 <param name="keyword" value="R:   E,Logis,missing,missing-method">
 <param name="keyword" value="R:   E,Lnorm,missing,missing-method">
 <param name="keyword" value="R:   E,Nbinom,missing,missing-method">
 <param name="keyword" value="R:   E,Norm,missing,missing-method">
+<param name="keyword" value="R:   E,Pareto,missing,missing-method">
 <param name="keyword" value="R:   E,Pois,missing,missing-method">
 <param name="keyword" value="R:   E,Td,missing,missing-method">
 <param name="keyword" value="R:   E,Unif,missing,missing-method">
 <param name="keyword" value="R:   E,Weibull,missing,missing-method">
-<param name="keyword" value="R:   E,Arcsine,missing,missing-method">
-<param name="keyword" value="R:   E,Pareto,missing,missing-method">
 <param name="keyword" value=" Generic Function for the Computation of (Conditional) Expectations">
 </object>
 
@@ -78,15 +79,18 @@ E(object, fun, cond, ...)
 
 ## S4 method for signature 'UnivariateDistribution,
 ##   missing, missing':
-E(object, Nsim = getdistrExOption("MCIterations"), ...)
+E(object, 
+             low = NULL, upp = NULL, Nsim = getdistrExOption("MCIterations"), ...)
 
 ## S4 method for signature 'UnivariateDistribution,
 ##   function, missing':
-E(object, fun, useApply = TRUE, Nsim = getdistrExOption("MCIterations"), ...)
+E(object, fun, 
+        useApply = TRUE, low = NULL, upp = NULL,  Nsim = getdistrExOption("MCIterations"), ...)
 
 ## S4 method for signature 'AbscontDistribution, function,
 ##   missing':
 E(object, fun,  useApply = TRUE,
+             low = NULL, upp = NULL, 
              rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
@@ -94,50 +98,59 @@ E(object, fun,  useApply = TRUE,
 
 ## S4 method for signature 'DiscreteDistribution, function,
 ##   missing':
-E(object, fun, useApply = TRUE, ...)
+E(object, fun, useApply = TRUE, 
+             low = NULL, upp = NULL, ...)
 
 ## S4 method for signature 'AffLinDistribution, missing,
 ##   missing':
-E(object,...)
+E(object, low = NULL, upp = NULL, ...)
 
 ## S4 method for signature 'AffLinUnivarLebDecDistribution,
 ##   missing, missing':
-E(object,...)
+E(object, low = NULL, upp = NULL, ...)
 
 ## S4 method for signature 'MultivariateDistribution,
 ##   missing, missing':
-E(object, Nsim = getdistrExOption("MCIterations"), ...)
+E(object, 
+             Nsim = getdistrExOption("MCIterations"), ...)
 ## S4 method for signature 'MultivariateDistribution,
 ##   function, missing':
 E(object, fun, useApply = TRUE, 
-              Nsim = getdistrExOption("MCIterations"), ...)
+             Nsim = getdistrExOption("MCIterations"), ...)
+
+## S4 method for signature 'DiscreteMVDistribution,
+##   missing, missing':
+E(object, useApply = TRUE, ...)
 
 ## S4 method for signature 'DiscreteMVDistribution,
 ##   function, missing':
-E(object, fun, useApply = TRUE, ...)
+E(object, fun, 
+             useApply = TRUE, ...)
 
 ## S4 method for signature 'AbscontCondDistribution,
 ##   missing, numeric':
 E(object, cond, useApply = TRUE,
+             low = NULL, upp = NULL, 
              rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrExOption("IQR.fac"), ...)
+             IQR.fac = getdistrExOption("IQR.fac"), low = NULL, upp = NULL, ...)
 
 ## S4 method for signature 'DiscreteCondDistribution,
 ##   missing, numeric':
-E(object, cond, useApply = TRUE)
+E(object, cond, useApply = TRUE,
+             low, upp)
 
 ## S4 method for signature 'UnivariateCondDistribution,
 ##   function, numeric':
 E(object, fun, cond, 
-              withCond = FALSE, useApply = TRUE, 
+              withCond = FALSE, useApply = TRUE, low = NULL, upp = NULL,
               Nsim = getdistrExOption("MCIterations"), ...)
 
 ## S4 method for signature 'AbscontCondDistribution,
 ##   function, numeric':
 E(object, fun, cond, 
-               withCond = FALSE, useApply = TRUE,
+               withCond = FALSE, useApply = TRUE, low = NULL, upp = NULL,
              rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
@@ -147,16 +160,16 @@ E(object, fun, cond,
 ## S4 method for signature 'DiscreteCondDistribution,
 ##   function, numeric':
 E(object, fun, cond, 
-             withCond = FALSE, useApply = TRUE, ...)
+             withCond = FALSE, useApply = TRUE, low = NULL, upp = NULL,...)
 
 ## S4 method for signature 'DiscreteCondDistribution,
 ##   function, numeric':
 E(object, fun, cond, 
-             withCond = FALSE, useApply = TRUE, ...)
+             withCond = FALSE, useApply = TRUE, low = NULL, upp = NULL,...)
              
 ## S4 method for signature 'UnivarLebDecDistribution,
 ##   missing, missing':
-E(object,  
+E(object, low = NULL, upp = NULL,  
              rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
@@ -164,77 +177,80 @@ E(object,
 ## S4 method for signature 'UnivarLebDecDistribution,
 ##   function, missing':
 E(object, fun, 
-             useApply = TRUE, rel.tol= getdistrExOption("ErelativeTolerance"), 
+             useApply = TRUE, low = NULL, upp = NULL, rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
              IQR.fac = getdistrExOption("IQR.fac"), ... )
 ## S4 method for signature 'UnivarLebDecDistribution,
 ##   missing, ANY':
 E(object, cond, 
-             rel.tol= getdistrExOption("ErelativeTolerance"), 
+             low = NULL, upp = NULL, rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
              IQR.fac = getdistrExOption("IQR.fac"), ... )
 ## S4 method for signature 'UnivarLebDecDistribution,
 ##   function, ANY':
 E(object, fun, cond, 
-             useApply = TRUE, rel.tol= getdistrExOption("ErelativeTolerance"), 
+             useApply = TRUE, low = NULL, upp = NULL,
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
              IQR.fac = getdistrExOption("IQR.fac"), ... )
 
 ## S4 method for signature 'AcDcLcDistribution, ANY, ANY':
 E(object, fun, cond, 
-             rel.tol= getdistrExOption("ErelativeTolerance"), 
+             low = NULL, upp = NULL, rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
              IQR.fac = getdistrExOption("IQR.fac"), ... )
 ## S4 method for signature 'CompoundDistribution, missing,
 ##   missing':
-E(object, ...)
+E(object, low = NULL, upp = NULL, ...)
 
-## S4 method for signature 'Beta, missing, missing':
-E(object, ...)
-## S4 method for signature 'Binom, missing, missing':
-E(object, ...)
-## S4 method for signature 'Cauchy, missing, missing':
-E(object, ...)
-## S4 method for signature 'Chisq, missing, missing':
-E(object, ...)
-## S4 method for signature 'Dirac, missing, missing':
-E(object, ...)
-## S4 method for signature 'DExp, missing, missing':
-E(object, ...)
-## S4 method for signature 'Exp, missing, missing':
-E(object, ...)
-## S4 method for signature 'Fd, missing, missing':
-E(object, ...)
-## S4 method for signature 'Gammad, missing, missing':
-E(object, ...)
-## S4 method for signature 'Geom, missing, missing':
-E(object, ...)
-## S4 method for signature 'Hyper, missing, missing':
-E(object, ...)
-## S4 method for signature 'Logis, missing, missing':
-E(object, ...)
-## S4 method for signature 'Lnorm, missing, missing':
-E(object, ...)
-## S4 method for signature 'Nbinom, missing, missing':
-E(object, ...)
-## S4 method for signature 'Norm, missing, missing':
-E(object, ...)
-## S4 method for signature 'Pois, missing, missing':
-E(object, ...)
-## S4 method for signature 'Unif, missing, missing':
-E(object, ...)
-## S4 method for signature 'Td, missing, missing':
-E(object, ...)
-## S4 method for signature 'Weibull, missing, missing':
-E(object, ...)
 ## S4 method for signature 'Arcsine, missing, missing':
-E(object, ...)
+E(object, low = NULL, upp = NULL, ...)
+## S4 method for signature 'Beta, missing, missing':
+E(object, low = NULL, upp = NULL, ...)
+## S4 method for signature 'Binom, missing, missing':
+E(object, low = NULL, upp = NULL, ...)
+## S4 method for signature 'Cauchy, missing, missing':
+E(object, low = NULL, upp = NULL, ...)
+## S4 method for signature 'Chisq, missing, missing':
+E(object, low = NULL, upp = NULL, ...)
+## S4 method for signature 'Dirac, missing, missing':
+E(object, low = NULL, upp = NULL, ...)
+## S4 method for signature 'DExp, missing, missing':
+E(object, low = NULL, upp = NULL, ...)
+## S4 method for signature 'Exp, missing, missing':
+E(object, low = NULL, upp = NULL, ...)
+## S4 method for signature 'Fd, missing, missing':
+E(object, low = NULL, upp = NULL, ...)
+## S4 method for signature 'Gammad, missing, missing':
+E(object, low = NULL, upp = NULL, ...)
+## S4 method for signature 'Geom, missing, missing':
+E(object, low = NULL, upp = NULL, ...)
+## S4 method for signature 'Gumbel, missing, missing':
+E(object, low = NULL, upp = NULL, ...)
+## S4 method for signature 'Hyper, missing, missing':
+E(object, low = NULL, upp = NULL, ...)
+## S4 method for signature 'Logis, missing, missing':
+E(object, low = NULL, upp = NULL, ...)
+## S4 method for signature 'Lnorm, missing, missing':
+E(object, low = NULL, upp = NULL, ...)
+## S4 method for signature 'Nbinom, missing, missing':
+E(object, low = NULL, upp = NULL, ...)
+## S4 method for signature 'Norm, missing, missing':
+E(object, low = NULL, upp = NULL, ...)
 ## S4 method for signature 'Pareto, missing, missing':
-E(object)
+E(object, low = NULL, upp = NULL, ...)
+## S4 method for signature 'Pois, missing, missing':
+E(object, low = NULL, upp = NULL, ...)
+## S4 method for signature 'Unif, missing, missing':
+E(object, low = NULL, upp = NULL, ...)
+## S4 method for signature 'Td, missing, missing':
+E(object, low = NULL, upp = NULL, ...)
+## S4 method for signature 'Weibull, missing, missing':
+E(object, low = NULL, upp = NULL, ...)
 
 </pre>
 
@@ -259,6 +275,12 @@ number of MC simulations used to determine the expectation. </td></tr>
 <tr valign="top"><td><code>rel.tol</code></td>
 <td>
 relative tolerance for <code>distrExIntegrate</code>.</td></tr>
+<tr valign="top"><td><code>low</code></td>
+<td>
+lower bound of integration range.</td></tr>
+<tr valign="top"><td><code>upp</code></td>
+<td>
+upper bound of integration range.</td></tr>
 <tr valign="top"><td><code>lowerTruncQuantile</code></td>
 <td>
 lower quantile for quantile based integration range.</td></tr>
@@ -285,7 +307,13 @@ logical: is <code>cond</code> in the argument list of <code>fun</code>. </td></t
 
 <p>
 The precision of the computations can be controlled via 
-certain global options; cf. <code><a href="distrExOptions.html">distrExOptions</a></code>.
+certain global options; cf. <code><a href="distrExOptions.html">distrExOptions</a></code>. 
+Also note that arguments <code>low</code> and <code>upp</code> should be given as
+named arguments in order to prevent them to be matched by arguments
+<code>fun</code> or <code>cond</code>. Also the result, when arguments 
+<code>low</code> or <code>upp</code> is given, is the <EM>unconditional value</EM> of the
+expectation; no conditioning with respect to <code>low &lt;= object &lt;= upp</code>
+is done.
 </p>
 
 
@@ -402,6 +430,7 @@ class <code>UnivariateDistribution</code>) the formula
 </dd>
 
 
+<dt>object = "Arcsine", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt>object = "Beta", fun = "missing", cond = "missing":</dt><dd>for noncentrality 0 exact evaluation using explicit expressions.</dd>
 <dt>object = "Binom", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt>object = "Cauchy", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
@@ -411,18 +440,18 @@ class <code>UnivariateDistribution</code>) the formula
 <dt>object = "Exp", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt>object = "Fd", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt>object = "Gammad", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt>object = "Gumbel", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt>object = "Geom", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt>object = "Hyper", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt>object = "Logis", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt>object = "Lnorm", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt>object = "Nbinom", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt>object = "Norm", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt>object = "Pareto", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt>object = "Pois", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt>object = "Unif", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt>object = "Td", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt>object = "Weibull", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
-<dt>object = "Arcsine", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
-<dt>object = "Pareto", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
 </dl>
 
 <h3>Author(s)</h3>
@@ -472,6 +501,22 @@ E(Norm(mean=1), fun = function(x){x^2})
 E(D1, function(x, cond){cond*x^2}, cond = 2, withCond = TRUE, useApply = FALSE)
 E(Norm(mean=2), function(x){2*x^2})
 
+E(as(Norm(mean=2),"AbscontDistribution"))
+### somewhat less accurate:
+E(as(Norm(mean=2),"AbscontDistribution"), 
+     lowerTruncQuantil=1e-4,upperTruncQuantil=1e-4, IQR.fac= 4)
+### even less accurate:
+E(as(Norm(mean=2),"AbscontDistribution"), 
+     lowerTruncQuantil=1e-2,upperTruncQuantil=1e-2, IQR.fac= 4)
+### no good idea, but just as an example:
+E(as(Norm(mean=2),"AbscontDistribution"), 
+     lowerTruncQuantil=1e-2,upperTruncQuantil=1e-2, IQR.fac= .1)
+
+### truncation of integration range; see also m1df...
+E(Norm(mean=2), low=2,upp=4)
+
+E(Cauchy())
+E(Cauchy(),upp=3,low=-2)
 # some Lebesgue decomposed distribution 
 mymix &lt;- UnivarLebDecDistribution(acPart = Norm(), discretePart = Binom(4,.4),
          acWeight = 0.4)
@@ -489,6 +534,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center">[Package <em>distrEx</em> version 2.1 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>distrEx</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

@@ -13,7 +13,8 @@ AbscontDistribution <- function(r = NULL, d = NULL, p = NULL, q = NULL,
                    withStand = FALSE,
                    ngrid = getdistrOption("DefaultNrGridPoints"),
                    ep = getdistrOption("TruncQuantile"),
-                   e = getdistrOption("RtoDPQ.e")
+                   e = getdistrOption("RtoDPQ.e"),
+                   Symmetry = NoSymmetry() 
                   )
 { if(missing(r) && missing(d) && missing(p) && missing(q))
     stop("At least one of arg's r,d,p,q must be given")
@@ -215,7 +216,8 @@ AbscontDistribution <- function(r = NULL, d = NULL, p = NULL, q = NULL,
   }
   obj <- new("AbscontDistribution", r = r, d = d1, p = p, q = q, 
       gaps = gaps, param = param, img = img, .withSim = wS,
-      .withArith = wA, .lowerExact = .lowerExact, .logExact = .logExact)
+      .withArith = wA, .lowerExact = .lowerExact, .logExact = .logExact,
+      Symmetry = Symmetry)
 
   if(is.null(gaps) && withgaps) setgaps(obj)
   if(!is.null(obj@gaps)) 
@@ -339,6 +341,10 @@ function(e1,e2){
 
             rm(d2, dpe1,dpe2, ftpe1,ftpe2)
             rm(h, px.l, px.u, rfun, dfun, qfun, pfun, upper, lower)
+            if(is(e1@Symmetry,"SphericalSymmetry")&& 
+               is(e2@Symmetry,"SphericalSymmetry"))
+               object@Symmetry <- SphericalSymmetry(SymmCenter(e1@Symmetry)+
+                                                     SymmCenter(e2@Symmetry))   
             object
           })
 
@@ -383,16 +389,31 @@ setMethod("*", c("AbscontDistribution","numeric"),
           function(e1, e2) {Distr <-  .multm(e1,e2, "AbscontDistribution")                               
                             if(is(Distr, "AffLinDistribution"))
                                  Distr@X0 <- e1
+                            if(is(e1@Symmetry,"SphericalSymmetry"))
+                               Distr@Symmetry <- 
+                                 SphericalSymmetry(SymmCenter(e1@Symmetry)*e2)
+
                             Distr})
 setMethod("+", c("AbscontDistribution","numeric"),
            function(e1, e2) {Distr <-  .plusm(e1,e2, "AbscontDistribution")                               
                             if(is(Distr, "AffLinDistribution"))
                                  Distr@X0 <- e1
+                            if(is(e1@Symmetry,"SphericalSymmetry"))
+                               Distr@Symmetry <- 
+                                 SphericalSymmetry(SymmCenter(e1@Symmetry)+e2)
                             Distr})                            
 setMethod("*", c("AffLinAbscontDistribution","numeric"),
-          function(e1, e2) .multm(e1,e2, "AffLinAbscontDistribution"))
+          function(e1, e2){Distr <-  .multm(e1,e2, "AffLinAbscontDistribution")
+                           if(is(e1@Symmetry,"SphericalSymmetry"))
+                               Distr@Symmetry <- 
+                                 SphericalSymmetry(SymmCenter(e1@Symmetry)*e2)
+                           Distr                         })
 setMethod("+", c("AffLinAbscontDistribution","numeric"),
-           function(e1, e2) .plusm(e1,e2, "AffLinAbscontDistribution"))
+           function(e1, e2){Distr <-  .plusm(e1,e2, "AffLinAbscontDistribution")
+                            if(is(e1@Symmetry,"SphericalSymmetry"))
+                               Distr@Symmetry <- 
+                                 SphericalSymmetry(SymmCenter(e1@Symmetry)+e2)
+                            Distr                         })
 
 ## Group Math for absolutly continuous distributions
 setMethod("Math", "AbscontDistribution",

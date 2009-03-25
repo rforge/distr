@@ -55,6 +55,13 @@ UnivarMixingDistribution <- function(..., Dlist, mixCoeff,
          .withArith = .withArith,.lowerExact =.lowerExact, gaps = gaps, 
          support = support)
 
+    if (all( as.logical(lapply(mixDistr, function(x) is(x@Symmetry,"SphericalSymmetry"))))){
+       sc <- SymmCenter(mixDistr[[1]]@Symmetry) 
+       if (all( as.logical(lapply(mixDistr, function(x) .isEqual(SymmCenter(x@Symmetry),sc)))))
+           obj@Symmetry <- SphericalSymmetry(sc)    
+    }
+    
+    
     if (withSimplify)
         obj <- simplifyD(obj)
 
@@ -92,3 +99,26 @@ setMethod("q.r", signature(object = "UnivarMixingDistribution"),
                 else
                     q(object)
             })
+
+#------------------------------------------------------------------------
+# new accessor methods
+#------------------------------------------------------------------------
+
+setMethod(".lowerExact", "UnivarMixingDistribution", function(object){ 
+             er <- is(try(slot(object, ".lowerExact"), silent = TRUE), "try-error")
+             if(er){ object0 <- conv2NewVersion(object)
+                    eval.parent(substitute(object<-object0))
+                    return(invisible(NULL))}
+             object@.lowerExact})
+setMethod(".logExact", "UnivarMixingDistribution", function(object){
+             er <- is(try(slot(object, ".logExact"), silent = TRUE), "try-error")
+             if(er){ object0 <- conv2NewVersion(object)
+                    eval.parent(substitute(object<-object0))
+                    return(invisible(NULL))}
+             object@.logExact})
+setMethod("Symmetry", "UnivarMixingDistribution", function(object){
+             er <- is(try(slot(object, "Symmetry"), silent = TRUE), "try-error")
+             if(er){ object0 <- conv2NewVersion(object)
+                    eval.parent(substitute(object<-object0))
+                    return(invisible(NULL))}
+             object@Symmetry})

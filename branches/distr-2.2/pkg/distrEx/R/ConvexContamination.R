@@ -70,12 +70,19 @@ setMethod("ConvexContamination", signature(e1 = "AbscontDistribution",
                                    return(y)},
                             list(m1 = m1, m2 = m2, pfun = pfun)) 
     
+        Symmetry <- NoSymmetry()
+        if(is(e1@Symmetry,"SphericalSymmetry")&& 
+           is(e2@Symmetry,"SphericalSymmetry"))
+           if(distr:::.isEqual(SymmCenter(e1@Symmetry),SymmCenter(e2@Symmetry)))
+              Symmetry <- SphericalSymmetry(SymmCenter(e1@Symmetry))   
+
         return(new("AbscontDistribution", r = rfun, d = dfun, p = pfun, 
                     q = qfun,  
                     .withSim = e1@.withSim|e2@.withSim, 
                     .withArith = e1@.withArith|e2@.withArith,
                     .logExact = FALSE, 
-                    .lowerExact = e1@.lowerExact & e2@.lowerExact))
+                    .lowerExact = e1@.lowerExact & e2@.lowerExact,
+                    Symmetry = Symmetry))
     })
 
 setMethod("ConvexContamination", signature(e1 = "DiscreteDistribution",
@@ -147,12 +154,19 @@ setMethod("ConvexContamination", signature(e1 = "DiscreteDistribution",
                           return(q0)
                           }        
     
+        Symmetry <- NoSymmetry()
+        if(is(e1@Symmetry,"SphericalSymmetry")&& 
+           is(e2@Symmetry,"SphericalSymmetry"))
+           if(distr:::.isEqual(SymmCenter(e1@Symmetry),SymmCenter(e2@Symmetry)))
+              Symmetry <- SphericalSymmetry(SymmCenter(e1@Symmetry))   
+
         return(new("DiscreteDistribution", r = rfun, d = dfun, p = pfun, q = qfun, 
                     support = supp,  
                     .withSim = e1@.withSim|e2@.withSim, 
                     .withArith = e1@.withArith|e2@.withArith,
                     .logExact = FALSE, 
-                    .lowerExact = e1@.lowerExact & e2@.lowerExact))
+                    .lowerExact = e1@.lowerExact & e2@.lowerExact,
+                    Symmetry = Symmetry))
     })
 
 setMethod("ConvexContamination", signature(e1 = "UnivariateDistribution",
@@ -213,12 +227,19 @@ setMethod("ConvexContamination", signature(e1 = "UnivariateDistribution",
                                    return(y)},
                             list(m1 = m1, m2 = m2, pfun = pfun)) 
     
+        Symmetry <- NoSymmetry()
+        if(is(e1@Symmetry,"SphericalSymmetry")&& 
+           is(e2@Symmetry,"SphericalSymmetry"))
+           if(distr:::.isEqual(SymmCenter(e1@Symmetry),SymmCenter(e2@Symmetry)))
+              Symmetry <- SphericalSymmetry(SymmCenter(e1@Symmetry))   
+
         return(new("UnivariateDistribution", img = img(e1), r = rfun, d = NULL, 
                     p = pfun, q = qfun, 
                     .withSim = e1@.withSim|e2@.withSim, 
                     .withArith = e1@.withArith|e2@.withArith,
                     .logExact = FALSE, 
-                    .lowerExact = e1@.lowerExact & e2@.lowerExact ))
+                    .lowerExact = e1@.lowerExact & e2@.lowerExact,
+                    Symmetry = Symmetry ))
     })
 
 

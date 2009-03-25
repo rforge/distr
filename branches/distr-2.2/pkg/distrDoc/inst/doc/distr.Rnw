@@ -2463,6 +2463,16 @@ global ``constants'' to be used within the package. These include
                          default value: \code{FALSE}
   \item \code{DistrCollapse.Unique.Warn}: logical;  
   shall a warning be issued upon collapsing? default value:  \code{TRUE}
+\item \code{use.generalized.inverse.by.default} %
+which is a logical variable 
+giving the default value for argument \code{generalized} of our
+method \code{solve} in package \pkg{distrMod}. This argument decides whether
+our method \code{solve} is to use generalized inverses if the original 
+\code{solve}-method from package \pkg{base} fails; if the option is set to 
+\code{FALSE}, in case of failure, and unless argument \code{generalized} 
+is not explicitely set to \code{TRUE}, \code{solve} will throw an error as is 
+the \pkg{base}-method behavior. The default value of thie option is \code{TRUE}.  
+%
 \end{itemize}
 All current options may be inspected by \code{distroptions()}  and modified by
  \linebreak[4] \code{distroptions("<options-name>"=<value>)}.\\
@@ -2539,16 +2549,6 @@ Just as with to the \code{distroptions}/\code{getdistrOption} commands you
 may specify certain global output options to be used within the package with 
 \code{distrModoptions}/\linebreak[4] \code{getdistrModOption}. These include
 \begin{itemize}
-%
-\item \code{use.generalized.inverse.by.default} %
-which is a logical variable 
-giving the default value for argument \code{generalized} of our
-method \code{solve} in package \pkg{distrMod}. This argument decides whether
-our method \code{solve} is to use generalized inverses if the original 
-\code{solve}-method from package \pkg{base} fails; if the option is set to 
-\code{FALSE}, in case of failure, and unless argument \code{generalized} 
-is not explicitely set to \code{TRUE}, \code{solve} will throw an error as is 
-the \pkg{base}-method behavior. The default value of thie option is \code{TRUE}.  
 %
   \item \code{show.details} which controls the detailedness for method 
   \code{show} for objects of classes of the \pkg{distrXXX} family of packages. Possible

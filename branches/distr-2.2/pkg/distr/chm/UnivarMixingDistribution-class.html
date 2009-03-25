@@ -20,6 +20,9 @@
 <param name="keyword" value="R:   mixDistr,UnivarMixingDistribution-method">
 <param name="keyword" value="R:   support,UnivarMixingDistribution-method">
 <param name="keyword" value="R:   gaps,UnivarMixingDistribution-method">
+<param name="keyword" value="R:   .logExact,UnivarMixingDistribution-method">
+<param name="keyword" value="R:   .lowerExact,UnivarMixingDistribution-method">
+<param name="keyword" value="R:   Symmetry,UnivarMixingDistribution-method">
 <param name="keyword" value=" Class 'UnivarMixingDistribution'">
 </object>
 
@@ -71,6 +74,8 @@ if existing (else NULL)</dd>
 log version of density, cdf, and quantile function</dd>
 <dt><code>.lowerExact</code>:</dt><dd>logical: used internally to flag the case where there are explicit formulae for the
 lower tail version of cdf and quantile function</dd>
+<dt><code>Symmetry</code>:</dt><dd>object of class <code>"DistributionSymmetry"</code>;
+used internally to avoid unnecessary calculations.</dd>
 </dl>
 
 <h3>Extends</h3>
@@ -91,6 +96,18 @@ class <code>"Distribution"</code> by class <code>"UnivariateDistribution"</code>
 <dt>mixDistr</dt><dd><code>signature(object = "UnivarMixingDistribution")</code> returns the corresponding slot</dd>
 <dt>support</dt><dd><code>signature(object = "UnivarMixingDistribution")</code> returns the corresponding slot</dd>
 <dt>gaps</dt><dd><code>signature(object = "UnivarMixingDistribution")</code> returns the corresponding slot</dd>
+<dt>.logExact</dt><dd><code>signature(object = "Distribution")</code>: returns slot 
+<code>.logExact</code> if existing; else tries to convert the object to a newer 
+version of its class by <code><a href="versionmanagement.html">conv2NewVersion</a></code> and
+returns the corresponding slot of the converted object.</dd>
+<dt>.lowerExact</dt><dd><code>signature(object = "Distribution")</code>: returns slot 
+<code>.lowerExact</code> if existing; else tries to convert the object to a 
+newer version of its class by <code><a href="versionmanagement.html">conv2NewVersion</a></code> and
+returns the corresponding slot of the converted object.</dd>
+<dt>Symmetry:</dt><dd>returns slot <code>Symmetry</code> if existing; else
+tries to convert the object to a 
+newer version of its class by <code><a href="versionmanagement.html">conv2NewVersion</a></code> and
+returns the corresponding slot of the converted object.</dd>
 </dl>
 
 <h3>Author(s)</h3>
@@ -126,6 +143,6 @@ mixDistr(mylist2)
 
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

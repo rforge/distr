@@ -10,7 +10,6 @@ options("newDevice"=TRUE)
 ## y = x + u
 ## i.e., conditioning by realizations of y
 ###############################################################################
-IntegrateTruncQuantile <- 0 # zur Integration
 
 D1 <- PrognCondDistribution(Error = Td(1))
 D2 <- PrognCondDistribution(Error = Td(3))
@@ -20,7 +19,7 @@ D5 <- PrognCondDistribution(Error = ConvexContamination(Norm(), Norm(0,9), size=
 
 y <- seq(from = 0, to = 8, length = 100)
 ## posterior mean
-f <- function(y, e1){ E(e1, function(x){x[1]}, y) }
+f <- function(y, e1){ E(e1, fun = function(x){x[1]}, cond = y) }
 
 ## dauert etwas ...
 system.time(erg1 <- sapply(y, f, D1)) # ca. 8 sec.

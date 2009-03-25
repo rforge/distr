@@ -7,6 +7,9 @@
 \alias{.lowerExact}
 \alias{.lowerExact-methods}
 \alias{.lowerExact,Distribution-method}
+\alias{Symmetry}
+\alias{Symmetry-methods}
+\alias{Symmetry,Distribution-method}
 
 \title{Class "Distribution"}
 \description{ The \code{Distribution-class} is the mother-class of 
@@ -34,6 +37,8 @@ class \code{UnivariateDistribution}.}
     \item{\code{.lowerExact}:}{logical: used internally to flag the case where 
     there are explicit formulae for the lower tail version of cdf and quantile 
     function}
+    \item{\code{Symmetry}:}{object of class \code{"DistributionSymmetry"};
+     used internally to avoid unnecessary calculations.}
   }
 }
 
@@ -57,6 +62,10 @@ class \code{UnivariateDistribution}.}
       returns the corresponding slot of the converted object.}
     \item{.lowerExact}{\code{signature(object = "Distribution")}: returns slot 
        \code{.lowerExact} if existing; else tries to convert the object to a 
+       newer version of its class by \code{\link{conv2NewVersion}} and
+     returns the corresponding slot of the converted object.}
+    \item{Symmetry:}{returns slot \code{Symmetry} if existing; else
+    tries to convert the object to a 
        newer version of its class by \code{\link{conv2NewVersion}} and
      returns the corresponding slot of the converted object.}
   }

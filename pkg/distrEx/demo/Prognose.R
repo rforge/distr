@@ -10,7 +10,6 @@ options("newDevice"=TRUE)
 ## y = x + u
 ## i.e., conditioning by realizations of y
 ###############################################################################
-IntegrateTruncQuantile <- 0 # zur Integration
 
 D1 <- PrognCondDistribution(Error = Td(1))
 D2 <- PrognCondDistribution(Error = Td(3))

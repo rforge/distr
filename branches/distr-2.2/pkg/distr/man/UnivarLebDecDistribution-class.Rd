@@ -93,12 +93,18 @@ Objects can be created by calls of the form
     \item{\code{d}:}{fixed to \code{NULL}}
     \item{\code{p}:}{Object of class \code{"function"}: cumulative distribution function}
     \item{\code{q}:}{Object of class \code{"function"}: quantile function}
-    \item{\code{.withArith}:}{logical: used internally to issue warnings as to interpretation of arithmetics}
-    \item{\code{.withSim}:}{logical: used internally to issue warnings as to accuracy}
-    \item{\code{.logExact}:}{logical: used internally to flag the case where there are explicit formulae for the
-                              log version of density, cdf, and quantile function}
-    \item{\code{.lowerExact}:}{logical: used internally to flag the case where there are explicit formulae for the
-                              lower tail version of cdf and quantile function}
+    \item{\code{.withArith}:}{logical: used internally to issue warnings as to 
+            interpretation of arithmetics}
+    \item{\code{.withSim}:}{logical: used internally to issue warnings as to 
+          accuracy}
+    \item{\code{.logExact}:}{logical: used internally to flag the case where 
+    there are explicit formulae for the log version of density, cdf, and 
+    quantile function}
+    \item{\code{.lowerExact}:}{logical: used internally to flag the case where 
+    there are explicit formulae for the lower tail version of cdf and quantile 
+    function}
+    \item{\code{Symmetry}:}{object of class \code{"DistributionSymmetry"};
+     used internally to avoid unnecessary calculations.}
     \item{\code{support}:}{numeric vector --- the support slot of the discrete part}
     \item{\code{gaps}:}{(numeric) matrix or \code{NULL}; --- the gaps slot of 
                          the absolutely continuous part}

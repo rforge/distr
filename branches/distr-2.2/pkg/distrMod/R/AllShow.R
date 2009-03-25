@@ -79,13 +79,6 @@ setMethod("show", "ParamFamParameter",
             }
         } 
     })
-setMethod("show", "Symmetry", 
-    function(object){ 
-        cat(gettextf("type of symmetry:\t%s\n", object@type))
-        if(!is.null(object@SymmCenter))
-            cat(gettext("center of symmetry:\n"))
-            print(object@SymmCenter, quote = FALSE)
-    })
 setMethod("show", "ParamFamily", 
     function(object){
         cat(gettextf("An object of class \"%s\"\n", class(object)))

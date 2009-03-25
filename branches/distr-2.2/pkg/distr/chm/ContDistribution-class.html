@@ -8,6 +8,7 @@
 <param name="keyword" value="R:   AbscontDistribution-class">
 <param name="keyword" value="R:   AffLinDistribution-class">
 <param name="keyword" value="R:   AffLinAbscontDistribution-class">
+<param name="keyword" value="R:   sqrt,AbscontDistribution-method">
 <param name="keyword" value="R:   initialize,AbscontDistribution-method">
 <param name="keyword" value="R:   initialize,AffLinAbscontDistribution-method">
 <param name="keyword" value="R:   sqrt,AbscontDistribution-method">
@@ -58,12 +59,18 @@ may be inspected by the accessor <code><a href="gap-methods.html">gaps</a>()</co
 replacement method. It may also be filled automatically by 
 <code><a href="gap-methods.html">setgaps</a>()</code>. For saved objects from earlier versions, we provide functions
 <code><a href="versionmanagement.html">isOldVersion</a></code> and <code><a href="versionmanagement.html">conv2NewVersion</a></code>.</dd>
-<dt><code>.withArith</code>:</dt><dd>logical: used internally to issue warnings as to interpretation of arithmetics</dd>
-<dt><code>.withSim</code>:</dt><dd>logical: used internally to issue warnings as to accuracy</dd>
-<dt><code>.logExact</code>:</dt><dd>logical: used internally to flag the case where there are explicit formulae for the
-log version of density, cdf, and quantile function</dd>
-<dt><code>.lowerExact</code>:</dt><dd>logical: used internally to flag the case where there are explicit formulae for the
-lower tail version of cdf and quantile function</dd>
+<dt><code>.withArith</code>:</dt><dd>logical: used internally to issue warnings as to 
+interpretation of arithmetics</dd>
+<dt><code>.withSim</code>:</dt><dd>logical: used internally to issue warnings as to 
+accuracy</dd>
+<dt><code>.logExact</code>:</dt><dd>logical: used internally to flag the case where 
+there are explicit formulae for the log version of density, cdf, and 
+quantile function</dd>
+<dt><code>.lowerExact</code>:</dt><dd>logical: used internally to flag the case where 
+there are explicit formulae for the lower tail version of cdf and quantile 
+function</dd>
+<dt><code>Symmetry</code>:</dt><dd>object of class <code>"DistributionSymmetry"</code>;
+used internally to avoid unnecessary calculations.</dd>
 </dl>
 
 <h3>Extends</h3>
@@ -83,6 +90,7 @@ Class <code>"Distribution"</code>, by class <code>"UnivariateDistribution"</code
 <code>abs</code>{<code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>abs(x)</code>.}
 <code>exp</code>{<code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>exp(x)</code>.}
 <code>sign</code>{<code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>sign(x)</code>.}
+<code>sqrt</code>{<code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>sqrt(x)</code>.}
 <code>log</code>{<code>signature(x = "AbscontDistribution")</code>:  (with optional further argument <code>base</code>, 
 defaulting to <code>exp(1)</code>) exact image distribution of <code>log(x)</code>.}
 <code>log10</code>{<code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>log10(x)</code>.}
@@ -214,6 +222,6 @@ q(A3)(.1) # The (approximated) 10 percent quantile is 0.1.
 
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

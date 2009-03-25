@@ -53,11 +53,20 @@ Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de
 <h3>See Also</h3>
 
 <p>
-<code><a href="Symmetry-class.html">Symmetry-class</a></code>, <code><a href="internalClassUnions-class.html">OptionalNumeric-class</a></code>
+<code><a onclick="findlink('distr', 'Symmetry-class.html')" style="text-decoration: underline; color: blue; cursor: hand">Symmetry-class</a></code>, <code><a onclick="findlink('distr', 'OptionalNumeric-class.html')" style="text-decoration: underline; color: blue; cursor: hand">OptionalNumeric-class</a></code>
 </p>
 
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
 
 
-<hr><div align="center">[Package <em>distrMod</em> version 2.1 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distrMod</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

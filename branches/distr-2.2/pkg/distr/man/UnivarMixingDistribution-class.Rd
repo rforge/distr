@@ -15,6 +15,9 @@
 \alias{mixDistr,UnivarMixingDistribution-method}
 \alias{support,UnivarMixingDistribution-method}
 \alias{gaps,UnivarMixingDistribution-method}
+\alias{.logExact,UnivarMixingDistribution-method}
+\alias{.lowerExact,UnivarMixingDistribution-method}
+\alias{Symmetry,UnivarMixingDistribution-method}
 
 \title{Class "UnivarMixingDistribution"}
 \description{\code{UnivarMixingDistribution}-class is a class to formalize 
@@ -50,6 +53,8 @@ Objects can be created by calls of the form
                               log version of density, cdf, and quantile function}
     \item{\code{.lowerExact}:}{logical: used internally to flag the case where there are explicit formulae for the
                               lower tail version of cdf and quantile function}
+    \item{\code{Symmetry}:}{object of class \code{"DistributionSymmetry"};
+     used internally to avoid unnecessary calculations.}
   }
 }
 \section{Extends}{
@@ -65,6 +70,18 @@ class \code{"Distribution"} by class \code{"UnivariateDistribution"}.
     \item{mixDistr}{\code{signature(object = "UnivarMixingDistribution")} returns the corresponding slot}
     \item{support}{\code{signature(object = "UnivarMixingDistribution")} returns the corresponding slot}
     \item{gaps}{\code{signature(object = "UnivarMixingDistribution")} returns the corresponding slot}
+    \item{.logExact}{\code{signature(object = "Distribution")}: returns slot 
+      \code{.logExact} if existing; else tries to convert the object to a newer 
+      version of its class by \code{\link{conv2NewVersion}} and
+      returns the corresponding slot of the converted object.}
+    \item{.lowerExact}{\code{signature(object = "Distribution")}: returns slot 
+       \code{.lowerExact} if existing; else tries to convert the object to a 
+       newer version of its class by \code{\link{conv2NewVersion}} and
+     returns the corresponding slot of the converted object.}
+    \item{Symmetry:}{returns slot \code{Symmetry} if existing; else
+    tries to convert the object to a 
+       newer version of its class by \code{\link{conv2NewVersion}} and
+     returns the corresponding slot of the converted object.}
   }
 }
 

@@ -23,12 +23,7 @@ Generates an object of class  <code>"AbscontDistribution"</code>
 <h3>Usage</h3>
 
 <pre>
-  AbscontDistribution(r)
-  AbscontDistribution(r = NULL, d)
-  AbscontDistribution(r = NULL, d = NULL, p)
-  AbscontDistribution(r = NULL, d = NULL, p = NULL, d)
-  AbscontDistribution(r, d, p, q)
-  AbscontDistribution(r = NULL, d = NULL, p = NULL, q = NULL,
+AbscontDistribution(r = NULL, d = NULL, p = NULL, q = NULL,
                    gaps = NULL, param = NULL, img = new("Reals"),
                    .withSim = FALSE, .withArith = FALSE,
                     .lowerExact = FALSE, .logExact = FALSE,
@@ -37,7 +32,8 @@ Generates an object of class  <code>"AbscontDistribution"</code>
                    withStand = FALSE,
                    ngrid = getdistrOption("DefaultNrGridPoints"),
                    ep = getdistrOption("TruncQuantile"),
-                   e = getdistrOption("RtoDPQ.e"))
+                   e = getdistrOption("RtoDPQ.e"),
+                   Symmetry = NoSymmetry())
 </pre>
 
 
@@ -110,10 +106,25 @@ part is calculated exactly, avoing a ``<code>1-.</code>''.</td></tr>
 <td>
 normally not set by the user: whether in determining slots <code>d,p,q</code>,
 we make particular use of a logarithmic representation to enhance accuracy.</td></tr>
+<tr valign="top"><td><code>Symmetry</code></td>
+<td>
+you may help <font face="Courier New,Courier" color="#666666"><b>R</b></font> in calculations if you tell it whether
+the distribution is non-symmetric (default) or symmetric with respect
+to a center; in this case use <code>Symmetry=SphericalSymmetry(center)</code>.</td></tr>
 </table>
 
 <h3>Details</h3>
 
+<p>
+Typical usages are
+<pre>
+  AbscontDistribution(r)
+  AbscontDistribution(r = NULL, d)
+  AbscontDistribution(r = NULL, d = NULL, p)
+  AbscontDistribution(r = NULL, d = NULL, p = NULL, d)
+  AbscontDistribution(r, d, p, q)
+</pre>
+</p>
 <p>
 Minimally, only one of the slots <code>r</code>, <code>d</code>, <code>p</code> or <code>q</code> needs to be given as argument.
 The other non-given slots are then reconstructed according to the following scheme:
@@ -222,6 +233,6 @@ plot(Ac &lt;- AbscontDistribution(d = function(x, log = FALSE){
 
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

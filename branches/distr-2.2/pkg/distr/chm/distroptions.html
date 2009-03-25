@@ -19,7 +19,7 @@
 <param name="keyword" value="R:   WarningSim">
 <param name="keyword" value="R:   withSweave">
 <param name="keyword" value="R:   withgaps">
-<param name="keyword" value="R:   DistributionAggregate">
+<param name="keyword" value="R:   use.generalized.inverse.by.default">
 <param name="keyword" value="R:   DistributionAggregate.Unique.Warn">
 <param name="keyword" value=" functions to change the global variables of the package &lsquo;distr&rsquo;">
 </object>
@@ -99,6 +99,14 @@ is filled automatically based on empirical evaluations via  <code>setgaps</code>
 &mdash;default <code>TRUE</code></dd>
 <dt><code>simplifyD</code></dt><dd>controls whether in the return value of arithmetic
 operations there is a call to <code>simplifyD</code> or not &mdash;default <code>TRUE</code></dd>
+<dt>use.generalized.inverse.by.default</dt><dd>logical; decides whether by default
+(i.e., if argument <code>generalized</code> of <code><a href="solve-methods.html">solve</a></code> is not explicitely
+set), <code><a href="solve-methods.html">solve</a></code> is to use generalized inverses if the original 
+<code>solve</code>-method from package <span class="pkg">base</span> fails; if the option is <code>FALSE</code>, 
+in case of failure, and unless argument <code>generalized</code> is not explicitely 
+set to <code>TRUE</code>, <code>solve</code> will throw an error as is 
+the <span class="pkg">base</span>-method behavior. The default value is <code>TRUE</code>.  
+</dd>
 <dt><code>DistrCollapse.Unique.Warn</code></dt><dd>controls whether there is a warning
 whenever collapsing occurs or when two points are collapsed by a call to
 <code>unique()</code> (default behaviour if <code>DistrCollapse</code> is <code>FALSE</code>);
@@ -150,6 +158,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

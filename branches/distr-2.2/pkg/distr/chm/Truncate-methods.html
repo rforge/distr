@@ -73,7 +73,7 @@ the corresponding distribution of the truncated random variable</p>
 <dl>
 <dt>Truncate</dt><dd><code>signature(object = "AbscontDistribution")</code>: 
 returns the distribution of <code>min(upper,max(X,lower))</code>
-conditioned to <code>lower&lt;X&lt;=upper</code>, if <code>X</code> is 
+conditioned to <code>lower&lt;=X&lt;=upper</code>, if <code>X</code> is 
 distributed according to <code>object</code>;
 if slot <code>.logExact</code> of argument <code>object</code> is <code>TRUE</code> 
 and if either there is only one-sided truncation or both truncation
@@ -91,7 +91,7 @@ the result is again of class <code>"AbscontDistribution"</code>;
 </dd>
 <dt>Truncate</dt><dd><code>signature(object = "DiscreteDistribution")</code>: 
 returns the distribution of <code>min(upper,max(X,lower))</code>
-conditioned to <code>lower&lt;X&lt;=upper</code>, if <code>X</code> is 
+conditioned to <code>lower&lt;=X&lt;=upper</code>, if <code>X</code> is 
 distributed according to <code>object</code>;
 the result is again of class <code>"DiscreteDistribution"</code></dd>
 <dt>Truncate</dt><dd><code>signature(object = "LatticeDistribution")</code>: 
@@ -103,7 +103,7 @@ else we use the corresponding <code>"DiscreteDistribution"</code> method;
 the result is again of class <code>"LatticeDistribution"</code></dd>
 <dt>Truncate</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code>: 
 returns the distribution of <code>min(upper,max(X,lower))</code>
-conditioned to <code>lower&lt;X&lt;=upper</code>, if <code>X</code> is 
+conditioned to <code>lower&lt;=X&lt;=upper</code>, if <code>X</code> is 
 distributed according to <code>object</code>;
 the result is again of class <code>"UnivarLebDecDistribution"</code></dd>
 </dl>
@@ -128,6 +128,6 @@ plot(TNG)
 
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

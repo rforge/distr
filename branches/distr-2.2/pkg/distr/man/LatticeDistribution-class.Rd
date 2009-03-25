@@ -45,21 +45,23 @@ function \code{RtoDPQ.d} then approximates the three remaining slots \code{d},
                      cumulative distribution function}
     \item{\code{q}:}{Object of class \code{"function"}: 
                      quantile function}
-    \item{\code{.withArith}:}{logical: used internally to issue warnings as to 
-                              interpretation of arithmetics}
-    \item{\code{.withSim}:}{logical: used internally to issue warnings as 
-                            to accuracy}
     \item{\code{support}:}{Object of class \code{"numeric"}: a (sorted) vector 
                            containing the support of the discrete
     density function}
     \item{\code{lattice}:}{Object of class \code{"Lattice"}: the lattice 
                            generating the support.}
-    \item{\code{.withArith}:}{logical: used internally to issue warnings as to interpretation of arithmetics}
-    \item{\code{.withSim}:}{logical: used internally to issue warnings as to accuracy}
-    \item{\code{.logExact}:}{logical: used internally to flag the case where there are explicit formulae for the
-                              log version of density, cdf, and quantile function}
-    \item{\code{.lowerExact}:}{logical: used internally to flag the case where there are explicit formulae for the
-                              lower tail version of cdf and quantile function}
+    \item{\code{.withArith}:}{logical: used internally to issue warnings as to 
+            interpretation of arithmetics}
+    \item{\code{.withSim}:}{logical: used internally to issue warnings as to 
+          accuracy}
+    \item{\code{.logExact}:}{logical: used internally to flag the case where 
+    there are explicit formulae for the log version of density, cdf, and 
+    quantile function}
+    \item{\code{.lowerExact}:}{logical: used internally to flag the case where 
+    there are explicit formulae for the lower tail version of cdf and quantile 
+    function}
+    \item{\code{Symmetry}:}{object of class \code{"DistributionSymmetry"};
+     used internally to avoid unnecessary calculations.}
   }
 }
 \section{Extends}{

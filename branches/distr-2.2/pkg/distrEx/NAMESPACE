@@ -52,3 +52,5 @@ export("distrExOptions", "getdistrExOption",
        "distrExMASK", "distrExoptions")
 export("make01","PrognCondDistribution",
        "PrognCondition")
+export("EULERMASCHERONICONSTANT","APERYCONSTANT")
+export(".getIntbounds")
