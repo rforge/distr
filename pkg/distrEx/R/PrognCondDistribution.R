@@ -15,12 +15,17 @@ PrognCondition <- function(range = EuclideanSpace()){
 
 setMethod("show", "PrognCondition",
     function(object){
-        cat(gettextf("name:\t%s\n", object@name))
-        cat("range:\t%s with dimension %s\n", object@range@name, object@range@dimension)
+        cat(gettextf("Name:\t%s\n", object@name))
+        cat(gettextf("Range:\t%s with dimension %s\n", object@range@name, 
+            object@range@dimension))
     })
 
 ## generating function
-PrognCondDistribution <- function(Regr = Norm(), Error = Norm()){
+PrognCondDistribution <- function(Regr = Norm(), Error = Norm(),
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+             IQR.fac = getdistrExOption("IQR.fac")){
     if(!is(Error, "AbscontDistribution"))
         stop("Error has to be of type 'AbscontDistribution'")
     if(!is(Regr, "AbscontDistribution"))
@@ -34,20 +39,24 @@ PrognCondDistribution <- function(Regr = Norm(), Error = Norm()){
     dxfun <- d(Regr)
     dufun <- d(Error)
     qxfun <- q(Regr)
+
+    Ib <- .getIntbounds(Error, low=-Inf, upp=Inf, lowerTruncQuantile, 
+                       upperTruncQuantile, IQR.fac)
+    low <- Ib["low"]
+    upp <- Ib["upp"]
+
+
     eps <-  getdistrOption("TruncQuantile")
     dfun <- function(x, cond, log = FALSE){}
     body(dfun) <- substitute({ dx <- dxfun; du <- dufun; qx <- qxfun
                                dy <- function(cond){ 
-                                  ix <- integrate(f = function(x, cond){ 
+                                  ix <- distrExIntegrate(f = function(x, cond){ 
                                                        dx <- dxfun 
                                                        du <- dufun
                                                        dx(x)*du(cond-x) }, 
-                                        lower = qx(eps), 
-                                        upper =  ifelse( "lower.tail" %in% 
-                                                             names(formals(qx)),
-                                                    qx(eps, lower.tail = FALSE), 
-                                                    qx(1-eps)), 
-                                        cond = cond)$value 
+                                        lower = low, 
+                                        upper = upp, rel.tol=rel.tol,
+                                        cond = cond)
                                   return(ix)
                                   }
                                if ("log" %in% names(formals(dx)) && log)
@@ -58,25 +67,22 @@ PrognCondDistribution <- function(Regr = Norm(), Error = Norm()){
                                else d0 <- dx(x)*du(cond-x)/dy(cond)
                                return(d0)
                               },
-                        list(dxfun = dxfun, dufun = dufun, qxfun = qxfun, 
-                             eps = eps))
+                        list(dxfun = dxfun, dufun = dufun, qxfun = qxfun))
  
     pfun <- function(q, cond, lower.tail = TRUE, log.p = FALSE){} 
 
     body(pfun) <- substitute({ d <- dfun; qx <- qxfun
                                if (lower.tail)
-                               p0 <- integrate(f = d, lower = qx(eps), 
-                                      upper = q, cond = cond)$value
+                               p0 <- distrExIntegrate(f = d, lower = low, 
+                                      upper = q, rel.tol = rel.tol, 
+                                      cond = cond)
                                else 
-                               p0 <- integrate(f = d, lower = q, 
-                                      upper = ifelse( "lower.tail" %in% 
-                                                             names(formals(qx)),
-                                                    qx(eps, lower.tail = FALSE), 
-                                                    qx(1-eps)),
-                                      cond = cond)$value
+                               p0 <- distrExIntegrate(f = d, lower = q, 
+                                      upper = upp, rel.tol = rel.tol,
+                                      cond = cond)
                                if (log.p) p0 <- log(p0)
                                },
-                        list(dfun = dfun, qxfun = qxfun, eps = eps))
+                        list(dfun = dfun, qxfun = qxfun))
 
     qufun <- q(Error)
     qfun <- function(p, cond, lower.tail = TRUE, log.p = FALSE){}

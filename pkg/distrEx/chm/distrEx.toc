@@ -1251,7 +1251,7 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="PrognCondDistribution">
-<param name="Local" value="PrognCondDistribution-class.html">
+<param name="Local" value="PrognCondDistribution.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="PrognCondDistribution-class">
@@ -1725,6 +1725,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for Pareto-class">
 <param name="Local" value="Pareto.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for PrognCondDistribution-class">
+<param name="Local" value="PrognCondDistribution.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for the conditional distribution of a linear regression model.">

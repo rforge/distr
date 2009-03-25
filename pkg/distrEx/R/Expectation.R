@@ -1,3 +1,19 @@
+## Helper function:
+
+.getIntbounds <- function(object, low, upp, lowTQ, uppTQ, IQR.fac, ...){
+        qx <- q(object)
+        low0 <- qx(lowTQ, lower.tail = TRUE, ...) 
+        upp0 <- ifelse( "lower.tail" %in% names(formals(qx)),
+                       qx(uppTQ, lower.tail = FALSE, ...), 
+                       qx(1-uppTQ, ...))        
+        m <- median(object, ...); s <- IQR(object, ...)
+        low1 <- m - IQR.fac * s 
+        upp1 <- m + IQR.fac * s
+        low <- max(low0,low1,low) 
+        upp <- min(upp0,upp1,upp)
+        return(c(low=low,upp=upp)) 
+}
+
 ## Integration of functions
 setMethod("E", signature(object = "UnivariateDistribution", 
                          fun = "missing", 
@@ -23,13 +39,10 @@ setMethod("E", signature(object = "AbscontDistribution",
         if(is.null(low)) low <- -Inf
         if(is.null(upp)) upp <- Inf
 
-        low0 <- q(object)(lowerTruncQuantile, lower.tail = TRUE) 
-        upp0 <- q(object)(upperTruncQuantile, lower.tail = FALSE)
-        m <- median(object); s <- IQR(object)
-        low1 <- m - IQR.fac * s 
-        upp1 <- m + IQR.fac * s
-        low <- max(low0,low1,low) 
-        upp <- min(upp0,upp1,upp) 
+        Ib <- .getIntbounds(object, low, upp, lowerTruncQuantile, 
+              upperTruncQuantile, IQR.fac)
+        low <- Ib["low"]
+        upp <- Ib["upp"]
         
         return(distrExIntegrate(f = integrand, 
                     lower = low,
@@ -146,13 +159,11 @@ setMethod("E", signature(object = "AbscontDistribution",
         }
         if(is.null(low)) low <- -Inf
         if(is.null(upp)) upp <- Inf
-        low0 <- q(object)(lowerTruncQuantile, lower.tail = TRUE) 
-        upp0 <- q(object)(upperTruncQuantile, lower.tail = FALSE)
-        m <- median(object); s <- IQR(object)
-        low1 <- m - IQR.fac * s 
-        upp1 <- m + IQR.fac * s
-        low <- max(low0,low1,low) 
-        upp <- min(upp0,upp1,upp) 
+
+        Ib <- .getIntbounds(object, low, upp, lowerTruncQuantile, 
+              upperTruncQuantile, IQR.fac)
+        low <- Ib["low"]
+        upp <- Ib["upp"]
         
         return(distrExIntegrate(f = integrand,
                     lower = low,
@@ -255,13 +266,11 @@ setMethod("E", signature(object = "AbscontCondDistribution",
 
         if(is.null(low)) low <- -Inf
         if(is.null(upp)) upp <- Inf
-        low0 <- q(object)(lowerTruncQuantile, cond = cond, lower.tail = TRUE) 
-        upp0 <- q(object)(upperTruncQuantile, cond = cond, lower.tail = FALSE)
-        m <- median(object, cond = cond); s <- IQR(object, cond = cond)
-        low1 <- m - IQR.fac * s 
-        upp1 <- m + IQR.fac * s
-        low <- max(low0,low1,low) 
-        upp <- min(upp0,upp1,upp) 
+
+        Ib <- .getIntbounds(object, low, upp, lowerTruncQuantile, 
+              upperTruncQuantile, IQR.fac, cond = cond)
+        low <- Ib["low"]
+        upp <- Ib["upp"]
 
         return(distrExIntegrate(integrand, 
               lower = low, upper = upp, rel.tol = rel.tol, distr = object, 
@@ -337,13 +346,11 @@ setMethod("E", signature(object = "AbscontCondDistribution",
 
         if(is.null(low)) low <- -Inf
         if(is.null(upp)) upp <- Inf
-        low0 <- q(object)(lowerTruncQuantile, cond = cond, lower.tail = TRUE) 
-        upp0 <- q(object)(1-upperTruncQuantile, cond = cond, lower.tail = FALSE)
-        m <- median(object, cond = cond); s <- IQR(object, cond = cond)
-        low1 <- m - IQR.fac * s 
-        upp1 <- m + IQR.fac * s
-        low <- max(low0,low1,low) 
-        upp <- min(upp0,upp1,upp) 
+
+        Ib <- .getIntbounds(object, low, upp, lowerTruncQuantile, 
+              upperTruncQuantile, IQR.fac, cond = cond)
+        low <- Ib["low"]
+        upp <- Ib["upp"]
         
         return(distrExIntegrate(integrand, 
                 lower = low, upper = upp, rel.tol = rel.tol, distr = object, 
