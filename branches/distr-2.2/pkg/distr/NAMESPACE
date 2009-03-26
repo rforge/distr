@@ -82,7 +82,7 @@ exportMethods("mixCoeff", "mixCoeff<-", "mixDistr", "mixDistr<-",
 exportMethods("decomposePM", "simplifyD", "showobj")
 exportMethods("Truncate","Minimum","Maximum","Huberize")
 exportMethods("solve", "sqrt")
-exportMethods("type", "SymmCenter", "Symmetry")
+exportMethods("type", "SymmCenter", "Symmetry", ".logExact", ".lowerExact")
 export("UnivarMixingDistribution", "UnivarLebDecDistribution")
 export("RtoDPQ.LC", "flat.LCD", "flat.mix")
 exportMethods("abs","exp","^")

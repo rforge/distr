@@ -76,6 +76,7 @@ exportMethods("mixCoeff", "mixCoeff<-", "mixDistr", "mixDistr<-",
               "p.ac", "d.ac", "q.ac", "r.ac")
 exportMethods("decomposePM", "simplifyD", "showobj")
 exportMethods("Truncate","Minimum","Maximum","Huberize")
+exportMethods(".logExact", ".lowerExact")
 export("UnivarMixingDistribution", "UnivarLebDecDistribution")
 export("RtoDPQ.LC", "flat.LCD", "flat.mix")
 exportMethods("abs","exp","^")
