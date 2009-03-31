@@ -100,27 +100,36 @@ setClass("GumbelParameter", representation(loc = "numeric",
 # Gumbel distribution
 setClass("Gumbel", 
             prototype = prototype(r = function(n){ rgumbel(n, loc = 0, scale = 1) },
-                                  d = function(x, log){ dgumbel(x, loc = 0, scale = 1, log = FALSE) },
+                                  d = function(x, log){dgumbel(x, loc = 0, scale = 1, log = FALSE)},
                                   p = function(q, lower.tail = TRUE, log.p = FALSE){ 
                                          p0 <- pgumbel(q, loc = 0, scale = 1, lower.tail = lower.tail)
                                          if(log.p) return(log(p0)) else return(p0) 
                                   },
                                   q = function(p, loc = 0, scale = 1, lower.tail = TRUE, log.p = FALSE){
-                                      p <- if(log.p) exp(p) else p
-                                      in01 <- (p>1 | p<0)
-                                      i01 <- .isEqual01(p) 
-                                      i0 <- (i01 & p<1)   
-                                      i1 <- (i01 & p>0)
-                                      ii01 <- .isEqual01(p) | in01
+                                      ## P.R.: changed to vectorized form 
+                                      p1 <- if(log.p) exp(p) else p
+                                                                                      
+                                      in01 <- (p1>1 | p1<0)
+                                      i01 <- .isEqual01(p1) 
+                                      i0 <- (i01 & p1<1)   
+                                      i1 <- (i01 & p1>0)
+                                      ii01 <- .isEqual01(p1) | in01
+                                                    
                                       p0 <- p
-                                      p0[ii01] <- 0.5
-                                      q1 <- qgumbel(p0, loc = 0, scale = 1, ...) 
-                                      q[i0] <- if(lower.tail) -Inf else Inf
-                                      q[i1] <- if(!lower.tail) -Inf else Inf
-                                      q[in01] <- NaN
+                                      p0[ii01] <- if(log.p) log(0.5) else 0.5
+                                                    
+                                      q1 <- qgumbel(p0, loc = 0, scale = 1, 
+                                                    lower.tail = lower.tail) 
+                                      q1[i0] <- if(lower.tail) -Inf else Inf
+                                      q1[i1] <- if(!lower.tail) -Inf else Inf
+                                      q1[in01] <- NaN
+                                      
+                                      return(q1)  
                                       },
                                   img = new("Reals"),
                                   param = new("GumbelParameter"),
+                                  .withArith = FALSE,
+                                  .withSim = FALSE,
                                   .logExact = FALSE,
                                   .lowerExact = TRUE),
             contains = "AbscontDistribution")
@@ -172,11 +181,30 @@ setClass("Pareto",
                                      lower.tail = lower.tail, log.p = log.p) 
                                           },
                       q = function(p, lower.tail = TRUE, log.p = FALSE ){ 
-                              qpareto1(p, shape = 1, min = 1, 
-                                     lower.tail = lower.tail, log.p = log.p) 
-                                          },
+                        ## P.R.: changed to vectorized form 
+                               p1 <- if(log.p) exp(p) else p
+                                                                               
+                               in01 <- (p1>1 | p1<0)
+                               i01 <- .isEqual01(p1) 
+                               i0 <- (i01 & p1<1)   
+                               i1 <- (i01 & p1>0)
+                               ii01 <- .isEqual01(p1) | in01
+                                             
+                               p0 <- p
+                               p0[ii01] <- if(log.p) log(0.5) else 0.5
+                                             
+                               q1 <- qpareto1(p0, shape = 1,  min =  1, 
+                                           lower.tail = lower.tail, log.p = log.p) 
+                               q1[i0] <- if(lower.tail) -Inf else Inf
+                               q1[i1] <- if(!lower.tail) -Inf else Inf
+                               q1[in01] <- NaN
+                               
+                               return(q1)  
+                            },
                       param = new("ParetoParameter"),
                       img = new("Reals"),
+                      .withArith = FALSE,
+                      .withSim = FALSE,
                       .logExact = TRUE,
                       .lowerExact = TRUE),
           contains = "AbscontDistribution"

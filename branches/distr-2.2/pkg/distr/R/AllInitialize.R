@@ -72,6 +72,8 @@ setMethod("initialize", "AbscontDistribution",
                    ) {
             ## don't use this if the call is new("AbscontDistribution")
             LL <- length(sys.calls())
+            if(sys.calls()[[LL-3]] == "new(toDef)")
+               {return(.Object)}
             if(sys.calls()[[LL-3]] == "new(\"AbscontDistribution\")")
                {return(.Object)}
             
@@ -165,6 +167,8 @@ setMethod("initialize", "DiscreteDistribution",
 
             ## don't use this if the call is new("DiscreteDistribution")
             LL <- length(sys.calls())
+            if(sys.calls()[[LL-3]] == "new(toDef)")
+               {return(.Object)}
             if(sys.calls()[[LL-3]] == "new(\"DiscreteDistribution\")")
                {return(.Object)}
             

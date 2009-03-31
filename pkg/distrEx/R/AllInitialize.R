@@ -15,18 +15,18 @@ setMethod("initialize", "Gumbel",
                                        return(if(log.p) log(p1) else p1)},
                                      list(loc1 = loc, scale1 = scale))
         .Object@q <- function(p, loc = loc1, scale = scale1, lower.tail = TRUE, log.p = FALSE){}
-        body(.Object@q) <- substitute({   
+            body(.Object@q) <- substitute({
                         ## P.R.: changed to vectorized form 
-                        p <- if(log.p) exp(p) else p
+                        p1 <- if(log.p) exp(p) else p
                                                                         
-                        in01 <- (p>1 | p<0)
-                        i01 <- .isEqual01(p) 
-                        i0 <- (i01 & p<1)   
-                        i1 <- (i01 & p>0)
-                        ii01 <- .isEqual01(p) | in01
+                        in01 <- (p1>1 | p1<0)
+                        i01 <- .isEqual01(p1) 
+                        i0 <- (i01 & p1<1)   
+                        i1 <- (i01 & p1>0)
+                        ii01 <- .isEqual01(p1) | in01
                                       
                         p0 <- p
-                        p0[ii01] <- 0.5
+                        p0[ii01] <- if(log.p) log(0.5) else 0.5
                                       
                         q1 <- qgumbel(p0, loc = loc1, scale = scale1, 
                                       lower.tail = lower.tail) 
@@ -45,7 +45,7 @@ setMethod("initialize", "Gumbel",
 
 ## Class: Pareto distribution
 setMethod("initialize", "Pareto",
-          function(.Object, shape = 1, Min = 1, .withArith = FALSE) {
+          function(.Object, shape = 1, Min = 1) {
             .Object@img <- new("Reals")
             .Object@param <- new("ParetoParameter", shape = shape, Min =  Min)
             .Object@r <- function(n){}
@@ -66,12 +66,30 @@ setMethod("initialize", "Pareto",
                                     lower.tail = lower.tail, log.p = log.p) },
                              list(shapeSub = shape,  MinSub =  Min)
                                          )
-            body(.Object@q) <- substitute(
-                           { qpareto1(p, shape = shapeSub,  min =  MinSub, 
-                                    lower.tail = lower.tail, log.p = log.p) },
-                             list(shapeSub = shape,  MinSub =  Min)
-                                         )
-            .Object@.withArith <- .withArith
+            body(.Object@q) <- substitute({
+                        ## P.R.: changed to vectorized form 
+                        p1 <- if(log.p) exp(p) else p
+                                                                        
+                        in01 <- (p1>1 | p1<0)
+                        i01 <- .isEqual01(p1) 
+                        i0 <- (i01 & p1<1)   
+                        i1 <- (i01 & p1>0)
+                        ii01 <- .isEqual01(p1) | in01
+                                      
+                        p0 <- p
+                        p0[ii01] <- if(log.p) log(0.5) else 0.5
+                                      
+                        q1 <- qpareto1(p0, shape = shapeSub,  min =  MinSub, 
+                                    lower.tail = lower.tail, log.p = log.p) 
+                        q1[i0] <- if(lower.tail) -Inf else Inf
+                        q1[i1] <- if(!lower.tail) -Inf else Inf
+                        q1[in01] <- NaN
+                        
+                        return(q1)  
+                     },  list(shapeSub = shape,  MinSub =  Min))
+
+            .Object@.withSim   <- FALSE
+            .Object@.withArith <- FALSE
             .Object@.logExact <- TRUE
             .Object@.lowerExact <- TRUE
             .Object
