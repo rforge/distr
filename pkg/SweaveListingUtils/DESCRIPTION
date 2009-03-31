@@ -13,3 +13,5 @@ Description: provides utilities for defining R / Rd as
 Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
 License: LGPL-3
 Date: 2009-03-19
+LastChangedDate: {$LastChangedDate$}
+LastChangedRevision: {$LastChangedRevision$}

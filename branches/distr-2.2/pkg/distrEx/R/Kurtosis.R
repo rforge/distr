@@ -8,10 +8,18 @@
 ###################################################################################
 setMethod("kurtosis", signature(x = "UnivariateDistribution"),
     function(x, fun = function(t) {t}, cond, withCond = FALSE, useApply = TRUE, ...){
-        if(missing(cond)&&missing(fun)){
+        dots <- match.call(call = sys.call(sys.parent(1)), 
+                        expand.dots = FALSE)$"..."
+        low <- -Inf; upp <- Inf
+        if(hasArg(low)) low <- dots$low
+        if(hasArg(upp)) upp <- dots$upp
+        LowIsUpp <- if(low == -Inf) 
+                    low == -upp else distr:::.isEqual(low,upp)
+
+        if(LowIsUpp && missing(cond)&&missing(fun)){
            if(is(Symmetry(x),"SphericalSymmetry")){
-                m2 <- E(x, fun = function(t)t^2, useApply = useApply, ...)
-                m4 <- E(x, fun = function(t)t^4, useApply = useApply, ...)
+                m2 <- 2*E(x, fun = function(t)t^2, low=0, useApply = useApply, ...)
+                m4 <- 2*E(x, fun = function(t)t^4, low=0, useApply = useApply, ...)
                 return(m4/m2^2 -3)
            }
         }

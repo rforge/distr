@@ -107,18 +107,36 @@ setMethod("q.r", signature(object = "UnivarMixingDistribution"),
 setMethod(".lowerExact", "UnivarMixingDistribution", function(object){ 
              er <- is(try(slot(object, ".lowerExact"), silent = TRUE), "try-error")
              if(er){ object0 <- conv2NewVersion(object)
-                    eval.parent(substitute(object<-object0))
-                    return(invisible(NULL))}
+                     objN <- paste(substitute(object))
+                     warning(gettextf("'%s' was generated in an old version of this class.\n",
+                                     objN),
+                            gettextf("'%s' has been converted to the new version",objN),
+                            gettextf(" of this class by a call to 'conv2NewVersion'.\n")
+                            )           
+                    eval.parent(substitute(object<-object0))                    
+                    return(object0@.lowerExact)}
              object@.lowerExact})
 setMethod(".logExact", "UnivarMixingDistribution", function(object){
              er <- is(try(slot(object, ".logExact"), silent = TRUE), "try-error")
              if(er){ object0 <- conv2NewVersion(object)
+                     objN <- paste(substitute(object))
+                     warning(gettextf("'%s' was generated in an old version of this class.\n",
+                                     objN),
+                            gettextf("'%s' has been converted to the new version",objN),
+                            gettextf(" of this class by a call to 'conv2NewVersion'.\n")
+                            )           
                     eval.parent(substitute(object<-object0))
-                    return(invisible(NULL))}
+                    return(object0@.logExact)}
              object@.logExact})
 setMethod("Symmetry", "UnivarMixingDistribution", function(object){
              er <- is(try(slot(object, "Symmetry"), silent = TRUE), "try-error")
              if(er){ object0 <- conv2NewVersion(object)
+                     objN <- paste(substitute(object))
+                     warning(gettextf("'%s' was generated in an old version of this class.\n",
+                                     objN),
+                            gettextf("'%s' has been converted to the new version",objN),
+                            gettextf(" of this class by a call to 'conv2NewVersion'.\n")
+                            )           
                     eval.parent(substitute(object<-object0))
-                    return(invisible(NULL))}
+                    return(object0@Symmetry)}
              object@Symmetry})

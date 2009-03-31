@@ -256,8 +256,9 @@ function(object, exactq = 6, ngrid = 50000, ...){
        upper <- getUp(object, eps = getdistrOption("TruncQuantile")*2)
        #lower <- 0 ; upper <- 8
        dist <- upper - lower
-       grid <- seq(from = lower - 0.1 * dist, to = upper + 0.1 * dist, 
-                          length = ngrid) 
+       low1 <- max(q(object)(0),lower-0.1*dist)
+       upp1 <- min(q(object)(1),upper+0.1*dist)
+       grid <- seq(from = low1, to = upp1, length = ngrid) 
        dxg <- d(object)(grid)
        
        ix <-  1:ngrid
@@ -427,11 +428,78 @@ setMethod("Math", "AbscontDistribution",
 
 ## exact: abs for absolutly continuous distributions
 setMethod("abs", "AbscontDistribution",
-          function(x){
-            if (.isEqual(p(x)(0),0)) return(x)
-            rnew <- function(n, ...){}
-            body(rnew) <- substitute({ abs(g(n, ...)) },
-                                         list(g = x@r))
+    function(x){
+       if (.isEqual(p(x)(0),0)) return(x)
+       rnew <- function(n, ...){}
+       body(rnew) <- substitute({ abs(g(n, ...)) }, list(g = x@r))
+       
+       isSym0 <- FALSE
+       if(is(Symmetry(x),"SphericalSymmetry"))
+          if(.isEqual(SymmCenter(Symmetry(x)),0))
+             isSym0 <- TRUE  
+       
+       if(isSym0){
+          if (is.null(gaps(x)))
+              gapsnew <- NULL
+          else {gapsnew <- gaps[gaps[,2]>=0,]
+                VZW <- gapsnew[,1] <= 0 
+                gapsnew[VZW,1] <- 0
+                gapsnew <- .consolidategaps(gapsnew)}
+          dOx <- d(x)
+
+          dxlog <- if("log" %in% names(formals(dOx))) 
+                        quote({dOx(x, log = TRUE)})
+                   else quote({log(dOx(x))})
+          pxlog <- if("log.p" %in% names(formals(p(x))) && 
+                       "lower.tail" %in% names(formals(p(x)))) 
+                        quote({p(x)(q, lower.tail = FALSE, log.p = TRUE)})
+                   else
+                        quote({log(1-p(x)(q))})
+
+          qxlog <- if("lower.tail" %in% names(formals(q(x)))) 
+                          quote({qx <- if(lower.tail)
+                                          q(x)((1+p1)/2)
+                                       else
+                                          q(x)(p1/2,lower.tail=FALSE)}) 
+                      else
+                          quote({qx <- q(x)(if(lower.tail) (1+p1)/2 else 1-p1/2)})
+          if("lower.tail" %in% names(formals(q(x)))&& 
+             "log.p" %in% names(formals(q(x))))           
+              qxlog <- quote({qx <- if(lower.tail) q(x)((1+p1)/2)
+                                       else
+                                          q(x)(if(log.p)p-log(2)
+                                               else p1/2,lower.tail=FALSE,log.p=log.p)}) 
+          dnew <- function(x, log = FALSE){}
+          body(dnew) <- substitute({
+                    dx <- (dxlog0 + log(2))*(x>=0)
+                    if (!log) dx <- exp(dx)
+                    dx[x<0] <- if(log) -Inf else 0
+                    return(dx)
+                    }, list(dxlog0 = dxlog))
+            
+          pnew <- function(q, lower.tail = TRUE, log.p = FALSE){}
+          body(pnew) <- substitute({
+                    if (!lower.tail){
+                        px <- (log(2) + pxlog0)*(q>=0)
+                        if(!log.p) px <- exp(px)
+                    }else{
+                        px <- pmax(2 * p(x)(q) - 1,0)
+                        if(log.p) px <- log(px)
+                    }
+                    return(px)            
+            }, list(pxlog0 = pxlog))
+
+          qnew <- function(p, lower.tail = TRUE, log.p = FALSE){}
+          body(qnew) <- substitute({
+                   p1 <- if(log.p) exp(p) else p 
+                   qxlog0
+                   qx[p1<0] <- NaN
+                   if (any((p1 < -.Machine$double.eps)|(p1 > 1+.Machine$double.eps)))
+                   warning(gettextf("q method of %s produced NaN's ", objN))
+                   return(qx)
+            }, list(qxlog0 = qxlog, objN= quote(.getObjName(1))))
+                   
+       }else{
             if (is.null(gaps(x)))
                 gapsnew <- NULL
             else {VZW <- gaps(x)[,1] <= 0 & gaps(x)[,2] >= 0
@@ -458,12 +526,19 @@ setMethod("abs", "AbscontDistribution",
                     return(dx)
             }
             
-            pnew <- function(q, lower.tail = TRUE, log.p = FALSE){
-                    px <- (q>=0) * (p(x)(q) - p(x)(-q))                    
-                    if (!lower.tail) px <- 1 - px
+            pxlow <- if("lower.tail" %in% names(formals(p(x))))
+                        substitute({p(x)(q, lower=FALSE)})
+                   else
+                        substitute({1-p(x)(q)})
+
+            pnew <- function(q, lower.tail = TRUE, log.p = FALSE){}
+            body(pnew) <- substitute({
+                    px <- if (lower.tail)
+                            (q>=0) * (p(x)(q) - p(x)(-q))                    
+                          else pxlow0 + p(x)(-q)
                     if (log.p) px <- log(px)
                     return(px)
-            }
+            }, list(pxlow0 = pxlow))
 
             px.l <- pnew(x.g + 0.5*h)
             px.u <- pnew(x.g + 0.5*h, lower.tail = FALSE)
@@ -472,13 +547,17 @@ setMethod("abs", "AbscontDistribution",
 
             qnew <- .makeQNew(x.g + 0.5*h, px.l, px.u,
                               notwithLLarg = FALSE,  lower, yR)
-
-            object <- AbscontDistribution( r = rnew, p = pnew,
-                           q = qnew, d = dnew, gaps = gapsnew, 
-                           .withSim = x@.withSim, .withArith = TRUE,
-                           .lowerExact = .lowerExact(x), .logExact = FALSE)
-            object
-          })
+    
+            lowerExact <- FALSE
+ 
+    }
+    object <- AbscontDistribution( r = rnew, p = pnew, q = qnew, d = dnew, 
+                     gaps = gapsnew,  .withSim = x@.withSim, .withArith = TRUE,
+                     .lowerExact = .lowerExact(x), .logExact = FALSE)
+    object
+    })
+aN=abs(N)
+q(aN)(-35,log=T,lower=F)
 
 ## exact: exp for absolutly continuous distributions
 setMethod("exp", "AbscontDistribution",

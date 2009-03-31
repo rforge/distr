@@ -8,3 +8,5 @@ Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
 Depends: R(>= 1.8.0)
 LazyLoad: yes
 License: LGPL-3
+LastChangedDate: {$LastChangedDate$}
+LastChangedRevision: {$LastChangedRevision$}
