@@ -295,7 +295,7 @@ setMethod("E", signature(object = "UnivariateCondDistribution",
                          fun = "function", 
                          cond = "numeric"),
     function(object, fun, cond, withCond = FALSE, useApply = TRUE, 
-             Nsim = getdistrExOption("MCIterations"), ...){
+             low = NULL, upp = NULL, Nsim = getdistrExOption("MCIterations"), ...){
         xsim <- r(object)(Nsim, cond)
         if(is.null(low)) low <- -Inf
         if(is.null(upp)) upp <- Inf

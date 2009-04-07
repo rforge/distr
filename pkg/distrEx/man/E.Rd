@@ -85,7 +85,7 @@ E(object, fun, cond, ...)
 \S4method{E}{MultivariateDistribution,function,missing}(object, fun, useApply = TRUE, 
              Nsim = getdistrExOption("MCIterations"), ...)
 
-\S4method{E}{DiscreteMVDistribution,missing,missing}(object, useApply = TRUE, ...)
+\S4method{E}{DiscreteMVDistribution,missing,missing}(object, low = NULL, upp = NULL, ...)
 
 \S4method{E}{DiscreteMVDistribution,function,missing}(object, fun, 
              useApply = TRUE, ...)
@@ -95,10 +95,10 @@ E(object, fun, cond, ...)
              rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrExOption("IQR.fac"), low = NULL, upp = NULL, ...)
+             IQR.fac = getdistrExOption("IQR.fac"), ...)
 
 \S4method{E}{DiscreteCondDistribution,missing,numeric}(object, cond, useApply = TRUE,
-             low, upp)
+             low = NULL, upp = NULL)
 
 \S4method{E}{UnivariateCondDistribution,function,numeric}(object, fun, cond, 
               withCond = FALSE, useApply = TRUE, low = NULL, upp = NULL,
