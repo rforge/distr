@@ -98,7 +98,7 @@ E(object, fun, cond, ...)
              IQR.fac = getdistrExOption("IQR.fac"), ...)
 
 \S4method{E}{DiscreteCondDistribution,missing,numeric}(object, cond, useApply = TRUE,
-             low = NULL, upp = NULL)
+             low = NULL, upp = NULL, ...)
 
 \S4method{E}{UnivariateCondDistribution,function,numeric}(object, fun, cond, 
               withCond = FALSE, useApply = TRUE, low = NULL, upp = NULL,
