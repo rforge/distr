@@ -88,7 +88,9 @@ RtoDPQ.LC <- function(r, e = getdistrOption("RtoDPQ.e"),
   {hasDis <- TRUE
    zz.nr <- zz[! zz %in% zz.replic]
    d.r <- zz.T1/sum(zz.T1)
-   f.d <- DiscreteDistribution(supp = zz.replic, prob = d.r)
+   f.d <- DiscreteDistribution(supp = zz.replic, prob = d.r,
+                     .withSim = TRUE, .withArith = TRUE,
+                     .lowerExact = FALSE, .logExact = FALSE)
    rm(d.r,zz.replic,zz.T1)
   }
   rm(zz)
@@ -108,7 +110,7 @@ RtoDPQ.LC <- function(r, e = getdistrOption("RtoDPQ.e"),
   rm(px.l, px.u, dxy, pf0)
   f.c <- AbscontDistribution( r= function(n) qcfun(runif(n)),
              d=dcfun, p = pcfun, q = qcfun, .withSim = TRUE,
-             .withArith = TRUE)
+             .withArith = TRUE, .lowerExact = FALSE, .logExact = FALSE)
   }
   else f.c <-Norm()
   UnivarLebDecDistribution(discretePart = f.d, acPart = f.c,

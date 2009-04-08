@@ -7,7 +7,8 @@ setMethod("m1df", "UnivariateDistribution",
     })
 setMethod("m2df", "UnivariateDistribution",
     function(object, upper, ...){
-        mc <- as.list(match.call(call = sys.call(sys.parent(1))))[-1]
+        mc <- match.call()
+        mc <- as.list(mc)[-1]
         mc1 <- mc        
         fun0 <- if(is.null(mc$fun)) 
                    function(x)x^2 else function(x) (eval(mc1$fun)(x))^2
@@ -27,7 +28,8 @@ setMethod("m2df", "AbscontDistribution",
     function(object, upper, 
              lowerTruncQuantile = getdistrExOption("m2dfLowerTruncQuantile"),
              rel.tol = getdistrExOption("m2dfRelativeTolerance"), ...){
-        mc <- as.list(match.call(call = sys.call(sys.parent(1))))[-1]
+        mc <- match.call()
+        mc <- as.list(mc)[-1]
         mc1 <- mc        
         fun0 <- if(is.null(mc$fun)) 
                    function(x)x^2 else function(x) (eval(mc1$fun)(x))^2
@@ -69,7 +71,8 @@ setMethod("m2df", "AbscontDistribution",
 
 setMethod("m1df", "Binom",
     function(object, upper, ...){
-    mc <- as.list(match.call(call = sys.call(sys.parent(1))))[-1]
+        mc <- match.call()
+        mc <- as.list(mc)[-1]
     if(is.null(mc$fun) && is.null(mc$cond))
         return(prob(object)*size(object)*pbinom(upper-1, prob = prob(object),
                                                 size = size(object)-1))
@@ -78,7 +81,8 @@ setMethod("m1df", "Binom",
 
 setMethod("m2df", "Binom",
     function(object, upper, ...){
-    mc <- as.list(match.call(call = sys.call(sys.parent(1))))[-1]
+        mc <- match.call()
+        mc <- as.list(mc)[-1]
     if(is.null(mc$fun) && is.null(mc$cond)){
         n <- size(object)
         p <- prob(object)
@@ -88,14 +92,16 @@ setMethod("m2df", "Binom",
     })
 setMethod("m1df", "Pois",
     function(object, upper, ...){
-    mc <- as.list(match.call(call = sys.call(sys.parent(1))))[-1]
+        mc <- match.call()
+        mc <- as.list(mc)[-1]
     if(is.null(mc$fun) && is.null(mc$cond)){
         return(lambda(object)*ppois(upper-1, lambda = lambda(object)))
     }else m1df(as(object,"DiscreteDistribution"), upper = upper, ...)
     })
 setMethod("m2df", "Pois",
     function(object, upper, ...){
-    mc <- as.list(match.call(call = sys.call(sys.parent(1))))[-1]
+        mc <- match.call()
+        mc <- as.list(mc)[-1]
     if(is.null(mc$fun) && is.null(mc$cond)){
         lam <- lambda(object)
         return(lam*(ppois(upper-1, lambda = lam) + lam*ppois(upper-2, lambda = lam)))
@@ -103,7 +109,8 @@ setMethod("m2df", "Pois",
     })
 setMethod("m1df", "Norm",
     function(object, upper, ...){
-    mc <- as.list(match.call(call = sys.call(sys.parent(1))))[-1]
+        mc <- match.call()
+        mc <- as.list(mc)[-1]
     if(is.null(mc$fun) && is.null(mc$cond)){
         mu <- mean(object)
         std <- sd(object)
@@ -112,7 +119,8 @@ setMethod("m1df", "Norm",
     })
 setMethod("m2df", "Norm",
     function(object, upper, ...){
-    mc <- as.list(match.call(call = sys.call(sys.parent(1))))[-1]
+        mc <- match.call()
+        mc <- as.list(mc)[-1]
     if(is.null(mc$fun) && is.null(mc$cond)){
         mu <- mean(object)
         std <- sd(object)
@@ -125,7 +133,8 @@ setMethod("m2df", "Norm",
    })
 setMethod("m1df", "Exp",
     function(object, upper, ...){
-    mc <- as.list(match.call(call = sys.call(sys.parent(1))))[-1]
+        mc <- match.call()
+        mc <- as.list(mc)[-1]
     if(is.null(mc$fun) && is.null(mc$cond)){
         if(upper <= 0) return(0)
         lam <- rate(object)
@@ -137,7 +146,8 @@ setMethod("m1df", "Exp",
     })
 setMethod("m2df", "Exp",
     function(object, upper, ...){
-    mc <- as.list(match.call(call = sys.call(sys.parent(1))))[-1]
+        mc <- match.call()
+        mc <- as.list(mc)[-1]
     if(is.null(mc$fun) && is.null(mc$cond)){
         if(upper <= 0) return(0)
         lam <- rate(object)
@@ -150,7 +160,8 @@ setMethod("m2df", "Exp",
     })
 setMethod("m1df", "Chisq",
     function(object, upper, ...){
-    mc <- as.list(match.call(call = sys.call(sys.parent(1))))[-1]
+        mc <- match.call()
+        mc <- as.list(mc)[-1]
     if(is.null(mc$fun) && is.null(mc$cond)){
         ncp <- ncp(object)
         dfr <- df(object)
@@ -164,7 +175,8 @@ setMethod("m1df", "Chisq",
     })
 setMethod("m2df", "Chisq",
     function(object, upper, ...){
-    mc <- as.list(match.call(call = sys.call(sys.parent(1))))[-1]
+        mc <- match.call()
+        mc <- as.list(mc)[-1]
     if(is.null(mc$fun) && is.null(mc$cond)){
         ncp <- ncp(object)
         dfr <- df(object)
@@ -195,7 +207,8 @@ setMethod("m1df", "LatticeDistribution",
 
 setMethod("m2df", "LatticeDistribution",
     function(object, upper, ...){
-        mc <- as.list(match.call(call = sys.call(sys.parent(1))))[-1]
+        mc <- match.call()
+        mc <- as.list(mc)[-1]
         mc1 <- mc        
         fun0 <- if(is.null(mc$fun)) 
                    function(x)x^2 else function(x) (eval(mc1$fun)(x))^2
