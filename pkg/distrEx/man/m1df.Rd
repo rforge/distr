@@ -3,7 +3,6 @@
 \alias{m1df-methods}
 \alias{m1df,UnivariateDistribution-method}
 \alias{m1df,AbscontDistribution-method}
-%\alias{m1df,DiscreteDistribution-method}
 \alias{m1df,LatticeDistribution-method}
 \alias{m1df,AffLinDistribution-method}
 \alias{m1df,Binom-method}
@@ -43,6 +42,18 @@ m1df(object, upper, ...)
    % Monte-Carlo integration. 
    uses call \code{E(object, upp=upper, ...)}.
    }
+
+  \item{object = "AbscontDistribution":}{ clipped first moment
+    for absolutely continuous univariate distributions which is 
+    computed using \code{integrate}. }
+
+  \item{object = "LatticeDistribution":}{ clipped first moment
+    for discrete univariate distributions which is computed 
+    using \code{support} and \code{sum}. }
+
+  \item{object = "AffLinDistribution":}{ clipped first moment
+    for affine linear distributions  which is computed on basis of 
+    slot \code{X0}. }
 
 %  \item{object = "AbscontDistribution":}{ clipped first moment
 %    for absolutely continuous univariate distributions which 

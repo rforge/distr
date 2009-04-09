@@ -5,6 +5,7 @@
 \alias{m2df,AbscontDistribution-method}
 %\alias{m2df,DiscreteDistribution-method}
 \alias{m2df,LatticeDistribution-method}
+\alias{m2df,AffLinDistribution-method}
 \alias{m2df,Binom-method}
 \alias{m2df,Pois-method}
 \alias{m2df,Norm-method}
@@ -36,6 +37,7 @@ m2df(object, upper, ...)
 }
 \section{Methods}{
 \describe{
+
   \item{object = "UnivariateDistribution":}{ %
     %clipped first moment
     %for univariate distributions which is computed using 
@@ -43,27 +45,31 @@ m2df(object, upper, ...)
      uses call \code{E(object, upp=upper, fun = function, ...)}.
     }
 
-  \item{object = "AbscontDistribution":}{ clipped first moment
+  \item{object = "AbscontDistribution":}{ clipped second moment
     for absolutely continuous univariate distributions which is 
     computed using \code{integrate}. }
 
-  \item{object = "DiscreteDistribution":}{ clipped first moment
+  \item{object = "LatticeDistribution":}{ clipped second moment
     for discrete univariate distributions which is computed 
     using \code{support} and \code{sum}. }
 
-  \item{object = "Binom":}{ clipped first moment
+  \item{object = "AffLinDistribution":}{ clipped second moment
+    for affine linear distributions  which is computed on basis of 
+    slot \code{X0}. }
+
+  \item{object = "Binom":}{ clipped second moment
     for Binomial distributions which is computed using \code{pbinom}. }
 
-  \item{object = "Pois":}{ clipped first moment
+  \item{object = "Pois":}{ clipped second moment
     for Poisson distributions which is computed using \code{ppois}. }
 
-  \item{object = "Norm":}{ clipped first moment
+  \item{object = "Norm":}{ clipped second moment
     for normal distributions which is computed using \code{dnorm} and \code{pnorm}. }
 
-  \item{object = "Exp":}{ clipped first moment
+  \item{object = "Exp":}{ clipped second moment
     for exponential distributions which is computed using \code{pexp}. }
 
-  \item{object = "Chisq":}{ clipped first moment
+  \item{object = "Chisq":}{ clipped second moment
     for \eqn{\chi^2}{Chi^2} distributions which is computed using \code{pchisq}. }
 }}
 %\references{ ~put references to the literature/web site here ~ }

@@ -120,7 +120,7 @@ E(object, fun, useApply = TRUE,
 
 ## S4 method for signature 'DiscreteMVDistribution,
 ##   missing, missing':
-E(object, useApply = TRUE, ...)
+E(object, low = NULL, upp = NULL, ...)
 
 ## S4 method for signature 'DiscreteMVDistribution,
 ##   function, missing':
@@ -134,12 +134,12 @@ E(object, cond, useApply = TRUE,
              rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrExOption("IQR.fac"), low = NULL, upp = NULL, ...)
+             IQR.fac = getdistrExOption("IQR.fac"), ...)
 
 ## S4 method for signature 'DiscreteCondDistribution,
 ##   missing, numeric':
 E(object, cond, useApply = TRUE,
-             low, upp)
+             low = NULL, upp = NULL, ...)
 
 ## S4 method for signature 'UnivariateCondDistribution,
 ##   function, numeric':
@@ -501,6 +501,22 @@ E(Norm(mean=1), fun = function(x){x^2})
 E(D1, function(x, cond){cond*x^2}, cond = 2, withCond = TRUE, useApply = FALSE)
 E(Norm(mean=2), function(x){2*x^2})
 
+E(as(Norm(mean=2),"AbscontDistribution"))
+### somewhat less accurate:
+E(as(Norm(mean=2),"AbscontDistribution"), 
+     lowerTruncQuantil=1e-4,upperTruncQuantil=1e-4, IQR.fac= 4)
+### even less accurate:
+E(as(Norm(mean=2),"AbscontDistribution"), 
+     lowerTruncQuantil=1e-2,upperTruncQuantil=1e-2, IQR.fac= 4)
+### no good idea, but just as an example:
+E(as(Norm(mean=2),"AbscontDistribution"), 
+     lowerTruncQuantil=1e-2,upperTruncQuantil=1e-2, IQR.fac= .1)
+
+### truncation of integration range; see also m1df...
+E(Norm(mean=2), low=2,upp=4)
+
+E(Cauchy())
+E(Cauchy(),upp=3,low=-2)
 # some Lebesgue decomposed distribution 
 mymix &lt;- UnivarLebDecDistribution(acPart = Norm(), discretePart = Binom(4,.4),
          acWeight = 0.4)

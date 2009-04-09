@@ -10,6 +10,7 @@
 <param name="keyword" value="R:   m2df,UnivariateDistribution-method">
 <param name="keyword" value="R:   m2df,AbscontDistribution-method">
 <param name="keyword" value="R:   m2df,LatticeDistribution-method">
+<param name="keyword" value="R:   m2df,AffLinDistribution-method">
 <param name="keyword" value="R:   m2df,Binom-method">
 <param name="keyword" value="R:   m2df,Pois-method">
 <param name="keyword" value="R:   m2df,Norm-method">
@@ -77,37 +78,44 @@ The second moment of <code>object</code> clipped at <code>upper</code> is comput
 <h3>Methods</h3>
 
 <dl>
+</p>
+
 <dt>object = "UnivariateDistribution":</dt><dd>uses call <code>E(object, upp=upper, fun = function, ...)</code>.
 </dd>
 
 
-<dt>object = "AbscontDistribution":</dt><dd>clipped first moment
+<dt>object = "AbscontDistribution":</dt><dd>clipped second moment
 for absolutely continuous univariate distributions which is 
 computed using <code>integrate</code>. </dd>
 
 
-<dt>object = "DiscreteDistribution":</dt><dd>clipped first moment
+<dt>object = "LatticeDistribution":</dt><dd>clipped second moment
 for discrete univariate distributions which is computed 
 using <code>support</code> and <code>sum</code>. </dd>
 
 
-<dt>object = "Binom":</dt><dd>clipped first moment
+<dt>object = "AffLinDistribution":</dt><dd>clipped second moment
+for affine linear distributions  which is computed on basis of 
+slot <code>X0</code>. </dd>
+
+
+<dt>object = "Binom":</dt><dd>clipped second moment
 for Binomial distributions which is computed using <code>pbinom</code>. </dd>
 
 
-<dt>object = "Pois":</dt><dd>clipped first moment
+<dt>object = "Pois":</dt><dd>clipped second moment
 for Poisson distributions which is computed using <code>ppois</code>. </dd>
 
 
-<dt>object = "Norm":</dt><dd>clipped first moment
+<dt>object = "Norm":</dt><dd>clipped second moment
 for normal distributions which is computed using <code>dnorm</code> and <code>pnorm</code>. </dd>
 
 
-<dt>object = "Exp":</dt><dd>clipped first moment
+<dt>object = "Exp":</dt><dd>clipped second moment
 for exponential distributions which is computed using <code>pexp</code>. </dd>
 
 
-<dt>object = "Chisq":</dt><dd>clipped first moment
+<dt>object = "Chisq":</dt><dd>clipped second moment
 for <i>Chi^2</i> distributions which is computed using <code>pchisq</code>. </dd>
 </dl>
 

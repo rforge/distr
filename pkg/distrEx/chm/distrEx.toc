@@ -922,6 +922,10 @@
 <param name="Local" value="m2df.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m2df,AffLinDistribution-method">
+<param name="Local" value="m2df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="m2df,Binom-method">
 <param name="Local" value="m2df.html">
 </OBJECT>

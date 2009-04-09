@@ -1,29 +1,48 @@
 ###############################################################################
 ## Clipped first and second moments
 ###############################################################################
+.inArgs <- distr:::.inArgs
+
 setMethod("m1df", "UnivariateDistribution",
     function(object, upper, ... ){
-        return(E(object, upp=upper, ...))
+        mc <- match.call()
+        mc <- as.list(mc)[-1]
+        mc$upper <- NULL
+        mc$upp <- upper
+        mc$useApply <- FALSE
+        mc$object <- object
+        return(do.call("E", args=mc ))
     })
 setMethod("m2df", "UnivariateDistribution",
     function(object, upper, ...){
         mc <- match.call()
         mc <- as.list(mc)[-1]
         mc1 <- mc        
-        fun0 <- if(is.null(mc$fun)) 
-                   function(x)x^2 else function(x) (eval(mc1$fun)(x))^2
+        fun0 <- function(x)x^2  
+        if(!is.null(mc$fun)){
+            fun0 <- function(x){}
+            body(fun0) <- substitute({fun2(x)^2}, list(fun2=eval(mc$fun)))
+        }
         mc$fun <- fun0
         mc$upper <- NULL
         mc$upp <- upper
+        mc$useApply <- FALSE
+        mc$object <- object
         return(do.call("E", args=mc ))
     })
 setMethod("m1df", "AbscontDistribution",
     function(object, upper, 
              lowerTruncQuantile = getdistrExOption("m1dfLowerTruncQuantile"),
              rel.tol = getdistrExOption("m1dfRelativeTolerance"), ... ){
-        return(E(object, upp=upper, lowerTruncQuantile = lowerTruncQuantile, 
-                 rel.tol = rel.tol, ...))
-    })
+        mc <- match.call()
+        mc <- as.list(mc)[-1]
+        mc$useApply <- FALSE
+        mc$upper <- NULL
+        mc$object <- object
+        mc$lowerTruncQuantile <- lowerTruncQuantile
+        mc$rel.tol <- rel.tol
+        return(do.call("E", args=mc ))
+      })
 setMethod("m2df", "AbscontDistribution",
     function(object, upper, 
              lowerTruncQuantile = getdistrExOption("m2dfLowerTruncQuantile"),
@@ -31,13 +50,18 @@ setMethod("m2df", "AbscontDistribution",
         mc <- match.call()
         mc <- as.list(mc)[-1]
         mc1 <- mc        
-        fun0 <- if(is.null(mc$fun)) 
-                   function(x)x^2 else function(x) (eval(mc1$fun)(x))^2
+        fun0 <- function(x)x^2  
+        if(!is.null(mc$fun)){
+            fun0 <- function(x){}
+            body(fun0) <- substitute({fun2(x)^2}, list(fun2=eval(mc$fun)))
+        }
         mc$fun <- fun0
         mc$upper <- NULL
         mc$upp <- upper
         mc$lowerTruncQuantile <- lowerTruncQuantile
         mc$rel.tol <- rel.tol
+        mc$object <- object
+        mc$useApply <- FALSE
         return(do.call("E", args=mc ))
     })
 #setMethod("m1df", "AbscontDistribution",
@@ -210,21 +234,71 @@ setMethod("m2df", "LatticeDistribution",
         mc <- match.call()
         mc <- as.list(mc)[-1]
         mc1 <- mc        
-        fun0 <- if(is.null(mc$fun)) 
-                   function(x)x^2 else function(x) (eval(mc1$fun)(x))^2
+        fun0 <- function(x)x^2  
+        if(!is.null(mc$fun)){
+            fun0 <- function(x){}
+            body(fun0) <- substitute({fun2(x)^2}, list(fun2=eval(mc$fun)))
+        }
         mc$fun <- fun0
         mc$upper <- NULL
         mc$upp <- upper
         mc$object <- as(object, "DiscreteDistribution")
+        mc$useApply <- FALSE
         return(do.call("E", args=mc ))
     })
 
 setMethod("m1df", "AffLinDistribution", 
     function(object, upper, ...){
-             a <- object@a
-             b <- object@b
-             if(a>0)
-                a * m1df(object@X0,(upper-b)/a) + b
-             else   
-                (-a) * m1df(-object@X0,(upper-b)/(-a)) + b
+        mc <- match.call()
+        mc <- as.list(mc)[-1]
+        a <- object@a
+        b <- object@b
+        u <- (upper-b)/a
+        mc1 <- mc
+        if(!is.null(mc$fun)){
+            mc1$fun <- function(x) eval(mc$fun( a*x+b))
+            mc1$upp <- u
+            mc1$upper <- NULL
+            mc1$useApply <- FALSE
+            mc1$object <- object
+            return(do.call("E", args=mc1 ))
+            }
+        if(.inArgs("lower.tail", p(object@X0)))
+             pl <-   function(u)  p.l(object@X0)(u, lower.tail = FALSE)
+        else pl <-   function(u)  1-p.l(object@X0)(u)
+        eadd <- if(a>0) m1df(object@X0, u)
+                else    m1df(object@X0, Inf) - m1df(object@X0, u, ...)
+        padd <- if(a>0) p(object@X0)(u)
+                else    pl(u)
+        return(a * eadd + b * padd)
+    })
+
+setMethod("m2df", "AffLinDistribution", 
+    function(object, upper, ...){
+        mc <- match.call()
+        mc <- as.list(mc)[-1]
+        a <- object@a
+        b <- object@b
+        u <- (upper-b)/a
+        mc1 <- mc
+        if(!is.null(mc$fun)){
+            fun0 <- function(x){}
+            body(fun0) <- substitute({fun2(x)^2}, list(fun2=eval(mc$fun)))
+            mc1$fun <- fun0
+            mc1$upp <- u
+            mc1$upper <- NULL
+            mc1$useApply <- FALSE
+            mc1$object <- object
+            return(do.call("E", args=mc1 ))
+            }
+        if(.inArgs("lower.tail", p(object@X0)))
+             pl <-   function(u)  p.l(object@X0)(u, lower.tail = FALSE)
+        else pl <-   function(u)  1-p.l(object@X0)(u)
+        vadd <- if(a>0) m2df(object@X0, u)
+                else    m2df(object@X0, Inf, ...) - m2df(object@X0, u, ...)
+        eadd <- if(a>0) m1df(object@X0, u)
+                else    m1df(object@X0, Inf, ...) - m1df(object@X0, u, ...)
+        padd <- if(a>0) p(object@X0)(u)
+                else    pl(u)
+        return(a^2 * vadd + 2 * a * b * eadd + b^2 * padd)
     })
