@@ -1,5 +1,5 @@
 #####################################################
-# Howto to R - utils -- version 2.0 (170108)
+# Howto to R - utils -- version 2.2 (090409)
 #####################################################
 
 ########### R - Utils
@@ -22,6 +22,16 @@ ladeall(DIR="distr", develDir = "C:/rtest", pattern = "")
 ## args: DIR :     relative path to folder starting from develDir
 ##       develDir: development folder (absolute path) 
 ##       pattern:  regexpr. for files to be sourced in
+
+### compare.R : 
+#
+# compares (recursively over all slots / list elements)
+# two objects, i.e. it prints the corresponding slots of object1 
+# directly on top of the corresponding slots of object2
+# Syntax 
+
+compare(obj1, obj2, level = 0)
+## obj1,obj2: objects to compare; level: used internally for indentation
 
 ### setNewEmail.R
 
