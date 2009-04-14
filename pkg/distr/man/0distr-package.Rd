@@ -44,7 +44,7 @@ corresponding image distributions.
 \tabular{ll}{
 Package: \tab distr\cr
 Version: \tab 2.1 \cr
-Date: \tab 2009-03-19 \cr
+Date: \tab 2009-04-14 \cr
 Depends: \tab R(>= 2.2.0), methods, graphics, startupmsg\cr
 Imports: \tab stats\cr
 LazyLoad: \tab yes\cr
