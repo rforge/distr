@@ -446,6 +446,22 @@
 <param name="Local" value="E.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,UnivarMixingDistribution,function,ANY-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,UnivarMixingDistribution,function,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,UnivarMixingDistribution,missing,ANY-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,UnivarMixingDistribution,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="E,Weibull,missing,missing-method">
 <param name="Local" value="E.html">
 </OBJECT>

@@ -19,6 +19,7 @@
 <param name="keyword" value="R:   E,DiscreteMVDistribution,missing,missing-method">
 <param name="keyword" value="R:   E,UnivarLebDecDistribution,missing,missing-method">
 <param name="keyword" value="R:   E,AffLinUnivarLebDecDistribution,missing,missing-method">
+<param name="keyword" value="R:   E,UnivarMixingDistribution,missing,missing-method">
 <param name="keyword" value="R:   E,UnivariateDistribution,function,missing-method">
 <param name="keyword" value="R:   E,AbscontDistribution,function,missing-method">
 <param name="keyword" value="R:   E,DiscreteDistribution,function,missing-method">
@@ -26,14 +27,17 @@
 <param name="keyword" value="R:   E,MultivariateDistribution,function,missing-method">
 <param name="keyword" value="R:   E,DiscreteMVDistribution,function,missing-method">
 <param name="keyword" value="R:   E,UnivarLebDecDistribution,function,missing-method">
+<param name="keyword" value="R:   E,UnivarMixingDistribution,function,missing-method">
 <param name="keyword" value="R:   E,AcDcLcDistribution,ANY,ANY-method">
 <param name="keyword" value="R:   E,CompoundDistribution,missing,missing-method">
 <param name="keyword" value="R:   E,UnivariateCondDistribution,missing,numeric-method">
 <param name="keyword" value="R:   E,AbscontCondDistribution,missing,numeric-method">
 <param name="keyword" value="R:   E,DiscreteCondDistribution,missing,numeric-method">
 <param name="keyword" value="R:   E,UnivarLebDecDistribution,missing,ANY-method">
+<param name="keyword" value="R:   E,UnivarMixingDistribution,missing,ANY-method">
 <param name="keyword" value="R:   E,UnivarLebDecDistribution,function,ANY-method">
 <param name="keyword" value="R:   E,UnivariateCondDistribution,function,numeric-method">
+<param name="keyword" value="R:   E,UnivarMixingDistribution,function,ANY-method">
 <param name="keyword" value="R:   E,AbscontCondDistribution,function,numeric-method">
 <param name="keyword" value="R:   E,DiscreteCondDistribution,function,numeric-method">
 <param name="keyword" value="R:   E,Arcsine,missing,missing-method">
@@ -93,6 +97,38 @@ E(object, fun,
 E(object, fun,  useApply = TRUE,
              low = NULL, upp = NULL, 
              rel.tol= getdistrExOption("ErelativeTolerance"), 
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+             IQR.fac = getdistrExOption("IQR.fac"), ...)
+
+## S4 method for signature 'UnivarMixingDistribution,
+##   missing, missing':
+E(object, low = NULL, 
+             upp = NULL, rel.tol= getdistrExOption("ErelativeTolerance"), 
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+             IQR.fac = getdistrExOption("IQR.fac"), ...)
+
+## S4 method for signature 'UnivarMixingDistribution,
+##   function, missing':
+E(object, fun, low = NULL, 
+             upp = NULL, rel.tol= getdistrExOption("ErelativeTolerance"), 
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+             IQR.fac = getdistrExOption("IQR.fac"), ...)
+
+## S4 method for signature 'UnivarMixingDistribution,
+##   missing, ANY':
+E(object, cond, low = NULL, 
+             upp = NULL, rel.tol= getdistrExOption("ErelativeTolerance"), 
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+             IQR.fac = getdistrExOption("IQR.fac"), ...)
+
+## S4 method for signature 'UnivarMixingDistribution,
+##   function, ANY':
+E(object, fun, cond, 
+             low = NULL, upp = NULL, rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
              IQR.fac = getdistrExOption("IQR.fac"), ...)
@@ -422,6 +458,16 @@ abs. continuous part and subsequent weighting.
 <dt>object = "UnivarLebDecDistribution", fun = "function", cond = "ANY":</dt><dd>expectation by separate evaluation of expectation of discrete and
 abs. continuous part and subsequent weighting.
 </dd>
+<dt>object = "UnivarMixingDistribution", fun = "missing", cond = "missing":</dt><dd>expectation is computed component-wise with subsequent weighting acc.
+to <code>mixCoeff</code>.</dd>
+<dt>object = "UnivarMixingDistribution", fun = "function", cond = "missing":</dt><dd>expectation is computed component-wise with subsequent weighting acc.
+to <code>mixCoeff</code>.</dd>
+<dt>object = "UnivarMixingDistribution", fun = "missing", cond = "ANY":</dt><dd>expectation is computed component-wise with subsequent weighting acc.
+to <code>mixCoeff</code>.</dd>
+<dt>object = "UnivarMixingDistribution", fun = "function", cond = "ANY":</dt><dd>expectation is computed component-wise with subsequent weighting acc.
+to <code>mixCoeff</code>.</dd>
+
+
 <dt>object = "AcDcLcDistribution", fun = "ANY", cond = "ANY":</dt><dd>expectation by first coercing to class <code>"UnivarLebDecDistribution"</code>
 and using the corresponding method.
 </dd>

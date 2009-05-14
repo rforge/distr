@@ -869,3 +869,79 @@ setMethod("E", signature(object = "CompoundDistribution",
           return(E(simplifyD(object), low = low, upp = upp, ...))
        }
     })
+
+setMethod("E", signature(object = "UnivarMixingDistribution",
+                         fun = "missing",
+                         cond = "missing"),
+    function(object, low = NULL, upp = NULL, rel.tol= getdistrExOption("ErelativeTolerance"), 
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+             IQR.fac = getdistrExOption("IQR.fac"), ...){
+        l <- length(object@mixCoeff)
+        Ei <- numeric(l)
+        for(i in 1:l)
+            Ei <- object@mixCoeff[i] * E(object = object@mixDistr[[i]], low = low, 
+                                         upp = upp, rel.tol = rel.tol,
+                                         lowerTruncQuantile = lowerTruncQuantile, 
+                                         upperTruncQuantile = upperTruncQuantile, 
+                                         IQR.fac = IQR.fac, ...)
+        sum(Ei)
+    })
+setMethod("E", signature(object = "UnivarMixingDistribution",
+                         fun = "function",
+                         cond = "missing"),
+    function(object, fun, useApply = TRUE, low = NULL, upp = NULL, 
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+             IQR.fac = getdistrExOption("IQR.fac"), ... ){
+        l <- length(object@mixCoeff)
+        Ei <- numeric(l)
+        for(i in 1:l)
+            Ei <- object@mixCoeff[i] * E(object = object@mixDistr[[i]], 
+                                         fun = fun, low = low, 
+                                         upp = upp, rel.tol = rel.tol,
+                                         lowerTruncQuantile = lowerTruncQuantile, 
+                                         upperTruncQuantile = upperTruncQuantile, 
+                                         IQR.fac = IQR.fac, ...)
+        sum(Ei)
+    })
+setMethod("E", signature(object = "UnivarMixingDistribution",
+                         fun = "missing",
+                         cond = "ANY"),
+    function(object, cond, low = NULL, upp = NULL, 
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+             IQR.fac = getdistrExOption("IQR.fac"), ... ){
+        l <- length(object@mixCoeff)
+        Ei <- numeric(l)
+        for(i in 1:l)
+            Ei <- object@mixCoeff[i] * E(object = object@mixDistr[[i]], 
+                                         cond = cond, low = low, 
+                                         upp = upp, rel.tol = rel.tol,
+                                         lowerTruncQuantile = lowerTruncQuantile, 
+                                         upperTruncQuantile = upperTruncQuantile, 
+                                         IQR.fac = IQR.fac, ...)
+        sum(Ei)
+    })
+
+setMethod("E", signature(object = "UnivarMixingDistribution",
+                         fun = "function",
+                         cond = "ANY"),
+    function(object, fun, cond, useApply = TRUE, low = NULL, upp = NULL, 
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+             IQR.fac = getdistrExOption("IQR.fac"), ... ){
+        l <- length(object@mixCoeff)
+        Ei <- numeric(l)
+        for(i in 1:l)
+            Ei <- object@mixCoeff[i] * E(object = object@mixDistr[[i]], 
+                                         cond = cond, fun = fun, low = low, 
+                                         upp = upp, rel.tol = rel.tol,
+                                         lowerTruncQuantile = lowerTruncQuantile, 
+                                         upperTruncQuantile = upperTruncQuantile, 
+                                         IQR.fac = IQR.fac, ...)
+        sum(Ei)
+    })

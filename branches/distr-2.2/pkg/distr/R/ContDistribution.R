@@ -430,45 +430,45 @@ setMethod("Math", "AbscontDistribution",
 setMethod("abs", "AbscontDistribution",
     function(x){
        if (.isEqual(p(x)(0),0)) return(x)
-       x <- x
+       xx <- x
        rnew <- function(n, ...){}
-       body(rnew) <- substitute({ abs(g(n, ...)) }, list(g = x@r))
+       body(rnew) <- substitute({ abs(g(n, ...)) }, list(g = xx@r))
        
        isSym0 <- FALSE
-       if(is(Symmetry(x),"SphericalSymmetry"))
-          if(.isEqual(SymmCenter(Symmetry(x)),0))
+       if(is(Symmetry(xx),"SphericalSymmetry"))
+          if(.isEqual(SymmCenter(Symmetry(xx)),0))
              isSym0 <- TRUE  
        
        if(isSym0){
-          if (is.null(gaps(x)))
+          if (is.null(gaps(xx)))
               gapsnew <- NULL
           else {gapsnew <- gaps[gaps[,2]>=0,]
                 VZW <- gapsnew[,1] <= 0 
                 gapsnew[VZW,1] <- 0
                 gapsnew <- .consolidategaps(gapsnew)}
-          dOx <- d(x)
+          dOx <- d(xx)
 
           dxlog <- if("log" %in% names(formals(dOx))) 
                         quote({dOx(x, log = TRUE)})
                    else quote({log(dOx(x))})
           pxlog <- if("log.p" %in% names(formals(p(x))) && 
                        "lower.tail" %in% names(formals(p(x)))) 
-                        quote({p(x)(q, lower.tail = FALSE, log.p = TRUE)})
+                        quote({p(xx)(q, lower.tail = FALSE, log.p = TRUE)})
                    else
-                        quote({log(1-p(x)(q))})
+                        quote({log(1-p(xx)(q))})
 
-          qxlog <- if("lower.tail" %in% names(formals(q(x)))) 
+          qxlog <- if("lower.tail" %in% names(formals(q(xx)))) 
                           quote({qx <- if(lower.tail)
-                                          q(x)((1+p1)/2)
+                                          q(xx)((1+p1)/2)
                                        else
-                                          q(x)(p1/2,lower.tail=FALSE)}) 
+                                          q(xx)(p1/2,lower.tail=FALSE)}) 
                       else
-                          quote({qx <- q(x)(if(lower.tail) (1+p1)/2 else 1-p1/2)})
-          if("lower.tail" %in% names(formals(q(x)))&& 
-             "log.p" %in% names(formals(q(x))))           
-              qxlog <- quote({qx <- if(lower.tail) q(x)((1+p1)/2)
+                          quote({qx <- q(xx)(if(lower.tail) (1+p1)/2 else 1-p1/2)})
+          if("lower.tail" %in% names(formals(q(xx)))&& 
+             "log.p" %in% names(formals(q(xx))))           
+              qxlog <- quote({qx <- if(lower.tail) q(xx)((1+p1)/2)
                                        else
-                                          q(x)(if(log.p)p-log(2)
+                                          q(xx)(if(log.p)p-log(2)
                                                else p1/2,lower.tail=FALSE,log.p=log.p)}) 
           dnew <- function(x, log = FALSE){}
           body(dnew) <- substitute({
@@ -501,21 +501,20 @@ setMethod("abs", "AbscontDistribution",
             }, list(qxlog0 = qxlog, objN= quote(.getObjName(1))))
                    
        }else{
-            if (is.null(gaps(x)))
+            if (is.null(gaps(xx)))
                 gapsnew <- NULL
-            else {VZW <- gaps(x)[,1] <= 0 & gaps(x)[,2] >= 0
-                  gapsnew <- t(apply(abs(gaps(x)), 1, sort))
-                  gapsnew[VZW,2] <- pmin(-gaps(x)[VZW,1], gaps(x)[VZW,2])
+            else {VZW <- gaps(xx)[,1] <= 0 & gaps(xx)[,2] >= 0
+                  gapsnew <- t(apply(abs(gaps(xx)), 1, sort))
+                  gapsnew[VZW,2] <- pmin(-gaps(xx)[VZW,1], gaps(x)[VZW,2])
                   gapsnew[VZW,1] <- 0
                   gapsnew <- .consolidategaps(gapsnew)}
             
-            lower <- max(0, getLow(x))
-            upper <- max(-getLow(x) , abs(getUp(x)))
+            lower <- max(0, getLow(xx))
+            upper <- max(-getLow(xx) , abs(getUp(xx)))
 
             n <- getdistrOption("DefaultNrFFTGridPointsExponent")
             h <- (upper-lower)/2^n
 
-            xx <- x
             x.g <- seq(from = lower, to = upper, by = h)
 
             dnew <- function(x, log = FALSE){
@@ -527,16 +526,16 @@ setMethod("abs", "AbscontDistribution",
                     return(dx)
             }
             
-            pxlow <- if("lower.tail" %in% names(formals(p(x))))
-                        substitute({p(x)(q, lower=FALSE)})
+            pxlow <- if("lower.tail" %in% names(formals(p(xx))))
+                        substitute({p(xx)(q, lower=FALSE)})
                    else
-                        substitute({1-p(x)(q)})
+                        substitute({1-p(xx)(q)})
 
             pnew <- function(q, lower.tail = TRUE, log.p = FALSE){}
             body(pnew) <- substitute({
                     px <- if (lower.tail)
-                            (q>=0) * (p(x)(q) - p(x)(-q))                    
-                          else pxlow0 + p(x)(-q)
+                            (q>=0) * (p(xx)(q) - p(xx)(-q))                    
+                          else pxlow0 + p(xx)(-q)
                     if (log.p) px <- log(px)
                     return(px)
             }, list(pxlow0 = pxlow))
@@ -544,7 +543,7 @@ setMethod("abs", "AbscontDistribution",
             px.l <- pnew(x.g + 0.5*h)
             px.u <- pnew(x.g + 0.5*h, lower.tail = FALSE)
             
-            yR <- max(q(x)(1), abs(q(x)(0)))
+            yR <- max(q(xx)(1), abs(q(xx)(0)))
 
             qnew <- .makeQNew(x.g + 0.5*h, px.l, px.u,
                               notwithLLarg = FALSE,  lower, yR)
@@ -553,7 +552,7 @@ setMethod("abs", "AbscontDistribution",
  
     }
     object <- AbscontDistribution( r = rnew, p = pnew, q = qnew, d = dnew, 
-                     gaps = gapsnew,  .withSim = x@.withSim, .withArith = TRUE,
+                     gaps = gapsnew,  .withSim = xx@.withSim, .withArith = TRUE,
                      .lowerExact = .lowerExact(x), .logExact = FALSE)
     object
     })
