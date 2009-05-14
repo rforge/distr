@@ -880,7 +880,7 @@ setMethod("E", signature(object = "UnivarMixingDistribution",
         l <- length(object@mixCoeff)
         Ei <- numeric(l)
         for(i in 1:l)
-            Ei <- object@mixCoeff[i] * E(object = object@mixDistr[[i]], low = low, 
+            Ei[i] <- object@mixCoeff[i] * E(object = object@mixDistr[[i]], low = low, 
                                          upp = upp, rel.tol = rel.tol,
                                          lowerTruncQuantile = lowerTruncQuantile, 
                                          upperTruncQuantile = upperTruncQuantile, 
@@ -898,7 +898,7 @@ setMethod("E", signature(object = "UnivarMixingDistribution",
         l <- length(object@mixCoeff)
         Ei <- numeric(l)
         for(i in 1:l)
-            Ei <- object@mixCoeff[i] * E(object = object@mixDistr[[i]], 
+            Ei[i] <- object@mixCoeff[i] * E(object = object@mixDistr[[i]], 
                                          fun = fun, low = low, 
                                          upp = upp, rel.tol = rel.tol,
                                          lowerTruncQuantile = lowerTruncQuantile, 
@@ -917,7 +917,7 @@ setMethod("E", signature(object = "UnivarMixingDistribution",
         l <- length(object@mixCoeff)
         Ei <- numeric(l)
         for(i in 1:l)
-            Ei <- object@mixCoeff[i] * E(object = object@mixDistr[[i]], 
+            Ei[i] <- object@mixCoeff[i] * E(object = object@mixDistr[[i]], 
                                          cond = cond, low = low, 
                                          upp = upp, rel.tol = rel.tol,
                                          lowerTruncQuantile = lowerTruncQuantile, 
@@ -937,7 +937,7 @@ setMethod("E", signature(object = "UnivarMixingDistribution",
         l <- length(object@mixCoeff)
         Ei <- numeric(l)
         for(i in 1:l)
-            Ei <- object@mixCoeff[i] * E(object = object@mixDistr[[i]], 
+            Ei[i] <- object@mixCoeff[i] * E(object = object@mixDistr[[i]], 
                                          cond = cond, fun = fun, low = low, 
                                          upp = upp, rel.tol = rel.tol,
                                          lowerTruncQuantile = lowerTruncQuantile, 
