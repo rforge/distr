@@ -404,4 +404,21 @@ setMethod("skewness", signature(x = "Gumbel"),
     }
 })
 
+setMethod("skewness", signature(x = "GPareto"),
+    function(x, ...){
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
+    if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))  
+        return(skewness(as(x,"AbscontDistribution"),...))
+    else{
+         k <- shape(x)
+         if(k>=1/3) return(NA)
+         else
+         return( 2*(1+k)*sqrt(1-2*k)/(1-3*k) ) 
+    }
+})
+### source Maple...
 

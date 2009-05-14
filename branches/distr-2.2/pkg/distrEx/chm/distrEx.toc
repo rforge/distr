@@ -14,8 +14,16 @@
 <param name="Local" value="0distrEx-package.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="*,GPareto,numeric-method">
+<param name="Local" value="GPareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="*,Gumbel,numeric-method">
 <param name="Local" value="Gumbel-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="+,GPareto,numeric-method">
+<param name="Local" value="GPareto-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="+,Gumbel,numeric-method">
@@ -346,6 +354,10 @@
 <param name="Local" value="E.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="E,GPareto,missing,missing-method">
+<param name="Local" value="E.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="E,Gumbel,missing,missing-method">
 <param name="Local" value="E.html">
 </OBJECT>
@@ -482,6 +494,18 @@
 <param name="Local" value="distrExOptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="GPareto">
+<param name="Local" value="GPareto.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="GPareto-class">
+<param name="Local" value="GPareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="GParetoParameter-class">
+<param name="Local" value="GParetoParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Gumbel">
 <param name="Local" value="Gumbel.html">
 </OBJECT>
@@ -554,6 +578,10 @@
 <param name="Local" value="distrExOptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="initialize,GPareto-method">
+<param name="Local" value="GPareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="initialize,Gumbel-method">
 <param name="Local" value="Gumbel-class.html">
 </OBJECT>
@@ -611,6 +639,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="IQR,Geom-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="IQR,GPareto-method">
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -766,6 +798,10 @@
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="kurtosis,GPareto-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="kurtosis,Gumbel-method">
 <param name="Local" value="Var.html">
 </OBJECT>
@@ -842,6 +878,14 @@
 <param name="Local" value="GumbelParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="loc,GPareto-method">
+<param name="Local" value="GPareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="loc,GParetoParameter-method">
+<param name="Local" value="GParetoParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="loc,Gumbel-method">
 <param name="Local" value="Gumbel-class.html">
 </OBJECT>
@@ -854,12 +898,36 @@
 <param name="Local" value="GumbelParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="loc<-,GPareto-method">
+<param name="Local" value="GPareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="loc<-,GParetoParameter-method">
+<param name="Local" value="GParetoParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="loc<-,Gumbel-method">
 <param name="Local" value="Gumbel-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="loc<-,GumbelParameter-method">
 <param name="Local" value="GumbelParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="location,GPareto-method">
+<param name="Local" value="GPareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="location,GParetoParameter-method">
+<param name="Local" value="GParetoParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="location<-,GPareto-method">
+<param name="Local" value="GPareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="location<-,GParetoParameter-method">
+<param name="Local" value="GParetoParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="m1df">
@@ -919,6 +987,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="m2df,AbscontDistribution-method">
+<param name="Local" value="m2df.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="m2df,AffLinDistribution-method">
 <param name="Local" value="m2df.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -1087,6 +1159,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="median,Geom-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="median,GPareto-method">
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -1274,12 +1350,28 @@
 <param name="Local" value="EuclCondition-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="scale,GPareto-method">
+<param name="Local" value="GPareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="scale,GParetoParameter-method">
+<param name="Local" value="GParetoParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="scale,Gumbel-method">
 <param name="Local" value="Gumbel-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="scale,GumbelParameter-method">
 <param name="Local" value="GumbelParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="scale<-,GPareto-method">
+<param name="Local" value="GPareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="scale<-,GParetoParameter-method">
+<param name="Local" value="GParetoParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="scale<-,Gumbel-method">
@@ -1310,6 +1402,14 @@
 <param name="Local" value="ParetoParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="shape,GPareto-method">
+<param name="Local" value="GPareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="shape,GParetoParameter-method">
+<param name="Local" value="GParetoParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="shape,Pareto-method">
 <param name="Local" value="Pareto-class.html">
 </OBJECT>
@@ -1320,6 +1420,14 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="shape<-">
 <param name="Local" value="ParetoParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="shape<-,GPareto-method">
+<param name="Local" value="GPareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="shape<-,GParetoParameter-method">
+<param name="Local" value="GParetoParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="shape<-,Pareto-method">
@@ -1415,6 +1523,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="skewness,Geom-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="skewness,GPareto-method">
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -1606,6 +1718,10 @@
 <param name="Local" value="Var.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="var,GPareto-method">
+<param name="Local" value="Var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="var,Gumbel-method">
 <param name="Local" value="Var.html">
 </OBJECT>
@@ -1707,12 +1823,20 @@
 <param name="Local" value="GLIntegrate.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generalized Pareto distribution">
+<param name="Local" value="GPareto-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for DiscreteMVDistribution-class">
 <param name="Local" value="DiscreteMVDistribution.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for EuclCondition-class">
 <param name="Local" value="EuclCondition.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for GPareto-class">
+<param name="Local" value="GPareto.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for Gumbel-class">
@@ -1813,6 +1937,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Parameter of a linear regression model">
 <param name="Local" value="LMParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Parameter of generalized Pareto distributions">
+<param name="Local" value="GParetoParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Paramter of Gumbel distributions">

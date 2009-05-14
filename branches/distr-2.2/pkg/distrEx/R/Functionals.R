@@ -8,8 +8,8 @@
 setMethod("var", signature(x = "UnivariateDistribution"),
     function(x, fun = function(t) {t}, cond, withCond = FALSE, useApply = TRUE, 
              ...){
-        dots <- match.call(call = sys.call(sys.parent(1)), 
-                        expand.dots = FALSE)$"..."
+        if(missing(useApply)) useApply <- TRUE
+        dots <- list(...)
         low <- -Inf; upp <- Inf
         if(hasArg(low)) low <- dots$low
         if(hasArg(upp)) upp <- dots$upp
@@ -82,16 +82,16 @@ setMethod("sd", signature(x = "UnivariateDistribution"),
     function(x, fun, cond, withCond = FALSE, useApply = TRUE, ...){
       if(missing(fun))
         {if(missing(cond))
-           return(sqrt(var(x, useApply = TRUE, ...)))
+           return(sqrt(var(x, useApply = useApply, ...)))
         else
-           return(sqrt(var(x, cond = cond, withCond = FALSE, useApply = TRUE, 
+           return(sqrt(var(x, cond = cond, withCond = FALSE, useApply = useApply, 
                   ...)))
       }else{
         if(missing(cond))
-           return(sqrt(var(x, fun = fun, useApply = TRUE, ...)))
+           return(sqrt(var(x, fun = fun, useApply = useApply, ...)))
         else
            return(sqrt(var(x, fun = fun, cond = cond, withCond = FALSE, 
-                  useApply = TRUE,...)))
+                  useApply = useApply,...)))
            }           
     })
 
@@ -102,14 +102,14 @@ setMethod("sd", signature(x = "Norm"),
         {if(missing(cond))
            return(sd(param(x)))
         else
-           return(sqrt(var(x, cond = cond, withCond = FALSE, useApply = TRUE, 
+           return(sqrt(var(x, cond = cond, withCond = FALSE, useApply = useApply, 
                   ...)))}
       else
         {if(missing(cond))
-           return(sqrt(var(x, fun = fun, useApply = TRUE, ...)))
+           return(sqrt(var(x, fun = fun, useApply = useApply, ...)))
         else
            return(sqrt(var(x, fun = fun, cond = cond, withCond = FALSE, 
-                  useApply = TRUE,...)))}           
+                  useApply = useApply,...)))}           
     }) 
     
 
@@ -505,6 +505,21 @@ setMethod("var", signature(x = "Gumbel"),
     }})
 ## http://mathworld.wolfram.com/GumbelDistribution.html
 
+setMethod("var", signature(x = "GPareto"),
+    function(x, ...){
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
+    if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
+        return(var(as(x,"AbscontDistribution"),...))
+    else{ k <- shape(x); s <- scale(x)
+        if(k>=1/2) return(NA)
+        return(s^2/(1-k)^2/(1-2*k))
+    }})
+### source http://en.wikipedia.org/wiki/Pareto_distribution
+
 #################################################################
 # some exact medians
 #################################################################
@@ -547,6 +562,10 @@ setMethod("median", signature(x = "Gumbel"),
     function(x) {a <- loc(x); b <- scale(x)
               return(a - b *log(log(2)))
     })
+setMethod("median", signature(x = "GPareto"),
+    function(x) {k <- shape(x); mu <- loc(x); s <- scale(x)
+              return(mu + s*(2^k-1)/k)
+    })
 
 #################################################################
 # some exact IQRs
@@ -587,6 +606,10 @@ setMethod("IQR", signature(x = "Pareto"),
 setMethod("IQR", signature(x = "Gumbel"),
     function(x) { b <- scale(x)
               return(b * (log(log(4))-log(log(4/3))))
+    })
+setMethod("IQR", signature(x = "GPareto"),
+    function(x) {k <- shape(x); s<- scale(x)
+              return(s/k*4^k*(1-3^(-k)))
     })
 #################################################################
 # some exact mads

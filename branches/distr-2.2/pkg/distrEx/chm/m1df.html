@@ -82,6 +82,21 @@ The first moment of <code>object</code> clipped at <code>upper</code> is compute
 </dd>
 
 
+<dt>object = "AbscontDistribution":</dt><dd>clipped first moment
+for absolutely continuous univariate distributions which is 
+computed using <code>integrate</code>. </dd>
+
+
+<dt>object = "LatticeDistribution":</dt><dd>clipped first moment
+for discrete univariate distributions which is computed 
+using <code>support</code> and <code>sum</code>. </dd>
+
+
+<dt>object = "AffLinDistribution":</dt><dd>clipped first moment
+for affine linear distributions  which is computed on basis of 
+slot <code>X0</code>. </dd>
+
+
 <dt>object = "Binom":</dt><dd>clipped first moment
 for Binomial distributions which is computed using <code>pbinom</code>. </dd>
 

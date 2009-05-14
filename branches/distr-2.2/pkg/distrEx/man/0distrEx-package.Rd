@@ -44,6 +44,7 @@ Distribution Classes
 |>|>"AbscontDistribution" (from distr)
 |>|>|>"Gumbel"
 |>|>|>"Pareto"
+|>|>|>"GPareto"
 |>"MultivariateDistribution"
 |>|>"DiscreteMVDistribution-class"
 |>"UnivariateCondDistribution"

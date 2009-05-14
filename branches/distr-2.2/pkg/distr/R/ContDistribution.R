@@ -430,6 +430,7 @@ setMethod("Math", "AbscontDistribution",
 setMethod("abs", "AbscontDistribution",
     function(x){
        if (.isEqual(p(x)(0),0)) return(x)
+       x <- x
        rnew <- function(n, ...){}
        body(rnew) <- substitute({ abs(g(n, ...)) }, list(g = x@r))
        
@@ -556,8 +557,6 @@ setMethod("abs", "AbscontDistribution",
                      .lowerExact = .lowerExact(x), .logExact = FALSE)
     object
     })
-aN=abs(N)
-q(aN)(-35,log=T,lower=F)
 
 ## exact: exp for absolutly continuous distributions
 setMethod("exp", "AbscontDistribution",

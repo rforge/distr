@@ -741,6 +741,22 @@ setMethod("E", signature(object = "Gumbel",
     })
 ## http://mathworld.wolfram.com/GumbelDistribution.html
 
+setMethod("E", signature(object = "GPareto", 
+                         fun = "missing", 
+                         cond = "missing"),
+    function(object, low = NULL, upp = NULL, ...){
+    if(!is.null(low)) if(low <= Min(object)) low <- NULL
+    k <- shape(object); s <- scale(object); mu <- loc(object)
+    if(is.null(low) && is.null(upp)){
+        if(k>=1) return(Inf)
+        else return(mu+s/(1-k))
+     }   
+    else
+        return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
+    })
+
+### source http://en.wikipedia.org/wiki/Pareto_distribution
+
 
 ############################ Expectation for UnivarLebDecDistribution
 ### merged from Expectation_LebDec.R on Apr 15 2009

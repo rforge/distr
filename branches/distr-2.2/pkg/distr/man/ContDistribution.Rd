@@ -4,8 +4,6 @@
 \title{Generating function "AbscontDistribution"}
 \description{Generates an object of class  \code{"AbscontDistribution"}}
 
-\synopsis{
-}
 \usage{
 AbscontDistribution(r = NULL, d = NULL, p = NULL, q = NULL,
                    gaps = NULL, param = NULL, img = new("Reals"),

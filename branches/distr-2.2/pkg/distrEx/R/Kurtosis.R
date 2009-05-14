@@ -443,3 +443,20 @@ setMethod("kurtosis", signature(x = "Gumbel"),
     }
 })
 
+setMethod("kurtosis", signature(x = "GPareto"),
+    function(x, ...){
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
+    if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
+        return(kurtosis(as(x,"AbscontDistribution"),...))
+    else{
+         k <- shape(x)
+         if(k>=1/4) return(NA)
+         else
+         return( 3*(3+k+2*k^2)*(1-2*k)/(1-4*k)/(1-3*k)-3) 
+    }
+})
+### source Maple ...
