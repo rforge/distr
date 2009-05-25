@@ -1,0 +1,113 @@
+<html><head><title>Parameter of generalized Pareto distributions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>GParetoParameter-class(distrEx)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   GParetoParameter-class">
+<param name="keyword" value="R:   loc,GParetoParameter-method">
+<param name="keyword" value="R:   loc<-,GParetoParameter-method">
+<param name="keyword" value="R:   location,GParetoParameter-method">
+<param name="keyword" value="R:   location<-,GParetoParameter-method">
+<param name="keyword" value="R:   scale,GParetoParameter-method">
+<param name="keyword" value="R:   scale<-,GParetoParameter-method">
+<param name="keyword" value="R:   shape,GParetoParameter-method">
+<param name="keyword" value="R:   shape<-,GParetoParameter-method">
+<param name="keyword" value=" Parameter of generalized Pareto distributions">
+</object>
+
+
+<h2>Parameter of generalized Pareto distributions</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The class of the parameter of generalized Pareto distribution.
+</p>
+
+
+<h3>Objects from the Class</h3>
+
+<p>
+Objects can be created by calls of the form <code>new("GParetoParameter", ...)</code>.
+</p>
+
+
+<h3>Slots</h3>
+
+<dl>
+<dt><code>loc</code>:</dt><dd>real number: location parameter of 
+a generalized Pareto distribution. </dd>
+<dt><code>scale</code>:</dt><dd>real number: scale parameter of 
+a generalized Pareto distribution. </dd>
+<dt><code>shape</code>:</dt><dd>real number: shape parameter of 
+a generalized Pareto distribution. </dd>
+<dt><code>name</code>:</dt><dd>default name is 
+&ldquo;parameter of a GPareto distribution&rdquo;. </dd>
+</dl>
+
+<h3>Extends</h3>
+
+<p>
+Class <code>"Parameter"</code>, directly.<br>
+Class <code>"OptionalParameter"</code>, by class <code>"Parameter"</code>.
+</p>
+
+
+<h3>Methods</h3>
+
+<dl>
+<dt>loc</dt><dd><code>signature(object = "GParetoParameter")</code>: access method for
+slot <code>loc</code>. </dd>
+<dt>location</dt><dd><code>signature(object = "GParetoParameter")</code>: alias to <code>loc</code>,
+to support argument naming of package <span class="pkg">VGAM</span>. </dd>
+<dt>scale</dt><dd><code>signature(object = "GParetoParameter")</code>: access method for
+slot <code>scale</code>. </dd>
+<dt>shape</dt><dd><code>signature(object = "GParetoParameter")</code>: access method for
+slot <code>shape</code>. </dd>
+<dt>loc&lt;-</dt><dd><code>signature(object = "GParetoParameter")</code>: replace method for
+slot <code>loc</code>. </dd>
+<dt>location&lt;-</dt><dd><code>signature(object = "GParetoParameter")</code>: alias to <code>loc&lt;-</code>,
+to support argument naming of package <span class="pkg">VGAM</span>. </dd>
+<dt>shape&lt;-</dt><dd><code>signature(object = "GParetoParameter")</code>: replace method for
+slot <code>shape</code>. </dd>
+<dt>shape&lt;-</dt><dd><code>signature(object = "GParetoParameter")</code>: replace method for
+slot <code>shape</code>. </dd>
+</dl>
+
+<h3>Author(s)</h3>
+
+<p>
+Nataliya Horbenko <a href="mailto:Nataliya.Horbenko@itwm.fraunhofer.de">Nataliya.Horbenko@itwm.fraunhofer.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="GPareto-class.html">GPareto-class</a></code>, <code><a onclick="findlink('distr', 'Parameter-class.html')" style="text-decoration: underline; color: blue; cursor: hand">Parameter-class</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+new("GParetoParameter")
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>distrEx</em> version 2.2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>
