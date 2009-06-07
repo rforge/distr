@@ -151,7 +151,7 @@ Actually, after \code{Sweave}-ing the \file{.Rnw} file
 to a corresponding \file{.tex} file,  will expand to a rather long form
 (depending on which packages you have attached), but you should not worry
 about your document getting very long, as the inserted \TeX commands 
-(or more precisely {\tt listings}-package commands only declare
+(or more precisely {\tt listings}-package commands) only declare
 the list(s) of registered keywords (for later markup).\\
 In our case this should expand to something like\newline
 %
@@ -276,6 +276,12 @@ Item {\tt "literate"} will be discussed in the next subsection.
 Using the escape character defined as item {\tt "escapechar"},
 you may force \TeX to typeset (parts of) your comments in \TeX style,
 which is handy for mathematical formula.
+
+In an e-mail, Frank Harrell was suggesting to use named colors as usual
+in {\sf R}. As in \TeX we are just using the command \lstinline[language=tex]{\color}
+which expects a comma-separated list of the three rgb coordinates (scaled to be
+in $[0,1]$, a good way to do use {\sf R} colornames is, as Frank suggested,
+to use \code{col2rgb(...)/255} to transform them to \TeX-digestible format.
 
 \paragraph{Changing the markup settings without changing defaults at startup: }
 %

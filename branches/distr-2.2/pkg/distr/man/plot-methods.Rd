@@ -86,34 +86,34 @@
   \item{tmar}{top margin -- useful for non-standard main title sizes}
   \item{bmar}{bottom margin -- useful for non-standard sub title sizes}
   \item{verticals}{logical: if \code{TRUE}, draw vertical lines at steps;
-                   as in \code{\link[stats]{plot.stepfun}}} 
+                   as in \code{\link[graphics]{plot.stepfun}}} 
   \item{do.points}{logical: if \code{TRUE}, draw  also draw points at the 
          (\code{xlim} restricted) knot locations; as 
-         in \code{\link[stats]{plot.stepfun}}} 
+         in \code{\link[graphics]{plot.stepfun}}} 
   \item{cex.points}{numeric; character expansion factor; as in 
-                    \code{\link[stats]{plot.stepfun}}}              
+                    \code{\link[graphics]{plot.stepfun}}}              
   \item{col.points}{character or integer code; color of points; as in 
-                    \code{\link[stats]{plot.stepfun}}}              
+                    \code{\link[graphics]{plot.stepfun}}}              
   \item{col.hor}{character or integer code; color of horizontal lines; as in 
-                    \code{\link[stats]{plot.stepfun}}}              
+                    \code{\link[graphics]{plot.stepfun}}}              
   \item{col.vert}{character or integer code; color of vertical lines; as in 
-                    \code{\link[stats]{plot.stepfun}}}              
+                    \code{\link[graphics]{plot.stepfun}}}              
   \item{cex.main}{magnification to be used for main titles relative
           to the current setting of \code{cex}; as in 
-          \code{\link[stats]{par}}}
+          \code{\link[graphics]{par}}}
   \item{cex.inner}{magnification to be used for inner titles relative
           to the current setting of \code{cex}; as in 
-          \code{\link[stats]{par}}}
+          \code{\link[graphics]{par}}}
   \item{cex.sub}{magnification to be used for sub titles relative
           to the current setting of \code{cex}; as in 
-          \code{\link[stats]{par}}}
+          \code{\link[graphics]{par}}}
   \item{col.main}{character or integer code; color for the main title}              
   \item{col.inner}{character or integer code; color for the inner title}              
   \item{col.sub}{character or integer code; color for the sub title}              
   \item{pch.u}{character or integer code; plotting characters or symbols for
-               unattained value; see \code{\link[stats]{points}}}              
+               unattained value; see \code{\link[graphics]{points}}}              
   \item{pch.a}{character or integer code; plotting characters or symbols for
-               attained value; see \code{\link[stats]{points}}}              
+               attained value; see \code{\link[graphics]{points}}}              
   \item{mfColRow}{shall default partition in panels be used --- defaults to \code{TRUE}}
   \item{to.draw.arg}{Either \code{NULL} (default; everything
   is plotted) or a vector of either integers 
@@ -128,9 +128,9 @@
   three panels for the absolutely continuous and the discrete part, respectively; 
   }
   \item{\dots}{addtional arguments for \code{plot} --- see 
-               \code{\link[stats]{plot}}, 
-               \code{\link[stats]{plot.default}}, 
-               \code{\link[stats]{plot.stepfun}} }
+               \code{\link[graphics]{plot}}, 
+               \code{\link[graphics]{plot.default}}, 
+               \code{\link[graphics]{plot.stepfun}} }
 }
 \details{
 \describe{
@@ -250,8 +250,8 @@ P <- Pois(2)
 plot(as(P,"UnivarLebDecDistribution"),mfColRow = FALSE,to.draw.arg=c("d.d"))
 
 }
-\seealso{\code{\link[stats]{plot}},\code{\link[stats]{plot.default}}, 
-         \code{\link[stats]{plot.stepfun}},  \code{\link[stats]{par}}}
+\seealso{\code{\link[graphics]{plot}},\code{\link[graphics]{plot.default}}, 
+         \code{\link[graphics]{plot.stepfun}},  \code{\link[graphics]{par}}}
 \keyword{methods}
 \keyword{hplot}
 \keyword{distribution}
