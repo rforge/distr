@@ -9,7 +9,8 @@ Rset = list("fancyvrb" = "true", "escapechar" = "`",
         "language" = "R", "basicstyle" = "{\\color{Rcolor}\\small}",
         "keywordstyle" = "{\\bf\\color{Rcolor}}",
         "commentstyle" = "{\\color{Rcomment}\\ttfamily\\itshape}",
-        "literate" = "{<-}{{$\\leftarrow$}}2{<<-}{{$\\twoheadleftarrow$}}2",
+        "literate" = "{<-}{{$\\leftarrow$}}2{<<-}{{$\\twoheadleftarrow$}}2{~}{{$\\sim$}}1{<=}{{$\\leq$}}2{>=}{{$\\geq$}}2{^}{{$^\\wedge$}}1",
+                     ## ~,^,<=, >= as suggested by Frank Harrell
         "alsoother" = "{$}", "alsoletter" = "{.<-}",
         "otherkeywords" = "{!,!=,~,$,*,\\&,\\%/\\%,\\%*\\%,\\%\\%,<-,<<-,/}"        
         ),

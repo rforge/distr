@@ -277,10 +277,11 @@ Using the escape character defined as item {\tt "escapechar"},
 you may force \TeX to typeset (parts of) your comments in \TeX style,
 which is handy for mathematical formula.
 
-In an e-mail, Frank Harrell was suggesting to use named colors as usual
-in {\sf R}. As in \TeX we are just using the command \lstinline[language=tex]{\color}
+In an e-mail, Frank Harrell suggested to use {\sf R} color names
+to assign markup colors as \code{Rcolor}.
+As in \TeX we are just using the command \lstinline[language=tex]{\color}
 which expects a comma-separated list of the three rgb coordinates (scaled to be
-in $[0,1]$, a good way to do use {\sf R} colornames is, as Frank suggested,
+in $[0,1]$), a good way to do this is, as Frank suggested,
 to use \code{col2rgb(...)/255} to transform them to \TeX-digestible format.
 
 \paragraph{Changing the markup settings without changing defaults at startup: }
@@ -334,7 +335,7 @@ Note that the {\tt .Rnw} file still contains valid {\sf R} code
 in the chunks; \code{stangle} will work just fine --- the chunks are just output 
 by \TeX\ in a somewhat transformed way.
 
-A considerable part of {\sf R} would rather prefer to see the code output
+A considerable part of {\sf R} users would rather prefer to see the code output
 ``as you type it''; if you tend to think like this, you are free of course
 to change the default markup as described in the previous section. 
 %
