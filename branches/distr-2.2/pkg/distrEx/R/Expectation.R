@@ -265,8 +265,7 @@ setMethod("E", signature(object = "AbscontCondDistribution",
              rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrExOption("IQR.fac"), ...
-             ){
+             IQR.fac = getdistrExOption("IQR.fac"), ...){
         fct <- function(x, dfun, cond){ x * dfun(x, cond) }
         if(useApply){
             integrand <- function(x, dfun, cond){ 
@@ -280,7 +279,7 @@ setMethod("E", signature(object = "AbscontCondDistribution",
         if(is.null(upp)) upp <- Inf
 
         Ib <- .getIntbounds(object, low, upp, lowerTruncQuantile, 
-              upperTruncQuantile, IQR.fac, cond = cond)
+                            upperTruncQuantile, IQR.fac, cond = cond)
         low <- Ib["low"]
         upp <- Ib["upp"]
 
@@ -291,7 +290,7 @@ setMethod("E", signature(object = "AbscontCondDistribution",
 setMethod("E", signature(object = "DiscreteCondDistribution", 
                          fun = "missing",
                          cond = "numeric"),
-    function(object,  cond, useApply = TRUE, low = NULL, upp = NULL, ...){
+    function(object, cond, useApply = TRUE, low = NULL, upp = NULL, ...){
         if(is.null(low)) low <- -Inf
         if(is.null(upp)) upp <- Inf
         supp <- support(object)(cond)
@@ -307,7 +306,7 @@ setMethod("E", signature(object = "UnivariateCondDistribution",
                          fun = "function", 
                          cond = "numeric"),
     function(object, fun, cond, withCond = FALSE, useApply = TRUE, 
-             Nsim = getdistrExOption("MCIterations"), ...){
+             low = NULL, upp = NULL, Nsim = getdistrExOption("MCIterations"), ...){
         xsim <- r(object)(Nsim, cond)
         if(is.null(low)) low <- -Inf
         if(is.null(upp)) upp <- Inf
@@ -333,8 +332,7 @@ setMethod("E", signature(object = "AbscontCondDistribution",
              rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrExOption("IQR.fac")
-             , ...){
+             IQR.fac = getdistrExOption("IQR.fac"), ...){
         if(withCond)
             if(useApply){
                 integrand <- function(x, dfun, fun, cond, ...){ 
