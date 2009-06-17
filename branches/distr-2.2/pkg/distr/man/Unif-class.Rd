@@ -17,10 +17,6 @@ This object is a uniform distribution.
 }
 \section{Slots}{
   \describe{
-    \item{*}{\code{signature(e1 = "Unif", e2 = "numeric")}: multiplication of this uniform distribution by an object of
-    class `numeric'}
-    \item{+}{\code{signature(e1 = "Unif", e2 = "numeric")}: addition of this uniform distribution to an object of class
-    `numeric'}
     \item{\code{img}:}{Object of class \code{"Reals"}: The space of the image of this distribution has got dimension 1
     and the name "Real Space". }
     \item{\code{param}:}{Object of class \code{"UnifParameter"}: the parameter of this distribution (Min and Max),
@@ -59,8 +55,10 @@ a Beta distribution with parameters \code{shape1 = 1, shape2 = 1, ncp = 0}.
     \item{Min<-}{\code{signature(object = "Unif")}: modifies the slot \code{Min} of the parameter of the distribution }
     \item{Max}{\code{signature(object = "Unif")}: returns the slot \code{Max} of the parameter of the distribution }
     \item{Max<-}{\code{signature(object = "Unif")}: modifies the slot \code{Max} of the parameter of the distribution }
-    \item{*}{\code{signature(e1 = "Unif", e2 = "numeric")}:
-    For the uniform distribution we use its closedness under scaling transformations.}
+    \item{*}{\code{signature(e1 = "Unif", e2 = "numeric")}: multiplication of this uniform distribution
+    by an object of class `numeric'}
+    \item{+}{\code{signature(e1 = "Unif", e2 = "numeric")}: addition of this uniform distribution
+    to an object of class `numeric'}
 }}
 
 \author{
