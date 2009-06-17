@@ -16,7 +16,7 @@ and simulation classes as introduced there to capture the situation from which t
 \tabular{ll}{
 Package: \tab distrTEst\cr
 Version: \tab 2.2\cr
-Date: \tab 2009-03-19\cr
+Date: \tab 2009-06-17\cr
 Depends: \tab R(>= 2.6.0), methods, graphics, setRNG(>= 2006.2-1), distr(>=
 2.0), distrSim(>= 2.0), startupmsg\cr
 LazyLoad: \tab yes\cr
