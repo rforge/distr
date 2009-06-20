@@ -28,7 +28,9 @@
                         basicstyle={\color{Rcolor}\small},%
                         keywordstyle={\bf\color{Rcolor}},%
                         commentstyle={\color{Rcomment}\ttfamily\itshape},%
-                        literate={<-}{{$\leftarrow$}}2{<<-}{{$\twoheadleftarrow$}}2,%
+                        literate={<-}{{$\leftarrow$}}2{<<-}{{$\twoheadleftarrow$}}2%
+                                 {~}{{$\\sim$}}1{<=}{{$\\leq$}}2%
+                                 {>=}{{$\\geq$}}2{^}{{$^\\wedge$}}1,%
                         alsoother={$},%
                         alsoletter={.<-},%
                         otherkeywords={!,!=,~,$,*,\&,\%/\%,\%*\%,\%\%,<-,<<-,/}}%
@@ -87,7 +89,7 @@ keywordstyle={[3]{\bf}}%
 
 %
 ...
-snipped expanded \TeX\ code for registration of packages 
+snipped expanded \TeX\ code for registration of packages
         tools, stats, graphics, grDevices, utils, datasets, methods, base
 ...
 %
@@ -97,4 +99,4 @@ snipped expanded \TeX\ code for registration of packages
 %%
 \lstset%
 {keywordstyle={[2]\bf\color{blue}}
-}% 
+}%

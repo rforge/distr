@@ -336,7 +336,7 @@ in the chunks; \code{stangle} will work just fine --- the chunks are just output
 by \TeX\ in a somewhat transformed way.
 
 A considerable part of {\sf R} users would rather prefer to see the code output
-``as you type it''; if you tend to think like this, you are free of course
+``as you type it''; if you tend to think you like this, you are free of course
 to change the default markup as described in the previous section. 
 %
 %
