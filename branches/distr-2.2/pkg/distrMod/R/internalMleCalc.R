@@ -73,7 +73,7 @@
           {warning("Optimization for MCE did not give a valid result. You could try to use argument 'penalty'.")
            theta <- as.numeric(rep(NA, lnx+lmx))
            res <- new("MCEstimate", name = est.name, estimate = theta,
-                       criterion = crit, Infos = Infos, samplesize = samplesize,
+                       criterion = crit, Infos = Infos, samplesize = res$samplesize,
                        nuis.idx = nuis.idx, estimate.call = call,
                        trafo = traf0)
            return(res)}
