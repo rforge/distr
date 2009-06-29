@@ -1,0 +1,166 @@
+<html><head><title>Elliptical distribution class</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>EllipticalDistribution-class(distrEllipse)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   EllipticalDistribution-class">
+<param name="keyword" value="R:   scale,EllipticalDistribution-method">
+<param name="keyword" value="R:   location,EllipticalDistribution-method">
+<param name="keyword" value="R:   scale<-,EllipticalDistribution-method">
+<param name="keyword" value="R:   location<-,EllipticalDistribution-method">
+<param name="keyword" value="R:   E,EllipticalDistribution,missing,missing-method">
+<param name="keyword" value="R:   var,EllipticalDistribution-method">
+<param name="keyword" value="R:   +,EllipticalDistribution,numeric-method">
+<param name="keyword" value="R:   *,EllipticalDistribution,numeric-method">
+<param name="keyword" value="R:   \%*\%,matrix,EllipticalDistribution-method">
+<param name="keyword" value="R:   +,numeric,EllipticalDistribution-method">
+<param name="keyword" value="R:   *,numeric,EllipticalDistribution-method">
+<param name="keyword" value="R:   -,EllipticalDistribution,missing-method">
+<param name="keyword" value="R:   -,EllipticalDistribution,numeric-method">
+<param name="keyword" value="R:   -,numeric,EllipticalDistribution-method">
+<param name="keyword" value="R:   coerce,EllipticalDistribution,UnivariateDistribution-method">
+<param name="keyword" value="R:   coerce,UnivariateDistribution,EllipticalDistribution-method">
+<param name="keyword" value=" Elliptical distribution class">
+</object>
+
+
+<h2>Elliptical distribution class</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Class <code>EllipticalDistribution</code> implements general elliptically symmetric
+distributions, i.e. starting from a spherically distribution realized as an 
+object <code>S</code> of class <code><a href="SphericalDistribution.html">SphericalDistribution</a></code>, this is the 
+distribution of an affine linear transformation <code>AS+b</code>.
+</p>
+
+
+<h3>Objects from the Class</h3>
+
+<p>
+Objects could in principle be created by calls to <code>new</code>, but more 
+frequently you would create them  via the generating function 
+<code><a href="EllipticalDistribution.html">EllipticalDistribution</a></code>.
+</p>
+
+
+<h3>Slots</h3>
+
+<dl>
+<dt><code>img</code>:</dt><dd>Object of class <code>"Reals"</code>. </dd>
+<dt><code>param</code>:</dt><dd>Object of class <code>"EllipticalParameter"</code>. </dd>
+<dt><code>r</code>:</dt><dd>function with argument <code>n</code>; random number generator</dd>
+<dt><code>d</code>:</dt><dd>optional function; in case it exists:
+the density of the distribution</dd>
+<dt><code>p</code>:</dt><dd>optional function; in case it is non-null:
+the cdf of the distribution evaluated on rectangles, i.e. if a random
+variable <code>X</code> is distributed according to an <code>object</code> of class
+<code>"EllipticalDistribution"</code>, 
+for <code>q</code> a matrix of dimension <i>d x n</i> <code>p(object)(q)</code>
+returns, for each of the <code>n</code> columns 
+<i>P(X[i]&lt;= q[i],;i=1,...,d)</i>.</dd>
+<dt><code>q</code>:</dt><dd>optional function; in case it is non-null:
+the quantile of the distribution evaluated on rectangles, i.e. if a random
+variable <code>X</code> is distributed according to an <code>object</code> of class
+<code>"EllipticalDistribution"</code>, 
+for <code>p</code> a vector of length  <i>n</i>, returns, for each of the 
+<code>n</code> components the infinimal number <i>q[j]</i> such that
+<i>P(X[i]&lt;= q[j],;i=1,...,d)&gt;= p[j]</i>.</dd>
+<dt><code>radDistr</code>:</dt><dd>an object of class <code>UnivariateDistribution</code> with positive 
+support, i.e. <code>p(radDistr)(0)==0</code>; the radial distribution. </dd>
+<dt><code>.withArith</code>:</dt><dd>logical: used internally to issue warnings as to 
+interpretation of arithmetics</dd>
+<dt><code>.withSim</code>:</dt><dd>logical: used internally to issue warnings as to 
+accuracy</dd>
+<dt><code>.logExact</code>:</dt><dd>logical: used internally to flag the case where 
+there are explicit formulae for the log version of density, cdf, and 
+quantile function</dd>
+<dt><code>.lowerExact</code>:</dt><dd>logical: used internally to flag the case where 
+there are explicit formulae for the lower tail version of cdf and quantile 
+function</dd>
+<dt><code>Symmetry</code>:</dt><dd>object of class <code>"EllipticalSymmetry"</code> about 
+center <code>loc</code>;
+used internally to avoid unnecessary calculations.</dd>
+</dl>
+
+<h3>Extends</h3>
+
+<p>
+Class <code>"SphericalDistribution"</code>, directly. <br>
+Class <code>"MultivariateDistribution"</code>, by class <code>"SphericalDistribution"</code>.
+Class <code>"Distribution"</code>, by class <code>"MultivariateDistribution"</code>.
+</p>
+
+
+<h3>Methods</h3>
+
+<dl>
+<dt>location</dt><dd><code>signature(object = "EllipticalDistribution")</code>: wrapped access method for
+slot <code>location</code> of slot <code>param</code>. </dd>
+
+
+<dt>scale</dt><dd><code>signature(x = "EllipticalDistribution")</code>: wrapped access method for
+slot <code>scale</code> of slot <code>param</code>. </dd>
+
+
+<dt>location&lt;-</dt><dd><code>signature(object = "EllipticalDistribution")</code>: wrapped replace method for
+slot <code>location</code> of slot <code>param</code>. </dd>
+
+
+<dt>scale&lt;-</dt><dd><code>signature(x = "EllipticalDistribution")</code>: wrapped replace method for
+slot <code>scale</code> of slot <code>param</code>. </dd>
+
+
+<dt>E</dt><dd><code>signature(object = "EllipticalDistribution", fun = "missing", cond = "missing")</code>: 
+expectation of an elliptically symmetric distribution; exact.
+</dd>
+<dt>var</dt><dd><code>signature(x = "EllipticalDistribution")</code>: 
+expectation of an elliptically symmetric distribution; exact.
+</dd>
+<dt><code>+</code></dt><dd><code>signature(e1 = "EllipticalDistribution", e2 = "numeric")</code>:{
+affine linear transformation; exact.
+}</dd> 
+<dt><code>-</code></dt><dd><code>signature(e1 = "EllipticalDistribution", e2 = "numeric")</code>:{
+affine linear transformation; exact.
+}</dd> 
+<dt><code>-</code></dt><dd><code>signature(e1 = "EllipticalDistribution", e2 = "missing")</code>:{
+affine linear transformation; exact.
+}</dd> 
+<dt><code>*</code></dt><dd><code>signature(e1 = "EllipticalDistribution", e2 = "numeric")</code>:{
+affine linear transformation; exact.
+}</dd> 
+<dt><code>+</code></dt><dd><code>signature(e1 = "numeric", e2 = "EllipticalDistribution")</code>:{
+affine linear transformation; exact.
+}</dd> 
+<dt><code>-</code></dt><dd><code>signature(e1 = "numeric", e2 = "EllipticalDistribution")</code>:{
+affine linear transformation; exact.
+}</dd> 
+<dt><code>*</code></dt><dd><code>signature(e1 = "numeric", e2 = "EllipticalDistribution")</code>:{
+affine linear transformation; exact.
+}</dd> 
+<dt><code>%*%</code></dt><dd><code>signature(e1 = "numeric", e2 = "EllipticalDistribution")</code>:{
+affine linear transformation; exact.
+}</dd> 
+<dt>coerce</dt><dd><code>signature(from = "EllipticalDistribution", to = "UnivariateDistribution")</code>:
+create a <code>UnivariateDistribution</code> object from a (one-dimensional) 
+elliptically symmetric distribution. </dd>
+<dt>coerce</dt><dd><code>signature(from = "UnivariateDistribution", to = "EllipticalDistribution")</code>:
+create a <code>EllipticalDistribution</code> object from a (symmetric) 
+univariate distribution. </dd>
+</dl>
+
+<h3>Author(s)</h3>
+
+<p>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+</p>
+
+
+
+<hr><div align="center">[Package <em>distrEllipse</em> version 0.1 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

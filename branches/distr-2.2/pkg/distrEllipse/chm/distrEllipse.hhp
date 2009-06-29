@@ -1,0 +1,33 @@
+[OPTIONS]
+Auto Index=Yes
+Contents file=distrEllipse.toc
+Compatibility=1.1 or later
+Compiled file=distrEllipse.chm
+Default topic=00Index.html
+Display compile progress=No
+Full-text search=Yes
+Full text search stop list file=..\..\..\gnuwin32\help\R.stp
+Title=R Help for package distrEllipse
+
+
+[FILES]
+00Index.html
+0distrEllipse-package.html
+EllipticalDistribution-class.html
+EllipticalDistribution.html
+EllipticalParameter-class.html
+MultivarDistrList-class.html
+MultivarDistrList.html
+MultivarMixingDistribution-class.html
+MultivarMixingDistribution.html
+MvnormDistribution-class.html
+MvnormDistribution.html
+MvnormParameter-class.html
+MvtDistribution-class.html
+MvtDistribution.html
+MvtParameter-class.html
+SphericalDistribution-class.html
+SphericalDistribution.html
+distrEllipseMASK.html
+distrEllipseoptions.html
+plot-methods.html

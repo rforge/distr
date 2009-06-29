@@ -34,8 +34,9 @@ It is to be preferred to use "evaluate" with a Dataclass object!
 <h3>Slots</h3>
 
 <dl>
-<dt><code>call.ev</code>:</dt><dd>Object of class <code>"call"</code> the call which created the object, 
+<dt><code>call.ev</code>:</dt><dd>Object of class <code>"call"</code>: the call which created the object, 
 e.g.; ``evaluate(Dataclassobject,mean)'' </dd>
+<dt><code>Data</code>:</dt><dd>Object of class <code>"Dataclass"</code>: the data set / simulation on which the evaluation takes place.</dd>
 <dt><code>estimator</code>:</dt><dd>Object of class <code>"OptionalFunction"</code>: estimation function used; this estimation function 
 should be able to deal with data in matrix form <code>samplesize</code> x <code>obsDim</code> and 
 should return either a univariate result or a vector (with named coordinates, if possible).</dd>
@@ -92,7 +93,7 @@ Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de
 <code><a onclick="findlink('distrSim', 'Dataclass-class.html')" style="text-decoration: underline; color: blue; cursor: hand">Dataclass-class</a></code>
 <code><a onclick="findlink('distrSim', 'Simulation-class.html')" style="text-decoration: underline; color: blue; cursor: hand">Simulation-class</a></code>
 <code><a onclick="findlink('distrSim', 'Contsimulation-class.html')" style="text-decoration: underline; color: blue; cursor: hand">Contsimulation-class</a></code>
-<code><a onclick="findlink('R.oo', 'Non-documented_objects.html')" style="text-decoration: underline; color: blue; cursor: hand">load</a></code>
+<code><a onclick="findlink('base', 'load.html')" style="text-decoration: underline; color: blue; cursor: hand">load</a></code>
 <code><a onclick="findlink('distrSim', 'cload.html')" style="text-decoration: underline; color: blue; cursor: hand">cload</a></code>
 <code><a onclick="findlink('distrSim', 'savedata-methods.html')" style="text-decoration: underline; color: blue; cursor: hand">savedata-methods</a></code>
 <code><a href="plot-methods.html">plot-methods</a></code>
@@ -151,6 +152,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center">[Package <em>distrTEst</em> version 2.1 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>distrTEst</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

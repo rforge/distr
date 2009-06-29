@@ -36,10 +36,6 @@ This object is a uniform distribution.
 <h3>Slots</h3>
 
 <dl>
-<dt>*</dt><dd><code>signature(e1 = "Unif", e2 = "numeric")</code>: multiplication of this uniform distribution by an object of
-class `numeric'</dd>
-<dt>+</dt><dd><code>signature(e1 = "Unif", e2 = "numeric")</code>: addition of this uniform distribution to an object of class
-`numeric'</dd>
 <dt><code>img</code>:</dt><dd>Object of class <code>"Reals"</code>: The space of the image of this distribution has got dimension 1
 and the name "Real Space". </dd>
 <dt><code>param</code>:</dt><dd>Object of class <code>"UnifParameter"</code>: the parameter of this distribution (Min and Max),
@@ -87,8 +83,10 @@ a Beta distribution with parameters <code>shape1 = 1, shape2 = 1, ncp = 0</code>
 <dt>Min&lt;-</dt><dd><code>signature(object = "Unif")</code>: modifies the slot <code>Min</code> of the parameter of the distribution </dd>
 <dt>Max</dt><dd><code>signature(object = "Unif")</code>: returns the slot <code>Max</code> of the parameter of the distribution </dd>
 <dt>Max&lt;-</dt><dd><code>signature(object = "Unif")</code>: modifies the slot <code>Max</code> of the parameter of the distribution </dd>
-<dt>*</dt><dd><code>signature(e1 = "Unif", e2 = "numeric")</code>:
-For the uniform distribution we use its closedness under scaling transformations.</dd>
+<dt>*</dt><dd><code>signature(e1 = "Unif", e2 = "numeric")</code>: multiplication of this uniform distribution
+by an object of class `numeric'</dd>
+<dt>+</dt><dd><code>signature(e1 = "Unif", e2 = "numeric")</code>: addition of this uniform distribution
+to an object of class `numeric'</dd>
 </dl>
 
 <h3>Author(s)</h3>

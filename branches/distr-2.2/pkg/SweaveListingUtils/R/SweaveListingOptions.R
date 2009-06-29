@@ -12,7 +12,7 @@ Rset = list("fancyvrb" = "true", "escapechar" = "`",
         "literate" = paste("{<-}{{$\\leftarrow$}}2",
                            "{<<-}{{$\\twoheadleftarrow$}}2",#"%\n",
                            "{~}{{$\\sim$}}1", "{<=}{{$\\leq$}}2",#"%\n",
-                           "{>=}{{$\\geq$}}2", "{^}{{$\\wedge$}}1", sep=""),
+                           "{>=}{{$\\geq$}}2", "{^}{{$\\scriptstyle\\wedge$}}1", sep=""),
                      ## ~,^,<=, >= as suggested by Frank Harrell
         "alsoother" = "{$}", "alsoletter" = "{.<-}",
         "otherkeywords" = "{!,!=,~,$,*,\\&,\\%/\\%,\\%*\\%,\\%\\%,<-,<<-,/}"        

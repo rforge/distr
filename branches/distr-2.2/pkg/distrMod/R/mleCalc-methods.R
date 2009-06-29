@@ -85,6 +85,7 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
         lmx <- length(main(PFam))
         lnx <- length(nuisance(PFam))
         fixed <- fixed(PFam)
+
    
        fun <- function(theta, Data, ParamFamily, criterion, ...){
                vP <- validParameter(ParamFamily, theta)
