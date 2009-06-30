@@ -81,7 +81,8 @@ lstsetLanguage <- function(pkgs, posIdx, keywordstyles, overwrite = FALSE){
 #     print(lP); print(pkgs); print(posIdx); print(search())
      if(lP) {for(i in 1: lP){
         kwl <- ls(pos = which(pkgs[i] == gsub("package:","",search())))
-        kwl <- kwl[grep("^[[:alpha:]]+\\w*",kwl,perl=TRUE)]
+        kwl <- sort(kwl[grep("^[[:alpha:]]+\\w*",kwl,perl=TRUE)],
+                    decreasing = TRUE)
         genKWL(pkg = pkgs[i], kwd = kwl,
                kws = keywordstyles[i])}
      }

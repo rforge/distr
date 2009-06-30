@@ -193,6 +193,7 @@ cat("\\newcommand{\\pkgversion}{{\\tt ",pkv,"}}\n", sep = "")
 cat(line)
 lstsetLanguage()
 cat(line,"%\n%\n",sep="")
+cat("\n")
 return(invisible())
 }
 

@@ -1,0 +1,184 @@
+<html><head><title>Class "MultivarMixingDistribution"</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>MultivarMixingDistribution-class(distrEllipse)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   MultivarMixingDistribution-class">
+<param name="keyword" value="R:   mixCoeff">
+<param name="keyword" value="R:   mixDistr">
+<param name="keyword" value="R:   mixCoeff<-">
+<param name="keyword" value="R:   mixDistr<-">
+<param name="keyword" value="R:   mixCoeff<--methods">
+<param name="keyword" value="R:   mixDistr<--methods">
+<param name="keyword" value="R:   mixCoeff<-,MultivarMixingDistribution-method">
+<param name="keyword" value="R:   mixDistr<-,MultivarMixingDistribution-method">
+<param name="keyword" value="R:   mixCoeff-methods">
+<param name="keyword" value="R:   mixDistr-methods">
+<param name="keyword" value="R:   mixCoeff,MultivarMixingDistribution-method">
+<param name="keyword" value="R:   mixDistr,MultivarMixingDistribution-method">
+<param name="keyword" value="R:   support,MultivarMixingDistribution-method">
+<param name="keyword" value="R:   gaps,MultivarMixingDistribution-method">
+<param name="keyword" value="R:   .logExact,MultivarMixingDistribution-method">
+<param name="keyword" value="R:   .lowerExact,MultivarMixingDistribution-method">
+<param name="keyword" value="R:   Symmetry,MultivarMixingDistribution-method">
+<param name="keyword" value="R:   dimension,MultivarMixingDistribution-method">
+<param name="keyword" value="R:   dim,MultivarMixingDistribution-method">
+<param name="keyword" value="R:   E,MultivarMixingDistribution,ANY,ANY-method">
+<param name="keyword" value="R:   show,MultivarMixingDistribution-method">
+<param name="keyword" value="R:   showobj,MultivarMixingDistribution-method">
+<param name="keyword" value=" Class 'MultivarMixingDistribution'">
+</object>
+
+
+<h2>Class 'MultivarMixingDistribution'</h2>
+
+
+<h3>Description</h3>
+
+<p>
+<code>MultivarMixingDistribution</code>-class is a class to formalize 
+multivariate mixing distributions; it is a subclass to
+class <code>MultivariateDistribution</code>.
+</p>
+
+
+<h3>Objects from the Class</h3>
+
+<p>
+Objects can be created by calls of the form 
+<code>new("MultivarMixingDistribution", ...)</code>.
+More frequently they are created via the generating function 
+<code><a href="MultivarMixingDistribution.html">MultivarMixingDistribution</a></code>.
+</p>
+
+
+<h3>Slots</h3>
+
+<dl>
+<dt><code>mixCoeff</code>:</dt><dd>Object of class <code>"numeric"</code>: a vector of 
+probabilities for the mixing components.</dd>
+<dt><code>mixDistr</code>:</dt><dd>Object of class <code>"MultivarDistrList"</code>: a list of
+multivariate distributions containing the mixing components; must be of same
+length as <code>mixCoeff</code>.</dd>
+<dt><code>img</code>:</dt><dd>Object of class <code>"Reals"</code>: the space of the image of this distribution which has dimension 1
+and the name "Real Space" </dd>
+<dt><code>param</code>:</dt><dd>Object of class <code>"Parameter"</code>: the parameter of this distribution, having only the
+slot name "Parameter of a discrete distribution" </dd>
+<dt><code>r</code>:</dt><dd>Object of class <code>"function"</code>: generates random numbers</dd>
+<dt><code>d</code>:</dt><dd>fixed to <code>NULL</code></dd>
+<dt><code>p</code>:</dt><dd>Object of class <code>"OptionalFunction"</code>: if non-null cumulative distribution function</dd>
+<dt><code>q</code>:</dt><dd>Object of class <code>"OptionalFunction"</code>: if non-null quantile function</dd>
+<dt><code>support</code>:</dt><dd>numeric vector &mdash; the union of all support slots of components, if existing</dd>
+<dt><code>gaps</code>:</dt><dd>(numeric) matrix or <code>NULL</code>; the merged <code>gaps</code> slots of all components, 
+if existing (else NULL)</dd>
+<dt><code>.withArith</code>:</dt><dd>logical: used internally to issue warnings as to interpretation of arithmetics</dd>
+<dt><code>.withSim</code>:</dt><dd>logical: used internally to issue warnings as to accuracy</dd>
+<dt><code>.logExact</code>:</dt><dd>logical: used internally to flag the case where there are explicit formulae for the
+log version of density, cdf, and quantile function</dd>
+<dt><code>.lowerExact</code>:</dt><dd>logical: used internally to flag the case where there are explicit formulae for the
+lower tail version of cdf and quantile function</dd>
+<dt><code>Symmetry</code>:</dt><dd>object of class <code>"DistributionSymmetry"</code>;
+used internally to avoid unnecessary calculations.</dd>
+</dl>
+
+<h3>Extends</h3>
+
+<p>
+Class <code>"MultivariateDistribution"</code>
+class <code>"Distribution"</code> by class <code>"MultivariateDistribution"</code>.
+</p>
+
+
+<h3>Methods</h3>
+
+<dl>
+<dt>show</dt><dd><code>signature(object = "MultivarMixingDistribution")</code> prints the object</dd>
+<dt>mixCoeff&lt;-</dt><dd><code>signature(object = "MultivarMixingDistribution")</code> replaces the corresponding slot</dd>
+<dt>mixCoeff</dt><dd><code>signature(object = "MultivarMixingDistribution")</code> returns the corresponding slot</dd>
+<dt>mixDistr&lt;-</dt><dd><code>signature(object = "MultivarMixingDistribution")</code> replaces the corresponding slot</dd>
+<dt>mixDistr</dt><dd><code>signature(object = "MultivarMixingDistribution")</code> returns the corresponding slot</dd>
+<dt>support</dt><dd><code>signature(object = "MultivarMixingDistribution")</code> returns the corresponding slot</dd>
+<dt>gaps</dt><dd><code>signature(object = "MultivarMixingDistribution")</code> returns the corresponding slot</dd>
+<dt>.logExact</dt><dd><code>signature(object = "Distribution")</code>: returns slot 
+<code>.logExact</code> if existing; else tries to convert the object to a newer 
+version of its class by <code><a onclick="findlink('distr', 'conv2NewVersion.html')" style="text-decoration: underline; color: blue; cursor: hand">conv2NewVersion</a></code> and
+returns the corresponding slot of the converted object.</dd>
+<dt>.lowerExact</dt><dd><code>signature(object = "Distribution")</code>: returns slot 
+<code>.lowerExact</code> if existing; else tries to convert the object to a 
+newer version of its class by <code><a onclick="findlink('distr', 'conv2NewVersion.html')" style="text-decoration: underline; color: blue; cursor: hand">conv2NewVersion</a></code> and
+returns the corresponding slot of the converted object.</dd>
+<dt>Symmetry</dt><dd>returns slot <code>Symmetry</code> if existing; else
+tries to convert the object to a 
+newer version of its class by <code><a onclick="findlink('distr', 'conv2NewVersion.html')" style="text-decoration: underline; color: blue; cursor: hand">conv2NewVersion</a></code> and
+returns the corresponding slot of the converted object.</dd>
+<dt>plot</dt><dd><code>signature(x = "MultivarMixingDistribution", y = "missing")</code>:
+plot for an spherically symmetric distribution; see <code><a href="plot-methods.html">plot-methods</a></code>.
+</dd>
+<dt>E</dt><dd>corresponding expectation &mdash; see <code><a onclick="findlink('distrEx', 'E.html')" style="text-decoration: underline; color: blue; cursor: hand">E</a></code>.</dd>
+<dt>dimension</dt><dd>dim of the range space.</dd>
+<dt>dim</dt><dd>synonym to dimension.</dd>
+<dt>show</dt><dd><code>signature(object = "MultivarMixingDistribution")</code>:
+<code>show</code> method for spherically symmetric distributions.
+</dd>
+<dt>showobj</dt><dd><code>signature(object = "MultivarMixingDistribution")</code>:
+<code>showobj</code> method for spherically symmetric distributions.
+</dd>
+</dl>
+
+<h3>Author(s)</h3>
+
+<p>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a onclick="findlink('distr', 'Parameter-class.html')" style="text-decoration: underline; color: blue; cursor: hand">Parameter-class</a></code>,
+<code><a onclick="findlink('distrEx', 'MultivariateDistribution-class.html')" style="text-decoration: underline; color: blue; cursor: hand">MultivariateDistribution-class</a></code>,
+<code><a onclick="findlink('distr', 'LatticeDistribution-class.html')" style="text-decoration: underline; color: blue; cursor: hand">LatticeDistribution-class</a></code>,
+<code><a onclick="findlink('distr', 'AbscontDistribution-class.html')" style="text-decoration: underline; color: blue; cursor: hand">AbscontDistribution-class</a></code>,
+<code><a onclick="findlink('distr', 'simplifyD.html')" style="text-decoration: underline; color: blue; cursor: hand">simplifyD</a></code>,
+<code><a onclick="findlink('distr', 'flat.mix.html')" style="text-decoration: underline; color: blue; cursor: hand">flat.mix</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+mylist &lt;- MultivarMixingDistribution(Binom(3,.3), Dirac(2), Norm(), 
+          mixCoeff=c(1/4,1/5,11/20))
+mylist2 &lt;- MultivarMixingDistribution(Binom(3,.3), mylist, 
+          mixCoeff=c(.3,.7))
+mylist2
+p(mylist)(0.3)          
+mixDistr(mylist2)
+
+##multivariate
+E1 &lt;- diag(1,2)%*%EllipticalDistribution(radDistr=Gammad())+c(1,2)
+mylistD &lt;- MultivarMixingDistribution(MVNorm(), E1, MVt(),
+          mixCoeff=c(1/4,1/5,11/20))
+mylistD2 &lt;- MultivarMixingDistribution(E1+c(-2,2), mylistD,
+          mixCoeff=c(.3,.7))
+mylistD2
+p(mylistD)
+mixDistr(mylistD2)
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>distrEllipse</em> version 0.1 <a href="00Index.html">Index</a>]</div>
+
+</body></html>
