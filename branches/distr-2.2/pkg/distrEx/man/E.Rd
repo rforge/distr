@@ -44,9 +44,11 @@
 \alias{E,Exp,missing,missing-method}
 \alias{E,Fd,missing,missing-method}
 \alias{E,Gammad,missing,missing-method}
+\alias{E,Gammad,function,missing-method}
 \alias{E,Geom,missing,missing-method}
 \alias{E,Gumbel,missing,missing-method}
 \alias{E,GPareto,missing,missing-method}
+\alias{E,GPareto,function,missing-method}
 \alias{E,Hyper,missing,missing-method}
 \alias{E,Logis,missing,missing-method}
 \alias{E,Lnorm,missing,missing-method}
@@ -187,9 +189,11 @@ E(object, fun, cond, ...)
 \S4method{E}{Exp,missing,missing}(object, low = NULL, upp = NULL, ...)
 \S4method{E}{Fd,missing,missing}(object, low = NULL, upp = NULL, ...)
 \S4method{E}{Gammad,missing,missing}(object, low = NULL, upp = NULL, ...)
+\S4method{E}{Gammad,function,missing}(object, fun, low = NULL, upp = NULL, ...)
 \S4method{E}{Geom,missing,missing}(object, low = NULL, upp = NULL, ...)
 \S4method{E}{Gumbel,missing,missing}(object, low = NULL, upp = NULL, ...)
 \S4method{E}{GPareto,missing,missing}(object, low = NULL, upp = NULL, ...)
+\S4method{E}{GPareto,function,missing}(object, fun, low = NULL, upp = NULL, ...)
 \S4method{E}{Hyper,missing,missing}(object, low = NULL, upp = NULL, ...)
 \S4method{E}{Logis,missing,missing}(object, low = NULL, upp = NULL, ...)
 \S4method{E}{Lnorm,missing,missing}(object, low = NULL, upp = NULL, ...)
@@ -379,12 +383,16 @@ E(object, fun, cond, ...)
     exact evaluation using explicit expressions.}
   \item{object = "Gammad", fun = "missing", cond = "missing":}{ 
     exact evaluation using explicit expressions.}
+  \item{object = "Gammad", fun = "function", cond = "missing":}{ 
+    use substitution method (y := log(x)) for numerical integration.}
   \item{object = "Geom", fun = "missing", cond = "missing":}{ 
     exact evaluation using explicit expressions.}
   \item{object = "Gumbel", fun = "missing", cond = "missing":}{ 
     exact evaluation using explicit expressions.}
   \item{object = "GPareto", fun = "missing", cond = "missing":}{ 
     exact evaluation using explicit expressions.}
+  \item{object = "GPareto", fun = "function", cond = "missing":}{ 
+    use substitution method (y := log(x)) for numerical integration.}
   \item{object = "Hyper", fun = "missing", cond = "missing":}{ 
     exact evaluation using explicit expressions.}
   \item{object = "Logis", fun = "missing", cond = "missing":}{ 
