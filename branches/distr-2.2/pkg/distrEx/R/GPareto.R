@@ -18,7 +18,10 @@ setReplaceMethod("loc", "GParetoParameter",
 setReplaceMethod("location", "GParetoParameter", 
     function(object, value){ object@loc <- value; object })
 setReplaceMethod("scale", "GParetoParameter", 
-    function(object, value){ object@scale <- value; object})
+    function(object, value){
+        if(length(value) != 1 || value <= 0)
+            stop("'value' has to be a single positive real number!")
+        object@scale <- value; object})
 setReplaceMethod("shape", "GParetoParameter", 
     function(object, value){ object@shape <- value; object})
 
@@ -50,8 +53,8 @@ setValidity("GParetoParameter", function(object){
     stop("scale has to be positive")
   if(length(shape(object)) != 1)
     stop("shape has to be a numeric of length 1")    
-  if(shape(object) < 0)
-    stop("shape has to be non-negative")
+#  if(shape(object) < 0)
+#    stop("shape has to be non-negative")
   else return(TRUE)
 })
 
@@ -61,7 +64,7 @@ GPareto <- function(loc = 0, scale = 1, shape = 0, location = loc){
               if(!isTRUE(all.equal(loc,location)))
                  stop("Only one of arguments 'loc' and 'location' may be used.")
            if(!missing(location)) loc <- location
-           if(shape < .Machine$double.eps) return(loc+Exp(rate=1/scale))
+           if(abs(shape) < .Machine$double.eps) return(loc+Exp(rate=1/scale))
            new("GPareto", loc = loc, scale = scale, shape = shape) }
 
 ## extra methods for GPareto distribution
