@@ -7,6 +7,14 @@
 <table width="100%"><tr><td>distrEllipseoptions(distrEllipse)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   distrEllipseoptions">
 <param name="keyword" value="R:   getdistrEllipseOption">
+<param name="keyword" value="R:   Nsim">
+<param name="keyword" value="R:   withED">
+<param name="keyword" value="R:   lwd.Ed">
+<param name="keyword" value="R:   col.Ed">
+<param name="keyword" value="R:   withMean">
+<param name="keyword" value="R:   cex.mean">
+<param name="keyword" value="R:   pch.mean">
+<param name="keyword" value="R:   col.mean">
 <param name="keyword" value=" functions to change the global variables of the package &lsquo;distrEllipse&rsquo;">
 </object>
 
@@ -17,8 +25,8 @@
 <h3>Description</h3>
 
 <p>
-With <code>distrEllipseoptions</code> and <code>getdistrEllipseOption</code> you may inspect and change the global
-variables used by package <span class="pkg">distrEllipse</span>.
+With <code>distrEllipseoptions</code> and <code>getdistrEllipseOption</code> you may
+inspect and change the global variables used by package <span class="pkg">distrEllipse</span>.
 </p>
 
 
@@ -54,49 +62,26 @@ To access the value of a single option, one should use <code>getdistrEllipseOpti
 
 <p>
 <code>distrEllipseoptions()</code> returns a list of the global options of <span class="pkg">distrEllipse</span>. <br>
-<code>distrEllipseoptions("RtoDPQ.e")</code> returns  the global option <code>RtoDPQ.e</code> as a list of length 1. <br>
-<code>distrEllipseoptions("RtoDPQ.e" = 3)</code> sets the value of the global option  <code>RtoDPQ.e</code> to 3.
-<code>getdistrEllipseOption("RtoDPQ.e")</code> the current value set for option <code>RtoDPQ.e</code>.</p>
+<code>distrEllipseoptions("Nsim")</code> returns  the global option <code>Nsim</code> as a list of length 1. <br>
+<code>distrEllipseoptions("Nsim" = 3000)</code> sets the value of the global option  <code>Nsim</code> to 3000.
+<code>getdistrEllipseOption("Nsim")</code> the current value set for option <code>Nsim</code>.</p>
 
 <h3>Currently available options</h3>
 
 <dl>
-<dt><code>DefaultNrGridPoints</code></dt><dd>default number of grid points in integration, default value: <code>2^12</code></dd>
-<dt><code>DistrResolution</code></dt><dd>minimal spacing between two mass points in a discrete distrEllipseibution, default value: <code>1e-6</code></dd>
-<dt><code>DistrCollapse</code></dt><dd>logical; in discrete distrEllipseibutions, shall support points
-with distance smaller than <code>DistrResolution</code> be collapsed; default value:  <code>TRUE</code></dd>
-<dt><code>TruncQuantile</code></dt><dd>argument for <code>q</code>-slot at which to truncate; also, for discrete distrEllipseibutions,
-support is restricted to [<code>q(TruncQuantile)</code>,<code>q(1-TruncQuantile)</code>], default value: <code>1e-5</code></dd>
-<dt><code>DefaultNrFFTGridPointsExponent</code></dt><dd>by default, for e = <code>DefaultNrFFTGridPointsExponent</code>, 
-FFT uses <i>2^e</i> gridpoints; default value: <code>12</code></dd>
-<dt><code>RtoDPQ.e</code></dt><dd>by default, for reconstructing the <code>d</code>-,<code>p</code>-,<code>q</code>-slots out of simulations by slot <code>r</code>,
-<code>RtoDPQ</code> resp. <code>RtoDPQ.d</code> use <i>10^e</i> simulations, where e = <code>RtoDPQ.e</code>, default value: <code>5</code></dd>
-<dt><code>WarningSim</code></dt><dd>if <code>WarningSim==TRUE</code>, <code>print</code>/<code>show</code> issue a warning as to the precision of 
-<code>d</code>-,<code>p</code>-,<code>q</code>-slots when these are obtained by <code>RtoDPQ</code> resp. <code>RtoDPQ.d</code>, default value: <code>TRUE</code></dd>
-<dt><code>WarningArith</code></dt><dd>if <code>WarningArith==TRUE</code>, <code>print</code>/<code>show</code> issue a warning as to the interpretation of
-arithmetics operating on distrEllipseibutions, when the corresponding distrEllipseibution to be plotted/shown is obtained by such an operation;
-keep in mind that arithmetics in fact operate on random variables distrEllipseibuted according to the given distrEllipseibutions and <B>not</B>
-on corresponding cdf's or densities; default value: <code>TRUE</code></dd>
-<dt><code>withSweave</code></dt><dd>is code run in Sweave (then no new graphic devices are opened), 
-default value: <code>FALSE</code></dd>
-<dt><code>withgaps</code></dt><dd>controls whether in the return value of arithmetic
-operations the slot <code>gaps</code> of an the <code>AbscontDistribution</code> part
-is filled automatically based on empirical evaluations via  <code>setgaps</code>
-&mdash;default <code>TRUE</code></dd>
-<dt><code>simplifyD</code></dt><dd>controls whether in the return value of arithmetic
-operations there is a call to <code>simplifyD</code> or not &mdash;default <code>TRUE</code></dd>
-<dt>use.generalized.inverse.by.default</dt><dd>logical; decides whether by default
-(i.e., if argument <code>generalized</code> of <code><a onclick="findlink('SparseM', 'SparseM.solve.html')" style="text-decoration: underline; color: blue; cursor: hand">solve</a></code> is not explicitely
-set), <code><a onclick="findlink('SparseM', 'SparseM.solve.html')" style="text-decoration: underline; color: blue; cursor: hand">solve</a></code> is to use generalized inverses if the original 
-<code>solve</code>-method from package <span class="pkg">base</span> fails; if the option is <code>FALSE</code>, 
-in case of failure, and unless argument <code>generalized</code> is not explicitely 
-set to <code>TRUE</code>, <code>solve</code> will throw an error as is 
-the <span class="pkg">base</span>-method behavior. The default value is <code>TRUE</code>.  
-</dd>
-<dt><code>DistrCollapse.Unique.Warn</code></dt><dd>controls whether there is a warning
-whenever collapsing occurs or when two points are collapsed by a call to
-<code>unique()</code> (default behaviour if <code>DistrCollapse</code> is <code>FALSE</code>);
-&mdash;default <code>FALSE</code></dd>
+<dt><code>Nsim</code></dt><dd>for plotting: number of (simulated) points to be plotted.</dd>
+
+
+<dt><code>withED</code></dt><dd>for plotting: logical; shall principal axes of the contour ellipsoid be plot in
+(for each panel)?</dd>
+<dt><code>lwd.Ed</code></dt><dd>for plotting: line width of principal axes  (for each panel).</dd>
+<dt><code>col.Ed</code></dt><dd>for plotting: color of principal axes  (for each panel).</dd>
+<dt><code>withMean</code></dt><dd>for plotting: logical; shall mean  be plot in  (for each panel)?</dd>
+<dt><code>cex.mean</code></dt><dd>for plotting: size of the mean symbol  (for each panel).</dd>
+<dt><code>pch.mean</code></dt><dd>for plotting: mean symbol  (for each panel).</dd>
+<dt><code>col.mean</code></dt><dd>for plotting: color of the mean symbol (for each panel).</dd>
+
+<p>
 </dl>
 
 <h3>Author(s)</h3>
@@ -116,18 +101,12 @@ Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ru
 <h3>Examples</h3>
 
 <pre>
-distrEllipseoptions("RtoDPQ.e") # returns the value of RtoDPQ.e, by default = 5
+distrEllipseoptions("Nsim") # returns the value of Nsim, by default = 5
 currentDistrOptions &lt;- distrEllipseoptions()
-distrEllipseoptions(RtoDPQ.e = 6)
-distrEllipseoptions("RtoDPQ.e")
-getdistrEllipseOption("RtoDPQ.e")
-distrEllipseoptions(c("WarningSim","WarningArith"))
-getdistrEllipseOption("WarningSim")
-distrEllipseoptions("WarningSim" = FALSE)
-         # switches off warnings as to (In)accuracy due to simulations
-distrEllipseoptions("WarningArith" = FALSE)
-         # switches off warnings as to arithmetics
-distrEllipseoptions(currentDistrOptions)
+distrEllipseoptions(Nsim = 6000)
+distrEllipseoptions("Nsim")
+getdistrEllipseOption("Nsim")
+distrEllipseoptions(c("Nsim","withED"))
 </pre>
 
 <script Language="JScript">

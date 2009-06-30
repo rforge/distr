@@ -13,6 +13,8 @@ SphericalDistribution <- function(radDistr = sqrt(Chisq(df=dim)), dim = 2,
 
 setMethod("dimension", "SphericalDistribution",
            function(object) dimension(object@img))
+setMethod("dim", "SphericalDistribution",
+           function(x) dimension(x@img))
 
 setMethod("radDistr", "SphericalDistribution",
            function(object) object@radDistr)
@@ -55,7 +57,7 @@ setMethod("E", signature(object = "SphericalDistribution",
 
 setMethod("var", signature(x = "SphericalDistribution"),
            function(x,...) diag(dimension(x)) *
-                    E(radDistr(x),fun=function(y)y^2,...)/dimension(x)
+                    E(radDistr(x), fun = function(y)y^2,...)/dimension(x)
            )
 
 
@@ -77,8 +79,14 @@ setAs("SphericalDistribution", "EllipticalDistribution",
                
 
 setMethod("plot", signature(x = "SphericalDistribution", y = "missing"),
-      function(x, Nsim = 2000, ..., withED = TRUE, lwd.Ed = 2, col.Ed = c(3,4),
-               withMean = TRUE, cex.mean = 2, pch.mean = 20, col.mean = 2){
+      function(x, Nsim = getdistrEllipseOption("Nsim"), ...,
+               withED = getdistrEllipseOption("withED"),
+               lwd.Ed = getdistrEllipseOption("lwd.Ed"),
+               col.Ed = getdistrEllipseOption("col.Ed"),
+               withMean = getdistrEllipseOption("withMean"),
+               cex.mean = getdistrEllipseOption("cex.mean"),
+               pch.mean = getdistrEllipseOption("pch.mean"),
+               col.mean = getdistrEllipseOption("col.mean")){
       dots <- match.call(call = sys.call(sys.parent(1)),
                          expand.dots = FALSE)$"..."
       cex <- 0.5
@@ -119,4 +127,38 @@ setMethod("plot", signature(x = "SphericalDistribution", y = "missing"),
                   } )
       return(invisible(NULL))
       } )
-      
+
+
+setMethod("+", c("SphericalDistribution","numeric"),
+           function(e1,e2) as(e1, "EllipticalDistribution")+e2)
+setMethod("*", c("SphericalDistribution","numeric"),
+           function(e1,e2)as(e1, "EllipticalDistribution")*e2)
+setMethod("%*%", signature(x="matrix",y="SphericalDistribution"),
+           function(x,y) x %*% as(y, "EllipticalDistribution"))
+
+setMethod("+", c("numeric", "SphericalDistribution"),
+          function(e1, e2){
+            e2 + e1
+          })
+
+
+setMethod("*", c("numeric", "SphericalDistribution"),
+          function(e1, e2){
+            e2 * e1
+          })
+
+setMethod("-", c("SphericalDistribution", "missing"),
+          function(e1){
+            e1*(-1)
+          })
+
+
+setMethod("-", c("SphericalDistribution", "numeric"),
+          function(e1, e2){
+            return(e1 + (-e2))
+          })
+
+setMethod("-", c("numeric", "SphericalDistribution"),
+          function(e1, e2){
+            -1*e2 + e1
+          })

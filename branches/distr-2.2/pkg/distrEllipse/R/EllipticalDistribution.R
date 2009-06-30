@@ -157,30 +157,3 @@ setMethod("%*%", signature(x="matrix",y="EllipticalDistribution"),
                             scale(y) <- x %*% scale(y)
                             return(y)})
 
-setMethod("+", c("numeric", "EllipticalDistribution"),
-          function(e1, e2){
-            e2 + e1
-          })
-
-
-setMethod("*", c("numeric", "EllipticalDistribution"),
-          function(e1, e2){
-            e2 * e1
-          })
-
-setMethod("-", c("EllipticalDistribution", "missing"),
-          function(e1){
-            e1*(-1)
-          })
-
-
-setMethod("-", c("EllipticalDistribution", "numeric"),
-          function(e1, e2){
-            return(e1 + (-e2))
-          })
-
-setMethod("-", c("numeric", "EllipticalDistribution"),
-          function(e1, e2){
-            -1*e2 + e1
-          })
-

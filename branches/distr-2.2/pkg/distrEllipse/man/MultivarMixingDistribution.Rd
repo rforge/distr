@@ -3,8 +3,9 @@
 
 \title{Generating function for Class "MultivarMixingDistribution"}
 \description{Generates an object of class \code{"MultivarMixingDistribution"}.}
-\usage{MultivarMixingDistribution(..., Dlist, mixCoeff, 
-                                withSimplify = getdistrOption("simplifyD"))}
+\usage{MultivarMixingDistribution(..., Dlist, mixCoeff%,
+                    %            withSimplify = getdistrOption("simplifyD")
+                    )}
 \arguments{
   \item{\dots}{Objects of class \code{"MultivariateDistribution"} (or subclasses)}
   \item{Dlist}{an optional list or object of class \code{"MultivarDistrList"};
@@ -15,8 +16,8 @@
   \item{mixCoeff}{Objects of class \code{"numeric"} : a vector of 
             probabilities for the mixing components (must be of same length as
             arguments in \dots).}
-  \item{withSimplify}{\code{"logical"}: shall the return value be piped through a 
-   call to \code{simplifyD}?}
+%  \item{withSimplify}{\code{"logical"}: shall the return value be piped through a
+%   call to \code{simplifyD}?}
 }
 \details{If \code{mixCoeff} is missing, all elements in \code{\ldots}
   are equally weighted.}
@@ -27,8 +28,9 @@ object would have one mixing component with probability (almost) 1,
 %\references{}
 \author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}
-\seealso{\code{\link{MultivarMixingDistribution-class}},
-  \code{\link[distr]{simplifyD}}}
+\seealso{\code{\link{MultivarMixingDistribution-class}}%,
+%  \code{\link[distr]{simplifyD}}
+  }
 \examples{
 mylist <- MultivarMixingDistribution(Binom(3,.3), Dirac(2), Norm(), 
           mixCoeff=c(1/4,1/5,11/20))

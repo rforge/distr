@@ -3,12 +3,26 @@
 \alias{plot}
 \alias{plot-methods}
 \alias{plot,SphericalDistribution,missing-method}
+\alias{plot,MultivarMixingDistribution,missing-method}
 \title{ Methods for Function plot in Package `distrEllipse' }
 \description{plot-methods}
 \usage{plot(x, y, ...)
-\S4method{plot}{SphericalDistribution,missing}(x, Nsim = 2000, ...,
-                withED = TRUE, lwd.Ed = 2, col.Ed = c(3,4),
-                withMean = TRUE, cex.mean = 2, pch.mean = 20, col.mean = 2)
+\S4method{plot}{SphericalDistribution,missing}(x, Nsim = getdistrEllipseOption("Nsim"), ...,
+               withED = getdistrEllipseOption("withED"),
+               lwd.Ed = getdistrEllipseOption("lwd.Ed"),
+               col.Ed = getdistrEllipseOption("col.Ed"),
+               withMean = getdistrEllipseOption("withMean"),
+               cex.mean = getdistrEllipseOption("cex.mean"),
+               pch.mean = getdistrEllipseOption("pch.mean"),
+               col.mean = getdistrEllipseOption("col.mean"))
+\S4method{plot}{MultivarMixingDistribution,missing}(x, Nsim = getdistrEllipseOption("Nsim"), ...,
+               withED = getdistrEllipseOption("withED"),
+               lwd.Ed = getdistrEllipseOption("lwd.Ed"),
+               col.Ed = getdistrEllipseOption("col.Ed"),
+               withMean = getdistrEllipseOption("withMean"),
+               cex.mean = getdistrEllipseOption("cex.mean"),
+               pch.mean = getdistrEllipseOption("pch.mean"),
+               col.mean = getdistrEllipseOption("col.mean"))
 }
 \arguments{
   \item{x}{object of class 
@@ -37,6 +51,12 @@ Any parameters of \code{\link[graphics]{pairs}} may be passed on to this particu
 }
 
 \examples{
+E0 <- matrix(c(2,1,1,4),2,2)\%*\%EllipticalDistribution()+c(2,1)
+E1 <- matrix(c(3,2,2,4),2,2)\%*\%EllipticalDistribution(radDistr = exp(Binom(10,.8)))
+plot(E0)
+plot(E1, withED=FALSE, Nsim=5000)
+mylist <- MultivarMixingDistribution(E0,E1, mixCoeff=c(1/4,3/4))
+plot(mylist)
 }
 \seealso{\code{\link[graphics]{pairs}},
          \code{\link[graphics]{plot}}

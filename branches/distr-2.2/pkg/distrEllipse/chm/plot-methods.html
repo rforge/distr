@@ -8,6 +8,7 @@
 <param name="keyword" value="R:   plot">
 <param name="keyword" value="R:   plot-methods">
 <param name="keyword" value="R:   plot,SphericalDistribution,missing-method">
+<param name="keyword" value="R:   plot,MultivarMixingDistribution,missing-method">
 <param name="keyword" value=" Methods for Function plot in Package &lsquo;distrEllipse&rsquo;">
 </object>
 
@@ -27,9 +28,24 @@ plot-methods
 <pre>plot(x, y, ...)
 ## S4 method for signature 'SphericalDistribution,
 ##   missing':
-plot(x, Nsim = 2000, ...,
-                withED = TRUE, lwd.Ed = 2, col.Ed = c(3,4),
-                withMean = TRUE, cex.mean = 2, pch.mean = 20, col.mean = 2)
+plot(x, Nsim = getdistrEllipseOption("Nsim"), ...,
+               withED = getdistrEllipseOption("withED"),
+               lwd.Ed = getdistrEllipseOption("lwd.Ed"),
+               col.Ed = getdistrEllipseOption("col.Ed"),
+               withMean = getdistrEllipseOption("withMean"),
+               cex.mean = getdistrEllipseOption("cex.mean"),
+               pch.mean = getdistrEllipseOption("pch.mean"),
+               col.mean = getdistrEllipseOption("col.mean"))
+## S4 method for signature 'MultivarMixingDistribution,
+##   missing':
+plot(x, Nsim = getdistrEllipseOption("Nsim"), ...,
+               withED = getdistrEllipseOption("withED"),
+               lwd.Ed = getdistrEllipseOption("lwd.Ed"),
+               col.Ed = getdistrEllipseOption("col.Ed"),
+               withMean = getdistrEllipseOption("withMean"),
+               cex.mean = getdistrEllipseOption("cex.mean"),
+               pch.mean = getdistrEllipseOption("pch.mean"),
+               col.mean = getdistrEllipseOption("col.mean"))
 </pre>
 
 
@@ -94,6 +110,18 @@ Any parameters of <code><a onclick="findlink('graphics', 'pairs.html')" style="t
 <code><a onclick="findlink('graphics', 'plot.default.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.default</a></code>, 
 <code><a onclick="findlink('graphics', 'plot.stepfun.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.stepfun</a></code>,  <code><a onclick="findlink('graphics', 'par.html')" style="text-decoration: underline; color: blue; cursor: hand">par</a></code>
 </p>
+
+
+<h3>Examples</h3>
+
+<pre>
+E0 &lt;- matrix(c(2,1,1,4),2,2)%*%EllipticalDistribution()+c(2,1)
+E1 &lt;- matrix(c(3,2,2,4),2,2)%*%EllipticalDistribution(radDistr = exp(Binom(10,.8)))
+plot(E0)
+plot(E1, withED=FALSE, Nsim=5000)
+mylist &lt;- MultivarMixingDistribution(E0,E1, mixCoeff=c(1/4,3/4))
+plot(mylist)
+</pre>
 
 <script Language="JScript">
 function findlink(pkg, fn) {

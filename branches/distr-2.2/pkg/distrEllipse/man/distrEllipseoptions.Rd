@@ -1,14 +1,22 @@
 \name{distrEllipseoptions}
 \alias{distrEllipseoptions}
 \alias{getdistrEllipseOption}
+\alias{Nsim}
+\alias{withED}
+\alias{lwd.Ed}
+\alias{col.Ed}
+\alias{withMean}
+\alias{cex.mean}
+\alias{pch.mean}
+\alias{col.mean}
 
 
 \title{
   functions to change the global variables of the package `distrEllipse'
 }
 \description{
-  With \code{distrEllipseoptions} and \code{getdistrEllipseOption} you may inspect and change the global
-  variables used by package \pkg{distrEllipse}.
+  With \code{distrEllipseoptions} and \code{getdistrEllipseOption} you may
+  inspect and change the global variables used by package \pkg{distrEllipse}.
 }
 \usage{
 distrEllipseoptions(...)
@@ -23,9 +31,9 @@ getdistrEllipseOption(x)
  \code{distrEllipseoptions("WarningSim")} which is a \emph{list} of length one.}
 \value{
 \code{distrEllipseoptions()} returns a list of the global options of \pkg{distrEllipse}. \cr
-\code{distrEllipseoptions("RtoDPQ.e")} returns  the global option \code{RtoDPQ.e} as a list of length 1. \cr
-\code{distrEllipseoptions("RtoDPQ.e" = 3)} sets the value of the global option  \code{RtoDPQ.e} to 3.
-\code{getdistrEllipseOption("RtoDPQ.e")} the current value set for option \code{RtoDPQ.e}.
+\code{distrEllipseoptions("Nsim")} returns  the global option \code{Nsim} as a list of length 1. \cr
+\code{distrEllipseoptions("Nsim" = 3000)} sets the value of the global option  \code{Nsim} to 3000.
+\code{getdistrEllipseOption("Nsim")} the current value set for option \code{Nsim}.
 }
 \author{
   Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}
@@ -33,57 +41,26 @@ getdistrEllipseOption(x)
 
 \section{Currently available options}{
 \describe{
-\item{\code{DefaultNrGridPoints}}{default number of grid points in integration, default value: \code{2^12}}
-\item{\code{DistrResolution}}{minimal spacing between two mass points in a discrete distrEllipseibution, default value: \code{1e-6}}
-\item{\code{DistrCollapse}}{logical; in discrete distrEllipseibutions, shall support points
-with distance smaller than \code{DistrResolution} be collapsed; default value:  \code{TRUE}}
-\item{\code{TruncQuantile}}{argument for \code{q}-slot at which to truncate; also, for discrete distrEllipseibutions,
- support is restricted to [\code{q(TruncQuantile)},\code{q(1-TruncQuantile)}], default value: \code{1e-5}}
-\item{\code{DefaultNrFFTGridPointsExponent}}{by default, for e = \code{DefaultNrFFTGridPointsExponent}, 
- FFT uses \eqn{2^e} gridpoints; default value: \code{12}}
-\item{\code{RtoDPQ.e}}{by default, for reconstructing the \code{d}-,\code{p}-,\code{q}-slots out of simulations by slot \code{r},
-\code{RtoDPQ} resp. \code{RtoDPQ.d} use \eqn{10^e} simulations, where e = \code{RtoDPQ.e}, default value: \code{5}}
-\item{\code{WarningSim}}{if \code{WarningSim==TRUE}, \code{print}/\code{show} issue a warning as to the precision of 
-\code{d}-,\code{p}-,\code{q}-slots when these are obtained by \code{RtoDPQ} resp. \code{RtoDPQ.d}, default value: \code{TRUE}}
-\item{\code{WarningArith}}{if \code{WarningArith==TRUE}, \code{print}/\code{show} issue a warning as to the interpretation of
-arithmetics operating on distrEllipseibutions, when the corresponding distrEllipseibution to be plotted/shown is obtained by such an operation;
-keep in mind that arithmetics in fact operate on random variables distrEllipseibuted according to the given distrEllipseibutions and \bold{not}
-on corresponding cdf's or densities; default value: \code{TRUE}}
-\item{\code{withSweave}}{is code run in Sweave (then no new graphic devices are opened), 
-                         default value: \code{FALSE}}
-  \item{\code{withgaps}}{controls whether in the return value of arithmetic
-  operations the slot \code{gaps} of an the \code{AbscontDistribution} part
-  is filled automatically based on empirical evaluations via  \code{setgaps}
-   ---default \code{TRUE}}
-  \item{\code{simplifyD}}{ controls whether in the return value of arithmetic
-  operations there is a call to \code{simplifyD} or not ---default \code{TRUE}}
-\item{use.generalized.inverse.by.default}{logical; decides whether by default
-(i.e., if argument \code{generalized} of \code{\link{solve}} is not explicitely
-set), \code{\link{solve}} is to use generalized inverses if the original 
-\code{solve}-method from package \pkg{base} fails; if the option is \code{FALSE}, 
-in case of failure, and unless argument \code{generalized} is not explicitely 
-set to \code{TRUE}, \code{solve} will throw an error as is 
-the \pkg{base}-method behavior. The default value is \code{TRUE}.  
+  \item{\code{Nsim}}{ for plotting: number of (simulated) points to be plotted.}
+
+  \item{\code{withED}}{ for plotting: logical; shall principal axes of the contour ellipsoid be plot in
+                 (for each panel)?}
+  \item{\code{lwd.Ed}}{ for plotting: line width of principal axes  (for each panel).}
+  \item{\code{col.Ed}}{ for plotting: color of principal axes  (for each panel).}
+  \item{\code{withMean}}{ for plotting: logical; shall mean  be plot in  (for each panel)?}
+  \item{\code{cex.mean}}{ for plotting: size of the mean symbol  (for each panel).}
+  \item{\code{pch.mean}}{ for plotting: mean symbol  (for each panel).}
+  \item{\code{col.mean}}{ for plotting: color of the mean symbol (for each panel).}
+
   }
-\item{\code{DistrCollapse.Unique.Warn}}{controls whether there is a warning
-      whenever collapsing occurs or when two points are collapsed by a call to
-      \code{unique()} (default behaviour if \code{DistrCollapse} is \code{FALSE});
-      ---default \code{FALSE}}
 }
-} 
 \examples{
-distrEllipseoptions("RtoDPQ.e") # returns the value of RtoDPQ.e, by default = 5
+distrEllipseoptions("Nsim") # returns the value of Nsim, by default = 5
 currentDistrOptions <- distrEllipseoptions()
-distrEllipseoptions(RtoDPQ.e = 6)
-distrEllipseoptions("RtoDPQ.e")
-getdistrEllipseOption("RtoDPQ.e")
-distrEllipseoptions(c("WarningSim","WarningArith"))
-getdistrEllipseOption("WarningSim")
-distrEllipseoptions("WarningSim" = FALSE)
-         # switches off warnings as to (In)accuracy due to simulations
-distrEllipseoptions("WarningArith" = FALSE)
-         # switches off warnings as to arithmetics
-distrEllipseoptions(currentDistrOptions)
+distrEllipseoptions(Nsim = 6000)
+distrEllipseoptions("Nsim")
+getdistrEllipseOption("Nsim")
+distrEllipseoptions(c("Nsim","withED"))
 }
 \seealso{\code{\link[base]{options}}, \code{\link[base]{getOption}}}
 \keyword{distribution}

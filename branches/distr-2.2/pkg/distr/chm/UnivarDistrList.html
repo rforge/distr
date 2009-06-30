@@ -22,7 +22,7 @@ Generates an object of class <code>"UnivarDistrList"</code>.
 
 <h3>Usage</h3>
 
-<pre>UnivarDistrList(...)</pre>
+<pre>UnivarDistrList(..., Dlist)</pre>
 
 
 <h3>Arguments</h3>
@@ -30,8 +30,14 @@ Generates an object of class <code>"UnivarDistrList"</code>.
 <table summary="R argblock">
 <tr valign="top"><td><code>...</code></td>
 <td>
-Objects of class <code>"UnivariateDistribution"</code> which
-shall form the list of univariate distributions.</td></tr>
+Objects of class <code>"UnivariateDistribution"</code> (or subclasses)</td></tr>
+<tr valign="top"><td><code>Dlist</code></td>
+<td>
+an optional list or object of class <code>"UnivarDistrList"</code>;
+if not missing it is appended to argument <code>...</code>; this way
+<code>UnivarMixingDistribution</code> may also be called with a list (or
+<code>"UnivarDistrList"</code>-object) as argument as suggested in an e-mail
+by Krunoslav Sever (thank you!)</td></tr>
 </table>
 
 <h3>Value</h3>

@@ -4,6 +4,7 @@
 \alias{scale,SphericalDistribution-method}
 \alias{location,SphericalDistribution-method}
 \alias{dimension,SphericalDistribution-method}
+\alias{dim,SphericalDistribution-method}
 \alias{radDistr,SphericalDistribution-method}
 \alias{radDistr<-,SphericalDistribution-method}
 \alias{plot.rd,SphericalDistribution-method}
@@ -23,6 +24,14 @@
 \alias{coerce,SphericalDistribution,EllipticalDistribution-method}
 \alias{show,SphericalDistribution-method}
 \alias{showobj,SphericalDistribution-method}
+\alias{+,SphericalDistribution,numeric-method}
+\alias{*,SphericalDistribution,numeric-method}
+\alias{\%*\%,matrix,SphericalDistribution-method}
+\alias{+,numeric,SphericalDistribution-method}
+\alias{*,numeric,SphericalDistribution-method}
+\alias{-,SphericalDistribution,missing-method}
+\alias{-,SphericalDistribution,numeric-method}
+\alias{-,numeric,SphericalDistribution-method}
 
 
 
@@ -86,6 +95,8 @@ Class \code{"Distribution"}, by class \code{"MultivariateDistribution"}.
   \describe{
     \item{dimension}{\code{signature(object = "SphericalDistribution")}: returns
     the dimension of the distribution. }
+    \item{dim}{\code{signature(object = "SphericalDistribution")}: synonym to
+    \code{dimension}. }
     \item{location}{\code{signature(object = "SphericalDistribution")}: helper
     function to have the same interface as class \code{"EllipticalDistribution"};
     always returns \code{0} (in the respective dimension). }
@@ -105,7 +116,7 @@ Class \code{"Distribution"}, by class \code{"MultivariateDistribution"}.
     \item{plot.rd}{\code{signature(x = "SphericalDistribution")}: utility; calls \code{plot}
       for slot \code{radDistr}. }
     \item{plot}{\code{signature(x = "SphericalDistribution", y = "missing")}:
-      plot for an spherically symmetric distribution; exact.
+      plot for an spherically symmetric distribution; see \code{\link{plot-methods}}.
     }
     \item{show}{\code{signature(object = "SphericalDistribution")}: 
       \code{show} method for spherically symmetric distributions.
@@ -122,6 +133,31 @@ Class \code{"Distribution"}, by class \code{"MultivariateDistribution"}.
     \item{coerce}{\code{signature(from = "SphericalDistribution", to = "EllipticalDistribution")}:
       create a \code{EllipticalDistribution} object from a spherically symmetric
       distribution. }
+    \item{\code{+}}{\code{signature(e1 = "SphericalDistribution", e2 = "numeric")}:{
+      affine linear transformation; exact.
+    }}
+    \item{\code{-}}{\code{signature(e1 = "SphericalDistribution", e2 = "numeric")}:{
+      affine linear transformation; exact.
+    }}
+    \item{\code{-}}{\code{signature(e1 = "SphericalDistribution", e2 = "missing")}:{
+      affine linear transformation; exact.
+    }}
+    \item{\code{*}}{\code{signature(e1 = "SphericalDistribution", e2 = "numeric")}:{
+      affine linear transformation; exact.
+    }}
+    \item{\code{+}}{\code{signature(e1 = "numeric", e2 = "SphericalDistribution")}:{
+      affine linear transformation; exact.
+    }}
+    \item{\code{-}}{\code{signature(e1 = "numeric", e2 = "SphericalDistribution")}:{
+      affine linear transformation; exact.
+    }}
+    \item{\code{*}}{\code{signature(e1 = "numeric", e2 = "SphericalDistribution")}:{
+      affine linear transformation; exact.
+    }}
+    \item{\code{\%*\%}}{\code{signature(e1 = "numeric", e2 = "SphericalDistribution")}:{
+      affine linear transformation; exact.
+    }}
+
   }
 }
 \author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}

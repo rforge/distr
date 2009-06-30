@@ -10,11 +10,6 @@
 \alias{+,EllipticalDistribution,numeric-method}
 \alias{*,EllipticalDistribution,numeric-method}
 \alias{\%*\%,matrix,EllipticalDistribution-method}
-\alias{+,numeric,EllipticalDistribution-method}
-\alias{*,numeric,EllipticalDistribution-method}
-\alias{-,EllipticalDistribution,missing-method}
-\alias{-,EllipticalDistribution,numeric-method}
-\alias{-,numeric,EllipticalDistribution-method}
 \alias{coerce,EllipticalDistribution,UnivariateDistribution-method}
 \alias{coerce,UnivariateDistribution,EllipticalDistribution-method}
 
@@ -99,19 +94,7 @@ Class \code{"Distribution"}, by class \code{"MultivariateDistribution"}.
     \item{\code{-}}{\code{signature(e1 = "EllipticalDistribution", e2 = "numeric")}:{
       affine linear transformation; exact.
     }} 
-    \item{\code{-}}{\code{signature(e1 = "EllipticalDistribution", e2 = "missing")}:{
-      affine linear transformation; exact.
-    }} 
     \item{\code{*}}{\code{signature(e1 = "EllipticalDistribution", e2 = "numeric")}:{
-      affine linear transformation; exact.
-    }} 
-    \item{\code{+}}{\code{signature(e1 = "numeric", e2 = "EllipticalDistribution")}:{
-      affine linear transformation; exact.
-    }} 
-    \item{\code{-}}{\code{signature(e1 = "numeric", e2 = "EllipticalDistribution")}:{
-      affine linear transformation; exact.
-    }} 
-    \item{\code{*}}{\code{signature(e1 = "numeric", e2 = "EllipticalDistribution")}:{
       affine linear transformation; exact.
     }} 
     \item{\code{\%*\%}}{\code{signature(e1 = "numeric", e2 = "EllipticalDistribution")}:{

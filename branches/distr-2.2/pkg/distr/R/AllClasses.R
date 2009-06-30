@@ -1069,7 +1069,7 @@ setClass("UnivarDistrList",
                 nrvalues <- length(object)
                 for(i in 1:nrvalues)
                     if(!is(object[[i]], "UnivariateDistribution"))
-                        stop("element ", i, " is no 'UniveriateDistribution'")
+                        stop("element ", i, " is no 'UnivariateDistribution'")
                 return(TRUE) 
             })
 

@@ -30,7 +30,7 @@ Class \code{"OptionalParameter"}, by class \code{"Parameter"}.
     \item{mean}{\code{signature(object = "MVnormParameter")}: access method for
       slot \code{location}. }
     \item{sigma}{\code{signature(x = "MVnormParameter")}: utility function; returns
-      \code{S%*%t(S)
+      \code{S\%*\%t(S)
       } for \code{S=scale(x)}. }
     \item{ncp}{\code{signature(object = "MVnormParameter")}: access method for
       slot \code{ncp}. }

@@ -1,25 +1,24 @@
-<html><head><title>distrSim &ndash; (S4-) classes for simulations based on package distr</title>
+<html><head><title>distrEllipse &ndash; S4 classes for elliptically contoured distributions</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
 </head>
 <body>
 
-<table width="100%"><tr><td>distrSim-package(distrEllipse)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
-<param name="keyword" value="R:   distrSim-package">
-<param name="keyword" value="R:   distrSim">
-<param name="keyword" value=" distrSim &ndash; (S4-) classes for simulations based on package distr">
+<table width="100%"><tr><td>distrEllipse-package(distrEllipse)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   distrEllipse-package">
+<param name="keyword" value="R:   distrEllipse">
+<param name="keyword" value=" distrEllipse &ndash; S4 classes for elliptically contoured distributions">
 </object>
 
 
-<h2>distrSim &ndash; (S4-) classes for simulations based on package distr</h2>
+<h2>distrEllipse &ndash; S4 classes for elliptically contoured distributions</h2>
 
 
 <h3>Description</h3>
 
 <p>
-<span class="pkg">distrSim</span> is to provide a conceptual treatment of simulations by means of S4 classes.
-The package is based on our package <span class="pkg">distr</span>, hence uses distribution classes 
-as introduced there to describe the distributions under which simulations are performed.
+<span class="pkg">distrEllipse</span> provides infrastructure / (S4-)classes for elliptically
+contoured distributions (based on package distr).
 </p>
 
 
@@ -28,25 +27,19 @@ as introduced there to describe the distributions under which simulations are pe
 <p>
 <table summary="Rd table">
 <tr>
-  <td align="left">Package: </td>  <td align="left"> distrSim</td>
+  <td align="left">Package: </td>  <td align="left"> distrEllipse</td>
 </tr>
 <tr>
-  <td align="left"> Version: </td>  <td align="left"> 2.2</td>
+  <td align="left"> Version: </td>  <td align="left"> 0.1</td>
 </tr>
 <tr>
-  <td align="left"> Date: </td>  <td align="left"> 2009-03-19</td>
+  <td align="left"> Date: </td>  <td align="left"> 2009-06-29</td>
 </tr>
 <tr>
-  <td align="left"> Depends: </td>  <td align="left"> R(&gt;= 2.6.0), methods, graphics, setRNG(&gt;= 2006.2-1), distr(&gt;= 2.0), startupmsg</td>
+  <td align="left"> Depends: </td>  <td align="left"> R(&gt;= 2.8.0), methods, graphics, mvtnorm, setRNG(&gt;= 2006.2-1), distr(&gt;= 2.2), distrEx(&gt;= 2.2), distrSim(&gt;= 2.2), startupmsg</td>
 </tr>
 <tr>
   <td align="left"> LazyLoad: </td>  <td align="left"> yes</td>
-</tr>
-<tr>
-  <td align="left"> License: </td>  <td align="left"> LGPL-3</td>
-</tr>
-<tr>
-  <td align="left"> License: </td>  <td align="left"> LGPL-3</td>
 </tr>
 <tr>
   <td align="left"> License: </td>  <td align="left"> LGPL-3</td>
@@ -61,26 +54,23 @@ as introduced there to describe the distributions under which simulations are pe
 
 <p>
 <pre>
-"SeqDataFrame"
-      slots: data(list[of dataframes with common column structure])
-"Dataclass"
-      slots: [&lt;name&gt;(&lt;class&gt;)] 
-      filename(vectororNULL), 
-      name(character), 
-      Data(ArrayorNULLorVectororDataframeorSeqDataFrames), 
-      runs(numeric), 
-      samplesize(numeric),
-      obsDim(numeric)      
-|&gt;"Simulation"
-      (additional) slots: [&lt;name&gt;(&lt;class&gt;)] 
-      seed(list), distribution(Distribution)
-|&gt;"Contsimulation"
-      (additional) slots: [&lt;name&gt;(&lt;class&gt;)] 
-      seed(list), ind(vectororNULL), rate(numeric),
-      distribution.id(Distribution),
-      distribution.c(Distribution),
-      Data.id(vectororNULL),
-      Data.c(vectororNULL)
+###################################
+Distribution Classes
+###################################
+[*]: there is a generating function with the same name
+
+
+"Distribution" (from distr)
+|&gt;"MultivariateDistribution" (from distrEx)
+|&gt;|&gt;"MultivarMixingDistribution" [*]
+|&gt;|&gt;"SphericalDistribution" [*]
+|&gt;|&gt;|&gt;|&gt;"EllipticalDistribution" [*]
+|&gt;|&gt;|&gt;|&gt;"MVNormDistribution" [*]
+
+"DistrList" (from distr)
+|&gt;"MultivarDistrList" [*/class union of "MVDistrList", "UnivarDistrList"]
+|&gt;|&gt;"MVDistrList"
+|&gt;"UnivarDistrList" (from distr) [*]
 </pre>
 </p>
 
@@ -89,15 +79,9 @@ as introduced there to describe the distributions under which simulations are pe
 
 <p>
 <pre>
-savedata                Methods to save the data slot 
-                       (for Simulation/Contsimulation)
-simulate                Methods to fill the data slot 
-                       (for Simulation/Contsimulation)
 plot-methods            Methods for Function plot
-                       (for Simulation/Contsimulation)
-print-, show-methods    Methods for Function print/show 
-                       (for Simulation/Contsimulation)
-summary-methods         Methods for Function summary 
+                       (for SphericalDistribution)
+show-methods            Methods for Function show
                        (for Simulation/Contsimulation)
 </pre>
 </p>
@@ -107,8 +91,8 @@ summary-methods         Methods for Function summary
 
 <p>
 <pre>
-cload                   loads just the comment slot 
-                       (for Simulation/Contsimulation)
+distrEllipseoptions            Functions to change the global variables of the
+                        package 'distrEllipse'
 </pre>
 </p>
 
@@ -117,8 +101,7 @@ cload                   loads just the comment slot
 
 <p>
 All slots are inspected / modified by corresponding 
-accessors / -replacement functions, e.g. <code>rate(X)</code> for
-an object of class <code>"Contsimulation"</code>.
+accessors / -replacement functions.
 </p>
 
 
@@ -140,20 +123,6 @@ only the version information is displayed.
 <p>
 The same can be achieved by wrapping the <code>library</code> or <code>require</code>  call into
 either <code><a onclick="findlink('startupmsg', 'suppressStartupMessages.html')" style="text-decoration: underline; color: blue; cursor: hand">suppressStartupMessages</a>()</code> or <code><a onclick="findlink('startupmsg', 'onlytypeStartupMessages.html')" style="text-decoration: underline; color: blue; cursor: hand">onlytypeStartupMessages</a>(.,atypes="version")</code>.
-</p>
-
-
-<h3>Far-reaching Change in Design</h3>
-
-<p>
-From version 1.8 of this package on, we have changed the format how data / simulations are stored:
-In order to be able to cope with multivariate distributions, regression distributions and (later)
-time series distributions, we have switched to the common array format: 
-samplesize x obsDim x runs; you may check the version under which an object was generated by
-<code><a onclick="findlink('distrSim', 'versionmanagement.html')" style="text-decoration: underline; color: blue; cursor: hand">getVersion</a></code>; for saved objects from earlier versions, we provide the functions
-<code><a onclick="findlink('distr', 'isOldVersion.html')" style="text-decoration: underline; color: blue; cursor: hand">isOldVersion</a></code>, and  <code><a onclick="findlink('distrSim', 'versionmanagement.html')" style="text-decoration: underline; color: blue; cursor: hand">conv2NewVersion-methods</a></code> 
-to check whether the object was generated by an older version of this package and to convert
-such an object to the new format, respectively.
 </p>
 
 
@@ -184,18 +153,15 @@ call into <code>suppressPackageStartupMessages()</code> from
 
 <p>
 Global options controlling the plots and summaries of Dataclass and Simulation/Contsimulation 
-objects may be inspected / set by <code><a onclick="findlink('distrSim', 'distrSimOptions.html')" style="text-decoration: underline; color: blue; cursor: hand">distrSimoptions</a>()</code> 
-and <code><a onclick="findlink('distrSim', 'distrSimOptions.html')" style="text-decoration: underline; color: blue; cursor: hand">getdistrSimOption</a>()</code>.
+objects may be inspected / set by <code><a href="distrEllipseoptions.html">distrEllipseoptions</a>()</code>
+and <code><a href="distrEllipseoptions.html">getdistrEllipseOption</a>()</code>.
 </p>
 
 
 <h3>Author(s)</h3>
 
 <p>
-Thomas Stabla <a href="mailto:statho3@web.de">statho3@web.de</a>,<br> 
-Florian Camphausen <a href="mailto:fcampi@gmx.de">fcampi@gmx.de</a>,<br>
-Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>,<br> 
-Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a><br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>,<br>
 <EM>Maintainer:</EM>  Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
 </p>
 
@@ -208,20 +174,14 @@ S4 Classes for Distributions, <EM>R News</EM>, <EM>6</EM>(2), 2-6.
 <a href="http://CRAN.R-project.org/doc/Rnews/Rnews_2006-2.pdf">http://CRAN.R-project.org/doc/Rnews/Rnews_2006-2.pdf</a>
 </p>
 <p>
-A vignette for packages <span class="pkg">distr</span>, <span class="pkg">distrSim</span>, <span class="pkg">distrTEst</span>, and <span class="pkg">distrEx</span> 
+A vignette for packages <span class="pkg">distr</span>, <span class="pkg">distrSim</span>, <span class="pkg">distrTEst</span>, <span class="pkg">distrEx</span>,
+<span class="pkg">distrTeach</span>, <span class="pkg">distrMod</span>, and <span class="pkg">distrEllipse</span>
 is included into the mere documentation package <span class="pkg">distrDoc</span> and may be called by 
 <code>require("distrDoc");vignette("distr")</code>.
 </p>
 <p>
 A homepage to this package is available under<br>
-<a href="http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/distrSim.html">http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/distrSim.html</a>.
-</p>
-
-
-<h3>See Also</h3>
-
-<p>
-<code><a onclick="findlink('distr', 'distr.html')" style="text-decoration: underline; color: blue; cursor: hand">distr</a></code> <code><a onclick="findlink('setRNG', 'setRNG.html')" style="text-decoration: underline; color: blue; cursor: hand">setRNG</a></code>
+<a href="http://distr.r-forge.r-project.org/">http://distr.r-forge.r-project.org/</a>.
 </p>
 
 <script Language="JScript">

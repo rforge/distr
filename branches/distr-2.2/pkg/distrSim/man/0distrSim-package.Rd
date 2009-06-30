@@ -124,7 +124,7 @@ is included into the mere documentation package \pkg{distrDoc} and may be called
 %\url{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/distr.pdf}.
 
 A homepage to this package is available under\cr
-\url{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/distrSim.html}.
+\url{http://distr.r-forge.r-project.org/}
 }
 \section{Start-up-Banner}{
 You may suppress the start-up banner/message completely by setting \code{options("StartupBanner"="off")}

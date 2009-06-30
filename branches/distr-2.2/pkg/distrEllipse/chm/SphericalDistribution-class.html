@@ -9,6 +9,7 @@
 <param name="keyword" value="R:   scale,SphericalDistribution-method">
 <param name="keyword" value="R:   location,SphericalDistribution-method">
 <param name="keyword" value="R:   dimension,SphericalDistribution-method">
+<param name="keyword" value="R:   dim,SphericalDistribution-method">
 <param name="keyword" value="R:   radDistr,SphericalDistribution-method">
 <param name="keyword" value="R:   radDistr<-,SphericalDistribution-method">
 <param name="keyword" value="R:   plot.rd,SphericalDistribution-method">
@@ -28,6 +29,14 @@
 <param name="keyword" value="R:   coerce,SphericalDistribution,EllipticalDistribution-method">
 <param name="keyword" value="R:   show,SphericalDistribution-method">
 <param name="keyword" value="R:   showobj,SphericalDistribution-method">
+<param name="keyword" value="R:   +,SphericalDistribution,numeric-method">
+<param name="keyword" value="R:   *,SphericalDistribution,numeric-method">
+<param name="keyword" value="R:   \%*\%,matrix,SphericalDistribution-method">
+<param name="keyword" value="R:   +,numeric,SphericalDistribution-method">
+<param name="keyword" value="R:   *,numeric,SphericalDistribution-method">
+<param name="keyword" value="R:   -,SphericalDistribution,missing-method">
+<param name="keyword" value="R:   -,SphericalDistribution,numeric-method">
+<param name="keyword" value="R:   -,numeric,SphericalDistribution-method">
 <param name="keyword" value=" Spherical distribution class">
 </object>
 
@@ -108,6 +117,8 @@ Class <code>"Distribution"</code>, by class <code>"MultivariateDistribution"</co
 <dl>
 <dt>dimension</dt><dd><code>signature(object = "SphericalDistribution")</code>: returns
 the dimension of the distribution. </dd>
+<dt>dim</dt><dd><code>signature(object = "SphericalDistribution")</code>: synonym to
+<code>dimension</code>. </dd>
 <dt>location</dt><dd><code>signature(object = "SphericalDistribution")</code>: helper
 function to have the same interface as class <code>"EllipticalDistribution"</code>;
 always returns <code>0</code> (in the respective dimension). </dd>
@@ -127,7 +138,7 @@ slot <code>q</code> of slot <code>radDistr</code>. </dd>
 <dt>plot.rd</dt><dd><code>signature(x = "SphericalDistribution")</code>: utility; calls <code>plot</code>
 for slot <code>radDistr</code>. </dd>
 <dt>plot</dt><dd><code>signature(x = "SphericalDistribution", y = "missing")</code>:
-plot for an spherically symmetric distribution; exact.
+plot for an spherically symmetric distribution; see <code><a href="plot-methods.html">plot-methods</a></code>.
 </dd>
 <dt>show</dt><dd><code>signature(object = "SphericalDistribution")</code>: 
 <code>show</code> method for spherically symmetric distributions.
@@ -144,6 +155,32 @@ expectation of an elliptically symmetric distribution; exact.
 <dt>coerce</dt><dd><code>signature(from = "SphericalDistribution", to = "EllipticalDistribution")</code>:
 create a <code>EllipticalDistribution</code> object from a spherically symmetric
 distribution. </dd>
+<dt><code>+</code></dt><dd><code>signature(e1 = "SphericalDistribution", e2 = "numeric")</code>:{
+affine linear transformation; exact.
+}</dd>
+<dt><code>-</code></dt><dd><code>signature(e1 = "SphericalDistribution", e2 = "numeric")</code>:{
+affine linear transformation; exact.
+}</dd>
+<dt><code>-</code></dt><dd><code>signature(e1 = "SphericalDistribution", e2 = "missing")</code>:{
+affine linear transformation; exact.
+}</dd>
+<dt><code>*</code></dt><dd><code>signature(e1 = "SphericalDistribution", e2 = "numeric")</code>:{
+affine linear transformation; exact.
+}</dd>
+<dt><code>+</code></dt><dd><code>signature(e1 = "numeric", e2 = "SphericalDistribution")</code>:{
+affine linear transformation; exact.
+}</dd>
+<dt><code>-</code></dt><dd><code>signature(e1 = "numeric", e2 = "SphericalDistribution")</code>:{
+affine linear transformation; exact.
+}</dd>
+<dt><code>*</code></dt><dd><code>signature(e1 = "numeric", e2 = "SphericalDistribution")</code>:{
+affine linear transformation; exact.
+}</dd>
+<dt><code>%*%</code></dt><dd><code>signature(e1 = "numeric", e2 = "SphericalDistribution")</code>:{
+affine linear transformation; exact.
+}</dd>
+
+<p>
 </dl>
 
 <h3>Author(s)</h3>

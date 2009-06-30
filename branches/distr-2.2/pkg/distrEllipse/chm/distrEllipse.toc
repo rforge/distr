@@ -10,7 +10,7 @@
 </OBJECT>
 <UL>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="distrSim-package">
+<param name="Name" value="distrEllipse-package">
 <param name="Local" value="0distrEllipse-package.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -18,32 +18,44 @@
 <param name="Local" value="EllipticalDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="%*%,matrix,SphericalDistribution-method">
+<param name="Local" value="SphericalDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="*,EllipticalDistribution,numeric-method">
 <param name="Local" value="EllipticalDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="*,numeric,EllipticalDistribution-method">
-<param name="Local" value="EllipticalDistribution-class.html">
+<param name="Name" value="*,numeric,SphericalDistribution-method">
+<param name="Local" value="SphericalDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="*,SphericalDistribution,numeric-method">
+<param name="Local" value="SphericalDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="+,EllipticalDistribution,numeric-method">
 <param name="Local" value="EllipticalDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="+,numeric,EllipticalDistribution-method">
-<param name="Local" value="EllipticalDistribution-class.html">
+<param name="Name" value="+,numeric,SphericalDistribution-method">
+<param name="Local" value="SphericalDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="-,EllipticalDistribution,missing-method">
-<param name="Local" value="EllipticalDistribution-class.html">
+<param name="Name" value="+,SphericalDistribution,numeric-method">
+<param name="Local" value="SphericalDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="-,EllipticalDistribution,numeric-method">
-<param name="Local" value="EllipticalDistribution-class.html">
+<param name="Name" value="-,numeric,SphericalDistribution-method">
+<param name="Local" value="SphericalDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="-,numeric,EllipticalDistribution-method">
-<param name="Local" value="EllipticalDistribution-class.html">
+<param name="Name" value="-,SphericalDistribution,missing-method">
+<param name="Local" value="SphericalDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="-,SphericalDistribution,numeric-method">
+<param name="Local" value="SphericalDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value=".logExact,MultivarMixingDistribution-method">
@@ -52,6 +64,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value=".lowerExact,MultivarMixingDistribution-method">
 <param name="Local" value="MultivarMixingDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="cex.mean">
+<param name="Local" value="distrEllipseoptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="coerce,EllipticalDistribution,UnivariateDistribution-method">
@@ -68,6 +84,14 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="coerce,UnivariateDistribution,EllipticalDistribution-method">
 <param name="Local" value="EllipticalDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="col.Ed">
+<param name="Local" value="distrEllipseoptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="col.mean">
+<param name="Local" value="distrEllipseoptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="d.rd">
@@ -94,8 +118,24 @@
 <param name="Local" value="MultivarMixingDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="dim,SphericalDistribution-method">
+<param name="Local" value="SphericalDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="dimension,MultivarDistrList-method">
+<param name="Local" value="MultivarDistrList-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="dimension,MultivarMixingDistribution-method">
+<param name="Local" value="MultivarMixingDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="dimension,SphericalDistribution-method">
 <param name="Local" value="SphericalDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="distrEllipse">
+<param name="Local" value="0distrEllipse-package.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="distrEllipseMASK">
@@ -104,10 +144,6 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="distrEllipseoptions">
 <param name="Local" value="distrEllipseoptions.html">
-</OBJECT>
-<LI> <OBJECT type="text/sitemap">
-<param name="Name" value="distrSim">
-<param name="Local" value="0distrEllipse-package.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="E,EllipticalDistribution,missing,missing-method">
@@ -168,6 +204,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="location<-,EllipticalParameter-method">
 <param name="Local" value="EllipticalParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="lwd.Ed">
+<param name="Local" value="distrEllipseoptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="MASKING">
@@ -250,6 +290,10 @@
 <param name="Local" value="MultivarMixingDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="MVDistrList-class">
+<param name="Local" value="MultivarDistrList-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="MVNorm">
 <param name="Local" value="MvnormDistribution.html">
 </OBJECT>
@@ -290,6 +334,10 @@
 <param name="Local" value="MvtParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Nsim">
+<param name="Local" value="distrEllipseoptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="p.rd">
 <param name="Local" value="SphericalDistribution-class.html">
 </OBJECT>
@@ -298,7 +346,15 @@
 <param name="Local" value="SphericalDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="pch.mean">
+<param name="Local" value="distrEllipseoptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="plot">
+<param name="Local" value="plot-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plot,MultivarMixingDistribution,missing-method">
 <param name="Local" value="plot-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -378,8 +434,16 @@
 <param name="Local" value="EllipticalParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="show,MultivarMixingDistribution-method">
+<param name="Local" value="MultivarMixingDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="show,SphericalDistribution-method">
 <param name="Local" value="SphericalDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="showobj,MultivarMixingDistribution-method">
+<param name="Local" value="MultivarMixingDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="showobj,SphericalDistribution-method">
@@ -429,6 +493,14 @@
 <param name="Name" value="var,SphericalDistribution-method">
 <param name="Local" value="SphericalDistribution-class.html">
 </OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="withED">
+<param name="Local" value="distrEllipseoptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="withMean">
+<param name="Local" value="distrEllipseoptions.html">
+</OBJECT>
 </UL>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Package distrEllipse:  Titles">
@@ -439,7 +511,7 @@
 <param name="Local" value="MultivarMixingDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="distrSim - (S4-) classes for simulations based on package distr">
+<param name="Name" value="distrEllipse - S4 classes for elliptically contoured distributions">
 <param name="Local" value="0distrEllipse-package.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">

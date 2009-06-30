@@ -15,9 +15,9 @@ export("SphericalDistribution", "EllipticalDistribution",
 exportClasses("EllipticalParameter",
               "MVNormParameter", "MVtParameter",
               "SphericalDistribution", "EllipticalDistribution", 
-              "MVNormDistribution", "MVtDistribution",
+              "MVNormDistribution", "MVtDistribution", "MVDistrList",
               "MultivarDistrList","MultivarMixingDistribution")
-exportMethods("dimension", "radDistr", "scale", "location",
+exportMethods("dimension", "radDistr", "scale", "location", "dim",
               "radDistr<-", "scale<-", "location<-",
               "plot.rd", "r.rd", "d.rd", "p.rd", "q.rd",
               "E", "var", "mean", "sigma","mixCoeff", "mixDistr")

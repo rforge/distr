@@ -113,12 +113,13 @@ setClass("MVtDistribution",
 ##
 ################################
 
-setClass("MultivarDistrList", 
+setClass("MVDistrList",
             prototype = prototype(list(new("MVNormDistribution"))),
             contains = "DistrList", 
             validity = function(object){
                 nrvalues <- length(object)
                 dim0 <- object[[1]]@img@dimension
+            #    if (dim0 == 1) return(getValidity(getClass("UnivarDistrList"))(object))
                 for(i in 1:nrvalues){
                     if(!is(object[[i]], "MultivariateDistribution"))
                         stop("Element ", i, " is no 'MultivariateDistribution'")
@@ -128,6 +129,7 @@ setClass("MultivarDistrList",
                 return(TRUE) 
             })
 
+setClassUnion("MultivarDistrList", c("MVDistrList","UnivarDistrList"))
 
 ################################
 ##
@@ -145,7 +147,7 @@ setClass("MultivarMixingDistribution",
                              .lowerExact = "logical"
                              ),
             prototype = prototype(mixCoeff = 1, 
-                                  mixDistr = new("MultivarDistrList"),
+                                  mixDistr = new("MVDistrList"),
                                   Symmetry = new("NoSymmetry"),
                                  .withArith = FALSE,
                                  .withSim = FALSE,

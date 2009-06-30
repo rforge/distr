@@ -68,7 +68,7 @@ Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ru
 <pre>
 E0 &lt;- SphericalDistribution()
 plot(E0)
-E1 &lt;- diag(1,2)
+E1 &lt;- diag(1,2)%*%E0+c(1,2)
 plot(E1)
 E(E1)
 var(E1)

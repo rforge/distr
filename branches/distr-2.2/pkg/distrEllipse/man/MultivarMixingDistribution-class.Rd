@@ -18,8 +18,11 @@
 \alias{.logExact,MultivarMixingDistribution-method}
 \alias{.lowerExact,MultivarMixingDistribution-method}
 \alias{Symmetry,MultivarMixingDistribution-method}
+\alias{dimension,MultivarMixingDistribution-method}
 \alias{dim,MultivarMixingDistribution-method}
 \alias{E,MultivarMixingDistribution,ANY,ANY-method}
+\alias{show,MultivarMixingDistribution-method}
+\alias{showobj,MultivarMixingDistribution-method}
 
 \title{Class "MultivarMixingDistribution"}
 \description{\code{MultivarMixingDistribution}-class is a class to formalize 
@@ -84,8 +87,18 @@ class \code{"Distribution"} by class \code{"MultivariateDistribution"}.
     tries to convert the object to a 
        newer version of its class by \code{\link[distr]{conv2NewVersion}} and
      returns the corresponding slot of the converted object.}
+    \item{plot}{\code{signature(x = "MultivarMixingDistribution", y = "missing")}:
+      plot for an spherically symmetric distribution; see \code{\link{plot-methods}}.
+    }
     \item{E}{corresponding expectation --- see \code{\link[distrEx]{E}}.}
-    \item{dim}{dim of the range space.}
+    \item{dimension}{dim of the range space.}
+    \item{dim}{synonym to dimension.}
+    \item{show}{\code{signature(object = "MultivarMixingDistribution")}:
+      \code{show} method for spherically symmetric distributions.
+    }
+    \item{showobj}{\code{signature(object = "MultivarMixingDistribution")}:
+      \code{showobj} method for spherically symmetric distributions.
+    }
   }
 }
 
@@ -110,6 +123,16 @@ mylist2 <- MultivarMixingDistribution(Binom(3,.3), mylist,
 mylist2
 p(mylist)(0.3)          
 mixDistr(mylist2)
+
+##multivariate
+E1 <- diag(1,2)\%*\%EllipticalDistribution(radDistr=Gammad())+c(1,2)
+mylistD <- MultivarMixingDistribution(MVNorm(), E1, MVt(),
+          mixCoeff=c(1/4,1/5,11/20))
+mylistD2 <- MultivarMixingDistribution(E1+c(-2,2), mylistD,
+          mixCoeff=c(.3,.7))
+mylistD2
+p(mylistD)
+mixDistr(mylistD2)
 }
 \keyword{distribution}
 \concept{discrete distribution}

@@ -7,7 +7,14 @@
 
 
 .distrEllipseoptions <- list(
-                ## nothing up to now...
+                Nsim = 2000,
+                withED = TRUE,
+                lwd.Ed = 2,
+                col.Ed = c(3,4),
+                withMean = TRUE,
+                cex.mean = 2,
+                pch.mean = 20,
+                col.mean = 2
                       )
   
 
