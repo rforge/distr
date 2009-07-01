@@ -3,6 +3,30 @@
 ######################################################################
  
 ##############
+v 0.3
+##############
+
+* included some suggestions due to Frank E. Harrel as to the
+  default settings of R markup (in particular as to "literate
+  programming")
+* included some description/documentation how to re-unmask
+  base functions 'library' and 'require' at the end of
+  an .Rnw file
+* Rd-Style Markup
+  +updated Rdlisting.sty according to the new version of 
+   "Parsing Rd Files" by Duncan Murdoch as of Jun 21 2009
+* thanks to Andrew Ellis:
+  new options for SweaveListingPreparations:
+  + withOwnFileSection in order to allow for own definition file/
+                     section to define 'Sinput', 'Soutput',
+                     'Scode' environments
+  + withVerbatim in order to allow to use 'lstnewenvironment' - type
+                 environments for 'Sinput', 'Soutput', 'Scode' instead of 
+                 the Sweave.sty-default with \DefineVerbatimEnvironment.
+                 this in particular allows for escaping mechanisms
+                 as provided for in 'listings' package
+ 
+##############
 v 0.2
 ##############
 
