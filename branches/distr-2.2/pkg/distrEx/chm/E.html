@@ -50,9 +50,11 @@
 <param name="keyword" value="R:   E,Exp,missing,missing-method">
 <param name="keyword" value="R:   E,Fd,missing,missing-method">
 <param name="keyword" value="R:   E,Gammad,missing,missing-method">
+<param name="keyword" value="R:   E,Gammad,function,missing-method">
 <param name="keyword" value="R:   E,Geom,missing,missing-method">
 <param name="keyword" value="R:   E,Gumbel,missing,missing-method">
 <param name="keyword" value="R:   E,GPareto,missing,missing-method">
+<param name="keyword" value="R:   E,GPareto,function,missing-method">
 <param name="keyword" value="R:   E,Hyper,missing,missing-method">
 <param name="keyword" value="R:   E,Logis,missing,missing-method">
 <param name="keyword" value="R:   E,Lnorm,missing,missing-method">
@@ -94,7 +96,7 @@ E(object, fun,
 
 ## S4 method for signature 'AbscontDistribution, function,
 ##   missing':
-E(object, fun,  useApply = TRUE,
+E(object, fun, useApply = TRUE,
              low = NULL, upp = NULL, 
              rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
@@ -111,8 +113,9 @@ E(object, low = NULL,
 
 ## S4 method for signature 'UnivarMixingDistribution,
 ##   function, missing':
-E(object, fun, low = NULL, 
-             upp = NULL, rel.tol= getdistrExOption("ErelativeTolerance"), 
+E(object, fun, useApply = TRUE, 
+             low = NULL, upp = NULL, 
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
              IQR.fac = getdistrExOption("IQR.fac"), ...)
@@ -127,7 +130,7 @@ E(object, cond, low = NULL,
 
 ## S4 method for signature 'UnivarMixingDistribution,
 ##   function, ANY':
-E(object, fun, cond, 
+E(object, fun, cond, useApply = TRUE,
              low = NULL, upp = NULL, rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
@@ -157,7 +160,7 @@ E(object, fun, useApply = TRUE,
 
 ## S4 method for signature 'DiscreteMVDistribution,
 ##   missing, missing':
-E(object, useApply = TRUE, ...)
+E(object, low = NULL, upp = NULL, ...)
 
 ## S4 method for signature 'DiscreteMVDistribution,
 ##   function, missing':
@@ -171,12 +174,12 @@ E(object, cond, useApply = TRUE,
              rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrExOption("IQR.fac"), low = NULL, upp = NULL, ...)
+             IQR.fac = getdistrExOption("IQR.fac"), ...)
 
 ## S4 method for signature 'DiscreteCondDistribution,
 ##   missing, numeric':
 E(object, cond, useApply = TRUE,
-             low, upp)
+             low = NULL, upp = NULL, ...)
 
 ## S4 method for signature 'UnivariateCondDistribution,
 ##   function, numeric':
@@ -264,12 +267,16 @@ E(object, low = NULL, upp = NULL, ...)
 E(object, low = NULL, upp = NULL, ...)
 ## S4 method for signature 'Gammad, missing, missing':
 E(object, low = NULL, upp = NULL, ...)
+## S4 method for signature 'Gammad, function, missing':
+E(object, fun, low = NULL, upp = NULL, ...)
 ## S4 method for signature 'Geom, missing, missing':
 E(object, low = NULL, upp = NULL, ...)
 ## S4 method for signature 'Gumbel, missing, missing':
 E(object, low = NULL, upp = NULL, ...)
 ## S4 method for signature 'GPareto, missing, missing':
 E(object, low = NULL, upp = NULL, ...)
+## S4 method for signature 'GPareto, function, missing':
+E(object, fun, low = NULL, upp = NULL, ...)
 ## S4 method for signature 'Hyper, missing, missing':
 E(object, low = NULL, upp = NULL, ...)
 ## S4 method for signature 'Logis, missing, missing':
@@ -489,9 +496,11 @@ class <code>UnivariateDistribution</code>) the formula
 <dt>object = "Exp", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt>object = "Fd", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt>object = "Gammad", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt>object = "Gammad", fun = "function", cond = "missing":</dt><dd>use substitution method (y := log(x)) for numerical integration.</dd>
 <dt>object = "Geom", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt>object = "Gumbel", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt>object = "GPareto", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
+<dt>object = "GPareto", fun = "function", cond = "missing":</dt><dd>use substitution method (y := log(x)) for numerical integration.</dd>
 <dt>object = "Hyper", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt>object = "Logis", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>
 <dt>object = "Lnorm", fun = "missing", cond = "missing":</dt><dd>exact evaluation using explicit expressions.</dd>

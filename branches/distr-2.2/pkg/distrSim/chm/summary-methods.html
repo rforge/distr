@@ -28,13 +28,14 @@ summary-methods
 <dl>
 <dt>summary</dt><dd><code>signature(object = "Dataclass")</code>: returns the same information as print, 
 moreover a statistical summary for each run; optional arguments: 
-<dl><dt>runs0</dt><dd>the indices of runs to be summarized; &mdash; of this vector <code>runs0</code> 
+<dl>
+<dt>runs0</dt><dd>the indices of runs to be summarized; &mdash; of this vector <code>runs0</code> 
 maximally <code>MaxNumberofSummarizedRuns</code> runs are summarized where <code>MaxNumberofSummarizedRuns</code> 
 is a global option, see <code><a href="distrSimoptions.html">distrSimoptions</a></code></dd>
 <dt>dims0</dt><dd>the indices of observation dimensions to be summarized; &mdash; of this vector <code>dims0</code> 
 maximally <code>MaxNumberofSummarizedObsDims</code> dimensions are summarized where <code>MaxNumberofSummarizedObsDims</code> 
 is a global option, see <code><a href="distrSimoptions.html">distrSimoptions</a></code></dd>
-</dl>
+</dl></dd>
 
 
 <dt>summary</dt><dd><code>signature(object = "Simulation")</code>: returns name, filename, seed, number of runs, the size of the sample and a
@@ -43,9 +44,7 @@ statistical summary for each run; optional arguments: as with <code>signature(ob
 
 <dt>summary</dt><dd><code>signature(object = "Contsimulation")</code>: returns name, filename, seed, number of runs, the size of the sample, the
 rate and a statistical summary for each run of the real data; optional arguments: as with <code>signature(object = "Dataclass")</code> </dd>
-
-<p>
-</dd></dl>
+</dl>
 
 
 <hr><div align="center">[Package <em>distrSim</em> version 2.2 <a href="00Index.html">Index</a>]</div>

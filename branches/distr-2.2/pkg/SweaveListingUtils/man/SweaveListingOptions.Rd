@@ -51,13 +51,15 @@ default setting for \\lstset-definition of R-code, default value is\cr
 \code{        "commentstyle" = "{\\\\color{Rcomment}\\\\ttfamily\\\\itshape}",}\cr
 \code{        "literate" = "{<-}{{$\\\\leftarrow$}}2{<<-}{{$\\\\twoheadleftarrow$}}2",}\cr
 \code{        "alsoother" = "{$}","alsoletter" = "{.<-}"}\cr
+\code{        "otherkeywords" = }%
 \code{        "otherkeywords" = "{!,!=,~,$,*,\\\\&,\\\\ \%/\\\\ \%,\\\\ \%*\\\\ \%,\\\\ \%\\\\ \%,<-,<<-,/}")}\cr
-(CAVEAT: the spaces between the double backslashes and the percent sign in the last line 
+(CAVEAT: the spaces between the double backslashes and the percent sign in the last line
 are \emph{not} intended; I simply did not find another work-around)
 }
 \item{Rdset:}{%
 default setting for \\lstset-definition of Rd-code, default value is\cr
-\code{list("fancyvrb" = "true", "language" = "Rd", "basicstyle" = "{\\\\color{black}\\\\tiny}",}\cr
+\code{list("fancyvrb" = "true", "language" = "Rd",}\cr
+\code{        "basicstyle" = "{\\\\color{black}\\\\tiny}",}\cr
 \code{        "keywordstyle" = "{\\\\bf}",}\cr
 \code{        "commentstyle" = "\\\\ttfamily\\\\itshape",}\cr
 \code{        "alsolanguage" = "R")}
@@ -90,7 +92,7 @@ default setting for \\lstset-definition of Rd-code, default value is\cr
                    "r-forge.r-project.org" (or a mirror) or not; defaults to 
                    \code{TRUE}.}
 \item{base.url:}{default setting for the base url to download code sniplets from
-            (character); defaults to
+            (character); defaults to\cr
             "http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/*checkout*/pkg/"
             }
 

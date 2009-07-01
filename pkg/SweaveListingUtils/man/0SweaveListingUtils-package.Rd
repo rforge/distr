@@ -15,8 +15,8 @@ thereby avoiding inconsistencies between vignette and documented source code
 \details{
 \tabular{ll}{
 Package: \tab SweaveListingUtils\cr
-Version: \tab 0.2 \cr
-Date: \tab 2008-11-27 \cr
+Version: \tab 0.3\cr
+Date: \tab 2009-03-19\cr
 Depends: \tab R(>= 2.0.0), startupmsg\cr
 LazyLoad: \tab yes\cr
 License: \tab LGPL-3\cr
@@ -43,7 +43,8 @@ with \pkg{SweaveListingUtils}, assignment operators \code{<-} and
 \code{<<-} get typeset by one symbol each.  
 
 For a corresponding TeX preamble combining Sweave and \file{listings}, 
-we provide command \code{\link{SweaveListingPreparations}}.
+we provide command \cr
+\code{\link{SweaveListingPreparations}}.
 
 As for the \R language definition, we allow for different keywordstyles 
 to typeset symbols from different packages. This is useful to distinguish

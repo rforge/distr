@@ -7,11 +7,11 @@ copies lines of a source file (usually \file{.R} oder \file{.Rd})
 from R forge repository}
 \usage{
 lstinputSourceFromRForge(PKG, TYPE, FILENAME, PROJECT, from, to,
-                                 offset.before = 0, offset.after = 0,
-                                 LineLength = 80,
-                                 withLines = ifelse(TYPE=="R", TRUE, FALSE),
-                                 fromRForge = getSweaveListingOption("fromRForge"),
-                                 base.url = getSweaveListingOption("base.url"))
+                         offset.before = 0, offset.after = 0,
+                         LineLength = 80,
+                         withLines = ifelse(TYPE=="R", TRUE, FALSE),
+                         fromRForge = getSweaveListingOption("fromRForge"),
+                         base.url = getSweaveListingOption("base.url"))
 }
 \arguments{
   \item{PKG}{character; name of package to be downloaded}

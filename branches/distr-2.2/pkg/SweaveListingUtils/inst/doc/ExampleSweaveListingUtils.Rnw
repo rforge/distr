@@ -68,9 +68,9 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 \newcommand{\hreft}[1]{\href{#1}{\tt\small\url{#1}}}
 %
 % -------------------------------------------------------------------------------
+\RequirePackage{fancyvrb}
 \RequirePackage{listings}
-\usepackage{Sweave}
-% -------------------------------------------------------------------------------
+%\usepackage{Sweave}
 \SweaveOpts{keep.source=TRUE}
 % -------------------------------------------------------------------------------
 <<SweaveListingsPreparations, results=tex, echo=FALSE>>=
@@ -164,7 +164,37 @@ In our case this should expand to something like\newline
 \lstinputlisting[style=TeXstyle,basicstyle=\footnotesize]{preambleExp.tex}
 %
 \end{footnotesize}
+Finally to clean up things (in particular unmask the base functions
+\code{require} and \code{library} again) at the end of your document
+you should append something like
+%------------
+% use \lstinputlisting{....}
+% to avoid that Sweave interprets the chunks in cleanup.tex
+%------------
+\lstinputlisting[style=TeXstyle]{cleanup.tex}
 %
+
+%
+\paragraph{Remark:} As suggested by \href{mailto:ellis@finance.ch}{Andrew Ellis},
+ETH Z{\"u}rich, \code{SweaveListingPreparations} from version {\tt 0.3}
+has two more options: First, by setting argument \code{withOwnFileSection}
+(default \code{FALSE}), one can have one's own definition of \LaTeX\
+environments for \texttt{Sinput}, \texttt{Soutput}, \texttt{Scode}, be it in
+an extra file or in a section in one's \file{.Rnw} file. Second,
+and this is Andrew's suggestion, by
+means of argument \code{withVerbatim} (default \code{FALSE}), you may
+from now on use \LaTeX\
+environments for \texttt{Sinput}, \texttt{Soutput}, \texttt{Scode} using
+{\tt listings}-command \lstinline[style=TeXstyle,basicstyle=\tt]|\lstnewenvironment|
+instead of the original {\tt fancyvrb} definitions provided in the original
+\file{Sweave.sty} file by Fritz Leisch. This way we also solve the
+escaping problem (as noted by Frank E. Harrel): the escaping mechanisms
+provided by {\tt listings}  command {\tt lstset} (as e.g. {\tt escapechar},
+{\tt escapeinline}) as described in detail in \cite[section~4.14]{H:M:07}
+are now available; in particular one can place \LaTeX\ references
+\lstinline[style=TeXstyle,basicstyle=\tt]|\ref{...}|,
+\lstinline[style=TeXstyle,basicstyle=\tt]|\label{...}| within comments.
+
 % -------------------------------------------------------------------------------
 \section{Listings markup}
 % -------------------------------------------------------------------------------
@@ -172,8 +202,8 @@ In our case this should expand to something like\newline
 % -------------------------------------------------------------------------------
 Any keyword of some new {\sf R} package ``loaded in'' by \code{require} 
 or \code{library} which is on the \code{search} list item of this package
-afterwords when used in \lstinline[style=TeXstyle]`\lstinline{ .... }` or
-\lstinline[style=TeXstyle]`\begin{lstlisting} .... \end{lstlisting}`
+afterwords when used in \lstinline[style=TeXstyle,basicstyle=\tt]`\lstinline{ .... }` or
+\lstinline[style=TeXstyle,basicstyle=\tt]`\begin{lstlisting} .... \end{lstlisting}`
 or in some Sweave chunk is typeset in style \code{keywordstyle}.
 More specifically, with argument \code{keywordstyles} of functions
 \code{setToBeDefinedPkgs} or \code{lstsetLanguage} 
@@ -188,7 +218,7 @@ mind. For this purpose, commands \code{setToBeDefinedPkgs} and
 
 Note that in order to define these new keywords correctly,
 they must not be included into a 
-\lstinline[style=TeXstyle]`\begin{Schunk} .... \end{Schunk}`
+\lstinline[style=TeXstyle,basicstyle=\tt]`\begin{Schunk} .... \end{Schunk}`
 environment, so  we use
 %------------
 % use \lstinputlisting{....} 
@@ -451,7 +481,9 @@ Ruckdeschel P, Kohl M, Stabla T, and Camphausen F (2006)
 %
 
 \end{thebibliography}
-
+<<cleanup, echo=FALSE>>=
+unloadNamespace("SweaveListingUtils")
+@
 % -------------------------------------------------------------------------------
 \end{document}
 % -------------------------------------------------------------------------------

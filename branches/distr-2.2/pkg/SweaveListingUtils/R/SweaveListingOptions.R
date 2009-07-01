@@ -15,7 +15,8 @@ Rset = list("fancyvrb" = "true", "escapechar" = "`",
                            "{>=}{{$\\geq$}}2", "{^}{{$\\scriptstyle\\wedge$}}1", sep=""),
                      ## ~,^,<=, >= as suggested by Frank Harrell
         "alsoother" = "{$}", "alsoletter" = "{.<-}",
-        "otherkeywords" = "{!,!=,~,$,*,\\&,\\%/\\%,\\%*\\%,\\%\\%,<-,<<-,/}"        
+        "otherkeywords" = "{!,!=,~,$,*,\\&,\\%/\\%,\\%*\\%,\\%\\%,<-,<<-,/}",
+        "escapeinside" = "{(*}{*)}" ## as suggested by Frank Harrell
         ),
 Rdset = list("fancyvrb" = "true", "language" = "Rd", 
              "keywordstyle" = "{\\bf}",

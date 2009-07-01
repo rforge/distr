@@ -174,6 +174,14 @@ require( ..... )
 require(distr)
 @
 }
+In order to unmask the original versions of \code{library} and \code{require}
+again after Sweave-ing your \code{.Rnw} file, at the end of your \code{.Rnw}
+file you should include an Sweave chunk like
+\preformatted{
+<<cleanup, echo=FALSE>>=
+unloadNamespace("SweaveListingUtils")
+@
+}
 }
 \value{
    as the unmasked versions.

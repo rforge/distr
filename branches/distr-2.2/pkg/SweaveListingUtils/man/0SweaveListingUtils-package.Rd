@@ -43,7 +43,8 @@ with \pkg{SweaveListingUtils}, assignment operators \code{<-} and
 \code{<<-} get typeset by one symbol each.  
 
 For a corresponding TeX preamble combining Sweave and \file{listings}, 
-we provide command \code{\link{SweaveListingPreparations}}.
+we provide command \cr
+\code{\link{SweaveListingPreparations}}.
 
 As for the \R language definition, we allow for different keywordstyles 
 to typeset symbols from different packages. This is useful to distinguish

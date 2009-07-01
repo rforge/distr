@@ -7,8 +7,8 @@ reads a source file (usually \file{.R} oder \file{.Rd})
 from R forge repository}
 \usage{
 readSourceFromRForge(PKG, TYPE, FILENAME, PROJECT,
-                                 fromRForge = getSweaveListingOption("fromRForge"),
-                                 base.url = getSweaveListingOption("base.url"))
+                     fromRForge = getSweaveListingOption("fromRForge"),
+                     base.url = getSweaveListingOption("base.url"))
 }
 \arguments{
   \item{PKG}{character; name of package to be downloaded}

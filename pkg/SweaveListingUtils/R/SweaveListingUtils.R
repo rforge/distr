@@ -138,7 +138,12 @@ lstsetRd <- function(Rdset = NULL, LineLength = 80, add = TRUE, startS = "\\lsts
 }
 
 
-SweaveListingPreparations <- function(LineLength = 80,
+SweaveListingPreparations <- function(
+   withOwnFileSection = FALSE,
+   withVerbatim = FALSE,
+   gin = TRUE,
+   ae = TRUE,
+   LineLength = 80,
    Rset = getSweaveListingOption("Rset"), 
    Rdset = getSweaveListingOption("Rdset"), 
    Rcolor = getSweaveListingOption("Rcolor"), 
@@ -151,10 +156,20 @@ SweaveListingPreparations <- function(LineLength = 80,
 
 sws <- .SweaveListingOptions
 sws$inSweave <- TRUE
+withVerbatim <- rep(withVerbatim, length.out=3)
+
+if(is.null(names(withVerbatim)))
+   names(withVerbatim) <- c("Sinput", "Soutput", "Scode")
+
+
 assignInNamespace(".SweaveListingOptions", sws, "SweaveListingUtils")
 line <- paste("%",paste(rep("-",LineLength-2),collapse=""),"%\n", sep="")
 
+
+
 cat(line,"%Preparations for Sweave and Listings\n",line,"%\n", sep = "")
+
+
 cat("\\RequirePackage{color}\n")
 cat("\\definecolor{Rcolor}{rgb}{",paste(Rcolor,collapse=", "),"}\n", sep = "")
 cat("\\definecolor{Rbcolor}{rgb}{",paste(Rbcolor,collapse=", "),"}\n", sep = "")
@@ -171,15 +186,66 @@ cat(line)
 cat("\\global\\def\\Rlstset{\\lstset{style=Rstyle}}%\n")
 cat("\\global\\def\\Rdlstset{\\lstset{style=Rdstyle}}%\n")
 cat("\\Rlstset\n")
-cat(line) 
+cat(line,"%copying relevant parts of Sweave.sty\n",line,"%\n", sep = "")
+
+cat("\\RequirePackage{ifthen}%\n")
+cat("\\newboolean{Sweave@gin}%\n")
+if(gin)
+  cat("\\setboolean{Sweave@gin}{true}%\n")
+else
+  cat("\\setboolean{Sweave@gin}{true}%\n")
+cat("\\newboolean{Sweave@ae}\n")
+if(ae)
+   cat("\\setboolean{Sweave@ae}{true}%\n")
+else
+   cat("\\setboolean{Sweave@ae}{true}%\n")
+
+cat("\\RequirePackage{graphicx,fancyvrb}%\n")
+cat("\\IfFileExists{upquote.sty}{\\RequirePackage{upquote}}{}%\n")
+
+cat("\\ifthenelse{\\boolean{Sweave@gin}}{\\setkeys{Gin}{width=0.8\\textwidth}}{}%\n")
+cat("\\ifthenelse{\\boolean{Sweave@ae}}{%\n",
+    "\\RequirePackage[T1]{fontenc}\n",
+    "\\RequirePackage{ae}\n}{}%\n", sep ="")
+
+cat("\\newenvironment{Schunk}{}{}\n\n")
+
+cat("\\newcommand{\\Sconcordance}[1]{% \n",
+  "\\ifx\\pdfoutput\\undefined% \n",
+  "\\csname newcount\\endcsname\\pdfoutput\\fi% \n",
+  "\\ifcase\\pdfoutput\\special{#1}% \n",
+  "\\else\\immediate\\pdfobj{#1}\\fi} \n\n", sep ="")
+cat(line,"% ---- end of parts of Sweave.sty\n",line,"%\n", sep = "")
+
+if(!withOwnFileSection){
+if(withVerbatim["Sinput"]){
 cat("\\DefineVerbatimEnvironment{Sinput}{Verbatim}")
 cat("%\n  {formatcom=\\color{Rcolor}\\lstset{fancyvrb=true,escapechar='}}\n")
+}else{
+#### Thanks to Andrew Ellis !!
+cat("\\lstnewenvironment{Sinput}")
+cat("%\n  {\\Rlstset\\lstset{basicstyle=\\color{Rcolor}\\small,fancyvrb=true}}")
+cat("%\n  {\\Rlstset}\n")
+}
+if(withVerbatim["Soutput"]){
 cat("\\DefineVerbatimEnvironment{Soutput}{Verbatim}")
 cat("%\n  {formatcom=\\color{Rout}\\small\\lstset{fancyvrb=false}}\n")
+}else{
+#### Thanks to Andrew Ellis !!
+cat("\\lstnewenvironment{Soutput}")
+cat("%\n  {\\Rlstset\\lstset{fancyvrb=false,basicstyle=\\color{Rout}\\small}}")
+cat("%\n  {\\Rlstset}\n")
+}
+if(withVerbatim["Scode"]){
 cat("\\DefineVerbatimEnvironment{Scode}{Verbatim}")
 cat("%\n  {fontshape=sl,formatcom=\\color{Rcolor}\\lstset{fancyvrb=true}}\n")
-cat(line)
-cat("\\ifthenelse{\\boolean{Sweave@gin}}{\\setkeys{Gin}{width=0.8\\textwidth}}{}%\n")
+}else{
+#### Thanks to Andrew Ellis !!
+cat("\\lstnewenvironment{Scode}")
+cat("%\n  {\\Rlstset\\lstset{fontshape=sl,basicstyle=\\color{Rcolor}\\small,fancyvrb=true}}")
+cat("%\n  {\\Rlstset}\n")
+}
+}
 cat(line)
 cat("\\let\\code\\lstinline\n")
 cat("\\def\\Code#1{{\\tt\\color{Rcolor} #1}}\n")

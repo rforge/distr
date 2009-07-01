@@ -6,7 +6,12 @@
 helping tool for writing the corresponding TeX preamble commands
 to integrate Sweave and package listings}
 \usage{
-SweaveListingPreparations(LineLength = 80,
+SweaveListingPreparations(
+   withOwnFileSection = FALSE,  % suggestion by Andrew Ellis!
+   withVerbatim = FALSE, % suggestion by Andrew Ellis!
+   gin = TRUE,
+   ae = TRUE,
+   LineLength = 80,
    Rset = getSweaveListingOption("Rset"),
    Rdset = getSweaveListingOption("Rdset"),
    Rcolor = getSweaveListingOption("Rcolor"),
@@ -18,6 +23,25 @@ SweaveListingPreparations(LineLength = 80,
    lib.loc = NULL)
 }
 \arguments{
+  \item{withOwnFileSection}{logical: Does one want to use an own definition file/
+                     section to define \code{Sinput}, \code{Soutput},
+                     \code{Scode} environments; if \code{TRUE} you should write some
+                     \kbd{\\include} directive to include your own
+                     definitions / or write them in your \file{.Rnw} file.
+                     }
+  \item{withVerbatim}{logical of length 3 (filled by recycling if of shorter length)
+                      either named ("Sinput", "Soutput", "Scode") or taken in
+                      order (Sinput, Soutput, Scode):
+                       Should we use Verbatim from TeX package 'fancyvrb'
+                      (i.e. the original
+                      \kbd{"\\DefineVerbatimEnvironment{Sinput}{Verbatim}"} by
+                      Fritz Leisch) or just TeX package 'listings'
+                      (i.e. we define our own \code{Sinput} environment
+                       based on 'listings' command 'lstnewenvironment';
+                       this option is due to a suggestion by
+                       Andrew Ellis (thank you!).}
+  \item{gin}{logical: shall we use \code{gin}}
+  \item{ae}{logical: shall we use \code{ae}}
   \item{LineLength}{numeric; defaults to 80}
   \item{Rset}{list or taglist; defaults to global option  \code{"Rset"}}
   \item{Rdset}{list or taglist; defaults to global option  \code{"Rdset"}}
@@ -78,6 +102,10 @@ you have to set up a global formatting matrix
 }
 
 \value{\code{invisible()}
+}
+\section{Acknowledgement}{
+The author wants to thank Frank E. Harrel and Andrew Ellis for
+very valuable suggestions to enhance this package.
 }
 
 \author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}

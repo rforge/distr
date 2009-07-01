@@ -24,7 +24,12 @@ to integrate Sweave and package listings
 <h3>Usage</h3>
 
 <pre>
-SweaveListingPreparations(LineLength = 80,
+SweaveListingPreparations(
+   withOwnFileSection = FALSE,  
+   withVerbatim = FALSE, 
+   gin = TRUE,
+   ae = TRUE,
+   LineLength = 80,
    Rset = getSweaveListingOption("Rset"),
    Rdset = getSweaveListingOption("Rdset"),
    Rcolor = getSweaveListingOption("Rcolor"),
@@ -40,6 +45,33 @@ SweaveListingPreparations(LineLength = 80,
 <h3>Arguments</h3>
 
 <table summary="R argblock">
+<tr valign="top"><td><code>withOwnFileSection</code></td>
+<td>
+logical: Does one want to use an own definition file/
+section to define <code>Sinput</code>, <code>Soutput</code>,
+<code>Scode</code> environments; if <code>TRUE</code> you should write some
+<KBD>\include</KBD> directive to include your own
+definitions / or write them in your &lsquo;<span class="file">.Rnw</span>&rsquo; file.
+</td></tr>
+<tr valign="top"><td><code>withVerbatim</code></td>
+<td>
+logical of length 3 (filled by recycling if of shorter length)
+either named ("Sinput", "Soutput", "Scode") or taken in
+order (Sinput, Soutput, Scode):
+Should we use Verbatim from TeX package 'fancyvrb'
+(i.e. the original
+<KBD>"\DefineVerbatimEnvironment{Sinput}{Verbatim}"</KBD> by
+Fritz Leisch) or just TeX package 'listings'
+(i.e. we define our own <code>Sinput</code> environment
+based on 'listings' command 'lstnewenvironment';
+this option is due to a suggestion by
+Andrew Ellis (thank you!).</td></tr>
+<tr valign="top"><td><code>gin</code></td>
+<td>
+logical: shall we use <code>gin</code></td></tr>
+<tr valign="top"><td><code>ae</code></td>
+<td>
+logical: shall we use <code>ae</code></td></tr>
 <tr valign="top"><td><code>LineLength</code></td>
 <td>
 numeric; defaults to 80</td></tr>
@@ -127,6 +159,14 @@ you have to set up a global formatting matrix
 <p>
 <code>invisible()</code></p>
 
+<h3>Acknowledgement</h3>
+
+<p>
+The author wants to thank Frank E. Harrel and Andrew Ellis for
+very valuable suggestions to enhance this package.
+</p>
+
+
 <h3>Author(s)</h3>
 
 <p>
@@ -143,6 +183,6 @@ SweaveListingPreparations(pkv="2.1")
 
 
 
-<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.3 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.4 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

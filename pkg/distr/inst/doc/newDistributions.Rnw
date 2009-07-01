@@ -402,6 +402,9 @@ Ruckdeschel P., Kohl M., Stabla T., and Camphausen F.
 %\newblock See also {http://www.uni-bayreuth.de/departments/math/org/mathe7/RUCKDESCHEL/pubs/distr.pdf}
 
 \end{thebibliography}
+<<cleanup, echo=FALSE>>=
+unloadNamespace("SweaveListingUtils")
+@
 
 % -------------------------------------------------------------------------------
 \end{document}

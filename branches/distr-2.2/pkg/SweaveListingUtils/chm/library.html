@@ -223,6 +223,14 @@ require( ..... )
 require(distr)
 @
 </pre>
+In order to unmask the original versions of <code>library</code> and <code>require</code>
+again after Sweave-ing your <code>.Rnw</code> file, at the end of your <code>.Rnw</code>
+file you should include an Sweave chunk like
+<pre>
+&lt;&lt;cleanup, echo=FALSE&gt;&gt;=
+unloadNamespace("SweaveListingUtils")
+@
+</pre>
 </p>
 
 
@@ -255,6 +263,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.3 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.4 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

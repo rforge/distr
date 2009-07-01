@@ -1,3 +1,7 @@
+% -------------------------------------------------------------------------------
+\RequirePackage{fancyvrb}
+\RequirePackage{listings}
+% -------------------------------------------------------------------------------
 %------------------------------------------------------------------------------%
 %Preparations for Sweave and Listings
 %------------------------------------------------------------------------------%
@@ -9,31 +13,32 @@
 \definecolor{Rcomment}{rgb}{0.101, 0.043, 0.432}
 %------------------------------------------------------------------------------%
 \lstdefinelanguage{Rd}[common]{TeX}%
-  {moretexcs={acronym,alias,arguments,author,bold,cite,%
+{moretexcs={acronym,alias,arguments,author,bold,cite,%
           code,command,concept,cr,deqn,describe,%
-          description,details,dfn,docType,dots,%
+          description,details,dfn,doctype,dots,%
           dontrun,dontshow,donttest,dQuote,%
           email,emph,enc,encoding,enumerate,env,eqn,%
           examples,file,format,item,itemize,kbd,keyword,%
-          keyword,ldots,link,linkS4class,method,name,note,%
-          option,pkg,preformatted,R,references,S3method,%
-          S4method,samp,section,seealso,source,sp,special,%
+          ldots,link,linkS4class,method,name,note,%
+          option,pkg,preformatted,R,Rdopts,Rdversion,%
+          references,S3method,S4method,Sexpr,samp,section,%
+          seealso,source,sp,special,%
           sQuote,strong,synopsis,tab,tabular,testonly,%
-          title,url,usage,value,var},
+          title,url,usage,value,var,verb},
    sensitive=true,%
-   morecomment=[l]\%% 2008 Peter Ruckdeschel
+   morecomment=[l]\%% 2008/9 Peter Ruckdeschel
 }[keywords,comments]%%
 %------------------------------------------------------------------------------%
-\lstdefinestyle{Rstyle}{fancyvrb=true,escapechar=.,language=R,%
+\lstdefinestyle{Rstyle}{fancyvrb=true,escapechar=§,language=R,%
                         basicstyle={\color{Rcolor}\small},%
                         keywordstyle={\bf\color{Rcolor}},%
                         commentstyle={\color{Rcomment}\ttfamily\itshape},%
                         literate={<-}{{$\leftarrow$}}2{<<-}{{$\twoheadleftarrow$}}2%
-                                 {~}{{$\\sim$}}1{<=}{{$\\leq$}}2%
-                                 {>=}{{$\\geq$}}2{^}{{$^\\wedge$}}1,%
+                        {~}{{$\sim$}}1{<=}{{$\leq$}}2{>=}{{$\geq$}}2{^}{{$\scriptstyle\wedge$}}1,%
                         alsoother={$},%
                         alsoletter={.<-},%
-                        otherkeywords={!,!=,~,$,*,\&,\%/\%,\%*\%,\%\%,<-,<<-,/}}%
+                        otherkeywords={!,!=,~,$,*,\&,\%/\%,\%*\%,\%\%,<-,<<-,/},%
+                        escapeinside={(*}{*)}}%
 \lstdefinestyle{Rdstyle}{fancyvrb=true,language=Rd,keywordstyle={\bf},%
                          basicstyle={\color{black}\footnotesize},%
                          commentstyle={\ttfamily\itshape},%
@@ -43,31 +48,56 @@
 \global\def\Rdlstset{\lstset{style=Rdstyle}}%
 \Rlstset
 %------------------------------------------------------------------------------%
-\DefineVerbatimEnvironment{Sinput}{Verbatim}%
-  {formatcom=\color{Rcolor}\lstset{fancyvrb=true,escapechar='}}
-\DefineVerbatimEnvironment{Soutput}{Verbatim}%
-  {formatcom=\color{Rout}\small\lstset{fancyvrb=false}}
-\DefineVerbatimEnvironment{Scode}{Verbatim}%
-  {fontshape=sl,formatcom=\color{Rcolor}\lstset{fancyvrb=true}}
+%copying relevant parts of Sweave.sty
 %------------------------------------------------------------------------------%
-\ifthenelse{\boolean{Sweave@gin}}{\setkeys{Gin}{width=0.6\textwidth}}{}%
+%
+\RequirePackage{ifthen}%
+\newboolean{Sweave@gin}%
+\setboolean{Sweave@gin}{true}%
+\newboolean{Sweave@ae}
+\setboolean{Sweave@ae}{true}%
+\RequirePackage{graphicx,fancyvrb}%
+\IfFileExists{upquote.sty}{\RequirePackage{upquote}}{}%
+\ifthenelse{\boolean{Sweave@gin}}{\setkeys{Gin}{width=0.8\textwidth}}{}%
+\ifthenelse{\boolean{Sweave@ae}}{%
+\RequirePackage[T1]{fontenc}
+\RequirePackage{ae}
+}{}%
+\newenvironment{Schunk}{}{}
+
+\newcommand{\Sconcordance}[1]{%
+\ifx\pdfoutput\undefined%
+\csname newcount\endcsname\pdfoutput\fi%
+\ifcase\pdfoutput\special{#1}%
+\else\immediate\pdfobj{#1}\fi}
+
+%------------------------------------------------------------------------------%
+% ---- end of parts of Sweave.sty
+%------------------------------------------------------------------------------%
+%
+\lstnewenvironment{Sinput}%
+  {\Rlstset\lstset{basicstyle=\color{Rcolor}\small,fancyvrb=true}}%
+  {\Rlstset}
+\lstnewenvironment{Soutput}%
+  {\Rlstset\lstset{fancyvrb=false,basicstyle=\color{Rout}\small}}%
+  {\Rlstset}
+\lstnewenvironment{Scode}%
+  {\Rlstset\lstset{fontshape=sl,basicstyle=\color{Rcolor}\small,fancyvrb=true}}%
+  {\Rlstset}
 %------------------------------------------------------------------------------%
 \let\code\lstinline
-\newcommand{\Code}[1]{{\tt\color{Rcolor} #1}}
-\newcommand{\file}[1]{{\tt #1}}
-\newcommand{\pkg}[1]{{\tt "#1"}}
-\newcommand{\pkgversion}{{\tt 2.0.3}}
+\def\Code#1{{\tt\color{Rcolor} #1}}
+\def\file#1{{\tt #1}}
+\def\pkg#1{{\tt "#1"}}
+\newcommand{\pkgversion}{{\tt 2.2}}
 %------------------------------------------------------------------------------%
 % --------------------------
 % Registration of package SweaveListingUtils
 % --------------------------
-% --------------------------
-\lstset{morekeywords={[2]changeKeywordstyles,copySourceFromRForge,%
-getSweaveListingOption,lstinputSourceFromRForge,lstset,%
-lstsetLanguage,lstsetR,lstsetRd,readPkgVersion,readSourceFromRForge,%
-setToBeDefinedPkgs,SweaveListingMASK,SweaveListingoptions,%
-SweaveListingOptions,SweaveListingPreparations,%
-taglist%
+\lstset{morekeywords={[2]taglist,SweaveListingPreparations,SweaveListingOptions,%
+SweaveListingoptions,SweaveListingMASK,setToBeDefinedPkgs,readSourceFromRForge,%
+readPkgVersion,lstsetRd,lstsetR,lstsetLanguage,lstset,lstinputSourceFromRForge,%
+getSweaveListingOption,copySourceFromRForge,changeKeywordstyles%
 },%
 keywordstyle={[2]{\bf}}%
 }
@@ -77,26 +107,24 @@ keywordstyle={[2]{\bf}}%
 % --------------------------
 % Registration of package startupmsg
 % --------------------------
-\lstset{morekeywords={[3]buildStartupMessage,infoShow,mySMHandler,%
-mystartupMessage,NEWS,onlytypeStartupMessages,pointertoNEWS,%
-readURLInformation,readVersionInformation,startupMessage,%
-StartupMessage,startupPackage,startupType,suppressStartupMessages%
+\lstset{morekeywords={[3]suppressStartupMessages,startupType,startupPackage,%
+StartupMessage,startupMessage,startupEndline,readVersionInformation,%
+readURLInformation,pointertoNEWS,onlytypeStartupMessages,%
+NEWS,mystartupMessage,mySMHandler,infoShow,buildStartupMessage%
 },%
 keywordstyle={[3]{\bf}}%
 }
 %
-%
 
 %
 ...
-snipped expanded \TeX\ code for registration of packages
+snipped expanded `\TeX` (see how the original `\verb|`\TeX`|` gets escaped!)
+code for registration of packages
         tools, stats, graphics, grDevices, utils, datasets, methods, base
 ...
 %
 
 %------------------------------------------------------------------------------%
-%
-%%
 \lstset%
 {keywordstyle={[2]\bf\color{blue}}
 }%
