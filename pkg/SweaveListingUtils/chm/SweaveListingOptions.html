@@ -84,12 +84,14 @@ just a synonym to <code>SweaveListingOptions</code>.
 <code>        "commentstyle" = "{\\color{Rcomment}\\ttfamily\\itshape}",</code><br>
 <code>        "literate" = "{&lt;-}{{$\\leftarrow$}}2{&lt;&lt;-}{{$\\twoheadleftarrow$}}2",</code><br>
 <code>        "alsoother" = "{$}","alsoletter" = "{.&lt;-}"</code><br>
+<code>        "otherkeywords" = </code>
 <code>        "otherkeywords" = "{!,!=,~,$,*,\\&amp;,\\ %/\\ %,\\ %*\\ %,\\ %\\ %,&lt;-,&lt;&lt;-,/}")</code><br>
-(CAVEAT: the spaces between the double backslashes and the percent sign in the last line 
+(CAVEAT: the spaces between the double backslashes and the percent sign in the last line
 are <EM>not</EM> intended; I simply did not find another work-around)
 </dd>
 <dt>Rdset:</dt><dd>default setting for \lstset-definition of Rd-code, default value is<br>
-<code>list("fancyvrb" = "true", "language" = "Rd", "basicstyle" = "{\\color{black}\\tiny}",</code><br>
+<code>list("fancyvrb" = "true", "language" = "Rd",</code><br>
+<code>        "basicstyle" = "{\\color{black}\\tiny}",</code><br>
 <code>        "keywordstyle" = "{\\bf}",</code><br>
 <code>        "commentstyle" = "\\ttfamily\\itshape",</code><br>
 <code>        "alsolanguage" = "R")</code>
@@ -122,7 +124,7 @@ defaults to <code>FALSE</code></dd>
 "r-forge.r-project.org" (or a mirror) or not; defaults to 
 <code>TRUE</code>.</dd>
 <dt>base.url:</dt><dd>default setting for the base url to download code sniplets from
-(character); defaults to
+(character); defaults to<br>
 "http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/*checkout*/pkg/"
 </dd>
 
@@ -165,6 +167,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.2 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.3 <a href="00Index.html">Index</a>]</div>
 
 </body></html>
