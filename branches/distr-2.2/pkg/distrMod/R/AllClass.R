@@ -30,7 +30,12 @@ distrModMASK <- function(library = NULL)
 
 
 ## norms to be used in prototype already
-EuclideanNorm <- function(x) sqrt(colSums(x^2))
+EuclideanNorm <- function(x){ 
+    if(is.vector(x)) 
+        return(abs(x))
+    else 
+        return(sqrt(colSums(x^2)))
+}
 QuadFormNorm <- function(x, A) sqrt(colSums(x*(A %*% x)))
 
 ################################
