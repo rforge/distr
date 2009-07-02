@@ -189,11 +189,19 @@ E(object, fun, cond, ...)
 \S4method{E}{Exp,missing,missing}(object, low = NULL, upp = NULL, ...)
 \S4method{E}{Fd,missing,missing}(object, low = NULL, upp = NULL, ...)
 \S4method{E}{Gammad,missing,missing}(object, low = NULL, upp = NULL, ...)
-\S4method{E}{Gammad,function,missing}(object, fun, low = NULL, upp = NULL, ...)
+\S4method{E}{Gammad,function,missing}(object, fun, low = NULL, upp = NULL, 
+                                      rel.tol = getdistrExOption("ErelativeTolerance"),
+                                      lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"),
+                                      upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+                                      IQR.fac = getdistrExOption("IQR.fac"), ...)
 \S4method{E}{Geom,missing,missing}(object, low = NULL, upp = NULL, ...)
 \S4method{E}{Gumbel,missing,missing}(object, low = NULL, upp = NULL, ...)
 \S4method{E}{GPareto,missing,missing}(object, low = NULL, upp = NULL, ...)
-\S4method{E}{GPareto,function,missing}(object, fun, low = NULL, upp = NULL, ...)
+\S4method{E}{GPareto,function,missing}(object, fun, low = NULL, upp = NULL, 
+                                      rel.tol = getdistrExOption("ErelativeTolerance"),
+                                      lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"),
+                                      upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+                                      IQR.fac = getdistrExOption("IQR.fac"), ...)
 \S4method{E}{Hyper,missing,missing}(object, low = NULL, upp = NULL, ...)
 \S4method{E}{Logis,missing,missing}(object, low = NULL, upp = NULL, ...)
 \S4method{E}{Lnorm,missing,missing}(object, low = NULL, upp = NULL, ...)
