@@ -141,6 +141,7 @@ lstsetRd <- function(Rdset = NULL, LineLength = 80, add = TRUE, startS = "\\lsts
 SweaveListingPreparations <- function(
    withOwnFileSection = FALSE,
    withVerbatim = FALSE,
+   withSchunkDef = TRUE,
    gin = TRUE,
    ae = TRUE,
    LineLength = 80,
@@ -208,7 +209,8 @@ cat("\\ifthenelse{\\boolean{Sweave@ae}}{%\n",
     "\\RequirePackage[T1]{fontenc}\n",
     "\\RequirePackage{ae}\n}{}%\n", sep ="")
 
-cat("\\newenvironment{Schunk}{}{}\n\n")
+if(withSchunkDef)
+   cat("\\newenvironment{Schunk}{}{}\n\n")
 
 cat("\\newcommand{\\Sconcordance}[1]{% \n",
   "\\ifx\\pdfoutput\\undefined% \n",
