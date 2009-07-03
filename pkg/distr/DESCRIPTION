@@ -1,6 +1,6 @@
 Package: distr
-Version: 2.1.2
-Date: 2009-06-30
+Version: 2.1.3
+Date: 2009-07-02
 Title: Object orientated implementation of distributions
 Description: Object orientated implementation of distributions
 Author: Florian Camphausen, Matthias Kohl, Peter Ruckdeschel, Thomas Stabla

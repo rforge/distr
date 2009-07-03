@@ -47,8 +47,9 @@ pagebackref,bookmarks,colorlinks,linkcolor=darkblue,citecolor=darkblue,%
 pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 %
 % -------------------------------------------------------------------------------
+\RequirePackage{fancyvrb}
 \RequirePackage{listings}
-\usepackage{Sweave}
+%\usepackage{Sweave}
 % -------------------------------------------------------------------------------
 \SweaveOpts{keep.source=TRUE}
 % -------------------------------------------------------------------------------

@@ -268,7 +268,11 @@ E(object, low = NULL, upp = NULL, ...)
 ## S4 method for signature 'Gammad, missing, missing':
 E(object, low = NULL, upp = NULL, ...)
 ## S4 method for signature 'Gammad, function, missing':
-E(object, fun, low = NULL, upp = NULL, ...)
+E(object, fun, low = NULL, upp = NULL, 
+                                      rel.tol = getdistrExOption("ErelativeTolerance"),
+                                      lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"),
+                                      upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+                                      IQR.fac = getdistrExOption("IQR.fac"), ...)
 ## S4 method for signature 'Geom, missing, missing':
 E(object, low = NULL, upp = NULL, ...)
 ## S4 method for signature 'Gumbel, missing, missing':
@@ -276,7 +280,11 @@ E(object, low = NULL, upp = NULL, ...)
 ## S4 method for signature 'GPareto, missing, missing':
 E(object, low = NULL, upp = NULL, ...)
 ## S4 method for signature 'GPareto, function, missing':
-E(object, fun, low = NULL, upp = NULL, ...)
+E(object, fun, low = NULL, upp = NULL, 
+                                      rel.tol = getdistrExOption("ErelativeTolerance"),
+                                      lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"),
+                                      upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+                                      IQR.fac = getdistrExOption("IQR.fac"), ...)
 ## S4 method for signature 'Hyper, missing, missing':
 E(object, low = NULL, upp = NULL, ...)
 ## S4 method for signature 'Logis, missing, missing':
