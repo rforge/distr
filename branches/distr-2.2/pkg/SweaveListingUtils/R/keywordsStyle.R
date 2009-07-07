@@ -22,11 +22,19 @@ lookUpKeywordStyles <- function(pkgs, defkws){
       idx <- seq(along = pkgs)
       idxIn <- idx[pkgs %in% .tobeDefinedPkgs[,1]]
       idxNIn <- idx[!(pkgs %in% .tobeDefinedPkgs[,1])]
-      if(missing(defkws))
-        defkws <- getSweaveListingOption("Keywordstyle")
-      defkws <- rep(defkws, length.out = length(idxNIn))
-      if(length(idxIn)) kws[idxIn] <- .tobeDefinedPkgs[.tobeDefinedPkgs[,1] %in% pkgs[idxIn] ,2]
-      if(length(idxNIn)) kws[idxNIn] <- defkws
+      idxRec <- NULL
+      if(length(idxNIn)){
+        if(missing(defkws))
+           defkwsI <- setBaseOrRecommended(pkgs = pkgs[idxNIn])
+        else{
+           defkwsI <- if(length(idxNIn)) defkws[idxNIn] else defkws
+           defkwsI <- rep(defkwsI, length.out = length(idxNIn))
+           defkwsI <- setBaseOrRecommended(pkgs = pkgs[idxNIn], kws = defkwsI)
+        }
+        kws[idxNIn] <- defkwsI
+      }
+      if(length(idxIn))
+         kws[idxIn] <- .tobeDefinedPkgs[.tobeDefinedPkgs[,1] %in% pkgs[idxIn] ,2]
       return(kws)
     }
 }
@@ -36,7 +44,12 @@ lstsetLanguage <- function(pkgs, posIdx, keywordstyles, overwrite = FALSE){
         if (!overwrite)
              kwd <- kwd[!kwd%in%.keywordsR]
         num <- length(.alreadyDefinedPkgs)
+        BaseOrRec <- ""
+        if(!is.na(isBaseOrRecommended(pkg)))
+            if(isBaseOrRecommended(pkg))
+               BaseOrRec <- " [recommended or base] "
         cat("% --------------------------\n% Registration of package ",pkg,
+             BaseOrRec,
             "\n% --------------------------\n",
             "\\lstset{morekeywords={[",num+2,"]", sep = "")
         ml <- length(kwd); m1 <- ml%/%5; m2 <- ml%%5
@@ -75,10 +88,14 @@ lstsetLanguage <- function(pkgs, posIdx, keywordstyles, overwrite = FALSE){
      }
      pkgs <- .packages()[posIdx]
      lP <- length(posIdx)
-     if(missing(keywordstyles))
+     if(missing(keywordstyles)){
         keywordstyles <- getSweaveListingOption("Keywordstyle")
-     keywordstyles <- rep(keywordstyles, length.out = lP)
-#     print(lP); print(pkgs); print(posIdx); print(search())
+        keywordstyles <- rep(keywordstyles, length.out = lP)
+        keywordstyles <- setBaseOrRecommended(pkgs = pkgs,
+                                              kws = keywordstyles)
+     }else
+        keywordstyles <- rep(keywordstyles, length.out = lP)
+
      if(lP) {for(i in 1: lP){
         kwl <- ls(pos = which(pkgs[i] == gsub("package:","",search())))
         kwl <- sort(kwl[grep("^[[:alpha:]]+\\w*",kwl,perl=TRUE)],
@@ -173,19 +190,21 @@ library <- function(package, help, pos = 2, lib.loc = NULL,
                 pint <- pdiff[!pdiff == pkg]
 #
                 if(is.null(interm.keywordstyles) && length(pint))
-                   interm.keywordstyles <- lookUpKeywordStyles(pkgs = pint,
+                    interm.keywordstyles <- lookUpKeywordStyles(pkgs = pint,
                                      defkws = getSweaveListingOption("interm.Keywordstyle"))
                 if(is.null(keywordstyles))
-                   keywordstyles <- lookUpKeywordStyles(pkgs = pkg,
+                    keywordstyles <- lookUpKeywordStyles(pkgs = pkg,
                                      defkws = getSweaveListingOption("Keywordstyle"))
 
                 if(intermediate){
                    pkgs <- c(pkg, pint)
                    kws.int <- rep(interm.keywordstyles,length.out= length(pint))
-                   kws <- c(keywordstyles[1],kws.int)
+                   kws.o <- rep(keywordstyles,length.out= length(pkg))
+                   kws <- c(kws.o,kws.int)
                 }else{
                    pkgs <- pkg
-                   kws <- keywordstyles[1]
+                   kws.o <- rep(keywordstyles,length.out= length(pkg))
+                   kws <- kws.o
                 }
                 if(is.null(mc$help)&&!is.null(pkg))
                 lstsetLanguage(pkgs = pkgs, keywordstyles = kws,
@@ -194,4 +213,35 @@ library <- function(package, help, pos = 2, lib.loc = NULL,
                 rerg <- do.call(fct, args=mc)
              }
              return(rerg)
+}
+
+isBaseOrRecommended <- function(pkgs){
+   sapply(pkgs, function(x){
+      logres <- read.dcf(file = system.file("DESCRIPTION", package = x),
+                         fields="Priority") %in% c("base","recommended")
+      logres[is.na(logres)] <- FALSE
+      any(logres)
+
+   })
+}
+
+
+setBaseOrRecommended <- function(pkgs,kws){
+      idxRec <- as.logical(isBaseOrRecommended(pkgs = pkgs))
+      if(missing(kws))
+         kws <- rep(getSweaveListingOption("Keywordstyle"),
+                    length.out = length(pkgs))
+      else
+         kws <- rep(kws, length.out = length(pkgs))
+
+      if(any(idxRec)){
+        kwsI <- kws[idxRec]
+
+        grI <- grep("\\\\color\\{.+\\}", kwsI, invert = TRUE)
+        kwsI <- gsub("\\\\color\\{.+\\}","\\\\color\\{RRecomdcolor\\}",
+                           kwsI)
+        kwsI[grI] <- gsub("\\}$","\\\\color\\{RRecomdcolor\\}\\}",kwsI[grI])
+        kws[idxRec] <- kwsI
+      }
+      return(kws)
 }

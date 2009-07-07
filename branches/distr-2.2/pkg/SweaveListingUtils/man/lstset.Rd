@@ -8,8 +8,10 @@
 Functions for defining how listings prints R and Rd source code}
 \usage{
 lstset(taglist, LineLength = 80, startS = "\\\\lstset\{")
-lstsetR(Rset = NULL, LineLength = 80, add = TRUE, startS = "\\\\lstset\{")
-lstsetRd(Rdset = NULL, LineLength = 80, add = TRUE, startS = "\\\\lstset\{")
+lstsetR(Rset = NULL, LineLength = 80, add = getSweaveListingOption("addRset"),
+        startS = "\\\\lstset\{")
+lstsetRd(Rdset = NULL, LineLength = 80, add = getSweaveListingOption("addRdset"),
+         startS = "\\\\lstset\{")
 }
 
 \arguments{

@@ -24,6 +24,7 @@ Rdset = list("fancyvrb" = "true", "language" = "Rd",
                "commentstyle" = "{\\ttfamily\\itshape}",
                "alsolanguage" = "R"),
 Rcolor  = c(0,0.5,0.5),
+RRecomdcolor  = c(0,0.6,0.4),
 Rbcolor  = c(0,0.6,0.6),
 Rout     = c(0.461,0.039,0.102),
 Rcomment = c(0.101,0.043,0.432),
@@ -36,7 +37,9 @@ intermediate = TRUE,
 inSweave = FALSE,
 fromRForge = TRUE,
 base.url = paste("http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/",
-                            "*checkout*/pkg/", sep = "")
+                            "*checkout*/pkg/", sep = ""),
+addRset = TRUE,
+addRdset = TRUE
 )
 
 SweaveListingOptions <- function(...) {

@@ -33,7 +33,8 @@ SweaveListingPreparations(
    Rset = getSweaveListingOption("Rset"),
    Rdset = getSweaveListingOption("Rdset"),
    Rcolor = getSweaveListingOption("Rcolor"),
-   Rbcolor = getSweaveListingOption("Rbcolor"), 
+   RRecomdcolor = getSweaveListingOption("RRecomdcolor"),
+   Rbcolor = getSweaveListingOption("Rbcolor"),
    Rout = getSweaveListingOption("Rout"),
    Rcomment = getSweaveListingOption("Rcomment"),
    pkg = getSweaveListingOption("pkg"),
@@ -83,20 +84,25 @@ list or taglist; defaults to global option  <code>"Rset"</code></td></tr>
 list or taglist; defaults to global option  <code>"Rdset"</code></td></tr>
 <tr valign="top"><td><code>Rcolor</code></td>
 <td>
-numeric of length 3; defaults to global option  <code>"Rcolor"</code>;
+numeric of length 3; [color for R-input-code] defaults to global option  <code>"Rcolor"</code>;
+rgb coordinates of the color in which to print R-code</td></tr>
+<tr valign="top"><td><code>RRecomdcolor</code></td>
+<td>
+numeric of length 3; [color for R-symbols from recommended packages]
+defaults to global option  <code>"RRecomdcolor"</code>;
 rgb coordinates of the color in which to print R-code</td></tr>
 <tr valign="top"><td><code>Rbcolor</code></td>
 <td>
-numeric of length 3; defaults to global option  <code>"Rbcolor"</code>;
+numeric of length 3; [color for R-symbols from intermediate packages] defaults to global option  <code>"Rbcolor"</code>;
 rgb coordinates of the color in which to print <font face="Courier New,Courier" color="#666666"><b>R</b></font> keywords
 induced by intermediate packages.</td></tr>
 <tr valign="top"><td><code>Rout</code></td>
 <td>
-numeric of length 3; defaults to global option  <code>"Rout"</code>;
+numeric of length 3; [color for R-output-code] defaults to global option  <code>"Rout"</code>;
 rgb coordinates of the color in which to print R output</td></tr>
 <tr valign="top"><td><code>Rcomment</code></td>
 <td>
-numeric of length 3; defaults to global option <code>"Rcomment"</code>;
+numeric of length 3; [color for R-comments] defaults to global option <code>"Rcomment"</code>;
 rgb coordinates of the color in which to print comments
 in R-code</td></tr>
 <tr valign="top"><td><code>pkg</code></td>
@@ -183,6 +189,6 @@ SweaveListingPreparations(pkv="2.1")
 
 
 
-<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.3 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.3.1 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

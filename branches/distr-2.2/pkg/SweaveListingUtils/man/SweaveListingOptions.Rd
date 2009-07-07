@@ -17,6 +17,8 @@
 \alias{inSweave}
 \alias{fromRForge}
 \alias{base.url}
+\alias{addRset}
+\alias{addRdset}
 
 \title{Function to change the global options of the package `SweaveListingUtils' }
 \description{With \code{SweaveListingOptions} you can inspect and change 
@@ -96,6 +98,10 @@ default setting for \\lstset-definition of Rd-code, default value is\cr
             "http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/*checkout*/pkg/"
             }
 
+\item{addRset:}{logical; default for argument \code{add} in command \code{Rset};
+        defaults to \code{TRUE}}
+\item{addRdset:}{logical; default for argument \code{add} in command \code{Rdset};
+        defaults to \code{TRUE}}
 }
 }
 %\references{}

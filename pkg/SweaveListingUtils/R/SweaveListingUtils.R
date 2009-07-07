@@ -107,7 +107,8 @@ lstset <- function(taglist, LineLength = 80, startS = "\\lstset{"){
    return(invisible())
 }
 
-lstsetR <- function(Rset = NULL, LineLength = 80, add = TRUE, startS = "\\lstset{"){
+lstsetR <- function(Rset = NULL, LineLength = 80,
+                    add = getSweaveListingOption("addRset"), startS = "\\lstset{"){
    if(add){
        Rset0 <- getSweaveListingOption("Rset")
        if(length(Rset)){
@@ -122,7 +123,8 @@ lstsetR <- function(Rset = NULL, LineLength = 80, add = TRUE, startS = "\\lstset
    return(invisible())
 }
 
-lstsetRd <- function(Rdset = NULL, LineLength = 80, add = TRUE, startS = "\\lstset{"){
+lstsetRd <- function(Rdset = NULL, LineLength = 80,
+                    add = getSweaveListingOption("addRdset"), startS = "\\lstset{"){
    if(add){
        Rdset0 <- getSweaveListingOption("Rdset")
        if(length(Rdset)){
@@ -147,7 +149,8 @@ SweaveListingPreparations <- function(
    Rset = getSweaveListingOption("Rset"), 
    Rdset = getSweaveListingOption("Rdset"), 
    Rcolor = getSweaveListingOption("Rcolor"), 
-   Rbcolor = getSweaveListingOption("Rbcolor"), 
+   RRecomdcolor = getSweaveListingOption("RRecomdcolor"),
+   Rbcolor = getSweaveListingOption("Rbcolor"),
    Rout = getSweaveListingOption("Rout"),
    Rcomment = getSweaveListingOption("Rcomment"), 
    pkg = getSweaveListingOption("pkg"), 
@@ -156,13 +159,13 @@ SweaveListingPreparations <- function(
 
 sws <- .SweaveListingOptions
 sws$inSweave <- TRUE
-withVerbatim <- rep(withVerbatim, length.out=3)
+assignInNamespace(".SweaveListingOptions", sws, "SweaveListingUtils")
 
+withVerbatim <- rep(withVerbatim, length.out=3)
 if(is.null(names(withVerbatim)))
    names(withVerbatim) <- c("Sinput", "Soutput", "Scode")
 
 
-assignInNamespace(".SweaveListingOptions", sws, "SweaveListingUtils")
 line <- paste("%",paste(rep("-",LineLength-2),collapse=""),"%\n", sep="")
 
 
@@ -172,6 +175,7 @@ cat(line,"%Preparations for Sweave and Listings\n",line,"%\n", sep = "")
 
 cat("\\RequirePackage{color}\n")
 cat("\\definecolor{Rcolor}{rgb}{",paste(Rcolor,collapse=", "),"}\n", sep = "")
+cat("\\definecolor{RRecomdcolor}{rgb}{",paste(RRecomdcolor,collapse=", "),"}\n", sep = "")
 cat("\\definecolor{Rbcolor}{rgb}{",paste(Rbcolor,collapse=", "),"}\n", sep = "")
 cat("\\definecolor{Rout}{rgb}{",paste(Rout,collapse=", "),"}\n", sep = "")
 cat("\\definecolor{Rcomment}{rgb}{",paste(Rcomment,collapse=", "),"}\n", sep = "")
@@ -183,9 +187,12 @@ cat(line)
 lstsetR(Rset=Rset, LineLength=LineLength, startS ="\\lstdefinestyle{Rstyle}{")
 lstsetRd(Rdset=Rdset, LineLength=LineLength, startS ="\\lstdefinestyle{Rdstyle}{")
 cat(line)
+if(!withOwnFileSection)
+    SweaveListingoptions("addRset" = FALSE, "addRdset" = FALSE)
 cat("\\global\\def\\Rlstset{\\lstset{style=Rstyle}}%\n")
 cat("\\global\\def\\Rdlstset{\\lstset{style=Rdstyle}}%\n")
-cat("\\Rlstset\n")
+if(!withOwnFileSection)
+   cat("\\Rlstset\n")
 cat(line,"%copying relevant parts of Sweave.sty\n",line,"%\n", sep = "")
 
 cat("\\RequirePackage{ifthen}%\n")
@@ -224,8 +231,10 @@ cat("%\n  {formatcom=\\color{Rcolor}\\lstset{fancyvrb=true,escapechar='}}\n")
 }else{
 #### Thanks to Andrew Ellis !!
 cat("\\lstnewenvironment{Sinput}")
-cat("%\n  {\\Rlstset\\lstset{basicstyle=\\color{Rcolor}\\small,fancyvrb=true}}")
-cat("%\n  {\\Rlstset}\n")
+cat("%\n  {", # "\\Rlstset",
+           "\\Rlstset\\lstset{basicstyle=\\color{Rcolor}\\small,fancyvrb=true}}")
+cat("%\n  {", # "\\Rlstset",
+           "}\n")
 }
 if(withVerbatim["Soutput"]){
 cat("\\DefineVerbatimEnvironment{Soutput}{Verbatim}")
@@ -233,8 +242,10 @@ cat("%\n  {formatcom=\\color{Rout}\\small\\lstset{fancyvrb=false}}\n")
 }else{
 #### Thanks to Andrew Ellis !!
 cat("\\lstnewenvironment{Soutput}")
-cat("%\n  {\\Rlstset\\lstset{fancyvrb=false,basicstyle=\\color{Rout}\\small}}")
-cat("%\n  {\\Rlstset}\n")
+cat("%\n  {", # "\\Rlstset",
+           "\\lstset{fancyvrb=false,basicstyle=\\color{Rout}\\small}}")
+cat("%\n  {", # "\\Rlstset",
+           "}\n")
 }
 if(withVerbatim["Scode"]){
 cat("\\DefineVerbatimEnvironment{Scode}{Verbatim}")
@@ -242,8 +253,10 @@ cat("%\n  {fontshape=sl,formatcom=\\color{Rcolor}\\lstset{fancyvrb=true}}\n")
 }else{
 #### Thanks to Andrew Ellis !!
 cat("\\lstnewenvironment{Scode}")
-cat("%\n  {\\Rlstset\\lstset{fontshape=sl,basicstyle=\\color{Rcolor}\\small,fancyvrb=true}}")
-cat("%\n  {\\Rlstset}\n")
+cat("%\n  {", # "\\Rlstset",
+           "\\lstset{fontshape=sl,basicstyle=\\color{Rcolor}\\small,fancyvrb=true}}")
+cat("%\n  {", # "\\Rlstset",
+           "}\n")
 }
 }
 cat(line)

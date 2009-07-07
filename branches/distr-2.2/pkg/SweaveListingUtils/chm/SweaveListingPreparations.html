@@ -43,6 +43,79 @@ SweaveListingPreparations(
 </pre>
 
 
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>withOwnFileSection</code></td>
+<td>
+logical: Does one want to use an own definition file/
+section to define <code>Sinput</code>, <code>Soutput</code>,
+<code>Scode</code> environments; if <code>TRUE</code> you should write some
+<KBD>\include</KBD> directive to include your own
+definitions / or write them in your &lsquo;<span class="file">.Rnw</span>&rsquo; file.
+</td></tr>
+<tr valign="top"><td><code>withVerbatim</code></td>
+<td>
+logical of length 3 (filled by recycling if of shorter length)
+either named ("Sinput", "Soutput", "Scode") or taken in
+order (Sinput, Soutput, Scode):
+Should we use Verbatim from TeX package 'fancyvrb'
+(i.e. the original
+<KBD>"\DefineVerbatimEnvironment{Sinput}{Verbatim}"</KBD> by
+Fritz Leisch) or just TeX package 'listings'
+(i.e. we define our own <code>Sinput</code> environment
+based on 'listings' command 'lstnewenvironment';
+this option is due to a suggestion by
+Andrew Ellis (thank you!).</td></tr>
+<tr valign="top"><td><code>withSchunkDef</code></td>
+<td>
+logical: should environment <code>Schunk</code> be defined?</td></tr>
+<tr valign="top"><td><code>gin</code></td>
+<td>
+logical: shall we use <code>gin</code></td></tr>
+<tr valign="top"><td><code>ae</code></td>
+<td>
+logical: shall we use <code>ae</code></td></tr>
+<tr valign="top"><td><code>LineLength</code></td>
+<td>
+numeric; defaults to 80</td></tr>
+<tr valign="top"><td><code>Rset</code></td>
+<td>
+list or taglist; defaults to global option  <code>"Rset"</code></td></tr>
+<tr valign="top"><td><code>Rdset</code></td>
+<td>
+list or taglist; defaults to global option  <code>"Rdset"</code></td></tr>
+<tr valign="top"><td><code>Rcolor</code></td>
+<td>
+numeric of length 3; defaults to global option  <code>"Rcolor"</code>;
+rgb coordinates of the color in which to print R-code</td></tr>
+<tr valign="top"><td><code>Rbcolor</code></td>
+<td>
+numeric of length 3; defaults to global option  <code>"Rbcolor"</code>;
+rgb coordinates of the color in which to print <font face="Courier New,Courier" color="#666666"><b>R</b></font> keywords
+induced by intermediate packages.</td></tr>
+<tr valign="top"><td><code>Rout</code></td>
+<td>
+numeric of length 3; defaults to global option  <code>"Rout"</code>;
+rgb coordinates of the color in which to print R output</td></tr>
+<tr valign="top"><td><code>Rcomment</code></td>
+<td>
+numeric of length 3; defaults to global option <code>"Rcomment"</code>;
+rgb coordinates of the color in which to print comments
+in R-code</td></tr>
+<tr valign="top"><td><code>pkg</code></td>
+<td>
+character; name of the packageto be described (e.g. in a vignette);
+defaults to global option <code>"pkg"</code></td></tr>
+<tr valign="top"><td><code>pkv</code></td>
+<td>
+character; package version to be described (e.g. in a vignette);
+defaults to global option <code>"pkv"</code></td></tr>
+<tr valign="top"><td><code>lib.loc</code></td>
+<td>
+location of a local library in which the described package resides</td></tr>
+</table>
+
 <h3>Details</h3>
 
 <p>

@@ -14,6 +14,14 @@
 <param name="Local" value="0SweaveListingUtils-package.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="addRdset">
+<param name="Local" value="SweaveListingOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="addRset">
+<param name="Local" value="SweaveListingOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="base.url">
 <param name="Local" value="SweaveListingOptions.html">
 </OBJECT>

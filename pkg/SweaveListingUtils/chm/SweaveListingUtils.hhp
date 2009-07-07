@@ -18,11 +18,13 @@ SweaveListingOptions.html
 SweaveListingPreparations.html
 changeKeywordstyles.html
 copySourceFromRForge.html
+isBaseOrRecommended.html
 library.html
 lstinputSourceFromRForge.html
 lstset.html
 lstsetLanguage.html
 readPackageVersion.html
 readSourceFromRForge.html
+setBaseOrRecommended.html
 setToBeDefinedPkgs.html
 taglist.html

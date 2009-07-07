@@ -3,6 +3,14 @@
 ######################################################################
  
 ##############
+v 0.3.1
+##############
+* when SweaveListingPreparations is used with argument 'withOwnFileSection'=TRUE
+  lstsetR and lstsetRd use argument 'add' = FALSE by default
+* markup style for base or recommended packages (checked for with new function
+  isBaseOrRecommended()) is distinct now by default (extra color RRecomdcolor)
+
+##############
 v 0.3
 ##############
 
