@@ -25,18 +25,21 @@ to integrate Sweave and package listings
 
 <pre>
 SweaveListingPreparations(
-   withOwnFileSection = FALSE,  
-   withVerbatim = FALSE, 
-   withSchunkDef = TRUE, 
+   withOwnFileSection = FALSE,
+   withVerbatim = FALSE,
    gin = TRUE,
    ae = TRUE,
-   LineLength = 80,
+   LineLength = getOption("width"),
    Rset = getSweaveListingOption("Rset"),
    Rdset = getSweaveListingOption("Rdset"),
-   Rcolor = getSweaveListingOption("Rcolor"),
-   Rbcolor = getSweaveListingOption("Rbcolor"), 
+   Rin = getSweaveListingOption("Rin"),
    Rout = getSweaveListingOption("Rout"),
-   Rcomment = getSweaveListingOption("Rcomment"),
+   Rcode = getSweaveListingOption("Rcode"),
+   Rcolor = getSweaveListingOption("Rcolor"),
+   RRecomdcolor = getSweaveListingOption("RRecomdcolor"),
+   Rbcolor = getSweaveListingOption("Rbcolor"),
+   Routcolor = getSweaveListingOption("Routcolor"),
+   Rcommentcolor = getSweaveListingOption("Rcommentcolor"),
    pkg = getSweaveListingOption("pkg"),
    pkv = getSweaveListingOption("pkv"),
    lib.loc = NULL)
@@ -67,9 +70,6 @@ Fritz Leisch) or just TeX package 'listings'
 based on 'listings' command 'lstnewenvironment';
 this option is due to a suggestion by
 Andrew Ellis (thank you!).</td></tr>
-<tr valign="top"><td><code>withSchunkDef</code></td>
-<td>
-logical: should environment <code>Schunk</code> be defined?</td></tr>
 <tr valign="top"><td><code>gin</code></td>
 <td>
 logical: shall we use <code>gin</code></td></tr>
@@ -85,22 +85,36 @@ list or taglist; defaults to global option  <code>"Rset"</code></td></tr>
 <tr valign="top"><td><code>Rdset</code></td>
 <td>
 list or taglist; defaults to global option  <code>"Rdset"</code></td></tr>
+<tr valign="top"><td><code>Rin</code></td>
+<td>
+list or taglist; format string for <font face="Courier New,Courier" color="#666666"><b>R</b></font> input code; defaults to global option  <code>"Rin"</code></td></tr>
+<tr valign="top"><td><code>Rout</code></td>
+<td>
+list or taglist; format string for <font face="Courier New,Courier" color="#666666"><b>R</b></font> output code; defaults to global option  <code>"Rout"</code></td></tr>
+<tr valign="top"><td><code>Rcode</code></td>
+<td>
+list or taglist; format string for <font face="Courier New,Courier" color="#666666"><b>R</b></font> code; defaults to global option  <code>"Rcode"</code></td></tr>
 <tr valign="top"><td><code>Rcolor</code></td>
 <td>
-numeric of length 3; defaults to global option  <code>"Rcolor"</code>;
+numeric of length 3; [color for R-input-code] defaults to global option  <code>"Rcolor"</code>;
+rgb coordinates of the color in which to print R-code</td></tr>
+<tr valign="top"><td><code>RRecomdcolor</code></td>
+<td>
+numeric of length 3; [color for R-symbols from recommended packages]
+defaults to global option  <code>"RRecomdcolor"</code>;
 rgb coordinates of the color in which to print R-code</td></tr>
 <tr valign="top"><td><code>Rbcolor</code></td>
 <td>
-numeric of length 3; defaults to global option  <code>"Rbcolor"</code>;
+numeric of length 3; [color for R-symbols from intermediate packages] defaults to global option  <code>"Rbcolor"</code>;
 rgb coordinates of the color in which to print <font face="Courier New,Courier" color="#666666"><b>R</b></font> keywords
 induced by intermediate packages.</td></tr>
-<tr valign="top"><td><code>Rout</code></td>
+<tr valign="top"><td><code>Routcolor</code></td>
 <td>
-numeric of length 3; defaults to global option  <code>"Rout"</code>;
+numeric of length 3; [color for R-output-code] defaults to global option  <code>"Rout"</code>;
 rgb coordinates of the color in which to print R output</td></tr>
-<tr valign="top"><td><code>Rcomment</code></td>
+<tr valign="top"><td><code>Rcommentcolor</code></td>
 <td>
-numeric of length 3; defaults to global option <code>"Rcomment"</code>;
+numeric of length 3; [color for R-comments] defaults to global option <code>"Rcomment"</code>;
 rgb coordinates of the color in which to print comments
 in R-code</td></tr>
 <tr valign="top"><td><code>pkg</code></td>

@@ -66,6 +66,8 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\hreft}[1]{\href{#1}{\tt\small\url{#1}}}
+\definecolor{gray90}{rgb}{0.900,0.900,0.900}
+\definecolor{gray95}{rgb}{0.950,0.950,0.950}
 %
 % -------------------------------------------------------------------------------
 \RequirePackage{fancyvrb}
@@ -86,7 +88,7 @@ changeKeywordstyles(pkgs = c("SweaveListingUtils","distr"),
 \lstdefinestyle{TeXstyle}{fancyvrb=true,escapechar=`,language=[LaTeX]TeX,%
                         basicstyle={\color{black}\small},%
                         keywordstyle={\bf\color{black}},%
-                        commentstyle={\color{Rcomment}\ttfamily\itshape},%
+                        commentstyle={\color{Rcommentcolor}\ttfamily\itshape},%
                         literate={<-}{<-}2{<<-}{<<-}2}
 %
 % -------------------------------------------------------------------------------
@@ -138,7 +140,7 @@ documented source code.
 In this respect it supports (and to some extent enhances) {\tt Sweave}.
 %
 % -------------------------------------------------------------------------------
-\section{Preparations: Preamble}
+\section{Preparations: Preamble}\label{PrepSec}
 % -------------------------------------------------------------------------------
 You should include into the preamble of your \file{.Rnw} file something like
 %
@@ -188,12 +190,51 @@ environments for \texttt{Sinput}, \texttt{Soutput}, \texttt{Scode} using
 {\tt listings}-command \lstinline[style=TeXstyle,basicstyle=\tt]|\lstnewenvironment|
 instead of the original {\tt fancyvrb} definitions provided in the original
 \file{Sweave.sty} file by Fritz Leisch. This way we also solve the
-escaping problem (as noted by Frank E. Harrel): the escaping mechanisms
+escaping problem (as noted by Frank E. Harrell): the escaping mechanisms
 provided by {\tt listings}  command {\tt lstset} (as e.g. {\tt escapechar},
 {\tt escapeinline}) as described in detail in \cite[section~4.14]{H:M:07}
 are now available; in particular one can place \LaTeX\ references
 \lstinline[style=TeXstyle,basicstyle=\tt]|\ref{...}|,
-\lstinline[style=TeXstyle,basicstyle=\tt]|\label{...}| within comments.
+\lstinline[style=TeXstyle,basicstyle=\tt]|\label{...}| within comments.\newline
+Just to show some little example:
+%------------
+% use \lstinputlisting{....}
+% to avoid that Sweave interprets the chunks in exam1.tex
+%------------
+\lstinputlisting[style=TeXstyle]{exam00.tex}
+becomes
+\lstdefinestyle{Rinstyle}{style=RinstyleO,frame=trBL,backgroundcolor=\color{gray90},%
+        numbers=left,numberstyle=\tiny,stepnumber=1,numbersep=7pt}
+\lstdefinestyle{Routstyle}{style=RoutstyleO,frame=trBL,frameround=fttt,%
+        backgroundcolor=\color{gray95},numbers=left,numberstyle=\tiny,%
+        stepnumber=3,numbersep=5pt}
+\begin{quotation}
+<<exam00, eval = TRUE>>=
+x <- rnorm(3) # define random numbers -> insert a label <here> (*\label{comment}*)
+print(round(x,2))
+f <- function(x) sin(x) ## here is a ref: section(*~\ref{PrepSec}*)
+a <- 2; b <- 3
+# compute (*$\int_a^b f(x)\,dx$*)
+integrate(f, lower=a, upper=b)$value
+@
+Note that line~\ref{comment} contains a comment.
+\end{quotation}
+\lstdefinestyle{Rinstyle}{style=RinstyleO,frame=none,backgroundcolor=\color{white},%
+        numbers=none}
+\lstdefinestyle{Routstyle}{style=RoutstyleO,frame=none,backgroundcolor=\color{white},%
+        numbers=none}
+Note that for easier reference later on, we produce copies of the original
+{\tt listings} styles {\tt Rinstyle}, {\tt Routstyle}, {\tt Rcodestyle}, named
+                      {\tt RinstyleO}, {\tt RoutstyleO}, {\tt RcodestyleO},
+                      respectively.
+If you really want to have background colors, frames and the like, however,
+you might wish to specify the corresponding options in the preparational
+chunk to have something like.
+%------------
+% use \lstinputlisting{....}
+% to avoid that Sweave interprets the chunks in preamble2.tex
+%------------
+\lstinputlisting[style=TeXstyle]{preamble2.tex}
 
 % -------------------------------------------------------------------------------
 \section{Listings markup}
@@ -211,7 +252,7 @@ all packages may obtain their own style; in the preamble, for instance,
 package \pkg{SweaveListingUtils} is colored blue, and package
 \pkg{distr} (to be attached just now) will be colored red.
 Also, comments are set in a different style (by default using color 
-\code{Rcomment}). Of course, instead of colors, you may use any other markup,
+\code{Rcommentcolor}). Of course, instead of colors, you may use any other markup,
 like different font shapes, fonts, font sizes or whatever comes into your
 mind. For this purpose, commands \code{setToBeDefinedPkgs} and 
 \code{changeKeywordstyles} are helpful. 
@@ -299,7 +340,7 @@ with {\tt Sweave}, it is necessary, however, to use the tagged pair
 
 The colors used in the default setting
 are also set as global ({\tt SweaveListing}-)options ---
-i.e.; \code{Rcolor}, \code{Rcomment}, \code{Rdcolor}.  
+i.e.; \code{Rcolor}, \code{Rcommentcolor}, \code{Rdcolor}.
 
 Item {\tt "literate"} will be discussed in the next subsection.
 
@@ -340,7 +381,10 @@ something like:
 \lstinputlisting[style=TeXstyle]{locChange.tex}
 
 This will add/replace item \code{"basicstyle"} to/in the existing items.
-For {\tt Rd}-style you may use a respective call to \code{lstsetRd()}.
+For {\tt Rd}-style you may use a respective call to \code{lstsetRd()},
+and if you only want to modify the {\tt Sinput}, {\tt Soutput}, or {\tt Scode}
+environments, you may use respective calls to \code{lstsetRin}, \code{lstsetRout},
+\code{lstsetRcode}, respectively.
 
 %
 % -------------------------------------------------------------------------------

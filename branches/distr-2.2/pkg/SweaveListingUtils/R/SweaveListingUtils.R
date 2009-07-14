@@ -40,14 +40,14 @@ SweaveListingMASK <- function(library = NULL)
 }
 
 
-print.taglist <- function(x, LineLength = 80, offset.start = 0,
+print.taglist <- function(x, LineLength = getOption("width"), offset.start = 0,
                           withFinalLineBreak = TRUE, first.print = NULL, ...){
    xc <- as.character(deparse(substitute(x)))
    ll <- length(x)
    LineL <- max(LineLength-2,0)
    LineBreak <- NULL
    mi50 <- min(LineLength,50)
-   maL <- max(3*LineLength,80)
+   maL <- max(3*LineLength,getOption("width"))
    if(ll){
       offS <- paste(rep(" ", offset.start), collapse = "")
       for(i in 1:ll){
@@ -100,14 +100,14 @@ taglist <- function(..., list = NULL, defname = "V"){
   return(invisible())
 }
 
-lstset <- function(taglist, LineLength = 80, startS = "\\lstset{"){
+lstset <- function(taglist, LineLength = getOption("width"), startS = "\\lstset{"){
    print(taglist, LineLength = LineLength, offset.start = nchar(startS),
          withFinalLineBreak = FALSE, first.print = startS)
    cat("}%\n")
    return(invisible())
 }
 
-lstsetR <- function(Rset = NULL, LineLength = 80,
+lstsetR <- function(Rset = NULL, LineLength = getOption("width"),
                     add = getSweaveListingOption("addRset"), startS = "\\lstset{"){
    if(add){
        Rset0 <- getSweaveListingOption("Rset")
@@ -123,7 +123,7 @@ lstsetR <- function(Rset = NULL, LineLength = 80,
    return(invisible())
 }
 
-lstsetRd <- function(Rdset = NULL, LineLength = 80,
+lstsetRd <- function(Rdset = NULL, LineLength = getOption("width"),
                     add = getSweaveListingOption("addRdset"), startS = "\\lstset{"){
    if(add){
        Rdset0 <- getSweaveListingOption("Rdset")
@@ -139,20 +139,71 @@ lstsetRd <- function(Rdset = NULL, LineLength = 80,
    return(invisible())
 }
 
+lstsetRin <- function(Rinset = NULL, LineLength = getOption("width"),
+                    add = getSweaveListingOption("addRinset"),
+                    startS = "\\lstdefinestyle{Rinstyle}{"){
+   if(add){
+       Rinset0 <- getSweaveListingOption("Rin")
+       if(length(Rinset)){
+          newnms <- names(Rinset)
+          oldnms <- names(Rinset0)
+          ooldnms <- oldnms[! (oldnms %in% newnms)]
+          Rinset <- c(Rinset, Rinset0[ooldnms])
+       }else Rinset <- Rinset0
+   }
+   if(!is(Rinset, "taglist")) Rinset <- taglist(list=Rinset)
+   lstset(Rinset, LineLength = LineLength, startS = startS)
+   return(invisible())
+}
+lstsetRout <- function(Routset = NULL, LineLength = getOption("width"),
+                    add = getSweaveListingOption("addRoutset"),
+                    startS = "\\lstdefinestyle{Routstyle}{"){
+   if(add){
+       Routset0 <- getSweaveListingOption("Rout")
+       if(length(Routset)){
+          newnms <- names(Routset)
+          oldnms <- names(Routset0)
+          ooldnms <- oldnms[! (oldnms %in% newnms)]
+          Routset <- c(Routset, Routset0[ooldnms])
+       }else Routset <- Routset0
+   }
+   if(!is(Routset, "taglist")) Routset <- taglist(list=Routset)
+   lstset(Routset, LineLength = LineLength, startS = startS)
+   return(invisible())
+}
+lstsetRcode <- function(Rcodeset = NULL, LineLength = getOption("width"),
+                    add = getSweaveListingOption("addRcodeset"),
+                    startS = "\\lstdefinestyle{Rcodestyle}{"){
+   if(add){
+       Rcodeset0 <- getSweaveListingOption("Rcode")
+       if(length(Rcodeset)){
+          newnms <- names(Rcodeset)
+          oldnms <- names(Rcodeset0)
+          ooldnms <- oldnms[! (oldnms %in% newnms)]
+          Rcodeset <- c(Rcodeset, Rcodeset0[ooldnms])
+       }else Rcodeset <- Rcodeset0
+   }
+   if(!is(Rcodeset, "taglist")) Rcodeset <- taglist(list=Rcodeset)
+   lstset(Rcodeset, LineLength = LineLength, startS = startS)
+   return(invisible())
+}
 
 SweaveListingPreparations <- function(
    withOwnFileSection = FALSE,
    withVerbatim = FALSE,
    gin = TRUE,
    ae = TRUE,
-   LineLength = 80,
+   LineLength = getOption("width"),
    Rset = getSweaveListingOption("Rset"), 
    Rdset = getSweaveListingOption("Rdset"), 
-   Rcolor = getSweaveListingOption("Rcolor"), 
+   Rin = getSweaveListingOption("Rin"),
+   Rout = getSweaveListingOption("Rout"),
+   Rcode = getSweaveListingOption("Rcode"),
+   Rcolor = getSweaveListingOption("Rcolor"),
    RRecomdcolor = getSweaveListingOption("RRecomdcolor"),
    Rbcolor = getSweaveListingOption("Rbcolor"),
-   Rout = getSweaveListingOption("Rout"),
-   Rcomment = getSweaveListingOption("Rcomment"), 
+   Routcolor = getSweaveListingOption("Routcolor"),
+   Rcommentcolor = getSweaveListingOption("Rcommentcolor"),
    pkg = getSweaveListingOption("pkg"), 
    pkv = getSweaveListingOption("pkv"), 
    lib.loc = NULL){
@@ -177,8 +228,8 @@ cat("\\RequirePackage{color}\n")
 cat("\\definecolor{Rcolor}{rgb}{",paste(Rcolor,collapse=", "),"}\n", sep = "")
 cat("\\definecolor{RRecomdcolor}{rgb}{",paste(RRecomdcolor,collapse=", "),"}\n", sep = "")
 cat("\\definecolor{Rbcolor}{rgb}{",paste(Rbcolor,collapse=", "),"}\n", sep = "")
-cat("\\definecolor{Rout}{rgb}{",paste(Rout,collapse=", "),"}\n", sep = "")
-cat("\\definecolor{Rcomment}{rgb}{",paste(Rcomment,collapse=", "),"}\n", sep = "")
+cat("\\definecolor{Routcolor}{rgb}{",paste(Routcolor,collapse=", "),"}\n", sep = "")
+cat("\\definecolor{Rcommentcolor}{rgb}{",paste(Rcommentcolor,collapse=", "),"}\n", sep = "")
 cat(line)
 writeLines(readLines(file.path(system.file(package = "SweaveListingUtils", 
                                       lib.loc = lib.loc),
@@ -191,6 +242,11 @@ if(!withOwnFileSection)
     SweaveListingoptions("addRset" = FALSE, "addRdset" = FALSE)
 cat("\\global\\def\\Rlstset{\\lstset{style=Rstyle}}%\n")
 cat("\\global\\def\\Rdlstset{\\lstset{style=Rdstyle}}%\n")
+cat(line)
+cat("\\global\\def\\Rinlstset{\\lstset{style=Rinstyle}}%\n")
+cat("\\global\\def\\Routlstset{\\lstset{style=Routstyle}}%\n")
+cat("\\global\\def\\Rcodelstset{\\lstset{style=Rcodestyle}}%\n")
+cat(line)
 if(!withOwnFileSection)
    cat("\\Rlstset\n")
 cat(line,"%copying relevant parts of Sweave.sty\n",line,"%\n", sep = "")
@@ -230,33 +286,35 @@ cat("\\DefineVerbatimEnvironment{Sinput}{Verbatim}")
 cat("%\n  {formatcom=\\color{Rcolor}\\lstset{fancyvrb=true,escapechar='}}\n")
 }else{
 #### Thanks to Andrew Ellis !!
-cat("\\lstnewenvironment{Sinput}")
-cat("%\n  {", # "\\Rlstset",
-           "\\Rlstset\\lstset{basicstyle=\\color{Rcolor}\\small,fancyvrb=true}}")
-cat("%\n  {", # "\\Rlstset",
-           "}\n")
+#cat("\\lstdefinestyle{Rinstyle}",
+#    "{style=Rstyle,fancyvrb=true,basicstyle=\\color{Rcolor}\\small}}%\n")
+lstset(taglist(list=Rin), LineLength=LineLength, startS = "\\lstdefinestyle{RinstyleO}{")
+lstsetRin(Rin=Rin, LineLength=LineLength)
+cat("\\lstnewenvironment{Sinput}{\\Rinlstset}{\\Rlstset}\n")
 }
 if(withVerbatim["Soutput"]){
 cat("\\DefineVerbatimEnvironment{Soutput}{Verbatim}")
 cat("%\n  {formatcom=\\color{Rout}\\small\\lstset{fancyvrb=false}}\n")
 }else{
 #### Thanks to Andrew Ellis !!
-cat("\\lstnewenvironment{Soutput}")
-cat("%\n  {", # "\\Rlstset",
-           "\\lstset{fancyvrb=false,basicstyle=\\color{Rout}\\small}}")
-cat("%\n  {", # "\\Rlstset",
-           "}\n")
+lstset(taglist(list=Rout), LineLength=LineLength,
+       startS = "\\lstdefinestyle{RoutstyleO}{")
+lstsetRout(Rout=Rout, LineLength=LineLength)
+#cat("\\lstdefinestyle{Routstyle}",
+#    "{fancyvrb=false,basicstyle=\\color{Rout}\\small}}%\n")
+cat("\\lstnewenvironment{Soutput}{\\Routlstset}{\\Rlstset}\n")
 }
 if(withVerbatim["Scode"]){
 cat("\\DefineVerbatimEnvironment{Scode}{Verbatim}")
 cat("%\n  {fontshape=sl,formatcom=\\color{Rcolor}\\lstset{fancyvrb=true}}\n")
 }else{
 #### Thanks to Andrew Ellis !!
-cat("\\lstnewenvironment{Scode}")
-cat("%\n  {", # "\\Rlstset",
-           "\\lstset{fontshape=sl,basicstyle=\\color{Rcolor}\\small,fancyvrb=true}}")
-cat("%\n  {", # "\\Rlstset",
-           "}\n")
+lstset(taglist(list=Rcode), LineLength=LineLength,
+       startS = "\\lstdefinestyle{RcodestyleO}{")
+lstsetRcode(Rcode=Rcode, LineLength=LineLength)
+#cat("\\lstdefinestyle{Rcodestyle}",
+#    "{style=Rstyle,fancyvrb=true,fontshape=sl,basicstyle=\\color{Rcolor}}%\n")
+cat("\\lstnewenvironment{Scode}{\\Rcodelstset}{\\Rlstset}\n")
 }
 }
 cat(line)
@@ -315,7 +373,7 @@ copySourceFromRForge <- function(PKG, TYPE, FILENAME, PROJECT, from, to,
 
 lstinputSourceFromRForge <- function(PKG, TYPE, FILENAME, PROJECT, from, to,
                                  offset.before = 0, offset.after = 0,
-                                 LineLength = 80,
+                                 LineLength = getOption("width"),
                                  withLines = ifelse(TYPE=="R", TRUE, FALSE),
                                  fromRForge = getSweaveListingOption("fromRForge"),
                                  base.url = getSweaveListingOption("base.url")){

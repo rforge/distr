@@ -8,7 +8,7 @@ from R forge repository}
 \usage{
 lstinputSourceFromRForge(PKG, TYPE, FILENAME, PROJECT, from, to,
                          offset.before = 0, offset.after = 0,
-                         LineLength = 80,
+                         LineLength = getOption("width"),
                          withLines = ifelse(TYPE=="R", TRUE, FALSE),
                          fromRForge = getSweaveListingOption("fromRForge"),
                          base.url = getSweaveListingOption("base.url"))
@@ -29,7 +29,7 @@ lstinputSourceFromRForge(PKG, TYPE, FILENAME, PROJECT, from, to,
   \item{offset.after}{numeric; numbers of lines to be included after the the code
                        sniplets; defaults to 0}
   \item{LineLength}{\code{numeric} number of characters per line;
-  defaults to 80;}
+  defaults to getOption("width");}
   \item{withLines}{logical; shall line-numbers be issued}
   \item{fromRForge}{logical; shall code be downloaded from an R-Forge mirror?
                     Defaults to the corresponding global option}

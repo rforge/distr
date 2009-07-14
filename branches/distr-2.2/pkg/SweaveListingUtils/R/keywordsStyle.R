@@ -51,7 +51,7 @@ lstsetLanguage <- function(pkgs, posIdx, keywordstyles, overwrite = FALSE){
         cat("% --------------------------\n% Registration of package ",pkg,
              BaseOrRec,
             "\n% --------------------------\n",
-            "\\lstset{morekeywords={[",num+2,"]", sep = "")
+            "\\lstdefinestyle{Rstyle}{morekeywords={[",num+2,"]", sep = "")
         ml <- length(kwd); m1 <- ml%/%5; m2 <- ml%%5
         kwd[ml] <- paste(kwd[ml],"%",sep="")
         if(length(kwd)){

@@ -8,6 +8,9 @@
 <param name="keyword" value="R:   lstset">
 <param name="keyword" value="R:   lstsetRd">
 <param name="keyword" value="R:   lstsetR">
+<param name="keyword" value="R:   lstsetRin">
+<param name="keyword" value="R:   lstsetRout">
+<param name="keyword" value="R:   lstsetRcode">
 <param name="keyword" value=" lstset and friends">
 </object>
 
@@ -25,9 +28,17 @@ Functions for defining how listings prints R and Rd source code
 <h3>Usage</h3>
 
 <pre>
-lstset(taglist, LineLength = 80, startS = "\\lstset{")
-lstsetR(Rset = NULL, LineLength = 80, add = TRUE, startS = "\\lstset{")
-lstsetRd(Rdset = NULL, LineLength = 80, add = TRUE, startS = "\\lstset{")
+lstset(taglist, LineLength = getOption("width"), startS = "\\lstset{")
+lstsetR(Rset = NULL, LineLength = getOption("width"), add = getSweaveListingOption("addRset"),
+        startS = "\\lstset{")
+lstsetRd(Rdset = NULL, LineLength = getOption("width"), add = getSweaveListingOption("addRdset"),
+         startS = "\\lstset{")
+lstsetRin(Rinset = NULL, LineLength = getOption("width"), add = getSweaveListingOption("addRinset"),
+        startS = "\\lstdefinestyle{Rinstyle}{")
+lstsetRout(Routset = NULL, LineLength = getOption("width"), add = getSweaveListingOption("addRoutset"),
+        startS = "\\lstdefinestyle{Routstyle}{")
+lstsetRcode(Rcodeset = NULL, LineLength = getOption("width"), add = getSweaveListingOption("addRcodeset"),
+        startS = "\\lstdefinestyle{Rcodestyle}{")
 </pre>
 
 
@@ -37,7 +48,7 @@ lstsetRd(Rdset = NULL, LineLength = 80, add = TRUE, startS = "\\lstset{")
 <tr valign="top"><td><code>LineLength</code></td>
 <td>
 <code>numeric</code> number of characters per line for lstset and friends;
-defaults to 80</td></tr>
+defaults to getOption("width")</td></tr>
 <tr valign="top"><td><code>taglist</code></td>
 <td>
 S3-object of class <code>taglist</code>; arguments for
@@ -47,9 +58,24 @@ S3-object of class <code>taglist</code>; arguments for
 object of S3-class <code>taglist</code> or named <code>list</code> of 
 <code>character</code>s; the listings settings for R-code
 (for <CODE>\lstset</CODE>); defaults to <code>NULL</code>.</td></tr>
+<tr valign="top"><td><code>Rinset</code></td>
+<td>
+object of S3-class <code>taglist</code> or named <code>list</code> of
+<code>character</code>s; the listings settings for R-code in
+environment <code>Sinput</code>; defaults to <code>NULL</code>.</td></tr>
+<tr valign="top"><td><code>Routset</code></td>
+<td>
+object of S3-class <code>taglist</code> or named <code>list</code> of
+<code>character</code>s; the listings settings for R-code in
+environment <code>Soutput</code>; defaults to <code>NULL</code>.</td></tr>
+<tr valign="top"><td><code>Rcodeset</code></td>
+<td>
+object of S3-class <code>taglist</code> or named <code>list</code> of
+<code>character</code>s; the listings settings for R-code in
+environment <code>Scode</code>; defaults to <code>NULL</code>.</td></tr>
 <tr valign="top"><td><code>Rdset</code></td>
 <td>
-object of S3-class <code>taglist</code> or named <code>list</code> of 
+object of S3-class <code>taglist</code> or named <code>list</code> of
 <code>character</code>s;
 the listings settings for Rd-code
 (for <CODE>\lstset</CODE>); defaults to <code>NULL</code>.</td></tr>
@@ -85,7 +111,10 @@ define R resp. Rd output format. More
 specifically for R code, it uses 
 <a href="SweaveListingOptions.html">getSweaveListingOption("Rset")</a>,
 and for Rd code, it 
-<a href="SweaveListingOptions.html">getSweaveListingOption("Rdset")</a>,
+<a href="SweaveListingOptions.html">getSweaveListingOption("Rdset")</a>;
+<code>lstsetRin</code>, <code>lstsetRout</code>, and <code>lstsetRcode</code>
+are corresponding specialized commands for 'listings' environments
+<code>Sinput</code>, <code>Soutput</code>, and <code>Scode</code>, respectively.
 </p>
 <p>
 The output to stdout can be captured in an &lsquo;<span class="file">.Rnw</span>&rsquo; file as
@@ -122,6 +151,6 @@ lstsetRd()
 
 
 
-<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.3 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.4 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

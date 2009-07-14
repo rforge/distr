@@ -2,27 +2,45 @@
 \alias{lstset}
 \alias{lstsetRd}
 \alias{lstsetR}
+\alias{lstsetRin}
+\alias{lstsetRout}
+\alias{lstsetRcode}
 
 \title{lstset and friends}
 \description{
 Functions for defining how listings prints R and Rd source code}
 \usage{
-lstset(taglist, LineLength = 80, startS = "\\\\lstset\{")
-lstsetR(Rset = NULL, LineLength = 80, add = getSweaveListingOption("addRset"),
+lstset(taglist, LineLength = getOption("width"), startS = "\\\\lstset\{")
+lstsetR(Rset = NULL, LineLength = getOption("width"), add = getSweaveListingOption("addRset"),
         startS = "\\\\lstset\{")
-lstsetRd(Rdset = NULL, LineLength = 80, add = getSweaveListingOption("addRdset"),
+lstsetRd(Rdset = NULL, LineLength = getOption("width"), add = getSweaveListingOption("addRdset"),
          startS = "\\\\lstset\{")
+lstsetRin(Rinset = NULL, LineLength = getOption("width"), add = getSweaveListingOption("addRinset"),
+        startS = "\\\\lstdefinestyle\{Rinstyle\}\{")
+lstsetRout(Routset = NULL, LineLength = getOption("width"), add = getSweaveListingOption("addRoutset"),
+        startS = "\\\\lstdefinestyle\{Routstyle\}\{")
+lstsetRcode(Rcodeset = NULL, LineLength = getOption("width"), add = getSweaveListingOption("addRcodeset"),
+        startS = "\\\\lstdefinestyle\{Rcodestyle\}\{")
 }
 
 \arguments{
   \item{LineLength}{\code{numeric} number of characters per line for lstset and friends;
-  defaults to 80}
+  defaults to getOption("width")}
   \item{taglist}{S3-object of class \code{taglist}; arguments for
                 \command{\\lstset} of TeX package \emph{listings}.}
 \item{Rset}{object of S3-class \code{taglist} or named \code{list} of 
             \code{character}s; the listings settings for R-code
             (for \command{\\lstset}); defaults to \code{NULL}.}
-\item{Rdset}{object of S3-class \code{taglist} or named \code{list} of 
+\item{Rinset}{object of S3-class \code{taglist} or named \code{list} of
+            \code{character}s; the listings settings for R-code in
+            environment \code{Sinput}; defaults to \code{NULL}.}
+\item{Routset}{object of S3-class \code{taglist} or named \code{list} of
+            \code{character}s; the listings settings for R-code in
+            environment \code{Soutput}; defaults to \code{NULL}.}
+\item{Rcodeset}{object of S3-class \code{taglist} or named \code{list} of
+            \code{character}s; the listings settings for R-code in
+            environment \code{Scode}; defaults to \code{NULL}.}
+\item{Rdset}{object of S3-class \code{taglist} or named \code{list} of
              \code{character}s;
              the listings settings for Rd-code
             (for \command{\\lstset}); defaults to \code{NULL}.}
@@ -51,7 +69,10 @@ define R resp. Rd output format. More
 specifically for R code, it uses 
 \link[=SweaveListingOptions]{getSweaveListingOption("Rset")},
 and for Rd code, it 
-\link[=SweaveListingOptions]{getSweaveListingOption("Rdset")},
+\link[=SweaveListingOptions]{getSweaveListingOption("Rdset")};
+\code{lstsetRin}, \code{lstsetRout}, and \code{lstsetRcode}
+are corresponding specialized commands for 'listings' environments
+\code{Sinput}, \code{Soutput}, and \code{Scode}, respectively.
 
 The output to stdout can be captured in an \file{.Rnw} file as
 \preformatted{

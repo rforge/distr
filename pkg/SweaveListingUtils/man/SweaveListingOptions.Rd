@@ -4,10 +4,13 @@
 \alias{getSweaveListingOption}
 \alias{Rset}
 \alias{Rdset}
+\alias{Rin}
+\alias{Rout}
+\alias{Rcode}
 \alias{Rcolor}
 \alias{Rbcolor}
-\alias{Rout}
-\alias{Rcomment}
+\alias{Routcolor}
+\alias{Rcommentcolor}
 \alias{pkg}
 \alias{pkv}
 \alias{Keywordstyle}
@@ -66,13 +69,33 @@ default setting for \\lstset-definition of Rd-code, default value is\cr
 \code{        "commentstyle" = "\\\\ttfamily\\\\itshape",}\cr
 \code{        "alsolanguage" = "R")}
 }
+\item{Rin:}{%
+default setting for \\lstdefinestyle-definition of \code{Rinstyle} (for \R input),
+default value is\cr
+\code{list("style" = "Rstyle", "fancyvrb" = "true",}\cr
+\code{        "basicstyle" = "\\\\color{Rcolor}\\\\small")}
+}
+\item{Rout:}{%
+default setting for \\lstdefinestyle-definition of \code{Routstyle} (for \R output),
+default value is\cr
+\code{list("fancyvrb" = "false", "basicstyle" = "\\\\color{Rout}\\\\small")}
+}
+\item{Rcode:}{%
+default setting for \\lstdefinestyle-definition of \code{Rcodestyle} (for \R code),
+default value is\cr
+\code{list("style" = "Rstyle", "fancyvrb" = "true",}\cr
+\code{        "basicstyle" = "\\\\color{Rcolor}\\\\small")}
+\code{        "fontshape"= "sl", "basicstyle" = "\\\\color{Rcolor}")}
+}
 \item{Rcolor:}{default setting for color of R-code in rgb-coordinates; 
                defaults to \code{c(0,0.5,0.5)}}
+\item{RRecomdcolor:}{default setting for color of R-code from recommended packages in rgb-coordinates;
+               defaults to \code{c(0,0.6,0.4)}}
 \item{Rbcolor:}{default setting for color of R-code symbols of intermediate packages
-                in rgb-coordinates;  defaults to \code{c(0,0.4,0.4)}}
-\item{Rout:}{default setting for color of R-output in rgb-coordinates; 
+                in rgb-coordinates;  defaults to \code{c(0,0.6,0.6)}}
+\item{Routcolor:}{default setting for color of R-output in rgb-coordinates;
                defaults to \code{c(0.461,0.039,0.102)}}
-\item{Rcomment:}{default setting for color of R-comments in rgb-coordinates; 
+\item{Rcommentcolor:}{default setting for color of R-comments in rgb-coordinates;
                defaults to \code{c(0.101,0.043,0.432)}}
 \item{pkv:}{default setting for package version as character; 
                defaults to \code{"2.0.2"}}
@@ -102,6 +125,12 @@ default setting for \\lstset-definition of Rd-code, default value is\cr
         defaults to \code{TRUE}}
 \item{addRdset:}{logical; default for argument \code{add} in command \code{Rdset};
         defaults to \code{TRUE}}
+\item{addRinset:}{logical; default for argument \code{add} in command
+       \code{Rinset}; defaults to \code{TRUE}}
+\item{addRoutset:}{logical; default for argument \code{add} in command
+       \code{Routset}; defaults to \code{TRUE}}
+\item{addRcodeset:}{logical; default for argument \code{add} in command
+       \code{Rcodeset}; defaults to \code{TRUE}}
 }
 }
 %\references{}

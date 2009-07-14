@@ -1,6 +1,6 @@
-% -------------------------------------------------------------------------------
 \RequirePackage{fancyvrb}
 \RequirePackage{listings}
+%\usepackage{Sweave}
 % -------------------------------------------------------------------------------
 %------------------------------------------------------------------------------%
 %Preparations for Sweave and Listings
@@ -8,9 +8,10 @@
 %
 \RequirePackage{color}
 \definecolor{Rcolor}{rgb}{0, 0.5, 0.5}
+\definecolor{RRecomdcolor}{rgb}{0, 0.6, 0.4}
 \definecolor{Rbcolor}{rgb}{0, 0.6, 0.6}
-\definecolor{Rout}{rgb}{0.461, 0.039, 0.102}
-\definecolor{Rcomment}{rgb}{0.101, 0.043, 0.432}
+\definecolor{Routcolor}{rgb}{0.461, 0.039, 0.102}
+\definecolor{Rcommentcolor}{rgb}{0.101, 0.043, 0.432}
 %------------------------------------------------------------------------------%
 \lstdefinelanguage{Rd}[common]{TeX}%
 {moretexcs={acronym,alias,arguments,author,bold,cite,%
@@ -29,12 +30,11 @@
    morecomment=[l]\%% 2008/9 Peter Ruckdeschel
 }[keywords,comments]%%
 %------------------------------------------------------------------------------%
-\lstdefinestyle{Rstyle}{fancyvrb=true,escapechar=§,language=R,%
+\lstdefinestyle{Rstyle}{fancyvrb=true,escapechar=`,language=R,%
                         basicstyle={\color{Rcolor}\small},%
                         keywordstyle={\bf\color{Rcolor}},%
-                        commentstyle={\color{Rcomment}\ttfamily\itshape},%
-                        literate={<-}{{$\leftarrow$}}2{<<-}{{$\twoheadleftarrow$}}2%
-                        {~}{{$\sim$}}1{<=}{{$\leq$}}2{>=}{{$\geq$}}2{^}{{$\scriptstyle\wedge$}}1,%
+                        commentstyle={\color{Rcommentcolor}\ttfamily\itshape},%
+                        literate={<-}{{$\leftarrow$}}2{<<-}{{$\twoheadleftarrow$}}2{~}{{$\sim$}}1{<=}{{$\leq$}}2{>=}{{$\geq$}}2{^}{{$\scriptstyle\wedge$}}1,%
                         alsoother={$},%
                         alsoletter={.<-},%
                         otherkeywords={!,!=,~,$,*,\&,\%/\%,\%*\%,\%\%,<-,<<-,/},%
@@ -46,6 +46,11 @@
 %------------------------------------------------------------------------------%
 \global\def\Rlstset{\lstset{style=Rstyle}}%
 \global\def\Rdlstset{\lstset{style=Rdstyle}}%
+%------------------------------------------------------------------------------%
+\global\def\Rinlstset{\lstset{style=Rinstyle}}%
+\global\def\Routlstset{\lstset{style=Routstyle}}%
+\global\def\Rcodelstset{\lstset{style=Rcodestyle}}%
+%------------------------------------------------------------------------------%
 \Rlstset
 %------------------------------------------------------------------------------%
 %copying relevant parts of Sweave.sty
@@ -75,15 +80,19 @@
 % ---- end of parts of Sweave.sty
 %------------------------------------------------------------------------------%
 %
-\lstnewenvironment{Sinput}%
-  {\Rlstset\lstset{basicstyle=\color{Rcolor}\small,fancyvrb=true}}%
-  {\Rlstset}
-\lstnewenvironment{Soutput}%
-  {\Rlstset\lstset{fancyvrb=false,basicstyle=\color{Rout}\small}}%
-  {\Rlstset}
-\lstnewenvironment{Scode}%
-  {\Rlstset\lstset{fontshape=sl,basicstyle=\color{Rcolor}\small,fancyvrb=true}}%
-  {\Rlstset}
+\lstdefinestyle{RinstyleO}{style=Rstyle,fancyvrb=true,%
+                           basicstyle=\color{Rcolor}\small}%
+\lstdefinestyle{Rinstyle}{style=Rstyle,fancyvrb=true,%
+                          basicstyle=\color{Rcolor}\small}%
+\lstnewenvironment{Sinput}{\Rinlstset}{\Rlstset}
+\lstdefinestyle{RoutstyleO}{fancyvrb=false,basicstyle=\color{Routcolor}\small}%
+\lstdefinestyle{Routstyle}{fancyvrb=false,basicstyle=\color{Routcolor}\small}%
+\lstnewenvironment{Soutput}{\Routlstset}{\Rlstset}
+\lstdefinestyle{RcodestyleO}{style=Rstyle,fancyvrb=true,fontshape=sl,%
+                             basicstyle=\color{Rcolor}}%
+\lstdefinestyle{Rcodestyle}{style=Rstyle,fancyvrb=true,fontshape=sl,%
+                            basicstyle=\color{Rcolor}}%
+\lstnewenvironment{Scode}{\Rcodelstset}{\Rlstset}
 %------------------------------------------------------------------------------%
 \let\code\lstinline
 \def\Code#1{{\tt\color{Rcolor} #1}}

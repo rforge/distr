@@ -26,7 +26,7 @@ from R forge repository
 <pre>
 lstinputSourceFromRForge(PKG, TYPE, FILENAME, PROJECT, from, to,
                          offset.before = 0, offset.after = 0,
-                         LineLength = 80,
+                         LineLength = getOption("width"),
                          withLines = ifelse(TYPE=="R", TRUE, FALSE),
                          fromRForge = getSweaveListingOption("fromRForge"),
                          base.url = getSweaveListingOption("base.url"))
@@ -69,7 +69,7 @@ sniplets; defaults to 0</td></tr>
 <tr valign="top"><td><code>LineLength</code></td>
 <td>
 <code>numeric</code> number of characters per line;
-defaults to 80;</td></tr>
+defaults to getOption("width");</td></tr>
 <tr valign="top"><td><code>withLines</code></td>
 <td>
 logical; shall line-numbers be issued</td></tr>
