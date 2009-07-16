@@ -26,7 +26,7 @@ Generating function and print method for S3 class <code>taglist</code>
 <pre>
 taglist(..., list = NULL, defname = "V")
 ## S3 method for class 'taglist':
-print(x, LineLength = 80, offset.start = 0,
+print(x, LineLength = getOption("width"), offset.start = 0,
               withFinalLineBreak = TRUE, first.print = NULL, ...)
 </pre>
 
@@ -52,11 +52,11 @@ to a priori unnamed list elements; see below</td></tr>
 an object of class <code>taglist</code></td></tr>
 <tr valign="top"><td><code>LineLength</code></td>
 <td>
-numeric; deafults to 80; number of characters per line;
+numeric; deafults to getOption("width"); number of characters per line;
 i.e.; <code>print</code>
 will make a linebreak <EM>between</EM> two tags before this number is
 reached; it will not break a tag, however, and only issue an error if
-this single tag is longer than <code>max(3*LineLength,80)</code>. </td></tr>
+this single tag is longer than <code>max(3*LineLength,getOption("width"))</code>. </td></tr>
 <tr valign="top"><td><code>offset.start</code></td>
 <td>
 numeric; number of characters to indent in printing;</td></tr>
@@ -115,6 +115,6 @@ Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ru
 
 
 
-<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.2 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.3.2 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

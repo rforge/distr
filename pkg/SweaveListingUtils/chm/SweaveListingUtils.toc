@@ -78,7 +78,19 @@
 <param name="Local" value="lstset.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="lstsetRcode">
+<param name="Local" value="lstset.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="lstsetRd">
+<param name="Local" value="lstset.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="lstsetRin">
+<param name="Local" value="lstset.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="lstsetRout">
 <param name="Local" value="lstset.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -106,11 +118,15 @@
 <param name="Local" value="SweaveListingOptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Rcode">
+<param name="Local" value="SweaveListingOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Rcolor">
 <param name="Local" value="SweaveListingOptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Rcomment">
+<param name="Name" value="Rcommentcolor">
 <param name="Local" value="SweaveListingOptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -130,7 +146,15 @@
 <param name="Local" value="library.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Rin">
+<param name="Local" value="SweaveListingOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Rout">
+<param name="Local" value="SweaveListingOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Routcolor">
 <param name="Local" value="SweaveListingOptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">

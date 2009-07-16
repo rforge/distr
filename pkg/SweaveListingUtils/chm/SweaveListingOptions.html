@@ -10,10 +10,13 @@
 <param name="keyword" value="R:   getSweaveListingOption">
 <param name="keyword" value="R:   Rset">
 <param name="keyword" value="R:   Rdset">
+<param name="keyword" value="R:   Rin">
+<param name="keyword" value="R:   Rout">
+<param name="keyword" value="R:   Rcode">
 <param name="keyword" value="R:   Rcolor">
 <param name="keyword" value="R:   Rbcolor">
-<param name="keyword" value="R:   Rout">
-<param name="keyword" value="R:   Rcomment">
+<param name="keyword" value="R:   Routcolor">
+<param name="keyword" value="R:   Rcommentcolor">
 <param name="keyword" value="R:   pkg">
 <param name="keyword" value="R:   pkv">
 <param name="keyword" value="R:   Keywordstyle">
@@ -98,13 +101,30 @@ are <EM>not</EM> intended; I simply did not find another work-around)
 <code>        "commentstyle" = "\\ttfamily\\itshape",</code><br>
 <code>        "alsolanguage" = "R")</code>
 </dd>
+<dt>Rin:</dt><dd>default setting for \lstdefinestyle-definition of <code>Rinstyle</code> (for <font face="Courier New,Courier" color="#666666"><b>R</b></font> input),
+default value is<br>
+<code>list("style" = "Rstyle", "fancyvrb" = "true",</code><br>
+<code>        "basicstyle" = "\\color{Rcolor}\\small")</code>
+</dd>
+<dt>Rout:</dt><dd>default setting for \lstdefinestyle-definition of <code>Routstyle</code> (for <font face="Courier New,Courier" color="#666666"><b>R</b></font> output),
+default value is<br>
+<code>list("fancyvrb" = "false", "basicstyle" = "\\color{Rout}\\small")</code>
+</dd>
+<dt>Rcode:</dt><dd>default setting for \lstdefinestyle-definition of <code>Rcodestyle</code> (for <font face="Courier New,Courier" color="#666666"><b>R</b></font> code),
+default value is<br>
+<code>list("style" = "Rstyle", "fancyvrb" = "true",</code><br>
+<code>        "basicstyle" = "\\color{Rcolor}\\small")</code>
+<code>        "fontshape"= "sl", "basicstyle" = "\\color{Rcolor}")</code>
+</dd>
 <dt>Rcolor:</dt><dd>default setting for color of R-code in rgb-coordinates; 
 defaults to <code>c(0,0.5,0.5)</code></dd>
+<dt>RRecomdcolor:</dt><dd>default setting for color of R-code from recommended packages in rgb-coordinates;
+defaults to <code>c(0,0.6,0.4)</code></dd>
 <dt>Rbcolor:</dt><dd>default setting for color of R-code symbols of intermediate packages
-in rgb-coordinates;  defaults to <code>c(0,0.4,0.4)</code></dd>
-<dt>Rout:</dt><dd>default setting for color of R-output in rgb-coordinates; 
+in rgb-coordinates;  defaults to <code>c(0,0.6,0.6)</code></dd>
+<dt>Routcolor:</dt><dd>default setting for color of R-output in rgb-coordinates;
 defaults to <code>c(0.461,0.039,0.102)</code></dd>
-<dt>Rcomment:</dt><dd>default setting for color of R-comments in rgb-coordinates; 
+<dt>Rcommentcolor:</dt><dd>default setting for color of R-comments in rgb-coordinates;
 defaults to <code>c(0.101,0.043,0.432)</code></dd>
 <dt>pkv:</dt><dd>default setting for package version as character; 
 defaults to <code>"2.0.2"</code></dd>
@@ -135,6 +155,12 @@ defaults to <code>FALSE</code></dd>
 defaults to <code>TRUE</code></dd>
 <dt>addRdset:</dt><dd>logical; default for argument <code>add</code> in command <code>Rdset</code>;
 defaults to <code>TRUE</code></dd>
+<dt>addRinset:</dt><dd>logical; default for argument <code>add</code> in command
+<code>Rinset</code>; defaults to <code>TRUE</code></dd>
+<dt>addRoutset:</dt><dd>logical; default for argument <code>add</code> in command
+<code>Routset</code>; defaults to <code>TRUE</code></dd>
+<dt>addRcodeset:</dt><dd>logical; default for argument <code>add</code> in command
+<code>Rcodeset</code>; defaults to <code>TRUE</code></dd>
 </dl>
 
 <h3>Author(s)</h3>
@@ -173,6 +199,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.3.1 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.3.2 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

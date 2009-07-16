@@ -21,14 +21,20 @@
       norm in which a multivariate parameter is considered}
   }
 }
+\section{Methods}{
+  \describe{
+    \item{sign}{\code{signature(object = "asSemivar")}:
+      accessor function for slot \code{sign}. }
+    \item{sign<-}{\code{signature(object = "asSemivar", value = "numeric")}:
+      replacement function for slot \code{sign}. }
+        }
+}
+
 \section{Extends}{
 Class \code{"asGRisk"}, directly.\cr
 Class \code{"asRiskwithBias"}, by class \code{"asGRisk"}.\cr
 Class \code{"asRisk"}, by class \code{"asRiskwithBias"}.\cr
 Class \code{"RiskType"}, by class \code{"asGRisk"}.
-}
-\section{Methods}{
-No methods defined with class "asSemivar" in the signature.
 }
 \references{
   Ruckdeschel, P. (2005) Optimally One-Sided Bounded Influence Curves.

@@ -68,11 +68,9 @@
 \setboolean{Sweave@ae}{true}%
 \RequirePackage{graphicx,fancyvrb}%
 \IfFileExists{upquote.sty}{\RequirePackage{upquote}}{}%
-\ifthenelse{\boolean{Sweave@gin}}{\setkeys{Gin}{width=0.8\textwidth}}{}%
-\ifthenelse{\boolean{Sweave@ae}}{%
+\setkeys{Gin}{width=0.8\textwidth}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{ae}
-}{}%
 \newenvironment{Schunk}{}{}
 
 \newcommand{\Sconcordance}[1]{%
