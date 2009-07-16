@@ -503,9 +503,9 @@ Leisch, F  (2003)
 \newblock \hreft{http://cran.r-project.org/doc/Rnews/Rnews_2003-2.pdf}.
 %
 
-\bibitem[{Murdoch (2008)}]{Murd:08}
-Murdoch, D (2008)
-\newblock {Parsing Rd Files. Technical Report on {\tt developer.r-project.org}} as of Nov. 4 2008.
+\bibitem[{Murdoch (2009)}]{Murd:08}
+Murdoch, D (2009)
+\newblock {Parsing Rd Files. Technical Report on {\tt developer.r-project.org}} as of Jun. 21 2009.
 \newblock \hreft{http://developer.r-project.org/parseRd.pdf}.
 %
 

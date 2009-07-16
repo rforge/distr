@@ -30,11 +30,16 @@
    morecomment=[l]\%% 2008/9 Peter Ruckdeschel
 }[keywords,comments]%%
 %------------------------------------------------------------------------------%
-\lstdefinestyle{Rstyle}{fancyvrb=true,escapechar=`,language=R,%
+\lstdefinestyle{Rstyle}{fancyvrb=true,escapechar=§,language=R,% 
+                % note:
+                % '§' replaces accent grave (otherwise difficulties in TeXing this verbatim)
                         basicstyle={\color{Rcolor}\small},%
                         keywordstyle={\bf\color{Rcolor}},%
                         commentstyle={\color{Rcommentcolor}\ttfamily\itshape},%
-                        literate={<-}{{$\leftarrow$}}2{<<-}{{$\twoheadleftarrow$}}2{~}{{$\sim$}}1{<=}{{$\leq$}}2{>=}{{$\geq$}}2{^}{{$\scriptstyle\wedge$}}1,%
+                        literate={<-}{{$\leftarrow$}}2{<<-}{{$\twoheadleftarrow$}}2%
+                                 {~}{{$\sim$}}1{<=}{{$\leq$}}2%
+                                 {>=}{{$\geq$}}2%
+                                 {^}{{$\scriptstyle\wedge$}}1,%
                         alsoother={$},%
                         alsoletter={.<-},%
                         otherkeywords={!,!=,~,$,*,\&,\%/\%,\%*\%,\%\%,<-,<<-,/},%
