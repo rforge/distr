@@ -250,6 +250,8 @@ if(!withOwnFileSection)
    cat("\\Rlstset\n")
 cat(line,"%copying relevant parts of Sweave.sty\n",line,"%\n", sep = "")
 
+cat("\\RequirePackage{graphicx,fancyvrb}%\n")
+cat("\\IfFileExists{upquote.sty}{\\RequirePackage{upquote}}{}%\n\n")
 cat("\\RequirePackage{ifthen}%\n")
 ### you might still want to have the boolean TeX
 #   variables available in your code
@@ -265,10 +267,6 @@ if(ae){
    cat("\\RequirePackage[T1]{fontenc}\n",
        "\\RequirePackage{ae}\n%\n", sep ="")
 }
-
-cat("\\RequirePackage{graphicx,fancyvrb}%\n")
-cat("\\IfFileExists{upquote.sty}{\\RequirePackage{upquote}}{}%\n")
-
 
 cat("\\newenvironment{Schunk}{}{}\n\n")
 

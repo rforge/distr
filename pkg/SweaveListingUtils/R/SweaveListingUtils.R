@@ -223,7 +223,6 @@ line <- paste("%",paste(rep("-",LineLength-2),collapse=""),"%\n", sep="")
 
 cat(line,"%Preparations for Sweave and Listings\n",line,"%\n", sep = "")
 
-
 cat("\\RequirePackage{color}\n")
 cat("\\definecolor{Rcolor}{rgb}{",paste(Rcolor,collapse=", "),"}\n", sep = "")
 cat("\\definecolor{RRecomdcolor}{rgb}{",paste(RRecomdcolor,collapse=", "),"}\n", sep = "")
@@ -251,25 +250,23 @@ if(!withOwnFileSection)
    cat("\\Rlstset\n")
 cat(line,"%copying relevant parts of Sweave.sty\n",line,"%\n", sep = "")
 
-cat("\\RequirePackage{ifthen}%\n")
-cat("\\newboolean{Sweave@gin}%\n")
-if(gin)
-  cat("\\setboolean{Sweave@gin}{true}%\n")
-else
-  cat("\\setboolean{Sweave@gin}{true}%\n")
-cat("\\newboolean{Sweave@ae}\n")
-if(ae)
-   cat("\\setboolean{Sweave@ae}{true}%\n")
-else
-   cat("\\setboolean{Sweave@ae}{true}%\n")
-
 cat("\\RequirePackage{graphicx,fancyvrb}%\n")
-cat("\\IfFileExists{upquote.sty}{\\RequirePackage{upquote}}{}%\n")
+cat("\\IfFileExists{upquote.sty}{\\RequirePackage{upquote}}{}%\n\n")
+cat("\\RequirePackage{ifthen}%\n")
+### you might still want to have the boolean TeX
+#   variables available in your code
+if(gin){
+  cat("\\newboolean{Sweave@gin}%\n")
+  cat("\\setboolean{Sweave@gin}{true}%\n")
+  cat("\\setkeys{Gin}{width=0.8\\textwidth}%\n")
+}
 
-cat("\\ifthenelse{\\boolean{Sweave@gin}}{\\setkeys{Gin}{width=0.8\\textwidth}}{}%\n")
-cat("\\ifthenelse{\\boolean{Sweave@ae}}{%\n",
-    "\\RequirePackage[T1]{fontenc}\n",
-    "\\RequirePackage{ae}\n}{}%\n", sep ="")
+if(ae){
+   cat("\\newboolean{Sweave@ae}\n")
+   cat("\\setboolean{Sweave@ae}{true}%\n")
+   cat("\\RequirePackage[T1]{fontenc}\n",
+       "\\RequirePackage{ae}\n%\n", sep ="")
+}
 
 cat("\\newenvironment{Schunk}{}{}\n\n")
 
