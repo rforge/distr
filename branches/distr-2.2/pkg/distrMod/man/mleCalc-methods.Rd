@@ -19,10 +19,10 @@
 mceCalc(x, PFam, ...)
 mleCalc(x, PFam, ...)
 \S4method{mceCalc}{numeric,ParamFamily}(x, PFam, criterion, 
-                   startPar = NULL, penalty = 0, crit.name,
+                   startPar = NULL, penalty = 1e20, crit.name,
                    Infos = NULL, \dots)
 \S4method{mleCalc}{numeric,ParamFamily}(x, PFam, startPar = NULL, 
-                   penalty = 0, Infos = NULL, \dots)
+                   penalty = 1e20, Infos = NULL, \dots)
 \S4method{mleCalc}{numeric,BinomFamily}(x, PFam, \dots)
 \S4method{mleCalc}{numeric,PoisFamily}(x, PFam, \dots)
 \S4method{mleCalc}{numeric,NormLocationFamily}(x, PFam, \dots)

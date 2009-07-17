@@ -62,7 +62,7 @@ get.criterion.fct <- function(theta, Data, ParamFam, criterion, fun, ...){
 
 
 setMethod("mleCalc", signature(x = "numeric", PFam = "ParamFamily"),
-           function(x, PFam, startPar = NULL, penalty = 0, Infos  = NULL, ...){
+           function(x, PFam, startPar = NULL, penalty = 1e20, Infos  = NULL, ...){
 
            res <- mceCalc(x = x, PFam = PFam, 
                           criterion = .negLoglikelihood, startPar = startPar, 
@@ -77,7 +77,7 @@ setMethod("mleCalc", signature(x = "numeric", PFam = "ParamFamily"),
 ################################################################################
 
 setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
-           function(x, PFam, criterion, startPar = NULL, penalty = 0, 
+           function(x, PFam, criterion, startPar = NULL, penalty = 1e20,
            crit.name = "", Infos = NULL, ...){
 
        if(is.null(startPar)) startPar <- startPar(PFam)(x,...)
@@ -89,12 +89,19 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
    
        fun <- function(theta, Data, ParamFamily, criterion, ...){
                vP <- validParameter(ParamFamily, theta)
-               if(!vP) theta <- makeOKPar(ParamFamily)(theta)
-               if(lnx)
-                  names(theta) <- c(names(main(ParamFamily)),
-                                    names(nuisance(ParamFamily)))
-               else  names(theta) <- names(main(ParamFamily))
-               crit <- criterion(Data, ParamFamily@modifyParam(theta), ...)
+               if(!vP) crit <- penalty
+               else{
+                  if(lnx)
+                     names(theta) <- c(names(main(ParamFamily)),
+                                       names(nuisance(ParamFamily)))
+                  else  names(theta) <- names(main(ParamFamily))
+                  distr.new <- try(ParamFamily@modifyParam(theta),silent = TRUE)
+                  if(is(distr.new,"try.error")) crit <- penalty
+                  else{ crit <- try(criterion(Data, distr.new, ...),
+                                silent = TRUE)
+                        if(is(crit, "try-error")) crit <- penalty
+                  }
+               }
                critP <- crit + penalty * (1-vP)
                return(critP)}
 
@@ -115,6 +122,9 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
         crit <- res$value
     }
 
+    vP <- validParameter(PFam, theta)
+    if(!vP) theta <- makeOKPar(PFam)(theta)
+
     idx <-      if(lnx) lmx + 1:lnx else 1:(lmx+lnx)
     nuis.idx <- if(lnx) idx else NULL
     nuis <- if(lnx) theta[-idx] else NULL
@@ -123,8 +133,19 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
                                nuisance = nuis,
                                fixed = fixed)    
 
+    fun2 <- function(theta, Data, ParamFamily, criterion, ...){
+               vP <- validParameter(ParamFamily, theta)
+               if(!vP) theta <- makeOKPar(ParamFamily)(theta)
+               if(lnx)
+                     names(theta) <- c(names(main(ParamFamily)),
+                                       names(nuisance(ParamFamily)))
+               else  names(theta) <- names(main(ParamFamily))
+               distr.new <- ParamFamily@modifyParam(theta)
+               crit <- criterion(Data, distr.new, ...)
+               return(crit)}
+
     crit.fct <- get.criterion.fct(theta, Data = x, ParamFam = PFam, 
-                                   criterion, fun, ...)
+                                   criterion, fun2, ...)
     
     return(meRes(x, theta, crit, param, crit.fct, method = method,
                  crit.name = crit.name, Infos = Infos)) 

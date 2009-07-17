@@ -3,7 +3,7 @@
 ###############################################################################
 MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist, dist.name, 
                         startPar = NULL,  Infos, 
-                        trafo = NULL, penalty = 0, asvar.fct, ...){
+                        trafo = NULL, penalty = 1e20, asvar.fct, ...){
 
     ## preparation: getting the matched call
     es.call <- match.call()

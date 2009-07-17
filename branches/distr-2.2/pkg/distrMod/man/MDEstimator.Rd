@@ -9,7 +9,7 @@
 \usage{
 MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name, 
             startPar = NULL,  Infos, trafo = NULL, 
-            penalty = 0, asvar.fct, ...)
+            penalty = 1e20, asvar.fct, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

@@ -3,7 +3,7 @@
 ###############################################################################
 MCEstimator <- function(x, ParamFamily, criterion, crit.name, 
                         startPar = NULL, 
-                        Infos, trafo = NULL, penalty = 0, validity.check = TRUE,
+                        Infos, trafo = NULL, penalty = 1e20, validity.check = TRUE,
                         asvar.fct, ...){
 
     ## preparation: getting the matched call

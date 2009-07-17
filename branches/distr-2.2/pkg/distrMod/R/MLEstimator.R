@@ -5,7 +5,7 @@
 
 ## Maximum-Likelihood estimator
 MLEstimator <- function(x, ParamFamily, startPar = NULL, 
-                        Infos, trafo = NULL, penalty = 0, ...){
+                        Infos, trafo = NULL, penalty = 1e20, ...){
 
     ## preparation: getting the matched call
     es.call <- match.call()

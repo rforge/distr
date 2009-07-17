@@ -37,11 +37,11 @@ mceCalc(x, PFam, ...)
 mleCalc(x, PFam, ...)
 ## S4 method for signature 'numeric, ParamFamily':
 mceCalc(x, PFam, criterion, 
-                   startPar = NULL, penalty = 0, crit.name,
+                   startPar = NULL, penalty = 1e20, crit.name,
                    Infos = NULL, ...)
 ## S4 method for signature 'numeric, ParamFamily':
 mleCalc(x, PFam, startPar = NULL, 
-                   penalty = 0, Infos = NULL, ...)
+                   penalty = 1e20, Infos = NULL, ...)
 ## S4 method for signature 'numeric, BinomFamily':
 mleCalc(x, PFam, ...)
 ## S4 method for signature 'numeric, PoisFamily':
