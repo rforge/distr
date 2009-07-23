@@ -4,7 +4,7 @@
 \alias{summary,Dataclass-method}
 \alias{summary,Simulation-method}
 \alias{summary,Contsimulation-method}
-\title{ Methods for Function summary in Package `distrSim' }
+\title{ Methods for Function summary in Package 'distrSim' }
 \description{summary-methods}
 
 \section{Methods}{
@@ -20,11 +20,14 @@
         is a global option, see \code{\link[distrSim]{distrSimoptions}}}
     }}
 
-\item{summary}{\code{signature(object = "Simulation")}: returns name, filename, seed, number of runs, the size of the sample and a
+\item{summary}{\code{signature(object = "Simulation")}: returns name, filename,
+seed, number of runs, the size of the sample and a
     statistical summary for each run; optional arguments: as with \code{signature(object = "Dataclass")} }
 
-\item{summary}{\code{signature(object = "Contsimulation")}: returns name, filename, seed, number of runs, the size of the sample, the
-    rate and a statistical summary for each run of the real data; optional arguments: as with \code{signature(object = "Dataclass")} }
+\item{summary}{\code{signature(object = "Contsimulation")}: returns name, filename,
+seed, number of runs, the size of the sample, the
+    rate and a statistical summary for each run of the real data; optional arguments:
+    as with \code{signature(object = "Dataclass")} }
 }}
 \concept{summary}
 \keyword{methods}

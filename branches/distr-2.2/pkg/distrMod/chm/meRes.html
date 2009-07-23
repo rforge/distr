@@ -28,7 +28,7 @@ in functions <code><a href="mleCalc-methods.html">mceCalc</a></code> and <code><
 <pre>
 meRes(x, estimate, criterion.value, param, crit.fct, method = "explicit solution",
       crit.name = "Maximum Likelihood", Infos)
-get.criterion.fct(theta, Data, ParamFam, criterion, fun, ...)
+get.criterion.fct(theta, Data, ParamFam, criterion.ff, fun, ...)
 ## S4 method for signature 'numeric':
 samplesize(object)
 </pre>
@@ -80,7 +80,7 @@ numeric; the data at which to evaluate the MCE</td></tr>
 <td>
 an object of class <code>ParamFamily</code>; 
 the parametric family at which to evaluate the MCE</td></tr>
-<tr valign="top"><td><code>criterion</code></td>
+<tr valign="top"><td><code>criterion.ff</code></td>
 <td>
 the criterion function used in the MCE</td></tr>
 <tr valign="top"><td><code>fun</code></td>
