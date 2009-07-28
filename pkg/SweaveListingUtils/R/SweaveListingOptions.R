@@ -3,6 +3,7 @@
 .CacheFiles <- NULL
 .alreadyDefinedPkgs <- NULL
 .tobeDefinedPkgs <- NULL
+.numberofRequires <- NULL
 
 .SweaveListingOptions <- list(
 Rset = list("fancyvrb" = "true", "escapechar" = "`",

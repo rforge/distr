@@ -27,7 +27,8 @@ Generating function and print method for S3 class <code>taglist</code>
 taglist(..., list = NULL, defname = "V")
 ## S3 method for class 'taglist':
 print(x, LineLength = getOption("width"), offset.start = 0,
-              withFinalLineBreak = TRUE, first.print = NULL, ...)
+              withFinalLineBreak = TRUE, first.print = NULL,
+                          ErrorOrWarn = "warn", ...)
 </pre>
 
 
@@ -68,6 +69,10 @@ defaults to <code>TRUE</code>.</td></tr>
 <td>
 character; something to be printed immediately before
 the first list item; defaulting to <code>NULL</code>.</td></tr>
+<tr valign="top"><td><code>ErrorOrWarn</code></td>
+<td>
+shall we issue a warning (if partially matched to <code>"warn"</code>
+or else an error</td></tr>
 </table>
 
 <h3>Details</h3>

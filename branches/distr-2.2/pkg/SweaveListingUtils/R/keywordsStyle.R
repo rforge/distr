@@ -40,7 +40,9 @@ lookUpKeywordStyles <- function(pkgs, defkws){
 }
 
 lstsetLanguage <- function(pkgs, posIdx, keywordstyles, overwrite = FALSE){
-     genKWL <- function(pkg, kwd, kws){
+     if(is.null(.numberofRequires)) .numberofRequires <<- 1
+     else .numberofRequires <<- .numberofRequires + 1
+     genKWL <- function(pkg, kwd, kws, withcomma = TRUE){
         if (!overwrite)
              kwd <- kwd[!kwd%in%.keywordsR]
         num <- length(.alreadyDefinedPkgs)
@@ -51,7 +53,7 @@ lstsetLanguage <- function(pkgs, posIdx, keywordstyles, overwrite = FALSE){
         cat("% --------------------------\n% Registration of package ",pkg,
              BaseOrRec,
             "\n% --------------------------\n",
-            "\\lstdefinestyle{Rstyle}{morekeywords={[",num+2,"]", sep = "")
+            "morekeywords={[",num+2,"]", sep = "")
         ml <- length(kwd); m1 <- ml%/%5; m2 <- ml%%5
         kwd[ml] <- paste(kwd[ml],"%",sep="")
         if(length(kwd)){
@@ -63,8 +65,10 @@ lstsetLanguage <- function(pkgs, posIdx, keywordstyles, overwrite = FALSE){
            }
            cat(kwd,sep = seps,  fill = FALSE); #cat("%\n")
            if(ml<=5) cat("\n")
-           cat("},%\nkeywordstyle={[",num+2,"]",kws,"}%\n}\n", sep = "")
-           cat(paste("%\n%\n\n"))
+           cat("},%\nkeywordstyle={[",num+2,"]",kws,"}",sep="")
+           if(withcomma) cat(",")
+           cat("%\n%\n", sep = "")
+#           cat(paste("%\n%\n\n"))
            .alreadyDefinedPkgs <<- c(.alreadyDefinedPkgs,pkg)
         }
         return(invisible())
@@ -96,19 +100,38 @@ lstsetLanguage <- function(pkgs, posIdx, keywordstyles, overwrite = FALSE){
      }else
         keywordstyles <- rep(keywordstyles, length.out = lP)
 
-     if(lP) {for(i in 1: lP){
-        kwl <- ls(pos = which(pkgs[i] == gsub("package:","",search())))
-        kwl <- sort(kwl[grep("^[[:alpha:]]+\\w*",kwl,perl=TRUE)],
-                    decreasing = TRUE)
-        genKWL(pkg = pkgs[i], kwd = kwl,
-               kws = keywordstyles[i])}
+     if(lP) {
+        withcomma <- TRUE
+        pos1 <- 0
+        for(i in 1: lP){
+           pos0 <- which(pkgs[i] == gsub("package:","",search()))
+           kwl <- ls(pos = pos0)
+           kwl <- sort(kwl[grep("^[[:alpha:]]+\\w*",kwl,perl=TRUE)],
+                       decreasing = TRUE)
+
+           if(i==1){
+              pos1 <- pos0 + length(.alreadyDefinedPkgs)
+              cat("\n\\lstdefinestyle{Rstyle",pos1,"}{style=RstyleO",
+                       .numberofRequires,",%\n",sep="")
+           }
+
+           if(i==lP) withcomma <- FALSE
+           genKWL(pkg = pkgs[i], kwd = kwl,
+                  kws = keywordstyles[i], withcomma = withcomma)
+           if(i==lP) cat("}%\n\\lstdefinestyle{Rstyle}{style=Rstyle",
+                          pos1,"}\n",
+                         "\\lstdefinestyle{RstyleO",.numberofRequires+1,
+                         "}{style=Rstyle", pos1,"}\n\n",
+
+                          sep="")
+           }
      }
      return(invisible())
 }
 
 changeKeywordstyles <- function(pkgs, keywordstyles){
      setkws <- function(num, kws){
-        cat("%\n\\lstset%\n")
+        cat("%\n\\lstdefinestyle{Rstyle}%\n")
         cat("{keywordstyle={[",num+1,"]",kws,"}\n}\n", sep = "")
         }
 
@@ -238,7 +261,7 @@ setBaseOrRecommended <- function(pkgs,kws){
         kwsI <- kws[idxRec]
 
         grI <- grep("\\\\color\\{.+\\}", kwsI, invert = TRUE)
-        kwsI <- gsub("\\\\color\\{.+\\}","\\\\color\\{RRecomdcolor\\}",
+        kwsI <- gsub("\\\\color\\{.[^\\}]+\\}","\\\\color\\{RRecomdcolor\\}",
                            kwsI)
         kwsI[grI] <- gsub("\\}$","\\\\color\\{RRecomdcolor\\}\\}",kwsI[grI])
         kws[idxRec] <- kwsI

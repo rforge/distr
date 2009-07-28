@@ -13,6 +13,7 @@
 
      unlockBinding(".keywordsR", asNamespace("SweaveListingUtils"))
      unlockBinding(".alreadyDefinedPkgs", asNamespace("SweaveListingUtils"))
+     unlockBinding(".numberofRequires", asNamespace("SweaveListingUtils"))
      unlockBinding(".tobeDefinedPkgs", asNamespace("SweaveListingUtils"))
      unlockBinding(".CacheFiles", asNamespace("SweaveListingUtils"))
      unlockBinding(".CacheLength", asNamespace("SweaveListingUtils"))
@@ -41,7 +42,8 @@ SweaveListingMASK <- function(library = NULL)
 
 
 print.taglist <- function(x, LineLength = getOption("width"), offset.start = 0,
-                          withFinalLineBreak = TRUE, first.print = NULL, ...){
+                          withFinalLineBreak = TRUE, first.print = NULL,
+                          ErrorOrWarn = "warn", ...){
    xc <- as.character(deparse(substitute(x)))
    ll <- length(x)
    LineL <- max(LineLength-2,0)
@@ -65,7 +67,10 @@ print.taglist <- function(x, LineLength = getOption("width"), offset.start = 0,
           if (ntry < LineL){
               actstr <- trystr
           }else{
-              if(ntry > maL) stop(gettextf(
+              WarnOrErrorFct <- if(pmatch(tolower(ErrorOrWarn),
+                                   c("warn","error"))==1)
+                                   warning else stop
+              if(ntry > maL) WarnOrErrorFct(gettextf(
                       "Some elements of %s are too long", 
                        if(nchar(xc)> mi50) paste(substr(xc,1,mi50),"...") else
                                 xc))
@@ -235,6 +240,7 @@ writeLines(readLines(file.path(system.file(package = "SweaveListingUtils",
                           "TeX", "Rdlisting.sty")))
 cat(line)
 lstsetR(Rset=Rset, LineLength=LineLength, startS ="\\lstdefinestyle{Rstyle}{")
+lstsetR(Rset=Rset, LineLength=LineLength, startS ="\\lstdefinestyle{RstyleO1}{")
 lstsetRd(Rdset=Rdset, LineLength=LineLength, startS ="\\lstdefinestyle{Rdstyle}{")
 cat(line)
 if(!withOwnFileSection)

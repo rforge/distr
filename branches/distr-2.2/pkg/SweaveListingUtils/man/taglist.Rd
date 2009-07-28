@@ -8,7 +8,8 @@ Generating function and print method for S3 class \code{taglist}
 \usage{
 taglist(..., list = NULL, defname = "V")
 \method{print}{taglist}(x, LineLength = getOption("width"), offset.start = 0,
-              withFinalLineBreak = TRUE, first.print = NULL, ...)
+              withFinalLineBreak = TRUE, first.print = NULL,
+                          ErrorOrWarn = "warn", ...)
 }
 \arguments{
   \item{\dots}{arbitrary number of arguments in \code{taglist}, respectively,
@@ -30,6 +31,8 @@ taglist(..., list = NULL, defname = "V")
                         defaults to \code{TRUE}.}
   \item{first.print}{character; something to be printed immediately before
   the first list item; defaulting to \code{NULL}.}
+  \item{ErrorOrWarn}{shall we issue a warning (if partially matched to \code{"warn"}
+                     or else an error}
   }
 
 \details{

@@ -463,11 +463,6 @@ giving
 lstinputSourceFromRForge("distr","man","BinomParameter-class.Rd","distr")
 @
 
-Note that corresponding examples are still typeset in {\sf R} style;
-however, up to now this will only be done in the (static) {\tt listings} style
-{\tt Rstyle}, as defined in the preamble; keywords from attached packages 
-will not be used. Reason for this: I do not yet know how to save a current 
-``state of style'' in a corresponding {\tt listings} style.
 
 %
 

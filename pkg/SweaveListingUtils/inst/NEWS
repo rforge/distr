@@ -3,6 +3,12 @@
 ######################################################################
  
 ##############
+v 0.3.3
+##############
+
+* fixed issue with overwriting several "morekeywords" keys
+
+##############
 v 0.3.1
 ##############
 * when SweaveListingPreparations is used with argument 'withOwnFileSection'=TRUE
