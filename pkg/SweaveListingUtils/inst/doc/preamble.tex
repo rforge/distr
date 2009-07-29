@@ -11,6 +11,10 @@
 <<SweaveListingsPreparations, results=tex, echo=FALSE>>=
 require(SweaveListingUtils)
 SweaveListingPreparations()
-changeKeywordstyles(pkgs = c("SweaveListingUtils","distr"),
+## setToBeDefinedPkgs(....) line just necessary for the example;
+##    may be skipped in general  
+##    you may also wish to pass arguments to SweaveListingPreparations()
+##    see ?SweaveListingPreparations
+setToBeDefinedPkgs(pkgs = c("SweaveListingUtils","distr"),
                    keywordstyles = c("\\bf\\color{blue}","\\bf\\color{red}"))
 @

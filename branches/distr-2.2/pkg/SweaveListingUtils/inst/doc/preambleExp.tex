@@ -31,24 +31,26 @@
    morecomment=[l]\%% 2008/9 Peter Ruckdeschel
 }[keywords,comments]%%
 %------------------------------------------------------------------------------%
-\lstdefinestyle{Rstyle}{fancyvrb=true,escapechar=§,language=R,% § just for convenience
-                        basicstyle={\color{Rcolor}\small},%
-                        keywordstyle={\bf\color{Rcolor}},%
-                        commentstyle={\color{Rcommentcolor}\ttfamily\itshape},%
-                        literate={<-}{{$\leftarrow$}}2{<<-}{{$\twoheadleftarrow$}}2{~}{{$\sim$}}1{<=}{{$\leq$}}2{>=}{{$\geq$}}2{^}{{$\scriptstyle\wedge$}}1,%
-                        alsoother={$},%
-                        alsoletter={.<-},%
-                        otherkeywords={!,!=,~,$,*,\&,\%/\%,\%*\%,\%\%,<-,<<-,/},%
-                        escapeinside={(*}{*)}}%
-\lstdefinestyle{RstyleO1}{fancyvrb=true,escapechar=§,language=R,% § just for convenience
+\lstdefinestyle{RstyleO1}{fancyvrb=true,escapechar=§,language=R,%
+       % § just for convenience replacing the accent grave
+       % (which would escape the rest here, which we do not want for
+       % printing out the original code)
                           basicstyle={\color{Rcolor}\small},%
                           keywordstyle={\bf\color{Rcolor}},%
                           commentstyle={\color{Rcommentcolor}\ttfamily\itshape},%
-                          literate={<-}{{$\leftarrow$}}2{<<-}{{$\twoheadleftarrow$}}2{~}{{$\sim$}}1{<=}{{$\leq$}}2{>=}{{$\geq$}}2{^}{{$\scriptstyle\wedge$}}1,%
+                          literate={<-}{{$\leftarrow$}}2{<<-}{{$\twoheadleftarrow$}}2%
+                                        {~}{{$\sim$}}1{<=}{{$\leq$}}2{>=}{{$\geq$}}%
+                                        2{^}{{$\scriptstyle\wedge$}}1,%
                           alsoother={$},%
                           alsoletter={.<-},%
                           otherkeywords={!,!=,~,$,*,\&,\%/\%,\%*\%,\%\%,<-,<<-,/},%
                           escapeinside={(*}{*)}}%
+% note: we define styles RstyleO<num> incrementally, i.e.
+%       \lstdefinestyle{RstyleO<num>}{style = RstyleO<num-1>,
+%                                     <further definitions for RstyleO<num> > }
+% and then overwrite each time style Rstyle by
+%     \lstdefinestyle{Rstyle}{style=RstyleO<num>}
+\lstdefinestyle{Rstyle}{style=RstyleO1}
 \lstdefinestyle{Rdstyle}{fancyvrb=true,language=Rd,keywordstyle={\bf},%
                          basicstyle={\color{black}\footnotesize},%
                          commentstyle={\ttfamily\itshape},%
@@ -109,29 +111,29 @@
 \def\file#1{{\tt #1}}
 \def\pkg#1{{\tt "#1"}}
 \newcommand{\pkgversion}{{\tt 2.2}}
-%------------------------------------------------------------------------------%
-\lstdefinestyle{Rstyle2}{style=RstyleO1,%
+\lstdefinestyle{RstyleO2}{style=RstyleO1,%
 % --------------------------
 % Registration of package SweaveListingUtils
 % --------------------------
-morekeywords={[2]taglist,SweaveListingPreparations,SweaveListingOptions,SweaveListingoptions,SweaveListingMASK,%
-setToBeDefinedPkgs,setBaseOrRecommended,readSourceFromRForge,readPkgVersion,lstsetRout,%
-lstsetRin,lstsetRd,lstsetRcode,lstsetR,lstsetLanguage,%
-lstset,lstinputSourceFromRForge,isBaseOrRecommended,getSweaveListingOption,copySourceFromRForge,%
-changeKeywordstyles%
+morekeywords={[2]taglist,SweaveListingPreparations,SweaveListingOptions,%
+SweaveListingoptions,SweaveListingMASK,setToBeDefinedPkgs,setBaseOrRecommended,%
+readSourceFromRForge,readPkgVersion,lstsetRout,lstsetRin,lstsetRd,lstsetRcode,%
+lstsetR,lstsetLanguage,lstset,lstinputSourceFromRForge,isBaseOrRecommended,%
+getSweaveListingOption,copySourceFromRForge,changeKeywordstyles%
 },%
 keywordstyle={[2]{\bf}},%
 %
 % --------------------------
 % Registration of package startupmsg
 % --------------------------
-morekeywords={[3]suppressStartupMessages,startupType,startupPackage,StartupMessage,startupMessage,%
-startupEndline,readVersionInformation,readURLInformation,pointertoNEWS,onlytypeStartupMessages,%
+morekeywords={[3]suppressStartupMessages,startupType,startupPackage,%
+StartupMessage,startupMessage,startupEndline,readVersionInformation,%
+readURLInformation,pointertoNEWS,onlytypeStartupMessages,%
 NEWS,mystartupMessage,mySMHandler,infoShow,buildStartupMessage%
 },%
 keywordstyle={[3]{\bf}},%
 %
-
+% --------------------------
 %
 ...
 snipped expanded (`\TeX`) (see how the original `(\verb|(`\TeX`)|)` gets escaped!)
@@ -144,7 +146,6 @@ code for registration of packages
 keywordstyle={[11]{\bf\color{RRecomdcolor}}}%
 %
 }%
-\lstdefinestyle{Rstyle}{style=Rstyle2}
-\lstdefinestyle{RstyleO2}{style=Rstyle2}
-
+\lstdefinestyle{Rstyle}{style=RstyleO2}
+%
 %------------------------------------------------------------------------------%

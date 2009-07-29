@@ -239,8 +239,8 @@ writeLines(readLines(file.path(system.file(package = "SweaveListingUtils",
                                       lib.loc = lib.loc),
                           "TeX", "Rdlisting.sty")))
 cat(line)
-lstsetR(Rset=Rset, LineLength=LineLength, startS ="\\lstdefinestyle{Rstyle}{")
 lstsetR(Rset=Rset, LineLength=LineLength, startS ="\\lstdefinestyle{RstyleO1}{")
+cat("\\lstdefinestyle{Rstyle}{style=RstyleO1}\n")
 lstsetRd(Rdset=Rdset, LineLength=LineLength, startS ="\\lstdefinestyle{Rdstyle}{")
 cat(line)
 if(!withOwnFileSection)

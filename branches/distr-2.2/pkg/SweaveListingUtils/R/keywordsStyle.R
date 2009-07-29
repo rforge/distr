@@ -111,18 +111,15 @@ lstsetLanguage <- function(pkgs, posIdx, keywordstyles, overwrite = FALSE){
 
            if(i==1){
               pos1 <- pos0 + length(.alreadyDefinedPkgs)
-              cat("\n\\lstdefinestyle{Rstyle",pos1,"}{style=RstyleO",
+              cat("\n\\lstdefinestyle{RstyleO",.numberofRequires+1,"}{style=RstyleO",
                        .numberofRequires,",%\n",sep="")
            }
 
            if(i==lP) withcomma <- FALSE
            genKWL(pkg = pkgs[i], kwd = kwl,
                   kws = keywordstyles[i], withcomma = withcomma)
-           if(i==lP) cat("}%\n\\lstdefinestyle{Rstyle}{style=Rstyle",
-                          pos1,"}\n",
-                         "\\lstdefinestyle{RstyleO",.numberofRequires+1,
-                         "}{style=Rstyle", pos1,"}\n\n",
-
+           if(i==lP) cat("}%\n\\lstdefinestyle{Rstyle}{style=RstyleO",
+                          .numberofRequires+1,"}\n\n",
                           sep="")
            }
      }
@@ -130,9 +127,14 @@ lstsetLanguage <- function(pkgs, posIdx, keywordstyles, overwrite = FALSE){
 }
 
 changeKeywordstyles <- function(pkgs, keywordstyles){
+     if(is.null(.numberofRequires)) .numberofRequires <<- 1
+     else .numberofRequires <<- .numberofRequires + 1
      setkws <- function(num, kws){
-        cat("%\n\\lstdefinestyle{Rstyle}%\n")
+        cat("%\n\\lstdefinestyle{RstyleO",.numberofRequires+1,"}{style=RstyleO",
+                       .numberofRequires,",%\n", sep="")
         cat("{keywordstyle={[",num+1,"]",kws,"}\n}\n", sep = "")
+        cat("\\lstdefinestyle{Rstyle}{style=RstyleO", .numberofRequires+1,"}\n",
+            sep = "")
         }
 
      alreadyDefinedPkgs <- .alreadyDefinedPkgs

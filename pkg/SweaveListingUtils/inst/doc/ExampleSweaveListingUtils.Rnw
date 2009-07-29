@@ -78,10 +78,8 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 <<SweaveListingsPreparations, results=tex, echo=FALSE>>=
 require(SweaveListingUtils)
 SweaveListingoptions(intermediate = FALSE)
-setToBeDefinedPkgs(pkgs = c("SweaveListingUtils","distr"),
-                   keywordstyles = c("\\bf\\color{blue}","\\bf\\color{red}"))
 SweaveListingPreparations()
-changeKeywordstyles(pkgs = c("SweaveListingUtils","distr"),
+setToBeDefinedPkgs(pkgs = c("SweaveListingUtils","distr"),
                    keywordstyles = c("\\bf\\color{blue}","\\bf\\color{red}"))
 @
 % -------------------------------------------------------------------------------
