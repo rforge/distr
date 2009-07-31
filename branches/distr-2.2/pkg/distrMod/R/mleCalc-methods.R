@@ -101,7 +101,7 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
                                        names(nuisance(ParamFamily)))
                   else  names(theta) <- names(main(ParamFamily))
                   distr.new <- try(ParamFamily@modifyParam(theta), silent = TRUE)
-                  argList <- c(list(x = Data, Distribution = distr.new), dots)
+                  argList <- c(list(Data, distr.new), dots)
                   if(is(distr.new,"try.error"))
                      crit0 <- penalty
                   else{
