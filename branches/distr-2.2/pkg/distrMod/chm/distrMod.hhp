@@ -18,6 +18,11 @@ BiasType-class.html
 BinomFamily.html
 CauchyLocationScaleFamily.html
 Confint-class.html
+DistrSymmList-class.html
+DistrSymmList.html
+DistributionSymmetry-class.html
+EllipticalSymmetry-class.html
+EllipticalSymmetry.html
 Estimate-class.html
 Estimator.html
 EvenSymmetric-class.html
@@ -46,6 +51,8 @@ MCEstimate-class.html
 MCEstimator.html
 MDEstimator.html
 MLEstimator.html
+NoSymmetry-class.html
+NoSymmetry.html
 NonSymmetric-class.html
 NonSymmetric.html
 NormLocationFamily.html
@@ -62,11 +69,16 @@ ParamFamParameter.html
 ParamFamily-class.html
 ParamFamily.html
 PoisFamily.html
+PosDefSymmMatrix-class.html
+PosDefSymmMatrix.html
 ProbFamily-class.html
 QFNorm.html
 QFnorm-class.html
 RiskType-class.html
 SelfNorm.html
+SphericalSymmetry-class.html
+SphericalSymmetry.html
+Symmetry-class.html
 asBias-class.html
 asBias.html
 asCov-class.html
@@ -112,6 +124,8 @@ norms.html
 onesidedBias-class.html
 positiveBias.html
 print-methods.html
+solve-methods.html
+sqrt-methods.html
 symmetricBias-class.html
 symmetricBias.html
 trAsCov-class.html

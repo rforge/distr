@@ -34,16 +34,20 @@ More frequently they are created via the generating function
 <h3>Slots</h3>
 
 <dl>
-<dt><code>sign</code>:</dt><dd>Object of class <code>"numeric"</code> &ndash; accounts for
-whether we only consider positive (sign = 1) or negative bias (sign = -1).</dd>
+<dt><code>type</code>:</dt><dd>Object of class <code>"character"</code>:
+&ldquo;asymptotic mean square error&rdquo;. </dd>
+<dt><code>biastype</code>:</dt><dd>Object of class <code>"BiasType"</code>:
+symmetric, one-sided or asymmetric </dd>
+<dt><code>normtype</code>:</dt><dd>Object of class <code>"NormType"</code>:
+norm in which a multivariate parameter is considered</dd>
 </dl>
 
 <h3>Methods</h3>
 
 <dl>
-<dt>sign</dt><dd><code>signature(object = "asSemivar")</code>: 
+<dt>sign</dt><dd><code>signature(object = "asSemivar")</code>:
 accessor function for slot <code>sign</code>. </dd>
-<dt>sign&lt;-</dt><dd><code>signature(object = "asSemivar", value = "numeric")</code>: 
+<dt>sign&lt;-</dt><dd><code>signature(object = "asSemivar", value = "numeric")</code>:
 replacement function for slot <code>sign</code>. </dd>
 </dl>
 
@@ -88,6 +92,6 @@ asSemivar()
 
 
 
-<hr><div align="center">[Package <em>distrMod</em> version 2.1 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distrMod</em> version 2.1.1 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

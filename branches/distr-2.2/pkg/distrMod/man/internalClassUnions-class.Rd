@@ -20,7 +20,7 @@
 \details{
 These classes are used internally to make available methods or to allow
 slots of classes to be filled with varying types. In particular
-\itemize{
+\describe{
 \item{\code{"OptionalNumericOrMatrix"}}{may contain objects of class  
       \code{"OptionalNumeric"} or \code{"matrix"}; it is used e.g. for 
        slot \code{asvar} of class \code{"Estimate"}, as it may or may not be 
