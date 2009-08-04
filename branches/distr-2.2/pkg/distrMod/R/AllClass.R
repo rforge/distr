@@ -417,7 +417,8 @@ setClass("Estimate",
 setClass("MCEstimate",
          representation(criterion = "numeric",
                         criterion.fct = "function",
-                        method = "character"),
+                        method = "character",
+                        optimwarn = "character"),
          prototype(name = "Minimum criterion estimate",
                    estimate = numeric(0),
                    samplesize = numeric(0),
@@ -431,7 +432,8 @@ setClass("MCEstimate",
                    nuis.idx = NULL,
                    trafo = list(fct = function(x){
                                       list(fval = x, mat = matrix(1))},
-                                mat = matrix(1))
+                                mat = matrix(1)),
+                   optimwarn = ""
                    ),
          contains = "Estimate")
 

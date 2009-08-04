@@ -25,7 +25,7 @@ minimum distance estimates.
 
 <pre>
 MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name, 
-            startPar = NULL,  Infos, trafo = NULL, 
+            paramDepDist = FALSE, startPar = NULL,  Infos, trafo = NULL,
             penalty = 1e20, asvar.fct, ...)
 </pre>
 
@@ -46,6 +46,12 @@ data and objects of class <code>"Distribution"</code>. </td></tr>
 <tr valign="top"><td><code>dist.name</code></td>
 <td>
 optional name of distance </td></tr>
+<tr valign="top"><td><code>paramDepDist</code></td>
+<td>
+logical; will computation of distance be parameter
+dependent (see also note below)? if <code>TRUE</code>, distance function
+must be able to digest a parameter <code>thetaPar</code>; otherwise
+this parameter will be eliminated if present in <code>...</code>-argument.</td></tr>
 <tr valign="top"><td><code>startPar</code></td>
 <td>
 initial information used by <code>optimize</code> resp. <code>optim</code>;
@@ -94,6 +100,17 @@ for method dispatch.
 <p>
 An object of S4-class <code>"MCEstimate"</code> which inherits from class 
 <code>"Estimate"</code>.</p>
+
+<h3>Note</h3>
+
+<p>
+The distance function gets called together with a parameter <code>thetaPar</code>
+which is the current parameter value under consideration, i.e.; the value
+under which the model distribution is considered. Hence, if desired,
+particular distance functions could make use of this information, by, say
+computing the distance differently for different parameter values.
+</p>
+
 
 <h3>Author(s)</h3>
 

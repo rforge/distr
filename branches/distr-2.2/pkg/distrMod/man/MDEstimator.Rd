@@ -8,7 +8,7 @@
 }
 \usage{
 MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name, 
-            startPar = NULL,  Infos, trafo = NULL, 
+            paramDepDist = FALSE, startPar = NULL,  Infos, trafo = NULL,
             penalty = 1e20, asvar.fct, ...)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -18,6 +18,10 @@ MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name,
   \item{distance}{ (generic) function: to compute distance beetween (emprical)
   data and objects of class \code{"Distribution"}. }
   \item{dist.name}{ optional name of distance }
+  \item{paramDepDist}{logical; will computation of distance be parameter
+                      dependent (see also note below)? if \code{TRUE}, distance function
+                      must be able to digest a parameter \code{thetaPar}; otherwise
+                      this parameter will be eliminated if present in \code{...}-argument.}
   \item{startPar}{ initial information used by \code{optimize} resp. \code{optim};
     i.e; if (total) parameter is of length 1, \code{startPar} is 
     a search interval, else it is an initial parameter value; if \code{NULL}
@@ -48,6 +52,11 @@ MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name,
   An object of S4-class \code{"MCEstimate"} which inherits from class 
   \code{"Estimate"}.
 }
+\note{The distance function may be called together with a parameter \code{thetaPar}
+ which is the current parameter value under consideration, i.e.; the value
+ under which the model distribution is considered. Hence, if desired,
+ particular distance functions could make use of this information, by, say
+ computing the distance differently for different parameter values.}
 \references{
     Huber, P.J. (1981) \emph{Robust Statistics}. New York: Wiley.
 

@@ -803,7 +803,7 @@ setMethod("E", signature(object = "GPareto",
              rel.tol= getdistrExOption("ErelativeTolerance"),
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"),
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"),
-             IQR.fac = getdistrExOption("IQR.fac"), ...
+             IQR.fac = max(1e4,getdistrExOption("IQR.fac")), ...
              ){
 
         dots <- list(...)

@@ -3,11 +3,13 @@
 
 ### not exported:
 .negLoglikelihood <- function(x, Distribution, ...){
+           dots <- list(...)
+           dots$thetaPar <- NULL
           ### increase accuracy:
            if(Distribution@.withSim||!.inArgs("log",d(Distribution)))
-               res <- -sum(log(Distribution@d(x, ...)))
+               res <- -sum(log(do.call(Distribution@d,args = c(list(x),dots) )))
            else
-               res <- -sum(Distribution@d(x, log = TRUE, ...))
+               res <- -sum(do.call(Distribution@d,args = c(list(x,log = TRUE), dots) ))
            return(res)
     }
 
@@ -103,7 +105,7 @@
                   untransformed.estimate = untransformed.estimate,
                   untransformed.asvar = untransformed.asvar,
                   criterion.fct = res$crit.fct, method = res$method,
-                  fixed = fixed(param))
+                  fixed = fixed(param), optimwarn = res$warns)
     return(res.me)
 }
 

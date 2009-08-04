@@ -13,11 +13,11 @@ setMethod("samplesize", signature="numeric", function(object){
 
 meRes <- function(x, estimate, criterion.value, param, crit.fct,
                   method = "explicit solution",
-                  crit.name = "Maximum Likelihood", Infos)
+                  crit.name = "Maximum Likelihood", Infos, warns = "")
         return(list(estimate = estimate, criterion = criterion.value,
                     param = param, crit.fct = crit.fct, method = method, 
                     crit.name = crit.name, Infos = Infos, 
-                    samplesize = samplesize(x)))
+                    samplesize = samplesize(x), warns=warns))
 
 get.criterion.fct <- function(theta, Data, ParamFam, criterion.ff, fun, ...){
 
@@ -78,7 +78,8 @@ setMethod("mleCalc", signature(x = "numeric", PFam = "ParamFamily"),
 
 setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
            function(x, PFam, criterion, startPar = NULL, penalty = 1e20,
-           crit.name = "", Infos = NULL, ...){
+           crit.name = "", Infos = NULL, withthetaPar = FALSE, ...){
+
 
        if(is.null(startPar)) startPar <- startPar(PFam)(x,...)
 
@@ -86,7 +87,7 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
         lnx <- length(nuisance(PFam))
         fixed <- fixed(PFam)
 
-   
+       allwarns <<- character(0)
        fun <- function(theta, Data, ParamFamily, criterionF, ...){
                vP <- validParameter(ParamFamily, theta)
                dots <- list(...)
@@ -102,13 +103,26 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
                   else  names(theta) <- names(main(ParamFamily))
                   distr.new <- try(ParamFamily@modifyParam(theta), silent = TRUE)
                   argList <- c(list(Data, distr.new), dots)
-                  if(is(distr.new,"try.error"))
-                     crit0 <- penalty
-                  else{
-                        crit0 <- try(do.call(what = criterionF, args = argList),
+                  if(withthetaPar) argList <- c(argList, list(thetaPar = theta))
+                  if(is(distr.new,"try.error")){
+                      crit0 <- penalty
+                      warn0 <- paste("Parameter transformation at theta = ",
+                                    paste(round(theta,3),collapse=","),
+                                   " threw an error;\n",  "returning starting par;\n",
+                                   sep="")
+                      allwarns <<- c(allwarns,warn0)
+                      warning(warn0)
+                  }else{crit0 <- try(do.call(what = criterionF, args = argList),
                                      silent = TRUE)
-                        if(is(crit0, "try-error"))
-                           crit0 <- penalty
+                        if(is(crit0, "try-error")){
+                            crit0 <- penalty
+                            warn1 <- paste("Criterion evaluation at theta = ",
+                                    paste(round(theta,3),collapse=","),
+                                   " threw an error;\n",  "returning starting par;\n",
+                                   sep="")
+                         allwarns <<- c(allwarns,warn1)
+                         warning(warn1)
+                         }
                   }
                }
                critP <- crit0 + penalty * (1-vP)
@@ -123,8 +137,8 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
         method <- "optimize"
     }else{
         if(is(startPar,"Estimate")) startPar <- untransformed.estimate(startPar)
-        res <- optim(par = startPar, fn = fun, Data = x, ParamFamily = PFam,
-                     criterionF = criterion, ...)
+        res <- optim(par = startPar, fn = fun, Data = x,
+                   ParamFamily = PFam, criterionF = criterion, ...)
         theta <- as.numeric(res$par)
         names(theta) <- c(names(main(PFam)),names(nuisance(PFam)))
         method <- "optim"
@@ -157,7 +171,7 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
                                    criterion.ff = criterion, fun2, ...)
     
     return(meRes(x, theta, crit, param, crit.fct, method = method,
-                 crit.name = crit.name, Infos = Infos)) 
+                 crit.name = crit.name, Infos = Infos, warns= allwarns))
            })
 
 ################################################################################

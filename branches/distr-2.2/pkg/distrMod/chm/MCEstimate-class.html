@@ -11,7 +11,9 @@
 <param name="keyword" value="R:   criterion.fct">
 <param name="keyword" value="R:   criterion.fct,MCEstimate-method">
 <param name="keyword" value="R:   method">
+<param name="keyword" value="R:   optimwarn">
 <param name="keyword" value="R:   method,MCEstimate-method">
+<param name="keyword" value="R:   optimwarn,MCEstimate-method">
 <param name="keyword" value="R:   criterion<-">
 <param name="keyword" value="R:   criterion<-,MCEstimate-method">
 <param name="keyword" value="R:   coerce,MCEstimate,mle-method">
@@ -65,6 +67,8 @@ used for compatibility with class <code>"mle"</code> from package
 <dt><code>Infos</code>:</dt><dd>object of class <code>"matrix"</code>
 with two columns named <code>method</code> and <code>message</code>:
 additional informations. </dd>
+<dt><code>optimwarn</code>:</dt><dd>object of class <code>"character"</code>
+warnings issued during optimization. </dd>
 <dt><code>asvar</code>:</dt><dd>object of class <code>"OptionalMatrix"</code>
 which may contain the asymptotic (co)variance of the estimator. </dd>
 <dt><code>samplesize</code>:</dt><dd>object of class <code>"numeric"</code> &mdash;
@@ -96,7 +100,11 @@ accessor function for slot <code>criterion</code>. </dd>
 replacement function for slot <code>criterion</code>. </dd>
 
 
-<dt>criterion.fct</dt><dd><code>signature(object = "MCEstimate")</code>: 
+<dt>optimwarn</dt><dd><code>signature(object = "MCEstimate")</code>:
+accessor function for slot <code>optimwarn</code>. </dd>
+
+
+<dt>criterion.fct</dt><dd><code>signature(object = "MCEstimate")</code>:
 accessor function for slot <code>criterion.fct</code>. </dd>
 
 

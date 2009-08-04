@@ -9,7 +9,7 @@ in functions \code{\link{mceCalc}} and \code{\link{mleCalc}}}
 
 \usage{
 meRes(x, estimate, criterion.value, param, crit.fct, method = "explicit solution",
-      crit.name = "Maximum Likelihood", Infos)
+      crit.name = "Maximum Likelihood", Infos, warns = "")
 get.criterion.fct(theta, Data, ParamFam, criterion.ff, fun, ...)
 \S4method{samplesize}{numeric}(object)
 }
@@ -27,6 +27,7 @@ get.criterion.fct(theta, Data, ParamFam, criterion.ff, fun, ...)
   \item{crit.name}{character; name of the criterion} 
   \item{Infos}{optional matrix of characters in two columns; 
                information to be attached to the estimate} 
+  \item{warns}{collected warnings in optimization}
   \item{samplesize}{numeric; the sample size at which the estimator 
                     was evaluated}
   \item{theta}{the parameter value as named numeric vector}

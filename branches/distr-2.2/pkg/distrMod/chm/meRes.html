@@ -27,7 +27,7 @@ in functions <code><a href="mleCalc-methods.html">mceCalc</a></code> and <code><
 
 <pre>
 meRes(x, estimate, criterion.value, param, crit.fct, method = "explicit solution",
-      crit.name = "Maximum Likelihood", Infos)
+      crit.name = "Maximum Likelihood", Infos, warns = "")
 get.criterion.fct(theta, Data, ParamFam, criterion.ff, fun, ...)
 ## S4 method for signature 'numeric':
 samplesize(object)
@@ -66,6 +66,9 @@ character; name of the criterion</td></tr>
 <td>
 optional matrix of characters in two columns; 
 information to be attached to the estimate</td></tr>
+<tr valign="top"><td><code>warns</code></td>
+<td>
+collected warnings in optimization</td></tr>
 <tr valign="top"><td><code>samplesize</code></td>
 <td>
 numeric; the sample size at which the estimator 

@@ -269,3 +269,6 @@ if(!isGeneric("criterion.fct")){
 if(!isGeneric("method")){
     setGeneric("method", function(object) standardGeneric("method"))
 }
+if(!isGeneric("optimwarn")){
+    setGeneric("optimwarn", function(object) standardGeneric("optimwarn"))
+}

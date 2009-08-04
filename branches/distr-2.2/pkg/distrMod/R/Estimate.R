@@ -65,6 +65,7 @@ setReplaceMethod("asvar", "Estimate",
 setMethod("untransformed.asvar", "Estimate", function(object) 
            object@untransformed.asvar)
 
+setMethod("optimwarn", "MCEstimate", function(object) object@optimwarn)
 setMethod("criterion", "MCEstimate", function(object) object@criterion)
 setMethod("criterion.fct", "MCEstimate", function(object) object@criterion.fct)
 setMethod("method", "MCEstimate", function(object) object@method)

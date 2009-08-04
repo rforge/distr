@@ -6,7 +6,9 @@
 \alias{criterion.fct}
 \alias{criterion.fct,MCEstimate-method}
 \alias{method}
+\alias{optimwarn}
 \alias{method,MCEstimate-method}
+\alias{optimwarn,MCEstimate-method}
 \alias{criterion<-}
 \alias{criterion<-,MCEstimate-method}
 \alias{coerce,MCEstimate,mle-method}
@@ -44,6 +46,8 @@
     \item{\code{Infos}:}{ object of class \code{"matrix"}
       with two columns named \code{method} and \code{message}:
       additional informations. }
+    \item{\code{optimwarn}:}{ object of class \code{"character"}
+      warnings issued during optimization. }
     \item{\code{asvar}:}{ object of class \code{"OptionalMatrix"}
       which may contain the asymptotic (co)variance of the estimator. }
     \item{\code{samplesize}:}{ object of class \code{"numeric"} ---
@@ -68,7 +72,10 @@ Class \code{"Estimate"}, directly.
     \item{criterion<-}{\code{signature(object = "MCEstimate")}: 
       replacement function for slot \code{criterion}. }
 
-    \item{criterion.fct}{\code{signature(object = "MCEstimate")}: 
+    \item{optimwarn}{\code{signature(object = "MCEstimate")}:
+      accessor function for slot \code{optimwarn}. }
+
+    \item{criterion.fct}{\code{signature(object = "MCEstimate")}:
       accessor function for slot \code{criterion.fct}. }
 
     \item{show}{\code{signature(object = "Estimate")}}
