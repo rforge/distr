@@ -10,10 +10,12 @@
 \alias{Rcolor}
 \alias{Rbcolor}
 \alias{Routcolor}
+\alias{RRecomdcolor}
 \alias{Rcommentcolor}
 \alias{pkg}
 \alias{pkv}
 \alias{Keywordstyle}
+\alias{Recomd.Keywordstyle}
 \alias{interm.Keywordstyle}
 \alias{intermediate}
 \alias{overwrite}
@@ -103,8 +105,11 @@ default value is\cr
                  shall they show Sweave-behaviour? defaults to \code{FALSE}}
 \item{Keywordstyle:}{default setting for \R-symbols as character; 
                defaults to \code{"{\\\\bf}"}}
-\item{interm.Keywordstyle:}{default setting for package name as character; 
+\item{interm.Keywordstyle:}{default setting for \R-symbols in an intermediate package as character;
                defaults to \code{"{\\\\bf\\\\color{Rbcolor}}"}}
+\item{Recomd.Keywordstyle:}{default setting for \R-symbols in package \pkg{base} or
+       another recommended package as character;
+               defaults to \code{"{\\\\bf\\\\color{Recomdcolor}}"}}
 \item{intermediate:}{default setting: shall symbols from automatically loaded
                intermediate packages also be registered for listings-printing? 
                defaults to \code{TRUE}}

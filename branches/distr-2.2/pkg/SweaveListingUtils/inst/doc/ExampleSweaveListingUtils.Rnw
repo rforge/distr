@@ -119,21 +119,21 @@ setToBeDefinedPkgs(pkgs = c("SweaveListingUtils","distr"),
 \begin{abstract}
 % -------------------------------------------------------------------------------
 In this vignette, we give short examples how to use package
-\pkg{SweaveListingUtils} in a vignette.
+\pkg{SweaveListingUtils}.
 % -------------------------------------------------------------------------------
 \end{abstract}
 %
 % -------------------------------------------------------------------------------
 \section[What package SweaveListingUtils is for]{What package {\tt SweaveListingUtils} is for}
 % -------------------------------------------------------------------------------
-Package \pkg{SweaveListingUtils}  
-provides utilities for combining {\tt Sweave}, confer \citet{Lei:02a,Lei:02b,Lei:03}.  
-with functionality of \TeX-package-\file{listings}, confer \citet{H:M:07}. 
+Package \pkg{SweaveListingUtils}
+provides utilities for combining {\tt Sweave}, confer \citet{Lei:02a,Lei:02b,Lei:03},
+with functionality of \TeX-package-\file{listings}, confer \citet{H:M:07}.
 In particular, we define {\sf R} / {\tt Rd} as \TeX-package-\file{listings}
-"language" and functionality to include {\sf R} / {\tt Rd} source file 
-(sniplets) copied from an url, by default from the {\tt svn} server at 
-\href{http://r-forge.r-project.org/}{R-forge}, confer \citet{RForge} in 
-its most recent version, thereby avoiding inconsistencies between vignette and 
+"language" and functionality to include {\sf R} / {\tt Rd} source file
+(sniplets) copied from an url, by default from the {\tt svn} server at
+\href{http://r-forge.r-project.org/}{R-forge}, confer \citet{RForge} in
+its most recent version, thereby avoiding inconsistencies between vignette and
 documented source code.
 In this respect it supports (and to some extent enhances) {\tt Sweave}.
 %

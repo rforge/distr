@@ -142,6 +142,10 @@
 <param name="Local" value="readSourceFromRForge.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Recomd.Keywordstyle">
+<param name="Local" value="SweaveListingOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="require">
 <param name="Local" value="library.html">
 </OBJECT>
@@ -155,6 +159,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Routcolor">
+<param name="Local" value="SweaveListingOptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="RRecomdcolor">
 <param name="Local" value="SweaveListingOptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">

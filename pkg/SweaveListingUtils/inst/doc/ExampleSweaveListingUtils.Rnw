@@ -119,7 +119,7 @@ setToBeDefinedPkgs(pkgs = c("SweaveListingUtils","distr"),
 \begin{abstract}
 % -------------------------------------------------------------------------------
 In this vignette, we give short examples how to use package
-\pkg{SweaveListingUtils} in a vignette.
+\pkg{SweaveListingUtils}.
 % -------------------------------------------------------------------------------
 \end{abstract}
 %
@@ -127,7 +127,7 @@ In this vignette, we give short examples how to use package
 \section[What package SweaveListingUtils is for]{What package {\tt SweaveListingUtils} is for}
 % -------------------------------------------------------------------------------
 Package \pkg{SweaveListingUtils}  
-provides utilities for combining {\tt Sweave}, confer \citet{Lei:02a,Lei:02b,Lei:03}.  
+provides utilities for combining {\tt Sweave}, confer \citet{Lei:02a,Lei:02b,Lei:03},
 with functionality of \TeX-package-\file{listings}, confer \citet{H:M:07}. 
 In particular, we define {\sf R} / {\tt Rd} as \TeX-package-\file{listings}
 "language" and functionality to include {\sf R} / {\tt Rd} source file 

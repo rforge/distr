@@ -153,8 +153,8 @@
   loup <- .loupmixfun(mixDistr)
 
   n <- getdistrOption("DefaultNrGridPoints")
-  up <- min(loup$qu,1000)#getdistrOption("LARGE")
-  lo <- max(loup$ql,-1000)#getdistrOption("LARGE")
+  up <- if(is.finite(loup$qu)) loup$qu else  1000 #min(loup$qu,1000)#getdistrOption("LARGE")
+  lo <- if(is.finite(loup$ql)) loup$ql else -1000 #max(loup$ql,-1000)#getdistrOption("LARGE")
 
   h <- (up-lo)/n
   suppsA <- NULL

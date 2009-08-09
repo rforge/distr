@@ -27,7 +27,8 @@ lookUpKeywordStyles <- function(pkgs, defkws){
         if(missing(defkws))
            defkwsI <- setBaseOrRecommended(pkgs = pkgs[idxNIn])
         else{
-           defkwsI <- if(length(idxNIn)) defkws[idxNIn] else defkws
+           defkwsI <- if(length(idxNIn)<=length(defkws)) defkws[idxNIn] else defkws
+           defkwsI <- defkwsI[!is.na(defkwsI)]
            defkwsI <- rep(defkwsI, length.out = length(idxNIn))
            defkwsI <- setBaseOrRecommended(pkgs = pkgs[idxNIn], kws = defkwsI)
         }
@@ -40,8 +41,6 @@ lookUpKeywordStyles <- function(pkgs, defkws){
 }
 
 lstsetLanguage <- function(pkgs, posIdx, keywordstyles, overwrite = FALSE){
-     if(is.null(.numberofRequires)) .numberofRequires <<- 1
-     else .numberofRequires <<- .numberofRequires + 1
      genKWL <- function(pkg, kwd, kws, withcomma = TRUE){
         if (!overwrite)
              kwd <- kwd[!kwd%in%.keywordsR]
@@ -93,14 +92,16 @@ lstsetLanguage <- function(pkgs, posIdx, keywordstyles, overwrite = FALSE){
      pkgs <- .packages()[posIdx]
      lP <- length(posIdx)
      if(missing(keywordstyles)){
-        keywordstyles <- getSweaveListingOption("Keywordstyle")
-        keywordstyles <- rep(keywordstyles, length.out = lP)
-        keywordstyles <- setBaseOrRecommended(pkgs = pkgs,
-                                              kws = keywordstyles)
+#        keywordstyles <- getSweaveListingOption("Keywordstyle")
+#        keywordstyles <- rep(keywordstyles, length.out = lP)
+        keywordstyles <- setBaseOrRecommended(pkgs = pkgs)# ,
+#                                              kws = keywordstyles)
      }else
         keywordstyles <- rep(keywordstyles, length.out = lP)
 
      if(lP) {
+        if(is.null(.numberofRequires)) .numberofRequires <<- 1
+        else .numberofRequires <<- .numberofRequires + 1
         withcomma <- TRUE
         pos1 <- 0
         for(i in 1: lP){
@@ -127,8 +128,6 @@ lstsetLanguage <- function(pkgs, posIdx, keywordstyles, overwrite = FALSE){
 }
 
 changeKeywordstyles <- function(pkgs, keywordstyles){
-     if(is.null(.numberofRequires)) .numberofRequires <<- 1
-     else .numberofRequires <<- .numberofRequires + 1
      setkws <- function(num, kws){
         cat("%\n\\lstdefinestyle{RstyleO",.numberofRequires+1,"}{style=RstyleO",
                        .numberofRequires,",%\n", sep="")
@@ -158,9 +157,12 @@ changeKeywordstyles <- function(pkgs, keywordstyles){
         keywordstyles <- getSweaveListingOption("Keywordstyle")
      keywordstyles <- rep(keywordstyles, length.out = lP)
 
-     if(lP) for(i in 1: lP)
-        setkws(num = numIdx[i],
-               kws = keywordstyles[i])
+     if(lP){
+        if(is.null(.numberofRequires)) .numberofRequires <<- 1
+        else .numberofRequires <<- .numberofRequires + 1
+        for(i in 1: lP)
+            setkws(num = numIdx[i], kws = keywordstyles[i])
+     }
      return(invisible())
 }
 
@@ -212,7 +214,7 @@ library <- function(package, help, pos = 2, lib.loc = NULL,
                 rerg <- suppressPackageStartupMessages(do.call(fct, args=mc))
                 pnew <- .packages()
                 pdiff <- pnew[! pnew %in% pold]
-                pint <- pdiff[!pdiff == pkg]
+                pint <- pdiff[!pdiff %in% pkg]
 #
                 if(is.null(interm.keywordstyles) && length(pint))
                     interm.keywordstyles <- lookUpKeywordStyles(pkgs = pint,
@@ -253,10 +255,13 @@ isBaseOrRecommended <- function(pkgs){
 
 setBaseOrRecommended <- function(pkgs,kws){
       idxRec <- as.logical(isBaseOrRecommended(pkgs = pkgs))
-      if(missing(kws))
+      if(missing(kws)) {
          kws <- rep(getSweaveListingOption("Keywordstyle"),
                     length.out = length(pkgs))
-      else
+         if(length(idxRec))
+            kws[idxRec] <- rep(getSweaveListingOption("Recomd.Keywordstyle"),
+                               length.out = length(idxRec))
+      }else
          kws <- rep(kws, length.out = length(pkgs))
 
       if(any(idxRec)){
