@@ -201,7 +201,7 @@ E(object, fun, cond, ...)
                                       rel.tol = getdistrExOption("ErelativeTolerance"),
                                       lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"),
                                       upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-                                      IQR.fac = getdistrExOption("IQR.fac"), ...)
+                                      IQR.fac = max(10000, getdistrExOption("IQR.fac")), ...)
 \S4method{E}{Hyper,missing,missing}(object, low = NULL, upp = NULL, ...)
 \S4method{E}{Logis,missing,missing}(object, low = NULL, upp = NULL, ...)
 \S4method{E}{Lnorm,missing,missing}(object, low = NULL, upp = NULL, ...)
