@@ -1,10 +1,10 @@
 <html><head><title>lstset and friends</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>lstset(SweaveListingUtils)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>lstset(SweaveListingUtils)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   lstset">
 <param name="keyword" value="R:   lstsetRd">
 <param name="keyword" value="R:   lstsetR">
@@ -21,24 +21,28 @@
 <h3>Description</h3>
 
 <p>
-Functions for defining how listings prints R and Rd source code
-</p>
+Functions for defining how listings prints R and Rd source code</p>
 
 
 <h3>Usage</h3>
 
 <pre>
-lstset(taglist, LineLength = getOption("width"), startS = "\\lstset{")
-lstsetR(Rset = NULL, LineLength = getOption("width"), add = getSweaveListingOption("addRset"),
-        startS = "\\lstset{")
-lstsetRd(Rdset = NULL, LineLength = getOption("width"), add = getSweaveListingOption("addRdset"),
-         startS = "\\lstset{")
-lstsetRin(Rinset = NULL, LineLength = getOption("width"), add = getSweaveListingOption("addRinset"),
-        startS = "\\lstdefinestyle{Rinstyle}{")
-lstsetRout(Routset = NULL, LineLength = getOption("width"), add = getSweaveListingOption("addRoutset"),
-        startS = "\\lstdefinestyle{Routstyle}{")
-lstsetRcode(Rcodeset = NULL, LineLength = getOption("width"), add = getSweaveListingOption("addRcodeset"),
-        startS = "\\lstdefinestyle{Rcodestyle}{")
+lstset(taglist, LineLength = getOption("width"), startS = "\\lstset\{")
+lstsetR(Rset = NULL, LineLength = getOption("width"),
+        add = getSweaveListingOption("addRset"),
+        startS = "\\lstset\{")
+lstsetRd(Rdset = NULL, LineLength = getOption("width"),
+         add = getSweaveListingOption("addRdset"),
+         startS = "\\lstset\{")
+lstsetRin(Rinset = NULL, LineLength = getOption("width"),
+          add = getSweaveListingOption("addRinset"),
+          startS = "\\lstdefinestyle\{Rinstyle\}\{")
+lstsetRout(Routset = NULL, LineLength = getOption("width"),
+           add = getSweaveListingOption("addRoutset"),
+           startS = "\\lstdefinestyle\{Routstyle\}\{")
+lstsetRcode(Rcodeset = NULL, LineLength = getOption("width"),
+            add = getSweaveListingOption("addRcodeset"),
+            startS = "\\lstdefinestyle\{Rcodestyle\}\{")
 </pre>
 
 
@@ -85,14 +89,15 @@ boolean; defaults to <code>TRUE</code>; if <code>TRUE</code>, argument list
 <code>Rset</code> resp. <code>Rdset</code> will be appended to default value 
 lists <code>getSweaveListingOption("Rset")</code> resp.  
 <code>getSweaveListingOption("Rdset")</code> (see below),
-overwriting respective entries of the default value lists.</td></tr>
+overwriting respective entries of the default value lists.</td></tr> 
 <tr valign="top"><td><code>startS</code></td>
 <td>
-character; defaults to <code>"\\lstset{"</code>; what to do
+character; defaults to <code>"\\lstset\{"</code>; what to do
 by default we use <code>\lstset</code>; an alternative is
 to use <code>\lstdefinestyle</code> which amounts to
-<code>"\\lstdefinestyle{"</code>.</td></tr>
+<code>"\\lstdefinestyle\{"</code>.</td></tr>
 </table>
+
 
 <h3>Details</h3>
 
@@ -109,9 +114,9 @@ first arguments, which in the latter case are then converted to <code>taglist</c
 both <code>lstsetR</code> and <code>lstsetRd</code> use particular default values to
 define R resp. Rd output format. More
 specifically for R code, it uses 
-<a href="SweaveListingOptions.html">getSweaveListingOption("Rset")</a>,
+<a href="../../SweaveListingUtils/html/SweaveListingOptions.html">getSweaveListingOption("Rset")</a>,
 and for Rd code, it 
-<a href="SweaveListingOptions.html">getSweaveListingOption("Rdset")</a>;
+<a href="../../SweaveListingUtils/html/SweaveListingOptions.html">getSweaveListingOption("Rdset")</a>;
 <code>lstsetRin</code>, <code>lstsetRout</code>, and <code>lstsetRcode</code>
 are corresponding specialized commands for 'listings' environments
 <code>Sinput</code>, <code>Soutput</code>, and <code>Scode</code>, respectively.
@@ -131,26 +136,33 @@ TeX file.
 <h3>Value</h3>
 
 <p>
-<code>invisible()</code></p>
+<code>invisible()</code>
+</p>
+
 
 <h3>Author(s)</h3>
 
-<p>
-Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
-</p>
+<p>Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a></p>
 
 
 <h3>Examples</h3>
 
 <pre>
 lstset(taglist(A="H", b=2, 3),30)
-lstset(taglist(A="H", b=2, 3),30, startS = "\\lstdefinestyle{Rstyle}{")
+lstset(taglist(A="H", b=2, 3),30, startS = "\\lstdefinestyle{Rstyle}\{")
 lstsetR()
 lstsetRd()
 </pre>
 
-
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
 
 <hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.4 <a href="00Index.html">Index</a>]</div>
-
 </body></html>

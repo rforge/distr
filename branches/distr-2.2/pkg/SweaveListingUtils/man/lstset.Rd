@@ -11,16 +11,21 @@
 Functions for defining how listings prints R and Rd source code}
 \usage{
 lstset(taglist, LineLength = getOption("width"), startS = "\\\\lstset\{")
-lstsetR(Rset = NULL, LineLength = getOption("width"), add = getSweaveListingOption("addRset"),
+lstsetR(Rset = NULL, LineLength = getOption("width"),
+        add = getSweaveListingOption("addRset"),
         startS = "\\\\lstset\{")
-lstsetRd(Rdset = NULL, LineLength = getOption("width"), add = getSweaveListingOption("addRdset"),
+lstsetRd(Rdset = NULL, LineLength = getOption("width"),
+         add = getSweaveListingOption("addRdset"),
          startS = "\\\\lstset\{")
-lstsetRin(Rinset = NULL, LineLength = getOption("width"), add = getSweaveListingOption("addRinset"),
-        startS = "\\\\lstdefinestyle\{Rinstyle\}\{")
-lstsetRout(Routset = NULL, LineLength = getOption("width"), add = getSweaveListingOption("addRoutset"),
-        startS = "\\\\lstdefinestyle\{Routstyle\}\{")
-lstsetRcode(Rcodeset = NULL, LineLength = getOption("width"), add = getSweaveListingOption("addRcodeset"),
-        startS = "\\\\lstdefinestyle\{Rcodestyle\}\{")
+lstsetRin(Rinset = NULL, LineLength = getOption("width"),
+          add = getSweaveListingOption("addRinset"),
+          startS = "\\\\lstdefinestyle\{Rinstyle\}\{")
+lstsetRout(Routset = NULL, LineLength = getOption("width"),
+           add = getSweaveListingOption("addRoutset"),
+           startS = "\\\\lstdefinestyle\{Routstyle\}\{")
+lstsetRcode(Rcodeset = NULL, LineLength = getOption("width"),
+            add = getSweaveListingOption("addRcodeset"),
+            startS = "\\\\lstdefinestyle\{Rcodestyle\}\{")
 }
 
 \arguments{

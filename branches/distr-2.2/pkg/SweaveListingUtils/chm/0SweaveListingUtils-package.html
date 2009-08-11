@@ -1,10 +1,10 @@
 <html><head><title>Package SweaveListingUtils</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>SweaveListingUtils-package(SweaveListingUtils)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>SweaveListingUtils-package(SweaveListingUtils)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   SweaveListingUtils-package">
 <param name="keyword" value="R:   SweaveListingUtils">
 <param name="keyword" value=" Package SweaveListingUtils">
@@ -21,34 +21,48 @@ Package <span class="pkg">SweaveListingUtils</span>
 provides utilities for defining <font face="Courier New,Courier" color="#666666"><b>R</b></font> / &lsquo;<span class="file">Rd</span>&rsquo; as TeX-package-&lsquo;<span class="file">listings</span>&rsquo;
 "language" and including <font face="Courier New,Courier" color="#666666"><b>R</b></font> / &lsquo;<span class="file">.Rd</span>&rsquo; source file (sniplets) copied
 from an url, by default from svn server at R-forge in its most recent version, 
-thereby avoiding inconsistencies between vignette and documented source code
+thereby avoiding inconsistencies between vignette and documented source code  
 </p>
 
 
 <h3>Details</h3>
 
 <p>
+
+</p>
 <table summary="Rd table">
 <tr>
-  <td align="left">Package: </td>  <td align="left"> SweaveListingUtils</td>
+ <td align="left">
+Package: </td><td align="left"> SweaveListingUtils</td>
 </tr>
 <tr>
-  <td align="left"> Version: </td>  <td align="left"> 0.3</td>
+ <td align="left">
+Version: </td><td align="left"> 0.4</td>
 </tr>
 <tr>
-  <td align="left"> Date: </td>  <td align="left"> 2009-03-19</td>
+ <td align="left">
+Date: </td><td align="left"> 2009-08-10</td>
 </tr>
 <tr>
-  <td align="left"> Depends: </td>  <td align="left"> R(&gt;= 2.0.0), startupmsg</td>
+ <td align="left">
+Depends: </td><td align="left"> R(&gt;= 2.0.0), startupmsg</td>
 </tr>
 <tr>
-  <td align="left"> LazyLoad: </td>  <td align="left"> yes</td>
+ <td align="left">
+LazyLoad: </td><td align="left"> yes</td>
 </tr>
 <tr>
-  <td align="left"> License: </td>  <td align="left"> LGPL-3</td>
+ <td align="left">
+License: </td><td align="left"> LGPL-3</td>
 </tr>
-</table>
+<tr>
+ <td align="left">
+</td>
+</tr>
 
+</table><p>
+
+</p>
 <p>
 TeX-package &lsquo;<span class="file">listings</span>&rsquo;, confer <a href="http://www.ctan.org/tex-archive/macros/latex/contrib/listings/">http://www.ctan.org/tex-archive/macros/latex/contrib/listings/</a>,
 <a href="http://www.ctan.org/tex-archive/macros/latex/contrib/listings/listings.pdf">http://www.ctan.org/tex-archive/macros/latex/contrib/listings/listings.pdf</a>
@@ -59,7 +73,7 @@ For quite some time there has already been a corresponding language definition
 for <font face="Courier New,Courier" color="#666666"><b>R</b></font>. We enhance this definition and also introduce a corresponding 
 "language" definition file to typeset &lsquo;<span class="file">.Rd</span>&rsquo; code 
 (file &lsquo;<span class="file">Rdlistings.sty</span>&rsquo; in the &lsquo;<span class="file">TeX</span>&rsquo; subfolder of this package,
-which is according to Duncan Murdoch's ``Parsing Rd Files'' as of Nov. 4 2008.).
+which is according to Duncan Murdoch's &ldquo;Parsing Rd Files&rdquo; as of Nov. 4 2008.).
 </p>
 <p>
 In recent versions &lsquo;<span class="file">listings</span>&rsquo; also cooperates with TeX package 
@@ -77,7 +91,7 @@ with <span class="pkg">SweaveListingUtils</span>, assignment operators <code>&lt
 <p>
 For a corresponding TeX preamble combining Sweave and &lsquo;<span class="file">listings</span>&rsquo;, 
 we provide command <br>
-<code><a href="SweaveListingPreparations.html">SweaveListingPreparations</a></code>.
+<code><a href="../../SweaveListingUtils/html/SweaveListingPreparations.html">SweaveListingPreparations</a></code>.
 </p>
 <p>
 As for the <font face="Courier New,Courier" color="#666666"><b>R</b></font> language definition, we allow for different keywordstyles 
@@ -88,20 +102,33 @@ mark-up for newly defined functions and alread existing ones.
 More specifically, whenever in some <font face="Courier New,Courier" color="#666666"><b>R</b></font> code sniplet in some Sweave chunk, there
 is some <code>library</code> or <code>require</code> command, the corresponding symbols
 found by <code>ls()</code> afterwords in some <code>search()</code> entry position, are 
-registered as <code>&lt;comma-separated keywordlist&gt;</code> (printed as 5 items per line) 
-as a new "higher order" group of keywords by a corresponding
+registered as <PRE>&lt;comma-separated keywordlist&gt;</PRE> (printed as 5 items per line)
+as a new "higher order" group of keywords by corresponding
 <pre>
- \lstdefinelanguage{R}%
-     {morekeywords=[&lt;order number&gt;]{ &lt;comma-separated keywordlist&gt; },%
+ \lstdefinestyle{RstyleO&lt;numi&gt;}% RstyleO&lt;numi&gt; is the current order of Rstyle
+     {style = RstyleO&lt;numi-1&gt;,
+      morekeywords=[&lt;order number&gt;]{ &lt;comma-separated keywordlist&gt; },%
       sensitive=true,%
       keywordstyle=[&lt;order number&gt;]&lt;keywordstyle as format string&gt;,%
+      % [ possibly more
+      morekeywords=[&lt;order number + 1&gt;]{ &lt;comma-separated keywordlist&gt; },%
+      sensitive=true,%
+      keywordstyle=[&lt;order number + 1&gt;]&lt;keywordstyle as format string&gt;,%
+      % .... ]
       }
+ \lstdefinestyle{Rstyle}{style = RstyleO&lt;numi&gt;}
 </pre>
-TeX directive in the automatically generated &lsquo;<span class="file">.tex</span>&rsquo; file
-where <code>&lt;order number&gt;</code> is incremented (resp. gets looked up from
+TeX directives in the automatically generated &lsquo;<span class="file">.tex</span>&rsquo; file
+where <PRE>&lt;order number&gt;</PRE> is incremented (resp. gets looked up from
 the global, non-exported  variable <code>.alreadyDefinedPkgs</code> in the package
 name space) at each instance of
-a <code>library</code> or <code>require</code> command. 
+a <code>library</code> or <code>require</code> command; an analogue incrementation
+present in <PRE>&lt;numi&gt;</PRE> is done for subsequent (incremental)
+redefinitions of style <PRE>Rstyle</PRE>,
+which is controlled by the again non-exported global variable
+<code>.numberofRequires</code>. <PRE>&lt;order number&gt;</PRE> and <PRE>&lt;numi&gt;</PRE> will
+in general differ, as in one call to <code>require</code>/<code>library</code>, several
+packages may be registered at once.
 </p>
 <p>
 To this end commands
@@ -116,8 +143,10 @@ As for the integration of code sniplets from an url (by default, we use
 the svn server at R-forge in its most recent version), this can be 
 useful to stay consistent with the current version of the code without
 having to update vignettes all the time. To this end, besides referencing
-by line numbers, <code><a href="lstinputSourceFromRForge.html">lstinputSourceFromRForge</a></code> also offers
+by line numbers, <code><a href="../../SweaveListingUtils/html/lstinputSourceFromRForge.html">lstinputSourceFromRForge</a></code> also offers
 referencing by matching regular expressions.
+</p>
+<p>
 </p>
 
 
@@ -171,8 +200,15 @@ Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ru
 <EM>Maintainer:</EM> Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
 </p>
 
-
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
 
 <hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.4 <a href="00Index.html">Index</a>]</div>
-
 </body></html>

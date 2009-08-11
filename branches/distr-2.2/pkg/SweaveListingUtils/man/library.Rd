@@ -152,6 +152,7 @@ require(package, lib.loc = NULL, quietly = FALSE,
   by \code{getSweaveListingOption}). New entries in the global variable
   \code{.tobeDefinedPkgs} may be appended by \code{\link{setToBeDefinedPkgs}}.\cr
 
+
   The masked versions work as follows: first the call is written to an
   object and split into a \pkg{base}-package-part and into the extra arguments
   mentioned above. Then we call \code{base::<fct>} where \code{<fct>} is either
@@ -182,6 +183,11 @@ file you should include an Sweave chunk like
 unloadNamespace("SweaveListingUtils")
 @
 }
+or, if you want to keep the namespace of \pkg{SweaveListingUtils} loaded
+\preformatted{
+<<cleanup2, echo=FALSE>>=
+SweaveListingUtils(inSweave = FALSE)
+@
 }
 \value{
    as the unmasked versions.

@@ -75,10 +75,11 @@ SweaveListingPreparations(
 \details{
 \code{SweaveListingPreparations}
 writes a corresponding preamble to the \file{.Rnw}-file for the simultaneous use
-of Sweave and package listings; note that the lines
+of Sweave and package listings; note that so far, even if you do not want to
+use the default style file \file{Sweave.sty}, the lines
 \preformatted{
-\usepackage{Sweave}
-\SweaveOpts{keep.source=TRUE}
+\%\\usepackage{Sweave}
+\\SweaveOpts{keep.source=TRUE}
 }
 still have to appear in the \file{.Rnw} file --- before the corresponding
 \code{SweaveListingPreparations}-chunk.\cr
