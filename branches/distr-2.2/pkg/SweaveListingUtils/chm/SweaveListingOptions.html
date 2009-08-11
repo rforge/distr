@@ -1,10 +1,10 @@
 <html><head><title>Function to change the global options of the package &lsquo;SweaveListingUtils&rsquo;</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>SweaveListingOptions(SweaveListingUtils)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>SweaveListingOptions(SweaveListingUtils)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   SweaveListingOptions">
 <param name="keyword" value="R:   SweaveListingoptions">
 <param name="keyword" value="R:   getSweaveListingOption">
@@ -39,10 +39,8 @@
 
 <h3>Description</h3>
 
-<p>
-With <code>SweaveListingOptions</code> you can inspect and change 
-the global variables of the package <span class="pkg">SweaveListingUtils</span>.
-</p>
+<p>With <code>SweaveListingOptions</code> you can inspect and change 
+the global variables of the package <span class="pkg">SweaveListingUtils</span>. </p>
 
 
 <h3>Usage</h3>
@@ -59,11 +57,12 @@ getSweaveListingOption(x)
 <table summary="R argblock">
 <tr valign="top"><td><code>...</code></td>
 <td>
-any options can be defined, using name = value or by passing a list of such tagged values. </td></tr>
+ any options can be defined, using name = value or by passing a list of such tagged values. </td></tr>
 <tr valign="top"><td><code>x</code></td>
 <td>
-a character string holding an option name.</td></tr>
+ a character string holding an option name.</td></tr>
 </table>
+
 
 <h3>Value</h3>
 
@@ -71,7 +70,9 @@ a character string holding an option name.</td></tr>
 <code>SweaveListingOptions()</code> returns a list of the global variables.<br>
 <code>SweaveListingOptions(x)</code> returns the global variable <VAR>x</VAR>.<br>
 <code>getSweaveListingOption(x)</code> returns the global variable <VAR>x</VAR>.<br>
-<code>SweaveListingOptions(x=y)</code> sets the value of the global variable <VAR>x</VAR> to <VAR>y</VAR>.</p>
+<code>SweaveListingOptions(x=y)</code> sets the value of the global variable <VAR>x</VAR> to <VAR>y</VAR>.
+</p>
+
 
 <h3>SweaveListingoptions</h3>
 
@@ -83,15 +84,16 @@ just a synonym to <code>SweaveListingOptions</code>.
 
 <h3>Global Options</h3>
 
+<p>
+
 <dl>
 <dt>Rset:</dt><dd>default setting for \lstset-definition of R-code, default value is<br>
-<code>list("fancyvrb" = "true", "language" = "R", "escapechar" = "`", </code><br> 
+<code>list("fancyvrb" = "true", "language" = "R", "escapechar" = "`", </code><br>
 <code>        "basicstyle" = "{\\color{Rcolor}\\footnotesize}",</code><br>
 <code>        "keywordstyle" = "{\\bf\\color{Rcolor}}",</code><br>
 <code>        "commentstyle" = "{\\color{Rcomment}\\ttfamily\\itshape}",</code><br>
 <code>        "literate" = "{&lt;-}{{$\\leftarrow$}}2{&lt;&lt;-}{{$\\twoheadleftarrow$}}2",</code><br>
 <code>        "alsoother" = "{$}","alsoletter" = "{.&lt;-}"</code><br>
-<code>        "otherkeywords" = </code>
 <code>        "otherkeywords" = "{!,!=,~,$,*,\\&amp;,\\ %/\\ %,\\ %*\\ %,\\ %\\ %,&lt;-,&lt;&lt;-,/}")</code><br>
 (CAVEAT: the spaces between the double backslashes and the percent sign in the last line
 are <EM>not</EM> intended; I simply did not find another work-around)
@@ -154,8 +156,8 @@ defaults to <code>FALSE</code></dd>
 (character); defaults to<br>
 "http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/*checkout*/pkg/"
 </dd>
-
-
+</p>
+<p>
 <dt>addRset:</dt><dd>logical; default for argument <code>add</code> in command <code>Rset</code>;
 defaults to <code>TRUE</code></dd>
 <dt>addRdset:</dt><dd>logical; default for argument <code>add</code> in command <code>Rdset</code>;
@@ -168,18 +170,17 @@ defaults to <code>TRUE</code></dd>
 <code>Rcodeset</code>; defaults to <code>TRUE</code></dd>
 </dl>
 
+</p>
+
+
 <h3>Author(s)</h3>
 
-<p>
-Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
-</p>
+<p>Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a></p>
 
 
 <h3>See Also</h3>
 
-<p>
-<code><a onclick="findlink('base', 'options.html')" style="text-decoration: underline; color: blue; cursor: hand">options</a></code>, <code><a onclick="findlink('base', 'getOption.html')" style="text-decoration: underline; color: blue; cursor: hand">getOption</a></code>
-</p>
+<p><code><a href="../../base/html/options.html">options</a></code>, <code><a href="../../base/html/getOption.html">getOption</a></code></p>
 
 
 <h3>Examples</h3>
@@ -203,7 +204,5 @@ location.href = link;
 }
 </script>
 
-
 <hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.4 <a href="00Index.html">Index</a>]</div>
-
 </body></html>

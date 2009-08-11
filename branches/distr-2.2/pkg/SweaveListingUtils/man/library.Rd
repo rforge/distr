@@ -189,6 +189,7 @@ or, if you want to keep the namespace of \pkg{SweaveListingUtils} loaded
 SweaveListingUtils(inSweave = FALSE)
 @
 }
+}
 \value{
    as the unmasked versions.
 }

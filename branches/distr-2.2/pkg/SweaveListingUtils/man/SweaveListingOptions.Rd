@@ -52,13 +52,12 @@ just a synonym to \code{SweaveListingOptions}.
 \describe{
 \item{Rset:}{%
 default setting for \\lstset-definition of R-code, default value is\cr
-\code{list("fancyvrb" = "true", "language" = "R", "escapechar" = "`", }\cr 
+\code{list("fancyvrb" = "true", "language" = "R", "escapechar" = "`", }\cr
 \code{        "basicstyle" = "{\\\\color{Rcolor}\\\\footnotesize}",}\cr
 \code{        "keywordstyle" = "{\\\\bf\\\\color{Rcolor}}",}\cr
 \code{        "commentstyle" = "{\\\\color{Rcomment}\\\\ttfamily\\\\itshape}",}\cr
 \code{        "literate" = "{<-}{{$\\\\leftarrow$}}2{<<-}{{$\\\\twoheadleftarrow$}}2",}\cr
 \code{        "alsoother" = "{$}","alsoletter" = "{.<-}"}\cr
-\code{        "otherkeywords" = }%
 \code{        "otherkeywords" = "{!,!=,~,$,*,\\\\&,\\\\ \%/\\\\ \%,\\\\ \%*\\\\ \%,\\\\ \%\\\\ \%,<-,<<-,/}")}\cr
 (CAVEAT: the spaces between the double backslashes and the percent sign in the last line
 are \emph{not} intended; I simply did not find another work-around)

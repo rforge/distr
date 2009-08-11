@@ -1,10 +1,10 @@
 <html><head><title>Loading Packages with registering symbols for TeX package 'listing'</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>library(SweaveListingUtils)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>library(SweaveListingUtils)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   library">
 <param name="keyword" value="R:   require">
 <param name="keyword" value=" Loading Packages with registering symbols for TeX package 'listing'">
@@ -49,7 +49,7 @@ require(package, lib.loc = NULL, quietly = FALSE,
 <table summary="R argblock">
 <tr valign="top"><td><code>package, help</code></td>
 <td>
-the name of a package, given as a <a href="onclick="findlink('distrTEst', 'name-methods.html')" style="text-decoration: underline; color: blue; cursor: hand"">name</a> or
+the name of a package, given as a <a href="../../base/html/name.html">name</a> or
 literal character string, or a character string, depending on
 whether <code>character.only</code> is <code>FALSE</code> (default) or
 <code>TRUE</code>).</td></tr>
@@ -59,7 +59,7 @@ the position on the search list at which to attach the
 loaded package.  Note that <code>.First.lib</code> may attach other
 packages, and <code>pos</code> is computed <EM>after</EM> <code>.First.lib</code>
 has been run.  Can also be the name of a position on the current
-search list as given by <code><a onclick="findlink('base', 'search.html')" style="text-decoration: underline; color: blue; cursor: hand">search</a>()</code>.</td></tr>
+search list as given by <code><a href="../../base/html/search.html">search</a>()</code>.</td></tr>
 <tr valign="top"><td><code>lib.loc</code></td>
 <td>
 a character vector describing the location of <font face="Courier New,Courier" color="#666666"><b>R</b></font>
@@ -82,7 +82,7 @@ logical.  If it is <code>TRUE</code>,  <code>FALSE</code> or
 <tr valign="top"><td><code>warn.conflicts</code></td>
 <td>
 logical.  If <code>TRUE</code>, warnings are
-printed about <code><a onclick="findlink('base', 'conflicts.html')" style="text-decoration: underline; color: blue; cursor: hand">conflicts</a></code> from attaching the new
+printed about <code><a href="../../base/html/conflicts.html">conflicts</a></code> from attaching the new
 package, unless that package contains an object
 <code>.conflicts.OK</code>.  A conflict is a function masking a function,
 or a non-function masking a non-function.
@@ -91,10 +91,11 @@ or a non-function masking a non-function.
 <td>
 logical.  If <code>TRUE</code>, functions
 &lsquo;keep their source&rsquo; including comments, see argument
-<code>keep.source</code> to <code><a onclick="findlink('distr', 'options.html')" style="text-decoration: underline; color: blue; cursor: hand">options</a></code>.  This applies only to
+<code>keep.source</code> to <code><a href="../../base/html/options.html">options</a></code>.  This applies only to
 the named package, and not to any packages or name spaces which might be
 loaded to satisfy dependencies or imports.
-<br>
+</p>
+<p>
 This argument does not apply to packages using lazy-loading.
 Whether they have kept source is determined when they are installed
 (and is most likely false).
@@ -112,7 +113,7 @@ package loading is printed.</td></tr>
 logical or environment.  If <code>TRUE</code>, a call to
 <code>require</code> from the source for a package will save the name of
 the required package in the variable <code>".required"</code>, allowing
-function <code><a onclick="findlink('base', 'detach.html')" style="text-decoration: underline; color: blue; cursor: hand">detach</a></code> to warn if a required package is
+function <code><a href="../../base/html/detach.html">detach</a></code> to warn if a required package is
 detached. See section &lsquo;Packages that require other packages&rsquo; below.</td></tr>
 <tr valign="top"><td><code>inSweave</code></td>
 <td>
@@ -120,7 +121,7 @@ shall the command show Sweave behaviour (no startup messages;
 instead issuing new symbols for <code>morekeywords</code> tag in
 language definition of <font face="Courier New,Courier" color="#666666"><b>R</b></font> in TeX package &lsquo;<span class="file">listings</span>&rsquo;)?
 By default argument is taken from
-<code><a href="SweaveListingOptions.html">getSweaveListingOption</a></code>.</td></tr>
+<code><a href="../../SweaveListingUtils/html/SweaveListingOptions.html">getSweaveListingOption</a></code>.</td></tr>
 <tr valign="top"><td><code>keywordstyles</code></td>
 <td>
 character or missing or <code>NULL</code>; added argument in masked
@@ -146,7 +147,7 @@ sensible value (see details).</td></tr>
 logical or missing or <code>NULL</code>; added argument in masked
 versions of <code>library</code> and <code>require</code> of package
 <span class="pkg">SweaveListingUtils</span>; if missing, the corresponding global option is read
-out by <code><a href="SweaveListingOptions.html">getSweaveListingOption</a></code>. Let us call the corresponding
+out by <code><a href="../../SweaveListingUtils/html/SweaveListingOptions.html">getSweaveListingOption</a></code>. Let us call the corresponding
 possibly imputed value <EM>effective</EM> value. If this effective value is
 <code>TRUE</code>, before registering a new symbol for TeX package 'listings',
 we first check whether this symbol had already been registered in
@@ -160,12 +161,13 @@ are registered and hence typeset in the corresponding package-keywordstyle.</td>
 logical or missing or <code>NULL</code>; added argument in masked
 versions of <code>library</code> and <code>require</code> of package
 <span class="pkg">SweaveListingUtils</span>; if missing, the corresponding global option is read
-out by <code><a href="SweaveListingOptions.html">getSweaveListingOption</a></code>. If the effective value is
+out by <code><a href="../../SweaveListingUtils/html/SweaveListingOptions.html">getSweaveListingOption</a></code>. If the effective value is
 <code>TRUE</code>, also the symbols to be found in newly, automatically loaded
 packages (loaded, because the required/"library"-ed package features them
 in its corresponding <code>Depends</code> field in its DESCRIPTION file)
 are registered for TeX package 'listings'.</td></tr>
 </table>
+
 
 <h3>Details</h3>
 
@@ -174,7 +176,7 @@ are registered for TeX package 'listings'.</td></tr>
 versions in package <span class="pkg">base</span>. This masking is necessary to allow for
 extra arguments <code>keywordstyles</code>, <code>interm.keywordstyles</code>,
 <code>overwrite</code>, <code>intermediate</code>. Hence please confer
-<code><a onclick="findlink('base', 'library.html')" style="text-decoration: underline; color: blue; cursor: hand">library</a></code>, <code><a onclick="findlink('base', 'require.html')" style="text-decoration: underline; color: blue; cursor: hand">require</a></code>.<br>
+<code><a href="../../base/html/library.html">library</a></code>, <code><a href="../../base/html/require.html">require</a></code>.<br>
 </p>
 <p>
 If argument <code>inSweave</code> is <code>FALSE</code> or if argument
@@ -197,7 +199,9 @@ corresponding keywordstyle format strings)
 and if so use its corresponding keywordstyle; else we use option
 <code>Keywordstyles</code> resp. <code>interm.Keywordstyles</code> (which we get
 by <code>getSweaveListingOption</code>). New entries in the global variable
-<code>.tobeDefinedPkgs</code> may be appended by <code><a href="setToBeDefinedPkgs.html">setToBeDefinedPkgs</a></code>.<br>
+<code>.tobeDefinedPkgs</code> may be appended by <code><a href="../../SweaveListingUtils/html/setToBeDefinedPkgs.html">setToBeDefinedPkgs</a></code>.<br>
+</p>
+<p>
 </p>
 <p>
 The masked versions work as follows: first the call is written to an
@@ -207,7 +211,7 @@ mentioned above. Then we call <code>base::&lt;fct&gt;</code> where <code>&lt;fct
 before and after this call we also get hand on the intermediate packages,
 which are automatically attached packages by dependence. After this call
 we register the new symbols by corresponding calls to
-<code><a href="lstsetLanguage.html">lstsetLanguage</a></code>.
+<code><a href="../../SweaveListingUtils/html/lstsetLanguage.html">lstsetLanguage</a></code>.
 </p>
 <p>
 For use in an <code>.Rnw</code> file, the call to <code>require</code> or <code>library</code>
@@ -231,18 +235,26 @@ file you should include an Sweave chunk like
 unloadNamespace("SweaveListingUtils")
 @
 </pre>
+or, if you want to keep the namespace of <span class="pkg">SweaveListingUtils</span> loaded
+<pre>
+&lt;&lt;cleanup2, echo=FALSE&gt;&gt;=
+SweaveListingUtils(inSweave = FALSE)
+@
+</pre>
 </p>
 
 
 <h3>Value</h3>
 
 <p>
-as the unmasked versions.</p>
+as the unmasked versions.
+</p>
+
 
 <h3>See Also</h3>
 
 <p>
-<code><a onclick="findlink('base', 'library.html')" style="text-decoration: underline; color: blue; cursor: hand">library</a></code>.
+<code><a href="../../base/html/library.html">library</a></code>.
 </p>
 
 
@@ -262,7 +274,5 @@ location.href = link;
 }
 </script>
 
-
 <hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.4 <a href="00Index.html">Index</a>]</div>
-
 </body></html>
