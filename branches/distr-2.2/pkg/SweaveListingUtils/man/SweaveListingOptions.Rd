@@ -58,9 +58,9 @@ default setting for \\lstset-definition of R-code, default value is\cr
 \code{        "commentstyle" = "{\\\\color{Rcomment}\\\\ttfamily\\\\itshape}",}\cr
 \code{        "literate" = "{<-}{{$\\\\leftarrow$}}2{<<-}{{$\\\\twoheadleftarrow$}}2",}\cr
 \code{        "alsoother" = "{$}","alsoletter" = "{.<-}"}\cr
-\code{        "otherkeywords" = "{!,!=,~,$,*,\\\\&,\\\\ \%/\\\\ \%,\\\\ \%*\\\\ \%,\\\\ \%\\\\ \%,<-,<<-,/}")}\cr
-(CAVEAT: the spaces between the double backslashes and the percent sign in the last line
-are \emph{not} intended; I simply did not find another work-around)
+\code{        "otherkeywords" = "{!,!=,~,$,*,\\\\&,\\\\\%/\\\\\%,\\\\\%*\\\\\%,\\\\\%\\\\\%,<-,<<-,/}")}\cr
+%(CAVEAT: the spaces between the double backslashes and the percent sign in the last line
+%are \emph{not} intended; I simply did not find another work-around)
 }
 \item{Rdset:}{%
 default setting for \\lstset-definition of Rd-code, default value is\cr
