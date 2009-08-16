@@ -12,20 +12,5 @@ Title=R Help for package distrTEst
 
 [FILES]
 00Index.html
-0distrTEst-package.html
-Data-methods.html
-Evaluation-class.html
-EvaluationList-class.html
-call.ev-methods.html
+
 distrTEst-internals.html
-distrTEstOptions.html
-estimator-methods.html
-evaluate-methods.html
-filename-methods.html
-name-methods.html
-numericorNULL-class.html
-plot-methods.html
-print-methods.html
-result-methods.html
-savedata-methods.html
-summary-methods.html

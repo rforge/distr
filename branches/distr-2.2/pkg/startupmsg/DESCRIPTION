@@ -1,4 +1,5 @@
 Package: startupmsg
+Encoding: latin1
 Version: 0.7
 Date: 2009-03-19
 Title: Utilities for start-up messages

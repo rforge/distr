@@ -10,6 +10,7 @@ Depends: R(>= 2.6.0), methods, startupmsg, distr(>= 2.2), distrEx(>=
         2.2), RandVar(>= 0.6.3), MASS, stats4
 LazyLoad: yes
 License: LGPL-3
+Encoding: latin1
 URL: http://distr.r-forge.r-project.org/
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}

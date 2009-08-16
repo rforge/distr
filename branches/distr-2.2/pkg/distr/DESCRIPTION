@@ -10,6 +10,7 @@ Depends: R(>= 2.2.0), methods, graphics, startupmsg, sfsmisc,
         SweaveListingUtils
 Imports: stats
 LazyLoad: yes
+Encoding: latin1
 License: LGPL-3
 URL: http://distr.r-forge.r-project.org/
 LastChangedDate: {$LastChangedDate$}

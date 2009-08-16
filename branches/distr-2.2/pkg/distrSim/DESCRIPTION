@@ -11,6 +11,7 @@ Description: Simulation (S4-)classes based on package distr
 Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
 LazyLoad: yes
 License: LGPL-3
+Encoding: latin1
 URL: http://distr.r-forge.r-project.org/
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}

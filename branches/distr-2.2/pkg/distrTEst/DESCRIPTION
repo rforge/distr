@@ -13,6 +13,7 @@ Description: Evaluation (S4-)classes based on package distr for
         a unified way.
 Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
 LazyLoad: yes
+Encoding: latin1
 License: LGPL-3
 URL: http://distr.r-forge.r-project.org/
 LastChangedDate: {$LastChangedDate$}

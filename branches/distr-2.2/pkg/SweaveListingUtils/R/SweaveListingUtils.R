@@ -423,23 +423,25 @@ lstinputSourceFromRForge <- function(PKG, TYPE, FILENAME, PROJECT, from, to,
    lE <- length(erg)
    if(withLines){
       for(k in 1:lE){
-        if( k == 1 ) {
-             if( ( lineNr[[k]][1] < lineNr[[k]][2] ) || ( lE>1 ) )
-                  cat("lines ")
-             else cat("line ")
-        }else{
-             if( k < lE )
-                  cat(", \n")
-             else cat(", and\n")
-             }
-        if(lineNr[[k]][1] < lineNr[[k]][2])
-           cat(lineNr[[k]][1], "--", lineNr[[k]][2], sep = "")
-        else cat(lineNr[[k]][1])
+        if( !is.null(lineNr[[k]])){
+          if( k == 1 ) {
+               if( ( lineNr[[k]][1] < lineNr[[k]][2] ) || ( lE>1 ) )
+                    cat("lines ")
+               else cat("line ")
+          }else{
+               if( k < lE )
+                    cat(", \n")
+               else cat(", and\n")
+               }
+          if(lineNr[[k]][1] < lineNr[[k]][2])
+             cat(lineNr[[k]][1], "--", lineNr[[k]][2], sep = "")
+          else cat(lineNr[[k]][1])
+        }
       }
       cat("\n")
    }
    for(k in 1:length(erg)){
-     if(lR[[k]]){
+     if(!is.null(lR[[k]])){ if(lR[[k]]){
         todo <- NULL
         if(TYPE=="man"){
           ex.from <- if(length(gr <- grep("\\\\examples\\{",RL[[k]]))) gr[1] else lR[[k]]
@@ -466,7 +468,7 @@ lstinputSourceFromRForge <- function(PKG, TYPE, FILENAME, PROJECT, from, to,
           writeLines(RL[[k]])
         }
         cat("\\end{lstlisting}\n",line,"%\n\n",sep="")
-        }
+        }}
       }
    return(invisible())
 }

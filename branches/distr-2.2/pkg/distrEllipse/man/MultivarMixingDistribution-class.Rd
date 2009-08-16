@@ -49,9 +49,6 @@ Objects can be created by calls of the form
     \item{\code{d}:}{fixed to \code{NULL}}
     \item{\code{p}:}{Object of class \code{"OptionalFunction"}: if non-null cumulative distribution function}
     \item{\code{q}:}{Object of class \code{"OptionalFunction"}: if non-null quantile function}
-    \item{\code{support}:}{numeric vector --- the union of all support slots of components, if existing}
-    \item{\code{gaps}:}{(numeric) matrix or \code{NULL}; the merged \code{gaps} slots of all components, 
-    if existing (else NULL)}
     \item{\code{.withArith}:}{logical: used internally to issue warnings as to interpretation of arithmetics}
     \item{\code{.withSim}:}{logical: used internally to issue warnings as to accuracy}
     \item{\code{.logExact}:}{logical: used internally to flag the case where there are explicit formulae for the

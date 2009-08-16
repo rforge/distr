@@ -10,5 +10,6 @@ Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
 LazyLoad: yes
 License: LGPL-3
 URL: http://distr.r-forge.r-project.org/
+Encoding: latin1
 LastChangedDate: {$LastChangedDate: 2009-03-31 15:31:30 +0200 (Di, 31 Mrz 2009) $}
 LastChangedRevision: {$LastChangedRevision: 447 $}

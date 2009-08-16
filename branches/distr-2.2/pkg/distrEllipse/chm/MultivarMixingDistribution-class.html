@@ -1,10 +1,10 @@
 <html><head><title>Class "MultivarMixingDistribution"</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>MultivarMixingDistribution-class(distrEllipse)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>MultivarMixingDistribution-class(distrEllipse)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   MultivarMixingDistribution-class">
 <param name="keyword" value="R:   mixCoeff">
 <param name="keyword" value="R:   mixDistr">
@@ -28,20 +28,18 @@
 <param name="keyword" value="R:   E,MultivarMixingDistribution,ANY,ANY-method">
 <param name="keyword" value="R:   show,MultivarMixingDistribution-method">
 <param name="keyword" value="R:   showobj,MultivarMixingDistribution-method">
-<param name="keyword" value=" Class 'MultivarMixingDistribution'">
+<param name="keyword" value=" Class "MultivarMixingDistribution"">
 </object>
 
 
-<h2>Class 'MultivarMixingDistribution'</h2>
+<h2>Class "MultivarMixingDistribution"</h2>
 
 
 <h3>Description</h3>
 
-<p>
-<code>MultivarMixingDistribution</code>-class is a class to formalize 
+<p><code>MultivarMixingDistribution</code>-class is a class to formalize 
 multivariate mixing distributions; it is a subclass to
-class <code>MultivariateDistribution</code>.
-</p>
+class <code>MultivariateDistribution</code>.</p>
 
 
 <h3>Objects from the Class</h3>
@@ -50,11 +48,13 @@ class <code>MultivariateDistribution</code>.
 Objects can be created by calls of the form 
 <code>new("MultivarMixingDistribution", ...)</code>.
 More frequently they are created via the generating function 
-<code><a href="MultivarMixingDistribution.html">MultivarMixingDistribution</a></code>.
+<code></code>.
 </p>
 
 
 <h3>Slots</h3>
+
+<p>
 
 <dl>
 <dt><code>mixCoeff</code>:</dt><dd>Object of class <code>"numeric"</code>: a vector of 
@@ -70,9 +70,6 @@ slot name "Parameter of a discrete distribution" </dd>
 <dt><code>d</code>:</dt><dd>fixed to <code>NULL</code></dd>
 <dt><code>p</code>:</dt><dd>Object of class <code>"OptionalFunction"</code>: if non-null cumulative distribution function</dd>
 <dt><code>q</code>:</dt><dd>Object of class <code>"OptionalFunction"</code>: if non-null quantile function</dd>
-<dt><code>support</code>:</dt><dd>numeric vector &mdash; the union of all support slots of components, if existing</dd>
-<dt><code>gaps</code>:</dt><dd>(numeric) matrix or <code>NULL</code>; the merged <code>gaps</code> slots of all components, 
-if existing (else NULL)</dd>
 <dt><code>.withArith</code>:</dt><dd>logical: used internally to issue warnings as to interpretation of arithmetics</dd>
 <dt><code>.withSim</code>:</dt><dd>logical: used internally to issue warnings as to accuracy</dd>
 <dt><code>.logExact</code>:</dt><dd>logical: used internally to flag the case where there are explicit formulae for the
@@ -83,6 +80,9 @@ lower tail version of cdf and quantile function</dd>
 used internally to avoid unnecessary calculations.</dd>
 </dl>
 
+</p>
+
+
 <h3>Extends</h3>
 
 <p>
@@ -92,6 +92,8 @@ class <code>"Distribution"</code> by class <code>"MultivariateDistribution"</cod
 
 
 <h3>Methods</h3>
+
+<p>
 
 <dl>
 <dt>show</dt><dd><code>signature(object = "MultivarMixingDistribution")</code> prints the object</dd>
@@ -114,7 +116,7 @@ tries to convert the object to a
 newer version of its class by <code><a onclick="findlink('distr', 'conv2NewVersion.html')" style="text-decoration: underline; color: blue; cursor: hand">conv2NewVersion</a></code> and
 returns the corresponding slot of the converted object.</dd>
 <dt>plot</dt><dd><code>signature(x = "MultivarMixingDistribution", y = "missing")</code>:
-plot for an spherically symmetric distribution; see <code><a href="plot-methods.html">plot-methods</a></code>.
+plot for an spherically symmetric distribution; see <code></code>.
 </dd>
 <dt>E</dt><dd>corresponding expectation &mdash; see <code><a onclick="findlink('distrEx', 'E.html')" style="text-decoration: underline; color: blue; cursor: hand">E</a></code>.</dd>
 <dt>dimension</dt><dd>dim of the range space.</dd>
@@ -126,6 +128,9 @@ plot for an spherically symmetric distribution; see <code><a href="plot-methods.
 <code>showobj</code> method for spherically symmetric distributions.
 </dd>
 </dl>
+
+</p>
+
 
 <h3>Author(s)</h3>
 
@@ -178,7 +183,5 @@ location.href = link;
 }
 </script>
 
-
-<hr><div align="center">[Package <em>distrEllipse</em> version 0.1 <a href="00Index.html">Index</a>]</div>
-
+<hr><div align="center">[Package <em>distrEllipse</em> version 0.2 <a href="00Index.html">Index</a>]</div>
 </body></html>
