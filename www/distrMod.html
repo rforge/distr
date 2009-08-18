@@ -61,24 +61,24 @@ have a mapping function <span style="color: rgb(51, 51, 255);">modifyParam</span
 mapping a parameter theta to the <br>
 corresponding distribution member of the parametric family. Based on
 this we introduce <span style="font-style: italic;">MCE</span>s
-(Minimum Criterium Estimators) which<br>
-are defined as minimizing a criterium function at the data within the
+(Minimum Criterion Estimators) which<br>
+are defined as minimizing a criterion function at the data within the
 parametric family. <br>
 These are realized as a function taking as arguments <span
  style="font-style: italic;">data</span>, <span
  style="font-style: italic;">ParamFamily</span>, <span
  style="font-style: italic;">criterion</span>, the latter being the
-criterium function with arguments<br>
+criterion function with arguments<br>
 <span style="font-style: italic;">data</span> and <span
- style="font-style: italic;">theta </span>measuring the criterium at
+ style="font-style: italic;">theta </span>measuring the criterion at
 parameter value theta. <br>
 Particular cases are<br>
 <ul>
   <li>Maximum Likelihood Estimators (with the negative (log)likelihood
-as criterium), <br>
+as criterion), <br>
   </li>
   <li>Minimum distance estimators (distance of the empirical
-distribution to the members of the parametric family as criterium); <br>
+distribution to the members of the parametric family as criterion); <br>
 we have realized</li>
   <ul>
     <li>Minimum Kolmogoroff distance Estimators</li>
@@ -87,7 +87,7 @@ we have realized</li>
     <li>Minimum Total Variation distance Estimators</li>
   </ul>
 </ul>
-the criterium function is then optimized using the R-functions <span
+the criterion function is then optimized using the R-functions <span
  style="color: rgb(51, 51, 255);">optim</span>, <span
  style="color: rgb(51, 51, 255);">optimize</span>, respectively.<br>
 MCEs can (but do not need to) use method dispatch; this way particular

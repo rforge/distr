@@ -218,7 +218,7 @@ setMethod("show", "MCEstimate",
        digits <- getOption("digits")
        show(as(object,"Estimate"))
        if(getdistrModOption("show.details")!="minimal"){
-        cat("Criterium:\n")
+        cat("Criterion:\n")
         print(criterion(object), quote = FALSE)}
     })
 

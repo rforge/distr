@@ -16,7 +16,7 @@ get.criterion.fct(theta, Data, ParamFam, criterion.ff, fun, ...)
 \arguments{
   \item{x}{numeric; the data at which to evaluate the estimate}
   \item{estimate}{numeric; the estimate} 
-  \item{criterion.value}{numeric; the value of the criterium} 
+  \item{criterion.value}{numeric; the value of the criterion}
   \item{param}{object of class \code{ParamFamParameter}; the parameter value} 
   \item{crit.fct}{a function to fill slot \code{minuslogl} when an object of 
       class \code{MCEstimate} is coerced to class \code{mle} 
