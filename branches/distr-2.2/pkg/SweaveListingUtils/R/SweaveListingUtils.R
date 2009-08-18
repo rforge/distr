@@ -196,6 +196,7 @@ lstsetRcode <- function(Rcodeset = NULL, LineLength = getOption("width"),
 SweaveListingPreparations <- function(
    withOwnFileSection = FALSE,
    withVerbatim = FALSE,
+   withSchunkDef = TRUE,
    gin = TRUE,
    ae = TRUE,
    LineLength = getOption("width"),
@@ -274,6 +275,7 @@ if(ae){
        "\\RequirePackage{ae}\n%\n", sep ="")
 }
 
+if(withSchunkDef)
 cat("\\newenvironment{Schunk}{}{}\n\n")
 
 cat("\\newcommand{\\Sconcordance}[1]{% \n",
@@ -297,7 +299,7 @@ cat("\\lstnewenvironment{Sinput}{\\Rinlstset}{\\Rlstset}\n")
 }
 if(withVerbatim["Soutput"]){
 cat("\\DefineVerbatimEnvironment{Soutput}{Verbatim}")
-cat("%\n  {formatcom=\\color{Rout}\\small\\lstset{fancyvrb=false}}\n")
+cat("%\n  {formatcom=\\color{Routcolor}\\small\\lstset{fancyvrb=false}}\n")
 }else{
 #### Thanks to Andrew Ellis !!
 lstset(taglist(list=Rout), LineLength=LineLength,

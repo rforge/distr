@@ -9,6 +9,7 @@ to integrate Sweave and package listings}
 SweaveListingPreparations(
    withOwnFileSection = FALSE,
    withVerbatim = FALSE,
+   withSchunkDef = TRUE,
    gin = TRUE,
    ae = TRUE,
    LineLength = getOption("width"),
@@ -44,6 +45,7 @@ SweaveListingPreparations(
                        based on 'listings' command 'lstnewenvironment';
                        this option is due to a suggestion by
                        Andrew Ellis (thank you!).}
+  \item{withSchunkDef}{logical: shall environment \verb{Schunk} be defined?}
   \item{gin}{logical: shall we use \code{gin}}
   \item{ae}{logical: shall we use \code{ae}}
   \item{LineLength}{numeric; defaults to 80}

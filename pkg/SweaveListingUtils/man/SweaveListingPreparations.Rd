@@ -9,6 +9,7 @@ to integrate Sweave and package listings}
 SweaveListingPreparations(
    withOwnFileSection = FALSE,
    withVerbatim = FALSE,
+   withSchunkDef = TRUE,
    gin = TRUE,
    ae = TRUE,
    LineLength = getOption("width"),
@@ -44,6 +45,7 @@ SweaveListingPreparations(
                        based on 'listings' command 'lstnewenvironment';
                        this option is due to a suggestion by
                        Andrew Ellis (thank you!).}
+  \item{withSchunkDef}{logical: shall environment \verb{Schunk} be defined?}
   \item{gin}{logical: shall we use \code{gin}}
   \item{ae}{logical: shall we use \code{ae}}
   \item{LineLength}{numeric; defaults to 80}
@@ -75,10 +77,11 @@ SweaveListingPreparations(
 \details{
 \code{SweaveListingPreparations}
 writes a corresponding preamble to the \file{.Rnw}-file for the simultaneous use
-of Sweave and package listings; note that the lines
+of Sweave and package listings; note that so far, even if you do not want to
+use the default style file \file{Sweave.sty}, the lines
 \preformatted{
-\usepackage{Sweave}
-\SweaveOpts{keep.source=TRUE}
+\%\\usepackage{Sweave}
+\\SweaveOpts{keep.source=TRUE}
 }
 still have to appear in the \file{.Rnw} file --- before the corresponding
 \code{SweaveListingPreparations}-chunk.\cr

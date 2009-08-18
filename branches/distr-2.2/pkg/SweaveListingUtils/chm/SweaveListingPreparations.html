@@ -26,6 +26,7 @@ to integrate Sweave and package listings</p>
 SweaveListingPreparations(
    withOwnFileSection = FALSE,
    withVerbatim = FALSE,
+   withSchunkDef = TRUE,
    gin = TRUE,
    ae = TRUE,
    LineLength = getOption("width"),
@@ -69,6 +70,9 @@ Fritz Leisch) or just TeX package 'listings'
 based on 'listings' command 'lstnewenvironment';
 this option is due to a suggestion by
 Andrew Ellis (thank you!).</td></tr>
+<tr valign="top"><td><code>withSchunkDef</code></td>
+<td>
+logical: shall environment <PRE>Schunk</PRE> be defined?</td></tr>
 <tr valign="top"><td><code>gin</code></td>
 <td>
 logical: shall we use <code>gin</code></td></tr>
@@ -155,7 +159,7 @@ For &lsquo;<span class="file">.Rd</span>&rsquo; files it uses a new 'listings'-l
 defines commands <code>\code</code>, <code>\file</code>, <code>\pkg</code> and sets
 the corresponding package version.<br>
 The default values are taken from
-<a href="../../SweaveListingUtils/html/SweaveListingOptions.html">SweaveListingOptions</a>.
+.
 The output to stdout can be captured in an &lsquo;<span class="file">.Rnw</span>&rsquo; file as
 <pre>
 &lt;&lt; lstPreamble, results=tex, echo=FALSE&gt;&gt;=
@@ -169,7 +173,7 @@ If you one want to use destinct keywordstyles for packages loaded
 by <code>require</code> or <code>library</code> without adding extra arguments
 to these commands (and hence displaying the actual <font face="Courier New,Courier" color="#666666"><b>R</b></font> code),
 you have to set up a global formatting matrix  
-<code>.tobeDefinedPkgs</code> by <code><a href="../../SweaveListingUtils/html/setToBeDefinedPkgs.html">setToBeDefinedPkgs</a></code>.
+<code>.tobeDefinedPkgs</code> by <code></code>.
 </p>
 
 
