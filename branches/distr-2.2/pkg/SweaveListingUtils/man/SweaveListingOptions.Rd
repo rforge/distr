@@ -24,6 +24,8 @@
 \alias{base.url}
 \alias{addRset}
 \alias{addRdset}
+\alias{fileCommand}
+\alias{pkgCommand}
 
 \title{Function to change the global options of the package `SweaveListingUtils' }
 \description{With \code{SweaveListingOptions} you can inspect and change 
@@ -135,6 +137,10 @@ default value is\cr
        \code{Routset}; defaults to \code{TRUE}}
 \item{addRcodeset:}{logical; default for argument \code{add} in command
        \code{Rcodeset}; defaults to \code{TRUE}}
+\item{fileCommand:}{character; the TeX code to define TeX command \verb{\\file};
+      defaults to \code{"\\def\\file#1{{\\tt #1}}"}}
+  \item{pkgCommand:}{character; the TeX code to define TeX command \verb{\\pkg};
+      defaults to \code{"\\def\\pkg#1{{\\tt \"#1\"}}"}}
 }
 }
 %\references{}

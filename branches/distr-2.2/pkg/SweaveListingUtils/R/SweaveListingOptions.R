@@ -49,7 +49,9 @@ addRset = TRUE,
 addRdset = TRUE,
 addRinset = TRUE,
 addRoutset = TRUE,
-addRcodeset = TRUE
+addRcodeset = TRUE,
+fileCommand = "\\def\\file#1{{\\tt #1}}",
+pkgCommand = "\\def\\pkg#1{{\\tt \"#1\"}}"
 )
 
 SweaveListingOptions <- function(...) {

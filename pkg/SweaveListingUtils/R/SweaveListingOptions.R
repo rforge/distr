@@ -34,7 +34,7 @@ RRecomdcolor  = c(0,0.6,0.4),
 Rbcolor       = c(0,0.6,0.6),
 Routcolor     = c(0.461,0.039,0.102),
 Rcommentcolor = c(0.101,0.043,0.432),
-pkv = "2.0.2",
+pkv = "2.1.4",
 pkg = "distr",
 Keywordstyle = "{\\bf}",
 Recomd.Keywordstyle = "{\\bf\\color{RRecomdcolor}}",
@@ -49,7 +49,9 @@ addRset = TRUE,
 addRdset = TRUE,
 addRinset = TRUE,
 addRoutset = TRUE,
-addRcodeset = TRUE
+addRcodeset = TRUE,
+fileCommand = "\\def\\file#1{{\\tt #1}}",
+pkgCommand = "\\def\\pkg#1{{\\tt \"#1\"}}"
 )
 
 SweaveListingOptions <- function(...) {

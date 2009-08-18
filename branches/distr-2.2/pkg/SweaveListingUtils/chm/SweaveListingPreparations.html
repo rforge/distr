@@ -42,6 +42,8 @@ SweaveListingPreparations(
    Rcommentcolor = getSweaveListingOption("Rcommentcolor"),
    pkg = getSweaveListingOption("pkg"),
    pkv = getSweaveListingOption("pkv"),
+   fileCommand = getSweaveListingOption("fileCommand"),
+   pkgCommand = getSweaveListingOption("pkgCommand"),
    lib.loc = NULL)
 </pre>
 
@@ -128,6 +130,12 @@ defaults to global option <code>"pkg"</code></td></tr>
 <td>
 character; package version to be described (e.g. in a vignette);
 defaults to global option <code>"pkv"</code></td></tr>
+<tr valign="top"><td><code>fileCommand</code></td>
+<td>
+character; the TeX code to define TeX command <PRE>\file</PRE></td></tr>
+<tr valign="top"><td><code>pkgCommand</code></td>
+<td>
+character; the TeX code to define TeX command <PRE>\pkg</PRE></td></tr>
 <tr valign="top"><td><code>lib.loc</code></td>
 <td>
 location of a local library in which the described package resides</td></tr>

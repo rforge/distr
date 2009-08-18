@@ -212,6 +212,8 @@ SweaveListingPreparations <- function(
    Rcommentcolor = getSweaveListingOption("Rcommentcolor"),
    pkg = getSweaveListingOption("pkg"), 
    pkv = getSweaveListingOption("pkv"), 
+   fileCommand = getSweaveListingOption("fileCommand"),
+   pkgCommand = getSweaveListingOption("pkgCommand"),
    lib.loc = NULL){
 
 sws <- .SweaveListingOptions
@@ -325,8 +327,8 @@ cat("\\lstnewenvironment{Scode}{\\Rcodelstset}{\\Rlstset}\n")
 cat(line)
 cat("\\let\\code\\lstinline\n")
 cat("\\def\\Code#1{{\\tt\\color{Rcolor} #1}}\n")
-cat("\\def\\file#1{{\\tt #1}}\n")
-cat("\\def\\pkg#1{{\\tt \"#1\"}}\n")
+cat(fileCommand,"\n")
+cat(pkgCommand,"\n")
 if(missing(pkv)){
      if(nzchar(rpkv <- readPkgVersion(package = pkg, lib.loc=lib.loc)))
         pkv <- rpkv

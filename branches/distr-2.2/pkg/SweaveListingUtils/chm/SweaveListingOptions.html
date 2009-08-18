@@ -30,6 +30,8 @@
 <param name="keyword" value="R:   base.url">
 <param name="keyword" value="R:   addRset">
 <param name="keyword" value="R:   addRdset">
+<param name="keyword" value="R:   fileCommand">
+<param name="keyword" value="R:   pkgCommand">
 <param name="keyword" value=" Function to change the global options of the package &lsquo;SweaveListingUtils&rsquo;">
 </object>
 
@@ -173,6 +175,10 @@ defaults to <code>TRUE</code></dd>
 <code>Routset</code>; defaults to <code>TRUE</code></dd>
 <dt>addRcodeset:</dt><dd>logical; default for argument <code>add</code> in command
 <code>Rcodeset</code>; defaults to <code>TRUE</code></dd>
+<dt>fileCommand:</dt><dd>character; the TeX code to define TeX command <PRE>\file</PRE>;
+defaults to <code>"\def\file#1{{\tt #1}}"</code></dd>
+<dt>pkgCommand:</dt><dd>character; the TeX code to define TeX command <PRE>\pkg</PRE>;
+defaults to <code>"\def\pkg#1{{\tt \"#1\"}}"</code></dd>
 </dl>
 
 </p>
