@@ -165,7 +165,7 @@ and a "generated on <data>"-tag in case of \code{sub}.
 Of course, if \code{main} / \code{inner} / \code{sub} are \code{character}, this
 is used for the title; in case of \code{inner} it is then checked whether it
 has length 3. In all title arguments, the following patterns are substituted:
-\itemize{
+\describe{
 \item{\code{"\%C"}}{class of argument \code{x}}
 \item{\code{"\%P"}}{parameters of \code{x} in form of a comma-separated list of 
                    <value>'s coerced to character}

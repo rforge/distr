@@ -23,10 +23,10 @@ same arguments as those of package \pkg{stats}, i.e.; for a distribution object
 \code{X} we may call these functions as 
 
 \itemize{
-\item{}{\code{r(X)(n)}}
-\item{}{\code{d(X)(x, log = FALSE)}}
-\item{}{\code{p(X)(q, lower.tail = TRUE, log.p = FALSE)}}
-\item{}{\code{q(X)(p, lower.tail = TRUE, log.p = FALSE)}}
+\item \code{r(X)(n)}
+\item \code{d(X)(x, log = FALSE)}
+\item \code{p(X)(q, lower.tail = TRUE, log.p = FALSE)}
+\item \code{q(X)(p, lower.tail = TRUE, log.p = FALSE)}
 } 
 
 For the arguments of these function slots see e.g. \code{\link{rnorm}}.

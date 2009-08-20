@@ -13,7 +13,7 @@
 }
 \section{Slots}{
   \describe{
-    \item{\code{.Data}:}{Object of class \code{"matrix"}. 
+    \item{\code{.Data}}{Object of class \code{"matrix"}. 
       A numeric matrix with finite entries.}
   }
 }
