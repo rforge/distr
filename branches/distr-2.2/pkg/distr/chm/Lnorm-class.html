@@ -1,29 +1,28 @@
 <html><head><title>Class "Lnorm"</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>Lnorm-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>Lnorm-class(distr)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   Lnorm-class">
 <param name="keyword" value="R:   Lnorm">
 <param name="keyword" value="R:   initialize,Lnorm-method">
-<param name="keyword" value=" Class 'Lnorm'">
+<param name="keyword" value=" Class "Lnorm"">
 </object>
 
 
-<h2>Class 'Lnorm'</h2>
+<h2>Class "Lnorm"</h2>
 
 
 <h3>Description</h3>
 
-<p>
+<p> 
 The log normal distribution has density
 </p><p align="center"><i>d(x) = 1/(sqrt(2 pi) sigma x) e^-((log x - mu)^2 / (2 sigma^2))</i></p><p>
-where <i>&mu;</i>, by default <i>=0</i>, and <i>&sigma;</i>, by default <i>=1</i>, are the mean and standard
+where <i>\mu</i>, by default <i>=0</i>, and <i>\sigma</i>, by default <i>=1</i>, are the mean and standard
 deviation of the logarithm.
-C.f. <code><a onclick="findlink('stats', 'Lognormal.html')" style="text-decoration: underline; color: blue; cursor: hand">rlnorm</a></code>
-</p>
+C.f. <code><a onclick="findlink('stats', 'Lognormal.html')" style="text-decoration: underline; color: blue; cursor: hand">rlnorm</a></code> </p>
 
 
 <h3>Objects from the Class</h3>
@@ -36,28 +35,33 @@ This object is a log normal distribution.
 
 <h3>Slots</h3>
 
+<p>
+
 <dl>
-<dt><code>img</code>:</dt><dd>Object of class <code>"Reals"</code>: The space of the image of this distribution has got dimension 1
+<dt><code>img</code></dt><dd>Object of class <code>"Reals"</code>: The space of the image of this distribution has got dimension 1
 and the name "Real Space". </dd>
-<dt><code>param</code>:</dt><dd>Object of class <code>"LnormParameter"</code>: the parameter of this distribution (meanlog and sdlog),
+<dt><code>param</code></dt><dd>Object of class <code>"LnormParameter"</code>: the parameter of this distribution (meanlog and sdlog),
 declared at its instantiation </dd>
-<dt><code>r</code>:</dt><dd>Object of class <code>"function"</code>: generates random numbers (calls function <code>rlnorm</code>)</dd>
-<dt><code>d</code>:</dt><dd>Object of class <code>"function"</code>: density function (calls function <code>dlnorm</code>)</dd>
-<dt><code>p</code>:</dt><dd>Object of class <code>"function"</code>: cumulative function (calls function <code>plnorm</code>)</dd>
-<dt><code>q</code>:</dt><dd>Object of class <code>"function"</code>: inverse of the cumulative function (calls function <code>qlnorm</code>)</dd>
-<dt><code>.withArith</code>:</dt><dd>logical: used internally to issue warnings as to 
+<dt><code>r</code></dt><dd>Object of class <code>"function"</code>: generates random numbers (calls function <code>rlnorm</code>)</dd>
+<dt><code>d</code></dt><dd>Object of class <code>"function"</code>: density function (calls function <code>dlnorm</code>)</dd>
+<dt><code>p</code></dt><dd>Object of class <code>"function"</code>: cumulative function (calls function <code>plnorm</code>)</dd>
+<dt><code>q</code></dt><dd>Object of class <code>"function"</code>: inverse of the cumulative function (calls function <code>qlnorm</code>)</dd>
+<dt><code>.withArith</code></dt><dd>logical: used internally to issue warnings as to 
 interpretation of arithmetics</dd>
-<dt><code>.withSim</code>:</dt><dd>logical: used internally to issue warnings as to 
+<dt><code>.withSim</code></dt><dd>logical: used internally to issue warnings as to 
 accuracy</dd>
-<dt><code>.logExact</code>:</dt><dd>logical: used internally to flag the case where 
+<dt><code>.logExact</code></dt><dd>logical: used internally to flag the case where 
 there are explicit formulae for the log version of density, cdf, and 
 quantile function</dd>
-<dt><code>.lowerExact</code>:</dt><dd>logical: used internally to flag the case where 
+<dt><code>.lowerExact</code></dt><dd>logical: used internally to flag the case where 
 there are explicit formulae for the lower tail version of cdf and quantile 
 function</dd>
-<dt><code>Symmetry</code>:</dt><dd>object of class <code>"DistributionSymmetry"</code>;
+<dt><code>Symmetry</code></dt><dd>object of class <code>"DistributionSymmetry"</code>;
 used internally to avoid unnecessary calculations.</dd>
 </dl>
+
+</p>
+
 
 <h3>Extends</h3>
 
@@ -70,6 +74,8 @@ Class <code>"Distribution"</code>, by class <code>"AbscontDistribution"</code>.
 
 <h3>Methods</h3>
 
+<p>
+
 <dl>
 <dt>initialize</dt><dd><code>signature(.Object = "Lnorm")</code>: initialize method </dd>
 <dt>meanlog</dt><dd><code>signature(object = "Lnorm")</code>: returns the slot <code>meanlog</code> of the parameter of the distribution </dd>
@@ -80,14 +86,18 @@ Class <code>"Distribution"</code>, by class <code>"AbscontDistribution"</code>.
 For the Lognormal distribution we use its closedness under positive scaling transformations.</dd>
 </dl>
 
+</p>
+
+
 <h3>Note</h3>
 
-<p>
-The mean is <i>E(X) = exp(&mu; + 1/2 &sigma;^2)</i>, and the variance
-<i>Var(X) = exp(2*mu + sigma^2)*(exp(sigma^2) - 1)</i> and
+<p>  The mean is <i>E(X) = exp(\mu + 1/2 \sigma^2)</i>, and the variance
+<i>
+    Var(X) = exp(2*mu + sigma^2)*(exp(sigma^2) - 1)</i> and
 hence the coefficient of variation is
 <i>sqrt(exp(sigma^2) - 1)</i> which is
-approximately <i>&sigma;</i> when that is small (e.g., <i>&sigma; &lt; 1/2</i>).
+approximately <i>\sigma</i> when that is small (e.g., <i>\sigma &lt; 1/2</i>).
+
 </p>
 
 
@@ -104,10 +114,20 @@ Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de
 <h3>See Also</h3>
 
 <p>
-<code><a href="LnormParameter-class.html">LnormParameter-class</a></code>
-<code><a href="ContDistribution-class.html">AbscontDistribution-class</a></code>
-<code><a href="Reals-class.html">Reals-class</a></code>
+<code></code>
+<code></code>
+<code></code>
 <code><a onclick="findlink('stats', 'Lognormal.html')" style="text-decoration: underline; color: blue; cursor: hand">rlnorm</a></code>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
 </p>
 
 
@@ -133,7 +153,5 @@ location.href = link;
 }
 </script>
 
-
 <hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
-
 </body></html>

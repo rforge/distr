@@ -1,28 +1,26 @@
 <html><head><title>Class "DiscreteDistribution"</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>DiscreteDistribution-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>DiscreteDistribution-class(distr)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   DiscreteDistribution-class">
 <param name="keyword" value="R:   AffLinDiscreteDistribution-class">
 <param name="keyword" value="R:   initialize,DiscreteDistribution-method">
 <param name="keyword" value="R:   initialize,AffLinDiscreteDistribution-method">
 <param name="keyword" value="R:   sqrt,DiscreteDistribution-method">
 <param name="keyword" value="R:   coerce,DiscreteDistribution,LatticeDistribution-method">
-<param name="keyword" value=" Class 'DiscreteDistribution'">
+<param name="keyword" value=" Class "DiscreteDistribution"">
 </object>
 
 
-<h2>Class 'DiscreteDistribution'</h2>
+<h2>Class "DiscreteDistribution"</h2>
 
 
 <h3>Description</h3>
 
-<p>
-The <code>DiscreteDistribution</code>-class is the mother-class of the class <code>LatticeDistribution</code>.
-</p>
+<p>The <code>DiscreteDistribution</code>-class is the mother-class of the class <code>LatticeDistribution</code>.</p>
 
 
 <h3>Objects from the Class</h3>
@@ -36,28 +34,33 @@ This generating function, from version 1.9 on, has been moved to this package fr
 
 <h3>Slots</h3>
 
+<p>
+
 <dl>
-<dt><code>img</code>:</dt><dd>Object of class <code>"Reals"</code>: the space of the image of this distribution which has dimension 1
+<dt><code>img</code></dt><dd>Object of class <code>"Reals"</code>: the space of the image of this distribution which has dimension 1
 and the name "Real Space" </dd>
-<dt><code>param</code>:</dt><dd>Object of class <code>"Parameter"</code>: the parameter of this distribution, having only the
+<dt><code>param</code></dt><dd>Object of class <code>"Parameter"</code>: the parameter of this distribution, having only the
 slot name "Parameter of a discrete distribution" </dd>
-<dt><code>r</code>:</dt><dd>Object of class <code>"function"</code>: generates random numbers</dd>
-<dt><code>d</code>:</dt><dd>Object of class <code>"function"</code>: density/probability function</dd>
-<dt><code>p</code>:</dt><dd>Object of class <code>"function"</code>: cumulative distribution function</dd>
-<dt><code>q</code>:</dt><dd>Object of class <code>"function"</code>: quantile function</dd>
-<dt><code>.withArith</code>:</dt><dd>logical: used internally to issue warnings as to 
+<dt><code>r</code></dt><dd>Object of class <code>"function"</code>: generates random numbers</dd>
+<dt><code>d</code></dt><dd>Object of class <code>"function"</code>: density/probability function</dd>
+<dt><code>p</code></dt><dd>Object of class <code>"function"</code>: cumulative distribution function</dd>
+<dt><code>q</code></dt><dd>Object of class <code>"function"</code>: quantile function</dd>
+<dt><code>.withArith</code></dt><dd>logical: used internally to issue warnings as to 
 interpretation of arithmetics</dd>
-<dt><code>.withSim</code>:</dt><dd>logical: used internally to issue warnings as to 
+<dt><code>.withSim</code></dt><dd>logical: used internally to issue warnings as to 
 accuracy</dd>
-<dt><code>.logExact</code>:</dt><dd>logical: used internally to flag the case where 
+<dt><code>.logExact</code></dt><dd>logical: used internally to flag the case where 
 there are explicit formulae for the log version of density, cdf, and 
 quantile function</dd>
-<dt><code>.lowerExact</code>:</dt><dd>logical: used internally to flag the case where 
+<dt><code>.lowerExact</code></dt><dd>logical: used internally to flag the case where 
 there are explicit formulae for the lower tail version of cdf and quantile 
 function</dd>
-<dt><code>Symmetry</code>:</dt><dd>object of class <code>"DistributionSymmetry"</code>;
+<dt><code>Symmetry</code></dt><dd>object of class <code>"DistributionSymmetry"</code>;
 used internally to avoid unnecessary calculations.</dd>
 </dl>
+
+</p>
+
 
 <h3>Extends</h3>
 
@@ -69,37 +72,48 @@ Class <code>"Distribution"</code>, by class <code>"UnivariateDistribution"</code
 
 <h3>Methods</h3>
 
+<p>
+
 <dl>
 <dt>initialize</dt><dd><code>signature(.Object = "DiscreteDistribution")</code>: initialize method </dd>
 <dt>coerce</dt><dd><code>signature(from = "DiscreteDistribution", 
                    to = "LatticeDistribution")</code>: coerce method to class <code>"LatticeDistribution"</code>
 (checks if support is a lattice)</dd>
-<dt>Math</dt><dd><code>signature(x = "DiscreteDistribution")</code>: application of a mathematical function, e.g. <code>sin</code> or
-<code>tan</code> to this discrete distribution</dd>
-<code>abs</code>{<code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>abs(x)</code>.}
-<code>exp</code>{<code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>exp(x)</code>.}
-<code>sign</code>{<code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>sign(x)</code>.}
-<code>sqrt</code>{<code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>sqrt(x)</code>.}
-<code>log</code>{<code>signature(x = "DiscreteDistribution")</code>:  (with optional further argument <code>base</code>, 
-defaulting to <code>exp(1)</code>) exact image distribution of <code>log(x)</code>.}
-<code>log10</code>{<code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>log10(x)</code>.}
-<code>gamma</code>{<code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>gamma(x)</code>.}
-<code>lgamma</code>{<code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>lgamma(x)</code>.}
-<dt>-</dt><dd><code>signature(e1 = "DiscreteDistribution")</code>: application of `-' to this discrete distribution</dd>
+<dt>Math</dt><dd><code>signature(x = "DiscreteDistribution")</code>: application of a mathematical function, e.g. <code>sin</code> or <code>tan</code> to this discrete distribution
+
+<ul>
+<li> <code>abs</code>: <code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>abs(x)</code>.
+</li>
+<li><code>exp</code>: <code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>exp(x)</code>.
+</li>
+<li><code>sign</code>: <code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>sign(x)</code>.
+</li>
+<li><code>sqrt</code>: <code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>sqrt(x)</code>.
+</li>
+<li><code>log</code>: <code>signature(x = "DiscreteDistribution")</code>:  (with optional further argument <code>base</code>, defaulting to <code>exp(1)</code>) exact image distribution of <code>log(x)</code>.
+</li>
+<li><code>log10</code>: <code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>log10(x)</code>.
+</li>
+<li><code>gamma</code>: <code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>gamma(x)</code>.
+</li>
+<li><code>lgamma</code>: <code>signature(x = "DiscreteDistribution")</code>:  exact image distribution of <code>lgamma(x)</code>.
+</ul>
+</dd>
+<dt>-</dt><dd><code>signature(e1 = "DiscreteDistribution")</code>: application of &lsquo;-&rsquo; to this discrete distribution</dd>
 <dt>*</dt><dd><code>signature(e1 = "DiscreteDistribution", e2 = "numeric")</code>: multiplication of this discrete distribution
-by an object of class `numeric'</dd>
+by an object of class &lsquo;numeric&rsquo;</dd>
 <dt>/</dt><dd><code>signature(e1 = "DiscreteDistribution", e2 = "numeric")</code>: division of this discrete distribution
-by an object of class `numeric'</dd>
+by an object of class &lsquo;numeric&rsquo;</dd>
 <dt>+</dt><dd><code>signature(e1 = "DiscreteDistribution", e2 = "numeric")</code>: addition of this discrete distribution
-to an object of class `numeric'</dd>
-<dt>-</dt><dd><code>signature(e1 = "DiscreteDistribution", e2 = "numeric")</code>: subtraction of an object of class `numeric'
+to an object of class &lsquo;numeric&rsquo;</dd>
+<dt>-</dt><dd><code>signature(e1 = "DiscreteDistribution", e2 = "numeric")</code>: subtraction of an object of class &lsquo;numeric&rsquo;
 from this discrete distribution </dd>
 <dt>*</dt><dd><code>signature(e1 = "numeric", e2 = "DiscreteDistribution")</code>: multiplication of this discrete distribution
-by an object of class `numeric'</dd>
+by an object of class &lsquo;numeric&rsquo;</dd>
 <dt>+</dt><dd><code>signature(e1 = "numeric", e2 = "DiscreteDistribution")</code>: addition of this discrete distribution
-to an object of class `numeric'</dd>
+to an object of class &lsquo;numeric&rsquo;</dd>
 <dt>-</dt><dd><code>signature(e1 = "numeric", e2 = "DiscreteDistribution")</code>: subtraction of this discrete distribution
-from an object of class `numeric'</dd>
+from an object of class &lsquo;numeric&rsquo;</dd>
 <dt>+</dt><dd><code>signature(e1 = "DiscreteDistribution", e2 = "DiscreteDistribution")</code>: Convolution of two discrete
 distributions. The slots p, d and q are approximated on a common grid.</dd>
 <dt>-</dt><dd><code>signature(e1 = "DiscreteDistribution", e2 = "DiscreteDistribution")</code>: Convolution of two discrete
@@ -115,6 +129,9 @@ right-continuous quantile function, i.e.;
 function </dd>
 </dl>
 
+</p>
+
+
 <h3>Internal subclass "AffLinDiscreteDistribution"</h3>
 
 <p>
@@ -126,7 +143,8 @@ there is an internally used (but exported) subclass
 (of class <code>"DiscreteDistribution"</code>), to capture the fact 
 that the object has the same distribution as <code>a * X0 + b</code>. This is 
 the class of the return value of methods 
-<ul>
+
+<dl>
 <dt>-</dt><dd><code>signature(e1 = "DiscreteDistribution")</code></dd>
 <dt>*</dt><dd><code>signature(e1 = "DiscreteDistribution", e2 = "numeric")</code></dd>
 <dt>/</dt><dd><code>signature(e1 = "DiscreteDistribution", e2 = "numeric")</code></dd>
@@ -143,8 +161,8 @@ the class of the return value of methods
 <dt>*</dt><dd><code>signature(e1 = "numeric", e2 = "AffLinDiscreteDistribution")</code></dd>
 <dt>+</dt><dd><code>signature(e1 = "numeric", e2 = "AffLinDiscreteDistribution")</code></dd>
 <dt>-</dt><dd><code>signature(e1 = "numeric", e2 = "AffLinDiscreteDistribution")</code></dd>
-</ul>
-<p>
+</dl>
+
 There also is a class union of <code>"AffLinAbscontDistribution"</code>,
 <code>"AffLinDiscreteDistribution"</code>, <code>"AffLinUnivarLebDecDistribution"</code>
 and called <code>"AffLinDistribution"</code>
@@ -160,17 +178,16 @@ are of class <code>"AbscontDistribution"</code>,
 <code>"DiscreteDistribution"</code>, or <code>"UnivarLebDecDistribution"</code>,
 there is a class union of these classes called <code>"AcDcLcDistribution"</code>;
 in partiucalar methods for <code>"*"</code>, <code>"/"</code>, 
-<code>"^"</code> (see <a href="operators-methods.html">operators-methods</a>) and methods
-<code><a href="MinMaximum-methods.html">Minimum</a></code>, <code>Maximum</code>, <code><a href="Truncate-methods.html">Truncate</a></code>, and
-<code><a href="Huberize-methods.html">Huberize</a></code>, and <code><a href="ConvPow.html">convpow</a></code> are defined for this 
-class union.
+<code>"^"</code> (see ) and methods
+<code></code>, <code>Maximum</code>, <code></code>, and
+<code></code>, and <code></code> are defined for this 
+class union.   
 </p>
 
 
 <h3>Note</h3>
 
-<p>
-Working with a computer, we use a finite interval as support which 
+<p> Working with a computer, we use a finite interval as support which 
 carries at least mass <code>1-getdistrOption("TruncQuantile")</code>. <br>
 </p>
 <p>
@@ -186,7 +203,7 @@ With <code>getdistrOption("DistrCollapse")==FALSE</code>, we at least collapse
 points according to the result of <code>unique()</code>, and if after this
 collapsing, the minimal distance is less than <code>getdistrOption("DistrResoltion")</code>,
 we throw an error. By <code>getdistrOption("DistrCollapse.Unique.Warn")</code>,
-we control, whether we throw a warning upon collapsing or not.
+we control, whether we throw a warning upon collapsing or not.       
 </p>
 
 
@@ -203,12 +220,12 @@ Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de
 <h3>See Also</h3>
 
 <p>
-<code><a href="Parameter-class.html">Parameter-class</a></code>
-<code><a href="UnivariateDistribution-class.html">UnivariateDistribution-class</a></code>
-<code><a href="LatticeDistribution-class.html">LatticeDistribution-class</a></code>
-<code><a href="ContDistribution-class.html">AbscontDistribution-class</a></code>
-<code><a href="Reals-class.html">Reals-class</a></code>
-<code><a href="RtoDPQ.d.html">RtoDPQ.d</a></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
 </p>
 
 
@@ -236,8 +253,15 @@ q.r(D2)(pp-1e-5)
 q.r(D2)(pp+1e-5)
 </pre>
 
-
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
 
 <hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
-
 </body></html>

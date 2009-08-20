@@ -1,10 +1,10 @@
 <html><head><title>List of univariate distributions</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>UnivarDistrList-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>UnivarDistrList-class(distr)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   UnivarDistrList-class">
 <param name="keyword" value="R:   coerce,UnivariateDistribution,UnivarDistrList-method">
 <param name="keyword" value=" List of univariate distributions">
@@ -16,9 +16,7 @@
 
 <h3>Description</h3>
 
-<p>
-Create a list of univariate distributions
-</p>
+<p>Create a list of univariate distributions</p>
 
 
 <h3>Objects from the Class</h3>
@@ -26,16 +24,21 @@ Create a list of univariate distributions
 <p>
 Objects can be created by calls of the form <code>new("UnivarDistrList", ...)</code>.
 More frequently they are created via the generating function 
-<code><a href="DistrList.html">DistrList</a></code>.
+<code></code>. 
 </p>
 
 
 <h3>Slots</h3>
 
+<p>
+
 <dl>
-<dt><code>.Data</code>:</dt><dd>Object of class <code>"list"</code>. 
+<dt><code>.Data</code></dt><dd>Object of class <code>"list"</code>. 
 A list of univariate distributions.</dd>
 </dl>
+
+</p>
+
 
 <h3>Extends</h3>
 
@@ -48,24 +51,25 @@ Class <code>"vector"</code>, by class <code>"DistrList"</code>.
 
 <h3>Methods</h3>
 
+<p>
+
 <dl>
 <dt>coerce</dt><dd><code>signature(from = "UnivariateDistribution", to = "UnivarDistrList")</code>:
 create a <code>UnivarDistrList</code> object from a univariate distribution</dd>
 </dl>
 
+</p>
+
+
 <h3>Author(s)</h3>
 
-<p>
-Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
-</p>
+<p>Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a></p>
 
 
 <h3>See Also</h3>
 
-<p>
-<code><a href="UnivarDistrList.html">UnivarDistrList</a></code>, <code><a href="DistrList-class.html">DistrList-class</a></code>,
-<code><a href="UnivariateDistribution-class.html">UnivariateDistribution-class</a></code>
-</p>
+<p><code></code>, <code></code>,
+<code><a href="UnivariateDistribution-class.html">UnivariateDistribution-class</a></code></p>
 
 
 <h3>Examples</h3>
@@ -76,8 +80,15 @@ plot(DL)
 as(Norm(), "UnivarDistrList")
 </pre>
 
-
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
 
 <hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
-
 </body></html>

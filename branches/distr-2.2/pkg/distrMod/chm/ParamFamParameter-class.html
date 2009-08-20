@@ -1,10 +1,10 @@
 <html><head><title>Parameter of a parametric family of probability measures</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>ParamFamParameter-class(distrMod)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>ParamFamParameter-class(distrMod)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   ParamFamParameter-class">
 <param name="keyword" value="R:   length,ParamFamParameter-method">
 <param name="keyword" value="R:   dimension,ParamFamParameter-method">
@@ -30,10 +30,8 @@
 
 <h3>Description</h3>
 
-<p>
-Class of the parameter of parametric families 
-of probability measures.
-</p>
+<p>Class of the parameter of parametric families 
+of probability measures.</p>
 
 
 <h3>Objects from the Class</h3>
@@ -41,23 +39,28 @@ of probability measures.
 <p>
 Objects can be created by calls of the form <code>new("ParamFamParameter", ...)</code>.
 More frequently they are created via the generating function 
-<code>ParamFamParameter</code>.
+<code>ParamFamParameter</code>. 
 </p>
 
 
 <h3>Slots</h3>
 
+<p>
+
 <dl>
-<dt><code>main</code>:</dt><dd>Object of class <code>"numeric"</code>: main parameter. </dd>
-<dt><code>nuisance</code>:</dt><dd>Object of class <code>"OptionalNumeric"</code>:
+<dt><code>main</code></dt><dd>Object of class <code>"numeric"</code>: main parameter. </dd>
+<dt><code>nuisance</code></dt><dd>Object of class <code>"OptionalNumeric"</code>:
 optional nuisance parameter. </dd>
-<dt><code>fixed</code>:</dt><dd>Object of class <code>"OptionalNumeric"</code>:
+<dt><code>fixed</code></dt><dd>Object of class <code>"OptionalNumeric"</code>:
 optional fixed part of the parameter. </dd>
-<dt><code>trafo</code>:</dt><dd>Object of class <code>"MatrixorFunction"</code>: 
+<dt><code>trafo</code></dt><dd>Object of class <code>"MatrixorFunction"</code>: 
 transformation of the parameter. </dd>
-<dt><code>name</code>:</dt><dd>Object of class <code>"character"</code>:
+<dt><code>name</code></dt><dd>Object of class <code>"character"</code>:
 name of the parameter. </dd>
 </dl>
+
+</p>
+
 
 <h3>Extends</h3>
 
@@ -69,56 +72,61 @@ Class <code>"OptionalParameter"</code>, by class <code>"Parameter"</code>.
 
 <h3>Methods</h3>
 
+<p>
+
 <dl>
 <dt>main</dt><dd><code>signature(object = "ParamFamParameter")</code>: 
 accessor function for slot <code>main</code>. </dd>
-
-
+</p>
+<p>
 <dt>main&lt;-</dt><dd><code>signature(object = "ParamFamParameter")</code>: 
 replacement function for slot <code>main</code>. </dd>
-
-
+</p>
+<p>
 <dt>nuisance</dt><dd><code>signature(object = "ParamFamParameter")</code>: 
 accessor function for slot <code>nuisance</code>. </dd>
-
-
+</p>
+<p>
 <dt>nuisance&lt;-</dt><dd><code>signature(object = "ParamFamParameter")</code>: 
 replacement function for slot <code>nuisance</code>. </dd>
-
-
+</p>
+<p>
 <dt>fixed</dt><dd><code>signature(object = "ParamFamParameter")</code>: 
 accessor function for slot <code>fixed</code>. </dd>
-
-
+</p>
+<p>
 <dt>fixed&lt;-</dt><dd><code>signature(object = "ParamFamParameter")</code>: 
 replacement function for slot <code>fixed</code>. </dd>
-
-
+</p>
+<p>
 <dt>trafo</dt><dd><code>signature(object = "ParamFamParameter")</code>: 
 accessor function for slot <code>trafo</code>. </dd>
-
-
+</p>
+<p>
 <dt>trafo&lt;-</dt><dd><code>signature(object = "ParamFamParameter")</code>: 
 replacement function for slot <code>trafo</code>. </dd>
-
-
+</p>
+<p>
 <dt>length</dt><dd><code>signature(x = "ParamFamParameter")</code>: 
 sum of the lengths of <code>main</code> and <code>nuisance</code>. </dd>
-
-
+</p>
+<p>
 <dt>dimension</dt><dd><code>signature(x = "ParamFamParameter")</code>: 
 length of <code>main</code>. </dd>
-
-
+</p>
+<p>
 <dt>show</dt><dd><code>signature(object = "ParamFamParameter")</code></dd>
 </dl>
 
-<h3>Details for methods this-is-escaped-codenormal-bracket100bracket-normal, this-is-escaped-codenormal-bracket101bracket-normal</h3>
+</p>
+
+
+<h3>Details for methods <code>show</code>, <code>print</code></h3>
 
 <p>
 Detailedness of output by methods <code>show</code>, <code>print</code> is controlled
 by the global option <code>show.details</code> to be set by 
-<code><a href="distrModOptions.html">distrModoptions</a></code>.
+<code></code>.
 </p>
 <p>
 As method <code>show</code> is used when inspecting an object by typing the object's 
@@ -147,17 +155,13 @@ also be shown the code to this function.
 
 <h3>Author(s)</h3>
 
-<p>
-Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>,<br>
-Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
-</p>
+<p>Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a></p>
 
 
 <h3>See Also</h3>
 
-<p>
-<code><a onclick="findlink('distr', 'Parameter-class.html')" style="text-decoration: underline; color: blue; cursor: hand">Parameter-class</a></code>
-</p>
+<p><code><a onclick="findlink('distr', 'Parameter-class.html')" style="text-decoration: underline; color: blue; cursor: hand">Parameter-class</a></code></p>
 
 
 <h3>Examples</h3>
@@ -176,7 +180,5 @@ location.href = link;
 }
 </script>
 
-
 <hr><div align="center">[Package <em>distrMod</em> version 2.2 <a href="00Index.html">Index</a>]</div>
-
 </body></html>

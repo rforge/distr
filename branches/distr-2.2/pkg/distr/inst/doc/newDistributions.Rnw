@@ -46,6 +46,7 @@
 %
 \usepackage{ifpdf}
 %
+\usepackage{url}
 \usepackage{amssymb}
 \usepackage[%
 baseurl={r-forge.r-project.org},%

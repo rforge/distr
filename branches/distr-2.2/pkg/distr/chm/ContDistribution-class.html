@@ -1,10 +1,10 @@
 <html><head><title>Class "AbscontDistribution"</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>AbscontDistribution-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>AbscontDistribution-class(distr)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   AbscontDistribution-class">
 <param name="keyword" value="R:   AffLinDistribution-class">
 <param name="keyword" value="R:   AffLinAbscontDistribution-class">
@@ -12,66 +12,68 @@
 <param name="keyword" value="R:   initialize,AbscontDistribution-method">
 <param name="keyword" value="R:   initialize,AffLinAbscontDistribution-method">
 <param name="keyword" value="R:   sqrt,AbscontDistribution-method">
-<param name="keyword" value=" Class 'AbscontDistribution'">
+<param name="keyword" value=" Class "AbscontDistribution"">
 </object>
 
 
-<h2>Class 'AbscontDistribution'</h2>
+<h2>Class "AbscontDistribution"</h2>
 
 
 <h3>Description</h3>
 
-<p>
-The <code>AbscontDistribution</code>-class is the mother-class of the classes <code>Beta</code>, <code>Cauchy</code>, 
+<p>The <code>AbscontDistribution</code>-class is the mother-class of the classes <code>Beta</code>, <code>Cauchy</code>, 
 <code>Chisq</code>, <code>Exp</code>, <code>F</code>, <code>Gammad</code>, <code>Lnorm</code>, <code>Logis</code>, <code>Norm</code>, <code>T</code>, <code>Unif</code> and 
 <code>Weibull</code>. Further absolutely continuous distributions can be defined either by declaration of
 own random number generator, density, cumulative distribution and quantile functions, or as result of a 
 convolution of two absolutely continuous distributions or by application of a mathematical operator to an absolutely
-continuous distribution.
-</p>
+continuous distribution.</p>
 
 
 <h3>Objects from the Class</h3>
 
 <p>
 Objects can be created by calls of the form <code>new("AbscontDistribution", r, d, p, q)</code>.
-More comfortably, you may use the generating function <code><a href="ContDistribution.html">AbscontDistribution</a></code>.
-The result of these calls is an absolutely continuous distribution.
+More comfortably, you may use the generating function <code></code>.
+The result of these calls is an absolutely continuous distribution. 
 </p>
 
 
 <h3>Slots</h3>
 
+<p>
+
 <dl>
-<dt><code>img</code>:</dt><dd>Object of class <code>"Reals"</code>: the space of the image of this distribution which has dimension 1
+<dt><code>img</code></dt><dd>Object of class <code>"Reals"</code>: the space of the image of this distribution which has dimension 1
 and the name "Real Space" </dd>
-<dt><code>param</code>:</dt><dd>Object of class <code>"Parameter"</code>: the parameter of this distribution, having only 
+<dt><code>param</code></dt><dd>Object of class <code>"Parameter"</code>: the parameter of this distribution, having only 
 the slot name "Parameter of an absolutely continuous distribution" </dd>
-<dt><code>r</code>:</dt><dd>Object of class <code>"function"</code>: generates random numbers</dd>
-<dt><code>d</code>:</dt><dd>Object of class <code>"function"</code>: density function</dd>
-<dt><code>p</code>:</dt><dd>Object of class <code>"function"</code>: cumulative distribution function</dd>
-<dt><code>q</code>:</dt><dd>Object of class <code>"function"</code>: quantile function</dd>
-<dt><code>gaps</code>:</dt><dd>[from version 1.9 on] Object of class <code>"OptionalMatrix"</code>, 
+<dt><code>r</code></dt><dd>Object of class <code>"function"</code>: generates random numbers</dd>
+<dt><code>d</code></dt><dd>Object of class <code>"function"</code>: density function</dd>
+<dt><code>p</code></dt><dd>Object of class <code>"function"</code>: cumulative distribution function</dd>
+<dt><code>q</code></dt><dd>Object of class <code>"function"</code>: quantile function</dd>
+<dt><code>gaps</code></dt><dd>[from version 1.9 on] Object of class <code>"OptionalMatrix"</code>, 
 i.e.; an object which may either be <code>NULL</code> ora <code>matrix</code>. 
 This slot, if non-<code>NULL</code>, contains left and right 
 endpoints of intervals where the density of the object is 0. This slot 
-may be inspected by the accessor <code><a href="gap-methods.html">gaps</a>()</code> and modified by a corresponding
+may be inspected by the accessor <code>()</code> and modified by a corresponding
 replacement method. It may also be filled automatically by 
-<code><a href="gap-methods.html">setgaps</a>()</code>. For saved objects from earlier versions, we provide functions
-<code><a href="versionmanagement.html">isOldVersion</a></code> and <code><a href="versionmanagement.html">conv2NewVersion</a></code>.</dd>
-<dt><code>.withArith</code>:</dt><dd>logical: used internally to issue warnings as to 
+<code>()</code>. For saved objects from earlier versions, we provide functions
+<code></code> and <code></code>.</dd>
+<dt><code>.withArith</code></dt><dd>logical: used internally to issue warnings as to 
 interpretation of arithmetics</dd>
-<dt><code>.withSim</code>:</dt><dd>logical: used internally to issue warnings as to 
+<dt><code>.withSim</code></dt><dd>logical: used internally to issue warnings as to 
 accuracy</dd>
-<dt><code>.logExact</code>:</dt><dd>logical: used internally to flag the case where 
+<dt><code>.logExact</code></dt><dd>logical: used internally to flag the case where 
 there are explicit formulae for the log version of density, cdf, and 
 quantile function</dd>
-<dt><code>.lowerExact</code>:</dt><dd>logical: used internally to flag the case where 
+<dt><code>.lowerExact</code></dt><dd>logical: used internally to flag the case where 
 there are explicit formulae for the lower tail version of cdf and quantile 
 function</dd>
-<dt><code>Symmetry</code>:</dt><dd>object of class <code>"DistributionSymmetry"</code>;
+<dt><code>Symmetry</code></dt><dd>object of class <code>"DistributionSymmetry"</code>;
 used internally to avoid unnecessary calculations.</dd>
 </dl>
+</p>
+
 
 <h3>Extends</h3>
 
@@ -83,42 +85,48 @@ Class <code>"Distribution"</code>, by class <code>"UnivariateDistribution"</code
 
 <h3>Methods</h3>
 
+<p>
+
 <dl>
 <dt>initialize</dt><dd><code>signature(.Object = "AbscontDistribution")</code>: initialize method </dd>
 <dt>Math</dt><dd><code>signature(x = "AbscontDistribution")</code>: application of a mathematical function, e.g. <code>sin</code> or
-<code>exp</code> (does not work with <code>log</code>, <code>sign</code>!), to this absolutely continouos distribution</dd>
-<code>abs</code>{<code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>abs(x)</code>.}
-<code>exp</code>{<code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>exp(x)</code>.}
-<code>sign</code>{<code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>sign(x)</code>.}
-<code>sqrt</code>{<code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>sqrt(x)</code>.}
-<code>log</code>{<code>signature(x = "AbscontDistribution")</code>:  (with optional further argument <code>base</code>, 
-defaulting to <code>exp(1)</code>) exact image distribution of <code>log(x)</code>.}
-<code>log10</code>{<code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>log10(x)</code>.}
-<code>gamma</code>{<code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>gamma(x)</code>.}
-<code>lgamma</code>{<code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>lgamma(x)</code>.}
-<code>sqrt</code>{<code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>sqrt(x)</code>.}
-<dt>-</dt><dd><code>signature(e1 = "AbscontDistribution")</code>: application of `-' to this absolutely continuous distribution</dd>
-<dt>*</dt><dd><code>signature(e1 = "AbscontDistribution", e2 = "numeric")</code>: multiplication of this absolutely continuous 
-distribution by an object of class `numeric'</dd>
-<dt>/</dt><dd><code>signature(e1 = "AbscontDistribution", e2 = "numeric")</code>: division of this absolutely continuous 
-distribution by an object of class `numeric'</dd>
-<dt>+</dt><dd><code>signature(e1 = "AbscontDistribution", e2 = "numeric")</code>: addition of this absolutely continuous 
-distribution to an object of class `numeric'</dd>
-<dt>-</dt><dd><code>signature(e1 = "AbscontDistribution", e2 = "numeric")</code>: subtraction of an object of class `numeric' from
-this absolutely continuous distribution </dd>
-<dt>*</dt><dd><code>signature(e1 = "numeric", e2 = "AbscontDistribution")</code>: multiplication of this absolutely continuous 
-distribution by an object of class `numeric'</dd>
-<dt>+</dt><dd><code>signature(e1 = "numeric", e2 = "AbscontDistribution")</code>: addition of this absolutely continuous 
-distribution to an object of class `numeric'</dd>
-<dt>-</dt><dd><code>signature(e1 = "numeric", e2 = "AbscontDistribution")</code>: subtraction of this absolutely continuous 
-distribution from an object of class `numeric'</dd>
-<dt>+</dt><dd><code>signature(e1 = "AbscontDistribution", e2 = "AbscontDistribution")</code>: Convolution of two absolutely
-continuous distributions. The slots p, d and q are approximated by grids.</dd>
-<dt>-</dt><dd><code>signature(e1 = "AbscontDistribution", e2 = "AbscontDistribution")</code>: Convolution of two absolutely
-continuous distributions. The slots p, d and q are approximated by grids.</dd>
-<dt>plot</dt><dd><code>signature(object = "AbscontDistribution")</code>: plots density, cumulative distribution and quantile 
-function </dd>
+<code>exp</code> (does not work with <code>log</code>, <code>sign</code>!), to this absolutely continouos distribution
+
+<ul>
+<li> <code>abs</code>: <code>signature(x = "AbscontDistribution")</code>: exact image distribution of <code>abs(x)</code>.
+</li>
+<li><code>exp</code>: <code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>exp(x)</code>.
+</li>
+<li><code>sign</code>: <code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>sign(x)</code>.
+</li>
+<li><code>sqrt</code>: <code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>sqrt(x)</code>.
+</li>
+<li><code>log</code>: <code>signature(x = "AbscontDistribution")</code>:  (with optional further argument <code>base</code>, defaulting to <code>exp(1)</code>) exact image distribution of <code>log(x)</code>.
+</li>
+<li><code>log10</code>: <code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>log10(x)</code>.
+</li>
+<li><code>gamma</code>: <code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>gamma(x)</code>.
+</li>
+<li><code>lgamma</code>: <code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>lgamma(x)</code>.
+</li>
+<li><code>sqrt</code>: <code>signature(x = "AbscontDistribution")</code>:  exact image distribution of <code>sqrt(x)</code>.
+</ul>
+</dd>
+<dt>-</dt><dd><code>signature(e1 = "AbscontDistribution")</code>: application of &lsquo;-&rsquo; to this absolutely continuous distribution.</dd>
+<dt>*</dt><dd><code>signature(e1 = "AbscontDistribution", e2 = "numeric")</code>: multiplication of this absolutely continuous distribution by an object of class <code>"numeric"</code></dd>
+<dt>/</dt><dd><code>signature(e1 = "AbscontDistribution", e2 = "numeric")</code>: division of this absolutely continuous distribution by an object of class <code>"numeric"</code></dd>
+<dt>+</dt><dd><code>signature(e1 = "AbscontDistribution", e2 = "numeric")</code>: addition of this absolutely continuous distribution to an object of class <code>"numeric"</code>.</dd>
+<dt>-</dt><dd><code>signature(e1 = "AbscontDistribution", e2 = "numeric")</code>: subtraction of an object of class <code>"numeric"</code> from this absolutely continuous distribution.</dd>
+<dt>*</dt><dd><code>signature(e1 = "numeric", e2 = "AbscontDistribution")</code>: multiplication of this absolutely continuous distribution by an object of class <code>"numeric"</code>.</dd>
+<dt>+</dt><dd><code>signature(e1 = "numeric", e2 = "AbscontDistribution")</code>: addition of this absolutely continuous distribution to an object of class <code>"numeric"</code>.</dd>
+<dt>-</dt><dd><code>signature(e1 = "numeric", e2 = "AbscontDistribution")</code>: subtraction of this absolutely continuous distribution from an object of class <code>"numeric"</code>.</dd>
+<dt>+</dt><dd><code>signature(e1 = "AbscontDistribution", e2 = "AbscontDistribution")</code>: Convolution of two absolutely continuous distributions. The slots p, d and q are approximated by grids.</dd>
+<dt>-</dt><dd><code>signature(e1 = "AbscontDistribution", e2 = "AbscontDistribution")</code>: Convolution of two absolutely continuous distributions. The slots p, d and q are approximated by grids.</dd>
+<dt>plot</dt><dd><code>signature(object = "AbscontDistribution")</code>: plots density, cumulative distribution and quantile function.</dd>
 </dl>
+
+</p>
+
 
 <h3>Internal subclass "AffLinAbscontDistribution"</h3>
 
@@ -131,7 +139,8 @@ there is an internally used (but exported) subclass
 (of class <code>"AbscontDistribution"</code>), to capture the fact 
 that the object has the same distribution as <code>a * X0 + b</code>. This is 
 the class of the return value of methods 
-<ul>
+
+<dl>
 <dt>-</dt><dd><code>signature(e1 = "AbscontDistribution")</code></dd>
 <dt>*</dt><dd><code>signature(e1 = "AbscontDistribution", e2 = "numeric")</code></dd>
 <dt>/</dt><dd><code>signature(e1 = "AbscontDistribution", e2 = "numeric")</code></dd>
@@ -148,8 +157,8 @@ the class of the return value of methods
 <dt>*</dt><dd><code>signature(e1 = "numeric", e2 = "AffLinAbscontDistribution")</code></dd>
 <dt>+</dt><dd><code>signature(e1 = "numeric", e2 = "AffLinAbscontDistribution")</code></dd>
 <dt>-</dt><dd><code>signature(e1 = "numeric", e2 = "AffLinAbscontDistribution")</code></dd>
-</ul>
-<p>
+</dl>
+
 There also is a class union of <code>"AffLinAbscontDistribution"</code>,
 <code>"AffLinDiscreteDistribution"</code>, <code>"AffLinUnivarLebDecDistribution"</code>
 and called <code>"AffLinDistribution"</code>
@@ -165,10 +174,10 @@ are of class <code>"AbscontDistribution"</code>,
 <code>"DiscreteDistribution"</code>, or <code>"UnivarLebDecDistribution"</code>,
 there is a class union of these classes called <code>"AcDcLcDistribution"</code>;
 in partiucalar methods for <code>"*"</code>, <code>"/"</code>, 
-<code>"^"</code> (see <a href="operators-methods.html">operators-methods</a>) and methods
-<code><a href="MinMaximum-methods.html">Minimum</a></code>, <code>Maximum</code>, <code><a href="Truncate-methods.html">Truncate</a></code>, and
-<code><a href="Huberize-methods.html">Huberize</a></code>, and <code><a href="ConvPow.html">convpow</a></code> are defined for this 
-class union.
+<code>"^"</code> (see ) and methods
+<code></code>, <code>Maximum</code>, <code></code>, and
+<code></code>, and <code></code> are defined for this 
+class union.   
 </p>
 
 
@@ -185,24 +194,26 @@ Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de
 <h3>See Also</h3>
 
 <p>
-<code><a href="ContDistribution.html">AbscontDistribution</a></code>
-<code><a href="Parameter-class.html">Parameter-class</a></code>
-<code><a href="UnivariateDistribution-class.html">UnivariateDistribution-class</a></code>
-<code><a href="Beta-class.html">Beta-class</a></code>
-<code><a href="Cauchy-class.html">Cauchy-class</a></code>
-<code><a href="Chisq-class.html">Chisq-class</a></code>
-<code><a href="Exp-class.html">Exp-class</a></code>
-<code><a href="Fd-class.html">Fd-class</a></code>
-<code><a href="Gammad-class.html">Gammad-class</a></code>
-<code><a href="Lnorm-class.html">Lnorm-class</a></code>
-<code><a href="Logis-class.html">Logis-class</a></code>
-<code><a href="Norm-class.html">Norm-class</a></code>
-<code><a href="Td-class.html">Td-class</a></code>
-<code><a href="Unif-class.html">Unif-class</a></code>
-<code><a href="Weibull-class.html">Weibull-class</a></code>
-<code><a href="DiscreteDistribution-class.html">DiscreteDistribution-class</a></code>
-<code><a href="Reals-class.html">Reals-class</a></code>
-<code><a href="RtoDPQ.html">RtoDPQ</a></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+</p>
+<p>
 </p>
 
 
@@ -220,8 +231,15 @@ p(A3)(0) # The (approximated) probability that x &lt;= 0 is 0.4562021.
 q(A3)(.1) # The (approximated) 10 percent quantile is 0.1.
 </pre>
 
-
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
 
 <hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
-
 </body></html>

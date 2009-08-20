@@ -3611,7 +3611,7 @@
 <param name="Local" value="k-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Methods for Function lambda in Package 'distr'">
+<param name="Name" value="Methods for Function lambda  in Package 'distr'">
 <param name="Local" value="lambda-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">

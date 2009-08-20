@@ -1,25 +1,23 @@
 <html><head><title>Class "Evaluation"</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>Evaluation-class(distrTEst)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>Evaluation-class(distrTEst)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   Evaluation-class">
 <param name="keyword" value="R:   initialize,Evaluation-method">
-<param name="keyword" value=" Class 'Evaluation'">
+<param name="keyword" value=" Class "Evaluation"">
 </object>
 
 
-<h2>Class 'Evaluation'</h2>
+<h2>Class "Evaluation"</h2>
 
 
 <h3>Description</h3>
 
-<p>
-When an estimator is used to data of the type "Dataclass" with the method evaluate, the result is an object
-of class "Evaluation".
-</p>
+<p> When an estimator is used to data of the type "Dataclass" with the method evaluate, the result is an object
+of class "Evaluation". </p>
 
 
 <h3>Objects from the Class</h3>
@@ -27,27 +25,33 @@ of class "Evaluation".
 <p>
 Objects could be created by calls of the form <code>new("Evaluation", Data, estimator, [result, name, filename, call.ev])</code>.
 It does not seem to be very useful to generate a new object this way, however. 
-It is to be preferred to use "evaluate" with a Dataclass object!
-</p>
+It is to be preferred to use "evaluate" with a Dataclass object!</p>
 
 
 <h3>Slots</h3>
 
+<p>
+
 <dl>
-<dt><code>call.ev</code>:</dt><dd>Object of class <code>"call"</code>: the call which created the object, 
-e.g.; ``evaluate(Dataclassobject,mean)'' </dd>
-<dt><code>Data</code>:</dt><dd>Object of class <code>"Dataclass"</code>: the data set / simulation on which the evaluation takes place.</dd>
-<dt><code>estimator</code>:</dt><dd>Object of class <code>"OptionalFunction"</code>: estimation function used; this estimation function 
+<dt><code>call.ev</code></dt><dd>Object of class <code>"call"</code>: the call which created the object, 
+e.g.; &ldquo;evaluate(Dataclassobject,mean)&rdquo; </dd>
+<dt><code>Data</code></dt><dd>Object of class <code>"Dataclass"</code>: the data set / simulation on which the evaluation takes place.</dd>
+<dt><code>estimator</code></dt><dd>Object of class <code>"OptionalFunction"</code>: estimation function used; this estimation function 
 should be able to deal with data in matrix form <code>samplesize</code> x <code>obsDim</code> and 
 should return either a univariate result or a vector (with named coordinates, if possible).</dd>
-<dt><code>filename</code>:</dt><dd>Object of class <code>"character"</code>: the filename of the evaluation;
+<dt><code>filename</code></dt><dd>Object of class <code>"character"</code>: the filename of the evaluation;
 by default the filename of the Dataclass object, which was called by evaluate</dd>
-<dt><code>name</code>:</dt><dd>Object of class <code>"character"</code>: the name of the evaluation; by default the name of the
+<dt><code>name</code></dt><dd>Object of class <code>"character"</code>: the name of the evaluation; by default the name of the
 Dataclass object, which was called by evaluate </dd>
-<dt><code>result</code>:</dt><dd>Object of class <code>"DataframeorNULL"</code>: the result of the evaluation of the estimation on data </dd>
+<dt><code>result</code></dt><dd>Object of class <code>"DataframeorNULL"</code>: the result of the evaluation of the estimation on data </dd>
 </dl>
 
+</p>
+
+
 <h3>Accessors/Replacement functions</h3>
+
+<p>
 
 <dl>
 <dt>call.ev</dt><dd>no replacement possible </dd>
@@ -57,7 +61,12 @@ Dataclass object, which was called by evaluate </dd>
 <dt>result</dt><dd>no replacement possible</dd>
 </dl>
 
+</p>
+
+
 <h3>Methods</h3>
+
+<p>
 
 <dl>
 <dt>initialize</dt><dd><code>signature(.Object = "Evaluation")</code>: initialize method </dd>
@@ -70,11 +79,12 @@ data, one without as comment file (see example) </dd>
 estimator used and a statistical summary of the result </dd>
 </dl>
 
+</p>
+
+
 <h3>Note</h3>
 
-<p>
-The saved "evaluation" can be loaded with the usual load-command, the saved comment with the function cload.
-</p>
+<p> The saved "evaluation" can be loaded with the usual load-command, the saved comment with the function cload. </p>
 
 
 <h3>Author(s)</h3>
@@ -96,9 +106,9 @@ Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de
 <code><a onclick="findlink('base', 'load.html')" style="text-decoration: underline; color: blue; cursor: hand">load</a></code>
 <code><a onclick="findlink('distrSim', 'cload.html')" style="text-decoration: underline; color: blue; cursor: hand">cload</a></code>
 <code><a onclick="findlink('distrSim', 'savedata-methods.html')" style="text-decoration: underline; color: blue; cursor: hand">savedata-methods</a></code>
-<code><a href="plot-methods.html">plot-methods</a></code>
+<code></code>
 <code><a onclick="findlink('distrSim', 'simulate-methods.html')" style="text-decoration: underline; color: blue; cursor: hand">simulate-methods</a></code>
-<code><a href="summary-methods.html">summary-methods</a></code>
+<code></code>
 </p>
 
 
@@ -151,7 +161,5 @@ location.href = link;
 }
 </script>
 
-
 <hr><div align="center">[Package <em>distrTEst</em> version 2.2 <a href="00Index.html">Index</a>]</div>
-
 </body></html>

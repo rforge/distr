@@ -1,18 +1,18 @@
 <html><head><title>Class "Geom"</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>Geom-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>Geom-class(distr)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   Geom-class">
 <param name="keyword" value="R:   Geom">
 <param name="keyword" value="R:   initialize,Geom-method">
-<param name="keyword" value=" Class 'Geom'">
+<param name="keyword" value=" Class "Geom"">
 </object>
 
 
-<h2>Class 'Geom'</h2>
+<h2>Class "Geom"</h2>
 
 
 <h3>Description</h3>
@@ -31,45 +31,50 @@ C.f. <code><a onclick="findlink('stats', 'Geometric.html')" style="text-decorati
 
 <p>
 Objects can be created by calls of the form <code>Geom(prob)</code>.
-This object is a geometric distribution.
+This object is a geometric distribution. 
 </p>
 
 
 <h3>Slots</h3>
 
+<p>
+
 <dl>
-<dt><code>img</code>:</dt><dd>Object of class <code>"Naturals"</code>:
+<dt><code>img</code></dt><dd>Object of class <code>"Naturals"</code>:
 The space of the image of this distribution has got dimension 1
 and the name "Natural Space".</dd>
-<dt><code>param</code>:</dt><dd>Object of class <code>"NbinomParameter"</code>:
+<dt><code>param</code></dt><dd>Object of class <code>"NbinomParameter"</code>:
 the parameter of this distribution (prob),  
 declared at its instantiation (size=1)</dd>
-<dt><code>r</code>:</dt><dd>Object of class <code>"function"</code>:
+<dt><code>r</code></dt><dd>Object of class <code>"function"</code>:
 generates random numbers (calls function rgeom)</dd>
-<dt><code>d</code>:</dt><dd>Object of class <code>"function"</code>:
+<dt><code>d</code></dt><dd>Object of class <code>"function"</code>:
 density function (calls function dgeom)</dd>
-<dt><code>p</code>:</dt><dd>Object of class <code>"function"</code>:
+<dt><code>p</code></dt><dd>Object of class <code>"function"</code>:
 cumulative function (calls function pgeom)</dd>
-<dt><code>q</code>:</dt><dd>Object of class <code>"function"</code>:
+<dt><code>q</code></dt><dd>Object of class <code>"function"</code>:
 inverse of the cumulative function (calls function qgeom).
 The quantile is defined as the smallest value <i>x</i> such that
-<i>F(x) &gt;= p</i>, where <i>F</i> is the distribution function.</dd>      
-<dt><code>support</code>:</dt><dd>Object of class <code>"numeric"</code>:
+<i>F(x) \ge p</i>, where <i>F</i> is the distribution function.</dd>      
+<dt><code>support</code></dt><dd>Object of class <code>"numeric"</code>:
 a (sorted) vector containing the support of the discrete density
 function</dd>
-<dt><code>.withArith</code>:</dt><dd>logical: used internally to issue warnings as to 
+<dt><code>.withArith</code></dt><dd>logical: used internally to issue warnings as to 
 interpretation of arithmetics</dd>
-<dt><code>.withSim</code>:</dt><dd>logical: used internally to issue warnings as to 
+<dt><code>.withSim</code></dt><dd>logical: used internally to issue warnings as to 
 accuracy</dd>
-<dt><code>.logExact</code>:</dt><dd>logical: used internally to flag the case where 
+<dt><code>.logExact</code></dt><dd>logical: used internally to flag the case where 
 there are explicit formulae for the log version of density, cdf, and 
 quantile function</dd>
-<dt><code>.lowerExact</code>:</dt><dd>logical: used internally to flag the case where 
+<dt><code>.lowerExact</code></dt><dd>logical: used internally to flag the case where 
 there are explicit formulae for the lower tail version of cdf and quantile 
 function</dd>
-<dt><code>Symmetry</code>:</dt><dd>object of class <code>"DistributionSymmetry"</code>;
+<dt><code>Symmetry</code></dt><dd>object of class <code>"DistributionSymmetry"</code>;
 used internally to avoid unnecessary calculations.</dd>
 </dl>
+
+</p>
+
 
 <h3>Extends</h3>
 
@@ -84,13 +89,15 @@ Class <code>"Distribution"</code>, by class <code>"DiscreteDistribution"</code>.
 <h3>Contains-Relations</h3>
 
 <p>
-By means of a <code>contains</code> argument in the class declaration, R ``knows'' 
+By means of a <code>contains</code> argument in the class declaration, R &ldquo;knows&rdquo; 
 that a distribution object <code>obj</code> of class <code>"Geom"</code> also is a 
 negative Binomial distribution with parameters <code>size = 1, prob = prob(obj)</code>
 </p>
 
 
 <h3>Methods</h3>
+
+<p>
 
 <dl>
 <dt>initialize</dt><dd><code>signature(.Object = "Geom")</code>: initialize method</dd>
@@ -100,12 +107,13 @@ returns the slot prob of the parameter of the distribution</dd>
 modifies the slot prob of the parameter of the distribution</dd>
 </dl>
 
+</p>
+
+
 <h3>Note</h3>
 
-<p>
-Working with a computer, we use a finite interval as support which carries 
-at least mass <code>1-getdistrOption("TruncQuantile")</code>.
-</p>
+<p>Working with a computer, we use a finite interval as support which carries 
+at least mass <code>1-getdistrOption("TruncQuantile")</code>. </p>
 
 
 <h3>Author(s)</h3>
@@ -121,10 +129,10 @@ Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de
 <h3>See Also</h3>
 
 <p>
-<code><a href="Nbinom-class.html">Nbinom-class</a></code>
-<code><a href="GeomParameter-class.html">GeomParameter-class</a></code>
-<code><a href="DiscreteDistribution-class.html">DiscreteDistribution-class</a></code>
-<code><a href="Naturals-class.html">Naturals-class</a></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
 <code><a onclick="findlink('stats', 'Geometric.html')" style="text-decoration: underline; color: blue; cursor: hand">rgeom</a></code>
 </p>
 
@@ -153,7 +161,5 @@ location.href = link;
 }
 </script>
 
-
 <hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
-
 </body></html>

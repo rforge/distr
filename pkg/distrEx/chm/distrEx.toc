@@ -1735,7 +1735,8 @@
 <param name="Local" value="PrognCondDistribution.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Generating function for the conditional distribution of a linear regression model.">
+<param name="Name" value="Generating function for the conditional distribution 
+  of a linear regression model.">
 <param name="Local" value="LMCondDistribution.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
@@ -1767,11 +1768,12 @@
 <param name="Local" value="m2df.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Generic Function for the Computation of the Convex Contamination (Pseudo-)Distance of Two Distributions">
+<param name="Name" value="Generic Function for the Computation of the Convex Contamination 
+    (Pseudo-)Distance of Two Distributions">
 <param name="Local" value="ContaminationSize.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Generic function for the computation of the Cramer - von Mises distance of two distributions">
+<param name="Name" value="Generic function for the computation of the Cramer - von Mises  distance of two distributions">
 <param name="Local" value="CvMDist.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">

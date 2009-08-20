@@ -1,24 +1,22 @@
 <html><head><title>Class "BinomParameter"</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>BinomParameter-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>BinomParameter-class(distr)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   BinomParameter-class">
 <param name="keyword" value="R:   initialize,BinomParameter-method">
-<param name="keyword" value=" Class 'BinomParameter'">
+<param name="keyword" value=" Class "BinomParameter"">
 </object>
 
 
-<h2>Class 'BinomParameter'</h2>
+<h2>Class "BinomParameter"</h2>
 
 
 <h3>Description</h3>
 
-<p>
-The parameter of a binomial distribution, used by Binom-class
-</p>
+<p> The parameter of a binomial distribution, used by Binom-class</p>
 
 
 <h3>Objects from the Class</h3>
@@ -28,20 +26,25 @@ Objects can be created by calls of the form
 <code>new("BinomParameter", prob, size)</code>.
 Usually an object of this class is not needed on its own, it is generated 
 automatically when an object of the class Binom
-is instantiated.
+is instantiated. 
 </p>
 
 
 <h3>Slots</h3>
 
+<p>
+
 <dl>
-<dt><code>prob</code>:</dt><dd>Object of class <code>"numeric"</code>: 
+<dt><code>prob</code></dt><dd>Object of class <code>"numeric"</code>: 
 the probability of a binomial distribution </dd>
-<dt><code>size</code>:</dt><dd>Object of class <code>"numeric"</code>: 
+<dt><code>size</code></dt><dd>Object of class <code>"numeric"</code>: 
 the size of a binomial distribution </dd>
-<dt><code>name</code>:</dt><dd>Object of class <code>"character"</code>: 
+<dt><code>name</code></dt><dd>Object of class <code>"character"</code>: 
 a name / comment for the parameters </dd>
 </dl>
+
+</p>
+
 
 <h3>Extends</h3>
 
@@ -51,6 +54,8 @@ Class <code>"Parameter"</code>, directly.
 
 
 <h3>Methods</h3>
+
+<p>
 
 <dl>
 <dt>initialize</dt><dd><code>signature(.Object = "BinomParameter")</code>: 
@@ -65,6 +70,9 @@ initialize method </dd>
 <code>size</code> of the parameter of the distribution</dd>
 </dl>
 
+</p>
+
+
 <h3>Author(s)</h3>
 
 <p>
@@ -78,8 +86,8 @@ Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de
 <h3>See Also</h3>
 
 <p>
-<code><a href="Binom-class.html">Binom-class</a></code>
-<code><a href="Parameter-class.html">Parameter-class</a></code>
+<code></code>
+<code></code>
 </p>
 
 
@@ -91,8 +99,15 @@ size(W) # size of this distribution is 1.
 size(W) &lt;- 2 # size of this distribution is now 2.
 </pre>
 
-
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
 
 <hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
-
 </body></html>

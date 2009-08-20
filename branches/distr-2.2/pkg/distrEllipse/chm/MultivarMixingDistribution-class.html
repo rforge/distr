@@ -57,26 +57,26 @@ More frequently they are created via the generating function
 <p>
 
 <dl>
-<dt><code>mixCoeff</code>:</dt><dd>Object of class <code>"numeric"</code>: a vector of 
+<dt><code>mixCoeff</code></dt><dd>Object of class <code>"numeric"</code>: a vector of 
 probabilities for the mixing components.</dd>
-<dt><code>mixDistr</code>:</dt><dd>Object of class <code>"MultivarDistrList"</code>: a list of
+<dt><code>mixDistr</code></dt><dd>Object of class <code>"MultivarDistrList"</code>: a list of
 multivariate distributions containing the mixing components; must be of same
 length as <code>mixCoeff</code>.</dd>
-<dt><code>img</code>:</dt><dd>Object of class <code>"Reals"</code>: the space of the image of this distribution which has dimension 1
+<dt><code>img</code></dt><dd>Object of class <code>"Reals"</code>: the space of the image of this distribution which has dimension 1
 and the name "Real Space" </dd>
-<dt><code>param</code>:</dt><dd>Object of class <code>"Parameter"</code>: the parameter of this distribution, having only the
+<dt><code>param</code></dt><dd>Object of class <code>"Parameter"</code>: the parameter of this distribution, having only the
 slot name "Parameter of a discrete distribution" </dd>
-<dt><code>r</code>:</dt><dd>Object of class <code>"function"</code>: generates random numbers</dd>
-<dt><code>d</code>:</dt><dd>fixed to <code>NULL</code></dd>
-<dt><code>p</code>:</dt><dd>Object of class <code>"OptionalFunction"</code>: if non-null cumulative distribution function</dd>
-<dt><code>q</code>:</dt><dd>Object of class <code>"OptionalFunction"</code>: if non-null quantile function</dd>
-<dt><code>.withArith</code>:</dt><dd>logical: used internally to issue warnings as to interpretation of arithmetics</dd>
-<dt><code>.withSim</code>:</dt><dd>logical: used internally to issue warnings as to accuracy</dd>
-<dt><code>.logExact</code>:</dt><dd>logical: used internally to flag the case where there are explicit formulae for the
+<dt><code>r</code></dt><dd>Object of class <code>"function"</code>: generates random numbers</dd>
+<dt><code>d</code></dt><dd>fixed to <code>NULL</code></dd>
+<dt><code>p</code></dt><dd>Object of class <code>"OptionalFunction"</code>: if non-null cumulative distribution function</dd>
+<dt><code>q</code></dt><dd>Object of class <code>"OptionalFunction"</code>: if non-null quantile function</dd>
+<dt><code>.withArith</code></dt><dd>logical: used internally to issue warnings as to interpretation of arithmetics</dd>
+<dt><code>.withSim</code></dt><dd>logical: used internally to issue warnings as to accuracy</dd>
+<dt><code>.logExact</code></dt><dd>logical: used internally to flag the case where there are explicit formulae for the
 log version of density, cdf, and quantile function</dd>
-<dt><code>.lowerExact</code>:</dt><dd>logical: used internally to flag the case where there are explicit formulae for the
+<dt><code>.lowerExact</code></dt><dd>logical: used internally to flag the case where there are explicit formulae for the
 lower tail version of cdf and quantile function</dd>
-<dt><code>Symmetry</code>:</dt><dd>object of class <code>"DistributionSymmetry"</code>;
+<dt><code>Symmetry</code></dt><dd>object of class <code>"DistributionSymmetry"</code>;
 used internally to avoid unnecessary calculations.</dd>
 </dl>
 

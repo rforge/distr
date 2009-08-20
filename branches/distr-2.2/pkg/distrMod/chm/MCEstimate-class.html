@@ -1,10 +1,10 @@
 <html><head><title>MCEstimate-class.</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>MCEstimate-class(distrMod)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>MCEstimate-class(distrMod)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   MCEstimate-class">
 <param name="keyword" value="R:   criterion">
 <param name="keyword" value="R:   criterion,MCEstimate-method">
@@ -28,9 +28,7 @@
 
 <h3>Description</h3>
 
-<p>
-Class of minimum criterion estimates.
-</p>
+<p>Class of minimum criterion estimates.</p>
 
 
 <h3>Objects from the Class</h3>
@@ -38,49 +36,54 @@ Class of minimum criterion estimates.
 <p>
 Objects can be created by calls of the form <code>new("MCEstimate", ...)</code>.
 More frequently they are created via the generating functions
-<code>MCEstimator</code>, <code>MDEstimator</code> or <code>MLEstimator</code>.
+<code>MCEstimator</code>, <code>MDEstimator</code> or <code>MLEstimator</code>. 
 </p>
 
 
 <h3>Slots</h3>
 
+<p>
+
 <dl>
-<dt><code>name</code>:</dt><dd>Object of class <code>"character"</code>:
+<dt><code>name</code></dt><dd>Object of class <code>"character"</code>:
 name of the estimator. </dd>
-<dt><code>estimate</code>:</dt><dd>Object of class <code>"ANY"</code>:
+<dt><code>estimate</code></dt><dd>Object of class <code>"ANY"</code>:
 estimate.</dd>
-<dt><code>estimate.call</code>:</dt><dd>Object of class <code>"call"</code>:
+<dt><code>estimate.call</code></dt><dd>Object of class <code>"call"</code>:
 call by which estimate was produced.</dd>
-<dt><code>criterion</code>:</dt><dd>Object of class <code>"numeric"</code>:
+<dt><code>criterion</code></dt><dd>Object of class <code>"numeric"</code>:
 minimum value of the considered criterion.</dd>
-<dt><code>criterion.fct</code>:</dt><dd>Object of class <code>"function"</code>:
+<dt><code>criterion.fct</code></dt><dd>Object of class <code>"function"</code>:
 the considered criterion function; used for compatibility with class
 <code>"mle"</code> from package <span class="pkg">stats4</span>; should be a function
 returning the criterion; i.e. a numeric of length 1 and should have
 as arguments all named components of argument 
 <code>untransformed.estimate</code></dd>
-<dt><code>method</code>:</dt><dd>Object of class <code>"character"</code>:
+<dt><code>method</code></dt><dd>Object of class <code>"character"</code>:
 the method by which the estimate was calculated, i.e.;
 <code>"optim"</code>, <code>"optimize"</code>, or <code>"explicit calculation"</code>; 
 used for compatibility with class <code>"mle"</code> from package 
 <span class="pkg">stats4</span>, could be any character value.</dd>
-<dt><code>Infos</code>:</dt><dd>object of class <code>"matrix"</code>
+<dt><code>Infos</code></dt><dd> object of class <code>"matrix"</code>
 with two columns named <code>method</code> and <code>message</code>:
 additional informations. </dd>
-<dt><code>optimwarn</code>:</dt><dd>object of class <code>"character"</code>
+<dt><code>optimwarn</code></dt><dd> object of class <code>"character"</code>
 warnings issued during optimization. </dd>
-<dt><code>asvar</code>:</dt><dd>object of class <code>"OptionalMatrix"</code>
+<dt><code>asvar</code></dt><dd> object of class <code>"OptionalMatrix"</code>
 which may contain the asymptotic (co)variance of the estimator. </dd>
-<dt><code>samplesize</code>:</dt><dd>object of class <code>"numeric"</code> &mdash;
+<dt><code>samplesize</code></dt><dd> object of class <code>"numeric"</code> &mdash;
 the samplesize at which the estimate was evaluated. </dd>
-<dt><code>nuis.idx</code>:</dt><dd>object of class <code>"OptionalNumeric"</code>: 
+<dt><code>nuis.idx</code></dt><dd> object of class <code>"OptionalNumeric"</code>: 
 indices of <code>estimate</code> belonging to the nuisance part</dd>
-<dt><code>untransformed.estimate</code>:</dt><dd>Object of class <code>"ANY"</code>:
+<dt><code>untransformed.estimate</code></dt><dd>Object of class <code>"ANY"</code>:
 untransformed estimate.</dd>
-<dt><code>untransformed.asvar</code>:</dt><dd>object of class <code>"OptionalNumericOrMatrix"</code>
+<dt><code>untransformed.asvar</code></dt><dd> object of class <code>"OptionalNumericOrMatrix"</code>
 which may contain the asymptotic (co)variance of the untransformed 
 estimator. </dd>
 </dl>
+
+</p>
+
 
 <h3>Extends</h3>
 
@@ -91,26 +94,32 @@ Class <code>"Estimate"</code>, directly.
 
 <h3>Methods</h3>
 
+<p>
+
 <dl>
 <dt>criterion</dt><dd><code>signature(object = "MCEstimate")</code>: 
 accessor function for slot <code>criterion</code>. </dd>
-
-
+</p>
+<p>
 <dt>criterion&lt;-</dt><dd><code>signature(object = "MCEstimate")</code>: 
 replacement function for slot <code>criterion</code>. </dd>
-
-
+</p>
+<p>
 <dt>optimwarn</dt><dd><code>signature(object = "MCEstimate")</code>:
 accessor function for slot <code>optimwarn</code>. </dd>
-
-
+</p>
+<p>
 <dt>criterion.fct</dt><dd><code>signature(object = "MCEstimate")</code>:
 accessor function for slot <code>criterion.fct</code>. </dd>
-
-
+</p>
+<p>
 <dt>show</dt><dd><code>signature(object = "Estimate")</code></dd>
+</p>
+<p>
 <dt>coerce</dt><dd><code>signature(from = "MCEstimate", to = "mle")</code>:
 create a <code>"mle"</code> object from a <code>"MCEstimate"</code> object</dd>
+</p>
+<p>
 <dt>profile</dt><dd><code>signature(fitted = "MCEstimate")</code>:
 coerces <code>fitted</code> to class <code>"mle"</code> and then calls
 the corresponding <code><a onclick="findlink('stats4', 'profile-methods.html')" style="text-decoration: underline; color: blue; cursor: hand">profile</a></code>-method
@@ -118,20 +127,19 @@ from package <span class="pkg">stats4</span>; for details we confer to the corre
 man page.</dd>
 </dl>
 
+</p>
+
+
 <h3>Author(s)</h3>
 
-<p>
-Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>,<br>
-Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
-</p>
+<p>Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a></p>
 
 
 <h3>See Also</h3>
 
-<p>
-<code><a href="Estimate-class.html">Estimate-class</a></code>, <code><a href="MCEstimator.html">MCEstimator</a></code>, 
-<code><a href="MDEstimator.html">MDEstimator</a></code>, <code><a href="MLEstimator.html">MLEstimator</a></code>
-</p>
+<p><code></code>, <code></code>, 
+<code></code>, <code></code></p>
 
 
 <h3>Examples</h3>
@@ -160,7 +168,5 @@ location.href = link;
 }
 </script>
 
-
 <hr><div align="center">[Package <em>distrMod</em> version 2.2 <a href="00Index.html">Index</a>]</div>
-
 </body></html>

@@ -1,10 +1,10 @@
 <html><head><title>copySourceFromRForge</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>copySourceFromRForge(SweaveListingUtils)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>copySourceFromRForge(SweaveListingUtils)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   copySourceFromRForge">
 <param name="keyword" value=" copySourceFromRForge">
 </object>
@@ -17,8 +17,7 @@
 
 <p>
 copies lines of a source file (usually &lsquo;<span class="file">.R</span>&rsquo; oder &lsquo;<span class="file">.Rd</span>&rsquo;)
-from R forge repository
-</p>
+from R forge repository</p>
 
 
 <h3>Usage</h3>
@@ -75,21 +74,25 @@ Defaults to the corresponding global option</td></tr>
 character; base url from where to download the code sniplet</td></tr>
 </table>
 
+
 <h3>Details</h3>
 
 <p>
 produces a vector of characters where each component is one line of
 the original source file;
 arguments <code>from</code>, <code>to</code> may be
+
 <ul>
-<dt>missing</dt><dd>then the whole file (resp. from the beginning or to the end) is used</dd>
-<dt>numbers</dt><dd>then the limits are just given as line numbers</dd>
-<dt>characters</dt><dd>then file is searched for the first occurrance of a passage
+<li> missing: then the whole file (resp. from the beginning or to the end) is used
+</li>
+<li>numbers: then the limits are just given as line numbers
+</li>
+<li>characters: then file is searched for the first occurrance of a passage
 framed by <code>from</code>, <code>to</code>; uses <code>grep</code>; hence
-<a href="onclick="findlink('base', 'regex.html')" style="text-decoration: underline; color: blue; cursor: hand"">regular expressions</a> may be used which involves masking
+<a onclick="findlink('base', 'regex.html')" style="text-decoration: underline; color: blue; cursor: hand">regular expressions</a> may be used which involves masking
 of (,{,\, etc.  as described in the cited reference;
-</dd></ul>
-<p>
+</ul>
+
 with offsets, additional lines may be pasted before and after the search result
 </p>
 
@@ -98,13 +101,13 @@ with offsets, additional lines may be pasted before and after the search result
 
 <p>
 the character content of the filtered source file,
-if nothing is found   it returns <code>invisible()</code>.</p>
+if nothing is found   it returns <code>invisible()</code>.
+</p>
+
 
 <h3>Author(s)</h3>
 
-<p>
-Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
-</p>
+<p>Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a></p>
 
 
 <h3>Examples</h3>
@@ -113,7 +116,7 @@ Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ru
 copySourceFromRForge("distr","R","AllClasses.R","distr", from =2, to =3,
                      offset.after=2)
 copySourceFromRForge("distr","R","AllClasses.R","distr", from ="setClass",
-                      to ="}")
+                      to ="\}")
 </pre>
 
 <script Language="JScript">
@@ -126,7 +129,5 @@ location.href = link;
 }
 </script>
 
-
 <hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.4 <a href="00Index.html">Index</a>]</div>
-
 </body></html>
