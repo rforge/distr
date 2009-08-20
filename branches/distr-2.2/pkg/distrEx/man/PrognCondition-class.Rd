@@ -11,8 +11,8 @@
 }
 \section{Slots}{
   \describe{
-    \item{\code{name}:}{Object of class \code{"character"}: name of the PrognCondition}
-    \item{\code{range}:}{Object of class \code{"EuclideanSpace"}: range of the PrognCondition}
+    \item{\code{name}}{Object of class \code{"character"}: name of the PrognCondition}
+    \item{\code{range}}{Object of class \code{"EuclideanSpace"}: range of the PrognCondition}
   }
 }
 \section{Extends}{

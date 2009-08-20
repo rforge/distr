@@ -30,20 +30,20 @@
 }
 \section{Slots}{
   \describe{
-    \item{\code{img}:}{Object of class \code{"Reals"}. }
-    \item{\code{param}:}{Object of class \code{"GParetoParameter"}. }
-    \item{\code{r}:}{\code{rgpd}}
-    \item{\code{d}:}{\code{dgpd}}
-    \item{\code{p}:}{\code{pgpd}, but vectorized and with special treatment of 
+    \item{\code{img}}{Object of class \code{"Reals"}. }
+    \item{\code{param}}{Object of class \code{"GParetoParameter"}. }
+    \item{\code{r}}{\code{rgpd}}
+    \item{\code{d}}{\code{dgpd}}
+    \item{\code{p}}{\code{pgpd}, but vectorized and with special treatment of 
              arguments \code{lower.tail} and \code{log.p}}
-    \item{\code{q}:}{\code{qgpd}, but vectorized and with special treatment of 
+    \item{\code{q}}{\code{qgpd}, but vectorized and with special treatment of 
              arguments \code{lower.tail} and \code{log.p}}
-    \item{\code{gaps}:}{(numeric) matrix or \code{NULL}}
-    \item{\code{.withArith}:}{logical: used internally to issue warnings as to interpretation of arithmetics}
-    \item{\code{.withSim}:}{logical: used internally to issue warnings as to accuracy}
-    \item{\code{.logExact}:}{logical: used internally to flag the case where there are explicit formulae for the
+    \item{\code{gaps}}{(numeric) matrix or \code{NULL}}
+    \item{\code{.withArith}}{logical: used internally to issue warnings as to interpretation of arithmetics}
+    \item{\code{.withSim}}{logical: used internally to issue warnings as to accuracy}
+    \item{\code{.logExact}}{logical: used internally to flag the case where there are explicit formulae for the
                               log version of density, cdf, and quantile function}
-    \item{\code{.lowerExact}:}{logical: used internally to flag the case where there are explicit formulae for the
+    \item{\code{.lowerExact}}{logical: used internally to flag the case where there are explicit formulae for the
                               lower tail version of cdf and quantile function}
   }
 }

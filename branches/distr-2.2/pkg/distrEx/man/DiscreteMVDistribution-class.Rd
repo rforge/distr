@@ -12,26 +12,26 @@
 }
 \section{Slots}{
   \describe{
-    \item{\code{img}:}{ Object of class \code{"rSpace"}. 
+    \item{\code{img}}{ Object of class \code{"rSpace"}. 
       Image space of the distribution. Usually an object of 
       class \code{"EuclideanSpace"}.}
-    \item{\code{param}:}{Object of class \code{"OptionalParameter"}.
+    \item{\code{param}}{Object of class \code{"OptionalParameter"}.
       Optional parameter of the multivariate distribution.}
-    \item{\code{r}:}{Object of class \code{"function"}: 
+    \item{\code{r}}{Object of class \code{"function"}: 
       generates (pseudo-)random numbers}
-    \item{\code{d}:}{Object of class \code{"OptionalFunction"}: 
+    \item{\code{d}}{Object of class \code{"OptionalFunction"}: 
       optional density function}
-    \item{\code{p}:}{Object of class \code{"OptionalFunction"}: 
+    \item{\code{p}}{Object of class \code{"OptionalFunction"}: 
       optional cumulative distribution function }
-    \item{\code{q}:}{Object of class \code{"OptionalFunction"}: 
+    \item{\code{q}}{Object of class \code{"OptionalFunction"}: 
       optional quantile function }
-    \item{\code{support}:}{ numeric matrix whose rows form the
+    \item{\code{support}}{ numeric matrix whose rows form the
       support of the distribution}
-    \item{\code{.withArith}:}{logical: used internally to issue warnings as to interpretation of arithmetics}
-    \item{\code{.withSim}:}{logical: used internally to issue warnings as to accuracy}
-    \item{\code{.logExact}:}{logical: used internally to flag the case where there are explicit formulae for the
+    \item{\code{.withArith}}{logical: used internally to issue warnings as to interpretation of arithmetics}
+    \item{\code{.withSim}}{logical: used internally to issue warnings as to accuracy}
+    \item{\code{.logExact}}{logical: used internally to flag the case where there are explicit formulae for the
                               log version of density, cdf, and quantile function}
-    \item{\code{.lowerExact}:}{logical: used internally to flag the case where there are explicit formulae for the
+    \item{\code{.lowerExact}}{logical: used internally to flag the case where there are explicit formulae for the
                               lower tail version of cdf and quantile function}
   }
 }
