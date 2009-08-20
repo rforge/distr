@@ -12,12 +12,12 @@ Objects can be created by calls of the form \code{new("MVtParameter", ...)}.
 }
 \section{Slots}{
   \describe{
-    \item{\code{loc}:}{ numeric; center / location of the distribution. }
-    \item{\code{scale}:}{ matrix; the scale matrix; the number of rows of this 
+    \item{\code{loc}}{ numeric; center / location of the distribution. }
+    \item{\code{scale}}{ matrix; the scale matrix; the number of rows of this 
     matrix must be the same as the length of \code{location}.}
-    \item{\code{df}:}{ integer; the degrees of freedom. }
-    \item{\code{ncp}:}{ positive real; the non-centrality parameter.}
-    \item{\code{name}:}{ default name is 
+    \item{\code{df}}{ integer; the degrees of freedom. }
+    \item{\code{ncp}}{ positive real; the non-centrality parameter.}
+    \item{\code{name}}{ default name is 
       \dQuote{parameter of a Elliptical distribution}. }
   }
 }

@@ -18,18 +18,18 @@ to the references given in this package.
 }
 \section{Slots}{
   \describe{
-    \item{\code{img}:}{Object of class \code{"Reals"}. }
-    \item{\code{param}:}{Object of class \code{"MVtParameter"}. }
-    \item{\code{r}:}{function with argument \code{n}; random number generator}
-    \item{\code{d}:}{ the density of this distribution, \code{\link[mvtnorm]{pmvnorm}}}
-    \item{\code{p}:}{the (vectorized) function \code{\link[mvtnorm]{pmvnorm}}.}
-    \item{\code{q}:}{the (vectorized) function \code{\link[mvtnorm]{qmvnorm}}.}
-    \item{\code{radDistr}:}{the distribution \code{sqrt(Chisq(df=dim0))}}
-    \item{\code{.withArith}:}{FALSE}
-    \item{\code{.withSim}:}{FALSE}
-    \item{\code{.logExact}:}{TRUE}
-    \item{\code{.lowerExact}:}{TRUE}
-    \item{\code{Symmetry}:}{object of class \code{"EllipticalSymmetry"} about 
+    \item{\code{img}}{Object of class \code{"Reals"}. }
+    \item{\code{param}}{Object of class \code{"MVtParameter"}. }
+    \item{\code{r}}{function with argument \code{n}; random number generator}
+    \item{\code{d}}{ the density of this distribution, \code{\link[mvtnorm]{pmvnorm}}}
+    \item{\code{p}}{the (vectorized) function \code{\link[mvtnorm]{pmvnorm}}.}
+    \item{\code{q}}{the (vectorized) function \code{\link[mvtnorm]{qmvnorm}}.}
+    \item{\code{radDistr}}{the distribution \code{sqrt(Chisq(df=dim0))}}
+    \item{\code{.withArith}}{FALSE}
+    \item{\code{.withSim}}{FALSE}
+    \item{\code{.logExact}}{TRUE}
+    \item{\code{.lowerExact}}{TRUE}
+    \item{\code{Symmetry}}{object of class \code{"EllipticalSymmetry"} about 
     center \code{loc}; used internally to avoid unnecessary calculations.}
 }}
 \section{Extends}{
@@ -46,7 +46,6 @@ Class \code{"Distribution"}, by class \code{"MultivariateDistribution"}.
 
     \item{mean}{\code{signature(object = "MVNormDistribution")}: wrapped access method for
       slot \code{location}  of slot \code{param}. }
-
   }
 }
 \author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}

@@ -8,9 +8,9 @@
 \section{Objects from the Class}{A virtual Class: No objects may be created from it.}
 \section{Slots}{
   \describe{
-    \item{\code{type}:}{Object of class \code{"character"}:
+    \item{\code{type}}{Object of class \code{"character"}:
       discribes type of symmetry. }
-    \item{\code{SymmCenter}:}{Object of class \code{"OptionalNumeric"}:
+    \item{\code{SymmCenter}}{Object of class \code{"OptionalNumeric"}:
       center of symmetry. }
   }
 }

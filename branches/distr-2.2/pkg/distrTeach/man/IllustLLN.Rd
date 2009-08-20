@@ -66,7 +66,7 @@ There are default \code{main} titles as well as \code{xlab} and \code{ylab}
 annotations.
 
 In all title arguments, the following patterns are substituted:
-\itemize{
+\describe{
 \item{\code{"\%C"}}{class of argument \code{x}}
 \item{\code{"\%P"}}{parameters of \code{x} in form of a comma-separated list of
                    <value>'s coerced to character}

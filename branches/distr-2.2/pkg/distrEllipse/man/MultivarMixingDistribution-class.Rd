@@ -36,26 +36,26 @@ Objects can be created by calls of the form
 }
 \section{Slots}{
   \describe{
-    \item{\code{mixCoeff}:}{Object of class \code{"numeric"}: a vector of 
+    \item{\code{mixCoeff}}{Object of class \code{"numeric"}: a vector of 
             probabilities for the mixing components.}
-    \item{\code{mixDistr}:}{Object of class \code{"MultivarDistrList"}: a list of
+    \item{\code{mixDistr}}{Object of class \code{"MultivarDistrList"}: a list of
     multivariate distributions containing the mixing components; must be of same
     length as \code{mixCoeff}.}
-    \item{\code{img}:}{Object of class \code{"Reals"}: the space of the image of this distribution which has dimension 1
+    \item{\code{img}}{Object of class \code{"Reals"}: the space of the image of this distribution which has dimension 1
     and the name "Real Space" }
-    \item{\code{param}:}{Object of class \code{"Parameter"}: the parameter of this distribution, having only the
+    \item{\code{param}}{Object of class \code{"Parameter"}: the parameter of this distribution, having only the
     slot name "Parameter of a discrete distribution" }
-    \item{\code{r}:}{Object of class \code{"function"}: generates random numbers}
-    \item{\code{d}:}{fixed to \code{NULL}}
-    \item{\code{p}:}{Object of class \code{"OptionalFunction"}: if non-null cumulative distribution function}
-    \item{\code{q}:}{Object of class \code{"OptionalFunction"}: if non-null quantile function}
-    \item{\code{.withArith}:}{logical: used internally to issue warnings as to interpretation of arithmetics}
-    \item{\code{.withSim}:}{logical: used internally to issue warnings as to accuracy}
-    \item{\code{.logExact}:}{logical: used internally to flag the case where there are explicit formulae for the
+    \item{\code{r}}{Object of class \code{"function"}: generates random numbers}
+    \item{\code{d}}{fixed to \code{NULL}}
+    \item{\code{p}}{Object of class \code{"OptionalFunction"}: if non-null cumulative distribution function}
+    \item{\code{q}}{Object of class \code{"OptionalFunction"}: if non-null quantile function}
+    \item{\code{.withArith}}{logical: used internally to issue warnings as to interpretation of arithmetics}
+    \item{\code{.withSim}}{logical: used internally to issue warnings as to accuracy}
+    \item{\code{.logExact}}{logical: used internally to flag the case where there are explicit formulae for the
                               log version of density, cdf, and quantile function}
-    \item{\code{.lowerExact}:}{logical: used internally to flag the case where there are explicit formulae for the
+    \item{\code{.lowerExact}}{logical: used internally to flag the case where there are explicit formulae for the
                               lower tail version of cdf and quantile function}
-    \item{\code{Symmetry}:}{object of class \code{"DistributionSymmetry"};
+    \item{\code{Symmetry}}{object of class \code{"DistributionSymmetry"};
      used internally to avoid unnecessary calculations.}
   }
 }

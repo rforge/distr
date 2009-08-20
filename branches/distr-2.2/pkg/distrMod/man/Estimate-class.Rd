@@ -38,28 +38,28 @@
 }
 \section{Slots}{
   \describe{
-    \item{\code{name}:}{Object of class \code{"character"}:
+    \item{\code{name}}{Object of class \code{"character"}:
       name of the estimator. }
-    \item{\code{estimate}:}{Object of class \code{"ANY"}:
+    \item{\code{estimate}}{Object of class \code{"ANY"}:
       estimate.}
-    \item{\code{estimate.call}:}{Object of class \code{"call"}:
+    \item{\code{estimate.call}}{Object of class \code{"call"}:
       call by which estimate was produced.}
-    \item{\code{Infos}:}{ object of class \code{"matrix"}
+    \item{\code{Infos}}{ object of class \code{"matrix"}
       with two columns named \code{method} and \code{message}:
       additional informations. }
-    \item{\code{asvar}:}{ object of class \code{"OptionalNumericOrMatrix"}
+    \item{\code{asvar}}{ object of class \code{"OptionalNumericOrMatrix"}
       which may contain the asymptotic (co)variance of the estimator. }
-    \item{\code{samplesize}:}{ object of class \code{"numeric"} ---
+    \item{\code{samplesize}}{ object of class \code{"numeric"} ---
       the samplesize at which the estimate was evaluated. }
-    \item{\code{nuis.idx}:}{ object of class \code{"OptionalNumeric"}: 
+    \item{\code{nuis.idx}}{ object of class \code{"OptionalNumeric"}: 
      indices of \code{estimate} belonging to the nuisance part. }
-    \item{\code{fixed}:}{ object of class \code{"OptionalNumeric"}: 
+    \item{\code{fixed}}{ object of class \code{"OptionalNumeric"}: 
      the fixed and known part of the parameter. }
-    \item{\code{trafo}:}{ object of class \code{"list"}: 
+    \item{\code{trafo}}{ object of class \code{"list"}: 
      a list with components \code{fct} and \code{mat} (see below). }
-    \item{\code{untransformed.estimate}:}{Object of class \code{"ANY"}:
+    \item{\code{untransformed.estimate}}{Object of class \code{"ANY"}:
       untransformed estimate. }
-    \item{\code{untransformed.asvar}:}{ object of class \code{"OptionalNumericOrMatrix"}
+    \item{\code{untransformed.asvar}}{ object of class \code{"OptionalNumericOrMatrix"}
       which may contain the asymptotic (co)variance of the untransformed 
       estimator. }
   }

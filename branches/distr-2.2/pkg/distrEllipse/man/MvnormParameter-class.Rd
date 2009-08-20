@@ -6,17 +6,17 @@
 \alias{sigma}
 \alias{sigma,MVNormParameter-method}
 
-\title{Paramter of a multivariate normal  distribution}
+\title{Paramter of a multivariate normal distribution}
 \description{The class of the parameter of MVNorm distributions.}
 \section{Objects from the Class}{
 Objects can be created by calls of the form \code{new("MVNormParameter", ...)}.
 }
 \section{Slots}{
   \describe{
-    \item{\code{loc}:}{ numeric; center / location of the distribution. }
-    \item{\code{scale}:}{ matrix; the scale matrix; the number of rows of this 
+    \item{\code{loc}}{ numeric; center / location of the distribution. }
+    \item{\code{scale}}{ matrix; the scale matrix; the number of rows of this 
     matrix must be the same as the length of \code{location}.}
-    \item{\code{name}:}{ default name is 
+    \item{\code{name}}{ default name is 
       \dQuote{parameter of a Elliptical distribution}. }
   }
 }

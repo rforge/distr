@@ -19,24 +19,24 @@ to the references given in this package.
 }
 \section{Slots}{
   \describe{
-    \item{\code{img}:}{Object of class \code{"Reals"}. }
-    \item{\code{param}:}{Object of class \code{"MVtParameter"}. }
-    \item{\code{r}:}{function with argument \code{n}; random number generator}
-    \item{\code{d}:}{ the density of this distribution, \code{\link[mvtnorm]{dmvt}}}
-    \item{\code{p}:}{the (vectorized) function \code{\link[mvtnorm]{pmvt}}.}
-    \item{\code{q}:}{the (vectorized) function \code{\link[mvtnorm]{qmvt}}.}
-    \item{\code{radDistr}:}{an object of class \code{AbscontDistribution}
+    \item{\code{img}}{Object of class \code{"Reals"}. }
+    \item{\code{param}}{Object of class \code{"MVtParameter"}. }
+    \item{\code{r}}{function with argument \code{n}; random number generator}
+    \item{\code{d}}{ the density of this distribution, \code{\link[mvtnorm]{dmvt}}}
+    \item{\code{p}}{the (vectorized) function \code{\link[mvtnorm]{pmvt}}.}
+    \item{\code{q}}{the (vectorized) function \code{\link[mvtnorm]{qmvt}}.}
+    \item{\code{radDistr}}{an object of class \code{AbscontDistribution}
     with density 
     \deqn{{\rm dim} {({\rm dim}+{\rm df}-1)/2\choose{{\rm df}/2-1}} x^{{\rm dim}-1} {\rm df}^{-{\rm dim}/2}/
       (1+x^2/{\rm df})^{({\rm dim}+{\rm df})/2}}{
       dim * choose((dim+df-1)/2, (df-1)/2) * x ^{dim-1} *  df^(-dim/2) * 
       (1+x^2/df)^{-(dim+df)/2}}
     }
-    \item{\code{.withArith}:}{FALSE}
-    \item{\code{.withSim}:}{FALSE}
-    \item{\code{.logExact}:}{TRUE}
-    \item{\code{.lowerExact}:}{TRUE}
-    \item{\code{Symmetry}:}{object of class \code{"EllipticalSymmetry"} about 
+    \item{\code{.withArith}}{FALSE}
+    \item{\code{.withSim}}{FALSE}
+    \item{\code{.logExact}}{TRUE}
+    \item{\code{.lowerExact}}{TRUE}
+    \item{\code{Symmetry}}{object of class \code{"EllipticalSymmetry"} about 
     center \code{loc}; used internally to avoid unnecessary calculations.}
 }}
 \section{Extends}{
@@ -55,8 +55,6 @@ Class \code{"Distribution"}, by class \code{"MultivariateDistribution"}.
 
     \item{df}{\code{signature(x = "MVtDistribution")}: wrapped access method for
       slot \code{scale} of slot \code{param}. }
-
-
   }
 }
 \author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
