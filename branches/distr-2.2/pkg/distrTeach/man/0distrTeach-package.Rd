@@ -26,8 +26,6 @@ Depends: \tab R(>= 2.2.0), methods, distr(>= 2.0), distrEx(>= 2.0),
 startupmsg\cr
 LazyLoad: \tab yes\cr
 License: \tab LGPL-3\cr
-License: \tab LGPL-3\cr
-License: \tab LGPL-3\cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
 }
 }
@@ -38,17 +36,16 @@ Teaching Classes
 
 }
 }
-\section{Functions}{
-
-\preformatted{
-
-}}
-
-\section{Generating Functions}{
-\preformatted{
-
-
-}}
+%\section{Functions}{
+%
+%\preformatted{
+%
+%}}
+%
+%\section{Generating Functions}{
+%\preformatted{
+%
+%}}
 \section{Methods}{
 \preformatted{
 
