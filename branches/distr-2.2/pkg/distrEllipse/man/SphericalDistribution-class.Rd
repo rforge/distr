@@ -159,6 +159,7 @@ Class \code{"Distribution"}, by class \code{"MultivariateDistribution"}.
 }
 \author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 \examples{
+new("SphericalDistribution") ## better use SphericalDistribution()
 }
 \concept{Spherical Distribution}
 \keyword{distribution}

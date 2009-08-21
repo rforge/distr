@@ -50,6 +50,7 @@ Class \code{"Distribution"}, by class \code{"MultivariateDistribution"}.
 }
 \author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 \examples{
+new("MVNormDistribution") ## better use MVNorm()
 }
 \seealso{Package \pkg{mvtnorm}}
 \concept{Multivariate normal Distribution}
