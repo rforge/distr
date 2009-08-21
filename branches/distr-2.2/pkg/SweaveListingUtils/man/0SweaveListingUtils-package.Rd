@@ -134,6 +134,9 @@ be found in the \file{doc} folder of this package.
 Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}\cr
 \emph{Maintainer:} Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}
 }
+\note{This version already uses 'new-style' Rd-format version 1.1.
+For versions installable for \eqn{<}\R-2.10.0, try and get a version
+0.3.x of this package from a suitable repository.}
 
 \keyword{package}
 \keyword{utilities}

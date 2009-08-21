@@ -47,7 +47,7 @@ SweaveListingPreparations(
                        based on 'listings' command 'lstnewenvironment';
                        this option is due to a suggestion by
                        Andrew Ellis (thank you!).}
-  \item{withSchunkDef}{logical: shall environment \verb{Schunk} be defined?}
+  \item{withSchunkDef}{logical: shall environment \code{Schunk} be defined?}
   \item{gin}{logical: shall we use \code{gin}}
   \item{ae}{logical: shall we use \code{ae}}
   \item{LineLength}{numeric; defaults to 80}
@@ -73,8 +73,8 @@ SweaveListingPreparations(
              defaults to global option \code{"pkg"}}
   \item{pkv}{character; package version to be described (e.g. in a vignette);
              defaults to global option \code{"pkv"}}
-  \item{fileCommand}{character; the TeX code to define TeX command \verb{\\file}}
-  \item{pkgCommand}{character; the TeX code to define TeX command \verb{\\pkg}}
+  \item{fileCommand}{character; the TeX code to define TeX command \code{\\file}}
+  \item{pkgCommand}{character; the TeX code to define TeX command \code{\\pkg}}
   \item{lib.loc}{location of a local library in which the described package resides}
   }
 

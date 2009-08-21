@@ -27,6 +27,7 @@ to integrate Sweave and package listings
 SweaveListingPreparations(
    withOwnFileSection = FALSE,
    withVerbatim = FALSE,
+   withSchunkDef = TRUE,
    gin = TRUE,
    ae = TRUE,
    LineLength = getOption("width"),
@@ -42,6 +43,8 @@ SweaveListingPreparations(
    Rcommentcolor = getSweaveListingOption("Rcommentcolor"),
    pkg = getSweaveListingOption("pkg"),
    pkv = getSweaveListingOption("pkv"),
+   fileCommand = getSweaveListingOption("fileCommand"),
+   pkgCommand = getSweaveListingOption("pkgCommand"),
    lib.loc = NULL)
 </pre>
 
@@ -70,6 +73,9 @@ Fritz Leisch) or just TeX package 'listings'
 based on 'listings' command 'lstnewenvironment';
 this option is due to a suggestion by
 Andrew Ellis (thank you!).</td></tr>
+<tr valign="top"><td><code>withSchunkDef</code></td>
+<td>
+logical: shall environment <code>Schunk</code> be defined?</td></tr>
 <tr valign="top"><td><code>gin</code></td>
 <td>
 logical: shall we use <code>gin</code></td></tr>
@@ -125,6 +131,12 @@ defaults to global option <code>"pkg"</code></td></tr>
 <td>
 character; package version to be described (e.g. in a vignette);
 defaults to global option <code>"pkv"</code></td></tr>
+<tr valign="top"><td><code>fileCommand</code></td>
+<td>
+character; the TeX code to define TeX command <code>\file</code></td></tr>
+<tr valign="top"><td><code>pkgCommand</code></td>
+<td>
+character; the TeX code to define TeX command <code>\pkg</code></td></tr>
 <tr valign="top"><td><code>lib.loc</code></td>
 <td>
 location of a local library in which the described package resides</td></tr>
@@ -135,9 +147,10 @@ location of a local library in which the described package resides</td></tr>
 <p>
 <code>SweaveListingPreparations</code>
 writes a corresponding preamble to the &lsquo;<span class="file">.Rnw</span>&rsquo;-file for the simultaneous use
-of Sweave and package listings; note that the lines
+of Sweave and package listings; note that so far, even if you do not want to
+use the default style file &lsquo;<span class="file">Sweave.sty</span>&rsquo;, the lines
 <pre>
-\usepackage{Sweave}
+%\usepackage{Sweave}
 \SweaveOpts{keep.source=TRUE}
 </pre>
 still have to appear in the &lsquo;<span class="file">.Rnw</span>&rsquo; file &mdash; before the corresponding
@@ -201,6 +214,6 @@ SweaveListingPreparations(pkv="2.1")
 
 
 
-<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.3.2 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.3.5 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

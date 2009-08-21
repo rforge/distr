@@ -122,5 +122,8 @@ Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}\cr
 \emph{Maintainer:} Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}
 }
 
+\note{This version is still to be used with 'old-style' Rd-format version 1.0.
+From version 0.4, this package will be using Rd-format version 1.1, hence we
+will require \eqn{\ge}{>=}\R-2.10.0 then.}
 \keyword{package}
 \keyword{utilities}

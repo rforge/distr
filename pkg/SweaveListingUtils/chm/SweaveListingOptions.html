@@ -30,6 +30,8 @@
 <param name="keyword" value="R:   base.url">
 <param name="keyword" value="R:   addRset">
 <param name="keyword" value="R:   addRdset">
+<param name="keyword" value="R:   fileCommand">
+<param name="keyword" value="R:   pkgCommand">
 <param name="keyword" value=" Function to change the global options of the package &lsquo;SweaveListingUtils&rsquo;">
 </object>
 
@@ -94,7 +96,7 @@ just a synonym to <code>SweaveListingOptions</code>.
 <code>        "otherkeywords" = </code>
 <code>        "otherkeywords" = "{!,!=,~,$,*,\\&amp;,\\ %/\\ %,\\ %*\\ %,\\ %\\ %,&lt;-,&lt;&lt;-,/}")</code><br>
 (CAVEAT: the spaces between the double backslashes and the percent sign in the last line
-are <EM>not</EM> intended; I simply did not find another work-around)
+are <EM>not</EM> intended; will be changed in the version due for <i>&gt;=</i><font face="Courier New,Courier" color="#666666"><b>R</b></font>-2.10.0)
 </dd>
 <dt>Rdset:</dt><dd>default setting for \lstset-definition of Rd-code, default value is<br>
 <code>list("fancyvrb" = "true", "language" = "Rd",</code><br>
@@ -166,6 +168,10 @@ defaults to <code>TRUE</code></dd>
 <code>Routset</code>; defaults to <code>TRUE</code></dd>
 <dt>addRcodeset:</dt><dd>logical; default for argument <code>add</code> in command
 <code>Rcodeset</code>; defaults to <code>TRUE</code></dd>
+<dt>fileCommand:</dt><dd>character; the TeX code to define TeX command <code>\file</code>;
+defaults to <code>"\def\file#1{{\tt #1}}"</code></dd>
+<dt>pkgCommand:</dt><dd>character; the TeX code to define TeX command <code>\pkg</code>;
+defaults to <code>"\def\pkg#1{{\tt \"#1\"}}"</code></dd>
 </dl>
 
 <h3>Author(s)</h3>
@@ -204,6 +210,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.3.4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.3.5 <a href="00Index.html">Index</a>]</div>
 
 </body></html>
