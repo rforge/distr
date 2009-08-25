@@ -34,6 +34,8 @@
 }
 
 .show.with.sd <- function(est, s){
+        est <- as.numeric(est); dim(est) <- NULL
+        s <- as.numeric(s); dim(s) <- NULL
   ### code borrowed from print.fitdistr in  package MASS by B.D. Ripley
         digits <- getOption("digits")
         ans <- format(base::rbind(est, s), digits=digits)
