@@ -10,6 +10,8 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist, dist.name,
     es.call <- match.call()
     dots <- match.call(expand.dots = FALSE)$"..."
 
+    completecases <- complete.cases(x)
+    if(na.rm) x <- na.omit(x)
 
     ## some checking
     if(!is.numeric(x))
@@ -17,8 +19,6 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist, dist.name,
     if(is.null(startPar)) startPar <- startPar(ParamFamily)(x,...)
     if(missing(dist.name))
       dist.name <- names(distance(x, ParamFamily@distribution))
-
-    if(na.rm) x <- complete.cases(x)
 
 
     ## manipulation of the arg list to method mceCalc
@@ -48,6 +48,7 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist, dist.name,
     ## digesting the results of mceCalc
     res <- do.call(.process.meCalcRes, argList)
 
+    res@completecases <- completecases
     return(res)
 }
 

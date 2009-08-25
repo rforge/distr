@@ -10,6 +10,8 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name,
     es.call <- match.call()
     dots <- match.call(expand.dots = FALSE)$"..."
 
+    completecases <- complete.cases(x)
+    if(na.rm) x <- na.omit(x)
 
     ## some checking
     if(!is.numeric(x))
@@ -18,8 +20,6 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name,
       stop(gettext("'ParamFamily' has to be of class 'ParamFamily'"))
     if(!is.function(criterion))
       stop(gettext("'criterion' has to be a function"))
-
-    if(na.rm) x <- complete.cases(x)
 
 
     ## manipulation of the arg list to method mceCalc
@@ -50,6 +50,7 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name,
     
     ## digesting the results of mceCalc
     res <- do.call(.process.meCalcRes, argList)
+    res@completecases <- completecases
 
     return(res)
 }

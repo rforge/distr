@@ -11,6 +11,8 @@
 \alias{Infos,Estimate-method}
 \alias{samplesize}
 \alias{samplesize,Estimate-method}
+\alias{completecases}
+\alias{completecases,Estimate-method}
 \alias{asvar}
 \alias{asvar,Estimate-method}
 \alias{fixed,Estimate-method}
@@ -50,8 +52,11 @@
     \item{\code{asvar}:}{ object of class \code{"OptionalNumericOrMatrix"}
       which may contain the asymptotic (co)variance of the estimator. }
     \item{\code{samplesize}:}{ object of class \code{"numeric"} ---
-      the samplesize at which the estimate was evaluated. }
-    \item{\code{nuis.idx}:}{ object of class \code{"OptionalNumeric"}: 
+      the samplesize (only complete cases are counted)
+      at which the estimate was evaluated. }
+    \item{\code{completecases}:}{ object of class \code{"logical"} ---
+         complete cases at which the estimate was evaluated. }
+    \item{\code{nuis.idx}:}{ object of class \code{"OptionalNumeric"}:
      indices of \code{estimate} belonging to the nuisance part}
     \item{\code{fixed}:}{ object of class \code{"OptionalNumeric"}: 
      the fixed and known part of the parameter}
@@ -82,9 +87,16 @@
       accessor function for slot \code{estimate.call}. }
 
     \item{samplesize}{\code{signature(object = "Estimate")}: 
-      accessor function for slot \code{samplesize}. }
+      (with additional argument \code{onlycompletecases}
+      defaulting to \code{TRUE} returns the sample size;
+      in case there are any incomplete cases and argument
+      \code{onlycompletecases} is \code{FALSE}, the number of
+      these is added to slot \code{samplesize}. }
 
-    \item{asvar}{\code{signature(object = "Estimate")}: 
+    \item{completecases}{\code{signature(object = "Estimate")}:
+      accessor function for slot \code{completecases}. }
+
+    \item{asvar}{\code{signature(object = "Estimate")}:
       accessor function for slot \code{asvar}. }
 
     \item{asvar<-}{\code{signature(object = "Estimate")}: 

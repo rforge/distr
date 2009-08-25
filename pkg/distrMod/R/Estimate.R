@@ -48,7 +48,9 @@ setMethod("addInfo<-", "Estimate",
         object 
     })
 
-setMethod("samplesize", "Estimate", function(object) object@samplesize)
+setMethod("samplesize", "Estimate", function(object, onlycompletecases = TRUE)
+   object@samplesize+(1-onlycompletecases)*sum(object@completecases))
+setMethod("completecases", "Estimate", function(object) object@completecases)
 setMethod("asvar", "Estimate", function(object) object@asvar)
 
 setReplaceMethod("asvar", "Estimate", 

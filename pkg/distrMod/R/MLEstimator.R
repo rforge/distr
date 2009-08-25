@@ -12,13 +12,15 @@ MLEstimator <- function(x, ParamFamily, startPar = NULL,
     dots <- match.call(expand.dots = FALSE)$"..."
 
 
+    completecases <- complete.cases(x)
+    if(na.rm) x <- na.omit(x)
+
+
     ## some checking
     if(!is.numeric(x))
       stop(gettext("'x' has to be a numeric vector"))   
     if(is.null(startPar)) startPar <- startPar(ParamFamily)(x,...)
 
-
-    if(na.rm) x <- complete.cases(x)
 
     ## manipulation of the arg list to method mceCalc
     argList <- c(list(x = x, PFam = ParamFamily, startPar = startPar, 
@@ -48,7 +50,8 @@ MLEstimator <- function(x, ParamFamily, startPar = NULL,
     names(res@criterion) <- "negative log-likelihood"
     res@estimate.call <- es.call
     res@name <- "Maximum likelihood estimate"
-    
+    res@completecases <- completecases
+
     return(res)
 }
 
