@@ -211,6 +211,11 @@ has been borrowed from \code{print.fitdistr} in package \pkg{MASS} by B.D. Riple
 \examples{
 x <- rnorm(100)
 Estimator(x, estimator = mean, name = "mean")
+
+x1 <- x; x1[sample(1:100,10)] <- NA
+myEst1 <- Estimator(x1, estimator = mean, name = "mean")
+samplesize(myEst1)
+samplesize(myEst1, onlycomplete = FALSE)
 }
 \concept{estimate}
 \keyword{classes}

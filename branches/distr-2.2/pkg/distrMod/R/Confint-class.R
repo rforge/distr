@@ -10,7 +10,7 @@ setMethod("completecases.estimate", signature(object="Confint"),
 setMethod("samplesize.estimate", signature(object="Confint"),
            function(object, onlycompletecases = TRUE)
   	    (object@samplesize.estimate+
-  	     (1-onlycompletecases)*sum(object@completecases.estimate)))
+  	     (1-onlycompletecases)*sum(object@completecases.estimate==FALSE)))
 setMethod("nuisance.estimate", signature(object="Confint"),
            function(object) object@nuisance.estimate)
 setMethod("trafo.estimate", signature(object="Confint"),

@@ -286,6 +286,11 @@ Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ru
 <pre>
 x &lt;- rnorm(100)
 Estimator(x, estimator = mean, name = "mean")
+
+x1 &lt;- x; x1[sample(1:100,10)] &lt;- NA
+myEst1 &lt;- Estimator(x1, estimator = mean, name = "mean")
+samplesize(myEst1)
+samplesize(myEst1, onlycomplete = FALSE)
 </pre>
 
 <script Language="JScript">
