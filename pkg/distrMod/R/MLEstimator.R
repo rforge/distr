@@ -5,7 +5,7 @@
 
 ## Maximum-Likelihood estimator
 MLEstimator <- function(x, ParamFamily, startPar = NULL, 
-                        Infos, trafo = NULL, penalty = 0, ...){
+                        Infos, trafo = NULL, penalty = 0, na.rm = TRUE, ...){
 
     ## preparation: getting the matched call
     es.call <- match.call()
@@ -17,6 +17,8 @@ MLEstimator <- function(x, ParamFamily, startPar = NULL,
       stop(gettext("'x' has to be a numeric vector"))   
     if(is.null(startPar)) startPar <- startPar(ParamFamily)(x,...)
 
+
+    if(na.rm) x <- complete.cases(x)
 
     ## manipulation of the arg list to method mceCalc
     argList <- c(list(x = x, PFam = ParamFamily, startPar = startPar, 

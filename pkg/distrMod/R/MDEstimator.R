@@ -3,7 +3,8 @@
 ###############################################################################
 MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist, dist.name, 
                         startPar = NULL,  Infos, 
-                        trafo = NULL, penalty = 0, asvar.fct, ...){
+                        trafo = NULL, penalty = 0, asvar.fct,
+                        na.rm = TRUE, ...){
 
     ## preparation: getting the matched call
     es.call <- match.call()
@@ -17,6 +18,7 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist, dist.name,
     if(missing(dist.name))
       dist.name <- names(distance(x, ParamFamily@distribution))
 
+    if(na.rm) x <- complete.cases(x)
 
 
     ## manipulation of the arg list to method mceCalc

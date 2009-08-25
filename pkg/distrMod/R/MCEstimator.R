@@ -4,7 +4,7 @@
 MCEstimator <- function(x, ParamFamily, criterion, crit.name, 
                         startPar = NULL, 
                         Infos, trafo = NULL, penalty = 0, validity.check = TRUE,
-                        asvar.fct, ...){
+                        asvar.fct, na.rm =TRUE, ...){
 
     ## preparation: getting the matched call
     es.call <- match.call()
@@ -18,6 +18,9 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name,
       stop(gettext("'ParamFamily' has to be of class 'ParamFamily'"))
     if(!is.function(criterion))
       stop(gettext("'criterion' has to be a function"))
+
+    if(na.rm) x <- complete.cases(x)
+
 
     ## manipulation of the arg list to method mceCalc
     argList <- c(list(x = x, PFam = ParamFamily, criterion = criterion, 

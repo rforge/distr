@@ -2,7 +2,7 @@
 ## Function to compute estimates
 ###############################################################################
 Estimator <- function(x, estimator, name, Infos, asvar = NULL, nuis.idx,
-                      trafo = NULL, fixed = NULL, asvar.fct, ...){
+                      trafo = NULL, fixed = NULL, asvar.fct, na.rm = TRUE, ...){
 
     name.est <- paste(deparse(substitute(estimator)),sep="",collapse="")     
     es.call <- match.call()
@@ -20,6 +20,7 @@ Estimator <- function(x, estimator, name, Infos, asvar = NULL, nuis.idx,
     samplesize <- if(is.null(dim(x))) length(x) else dim(x)[2]
 
 
+    if(na.rm) x <- complete.cases(x)
     estimate <- estimator(x, ...)
     
     l.e <- length(estimate)

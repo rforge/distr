@@ -12,19 +12,6 @@ Title=R Help for package SweaveListingUtils
 
 [FILES]
 00Index.html
-0SweaveListingUtils-package.html
-SweaveListingMASK.html
-SweaveListingOptions.html
-SweaveListingPreparations.html
-changeKeywordstyles.html
-copySourceFromRForge.html
+
 isBaseOrRecommended.html
-library.html
-lstinputSourceFromRForge.html
-lstset.html
-lstsetLanguage.html
-readPackageVersion.html
-readSourceFromRForge.html
 setBaseOrRecommended.html
-setToBeDefinedPkgs.html
-taglist.html
