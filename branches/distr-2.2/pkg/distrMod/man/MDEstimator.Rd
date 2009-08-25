@@ -9,7 +9,7 @@
 \usage{
 MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name, 
             paramDepDist = FALSE, startPar = NULL,  Infos, trafo = NULL,
-            penalty = 1e20, asvar.fct, ...)
+            penalty = 1e20, asvar.fct, na.rm = TRUE, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -38,7 +38,8 @@ MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name,
     and \code{param} (the parameter value as object of class 
     \code{ParamFamParameter}); arguments are called by name; \code{asvar.fct}
      may also process further arguments passed through the \code{\dots} argument}              
-  \item{\dots}{ further arguments to \code{criterion} or \code{optimize} 
+  \item{na.rm}{logical: if  \code{TRUE}, the estimator is evaluated at \code{complete.cases(x)}.}
+  \item{\dots}{ further arguments to \code{criterion} or \code{optimize}
     or \code{optim}, respectively. }
 }
 \details{

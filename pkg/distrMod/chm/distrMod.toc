@@ -178,6 +178,22 @@
 <param name="Local" value="MCEstimate-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="completecases">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="completecases,Estimate-method">
+<param name="Local" value="Estimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="completecases.estimate">
+<param name="Local" value="Confint-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="completecases.estimate,Confint-method">
+<param name="Local" value="Confint-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="confint">
 <param name="Local" value="confint-methods.html">
 </OBJECT>

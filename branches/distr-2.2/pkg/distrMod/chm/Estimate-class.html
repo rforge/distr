@@ -16,6 +16,8 @@
 <param name="keyword" value="R:   Infos,Estimate-method">
 <param name="keyword" value="R:   samplesize">
 <param name="keyword" value="R:   samplesize,Estimate-method">
+<param name="keyword" value="R:   completecases">
+<param name="keyword" value="R:   completecases,Estimate-method">
 <param name="keyword" value="R:   asvar">
 <param name="keyword" value="R:   asvar,Estimate-method">
 <param name="keyword" value="R:   fixed,Estimate-method">
@@ -71,8 +73,11 @@ additional informations. </dd>
 <dt><code>asvar</code></dt><dd> object of class <code>"OptionalNumericOrMatrix"</code>
 which may contain the asymptotic (co)variance of the estimator. </dd>
 <dt><code>samplesize</code></dt><dd> object of class <code>"numeric"</code> &mdash;
-the samplesize at which the estimate was evaluated. </dd>
-<dt><code>nuis.idx</code></dt><dd> object of class <code>"OptionalNumeric"</code>: 
+the samplesize (only complete cases are counted)
+at which the estimate was evaluated. </dd>
+<dt><code>completecases</code></dt><dd> object of class <code>"logical"</code> &mdash;
+complete cases at which the estimate was evaluated. </dd>
+<dt><code>nuis.idx</code></dt><dd> object of class <code>"OptionalNumeric"</code>:
 indices of <code>estimate</code> belonging to the nuisance part. </dd>
 <dt><code>fixed</code></dt><dd> object of class <code>"OptionalNumeric"</code>: 
 the fixed and known part of the parameter. </dd>
@@ -113,8 +118,16 @@ accessor function for slot <code>untransformed.estimate</code>. </dd>
 accessor function for slot <code>estimate.call</code>. </dd>
 </p>
 <p>
-<dt>samplesize</dt><dd><code>signature(object = "Estimate")</code>: 
-accessor function for slot <code>samplesize</code>. </dd>
+<dt>samplesize</dt><dd><code>signature(object = "Estimate")</code>:
+(with additional argument <code>onlycompletecases</code>
+defaulting to <code>TRUE</code> returns the sample size;
+in case there are any incomplete cases and argument
+<code>onlycompletecases</code> is <code>FALSE</code>, the number of
+these is added to slot <code>samplesize</code>. </dd>
+</p>
+<p>
+<dt>completecases</dt><dd><code>signature(object = "Estimate")</code>:
+accessor function for slot <code>completecases</code>. </dd>
 </p>
 <p>
 <dt>asvar</dt><dd><code>signature(object = "Estimate")</code>: 

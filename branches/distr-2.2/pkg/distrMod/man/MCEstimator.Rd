@@ -13,7 +13,7 @@
 \usage{
 MCEstimator(x, ParamFamily, criterion, crit.name, 
             startPar = NULL, Infos, trafo = NULL, 
-            penalty = 1e20, validity.check = TRUE, asvar.fct, ...)
+            penalty = 1e20, validity.check = TRUE, asvar.fct, na.rm = TRUE, ...)
 }
 \arguments{
   \item{x}{ (empirical) data }
@@ -38,7 +38,8 @@ MCEstimator(x, ParamFamily, criterion, crit.name,
     and \code{param} (the parameter value as object of class 
     \code{ParamFamParameter}); arguments are called by name; \code{asvar.fct}
      may also process further arguments passed through the \code{\dots} argument}              
-  \item{\dots}{ further arguments to \code{criterion} or \code{optimize} 
+  \item{na.rm}{logical: if  \code{TRUE}, the estimator is evaluated at \code{complete.cases(x)}.}
+  \item{\dots}{ further arguments to \code{criterion} or \code{optimize}
     or \code{optim}, respectively. }
 }
 \details{

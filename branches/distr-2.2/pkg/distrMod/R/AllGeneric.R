@@ -173,13 +173,16 @@ if(!isGeneric("nuisance.estimate")){
     setGeneric("nuisance.estimate", function(object) standardGeneric("nuisance.estimate"))
 }
 if(!isGeneric("samplesize.estimate")){
-    setGeneric("samplesize.estimate", function(object) standardGeneric("samplesize.estimate"))
+    setGeneric("samplesize.estimate", function(object, ...) standardGeneric("samplesize.estimate"))
 }
 if(!isGeneric("call.estimate")){
     setGeneric("call.estimate", function(object) standardGeneric("call.estimate"))
 }
 if(!isGeneric("fixed.estimate")){
     setGeneric("fixed.estimate", function(object,... ) standardGeneric("fixed.estimate"))
+}
+if(!isGeneric("completecases.estimate")){
+  	     setGeneric("completecases.estimate", function(object) standardGeneric("completecases.estimate"))
 }
 if(!isGeneric("Infos")){
     setGeneric("Infos", function(object) standardGeneric("Infos"))
@@ -196,8 +199,11 @@ if(!isGeneric("criterion")){
 if(!isGeneric("criterion<-")){
     setGeneric("criterion<-", function(object, value) standardGeneric("criterion<-"))
 }
+if(!isGeneric("completecases")){
+  	     setGeneric("completecases", function(object) standardGeneric("completecases"))
+}
 if(!isGeneric("samplesize")){
-    setGeneric("samplesize", function(object) standardGeneric("samplesize"))
+    setGeneric("samplesize", function(object, ...) standardGeneric("samplesize"))
 }
 if(!isGeneric("asvar")){
     setGeneric("asvar", function(object) standardGeneric("asvar"))

@@ -16,6 +16,8 @@
 <param name="keyword" value="R:   trafo.estimate,Confint-method">
 <param name="keyword" value="R:   samplesize.estimate">
 <param name="keyword" value="R:   samplesize.estimate,Confint-method">
+<param name="keyword" value="R:   completecases.estimate">
+<param name="keyword" value="R:   completecases.estimate,Confint-method">
 <param name="keyword" value="R:   nuisance.estimate">
 <param name="keyword" value="R:   nuisance.estimate,Confint-method">
 <param name="keyword" value="R:   fixed.estimate">
@@ -60,8 +62,11 @@ the confidence interval(s).</dd>
 the estimate(s) for which the confidence intervals are produced.</dd>
 <dt><code>name.estimate</code></dt><dd>Object of class <code>"character"</code>:
 the name of the estimate(s) for which the confidence intervals are produced.</dd>
-<dt><code>samplesize.estimate</code></dt><dd>Object of class <code>"numeric"</code>:
-the sample size of the estimate(s) for which the confidence intervals are produced.</dd>
+<dt><code>samplesize.estimate</code>:</dt><dd>Object of class <code>"numeric"</code>:
+the sample size of the estimate(s) for which the confidence intervals
+are (only complete cases) produced.</dd>
+<dt><code>completecases.estimate</code>:</dt><dd>Object of class <code>"logical"</code>:
+complete cases at which the estimate was evaluated. </dd>
 <dt><code>trafo.estimate</code></dt><dd>Object of class <code>"matrix"</code>:
 the trafo/derivative matrix of the estimate(s) for which 
 the confidence intervals are produced.</dd>
@@ -101,8 +106,16 @@ accessor function for slot <code>name.estimate</code>. </dd>
 accessor function for slot <code>trafo.estimate</code>. </dd>
 </p>
 <p>
-<dt>samplesize.estimate</dt><dd><code>signature(object = "Confint")</code>: 
-accessor function for slot <code>samplesize.estimate</code>. </dd>
+<dt>samplesize.estimate</dt><dd><code>signature(object = "Confint")</code>:
+(with additional argument <code>onlycompletecases</code>
+defaulting to <code>TRUE</code> returns the sample size;
+in case there are any incomplete cases and argument
+<code>onlycompletecases</code> is <code>FALSE</code>, the number of
+these is added to slot <code>samplesize</code>. </dd>
+</p>
+<p>
+<dt>completecases.estimate</dt><dd><code>signature(object = "Confint")</code>:
+accessor function for slot <code>completecases.estimate</code>. </dd>
 </p>
 <p>
 <dt>nuisance.estimate</dt><dd><code>signature(object = "Confint")</code>: 

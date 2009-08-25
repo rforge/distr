@@ -26,7 +26,7 @@ minimum distance estimates.
 <pre>
 MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name, 
             paramDepDist = FALSE, startPar = NULL,  Infos, trafo = NULL,
-            penalty = 1e20, asvar.fct, ...)
+            penalty = 1e20, asvar.fct, na.rm = TRUE, ...)
 </pre>
 
 
@@ -78,9 +78,12 @@ asymptotic variance; if given, <code>asvar.fct</code> takes arguments
 and <code>param</code> (the parameter value as object of class 
 <code>ParamFamParameter</code>); arguments are called by name; <code>asvar.fct</code>
 may also process further arguments passed through the <code>...</code> argument</td></tr>              
+<tr valign="top"><td><code>na.rm</code></td>
+<td>
+logical: if  <code>TRUE</code>, the estimator is evaluated at <code>complete.cases(x)</code>.</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
- further arguments to <code>criterion</code> or <code>optimize</code> 
+ further arguments to <code>criterion</code> or <code>optimize</code>
 or <code>optim</code>, respectively. </td></tr>
 </table>
 

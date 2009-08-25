@@ -4,11 +4,16 @@
 MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist,
                         dist.name,  paramDepDist = FALSE,
                         startPar = NULL,  Infos, 
-                        trafo = NULL, penalty = 1e20, asvar.fct, ...){
+                        trafo = NULL, penalty = 1e20, asvar.fct, na.rm = TRUE,
+                        ...){
 
     ## preparation: getting the matched call
     es.call <- match.call()
     dots <- match.call(expand.dots = FALSE)$"..."
+
+    completecases <- complete.cases(x)
+    if(na.rm) x <- na.omit(x)
+
     ## some checking
     if(!is.numeric(x))
       stop(gettext("'x' has to be a numeric vector"))   
@@ -42,6 +47,7 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist,
     ## digesting the results of mceCalc
     res <- do.call(.process.meCalcRes, argList)
 
+    res@completecases <- completecases
     return(res)
 }
 
