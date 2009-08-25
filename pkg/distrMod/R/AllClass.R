@@ -454,7 +454,7 @@ setClass("Estimate",
                    Infos = matrix(c(character(0),character(0)), ncol=2,
                                   dimnames=list(character(0), c("method", "message"))),
                    trafo = list(fct = function(x){
-                                      list(fval = x, mat = matrix(0))},
+                                      list(fval = x, mat = matrix(1))},
                                 mat = matrix(1)), ### necessary for comparison with unit matrix
                    nuis.idx = NULL,
                    fixed = NULL,
