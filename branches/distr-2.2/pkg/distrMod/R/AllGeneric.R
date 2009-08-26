@@ -56,7 +56,7 @@ if(!isGeneric("nuisance<-")){
     setGeneric("nuisance<-", function(object, value) standardGeneric("nuisance<-"))
 }
 if(!isGeneric("trafo")){
-    setGeneric("trafo", function(object, param) standardGeneric("trafo"))
+    setGeneric("trafo", function(object, param, ...) standardGeneric("trafo"))
 }
 if(!isGeneric("trafo<-")){
     setGeneric("trafo<-", function(object, value) standardGeneric("trafo<-"))

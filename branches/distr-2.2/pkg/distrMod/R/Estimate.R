@@ -6,9 +6,16 @@ setMethod("name", "Estimate", function(object) object@name)
 setReplaceMethod("name", "Estimate", 
                   function(object, value) {object@name <- value; object})
 
-setMethod("estimate", "Estimate", function(object) as.numeric(object@estimate))
+setMethod("estimate", "Estimate", function(object){
+           es <- object@estimate
+           dim(es) <- NULL
+           es})
 setMethod("untransformed.estimate", "Estimate", 
-           function(object) as.numeric(object@untransformed.estimate))
+           function(object){
+           u.es <- object@untransformed.estimate
+           dim(u.es) <- NULL
+           u.es
+           })
 setMethod("estimate.call", "Estimate", function(object) object@estimate.call)
 
 setMethod("trafo", signature(object = "Estimate", param = "missing"), 
