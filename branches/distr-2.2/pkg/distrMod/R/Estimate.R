@@ -9,11 +9,13 @@ setReplaceMethod("name", "Estimate",
 setMethod("estimate", "Estimate", function(object){
            es <- object@estimate
            dim(es) <- NULL
+           names(es) <- names(object@estimate)
            es})
 setMethod("untransformed.estimate", "Estimate", 
            function(object){
            u.es <- object@untransformed.estimate
            dim(u.es) <- NULL
+           names(u.es) <- names(object@untransformed.estimate)
            u.es
            })
 setMethod("estimate.call", "Estimate", function(object) object@estimate.call)
