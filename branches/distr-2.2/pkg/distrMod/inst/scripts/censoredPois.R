@@ -6,7 +6,7 @@
 require(distrMod)
 options("newDevice"=TRUE)
 
-CensoredPoisFamily <- function(lambda = 1, trunc.pt = 2){
+CensoredPoisFamily <- function(lambda = 1, trunc.pt = 2, trafo=1){
     ## name
     name <- "Censored Poisson family"
     ## central distribution
@@ -69,3 +69,9 @@ plot(profile(m))
 confint(md.CvM)
 plot(profile(md.CvM))
 
+if(require(ROptEst)){
+CP.data0 <- r(CP)(10000)
+CP.data1 <- CP.data0; CP.data1[sample(1:100,10)] <- NA
+(md.ropt<- roptest(CP.data0, CP, eps=0.1, initial.est=md.CvM))
+confint(md.ropt,symmetricBias())
+}

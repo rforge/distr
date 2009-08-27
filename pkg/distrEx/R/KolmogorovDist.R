@@ -81,11 +81,8 @@ setMethod("KolmogorovDist", signature(e1 = "numeric",
     function(e1, e2){
         o.warn <- getOption("warn")
         options(warn = -1)
-        on.exit(options(warn=o.warn))
-        res <- ks.test(e1, e2@p)$statistic
-        names(res) <- "Kolmogorov distance"
-
-        return(res)
+        emp <- DiscreteDistribution(e1)
+        return(KolmogorovDist(emp,e2))
     })
 
 setMethod("KolmogorovDist", signature(e1 = "UnivariateDistribution",
