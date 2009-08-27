@@ -50,21 +50,10 @@ setMethod("KolmogorovDist", signature(e1 = "DiscreteDistribution",
 setMethod("KolmogorovDist", signature(e1 = "DiscreteDistribution",
                                       e2 = "AbscontDistribution"),
     function(e1, e2){
-        TruncQuantile <- getdistrOption("TruncQuantile")
-        lower <- ifelse(!is.finite(q(e2)(0)), q(e2)(TruncQuantile), q(e2)(0))
-        upper <- ifelse(!is.finite(q(e2)(1)), 
-                         ifelse("lower.tail" %in% names(formals(e2@q)),
-                                q(e2)(TruncQuantile, lower.tail = FALSE),
-                                q(e2)(1-TruncQuantile)), 
-                         q(e2)(1))
-
         o.warn <- getOption("warn"); options(warn = -1)
         on.exit(options(warn=o.warn))
-        x1 <- union(support(e1), r(e2)(1e5))
-        x2 <- seq(from=lower, to=upper, length=1e5)
-        x <- union(x1, x2) 
-
-        res <- max(abs(p(e1)(x)-p(e2)(x)))
+        x <- support(e1)
+        res <- max(p(e1)(x)-p(e2)(x),p(e2)(x)-p.l(e1)(x))
         names(res) <- "Kolmogorov distance"
 
         return(res)
