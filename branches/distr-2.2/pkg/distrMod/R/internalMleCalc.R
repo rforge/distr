@@ -27,6 +27,9 @@
     jdx <-      if(lnx) lmx + 1:lnx else idx
     nuis.idx <- if(lnx) jdx else NULL
 
+    hasnodim.main <- is.null(dim(main(PFam)))
+    hasnodim.nuis <- is.null(dim(nuisance(PFam)))
+
     theta <- res$estimate
     crit <- res$criterion
     param <- res$param
@@ -92,12 +95,19 @@
 
     if(!.isUnitMatrix(traf0$mat)){
        estimate <- traf0$fct(estimate)$fval
+       estimate <- .deleteDim(estimate)
        trafm <- traf0$mat
        if(!is.null(asvar)){
            asvar <- trafm%*%asvar[idx,idx]%*%t(trafm)
            rownames(asvar) <- colnames(asvar) <- c(names(estimate))
           }
+    }else{
+       if(hasnodim.main)
+           estimate <- .deleteDim(estimate)
     }
+    if(hasnodim.main & hasnodim.nuis)
+        untransformed.estimate <- .deleteDim(untransformed.estimate)
+
     res.me <- new("MCEstimate", name = est.name, estimate = estimate, 
                   criterion = crit, asvar = asvar, Infos = Infos, 
                   samplesize = res$samplesize, nuis.idx = nuis.idx, 

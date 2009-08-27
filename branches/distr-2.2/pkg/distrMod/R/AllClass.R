@@ -104,8 +104,9 @@ setClass("ParamFamParameter",
                    stop("invalid transformation:\n",
                         "should be a matrix or a function")
                 if(is.matrix(object@trafo)){
-                dimension <- length(object@main) #+ length(object@nuisance)
-                .validTrafo(object@trafo, dimension) ### check validity
+                ln.m <- length(object@main)
+                ln.n <- length(object@nuisance)
+                .validTrafo(object@trafo, ln.m, ln.m+ln.n) ### check validity
                 return(TRUE)}
             })
 
@@ -402,10 +403,17 @@ setClass("Estimate",
                    untransformed.estimate = NULL,
                    untransformed.asvar = NULL),
          validity = function(object){
-            if(is.null(dim(object@estimate)))
-               len <- length(object@estimate)
-            else
-               len <- dim(object@estimate)[1]
+            if(is.null(object@untransformed.estimate)){
+               if(is.null(dim(object@estimate)))
+                  len <- length(object@estimate)
+               else
+                  len <- dim(object@estimate)[1]
+            }else{
+               if(is.null(dim(object@untransformed.estimate)))
+                  len <- length(object@untransformed.estimate)
+               else
+                  len <- dim(object@untransformed.estimate)[1]
+            }
             if(!is.character(object@Infos))
                 stop("'Infos' contains no matrix of characters")
             if(ncol(object@Infos)!=2)

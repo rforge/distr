@@ -1,4 +1,12 @@
-.getLogDeriv <- function(distr, 
+.deleteDim <- function(x){
+     attribs <- attributes(x)
+     attribs$dim <- NULL
+     attribs$dimnames <- NULL
+     attributes(x) <- attribs
+     x
+     }
+
+.getLogDeriv <- function(distr,
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
                          IQR.fac = getdistrExOption("IQR.fac")){
@@ -62,21 +70,23 @@
               isTRUE(all.equal(m, diag(m.row), check.attributes = FALSE))
               }
 
-.validTrafo <- function(trafo, dimension){
+.validTrafo <- function(trafo, dimension, dimensionwithN){
 ##checks whether trafo is valid
+  ret <- FALSE
   if(!is.function(trafo)){
-    if(ncol(trafo) != dimension)
+    if((ncol(trafo) != dimension) && (ncol(trafo) != dimensionwithN))
         stop("invalid transformation:\n", 
              "number of columns of 'trafo' not equal to ", 
              "dimension of the parameter")
-    if(nrow(trafo) > dimension)
-        stop("invalid transformation:\n",
-             "number of rows of 'trafo' larger than ", 
-             "dimension of the parameter")
+#    if(nrow(trafo) > dimension)
+#        stop("invalid transformation:\n",
+#             "number of rows of 'trafo' larger than ",
+#             "dimension of the parameter")
     if(any(!is.finite(trafo)))
         stop("infinite or missing values in 'trafo'")
+    ret <- (ncol(trafo) == dimensionwithN)
     }
-  return(invisible())
+  return(ret)
 }
 
 ##caching:

@@ -8,14 +8,14 @@ setReplaceMethod("name", "Estimate",
 
 setMethod("estimate", "Estimate", function(object){
            es <- object@estimate
-           dim(es) <- NULL
-           names(es) <- names(object@estimate)
+#           dim(es) <- NULL
+#           names(es) <- names(object@estimate)
            es})
 setMethod("untransformed.estimate", "Estimate", 
            function(object){
            u.es <- object@untransformed.estimate
-           dim(u.es) <- NULL
-           names(u.es) <- names(object@untransformed.estimate)
+#           dim(u.es) <- NULL
+#           names(u.es) <- names(object@untransformed.estimate)
            u.es
            })
 setMethod("estimate.call", "Estimate", function(object) object@estimate.call)
@@ -60,7 +60,9 @@ setMethod("addInfo<-", "Estimate",
 setMethod("samplesize", "Estimate", function(object, onlycompletecases = TRUE)
   	    object@samplesize+(1-onlycompletecases)*sum(object@completecases==FALSE))
 setMethod("completecases", "Estimate", function(object) object@completecases)
-setMethod("asvar", "Estimate", function(object) object@asvar)
+setMethod("asvar", "Estimate", function(object)
+                if(!is.null(object@asvar))
+                    as.matrix(object@asvar))
 
 setReplaceMethod("asvar", "Estimate", 
                   function(object, value){ 
@@ -75,7 +77,9 @@ setReplaceMethod("asvar", "Estimate",
           object})
 
 setMethod("untransformed.asvar", "Estimate", function(object) 
-           as.matrix(object@untransformed.asvar))
+           if(!is.null(object@untransformed.asvar))
+               as.matrix(object@untransformed.asvar)
+           else NULL    )
 
 setMethod("optimwarn", "MCEstimate", function(object) object@optimwarn)
 setMethod("criterion", "MCEstimate", function(object) object@criterion)
@@ -89,7 +93,9 @@ setReplaceMethod("criterion", "MCEstimate",
 setMethod("nuisance", "Estimate", function(object) { 
       if(is.null(object@nuis.idx))
          return(NULL)
-      else return (estimate(object)[object@nuis.idx])
+      if(!is.null(untransformed.estimate))
+         return (untransformed.estimate(object)[object@nuis.idx])
+      return (estimate(object)[object@nuis.idx])
       })
 setMethod("main", "Estimate", function(object) { 
       if(is.null(object@nuis.idx))
