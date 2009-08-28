@@ -43,7 +43,7 @@ setMethod("E", signature(object = "AbscontDistribution",
               upperTruncQuantile, IQR.fac)
         low <- Ib["low"]
         upp <- Ib["upp"]
-        
+        if(upp<low) return(0)
         return(distrExIntegrate(f = integrand, 
                     lower = low,
                     upper = upp, 
@@ -70,18 +70,22 @@ setMethod("E", signature(object = "LatticeDistribution",
                          cond = "missing")))
 
 
-setMethod("E", signature(object = "AffLinDistribution", 
-                         fun = "missing", 
+setMethod("E", signature(object = "AffLinDistribution",
+                         fun = "missing",
                          cond = "missing"),
     function(object, low = NULL, upp = NULL, ...){
              if(is.null(low)) low <- -Inf
              if(is.null(upp)) upp <- Inf
-             if(object@a >= 0)
-                object@a * E(object@X0, low = object@a*low, 
-                             upp = object@a*upp, ...) + object@b
-             else
-                object@a * E(object@X0, low = object@a*upp, 
-                             upp = object@a*low, ...) + object@b
+             if(upp<low) return(0)
+             if(object@a >= 0){
+                return(object@a * E(object@X0, low = object@a*low,
+                             upp = object@a*upp, ...) +
+                object@b * (p(object)(upp)-p.l(object)(low)))
+             }else{
+                return(object@a * E(object@X0, low = object@a*upp,
+                             upp = object@a*low, ...) +
+                object@b *    (p(object)(upp)-p.l(object)(low)))
+             }
     })
 
 setMethod("E", signature(object = "AffLinAbscontDistribution", 
@@ -405,7 +409,7 @@ setMethod("E", signature(object = "Norm",
            if(upp == Inf) return(mean(object))
            else return(m1df(object, upper = upp, ...))
         }else{
-           E1 <- -m1df(object, upper = low, ...)
+           E1 <- m1df(object, upper = low, ...)
            E2 <- if(upp == Inf) 
                     mean(object) else m1df(object, upper = upp, ...)         
            return(E2-E1)
@@ -440,7 +444,7 @@ setMethod("E", signature(object = "Binom",
            if(upp == Inf) return(size(object)*prob(object))
            else return(m1df(object, upper = upp, ...))
         }else{
-           E1 <- -m1df(object, upper = low, ...)
+           E1 <- m1df(object, upper = low, ...)
            E2 <- if(upp == Inf) 
                     size(object)*prob(object) else m1df(object, upper = upp, ...)         
            return(E2-E1)
@@ -483,7 +487,7 @@ setMethod("E", signature(object = "Chisq",
            if(upp == Inf) return(df(object)+ncp(object))
            else return(m1df(object, upper = upp, ...))
         }else{
-           E1 <- -m1df(object, upper = low, ...)
+           E1 <- m1df(object, upper = low, ...)
            E2 <- if(upp == Inf) 
                     df(object)+ncp(object) else m1df(object, upper = upp, ...)         
            return(E2-E1)
@@ -528,7 +532,7 @@ setMethod("E", signature(object = "Exp",
            if(upp == Inf) return(1/rate(object))
            else return(m1df(object, upper = upp, ...))
         }else{
-           E1 <- -m1df(object, upper = low, ...)
+           E1 <- m1df(object, upper = low, ...)
            E2 <- if(upp == Inf) 
                     1/rate(object) else m1df(object, upper = upp, ...)         
            return(E2-E1)

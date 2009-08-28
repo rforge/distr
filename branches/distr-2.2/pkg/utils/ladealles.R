@@ -8,5 +8,5 @@
 
 #ladeall(DIR="distr", develDir = "C:/rtest/distr/branches/distr-2.1/pkg")
 #ladeall(DIR="distrEx", develDir = "C:/rtest/distr/pkg")
-ladeall(DIR="ROptEst", develDir = "C:/rtest/robast/pkg")
+ladeall(DIR="ROptEst", develDir = "C:/rtest/robast/branches/robast-0.7/pkg")
 

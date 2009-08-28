@@ -38,6 +38,7 @@ setMethod("m1df", "AbscontDistribution",
         mc <- as.list(mc)[-1]
         mc$useApply <- FALSE
         mc$upper <- NULL
+        mc$upp <- upper
         mc$object <- object
         mc$lowerTruncQuantile <- lowerTruncQuantile
         mc$rel.tol <- rel.tol
@@ -162,8 +163,8 @@ setMethod("m1df", "Exp",
     if(is.null(mc$fun) && is.null(mc$cond)){
         if(upper <= 0) return(0)
         lam <- rate(object)
-        if(abs(pexp(lam*upper, ...)-1) > .Machine$double.eps)
-            return(pexp(lam*upper, ...)/lam - upper*exp(-lam*upper, ...))
+        if(abs(pexp(lam*upper)-1) > .Machine$double.eps)
+            return(pexp(lam*upper)/lam - upper*exp(-lam*upper))
         else
             return(1/lam)
     }else m1df(as(object,"AbscontDistribution"), upper = upper, ...)
@@ -175,9 +176,9 @@ setMethod("m2df", "Exp",
     if(is.null(mc$fun) && is.null(mc$cond)){
         if(upper <= 0) return(0)
         lam <- rate(object)
-        if(abs(pexp(lam*upper, ...)-1) > .Machine$double.eps)
-            return(2*pexp(lam*upper, ...)/lam^2 
-                    - (upper + 2/lam)*upper*exp(-lam*upper, ...))
+        if(abs(pexp(lam*upper)-1) > .Machine$double.eps)
+            return(2*pexp(lam*upper)/lam^2
+                    - (upper + 2/lam)*upper*exp(-lam*upper))
         else
             return(2/lam^2)
     }else m2df(as(object,"AbscontDistribution"), upper = upper, ...)
