@@ -13,11 +13,13 @@ setMethod("samplesize", signature="numeric", function(object){
 
 meRes <- function(x, estimate, criterion.value, param, crit.fct,
                   method = "explicit solution",
-                  crit.name = "Maximum Likelihood", Infos, warns = "")
+                  crit.name = "Maximum Likelihood", Infos, warns = "",
+                  startPar = NULL)
         return(list(estimate = estimate, criterion = criterion.value,
                     param = param, crit.fct = crit.fct, method = method, 
                     crit.name = crit.name, Infos = Infos, 
-                    samplesize = samplesize(x), warns=warns))
+                    samplesize = samplesize(x), warns = warns,
+                    startPar = startPar))
 
 get.criterion.fct <- function(theta, Data, ParamFam, criterion.ff, fun, ...){
 
@@ -171,7 +173,8 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
                                    criterion.ff = criterion, fun2, ...)
     
     return(meRes(x, theta, crit, param, crit.fct, method = method,
-                 crit.name = crit.name, Infos = Infos, warns= allwarns))
+                 crit.name = crit.name, Infos = Infos, warns= allwarns,
+                 startPar = startPar))
            })
 
 ################################################################################

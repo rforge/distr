@@ -10,9 +10,10 @@
 <param name="keyword" value="R:   criterion,MCEstimate-method">
 <param name="keyword" value="R:   criterion.fct">
 <param name="keyword" value="R:   criterion.fct,MCEstimate-method">
+<param name="keyword" value="R:   startPar,MCEstimate-method">
 <param name="keyword" value="R:   method">
-<param name="keyword" value="R:   optimwarn">
 <param name="keyword" value="R:   method,MCEstimate-method">
+<param name="keyword" value="R:   optimwarn">
 <param name="keyword" value="R:   optimwarn,MCEstimate-method">
 <param name="keyword" value="R:   criterion<-">
 <param name="keyword" value="R:   criterion<-,MCEstimate-method">
@@ -69,17 +70,29 @@ with two columns named <code>method</code> and <code>message</code>:
 additional informations. </dd>
 <dt><code>optimwarn</code></dt><dd> object of class <code>"character"</code>
 warnings issued during optimization. </dd>
+<dt><code>startPar</code></dt><dd> &mdash; object of class <code>"ANY"</code>; filled either
+with <code>NULL</code> (no starting value used) or with <code>"numeric"</code>
+&mdash; the value of the starting parameter. </dd>
 <dt><code>asvar</code></dt><dd> object of class <code>"OptionalMatrix"</code>
 which may contain the asymptotic (co)variance of the estimator. </dd>
 <dt><code>samplesize</code></dt><dd> object of class <code>"numeric"</code> &mdash;
 the samplesize at which the estimate was evaluated. </dd>
 <dt><code>nuis.idx</code></dt><dd> object of class <code>"OptionalNumeric"</code>: 
 indices of <code>estimate</code> belonging to the nuisance part</dd>
+<dt><code>fixed</code></dt><dd> object of class <code>"OptionalNumeric"</code>:
+the fixed and known part of the parameter. </dd>
+<dt><code>trafo</code></dt><dd> object of class <code>"list"</code>:
+a list with components <code>fct</code> and <code>mat</code> (see below). </dd>
 <dt><code>untransformed.estimate</code></dt><dd>Object of class <code>"ANY"</code>:
 untransformed estimate.</dd>
 <dt><code>untransformed.asvar</code></dt><dd> object of class <code>"OptionalNumericOrMatrix"</code>
 which may contain the asymptotic (co)variance of the untransformed 
 estimator. </dd>
+<dt><code>completecases</code></dt><dd> object of class <code>"logical"</code> &mdash;
+complete cases at which the estimate was evaluated. </dd>
+<dt><code>startPar</code></dt><dd> object of class <code>"ANY"</code>; usually filled with
+argument <code>startPar</code> of generating function <code>MCEstimator</code>,
+<code>MLEstimator</code>, <code>MDEstimator</code>.</dd>
 </dl>
 
 </p>
@@ -107,6 +120,10 @@ replacement function for slot <code>criterion</code>. </dd>
 <p>
 <dt>optimwarn</dt><dd><code>signature(object = "MCEstimate")</code>:
 accessor function for slot <code>optimwarn</code>. </dd>
+</p>
+<p>
+<dt>startPar</dt><dd><code>signature(object = "MCEstimate")</code>:
+accessor function for slot <code>startPar</code>. </dd>
 </p>
 <p>
 <dt>criterion.fct</dt><dd><code>signature(object = "MCEstimate")</code>:

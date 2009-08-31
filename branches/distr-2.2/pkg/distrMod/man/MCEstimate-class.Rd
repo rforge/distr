@@ -5,9 +5,10 @@
 \alias{criterion,MCEstimate-method}
 \alias{criterion.fct}
 \alias{criterion.fct,MCEstimate-method}
+\alias{startPar,MCEstimate-method}
 \alias{method}
-\alias{optimwarn}
 \alias{method,MCEstimate-method}
+\alias{optimwarn}
 \alias{optimwarn,MCEstimate-method}
 \alias{criterion<-}
 \alias{criterion<-,MCEstimate-method}
@@ -48,17 +49,29 @@
       additional informations. }
     \item{\code{optimwarn}}{ object of class \code{"character"}
       warnings issued during optimization. }
+    \item{\code{startPar}}{ --- object of class \code{"ANY"}; filled either
+     with \code{NULL} (no starting value used) or with \code{"numeric"}
+      --- the value of the starting parameter. }
     \item{\code{asvar}}{ object of class \code{"OptionalMatrix"}
       which may contain the asymptotic (co)variance of the estimator. }
     \item{\code{samplesize}}{ object of class \code{"numeric"} ---
       the samplesize at which the estimate was evaluated. }
     \item{\code{nuis.idx}}{ object of class \code{"OptionalNumeric"}: 
      indices of \code{estimate} belonging to the nuisance part}
+    \item{\code{fixed}}{ object of class \code{"OptionalNumeric"}:
+     the fixed and known part of the parameter. }
+    \item{\code{trafo}}{ object of class \code{"list"}:
+     a list with components \code{fct} and \code{mat} (see below). }
     \item{\code{untransformed.estimate}}{Object of class \code{"ANY"}:
       untransformed estimate.}
     \item{\code{untransformed.asvar}}{ object of class \code{"OptionalNumericOrMatrix"}
       which may contain the asymptotic (co)variance of the untransformed 
       estimator. }
+    \item{\code{completecases}}{ object of class \code{"logical"} ---
+         complete cases at which the estimate was evaluated. }
+    \item{\code{startPar}}{ object of class \code{"ANY"}; usually filled with
+    argument \code{startPar} of generating function \code{MCEstimator},
+    \code{MLEstimator}, \code{MDEstimator}.}
   }
 }
 \section{Extends}{
@@ -75,6 +88,9 @@ Class \code{"Estimate"}, directly.
     \item{optimwarn}{\code{signature(object = "MCEstimate")}:
       accessor function for slot \code{optimwarn}. }
 
+    \item{startPar}{\code{signature(object = "MCEstimate")}:
+      accessor function for slot \code{startPar}. }
+
     \item{criterion.fct}{\code{signature(object = "MCEstimate")}:
       accessor function for slot \code{criterion.fct}. }
 
@@ -90,6 +106,7 @@ Class \code{"Estimate"}, directly.
       man page.}
   }
 }
+
 %\references{}
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
 Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}

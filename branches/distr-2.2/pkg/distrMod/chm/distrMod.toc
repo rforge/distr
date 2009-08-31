@@ -1174,6 +1174,10 @@
 <param name="Local" value="ParamFamily-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="startPar,MCEstimate-method">
+<param name="Local" value="MCEstimate-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="startPar,ParamFamily-method">
 <param name="Local" value="ParamFamily-class.html">
 </OBJECT>

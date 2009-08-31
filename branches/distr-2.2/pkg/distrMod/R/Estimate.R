@@ -81,14 +81,6 @@ setMethod("untransformed.asvar", "Estimate", function(object)
                as.matrix(object@untransformed.asvar)
            else NULL    )
 
-setMethod("optimwarn", "MCEstimate", function(object) object@optimwarn)
-setMethod("criterion", "MCEstimate", function(object) object@criterion)
-setMethod("criterion.fct", "MCEstimate", function(object) object@criterion.fct)
-setMethod("method", "MCEstimate", function(object) object@method)
-
-setReplaceMethod("criterion", "MCEstimate", 
-                  function(object, value) {object@criterion <- value; object})
-
 
 setMethod("nuisance", "Estimate", function(object) { 
       if(is.null(object@nuis.idx))

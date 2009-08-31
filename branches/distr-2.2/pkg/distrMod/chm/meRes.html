@@ -25,7 +25,7 @@ in functions <code></code> and <code></code></p>
 
 <pre>
 meRes(x, estimate, criterion.value, param, crit.fct, method = "explicit solution",
-      crit.name = "Maximum Likelihood", Infos, warns = "")
+      crit.name = "Maximum Likelihood", Infos, warns = "", startPar = NULL)
 get.criterion.fct(theta, Data, ParamFam, criterion.ff, fun, ...)
 ## S4 method for signature 'numeric':
 samplesize(object)
@@ -89,6 +89,9 @@ the criterion function used in the MCE</td></tr>
 wrapper to the criterion function used in the MCE
 (with certain checking whether parameter value is permitted and possibly
 penalizing if not; see code to , for example.)</td></tr>
+<tr valign="top"><td><code>startPar</code></td>
+<td>
+value of argument <code>StartPar</code> &mdash; starting parameter used.</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
 further arguments to be passed 
