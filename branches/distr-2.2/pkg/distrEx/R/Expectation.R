@@ -47,6 +47,7 @@ setMethod("E", signature(object = "AbscontDistribution",
               upperTruncQuantile, IQR.fac)
         low <- Ib["low"]
         upp <- Ib["upp"]
+        #print(Ib)
         if(upp<low) return(0)
 
         return(distrExIntegrate(f = integrand, 

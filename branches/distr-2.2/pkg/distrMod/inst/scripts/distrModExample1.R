@@ -96,9 +96,35 @@ SNL <- ParamFamily(name = "Skew normal location family",
                   modifyParam = function(theta){ SkewNorm(loc = theta, scale = 1, shape = 1) })
 SNL
 
+#An object of class "ParamFamily"
+#### name:       Skew normal location family
+#
+#### distribution:       Distribution Object of Class: SkewNorm
+# loc: 0
+# scale: 1
+# shape: 1
+#
+#### param:      An object of class "ParamFamParameter"
+#name:   location parameter
+#loc:    0
+
+
 ## some data
 x <- rnorm(50)
-est <- MLEstimator(x, SNL)
+(est <- MLEstimator(x, SNL))
+
+#An object of class "ParamFamily"
+#### name:       Skew normal location family
+#
+#### distribution:       Distribution Object of Class: SkewNorm
+# loc: 0
+# scale: 1
+# shape: 1
+#
+#### param:      An object of class "ParamFamParameter"
+#name:   location parameter
+#loc:    0
+
 
 ## error!
 r(SN)(50)
