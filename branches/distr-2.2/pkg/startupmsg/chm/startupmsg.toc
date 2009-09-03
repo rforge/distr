@@ -73,6 +73,10 @@
 <param name="Name" value="suppressStartupMessages">
 <param name="Local" value="StartupUtilities.html">
 </OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TOBEDONE">
+<param name="Local" value="StartupUtilities.html">
+</OBJECT>
 </UL>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Package startupmsg:  Titles">

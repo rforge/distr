@@ -1,12 +1,13 @@
 <html><head><title>Utilities for start-up messages</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>StartupUtilities(startupmsg)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>StartupUtilities(startupmsg)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   startupmsg">
 <param name="keyword" value="R:   infoShow">
+<param name="keyword" value="R:   TOBEDONE">
 <param name="keyword" value="R:   NEWS">
 <param name="keyword" value="R:   readVersionInformation">
 <param name="keyword" value="R:   readURLInformation">
@@ -41,6 +42,7 @@ pointertoNEWS(pkg, library=NULL)
 
 infoShow(pkg, filename, library=NULL)
 NEWS(pkg, library=NULL)
+TOBEDONE(pkg, library=NULL)
 
 StartupMessage(message, call = NULL, pkg="", 
                type="version", endline = FALSE) 
@@ -68,6 +70,8 @@ a character vector with path names of R libraries, or <code>NULL</code>.
 The default value of <code>NULL</code> corresponds to all libraries
 currently known.  If the default is used, the loaded packages
 are searched before the libraries</td></tr>
+</p>
+<p>
 <tr valign="top"><td><code>filename</code></td>
 <td>
 name of the file which is to be displayed by <code>infoShow</code> (with relative path within the package main folder)</td></tr>
@@ -102,6 +106,7 @@ expression to evaluate.</td></tr>
 character vectors (which are pasted together with no separator)</td></tr>
 </table>
 
+
 <h3>Details</h3>
 
 <p>
@@ -116,7 +121,9 @@ to retrieve this file from within R, else <code>pointertoNEWS</code>  returns <c
 </p>
 <p>
 <code>infoShow</code> displays the file <code>filename</code> in the package main folder using <code>file.show</code> &ndash; if it exists;
-<code>NEWS</code> in particular displays the &lsquo;<span class="file">NEWS</span>&rsquo; file; takes up an idea by Andy Liaw.
+<code>NEWS</code> in particular displays the &lsquo;<span class="file">NEWS</span>&rsquo; file,
+and analogously, <code>TOBEDONE</code> in particular displays the &lsquo;<span class="file">TOBEDONE</span>&rsquo;
+file; takes up an idea by Andy Liaw.
 </p>
 <p>
 A new sub-condition <code>StartupMessage</code> to <code>message</code> is introduced, 
@@ -132,44 +139,50 @@ These slots may be accessed by <code>startupPackage</code>, <code>startupType</c
 <p>
 <code>startupMessage</code> issues a start-up message which also is represented as a condition.
 While the start-up message is being processed, the following restarts are available:
-<ul><li><code>muffleMessage()</code> to suppress the <code>StartupMessage</code>, 
+<ul>
+<li> <code>muffleMessage()</code> to suppress the <code>StartupMessage</code>, 
+</li>
 <li><code>onlytypeMessage(c0,atypes)</code> to filter out types not mentioned in <code>atypes</code> of <code>StartupMessages</code>-argument <code>c0</code>,
+</li>
 <li><code>custom(c,f)</code> to apply the user-defined function <code>f</code> to <code>StartupMessages</code>-argument <code>c0</code> instead of the usual procedure
-</ul> 
+</ul>
+ 
 </p>
 <p>
 The user may suppress the start-up messages produced by these utilities as follows:
 </p>
-
-<ul><li><code>suppressStartupMessages(expr)</code> 
+<p>
+<ul>
+<li> <code>suppressStartupMessages(expr)</code> 
 suppresses all messages issued by <code>startupMessage</code> in the expression <code>expr</code> within the parentheses
+</li>
 <li><code>suppressPackageStartupMessages(expr)</code>: 
 from package version 0.5 on, is the same as <code>suppressStartupMessages</code> for our start-up banners, but more 
 generally suppresses all messages of S3-class <code>packageStartupMessage</code> (from <span class="pkg">base</span> package)
+</li>
 <li><code>onlyversionStartupMessages(expr, atypes="version")</code> 
 only shows messages issued by <code>startupMessage</code> in the expression <code>expr</code> within the parentheses, if
 there slot <code>type</code> is contained in the <code>atypes</code> argument
+</li>
 <li>by the <code>custom</code> restart (see example by Seth Falcon) 
 </ul>
 
+</p>
+
+
 <h3>Acknowledgement</h3>
 
-<p>
-Thanks to Seth Falcon for his helpful comments.
-</p>
+<p>Thanks to Seth Falcon for his helpful comments.</p>
 
 
 <h3>Author(s)</h3>
 
-<p>
-Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
-</p>
+<p>Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a></p>
 
 
 <h3>See Also</h3>
 
-<p>
-<code><a href="myStartupUtilities.html">buildStartupMessage</a></code> for some illustration;
+<p><code></code> for some illustration;
 for the ideas taken up in this package, see mails "[Rd] Wishlist: 'quietly' argument for .onAttach() / .First.lib()  "
 on r-devel by Brian Ripley,  
 <a href="https://stat.ethz.ch/pipermail/r-devel/2006-April/037281.html">https://stat.ethz.ch/pipermail/r-devel/2006-April/037281.html</a>,
@@ -180,8 +193,7 @@ by Seth Falcon,
 and again by Seth Falcon,
 <a href="https://stat.ethz.ch/pipermail/r-devel/2006-April/037367.html">https://stat.ethz.ch/pipermail/r-devel/2006-April/037367.html</a>,
 and by the author,  
-<a href="https://stat.ethz.ch/pipermail/r-devel/2006-April/037382.html">https://stat.ethz.ch/pipermail/r-devel/2006-April/037382.html</a>
-</p>
+<a href="https://stat.ethz.ch/pipermail/r-devel/2006-April/037382.html">https://stat.ethz.ch/pipermail/r-devel/2006-April/037382.html</a></p>
 
 
 <h3>Examples</h3>
@@ -230,8 +242,15 @@ NEWS("stats") ## no NEWS file;
 ## for packages with NEWS file see e.g. randomForest, distr
 </pre>
 
-
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
 
 <hr><div align="center">[Package <em>startupmsg</em> version 0.7 <a href="00Index.html">Index</a>]</div>
-
 </body></html>
