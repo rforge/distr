@@ -100,8 +100,8 @@ lstsetLanguage <- function(pkgs, posIdx, keywordstyles, overwrite = FALSE){
         keywordstyles <- rep(keywordstyles, length.out = lP)
 
      if(lP) {
-        if(is.null(.numberofRequires)) .numberofRequires <<- 1
-        else .numberofRequires <<- .numberofRequires + 1
+        if(is.null(.numberofRstyleDefs)) .numberofRstyleDefs <<- 1
+        else .numberofRstyleDefs <<- .numberofRstyleDefs + 1
         withcomma <- TRUE
         pos1 <- 0
         for(i in 1: lP){
@@ -112,15 +112,15 @@ lstsetLanguage <- function(pkgs, posIdx, keywordstyles, overwrite = FALSE){
 
            if(i==1){
               pos1 <- pos0 + length(.alreadyDefinedPkgs)
-              cat("\n\\lstdefinestyle{RstyleO",.numberofRequires+1,"}{style=RstyleO",
-                       .numberofRequires,",%\n",sep="")
+              cat("\n\\lstdefinestyle{RstyleO",.numberofRstyleDefs+1,"}{style=RstyleO",
+                       .numberofRstyleDefs,",%\n",sep="")
            }
 
            if(i==lP) withcomma <- FALSE
            genKWL(pkg = pkgs[i], kwd = kwl,
                   kws = keywordstyles[i], withcomma = withcomma)
            if(i==lP) cat("}%\n\\lstdefinestyle{Rstyle}{style=RstyleO",
-                          .numberofRequires+1,"}\n\n",
+                          .numberofRstyleDefs+1,"}\n\n",
                           sep="")
            }
      }
@@ -129,10 +129,10 @@ lstsetLanguage <- function(pkgs, posIdx, keywordstyles, overwrite = FALSE){
 
 changeKeywordstyles <- function(pkgs, keywordstyles){
      setkws <- function(num, kws){
-        cat("%\n\\lstdefinestyle{RstyleO",.numberofRequires+1,"}{style=RstyleO",
-                       .numberofRequires,",%\n", sep="")
+        cat("%\n\\lstdefinestyle{RstyleO",.numberofRstyleDefs+1,"}{style=RstyleO",
+                       .numberofRstyleDefs,",%\n", sep="")
         cat("{keywordstyle={[",num+1,"]",kws,"}\n}\n", sep = "")
-        cat("\\lstdefinestyle{Rstyle}{style=RstyleO", .numberofRequires+1,"}\n",
+        cat("\\lstdefinestyle{Rstyle}{style=RstyleO", .numberofRstyleDefs+1,"}\n",
             sep = "")
         }
 
@@ -158,8 +158,8 @@ changeKeywordstyles <- function(pkgs, keywordstyles){
      keywordstyles <- rep(keywordstyles, length.out = lP)
 
      if(lP){
-        if(is.null(.numberofRequires)) .numberofRequires <<- 1
-        else .numberofRequires <<- .numberofRequires + 1
+        if(is.null(.numberofRstyleDefs)) .numberofRstyleDefs <<- 1
+        else .numberofRstyleDefs <<- .numberofRstyleDefs + 1
         for(i in 1: lP)
             setkws(num = numIdx[i], kws = keywordstyles[i])
      }

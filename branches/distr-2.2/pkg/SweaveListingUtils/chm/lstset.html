@@ -11,6 +11,8 @@
 <param name="keyword" value="R:   lstsetRin">
 <param name="keyword" value="R:   lstsetRout">
 <param name="keyword" value="R:   lstsetRcode">
+<param name="keyword" value="R:   lstdefRstyle">
+<param name="keyword" value="R:   lstsetRall">
 <param name="keyword" value=" lstset and friends">
 </object>
 
@@ -30,19 +32,34 @@ Functions for defining how listings prints R and Rd source code</p>
 lstset(taglist, LineLength = getOption("width"), startS = "\\lstset\{")
 lstsetR(Rset = NULL, LineLength = getOption("width"),
         add = getSweaveListingOption("addRset"),
-        startS = "\\lstset\{")
+        startS = "\\lstset\{", append = TRUE, withRstyle = FALSE)
 lstsetRd(Rdset = NULL, LineLength = getOption("width"),
          add = getSweaveListingOption("addRdset"),
-         startS = "\\lstset\{")
+         startS = "\\lstset\{",
+                    append = TRUE)
 lstsetRin(Rinset = NULL, LineLength = getOption("width"),
           add = getSweaveListingOption("addRinset"),
-          startS = "\\lstdefinestyle\{Rinstyle\}\{")
+          startS = "\\lstdefinestyle\{Rinstyle\}\{",
+                    append = TRUE)
 lstsetRout(Routset = NULL, LineLength = getOption("width"),
            add = getSweaveListingOption("addRoutset"),
-           startS = "\\lstdefinestyle\{Routstyle\}\{")
+           startS = "\\lstdefinestyle\{Routstyle\}\{",
+                    append = TRUE)
 lstsetRcode(Rcodeset = NULL, LineLength = getOption("width"),
             add = getSweaveListingOption("addRcodeset"),
-            startS = "\\lstdefinestyle\{Rcodestyle\}\{")
+            startS = "\\lstdefinestyle\{Rcodestyle\}\{",
+                    append = TRUE)
+lstsetRall(Rallset = NULL, LineLength = getOption("width"),
+           add = c("in" = getSweaveListingOption("addRinset"),
+                   "out" = getSweaveListingOption("addRoutset"),
+                   "code" = getSweaveListingOption("addRcodeset")),
+           startS = c("in" = "\\lstdefinestyle\{Rinstyle\}\{",
+                      "out" = "\\lstdefinestyle\{Routstyle\}\{",
+                      "code" = "\\lstdefinestyle\{Rcodestyle\}\{"),
+           append = c("in" = TRUE, "out" = TRUE, "code" = TRUE),
+           withOptionsDefAppend = TRUE)
+lstdefRstyle(Rset = NULL, LineLength = getOption("width"),
+             add = TRUE)
 </pre>
 
 
@@ -77,6 +94,12 @@ environment <code>Soutput</code>; defaults to <code>NULL</code>.</td></tr>
 object of S3-class <code>taglist</code> or named <code>list</code> of
 <code>character</code>s; the listings settings for R-code in
 environment <code>Scode</code>; defaults to <code>NULL</code>.</td></tr>
+<tr valign="top"><td><code>Rallset</code></td>
+<td>
+object of S3-class <code>taglist</code> or named <code>list</code> of
+<code>character</code>s; the listings settings for R-code in
+environments <code>Sinput</code>, <code>Soutput</code>, <code>Scode</code>,
+simultaneously; defaults to <code>NULL</code>.</td></tr>
 <tr valign="top"><td><code>Rdset</code></td>
 <td>
 object of S3-class <code>taglist</code> or named <code>list</code> of
@@ -89,13 +112,29 @@ boolean; defaults to <code>TRUE</code>; if <code>TRUE</code>, argument list
 <code>Rset</code> resp. <code>Rdset</code> will be appended to default value 
 lists <code>getSweaveListingOption("Rset")</code> resp.  
 <code>getSweaveListingOption("Rdset")</code> (see below),
-overwriting respective entries of the default value lists.</td></tr> 
+overwriting respective entries of the default value lists;
+in case of <code>lstsetRall</code> may be named vector of length 3
+with names <code>c("in","out","code")</code>.</td></tr>
 <tr valign="top"><td><code>startS</code></td>
 <td>
 character; defaults to <code>"\\lstset\{"</code>; what to do
 by default we use <code>\lstset</code>; an alternative is
 to use <code>\lstdefinestyle</code> which amounts to
-<code>"\\lstdefinestyle\{"</code>.</td></tr>
+<code>"\\lstdefinestyle\{"</code>;
+in case of <code>lstsetRall</code> may be named vector of length 3
+with names <code>c("in","out","code")</code>.</td></tr>
+<tr valign="top"><td><code>append</code></td>
+<td>
+logical; if <code>TRUE</code> (default) the new settings are appended
+to the old ones; otherwise they are prepended; in case of <code>lstsetRall</code>
+may be named vector of length 3 with names <code>c("in","out","code")</code>.</td></tr>
+<tr valign="top"><td><code>withRstyle</code></td>
+<td>
+logical; if <code>TRUE</code> <code>"style = Rstyle,"</code> is prepended.</td></tr>
+<tr valign="top"><td><code>withOptionsDefAppend</code></td>
+<td>
+logical: shall definitions from global options
+(see <code></code>) be included?</td></tr>
 </table>
 
 
@@ -114,12 +153,21 @@ first arguments, which in the latter case are then converted to <code>taglist</c
 both <code>lstsetR</code> and <code>lstsetRd</code> use particular default values to
 define R resp. Rd output format. More
 specifically for R code, it uses 
-<a href="../../SweaveListingUtils/html/SweaveListingOptions.html">getSweaveListingOption("Rset")</a>,
+,
 and for Rd code, it 
-<a href="../../SweaveListingUtils/html/SweaveListingOptions.html">getSweaveListingOption("Rdset")</a>;
+;
 <code>lstsetRin</code>, <code>lstsetRout</code>, and <code>lstsetRcode</code>
 are corresponding specialized commands for 'listings' environments
 <code>Sinput</code>, <code>Soutput</code>, and <code>Scode</code>, respectively.
+</p>
+<p>
+<code>lstsetRall</code> simultaneously sets/modifies settings for
+'listings' environments
+<code>Sinput</code>, <code>Soutput</code>, and <code>Scode</code>.
+</p>
+<p>
+<code>lstsetdefRstyle</code> redefines listings style
+definition for <code>Rstyle</code>.
 </p>
 <p>
 The output to stdout can be captured in an &lsquo;<span class="file">.Rnw</span>&rsquo; file as

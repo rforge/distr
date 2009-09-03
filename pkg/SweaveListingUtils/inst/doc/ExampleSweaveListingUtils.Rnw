@@ -100,7 +100,8 @@ setToBeDefinedPkgs(pkgs = c("SweaveListingUtils","distr"),
 \small Fraunhofer Platz 1\\[-.5ex]
 \small 67663 Kaiserslautern\\[-.5ex]
 \small Germany\\
-\small e-Mail: {\small \tt Peter.Ruckdeschel@itwm.fraunhofer.de}\medskip\\
+\small e-Mail: \href{mailto:Peter.Ruckdeschel@itwm.fraunhofer.de}%
+{\small \tt {Peter.Ruckdeschel@itwm.fraunhofer.de}}\medskip\\
 \parbox[t]{5cm}{
 \footnotesize\sffamily
  Version control information:
