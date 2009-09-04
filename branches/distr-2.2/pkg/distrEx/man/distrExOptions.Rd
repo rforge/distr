@@ -82,7 +82,7 @@ just a synonym to \code{distrExOptions}.
 %\references{}
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de}}
 %\note{}
-\seealso{\code{\link[base]{options}}, \code{\link[base]{getOption}}}
+\seealso{\code{\link[base]{options}}, \code{\link[base:options]{getOption}}}
 \examples{
 distrExOptions()
 distrExOptions("ElowerTruncQuantile")

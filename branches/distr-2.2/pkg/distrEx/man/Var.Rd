@@ -321,7 +321,7 @@ kurtosis(x, ...)
 \section{Methods}{
 \describe{
   \item{\code{var}, \code{signature(x = "Any")}:}{
-    interface to the \pkg{stats}-function \code{var} --- see \code{\link[stats]{var}}
+    interface to the \pkg{stats}-function \code{var} --- see \code{\link[stats:cor]{var}}
     resp. \code{help(var,package="stats")}.}
   \item{\code{var}, \code{signature(x = "UnivariateDistribution")}:}{ 
     variance of univariate distributions using corresponding \code{E()}-method.}
@@ -342,10 +342,10 @@ kurtosis(x, ...)
     resp. \code{help(sd,package="stats")}.}
   \item{\code{sd}, \code{signature(x = "NormParameter")}:}{
     returns the slot \code{sd} of the parameter of a normal distribution --- see 
-    \code{\link[distr]{sd}} resp. \code{help(sd,package="distr")}.}    
+    \code{\link[distr:sd-methods]{sd}} resp. \code{help(sd,package="distr")}.}    
   \item{\code{sd}, \code{signature(x = "Norm")}:}{
     returns the slot \code{sd} of the parameter of a normal distribution --- see 
-    \code{\link[distr]{sd}} resp. \code{help(sd,package="distr")}.}    
+    \code{\link[distr:sd-methods]{sd}} resp. \code{help(sd,package="distr")}.}    
   \item{\code{sd}, \code{signature(x = "UnivariateDistribution")}:}{ 
     standard deviation of univariate distributions using corresponding \code{E()}-method.}
 
@@ -649,8 +649,8 @@ mad(sin(exp(Norm()+2*Pois()))) ## weird
 }
 \seealso{\code{\link{distrExIntegrate}}, \code{\link{m1df}}, \code{\link{m2df}},
          \code{\link[distr]{Distribution-class}},\cr
- \code{\link[stats]{sd}}, \code{\link[stats]{var}}, \code{\link[stats]{IQR}},\cr
- \code{\link[stats]{median}}, \code{\link[stats]{mad}},  \code{\link[distr]{sd}} }
+ \code{\link[stats]{sd}}, \code{\link[stats:cor]{var}}, \code{\link[stats]{IQR}},\cr
+ \code{\link[stats]{median}}, \code{\link[stats]{mad}},  \code{\link[distr:sd-methods]{sd}} }
 \concept{functional}
 \concept{var}
 \concept{sd}

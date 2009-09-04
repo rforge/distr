@@ -23,7 +23,7 @@
 \author{Nataliya Horbenko \email{Nataliya.Horbenko@itwm.fraunhofer.de}}
 \note{The class \code{"GPareto"} is based on the code provided 
   by the package \pkg{evd} by  Alec Stephenson.}
-\seealso{\code{\link{GPareto-class}}, \code{\link[evd]{dgpd}}}
+\seealso{\code{\link{GPareto-class}}, \code{\link[evd:gpd]{dgpd}}}
 \examples{
 (P1 <- GPareto(loc = 0, scale = 1, shape = 0))
 plot(P1)

@@ -242,5 +242,5 @@ Theory of Robustness.} PhD Thesis. Bayreuth. Available as
 \concept{multivariate distribution}
 \concept{conditional distribution}
 \seealso{
-\code{\link[distr]{distr}} 
+\code{\link[distr:0distr-package]{distr-package}} 
 }

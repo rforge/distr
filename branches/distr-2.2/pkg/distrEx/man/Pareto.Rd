@@ -18,7 +18,7 @@
 \author{Nataliya Horbenko \email{Nataliya.Horbenko@itwm.fraunhofer.de}}
 \note{The class \code{"Pareto"} is based on the code provided 
   by the package \pkg{actuar} by  Vincent Goulet and Mathieu Pigeon.}
-\seealso{\code{\link{Pareto-class}}, \code{\link[actuar]{dpareto1}}}
+\seealso{\code{\link{Pareto-class}}, \code{\link[actuar:SingleParameterPareto]{dpareto1}}}
 \examples{
 (P1 <- Pareto(shape = 1, Min = 1))
 plot(P1)

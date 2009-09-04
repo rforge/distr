@@ -100,7 +100,7 @@ Class \code{"Distribution"}, by class \code{"AbscontDistribution"}.
 \author{Nataliya Horbenko \email{Nataliya.Horbenko@itwm.fraunhofer.de}}
 \note{This class is based on the code provided by the package \pkg{evd}
 by  A. G. Stephenson.}
-\seealso{\code{\link[evd]{dgpd}}, \code{\link[distr]{AbscontDistribution-class}}}
+\seealso{\code{\link[evd:gpd]{dgpd}}, \code{\link[distr]{AbscontDistribution-class}}}
 \examples{
 (P1 <- new("GPareto", loc = 0, scale = 1,shape = 0))
 plot(P1)

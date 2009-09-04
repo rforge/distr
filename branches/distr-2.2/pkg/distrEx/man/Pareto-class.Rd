@@ -86,7 +86,7 @@ Class \code{"Distribution"}, by class \code{"AbscontDistribution"}.
 \author{Nataliya Horbenko \email{Nataliya.Horbenko@itwm.fraunhofer.de}}
 \note{This class is based on the code provided by the package \pkg{actuar}
 by  Vincent Goulet and Mathieu Pigeon.}
-\seealso{\code{\link[actuar]{dpareto1}}, \code{\link[distr]{AbscontDistribution-class}}}
+\seealso{\code{\link[actuar:SingleParameterPareto]{dpareto1}}, \code{\link[distr]{AbscontDistribution-class}}}
 \examples{
 (P1 <- new("Pareto", shape = 1, Min = 2))
 plot(P1)
