@@ -146,7 +146,7 @@ default value is\cr
 %\references{}
 \author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}
-\seealso{\code{\link[base]{options}}, \code{\link[base]{getOption}}}
+\seealso{\code{\link[base]{options}}, \code{\link[base:options]{getOption}}}
 \examples{
 SweaveListingOptions()
 SweaveListingOptions("Rout")

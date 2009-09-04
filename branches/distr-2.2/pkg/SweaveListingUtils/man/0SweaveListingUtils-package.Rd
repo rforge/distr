@@ -83,7 +83,7 @@ packages may be registered at once.
 
 To this end commands
 \code{\link[SweaveListingUtils]{library}} and 
-\code{\link[SweaveListingUtils]{require}} are masked. See also
+\code{\link[SweaveListingUtils:library]{require}} are masked. See also
 \code{\link[SweaveListingUtils]{lstsetLanguage}}, 
 \code{\link[SweaveListingUtils]{changeKeywordstyles}},
 and \code{\link[SweaveListingUtils]{setToBeDefinedPkgs}} 

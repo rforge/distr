@@ -129,7 +129,7 @@ require(package, lib.loc = NULL, quietly = FALSE,
   versions in package \pkg{base}. This masking is necessary to allow for
   extra arguments \code{keywordstyles}, \code{interm.keywordstyles},
   \code{overwrite}, \code{intermediate}. Hence please confer
-  \code{\link[base]{library}}, \code{\link[base]{require}}.\cr
+  \code{\link[base]{library}}, \code{\link[base:library]{require}}.\cr
 
   If argument \code{inSweave} is \code{FALSE} or if argument
   \code{inSweave} is missing and the corresponding global
