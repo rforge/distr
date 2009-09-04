@@ -21,8 +21,6 @@ Depends: \tab R(>= 2.6.0), methods, graphics, setRNG(>= 2006.2-1), distr(>=
 2.0), distrSim(>= 2.0), startupmsg\cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
-License: \tab LGPL-3 \cr
-License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
 }}
 \section{Classes}{
@@ -67,7 +65,8 @@ For any other value of option \code{"StartupBanner"} (i.e., not in \code{c(NULL,
 only the version information is displayed.
 
 The same can be achieved by wrapping the \code{library} or \code{require}  call into
-either \code{\link[startupmsg]{suppressStartupMessages}()} or \code{\link[startupmsg]{onlytypeStartupMessages}(.,atypes="version")}. 
+either \code{\link[startupmsg:StartupUtilities]{suppressStartupMessages}()} or 
+\code{\link[startupmsg:StartupUtilities]{onlytypeStartupMessages}(.,atypes="version")}. 
 
 As for general \code{packageStartupMessage}'s, you may also suppress all
  the start-up banner by wrapping the \code{library} or \code{require} 
@@ -105,6 +104,7 @@ A homepage to this package is available under\cr
 \keyword{ package }
 \concept{S4 evaluation class}
 \seealso{
-\code{\link[distr]{distr}}, \code{\link[distrSim]{distrSim}},  \code{\link[setRNG]{setRNG}}
+\code{\link[distr:0distr-package]{distr-package}}, \code{\link[distrSim:0distrSim-package]{distrSim-package}}, 
+\code{\link[setRNG]{setRNG}}
 }
 
