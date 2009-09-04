@@ -102,6 +102,14 @@
 <param name="Local" value="SphericalDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="df,MVtDistribution-method">
+<param name="Local" value="MvtDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="df,MVtParameter-method">
+<param name="Local" value="MvtParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="dim,MultivarDistrList-method">
 <param name="Local" value="MultivarDistrList-class.html">
 </OBJECT>
@@ -206,6 +214,18 @@
 <param name="Local" value="distrEllipseMASK.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mean">
+<param name="Local" value="MvnormParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mean,MVNormDistribution-method">
+<param name="Local" value="MvnormDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mean,MVNormParameter-method">
+<param name="Local" value="MvnormParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="mixCoeff">
 <param name="Local" value="MultivarMixingDistribution-class.html">
 </OBJECT>
@@ -272,6 +292,46 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="MVDistrList-class">
 <param name="Local" value="MultivarDistrList-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="MVNorm">
+<param name="Local" value="MvnormDistribution.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="MVNormDistribution">
+<param name="Local" value="MvnormDistribution.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="MVNormDistribution-class">
+<param name="Local" value="MvnormDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="MVNormParameter-class">
+<param name="Local" value="MvnormParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="MVt">
+<param name="Local" value="MvtDistribution.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="MVtDistribution">
+<param name="Local" value="MvtDistribution.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="MVtDistribution-class">
+<param name="Local" value="MvtDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="MVtParameter-class">
+<param name="Local" value="MvtParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ncp,MVtDistribution-method">
+<param name="Local" value="MvtDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ncp,MVtParameter-method">
+<param name="Local" value="MvtParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Nsim">
@@ -390,6 +450,26 @@
 <param name="Local" value="SphericalDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sigma">
+<param name="Local" value="MvnormParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sigma,MVNormDistribution-method">
+<param name="Local" value="MvnormDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sigma,MVNormParameter-method">
+<param name="Local" value="MvnormParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sigma,MVtDistribution-method">
+<param name="Local" value="MvtDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sigma,MVtParameter-method">
+<param name="Local" value="MvtParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="SphericalDistribution">
 <param name="Local" value="SphericalDistribution.html">
 </OBJECT>
@@ -455,6 +535,14 @@
 <param name="Local" value="MultivarDistrList.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for MVNormDistribution-class">
+<param name="Local" value="MvnormDistribution.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for MvtDistribution-class">
+<param name="Local" value="MvtDistribution.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for SphericalDistribution-class">
 <param name="Local" value="SphericalDistribution.html">
 </OBJECT>
@@ -469,6 +557,22 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Methods for Function plot in Package 'distrEllipse'">
 <param name="Local" value="plot-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="MVNorm distribution class">
+<param name="Local" value="MvnormDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="MVt distribution class">
+<param name="Local" value="MvtDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Paramter of a multivariate normal  distribution">
+<param name="Local" value="MvnormParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Paramter of a multivariate t distribution">
+<param name="Local" value="MvtParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Paramter of an Elliptical distributions">

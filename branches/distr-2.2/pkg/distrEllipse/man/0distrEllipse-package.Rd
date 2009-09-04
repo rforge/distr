@@ -88,6 +88,12 @@ objects may be inspected / set by \code{\link{distrEllipseoptions}()}
 and \code{\link{getdistrEllipseOption}()}.
 }
 
+\section{Package versions}{
+Note: The first two numbers of package versions do not necessarily reflect
+ package-individual development, but rather are chosen for the
+ distrXXX family as a whole in order to ease updating "depends"
+ information.
+}
 
 \references{
 P. Ruckdeschel, M. Kohl, T. Stabla, F. Camphausen (2006):
@@ -121,6 +127,7 @@ As for general \code{packageStartupMessage}'s, you may also suppress all
  call into \code{suppressPackageStartupMessages()} from 
  \pkg{startupmsg}-version 0.5 on.
  }
+
 
 \keyword{ package }
 \concept{elliptically symmetric distribution}

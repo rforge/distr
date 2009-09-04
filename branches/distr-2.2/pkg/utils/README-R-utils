@@ -109,12 +109,11 @@ setNewversion(
 ##       withHTML:      are HTML files to be updated?
 
 
-### tobedonePaste.R
+### showAllFiles.R
 
-## showAllFiles() : concatenate all TOBEDONE or similar files to one output
-## showsvnlog()   : shows svn log information;
-                    requires + bash shell (may be from cygwin!)
-                             + svn (not TortoiseSVN, but either cygwin-svn or tigris svn for Linux)
+# concatenate all TOBEDONE or similar files to one output
+
+
 # Syntax
 
 showAllFiles( type = "TOBEDONE$", dir = "C:/rtest/distr/",
@@ -134,6 +133,12 @@ if(FALSE){
  showAllFiles(dir="C:/rtest/robast")
 }
 
+
+### showsvnlog.R
+
+# shows svn log information;
+#   requires + bash shell (may be from cygwin!)
+#                             + svn (not TortoiseSVN, but either cygwin-svn or tigris svn for Linux)
 
 # Syntax
 showsvnlog( pathRepo = "distr", inRforge = TRUE, withlogin = TRUE,

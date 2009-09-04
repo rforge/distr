@@ -88,6 +88,12 @@ objects may be inspected / set by \code{\link{distrTEstoptions}()}
 and \code{\link{getdistrTEstOption}()}.
 }
 
+\section{Package versions}{
+Note: The first two numbers of package versions do not necessarily reflect
+ package-individual development, but rather are chosen for the
+ distrXXX family as a whole in order to ease updating "depends"
+ information.
+}
 
 \references{
 %A more detailed manual for \pkg{distr}, \pkg{distrSim}, \pkg{distrTEst}, and \pkg{distrEx} may be downloaded from  

@@ -67,6 +67,12 @@ As for general \code{packageStartupMessage}'s, you may also suppress all
  \pkg{startupmsg}-version 0.5 on.
   }
 
+\section{Package versions}{
+Note: The first two numbers of package versions do not necessarily reflect
+ package-individual development, but rather are chosen for the
+ distrXXX family as a whole in order to ease updating "depends"
+ information.
+}
 \keyword{package}
 \keyword{utilities}
 \keyword{documentation}
