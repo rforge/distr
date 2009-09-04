@@ -7,3 +7,5 @@ to be done in package SweaveListingUtils
 + optionally delegate SweaveListingUtils TeX markup in extra files
   to be included with \include in order not to clutter the original
   TeX file 
++ define a file SweaveListingUtils.sty as indicated by Fritz Leisch
++ to listings developers: insist on including the \lstrenewenvironment definition

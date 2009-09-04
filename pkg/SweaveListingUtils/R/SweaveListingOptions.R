@@ -7,6 +7,7 @@
 
 .SweaveListingOptions <- list(
 Rset = list("fancyvrb" = "true", "escapechar" = "`",
+        "extendedchars" = "false",
         "language" = "R", "basicstyle" = "{\\color{Rcolor}\\small}",
         "keywordstyle" = "{\\bf\\color{Rcolor}}",
         "commentstyle" = "{\\color{Rcommentcolor}\\ttfamily\\itshape}",
