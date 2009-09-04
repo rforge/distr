@@ -152,5 +152,5 @@ As for general \code{packageStartupMessage}'s, you may also suppress all
 \concept{S4 simulation class}
 \concept{S4 data class}
 \seealso{
-\code{\link[distr:0distr-packages]{distr-package}} \code{\link[setRNG]{setRNG}} 
+\code{\link[distr:0distr-package]{distr-package}} \code{\link[setRNG]{setRNG}} 
 }
