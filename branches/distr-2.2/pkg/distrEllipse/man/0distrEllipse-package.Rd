@@ -12,7 +12,7 @@ contoured distributions (based on package distr).
 \details{
 \tabular{ll}{
 Package: \tab distrEllipse \cr
-Version: \tab 0.2 \cr
+Version: \tab 2.2 \cr
 Date: \tab 2009-09-04 \cr
 Depends: \tab R(>= 2.8.0), methods, graphics, mvtnorm, setRNG(>= 2006.2-1),
               distr(>= 2.2), distrEx(>= 2.2), distrSim(>= 2.2), startupmsg\cr
