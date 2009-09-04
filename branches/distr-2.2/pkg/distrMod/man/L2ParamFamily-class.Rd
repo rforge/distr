@@ -155,20 +155,20 @@ Class \code{"ProbFamily"}, by class \code{"ParamFamily"}.
         \item{withSweave}{logical: if \code{TRUE} (for working with \command{Sweave}) 
                           no extra device is opened and height/width are not set}
         \item{main}{logical: is a main title to be used? or \cr
-                    just as argument \code{main} in \code{\link{plot.default}}.}
+                    just as argument \code{main} in \code{\link[graphics]{plot.default}}.}
         \item{inner}{logical: do panels have their own titles? or \cr
                character vector of / cast to length 'number of plotted 
                panels' with the corresponding panel titles. For further 
                information, see also 
                \code{\link[distr:plot-methods]{plot}} and the 
-               description of argument \code{main} in \code{\link{plot.default}}.} 
+               description of argument \code{main} in \code{\link[graphics]{plot.default}}.} 
         \item{sub}{logical: is a sub-title to be used? or \cr
-                   just as argument \code{sub} in \code{\link{plot.default}}.}
+                   just as argument \code{sub} in \code{\link[graphics]{plot.default}}.}
         \item{tmar}{top margin -- useful for non-standard main title sizes}
         \item{bmar}{bottom margin -- useful for non-standard sub title sizes}
         \item{cex.inner}{magnification to be used for inner titles relative
           to the current setting of \code{cex}; as in 
-          \code{\link[stats]{par}}; can be a vector of length 2; in this
+          \code{\link[graphics]{par}}; can be a vector of length 2; in this
           case the first component is for the distribution panels, the 
           second for the L2-derivative-panels.}
        \item{col.inner}{character or integer code; color for the inner title}              
@@ -187,8 +187,8 @@ Class \code{"ProbFamily"}, by class \code{"ParamFamily"}.
                          trafo matrix.
                          }
        \item{\dots}{addtional arguments for \code{plot} --- see 
-               \code{\link[stats]{plot}}, 
-               \code{\link[stats]{plot.default}}, 
+               \code{\link[graphics]{plot}}, 
+               \code{\link[graphics]{plot.default}}, 
                \code{\link[stats]{plot.stepfun}} }
 
       } 

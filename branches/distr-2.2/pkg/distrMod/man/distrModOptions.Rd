@@ -54,8 +54,8 @@ just a synonym to \code{distrModoptions}.
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
         Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}
-\seealso{\code{\link[base]{options}}, \code{\link[base]{getOption}},
-\code{\link[distr]{distroptions}}, \code{\link[distr]{getdistrOption}}}
+\seealso{\code{\link[base]{options}}, \code{\link[base:options]{getOption}},
+\code{\link[distr]{distroptions}}, \code{\link[distr:distroptions]{getdistrOption}}}
 \examples{
 distrModoptions()
 distrModoptions("show.details")
