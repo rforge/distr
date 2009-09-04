@@ -74,15 +74,15 @@ class \code{"Distribution"} by class \code{"MultivariateDistribution"}.
     \item{gaps}{\code{signature(object = "MultivarMixingDistribution")} returns the corresponding slot}
     \item{.logExact}{\code{signature(object = "Distribution")}: returns slot 
       \code{.logExact} if existing; else tries to convert the object to a newer 
-      version of its class by \code{\link[distr]{conv2NewVersion}} and
+      version of its class by \code{\link[distr:versionmanagement]{conv2NewVersion}} and
       returns the corresponding slot of the converted object.}
     \item{.lowerExact}{\code{signature(object = "Distribution")}: returns slot 
        \code{.lowerExact} if existing; else tries to convert the object to a 
-       newer version of its class by \code{\link[distr]{conv2NewVersion}} and
+       newer version of its class by \code{\link[distr:versionmanagement]{conv2NewVersion}} and
      returns the corresponding slot of the converted object.}
     \item{Symmetry}{returns slot \code{Symmetry} if existing; else
     tries to convert the object to a 
-       newer version of its class by \code{\link[distr]{conv2NewVersion}} and
+       newer version of its class by \code{\link[distr:versionmanagement]{conv2NewVersion}} and
      returns the corresponding slot of the converted object.}
     \item{plot}{\code{signature(x = "MultivarMixingDistribution", y = "missing")}:
       plot for an spherically symmetric distribution; see \code{\link{plot-methods}}.
@@ -109,7 +109,7 @@ class \code{"Distribution"} by class \code{"MultivariateDistribution"}.
 \code{\link[distrEx]{MultivariateDistribution-class}},
 \code{\link[distr]{LatticeDistribution-class}},
 \code{\link[distr]{AbscontDistribution-class}},
-\code{\link[distr]{simplifyD}},
+\code{\link[distr]{simplifyD-methods}},
 \code{\link[distr]{flat.mix}}
 }
 \examples{

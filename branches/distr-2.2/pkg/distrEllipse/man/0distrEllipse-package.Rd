@@ -78,7 +78,8 @@ For any other value of option \code{"StartupBanner"} (i.e., not in \code{c(NULL,
 only the version information is displayed.
 
 The same can be achieved by wrapping the \code{library} or \code{require}  call into
-either \code{\link[startupmsg]{suppressStartupMessages}()} or \code{\link[startupmsg]{onlytypeStartupMessages}(.,atypes="version")}. 
+either \code{\link[startupmsg:StartupUtilities]{suppressStartupMessages}()} or 
+\code{\link[startupmsg:StartupUtilities]{onlytypeStartupMessages}(.,atypes="version")}. 
 }
 
 

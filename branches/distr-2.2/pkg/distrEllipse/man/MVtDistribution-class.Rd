@@ -22,9 +22,9 @@ to the references given in this package.
     \item{\code{img}}{Object of class \code{"Reals"}. }
     \item{\code{param}}{Object of class \code{"MVtParameter"}. }
     \item{\code{r}}{function with argument \code{n}; random number generator}
-    \item{\code{d}}{ the density of this distribution, \code{\link[mvtnorm]{dmvt}}}
-    \item{\code{p}}{the (vectorized) function \code{\link[mvtnorm]{pmvt}}.}
-    \item{\code{q}}{the (vectorized) function \code{\link[mvtnorm]{qmvt}}.}
+    \item{\code{d}}{ the density of this distribution, \code{\link[mvtnorm:Mvt]{dmvt}}}
+    \item{\code{p}}{the (vectorized) function \code{\link[mvtnorm:Mvt]{pmvt}}.}
+    \item{\code{q}}{the (vectorized) function \code{\link[mvtnorm:Mvt]{qmvt}}.}
     \item{\code{radDistr}}{an object of class \code{AbscontDistribution}
     with density 
     \deqn{{\rm dim} {({\rm dim}+{\rm df}-1)/2\choose{{\rm df}/2-1}} x^{{\rm dim}-1} {\rm df}^{-{\rm dim}/2}/
@@ -59,7 +59,7 @@ Class \code{"Distribution"}, by class \code{"MultivariateDistribution"}.
 }
 \author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 \examples{
-new("MVtDistribution") ## better use MVt
+new("MVtDistribution") ## better use generating function MVt
 }
 \seealso{Package \pkg{mvtnorm}}
 \concept{Multivariate t Distribution}
