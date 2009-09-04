@@ -1,34 +1,34 @@
 #####################################################
-# Howto to R - utils -- version 2.2 (090409)
+# Howto to R - utils -- version 2.2 (040909)
 #####################################################
 
 ########### R - Utils
 
-### finde.R : 
+### finde.R :
 #
 # searches for a given pattern (possibly with regular expressions)
 # in all files with a given file extension in a given folder
-# Syntax 
+# Syntax
 
-finde(x = "nchar", dir="C:/rtest/distrEx/R", ext = "R")
-## args: x : pattern; dir: folder; ext: file extension
+finde(x = "nchar", dir="C:/rtest/distrEx/R", ext = "R", rec = FALSE)
+## args: x : pattern; dir: folder; ext: file extension, rec: recursive in subfolders?
 
 ### ladealles.R
 #
 # sources in all .R - files from a given folder
-# Syntax 
+# Syntax
 
 ladeall(DIR="distr", develDir = "C:/rtest", pattern = "")
 ## args: DIR :     relative path to folder starting from develDir
-##       develDir: development folder (absolute path) 
+##       develDir: development folder (absolute path)
 ##       pattern:  regexpr. for files to be sourced in
 
-### compare.R : 
+### compare.R :
 #
 # compares (recursively over all slots / list elements)
-# two objects, i.e. it prints the corresponding slots of object1 
+# two objects, i.e. it prints the corresponding slots of object1
 # directly on top of the corresponding slots of object2
-# Syntax 
+# Syntax
 
 compare(obj1, obj2, level = 0)
 ## obj1,obj2: objects to compare; level: used internally for indentation
@@ -42,34 +42,34 @@ compare(obj1, obj2, level = 0)
 ### setNewRVersion.R
 
 # automatically updates date and version information in a series
-# of package files: 
-#       + for pkgname in packs: 
-#         in DESCRIPTION  
-#             * package version 
+# of package files:
+#       + for pkgname in packs:
+#         in DESCRIPTION
+#             * package version
 #             * Date
 #             * required R version
 #         if pkgname == distrDoc:
-#            in distr.Rnw file  
-#               * change pkg-, pkgEx- version  
+#            in distr.Rnw file
+#               * change pkg-, pkgEx- version
 #         if withHTML  in .html file
-#             * on top : 
-#               - package version 
+#             * on top :
+#               - package version
 #               - release Date
 #               - required R version
 # no longer from version 2.0 on:
 #             * at "Download" (if not already there)
 #                - Win-zip-file      information and URL-link
-#                - Linux-tar-gz-file information and URL-link 
+#                - Linux-tar-gz-file information and URL-link
 # end: no longer from version 2.0 on
 #             * at "Changes" (if not already there)
 #                - header "Changes from <old-pkg-version> to <pkg-version>
 #                - template list
-#             * on bottom of file:  
-#                - "last updated on" - Date 
-#       + if rkurs:             
-#         in rkurs.tex:   
+#             * on bottom of file:
+#                - "last updated on" - Date
+#       + if rkurs:
+#         in rkurs.tex:
 #             * package version of distr-family
-# Syntax 
+# Syntax
 
 setNewversion(
               dev.dir = "C:/rtest/",
@@ -77,20 +77,20 @@ setNewversion(
                         "distr",
                         "distrEx",
                         "distrDoc",
-                        "distrSim", 
-                        "distrTEst", 
-                        "distrTeach", 
-                        "distrMod", 
-                        "robKalman", 
-                        "Benchmark"), 
+                        "distrSim",
+                        "distrTEst",
+                        "distrTeach",
+                        "distrMod",
+                        "robKalman",
+                        "Benchmark"),
               packs.dir = paste(dev.dir, c(rep("distr/pkg",8),
-                               "robKalman/pkg",""), sep=""), 
-              packs.ver = c("0.5", rep("2.0",7),"0.2","2.4"),          
+                               "robKalman/pkg",""), sep=""),
+              packs.ver = c("0.5", rep("2.0",7),"0.2","2.4"),
               packs.gtR = c(rep("2.2.0",8),"2.3.0",""),
-              withHTML = TRUE, 
-              packs.HTML.dir = c("", paste(dev.dir, 
+              withHTML = TRUE,
+              packs.HTML.dir = c("", paste(dev.dir,
                      c(rep("distr/www",7),"robKalman/www"),
-                                      sep=""),""), 
+                                      sep=""),""),
               rkurs = TRUE,
               rkursDir = "D:/Eigene Dateien/Arbeit/R-Kurs/"
               )
@@ -109,3 +109,58 @@ setNewversion(
 ##       withHTML:      are HTML files to be updated?
 
 
+### tobedonePaste.R
+
+## showAllFiles() : concatenate all TOBEDONE or similar files to one output
+## showsvnlog()   : shows svn log information;
+                    requires + bash shell (may be from cygwin!)
+                             + svn (not TortoiseSVN, but either cygwin-svn or tigris svn for Linux)
+# Syntax
+
+showAllFiles( type = "TOBEDONE$", dir = "C:/rtest/distr/",
+              except = NULL, con = stdout()
+                         ){
+## args:  type:   type of Files to be concatenated (with regular expressions!)
+##                typically something like
+##                DESCRIPTION, NEWS, LICENSE, TOBEDONE, CITATION
+##        dir:    top folder from which to recurse
+##        except: exclude files matching this regular expressions
+##        con:    outbound connection (usually stdout, but may be file too)
+
+### some examples
+if(FALSE){
+ showAllFiles()
+ showAllFiles(Type="NEWS", except="www")
+ showAllFiles(dir="C:/rtest/robast")
+}
+
+
+# Syntax
+showsvnlog( pathRepo = "distr", inRforge = TRUE, withlogin = TRUE,
+            PathToBash = "C:/cygwin/bin/bash",
+            PathToUtils = "C:/rtest/distr/branches/distr-2.2/pkg/utils",
+            fromRev = 501, toRev = 502, limit = 100,
+            tmpfile = "C:/rtest/tmp-svnlog3.txt",
+            con = stdout(), withChPaths = FALSE )
+## args:  pathRepo:    the svn project name; in case of r-forge: project name suffices
+##        inRforge:    do we use r-forge as repository
+##                     (otherwise need full URL for arg. "pathRepo"
+##        withlogin:   do we need option "--login" (yes in cygwin, don't know in Linux)
+##        PathToBash:  path to bash-shell
+##        PathToUtils: path to shell script readsvnlog.sh
+##        fromRev:     arg for svn log --- first log-listed revision
+##        toRev:       arg for svn log --- last log-listed revision;
+##                     may be Inf or <0 => then use HEAD revision
+##        limit:       how many revisions will be shown atmost
+##        tmpfile:     some tmpfile to which we write the
+##                     results temporarily; is deleted afterwords
+##        con:         results are written to con; by default stdout, but
+##                     may also be a file
+##        withChPaths: shall changed files/paths be reported ?
+##                     (^= verbose option of svn log)
+
+### some examples
+if(FALSE){
+showsvnlog(from=500,to=520)
+showsvnlog(from=300,to=Inf,limit=1000)
+}

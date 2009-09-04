@@ -8,18 +8,20 @@ updatePackageHelp <- function(package){
   if(length(PFfileI)){
   PFfile <- file.path(package, "man", PFfileI)
   PF     <-  readLines(con = PFfile)
-  PFb    <-  grep("Package: \\\\tab", PF)
+  replaceField <- function(field, dfile){
+     liS <- paste("(",field,":[[:blank:]]+\\\\tab).+(\\\\cr.*)",sep="")
+     reS <- paste("\\1",DFF[1,field],"\\2")
+     df0 <- gsub(liS, reS,dfile)
+     return(df0)}
   PFc    <-  PF
-  PFc[PFb] <- paste("Package: \\tab ", DFF[1,"Package"], "\\cr", sep = "")
-  PFc[PFb+1] <- paste("Version: \\tab ", DFF[1,"Version"], "\\cr", sep = "")
-  PFc[PFb+2] <- paste("Date: \\tab ", DFF[1,"Date"], "\\cr", sep = "")
-  PFc[PFb+3] <- paste("Depends: \\tab ", DFF[1,"Depends"], "\\cr", sep = "")
-  PFc[PFb+4] <- paste("LazyLoad: \\tab ", DFF[1,"LazyLoad"], "\\cr", sep = "")
-  PFc[PFb+5] <- paste("License: \\tab ", DFF[1,"License"], "\\cr", sep = "")
+  s <- sapply(c("Package","Version","Date","Depends","LazyLoad","License"),
+              function(x){ PFca <- replaceField(field=x,dfile=PFc)
+                           PFc <<- PFca
+                           return(NA)})
   writeLines(PFc, con = PFfile)
+  return(invisible())
   }}
 }
-
 
 
 changeDescription <- function(startDir, names, values, 
@@ -45,7 +47,7 @@ changeDescription <- function(startDir, names, values,
      if(!is.matrix(values))
          values <- matrix(values, length(names), length(pkgs), 
                       dimnames = list(names, pkgs))
-     else values <- values[,pkgs]    
+     else values <- values[,pkgs,drop=F]
     # get packages
      sapply(pkgs, function(x){
        FN <- file.path("pkg",x,"DESCRIPTION")
@@ -56,7 +58,16 @@ changeDescription <- function(startDir, names, values,
           updatePackageHelp(package=file.path("pkg",x))
      })
   }
+  return(invisible())
 }
+
+getVersions <- function(startDir = "C:/rtest/robast/branches/robast-0.7",
+                        pkgs){
+return(sapply(pkgs,function(x){
+   ff <- read.dcf(file.path(startDir,
+                            "pkg",x,"DESCRIPTION"))
+   ff[1,"Version"]}))}
+
 
 Pkgs <- c("startupmsg", "SweaveListingUtils",
                       "distr", "distrEx", "distrDoc",

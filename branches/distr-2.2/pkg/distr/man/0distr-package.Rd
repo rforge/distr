@@ -42,15 +42,15 @@ corresponding image distributions.
 
 \details{
 \tabular{ll}{
-Package: \tab distr\cr
-Version: \tab 2.2\cr
-Date: \tab 2009-03-19\cr
+Package: \tab distr \cr
+Version: \tab 2.2 \cr
+Date: \tab 2009-09-04 \cr
 Depends: \tab R(>= 2.2.0), methods, graphics, startupmsg, sfsmisc,
 SweaveListingUtils\cr
-LazyLoad: \tab yes\cr
-License: \tab LGPL-3\cr
-License: \tab LGPL-3\cr
-License: \tab GPL (version 2 or later)\cr
+LazyLoad: \tab yes \cr
+License: \tab LGPL-3 \cr
+License: \tab LGPL-3 \cr
+License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
 }}
 

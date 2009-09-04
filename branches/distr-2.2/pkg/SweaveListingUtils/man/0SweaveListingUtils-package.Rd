@@ -14,12 +14,12 @@ thereby avoiding inconsistencies between vignette and documented source code
 }
 \details{
 \tabular{ll}{
-Package: \tab SweaveListingUtils\cr
-Version: \tab 0.4\cr
-Date: \tab 2009-08-10\cr
-Depends: \tab R(>= 2.0.0), startupmsg\cr
-LazyLoad: \tab yes\cr
-License: \tab LGPL-3\cr
+Package: \tab SweaveListingUtils \cr
+Version: \tab 0.4 \cr
+Date: \tab 2009-09-04 \cr
+Depends: \tab R(>= 2.10.0), startupmsg \cr
+LazyLoad: \tab yes \cr
+License: \tab LGPL-3 \cr
 }
 
 TeX-package \file{listings}, confer \url{http://www.ctan.org/tex-archive/macros/latex/contrib/listings/},
