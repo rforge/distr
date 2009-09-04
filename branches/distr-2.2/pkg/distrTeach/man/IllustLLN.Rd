@@ -49,10 +49,10 @@ of this band by the replicated plotted so far is indicated.}
                   line type of the confidence bands}
   \item{cex.Cover}{magnification w.r.t. the current setting of \code{cex} 
                    to be used for empirical coverages; as in 
-                   \code{\link[stats]{par}}}
+                   \code{\link[graphics]{par}}}
   \item{cex.legend}{magnification w.r.t. the current setting of \code{cex} 
                    to be used for the legend as in 
-                   \code{\link[stats]{par}}}
+                   \code{\link[graphics]{par}}}
   \item{\dots}{further arguments to be passed to \code{matplot},
                \code{matlines}, \code{abline}}
 }

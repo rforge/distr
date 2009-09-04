@@ -115,6 +115,6 @@ Theory of Robustness.} PhD Thesis. Bayreuth. Available as
 \concept{CLT}
 \concept{Teaching demos}
 \seealso{
-\code{\link[distr]{distr}} 
-\code{\link[distrEx]{distrEx}} 
+\code{\link[distr:0distr-package]{distr-package}} 
+\code{\link[distrEx:0distrEx-package]{distrEx-package}} 
 }
