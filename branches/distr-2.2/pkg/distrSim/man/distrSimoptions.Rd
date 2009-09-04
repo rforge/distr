@@ -43,8 +43,8 @@ getdistrSimOption(x)
 %\references{}
 \author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 %\note{}
-\seealso{\code{\link[base]{options}}, \code{\link[base]{getOption}},
-\code{\link[distr]{distroptions}}, \code{\link[distr]{getdistrOption}}}
+\seealso{\code{\link[base]{options}}, \code{\link[base:options]{getOption}},
+\code{\link[distr]{distroptions}}, \code{\link[distr:distroptions]{getdistrOption}}}
 \examples{
 distrSimoptions()
 distrSimoptions("MaxNumberofPlottedObsDims")
