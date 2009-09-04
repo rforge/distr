@@ -49,8 +49,6 @@ Depends: \tab R(>= 2.2.0), methods, graphics, startupmsg, sfsmisc,
 SweaveListingUtils\cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
-License: \tab LGPL-3 \cr
-License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
 }}
 
@@ -240,7 +238,7 @@ Class unions
 
 \section{Methods}{
 
-The group \code{Math} of unary (see \link[base]{Math}) as well as 
+The group \code{Math} of unary (see \link[methods:S4groupGeneric]{Math}) as well as 
 convolution are made available for distributions, see \link{operators-methods};
 in particular for convolution powers, we have method \link{convpow}.
 Besides, there are \code{plot} and \code{print}-methods for distributions.

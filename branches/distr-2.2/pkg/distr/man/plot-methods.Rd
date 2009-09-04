@@ -86,18 +86,18 @@
   \item{tmar}{top margin -- useful for non-standard main title sizes}
   \item{bmar}{bottom margin -- useful for non-standard sub title sizes}
   \item{verticals}{logical: if \code{TRUE}, draw vertical lines at steps;
-                   as in \code{\link[graphics]{plot.stepfun}}} 
+                   as in \code{\link[stats]{plot.stepfun}}} 
   \item{do.points}{logical: if \code{TRUE}, draw  also draw points at the 
          (\code{xlim} restricted) knot locations; as 
-         in \code{\link[graphics]{plot.stepfun}}} 
+         in \code{\link[stats]{plot.stepfun}}} 
   \item{cex.points}{numeric; character expansion factor; as in 
-                    \code{\link[graphics]{plot.stepfun}}}              
+                    \code{\link[stats]{plot.stepfun}}}              
   \item{col.points}{character or integer code; color of points; as in 
-                    \code{\link[graphics]{plot.stepfun}}}              
+                    \code{\link[stats]{plot.stepfun}}}              
   \item{col.hor}{character or integer code; color of horizontal lines; as in 
-                    \code{\link[graphics]{plot.stepfun}}}              
+                    \code{\link[stats]{plot.stepfun}}}              
   \item{col.vert}{character or integer code; color of vertical lines; as in 
-                    \code{\link[graphics]{plot.stepfun}}}              
+                    \code{\link[stats]{plot.stepfun}}}              
   \item{cex.main}{magnification to be used for main titles relative
           to the current setting of \code{cex}; as in 
           \code{\link[graphics]{par}}}
@@ -130,7 +130,7 @@
   \item{\dots}{addtional arguments for \code{plot} --- see 
                \code{\link[graphics]{plot}}, 
                \code{\link[graphics]{plot.default}}, 
-               \code{\link[graphics]{plot.stepfun}} }
+               \code{\link[stats]{plot.stepfun}} }
 }
 \details{
 \describe{
@@ -251,7 +251,7 @@ plot(as(P,"UnivarLebDecDistribution"),mfColRow = FALSE,to.draw.arg=c("d.d"))
 
 }
 \seealso{\code{\link[graphics]{plot}},\code{\link[graphics]{plot.default}}, 
-         \code{\link[graphics]{plot.stepfun}},  \code{\link[graphics]{par}}}
+         \code{\link[stats]{plot.stepfun}},  \code{\link[graphics]{par}}}
 \keyword{methods}
 \keyword{hplot}
 \keyword{distribution}

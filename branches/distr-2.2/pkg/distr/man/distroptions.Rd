@@ -102,7 +102,7 @@ distroptions("WarningArith" = FALSE)
          # switches off warnings as to arithmetics
 distroptions(currentDistrOptions)
 }
-\seealso{\code{\link[base]{options}}, \code{\link[base]{getOption}}}
+\seealso{\code{\link[base]{options}}, \code{\link[base:options]{getOption}}}
 \keyword{distribution}
 \concept{global options}
 \concept{options}
