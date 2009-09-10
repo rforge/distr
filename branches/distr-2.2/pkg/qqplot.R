@@ -108,7 +108,7 @@ setMethod("qqplot", signature(x="ANY",y="ANY"), function(x, y,
 #    print(c(pq[1:3], x[1:3],dsupp.p[1:3],dsupp.m[1:3],m,s))
     dp <- log(pnorm((x+dsupp.p/2-m)/s) - pnorm((x-dsupp.m/2-m)/s))
  }
- return(exp(pq/2-dp)*qnorm((1+alpha)/2))
+ return(exp(pq/2-dp)*(dsupp.p+dsupp.m)/2*qnorm((1+alpha)/2))
 }
 
 .confqq <- function(x,D,alpha,col.pCI,lty.pCI,lwd.pCI,col.sCI,lty.sCI,lwd.sCI,
@@ -209,7 +209,6 @@ mcl}
  ind <- seq(along=x)
  col <- .makeLenAndOrder(col,ind)
  colx <- t(sapply(ind,function(i) colorRamp(c("white",col[i]))(x[i])))
- print(colx)
  colv2col <- function(colvec)
    rgb(red = colvec[1], green = colvec[2], blue = colvec[3], maxColorValue = 255)
  apply(colx,1,function(x) colv2col(x))
