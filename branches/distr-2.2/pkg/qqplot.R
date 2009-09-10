@@ -514,25 +514,24 @@ setMethod("qqplot", signature(x = "ANY",
        stop("IC of the kStepEstimator needs to be of class 'IC'")
     
     L2Fam <- eval(IC@CallL2Fam)
-    wx <- 1
+
+    mcl$y <- L2Fam
 
     if(is(IC,"HampIC")){
       w.fct <- weight(weight(IC))
       wx <- w.fct(x)
       mcl$order.traf <- function(x) 1/w.fct(x)
+
+      cex.lbl <- if(is.null(mcl$cex.lbl))  par("cex")  else eval(mcl$cex.lbl)
+      cex.pch <- if(is.null(mcl$cex.pch))  par("cex")  else eval(mcl$cex.pch)
+      mcl$cex.lbl <- cex.lbl*wx^exp.cex2.lbl
+      mcl$cex.pch <- cex.pch*wx^exp.cex2.pch
+
+      col.lbl <- if(is.null(mcl$col.lbl))  par("col")  else eval(mcl$col.lbl)
+      col.pch <- if(is.null(mcl$col.pch))  par("col")  else eval(mcl$col.pch)
+      mcl$col.lbl <- .fadeColor(col.lbl,wx^exp.fadcol.lbl)
+      mcl$col.pch <- .fadeColor(col.pch,wx^exp.fadcol.pch)
     }
-    
-    mcl$y <- L2Fam
-
-    cex.lbl <- if(is.null(mcl$cex.lbl))  par("cex")  else eval(mcl$cex.lbl)
-    cex.pch <- if(is.null(mcl$cex.pch))  par("cex")  else eval(mcl$cex.pch)
-    mcl$cex.lbl <- cex.lbl*wx^exp.cex2.lbl
-    mcl$cex.pch <- cex.pch*wx^exp.cex2.pch
-
-    col.lbl <- if(is.null(mcl$col.lbl))  par("col")  else eval(mcl$col.lbl)
-    col.pch <- if(is.null(mcl$col.pch))  par("col")  else eval(mcl$col.pch)
-    mcl$col.lbl <- .fadeColor(col.lbl,wx^exp.fadcol.lbl)
-    mcl$col.pch <- .fadeColor(col.pch,wx^exp.fadcol.pch)
 
     return(do.call(getMethod("qqplot", signature(x="ANY", y="ProbFamily")),
             args=mcl))
