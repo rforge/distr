@@ -35,6 +35,12 @@ setMethod("qqplot", signature(x="ANY",y="ANY"), function(x, y,
   sapply(x, function(y) any(abs(y-rx)<.Machine$double.eps))
 }
 
+.makeLenAndOrder <- function(x,ord){
+   n <- length(ord)
+   x <- rep(x, length.out=n)
+   x[ord]
+}
+
 .q2kolmogorov <- function(alpha,n,exact=(n<100)){ ## Kolmogorovstat
  if(exact){
  fct <- function(p0){
@@ -79,15 +85,16 @@ setMethod("qqplot", signature(x="ANY",y="ANY"), function(x, y,
 #   print(c(r=r,p=p.bi,x=x.i,p.u=p.bi.u,p.l=p.bi.l,r.r=p.r,r.l=p.l,t=t,np=n*p.bi))
    r
   }
-  sapply(1:length(x), function(i) uniroot(fct, lower=0, upper=sqrt(n)*max(x[i],n-x[i]),
+  sapply(1:length(x), function(i) uniroot(fct, lower=0, upper=sqrt(n)*max(x[i],n-x[i])+1,
          p.bi = p.b[i], x.i = x[i], tol = 1e-9)$root)
 }
+
 .q2pw <- function(x,p.b,D,n,alpha,exact=(n<100)){
  if(exact)
     return(.BinomCI(x,p.b,D,n,alpha))
- pq <- p.b*(1-p.b)
+ pq <- log(p.b)+log(1-p.b)
  if(is(D,"AbscontDistribution")){
-    dp <- d(D)(x)
+    dp <- d(D)(x,log=TRUE)
  }else{
     supp.ind <- sapply(x, function(y)
                  which.min(abs(y-support(D))))
@@ -99,38 +106,63 @@ setMethod("qqplot", signature(x="ANY",y="ANY"), function(x, y,
     s <- sd(D)
     m <- E(D)
 #    print(c(pq[1:3], x[1:3],dsupp.p[1:3],dsupp.m[1:3],m,s))
-    dp <- pnorm((x+dsupp.p/2-m)/s) - pnorm((x-dsupp.m/2-m)/s)
+    dp <- log(pnorm((x+dsupp.p/2-m)/s) - pnorm((x-dsupp.m/2-m)/s))
  }
- return(sqrt(pq)/dp*qnorm((1+alpha)/2))
+ return(exp(pq/2-dp)*qnorm((1+alpha)/2))
 }
 
 .confqq <- function(x,D,alpha,col.pCI,lty.pCI,lwd.pCI,col.sCI,lty.sCI,lwd.sCI,
                     n,exact.sCI=(n<100),exact.pCI=(n<100)){
    p.r <- p(D)(x)
    p.l <- p.l(D)(x)
-   c.crit <- #q.r(D)(p(D)(
-             .q2kolmogorov(alpha,n,exact.sCI)
+   c.crit <- try(#q.r(D)(p(D)(
+             .q2kolmogorov(alpha,n,exact.sCI), silent=TRUE)
              #))
-   c.crit.i <- #q.r(D)(p(D)(
-              .q2pw(x,p.r,D,n,alpha,exact.pCI)
+   c.crit.i <- try( #q.r(D)(p(D)(
+              .q2pw(x,p.r,D,n,alpha,exact.pCI),silent=TRUE)
               #))
 #   print(c.crit.i)
-   lines(x, x+c.crit.i/sqrt(n),
+   if(!is(c.crit.i, "try-error")){
+      lines(x, x+c.crit.i/sqrt(n),
          col=col.pCI,lty=lty.pCI,lwd=lwd.pCI)
-   lines(x, x-c.crit.i/sqrt(n),
+      lines(x, x-c.crit.i/sqrt(n),
          col=col.pCI,lty=lty.pCI,lwd=lwd.pCI)
-
-   lines(x, q.r(D)(pmax(1-p.r-c.crit/sqrt(n),getdistrOption("DistrResolution")),lower.tail=FALSE),
-         col=col.sCI,lty=lty.sCI,lwd=lwd.sCI)
-   lines(x, q(D)(pmax(p.l-c.crit/sqrt(n),getdistrOption("DistrResolution"))),
-         col=col.sCI,lty=lty.sCI,lwd=lwd.sCI)
-   legend("topleft", legend = eval(substitute(expression(
-      "symm. pointw."~ex.p~alpha==alpha0~"%- conf. interval",
-      "simult."~ex.s~alpha==alpha0~"%- conf. interval"#,
-      ),list(ex.s=if(exact.sCI) "exact" else "asympt.",
-             ex.p=if(exact.pCI) "exact" else "asympt.",
-             alpha0=alpha*100))), lty=c(lty.pCI,lty.sCI), col=c(col.pCI,col.sCI),
-            lwd=2,cex=.8)
+   }
+   if(!is(c.crit, "try-error")){
+      lines(x, q.r(D)(pmax(1-p.r-c.crit/sqrt(n),
+                      getdistrOption("DistrResolution")),lower.tail=FALSE),
+            col=col.sCI,lty=lty.sCI,lwd=lwd.sCI)
+      lines(x, q(D)(pmax(p.l-c.crit/sqrt(n),
+                    getdistrOption("DistrResolution"))),
+            col=col.sCI,lty=lty.sCI,lwd=lwd.sCI)
+   }
+   if(! is(c.crit,"try-error") || ! is(c.crit.i,"try-error") ){
+      expression1 <- substitute(
+         "symm. pointw."~ex.p~alpha==alpha0~"%- conf. interval",
+         list(ex.p = if(exact.pCI) "exact" else "asympt.",
+              alpha0 = alpha*100))
+      expression2 <- substitute(
+         "simult."~ex.s~alpha==alpha0~"%- conf. interval",
+         list(ex.s = if(exact.sCI) "exact" else "asympt.",
+              alpha0 = alpha*100))
+      if(is(c.crit,"try-error")){
+         expression3 <- expression1
+         lty0 <- lty.pCI
+         col0 <- col.pCI
+      }
+      if(is(c.crit.i,"try-error")){
+         expression3 <- expression2
+         lty0 <- lty.sCI
+         col0 <- col.sCI
+      }
+      if( ! is(c.crit.i,"try-error") && ! is(c.crit,"try-error")){
+         expression3 <- eval(substitute(expression(expression1, expression2)))
+         lty0 <- c(lty.pCI, lty.sCI)
+         col0 <- c(col.pCI,col.sCI)
+      }
+      legend("topleft", legend = expression3, bg = "white",
+              lty = lty0, col = col0, lwd = 2, cex = .8)
+   }
 }
 
 .deleteItemsMCL <- function(mcl){
@@ -145,16 +177,19 @@ setMethod("qqplot", signature(x="ANY",y="ANY"), function(x, y,
     mcl$which.Order <- mcl$order.traf  <- NULL
     mcl$col.pch <- mcl$cex.pch  <- mcl$jit.fac <- NULL
     mcl$col.lbl <- mcl$cex.lbl  <- mcl$adj.lbl <- NULL
+    mcl$exp.cex2.pch <- mcl$exp.cex2.lbl <- NULL
+    mcl$exp.fadcol.pch <- mcl$exp.fadcol.lbl <- NULL
 mcl}
 
 ## helper into distrMod
-.labelprep <- function(x,y,lab.pts,col.lbl,which.lbs,which.Order,order.traf){
+.labelprep <- function(x,y,lab.pts,col.lbl,cex.lbl,which.lbs,which.Order,order.traf){
       n <- length(x)
-      xys <- cbind(x,y[rank(x)])
+      rx <- rank(x)
+      xys <- cbind(x,y[rx])
       if(is.null(which.lbs)) which.lbs <- 1:n
-      oN0 <- order(xys[,1],decreasing=TRUE)
+      oN0 <- order(x,decreasing=TRUE)
       if(!is.null(order.traf)){
-          oN0 <- order(order.traf(xys[,1]),decreasing=TRUE)
+          oN0 <- order(order.traf(x),decreasing=TRUE)
       }
       oN0b <- oN0 %in% which.lbs
       oN0 <- oN0[oN0b]
@@ -163,10 +198,18 @@ mcl}
           oN <- oN0[which.Order]
       x0 <- xys[oN,1]
       y0 <- xys[oN,2]
-      if(is.null(lab.pts)) lab.pts <- paste(oN)
-      else {lab.pts <-  rep(lab.pts, length.out=n)
-            lab.pts <- lab.pts[oN]}
-      return(list(x0=x0,y0=y0,lab=lab.pts,col=col.lbl[oN]))
+
+      col.lbl <- col.lbl[rx]
+      lab.pts <- lab.pts[rx]
+      cex.lbl <- cex.lbl[rx]
+      return(list(x0=x0,y0=y0,lab=lab.pts[oN],col=col.lbl[oN],cex=cex.lbl[oN]))
+}
+
+.fadeColor <- function(col,x){
+ colx <- colorRamp(c("white",col))(x)
+ colv2col <- function(colvec)
+   rgb(red = colvec[1], green = colvec[2], blue = colvec[3], maxColorValue = 255)
+ apply(colx,1,function(x) colv2col(x))
 }
 
 ## into distr:
@@ -212,12 +255,12 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
     oxc <- 1:length(xc)
     xc.o <- xc
     yc.o <- yc
+    ord.x <- order(x)
 
     if("support" %in% names(getSlots(class(x)))){
        xc <- jitter(xc, factor=jit.fac)
        oxc <- order(xc)
        xc <- xc[oxc]
-       col.nInSupp <- col.nInSupp [oxc]
        }
 
     if("support" %in% names(getSlots(class(y))))
@@ -227,8 +270,9 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
     mcl$y <- yc
 
     mcl <- .deleteItemsMCL(mcl)
-    mcl$cex <- cex.pch
-    mcl$col <- col.pch
+
+    mcl$cex <- .makeLenAndOrder(cex.pch,ord.x)
+    mcl$col <- .makeLenAndOrder(col.pch,ord.x)
 
     ret <- do.call(stats::qqplot, args=mcl)
 
@@ -296,9 +340,12 @@ setMethod("qqplot", signature(x = "ANY",
     mcl <- as.list(mc)[-1]
     force(x)
 
+
     xj <- x
     if(any(.isReplicated(x)))
        xj[.isReplicated(x)] <- jitter(x[.isReplicated(x)], factor=jit.fac)
+
+    ord.x <- order(xj)
 
     pp <- ppoints(n)
     yc <- q(y)(pp)
@@ -308,13 +355,18 @@ setMethod("qqplot", signature(x = "ANY",
     if("support" %in% names(getSlots(class(y))))
        yc <- sort(jitter(yc, factor=jit.fac))
 
-    col.pch <- rep(col.pch,length.out=n)
-    col.lbl <- rep(col.lbl,length.out=n)
+    cex.pch <- .makeLenAndOrder(cex.pch,ord.x)
+    cex.lbl <- .makeLenAndOrder(cex.lbl,ord.x)
+    col.pch <- .makeLenAndOrder(col.pch,ord.x)
+    col.lbl <- .makeLenAndOrder(col.lbl,ord.x)
 
-    ordx <- order(x)
+    if(withLab){
+      if(is.null(lab.pts)) lab.pts <- paste(ord.x)
+      else lab.pts <- .makeLenAndOrder(lab.pts,ord.x)
+    }
 
     if(check.NotInSupport){
-       xo <- x[ordx]
+       xo <- x[ord.x]
        nInSupp <- which(xo < q(y)(0))
 
        nInSupp <- unique(sort(c(nInSupp,which( xo > q(y)(1)))))
@@ -325,7 +377,8 @@ setMethod("qqplot", signature(x = "ANY",
        if(length(nInSupp)){
           col.pch[nInSupp] <- col.NotInSupport
           if(withLab)
-             col.lbl[ordx[nInSupp]] <- col.NotInSupport
+#             col.lbl[ord.x[nInSupp]] <- col.NotInSupport
+             col.lbl[nInSupp] <- col.NotInSupport
        }
     }
 
@@ -343,9 +396,9 @@ setMethod("qqplot", signature(x = "ANY",
 
     if(withLab&& plot.it){
        lbprep <- .labelprep(xj,yc,lab.pts,
-                            col.lbl,which.lbs,which.Order,order.traf)
+                            col.lbl,cex.lbl,which.lbs,which.Order,order.traf)
        text(x = lbprep$x0, y = lbprep$y0, labels = lbprep$lab,
-            cex = cex.lbl, col = lbprep$col, adj = adj.lbl)
+            cex = lbprep$cex, col = lbprep$col, adj = adj.lbl)
     }
 
     if(withIdLine&& plot.it){
@@ -431,6 +484,52 @@ setMethod("qqplot", signature(x = "ANY",
     xD <- fct(distance)(scx)
     x.cex <- 3/(1+log(1+xD))
     mcl$cex.pch <- x.cex
+
+    return(do.call(getMethod("qqplot", signature(x="ANY", y="ProbFamily")),
+            args=mcl))
+    })
+
+## into RobAStBase
+setMethod("qqplot", signature(x = "ANY",
+                              y = "kStepEstimate"), function(x, y,
+                              n = length(x), withIdLine = TRUE, withConf = TRUE,
+    plot.it = TRUE, xlab = deparse(substitute(x)),
+    ylab = deparse(substitute(y)), ...,
+    exp.cex2.lbl = -.15,
+    exp.cex2.pch = -.35,
+    exp.fadcol.lbl = 1.85,
+    exp.fadcol.pch = 1.85
+    ){
+
+    mc <- match.call(call = sys.call(sys.parent(1)))
+    if(missing(xlab)) mc$xlab <- as.character(deparse(mc$x))
+    if(missing(ylab)) mc$ylab <- as.character(deparse(mc$y))
+    mcl <- as.list(mc)[-1]
+
+    IC <- pIC(y)
+    if(!is(IC,"IC"))
+       stop("IC of the kStepEstimator needs to be of class 'IC'")
+    
+    L2Fam <- eval(IC@CallL2Fam)
+    wx <- 1
+
+    if(is(IC,"HampIC")){
+      w.fct <- weight(weight(IC))
+      wx <- w.fct(x)
+      mcl$order.traf <- function(x) 1/w.fct(x)
+    }
+    
+    mcl$y <- L2Fam
+
+    cex.lbl <- if(is.null(mcl$cex.lbl))  par("cex")  else eval(mcl$cex.lbl)
+    cex.pch <- if(is.null(mcl$cex.pch))  par("cex")  else eval(mcl$cex.pch)
+    mcl$cex.lbl <- cex.lbl*wx^exp.cex2.lbl
+    mcl$cex.pch <- cex.pch*wx^exp.cex2.pch
+
+    col.lbl <- if(is.null(mcl$col.lbl))  par("col")  else eval(mcl$col.lbl)
+    col.pch <- if(is.null(mcl$col.pch))  par("col")  else eval(mcl$col.pch)
+    mcl$col.lbl <- .fadeColor(col.lbl,wx^exp.fadcol.lbl)
+    mcl$col.pch <- .fadeColor(col.pch,wx^exp.fadcol.pch)
 
     return(do.call(getMethod("qqplot", signature(x="ANY", y="ProbFamily")),
             args=mcl))
