@@ -206,7 +206,10 @@ mcl}
 }
 
 .fadeColor <- function(col,x){
- colx <- colorRamp(c("white",col))(x)
+ ind <- seq(along=x)
+ col <- .makeLenAndOrder(col,ind)
+ colx <- t(sapply(ind,function(i) colorRamp(c("white",col[i]))(x[i])))
+ print(colx)
  colv2col <- function(colvec)
    rgb(red = colvec[1], green = colvec[2], blue = colvec[3], maxColorValue = 255)
  apply(colx,1,function(x) colv2col(x))
