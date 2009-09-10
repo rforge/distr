@@ -94,7 +94,7 @@ setMethod("qqplot", signature(x="ANY",y="ANY"), function(x, y,
     mcl$withLab <- mcl$lab.pts <- mcl$which.lbs <- NULL
     mcl$which.Order <- mcl$order.traf  <- NULL
     mcl$col.pch <- mcl$cex.pch  <- NULL
-    mcl$col.lbl <- mcl$cex.lbl  <- NULL
+    mcl$col.lbl <- mcl$cex.lbl  <- mcl$adj.lbl <- NULL
 mcl}
 
 .labelprep <- function(x,y,lab.pts,which.lbs,which.Order,order.traf){
@@ -192,7 +192,8 @@ setMethod("qqplot", signature(x = "ANY",
              cex.pch = par("cex"),## magnification factor for the plotted symbols
              col.pch = par("col"),## color for the plotted symbols
              cex.lbl = par("cex"),## magnification factor for the plotted observation labels
-             col.lbl = par("col") ## color for the plotted observation labels
+             col.lbl = par("col"),## color for the plotted observation labels
+             adj.lbl = NULL       ## adj parameter for the plotted observation labels
     ){ ## return value as in stats::qqplot
 
     mc <- match.call(call = sys.call(sys.parent(1)))
@@ -218,7 +219,7 @@ setMethod("qqplot", signature(x = "ANY",
     if(withLab&& plot.it){
       lbprep <- .labelprep(x,yc,lab.pts,which.lbs,which.Order,order.traf)
        text(x = lbprep$x0, y = lbprep$y0, labels = lbprep$lab,
-            cex = cex.lbl, col = col.lbl)
+            cex = cex.lbl, col = col.lbl, adj = adj.lbl)
     }
 
     if(withIdLine&& plot.it){
@@ -322,9 +323,9 @@ setMethod("qqplot", signature(x = "ANY",
     mcl$y <- y@center
 
     L2D <- L2deriv(y@center)
-    FI <- FisherInfo(y@center)
-    L2Dx <- sapply(x, function(x) evalRandVar(L2D,x)[[1]])
-    scx <-  solve(sqrt(FI),L2Dx)
+    FI <- PosSemDefSymmMatrix(FisherInfo(y@center))
+    L2Dx <- sapply(x, function(z) evalRandVar(L2D,z)[[1]])
+    scx <-  solve(sqrt(FI),matrix(L2Dx,ncol=length(x)))
     xD <- fct(distance)(scx)
     x.cex <- 3/(1+log(1+xD))
     mcl$cex.pch <- x.cex
