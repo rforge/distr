@@ -3,6 +3,7 @@
 # yet to be documented and ranged into distr, distrMod, RobAStBase
 ################################################################
 
+### to be written into the respective MASKING files....
 
 ## into distr
 if(!isGeneric("qqplot"))
@@ -23,6 +24,7 @@ setMethod("qqplot", signature(x="ANY",y="ANY"), function(x, y,
 ## into distr
 
 ## helpers
+
 .q2kolmogorov <- function(alpha,n,exact=(n<100)){ ## Kolmogorovstat
  if(exact){
  fct <- function(p0){
@@ -59,7 +61,8 @@ setMethod("qqplot", signature(x="ANY",y="ANY"), function(x, y,
    pbinom(q = pmin(n*p1.bi+t*sqrt(n),n+1), size = n, prob = p1.bi) -
    pbinom(q = pmax(n*p1.bi-t*sqrt(n),-1), size = n, prob = p1.bi)-alpha
   }
-  sapply(p, function(p2) uniroot(fct, lower=0, upper=sqrt(n)+1,p1.bi=p2,tol=1e-9)$root)
+  sapply(p, function(p2) uniroot(fct, lower=0, upper=sqrt(n)+1,
+         p1.bi = p2, tol = 1e-9)$root)
 }
 
 .confqq <- function(x,D,alpha,col.pCI,lty.pCI,lwd.pCI,col.sCI,lty.sCI,lwd.sCI,
@@ -97,6 +100,7 @@ setMethod("qqplot", signature(x="ANY",y="ANY"), function(x, y,
     mcl$col.lbl <- mcl$cex.lbl  <- mcl$adj.lbl <- NULL
 mcl}
 
+## helper into distrMod
 .labelprep <- function(x,y,lab.pts,which.lbs,which.Order,order.traf){
       n <- length(x)
       xys <- cbind(x,y[rank(x)])
@@ -118,6 +122,7 @@ mcl}
       return(list(x0=x0,y0=y0,lab=lab.pts))
 }
 
+## into distr:
 setMethod("qqplot", signature(x = "UnivariateDistribution",
                               y = "UnivariateDistribution"), function(x, y,
                               n = 30, withIdLine = TRUE, withConf = TRUE,
@@ -240,18 +245,7 @@ setMethod("qqplot", signature(x = "ANY",
                               y = "ProbFamily"), function(x, y,
                               n = length(x), withIdLine = TRUE, withConf = TRUE,
     plot.it = TRUE, xlab = deparse(substitute(x)),
-    ylab = deparse(substitute(y)), ...,
-    withLab = TRUE, lab.pts = NULL,
-    which.lbs = NULL, which.Order = NULL, order.traf = NULL,
-    col.IdL = "red", lty.IdL = 2, lwd.IdL = 2,
-    alpha.CI = .95, exact.sCI = (n<100),
-    col.pCI = "orange", lty.pCI = 3, lwd.pCI = 2,
-    col.sCI = "tomato2", lty.sCI = 4, lwd.sCI = 2,
-    cex.pch=par("cex"), col.pch = par("col"),
-    cex.lbl = par("cex"), col.lbl = par("col"),
-    cex.pch=par("cex"), col.pch = par("col"),
-    cex.lbl = par("cex"), col.lbl = par("col")
-    ){
+    ylab = deparse(substitute(y)), ...){
 
     mc <- match.call(call = sys.call(sys.parent(1)))
     if(missing(xlab)) mc$xlab <- as.character(deparse(mc$x))
@@ -273,16 +267,7 @@ setMethod("qqplot", signature(x = "ANY",
                               y = "RobModel"), function(x, y,
                               n = length(x), withIdLine = TRUE, withConf = TRUE,
     plot.it = TRUE, xlab = deparse(substitute(x)),
-    ylab = deparse(substitute(y)), ...,
-    withLab = TRUE, lab.pts = NULL,
-    which.lbs = NULL, which.Order = NULL, order.traf = NULL,
-    col.IdL = "red", lty.IdL = 2, lwd.IdL = 2,
-    alpha.CI = .95, exact.sCI = (n<100),
-    col.pCI = "orange", lty.pCI = 3, lwd.pCI = 2,
-    col.sCI = "tomato2", lty.sCI = 4, lwd.sCI = 2,
-    col.pch = par("col"),
-    cex.lbl = par("cex"), col.lbl = par("col"),
-    distance = NormType()){
+    ylab = deparse(substitute(y)), ..., distance = NormType()){
 
     mc <- match.call(call = sys.call(sys.parent(1)))
     if(missing(xlab)) mc$xlab <- as.character(deparse(mc$x))
@@ -304,16 +289,7 @@ setMethod("qqplot", signature(x = "ANY",
                               y = "InfRobModel"), function(x, y,
                               n = length(x), withIdLine = TRUE, withConf = TRUE,
     plot.it = TRUE, xlab = deparse(substitute(x)),
-    ylab = deparse(substitute(y)), ...,
-    withLab = TRUE, lab.pts = NULL,
-    which.lbs = NULL, which.Order = NULL, order.traf = NULL,
-    col.IdL = "red", lty.IdL = 2, lwd.IdL = 2,
-    alpha.CI = .95, exact.sCI = (n<100),
-    col.pCI = "orange", lty.pCI = 3, lwd.pCI = 2,
-    col.sCI = "tomato2", lty.sCI = 4, lwd.sCI = 2,
-    col.pch = par("col"),
-    cex.lbl = par("cex"), col.lbl = par("col"),
-    distance = NormType()){
+    ylab = deparse(substitute(y)), ...){
 
     mc <- match.call(call = sys.call(sys.parent(1)))
     if(missing(xlab)) mc$xlab <- as.character(deparse(mc$x))
