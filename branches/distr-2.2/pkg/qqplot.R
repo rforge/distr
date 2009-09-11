@@ -72,29 +72,57 @@ setMethod("qqplot", signature(x="ANY",y="ANY"), function(x, y,
  return(res)
 }
 
-.BinomCI <- function(x,p.b,D,n,alpha){
-  if(length(x)==0) return(NA)
-  fct <- function(t,p.bi,x.i){
-   p.bi.u <- p(D)(x.i+t/sqrt(n))
-   p.bi.l <- p.l(D)(x.i-t/sqrt(n))
-   d.r <- if(n*p.bi>floor(n*p.bi)) 0 else
-        dbinom(x = n*p.bi, size = n, prob = pmax(p.bi.u,1))
-   p.r <- pbinom(q = n*p.bi, size = n, prob = pmin(p.bi.u,1),lower.tail=FALSE)+d.r
-   p.l <- pbinom(q = n*p.bi, size = n, prob = pmax(p.bi.l,0),lower.tail=FALSE)
-   r <- p.r -p.l - alpha
+.BinomCI.in <- function(t,p.bi,x.i, del.i=0,D.i,n.i,alpha.i){
+   p.bi.u <- p(D.i)(x.i+(t+del.i)/sqrt(n.i))
+   p.bi.l <- p.l(D.i)(x.i-(t-del.i)/sqrt(n.i))
+   d.r <- if(n.i*p.bi>floor(n.i*p.bi)) 0 else
+        dbinom(x = n.i*p.bi, size = n.i, prob = pmax(p.bi.u,1))
+   p.r <- pbinom(q = n.i*p.bi, size = n.i, prob = pmin(p.bi.u,1),lower.tail=FALSE)+d.r
+   p.l <- pbinom(q = n.i*p.bi, size = n.i, prob = pmax(p.bi.l,0),lower.tail=FALSE)
+   r <- p.r -p.l - alpha.i
 #   print(c(r=r,p=p.bi,x=x.i,p.u=p.bi.u,p.l=p.bi.l,r.r=p.r,r.l=p.l,t=t,np=n*p.bi))
    r
   }
-  sapply(1:length(x), function(i) uniroot(fct, lower=0, upper=sqrt(n)*max(x[i],n-x[i])+1,
-         p.bi = p.b[i], x.i = x[i], tol = 1e-9)$root)
+
+
+.BinomCI <- function(x,p.b,D,n,alpha){
+  if(length(x)==0) return(NA)
+  res <- sapply(1:length(x), function(i) uniroot(.BinomCI.in,
+         lower=0, upper=sqrt(n)*max(x[i],n-x[i])+1,
+         p.bi = p.b[i], x.i = x[i], del.i = 0,
+         D.i = D, n.i = n, alpha.i = alpha, tol = 1e-9)$root)
+  return(cbind(left=-res, right=res))
 }
 
-.q2pw <- function(x,p.b,D,n,alpha,exact=(n<100)){
- if(exact)
-    return(.BinomCI(x,p.b,D,n,alpha))
+.BinomCI.nosym <- function(x,p.b,D,n,alpha){
+  if(length(x)==0) return(NA)
+  res0 <- sapply(1:length(x), function(i){
+    get.t <- function(del.o, p.bi, x.i)
+              uniroot(.BinomCI.in,
+                lower=0, upper=sqrt(n)*max(x.i,n-x.i)+1,
+                p.bi = p.bi, x.i = x.i, del.i=del.o,
+                D.i = D, n.i = n, alpha.i = alpha, tol = 1e-9)$root
+    res <- optimize(get.t, lower=-sqrt(n)*max(x[i],n-x[i])-1,
+                    upper = sqrt(n)*max(x[i],n-x[i])+1, p.bi = p.b[i],
+                    x = x[i], tol = 1e-9)
+    t.o <- res$objective
+    del <- res$minimum
+    c(left=-t.o+del, right=t.o+del)
+    })
+   return(t(res0))
+}
+
+
+.q2pw <- function(x,p.b,D,n,alpha,exact=(n<100),nosym=FALSE){
+ if(exact){
+    fct <- if(nosym) .BinomCI.nosym else .BinomCI
+    ro <- fct(x,p.b,D,n,alpha)
+    return(ro)
+ }
  pq <- log(p.b)+log(1-p.b)
  if(is(D,"AbscontDistribution")){
     dp <- d(D)(x,log=TRUE)
+    dsupp.p <- dsupp.m<-1
  }else{
     supp.ind <- sapply(x, function(y)
                  which.min(abs(y-support(D))))
@@ -108,24 +136,22 @@ setMethod("qqplot", signature(x="ANY",y="ANY"), function(x, y,
 #    print(c(pq[1:3], x[1:3],dsupp.p[1:3],dsupp.m[1:3],m,s))
     dp <- log(pnorm((x+dsupp.p/2-m)/s) - pnorm((x-dsupp.m/2-m)/s))
  }
- return(exp(pq/2-dp)*(dsupp.p+dsupp.m)/2*qnorm((1+alpha)/2))
+ ro <- exp(pq/2-dp)*(dsupp.p+dsupp.m)/2*qnorm((1+alpha)/2)
+ return(cbind(left=-ro,right=ro))
 }
 
 .confqq <- function(x,D,alpha,col.pCI,lty.pCI,lwd.pCI,col.sCI,lty.sCI,lwd.sCI,
-                    n,exact.sCI=(n<100),exact.pCI=(n<100)){
+                    n,exact.sCI=(n<100),exact.pCI=(n<100), nosym.pCI = FALSE){
    p.r <- p(D)(x)
    p.l <- p.l(D)(x)
-   c.crit <- try(#q.r(D)(p(D)(
-             .q2kolmogorov(alpha,n,exact.sCI), silent=TRUE)
-             #))
-   c.crit.i <- try( #q.r(D)(p(D)(
-              .q2pw(x,p.r,D,n,alpha,exact.pCI),silent=TRUE)
-              #))
+   c.crit <- try(.q2kolmogorov(alpha,n,exact.sCI), silent=TRUE)
+   c.crit.i <- #try(
+            .q2pw(x,p.r,D,n,alpha,exact.pCI,nosym.pCI)#,silent=TRUE)
 #   print(c.crit.i)
    if(!is(c.crit.i, "try-error")){
-      lines(x, x+c.crit.i/sqrt(n),
+      lines(x, x+c.crit.i[,"right"]/sqrt(n),
          col=col.pCI,lty=lty.pCI,lwd=lwd.pCI)
-      lines(x, x-c.crit.i/sqrt(n),
+      lines(x, x+c.crit.i[,"left"]/sqrt(n),
          col=col.pCI,lty=lty.pCI,lwd=lwd.pCI)
    }
    if(!is(c.crit, "try-error")){
@@ -138,9 +164,10 @@ setMethod("qqplot", signature(x="ANY",y="ANY"), function(x, y,
    }
    if(! is(c.crit,"try-error") || ! is(c.crit.i,"try-error") ){
       expression1 <- substitute(
-         "symm. pointw."~ex.p~alpha==alpha0~"%- conf. interval",
+         nosym0~"pointw."~ex.p~alpha==alpha0~"%- conf. interval",
          list(ex.p = if(exact.pCI) "exact" else "asympt.",
-              alpha0 = alpha*100))
+              alpha0 = alpha*100,
+              nosym0 = if(nosym.pCI) "shortest asymm." else "symm"))
       expression2 <- substitute(
          "simult."~ex.s~alpha==alpha0~"%- conf. interval",
          list(ex.s = if(exact.sCI) "exact" else "asympt.",
@@ -179,6 +206,7 @@ setMethod("qqplot", signature(x="ANY",y="ANY"), function(x, y,
     mcl$col.lbl <- mcl$cex.lbl  <- mcl$adj.lbl <- NULL
     mcl$exp.cex2.pch <- mcl$exp.cex2.lbl <- NULL
     mcl$exp.fadcol.pch <- mcl$exp.fadcol.lbl <- NULL
+    mcl$nosym.pCI <- NULL
 mcl}
 
 ## helper into distrMod
@@ -221,10 +249,10 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
     plot.it = TRUE, xlab = deparse(substitute(x)),
     ylab = deparse(substitute(y)), ...,
     col.IdL = "red", lty.IdL = 2, lwd.IdL = 2,
-    alpha.CI = .95, exact.sCI = (n<100), exact.pCI = (n<100),
+    alpha.CI = .95, exact.sCI = (n<100), exact.pCI = (n<100), nosym.pCI = FALSE,
     col.pCI = "orange", lty.pCI = 3, lwd.pCI = 2,
     col.sCI = "tomato2", lty.sCI = 4, lwd.sCI = 2,
-    cex.pch=par("cex"), col.pch = par("col"),
+    cex.pch = par("cex"), col.pch = par("col"),
     jit.fac = 0, check.NotInSupport = TRUE,
     col.NotInSupport = "red"){
 
@@ -290,7 +318,8 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
           }
           .confqq(xy, y, alpha.CI, col.pCI, lty.pCI, lwd.pCI,
                       col.sCI, lty.sCI, lwd.sCI,
-                  length(xc), exact.sCI = exact.sCI, exact.pCI = exact.pCI)
+                  length(xc), exact.sCI = exact.sCI, exact.pCI = exact.pCI,
+                  nosym.pCI = nosym.pCI)
        }
     }
     return(ret)
@@ -309,7 +338,7 @@ setMethod("qqplot", signature(x = "ANY",
              xlab = deparse(substitute(x)), ## x-label
              ylab = deparse(substitute(y)), ## y-label
              ...,                 ## further parameters
-             withLab = TRUE,      ## shall observation labels be plotted in
+             withLab = FALSE,     ## shall observation labels be plotted in
              lab.pts = NULL,      ## observation labels to be used
              which.lbs = NULL,    ## which observations shall be labelled
              which.Order = NULL,  ## which of the ordered (remaining) observations shall be labelled
@@ -320,6 +349,7 @@ setMethod("qqplot", signature(x = "ANY",
              alpha.CI = .95,      ## confidence level
              exact.sCI = (n<100), ## shall simultaneous CIs be determined with exact kolmogorov distribution?
              exact.pCI = (n<100), ## shall pointwise CIs be determined with exact Binomial distribution?
+             nosym.pCI = FALSE,   ## shall we use (shortest) asymmetric CIs?
              col.pCI = "orange",  ## color for the pointwise CI
              lty.pCI = 3,         ## line type for the pointwise CI
              lwd.pCI = 2,         ## line width for the pointwise CI
@@ -415,7 +445,8 @@ setMethod("qqplot", signature(x = "ANY",
           }
           .confqq(xy, y, alpha.CI, col.pCI, lty.pCI, lwd.pCI,
                   col.sCI, lty.sCI, lwd.sCI,
-                  length(x), exact.sCI = exact.sCI, exact.pCI = exact.pCI)
+                  length(x), exact.sCI = exact.sCI, exact.pCI = exact.pCI,
+                  nosym.pCI = nosym.pCI)
        }
     }
     return(ret)
