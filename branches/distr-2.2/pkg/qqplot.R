@@ -167,7 +167,7 @@ setMethod("qqplot", signature(x="ANY",y="ANY"), function(x, y,
          nosym0~"pointw."~ex.p~alpha==alpha0~"%- conf. interval",
          list(ex.p = if(exact.pCI) "exact" else "asympt.",
               alpha0 = alpha*100,
-              nosym0 = if(nosym.pCI) "shortest asymm." else "symm"))
+              nosym0 = if(nosym.pCI&&exact.pCI) "shortest asymm." else "symm"))
       expression2 <- substitute(
          "simult."~ex.s~alpha==alpha0~"%- conf. interval",
          list(ex.s = if(exact.sCI) "exact" else "asympt.",
