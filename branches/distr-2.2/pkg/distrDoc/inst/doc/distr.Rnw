@@ -815,7 +815,7 @@ print(object)
 This behaviour will soon be annoying so you may switch it off setting the global 
 option \code{WarningArith} to \code{FALSE} (see section~\ref{options}).\medskip\\
 %
-Function \code{distrArith()} displays the following comment
+Function \code{distrARITH()} displays the following comment
 \begin{footnotesize} 
 \begin{quote} 
 \begin{verbatim}

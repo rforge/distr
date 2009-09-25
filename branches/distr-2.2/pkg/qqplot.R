@@ -35,6 +35,16 @@ setMethod("qqplot", signature(x="ANY",y="ANY"), function(x, y,
   sapply(x, function(y) any(abs(y-rx)<.Machine$double.eps))
 }
 
+.NotInSupport <- function(x,D){
+  nInSupp <- which(x < q(D)(0))
+  nInSupp <- unique(sort(c(nInSupp,which( ! x > q(D)(1)))))
+      if("support" %in% names(getSlots(class(D))))
+         nInSupp <- unique(sort(c(nInSupp,which( ! x %in% support(D)))))
+      if("gaps" %in% names(getSlots(class(D))))
+         nInSupp <- unique(sort(c(nInSupp,which( .inGaps(x,gaps(D))))))
+  return(nInSupp)
+}
+
 .makeLenAndOrder <- function(x,ord){
    n <- length(ord)
    x <- rep(x, length.out=n)
@@ -270,12 +280,7 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
 
     if(check.NotInSupport){
        xco <- sort(xc)
-       nInSupp <- which(xco < q(y)(0))
-       nInSupp <- unique(sort(c(nInSupp,which( ! xco > q(y)(1)))))
-       if("support" %in% names(getSlots(class(y))))
-          nInSupp <- unique(sort(c(nInSupp,which( ! xco %in% support(y)))))
-       if("gaps" %in% names(getSlots(class(y))))
-          nInSupp <- unique(sort(c(nInSupp,which( .inGaps(xco,gaps(y))))))
+       nInSupp <- .NotInSupport(xc,y)
        if(length(nInSupp)){
           col.pch[nInSupp] <- col.NotInSupport
        }
