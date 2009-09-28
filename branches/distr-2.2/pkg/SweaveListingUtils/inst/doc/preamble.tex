@@ -8,11 +8,11 @@
 % -------------------------------------------------------------------------------
 \SweaveOpts{keep.source=TRUE}
 % -------------------------------------------------------------------------------
-<<SweaveListingsPreparations, results=tex, echo=FALSE>>=
+<<SweaveListingsPreparations, results=tex, echo=FALSE, strip.white=FALSE>>=
 require(SweaveListingUtils)
 SweaveListingPreparations()
 ## setToBeDefinedPkgs(....) line just necessary for the example;
-##    may be skipped in general  
+##    may be skipped in general
 ##    you may also wish to pass arguments to SweaveListingPreparations()
 ##    see ?SweaveListingPreparations
 setToBeDefinedPkgs(pkgs = c("SweaveListingUtils","distr"),
