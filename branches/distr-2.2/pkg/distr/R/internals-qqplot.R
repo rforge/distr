@@ -194,6 +194,7 @@
 
    qqb <- qqbounds(x,D,alpha,n,withConf.pw, withConf.sim,
                    exact.sCI,exact.pCI,nosym.pCI)
+   qqb$crit <- qqb$crit[SI.in,]
 
    if(qqb$err["pw"]){
       if(sum(SI.c)>0){
