@@ -13,7 +13,8 @@ qqplot(x, y, ...)
     withConf.pw  = withConf,  withConf.sim = withConf,
     plot.it = TRUE, xlab = deparse(substitute(x)),
     ylab = deparse(substitute(y)), ...,
-    col.IdL = "red", lty.IdL = 2, lwd.IdL = 2,
+    width = 10, height = 5.5, withSweave = getdistrOption("withSweave"),
+    mfColRow = TRUE, col.IdL = "red", lty.IdL = 2, lwd.IdL = 2,
     alpha.CI = .95, exact.pCI = (n<100), exact.sCI = (n<100), nosym.pCI = FALSE,
     col.pCI = "orange", lty.pCI = 3, lwd.pCI = 2, pch.pCI = par("pch"),
     cex.pCI = par("cex"),
@@ -41,6 +42,11 @@ of class \code{"UnivariateDistribution"}.}
 \item{xlab}{x-label}
 \item{ylab}{y-label}
 \item{\dots}{further parameters for function \code{plot}}
+\item{width}{width (in inches) of the graphics device opened}
+\item{height}{height (in inches) of the graphics device opened}
+\item{withSweave}{logical: if \code{TRUE} (for working with \command{Sweave})
+        no extra device is opened and height/width are not set}
+\item{mfColRow}{shall default partition in panels be used --- defaults to \code{TRUE}}
 \item{col.IdL}{color for the identity line}
 \item{lty.IdL}{line type for the identity line}
 \item{lwd.IdL}{line width for the identity line}
@@ -104,6 +110,24 @@ produces a QQ plot for two univariate distributions.}
 }
 \examples{
 qqplot(Norm(15,sqrt(30)), Chisq(df=15))
+## some discrete Distributions:
+P <- Pois(5)
+B <- Binom(size=2000,prob=5/2000)
+qqplot(B,P)
+qqplot(B,P, nosym.pCI=TRUE)
+## some Lebesgue-Decomposed distributions:
+mylist <- UnivarLebDecDistribution(discretePart=Binom(3,.3), acPart=Norm(2,2),
+               acWeight=11/20)
+mylist2 <- mylist+0.1
+qqplot(mylist,mylist2)
+qqplot(mylist,mylist2,exact.pCI=FALSE,exact.sCI=FALSE)
+qqplot(mylist,mylist2,nosym.pCI=TRUE)
+## some ac. distribution with a gap
+mylist3 <- UnivarMixingDistribution(Unif(0,0.3),Unif(0.6,1),mixCoeff=c(0.8,0.2))
+gaps(mylist3)
+mylist4 <- UnivarMixingDistribution(Unif(0,0.3),Unif(0.6,1),mixCoeff=c(0.6,0.4))
+qqplot(mylist3,mylist4)
+qqplot(mylist3,mylist4,nosym.pCI=TRUE)
 }
 \keyword{hplot}
 \keyword{distribution}

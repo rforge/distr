@@ -51,6 +51,11 @@ setMethod("qqplot", signature(x = "ANY",
              xlab = deparse(substitute(x)), ## x-label
              ylab = deparse(substitute(y)), ## y-label
              ...,                 ## further parameters
+             width = 10,          ## width (in inches) of the graphics device opened
+             height = 5.5,        ## height (in inches) of the graphics device opened}
+             withSweave = getdistrOption("withSweave"), ## logical: if \code{TRUE}
+             ##               (for working with \command{Sweave}) no extra device is opened and height/width are not set
+             mfColRow = TRUE,     ## shall we use panel partition mfrow=c(1,1)?
              withLab = FALSE,     ## shall observation labels be plotted in
              lab.pts = NULL,      ## observation labels to be used
              which.lbs = NULL,    ## which observations shall be labelled
@@ -140,6 +145,13 @@ setMethod("qqplot", signature(x = "ANY",
     mcl$cex <- cex.pch
     mcl$col <- col.pch
 
+    if (!withSweave){
+           devNew(width = width, height = height)
+    }
+    opar <- par("mfrow")
+    on.exit(do.call(par, list(mfrow=opar)))
+
+    if(mfColRow) opar1 <- par(mfrow = c(1,1))
 
     ret <- do.call(stats::qqplot, args=mcl)
 

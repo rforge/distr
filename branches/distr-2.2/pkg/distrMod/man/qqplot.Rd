@@ -7,8 +7,10 @@ qqplot(x, y, ...)
     n = length(x), withIdLine = TRUE,
     withConf = TRUE, withConf.pw  = withConf, withConf.sim = withConf,
     plot.it = TRUE, xlab = deparse(substitute(x)),ylab = deparse(substitute(y)),
-    ..., withLab = FALSE, lab.pts = NULL, which.lbs = NULL, which.Order = NULL,
-    order.traf = NULL, col.IdL = "red", lty.IdL = 2, lwd.IdL = 2, alpha.CI = .95,
+    ..., width = 10, height = 5.5, withSweave = getdistrOption("withSweave"),
+    mfColRow = TRUE, withLab = FALSE, lab.pts = NULL, which.lbs = NULL,
+    which.Order = NULL, order.traf = NULL,
+    col.IdL = "red", lty.IdL = 2, lwd.IdL = 2, alpha.CI = .95,
     exact.pCI = (n<100), exact.sCI = (n<100), nosym.pCI = FALSE,
     col.pCI = "orange", lty.pCI = 3, lwd.pCI = 2, pch.pCI = par("pch"),
     cex.pCI = par("cex"),
@@ -43,6 +45,11 @@ class \code{"ProbFamily"}.}
 \item{ylab}{y-label}
 \item{\dots}{further parameters for method \code{qqplot} with signature
 \code{ANY,UnivariateDistribution} or with function \code{plot}}
+\item{width}{width (in inches) of the graphics device opened}
+\item{height}{height (in inches) of the graphics device opened}
+\item{withSweave}{logical: if \code{TRUE} (for working with \command{Sweave})
+        no extra device is opened and height/width are not set}
+\item{mfColRow}{shall default partition in panels be used --- defaults to \code{TRUE}}
 \item{withLab}{logical; shall observation labels be plotted in?}
 \item{lab.pts}{character or \code{NULL}; observation labels to be used}
 \item{which.lbs}{integer or \code{NULL}; which observations shall be labelled}

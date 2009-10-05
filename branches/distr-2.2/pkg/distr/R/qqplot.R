@@ -8,6 +8,8 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
     withConf.pw  = withConf,  withConf.sim = withConf,
     plot.it = TRUE, xlab = deparse(substitute(x)),
     ylab = deparse(substitute(y)), ...,
+    width = 10, height = 5.5, withSweave = getdistrOption("withSweave"),
+    mfColRow=TRUE,
     col.IdL = "red", lty.IdL = 2, lwd.IdL = 2,
     alpha.CI = .95, exact.pCI = (n<100), exact.sCI = (n<100), nosym.pCI = FALSE,
     col.pCI = "orange", lty.pCI = 3, lwd.pCI = 2, pch.pCI = par("pch"), cex.pCI = par("cex"),
@@ -58,6 +60,13 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
 
     mcl$cex <- .makeLenAndOrder(cex.pch,ord.x)
     mcl$col <- .makeLenAndOrder(col.pch,ord.x)
+
+    if (!withSweave){
+           devNew(width = width, height = height)
+    }
+    opar <- par("mfrow")
+    on.exit(do.call(par, list(mfrow=opar)))
+    if(mfColRow) opar1 <- par(mfrow = c(1,1))
 
     ret <- do.call(stats::qqplot, args=mcl)
 
