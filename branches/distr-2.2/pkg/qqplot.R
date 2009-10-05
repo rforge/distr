@@ -25,6 +25,7 @@ setMethod("qqplot", signature(x="ANY",y="ANY"), function(x, y,
 
 ## helpers
 .inGaps <- function(x,gapm){
+  if(is.null(gapm)) return(rep(FALSE,length(x)))
   fct <- function(x,m){ m[,2]>=x & m[,1]<=x}
   sapply(x, function(y) length(which(fct(y,gapm)))>0)
 }
@@ -36,14 +37,64 @@ setMethod("qqplot", signature(x="ANY",y="ANY"), function(x, y,
 }
 
 .NotInSupport <- function(x,D){
+  if(length(x)==0) return(logical(0))
   nInSupp <- which(x < q(D)(0))
-  nInSupp <- unique(sort(c(nInSupp,which( ! x > q(D)(1)))))
+  nInSupp <- unique(sort(c(nInSupp,which(x > q(D)(1)))))
+
+  nInSuppo <-
       if("support" %in% names(getSlots(class(D))))
-         nInSupp <- unique(sort(c(nInSupp,which( ! x %in% support(D)))))
-      if("gaps" %in% names(getSlots(class(D))))
-         nInSupp <- unique(sort(c(nInSupp,which( .inGaps(x,gaps(D))))))
-  return(nInSupp)
+         which( ! x %in% support(D)) else numeric(0)
+  if("gaps" %in% names(getSlots(class(D)))){
+         InGap <- which( .inGaps(x,gaps(D)))
+         if("support" %in% names(getSlots(class(D))))
+            nInSupp <- unique(sort(c(nInSupp, intersect(InGap,nInSuppo))))
+         else
+            nInSupp <- unique(sort(c(nInSupp, InGap)))
+  }else{
+         nInSupp <- unique(sort(c(nInSupp, nInSuppo)))
+  }
+  return((1:length(x)) %in% nInSupp)
 }
+
+.isEqual <- distr:::.isEqual
+
+.SingleDiscrete <- function(x,D){
+  ## produces a logical vector of
+  ##     0  : discrete mass point
+  ##     1  : within continuous support
+  ##     2  : left gap point
+  ##     3  : right gap point
+  ##     4  : not in support
+  lx <- x * 0
+
+  lx[.NotInSupport(x,D)] <- 4
+
+  idx.0 <- ((x>q(D)(1)) | (x<q(D)(0)))
+  iG <- rep(FALSE,length(x))
+
+  if(is(D, "DiscreteDistribution")){
+     return(lx)
+  }
+  if("gaps" %in% names(getSlots(class(D)))){
+     if(!is.null(gaps(D))){
+        lx[apply(sapply(gaps(D)[,1], function(u) .isEqual(u,x)),1,any)] <- 2
+        lx[apply(sapply(gaps(D)[,2], function(u) .isEqual(u,x)),1,any)] <- 3
+        iG <- .inGaps(x,gaps(D))
+        lx[!idx.0 & !iG] <- 1
+     }else{
+        lx[!idx.0 & !iG] <- 1
+     }
+  }
+  if("support" %in% names(getSlots(class(D)))){
+     idx <- x %in% support(D)
+     if("acPart" %in% names(getSlots(class(D))))
+         idx.0 <- ((x>q.ac(D)(1)) | (x<q.ac(D)(0)))
+     lx[idx & (idx.0|iG)] <- 0
+  }
+
+  return(lx)
+}
+
 
 .makeLenAndOrder <- function(x,ord){
    n <- length(ord)
@@ -150,29 +201,104 @@ setMethod("qqplot", signature(x="ANY",y="ANY"), function(x, y,
  return(cbind(left=-ro,right=ro))
 }
 
-.confqq <- function(x,D,alpha,col.pCI,lty.pCI,lwd.pCI,col.sCI,lty.sCI,lwd.sCI,
+
+## to be exported: berechnet Konfidenzbänder, simultan und punktweise
+qqbounds <- function(x,D,alpha,n,withConf.pw, withConf.sim,
+                     exact.sCI=(n<100),exact.pCI=(n<100),
+                     nosym.pCI = FALSE){
+   x <- sort(unique(x))
+   if("gaps" %in% names(getSlots(class(D))))
+       {if(!is.null(gaps(D)))
+            x <- sort(unique(c(x, gaps(D))))
+       }
+   c.c <- matrix(NA,nrow=length(x),ncol=4)
+   colnames(c.c) <- c("sim.left","sim.right","pw.left","pw.right")
+
+   SI <- .SingleDiscrete(x,D)
+   SI.in <- SI<4
+   SIi <- SI[SI.in]
+   x.in <- x[SI.in]
+   p.r <- p(D)(x.in)
+   p.l <- p.l(D)(x.in)
+
+   if(withConf.sim)
+        c.crit <- try(.q2kolmogorov(alpha,n,exact.sCI), silent=TRUE)
+   if(withConf.pw)
+        c.crit.i <- try(
+            .q2pw(x.in,p.r,D,n,alpha,exact.pCI,nosym.pCI),silent=TRUE)
+
+   te.i <- withConf.pw  & !is(c.crit.i,"try-error")
+   te.s <- withConf.sim & !is(c.crit,  "try-error")
+
+   if(te.s){
+      c.crit.r <- q.r(D)(pmax(1-p.r-c.crit/sqrt(n),
+                         getdistrOption("DistrResolution")),lower.tail=FALSE)
+      c.crit.l <- q(D)(pmax(p.l-c.crit/sqrt(n),
+                       getdistrOption("DistrResolution")))
+      c.crit.l[SIi == 2 | SIi == 3] <- NA
+      c.crit.r[SIi == 2 | SIi == 3] <- NA
+      c.c[SI.in,1:2] <- cbind(c.crit.l,c.crit.r)
+   }
+   if(te.i){
+      print(c.crit.i)
+      c.crit.i <- x.in + c.crit.i/sqrt(n)
+      c.crit.i[SIi == 2 | SIi == 3] <- NA
+      c.c[SI.in,3:4] <- c.crit.i
+   }
+   return(list(crit = c.c, err=c(sim=te.s,pw=te.i)))
+}
+
+.confqq <- function(x,D, withConf.pw  = TRUE,  withConf.sim = TRUE, alpha,
+                    col.pCI, lty.pCI, lwd.pCI, pch.pCI, cex.pCI,
+                    col.sCI, lty.sCI, lwd.sCI, pch.sCI, cex.sCI,
                     n,exact.sCI=(n<100),exact.pCI=(n<100), nosym.pCI = FALSE){
-   p.r <- p(D)(x)
-   p.l <- p.l(D)(x)
-   c.crit <- try(.q2kolmogorov(alpha,n,exact.sCI), silent=TRUE)
-   c.crit.i <- #try(
-            .q2pw(x,p.r,D,n,alpha,exact.pCI,nosym.pCI)#,silent=TRUE)
-#   print(c.crit.i)
-   if(!is(c.crit.i, "try-error")){
-      lines(x, x+c.crit.i[,"right"]/sqrt(n),
-         col=col.pCI,lty=lty.pCI,lwd=lwd.pCI)
-      lines(x, x+c.crit.i[,"left"]/sqrt(n),
-         col=col.pCI,lty=lty.pCI,lwd=lwd.pCI)
+
+   x <- sort(unique(x))
+   if("gaps" %in% names(getSlots(class(D))))
+       {if(!is.null(gaps(D)))
+            x <- sort(unique(c(x, gaps(D))))
+       }
+   SI <- .SingleDiscrete(x,D)
+#   print(SI)
+   SI.in <- SI<4
+   SIi <- SI[SI.in]
+   SI.c <- SIi>0
+   x.in <- x[SI.in]
+   x.c <- x.in[SI.c]
+   x.d <- x.in[!SI.c]
+
+   qqb <- qqbounds(x,D,alpha,n,withConf.pw, withConf.sim,
+                   exact.sCI,exact.pCI,nosym.pCI)
+
+   if(qqb$err["pw"]){
+      if(sum(SI.c)>0){
+         lines(x.c, qqb$crit[SI.c,"pw.right"],
+            col=col.pCI,lty=lty.pCI,lwd=lwd.pCI)
+         lines(x.c, qqb$crit[SI.c,"pw.left"],
+            col=col.pCI,lty=lty.pCI,lwd=lwd.pCI)
+      }
+      if(sum(!SI.c)>0){
+         points(x.d, qqb$crit[!SI.c,"pw.right"],
+            col=col.pCI, pch=pch.pCI, cex = cex.pCI)
+         points(x.d, qqb$crit[!SI.c,"pw.left"],
+            col=col.pCI, pch=pch.pCI, cex = cex.pCI)
+      }
    }
-   if(!is(c.crit, "try-error")){
-      lines(x, q.r(D)(pmax(1-p.r-c.crit/sqrt(n),
-                      getdistrOption("DistrResolution")),lower.tail=FALSE),
-            col=col.sCI,lty=lty.sCI,lwd=lwd.sCI)
-      lines(x, q(D)(pmax(p.l-c.crit/sqrt(n),
-                    getdistrOption("DistrResolution"))),
-            col=col.sCI,lty=lty.sCI,lwd=lwd.sCI)
+   if(qqb$err["sim"]){
+      if(sum(SI.c)>0){
+         lines(x.c, qqb$crit[SI.c,"sim.right"],
+               col=col.sCI,lty=lty.sCI,lwd=lwd.sCI)
+         lines(x.c, qqb$crit[SI.c,"sim.left"],
+               col=col.sCI,lty=lty.sCI,lwd=lwd.sCI)
+      }
+      if(sum(!SI.c)>0){
+         points(x.d, qqb$crit[!SI.c,"sim.right"],
+                col=col.sCI, pch=pch.sCI, cex = cex.sCI)
+         points(x.d, qqb$crit[!SI.c,"sim.left"],
+                col=col.sCI, pch=pch.sCI, cex = cex.sCI)
+      }
    }
-   if(! is(c.crit,"try-error") || ! is(c.crit.i,"try-error") ){
+   if( qqb$err["pw"] ||  qqb$err["sim"] ){
       expression1 <- substitute(
          nosym0~"pointw."~ex.p~alpha==alpha0~"%- conf. interval",
          list(ex.p = if(exact.pCI) "exact" else "asympt.",
@@ -182,17 +308,17 @@ setMethod("qqplot", signature(x="ANY",y="ANY"), function(x, y,
          "simult."~ex.s~alpha==alpha0~"%- conf. interval",
          list(ex.s = if(exact.sCI) "exact" else "asympt.",
               alpha0 = alpha*100))
-      if(is(c.crit,"try-error")){
+      if(!qqb$err["sim"]){
          expression3 <- expression1
          lty0 <- lty.pCI
          col0 <- col.pCI
       }
-      if(is(c.crit.i,"try-error")){
+      if(!qqb$err["pw"]){
          expression3 <- expression2
          lty0 <- lty.sCI
          col0 <- col.sCI
       }
-      if( ! is(c.crit.i,"try-error") && ! is(c.crit,"try-error")){
+      if( qqb$err["pw"] && qqb$err["sim"]){
          expression3 <- eval(substitute(expression(expression1, expression2)))
          lty0 <- c(lty.pCI, lty.sCI)
          col0 <- c(col.pCI,col.sCI)
@@ -200,6 +326,7 @@ setMethod("qqplot", signature(x="ANY",y="ANY"), function(x, y,
       legend("topleft", legend = expression3, bg = "white",
               lty = lty0, col = col0, lwd = 2, cex = .8)
    }
+  return(invisible(NULL))
 }
 
 .deleteItemsMCL <- function(mcl){
@@ -243,10 +370,12 @@ mcl}
       return(list(x0=x0,y0=y0,lab=lab.pts[oN],col=col.lbl[oN],cex=cex.lbl[oN]))
 }
 
-.fadeColor <- function(col,x){
+#.makeLenAndOrder <- distr:::.makeLenAndOrder
+
+.fadeColor <- function(col,x, bg = "white"){
  ind <- seq(along=x)
  col <- .makeLenAndOrder(col,ind)
- colx <- t(sapply(ind,function(i) colorRamp(c("white",col[i]))(x[i])))
+ colx <- t(sapply(ind,function(i) colorRamp(c(bg,col[i]))(x[i])))
  colv2col <- function(colvec)
    rgb(red = colvec[1], green = colvec[2], blue = colvec[3], maxColorValue = 255)
  apply(colx,1,function(x) colv2col(x))
@@ -256,12 +385,13 @@ mcl}
 setMethod("qqplot", signature(x = "UnivariateDistribution",
                               y = "UnivariateDistribution"), function(x, y,
                               n = 30, withIdLine = TRUE, withConf = TRUE,
+    withConf.pw  = withConf,  withConf.sim = withConf,
     plot.it = TRUE, xlab = deparse(substitute(x)),
     ylab = deparse(substitute(y)), ...,
     col.IdL = "red", lty.IdL = 2, lwd.IdL = 2,
-    alpha.CI = .95, exact.sCI = (n<100), exact.pCI = (n<100), nosym.pCI = FALSE,
-    col.pCI = "orange", lty.pCI = 3, lwd.pCI = 2,
-    col.sCI = "tomato2", lty.sCI = 4, lwd.sCI = 2,
+    alpha.CI = .95, exact.pCI = (n<100), exact.sCI = (n<100), nosym.pCI = FALSE,
+    col.pCI = "orange", lty.pCI = 3, lwd.pCI = 2, pch.pCI = par("pch"), cex.pCI = par("cex"),
+    col.sCI = "tomato2", lty.sCI = 4, lwd.sCI = 2, pch.sCI = par("pch"), cex.sCI = par("cex"),
     cex.pch = par("cex"), col.pch = par("col"),
     jit.fac = 0, check.NotInSupport = TRUE,
     col.NotInSupport = "red"){
@@ -290,7 +420,7 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
     oxc <- 1:length(xc)
     xc.o <- xc
     yc.o <- yc
-    ord.x <- order(x)
+    ord.x <- order(xc)
 
     if("support" %in% names(getSlots(class(x)))){
        xc <- jitter(xc, factor=jit.fac)
@@ -321,8 +451,9 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
              xy0 <- seq(min(xy),max(xy),length=n-lxy)
              xy <- sort(c(xy,xy0))
           }
-          .confqq(xy, y, alpha.CI, col.pCI, lty.pCI, lwd.pCI,
-                      col.sCI, lty.sCI, lwd.sCI,
+          .confqq(xy, y, withConf.pw, withConf.sim, alpha.CI,
+                      col.pCI, lty.pCI, lwd.pCI, pch.pCI, cex.pCI,
+                      col.sCI, lty.sCI, lwd.sCI, pch.sCI, cex.sCI,
                   length(xc), exact.sCI = exact.sCI, exact.pCI = exact.pCI,
                   nosym.pCI = nosym.pCI)
        }
@@ -330,8 +461,8 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
     return(ret)
     })
     
-
 ## into distrMod
+#.confqq <- distr:::.confqq
 setMethod("qqplot", signature(x = "ANY",
                               y = "UnivariateDistribution"),
     function(x,    ### observations
@@ -339,6 +470,8 @@ setMethod("qqplot", signature(x = "ANY",
              n = length(x), ### number of points to be plotted
              withIdLine = TRUE, ### shall line y=x be plotted in
              withConf = TRUE,   ### shall confidence lines be plotted
+             withConf.pw  = withConf,   ### shall pointwise confidence lines be plotted
+             withConf.sim = withConf,   ### shall simultaneous confidence lines be plotted
              plot.it = TRUE,    ### shall be plotted at all (inherited from stats::qqplot)
              xlab = deparse(substitute(x)), ## x-label
              ylab = deparse(substitute(y)), ## y-label
@@ -352,15 +485,19 @@ setMethod("qqplot", signature(x = "ANY",
              lty.IdL = 2,         ## line type for the identity line
              lwd.IdL = 2,         ## line width for the identity line
              alpha.CI = .95,      ## confidence level
-             exact.sCI = (n<100), ## shall simultaneous CIs be determined with exact kolmogorov distribution?
              exact.pCI = (n<100), ## shall pointwise CIs be determined with exact Binomial distribution?
+             exact.sCI = (n<100), ## shall simultaneous CIs be determined with exact kolmogorov distribution?
              nosym.pCI = FALSE,   ## shall we use (shortest) asymmetric CIs?
              col.pCI = "orange",  ## color for the pointwise CI
              lty.pCI = 3,         ## line type for the pointwise CI
              lwd.pCI = 2,         ## line width for the pointwise CI
+             pch.pCI = par("pch"),## symbol for points (for discrete mass points) in pointwise CI
+             cex.pCI = par("cex"),## magnification factor for points (for discrete mass points) in pointwise CI
              col.sCI = "tomato2", ## color for the simultaneous CI
              lty.sCI = 4,         ## line type for the simultaneous CI
              lwd.sCI = 2,         ## line width for the simultaneous CI
+             pch.sCI = par("pch"),## symbol for points (for discrete mass points) in simultaneous CI
+             cex.sCI = par("cex"),## magnification factor for points (for discrete mass points) in simultaneous CI
              cex.pch = par("cex"),## magnification factor for the plotted symbols
              col.pch = par("col"),## color for the plotted symbols
              cex.lbl = par("cex"),## magnification factor for the plotted observation labels
@@ -448,8 +585,9 @@ setMethod("qqplot", signature(x = "ANY",
              xy0 <- seq(min(xy),max(xy),length=n-lxy+2)
              xy <- unique(sort(c(xy,xy0)))
           }
-          .confqq(xy, y, alpha.CI, col.pCI, lty.pCI, lwd.pCI,
-                  col.sCI, lty.sCI, lwd.sCI,
+          .confqq(xy, y, withConf.pw, withConf.sim, alpha.CI,
+                      col.pCI, lty.pCI, lwd.pCI, pch.pCI, cex.pCI,
+                      col.sCI, lty.sCI, lwd.sCI, pch.sCI, cex.sCI,
                   length(x), exact.sCI = exact.sCI, exact.pCI = exact.pCI,
                   nosym.pCI = nosym.pCI)
        }
@@ -461,6 +599,7 @@ setMethod("qqplot", signature(x = "ANY",
 setMethod("qqplot", signature(x = "ANY",
                               y = "ProbFamily"), function(x, y,
                               n = length(x), withIdLine = TRUE, withConf = TRUE,
+    withConf.pw  = withConf,  withConf.sim = withConf,
     plot.it = TRUE, xlab = deparse(substitute(x)),
     ylab = deparse(substitute(y)), ...){
 
@@ -483,6 +622,7 @@ setMethod("qqplot", signature(x = "ANY",
 setMethod("qqplot", signature(x = "ANY",
                               y = "RobModel"), function(x, y,
                               n = length(x), withIdLine = TRUE, withConf = TRUE,
+    withConf.pw  = withConf,  withConf.sim = withConf,
     plot.it = TRUE, xlab = deparse(substitute(x)),
     ylab = deparse(substitute(y)), ..., distance = NormType()){
 
@@ -505,6 +645,8 @@ setMethod("qqplot", signature(x = "ANY",
 setMethod("qqplot", signature(x = "ANY",
                               y = "InfRobModel"), function(x, y,
                               n = length(x), withIdLine = TRUE, withConf = TRUE,
+             withConf.pw  = withConf,   ### shall pointwise confidence lines be plotted
+             withConf.sim = withConf,   ### shall simultaneous confidence lines be plotted
     plot.it = TRUE, xlab = deparse(substitute(x)),
     ylab = deparse(substitute(y)), ...){
 
@@ -512,6 +654,7 @@ setMethod("qqplot", signature(x = "ANY",
     if(missing(xlab)) mc$xlab <- as.character(deparse(mc$x))
     if(missing(ylab)) mc$ylab <- as.character(deparse(mc$y))
     mcl <- as.list(mc)[-1]
+    if(is.null(mcl$distance)) distance <- NormType()
 
     mcl$y <- y@center
 
@@ -531,12 +674,14 @@ setMethod("qqplot", signature(x = "ANY",
 setMethod("qqplot", signature(x = "ANY",
                               y = "kStepEstimate"), function(x, y,
                               n = length(x), withIdLine = TRUE, withConf = TRUE,
+    withConf.pw  = withConf,  withConf.sim = withConf,
     plot.it = TRUE, xlab = deparse(substitute(x)),
     ylab = deparse(substitute(y)), ...,
     exp.cex2.lbl = -.15,
     exp.cex2.pch = -.35,
     exp.fadcol.lbl = 1.85,
-    exp.fadcol.pch = 1.85
+    exp.fadcol.pch = 1.85,
+    bg = "white"
     ){
 
     mc <- match.call(call = sys.call(sys.parent(1)))
@@ -554,7 +699,7 @@ setMethod("qqplot", signature(x = "ANY",
 
     if(is(IC,"HampIC")){
       w.fct <- weight(weight(IC))
-      wx <- w.fct(x)
+      wx <- sapply(x,w.fct)
       mcl$order.traf <- function(x) 1/w.fct(x)
 
       cex.lbl <- if(is.null(mcl$cex.lbl))  par("cex")  else eval(mcl$cex.lbl)
@@ -564,10 +709,11 @@ setMethod("qqplot", signature(x = "ANY",
 
       col.lbl <- if(is.null(mcl$col.lbl))  par("col")  else eval(mcl$col.lbl)
       col.pch <- if(is.null(mcl$col.pch))  par("col")  else eval(mcl$col.pch)
-      mcl$col.lbl <- .fadeColor(col.lbl,wx^exp.fadcol.lbl)
-      mcl$col.pch <- .fadeColor(col.pch,wx^exp.fadcol.pch)
+      mcl$col.lbl <- .fadeColor(col.lbl,wx^exp.fadcol.lbl, bg = bg)
+      mcl$col.pch <- .fadeColor(col.pch,wx^exp.fadcol.pch, bg = bg)
     }
 
+    print(mcl)
     return(do.call(getMethod("qqplot", signature(x="ANY", y="ProbFamily")),
             args=mcl))
     })

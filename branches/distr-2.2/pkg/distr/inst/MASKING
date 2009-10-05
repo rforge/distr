@@ -7,14 +7,15 @@ Attention:
 *** intentional masking: ***
 
 To be able to use the same symbol for (theoretical) distributional
-arguments as for (empirical) data arguments in case of 'sd',
-and to be able to use it as accessor to corresponding slots in case
-of 'df', we intentionally mask the following functions --- however 
-all these functions may still be used in exactly the same way as 
-before masking:
+arguments as for (empirical) data arguments in case of 'sd' 
+and 'qqplot', and to be able to use it as accessor to corresponding 
+slots in case of 'df', we intentionally mask the following functions 
+--- however  all these functions may still be used in exactly the 
+same way as  before masking:
 
-+sd()     (package "stats")
-+df()    (package "stats")
++sd()      (package "stats")
++df()      (package "stats")
++qqplot()  (package "stats")
 
 To be able to use the same symbol for objects of S4-classes,
 'PosSemDefSymmMatrix', 'matrix', respectively, 

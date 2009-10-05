@@ -91,3 +91,5 @@ export("CompoundDistribution")
 export("PosDefSymmMatrix","PosSemDefSymmMatrix")
 export("NoSymmetry", "EllipticalSymmetry", "SphericalSymmetry",
        "DistrSymmList") 
+export("qqbounds")
+exportMethods("qqplot")
