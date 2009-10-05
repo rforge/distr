@@ -12,6 +12,7 @@
 \alias{.q2pw}
 \alias{.confqq}
 \alias{.deleteItemsMCL}
+\alias{.distrExInstalled}
 
 
 \title{Internal functions for qqplot of package distr}
@@ -38,6 +39,7 @@
                     n,exact.sCI=(n<100),exact.pCI=(n<100), nosym.pCI = FALSE)
 
 .deleteItemsMCL(mcl)
+.distrExInstalled
 }
 
 
@@ -153,6 +155,10 @@ functions like \code{plot}, \code{lines}, \code{points} cannot digest;
 this is necessary in the manipulation of an original call
 to a specific \code{qqplot} method to pass on the \code{\dots} argument
 correctly to calls the mentioned functions.
+
+\code{.distrExInstalled} is a constant logical --- \code{TRUE} if package
+\pkg{distrEx} is installed.
+
 }
 
 

@@ -1,3 +1,5 @@
+.distrExInstalled <- ("distrEx" %in% installed.packages())
+
 .distroptions <- list(
                       DefaultNrGridPoints = 2^12,
                       DistrResolution = 1e-6,

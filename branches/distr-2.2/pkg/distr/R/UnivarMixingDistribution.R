@@ -8,6 +8,10 @@ UnivarMixingDistribution <- function(..., Dlist, mixCoeff,
             ldots <- c(ldots, Dlist.L)
        }
     l <- length(ldots)
+
+    if(l==0) stop ("No components given")
+    if(l==1) return(ldots[[1]])
+    
     mixDistr <- do.call(UnivarDistrList,args=ldots)
     ep <- .Machine$double.eps
     if(missing(mixCoeff))
@@ -36,7 +40,7 @@ UnivarMixingDistribution <- function(..., Dlist, mixCoeff,
            try(gaps <- gaps(mixDistr[[i]]), silent=TRUE)
         }else{
            if(!is(try(gaps0 <- gaps(mixDistr[[i]]), silent=TRUE),"try-error"))
-               gaps <- .mergegaps2(gaps,gaps0)
+               if(!is.null(gaps0)) gaps <- .mergegaps2(gaps,gaps0)
         }
     }    
     support <- numeric(0)

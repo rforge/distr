@@ -164,12 +164,23 @@
  if(is(D,"AbscontDistribution")){
     dp <- d(D)(x,log=TRUE)
     dsupp.p <- dsupp.m<-1
- }else{
-       stop("")
+ }else{ ## have E and sd available ?
+    if(!.distrExInstalled) stop("")
+    supp.ind <- sapply(x, function(y)
+                 which.min(abs(y-support(D))))
+    nx <- length(support(D))
+    supp.ind.p <- pmax(supp.ind + 1 ,nx)
+    supp.ind.m <- pmax(supp.ind - 1 ,1)
+    dsupp.p <- support(D)[supp.ind.p] - support(D)[supp.ind]
+    dsupp.m <- support(D)[supp.ind] - support(D)[supp.ind.m]
+    s <- distrEx::sd(D)
+    m <- distrEx::E(D)
+    dp <- log(pnorm((x+dsupp.p/2-m)/s) - pnorm((x-dsupp.m/2-m)/s))
  }
  ro <- exp(pq/2-dp)*(dsupp.p+dsupp.m)/2*qnorm((1+alpha)/2)
  return(cbind(left=-ro,right=ro))
 }
+
 
 
 

@@ -9,6 +9,8 @@
 .onAttach <- function(library, pkg)
 {
   unlockBinding(".distroptions", asNamespace("distr"))
+  unlockBinding(".distrExInstalled", asNamespace("distr"))
+
 ## global variable needed for flat.R
 ##  unlockBinding(".OkTyp", asNamespace("distr"))
     msga <- gettext(
