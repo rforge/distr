@@ -173,8 +173,8 @@
     supp.ind.m <- pmax(supp.ind - 1 ,1)
     dsupp.p <- support(D)[supp.ind.p] - support(D)[supp.ind]
     dsupp.m <- support(D)[supp.ind] - support(D)[supp.ind.m]
-    s <- distrEx::sd(D)
     m <- distrEx::E(D)
+    s <- sqrt(distrEx::E(D, fun = function(x) (x-m)^2))
     dp <- log(pnorm((x+dsupp.p/2-m)/s) - pnorm((x-dsupp.m/2-m)/s))
  }
  ro <- exp(pq/2-dp)*(dsupp.p+dsupp.m)/2*qnorm((1+alpha)/2)
