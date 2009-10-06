@@ -16,7 +16,8 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
     col.sCI = "tomato2", lty.sCI = 4, lwd.sCI = 2, pch.sCI = par("pch"), cex.sCI = par("cex"),
     cex.pch = par("cex"), col.pch = par("col"),
     jit.fac = 0, check.NotInSupport = TRUE,
-    col.NotInSupport = "red"){
+    col.NotInSupport = "red", with.legend = TRUE, legend.bg = "white",
+    legend.pos = "topleft", legend.cex = 0.8){
 
     mc <- match.call(call = sys.call(sys.parent(1)))
     if(missing(xlab)) mc$xlab <- as.character(deparse(mc$x))
@@ -97,7 +98,9 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
                       col.pCI, lty.pCI, lwd.pCI, pch.pCI, cex.pCI,
                       col.sCI, lty.sCI, lwd.sCI, pch.sCI, cex.sCI,
                   n, exact.sCI = exact.sCI, exact.pCI = exact.pCI,
-                  nosym.pCI = nosym.pCI)
+                  nosym.pCI = nosym.pCI, with.legend = with.legend,
+                  legend.bg = legend.bg, legend.pos = legend.pos,
+                  legend.cex = legend.cex)
        }
     }
     return(ret)

@@ -87,7 +87,11 @@ setMethod("qqplot", signature(x = "ANY",
              adj.lbl = NULL,      ## adj parameter for the plotted observation labels
              jit.fac = 0,         ## jittering factor used for discrete distributions
              check.NotInSupport = TRUE, ## shall we check if all x lie in support(y)
-             col.NotInSupport = "red" ## if preceding check TRUE color of x if not in support(y)
+             col.NotInSupport = "red", ## if preceding check TRUE color of x if not in support(y)
+             with.legend = TRUE,  ## shall a legend be plotted
+             legend.bg = "white", ## background for the legend
+             legend.pos = "topleft", ## position for the legend
+             legend.cex = 0.8     ## magnification factor for the legend
     ){ ## return value as in stats::qqplot
 
     mc <- match.call(call = sys.call(sys.parent(1)))
@@ -192,7 +196,9 @@ setMethod("qqplot", signature(x = "ANY",
                       col.pCI, lty.pCI, lwd.pCI, pch.pCI, cex.pCI,
                       col.sCI, lty.sCI, lwd.sCI, pch.sCI, cex.sCI,
                   n, exact.sCI = exact.sCI, exact.pCI = exact.pCI,
-                  nosym.pCI = nosym.pCI)
+                  nosym.pCI = nosym.pCI, with.legend = with.legend,
+                  legend.bg = legend.bg, legend.pos = legend.pos,
+                  legend.cex = legend.cex)
        }
     }
     return(ret)

@@ -18,7 +18,9 @@ qqplot(x, y, ...)
     cex.sCI = par("cex"),
     cex.pch = par("cex"), col.pch = par("col"),
     cex.lbl = par("cex"), col.lbl = par("col"), adj.lbl = NULL,
-    jit.fac = 0, check.NotInSupport = TRUE, col.NotInSupport = "red")
+    jit.fac = 0, check.NotInSupport = TRUE, col.NotInSupport = "red",
+    with.legend = TRUE, legend.bg = "white",
+    legend.pos = "topleft", legend.cex = 0.8)
 \S4method{qqplot}{ANY,ProbFamily}(x, y,
    n = length(x), withIdLine = TRUE, withConf = TRUE,
    withConf.pw  = withConf,  withConf.sim = withConf,
@@ -89,6 +91,10 @@ simultaneous CI}
 in \code{support(y)}?}
 \item{col.NotInSupport}{logical; if preceding check \code{TRUE} color of
 \code{x}-quantiles if not in \code{support(y)}}
+\item{with.legend}{logical; shall a legend be plotted?}
+\item{legend.bg}{background color for the legend}
+\item{legend.pos}{position for the legend}
+\item{legend.cex}{magnification factor for the legend}
 }
 \description{
   We generalize function \code{\link[stats:qqnorm]{qqplot}} from package \pkg{stats} to

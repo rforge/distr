@@ -22,7 +22,8 @@ qqplot(x, y, ...)
     cex.sCI = par("cex"),
     cex.pch = par("cex"), col.pch = par("col"),
     jit.fac = 0, check.NotInSupport = TRUE,
-    col.NotInSupport = "red")
+    col.NotInSupport = "red", with.legend = TRUE, legend.bg = "white",
+    legend.pos = "topleft", legend.cex = 0.8)
 \S4method{qqplot}{ANY,ANY}(x, y,
     plot.it = TRUE, xlab = deparse(substitute(x)),
     ylab = deparse(substitute(y)), ...)
@@ -70,6 +71,10 @@ of class \code{"UnivariateDistribution"}.}
 \item{jit.fac}{jittering factor used for discrete distributions}
 \item{check.NotInSupport}{logical; shall we check if all \code{x}-quantiles lie in \code{support(y)}?}
 \item{col.NotInSupport}{logical; if preceding check \code{TRUE} color of \code{x}-quantiles if not in \code{support(y)}}
+\item{with.legend}{logical; shall a legend be plotted?}
+\item{legend.bg}{background color for the legend}
+\item{legend.pos}{position for the legend}
+\item{legend.cex}{magnification factor for the legend}
 }
 
 \description{

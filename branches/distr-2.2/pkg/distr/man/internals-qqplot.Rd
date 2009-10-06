@@ -36,7 +36,10 @@
 .confqq(x,D, withConf.pw  = TRUE,  withConf.sim = TRUE, alpha,
                     col.pCI, lty.pCI, lwd.pCI, pch.pCI, cex.pCI,
                     col.sCI, lty.sCI, lwd.sCI, pch.sCI, cex.sCI,
-                    n,exact.sCI=(n<100),exact.pCI=(n<100), nosym.pCI = FALSE)
+                    n,exact.sCI=(n<100),exact.pCI=(n<100),
+                    nosym.pCI = FALSE, with.legend = TRUE,
+                    legend.bg = "white", legend.pos = "topleft",
+                    legend.cex = 0.8)
 
 .deleteItemsMCL(mcl)
 .distrExInstalled
@@ -80,6 +83,10 @@ are \code{x.i+t/sqrt(n)+del.i/sqrt(n)} and \code{x.i-t/sqrt(n)+del.i/sqrt(n)}.}
 \item{lwd.sCI}{line width for the simultaneous CI}
 \item{pch.sCI}{symbol for points (for discrete mass points) in simultaneous CI}
 \item{cex.sCI}{magnification factor for points (for discrete mass points) in simultaneous CI}
+\item{with.legend}{logical; shall a legend be plotted?}
+\item{legend.bg}{background color for the legend}
+\item{legend.pos}{position for the legend}
+\item{legend.cex}{magnification factor for the legend}
 \item{mcl}{arguments in call as a list}
 }
 

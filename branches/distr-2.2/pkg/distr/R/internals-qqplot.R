@@ -186,7 +186,9 @@
 .confqq <- function(x,D, withConf.pw  = TRUE,  withConf.sim = TRUE, alpha,
                     col.pCI, lty.pCI, lwd.pCI, pch.pCI, cex.pCI,
                     col.sCI, lty.sCI, lwd.sCI, pch.sCI, cex.sCI,
-                    n,exact.sCI=(n<100),exact.pCI=(n<100), nosym.pCI = FALSE){
+                    n,exact.sCI=(n<100),exact.pCI=(n<100), nosym.pCI = FALSE,
+                    with.legend = TRUE, legend.bg = "white",
+                    legend.pos = "topleft", legend.cex = 0.8){
 
    x <- sort(unique(x))
    if("gaps" %in% names(getSlots(class(D))))
@@ -234,37 +236,43 @@
                 col=col.sCI, pch=pch.sCI, cex = cex.sCI)
       }
    }
-   if( qqb$err["pw"] ||  qqb$err["sim"] ){
-      expression1 <- substitute(
-         nosym0~"pointw."~ex.p~alpha==alpha0~"%- conf. interval",
-         list(ex.p = if(exact.pCI) "exact" else "asympt.",
-              alpha0 = alpha*100,
-              nosym0 = if(nosym.pCI&&exact.pCI) "shortest asymm." else "symm"))
-      expression2 <- substitute(
-         "simult."~ex.s~alpha==alpha0~"%- conf. interval",
-         list(ex.s = if(exact.sCI) "exact" else "asympt.",
-              alpha0 = alpha*100))
-      if(!qqb$err["sim"]){
-         expression3 <- expression1
-         pch0 <- if(sum(!SI.c)>0) pch.pCI else 0
-         lty0 <- if(sum(SI.c)>0)  lty.pCI else 0
-         col0 <- col.pCI
+   if(with.legend){
+      if( qqb$err["pw"] ||  qqb$err["sim"] ){
+         expression1 <- substitute(
+            nosym0~"pointw."~ex.p~alpha==alpha0~"%- conf. interval",
+            list(ex.p = if(exact.pCI) "exact" else "asympt.",
+                 alpha0 = alpha*100,
+                 nosym0 = if(nosym.pCI&&exact.pCI) "shortest asymm." else "symm"))
+         expression2 <- substitute(
+            "simult."~ex.s~alpha==alpha0~"%- conf. interval",
+            list(ex.s = if(exact.sCI) "exact" else "asympt.",
+                 alpha0 = alpha*100))
+
+         lcl <- list()
+         if(!qqb$err["sim"]){
+            expression3 <- expression1
+            lcl$pch <- if(sum(!SI.c)>0) pch.pCI else NULL
+            lcl$lty <- if(sum(SI.c)>0)  lty.pCI else NULL
+            lcl$col <- col.pCI
+            lcl$lwd <- if(sum(SI.c)>0)  2 else NULL
+         }
+         if(!qqb$err["pw"]){
+            expression3 <- expression2
+            lcl$pch <- if(sum(!SI.c)>0) pch.sCI else NULL
+            lcl$lty <- if(sum(SI.c)>0)  lty.sCI else NULL
+            lcl$col <- col.sCI
+            lcl$lwd <- if(sum(SI.c)>0)  2 else NULL
+         }
+         if( qqb$err["pw"] && qqb$err["sim"]){
+            expression3 <- eval(substitute(expression(expression1, expression2)))
+            lcl$pch <- if(sum(!SI.c)>0) c(pch.pCI, pch.sCI) else NULL
+            lcl$lty <- if(sum(SI.c)>0)  c(lty.pCI, lty.sCI) else NULL
+            lcl$col <- c(col.pCI,col.sCI)
+            lcl$lwd <- if(sum(SI.c)>0)  2 else NULL
+         }
+         do.call(legend, c(list(legend.pos, legend = expression3, bg = legend.bg,
+                                merge = FALSE, cex = legend.cex), lcl))
       }
-      if(!qqb$err["pw"]){
-         expression3 <- expression2
-         pch0 <- if(sum(!SI.c)>0) pch.sCI else 0
-         lty0 <- if(sum(SI.c)>0)  lty.sCI else 0
-         col0 <- col.sCI
-      }
-      if( qqb$err["pw"] && qqb$err["sim"]){
-         expression3 <- eval(substitute(expression(expression1, expression2)))
-         pch0 <- if(sum(!SI.c)>0) c(pch.pCI, pch.sCI) else 0
-         lty0 <- if(sum(SI.c)>0)  c(lty.pCI, lty.sCI) else 0
-         col0 <- c(col.pCI,col.sCI)
-      }
-      legend("topleft", legend = expression3, bg = "white",
-              lty = lty0, pch = pch0, merge= FALSE, col = col0,
-              lwd = 2, cex = .8)
    }
   return(invisible(NULL))
 }
