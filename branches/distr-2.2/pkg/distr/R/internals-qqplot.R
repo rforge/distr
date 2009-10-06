@@ -291,7 +291,7 @@
     mcl$col.lbl <- mcl$cex.lbl  <- mcl$adj.lbl <- NULL
     mcl$exp.cex2.pch <- mcl$exp.cex2.lbl <- NULL
     mcl$exp.fadcol.pch <- mcl$exp.fadcol.lbl <- NULL
-    mcl$nosym.pCI <- NULL
+    mcl$nosym.pCI <- mcl$n.CI <- mcl$n.adj <-NULL
 mcl}
 
 
