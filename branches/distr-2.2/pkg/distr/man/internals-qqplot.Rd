@@ -142,10 +142,8 @@ distributions without a Lebesgue density, for the corresponding
 density value at the quantile appearing in the expression for the
 asymptotic variance, we make an approximation of \code{(D-E(D))/sd(D)} by
 the standard normal, using the density of the latter one; this latter approximation
-is only  available if \code{require(distrEx)==TRUE}; otherwise the corresponding
-columns will be filled with \code{NA}. Technically, this function gets
-overwritten in the namespace of this package when package
-\pkg{distrEx} has been attached.
+is only  available if \code{.distrExInstalled == TRUE}; otherwise the corresponding
+columns will be filled with \code{NA}.
 
 \code{.confqq} calls \code{qqbound} to compute the confidence intervals
 and plots them.
