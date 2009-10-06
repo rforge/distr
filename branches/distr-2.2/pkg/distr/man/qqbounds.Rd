@@ -34,38 +34,50 @@ distribution.}
    For simultaneous intervals,
   the finite sample version is based on C function \code{"pkolmogorov2x"}
   from package \pkg{stats}, while the asymptotic one uses
-   R function \code{pkstwo} from package \pkg{stats}. Both use the fact,
+   R function \code{pkstwo} again from package \pkg{stats}, both taken
+   from the code to \code{\link[stats:ks.test]{ks.test}}.
+
+   Both finite sample and asymptotic versions use the fact,
    that the distribution of the supremal distance between the
    empirical distribution \eqn{\hat F_n}{F.emp} and the corresponding theoretical one
    \eqn{F} (assuming data from \eqn{F})
    does not depend on \eqn{F} for continuous distribution \eqn{F}
-   and leads to the Kolmogorov distribution. In case of \eqn{F} with jumps the
-   corresponding Kolmogorov distribution is used to produce conservative intervals.
+   and leads to the Kolmogorov distribution (compare, e.g. Durbin(1973)).
+   In case of \eqn{F} with jumps, the corresponding Kolmogorov distribution
+   is used to produce conservative intervals.
  \cr
     For pointwise intervals,
-  the finite sample version is based corresponding binomial distributions,
-  while the asymptotic one uses a CLT approximation (in fact only valid for
-  distributions with strictly positive density at the evaluation quantiles).
+  the finite sample version is based on corresponding binomial distributions,
+  (compare e.g., Fisz(1963)), while the asymptotic one uses a CLT approximation
+  for this binomial distribution. In fact, this approximation is only valid
+  for distributions with strictly positive density at the evaluation quantiles.
+
   In the finite sample version, the binomial distributions will in general not
   be symmetric, so that, by setting \code{nosym.pCI} to \code{TRUE} we may
   produce shortest asymmetric confidence intervals (albeit with a considerable
-  computational effort). The symmetric intervals returned by default will
+  computational effort).
+
+  The symmetric intervals returned by default will
   be conservative (which also applies to distributions with jumps in this case).
+
   For distributions with jumps or with density (nearly) equal to 0 at the
   corresponding quantile, we use the approximation of \code{(D-E(D))/sd(D)}
   by the standard normal at these points; this latter approximation is only
-  available if \code{require(distrEx)==TRUE}; otherwise the corresponding
+  available if package \pkg{distrEx} is installed; otherwise the corresponding
   columns will be filled with \code{NA}.
 }
 \value{
   A list with components \code{crit} --- a matrix with the lower and upper confidence
   bounds, and \code{err} a logical vector of length 2.
-  Components \code{crit} is a matrix with 4 columns and \code{length(x)} rows
-  with columns \code{c("sim.left","sim.right","pw.left","pw.right")}.
+
+  Component \code{crit} is a matrix with \code{length(x)} rows
+  and four columns \code{c("sim.left","sim.right","pw.left","pw.right")}.
   Entries will be set to \code{NA} if the corresponding \code{x} component
   is not in \code{support(D)} or if the computation method returned an error
   or if the corresponding parts have not been required (if \code{withConf.pw}
-  or \code{withConf.sim} is \code{FALSE}). \code{err} has components \code{pw}
+  or \code{withConf.sim} is \code{FALSE}).
+
+  \code{err} has components \code{pw}
   ---do we have a non-error return value for the computation of pointwise CI's
   (\code{FALSE} if \code{withConf.pw} is \code{FALSE})---  and \code{sim}
   ---do we have a   non-error return value for the computation of simultaneous CI's
@@ -75,6 +87,7 @@ distribution.}
   Durbin, J. (1973)
   \emph{Distribution theory for tests based on the sample distribution
     function}.  SIAM.
+
   Fisz, M. (1963). \emph{Probability Theory and Mathematical Statistics}.
   3rd ed. Wiley, New York.
 }
