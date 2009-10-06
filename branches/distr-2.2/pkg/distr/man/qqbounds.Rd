@@ -72,14 +72,20 @@ distribution.}
   (\code{FALSE} if \code{withConf.sim} is \code{FALSE}).
 }
 \references{
-  Gentleman reference to be added.
+  Durbin, J. (1973)
+  \emph{Distribution theory for tests based on the sample distribution
+    function}.  SIAM.
+  Fisz, M. (1963). \emph{Probability Theory and Mathematical Statistics}.
+  3rd ed. Wiley, New York.
 }
 \author{
   Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}
 }
 \seealso{
   \code{\link[stats:qqnorm]{qqplot}} from package \pkg{stats} -- the standard QQ plot
-  function,  \code{\link[distr]{qqplot}} from package \pkg{distr} for
+  function, \code{\link[stats:ks.test]{ks.test}} again from package \pkg{stats}
+  for the implementation of the Kolmogorov distributions;
+  \code{\link[distr]{qqplot}} from package \pkg{distr} for
   comparisons of distributions, and
  \code{\link[distrMod]{qqplot}} from package \pkg{distrMod} for comparisons
  of data with models, as well as  \code{\link[RobAStBase]{qqplot}} for

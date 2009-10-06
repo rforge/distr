@@ -32,6 +32,14 @@ user-visible CHANGES:
 + Models:
   * checkL2deriv gains ... argument to pass on accuracy arguments to E()
 
++ plotting:
+  * new diagnostic function qqplot to check the quality of a model fit
+    + special methods for first argument "ANY" (the data) and for second argument 
+      of class "UnivariateDistribution", "ProbFamily",
+    + comes with corresponding (pointwise/simultaneous) confidence intervals
+    + flexible labelling of data points
+    
+
 GENERAL ENHANCEMENTS:
 
 + added field "Encoding: latin1" to all DESCRIPTION files in order to avoid problems 

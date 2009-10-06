@@ -5,7 +5,6 @@ to be done in package distrMod
 + improve Routines for asymptotic covariance / IC for MDE
 
 + model diagnostics:
-   *special qq plot for distributions
    *several distances fitted-distribution
    *fitted density vs histogram
    *fitted cdf vs ecdf
@@ -20,3 +19,5 @@ to be done in package distrMod
 + model classes for multivariate location and scale based on distrEllipse
 
 + integration of GParetoFamily (not so soon)
+
++ generic functions to quantify model fit quality like AIC, BIC

@@ -36,7 +36,6 @@
   return((1:length(x)) %in% nInSupp)
 }
 
-.isEqual <- distr:::.isEqual
 
 .SingleDiscrete <- function(x,D){
   ## produces a logical vector of
@@ -247,21 +246,25 @@
               alpha0 = alpha*100))
       if(!qqb$err["sim"]){
          expression3 <- expression1
-         lty0 <- lty.pCI
+         pch0 <- if(sum(!SI.c)>0) pch.pCI else 0
+         lty0 <- if(sum(SI.c)>0)  lty.pCI else 0
          col0 <- col.pCI
       }
       if(!qqb$err["pw"]){
          expression3 <- expression2
-         lty0 <- lty.sCI
+         pch0 <- if(sum(!SI.c)>0) pch.sCI else 0
+         lty0 <- if(sum(SI.c)>0)  lty.sCI else 0
          col0 <- col.sCI
       }
       if( qqb$err["pw"] && qqb$err["sim"]){
          expression3 <- eval(substitute(expression(expression1, expression2)))
-         lty0 <- c(lty.pCI, lty.sCI)
+         pch0 <- if(sum(!SI.c)>0) c(pch.pCI, pch.sCI) else 0
+         lty0 <- if(sum(SI.c)>0)  c(lty.pCI, lty.sCI) else 0
          col0 <- c(col.pCI,col.sCI)
       }
       legend("topleft", legend = expression3, bg = "white",
-              lty = lty0, col = col0, lwd = 2, cex = .8)
+              lty = lty0, pch = pch0, merge= FALSE, col = col0,
+              lwd = 2, cex = .8)
    }
   return(invisible(NULL))
 }

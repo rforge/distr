@@ -37,6 +37,7 @@
 .makeLenAndOrder <- distr:::.makeLenAndOrder
 .inGaps          <- distr:::.inGaps
 .deleteItemsMCL  <- distr:::.deleteItemsMCL
+.NotInSupport    <- distr:::.NotInSupport
 
 setMethod("qqplot", signature(x = "ANY",
                               y = "UnivariateDistribution"),
@@ -56,6 +57,7 @@ setMethod("qqplot", signature(x = "ANY",
              withSweave = getdistrOption("withSweave"), ## logical: if \code{TRUE}
              ##               (for working with \command{Sweave}) no extra device is opened and height/width are not set
              mfColRow = TRUE,     ## shall we use panel partition mfrow=c(1,1)?
+             n.CI = n,            ## number of points to be used for CI
              withLab = FALSE,     ## shall observation labels be plotted in
              lab.pts = NULL,      ## observation labels to be used
              which.lbs = NULL,    ## which observations shall be labelled
@@ -167,15 +169,29 @@ setMethod("qqplot", signature(x = "ANY",
        if(#is(y,"AbscontDistribution")&&
        withConf){
           xy <- unique(sort(c(x,yc.o)))
+          xy <- xy[!.NotInSupport(xy,y)]
           lxy <- length(xy)
-          if(lxy<n){
-             xy0 <- seq(min(xy),max(xy),length=n-lxy+2)
-             xy <- unique(sort(c(xy,xy0)))
+          if(is(y,"DiscreteDistribution")){
+             n0 <- min(n.CI, length(support(y)))
+             n1 <- max(n0-lxy,0)
+             if (n1 >0 ){
+                 notyetInXY <- setdiff(support(y), xy)
+                 xy0 <- sample(notyetInXY, n1)
+                 xy <- sort(unique(c(xy,xy0)))
+             }
+          }else{
+             if(lxy < n.CI){
+                n1 <- (n.CI-lxy)%/%3
+                xy0 <- seq(min(xy),max(xy),length=n1)
+                xy1 <- r(y)(n.CI-lxy-n1)
+                xy <- sort(unique(c(xy,xy0,xy1)))
+             }
           }
+
           .confqq(xy, y, withConf.pw, withConf.sim, alpha.CI,
                       col.pCI, lty.pCI, lwd.pCI, pch.pCI, cex.pCI,
                       col.sCI, lty.sCI, lwd.sCI, pch.sCI, cex.sCI,
-                  length(x), exact.sCI = exact.sCI, exact.pCI = exact.pCI,
+                  n, exact.sCI = exact.sCI, exact.pCI = exact.pCI,
                   nosym.pCI = nosym.pCI)
        }
     }

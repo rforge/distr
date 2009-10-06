@@ -33,6 +33,13 @@ user-visible CHANGES:
 
 + in distr generating functions [Univar]DistrList() gain Dlist argument
 
++ plotting:
+  * new diagnostic function qqplot to check the compatibility of two distributions
+    + special method for first argument "UnivariateDistribution" (to be checked
+      for compatibility) and for second argument of class "UnivariateDistribution"
+      (H_0 distribution)
+    + comes with corresponding (pointwise/simultaneous) confidence intervals
+
 
 GENERAL ENHANCEMENTS:
 

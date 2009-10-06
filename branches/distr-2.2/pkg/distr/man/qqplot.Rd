@@ -14,7 +14,7 @@ qqplot(x, y, ...)
     plot.it = TRUE, xlab = deparse(substitute(x)),
     ylab = deparse(substitute(y)), ...,
     width = 10, height = 5.5, withSweave = getdistrOption("withSweave"),
-    mfColRow = TRUE, col.IdL = "red", lty.IdL = 2, lwd.IdL = 2,
+    mfColRow = TRUE, n.CI = n, col.IdL = "red", lty.IdL = 2, lwd.IdL = 2,
     alpha.CI = .95, exact.pCI = (n<100), exact.sCI = (n<100), nosym.pCI = FALSE,
     col.pCI = "orange", lty.pCI = 3, lwd.pCI = 2, pch.pCI = par("pch"),
     cex.pCI = par("cex"),
@@ -47,6 +47,7 @@ of class \code{"UnivariateDistribution"}.}
 \item{withSweave}{logical: if \code{TRUE} (for working with \command{Sweave})
         no extra device is opened and height/width are not set}
 \item{mfColRow}{shall default partition in panels be used --- defaults to \code{TRUE}}
+\item{n.CI}{numeric; number of points to be used for confidence interval}
 \item{col.IdL}{color for the identity line}
 \item{lty.IdL}{line type for the identity line}
 \item{lwd.IdL}{line width for the identity line}
@@ -74,7 +75,9 @@ of class \code{"UnivariateDistribution"}.}
 \description{
   We generalize function \code{\link[stats:qqnorm]{qqplot}} from package \pkg{stats} to
   be applicable to distribution objects.  In this context,
-  \code{qqplot} produces a QQ plot of two distributions.
+  \code{qqplot} produces a QQ plot of two distributions, i.e.; argument \code{x}
+  is the distribution to be checked for compatibility, and \code{y} is the
+  model (\eqn{H_0}{H0}-)distribution.
    Graphical parameters may be given as arguments to \code{qqplot}.
    The \pkg{stats} function
   is just the method for signature \code{x=ANY,y=ANY}.
