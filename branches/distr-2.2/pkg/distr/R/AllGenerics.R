@@ -60,7 +60,7 @@ sd <- function(x, ...){
 
 ## masking function qqplot
 
-if(!isGeneric("qqplot"))
+#if(!isGeneric("qqplot"))
     setGeneric("qqplot", function(x, y, ...) standardGeneric("qqplot"))
 
 setMethod("qqplot", signature(x="ANY",y="ANY"), function(x, y,
@@ -70,8 +70,7 @@ setMethod("qqplot", signature(x="ANY",y="ANY"), function(x, y,
     if(missing(xlab)) mc$xlab <- xlab
     if(missing(ylab)) mc$ylab <- ylab
     mcl <- as.list(mc)[-1]
-    do.call(stats::qqplot, args=mcl)
-    return(invisible())
+    return(invisible(do.call(stats::qqplot, args=mcl)))
     })
 
 ### ---------------------------
