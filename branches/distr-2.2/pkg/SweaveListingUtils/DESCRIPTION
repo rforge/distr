@@ -12,6 +12,6 @@ Description: provides utilities for defining R / Rd as Tex-package-listings "lan
                source code
 Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
 License: LGPL-3
-Date: 2009-09-04
+Date: 2009-10-16
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
