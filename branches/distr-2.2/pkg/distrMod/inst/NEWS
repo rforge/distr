@@ -42,6 +42,8 @@ user-visible CHANGES:
 
 GENERAL ENHANCEMENTS:
 
++ added tests/Examples folder with file distrMod-Ex.Rout.save to have
+  some automatic testing
 + added field "Encoding: latin1" to all DESCRIPTION files in order to avoid problems 
   with e.g. Windows locale when svn replaces $LastChangedDate
 + added TOBEDONE (sic!) files for each package (by accident also in trunc; these are empty so far)
@@ -108,7 +110,7 @@ BUGFIXES:
 + a tiny buglet in prototype for trafo slot
 + yet another issue with "pretty printing", -> give default names "" if empty
 + the "dim"-issue:
-  * estimte, untransformed.estimate, main, and nuisance from time to time 
+  * estimate, untransformed.estimate, main, and nuisance from time to time 
     did not return numerics (instead: items with dim attribute...)
   * accessors to [untransoformed.]asvar now coerce to matrix, but only so if the item is not NULL
   * in .process.meCalcRes delete dim attribute for slots [untransformed.]estimate unless
