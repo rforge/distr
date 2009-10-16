@@ -13,6 +13,7 @@ v 2.2
 
 GENERAL ENHANCEMENTS:
 
++ removed NAMESPACE - we do not need it so far
 + added field "Encoding: latin1" to all DESCRIPTION files in order to avoid problems 
   with e.g. Windows locale when svn replaces $LastChangedDate
 + added TOBEDONE (sic!) files for each package (by accident also in trunc; these are empty so far)
