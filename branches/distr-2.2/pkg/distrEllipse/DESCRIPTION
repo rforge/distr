@@ -1,6 +1,6 @@
 Package: distrEllipse
 Version: 2.2
-Date: 2009-09-04
+Date: 2009-10-16
 Title: S4 classes for elliptically contoured distributions
 Depends: R(>= 2.8.0), methods, graphics, mvtnorm, setRNG(>= 2006.2-1), distr(>= 2.2), distrEx(>= 2.2), distrSim(>= 2.2), startupmsg
 Suggests: distrMod(>= 2.2), distrTEst(>= 2.2)
