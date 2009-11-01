@@ -1,0 +1,22 @@
+######################################################################
+#  News: to package distrEllipse 
+######################################################################
+
+(first two numbers of package versions do not necessarily reflect 
+ package-individual development, but rather are chosen for the 
+ distrXXX family as a whole in order to ease updating "depends" 
+ information)
+
+##############
+v 2.2
+##############
+
+* created new package to cover Elliptical Symmetric Distributions
+  
+GENERAL ENHANCEMENTS:
+
++ added tests/Examples folder with file distrEllipse-Ex.Rout.save to have
+  some automatic testing
++ added field "Encoding: latin1" to all DESCRIPTION files in order to avoid problems 
+  with e.g. Windows locale when svn replaces $LastChangedDate
++ added TOBEDONE (sic!) files for each package (by accident also in trunc; these are empty so far)

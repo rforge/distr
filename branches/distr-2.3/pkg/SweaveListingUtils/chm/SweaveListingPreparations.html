@@ -1,0 +1,225 @@
+<html><head><title>SweaveListingPreparations</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head><body>
+
+<table width="100%"><tr><td>SweaveListingPreparations(SweaveListingUtils)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   SweaveListingPreparations">
+<param name="keyword" value=" SweaveListingPreparations">
+</object>
+
+
+<h2>SweaveListingPreparations</h2>
+
+
+<h3>Description</h3>
+
+<p>
+helping tool for writing the corresponding TeX preamble commands
+to integrate Sweave and package listings</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+SweaveListingPreparations(
+   withOwnFileSection = FALSE,
+   withVerbatim = FALSE,
+   withSchunkDef = TRUE,
+   gin = TRUE,
+   ae = TRUE,
+   LineLength = getOption("width"),
+   Rset = getSweaveListingOption("Rset"),
+   Rdset = getSweaveListingOption("Rdset"),
+   Rin = getSweaveListingOption("Rin"),
+   Rout = getSweaveListingOption("Rout"),
+   Rcode = getSweaveListingOption("Rcode"),
+   Rcolor = getSweaveListingOption("Rcolor"),
+   RRecomdcolor = getSweaveListingOption("RRecomdcolor"),
+   Rbcolor = getSweaveListingOption("Rbcolor"),
+   Routcolor = getSweaveListingOption("Routcolor"),
+   Rcommentcolor = getSweaveListingOption("Rcommentcolor"),
+   pkg = getSweaveListingOption("pkg"),
+   pkv = getSweaveListingOption("pkv"),
+   fileCommand = getSweaveListingOption("fileCommand"),
+   pkgCommand = getSweaveListingOption("pkgCommand"),
+   lib.loc = NULL)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>withOwnFileSection</code></td>
+<td>
+logical: Does one want to use an own definition file/
+section to define <code>Sinput</code>, <code>Soutput</code>,
+<code>Scode</code> environments; if <code>TRUE</code> you should write some
+<KBD>\include</KBD> directive to include your own
+definitions / or write them in your &lsquo;<span class="file">.Rnw</span>&rsquo; file.
+</td></tr>
+<tr valign="top"><td><code>withVerbatim</code></td>
+<td>
+logical of length 3 (filled by recycling if of shorter length)
+either named ("Sinput", "Soutput", "Scode") or taken in
+order (Sinput, Soutput, Scode):
+Should we use Verbatim from TeX package 'fancyvrb'
+(i.e. the original
+<KBD>"\DefineVerbatimEnvironment{Sinput}{Verbatim}"</KBD> by
+Fritz Leisch) or just TeX package 'listings'
+(i.e. we define our own <code>Sinput</code> environment
+based on 'listings' command 'lstnewenvironment';
+this option is due to a suggestion by
+Andrew Ellis (thank you!).</td></tr>
+<tr valign="top"><td><code>withSchunkDef</code></td>
+<td>
+logical: shall environment <PRE>Schunk</PRE> be defined?</td></tr>
+<tr valign="top"><td><code>gin</code></td>
+<td>
+logical: shall we use <code>gin</code></td></tr>
+<tr valign="top"><td><code>ae</code></td>
+<td>
+logical: shall we use <code>ae</code></td></tr>
+<tr valign="top"><td><code>LineLength</code></td>
+<td>
+numeric; defaults to 80</td></tr>
+<tr valign="top"><td><code>Rset</code></td>
+<td>
+list or taglist; defaults to global option  <code>"Rset"</code></td></tr>
+<tr valign="top"><td><code>Rdset</code></td>
+<td>
+list or taglist; defaults to global option  <code>"Rdset"</code></td></tr>
+<tr valign="top"><td><code>Rin</code></td>
+<td>
+list or taglist; format string for <font face="Courier New,Courier" color="#666666"><b>R</b></font> input code; defaults to global option  <code>"Rin"</code></td></tr>
+<tr valign="top"><td><code>Rout</code></td>
+<td>
+list or taglist; format string for <font face="Courier New,Courier" color="#666666"><b>R</b></font> output code; defaults to global option  <code>"Rout"</code></td></tr>
+<tr valign="top"><td><code>Rcode</code></td>
+<td>
+list or taglist; format string for <font face="Courier New,Courier" color="#666666"><b>R</b></font> code; defaults to global option  <code>"Rcode"</code></td></tr>
+<tr valign="top"><td><code>Rcolor</code></td>
+<td>
+numeric of length 3; [color for R-input-code] defaults to global option  <code>"Rcolor"</code>;
+rgb coordinates of the color in which to print R-code</td></tr>
+<tr valign="top"><td><code>RRecomdcolor</code></td>
+<td>
+numeric of length 3; [color for R-symbols from recommended packages]
+defaults to global option  <code>"RRecomdcolor"</code>;
+rgb coordinates of the color in which to print R-code</td></tr>
+<tr valign="top"><td><code>Rbcolor</code></td>
+<td>
+numeric of length 3; [color for R-symbols from intermediate packages] defaults to global option  <code>"Rbcolor"</code>;
+rgb coordinates of the color in which to print <font face="Courier New,Courier" color="#666666"><b>R</b></font> keywords
+induced by intermediate packages.</td></tr>
+<tr valign="top"><td><code>Routcolor</code></td>
+<td>
+numeric of length 3; [color for R-output-code] defaults to global option  <code>"Rout"</code>;
+rgb coordinates of the color in which to print R output</td></tr>
+<tr valign="top"><td><code>Rcommentcolor</code></td>
+<td>
+numeric of length 3; [color for R-comments] defaults to global option <code>"Rcomment"</code>;
+rgb coordinates of the color in which to print comments
+in R-code</td></tr>
+<tr valign="top"><td><code>pkg</code></td>
+<td>
+character; name of the packageto be described (e.g. in a vignette);
+defaults to global option <code>"pkg"</code></td></tr>
+<tr valign="top"><td><code>pkv</code></td>
+<td>
+character; package version to be described (e.g. in a vignette);
+defaults to global option <code>"pkv"</code></td></tr>
+<tr valign="top"><td><code>fileCommand</code></td>
+<td>
+character; the TeX code to define TeX command <PRE>\file</PRE></td></tr>
+<tr valign="top"><td><code>pkgCommand</code></td>
+<td>
+character; the TeX code to define TeX command <PRE>\pkg</PRE></td></tr>
+<tr valign="top"><td><code>lib.loc</code></td>
+<td>
+location of a local library in which the described package resides</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>
+<code>SweaveListingPreparations</code>
+writes a corresponding preamble to the &lsquo;<span class="file">.Rnw</span>&rsquo;-file for the simultaneous use
+of Sweave and package listings; note that so far, even if you do not want to
+use the default style file &lsquo;<span class="file">Sweave.sty</span>&rsquo;, the lines
+<pre>
+%\usepackage{Sweave}
+\SweaveOpts{keep.source=TRUE}
+</pre>
+still have to appear in the &lsquo;<span class="file">.Rnw</span>&rsquo; file &mdash; before the corresponding
+<code>SweaveListingPreparations</code>-chunk.<br>
+The TeX code inserted by <code>SweaveListingPreparations</code> sets colors,
+requires TeX-package &lsquo;<span class="file">listings</span>&rsquo;,
+defines listings-settings for &lsquo;<span class="file">.R</span>&rsquo;- and &lsquo;<span class="file">.Rd</span>&rsquo;-code.
+For &lsquo;<span class="file">.Rd</span>&rsquo; files it uses a new 'listings'-language definition file, 
+&lsquo;<span class="file">Rdlisting.sty</span>&rsquo; to be found in subfolder &lsquo;<span class="file">TeX</span>&rsquo; in the 
+<span class="pkg">SweaveListingUtils</span> package folder.
+<code>SweaveListingPreparations</code> is to be called in an &lsquo;<span class="file">.Rnw</span>&rsquo; file and 
+[re-]defines <code>Sinput</code>,
+<code>Soutput</code>, <code>Scode</code> environments for use with TeX-package &lsquo;<span class="file">listings</span>&rsquo;,
+defines commands <code>\code</code>, <code>\file</code>, <code>\pkg</code> and sets
+the corresponding package version.<br>
+The default values are taken from
+.
+The output to stdout can be captured in an &lsquo;<span class="file">.Rnw</span>&rsquo; file as
+<pre>
+&lt;&lt; lstPreamble, results=tex, echo=FALSE&gt;&gt;=
+require(SweaveListingUtils)
+SweaveListingPreparations()
+@
+</pre>
+to insert the corresponding preamble parts to the produced
+TeX file.<br>
+If you one want to use destinct keywordstyles for packages loaded
+by <code>require</code> or <code>library</code> without adding extra arguments
+to these commands (and hence displaying the actual <font face="Courier New,Courier" color="#666666"><b>R</b></font> code),
+you have to set up a global formatting matrix  
+<code>.tobeDefinedPkgs</code> by <code></code>.
+</p>
+
+
+<h3>Value</h3>
+
+<p><code>invisible()</code>
+</p>
+
+
+<h3>Acknowledgement</h3>
+
+<p>
+The author wants to thank Frank E. Harrel and Andrew Ellis for
+very valuable suggestions to enhance this package.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a></p>
+
+
+<h3>Examples</h3>
+
+<pre>
+SweaveListingPreparations()
+SweaveListingPreparations(pkv="2.1")
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

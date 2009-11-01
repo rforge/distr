@@ -1,0 +1,99 @@
+<html><head><title>Generating function for DiscreteMVDistribution-class</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>DiscreteMVDistribution(distrEx)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   DiscreteMVDistribution">
+<param name="keyword" value=" Generating function for DiscreteMVDistribution-class">
+</object>
+
+
+<h2>Generating function for DiscreteMVDistribution-class</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Generates an object of class <code>"DiscreteMVDistribution"</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+DiscreteMVDistribution(supp, prob, Symmetry = NoSymmetry())
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>supp</code></td>
+<td>
+numeric matrix whose rows form the support 
+of the discrete multivariate distribution. </td></tr>
+<tr valign="top"><td><code>prob</code></td>
+<td>
+vector of probability weights for the 
+elements of <code>supp</code>.</td></tr>
+<tr valign="top"><td><code>Symmetry</code></td>
+<td>
+you may help <font face="Courier New,Courier" color="#666666"><b>R</b></font> in calculations if you tell it whether
+the distribution is non-symmetric (default) or symmetric with respect
+to a center.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Typical usages are
+<pre>
+     DiscreteMVDistribution(supp, prob)
+     DiscreteMVDistribution(supp)
+</pre>
+Identical rows are collapsed to unique support values. 
+If <code>prob</code> is missing, all elements in <code>supp</code>
+are equally weighted.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+Object of class <code>"DiscreteMVDistribution"</code></p>
+
+<h3>Author(s)</h3>
+
+<p>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code>DiscreteMVDistribution-class</code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+# Dirac-measure at (0,0,0)
+D1 &lt;- DiscreteMVDistribution(supp = c(0,0,0))
+support(D1)
+
+# simple discrete distribution
+D2 &lt;- DiscreteMVDistribution(supp = matrix(c(0,1,0,2,2,1,1,0), ncol=2), 
+                prob = c(0.3, 0.2, 0.2, 0.3))
+support(D2)
+r(D2)(10)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>distrEx</em> version 2.2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

@@ -1,0 +1,81 @@
+######################################################################
+#  News: to package distrDoc 
+######################################################################
+
+(first two numbers of package versions do not necessarily reflect 
+ package-individual development, but rather are chosen for the 
+ distrXXX family as a whole in order to ease updating "depends" 
+ information)
+
+##############
+v 2.2
+##############
+
+GENERAL ENHANCEMENTS:
+
++ removed NAMESPACE - we do not need it so far
++ added field "Encoding: latin1" to all DESCRIPTION files in order to avoid problems 
+  with e.g. Windows locale when svn replaces $LastChangedDate
++ added TOBEDONE (sic!) files for each package (by accident also in trunc; these are empty so far)
++ vignette: 
+  * included svn-multi style files to /inst/doc folders for upload on CRAN
+
+##############
+v 2.1
+##############
+
+ * description of new class "CompoundDistribution"
+ * use of new helper package SweaveListingUtils
+ * Rd-style:
+  + several buglets detected with the fuzzier checking mechanism
+    cf [Rd] More intensive checking of R help files, Prof Brian Ripley, 09.01.2009 10:25) 
+       [Rd] Warning: missing text for item ... in \describe? , Prof Brian Ripley,
+
+##############
+v 2.0.3
+##############
+  
+  * under the hood: 
+     + enhanced plotting (correct dispatch; opening of new device is controlled
+       by option("newDevice") )
+     + after JMC's changes: gone through setIs relations to ensure 
+       "correct" inheritance
+  * moved license to LGPL-3
+  * typos fixed (Skewness.R, Kurtosis.R) instead of (skewness.R, kurtosis.R)
+
+
+##############
+v 2.0   
+##############
+ * description for new classes "UnivarMixingDistribution", 
+   "UnivarLebDecDistribution"
+ * description of new arithmetic Trunc-Min/Maximiz-Huberization methods
+ * description of new packages distrMod distrTeach
+
+##############
+v 1.9   
+##############
+
+ * registration of the vignette with Windows gui according to  
+   https://stat.ethz.ch/pipermail/bioc-devel/2007-June/001171.html
+ * in the R-code of the vignette, made calls to uniroot(), integrate(), optim(ize)() 
+   compliant to 
+   https://stat.ethz.ch/pipermail/r-devel/2007-May/045791.html
+ * modified example nFoldConvolution.R (taking care of the new generic 'convpow()'
+   in package 'distr' from version 1.9 on
+ * some linebreaks added to avoid overly long lines
+ * added chunk \SweaveOpts{keep.source=TRUE} to keep comments and linebreaks in source
+ * mentioned in package-help: startup messages may now also be suppressed by
+   suppressPackageStartupMessages() (from package 'base')
+ * a lot of demo plots...
+ * description of how plot may be called
+ 
+
+##############
+v 1.8   (starting version to be in line with distr, distrSim, distrTEst)
+##############
+
+
+* distrDoc packaged to gather documentation for distr, distrEx, distrSim, distrTEst in form of 
+  a common vignette
+

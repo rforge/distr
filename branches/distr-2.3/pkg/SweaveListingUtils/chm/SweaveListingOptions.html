@@ -1,0 +1,219 @@
+<html><head><title>Function to change the global options of the package &lsquo;SweaveListingUtils&rsquo;</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head><body>
+
+<table width="100%"><tr><td>SweaveListingOptions(SweaveListingUtils)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   SweaveListingOptions">
+<param name="keyword" value="R:   SweaveListingoptions">
+<param name="keyword" value="R:   getSweaveListingOption">
+<param name="keyword" value="R:   Rset">
+<param name="keyword" value="R:   Rdset">
+<param name="keyword" value="R:   Rin">
+<param name="keyword" value="R:   Rout">
+<param name="keyword" value="R:   Rcode">
+<param name="keyword" value="R:   Rcolor">
+<param name="keyword" value="R:   Rbcolor">
+<param name="keyword" value="R:   Routcolor">
+<param name="keyword" value="R:   RRecomdcolor">
+<param name="keyword" value="R:   Rcommentcolor">
+<param name="keyword" value="R:   pkg">
+<param name="keyword" value="R:   pkv">
+<param name="keyword" value="R:   Keywordstyle">
+<param name="keyword" value="R:   Recomd.Keywordstyle">
+<param name="keyword" value="R:   interm.Keywordstyle">
+<param name="keyword" value="R:   intermediate">
+<param name="keyword" value="R:   overwrite">
+<param name="keyword" value="R:   inSweave">
+<param name="keyword" value="R:   fromRForge">
+<param name="keyword" value="R:   base.url">
+<param name="keyword" value="R:   addRset">
+<param name="keyword" value="R:   addRdset">
+<param name="keyword" value="R:   fileCommand">
+<param name="keyword" value="R:   pkgCommand">
+<param name="keyword" value=" Function to change the global options of the package &lsquo;SweaveListingUtils&rsquo;">
+</object>
+
+
+<h2>Function to change the global options of the package &lsquo;SweaveListingUtils&rsquo;</h2>
+
+
+<h3>Description</h3>
+
+<p>With <code>SweaveListingOptions</code> you can inspect and change 
+the global variables of the package <span class="pkg">SweaveListingUtils</span>. </p>
+
+
+<h3>Usage</h3>
+
+<pre>
+SweaveListingOptions(...)
+SweaveListingoptions(...)
+getSweaveListingOption(x)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>...</code></td>
+<td>
+ any options can be defined, using name = value or by passing a list of such tagged values. </td></tr>
+<tr valign="top"><td><code>x</code></td>
+<td>
+ a character string holding an option name.</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>
+<code>SweaveListingOptions()</code> returns a list of the global variables.<br>
+<code>SweaveListingOptions(x)</code> returns the global variable <VAR>x</VAR>.<br>
+<code>getSweaveListingOption(x)</code> returns the global variable <VAR>x</VAR>.<br>
+<code>SweaveListingOptions(x=y)</code> sets the value of the global variable <VAR>x</VAR> to <VAR>y</VAR>.
+</p>
+
+
+<h3>SweaveListingoptions</h3>
+
+<p>
+For compatibility with spelling in package <span class="pkg">distr</span>, <code>SweaveListingoptions</code> is 
+just a synonym to <code>SweaveListingOptions</code>.
+</p>
+
+
+<h3>Global Options</h3>
+
+<p>
+
+<dl>
+<dt>Rset:</dt><dd>
+default setting for \lstset-definition of R-code, default value is<br>
+<code>list("fancyvrb" = "true", "language" = "R", "escapechar" = "`", </code><br>
+<code>        "basicstyle" = "{\\color{Rcolor}\\footnotesize}",</code><br>
+<code>        "keywordstyle" = "{\\bf\\color{Rcolor}}",</code><br>
+<code>        "commentstyle" = "{\\color{Rcomment}\\ttfamily\\itshape}",</code><br>
+<code>        "literate" = "{&lt;-}{{$\\leftarrow$}}2{&lt;&lt;-}{{$\\twoheadleftarrow$}}2",</code><br>
+<code>        "alsoother" = "{$}","alsoletter" = "{.&lt;-}"</code><br>
+<code>        "otherkeywords" = "{!,!=,~,$,*,\\&amp;,\\%/\\%,\\%*\\%,\\%\\%,&lt;-,&lt;&lt;-,/}")</code><br>
+
+
+</dd>
+<dt>Rdset:</dt><dd>
+default setting for \lstset-definition of Rd-code, default value is<br>
+<code>list("fancyvrb" = "true", "language" = "Rd",</code><br>
+<code>        "basicstyle" = "{\\color{black}\\tiny}",</code><br>
+<code>        "keywordstyle" = "{\\bf}",</code><br>
+<code>        "commentstyle" = "\\ttfamily\\itshape",</code><br>
+<code>        "alsolanguage" = "R")</code>
+</dd>
+<dt>Rin:</dt><dd>
+default setting for \lstdefinestyle-definition of <code>Rinstyle</code> (for <font face="Courier New,Courier" color="#666666"><b>R</b></font> input),
+default value is<br>
+<code>list("style" = "Rstyle", "fancyvrb" = "true",</code><br>
+<code>        "basicstyle" = "\\color{Rcolor}\\small")</code>
+</dd>
+<dt>Rout:</dt><dd>
+default setting for \lstdefinestyle-definition of <code>Routstyle</code> (for <font face="Courier New,Courier" color="#666666"><b>R</b></font> output),
+default value is<br>
+<code>list("fancyvrb" = "false", "basicstyle" = "\\color{Rout}\\small")</code>
+</dd>
+<dt>Rcode:</dt><dd>
+default setting for \lstdefinestyle-definition of <code>Rcodestyle</code> (for <font face="Courier New,Courier" color="#666666"><b>R</b></font> code),
+default value is<br>
+<code>list("style" = "Rstyle", "fancyvrb" = "true",</code><br>
+<code>        "basicstyle" = "\\color{Rcolor}\\small")</code>
+<code>        "fontshape"= "sl", "basicstyle" = "\\color{Rcolor}")</code>
+</dd>
+<dt>Rcolor:</dt><dd>default setting for color of R-code in rgb-coordinates; 
+defaults to <code>c(0,0.5,0.5)</code></dd>
+<dt>RRecomdcolor:</dt><dd>default setting for color of R-code from recommended packages in rgb-coordinates;
+defaults to <code>c(0,0.6,0.4)</code></dd>
+<dt>Rbcolor:</dt><dd>default setting for color of R-code symbols of intermediate packages
+in rgb-coordinates;  defaults to <code>c(0,0.6,0.6)</code></dd>
+<dt>Routcolor:</dt><dd>default setting for color of R-output in rgb-coordinates;
+defaults to <code>c(0.461,0.039,0.102)</code></dd>
+<dt>Rcommentcolor:</dt><dd>default setting for color of R-comments in rgb-coordinates;
+defaults to <code>c(0.101,0.043,0.432)</code></dd>
+<dt>pkv:</dt><dd>default setting for package version as character; 
+defaults to <code>"2.0.2"</code></dd>
+<dt>inSweave:</dt><dd>logical; default setting for masked functions <code>library</code> and <code>require</code>;
+shall they show Sweave-behaviour? defaults to <code>FALSE</code></dd>
+<dt>Keywordstyle:</dt><dd>default setting for <font face="Courier New,Courier" color="#666666"><b>R</b></font>-symbols as character; 
+defaults to <code>"{\\bf}"</code></dd>
+<dt>interm.Keywordstyle:</dt><dd>default setting for <font face="Courier New,Courier" color="#666666"><b>R</b></font>-symbols in an intermediate package as character;
+defaults to <code>"{\\bf\\color{Rbcolor}}"</code></dd>
+<dt>Recomd.Keywordstyle:</dt><dd>default setting for <font face="Courier New,Courier" color="#666666"><b>R</b></font>-symbols in package <span class="pkg">base</span> or
+another recommended package as character;
+defaults to <code>"{\\bf\\color{Recomdcolor}}"</code></dd>
+<dt>intermediate:</dt><dd>default setting: shall symbols from automatically loaded
+intermediate packages also be registered for listings-printing? 
+defaults to <code>TRUE</code></dd>
+<dt>overwrite:</dt><dd>default setting: shall <font face="Courier New,Courier" color="#666666"><b>R</b></font> symbols already defined in the
+original <font face="Courier New,Courier" color="#666666"><b>R</b></font> language definition in &lsquo;<span class="file">lstlang3.sty</span>&rsquo; be overwritten
+if they reappear in a required package (to be printed in a 
+different keywordstyle)?
+defaults to <code>FALSE</code></dd>
+<dt>fromRForge:</dt><dd>default setting: logical: shall code sniplets be drawn from
+"r-forge.r-project.org" (or a mirror) or not; defaults to 
+<code>TRUE</code>.</dd>
+<dt>base.url:</dt><dd>default setting for the base url to download code sniplets from
+(character); defaults to<br>
+"http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/*checkout*/pkg/"
+</dd>
+</p>
+<p>
+<dt>addRset:</dt><dd>logical; default for argument <code>add</code> in command <code>Rset</code>;
+defaults to <code>TRUE</code></dd>
+<dt>addRdset:</dt><dd>logical; default for argument <code>add</code> in command <code>Rdset</code>;
+defaults to <code>TRUE</code></dd>
+<dt>addRinset:</dt><dd>logical; default for argument <code>add</code> in command
+<code>Rinset</code>; defaults to <code>TRUE</code></dd>
+<dt>addRoutset:</dt><dd>logical; default for argument <code>add</code> in command
+<code>Routset</code>; defaults to <code>TRUE</code></dd>
+<dt>addRcodeset:</dt><dd>logical; default for argument <code>add</code> in command
+<code>Rcodeset</code>; defaults to <code>TRUE</code></dd>
+<dt>fileCommand:</dt><dd>character; the TeX code to define TeX command <PRE>\file</PRE>;
+defaults to <code>"\def\file#1{{\tt #1}}"</code></dd>
+<dt>pkgCommand:</dt><dd>character; the TeX code to define TeX command <PRE>\pkg</PRE>;
+defaults to <code>"\def\pkg#1{{\tt \"#1\"}}"</code></dd>
+</dl>
+
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a></p>
+
+
+<h3>See Also</h3>
+
+<p><code><a onclick="findlink('base', 'options.html')" style="text-decoration: underline; color: blue; cursor: hand">options</a></code>, <code><a onclick="findlink('base', 'options.html')" style="text-decoration: underline; color: blue; cursor: hand">getOption</a></code></p>
+
+
+<h3>Examples</h3>
+
+<pre>
+SweaveListingOptions()
+SweaveListingOptions("Rout")
+SweaveListingOptions("Rout" = c(0,0,0))
+# or
+SweaveListingOptions(Rout = c(0,1,0))
+getSweaveListingOption("Rout")
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.4 <a href="00Index.html">Index</a>]</div>
+</body></html>

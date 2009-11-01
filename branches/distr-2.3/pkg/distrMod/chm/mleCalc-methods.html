@@ -1,0 +1,153 @@
+<html><head><title>Methods for functions mceCalc and mleCalc in Package &lsquo;distrMod&rsquo;</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>mceCalc-methods(distrMod)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   mceCalc-methods">
+<param name="keyword" value="R:   mleCalc-methods">
+<param name="keyword" value="R:   mceCalc">
+<param name="keyword" value="R:   mleCalc">
+<param name="keyword" value="R:   mceCalc,numeric,ParamFamily-method">
+<param name="keyword" value="R:   mleCalc,numeric,ParamFamily-method">
+<param name="keyword" value="R:   mleCalc,numeric,BinomFamily-method">
+<param name="keyword" value="R:   mleCalc,numeric,PoisFamily-method">
+<param name="keyword" value="R:   mleCalc,numeric,NormLocationFamily-method">
+<param name="keyword" value="R:   mleCalc,numeric,NormScaleFamily-method">
+<param name="keyword" value="R:   mleCalc,numeric,NormLocationScaleFamily-method">
+<param name="keyword" value=" Methods for functions mceCalc and mleCalc in Package &lsquo;distrMod&rsquo;">
+</object>
+
+
+<h2>Methods for functions mceCalc and mleCalc in Package &lsquo;distrMod&rsquo;</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Methods for functions <code>mceCalc</code> and <code>mleCalc</code> in package <span class="pkg">distrMod</span>;
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+mceCalc(x, PFam, ...)
+mleCalc(x, PFam, ...)
+## S4 method for signature 'numeric, ParamFamily':
+mceCalc(x, PFam, criterion, 
+                   startPar = NULL, penalty = 1e20, crit.name,
+                   Infos = NULL, withthetaPar = FALSE,...)
+## S4 method for signature 'numeric, ParamFamily':
+mleCalc(x, PFam, startPar = NULL, 
+                   penalty = 1e20, Infos = NULL, ...)
+## S4 method for signature 'numeric, BinomFamily':
+mleCalc(x, PFam, ...)
+## S4 method for signature 'numeric, PoisFamily':
+mleCalc(x, PFam, ...)
+## S4 method for signature 'numeric, NormLocationFamily':
+mleCalc(x, PFam, ...)
+## S4 method for signature 'numeric, NormScaleFamily':
+mleCalc(x, PFam, ...)
+## S4 method for signature 'numeric,
+##   NormLocationScaleFamily':
+mleCalc(x, PFam, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+numeric; data at which to evaluate the estimator</td></tr>
+<tr valign="top"><td><code>PFam</code></td>
+<td>
+an object of class <code>ParamFamily</code>; the parametric family at
+which to evaluate the estimator</td></tr>
+<tr valign="top"><td><code>criterion</code></td>
+<td>
+a function measuring the ``goodness of fit''</td></tr>
+<tr valign="top"><td><code>startPar</code></td>
+<td>
+in case <code>optim</code> is used: a starting value for the parameter fit;
+in case <code>optimize</code> is used: a vector containing a search interval for the
+(one-dim) parameter</td></tr>
+<tr valign="top"><td><code>penalty</code></td>
+<td>
+numeric; penalizes non-permitted parameter values</td></tr>
+<tr valign="top"><td><code>crit.name</code></td>
+<td>
+character; the name of the criterion; may be missing</td></tr>
+<tr valign="top"><td><code>withthetaPar</code></td>
+<td>
+logical; shall Parameter theta be transmitted?</td></tr>
+<tr valign="top"><td><code>Infos</code></td>
+<td>
+matrix; info slot to be filled in object of class <code>MCEstimate</code>; 
+may be missing</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+additional argument(s) for <code>optim</code> / <code>optimize</code></td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<code>mceCalc</code> is used internally by function <code>MCEstimator</code> to allow
+for method dispatch according to argument <code>PFam</code>;
+similarly, and for the same purpose  <code>mleCalc</code> is used internally by function 
+<code>MLEstimator</code>.
+This way we / or any other developper can write particular methods
+for special cases where we may avoid using numerical optimization
+without interfering with existing code. 
+For programming one's own <code>mleCalc</code> / <code>mceCalc</code> methods, there is
+the helper function <code><a href="meRes.html">meRes</a></code> to produce consistent return values.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+a list with components
+</p>
+<table summary="R argblock">
+<tr valign="top"><td><code><code>estimate</code></code></td>
+<td>
+&mdash; the estimate as a named vector of <code>numeric</code></td></tr>
+<tr valign="top"><td><code><code>criterion</code></code></td>
+<td>
+&mdash; the criterion value (i.e.; a <code>numeric</code> of length 1); 
+e.g. the neg. log likelihood</td></tr>
+<tr valign="top"><td><code><code>est.name</code></code></td>
+<td>
+&mdash; the name of the estimator</td></tr>
+<tr valign="top"><td><code><code>param</code></code></td>
+<td>
+&mdash; estimate coerced to class <code>ParamFamParameter</code></td></tr>
+<tr valign="top"><td><code><code>crit.fct</code></code></td>
+<td>
+&mdash; a function with the named components of <code>theta</code>
+as arguments returning the criterion value; used for
+profiling / coercing to class <code>mle</code></td></tr>
+<tr valign="top"><td><code><code>method</code></code></td>
+<td>
+&mdash; a character reporting how the estimate was obtained, i.e.,
+by  <code>optim</code>, by <code>optimize</code> or by explicit calculations</td></tr>
+<tr valign="top"><td><code>crit.name</code></td>
+<td>
+character; the name of the criterion; may be <code>""</code></td></tr>
+<tr valign="top"><td><code>Infos</code></td>
+<td>
+matrix; info slot to be filled in object of class <code>MCEstimate</code>; 
+may be <code>NULL</code></td></tr>
+<tr valign="top"><td><code>samplesize</code></td>
+<td>
+numeric; sample size of <code>x</code></td></tr>
+</table>
+
+
+<hr><div align="center">[Package <em>distrMod</em> version 2.2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

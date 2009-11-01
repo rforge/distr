@@ -1,0 +1,80 @@
+<html><head><title>Centering and Standardization of Univariate Distributions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>make01(distrEx)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   make01">
+<param name="keyword" value=" Centering and Standardization of Univariate Distributions">
+</object>
+
+
+<h2>Centering and Standardization of Univariate Distributions</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The function <code>make01</code> produces a new centered and 
+standardized univariate distribution.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+make01(x)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+an object of class <code>"UnivariateDistribution"</code> </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Thanks to the functionals provided in this package, the code is 
+a one-liner: <code>(x-E(x))/sd(x)</code>.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+Object of class <code>"UnivariateDistribution"</code> with expectation 0 and variance 1.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code>E</code>, <code>Var</code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+X &lt;- sin(exp(2*log(abs( Norm())))) ## something weird
+X01 &lt;- make01(X)
+print(X01)
+plot(X01)
+sd(X01); E(X01)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>distrEx</em> version 2.2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

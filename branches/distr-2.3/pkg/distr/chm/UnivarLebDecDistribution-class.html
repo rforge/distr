@@ -1,0 +1,355 @@
+<html><head><title>Class "UnivarLebDecDistribution"</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head><body>
+
+<table width="100%"><tr><td>UnivarLebDecDistribution-class(distr)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   UnivarLebDecDistribution-class">
+<param name="keyword" value="R:   AffLinUnivarLebDecDistribution-class">
+<param name="keyword" value="R:   AcDcLcDistribution-class">
+<param name="keyword" value="R:   acPart">
+<param name="keyword" value="R:   discretePart">
+<param name="keyword" value="R:   acPart<-">
+<param name="keyword" value="R:   discretePart<-">
+<param name="keyword" value="R:   acPart-methods">
+<param name="keyword" value="R:   discretePart-methods">
+<param name="keyword" value="R:   acPart<--methods">
+<param name="keyword" value="R:   discretePart<--methods">
+<param name="keyword" value="R:   acPart,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   discretePart,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   acPart<-,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   discretePart<-,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   acWeight">
+<param name="keyword" value="R:   discreteWeight">
+<param name="keyword" value="R:   acWeight<-">
+<param name="keyword" value="R:   discreteWeight<-">
+<param name="keyword" value="R:   acWeight-methods">
+<param name="keyword" value="R:   discreteWeight-methods">
+<param name="keyword" value="R:   acWeight<--methods">
+<param name="keyword" value="R:   discreteWeight<--methods">
+<param name="keyword" value="R:   acWeight,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   discreteWeight,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   acWeight<-,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   discreteWeight<-,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   p.discrete,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   d.discrete,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   q.discrete,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   r.discrete,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   p.ac,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   d.ac,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   q.ac,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   r.ac,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   p.discrete-methods">
+<param name="keyword" value="R:   d.discrete-methods">
+<param name="keyword" value="R:   q.discrete-methods">
+<param name="keyword" value="R:   r.discrete-methods">
+<param name="keyword" value="R:   p.ac-methods">
+<param name="keyword" value="R:   d.ac-methods">
+<param name="keyword" value="R:   q.ac-methods">
+<param name="keyword" value="R:   r.ac-methods">
+<param name="keyword" value="R:   p.discrete">
+<param name="keyword" value="R:   d.discrete">
+<param name="keyword" value="R:   q.discrete">
+<param name="keyword" value="R:   r.discrete">
+<param name="keyword" value="R:   p.ac">
+<param name="keyword" value="R:   d.ac">
+<param name="keyword" value="R:   q.ac">
+<param name="keyword" value="R:   r.ac">
+<param name="keyword" value="R:   coerce,AbscontDistribution,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   coerce,DiscreteDistribution,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   coerce,AffLinUnivarLebDecDistribution,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   abs,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   log,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   log10,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   Math,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   ^,AcDcLcDistribution,Dirac-method">
+<param name="keyword" value="R:   exp,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   sign,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   sign,AcDcLcDistribution-method">
+<param name="keyword" value="R:   sqrt,UnivarLebDecDistribution-method">
+<param name="keyword" value="R:   sqrt,AcDcLcDistribution-method">
+<param name="keyword" value=" Class "UnivarLebDecDistribution"">
+</object>
+
+
+<h2>Class "UnivarLebDecDistribution"</h2>
+
+
+<h3>Description</h3>
+
+<p><code>UnivarLebDecDistribution</code>-class is a class to formalize
+a Lebesgue decomposed distribution with a discrete and an
+absolutely continuous part; it is a subclass to
+class <code>UnivarMixingDistribution</code>.</p>
+
+
+<h3>Objects from the Class</h3>
+
+<p>
+Objects can be created by calls of the form
+<code>new("UnivarLebDecDistribution", ...)</code>.
+More frequently they are created via the generating function
+<code></code>.
+</p>
+
+
+<h3>Slots</h3>
+
+<p>
+
+<dl>
+<dt><code>mixCoeff</code></dt><dd>Object of class <code>"numeric"</code>: a vector of length
+2 of probabilities for the respective a.c. and discrete part of
+the object</dd>
+<dt><code>mixDistr</code></dt><dd>Object of class <code>"UnivarDistrList"</code>: a list of
+univariate distributions containing the a.c. and discrete components; must be of
+length 2; the first component must be of class <code>"AbscontDistribution"</code>,
+the second of class <code>"DiscreteDistribution"</code>.</dd>
+<dt><code>img</code></dt><dd>Object of class <code>"Reals"</code>: the space of the image of this distribution which has dimension 1
+and the name "Real Space" </dd>
+<dt><code>param</code></dt><dd>Object of class <code>"Parameter"</code>: the parameter of this distribution, having only the
+slot name "Parameter of a discrete distribution" </dd>
+<dt><code>r</code></dt><dd>Object of class <code>"function"</code>: generates random numbers</dd>
+<dt><code>d</code></dt><dd>fixed to <code>NULL</code></dd>
+<dt><code>p</code></dt><dd>Object of class <code>"function"</code>: cumulative distribution function</dd>
+<dt><code>q</code></dt><dd>Object of class <code>"function"</code>: quantile function</dd>
+<dt><code>.withArith</code></dt><dd>logical: used internally to issue warnings as to 
+interpretation of arithmetics</dd>
+<dt><code>.withSim</code></dt><dd>logical: used internally to issue warnings as to 
+accuracy</dd>
+<dt><code>.logExact</code></dt><dd>logical: used internally to flag the case where 
+there are explicit formulae for the log version of density, cdf, and 
+quantile function</dd>
+<dt><code>.lowerExact</code></dt><dd>logical: used internally to flag the case where 
+there are explicit formulae for the lower tail version of cdf and quantile 
+function</dd>
+<dt><code>Symmetry</code></dt><dd>object of class <code>"DistributionSymmetry"</code>;
+used internally to avoid unnecessary calculations.</dd>
+<dt><code>support</code></dt><dd>numeric vector &mdash; the support slot of the discrete part</dd>
+<dt><code>gaps</code></dt><dd>(numeric) matrix or <code>NULL</code>; &mdash; the gaps slot of 
+the absolutely continuous part</dd>
+</dl>
+
+</p>
+
+
+<h3>Extends</h3>
+
+<p>
+Class <code>"UnivarMixingDistribution"</code>, directly;
+class <code>"UnivariateDistribution"</code> by class <code>"UnivarMixingDistribution"</code>
+class <code>"Distribution"</code> by class <code>"UnivariateDistribution"</code>.
+</p>
+
+
+<h3>Methods</h3>
+
+<p>
+
+<dl>
+<dt>show</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code></dd>
+<dt>plot</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code></dd>
+<dt>acPart</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code></dd>
+<dt>acPart&lt;-</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code></dd>
+<dt>discretePart</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code></dd>
+<dt>discretePart&lt;-</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code></dd>
+<dt>acWeight</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code></dd>
+<dt>acWeight&lt;-</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code></dd>
+<dt>discreteWeight</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code></dd>
+<dt>discreteWeight&lt;-</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code></dd>
+<dt>p.ac</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code> accessor to 
+slot <code>p</code> of <code>acPart(object)</code>, possibly weighted 
+by <code>acWeight(object)</code>; 
+it has an extra argument <code>CondOrAbs</code> with default value 
+<code>"cond"</code> which if it does not partially match 
+(by <code><a onclick="findlink('base', 'pmatch.html')" style="text-decoration: underline; color: blue; cursor: hand">pmatch</a></code>) <code>"abs"</code>, returns exactly
+slot <code>p</code> of <code>acPart(object)</code> else weighted by 
+<code>acWeight(object)</code>.</dd>
+<dt>d.ac</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code>accessor to 
+slot <code>d</code> of the absolutely continuous part of
+the distribution, possibly weighted by <code>acWeight(object)</code>; 
+it has an extra argument <code>CondOrAbs</code> which acts as the one
+in <code>p.ac</code>.</dd>
+<dt>q.ac</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code> accessor to 
+slot <code>q</code> of <code>acPart(object)</code>.</dd>
+<dt>r.ac</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code> accessor to 
+slot <code>q</code> of <code>acPart(object)</code>.</dd>
+<dt>p.discrete</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code> 
+accessor to slot <code>p</code> of <code>discretePart(object)</code>, 
+possibly weighted by <code>discreteWeight(object)</code>; 
+it has an extra argument <code>CondOrAbs</code> which acts 
+as the one in <code>p.ac</code>.</dd>
+<dt>d.discrete</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code> 
+accessor to slot <code>d</code> of <code>discretePart(object)</code>, 
+possibly weighted by <code>discreteWeight(object)</code>; 
+it has an extra argument <code>CondOrAbs</code> which acts as 
+the one in <code>p.ac</code>.</dd>
+<dt>q.discrete</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code> 
+accessor to slot <code>q</code> of <code>discretePart(object)</code>.</dd>
+<dt>r.discrete</dt><dd><code>signature(object = "UnivarLebDecDistribution")</code> 
+accessor to slot <code>r</code> of <code>discretePart(object)</code>.</dd>
+<dt>coerce</dt><dd><code>signature(from = "AffLinUnivarLebDecDistribution", to = "UnivarLebDecDistribution")</code>:
+create a <code>"UnivarLebDecDistribution"</code> object from a <code>"AffLinUnivarLebDecDistribution"</code> object</dd>
+<dt>coerce</dt><dd><code>signature(from = "AbscontDistribution", to = "UnivarLebDecDistribution")</code>:
+create a <code>"UnivarLebDecDistribution"</code> object from a <code>"AbscontDistribution"</code> object</dd>
+<dt>coerce</dt><dd><code>signature(from = "DiscreteDistribution", to = "UnivarLebDecDistribution")</code>:
+create a <code>"UnivarLebDecDistribution"</code> object from a <code>"DiscreteDistribution"</code> object</dd>
+<dt>Math</dt><dd><code>signature(x = "UnivarLebDecDistribution")</code>: application of a mathematical function, e.g. <code>sin</code> or <code>tan</code> to this discrete distribution
+
+<ul>
+<li> <code>abs</code>: <code>signature(x = "UnivarLebDecDistribution")</code>:  exact image distribution of <code>abs(x)</code>.
+</li>
+<li><code>exp</code>: <code>signature(x = "UnivarLebDecDistribution")</code>:  exact image distribution of <code>exp(x)</code>.
+</li>
+<li><code>sign</code>: <code>signature(x = "UnivarLebDecDistribution")</code>:  exact image distribution of <code>sign(x)</code>.
+</li>
+<li><code>sign</code>: <code>signature(x = "AcDcLcDistribution")</code>:  exact image distribution of <code>sign(x)</code>.
+</li>
+<li><code>sqrt</code>: <code>signature(x = "AcDcLcDistribution")</code>:  exact image distribution of <code>sqrt(x)</code>.
+</li>
+<li><code>log</code>: <code>signature(x = "UnivarLebDecDistribution")</code>:  (with optional further argument <code>base</code>, defaulting to <code>exp(1)</code>) exact image distribution of <code>log(x)</code>.
+</li>
+<li><code>log10</code>: <code>signature(x = "UnivarLebDecDistribution")</code>:  exact image distribution of <code>log10(x)</code>.
+</li>
+<li><code>sqrt</code>: <code>signature(x = "UnivarLebDecDistribution")</code>:  exact 
+image distribution of <code>sqrt(x)</code>.
+</li>
+<li><code>sqrt</code>: <code>signature(x = "AcDcLcDistribution")</code>:  exact image distribution of <code>sqrt(x)</code>.
+</ul>
+</dd>
+<dt>-</dt><dd><code>signature(e1 = "UnivarLebDecDistribution")</code>: application of &lsquo;-&rsquo; to this distribution</dd>
+<dt>*</dt><dd><code>signature(e1 = "UnivarLebDecDistribution", e2 = "numeric")</code>: multiplication of this distribution
+by an object of class &lsquo;numeric&rsquo;</dd>
+<dt>/</dt><dd><code>signature(e1 = "UnivarLebDecDistribution", e2 = "numeric")</code>: division of this distribution
+by an object of class &lsquo;numeric&rsquo;</dd>
+<dt>+</dt><dd><code>signature(e1 = "UnivarLebDecDistribution", e2 = "numeric")</code>: addition of this distribution
+to an object of class &lsquo;numeric&rsquo;</dd>
+<dt>-</dt><dd><code>signature(e1 = "UnivarLebDecDistribution", e2 = "numeric")</code>: subtraction of an object of class &lsquo;numeric&rsquo;
+from this distribution </dd>
+<dt>*</dt><dd><code>signature(e1 = "numeric", e2 = "UnivarLebDecDistribution")</code>: multiplication of this distribution
+by an object of class &lsquo;numeric&rsquo;</dd>
+<dt>+</dt><dd><code>signature(e1 = "numeric", e2 = "UnivarLebDecDistribution")</code>: addition of this distribution
+to an object of class &lsquo;numeric&rsquo;</dd>
+<dt>-</dt><dd><code>signature(e1 = "numeric", e2 = "UnivarLebDecDistribution")</code>: subtraction of this distribution
+from an object of class &lsquo;numeric&rsquo;</dd>
+<dt>+</dt><dd><code>signature(e1 = "UnivarLebDecDistribution", e2 = "UnivarLebDecDistribution")</code>: Convolution of two Lebesgue
+decomposed distributions. Result is again of class <code>"UnivarLebDecDistribution"</code>, but if option
+<code>getdistrOption("withSimplify")</code> is <code>TRUE</code> it is piped through a call to <code></code>,
+hence may also be of class <code>AbscontDistribution</code> or <code>DiscreteDistribution</code></dd></dl>
+.
+<dl>
+<dt>-</dt><dd><code>signature(e1 = "UnivarLebDecDistribution", e2 = "UnivarLebDecDistribution")</code>: Convolution of two Lebesgue
+decomposed distributions. The same applies as for the preceding item.</dd>
+</dl>
+
+</p>
+
+
+<h3>Internal subclass "AffLinUnivarLebDecDistribution"</h3>
+
+<p>
+To enhance accuracy of several functionals on distributions,
+mainly from package <span class="pkg">distrEx</span>,  
+there is an internally used (but exported) subclass 
+<code>"AffLinUnivarLebDecDistribution"</code> which has extra slots 
+<code>a</code>, <code>b</code> (both of class <code>"numeric"</code>),  and <code>X0</code> 
+(of class <code>"UnivarLebDecDistribution"</code>), to capture the fact 
+that the object has the same distribution as <code>a * X0 + b</code>. This is 
+the class of the return value of methods 
+
+<dl>
+<dt>-</dt><dd><code>signature(e1 = "UnivarLebDecDistribution")</code></dd>
+<dt>*</dt><dd><code>signature(e1 = "UnivarLebDecDistribution", e2 = "numeric")</code></dd>
+<dt>/</dt><dd><code>signature(e1 = "UnivarLebDecDistribution", e2 = "numeric")</code></dd>
+<dt>+</dt><dd><code>signature(e1 = "UnivarLebDecDistribution", e2 = "numeric")</code></dd>
+<dt>-</dt><dd><code>signature(e1 = "UnivarLebDecDistribution", e2 = "numeric")</code></dd>
+<dt>*</dt><dd><code>signature(e1 = "numeric", e2 = "UnivarLebDecDistribution")</code></dd>
+<dt>+</dt><dd><code>signature(e1 = "numeric", e2 = "UnivarLebDecDistribution")</code></dd>
+<dt>-</dt><dd><code>signature(e1 = "numeric", e2 = "UnivarLebDecDistribution")</code></dd>
+<dt>-</dt><dd><code>signature(e1 = "AffLinUnivarLebDecDistribution")</code></dd>
+<dt>*</dt><dd><code>signature(e1 = "AffLinUnivarLebDecDistribution", e2 = "numeric")</code></dd>
+<dt>/</dt><dd><code>signature(e1 = "AffLinUnivarLebDecDistribution", e2 = "numeric")</code></dd>
+<dt>+</dt><dd><code>signature(e1 = "AffLinUnivarLebDecDistribution", e2 = "numeric")</code></dd>
+<dt>-</dt><dd><code>signature(e1 = "AffLinUnivarLebDecDistribution", e2 = "numeric")</code></dd>
+<dt>*</dt><dd><code>signature(e1 = "numeric", e2 = "AffLinUnivarLebDecDistribution")</code></dd>
+<dt>+</dt><dd><code>signature(e1 = "numeric", e2 = "AffLinUnivarLebDecDistribution")</code></dd>
+<dt>-</dt><dd><code>signature(e1 = "numeric", e2 = "AffLinUnivarLebDecDistribution")</code></dd>
+</dl>
+
+There also is a class union of <code>"AffLinAbscontDistribution"</code>,
+<code>"AffLinDiscreteDistribution"</code>, <code>"AffLinUnivarLebDecDistribution"</code>
+and called <code>"AffLinDistribution"</code>
+which is used for functionals.
+</p>
+
+
+<h3>Internal virtual superclass "AcDcLcDistribution"</h3>
+
+<p>
+As many operations should be valid no matter whether the operands
+are of class <code>"AbscontDistribution"</code>,
+<code>"DiscreteDistribution"</code>, or <code>"UnivarLebDecDistribution"</code>,
+there is a class union of these classes called <code>"AcDcLcDistribution"</code>;
+in particular methods for <code>"*"</code>, <code>"/"</code>, 
+<code>"^"</code> (see ) and methods
+<code></code>, <code>Maximum</code>, <code></code>, and
+<code></code>, and <code></code> are defined for this 
+class union.   
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+wg &lt;- flat.mix(UnivarMixingDistribution(Unif(0,1),Unif(4,5),
+               withSimplify=FALSE))
+myLC &lt;- UnivarLebDecDistribution(discretePart=Binom(3,.3), acPart = wg,
+          discreteWeight=.2)
+myLC
+p(myLC)(0.3)
+r(myLC)(30)
+q(myLC)(0.9)
+acPart(myLC)
+plot(myLC)
+d.discrete(myLC)(2)
+p.ac(myLC)(0)
+acWeight(myLC)
+plot(acPart(myLC))
+plot(discretePart(myLC))
+gaps(myLC)
+support(myLC)
+plot(as(Norm(),"UnivarLebDecDistribution"))
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+<hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

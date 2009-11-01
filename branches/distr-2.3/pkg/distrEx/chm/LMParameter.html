@@ -1,0 +1,78 @@
+<html><head><title>Generating function for LMParameter-class</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>LMParameter(distrEx)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   LMParameter">
+<param name="keyword" value=" Generating function for LMParameter-class">
+</object>
+
+
+<h2>Generating function for LMParameter-class</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Generates an object of class <code>"LMParameter"</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+LMParameter(theta = 0, intercept = 0, scale = 1)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>theta</code></td>
+<td>
+numeric vector: regression parameter (default <code>=0</code>). </td></tr>
+<tr valign="top"><td><code>intercept</code></td>
+<td>
+real number: intercept parameter (default <code>=0</code>). </td></tr>
+<tr valign="top"><td><code>scale</code></td>
+<td>
+positive real number: scale parameter (default <code>=1</code>). </td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+Object of class <code>"LMParameter"</code></p>
+
+<h3>Author(s)</h3>
+
+<p>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="LMParameter-class.html">LMParameter-class</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+LMParameter(theta = c(1,1), intercept = 2, scale = 0.5)
+
+## The function is currently defined as
+function(theta = 0, intercept = 0, scale = 1){
+    new("LMParameter", theta = theta, intercept = intercept, scale = 1)
+}
+</pre>
+
+
+
+<hr><div align="center">[Package <em>distrEx</em> version 2.2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

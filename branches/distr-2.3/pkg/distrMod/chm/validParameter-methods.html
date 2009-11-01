@@ -1,0 +1,118 @@
+<html><head><title>Methods for function validParameter in Package &lsquo;distrMod&rsquo;</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>validParameter-methods(distrMod)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   validParameter-methods">
+<param name="keyword" value="R:   validParameter">
+<param name="keyword" value="R:   validParameter,ParamFamily-method">
+<param name="keyword" value="R:   validParameter,L2ScaleFamily-method">
+<param name="keyword" value="R:   validParameter,L2LocationFamily-method">
+<param name="keyword" value="R:   validParameter,L2LocationScaleFamily-method">
+<param name="keyword" value="R:   validParameter,BinomFamily-method">
+<param name="keyword" value="R:   validParameter,PoisFamily-method">
+<param name="keyword" value="R:   validParameter,GammaFamily-method">
+<param name="keyword" value=" Methods for function validParameter in Package &lsquo;distrMod&rsquo;">
+</object>
+
+
+<h2>Methods for function validParameter in Package &lsquo;distrMod&rsquo;</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Methods for function <code>validParameter</code> in package <span class="pkg">distrMod</span>
+to check whether a new parameter (e.g. "proposed" by an optimization)
+is valid.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+validParameter(object, ...)
+## S4 method for signature 'ParamFamily':
+validParameter(object, param)
+## S4 method for signature 'L2ScaleFamily':
+validParameter(object, param, tol=.Machine$double.eps)
+## S4 method for signature 'L2LocationFamily':
+validParameter(object, param)
+## S4 method for signature 'L2LocationScaleFamily':
+validParameter(object, param, tol=.Machine$double.eps)
+## S4 method for signature 'BinomFamily':
+validParameter(object, param, tol=.Machine$double.eps)
+## S4 method for signature 'PoisFamily':
+validParameter(object, param, tol=.Machine$double.eps)
+## S4 method for signature 'GammaFamily':
+validParameter(object, param, tol=.Machine$double.eps)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+an object of class <code>ParamFamily</code></td></tr>
+<tr valign="top"><td><code>param</code></td>
+<td>
+either a numeric vector or an object of class 
+<code>ParamFamParameter</code></td></tr>
+<tr valign="top"><td><code>tol</code></td>
+<td>
+accuracy upto which the conditions have to be fulfilled</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+additional argument(s) for methods.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+method for signature
+<dl>
+<dt><code>ParamFamily</code></dt><dd>checks if all parameters are finite by <code>is.finite</code>
+if their length is between 1 and the joint length of main and nuisance parameter
+of <code>object</code>, and finally, if a call to <code>modifyParam(object)</code> with
+argument <code>param</code> would throw an error.
+</dd>
+<dt><code>L2ScaleFamily</code></dt><dd>checks if the parameter is finite by <code>is.finite</code>,
+if its length is 1, and if it is strictly larger than 0 (upto argument <code>tol</code>)</dd>
+<dt><code>L2LocationFamily</code></dt><dd>checks if the parameter is finite by <code>is.finite</code>,
+if its length is 1</dd>
+<dt><code>L2LocationScaleFamily</code></dt><dd>checks if the scale parameter is finite by <code>is.finite</code>,
+if its length is 1 or 2 (e.g. if one features as nuisance parameter), and if it is 
+strictly larger than 0 (upto argument <code>tol</code>)</dd>
+<dt><code>BinomFamily</code></dt><dd>checks if the parameter is finite by <code>is.finite</code>,
+if its length is 1, and if it is strictly larger than 0 and strictly smaller than 1 
+(upto argument <code>tol</code>)</dd>
+<dt><code>PoisFamily</code></dt><dd>checks if the parameter is finite by <code>is.finite</code>,
+if its length is 1, and if it is strictly larger than 0 (upto argument <code>tol</code>)</dd>
+<dt><code>GammaFamily</code></dt><dd>checks if both parameters are finite by <code>is.finite</code>,
+if their length is 1 or 2 (e.g. if one features as nuisance parameter), and if 
+both are strictly larger than 0 (upto argument <code>tol</code>)</dd>
+</dl>
+
+<h3>Value</h3>
+
+<p>
+<code>logical</code> of length 1 &mdash; valid or not</p>
+
+<h3>Examples</h3>
+
+<pre>
+ NS &lt;- NormLocationScaleFamily()
+ validParameter(NS, c(scale=0.1, loc=2))
+ validParameter(NS, c(scale=-0.1, loc=2))
+ validParameter(NS, c(scale=0, loc=2))
+ validParameter(NS, c(mean=2, sd=2))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>distrMod</em> version 2.2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

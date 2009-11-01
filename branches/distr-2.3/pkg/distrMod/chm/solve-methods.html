@@ -1,0 +1,119 @@
+<html><head><title>Methods for Function solve in Package &lsquo;distrMod&rsquo;</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>solve-methods(distrMod)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   solve-methods">
+<param name="keyword" value="R:   solve">
+<param name="keyword" value="R:   solve,ANY,ANY-method">
+<param name="keyword" value="R:   solve,PosSemDefSymmMatrix,ANY-method">
+<param name="keyword" value="R:   solve,PosDefSymmMatrix,ANY-method">
+<param name="keyword" value="R:   solve,ANY-method">
+<param name="keyword" value="R:   solve,PosSemDefSymmMatrix-method">
+<param name="keyword" value="R:   solve,PosDefSymmMatrix-method">
+<param name="keyword" value=" Methods for Function solve in Package &lsquo;distrMod&rsquo;">
+</object>
+
+
+<h2>Methods for Function solve in Package &lsquo;distrMod&rsquo;</h2>
+
+
+<h3>Description</h3>
+
+<p>
+solve-methods using generalized inverses for various types of matrices
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>solve(a,b, ...)
+## S4 method for signature 'ANY, ANY':
+solve(a, b, generalized = 
+getdistrModOption("use.generalized.inverse.by.default"), tol = 1e-10)
+## S4 method for signature 'PosSemDefSymmMatrix, ANY':
+solve(a, b, generalized =
+getdistrModOption("use.generalized.inverse.by.default"), tol = 1e-10)
+## S4 method for signature 'PosDefSymmMatrix, ANY':
+solve(a, b, tol = 1e-10)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>a</code></td>
+<td>
+matrix to be inverted / to be solved for RHS.</td></tr>
+<tr valign="top"><td><code>b</code></td>
+<td>
+a numeric or complex vector or matrix giving the right-hand
+side(s) of the linear system.  If missing, <code>b</code> is taken to be
+an identity matrix and <code>solve</code> will return the inverse of
+<code>a</code>.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+further arguments to be passed to specific methods (see <code><a onclick="findlink('base', 'solve.html')" style="text-decoration: underline; color: blue; cursor: hand">solve</a></code>).</td></tr>
+<tr valign="top"><td><code>generalized</code></td>
+<td>
+logical: should generalized / Moore-Penrose inverses be used? By default uses
+the corresponding global option to be set by <code><a href="distrModOptions.html">distrModoptions</a></code>.</td></tr>
+<tr valign="top"><td><code>tol</code></td>
+<td>
+the tolerance for detecting linear dependencies in the
+columns of <code>a</code>.  Default is <code>.Machine$double.eps</code>.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+The method for the Moore-Penrose inverse for 
+<code>signature(a = "PosSemDefSymmMatrix", b = "ANY")</code> uses <code>eigen</code> to find the eigenvalue 
+decomposition of <code>a</code> and then simply "pseudo-inverts" the corresponding diagonal matrix built from
+<code>eigen(a)$values</code>, while for <code>signature(a = "ANY", b = "ANY")</code>  it uses the svd 
+decomposition of <code>a</code> and then simply "pseudo-inverts" the corresponding diagonal matrix built from
+<code>svd(a)$d</code>.
+</p>
+
+
+<h3>Methods</h3>
+
+<dl>
+<dt>solve</dt><dd><code>signature(a = "ANY", b = "ANY")</code>: tries to evaluate <code>solve.default</code> method from <span class="pkg">base</span> in classical way;
+if this gives an error, this one is returned if <code>generalized</code> is <code>TRUE</code>, else it will then
+return <i>a^-b</i> where <i>a^-</i> is the pseudo or Moore-Penrose inverse of <i>a</i>.</dd>
+<dt>solve</dt><dd><code>signature(a = "PosSemDefSymmMatrix", b = "ANY")</code>: evaluates <i>a^-b</i> where <i>a^-</i> is the pseudo or Moore-Penrose
+inverse of <i>a</i>.</dd>
+<dt>solve</dt><dd><code>signature(a = "PosDefSymmMatrix", b = "ANY")</code>: evaluates solve method from <span class="pkg">base</span> in classical way.</dd>
+</dl>
+
+<h3>Author(s)</h3>
+
+<p>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a onclick="findlink('base', 'solve.html')" style="text-decoration: underline; color: blue; cursor: hand">solve</a></code> for the default method, <code><a onclick="findlink('base', 'eigen.html')" style="text-decoration: underline; color: blue; cursor: hand">eigen</a></code> and <code><a onclick="findlink('base', 'svd.html')" style="text-decoration: underline; color: blue; cursor: hand">svd</a></code> 
+for the pseudo inversion
+</p>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>distrMod</em> version 2.1 <a href="00Index.html">Index]</a></div>
+
+</body></html>
