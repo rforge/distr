@@ -1,10 +1,10 @@
 <html><head><title>List of distributions</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>DistrList-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>DistrList-class(distr)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   DistrList-class">
 <param name="keyword" value="R:   coerce,Distribution,DistrList-method">
 <param name="keyword" value="R:   show,DistrList-method">
@@ -17,9 +17,7 @@
 
 <h3>Description</h3>
 
-<p>
-Create a list of distributions
-</p>
+<p>Create a list of distributions</p>
 
 
 <h3>Objects from the Class</h3>
@@ -27,16 +25,21 @@ Create a list of distributions
 <p>
 Objects can be created by calls of the form <code>new("DistrList", ...)</code>.
 More frequently they are created via the generating function 
-<code>DistrList</code>.
+<code>DistrList</code>. 
 </p>
 
 
 <h3>Slots</h3>
 
+<p>
+
 <dl>
-<dt><code>.Data</code>:</dt><dd>Object of class <code>"list"</code>. 
+<dt><code>.Data</code></dt><dd>Object of class <code>"list"</code>. 
 A list of distributions.</dd>
 </dl>
+
+</p>
+
 
 <h3>Extends</h3>
 
@@ -48,6 +51,8 @@ Class <code>"vector"</code>, by class <code>"list"</code>.
 
 <h3>Methods</h3>
 
+<p>
+
 <dl>
 <dt>show</dt><dd><code>signature(object = "DistrList")</code></dd>
 <dt>plot</dt><dd><code>signature(object = "DistrList")</code></dd>
@@ -55,18 +60,17 @@ Class <code>"vector"</code>, by class <code>"list"</code>.
 create a <code>"DistrList"</code> object from a <code>"Distribution"</code> object</dd>
 </dl>
 
+</p>
+
+
 <h3>Author(s)</h3>
 
-<p>
-Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
-</p>
+<p>Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a></p>
 
 
 <h3>See Also</h3>
 
-<p>
-<code><a href="DistrList.html">DistrList</a></code>, <code><a href="Distribution-class.html">Distribution-class</a></code>
-</p>
+<p><code></code>, <code><a href="Distribution-class.html">Distribution-class</a></code></p>
 
 
 <h3>Examples</h3>
@@ -77,8 +81,15 @@ plot(DL)
 as(Norm(), "DistrList")
 </pre>
 
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
 
-
-<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index]</a></div>
-
+<hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 </body></html>

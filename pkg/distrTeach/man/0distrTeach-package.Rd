@@ -19,13 +19,13 @@ as well as a Tcl/Tk based demo for\code{illustrateCLT}
 
 \details{
 \tabular{ll}{
-Package: \tab distrTeach\cr
-Version: \tab 2.1 \cr
-Date: \tab 2009-03-19 \cr
+Package: \tab distrTeach \cr
+Version: \tab 2.2 \cr
+Date: \tab 2009-09-04 \cr
 Depends: \tab R(>= 2.2.0), methods, distr(>= 2.0), distrEx(>= 2.0),
 startupmsg\cr
-LazyLoad: \tab yes\cr
-License: \tab LGPL-3\cr
+LazyLoad: \tab yes \cr
+License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
 }
 }
@@ -36,17 +36,16 @@ Teaching Classes
 
 }
 }
-\section{Functions}{
-
-\preformatted{
-
-}}
-
-\section{Generating Functions}{
-\preformatted{
-
-
-}}
+%\section{Functions}{
+%
+%\preformatted{
+%
+%}}
+%
+%\section{Generating Functions}{
+%\preformatted{
+%
+%}}
 \section{Methods}{
 \preformatted{
 
@@ -84,6 +83,13 @@ As for general \code{packageStartupMessage}'s, you may also suppress all
  \pkg{startupmsg}-version 0.5 on.
  }
 
+\section{Package versions}{
+Note: The first two numbers of package versions do not necessarily reflect
+ package-individual development, but rather are chosen for the
+ distrXXX family as a whole in order to ease updating "depends"
+ information.
+}
+
 \author{
 Matthias Kohl \email{Matthias.Kohl@stamats.de} and \cr
 Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de},\cr 
@@ -116,6 +122,6 @@ Theory of Robustness.} PhD Thesis. Bayreuth. Available as
 \concept{CLT}
 \concept{Teaching demos}
 \seealso{
-\code{\link[distr]{distr}} 
-\code{\link[distrEx]{distrEx}} 
+\code{\link[distr:0distr-package]{distr-package}} 
+\code{\link[distrEx:0distrEx-package]{distrEx-package}} 
 }

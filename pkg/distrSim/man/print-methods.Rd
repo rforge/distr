@@ -26,7 +26,7 @@
               seed, the contamination rate and the distributions}
 
 \item{show}{\code{signature(x = "Dataclass")}, \code{signature(x = "Simulation")},
-            \code{signature(x = "Contsimulation"), \code{signature(x = "SeqDataFrames")}}: as corresponding \code{print} method}
+            \code{signature(x = "Contsimulation")}, \code{signature(x = "SeqDataFrames")}: as corresponding \code{print} method}
 
 }}
 \keyword{print}

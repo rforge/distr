@@ -27,7 +27,7 @@ The corresponding table is stored globally in the (non-exported) object
 \code{.tobeDefinedPkgs}, which is hidden in the namespace of this package.
 
 It is used afterwords by the masked versions of
-\code{\link[SweaveListingUtils]{require}} and
+\code{\link[SweaveListingUtils:library]{require}} and
 \code{\link[SweaveListingUtils]{library}} of this package to allow for
 defining a set of keywordstyle formats for different packages
 right in the preamble of a \file{.Rnw} file.

@@ -1,10 +1,10 @@
 <html><head><title>Functions for Illustrating the LLN</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>illustrateLLN(distrTeach)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>illustrateLLN(distrTeach)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   illustrateLLN">
 <param name="keyword" value=" Functions for Illustrating the LLN">
 </object>
@@ -15,15 +15,13 @@
 
 <h3>Description</h3>
 
-<p>
-Functions for generating a sequence of plots of
+<p>Functions for generating a sequence of plots of
 randomly generated replicates of 
 <i>arithmetic means</i>
 for sums of iid r.v. distributed according to a prescribed discrete or 
 absolutely continuous distribution. A line for the expectation and CLT based
 (pointwise) 95%-confidence bands are also plotted and the empirical coverage
-of this band by the replicated plotted so far is indicated.
-</p>
+of this band by the replicated plotted so far is indicated.</p>
 
 
 <h3>Usage</h3>
@@ -119,10 +117,10 @@ further arguments to be passed to <code>matplot</code>,
 <code>matlines</code>, <code>abline</code></td></tr>
 </table>
 
+
 <h3>Details</h3>
 
-<p>
-<code>illustrateLLN</code> generates a sequence of plots.
+<p><code>illustrateLLN</code> generates a sequence of plots.
 Any parameters of <code>plot.default</code> may be passed on to this particular
 <code>plot</code> method. 
 </p>
@@ -132,7 +130,8 @@ annotations.
 </p>
 <p>
 In all title arguments, the following patterns are substituted:
-<ul>
+
+<dl>
 <dt><code>"%C"</code></dt><dd>class of argument <code>x</code></dd>
 <dt><code>"%P"</code></dt><dd>parameters of <code>x</code> in form of a comma-separated list of
 &lt;value&gt;'s coerced to character</dd>
@@ -144,9 +143,10 @@ empty; then ""</dd>
 <dt><code>"%A"</code></dt><dd>deparsed argument <code>x</code></dd>
 <dt><code>"%D"</code></dt><dd>time/date-string when the plot was generated</dd>
 <dt><code>"%X"</code></dt><dd>the expression
-<i><code>bar(X)[n]==~~sum(X[i],i==1,n)/n</code></i></dd>
-</ul>
+<i>\code{bar(X)[n]==~~sum(X[i],i==1,n)/n}</i></dd>
+</dl>
 
+</p>
 <p>
 If not explicitly set, <code>col.Eline</code>, <code>col.Conf</code> are set 
 to <code>col</code> if this arg is given and else to their default values as given
@@ -156,14 +156,12 @@ above. Similarly for <code>cex</code>, <code>lwd</code> and <code>lty</code>.
 
 <h3>Value</h3>
 
-<p>
-void</p>
+<p>void</p>
+
 
 <h3>Author(s)</h3>
 
-<p>
-Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
-</p>
+<p>Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a></p>
 
 
 <h3>Examples</h3>
@@ -188,7 +186,5 @@ location.href = link;
 }
 </script>
 
-
-<hr><div align="center">[Package <em>distrTeach</em> version 2.1 <a href="00Index.html">Index</a>]</div>
-
+<hr><div align="center">[Package <em>distrTeach</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 </body></html>

@@ -1,10 +1,10 @@
 <html><head><title>distrMod &ndash; probability models</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>distrMod-package(distrMod)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>distrMod-package(distrMod)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   distrMod-package">
 <param name="keyword" value="R:   distrMod">
 <param name="keyword" value=" distrMod &ndash; probability models">
@@ -26,29 +26,44 @@ maximum likelihood or minimum distance estimators for probability models.
 <h3>Details</h3>
 
 <p>
+
+</p>
 <table summary="Rd table">
 <tr>
-  <td align="left">Package: </td>  <td align="left"> distrMod</td>
+ <td align="left">
+Package: </td><td align="left"> distrMod </td>
 </tr>
 <tr>
-  <td align="left"> Version: </td>  <td align="left"> 2.1 </td>
+ <td align="left">
+Version: </td><td align="left"> 2.2 </td>
 </tr>
 <tr>
-  <td align="left"> Date: </td>  <td align="left"> 2008-11-27 </td>
+ <td align="left">
+Date: </td><td align="left"> 2009-09-04 </td>
 </tr>
 <tr>
-  <td align="left"> Depends: </td>  <td align="left"> R(&gt;= 2.6.0), methods, startupmsg, distr(&gt;= 2.0), distrEx(&gt;= 2.0), RandVar(&gt;= 0.6.3), MASS, stats4</td>
+ <td align="left">
+Depends: </td><td align="left"> R(&gt;= 2.6.0), methods, startupmsg, distr(&gt;= 2.2), distrEx(&gt;= 2.2), RandVar(&gt;= 0.6.3), MASS, stats4 </td>
 </tr>
 <tr>
-  <td align="left"> LazyLoad: </td>  <td align="left"> yes</td>
+ <td align="left">
+LazyLoad: </td><td align="left"> yes </td>
 </tr>
 <tr>
-  <td align="left"> License: </td>  <td align="left"> LGPL-3</td>
+ <td align="left">
+License: </td><td align="left"> LGPL-3 </td>
 </tr>
 <tr>
-  <td align="left"> URL: </td>  <td align="left"> http://distr.r-forge.r-project.org/</td>
+ <td align="left">
+URL: </td><td align="left"> http://distr.r-forge.r-project.org/</td>
 </tr>
-</table>
+<tr>
+ <td align="left">
+</td>
+</tr>
+
+</table><p>
+</p>
 
 
 <h3>Classes</h3>
@@ -107,8 +122,6 @@ trafo(MatrixorFunction)
 ##########################
 Class unions
 ##########################
-"OptionalNumeric" = union("numeric", "NULL")
-"OptionalMatrix" = union("matrix", "NULL")
 "MatrixorFunction" = union("matrix", "OptionalFunction")
 "PrintDetails" = union("Estimate", "Confint", 
                    "PosSemDefSymmMatrix",
@@ -116,28 +129,23 @@ Class unions
 
 
 ##########################
-Symmetry classes
+Symmetry classes            (other classes moved to package "distr")
 ##########################
 slots:
 type(character), SymmCenter(ANY)
 
-"Symmetry"
-|&gt;"NoSymmetry"          [*]
-|&gt;"EllipticalSymmetry"  [*] 
-|&gt;|&gt;"SphericalSymmetry" [*]
-|&gt;"DistributionSymmetry"
+"Symmetry"   (from package "distr")
 |&gt;"FunctionSymmetry"
 |&gt;|&gt;"NonSymmetric"      [*]
 |&gt;|&gt;"EvenSymmetric"     [*]
 |&gt;|&gt;"OddSymmetric"      [*]
 
 list thereof
-"DistrSymmList"         [*] 
 "FunSymmList"           [*]
 
 
 ##########################
-Matrix classes
+Matrix classes              (moved to package "distr")
 ##########################
 slots:
 none
@@ -287,10 +295,14 @@ methods
 <code>confint</code> for  class <code>Estimate</code>
 <code>profile</code> for  class <code>MCEstimate</code>
 </p>
+<p>
+</p>
 
 
 <h3>Functions</h3>
 
+<p>
+</p>
 <p>
 <pre>
 Management of global options:
@@ -309,8 +321,7 @@ special location/scale models:
 
 some special normal models:
 "NormScaleUnknownLocationFamily", "NormLocationUnknownScaleFamily",
-</pre>
-</p>
+</pre></p>
 
 
 <h3>Start-up-Banner</h3>
@@ -347,8 +358,7 @@ call into <code>suppressPackageStartupMessages()</code> from
 <h3>Demos</h3>
 
 <p>
-Demos are available &mdash; see <code>demo(package="distrMod")</code>.
-</p>
+Demos are available &mdash; see <code>demo(package="distrMod")</code>.</p>
 
 
 <h3>Scripts</h3>
@@ -356,6 +366,16 @@ Demos are available &mdash; see <code>demo(package="distrMod")</code>.
 <p>
 Example scripts are available &mdash; see folder &lsquo;<span class="file">scripts</span>&rsquo;
 in the package folder to package <span class="pkg">distrMod</span> in your library.
+</p>
+
+
+<h3>Package versions</h3>
+
+<p>
+Note: The first two numbers of package versions do not necessarily reflect
+package-individual development, but rather are chosen for the
+distrXXX family as a whole in order to ease updating "depends"
+information.
 </p>
 
 
@@ -400,8 +420,5 @@ and may be called by
 <code>require("distrDoc");vignette("distr")</code>
 </p>
 
-
-
-<hr><div align="center">[Package <em>distrMod</em> version 2.1 <a href="00Index.html">Index</a>]</div>
-
+<hr><div align="center">[Package <em>distrMod</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 </body></html>

@@ -1,18 +1,18 @@
 <html><head><title>Class "Chisq"</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>Chisq-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>Chisq-class(distr)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   Chisq-class">
 <param name="keyword" value="R:   Chisq">
 <param name="keyword" value="R:   initialize,Chisq-method">
-<param name="keyword" value=" Class 'Chisq'">
+<param name="keyword" value=" Class "Chisq"">
 </object>
 
 
-<h2>Class 'Chisq'</h2>
+<h2>Class "Chisq"</h2>
 
 
 <h3>Description</h3>
@@ -20,18 +20,20 @@
 <p>
 The chi-squared distribution with <code>df</code><i>= n</i> degrees of
 freedom has density
-</p><p align="center"><i>f_n(x) = 1 / (2^(n/2) Gamma(n/2))  x^(n/2-1) e^(-x/2)</i></p><p>
+</p><p align="center"><i>
+    f_n(x) = 1 / (2^(n/2) Gamma(n/2))  x^(n/2-1) e^(-x/2)</i></p><p>
 for <i>x &gt; 0</i>.  The mean and variance are <i>n</i> and <i>2n</i>.
 </p>
 <p>
 The non-central chi-squared distribution with <code>df</code><i>= n</i>
 degrees of freedom and non-centrality parameter <code>ncp</code>
-<i>= &lambda;</i> has density
-</p><p align="center"><i>f(x) = exp(-lambda/2) SUM_{r=0}^infty ((lambda/2)^r / r!) dchisq(x, df + 2r)
-</i></p><p>
-for <i>x &gt;= 0</i>.  For integer <i>n</i>, this is the distribution of
+<i>= \lambda</i> has density
+</p><p align="center"><i>
+    f(x) = exp(-lambda/2) SUM_{r=0}^infty ((lambda/2)^r / r!) dchisq(x, df + 2r)
+  </i></p><p>
+for <i>x \ge 0</i>.  For integer <i>n</i>, this is the distribution of
 the sum of squares of <i>n</i> normals each with variance one,
-<i>&lambda;</i> being the sum of squares of the normal means.
+<i>\lambda</i> being the sum of squares of the normal means.
 </p>
 <p>
 C.f. <code><a onclick="findlink('stats', 'Chisquare.html')" style="text-decoration: underline; color: blue; cursor: hand">rchisq</a></code>
@@ -48,26 +50,37 @@ This object is a chi-squared distribution.
 
 <h3>Slots</h3>
 
+<p>
+
 <dl>
-<dt><code>img</code>:</dt><dd>Object of class <code>"Reals"</code>:
+<dt><code>img</code></dt><dd>Object of class <code>"Reals"</code>:
 The space of the image of this distribution has got dimension 1 and the name "Real Space".</dd>
-<dt><code>param</code>:</dt><dd>Object of class <code>"ChisqParameter"</code>:
+<dt><code>param</code></dt><dd>Object of class <code>"ChisqParameter"</code>:
 the parameter of this distribution (df and ncp), declared at its instantiation</dd>
-<dt><code>r</code>:</dt><dd>Object of class <code>"function"</code>:
+<dt><code>r</code></dt><dd>Object of class <code>"function"</code>:
 generates random numbers (calls function rchisq)</dd>
-<dt><code>d</code>:</dt><dd>Object of class <code>"function"</code>:
+<dt><code>d</code></dt><dd>Object of class <code>"function"</code>:
 density function (calls function dchisq)</dd>
-<dt><code>p</code>:</dt><dd>Object of class <code>"function"</code>:
+<dt><code>p</code></dt><dd>Object of class <code>"function"</code>:
 cumulative function (calls function pchisq)</dd>
-<dt><code>q</code>:</dt><dd>Object of class <code>"function"</code>:
+<dt><code>q</code></dt><dd>Object of class <code>"function"</code>:
 inverse of the cumulative function (calls function qchisq)</dd>
-<dt><code>.withArith</code>:</dt><dd>logical: used internally to issue warnings as to interpretation of arithmetics</dd>
-<dt><code>.withSim</code>:</dt><dd>logical: used internally to issue warnings as to accuracy</dd>
-<dt><code>.logExact</code>:</dt><dd>logical: used internally to flag the case where there are explicit formulae for the
-log version of density, cdf, and quantile function</dd>
-<dt><code>.lowerExact</code>:</dt><dd>logical: used internally to flag the case where there are explicit formulae for the
-lower tail version of cdf and quantile function</dd>
+<dt><code>.withArith</code></dt><dd>logical: used internally to issue warnings as to 
+interpretation of arithmetics</dd>
+<dt><code>.withSim</code></dt><dd>logical: used internally to issue warnings as to 
+accuracy</dd>
+<dt><code>.logExact</code></dt><dd>logical: used internally to flag the case where 
+there are explicit formulae for the log version of density, cdf, and 
+quantile function</dd>
+<dt><code>.lowerExact</code></dt><dd>logical: used internally to flag the case where 
+there are explicit formulae for the lower tail version of cdf and quantile 
+function</dd>
+<dt><code>Symmetry</code></dt><dd>object of class <code>"DistributionSymmetry"</code>;
+used internally to avoid unnecessary calculations.</dd>
 </dl>
+
+</p>
+
 
 <h3>Extends</h3>
 
@@ -82,12 +95,14 @@ Class <code>"Distribution"</code>, by class <code>"UnivariateDistribution"</code
 <h3>Is-Relations</h3>
 
 <p>
-By means of <code>setIs</code>, R ``knows'' that a distribution object <code>obj</code> of class <code>"Chisq"</code> with non-centrality 0 also is
-a Gamma distribution with parameters <code>shape = df(obj)/2, scale = 2</code>.
+By means of <code>setIs</code>, R &ldquo;knows&rdquo; that a distribution object <code>obj</code> of class <code>"Chisq"</code> with non-centrality 0 also is
+a Gamma distribution with parameters <code>shape = df(obj)/2, scale = 2</code>. 
 </p>
 
 
 <h3>Methods</h3>
+
+<p>
 
 <dl>
 <dt>initialize</dt><dd><code>signature(.Object = "Chisq")</code>: initialize method </dd>
@@ -103,10 +118,13 @@ modifies the slot ncp of the parameter of the distribution </dd>
 For the chi-squared distribution we use its closedness under convolutions.</dd>
 </dl>
 
+</p>
+
+
 <h3>Note</h3>
 
 <p>
-Warning: The code for pchisq and qchisq is unreliable for values of ncp above approximately 290.
+Warning: The code for pchisq and qchisq is unreliable for values of ncp above approximately 290. 
 </p>
 
 
@@ -116,16 +134,15 @@ Warning: The code for pchisq and qchisq is unreliable for values of ncp above ap
 Thomas Stabla <a href="mailto:statho3@web.de">statho3@web.de</a>,<br> 
 Florian Camphausen <a href="mailto:fcampi@gmx.de">fcampi@gmx.de</a>,<br>
 Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>,<br>
-Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
-</p>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a></p>
 
 
 <h3>See Also</h3>
 
 <p>
-<code><a href="ChisqParameter-class.html">ChisqParameter-class</a></code>
-<code><a href="ContDistribution-class.html">AbscontDistribution-class</a></code>
-<code><a href="Reals-class.html">Reals-class</a></code>
+<code></code>
+<code></code>
+<code></code>
 <code><a onclick="findlink('stats', 'Chisquare.html')" style="text-decoration: underline; color: blue; cursor: hand">rchisq</a></code>
 </p>
 
@@ -156,7 +173,5 @@ location.href = link;
 }
 </script>
 
-
-<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
-
+<hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 </body></html>

@@ -38,13 +38,13 @@ produces a vector of characters where each component is one line of
 the original source file;
 arguments \code{from}, \code{to} may be
 \itemize{
-\item{missing}{then the whole file (resp. from the beginning or to the end) is used}
-\item{numbers}{then the limits are just given as line numbers}
-\item{characters}{then file is searched for the first occurrance of a passage
+\item missing: then the whole file (resp. from the beginning or to the end) is used
+\item numbers: then the limits are just given as line numbers
+\item characters: then file is searched for the first occurrance of a passage
       framed by \code{from}, \code{to}; uses \code{grep}; hence
       \link[=regexp]{regular expressions} may be used which involves masking
       of (,\{,\\, etc.  as described in the cited reference;
-}}
+}
 with offsets, additional lines may be pasted before and after the search result
 }
 

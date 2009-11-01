@@ -30,29 +30,29 @@
 }
 \section{Slots}{
   \describe{
-    \item{\code{type}:}{Object of class \code{"character"}:
+    \item{\code{type}}{Object of class \code{"character"}:
       type of the confidence interval (asymptotic, bootstrap,\dots). 
       Can be of length \code{>2}. Then in printing, the first element
       is printed in the gap '[...]' in 'an [...] confidence interval',
       while the other elements are printed below.}
-    \item{\code{confint}:}{Object of class \code{"array"}:
+    \item{\code{confint}}{Object of class \code{"array"}:
       the confidence interval(s).}
-    \item{\code{call.estimate}:}{Object of class \code{"call"}:
+    \item{\code{call.estimate}}{Object of class \code{"call"}:
       the estimate(s) for which the confidence intervals are produced.}
-    \item{\code{name.estimate}:}{Object of class \code{"character"}:
+    \item{\code{name.estimate}}{Object of class \code{"character"}:
       the name of the estimate(s) for which the confidence intervals are produced.}
     \item{\code{samplesize.estimate}:}{Object of class \code{"numeric"}:
       the sample size of the estimate(s) for which the confidence intervals
       are (only complete cases) produced.}
     \item{\code{completecases.estimate}:}{Object of class \code{"logical"}:
          complete cases at which the estimate was evaluated. }
-    \item{\code{trafo.estimate}:}{Object of class \code{"matrix"}:
+    \item{\code{trafo.estimate}}{Object of class \code{"matrix"}:
       the trafo/derivative matrix of the estimate(s) for which 
       the confidence intervals are produced.}
-    \item{\code{nuisance.estimate}:}{Object of class \code{"OptionalNumeric"}:
+    \item{\code{nuisance.estimate}}{Object of class \code{"OptionalNumeric"}:
       the nuisance parameter (if any) at which the confidence 
       intervals are produced.}
-    \item{\code{fixed.estimate}:}{Object of class \code{"OptionalNumeric"}:
+    \item{\code{fixed.estimate}}{Object of class \code{"OptionalNumeric"}:
       the fixed part of the parameter (if any) at which the confidence 
       intervals are produced.}
   }
@@ -74,7 +74,7 @@
     \item{trafo.estimate}{\code{signature(object = "Confint")}: 
       accessor function for slot \code{trafo.estimate}. }
 
-    \item{samplesize.estimate}{\code{signature(object = "Confint")}: 
+    \item{samplesize.estimate}{\code{signature(object = "Confint")}:
       (with additional argument \code{onlycompletecases}
       defaulting to \code{TRUE} returns the sample size;
       in case there are any incomplete cases and argument
@@ -84,7 +84,7 @@
     \item{completecases.estimate}{\code{signature(object = "Confint")}:
       accessor function for slot \code{completecases.estimate}. }
 
-    \item{nuisance.estimate}{\code{signature(object = "Confint")}:
+    \item{nuisance.estimate}{\code{signature(object = "Confint")}: 
       accessor function for slot \code{nuisance.estimate}. }
 
     \item{fixed.estimate}{\code{signature(object = "Confint")}: 
@@ -94,6 +94,7 @@
      of the object; slots \code{nuisance.estimate} and
      \code{fixed.estimate} are only shown if non-null,
      and slot \code{trafo.estimate} only if different from a unit matrix.}
+     
     \item{print}{\code{signature(object = "Confint")}: just as \code{show}, 
      but with additional arguments \code{digits}.}
   }

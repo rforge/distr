@@ -1,10 +1,10 @@
 <html><head><title>MVNorm distribution class</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>MVNormDistribution-class(distrEllipse)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>MVNormDistribution-class(distrEllipse)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   MVNormDistribution-class">
 <param name="keyword" value="R:   sigma,MVNormDistribution-method">
 <param name="keyword" value="R:   mean,MVNormDistribution-method">
@@ -20,7 +20,7 @@
 <p>
 Class <code>MVNormDistribution</code> implements a general multivariate distribution
 using code from package <span class="pkg">mvtnorm</span>. For details to this implementation confer
-to the references given in this package.
+to the references given in this package. 
 </p>
 
 
@@ -29,27 +29,31 @@ to the references given in this package.
 <p>
 Objects could in principle be created by calls to <code>new</code>, but more 
 frequently you would create them  via the generating function 
-<code><a href="MvnormDistribution.html">MVNormDistribution</a></code>.
+<code></code>.
 </p>
 
 
 <h3>Slots</h3>
 
+<p>
+
 <dl>
-<dt><code>img</code>:</dt><dd>Object of class <code>"Reals"</code>. </dd>
-<dt><code>param</code>:</dt><dd>Object of class <code>"MVtParameter"</code>. </dd>
-<dt><code>r</code>:</dt><dd>function with argument <code>n</code>; random number generator</dd>
-<dt><code>d</code>:</dt><dd>the density of this distribution, <code><a onclick="findlink('mvtnorm', 'pmvnorm.html')" style="text-decoration: underline; color: blue; cursor: hand">pmvnorm</a></code></dd>
-<dt><code>p</code>:</dt><dd>the (vectorized) function <code><a onclick="findlink('mvtnorm', 'pmvnorm.html')" style="text-decoration: underline; color: blue; cursor: hand">pmvnorm</a></code>.</dd>
-<dt><code>q</code>:</dt><dd>the (vectorized) function <code><a onclick="findlink('mvtnorm', 'qmvnorm.html')" style="text-decoration: underline; color: blue; cursor: hand">qmvnorm</a></code>.</dd>
-<dt><code>radDistr</code>:</dt><dd>the distribution <code>sqrt(Chisq(df=dim0))</code></dd>
-<dt><code>.withArith</code>:</dt><dd>FALSE</dd>
-<dt><code>.withSim</code>:</dt><dd>FALSE</dd>
-<dt><code>.logExact</code>:</dt><dd>TRUE</dd>
-<dt><code>.lowerExact</code>:</dt><dd>TRUE</dd>
-<dt><code>Symmetry</code>:</dt><dd>object of class <code>"EllipticalSymmetry"</code> about 
+<dt><code>img</code></dt><dd>Object of class <code>"Reals"</code>. </dd>
+<dt><code>param</code></dt><dd>Object of class <code>"MVtParameter"</code>. </dd>
+<dt><code>r</code></dt><dd>function with argument <code>n</code>; random number generator</dd>
+<dt><code>d</code></dt><dd> the density of this distribution, <code><a onclick="findlink('mvtnorm', 'pmvnorm.html')" style="text-decoration: underline; color: blue; cursor: hand">pmvnorm</a></code></dd>
+<dt><code>p</code></dt><dd>the (vectorized) function <code><a onclick="findlink('mvtnorm', 'pmvnorm.html')" style="text-decoration: underline; color: blue; cursor: hand">pmvnorm</a></code>.</dd>
+<dt><code>q</code></dt><dd>the (vectorized) function <code><a onclick="findlink('mvtnorm', 'qmvnorm.html')" style="text-decoration: underline; color: blue; cursor: hand">qmvnorm</a></code>.</dd>
+<dt><code>radDistr</code></dt><dd>the distribution <code>sqrt(Chisq(df=dim0))</code></dd>
+<dt><code>.withArith</code></dt><dd>FALSE</dd>
+<dt><code>.withSim</code></dt><dd>FALSE</dd>
+<dt><code>.logExact</code></dt><dd>TRUE</dd>
+<dt><code>.lowerExact</code></dt><dd>TRUE</dd>
+<dt><code>Symmetry</code></dt><dd>object of class <code>"EllipticalSymmetry"</code> about 
 center <code>loc</code>; used internally to avoid unnecessary calculations.</dd>
 </dl>
+</p>
+
 
 <h3>Extends</h3>
 
@@ -63,29 +67,34 @@ Class <code>"Distribution"</code>, by class <code>"MultivariateDistribution"</co
 
 <h3>Methods</h3>
 
+<p>
+
 <dl>
 <dt>sigma</dt><dd><code>signature(object = "MVNormDistribution")</code>: wrapped access method for
 slot <code>sigma</code> of slot <code>param</code>. </dd>
-
-
+</p>
+<p>
 <dt>mean</dt><dd><code>signature(object = "MVNormDistribution")</code>: wrapped access method for
 slot <code>location</code>  of slot <code>param</code>. </dd>
-
-<p>
 </dl>
+
+</p>
+
 
 <h3>Author(s)</h3>
 
-<p>
-Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
-</p>
+<p>Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a></p>
 
 
 <h3>See Also</h3>
 
-<p>
-Package <span class="pkg">mvtnorm</span>
-</p>
+<p>Package <span class="pkg">mvtnorm</span></p>
+
+
+<h3>Examples</h3>
+
+<pre>
+</pre>
 
 <script Language="JScript">
 function findlink(pkg, fn) {
@@ -97,7 +106,5 @@ location.href = link;
 }
 </script>
 
-
-<hr><div align="center">[Package <em>distrEllipse</em> version 0.1 <a href="00Index.html">Index</a>]</div>
-
+<hr><div align="center">[Package <em>distrEllipse</em> version 0.2 <a href="00Index.html">Index</a>]</div>
 </body></html>

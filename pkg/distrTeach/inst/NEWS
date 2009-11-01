@@ -1,7 +1,29 @@
 ######################################################################
 #  News: to package distrTeach
 ######################################################################
+
+(first two numbers of package versions do not necessarily reflect 
+ package-individual development, but rather are chosen for the 
+ distrXXX family as a whole in order to ease updating "depends" 
+ information)
  
+##############
+v 2.2
+##############
+
+user-visible CHANGES:
++ included options("device.ask.default"=FALSE) in demos to avoid the need to press 
+  a button between frames in the "movie"
+
+GENERAL ENHANCEMENTS:
+
++ added tests/Examples folder with file distrTeach-Ex.Rout.save to have
+  some automatic testing
++ added field "Encoding: latin1" to all DESCRIPTION files in order to avoid problems 
+  with e.g. Windows locale when svn replaces $LastChangedDate
++ added TOBEDONE (sic!) files for each package (by accident also in trunc; these are empty so far)
+
+
 ##############
 v 2.1
 ##############
@@ -21,7 +43,7 @@ v 2.0.3
      + after JMC's changes: gone through setIs relations to ensure 
        "correct" inheritance
   * moved license to LGPL-3
-  * thanks to a hint by Anja Hüller, discovered a buglet in the demos of distrTeach;
+  * thanks to a hint by Anja Hueller, discovered a buglet in the demos of distrTeach;
 
 
 ##############

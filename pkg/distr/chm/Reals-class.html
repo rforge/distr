@@ -1,25 +1,23 @@
 <html><head><title>Class "Reals"</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>Reals-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>Reals-class(distr)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   Reals">
 <param name="keyword" value="R:   Reals-class">
 <param name="keyword" value="R:   initialize,Reals-method">
-<param name="keyword" value=" Class 'Reals'">
+<param name="keyword" value=" Class "Reals"">
 </object>
 
 
-<h2>Class 'Reals'</h2>
+<h2>Class "Reals"</h2>
 
 
 <h3>Description</h3>
 
-<p>
-Particular case of a one-dimensional Euclidean Space
-</p>
+<p> Particular case of a one-dimensional Euclidean Space </p>
 
 
 <h3>Usage</h3>
@@ -32,16 +30,21 @@ Particular case of a one-dimensional Euclidean Space
 <p>
 Objects could theoretically be created by calls of the form <code>new("Reals", dimension, name)</code>.
 Usually an object of this class is not needed on its own. It is generated automatically when a univariate absolutly
-continuous distribution is instantiated.
+continuous distribution is instantiated. 
 </p>
 
 
 <h3>Slots</h3>
 
+<p>
+
 <dl>
-<dt><code>dimension</code>:</dt><dd>Object of class <code>"character"</code>: the dimension of the space, by default = 1 </dd>
-<dt><code>name</code>:</dt><dd>Object of class <code>"character"</code>: the name of the space, by default = "Real Space"</dd>
+<dt><code>dimension</code></dt><dd>Object of class <code>"character"</code>: the dimension of the space, by default = 1 </dd>
+<dt><code>name</code></dt><dd>Object of class <code>"character"</code>: the name of the space, by default = "Real Space"</dd>
 </dl>
+
+</p>
+
 
 <h3>Extends</h3>
 
@@ -53,9 +56,14 @@ Class <code>"rSpace"</code>, by class <code>"EuclideanSpace"</code>.
 
 <h3>Methods</h3>
 
+<p>
+
 <dl>
 <dt>initialize</dt><dd><code>signature(.Object = "Reals")</code>: initialize method </dd>
 </dl>
+
+</p>
+
 
 <h3>Author(s)</h3>
 
@@ -70,9 +78,9 @@ Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de
 <h3>See Also</h3>
 
 <p>
-<code><a href="EuclideanSpace-class.html">EuclideanSpace-class</a></code>
-<code><a href="Naturals-class.html">Naturals-class</a></code>
-<code><a href="ContDistribution-class.html">AbscontDistribution-class</a></code>
+<code></code>
+<code></code>
+<code></code>
 </p>
 
 
@@ -83,8 +91,15 @@ R &lt;- Reals()
 liesIn(R,c(0,0)) # FALSE
 </pre>
 
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
 
-
-<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index]</a></div>
-
+<hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 </body></html>

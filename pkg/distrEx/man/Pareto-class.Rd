@@ -28,18 +28,18 @@
 }
 \section{Slots}{
   \describe{
-    \item{\code{img}:}{Object of class \code{"Reals"}. }
-    \item{\code{param}:}{Object of class \code{"ParetoParameter"}. }
-    \item{\code{r}:}{\code{rpareto1}}
-    \item{\code{d}:}{\code{dpareto1}}
-    \item{\code{p}:}{\code{ppareto1}}
-    \item{\code{q}:}{\code{qpareto1}}
-    \item{\code{gaps}:}{(numeric) matrix or \code{NULL}}
-    \item{\code{.withArith}:}{logical: used internally to issue warnings as to interpretation of arithmetics}
-    \item{\code{.withSim}:}{logical: used internally to issue warnings as to accuracy}
-    \item{\code{.logExact}:}{logical: used internally to flag the case where there are explicit formulae for the
+    \item{\code{img}}{Object of class \code{"Reals"}. }
+    \item{\code{param}}{Object of class \code{"ParetoParameter"}. }
+    \item{\code{r}}{\code{rpareto1}}
+    \item{\code{d}}{\code{dpareto1}}
+    \item{\code{p}}{\code{ppareto1}}
+    \item{\code{q}}{\code{qpareto1}}
+    \item{\code{gaps}}{(numeric) matrix or \code{NULL}}
+    \item{\code{.withArith}}{logical: used internally to issue warnings as to interpretation of arithmetics}
+    \item{\code{.withSim}}{logical: used internally to issue warnings as to accuracy}
+    \item{\code{.logExact}}{logical: used internally to flag the case where there are explicit formulae for the
                               log version of density, cdf, and quantile function}
-    \item{\code{.lowerExact}:}{logical: used internally to flag the case where there are explicit formulae for the
+    \item{\code{.lowerExact}}{logical: used internally to flag the case where there are explicit formulae for the
                               lower tail version of cdf and quantile function}
   }
 }
@@ -64,6 +64,18 @@ Class \code{"Distribution"}, by class \code{"AbscontDistribution"}.
     \item{Min<-}{\code{signature(x = "Pareto")}: wrapped replace method for
       slot \code{Min} of slot \code{param}. }
 
+    \item{E}{\code{signature(object = "Pareto", fun = "missing", cond = "missing")}: 
+    exact evaluation using explicit expressions.}
+    \item{var}{\code{signature(signature(x = "Pareto")}: 
+    exact evaluation using explicit expressions.}
+    \item{median}{\code{signature(signature(x = "Pareto")}: 
+    exact evaluation using explicit expressions.}
+    \item{IQR}{\code{signature(signature(x = "Pareto")}:
+    exact evaluation using explicit expressions.}
+    \item{skewness}{\code{signature(signature(x = "Pareto")}: 
+    exact evaluation using explicit expressions.}
+    \item{kurtosis}{\code{signature(signature(x = "Pareto")}: 
+    exact evaluation using explicit expressions.}
   }
 }
 \references{Johnson et al. (1995) \emph{Continuous Univariate Distributions. Vol. 2. 2nd ed.}
@@ -74,7 +86,7 @@ Class \code{"Distribution"}, by class \code{"AbscontDistribution"}.
 \author{Nataliya Horbenko \email{Nataliya.Horbenko@itwm.fraunhofer.de}}
 \note{This class is based on the code provided by the package \pkg{actuar}
 by  Vincent Goulet and Mathieu Pigeon.}
-\seealso{\code{\link[actuar]{dpareto1}}, \code{\link[distr]{AbscontDistribution-class}}}
+\seealso{\code{\link[actuar:SingleParameterPareto]{dpareto1}}, \code{\link[distr]{AbscontDistribution-class}}}
 \examples{
 (P1 <- new("Pareto", shape = 1, Min = 2))
 plot(P1)

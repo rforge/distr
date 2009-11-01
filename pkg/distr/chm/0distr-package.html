@@ -1,10 +1,10 @@
 <html><head><title>distr &ndash; object orientated implementation of distributions</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>distr-package(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>distr-package(distr)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   distr-package">
 <param name="keyword" value="R:   distr">
 <param name="keyword" value=" distr &ndash; object orientated implementation of distributions">
@@ -21,7 +21,7 @@
 classes. A mother class <code>Distribution</code> is introduced with slots for a 
 parameter and &mdash;most important&mdash; for the four constitutive methods <code>r</code>,  
 <code>d</code>, <code>p</code>, and <code>q</code> for simulation respectively for evaluation of
-density / c.d.f. and quantile function of the corresponding distribution.
+density / c.d.f.\ and quantile function of the corresponding distribution.
 </p>
 <p>
 Most distributions of  package <span class="pkg">stats</span> (like normal, Poisson, etc.)
@@ -35,13 +35,18 @@ Up to arguments referring to a parameter of the distribution (like
 same arguments as those of package <span class="pkg">stats</span>, i.e.; for a distribution object 
 <code>X</code> we may call these functions as 
 </p>
+<p>
 
 <ul>
-<dt></dt><dd><code>r(X)(n)</code></dd>
-<dt></dt><dd><code>d(X)(x, log = FALSE)</code></dd>
-<dt></dt><dd><code>p(X)(q, lower.tail = TRUE, log.p = FALSE)</code></dd>
-<dt></dt><dd><code>q(X)(p, lower.tail = TRUE, log.p = FALSE)</code></dd>
-</ul> 
+<li> <code>r(X)(n)</code>
+</li>
+<li><code>d(X)(x, log = FALSE)</code>
+</li>
+<li><code>p(X)(q, lower.tail = TRUE, log.p = FALSE)</code>
+</li>
+<li><code>q(X)(p, lower.tail = TRUE, log.p = FALSE)</code>
+</ul>
+ 
 </p>
 <p>
 For the arguments of these function slots see e.g. <code><a onclick="findlink('stats', 'Normal.html')" style="text-decoration: underline; color: blue; cursor: hand">rnorm</a></code>.
@@ -49,42 +54,65 @@ Note that, as usual, slots <code>d</code>, <code>p</code>, and <code>q</code> ar
 in their first argument, but are not on the subsequent ones.
 </p>
 <p>
+</p>
+<p>
 Arithmetics and unary mathematical transformations for distributions are 
 available: For <code>Distribution</code> objects <code>X</code> and <code>Y</code> expressions 
 like <code>3*X+sin(exp(-Y/4+3))</code> have their natural interpretation as 
-corresponding image distributions.
+corresponding image distributions. 
 </p>
 
 
 <h3>Details</h3>
 
 <p>
+
+</p>
 <table summary="Rd table">
 <tr>
-  <td align="left">Package: </td>  <td align="left"> distr</td>
+ <td align="left">
+Package: </td><td align="left"> distr </td>
 </tr>
 <tr>
-  <td align="left"> Version: </td>  <td align="left"> 2.0 </td>
+ <td align="left">
+Version: </td><td align="left"> 2.2 </td>
 </tr>
 <tr>
-  <td align="left"> Date: </td>  <td align="left"> 2008-05-08 </td>
+ <td align="left">
+Date: </td><td align="left"> 2009-09-04 </td>
 </tr>
 <tr>
-  <td align="left"> Depends: </td>  <td align="left"> R(&gt;= 2.2.0), methods, graphics, startupmsg</td>
+ <td align="left">
+Depends: </td><td align="left"> R(&gt;= 2.2.0), methods, graphics, startupmsg, sfsmisc,
+SweaveListingUtils</td>
 </tr>
 <tr>
-  <td align="left"> Imports: </td>  <td align="left"> stats</td>
+ <td align="left">
+LazyLoad: </td><td align="left"> yes </td>
 </tr>
 <tr>
-  <td align="left"> LazyLoad: </td>  <td align="left"> yes</td>
+ <td align="left">
+License: </td><td align="left"> LGPL-3 </td>
 </tr>
 <tr>
-  <td align="left"> License: </td>  <td align="left"> GPL (version 2 or later)</td>
+ <td align="left">
+License: </td><td align="left"> LGPL-3 </td>
 </tr>
 <tr>
-  <td align="left"> URL: </td>  <td align="left"> http://distr.r-forge.r-project.org/</td>
+ <td align="left">
+License: </td><td align="left"> LGPL-3 </td>
 </tr>
-</table>
+<tr>
+ <td align="left">
+URL: </td><td align="left"> http://distr.r-forge.r-project.org/</td>
+</tr>
+<tr>
+ <td align="left">
+</td>
+</tr>
+
+</table><p>
+</p>
 
 
 <h3>Classes</h3>
@@ -96,14 +124,14 @@ classes for the particular distributions have slots with names
 according to the corresponding <VAR>[rdpq]&lt;name&gt;</VAR> functions of
 package <span class="pkg">base</span>. 
 From version 1.9 on, <code>AbscontDistribution</code> and descendants have 
-a slot <code><a href="gap-methods.html">gaps</a></code> for gaps in the support.
+a slot <code></code> for gaps in the support.
 <code>DiscreteDistribution</code> and descendants have 
-an additional slot <code><a href="support-methods.html">support</a></code>, which is again specialized
+an additional slot <code></code>, which is again specialized
 to be a lattice for class <code>LatticeDistribution</code>. <br>
 </p>
 <p>
 For saved objects from earlier versions, we provide the methods
-<code><a href="versionmanagement.html">isOldVersion</a></code>, and  <code><a href="versionmanagement.html">conv2NewVersion</a></code> 
+<code></code>, and  <code></code> 
 to check whether the object was generated by an older version of 
 this package and to convert such an object to the new format, 
 respectively. This applies to objects of subclasses of 
@@ -146,60 +174,67 @@ which are all now available analytically.<br>
 <p>
 (see Parameter classes).
 </p>
+<p>
 <pre>
+[*]: there is a generating function with the same name
 
+##########################
 Distribution classes
+##########################
 slots: [&lt;name&gt;(&lt;class&gt;)] 
 img(rSpace), param(OptionalParameter),
 r(function), d(OptionalFunction), p(OptionalFunction), q(OptionalFunction),
-.withSim(logical), .withArith(logical), .logExact(logical), .lowerExact(logical)
+.withSim(logical), .withArith(logical), .logExact(logical), .lowerExact(logical),
+Symmetry(DistributionSymmetry)
 
 
 "Distribution"
 |&gt;"UnivariateDistribution"
-|&gt;|&gt;"UnivarMixingDistribution"
-|&gt;|&gt;|&gt;"UnivarLebDecDistribution"
+|&gt;|&gt;"UnivarMixingDistribution"            [*]
+|&gt;|&gt;|&gt;"UnivarLebDecDistribution"          [*]
 |&gt;|&gt;|&gt;|&gt;"AffLinUnivarLebDecDistribution"
-|&gt;|&gt;|&gt;"CompoundDistribution"
-|&gt;|&gt;"AbscontDistribution"
+|&gt;|&gt;|&gt;"CompoundDistribution"              [*]
+|&gt;|&gt;"AbscontDistribution"                 [*]
 |&gt;|&gt;|&gt;"AffLinAbscontDistribution"
-|&gt;|&gt;|&gt;"Arcsine"
-|&gt;|&gt;|&gt;"Beta"
-|&gt;|&gt;|&gt;"Cauchy"
+|&gt;|&gt;|&gt;"Arcsine"                           [*]
+|&gt;|&gt;|&gt;"Beta"                              [*]
+|&gt;|&gt;|&gt;"Cauchy"                            [*]
 |&gt;|&gt;|&gt;"ExpOrGammaOrChisq" (VIRTUAL)
-|&gt;|&gt;|&gt;|&gt;"Exp"
-|&gt;|&gt;|&gt;|&gt;"Gammad"
-|&gt;|&gt;|&gt;|&gt;"Chisq"
-|&gt;|&gt;|&gt;"Fd"
-|&gt;|&gt;|&gt;"Lnorm"
-|&gt;|&gt;|&gt;"Logis"
-|&gt;|&gt;|&gt;"Norm"
-|&gt;|&gt;|&gt;"Td"
-|&gt;|&gt;|&gt;"Unif"
-|&gt;|&gt;|&gt;"Weibull"
-|&gt;|&gt;|"DiscreteDistribution"
-|&gt;|&gt;|&gt;"AffLinDiscreteDistribution"
-|&gt;|&gt;|&gt;"LatticeDistribution"
-|&gt;|&gt;|&gt;|&gt;"AffLinLatticeDistribution"
-|&gt;|&gt;|&gt;|&gt;"Binom"
-|&gt;|&gt;|&gt;|&gt;"Dirac"
-|&gt;|&gt;|&gt;|&gt;"Hyper"
-|&gt;|&gt;|&gt;|&gt;"NBinom"
-|&gt;|&gt;|&gt;|&gt;|&gt;"Geom"
-|&gt;|&gt;|&gt;|&gt;"Pois"
+|&gt;|&gt;|&gt;|&gt;"Exp"                             [*]
+|&gt;|&gt;|&gt;|&gt;"Gammad"                          [*]
+|&gt;|&gt;|&gt;|&gt;"Chisq"                           [*]
+|&gt;|&gt;|&gt;"Fd"                                [*]
+|&gt;|&gt;|&gt;"Lnorm"                             [*]
+|&gt;|&gt;|&gt;"Logis"                             [*]
+|&gt;|&gt;|&gt;"Norm"                              [*]
+|&gt;|&gt;|&gt;"Td"                                [*]
+|&gt;|&gt;|&gt;"Unif"                              [*]
+|&gt;|&gt;|&gt;"Weibull"                           [*]
+|&gt;|&gt;|"DiscreteDistribution"               [*]
+|&gt;|&gt;|&gt;"AffLinDiscreteDistribution"        
+|&gt;|&gt;|&gt;"LatticeDistribution"               [*]
+|&gt;|&gt;|&gt;|&gt;"AffLinLatticeDistribution"       
+|&gt;|&gt;|&gt;|&gt;"Binom"                           [*]
+|&gt;|&gt;|&gt;|&gt;"Dirac"                           [*]
+|&gt;|&gt;|&gt;|&gt;"Hyper"                           [*]
+|&gt;|&gt;|&gt;|&gt;"NBinom"                          [*]
+|&gt;|&gt;|&gt;|&gt;|&gt;"Geom"                          [*]
+|&gt;|&gt;|&gt;|&gt;"Pois"                            [*]
 
 "AffLinDistribution" = union ( "AffLinAbscontDistribution", 
                                "AffLinDiscreteDistribution",
                                "AffLinUnivarLebDecDistribution" )
 
 "DistrList" 
-|&gt;"UnivarDistrList"
+|&gt;"UnivarDistrList"                       [*]
 
 "AcDcLc" = union ( "AbscontDistribution", 
                    "DiscreteDistribution",
                    "UnivarLebDecDistribution" )
 
+##########################
 Parameter classes
+##########################
 
 "OptionalParameter"
 |&gt;"Parameter"
@@ -223,13 +258,50 @@ Parameter classes
 |&gt;|&gt;"UnifParameter"
 |&gt;|&gt;"WeibullParameter"
 
+##########################
 Space classes
+##########################
 
 "rSpace"
 |&gt;"EuclideanSpace"
 |&gt;|&gt;"Reals"
 |&gt;"Lattice"
 |&gt;"Naturals"
+
+##########################
+Symmetry classes
+##########################
+slots:
+type(character), SymmCenter(ANY)
+
+"Symmetry"
+|&gt;"NoSymmetry"          [*]
+|&gt;"EllipticalSymmetry"  [*] 
+|&gt;|&gt;"SphericalSymmetry" [*]
+|&gt;"DistributionSymmetry"
+|&gt;"FunctionSymmetry"
+|&gt;|&gt;"NonSymmetric"      [*]
+|&gt;|&gt;"EvenSymmetric"     [*]
+|&gt;|&gt;"OddSymmetric"      [*]
+
+list thereof
+"DistrSymmList"         [*] 
+"FunSymmList"           [*]
+
+
+##########################
+Matrix classes
+##########################
+slots:
+none
+"PosSemDefSymmMatrix" [*] is subclass of class "matrix" of package "base".
+|&gt;"PosDefSymmMatrix"  [*]
+
+##########################
+Class unions
+##########################
+"OptionalNumeric" = union("numeric", "NULL")
+"OptionalMatrix" = union("matrix","NULL")
 </pre>
 </p>
 
@@ -237,15 +309,19 @@ Space classes
 <h3>Methods</h3>
 
 <p>
+</p>
+<p>
 The group <code>Math</code> of unary (see <a onclick="findlink('base', 'Math.html')" style="text-decoration: underline; color: blue; cursor: hand">Math</a>) as well as 
-convolution are made available for distributions, see <a href="operators-methods.html">operators-methods</a>;
-in particular for convolution powers, we have method <a href="ConvPow.html">convpow</a>.
+convolution are made available for distributions, see ;
+in particular for convolution powers, we have method .
 Besides, there are <code>plot</code> and <code>print</code>-methods for distributions.
 For the space classes, we have <code>liesIn</code>, for the
 <code>DicreteDistribution</code> class, we have <code>liesInSupport</code>, as well
 as a generating function.
 The "history" of distributions
 obtained by chaining operations may be shortened using <code>simplifyr</code>.
+</p>
+<p>
 </p>
 
 
@@ -271,8 +347,7 @@ distroptions            Functions to change the global variables of the
                         package 'distr'
 standardMethods         Utility to automatically generate accessor and 
                         replacement functions
-</pre>
-</p>
+</pre></p>
 
 
 <h3>Extension Packages in distrXXX family</h3>
@@ -280,6 +355,7 @@ standardMethods         Utility to automatically generate accessor and
 <p>
 Please note that there are extension packages of this packages
 available on CRAN,
+
 <dl>
 <dt><span class="pkg">distrDoc</span></dt><dd>a documentation package providing joint documentation
 for all packages of the distrXXX family of packages in the form of vignette
@@ -295,7 +371,22 @@ on simulations generated by <span class="pkg">distrSim</span>.</dd>
 our distribution classes.</dd>
 <dt><span class="pkg">distrMod</span></dt><dd>provides classes for parametric models and hence covers,
 in an object orientated way, estimation in statistical models.</dd>
+<dt><span class="pkg">distrEllipse</span></dt><dd>provides classes for elliptically symmetric
+distributions.</dd>
 </dl>
+
+</p>
+
+
+<h3>Package versions</h3>
+
+<p>
+Note: The first two numbers of package versions do not necessarily reflect
+package-individual development, but rather are chosen for the
+distrXXX family as a whole in order to ease updating "depends"
+information.
+</p>
+
 
 <h3>Acknowledgement</h3>
 
@@ -303,8 +394,7 @@ in an object orientated way, estimation in statistical models.</dd>
 We thank Martin Maechler, Josef Leydold, John Chambers,
 Duncan Murdoch, Gregory Warnes, Paul Gilbert, Kurt Hornik,
 Uwe Ligges, Torsten Hothorn, and Seth Falcon for their help
-in preparing this package.
-</p>
+in preparing this package.</p>
 
 
 <h3>Start-up-Banner</h3>
@@ -341,14 +431,12 @@ call into <code>suppressPackageStartupMessages()</code> from
 <h3>Demos</h3>
 
 <p>
-Demos are available &mdash; see <code>demo(package="distr")</code>
-</p>
+Demos are available &mdash; see <code>demo(package="distr")</code></p>
 
 
 <h3>Note</h3>
 
-<p>
-Arithmetics on distribution objects are understood as operations on 
+<p>Arithmetics on distribution objects are understood as operations on 
 corresponding  (independent) r.v.'s and <STRONG>not</STRONG> on distribution functions 
 or densities.<br>
 </p>
@@ -362,7 +450,7 @@ but completely retain their functionality &mdash; see <code>distrMASK()</code>.<
 <p>
 Accuracy of these arithmetics is controlled by global options which may 
 be inspected / set by <code>distroptions()</code> and <code>getdistrOption()</code>, 
-confer <a href="distroptions.html">distroptions</a> .
+confer  .
 </p>
 
 
@@ -393,8 +481,14 @@ and may be called by
 <code>require("distrDoc");vignette("distr")</code>
 </p>
 <p>
+
+
+</p>
+<p>
 a homepage to this package is available under<br>
 <a href="http://distr.r-forge.r-project.org/">http://distr.r-forge.r-project.org/</a>
+</p>
+<p>
 </p>
 
 
@@ -418,7 +512,5 @@ location.href = link;
 }
 </script>
 
-
-<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
-
+<hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 </body></html>

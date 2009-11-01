@@ -6,6 +6,7 @@
 
 require(distrTeach)
 options("newDevice"=TRUE)
+options("device.ask.default"=FALSE)
 # some examples
 # distroptions("DefaultNrFFTGridPointsExponent" = 13)
 illustrateCLT(Distr = Unif(), len = 20, sleep = 0.5)

@@ -1,10 +1,10 @@
 <html><head><title>Class "LatticeDistribution"</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>LatticeDistribution-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>LatticeDistribution-class(distr)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   AffLinLatticeDistribution-class">
 <param name="keyword" value="R:   LatticeDistribution-class">
 <param name="keyword" value="R:   lattice">
@@ -15,70 +15,75 @@
 <param name="keyword" value="R:   sqrt,LatticeDistribution-method">
 <param name="keyword" value="R:   coerce,LatticeDistribution,DiscreteDistribution-method">
 <param name="keyword" value="R:   coerce,AffLinLatticeDistribution,AffLinDiscreteDistribution-method">
-<param name="keyword" value=" Class 'LatticeDistribution'">
+<param name="keyword" value=" Class "LatticeDistribution"">
 </object>
 
 
-<h2>Class 'LatticeDistribution'</h2>
+<h2>Class "LatticeDistribution"</h2>
 
 
 <h3>Description</h3>
 
-<p>
-The <code>LatticeDistribution</code>-class is the mother-class of the 
+<p>The <code>LatticeDistribution</code>-class is the mother-class of the 
 classes <code>Binom</code>, <code>Dirac</code>, <code>Geom</code>, <code>Hyper</code>, <code>Nbinom</code> and 
 <code>Poisson</code>. It formalizes a distribution on a regular affine
-linear lattice.
-</p>
+linear lattice.</p>
 
 
 <h3>Objects from the Class</h3>
 
 <p>
 The usual way to generate objects of class <code>LatticeDistribution</code> is to call 
-the generating function <code><a href="LatticeDistribution.html">LatticeDistribution</a></code>. <br>
+the generating function <code></code>. <br>
 Somewhat more flexible, but also proner to inconsistencies is a call to 
 <code>new("LatticeDistribution")</code>, where you may explicitly specify random 
 number generator, (counting) density, cumulative distribution and quantile 
 functions. For conveniance, in this call to <code>new("LatticeDistribution")</code>, 
 an additional possibility is to only specify the random number generator. The 
 function <code>RtoDPQ.d</code> then approximates the three remaining slots <code>d</code>, 
-<code>p</code> and <code>q</code> by random sampling.
+<code>p</code> and <code>q</code> by random sampling. 
 </p>
 
 
 <h3>Slots</h3>
 
+<p>
+
 <dl>
-<dt><code>img</code>:</dt><dd>Object of class <code>"Reals"</code>: the space of the image 
+<dt><code>img</code></dt><dd>Object of class <code>"Reals"</code>: the space of the image 
 of this distribution which has dimension 1 and the name "Real Space" </dd>
-<dt><code>param</code>:</dt><dd>Object of class <code>"Parameter"</code>: the parameter of 
+<dt><code>param</code></dt><dd>Object of class <code>"Parameter"</code>: the parameter of 
 this distribution, having only the slot name 
 "Parameter of a discrete distribution" </dd>
-<dt><code>r</code>:</dt><dd>Object of class <code>"function"</code>: 
+<dt><code>r</code></dt><dd>Object of class <code>"function"</code>: 
 generates random numbers</dd>
-<dt><code>d</code>:</dt><dd>Object of class <code>"function"</code>: 
+<dt><code>d</code></dt><dd>Object of class <code>"function"</code>: 
 (counting) density/probability function</dd>
-<dt><code>p</code>:</dt><dd>Object of class <code>"function"</code>: 
+<dt><code>p</code></dt><dd>Object of class <code>"function"</code>: 
 cumulative distribution function</dd>
-<dt><code>q</code>:</dt><dd>Object of class <code>"function"</code>: 
+<dt><code>q</code></dt><dd>Object of class <code>"function"</code>: 
 quantile function</dd>
-<dt><code>.withArith</code>:</dt><dd>logical: used internally to issue warnings as to 
-interpretation of arithmetics</dd>
-<dt><code>.withSim</code>:</dt><dd>logical: used internally to issue warnings as 
-to accuracy</dd>
-<dt><code>support</code>:</dt><dd>Object of class <code>"numeric"</code>: a (sorted) vector 
+<dt><code>support</code></dt><dd>Object of class <code>"numeric"</code>: a (sorted) vector 
 containing the support of the discrete
 density function</dd>
-<dt><code>lattice</code>:</dt><dd>Object of class <code>"Lattice"</code>: the lattice 
+<dt><code>lattice</code></dt><dd>Object of class <code>"Lattice"</code>: the lattice 
 generating the support.</dd>
-<dt><code>.withArith</code>:</dt><dd>logical: used internally to issue warnings as to interpretation of arithmetics</dd>
-<dt><code>.withSim</code>:</dt><dd>logical: used internally to issue warnings as to accuracy</dd>
-<dt><code>.logExact</code>:</dt><dd>logical: used internally to flag the case where there are explicit formulae for the
-log version of density, cdf, and quantile function</dd>
-<dt><code>.lowerExact</code>:</dt><dd>logical: used internally to flag the case where there are explicit formulae for the
-lower tail version of cdf and quantile function</dd>
+<dt><code>.withArith</code></dt><dd>logical: used internally to issue warnings as to 
+interpretation of arithmetics</dd>
+<dt><code>.withSim</code></dt><dd>logical: used internally to issue warnings as to 
+accuracy</dd>
+<dt><code>.logExact</code></dt><dd>logical: used internally to flag the case where 
+there are explicit formulae for the log version of density, cdf, and 
+quantile function</dd>
+<dt><code>.lowerExact</code></dt><dd>logical: used internally to flag the case where 
+there are explicit formulae for the lower tail version of cdf and quantile 
+function</dd>
+<dt><code>Symmetry</code></dt><dd>object of class <code>"DistributionSymmetry"</code>;
+used internally to avoid unnecessary calculations.</dd>
 </dl>
+
+</p>
+
 
 <h3>Extends</h3>
 
@@ -90,27 +95,29 @@ Class <code>"Distribution"</code>, by class <code>"UnivariateDistribution"</code
 
 <h3>Methods</h3>
 
+<p>
+
 <dl>
 <dt><code>initialize</code></dt><dd><code>signature(.Object = "LatticeDistribution")</code>: 
 initialize method </dd>
 <dt>-</dt><dd><code>signature(e1 = "LatticeDistribution")</code>: 
-application of `-' to this lattice distribution</dd>
+application of &lsquo;-&rsquo; to this lattice distribution</dd>
 <dt>*</dt><dd><code>signature(e1 = "LatticeDistribution", e2 = "numeric")</code>: 
 multiplication of this lattice distribution
-by an object of class `numeric'</dd>
+by an object of class &lsquo;numeric&rsquo;</dd>
 <dt>/</dt><dd><code>signature(e1 = "LatticeDistribution", e2 = "numeric")</code>: 
-division of this lattice distribution by an object of class `numeric'</dd>
+division of this lattice distribution by an object of class &lsquo;numeric&rsquo;</dd>
 <dt>+</dt><dd><code>signature(e1 = "LatticeDistribution", e2 = "numeric")</code>: 
-addition of this lattice distribution to an object of class `numeric'</dd>
+addition of this lattice distribution to an object of class &lsquo;numeric&rsquo;</dd>
 <dt>-</dt><dd><code>signature(e1 = "LatticeDistribution", e2 = "numeric")</code>: 
-subtraction of an object of class `numeric' from this lattice 
+subtraction of an object of class &lsquo;numeric&rsquo; from this lattice 
 distribution </dd>
 <dt>*</dt><dd><code>signature(e1 = "numeric", e2 = "LatticeDistribution")</code>: 
-multiplication of this lattice distribution by an object of class `numeric'</dd>
+multiplication of this lattice distribution by an object of class &lsquo;numeric&rsquo;</dd>
 <dt>+</dt><dd><code>signature(e1 = "numeric", e2 = "LatticeDistribution")</code>: 
-addition of this lattice distribution to an object of class `numeric'</dd>
+addition of this lattice distribution to an object of class &lsquo;numeric&rsquo;</dd>
 <dt>-</dt><dd><code>signature(e1 = "numeric", e2 = "LatticeDistribution")</code>: 
-subtraction of this lattice distribution from an object of class `numeric'</dd>
+subtraction of this lattice distribution from an object of class &lsquo;numeric&rsquo;</dd>
 <dt>+</dt><dd><code>signature(e1 = "LatticeDistribution", 
     e2 = "LatticeDistribution")</code>: Convolution of two lattice distributions. 
 Slots p, d and q are approximated by grids.</dd>
@@ -126,6 +133,9 @@ image distribution of <code>sqrt(x)</code>.</dd>
 thereby cancelling out support points with probability 0.</dd>
 </dl>
 
+</p>
+
+
 <h3>Internal subclass "AffLinLatticeDistribution"</h3>
 
 <p>
@@ -136,7 +146,8 @@ mainly from package <span class="pkg">distrEx</span>, there is an internally use
 (of class <code>"LatticeDistribution"</code>), to capture the fact 
 that the object has the same distribution as <code>a * X0 + b</code>. This is 
 the class of the return value of methods 
-<ul>
+
+<dl>
 <dt>-</dt><dd><code>signature(e1 = "LatticeDistribution")</code></dd>
 <dt>*</dt><dd><code>signature(e1 = "LatticeDistribution", e2 = "numeric")</code></dd>
 <dt>/</dt><dd><code>signature(e1 = "LatticeDistribution", e2 = "numeric")</code></dd>
@@ -153,8 +164,8 @@ the class of the return value of methods
 <dt>*</dt><dd><code>signature(e1 = "numeric", e2 = "AffLinLatticeDistribution")</code></dd>
 <dt>+</dt><dd><code>signature(e1 = "numeric", e2 = "AffLinLatticeDistribution")</code></dd>
 <dt>-</dt><dd><code>signature(e1 = "numeric", e2 = "AffLinLatticeDistribution")</code></dd>
-</ul>
-<p>
+</dl>
+
 There is also an explicit <code>coerce</code>-method from class
 <code>"AffLinLatticeDistribution"</code> to class <code>"AffLinDiscreteDistribution"</code>
 which cancels out support points with probability 0.
@@ -163,36 +174,32 @@ which cancels out support points with probability 0.
 
 <h3>Note</h3>
 
-<p>
-Working with a computer, we use a finite interval as support which 
-carries at least mass <code>1-getdistrOption("TruncQuantile")</code>.
-</p>
+<p> Working with a computer, we use a finite interval as support which 
+carries at least mass <code>1-getdistrOption("TruncQuantile")</code>. </p>
 
 
 <h3>Author(s)</h3>
 
-<p>
-Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
-</p>
+<p>Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a></p>
 
 
 <h3>See Also</h3>
 
 <p>
-<code><a href="LatticeDistribution.html">LatticeDistribution</a></code>
-<code><a href="Parameter-class.html">Parameter-class</a></code>
-<code><a href="Lattice-class.html">Lattice-class</a></code>
-<code><a href="UnivariateDistribution-class.html">UnivariateDistribution-class</a></code>
-<code><a href="DiscreteDistribution-class.html">DiscreteDistribution-class</a></code>
-<code><a href="Binom-class.html">Binom-class</a></code>
-<code><a href="Dirac-class.html">Dirac-class</a></code>
-<code><a href="Geom-class.html">Geom-class</a></code>
-<code><a href="Hyper-class.html">Hyper-class</a></code>
-<code><a href="Nbinom-class.html">Nbinom-class</a></code>
-<code><a href="Pois-class.html">Pois-class</a></code>
-<code><a href="ContDistribution-class.html">AbscontDistribution-class</a></code>
-<code><a href="Reals-class.html">Reals-class</a></code>
-<code><a href="RtoDPQ.d.html">RtoDPQ.d</a></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
 </p>
 
 
@@ -212,8 +219,15 @@ p(D4)(1) # The (approximated) probability that x&lt;=1 is 0.1282716.
 q(D4)(.5) # The (approximated) 50 percent quantile is 3.
 </pre>
 
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
 
-
-<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index]</a></div>
-
+<hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 </body></html>

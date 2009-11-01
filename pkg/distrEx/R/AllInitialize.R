@@ -45,7 +45,7 @@ setMethod("initialize", "Gumbel",
 
 ## Class: Pareto distribution
 setMethod("initialize", "Pareto",
-          function(.Object, shape = 1, Min = 1) {
+          function(.Object, shape = 1, Min = 1, .withArith = FALSE) {
             .Object@img <- new("Reals")
             .Object@param <- new("ParetoParameter", shape = shape, Min =  Min)
             .Object@r <- function(n){}
@@ -87,6 +87,74 @@ setMethod("initialize", "Pareto",
                         
                         return(q1)  
                      },  list(shapeSub = shape,  MinSub =  Min))
+            .Object@.withArith <- .withArith
+            .Object@.logExact <- TRUE
+            .Object@.lowerExact <- TRUE
+            .Object
+          })
+
+## Class: Generalized Pareto distribution
+setMethod("initialize", "GPareto",
+          function(.Object, loc = 0, scale = 1, shape = 1) {
+            .Object@img <- new("Reals")
+            .Object@param <- new("GParetoParameter", loc = loc, scale = scale, shape = shape)
+            .Object@r <- function(n){}
+            .Object@d <- function(x, log = FALSE){}
+            .Object@p <- function(q, lower.tail = TRUE, log.p = FALSE){} 
+            .Object@q <- function(p, lower.tail = TRUE, log.p = FALSE){} 
+            body(.Object@r) <- substitute(
+                           { rgpd(n, loc = locSub, scale = scaleSub,  shape = shapeSub) },
+                             list(locSub = loc, scaleSub = scale, shapeSub = shape)
+                                       )
+            body(.Object@d) <- substitute(
+                           { dgpd(x, loc = locSub, scale = scaleSub, shape = shapeSub, 
+                                    log = log) },
+                             list(locSub = loc, scaleSub = scale, shapeSub = shape)
+                                         )
+            body(.Object@p) <- substitute(
+                           { if(!lower.tail && log.p){
+                             q0 <- (q-locSub)/scaleSub
+                             return(-log(1+shapeSub*q0)/shapeSub)
+                             }else{
+                             p0 <- pgpd(q, loc = locSub, scale = scaleSub, 
+                                        shape = shapeSub)
+                             if(!lower.tail ) p0 <- 1-p0
+                             if(log.p) p0 <- log(p0)
+                             return(p0)}
+                           }, list(locSub = loc, scaleSub = scale, 
+                                   shapeSub = shape)
+                                         )
+            body(.Object@q) <- substitute({
+                        if(!lower.tail && log.p){
+                             p1 <- p
+                             p1[p<.Machine$double.eps] <- 0.5
+                             q0 <- (exp(-shapeSub*p1)-1)/shapeSub*scaleSub + locSub
+                             q0[p<.Machine$double.eps] <- NaN
+                             return(q0)
+                        }else{
+                             
+                        ## P.R.: changed to vectorized form 
+                           p1 <- if(log.p) exp(p) else p
+                                                                        
+                           in01 <- (p1>1 | p1<0)
+                           i01 <- .isEqual01(p1) 
+                           i0 <- (i01 & p1<1)   
+                           i1 <- (i01 & p1>0)
+                           ii01 <- .isEqual01(p1) | in01
+                                      
+                           p0 <- p
+                           p0[ii01] <- if(log.p) log(0.5) else 0.5
+                           if(!lower.tail) p0 <- 1-p0
+                                      
+                           q1 <- qgpd(p0, loc = locSub, scale = scaleSub, 
+                                      shape = shapeSub) 
+                           q1[i0] <- if(lower.tail)  locSub else Inf
+                           q1[i1] <- if(!lower.tail) locSub else Inf
+                           q1[in01] <- NaN
+                        
+                           return(q1) 
+                         }   
+                     },  list(locSub = loc, scaleSub = scale, shapeSub = shape))
 
             .Object@.withSim   <- FALSE
             .Object@.withArith <- FALSE

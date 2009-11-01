@@ -10,7 +10,7 @@
 }
 \usage{
 MLEstimator(x, ParamFamily, startPar = NULL, 
-            Infos, trafo = NULL, penalty = 0, na.rm = TRUE, ...)
+            Infos, trafo = NULL, penalty = 1e20, na.rm = TRUE, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

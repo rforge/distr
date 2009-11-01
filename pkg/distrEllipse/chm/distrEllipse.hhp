@@ -12,22 +12,4 @@ Title=R Help for package distrEllipse
 
 [FILES]
 00Index.html
-0distrEllipse-package.html
-EllipticalDistribution-class.html
-EllipticalDistribution.html
-EllipticalParameter-class.html
-MultivarDistrList-class.html
-MultivarDistrList.html
-MultivarMixingDistribution-class.html
-MultivarMixingDistribution.html
-MvnormDistribution-class.html
-MvnormDistribution.html
-MvnormParameter-class.html
-MvtDistribution-class.html
-MvtDistribution.html
-MvtParameter-class.html
-SphericalDistribution-class.html
-SphericalDistribution.html
-distrEllipseMASK.html
-distrEllipseoptions.html
-plot-methods.html
+

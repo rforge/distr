@@ -1,5 +1,4 @@
 import("methods")
-importFrom("stats", "simulate")
 importFrom("setRNG", "setRNG")
 import("mvtnorm")
 import("distr")

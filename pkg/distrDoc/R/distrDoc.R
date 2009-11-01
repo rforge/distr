@@ -1,4 +1,8 @@
-.First.lib <- function(libname, pkgname)
+.onLoad <- function(lib, pkg) { # extended 03-28-06: P.R.
+    require("methods", character = TRUE, quietly = TRUE)
+}
+
+.onAttach <- function(libname, pkgname)
 {                                                                    
     if (.Platform$OS.type == "windows" && require("Biobase")
         && interactive() && .Platform$GUI == "Rgui") 

@@ -15,11 +15,11 @@ Objects can be created by calls of the form \code{new("GumbelParameter", ...)}.
 }
 \section{Slots}{
   \describe{
-    \item{\code{loc}:}{ real number: location parameter of 
+    \item{\code{loc}}{ real number: location parameter of 
       a Gumbel distribution. }
-    \item{\code{scale}:}{ positive real number: scale
+    \item{\code{scale}}{ positive real number: scale
       parameter of a Gumbel distribution. }
-    \item{\code{name}:}{ default name is 
+    \item{\code{name}}{ default name is 
       \dQuote{parameter of a Gumbel distribution}. }
   }
 }

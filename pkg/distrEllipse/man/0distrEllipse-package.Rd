@@ -11,13 +11,13 @@ contoured distributions (based on package distr).
 }
 \details{
 \tabular{ll}{
-Package: \tab distrEllipse\cr
-Version: \tab 0.1\cr
-Date: \tab 2009-06-29\cr
+Package: \tab distrEllipse \cr
+Version: \tab 2.2 \cr
+Date: \tab 2009-09-04 \cr
 Depends: \tab R(>= 2.8.0), methods, graphics, mvtnorm, setRNG(>= 2006.2-1),
               distr(>= 2.2), distrEx(>= 2.2), distrSim(>= 2.2), startupmsg\cr
-LazyLoad: \tab yes\cr
-License: \tab LGPL-3\cr
+LazyLoad: \tab yes \cr
+License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
 }
 }
@@ -78,7 +78,8 @@ For any other value of option \code{"StartupBanner"} (i.e., not in \code{c(NULL,
 only the version information is displayed.
 
 The same can be achieved by wrapping the \code{library} or \code{require}  call into
-either \code{\link[startupmsg]{suppressStartupMessages}()} or \code{\link[startupmsg]{onlytypeStartupMessages}(.,atypes="version")}. 
+either \code{\link[startupmsg:StartupUtilities]{suppressStartupMessages}()} or 
+\code{\link[startupmsg:StartupUtilities]{onlytypeStartupMessages}(.,atypes="version")}. 
 }
 
 
@@ -87,6 +88,12 @@ objects may be inspected / set by \code{\link{distrEllipseoptions}()}
 and \code{\link{getdistrEllipseOption}()}.
 }
 
+\section{Package versions}{
+Note: The first two numbers of package versions do not necessarily reflect
+ package-individual development, but rather are chosen for the
+ distrXXX family as a whole in order to ease updating "depends"
+ information.
+}
 
 \references{
 P. Ruckdeschel, M. Kohl, T. Stabla, F. Camphausen (2006):
@@ -120,6 +127,7 @@ As for general \code{packageStartupMessage}'s, you may also suppress all
  call into \code{suppressPackageStartupMessages()} from 
  \pkg{startupmsg}-version 0.5 on.
  }
+
 
 \keyword{ package }
 \concept{elliptically symmetric distribution}

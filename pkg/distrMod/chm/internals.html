@@ -1,10 +1,10 @@
 <html><head><title>Internal functions of package distrMod</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>internals_for_distrMod(distrMod)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>internals_for_distrMod(distrMod)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   internals_for_distrMod">
 <param name="keyword" value="R:   .inArgs">
 <param name="keyword" value="R:   .isUnitMatrix">
@@ -12,6 +12,7 @@
 <param name="keyword" value="R:   .CvMMDCovariance">
 <param name="keyword" value="R:   .show.with.sd">
 <param name="keyword" value="R:   .getLogDeriv">
+<param name="keyword" value="R:   .deleteDim">
 <param name="keyword" value=" Internal functions of package distrMod">
 </object>
 
@@ -22,8 +23,7 @@
 <h3>Description</h3>
 
 <p>
-These functions are used internally by package ``distrMod''.
-</p>
+These functions are used internally by package &ldquo;distrMod&rdquo;.</p>
 
 
 <h3>Usage</h3>
@@ -32,7 +32,7 @@ These functions are used internally by package ``distrMod''.
 .inArgs(arg, fct)
 .isUnitMatrix(m)
 .csimpsum(fx)
-.validTrafo(trafo, dimension)
+.validTrafo(trafo, dimension, dimensionwithN)
 .CvMMDCovariance(L2Fam, param, mu = distribution(L2Fam),  
                  withplot = FALSE, withpreIC = FALSE,
                  N = getdistrOption("DefaultNrGridPoints")+1,
@@ -44,6 +44,7 @@ These functions are used internally by package ``distrMod''.
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
                          IQR.fac = getdistrExOption("IQR.fac"))
+.deleteDim(x)
 </pre>
 
 
@@ -58,19 +59,22 @@ a formal argument as character</td></tr>
 a function</td></tr>
 <tr valign="top"><td><code>m</code></td>
 <td>
-a matrix</td></tr>
+a matrix</td></tr> 
 <tr valign="top"><td><code>est</code></td>
 <td>
 an estimator; usually a vector</td></tr>
 <tr valign="top"><td><code>s</code></td>
 <td>
-a standard deviation</td></tr>
+a standard deviation</td></tr> 
 <tr valign="top"><td><code>trafo</code></td>
 <td>
 an object of class <code>MatrixorFunction</code></td></tr>
 <tr valign="top"><td><code>dimension</code></td>
 <td>
-a numeric</td></tr>
+a numeric &mdash; length of main part of the parameter</td></tr>
+<tr valign="top"><td><code>dimensionwithN</code></td>
+<td>
+a numeric &mdash; length of main and nuisance part of the parameter</td></tr>
 <tr valign="top"><td><code>L2Fam</code></td>
 <td>
 an object of class <code>L2ParamFamily</code> &mdash; for
@@ -87,7 +91,7 @@ an object of class <code>UnivariateDistribution</code>: integration
 measure (resp. distribution) for CvM distance</td></tr>
 <tr valign="top"><td><code>rel.tol</code></td>
 <td>
-relative tolerance for <code>distrExIntegrate</code>.</td></tr>
+relative tolerance for <code>distrExIntegrate</code>.</td></tr> 
 <tr valign="top"><td><code>TruncQuantile</code></td>
 <td>
 quantile for quantile based integration range.</td></tr>
@@ -114,7 +118,7 @@ package <span class="pkg">RobAStBase</span></td></tr>
 <tr valign="top"><td><code>N</code></td>
 <td>
 a numeric: the number of gridpoints for constructing the 
-<i>mu</i>- resp. <i>P_theta</i>-``primitive''
+<i>mu</i>- resp. <i>P_theta</i>-&ldquo;primitive&rdquo;
 function</td></tr>
 <tr valign="top"><td><code>fx</code></td>
 <td>
@@ -126,7 +130,11 @@ an object of class <code>AbscontDistribution</code></td></tr>
 <td>
 further argument to be passed through &mdash; so 
 <code>.CvMMDCovariance</code> can digest more arguments</td></tr>
+<tr valign="top"><td><code>x</code></td>
+<td>
+a possibly named vector, which may have a <code>dim</code> attribute</td></tr>
 </table>
+
 
 <h3>Details</h3>
 
@@ -161,13 +169,18 @@ sd's below.
 <p>
 <code>.getLogDeriv</code> determines numerically the negative logarithmic derivative of the 
 density of distribution <code>distr</code>; to this end uses <code>D1ss</code>, 
-<code>D2ss</code> from Martin Maechler's package <span class="pkg">sfsmisc</span>.
+<code>D2ss</code> from Martin Maechler's package <span class="pkg">sfsmisc</span>. 
+</p>
+<p>
+<code>.deleteDim</code> deletes a possible <code>dim</code> argument (sets it to <code>NULL</code>)
+but retains all other possible attributes, in particular a <code>name</code> attribute.
 </p>
 
 
 <h3>Value</h3>
 
-<table summary="R argblock">
+<p>
+<table summary="R valueblock">
 <tr valign="top"><td><code>.getLogderiv</code></td>
 <td>
 a function in one argument <code>x</code> &mdash; the negative logarithmic
@@ -192,7 +205,12 @@ the corresponding Minimum CvM estimator or list withcomponents
 <tr valign="top"><td><code>.show.with.sd</code></td>
 <td>
 <code>invisible()</code></td></tr>
+<tr valign="top"><td><code>.deleteDim</code></td>
+<td>
+vector <code>x</code> without <code>dim</code> attribute</td></tr>
 </table>
+</p>
+
 
 <h3>Author(s)</h3>
 
@@ -205,15 +223,22 @@ Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de
 <h3>See Also</h3>
 
 <p>
-<code><a href="MLEstimator.html">MLEstimator</a></code>,
-<code><a href="Estimate-class.html">Estimate-class</a></code>,
-<code><a href="MCEstimate-class.html">MCEstimate-class</a></code>,
-<code><a href="Confint-class.html">Confint-class</a></code>,
-<code><a href="ParamFamParameter-class.html">ParamFamParameter-class</a></code>
+<code></code>,
+<code></code>,
+<code></code>,
+<code></code>,
+<code></code>
 </p>
 
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
 
-
-<hr><div align="center">[Package <em>distrMod</em> version 2.1 <a href="00Index.html">Index</a>]</div>
-
+<hr><div align="center">[Package <em>distrMod</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 </body></html>

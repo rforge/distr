@@ -15,7 +15,7 @@
 }
 
 # Generating function
-DiscreteMVDistribution <- function(supp, prob){
+DiscreteMVDistribution <- function(supp, prob, Symmetry = NoSymmetry()){
     if(!is.numeric(supp)) 
         stop("'supp' has to be numeric")
     if(!is.matrix(supp)){
@@ -90,6 +90,7 @@ DiscreteMVDistribution <- function(supp, prob){
     MVD@.withArith <- FALSE
     MVD@.logExact <- TRUE 
     MVD@.lowerExact <- FALSE
+    MVD@Symmetry <- Symmetry
     
     return(MVD)
 }

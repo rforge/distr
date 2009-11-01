@@ -13,12 +13,13 @@ packages \pkg{distr}, \pkg{distrEx}, \pkg{distrSim}, \pkg{distrTEst},
 }
 \details{
 \tabular{ll}{
-Package: \tab distrDoc\cr
-Version: \tab 2.1 \cr
-Date: \tab 2008-03-19 \cr
-Depends: \tab R(>= 2.6.0), tools, distr(>= 2.0.0), startupmsg\cr
-LazyLoad: \tab yes\cr
-License: \tab LGPL-3\cr
+Package: \tab distrDoc \cr
+Version: \tab 2.2 \cr
+Date: \tab 2009-09-04 \cr
+Depends: \tab R(>= 2.6.0), tools, distr(>= 2.2.0), startupmsg, distrEx(>= 2.2.0), distrSim(>= 2.2.0), distrTEst(>= 2.2.0), distrTeach(>=
+2.2.0), RandVar(>= 0.7), distrMod(>= 2.2.0), MASS, methods \cr
+LazyLoad: \tab yes \cr
+License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
 }}
 
@@ -66,6 +67,12 @@ As for general \code{packageStartupMessage}'s, you may also suppress all
  \pkg{startupmsg}-version 0.5 on.
   }
 
+\section{Package versions}{
+Note: The first two numbers of package versions do not necessarily reflect
+ package-individual development, but rather are chosen for the
+ distrXXX family as a whole in order to ease updating "depends"
+ information.
+}
 \keyword{package}
 \keyword{utilities}
 \keyword{documentation}

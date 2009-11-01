@@ -1,10 +1,10 @@
 <html><head><title>distrEx &ndash; Extensions of package distr</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>distrEx-package(distrEx)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>distrEx-package(distrEx)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   distrEx-package">
 <param name="keyword" value="R:   distrEx">
 <param name="keyword" value=" distrEx &ndash; Extensions of package distr">
@@ -18,48 +18,77 @@
 
 <p>
 <span class="pkg">distrEx</span> proides some extensions of package <span class="pkg">distr</span>:
-<ul><li>extreme value distribution classes,
+<ul>
+<li>  extreme value distribution classes,
+</li>
 <li>expectations in the form 
-<ul><li><code>E(X)</code> for the expectation of a 
+<ul>
+<li> <code>E(X)</code> for the expectation of a 
 distribution object <code>X</code> 
+</li>
 <li><code>E(X,f)</code> for the expectation of <code>f(X)</code> 
 where <code>X</code> is some distribution object and 
 <code>f</code> some function in <code>X</code> </ul>
+
+</li>
 <li>further functionals: var, sd, IQR, mad, median, skewness, kurtosis
+</li>
 <li>truncated moments,
+</li>
 <li>distances between distributions
 (Hellinger, Cramer von Mises, Kolmogorov, total variation, "convex contamination")
+</li>
 <li>lists of distributions,
+</li>
 <li>conditional distributions in factorized form 
+</li>
 <li>conditional expectations in factorized form
 </ul>
+</p>
+
 
 <h3>Details</h3>
 
 <p>
+
+</p>
 <table summary="Rd table">
 <tr>
-  <td align="left">Package: </td>  <td align="left"> distrEx</td>
+ <td align="left">
+Package: </td><td align="left"> distrEx </td>
 </tr>
 <tr>
-  <td align="left"> Version: </td>  <td align="left"> 2.1 </td>
+ <td align="left">
+Version: </td><td align="left"> 2.2 </td>
 </tr>
 <tr>
-  <td align="left"> Date: </td>  <td align="left"> 2008-11-27 </td>
+ <td align="left">
+Date: </td><td align="left"> 2009-09-04 </td>
 </tr>
 <tr>
-  <td align="left"> Depends: </td>  <td align="left"> R(&gt;= 2.6.0), methods, distr(&gt;= 2.0), evd, startupmsg</td>
+ <td align="left">
+Depends: </td><td align="left"> R(&gt;= 2.6.0), methods, distr(&gt;= 2.2), evd, actuar, startupmsg </td>
 </tr>
 <tr>
-  <td align="left"> LazyLoad: </td>  <td align="left"> yes</td>
+ <td align="left">
+LazyLoad: </td><td align="left"> yes </td>
 </tr>
 <tr>
-  <td align="left"> License: </td>  <td align="left"> LGPL-3</td>
+ <td align="left">
+License: </td><td align="left"> LGPL-3 </td>
 </tr>
 <tr>
-  <td align="left"> URL: </td>  <td align="left"> http://distr.r-forge.r-project.org/</td>
+ <td align="left">
+URL: </td><td align="left"> http://distr.r-forge.r-project.org/</td>
 </tr>
-</table>
+<tr>
+ <td align="left">
+</td>
+</tr>
+
+</table><p>
+
+</p>
 
 
 <h3>Classes</h3>
@@ -74,6 +103,7 @@ Distribution Classes
 |&gt;|&gt;"AbscontDistribution" (from distr)
 |&gt;|&gt;|&gt;"Gumbel"
 |&gt;|&gt;|&gt;"Pareto"
+|&gt;|&gt;|&gt;"GPareto"
 |&gt;"MultivariateDistribution"
 |&gt;|&gt;"DiscreteMVDistribution-class"
 |&gt;"UnivariateCondDistribution"
@@ -102,6 +132,8 @@ Parameter Classes
 <h3>Functions</h3>
 
 <p>
+</p>
+<p>
 <pre>
 
 Integration:
@@ -115,8 +147,7 @@ Standardization:
 make01                  Centering and standardization of univariate
                         distributions
 
-</pre>
-</p>
+</pre></p>
 
 
 <h3>Generating Functions</h3>
@@ -140,8 +171,7 @@ EuclCondition           Generating function for EuclCondition-class
 Parameter Classes
 LMParameter             Generating function for LMParameter-class
 
-</pre>
-</p>
+</pre></p>
 
 
 <h3>Methods</h3>
@@ -202,8 +232,7 @@ m2df                    Generic function for the computation of clipped
 <h3>Demos</h3>
 
 <p>
-Demos are available &mdash; see <code>demo(package="distrEx")</code>.
-</p>
+Demos are available &mdash; see <code>demo(package="distrEx")</code>.</p>
 
 
 <h3>Acknowledgement</h3>
@@ -212,7 +241,7 @@ Demos are available &mdash; see <code>demo(package="distrEx")</code>.
 G. Jay Kerns, <a href="mailto:gkerns@ysu.edu">gkerns@ysu.edu</a>, has provided a major contribution,
 in particular the functionals <code>skewness</code> and <code>kurtosis</code> are due to him.
 Natalyia Horbenko, <a href="mailto:natalyia.horbenko@itwm.fraunhofer.de">natalyia.horbenko@itwm.fraunhofer.de</a> has ported
-the <span class="pkg">actuar</span> code for the Pareto distribution to this setup.
+the <span class="pkg">actuar</span> code for the Pareto distribution to this setup. 
 </p>
 
 
@@ -243,6 +272,16 @@ As for general <code>packageStartupMessage</code>'s, you may also suppress all
 the start-up banner by wrapping the <code>library</code> or <code>require</code> 
 call into <code>suppressPackageStartupMessages()</code> from 
 <span class="pkg">startupmsg</span>-version 0.5 on.
+</p>
+
+
+<h3>Package versions</h3>
+
+<p>
+Note: The first two numbers of package versions do not necessarily reflect
+package-individual development, but rather are chosen for the
+distrXXX family as a whole in order to ease updating "depends"
+information.
 </p>
 
 
@@ -281,6 +320,10 @@ S4 Classes for Distributions, <EM>R News</EM>, <EM>6</EM>(2), 2-6.
 <a href="http://CRAN.R-project.org/doc/Rnews/Rnews_2006-2.pdf">http://CRAN.R-project.org/doc/Rnews/Rnews_2006-2.pdf</a>
 </p>
 <p>
+
+
+</p>
+<p>
 a vignette for packages <span class="pkg">distr</span>, <span class="pkg">distrSim</span>, <span class="pkg">distrTEst</span>, 
 and <span class="pkg">distrEx</span> is included into the mere documentation package <span class="pkg">distrDoc</span> 
 and may be called by <code>require("distrDoc");vignette("distr")</code>
@@ -299,7 +342,7 @@ Theory of Robustness.</EM> PhD Thesis. Bayreuth. Available as
 <h3>See Also</h3>
 
 <p>
-<code><a onclick="findlink('distr', 'distr.html')" style="text-decoration: underline; color: blue; cursor: hand">distr</a></code>
+<code><a onclick="findlink('distr', 'distr.html')" style="text-decoration: underline; color: blue; cursor: hand">distr</a></code> 
 </p>
 
 <script Language="JScript">
@@ -312,7 +355,5 @@ location.href = link;
 }
 </script>
 
-
-<hr><div align="center">[Package <em>distrEx</em> version 2.1 <a href="00Index.html">Index</a>]</div>
-
+<hr><div align="center">[Package <em>distrEx</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 </body></html>

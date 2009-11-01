@@ -1,0 +1,1927 @@
+
+R version 2.10.0 beta (2009-10-15 r50107)
+Copyright (C) 2009 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> ### * <HEADER>
+> ###
+> attach(NULL, name = "CheckExEnv")
+> assign("nameEx",
++        local({
++ 	   s <- "__{must remake R-ex/*.R}__"
++            function(new) {
++                if(!missing(new)) s <<- new else s
++            }
++        }),
++        pos = "CheckExEnv")
+> ## Add some hooks to label plot pages for base and grid graphics
+> assign("base_plot_hook",
++        function() {
++            pp <- par(c("mfg","mfcol","oma","mar"))
++            if(all(pp$mfg[1:2] == c(1, pp$mfcol[2]))) {
++                outer <- (oma4 <- pp$oma[4]) > 0; mar4 <- pp$mar[4]
++                mtext(sprintf("help(\"%s\")", nameEx()), side = 4,
++                      line = if(outer)max(1, oma4 - 1) else min(1, mar4 - 1),
++                outer = outer, adj = 1, cex = .8, col = "orchid", las=3)
++            }
++        },
++        pos = "CheckExEnv")
+> assign("grid_plot_hook",
++        function() {
++            grid::pushViewport(grid::viewport(width=grid::unit(1, "npc") -
++                               grid::unit(1, "lines"), x=0, just="left"))
++            grid::grid.text(sprintf("help(\"%s\")", nameEx()),
++                            x=grid::unit(1, "npc") + grid::unit(0.5, "lines"),
++                            y=grid::unit(0.8, "npc"), rot=90,
++                            gp=grid::gpar(col="orchid"))
++        },
++        pos = "CheckExEnv")
+> setHook("plot.new",     get("base_plot_hook", pos = "CheckExEnv"))
+> setHook("persp",        get("base_plot_hook", pos = "CheckExEnv"))
+> setHook("grid.newpage", get("grid_plot_hook", pos = "CheckExEnv"))
+> assign("cleanEx",
++        function(env = .GlobalEnv) {
++ 	   rm(list = ls(envir = env, all.names = TRUE), envir = env)
++            RNGkind("default", "default")
++ 	   set.seed(1)
++    	   options(warn = 1)
++ 	   .CheckExEnv <- as.environment("CheckExEnv")
++ 	   delayedAssign("T", stop("T used instead of TRUE"),
++ 		  assign.env = .CheckExEnv)
++ 	   delayedAssign("F", stop("F used instead of FALSE"),
++ 		  assign.env = .CheckExEnv)
++ 	   sch <- search()
++ 	   newitems <- sch[! sch %in% .oldSearch]
++ 	   for(item in rev(newitems))
++                eval(substitute(detach(item), list(item=item)))
++ 	   missitems <- .oldSearch[! .oldSearch %in% sch]
++ 	   if(length(missitems))
++ 	       warning("items ", paste(missitems, collapse=", "),
++ 		       " have been removed from the search path")
++        },
++        pos = "CheckExEnv")
+> assign("ptime", proc.time(), pos = "CheckExEnv")
+> ## at least one package changes these via ps.options(), so do this
+> ## before loading the package.
+> ## Use postscript as incomplete files may be viewable, unlike PDF.
+> ## Choose a size that is close to on-screen devices, fix paper
+> grDevices::ps.options(width = 7, height = 7, paper = "a4", reset = TRUE)
+> grDevices::postscript("distrEx-Ex.ps")
+> 
+> assign("par.postscript", graphics::par(no.readonly = TRUE), pos = "CheckExEnv")
+> options(contrasts = c(unordered = "contr.treatment", ordered = "contr.poly"))
+> options(warn = 1)
+> library('distrEx')
+Loading required package: distr
+Loading required package: startupmsg
+:startupmsg>  Utilities for start-up messages (version 0.7)
+:startupmsg> 
+:startupmsg>  For more information see ?"startupmsg",
+:startupmsg>  NEWS("startupmsg")
+
+Loading required package: sfsmisc
+Loading required package: SweaveListingUtils
+:SweaveListingUtils>  Utilities for Sweave together with
+:SweaveListingUtils>  TeX listings package (version 0.4)
+:SweaveListingUtils> 
+:SweaveListingUtils>  Some functions from package 'base'
+:SweaveListingUtils>  are intentionally masked ---see
+:SweaveListingUtils>  SweaveListingMASK().
+:SweaveListingUtils> 
+:SweaveListingUtils>  Note that global options are
+:SweaveListingUtils>  controlled by
+:SweaveListingUtils>  SweaveListingoptions() ---c.f.
+:SweaveListingUtils>  ?"SweaveListingoptions".
+:SweaveListingUtils> 
+:SweaveListingUtils>  For more information see
+:SweaveListingUtils>  ?"SweaveListingUtils",
+:SweaveListingUtils>  NEWS("SweaveListingUtils")
+:SweaveListingUtils>  There is a vignette to this
+:SweaveListingUtils>  package; try
+:SweaveListingUtils>  vignette("ExampleSweaveListingUtils").
+
+
+Attaching package: 'SweaveListingUtils'
+
+
+	The following object(s) are masked from package:base :
+
+	 library,
+	 require 
+
+:distr>  Object orientated implementation of distributions (version
+:distr>  2.2)
+:distr> 
+:distr>  Attention: Arithmetics on distribution objects are
+:distr>  understood as operations on corresponding random variables
+:distr>  (r.v.s); see distrARITH().
+:distr> 
+:distr>  Some functions from package 'stats' are intentionally masked
+:distr>  ---see distrMASK().
+:distr> 
+:distr>  Note that global options are controlled by distroptions()
+:distr>  ---c.f. ?"distroptions".
+:distr> 
+:distr>  For more information see ?"distr", NEWS("distr"), as well as
+:distr>    http://distr.r-forge.r-project.org/
+:distr>  Package "distrDoc" provides a vignette to this package as
+:distr>  well as to several extension packages; try
+:distr>  vignette("distr").
+
+
+Attaching package: 'distr'
+
+
+	The following object(s) are masked from package:stats :
+
+	 df,
+	 qqplot,
+	 sd 
+
+Loading required package: evd
+Loading required package: actuar
+
+Attaching package: 'actuar'
+
+
+	The following object(s) are masked from package:grDevices :
+
+	 cm 
+
+:distrEx>  Extensions of package distr (version 2.2)
+:distrEx> 
+:distrEx>  Note: Packages "e1071", "moments", "fBasics" should be
+:distrEx>  attached /before/ package "distrEx". See distrExMASK().
+:distrEx> 
+:distrEx>  For more information see ?"distrEx", NEWS("distrEx"), as
+:distrEx>  well as
+:distrEx>    http://distr.r-forge.r-project.org/
+:distrEx>  Package "distrDoc" provides a vignette to this package
+:distrEx>  as well as to several related packages; try
+:distrEx>  vignette("distr").
+
+
+Attaching package: 'distrEx'
+
+
+	The following object(s) are masked from package:stats :
+
+	 IQR,
+	 mad,
+	 median,
+	 var 
+
+> 
+> assign(".oldSearch", search(), pos = 'CheckExEnv')
+> assign(".oldNS", loadedNamespaces(), pos = 'CheckExEnv')
+> cleanEx(); nameEx("AbscontCondDistribution-class")
+> ### * AbscontCondDistribution-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: AbscontCondDistribution-class
+> ### Title: Absolutely continuous conditional distribution
+> ### Aliases: AbscontCondDistribution-class
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> new("AbscontCondDistribution")
+Distribution object of class: AbscontCondDistribution
+## cond:
+An object of class “Condition”
+Slot "name":
+[1] "a condition"
+
+> 
+> 
+> cleanEx(); nameEx("AsymTotalVarDist")
+> ### * AsymTotalVarDist
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: AsymTotalVarDist
+> ### Title: Generic function for the computation of asymmetric total
+> ###   variation distance of two distributions
+> ### Aliases: AsymTotalVarDist AsymTotalVarDist-methods
+> ###   AsymTotalVarDist,AbscontDistribution,AbscontDistribution-method
+> ###   AsymTotalVarDist,AbscontDistribution,DiscreteDistribution-method
+> ###   AsymTotalVarDist,DiscreteDistribution,DiscreteDistribution-method
+> ###   AsymTotalVarDist,DiscreteDistribution,AbscontDistribution-method
+> ###   AsymTotalVarDist,LatticeDistribution,DiscreteDistribution-method
+> ###   AsymTotalVarDist,DiscreteDistribution,LatticeDistribution-method
+> ###   AsymTotalVarDist,LatticeDistribution,LatticeDistribution-method
+> ###   AsymTotalVarDist,numeric,DiscreteDistribution-method
+> ###   AsymTotalVarDist,DiscreteDistribution,numeric-method
+> ###   AsymTotalVarDist,numeric,AbscontDistribution-method
+> ###   AsymTotalVarDist,AbscontDistribution,numeric-method
+> ###   AsymTotalVarDist,AcDcLcDistribution,AcDcLcDistribution-method
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> AsymTotalVarDist(Norm(), Gumbel(), rho=0.3)
+asym. total variation distance 
+                     0.2316870 
+> AsymTotalVarDist(Norm(), Td(10), rho=0.3)
+asym. total variation distance 
+                    0.03412602 
+> AsymTotalVarDist(Norm(mean = 50, sd = sqrt(25)), Binom(size = 100), rho=0.3) # mutually singular
+asym. total variation distance 
+                             1 
+> AsymTotalVarDist(Pois(10), Binom(size = 20), rho=0.3) 
+asym. total variation distance 
+                     0.3093959 
+> 
+> x <- rnorm(100)
+> AsymTotalVarDist(Norm(), x, rho=0.3)
+asym. total variation distance 
+                     0.3140162 
+> AsymTotalVarDist(x, Norm(), asis.smooth.discretize = "smooth", rho=0.3)
+asym. total variation distance 
+                     0.2658876 
+> 
+> y <- (rbinom(50, size = 20, prob = 0.5)-10)/sqrt(5)
+> AsymTotalVarDist(y, Norm(), rho=0.3)
+asym. total variation distance 
+                     0.8343428 
+> AsymTotalVarDist(y, Norm(), asis.smooth.discretize = "smooth", rho=0.3)
+asym. total variation distance 
+                     0.6326863 
+> 
+> AsymTotalVarDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5), rho=0.3)
+asym. total variation distance 
+                     0.2925150 
+> 
+> 
+> 
+> cleanEx(); nameEx("Condition-class")
+> ### * Condition-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: Condition-class
+> ### Title: Conditions
+> ### Aliases: Condition-class name,Condition-method name<-,Condition-method
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> new("Condition")
+An object of class “Condition”
+Slot "name":
+[1] "a condition"
+
+> 
+> 
+> cleanEx(); nameEx("ContaminationSize")
+> ### * ContaminationSize
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: ContaminationSize
+> ### Title: Generic Function for the Computation of the Convex Contamination
+> ###   (Pseudo-)Distance of Two Distributions
+> ### Aliases: ContaminationSize ContaminationSize-methods
+> ###   ContaminationSize,AbscontDistribution,AbscontDistribution-method
+> ###   ContaminationSize,DiscreteDistribution,DiscreteDistribution-method
+> ###   ContaminationSize,LatticeDistribution,DiscreteDistribution-method
+> ###   ContaminationSize,DiscreteDistribution,LatticeDistribution-method
+> ###   ContaminationSize,LatticeDistribution,LatticeDistribution-method
+> ###   ContaminationSize,AcDcLcDistribution,AcDcLcDistribution-method
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> ContaminationSize(Norm(), Norm(mean=0.1))
+$e1
+Distribution Object of Class: Norm
+ mean: 0
+ sd: 1
+
+$e2
+Distribution Object of Class: Norm
+ mean: 0.1
+ sd: 1
+
+$size.of.contamination
+[1] 0.3504588
+
+> ContaminationSize(Pois(), Pois(1.5))
+$e1
+Distribution Object of Class: Pois
+ lambda: 1
+
+$e2
+Distribution Object of Class: Pois
+ lambda: 1.5
+
+$size.of.contamination
+[1] 0.3934693
+
+> 
+> 
+> 
+> cleanEx(); nameEx("ConvexContamination")
+> ### * ConvexContamination
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: ConvexContamination
+> ### Title: Generic Function for Generating Convex Contaminations
+> ### Aliases: ConvexContamination ConvexContamination-methods
+> ###   ConvexContamination,UnivariateDistribution,UnivariateDistribution,numeric-method
+> ###   ConvexContamination,AbscontDistribution,AbscontDistribution,numeric-method
+> ###   ConvexContamination,AbscontDistribution,UnivariateDistribution,numeric-method
+> ###   ConvexContamination,DiscreteDistribution,DiscreteDistribution,numeric-method
+> ###   ConvexContamination,LatticeDistribution,DiscreteDistribution,numeric-method
+> ###   ConvexContamination,DiscreteDistribution,LatticeDistribution,numeric-method
+> ###   ConvexContamination,LatticeDistribution,LatticeDistribution,numeric-method
+> ###   ConvexContamination,AcDcLcDistribution,AcDcLcDistribution,numeric-method
+> ### Keywords: distribution methods
+> 
+> ### ** Examples
+> 
+> # Convex combination of two normal distributions
+> C1 <- ConvexContamination(e1 = Norm(), e2 = Norm(mean = 5), size = 0.1)
+> plot(C1)
+> 
+> 
+> 
+> cleanEx(); nameEx("CvMDist")
+> ### * CvMDist
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: CvMDist
+> ### Title: Generic function for the computation of the Cramer - von Mises
+> ###   distance of two distributions
+> ### Aliases: CvMDist CvMDist-methods
+> ###   CvMDist,UnivariateDistribution,UnivariateDistribution-method
+> ###   CvMDist,numeric,UnivariateDistribution-method
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> CvMDist(Norm(), Gumbel())
+CvM distance 
+   0.1227136 
+> CvMDist(Norm(), Gumbel(), mu = Norm())
+CvM distance 
+   0.1227136 
+> CvMDist(Norm(), Td(10))
+CvM distance 
+  0.00933072 
+> CvMDist(Norm(mean = 50, sd = sqrt(25)), Binom(size = 100))
+CvM distance 
+  0.03027538 
+> CvMDist(Pois(10), Binom(size = 20)) 
+CvM distance 
+  0.06084579 
+> CvMDist(rnorm(100),Norm())
+CvM distance 
+  0.04673208 
+> CvMDist((rbinom(50, size = 20, prob = 0.5)-10)/sqrt(5), Norm())
+CvM distance 
+  0.07266983 
+> CvMDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5))
+CvM distance 
+   0.1205683 
+> CvMDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5), mu = Pois())
+CvM distance 
+ 0.001969063 
+> 
+> 
+> 
+> cleanEx(); nameEx("DiscreteCondDistribution-class")
+> ### * DiscreteCondDistribution-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: DiscreteCondDistribution-class
+> ### Title: Discrete conditional distribution
+> ### Aliases: DiscreteCondDistribution-class
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> new("DiscreteCondDistribution")
+Distribution object of class: DiscreteCondDistribution
+## cond:
+An object of class “Condition”
+Slot "name":
+[1] "a condition"
+
+> 
+> 
+> cleanEx(); nameEx("DiscreteMVDistribution-class")
+> ### * DiscreteMVDistribution-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: DiscreteMVDistribution-class
+> ### Title: Discrete Multivariate Distributions
+> ### Aliases: DiscreteMVDistribution-class
+> ###   support,DiscreteMVDistribution-method
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> (D1 <- new("MultivariateDistribution")) # Dirac measure in (0,0)
+> r(D1)(5)
+     [,1] [,2]
+[1,]    0    0
+[2,]    0    0
+[3,]    0    0
+[4,]    0    0
+[5,]    0    0
+> 
+> (D2 <- DiscreteMVDistribution(supp = matrix(c(1:5, rep(3, 5)), ncol=2, byrow=TRUE)))
+Warning in DiscreteMVDistribution(supp = matrix(c(1:5, rep(3, 5)), ncol = 2,  :
+  collapsing to unique support values
+> support(D2)
+     [,1] [,2]
+[1,]    1    2
+[2,]    3    4
+[3,]    5    3
+[4,]    3    3
+> r(D2)(10)
+      [,1] [,2]
+ [1,]    3    3
+ [2,]    3    3
+ [3,]    5    3
+ [4,]    1    2
+ [5,]    3    3
+ [6,]    1    2
+ [7,]    1    2
+ [8,]    3    4
+ [9,]    3    4
+[10,]    3    3
+> d(D2)(support(D2))
+[1] 0.2 0.2 0.2 0.4
+> p(D2)(lower = c(1,1), upper = c(3,3))
+[1] 0.6
+> q(D2)
+NULL
+> param(D2)
+NULL
+> img(D2)
+An object of class “EuclideanSpace”
+Slot "dimension":
+[1] 2
+
+Slot "name":
+[1] "Euclidean Space"
+
+> 
+> e1 <- E(D2) # expectation
+> 
+> 
+> 
+> cleanEx(); nameEx("DiscreteMVDistribution")
+> ### * DiscreteMVDistribution
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: DiscreteMVDistribution
+> ### Title: Generating function for DiscreteMVDistribution-class
+> ### Aliases: DiscreteMVDistribution
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> # Dirac-measure at (0,0,0)
+> D1 <- DiscreteMVDistribution(supp = c(0,0,0))
+> support(D1)
+     [,1] [,2] [,3]
+[1,]    0    0    0
+> 
+> # simple discrete distribution
+> D2 <- DiscreteMVDistribution(supp = matrix(c(0,1,0,2,2,1,1,0), ncol=2), 
++                 prob = c(0.3, 0.2, 0.2, 0.3))
+> support(D2)
+     [,1] [,2]
+[1,]    0    2
+[2,]    1    1
+[3,]    0    1
+[4,]    2    0
+> r(D2)(10)
+      [,1] [,2]
+ [1,]    0    2
+ [2,]    2    0
+ [3,]    2    0
+ [4,]    1    1
+ [5,]    0    2
+ [6,]    1    1
+ [7,]    1    1
+ [8,]    0    1
+ [9,]    0    1
+[10,]    0    2
+> 
+> 
+> 
+> cleanEx(); nameEx("E")
+> ### * E
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: E
+> ### Title: Generic Function for the Computation of (Conditional)
+> ###   Expectations
+> ### Aliases: E E-methods E,UnivariateDistribution,missing,missing-method
+> ###   E,AbscontDistribution,missing,missing-method
+> ###   E,DiscreteDistribution,missing,missing-method
+> ###   E,LatticeDistribution,missing,missing-method
+> ###   E,AffLinDistribution,missing,missing-method
+> ###   E,AffLinAbscontDistribution,missing,missing-method
+> ###   E,AffLinDiscreteDistribution,missing,missing-method
+> ###   E,AffLinLatticeDistribution,missing,missing-method
+> ###   E,MultivariateDistribution,missing,missing-method
+> ###   E,DiscreteMVDistribution,missing,missing-method
+> ###   E,UnivarLebDecDistribution,missing,missing-method
+> ###   E,AffLinUnivarLebDecDistribution,missing,missing-method
+> ###   E,UnivarMixingDistribution,missing,missing-method
+> ###   E,UnivariateDistribution,function,missing-method
+> ###   E,AbscontDistribution,function,missing-method
+> ###   E,DiscreteDistribution,function,missing-method
+> ###   E,LatticeDistribution,function,missing-method
+> ###   E,MultivariateDistribution,function,missing-method
+> ###   E,DiscreteMVDistribution,function,missing-method
+> ###   E,UnivarLebDecDistribution,function,missing-method
+> ###   E,UnivarMixingDistribution,function,missing-method
+> ###   E,AcDcLcDistribution,ANY,ANY-method
+> ###   E,CompoundDistribution,missing,missing-method
+> ###   E,UnivariateCondDistribution,missing,numeric-method
+> ###   E,AbscontCondDistribution,missing,numeric-method
+> ###   E,DiscreteCondDistribution,missing,numeric-method
+> ###   E,UnivarLebDecDistribution,missing,ANY-method
+> ###   E,UnivarMixingDistribution,missing,ANY-method
+> ###   E,UnivarLebDecDistribution,function,ANY-method
+> ###   E,UnivariateCondDistribution,function,numeric-method
+> ###   E,UnivarMixingDistribution,function,ANY-method
+> ###   E,AbscontCondDistribution,function,numeric-method
+> ###   E,DiscreteCondDistribution,function,numeric-method
+> ###   E,Arcsine,missing,missing-method E,Beta,missing,missing-method
+> ###   E,Binom,missing,missing-method E,Cauchy,missing,missing-method
+> ###   E,Chisq,missing,missing-method E,Dirac,missing,missing-method
+> ###   E,DExp,missing,missing-method E,Exp,missing,missing-method
+> ###   E,Fd,missing,missing-method E,Gammad,missing,missing-method
+> ###   E,Gammad,function,missing-method E,Geom,missing,missing-method
+> ###   E,Gumbel,missing,missing-method E,GPareto,missing,missing-method
+> ###   E,GPareto,function,missing-method E,Hyper,missing,missing-method
+> ###   E,Logis,missing,missing-method E,Lnorm,missing,missing-method
+> ###   E,Nbinom,missing,missing-method E,Norm,missing,missing-method
+> ###   E,Pareto,missing,missing-method E,Pois,missing,missing-method
+> ###   E,Td,missing,missing-method E,Unif,missing,missing-method
+> ###   E,Weibull,missing,missing-method
+> ### Keywords: methods distribution
+> 
+> ### ** Examples
+> 
+> # mean of Exp(1) distribution
+> E <- Exp() 
+> 
+> E(E) ## uses explicit terms
+[1] 1
+> E(as(E,"AbscontDistribution")) ## uses numerical integration
+[1] 0.9999983
+> E(as(E,"UnivariateDistribution")) ## uses simulations
+[1] 1.002698
+> E(E, fun = function(x){2*x^2}) ## uses simulations
+[1] 3.999941
+> 
+> # the same operator for discrete distributions:
+> P <- Pois(lambda=2)
+> 
+> E(P) ## uses explicit terms
+[1] 2
+> E(as(P,"DiscreteDistribution")) ## uses sums
+[1] 1.999997
+> E(as(P,"UnivariateDistribution")) ## uses simulations
+[1] 2.00881
+> E(P, fun = function(x){2*x^2}) ## uses simulations
+[1] 11.99993
+> 
+> 
+> # second moment of N(1,4)
+> E(Norm(mean=1, sd=2), fun = function(x){x^2})
+[1] 4.999977
+> E(Norm(mean=1, sd=2), fun = function(x){x^2}, useApply = FALSE)
+[1] 4.999977
+> 
+> # conditional distribution of a linear model
+> D1 <- LMCondDistribution(theta = 1) 
+> E(D1, cond = 1)
+[1] 0.9999998
+> E(Norm(mean=1))
+[1] 1
+> E(D1, function(x){x^2}, cond = 1)
+[1] 1.999994
+> E(Norm(mean=1), fun = function(x){x^2})
+[1] 1.999994
+> E(D1, function(x, cond){cond*x^2}, cond = 2, withCond = TRUE, useApply = FALSE)
+[1] 9.999987
+> E(Norm(mean=2), function(x){2*x^2})
+[1] 9.999987
+> 
+> E(as(Norm(mean=2),"AbscontDistribution"))
+[1] 2
+> ### somewhat less accurate:
+> E(as(Norm(mean=2),"AbscontDistribution"), 
++      lowerTruncQuantil=1e-4,upperTruncQuantil=1e-4, IQR.fac= 4)
+[1] 2
+> ### even less accurate:
+> E(as(Norm(mean=2),"AbscontDistribution"), 
++      lowerTruncQuantil=1e-2,upperTruncQuantil=1e-2, IQR.fac= 4)
+[1] 2
+> ### no good idea, but just as an example:
+> E(as(Norm(mean=2),"AbscontDistribution"), 
++      lowerTruncQuantil=1e-2,upperTruncQuantil=1e-2, IQR.fac= .1)
+[1] 2
+> 
+> ### truncation of integration range; see also m1df...
+> E(Norm(mean=2), low=2,upp=4)
+[1] 1.299451
+> 
+> E(Cauchy())
+[1] NA
+> E(Cauchy(),upp=3,low=-2)
+[1] 0
+> # some Lebesgue decomposed distribution 
+> mymix <- UnivarLebDecDistribution(acPart = Norm(), discretePart = Binom(4,.4),
++          acWeight = 0.4)
+> E(mymix)
+[1] 0.96
+> 
+> 
+> 
+> cleanEx(); nameEx("EuclCondition-class")
+> ### * EuclCondition-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: EuclCondition-class
+> ### Title: Conditioning by an Euclidean space.
+> ### Aliases: EuclCondition-class Range Range,EuclCondition-method
+> ###   show,EuclCondition-method
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+>   new("EuclCondition")
+name:	conditioning by an Euclidean space
+Range:	Euclidean Space with dimension 1
+> 
+> 
+> 
+> cleanEx(); nameEx("EuclCondition")
+> ### * EuclCondition
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: EuclCondition
+> ### Title: Generating function for EuclCondition-class
+> ### Aliases: EuclCondition
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> EuclCondition(dimension = 3)
+name:	conditioning by an Euclidean space
+Range:	Euclidean Space with dimension 3
+> 
+> ## The function is currently defined as
+> function(dimension){
++     new("EuclCondition", Range = EuclideanSpace(dimension = dimension))
++ }
+function (dimension) 
+{
+    new("EuclCondition", Range = EuclideanSpace(dimension = dimension))
+}
+> 
+> 
+> 
+> cleanEx(); nameEx("GLIntegrate")
+> ### * GLIntegrate
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: GLIntegrate
+> ### Title: Gauss-Legendre Quadrature
+> ### Aliases: GLIntegrate
+> ### Keywords: math utilities
+> 
+> ### ** Examples
+> 
+> integrate(dnorm, -1.96, 1.96)
+0.9500042 with absolute error < 1.0e-11
+> GLIntegrate(dnorm, -1.96, 1.96)
+[1] 0.9500042
+> 
+> 
+> 
+> cleanEx(); nameEx("GPareto-class")
+> ### * GPareto-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: GPareto-class
+> ### Title: Generalized Pareto distribution
+> ### Aliases: GPareto-class initialize,GPareto-method loc,GPareto-method
+> ###   loc<-,GPareto-method location,GPareto-method
+> ###   location<-,GPareto-method scale,GPareto-method scale<-,GPareto-method
+> ###   shape,GPareto-method shape<-,GPareto-method +,GPareto,numeric-method
+> ###   *,GPareto,numeric-method
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> (P1 <- new("GPareto", loc = 0, scale = 1,shape = 0))
+Distribution Object of Class: GPareto
+ loc: 0
+ scale: 1
+ shape: 0
+> plot(P1)
+> shape(P1)
+[1] 0
+> loc(P1)
+[1] 0
+> scale(P1) <- 4
+> loc(P1) <- 2
+> plot(P1)
+> 
+> 
+> 
+> cleanEx(); nameEx("GPareto")
+> ### * GPareto
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: GPareto
+> ### Title: Generating function for GPareto-class
+> ### Aliases: GPareto
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> (P1 <- GPareto(loc = 0, scale = 1, shape = 0))
+Distribution Object of Class: Exp
+ rate: 1
+> plot(P1)
+> 
+> E(GPareto()) 
+[1] 1
+> E(P1, function(x){x^2})
+[1] 1.999971
+> 
+> 
+> 
+> 
+> cleanEx(); nameEx("GParetoParameter-class")
+> ### * GParetoParameter-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: GParetoParameter-class
+> ### Title: Parameter of generalized Pareto distributions
+> ### Aliases: GParetoParameter-class loc,GParetoParameter-method
+> ###   loc<-,GParetoParameter-method location,GParetoParameter-method
+> ###   location<-,GParetoParameter-method scale,GParetoParameter-method
+> ###   scale<-,GParetoParameter-method shape,GParetoParameter-method
+> ###   shape<-,GParetoParameter-method
+> ### Keywords: distribution models
+> 
+> ### ** Examples
+> 
+> new("GParetoParameter")
+An object of class “GParetoParameter”
+Slot "loc":
+[1] 0
+
+Slot "scale":
+[1] 1
+
+Slot "shape":
+[1] 0
+
+Slot "name":
+[1] "Parameter of a generalized Pareto distribution"
+
+> 
+> 
+> 
+> cleanEx(); nameEx("Gumbel-class")
+> ### * Gumbel-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: Gumbel-class
+> ### Title: Gumbel distribution
+> ### Aliases: Gumbel-class initialize,Gumbel-method loc,Gumbel-method
+> ###   loc<-,Gumbel-method scale,Gumbel-method scale<-,Gumbel-method
+> ###   +,Gumbel,numeric-method *,Gumbel,numeric-method
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> (G1 <- new("Gumbel", loc = 1, scale = 2))
+Distribution Object of Class: Gumbel
+ loc: 1
+ scale: 2
+> plot(G1)
+> loc(G1)
+[1] 1
+> scale(G1)
+[1] 2
+> loc(G1) <- -1
+> scale(G1) <- 2
+> plot(G1)
+> 
+> 
+> 
+> cleanEx(); nameEx("Gumbel")
+> ### * Gumbel
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: Gumbel
+> ### Title: Generating function for Gumbel-class
+> ### Aliases: Gumbel
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> (G1 <- Gumbel(loc = 1, scale = 2))
+Distribution Object of Class: Gumbel
+ loc: 1
+ scale: 2
+> plot(G1)
+> loc(G1)
+[1] 1
+> scale(G1)
+[1] 2
+> loc(G1) <- -1
+> scale(G1) <- 2
+> plot(G1)
+> 
+> E(Gumbel()) # Euler's constant
+[1] -0.5772157
+> E(G1, function(x){x^2})
+[1] 6.60347
+> 
+> ## The function is currently defined as
+> function(loc = 0, scale = 1){ 
++   new("Gumbel", loc = loc, scale = scale)
++ }
+function (loc = 0, scale = 1) 
+{
+    new("Gumbel", loc = loc, scale = scale)
+}
+> 
+> 
+> 
+> cleanEx(); nameEx("GumbelParameter-class")
+> ### * GumbelParameter-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: GumbelParameter-class
+> ### Title: Paramter of Gumbel distributions
+> ### Aliases: GumbelParameter-class loc loc,GumbelParameter-method loc<-
+> ###   loc<-,GumbelParameter-method scale,GumbelParameter-method
+> ###   scale<-,GumbelParameter-method
+> ### Keywords: distribution models
+> 
+> ### ** Examples
+> 
+> new("GumbelParameter")
+An object of class “GumbelParameter”
+Slot "loc":
+[1] 0
+
+Slot "scale":
+[1] 1
+
+Slot "name":
+[1] "parameter of a Gumbel distribution"
+
+> 
+> 
+> 
+> cleanEx(); nameEx("HellingerDist")
+> ### * HellingerDist
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: HellingerDist
+> ### Title: Generic function for the computation of the Hellinger distance
+> ###   of two distributions
+> ### Aliases: HellingerDist HellingerDist-methods
+> ###   HellingerDist,AbscontDistribution,AbscontDistribution-method
+> ###   HellingerDist,AbscontDistribution,DiscreteDistribution-method
+> ###   HellingerDist,DiscreteDistribution,DiscreteDistribution-method
+> ###   HellingerDist,DiscreteDistribution,AbscontDistribution-method
+> ###   HellingerDist,LatticeDistribution,DiscreteDistribution-method
+> ###   HellingerDist,DiscreteDistribution,LatticeDistribution-method
+> ###   HellingerDist,LatticeDistribution,LatticeDistribution-method
+> ###   HellingerDist,numeric,DiscreteDistribution-method
+> ###   HellingerDist,DiscreteDistribution,numeric-method
+> ###   HellingerDist,numeric,AbscontDistribution-method
+> ###   HellingerDist,AbscontDistribution,numeric-method
+> ###   HellingerDist,AcDcLcDistribution,AcDcLcDistribution-method
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> HellingerDist(Norm(), Gumbel())
+Hellinger distance 
+         0.2204792 
+> HellingerDist(Norm(), Td(10))
+Hellinger distance 
+         0.0598968 
+> HellingerDist(Norm(mean = 50, sd = sqrt(25)), Binom(size = 100)) # mutually singular
+Hellinger distance 
+                 1 
+> HellingerDist(Pois(10), Binom(size = 20)) 
+Hellinger distance 
+         0.1742254 
+> 
+> x <- rnorm(100)
+> HellingerDist(Norm(), x)
+Hellinger distance 
+         0.3287617 
+> HellingerDist(x, Norm(), asis.smooth.discretize = "smooth")
+Hellinger distance 
+         0.1904838 
+> 
+> y <- (rbinom(50, size = 20, prob = 0.5)-10)/sqrt(5)
+> HellingerDist(y, Norm())
+Hellinger distance 
+         0.7596996 
+> HellingerDist(y, Norm(), asis.smooth.discretize = "smooth")
+Hellinger distance 
+         0.5283272 
+> 
+> HellingerDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5))
+Hellinger distance 
+         0.1945649 
+> 
+> 
+> 
+> cleanEx(); nameEx("KolmogorovDist")
+> ### * KolmogorovDist
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: KolmogorovDist
+> ### Title: Generic function for the computation of the Kolmogorov distance
+> ###   of two distributions
+> ### Aliases: KolmogorovDist KolmogorovDist-methods
+> ###   KolmogorovDist,AbscontDistribution,AbscontDistribution-method
+> ###   KolmogorovDist,AbscontDistribution,DiscreteDistribution-method
+> ###   KolmogorovDist,DiscreteDistribution,DiscreteDistribution-method
+> ###   KolmogorovDist,DiscreteDistribution,AbscontDistribution-method
+> ###   KolmogorovDist,LatticeDistribution,DiscreteDistribution-method
+> ###   KolmogorovDist,DiscreteDistribution,LatticeDistribution-method
+> ###   KolmogorovDist,LatticeDistribution,LatticeDistribution-method
+> ###   KolmogorovDist,numeric,UnivariateDistribution-method
+> ###   KolmogorovDist,UnivariateDistribution,numeric-method
+> ###   KolmogorovDist,AcDcLcDistribution,AcDcLcDistribution-method
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> KolmogorovDist(Norm(), Gumbel())
+Kolmogorov distance 
+          0.1501485 
+> KolmogorovDist(Norm(), Td(10))
+Kolmogorov distance 
+         0.01554215 
+> KolmogorovDist(Norm(mean = 50, sd = sqrt(25)), Binom(size = 100))
+Kolmogorov distance 
+         0.03979462 
+> KolmogorovDist(Pois(10), Binom(size = 20)) 
+Kolmogorov distance 
+         0.08863266 
+> KolmogorovDist(Norm(), rnorm(100))
+Kolmogorov distance 
+          0.0659914 
+> KolmogorovDist((rbinom(50, size = 20, prob = 0.5)-10)/sqrt(5), Norm())
+Kolmogorov distance 
+               0.14 
+> KolmogorovDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5))
+Kolmogorov distance 
+          0.1282777 
+> 
+> 
+> 
+> cleanEx(); nameEx("LMCondDistribution")
+> ### * LMCondDistribution
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: LMCondDistribution
+> ### Title: Generating function for the conditional distribution of a linear
+> ###   regression model.
+> ### Aliases: LMCondDistribution
+> ### Keywords: distribution models
+> 
+> ### ** Examples
+> 
+> # normal error distribution
+> (D1 <- LMCondDistribution(theta = 1)) # corresponds to Norm(cond, 1)
+Distribution object of class: AbscontCondDistribution
+ theta: 1
+ intercept: 0
+ scale: 1
+## cond:
+name:	conditioning by an Euclidean space
+Range:	Euclidean Space with dimension 1
+> plot(D1)
+Warning in plot(D1) :
+  'plot' not yet implemented for objects of class AbscontCondDistribution
+> r(D1)
+function (n, cond, ...) 
+{
+    if (length(cond) != 1L) 
+        stop("'cond' has wrong dimension")
+    r <- function (n) 
+    {
+        rnorm(n, mean = 0, sd = 1)
+    }
+    0 + cond %*% 1 + 1 * r(n, ...)
+}
+<environment: 0x5a6f620>
+> d(D1)
+function (x, cond, log = FALSE, ...) 
+{
+    if (length(cond) != 1L) 
+        stop("'cond' has wrong dimension")
+    d <- function (x, log = FALSE) 
+    {
+        dnorm(x, mean = 0, sd = 1, log = log)
+    }
+    if ("log" %in% names(formals(d))) 
+        d0 <- d((x - 0 - as.vector(cond %*% 1))/1, log = log)
+    else {
+        d0 <- d((x - 0 - as.vector(cond %*% 1))/1)
+        if (log) 
+            d0 <- log(d0)
+    }
+    if (log) 
+        d0 <- d0 - log(1)
+    else d0 <- d0/1
+    return(d0)
+}
+<environment: 0x5a6f620>
+> p(D1)
+function (q, cond, lower.tail = TRUE, log.p = FALSE, ...) 
+{
+    if (length(cond) != 1L) 
+        stop("'cond' has wrong dimension")
+    p <- function (q, lower.tail = TRUE, log.p = FALSE) 
+    {
+        pnorm(q, mean = 0, sd = 1, lower.tail = lower.tail, log.p = log.p)
+    }
+    argList <- alist((q - 0 - as.vector(cond %*% 1))/1)
+    if ("lower.tail" %in% names(formals(p))) 
+        argList <- c(argList, lower.tail = lower.tail)
+    if ("log.p" %in% names(formals(p))) 
+        argList <- c(argList, log.p = log.p)
+    dots <- alist(...)
+    if (length(dots)) 
+        argList <- c(argList, dots)
+    p0 <- do.call(p, argList)
+    if (!("lower.tail" %in% names(formals(p)))) 
+        if (!lower.tail) 
+            p0 <- 1 - p0
+    if (!("log.p" %in% names(formals(p)))) 
+        if (log.p) 
+            p0 <- log(p0)
+    return(p0)
+}
+<environment: 0x5a6f620>
+> q(D1)
+function (p, cond, lower.tail = TRUE, log.p = FALSE, ...) 
+{
+    if (length(cond) != 1L) 
+        stop("'cond' has wrong dimension")
+    q <- function (p, lower.tail = TRUE, log.p = FALSE) 
+    {
+        qnorm(p, mean = 0, sd = 1, lower.tail = lower.tail, log.p = log.p)
+    }
+    argList <- alist(p)
+    if ("lower.tail" %in% names(formals(q))) 
+        argList <- c(argList, lower.tail = lower.tail)
+    else if (log.p) 
+        p <- exp(p)
+    if ("log.p" %in% names(formals(q))) 
+        argList <- c(argList, log.p = log.p)
+    else if (!lower.tail) 
+        p <- 1 - p
+    dots <- alist(...)
+    if (length(dots)) 
+        argList <- c(argList, dots)
+    1 * do.call(q, argList) + 0 + as.vector(cond %*% 1)
+}
+<environment: 0x5a6f620>
+> param(D1)
+name:	parameter of a linear regression model
+theta:	1
+intercept:	0
+scale:	1
+> cond(D1)
+name:	conditioning by an Euclidean space
+Range:	Euclidean Space with dimension 1
+> 
+> d(D1)(0, cond = 1)
+[1] 0.2419707
+> d(Norm(mean=1))(0)
+[1] 0.2419707
+> 
+> E(D1, cond = 1)
+[1] 0.9999998
+> E(D1, function(x){x^2}, cond = 2)
+[1] 4.999993
+> E(Norm(mean=2), function(x){x^2})
+[1] 4.999993
+> 
+> 
+> 
+> cleanEx(); nameEx("LMParameter-class")
+> ### * LMParameter-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: LMParameter-class
+> ### Title: Parameter of a linear regression model
+> ### Aliases: LMParameter-class show,LMParameter-method
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+>   new("LMParameter")
+name:	parameter of a linear regression model
+theta:	0
+intercept:	0
+scale:	1
+> 
+> 
+> 
+> cleanEx(); nameEx("LMParameter")
+> ### * LMParameter
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: LMParameter
+> ### Title: Generating function for LMParameter-class
+> ### Aliases: LMParameter
+> ### Keywords: models
+> 
+> ### ** Examples
+> 
+> LMParameter(theta = c(1,1), intercept = 2, scale = 0.5)
+name:	parameter of a linear regression model
+theta:	1
+ theta:	1
+intercept:	2
+scale:	0.5
+> 
+> ## The function is currently defined as
+> function(theta = 0, intercept = 0, scale = 1){
++     new("LMParameter", theta = theta, intercept = intercept, scale = 1)
++ }
+function (theta = 0, intercept = 0, scale = 1) 
+{
+    new("LMParameter", theta = theta, intercept = intercept, 
+        scale = 1)
+}
+> 
+> 
+> 
+> cleanEx(); nameEx("MultivariateDistribution-class")
+> ### * MultivariateDistribution-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: MultivariateDistribution-class
+> ### Title: Multivariate Distributions
+> ### Aliases: MultivariateDistribution-class
+> ###   show,MultivariateDistribution-method
+> ###   plot,MultivariateDistribution-method
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> # Dirac-measure in (0,0)
+> new("MultivariateDistribution")
+> 
+> 
+> 
+> cleanEx(); nameEx("OAsymTotalVarDist")
+> ### * OAsymTotalVarDist
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: OAsymTotalVarDist
+> ### Title: Generic function for the computation of (minimal) asymmetric
+> ###   total variation distance of two distributions
+> ### Aliases: OAsymTotalVarDist OAsymTotalVarDist-methods
+> ###   OAsymTotalVarDist,AbscontDistribution,AbscontDistribution-method
+> ###   OAsymTotalVarDist,AbscontDistribution,DiscreteDistribution-method
+> ###   OAsymTotalVarDist,DiscreteDistribution,DiscreteDistribution-method
+> ###   OAsymTotalVarDist,DiscreteDistribution,AbscontDistribution-method
+> ###   OAsymTotalVarDist,LatticeDistribution,DiscreteDistribution-method
+> ###   OAsymTotalVarDist,DiscreteDistribution,LatticeDistribution-method
+> ###   OAsymTotalVarDist,LatticeDistribution,LatticeDistribution-method
+> ###   OAsymTotalVarDist,numeric,DiscreteDistribution-method
+> ###   OAsymTotalVarDist,DiscreteDistribution,numeric-method
+> ###   OAsymTotalVarDist,numeric,AbscontDistribution-method
+> ###   OAsymTotalVarDist,AbscontDistribution,numeric-method
+> ###   OAsymTotalVarDist,AcDcLcDistribution,AcDcLcDistribution-method
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> OAsymTotalVarDist(Norm(), Gumbel())
+minimal asym. total variation distance 
+                             0.2642218 
+> OAsymTotalVarDist(Norm(), Td(10))
+minimal asym. total variation distance 
+                            0.04191508 
+> OAsymTotalVarDist(Norm(mean = 50, sd = sqrt(25)), Binom(size = 100)) # mutually singular
+minimal asym. total variation distance 
+                                     1 
+> OAsymTotalVarDist(Pois(10), Binom(size = 20)) 
+minimal asym. total variation distance 
+                             0.3214297 
+> 
+> x <- rnorm(100)
+> OAsymTotalVarDist(Norm(), x)
+minimal asym. total variation distance 
+                             0.8150567 
+> OAsymTotalVarDist(x, Norm(), asis.smooth.discretize = "smooth")
+minimal asym. total variation distance 
+                              0.345616 
+> 
+> y <- (rbinom(50, size = 20, prob = 0.5)-10)/sqrt(5)
+> OAsymTotalVarDist(y, Norm())
+minimal asym. total variation distance 
+                             0.9201529 
+> OAsymTotalVarDist(y, Norm(), asis.smooth.discretize = "smooth")
+minimal asym. total variation distance 
+                             0.7539696 
+> 
+> OAsymTotalVarDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5))
+minimal asym. total variation distance 
+                             0.3742073 
+> 
+> 
+> 
+> cleanEx(); nameEx("Pareto-class")
+> ### * Pareto-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: Pareto-class
+> ### Title: Pareto distribution
+> ### Aliases: Pareto-class initialize,Pareto-method shape,Pareto-method
+> ###   shape<-,Pareto-method Min,Pareto-method Min<-,Pareto-method
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> (P1 <- new("Pareto", shape = 1, Min = 2))
+Distribution Object of Class: Pareto
+ shape: 1
+ Min: 2
+> plot(P1)
+> shape(P1)
+[1] 1
+> Min(P1)
+[1] 2
+> shape(P1) <- 4
+> Min(P1) <- 2
+> plot(P1)
+> 
+> 
+> 
+> cleanEx(); nameEx("Pareto")
+> ### * Pareto
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: Pareto
+> ### Title: Generating function for Pareto-class
+> ### Aliases: Pareto
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> (P1 <- Pareto(shape = 1, Min = 1))
+Distribution Object of Class: Pareto
+ shape: 1
+ Min: 1
+> plot(P1)
+> 
+> E(Pareto()) 
+[1] Inf
+> E(P1, function(x){x^2})
+[1] 41
+> 
+> ## The function is currently defined as
+> function(shape = 1, Min = 1) 
++                new("Pareto", shape = shape, Min = Min)
+function (shape = 1, Min = 1) 
+new("Pareto", shape = shape, Min = Min)
+> 
+> 
+> 
+> cleanEx(); nameEx("ParetoParameter-class")
+> ### * ParetoParameter-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: ParetoParameter-class
+> ### Title: Paramter of Pareto distributions
+> ### Aliases: ParetoParameter-class shape shape,ParetoParameter-method
+> ###   shape<- shape<-,ParetoParameter-method Min,ParetoParameter-method
+> ###   Min<-,ParetoParameter-method
+> ### Keywords: distribution models
+> 
+> ### ** Examples
+> 
+> new("ParetoParameter")
+An object of class “ParetoParameter”
+Slot "shape":
+[1] 1
+
+Slot "Min":
+[1] 1
+
+Slot "name":
+[1] "Parameter of a Pareto distribution"
+
+> 
+> 
+> 
+> cleanEx(); nameEx("PrognCondDistribution-class")
+> ### * PrognCondDistribution-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: PrognCondDistribution-class
+> ### Title: Posterior distribution in convolution
+> ### Aliases: PrognCondDistribution-class
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> PrognCondDistribution()
+Distribution object of class: AbscontCondDistribution
+## cond:
+Name:	condition in case of a linear regression model
+Range:	Real Space with dimension 1
+> 
+> 
+> cleanEx(); nameEx("PrognCondDistribution")
+> ### * PrognCondDistribution
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: PrognCondDistribution
+> ### Title: Generating function for PrognCondDistribution-class
+> ### Aliases: PrognCondDistribution
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> PrognCondDistribution(Error = ConvexContamination(Norm(), Norm(4,1), size=0.1))
+Distribution object of class: AbscontCondDistribution
+## cond:
+Name:	condition in case of a linear regression model
+Range:	Real Space with dimension 1
+> 
+> 
+> 
+> cleanEx(); nameEx("PrognCondition-class")
+> ### * PrognCondition-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: PrognCondition-class
+> ### Title: Conditions of class 'PrognCondition'
+> ### Aliases: PrognCondition-class show,PrognCondition-method PrognCondition
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> PrognCondition()
+Name:	condition in case of a linear regression model
+Range:	Euclidean Space with dimension 1
+> 
+> 
+> cleanEx(); nameEx("TotalVarDist")
+> ### * TotalVarDist
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: TotalVarDist
+> ### Title: Generic function for the computation of the total variation
+> ###   distance of two distributions
+> ### Aliases: TotalVarDist TotalVarDist-methods
+> ###   TotalVarDist,AbscontDistribution,AbscontDistribution-method
+> ###   TotalVarDist,AbscontDistribution,DiscreteDistribution-method
+> ###   TotalVarDist,DiscreteDistribution,DiscreteDistribution-method
+> ###   TotalVarDist,DiscreteDistribution,AbscontDistribution-method
+> ###   TotalVarDist,LatticeDistribution,DiscreteDistribution-method
+> ###   TotalVarDist,DiscreteDistribution,LatticeDistribution-method
+> ###   TotalVarDist,LatticeDistribution,LatticeDistribution-method
+> ###   TotalVarDist,numeric,DiscreteDistribution-method
+> ###   TotalVarDist,DiscreteDistribution,numeric-method
+> ###   TotalVarDist,numeric,AbscontDistribution-method
+> ###   TotalVarDist,AbscontDistribution,numeric-method
+> ###   TotalVarDist,AcDcLcDistribution,AcDcLcDistribution-method
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> TotalVarDist(Norm(), Gumbel())
+total variation distance 
+               0.1501365 
+> TotalVarDist(Norm(), Td(10))
+total variation distance 
+               0.0310744 
+> TotalVarDist(Norm(mean = 50, sd = sqrt(25)), Binom(size = 100)) # mutually singular
+total variation distance 
+                       1 
+> TotalVarDist(Pois(10), Binom(size = 20)) 
+total variation distance 
+               0.1665087 
+> 
+> x <- rnorm(100)
+> TotalVarDist(Norm(), x)
+total variation distance 
+               0.5056648 
+> TotalVarDist(x, Norm(), asis.smooth.discretize = "smooth")
+total variation distance 
+               0.1869429 
+> 
+> y <- (rbinom(50, size = 20, prob = 0.5)-10)/sqrt(5)
+> TotalVarDist(y, Norm())
+total variation distance 
+                1.156205 
+> TotalVarDist(y, Norm(), asis.smooth.discretize = "smooth")
+total variation distance 
+               0.5563187 
+> 
+> TotalVarDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5))
+total variation distance 
+               0.2047216 
+> 
+> 
+> 
+> cleanEx(); nameEx("UnivariateCondDistribution-class")
+> ### * UnivariateCondDistribution-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: UnivariateCondDistribution-class
+> ### Title: Univariate conditional distribution
+> ### Aliases: UnivariateCondDistribution-class cond
+> ###   cond,UnivariateCondDistribution-method
+> ###   plot,UnivariateCondDistribution-method
+> ###   show,UnivariateCondDistribution-method
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> new("UnivariateCondDistribution")
+Distribution object of class: UnivariateCondDistribution
+## cond:
+An object of class “Condition”
+Slot "name":
+[1] "a condition"
+
+> 
+> 
+> cleanEx(); nameEx("Var")
+> ### * Var
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: var
+> ### Title: Generic Functions for the Computation of Functionals
+> ### Aliases: var var-methods var,ANY-method
+> ###   var,UnivariateDistribution-method var,AffLinDistribution-method
+> ###   var,AffLinAbscontDistribution-method
+> ###   var,AffLinDiscreteDistribution-method
+> ###   var,AffLinLatticeDistribution-method var,CompoundDistribution-method
+> ###   var,Arcsine-method var,Beta-method var,Binom-method var,Cauchy-method
+> ###   var,Chisq-method var,Dirac-method var,DExp-method var,Exp-method
+> ###   var,Fd-method var,Gammad-method var,Geom-method var,Gumbel-method
+> ###   var,GPareto-method var,Hyper-method var,Logis-method var,Lnorm-method
+> ###   var,Nbinom-method var,Norm-method var,Pareto-method var,Pois-method
+> ###   var,Unif-method var,Weibull-method var,Td-method sd sd-methods
+> ###   sd,UnivariateDistribution-method sd,Norm-method median
+> ###   median,ANY-method median-methods median,UnivariateDistribution-method
+> ###   median,UnivariateCondDistribution-method
+> ###   median,AffLinDistribution-method
+> ###   median,AffLinAbscontDistribution-method
+> ###   median,AffLinDiscreteDistribution-method
+> ###   median,AffLinLatticeDistribution-method median,Arcsine-method
+> ###   median,Cauchy-method median,Dirac-method median,DExp-method
+> ###   median,Exp-method median,Geom-method median,Gumbel-method
+> ###   median,GPareto-method median,Logis-method median,Lnorm-method
+> ###   median,Norm-method median,Pareto-method median,Unif-method IQR
+> ###   IQR-methods IQR,ANY-method IQR,UnivariateDistribution-method
+> ###   IQR,UnivariateCondDistribution-method IQR,AffLinDistribution-method
+> ###   IQR,AffLinAbscontDistribution-method
+> ###   IQR,AffLinDiscreteDistribution-method
+> ###   IQR,AffLinLatticeDistribution-method IQR,DiscreteDistribution-method
+> ###   IQR,Arcsine-method IQR,Cauchy-method IQR,Dirac-method IQR,DExp-method
+> ###   IQR,Exp-method IQR,Geom-method IQR,Gumbel-method IQR,GPareto-method
+> ###   IQR,Logis-method IQR,Norm-method IQR,Pareto-method IQR,Unif-method
+> ###   mad mad,ANY-method mad-methods mad,UnivariateDistribution-method
+> ###   mad,AffLinDistribution-method mad,AffLinAbscontDistribution-method
+> ###   mad,AffLinDiscreteDistribution-method
+> ###   mad,AffLinLatticeDistribution-method mad,Cauchy-method
+> ###   mad,Dirac-method mad,DExp-method mad,Exp-method mad,Geom-method
+> ###   mad,Logis-method mad,Norm-method mad,Unif-method mad,Arcsine-method
+> ###   skewness skewness-methods skewness,ANY-method
+> ###   skewness,UnivariateDistribution-method
+> ###   skewness,AffLinDistribution-method
+> ###   skewness,AffLinAbscontDistribution-method
+> ###   skewness,AffLinDiscreteDistribution-method
+> ###   skewness,AffLinLatticeDistribution-method skewness,Arcsine-method
+> ###   skewness,Beta-method skewness,Binom-method skewness,Cauchy-method
+> ###   skewness,Chisq-method skewness,Dirac-method skewness,DExp-method
+> ###   skewness,Exp-method skewness,Fd-method skewness,Gammad-method
+> ###   skewness,Geom-method skewness,Gumbel-method skewness,GPareto-method
+> ###   skewness,Hyper-method skewness,Logis-method skewness,Lnorm-method
+> ###   skewness,Nbinom-method skewness,Norm-method skewness,Pareto-method
+> ###   skewness,Pois-method skewness,Unif-method skewness,Weibull-method
+> ###   skewness,Td-method kurtosis kurtosis-methods kurtosis,ANY-method
+> ###   kurtosis,UnivariateDistribution-method
+> ###   kurtosis,AffLinDistribution-method
+> ###   kurtosis,AffLinAbscontDistribution-method
+> ###   kurtosis,AffLinDiscreteDistribution-method
+> ###   kurtosis,AffLinLatticeDistribution-method kurtosis,Arcsine-method
+> ###   kurtosis,Beta-method kurtosis,Binom-method kurtosis,Cauchy-method
+> ###   kurtosis,Chisq-method kurtosis,Dirac-method kurtosis,DExp-method
+> ###   kurtosis,Exp-method kurtosis,Fd-method kurtosis,Gammad-method
+> ###   kurtosis,Geom-method kurtosis,Gumbel-method kurtosis,GPareto-method
+> ###   kurtosis,Hyper-method kurtosis,Logis-method kurtosis,Lnorm-method
+> ###   kurtosis,Nbinom-method kurtosis,Norm-method kurtosis,Pareto-method
+> ###   kurtosis,Pois-method kurtosis,Unif-method kurtosis,Weibull-method
+> ###   kurtosis,Td-method
+> ### Keywords: methods distribution
+> 
+> ### ** Examples
+> 
+> # Variance of Exp(1) distribution
+> var(Exp())
+[1] 1
+> 
+> #median(Exp())
+> IQR(Exp())
+[1] 1.098612
+> mad(Exp())
+[1] 0.4812118
+> 
+> # Variance of N(1,4)^2
+> var(Norm(mean=1, sd=2), fun = function(x){x^2})
+[1] 47.9974
+> var(Norm(mean=1, sd=2), fun = function(x){x^2}, useApply = FALSE)
+[1] 47.9974
+> 
+> ## sd -- may equivalently be replaced by var
+> sd(Pois()) ## uses explicit terms
+[1] 1
+> sd(as(Pois(),"DiscreteDistribution")) ## uses sums
+[1] 0.9999995
+> sd(as(Pois(),"UnivariateDistribution")) ## uses simulations
+[1] 0.99226
+> sd(Norm(mean=2), fun = function(x){2*x^2}) ## uses simulations
+[1] 8.485224
+> #
+> mad(sin(exp(Norm()+2*Pois()))) ## weird
+[1] 0.5085796
+> 
+> 
+> 
+> cleanEx(); nameEx("distrExConstants")
+> ### * distrExConstants
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: distrExConstants
+> ### Title: Built-in Constants in package distrEx
+> ### Aliases: EULERMASCHERONICONSTANT APERYCONSTANT
+> ### Keywords: sysdata
+> 
+> ### ** Examples
+> 
+> EULERMASCHERONICONSTANT
+[1] 0.5772157
+> APERYCONSTANT
+[1] 1.202057
+> 
+> 
+> 
+> cleanEx(); nameEx("distrExIntegrate")
+> ### * distrExIntegrate
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: distrExIntegrate
+> ### Title: Integration of One-Dimensional Functions
+> ### Aliases: distrExIntegrate
+> ### Keywords: math utilities
+> 
+> ### ** Examples
+> 
+> fkt <- function(x){x*dchisq(x+1, df = 1)}
+> integrate(fkt, lower = -1, upper = 3)
+-0.2159639 with absolute error < 4.5e-05
+> GLIntegrate(fkt, lower = -1, upper = 3)
+[1] -0.2145758
+> try(integrate(fkt, lower = -1, upper = 5))
+Error in integrate(fkt, lower = -1, upper = 5) : 
+  the integral is probably divergent
+> distrExIntegrate(fkt, lower = -1, upper = 5)
+[1] -0.09560435
+> 
+> 
+> 
+> cleanEx(); nameEx("distrExMASK")
+> ### * distrExMASK
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: distrExMASK
+> ### Title: Masking of/by other functions in package "distrEx"
+> ### Aliases: distrExMASK MASKING
+> ### Keywords: programming distribution documentation
+> 
+> ### ** Examples
+> 
+> distrExMASK()
+######################################################################
+#  On masking of and by other functions in package "distrEx"       
+######################################################################
+
+Attention:
+
+*** intentional masking: ***
+
+To be able to use the same symbol for (theoretical) distributional
+arguments as for (empirical) data arguments, we intentionally mask
+the following functions --- however all these functions may still
+be used in exactly the same way as before masking:
+
++var()    (package "stats")
++sd()     (package "stats")
++median() (package "stats")
++mad()    (package "stats")
++IQR()    (package "stats")
+
++skewness() (package "e1071")
++kurtosis() (package "e1071")
+
+In the last cases, code was simply inserted from package "e1071"
+in order to avoid a corresponding "Depends" entry in the "DESCRIPTION" 
+file of package "distrEx" with the entailed necessity to install 
+package "e1071".
+
+*** non-intentional masking: ***
+
+However, if any of the packages "e1071", "moments", or "fBasics" is to 
+be used together with package "distrEx", the latter must be attached 
+/after/ any of the first mentioned. 
+
+Otherwise kurtosis() and skewness(), defined as methods in package 
+"distrEx", will get masked.
+
+To re-mask, you may use 
+
+  kurtosis <- distrEx::kurtosis
+  skewness <- distrEx::skewness
+ 
+
+> 
+> 
+> 
+> cleanEx(); nameEx("distrExOptions")
+> ### * distrExOptions
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: distrExOptions
+> ### Title: Function to change the global variables of the package `distrEx'
+> ### Aliases: distrExOptions distrExoptions getdistrExOption MCIterations
+> ###   GLIntegrateTruncQuantile GLIntegrateOrder ElowerTruncQuantile
+> ###   EupperTruncQuantile ErelativeTolerance m1dfLowerTruncQuantile
+> ###   m1dfRelativeTolerance m2dfLowerTruncQuantile m2dfRelativeTolerance
+> ###   nDiscretize hSmooth IQR.fac
+> ### Keywords: misc distribution
+> 
+> ### ** Examples
+> 
+> distrExOptions()
+$GLIntegrateTruncQuantile
+[1] 2.220446e-15
+
+$GLIntegrateOrder
+[1] 500
+
+$MCIterations
+[1] 1e+05
+
+$ElowerTruncQuantile
+[1] 1e-07
+
+$EupperTruncQuantile
+[1] 1e-07
+
+$ErelativeTolerance
+[1] 0.0001220703
+
+$m1dfLowerTruncQuantile
+[1] 0
+
+$m1dfRelativeTolerance
+[1] 0.0001220703
+
+$m2dfLowerTruncQuantile
+[1] 0
+
+$m2dfRelativeTolerance
+[1] 0.0001220703
+
+$nDiscretize
+[1] 100
+
+$hSmooth
+[1] 0.05
+
+$IQR.fac
+[1] 15
+
+> distrExOptions("ElowerTruncQuantile")
+$ElowerTruncQuantile
+[1] 1e-07
+
+> distrExOptions("ElowerTruncQuantile" = 1e-6)
+> # or
+> distrExOptions(ElowerTruncQuantile = 1e-6)
+> getdistrExOption("ElowerTruncQuantile")
+[1] 1e-06
+> 
+> 
+> 
+> cleanEx(); nameEx("liesInSupport")
+> ### * liesInSupport
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: liesInSupport
+> ### Title: Generic Function for Testing the Support of a Distribution
+> ### Aliases: liesInSupport,DiscreteMVDistribution,numeric-method
+> ###   liesInSupport,DiscreteMVDistribution,matrix-method
+> ### Keywords: distribution utilities methods
+> 
+> ### ** Examples
+> 
+> M <- matrix(rpois(30, lambda = 10), ncol = 3)
+> D1 <- DiscreteMVDistribution(M)
+> M1 <- rbind(r(D1)(10), matrix(rpois(30, lam = 10), ncol = 3))
+> liesInSupport(D1, M1)
+ [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE
+[13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+> 
+> 
+> 
+> cleanEx(); nameEx("m1df")
+> ### * m1df
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: m1df
+> ### Title: Generic Function for the Computation of Clipped First Moments
+> ### Aliases: m1df m1df-methods m1df,UnivariateDistribution-method
+> ###   m1df,AbscontDistribution-method m1df,LatticeDistribution-method
+> ###   m1df,AffLinDistribution-method m1df,Binom-method m1df,Pois-method
+> ###   m1df,Norm-method m1df,Exp-method m1df,Chisq-method
+> ### Keywords: distribution methods
+> 
+> ### ** Examples
+> 
+> # standard normal distribution
+> N1 <- Norm()
+> m1df(N1, 0)
+[1] -0.3989423
+> 
+> # Poisson distribution
+> P1 <- Pois(lambda=2)
+> m1df(P1, 3)
+[1] 1.353353
+> m1df(P1, 3, fun = function(x)sin(x))
+[1] 0.4993462
+> 
+> # absolutely continuous distribution
+> D1 <- Norm() + Exp() # convolution
+> m1df(D1, 2)
+[1] 0.3601111
+> m1df(D1, Inf)
+[1] 0.9999294
+> E(D1)
+[1] 0.9999327
+> 
+> 
+> 
+> cleanEx(); nameEx("m2df")
+> ### * m2df
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: m2df
+> ### Title: Generic function for the computation of clipped second moments
+> ### Aliases: m2df m2df-methods m2df,UnivariateDistribution-method
+> ###   m2df,AbscontDistribution-method m2df,LatticeDistribution-method
+> ###   m2df,AffLinDistribution-method m2df,Binom-method m2df,Pois-method
+> ###   m2df,Norm-method m2df,Exp-method m2df,Chisq-method
+> ### Keywords: methods distribution
+> 
+> ### ** Examples
+> 
+> # standard normal distribution
+> N1 <- Norm()
+> m2df(N1, 0)
+[1] 0.5
+> 
+> # Poisson distribution
+> P1 <- Pois(lambda=2)
+> m2df(P1, 3)
+[1] 2.977376
+> m2df(P1, 3, fun = function(x)sin(x))
+[1] 0.4190445
+> 
+> # absolutely continuous distribution
+> D1 <- Norm() + Exp() # convolution
+> m2df(D1, 2)
+[1] 0.8383791
+> m2df(D1, Inf)
+[1] 2.998329
+> E(D1, function(x){x^2})
+[1] 2.998311
+> 
+> 
+> 
+> cleanEx(); nameEx("make01")
+> ### * make01
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: make01
+> ### Title: Centering and Standardization of Univariate Distributions
+> ### Aliases: make01
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> X <- sin(exp(2*log(abs( Norm())))) ## something weird
+> X01 <- make01(X)
+> print(X01)
+Distribution Object of Class: AffLinAbscontDistribution
+Warning in show(x) :
+  arithmetics on distributions are understood as operations on r.v.'s
+see 'distrARITH()'; for switching off this warning see '?distroptions'
+> plot(X01)
+> sd(X01); E(X01)
+[1] 1
+[1] 0
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  15.913 0.14 16.314 0.008 0.008 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

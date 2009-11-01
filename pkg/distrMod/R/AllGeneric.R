@@ -28,12 +28,6 @@ confint <- function(object, method, ...)
 #if(!isGeneric("param<-")){ 
 #    setGeneric("param<-", function(object, value) standardGeneric("param<-"))
 #}
-if(!isGeneric("type")){
-    setGeneric("type", function(object) standardGeneric("type"))
-}
-if(!isGeneric("SymmCenter")){
-    setGeneric("SymmCenter", function(object) standardGeneric("SymmCenter"))
-}
 if(!isGeneric("distrSymm")){
     setGeneric("distrSymm", function(object) standardGeneric("distrSymm"))
 }
@@ -62,7 +56,7 @@ if(!isGeneric("nuisance<-")){
     setGeneric("nuisance<-", function(object, value) standardGeneric("nuisance<-"))
 }
 if(!isGeneric("trafo")){
-    setGeneric("trafo", function(object, param) standardGeneric("trafo"))
+    setGeneric("trafo", function(object, param, ...) standardGeneric("trafo"))
 }
 if(!isGeneric("trafo<-")){
     setGeneric("trafo<-", function(object, value) standardGeneric("trafo<-"))
@@ -163,9 +157,6 @@ if(!isGeneric("fct<-")){
 if(!isGeneric("fct")){
     setGeneric("fct", function(object) standardGeneric("fct"))
 }
-if(!isGeneric("completecases")){
-    setGeneric("completecases", function(object) standardGeneric("completecases"))
-}
 if(!isGeneric("estimate")){
     setGeneric("estimate", function(object) standardGeneric("estimate"))
 }
@@ -191,7 +182,7 @@ if(!isGeneric("fixed.estimate")){
     setGeneric("fixed.estimate", function(object,... ) standardGeneric("fixed.estimate"))
 }
 if(!isGeneric("completecases.estimate")){
-    setGeneric("completecases.estimate", function(object) standardGeneric("completecases.estimate"))
+  	     setGeneric("completecases.estimate", function(object) standardGeneric("completecases.estimate"))
 }
 if(!isGeneric("Infos")){
     setGeneric("Infos", function(object) standardGeneric("Infos"))
@@ -207,6 +198,9 @@ if(!isGeneric("criterion")){
 }
 if(!isGeneric("criterion<-")){
     setGeneric("criterion<-", function(object, value) standardGeneric("criterion<-"))
+}
+if(!isGeneric("completecases")){
+  	     setGeneric("completecases", function(object) standardGeneric("completecases"))
 }
 if(!isGeneric("samplesize")){
     setGeneric("samplesize", function(object, ...) standardGeneric("samplesize"))
@@ -280,4 +274,7 @@ if(!isGeneric("criterion.fct")){
 }
 if(!isGeneric("method")){
     setGeneric("method", function(object) standardGeneric("method"))
+}
+if(!isGeneric("optimwarn")){
+    setGeneric("optimwarn", function(object) standardGeneric("optimwarn"))
 }

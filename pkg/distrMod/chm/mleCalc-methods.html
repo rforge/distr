@@ -37,11 +37,11 @@ mceCalc(x, PFam, ...)
 mleCalc(x, PFam, ...)
 ## S4 method for signature 'numeric, ParamFamily':
 mceCalc(x, PFam, criterion, 
-                   startPar = NULL, penalty = 0, crit.name,
-                   Infos = NULL, ...)
+                   startPar = NULL, penalty = 1e20, crit.name,
+                   Infos = NULL, withthetaPar = FALSE,...)
 ## S4 method for signature 'numeric, ParamFamily':
 mleCalc(x, PFam, startPar = NULL, 
-                   penalty = 0, Infos = NULL, ...)
+                   penalty = 1e20, Infos = NULL, ...)
 ## S4 method for signature 'numeric, BinomFamily':
 mleCalc(x, PFam, ...)
 ## S4 method for signature 'numeric, PoisFamily':
@@ -80,6 +80,9 @@ numeric; penalizes non-permitted parameter values</td></tr>
 <tr valign="top"><td><code>crit.name</code></td>
 <td>
 character; the name of the criterion; may be missing</td></tr>
+<tr valign="top"><td><code>withthetaPar</code></td>
+<td>
+logical; shall Parameter theta be transmitted?</td></tr>
 <tr valign="top"><td><code>Infos</code></td>
 <td>
 matrix; info slot to be filled in object of class <code>MCEstimate</code>; 
@@ -145,6 +148,6 @@ numeric; sample size of <code>x</code></td></tr>
 </table>
 
 
-<hr><div align="center">[Package <em>distrMod</em> version 2.1 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distrMod</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

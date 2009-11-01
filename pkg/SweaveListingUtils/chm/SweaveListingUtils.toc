@@ -66,6 +66,10 @@
 <param name="Local" value="library.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="lstdefRstyle">
+<param name="Local" value="lstset.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="lstinputSourceFromRForge">
 <param name="Local" value="lstinputSourceFromRForge.html">
 </OBJECT>
@@ -79,6 +83,10 @@
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="lstsetR">
+<param name="Local" value="lstset.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="lstsetRall">
 <param name="Local" value="lstset.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">

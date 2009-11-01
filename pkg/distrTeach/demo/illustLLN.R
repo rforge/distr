@@ -14,6 +14,7 @@
 
 require(distrTeach)
 options("newDevice"=TRUE)
+options("device.ask.default"=FALSE)
 # some examples
 # distroptions("DefaultNrFFTGridPointsExponent" = 13)
 illustrateLLN(Distr = Norm(0,3), sleep = 0.1)

@@ -14,8 +14,8 @@
 }
 \section{Slots}{
   \describe{
-    \item{\code{Range}:}{Object of class \code{"EuclideanSpace"}. }
-    \item{\code{name}:}{Object of class \code{"character"}: name of condition. }
+    \item{\code{Range}}{Object of class \code{"EuclideanSpace"}. }
+    \item{\code{name}}{Object of class \code{"character"}: name of condition. }
   }
 }
 \section{Extends}{

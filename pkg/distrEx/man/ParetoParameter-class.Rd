@@ -15,11 +15,11 @@ Objects can be created by calls of the form \code{new("ParetoParameter", ...)}.
 }
 \section{Slots}{
   \describe{
-    \item{\code{shape}:}{ real number: shape parameter of 
+    \item{\code{shape}}{ real number: shape parameter of 
       a Pareto distribution. }
-    \item{\code{Min}:}{ positive real number: Min
+    \item{\code{Min}}{ positive real number: Min
       parameter of a Pareto distribution. }
-    \item{\code{name}:}{ default name is 
+    \item{\code{name}}{ default name is 
       \dQuote{parameter of a Pareto distribution}. }
   }
 }

@@ -31,6 +31,6 @@ changes an object with format runs x samplesize (old format) to
 samplesize x obsDim x runs (new format)}
  }
 }
-\seealso{\code{\link[distr]{isOldVersion}}, \code{\link[distr]{conv2NewVersion}}}
+\seealso{\code{\link[distr:versionmanagement]{isOldVersion}}, \code{\link[distr:versionmanagement]{conv2NewVersion}}}
 \keyword{utilities}
 \concept{version management}

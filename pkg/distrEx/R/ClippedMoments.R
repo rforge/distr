@@ -38,8 +38,8 @@ setMethod("m1df", "AbscontDistribution",
         mc <- as.list(mc)[-1]
         mc$useApply <- FALSE
         mc$upper <- NULL
-        mc$upp <- upper
         mc$object <- object
+        mc$upp <- upper
         mc$lowerTruncQuantile <- lowerTruncQuantile
         mc$rel.tol <- rel.tol
         return(do.call("E", args=mc ))

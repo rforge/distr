@@ -129,7 +129,7 @@ require(package, lib.loc = NULL, quietly = FALSE,
   versions in package \pkg{base}. This masking is necessary to allow for
   extra arguments \code{keywordstyles}, \code{interm.keywordstyles},
   \code{overwrite}, \code{intermediate}. Hence please confer
-  \code{\link[base]{library}}, \code{\link[base]{require}}.\cr
+  \code{\link[base]{library}}, \code{\link[base:library]{require}}.\cr
 
   If argument \code{inSweave} is \code{FALSE} or if argument
   \code{inSweave} is missing and the corresponding global
@@ -151,6 +151,7 @@ require(package, lib.loc = NULL, quietly = FALSE,
   \code{Keywordstyles} resp. \code{interm.Keywordstyles} (which we get
   by \code{getSweaveListingOption}). New entries in the global variable
   \code{.tobeDefinedPkgs} may be appended by \code{\link{setToBeDefinedPkgs}}.\cr
+
 
   The masked versions work as follows: first the call is written to an
   object and split into a \pkg{base}-package-part and into the extra arguments
@@ -180,6 +181,12 @@ file you should include an Sweave chunk like
 \preformatted{
 <<cleanup, echo=FALSE>>=
 unloadNamespace("SweaveListingUtils")
+@
+}
+or, if you want to keep the namespace of \pkg{SweaveListingUtils} loaded
+\preformatted{
+<<cleanup2, echo=FALSE>>=
+SweaveListingUtils(inSweave = FALSE)
 @
 }
 }

@@ -36,29 +36,26 @@ Objects can be created by calls of the form
 }
 \section{Slots}{
   \describe{
-    \item{\code{mixCoeff}:}{Object of class \code{"numeric"}: a vector of 
+    \item{\code{mixCoeff}}{Object of class \code{"numeric"}: a vector of 
             probabilities for the mixing components.}
-    \item{\code{mixDistr}:}{Object of class \code{"MultivarDistrList"}: a list of
+    \item{\code{mixDistr}}{Object of class \code{"MultivarDistrList"}: a list of
     multivariate distributions containing the mixing components; must be of same
     length as \code{mixCoeff}.}
-    \item{\code{img}:}{Object of class \code{"Reals"}: the space of the image of this distribution which has dimension 1
+    \item{\code{img}}{Object of class \code{"Reals"}: the space of the image of this distribution which has dimension 1
     and the name "Real Space" }
-    \item{\code{param}:}{Object of class \code{"Parameter"}: the parameter of this distribution, having only the
+    \item{\code{param}}{Object of class \code{"Parameter"}: the parameter of this distribution, having only the
     slot name "Parameter of a discrete distribution" }
-    \item{\code{r}:}{Object of class \code{"function"}: generates random numbers}
-    \item{\code{d}:}{fixed to \code{NULL}}
-    \item{\code{p}:}{Object of class \code{"OptionalFunction"}: if non-null cumulative distribution function}
-    \item{\code{q}:}{Object of class \code{"OptionalFunction"}: if non-null quantile function}
-    \item{\code{support}:}{numeric vector --- the union of all support slots of components, if existing}
-    \item{\code{gaps}:}{(numeric) matrix or \code{NULL}; the merged \code{gaps} slots of all components, 
-    if existing (else NULL)}
-    \item{\code{.withArith}:}{logical: used internally to issue warnings as to interpretation of arithmetics}
-    \item{\code{.withSim}:}{logical: used internally to issue warnings as to accuracy}
-    \item{\code{.logExact}:}{logical: used internally to flag the case where there are explicit formulae for the
+    \item{\code{r}}{Object of class \code{"function"}: generates random numbers}
+    \item{\code{d}}{fixed to \code{NULL}}
+    \item{\code{p}}{Object of class \code{"OptionalFunction"}: if non-null cumulative distribution function}
+    \item{\code{q}}{Object of class \code{"OptionalFunction"}: if non-null quantile function}
+    \item{\code{.withArith}}{logical: used internally to issue warnings as to interpretation of arithmetics}
+    \item{\code{.withSim}}{logical: used internally to issue warnings as to accuracy}
+    \item{\code{.logExact}}{logical: used internally to flag the case where there are explicit formulae for the
                               log version of density, cdf, and quantile function}
-    \item{\code{.lowerExact}:}{logical: used internally to flag the case where there are explicit formulae for the
+    \item{\code{.lowerExact}}{logical: used internally to flag the case where there are explicit formulae for the
                               lower tail version of cdf and quantile function}
-    \item{\code{Symmetry}:}{object of class \code{"DistributionSymmetry"};
+    \item{\code{Symmetry}}{object of class \code{"DistributionSymmetry"};
      used internally to avoid unnecessary calculations.}
   }
 }
@@ -77,15 +74,15 @@ class \code{"Distribution"} by class \code{"MultivariateDistribution"}.
     \item{gaps}{\code{signature(object = "MultivarMixingDistribution")} returns the corresponding slot}
     \item{.logExact}{\code{signature(object = "Distribution")}: returns slot 
       \code{.logExact} if existing; else tries to convert the object to a newer 
-      version of its class by \code{\link[distr]{conv2NewVersion}} and
+      version of its class by \code{\link[distr:versionmanagement]{conv2NewVersion}} and
       returns the corresponding slot of the converted object.}
     \item{.lowerExact}{\code{signature(object = "Distribution")}: returns slot 
        \code{.lowerExact} if existing; else tries to convert the object to a 
-       newer version of its class by \code{\link[distr]{conv2NewVersion}} and
+       newer version of its class by \code{\link[distr:versionmanagement]{conv2NewVersion}} and
      returns the corresponding slot of the converted object.}
     \item{Symmetry}{returns slot \code{Symmetry} if existing; else
     tries to convert the object to a 
-       newer version of its class by \code{\link[distr]{conv2NewVersion}} and
+       newer version of its class by \code{\link[distr:versionmanagement]{conv2NewVersion}} and
      returns the corresponding slot of the converted object.}
     \item{plot}{\code{signature(x = "MultivarMixingDistribution", y = "missing")}:
       plot for an spherically symmetric distribution; see \code{\link{plot-methods}}.
@@ -112,7 +109,7 @@ class \code{"Distribution"} by class \code{"MultivariateDistribution"}.
 \code{\link[distrEx]{MultivariateDistribution-class}},
 \code{\link[distr]{LatticeDistribution-class}},
 \code{\link[distr]{AbscontDistribution-class}},
-\code{\link[distr]{simplifyD}},
+\code{\link[distr]{simplifyD-methods}},
 \code{\link[distr]{flat.mix}}
 }
 \examples{

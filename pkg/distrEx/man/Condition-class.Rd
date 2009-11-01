@@ -11,7 +11,7 @@
 }
 \section{Slots}{
   \describe{
-    \item{\code{name}:}{Object of class \code{"character"}: name of the condition}
+    \item{\code{name}}{Object of class \code{"character"}: name of the condition}
   }
 }
 \section{Methods}{

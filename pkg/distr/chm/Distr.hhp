@@ -15,5 +15,6 @@ Title=R Help for package distr
 
 ExpOrGammaOrChisq-class.html
 Integer-class.html
+internalClassUnions-class.html
 internals.html
 showobj-methods.html

@@ -2,19 +2,21 @@
 
 \usepackage{fancyvrb}
 \usepackage{listings}
+%
+% this comment persuades Sweave not to insert \usepackage{Sweave}
+%
 
 % choose language and char set
 \usepackage[ngerman]{babel}
 \usepackage[ansinew]{inputenc}
 %
 
-\SweaveSyntax{SweaveSyntaxLatex}
 \SweaveOpts{prefix.string=Routput/parcel, keep.source=TRUE}
 
 \begin{Scode}{results=tex, echo=FALSE}
 require(SweaveListingUtils)
 SweaveListingoptions(intermediate = FALSE)
-SweaveListingPreparations()
+SweaveListingPreparations(gin = FALSE, ae = FALSE)
 \end{Scode}
 
 

@@ -25,12 +25,12 @@ distrEx -- Extensions of package distr
 
 \details{
 \tabular{ll}{
-Package: \tab distrEx\cr
-Version: \tab 2.1 \cr
-Date: \tab 2009-03-19 \cr
-Depends: \tab R(>= 2.6.0), methods, distr(>= 2.0), evd, startupmsg\cr
-LazyLoad: \tab yes\cr
-License: \tab LGPL-3\cr
+Package: \tab distrEx \cr
+Version: \tab 2.2 \cr
+Date: \tab 2009-09-04 \cr
+Depends: \tab R(>= 2.6.0), methods, distr(>= 2.2), evd, actuar, startupmsg \cr
+LazyLoad: \tab yes \cr
+License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
 }
 }
@@ -44,6 +44,7 @@ Distribution Classes
 |>|>"AbscontDistribution" (from distr)
 |>|>|>"Gumbel"
 |>|>|>"Pareto"
+|>|>|>"GPareto"
 |>"MultivariateDistribution"
 |>|>"DiscreteMVDistribution-class"
 |>"UnivariateCondDistribution"
@@ -201,6 +202,13 @@ As for general \code{packageStartupMessage}'s, you may also suppress all
  \pkg{startupmsg}-version 0.5 on.
  }
 
+\section{Package versions}{
+Note: The first two numbers of package versions do not necessarily reflect
+ package-individual development, but rather are chosen for the
+ distrXXX family as a whole in order to ease updating "depends"
+ information.
+}
+
 \author{
 Matthias Kohl \email{Matthias.Kohl@stamats.de} and \cr
 Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de},\cr 
@@ -241,5 +249,5 @@ Theory of Robustness.} PhD Thesis. Bayreuth. Available as
 \concept{multivariate distribution}
 \concept{conditional distribution}
 \seealso{
-\code{\link[distr]{distr}} 
+\code{\link[distr:0distr-package]{distr-package}} 
 }

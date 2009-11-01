@@ -2,11 +2,28 @@
 #  News: to package distrDoc 
 ######################################################################
 
+(first two numbers of package versions do not necessarily reflect 
+ package-individual development, but rather are chosen for the 
+ distrXXX family as a whole in order to ease updating "depends" 
+ information)
+
+##############
+v 2.2
+##############
+
+GENERAL ENHANCEMENTS:
+
++ removed NAMESPACE - we do not need it so far
++ added field "Encoding: latin1" to all DESCRIPTION files in order to avoid problems 
+  with e.g. Windows locale when svn replaces $LastChangedDate
++ added TOBEDONE (sic!) files for each package (by accident also in trunc; these are empty so far)
++ vignette: 
+  * included svn-multi style files to /inst/doc folders for upload on CRAN
+
 ##############
 v 2.1
 ##############
 
- * package now requires packages distrEx, distrMod, distrTeach, distrSim, distrTEst
  * description of new class "CompoundDistribution"
  * use of new helper package SweaveListingUtils
  * Rd-style:

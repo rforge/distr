@@ -1,10 +1,10 @@
 <html><head><title>Methods for Function plot in Package &lsquo;distr&rsquo;</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>plot-methods(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>plot-methods(distr)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   plot">
 <param name="keyword" value="R:   plot-methods">
 <param name="keyword" value="R:   plot,AffLinUnivarLebDecDistribution,missing-method">
@@ -22,15 +22,13 @@
 
 <h3>Description</h3>
 
-<p>
-plot-methods
-</p>
+<p>plot-methods</p>
 
 
 <h3>Usage</h3>
 
 <pre>plot(x, y, ...)
-## S4 method for signature 'AbscontDistribution, missing':
+## S4 method for signature 'AbscontDistribution,missing':
 plot(x, width = 10, height = 5.5,
      withSweave = getdistrOption("withSweave"), xlim = NULL, ylim = NULL, ngrid = 1000,
      verticals = TRUE, do.points = TRUE, main = FALSE, inner = TRUE,
@@ -40,7 +38,7 @@ plot(x, width = 10, height = 5.5,
      col.inner = par("col.main"), col.sub = par("col.sub"), cex.points = 2.0, 
      pch.u = 21, pch.a = 16, mfColRow = TRUE,
      to.draw.arg = NULL)
-## S4 method for signature 'DiscreteDistribution, missing':
+## S4 method for signature 'DiscreteDistribution,missing':
 plot(x, width = 10, height = 5.5,
      withSweave = getdistrOption("withSweave"), xlim = NULL, ylim = NULL, verticals = TRUE,
      do.points = TRUE, main = FALSE, inner = TRUE, sub = FALSE, 
@@ -50,8 +48,7 @@ plot(x, width = 10, height = 5.5,
      col.main = par("col.main"), col.inner = par("col.main"), 
      col.sub = par("col.sub"),  cex.points = 2.0, pch.u = 21, pch.a = 16, mfColRow = TRUE,
      to.draw.arg = NULL)
-## S4 method for signature 'AffLinUnivarLebDecDistribution,
-##   missing':
+## S4 method for signature 'AffLinUnivarLebDecDistribution,missing':
 plot(x, width = 10, 
      height = 5.5, withSweave = getdistrOption("withSweave"), xlim = NULL, ylim = NULL, ngrid = 1000,
      verticals = TRUE, do.points = TRUE, main = FALSE, inner = TRUE, sub = FALSE,
@@ -61,8 +58,7 @@ plot(x, width = 10,
      col.inner = par("col.main"), col.sub = par("col.sub"),  cex.points = 2.0,
      pch.u = 21, pch.a = 16, mfColRow = TRUE,
      to.draw.arg = NULL)
-## S4 method for signature 'UnivarLebDecDistribution,
-##   missing':
+## S4 method for signature 'UnivarLebDecDistribution,missing':
 plot(x, width = 10, 
      height = 14.5, withSweave = getdistrOption("withSweave"), xlim = NULL, ylim = NULL, ngrid = 1000,
      verticals = TRUE, do.points = TRUE, main = FALSE, inner = TRUE, sub = FALSE,
@@ -72,9 +68,9 @@ plot(x, width = 10,
      col.inner = par("col.main"), col.sub = par("col.sub"),  cex.points = 2.0,
      pch.u = 21, pch.a = 16, mfColRow = TRUE,
      to.draw.arg = NULL)
-## S4 method for signature 'DistrList, missing':
+## S4 method for signature 'DistrList,missing':
 plot(x, y, ...)
-## S4 method for signature 'CompoundDistribution, missing':
+## S4 method for signature 'CompoundDistribution,missing':
 plot(x, y, ...)
 </pre>
 
@@ -92,7 +88,7 @@ object of class
 <code>"DistrList"</code>: (list of) distribution(s) to be plotted </td></tr>
 <tr valign="top"><td><code>y</code></td>
 <td>
-missing </td></tr>
+ missing </td></tr>
 <tr valign="top"><td><code>xlim</code></td>
 <td>
 the x limits (x1, x2) of the plot.  Note that <code>x1 &gt; x2</code> is
@@ -131,7 +127,7 @@ list which is filled to length 3  (resp. 8 for class
 (possibly using recycling rules):  titles for 
 density/probability function -
 cdf - quantile function (each of the same form as argument 
-<code>main</code> in <code><a onclick="findlink('graphics', 'plotdefault.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.default</a></code>)</td></tr>
+<code>main</code> in <code><a onclick="findlink('graphics', 'plotdefault.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.default</a></code>)</td></tr> 
 <tr valign="top"><td><code>sub</code></td>
 <td>
 logical: is a sub-title to be used? or <br>
@@ -145,60 +141,60 @@ bottom margin &ndash; useful for non-standard sub title sizes</td></tr>
 <tr valign="top"><td><code>verticals</code></td>
 <td>
 logical: if <code>TRUE</code>, draw vertical lines at steps;
-as in <code><a onclick="findlink('stats', 'plot.stepfun.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.stepfun</a></code></td></tr>
+as in <code><a onclick="findlink('graphics', 'plot.stepfun.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.stepfun</a></code></td></tr> 
 <tr valign="top"><td><code>do.points</code></td>
 <td>
 logical: if <code>TRUE</code>, draw  also draw points at the 
 (<code>xlim</code> restricted) knot locations; as 
-in <code><a onclick="findlink('stats', 'plot.stepfun.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.stepfun</a></code></td></tr>
+in <code><a onclick="findlink('graphics', 'plot.stepfun.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.stepfun</a></code></td></tr> 
 <tr valign="top"><td><code>cex.points</code></td>
 <td>
 numeric; character expansion factor; as in 
-<code><a onclick="findlink('stats', 'plot.stepfun.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.stepfun</a></code></td></tr>
+<code><a onclick="findlink('graphics', 'plot.stepfun.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.stepfun</a></code></td></tr>              
 <tr valign="top"><td><code>col.points</code></td>
 <td>
 character or integer code; color of points; as in 
-<code><a onclick="findlink('stats', 'plot.stepfun.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.stepfun</a></code></td></tr>
+<code><a onclick="findlink('graphics', 'plot.stepfun.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.stepfun</a></code></td></tr>              
 <tr valign="top"><td><code>col.hor</code></td>
 <td>
 character or integer code; color of horizontal lines; as in 
-<code><a onclick="findlink('stats', 'plot.stepfun.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.stepfun</a></code></td></tr>
+<code><a onclick="findlink('graphics', 'plot.stepfun.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.stepfun</a></code></td></tr>              
 <tr valign="top"><td><code>col.vert</code></td>
 <td>
 character or integer code; color of vertical lines; as in 
-<code><a onclick="findlink('stats', 'plot.stepfun.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.stepfun</a></code></td></tr>
+<code><a onclick="findlink('graphics', 'plot.stepfun.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.stepfun</a></code></td></tr>              
 <tr valign="top"><td><code>cex.main</code></td>
 <td>
 magnification to be used for main titles relative
 to the current setting of <code>cex</code>; as in 
-<code><a onclick="findlink('stats', 'par.html')" style="text-decoration: underline; color: blue; cursor: hand">par</a></code></td></tr>
+<code><a onclick="findlink('graphics', 'par.html')" style="text-decoration: underline; color: blue; cursor: hand">par</a></code></td></tr>
 <tr valign="top"><td><code>cex.inner</code></td>
 <td>
 magnification to be used for inner titles relative
 to the current setting of <code>cex</code>; as in 
-<code><a onclick="findlink('stats', 'par.html')" style="text-decoration: underline; color: blue; cursor: hand">par</a></code></td></tr>
+<code><a onclick="findlink('graphics', 'par.html')" style="text-decoration: underline; color: blue; cursor: hand">par</a></code></td></tr>
 <tr valign="top"><td><code>cex.sub</code></td>
 <td>
 magnification to be used for sub titles relative
 to the current setting of <code>cex</code>; as in 
-<code><a onclick="findlink('stats', 'par.html')" style="text-decoration: underline; color: blue; cursor: hand">par</a></code></td></tr>
+<code><a onclick="findlink('graphics', 'par.html')" style="text-decoration: underline; color: blue; cursor: hand">par</a></code></td></tr>
 <tr valign="top"><td><code>col.main</code></td>
 <td>
-character or integer code; color for the main title</td></tr>
+character or integer code; color for the main title</td></tr>              
 <tr valign="top"><td><code>col.inner</code></td>
 <td>
-character or integer code; color for the inner title</td></tr>
+character or integer code; color for the inner title</td></tr>              
 <tr valign="top"><td><code>col.sub</code></td>
 <td>
-character or integer code; color for the sub title</td></tr>
+character or integer code; color for the sub title</td></tr>              
 <tr valign="top"><td><code>pch.u</code></td>
 <td>
 character or integer code; plotting characters or symbols for
-unattained value; see <code><a onclick="findlink('stats', 'points.html')" style="text-decoration: underline; color: blue; cursor: hand">points</a></code></td></tr>
+unattained value; see <code><a onclick="findlink('graphics', 'points.html')" style="text-decoration: underline; color: blue; cursor: hand">points</a></code></td></tr>              
 <tr valign="top"><td><code>pch.a</code></td>
 <td>
 character or integer code; plotting characters or symbols for
-attained value; see <code><a onclick="findlink('stats', 'points.html')" style="text-decoration: underline; color: blue; cursor: hand">points</a></code></td></tr>
+attained value; see <code><a onclick="findlink('graphics', 'points.html')" style="text-decoration: underline; color: blue; cursor: hand">points</a></code></td></tr>              
 <tr valign="top"><td><code>mfColRow</code></td>
 <td>
 shall default partition in panels be used &mdash; defaults to <code>TRUE</code></td></tr>
@@ -219,12 +215,15 @@ three panels for the absolutely continuous and the discrete part, respectively;
 <tr valign="top"><td><code>...</code></td>
 <td>
 addtional arguments for <code>plot</code> &mdash; see 
-<code><a onclick="findlink('stats', 'plot.html')" style="text-decoration: underline; color: blue; cursor: hand">plot</a></code>, 
-<code><a onclick="findlink('stats', 'plot.default.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.default</a></code>, 
-<code><a onclick="findlink('stats', 'plot.stepfun.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.stepfun</a></code> </td></tr>
+<code><a onclick="findlink('graphics', 'plot.html')" style="text-decoration: underline; color: blue; cursor: hand">plot</a></code>, 
+<code><a onclick="findlink('graphics', 'plot.default.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.default</a></code>, 
+<code><a onclick="findlink('graphics', 'plot.stepfun.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.stepfun</a></code> </td></tr>
 </table>
 
+
 <h3>Details</h3>
+
+<p>
 
 <dl>
 <dt>plot</dt><dd><code>signature(x = "AffLinUnivarLebDecDistribution", y = "missing")</code>: plots  
@@ -243,7 +242,7 @@ cumulative distribution function and the quantile function </dd>
 function, cumulative distribution function and the quantile function</dd>
 <dt>plot</dt><dd><code>signature(x = "DistrList", y = "missing")</code>: plots a list of distributions</dd>
 </dl>
-<p>
+
 Any parameters of <code>plot.default</code> may be passed on to this particular
 <code>plot</code> method. 
 </p>
@@ -260,7 +259,8 @@ and a "generated on &lt;data&gt;"-tag in case of <code>sub</code>.
 Of course, if <code>main</code> / <code>inner</code> / <code>sub</code> are <code>character</code>, this
 is used for the title; in case of <code>inner</code> it is then checked whether it
 has length 3. In all title arguments, the following patterns are substituted:
-<ul>
+
+<dl>
 <dt><code>"%C"</code></dt><dd>class of argument <code>x</code></dd>
 <dt><code>"%P"</code></dt><dd>parameters of <code>x</code> in form of a comma-separated list of 
 &lt;value&gt;'s coerced to character</dd>
@@ -271,8 +271,9 @@ empty; then ""</dd>
 &lt;name&gt; = &lt;value&gt; coerced to character</dd>
 <dt><code>"%A"</code></dt><dd>deparsed argument <code>x</code></dd>
 <dt><code>"%D"</code></dt><dd>time/date-string when the plot was generated</dd>
-</ul>
+</dl>
 
+</p>
 <p>
 If not explicitly set, <code>col.points</code>, <code>col.vert</code>,
 <code>col.hor</code>, <code>col.main</code>, <code>col.inner</code>, <code>col.sub</code> are set 
@@ -287,16 +288,14 @@ to <code>pch</code> if this arg is given and else to 16, 21, respectively.
 <p>
 If not explicitly set, <code>cex</code> is set to 1. If not explicitly set, 
 <code>cex.points</code> is set to $2.0 <code>cex</code>$ (if <code>cex</code> is given)
-and to 2.0 else.
+and to 2.0 else.              
 </p>
 
 
 <h3>See Also</h3>
 
-<p>
-<code><a onclick="findlink('stats', 'plot.html')" style="text-decoration: underline; color: blue; cursor: hand">plot</a></code>,<code><a onclick="findlink('stats', 'plot.default.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.default</a></code>, 
-<code><a onclick="findlink('stats', 'plot.stepfun.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.stepfun</a></code>,  <code><a onclick="findlink('stats', 'par.html')" style="text-decoration: underline; color: blue; cursor: hand">par</a></code>
-</p>
+<p><code><a onclick="findlink('graphics', 'plot.html')" style="text-decoration: underline; color: blue; cursor: hand">plot</a></code>,<code><a onclick="findlink('graphics', 'plot.default.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.default</a></code>, 
+<code><a onclick="findlink('graphics', 'plot.stepfun.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.stepfun</a></code>,  <code><a onclick="findlink('graphics', 'par.html')" style="text-decoration: underline; color: blue; cursor: hand">par</a></code></p>
 
 
 <h3>Examples</h3>
@@ -370,7 +369,5 @@ location.href = link;
 }
 </script>
 
-
-<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
-
+<hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 </body></html>

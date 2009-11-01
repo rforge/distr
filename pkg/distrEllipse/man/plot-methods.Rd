@@ -41,7 +41,7 @@
   \item{\dots}{addtional arguments for \code{plot} --- see 
                \code{\link[graphics]{plot}}, 
                \code{\link[graphics]{plot.default}}, 
-               \code{\link[graphics]{plot.stepfun}} }
+               \code{\link[stats]{plot.stepfun}} }
 }
 \details{
 Using \code{pairs}, plots all pairs of coordinates of the object, using simulated
@@ -61,7 +61,7 @@ plot(mylist)
 \seealso{\code{\link[graphics]{pairs}},
          \code{\link[graphics]{plot}}
          \code{\link[graphics]{plot.default}}, 
-         \code{\link[graphics]{plot.stepfun}},  \code{\link[graphics]{par}}}
+         \code{\link[stats]{plot.stepfun}},  \code{\link[graphics]{par}}}
 \keyword{methods}
 \keyword{hplot}
 \keyword{distribution}

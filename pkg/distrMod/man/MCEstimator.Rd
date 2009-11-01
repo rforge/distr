@@ -13,8 +13,7 @@
 \usage{
 MCEstimator(x, ParamFamily, criterion, crit.name, 
             startPar = NULL, Infos, trafo = NULL, 
-            penalty = 0, validity.check = TRUE,
-            asvar.fct, na.rm = TRUE, ...)
+            penalty = 1e20, validity.check = TRUE, asvar.fct, na.rm = TRUE, ...)
 }
 \arguments{
   \item{x}{ (empirical) data }
@@ -53,6 +52,11 @@ MCEstimator(x, ParamFamily, criterion, crit.name,
   An object of S4-class \code{"MCEstimate"} which inherits from class 
   \code{"Estimate"}.
 }
+\note{The criterion function may be called together with a parameter \code{thetaPar}
+ which is the current parameter value under consideration, i.e.; the value
+ under which the model distribution is considered. Hence, if desired,
+ particular criterion functions could make use of this information, by, say
+ computing the criterion differently for different parameter values.}
 %\references{  }
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
         Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}

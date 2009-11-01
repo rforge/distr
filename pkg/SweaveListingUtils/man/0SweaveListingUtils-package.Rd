@@ -14,12 +14,12 @@ thereby avoiding inconsistencies between vignette and documented source code
 }
 \details{
 \tabular{ll}{
-Package: \tab SweaveListingUtils\cr
-Version: \tab 0.3\cr
-Date: \tab 2009-03-19\cr
-Depends: \tab R(>= 2.0.0), startupmsg\cr
-LazyLoad: \tab yes\cr
-License: \tab LGPL-3\cr
+Package: \tab SweaveListingUtils \cr
+Version: \tab 0.4 \cr
+Date: \tab 2009-09-04 \cr
+Depends: \tab R(>= 2.10.0), startupmsg \cr
+LazyLoad: \tab yes \cr
+License: \tab LGPL-3 \cr
 }
 
 TeX-package \file{listings}, confer \url{http://www.ctan.org/tex-archive/macros/latex/contrib/listings/},
@@ -53,24 +53,37 @@ mark-up for newly defined functions and alread existing ones.
 More specifically, whenever in some \R code sniplet in some Sweave chunk, there
 is some \code{library} or \code{require} command, the corresponding symbols
 found by \code{ls()} afterwords in some \code{search()} entry position, are 
-registered as \code{<comma-separated keywordlist>} (printed as 5 items per line) 
-as a new "higher order" group of keywords by a corresponding
+registered as \verb{<comma-separated keywordlist>} (printed as 5 items per line)
+as a new "higher order" group of keywords by corresponding
 \preformatted{
- \\lstdefinelanguage{R}\%
-     {morekeywords=[<order number>]{ <comma-separated keywordlist> },\%
+ \\lstdefinestyle{RstyleO<numi>}\% RstyleO<numi> is the current order of Rstyle
+     {style = RstyleO<numi-1>,
+      morekeywords=[<order number>]{ <comma-separated keywordlist> },\%
       sensitive=true,\%
       keywordstyle=[<order number>]<keywordstyle as format string>,\%
+      \% [ possibly more
+      morekeywords=[<order number + 1>]{ <comma-separated keywordlist> },\%
+      sensitive=true,\%
+      keywordstyle=[<order number + 1>]<keywordstyle as format string>,\%
+      \% .... ]
       }
+ \\lstdefinestyle{Rstyle}{style = RstyleO<numi>}
 }
-TeX directive in the automatically generated \file{.tex} file
-where \code{<order number>} is incremented (resp. gets looked up from
+TeX directives in the automatically generated \file{.tex} file
+where \verb{<order number>} is incremented (resp. gets looked up from
 the global, non-exported  variable \code{.alreadyDefinedPkgs} in the package
 name space) at each instance of
-a \code{library} or \code{require} command. 
+a \code{library} or \code{require} command; an analogue incrementation
+present in \verb{<numi>} is done for subsequent (incremental)
+redefinitions of style \verb{Rstyle},
+which is controlled by the again non-exported global variable
+\code{.numberofRequires}. \verb{<order number>} and \verb{<numi>} will
+in general differ, as in one call to \code{require}/\code{library}, several
+packages may be registered at once.
 
 To this end commands
 \code{\link[SweaveListingUtils]{library}} and 
-\code{\link[SweaveListingUtils]{require}} are masked. See also
+\code{\link[SweaveListingUtils:library]{require}} are masked. See also
 \code{\link[SweaveListingUtils]{lstsetLanguage}}, 
 \code{\link[SweaveListingUtils]{changeKeywordstyles}},
 and \code{\link[SweaveListingUtils]{setToBeDefinedPkgs}} 
@@ -121,9 +134,9 @@ be found in the \file{doc} folder of this package.
 Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}\cr
 \emph{Maintainer:} Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}
 }
+\note{This version already uses 'new-style' Rd-format version 1.1.
+For versions installable for \eqn{<}\R-2.10.0, try and get a version
+0.3.x of this package from a suitable repository.}
 
-\note{This version is still to be used with 'old-style' Rd-format version 1.0.
-From version 0.4, this package will be using Rd-format version 1.1, hence we
-will require \eqn{\ge}{>=}\R-2.10.0 then.}
 \keyword{package}
 \keyword{utilities}

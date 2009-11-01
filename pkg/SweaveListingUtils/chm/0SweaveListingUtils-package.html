@@ -33,27 +33,27 @@ thereby avoiding inconsistencies between vignette and documented source code
 <table summary="Rd table">
 <tr>
  <td align="left">
-Package: </td><td align="left"> SweaveListingUtils</td>
+Package: </td><td align="left"> SweaveListingUtils </td>
 </tr>
 <tr>
  <td align="left">
-Version: </td><td align="left"> 0.3</td>
+Version: </td><td align="left"> 0.4 </td>
 </tr>
 <tr>
  <td align="left">
-Date: </td><td align="left"> 2009-03-19</td>
+Date: </td><td align="left"> 2009-09-04 </td>
 </tr>
 <tr>
  <td align="left">
-Depends: </td><td align="left"> R(&gt;= 2.0.0), startupmsg</td>
+Depends: </td><td align="left"> R(&gt;= 2.10.0), startupmsg </td>
 </tr>
 <tr>
  <td align="left">
-LazyLoad: </td><td align="left"> yes</td>
+LazyLoad: </td><td align="left"> yes </td>
 </tr>
 <tr>
  <td align="left">
-License: </td><td align="left"> LGPL-3</td>
+License: </td><td align="left"> LGPL-3 </td>
 </tr>
 <tr>
  <td align="left">
@@ -102,25 +102,38 @@ mark-up for newly defined functions and alread existing ones.
 More specifically, whenever in some <font face="Courier New,Courier" color="#666666"><b>R</b></font> code sniplet in some Sweave chunk, there
 is some <code>library</code> or <code>require</code> command, the corresponding symbols
 found by <code>ls()</code> afterwords in some <code>search()</code> entry position, are 
-registered as <code>&lt;comma-separated keywordlist&gt;</code> (printed as 5 items per line) 
-as a new "higher order" group of keywords by a corresponding
+registered as <PRE>&lt;comma-separated keywordlist&gt;</PRE> (printed as 5 items per line)
+as a new "higher order" group of keywords by corresponding
 <pre>
- \lstdefinelanguage{R}%
-     {morekeywords=[&lt;order number&gt;]{ &lt;comma-separated keywordlist&gt; },%
+ \lstdefinestyle{RstyleO&lt;numi&gt;}% RstyleO&lt;numi&gt; is the current order of Rstyle
+     {style = RstyleO&lt;numi-1&gt;,
+      morekeywords=[&lt;order number&gt;]{ &lt;comma-separated keywordlist&gt; },%
       sensitive=true,%
       keywordstyle=[&lt;order number&gt;]&lt;keywordstyle as format string&gt;,%
+      % [ possibly more
+      morekeywords=[&lt;order number + 1&gt;]{ &lt;comma-separated keywordlist&gt; },%
+      sensitive=true,%
+      keywordstyle=[&lt;order number + 1&gt;]&lt;keywordstyle as format string&gt;,%
+      % .... ]
       }
+ \lstdefinestyle{Rstyle}{style = RstyleO&lt;numi&gt;}
 </pre>
-TeX directive in the automatically generated &lsquo;<span class="file">.tex</span>&rsquo; file
-where <code>&lt;order number&gt;</code> is incremented (resp. gets looked up from
+TeX directives in the automatically generated &lsquo;<span class="file">.tex</span>&rsquo; file
+where <PRE>&lt;order number&gt;</PRE> is incremented (resp. gets looked up from
 the global, non-exported  variable <code>.alreadyDefinedPkgs</code> in the package
 name space) at each instance of
-a <code>library</code> or <code>require</code> command. 
+a <code>library</code> or <code>require</code> command; an analogue incrementation
+present in <PRE>&lt;numi&gt;</PRE> is done for subsequent (incremental)
+redefinitions of style <PRE>Rstyle</PRE>,
+which is controlled by the again non-exported global variable
+<code>.numberofRequires</code>. <PRE>&lt;order number&gt;</PRE> and <PRE>&lt;numi&gt;</PRE> will
+in general differ, as in one call to <code>require</code>/<code>library</code>, several
+packages may be registered at once.
 </p>
 <p>
 To this end commands
 <code><a href="library.html">library</a></code> and 
-<code><a href="require.html">require</a></code> are masked. See also
+<code><a href="library.html">require</a></code> are masked. See also
 <code><a href="lstsetLanguage.html">lstsetLanguage</a></code>, 
 <code><a href="changeKeywordstyles.html">changeKeywordstyles</a></code>,
 and <code><a href="setToBeDefinedPkgs.html">setToBeDefinedPkgs</a></code> 
@@ -182,9 +195,9 @@ be found in the &lsquo;<span class="file">doc</span>&rsquo; folder of this packa
 
 <h3>Note</h3>
 
-<p>This version is still to be used with 'old-style' Rd-format version 1.0.
-From version 0.4, this package will be using Rd-format version 1.1, hence we
-will require <i>&gt;=</i><font face="Courier New,Courier" color="#666666"><b>R</b></font>-2.10.0 then.</p>
+<p>This version already uses 'new-style' Rd-format version 1.1.
+For versions installable for <i>&lt;</i><font face="Courier New,Courier" color="#666666"><b>R</b></font>-2.10.0, try and get a version
+0.3.x of this package from a suitable repository.</p>
 
 
 <h3>Author(s)</h3>
@@ -204,5 +217,5 @@ location.href = link;
 }
 </script>
 
-<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.3.5 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.4 <a href="00Index.html">Index</a>]</div>
 </body></html>

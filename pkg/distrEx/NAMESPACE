@@ -13,7 +13,7 @@ exportClasses("MultivariateDistribution",
               "DiscreteCondDistribution", 
               "AbscontCondDistribution",
               "Gumbel", "PrognCondition",
-              "Pareto")
+              "Pareto", "GPareto")
 exportMethods("initialize", 
               "show", 
               "plot", 
@@ -29,6 +29,7 @@ exportMethods("ConvexContamination",
               "CvMDist") 
 exportMethods("support",
               "cond", 
+              "location", "location<-", 
               "Range",
               "loc", "loc<-", 
               "scale", "scale<-",
@@ -44,7 +45,7 @@ export("EuclCondition")
 export("LMParameter")
 export("DiscreteMVDistribution",
        "LMCondDistribution", 
-       "Gumbel", "Pareto")
+       "Gumbel", "Pareto", "GPareto")
 export("ConvexContamination")
 export("GLIntegrate",
        "distrExIntegrate") 

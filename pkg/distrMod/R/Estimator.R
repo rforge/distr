@@ -19,7 +19,7 @@ Estimator <- function(x, estimator, name, Infos, asvar = NULL, nuis.idx,
 
     completecases <- complete.cases(x)
     if(na.rm) x <- na.omit(x)
-    
+
     samplesize <- if(is.null(dim(x))) length(x) else dim(x)[2]
 
 
@@ -39,7 +39,6 @@ Estimator <- function(x, estimator, name, Infos, asvar = NULL, nuis.idx,
     res@estimate.call <- es.call
     res@name <- name
     res@Infos <- Infos
-    res@completecases <- completecases
     
     if(missing(nuis.idx)) res@nuis.idx <- NULL
     else res@nuis.idx <- nuis.idx
@@ -83,6 +82,7 @@ Estimator <- function(x, estimator, name, Infos, asvar = NULL, nuis.idx,
     }
 
 
+    res@completecases <- completecases
     return(res)
 }
 

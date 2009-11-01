@@ -5,18 +5,24 @@
 \description{
   Generates an object of class \code{"DiscreteMVDistribution"}.
 }
-\synopsis{DiscreteMVDistribution(supp, prob)}
 \usage{
-  DiscreteMVDistribution(supp, prob)
-  DiscreteMVDistribution(supp)
+DiscreteMVDistribution(supp, prob, Symmetry = NoSymmetry())
 }
 \arguments{
   \item{supp}{ numeric matrix whose rows form the support 
     of the discrete multivariate distribution. }
   \item{prob}{ vector of probability weights for the 
     elements of \code{supp}.}
+  \item{Symmetry}{you may help \R in calculations if you tell it whether
+    the distribution is non-symmetric (default) or symmetric with respect
+    to a center.}
 }
 \details{
+   Typical usages are
+   \preformatted{
+     DiscreteMVDistribution(supp, prob)
+     DiscreteMVDistribution(supp)
+   }
   Identical rows are collapsed to unique support values. 
   If \code{prob} is missing, all elements in \code{supp}
   are equally weighted. 

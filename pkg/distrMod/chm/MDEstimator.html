@@ -25,8 +25,8 @@ minimum distance estimates.
 
 <pre>
 MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name, 
-            startPar = NULL,  Infos, trafo = NULL, 
-            penalty = 0, asvar.fct, na.rm = TRUE, ...)
+            paramDepDist = FALSE, startPar = NULL,  Infos, trafo = NULL,
+            penalty = 1e20, asvar.fct, na.rm = TRUE, ...)
 </pre>
 
 
@@ -46,6 +46,12 @@ data and objects of class <code>"Distribution"</code>. </td></tr>
 <tr valign="top"><td><code>dist.name</code></td>
 <td>
  optional name of distance </td></tr>
+<tr valign="top"><td><code>paramDepDist</code></td>
+<td>
+logical; will computation of distance be parameter
+dependent (see also note below)? if <code>TRUE</code>, distance function
+must be able to digest a parameter <code>thetaPar</code>; otherwise
+this parameter will be eliminated if present in <code>...</code>-argument.</td></tr>
 <tr valign="top"><td><code>startPar</code></td>
 <td>
  initial information used by <code>optimize</code> resp. <code>optim</code>;
@@ -77,7 +83,7 @@ may also process further arguments passed through the <code>...</code> argument<
 logical: if  <code>TRUE</code>, the estimator is evaluated at <code>complete.cases(x)</code>.</td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
- further arguments to <code>criterion</code> or <code>optimize</code> 
+ further arguments to <code>criterion</code> or <code>optimize</code>
 or <code>optim</code>, respectively. </td></tr>
 </table>
 
@@ -101,6 +107,15 @@ An object of S4-class <code>"MCEstimate"</code> which inherits from class
 </p>
 
 
+<h3>Note</h3>
+
+<p>The distance function may be called together with a parameter <code>thetaPar</code>
+which is the current parameter value under consideration, i.e.; the value
+under which the model distribution is considered. Hence, if desired,
+particular distance functions could make use of this information, by, say
+computing the distance differently for different parameter values.</p>
+
+
 <h3>Author(s)</h3>
 
 <p>Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>,<br>
@@ -120,7 +135,7 @@ Rieder, H. (1994) <EM>Robust Asymptotic Statistics</EM>. New York: Springer.
 <h3>See Also</h3>
 
 <p><code></code>, <code></code>, 
-<code>, <code></code></code>,
+<code></code>, <code></code>,
 <code><a onclick="findlink('MASS', 'fitdistr.html')" style="text-decoration: underline; color: blue; cursor: hand">fitdistr</a></code> </p>
 
 
@@ -172,5 +187,5 @@ location.href = link;
 }
 </script>
 
-<hr><div align="center">[Package <em>distrMod</em> version 2.1.1 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>distrMod</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 </body></html>

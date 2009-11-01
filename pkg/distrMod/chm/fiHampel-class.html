@@ -1,10 +1,10 @@
 <html><head><title>Finite-sample Hampel risk</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>fiHampel-class(distrMod)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>fiHampel-class(distrMod)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   fiHampel-class">
 <param name="keyword" value="R:   bound,fiHampel-method">
 <param name="keyword" value="R:   show,fiHampel-method">
@@ -17,11 +17,9 @@
 
 <h3>Description</h3>
 
-<p>
-Class of finite-sample Hampel risk which is
+<p>Class of finite-sample Hampel risk which is
 the trace of the finite-sample covariance subject to
-a given bias bound (bound on gross error sensitivity).
-</p>
+a given bias bound (bound on gross error sensitivity). </p>
 
 
 <h3>Objects from the Class</h3>
@@ -29,18 +27,23 @@ a given bias bound (bound on gross error sensitivity).
 <p>
 Objects can be created by calls of the form <code>new("fiHampel", ...)</code>.
 More frequently they are created via the generating function 
-<code>fiHampel</code>.
+<code>fiHampel</code>. 
 </p>
 
 
 <h3>Slots</h3>
 
+<p>
+
 <dl>
-<dt><code>type</code>:</dt><dd>Object of class <code>"character"</code>: 
+<dt><code>type</code></dt><dd>Object of class <code>"character"</code>: 
 &ldquo;trace of finite-sample covariance for given bias bound&rdquo;. </dd>
-<dt><code>bound</code>:</dt><dd>Object of class <code>"numeric"</code>: 
+<dt><code>bound</code></dt><dd>Object of class <code>"numeric"</code>: 
 given positive bias bound. </dd>
 </dl>
+
+</p>
+
 
 <h3>Extends</h3>
 
@@ -52,17 +55,20 @@ Class <code>"RiskType"</code>, by class <code>"fiRisk"</code>.
 
 <h3>Methods</h3>
 
+<p>
+
 <dl>
 <dt>bound</dt><dd><code>signature(object = "fiHampel")</code>: 
 accessor function for slot <code>bound</code>. </dd>
 <dt>show</dt><dd><code>signature(object = "fiHampel")</code></dd>
 </dl>
 
+</p>
+
+
 <h3>Author(s)</h3>
 
-<p>
-Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
-</p>
+<p>Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a></p>
 
 
 <h3>References</h3>
@@ -73,15 +79,13 @@ The Approach Based on Influence Functions. New York: Wiley.
 </p>
 <p>
 Ruckdeschel, P. and Kohl, M. (2005) How to approximate 
-the finite sample risk of M-estimators.
+the finite sample risk of M-estimators.   
 </p>
 
 
 <h3>See Also</h3>
 
-<p>
-<code><a href="fiRisk-class.html">fiRisk-class</a></code>, <code><a href="fiHampel.html">fiHampel</a></code>
-</p>
+<p><code></code>, <code></code></p>
 
 
 <h3>Examples</h3>
@@ -90,8 +94,15 @@ the finite sample risk of M-estimators.
 new("fiHampel")
 </pre>
 
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
 
-
-<hr><div align="center">[Package <em>distrMod</em> version 2.1 <a href="00Index.html">Index]</a></div>
-
+<hr><div align="center">[Package <em>distrMod</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 </body></html>

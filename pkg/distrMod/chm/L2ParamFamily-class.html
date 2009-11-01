@@ -1,10 +1,10 @@
 <html><head><title>L2 differentiable parametric family</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>L2ParamFamily-class(distrMod)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>L2ParamFamily-class(distrMod)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   plot">
 <param name="keyword" value="R:   plot-methods">
 <param name="keyword" value="R:   L2ParamFamily-class">
@@ -34,9 +34,7 @@
 
 <h3>Description</h3>
 
-<p>
-Class of L2 differentiable parametric families.
-</p>
+<p>Class of L2 differentiable parametric families.</p>
 
 
 <h3>Objects from the Class</h3>
@@ -44,71 +42,81 @@ Class of L2 differentiable parametric families.
 <p>
 Objects can be created by calls of the form <code>new("L2ParamFamily", ...)</code>.
 More frequently they are created via the generating function 
-<code>L2ParamFamily</code>.
+<code>L2ParamFamily</code>. 
 </p>
 
 
 <h3>Slots</h3>
 
+<p>
+
 <dl>
-<dt><code>name</code>:</dt><dd>[inherited from class <code>"ProbFamily"</code>] 
+<dt><code>name</code></dt><dd>[inherited from class <code>"ProbFamily"</code>] 
 object of class <code>"character"</code>: 
 name of the family. </dd>
-<dt><code>distribution</code>:</dt><dd>[inherited from class <code>"ProbFamily"</code>] 
+<dt><code>distribution</code></dt><dd>[inherited from class <code>"ProbFamily"</code>] 
 object of class <code>"Distribution"</code>:
 member of the family. </dd>
-<dt><code>distrSymm</code>:</dt><dd>[inherited from class <code>"ProbFamily"</code>] 
+<dt><code>distrSymm</code></dt><dd>[inherited from class <code>"ProbFamily"</code>] 
 object of class <code>"DistributionSymmetry"</code>: 
 symmetry of <code>distribution</code>. </dd>
-<dt><code>param</code>:</dt><dd>[inherited from class <code>"ParamFamily"</code>]
+<dt><code>param</code></dt><dd>[inherited from class <code>"ParamFamily"</code>]
 object of class <code>"ParamFamParameter"</code>:
 parameter of the family. </dd>
-<dt><code>fam.call</code>:</dt><dd>[inherited from class <code>"ParamFamily"</code>]
+<dt><code>fam.call</code></dt><dd>[inherited from class <code>"ParamFamily"</code>]
 object of class <code>"call"</code>:
 call by which parametric family was produced.</dd>
-<dt><code>makeOKPar</code>:</dt><dd>[inherited from class <code>"ParamFamily"</code>]
+<dt><code>makeOKPar</code></dt><dd>[inherited from class <code>"ParamFamily"</code>]
 object of class <code>"function"</code>:
 has argument <code>param</code> &mdash; the (total) parameter, 
 returns valid parameter; used if <code>optim</code> resp. <code>optimize</code>&mdash;
-try to use ``illegal'' parameter values; then <code>makeOKPar</code> makes
+try to use &ldquo;illegal&rdquo; parameter values; then <code>makeOKPar</code> makes
 a valid parameter value out of the illegal one.</dd>
-<dt><code>startPar</code>:</dt><dd>[inherited from class <code>"ParamFamily"</code>]
+<dt><code>startPar</code></dt><dd>[inherited from class <code>"ParamFamily"</code>]
 object of class <code>"function"</code>:
 has argument <code>x</code> &mdash; the data, 
 returns starting parameter for <code>optim</code> resp. <code>optimize</code>&mdash;
 a starting estimator in case parameter is multivariate
 or a search interval in case parameter is univariate.</dd>
-<dt><code>modifyParam</code>:</dt><dd>[inherited from class <code>"ParamFamily"</code>]
+<dt><code>modifyParam</code></dt><dd>[inherited from class <code>"ParamFamily"</code>]
 object of class <code>"function"</code>:
 mapping from the parameter space (represented by <code>"param"</code>) 
 to the distribution space (represented by <code>"distribution"</code>). </dd>
-<dt><code>props</code>:</dt><dd>[inherited from class <code>"ProbFamily"</code>]
+<dt><code>props</code></dt><dd>[inherited from class <code>"ProbFamily"</code>]
 object of class <code>"character"</code>:
 properties of the family. </dd>
-<dt><code>L2deriv</code>:</dt><dd>object of class <code>"EuclRandVariable"</code>:
+<dt><code>L2deriv</code></dt><dd>
+object of class <code>"EuclRandVariable"</code>:
 L2 derivative of the family. </dd>
-<dt><code>L2deriv.fct</code>:</dt><dd>object of class <code>"function"</code>: mapping from 
+<dt><code>L2deriv.fct</code></dt><dd>
+object of class <code>"function"</code>: mapping from 
 the parameter space (argument <code>param</code> of class 
 <code>"ParamFamParameter"</code>) to a mapping from observation <code>x</code> to the  
 value of the L2derivative; <code>L2deriv.fct</code> is then used from observation
 <code>x</code> to value of the L2derivative; <code>L2deriv.fct</code> is used by 
 <code>modifyModel</code> to  move the L2deriv according to a change in the 
 parameter </dd>
-<dt><code>L2derivSymm</code>:</dt><dd>[
+<dt><code>L2derivSymm</code></dt><dd>[
 object of class <code>"FunSymmList"</code>:
 symmetry of the maps included in <code>L2deriv</code>. </dd>
-<dt><code>L2derivDistr</code>:</dt><dd>object of class <code>"UnivarDistrList"</code>:
+<dt><code>L2derivDistr</code></dt><dd>
+object of class <code>"UnivarDistrList"</code>:
 list which includes the distribution of <code>L2deriv</code>. </dd>
-<dt><code>L2derivDistrSymm</code>:</dt><dd>object of class <code>"DistrSymmList"</code>:
+<dt><code>L2derivDistrSymm</code></dt><dd>
+object of class <code>"DistrSymmList"</code>:
 symmetry of the distributions included in <code>L2derivDistr</code>. </dd>
-<dt><code>FisherInfo.fct</code>:</dt><dd>object of class <code>"function"</code>: 
+<dt><code>FisherInfo.fct</code></dt><dd>
+object of class <code>"function"</code>: 
 mapping from the parameter space (argument  <code>param</code> of class 
 <code>"ParamFamParameter"</code>) to the set of positive
 semidefinite matrices; <code>FisherInfo.fct</code> is used by <code>modifyModel</code> to 
 move the Fisher information according to a change in the parameter </dd> 
-<dt><code>FisherInfo</code>:</dt><dd>object of class <code>"PosDefSymmMatrix"</code>:
+<dt><code>FisherInfo</code></dt><dd>
+object of class <code>"PosDefSymmMatrix"</code>:
 Fisher information of the family. </dd>
 </dl>
+</p>
+
 
 <h3>Extends</h3>
 
@@ -120,56 +128,58 @@ Class <code>"ProbFamily"</code>, by class <code>"ParamFamily"</code>.
 
 <h3>Methods</h3>
 
+<p>
+
 <dl>
 <dt>L2deriv</dt><dd><code>signature(object = "L2ParamFamily")</code>: 
 accessor function for <code>L2deriv</code>. </dd>
-
-
+</p>
+<p>
 <dt>L2deriv</dt><dd><code>signature(object = "L2ParamFamily", 
                                    param = "ParamFamParameter")</code>: 
 returns the L2derivative at <code>param</code>, i.e.
 evaluates slot function <code>L2deriv.fct</code> at <code>param</code>. </dd>
-
-
+</p>
+<p>
 <dt>L2derivSymm</dt><dd><code>signature(object = "L2ParamFamily")</code>: 
 accessor function for <code>L2derivSymm</code>. </dd>
-
-
+</p>
+<p>
 <dt>L2derivDistr</dt><dd><code>signature(object = "L2ParamFamily")</code>:
 accessor function for <code>L2derivDistr</code>. </dd>
-
-
+</p>
+<p>
 <dt>L2derivDistrSymm</dt><dd><code>signature(object = "L2ParamFamily")</code>:
 accessor function for <code>L2derivDistrSymm</code>. </dd>
-
-
+</p>
+<p>
 <dt>FisherInfo</dt><dd><code>signature(object = "L2ParamFamily")</code>:
 accessor function for <code>FisherInfo</code>. </dd>
-
-
+</p>
+<p>
 <dt>FisherInfo</dt><dd><code>signature(object = "L2ParamFamily", 
                                    param = "ParamFamParameter")</code>: 
 returns the Fisher Information at <code>param</code>, i.e.
 evaluates slot function <code>FisherInfo.fct</code> at <code>param</code>. </dd>
-
-
+</p>
+<p>
 <dt>checkL2deriv</dt><dd><code>signature(object = "L2ParamFamily")</code>: 
 check centering of <code>L2deriv</code> and compute precision 
 of Fisher information. </dd>
-
-
+</p>
+<p>
 <dt>E</dt><dd><code>signature(object = "L2ParamFamily", fun = "EuclRandVariable", cond = "missing")</code>:
 expectation of <code>fun</code> under the distribution of <code>object</code>. </dd>
-
-
+</p>
+<p>
 <dt>E</dt><dd><code>signature(object = "L2ParamFamily", fun = "EuclRandMatrix", cond = "missing")</code>:
 expectation of <code>fun</code> under the distribution of <code>object</code>. </dd>
-
-
+</p>
+<p>
 <dt>E</dt><dd><code>signature(object = "L2ParamFamily", fun = "EuclRandVarList", cond = "missing")</code>:
 expectation of <code>fun</code> under the distribution of <code>object</code>. </dd>
-
-
+</p>
+<p>
 <dt>plot</dt><dd><code>signature(x = "L2ParamFamily")</code>: 
 plot of <code>distribution</code> and <code>L2deriv</code>. More precisely,
 this method has arguments
@@ -179,7 +189,8 @@ this method has arguments
              col.inner = par("col.main"), cex.inner = 0.8, 
              bmar = par("mar")[1], tmar = par("mar")[3], ...,
              mfColRow = TRUE, to.draw.arg = NULL)
-      </code> where <dl>
+      </code> where 
+<dl>
 <dt>x</dt><dd>object of class <code>"L2ParamFamily"</code></dd>
 <dt>withSweave</dt><dd>logical: if <code>TRUE</code> (for working with <CODE>Sweave</CODE>) 
 no extra device is opened and height/width are not set</dd>
@@ -219,9 +230,10 @@ trafo matrix.
 <code><a onclick="findlink('stats', 'plot.html')" style="text-decoration: underline; color: blue; cursor: hand">plot</a></code>, 
 <code><a onclick="findlink('stats', 'plot.default.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.default</a></code>, 
 <code><a onclick="findlink('stats', 'plot.stepfun.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.stepfun</a></code> </dd>
-
+</p>
 <p>
-</dl> 
+</dl>
+ 
 if <code>...</code> contains argument <code>ylim</code>, this may either be
 as in <code>plot.default</code> (i.e. a vector of length 2) or a vector of 
 length 4, where the first two elements are the values for <code>ylim</code> 
@@ -229,18 +241,21 @@ in panels "d.c" and "d.d", and the last
 two elements are the values for <code>ylim</code> resp. <code>xlim</code> in panels 
 "p", "p.c", "p.d" and "q", "q.c", "q.d".
 </dd>
-
-
+</p>
+<p>
+</p>
+<p>
 <dt>modifyModel</dt><dd><code>signature(model = "L2ParamFamily", param = "ParamFamParameter")</code>:
 moves the L2-parametric Family <code>model</code> to parameter <code>param</code> </dd>
 </dl>
 
+</p>
+
+
 <h3>Author(s)</h3>
 
-<p>
-Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>,<br>
-Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
-</p>
+<p>Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a></p>
 
 
 <h3>References</h3>
@@ -256,9 +271,7 @@ Bayreuth: Dissertation.
 
 <h3>See Also</h3>
 
-<p>
-<code><a href="L2ParamFamily.html">L2ParamFamily</a></code>, <code><a href="ParamFamily-class.html">ParamFamily-class</a></code>
-</p>
+<p><code></code>, <code></code></p>
 
 
 <h3>Examples</h3>
@@ -286,7 +299,5 @@ location.href = link;
 }
 </script>
 
-
-<hr><div align="center">[Package <em>distrMod</em> version 2.1.1 <a href="00Index.html">Index</a>]</div>
-
+<hr><div align="center">[Package <em>distrMod</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 </body></html>

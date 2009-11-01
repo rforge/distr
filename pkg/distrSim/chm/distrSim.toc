@@ -687,7 +687,8 @@
 <param name="Local" value="Simulation-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Classes "vectororNULL", "MatrixorNULLorVector", "ArrayorNULLorVector", "DataframeorSeqDataFrame" and "ArrayorNULLorVectororDataframeorSeqDataFrames"">
+<param name="Name" value="Classes "vectororNULL",  "MatrixorNULLorVector", "ArrayorNULLorVector", "DataframeorSeqDataFrame" and 
+      "ArrayorNULLorVectororDataframeorSeqDataFrames"">
 <param name="Local" value="vectororNULL-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">

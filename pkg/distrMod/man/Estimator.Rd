@@ -8,8 +8,7 @@
 }
 \usage{
 Estimator(x, estimator, name, Infos, asvar = NULL, nuis.idx,
-          trafo = NULL, fixed = NULL,
-          asvar.fct, na.rm = TRUE, ...)
+          trafo = NULL, fixed = NULL, asvar.fct, na.rm = TRUE, ...)
 }
 \arguments{
   \item{x}{ (empirical) data }

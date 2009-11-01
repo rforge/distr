@@ -15,13 +15,13 @@ and error scale \eqn{\sigma}{sigma}. }
 }
 \section{Slots}{
   \describe{
-    \item{\code{theta}:}{ numeric vector: 
+    \item{\code{theta}}{ numeric vector: 
       regression parameter. }
-    \item{\code{intercept}:}{ real number: 
+    \item{\code{intercept}}{ real number: 
       intercept parameter. }
-    \item{\code{scale}:}{ positive real number: 
+    \item{\code{scale}}{ positive real number: 
       scale paramter. }
-    \item{\code{name}:}{ character vector:
+    \item{\code{name}}{ character vector:
       the default name is \dQuote{parameter of a linear regression model}. }
   }
 }

@@ -30,7 +30,12 @@ distrModMASK <- function(library = NULL)
 
 
 ## norms to be used in prototype already
-EuclideanNorm <- function(x) sqrt(colSums(x^2))
+EuclideanNorm <- function(x){ 
+    if(is.vector(x)) 
+        return(abs(x))
+    else 
+        return(sqrt(colSums(x^2)))
+}
 QuadFormNorm <- function(x, A) sqrt(colSums(x*(A %*% x)))
 
 ################################
@@ -39,9 +44,6 @@ QuadFormNorm <- function(x, A) sqrt(colSums(x*(A %*% x)))
 ##
 ################################
 
-### from Matthias' thesis / ROptEst
-## optional numeric
-setClassUnion("OptionalNumeric", c("numeric", "NULL"))
 
 ## matrix or function or NULL -- a class for trafo's
 setClassUnion("MatrixorFunction", c("matrix", "OptionalFunction"))
@@ -54,56 +56,6 @@ setClassUnion("OptionalNumericOrMatrix", c("OptionalNumeric", "matrix"))
 ##
 ################################
 ### from Matthias' thesis / ROptEst
-## positive definite, symmetric matrices with finite entries
-setClass("PosSemDefSymmMatrix", contains = "matrix",
-            prototype = prototype(matrix(1)),
-            validity = function(object){
-                if(nrow(object) != ncol(object))
-                    stop("no square matrix")
-                if(any(!is.finite(object)))
-                    stop("inifinite or missing values in matrix")
-                if(!isTRUE(all.equal(object, t(object), .Machine$double.eps^0.5,
-                                     check.attributes = FALSE)))
-                    stop("matrix is not symmetric")
-                if(!all(eigen(object)$values > -100*.Machine$double.eps))
-                   stop("matrix is (numerically) not positive semi - definite")
-               return(TRUE)
-            })
-
-## positive definite, symmetric matrices with finite entries
-setClass("PosDefSymmMatrix", contains = "PosSemDefSymmMatrix",
-            validity = function(object){
-               if(!all(eigen(object)$values > 100*.Machine$double.eps))
-                   stop("matrix is (numerically) not positive definite")
-               valid <- getValidity(getClass("PosSemDefSymmMatrix"))
-               valid(as(object, "PosSemDefSymmMatrix"))
-               return(TRUE)
-            })
-
-### from Matthias' thesis / ROptEst
-## class of symmetries
-setClass("Symmetry", representation(type = "character",
-                                    SymmCenter = "ANY"),
-                     contains = "VIRTUAL")
-
-### from Matthias' thesis / ROptEst
-## symmetry of distributions
-setClass("DistributionSymmetry", contains = c("Symmetry", "VIRTUAL"))
-
-## no symmetry
-setClass("NoSymmetry", contains = "DistributionSymmetry",
-            prototype = prototype(type = "non-symmetric distribution",
-                                  SymmCenter = NULL))
-
-## elliptical symmetry
-setClass("EllipticalSymmetry", contains = "DistributionSymmetry",
-            prototype = prototype(type = "elliptically symmetric distribution",
-                                  SymmCenter = numeric(0)))
-
-## spherical symmetry
-setClass("SphericalSymmetry", contains = "EllipticalSymmetry",
-            prototype = prototype(type = "spherically symmetric distribution",
-                                  SymmCenter = numeric(0)))
 
 ## symmetry of functions
 setClass("FunctionSymmetry", contains = c("Symmetry", "VIRTUAL"))
@@ -123,17 +75,6 @@ setClass("OddSymmetric", contains = "FunctionSymmetry",
             prototype = prototype(type = "odd function",
                                   SymmCenter = numeric(0)))
 
-## list of symmetry types
-setClass(Class = "DistrSymmList",
-            prototype = prototype(list(new("NoSymmetry"))),
-            contains = "list",
-            validity = function(object){
-                nrvalues <- length(object)
-                for(i in 1:nrvalues)
-                    if(!is(object[[i]], "DistributionSymmetry"))
-                        stop("element ", i, " is no 'DistributionSymmetry'")
-                return(TRUE)
-            })
 
 ## list of symmetry types
 setClass(Class = "FunSymmList",
@@ -163,8 +104,9 @@ setClass("ParamFamParameter",
                    stop("invalid transformation:\n",
                         "should be a matrix or a function")
                 if(is.matrix(object@trafo)){
-                dimension <- length(object@main) #+ length(object@nuisance)
-                .validTrafo(object@trafo, dimension) ### check validity
+                ln.m <- length(object@main)
+                ln.n <- length(object@nuisance)
+                .validTrafo(object@trafo, ln.m, ln.m+ln.n) ### check validity
                 return(TRUE)}
             })
 
@@ -454,17 +396,24 @@ setClass("Estimate",
                    Infos = matrix(c(character(0),character(0)), ncol=2,
                                   dimnames=list(character(0), c("method", "message"))),
                    trafo = list(fct = function(x){
-                                      list(fval = x, mat = matrix(1))},
+                                      list(fval = x, mat = matrix(0))},
                                 mat = matrix(1)), ### necessary for comparison with unit matrix
                    nuis.idx = NULL,
                    fixed = NULL,
                    untransformed.estimate = NULL,
                    untransformed.asvar = NULL),
          validity = function(object){
-            if(is.null(dim(object@estimate)))
-               len <- length(object@estimate)
-            else
-               len <- dim(object@estimate)[1]
+            if(is.null(object@untransformed.estimate)){
+               if(is.null(dim(object@estimate)))
+                  len <- length(object@estimate)
+               else
+                  len <- dim(object@estimate)[1]
+            }else{
+               if(is.null(dim(object@untransformed.estimate)))
+                  len <- length(object@untransformed.estimate)
+               else
+                  len <- dim(object@untransformed.estimate)[1]
+            }
             if(!is.character(object@Infos))
                 stop("'Infos' contains no matrix of characters")
             if(ncol(object@Infos)!=2)
@@ -478,7 +427,9 @@ setClass("Estimate",
 setClass("MCEstimate",
          representation(criterion = "numeric",
                         criterion.fct = "function",
-                        method = "character"),
+                        method = "character",
+                        optimwarn = "character",
+                        startPar = "ANY"),
          prototype(name = "Minimum criterion estimate",
                    estimate = numeric(0),
                    samplesize = numeric(0),
@@ -493,7 +444,9 @@ setClass("MCEstimate",
                    nuis.idx = NULL,
                    trafo = list(fct = function(x){
                                       list(fval = x, mat = matrix(1))},
-                                mat = matrix(1))
+                                mat = matrix(1)),
+                   optimwarn = "",
+                   startPar = NULL
                    ),
          contains = "Estimate")
 

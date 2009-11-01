@@ -19,6 +19,8 @@ setMethod("E", signature(object = "UnivariateDistribution",
                          fun = "missing", 
                          cond = "missing"),
     function(object, low = NULL, upp = NULL, Nsim = getdistrExOption("MCIterations"), ...){
+        if(is(Symmetry(object),"SphericalSymmetry"))
+           return(SymmCenter(Symmetry(object)))
         xsim <- r(object)(Nsim)
         if(is.null(low)) low <- -Inf
         if(is.null(upp)) upp <- Inf
@@ -34,6 +36,8 @@ setMethod("E", signature(object = "AbscontDistribution",
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
              IQR.fac = getdistrExOption("IQR.fac"), ...
              ){
+        if(is(Symmetry(object),"SphericalSymmetry"))
+           return(SymmCenter(Symmetry(object)))
         integrand <- function(x, dfun){ x * dfun(x) }
 
         if(is.null(low)) low <- -Inf
@@ -43,7 +47,9 @@ setMethod("E", signature(object = "AbscontDistribution",
               upperTruncQuantile, IQR.fac)
         low <- Ib["low"]
         upp <- Ib["upp"]
+        #print(Ib)
         if(upp<low) return(0)
+
         return(distrExIntegrate(f = integrand, 
                     lower = low,
                     upper = upp, 
@@ -54,6 +60,8 @@ setMethod("E", signature(object = "DiscreteDistribution",
                          fun = "missing", 
                          cond = "missing"),
     function(object, low = NULL, upp = NULL, ...){
+        if(is(Symmetry(object),"SphericalSymmetry"))
+           return(SymmCenter(Symmetry(object)))
         if(is.null(low)) low <- -Inf
         if(is.null(upp)) upp <- Inf
         supp <- support(object)
@@ -70,20 +78,22 @@ setMethod("E", signature(object = "LatticeDistribution",
                          cond = "missing")))
 
 
-setMethod("E", signature(object = "AffLinDistribution",
-                         fun = "missing",
+setMethod("E", signature(object = "AffLinDistribution", 
+                         fun = "missing", 
                          cond = "missing"),
     function(object, low = NULL, upp = NULL, ...){
+             if(is(Symmetry(object),"SphericalSymmetry"))
+                return(SymmCenter(Symmetry(object)))
              if(is.null(low)) low <- -Inf
              if(is.null(upp)) upp <- Inf
              if(upp<low) return(0)
              if(object@a >= 0){
-                return(object@a * E(object@X0, low = object@a*low,
-                             upp = object@a*upp, ...) +
+                return(object@a * E(object@X0, low = (low-object@b)/object@a,
+                             upp = (upp-object@b)/object@a, ...) +
                 object@b * (p(object)(upp)-p.l(object)(low)))
              }else{
-                return(object@a * E(object@X0, low = object@a*upp,
-                             upp = object@a*low, ...) +
+                return(object@a * E(object@X0, low = (upp-object@b)/object@a,
+                             upp = (low-object@b)/object@a, ...) +
                 object@b *    (p(object)(upp)-p.l(object)(low)))
              }
     })
@@ -114,12 +124,16 @@ setMethod("E", signature(object = "MultivariateDistribution",
                          fun = "missing", 
                          cond = "missing"),
     function(object, Nsim = getdistrExOption("MCIterations"), ...){
+        if(is(Symmetry(object),"EllipticalSymmetry"))
+              return(SymmCenter(Symmetry(object)))
         return(colMeans(r(object)(Nsim)))
     })
 setMethod("E", signature(object = "DiscreteMVDistribution", 
                          fun = "missing", 
                          cond = "missing"),
     function(object, low = NULL, upp = NULL, ...){
+        if(is(Symmetry(object),"EllipticalSymmetry"))
+              return(SymmCenter(Symmetry(object)))
         supp <- support(object)
         integrand <- function(x, dfun){ x * dfun(t(x)) }
         erg <- apply(supp, 1, integrand, dfun = d(object))
@@ -257,8 +271,7 @@ setMethod("E", signature(object = "AbscontCondDistribution",
              rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrExOption("IQR.fac"), ...
-             ){
+             IQR.fac = getdistrExOption("IQR.fac"), ...){
         fct <- function(x, dfun, cond){ x * dfun(x, cond) }
         if(useApply){
             integrand <- function(x, dfun, cond){ 
@@ -272,7 +285,7 @@ setMethod("E", signature(object = "AbscontCondDistribution",
         if(is.null(upp)) upp <- Inf
 
         Ib <- .getIntbounds(object, low, upp, lowerTruncQuantile, 
-              upperTruncQuantile, IQR.fac, cond = cond)
+                            upperTruncQuantile, IQR.fac, cond = cond)
         low <- Ib["low"]
         upp <- Ib["upp"]
 
@@ -283,7 +296,7 @@ setMethod("E", signature(object = "AbscontCondDistribution",
 setMethod("E", signature(object = "DiscreteCondDistribution", 
                          fun = "missing",
                          cond = "numeric"),
-    function(object,  cond, useApply = TRUE, low = NULL, upp = NULL, ...){
+    function(object, cond, useApply = TRUE, low = NULL, upp = NULL, ...){
         if(is.null(low)) low <- -Inf
         if(is.null(upp)) upp <- Inf
         supp <- support(object)(cond)
@@ -325,8 +338,7 @@ setMethod("E", signature(object = "AbscontCondDistribution",
              rel.tol= getdistrExOption("ErelativeTolerance"), 
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
-             IQR.fac = getdistrExOption("IQR.fac")
-             , ...){
+             IQR.fac = getdistrExOption("IQR.fac"), ...){
         if(withCond)
             if(useApply){
                 integrand <- function(x, dfun, fun, cond, ...){ 
@@ -428,6 +440,7 @@ setMethod("E", signature(object = "Beta",
         else
           return(shape1(object)/(shape1(object)+shape2(object)))
     })
+## source: http://mathworld.wolfram.com/BetaDistribution.html
 
 setMethod("E", signature(object = "Binom", 
                          fun = "missing", 
@@ -452,6 +465,8 @@ setMethod("E", signature(object = "Binom",
     }
    })
 
+### source: http://mathworld.wolfram.com/BinomialDistribution.html
+
 setMethod("E", signature(object = "Cauchy", 
                          fun = "missing", 
                          cond = "missing"),
@@ -472,6 +487,8 @@ setMethod("E", signature(object = "Cauchy",
     }
 #        return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
   })
+
+### source http://mathworld.wolfram.com/CauchyDistribution.html
 
 setMethod("E", signature(object = "Chisq", 
                          fun = "missing", 
@@ -494,6 +511,7 @@ setMethod("E", signature(object = "Chisq",
         }
     }
  })
+### source http://mathworld.wolfram.com/Chi-SquaredDistribution.html
 
 setMethod("E", signature(object = "Dirac", 
                          fun = "missing", 
@@ -518,6 +536,8 @@ setMethod("E", signature(object = "DExp",
         return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
     })
 
+### source http://mathworld.wolfram.com/LaplaceDistribution.html
+
 setMethod("E", signature(object = "Exp", 
                          fun = "missing", 
                          cond = "missing"),
@@ -540,6 +560,7 @@ setMethod("E", signature(object = "Exp",
     }
  })
 
+ ### source http://mathworld.wolfram.com/ExponentialDistribution.html
 
 setMethod("E", signature(object = "Fd", 
                          fun = "missing", 
@@ -555,6 +576,7 @@ setMethod("E", signature(object = "Fd",
     else
         return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
     })
+### source (without ncp) http://mathworld.wolfram.com/F-Distribution.html
 
 setMethod("E", signature(object = "Gammad", 
                          fun = "missing", 
@@ -566,6 +588,49 @@ setMethod("E", signature(object = "Gammad",
     else
         return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
     })
+
+### source http://mathworld.wolfram.com/GammaDistribution.html
+
+setMethod("E", signature(object = "Gammad",
+                         fun = "function",
+                         cond = "missing"),
+    function(object, fun, low = NULL, upp = NULL,
+             rel.tol= getdistrExOption("ErelativeTolerance"),
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"),
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"),
+             IQR.fac = getdistrExOption("IQR.fac"), ...
+             ){
+
+        dots <- list(...)
+        dots.withoutUseApply <- dots
+        useApply <- TRUE
+        if(!is.null(dots$useApply)) useApply <- dots$useApply
+        dots.withoutUseApply$useApply <- NULL
+        integrand <- function(x, dfun, ...){   di <- dim(x)
+                                               y <- exp(x)
+                                               if(useApply){
+                                                    funy <- sapply(y,fun, ...)
+                                                    dim(y) <- di
+                                                    dim(funy) <- di
+                                               }else funy <- fun(y,...)
+                                        return(funy * y * dfun(y)) }
+
+        if(is.null(low)) low <- -Inf
+        if(is.null(upp)) upp <- Inf
+
+        Ib <- .getIntbounds(object, low, upp, lowerTruncQuantile,
+              upperTruncQuantile, IQR.fac)
+        low <- if(Ib["low"]<=0) -Inf else log(Ib["low"])
+        upp <- log(Ib["upp"])
+
+        return(do.call(distrExIntegrate, c(list(f = integrand,
+                    lower = low,
+                    upper = upp,
+                    rel.tol = rel.tol,
+                    distr = object, dfun = d(object)), dots.withoutUseApply)))
+
+    })
+
 
 setMethod("E", signature(object = "Geom", 
                          fun = "missing", 
@@ -579,6 +644,8 @@ setMethod("E", signature(object = "Geom",
         return(E(as(object,"DiscreteDistribution"), low=low, upp=upp, ...))    
     })
 
+### source http://mathworld.wolfram.com/GeometricDistribution.html
+
 setMethod("E", signature(object = "Hyper", 
                          fun = "missing", 
                          cond = "missing"),
@@ -590,6 +657,7 @@ setMethod("E", signature(object = "Hyper",
     else
         return(E(as(object,"DiscreteDistribution"), low=low, upp=upp, ...))    
     })
+### source http://mathworld.wolfram.com/HypergeometricDistribution.html
 
 setMethod("E", signature(object = "Logis", 
                          fun = "missing", 
@@ -600,6 +668,7 @@ setMethod("E", signature(object = "Logis",
     else
         return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
     })
+### source http://mathworld.wolfram.com/LogisticDistribution.html
 
 setMethod("E", signature(object = "Lnorm", 
                          fun = "missing", 
@@ -611,6 +680,7 @@ setMethod("E", signature(object = "Lnorm",
     else
         return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
     })
+### source http://mathworld.wolfram.com/LogNormalDistribution.html
 
 setMethod("E", signature(object = "Nbinom", 
                          fun = "missing", 
@@ -623,6 +693,7 @@ setMethod("E", signature(object = "Nbinom",
     else
         return(E(as(object,"DiscreteDistribution"), low=low, upp=upp, ...))    
     })
+### source http://mathworld.wolfram.com/NegativeBinomialDistribution.html
 
 setMethod("E", signature(object = "Pois", 
                          fun = "missing", 
@@ -635,6 +706,7 @@ setMethod("E", signature(object = "Pois",
     else
         return(E(as(object,"DiscreteDistribution"), low=low, upp=upp, ...))    
     })
+### source http://mathworld.wolfram.com/PoissonDistribution.html
 
 setMethod("E", signature(object = "Td", 
                          fun = "missing", 
@@ -649,7 +721,7 @@ setMethod("E", signature(object = "Td",
     else
         return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
     })
-
+### source http://mathworld.wolfram.com/NoncentralStudentst-Distribution.html
 setMethod("E", signature(object = "Unif", 
                          fun = "missing", 
                          cond = "missing"),
@@ -661,6 +733,7 @@ setMethod("E", signature(object = "Unif",
     else
         return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
     })
+### source http://mathworld.wolfram.com/UniformDistribution.html
 
 setMethod("E", signature(object = "Weibull", 
                          fun = "missing", 
@@ -672,6 +745,7 @@ setMethod("E", signature(object = "Weibull",
     else
         return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
     })
+### source http://mathworld.wolfram.com/WeibullDistribution.html
 setMethod("E", signature(object = "Arcsine", 
                          fun = "missing", 
                          cond = "missing"),
@@ -698,6 +772,7 @@ setMethod("E", signature(object = "Pareto",
         return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
     })
 
+### source http://mathworld.wolfram.com/ParetoDistribution.html
 
 
 setMethod("E", signature(object = "Gumbel", 
@@ -711,11 +786,65 @@ setMethod("E", signature(object = "Gumbel",
     })
 ## http://mathworld.wolfram.com/GumbelDistribution.html
 
+setMethod("E", signature(object = "GPareto", 
+                         fun = "missing", 
+                         cond = "missing"),
+    function(object, low = NULL, upp = NULL, ...){
+    if(!is.null(low)) if(low <= Min(object)) low <- NULL
+    k <- shape(object); s <- scale(object); mu <- loc(object)
+    if(is.null(low) && is.null(upp)){
+        if(k>=1) return(Inf)
+        else return(mu+s/(1-k))
+     }   
+    else
+        return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
+    })
+
+### source http://en.wikipedia.org/wiki/Pareto_distribution
+
+setMethod("E", signature(object = "GPareto",
+                         fun = "function",
+                         cond = "missing"),
+    function(object, fun, low = NULL, upp = NULL,
+             rel.tol= getdistrExOption("ErelativeTolerance"),
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"),
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"),
+             IQR.fac = max(1e4,getdistrExOption("IQR.fac")), ...
+             ){
+
+        dots <- list(...)
+        dots.withoutUseApply <- dots
+        useApply <- TRUE
+        if(!is.null(dots$useApply)) useApply <- dots$useApply
+        dots.withoutUseApply$useApply <- NULL
+        integrand <- function(x, dfun, ...){   di <- dim(x)
+                                               y <- exp(x)
+                                               if(useApply){
+                                                    funy <- sapply(y,fun, ...)
+                                                    dim(y) <- di
+                                                    dim(funy) <- di
+                                               }else funy <- fun(y,...)
+                                        return(funy * y * dfun(y)) }
+
+        if(is.null(low)) low <- -Inf
+        if(is.null(upp)) upp <- Inf
+
+        Ib <- .getIntbounds(object, low, upp, lowerTruncQuantile,
+              upperTruncQuantile, IQR.fac)
+        low <- if(Ib["low"]<=0) -Inf else log(Ib["low"])
+        upp <- log(Ib["upp"])
+
+        return(do.call(distrExIntegrate, c(list(f = integrand,
+                    lower = low,
+                    upper = upp,
+                    rel.tol = rel.tol,
+                    distr = object, dfun = d(object)), dots.withoutUseApply)))
+
+    })
 
 
 ############################ Expectation for UnivarLebDecDistribution
 ### merged from Expectation_LebDec.R on Apr 15 2009
-
 setMethod("E", signature(object = "UnivarLebDecDistribution",
                          fun = "missing",
                          cond = "missing"),
@@ -723,6 +852,8 @@ setMethod("E", signature(object = "UnivarLebDecDistribution",
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
              IQR.fac = getdistrExOption("IQR.fac"), ...){
+        if(is(Symmetry(object),"SphericalSymmetry"))
+           return(SymmCenter(Symmetry(object)))
         I.ac <- E(acPart(object), low = low, upp = upp, rel.tol = rel.tol, 
                   lowerTruncQuantile = lowerTruncQuantile,
                   upperTruncQuantile = upperTruncQuantile,
@@ -822,4 +953,80 @@ setMethod("E", signature(object = "CompoundDistribution",
        else{
           return(E(simplifyD(object), low = low, upp = upp, ...))
        }
+    })
+
+setMethod("E", signature(object = "UnivarMixingDistribution",
+                         fun = "missing",
+                         cond = "missing"),
+    function(object, low = NULL, upp = NULL, rel.tol= getdistrExOption("ErelativeTolerance"), 
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+             IQR.fac = getdistrExOption("IQR.fac"), ...){
+        l <- length(object@mixCoeff)
+        Ei <- numeric(l)
+        for(i in 1:l)
+            Ei[i] <- object@mixCoeff[i] * E(object = object@mixDistr[[i]], low = low, 
+                                         upp = upp, rel.tol = rel.tol,
+                                         lowerTruncQuantile = lowerTruncQuantile, 
+                                         upperTruncQuantile = upperTruncQuantile, 
+                                         IQR.fac = IQR.fac, ...)
+        sum(Ei)
+    })
+setMethod("E", signature(object = "UnivarMixingDistribution",
+                         fun = "function",
+                         cond = "missing"),
+    function(object, fun, useApply = TRUE, low = NULL, upp = NULL, 
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+             IQR.fac = getdistrExOption("IQR.fac"), ... ){
+        l <- length(object@mixCoeff)
+        Ei <- numeric(l)
+        for(i in 1:l)
+            Ei[i] <- object@mixCoeff[i] * E(object = object@mixDistr[[i]], 
+                                         fun = fun, low = low, 
+                                         upp = upp, rel.tol = rel.tol,
+                                         lowerTruncQuantile = lowerTruncQuantile, 
+                                         upperTruncQuantile = upperTruncQuantile, 
+                                         IQR.fac = IQR.fac, ...)
+        sum(Ei)
+    })
+setMethod("E", signature(object = "UnivarMixingDistribution",
+                         fun = "missing",
+                         cond = "ANY"),
+    function(object, cond, low = NULL, upp = NULL, 
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+             IQR.fac = getdistrExOption("IQR.fac"), ... ){
+        l <- length(object@mixCoeff)
+        Ei <- numeric(l)
+        for(i in 1:l)
+            Ei[i] <- object@mixCoeff[i] * E(object = object@mixDistr[[i]], 
+                                         cond = cond, low = low, 
+                                         upp = upp, rel.tol = rel.tol,
+                                         lowerTruncQuantile = lowerTruncQuantile, 
+                                         upperTruncQuantile = upperTruncQuantile, 
+                                         IQR.fac = IQR.fac, ...)
+        sum(Ei)
+    })
+
+setMethod("E", signature(object = "UnivarMixingDistribution",
+                         fun = "function",
+                         cond = "ANY"),
+    function(object, fun, cond, useApply = TRUE, low = NULL, upp = NULL, 
+             rel.tol= getdistrExOption("ErelativeTolerance"), 
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
+             IQR.fac = getdistrExOption("IQR.fac"), ... ){
+        l <- length(object@mixCoeff)
+        Ei <- numeric(l)
+        for(i in 1:l)
+            Ei[i] <- object@mixCoeff[i] * E(object = object@mixDistr[[i]], 
+                                         cond = cond, fun = fun, low = low, 
+                                         upp = upp, rel.tol = rel.tol,
+                                         lowerTruncQuantile = lowerTruncQuantile, 
+                                         upperTruncQuantile = upperTruncQuantile, 
+                                         IQR.fac = IQR.fac, ...)
+        sum(Ei)
     })

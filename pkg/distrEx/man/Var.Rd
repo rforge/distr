@@ -20,6 +20,7 @@
 \alias{var,Gammad-method}
 \alias{var,Geom-method}
 \alias{var,Gumbel-method}
+\alias{var,GPareto-method}
 \alias{var,Hyper-method}
 \alias{var,Logis-method}
 \alias{var,Lnorm-method}
@@ -50,6 +51,7 @@
 \alias{median,Exp-method}
 \alias{median,Geom-method}
 \alias{median,Gumbel-method}
+\alias{median,GPareto-method}
 \alias{median,Logis-method}
 \alias{median,Lnorm-method}
 \alias{median,Norm-method}
@@ -72,6 +74,7 @@
 \alias{IQR,Exp-method}
 \alias{IQR,Geom-method}
 \alias{IQR,Gumbel-method}
+\alias{IQR,GPareto-method}
 \alias{IQR,Logis-method}
 \alias{IQR,Norm-method}
 \alias{IQR,Pareto-method}
@@ -113,6 +116,7 @@
 \alias{skewness,Gammad-method}
 \alias{skewness,Geom-method}
 \alias{skewness,Gumbel-method}
+\alias{skewness,GPareto-method}
 \alias{skewness,Hyper-method}
 \alias{skewness,Logis-method}
 \alias{skewness,Lnorm-method}
@@ -143,6 +147,7 @@
 \alias{kurtosis,Gammad-method}
 \alias{kurtosis,Geom-method}
 \alias{kurtosis,Gumbel-method}
+\alias{kurtosis,GPareto-method}
 \alias{kurtosis,Hyper-method}
 \alias{kurtosis,Logis-method}
 \alias{kurtosis,Lnorm-method}
@@ -172,6 +177,7 @@ IQR(x, ...)
 \S4method{IQR}{Exp}(x)
 \S4method{IQR}{Geom}(x)
 \S4method{IQR}{Gumbel}(x)
+\S4method{IQR}{GPareto}(x)
 \S4method{IQR}{Logis}(x)
 \S4method{IQR}{Pareto}(x)
 \S4method{IQR}{Norm}(x)
@@ -189,6 +195,7 @@ median(x, ...)
 \S4method{median}{Exp}(x)
 \S4method{median}{Geom}(x)
 \S4method{median}{Gumbel}(x)
+\S4method{median}{GPareto}(x)
 \S4method{median}{Logis}(x)
 \S4method{median}{Lnorm}(x)
 \S4method{median}{Norm}(x)
@@ -231,6 +238,7 @@ var(x, ...)
 \S4method{var}{Gammad}(x, ...)
 \S4method{var}{Geom}(x, ...)
 \S4method{var}{Gumbel}(x, ...)
+\S4method{var}{GPareto}(x, ...)
 \S4method{var}{Hyper}(x, ...)
 \S4method{var}{Logis}(x, ...)
 \S4method{var}{Lnorm}(x, ...)
@@ -257,6 +265,7 @@ skewness(x, ...)
 \S4method{skewness}{Gammad}(x, ...)
 \S4method{skewness}{Geom}(x, ...)
 \S4method{skewness}{Gumbel}(x, ...)
+\S4method{skewness}{GPareto}(x, ...)
 \S4method{skewness}{Hyper}(x, ...)
 \S4method{skewness}{Logis}(x, ...)
 \S4method{skewness}{Lnorm}(x, ...)
@@ -283,6 +292,7 @@ kurtosis(x, ...)
 \S4method{kurtosis}{Gammad}(x, ...)
 \S4method{kurtosis}{Geom}(x, ...)
 \S4method{kurtosis}{Gumbel}(x, ...)
+\S4method{kurtosis}{GPareto}(x, ...)
 \S4method{kurtosis}{Hyper}(x, ...)
 \S4method{kurtosis}{Logis}(x, ...)
 \S4method{kurtosis}{Lnorm}(x, ...)
@@ -311,7 +321,7 @@ kurtosis(x, ...)
 \section{Methods}{
 \describe{
   \item{\code{var}, \code{signature(x = "Any")}:}{
-    interface to the \pkg{stats}-function \code{var} --- see \code{\link[stats]{var}}
+    interface to the \pkg{stats}-function \code{var} --- see \code{\link[stats:cor]{var}}
     resp. \code{help(var,package="stats")}.}
   \item{\code{var}, \code{signature(x = "UnivariateDistribution")}:}{ 
     variance of univariate distributions using corresponding \code{E()}-method.}
@@ -332,10 +342,10 @@ kurtosis(x, ...)
     resp. \code{help(sd,package="stats")}.}
   \item{\code{sd}, \code{signature(x = "NormParameter")}:}{
     returns the slot \code{sd} of the parameter of a normal distribution --- see 
-    \code{\link[distr]{sd}} resp. \code{help(sd,package="distr")}.}    
+    \code{\link[distr:sd-methods]{sd}} resp. \code{help(sd,package="distr")}.}    
   \item{\code{sd}, \code{signature(x = "Norm")}:}{
     returns the slot \code{sd} of the parameter of a normal distribution --- see 
-    \code{\link[distr]{sd}} resp. \code{help(sd,package="distr")}.}    
+    \code{\link[distr:sd-methods]{sd}} resp. \code{help(sd,package="distr")}.}    
   \item{\code{sd}, \code{signature(x = "UnivariateDistribution")}:}{ 
     standard deviation of univariate distributions using corresponding \code{E()}-method.}
 
@@ -409,6 +419,8 @@ kurtosis(x, ...)
     exact evaluation using explicit expressions.}
   \item{\code{var}, \code{signature(x = "Gumbel")}:}{ 
     exact evaluation using explicit expressions.}
+  \item{\code{var}, \code{signature(x = "GPareto")}:}{ 
+    exact evaluation using explicit expressions.}
   \item{\code{var}, \code{signature(x = "Hyper")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{var}, \code{signature(x = "Logis")}:}{ 
@@ -444,6 +456,8 @@ kurtosis(x, ...)
     exact evaluation using explicit expressions.}
   \item{\code{IQR}, \code{signature(x = "Gumbel")}:}{ 
     exact evaluation using explicit expressions.}
+  \item{\code{IQR}, \code{signature(x = "GPareto")}:}{ 
+    exact evaluation using explicit expressions.}
   \item{\code{IQR}, \code{signature(x = "Logis")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{IQR}, \code{signature(x = "Norm")}:}{ 
@@ -466,6 +480,8 @@ kurtosis(x, ...)
   \item{\code{median}, \code{signature(x = "Geom")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{median}, \code{signature(x = "Gumbel")}:}{ 
+    exact evaluation using explicit expressions.}
+  \item{\code{median}, \code{signature(x = "GPareto")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{median}, \code{signature(x = "Logis")}:}{ 
     exact evaluation using explicit expressions.}
@@ -521,6 +537,8 @@ kurtosis(x, ...)
     exact evaluation using explicit expressions.}
   \item{\code{skewness}, \code{signature(x = "Gumbel")}:}{ 
     exact evaluation using explicit expressions.}
+  \item{\code{skewness}, \code{signature(x = "GPareto")}:}{ 
+    exact evaluation using explicit expressions.}
   \item{\code{skewness}, \code{signature(x = "Hyper")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{skewness}, \code{signature(x = "Logis")}:}{ 
@@ -565,6 +583,8 @@ kurtosis(x, ...)
   \item{\code{kurtosis}, \code{signature(x = "Geom")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{kurtosis}, \code{signature(x = "Gumbel")}:}{ 
+    exact evaluation using explicit expressions.}
+  \item{\code{kurtosis}, \code{signature(x = "GPareto")}:}{ 
     exact evaluation using explicit expressions.}
   \item{\code{kurtosis}, \code{signature(x = "Hyper")}:}{ 
     exact evaluation using explicit expressions.}
@@ -629,8 +649,8 @@ mad(sin(exp(Norm()+2*Pois()))) ## weird
 }
 \seealso{\code{\link{distrExIntegrate}}, \code{\link{m1df}}, \code{\link{m2df}},
          \code{\link[distr]{Distribution-class}},\cr
- \code{\link[stats]{sd}}, \code{\link[stats]{var}}, \code{\link[stats]{IQR}},\cr
- \code{\link[stats]{median}}, \code{\link[stats]{mad}},  \code{\link[distr]{sd}} }
+ \code{\link[stats]{sd}}, \code{\link[stats:cor]{var}}, \code{\link[stats]{IQR}},\cr
+ \code{\link[stats]{median}}, \code{\link[stats]{mad}},  \code{\link[distr:sd-methods]{sd}} }
 \concept{functional}
 \concept{var}
 \concept{sd}

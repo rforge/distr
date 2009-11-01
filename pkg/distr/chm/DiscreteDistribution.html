@@ -28,8 +28,8 @@ Generates an object of class  <code>"DiscreteDistribution"</code>
              .DistrCollapse = getdistrOption("DistrCollapse"),
              .DistrCollapse.Unique.Warn = 
                   getdistrOption("DistrCollapse.Unique.Warn"),
-             .DistrResolution = getdistrOption("DistrResolution"))
-  DiscreteDistribution(supp)
+             .DistrResolution = getdistrOption("DistrResolution"),
+             Symmetry = NoSymmetry())
 </pre>
 
 
@@ -74,13 +74,24 @@ whenever collapsing occurs or when two points are collapsed by a call to
 <td>
 minimal spacing between two mass points in a discrete 
 distribution</td></tr>
+<tr valign="top"><td><code>Symmetry</code></td>
+<td>
+you may help <font face="Courier New,Courier" color="#666666"><b>R</b></font> in calculations if you tell it whether
+the distribution is non-symmetric (default) or symmetric with respect
+to a center; in this case use <code>Symmetry=SphericalSymmetry(center)</code>.</td></tr>
 </table>
 
 <h3>Details</h3>
 
 <p>
 If <code>prob</code> is missing, all elements in <code>supp</code>
-are equally weighted.
+are equally weighted.<br>
+</p>
+<p>
+Typical usages are
+<pre>
+    DiscreteDistribution(supp)
+</pre>
 </p>
 
 
@@ -144,6 +155,6 @@ plot(D2)
 
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

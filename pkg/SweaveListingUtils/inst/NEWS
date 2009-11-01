@@ -3,10 +3,80 @@
 ######################################################################
  
 ##############
-v 0.3.3
+v 0.4
 ##############
 
-* fixed issue with overwriting several "morekeywords" keys
+user-visible CHANGES:
+
++ commands:
+  * SweaveListingPreparations() gains arguments fileCommand and pkgCommand to define TeX macros \file \pkg;
+    correspondingly, there are new SweaveListingOptions...
+  * integrated Andrew Ellis's nice ideas into SweaveListingUtils to use \lstenvironment
+  * individual markup style for base or recommended packages (checked for with new function
+    isBaseOrRecommended()) is distinct now by default (extra color RRecomdcolor)
+  * new arg withSchunkDef in SweaveListingPreparations
+  * when SweaveListingPreparations is used with argument 'withOwnFileSection'=TRUE
+    lstsetR and lstsetRd use argument 'add' = FALSE by default
+  * temporarily changes (like background color) made easier:
+    - new functions 
+      # lstdefRstyle to change Rstyle
+      # lstsetRall to change all R-like styles (i.e. Rstyle, Rinstyle, Routstyle, Rcodestyle)
+  * now can specify styles for Sinput, Soutput, Scode, separately as Rin, Rout, Rcode
+  * colors now have suffix "color", i.e. Rcomment -> Rcommentcolor, Rout -> Routcolor
++ vignette:
+  * included an example with escape sequences in vignette
+  * included an example with framed code in vignette
+
+GENERAL ENHANCEMENTS:
+
++ added tests/Examples folder with file SweaveListingUtils-Ex.Rout.save to have
+  some automatic testing
++ added field "Encoding: latin1" to all DESCRIPTION files in order to avoid problems 
+  with e.g. Windows locale when svn replaces $LastChangedDate
++ added TOBEDONE (sic!) files for each package (by accident also in trunc; these are empty so far)
++ vignette: 
+  * included svn-multi style files to /inst/doc folders for upload on CRAN
+
+INTERNALLY:
+
++ added a suggestion by Frank Harrell to the vignette of SweaveListingUtils
++ yet another literate programming with listings -- ~,^,<=, >= as suggested by Frank Harrell
++ Rdlisting.sty updated according to updated version of Murdoch paper
++ keywords are drawn from ls(search(...))-results in decreasing alphabetical order now
++ linewidth by default is now read from getOption("width")
++ now have a unique counter for incremental definitions of Rstyle(s):
+  % note: we define styles RstyleO<num> incrementally, i.e.
+  %       \lstdefinestyle{RstyleO<num>}{style = RstyleO<num-1>,
+  %                                     <further definitions for RstyleO<num> > }
+  % and then overwrite each time style Rstyle by
+  %     \lstdefinestyle{Rstyle}{style=RstyleO<num>}
+  * with lstdefRstyle Rstyle is no longer only changed after require(), library() 
+  -> renamed counter from .numberofRequires to .numberofRstyleDefs
++ the same is now used with 
++ Small changes in SweaveListingPreparations.R, <..>.Rd and SweaveListingUtils.R 
+  in order to work well with our distrMod article.
++ in lstset.R: new internal functions to standardize behavior and make maintenance easier (start with ".") 
++ moved parts of former SweaveListingUtils.R to taglist.R and lstset.R
++ new option extendedchars = false as default according to Mail by Rasmus Pank Roulund 
+
+
+BUGFIXES:
+
++ fixed some issues in SweaveListingUtils --- Rdlisting.sty 
+  somehow had not respected capitalization ...
++ updated MASKING and NEWS entries in SweaveListingUtils
++ distr in Suggests for SweaveListingUtils
++ fixed mis-spelled Frank Harre_ll_
++ fixed issues with multiple definitions of morekeywords for listings style Rstyle 
++ fixed buglets in keywordstyles (caused error in vignette to distr)
++ fixed some buglet in SweaveListingUtils.R (only appeared when vignette building was skipped)
++ the five-fold backslashes issue
+  * require R-2.10.0 for version (0.4) [using new Rd-parser]/ versions (< 0.4) use old Rd-parser
+  * corresponding note in 0SweaveListingUtils-package.Rd
+  * replaced \verb with \code in .Rd-files to version 0.3.5 
+    (so it works with .Rd version 1.0 resp. 2.9.x)
++ \href inserted for PR's mail address (otherwise some wrong link was produced; remarked by A. Hausmann)
+
 
 ##############
 v 0.3.1

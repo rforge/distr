@@ -1,14 +1,15 @@
 Package: distrDoc
-Version: 2.1.1
-Date: 2009-07-03
+Version: 2.2
+Date: 2009-10-16
 Title: Documentation for packages distr, distrEx, distrSim, distrTEst
 Description: provides documentation in form of a common vignette to packages distr, distrEx, distrMod, distrSim, distrTEst
 Author: Florian Camphausen, Matthias Kohl, Peter Ruckdeschel, Thomas Stabla
 Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
-Depends: R(>= 2.6.0), tools, distr(>= 2.1), startupmsg, distrEx(>= 2.1), 
-      distrSim(>= 2.1), distrTEst(>= 2.1), distrTeach(>= 2.1), distrMod(>= 2.1)
+Depends: R(>= 2.6.0), tools, startupmsg, distr(>= 2.2.0), distrEx(>= 2.2.0), distrSim(>= 2.2.0), 
+         distrTEst(>= 2.2.0), distrTeach(>= 2.2.0), RandVar(>= 0.7), distrMod(>= 2.2.0), MASS, methods
 Suggests: Biobase
 LazyLoad: yes
+Encoding: latin1
 License: LGPL-3
 URL: http://distr.r-forge.r-project.org/
 LastChangedDate: {$LastChangedDate$}

@@ -567,7 +567,7 @@
 <param name="Local" value="MvtDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Paramter of a multivariate normal distribution">
+<param name="Name" value="Paramter of a multivariate normal  distribution">
 <param name="Local" value="MvnormParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">

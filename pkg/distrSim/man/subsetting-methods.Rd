@@ -31,7 +31,7 @@
 }
 
 \value{again an object of class \code{SeqDataFrames} with the prescribed indices / values}
-\seealso{\code{\link[base]{"["}}}
+\seealso{\code{\link[base:Extract]{"["}}}
 \examples{
 s0 <- matrix(1:6,3,2)
 d0 <- data.frame(s0)

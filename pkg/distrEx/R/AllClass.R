@@ -100,7 +100,7 @@ setClass("GumbelParameter", representation(loc = "numeric",
 # Gumbel distribution
 setClass("Gumbel", 
             prototype = prototype(r = function(n){ rgumbel(n, loc = 0, scale = 1) },
-                                  d = function(x, log){dgumbel(x, loc = 0, scale = 1, log = FALSE)},
+                                  d = function(x, log){ dgumbel(x, loc = 0, scale = 1, log = FALSE) },
                                   p = function(q, lower.tail = TRUE, log.p = FALSE){ 
                                          p0 <- pgumbel(q, loc = 0, scale = 1, lower.tail = lower.tail)
                                          if(log.p) return(log(p0)) else return(p0) 
@@ -128,8 +128,6 @@ setClass("Gumbel",
                                       },
                                   img = new("Reals"),
                                   param = new("GumbelParameter"),
-                                  .withArith = FALSE,
-                                  .withSim = FALSE,
                                   .logExact = FALSE,
                                   .lowerExact = TRUE),
             contains = "AbscontDistribution")
@@ -203,10 +201,58 @@ setClass("Pareto",
                             },
                       param = new("ParetoParameter"),
                       img = new("Reals"),
+                      .logExact = TRUE,
+                      .lowerExact = TRUE),
+          contains = "AbscontDistribution"
+          )
+
+## Class: GParetoParameter
+setClass("GParetoParameter", 
+          representation = representation(loc = "numeric", scale = "numeric", shape = "numeric"
+                                          ), 
+          prototype = prototype(loc = 0, scale = 1, shape = 0, name = 
+                      gettext("Parameter of a generalized Pareto distribution")
+                      ), 
+          contains = "Parameter"
+          )
+## Class: Generalized Pareto distribution
+setClass("GPareto",  
+          prototype = prototype(
+                      r = function(n){ rgpd(n,loc = 0, scale = 1, shape = 1) },
+                      d = function(x, log = FALSE){ 
+                              dgpd(x, loc = 0, scale = 1, shape = 1, log = log) 
+                                          },
+                      p = function(q, lower.tail = TRUE, log.p = FALSE ){ 
+                              p0 <- pgpd(q, loc = 0, scale = 1, shape = 1)
+                              if(!lower.tail ) p0 <- 1-p0
+                              if(log.p) p0 <- log(p0)
+                              return(p0)},
+                      q = function(p, lower.tail = TRUE, log.p = FALSE ){ 
+                        ## P.R.: changed to vectorized form 
+                               p1 <- if(log.p) exp(p) else p
+                               if(!lower.tail) p1 <- 1-p1
+                                                                               
+                               in01 <- (p1>1 | p1<0)
+                               i01 <- .isEqual01(p1) 
+                               i0 <- (i01 & p1<1)   
+                               i1 <- (i01 & p1>0)
+                               ii01 <- .isEqual01(p1) | in01
+                                             
+                               p0 <- p
+                               p0[ii01] <- if(log.p) log(0.5) else 0.5
+                                             
+                               q1 <- qgpd(p0,loc=0, scale = 1, shape = 1) 
+                               q1[i0] <- if(lower.tail) -Inf else Inf
+                               q1[i1] <- if(!lower.tail) -Inf else Inf
+                               q1[in01] <- NaN
+                               
+                               return(q1)  
+                            },
+                      param = new("GParetoParameter"),
+                      img = new("Reals"),
                       .withArith = FALSE,
                       .withSim = FALSE,
                       .logExact = TRUE,
                       .lowerExact = TRUE),
           contains = "AbscontDistribution"
           )
-

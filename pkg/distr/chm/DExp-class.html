@@ -1,29 +1,31 @@
 <html><head><title>Class "DExp"</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>DExp-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>DExp-class(distr)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   DExp-class">
 <param name="keyword" value="R:   DExp">
 <param name="keyword" value="R:   Laplace">
 <param name="keyword" value="R:   DoubleExponential">
 <param name="keyword" value="R:   initialize,DExp-method">
-<param name="keyword" value=" Class 'DExp'">
+<param name="keyword" value=" Class "DExp"">
 </object>
 
 
-<h2>Class 'DExp'</h2>
+<h2>Class "DExp"</h2>
 
 
 <h3>Description</h3>
 
 <p>
-The double exponential or Laplace distribution with rate <i>&lambda;</i> has density
-</p><p align="center"><i>f(x) = 1/2 lambda e^(- lambda |x|)</i></p>
+The double exponential or Laplace distribution with rate <i>\lambda</i> has density
+</p><p align="center"><i>
+    f(x) = 1/2 lambda e^(- lambda |x|)</i></p><p>
+</p>
 <p>
-C.f. <code><a href="Exp-class.html">Exp-class</a></code>, <code><a onclick="findlink('stats', 'Exponential.html')" style="text-decoration: underline; color: blue; cursor: hand">rexp</a></code>
+C.f. <code></code>, <code><a onclick="findlink('stats', 'Exponential.html')" style="text-decoration: underline; color: blue; cursor: hand">rexp</a></code>
 </p>
 
 
@@ -31,33 +33,44 @@ C.f. <code><a href="Exp-class.html">Exp-class</a></code>, <code><a onclick="find
 
 <p>
 Objects can be created by calls of the form <code>DExp(rate)</code>.
-This object is a double exponential (or Laplace) distribution.
+This object is a double exponential (or Laplace) distribution. 
 </p>
 
 
 <h3>Slots</h3>
 
+<p>
+
 <dl>
-<dt><code>img</code>:</dt><dd>Object of class <code>"Reals"</code>:
+<dt><code>img</code></dt><dd>Object of class <code>"Reals"</code>:
 The space of the image of this distribution has got dimension 1
 and the name "Real Space".</dd>
-<dt><code>param</code>:</dt><dd>Object of class <code>"ExpParameter"</code>:
+<dt><code>param</code></dt><dd>Object of class <code>"ExpParameter"</code>:
 the parameter of this distribution (rate), declared at its instantiation </dd>
-<dt><code>r</code>:</dt><dd>Object of class <code>"function"</code>:
+<dt><code>r</code></dt><dd>Object of class <code>"function"</code>:
 generates random numbers (calls function rexp)</dd>
-<dt><code>d</code>:</dt><dd>Object of class <code>"function"</code>:
+<dt><code>d</code></dt><dd>Object of class <code>"function"</code>:
 density function (calls function dexp)</dd>
-<dt><code>p</code>:</dt><dd>Object of class <code>"function"</code>:
+<dt><code>p</code></dt><dd>Object of class <code>"function"</code>:
 cumulative function (calls function pexp)</dd>
-<dt><code>q</code>:</dt><dd>Object of class <code>"function"</code>:
+<dt><code>q</code></dt><dd>Object of class <code>"function"</code>:
 inverse of the cumulative function (calls function qexp)</dd>
-<dt><code>.withArith</code>:</dt><dd>logical: used internally to issue warnings as to interpretation of arithmetics</dd>
-<dt><code>.withSim</code>:</dt><dd>logical: used internally to issue warnings as to accuracy</dd>
-<dt><code>.logExact</code>:</dt><dd>logical: used internally to flag the case where there are explicit formulae for the
-log version of density, cdf, and quantile function</dd>
-<dt><code>.lowerExact</code>:</dt><dd>logical: used internally to flag the case where there are explicit formulae for the
-lower tail version of cdf and quantile function</dd>
+<dt><code>.withArith</code></dt><dd>logical: used internally to issue warnings as to 
+interpretation of arithmetics</dd>
+<dt><code>.withSim</code></dt><dd>logical: used internally to issue warnings as to 
+accuracy</dd>
+<dt><code>.logExact</code></dt><dd>logical: used internally to flag the case where 
+there are explicit formulae for the log version of density, cdf, and 
+quantile function</dd>
+<dt><code>.lowerExact</code></dt><dd>logical: used internally to flag the case where 
+there are explicit formulae for the lower tail version of cdf and quantile 
+function</dd>
+<dt><code>Symmetry</code></dt><dd>object of class <code>"DistributionSymmetry"</code>;
+used internally to avoid unnecessary calculations.</dd>
 </dl>
+
+</p>
+
 
 <h3>Extends</h3>
 
@@ -70,6 +83,8 @@ Class <code>"Distribution"</code>, by class <code>"AbscontDistribution"</code>.
 
 <h3>Methods</h3>
 
+<p>
+
 <dl>
 <dt>initialize</dt><dd><code>signature(.Object = "DExp")</code>:
 initialize method</dd>
@@ -81,6 +96,9 @@ modifies the slot rate of the parameter of the distribution</dd>
 For the Laplace distribution we use its closedness under scaling transformations.</dd>
 </dl>
 
+</p>
+
+
 <h3>Author(s)</h3>
 
 <p>
@@ -91,10 +109,10 @@ Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ru
 <h3>See Also</h3>
 
 <p>
-<code><a href="Exp-class.html">Exp-class</a></code>
-<code><a href="ExpParameter-class.html">ExpParameter-class</a></code>
-<code><a href="ContDistribution-class.html">AbscontDistribution-class</a></code>
-<code><a href="Reals-class.html">Reals-class</a></code>
+<code></code>
+<code></code>
+<code></code>
+<code></code>
 <code><a onclick="findlink('stats', 'Exponential.html')" style="text-decoration: underline; color: blue; cursor: hand">rexp</a></code>
 </p>
 
@@ -122,7 +140,5 @@ location.href = link;
 }
 </script>
 
-
-<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index</a>]</div>
-
+<hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 </body></html>

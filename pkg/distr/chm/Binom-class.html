@@ -1,27 +1,28 @@
 <html><head><title>Class "Binom"</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>Binom-class(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>Binom-class(distr)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   Binom-class">
 <param name="keyword" value="R:   Binom">
 <param name="keyword" value="R:   initialize,Binom-method">
-<param name="keyword" value=" Class 'Binom'">
+<param name="keyword" value=" Class "Binom"">
 </object>
 
 
-<h2>Class 'Binom'</h2>
+<h2>Class "Binom"</h2>
 
 
 <h3>Description</h3>
 
-<p>
-The binomial distribution with <code>size</code> <i>= n</i>, by default <i>=1</i>, and
+<p>The binomial distribution with <code>size</code> <i>= n</i>, by default 
+<i>=1</i>, and
 <code>prob</code> <i>= p</i>, by default <i>=0.5</i>, has density
-</p><p align="center"><i>p(x) = choose(n,x) p^x (1-p)^(n-x)</i></p><p>
-for <i>x = 0, ..., n</i>.
+</p><p align="center"><i>
+    p(x) = choose(n,x) p^x (1-p)^(n-x)</i></p><p>
+for <i>x = 0, \ldots, n</i>.
 </p>
 <p>
 C.f.<code><a onclick="findlink('stats', 'Binomial.html')" style="text-decoration: underline; color: blue; cursor: hand">rbinom</a></code>
@@ -32,31 +33,49 @@ C.f.<code><a onclick="findlink('stats', 'Binomial.html')" style="text-decoration
 
 <p>
 Objects can be created by calls of the form <code>Binom(prob, size)</code>.
-This object is a binomial distribution.
+This object is a binomial distribution. 
 </p>
 
 
 <h3>Slots</h3>
 
+<p>
+
 <dl>
-<dt><code>img</code>:</dt><dd>Object of class <code>"Naturals"</code>: The space of the image of this
-distribution has got dimension 1 and the name "Natural Space". </dd>
-<dt><code>param</code>:</dt><dd>Object of class <code>"BinomParameter"</code>: the parameter of this distribution (<code>prob</code>, <code>size</code>),
-declared at its instantiation </dd>
-<dt><code>r</code>:</dt><dd>Object of class <code>"function"</code>: generates random numbers (calls function <code>rbinom</code>) </dd>
-<dt><code>d</code>:</dt><dd>Object of class <code>"function"</code>: density function (calls function <code>dbinom</code>) </dd>
-<dt><code>p</code>:</dt><dd>Object of class <code>"function"</code>: cumulative function (calls function <code>pbinom</code>) </dd>
-<dt><code>q</code>:</dt><dd>Object of class <code>"function"</code>: inverse of the cumulative function (calls function <code>qbinom</code>).
-The quantile is defined as the smallest value x such that F(x) &gt;= p, where F is the cumulative function. </dd>
-<dt><code>support</code>:</dt><dd>Object of class <code>"numeric"</code>: a (sorted) vector containing the support of the discrete
-density function</dd>
-<dt><code>.withArith</code>:</dt><dd>logical: used internally to issue warnings as to interpretation of arithmetics</dd>
-<dt><code>.withSim</code>:</dt><dd>logical: used internally to issue warnings as to accuracy</dd>
-<dt><code>.logExact</code>:</dt><dd>logical: used internally to flag the case where there are explicit formulae for the
-log version of density, cdf, and quantile function</dd>
-<dt><code>.lowerExact</code>:</dt><dd>logical: used internally to flag the case where there are explicit formulae for the
-lower tail version of cdf and quantile function</dd>
+<dt><code>img</code></dt><dd>Object of class <code>"Naturals"</code>: The space of the 
+image of this distribution has got dimension 1 and the 
+name "Natural Space". </dd>
+<dt><code>param</code></dt><dd>Object of class <code>"BinomParameter"</code>: the parameter 
+of this distribution (<code>prob</code>, <code>size</code>), declared at its 
+instantiation </dd>
+<dt><code>r</code></dt><dd>Object of class <code>"function"</code>: generates random 
+numbers (calls function <code>rbinom</code>) </dd>
+<dt><code>d</code></dt><dd>Object of class <code>"function"</code>: density function (calls 
+function <code>dbinom</code>) </dd>
+<dt><code>p</code></dt><dd>Object of class <code>"function"</code>: cumulative function 
+(calls function <code>pbinom</code>) </dd>
+<dt><code>q</code></dt><dd>Object of class <code>"function"</code>: inverse of the 
+cumulative function (calls function <code>qbinom</code>).
+The quantile is defined as the smallest value x such that F(x) &gt;= p, where 
+F is the cumulative function. </dd>
+<dt><code>support</code></dt><dd>Object of class <code>"numeric"</code>: a (sorted) 
+vector containing the support of the discrete density function</dd>
+<dt><code>.withArith</code></dt><dd>logical: used internally to issue warnings as to 
+interpretation of arithmetics</dd>
+<dt><code>.withSim</code></dt><dd>logical: used internally to issue warnings as to 
+accuracy</dd>
+<dt><code>.logExact</code></dt><dd>logical: used internally to flag the case where 
+there are explicit formulae for the log version of density, cdf, and 
+quantile function</dd>
+<dt><code>.lowerExact</code></dt><dd>logical: used internally to flag the case where 
+there are explicit formulae for the lower tail version of cdf and quantile 
+function</dd>
+<dt><code>Symmetry</code></dt><dd>object of class <code>"DistributionSymmetry"</code>;
+used internally to avoid unnecessary calculations.</dd>
 </dl>
+
+</p>
+
 
 <h3>Extends</h3>
 
@@ -69,15 +88,26 @@ Class <code>"Distribution"</code>, by class <code>"DiscreteDistribution"</code>.
 
 <h3>Methods</h3>
 
+<p>
+
 <dl>
-<dt>+</dt><dd><code>signature(e1 = "Binom", e2 = "Binom")</code>: For two binomial distributions with equal probabilities
-the exact convolution formula is implemented thereby improving the general numerical approximation.</dd>
+<dt>+</dt><dd><code>signature(e1 = "Binom", e2 = "Binom")</code>: For two binomial 
+distributions with equal probabilities the exact convolution 
+formula is implemented thereby improving the general numerical 
+accuracy.</dd>
 <dt>initialize</dt><dd><code>signature(.Object = "Binom")</code>: initialize method </dd>
-<dt>prob</dt><dd><code>signature(object = "Binom")</code>: returns the slot <code>prob</code> of the parameter of the distribution </dd>
-<dt>prob&lt;-</dt><dd><code>signature(object = "Binom")</code>: modifies the slot <code>prob</code> of the parameter of the distribution </dd>
-<dt>size</dt><dd><code>signature(object = "Binom")</code>: returns the slot <code>size</code> of the parameter of the distribution </dd>
-<dt>size&lt;-</dt><dd><code>signature(object = "Binom")</code>: modifies the slot <code>size</code> of the parameter of the distribution </dd>
+<dt>prob</dt><dd><code>signature(object = "Binom")</code>: returns the slot <code>prob</code> 
+of the parameter of the distribution </dd>
+<dt>prob&lt;-</dt><dd><code>signature(object = "Binom")</code>: modifies the slot 
+<code>prob</code> of the parameter of the distribution </dd>
+<dt>size</dt><dd><code>signature(object = "Binom")</code>: returns the slot <code>size</code> 
+of the parameter of the distribution </dd>
+<dt>size&lt;-</dt><dd><code>signature(object = "Binom")</code>: modifies the slot 
+<code>size</code> of the parameter of the distribution </dd>
 </dl>
+
+</p>
+
 
 <h3>Author(s)</h3>
 
@@ -92,9 +122,9 @@ Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de
 <h3>See Also</h3>
 
 <p>
-<code><a href="BinomParameter-class.html">BinomParameter-class</a></code>
-<code><a href="DiscreteDistribution-class.html">DiscreteDistribution-class</a></code>
-<code><a href="Naturals-class.html">Naturals-class</a></code>
+<code></code>
+<code></code>
+<code></code>
 <code><a onclick="findlink('stats', 'Binomial.html')" style="text-decoration: underline; color: blue; cursor: hand">rbinom</a></code>
 </p>
 
@@ -126,7 +156,5 @@ location.href = link;
 }
 </script>
 
-
-<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index]</a></div>
-
+<hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 </body></html>

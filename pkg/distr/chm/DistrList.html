@@ -22,7 +22,7 @@ Generates an object of class <code>"DistrList"</code>.
 
 <h3>Usage</h3>
 
-<pre>DistrList(...)</pre>
+<pre>DistrList(..., Dlist)</pre>
 
 
 <h3>Arguments</h3>
@@ -30,8 +30,14 @@ Generates an object of class <code>"DistrList"</code>.
 <table summary="R argblock">
 <tr valign="top"><td><code>...</code></td>
 <td>
-Objects of class <code>"Distribution"</code> which
-shall form the list of distributions.</td></tr>
+Objects of class <code>"Distribution"</code> (or subclasses)</td></tr>
+<tr valign="top"><td><code>Dlist</code></td>
+<td>
+an optional list or object of class <code>"DistrList"</code>;
+if not missing it is appended to argument <code>...</code>; this way
+<code>DistrList</code> may also be called with a list (or
+<code>"DistrList"</code>-object) as argument as suggested in an e-mail
+by Krunoslav Sever (thank you!)</td></tr>
 </table>
 
 <h3>Value</h3>
@@ -69,6 +75,6 @@ function(...){
 
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

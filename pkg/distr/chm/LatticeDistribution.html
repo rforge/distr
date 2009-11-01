@@ -26,11 +26,10 @@ linear lattice.
 <h3>Usage</h3>
 
 <pre>
-  LatticeDistribution(DiscreteDistribution)
-  LatticeDistribution(lattice, DiscreteDistribution)
-  LatticeDistribution(lattice, supp, prob, .withArith, .withSim, check = FALSE)
-  LatticeDistribution(lattice, supp, prob)
-  LatticeDistribution(supp)
+  LatticeDistribution(lattice = NULL, supp = NULL, prob = NULL,
+                       .withArith = FALSE, .withSim = FALSE,
+                       DiscreteDistribution = NULL, check = TRUE,
+                       Symmetry = NoSymmetry())
 </pre>
 
 
@@ -74,10 +73,25 @@ a <code>lattice</code> argument. If <code>check == FALSE</code>,
 <code>LatticeDistribution()</code>
 returns an object of <code>DiscreteDistribution</code>, ignoring
 argument <code>lattice</code></td></tr>
+<tr valign="top"><td><code>Symmetry</code></td>
+<td>
+you may help <font face="Courier New,Courier" color="#666666"><b>R</b></font> in calculations if you tell it whether
+the distribution is non-symmetric (default) or symmetric with respect
+to a center; in this case use <code>Symmetry=SphericalSymmetry(center)</code>.</td></tr>
 </table>
 
 <h3>Details</h3>
 
+<p>
+Typical usages are
+<pre>
+  LatticeDistribution(DiscreteDistribution)
+  LatticeDistribution(lattice, DiscreteDistribution)
+  LatticeDistribution(lattice, supp, prob, .withArith, .withSim, check = FALSE)
+  LatticeDistribution(lattice, supp, prob)
+  LatticeDistribution(supp)
+</pre>
+</p>
 <p>
 For the generating function <code>LatticeDistribution()</code>, the arguments
 are processed in the following order:<br>
@@ -184,6 +198,6 @@ Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ru
 
 
 
-<hr><div align="center">[Package <em>distr</em> version 2.1 <a href="00Index.html">Index]</a></div>
+<hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
 
 </body></html>

@@ -1,7 +1,94 @@
 ######################################################################
 #  News: to package distrEx
 ######################################################################
+
+(first two numbers of package versions do not necessarily reflect 
+ package-individual development, but rather are chosen for the 
+ distrXXX family as a whole in order to ease updating "depends" 
+ information)
  
+##############
+v 2.2
+##############
+
+user-visible CHANGES:
+
++ enhanced E() methods
+  * expectation gains ... argument to pass on accuracy arguments
+
++ enhanced m1df(),m2df() methods
+  * m1df, m2df gain ... argument to be able to pass on accuracy arguments to E();
+  * m1df, m2df can now digest cond, fun arguments...
+  * particular m1df versions (for Binom, Norm, Chisq, Exp, Pois) 
+    are used in E(object, [fun, cond, ] low=.., upp=.., ...) calls
++ GPareto 
+  * implemented GPareto class (Nataliya) [including functionals)
+  * allow for negative shape parameter in generalized Pareto ...
+
+GENERAL ENHANCEMENTS:
+
++ added tests/Examples folder with file distrEx-Ex.Rout.save to have
+  some automatic testing
++ added field "Encoding: latin1" to all DESCRIPTION files in order to avoid problems 
+  with e.g. Windows locale when svn replaces $LastChangedDate
++ added TOBEDONE (sic!) files for each package (by accident also in trunc; these are empty so far)
+
+INTERNALLY:
+
++ introduced helper function .getIntbounds
++ reorganized help for PrognCondDistribution   
++ functionals in distrEx now make use of this symmetry slot ...
++ catch errors thrown by qgumbel and qpareto1 when args are not in (0,1)
+  --> corresp. q-methods now consistently return NaN.
++ m1df,m2df:
+  *particular methods for m2df for AbscontDistribution, DiscreteDistribution are no longer necessary.
+  *new/revised methods for m1df, m2df for AfflinDistribution  
++ enhanced/corrected methods for Kolmogorov distance
+  * when one operand is DiscreteDistribution
+  * yet another (speed) improvement --- important for MDE with KolmogorovDist:
+    Kolmogorov-dist e1 (discrete) : e2 (ac) is         
+        x <- support(e1)
+        res <- max(p(e1)(x)-p(e2)(x),p(e2)(x)-p.l(e1)(x))
++ merged Expectation_LebDec.R into Expectation.R 
+  according to proposal by Kurt Hornik (different Collation order caused
+  problem in English locale)
++ new expectation methods for UnivarMixingDistribution
++ included new methods for E():
+  * for GPareto as well as for Gammad 
+    -> increase the precision for the numerical calculation of certain integrals; 
+       in particular, integrals involving "log" as integrand.
+  * Expectation for GPareto now has IQR.fac accuracy set to 
+    max(1e4,getdistrExOption("IQR.fac") to enhance accuracy for integration;
+
+BUGFIXES:
+
++ forgot to commit branches/distr-2.2/pkg/distrEx/man/distrExConstants.Rd
++ forgot some source files (GPD)
++ fixed a buglet in m2df method for LatticeDistribution (a catch for existing fun argument was missing).
++ forgot to set corresponding distrExoptions()-default values for accuracy  
+  for m1df, m2df
++ fixed a bug in E-method for AbscontDistribution, function, cond 
++ fix for the bug in distrEx: m2df now only uses mc <- match.call() 
+  instead of mc <- match.call(call = sys.call(sys.parent(1)))
+ (do not completely understand why: 
+  there is method dispatch, though, as in plot(), where sys.call(sys.parent(1)) 
+  is needed, but here match.call() does it... )
++ fixed some --hard-to-detect/localize--  bug induced with lazy evaluation:
+  Data-Examples in scripts to ROptEst threw errors: reason --- need an
+  explicit assignment im ClippedMomemts.R (distrEx) mc$object <- object
+  to force evaluation of object (otherwise only transmitted as name...)
++ R CMD check threw an error for distrEx .Rd file distrExConstants.Rd :
+  probably because of a multi-line \deqn{}{} expression modified 
++ corrected some bug with match.call() in Var()...
++ forgot to write the expectations of different components into different coordinates 
++ Definition for KolmogorovDist for numeric, UnivariateDistribution 
+  by means of ks.test was only oK for AbscontDistributions; changed to
+  KolmogorovDist(DiscreteDistribution(e1),e2)
++ fixed errors in expectation methods (with upper & lower bounds) 
+  as well as in m1df, m2df methods
+
+
+
 ##############
 v 2.1
 ##############

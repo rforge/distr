@@ -1,10 +1,10 @@
 <html><head><title>Spherical distribution class</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="Rchm.css">
-</head>
-<body>
+</head><body>
 
-<table width="100%"><tr><td>SphericalDistribution-class(distrEllipse)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<table width="100%"><tr><td>SphericalDistribution-class(distrEllipse)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   SphericalDistribution-class">
 <param name="keyword" value="R:   scale,SphericalDistribution-method">
 <param name="keyword" value="R:   location,SphericalDistribution-method">
@@ -31,7 +31,7 @@
 <param name="keyword" value="R:   showobj,SphericalDistribution-method">
 <param name="keyword" value="R:   +,SphericalDistribution,numeric-method">
 <param name="keyword" value="R:   *,SphericalDistribution,numeric-method">
-<param name="keyword" value="R:   \%*\%,matrix,SphericalDistribution-method">
+<param name="keyword" value="R:   %*%,matrix,SphericalDistribution-method">
 <param name="keyword" value="R:   +,numeric,SphericalDistribution-method">
 <param name="keyword" value="R:   *,numeric,SphericalDistribution-method">
 <param name="keyword" value="R:   -,SphericalDistribution,missing-method">
@@ -61,48 +61,52 @@ distribution of <code>LU</code>.
 <p>
 Objects could in principle be created by calls to <code>new</code>, but more
 frequently you would create them  via the generating function
-<code><a href="SphericalDistribution.html">SphericalDistribution</a></code>.
+<code></code>.
 </p>
 
 
 <h3>Slots</h3>
 
+<p>
+
 <dl>
-<dt><code>img</code>:</dt><dd>Object of class <code>"Reals"</code>. </dd>
-<dt><code>param</code>:</dt><dd>Object of class <code>"SphericalParameter"</code>. </dd>
-<dt><code>r</code>:</dt><dd>function with argument <code>n</code>; random number generator</dd>
-<dt><code>d</code>:</dt><dd>optional function; in case it exists:
+<dt><code>img</code></dt><dd>Object of class <code>"Reals"</code>. </dd>
+<dt><code>param</code></dt><dd>Object of class <code>"SphericalParameter"</code>. </dd>
+<dt><code>r</code></dt><dd>function with argument <code>n</code>; random number generator</dd>
+<dt><code>d</code></dt><dd>optional function; in case it exists:
 the density of the distribution</dd>
-<dt><code>p</code>:</dt><dd>optional function; in case it is non-null:
+<dt><code>p</code></dt><dd>optional function; in case it is non-null:
 the cdf of the distribution evaluated on rectangles, i.e. if a random
 variable <code>X</code> is distributed according to an <code>object</code> of class
 <code>"SphericalDistribution"</code>,
 for <code>q</code> a matrix of dimension <i>d x n</i> <code>p(object)(q)</code>
 returns, for each of the <code>n</code> columns
-<i>P(X[i]&lt;= q[i],;i=1,...,d)</i>.</dd>
-<dt><code>q</code>:</dt><dd>optional function; in case it is non-null:
+<i>P(X[i]&lt;= q[i],\;i=1,\dots,d)</i>.</dd>
+<dt><code>q</code></dt><dd>optional function; in case it is non-null:
 the quantile of the distribution evaluated on rectangles, i.e. if a random
 variable <code>X</code> is distributed according to an <code>object</code> of class
 <code>"SphericalDistribution"</code>,
 for <code>p</code> a vector of length  <i>n</i>, returns, for each of the
 <code>n</code> components the infinimal number <i>q[j]</i> such that
-<i>P(X[i]&lt;= q[j],;i=1,...,d)&gt;= p[j]</i>.</dd>
-<dt><code>radDistr</code>:</dt><dd>an object of class <code>UnivariateDistribution</code> with positive
+<i>P(X[i]&lt;= q[j],\;i=1,\dots,d)&gt;= p[j]</i>.</dd>
+<dt><code>radDistr</code></dt><dd>an object of class <code>UnivariateDistribution</code> with positive
 support, i.e. <code>p(radDistr)(0)==0</code>; the radial distribution. </dd>
-<dt><code>.withArith</code>:</dt><dd>logical: used internally to issue warnings as to
+<dt><code>.withArith</code></dt><dd>logical: used internally to issue warnings as to
 interpretation of arithmetics</dd>
-<dt><code>.withSim</code>:</dt><dd>logical: used internally to issue warnings as to
+<dt><code>.withSim</code></dt><dd>logical: used internally to issue warnings as to
 accuracy</dd>
-<dt><code>.logExact</code>:</dt><dd>logical: used internally to flag the case where
+<dt><code>.logExact</code></dt><dd>logical: used internally to flag the case where
 there are explicit formulae for the log version of density, cdf, and
 quantile function</dd>
-<dt><code>.lowerExact</code>:</dt><dd>logical: used internally to flag the case where
+<dt><code>.lowerExact</code></dt><dd>logical: used internally to flag the case where
 there are explicit formulae for the lower tail version of cdf and quantile
 function</dd>
-<dt><code>Symmetry</code>:</dt><dd>object of class <code>"SphericalSymmetry"</code> about
-center <code>loc</code>;
-used internally to avoid unnecessary calculations.</dd>
+<dt><code>Symmetry</code></dt><dd>object of class <code>"SphericalSymmetry"</code> about
+center <code>loc</code>; used internally to avoid unnecessary calculations.</dd>
 </dl>
+
+</p>
+
 
 <h3>Extends</h3>
 
@@ -113,6 +117,8 @@ Class <code>"Distribution"</code>, by class <code>"MultivariateDistribution"</co
 
 
 <h3>Methods</h3>
+
+<p>
 
 <dl>
 <dt>dimension</dt><dd><code>signature(object = "SphericalDistribution")</code>: returns
@@ -138,7 +144,7 @@ slot <code>q</code> of slot <code>radDistr</code>. </dd>
 <dt>plot.rd</dt><dd><code>signature(x = "SphericalDistribution")</code>: utility; calls <code>plot</code>
 for slot <code>radDistr</code>. </dd>
 <dt>plot</dt><dd><code>signature(x = "SphericalDistribution", y = "missing")</code>:
-plot for an spherically symmetric distribution; see <code><a href="plot-methods.html">plot-methods</a></code>.
+plot for an spherically symmetric distribution; see <code></code>.
 </dd>
 <dt>show</dt><dd><code>signature(object = "SphericalDistribution")</code>: 
 <code>show</code> method for spherically symmetric distributions.
@@ -155,42 +161,57 @@ expectation of an elliptically symmetric distribution; exact.
 <dt>coerce</dt><dd><code>signature(from = "SphericalDistribution", to = "EllipticalDistribution")</code>:
 create a <code>EllipticalDistribution</code> object from a spherically symmetric
 distribution. </dd>
-<dt><code>+</code></dt><dd><code>signature(e1 = "SphericalDistribution", e2 = "numeric")</code>:{
+<dt><code>+</code></dt><dd><code>signature(e1 = "SphericalDistribution", e2 = "numeric")</code>:
 affine linear transformation; exact.
-}</dd>
-<dt><code>-</code></dt><dd><code>signature(e1 = "SphericalDistribution", e2 = "numeric")</code>:{
+</dd>
+<dt><code>-</code></dt><dd><code>signature(e1 = "SphericalDistribution", e2 = "numeric")</code>:
 affine linear transformation; exact.
-}</dd>
-<dt><code>-</code></dt><dd><code>signature(e1 = "SphericalDistribution", e2 = "missing")</code>:{
+</dd>
+<dt><code>-</code></dt><dd><code>signature(e1 = "SphericalDistribution", e2 = "missing")</code>:
 affine linear transformation; exact.
-}</dd>
-<dt><code>*</code></dt><dd><code>signature(e1 = "SphericalDistribution", e2 = "numeric")</code>:{
+</dd>
+<dt><code>*</code></dt><dd><code>signature(e1 = "SphericalDistribution", e2 = "numeric")</code>:
 affine linear transformation; exact.
-}</dd>
-<dt><code>+</code></dt><dd><code>signature(e1 = "numeric", e2 = "SphericalDistribution")</code>:{
+</dd>
+<dt><code>+</code></dt><dd><code>signature(e1 = "numeric", e2 = "SphericalDistribution")</code>:
 affine linear transformation; exact.
-}</dd>
-<dt><code>-</code></dt><dd><code>signature(e1 = "numeric", e2 = "SphericalDistribution")</code>:{
+</dd>
+<dt><code>-</code></dt><dd><code>signature(e1 = "numeric", e2 = "SphericalDistribution")</code>:
 affine linear transformation; exact.
-}</dd>
-<dt><code>*</code></dt><dd><code>signature(e1 = "numeric", e2 = "SphericalDistribution")</code>:{
+</dd>
+<dt><code>*</code></dt><dd><code>signature(e1 = "numeric", e2 = "SphericalDistribution")</code>:
 affine linear transformation; exact.
-}</dd>
-<dt><code>%*%</code></dt><dd><code>signature(e1 = "numeric", e2 = "SphericalDistribution")</code>:{
+</dd>
+<dt><code>%*%</code></dt><dd><code>signature(e1 = "numeric", e2 = "SphericalDistribution")</code>:
 affine linear transformation; exact.
-}</dd>
-
+</dd>
+</p>
 <p>
 </dl>
 
-<h3>Author(s)</h3>
-
-<p>
-Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
 </p>
 
 
+<h3>Author(s)</h3>
 
-<hr><div align="center">[Package <em>distrEllipse</em> version 0.1 <a href="00Index.html">Index</a>]</div>
+<p>Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a></p>
 
+
+<h3>Examples</h3>
+
+<pre>
+new("SphericalDistribution") ## better use SphericalDistribution()
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+<hr><div align="center">[Package <em>distrEllipse</em> version 0.2 <a href="00Index.html">Index</a>]</div>
 </body></html>

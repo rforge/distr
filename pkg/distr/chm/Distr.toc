@@ -330,6 +330,10 @@
 <param name="Local" value="Distribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value=".logExact,UnivarMixingDistribution-method">
+<param name="Local" value="UnivarMixingDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value=".logExact-methods">
 <param name="Local" value="Distribution-class.html">
 </OBJECT>
@@ -340,6 +344,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value=".lowerExact,Distribution-method">
 <param name="Local" value="Distribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value=".lowerExact,UnivarMixingDistribution-method">
+<param name="Local" value="UnivarMixingDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value=".lowerExact-methods">
@@ -942,12 +950,12 @@
 <param name="Local" value="Distribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="DistributionAggregate">
+<param name="Name" value="DistributionAggregate.Unique.Warn">
 <param name="Local" value="distroptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="DistributionAggregate.Unique.Warn">
-<param name="Local" value="distroptions.html">
+<param name="Name" value="DistributionSymmetry-class">
+<param name="Local" value="DistributionSymmetry-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="DistrList">
@@ -970,8 +978,24 @@
 <param name="Local" value="distroptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="DistrSymmList">
+<param name="Local" value="DistrSymmList.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="DistrSymmList-class">
+<param name="Local" value="DistrSymmList-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="DoubleExponential">
 <param name="Local" value="DExp-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="EllipticalSymmetry">
+<param name="Local" value="EllipticalSymmetry.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="EllipticalSymmetry-class">
+<param name="Local" value="EllipticalSymmetry-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="EuclideanSpace">
@@ -2174,6 +2198,14 @@
 <param name="Local" value="NormParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="NoSymmetry">
+<param name="Local" value="NoSymmetry.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="NoSymmetry-class">
+<param name="Local" value="NoSymmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="NumbOfSummandsDistr">
 <param name="Local" value="CompoundDistribution-class.html">
 </OBJECT>
@@ -2356,6 +2388,22 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="PoisParameter-class">
 <param name="Local" value="PoisParameter-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="PosDefSymmMatrix">
+<param name="Local" value="PosDefSymmMatrix.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="PosDefSymmMatrix-class">
+<param name="Local" value="PosDefSymmMatrix-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="PosSemDefSymmMatrix">
+<param name="Local" value="PosDefSymmMatrix.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="PosSemDefSymmMatrix-class">
+<param name="Local" value="PosDefSymmMatrix-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="print,UnivariateDistribution-method">
@@ -2898,6 +2946,10 @@
 <param name="Local" value="print-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="show,Symmetry-method">
+<param name="Local" value="Symmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="show,UnivariateDistribution-method">
 <param name="Local" value="print-methods.html">
 </OBJECT>
@@ -3026,6 +3078,50 @@
 <param name="Local" value="size-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="solve">
+<param name="Local" value="solve-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="solve,ANY,ANY-method">
+<param name="Local" value="solve-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="solve,ANY-method">
+<param name="Local" value="solve-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="solve,PosDefSymmMatrix,ANY-method">
+<param name="Local" value="solve-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="solve,PosDefSymmMatrix-method">
+<param name="Local" value="solve-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="solve,PosSemDefSymmMatrix,ANY-method">
+<param name="Local" value="solve-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="solve,PosSemDefSymmMatrix-method">
+<param name="Local" value="solve-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="solve-methods">
+<param name="Local" value="solve-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="SphericalSymmetry">
+<param name="Local" value="SphericalSymmetry.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="SphericalSymmetry-class">
+<param name="Local" value="SphericalSymmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sqrt">
+<param name="Local" value="sqrt-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="sqrt,AbscontDistribution-method">
 <param name="Local" value="ContDistribution-class.html">
 </OBJECT>
@@ -3046,8 +3142,16 @@
 <param name="Local" value="LatticeDistribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sqrt,PosSemDefSymmMatrix-method">
+<param name="Local" value="sqrt-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="sqrt,UnivarLebDecDistribution-method">
 <param name="Local" value="UnivarLebDecDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sqrt-methods">
+<param name="Local" value="sqrt-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="standardMethods">
@@ -3080,6 +3184,34 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="support-methods">
 <param name="Local" value="support-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="SymmCenter">
+<param name="Local" value="Symmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="SymmCenter,Symmetry-method">
+<param name="Local" value="Symmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Symmetry">
+<param name="Local" value="Distribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Symmetry,Distribution-method">
+<param name="Local" value="Distribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Symmetry,UnivarMixingDistribution-method">
+<param name="Local" value="UnivarMixingDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Symmetry-class">
+<param name="Local" value="Symmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Symmetry-methods">
+<param name="Local" value="Distribution-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Td">
@@ -3120,6 +3252,14 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="TruncQuantile">
 <param name="Local" value="distroptions.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="type">
+<param name="Local" value="Symmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="type,Symmetry-method">
+<param name="Local" value="Symmetry-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Unif">
@@ -3168,6 +3308,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="UnivDistrListOrDistribution-class">
 <param name="Local" value="CompoundDistribution-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="use.generalized.inverse.by.default">
+<param name="Local" value="distroptions.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="WarningArith">
@@ -3487,6 +3631,26 @@
 <param name="Local" value="WeibullParameter-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Class for Elliptically Symmetric Distributions">
+<param name="Local" value="EllipticalSymmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Class for Non-symmetric Distributions">
+<param name="Local" value="NoSymmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Class for Spherical Symmetric Distributions">
+<param name="Local" value="SphericalSymmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Class of Symmetries">
+<param name="Local" value="Symmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Class of Symmetries for Distributions">
+<param name="Local" value="DistributionSymmetry-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Classes "OptionalParameter", "OptionalMatrix"">
 <param name="Local" value="OptionalParameter-class.html">
 </OBJECT>
@@ -3543,8 +3707,28 @@
 <param name="Local" value="DistrList.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for DistrSymmList-class">
+<param name="Local" value="DistrSymmList.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for EllipticalSymmetry-class">
+<param name="Local" value="EllipticalSymmetry.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for NoSymmetry-class">
+<param name="Local" value="NoSymmetry.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating function for SphericalSymmetry-class">
+<param name="Local" value="SphericalSymmetry.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generating function for UnivarDistrList-class">
 <param name="Local" value="UnivarDistrList.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generating functions for PosSemDefSymmMatrix-class resp. PosDefSymmMatrix-class">
+<param name="Local" value="PosDefSymmMatrix.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Generic Function for Testing the Support of a Distribution">
@@ -3561,6 +3745,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="List of distributions">
 <param name="Local" value="DistrList-class.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="List of Symmetries for a List of Distributions">
+<param name="Local" value="DistrSymmList-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="List of univariate distributions">
@@ -3735,6 +3923,14 @@
 <param name="Local" value="size-methods.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Methods for Function solve in Package 'distr'">
+<param name="Local" value="solve-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Methods for Function sqrt in Package 'distr'">
+<param name="Local" value="sqrt-methods.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Methods for Function support in Package 'distr'">
 <param name="Local" value="support-methods.html">
 </OBJECT>
@@ -3769,6 +3965,10 @@
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Methods for Version Management in Package 'distr'">
 <param name="Local" value="versionmanagement.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Positive-[Semi-]definite, symmetric matrices">
+<param name="Local" value="PosDefSymmMatrix-class.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
 <param name="Name" value="Utility to automatically generate accessor and replacement functions">

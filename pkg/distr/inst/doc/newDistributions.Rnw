@@ -19,7 +19,7 @@
 \usepackage{svn-multi}
 % Version control information:
 \svnidlong
-{$HeadURL: svn+ssh://ruckdeschel@svn.r-forge.r-project.org/svnroot/distr/pkg/distr/inst/doc/newDistributions.Rnw $}
+{$HeadURL$}
 {$LastChangedDate$}
 {$LastChangedRevision$}
 {$LastChangedBy$}
@@ -46,10 +46,8 @@
 %
 \usepackage{ifpdf}
 %
-\usepackage{amssymb}
 \usepackage{url}
-%
-%
+\usepackage{amssymb}
 \usepackage[%
 baseurl={r-forge.r-project.org},%
 pdftitle={How to generate new distributions in packages distr, distrEx},%
@@ -70,7 +68,8 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 % -------------------------------------------------------------------------------
 \RequirePackage{fancyvrb}
 \RequirePackage{listings}
-%\usepackage{Sweave}
+%\usepackage{Sweave} no longer needed
+% -------------------------------------------------------------------------------
 \SweaveOpts{keep.source=TRUE}
 % -------------------------------------------------------------------------------
 <<SweaveListingsPreparations, results=tex, echo=FALSE>>=
@@ -408,7 +407,6 @@ Ruckdeschel P., Kohl M., Stabla T., and Camphausen F.
 <<cleanup, echo=FALSE>>=
 unloadNamespace("SweaveListingUtils")
 @
-
 % -------------------------------------------------------------------------------
 \end{document}
 % -------------------------------------------------------------------------------

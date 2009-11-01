@@ -49,10 +49,10 @@ of this band by the replicated plotted so far is indicated.}
                   line type of the confidence bands}
   \item{cex.Cover}{magnification w.r.t. the current setting of \code{cex} 
                    to be used for empirical coverages; as in 
-                   \code{\link[stats]{par}}}
+                   \code{\link[graphics]{par}}}
   \item{cex.legend}{magnification w.r.t. the current setting of \code{cex} 
                    to be used for the legend as in 
-                   \code{\link[stats]{par}}}
+                   \code{\link[graphics]{par}}}
   \item{\dots}{further arguments to be passed to \code{matplot},
                \code{matlines}, \code{abline}}
 }
@@ -66,7 +66,7 @@ There are default \code{main} titles as well as \code{xlab} and \code{ylab}
 annotations.
 
 In all title arguments, the following patterns are substituted:
-\itemize{
+\describe{
 \item{\code{"\%C"}}{class of argument \code{x}}
 \item{\code{"\%P"}}{parameters of \code{x} in form of a comma-separated list of
                    <value>'s coerced to character}

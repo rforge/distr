@@ -84,15 +84,14 @@ setMethod("KolmogorovDist", signature(e1 = "UnivariateDistribution",
 setMethod("KolmogorovDist",  signature(e1 = "AcDcLcDistribution",
                                      e2 = "AcDcLcDistribution"),
     function(e1, e2){
-           DISCR <- FALSE
            if( is(e1,"AbscontDistribution"))
                e1 <- as(as(e1,"AbscontDistribution"), "UnivarLebDecDistribution")
            if( is(e2,"AbscontDistribution"))
                e2 <- as(as(e2,"AbscontDistribution"), "UnivarLebDecDistribution")
-           if(is(e1,"DiscreteDistribution")){ DISCR <- TRUE
-               e1 <- as(as(e1,"DiscreteDistribution"), "UnivarLebDecDistribution")}
-           if(is(e2,"DiscreteDistribution")){ DISCR <- TRUE
-               e2 <- as(as(e2,"DiscreteDistribution"), "UnivarLebDecDistribution")}
+           if(is(e1,"DiscreteDistribution"))
+               e1 <- as(as(e1,"DiscreteDistribution"), "UnivarLebDecDistribution")
+           if(is(e2,"DiscreteDistribution"))
+               e2 <- as(as(e2,"DiscreteDistribution"), "UnivarLebDecDistribution")
         if(is.null(e1@p)){
         e1.erg <- RtoDPQ(e1@r)
         e1 <- new("UnivariateDistribution", r=e1@r,
@@ -103,8 +102,6 @@ setMethod("KolmogorovDist",  signature(e1 = "AcDcLcDistribution",
         e2 <- new("UnivariateDistribution", r=e2@r,
                    p = e2.erg$pfun, d = e2.erg$dfun, q = e2.erg$qfun,
                    .withSim = TRUE, .withArith = FALSE)}
-        
-        if(!DISCR){
         TruncQuantile <- getdistrOption("TruncQuantile")
         lower1 <- ifelse(!is.finite(q(e1)(0)), q(e1)(TruncQuantile), q(e1)(0))
         upper1 <- ifelse(!is.finite(q(e1)(1)),
@@ -126,8 +123,7 @@ setMethod("KolmogorovDist",  signature(e1 = "AcDcLcDistribution",
         x1 <- union(r(e1)(1e5), r(e2)(1e5))
         x2 <- seq(from=lower, to=upper, length=1e5)
         x <- union(x1, x2)
-        }else 
-         x <- NULL
+
         if( "support" %in% names(getSlots(class(e1))))
            x <- union(x,e1@support)
         if( "support" %in% names(getSlots(class(e2))))
