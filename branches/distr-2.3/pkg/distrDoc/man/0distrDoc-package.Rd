@@ -14,8 +14,8 @@ packages \pkg{distr}, \pkg{distrEx}, \pkg{distrSim}, \pkg{distrTEst},
 \details{
 \tabular{ll}{
 Package: \tab distrDoc \cr
-Version: \tab 2.2 \cr
-Date: \tab 2009-09-04 \cr
+Version: \tab 2.3 \cr
+Date: \tab 2009-11-01 \cr
 Depends: \tab R(>= 2.6.0), tools, distr(>= 2.2.0), startupmsg, distrEx(>= 2.2.0), distrSim(>= 2.2.0), distrTEst(>= 2.2.0), distrTeach(>=
 2.2.0), RandVar(>= 0.7), distrMod(>= 2.2.0), MASS, methods \cr
 LazyLoad: \tab yes \cr

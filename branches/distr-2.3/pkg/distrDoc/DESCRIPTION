@@ -1,6 +1,6 @@
 Package: distrDoc
-Version: 2.2
-Date: 2009-10-16
+Version: 2.3
+Date: 2009-11-01
 Title: Documentation for packages distr, distrEx, distrSim, distrTEst
 Description: provides documentation in form of a common vignette to packages distr, distrEx, distrMod, distrSim, distrTEst
 Author: Florian Camphausen, Matthias Kohl, Peter Ruckdeschel, Thomas Stabla
