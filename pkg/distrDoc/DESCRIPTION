@@ -1,8 +1,8 @@
 Package: distrDoc
 Version: 2.2
 Date: 2009-10-16
-Title: Documentation for packages distr, distrEx, distrSim, distrTEst
-Description: provides documentation in form of a common vignette to packages distr, distrEx, distrMod, distrSim, distrTEst
+Title: Documentation for packages distr, distrEx, distrSim, distrTEst, distrTeach, distrMod, and distrEllipse
+Description: provides documentation in form of a common vignette to packages distr, distrEx, distrMod, distrSim, distrTEst, distrTeach, and distrEllipse
 Author: Florian Camphausen, Matthias Kohl, Peter Ruckdeschel, Thomas Stabla
 Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
 Depends: R(>= 2.6.0), tools, startupmsg, distr(>= 2.2.0), distrEx(>= 2.2.0), distrSim(>= 2.2.0), 
