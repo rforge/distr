@@ -1,5 +1,7 @@
 Changes in setRNG version 2009.11-1
 
+   o	setRNG sources migrated to distr project on R-forge.
+
    o	Standardized NEWS format for new function news().
 
    o	The result of setRNG is now returned with invisible() except in the case
