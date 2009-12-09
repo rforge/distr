@@ -8,6 +8,12 @@
  information)
 
 ##############
+v 2.2.1
+##############
++ fixed error in \section{} (had \code{} markup...)
+   http://n4.nabble.com/Recent-TeX-changes-and-R-package-manuals-tp956056p956056.html
+
+##############
 v 2.2
 ##############
 
