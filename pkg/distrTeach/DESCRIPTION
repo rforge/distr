@@ -1,6 +1,6 @@
 Package: distrTeach
-Version: 2.2
-Date: 2009-10-16
+Version: 2.2.1
+Date: 2010-01-17
 Title: Extensions of package distr for teaching Stochastics/Statistics in secondary school
 Description: Extensions of package distr and some additional functionality
 Depends: R(>= 2.2.0), methods, distr(>= 2.2), distrEx(>= 2.2), startupmsg

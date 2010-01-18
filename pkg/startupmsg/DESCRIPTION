@@ -1,7 +1,7 @@
 Package: startupmsg
 Encoding: latin1
-Version: 0.7
-Date: 2009-10-16
+Version: 0.7.1
+Date: 2010-01-18
 Title: Utilities for start-up messages
 Description: Utilities for start-up messages
 Author: Peter Ruckdeschel

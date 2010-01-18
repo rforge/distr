@@ -1,6 +1,6 @@
 
-R version 2.10.0 Patched (2009-11-02 r50295)
-Copyright (C) 2009 The R Foundation for Statistical Computing
+R version 2.10.1 Patched (2010-01-12 r50990)
+Copyright (C) 2010 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -17,83 +17,19 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
 
-> ### * <HEADER>
-> ###
-> attach(NULL, name = "CheckExEnv")
-> assign("nameEx",
-+        local({
-+ 	   s <- "__{must remake R-ex/*.R}__"
-+            function(new) {
-+                if(!missing(new)) s <<- new else s
-+            }
-+        }),
-+        pos = "CheckExEnv")
-> ## Add some hooks to label plot pages for base and grid graphics
-> assign("base_plot_hook",
-+        function() {
-+            pp <- par(c("mfg","mfcol","oma","mar"))
-+            if(all(pp$mfg[1:2] == c(1, pp$mfcol[2]))) {
-+                outer <- (oma4 <- pp$oma[4]) > 0; mar4 <- pp$mar[4]
-+                mtext(sprintf("help(\"%s\")", nameEx()), side = 4,
-+                      line = if(outer)max(1, oma4 - 1) else min(1, mar4 - 1),
-+                outer = outer, adj = 1, cex = .8, col = "orchid", las=3)
-+            }
-+        },
-+        pos = "CheckExEnv")
-> assign("grid_plot_hook",
-+        function() {
-+            grid::pushViewport(grid::viewport(width=grid::unit(1, "npc") -
-+                               grid::unit(1, "lines"), x=0, just="left"))
-+            grid::grid.text(sprintf("help(\"%s\")", nameEx()),
-+                            x=grid::unit(1, "npc") + grid::unit(0.5, "lines"),
-+                            y=grid::unit(0.8, "npc"), rot=90,
-+                            gp=grid::gpar(col="orchid"))
-+        },
-+        pos = "CheckExEnv")
-> setHook("plot.new",     get("base_plot_hook", pos = "CheckExEnv"))
-> setHook("persp",        get("base_plot_hook", pos = "CheckExEnv"))
-> setHook("grid.newpage", get("grid_plot_hook", pos = "CheckExEnv"))
-> assign("cleanEx",
-+        function(env = .GlobalEnv) {
-+ 	   rm(list = ls(envir = env, all.names = TRUE), envir = env)
-+            RNGkind("default", "default")
-+ 	   set.seed(1)
-+    	   options(warn = 1)
-+ 	   .CheckExEnv <- as.environment("CheckExEnv")
-+ 	   delayedAssign("T", stop("T used instead of TRUE"),
-+ 		  assign.env = .CheckExEnv)
-+ 	   delayedAssign("F", stop("F used instead of FALSE"),
-+ 		  assign.env = .CheckExEnv)
-+ 	   sch <- search()
-+ 	   newitems <- sch[! sch %in% .oldSearch]
-+ 	   for(item in rev(newitems))
-+                eval(substitute(detach(item), list(item=item)))
-+ 	   missitems <- .oldSearch[! .oldSearch %in% sch]
-+ 	   if(length(missitems))
-+ 	       warning("items ", paste(missitems, collapse=", "),
-+ 		       " have been removed from the search path")
-+        },
-+        pos = "CheckExEnv")
-> assign("ptime", proc.time(), pos = "CheckExEnv")
-> ## at least one package changes these via ps.options(), so do this
-> ## before loading the package.
-> ## Use postscript as incomplete files may be viewable, unlike PDF.
-> ## Choose a size that is close to on-screen devices, fix paper
-> grDevices::ps.options(width = 7, height = 7, paper = "a4", reset = TRUE)
-> grDevices::postscript("SweaveListingUtils-Ex.ps")
-> 
-> assign("par.postscript", graphics::par(no.readonly = TRUE), pos = "CheckExEnv")
-> options(contrasts = c(unordered = "contr.treatment", ordered = "contr.poly"))
+> pkgname <- "SweaveListingUtils"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
 > options(warn = 1)
 > library('SweaveListingUtils')
 Loading required package: startupmsg
-:startupmsg>  Utilities for start-up messages (version 0.7)
+:startupmsg>  Utilities for start-up messages (version 0.7.1)
 :startupmsg> 
 :startupmsg>  For more information see ?"startupmsg",
 :startupmsg>  NEWS("startupmsg")
 
 :SweaveListingUtils>  Utilities for Sweave together with
-:SweaveListingUtils>  TeX listings package (version 0.4)
+:SweaveListingUtils>  TeX listings package (version
+:SweaveListingUtils>  0.4.1)
 :SweaveListingUtils> 
 :SweaveListingUtils>  Some functions from package 'base'
 :SweaveListingUtils>  are intentionally masked ---see
@@ -122,8 +58,8 @@ Attaching package: 'SweaveListingUtils'
 
 > 
 > assign(".oldSearch", search(), pos = 'CheckExEnv')
-> assign(".oldNS", loadedNamespaces(), pos = 'CheckExEnv')
-> cleanEx(); nameEx("SweaveListingMASK")
+> cleanEx()
+> nameEx("SweaveListingMASK")
 > ### * SweaveListingMASK
 > 
 > flush(stderr()); flush(stdout())
@@ -168,7 +104,8 @@ unloadNamespace("SweaveListingUtils")
 > 
 > 
 > 
-> cleanEx(); nameEx("SweaveListingOptions")
+> cleanEx()
+> nameEx("SweaveListingOptions")
 > ### * SweaveListingOptions
 > 
 > flush(stderr()); flush(stdout())
@@ -360,7 +297,8 @@ $Rout$basicstyle
 > 
 > 
 > 
-> cleanEx(); nameEx("SweaveListingPreparations")
+> cleanEx()
+> nameEx("SweaveListingPreparations")
 > ### * SweaveListingPreparations
 > 
 > flush(stderr()); flush(stdout())
@@ -482,7 +420,7 @@ V1=0,V2=1,V3=0}%
 \def\Code#1{{\tt\color{Rcolor} #1}}
 \def\file#1{{\tt #1}} 
 \def\pkg#1{{\tt "#1"}} 
-\newcommand{\pkgversion}{{\tt 2.2}}
+\newcommand{\pkgversion}{{\tt 2.2.1}}
 %------------------------------------------------------------------------------%
 Warning in kws[idxRec] <- rep(getSweaveListingOption("Recomd.Keywordstyle"),  :
   number of items to replace is not a multiple of replacement length
@@ -767,125 +705,124 @@ simpleWarning,simpleMessage,simpleError,simpleCondition,signalCondition,%
 shQuote,showConnections,setTimeLimit,setSessionTimeLimit,set.seed,%
 setNamespaceInfo,setHook,setCConverterStatus,serialize,seq.POSIXt,%
 seq_len,seq.int,seq.default,seq.Date,seq_along,%
-seek.connection,seek,scan.url,scale.default,saveNamespaceImage,%
-save.image,sample.int,R.version.string,R.Version,R.version,%
-R_system_version,rowSums,rowsum.default,rowsum.data.frame,row.names.default,%
-row.names<-.default,row.names.data.frame,row.names<-.data.frame,rownames<-,row.names<-,%
-row.names,rowMeans,round.POSIXt,round.Date,RNGversion,%
-R.home,rev.default,retracemem,restartFormals,restartDescription,%
-rep.POSIXlt,rep.POSIXct,rep.numeric_version,replicate,rep.int,%
-rep.factor,rep.Date,removeTaskCallback,removeCConverter,registerS3methods,%
-registerS3method,reg.finalizer,Reduce,read.table.url,readLines,%
-read.dcf,readChar,readBin,rcond,rbind.data.frame,%
-rawToChar,rawToBits,rawShift,rawConnectionValue,rawConnection,%
-raw,rapply,range.default,quarters.POSIXt,quarters.Date,%
-quarters,qr.X,qr.solve,qr.resid,qr.R,%
-qr.qy,qr.qty,qr.Q,qr.fitted,qr.default,%
-qr.coef,pushBackLength,pushBack,psigamma,prop.table,%
-proc.time,print.warnings,print.table,print.summary.table,print.srcref,%
-print.srcfile,print.simple.list,print.rle,print.restart,print.proc_time,%
-print.POSIXlt,print.POSIXct,print.packageInfo,print.octmode,print.numeric_version,%
-print.noquote,printNoClass,print.NativeRoutineList,print.listof,print.libraryIQR,%
-print.hexmode,print.function,print.factor,print.DLLRegisteredRoutines,print.DLLInfoList,%
-print.DLLInfo,print.difftime,print.default,print.Date,print.data.frame,%
-print.connection,print.condition,print.by,print.AsIs,prettyNum,%
-pos.to.env,Position,pmin.int,pmax.int,pipe,%
-pi,path.expand,parseNamespaceFile,parse.dcf,parent.frame,%
-parent.env<-,parent.env,packBits,package_version,packageStartupMessage,%
-packageHasNamespace,packageEvent,package.description,Ops.POSIXt,Ops.ordered,%
-Ops.numeric_version,Ops.factor,Ops.difftime,Ops.Date,Ops.data.frame,%
-open.srcfilecopy,open.srcfile,open.connection,open,on.exit,%
-oldClass<-,oldClass,nzchar,numeric_version,ngettext,%
-new.env,Negate,namespaceImportMethods,namespaceImportFrom,namespaceImportClasses,%
-namespaceImport,namespaceExport,names<-,mostattributes<-,months.POSIXt,%
-months.Date,months,month.name,month.abb,mode<-,%
-mget,message,merge.default,merge.data.frame,memory.profile,%
-mem.limits,memDecompress,memCompress,mean.POSIXlt,mean.POSIXct,%
-mean.difftime,mean.default,mean.Date,mean.data.frame,max.col,%
-mat.or.vec,Math.POSIXt,Math.factor,Math.difftime,Math.Date,%
-Math.data.frame,match.fun,match.call,match.arg,margin.table,%
-mapply,Map,manglePackageName,make.unique,make.names,%
-makeActiveBinding,lower.tri,logb,lockEnvironment,lockBinding,%
-loadURL,loadNamespace,loadingNamespaceInfo,loadedNamespaces,list.files,%
-library.dynam.unload,library.dynam,lfactorial,levels<-.factor,levels.default,%
-levels<-,LETTERS,letters,length<-.factor,length<-,%
-lazyLoadDBfetch,lazyLoad,La.svd,La.eigen,La.chol2inv,%
-La.chol,labels.default,l10n_info,kappa.tri,kappa.qr,%
-kappa.lm,kappa.default,julian.POSIXt,julian.Date,julian,%
-is.vector,is.unsorted,isTRUE,is.table,isSymmetric.matrix,%
-isSymmetric,is.symbol,is.single,isSeekable,isS4,%
-isRestart,is.recursive,is.real,is.raw,is.R,%
-is.qr,is.primitive,is.pairlist,is.package_version,is.ordered,%
-isOpen,ISOdatetime,ISOdate,is.object,is.numeric_version,%
-is.numeric.POSIXt,is.numeric.Date,is.numeric,is.null,is.na.POSIXlt,%
-is.na.numeric_version,is.nan,isNamespace,is.name,is.na<-.factor,%
-is.na<-.default,is.na.data.frame,is.na<-,is.na,is.matrix,%
-is.logical,is.loaded,is.list,is.language,is.integer,%
-is.infinite,isIncomplete,is.function,is.finite,is.factor,%
-is.expression,is.environment,is.element,is.double,isdebugged,%
-is.data.frame,is.complex,is.character,is.call,isBaseNamespace,%
-is.atomic,is.array,invokeRestartInteractively,invokeRestart,inverse.rle,%
-intToUtf8,intToBits,importIntoEnv,identity,identical,%
-icuSetCollate,iconvlist,iconv,gzfile,gzcon,%
-grepl,gregexpr,gettextf,gettext,getTaskCallbackNames,%
-getSrcLines,getRversion,getNumCConverters,getNativeSymbolInfo,getNamespaceVersion,%
-getNamespaceUsers,getNamespaceName,getNamespaceInfo,getNamespaceImports,getNamespaceExports,%
-getNamespace,getLoadedDLLs,getHook,getExportedValue,getDLLRegisteredRoutines.DLLInfo,%
-getDLLRegisteredRoutines.character,getDLLRegisteredRoutines,getConnection,getCConverterStatus,getCConverterDescriptions,%
-getCallingDLLe,getCallingDLL,getAllConnections,gc.time,format.pval,%
-format.POSIXlt,format.POSIXct,format.octmode,format.info,format.hexmode,%
-format.factor,formatDL,format.difftime,format.default,format.Date,%
-format.data.frame,format.char,format.AsIs,formals<-,force,%
-flush.connection,flush,findRestart,findPackageEnv,findInterval,%
-Find,Filter,file.symlink,file.show,file.rename,%
-file.remove,file.path,file.info,file.exists,file.create,%
-file.copy,file.choose,file.append,file.access,fifo,%
-factorial,F,expm1,expand.grid,eval.parent,%
-env.profile,environmentName,environmentIsLocked,environment<-,Encoding<-,%
-Encoding,encodeString,emptyenv,eapply,dyn.unload,%
-dyn.load,duplicated.POSIXlt,duplicated.numeric_version,duplicated.matrix,duplicated.default,%
-duplicated.data.frame,duplicated.array,dQuote,do.call,dir.create,%
-dimnames.data.frame,dimnames<-.data.frame,dimnames<-,dim.data.frame,dim<-,%
-difftime,diff.POSIXt,diff.default,diff.Date,diag<-,%
-determinant.matrix,determinant,det,delayedAssign,default.stringsAsFactors,%
-debugonce,data.matrix,data.frame,data.class,cut.POSIXt,%
-cut.default,cut.Date,Cstack_info,c.POSIXlt,c.POSIXct,%
-contributors,conditionMessage.condition,conditionMessage,conditionCall.condition,conditionCall,%
-computeRestarts,comment<-,colSums,colnames<-,colMeans,%
-codes.ordered,codes.factor,codes<-,c.numeric_version,c.noquote,%
-close.srcfile,close.connection,closeAllConnections,class<-,chol.default,%
-check_tzones,chartr,charToRaw,char.expand,c.Date,%
-cbind.data.frame,casefold,capabilities,callCC,bzfile,%
-by.default,by.data.frame,browserText,browserSetDebug,browserCondition,%
-bquote,body<-,bindtextdomain,bindingIsLocked,bindingIsActive,%
-baseenv,attributes<-,attr.all.equal,attr<-,attachNamespace,%
-as.vector.factor,as.vector,as.table.default,as.table,as.symbol,%
-as.single.default,as.single,assign,asS4,as.real,%
-as.raw,as.qr,as.POSIXlt.POSIXct,as.POSIXlt.numeric,as.POSIXlt.factor,%
-as.POSIXlt.default,as.POSIXlt.dates,as.POSIXlt.Date,as.POSIXlt.date,as.POSIXlt.character,%
-as.POSIXlt,as.POSIXct.POSIXlt,as.POSIXct.numeric,as.POSIXct.default,as.POSIXct.dates,%
-as.POSIXct.Date,as.POSIXct.date,as.POSIXct,as.pairlist,as.package_version,%
-as.ordered,as.octmode,as.numeric_version,as.numeric,as.null.default,%
-as.null,asNamespace,as.name,as.matrix.POSIXlt,as.matrix.noquote,%
-as.matrix.default,as.matrix.data.frame,as.matrix,as.logical,as.list.numeric_version,%
-as.list.function,as.list.factor,as.list.environment,as.list.default,as.list.data.frame,%
-as.list,as.integer,as.hexmode,as.function.default,as.function,%
-as.factor,as.expression.default,as.expression,as.environment,as.double.POSIXlt,%
-as.double.difftime,as.double,as.difftime,as.Date.POSIXlt,as.Date.POSIXct,%
-as.Date.numeric,as.Date.factor,as.Date.default,as.Date.dates,as.Date.date,%
-as.Date.character,as.Date,as.data.frame.vector,as.data.frame.ts,as.data.frame.table,%
-as.data.frame.raw,as.data.frame.POSIXlt,as.data.frame.POSIXct,as.data.frame.ordered,as.data.frame.numeric_version,%
-as.data.frame.numeric,as.data.frame.model.matrix,as.data.frame.matrix,as.data.frame.logical,as.data.frame.list,%
-as.data.frame.integer,as.data.frame.factor,as.data.frame.difftime,as.data.frame.default,as.data.frame.Date,%
-as.data.frame.data.frame,as.data.frame.complex,as.data.frame.character,as.data.frame.AsIs,as.data.frame.array,%
-as.data.frame,as.complex,as.character.srcref,as.character.POSIXt,as.character.octmode,%
-as.character.numeric_version,as.character.hexmode,as.character.factor,as.character.error,as.character.default,%
-as.character.Date,as.character.condition,as.character,as.call,as.array.default,%
-as.array,anyDuplicated.matrix,anyDuplicated.default,anyDuplicated.data.frame,anyDuplicated.array,%
-anyDuplicated,all.vars,all.names,all.equal.raw,all.equal.POSIXct,%
-all.equal.numeric,all.equal.list,all.equal.language,all.equal.formula,all.equal.factor,%
-all.equal.default,all.equal.character,all.equal,agrep,addTaskCallback,%
-addNA%
+seek.connection,seek,scan.url,scale.default,save.image,%
+sample.int,R.version.string,R.Version,R.version,R_system_version,%
+rowSums,rowsum.default,rowsum.data.frame,row.names.default,row.names<-.default,%
+row.names.data.frame,row.names<-.data.frame,rownames<-,row.names<-,row.names,%
+rowMeans,round.POSIXt,round.Date,RNGversion,R.home,%
+rev.default,retracemem,restartFormals,restartDescription,rep.POSIXlt,%
+rep.POSIXct,rep.numeric_version,replicate,rep.int,rep.factor,%
+rep.Date,removeTaskCallback,removeCConverter,registerS3methods,registerS3method,%
+reg.finalizer,Reduce,read.table.url,readLines,read.dcf,%
+readChar,readBin,rcond,rbind.data.frame,rawToChar,%
+rawToBits,rawShift,rawConnectionValue,rawConnection,raw,%
+rapply,range.default,quarters.POSIXt,quarters.Date,quarters,%
+qr.X,qr.solve,qr.resid,qr.R,qr.qy,%
+qr.qty,qr.Q,qr.fitted,qr.default,qr.coef,%
+pushBackLength,pushBack,psigamma,prop.table,proc.time,%
+print.warnings,print.table,print.summary.table,print.srcref,print.srcfile,%
+print.simple.list,print.rle,print.restart,print.proc_time,print.POSIXlt,%
+print.POSIXct,print.packageInfo,print.octmode,print.numeric_version,print.noquote,%
+printNoClass,print.NativeRoutineList,print.listof,print.libraryIQR,print.hexmode,%
+print.function,print.factor,print.DLLRegisteredRoutines,print.DLLInfoList,print.DLLInfo,%
+print.difftime,print.default,print.Date,print.data.frame,print.connection,%
+print.condition,print.by,print.AsIs,prettyNum,pos.to.env,%
+Position,pmin.int,pmax.int,pipe,pi,%
+path.expand,parseNamespaceFile,parse.dcf,parent.frame,parent.env<-,%
+parent.env,packBits,package_version,packageStartupMessage,packageHasNamespace,%
+packageEvent,package.description,Ops.POSIXt,Ops.ordered,Ops.numeric_version,%
+Ops.factor,Ops.difftime,Ops.Date,Ops.data.frame,open.srcfilecopy,%
+open.srcfile,open.connection,open,on.exit,oldClass<-,%
+oldClass,nzchar,numeric_version,ngettext,new.env,%
+Negate,namespaceImportMethods,namespaceImportFrom,namespaceImportClasses,namespaceImport,%
+namespaceExport,names<-,mostattributes<-,months.POSIXt,months.Date,%
+months,month.name,month.abb,mode<-,mget,%
+message,merge.default,merge.data.frame,memory.profile,mem.limits,%
+memDecompress,memCompress,mean.POSIXlt,mean.POSIXct,mean.difftime,%
+mean.default,mean.Date,mean.data.frame,max.col,mat.or.vec,%
+Math.POSIXt,Math.factor,Math.difftime,Math.Date,Math.data.frame,%
+match.fun,match.call,match.arg,margin.table,mapply,%
+Map,manglePackageName,make.unique,make.names,makeActiveBinding,%
+lower.tri,logb,lockEnvironment,lockBinding,loadURL,%
+loadNamespace,loadingNamespaceInfo,loadedNamespaces,list.files,library.dynam.unload,%
+library.dynam,lfactorial,levels<-.factor,levels.default,levels<-,%
+LETTERS,letters,length<-.factor,length<-,lazyLoadDBfetch,%
+lazyLoad,La.svd,La.eigen,La.chol2inv,La.chol,%
+labels.default,l10n_info,kappa.tri,kappa.qr,kappa.lm,%
+kappa.default,julian.POSIXt,julian.Date,julian,is.vector,%
+is.unsorted,isTRUE,is.table,isSymmetric.matrix,isSymmetric,%
+is.symbol,is.single,isSeekable,isS4,isRestart,%
+is.recursive,is.real,is.raw,is.R,is.qr,%
+is.primitive,is.pairlist,is.package_version,is.ordered,isOpen,%
+ISOdatetime,ISOdate,is.object,is.numeric_version,is.numeric.POSIXt,%
+is.numeric.Date,is.numeric,is.null,is.na.POSIXlt,is.na.numeric_version,%
+is.nan,isNamespace,is.name,is.na<-.factor,is.na<-.default,%
+is.na.data.frame,is.na<-,is.na,is.matrix,is.logical,%
+is.loaded,is.list,is.language,is.integer,is.infinite,%
+isIncomplete,is.function,is.finite,is.factor,is.expression,%
+is.environment,is.element,is.double,isdebugged,is.data.frame,%
+is.complex,is.character,is.call,isBaseNamespace,is.atomic,%
+is.array,invokeRestartInteractively,invokeRestart,inverse.rle,intToUtf8,%
+intToBits,importIntoEnv,identity,identical,icuSetCollate,%
+iconvlist,iconv,gzfile,gzcon,grepl,%
+gregexpr,gettextf,gettext,getTaskCallbackNames,getSrcLines,%
+getRversion,getNumCConverters,getNativeSymbolInfo,getNamespaceVersion,getNamespaceUsers,%
+getNamespaceName,getNamespaceInfo,getNamespaceImports,getNamespaceExports,getNamespace,%
+getLoadedDLLs,getHook,getExportedValue,getDLLRegisteredRoutines.DLLInfo,getDLLRegisteredRoutines.character,%
+getDLLRegisteredRoutines,getConnection,getCConverterStatus,getCConverterDescriptions,getCallingDLLe,%
+getCallingDLL,getAllConnections,gc.time,format.pval,format.POSIXlt,%
+format.POSIXct,format.octmode,format.info,format.hexmode,format.factor,%
+formatDL,format.difftime,format.default,format.Date,format.data.frame,%
+format.char,format.AsIs,formals<-,force,flush.connection,%
+flush,findRestart,findPackageEnv,findInterval,Find,%
+Filter,file.symlink,file.show,file.rename,file.remove,%
+file.path,file.info,file.exists,file.create,file.copy,%
+file.choose,file.append,file.access,fifo,factorial,%
+F,expm1,expand.grid,eval.parent,env.profile,%
+environmentName,environmentIsLocked,environment<-,Encoding<-,Encoding,%
+encodeString,emptyenv,eapply,dyn.unload,dyn.load,%
+duplicated.POSIXlt,duplicated.numeric_version,duplicated.matrix,duplicated.default,duplicated.data.frame,%
+duplicated.array,dQuote,do.call,dir.create,dimnames.data.frame,%
+dimnames<-.data.frame,dimnames<-,dim.data.frame,dim<-,difftime,%
+diff.POSIXt,diff.default,diff.Date,diag<-,determinant.matrix,%
+determinant,det,delayedAssign,default.stringsAsFactors,debugonce,%
+data.matrix,data.frame,data.class,cut.POSIXt,cut.default,%
+cut.Date,Cstack_info,c.POSIXlt,c.POSIXct,contributors,%
+conditionMessage.condition,conditionMessage,conditionCall.condition,conditionCall,computeRestarts,%
+comment<-,colSums,colnames<-,colMeans,codes.ordered,%
+codes.factor,codes<-,c.numeric_version,c.noquote,close.srcfile,%
+close.connection,closeAllConnections,class<-,chol.default,check_tzones,%
+chartr,charToRaw,char.expand,c.Date,cbind.data.frame,%
+casefold,capabilities,callCC,bzfile,by.default,%
+by.data.frame,browserText,browserSetDebug,browserCondition,bquote,%
+body<-,bindtextdomain,bindingIsLocked,bindingIsActive,baseenv,%
+attributes<-,attr.all.equal,attr<-,attachNamespace,as.vector.factor,%
+as.vector,as.table.default,as.table,as.symbol,as.single.default,%
+as.single,assign,asS4,as.real,as.raw,%
+as.qr,as.POSIXlt.POSIXct,as.POSIXlt.numeric,as.POSIXlt.factor,as.POSIXlt.default,%
+as.POSIXlt.dates,as.POSIXlt.Date,as.POSIXlt.date,as.POSIXlt.character,as.POSIXlt,%
+as.POSIXct.POSIXlt,as.POSIXct.numeric,as.POSIXct.default,as.POSIXct.dates,as.POSIXct.Date,%
+as.POSIXct.date,as.POSIXct,as.pairlist,as.package_version,as.ordered,%
+as.octmode,as.numeric_version,as.numeric,as.null.default,as.null,%
+asNamespace,as.name,as.matrix.POSIXlt,as.matrix.noquote,as.matrix.default,%
+as.matrix.data.frame,as.matrix,as.logical,as.list.numeric_version,as.list.function,%
+as.list.factor,as.list.environment,as.list.default,as.list.data.frame,as.list,%
+as.integer,as.hexmode,as.function.default,as.function,as.factor,%
+as.expression.default,as.expression,as.environment,as.double.POSIXlt,as.double.difftime,%
+as.double,as.difftime,as.Date.POSIXlt,as.Date.POSIXct,as.Date.numeric,%
+as.Date.factor,as.Date.default,as.Date.dates,as.Date.date,as.Date.character,%
+as.Date,as.data.frame.vector,as.data.frame.ts,as.data.frame.table,as.data.frame.raw,%
+as.data.frame.POSIXlt,as.data.frame.POSIXct,as.data.frame.ordered,as.data.frame.numeric_version,as.data.frame.numeric,%
+as.data.frame.model.matrix,as.data.frame.matrix,as.data.frame.logical,as.data.frame.list,as.data.frame.integer,%
+as.data.frame.factor,as.data.frame.difftime,as.data.frame.default,as.data.frame.Date,as.data.frame.data.frame,%
+as.data.frame.complex,as.data.frame.character,as.data.frame.AsIs,as.data.frame.array,as.data.frame,%
+as.complex,as.character.srcref,as.character.POSIXt,as.character.octmode,as.character.numeric_version,%
+as.character.hexmode,as.character.factor,as.character.error,as.character.default,as.character.Date,%
+as.character.condition,as.character,as.call,as.array.default,as.array,%
+anyDuplicated.matrix,anyDuplicated.default,anyDuplicated.data.frame,anyDuplicated.array,anyDuplicated,%
+all.vars,all.names,all.equal.raw,all.equal.POSIXct,all.equal.numeric,%
+all.equal.list,all.equal.language,all.equal.formula,all.equal.factor,all.equal.default,%
+all.equal.character,all.equal,agrep,addTaskCallback,addNA%
 },%
 keywordstyle={[10]{\bf\color{RRecomdcolor}}}%
 %
@@ -1015,7 +952,8 @@ V1=0,V2=1,V3=0}%
 > 
 > 
 > 
-> cleanEx(); nameEx("changeKeywordstyles")
+> cleanEx()
+> nameEx("changeKeywordstyles")
 > ### * changeKeywordstyles
 > 
 > flush(stderr()); flush(stdout())
@@ -1082,7 +1020,8 @@ keywordstyle={[11]{\bf\color{RRecomdcolor}}}%
 > 
 > 
 > 
-> cleanEx(); nameEx("copySourceFromRForge")
+> cleanEx()
+> nameEx("copySourceFromRForge")
 > ### * copySourceFromRForge
 > 
 > flush(stderr()); flush(stdout())
@@ -1404,7 +1343,8 @@ $lines
 > 
 > 
 > 
-> cleanEx(); nameEx("isBaseOrRecommended")
+> cleanEx()
+> nameEx("isBaseOrRecommended")
 > ### * isBaseOrRecommended
 > 
 > flush(stderr()); flush(stdout())
@@ -1421,7 +1361,8 @@ SweaveListingUtils             Matrix            splines
              FALSE               TRUE               TRUE 
 > 
 > 
-> cleanEx(); nameEx("library")
+> cleanEx()
+> nameEx("library")
 > ### * library
 > 
 > flush(stderr()); flush(stdout())
@@ -1474,7 +1415,8 @@ keywordstyle={[13]{\bf\color{RRecomdcolor}}}%
 > 
 > 
 > 
-> cleanEx(); nameEx("lstinputSourceFromRForge")
+> cleanEx()
+> nameEx("lstinputSourceFromRForge")
 > ### * lstinputSourceFromRForge
 > 
 > flush(stderr()); flush(stdout())
@@ -1804,7 +1746,8 @@ setMethod("size<-", "Binom",
 > 
 > 
 > 
-> cleanEx(); nameEx("lstset")
+> cleanEx()
+> nameEx("lstset")
 > ### * lstset
 > 
 > flush(stderr()); flush(stdout())
@@ -1839,7 +1782,8 @@ NULL
 > 
 > 
 > 
-> cleanEx(); nameEx("lstsetLanguage")
+> cleanEx()
+> nameEx("lstsetLanguage")
 > ### * lstsetLanguage
 > 
 > flush(stderr()); flush(stdout())
@@ -2092,7 +2036,8 @@ Warning: closing unused connection 3 (http://r-forge.r-project.org/plugins/scmsv
 > 
 > 
 > 
-> cleanEx(); nameEx("readPackageVersion")
+> cleanEx()
+> nameEx("readPackageVersion")
 > ### * readPackageVersion
 > 
 > flush(stderr()); flush(stdout())
@@ -2106,11 +2051,12 @@ Warning: closing unused connection 3 (http://r-forge.r-project.org/plugins/scmsv
 > 
 > readPkgVersion(package = "distr")
      Version
-[1,] "2.2"  
+[1,] "2.2.1"
 > 
 > 
 > 
-> cleanEx(); nameEx("readSourceFromRForge")
+> cleanEx()
+> nameEx("readSourceFromRForge")
 > ### * readSourceFromRForge
 > 
 > flush(stderr()); flush(stdout())
@@ -3295,7 +3241,8 @@ Warning: closing unused connection 3 (http://r-forge.r-project.org/plugins/scmsv
 > 
 > 
 > 
-> cleanEx(); nameEx("setToBeDefinedPkgs")
+> cleanEx()
+> nameEx("setToBeDefinedPkgs")
 > ### * setToBeDefinedPkgs
 > 
 > flush(stderr()); flush(stdout())
@@ -3320,7 +3267,8 @@ Warning: unrecognized escape removed from "\bfseries\color{"
 > 
 > 
 > 
-> cleanEx(); nameEx("taglist")
+> cleanEx()
+> nameEx("taglist")
 > ### * taglist
 > 
 > flush(stderr()); flush(stdout())
@@ -3349,7 +3297,7 @@ myList=HU=AHAL,%
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  0.36 0.02 4.046 0 0 
+Time elapsed:  0.31 0.06 1.615 0 0 
 > grDevices::dev.off()
 null device 
           1 

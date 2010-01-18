@@ -1,6 +1,6 @@
 
-R version 2.10.0 beta (2009-10-15 r50107)
-Copyright (C) 2009 The R Foundation for Statistical Computing
+R version 2.10.1 Patched (2010-01-12 r50990)
+Copyright (C) 2010 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -17,78 +17,13 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
 
-> ### * <HEADER>
-> ###
-> attach(NULL, name = "CheckExEnv")
-> assign("nameEx",
-+        local({
-+ 	   s <- "__{must remake R-ex/*.R}__"
-+            function(new) {
-+                if(!missing(new)) s <<- new else s
-+            }
-+        }),
-+        pos = "CheckExEnv")
-> ## Add some hooks to label plot pages for base and grid graphics
-> assign("base_plot_hook",
-+        function() {
-+            pp <- par(c("mfg","mfcol","oma","mar"))
-+            if(all(pp$mfg[1:2] == c(1, pp$mfcol[2]))) {
-+                outer <- (oma4 <- pp$oma[4]) > 0; mar4 <- pp$mar[4]
-+                mtext(sprintf("help(\"%s\")", nameEx()), side = 4,
-+                      line = if(outer)max(1, oma4 - 1) else min(1, mar4 - 1),
-+                outer = outer, adj = 1, cex = .8, col = "orchid", las=3)
-+            }
-+        },
-+        pos = "CheckExEnv")
-> assign("grid_plot_hook",
-+        function() {
-+            grid::pushViewport(grid::viewport(width=grid::unit(1, "npc") -
-+                               grid::unit(1, "lines"), x=0, just="left"))
-+            grid::grid.text(sprintf("help(\"%s\")", nameEx()),
-+                            x=grid::unit(1, "npc") + grid::unit(0.5, "lines"),
-+                            y=grid::unit(0.8, "npc"), rot=90,
-+                            gp=grid::gpar(col="orchid"))
-+        },
-+        pos = "CheckExEnv")
-> setHook("plot.new",     get("base_plot_hook", pos = "CheckExEnv"))
-> setHook("persp",        get("base_plot_hook", pos = "CheckExEnv"))
-> setHook("grid.newpage", get("grid_plot_hook", pos = "CheckExEnv"))
-> assign("cleanEx",
-+        function(env = .GlobalEnv) {
-+ 	   rm(list = ls(envir = env, all.names = TRUE), envir = env)
-+            RNGkind("default", "default")
-+ 	   set.seed(1)
-+    	   options(warn = 1)
-+ 	   .CheckExEnv <- as.environment("CheckExEnv")
-+ 	   delayedAssign("T", stop("T used instead of TRUE"),
-+ 		  assign.env = .CheckExEnv)
-+ 	   delayedAssign("F", stop("F used instead of FALSE"),
-+ 		  assign.env = .CheckExEnv)
-+ 	   sch <- search()
-+ 	   newitems <- sch[! sch %in% .oldSearch]
-+ 	   for(item in rev(newitems))
-+                eval(substitute(detach(item), list(item=item)))
-+ 	   missitems <- .oldSearch[! .oldSearch %in% sch]
-+ 	   if(length(missitems))
-+ 	       warning("items ", paste(missitems, collapse=", "),
-+ 		       " have been removed from the search path")
-+        },
-+        pos = "CheckExEnv")
-> assign("ptime", proc.time(), pos = "CheckExEnv")
-> ## at least one package changes these via ps.options(), so do this
-> ## before loading the package.
-> ## Use postscript as incomplete files may be viewable, unlike PDF.
-> ## Choose a size that is close to on-screen devices, fix paper
-> grDevices::ps.options(width = 7, height = 7, paper = "a4", reset = TRUE)
-> grDevices::postscript("distrEx-Ex.ps")
-> 
-> assign("par.postscript", graphics::par(no.readonly = TRUE), pos = "CheckExEnv")
-> options(contrasts = c(unordered = "contr.treatment", ordered = "contr.poly"))
+> pkgname <- "distrEx"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
 > options(warn = 1)
 > library('distrEx')
 Loading required package: distr
 Loading required package: startupmsg
-:startupmsg>  Utilities for start-up messages (version 0.7)
+:startupmsg>  Utilities for start-up messages (version 0.7.1)
 :startupmsg> 
 :startupmsg>  For more information see ?"startupmsg",
 :startupmsg>  NEWS("startupmsg")
@@ -96,7 +31,8 @@ Loading required package: startupmsg
 Loading required package: sfsmisc
 Loading required package: SweaveListingUtils
 :SweaveListingUtils>  Utilities for Sweave together with
-:SweaveListingUtils>  TeX listings package (version 0.4)
+:SweaveListingUtils>  TeX listings package (version
+:SweaveListingUtils>  0.4.1)
 :SweaveListingUtils> 
 :SweaveListingUtils>  Some functions from package 'base'
 :SweaveListingUtils>  are intentionally masked ---see
@@ -124,7 +60,7 @@ Attaching package: 'SweaveListingUtils'
 	 require 
 
 :distr>  Object orientated implementation of distributions (version
-:distr>  2.2)
+:distr>  2.2.1)
 :distr> 
 :distr>  Attention: Arithmetics on distribution objects are
 :distr>  understood as operations on corresponding random variables
@@ -162,7 +98,7 @@ Attaching package: 'actuar'
 
 	 cm 
 
-:distrEx>  Extensions of package distr (version 2.2)
+:distrEx>  Extensions of package distr (version 2.2.1)
 :distrEx> 
 :distrEx>  Note: Packages "e1071", "moments", "fBasics" should be
 :distrEx>  attached /before/ package "distrEx". See distrExMASK().
@@ -187,8 +123,8 @@ Attaching package: 'distrEx'
 
 > 
 > assign(".oldSearch", search(), pos = 'CheckExEnv')
-> assign(".oldNS", loadedNamespaces(), pos = 'CheckExEnv')
-> cleanEx(); nameEx("AbscontCondDistribution-class")
+> cleanEx()
+> nameEx("AbscontCondDistribution-class")
 > ### * AbscontCondDistribution-class
 > 
 > flush(stderr()); flush(stdout())
@@ -202,13 +138,14 @@ Attaching package: 'distrEx'
 > new("AbscontCondDistribution")
 Distribution object of class: AbscontCondDistribution
 ## cond:
-An object of class “Condition”
+An object of class "Condition"
 Slot "name":
 [1] "a condition"
 
 > 
 > 
-> cleanEx(); nameEx("AsymTotalVarDist")
+> cleanEx()
+> nameEx("AsymTotalVarDist")
 > ### * AsymTotalVarDist
 > 
 > flush(stderr()); flush(stdout())
@@ -268,7 +205,8 @@ asym. total variation distance
 > 
 > 
 > 
-> cleanEx(); nameEx("Condition-class")
+> cleanEx()
+> nameEx("Condition-class")
 > ### * Condition-class
 > 
 > flush(stderr()); flush(stdout())
@@ -280,13 +218,14 @@ asym. total variation distance
 > 
 > ### ** Examples
 > new("Condition")
-An object of class “Condition”
+An object of class "Condition"
 Slot "name":
 [1] "a condition"
 
 > 
 > 
-> cleanEx(); nameEx("ContaminationSize")
+> cleanEx()
+> nameEx("ContaminationSize")
 > ### * ContaminationSize
 > 
 > flush(stderr()); flush(stdout())
@@ -334,7 +273,8 @@ $size.of.contamination
 > 
 > 
 > 
-> cleanEx(); nameEx("ConvexContamination")
+> cleanEx()
+> nameEx("ConvexContamination")
 > ### * ConvexContamination
 > 
 > flush(stderr()); flush(stdout())
@@ -360,7 +300,8 @@ $size.of.contamination
 > 
 > 
 > 
-> cleanEx(); nameEx("CvMDist")
+> cleanEx()
+> nameEx("CvMDist")
 > ### * CvMDist
 > 
 > flush(stderr()); flush(stdout())
@@ -405,7 +346,8 @@ CvM distance
 > 
 > 
 > 
-> cleanEx(); nameEx("DiscreteCondDistribution-class")
+> cleanEx()
+> nameEx("DiscreteCondDistribution-class")
 > ### * DiscreteCondDistribution-class
 > 
 > flush(stderr()); flush(stdout())
@@ -419,13 +361,14 @@ CvM distance
 > new("DiscreteCondDistribution")
 Distribution object of class: DiscreteCondDistribution
 ## cond:
-An object of class “Condition”
+An object of class "Condition"
 Slot "name":
 [1] "a condition"
 
 > 
 > 
-> cleanEx(); nameEx("DiscreteMVDistribution-class")
+> cleanEx()
+> nameEx("DiscreteMVDistribution-class")
 > ### * DiscreteMVDistribution-class
 > 
 > flush(stderr()); flush(stdout())
@@ -477,7 +420,7 @@ NULL
 > param(D2)
 NULL
 > img(D2)
-An object of class “EuclideanSpace”
+An object of class "EuclideanSpace"
 Slot "dimension":
 [1] 2
 
@@ -489,7 +432,8 @@ Slot "name":
 > 
 > 
 > 
-> cleanEx(); nameEx("DiscreteMVDistribution")
+> cleanEx()
+> nameEx("DiscreteMVDistribution")
 > ### * DiscreteMVDistribution
 > 
 > flush(stderr()); flush(stdout())
@@ -531,7 +475,8 @@ Slot "name":
 > 
 > 
 > 
-> cleanEx(); nameEx("E")
+> cleanEx()
+> nameEx("E")
 > ### * E
 > 
 > flush(stderr()); flush(stdout())
@@ -666,7 +611,8 @@ Slot "name":
 > 
 > 
 > 
-> cleanEx(); nameEx("EuclCondition-class")
+> cleanEx()
+> nameEx("EuclCondition-class")
 > ### * EuclCondition-class
 > 
 > flush(stderr()); flush(stdout())
@@ -685,7 +631,8 @@ Range:	Euclidean Space with dimension 1
 > 
 > 
 > 
-> cleanEx(); nameEx("EuclCondition")
+> cleanEx()
+> nameEx("EuclCondition")
 > ### * EuclCondition
 > 
 > flush(stderr()); flush(stdout())
@@ -712,7 +659,8 @@ function (dimension)
 > 
 > 
 > 
-> cleanEx(); nameEx("GLIntegrate")
+> cleanEx()
+> nameEx("GLIntegrate")
 > ### * GLIntegrate
 > 
 > flush(stderr()); flush(stdout())
@@ -731,7 +679,8 @@ function (dimension)
 > 
 > 
 > 
-> cleanEx(); nameEx("GPareto-class")
+> cleanEx()
+> nameEx("GPareto-class")
 > ### * GPareto-class
 > 
 > flush(stderr()); flush(stdout())
@@ -763,7 +712,8 @@ Distribution Object of Class: GPareto
 > 
 > 
 > 
-> cleanEx(); nameEx("GPareto")
+> cleanEx()
+> nameEx("GPareto")
 > ### * GPareto
 > 
 > flush(stderr()); flush(stdout())
@@ -788,7 +738,8 @@ Distribution Object of Class: Exp
 > 
 > 
 > 
-> cleanEx(); nameEx("GParetoParameter-class")
+> cleanEx()
+> nameEx("GParetoParameter-class")
 > ### * GParetoParameter-class
 > 
 > flush(stderr()); flush(stdout())
@@ -805,7 +756,7 @@ Distribution Object of Class: Exp
 > ### ** Examples
 > 
 > new("GParetoParameter")
-An object of class “GParetoParameter”
+An object of class "GParetoParameter"
 Slot "loc":
 [1] 0
 
@@ -821,7 +772,8 @@ Slot "name":
 > 
 > 
 > 
-> cleanEx(); nameEx("Gumbel-class")
+> cleanEx()
+> nameEx("Gumbel-class")
 > ### * Gumbel-class
 > 
 > flush(stderr()); flush(stdout())
@@ -850,7 +802,8 @@ Distribution Object of Class: Gumbel
 > 
 > 
 > 
-> cleanEx(); nameEx("Gumbel")
+> cleanEx()
+> nameEx("Gumbel")
 > ### * Gumbel
 > 
 > flush(stderr()); flush(stdout())
@@ -891,7 +844,8 @@ function (loc = 0, scale = 1)
 > 
 > 
 > 
-> cleanEx(); nameEx("GumbelParameter-class")
+> cleanEx()
+> nameEx("GumbelParameter-class")
 > ### * GumbelParameter-class
 > 
 > flush(stderr()); flush(stdout())
@@ -906,7 +860,7 @@ function (loc = 0, scale = 1)
 > ### ** Examples
 > 
 > new("GumbelParameter")
-An object of class “GumbelParameter”
+An object of class "GumbelParameter"
 Slot "loc":
 [1] 0
 
@@ -919,7 +873,8 @@ Slot "name":
 > 
 > 
 > 
-> cleanEx(); nameEx("HellingerDist")
+> cleanEx()
+> nameEx("HellingerDist")
 > ### * HellingerDist
 > 
 > flush(stderr()); flush(stdout())
@@ -979,7 +934,8 @@ Hellinger distance
 > 
 > 
 > 
-> cleanEx(); nameEx("KolmogorovDist")
+> cleanEx()
+> nameEx("KolmogorovDist")
 > ### * KolmogorovDist
 > 
 > flush(stderr()); flush(stdout())
@@ -1026,7 +982,8 @@ Kolmogorov distance
 > 
 > 
 > 
-> cleanEx(); nameEx("LMCondDistribution")
+> cleanEx()
+> nameEx("LMCondDistribution")
 > ### * LMCondDistribution
 > 
 > flush(stderr()); flush(stdout())
@@ -1062,7 +1019,7 @@ function (n, cond, ...)
     }
     0 + cond %*% 1 + 1 * r(n, ...)
 }
-<environment: 0x5a6f620>
+<environment: 0x66e5258>
 > d(D1)
 function (x, cond, log = FALSE, ...) 
 {
@@ -1084,7 +1041,7 @@ function (x, cond, log = FALSE, ...)
     else d0 <- d0/1
     return(d0)
 }
-<environment: 0x5a6f620>
+<environment: 0x66e5258>
 > p(D1)
 function (q, cond, lower.tail = TRUE, log.p = FALSE, ...) 
 {
@@ -1111,7 +1068,7 @@ function (q, cond, lower.tail = TRUE, log.p = FALSE, ...)
             p0 <- log(p0)
     return(p0)
 }
-<environment: 0x5a6f620>
+<environment: 0x66e5258>
 > q(D1)
 function (p, cond, lower.tail = TRUE, log.p = FALSE, ...) 
 {
@@ -1135,7 +1092,7 @@ function (p, cond, lower.tail = TRUE, log.p = FALSE, ...)
         argList <- c(argList, dots)
     1 * do.call(q, argList) + 0 + as.vector(cond %*% 1)
 }
-<environment: 0x5a6f620>
+<environment: 0x66e5258>
 > param(D1)
 name:	parameter of a linear regression model
 theta:	1
@@ -1159,7 +1116,8 @@ Range:	Euclidean Space with dimension 1
 > 
 > 
 > 
-> cleanEx(); nameEx("LMParameter-class")
+> cleanEx()
+> nameEx("LMParameter-class")
 > ### * LMParameter-class
 > 
 > flush(stderr()); flush(stdout())
@@ -1179,7 +1137,8 @@ scale:	1
 > 
 > 
 > 
-> cleanEx(); nameEx("LMParameter")
+> cleanEx()
+> nameEx("LMParameter")
 > ### * LMParameter
 > 
 > flush(stderr()); flush(stdout())
@@ -1210,7 +1169,8 @@ function (theta = 0, intercept = 0, scale = 1)
 > 
 > 
 > 
-> cleanEx(); nameEx("MultivariateDistribution-class")
+> cleanEx()
+> nameEx("MultivariateDistribution-class")
 > ### * MultivariateDistribution-class
 > 
 > flush(stderr()); flush(stdout())
@@ -1229,7 +1189,8 @@ function (theta = 0, intercept = 0, scale = 1)
 > 
 > 
 > 
-> cleanEx(); nameEx("OAsymTotalVarDist")
+> cleanEx()
+> nameEx("OAsymTotalVarDist")
 > ### * OAsymTotalVarDist
 > 
 > flush(stderr()); flush(stdout())
@@ -1289,7 +1250,8 @@ minimal asym. total variation distance
 > 
 > 
 > 
-> cleanEx(); nameEx("Pareto-class")
+> cleanEx()
+> nameEx("Pareto-class")
 > ### * Pareto-class
 > 
 > flush(stderr()); flush(stdout())
@@ -1317,7 +1279,8 @@ Distribution Object of Class: Pareto
 > 
 > 
 > 
-> cleanEx(); nameEx("Pareto")
+> cleanEx()
+> nameEx("Pareto")
 > ### * Pareto
 > 
 > flush(stderr()); flush(stdout())
@@ -1348,7 +1311,8 @@ new("Pareto", shape = shape, Min = Min)
 > 
 > 
 > 
-> cleanEx(); nameEx("ParetoParameter-class")
+> cleanEx()
+> nameEx("ParetoParameter-class")
 > ### * ParetoParameter-class
 > 
 > flush(stderr()); flush(stdout())
@@ -1363,7 +1327,7 @@ new("Pareto", shape = shape, Min = Min)
 > ### ** Examples
 > 
 > new("ParetoParameter")
-An object of class “ParetoParameter”
+An object of class "ParetoParameter"
 Slot "shape":
 [1] 1
 
@@ -1376,7 +1340,8 @@ Slot "name":
 > 
 > 
 > 
-> cleanEx(); nameEx("PrognCondDistribution-class")
+> cleanEx()
+> nameEx("PrognCondDistribution-class")
 > ### * PrognCondDistribution-class
 > 
 > flush(stderr()); flush(stdout())
@@ -1394,7 +1359,8 @@ Name:	condition in case of a linear regression model
 Range:	Real Space with dimension 1
 > 
 > 
-> cleanEx(); nameEx("PrognCondDistribution")
+> cleanEx()
+> nameEx("PrognCondDistribution")
 > ### * PrognCondDistribution
 > 
 > flush(stderr()); flush(stdout())
@@ -1414,7 +1380,8 @@ Range:	Real Space with dimension 1
 > 
 > 
 > 
-> cleanEx(); nameEx("PrognCondition-class")
+> cleanEx()
+> nameEx("PrognCondition-class")
 > ### * PrognCondition-class
 > 
 > flush(stderr()); flush(stdout())
@@ -1430,7 +1397,8 @@ Name:	condition in case of a linear regression model
 Range:	Euclidean Space with dimension 1
 > 
 > 
-> cleanEx(); nameEx("TotalVarDist")
+> cleanEx()
+> nameEx("TotalVarDist")
 > ### * TotalVarDist
 > 
 > flush(stderr()); flush(stdout())
@@ -1490,7 +1458,8 @@ total variation distance
 > 
 > 
 > 
-> cleanEx(); nameEx("UnivariateCondDistribution-class")
+> cleanEx()
+> nameEx("UnivariateCondDistribution-class")
 > ### * UnivariateCondDistribution-class
 > 
 > flush(stderr()); flush(stdout())
@@ -1507,13 +1476,14 @@ total variation distance
 > new("UnivariateCondDistribution")
 Distribution object of class: UnivariateCondDistribution
 ## cond:
-An object of class “Condition”
+An object of class "Condition"
 Slot "name":
 [1] "a condition"
 
 > 
 > 
-> cleanEx(); nameEx("Var")
+> cleanEx()
+> nameEx("Var")
 > ### * Var
 > 
 > flush(stderr()); flush(stdout())
@@ -1618,7 +1588,8 @@ Slot "name":
 > 
 > 
 > 
-> cleanEx(); nameEx("distrExConstants")
+> cleanEx()
+> nameEx("distrExConstants")
 > ### * distrExConstants
 > 
 > flush(stderr()); flush(stdout())
@@ -1637,7 +1608,8 @@ Slot "name":
 > 
 > 
 > 
-> cleanEx(); nameEx("distrExIntegrate")
+> cleanEx()
+> nameEx("distrExIntegrate")
 > ### * distrExIntegrate
 > 
 > flush(stderr()); flush(stdout())
@@ -1662,7 +1634,8 @@ Error in integrate(fkt, lower = -1, upper = 5) :
 > 
 > 
 > 
-> cleanEx(); nameEx("distrExMASK")
+> cleanEx()
+> nameEx("distrExMASK")
 > ### * distrExMASK
 > 
 > flush(stderr()); flush(stdout())
@@ -1720,7 +1693,8 @@ To re-mask, you may use
 > 
 > 
 > 
-> cleanEx(); nameEx("distrExOptions")
+> cleanEx()
+> nameEx("distrExOptions")
 > ### * distrExOptions
 > 
 > flush(stderr()); flush(stdout())
@@ -1788,7 +1762,8 @@ $ElowerTruncQuantile
 > 
 > 
 > 
-> cleanEx(); nameEx("liesInSupport")
+> cleanEx()
+> nameEx("liesInSupport")
 > ### * liesInSupport
 > 
 > flush(stderr()); flush(stdout())
@@ -1810,7 +1785,8 @@ $ElowerTruncQuantile
 > 
 > 
 > 
-> cleanEx(); nameEx("m1df")
+> cleanEx()
+> nameEx("m1df")
 > ### * m1df
 > 
 > flush(stderr()); flush(stdout())
@@ -1848,7 +1824,8 @@ $ElowerTruncQuantile
 > 
 > 
 > 
-> cleanEx(); nameEx("m2df")
+> cleanEx()
+> nameEx("m2df")
 > ### * m2df
 > 
 > flush(stderr()); flush(stdout())
@@ -1886,7 +1863,8 @@ $ElowerTruncQuantile
 > 
 > 
 > 
-> cleanEx(); nameEx("make01")
+> cleanEx()
+> nameEx("make01")
 > ### * make01
 > 
 > flush(stderr()); flush(stdout())
@@ -1915,7 +1893,7 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  15.913 0.14 16.314 0.008 0.008 
+Time elapsed:  14.91 0.22 15.161 0.01 0.01 
 > grDevices::dev.off()
 null device 
           1 
