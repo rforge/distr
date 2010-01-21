@@ -53,6 +53,7 @@ setMethod("CvMDist", signature(e1 = "numeric",
  p2 <- 1-p0^2
  n <- length(x1)
  i1 <- 2*(1:n)-1
- d <- mean(i1*p1)/n-mean(p2)+1/3
- return(d^0.5)
+ d <- (mean(i1*p1)/n-mean(p2)+1/3)^.5
+ names(d) <- "CvM distance" 
+ return(d)
 }
