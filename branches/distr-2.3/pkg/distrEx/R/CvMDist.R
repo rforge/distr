@@ -28,8 +28,31 @@ setMethod("CvMDist", signature(e1 = "numeric",
     function(e1, e2, mu = e2, ...)
         { o.warn <- getOption("warn"); options(warn = -1)
           on.exit(options(warn=o.warn))
+          if(identical(mu,e2))
+             return(.newCvMDist(e1,e2))
           e10 <- DiscreteDistribution(e1)       
           CvMDist(e1 = e10, e2 = e2, mu = mu, ...)
          }
     )
 
+### new Method if mu=e2: explicit integration...
+.newCvMDist <- function(e1,e2){
+ ### use that 
+ ##  int (P_n(t)-P(t))^2 P(dt) = 
+ ###      1/n^2 sum_ij (1-P(max(xi, xj)) - 
+ ###      1/n sum_i (1-P(xi)^2) + 
+ ###      (P(infty)^3-P(-infty)^3)/3 = 
+ ###      1/n^2 sum_i (2i-1) (1-P(x(i))) -  # x(i) ordnungsstatistik
+ ###      1/n sum_i (1-P(xi)^2) + 1/3
+ ### on my Laptop ~ 30 times faster!!
+ x1 <- sort(e1)
+ p <- p(e2)
+ p0 <- p(x1)
+ p1 <- if("lower" %in% names(formals(p))) 
+          p(e2)(x1,lower=FALSE) else 1-p0
+ p2 <- 1-p0^2
+ n <- length(x1)
+ i1 <- 2*(1:n)-1
+ d <- mean(i1*p1)/n-mean(p2)+1/3
+ return(d^0.5)
+}
