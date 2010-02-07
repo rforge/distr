@@ -1476,10 +1476,10 @@ preset strings substitutions (\%N, \%C, \%P, \%A, \%D).
 \begin{figure}[p]
 \begin{center}
 <<plotex9, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
-plot(Norm(), panel.first = grid(), main = "my Distribution: \%A",
-     inner = list(expression(paste(lambda, "-density of \%C(\%P)")), "CDF",
-                  "Pseudo-inverse with param's \%N"),
-     sub = "this plot was correctly generated on \%D",
+plot(Norm(), panel.first = grid(), main = "my Distribution: %A",
+     inner = list(expression(paste(lambda, "-density of %C(%P)")), "CDF",
+                  "Pseudo-inverse with param's %N"),
+     sub = "this plot was correctly generated on %D",
      cex.inner = 0.9, cex.sub = 0.8)
 @
     \caption{\label{plotexPic9}{Plot for absolutely continuous distributions 

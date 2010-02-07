@@ -1,13 +1,13 @@
 Package: distrDoc
 Version: 2.3
-Date: 2009-11-01
+Date: 2010-02-07
 Title: Documentation for packages distr, distrEx, distrSim, distrTEst, distrTeach, distrMod, and distrEllipse
 Description: provides documentation in form of a common vignette to packages distr, distrEx, distrMod, distrSim, distrTEst, distrTeach, and distrEllipse
 Author: Florian Camphausen, Matthias Kohl, Peter Ruckdeschel, Thomas Stabla
 Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
 Depends: R(>= 2.6.0), tools, startupmsg, distr(>= 2.2.0), distrEx(>= 2.2.0), distrSim(>= 2.2.0), 
          distrTEst(>= 2.2.0), distrTeach(>= 2.2.0), RandVar(>= 0.7), distrMod(>= 2.2.0), MASS, methods
-Suggests: Biobase
+Suggests: Biobase, SweaveListingUtils
 LazyLoad: yes
 Encoding: latin1
 License: LGPL-3

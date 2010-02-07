@@ -1,12 +1,12 @@
 Package: distr
 Version: 2.2.1
-Date: 2010-01-17
+Date: 2010-02-07
 Title: Object orientated implementation of distributions
 Description: Object orientated implementation of distributions
 Author: Florian Camphausen, Matthias Kohl, Peter Ruckdeschel, Thomas Stabla
 Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
-Depends: R(>= 2.2.0), methods, graphics, startupmsg, sfsmisc, SweaveListingUtils
-Suggests: distrEx
+Depends: R(>= 2.2.0), methods, graphics, startupmsg, sfsmisc
+Suggests: distrEx, SweaveListingUtils
 Imports: stats
 LazyLoad: yes
 Encoding: latin1
