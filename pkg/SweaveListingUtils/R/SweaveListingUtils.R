@@ -237,19 +237,19 @@ readSourceFromRForge <- function(PKG, TYPE, FILENAME, PROJECT,
 copySourceFromRForge <- function(PKG, TYPE, FILENAME, PROJECT, from, to,
                                  offset.before = 0, offset.after = 0,
                                  fromRForge = getSweaveListingOption("fromRForge"),
-                                 base.url = getSweaveListingOption("base.url") ){
+                                 base.url = getSweaveListingOption("base.url"), ... ){
    RL <- readSourceFromRForge(PKG, TYPE, FILENAME, PROJECT, 
                               fromRForge = fromRForge, base.url = base.url)
    lR <- length(RL)
    from <- if(missing(from)) 1 else {if(is.numeric(from))
                                         max(from-offset.before,1)
-                                     else {if(length(gr0 <- grep(from,RL)))
+                                     else {if(length(gr0 <- grep(from,RL, ...)))
                                             max(gr0[1]-offset.before,1) else lR
                                           }
                                     }
    to <- if(missing(to)) lR else {if(is.numeric(to))
                                         min(to+offset.after,lR)
-                                     else {if(length(gr1<-grep(to,RL[from:lR])))
+                                     else {if(length(gr1<-grep(to,RL[from:lR], ...)))
                                             min(from+gr1[1]-1+offset.after,lR)
                                            else 0
                                            }
@@ -266,7 +266,8 @@ lstinputSourceFromRForge <- function(PKG, TYPE, FILENAME, PROJECT, from, to,
                                  LineLength = getOption("width"),
                                  withLines = ifelse(TYPE=="R", TRUE, FALSE),
                                  fromRForge = getSweaveListingOption("fromRForge"),
-                                 base.url = getSweaveListingOption("base.url")){
+                                 base.url = getSweaveListingOption("base.url"), 
+                                 ...){
    line <- paste("%",paste(rep("-",LineLength-2),collapse=""),"%\n", sep="")
    dots <- match.call(call = sys.call(sys.parent(1)),
                        expand.dots = FALSE)$"..."
@@ -293,7 +294,7 @@ lstinputSourceFromRForge <- function(PKG, TYPE, FILENAME, PROJECT, from, to,
               argL[[j]] <- c(argL[[j]],to = toL[[j]])
           argL[[j]] <- c(argL[[j]], offset.before = offs.from[j],
                          offset.after = offs.to[j], 
-                         fromRForge = fromRForge[j], base.url = base.url[j])
+                         fromRForge = fromRForge[j], base.url = base.url[j],dots)
       }
    }else {
       argL <- argL0
@@ -301,7 +302,7 @@ lstinputSourceFromRForge <- function(PKG, TYPE, FILENAME, PROJECT, from, to,
       if(!missing(to)) argL <- c(argL, to = to)
       argL <- list(c(argL, offset.before = offset.before,
                         offset.after = offset.after, 
-                        fromRForge = fromRForge, base.url = base.url))
+                        fromRForge = fromRForge, base.url = base.url,dots))
    }
    erg <- lapply(argL, function(x)  do.call(copySourceFromRForge, args = c(x)))
    RL <- lapply(erg, function(x) x$text)

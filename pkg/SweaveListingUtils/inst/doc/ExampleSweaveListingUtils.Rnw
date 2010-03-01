@@ -497,9 +497,9 @@ Leisch, F  (2003)
 \newblock \hreft{http://cran.r-project.org/doc/Rnews/Rnews_2003-2.pdf}.
 %
 
-\bibitem[{Murdoch (2009)}]{Murd:08}
-Murdoch, D (2009)
-\newblock {Parsing Rd Files. Technical Report on {\tt developer.r-project.org}} as of Jun. 21 2009.
+\bibitem[{Murdoch (2010)}]{Murd:08}
+Murdoch, D (2010)
+\newblock {Parsing Rd Files. Technical Report on {\tt developer.r-project.org}} as of Jan. 1 2010.
 \newblock \hreft{http://developer.r-project.org/parseRd.pdf}.
 %
 
@@ -519,9 +519,10 @@ Ruckdeschel P, Kohl M, Stabla T, and Camphausen F (2006)
 %
 
 \end{thebibliography}
-<<cleanup, echo=FALSE>>=
-unloadNamespace("SweaveListingUtils")
-@
+%problem!
+%<<cleanup, echo=FALSE>>=
+%unloadNamespace("SweaveListingUtils")
+%@
 % -------------------------------------------------------------------------------
 \end{document}
 % -------------------------------------------------------------------------------

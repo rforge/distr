@@ -9,7 +9,7 @@ from R forge repository}
 copySourceFromRForge(PKG, TYPE, FILENAME, PROJECT, from, to,
                      offset.before = 0, offset.after = 0,
                      fromRForge = getSweaveListingOption("fromRForge"),
-                     base.url = getSweaveListingOption("base.url") )
+                     base.url = getSweaveListingOption("base.url"), ... )
 }
 \arguments{
   \item{PKG}{character; name of package to be downloaded}
@@ -17,11 +17,11 @@ copySourceFromRForge(PKG, TYPE, FILENAME, PROJECT, from, to,
   \item{FILENAME}{character; the name of the source file to be downloaded}
   \item{PROJECT}{character; the name of the R-Forge project}
   \item{from}{single character  or single numeric or missing; if character,
-  the starting string being searched (by \code{grep}, hence as regular expression);
+  the starting string being searched (by \code{\link{grep}}, hence as regular expression);
   if numeric, the starting line number, if missing we begin with the first line
   of the file}
   \item{to}{single character  or single numeric or missing; if character,
-  the ending string being searched (by \code{grep}, hence as regular expression);
+  the ending string being searched (by \code{\link{grep}}, hence as regular expression);
   if numeric, the ending line number, if missing we end with the last line
   of the file}
   \item{offset.before}{numeric; number of lines to be included before the first
@@ -31,6 +31,7 @@ copySourceFromRForge(PKG, TYPE, FILENAME, PROJECT, from, to,
   \item{fromRForge}{logical; shall code be downloaded from an R-Forge mirror?
                     Defaults to the corresponding global option}
   \item{base.url}{character; base url from where to download the code sniplet}
+  \item{\dots}{further arguments to be passed on to \code{link[base]{grep}}}
   }
 
 \details{
@@ -41,7 +42,7 @@ arguments \code{from}, \code{to} may be
 \item missing: then the whole file (resp. from the beginning or to the end) is used
 \item numbers: then the limits are just given as line numbers
 \item characters: then file is searched for the first occurrance of a passage
-      framed by \code{from}, \code{to}; uses \code{grep}; hence
+      framed by \code{from}, \code{to}; it uses \code{grep}; hence
       \link[=regexp]{regular expressions} may be used which involves masking
       of (,\{,\\, etc.  as described in the cited reference;
 }
@@ -58,7 +59,7 @@ if nothing is found   it returns \code{invisible()}.
 copySourceFromRForge("distr","R","AllClasses.R","distr", from =2, to =3,
                      offset.after=2)
 copySourceFromRForge("distr","R","AllClasses.R","distr", from ="setClass",
-                      to ="\}")
+                      to ="\\\\}")
 }
 \keyword{utilities}
 

@@ -11,7 +11,7 @@ lstinputSourceFromRForge(PKG, TYPE, FILENAME, PROJECT, from, to,
                          LineLength = getOption("width"),
                          withLines = ifelse(TYPE=="R", TRUE, FALSE),
                          fromRForge = getSweaveListingOption("fromRForge"),
-                         base.url = getSweaveListingOption("base.url"))
+                         base.url = getSweaveListingOption("base.url"), ...)
 }
 \arguments{
   \item{PKG}{character; name of package to be downloaded}
@@ -19,10 +19,14 @@ lstinputSourceFromRForge(PKG, TYPE, FILENAME, PROJECT, from, to,
   \item{FILENAME}{character; the name of the source file to be downloaded}
   \item{PROJECT}{character; the name of the R-Forge project}
   \item{from}{vector of characters  or vector of numerics or missing;
-  beginnings of the code sniplets; for details see \code{\link{copySourceFromRForge}}
+  beginnings of the code sniplets; for details see 
+  \code{\link{copySourceFromRForge}}; note that you need to escape meta
+  characters if you use regular expressions, cf. \code{\link[base]{regex}}.
   }
   \item{to}{vector of characters  or vector of numerics or missing;
-  endings of the code sniplets; for details see \code{\link{copySourceFromRForge}}
+  endings of the code sniplets; for details see \code{\link{copySourceFromRForge}};
+  note that you need to escape meta
+  characters if you use regular expressions, cf. \code{\link[base]{regex}}.
   }
   \item{offset.before}{numeric; numbers of lines to be included before the code
                        sniplets; defaults to 0}
@@ -34,6 +38,7 @@ lstinputSourceFromRForge(PKG, TYPE, FILENAME, PROJECT, from, to,
   \item{fromRForge}{logical; shall code be downloaded from an R-Forge mirror?
                     Defaults to the corresponding global option}
   \item{base.url}{character; base url from where to download the code sniplet}
+  \item{\dots}{further arguments to be passed on to \code{link[base]{grep}}}
   }
 
 \details{
@@ -52,12 +57,17 @@ lstinputSourceFromRForge("distr","man","BinomParameter-class.Rd","distr")
 @
 %
 <<skew, results=tex, echo=FALSE>>=
-lstinputSourceFromRForge("distrEx","R","Skewness.R","distr",
-                     from = "\\"skewness\\", signature\\\\(x = \\"Binom\\"",
-                     to = "\\ \}\\\\)")
+}%
+\code{lstinputSourceFromRForge("distrEx","R","Skewness.R","distr",
+        from = "\\"skewness\\", signature\\\\(x = \\\\"Binom\\"",
+        to = "\\\\}\\\\)")
+}%
+\preformatted{
 @
-} (CAVEAT: the space between backslash and right brace in the line with "to = "
-is \emph{not} intended; I simply did not find another work-around)  \cr
+} 
+%(CAVEAT: the spaces between first and second backslash and before the right brace are
+% \emph{not} intended; I simply did not find another work-around)  \cr
+
 Within \file{.Rd} code, examples are type-set in \file{.R} style;
 vectors are allowed for arguments \code{from}, \code{to};
 \code{lstinputSourceFromRForge} uses

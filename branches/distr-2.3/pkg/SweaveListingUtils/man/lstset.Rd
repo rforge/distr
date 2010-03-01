@@ -12,33 +12,33 @@
 \description{
 Functions for defining how listings prints R and Rd source code}
 \usage{
-lstset(taglist, LineLength = getOption("width"), startS = "\\\\lstset\{")
+lstset(taglist, LineLength = getOption("width"), startS = "\\\\lstset{")
 lstsetR(Rset = NULL, LineLength = getOption("width"),
         add = getSweaveListingOption("addRset"),
-        startS = "\\\\lstset\{", append = TRUE, withRstyle = FALSE)
+        startS = "\\\\lstset{", append = TRUE, withRstyle = FALSE)
 lstsetRd(Rdset = NULL, LineLength = getOption("width"),
          add = getSweaveListingOption("addRdset"),
-         startS = "\\\\lstset\{",
+         startS = "\\\\lstset{",
                     append = TRUE)
 lstsetRin(Rinset = NULL, LineLength = getOption("width"),
           add = getSweaveListingOption("addRinset"),
-          startS = "\\\\lstdefinestyle\{Rinstyle\}\{",
+          startS = "\\\\lstdefinestyle{Rinstyle}{",
                     append = TRUE)
 lstsetRout(Routset = NULL, LineLength = getOption("width"),
            add = getSweaveListingOption("addRoutset"),
-           startS = "\\\\lstdefinestyle\{Routstyle\}\{",
+           startS = "\\\\lstdefinestyle{Routstyle}{",
                     append = TRUE)
 lstsetRcode(Rcodeset = NULL, LineLength = getOption("width"),
             add = getSweaveListingOption("addRcodeset"),
-            startS = "\\\\lstdefinestyle\{Rcodestyle\}\{",
+            startS = "\\\\lstdefinestyle{Rcodestyle}{",
                     append = TRUE)
 lstsetRall(Rallset = NULL, LineLength = getOption("width"),
            add = c("in" = getSweaveListingOption("addRinset"),
                    "out" = getSweaveListingOption("addRoutset"),
                    "code" = getSweaveListingOption("addRcodeset")),
-           startS = c("in" = "\\\\lstdefinestyle\{Rinstyle\}\{",
-                      "out" = "\\\\lstdefinestyle\{Routstyle\}\{",
-                      "code" = "\\\\lstdefinestyle\{Rcodestyle\}\{"),
+           startS = c("in" = "\\\\lstdefinestyle{Rinstyle}{",
+                      "out" = "\\\\lstdefinestyle{Routstyle}{",
+                      "code" = "\\\\lstdefinestyle{Rcodestyle}{"),
            append = c("in" = TRUE, "out" = TRUE, "code" = TRUE),
            withOptionsDefAppend = TRUE)
 lstdefRstyle(Rset = NULL, LineLength = getOption("width"),
@@ -134,7 +134,7 @@ TeX file.
 \author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 \examples{
 lstset(taglist(A="H", b=2, 3),30)
-lstset(taglist(A="H", b=2, 3),30, startS = "\\\\lstdefinestyle{Rstyle}\{")
+lstset(taglist(A="H", b=2, 3),30, startS = "\\\\lstdefinestyle{Rstyle}{")
 lstsetR()
 lstsetRd()
 }

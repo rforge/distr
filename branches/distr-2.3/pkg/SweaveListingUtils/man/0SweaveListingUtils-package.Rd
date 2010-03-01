@@ -15,8 +15,8 @@ thereby avoiding inconsistencies between vignette and documented source code
 \details{
 \tabular{ll}{
 Package: \tab SweaveListingUtils \cr
-Version: \tab 0.5 \cr
-Date: \tab 2009-11-01 \cr
+Version: \tab 0.5\cr
+Date: \tab 2010-03-01 \cr
 Depends: \tab R(>= 2.10.0), startupmsg \cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
@@ -30,7 +30,7 @@ For quite some time there has already been a corresponding language definition
 for \R. We enhance this definition and also introduce a corresponding 
 "language" definition file to typeset \file{.Rd} code 
 (file \file{Rdlistings.sty} in the \file{TeX} subfolder of this package,
-which is according to Duncan Murdoch's ``Parsing Rd Files'' as of Nov. 4 2008.).
+which is according to Duncan Murdoch's ``Parsing Rd Files'' as of Jan. 1 2010.).
 
 In recent versions \file{listings} also cooperates with TeX package 
 \file{fancyvrb}, so it can be configured to enhance Sweave typesetting.

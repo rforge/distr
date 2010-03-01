@@ -42,7 +42,7 @@ which is \emph{not} the goal of including \R code sniplets by Sweave.
 \author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
 \examples{
 setToBeDefinedPkgs(pkgs = c("distr","distrEx"),
-                   keywordstyles = paste("\\bfseries\\color{",c("blue","red"),"}",
+                   keywordstyles = paste("\\\\bfseries\\\\color{",c("blue","red"),"}",
                          sep="", collapse=""))
 ### not to be used:
 print(SweaveListingUtils:::.tobeDefinedPkgs)
