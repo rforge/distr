@@ -59,7 +59,7 @@ lstinputSourceFromRForge("distr","man","BinomParameter-class.Rd","distr")
 <<skew, results=tex, echo=FALSE>>=
 }%
 \code{lstinputSourceFromRForge("distrEx","R","Skewness.R","distr",
-        from = "\\"skewness\\", signature\\\\(x = \\\\"Binom\\"",
+        from = "\\"skewness\\", signature\\\\(x = \\"Binom\\"",
         to = "\\\\}\\\\)")
 }%
 \preformatted{
