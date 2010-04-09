@@ -8,10 +8,15 @@
 #
 # searches for a given pattern (possibly with regular expressions)
 # in all files with a given file extension in a given folder
+# similarly replaces patterns
 # Syntax
 
 finde(x = "nchar", dir="C:/rtest/distrEx/R", ext = "R", rec = FALSE)
 ## args: x : pattern; dir: folder; ext: file extension, rec: recursive in subfolders?
+
+ersetze(x0 = "nchar", x1="nchar", dir="C:/rtest/distr/pkg/distr/R", ext = "R", rec = FALSE)
+## args: x0 : pattern to be replaced; x1= replacing text; dir: folder; 
+##       ext: file extension, rec: recursive in subfolders?
 
 ### ladealles.R
 #
