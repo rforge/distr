@@ -23,6 +23,9 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
     if(missing(xlab)) mc$xlab <- as.character(deparse(mc$x))
     if(missing(ylab)) mc$ylab <- as.character(deparse(mc$y))
     mcl <- as.list(mc)[-1]
+    mcl$withSweave <- NULL
+    mcl$mfColRow <- NULL
+
     force(x)
 
     pp <- ppoints(n)
@@ -66,7 +69,7 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
            devNew(width = width, height = height)
     }
     opar <- par("mfrow")
-    on.exit(do.call(par, list(mfrow=opar)))
+    if(mfColRow) on.exit(do.call(par, list(mfrow=opar)))
     if(mfColRow) opar1 <- par(mfrow = c(1,1))
 
     ret <- do.call(stats::qqplot, args=mcl)
