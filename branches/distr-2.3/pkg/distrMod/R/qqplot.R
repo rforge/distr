@@ -98,6 +98,8 @@ setMethod("qqplot", signature(x = "ANY",
     if(missing(xlab)) mc$xlab <- as.character(deparse(mc$x))
     if(missing(ylab)) mc$ylab <- as.character(deparse(mc$y))
     mcl <- as.list(mc)[-1]
+    mcl$withSweave <- NULL
+    mcl$mfColRow <- NULL
     force(x)
 
 
@@ -155,7 +157,7 @@ setMethod("qqplot", signature(x = "ANY",
            devNew(width = width, height = height)
     }
     opar <- par("mfrow")
-    on.exit(do.call(par, list(mfrow=opar)))
+    if(mfColRow) on.exit(do.call(par, list(mfrow=opar)))
 
     if(mfColRow) opar1 <- par(mfrow = c(1,1))
 
