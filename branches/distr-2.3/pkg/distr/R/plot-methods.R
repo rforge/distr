@@ -69,7 +69,7 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
            }
      omar <- par("mar")
      omar$cin <- omar$cra <- omar$csi <- omar$cxy <-  omar$din <- NULL
-     on.exit(par(omar))
+     if(mfColRow) on.exit(par(omar))
      
      mainL <- FALSE
      subL <- FALSE
@@ -369,7 +369,7 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
            }
      omar <- par("mar")
      omar$cin <- omar$cra <- omar$csi <- omar$cxy <-  omar$din <- NULL
-     on.exit(par(omar))
+     if(mfColRow) on.exit(par(omar))
      
      mainL <- FALSE
      subL <- FALSE
