@@ -211,6 +211,7 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
         options(warn = -1)
         on.exit(options(warn=o.warn))
         opar <- par()
+        opar$cin <- opar$cra <- opar$csi <- opar$cxy <-  opar$din <- NULL
         on.exit(par(opar))
         
         if (!withSweave)

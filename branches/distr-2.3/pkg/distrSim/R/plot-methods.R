@@ -40,6 +40,7 @@ setMethod("plot",signature(x = "Dataclass", y="missing"),
 #            get(getOption("device"))()
 
             opar <- par()
+            opar$cin <- opar$cra <- opar$csi <- opar$cxy <-  opar$din <- NULL
             on.exit(par(opar))
 
             o.warn <- getOption("warn")
@@ -185,6 +186,7 @@ setMethod("plot",signature(x="Contsimulation", y="missing"),
             o.warn <- getOption("warn")
             on.exit(options("warn"=o.warn))
             opar <- par()
+            opar$cin <- opar$cra <- opar$csi <- opar$cxy <-  opar$din <- NULL
             on.exit(par(opar))
             
             options("warn" = -1)
