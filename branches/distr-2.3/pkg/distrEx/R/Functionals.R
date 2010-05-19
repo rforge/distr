@@ -13,13 +13,20 @@ setMethod("var", signature(x = "UnivariateDistribution"),
         low <- -Inf; upp <- Inf
         if(hasArg(low)) low <- dots$low
         if(hasArg(upp)) upp <- dots$upp
+        ztr <- 0
+        if(is(Symmetry(x),"SphericalSymmetry")){ 
+             ztr <- SymmCenter(Symmetry(x))
+             x <- x-ztr
+        }
+        
         LowIsUpp <- if(low == -Inf) 
-                    low == -upp else distr:::.isEqual(low,upp)
+                    low == -upp else distr:::.isEqual(ztr-low,upp-ztr)
         
         if(LowIsUpp && missing(cond)&&missing(fun)){
            if(is(Symmetry(x),"SphericalSymmetry"))
               return(2 * E(x, fun = function(t)t^2, low =0, useApply = useApply, ...))
         }
+
         f2 <- function(t) {fun(t)^2}
         
         if(missing(cond))
