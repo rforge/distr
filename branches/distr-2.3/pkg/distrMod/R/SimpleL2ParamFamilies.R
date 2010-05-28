@@ -142,11 +142,11 @@ NbinomFamily <- function(size = 1, prob = 0.5, trafo){
     L2deriv.fct <- function(param){
                    prob <- main(param)
                    fct <- function(x){}
-                   body(fct) <- substitute({ (size- (x+size)*prob)/(prob*(1-prob)) },
+                   body(fct) <- substitute({ (size/prob- x/(1-prob)) },
                                 list(size = size, prob = prob))
                    return(fct)}
     L2derivSymm <- FunSymmList(NonSymmetric()) 
-    L2derivDistr <- UnivarDistrList((size-(distribution+size)*prob)/(prob*(1-prob)))
+    L2derivDistr <- UnivarDistrList((size/prob- distribution/(1-prob)))
     L2derivDistrSymm <- DistrSymmList(NoSymmetry())
     FisherInfo.fct <- function(param){
                        prob <- main(param)
