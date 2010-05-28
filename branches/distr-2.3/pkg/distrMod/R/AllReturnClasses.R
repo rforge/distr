@@ -16,6 +16,10 @@ setClass("BinomFamily",
 setClass("PoisFamily",
           contains = "L2ParamFamily")
 
+## Binomial family
+setClass("NbinomFamily",
+          contains = "L2ParamFamily")
+
 ## Gamma family
 setClass("GammaFamily",
           contains = "L2ParamFamily")

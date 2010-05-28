@@ -64,7 +64,7 @@ export("distrModOptions", "distrModoptions", "getdistrModOption",
        "Estimator", "MCEstimator", "MLEstimator", "MDEstimator")
 export("NonSymmetric", "EvenSymmetric", "OddSymmetric", "FunSymmList") 
 export("ParamFamParameter", "ParamFamily", "L2ParamFamily",
-       "BinomFamily", "PoisFamily", "NormLocationFamily",
+       "BinomFamily", "PoisFamily", "NbinomFamily", "NormLocationFamily",
        "GumbelLocationFamily", "NormScaleFamily", "ExpScaleFamily",
        "LnormScaleFamily", "GammaFamily", "BetaFamily", "NormLocationScaleFamily",
        "CauchyLocationScaleFamily")
