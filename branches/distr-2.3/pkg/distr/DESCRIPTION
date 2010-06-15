@@ -1,8 +1,8 @@
 Package: distr
 Version: 2.3
 Date: 2010-02-07
-Title: Object orientated implementation of distributions
-Description: Object orientated implementation of distributions
+Title: Object oriented implementation of distributions
+Description: S4 Classes and Methods for distributions
 Author: Florian Camphausen, Matthias Kohl, Peter Ruckdeschel, Thomas Stabla
 Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
 Depends: R(>= 2.2.0), methods, graphics, startupmsg, sfsmisc, SweaveListingUtils
