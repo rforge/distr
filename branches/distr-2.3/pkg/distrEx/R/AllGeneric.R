@@ -75,6 +75,11 @@ if(!isGeneric("mad")){
    setGeneric("mad", function(x, ...) standardGeneric("mad"))
 }
 
+if(!isGeneric("kMAD")){ 
+   setGeneric("kMAD", function(x, k, ...) standardGeneric("kMAD"))
+}
+
+
 if(!isGeneric("skewness")){ 
    setGeneric("skewness", function(x, ...) standardGeneric("skewness"))
 }
