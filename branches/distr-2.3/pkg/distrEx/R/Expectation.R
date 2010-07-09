@@ -874,7 +874,7 @@ setMethod("E", signature(object = "GEV",
         if(!is.null(dots$useApply)) useApply <- dots$useApply
         dots.withoutUseApply$useApply <- NULL
         integrand <- function(x, dfun, ...){   di <- dim(x)
-                                               y <- q(object)##quantile transformation
+                                               y <- q(object)(x)##quantile transformation
                                                if(useApply){
                                                     funy <- sapply(y,fun, ...)
                                                     dim(y) <- di
