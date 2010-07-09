@@ -843,6 +843,65 @@ setMethod("E", signature(object = "GPareto",
     })
 
 
+setMethod("E", signature(object = "GEV", 
+                         fun = "missing", 
+                         cond = "missing"),
+    function(object, low = NULL, upp = NULL, ...){
+    if(!is.null(low)) if(low <= Min(object)) low <- NULL
+    xi <- shape(object); sigma <- scale(object); mu <- loc(object)
+    if(is.null(low) && is.null(upp)){
+        if(xi>=1){ return(Inf)}
+        if(xi==0) {return(mu + sigma*(-digamma(1)))}
+        if((xi!=0)&&(xi<1)){ return(mu+sigma*(gamma(1-xi)-1)/xi)}
+     }  
+    else
+        return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
+    })
+
+setMethod("E", signature(object = "GEV",
+                         fun = "function",
+                         cond = "missing"),
+    function(object, fun, low = NULL, upp = NULL,
+             rel.tol= getdistrExOption("ErelativeTolerance"),
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"),
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"),
+             IQR.fac = max(1e4,getdistrExOption("IQR.fac")), ...
+             ){
+
+        dots <- list(...)
+        dots.withoutUseApply <- dots
+        useApply <- TRUE
+        if(!is.null(dots$useApply)) useApply <- dots$useApply
+        dots.withoutUseApply$useApply <- NULL
+        integrand <- function(x, dfun, ...){   di <- dim(x)
+                                               y <- q(object)##quantile transformation
+                                               if(useApply){
+                                                    funy <- sapply(y,fun, ...)
+                                                    dim(y) <- di
+                                                    dim(funy) <- di
+                                               }else funy <- fun(y,...)
+                                        return(funy) }
+
+#         if(is.null(low)) low <- 0
+#         if(is.null(upp)) upp <- 1
+# 
+#         Ib <- .getIntbounds(object, low, upp, #lowerTruncQuantile,
+#               upperTruncQuantile, IQR.fac)
+#         low <- if(Ib["low"]<=0) -Inf else log(Ib["low"])
+#         upp <- log(Ib["upp"])
+         
+         low <- 0
+         upp <- 1
+        return(do.call(distrExIntegrate, c(list(f = integrand,
+                    lower = low,
+                    upper = upp,
+                    rel.tol = rel.tol,
+                    distr = object, dfun = d(object)), dots.withoutUseApply)))
+
+    })
+
+
+
 ############################ Expectation for UnivarLebDecDistribution
 ### merged from Expectation_LebDec.R on Apr 15 2009
 setMethod("E", signature(object = "UnivarLebDecDistribution",

@@ -45,7 +45,7 @@ export("EuclCondition")
 export("LMParameter")
 export("DiscreteMVDistribution",
        "LMCondDistribution", 
-       "Gumbel", "Pareto", "GPareto")
+       "Gumbel", "Pareto", "GPareto", "GEV")
 export("ConvexContamination")
 export("GLIntegrate",
        "distrExIntegrate") 
