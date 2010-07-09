@@ -64,7 +64,7 @@ GEV <- function(loc = 0, scale = 1, shape = 0, location = loc){
               if(!isTRUE(all.equal(loc,location)))
                  stop("Only one of arguments 'loc' and 'location' may be used.")
            if(!missing(location)) loc <- location
-           if(abs(shape) < .Machine$double.eps) return(Gumbel(loc=loc,scale=scale))
+           #if(abs(shape) < .Machine$double.eps) return(Gumbel(loc=loc,scale=scale))
            new("GEV", loc = loc, scale = scale, shape = shape) }
 
 ## extra methods for GEV distribution

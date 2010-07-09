@@ -850,10 +850,10 @@ setMethod("E", signature(object = "GEV",
     if(!is.null(low)) if(low <= Min(object)) low <- NULL
     xi <- shape(object); sigma <- scale(object); mu <- loc(object)
     if(is.null(low) && is.null(upp)){
-        if(xi>=1){ return(Inf)}
-        if(xi==0) {return(mu + sigma*(-digamma(1)))}
-        if((xi!=0)&&(xi<1)){ return(mu+sigma*(gamma(1-xi)-1)/xi)}
-     }  
+        if (xi==0) return(mu+sigma*EULERMASCHERONICONSTANT)
+        else if(xi>=1) return(Inf)
+        else return(mu+sigma*(gamma(1-xi)-1)/xi)
+        }       
     else
         return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
     })
