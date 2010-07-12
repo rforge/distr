@@ -12,7 +12,7 @@
 \usage{
 NbinomFamily(size = 1, prob = 0.5, trafo)
 NbinomwithSizeFamily(size = 1, prob = 0.5, trafo)
-NbinomMeanSizeFamily(size = 1, mean = 0.5, trafo){ 
+NbinomMeanSizeFamily(size = 1, mean = 0.5, trafo) 
 }
 \arguments{
   \item{size}{ number of trials }
