@@ -1,5 +1,7 @@
 \name{NbinomFamily}
 \alias{NbinomFamily}
+\alias{NbinomwithSizeFamily}
+\alias{NbinomMeanSizeFamily}
 
 \title{Generating function for Nbinomial families}
 \description{
@@ -9,6 +11,8 @@
 }
 \usage{
 NbinomFamily(size = 1, prob = 0.5, trafo)
+NbinomwithSizeFamily(size = 1, prob = 0.5, trafo)
+NbinomMeanSizeFamily(size = 1, mean = 0.5, trafo){ 
 }
 \arguments{
   \item{size}{ number of trials }
@@ -18,6 +22,11 @@ NbinomFamily(size = 1, prob = 0.5, trafo)
 \details{
   The slots of the corresponding L2 differentiable 
   parameteric family are filled.
+  \code{NbinomFamily} assumes \code{size} to be known; while
+  for \code{NbinomwithSizeFamily} it is a second (unknown) parameter;
+  for \code{NbinomMeanSizeFamily} is like \code{NbinomwithSizeFamily}
+  but uses the \code{size,mean} parametrization instead of the
+  \code{size,prob} one.  
 }
 \value{Object of class \code{"L2ParamFamily"}}
 \references{
@@ -36,6 +45,10 @@ NbinomFamily(size = 1, prob = 0.5, trafo)
 plot(N1)
 FisherInfo(N1)
 checkL2deriv(N1)
+(N1.w <- NbinomwithSizeFamily(size = 25, prob = 0.25))
+plot(N1.w)
+FisherInfo(N1.w)
+checkL2deriv(N1.w)
 }
 \concept{Negative Binomial model}
 \keyword{models}

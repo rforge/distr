@@ -16,8 +16,15 @@ setClass("BinomFamily",
 setClass("PoisFamily",
           contains = "L2ParamFamily")
 
-## Binomial family
+## neg.Binomial family
 setClass("NbinomFamily",
+          contains = "L2ParamFamily")
+
+## neg.Binomial family with size
+setClass("NbinomwithSizeFamily",
+          contains = "L2ParamFamily")
+## neg.Binomial family in different parametrization
+setClass("NbinomMeanSizeFamily",
           contains = "L2ParamFamily")
 
 ## Gamma family
