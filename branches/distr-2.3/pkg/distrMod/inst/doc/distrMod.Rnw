@@ -6,16 +6,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 \usepackage{amssymb}%
-\usepackage{amsthm}%
+%\usepackage{amsthm}%
 %
 \newcommand{\N}{\mathbb N}
 \newcommand{\R}{\mathbb R}
 \newcommand{\B}{\mathbb B}
 %
-\newtheorem{rem}{Remark}
+%\newtheorem{Rem}{Remark}
 %
-\newcommand\smkreis[1]{\ensuremath{\!\,\mathbin{\settowidth{\dimen8}{\mbox{$\textstyle \bigcirc$}}%
-              \makebox[\dimen8]{$\textstyle \bigcirc$}\makebox[-\dimen8]{\scriptsize #1}\hspace{\dimen8}}}}
+%\newcommand\smkreis[1]{\ensuremath{\!\,\mathbin{\settowidth{\dimen8}{\mbox{$\textstyle \bigcirc$}}%
+%              \makebox[\dimen8]{$\textstyle \bigcirc$}\makebox[-\dimen8]{\scriptsize #1}\hspace{\dimen8}}}}
+\newcommand\smkreis[1]{{(M#1)}}
 % -------------------------------------------------------------------------------
 \SweaveOpts{keep.source=TRUE}
 % -------------------------------------------------------------------------------
@@ -739,7 +740,7 @@ contrast it with the two already mentioned implementations:
 \proglang{S}3-class \code{fitdistr} which is a list with components \code{estimate}, 
 \code{sd}, and \code{loglik}.
 % -----------------------------------------------------------------------------
-\begin{rem}\rm\small
+%\begin{Rem}
 As starting estimator \code{start} in case~$\smkreis{2}$, we select median 
 and MAD, where for the latter we need a consistency constant to obtain a consistent 
 estimate for scale. In package \pkg{distrMod} this is adjusted automatically.\\ 
@@ -748,7 +749,7 @@ of the upper quartile of the central distribution, obtainable via
 <<mad-const, echo = TRUE, eval = TRUE>>=
 (mad.const <- 1/q(myD)(0.75))
 @
-\end{rem}
+%\end{Rem}
 % -----------------------------------------------------------------------------
 Then, function~\code{fitdistr} from package~\pkg{MASS} may be called as
 <<MLE-MASS,  echo = TRUE, eval = TRUE>>=
@@ -773,7 +774,7 @@ then be computed via
 ll <- function(loc,scale){-sum(log(mydf(x,loc,scale)))}
 mle(ll, start = list("loc" = Med, "scale" = MAD))
 @
-\begin{rem}\rm\small
+%\begin{Rem}
 There are further packages with implementations for MLE like 
 \pkg{bbmle} \citep{bbmle}, \pkg{fitdistrplus} \citep{fitdistrplus}, 
 and \pkg{maxLik} \citep{maxLik}. Package \pkg{bbmle} provides modifications and 
@@ -791,7 +792,7 @@ of package \pkg{actuar} \citep{actuar} one can minimize the Cram\'er-von-Mises d
 for individual and grouped data. Moreover, for grouped data a modified $\chi^2$-statistic 
 as well as the squared difference between the theoretical and empirical limited expected 
 value can be chosen. The optimization is again performed by function \code{optim}.
-\end{rem}
+%\end{Rem}
 % -----------------------------------------------------------------------------
 \subsection[Estimators in package distrMod]%
 {Estimators in package~\pkg{distrMod}}\label{estims}
@@ -938,7 +939,7 @@ Both \code{mceCalc} and \code{mleCalc} dispatch according to their arguments
 \code{x} and \code{PFam}. For \code{mceCalc}, so far there is only a method for 
 signature \code{(numeric,ParamFamily)}, while \code{mleCalc} already has several 
 particular methods for argument \code{PFam} of classes \code{ParamFamily}, 
-\code{BinomFamily}, \code{PoisFamily}, \code{NormLocationFamily}, \code{NormScaleFamily}, 
+\code{BinomFamily}, \code{PoisFamily}, \code{NormLocationFamily}, \newline\code{NormScaleFamily}, 
 and \code{NormLocationScaleFamily}. Up to now, in both \code{mceCalc} and \code{mleCalc}, 
 argument \code{x} must inherit from class \code{numeric}, but we plan to allow 
 for more general classes (e.g.\ \code{data.frames}) in subsequent versions. 
