@@ -16,6 +16,11 @@
 \SweaveOpts{keep.source=TRUE}
 % -------------------------------------------------------------------------------
 
+%\VignetteIndexEntry{R Package distrMod: S4 Classes and Methods for Probability Models}
+%\VignetteDepends{distr,distrEx,distrMod}
+%\VignetteKeywords{probability models, minimum criterion estimators, maximum likelihood estimators, minimum distance estimators, S4 classes, S4 methods}
+%\VignettePackage{distrMod} 
+
 %% almost as usual
 \author{Matthias Kohl\\Friedrich-Schiller-University Jena\And
         Peter Ruckdeschel\\Fraunhofer ITWM Kaiserslautern}
