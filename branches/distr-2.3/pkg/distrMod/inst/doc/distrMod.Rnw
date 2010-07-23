@@ -6,16 +6,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 \usepackage{amssymb}%
-%\usepackage{amsthm}%
 %
 \newcommand{\N}{\mathbb N}
 \newcommand{\R}{\mathbb R}
 \newcommand{\B}{\mathbb B}
 %
-%\newtheorem{Rem}{Remark}
-%
-%\newcommand\smkreis[1]{\ensuremath{\!\,\mathbin{\settowidth{\dimen8}{\mbox{$\textstyle \bigcirc$}}%
-%              \makebox[\dimen8]{$\textstyle \bigcirc$}\makebox[-\dimen8]{\scriptsize #1}\hspace{\dimen8}}}}
 \newcommand\smkreis[1]{{(M#1)}}
 % -------------------------------------------------------------------------------
 \SweaveOpts{keep.source=TRUE}
@@ -33,7 +28,7 @@
 
 %% an abstract and keywords
 \Abstract{
-  This vignette is published as \citet{KR10}.
+  This vignette is published as \citet{distrMod}.
   Package~\pkg{distrMod} provides an object oriented (more specifically
   \proglang{S}4-style)
   implementation of probability models. Moreover, it contains functions
@@ -133,10 +128,10 @@ The user will receive standardized output on which she/he may
 apply standard \proglang{R} functions like
 \code{plot}, \code{show}, \code{confint}, \code{profile}.\\
 By non-standard parametric models we mean models not in the list of 
-explicit models covered by \code{fitdistr}; that is,
-\code{"beta"}, \code{"cauchy"}, \code{"chi-squared"}, \code{"exponential"}, 
-\code{"f"}, \code{"gamma"}, \code{"geometric"}, \code{"lognormal"}, \code{"logistic"}, 
-\code{"negative binomial"}, \code{"normal"}, \code{"Poisson"}, \newline\code{"weibull"}, \code{"t"}.
+explicit models covered by \code{fitdistr}; that is, \code{"Poisson"}, \code{"beta"}, 
+\code{"cauchy"}, \code{"chi-squared"}, \code{"exponential"}, 
+\code{"gamma"}, \code{"geometric"}, \code{"lognormal"}, \code{"logistic"}, 
+\code{"negative binomial"}, \code{"normal"}, \code{"f"}, \code{"t"}, \code{"weibull"}.
 Standard as well as non-standard models can easily be implemented based on the infrastructure 
 provided by packages \pkg{distr} and \pkg{distrEx}. We will demonstrate this using 
 examples $\smkreis{2}$ and $\smkreis{4}$ specified in Section~\ref{examples}.\\
@@ -157,7 +152,7 @@ to explore the (perhaps automatically derived, as in the case of example~$\smkre
 score function and the corresponding Fisher information. The return value of the model 
 fit, an estimate of the parameter, is an object of class \code{Estimator} or subclasses 
 for which one may want to have confidence intervals, some profiling, etc. For 
-objects of these classes we provide various methods for standard \proglang{R} functions, 
+objects of these classes we provide various methods for standard \proglang{R} functions; 
 see Sections~\ref{modelsec} and \ref{estsec} for more details.
 
 \textbf{Availability } The current version of package~\pkg{distrMod} is 2.2
@@ -361,7 +356,7 @@ evaluation of density, c.d.f.\ and quantile function of the corresponding
 distribution, respectively. All distributions of the \pkg{stats} package are implemented as 
 subclasses of either \code{AbscontDistribution} or \code{DiscreteDistribution},
 which themselves are again subclasses of \code{UnivariateDistribution}.
-As usual in Stochastics, we identify distributions with RVs distributed accordingly.
+As usual in stochastics, we identify distributions with RVs distributed accordingly.
 By means of these classes, we may automatically generate new objects of these 
 classes for the laws of RVs under standard univariate mathematical transformations 
 and under standard bivariate arithmetical operations acting on independent RVs. 
@@ -420,7 +415,7 @@ we introduce several additional slots for scores $\Lambda_\theta$ and Fisher
 information ${\cal I}_\theta$. In particular, slot \code{L2deriv} for the score 
 function is of class \code{EuclRandVarList}, a class defined in package~\pkg{RandVar} 
 \citep{RandVar}.
-\begin{figure}[!h]
+\begin{figure}[!ht]
   \begin{center}
     \includegraphics[width=12cm]{ProbFamily.pdf}%
     \caption{\label{figPF}Inheritance relations and slots of the
@@ -437,7 +432,7 @@ The actual value slots like \code{distribution}, \code{param}, \code{L2deriv},
 and \code{FisherInfo} are used for computations at a certain value of
 the parameter, while functional slots like \code{modifyParam}, \code{L2deriv.fct},
 and \code{FisherInfo.fct} provide mappings $\Theta\to {\cal M}_1(\B)$,
-$\theta\mapsto P_\theta$, $\;$ $\Theta \to \bigcup_{\theta\in\Theta} L_2(P_\theta)$,
+$\theta\mapsto P_\theta$, $\Theta \to \bigcup_{\theta\in\Theta} L_2(P_\theta)$,
 $\theta \mapsto \Lambda_\theta$, and $\Theta \to \R^{k \times k}$,
 $\theta \mapsto {\cal I}_\theta$, respectively, and are needed to modify the
 actual parameter of the model, or to move the model from one parameter value
@@ -448,7 +443,7 @@ are grouped in \proglang{S}4 method \code{modifyModel}.
 \code{L2ParamFamily} and derived classes involves filling a considerable
 number of slots. Hence, for convenience, there are several user-friendly
 generating functions as displayed in Table~\ref{TabPF}.
-\begin{table}[!h]
+\begin{table}[!ht]
   \begin{center}\small
     \begin{tabular}{|r|l|}
     \hline
@@ -463,11 +458,11 @@ generating functions as displayed in Table~\ref{TabPF}.
                                           & with unknown location (nuisance parameter)\\
       \code{L2LocationScaleFamily} & general $L_2$ differentiable location and\\
                                    & scale family\\
-      \code{BetaFamily} & Beta family\\
-      \code{BinomFamily} & Binomial family\\
-      \code{GammaFamily} & Gamma family\\
+      \code{BetaFamily} & beta family\\
+      \code{BinomFamily} & binomial family\\
+      \code{GammaFamily} & gamma family\\
       \code{PoisFamily} & Poisson family\\
-      \code{ExpScaleFamily} & Exponential scale family\\
+      \code{ExpScaleFamily} & exponential scale family\\
       \code{GumbelLocationFamily} & Gumbel location family\\
       \code{LnormScaleFamily} & log-normal scale family\\
       \code{NormLocationFamily} & normal location family\\
@@ -489,7 +484,7 @@ In order to follow our running example~$\smkreis{2}$, consider the
 following code: we first define the (non-standard) central distribution \code{myD} 
 and then generate the location and scale model. For the central distribution, 
 the corresponding standardizing constant could be expressed in closed form 
-in terms of the Gamma function, but instead we present the more general approach 
+in terms of the gamma function, but instead we present the more general approach 
 in which (by argument \code{withS}) standardization to mass $1$ is enforced 
 by numerical integration.
 <<centralD, eval = TRUE>>=
@@ -509,7 +504,7 @@ be of order $1{\rm e}-6$.
                           name = "location and scale family",
                           centraldistribution = myD))
 @
-In the already implemented Gamma family of example~$\smkreis{3}$,
+In the already implemented gamma family of example~$\smkreis{3}$,
 a corresponding object for this model is readily defined as
 <<GamFam, eval = TRUE>>=
 (G <- GammaFamily(scale = 1, shape = 2))
@@ -628,7 +623,7 @@ which is also visible in class \code{Estimate} (see Figure~\ref{figEst}).
 Slot \code{trafo} for instance may be used to realize partial influence curves,
 see~\citet[Definition~4.2.10]{Ri94}, where one is only interested in some
 possibly lower dimensional smooth (not necessarily linear or coordinate-wise)
-aspect/transformation $\tau$ of the parameter $\theta$.\\
+aspect/transformation $\tau$ of the parameter~$\theta$.\\
 To be coherent with the corresponding {\em nuisance} implementation, we use 
 the following convention: 
 The full parameter $\theta$ is split up coordinate-wise into a main parameter
@@ -697,7 +692,7 @@ slots \code{modifParam} (to move the distribution of the observations)
 and \code{L2deriv.fct} (to move the $L_2$-derivative). For internal 
 reasons, these two functions have different implementations of the parameter
 as argument: \code{L2deriv.fct}, only internally used by our routines,
-uses an instance of class \code{ParamFamParameter}. In contrast to this, 
+requires an instance of class \code{ParamFamParameter}. In contrast to this, 
 \code{modifyParam} uses a representation of the parameter as slot \code{main} of
 class \code{ParamFamParameter}; that is, simply as a numeric vector,
 because its results are passed on to non-\pkg{distrMod}-code.
@@ -706,7 +701,7 @@ and \code{startPar}, might confuse some users and will hence
 probably be changed in a subsequent package version.
 
 \textbf{Example }
-Our implementation of the Gamma family follows the parametrization of the
+Our implementation of the gamma family follows the parametrization of the
 \proglang{R} core functions \code{d/p/q/rgamma}. Hence, we use the parameters
 \code{("scale","shape")} (in this order). Package~\pkg{MASS} \citep{V:R:02}
 however uses the (equivalent) parametrization \code{("shape","rate")},
@@ -740,7 +735,7 @@ contrast it with the two already mentioned implementations:
 \proglang{S}3-class \code{fitdistr} which is a list with components \code{estimate}, 
 \code{sd}, and \code{loglik}.
 % -----------------------------------------------------------------------------
-%\begin{Rem}
+%\begin{Rem}%\rm\small
 As starting estimator \code{start} in case~$\smkreis{2}$, we select median 
 and MAD, where for the latter we need a consistency constant to obtain a consistent 
 estimate for scale. In package \pkg{distrMod} this is adjusted automatically.\\ 
@@ -774,7 +769,7 @@ then be computed via
 ll <- function(loc,scale){-sum(log(mydf(x,loc,scale)))}
 mle(ll, start = list("loc" = Med, "scale" = MAD))
 @
-%\begin{Rem}
+%\begin{Rem}%\rm\small
 There are further packages with implementations for MLE like 
 \pkg{bbmle} \citep{bbmle}, \pkg{fitdistrplus} \citep{fitdistrplus}, 
 and \pkg{maxLik} \citep{maxLik}. Package \pkg{bbmle} provides modifications and 
@@ -816,7 +811,7 @@ with slots \code{estimate}, \code{criterion}, \code{samplesize}, \code{asvar}
 \code{MCEstimate}.
 
 \textbf{The main achievement} of our approach is that estimators are available for
-\emph{any} object of class \code{ParamFamily} (e.g., Poisson, Beta, Gamma and many more).
+\emph{any} object of class \code{ParamFamily} (e.g., Poisson, beta, gamma and many more).
 At the same time, using \proglang{S}4 inheritance this generality does not hinder
 specialization to particular models: internal dispatch on run-time according to argument
 \code{ParamFamily} allows the definition of new specialized methods {\em without modifying
@@ -911,7 +906,7 @@ setMethod("validParameter",
     })
 @
 Class-individual routines are realized by calling \code{mceCalc} and 
-\code{mleCalc} within function \code{MCEstimator} and \code{MLEstimator}, 
+\code{mleCalc} within function \newline\code{MCEstimator} and \code{MLEstimator}, 
 respectively; e.g.,
 <<mlecalcEx,  echo=TRUE, eval = FALSE>>=
 setMethod("mleCalc", signature(x = "numeric", 
@@ -940,7 +935,7 @@ Both \code{mceCalc} and \code{mleCalc} dispatch according to their arguments
 signature \code{(numeric,ParamFamily)}, while \code{mleCalc} already has several 
 particular methods for argument \code{PFam} of classes \code{ParamFamily}, 
 \code{BinomFamily}, \code{PoisFamily}, \code{NormLocationFamily}, \newline\code{NormScaleFamily}, 
-and \code{NormLocationScaleFamily}. Up to now, in both \code{mceCalc} and \code{mleCalc}, 
+and \code{NormLocationScaleFamily}. To date, in both \code{mceCalc} and \code{mleCalc}, 
 argument \code{x} must inherit from class \code{numeric}, but we plan to allow 
 for more general classes (e.g.\ \code{data.frames}) in subsequent versions. 
 Note that for technical reasons, \code{mleCalc} must have an extra \code{...} 
@@ -995,7 +990,7 @@ mentioned in the previous section, \code{profile} of package \pkg{stats}.
 Moreover, by adding an argument \code{method} to the signature of \code{confint}, 
 we gain more flexibility. Note that the addition of an extra argument was only possible
 by masking method \code{confint}. This masking is done in a way that it reproduces
-exactly the \code{stats} behaviour when called with the corresponding arguments,
+exactly the \pkg{stats} behaviour when called with the corresponding arguments,
 however. This additional argument is for example used in package~\pkg{ROptEst} 
 \citep{ROptEst} where one can determine robust (asymptotic) confidence intervals 
 which are uniformly valid on neighborhoods and may incorporate bias in various ways. 
@@ -1043,7 +1038,7 @@ can either be done by setting global options with \code{distrModOptions}
 argument \code{show.details}. The default value of \code{show.details} is \code{"maximal"}.\\ 
 Note that this departure from functional programming style is necessary, as \code{show} 
 does not allow for additional arguments.
-\begin{table}[!h]
+\begin{table}[!ht]
   \begin{center}\small
     \begin{tabular}{|c|l|l|}
     \hline
@@ -1139,3 +1134,5 @@ options("prompt"=">")
 @
 % -----------------------------------------------------------------------------
 \end{document}
+
+
