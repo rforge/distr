@@ -1,18 +1,20 @@
-citHeader("To cite package distrMod in publications use:")
+citHeader("To cite distrMod in publications use:")
 
-citEntry(entry = "article",
-         author = personList(as.person("M. Kohl"),
-                        as.person("P. Ruckdeschel")),
-         title = "{\proglang{R} Package~\pkg{distrMod}: \proglang{S}4 Classes and Methods for Probability Models}",
-         language = "English",
-         institution=" {Fraunhofer ITWM}",
-             language = {English},
-         year = "{2010}",
-         journal = "Journal of Statistical Software",
-         volume = "{6}",
-         number = "{2}",
-         pages = "{2--6}",
-         url = "http://CRAN.R-project.org/doc/Rnews",
-         textVersion = paste("Kohl, M., Ruckdeschel, P. (2010): ",
-                       "R Package distrMod: S4 Classes and Methods for Probability Models")
-         )
+citEntry(entry = "Article",
+  title        = "{R} Package {distrMod}: {S}4 Classes and Methods for Probability Models",
+  author       = personList(as.person("Matthias Kohl"),
+                   as.person("Peter Ruckdeschel")),
+  journal      = "Journal of Statistical Software",
+  year         = "2010",
+  volume       = "35",
+  number       = "10",
+  pages        = "1--27",
+  url          = "http://www.jstatsoft.org/v35/i10/",
+
+  textVersion  =
+  paste("Matthias Kohl, Peter Ruckdeschel (2010).",
+        "R Package distrMod: S4 Classes and Methods for Probability Models.",
+        "Journal of Statistical Software, 35(10), 1-27.",
+        "URL http://www.jstatsoft.org/v35/i10/.")
+)
+
