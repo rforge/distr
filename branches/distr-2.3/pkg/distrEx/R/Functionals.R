@@ -592,7 +592,8 @@ setMethod("median", signature(x = "GPareto"),
     })
 setMethod("median", signature(x = "GEV"),
     function(x) {xi <- shape(x); mu <- loc(x); sigma <- scale(x)
-              return(mu + sigma*(log(2)^(-xi)-1)/xi)
+              if (xi != 0) return(mu + sigma*(log(2)^(-xi)-1)/xi)
+              else return(mu-sigma*log(log(2)))
     })
 
 #################################################################
@@ -641,7 +642,8 @@ setMethod("IQR", signature(x = "GPareto"),
     })
 setMethod("IQR", signature(x = "GEV"),
     function(x) {xi <- shape(x); sigma<- scale(x)
-              return(sigma*((log(4/3))^(-xi)-(log(4))^(-xi))/xi)
+             if (xi != 0) return(sigma*((log(4/3))^(-xi)-(log(4))^(-xi))/xi)
+             else return(sigma*(log(log(4))-log(log(4/3))))
     })
 #################################################################
 # some exact mads
