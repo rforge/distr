@@ -6,10 +6,10 @@
   Function \code{igamma} is a numerical inverse of \code{digamma}.
 }
 \usage{
-igamma(x)
+igamma(v)
 }
 \arguments{
-  \item{x}{ a numeric in the range [-100000,18] }
+  \item{v}{ a numeric in the range [-100000,18] }
   }
 \details{
 \code{igamma} is vectorized;  it is won
