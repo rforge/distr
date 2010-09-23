@@ -14,7 +14,6 @@
         return(c(low=low,upp=upp)) 
 }
 
-       
 ## Integration of functions
 setMethod("E", signature(object = "UnivariateDistribution", 
                          fun = "missing", 
@@ -870,29 +869,33 @@ setMethod("E", signature(object = "GEV",
              ){
 
         dots <- list(...)
-
         dots.withoutUseApply <- dots
         useApply <- TRUE
         if(!is.null(dots$useApply)) useApply <- dots$useApply
         dots.withoutUseApply$useApply <- NULL
-
-        integrand <- function(x, dfun, ...){di <- dim(x)
-                                            y <- q(object)(x)##quantile transformation
-                                            if(useApply){
-                                               funy <- sapply(y,fun, ...)
-                                               dim(y) <- di
-                                               dim(funy) <- di
-                                             }else funy <- fun(y,...)
+        integrand <- function(x, dfun, ...){   di <- dim(x)
+                                               y <- q(object)(x)##quantile transformation
+                                               if(useApply){
+                                                    funy <- sapply(y,fun, ...)
+                                                    dim(y) <- di
+                                                    dim(funy) <- di
+                                               }else funy <- fun(y,...)
                                         return(funy) }
 
-        if(is.null(low)) low <- 0
-        if(is.null(upp)) upp <- 1
-
-        Ib <- .getIntbounds(object, low, upp, lowerTruncQuantile,
-              upperTruncQuantile, IQR.fac)
-        
-        return(do.call(distrExIntegrate, c(list(f = integrand,lower = low,
-upper = upp,rel.tol = rel.tol,distr = object, dfun = d(object)),dots.withoutUseApply)))
+         if(is.null(low)) low <- -Inf
+         if(is.null(upp)) upp <- Inf
+ 
+         Ib <- .getIntbounds(object, low, upp, lowerTruncQuantile,
+               upperTruncQuantile, IQR.fac)
+         low <- p(object)(Ib["low"])
+         upp <- p(object)(Ib["upp"])
+         if(is.nan(low)) low <- 0
+         if(is.nan(upp)) upp <- 1
+        return(do.call(distrExIntegrate, c(list(f = integrand,
+                    lower = low,
+                    upper = upp,
+                    rel.tol = rel.tol,
+                    distr = object, dfun = dunif), dots.withoutUseApply)))
 
     })
 
