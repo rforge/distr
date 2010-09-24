@@ -16,12 +16,15 @@
 
 \title{Generalized EV distribution}
 \description{[borrowed from \pkg{evd}]:
- 
-  The (Three-parameter) generalized EV distribution with parameter \code{loc}\eqn{= a},
-  \code{scale} \eqn{= b}, \code{shape} \eqn{= c} has density:
-  \deqn{f(x) = \frac{1}{b} (1+c z)^(-1/c - 1), \quad z = \frac{x-a}{c}}
-  for \eqn{x > a} (\eqn{ c \geq 0}) and \eqn{a \leq x \leq a - b/c}(\eqn{c < 0}).
+The GEV distribution function with parameters \code{loc}\eqn{= a},
+  \code{scale} \eqn{= b}, \code{shape} \eqn{= s} is
 
+\deqn{G(x) = exp[-{1+s(z-a)/b}^(-1/s)]}
+
+for \eqn{1+s(z-a)/b > 0}, where \eqn{b > 0}. If \eqn{s = 0} the distribution is 
+defined by continuity. If \eqn{1+s(z-a)/b <= 0}, the value \eqn{z} is either 
+greater than the upper end point (if \eqn{s < 0}), or less than the lower end 
+point (if eqn{s > 0}).
   }
 \section{Objects from the Class}{
   Objects can be created by calls of the form \code{new("GEV", loc, scale,shape)}.
