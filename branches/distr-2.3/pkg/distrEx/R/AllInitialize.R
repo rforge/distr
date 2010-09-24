@@ -182,9 +182,9 @@ setMethod("initialize", "GEV",
                              list(locSub = loc, scaleSub = scale, shapeSub = shape)
                                          )
             body(.Object@p) <- substitute(
-                           { if(!lower.tail && log.p){
+                           { if(lower.tail && log.p){
                              q0 <- (q-locSub)/scaleSub
-                             return(-log(1+shapeSub*q0)/shapeSub)
+                             return(-(1+shapeSub*q0)^(-1/shapeSub))
                              }else{
                              p0 <- pgev(q, loc = locSub, scale = scaleSub, 
                                         shape = shapeSub)
@@ -195,11 +195,10 @@ setMethod("initialize", "GEV",
                                    shapeSub = shape)
                                          )
             body(.Object@q) <- substitute({
-                        if(!lower.tail && log.p){
-                             p1 <- p
-                             p1[p<.Machine$double.eps] <- 0.5
-                             q0 <- (exp(-shapeSub*p1)-1)/shapeSub*scaleSub + locSub
-                             q0[p<.Machine$double.eps] <- NaN
+                        if(lower.tail && log.p){
+                             q0 <-((-p)^(-shapeSub)-1)/shapeSub*scaleSub+locSub  
+                             q0[.isEqual01(exp(p)) & p<0.5] <- NaN
+                             q0[1-p<0.5 & .isEqual01(exp(p))] <- NaN
                              return(q0)
                         }else{
                              
