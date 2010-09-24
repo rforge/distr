@@ -184,7 +184,9 @@ setMethod("initialize", "GEV",
             body(.Object@p) <- substitute(
                            { if(lower.tail && log.p){
                              q0 <- (q-locSub)/scaleSub
-                             return(-(1+shapeSub*q0)^(-1/shapeSub))
+                             p0 <- -(1+shapeSub*q0)^(-1/shapeSub)
+                             p0[q0<(-1)] <- -Inf 
+                             return(p0)
                              }else{
                              p0 <- pgev(q, loc = locSub, scale = scaleSub, 
                                         shape = shapeSub)
@@ -197,8 +199,9 @@ setMethod("initialize", "GEV",
             body(.Object@q) <- substitute({
                         if(lower.tail && log.p){
                              q0 <-((-p)^(-shapeSub)-1)/shapeSub*scaleSub+locSub  
-                             q0[.isEqual01(exp(p)) & p<0.5] <- NaN
-                             q0[1-p<0.5 & .isEqual01(exp(p))] <- NaN
+                             q0[p>0|p<-Inf] <- NaN
+                             q0[.isEqual01(p)& p<1] <- Inf
+                             q0[!is.finite(p)& p<0] <- locSub-scaleSub/shapeSub                             
                              return(q0)
                         }else{
                              
@@ -217,8 +220,8 @@ setMethod("initialize", "GEV",
                                       
                            q1 <- qgev(p0, loc = locSub, scale = scaleSub, 
                                       shape = shapeSub) 
-                           q1[i0] <- if(lower.tail)  locSub else Inf
-                           q1[i1] <- if(!lower.tail) locSub else Inf
+                           q1[i0] <- if(lower.tail)  locSub-scaleSub/shapeSub else Inf
+                           q1[i1] <- if(!lower.tail) locSub-scaleSub/shapeSub else Inf
                            q1[in01] <- NaN
                         
                            return(q1) 
