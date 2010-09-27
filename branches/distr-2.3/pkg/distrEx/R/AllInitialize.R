@@ -163,6 +163,7 @@ setMethod("initialize", "GPareto",
             .Object
           })
 
+
 ## Class: Generalized extreme value distribution
 setMethod("initialize", "GEV",
           function(.Object, loc = 0, scale = 1, shape = 1) {
@@ -177,8 +178,7 @@ setMethod("initialize", "GEV",
                              list(locSub = loc, scaleSub = scale, shapeSub = shape)
                                        )
             body(.Object@d) <- substitute(
-                           { dgev(x, loc = locSub, scale = scaleSub, shape = shapeSub, 
-                                    log = log) },
+                           { dgev(x, loc = locSub, scale = scaleSub, shape = shapeSub, log = log) },
                              list(locSub = loc, scaleSub = scale, shapeSub = shape)
                                          )
             body(.Object@p) <- substitute(
@@ -188,8 +188,7 @@ setMethod("initialize", "GEV",
                              p0[q0<(-1)] <- -Inf 
                              return(p0)
                              }else{
-                             p0 <- pgev(q, loc = locSub, scale = scaleSub, 
-                                        shape = shapeSub)
+                             p0 <- pgev(q, loc = locSub, scale = scaleSub, shape = shapeSub,lower.tail=TRUE)
                              if(!lower.tail ) p0 <- 1-p0
                              if(log.p) p0 <- log(p0)
                              return(p0)}
@@ -199,31 +198,31 @@ setMethod("initialize", "GEV",
             body(.Object@q) <- substitute({
                         if(lower.tail && log.p){
                              q0 <-((-p)^(-shapeSub)-1)/shapeSub*scaleSub+locSub  
-                             q0[p>0|p<-Inf] <- NaN
-                             q0[.isEqual01(p)& p<1] <- Inf
-                             q0[!is.finite(p)& p<0] <- locSub-scaleSub/shapeSub                             
+                             #q0[p>0|p< -Inf] <- NaN
+                             #q0[.isEqual01(p)& p<1] <- Inf
+                             #q0[!is.finite(p)& p<0] <- locSub-scaleSub/shapeSub                             
+                             p0 <- exp(p)
+                             q0[p0>1|p0<0] <- NaN
+                             q0[(.isEqual01(p) & p0>0)] <- Inf
+                             q0[(.isEqual01(p) & p0<1)] <- locSub-scaleSub/shapeSub 
                              return(q0)
                         }else{
-                             
-                        ## analogous to GPD
+                           ##higher tolerance for .isEqual01
+                           tol=1e-20
+                           distroptions(TruncQuantile=tol)
                            p1 <- if(log.p) exp(p) else p
-                                                                        
                            in01 <- (p1>1 | p1<0)
                            i01 <- .isEqual01(p1) 
                            i0 <- (i01 & p1<1)   
                            i1 <- (i01 & p1>0)
                            ii01 <- .isEqual01(p1) | in01
-                                      
                            p0 <- p
                            p0[ii01] <- if(log.p) log(0.5) else 0.5
-                           if(!lower.tail) p0 <- 1-p0
-                                      
-                           q1 <- qgev(p0, loc = locSub, scale = scaleSub, 
-                                      shape = shapeSub) 
+                           #if(!lower.tail) p0 <- 1-p0
+                           q1 <- qgev(p0, loc = locSub, scale = scaleSub, shape = shapeSub, lower.tail=lower.tail) 
                            q1[i0] <- if(lower.tail)  locSub-scaleSub/shapeSub else Inf
                            q1[i1] <- if(!lower.tail) locSub-scaleSub/shapeSub else Inf
                            q1[in01] <- NaN
-                        
                            return(q1) 
                          }   
                      },  list(locSub = loc, scaleSub = scale, shapeSub = shape))
