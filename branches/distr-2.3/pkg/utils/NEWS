@@ -2,6 +2,10 @@
 #  News: to utilities in folder 'utils'
 ######################################################################
 
+### distrXXX family version 2.3
+
++ new utils getRevNr, getAllRevNr  to obtain SVN Revision Nr
+
 ### distrXXX family version 2.2
 
 + ladealles.R now loads both .r and .R files
