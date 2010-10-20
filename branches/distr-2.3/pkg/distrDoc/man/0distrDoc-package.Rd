@@ -21,6 +21,7 @@ Depends: \tab R(>= 2.6.0), tools, distr(>= 2.2.0), startupmsg, distrEx(>= 2.2.0)
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
+SVNRevision: \tab 684  \cr
 }}
 
 

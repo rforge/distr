@@ -1,5 +1,7 @@
 ### some utils for unified treatment of DESCRIPTION files from R
 
+source("C:/rtest/distr/branches/distr-2.3/pkg/utils/getRevNr.R")
+
 updatePackageHelp <- function(package){
   if(file.exists(file.path(package, "DESCRIPTION"))){
   DFF    <-  read.dcf(file = file.path(package, "DESCRIPTION"))
@@ -14,7 +16,7 @@ updatePackageHelp <- function(package){
      df0 <- gsub(liS, reS,dfile)
      return(df0)}
   PFc    <-  PF
-  s <- sapply(c("Package","Version","Date","Depends","LazyLoad","License"),
+  s <- sapply(c("Package","Version","Date","Depends","LazyLoad","License","SVNRevision"),
               function(x){ PFca <- replaceField(field=x,dfile=PFc)
                            PFc <<- PFca
                            return(NA)})
@@ -26,10 +28,19 @@ updatePackageHelp <- function(package){
 
 changeDescription <- function(startDir, names, values, 
                               pkgs = NULL, 
+                              withSVNread = TRUE,
                               withPackageHelpUpdate = TRUE){
   oldDir <- getwd()
   on.exit(setwd(oldDir))
   setwd(startDir)
+  if(withSVNread){
+      svn <- getRevAllNr(startDir,list="max")
+      svnrev <- svn[[1]]
+      if("SVNRevision" %in% names){
+         values[which(names=="SVNRevsion")] <- svnrev
+      }
+  }
+  
   
   if(is.matrix(values) && is.null(colnames(values))) 
      colnames(values) <- rep(pkgs, length.out = ncol(values))

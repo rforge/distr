@@ -19,6 +19,7 @@ Depends: \tab R(>= 2.8.0), methods, graphics, mvtnorm, setRNG(>= 2006.2-1),
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
+SVNRevision: \tab 684  \cr
 }
 }
 \section{Classes}{
