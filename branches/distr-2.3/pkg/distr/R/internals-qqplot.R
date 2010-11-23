@@ -188,7 +188,8 @@
                     col.sCI, lty.sCI, lwd.sCI, pch.sCI, cex.sCI,
                     n,exact.sCI=(n<100),exact.pCI=(n<100), nosym.pCI = FALSE,
                     with.legend = TRUE, legend.bg = "white",
-                    legend.pos = "topleft", legend.cex = 0.8){
+                    legend.pos = "topleft", legend.cex = 0.8,
+                    legend.pref = "", legend.postf = ""){
 
    x <- sort(unique(x))
    if("gaps" %in% names(getSlots(class(D))))
@@ -239,14 +240,16 @@
    if(with.legend){
       if( qqb$err["pw"] ||  qqb$err["sim"] ){
          expression1 <- substitute(
-            nosym0~"pointw."~ex.p~alpha==alpha0~"%- conf. interval",
-            list(ex.p = if(exact.pCI) "exact" else "asympt.",
-                 alpha0 = alpha*100,
+            legpf~nosym0~"pointw."~ex.p~alpha==alpha0~"%- conf. interval"~legpof,
+            list(legpf = legend.pref, legpof = legend.postf,
+                 ex.p = if(exact.pCI) "exact" else "asympt.",
+                 alpha0 = round(alpha*100,2),
                  nosym0 = if(nosym.pCI&&exact.pCI) "shortest asymm." else "symm"))
          expression2 <- substitute(
-            "simult."~ex.s~alpha==alpha0~"%- conf. interval",
-            list(ex.s = if(exact.sCI) "exact" else "asympt.",
-                 alpha0 = alpha*100))
+            legpf~"simult."~ex.s~alpha==alpha0~"%- conf. interval"~legpof,
+            list(legpf = legend.pref, legpof = legend.postf,
+                 ex.s = if(exact.sCI) "exact" else "asympt.",
+                 alpha0 = round(alpha*100,2)))
 
          lcl <- list()
          if(!qqb$err["sim"]){
@@ -291,9 +294,9 @@
     mcl$col.lbl <- mcl$cex.lbl  <- mcl$adj.lbl <- NULL
     mcl$exp.cex2.pch <- mcl$exp.cex2.lbl <- NULL
     mcl$exp.fadcol.pch <- mcl$exp.fadcol.lbl <- NULL
-    mcl$nosym.pCI <- mcl$n.CI <- mcl$n.adj <-NULL
-    mcl$legend.cex <- mcl$with.legend <- mcl$legend.bg <-NULL
-    mcl$legend.pos <- NULL
+    mcl$nosym.pCI <- mcl$n.CI <- mcl$n.adj <- NULL
+    mcl$legend.cex <- mcl$with.legend <- mcl$legend.bg <- NULL
+    mcl$legend.pos <- legend.pref <- legend.postf <- NULL
 mcl}
 
 
