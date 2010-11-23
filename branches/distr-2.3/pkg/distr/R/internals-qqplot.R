@@ -292,6 +292,8 @@
     mcl$exp.cex2.pch <- mcl$exp.cex2.lbl <- NULL
     mcl$exp.fadcol.pch <- mcl$exp.fadcol.lbl <- NULL
     mcl$nosym.pCI <- mcl$n.CI <- mcl$n.adj <-NULL
+    mcl$legend.cex <- mcl$with.legend <- mcl$legend.bg <-NULL
+    mcl$legend.pos <- NULL
 mcl}
 
 
