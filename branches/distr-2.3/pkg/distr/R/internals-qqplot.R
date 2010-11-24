@@ -189,7 +189,7 @@
                     n,exact.sCI=(n<100),exact.pCI=(n<100), nosym.pCI = FALSE,
                     with.legend = TRUE, legend.bg = "white",
                     legend.pos = "topleft", legend.cex = 0.8,
-                    legend.pref = "", legend.postf = ""){
+                    legend.pref = "", legend.postf = "", legend.alpha=alpha){
 
    x <- sort(unique(x))
    if("gaps" %in% names(getSlots(class(D))))
@@ -243,13 +243,13 @@
             legpf~nosym0~"pointw."~ex.p~alpha==alpha0~"%- conf. interval"~legpof,
             list(legpf = legend.pref, legpof = legend.postf,
                  ex.p = if(exact.pCI) "exact" else "asympt.",
-                 alpha0 = round(alpha*100,2),
+                 alpha0 = round(legend.alpha*100,2),
                  nosym0 = if(nosym.pCI&&exact.pCI) "shortest asymm." else "symm"))
          expression2 <- substitute(
             legpf~"simult."~ex.s~alpha==alpha0~"%- conf. interval"~legpof,
             list(legpf = legend.pref, legpof = legend.postf,
                  ex.s = if(exact.sCI) "exact" else "asympt.",
-                 alpha0 = round(alpha*100,2)))
+                 alpha0 = round(legend.alpha*100,2)))
 
          lcl <- list()
          if(!qqb$err["sim"]){
@@ -297,6 +297,7 @@
     mcl$nosym.pCI <- mcl$n.CI <- mcl$n.adj <- NULL
     mcl$legend.cex <- mcl$with.legend <- mcl$legend.bg <- NULL
     mcl$legend.pos <- legend.pref <- legend.postf <- NULL
+    mcl$legend.alpha <- NULL
 mcl}
 
 

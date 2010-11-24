@@ -24,7 +24,7 @@ qqplot(x, y, ...)
     jit.fac = 0, check.NotInSupport = TRUE,
     col.NotInSupport = "red", with.legend = TRUE, legend.bg = "white",
     legend.pos = "topleft", legend.cex = 0.8, legend.pref = "", 
-    legend.postf = "")
+    legend.postf = "", legend.alpha = alpha.CI)
 \S4method{qqplot}{ANY,ANY}(x, y,
     plot.it = TRUE, xlab = deparse(substitute(x)),
     ylab = deparse(substitute(y)), ...)
@@ -78,6 +78,7 @@ of class \code{"UnivariateDistribution"}.}
 \item{legend.cex}{magnification factor for the legend}
 \item{legend.pref}{character to be prepended to legend text}
 \item{legend.postf}{character to be appended to legend text}
+\item{legend.alpha}{nominal coverage probability}
 }
 
 \description{
