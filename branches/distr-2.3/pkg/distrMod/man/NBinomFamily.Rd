@@ -17,6 +17,7 @@ NbinomMeanSizeFamily(size = 1, mean = 0.5, trafo)
 \arguments{
   \item{size}{ number of trials }
   \item{prob}{ probability of success }
+  \item{mean}{ alternative parameter for negative binomial parameter}
   \item{trafo}{ function in \code{param} or matrix: transformation of the parameter }
 }
 \details{

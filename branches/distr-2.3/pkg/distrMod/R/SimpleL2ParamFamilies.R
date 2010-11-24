@@ -255,8 +255,8 @@ NbinomMeanSizeFamily <- function(size = 1, mean = 0.5, trafo){
     param <- ParamFamParameter(name = "probability of success",  
                                main = param0, 
                                trafo = trafo)
-    modifyParam <- function(theta){ Nbinom(size = theta[1], mean = theta[2]) }
-    body(modifyParam) <- substitute({ Nbinom(size = theta[1], mean = theta[2]) })
+    modifyParam <- function(theta){ Nbinom(size = theta[1], prob = theta[1]/(theta[1]+theta[2])) }
+    body(modifyParam) <- substitute({ Nbinom(size = theta[1], prob = theta[1]/(theta[1]+theta[2])) })
     props <- ""
     
     startPar <- function(x,...){ param1 <- c(1,0.5)

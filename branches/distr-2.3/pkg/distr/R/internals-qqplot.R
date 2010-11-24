@@ -189,7 +189,8 @@
                     n,exact.sCI=(n<100),exact.pCI=(n<100), nosym.pCI = FALSE,
                     with.legend = TRUE, legend.bg = "white",
                     legend.pos = "topleft", legend.cex = 0.8,
-                    legend.pref = "", legend.postf = "", legend.alpha=alpha){
+                    legend.pref = "", legend.postf = "", 
+                    legend.alpha = alpha){
 
    x <- sort(unique(x))
    if("gaps" %in% names(getSlots(class(D))))
