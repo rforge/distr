@@ -297,7 +297,7 @@
     mcl$exp.fadcol.pch <- mcl$exp.fadcol.lbl <- NULL
     mcl$nosym.pCI <- mcl$n.CI <- mcl$n.adj <- NULL
     mcl$legend.cex <- mcl$with.legend <- mcl$legend.bg <- NULL
-    mcl$legend.pos <- legend.pref <- legend.postf <- NULL
+    mcl$legend.pos <- mcl$legend.pref <- mcl$legend.postf <- NULL
     mcl$legend.alpha <- NULL
 mcl}
 
