@@ -256,3 +256,56 @@ setClass("GPareto",
                       .lowerExact = TRUE),
           contains = "AbscontDistribution"
           )
+
+
+## Class: GEVParameter
+setClass("GEVParameter", 
+          representation = representation(loc = "numeric", scale = "numeric", shape = "numeric"
+                                          ), 
+          prototype = prototype(loc = 0, scale = 1, shape = 0.5, name = 
+                      gettext("Parameter of a generalized extreme value distribution")
+                      ), 
+          contains = "Parameter"
+          )
+## Class: Generalized extreme value distribution
+setClass("GEV",  
+          prototype = prototype(
+                      r = function(n){ rgev(n,loc = 0, scale = 1, shape = 0.5) },
+                      d = function(x, log = FALSE){ 
+                              dgev(x, loc = 0, scale = 1, shape = 0.5, log = log) 
+                                          },
+                      p = function(q, lower.tail = TRUE, log.p = FALSE ){ 
+                              p0 <- pgev(q, loc = 0, scale = 1, shape = 0.5)
+                              if(!lower.tail ) p0 <- 1-p0
+                              if(log.p) p0 <- log(p0)
+                              return(p0)},
+                      q = function(p, lower.tail = TRUE, log.p = FALSE ){ 
+                        ## analogous to GPD
+                               p1 <- if(log.p) exp(p) else p
+                               if(!lower.tail) p1 <- 1-p1
+                                                                               
+                               in01 <- (p1>1 | p1<0)
+                               i01 <- .isEqual01(p1) 
+                               i0 <- (i01 & p1<1)   
+                               i1 <- (i01 & p1>0)
+                               ii01 <- .isEqual01(p1) | in01
+                                             
+                               p0 <- p
+                               p0[ii01] <- if(log.p) log(0.5) else 0.5
+                                             
+                               q1 <- qgev(p0,loc=0, scale = 1, shape = 0.5) 
+                               q1[i0] <- if(lower.tail) -Inf else Inf
+                               q1[i1] <- if(!lower.tail) -Inf else Inf
+                               q1[in01] <- NaN
+                               
+                               return(q1)  
+                            },
+                      param = new("GEVParameter"),
+                      img = new("Reals"),
+                      .withArith = FALSE,
+                      .withSim = FALSE,
+                      .logExact = TRUE,
+                      .lowerExact = TRUE),
+          contains = "AbscontDistribution"
+          )
+

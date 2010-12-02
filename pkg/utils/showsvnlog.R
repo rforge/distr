@@ -21,14 +21,14 @@ showsvnlog <- function(
     inRforge = TRUE,    ### shall we use r-forge as repository
                         ## (otherwise need full URL as arg pathRepo
     withlogin = TRUE,   ### do we need option --login (yes in cygwin, don't know in Linux)
-    PathToBash = "C:/cygwin/bin/bash",  ## path to bash
-    PathToUtils="C:/rtest/distr/branches/distr-2.2/pkg/utils",
+    PathToBash = "C:/Programme/bin/bash", ## old: "C:/cygwin/bin/bash",  ## path to bash
+    PathToUtils="C:/rtest/distr/branches/distr-2.3/pkg/utils",
                     ### path to shell script readsvnlog.sh
     fromRev = 501,  ## arg for svn log --- first log-listed revision
     toRev = 502,    ## arg for svn log --- last log-listed revision;
                     ## may be Inf or <0 => then use HEAD revision
     limit = 100,    ### how many revisions will be shown atmost
-    tmpfile = "C:/rtest/tmp-svnlog3.txt", ### some tmpfile to which we write the
+    tmpfile = "C:/rtest/tmp-svnlog4.txt", ### some tmpfile to which we write the
                         ## results temporarily; is deleted afterwords
     con = stdout(),     ### results are written to con; by default screen, but
                         ### may also be a file
@@ -46,7 +46,7 @@ showsvnlog <- function(
                   inQuotes(pathRepo), fromRev, toRev, limit,
                   inQuotes(tmpfile), ifelse(withChPaths,1,0))
     cat(comd,"\n")
-    system(comd,intern=FALSE,ignore=TRUE,wait=TRUE)
+    system(comd,intern=FALSE,ignore.stdout=TRUE,ignore.stderr=TRUE,wait=TRUE)
     zz<-readLines(tmpfile)
     zz<-gsub("(-{50}.*)", "\n\\1",zz)
     zz<-gsub("(r[[:digit:]]{1,4}.*)",paste("\\1\n",myline,sep=""),zz)
@@ -65,4 +65,7 @@ showsvnlog(from=500,to=520)
 showsvnlog(from=300,to=Inf,limit=1000)
 showsvnlog(from=1,to=Inf,limit=1000,con="C:/rtest/svnlog-distr.txt")
 showsvnlog("robast",from=1,to=Inf,limit=1000,con="C:/rtest/svnlog-robast.txt")
+showsvnlog(from=680,to=Inf,limit=1000,con="C:/rtest/svnlog-distr-ex.txt")
+showsvnlog("robast",from=420,to=Inf,limit=1000,con="C:/rtest/svnlog-robast-ex.txt")
 }
+

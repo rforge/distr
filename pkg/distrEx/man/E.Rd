@@ -49,6 +49,8 @@
 \alias{E,Gumbel,missing,missing-method}
 \alias{E,GPareto,missing,missing-method}
 \alias{E,GPareto,function,missing-method}
+\alias{E,GEV,missing,missing-method}
+\alias{E,GEV,function,missing-method}
 \alias{E,Hyper,missing,missing-method}
 \alias{E,Logis,missing,missing-method}
 \alias{E,Lnorm,missing,missing-method}

@@ -69,6 +69,7 @@ Class \code{"Distribution"}, by class \code{"UnivariateDistribution"}.
       \item \code{log10}: \code{signature(x = "AbscontDistribution")}:  exact image distribution of \code{log10(x)}.
       \item \code{gamma}: \code{signature(x = "AbscontDistribution")}:  exact image distribution of \code{gamma(x)}.
       \item \code{lgamma}: \code{signature(x = "AbscontDistribution")}:  exact image distribution of \code{lgamma(x)}.
+      \item \code{digamma}: \code{signature(x = "AbscontDistribution")}:  exact image distribution of \code{digamma(x)}.
       \item \code{sqrt}: \code{signature(x = "AbscontDistribution")}:  exact image distribution of \code{sqrt(x)}.
     }}
     \item{-}{\code{signature(e1 = "AbscontDistribution")}: application of `-' to this absolutely continuous distribution.}

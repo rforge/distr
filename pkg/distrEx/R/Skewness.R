@@ -422,3 +422,24 @@ setMethod("skewness", signature(x = "GPareto"),
 })
 ### source Maple...
 
+setMethod("skewness", signature(x = "GEV"),
+    function(x, ...){
+    dots <- match.call(call = sys.call(sys.parent(1)), 
+                       expand.dots = FALSE)$"..."
+    fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
+    if(hasArg(low)) low <- dots$low
+    if(hasArg(upp)) upp <- dots$upp
+    if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))  
+        return(skewness(as(x,"AbscontDistribution"),...))
+    else{
+         xi <- shape(x)
+         if(xi>=1/3) return(NA)
+         if(xi==0) return(APERYCONSTANT/pi^3*12*6^.5)
+         else
+         return((gamma(1-3*xi)-3*gamma(1-xi)*gamma(1-2*xi) + 2*gamma(1-xi)^3)/(gamma(1-2*xi)-gamma(1-xi)^2)^(3/2)) 
+    }
+})
+
+### source http://en.wikipedia.org/wiki/Generalized_extreme_value_distribution
+###        http://en.wikipedia.org/wiki/Gumbel_distribution
+###        http://en.wikipedia.org/wiki/Riemann_zeta_function 

@@ -38,14 +38,14 @@ exportMethods("support",
               "+", "*",
               "name", "name<-", 
               "E", "var", "IQR", "skewness", "kurtosis", 
-              "sd", "median", "mad", 
+              "sd", "median", "mad", "kMAD",
               "m1df", "m2df",
               "liesInSupport")
 export("EuclCondition") 
 export("LMParameter")
 export("DiscreteMVDistribution",
        "LMCondDistribution", 
-       "Gumbel", "Pareto", "GPareto")
+       "Gumbel", "Pareto", "GPareto", "GEV")
 export("ConvexContamination")
 export("GLIntegrate",
        "distrExIntegrate") 

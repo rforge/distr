@@ -2,6 +2,15 @@
 #  News: to utilities in folder 'utils'
 ######################################################################
 
+### distrXXX family version 2.3
+
++ new utils getRevNr, getAllRevNr  to obtain SVN Revision Nr
++ DESCRIPTION files and package-help files gain a tag 
+  SVNRevision to be filled by get[All]RevNr.R from utils in distr
++ correspondingly DESCRIPTIONutils and setNewVersion.r from utils are extended for this purpose
+
++ showsvnlog now works with new system() syntax
+
 ### distrXXX family version 2.2
 
 + ladealles.R now loads both .r and .R files

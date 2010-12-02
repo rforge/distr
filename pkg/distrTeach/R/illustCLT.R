@@ -46,6 +46,7 @@ setMethod("plotCLT","DiscreteDistribution", function(Tn, k, summands = "") {
                 dTn <- d(Tn)(supp)
                 ymax <- max(1/sqrt(2*pi), dTn)
                 opar <- par()
+                opar$cin <- opar$cra <- opar$csi <- opar$cxy <-  opar$din <- NULL
                 on.exit(par(opar))
                 dw <- min(diff(supp)) 
                 facD <- min(dw*2,1)

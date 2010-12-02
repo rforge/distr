@@ -41,4 +41,3 @@ showAllFiles(dir="C:/rtest/robast")
 
 }
 
-if(FALSE){

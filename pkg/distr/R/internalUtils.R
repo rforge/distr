@@ -1136,3 +1136,6 @@ return(function(q, lower.tail = TRUE, log.p = FALSE){
 #    newDistribution <- DiscreteDistribution(supp=supp,prob=prob)
 #    return(newDistribution)
 }
+
+
+           

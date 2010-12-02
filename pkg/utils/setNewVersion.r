@@ -1,35 +1,41 @@
+source("C:/rtest/distr/branches/distr-2.3/pkg/utils/getRevNr.R")
+#
 setNewversion <- function(
               dev.dir = "C:/rtest/",
               packs = c("startupmsg",
+                        "SweaveListingUtils",
                         "distr",
                         "distrEx",
                         "distrDoc",
+                        "distrMod",
                         "distrSim", 
                         "distrTEst", 
                         "distrTeach", 
-                        "distrMod", 
+                        "distrEllipse",
                         "robKalman", 
-                        "Benchmark",
-                        "RobAStBase",
+#                        "Benchmark",
                         "RandVar",
+                        "RobAStBase",
                         "ROptEst",
                         "RobLox",
-                        "RobRex",
-                        "ROptRegTS"), 
-              packs.dir = paste(dev.dir, c(rep("distr/pkg",8),
+                        "RobRex"
+                        "RobLoxBioC",
+                        "ROptEstOld",
+                        "ROptRegTS",
+                        ), 
+              svnrepos =  paste(dev.dir, c(rep("distr",10),"robkalman",
+                                rep(RobASt",8)), sep=""),
+              packs.dir = paste(dev.dir, c(rep("distr/pkg",10),
                                "robKalman/pkg","",
-                               rep("RobASt/pkg",6)), sep=""), 
-              packs.ver = c("0.5", rep("2.0",7),"0.2","2.4",
-                            "0.1.0","0.6.3","0.6.0",
-                            "0.6.0", "0.6.0", "0.5.0",
-                            "0.5.0"),          
-              packs.gtR = c(rep("2.2.0",8),"2.3.0","","2.6.0",
-                            "2.4.0","2.4.0","2.6.0","2.4.0","2.4.0"),
+                               rep("RobASt/pkg",8)), sep=""), 
+              packs.ver = c("0.5", "0.8", rep("2.3",8),"0.4",rep("0.8",8),          
+              packs.gtR = c("1.8.0","2.10.0","2.2.0",rep("2.6.0",9),"2.6.0",
+              rep("2.7.0",4),"2.4.0","2.8.1","2.4.0","2.4.0"),
               withHTML = TRUE, 
-              packs.HTML.dir = c("", paste(dev.dir, 
-                     c(rep("distr/www",7),"robKalman/www"),
+              packs.HTML.dir = c("", "", paste(dev.dir, 
+                     c(rep("distr/www",8),"robKalman/www"),
                                       sep=""),"",
-                     paste(dev.dir, c(rep("RobASt/www",6)), sep="")),
+                     paste(dev.dir, c(rep("RobASt/www",8)), sep="")),
               rkurs = TRUE,
               rkursDir = "D:/Eigene Dateien/Arbeit/R-Kurs/"
                            )
@@ -57,6 +63,8 @@ if (rkurs)
 for(i in 1:length(packs))
    {
     setwd(packs.dir[i])
+    svn <- getRevAllNr(packs.dir[i],list="max")
+    svnrev <- svn[[1]]
     
     #DESCRIPTION file
     xx <-  readLines(paste(packs[i],"/DESCRIPTION",sep=""))
@@ -68,6 +76,7 @@ for(i in 1:length(packs))
     gtR <- packs.gtR[i]
 
     xx <- gsub("^Version: .*", paste("Version:", pk),xx)
+    xx <- gsub("^SVNRevision: .*$", paste("SVNRevision: ", sverev),xx)
 
     writeLines(xx, con=paste(packs[i],"/DESCRIPTION",sep=""))
 
@@ -77,10 +86,13 @@ for(i in 1:length(packs))
     if (file.exists(paste(packs[i],"/man/",fdx,sep="")))                  
      { yy <-  readLines(paste(packs[i],"/man/",fdx,sep=""))
     
-       yy <- gsub("Version: \\\\tab .*\\\\cr", 
+       yy <- gsub("Version: \\\\tab .*\\\\cr$", 
                     paste("Version: \\\\tab", pk, "\\\\cr"), yy)
 
-       yy <- gsub("Date: \\\\tab .*\\\\cr", 
+       yy <- gsub("SVNRevision: \\\\tab .*\\\\cr$", 
+                    paste("SVNRevision: \\\\tab", svnrev, "\\\\cr"), yy)
+
+       yy <- gsub("Date: \\\\tab .*\\\\cr$", 
                     paste("Date: \\\\tab", mydate, "\\\\cr"), yy)
        
        writeLines(yy, con=paste(packs[i],"/man/",fdx,sep=""))

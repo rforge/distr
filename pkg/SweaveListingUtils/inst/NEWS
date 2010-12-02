@@ -3,6 +3,22 @@
 ######################################################################
  
 ##############
+v 0.5
+##############
+
+under the hood:
++ followed change in naming convention on r-forge,ie
+  base.url = "http://r-forge.r-project.org/scm/viewvc.php/*checkout*/pkg/"
+  instead of 
+  base.url = "http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/*checkout*/pkg/"
++ quotes are now \texttt in listings by default (as required in jss)
+  --- fixes a quote - typesetting issue as required by JSS
++ DESCRIPTION files and package-help files gain a tag 
+  SVNRevision to be filled by get[All]RevNr.R from utils in distr
+
+
+
+##############
 v 0.4
 ##############
 

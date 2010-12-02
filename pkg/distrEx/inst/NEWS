@@ -8,6 +8,42 @@
  information)
  
 ##############
+v 2.3
+##############
+
+user-visible CHANGES:
+
++ new default method for CvMDist (i.e. for mu=e2) instead of numerical 
+  integration uses explicit terms => by factor 30 faster!
+
++ Nataliya produced a C-version of kMad; integrated to distrEx now
+
++ Generalized Extreme Value Distribution is ported to distrEx
+
++ Gumbel  in distrEx has different parametrization as GEV with shape = 0
+
+under the hood:
+
++ DESCRIPTION files and package-help files gain a tag 
+  SVNRevision to be filled by get[All]RevNr.R from utils in distr
+
+
+BUGFIXES:
+
++ found a bug in setMethod("var", signature(x = "UnivariateDistribution")) 
+  for spherical symmetric distributions
+
++ Small bug in Expectation.R was found 
+
++ Gumbel  in distrEx has different parametrization 
+  as GEV with shape = 0
+
++ fixed several buglets in GEV
+   * small error for xi = 0 in Functionals.R and Expecation.R
+   * completed unfinished documentation
+
+
+##############
 v 2.2
 ##############
 

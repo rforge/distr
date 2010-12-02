@@ -405,7 +405,7 @@ Ruckdeschel P., Kohl M., Stabla T., and Camphausen F.
 
 \end{thebibliography}
 <<cleanup, echo=FALSE>>=
-unloadNamespace("SweaveListingUtils")
+#unloadNamespace("SweaveListingUtils")
 @
 % -------------------------------------------------------------------------------
 \end{document}

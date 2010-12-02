@@ -174,3 +174,39 @@ if(FALSE){
 showsvnlog(from=500,to=520)
 showsvnlog(from=300,to=Inf,limit=1000)
 }
+
+### getRevNr.R
+#
+## getRevNr
+# searches for the SVN revision number in a repository
+
+# Syntax
+
+getRevNr(dir="C:/rtest/distr/")
+## args: dir :     the path to the repository
+### some examples
+if(FALSE){
+getRevNr()
+getRevNr(dir="C:/rtest/robast/")
+}
+
+## getAllRevNr
+# searches for the SVN revision number in a repository
+# and all its subfolders
+
+# Syntax
+
+getAllRevNr(dir = "C:/rtest/distr/", 
+            except = NULL,           
+            listOrMax = "list"       
+            )
+
+## args: dir:       top folder from which to recurse
+         except:    some exceptions (regular expressions!)
+         listOrMax: do we return a list or only the max?
+### some examples
+if(FALSE){
+getAllRevNr()
+getAllRevNr(list="max")
+getAllRevNr("C:/rtest/robast/")
+}
