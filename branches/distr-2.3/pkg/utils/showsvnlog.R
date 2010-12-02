@@ -46,7 +46,7 @@ showsvnlog <- function(
                   inQuotes(pathRepo), fromRev, toRev, limit,
                   inQuotes(tmpfile), ifelse(withChPaths,1,0))
     cat(comd,"\n")
-    system(comd,intern=FALSE,ignore=TRUE,wait=TRUE)
+    system(comd,intern=FALSE,ignore.stdout=TRUE,ignore.stderr=TRUE,wait=TRUE)
     zz<-readLines(tmpfile)
     zz<-gsub("(-{50}.*)", "\n\\1",zz)
     zz<-gsub("(r[[:digit:]]{1,4}.*)",paste("\\1\n",myline,sep=""),zz)
@@ -65,4 +65,7 @@ showsvnlog(from=500,to=520)
 showsvnlog(from=300,to=Inf,limit=1000)
 showsvnlog(from=1,to=Inf,limit=1000,con="C:/rtest/svnlog-distr.txt")
 showsvnlog("robast",from=1,to=Inf,limit=1000,con="C:/rtest/svnlog-robast.txt")
+showsvnlog(from=680,to=Inf,limit=1000,con="C:/rtest/svnlog-distr-ex.txt")
+showsvnlog("robast",from=420,to=Inf,limit=1000,con="C:/rtest/svnlog-robast-ex.txt")
 }
+

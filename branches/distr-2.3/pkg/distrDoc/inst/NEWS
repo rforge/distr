@@ -8,6 +8,45 @@
  information)
 
 ##############
+v 2.3
+##############
+
+under the hood:
++ DESCRIPTION files and package-help files gain a tag 
+  SVNRevision to be filled by get[All]RevNr.R from utils in distr
+
+
+BUGFIXES:
+
++ changed mail address:
+  triggered by mail by Sven Sewitz sas69@cam.ac.uk, replaced all dead links 
+  to distr.pdf in www files by url to vignette of distrDoc on CRAN;
+  also replaced uni-bayreuth.de mail address by itwm.fraunhofer.de one
+
+----------------
+Changes after changes in R , R-forge
+----------------
+
++ cleanup issues:
+
+   -Package: distrDoc Version: 2.2 Flavor: r-devel-linux-ix86
+    Check: package vignettes ... WARNING
+    *** Weave Errors ***
+    File /home/hornik/tmp/R.check/r-devel/Work/PKGS/distrDoc.Rcheck/inst/doc/distr.Rnw :
+    chunk 36 (label=plotex9) 
+    Error : '\%' is an unrecognized escape in character string starting "my Distribution: \%"
+
+  => removed tag in distr.Rnw in distrDoc
+     <<cleanup, echo=FALSE>>=
+       unloadNamespace("SweaveListingUtils")
+     @
+     similarly in newDistributions.Rnw 
+
+  => small changes in SweaveListingUtils in order to pass R CMD check again...
+
+
+
+##############
 v 2.2
 ##############
 
