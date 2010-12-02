@@ -185,7 +185,7 @@ setMethod("plot",signature(x="Contsimulation", y="missing"),
       #      get(getOption("device"))()
             o.warn <- getOption("warn")
             on.exit(options("warn"=o.warn))
-            opar <- par()
+            opar <- par(no.readonly = TRUE)
             opar$cin <- opar$cra <- opar$csi <- opar$cxy <-  opar$din <- NULL
             on.exit(par(opar))
             
