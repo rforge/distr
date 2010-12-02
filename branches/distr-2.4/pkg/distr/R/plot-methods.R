@@ -67,9 +67,9 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
      if (!withSweave){
            devNew(width = width, height = height)
            }
-     omar <- par("mar")
+     omar <- par("mar", no.readonly = TRUE)
      omar$cin <- omar$cra <- omar$csi <- omar$cxy <-  omar$din <- NULL
-     if(mfColRow) on.exit(par(omar))
+     if(mfColRow) on.exit(par(omar, no.readonly = TRUE))
      
      mainL <- FALSE
      subL <- FALSE
@@ -128,9 +128,9 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
      }
      
      if(mfColRow)
-         opar <- par(mfrow = c(1,l.draw), mar = c(bmar,omar[2],tmar,omar[4]))
+         opar <- par(mfrow = c(1,l.draw), mar = c(bmar,omar[2],tmar,omar[4]), no.readonly = TRUE)
      else
-         opar <- par(mar = c(bmar,omar[2],tmar,omar[4]))
+         opar <- par(mar = c(bmar,omar[2],tmar,omar[4]), no.readonly = TRUE)
      
      if(is.logical(inner)){     
         inner.d <- if (inner) 
@@ -367,9 +367,9 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
      if (!withSweave){
            devNew(width = width, height = height)
            }
-     omar <- par("mar")
+     omar <- par("mar", no.readonly = TRUE)
      omar$cin <- omar$cra <- omar$csi <- omar$cxy <-  omar$din <- NULL
-     if(mfColRow) on.exit(par(omar))
+     if(mfColRow) on.exit(par(omar, no.readonly = TRUE))
      
      mainL <- FALSE
      subL <- FALSE
@@ -429,9 +429,9 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
      }
      
      if(mfColRow)
-        opar <- par(mfrow = c(1,l.draw), mar = c(bmar,omar[2],tmar,omar[4]))
+        opar <- par(mfrow = c(1,l.draw), mar = c(bmar,omar[2],tmar,omar[4]), no.readonly = TRUE)
      else 
-        opar <- par(mar = c(bmar,omar[2],tmar,omar[4]))
+        opar <- par(mar = c(bmar,omar[2],tmar,omar[4]), no.readonly = TRUE)
      
      if(is.logical(inner)){     
         inner.d <- if (inner) 

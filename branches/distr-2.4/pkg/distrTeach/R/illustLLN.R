@@ -70,7 +70,7 @@
 
   da <- matrix(NA,m,length(n))
   
-  omar <- par()
+  omar <- par(no.readonly = TRUE)
   omar$cin <- omar$cra <- omar$csi <- omar$cxy <-  omar$din <- NULL
   on.exit(par(omar))
      ## getting the parameter

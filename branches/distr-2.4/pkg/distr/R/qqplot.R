@@ -69,9 +69,9 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
     if (!withSweave){
            devNew(width = width, height = height)
     }
-    opar <- par("mfrow")
+    opar <- par("mfrow", no.readonly = TRUE)
     if(mfColRow) on.exit(do.call(par, list(mfrow=opar)))
-    if(mfColRow) opar1 <- par(mfrow = c(1,1))
+    if(mfColRow) opar1 <- par(mfrow = c(1,1), no.readonly = TRUE)
 
     ret <- do.call(stats::qqplot, args=mcl)
 

@@ -45,7 +45,7 @@ setMethod("plotCLT","DiscreteDistribution", function(Tn, k, summands = "") {
                 x <- seq(-5,5,0.01)
                 dTn <- d(Tn)(supp)
                 ymax <- max(1/sqrt(2*pi), dTn)
-                opar <- par()
+                opar <- par(no.readonly = TRUE)
                 opar$cin <- opar$cra <- opar$csi <- opar$cxy <-  opar$din <- NULL
                 on.exit(par(opar))
                 dw <- min(diff(supp)) 
@@ -94,7 +94,7 @@ setMethod("plotCLT","AbscontDistribution", function(Tn,k, summands = "") {
                 x <- seq(-5,5,0.01)
                 dTn <- d(Tn)(x)
                 ymax <- max(1/sqrt(2*pi), dTn)
-                oldmar <- par("mar")
+                oldmar <- par("mar",no.readonly = TRUE)
                 par(mfrow = c(1,2), mar = c(5.1,4.1,4.,2.1))
                 plot(x, d(Tn)(x), ylim = c(0, ymax), type = "l", 
                      ylab = gettext("densities"), main ="", lwd = 4) 

@@ -159,10 +159,10 @@ setMethod("qqplot", signature(x = "ANY",
     if (!withSweave){
            devNew(width = width, height = height)
     }
-    opar <- par("mfrow")
-    if(mfColRow) on.exit(do.call(par, list(mfrow=opar)))
+    opar <- par("mfrow", no.readonly = TRUE)
+    if(mfColRow) on.exit(do.call(par, list(mfrow=opar, no.readonly = TRUE)))
 
-    if(mfColRow) opar1 <- par(mfrow = c(1,1))
+    if(mfColRow) opar1 <- par(mfrow = c(1,1), no.readonly = TRUE)
 
     ret <- do.call(stats::qqplot, args=mcl)
 

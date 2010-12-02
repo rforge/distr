@@ -2894,7 +2894,7 @@ NormApprox <- U12 - 6
 
 x <- seq(-4,4,0.001)
 
-opar <- par()
+opar <- par(no.readonly = TRUE)
 par(mfrow = c(2,1))
 
 plot(x, d(NormApprox)(x),
