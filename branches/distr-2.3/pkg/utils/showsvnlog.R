@@ -65,7 +65,7 @@ showsvnlog(from=500,to=520)
 showsvnlog(from=300,to=Inf,limit=1000)
 showsvnlog(from=1,to=Inf,limit=1000,con="C:/rtest/svnlog-distr.txt")
 showsvnlog("robast",from=1,to=Inf,limit=1000,con="C:/rtest/svnlog-robast.txt")
-showsvnlog(from=680,to=Inf,limit=1000,con="C:/rtest/svnlog-distr-ex.txt")
-showsvnlog("robast",from=420,to=Inf,limit=1000,con="C:/rtest/svnlog-robast-ex.txt")
+showsvnlog(from=580,to=Inf,limit=1000)
+showsvnlog("robast",from=220,to=Inf,limit=1000,con="C:/rtest/svnlog-robast-ex.txt")
 }
 
