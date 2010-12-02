@@ -1,0 +1,151 @@
+<html><head><title>Class "Logis"</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head><body>
+
+<table width="100%"><tr><td>Logis-class(distr)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   Logis-class">
+<param name="keyword" value="R:   Logis">
+<param name="keyword" value="R:   initialize,Logis-method">
+<param name="keyword" value=" Class "Logis"">
+</object>
+
+
+<h2>Class "Logis"</h2>
+
+
+<h3>Description</h3>
+
+<p> The Logistic distribution with <code>location</code> <i>= m</i>, 
+by default <code>= 0</code>, and <code>scale</code> <i>= s</i>, by default <code>= 1</code>, 
+has distribution function
+</p><p align="center"><i>p(x) = 1 / (1 + exp(-(x-m)/s))</i></p><p>  and density
+</p><p align="center"><i>d(x) = 1/s exp((x-m)/s) (1 + exp((x-m)/s))^-2.</i></p><p>
+</p>
+<p>
+It is a long-tailed distribution with mean <i>m</i> and variance
+<i>pi^2 /3 s^2</i>. C.f. <code><a onclick="findlink('stats', 'Logistic.html')" style="text-decoration: underline; color: blue; cursor: hand">rlogis</a></code> 
+</p>
+
+
+<h3>Objects from the Class</h3>
+
+<p>
+Objects can be created by calls of the form <code>Logis(location, scale)</code>.
+This object is a logistic distribution.
+</p>
+
+
+<h3>Slots</h3>
+
+<p>
+
+<dl>
+<dt><code>img</code></dt><dd>Object of class <code>"Reals"</code>: The space of the image of this distribution has got dimension 1
+and the name "Real Space". </dd>
+<dt><code>param</code></dt><dd>Object of class <code>"LogisParameter"</code>: the parameter of this distribution (location and scale),
+declared at its instantiation </dd>
+<dt><code>r</code></dt><dd>Object of class <code>"function"</code>: generates random numbers (calls function rlogis)</dd>
+<dt><code>d</code></dt><dd>Object of class <code>"function"</code>: density function (calls function dlogis)</dd>
+<dt><code>p</code></dt><dd>Object of class <code>"function"</code>: cumulative function (calls function plogis)</dd>
+<dt><code>q</code></dt><dd>Object of class <code>"function"</code>: inverse of the cumulative function (calls function qlogis)</dd>
+<dt><code>.withArith</code></dt><dd>logical: used internally to issue warnings as to 
+interpretation of arithmetics</dd>
+<dt><code>.withSim</code></dt><dd>logical: used internally to issue warnings as to 
+accuracy</dd>
+<dt><code>.logExact</code></dt><dd>logical: used internally to flag the case where 
+there are explicit formulae for the log version of density, cdf, and 
+quantile function</dd>
+<dt><code>.lowerExact</code></dt><dd>logical: used internally to flag the case where 
+there are explicit formulae for the lower tail version of cdf and quantile 
+function</dd>
+<dt><code>Symmetry</code></dt><dd>object of class <code>"DistributionSymmetry"</code>;
+used internally to avoid unnecessary calculations.</dd>
+</dl>
+
+</p>
+
+
+<h3>Extends</h3>
+
+<p>
+Class <code>"AbscontDistribution"</code>, directly.<br>
+Class <code>"UnivariateDistribution"</code>, by class <code>"AbscontDistribution"</code>.<br>
+Class <code>"Distribution"</code>, by class <code>"AbscontDistribution"</code>.
+</p>
+
+
+<h3>Methods</h3>
+
+<p>
+
+<dl>
+<dt>initialize</dt><dd><code>signature(.Object = "Logis")</code>: initialize method </dd>
+<dt>location</dt><dd><code>signature(object = "Logis")</code>: returns the slot <code>location</code> of the parameter of the distribution </dd>
+<dt>location&lt;-</dt><dd><code>signature(object = "Logis")</code>: modifies the slot <code>location</code> of the parameter of the distribution </dd>
+<dt>scale</dt><dd><code>signature(object = "Logis")</code>: returns the slot <code>scale</code> of the parameter of the distribution </dd>
+<dt>scale&lt;-</dt><dd><code>signature(object = "Logis")</code>: modifies the slot <code>scale</code> of the parameter of the distribution </dd>
+<dt>*</dt><dd><code>signature(e1 = "Logis", e2 = "numeric")</code></dd>
+<dt>+</dt><dd><code>signature(e1 = "Logis", e2 = "numeric")</code>: 
+For the logistic location scale family we use its closedness under affine linear transformations.</dd>
+</dl>
+
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Thomas Stabla <a href="mailto:statho3@web.de">statho3@web.de</a>,<br> 
+Florian Camphausen <a href="mailto:fcampi@gmx.de">fcampi@gmx.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>,<br> 
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code></code>
+<code></code>
+<code></code>
+<code><a onclick="findlink('stats', 'Logistic.html')" style="text-decoration: underline; color: blue; cursor: hand">rlogis</a></code>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+L &lt;- Logis(location = 1,scale = 1)
+# L is a logistic distribution with  location = 1 and scale = 1.
+r(L)(1) # one random number generated from this distribution, e.g. 5.87557
+d(L)(1) # Density of this distribution is 0.25 for x = 1.
+p(L)(1) # Probability that x &lt; 1 is 0.5.
+q(L)(.1) # Probability that x &lt; -1.197225 is 0.1.
+location(L) # location of this distribution is 1.
+location(L) &lt;- 2 # location of this distribution is now 2.
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+<hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

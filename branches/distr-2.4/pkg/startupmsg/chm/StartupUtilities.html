@@ -1,0 +1,256 @@
+<html><head><title>Utilities for start-up messages</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head><body>
+
+<table width="100%"><tr><td>StartupUtilities(startupmsg)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   startupmsg">
+<param name="keyword" value="R:   infoShow">
+<param name="keyword" value="R:   TOBEDONE">
+<param name="keyword" value="R:   NEWS">
+<param name="keyword" value="R:   readVersionInformation">
+<param name="keyword" value="R:   readURLInformation">
+<param name="keyword" value="R:   pointertoNEWS">
+<param name="keyword" value="R:   StartupMessage">
+<param name="keyword" value="R:   startupPackage">
+<param name="keyword" value="R:   startupType">
+<param name="keyword" value="R:   startupEndline">
+<param name="keyword" value="R:   startupMessage">
+<param name="keyword" value="R:   suppressStartupMessages">
+<param name="keyword" value="R:   onlytypeStartupMessages">
+<param name="keyword" value=" Utilities for start-up messages">
+</object>
+
+
+<h2>Utilities for start-up messages</h2>
+
+
+<h3>Description</h3>
+
+<p>
+several utilities to produce start-up messages
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+readVersionInformation(pkg, library=NULL)
+readURLInformation(pkg, library=NULL)
+pointertoNEWS(pkg, library=NULL) 
+
+infoShow(pkg, filename, library=NULL)
+NEWS(pkg, library=NULL)
+TOBEDONE(pkg, library=NULL)
+
+StartupMessage(message, call = NULL, pkg="", 
+               type="version", endline = FALSE) 
+startupPackage(startupmessage) 
+startupType(startupmessage) 
+startupEndline(startupmessage) 
+
+startupMessage(..., domain = NULL, pkg = "", 
+               type="version", endline = FALSE)
+
+suppressStartupMessages(expr)
+onlytypeStartupMessages(expr,atypes="version")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>pkg</code></td>
+<td>
+a character string with the name of a single package</td></tr>
+<tr valign="top"><td><code>library</code></td>
+<td>
+a character vector with path names of R libraries, or <code>NULL</code>.
+The default value of <code>NULL</code> corresponds to all libraries
+currently known.  If the default is used, the loaded packages
+are searched before the libraries</td></tr>
+</p>
+<p>
+<tr valign="top"><td><code>filename</code></td>
+<td>
+name of the file which is to be displayed by <code>infoShow</code> (with relative path within the package main folder)</td></tr>
+<tr valign="top"><td><code>message</code></td>
+<td>
+a character string &ndash; the message part of an S3-object of class <code>StartupMessage</code></td></tr>
+<tr valign="top"><td><code>call</code></td>
+<td>
+a call expression &ndash; the call part of an S3-object of class <code>StartupMessage</code></td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+character &ndash; the type part of an S3-object of class <code>StartupMessage</code>; currently, 
+type should be in <code>c("version","notabene","information")</code>.</td></tr>
+<tr valign="top"><td><code>endline</code></td>
+<td>
+a logical &ndash; the decision on the ending of an S3-object of class <code>StartupMessage</code></td></tr>
+<tr valign="top"><td><code>startupmessage</code></td>
+<td>
+the <code>StartupMessage</code> object whose slot <code>package</code> is to be inspected</td></tr>
+<tr valign="top"><td><code>domain</code></td>
+<td>
+see <code>gettext</code>. If <code>NA</code>, messages will not be translated.</td></tr>
+<tr valign="top"><td><code>atypes</code></td>
+<td>
+a vector of characters &ndash; the types of <code>StartupMessage</code>-objects which <code>onlytypeStartupMessages</code>
+lets pass through</td></tr>
+<tr valign="top"><td><code>expr</code></td>
+<td>
+expression to evaluate.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+character vectors (which are pasted together with no separator)</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>
+<code>readVersionInformation</code> and <code>readURLInformation</code> read the &lsquo;<span class="file">DESCRIPTION</span>&rsquo; file of the package.
+<code>readVersionInformation</code> returns a list with elements <code>ver</code> and <code>title</code> for the version and title 
+to be found in the &lsquo;<span class="file">DESCRIPTION</span>&rsquo; file; if there is a <code>URL</code> entry it is returned by <code>readURLInformation</code>
+else <code>readURLInformation</code> returns <code>NULL</code>.
+</p>
+<p>
+If there is a &lsquo;<span class="file">NEWS</span>&rsquo; in the package main folder, <code>pointertoNEWS</code> returns a string with an expression how
+to retrieve this file from within R, else <code>pointertoNEWS</code>  returns <code>NULL</code>.
+</p>
+<p>
+<code>infoShow</code> displays the file <code>filename</code> in the package main folder using <code>file.show</code> &ndash; if it exists;
+<code>NEWS</code> in particular displays the &lsquo;<span class="file">NEWS</span>&rsquo; file,
+and analogously, <code>TOBEDONE</code> in particular displays the &lsquo;<span class="file">TOBEDONE</span>&rsquo;
+file; takes up an idea by Andy Liaw.
+</p>
+<p>
+A new sub-condition <code>StartupMessage</code> to <code>message</code> is introduced, 
+with a constructor with the same name. 
+</p>
+<p>
+In addition to the slots of <code>message</code>, it also has slots <code>package</code> (for the package they are for), 
+<code>type</code> (currently in  <code>c("version","notabene","information")</code>), and
+<code>endline</code> (a logical).
+These slots may be accessed by <code>startupPackage</code>, <code>startupType</code>, and
+<code>startupEndline</code>, respectively.
+</p>
+<p>
+<code>startupMessage</code> issues a start-up message which also is represented as a condition.
+While the start-up message is being processed, the following restarts are available:
+<ul>
+<li> <code>muffleMessage()</code> to suppress the <code>StartupMessage</code>, 
+</li>
+<li><code>onlytypeMessage(c0,atypes)</code> to filter out types not mentioned in <code>atypes</code> of <code>StartupMessages</code>-argument <code>c0</code>,
+</li>
+<li><code>custom(c,f)</code> to apply the user-defined function <code>f</code> to <code>StartupMessages</code>-argument <code>c0</code> instead of the usual procedure
+</ul>
+ 
+</p>
+<p>
+The user may suppress the start-up messages produced by these utilities as follows:
+</p>
+<p>
+<ul>
+<li> <code>suppressStartupMessages(expr)</code> 
+suppresses all messages issued by <code>startupMessage</code> in the expression <code>expr</code> within the parentheses
+</li>
+<li><code>suppressPackageStartupMessages(expr)</code>: 
+from package version 0.5 on, is the same as <code>suppressStartupMessages</code> for our start-up banners, but more 
+generally suppresses all messages of S3-class <code>packageStartupMessage</code> (from <span class="pkg">base</span> package)
+</li>
+<li><code>onlyversionStartupMessages(expr, atypes="version")</code> 
+only shows messages issued by <code>startupMessage</code> in the expression <code>expr</code> within the parentheses, if
+there slot <code>type</code> is contained in the <code>atypes</code> argument
+</li>
+<li>by the <code>custom</code> restart (see example by Seth Falcon) 
+</ul>
+
+</p>
+
+
+<h3>Acknowledgement</h3>
+
+<p>Thanks to Seth Falcon for his helpful comments.</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a></p>
+
+
+<h3>See Also</h3>
+
+<p><code></code> for some illustration;
+for the ideas taken up in this package, see mails "[Rd] Wishlist: 'quietly' argument for .onAttach() / .First.lib()  "
+on r-devel by Brian Ripley,  
+<a href="https://stat.ethz.ch/pipermail/r-devel/2006-April/037281.html">https://stat.ethz.ch/pipermail/r-devel/2006-April/037281.html</a>,
+by Andy Liaw, 
+<a href="https://stat.ethz.ch/pipermail/r-devel/2006-April/037286.html">https://stat.ethz.ch/pipermail/r-devel/2006-April/037286.html</a>,
+by Seth Falcon,
+<a href="https://stat.ethz.ch/pipermail/r-devel/2006-April/037317.html">https://stat.ethz.ch/pipermail/r-devel/2006-April/037317.html</a>,
+and again by Seth Falcon,
+<a href="https://stat.ethz.ch/pipermail/r-devel/2006-April/037367.html">https://stat.ethz.ch/pipermail/r-devel/2006-April/037367.html</a>,
+and by the author,  
+<a href="https://stat.ethz.ch/pipermail/r-devel/2006-April/037382.html">https://stat.ethz.ch/pipermail/r-devel/2006-April/037382.html</a></p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## a set of test messages
+several.messages&lt;-function() {
+startupMessage("this is a type 'version' startup message", pkg="PKG")
+startupMessage("this is a type 'information' startup message", 
+                pkg="PKG", type="information")
+message("this is an ordinary message")}
+
+## issuing of messages with different wrappers
+several.messages()
+suppressStartupMessages(several.messages())
+suppressMessages(several.messages())
+onlytypeStartupMessages(several.messages(),atypes=c("version","notabene"))
+
+##Example by Seth Falcon:
+## Here is a test function
+doit &lt;- function() {
+    several.messages()
+    return(123)
+}
+
+## Here is an example message handler.  Here, you could write messages
+## to a file, send them as email to your friends or enemies, etc.
+## For the example, we'll just prepend 'MSG:'
+msgLogger &lt;- function(m) {
+             types&lt;-paste("(", startupType(m),"):", sep="")
+             cat(paste("MSG: ",types, conditionMessage(m)), "\n")
+             }
+
+## Finally, call the doit function and customize how messages are
+## handled.
+withCallingHandlers(doit(),
+                    StartupMessage=function(m) {
+                        invokeRestart("custom", m, msgLogger)
+                    })
+### reading information file utilities
+readVersionInformation("stats")
+readURLInformation("stats")
+## for packages with URL file see e.g. dse1
+pointertoNEWS("stats") ## no NEWS file;
+NEWS("stats") ## no NEWS file; 
+## for packages with NEWS file see e.g. randomForest, distr
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+<hr><div align="center">[Package <em>startupmsg</em> version 0.7 <a href="00Index.html">Index</a>]</div>
+</body></html>

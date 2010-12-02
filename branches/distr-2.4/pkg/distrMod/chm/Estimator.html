@@ -1,0 +1,126 @@
+<html><head><title>Function to compute estimates</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head><body>
+
+<table width="100%"><tr><td>Estimator(distrMod)</td><td align="right">R Documentation</td></tr></table>
+<object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   Estimator">
+<param name="keyword" value=" Function to compute estimates">
+</object>
+
+
+<h2>Function to compute estimates</h2>
+
+
+<h3>Description</h3>
+
+<p>
+The function <code>Estimator</code> provides a general way to compute 
+estimates.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+Estimator(x, estimator, name, Infos, asvar = NULL, nuis.idx,
+          trafo = NULL, fixed = NULL, asvar.fct, na.rm = TRUE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+ (empirical) data </td></tr>
+<tr valign="top"><td><code>estimator</code></td>
+<td>
+ function: estimator to be evaluated on <code>x</code>. </td></tr>
+<tr valign="top"><td><code>name</code></td>
+<td>
+ optional name for estimator. </td></tr>
+<tr valign="top"><td><code>Infos</code></td>
+<td>
+ character: optional informations about estimator </td></tr>
+<tr valign="top"><td><code>asvar</code></td>
+<td>
+ optionally the asymptotic (co)variance of the estimator </td></tr>
+<tr valign="top"><td><code>nuis.idx</code></td>
+<td>
+ optionally the indices of the estimate belonging 
+to nuisance parameter</td></tr>
+<tr valign="top"><td><code>fixed</code></td>
+<td>
+ optionally (numeric) the fixed part of the parameter</td></tr>
+<tr valign="top"><td><code>trafo</code></td>
+<td>
+ an object of class <code>MatrixorFunction</code> &ndash; a transformation
+for the main parameter</td></tr>
+<tr valign="top"><td><code>asvar.fct</code></td>
+<td>
+optionally: a function to determine the corresponding
+asymptotic variance; if given, <code>asvar.fct</code> takes arguments
+<code>L2Fam</code>((the parametric model as object of class <code>L2ParamFamily</code>)) 
+and <code>param</code> (the parameter value as object of class 
+<code>ParamFamParameter</code>); arguments are called by name; <code>asvar.fct</code>
+may also process further arguments passed through the <code>...</code> argument</td></tr>              
+<tr valign="top"><td><code>na.rm</code></td>
+<td>
+logical: if  <code>TRUE</code>, the estimator is evaluated at <code>complete.cases(x)</code>.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+ further arguments to <code>estimator</code>. </td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>
+The argument <code>criterion</code> has to be a function with arguments the 
+empirical data as well as an object of class <code>"Distribution"</code> 
+and possibly <code>...</code>.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+An object of S4-class <code>"Estimate"</code>.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a></p>
+
+
+<h3>See Also</h3>
+
+<p><code></code> </p>
+
+
+<h3>Examples</h3>
+
+<pre>
+x &lt;- rnorm(100)
+Estimator(x, estimator = mean, name = "mean")
+
+X &lt;- matrix(rnorm(1000), nrow = 10)
+Estimator(X, estimator = rowMeans, name = "mean")
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+<hr><div align="center">[Package <em>distrMod</em> version 2.2 <a href="00Index.html">Index</a>]</div>
+</body></html>

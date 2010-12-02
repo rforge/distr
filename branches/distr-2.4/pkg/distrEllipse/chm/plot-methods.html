@@ -1,0 +1,139 @@
+<html><head><title>Methods for Function plot in Package &lsquo;distrEllipse&rsquo;</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>plot-methods(distrEllipse)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   plot">
+<param name="keyword" value="R:   plot-methods">
+<param name="keyword" value="R:   plot,SphericalDistribution,missing-method">
+<param name="keyword" value="R:   plot,MultivarMixingDistribution,missing-method">
+<param name="keyword" value=" Methods for Function plot in Package &lsquo;distrEllipse&rsquo;">
+</object>
+
+
+<h2>Methods for Function plot in Package &lsquo;distrEllipse&rsquo;</h2>
+
+
+<h3>Description</h3>
+
+<p>
+plot-methods
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>plot(x, y, ...)
+## S4 method for signature 'SphericalDistribution,
+##   missing':
+plot(x, Nsim = getdistrEllipseOption("Nsim"), ...,
+               withED = getdistrEllipseOption("withED"),
+               lwd.Ed = getdistrEllipseOption("lwd.Ed"),
+               col.Ed = getdistrEllipseOption("col.Ed"),
+               withMean = getdistrEllipseOption("withMean"),
+               cex.mean = getdistrEllipseOption("cex.mean"),
+               pch.mean = getdistrEllipseOption("pch.mean"),
+               col.mean = getdistrEllipseOption("col.mean"))
+## S4 method for signature 'MultivarMixingDistribution,
+##   missing':
+plot(x, Nsim = getdistrEllipseOption("Nsim"), ...,
+               withED = getdistrEllipseOption("withED"),
+               lwd.Ed = getdistrEllipseOption("lwd.Ed"),
+               col.Ed = getdistrEllipseOption("col.Ed"),
+               withMean = getdistrEllipseOption("withMean"),
+               cex.mean = getdistrEllipseOption("cex.mean"),
+               pch.mean = getdistrEllipseOption("pch.mean"),
+               col.mean = getdistrEllipseOption("col.mean"))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+object of class 
+<code>"SphericalDistribution"</code> distribution to be plotted </td></tr>
+<tr valign="top"><td><code>y</code></td>
+<td>
+missing </td></tr>
+<tr valign="top"><td><code>Nsim</code></td>
+<td>
+number of (simulated) points to be plotted.</td></tr>
+<tr valign="top"><td><code>withED</code></td>
+<td>
+logical; shall principal axes of the contour ellipsoid be plot in
+(for each panel)?</td></tr>
+<tr valign="top"><td><code>lwd.Ed</code></td>
+<td>
+line width of principal axes  (for each panel).</td></tr>
+<tr valign="top"><td><code>col.Ed</code></td>
+<td>
+color of principal axes  (for each panel).</td></tr>
+<tr valign="top"><td><code>withMean</code></td>
+<td>
+logical; shall mean  be plot in  (for each panel)?</td></tr>
+<tr valign="top"><td><code>cex.mean</code></td>
+<td>
+size of the mean symbol  (for each panel).</td></tr>
+<tr valign="top"><td><code>pch.mean</code></td>
+<td>
+mean symbol  (for each panel).</td></tr>
+<tr valign="top"><td><code>col.mean</code></td>
+<td>
+color of the mean symbol (for each panel).</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+addtional arguments for <code>plot</code> &mdash; see 
+<code><a onclick="findlink('graphics', 'plot.html')" style="text-decoration: underline; color: blue; cursor: hand">plot</a></code>, 
+<code><a onclick="findlink('graphics', 'plot.default.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.default</a></code>, 
+<code><a onclick="findlink('graphics', 'plot.stepfun.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.stepfun</a></code> </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Using <code>pairs</code>, plots all pairs of coordinates of the object, using simulated
+values.
+Any parameters of <code><a onclick="findlink('graphics', 'pairs.html')" style="text-decoration: underline; color: blue; cursor: hand">pairs</a></code> may be passed on to this particular
+<code>plot</code> method.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a onclick="findlink('graphics', 'pairs.html')" style="text-decoration: underline; color: blue; cursor: hand">pairs</a></code>,
+<code><a onclick="findlink('graphics', 'plot.html')" style="text-decoration: underline; color: blue; cursor: hand">plot</a></code>
+<code><a onclick="findlink('graphics', 'plot.default.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.default</a></code>, 
+<code><a onclick="findlink('graphics', 'plot.stepfun.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.stepfun</a></code>,  <code><a onclick="findlink('graphics', 'par.html')" style="text-decoration: underline; color: blue; cursor: hand">par</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+E0 &lt;- matrix(c(2,1,1,4),2,2)%*%EllipticalDistribution()+c(2,1)
+E1 &lt;- matrix(c(3,2,2,4),2,2)%*%EllipticalDistribution(radDistr = exp(Binom(10,.8)))
+plot(E0)
+plot(E1, withED=FALSE, Nsim=5000)
+mylist &lt;- MultivarMixingDistribution(E0,E1, mixCoeff=c(1/4,3/4))
+plot(mylist)
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>distrEllipse</em> version 0.1 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

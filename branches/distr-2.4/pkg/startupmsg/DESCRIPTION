@@ -1,0 +1,14 @@
+Package: startupmsg
+Encoding: latin1
+Version: 0.8
+Date: 2009-11-01
+Title: Utilities for start-up messages
+Description: Utilities for start-up messages
+Author: Peter Ruckdeschel
+Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
+Depends: R(>= 1.8.0)
+LazyLoad: yes
+License: LGPL-3
+LastChangedDate: {$LastChangedDate$}
+LastChangedRevision: {$LastChangedRevision$}
+SVNRevision: 684

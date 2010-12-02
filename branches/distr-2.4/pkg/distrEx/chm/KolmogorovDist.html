@@ -1,0 +1,173 @@
+<html><head><title>Generic function for the computation of the Kolmogorov distance of two distributions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>KolmogorovDist(distrEx)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   KolmogorovDist">
+<param name="keyword" value="R:   KolmogorovDist-methods">
+<param name="keyword" value="R:   KolmogorovDist,AbscontDistribution,AbscontDistribution-method">
+<param name="keyword" value="R:   KolmogorovDist,AbscontDistribution,DiscreteDistribution-method">
+<param name="keyword" value="R:   KolmogorovDist,DiscreteDistribution,DiscreteDistribution-method">
+<param name="keyword" value="R:   KolmogorovDist,DiscreteDistribution,AbscontDistribution-method">
+<param name="keyword" value="R:   KolmogorovDist,LatticeDistribution,DiscreteDistribution-method">
+<param name="keyword" value="R:   KolmogorovDist,DiscreteDistribution,LatticeDistribution-method">
+<param name="keyword" value="R:   KolmogorovDist,LatticeDistribution,LatticeDistribution-method">
+<param name="keyword" value="R:   KolmogorovDist,numeric,UnivariateDistribution-method">
+<param name="keyword" value="R:   KolmogorovDist,UnivariateDistribution,numeric-method">
+<param name="keyword" value="R:   KolmogorovDist,AcDcLcDistribution,AcDcLcDistribution-method">
+<param name="keyword" value=" Generic function for the computation of the Kolmogorov distance of two distributions">
+</object>
+
+
+<h2>Generic function for the computation of the Kolmogorov distance of two distributions</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Generic function for the computation of the Kolmogorov distance <i>d_k</i>
+of two distributions <i>P</i> and <i>Q</i> where the distributions are defined 
+on a finite-dimensional Euclidean space <i>(R^m, B^m)</i>
+with <i>B^m</i> the Borel-<i>sigma</i>-algebra on <i>R^m</i>.
+The Kolmogorov distance is defined as
+</p><p align="center"><i>d_k(P,Q)=sup{|P({y in R^m | y &lt;= x})-Q({y in R^m | y &lt;= x})| | x in R^m}</i></p><p>
+where <i>&lt;=</i> is coordinatewise on <i>R^m</i>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+KolmogorovDist(e1, e2, ...)
+## S4 method for signature 'AbscontDistribution,
+##   AbscontDistribution':
+KolmogorovDist(e1,e2)
+## S4 method for signature 'AbscontDistribution,
+##   DiscreteDistribution':
+KolmogorovDist(e1,e2)
+## S4 method for signature 'DiscreteDistribution,
+##   AbscontDistribution':
+KolmogorovDist(e1,e2)
+## S4 method for signature 'DiscreteDistribution,
+##   DiscreteDistribution':
+KolmogorovDist(e1,e2)
+## S4 method for signature 'numeric,
+##   UnivariateDistribution':
+KolmogorovDist(e1, e2)
+## S4 method for signature 'UnivariateDistribution,
+##   numeric':
+KolmogorovDist(e1, e2)
+## S4 method for signature 'AcDcLcDistribution,
+##   AcDcLcDistribution':
+KolmogorovDist(e1, e2)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>e1</code></td>
+<td>
+object of class <code>"Distribution"</code> or class <code>"numeric"</code> </td></tr>
+<tr valign="top"><td><code>e2</code></td>
+<td>
+object of class <code>"Distribution"</code> or class <code>"numeric"</code> </td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+further arguments to be used in particular methods (not in package <span class="pkg">distrEx</span>)</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+Kolmogorov distance of <code>e1</code> and <code>e2</code></p>
+
+<h3>Methods</h3>
+
+<dl>
+<dt>e1 = "AbscontDistribution", e2 = "AbscontDistribution":</dt><dd>Kolmogorov distance of two absolutely continuous 
+univariate distributions which is computed using a
+union of a (pseudo-)random and a deterministic grid.
+</dd>
+<dt>e1 = "DiscreteDistribution", e2 = "DiscreteDistribution":</dt><dd>Kolmogorov distance of two discrete univariate distributions. 
+The distance is attained at some point of the union of the supports 
+of <code>e1</code> and <code>e2</code>.
+</dd>
+<dt>e1 = "AbscontDistribution", e2 = "DiscreteDistribution":</dt><dd>Kolmogorov distance of absolutely continuous and discrete
+univariate distributions. It is computed using a union of 
+a (pseudo-)random and a deterministic grid in combination
+with the support of <code>e2</code>.
+</dd>
+<dt>e1 = "DiscreteDistribution", e2 = "AbscontDistribution":</dt><dd>Kolmogorov distance of discrete and absolutely continuous
+univariate distributions. It is computed using a union of 
+a (pseudo-)random and a deterministic grid in combination
+with the support of <code>e1</code>.
+</dd>
+<dt>e1 = "numeric", e2 = "UnivariateDistribution":</dt><dd>Kolmogorov distance between (empirical) data and a univariate 
+distribution. The computation is based on <code>ks.test</code>.
+</dd>
+<dt>e1 = "UnivariateDistribution", e2 = "numeric":</dt><dd>Kolmogorov distance between (empirical) data and a univariate 
+distribution. The computation is based on <code>ks.test</code>.
+</dd>
+<dt>e1 = "AcDcLcDistribution", e2 = "AcDcLcDistribution":</dt><dd>Kolmogorov distance of mixed discrete and absolutely continuous
+univariate distributions. It is computed using a union of 
+the discrete part, a (pseudo-)random and
+a deterministic grid in combination
+with the support of <code>e1</code>.
+</dd>
+</dl>
+
+<h3>Author(s)</h3>
+
+<p>
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>,<br>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Huber, P.J. (1981) <EM>Robust Statistics</EM>. New York: Wiley.
+</p>
+<p>
+Rieder, H. (1994) <EM>Robust Asymptotic Statistics</EM>. New York: Springer.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="ContaminationSize.html">ContaminationSize</a></code>, <code><a href="TotalVarDist.html">TotalVarDist</a></code>, 
+<code><a href="HellingerDist.html">HellingerDist</a></code>, <code><a onclick="findlink('distr', 'Distribution-class.html')" style="text-decoration: underline; color: blue; cursor: hand">Distribution-class</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+KolmogorovDist(Norm(), Gumbel())
+KolmogorovDist(Norm(), Td(10))
+KolmogorovDist(Norm(mean = 50, sd = sqrt(25)), Binom(size = 100))
+KolmogorovDist(Pois(10), Binom(size = 20)) 
+KolmogorovDist(Norm(), rnorm(100))
+KolmogorovDist((rbinom(50, size = 20, prob = 0.5)-10)/sqrt(5), Norm())
+KolmogorovDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5))
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>distrEx</em> version 2.2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

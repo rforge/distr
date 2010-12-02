@@ -1,0 +1,24 @@
+import("methods")
+importFrom("setRNG", "setRNG")
+import("mvtnorm")
+import("distr")
+import("distrEx")
+import("distrSim")
+import("startupmsg")
+
+export("SphericalDistribution", "EllipticalDistribution", 
+       "MVNorm", "MVt", "MultivarDistrList",
+       "MultivarMixingDistribution",
+       "distrEllipseoptions", "getdistrEllipseOption", 
+       "distrEllipseMASK")
+exportClasses("EllipticalParameter",
+              "MVNormParameter", "MVtParameter",
+              "SphericalDistribution", "EllipticalDistribution", 
+              "MVNormDistribution", "MVtDistribution", "MVDistrList",
+              "MultivarDistrList","MultivarMixingDistribution")
+exportMethods("dimension", "radDistr", "scale", "location", "dim",
+              "radDistr<-", "scale<-", "location<-",
+              "plot.rd", "r.rd", "d.rd", "p.rd", "q.rd",
+              "E", "var", "mean", "sigma","mixCoeff", "mixDistr")
+exportMethods("plot", "show", "showobj", "Symmetry")
+exportMethods("+", "*", "%*%")

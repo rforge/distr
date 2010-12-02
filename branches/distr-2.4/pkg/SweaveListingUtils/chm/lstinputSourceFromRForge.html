@@ -1,0 +1,157 @@
+<html><head><title>lstinputSourceFromRForge</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>lstinputSourceFromRForge(SweaveListingUtils)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   lstinputSourceFromRForge">
+<param name="keyword" value=" lstinputSourceFromRForge">
+</object>
+
+
+<h2>lstinputSourceFromRForge</h2>
+
+
+<h3>Description</h3>
+
+<p>
+copies lines of a source file (usually &lsquo;<span class="file">.R</span>&rsquo; oder &lsquo;<span class="file">.Rd</span>&rsquo;)
+from R forge repository
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+lstinputSourceFromRForge(PKG, TYPE, FILENAME, PROJECT, from, to,
+                         offset.before = 0, offset.after = 0,
+                         LineLength = getOption("width"),
+                         withLines = ifelse(TYPE=="R", TRUE, FALSE),
+                         fromRForge = getSweaveListingOption("fromRForge"),
+                         base.url = getSweaveListingOption("base.url"))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>PKG</code></td>
+<td>
+character; name of package to be downloaded</td></tr>
+<tr valign="top"><td><code>TYPE</code></td>
+<td>
+character; style of the source code &mdash; "man" or "R"</td></tr>
+<tr valign="top"><td><code>FILENAME</code></td>
+<td>
+character; the name of the source file to be downloaded</td></tr>
+<tr valign="top"><td><code>PROJECT</code></td>
+<td>
+character; the name of the R-Forge project</td></tr>
+<tr valign="top"><td><code>from</code></td>
+<td>
+vector of characters  or vector of numerics or missing;
+beginnings of the code sniplets; for details see <code><a href="copySourceFromRForge.html">copySourceFromRForge</a></code>
+</td></tr>
+<tr valign="top"><td><code>to</code></td>
+<td>
+vector of characters  or vector of numerics or missing;
+endings of the code sniplets; for details see <code><a href="copySourceFromRForge.html">copySourceFromRForge</a></code>
+</td></tr>
+<tr valign="top"><td><code>offset.before</code></td>
+<td>
+numeric; numbers of lines to be included before the code
+sniplets; defaults to 0</td></tr>
+<tr valign="top"><td><code>offset.after</code></td>
+<td>
+numeric; numbers of lines to be included after the the code
+sniplets; defaults to 0</td></tr>
+<tr valign="top"><td><code>LineLength</code></td>
+<td>
+<code>numeric</code> number of characters per line;
+defaults to getOption("width");</td></tr>
+<tr valign="top"><td><code>withLines</code></td>
+<td>
+logical; shall line-numbers be issued</td></tr>
+<tr valign="top"><td><code>fromRForge</code></td>
+<td>
+logical; shall code be downloaded from an R-Forge mirror?
+Defaults to the corresponding global option</td></tr>
+<tr valign="top"><td><code>base.url</code></td>
+<td>
+character; base url from where to download the code sniplet</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+includes [downloaded] code sniplets in &lsquo;<span class="file">.R</span>&rsquo; &lsquo;<span class="file">.Rd</span>&rsquo; format
+in some TeX-<CODE>lstlistings</CODE> environment;
+output is issued on stdout, hence included in &lsquo;<span class="file">.Rnw</span>&rsquo; file if wrapped to
+<pre>
+&lt;&lt; /chunkname/, results=tex, echo=FALSE&gt;&gt;=
+ ... R code ...
+@
+</pre>
+For example
+<pre>
+&lt;&lt;BinomParam, results=tex, echo=FALSE&gt;&gt;=
+lstinputSourceFromRForge("distr","man","BinomParameter-class.Rd","distr")
+@
+&lt;&lt;skew, results=tex, echo=FALSE&gt;&gt;=
+lstinputSourceFromRForge("distrEx","R","Skewness.R","distr",
+                     from = "\"skewness\", signature\\(x = \"Binom\"",
+                     to = "\ }\\)")
+@
+</pre> (CAVEAT: the space between backslash and right brace in the line with "to = "
+is <EM>not</EM> intended; I simply did not find another work-around)  <br>
+Within &lsquo;<span class="file">.Rd</span>&rsquo; code, examples are type-set in &lsquo;<span class="file">.R</span>&rsquo; style;
+vectors are allowed for arguments <code>from</code>, <code>to</code>;
+<code>lstinputSourceFromRForge</code> uses
+<code><a href="copySourceFromRForge.html">copySourceFromRForge</a></code> for download / reading from cache;
+line numbers in the downloaded source may be printed out
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+<code>invisible()</code></p>
+
+<h3>Author(s)</h3>
+
+<p>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+lstinputSourceFromRForge("distr","R","AllClasses.R","distr",
+                     "## Class: BinomParameter", "#-")
+
+lstinputSourceFromRForge("distr","R","AllClasses.R","distr",
+                     from = "## Class: binomial distribution",
+                     to = "contains = \"LatticeDistribution\"", offset.after = 1)
+lstinputSourceFromRForge("distr","man","Binom-class.Rd","distr")
+
+lstinputSourceFromRForge("distr","R","BinomialDistribution.R","distr",
+                     from = c("## Access Methods", "## wrapped access methods"),
+                     to = c("setReplaceMethod\\(\"prob\", \"BinomParameter\"",
+                            "size = value\\)\\)") ,
+                     offset.after = c(1,1))
+lstinputSourceFromRForge("distr","R","BinomialDistribution.R","distr",
+                     from = c(8,43,45), to = c(16,53,45))
+lstinputSourceFromRForge("distr","R","BinomialDistribution.R","distr",
+                     from = c("## Access Methods", "## wrapped access methods"),
+                     to = c("setReplaceMethod\\(\"prob\", \"BinomParameter\"",
+                            "size = value\\)\\)") ,
+                     offset.after = c(1,1))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>SweaveListingUtils</em> version 0.4 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

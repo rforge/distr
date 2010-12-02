@@ -1,0 +1,79 @@
+<html><head><title>additional options in package &lsquo;distr&rsquo;</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>options(distr)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   options">
+<param name="keyword" value="R:   newDevice">
+<param name="keyword" value=" additional options in package &lsquo;distr&rsquo;">
+</object>
+
+
+<h2>additional options in package &lsquo;distr&rsquo;</h2>
+
+
+<h3>Description</h3>
+
+<p>
+In package <span class="pkg">distr</span>, we add an extra option <code>"newDevice"</code>;
+it is inspected and manipulated as usual.
+</p>
+
+
+<h3>Details</h3>
+
+<p>
+We do not change the behaviour of <code>options</code> or <code>getOption</code>;
+for the general documentation to these two functions, 
+confer <code><a onclick="findlink('base', 'options.html')" style="text-decoration: underline; color: blue; cursor: hand">options</a></code>, <code><a onclick="findlink('base', 'getOption.html')" style="text-decoration: underline; color: blue; cursor: hand">getOption</a></code>. Here
+we only document added options.
+</p>
+
+
+<h3>Additionally available options in package 'distr'</h3>
+
+<dl>
+<dt><code>"newDevice"</code></dt><dd>logical; controls behaviour when generating several plots within
+one function; if <code>TRUE</code> a call to <code><a href="internals.html">devNew</a></code> is inserted to hook function
+<code><a onclick="findlink('graphics', 'plot.new.html')" style="text-decoration: underline; color: blue; cursor: hand">plot.new</a></code>; if <code>FALSE</code>, we reproduce the usual behaviour 
+in <span class="pkg">graphics</span>, i.e.; we do not call <code><a href="internals.html">devNew</a></code>. Defaults to <code>FALSE</code>.</dd>
+</dl>
+
+<h3>Author(s)</h3>
+
+<p>
+Peter Ruckdeschel <a href="mailto:Peter.Ruckdeschel@itwm.fraunhofer.de">Peter.Ruckdeschel@itwm.fraunhofer.de</a>,<br> 
+Matthias Kohl <a href="mailto:Matthias.Kohl@stamats.de">Matthias.Kohl@stamats.de</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a onclick="findlink('base', 'options.html')" style="text-decoration: underline; color: blue; cursor: hand">options</a></code>, <code><a onclick="findlink('base', 'getOption.html')" style="text-decoration: underline; color: blue; cursor: hand">getOption</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+getOption("newDevice") 
+options("newDevice"=TRUE) 
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>distr</em> version 2.2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

@@ -1,0 +1,1235 @@
+
+R version 2.10.0 beta (2009-10-15 r50107)
+Copyright (C) 2009 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> ### * <HEADER>
+> ###
+> attach(NULL, name = "CheckExEnv")
+> assign("nameEx",
++        local({
++ 	   s <- "__{must remake R-ex/*.R}__"
++            function(new) {
++                if(!missing(new)) s <<- new else s
++            }
++        }),
++        pos = "CheckExEnv")
+> ## Add some hooks to label plot pages for base and grid graphics
+> assign("base_plot_hook",
++        function() {
++            pp <- par(c("mfg","mfcol","oma","mar"))
++            if(all(pp$mfg[1:2] == c(1, pp$mfcol[2]))) {
++                outer <- (oma4 <- pp$oma[4]) > 0; mar4 <- pp$mar[4]
++                mtext(sprintf("help(\"%s\")", nameEx()), side = 4,
++                      line = if(outer)max(1, oma4 - 1) else min(1, mar4 - 1),
++                outer = outer, adj = 1, cex = .8, col = "orchid", las=3)
++            }
++        },
++        pos = "CheckExEnv")
+> assign("grid_plot_hook",
++        function() {
++            grid::pushViewport(grid::viewport(width=grid::unit(1, "npc") -
++                               grid::unit(1, "lines"), x=0, just="left"))
++            grid::grid.text(sprintf("help(\"%s\")", nameEx()),
++                            x=grid::unit(1, "npc") + grid::unit(0.5, "lines"),
++                            y=grid::unit(0.8, "npc"), rot=90,
++                            gp=grid::gpar(col="orchid"))
++        },
++        pos = "CheckExEnv")
+> setHook("plot.new",     get("base_plot_hook", pos = "CheckExEnv"))
+> setHook("persp",        get("base_plot_hook", pos = "CheckExEnv"))
+> setHook("grid.newpage", get("grid_plot_hook", pos = "CheckExEnv"))
+> assign("cleanEx",
++        function(env = .GlobalEnv) {
++ 	   rm(list = ls(envir = env, all.names = TRUE), envir = env)
++            RNGkind("default", "default")
++ 	   set.seed(1)
++    	   options(warn = 1)
++ 	   .CheckExEnv <- as.environment("CheckExEnv")
++ 	   delayedAssign("T", stop("T used instead of TRUE"),
++ 		  assign.env = .CheckExEnv)
++ 	   delayedAssign("F", stop("F used instead of FALSE"),
++ 		  assign.env = .CheckExEnv)
++ 	   sch <- search()
++ 	   newitems <- sch[! sch %in% .oldSearch]
++ 	   for(item in rev(newitems))
++                eval(substitute(detach(item), list(item=item)))
++ 	   missitems <- .oldSearch[! .oldSearch %in% sch]
++ 	   if(length(missitems))
++ 	       warning("items ", paste(missitems, collapse=", "),
++ 		       " have been removed from the search path")
++        },
++        pos = "CheckExEnv")
+> assign("ptime", proc.time(), pos = "CheckExEnv")
+> ## at least one package changes these via ps.options(), so do this
+> ## before loading the package.
+> ## Use postscript as incomplete files may be viewable, unlike PDF.
+> ## Choose a size that is close to on-screen devices, fix paper
+> grDevices::ps.options(width = 7, height = 7, paper = "a4", reset = TRUE)
+> grDevices::postscript("distrEllipse-Ex.ps")
+> 
+> assign("par.postscript", graphics::par(no.readonly = TRUE), pos = "CheckExEnv")
+> options(contrasts = c(unordered = "contr.treatment", ordered = "contr.poly"))
+> options(warn = 1)
+> library('distrEllipse')
+Loading required package: mvtnorm
+Loading required package: setRNG
+Loading required package: distr
+Loading required package: startupmsg
+:startupmsg>  Utilities for start-up messages (version 0.7)
+:startupmsg> 
+:startupmsg>  For more information see ?"startupmsg",
+:startupmsg>  NEWS("startupmsg")
+
+Loading required package: sfsmisc
+Loading required package: SweaveListingUtils
+:SweaveListingUtils>  Utilities for Sweave together with
+:SweaveListingUtils>  TeX listings package (version 0.4)
+:SweaveListingUtils> 
+:SweaveListingUtils>  Some functions from package 'base'
+:SweaveListingUtils>  are intentionally masked ---see
+:SweaveListingUtils>  SweaveListingMASK().
+:SweaveListingUtils> 
+:SweaveListingUtils>  Note that global options are
+:SweaveListingUtils>  controlled by
+:SweaveListingUtils>  SweaveListingoptions() ---c.f.
+:SweaveListingUtils>  ?"SweaveListingoptions".
+:SweaveListingUtils> 
+:SweaveListingUtils>  For more information see
+:SweaveListingUtils>  ?"SweaveListingUtils",
+:SweaveListingUtils>  NEWS("SweaveListingUtils")
+:SweaveListingUtils>  There is a vignette to this
+:SweaveListingUtils>  package; try
+:SweaveListingUtils>  vignette("ExampleSweaveListingUtils").
+
+
+Attaching package: 'SweaveListingUtils'
+
+
+	The following object(s) are masked from package:base :
+
+	 library,
+	 require 
+
+:distr>  Object orientated implementation of distributions (version
+:distr>  2.2)
+:distr> 
+:distr>  Attention: Arithmetics on distribution objects are
+:distr>  understood as operations on corresponding random variables
+:distr>  (r.v.s); see distrARITH().
+:distr> 
+:distr>  Some functions from package 'stats' are intentionally masked
+:distr>  ---see distrMASK().
+:distr> 
+:distr>  Note that global options are controlled by distroptions()
+:distr>  ---c.f. ?"distroptions".
+:distr> 
+:distr>  For more information see ?"distr", NEWS("distr"), as well as
+:distr>    http://distr.r-forge.r-project.org/
+:distr>  Package "distrDoc" provides a vignette to this package as
+:distr>  well as to several extension packages; try
+:distr>  vignette("distr").
+
+
+Attaching package: 'distr'
+
+
+	The following object(s) are masked from package:stats :
+
+	 df,
+	 qqplot,
+	 sd 
+
+Loading required package: distrEx
+Loading required package: evd
+Loading required package: actuar
+
+Attaching package: 'actuar'
+
+
+	The following object(s) are masked from package:grDevices :
+
+	 cm 
+
+:distrEx>  Extensions of package distr (version 2.2)
+:distrEx> 
+:distrEx>  Note: Packages "e1071", "moments", "fBasics" should be
+:distrEx>  attached /before/ package "distrEx". See distrExMASK().
+:distrEx> 
+:distrEx>  For more information see ?"distrEx", NEWS("distrEx"), as
+:distrEx>  well as
+:distrEx>    http://distr.r-forge.r-project.org/
+:distrEx>  Package "distrDoc" provides a vignette to this package
+:distrEx>  as well as to several related packages; try
+:distrEx>  vignette("distr").
+
+
+Attaching package: 'distrEx'
+
+
+	The following object(s) are masked from package:stats :
+
+	 IQR,
+	 mad,
+	 median,
+	 var 
+
+Loading required package: distrSim
+:distrSim>  Simulation classes based on package distr (version
+:distrSim>  2.2)
+:distrSim> 
+:distrSim>  Some functions from package 'stats' are intentionally
+:distrSim>  masked ---see distrSimMASK().
+:distrSim> 
+:distrSim> 
+:distrSim>  For more information see ?"distrSim",
+:distrSim>  NEWS("distrSim"), as well as
+:distrSim>    http://distr.r-forge.r-project.org/
+:distrSim>  Package "distrDoc" provides a vignette to this package
+:distrSim>  as well as to several related packages; try
+:distrSim>  vignette("distr").
+
+
+Attaching package: 'distrSim'
+
+
+	The following object(s) are masked from package:stats :
+
+	 simulate 
+
+
+	The following object(s) are masked from package:base :
+
+	 rbind 
+
+:distrEllipse>  S4 classes for elliptically contoured
+:distrEllipse>  distributions (version 2.2)
+:distrEllipse> 
+:distrEllipse>  Some functions from package 'stats' are
+:distrEllipse>  intentionally masked ---see
+:distrEllipse>  distrEllipseMASK().
+:distrEllipse> 
+:distrEllipse> 
+:distrEllipse>  For more information see ?"distrEllipse",
+:distrEllipse>  NEWS("distrEllipse"), as well as
+:distrEllipse>    http://distr.r-forge.r-project.org/
+:distrEllipse>  Package "distrDoc" provides a vignette to this
+:distrEllipse>  package as well as to several related
+:distrEllipse>  packages; try vignette("distr").
+
+> 
+> assign(".oldSearch", search(), pos = 'CheckExEnv')
+> assign(".oldNS", loadedNamespaces(), pos = 'CheckExEnv')
+> cleanEx(); nameEx("EllipticalDistribution-class")
+> ### * EllipticalDistribution-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: EllipticalDistribution-class
+> ### Title: Elliptical distribution class
+> ### Aliases: EllipticalDistribution-class
+> ###   scale,EllipticalDistribution-method
+> ###   location,EllipticalDistribution-method
+> ###   scale<-,EllipticalDistribution-method
+> ###   location<-,EllipticalDistribution-method
+> ###   E,EllipticalDistribution,missing,missing-method
+> ###   var,EllipticalDistribution-method
+> ###   +,EllipticalDistribution,numeric-method
+> ###   *,EllipticalDistribution,numeric-method
+> ###   %*%,matrix,EllipticalDistribution-method
+> ###   coerce,EllipticalDistribution,UnivariateDistribution-method
+> ###   coerce,UnivariateDistribution,EllipticalDistribution-method
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> new("EllipticalDistribution") ## better use EllipticalDistribution()
+Distribution Object of Class: EllipticalDistribution
+ loc: (0,0)
+ scale:
+          [,1]    [,2]    
+ [1,]    1.00,   0.00,  
+ [2,]    0.00,   1.00,  
+ 
+ Distribution of Lengths:
+ Distribution Object of Class: AbscontDistribution
+> 
+> 
+> 
+> cleanEx(); nameEx("EllipticalDistribution")
+> ### * EllipticalDistribution
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: EllipticalDistribution
+> ### Title: Generating function for EllipticalDistribution-class
+> ### Aliases: EllipticalDistribution
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> E0 <- EllipticalDistribution()
+> plot(E0)
+> E1 <- diag(1,2)%*%E0+c(1,2)
+> plot(E1)
+> E(E1)
+[1] 1 2
+> var(E1)
+          [,1]      [,2]
+[1,] 0.9999983 0.0000000
+[2,] 0.0000000 0.9999983
+> 
+> 
+> 
+> cleanEx(); nameEx("EllipticalParameter-class")
+> ### * EllipticalParameter-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: EllipticalParameter-class
+> ### Title: Paramter of an Elliptical distributions
+> ### Aliases: EllipticalParameter-class location
+> ###   location,EllipticalParameter-method location<-
+> ###   location<-,EllipticalParameter-method scale
+> ###   scale,EllipticalParameter-method scale<-
+> ###   scale<-,EllipticalParameter-method
+> ### Keywords: distribution models
+> 
+> ### ** Examples
+> 
+> new("EllipticalParameter")
+An object of class “EllipticalParameter”
+Slot "loc":
+[1] 0 0
+
+Slot "scale":
+     [,1] [,2]
+[1,]    1    0
+[2,]    0    1
+
+Slot "name":
+[1] "parameter of an elliptically symmetric distribution"
+
+> 
+> 
+> 
+> cleanEx(); nameEx("MVnormDistribution-class")
+> ### * MVnormDistribution-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: MVNormDistribution-class
+> ### Title: MVNorm distribution class
+> ### Aliases: MVNormDistribution-class sigma,MVNormDistribution-method
+> ###   mean,MVNormDistribution-method
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> new("MVNormDistribution") ## better use generating function MVNormDistribution()
+Distribution Object of Class: MVNormDistribution
+ loc: (0,0)
+ scale:
+          [,1]    [,2]    
+ [1,]    1.00,   0.00,  
+ [2,]    0.00,   1.00,  
+ 
+ Distribution of Lengths:
+ Distribution Object of Class: AbscontDistribution
+> 
+> 
+> 
+> cleanEx(); nameEx("MVnormDistribution")
+> ### * MVnormDistribution
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: MVNormDistribution
+> ### Title: Generating function for MVNormDistribution-class
+> ### Aliases: MVNormDistribution MVNorm
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> E0 <- MVNorm()
+> plot(E0)
+> E1 <- diag(1,2)%*%E0+c(1,2)
+> plot(E1)
+> E(E1)
+[1] 1 2
+> var(E1)
+          [,1]      [,2]
+[1,] 0.9999983 0.0000000
+[2,] 0.0000000 0.9999983
+> 
+> 
+> 
+> cleanEx(); nameEx("MVnormParameter-class")
+> ### * MVnormParameter-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: MVNormParameter-class
+> ### Title: Paramter of a multivariate normal distribution
+> ### Aliases: MVNormParameter-class mean mean,MVNormParameter-method sigma
+> ###   sigma,MVNormParameter-method
+> ### Keywords: distribution models
+> 
+> ### ** Examples
+> 
+> new("MVNormParameter")
+An object of class “MVNormParameter”
+Slot "loc":
+[1] 0 0
+
+Slot "scale":
+     [,1] [,2]
+[1,]    1    0
+[2,]    0    1
+
+Slot "name":
+[1] "parameter of an elliptically symmetric distribution"
+
+> 
+> 
+> 
+> cleanEx(); nameEx("MVtDistribution-class")
+> ### * MVtDistribution-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: MVtDistribution-class
+> ### Title: MVt distribution class
+> ### Aliases: MVtDistribution-class sigma,MVtDistribution-method
+> ###   df,MVtDistribution-method ncp,MVtDistribution-method
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> new("MVtDistribution") ## better use generating function MVtDistribution()
+Distribution Object of Class: MVtDistribution
+ df: 1
+ ncp: 0
+ loc: (0,0)
+ scale:
+          [,1]    [,2]    
+ [1,]    1.00,   0.00,  
+ [2,]    0.00,   1.00,  
+ 
+ Distribution of Lengths:
+ Distribution Object of Class: AbscontDistribution
+> 
+> 
+> 
+> cleanEx(); nameEx("MVtDistribution")
+> ### * MVtDistribution
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: MVtDistribution
+> ### Title: Generating function for MvtDistribution-class
+> ### Aliases: MVtDistribution MVt
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> E0 <- MVt()
+Warning in log(x) : NaNs produced
+Warning in log(x) : NaNs produced
+Warning in log(x) : NaNs produced
+> plot(E0)
+> E1 <- diag(1,2)%*%E0+c(1,2)
+> plot(E1)
+> E(E1)
+[1] 1 2
+> var(E1)
+Warning in log(x) : NaNs produced
+Warning in log(x) : NaNs produced
+Warning in log(x) : NaNs produced
+Warning in log(x) : NaNs produced
+        [,1]    [,2]
+[1,] 22.1488  0.0000
+[2,]  0.0000 22.1488
+> 
+> 
+> 
+> cleanEx(); nameEx("MVtParameter-class")
+> ### * MVtParameter-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: MVtParameter-class
+> ### Title: Paramter of a multivariate t distribution
+> ### Aliases: MVtParameter-class sigma,MVtParameter-method
+> ###   df,MVtParameter-method ncp,MVtParameter-method
+> ### Keywords: distribution models
+> 
+> ### ** Examples
+> 
+> new("MVtParameter")
+An object of class “MVtParameter”
+Slot "df":
+[1] 1
+
+Slot "ncp":
+[1] 0
+
+Slot "loc":
+[1] 0 0
+
+Slot "scale":
+     [,1] [,2]
+[1,]    1    0
+[2,]    0    1
+
+Slot "name":
+[1] "parameter of multivariate t distribution"
+
+> 
+> 
+> 
+> cleanEx(); nameEx("MultivarDistrList-class")
+> ### * MultivarDistrList-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: MultivarDistrList-class
+> ### Title: List of multivariate distributions
+> ### Aliases: MultivarDistrList-class MVDistrList-class
+> ###   coerce,MultivariateDistribution,MultivarDistrList-method
+> ###   dim,MultivarDistrList-method dimension,MultivarDistrList-method
+> ### Keywords: distribution list
+> 
+> ### ** Examples
+> 
+> (DL1 <- MultivarDistrList(Norm(), Exp(), Pois()))
+An object of class "UnivarDistrList"
+ [[1]] Distribution Object of Class: Norm
+       :mean: 0
+       :sd: 1
+ [[2]] Distribution Object of Class: Exp
+       :rate: 1
+ [[3]] Distribution Object of Class: Pois
+       :lambda: 1
+> (DL2 <- MultivarDistrList(MVNorm(),
++                           EllipticalDistribution(radDistr=Exp(), loc=c(1,2),
++                           scale=diag(c(3,1))),MVt()))
+Warning in log(x) : NaNs produced
+Warning in log(x) : NaNs produced
+Warning in log(x) : NaNs produced
+An object of class "MVDistrList"
+ [[1]] Distribution Object of Class: MVNormDistribution
+       :loc: (0,0)
+       :scale:
+       :               :[,1]          :[,2]          :
+       :[1,]         : 1.00,        : 0.00,        :
+       :[2,]         : 0.00,        : 1.00,        :
+       :
+ Distribution of Lengths:
+       :Distribution Object of Class: AbscontDistribution
+ [[2]] Distribution Object of Class: EllipticalDistribution
+       :loc: (1,2)
+       :scale:
+       :               :[,1]          :[,2]          :
+       :[1,]         : 3.00,        : 0.00,        :
+       :[2,]         : 0.00,        : 1.00,        :
+       :
+ Distribution of Lengths:
+       :Distribution Object of Class: Exp
+       :rate: 1
+ [[3]] Distribution Object of Class: MVtDistribution
+       :df: 1
+       :ncp: 0
+       :loc: (0,0)
+       :scale:
+       :               :[,1]          :[,2]          :
+       :[1,]         : 1.00,        : 0.00,        :
+       :[2,]         : 0.00,        : 1.00,        :
+       :
+ Distribution of Lengths:
+       :Distribution Object of Class: AbscontDistribution
+> 
+> 
+> 
+> 
+> cleanEx(); nameEx("MultivarDistrList")
+> ### * MultivarDistrList
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: MultivarDistrList
+> ### Title: Generating function for MultivarDistrList-class
+> ### Aliases: MultivarDistrList
+> ### Keywords: list distribution
+> 
+> ### ** Examples
+> 
+> (DL1 <- MultivarDistrList(Norm(), Exp(), Pois()))
+An object of class "UnivarDistrList"
+ [[1]] Distribution Object of Class: Norm
+       :mean: 0
+       :sd: 1
+ [[2]] Distribution Object of Class: Exp
+       :rate: 1
+ [[3]] Distribution Object of Class: Pois
+       :lambda: 1
+> (DL2 <- MultivarDistrList(MVNorm(),
++                           EllipticalDistribution(radDistr=Exp(), loc=c(1,2),
++                           scale=diag(c(3,1))),MVt()))
+Warning in log(x) : NaNs produced
+Warning in log(x) : NaNs produced
+Warning in log(x) : NaNs produced
+An object of class "MVDistrList"
+ [[1]] Distribution Object of Class: MVNormDistribution
+       :loc: (0,0)
+       :scale:
+       :               :[,1]          :[,2]          :
+       :[1,]         : 1.00,        : 0.00,        :
+       :[2,]         : 0.00,        : 1.00,        :
+       :
+ Distribution of Lengths:
+       :Distribution Object of Class: AbscontDistribution
+ [[2]] Distribution Object of Class: EllipticalDistribution
+       :loc: (1,2)
+       :scale:
+       :               :[,1]          :[,2]          :
+       :[1,]         : 3.00,        : 0.00,        :
+       :[2,]         : 0.00,        : 1.00,        :
+       :
+ Distribution of Lengths:
+       :Distribution Object of Class: Exp
+       :rate: 1
+ [[3]] Distribution Object of Class: MVtDistribution
+       :df: 1
+       :ncp: 0
+       :loc: (0,0)
+       :scale:
+       :               :[,1]          :[,2]          :
+       :[1,]         : 1.00,        : 0.00,        :
+       :[2,]         : 0.00,        : 1.00,        :
+       :
+ Distribution of Lengths:
+       :Distribution Object of Class: AbscontDistribution
+> 
+> 
+> 
+> cleanEx(); nameEx("MultivarMixingDistribution-class")
+> ### * MultivarMixingDistribution-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: MultivarMixingDistribution-class
+> ### Title: Class "MultivarMixingDistribution"
+> ### Aliases: MultivarMixingDistribution-class mixCoeff mixDistr mixCoeff<-
+> ###   mixDistr<- mixCoeff<--methods mixDistr<--methods
+> ###   mixCoeff<-,MultivarMixingDistribution-method
+> ###   mixDistr<-,MultivarMixingDistribution-method mixCoeff-methods
+> ###   mixDistr-methods mixCoeff,MultivarMixingDistribution-method
+> ###   mixDistr,MultivarMixingDistribution-method
+> ###   support,MultivarMixingDistribution-method
+> ###   gaps,MultivarMixingDistribution-method
+> ###   .logExact,MultivarMixingDistribution-method
+> ###   .lowerExact,MultivarMixingDistribution-method
+> ###   Symmetry,MultivarMixingDistribution-method
+> ###   dimension,MultivarMixingDistribution-method
+> ###   dim,MultivarMixingDistribution-method
+> ###   E,MultivarMixingDistribution,ANY,ANY-method
+> ###   show,MultivarMixingDistribution-method
+> ###   showobj,MultivarMixingDistribution-method
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> mylist <- MultivarMixingDistribution(Binom(3,.3), Dirac(2), Norm(), 
++           mixCoeff=c(1/4,1/5,11/20))
+[[1]]
+Distribution Object of Class: Binom
+ size: 3
+ prob: 0.3
+
+[[2]]
+Distribution Object of Class: Dirac
+ location: 2
+
+[[3]]
+Distribution Object of Class: Norm
+ mean: 0
+ sd: 1
+
+Distribution Object of Class: Dirac
+ location: 2
+> mylist2 <- MultivarMixingDistribution(Binom(3,.3), mylist, 
++           mixCoeff=c(.3,.7))
+[[1]]
+Distribution Object of Class: Binom
+ size: 3
+ prob: 0.3
+
+[[2]]
+An object of class "UnivarLebDecDistribution"
+ --- a Lebesgue decomposed distribution:
+
+    Its discrete part (with weight 0.450000) is a
+ Distribution Object of Class: DiscreteDistribution
+ This part is accessible with 'discretePart()'.
+
+    Its absolutely continuous part (with weight 0.550000) is a
+ Distribution Object of Class: AbscontDistribution
+ This part is accessible with 'acPart()'.
+Warning in function (object)  :
+  arithmetics on distributions are understood as operations on r.v.'s
+see 'distrARITH()'; for switching off this warning see '?distroptions'
+
+An object of class "UnivarLebDecDistribution"
+ --- a Lebesgue decomposed distribution:
+
+    Its discrete part (with weight 0.450000) is a
+ Distribution Object of Class: DiscreteDistribution
+ This part is accessible with 'discretePart(ldots[[2]])'.
+
+    Its absolutely continuous part (with weight 0.550000) is a
+ Distribution Object of Class: AbscontDistribution
+ This part is accessible with 'acPart(ldots[[2]])'.
+Warning in show(x) :
+  arithmetics on distributions are understood as operations on r.v.'s
+see 'distrARITH()'; for switching off this warning see '?distroptions'
+> mylist2
+An object of class "UnivarLebDecDistribution"
+ --- a Lebesgue decomposed distribution:
+
+    Its discrete part (with weight 0.615000) is a
+ Distribution Object of Class: DiscreteDistribution
+ This part is accessible with 'discretePart()'.
+
+    Its absolutely continuous part (with weight 0.385000) is a
+ Distribution Object of Class: AbscontDistribution
+ This part is accessible with 'acPart()'.
+Warning in function (object)  :
+  arithmetics on distributions are understood as operations on r.v.'s
+see 'distrARITH()'; for switching off this warning see '?distroptions'
+> p(mylist)(0.3)          
+[1] 0.4256013
+> mixDistr(mylist2)
+An object of class "UnivarDistrList"
+ [[1]] Distribution Object of Class: AbscontDistribution
+ [[2]] Distribution Object of Class: DiscreteDistribution
+Warning in function (object)  :
+  arithmetics on distributions are understood as operations on r.v.'s
+see 'distrARITH()'; for switching off this warning see '?distroptions'
+> 
+> ##multivariate
+> E1 <- diag(1,2)%*%EllipticalDistribution(radDistr=Gammad())+c(1,2)
+> mylistD <- MultivarMixingDistribution(MVNorm(), E1, MVt(),
++           mixCoeff=c(1/4,1/5,11/20))
+Warning in log(x) : NaNs produced
+Warning in log(x) : NaNs produced
+Warning in log(x) : NaNs produced
+[[1]]
+Distribution Object of Class: MVNormDistribution
+ loc: (0,0)
+ scale:
+          [,1]    [,2]    
+ [1,]    1.00,   0.00,  
+ [2,]    0.00,   1.00,  
+ 
+ Distribution of Lengths:
+ Distribution Object of Class: AbscontDistribution
+
+[[2]]
+Distribution Object of Class: EllipticalDistribution
+ loc: (1,2)
+ scale:
+          [,1]    [,2]    
+ [1,]    1.00,   0.00,  
+ [2,]    0.00,   1.00,  
+ 
+ Distribution of Lengths:
+ Distribution Object of Class: Gammad
+ shape: 1
+ scale: 1
+
+[[3]]
+Distribution Object of Class: MVtDistribution
+ df: 1
+ ncp: 0
+ loc: (0,0)
+ scale:
+          [,1]    [,2]    
+ [1,]    1.00,   0.00,  
+ [2,]    0.00,   1.00,  
+ 
+ Distribution of Lengths:
+ Distribution Object of Class: AbscontDistribution
+
+Distribution Object of Class: EllipticalDistribution
+ loc: (1,2)
+ scale:
+          [,1]    [,2]    
+ [1,]    1.00,   0.00,  
+ [2,]    0.00,   1.00,  
+ 
+ Distribution of Lengths:
+ Distribution Object of Class: Gammad
+ shape: 1
+ scale: 1
+> mylistD2 <- MultivarMixingDistribution(E1+c(-2,2), mylistD,
++           mixCoeff=c(.3,.7))
+[[1]]
+Distribution Object of Class: EllipticalDistribution
+ loc: (-1,4)
+ scale:
+          [,1]    [,2]    
+ [1,]    1.00,   0.00,  
+ [2,]    0.00,   1.00,  
+ 
+ Distribution of Lengths:
+ Distribution Object of Class: Gammad
+ shape: 1
+ scale: 1
+
+[[2]]
+An object of class "MultivarMixingDistribution"
+ ---------------------------------------------
+ It consists of  3 components 
+ Components: 
+ [[1]]Distribution Object of Class: MVNormDistribution
+       :loc: (0,0)
+       :scale:
+       :               :[,1]          :[,2]          :
+       :[1,]         : 1.00,        : 0.00,        :
+       :[2,]         : 0.00,        : 1.00,        :
+       :
+ Distribution of Lengths:
+       :Distribution Object of Class: AbscontDistribution
+ [[2]]Distribution Object of Class: EllipticalDistribution
+       :loc: (1,2)
+       :scale:
+       :               :[,1]          :[,2]          :
+       :[1,]         : 1.00,        : 0.00,        :
+       :[2,]         : 0.00,        : 1.00,        :
+       :
+ Distribution of Lengths:
+       :Distribution Object of Class: Gammad
+       :shape: 1
+       :scale: 1
+ [[3]]Distribution Object of Class: MVtDistribution
+       :df: 1
+       :ncp: 0
+       :loc: (0,0)
+       :scale:
+       :               :[,1]          :[,2]          :
+       :[1,]         : 1.00,        : 0.00,        :
+       :[2,]         : 0.00,        : 1.00,        :
+       :
+ Distribution of Lengths:
+       :Distribution Object of Class: AbscontDistribution
+ ---------------------------------------------
+ Weights: 
+ 0.250000 0.200000 0.550000 
+ ---------------------------------------------
+
+An object of class "MultivarMixingDistribution"
+ ---------------------------------------------
+ It consists of  3 components 
+ Components: 
+ [[1]]Distribution Object of Class: MVNormDistribution
+       :loc: (0,0)
+       :scale:
+       :               :[,1]          :[,2]          :
+       :[1,]         : 1.00,        : 0.00,        :
+       :[2,]         : 0.00,        : 1.00,        :
+       :
+ Distribution of Lengths:
+       :Distribution Object of Class: AbscontDistribution
+ [[2]]Distribution Object of Class: EllipticalDistribution
+       :loc: (1,2)
+       :scale:
+       :               :[,1]          :[,2]          :
+       :[1,]         : 1.00,        : 0.00,        :
+       :[2,]         : 0.00,        : 1.00,        :
+       :
+ Distribution of Lengths:
+       :Distribution Object of Class: Gammad
+       :shape: 1
+       :scale: 1
+ [[3]]Distribution Object of Class: MVtDistribution
+       :df: 1
+       :ncp: 0
+       :loc: (0,0)
+       :scale:
+       :               :[,1]          :[,2]          :
+       :[1,]         : 1.00,        : 0.00,        :
+       :[2,]         : 0.00,        : 1.00,        :
+       :
+ Distribution of Lengths:
+       :Distribution Object of Class: AbscontDistribution
+ ---------------------------------------------
+ Weights: 
+ 0.250000 0.200000 0.550000 
+ ---------------------------------------------
+> mylistD2
+An object of class "MultivarMixingDistribution"
+ ---------------------------------------------
+ It consists of  2 components 
+ Components: 
+ [[1]]Distribution Object of Class: EllipticalDistribution
+       :loc: (-1,4)
+       :scale:
+       :               :[,1]          :[,2]          :
+       :[1,]         : 1.00,        : 0.00,        :
+       :[2,]         : 0.00,        : 1.00,        :
+       :
+ Distribution of Lengths:
+       :Distribution Object of Class: Gammad
+       :shape: 1
+       :scale: 1
+ [[2]]An object of class "MultivarMixingDistribution"
+       :---------------------------------------------
+       :It consists of  3 components 
+       :Components: 
+       :[[1]]Distribution Object of Class: MVNormDistribution
+       :      :loc: (0,0)
+       :      :scale:
+       :      :               :      :[,1]          :      :[,2]          :      :
+       :      :[1,]         :      : 1.00,        :      : 0.00,        :      :
+       :      :[2,]         :      : 0.00,        :      : 1.00,        :      :
+       :      :
+ Distribution of Lengths:
+       :      :Distribution Object of Class: AbscontDistribution
+       :[[2]]Distribution Object of Class: EllipticalDistribution
+       :      :loc: (1,2)
+       :      :scale:
+       :      :               :      :[,1]          :      :[,2]          :      :
+       :      :[1,]         :      : 1.00,        :      : 0.00,        :      :
+       :      :[2,]         :      : 0.00,        :      : 1.00,        :      :
+       :      :
+ Distribution of Lengths:
+       :      :Distribution Object of Class: Gammad
+       :      :shape: 1
+       :      :scale: 1
+       :[[3]]Distribution Object of Class: MVtDistribution
+       :      :df: 1
+       :      :ncp: 0
+       :      :loc: (0,0)
+       :      :scale:
+       :      :               :      :[,1]          :      :[,2]          :      :
+       :      :[1,]         :      : 1.00,        :      : 0.00,        :      :
+       :      :[2,]         :      : 0.00,        :      : 1.00,        :      :
+       :      :
+ Distribution of Lengths:
+       :      :Distribution Object of Class: AbscontDistribution
+       :---------------------------------------------
+       :Weights: 
+       :0.250000       :0.200000       :0.550000       :
+ ---------------------------------------------
+ ---------------------------------------------
+ Weights: 
+ 0.300000 0.700000 
+ ---------------------------------------------
+> p(mylistD)
+NULL
+> mixDistr(mylistD2)
+An object of class "MVDistrList"
+ [[1]] Distribution Object of Class: EllipticalDistribution
+       :loc: (-1,4)
+       :scale:
+       :               :[,1]          :[,2]          :
+       :[1,]         : 1.00,        : 0.00,        :
+       :[2,]         : 0.00,        : 1.00,        :
+       :
+ Distribution of Lengths:
+       :Distribution Object of Class: Gammad
+       :shape: 1
+       :scale: 1
+ [[2]] An object of class "MultivarMixingDistribution"
+       :---------------------------------------------
+       :It consists of  3 components 
+       :Components: 
+       :[[1]]Distribution Object of Class: MVNormDistribution
+       :      :loc: (0,0)
+       :      :scale:
+       :      :               :      :[,1]          :      :[,2]          :      :
+       :      :[1,]         :      : 1.00,        :      : 0.00,        :      :
+       :      :[2,]         :      : 0.00,        :      : 1.00,        :      :
+       :      :
+ Distribution of Lengths:
+       :      :Distribution Object of Class: AbscontDistribution
+       :[[2]]Distribution Object of Class: EllipticalDistribution
+       :      :loc: (1,2)
+       :      :scale:
+       :      :               :      :[,1]          :      :[,2]          :      :
+       :      :[1,]         :      : 1.00,        :      : 0.00,        :      :
+       :      :[2,]         :      : 0.00,        :      : 1.00,        :      :
+       :      :
+ Distribution of Lengths:
+       :      :Distribution Object of Class: Gammad
+       :      :shape: 1
+       :      :scale: 1
+       :[[3]]Distribution Object of Class: MVtDistribution
+       :      :df: 1
+       :      :ncp: 0
+       :      :loc: (0,0)
+       :      :scale:
+       :      :               :      :[,1]          :      :[,2]          :      :
+       :      :[1,]         :      : 1.00,        :      : 0.00,        :      :
+       :      :[2,]         :      : 0.00,        :      : 1.00,        :      :
+       :      :
+ Distribution of Lengths:
+       :      :Distribution Object of Class: AbscontDistribution
+       :---------------------------------------------
+       :Weights: 
+       :0.250000       :0.200000       :0.550000       :
+ ---------------------------------------------
+> 
+> 
+> 
+> cleanEx(); nameEx("MultivarMixingDistribution")
+> ### * MultivarMixingDistribution
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: MultivarMixingDistribution
+> ### Title: Generating function for Class "MultivarMixingDistribution"
+> ### Aliases: MultivarMixingDistribution
+> ### Keywords: distribution list
+> 
+> ### ** Examples
+> 
+> mylist <- MultivarMixingDistribution(Binom(3,.3), Dirac(2), Norm(), 
++           mixCoeff=c(1/4,1/5,11/20))
+[[1]]
+Distribution Object of Class: Binom
+ size: 3
+ prob: 0.3
+
+[[2]]
+Distribution Object of Class: Dirac
+ location: 2
+
+[[3]]
+Distribution Object of Class: Norm
+ mean: 0
+ sd: 1
+
+Distribution Object of Class: Dirac
+ location: 2
+> 
+> 
+> 
+> cleanEx(); nameEx("SphericalDistribution-class")
+> ### * SphericalDistribution-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: SphericalDistribution-class
+> ### Title: Spherical distribution class
+> ### Aliases: SphericalDistribution-class scale,SphericalDistribution-method
+> ###   location,SphericalDistribution-method
+> ###   dimension,SphericalDistribution-method
+> ###   dim,SphericalDistribution-method
+> ###   radDistr,SphericalDistribution-method
+> ###   radDistr<-,SphericalDistribution-method
+> ###   plot.rd,SphericalDistribution-method
+> ###   r.rd,SphericalDistribution-method d.rd,SphericalDistribution-method
+> ###   p.rd,SphericalDistribution-method q.rd,SphericalDistribution-method
+> ###   radDistr radDistr<- plot.rd r.rd d.rd p.rd q.rd
+> ###   E,SphericalDistribution,missing,missing-method
+> ###   var,SphericalDistribution-method
+> ###   coerce,SphericalDistribution,EllipticalDistribution-method
+> ###   show,SphericalDistribution-method
+> ###   showobj,SphericalDistribution-method
+> ###   +,SphericalDistribution,numeric-method
+> ###   *,SphericalDistribution,numeric-method
+> ###   %*%,matrix,SphericalDistribution-method
+> ###   +,numeric,SphericalDistribution-method
+> ###   *,numeric,SphericalDistribution-method
+> ###   -,SphericalDistribution,missing-method
+> ###   -,SphericalDistribution,numeric-method
+> ###   -,numeric,SphericalDistribution-method
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> new("SphericalDistribution") ## better use SphericalDistribution()
+Distribution Object of Class: SphericalDistribution
+ 
+ Distribution of Lengths:
+ Distribution Object of Class: AbscontDistribution
+> 
+> 
+> 
+> cleanEx(); nameEx("SphericalDistribution")
+> ### * SphericalDistribution
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: SphericalDistribution
+> ### Title: Generating function for SphericalDistribution-class
+> ### Aliases: SphericalDistribution
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> E0 <- SphericalDistribution()
+> plot(E0)
+> E1 <- diag(1,2)%*%E0+c(1,2)
+> plot(E1)
+> E(E1)
+[1] 1 2
+> var(E1)
+          [,1]      [,2]
+[1,] 0.9999983 0.0000000
+[2,] 0.0000000 0.9999983
+> 
+> 
+> 
+> cleanEx(); nameEx("distrEllipseMASK")
+> ### * distrEllipseMASK
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: distrEllipseMASK
+> ### Title: Masking of/by other functions in package "distrEllipse"
+> ### Aliases: distrEllipseMASK MASKING
+> ### Keywords: programming distribution documentation
+> 
+> ### ** Examples
+> 
+> distrEllipseMASK()
+######################################################################
+#  On masking of and by other functions in package "distrEllipse"       
+######################################################################
+
+Attention:
+
+*** intentional masking: ***
+
+
+> 
+> 
+> 
+> cleanEx(); nameEx("distrEllipseoptions")
+> ### * distrEllipseoptions
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: distrEllipseoptions
+> ### Title: functions to change the global variables of the package
+> ###   `distrEllipse'
+> ### Aliases: distrEllipseoptions getdistrEllipseOption Nsim withED lwd.Ed
+> ###   col.Ed withMean cex.mean pch.mean col.mean
+> ### Keywords: distribution
+> 
+> ### ** Examples
+> 
+> distrEllipseoptions("Nsim") # returns the value of Nsim, by default = 5
+$Nsim
+[1] 2000
+
+> currentDistrOptions <- distrEllipseoptions()
+> distrEllipseoptions(Nsim = 6000)
+> distrEllipseoptions("Nsim")
+$Nsim
+[1] 6000
+
+> getdistrEllipseOption("Nsim")
+[1] 6000
+> distrEllipseoptions(c("Nsim","withED"))
+$Nsim
+[1] 6000
+
+$withED
+[1] TRUE
+
+> 
+> 
+> 
+> cleanEx(); nameEx("plot-methods")
+> ### * plot-methods
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot-methods
+> ### Title: Methods for Function plot in Package `distrEllipse'
+> ### Aliases: plot plot-methods plot,SphericalDistribution,missing-method
+> ###   plot,MultivarMixingDistribution,missing-method
+> ### Keywords: methods hplot distribution
+> 
+> ### ** Examples
+> 
+> E0 <- matrix(c(2,1,1,4),2,2)%*%EllipticalDistribution()+c(2,1)
+> E1 <- matrix(c(3,2,2,4),2,2)%*%EllipticalDistribution(radDistr = exp(Binom(10,.8)))
+> plot(E0)
+> plot(E1, withED=FALSE, Nsim=5000)
+> mylist <- MultivarMixingDistribution(E0,E1, mixCoeff=c(1/4,3/4))
+[[1]]
+Distribution Object of Class: EllipticalDistribution
+ loc: (2,1)
+ scale:
+          [,1]    [,2]    
+ [1,]    2.00,   1.00,  
+ [2,]    1.00,   4.00,  
+ 
+ Distribution of Lengths:
+ Distribution Object of Class: AbscontDistribution
+Warning in function (object)  :
+  arithmetics on distributions are understood as operations on r.v.'s
+see 'distrARITH()'; for switching off this warning see '?distroptions'
+
+[[2]]
+Distribution Object of Class: EllipticalDistribution
+ loc: (0,0)
+ scale:
+          [,1]    [,2]    
+ [1,]    3.00,   2.00,  
+ [2,]    2.00,   4.00,  
+ 
+ Distribution of Lengths:
+ Distribution Object of Class: DiscreteDistribution
+Warning in function (object)  :
+  arithmetics on distributions are understood as operations on r.v.'s
+see 'distrARITH()'; for switching off this warning see '?distroptions'
+
+Distribution Object of Class: EllipticalDistribution
+ loc: (0,0)
+ scale:
+          [,1]    [,2]    
+ [1,]    3.00,   2.00,  
+ [2,]    2.00,   4.00,  
+ 
+ Distribution of Lengths:
+ Distribution Object of Class: DiscreteDistribution
+Warning in function (object)  :
+  arithmetics on distributions are understood as operations on r.v.'s
+see 'distrARITH()'; for switching off this warning see '?distroptions'
+> plot(mylist)
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  13.708 0.136 13.892 0.012 0.012 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

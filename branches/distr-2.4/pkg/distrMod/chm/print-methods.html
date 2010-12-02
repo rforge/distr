@@ -1,0 +1,109 @@
+<html><head><title>Common &lsquo;print&rsquo; Methods for S4 classes in Package &lsquo;distrMod&rsquo;</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>print-methods(distrMod)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   print-methods">
+<param name="keyword" value="R:   print,ShowDetails-method">
+<param name="keyword" value=" Common &lsquo;print&rsquo; Methods for S4 classes in Package &lsquo;distrMod&rsquo;">
+</object>
+
+
+<h2>Common &lsquo;print&rsquo; Methods for S4 classes in Package &lsquo;distrMod&rsquo;</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Methods for <code>print</code> to the S4 classes in package <span class="pkg">distrMod</span>;
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S4 method for signature 'ShowDetails':
+print(x, digits = getOption("digits"),
+                show.details = c("maximal", "minimal", "medium"))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+object of class <code>ShowDetails</code>, a class union of
+classes <code>OptionalNumeric</code>, <code>OptionalMatrix</code>,
+<code>MatrixorFunction</code>, <code>Estimate</code>, <code>MCEstimate</code>.</td></tr>
+<tr valign="top"><td><code>digits</code></td>
+<td>
+unchanged w.r.t. default method of package <code>base</code>:
+a non-null value for 'digits' specifies the minimum number of
+significant digits to be printed in values.  The default,
+'NULL', uses 'getOption(digits)'.  (For the interpretation
+for complex numbers see 'signif'.) Non-integer values will be
+rounded down, and only values greater than or equal to 1 and
+no greater than 22 are accepted.</td></tr>
+<tr valign="top"><td><code>show.details</code></td>
+<td>
+a character, controlling the degree of detailedness
+of the output; currently the following values are permitted:
+<code>"maximal"</code>, <code>"minimal"</code>, <code>"medium"</code>; for the meaning
+for the actual class, confer to the corresponding class help file.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+This method provides sort of a ''<code>show</code>
+with extra arguments'', in form of a common <code>print</code> method
+for the mentioned S4 classes. Essentially this <code>print</code> method
+just temporarily sets the global options according to the optional arguments
+<code>digits</code> and <code>show.details</code>, calls <code>show</code> and then re-sets
+the options to their global settings.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## set options to maximal detailedness
+show.old &lt;- getdistrModOption("show.details")
+distrModoptions("show.details" = "maximal")
+## define a model
+NS &lt;- NormLocationScaleFamily(mean=2, sd=3)
+## generate data out of this situation
+x &lt;- r(distribution(NS))(30)
+
+## want to estimate mu/sigma, sigma^2
+## -&gt; new trafo slot:
+trafo(NS) &lt;- function(param){
+  mu &lt;- param["mean"]
+  sd &lt;- param["sd"]
+  fval &lt;- c(mu/sd, sd^2)
+  nfval &lt;- c("mu/sig", "sig^2")
+  names(fval) &lt;- nfval
+  mat &lt;- matrix(c(1/sd,0,-mu/sd^2,2*sd),2,2)
+  dimnames(mat) &lt;- list(nfval,c("mean","sd"))
+  return(list(fval=fval, mat=mat))
+}
+print(param(NS))
+print(param(NS), show.details = "minimal")
+print(param(NS), show.details = "medium")
+## Maximum likelihood estimator
+res &lt;- MLEstimator(x = x, ParamFamily = NS)
+print(res) #equivalent to 'show(res)' or 'res'
+print(res, digits = 4)
+print(res, show.details = "minimal")
+print(res, show.details = "medium")
+distrModoptions("show.details" = show.old)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>distrMod</em> version 2.2 <a href="00Index.html">Index</a>]</div>
+
+</body></html>
