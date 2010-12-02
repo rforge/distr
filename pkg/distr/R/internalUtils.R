@@ -134,7 +134,7 @@ inCx <- sapply(inp,
 if (length(inCx) > 1) {
    inCx <- paste(inCx, c(rep(",", length(inCx)-1), ""),
                  sep = "", collapse = "\"\\n\",")
-   if ( any(c(lapply(inp,is.language))) | logic )
+   if ( any(as.logical(c(lapply(inp,is.language)))) | logic )
       inCx <- paste("expression(paste(", gsub("\\\\n"," ", inCx), "))", sep ="")
    else
       inCx <- paste("paste(",inCx,")", sep ="")

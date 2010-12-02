@@ -116,7 +116,7 @@ setMethod("plot",signature(x="EvaluationList",y="missing"),
         options("warn" = o.warn) }
 
   opar <- par(no.readonly = TRUE)
-  opar$cin <- opar$cra <- opar$csi <- opar$cxy <-  opar$din <- NULL
+  # opar$cin <- opar$cra <- opar$csi <- opar$cxy <-  opar$din <- NULL
   on.exit(par(opar))
   par(mfrow=c(resdim0,1))
 

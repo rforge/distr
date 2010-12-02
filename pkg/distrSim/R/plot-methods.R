@@ -40,7 +40,7 @@ setMethod("plot",signature(x = "Dataclass", y="missing"),
 #            get(getOption("device"))()
 
             opar <- par(no.readonly = TRUE)
-            opar$cin <- opar$cra <- opar$csi <- opar$cxy <-  opar$din <- NULL
+#            opar$cin <- opar$cra <- opar$csi <- opar$cxy <-  opar$din <- NULL
             on.exit(par(opar))
 
             o.warn <- getOption("warn")

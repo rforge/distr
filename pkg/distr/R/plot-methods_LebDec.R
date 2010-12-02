@@ -155,7 +155,7 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
            devNew(width = width, height = height)
            }
      omar <- par("mar", no.readonly = TRUE)
-     omar$cin <- omar$cra <- omar$csi <- omar$cxy <-  omar$din <- NULL
+ #    omar$cin <- omar$cra <- omar$csi <- omar$cxy <-  omar$din <- NULL
      if(mfColRow) (on.exit(par(omar, no.readonly = TRUE)))
      
      mainL <- FALSE

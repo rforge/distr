@@ -134,7 +134,7 @@ inCx <- sapply(inp,
 if (length(inCx) > 1) {
    inCx <- paste(inCx, c(rep(",", length(inCx)-1), ""),
                  sep = "", collapse = "\"\\n\",")
-   if ( any(c(lapply(inp,is.language))) | logic )
+   if ( any(as.logical(c(lapply(inp,is.language)))) | logic )
       inCx <- paste("expression(paste(", gsub("\\\\n"," ", inCx), "))", sep ="")
    else
       inCx <- paste("paste(",inCx,")", sep ="")
@@ -612,7 +612,6 @@ return(f)
 #x0 <- x00[idx]               ### maximal x's
 #y0 <- y00[idx]
 #f1 <- approxfun(x = x0, y = y0, yleft = y0[1], yright = y0[length(y0)])
-
 yleft <- yleft[1]
 yright <- yright[1]
 
@@ -622,8 +621,8 @@ y <- y[!isna]
 
 l0 <- length(unique(x[!.isEqual01(x)]))
 if(l0 > 1){
-   yl <- if(is.finite(yleft)) yleft  else y[1]
-   yr <- if(is.finite(yright)) yright else y[length(y)]
+   yl <- if(!is.na(yleft) && is.finite(yleft))  yleft  else y[1]
+   yr <- if(!is.na(yright)&& is.finite(yright)) yright else y[length(y)]
 
    f1 <- approxfun(x = x, y = y, yleft = yl, yright = yr)
 }else{ 
