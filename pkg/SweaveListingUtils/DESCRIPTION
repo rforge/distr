@@ -7,15 +7,13 @@ Suggests: distr
 Imports: stats
 LazyLoad: yes
 Author: Peter Ruckdeschel
-Description: provides utilities for defining R / Rd as
-        Tex-package-listings "language" and including R / Rd source
-        file (sniplets) copied from R-forge in its most recent version
-        (or another url) thereby avoiding inconsistencies between
-        vignette and documented source code
+Description: provides utilities for defining R / Rd as Tex-package-listings "language" and
+        including R / Rd source file (sniplets) copied from R-forge in its most recent version
+        (or another url) thereby avoiding inconsistencies between vignette and documented
+        source code
 Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
 License: LGPL-3
-Date: 1
-LastChangedDate: {$LastChangedDate: 2010-05-17 01:42:46 +0200 (Mo, 17
-        Mai 2010) $}
+Date: 2010-12-03
+LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
-SVNRevision: 693
+SVNRevision: 699

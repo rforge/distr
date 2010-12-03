@@ -27,12 +27,12 @@ distrEx -- Extensions of package distr
 \tabular{ll}{
 Package: \tab distrEx \cr
 Version: \tab 2.3 \cr
-Date: \tab 1 \cr
+Date: \tab 2010-12-03 \cr
 Depends: \tab R(>= 2.6.0), methods, distr(>= 2.2), evd, actuar, startupmsg \cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-SVNRevision: \tab 693 \cr
+SVNRevision: \tab 699 \cr
 }
 }
 \section{Classes}{

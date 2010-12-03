@@ -4,11 +4,11 @@ Pkgs <- c("SweaveListingUtils", "distr", "distrEx", "distrDoc",
                       "distrMod", "distrTeach", "distrSim", "distrTEst",
                       "distrEllipse")
 Names <- c("Version","Date","SVNRevision")
-Values <- matrix(c(format(Sys.time(), format="%Y-%m-%d"),1),3,length(Pkgs))
+Values <- matrix(c("2.0.2", format(Sys.time(), format="%Y-%m-%d"),1),3,length(Pkgs))
 colnames(Values) <- Pkgs
 rownames(Values) <- Names
 Values["Version",] <- c("0.5", rep("2.3", 8))
-changeDescription(startDir = "C:/rtest/tmp/distr/",names=Names,
+changeDescription(startDir = "C:/rtest/distr/",names=Names,
                   pkgs=Pkgs, values=Values)
 
 ### for 2.4
@@ -20,7 +20,7 @@ Values <- matrix(c("2.0.2", format(Sys.time(), format="%Y-%m-%d"),1),3,length(Pk
 colnames(Values) <- Pkgs
 rownames(Values) <- Names
 Values["Version",] <- c("0.6", rep("2.4", 8))
-changeDescription(startDir = "C:/rtest/tmp/distr/branches/distr-2.4",names=Names,
+changeDescription(startDir = "C:/rtest/distr/branches/distr-2.4",names=Names,
                   pkgs=Pkgs, values=Values)
 
 #### robast:
@@ -33,7 +33,7 @@ Values <- matrix(c(0.8,format(Sys.time(), format="%Y-%m-%d"),1),3,length(Pkgs))
 colnames(Values) <- Pkgs
 rownames(Values) <- Names
 Values["Version",] <- c(rep("0.8",8))
-changeDescription(startDir = "C:/rtest/tmp/robast",names=Names,
+changeDescription(startDir = "C:/rtest/robast",names=Names,
                   pkgs=Pkgs, values=Values)
 
 ### for 0.9
@@ -45,6 +45,6 @@ Values <- matrix(c("0.8", format(Sys.time(), format="%Y-%m-%d"),1),3,length(Pkgs
 colnames(Values) <- Pkgs
 rownames(Values) <- Names
 Values["Version",] <- c(rep("0.9",8))
-changeDescription(startDir = "C:/rtest/tmp/robast/branches/robast-0.9",names=Names,
+changeDescription(startDir = "C:/rtest/robast/branches/robast-0.9",names=Names,
                   pkgs=Pkgs, values=Values)
   

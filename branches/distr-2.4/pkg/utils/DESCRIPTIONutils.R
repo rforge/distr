@@ -71,7 +71,7 @@ changeDescription <- function(startDir, names, values,
 #       print(values[names,x])
 #       print(xx[,names])
        xx[,names] <- values[names,x]
-       write.dcf(xx, file=FN)
+       write.dcf(xx, file=FN,width=1.2*getOption("width"))
        if(withPackageHelpUpdate)
           updatePackageHelp(package=file.path("pkg",x))
      })
