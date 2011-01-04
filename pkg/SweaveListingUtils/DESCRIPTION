@@ -3,7 +3,7 @@ Title: Utilities for Sweave together with TeX listings package
 Encoding: latin1
 Version: 0.5
 Depends: R(>= 2.10.0), startupmsg
-Suggests: distr
+Suggests: distr, MASS, survival
 Imports: stats
 LazyLoad: yes
 Author: Peter Ruckdeschel
