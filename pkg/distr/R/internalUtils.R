@@ -658,13 +658,18 @@ return(f)
             df1 <- mfun(x = x, y = dx1, yleft = 0, yright = 0)
 
             if (standM == "sum")
-                   stand <- sum(dx)
-            else   {
-            stand <- try(integrate(df1, -Inf, Inf)$value, TRUE)
-            if (is(stand,"try-error")){
-               warning("'integrate()' threw an error ---result may be inaccurate.")
-               stand <- sum(df1(x))*h*(x[2]-x[1])
-               }
+                stand <- sum(dx)
+            else{
+                stand <- try(integrate(df1, -Inf, Inf)$value, TRUE)
+                if (is(stand,"try-error")){
+                    xm <- min(0.95*x,1.05*x) ## trick if x can be >0 or <0
+                    xM <- max(0.95*x,1.05*x)
+                    stand <- try(integrate(df1, xm, xM)$value, TRUE)
+                    if (is(stand,"try-error")){
+                        warning("'integrate()' threw an error ---result may be inaccurate.")
+                        stand <- sum(df1(x))*h*(x[2]-x[1])
+                    }
+                }
             }
             dfun <- function(x, log = FALSE)
                     {if (log)
