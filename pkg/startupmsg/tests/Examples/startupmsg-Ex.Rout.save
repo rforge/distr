@@ -1,7 +1,8 @@
 
-R version 2.10.1 Patched (2010-01-12 r50990)
-Copyright (C) 2010 The R Foundation for Statistical Computing
+R version 2.12.1 Patched (2011-01-04 r53913)
+Copyright (C) 2011 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
+Platform: x86_64-unknown-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -94,7 +95,7 @@ this is an ordinary message
 > ### reading information file utilities
 > readVersionInformation("stats")
 $ver
-[1] "2.10.1"
+[1] "2.12.1"
 
 $title
 [1] "The R Stats Package"
@@ -105,7 +106,7 @@ NULL
 > pointertoNEWS("stats") ## no NEWS file;
 NULL
 > NEWS("stats") ## no NEWS file; 
-Cannot open file '/home/btms02/RTOP/Rbranch/library/stats/NEWS': No such file or directory
+Cannot open file '/home/kohlm/RTOP/Rbranch/library/stats/NEWS': No such file or directory
 
 > ## for packages with NEWS file see e.g. randomForest, distr
 > 
@@ -130,7 +131,7 @@ Cannot open file '/home/btms02/RTOP/Rbranch/library/stats/NEWS': No such file or
 > 
 > ## issuing of messages controlled by options()
 > buildStartupMessage(pkg="stats", msg) 
-:stats>  The R Stats Package (version 2.10.1)
+:stats>  The R Stats Package (version 2.12.1)
 :stats> 
 :stats>  Note that you may set global options by options() --- cf.
 :stats>  ?"options".
@@ -139,13 +140,13 @@ Cannot open file '/home/btms02/RTOP/Rbranch/library/stats/NEWS': No such file or
 > suppressMessages(buildStartupMessage(pkg="stats", msg))
 > onlytypeStartupMessages(buildStartupMessage(pkg="stats", msg),
 +           atypes="version")
-The R Stats Package (version 2.10.1)
+The R Stats Package (version 2.12.1)
 
 > 
 > getOption("StartupBanner")
 NULL
 > buildStartupMessage(pkg="stats", msg)
-:stats>  The R Stats Package (version 2.10.1)
+:stats>  The R Stats Package (version 2.12.1)
 :stats> 
 :stats>  Note that you may set global options by options() --- cf.
 :stats>  ?"options".
@@ -158,7 +159,7 @@ NULL
 > options("StartupBanner"="complete");getOption("StartupBanner")
 [1] "complete"
 > buildStartupMessage(pkg="stats", msg)
-:stats>  The R Stats Package (version 2.10.1)
+:stats>  The R Stats Package (version 2.12.1)
 :stats> 
 :stats>  Note that you may set global options by options() --- cf.
 :stats>  ?"options".
@@ -167,13 +168,13 @@ NULL
 > options("StartupBanner"="something else");getOption("StartupBanner")
 [1] "something else"
 > buildStartupMessage(pkg="stats", msg)
-:stats>  The R Stats Package (version 2.10.1)
+:stats>  The R Stats Package (version 2.12.1)
 :stats> 
 > 
 > options("StartupBanner"=NULL);getOption("StartupBanner")
 NULL
 > buildStartupMessage(pkg="stats", msg)
-:stats>  The R Stats Package (version 2.10.1)
+:stats>  The R Stats Package (version 2.12.1)
 :stats> 
 :stats>  Note that you may set global options by options() --- cf.
 :stats>  ?"options".
@@ -182,7 +183,7 @@ NULL
 > 
 > MNH <- "http://www.r-project.org/"
 > buildStartupMessage(pkg="stats", msg, packageHelp=TRUE, MANUAL=MNH)
-:stats>  The R Stats Package (version 2.10.1)
+:stats>  The R Stats Package (version 2.12.1)
 :stats> 
 :stats>  Note that you may set global options by options() --- cf.
 :stats>  ?"options".
@@ -194,7 +195,7 @@ NULL
 > ## "demo/nlm.R" as a "manual": to be system-independent the 
 > ## first call is to be preferred 
 > buildStartupMessage(pkg="stats", msg, packageHelp=TRUE, MANUAL=c("demo","nlm.R"))
-:stats>  The R Stats Package (version 2.10.1)
+:stats>  The R Stats Package (version 2.12.1)
 :stats> 
 :stats>  Note that you may set global options by options() --- cf.
 :stats>  ?"options".
@@ -203,7 +204,7 @@ NULL
 
 > ###  works, too, (i.e. is equivalent) under Linux and Windows (at least):
 > buildStartupMessage(pkg="stats", msg, packageHelp=TRUE, MANUAL="demo/nlm.R")
-:stats>  The R Stats Package (version 2.10.1)
+:stats>  The R Stats Package (version 2.12.1)
 :stats> 
 :stats>  Note that you may set global options by options() --- cf.
 :stats>  ?"options".
@@ -217,7 +218,7 @@ NULL
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  0.12 0 0.155 0 0 
+Time elapsed:  0.12 0 0.128 0 0 
 > grDevices::dev.off()
 null device 
           1 
