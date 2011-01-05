@@ -1,7 +1,8 @@
 
-R version 2.10.1 Patched (2010-01-12 r50990)
-Copyright (C) 2010 The R Foundation for Statistical Computing
+R version 2.12.1 Patched (2011-01-04 r53913)
+Copyright (C) 2011 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
+Platform: x86_64-unknown-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -31,8 +32,7 @@ Loading required package: startupmsg
 Loading required package: sfsmisc
 Loading required package: SweaveListingUtils
 :SweaveListingUtils>  Utilities for Sweave together with
-:SweaveListingUtils>  TeX listings package (version
-:SweaveListingUtils>  0.4.1)
+:SweaveListingUtils>  TeX listings package (version 0.5)
 :SweaveListingUtils> 
 :SweaveListingUtils>  Some functions from package 'base'
 :SweaveListingUtils>  are intentionally masked ---see
@@ -53,14 +53,12 @@ Loading required package: SweaveListingUtils
 
 Attaching package: 'SweaveListingUtils'
 
+The following object(s) are masked from 'package:base':
 
-	The following object(s) are masked from package:base :
+    library, require
 
-	 library,
-	 require 
-
-:distr>  Object orientated implementation of distributions (version
-:distr>  2.2.1)
+:distr>  Object oriented implementation of distributions (version
+:distr>  2.3)
 :distr> 
 :distr>  Attention: Arithmetics on distribution objects are
 :distr>  understood as operations on corresponding random variables
@@ -81,12 +79,9 @@ Attaching package: 'SweaveListingUtils'
 
 Attaching package: 'distr'
 
+The following object(s) are masked from 'package:stats':
 
-	The following object(s) are masked from package:stats :
-
-	 df,
-	 qqplot,
-	 sd 
+    df, qqplot, sd
 
 Loading required package: distrEx
 Loading required package: evd
@@ -94,12 +89,11 @@ Loading required package: actuar
 
 Attaching package: 'actuar'
 
+The following object(s) are masked from 'package:grDevices':
 
-	The following object(s) are masked from package:grDevices :
+    cm
 
-	 cm 
-
-:distrEx>  Extensions of package distr (version 2.2.1)
+:distrEx>  Extensions of package distr (version 2.3)
 :distrEx> 
 :distrEx>  Note: Packages "e1071", "moments", "fBasics" should be
 :distrEx>  attached /before/ package "distrEx". See distrExMASK().
@@ -114,18 +108,14 @@ Attaching package: 'actuar'
 
 Attaching package: 'distrEx'
 
+The following object(s) are masked from 'package:stats':
 
-	The following object(s) are masked from package:stats :
-
-	 IQR,
-	 mad,
-	 median,
-	 var 
+    IQR, mad, median, var
 
 :distrTeach>  Extensions of package distr for teaching
 :distrTeach>  Stochastics/Statistics
 :distrTeach> 
-:distrTeach>  in secondary school (version 2.2.1)
+:distrTeach>  in secondary school (version 2.3)
 :distrTeach> 
 :distrTeach>  For more information see ?"distrTeach",
 :distrTeach>  NEWS("distrTeach"), as well as
@@ -153,106 +143,6 @@ Attaching package: 'distrEx'
 > illustrateCLT(Distr = Unif(), len = 20)
 > distroptions("DefaultNrFFTGridPointsExponent" = 12)
 > illustrateCLT(Distr = Pois(lambda = 2), len = 20)
-Warning in par(opar) : graphical parameter "cin" cannot be set
-Warning in par(opar) : graphical parameter "cra" cannot be set
-Warning in par(opar) : graphical parameter "csi" cannot be set
-Warning in par(opar) : graphical parameter "cxy" cannot be set
-Warning in par(opar) : graphical parameter "din" cannot be set
-Warning in par(opar) : graphical parameter "cin" cannot be set
-Warning in par(opar) : graphical parameter "cra" cannot be set
-Warning in par(opar) : graphical parameter "csi" cannot be set
-Warning in par(opar) : graphical parameter "cxy" cannot be set
-Warning in par(opar) : graphical parameter "din" cannot be set
-Warning in par(opar) : graphical parameter "cin" cannot be set
-Warning in par(opar) : graphical parameter "cra" cannot be set
-Warning in par(opar) : graphical parameter "csi" cannot be set
-Warning in par(opar) : graphical parameter "cxy" cannot be set
-Warning in par(opar) : graphical parameter "din" cannot be set
-Warning in par(opar) : graphical parameter "cin" cannot be set
-Warning in par(opar) : graphical parameter "cra" cannot be set
-Warning in par(opar) : graphical parameter "csi" cannot be set
-Warning in par(opar) : graphical parameter "cxy" cannot be set
-Warning in par(opar) : graphical parameter "din" cannot be set
-Warning in par(opar) : graphical parameter "cin" cannot be set
-Warning in par(opar) : graphical parameter "cra" cannot be set
-Warning in par(opar) : graphical parameter "csi" cannot be set
-Warning in par(opar) : graphical parameter "cxy" cannot be set
-Warning in par(opar) : graphical parameter "din" cannot be set
-Warning in par(opar) : graphical parameter "cin" cannot be set
-Warning in par(opar) : graphical parameter "cra" cannot be set
-Warning in par(opar) : graphical parameter "csi" cannot be set
-Warning in par(opar) : graphical parameter "cxy" cannot be set
-Warning in par(opar) : graphical parameter "din" cannot be set
-Warning in par(opar) : graphical parameter "cin" cannot be set
-Warning in par(opar) : graphical parameter "cra" cannot be set
-Warning in par(opar) : graphical parameter "csi" cannot be set
-Warning in par(opar) : graphical parameter "cxy" cannot be set
-Warning in par(opar) : graphical parameter "din" cannot be set
-Warning in par(opar) : graphical parameter "cin" cannot be set
-Warning in par(opar) : graphical parameter "cra" cannot be set
-Warning in par(opar) : graphical parameter "csi" cannot be set
-Warning in par(opar) : graphical parameter "cxy" cannot be set
-Warning in par(opar) : graphical parameter "din" cannot be set
-Warning in par(opar) : graphical parameter "cin" cannot be set
-Warning in par(opar) : graphical parameter "cra" cannot be set
-Warning in par(opar) : graphical parameter "csi" cannot be set
-Warning in par(opar) : graphical parameter "cxy" cannot be set
-Warning in par(opar) : graphical parameter "din" cannot be set
-Warning in par(opar) : graphical parameter "cin" cannot be set
-Warning in par(opar) : graphical parameter "cra" cannot be set
-Warning in par(opar) : graphical parameter "csi" cannot be set
-Warning in par(opar) : graphical parameter "cxy" cannot be set
-Warning in par(opar) : graphical parameter "din" cannot be set
-Warning in par(opar) : graphical parameter "cin" cannot be set
-Warning in par(opar) : graphical parameter "cra" cannot be set
-Warning in par(opar) : graphical parameter "csi" cannot be set
-Warning in par(opar) : graphical parameter "cxy" cannot be set
-Warning in par(opar) : graphical parameter "din" cannot be set
-Warning in par(opar) : graphical parameter "cin" cannot be set
-Warning in par(opar) : graphical parameter "cra" cannot be set
-Warning in par(opar) : graphical parameter "csi" cannot be set
-Warning in par(opar) : graphical parameter "cxy" cannot be set
-Warning in par(opar) : graphical parameter "din" cannot be set
-Warning in par(opar) : graphical parameter "cin" cannot be set
-Warning in par(opar) : graphical parameter "cra" cannot be set
-Warning in par(opar) : graphical parameter "csi" cannot be set
-Warning in par(opar) : graphical parameter "cxy" cannot be set
-Warning in par(opar) : graphical parameter "din" cannot be set
-Warning in par(opar) : graphical parameter "cin" cannot be set
-Warning in par(opar) : graphical parameter "cra" cannot be set
-Warning in par(opar) : graphical parameter "csi" cannot be set
-Warning in par(opar) : graphical parameter "cxy" cannot be set
-Warning in par(opar) : graphical parameter "din" cannot be set
-Warning in par(opar) : graphical parameter "cin" cannot be set
-Warning in par(opar) : graphical parameter "cra" cannot be set
-Warning in par(opar) : graphical parameter "csi" cannot be set
-Warning in par(opar) : graphical parameter "cxy" cannot be set
-Warning in par(opar) : graphical parameter "din" cannot be set
-Warning in par(opar) : graphical parameter "cin" cannot be set
-Warning in par(opar) : graphical parameter "cra" cannot be set
-Warning in par(opar) : graphical parameter "csi" cannot be set
-Warning in par(opar) : graphical parameter "cxy" cannot be set
-Warning in par(opar) : graphical parameter "din" cannot be set
-Warning in par(opar) : graphical parameter "cin" cannot be set
-Warning in par(opar) : graphical parameter "cra" cannot be set
-Warning in par(opar) : graphical parameter "csi" cannot be set
-Warning in par(opar) : graphical parameter "cxy" cannot be set
-Warning in par(opar) : graphical parameter "din" cannot be set
-Warning in par(opar) : graphical parameter "cin" cannot be set
-Warning in par(opar) : graphical parameter "cra" cannot be set
-Warning in par(opar) : graphical parameter "csi" cannot be set
-Warning in par(opar) : graphical parameter "cxy" cannot be set
-Warning in par(opar) : graphical parameter "din" cannot be set
-Warning in par(opar) : graphical parameter "cin" cannot be set
-Warning in par(opar) : graphical parameter "cra" cannot be set
-Warning in par(opar) : graphical parameter "csi" cannot be set
-Warning in par(opar) : graphical parameter "cxy" cannot be set
-Warning in par(opar) : graphical parameter "din" cannot be set
-Warning in par(opar) : graphical parameter "cin" cannot be set
-Warning in par(opar) : graphical parameter "cra" cannot be set
-Warning in par(opar) : graphical parameter "csi" cannot be set
-Warning in par(opar) : graphical parameter "cxy" cannot be set
-Warning in par(opar) : graphical parameter "din" cannot be set
 > distroptions("DefaultNrFFTGridPointsExponent" = 13)
 > illustrateCLT(Distr = Pois(lambda = 2)+Unif(), len = 20)
 > illustrateCLT.tcl(Distr = Unif(), k = 4, "Unif()")
@@ -273,52 +163,12 @@ Warning in par(opar) : graphical parameter "din" cannot be set
 > ### ** Examples
 > 
 > illustrateLLN(Distr = Unif())
-Warning in any(c(lapply(inp, is.language))) :
-  coercing argument of type 'list' to logical
-Warning in par(omar) : graphical parameter "cin" cannot be set
-Warning in par(omar) : graphical parameter "cra" cannot be set
-Warning in par(omar) : graphical parameter "csi" cannot be set
-Warning in par(omar) : graphical parameter "cxy" cannot be set
-Warning in par(omar) : graphical parameter "din" cannot be set
 > illustrateLLN(Distr = Pois(lambda = 2))
-Warning in any(c(lapply(inp, is.language))) :
-  coercing argument of type 'list' to logical
-Warning in par(omar) : graphical parameter "cin" cannot be set
-Warning in par(omar) : graphical parameter "cra" cannot be set
-Warning in par(omar) : graphical parameter "csi" cannot be set
-Warning in par(omar) : graphical parameter "cxy" cannot be set
-Warning in par(omar) : graphical parameter "din" cannot be set
 > illustrateLLN(Distr = Pois(lambda = 2)+Unif())
-Warning in any(c(lapply(inp, is.language))) :
-  coercing argument of type 'list' to logical
-Warning in par(omar) : graphical parameter "cin" cannot be set
-Warning in par(omar) : graphical parameter "cra" cannot be set
-Warning in par(omar) : graphical parameter "csi" cannot be set
-Warning in par(omar) : graphical parameter "cxy" cannot be set
-Warning in par(omar) : graphical parameter "din" cannot be set
 > illustrateLLN(Td(3), m = 50, col.Eline = "green", lwd = 2, cex = 0.6, main = 
 +  "My LLN %C%Q", sub = "generated %D")
-Warning in par(omar) : graphical parameter "cin" cannot be set
-Warning in par(omar) : graphical parameter "cra" cannot be set
-Warning in par(omar) : graphical parameter "csi" cannot be set
-Warning in par(omar) : graphical parameter "cxy" cannot be set
-Warning in par(omar) : graphical parameter "din" cannot be set
 > illustrateLLN(Td(3), m = 50, CLTorCheb = "Chebyshev") 
-Warning in any(c(lapply(inp, is.language))) :
-  coercing argument of type 'list' to logical
-Warning in par(omar) : graphical parameter "cin" cannot be set
-Warning in par(omar) : graphical parameter "cra" cannot be set
-Warning in par(omar) : graphical parameter "csi" cannot be set
-Warning in par(omar) : graphical parameter "cxy" cannot be set
-Warning in par(omar) : graphical parameter "din" cannot be set
 > illustrateLLN(Td(3), m = 50, CLTorCheb = "Chebyshev", coverage = 0.75) 
-Warning in any(c(lapply(inp, is.language))) :
-  coercing argument of type 'list' to logical
-Warning in par(omar) : graphical parameter "cin" cannot be set
-Warning in par(omar) : graphical parameter "cra" cannot be set
-Warning in par(omar) : graphical parameter "csi" cannot be set
-Warning in par(omar) : graphical parameter "cxy" cannot be set
-Warning in par(omar) : graphical parameter "din" cannot be set
 > 
 > 
 > 
@@ -343,7 +193,7 @@ Warning in par(omar) : graphical parameter "din" cannot be set
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  16.34 0.12 16.468 0.01 0.01 
+Time elapsed:  15.57 0.11 15.839 0 0 
 > grDevices::dev.off()
 null device 
           1 
