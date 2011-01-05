@@ -1,5 +1,5 @@
 
-R version 2.12.1 Patched (2011-01-03 r53910)
+R version 2.12.1 Patched (2011-01-04 r53913)
 Copyright (C) 2011 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
@@ -101,7 +101,7 @@ The following object(s) are masked from 'package:stats':
 > Y <- Pois(lambda = 3)
 > Z <- X+Y  # generates Law of corresponding independent variables
 Warning in .makeDNew(x, dpn, h = 1, standM = "int") :
-  'integrate()' threw an error ---result may be inaccurate.
+  'integrate()' threw an error ---hence a simpler approximation was used for standardizing the density which may be inaccurate; see 'distr:::.makeDNew'.
 > p(Z)(0.2)
 [1] 0
 > r(Z)(1000)
@@ -2015,7 +2015,7 @@ function (x, log = FALSE)
     else d0 <- df1(x)/stand
     return(d0)
 }
-<environment: 0x38037a0>
+<environment: 0x4638830>
 
 $pfun
 function (q, lower.tail = TRUE, log.p = FALSE) 
@@ -2036,7 +2036,7 @@ function (q, lower.tail = TRUE, log.p = FALSE)
     else p0/nm
     return(p0)
 }
-<environment: 0x3613b50>
+<environment: 0x5f318c8>
 
 $qfun
 function (p, lower.tail = TRUE, log.p = FALSE) 
@@ -2054,7 +2054,7 @@ function (p, lower.tail = TRUE, log.p = FALSE)
     else q.l(1 - p01)
     return(as.numeric(q0))
 }
-<environment: 0x49fad40>
+<environment: 0x5206de8>
 
 > 
 > rp2 <- function(n){rpois(n, lambda = 1)^2}
@@ -2094,7 +2094,7 @@ function (x, log = FALSE)
     else d0 <- df1(x)/stand
     return(d0)
 }
-<environment: 0x3582cc8>
+<environment: 0x5ce2990>
 
 $pfun
 function (q, lower.tail = TRUE, log.p = FALSE) 
@@ -2115,7 +2115,7 @@ function (q, lower.tail = TRUE, log.p = FALSE)
     else p0/nm
     return(p0)
 }
-<environment: 0x537ad98>
+<environment: 0x59ccca8>
 
 $qfun
 function (p, lower.tail = TRUE, log.p = FALSE) 
@@ -2133,7 +2133,7 @@ function (p, lower.tail = TRUE, log.p = FALSE)
     else q.l(1 - p01)
     return(as.numeric(q0))
 }
-<environment: 0x49f5ce8>
+<environment: 0x503b630>
 
 > 
 > rp2 <- function(n){rpois(n, lambda = 1)^2}
@@ -3862,7 +3862,7 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > F <- ( Norm() + Binom() + Pois() + Exp() ) * 2 - 10
 > system.time(r(F)(10^6))
    user  system elapsed 
-  0.750   0.040   0.783 
+  0.750   0.020   0.768 
 > simplifyr(F, size = 10^6)
 > system.time(r(F)(10^6))
    user  system elapsed 
@@ -3900,7 +3900,7 @@ setReplaceMethod("b", "testclass", function(object, value){ object@b <- value; o
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  144.17 0.28 144.939 0 0 
+Time elapsed:  149.19 0.26 149.969 0 0 
 > grDevices::dev.off()
 postscript 
          2 

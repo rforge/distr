@@ -666,7 +666,7 @@ return(f)
                     xM <- max(0.95*x,1.05*x)
                     stand <- try(integrate(df1, xm, xM)$value, TRUE)
                     if (is(stand,"try-error")){
-                        warning("'integrate()' threw an error ---result may be inaccurate.")
+                        warning("'integrate()' threw an error ---hence a simpler approximation was used for standardizing the density which may be inaccurate; see 'distr:::.makeDNew'.")
                         stand <- sum(df1(x))*h*(x[2]-x[1])
                     }
                 }
