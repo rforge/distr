@@ -1,7 +1,8 @@
 
-R version 2.10.1 Patched (2010-01-12 r50990)
-Copyright (C) 2010 The R Foundation for Statistical Computing
+R version 2.12.1 Patched (2011-01-04 r53913)
+Copyright (C) 2011 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
+Platform: x86_64-unknown-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -33,8 +34,7 @@ Loading required package: startupmsg
 Loading required package: sfsmisc
 Loading required package: SweaveListingUtils
 :SweaveListingUtils>  Utilities for Sweave together with
-:SweaveListingUtils>  TeX listings package (version
-:SweaveListingUtils>  0.4.1)
+:SweaveListingUtils>  TeX listings package (version 0.5)
 :SweaveListingUtils> 
 :SweaveListingUtils>  Some functions from package 'base'
 :SweaveListingUtils>  are intentionally masked ---see
@@ -55,14 +55,12 @@ Loading required package: SweaveListingUtils
 
 Attaching package: 'SweaveListingUtils'
 
+The following object(s) are masked from 'package:base':
 
-	The following object(s) are masked from package:base :
+    library, require
 
-	 library,
-	 require 
-
-:distr>  Object orientated implementation of distributions (version
-:distr>  2.2.1)
+:distr>  Object oriented implementation of distributions (version
+:distr>  2.3)
 :distr> 
 :distr>  Attention: Arithmetics on distribution objects are
 :distr>  understood as operations on corresponding random variables
@@ -83,12 +81,9 @@ Attaching package: 'SweaveListingUtils'
 
 Attaching package: 'distr'
 
+The following object(s) are masked from 'package:stats':
 
-	The following object(s) are masked from package:stats :
-
-	 df,
-	 qqplot,
-	 sd 
+    df, qqplot, sd
 
 Loading required package: distrEx
 Loading required package: evd
@@ -96,12 +91,11 @@ Loading required package: actuar
 
 Attaching package: 'actuar'
 
+The following object(s) are masked from 'package:grDevices':
 
-	The following object(s) are masked from package:grDevices :
+    cm
 
-	 cm 
-
-:distrEx>  Extensions of package distr (version 2.2.1)
+:distrEx>  Extensions of package distr (version 2.3)
 :distrEx> 
 :distrEx>  Note: Packages "e1071", "moments", "fBasics" should be
 :distrEx>  attached /before/ package "distrEx". See distrExMASK().
@@ -116,17 +110,13 @@ Attaching package: 'actuar'
 
 Attaching package: 'distrEx'
 
+The following object(s) are masked from 'package:stats':
 
-	The following object(s) are masked from package:stats :
-
-	 IQR,
-	 mad,
-	 median,
-	 var 
+    IQR, mad, median, var
 
 Loading required package: distrSim
 :distrSim>  Simulation classes based on package distr (version
-:distrSim>  2.2.1)
+:distrSim>  2.3)
 :distrSim> 
 :distrSim>  Some functions from package 'stats' are intentionally
 :distrSim>  masked ---see distrSimMASK().
@@ -142,18 +132,16 @@ Loading required package: distrSim
 
 Attaching package: 'distrSim'
 
+The following object(s) are masked from 'package:stats':
 
-	The following object(s) are masked from package:stats :
+    simulate
 
-	 simulate 
+The following object(s) are masked from 'package:base':
 
-
-	The following object(s) are masked from package:base :
-
-	 rbind 
+    rbind
 
 :distrEllipse>  S4 classes for elliptically contoured
-:distrEllipse>  distributions (version 2.2.1)
+:distrEllipse>  distributions (version 2.3)
 :distrEllipse> 
 :distrEllipse>  Some functions from package 'stats' are
 :distrEllipse>  intentionally masked ---see
@@ -1081,7 +1069,7 @@ Attention:
 > 
 > ### Name: distrEllipseoptions
 > ### Title: functions to change the global variables of the package
-> ###   `distrEllipse'
+> ###   'distrEllipse'
 > ### Aliases: distrEllipseoptions getdistrEllipseOption Nsim withED lwd.Ed
 > ###   col.Ed withMean cex.mean pch.mean col.mean
 > ### Keywords: distribution
@@ -1117,7 +1105,7 @@ $withED
 > flush(stderr()); flush(stdout())
 > 
 > ### Name: plot-methods
-> ### Title: Methods for Function plot in Package `distrEllipse'
+> ### Title: Methods for Function plot in Package 'distrEllipse'
 > ### Aliases: plot plot-methods plot,SphericalDistribution,missing-method
 > ###   plot,MultivarMixingDistribution,missing-method
 > ### Keywords: methods hplot distribution
@@ -1176,7 +1164,7 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  14.11 0.12 14.264 0.01 0.01 
+Time elapsed:  12.14 0.08 12.283 0 0 
 > grDevices::dev.off()
 null device 
           1 
