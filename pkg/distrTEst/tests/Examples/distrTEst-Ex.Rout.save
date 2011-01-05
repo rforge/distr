@@ -1,7 +1,8 @@
 
-R version 2.10.1 Patched (2010-01-12 r50990)
-Copyright (C) 2010 The R Foundation for Statistical Computing
+R version 2.12.1 Patched (2011-01-04 r53913)
+Copyright (C) 2011 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
+Platform: x86_64-unknown-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -32,8 +33,7 @@ Loading required package: startupmsg
 Loading required package: sfsmisc
 Loading required package: SweaveListingUtils
 :SweaveListingUtils>  Utilities for Sweave together with
-:SweaveListingUtils>  TeX listings package (version
-:SweaveListingUtils>  0.4.1)
+:SweaveListingUtils>  TeX listings package (version 0.5)
 :SweaveListingUtils> 
 :SweaveListingUtils>  Some functions from package 'base'
 :SweaveListingUtils>  are intentionally masked ---see
@@ -54,14 +54,12 @@ Loading required package: SweaveListingUtils
 
 Attaching package: 'SweaveListingUtils'
 
+The following object(s) are masked from 'package:base':
 
-	The following object(s) are masked from package:base :
+    library, require
 
-	 library,
-	 require 
-
-:distr>  Object orientated implementation of distributions (version
-:distr>  2.2.1)
+:distr>  Object oriented implementation of distributions (version
+:distr>  2.3)
 :distr> 
 :distr>  Attention: Arithmetics on distribution objects are
 :distr>  understood as operations on corresponding random variables
@@ -82,16 +80,13 @@ Attaching package: 'SweaveListingUtils'
 
 Attaching package: 'distr'
 
+The following object(s) are masked from 'package:stats':
 
-	The following object(s) are masked from package:stats :
-
-	 df,
-	 qqplot,
-	 sd 
+    df, qqplot, sd
 
 Loading required package: distrSim
 :distrSim>  Simulation classes based on package distr (version
-:distrSim>  2.2.1)
+:distrSim>  2.3)
 :distrSim> 
 :distrSim>  Some functions from package 'stats' are intentionally
 :distrSim>  masked ---see distrSimMASK().
@@ -107,18 +102,16 @@ Loading required package: distrSim
 
 Attaching package: 'distrSim'
 
+The following object(s) are masked from 'package:stats':
 
-	The following object(s) are masked from package:stats :
+    simulate
 
-	 simulate 
+The following object(s) are masked from 'package:base':
 
-
-	The following object(s) are masked from package:base :
-
-	 rbind 
+    rbind
 
 :distrTEst>  Estimation and Testing classes based on package
-:distrTEst>  distr (version 2.2.1)
+:distrTEst>  distr (version 2.3)
 :distrTEst> 
 :distrTEst>  For more information see ?"distrTEst",
 :distrTEst>  NEWS("distrTEst"), as well as
@@ -403,26 +396,8 @@ Result: 'data.frame':	15 obs. of  2 variables:
  $ mean.id: num  0.02264 -0.04594 -0.00299 -0.02954 0.0091 ...
  $ mean.re: num  0.2621 0.0995 -0.2326 0.1775 0.0164 ...
 > ElistObj <- EvaluationList(ev1,ev2,name0="myEvalList")
-Warning in all(lapply(object@Elist, function(x) identical(x@call.ev$object,  :
-  coercing argument of type 'list' to logical
-Warning in all(lapply(object@Elist, function(x) identical(x@Data@seed, object@Elist[[1]]@Data@seed))) :
-  coercing argument of type 'list' to logical
-Warning in all(lapply(object@Elist, function(x) identical(body(x@Data@distribution.id@p),  :
-  coercing argument of type 'list' to logical
-Warning in all(lapply(object@Elist, function(x) identical(body(x@Data@distribution.c@p),  :
-  coercing argument of type 'list' to logical
 > plot(ElistObj,ylim=matrix(c(-0.5,0.5,0.5,4),nrow=2),main=c("location","scale"))
-Warning in par(op) : graphical parameter "cin" cannot be set
-Warning in par(op) : graphical parameter "cra" cannot be set
-Warning in par(op) : graphical parameter "csi" cannot be set
-Warning in par(op) : graphical parameter "cxy" cannot be set
-Warning in par(op) : graphical parameter "din" cannot be set
 > plot(ElistObj,ylim=c(-0.5,0.5),main=c("location"),runs0=3:12,dims0=1,evals0=2)
-Warning in par(op) : graphical parameter "cin" cannot be set
-Warning in par(op) : graphical parameter "cra" cannot be set
-Warning in par(op) : graphical parameter "csi" cannot be set
-Warning in par(op) : graphical parameter "cxy" cannot be set
-Warning in par(op) : graphical parameter "din" cannot be set
 > ElistObj
 An EvaluationList Object
 name of Evaluation List: myEvalList
@@ -477,7 +452,7 @@ Result:
 > 
 > ### Name: distrTEstoptions
 > ### Title: functions to change the global variables of the package
-> ###   `distrTEst'
+> ###   'distrTEst'
 > ### Aliases: distrTEstoptions getdistrTEstOption
 > ###   MaxNumberofPlottedEvaluationDims MaxNumberofPlottedEvaluations
 > ###   MaxNumberofSummarizedEvaluationDims MaxNumberofSummarizedEvaluations
@@ -512,7 +487,7 @@ $MaxNumberofPlottedEvaluationDims
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  2.75 0.02 2.793 0.01 0.01 
+Time elapsed:  1.72 0.05 1.78 0 0 
 > grDevices::dev.off()
 null device 
           1 
