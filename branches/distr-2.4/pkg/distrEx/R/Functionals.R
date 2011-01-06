@@ -16,7 +16,7 @@ setMethod("var", signature(x = "UnivariateDistribution"),
         ztr <- 0
         if(is(Symmetry(x),"SphericalSymmetry")){ 
              ztr <- SymmCenter(Symmetry(x))
-             x <- x-ztr
+             x0 <- x-ztr
         }
         
         LowIsUpp <- if(low == -Inf) 
@@ -24,7 +24,7 @@ setMethod("var", signature(x = "UnivariateDistribution"),
         
         if(LowIsUpp && missing(cond)&&missing(fun)){
            if(is(Symmetry(x),"SphericalSymmetry"))
-              return(2 * E(x, fun = function(t)t^2, low =0, useApply = useApply, ...))
+              return(2 * E(x0, fun = function(t)t^2, low =0, useApply = useApply, ...))
         }
 
         f2 <- function(t) {fun(t)^2}

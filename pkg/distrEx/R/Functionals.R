@@ -8,17 +8,15 @@
 setMethod("var", signature(x = "UnivariateDistribution"),
     function(x, fun = function(t) {t}, cond, withCond = FALSE, useApply = TRUE, 
              ...){
-
         if(missing(useApply)) useApply <- TRUE
         dots <- list(...)
         low <- -Inf; upp <- Inf
         if(hasArg(low)) low <- dots$low
         if(hasArg(upp)) upp <- dots$upp
-        
         ztr <- 0
         if(is(Symmetry(x),"SphericalSymmetry")){ 
              ztr <- SymmCenter(Symmetry(x))
-             x <- x-ztr
+             x0 <- x-ztr
         }
         
         LowIsUpp <- if(low == -Inf) 
@@ -26,7 +24,7 @@ setMethod("var", signature(x = "UnivariateDistribution"),
         
         if(LowIsUpp && missing(cond)&&missing(fun)){
            if(is(Symmetry(x),"SphericalSymmetry"))
-              return(2 * E(x, fun = function(t)t^2, low =0, useApply = useApply, ...))
+              return(2 * E(x0, fun = function(t)t^2, low =0, useApply = useApply, ...))
         }
 
         f2 <- function(t) {fun(t)^2}
@@ -42,7 +40,6 @@ setMethod("var", signature(x = "UnivariateDistribution"),
             m2 <- E(x, cond = cond, fun = f2, withCond  = withCond, useApply = 
                     useApply, ...)
             }
-#        print(c(m2,m^2))
         return(m2-m^2)
     })
 
