@@ -202,12 +202,12 @@ NbinomwithSizeFamily <- function(size = 1, prob = 0.5, trafo){
                    fct2 <- function(x){}
                    body(fct2) <- substitute({ (size/prob- x/(1-prob)) },
                                 list(size = size, prob = prob))
-                   body(fct1) <- substitute({ digamma(x+size)-digamma(size)-log(prob)},
+                   body(fct1) <- substitute({ digamma(x+size)-digamma(size)+log(prob)},
                                 list(size = size, prob = prob))
                    return(list(fct1, fct2))}
 
     L2derivSymm <- FunSymmList(NonSymmetric(), NonSymmetric())
-    L2derivDistr <- UnivarDistrList( digamma(distribution+size)-digamma(size)-log(prob), 
+    L2derivDistr <- UnivarDistrList( digamma(distribution+size)-digamma(size)+log(prob), 
                                     (size/prob- distribution/(1-prob)))
     L2derivDistrSymm <- DistrSymmList(NoSymmetry(), NoSymmetry())
 
@@ -274,7 +274,7 @@ NbinomMeanSizeFamily <- function(size = 1, mean = 0.5, trafo){
                    fct1 <- function(x){}
                    fct1.2 <- function(x){}
                    fct2 <- function(x){}
-                   body(fct1) <- substitute({ trigamma(x+size)-trigamma(size)-log(prob.2)},
+                   body(fct1) <- substitute({ trigamma(x+size)-trigamma(size)+log(prob.2)},
                                 list(size = size.0, prob.2 = prob.0))
                    body(fct1.2)<- substitute({ (size/prob.2- x/(1-prob.2)) },
                                 list(size = size.0, prob.2 = prob.0))
@@ -283,14 +283,14 @@ NbinomMeanSizeFamily <- function(size = 1, mean = 0.5, trafo){
                    return(list(fct1, fct2))}
     L2derivSymm <- FunSymmList(NonSymmetric(), NonSymmetric())
 
-    .di1 <- function(x)  digamma(x+size)-digamma(size)-log(prob.0)
+    .di1 <- function(x)  digamma(x+size)-digamma(size)+log(prob.0)
     .di2 <- function(x) .di1(x)*(1/prob.0-1)+ (size/prob.0- x/(1-prob.0))*size/prob.0^2 
     .supp1 <- support(distribution)
     .supp0 <- .di2(.supp1)
     .prob1 <- aggregate(data.frame(prob(as(distribution,"DiscreteDistribution"))),
                  by=list(round(.supp0,5)),sum)[,2]
     .Di2 <- DiscreteDistribution( supp=.supp0, prob=.prob1, .withArith = TRUE)
-    L2derivDistr <- UnivarDistrList( digamma(distribution+size)-digamma(size)-log(prob.0), 
+    L2derivDistr <- UnivarDistrList( digamma(distribution+size)-digamma(size)+log(prob.0), 
                                      .Di2)
                                      
     L2derivDistrSymm <- DistrSymmList(NoSymmetry(), NoSymmetry())
