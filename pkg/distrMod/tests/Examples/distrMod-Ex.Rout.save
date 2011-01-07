@@ -582,7 +582,7 @@ function (x)
 {
     ((x - 0)/1 * LogDeriv((x - 0)/1) - 1)/1
 }
-<environment: 0x4bf9798>
+<environment: 0x60317d8>
 
 > checkL2deriv(E1)
 precision of centering:	 -1.511810e-06 
@@ -759,7 +759,7 @@ function (x)
 {
     LogDeriv(x - 0)
 }
-<environment: 0x32bc0e8>
+<environment: 0x46f40f8>
 
 > checkL2deriv(G1)
 precision of centering:	 1.511810e-06 
@@ -798,7 +798,7 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A)
-<environment: 0x52e1898>
+<environment: 0x67198d8>
 
 > 
 > ## The function is currently defined as
@@ -1076,7 +1076,7 @@ function (x)
 {
     ((x - 0)/1 * LogDeriv((x - 0)/1) - 1)/1
 }
-<environment: 0x5c0dd08>
+<environment: 0x7045d48>
 
 > checkL2deriv(L1)
 precision of centering:	 -0.003003394 
@@ -1719,13 +1719,13 @@ An object of class "PosSemDefSymmMatrix"
 size  0.03044946  -4.0000
 prob -4.00000000 533.3333
 > checkL2deriv(N1.w)
-precision of centering:	 2.772558 0.001177892 
+precision of centering:	 -6.245978e-06 0.001177892 
 precision of Fisher information:
-            size         prob
-size 7.687142566  0.004113952
-prob 0.004113952 -0.160118938
+              size          prob
+size -4.182531e-06  0.0008481424
+prob  8.481424e-04 -0.1601189384
 $maximum.deviation
-[1] 7.687143
+[1] 0.1601189
 
 > (N2.w <- NbinomMeanSizeFamily(size = 25, mean = 10))
 An object of class "NbinomMeanSizeFamily"
@@ -1749,13 +1749,13 @@ An object of class "PosSemDefSymmMatrix"
 size  0.0114921     68.6046
 mean 68.6045968 411826.3818
 > checkL2deriv(N2.w)
-precision of centering:	 0.3249777 0.1010739 
+precision of centering:	 -0.3479619 -0.1681019 
 precision of Fisher information:
-            size       mean
-size   0.0941289  -70.55341
-mean -70.5534100 -170.57314
+           size       mean
+size   0.109596  -70.52776
+mean -70.527764 -170.55510
 $maximum.deviation
-[1] 170.5731
+[1] 170.5551
 
 > 
 > 
@@ -2568,7 +2568,7 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A0)
-<environment: 0x52cfe50>
+<environment: 0x6833808>
 
 > 
 > ## The function is currently defined as
@@ -2606,7 +2606,7 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A)
-<environment: 0x4cea9a0>
+<environment: 0x4eda408>
 
 > 
 > ## The function is currently defined as
@@ -4054,7 +4054,7 @@ TRUE
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  49.12 0.09 49.434 0 0 
+Time elapsed:  44.82 0.07 44.946 0 0 
 > grDevices::dev.off()
 null device 
           1 
