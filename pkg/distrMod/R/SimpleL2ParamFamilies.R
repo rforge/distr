@@ -274,7 +274,7 @@ NbinomMeanSizeFamily <- function(size = 1, mean = 0.5, trafo){
                    fct1 <- function(x){}
                    fct1.2 <- function(x){}
                    fct2 <- function(x){}
-                   body(fct1) <- substitute({ trigamma(x+size)-trigamma(size)+log(prob.2)},
+                   body(fct1) <- substitute({ digamma(x+size)-digamma(size)+log(prob.2)},
                                 list(size = size.0, prob.2 = prob.0))
                    body(fct1.2)<- substitute({ (size/prob.2- x/(1-prob.2)) },
                                 list(size = size.0, prob.2 = prob.0))
