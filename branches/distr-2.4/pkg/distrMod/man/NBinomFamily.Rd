@@ -50,6 +50,11 @@ checkL2deriv(N1)
 plot(N1.w)
 FisherInfo(N1.w)
 checkL2deriv(N1.w)
+(N2.w <- NbinomMeanSizeFamily(size = 25, mean = 75))
+plot(N2.w)
+FisherInfo(N2.w)
+checkL2deriv(N2.w)
+
 }
 \concept{Negative Binomial model}
 \keyword{models}

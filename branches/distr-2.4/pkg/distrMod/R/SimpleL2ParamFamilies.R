@@ -244,7 +244,7 @@ NbinomwithSizeFamily <- function(size = 1, prob = 0.5, trafo){
     return(res)
 }
 
-NbinomMeanSizeFamily <- function(size = 1, mean = 0.5, trafo){ 
+NbinomMeanSizeFamily <- function(size = 1, mean = .5, trafo){ 
     name <- "Negative Binomial family"
     prob.0 <- size/(size+mean)
     distribution <- Nbinom(size = size, prob = size/(size+mean))
@@ -274,7 +274,7 @@ NbinomMeanSizeFamily <- function(size = 1, mean = 0.5, trafo){
                    fct1 <- function(x){}
                    fct1.2 <- function(x){}
                    fct2 <- function(x){}
-                   body(fct1) <- substitute({ trigamma(x+size)-trigamma(size)+log(prob.2)},
+                   body(fct1) <- substitute({ digamma(x+size)-digamma(size)+log(prob.2)},
                                 list(size = size.0, prob.2 = prob.0))
                    body(fct1.2)<- substitute({ (size/prob.2- x/(1-prob.2)) },
                                 list(size = size.0, prob.2 = prob.0))
@@ -284,7 +284,7 @@ NbinomMeanSizeFamily <- function(size = 1, mean = 0.5, trafo){
     L2derivSymm <- FunSymmList(NonSymmetric(), NonSymmetric())
 
     .di1 <- function(x)  digamma(x+size)-digamma(size)+log(prob.0)
-    .di2 <- function(x) .di1(x)*(1/prob.0-1)+ (size/prob.0- x/(1-prob.0))*size/prob.0^2 
+    .di2 <- function(x) .di1(x)*(1/prob.0-1)- (size/prob.0- x/(1-prob.0))*size/prob.0^2 
     .supp1 <- support(distribution)
     .supp0 <- .di2(.supp1)
     .prob1 <- aggregate(data.frame(prob(as(distribution,"DiscreteDistribution"))),
