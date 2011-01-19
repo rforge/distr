@@ -1,5 +1,5 @@
 
-R version 2.12.1 Patched (2011-01-04 r53913)
+R version 2.12.1 Patched (2011-01-18 r54034)
 Copyright (C) 2011 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
@@ -593,7 +593,7 @@ function (x)
 {
     ((x - 0)/1 * LogDeriv((x - 0)/1) - 1)/1
 }
-<environment: 0x4b4b8b0>
+<environment: 0x53dea90>
 
 > checkL2deriv(E1)
 precision of centering:	 -1.511810e-06 
@@ -777,7 +777,7 @@ function (x)
 {
     LogDeriv(x - 0)
 }
-<environment: 0x3545d10>
+<environment: 0x3df4be8>
 
 > checkL2deriv(G1)
 precision of centering:	 1.511810e-06 
@@ -819,7 +819,7 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A)
-<environment: 0x520bce0>
+<environment: 0x5ab0550>
 
 > 
 > ## The function is currently defined as
@@ -1097,7 +1097,7 @@ function (x)
 {
     ((x - 0)/1 * LogDeriv((x - 0)/1) - 1)/1
 }
-<environment: 0x5e5d5f0>
+<environment: 0x6683a28>
 
 > checkL2deriv(L1)
 precision of centering:	 -0.003003394 
@@ -1758,40 +1758,41 @@ prob -0.02120356 -0.03002230
 $maximum.deviation
 [1] 0.1601189
 
-> (N2.w <- NbinomMeanSizeFamily(size = 25, mean = 10))
+> (N2.w <- NbinomMeanSizeFamily(size = 25, mean = 75))
 An object of class "NbinomMeanSizeFamily"
 ### name:	Negative Binomial family
 
 ### distribution:	Distribution Object of Class: Nbinom
  size: 25
- prob: 0.714285714285714
+ prob: 0.25
 
 ### param:	An object of class "ParamFamParameter"
 name:	probability of success
 size:	25
-mean:	10
+mean:	75
 
 ### props:
 [1] ""
 > plot(N2.w)
 > FisherInfo(N2.w)
 An object of class "PosSemDefSymmMatrix"
-           size        mean
-size  0.0114921     68.6046
-mean 68.6045968 411826.3818
+             size         mean
+size 3.044946e-02     1600.091
+mean 1.600091e+03 85342933.607
 > checkL2deriv(N2.w)
-precision of centering:	 -3.78762e-06 -0.02891864 
+precision of centering:	 -6.245978e-06 -0.4711755 
 precision of Fisher information:
               size          mean
-size -1.783076e-06   -0.01493583
-mean -1.493583e-02 -114.12730267
+size -4.182531e-06 -3.392695e-01
+mean -3.392695e-01 -2.562107e+04
 precision of Fisher information - relativ error [%]:
             size        mean
-size -0.01551567 -0.02177089
-mean -0.02177089 -0.02771248
+size -0.01373598 -0.02120313
+mean -0.02120313 -0.03002131
 $maximum.deviation
-[1] 114.1273
+[1] 25621.07
 
+> 
 > 
 > 
 > 
@@ -2621,7 +2622,7 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A0)
-<environment: 0x4cfb1b8>
+<environment: 0x6b80b90>
 
 > 
 > ## The function is currently defined as
@@ -2659,7 +2660,7 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A)
-<environment: 0x4a341a8>
+<environment: 0x6658670>
 
 > 
 > ## The function is currently defined as
@@ -4110,7 +4111,7 @@ TRUE
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  49.45 0.17 49.649 0 0 
+Time elapsed:  49.92 0.13 50.211 0 0 
 > grDevices::dev.off()
 null device 
           1 
