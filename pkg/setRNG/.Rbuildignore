@@ -1,9 +1,13 @@
+^Rplots(.*).pdf$
+inst/doc/Rplots(.*).pdf$
 ^Makefile$
 (^|.*/)core$
 (^|.*/)run$
 (^|.*/)zot$
 TMP$
 FLAGS$
+^Rplots(.*).pdf$
+inst/doc/Rplots(.*).pdf$
 mansrc$
 inst/doc/(^|.*)\.tex$
 inst/doc/(^|.*)\.R$
