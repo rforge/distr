@@ -225,7 +225,9 @@ readSourceFromRForge <- function(PKG, TYPE, FILENAME, PROJECT,
                                    "?root=", PROJECT, sep ="") else base.url
   if(is.null(.CacheFiles[[base.URL]])){
     .CacheLength <<- .CacheLength + 1
-    RL <- readLines(url(base.URL))
+    url.connection <- url(base.URL) 
+    RL <- readLines(url.connection)
+    close(url.connection)
     .CacheFiles[[base.URL]] <<- RL
   }
   .CacheFiles[[base.URL]]

@@ -1,6 +1,6 @@
 .onLoad <- function(lib, pkg){
-    require("methods", character = TRUE, quietly = TRUE) 
-    require(setRNG)
+#    require("methods", character = TRUE, quietly = TRUE) 
+#    require(setRNG)
 }
 
 setClassUnion("vectororNULL", c("vector","NULL"))

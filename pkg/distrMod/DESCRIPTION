@@ -1,6 +1,6 @@
 Package: distrMod
-Version: 2.3.1
-Date: 2011-02-14
+Version: 2.3.2
+Date: 2011-09-02
 Title: Object oriented implementation of probability models
 Description: Object oriented implementation of probability models based on packages 'distr' and
         'distrEx'

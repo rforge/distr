@@ -1,5 +1,6 @@
 useDynLib("distrEx")
 
+import("methods")
 import("distr")
 import("startupmsg")
 

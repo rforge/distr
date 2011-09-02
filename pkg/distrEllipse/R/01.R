@@ -1,8 +1,8 @@
 .onLoad <- function(lib, pkg){
-    require("methods", character = TRUE, quietly = TRUE) 
-    require("distrEx")
-    require("distrSim")
-    require(setRNG)
+#    require("methods", character = TRUE, quietly = TRUE) 
+#    require("distrEx")
+#    require("distrSim")
+#    require(setRNG)
 }
 
 
