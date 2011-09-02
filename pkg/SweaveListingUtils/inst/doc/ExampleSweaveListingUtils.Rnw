@@ -75,7 +75,7 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 %\usepackage{Sweave}
 \SweaveOpts{keep.source=TRUE}
 % -------------------------------------------------------------------------------
-<<SweaveListingsPreparations, results=tex, echo=FALSE, strip.white=FALSE>>=
+<<SweaveListingsPreparations, results=tex, echo=FALSE, strip.white="false">>=
 require(SweaveListingUtils)
 SweaveListingoptions(intermediate = FALSE)
 SweaveListingPreparations()
