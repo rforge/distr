@@ -1,5 +1,5 @@
 
-R version 2.12.1 Patched (2011-01-04 r53913)
+R version 2.13.1 Patched (2011-09-08 r56992)
 Copyright (C) 2011 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
@@ -34,7 +34,8 @@ Loading required package: startupmsg
 Loading required package: sfsmisc
 Loading required package: SweaveListingUtils
 :SweaveListingUtils>  Utilities for Sweave together with
-:SweaveListingUtils>  TeX listings package (version 0.5)
+:SweaveListingUtils>  TeX listings package (version
+:SweaveListingUtils>  0.5.2)
 :SweaveListingUtils> 
 :SweaveListingUtils>  Some functions from package 'base'
 :SweaveListingUtils>  are intentionally masked ---see
@@ -60,7 +61,7 @@ The following object(s) are masked from 'package:base':
     library, require
 
 :distr>  Object oriented implementation of distributions (version
-:distr>  2.3)
+:distr>  2.3.3)
 :distr> 
 :distr>  Attention: Arithmetics on distribution objects are
 :distr>  understood as operations on corresponding random variables
@@ -95,7 +96,7 @@ The following object(s) are masked from 'package:grDevices':
 
     cm
 
-:distrEx>  Extensions of package distr (version 2.3)
+:distrEx>  Extensions of package distr (version 2.3.1)
 :distrEx> 
 :distrEx>  Note: Packages "e1071", "moments", "fBasics" should be
 :distrEx>  attached /before/ package "distrEx". See distrExMASK().
@@ -116,7 +117,7 @@ The following object(s) are masked from 'package:stats':
 
 Loading required package: distrSim
 :distrSim>  Simulation classes based on package distr (version
-:distrSim>  2.3)
+:distrSim>  2.3.1)
 :distrSim> 
 :distrSim>  Some functions from package 'stats' are intentionally
 :distrSim>  masked ---see distrSimMASK().
@@ -141,7 +142,7 @@ The following object(s) are masked from 'package:base':
     rbind
 
 :distrEllipse>  S4 classes for elliptically contoured
-:distrEllipse>  distributions (version 2.3)
+:distrEllipse>  distributions (version 2.3.1)
 :distrEllipse> 
 :distrEllipse>  Some functions from package 'stats' are
 :distrEllipse>  intentionally masked ---see
@@ -620,11 +621,11 @@ An object of class "UnivarLebDecDistribution"
 
     Its discrete part (with weight 0.450000) is a
  Distribution Object of Class: DiscreteDistribution
- This part is accessible with 'discretePart()'.
+ This part is accessible with 'discretePart(<obj>)'.
 
     Its absolutely continuous part (with weight 0.550000) is a
  Distribution Object of Class: AbscontDistribution
- This part is accessible with 'acPart()'.
+ This part is accessible with 'acPart(<obj>)'.
 Warning in function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
@@ -634,11 +635,11 @@ An object of class "UnivarLebDecDistribution"
 
     Its discrete part (with weight 0.450000) is a
  Distribution Object of Class: DiscreteDistribution
- This part is accessible with 'discretePart(ldots[[2]])'.
+ This part is accessible with 'discretePart(<obj>)'.
 
     Its absolutely continuous part (with weight 0.550000) is a
  Distribution Object of Class: AbscontDistribution
- This part is accessible with 'acPart(ldots[[2]])'.
+ This part is accessible with 'acPart(<obj>)'.
 Warning in show(x) :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
@@ -648,11 +649,11 @@ An object of class "UnivarLebDecDistribution"
 
     Its discrete part (with weight 0.615000) is a
  Distribution Object of Class: DiscreteDistribution
- This part is accessible with 'discretePart()'.
+ This part is accessible with 'discretePart(<obj>)'.
 
     Its absolutely continuous part (with weight 0.385000) is a
  Distribution Object of Class: AbscontDistribution
- This part is accessible with 'acPart()'.
+ This part is accessible with 'acPart(<obj>)'.
 Warning in function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
@@ -1164,7 +1165,7 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  12.14 0.08 12.283 0 0 
+Time elapsed:  12.37 0.09 12.479 0 0 
 > grDevices::dev.off()
 null device 
           1 
