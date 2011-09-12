@@ -1,5 +1,5 @@
 
-R version 2.12.1 Patched (2011-01-04 r53913)
+R version 2.13.1 Patched (2011-09-08 r56992)
 Copyright (C) 2011 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
@@ -32,7 +32,8 @@ Loading required package: startupmsg
 Loading required package: sfsmisc
 Loading required package: SweaveListingUtils
 :SweaveListingUtils>  Utilities for Sweave together with
-:SweaveListingUtils>  TeX listings package (version 0.5)
+:SweaveListingUtils>  TeX listings package (version
+:SweaveListingUtils>  0.5.2)
 :SweaveListingUtils> 
 :SweaveListingUtils>  Some functions from package 'base'
 :SweaveListingUtils>  are intentionally masked ---see
@@ -58,7 +59,7 @@ The following object(s) are masked from 'package:base':
     library, require
 
 :distr>  Object oriented implementation of distributions (version
-:distr>  2.3)
+:distr>  2.3.3)
 :distr> 
 :distr>  Attention: Arithmetics on distribution objects are
 :distr>  understood as operations on corresponding random variables
@@ -93,7 +94,7 @@ The following object(s) are masked from 'package:grDevices':
 
     cm
 
-:distrEx>  Extensions of package distr (version 2.3)
+:distrEx>  Extensions of package distr (version 2.3.1)
 :distrEx> 
 :distrEx>  Note: Packages "e1071", "moments", "fBasics" should be
 :distrEx>  attached /before/ package "distrEx". See distrExMASK().
@@ -115,7 +116,7 @@ The following object(s) are masked from 'package:stats':
 :distrTeach>  Extensions of package distr for teaching
 :distrTeach>  Stochastics/Statistics
 :distrTeach> 
-:distrTeach>  in secondary school (version 2.3)
+:distrTeach>  in secondary school (version 2.3.1)
 :distrTeach> 
 :distrTeach>  For more information see ?"distrTeach",
 :distrTeach>  NEWS("distrTeach"), as well as
@@ -193,7 +194,7 @@ The following object(s) are masked from 'package:stats':
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  15.57 0.11 15.839 0 0 
+Time elapsed:  15.52 0.11 15.727 0 0 
 > grDevices::dev.off()
 null device 
           1 
