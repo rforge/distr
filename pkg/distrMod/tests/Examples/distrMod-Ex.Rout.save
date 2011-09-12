@@ -1,5 +1,5 @@
 
-R version 2.12.1 Patched (2011-01-18 r54034)
+R version 2.13.1 Patched (2011-09-08 r56992)
 Copyright (C) 2011 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
@@ -32,7 +32,8 @@ Loading required package: distr
 Loading required package: sfsmisc
 Loading required package: SweaveListingUtils
 :SweaveListingUtils>  Utilities for Sweave together with
-:SweaveListingUtils>  TeX listings package (version 0.5)
+:SweaveListingUtils>  TeX listings package (version
+:SweaveListingUtils>  0.5.2)
 :SweaveListingUtils> 
 :SweaveListingUtils>  Some functions from package 'base'
 :SweaveListingUtils>  are intentionally masked ---see
@@ -58,7 +59,7 @@ The following object(s) are masked from 'package:base':
     library, require
 
 :distr>  Object oriented implementation of distributions (version
-:distr>  2.3)
+:distr>  2.3.3)
 :distr> 
 :distr>  Attention: Arithmetics on distribution objects are
 :distr>  understood as operations on corresponding random variables
@@ -93,7 +94,7 @@ The following object(s) are masked from 'package:grDevices':
 
     cm
 
-:distrEx>  Extensions of package distr (version 2.3)
+:distrEx>  Extensions of package distr (version 2.3.1)
 :distrEx> 
 :distrEx>  Note: Packages "e1071", "moments", "fBasics" should be
 :distrEx>  attached /before/ package "distrEx". See distrExMASK().
@@ -113,7 +114,7 @@ The following object(s) are masked from 'package:stats':
     IQR, mad, median, var
 
 Loading required package: RandVar
-:RandVar>  Implementation of random variables (version 0.8)
+:RandVar>  Implementation of random variables (version 0.8.1)
 :RandVar> 
 :RandVar>  For more information see ?"RandVar", NEWS("RandVar"), as
 :RandVar>  well as
@@ -124,7 +125,7 @@ Loading required package: RandVar
 Loading required package: MASS
 Loading required package: stats4
 :distrMod>  Object oriented implementation of probability models
-:distrMod>  (version 2.3)
+:distrMod>  (version 2.3.2)
 :distrMod> 
 :distrMod>  Some functions from pkg's 'base' and 'stats' are
 :distrMod>  intentionally masked ---see distrModMASK().
@@ -403,9 +404,9 @@ function (x)
     list(fval = fval0, mat = mat0)
 }
 Trafo / derivative matrix at which estimate was produced:
-      scale shape
-shape  0.00     1
-rate  -8.55     0
+       scale shape
+shape  0.000     1
+rate  -8.549     0
 > print(ci, digits = 4, show.details="medium")
 A[n] asymptotic (CLT-based) confidence interval:
       2.5 % 97.5 %
@@ -593,10 +594,10 @@ function (x)
 {
     ((x - 0)/1 * LogDeriv((x - 0)/1) - 1)/1
 }
-<environment: 0x53dea90>
+<environment: 0x530a058>
 
 > checkL2deriv(E1)
-precision of centering:	 -1.511810e-06 
+precision of centering:	 -1.51181e-06 
 precision of Fisher information:
              scale
 scale -2.61793e-05
@@ -723,7 +724,7 @@ An object of class "PosSemDefSymmMatrix"
 scale     1 1.000000
 shape     1 1.644934
 > checkL2deriv(G1)
-precision of centering:	 -1.511810e-06 1.312514e-06 
+precision of centering:	 -1.51181e-06 1.312514e-06 
 precision of Fisher information:
               scale         shape
 scale -2.617930e-05 -7.165188e-06
@@ -777,10 +778,10 @@ function (x)
 {
     LogDeriv(x - 0)
 }
-<environment: 0x3df4be8>
+<environment: 0x6de2328>
 
 > checkL2deriv(G1)
-precision of centering:	 1.511810e-06 
+precision of centering:	 1.51181e-06 
 precision of Fisher information:
              loc
 loc -2.61793e-05
@@ -819,7 +820,7 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A)
-<environment: 0x5ab0550>
+<environment: 0x62f5ec8>
 
 > 
 > ## The function is currently defined as
@@ -1097,7 +1098,7 @@ function (x)
 {
     ((x - 0)/1 * LogDeriv((x - 0)/1) - 1)/1
 }
-<environment: 0x6683a28>
+<environment: 0x7332148>
 
 > checkL2deriv(L1)
 precision of centering:	 -0.003003394 
@@ -2622,7 +2623,7 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A0)
-<environment: 0x6b80b90>
+<environment: 0x8ba3b10>
 
 > 
 > ## The function is currently defined as
@@ -2660,7 +2661,7 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A)
-<environment: 0x6658670>
+<environment: 0x8270a90>
 
 > 
 > ## The function is currently defined as
@@ -4111,7 +4112,7 @@ TRUE
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  49.92 0.13 50.211 0 0 
+Time elapsed:  45.96 0.22 46.218 0 0 
 > grDevices::dev.off()
 null device 
           1 
