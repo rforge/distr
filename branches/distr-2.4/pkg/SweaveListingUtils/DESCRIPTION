@@ -5,6 +5,7 @@ Version: 0.6
 Depends: R(>= 2.10.0), startupmsg
 Suggests: distr
 Imports: stats
+ByteCompile: yes
 LazyLoad: yes
 Author: Peter Ruckdeschel
 Description: provides utilities for defining R / Rd as Tex-package-listings "language" and

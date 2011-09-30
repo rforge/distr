@@ -10,6 +10,7 @@ Author: Florian Camphausen, Matthias Kohl, Peter Ruckdeschel, Thomas Stabla
 Description: Evaluation (S4-)classes based on package distr for evaluating procedures
         (estimators/tests) at data/simulation in a unified way.
 Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
+ByteCompile: yes
 LazyLoad: yes
 Encoding: latin1
 License: LGPL-3

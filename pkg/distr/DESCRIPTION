@@ -1,6 +1,6 @@
 Package: distr
 Version: 2.3.3
-Date: 2011-08-31
+Date: 2011-09-30
 Title: Object oriented implementation of distributions
 Description: S4 Classes and Methods for distributions
 Author: Florian Camphausen, Matthias Kohl, Peter Ruckdeschel, Thomas Stabla
@@ -9,6 +9,7 @@ Depends: R(>= 2.2.0), methods, graphics, startupmsg, sfsmisc, SweaveListingUtils
 Suggests: distrEx, SweaveListingUtils
 Imports: stats
 LazyLoad: yes
+ByteCompile: yes
 Encoding: latin1
 License: LGPL-3
 URL: http://distr.r-forge.r-project.org/

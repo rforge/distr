@@ -7,6 +7,7 @@ Description: Utilities for start-up messages
 Author: Peter Ruckdeschel
 Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
 Depends: R(>= 1.8.0)
+ByteCompile: yes
 LazyLoad: yes
 License: LGPL-3
 LastChangedDate: {$LastChangedDate$}
