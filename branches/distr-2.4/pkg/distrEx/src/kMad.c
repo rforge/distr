@@ -47,7 +47,7 @@ int n2, r1, r2, i1, i2,j, k = (*kp);
 
        while(j < n2)
          {int i1l=0, i2l=0, jl=0, i1r=0, i2r=0, jr=0;
-	      double xll=0, xrl=0, ll=0,   xlr=0, xrr=0, lr=0;
+	      double xll=0, xrl=0, xlr=0, xrr=0;
           // l = left check values, r = right check values
         	// check left
 	     if(i1>0){
