@@ -22,7 +22,7 @@
 %\VignettePackage{distrMod} 
 
 %% almost as usual
-\author{Matthias Kohl\\Friedrich-Schiller-University Jena\And
+\author{Matthias Kohl\\FH Furtwangen\And
         Peter Ruckdeschel\\Fraunhofer ITWM Kaiserslautern}
 \title{\proglang{R} Package~\pkg{distrMod}: \proglang{S}4 Classes and Methods for Probability Models}
 
@@ -59,13 +59,11 @@ estimators, minimum distance estimators, S4 classes, S4 methods} %% without form
 %% in the following format:
 \Address{
   Matthias Kohl\\
-  Paul-Martini-Clinical Sepsis Research Unit\\ 
-  Department of Anesthesiology and Intensive Care Medicine\\
-  Jena University Hospital\\ 
-  Friedrich-Schiller-University\\ 
-  Erlanger Allee 101\\ 
-  D-07747 Jena, Germany\\
-  E-mail: \email{Matthias.Kohl@stamats.de}\\
+  Hochschule Furtwangen\\
+Fakult\"at Maschinenbau und Verfahrenstechnik\\
+Jakob-Kienzle-Strasse 17\\
+78054 Villingen-Schwenningen \\
+  E-mail: \email{Matthias.Kohl@hs-furtwangen.de}\\
   \bigskip \\
   Peter Ruckdeschel\\
   TU Kaiserslautern\\ 
