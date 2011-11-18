@@ -1,6 +1,6 @@
 Package: distrDoc
 Version: 2.4
-Date: 2011-02-14
+Date: 2011-11-18
 Title: Documentation for packages distr, distrEx, distrSim, distrTEst, distrTeach, distrMod,
         and distrEllipse
 Description: provides documentation in form of a common vignette to packages distr, distrEx,
@@ -12,10 +12,9 @@ Depends: R(>= 2.6.0), tools, startupmsg, distr(>= 2.2.0), distrEx(>= 2.2.0), dis
         MASS, methods
 Suggests: Biobase, SweaveListingUtils
 ByteCompile: yes
-LazyLoad: yes
 Encoding: latin1
 License: LGPL-3
 URL: http://distr.r-forge.r-project.org/
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
-SVNRevision: 699
+SVNRevision: 745
