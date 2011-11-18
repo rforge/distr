@@ -85,11 +85,11 @@ setToBeDefinedPkgs(pkgs = c("distr","distrEx","distrTEst","distrSim",
 %,version \pkgExversion}
 \author{\small Peter Ruckdeschel\thanks{Fraunhofer ITWM, Kaiserslautern}
 \\[-.5ex]
-\small Matthias Kohl\thanks{Universit\"at Bayreuth}
+\small Matthias Kohl\thanks{FH Furtwangen}
 \\[-.5ex]
-\small Thomas Stabla\thanks{Hans-Sachs-Gymnasium N\"urnberg}
+\small Thomas Stabla\thanks{Graf-M\"unster-Gymnasium, Bayreuth}
 \\[-.5ex]
-\small Florian Camphausen\thanks{West-LB, D\"usseldorf}
+\small Florian Camphausen\thanks{West-LB, London}
 \smallskip\\
 \small Fraunhofer ITWM\\[-.5ex]
 \small Fraunhofer Platz 1\\[-.5ex]
