@@ -253,7 +253,7 @@ isBaseOrRecommended <- function(pkgs){
 }
 
 
-setBaseOrRecommended <- function(pkgs,kws){
+setBaseOrRecommended <- function(pkgs,kws = NULL){
       idxRec <- as.logical(isBaseOrRecommended(pkgs = pkgs))
       if(missing(kws)) {
          kws <- rep(getSweaveListingOption("Keywordstyle"),
