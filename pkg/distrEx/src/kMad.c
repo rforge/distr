@@ -47,14 +47,13 @@ void kMad(double *x, int *lx, int *kp, double *d, double *eps)
 
        while(j < n2)
          {int i1l=0, i2l=0, jl=0, i1r=0, i2r=0, jr=0;
-              double ll=0, lr = 0, xll=0, xrl=0, xlr=0, xrr=0;
+              double xll=0, xrl=0, xlr=0, xrr=0;
           // l = left check values, r = right check values
                 // check left
              if(i1>0){
                 i1l = i1 - 1;
                 xll = x[i1l];
                 xrl = m + k * (m-xll);
-                ll = xrl - xll;
                 i2l = i2;
                 while((x[i2l] <= xrl +eps[0]) &&(i2l < lx[0]-2)) i2l ++;
                 jl = i2l - i1l + 1;
@@ -70,7 +69,6 @@ void kMad(double *x, int *lx, int *kp, double *d, double *eps)
                    i2r = i2 + 1;
                    xrr = x[i2r];
                    xlr = m - (xrr-m) / k;
-                   lr = xrr - xlr;
                    i1r = i1;
                    while((x[i1r] >= xlr -eps[0]) &&(i1r > 0)) i1r --;
                    jr = i2r - i1r + 1;
