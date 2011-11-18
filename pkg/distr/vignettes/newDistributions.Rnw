@@ -87,7 +87,7 @@ setToBeDefinedPkgs(pkgs = c("distr","distrEx"),
 %,version \pkgExversion}
 \author{\small Peter Ruckdeschel\thanks{Fraunhofer ITWM, Kaiserslautern}
 \\[-.5ex]
-\small Matthias Kohl\thanks{Universit\"at Bayreuth}
+\small Matthias Kohl\thanks{FH Furtwangen}
 \smallskip\\
 \small Fraunhofer ITWM\\[-.5ex]
 \small Fraunhofer Platz 1\\[-.5ex]
