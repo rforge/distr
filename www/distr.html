@@ -1,1102 +1,1652 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-  <meta http-equiv="Content-Type"
- content="text/html; charset=iso-8859-15">
+
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
+
+  
   <meta name="GENERATOR" content="Mozilla/1.5 [de]">
+
+  
   <title>Package "distr"</title>
 </head>
+
+
 <body style="background-image: url(papier.gif);">
+
 <div style="text-align: left;">
 <hr>
-<h1><span style="color: rgb(0, 0, 0);"><a name="top"></a> <a
- href="http://www.uni-bayreuth.de/departments/math/org/mathe7/mathe7.html"><img
- style="border: 0px solid ; width: 198px; height: 127px;" src="logo.gif"
- alt="[Picture: logo]"></a><big style="color: rgb(0, 0, 153);">R-Package
-<span style="color: rgb(51, 102, 255);"><span
- style="color: rgb(51, 51, 255);">"distr"</span><span> <a
- href="http://www.r-project.org/"> <img
- style="border: 0px solid ; width: 152px; height: 101px;" alt="R-Logo"
- src="RLOGO.jpg"> </a></span></span></big> </span> </h1>
+<h1><span style="color: rgb(0, 0, 0);"><a name="top"></a> <a href="http://www.uni-bayreuth.de/departments/math/org/mathe7/mathe7.html"><img style="border: 0px solid ; width: 198px; height: 127px;" src="logo.gif" alt="[Picture: logo]"></a><big style="color: rgb(0, 0, 153);">R-Package
+<span style="color: rgb(51, 102, 255);"><span style="color: rgb(51, 51, 255);">"distr"</span><span> <a href="http://www.r-project.org/"> <img style="border: 0px solid ; width: 152px; height: 101px;" alt="R-Logo" src="RLOGO.jpg"> </a></span></span></big> </span> </h1>
+
 </div>
+
 <hr style="width: 100%; height: 2px;">
-<div style="text-align: justify;"> Version: 2.1<br>
-Release Date: 2008-03-19 <br>
-Authors: <a
- href="mailto:peter.ruckdeschel@itwm.fraunhofer.de?subject=%5Bdistr%5D">Peter
-Ruckdeschel</a>, <a
- href="mailto:matthias.kohl@stamats.de?subject=%5Bdistr%5D">Matthias
+<div style="text-align: justify;"> Version: 2.3.3<br>
+
+Release Date: 2011-11-19 <br>
+
+Authors: <a href="mailto:peter.ruckdeschel@itwm.fraunhofer.de?subject=%5Bdistr%5D">Peter
+Ruckdeschel</a>, <a href="mailto:matthias.kohl@stamats.de?subject=%5Bdistr%5D">Matthias
 Kohl</a>, <a href="mailto:statho3@web.de?subject=%5Bdistr%5D">Thomas
 Stabla</a>, <a href="mailto:fcampi@gmx.de?subject=%5Bdistr%5D">Florian
 Camphausen</a><br>
+
 Required R-Version:
 <ul>
+
   <li>&gt;=2.2.0 for version 2.1,</li>
+
   <li>&gt;=2.2.0 for version 1.6-2.0,</li>
+
   <li>&gt;=2.0.1 patched for version 1.5,</li>
+
   <li>&gt;= 1.8.0 for version 1.4,</li>
+
   <li>&gt;= 1.7.0 for version built from source files</li>
+
 </ul>
+
 Dependencies: requires package "<span style="color: rgb(51, 102, 255);">startupmsg</span>"
-by <a
- href="mailto:peter.ruckdeschel@itwm.fraunhofer.de?subject=%5Bstartupmsg%5D">Peter
-Ruckdeschel</a> also available from <a
- href="http://cran.r-project.org/mirrors.html">CRAN</a>;
+by <a href="mailto:peter.ruckdeschel@itwm.fraunhofer.de?subject=%5Bstartupmsg%5D">Peter
+Ruckdeschel</a> also available from <a href="http://cran.r-project.org/mirrors.html">CRAN</a>;
 </div>
+
 <hr style="width: 100%; height: 2px;">
 <h2>What is "distr" meant for?</h2>
+
 <div style="text-align: justify; color: rgb(0, 0, 0);"> The aim of
 package "<span style="color: rgb(51, 102, 255);">distr</span>" is to
 provide a conceptual treatment of random variables (r.v.'s) by means of
 S4--classes. A mother class "<span style="color: rgb(51, 102, 255);">Distribution</span>"
 is introduced with slots for a parameter and - most important - for the
 four constitutive methods "<span style="color: rgb(51, 102, 255);">r</span>",
-"<span style="color: rgb(51, 102, 255);">d</span>", "<span
- style="color: rgb(51, 102, 255);">p</span>", and "<span
- style="color: rgb(51, 102, 255);">q</span>" for simulation,
+"<span style="color: rgb(51, 102, 255);">d</span>", "<span style="color: rgb(51, 102, 255);">p</span>", and "<span style="color: rgb(51, 102, 255);">q</span>" for simulation,
 respectively for evaluation of density / c.d.f. and quantile function
-of the corresponding distribution. All distributions of the "<span
- style="color: rgb(51, 102, 255);">base</span>" package for which
-corresponding "<span style="color: rgb(51, 102, 255);">r</span>", "<span
- style="color: rgb(51, 102, 255);">d</span>", "<span
- style="color: rgb(51, 102, 255);">p</span>", and "<span
- style="color: rgb(51, 102, 255);">q</span>"- &lt;distr.name&gt;
+of the corresponding distribution. All distributions of the "<span style="color: rgb(51, 102, 255);">base</span>" package for which
+corresponding "<span style="color: rgb(51, 102, 255);">r</span>", "<span style="color: rgb(51, 102, 255);">d</span>", "<span style="color: rgb(51, 102, 255);">p</span>", and "<span style="color: rgb(51, 102, 255);">q</span>"- &lt;distr.name&gt;
 functions exist (like normal, Poisson, etc.) are implemented as
 subclasses of either "<span style="color: rgb(51, 102, 255);">AbscontDistribution</span>"
 or "<span style="color: rgb(51, 102, 255);">DiscreteDistribution</span>",
 which themselves are again subclasses of "Distribution".<br>
+
 <br>
+
 This approach seems very appealing to us from a conceptual viewpoint: <br>
+
 <br>
+
 <span style="font-style: italic;">Just pass an object of some derived
 distribution class to a generic function as argument and let the
 dispatching mechanism decide what to do on run-time. </span><br>
+
 <br>
+
 As an example, we may automatically generate new objects of these
 classes with corresponding "<span style="color: rgb(51, 102, 255);">r</span>",
-"<span style="color: rgb(51, 102, 255);">d</span>", "<span
- style="color: rgb(51, 102, 255);">p</span>", and "<span
- style="color: rgb(51, 102, 255);">q</span>"-slots for the laws of
+"<span style="color: rgb(51, 102, 255);">d</span>", "<span style="color: rgb(51, 102, 255);">p</span>", and "<span style="color: rgb(51, 102, 255);">q</span>"-slots for the laws of
 r.v.'s under standard mathematical univariate transformations and under
-convolution of independent r.v.'s. For "<span
- style="color: rgb(51, 102, 255);">Distribution</span>" objects <span
- style="color: rgb(51, 102, 255);">X</span> and <span
- style="color: rgb(51, 102, 255);">Y</span> expressions like <span
- style="color: rgb(51, 102, 255);">3*X+sin(exp(-Y/4+3))</span> have
+convolution of independent r.v.'s. For "<span style="color: rgb(51, 102, 255);">Distribution</span>" objects <span style="color: rgb(51, 102, 255);">X</span> and <span style="color: rgb(51, 102, 255);">Y</span> expressions like <span style="color: rgb(51, 102, 255);">3*X+sin(exp(-Y/4+3))</span> have
 their natural interpretation as corresponding image distributions.<br>
+
 <br>
+
 <span style="font-weight: bold;">Note:</span> Arithmetics on
 distribution objects are understood as operations on corresponding
 r.v.'s and <span style="font-weight: bold; font-style: italic;">not</span>
 on distribution functions or densities.<br>
+
 <br>
+
 You may set global options by <span style="color: rgb(51, 102, 255);">distroptions()</span>
 confer <span style="color: rgb(51, 102, 255);">?distroptions</span> .<br>
+
 <br>
+
 Up to version 1.5, additionally, we also provided classes for a
 standardized treatment of simulations (also under contaminations) and
 evaluations of statistical procedures on such simulations. These are
 now delegated to packages <span style="color: rgb(51, 102, 255);">distrSim</span>
 and <span style="color: rgb(51, 102, 255);">distrTEst</span> (see
 below). <br>
+
 </div>
+
 <br>
+
 <hr style="width: 100%; height: 2px;">
 <div style="text-align: left;"><big><big>Attention:</big></big>
 This package has been reorganized in version 1.6; if you cannot find a
 class/method/function previously in the package, also search the new
 packages<br>
+
 </div>
-<div style="text-align: center;"><big><big><big><a href="distrSim.html"><span
- style="color: rgb(51, 102, 255);">distrSim,</span></a>
+
+<div style="text-align: center;"><big><big><big><a href="distrSim.html"><span style="color: rgb(51, 102, 255);">distrSim,</span></a>
 <a href="distrTEst.html"><span style="color: rgb(51, 102, 255);">distrTEst,</span></a>
 <a href="distrEx.html"><span style="color: rgb(51, 102, 255);">distrEx</span></a>
 </big></big></big></div>
+
 <br>
+
 <div style="text-align: left;">
-Further packages built on top of package "<span
- style="color: rgb(51, 102, 255);">distr</span>": <big><a
- href="RandVar.html"><span style="color: rgb(51, 102, 255);"><br>
+Further packages built on top of package "<span style="color: rgb(51, 102, 255);">distr</span>": <big><a href="RandVar.html"><span style="color: rgb(51, 102, 255);"><br>
+
 </span></a></big>
-<div style="text-align: center;"><big><big><big><a href="RandVar.html"><span
- style="color: rgb(51, 102, 255);">RandVar</span></a>,&nbsp; </big></big></big><big><big><big><a
- href="distrMod.html"><span style="color: rgb(51, 102, 255);">distrMod,</span></a><span
- style="color: rgb(51, 102, 255);"> &nbsp;</span><span
- style="color: rgb(51, 102, 255);"></span></big></big></big><big><big><big><a
- href="distrTeach.html"><span style="color: rgb(51, 102, 255);">distrTeach,</span></a><span
- style="color: rgb(51, 102, 255);"></span></big></big></big><big><big><big>&nbsp;&nbsp;</big></big></big><big><big><big><a
- href="distrMod.html"><span style="color: rgb(51, 102, 255);"></span></a></big></big></big><big><big><big>
+<div style="text-align: center;"><big><big><big><a href="RandVar.html"><span style="color: rgb(51, 102, 255);">RandVar</span></a>,&nbsp; </big></big></big><big><big><big><a href="distrMod.html"><span style="color: rgb(51, 102, 255);">distrMod,</span></a><span style="color: rgb(51, 102, 255);"> &nbsp;</span><span style="color: rgb(51, 102, 255);"></span></big></big></big><big><big><big><a href="distrTeach.html"><span style="color: rgb(51, 102, 255);">distrTeach,</span></a><span style="color: rgb(51, 102, 255);"></span></big></big></big><big><big><big>&nbsp;&nbsp;</big></big></big><big><big><big><a href="distrMod.html"><span style="color: rgb(51, 102, 255);"></span></a></big></big></big><big><big><big>
 </big></big></big></div>
+
 </div>
+
 <br>
+
 <hr style="width: 100%; height: 2px;"><br>
+
 <h2>Manual</h2>
+
 <div style="text-align: justify; color: rgb(0, 0, 0);">for version
-prior to 1.8, a somewhat more detailed manual to this package in <a
- href="http://cran.r-project.org/web/packages/distrDoc/vignettes/distr.pdf">pdf-format</a>
+prior to 1.8, a somewhat more detailed manual to this package in <a href="http://cran.r-project.org/web/packages/distrDoc/vignettes/distr.pdf">pdf-format</a>
 is available here;<br>
+
 from version 1.8 on, we have converted this manual into a common
 vignette to packages <span style="color: rgb(51, 102, 255);">distr</span>,
-<span style="color: rgb(51, 102, 255);">distrEx</span>, <span
- style="color: rgb(51, 102, 255);">distrSim</span>, <span
- style="color: rgb(51, 102, 255);">distrTEst</span>, <span
- style="color: rgb(51, 102, 255);">distrMod, distrTeach</span>,<br>
-which is available in the mere documentation package<big><big> <a
- href="distrDoc.html">distrDoc</a></big></big>. To use it you may type<br>
+<span style="color: rgb(51, 102, 255);">distrEx</span>, <span style="color: rgb(51, 102, 255);">distrSim</span>, <span style="color: rgb(51, 102, 255);">distrTEst</span>, <span style="color: rgb(51, 102, 255);">distrMod, distrTeach</span>,<br>
+
+which is available in the mere documentation package<big><big> <a href="distrDoc.html">distrDoc</a></big></big>. To use it you may type<br>
+
 <pre style="color: rgb(51, 51, 255);">        require("distrDoc"); V&lt;-vignette("distr"); print(V); edit(V) </pre>
+
 </div>
+
 <br>
+
 <hr style="width: 100%; height: 2px;">
 <h2>License</h2>
+
 <div style="text-align: justify;"><span style="color: rgb(0, 0, 0);">
 This software is distributed under the terms of the GNU GENERAL</span>
 <br style="color: rgb(0, 0, 0);">
-<span style="color: rgb(0, 0, 0);">PUBLIC LICENSE Version 2, June 1991,
-confer</span> <a href="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</a><br>
+
+<span style="color: rgb(0, 0, 0);">PUBLIC LICENSE LGPL v3,
+confer</span>&nbsp;<a href="http://www.gnu.org/licenses/lgpl-3.0.html">http://www.gnu.org/licenses/lgpl-3.0.html</a><br>
+
 </div>
+
 <br>
+
 <hr style="width: 100%; height: 2px;">
 <h2>Download</h2>
+
 <h3 style="text-align: justify; color: rgb(0, 0, 0);">Windows</h3>
+
 <ul style="text-align: justify; color: rgb(0, 0, 0);">
+
   <li>for version &gt;= 2.0 use<br>
+
+    
     <pre><span style="color: rgb(51, 102, 255);">install.packages("distr", repos = "R-Forge.R-project.org")</span></pre>
+
   </li>
+
   <li>as&nbsp;<a href="v1.9/distr_1.9.zip">Win-Zip-File for R &gt;=2.2.0</a>
 (Version 1.9)</li>
+
   <li>as&nbsp;<a href="v1.8/distr_1.8.zip">Win-Zip-File for R &gt;=2.2.0</a>
 (Version 1.8)</li>
+
   <li>as <a href="v1.7/distr_1.7.zip">Win-Zip-File for R &gt;=2.2.0</a>
 (Version 1.7)</li>
+
   <li>as <a href="v1.6/22/distr_1.6.zip">Win-Zip-File for R &gt;=2.2.0</a>
 (Version 1.6)</li>
+
   <li>as <a href="v1.5/20/distr.zip">Win-Zip-File for R 2.0.x&nbsp;</a>
 (Version 1.5)</li>
+
   <li>as <a href="v1.4/19/distr.zip">Win-Zip-File for R 1.9.x</a>
 (Version 1.4)</li>
+
   <li>as <a href="v1.2/distr.zip">Win-Zip-File for R 1.8.x&nbsp;</a>
 (Version 1.2)</li>
+
 </ul>
+
 <ul style="text-align: justify; color: rgb(0, 0, 0);">
+
   <li>to be installed by
+    
     <ul>
+
       <li>the R-gui File picker [Packages -&gt;Install package(s) from
 local zip-files...] or <br>
+
       </li>
+
       <li style="color: rgb(51, 102, 255);">
+        
         <pre>install.packages("distr", &lt;path to the file distr.zip in your File system&gt;, NULL)</pre>
+
       </li>
+
+    
     </ul>
+
   </li>
+
   <li>to be removed by <br>
+
+    
     <pre style="color: rgb(51, 102, 255);" wrap="">remove.packages("distr")</pre>
+
   </li>
+
   <li>to be used by <br>
+
+    
     <pre><span style="color: rgb(51, 102, 255);">library("distr")</span> <br></pre>
+
 or
+    
     <pre><span style="color: rgb(51, 102, 255);">require("distr")</span> <br></pre>
+
   </li>
+
 </ul>
+
 <h3 style="text-align: justify; color: rgb(0, 0, 0);">Linux</h3>
+
 <ul style="text-align: justify; color: rgb(0, 0, 0);">
+
   <li>for version &gt;= 2.0 use<br>
+
+    
     <pre><span style="color: rgb(51, 102, 255);">install.packages("distr", repos = "R-Forge.R-project.org")</span></pre>
+
   </li>
+
   <li>as <a href="v1.9/distr_1.9.tar.gz">Linux-tar-gz-File for R
 &gt;=2.2.0</a> (Version 1.9)</li>
+
   <li>as <a href="v1.8/distr_1.8.tar.gz">Linux-tar-gz-File for R
 &gt;=2.2.0</a> (Version 1.8)</li>
+
   <li>as <a href="v1.7/distr_1.7.tar.gz">Linux-tar-gz-File for R
 &gt;=2.2.0</a> (Version 1.7)</li>
+
   <li>as <a href="v1.6/distr_1.6.tar.gz">Linux-tar-gz-File for R
 &gt;=2.2.0</a> (Version 1.6)</li>
+
   <li>as <a href="v1.5/distr_1.5.tar.gz">Linux-tar-gz-File for R
 2.0.x&nbsp;</a> (Version 1.5)</li>
+
   <li>as <a href="v1.4/distr_1.4.tar.gz">Linux-tar-gz-File for R
 1.9.x&nbsp;</a> (Version 1.4)</li>
+
   <li>as <a href="v1.2/distr_1.2.tar.gz">Linux-tar-gz-File for R
 1.8.x&nbsp; </a> (Version 1.2)</li>
+
 </ul>
+
 <ul style="text-align: justify; color: rgb(0, 0, 0);">
+
   <li>to be installed by<br>
-    <pre><span style="color: rgb(51, 102, 255);">R CMD INSTALL distr_1.x.tar.gz</span><br
- style="color: rgb(51, 102, 255);"><br></pre>
+
+    
+    <pre><span style="color: rgb(51, 102, 255);">R CMD INSTALL distr_1.x.tar.gz</span><br style="color: rgb(51, 102, 255);"><br></pre>
+
   </li>
+
   <li>to be removed by<br>
+
+    
     <pre style="color: rgb(51, 102, 255);" wrap="">R CMD REMOVE distr</pre>
+
   </li>
+
   <li>to be used as under Windows </li>
+
 </ul>
+
 <h3 style="text-align: justify; color: rgb(0, 0, 0);">Sources</h3>
+
 <ul style="text-align: justify; color: rgb(0, 0, 0);">
+
   <li>included into the .tar.gz.file<br>
+
     <span style="color: rgb(0, 0, 0);"></span></li>
+
   <li><span style="color: rgb(0, 0, 0);">as <a href="distr_src.zip">zipped
 source</a>&nbsp; (for Versions &lt;1.8.0)</span><br>
+
   </li>
+
   <li>procede as follows:</li>
+
+  
   <ul>
+
     <li>unzip the zip File <br>
+
     </li>
+
     <li>consult the README -File in the zip-archive and follow the
 instructions therein</li>
+
+  
   </ul>
+
   <li>(is the only possiblity for versions 1.7.0 and 1.7.1)</li>
+
 </ul>
+
 <br>
-<hr
- style="width: 100%; height: 2px; margin-left: 0px; margin-right: 0px; color: rgb(0, 0, 0);">
+
+<hr style="width: 100%; height: 2px; margin-left: 0px; margin-right: 0px; color: rgb(0, 0, 0);">
 <h2 style="text-align: center; color: rgb(0, 0, 153);">Demos</h2>
-<span style="color: rgb(0, 0, 0);">also see</span> <span
- style="color: rgb(51, 102, 255);">demo(package="distr")</span>
+
+<span style="color: rgb(0, 0, 0);">also see</span> <span style="color: rgb(51, 102, 255);">demo(package="distr")</span>
 --- <span style="color: rgb(0, 0, 0);">after installation of "distr"</span><br>
+
 <br>
+
 <ul style="text-align: justify; color: rgb(0, 0, 0);">
+
   <li>12-fold convolution of uniformly (0,1) distributed variables
 compared to N(6,1):</li>
+
   <a href="NormApprox.R">NormApprox.R</a><br>
+
   <li>Comparison of exact convolution to FFT for normal distributions </li>
+
   <a href="ConvolutionNormalDistr.R">ConvolutionNormalDistr.R</a><br>
+
   <li>Comparison of FFT to RtoDPQ: </li>
+
   <a href="ComparisonFFTandRtoDPQ.R">ComparisonFFTandRtoDPQ.R</a><br>
+
   <li>Comparison of exact and approximate stationary regressor
 distribution:</li>
+
   <a href="StationaryRegressorDistr.R">StationaryRegressorDistr.R</a><br>
+
   <li>Truncation and Huberization/winsorization:</li>
-  <a href="Huberize.R">Huberize.R</a> , <span
- style="text-decoration: underline;">T</span><a href="Truncate.R">runcate.R</a><br>
+
+  <a href="Huberize.R">Huberize.R</a> , <span style="text-decoration: underline;">T</span><a href="Truncate.R">runcate.R</a><br>
+
   <li>Distribution of minimum and maximum of two independent random
 variables:</li>
+
   <a href="minandmax.R">minandmax.R</a><br>
+
   <li>Instructive destructive example: </li>
+
   <a href="destructive.R">destructive.R</a><br>
-  <li>A simulation example: -&gt; moved to packages <a
- href="distrSim.html">distrSim</a>/<a href="distrTEst.html">distrTEst</a><br>
+
+  <li>A simulation example: -&gt; moved to packages <a href="distrSim.html">distrSim</a>/<a href="distrTEst.html">distrTEst</a><br>
+
   </li>
+
   <li>Expectation of a given function under a given distribution: moved
 to package <a href="distrEx.html">distrEx</a><br>
+
   </li>
+
   <li>n-fold convolution of absolutely continuous distributions<br>
+
     <a href="nFoldConvolution.R">nFoldConvolution.R</a><br>
+
     <br>
+
   </li>
+
 </ul>
+
 <br>
+
 <br style="color: rgb(0, 0, 0);">
+
 <hr style="width: 100%; height: 2px; color: rgb(0, 0, 0);">
 <h2 style="text-align: center; color: rgb(0, 0, 153);">Version history:</h2>
+
 <h3 style="text-align: left; color: rgb(0, 0, 0);">Changes from 1.0 to
 1.1 (03-12-04)<br>
+
 </h3>
+
 <div style="text-align: left; color: rgb(0, 0, 0);">
 <ul>
+
   <li>implementation of further exact convolution formulae for
 distributions <br>
+
+    
     <pre style="color: rgb(51, 102, 255);" wrap="">Nbinom, Gamma, Exp, Chisq</pre>
+
   </li>
+
   <li>exact formulae for scale transformations for the distributions<br>
+
+    
     <pre style="color: rgb(51, 102, 255);" wrap="">Gamma, Exp</pre>
+
   </li>
+
   <li>slot <span style="color: rgb(51, 102, 255);">"seed"</span> in
-simulation classes is now controlled and set via the <span
- style="color: rgb(51, 102, 255);">setRNG</span> package by <a
- href="mailto:pgilbert@bank-banque-canada.ca">Paul Gilbert</a></li>
+simulation classes is now controlled and set via the <span style="color: rgb(51, 102, 255);">setRNG</span> package by <a href="mailto:pgilbert@bank-banque-canada.ca">Paul Gilbert</a></li>
+
 </ul>
+
 </div>
+
 <br>
+
 <h3 style="text-align: left; color: rgb(0, 0, 0);">Changes from 1.1 to
 1.2, 1.3<br>
+
 </h3>
+
 <div style="text-align: left; color: rgb(0, 0, 0);">
 <ul>
-  <li>changes in the Help-File to pass <span
- style="color: rgb(51, 102, 255);">Rcmd check</span><br>
+
+  <li>changes in the Help-File to pass <span style="color: rgb(51, 102, 255);">Rcmd check</span><br>
+
     <br>
+
   </li>
+
 </ul>
+
 </div>
+
 <h3 style="text-align: left; color: rgb(0, 0, 0);">Changes from 1.3 to
 1.4<br>
+
 </h3>
+
 <div style="text-align: left; color: rgb(0, 0, 0);">
 <ul>
-  <li>to avoid name collisions with short forms for <span
- style="color: rgb(51, 102, 255);">TRUE</span> and <span
- style="color: rgb(51, 102, 255);">FALSE</span>: classes <span
- style="color: rgb(51, 102, 255);">T</span> and <span
- style="color: rgb(51, 102, 255);">F</span> (T- and F-distributions)
-renamed to <span style="color: rgb(51, 102, 255);">Td</span> and <span
- style="color: rgb(51, 102, 255);">Fd</span></li>
+
+  <li>to avoid name collisions with short forms for <span style="color: rgb(51, 102, 255);">TRUE</span> and <span style="color: rgb(51, 102, 255);">FALSE</span>: classes <span style="color: rgb(51, 102, 255);">T</span> and <span style="color: rgb(51, 102, 255);">F</span> (T- and F-distributions)
+renamed to <span style="color: rgb(51, 102, 255);">Td</span> and <span style="color: rgb(51, 102, 255);">Fd</span></li>
+
   <li>package is now loaded as a binary =&gt; considerable speed gain</li>
-  <li>using <span style="color: rgb(51, 102, 255);">subsititute <span
- style="color: rgb(0, 0, 0);"> the bodies of the r,d,p,q-function-slots
+
+  <li>using <span style="color: rgb(51, 102, 255);">subsititute <span style="color: rgb(0, 0, 0);"> the bodies of the r,d,p,q-function-slots
 distributions show the parameter values with which they were generated</span></span></li>
+
   <li>convolutions and applications of the math group may now be traced
 in <span style="color: rgb(51, 102, 255);">r</span>-slot of a
 distribution object, compare<br>
+
+    
     <pre wrap="">     <span style="color: rgb(51, 102, 255);">r(sin(Norm()) + cos(Unif() * 3 + 2))</span><br></pre>
+
   </li>
-  <li>parameters of a distribution (<span
- style="color: rgb(51, 102, 255);">mean</span>, <span
- style="color: rgb(51, 102, 255);">sd</span>, etc) are now tested on
+
+  <li>parameters of a distribution (<span style="color: rgb(51, 102, 255);">mean</span>, <span style="color: rgb(51, 102, 255);">sd</span>, etc) are now tested on
 length 1
+    
     <ul>
-      <li><span style="color: rgb(153, 153, 153);"><span
- style="color: rgb(102, 102, 102);"> we see the objects as
+
+      <li><span style="color: rgb(153, 153, 153);"><span style="color: rgb(102, 102, 102);"> we see the objects as
 implementations of univaritate distributions, so vectors make no sense
 here; rather one could gather several objects with possibly different
 parameters to a vector of distributions. Of course, the original
 functions rnorm etc remain unchanged and still allow for vector-valued
 parameters</span>.</span> </li>
+
+    
     </ul>
+
   </li>
+
   <li>Classes "<span style="color: rgb(51, 102, 255);">Parameter</span>",
-"<span style="color: rgb(51, 102, 255);">Distribution</span>" , "<span
- style="color: rgb(51, 102, 255);">UnivariateDistribution</span>" are
+"<span style="color: rgb(51, 102, 255);">Distribution</span>" , "<span style="color: rgb(51, 102, 255);">UnivariateDistribution</span>" are
 no longer <span style="color: rgb(51, 102, 255);">VIRTUAL</span></li>
+
   <li> "<span style="color: rgb(51, 102, 255);">AbscontParameter</span>"
 and "<span style="color: rgb(51, 102, 255);">DiscreteParameter</span>"
 are replaced by "<span style="color: rgb(51, 102, 255);">Parameter</span>"
   </li>
-  <li>type of slots <span style="color: rgb(51, 102, 255);">d</span>, <span
- style="color: rgb(51, 102, 255);">p</span>, <span
- style="color: rgb(51, 102, 255);">q</span> and <span
- style="color: rgb(51, 102, 255);">param</span> changed to "<span
- style="color: rgb(51, 102, 255);">OptionalFunction</span>" and "<span
- style="color: rgb(51, 102, 255);">OptionalParameter</span>",
+
+  <li>type of slots <span style="color: rgb(51, 102, 255);">d</span>, <span style="color: rgb(51, 102, 255);">p</span>, <span style="color: rgb(51, 102, 255);">q</span> and <span style="color: rgb(51, 102, 255);">param</span> changed to "<span style="color: rgb(51, 102, 255);">OptionalFunction</span>" and "<span style="color: rgb(51, 102, 255);">OptionalParameter</span>",
 respectively</li>
+
 </ul>
+
 <br>
+
 <h3 style="text-align: left; color: rgb(0, 0, 0);">Changes from 1.4 to
 1.5<br style="color: rgb(0, 0, 0);">
+
 </h3>
+
 <ul>
+
   <li>package is now using <span style="font-style: italic;">lazy
 loading </span></li>
+
   <li>minor changes in the help pages</li>
-  <li>minor enhancements in plot for distributions (<span
- style="color: rgb(51, 102, 255);">Gamma</span>, discrete distributions)</li>
-  <li>package now includes a demo - folder; try <span
- style="color: rgb(51, 102, 255);">demo("distr")</span></li>
+
+  <li>minor enhancements in plot for distributions (<span style="color: rgb(51, 102, 255);">Gamma</span>, discrete distributions)</li>
+
+  <li>package now includes a demo - folder; try <span style="color: rgb(51, 102, 255);">demo("distr")</span></li>
+
   <li>class <span style="color: rgb(51, 102, 255);">Gamma</span> has
 been renamed<span style="color: rgb(51, 102, 255);"> Gammad</span> to
 avoid name collisions</li>
-  <li>we have a CITATION file now; consider <span
- style="color: rgb(51, 102, 255);">citation("distr")</span></li>
+
+  <li>we have a CITATION file now; consider <span style="color: rgb(51, 102, 255);">citation("distr")</span></li>
+
   <li>enhanced demos:</li>
+
+  
   <ul>
+
     <li>convolution of uniform variables now includes exact expressions</li>
+
+  
   </ul>
+
+  
   <ul>
-    <li><span style="color: rgb(51, 102, 255);">min</span>/ <span
- style="color: rgb(51, 102, 255);">max</span> of two variables now
+
+    <li><span style="color: rgb(51, 102, 255);">min</span>/ <span style="color: rgb(51, 102, 255);">max</span> of two variables now
 available for discrete distributions</li>
+
+  
   </ul>
+
   <li>rd-Files have now a keyword entry for distribution and thus may
 be found by the search engine</li>
+
   <li>exact formula for "<span style="color: rgb(51, 102, 255);">Unif</span>"
 o "<span style="color: rgb(51, 102, 255);">numeric</span>" where o \in
 { <span style="color: rgb(51, 102, 255);">+,-,*,/</span> }<br>
+
     <br>
+
   </li>
+
 </ul>
+
 <h3>Changes from 1.5 to
 1.6</h3>
+
 <ul>
+
   <li>Our package is reorganized:</li>
+
+  
   <ul>
+
     <li><span style="color: rgb(51, 102, 255);">distr</span> from now
 on only comprises distribution classes and methods</li>
+
     <li>simulation classes and methods have been moved to the new
 package <a href="distrSim.html"><span style="color: rgb(51, 102, 255);">distrSim</span></a></li>
+
     <li>evalation classes and methods have been moved to the new
-package <a href="distrTEst.html"><span
- style="color: rgb(51, 102, 255);">distrTEst</span></a></li>
-    <li>a new class <a href="distrEx.html"><span
- style="color: rgb(51, 102, 255);">distrEx</span></a> has been added by
+package <a href="distrTEst.html"><span style="color: rgb(51, 102, 255);">distrTEst</span></a></li>
+
+    <li>a new class <a href="distrEx.html"><span style="color: rgb(51, 102, 255);">distrEx</span></a> has been added by
       <a href="mailto:matthias.kohl@uni-bayreuth.de">Matthias Kohl</a>,
 providing additional features like distances between distributions,
 expectation operators etc</li>
-    <li>a new class <a href="distrEx.html"><span
- style="color: rgb(51, 102, 255);">RandVar</span></a> has been added by
+
+    <li>a new class <a href="distrEx.html"><span style="color: rgb(51, 102, 255);">RandVar</span></a> has been added by
       <a href="mailto:matthias.kohl@uni-bayreuth.de">Matthias Kohl</a>,
 providing conceptual treatment of random variables as measurable
 mappings</li>
+
+  
   </ul>
+
 </ul>
+
 <h3 style="text-align: left; color: rgb(0, 0, 0);">Changes from 1.6 to
 1.7<br>
+
 </h3>
+
 <ul>
-  <li> taking up a suggestion by Martin Mächler, we now issue warnings
+
+  <li> taking up a suggestion by Martin M&auml;chler, we now issue warnings
 as to the intepretation of arithmetics applied to distributions, as
 well as to the<br>
+
 accuracy of slots p,d,q filled by means of simulations; these warnings
 are issued at two places:<br>
+
+    
     <dl>
+
       <dd>(1) on attaching the package </dd>
+
       <dd>(2) at every show/print of a distribution</dd>
+
+    
     </dl>
+
   </li>
+
+  
   <ul>
+
     <li>(2) can be cancelled by switching off a corresponding global
 option in <span style="color: rgb(51, 102, 255);">distroptions()</span>
 -- see <span style="color: rgb(51, 102, 255);">?distroptions</span>
 .&nbsp;<br>
+
     </li>
+
+  
   </ul>
-  <li><span style="color: rgb(51, 102, 255);">distroptions() / </span><span
- style="color: rgb(51, 102, 255);">getdistrOption()</span> now behave
+
+  <li><span style="color: rgb(51, 102, 255);">distroptions() / </span><span style="color: rgb(51, 102, 255);">getdistrOption()</span> now behave
 exactly like <span style="color: rgb(51, 102, 255);">options()&nbsp; /
     </span><span style="color: rgb(51, 102, 255);">getOption() </span>options
 --- also compare mail<br>
+
 "Re: [Rd] How to implement package-specific options?" by Brian Ripley
 on <br>
-r-devel, Fri 09 Dec 2005 - 11:52:46, see <a
- class="moz-txt-link-freetext"
- href="http://tolstoy.newcastle.edu.au/R/devel/05/12/3408.html">http://tolstoy.newcastle.edu.au/R/devel/05/12/3408.html</a>
+
+r-devel, Fri 09 Dec 2005 - 11:52:46, see <a class="moz-txt-link-freetext" href="http://tolstoy.newcastle.edu.au/R/devel/05/12/3408.html">http://tolstoy.newcastle.edu.au/R/devel/05/12/3408.html</a>
     <br>
+
   </li>
-  <li>all specific distributions (those realized as <span
- style="font-style: italic;">[r|d|p|q]&lt;name&gt;</span>
+
+  <li>all specific distributions (those realized as <span style="font-style: italic;">[r|d|p|q]&lt;name&gt;</span>
 like rnorm in package <span style="color: rgb(51, 102, 255);">stats</span>)<br>
+
 now have valid prototypes</li>
+
   <li>fixed arguments <span style="color: rgb(51, 102, 255);">xlim </span>and
-    <span style="color: rgb(51, 102, 255);">ylim</span> for <span
- style="color: rgb(51, 102, 255);">plot(signature("AbscontDistribution"
+    <span style="color: rgb(51, 102, 255);">ylim</span> for <span style="color: rgb(51, 102, 255);">plot(signature("AbscontDistribution"
     <span style="color: rgb(0, 0, 0);">or</span>
 "DiscreteDistribution"))</span> <br>
+
 thus: <span style="color: rgb(51, 102, 255);">plot(Cauchy(),xlim=c(-4,4))</span>
 gives reasonable result (and <span style="color: rgb(51, 102, 255);">plot(Cauchy())</span>
 does not)</li>
-  <li>Internationalization: use of <span
- style="color: rgb(51, 102, 255);">gettext</span>, <span
- style="color: rgb(51, 102, 255);">gettextf</span> for <span
- style="color: rgb(51, 102, 255);">output</span></li>
+
+  <li>Internationalization: use of <span style="color: rgb(51, 102, 255);">gettext</span>, <span style="color: rgb(51, 102, 255);">gettextf</span> for <span style="color: rgb(51, 102, 255);">output</span></li>
+
   <li>explicitly implemented <span style="color: rgb(51, 102, 255);">is()</span>
 relations:&nbsp; R "knows" that <br>
+
   </li>
+
+  
   <ul>
+
     <li>an Exponential(lambda) distribution also is a Weibull(shape =
 1, scale = 1/lambda) distribution, as well as a Gamma(shape = 1, scale
 = 1/lambda) distribution</li>
+
     <li>a Geometric(p) distribution also is a Negativ Binomial(size =
 1,p) distribution</li>
+
     <li>a Uniform(0,1) distribution also is a Beta(1,1) distribution <br>
+
     </li>
+
     <li>a Cauchy(0,1) distribution also is a T(df=1, ncp=0)&nbsp;
 distribution </li>
+
     <li>a Chisq(df=n, ncp=0) distribution also is a Gamma(shape=n/2,
 scale=2) distribution <br>
+
     </li>
+
+  
   </ul>
+
   <li>noncentrality parameter included for Beta, T, F distribution </li>
+
 </ul>
+
 <h3 style="text-align: left; color: rgb(0, 0, 0);">Changes from 1.7 to
 1.8<br>
+
 </h3>
+
 <ul>
+
   <li>a class "<span style="color: rgb(51, 51, 255);">DExp</span>" for
 Laplace/Double Exponential distributions</li>
+
   <li>a method <span style="color: rgb(51, 51, 255);">dim</span> which
 for distributions returns the dimension of the
 support</li>
+
   <li><span style="color: rgb(51, 51, 255);">show</span> for
 distributions now acts as <span style="color: rgb(51, 51, 255);">print</span>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+
   </li>
+
 </ul>
+
 <h3 style="text-align: left; color: rgb(0, 0, 0);">Changes from 1.8 to
 1.9<br>
+
 </h3>
+
 <ul>
+
   <li>in demos, made calls to <span style="color: rgb(51, 102, 255);">uniroot()</span>,
-    <span style="color: rgb(51, 102, 255);">integrate()</span>, <span
- style="color: rgb(51, 102, 255);">optim(ize)()</span> compliant to <a
- href="https://stat.ethz.ch/pipermail/r-devel/2007-May/045791.html">https://stat.ethz.ch/pipermail/r-devel/2007-May/045791.html</a><br>
+    <span style="color: rgb(51, 102, 255);">integrate()</span>, <span style="color: rgb(51, 102, 255);">optim(ize)()</span> compliant to <a href="https://stat.ethz.ch/pipermail/r-devel/2007-May/045791.html">https://stat.ethz.ch/pipermail/r-devel/2007-May/045791.html</a><br>
+
   </li>
+
   <li>new methods <span style="color: rgb(51, 102, 255);">shape()</span>
-and <span style="color: rgb(51, 102, 255);">scale()</span> for class <span
- style="color: rgb(51, 102, 255);">"Chisq"</span> with <span
- style="color: rgb(51, 102, 255);">ncp==0</span></li>
-  <li><font size="-1"><big>derivation of a class <span
- style="color: rgb(51, 102, 255);">LatticeDistribution</span> from <span
- style="color: rgb(51, 102, 255);">DiscreteDistribution</span> to be
+and <span style="color: rgb(51, 102, 255);">scale()</span> for class <span style="color: rgb(51, 102, 255);">"Chisq"</span> with <span style="color: rgb(51, 102, 255);">ncp==0</span></li>
+
+  <li><font size="-1"><big>derivation of a class <span style="color: rgb(51, 102, 255);">LatticeDistribution</span> from <span style="color: rgb(51, 102, 255);">DiscreteDistribution</span> to be
 able to easily apply FFT</big></font></li>
+
+  
   <ul>
-    <li><font size="-1"><big>&nbsp;new class <span
- style="color: rgb(51, 102, 255);">'Lattice'</span> to formalize an
+
+    <li><font size="-1"><big>&nbsp;new class <span style="color: rgb(51, 102, 255);">'Lattice'</span> to formalize an
 affine linearly generated grid </big></font><font size="-1"><big>of
 (support) points&nbsp; <span style="color: rgb(51, 102, 255);">pivot +
 (0:(Length-1)) * width</span></big></font></li>
+
+    
     <ul>
+
       <li><font size="-1"><big>usual accessor /prelacement functions to
 handle slots<span style="color: rgb(51, 102, 255);"></span></big></font></li>
+
+    
     </ul>
-    <li><font size="-1"><big> new class <span
- style="color: rgb(51, 102, 255);">'LatticeDistribution'</span> as
+
+    <li><font size="-1"><big> new class <span style="color: rgb(51, 102, 255);">'LatticeDistribution'</span> as
 intermediate class between <span style="color: rgb(51, 102, 255);">'DiscreteDistribution'</span>
-and all specific discrete distributions from <span
- style="color: rgb(51, 102, 255);">'stats'</span> package <br>
+and all specific discrete distributions from <span style="color: rgb(51, 102, 255);">'stats'</span> package <br>
+
       </big></font></li>
+
+    
     <ul>
+
       <li><font size="-1"><big>with a particular convolution method
 using FFT (also for <span style="color: rgb(51, 102, 255);">'convpow'</span>)&nbsp;&nbsp;
         <br>
+
         </big></font></li>
-      <li><font size="-1"><big>usual accessor function <span
- style="color: rgb(51, 102, 255);">'lattice'</span> for slot <span
- style="color: rgb(51, 102, 255);">'lattice'</span> </big></font></li>
+
+      <li><font size="-1"><big>usual accessor function <span style="color: rgb(51, 102, 255);">'lattice'</span> for slot <span style="color: rgb(51, 102, 255);">'lattice'</span> </big></font></li>
+
+    
     </ul>
+
+  
   </ul>
+
   <li><font size="-1"><big>moved some parts from
 from package <span style="color: rgb(51, 102, 255);">'distrEx'</span>
 to package <span style="color: rgb(51, 102, 255);">'distr'</span> <br>
+
     </big></font></li>
+
+  
   <ul>
-    <li><font size="-1"><big>generating function <span
- style="color: rgb(51, 102, 255);">'DiscreteDistribution' </span> </big></font></li>
+
+    <li><font size="-1"><big>generating function <span style="color: rgb(51, 102, 255);">'DiscreteDistribution' </span> </big></font></li>
+
+  
   </ul>
+
+  
   <ul>
-    <li><font size="-1"><big>univariate methods of <span
- style="color: rgb(51, 102, 255);">'liesInSupport()'</span> <br>
+
+    <li><font size="-1"><big>univariate methods of <span style="color: rgb(51, 102, 255);">'liesInSupport()'</span> <br>
+
       </big></font></li>
-    <li><font size="-1"><big>classes <span
- style="color: rgb(51, 102, 255);">'DistrList'</span> and <span
- style="color: rgb(51, 102, 255);">'UnivariateDistrList'</span>&nbsp; <br>
+
+    <li><font size="-1"><big>classes <span style="color: rgb(51, 102, 255);">'DistrList'</span> and <span style="color: rgb(51, 102, 255);">'UnivariateDistrList'</span>&nbsp; <br>
+
       </big></font></li>
-    <li><font size="-1"><big>generating functions <span
- style="color: rgb(51, 102, 255);">EuclideanSpace()</span> ,<span
- style="color: rgb(51, 102, 255);">Reals()</span>, <span
- style="color: rgb(51, 102, 255);">Naturals()</span> <br>
+
+    <li><font size="-1"><big>generating functions <span style="color: rgb(51, 102, 255);">EuclideanSpace()</span> ,<span style="color: rgb(51, 102, 255);">Reals()</span>, <span style="color: rgb(51, 102, 255);">Naturals()</span> <br>
+
       </big></font></li>
+
+  
   </ul>
+
   <li><font size="-1"><big>cleaning up of source files:</big></font></li>
+
+  
   <ul>
+
     <li><font size="-1"><big>adapted the naming of the .R files to the
-use of the (later written) extension packages </big></font><font
- size="-1"><big><br>
-(and according to <a
- href="http://tolstoy.newcastle.edu.au/R/help/06/03/22558.html">http://tolstoy.newcastle.edu.au/R/help/06/03/22558.html</a>)</big></font></li>
+use of the (later written) extension packages </big></font><font size="-1"><big><br>
+
+(and according to <a href="http://tolstoy.newcastle.edu.au/R/help/06/03/22558.html">http://tolstoy.newcastle.edu.au/R/help/06/03/22558.html</a>)</big></font></li>
+
+  
   </ul>
+
+  
   <ul>
+
     <li><font size="-1"><big>checked all source file to adhere to the
 80char's-per-line rule</big></font></li>
+
+  
   </ul>
-  <li><font size="-1"><big>added S4-method <span
- style="color: rgb(51, 102, 255);">'convpow'</span> for convolutional
+
+  <li><font size="-1"><big>added S4-method <span style="color: rgb(51, 102, 255);">'convpow'</span> for convolutional
 powers from the examples <br>
+
 of package <span style="color: rgb(51, 102, 255);">'distr'</span> with
 methods for<br>
+
     </big></font></li>
+
+  
   <ul>
+
     <li><font size="-1"><big><span style="color: rgb(51, 102, 255);">'LatticeDistribution'
-      <span style="color: rgb(0, 0, 0);">and</span> </span></big></font><font
- size="-1"><big><span style="color: rgb(51, 102, 255);">'AbscontDistribution'</span>
+      <span style="color: rgb(0, 0, 0);">and</span> </span></big></font><font size="-1"><big><span style="color: rgb(51, 102, 255);">'AbscontDistribution'</span>
       </big></font></li>
+
+  
   </ul>
+
+  
   <ul>
+
     <li><font size="-1"><big>and particular methods for <br>
+
       </big></font></li>
+
+  
   </ul>
+
+  
   <ul>
+
+    
     <ul>
+
       <li><font size="-1"><big><span style="color: rgb(51, 102, 255);">Norm</span>,
-        <span style="color: rgb(51, 102, 255);">Cauchy</span>, <span
- style="color: rgb(51, 102, 255);">Pois</span>, <span
- style="color: rgb(51, 102, 255);">Nbinom</span>, <span
- style="color: rgb(51, 102, 255);">Binom</span>, <span
- style="color: rgb(51, 102, 255);">Dirac</span>, <br>
+        <span style="color: rgb(51, 102, 255);">Cauchy</span>, <span style="color: rgb(51, 102, 255);">Pois</span>, <span style="color: rgb(51, 102, 255);">Nbinom</span>, <span style="color: rgb(51, 102, 255);">Binom</span>, <span style="color: rgb(51, 102, 255);">Dirac</span>, <br>
+
 and <span style="color: rgb(51, 102, 255);">ExpOrGammaOrChisq</span>
 (if summand 'is' of class <span style="color: rgb(51, 102, 255);">Gammad</span>)<br>
+
         </big></font></li>
+
+    
     </ul>
+
+  
   </ul>
+
   <li><font size="-1"><big>new exact arithmetic formulae:<br>
-    </big></font><font size="-1"><big>&nbsp;&nbsp; +&nbsp;&nbsp; <span
- style="color: rgb(51, 102, 255);">'Cauchy' + 'Cauchy'</span> <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : gives <span
- style="color: rgb(51, 102, 255);">'Cauchy'</span> <br>
-    </big></font><font size="-1"><big>&nbsp;&nbsp; +&nbsp;&nbsp; <span
- style="color: rgb(51, 102, 255);">'Weibull'
+
+    </big></font><font size="-1"><big>&nbsp;&nbsp; +&nbsp;&nbsp; <span style="color: rgb(51, 102, 255);">'Cauchy' + 'Cauchy'</span> <br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : gives <span style="color: rgb(51, 102, 255);">'Cauchy'</span> <br>
+
+    </big></font><font size="-1"><big>&nbsp;&nbsp; +&nbsp;&nbsp; <span style="color: rgb(51, 102, 255);">'Weibull'
 * 'numeric'</span> <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : gives <span
- style="color: rgb(51, 102, 255);">'Weibull'</span> resp. <span
- style="color: rgb(51, 102, 255);">'Dirac'</span>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : gives <span style="color: rgb(51, 102, 255);">'Weibull'</span> resp. <span style="color: rgb(51, 102, 255);">'Dirac'</span>
 resp <span style="color: rgb(51, 102, 255);">'AbscontDistribution'</span>
     <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : acc. to <span
- style="color: rgb(51, 102, 255);">'numeric'</span> &gt;, =, &lt;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : acc. to <span style="color: rgb(51, 102, 255);">'numeric'</span> &gt;, =, &lt;
 0 <br>
+
 &nbsp;&nbsp; +&nbsp;&nbsp; <span style="color: rgb(51, 102, 255);">'Logis'
 * 'numeric'</span>&nbsp;&nbsp; <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : gives <span
- style="color: rgb(51, 102, 255);">'Logis'</span> resp. <span
- style="color: rgb(51, 102, 255);">'Dirac'</span> resp <span
- style="color: rgb(51, 102, 255);">'AbscontDistribution'</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : acc. to <span
- style="color: rgb(51, 102, 255);">'numeric'</span> &gt;, =, &lt;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : gives <span style="color: rgb(51, 102, 255);">'Logis'</span> resp. <span style="color: rgb(51, 102, 255);">'Dirac'</span> resp <span style="color: rgb(51, 102, 255);">'AbscontDistribution'</span><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : acc. to <span style="color: rgb(51, 102, 255);">'numeric'</span> &gt;, =, &lt;
 0 <br>
+
 &nbsp;&nbsp; +&nbsp;&nbsp; <span style="color: rgb(51, 102, 255);">'Logis'
 + 'numeric'</span>&nbsp;&nbsp; <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : gives <span
- style="color: rgb(51, 102, 255);">'Logis'</span><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : gives <span style="color: rgb(51, 102, 255);">'Logis'</span><br>
+
 &nbsp;&nbsp; +&nbsp;&nbsp; <span style="color: rgb(51, 102, 255);">'Lnorm'
 * 'numeric'</span>&nbsp;&nbsp; <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : gives <span
- style="color: rgb(51, 102, 255);">'Lnorm'</span> resp. <span
- style="color: rgb(51, 102, 255);">'Dirac'</span> resp <span
- style="color: rgb(51, 102, 255);">'AbscontDistribution'</span> <br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : gives <span style="color: rgb(51, 102, 255);">'Lnorm'</span> resp. <span style="color: rgb(51, 102, 255);">'Dirac'</span> resp <span style="color: rgb(51, 102, 255);">'AbscontDistribution'</span> <br>
+
     </big></font><font size="-1"><big>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 : acc. to <span style="color: rgb(51, 102, 255);">'numeric'</span>
 &gt;, =, &lt;
 0 <br>
+
 &nbsp;&nbsp; +&nbsp;&nbsp; <span style="color: rgb(51, 102, 255);">'numeric'
 / 'Dirac'</span>&nbsp;&nbsp; </big></font><br>
-    <font size="-1"><big>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : gives <span
- style="color: rgb(51, 102, 255);">'Dirac'</span> resp. error acc.
+
+    <font size="-1"><big>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : gives <span style="color: rgb(51, 102, 255);">'Dirac'</span> resp. error acc.
 to <span style="color: rgb(51, 102, 255);">'location(Dirac)' ==, != 0<br>
+
 &nbsp;&nbsp; <span style="color: rgb(51, 0, 51);">+</span>&nbsp;&nbsp;
 'DiscreteDistribution' * 1 <span style="color: rgb(51, 0, 51);">returns
 the original distribution</span><br>
+
 &nbsp;&nbsp; <span style="color: rgb(51, 0, 51);">+</span>&nbsp;&nbsp;
 'AbscontDistribution' * 1 <span style="color: rgb(51, 0, 51);">returns
 the original distribution</span><br>
+
 &nbsp;&nbsp; <span style="color: rgb(51, 0, 51);">+</span>&nbsp;&nbsp;
 'DiscreteDistribution' + 0 <span style="color: rgb(51, 0, 51);">returns
 the original distribution</span><br>
+
 &nbsp;&nbsp; <span style="color: rgb(51, 0, 51);">+</span>&nbsp;&nbsp;
 'AbscontDistribution' + 0 <span style="color: rgb(51, 0, 51);">returns
 the original distribution</span><br>
+
     </span></big></font></li>
-  <li><font size="-1"><big>new file MASKING and corresponding command <span
- style="color: rgb(51, 102, 255);">'distrMASK()'</span> to
+
+  <li><font size="-1"><big>new file MASKING and corresponding command <span style="color: rgb(51, 102, 255);">'distrMASK()'</span> to
 describe the intended maskings</big></font></li>
+
   <li><font size="-1"><big>mentioned in package-help: startup messages
 may now also be suppressed by<br>
+
 &nbsp;<span style="color: rgb(51, 102, 255);">suppressPackageStartupMessages()</span>
 (from package <span style="color: rgb(51, 102, 255);">'base'</span>)<br>
+
     </big></font></li>
-  <li><font size="-1"><big>revised generating functions/<span
- style="color: rgb(51, 102, 255);">initialize</span>
+
+  <li><font size="-1"><big>revised generating functions/<span style="color: rgb(51, 102, 255);">initialize</span>
 methods according to <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
- href="http://tolstoy.newcastle.edu.au/R/e2/devel/07/01/1976.html">http://tolstoy.newcastle.edu.au/R/e2/devel/07/01/1976.html</a><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://tolstoy.newcastle.edu.au/R/e2/devel/07/01/1976.html">http://tolstoy.newcastle.edu.au/R/e2/devel/07/01/1976.html</a><br>
+
 in particular all Parameter(-sub-)classes gain a valid prototype</big></font></li>
+
   <li>formals for slots <span style="color: rgb(51, 51, 255);">p,q,d</span>
 as in package <span style="color: rgb(51, 51, 255);">stats</span> to
 enhance accuracy</li>
+
+  
   <ul>
+
     <li style="color: rgb(51, 51, 255);">p(X)(q, lower.tail = TRUE,
 log.p = FALSE)</li>
+
     <li style="color: rgb(51, 51, 255);">q(X)(p, lower.tail = TRUE,
 log.p = FALSE)</li>
+
     <li style="color: rgb(51, 51, 255);">d(X)(x, log = FALSE)</li>
+
     <li>used wherever possible; <br>
-but backwards compatibility: always checked whether <span
- style="color: rgb(51, 51, 255);">lowert.tail / log / log.p</span> are
+
+but backwards compatibility: always checked whether <span style="color: rgb(51, 51, 255);">lowert.tail / log / log.p</span> are
 formals</li>
+
+  
   </ul>
-  <li>unified form for automatically generated <span
- style="color: rgb(51, 51, 255);">r</span>, <span
- style="color: rgb(51, 51, 255);">d</span>, <span
- style="color: rgb(51, 51, 255);">p</span>, <span
- style="color: rgb(51, 51, 255);">q</span>-slots:<br>
+
+  <li>unified form for automatically generated <span style="color: rgb(51, 51, 255);">r</span>, <span style="color: rgb(51, 51, 255);">d</span>, <span style="color: rgb(51, 51, 255);">p</span>, <span style="color: rgb(51, 51, 255);">q</span>-slots:<br>
+
+    
     <ul>
+
       <li>using (internal) standardized generators <br>
+
       </li>
+
+      
       <ul>
-        <li><span style="color: rgb(51, 51, 255);">.makeDNew</span>, <span
- style="color: rgb(51, 51, 255);">.makePNew</span>, <span
- style="color: rgb(51, 51, 255);">.makeQNew</span></li>
-        <li> <span style="color: rgb(51, 51, 255);">.makeD</span>, <span
- style="color: rgb(51, 51, 255);">.makeP</span>, <span
- style="color: rgb(51, 51, 255);">.makeQ</span><br>
+
+        <li><span style="color: rgb(51, 51, 255);">.makeDNew</span>, <span style="color: rgb(51, 51, 255);">.makePNew</span>, <span style="color: rgb(51, 51, 255);">.makeQNew</span></li>
+
+        <li> <span style="color: rgb(51, 51, 255);">.makeD</span>, <span style="color: rgb(51, 51, 255);">.makeP</span>, <span style="color: rgb(51, 51, 255);">.makeQ</span><br>
+
         </li>
+
+      
       </ul>
+
       <li>revised <span style="color: rgb(51, 51, 255);">"*",
-"+" ("Discrete/AbscontDistribution","numeric")</span> methods (using <span
- style="color: rgb(51, 51, 255);">.makeD</span>, <span
- style="color: rgb(51, 51, 255);">.makeP</span>, <span
- style="color: rgb(51, 51, 255);">.makeQ</span>)<br>
+"+" ("Discrete/AbscontDistribution","numeric")</span> methods (using <span style="color: rgb(51, 51, 255);">.makeD</span>, <span style="color: rgb(51, 51, 255);">.makeP</span>, <span style="color: rgb(51, 51, 255);">.makeQ</span>)<br>
+
       </li>
+
       <li> revised <span style="color: rgb(51, 51, 255);">RtoDPQ[.d]</span>
-(using <span style="color: rgb(51, 51, 255);">.makeDNew</span>, <span
- style="color: rgb(51, 51, 255);">.makePNew</span>, <span
- style="color: rgb(51, 51, 255);">.makeQNew</span>)<br>
+(using <span style="color: rgb(51, 51, 255);">.makeDNew</span>, <span style="color: rgb(51, 51, 255);">.makePNew</span>, <span style="color: rgb(51, 51, 255);">.makeQNew</span>)<br>
+
       </li>
+
       <li>revised convolution
 methods&nbsp; (using <span style="color: rgb(51, 51, 255);">.makeDNew</span>,
-        <span style="color: rgb(51, 51, 255);">.makePNew</span>, <span
- style="color: rgb(51, 51, 255);">.makeQNew</span>)<br>
+        <span style="color: rgb(51, 51, 255);">.makePNew</span>, <span style="color: rgb(51, 51, 255);">.makeQNew</span>)<br>
+
       </li>
+
       <li>revised <span style="color: rgb(51, 51, 255);">convpow()</span>
-methods&nbsp;&nbsp;&nbsp;&nbsp; (using <span
- style="color: rgb(51, 51, 255);">.makeDNew</span>, <span
- style="color: rgb(51, 51, 255);">.makePNew</span>, <span
- style="color: rgb(51, 51, 255);">.makeQNew</span>)<br>
+methods&nbsp;&nbsp;&nbsp;&nbsp; (using <span style="color: rgb(51, 51, 255);">.makeDNew</span>, <span style="color: rgb(51, 51, 255);">.makePNew</span>, <span style="color: rgb(51, 51, 255);">.makeQNew</span>)<br>
+
       </li>
+
+    
     </ul>
+
   </li>
-  <li>cleaning up of environment of <span
- style="color: rgb(51, 51, 255);">r,d,p,q</span>-slot&nbsp; - removed
+
+  <li>cleaning up of environment of <span style="color: rgb(51, 51, 255);">r,d,p,q</span>-slot&nbsp; - removed
 no longer needed objects&nbsp; <br>
+
   </li>
-  <li>left-continuous c.d.f. method (<span
- style="color: rgb(51, 51, 255);">p.l</span>) and <br>
-right-continuous quantile function (<span
- style="color: rgb(51, 51, 255);">q.r</span>) for <span
- style="font-style: italic;">DiscreteDistributions</span></li>
-  <li>methods <span style="color: rgb(51, 102, 255);">getLow</span>, <span
- style="color: rgb(51, 102, 255);">getUp</span> for upper and lower
+
+  <li>left-continuous c.d.f. method (<span style="color: rgb(51, 51, 255);">p.l</span>) and <br>
+
+right-continuous quantile function (<span style="color: rgb(51, 51, 255);">q.r</span>) for <span style="font-style: italic;">DiscreteDistributions</span></li>
+
+  <li>methods <span style="color: rgb(51, 102, 255);">getLow</span>, <span style="color: rgb(51, 102, 255);">getUp</span> for upper and lower
 endpoint of support of <span style="font-style: italic;">DiscreteDistribution</span>
 or <span style="font-style: italic;">AbscontDistribution</span><br>
-(truncated to lower/upper TruncQuantile if infinite)<span
- style="font-style: italic;"><br>
+
+(truncated to lower/upper TruncQuantile if infinite)<span style="font-style: italic;"><br>
+
     </span></li>
+
   <li>analytically exact slots d,p (and higher accuracy for q) for
 distribution objects generated by functions <br>
+
 abs, exp, log for classes <span style="font-style: italic;">AbscontDistribution</span>
 and <span style="font-style: italic;">DiscreteDistribution</span><br>
+
   </li>
+
   <li>new (internally used) classes <span style="font-style: italic;">AffLinAbscontDistribution</span>,
     <span style="font-style: italic;">AffLinLatticeDistribution</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and <span
- style="font-style: italic;">AffLinLatticeDistribution</span> to
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and <span style="font-style: italic;">AffLinLatticeDistribution</span> to
 capture the results of transformations <br>
+
+    
     <pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Y &lt;- a * X0 + b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </pre>
+
 for a, b numeric and X0 <span style="font-style: italic;">Abscont/Discrete/LatticeDistribution
     </span><br>
+
 and a class union <span style="font-style: italic;">AffLinDistribution</span>
-of&nbsp; <span style="font-style: italic;">AffLinAbscontDistribution </span>and<span
- style="font-style: italic;"> AffLinLatticeDistribution</span><br>
-to use this for more exact evaluations of functionals in package <font
- size="-1"><big><span style="color: rgb(51, 102, 255);">'distrEx'</span></big></font><br>
+of&nbsp; <span style="font-style: italic;">AffLinAbscontDistribution </span>and<span style="font-style: italic;"> AffLinLatticeDistribution</span><br>
+
+to use this for more exact evaluations of functionals in package <font size="-1"><big><span style="color: rgb(51, 102, 255);">'distrEx'</span></big></font><br>
+
   </li>
+
   <li>Version-management for changed class definitions to <br>
+
   </li>
+
+  
   <ul>
+
     <li><span style="font-style: italic;">AbscontDistribution</span>
 (gains slot <span style="color: rgb(51, 102, 255);">gaps</span>)<br>
+
     </li>
+
     <li>subclasses of <span style="font-style: italic;">LatticeDistribution</span>
 (<span style="font-style: italic;">Geom, Binom, Nbinom, Dirac,
 Pois, Hyper</span>):<br>
+
 (changed by inheriting from <span style="font-style: italic;">LatticeDistribution</span>,
 gaining slot&nbsp; <span style="color: rgb(51, 102, 255);">lattice</span>
 !)&nbsp;<br>
+
     </li>
+
+  
   </ul>
+
 realized by
+  
   <ul>
+
     <li>moved generics to <span style="color: rgb(51, 102, 255);">isOldVersion()</span>,
       <span style="color: rgb(51, 102, 255);">conv2NewVersion()</span>
 from <font size="-1"><big><span style="color: rgb(51, 102, 255);">'distrSim'</span></big></font>
 to <font size="-1"><big><span style="color: rgb(51, 102, 255);">'distr'</span></big></font>
     </li>
-    <li>moved (slightly generalized version of) <span
- style="color: rgb(51, 102, 255);">isOldVersion()</span>
-(now for signature <span style="font-style: italic;">ANY</span>) from <font
- size="-1"><big><span style="color: rgb(51, 102, 255);">'distrSim'</span></big></font>
+
+    <li>moved (slightly generalized version of) <span style="color: rgb(51, 102, 255);">isOldVersion()</span>
+(now for signature <span style="font-style: italic;">ANY</span>) from <font size="-1"><big><span style="color: rgb(51, 102, 255);">'distrSim'</span></big></font>
 to <font size="-1"><big><span style="color: rgb(51, 102, 255);">'distr'</span></big></font>
     </li>
+
     <li>new methods for <span style="color: rgb(51, 102, 255);">conv2NewVersion</span>
 for signature <br style="font-style: italic;">
+
+      
       <ul>
+
         <li><span style="font-style: italic;">ANY</span> : fills
 missing slots with
 corresponding entries from prototype<br>
+
         </li>
+
         <li> <span style="font-style: italic;">LatticeDistribution</span>:
 generates a new
 instance (with slot <span style="color: rgb(51, 102, 255);">lattice</span>(!))
 by <span style="color: rgb(51, 102, 255);">new(class(object),
 &lt;list of parameters&gt;)</span><br>
+
         </li>
+
+      
       </ul>
+
     </li>
+
+  
   </ul>
+
   <li>enhanced <span style="color: rgb(51, 51, 255);">plot()</span>
 methods (see <span style="color: rgb(51, 51, 255);">?"plot-methods" </span>)
   </li>
+
+  
   <ul>
+
     <li>for both <span style="font-style: italic;">AbscontDistributions
       </span>and <span style="font-style: italic;">DiscreteDistributions</span></li>
+
+    
     <ul>
+
       <li>optional <span style="color: rgb(51, 51, 255);">width</span>
 and <span style="color: rgb(51, 51, 255);">height</span> argument for
 the display (default
 16in : 9in)</li>
+
+      
       <ul>
+
         <li>opens a new window for each plot</li>
+
         <li>does not work with <span style="font-style: italic;">Sweave</span>;<br>
+
 workaround: argument <span style="color: rgb(51, 51, 255);">withSweave
 = TRUE</span><br>
+
 in .Rnw-file: use width and height argument like in <br>
+
+          
           <pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;&lt;plotex1,eval=TRUE,fig=TRUE, width=8,height=4.5&gt;&gt;=</pre>
+
+          
           <pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ....</pre>
+
+          
           <pre>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @&nbsp;&nbsp; </pre>
+
         </li>
+
+      
       </ul>
-      <li>optional main, inner titles and subtitles with <span
- style="color: rgb(51, 51, 255);">main</span> / <span
- style="color: rgb(51, 51, 255);">sub</span> / <span
- style="color: rgb(51, 51, 255);">inner</span> </li>
+
+      <li>optional main, inner titles and subtitles with <span style="color: rgb(51, 51, 255);">main</span> / <span style="color: rgb(51, 51, 255);">sub</span> / <span style="color: rgb(51, 51, 255);">inner</span> </li>
+
+      
       <ul>
+
         <li>preset strings substituted in both expression and character
 vectors (<span style="color: rgb(51, 51, 255);">x : </span>argument
 with which <span style="color: rgb(51, 51, 255);">plot() </span>was
 called)</li>
+
+        
         <ul>
-          <li>%A deparsed argument <span
- style="color: rgb(51, 51, 255);">x </span><br>
+
+          <li>%A deparsed argument <span style="color: rgb(51, 51, 255);">x </span><br>
+
           </li>
-          <li>%C class of argument <span
- style="color: rgb(51, 51, 255);">x </span><br>
+
+          <li>%C class of argument <span style="color: rgb(51, 51, 255);">x </span><br>
+
           </li>
+
           <li>%P&nbsp; comma-separated list of parameter values of slot
             <span style="color: rgb(51, 51, 255);">param</span> of
 argument <span style="color: rgb(51, 51, 255);">x <br>
+
             </span></li>
-          <li>%Q comma-separated list of parameter values of slot <span
- style="color: rgb(51, 51, 255);">param</span> of argument <span
- style="color: rgb(51, 51, 255);">x </span>in () unless this list is
+
+          <li>%Q comma-separated list of parameter values of slot <span style="color: rgb(51, 51, 255);">param</span> of argument <span style="color: rgb(51, 51, 255);">x </span>in () unless this list is
 empty - then ""<br>
+
           </li>
+
           <li>%N comma-separated &lt;name&gt;=&lt;value&gt; - list of
 parameter values of slot <span style="color: rgb(51, 51, 255);">param</span>
 of argument <span style="color: rgb(51, 51, 255);">x <br>
+
             </span></li>
+
           <li>%D time/date at which plot is/was generated<br>
+
           </li>
+
+        
         </ul>
+
         <li>title sizes with <span style="color: rgb(51, 51, 255);">cex.main</span>
-/ <span style="color: rgb(51, 51, 255);">cex.inner</span><span
- style="color: rgb(51, 51, 255);"></span> / <span
- style="color: rgb(51, 51, 255);">cex.sub</span></li>
-        <li>bottom / top margin with <span
- style="color: rgb(51, 51, 255);">bmar</span>, <span
- style="color: rgb(51, 51, 255);">tmar</span></li>
-        <li>setting of colors with <span
- style="color: rgb(51, 51, 255);">col</span> / <span
- style="color: rgb(51, 51, 255);">col.main</span> / <span
- style="color: rgb(51, 51, 255);">col.inner</span> / <span
- style="color: rgb(51, 51, 255);">col.sub</span> <br>
+/ <span style="color: rgb(51, 51, 255);">cex.inner</span><span style="color: rgb(51, 51, 255);"></span> / <span style="color: rgb(51, 51, 255);">cex.sub</span></li>
+
+        <li>bottom / top margin with <span style="color: rgb(51, 51, 255);">bmar</span>, <span style="color: rgb(51, 51, 255);">tmar</span></li>
+
+        <li>setting of colors with <span style="color: rgb(51, 51, 255);">col</span> / <span style="color: rgb(51, 51, 255);">col.main</span> / <span style="color: rgb(51, 51, 255);">col.inner</span> / <span style="color: rgb(51, 51, 255);">col.sub</span> <br>
+
         </li>
+
+      
       </ul>
+
       <li>can cope with <span style="color: rgb(51, 51, 255);">log-arguments</span><br>
+
       </li>
-      <li>setting of plot symbols with <span
- style="color: rgb(51, 51, 255);">pch</span>
-/ <span style="color: rgb(51, 51, 255);">pch.a</span> / <span
- style="color: rgb(51, 51, 255);">pch.u</span> <span
- style="color: rgb(51, 51, 255);"></span><span
- style="color: rgb(51, 51, 255);"></span><span
- style="color: rgb(51, 51, 255);"></span><br>
+
+      <li>setting of plot symbols with <span style="color: rgb(51, 51, 255);">pch</span>
+/ <span style="color: rgb(51, 51, 255);">pch.a</span> / <span style="color: rgb(51, 51, 255);">pch.u</span> <span style="color: rgb(51, 51, 255);"></span><span style="color: rgb(51, 51, 255);"></span><span style="color: rgb(51, 51, 255);"></span><br>
+
       </li>
-      <li>different symbols for unattained [<span
- style="color: rgb(51, 51, 255);">pch.u</span>] / attained [<span
- style="color: rgb(51, 51, 255);">pch.a</span>] one-sided
+
+      <li>different symbols for unattained [<span style="color: rgb(51, 51, 255);">pch.u</span>] / attained [<span style="color: rgb(51, 51, 255);">pch.a</span>] one-sided
 limits&nbsp; <br>
+
       </li>
+
       <li><span style="color: rgb(51, 51, 255);">do.points</span>
 argument as in <span style="color: rgb(51, 51, 255);">plot.stepfun()</span></li>
+
       <li><span style="color: rgb(51, 51, 255);">verticals</span>
 argument as in <span style="color: rgb(51, 51, 255);">plot.stepfun()</span></li>
+
       <li>setting of colors with <span style="color: rgb(51, 51, 255);">col</span>
-/ <span style="color: rgb(51, 51, 255);">col.points</span> / <span
- style="color: rgb(51, 51, 255);">col.vert</span> / <span
- style="color: rgb(51, 51, 255);">col.hor</span> <br>
+/ <span style="color: rgb(51, 51, 255);">col.points</span> / <span style="color: rgb(51, 51, 255);">col.vert</span> / <span style="color: rgb(51, 51, 255);">col.hor</span> <br>
+
       </li>
-      <li>setting of symbol size with with <span
- style="color: rgb(51, 51, 255);">cex</span> / <span
- style="color: rgb(51, 51, 255);">cex.points</span> <br>
+
+      <li>setting of symbol size with with <span style="color: rgb(51, 51, 255);">cex</span> / <span style="color: rgb(51, 51, 255);">cex.points</span> <br>
+
       </li>
+
+    
     </ul>
+
     <li>for <span style="font-style: italic;">AbscontDistributions</span></li>
+
+    
     <ul>
+
       <li>(panel <span style="font-style: italic;">"q"</span>): takes
 care of finite left/right endpoints of
 support</li>
+
       <li>(panel <span style="font-style: italic;">"q"</span>):
-optionally takes care of constancy region (via <span
- style="color: rgb(51, 51, 255);">do.points <span
- style="color: rgb(51, 0, 51);">/ </span>verticals<span
- style="color: rgb(51, 0, 51);">)</span><br>
+optionally takes care of constancy region (via <span style="color: rgb(51, 51, 255);">do.points <span style="color: rgb(51, 0, 51);">/ </span>verticals<span style="color: rgb(51, 0, 51);">)</span><br>
+
         </span></li>
+
       <li><span style="color: rgb(51, 51, 255);">ngrid</span> argument
 to set the number of grid points&nbsp; <br>
+
       </li>
+
+    
     </ul>
+
     <li>for <span style="font-style: italic;">DiscreteDistributions</span>
 : <br>
+
     </li>
+
+    
     <ul>
+
       <li>using <span style="color: rgb(51, 102, 255);">stepfun()</span></li>
+
+    
     </ul>
+
+  
   </ul>
+
   <li><font size="-1"><big>DEPRECATED:</big></font></li>
+
+  
   <ul>
-    <li><font size="-1"><big>class <span
- style="color: rgb(51, 102, 255);">'GeomParameter'</span> --- no longer
+
+    <li><font size="-1"><big>class <span style="color: rgb(51, 102, 255);">'GeomParameter'</span> --- no longer
 needed
 as this the parameter<br>
+
 &nbsp;&nbsp; of a <span style="color: rgb(51, 102, 255);">'Nbinom'</span>
 with size 1</big></font></li>
+
+  
   </ul>
+
 </ul>
+
 <br>
+
 <h3 style="text-align: left; color: rgb(0, 0, 0);">Changes from 1.9 to
 2.0<br>
+
 </h3>
+
 <ul>
+
   <li>&nbsp; made calls to 'uniroot()', 'integrate()', 'optim(ize)()'
 compliant to <br>
-&nbsp; <a
- href="https://stat.ethz.ch/pipermail/r-devel/2007-May/045791.html">https://stat.ethz.ch/pipermail/r-devel/2007-May/045791.html</a><br>
+
+&nbsp; <a href="https://stat.ethz.ch/pipermail/r-devel/2007-May/045791.html">https://stat.ethz.ch/pipermail/r-devel/2007-May/045791.html</a><br>
+
   </li>
+
   <li>&nbsp;new generating function 'AbscontDistribution'<br>
+
   </li>
+
   <li>&nbsp;new class 'UnivarMixingDistribution' for mixing
 distributions with<br>
+
 &nbsp;&nbsp; methods / functions:<br>
+
   </li>
+
+  
   <ul>
+
     <li>'UnivarMixingDistribution' (generating function) <br>
+
     </li>
+
     <li>flat.mix to make out of it a distribution of class
 'UnivarLebDecDistribution'&nbsp;&nbsp;&nbsp; <br>
+
     </li>
+
+  
   </ul>
+
   <li>&nbsp;new class 'AffLinUnivarLebDecDistribution' for affine
 linear transformations <br>
+
 of 'UnivarLebDecDistribution' (in particular for use with E())<br>
+
   </li>
+
   <li>&nbsp;new class union 'AcDcLcDistribution' as common mother
 class<br>
+
 &nbsp;&nbsp; for 'UnivarLebDecDistribution', 'AbscontDistribution',<br>
+
 &nbsp; 'DiscreteDistribution';&nbsp; corresponding methods / functions:<br>
+
   </li>
+
   <li>&nbsp;enhanced arithmetic: (for 'AcDcLcDistribution')<br>
+
   </li>
+
+  
   <ul>
+
     <li>&nbsp;convolution for 'UnivarLebDecDistribution'</li>
+
     <li>&nbsp;affine linear trafos for 'UnivarLebDecDistribution'</li>
+
     <li>&nbsp;'numeric' / 'AcDcLcDistribution'</li>
+
     <li>'numeric' ^ 'AcDcLcDistribution'^</li>
+
     <li>'AcDcLcDistribution' ^ 'numeric'</li>
+
     <li>binary operations for independent distributions:<br>
+
     </li>
+
+    
     <ul>
+
       <li>'AcDcLcDistribution' * 'AcDcLcDistribution' <br>
+
       </li>
+
       <li>'AcDcLcDistribution' / 'AcDcLcDistribution'</li>
+
       <li>'AcDcLcDistribution' ^ 'AcDcLcDistribution'</li>
+
+    
     </ul>
+
     <li>(better) exact transformations for exp() and log()</li>
+
     <li>Minimum Maximum Truncation Huberization</li>
+
     <li>convpow for 'UnivarLebDecDistribution'</li>
+
+  
   </ul>
+
   <li>new generating function 'AbscontDistribution' <br>
+
   </li>
+
   <li>&nbsp;'decomposePM' decomposes distributions in positive /
 negative part<br>
+
 &nbsp;&nbsp; (and in Dirac(0) if discrete) <br>
+
   </li>
+
   <li>&nbsp;'simplifyD' tries to cast to simpler classes (e.g. if a
 weight is 0)<br>
+
     <br>
+
   </li>
+
 </ul>
+
 <h3 style="text-align: left;">Changes from 2.0 to
 2.1<br>
+
 </h3>
+
 <div style="text-align: left; color: rgb(0, 0, 0);">
 <ul>
+
   <li>&nbsp;DISTRIBUTIONS</li>
+
+  
   <ul>
+
     <li>DISCRETE DISTRIBUTIONS</li>
+
+    
     <ul>
+
       <li>collapsing discrete distributions:</li>
+
+      
       <ul>
+
         <li>getdistrOption(".DistrCollapse.Unique.Warn")</li>
+
         <li>implemented proposal by jacob van etten (collapsing support)</li>
+
+      
       </ul>
+
       <li>enhance accuracy</li>
+
+      
       <ul>
+
         <li>improvement of .multm (now sets density for discrete
 distributions for non-support arguments actively to 0)</li>
+
         <li>We are a bit more careful about hitting support points in
 .multm for DiscreteDistribution (i.e., for D * e2, e2 numeric, D
 DiscreteDistribution)</li>
+
+      
       </ul>
+
+    
     </ul>
+
     <li>CONTINUOUS DISTRIBUTIONS</li>
+
+    
     <ul>
+
       <li>gaps/support :</li>
+
+      
       <ul>
+
         <li>gaps matrix could falsely have 0 rows (instead of being set
 to NULL)</li>
+
         <li>class UnivarMixingDistribution gains overall slots gaps
 support</li>
+
         <li>added corresponding accessors</li>
+
         <li>correspondingly, for UnivarLebDecDistribution as daughter
 class, accessors gaps(), support() refer to "overall" slots, not to
 slots of acPart, discretePart</li>
+
         <li>deleted special support, gaps method for
-UnivarLebDecDistribution; now inherits from UnivarMixingDistribution&#180;</li>
+UnivarLebDecDistribution; now inherits from UnivarMixingDistribution&acute;</li>
+
+      
       </ul>
+
+      
       <ul>
+
         <li>new utility function .consolidategaps to "merge" adjacent
 gaps</li>
+
         <li>setgaps method for UnivarMixingDistribution</li>
+
         <li>methods</li>
+
+        
         <ul>
+
           <li>&nbsp;"*", c("AffLinUnivarLebDecDistribution","numeric"),</li>
+
           <li>&nbsp;"+", c("AffLinUnivarLebDecDistribution","numeric"),</li>
+
           <li>"*", c("UnivarLebDecDistribution","numeric"),</li>
+
           <li>&nbsp;"+", c("UnivarLebDecDistribution","numeric"),</li>
+
           <li>&nbsp;generating function "UnivarLebDecDistribtion"</li>
+
+        
         </ul>
+
         <li ="">had to be modified</li>
+
         <li>utility 'mergegaps' catches situation where support has
 length 0</li>
+
+      
       </ul>
+
+      
       <ul>
+
         <li>abs - and Truncate - methods for AbscontDistribution use
 '.consolidategaps'</li>
+
+      
       </ul>
+
+    
     </ul>
+
     <li>COMPOUND DISTRIBUTIONS</li>
+
+    
     <ul>
+
       <li>Compound Distributions are now implemented; see
 ?CompoundDistribution, class?CompoundDistribution</li>
+
+    
     </ul>
+
     <li>UNIVARIATE MIXING DISTRIBUTIONS</li>
+
+    
     <ul>
+
       <li>fixed some errors / made some enhancements acc. to mail by
 Krunoslav Sever<br>
+
         <br>
+
       </li>
+
+    
     </ul>
+
+  
   </ul>
+
   <li>ENHANCED ACCURACY BY LOG SCALE</li>
+
+  
   <ul>
+
     <li>enhanced accuracy for Truncation with Peter Dalgaard's trick</li>
+
     <li>&nbsp;passed over to log-scale for getUp, getLow (again to
 enhance accuracy for distributions with unbounded support)</li>
+
     <li>&nbsp;introduced new slots .lowerExact and .logExact for
 objects of class "Distribution" (or inheriting) to control whether <br>
+
 the argument parts log[.p], lower.tail are implemented carefully in
 order to preserve accuracy<br>
+
 .</li>
+
+  
   </ul>
+
   <li>&nbsp;ARITHMETICS</li>
+
+  
   <ul>
+
     <li>enhanced "+" method</li>
+
+    
     <ul>
+
       <li>for DiscreteDistribution,DiscreteDistribution ---&nbsp;
 catches addition with Dirac-Distribution</li>
+
       <li>&nbsp;we enforce to use FFT-based algorithm for
 LatticeDistributions if the supports of both summands may be arranged
 on a common lattice&nbsp; whenever the length of convolutional grid
@@ -1105,268 +1655,474 @@ the length of the product grid ( = length(support1) * length(support2)
 )
 --- covers in particular m1*Binom(p,size) + m2*Binom(p',size) when m1,
 m2 are naturals &gt; 1 ...</li>
+
+    
     </ul>
+
     <li>convpow:</li>
+
+    
     <ul>
+
       <li>some minor enhancements in convpow and "+",
 "LatticeDistribution","LatticeDistribution"<br>
+
 &nbsp; and correction of a buglet there (e.g., lattice width oould get
 too small)</li>
+
       <li>method for AcDcLcDistribution gains argument 'ep' to
 control&nbsp;
 when to ignore discrete parts (or a.c. parts) which summands in
 binomial expansion of (acPart+discretePart)^\ast n to ignore</li>
+
       <li>minor fix in method for DiscreteDistribution</li>
+
+    
     </ul>
+
     <li>automatic image distribution generation</li>
+
+    
     <ul>
+
       <li>slot r is now /much/ faster / slimmer for results of
 *,/,^&nbsp;
 (no split in pos/neg part necessary for this!)</li>
+
       <li>slot d for results of *,/, exp() now is correct at 0 by
 extrapolation (and deletion wir .del0dmixfun of half of the part to
 avoid double counting in *,/)</li>
+
+    
     </ul>
+
     <li>affine linear trafos return slot X0 of AffLin-Construction if
 resulting a=1 and b=0</li>
+
     <li>method sqrt() for distributions<br>
+
       <br>
+
     </li>
+
+  
   </ul>
+
   <li>&nbsp;PLOTTING</li>
+
+  
   <ul>
+
     <li>enhanced automatic plotting range selection (calling in both
 scale and quantile based methods)</li>
+
     <li>plot-methods in branches/distr-2.1 now accept to.draw.arg no
 matter whether mfColRow==TRUE or FALSE</li>
+
     <li>fixed xlim and ylim args for plots; ylim can now be
 matrix-valued...</li>
+
     <li>realized suggestions by A. Unwin, Augsburg;<br>
+
 &nbsp;&nbsp;&nbsp; plot for L2paramFamilies may be restricted to
 selected subplots;</li>
+
     <li>also named parameters are used in axis annotation if available.</li>
+
     <li>changed devNew to only open a device if length(dev.list())&gt;0</li>
+
     <li>plot (for distribution objects) now is conformal&nbsp; to the
 (automatic) generic, i.e. it dispatches on signature (x,y) and has
 methods for signature(x=&lt;distributionclass&gt;,y="missing")</li>
+
     <li>enhanced plotting (correct dispatch; opening of new device is
 controlled by option("newDevice") )</li>
+
     <li>new plot function for 'UnivarLebDecDistribution' : now plots 3
 lines</li>
+
+    
     <ul>
+
       <li>first line common cdf and quantile function <br>
+
       </li>
+
       <li>second line abscont part</li>
+
       <li>third line discrete part<br>
+
 &nbsp; <br>
+
         <br>
+
       </li>
+
+    
     </ul>
+
+  
   </ul>
+
   <li>NEW / ENHANCED METHODS</li>
+
+  
   <ul>
+
     <li>getLow/getUp:<br>
+
 now available for UnivarLebDecDistribution, UnivarMixingDistribution</li>
+
     <li>q.r, p.l (methods for right continuous quantile function&nbsp;
 and left continuous cdf) <br>
+
     </li>
+
+    
     <ul>
+
       <li>for class AbscontDistribution (q.r with 'modifyqgaps')</li>
+
       <li>for class UnivarLebDecDistribution</li>
+
       <li>&nbsp;for class UnivarMixingDistribution</li>
+
+    
     </ul>
+
     <li>prob methods: <br>
+
     </li>
+
+    
     <ul>
+
       <li>prob() for DiscreteDistribution-class returns vector of
 probabilities for the support points (named by values of support
 points) <br>
+
       </li>
+
       <li>&nbsp;method for UnivarLebDecDistribution: returns a&nbsp;
 two-row matrix with <br>
+
       </li>
+
+      
       <ul>
+
         <li>column names values of support points</li>
+
         <li>&nbsp;first row named "cond" the probabilities of discrete
 part</li>
+
         <li>second row named "abd" the probabilities of discrete part
 multiplied with discreteWeight; hence the absolute probabilities of the
 support points</li>
+
+      
       </ul>
+
+    
     </ul>
+
     <li>methods p.ac, d.ac, p.discrete, d.discrete: <br>
+
     </li>
+
+    
     <ul>
+
       <li>they all have an extra argument 'CondOrAbs' with default
 value
 "cond" which if it does not partially match "abs", returns exactly slot
 p (resp. d) the respective acPart/discretePart of the object <br>
+
       </li>
+
       <li>&nbsp;else return value is weighted by acWeight/discreteWeight</li>
+
+    
     </ul>
+
     <li>new function 'makeAbscontDistribution'</li>
+
+    
     <ul>
+
       <li>to convert arbitrary univariate distributions to
 AbscontDistribution: takes slot p and uses AbscontDistribution(); in
 order to smear out mass points on the border,<br>
+
 makeAbscontDistribution() enlarges upper and lower bounds</li>
+
+    
     </ul>
+
     <li>flat.LCD:<br>
+
 setgaps is called only if slot gaps is not yet filled</li>
+
     <li>general technique: more freguent use of .isEqual</li>
+
     <li>new / enhanced utilities (non-exported)</li>
+
+    
     <ul>
+
       <li>'modifyqgaps' in order to achieve correct values for slot
 q&nbsp;
 in case slot p hast constancy regions (gaps)</li>
+
       <li>.qmixfun can cope with gaps and may return both left and
 right continuous versions</li>
+
       <li>.pmixfun may return both left and right continuous versions
 in case slot p hast constancy regions (gaps)<br>
+
         <br>
+
       </li>
+
+    
     </ul>
+
+  
   </ul>
+
   <li>&nbsp;DOCUMENTATION</li>
+
+  
   <ul>
+
     <li>new section "Extension packages" in package-help file
 0distr-package.Rd</li>
+
     <li>mention of CompoundDistribution-class in package-help file
 0distr-package.Rd of devel version</li>
+
     <li>new vignette "How to generate new distributions in packages
 distr, distrEx" in package distr ...<br>
+
       <br>
+
     </li>
+
+  
   </ul>
+
   <li>Rd-style:</li>
+
+  
   <ul>
+
     <li>&nbsp;several buglets detected with the fuzzier checking
 mechanism</li>
+
+    
     <ul>
+
       <li>cf [Rd] More intensive checking of R help files, Prof Brian
 Ripley, 09.01.2009 10:25)</li>
+
       <li>&nbsp;[Rd] Warning: missing text for item ... in \describe? ,
 Prof Brian Ripley</li>
+
+    
     </ul>
+
+  
   </ul>
+
   <li>S4 ISSUES:</li>
+
+  
   <ul>
+
     <li>fixed setGenerics- error reported by Kurt Hornik...<br>
+
 "log", "log10", "gamma", "lgamma" are no longer redefined as generics.</li>
+
     <li>explicit method "+" for Dirac,DiscreteDistribution</li>
+
     <li>some changes to the connections between LatticeDistribution and
 DiscreteDistribution resp. between AffLinLatticeDistribution and
 AffLinDiscreteDistribution. <br>
+
     </li>
+
     <li>&nbsp;key issues:</li>
+
+    
     <ul>
+
       <li>JMC has changed the way non-simple inheritance [i.e. in the
 presence of setIs relations]&nbsp; is treated (see distr; in particular
 show, and operator methods for LatticeDistribution)&nbsp;&nbsp;</li>
+
       <li>introduced some explicit methods for LatticeDistribution, as
 due to setIs Relation<br>
+
 it may no longer be inherited automatically from DiscreteDistribution
 since JMC's changes in S4 inheritance mechanism Sep/Oct 08</li>
+
+    
     </ul>
+
+  
   </ul>
+
   <li>BUGFIXES</li>
+
+  
   <ul>
+
     <li>fixed a buglet in initialize for Cauchy Distribution</li>
+
     <li>fixed bug in "+",LatticeDistribution,LatticeDistribution</li>
+
     <li>it may be that even if both lattices of e1, e2 have same
 width,&nbsp;
 the convoluted support has another width! example: c(-1.5,1.5),
 c(-3,0,3)</li>
+
     <li>matrix-valued ylim argument has not yet been dealt with
 correctly</li>
+
     <li>fixed bug in plot-methods for argument "inner" under use of
 to.draw.arg argument</li>
+
     <li>fixed a bug in convpow-method for AbscontDistribution</li>
+
     <li>small buglets in plot-methods.R and plot-methods_LebDec.R
 (moved setting of owarn/oldPar outside)</li>
+
     <li>fixed a bug in UnivarMixingDistribution.R (with new argument
 Dlist)</li>
+
     <li>fixed a bug discovered by Prof. Unwin&nbsp; --- "+" trapped in
 a dead-lock coercing between DiscreteDistribution and
 LatticeDistribution</li>
+
     <li>fixed a small buglet in convpow().</li>
+
     <li>fixed buglet in devel version of distr: getLow.R (wrong place
 of ")" )</li>
+
     <li>fixed some errors in plotting LCD and CompoundDistribution(and
 enhanced automatic axis labels by some tricky castings...)</li>
+
     <li>UnivarMixingDistribution was too strict with sum mixCoeff == 1</li>
+
     <li>deleted some erroneous prints left over from debugging in
 ExtraConvolutionMethods.R</li>
+
     <li>fixed some buglets in plot for distr (only in branch)</li>
+
     <li>fixed redundant code in bAcDcLcDistribution.R</li>
+
     <li>Patch to bug with AffLinAbscontDistribution</li>
+
     <li>&nbsp;correction of small buglet in validity to Norm-class</li>
+
     <li>fixed bug with AffLinAbscontDistribution for a*X+b,
 distribution X &gt;=0<br>
+
       <br>
+
       <br>
+
     </li>
+
+  
   </ul>
+
   <li>&nbsp;LICENSE: moved license to LGPL-3<br>
+
   </li>
+
 </ul>
+
 <span style="font-weight: bold;"><br>
+
 </span></div>
+
 <h3 style="text-align: left;">Changes from 2.1 to
 2.2<br>
+
 </h3>
+
 <li> TEMPLATE </li>
+
 <hr style="width: 100%; height: 2px; color: rgb(0, 0, 0);">
 <h2 style="text-align: center; color: rgb(0, 0, 153);">Our plans for
 the next version:</h2>
+
 <ul>
-  <li>overloading binary operators of group <span
- style="color: rgb(51, 102, 255);">Math2 </span>for independent
+
+  <li>overloading binary operators of group <span style="color: rgb(51, 102, 255);">Math2 </span>for independent
 distributions<br>
+
 [done partially as for version 2.0]<br>
+
   </li>
+
   <li>defining a subgroup of <span style="color: rgb(51, 102, 255);">Math2</span>
 of invertible binary operators </li>
+
   <li><font size="-1"><big>application of analytic Fourier Transforms
 or FFT to any univariate
 distributions ---perhaps also to be controlled<br>
+
 by a parameter/option</big></font></li>
-  <li><font size="-1"><big>use the <span
- style="color: rgb(51, 102, 255);">q</span>-slot applied to <span
- style="color: rgb(51, 102, 255);">runif</span> in <span
- style="color: rgb(51, 102, 255);">simplifyr</span> for continuous
+
+  <li><font size="-1"><big>use the <span style="color: rgb(51, 102, 255);">q</span>-slot applied to <span style="color: rgb(51, 102, 255);">runif</span> in <span style="color: rgb(51, 102, 255);">simplifyr</span> for continuous
 distributions</big></font></li>
-  <li><font size="-1"><big>redo the <span
- style="color: rgb(51, 102, 255);">initialize</span>- and the <span
- style="color: rgb(51, 102, 255);">math</span>-method for discrete
+
+  <li><font size="-1"><big>redo the <span style="color: rgb(51, 102, 255);">initialize</span>- and the <span style="color: rgb(51, 102, 255);">math</span>-method for discrete
 distributions when only slot <span style="color: rgb(51, 102, 255);">r</span>
 is given</big></font></li>
+
   <li>special group generic for invertible operators for the exact
 determination of image distributions</li>
+
   <li> <span style="color: rgb(51, 102, 255);">liesInSupport</span>:
-allow for logical operations for slot <span
- style="color: rgb(51, 102, 255);">img</span> of distributions</li>
+allow for logical operations for slot <span style="color: rgb(51, 102, 255);">img</span> of distributions</li>
+
 </ul>
+
 <br style="color: rgb(0, 0, 0);">
+
 <hr style="width: 100%; height: 2px; color: rgb(0, 0, 0);">
 <h2 style="text-align: center; color: rgb(0, 0, 153);">Things we invite
 other people to do</h2>
+
 <ul>
+
   <li>multivariate distributions</li>
+
   <li>conditional distributions</li>
+
   <li>copula<br>
+
   </li>
+
 </ul>
+
 <ul>
+
   <span style="color: rgb(51, 102, 255);"></span>
 </ul>
+
 </div>
+
 <hr style="width: 100%; height: 2px; color: rgb(0, 0, 0);">
 <div style="text-align: justify; color: rgb(0, 0, 0);">This page is
-maintained by <a
- href="mailto:peter.ruckdeschel@itwm.fraunhofer.de?subject=distr-package">Peter
+maintained by <a href="mailto:peter.ruckdeschel@itwm.fraunhofer.de?subject=distr-package">Peter
 Ruckdeschel</a> and <a href="mailto:statho3@web.de">Thomas Stabla</a>
-and last updated on 2009-03-09.<br>
+and last updated on 2011-11-19.<br>
+
 </div>
+
 </body>
 </html>

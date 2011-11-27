@@ -53,11 +53,11 @@ echo $contents; } ?>
 of R-Packages&nbsp;<span style="color: rgb(51, 51, 255);"></span></big>
 <a href="http://www.r-project.org/"> <img
  style="border: 0px solid ; width: 152px; height: 101px;" alt="R-Logo"
- src="Rlogo.jpg"></a></span></h1>
+ src="RLOGO.jpg"></a></span></h1>
 </div>
 <hr style="width: 100%; height: 2px;">
-<div style="text-align: justify;"> Version: 2.0.3<br>
-Release Date: 2008-11-28 <br>
+<div style="text-align: justify;"> Version: 2.3.3<br>
+Release Date: 2011-11-19 <br>
 Authors: <a
  href="mailto:peter.ruckdeschel@itwm.fraunhofer.de?subject=%5Bdistr%5D">Peter
 Ruckdeschel</a>, <a
@@ -84,6 +84,8 @@ This family currently comprises the packages<br>
   <li><a href="distr.html"><span style="color: rgb(51, 102, 255);">distr</span></a><br>
   </li>
   <li><a href="distrEx.html"><span style="color: rgb(51, 102, 255);">distrEx</span></a><br>
+  </li>
+  <li><a href="distrEllipse.html"><span style="color: rgb(51, 102, 255);">distrEllipse</span></a><br>
   </li>
   <li><a href="distrSim.html"><span style="color: rgb(51, 102, 255);">distrSim</span></a><br>
   </li>
@@ -123,11 +125,11 @@ distrXXX project for developpers upto version 2.0]<a href="NEWS"><br>
 </a></li>
 <li><a
 href="http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/www/WISHLIST?root=distr&amp;view=markup">WISHLIST</a>
-(partly in German) </li>
+(in German in parts) </li>
 <li><a
 href="http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/www/TOBEDONE-PROJEKTE?root=distr&amp;view=markup">TOBEDONE-PROJEKTE</a>
-(partly in
-German) </li>
+(in
+German in parts) </li>
 </ul>
 should be interesting.<br>
 </div>
