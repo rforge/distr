@@ -22,7 +22,7 @@ setMethod("var", signature(x = "UnivariateDistribution"),
         LowIsUpp <- if(low == -Inf) 
                     low == -upp else distr:::.isEqual(ztr-low,upp-ztr)
         
-        if(LowIsUpp && missing(cond)&&missing(fun)){
+        if(LowIsUpp && missing(cond) && missing(fun)){
            if(is(Symmetry(x),"SphericalSymmetry"))
               return(2 * E(x0, fun = function(t)t^2, low =0, useApply = useApply, ...))
         }
