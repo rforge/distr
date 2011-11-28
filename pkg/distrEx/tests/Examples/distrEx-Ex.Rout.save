@@ -1,5 +1,5 @@
 
-R version 2.12.1 Patched (2011-01-04 r53913)
+R version 2.14.0 Patched (2011-11-28 r57759)
 Copyright (C) 2011 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
@@ -24,7 +24,7 @@ Type 'q()' to quit R.
 > library('distrEx')
 Loading required package: distr
 Loading required package: startupmsg
-:startupmsg>  Utilities for start-up messages (version 0.7.1)
+:startupmsg>  Utilities for start-up messages (version 0.7.3)
 :startupmsg> 
 :startupmsg>  For more information see ?"startupmsg",
 :startupmsg>  NEWS("startupmsg")
@@ -32,7 +32,8 @@ Loading required package: startupmsg
 Loading required package: sfsmisc
 Loading required package: SweaveListingUtils
 :SweaveListingUtils>  Utilities for Sweave together with
-:SweaveListingUtils>  TeX listings package (version 0.5)
+:SweaveListingUtils>  TeX listings package (version
+:SweaveListingUtils>  0.5.4)
 :SweaveListingUtils> 
 :SweaveListingUtils>  Some functions from package 'base'
 :SweaveListingUtils>  are intentionally masked ---see
@@ -51,14 +52,14 @@ Loading required package: SweaveListingUtils
 :SweaveListingUtils>  vignette("ExampleSweaveListingUtils").
 
 
-Attaching package: 'SweaveListingUtils'
+Attaching package: ‘SweaveListingUtils’
 
-The following object(s) are masked from 'package:base':
+The following object(s) are masked from ‘package:base’:
 
     library, require
 
 :distr>  Object oriented implementation of distributions (version
-:distr>  2.3)
+:distr>  2.3.4)
 :distr> 
 :distr>  Attention: Arithmetics on distribution objects are
 :distr>  understood as operations on corresponding random variables
@@ -77,22 +78,22 @@ The following object(s) are masked from 'package:base':
 :distr>  vignette("distr").
 
 
-Attaching package: 'distr'
+Attaching package: ‘distr’
 
-The following object(s) are masked from 'package:stats':
+The following object(s) are masked from ‘package:stats’:
 
     df, qqplot, sd
 
 Loading required package: evd
 Loading required package: actuar
 
-Attaching package: 'actuar'
+Attaching package: ‘actuar’
 
-The following object(s) are masked from 'package:grDevices':
+The following object(s) are masked from ‘package:grDevices’:
 
     cm
 
-:distrEx>  Extensions of package distr (version 2.3)
+:distrEx>  Extensions of package distr (version 2.3.2)
 :distrEx> 
 :distrEx>  Note: Packages "e1071", "moments", "fBasics" should be
 :distrEx>  attached /before/ package "distrEx". See distrExMASK().
@@ -105,9 +106,9 @@ The following object(s) are masked from 'package:grDevices':
 :distrEx>  vignette("distr").
 
 
-Attaching package: 'distrEx'
+Attaching package: ‘distrEx’
 
-The following object(s) are masked from 'package:stats':
+The following object(s) are masked from ‘package:stats’:
 
     IQR, mad, median, var
 
@@ -162,7 +163,7 @@ Slot "name":
 > 
 > AsymTotalVarDist(Norm(), Gumbel(), rho=0.3)
 asym. total variation distance 
-                     0.2316870 
+                      0.231687 
 > AsymTotalVarDist(Norm(), Td(10), rho=0.3)
 asym. total variation distance 
                     0.03412603 
@@ -191,7 +192,7 @@ asym. total variation distance
 > 
 > AsymTotalVarDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5), rho=0.3)
 asym. total variation distance 
-                     0.2925150 
+                      0.292515 
 > 
 > 
 > 
@@ -705,7 +706,7 @@ Distribution Object of Class: GEV
 > E(GEV()) 
 [1] 0.5772157
 > E(P1, function(x){x^2})
-[1] 1.977920
+[1] 1.97792
 > 
 > 
 > 
@@ -758,7 +759,7 @@ Slot "name":
 > ### ** Examples
 > 
 > integrate(dnorm, -1.96, 1.96)
-0.9500042 with absolute error < 1.0e-11
+0.9500042 with absolute error < 1e-11
 > GLIntegrate(dnorm, -1.96, 1.96)
 [1] 0.9500042
 > 
@@ -1104,7 +1105,7 @@ function (n, cond, ...)
     }
     0 + cond %*% 1 + 1 * r(n, ...)
 }
-<environment: 0x36087e8>
+<environment: 0x5e68250>
 > d(D1)
 function (x, cond, log = FALSE, ...) 
 {
@@ -1126,7 +1127,7 @@ function (x, cond, log = FALSE, ...)
     else d0 <- d0/1
     return(d0)
 }
-<environment: 0x36087e8>
+<environment: 0x5e68250>
 > p(D1)
 function (q, cond, lower.tail = TRUE, log.p = FALSE, ...) 
 {
@@ -1153,7 +1154,7 @@ function (q, cond, lower.tail = TRUE, log.p = FALSE, ...)
             p0 <- log(p0)
     return(p0)
 }
-<environment: 0x36087e8>
+<environment: 0x5e68250>
 > q(D1)
 function (p, cond, lower.tail = TRUE, log.p = FALSE, ...) 
 {
@@ -1177,7 +1178,7 @@ function (p, cond, lower.tail = TRUE, log.p = FALSE, ...)
         argList <- c(argList, dots)
     1 * do.call(q, argList) + 0 + as.vector(cond %*% 1)
 }
-<environment: 0x36087e8>
+<environment: 0x5e68250>
 > param(D1)
 name:	parameter of a linear regression model
 theta:	1
@@ -1327,7 +1328,7 @@ minimal asym. total variation distance
                              0.9201529 
 > OAsymTotalVarDist(y, Norm(), asis.smooth.discretize = "smooth")
 minimal asym. total variation distance 
-                              0.753965 
+                             0.7539651 
 > 
 > OAsymTotalVarDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5))
 minimal asym. total variation distance 
@@ -2003,7 +2004,7 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  14.23 0.12 14.519 0 0 
+Time elapsed:  12.828 0.116 13.001 0 0 
 > grDevices::dev.off()
 null device 
           1 

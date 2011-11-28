@@ -1,5 +1,5 @@
 
-R version 2.13.1 Patched (2011-09-08 r56992)
+R version 2.14.0 Patched (2011-11-28 r57759)
 Copyright (C) 2011 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
@@ -25,7 +25,7 @@ Type 'q()' to quit R.
 Loading required package: setRNG
 Loading required package: distr
 Loading required package: startupmsg
-:startupmsg>  Utilities for start-up messages (version 0.7.1)
+:startupmsg>  Utilities for start-up messages (version 0.7.3)
 :startupmsg> 
 :startupmsg>  For more information see ?"startupmsg",
 :startupmsg>  NEWS("startupmsg")
@@ -34,7 +34,7 @@ Loading required package: sfsmisc
 Loading required package: SweaveListingUtils
 :SweaveListingUtils>  Utilities for Sweave together with
 :SweaveListingUtils>  TeX listings package (version
-:SweaveListingUtils>  0.5.2)
+:SweaveListingUtils>  0.5.4)
 :SweaveListingUtils> 
 :SweaveListingUtils>  Some functions from package 'base'
 :SweaveListingUtils>  are intentionally masked ---see
@@ -53,14 +53,14 @@ Loading required package: SweaveListingUtils
 :SweaveListingUtils>  vignette("ExampleSweaveListingUtils").
 
 
-Attaching package: 'SweaveListingUtils'
+Attaching package: ‘SweaveListingUtils’
 
-The following object(s) are masked from 'package:base':
+The following object(s) are masked from ‘package:base’:
 
     library, require
 
 :distr>  Object oriented implementation of distributions (version
-:distr>  2.3.3)
+:distr>  2.3.4)
 :distr> 
 :distr>  Attention: Arithmetics on distribution objects are
 :distr>  understood as operations on corresponding random variables
@@ -79,15 +79,15 @@ The following object(s) are masked from 'package:base':
 :distr>  vignette("distr").
 
 
-Attaching package: 'distr'
+Attaching package: ‘distr’
 
-The following object(s) are masked from 'package:stats':
+The following object(s) are masked from ‘package:stats’:
 
     df, qqplot, sd
 
 Loading required package: distrSim
 :distrSim>  Simulation classes based on package distr (version
-:distrSim>  2.3.1)
+:distrSim>  2.3.2)
 :distrSim> 
 :distrSim>  Some functions from package 'stats' are intentionally
 :distrSim>  masked ---see distrSimMASK().
@@ -101,18 +101,18 @@ Loading required package: distrSim
 :distrSim>  vignette("distr").
 
 
-Attaching package: 'distrSim'
+Attaching package: ‘distrSim’
 
-The following object(s) are masked from 'package:stats':
+The following object(s) are masked from ‘package:stats’:
 
     simulate
 
-The following object(s) are masked from 'package:base':
+The following object(s) are masked from ‘package:base’:
 
     rbind
 
 :distrTEst>  Estimation and Testing classes based on package
-:distrTEst>  distr (version 2.3.1)
+:distrTEst>  distr (version 2.3.2)
 :distrTEst> 
 :distrTEst>  For more information see ?"distrTEst",
 :distrTEst>  NEWS("distrTEst"), as well as
@@ -251,7 +251,7 @@ Result: 'data.frame':	5 obs. of  2 variables:
 > plot(ev1)
 > #
 > #another function to be evaluated:
-> severalThings<- function(x) {list("mean"=mean(x),"sd"=sd(x), "mad"=mad(x))}
+> severalThings<- function(x) {list("mean"=mean(x),"sd"=sd(as.vector(x)), "mad"=mad(x))}
 > ev3 <- evaluate(cs, severalThings, resname="several") 
 > plot(ev3)
 > plot(ev3, ylim=c(0,10), col=c("blue","green", "red"))
@@ -488,7 +488,7 @@ $MaxNumberofPlottedEvaluationDims
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  2.55 0.02 2.575 0 0 
+Time elapsed:  2.812 0.028 2.847 0 0 
 > grDevices::dev.off()
 null device 
           1 
