@@ -1,5 +1,5 @@
 
-R version 2.13.1 Patched (2011-09-08 r56992)
+R version 2.14.0 Patched (2011-11-28 r57759)
 Copyright (C) 2011 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
@@ -23,7 +23,7 @@ Type 'q()' to quit R.
 > options(warn = 1)
 > library('distr')
 Loading required package: startupmsg
-:startupmsg>  Utilities for start-up messages (version 0.7.1)
+:startupmsg>  Utilities for start-up messages (version 0.7.3)
 :startupmsg> 
 :startupmsg>  For more information see ?"startupmsg",
 :startupmsg>  NEWS("startupmsg")
@@ -32,7 +32,7 @@ Loading required package: sfsmisc
 Loading required package: SweaveListingUtils
 :SweaveListingUtils>  Utilities for Sweave together with
 :SweaveListingUtils>  TeX listings package (version
-:SweaveListingUtils>  0.5.2)
+:SweaveListingUtils>  0.5.4)
 :SweaveListingUtils> 
 :SweaveListingUtils>  Some functions from package 'base'
 :SweaveListingUtils>  are intentionally masked ---see
@@ -51,14 +51,14 @@ Loading required package: SweaveListingUtils
 :SweaveListingUtils>  vignette("ExampleSweaveListingUtils").
 
 
-Attaching package: 'SweaveListingUtils'
+Attaching package: ‘SweaveListingUtils’
 
-The following object(s) are masked from 'package:base':
+The following object(s) are masked from ‘package:base’:
 
     library, require
 
 :distr>  Object oriented implementation of distributions (version
-:distr>  2.3.3)
+:distr>  2.3.4)
 :distr> 
 :distr>  Attention: Arithmetics on distribution objects are
 :distr>  understood as operations on corresponding random variables
@@ -77,9 +77,9 @@ The following object(s) are masked from 'package:base':
 :distr>  vignette("distr").
 
 
-Attaching package: 'distr'
+Attaching package: ‘distr’
 
-The following object(s) are masked from 'package:stats':
+The following object(s) are masked from ‘package:stats’:
 
     df, qqplot, sd
 
@@ -2018,19 +2018,20 @@ function (x, log = FALSE)
     else d0 <- df1(x)/stand
     return(d0)
 }
-<environment: 0x45a0d28>
+<bytecode: 0x2da8f60>
+<environment: 0x3e72948>
 
 $pfun
 function (q, lower.tail = TRUE, log.p = FALSE) 
 {
     p0 <- if (lower.tail) 
         function (v) 
-        .C("R_approxfun", as.double(x), as.double(y), as.integer(n), 
+        .C(C_R_approxfun, as.double(x), as.double(y), as.integer(n), 
             xout = as.double(v), as.integer(length(v)), as.integer(method), 
             as.double(yleft), as.double(yright), as.double(f), 
             NAOK = TRUE, PACKAGE = "stats")$xout(q)
     else 1 - function (v) 
-    .C("R_approxfun", as.double(x), as.double(y), as.integer(n), 
+    .C(C_R_approxfun, as.double(x), as.double(y), as.integer(n), 
         xout = as.double(v), as.integer(length(v)), as.integer(method), 
         as.double(yleft), as.double(yright), as.double(f), NAOK = TRUE, 
         PACKAGE = "stats")$xout(q)
@@ -2039,7 +2040,7 @@ function (q, lower.tail = TRUE, log.p = FALSE)
     else p0/nm
     return(p0)
 }
-<environment: 0x4a7a518>
+<environment: 0x5239f58>
 
 $qfun
 function (p, lower.tail = TRUE, log.p = FALSE) 
@@ -2057,7 +2058,7 @@ function (p, lower.tail = TRUE, log.p = FALSE)
     else q.l(1 - p01)
     return(as.numeric(q0))
 }
-<environment: 0x39b5098>
+<environment: 0x54967b8>
 
 > 
 > rp2 <- function(n){rpois(n, lambda = 1)^2}
@@ -2099,19 +2100,20 @@ function (x, log = FALSE)
     else d0 <- df1(x)/stand
     return(d0)
 }
-<environment: 0x459dd20>
+<bytecode: 0x2da8f60>
+<environment: 0x3255e08>
 
 $pfun
 function (q, lower.tail = TRUE, log.p = FALSE) 
 {
     p0 <- if (lower.tail) 
         function (v) 
-        .C("R_approxfun", as.double(x), as.double(y), as.integer(n), 
+        .C(C_R_approxfun, as.double(x), as.double(y), as.integer(n), 
             xout = as.double(v), as.integer(length(v)), as.integer(method), 
             as.double(yleft), as.double(yright), as.double(f), 
             NAOK = TRUE, PACKAGE = "stats")$xout(q)
     else 1 - function (v) 
-    .C("R_approxfun", as.double(x), as.double(y), as.integer(n), 
+    .C(C_R_approxfun, as.double(x), as.double(y), as.integer(n), 
         xout = as.double(v), as.integer(length(v)), as.integer(method), 
         as.double(yleft), as.double(yright), as.double(f), NAOK = TRUE, 
         PACKAGE = "stats")$xout(q)
@@ -2120,7 +2122,7 @@ function (q, lower.tail = TRUE, log.p = FALSE)
     else p0/nm
     return(p0)
 }
-<environment: 0x38288d8>
+<environment: 0x60ba6f8>
 
 $qfun
 function (p, lower.tail = TRUE, log.p = FALSE) 
@@ -2138,7 +2140,7 @@ function (p, lower.tail = TRUE, log.p = FALSE)
     else q.l(1 - p01)
     return(as.numeric(q0))
 }
-<environment: 0x3951618>
+<environment: 0x49eeb40>
 
 > 
 > rp2 <- function(n){rpois(n, lambda = 1)^2}
@@ -3867,11 +3869,11 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > F <- ( Norm() + Binom() + Pois() + Exp() ) * 2 - 10
 > system.time(r(F)(10^6))
    user  system elapsed 
-  0.660   0.020   0.684 
+  0.720   0.024   0.745 
 > simplifyr(F, size = 10^6)
 > system.time(r(F)(10^6))
    user  system elapsed 
-  0.030   0.000   0.036 
+   0.04    0.00    0.04 
 > 
 > 
 > cleanEx()
@@ -3905,10 +3907,10 @@ setReplaceMethod("b", "testclass", function(object, value){ object@b <- value; o
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  117.56 0.29 117.997 0 0 
+Time elapsed:  108.282 0.684 109.389 0.008 0.004 
 > grDevices::dev.off()
-postscript 
-         2 
+pdf 
+  2 
 > ###
 > ### Local variables: ***
 > ### mode: outline-minor ***
