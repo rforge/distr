@@ -8,6 +8,41 @@
  information)
  
 ##############
+v 2.4
+##############
+
+user-visible CHANGES:
+
+
+GENERAL ENHANCEMENTS:
+
+LatticeDistribution:::
++ revised initialize and convolution methods, and generating function
+-> new routine to determine the smallest common grid for convolution
+
+under the hood:
++ introduce .Rbuildignore files 
++ require no longer called in .onAttach
++ created folder vignettes and moved content of inst/doc/ to it
++ removed lazyload tag in DESCRIPTION
++ updated affiliation info in newDistributions.Rnw
++ deleted inst/doc folder
++ added DESCRIPTION tag "ByteCompile" to all our packages
++ updating maintainer email address and URL.
++ added argument no.readonly = TRUE to assignments of form opar <- par()
+
+
+BUGFIXES:
+
++ fixed an error in show method for UnivarLebDecDistribution: 
+  match.call() threw an error
++ fixed problems with .makeDNew - as .makeDNew is not exported
++ error in definition of Beta() --- d slot was wrong
++ corrected typo (inifinite...)
++ typo in Beta-class.Rd (only in TeX mode) discovered by Thomas Kirschenmann, thk3421@gmail.com
+
+
+##############
 v 2.3
 ##############
 

@@ -8,6 +8,29 @@
  information)
  
 ##############
+v 2.4
+##############
+
+user-visible CHANGES:
+
+
+under the hood:
++ added DESCRIPTION tag "ByteCompile" to all our packages
++ updating maintainer email address and URL.
++ added argument no.readonly = TRUE to assignments of form opar <- par()
+
+++ kMad:
++ kMad.c now has Unix ending (LF instead of CR, CRLF
++ removed lazyload tag in DESCRIPTION
++ deleted occurrences of ll and lr in kMad.c (as proposed by Matthias)
++ deleted dll's and .d files from distrEx src folder
+
+
+BUGFIXES:
+
++ corrected bug in var() (with argument fun in case of symmetry)
+
+##############
 v 2.3
 ##############
 

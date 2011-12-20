@@ -8,6 +8,29 @@
  information)
 
 ##############
+v 2.4
+##############
+
+user-visible CHANGES:
++ changed affiliations in vignette
++ vignette has shrunken in size from > 5MB to < 3MB
+
+GENERAL ENHANCEMENTS:
+
+under the hood:
++ as a reaction to B. Ripley's mail on r-devel, "CRAN package sizes", 
+  Feb-14-2011, we introduce .Rbuildignore files
++ pkg distrDoc gains a NAMESPACE
++ created folder vignettes and moved content of inst/doc/ to it
++ removed lazyload tag in DESCRIPTION
++ distrDoc no longer uses require() in .onAttach
++ added DESCRIPTION tag "ByteCompile" to all our packages
++ updating maintainer email address and URL.
+
+BUGFIXES:
+
+
+##############
 v 2.3
 ##############
 

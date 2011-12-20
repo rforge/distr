@@ -2,6 +2,10 @@
 #  News: to utilities in folder 'utils'
 ######################################################################
 
+### distrXXX family version 2.4
++ minor changes in utils 
++ changed line ending due to a warning
+
 ### distrXXX family version 2.3
 
 + new utils getRevNr, getAllRevNr  to obtain SVN Revision Nr

@@ -8,6 +8,34 @@
  information)
 
 ##############
+v 2.4
+##############
+
+user-visible CHANGES:
+
+under the hood:
++ created folder vignettes and moved content of inst/doc/ to it
++ removed lazyload tag in DESCRIPTION
++ updated affiliation info in newDistributions.Rnw
++ deleted inst/doc folder
++ .Rbuildignore file as a reaction to B. Ripley's mail on r-devel, 
+   "CRAN package sizes",  Feb-14-2011
++ added computation of relative error in checkL2deriv - 
+  maybe there is a better idea avoiding division by zero, 
++ added DESCRIPTION tag "ByteCompile" to all our packages
++ updating maintainer email address and URL.
++ added argument no.readonly = TRUE to assignments of form opar <- par()
+
+
+BUGFIXES:
+
++ bugfixes in NbinomMeanSizeFamily 
+                 and NbinomwithSizeFamily (detected by Matthias!)
++ digamma instead of trigamma
+
+
+
+##############
 v 2.3
 ##############
 
