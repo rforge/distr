@@ -1,6 +1,6 @@
 %\VignetteIndexEntry{distr - manual}
 %\VignetteDepends{startupmsg,distr}
-%\VignetteKeywords{probability distribution,simulation,estimation}
+%\VignetteKeyword{probability distribution,simulation,estimation}
 %\VignettePackage{distr}
 %
 \documentclass[11pt]{article}
@@ -26,6 +26,24 @@
 \svnRegisterAuthor{ifrin}{Eleonara Feist}
 \svnRegisterAuthor{jdospina}{Juan David Ospina}
 \svnRegisterAuthor{kowzar}{Kouros Owzar}
+%
+%borrowed from doc/manual/refman.top
+%
+%% Set PDF 1.5 and compression, including object compression
+%% Needed for MiKTeX -- most other distributions default to this
+\ifx\pdfoutput\undefined
+\else
+  \ifx\pdfoutput\relax
+  \else
+    \ifnum\pdfoutput>0
+      % PDF output
+      \pdfminorversion=5
+      \pdfcompresslevel=9
+      \pdfobjcompresslevel=2
+    \fi
+  \fi
+\fi
+%
 %
 \usepackage{geometry}
 \usepackage{ifpdf}
@@ -63,16 +81,17 @@ setToBeDefinedPkgs(pkgs = c("distr","distrEx","distrTEst","distrSim",
 @
 %
 % -------------------------------------------------------------------------------
-\newcommand{\pkgExversion}{{\tt 2.1}}
+%\newcommand{\pkgversion}{{\tt 2.4}}
+\newcommand{\pkgExversion}{{\tt 2.4}}
 \newcommand{\Reals}{\mathbb{R}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 % -------------------------------------------------------------------------------
 %
 \markboth{\sl Packages ``{\tt distr}'', ``{\tt distrSim}'', ``{\tt distrTEst}'', 
-``{\tt distrEx}'', ``{\tt distrTeach}'', ``{\tt distrMod}''}%
+``{\tt distrEx}'', ``{\tt distrEllipse}'', ``{\tt distrTeach}'', ``{\tt distrMod}''}%
 {\sl Packages ``{\tt distr}'', ``{\tt distrSim}'', ``{\tt distrTEst}'',  
-``{\tt distrEx}'', ``{\tt distrTeach}'', ``{\tt distrMod}''}
+``{\tt distrEx}'', ``{\tt distrEllipse}'', ``{\tt distrTeach}'', ``{\tt distrMod}''}
 %
 % -------------------------------------------------------------------------------
 %
@@ -80,7 +99,8 @@ setToBeDefinedPkgs(pkgs = c("distr","distrEx","distrTEst","distrSim",
 \begin{document}
 % -------------------------------------------------------------------------------
 \title{{\tt S4} Classes for Distributions---a manual for packages \pkg{distr}, 
-        \pkg{distrEx}, \pkg{distrMod}, \pkg{distrSim}, \pkg{distrTEst}, \pkg{distrTeach}, 
+        \pkg{distrEx}, \pkg{distrEllipse}, \pkg{distrMod}, \pkg{distrSim},
+        \pkg{distrTEst}, \pkg{distrTeach},
         version \pkgversion}
 %,version \pkgExversion}
 \author{\small Peter Ruckdeschel\thanks{Fraunhofer ITWM, Kaiserslautern}
