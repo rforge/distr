@@ -1,8 +1,8 @@
 useDynLib("distrEx")
 
+import("startupmsg")
 import("methods")
 import("distr")
-import("startupmsg")
 
 exportClasses("Condition", "EuclCondition") 
 exportClasses("LMParameter",   

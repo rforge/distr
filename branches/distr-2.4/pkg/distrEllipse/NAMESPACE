@@ -1,10 +1,10 @@
 import("methods")
 importFrom("setRNG", "setRNG")
+import("startupmsg")
 import("mvtnorm")
 import("distr")
 import("distrEx")
 import("distrSim")
-import("startupmsg")
 
 export("SphericalDistribution", "EllipticalDistribution", 
        "MVNorm", "MVt", "MultivarDistrList",
