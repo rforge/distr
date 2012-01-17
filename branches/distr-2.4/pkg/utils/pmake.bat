@@ -43,16 +43,16 @@ echo ----------------------------------------------------------------
 if not "%2"=="" call Rversions %2
 if not "%3"=="" call Rversions %3
 echo on
-call R CMD check %1
+call R CMD check --force-multiarch --timings %1
 echo off
 if not "%2"=="" call Rversions %2
 echo.
 echo ----------------------------------------------------------------
 if "%4"=="+" (
-echo R CMD check under %2
+echo R CMD check --force-multiarch --timings under %2
 echo ----------------------------------------------------------------
 echo on
-call R CMD check --outdir=%2 %1
+call R CMD check --force-multiarch --timings --outdir=%2 %1
 echo off
 echo.
 echo ----------------------------------------------------------------
@@ -62,16 +62,16 @@ echo R CMD build under %2
 ) else echo R CMD build
 echo ----------------------------------------------------------------
 echo on
-call R CMD build %1
+call R CMD build --compact-vignettes %1
 echo off
 echo.
 echo ----------------------------------------------------------------
 if not "%2"=="" (
-echo R CMD build --binary under %2
-) else echo R CMD build --binary 
+echo R CMD INSTALL --build under %2
+) else echo R CMD INSTALL --build 
 echo ----------------------------------------------------------------
 echo on
-call R CMD build --binary %1
+call R CMD INSTALL --force-biarch --byte-compile --with-keep.source --compact-docs --resave-data -- example --html --latex --clean --preclean --build %1
 echo off
 echo.
 echo ----------------------------------------------------------------
@@ -80,7 +80,7 @@ echo R CMD INSTALL under %2
 ) else echo R CMD INSTALL
 echo ----------------------------------------------------------------
 echo on
-call R CMD INSTALL %1
+call R CMD INSTALL --force-biarch --byte-compile --with-keep.source --compact-docs --resave-data -- example --html --latex --clean --preclean %1
 echo off
 echo ----------------------------------------------------------------
 if not "%3"=="" (
@@ -88,7 +88,7 @@ echo R CMD INSTALL under %3
 echo ----------------------------------------------------------------
 call Rversions %3
 echo on
-call R CMD INSTALL %1
+call R CMD INSTALL --force-biarch --byte-compile --with-keep.source --compact-docs --resave-data -- example --html --latex --clean --preclean %1
 echo off
 call Rversions %2
 echo ----------------------------------------------------------------
