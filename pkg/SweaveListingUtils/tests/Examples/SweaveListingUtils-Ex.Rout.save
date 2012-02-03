@@ -1,6 +1,6 @@
 
-R version 2.14.0 Patched (2011-11-28 r57759)
-Copyright (C) 2011 The R Foundation for Statistical Computing
+R version 2.14.1 Patched (2012-02-02 r58256)
+Copyright (C) 2012 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
 
@@ -30,7 +30,7 @@ Loading required package: startupmsg
 
 :SweaveListingUtils>  Utilities for Sweave together with
 :SweaveListingUtils>  TeX listings package (version
-:SweaveListingUtils>  0.5.4)
+:SweaveListingUtils>  0.5.5)
 :SweaveListingUtils> 
 :SweaveListingUtils>  Some functions from package 'base'
 :SweaveListingUtils>  are intentionally masked ---see
@@ -421,7 +421,7 @@ V1=0,V2=1,V3=0}%
 \def\Code#1{{\tt\color{Rcolor} #1}}
 \def\file#1{{\tt #1}} 
 \def\pkg#1{{\tt "#1"}} 
-\newcommand{\pkgversion}{{\tt 2.3.3}}
+\newcommand{\pkgversion}{{\tt 2.3.4}}
 %------------------------------------------------------------------------------%
 Warning in setBaseOrRecommended(pkgs = pkgs) :
   number of items to replace is not a multiple of replacement length
@@ -650,27 +650,27 @@ makeClassRepresentation,loadMethod,listFromMlist,listFromMethods,linearizeMlist,
 languageEl<-,languageEl,isXS3Class,isVirtualClass,isSealedMethod,%
 isSealedClass,isGroup,isGrammarSymbol,isGeneric,isClassUnion,%
 isClassDef,isClass,insertSource,insertMethod,initialize,%
-initFieldArgs,inheritedSlotNames,implicitGeneric,hasMethods,hasMethod,%
-hasArg,getVirtual,getValidity,getSubclasses,getSlots,%
-getRefClass,getPrototype,getProperties,getPackageName,getMethodsMetaData,%
-getMethodsForDispatch,getMethods,getMethod,getGroupMembers,getGroup,%
-getGenerics,getGeneric,getFunction,getExtends,getDataPart,%
-getClasses,getClassPackage,getClassName,getClassDef,getClass,%
-getAllSuperClasses,getAllMethods,getAccess,generic.skeleton,functionBody<-,%
-functionBody,formalArgs,fixPre1.8,findUnique,findMethods,%
-findMethodSignatures,findMethod,findFunction,findClass,finalDefaultMethod,%
-extends,existsMethod,existsFunction,evalSource,emptyMethodsList,%
-empty.dump,elNamed<-,elNamed,el<-,el,%
-dumpMethods,dumpMethod,doPrimitiveMethod,defaultPrototype,defaultDumpName,%
-conformMethod,completeSubclasses,completeExtends,completeClassDefinition,coerce<-,%
-coerce,classesToAM,className,classMetaName,classLabel,%
-checkSlotAssignment,cbind2,canCoerce,callNextMethod,callGeneric,%
-cacheMethod,cacheMetaData,cacheGenericsMetaData,body<-,balanceMethodsList,%
-assignMethodsMetaData,assignClassDef,asMethodDefinition,as<-,allNames,%
-allGenerics,addNextMethod,Summary,SignatureMethod,S3Part<-,%
-S3Part,S3Class<-,S3Class,Quote,MethodsListSelect,%
-MethodsList,MethodAddCoerce,Math2,Logic,Complex,%
-Compare,Arith%
+initRefFields,initFieldArgs,inheritedSlotNames,implicitGeneric,hasMethods,%
+hasMethod,hasArg,getVirtual,getValidity,getSubclasses,%
+getSlots,getRefClass,getPrototype,getProperties,getPackageName,%
+getMethodsMetaData,getMethodsForDispatch,getMethods,getMethod,getGroupMembers,%
+getGroup,getGenerics,getGeneric,getFunction,getExtends,%
+getDataPart,getClasses,getClassPackage,getClassName,getClassDef,%
+getClass,getAllSuperClasses,getAllMethods,getAccess,generic.skeleton,%
+functionBody<-,functionBody,formalArgs,fixPre1.8,findUnique,%
+findMethods,findMethodSignatures,findMethod,findFunction,findClass,%
+finalDefaultMethod,extends,existsMethod,existsFunction,evalSource,%
+emptyMethodsList,empty.dump,elNamed<-,elNamed,el<-,%
+el,dumpMethods,dumpMethod,doPrimitiveMethod,defaultPrototype,%
+defaultDumpName,conformMethod,completeSubclasses,completeExtends,completeClassDefinition,%
+coerce<-,coerce,classesToAM,className,classMetaName,%
+classLabel,checkSlotAssignment,cbind2,canCoerce,callNextMethod,%
+callGeneric,cacheMethod,cacheMetaData,cacheGenericsMetaData,body<-,%
+balanceMethodsList,assignMethodsMetaData,assignClassDef,asMethodDefinition,as<-,%
+allNames,allGenerics,addNextMethod,Summary,SignatureMethod,%
+S3Part<-,S3Part,S3Class<-,S3Class,Quote,%
+MethodsListSelect,MethodsList,MethodAddCoerce,Math2,Logic,%
+Complex,Compare,Arith%
 },%
 keywordstyle={[9]{\bf\color{RRecomdcolor}}},%
 %
@@ -2078,7 +2078,7 @@ detaching ‘package:MASS’
 > 
 > readPkgVersion(package = "distr")
      Version
-[1,] "2.3.3"
+[1,] "2.3.4"
 > 
 > 
 > 
@@ -3322,7 +3322,7 @@ myList=HU=AHAL,%
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  0.304 0.052 1.721 0 0 
+Time elapsed:  0.32 0.028 2.529 0 0 
 > grDevices::dev.off()
 null device 
           1 
