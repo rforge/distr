@@ -226,7 +226,8 @@ readSourceFromRForge <- function(PKG, TYPE, FILENAME, PROJECT,
   if(is.null(.CacheFiles[[base.URL]])){
     .CacheLength <<- .CacheLength + 1
     url.connection <- url(base.URL) 
-    RL <- readLines(url.connection)
+    RL <- try(readLines(url.connection),silent=TRUE)
+    if(is(RL,"try-error")) return(character(0))
     close(url.connection)
     .CacheFiles[[base.URL]] <<- RL
   }
@@ -243,21 +244,23 @@ copySourceFromRForge <- function(PKG, TYPE, FILENAME, PROJECT, from, to,
    RL <- readSourceFromRForge(PKG, TYPE, FILENAME, PROJECT, 
                               fromRForge = fromRForge, base.url = base.url)
    lR <- length(RL)
-   from <- if(missing(from)) 1 else {if(is.numeric(from))
-                                        max(from-offset.before,1)
-                                     else {if(length(gr0 <- grep(from,RL, ...)))
+   if(lR>0){
+      from <- if(missing(from)) 1 else {if(is.numeric(from))
+                                            max(from-offset.before,1)
+                                        else {if(length(gr0 <- grep(from,RL, ...)))
                                             max(gr0[1]-offset.before,1) else lR
                                           }
                                     }
-   to <- if(missing(to)) lR else {if(is.numeric(to))
+      to <- if(missing(to)) lR else {if(is.numeric(to))
                                         min(to+offset.after,lR)
                                      else {if(length(gr1<-grep(to,RL[from:lR], ...)))
-                                            min(from+gr1[1]-1+offset.after,lR)
+                                              min(from+gr1[1]-1+offset.after,lR)
                                            else 0
                                            }
-                                 }
-   if(to>=from) return(list(text=RL[from:to], lines=c(from,to)))
-   return(invisible())
+                                    }
+      if(to>=from) return(list(text=RL[from:to], lines=c(from,to)))
+   }
+   return(invisible(NULL))
 }
 
 #------------------------------------------------------------------------------
@@ -307,6 +310,7 @@ lstinputSourceFromRForge <- function(PKG, TYPE, FILENAME, PROJECT, from, to,
                         fromRForge = fromRForge, base.url = base.url,dots))
    }
    erg <- lapply(argL, function(x)  do.call(copySourceFromRForge, args = c(x)))
+   if(length(erg)==0) return(invisible(NULL))
    RL <- lapply(erg, function(x) x$text)
    lineNr <- lapply(erg, function(x) x$lines)
    lR <- lapply(RL, length)
