@@ -40,14 +40,9 @@ setClassUnion("MatrixorNULLorVector",c("matrix", "NULL","vector"))
 
 
 .pkgv <- as.character(
-         {if ("distrSim" %in% row.names(installed.packages()))
-             {read.dcf(file = system.file("DESCRIPTION", package = "distrSim"), 
-                       fields = "Version")
-             }else{
-              read.dcf(file = system.file("DESCRIPTION", 
-                       package = "distr"), 
-                       fields = "Version")
-          }})
+         if(all(is.na(packageDescription("distrSim"))))
+             packageVersion("distr") else packageVersion("distrSim")
+         )
 
 setClass("Dataclass",
          representation(filename = "vectororNULL",
