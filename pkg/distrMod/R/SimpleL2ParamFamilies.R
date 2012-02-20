@@ -215,7 +215,7 @@ NbinomwithSizeFamily <- function(size = 1, prob = 0.5, trafo){
                    prob <- main(param)["prob"]
                    size <- main(param)["size"]
                    xn <- 0:min(max(support(distribution)),
-                               qnbinom(1e-6,size=size,prob=prob,lower=FALSE),
+                               qnbinom(1e-6,size=size,prob=prob,lower.tail=FALSE),
                                1e5)
                    I11 <- -sum((trigamma(xn+size)-trigamma(size))*dnbinom(xn,size=size,prob=prob))
                    I12 <- -1/prob
@@ -299,7 +299,7 @@ NbinomMeanSizeFamily <- function(size = 1, mean = .5, trafo){
                    size <- main(param)["size"]
                    prob.0 <- size/(size+mean)
                    xn <- 0:min(max(support(distribution)),
-                               qnbinom(1e-6,size=size,prob=prob.0,lower=FALSE),
+                               qnbinom(1e-6,size=size,prob=prob.0,lower.tail=FALSE),
                                1e5)
                    I11 <- -sum((trigamma(xn+size)-trigamma(size))*dnbinom(xn,size=size,prob=prob.0))
                    I12 <- -1/prob.0
@@ -694,7 +694,7 @@ CauchyLocationScaleFamily <- function(loc = 0, scale = 1, trafo){
                                             EvenSymmetric(SymmCenter = loc)),
                   L2derivDistrSymm = DistrSymmList(SphericalSymmetry(), 
                                                    NoSymmetry()),
-                  L2derivDistr = UnivarDistrList(Arcsine(),abs(Arcsine())),
+                  L2derivDistr.0 = UnivarDistrList(Arcsine(),abs(Arcsine())),
                   FisherInfo.0 = matrix(c(1,0,0,1)/2,2,2, 
                                            dimnames = list(c("loc","scale"),
                                                            c("loc","scale"))),

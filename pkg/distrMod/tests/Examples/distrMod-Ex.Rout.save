@@ -1,6 +1,6 @@
 
-R version 2.14.0 Patched (2011-11-28 r57759)
-Copyright (C) 2011 The R Foundation for Statistical Computing
+R version 2.14.2 beta (2012-02-20 r58436)
+Copyright (C) 2012 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
 
@@ -33,7 +33,7 @@ Loading required package: sfsmisc
 Loading required package: SweaveListingUtils
 :SweaveListingUtils>  Utilities for Sweave together with
 :SweaveListingUtils>  TeX listings package (version
-:SweaveListingUtils>  0.5.4)
+:SweaveListingUtils>  0.5.5)
 :SweaveListingUtils> 
 :SweaveListingUtils>  Some functions from package 'base'
 :SweaveListingUtils>  are intentionally masked ---see
@@ -594,7 +594,7 @@ function (x)
 {
     ((x - 0)/1 * LogDeriv((x - 0)/1) - 1)/1
 }
-<environment: 0x7ff1308>
+<environment: 0x7326f18>
 
 > checkL2deriv(E1)
 precision of centering:	 -1.51181e-06 
@@ -778,7 +778,7 @@ function (x)
 {
     LogDeriv(x - 0)
 }
-<environment: 0x8e41d08>
+<environment: 0x23dff60>
 
 > checkL2deriv(G1)
 precision of centering:	 1.51181e-06 
@@ -820,8 +820,8 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A)
-<bytecode: 0x890d9f0>
-<environment: 0x890cc48>
+<bytecode: 0x830f610>
+<environment: 0x830f808>
 
 > 
 > ## The function is currently defined as
@@ -1099,7 +1099,7 @@ function (x)
 {
     ((x - 0)/1 * LogDeriv((x - 0)/1) - 1)/1
 }
-<environment: 0xae408a8>
+<environment: 0xa6de010>
 
 > checkL2deriv(L1)
 precision of centering:	 -0.003003394 
@@ -2128,7 +2128,7 @@ function (x)
         return(abs(x))
     else return(sqrt(colSums(x^2)))
 }
-<bytecode: 0x9649050>
+<bytecode: 0x82e4368>
 <environment: namespace:distrMod>
 > name(EuclNorm)
 [1] "EuclideanNorm"
@@ -2160,7 +2160,7 @@ function (x)
         return(abs(x))
     else return(sqrt(colSums(x^2)))
 }
-<bytecode: 0x9649050>
+<bytecode: 0x82e4368>
 <environment: namespace:distrMod>
 
 > 
@@ -2626,8 +2626,8 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A0)
-<bytecode: 0xb1b6130>
-<environment: 0xb1b6360>
+<bytecode: 0x79c93f8>
+<environment: 0x79c9660>
 
 > 
 > ## The function is currently defined as
@@ -2665,8 +2665,8 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A)
-<bytecode: 0xafd7d88>
-<environment: 0xafd7f48>
+<bytecode: 0x7686758>
+<environment: 0x7686918>
 
 > 
 > ## The function is currently defined as
@@ -4118,7 +4118,7 @@ TRUE
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  50.019 0.524 50.77 0 0 
+Time elapsed:  49.319 0.156 49.537 0 0 
 > grDevices::dev.off()
 null device 
           1 
