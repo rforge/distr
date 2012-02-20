@@ -1,4 +1,4 @@
-.distrExInstalled <- ("distrEx" %in% installed.packages())
+.distrExInstalled <- !all(is.na(packageDescription("distrEx")))
 
 .distroptions <- list(
                       DefaultNrGridPoints = 2^12,
