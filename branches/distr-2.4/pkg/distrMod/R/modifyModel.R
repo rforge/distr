@@ -1,4 +1,52 @@
 ### move model from one parameter to the next...
+setMethod("modifyModel", signature(model = "ParamFamily", param = "ParamFamParameter"),
+          function(model, param, .withCall = TRUE, ...){
+          M <- model
+          theta <- c(main(param),nuisance(param))
+          M@distribution <- model@modifyParam(theta)
+          M@param <- param
+          #we loose symmetry if available ...
+          M@distrSymm <- NoSymmetry()
+          
+          if(paste(M@fam.call[1]) == "ParamFamily")
+             fam.call <- eval(substitute(
+                      call("ParamFamily",
+                              name = name0,
+                              distribution = distribution0,
+                              distrSymm = distrSymm0,
+                              param = param0,
+                              props = props0,
+                              startPar = startPar0,
+                              makeOKPar = makeOKPar0,
+                              modifyParam = modifyParam0,
+                           ),
+                      list(   name0 = M@name,
+                              distribution0 = M@distribution,
+                              distrSymm0 = M@distrSymm,
+                              param0 = M@param,
+                              props0 = M@props,
+                              startPar0 = M@startPar,
+                              makeOKPar0 = M@startPar,
+                              modifyParam0 = M@modifyParam,
+                          )
+                      ))
+          else{
+             fam.call <- model@fam.call
+             par.names <- names(theta)
+             call.n <- names(fam.call)
+             w <- which(call.n %in% par.names)
+             if(length(w))
+                fam.call <- fam.call[-w]
+             fam.call <-  as.call(c(as.list(fam.call),theta))
+          }
+
+          M@fam.call <- fam.call
+          class(M) <- class(model)
+          return(M)
+          })
+
+
+### move model from one parameter to the next...
 setMethod("modifyModel", signature(model = "L2ParamFamily", param = "ParamFamParameter"),
           function(model, param, .withCall = TRUE, .withL2derivDistr = TRUE,
                    ...){
