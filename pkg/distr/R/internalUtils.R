@@ -627,12 +627,14 @@ return(outC)
                  rm(supportnew)
 
             }else if (Dclass == "AffLinAbscontDistribution"){
-                 if(is.null(e1@gaps)) 
+                 trY <- try(
+                 if(is.null(e1@gaps))
                     gapsnew <- NULL
                  else {gapsnew <- e1@gaps * e2
                        if (e2 < 0) gapsnew <- 
                              gapsnew[rev(seq(nrow(gapsnew))),c(2,1),drop = FALSE] }
-                 
+                 , silent=TRUE)
+
                  dnew <- .makeD(substitute(e1, list(e1 = e1)),
                                 substitute(alist(x = x / e2), list(e2 = e2)),
                                 stand = abs(e2))
@@ -648,11 +650,13 @@ return(outC)
                     .logExact = .logExact(e1), .lowerExact = .lowerExact(e1))
  
             }else if (Dclass == "AbscontDistribution"){
-                 if(is.null(e1@gaps)) 
+                 trY <- try(
+                 if(is.null(e1@gaps))
                     gapsnew <- NULL
                  else {gapsnew <- e1@gaps * e2
                        if (e2 < 0) gapsnew <- 
                             gapsnew[rev(seq(nrow(gapsnew))),c(2,1), drop = FALSE] }
+                 , silent=TRUE)
 
                  dnew <- .makeD(substitute(e1, list(e1 = e1)),
                                 substitute(alist(x = x / e2), list(e2 = e2)),
