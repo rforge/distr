@@ -550,7 +550,7 @@ return(outC)
 
             withg <- getdistrOption("withgaps")
             on.exit(distroptions(withgaps=withg))
-            distoptions(withgaps=FALSE)
+            distroptions(withgaps=FALSE)
 
             if (length(e2)>1) stop("length of operator must be 1")
 
