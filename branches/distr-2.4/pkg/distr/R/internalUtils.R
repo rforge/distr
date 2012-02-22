@@ -547,6 +547,11 @@ return(outC)
           }
 
 .multm <- function(e1, e2, Dclass = "DiscreteDistribution"){
+
+            withg <- getdistrOption("withgaps")
+            on.exit(distroptions(withgaps=withg))
+            distoptions(withgaps=FALSE)
+
             if (length(e2)>1) stop("length of operator must be 1")
 
             if (.isEqual(e2, 1)) return(e1)
