@@ -73,7 +73,7 @@ SweaveListingPreparations <- function(
 
    sws <- .SweaveListingOptions
    sws$inSweave <- TRUE
-   assignInNamespace(".SweaveListingOptions", sws, "SweaveListingUtils")
+   assignInMyNamespace(".SweaveListingOptions", sws)
 
    withVerbatim <- rep(withVerbatim, length.out=3)
    if(is.null(names(withVerbatim)))
