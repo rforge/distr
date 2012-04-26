@@ -237,6 +237,7 @@ setClass("L2LocationScaleFamily",
                                   fam.call = call("new", "L2LocationScaleFamily")),
             contains = "L2LocationScaleUnion")
 
+
 ################################################################################
 ## Norm Classes
 ################################################################################

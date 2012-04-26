@@ -62,5 +62,7 @@ setClass("NormLocationScaleFamily",
 ## Cauchy location scale family
 setClass("CauchyLocationScaleFamily",
           contains = "L2LocationScaleFamily")
+## class
+setClass("GParetoFamily", contains="L2ParamFamily")
 
 

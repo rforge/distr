@@ -10,6 +10,7 @@
 \alias{ExpScaleFamily-class}
 \alias{LnormScaleFamily-class}
 \alias{GammaFamily-class}
+\alias{GParetoFamily-class}
 \alias{BetaFamily-class}
 \alias{NormLocationScaleFamily-class}
 \alias{CauchyLocationScaleFamily-class}
@@ -20,7 +21,7 @@
 
 \section{Described classes}{
 In this file we describe classes 
-\code{BinomFamily}, \code{PoisFamily}, \code{GammaFamily}
+\code{BinomFamily}, \code{PoisFamily}, \code{GammaFamily}, \code{GParetoFamily},
 \code{BetaFamily} ``extending'' (no new slots!) class \code{L2ParamFamily},
 classes \code{NormLocationFamily} and \code{GumbelLocationFamily}, 
 ``extending'' (no new slots!) class \code{"L2LocationFamily"}, classes
