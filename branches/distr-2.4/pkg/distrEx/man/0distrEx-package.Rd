@@ -14,7 +14,7 @@ distrEx -- Extensions of package distr
                   \item \code{E(X,f)} for the expectation of \code{f(X)} 
                          where \code{X} is some distribution object and 
                          \code{f} some function in \code{X} }
-\item further functionals: var, sd, IQR, mad, median, skewness, kurtosis
+\item further functionals: var, sd, IQR, mad, median, skewness, kurtosis, Sn, Qn
 \item truncated moments,
 \item distances between distributions
      (Hellinger, Cramer von Mises, Kolmogorov, total variation, "convex contamination")
@@ -27,12 +27,12 @@ distrEx -- Extensions of package distr
 \tabular{ll}{
 Package: \tab distrEx \cr
 Version: \tab 2.4 \cr
-Date: \tab 2010-12-03 \cr
-Depends: \tab R(>= 2.6.0), methods, distr(>= 2.2), evd, actuar, startupmsg \cr
+Date: \tab 2012-05-15 \cr
+Depends: \tab R(>= 2.6.0), methods, distr(>= 2.2), evd, actuar, startupmsg, robustbase \cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-SVNRevision: \tab 699 \cr
+SVNRevision: \tab 757 \cr
 }
 }
 \section{Classes}{

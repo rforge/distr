@@ -257,7 +257,9 @@ GParetoFamily <- function(loc = 0, scale = 1, shape = 0.5,
 
         ## Pickand estimator
         if(is.null(start0Est)){
-           e0 <- HybridEstimator(x, up=300, ...)
+           e0 <- medkMADhybr(x, ParamFamily=GParetoFamily(loc = theta[1],
+                            scale = theta[2], shape = theta[3]),
+                            q.lo = 1e-6, q.up = 20)
         }else{
            if(is(start0Est,"function")){
               e1 <- start0Est(x, ...)
@@ -271,14 +273,28 @@ GParetoFamily <- function(loc = 0, scale = 1, shape = 0.5,
     }
 
     modifyPar <- function(theta){
-        theta <- abs(theta)
-        GPareto(loc = loc, scale = theta[1], shape = theta[2])
+        if(!is.null(names)){
+            sc <- theta["scale"]
+            sh <- theta["shape"]
+        }else{
+            theta <- abs(theta)
+            sc <- theta[1]
+            sh <- theta[2]
+        }
+        GPareto(loc = loc, scale = sc, shape = sh)
     }
 
     ## what to do in case of leaving the parameter domain
     makeOKPar <- function(theta) {
-        theta <- abs(theta)
-        theta[2] <- pmin(theta[2],10)
+        if(!is.null(names)){
+            sc <- theta["scale"]
+            sh <- theta["shape"]
+        }else{
+            theta <- abs(theta)
+            sc <- theta[1]
+            sh <- theta[2]
+        }
+        theta[2] <- pmin(sh,10)
         return(theta)
     }
 

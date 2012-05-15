@@ -3,6 +3,7 @@ useDynLib("distrEx")
 import("startupmsg")
 import("methods")
 import("distr")
+import("robustbase")
 
 exportClasses("Condition", "EuclCondition") 
 exportClasses("LMParameter",   
@@ -39,7 +40,7 @@ exportMethods("support",
               "+", "*",
               "name", "name<-", 
               "E", "var", "IQR", "skewness", "kurtosis", 
-              "sd", "median", "mad", "kMAD",
+              "sd", "median", "mad", "kMAD", "Sn", "Qn",
               "m1df", "m2df",
               "liesInSupport")
 export("EuclCondition") 

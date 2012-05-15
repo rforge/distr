@@ -163,6 +163,19 @@
 \alias{kurtosis,Unif-method}
 \alias{kurtosis,Weibull-method}
 \alias{kurtosis,Td-method}
+\alias{Sn}
+\alias{Sn-methods}
+\alias{Sn,ANY-method}
+\alias{Sn,UnivariateDistribution-method}
+\alias{Sn,Norm-method}
+\alias{Sn,AffLinDistribution-method}
+\alias{Qn}
+\alias{Qn-methods}
+\alias{Qn,ANY-method}
+\alias{Qn,UnivariateDistribution-method}
+\alias{Qn,Norm-method}
+\alias{Qn,DiscreteDistribution-method}
+\alias{Qn,AffLinDistribution-method}
 
 \title{Generic Functions for the Computation of Functionals}
 \description{
@@ -313,7 +326,21 @@ kurtosis(x, ...)
 \S4method{kurtosis}{Td}(x, ...)
 \S4method{kurtosis}{Unif}(x, ...)
 \S4method{kurtosis}{Weibull}(x, ...)
+
+Sn(x, ...)
+\S4method{Sn}{ANY}(x,  ...)
+\S4method{Sn}{UnivariateDistribution}(x, low = 0, upp = 20, accuracy = 1000, ...)
+\S4method{Sn}{AffLinDistribution}(x,  ...)
+\S4method{Sn}{Norm}(x,  ...)
+
+Qn(x, ...)
+\S4method{Qn}{ANY}(x,  ...)
+\S4method{Qn}{UnivariateDistribution}(x, q00 = NULL, ...)
+\S4method{Qn}{AffLinDistribution}(x, ...)
+\S4method{Qn}{DiscreteDistribution}(x,  ...)
+\S4method{Qn}{Norm}(x,  ...)
 }
+
 \arguments{
   \item{x}{ object of class \code{"UnivariateDistribution"}}
   \item{fun}{ if missing the (conditional) variance resp. standard deviation is computed
@@ -324,6 +351,13 @@ kurtosis(x, ...)
   \item{useApply}{ logical: should \code{sapply}, respectively \code{apply} 
     be used to evaluate \code{fund}.}
   \item{withCond}{ logical: is \code{cond} in the argument list of \code{fun}. }
+  \item{q00}{numeric or NULL: determines search interval (from \code{-q00} to \code{q00})
+             for \code{Qn}; if \code{NULL} (default) \code{q00}
+             is set to \code{10*q(x)(3/4)} internally. }
+  \item{low}{numeric; lower bound for search interval; defaults to \code{0}. }
+  \item{upp}{numeric; upper bound for search interval; defaults to \code{20}.
+            Is used internally as \code{upp*q(x)(0.75)}. }
+  \item{accuracy}{numeric; number of grid points; defaults to \code{1000}. }
   }
 \value{
   The value of the corresponding functional at the distribution in the argument is computed.
@@ -405,7 +439,21 @@ kurtosis(x, ...)
     if arguments \code{fun}, \code{cond} are missing: \code{kurtosis(x@X0)}
     else uses method for \code{signature(x = "UnivariateDistribution")}}
 
-  \item{\code{var}, \code{signature(x = "Arcsine")}:}{ 
+   \item{\code{Qn}, \code{signature(x = "Any")}:}{
+    interface to the \pkg{robustbase}-function \code{Qn} --- see \code{\link[robustbase]{Qn}}.}
+   \item{\code{Qn}, \code{signature(x = "UnivariateDistribution")}:}{
+    Qn of univariate distributions.}
+   \item{\code{Qn}, \code{signature(x = "DiscreteDistribution")}:}{
+    Qn of discrete distributions.}
+   \item{\code{Qn}, \code{signature(x = "AffLinDistribution")}:}{\code{abs(x@a) * Qn(x@X0)}}
+
+   \item{\code{Sn}, \code{signature(x = "Any")}:}{
+    interface to the \pkg{robustbase}-function \code{Qn} --- see \code{\link[robustbase]{Sn}}.}
+   \item{\code{Sn}, \code{signature(x = "UnivariateDistribution")}:}{
+    Sn of univariate distributions using pseudo-random variables (Thx to N. Horbenko).}
+   \item{\code{Sn}, \code{signature(x = "AffLinDistribution")}:}{\code{abs(x@a) * Sn(x@X0)}}
+
+  \item{\code{var}, \code{signature(x = "Arcsine")}:}{
     exact evaluation using explicit expressions.}
 \item{\code{var}, \code{signature(x = "Beta")}:}{ 
     for noncentrality 0 exact evaluation using explicit expressions.}  
@@ -627,6 +675,12 @@ kurtosis(x, ...)
   \item{\code{kurtosis}, \code{signature(x = "Weibull")}:}{ 
     exact evaluation using explicit expressions.}
 
+  \item{\code{Sn}, \code{signature(x = "Norm")}:}{
+    exact evaluation using explicit expressions.}
+
+  \item{\code{Qn}, \code{signature(x = "Norm")}:}{
+    exact evaluation using explicit expressions.}
+
 }}
 %\references{ ~put references to the literature/web site here ~ }
 \author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
@@ -670,7 +724,8 @@ mad(sin(exp(Norm()+2*Pois()))) ## weird
 \seealso{\code{\link{distrExIntegrate}}, \code{\link{m1df}}, \code{\link{m2df}},
          \code{\link[distr]{Distribution-class}},\cr
  \code{\link[stats]{sd}}, \code{\link[stats:cor]{var}}, \code{\link[stats]{IQR}},\cr
- \code{\link[stats]{median}}, \code{\link[stats]{mad}},  \code{\link[distr:sd-methods]{sd}} }
+ \code{\link[stats]{median}}, \code{\link[stats]{mad}},  \code{\link[distr:sd-methods]{sd}},\cr
+ \code{\link[robustbase]{Sn}},  \code{\link[robustbase]{Qn}}}
 \concept{functional}
 \concept{var}
 \concept{sd}
@@ -679,6 +734,8 @@ mad(sin(exp(Norm()+2*Pois()))) ## weird
 \concept{median}
 \concept{skewness}
 \concept{kurtosis}
+\concept{Sn}
+\concept{Qn}
 \keyword{methods}
 \keyword{distribution}
 \concept{integration}

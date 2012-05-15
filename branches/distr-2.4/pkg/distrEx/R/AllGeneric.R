@@ -170,4 +170,12 @@ if(!isGeneric("plotCLT")){
   setGeneric("plotCLT", function(Tn, ...) standardGeneric("plotCLT"))
 }
 
+### new: 15.05.2012:
 
+if(!isGeneric("Qn")){
+   setGeneric("Qn", function(x, ...) standardGeneric("Qn"))
+}
+
+if(!isGeneric("Sn")){
+   setGeneric("Sn", function(x, ...) standardGeneric("Sn"))
+}
