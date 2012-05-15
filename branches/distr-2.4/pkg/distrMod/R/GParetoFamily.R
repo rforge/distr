@@ -257,9 +257,9 @@ GParetoFamily <- function(loc = 0, scale = 1, shape = 0.5,
 
         ## Pickand estimator
         if(is.null(start0Est)){
-           e0 <- medkMADhybr(x, ParamFamily=GParetoFamily(loc = theta[1],
+           e0 <- estimate(medkMADhybr(x, ParamFamily=GParetoFamily(loc = theta[1],
                             scale = theta[2], shape = theta[3]),
-                            q.lo = 1e-6, q.up = 20)
+                            q.lo = 1e-6, q.up = 20))
         }else{
            if(is(start0Est,"function")){
               e1 <- start0Est(x, ...)
