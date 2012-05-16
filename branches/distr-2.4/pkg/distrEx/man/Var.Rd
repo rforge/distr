@@ -330,6 +330,7 @@ kurtosis(x, ...)
 Sn(x, ...)
 \S4method{Sn}{ANY}(x,  ...)
 \S4method{Sn}{UnivariateDistribution}(x, low = 0, upp = 20, accuracy = 1000, ...)
+\S4method{Sn}{DiscreteDistribution}(x,  ...)
 \S4method{Sn}{AffLinDistribution}(x,  ...)
 \S4method{Sn}{Norm}(x,  ...)
 
@@ -451,6 +452,8 @@ Qn(x, ...)
     interface to the \pkg{robustbase}-function \code{Qn} --- see \code{\link[robustbase]{Sn}}.}
    \item{\code{Sn}, \code{signature(x = "UnivariateDistribution")}:}{
     Sn of univariate distributions using pseudo-random variables (Thx to N. Horbenko).}
+   \item{\code{Sn}, \code{signature(x = "DiscreteDistribution")}:}{
+    Sn of discrete distributions.}
    \item{\code{Sn}, \code{signature(x = "AffLinDistribution")}:}{\code{abs(x@a) * Sn(x@X0)}}
 
   \item{\code{var}, \code{signature(x = "Arcsine")}:}{

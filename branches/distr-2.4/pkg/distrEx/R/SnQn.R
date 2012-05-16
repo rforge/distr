@@ -61,6 +61,25 @@ setMethod("Sn", signature(x = "UnivariateDistribution"),
           return(c0)
     })
 
+setMethod("Sn", signature(x = "DiscreteDistribution"),
+    function(x, ...){
+
+          g <- function(xx){
+               median(abs(x-xx))
+          }
+
+          pr <- prob(x)
+          sx <- support(x)
+          y  <- sapply(sx,g)
+          o <- order(y)
+          yo <- y[o]
+          pro <- pr[o]
+          cpro <- cumsum(pro)
+          ws <- min(sum(which(cpro<0.5))+1,length(o))
+          return(yo[ws])
+    })
+
+
 setMethod("Sn", signature(x = "Norm"),
     function(x, ...){
            return(sd(x)* 0.8385098038)
