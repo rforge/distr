@@ -42,11 +42,16 @@ setMethod("Qn", signature(x = "DiscreteDistribution"),
 
 
 setMethod("Sn", signature(x = "UnivariateDistribution"),
-    function(x, low=0,upp=20, accuracy = 1000, ...){
-
+    function(x, low=0,upp=1.01, accuracy = 1000, ...){
+          m0 <- median(x)
+          M0 <- mad(x)
           g <- function(xx){
                fct <- function(m) p(x)(m+xx)-p(x)(-m+xx)-0.5
-               m <- try(uniroot(fct, lower = low, upper = upp*q(x)(0.75))$root,
+               up0 <- upp*(M0+abs(m0-xx))
+               m <- try(uniroot(fct, lower = low,
+                        upper = up0,
+                        f.lower=if(low<1e-12) -0.5 else fct(low),
+                        f.upper=max(fct(up0),1e-8))$root,
                         silent = TRUE)
                if(is(m,"try-error")) {
 #                        print("error")
@@ -54,9 +59,8 @@ setMethod("Sn", signature(x = "UnivariateDistribution"),
                }else{   return(m)    }
           }
 
-          x0 <- q(x)(seq(1e-2/accuracy,1-1e-2/accuracy,length=accuracy))
+          x0 <- q(x)(seq(.5/accuracy,1-.5/accuracy,length=accuracy))
           y  <- sapply(x0,g)
-
           c0 <- median(y,na.rm=TRUE)
           return(c0)
     })
@@ -82,7 +86,7 @@ setMethod("Sn", signature(x = "DiscreteDistribution"),
 
 setMethod("Sn", signature(x = "Norm"),
     function(x, ...){
-           return(sd(x)* 0.8385098038)
+           return(sd(x)*  0.838504603)
     })
 
 setMethod("Qn", signature(x = "Norm"),

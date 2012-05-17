@@ -17,20 +17,20 @@
 LDEstimator(x, loc.est, disp.est, loc.fctal, disp.fctal, ParamFamily,
             loc.est.ctrl = NULL, loc.fctal.ctrl=NULL,
             disp.est.ctrl = NULL, disp.fctal.ctrl=NULL,
-            q.lo =0, q.up=Inf, log.q =TRUE,
+            q.lo =1e-3, q.up=15, log.q =TRUE,
             name, Infos, asvar = NULL, nuis.idx = NULL,
             trafo = NULL, fixed = NULL, asvar.fct  = NULL, na.rm = TRUE,
             ...)
-medkMAD(x, k=1, ParamFamily, q.lo =1e-6, q.up=10, nuis.idx = NULL,
+medkMAD(x, k=1, ParamFamily, q.lo =1e-3, q.up=15, nuis.idx = NULL,
         trafo = NULL, fixed = NULL, asvar.fct = NULL, na.rm = TRUE,
         ...)
-medkMADhybr(x, k=1, ParamFamily, q.lo =1e-6, q.up=10, KK = 20, nuis.idx = NULL,
+medkMADhybr(x, k=1, ParamFamily, q.lo =1e-3, q.up=15, KK = 20, nuis.idx = NULL,
         trafo = NULL, fixed = NULL, asvar.fct = NULL, na.rm = TRUE,
         ...)
-medSn(x, ParamFamily, q.lo =1e-6, q.up=10, nuis.idx = NULL,
+medSn(x, ParamFamily, q.lo =1e-3, q.up=15, nuis.idx = NULL,
       trafo = NULL, fixed = NULL, asvar.fct = NULL, na.rm = TRUE,
-      accuracy = 1000, ...)
-medQn(x, ParamFamily, q.lo =1e-6, q.up=10, nuis.idx = NULL,
+      accuracy = 100, ...)
+medQn(x, ParamFamily, q.lo =1e-3, q.up=15, nuis.idx = NULL,
       trafo = NULL, fixed = NULL, asvar.fct = NULL, na.rm = TRUE,
       ...)
 }
@@ -98,7 +98,13 @@ medQn(x, ParamFamily, q.lo =1e-6, q.up=10, nuis.idx = NULL,
   Uses \code{\link{.LDMatch}} internally.
 }
 \note{The values for \code{q.lo} and \code{q.up} are a bit delicate and
- have to be found, model by model, by try and error.}
+ have to be found, model by model, by try and error.
+ As a rule, \code{medSn} is rather slow, as the evaluation of the \code{Sn}
+ functional is quite expensive. So if \code{medSn} is the estimator of choice,
+ it pays off, for a given shape-scale family, to evaluate \code{medSn} on a
+ grid of shape-values (with scale 1) and then to use an interpolation techniques
+ in a particular method to replace the default one for this shape-scale family.
+ As an example, we have done so for the GPD family.}
 \value{
   An object of S4-class \code{"Estimate"}.
 }
@@ -108,7 +114,7 @@ EFSBP --illustrated at scale-shape models. ArXiv 1005.1480. To appear at Metrika
 DOI: 10.1007/s00184-011-0366-4.
 
 A. Marazzi and C. Ruffieux (1999): The truncated mean of asymmetric distribution.
-Computational Statistics and Data Analysis 32: 79–100 .
+Computational Statistics and Data Analysis 32: 79-100 .
 }
 
 %\references{  }
@@ -124,15 +130,15 @@ x <- rgamma(50, scale = 0.5, shape = 3)
 ## parametric family of probability measures
 G <- GammaFamily(scale = 1, shape = 2)
 
-medQn(x = x, ParamFamily = G, q.lo = 1e-3, q.up = 15)
-medSn(x = x, ParamFamily = G, q.lo = 1e-3, q.up = 15)
-medkMAD(x = x, ParamFamily = G, q.lo = 1e-3, q.up = 15)
-medkMADhybr(x = x, ParamFamily = G, q.lo = 1e-3, q.up = 15)
-medkMAD(x = x, k=10, ParamFamily = G, q.lo = 1e-3, q.up = 15)
+medQn(x = x, ParamFamily = G)
+medSn(x = x, ParamFamily = G)
+medkMAD(x = x, ParamFamily = G)
+medkMADhybr(x = x, ParamFamily = G)
+medkMAD(x = x, k=10, ParamFamily = G)
 
 ##not at all robust:
 LDEstimator(x, loc.est = mean, disp.est = sd,
                loc.fctal = E, disp.fctal = sd,
-            ParamFamily = G, q.lo = 1e-3, q.up = 15)
+            ParamFamily = G)
 }
 \keyword{univar}

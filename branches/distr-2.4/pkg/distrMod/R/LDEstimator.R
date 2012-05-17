@@ -47,7 +47,7 @@ LDEstimator <- function(x, loc.est, disp.est,
                         loc.fctal, disp.fctal, ParamFamily,
                         loc.est.ctrl = NULL, loc.fctal.ctrl=NULL,
                         disp.est.ctrl = NULL, disp.fctal.ctrl=NULL,
-                        q.lo =0, q.up=Inf, log.q =TRUE,
+                        q.lo =1e-3, q.up=15, log.q =TRUE,
                         name, Infos, asvar = NULL, nuis.idx = NULL,
                         trafo = NULL, fixed = NULL, asvar.fct  = NULL, na.rm = TRUE,
                         ...){
@@ -122,7 +122,7 @@ LDEstimator <- function(x, loc.est, disp.est,
 }
 
 
-medkMAD <- function(x, k=1, ParamFamily, q.lo =1e-6, q.up=10, nuis.idx = NULL,
+medkMAD <- function(x, k=1, ParamFamily, q.lo =1e-3, q.up=15, nuis.idx = NULL,
                         trafo = NULL, fixed = NULL, asvar.fct = NULL, na.rm = TRUE,
                         ...){
       es.call <- match.call()
@@ -141,7 +141,7 @@ medkMAD <- function(x, k=1, ParamFamily, q.lo =1e-6, q.up=10, nuis.idx = NULL,
       return(es)
                      }
                         
-medQn <- function(x,  ParamFamily, q.lo =1e-6, q.up=10, nuis.idx = NULL,
+medQn <- function(x,  ParamFamily, q.lo =1e-3, q.up=15, nuis.idx = NULL,
                         trafo = NULL, fixed = NULL, asvar.fct = NULL, na.rm = TRUE,
                         ...){
     es.call <- match.call()
@@ -159,9 +159,9 @@ medQn <- function(x,  ParamFamily, q.lo =1e-6, q.up=10, nuis.idx = NULL,
       return(es)
                      }
 
-medSn <- function(x, ParamFamily, q.lo =1e-6, q.up=10, nuis.idx  = NULL,
+medSn <- function(x, ParamFamily, q.lo =1e-3, q.up=15, nuis.idx  = NULL,
                         trafo = NULL, fixed = NULL, asvar.fct = NULL, na.rm = TRUE,
-                        accuracy = 1000, ...){
+                        accuracy = 100, ...){
       es.call <- match.call()
       es <- LDEstimator(x, loc.est = median, disp.est = Sn,
                      loc.fctal = median, disp.fctal = Sn,
@@ -177,7 +177,7 @@ medSn <- function(x, ParamFamily, q.lo =1e-6, q.up=10, nuis.idx  = NULL,
       return(es)
       }
 
-medkMADhybr <- function(x, k=1, ParamFamily, q.lo =1e-6, q.up=10,
+medkMADhybr <- function(x, k=1, ParamFamily, q.lo =1e-3, q.up=15,
                         KK=20, nuis.idx = NULL,
                         trafo = NULL, fixed = NULL, asvar.fct = NULL, na.rm = TRUE,
                         ...){

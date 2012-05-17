@@ -329,7 +329,7 @@ kurtosis(x, ...)
 
 Sn(x, ...)
 \S4method{Sn}{ANY}(x,  ...)
-\S4method{Sn}{UnivariateDistribution}(x, low = 0, upp = 20, accuracy = 1000, ...)
+\S4method{Sn}{UnivariateDistribution}(x, low = 0, upp = 1.01, accuracy = 1000, ...)
 \S4method{Sn}{DiscreteDistribution}(x,  ...)
 \S4method{Sn}{AffLinDistribution}(x,  ...)
 \S4method{Sn}{Norm}(x,  ...)
@@ -355,10 +355,12 @@ Qn(x, ...)
   \item{q00}{numeric or NULL: determines search interval (from \code{-q00} to \code{q00})
              for \code{Qn}; if \code{NULL} (default) \code{q00}
              is set to \code{10*q(x)(3/4)} internally. }
-  \item{low}{numeric; lower bound for search interval; defaults to \code{0}. }
-  \item{upp}{numeric; upper bound for search interval; defaults to \code{20}.
-            Is used internally as \code{upp*q(x)(0.75)}. }
-  \item{accuracy}{numeric; number of grid points; defaults to \code{1000}. }
+  \item{low}{numeric; lower bound for search interval for median(abs(x-Y)) where
+             Y (a real constant) runs over the range of x; defaults to \code{0}. }
+  \item{upp}{numeric; upper bound for search interval for median(abs(x-Y)) where
+             Y (a real constant) runs over the range of x; defaults to \code{1.01}.
+            Is used internally as \code{upp*(mad(x)+abs(median(x)-Y))}. }
+  \item{accuracy}{numeric; number of grid points for \code{Sn}; defaults to \code{1000}. }
   }
 \value{
   The value of the corresponding functional at the distribution in the argument is computed.
