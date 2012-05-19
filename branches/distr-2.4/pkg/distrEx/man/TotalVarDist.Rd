@@ -153,7 +153,8 @@ TotalVarDist(e1, e2, ...)
     \code{\link{KolmogorovDist}}, \code{\link{HellingerDist}}, 
     \code{\link[distr]{Distribution-class}}}
 \examples{
-TotalVarDist(Norm(), Gumbel())
+TotalVarDist(Norm(), UnivarMixingDistribution(Norm(1,2),Norm(0.5,3),
+                 mixCoeff=c(0.2,0.8)))
 TotalVarDist(Norm(), Td(10))
 TotalVarDist(Norm(mean = 50, sd = sqrt(25)), Binom(size = 100)) # mutually singular
 TotalVarDist(Pois(10), Binom(size = 20)) 

@@ -49,8 +49,10 @@ CvMDist(e1, e2, ...)
     \code{\link{HellingerDist}}, \code{\link{KolmogorovDist}},
     \code{\link[distr]{Distribution-class}}}
 \examples{
-CvMDist(Norm(), Gumbel())
-CvMDist(Norm(), Gumbel(), mu = Norm())
+CvMDist(Norm(), UnivarMixingDistribution(Norm(1,2),Norm(0.5,3),
+                 mixCoeff=c(0.2,0.8)))
+CvMDist(Norm(), UnivarMixingDistribution(Norm(1,2),Norm(0.5,3),
+                 mixCoeff=c(0.2,0.8)),mu=Norm())
 CvMDist(Norm(), Td(10))
 CvMDist(Norm(mean = 50, sd = sqrt(25)), Binom(size = 100))
 CvMDist(Pois(10), Binom(size = 20)) 

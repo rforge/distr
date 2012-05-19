@@ -166,16 +166,7 @@ if(!isGeneric("m2df")){
 #   setGeneric("illustrateCLT", function(Distr, ...) 
 #      standardGeneric("illustrateCLT"))
 #}
-if(!isGeneric("plotCLT")){
-  setGeneric("plotCLT", function(Tn, ...) standardGeneric("plotCLT"))
-}
+#if(!isGeneric("plotCLT")){
+#  setGeneric("plotCLT", function(Tn, ...) standardGeneric("plotCLT"))
+#}
 
-### new: 15.05.2012:
-
-if(!isGeneric("Qn")){
-   setGeneric("Qn", function(x, ...) standardGeneric("Qn"))
-}
-
-if(!isGeneric("Sn")){
-   setGeneric("Sn", function(x, ...) standardGeneric("Sn"))
-}

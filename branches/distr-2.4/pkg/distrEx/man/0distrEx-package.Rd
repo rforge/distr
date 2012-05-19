@@ -7,28 +7,29 @@ distrEx -- Extensions of package distr
 }
 \description{
 \pkg{distrEx} proides some extensions of package \pkg{distr}:
-\itemize{\item  extreme value distribution classes,
-         \item expectations in the form 
+\itemize{\item expectations in the form
          \itemize{\item \code{E(X)} for the expectation of a 
                         distribution object \code{X} 
                   \item \code{E(X,f)} for the expectation of \code{f(X)} 
                          where \code{X} is some distribution object and 
                          \code{f} some function in \code{X} }
-\item further functionals: var, sd, IQR, mad, median, skewness, kurtosis, Sn, Qn
+\item further functionals: var, sd, IQR, mad, median, skewness, kurtosis
 \item truncated moments,
 \item distances between distributions
      (Hellinger, Cramer von Mises, Kolmogorov, total variation, "convex contamination")
 \item lists of distributions,
 \item conditional distributions in factorized form 
 \item conditional expectations in factorized form
-}}
+}
+Support for  extreme value distributions has moved to package \pkg{RobExtremes}
+}
 
 \details{
 \tabular{ll}{
 Package: \tab distrEx \cr
 Version: \tab 2.4 \cr
 Date: \tab 2012-05-15 \cr
-Depends: \tab R(>= 2.6.0), methods, distr(>= 2.2), evd, actuar, startupmsg, robustbase \cr
+Depends: \tab R(>= 2.6.0), methods, distr(>= 2.2), startupmsg \cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
