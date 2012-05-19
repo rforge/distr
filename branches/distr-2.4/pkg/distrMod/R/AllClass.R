@@ -218,6 +218,11 @@ setClass("L2LocationScaleUnion",
          contains = c("L2GroupParamFamily","VIRTUAL")
         )
 
+## virtual in-between class for common parts in modifyModel - method
+setClass("L2ScaleShapeUnion",
+            representation(withPos = "logical"),
+         contains = c("L2GroupParamFamily","VIRTUAL")
+        )
 
 ## L2-differentiable (univariate) location family
 setClass("L2LocationFamily",

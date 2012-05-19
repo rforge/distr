@@ -22,10 +22,11 @@ exportClasses("asSemivar", "asRiskwithBias")
 exportClasses("L2GroupParamFamily", "L2LocationFamily", 
               "L2ScaleFamily", "L2LocationScaleFamily")
 exportClasses("L2LocationScaleUnion")
+exportClasses("L2ScaleShapeUnion")
 exportClasses("BinomFamily","PoisFamily", "NormLocationFamily",
-       "GumbelLocationFamily", "NormScaleFamily", "ExpScaleFamily",
+       "NormScaleFamily", "ExpScaleFamily",
        "LnormScaleFamily", "GammaFamily", "BetaFamily", "NormLocationScaleFamily",
-       "CauchyLocationScaleFamily", "GParetoFamily")
+       "CauchyLocationScaleFamily")
 exportClasses("NormType", "QFNorm", "InfoNorm", "SelfNorm")
 exportClasses("Estimate", "MCEstimate")
 exportClasses("Confint")
@@ -65,10 +66,9 @@ export("distrModOptions", "distrModoptions", "getdistrModOption",
 export("NonSymmetric", "EvenSymmetric", "OddSymmetric", "FunSymmList") 
 export("ParamFamParameter", "ParamFamily", "L2ParamFamily",
        "BinomFamily", "PoisFamily", "NbinomFamily", "NormLocationFamily",
-       "GumbelLocationFamily", "NormScaleFamily", "ExpScaleFamily",
+       "NormScaleFamily", "ExpScaleFamily",
        "LnormScaleFamily", "GammaFamily", "BetaFamily", "NormLocationScaleFamily",
-       "CauchyLocationScaleFamily", "NbinomwithSizeFamily", "NbinomMeanSizeFamily", 
-       "GParetoFamily")
+       "CauchyLocationScaleFamily", "NbinomwithSizeFamily", "NbinomMeanSizeFamily")
 export("asCov", "trAsCov", "asHampel", "asBias", "asMSE", "asUnOvShoot", 
        "fiCov", "trFiCov", "fiHampel", "fiMSE", "fiBias", "fiUnOvShoot")
 export("positiveBias", "negativeBias", "symmetricBias", 
@@ -80,4 +80,3 @@ export("NormType", "QFNorm", "InfoNorm", "SelfNorm")
 export("NormScaleUnknownLocationFamily", "NormLocationUnknownScaleFamily")
 export("L2LocationUnknownScaleFamily", "L2ScaleUnknownLocationFamily")
 export("meRes", "get.criterion.fct")
-export("LDEstimator", "medkMAD", "medSn", "medQn", "medkMADhybr")

@@ -142,20 +142,8 @@ P <- ParamFamily(name = "Poisson family",
           modifyParam = function(theta){ Pois(lambda = theta) })
 P
 
-## 6. Gumbel location family
-theta <- 0
-names(theta) <- "loc"
-GL <- ParamFamily(name = "Gumbel location family",
-          param = ParamFamParameter(name = "location parameter", main = theta),
-          startPar = function(x,...) c(min(x),max(x)),
-          distribution = Gumbel(loc = 0, scale = 1), ## scale known!
-          modifyParam = function(theta){ Gumbel(loc = theta, scale = 1) },
-          props = paste(c("The Gumbel location family is invariant under",
-                    "the group of transformations 'g(x) = x + loc'",
-                    "with location parameter 'loc'"), collapse = " "))
-GL
 
-## 7. Exponential scale family
+## 6. Exponential scale family
 theta <- 2
 names(theta) <- "scale"
 ES <- ParamFamily(name = "Exponential scale family",
@@ -169,7 +157,7 @@ ES <- ParamFamily(name = "Exponential scale family",
                     collapse = " " ))
 ES
 
-## 8. Lognormal scale family
+## 7. Lognormal scale family
 theta <- 2
 names(theta) <- "scale"
 LS <- ParamFamily(name = "Lognormal scale family",
@@ -185,7 +173,7 @@ LS <- ParamFamily(name = "Lognormal scale family",
                     collapse = " "))
 LS
 
-## 9. Gamma family
+## 8. Gamma family
 theta <- c(1, 2)
 names(theta) <- c("scale", "shape")
 G <- ParamFamily(name = "Gamma family",

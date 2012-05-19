@@ -49,17 +49,19 @@ L2derivDistrSymm(DistrSymmList), FisherInfo(PosSemDefSymmMatrix),
 FisherInfo.fct(function)
 |>|>|>"BinomFamily" [*]
 |>|>|>"PoisFamily"  [*]
-|>|>|>"GammaFamily" [*]
 |>|>|>"BetaFamily"  [*]
 |>|>|>"L2GroupParamFamily"
 additional slots:
 LogDeriv(function)
+|>|>|>|>"L2ScaleShapeUnion"  /VIRTUAL/
+additional slots:
+withPos(logical)
+|>|>|>|>|>"GammaFamily" [*]
 |>|>|>|>"L2LocationScaleUnion"  /VIRTUAL/
 additional slots:
 locscalename(character)
 |>|>|>|>|>"L2LocationFamily"            [*]
 |>|>|>|>|>|>"NormLocationFamily"        [*] 
-|>|>|>|>|>|>"GumbelLocationFamily"      [*] 
 |>|>|>|>|>"L2ScaleFamily"               [*]
 |>|>|>|>|>|>"NormScaleFamily"           [*] 
 |>|>|>|>|>|>"ExpScaleFamily"            [*] 

@@ -12,6 +12,7 @@ v 2.4
 ##############
 
 user-visible CHANGES:
++ moved GumbelLocationFamily to new package "RobExtremes"
 
 under the hood:
 + created folder vignettes and moved content of inst/doc/ to it
@@ -25,7 +26,6 @@ under the hood:
 + added DESCRIPTION tag "ByteCompile" to all our packages
 + updating maintainer email address and URL.
 + added argument no.readonly = TRUE to assignments of form opar <- par()
-
 
 BUGFIXES:
 

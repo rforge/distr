@@ -5,7 +5,6 @@
 \alias{BinomFamily-class}
 \alias{PoisFamily-class}
 \alias{NormLocationFamily-class}
-\alias{GumbelLocationFamily-class}
 \alias{NormScaleFamily-class}
 \alias{ExpScaleFamily-class}
 \alias{LnormScaleFamily-class}
@@ -21,9 +20,11 @@
 
 \section{Described classes}{
 In this file we describe classes 
-\code{BinomFamily}, \code{PoisFamily}, \code{GammaFamily}, \code{GParetoFamily},
+\code{BinomFamily}, \code{PoisFamily}, \code{GammaFamily},
 \code{BetaFamily} ``extending'' (no new slots!) class \code{L2ParamFamily},
-classes \code{NormLocationFamily} and \code{GumbelLocationFamily}, 
+class \code{GParetoFamily} extending class \code{L2ParamFamily} with
+extra slot \code{withPos},
+class \code{NormLocationFamily},
 ``extending'' (no new slots!) class \code{"L2LocationFamily"}, classes
 \code{NormScaleFamily}, \code{ExpScaleFamily}, and \code{LnormScaleFamily} 
 ``extending'' (no new slots!) class \code{"L2ScaleFamily"}, and classes
@@ -103,7 +104,9 @@ classes \code{NormLocationFamily} and \code{GumbelLocationFamily},
       the negative logarithmic derivative of the density of the model distribution at 
       the "standard" parameter value. }
     \item{\code{locscalename}:}{(only loc/scale classes)[inherited from class \code{"L2LocationScaleUnion"}]
-      object of class \code{"character"}: names of location and scale parameter }
+      object of class \code{"character"}: names of location and scale parameter. }
+    \item{\code{withPos}:}{(only shape/scale classes)       object of class \code{"logical"}:
+      Is shape restricted to positive values?}
 }}
 
 
@@ -115,8 +118,8 @@ Class \code{"L2ParamFamily"},  directly.\cr
 Class \code{"ParamFamily"}, by class \code{"L2ParamFamily"}.\cr
 Class \code{"ProbFamily"}, by class \code{"ParamFamily"}.
 \cr
-Classes \code{NormLocationFamily} and \code{GumbelLocationFamily}, 
-``extend'' (no new slots!):\cr
+Class \code{NormLocationFamily},
+``extends'' (no new slots!):\cr
 Class \code{"L2LocationFamily"}, directly.\cr
 Class \code{"L2LocationScaleUnion"}, by class \code{"L2LocationFamily"}.\cr
 Class \code{"L2GroupParamFamily"}, by class \code{"L2LocationScaleUnion"}.\cr

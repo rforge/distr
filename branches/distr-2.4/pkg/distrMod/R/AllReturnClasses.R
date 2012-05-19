@@ -28,8 +28,8 @@ setClass("NbinomMeanSizeFamily",
           contains = "L2ParamFamily")
 
 ## Gamma family
-setClass("GammaFamily",
-          contains = "L2ParamFamily")
+setClass("GammaFamily", prototype=prototype(withPos=TRUE),
+          contains = "L2ScaleShapeUnion")
 
 ## Beta family
 setClass("BetaFamily",
@@ -37,10 +37,6 @@ setClass("BetaFamily",
 
 ## Normal location family
 setClass("NormLocationFamily",
-          contains = "L2LocationFamily")
-
-## Gumbel location family
-setClass("GumbelLocationFamily",
           contains = "L2LocationFamily")
 
 ## Normal scale family
@@ -62,7 +58,5 @@ setClass("NormLocationScaleFamily",
 ## Cauchy location scale family
 setClass("CauchyLocationScaleFamily",
           contains = "L2LocationScaleFamily")
-## class
-setClass("GParetoFamily", contains="L2ParamFamily")
 
 

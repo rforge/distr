@@ -466,7 +466,6 @@ generating functions as displayed in Table~\ref{TabPF}.
       \code{GammaFamily} & gamma family\\
       \code{PoisFamily} & Poisson family\\
       \code{ExpScaleFamily} & exponential scale family\\
-      \code{GumbelLocationFamily} & Gumbel location family\\
       \code{LnormScaleFamily} & log-normal scale family\\
       \code{NormLocationFamily} & normal location family\\
       \code{NormLocationUnknownScaleFamily} & normal location family with\\

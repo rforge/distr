@@ -9,6 +9,11 @@
 \alias{locscalename,L2LocationScaleUnion-method}
 \alias{locscalename<-}
 \alias{locscalename<-,L2LocationScaleUnion-method}
+\alias{L2ScaleShapeUnion-class}
+\alias{withPos}
+\alias{withPos,L2ScaleShapeUnion-method}
+\alias{withPos<-}
+\alias{withPos<-,L2ScaleShapeUnion-method}
 
 \title{Class unions in 'distrMod'}
 \description{Class unions in package \pkg{distrMod} defined for internal 
@@ -47,6 +52,14 @@ slots of classes to be filled with varying types. In particular
       parameter may carry names other than \code{"loc"} resp. \code{"scale"};
       used to provide a common class for (parts of) methods \code{modifyModel}
       \code{locscalename} and \code{locscalename<-}.}
+\item{\code{"L2ScaleShapeUnion"}}{is a proper, but virtual in-between class
+      between class \code{"L2GroupParamFamily"} and, e.g., \code{"GammaFamily"},
+      \code{"GParetoFamily"}, and \code{"EVDFamily"} (the latter from
+      extension package \pkg{RobExtremes};
+      in addition to class \code{"L2GroupParamFamily"} it has a slot
+      \code{withPos} (with corresponding accessor and replacement method)
+      to capture the fact that there may or may not be a restriction to
+      positive values for the shape parameter. }
 }
 }
 
@@ -64,6 +77,7 @@ slots of classes to be filled with varying types. In particular
 \code{\link{L2GroupParamFamily-class}},
 \code{\link{L2LocationFamily-class}},
 \code{\link{L2ScaleFamily-class}},
+\code{\link{GammaFamily-class}},
 \code{\link{L2LocationScaleFamily-class}},
 \code{\link{ParamFamParameter-class}}
 \code{\link{ParamFamily-class}}

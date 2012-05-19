@@ -52,5 +52,3 @@ MLEstimator <- function(x, ParamFamily, startPar = NULL,
     
     return(res)
 }
-
- 

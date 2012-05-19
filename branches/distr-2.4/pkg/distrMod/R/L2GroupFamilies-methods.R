@@ -7,6 +7,9 @@ setMethod("LogDeriv", signature(object = "L2GroupParamFamily"),
 setMethod("locscalename", signature(object = "L2LocationScaleUnion"),
            function(object) object@locscalename)
 
+setMethod("withPos", signature(object = "L2ScaleShapeUnion"),
+           function(object) object@withPos)
+
 setReplaceMethod("LogDeriv", "L2GroupParamFamily",
     function(object, value){
         object@LogDeriv <- value
@@ -18,5 +21,13 @@ setReplaceMethod("locscalename", "L2LocationScaleUnion",
         if(length(value)>2||length(value)<1)
            stop("value of slot 'locscalename' must be of length one or two")
         object@locscalename <- value
+        object
+    })
+
+setReplaceMethod("withPos", "L2ScaleShapeUnion",
+    function(object, value){
+        if(length(value)!=1)
+           stop("value of slot 'withPos' must be of length one")
+        object@withPos <- value
         object
     })
