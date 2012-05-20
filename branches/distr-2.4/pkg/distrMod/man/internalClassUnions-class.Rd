@@ -5,11 +5,18 @@
 \alias{MatrixorFunction-class}
 \alias{ShowDetails-class}
 \alias{L2LocationScaleUnion-class}
+\alias{L2ScaleShapeUnion-class}
 \alias{locscalename}
 \alias{locscalename,L2LocationScaleUnion-method}
 \alias{locscalename<-}
 \alias{locscalename<-,L2LocationScaleUnion-method}
-\alias{L2ScaleShapeUnion-class}
+\alias{scaleshapename}
+\alias{scaleshapename,L2ScaleShapeUnion-method}
+\alias{scaleshapename<-}
+\alias{scaleshapename<-,L2ScaleShapeUnion-method}
+\alias{scalename}
+\alias{scalename,L2ScaleShapeUnion-method}
+\alias{scalename,L2LocationScaleUnion-method}
 \alias{withPosRestr,L2ScaleShapeUnion-method}
 \alias{withPosRestr<-,L2ScaleShapeUnion-method}
 \alias{L2ScaleUnion-class}
@@ -54,10 +61,15 @@ slots of classes to be filled with varying types. In particular
 \item{\code{"L2ScaleShapeUnion"}}{is a proper, but virtual in-between class
       between class \code{"L2GroupParamFamily"} and, e.g., \code{"GammaFamily"},
       \code{"GParetoFamily"}, and \code{"EVDFamily"} (the latter from
-      extension package \pkg{RobExtremes}. }
+      extension package \pkg{RobExtremes}; it has a slot
+      \code{scaleshapename} (with corresponding accessor and replacement method)
+      to capture the fact that location and scale
+      parameter may carry names other than \code{"shape"} resp. \code{"scale"};
+      used to provide a common class for (parts of) methods
+      \code{scaleshapename} and \code{scaleshapename<-}. }
 \item{\code{"L2ScaleUnion"}}{is a class union between \code{"L2ScaleShapeUnion"}
       and \code{"L2LocationScaleUnion"} to allow for specific general
-      scaling methods. }
+      scaling methods; to this end there is method \code{scalename}. }
 }
 }
 

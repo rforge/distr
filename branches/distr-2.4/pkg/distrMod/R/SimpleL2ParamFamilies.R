@@ -396,7 +396,8 @@ GammaFamily <- function(scale = 1, shape = 1, trafo){
     L2Fam@FisherInfo <- FisherInfo
     L2Fam@startPar <- startPar
     L2Fam@makeOKPar <- makeOKPar
-
+    L2Fam@scaleshapename <- c("scale"="scale","shape"="shape")
+    
     L2deriv <- EuclRandVarList(RealRandVariable(L2deriv.fct(param),
                                Domain = Reals()))
 

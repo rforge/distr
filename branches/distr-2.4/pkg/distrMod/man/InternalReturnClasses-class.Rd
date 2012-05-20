@@ -104,6 +104,8 @@ class \code{NormLocationFamily},
       the "standard" parameter value. }
     \item{\code{locscalename}:}{(only loc/scale classes)[inherited from class \code{"L2LocationScaleUnion"}]
       object of class \code{"character"}: names of location and scale parameter. }
+    \item{\code{scaleshapename}:}{(only scale/shape classes)[inherited from class \code{"L2ScaleShapeUnion"}]
+      object of class \code{"character"}: names of location and scale parameter. }
 }}
 
 

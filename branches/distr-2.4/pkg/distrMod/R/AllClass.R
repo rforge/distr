@@ -235,7 +235,7 @@ setClass("L2LocationScaleUnion",
         )
 
 ## virtual in-between class for common parts in modifyModel - method
-setClass("L2ScaleShapeUnion",
+setClass("L2ScaleShapeUnion", representation(scaleshapename ="character"),
          contains = c("L2GroupParamFamily","VIRTUAL")
         )
 
