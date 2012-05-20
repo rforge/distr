@@ -28,8 +28,7 @@ setClass("NbinomMeanSizeFamily",
           contains = "L2ParamFamily")
 
 ## Gamma family
-setClass("GammaFamily", prototype=prototype(withPos=TRUE),
-          contains = "L2ScaleShapeUnion")
+setClass("GammaFamily", contains = "L2ScaleShapeUnion")
 
 ## Beta family
 setClass("BetaFamily",

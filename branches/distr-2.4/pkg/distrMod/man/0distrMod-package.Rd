@@ -54,8 +54,6 @@ FisherInfo.fct(function)
 additional slots:
 LogDeriv(function)
 |>|>|>|>"L2ScaleShapeUnion"  /VIRTUAL/
-additional slots:
-withPos(logical)
 |>|>|>|>|>"GammaFamily" [*]
 |>|>|>|>"L2LocationScaleUnion"  /VIRTUAL/
 additional slots:

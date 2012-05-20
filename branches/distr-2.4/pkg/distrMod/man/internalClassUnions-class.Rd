@@ -54,11 +54,7 @@ slots of classes to be filled with varying types. In particular
 \item{\code{"L2ScaleShapeUnion"}}{is a proper, but virtual in-between class
       between class \code{"L2GroupParamFamily"} and, e.g., \code{"GammaFamily"},
       \code{"GParetoFamily"}, and \code{"EVDFamily"} (the latter from
-      extension package \pkg{RobExtremes};
-      in addition to class \code{"L2GroupParamFamily"} it has a slot
-      \code{withPos} (with corresponding accessor and replacement method)
-      to capture the fact that there may or may not be a restriction to
-      positive values for the shape parameter. }
+      extension package \pkg{RobExtremes}. }
 \item{\code{"L2ScaleUnion"}}{is a class union between \code{"L2ScaleShapeUnion"}
       and \code{"L2LocationScaleUnion"} to allow for specific general
       scaling methods. }
