@@ -9,7 +9,7 @@
 \usage{
 MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name, 
             paramDepDist = FALSE, startPar = NULL,  Infos, trafo = NULL,
-            penalty = 1e20, asvar.fct, na.rm = TRUE, ...)
+            penalty = 1e20, validity.check = TRUE, asvar.fct, na.rm = TRUE, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -32,6 +32,8 @@ MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name,
   \item{trafo}{ an object of class \code{MatrixorFunction} -- a transformation
   for the main parameter}
   \item{penalty}{(non-negative) numeric: penalizes non valid parameter-values}
+  \item{validity.check}{logical: shall return parameter value be checked for
+  validity? Defaults to yes (\code{TRUE})}
   \item{asvar.fct}{optionally: a function to determine the corresponding
     asymptotic variance; if given, \code{asvar.fct} takes arguments
     \code{L2Fam}((the parametric model as object of class \code{L2ParamFamily})) 

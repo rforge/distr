@@ -278,9 +278,9 @@ if(!isGeneric("method")){
 if(!isGeneric("optimwarn")){
     setGeneric("optimwarn", function(object) standardGeneric("optimwarn"))
 }
-if(!isGeneric("withPos")){
-    setGeneric("withPos", function(object) standardGeneric("withPos"))
+if(!isGeneric("withPosRestr")){
+    setGeneric("withPosRestr", function(object) standardGeneric("withPosRestr"))
 }
-if(!isGeneric("withPos<-")){
-    setGeneric("withPos<-", function(object,value) standardGeneric("withPos<-"))
+if(!isGeneric("withPosRestr<-")){
+    setGeneric("withPosRestr<-", function(object,value) standardGeneric("withPosRestr<-"))
 }

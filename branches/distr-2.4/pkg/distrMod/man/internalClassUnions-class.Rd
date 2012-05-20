@@ -10,10 +10,9 @@
 \alias{locscalename<-}
 \alias{locscalename<-,L2LocationScaleUnion-method}
 \alias{L2ScaleShapeUnion-class}
-\alias{withPos}
-\alias{withPos,L2ScaleShapeUnion-method}
-\alias{withPos<-}
-\alias{withPos<-,L2ScaleShapeUnion-method}
+\alias{withPosRestr,L2ScaleShapeUnion-method}
+\alias{withPosRestr<-,L2ScaleShapeUnion-method}
+\alias{L2ScaleUnion-class}
 
 \title{Class unions in 'distrMod'}
 \description{Class unions in package \pkg{distrMod} defined for internal 
@@ -60,6 +59,9 @@ slots of classes to be filled with varying types. In particular
       \code{withPos} (with corresponding accessor and replacement method)
       to capture the fact that there may or may not be a restriction to
       positive values for the shape parameter. }
+\item{\code{"L2ScaleUnion"}}{is a class union between \code{"L2ScaleShapeUnion"}
+      and \code{"L2LocationScaleUnion"} to allow for specific general
+      scaling methods. }
 }
 }
 

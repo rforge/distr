@@ -22,7 +22,9 @@ exportClasses("asSemivar", "asRiskwithBias")
 exportClasses("L2GroupParamFamily", "L2LocationFamily", 
               "L2ScaleFamily", "L2LocationScaleFamily")
 exportClasses("L2LocationScaleUnion")
-exportClasses("L2ScaleShapeUnion")
+exportClasses("L2ScaleShapeUnion", "L2ScaleUnion")
+exportClasses("ParamWithScaleFamParameter", "ParamWithShapeFamParameter", 
+              "ParamWithScaleAndShapeFamParameter")
 exportClasses("BinomFamily","PoisFamily", "NormLocationFamily",
        "NormScaleFamily", "ExpScaleFamily",
        "LnormScaleFamily", "GammaFamily", "BetaFamily", "NormLocationScaleFamily",
@@ -49,7 +51,8 @@ exportMethods("name", "name<-", "r", "d", "p", "q",
               "name.estimate", "trafo.estimate", "nuisance.estimate", 
               "fixed.estimate", "Infos", "Infos<-", "addInfo<-",
               "criterion", "criterion<-", "criterion.fct", "method",
-              "samplesize", "asvar", "asvar<-", "optimwarn")
+              "samplesize", "asvar", "asvar<-", "optimwarn",
+			  "withPosRestr", "withPosRestr<-")
 exportMethods("untransformed.estimate", "untransformed.asvar")
 exportMethods("confint")
 exportMethods("nuisance", "main") 

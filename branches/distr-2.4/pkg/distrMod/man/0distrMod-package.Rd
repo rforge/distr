@@ -70,6 +70,9 @@ locscalename(character)
 |>|>|>|>|>|>"NormLocationScaleFamily"   [*] 
 |>|>|>|>|>|>"CauchyLocationScaleFamily" [*] 
 
+and a (virtual) class union "L2ScaleUnion"  between
+   "L2LocationScaleUnion"  and "L2ScaleShapeUnion"
+
 ##########################
 ParamFamParameter
 ##########################

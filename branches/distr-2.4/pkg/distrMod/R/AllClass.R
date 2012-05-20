@@ -112,6 +112,19 @@ setClass("ParamFamParameter",
                 return(TRUE)}
             })
 
+setClass("ParamWithScaleFamParameter",
+            contains = "ParamFamParameter")
+
+setClass("ParamWithShapeFamParameter",
+            representation(withPosRestr = "logical"),
+            prototype(withPosRestr = TRUE),
+            contains = "ParamFamParameter")
+
+setClass("ParamWithScaleAndShapeFamParameter",
+            contains = c("ParamWithScaleFamParameter",
+                         "ParamWithShapeFamParameter")
+         )
+
 ### from Matthias' thesis / ROptEst
 ## family of probability measures
 setClass("ProbFamily", representation(name = "character",
@@ -142,6 +155,7 @@ setClass("ParamFamily",
                       startPar = function(x) {},
                       param = new("ParamFamParameter", main = 0, trafo = matrix(1))),
             contains = "ProbFamily")
+
 
 ### from Matthias' thesis / ROptEst
 ## L2-differentiable parametric family of probability measures
@@ -212,6 +226,8 @@ setClass("L2GroupParamFamily",
                       Logderiv = function(x)x),
             contains = "L2ParamFamily")
 
+
+
 ## virtual in-between class for common parts in modifyModel - method
 setClass("L2LocationScaleUnion",
             representation(locscalename = "character"),
@@ -220,9 +236,13 @@ setClass("L2LocationScaleUnion",
 
 ## virtual in-between class for common parts in modifyModel - method
 setClass("L2ScaleShapeUnion",
-            representation(withPos = "logical"),
          contains = c("L2GroupParamFamily","VIRTUAL")
         )
+
+## virtual in-between class for common parts log/original scale methods
+setClassUnion("L2ScaleUnion",
+               c("L2LocationScaleUnion","L2ScaleShapeUnion")
+               )
 
 ## L2-differentiable (univariate) location family
 setClass("L2LocationFamily",

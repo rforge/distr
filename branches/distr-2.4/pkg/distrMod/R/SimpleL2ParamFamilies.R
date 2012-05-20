@@ -341,7 +341,9 @@ GammaFamily <- function(scale = 1, shape = 1, trafo){
     names(param0) <- nms <- c("scale", "shape")
     if(missing(trafo)) {trafo <- diag(2); dimnames(trafo) <-list(nms,nms)}
     param <- ParamFamParameter(name = "scale and shape",  
-                        main = param0, trafo = trafo)
+                        main = param0, trafo = trafo,
+                               withPosRestr = TRUE,
+                               .returnClsName ="ParamWithScaleAndShapeFamParameter")
     modifyParam <- function(theta){ Gammad(scale = theta[1], shape = theta[2]) }
     props <- c("The Gamma family is scale invariant via the parametrization",
                "'(nu,shape)=(log(scale),shape)'")
@@ -408,7 +410,6 @@ GammaFamily <- function(scale = 1, shape = 1, trafo){
   	                     list(s1 = scale, s2 = shape, Tr = trafo))
 
     L2Fam@fam.call <- f.call
-    L2Fam@withPos <- TRUE
 
     L2Fam@LogDeriv <- function(x) -(shape-1)/x + 1/scale
     L2Fam@L2deriv <- L2deriv

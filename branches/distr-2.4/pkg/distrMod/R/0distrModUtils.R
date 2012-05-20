@@ -110,8 +110,9 @@
    param0 <- L2Fam@param
    dim0 <- dimension(param0)
 #   print(param0)
-   paramP <- ParamFamParameter(name = name(param0), main = main(param),
-                               trafo = diag(dim0))
+   paramP <- param0
+   paramP@main <- main(param)
+   paramP@trafo <- diag(dim0)
 #   print(paramP)
    L2Fam <- modifyModel(L2Fam, paramP)
 

@@ -87,7 +87,8 @@ NL
 theta <- 1
 names(theta) <- "sd"
 NS <- ParamFamily(name = "Normal scale family",
-          param = ParamFamParameter(name = "scale parameter", main = theta),
+          param = ParamFamParameter(name = "scale parameter", main = theta,
+          .returnClsName = "ParamWithScaleFamParameter"),
           distribution = Norm(mean = 0, sd = 1), ## mean known!
           startPar = function(x,...) c(0,-min(x)+max(x)),
           distrSymm <- SphericalSymmetry(SymmCenter = 0),
@@ -102,7 +103,8 @@ theta <- c(0, 1)
 names(theta) <- c("mean", "sd")
 NLS <- ParamFamily(name = "Normal location and scale family",
           param = ParamFamParameter(name = "location and scale parameter",
-                                    main = theta),
+                                    main = theta,
+                                 .returnClsName = "ParamWithScaleFamParameter"),
           distribution = Norm(mean = 0, sd = 1),
           startPar = function(x,...) c(median(x),mad(x)),
           makeOKPar = function(param) {param[2]<-abs(param[2]); return(param)},
@@ -147,7 +149,8 @@ P
 theta <- 2
 names(theta) <- "scale"
 ES <- ParamFamily(name = "Exponential scale family",
-          param = ParamFamParameter(name = "scale parameter", main = theta),
+          param = ParamFamParameter(name = "scale parameter", main = theta,
+                           .returnClsName = "ParamWithScaleFamParameter"),
           startPar = function(x,...) c(0,max(x)-min(x)),
           distribution = Exp(rate = 1/2),
           modifyParam = function(theta){ Exp(rate = 1/theta) },
@@ -161,7 +164,8 @@ ES
 theta <- 2
 names(theta) <- "scale"
 LS <- ParamFamily(name = "Lognormal scale family",
-          param = ParamFamParameter(name = "scale parameter", main = theta),
+          param = ParamFamParameter(name = "scale parameter", main = theta,
+                           .returnClsName = "ParamWithScaleFamParameter"),
           startPar = function(x,...) c(0,max(x)-min(x)),
           distribution = Lnorm(meanlog = log(2), sdlog = 2),## sdlog known!
           modifyParam = function(theta){ 
@@ -177,7 +181,9 @@ LS
 theta <- c(1, 2)
 names(theta) <- c("scale", "shape")
 G <- ParamFamily(name = "Gamma family",
-        param = ParamFamParameter(name = "scale and shape", main = theta),
+        param = ParamFamParameter(name = "scale and shape", main = theta,
+                           withPosRestr = TRUE,
+                           .returnClsName = "ParamWithScaleAndShapeFamParameter"),
         startPar = function(x,...) {E <- mean(x); V <- var(X); c(V/E,E^2/V)},
         makeOKPar = function(param) abs(param),
         distribution = Gammad(scale = 1, shape = 2),
