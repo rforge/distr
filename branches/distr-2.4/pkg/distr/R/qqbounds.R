@@ -16,7 +16,8 @@ qqbounds <- function(x,D,alpha,n,withConf.pw, withConf.sim,
    x.in <- x[SI.in]
    p.r <- p(D)(x.in)
    p.l <- p.l(D)(x.in)
-
+   l.x <- length(x.in)
+   
    if(withConf.sim)
         c.crit <- try(.q2kolmogorov(alpha,n,exact.sCI), silent=TRUE)
    if(withConf.pw)
@@ -28,8 +29,10 @@ qqbounds <- function(x,D,alpha,n,withConf.pw, withConf.sim,
 
    if(te.s){
       c.crit.r <- q.r(D)(pmax(1-p.r-c.crit/sqrt(n),
+                         # alternative: pmax(1-(1:l.x)/l.x-c.crit/sqrt(n),
                          getdistrOption("DistrResolution")),lower.tail=FALSE)
       c.crit.l <- q(D)(pmax(p.l-c.crit/sqrt(n),
+                       # alternative: pmax(((1:l.x)-1)/l.x-c.crit/sqrt(n),
                        getdistrOption("DistrResolution")))
       c.crit.l[abs(c.crit.l)==Inf] <- NA
       c.crit.r[abs(c.crit.r)==Inf] <- NA

@@ -82,6 +82,9 @@
 }
 
 .q2kolmogorov <- function(alpha,n,exact=(n<100)){ ## Kolmogorovstat
+ if(is.numeric(alpha)) alpha <- as.vector(alpha)
+ else stop("Level alpha must be numeric.")
+ if(any(is.na(alpha))) stop("Level alpha must not contain missings.")
  if(exact){
  fct <- function(p0){
  ### from ks.test from package stats:
@@ -91,18 +94,18 @@
  res <- uniroot(fct,lower=0,upper=1)$root*sqrt(n)
  }else{
  ### from ks.test from package stats:
- pkstwo <- function(x, tol = 1e-06) {
-        if (is.numeric(x))
-            x <- as.vector(x)
-        else stop("argument 'x' must be numeric")
-        p <- rep(0, length(x))
-        p[is.na(x)] <- NA
-        IND <- which(!is.na(x) & (x > 0))
-        if (length(IND)) {
-            p[IND] <- .C("pkstwo", as.integer(length(x[IND])),
-                p = as.double(x[IND]), as.double(tol), PACKAGE = "stats")$p
-        }
-        return(p)
+ pkstwo <- function(x, tol = 1e-09) {
+        #if (is.numeric(x))
+        #    x <- as.vector(x)
+        #else stop("argument 'x' must be numeric")
+        #p <- rep(0, length(x))
+        #p[is.na(x)] <- NA
+        #IND <- which(!is.na(x) & (x > 0))
+        #if (length(IND)) {
+            p <- .C("pkstwo", as.integer(1),
+                    p = as.double(x), as.double(tol), PACKAGE = "stats")$p
+        #}
+        # return(p)
     }
  ###  end of code from package stats
  fct <- function(p0){
@@ -204,7 +207,8 @@
    SI.c <- SIi>0
    x.in <- x[SI.in]
    x.c <- x.in[SI.c]
-   x.d <- x.in[!SI.c]
+   x.d <- x.in[!SI.c]        
+   
 
    qqb <- qqbounds(x,D,alpha,n,withConf.pw, withConf.sim,
                    exact.sCI,exact.pCI,nosym.pCI)
