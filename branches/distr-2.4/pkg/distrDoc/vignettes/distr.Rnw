@@ -2423,7 +2423,7 @@ mtrafo <- function(x){
                      dimnames = list(nms,nms0))                          
      list(fval = fval0, mat = mat0)}
 
-set.seed(123)
+set.seed(124)
 x <- rgamma(50, scale = 0.5, shape = 3)
 
 ## parametric family of probability measures
