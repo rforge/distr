@@ -1,6 +1,6 @@
 
-R version 2.14.0 Patched (2011-11-28 r57759)
-Copyright (C) 2011 The R Foundation for Statistical Computing
+R Under development (unstable) (2012-02-25 r58490)
+Copyright (C) 2012 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
 
@@ -32,7 +32,7 @@ Loading required package: sfsmisc
 Loading required package: SweaveListingUtils
 :SweaveListingUtils>  Utilities for Sweave together with
 :SweaveListingUtils>  TeX listings package (version
-:SweaveListingUtils>  0.5.4)
+:SweaveListingUtils>  0.5.5)
 :SweaveListingUtils> 
 :SweaveListingUtils>  Some functions from package 'base'
 :SweaveListingUtils>  are intentionally masked ---see
@@ -2018,8 +2018,8 @@ function (x, log = FALSE)
     else d0 <- df1(x)/stand
     return(d0)
 }
-<bytecode: 0x2da8f60>
-<environment: 0x3e72948>
+<bytecode: 0x46a7bb0>
+<environment: 0x4109340>
 
 $pfun
 function (q, lower.tail = TRUE, log.p = FALSE) 
@@ -2040,7 +2040,7 @@ function (q, lower.tail = TRUE, log.p = FALSE)
     else p0/nm
     return(p0)
 }
-<environment: 0x5239f58>
+<environment: 0x6022948>
 
 $qfun
 function (p, lower.tail = TRUE, log.p = FALSE) 
@@ -2058,7 +2058,7 @@ function (p, lower.tail = TRUE, log.p = FALSE)
     else q.l(1 - p01)
     return(as.numeric(q0))
 }
-<environment: 0x54967b8>
+<environment: 0x4df1718>
 
 > 
 > rp2 <- function(n){rpois(n, lambda = 1)^2}
@@ -2100,8 +2100,8 @@ function (x, log = FALSE)
     else d0 <- df1(x)/stand
     return(d0)
 }
-<bytecode: 0x2da8f60>
-<environment: 0x3255e08>
+<bytecode: 0x46a7bb0>
+<environment: 0x6e0d720>
 
 $pfun
 function (q, lower.tail = TRUE, log.p = FALSE) 
@@ -2122,7 +2122,7 @@ function (q, lower.tail = TRUE, log.p = FALSE)
     else p0/nm
     return(p0)
 }
-<environment: 0x60ba6f8>
+<environment: 0x5d5cb18>
 
 $qfun
 function (p, lower.tail = TRUE, log.p = FALSE) 
@@ -2140,7 +2140,7 @@ function (p, lower.tail = TRUE, log.p = FALSE)
     else q.l(1 - p01)
     return(as.numeric(q0))
 }
-<environment: 0x49eeb40>
+<environment: 0x5562998>
 
 > 
 > rp2 <- function(n){rpois(n, lambda = 1)^2}
@@ -3869,11 +3869,11 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > F <- ( Norm() + Binom() + Pois() + Exp() ) * 2 - 10
 > system.time(r(F)(10^6))
    user  system elapsed 
-  0.720   0.024   0.745 
+  0.776   0.008   0.786 
 > simplifyr(F, size = 10^6)
 > system.time(r(F)(10^6))
    user  system elapsed 
-   0.04    0.00    0.04 
+  0.044   0.000   0.043 
 > 
 > 
 > cleanEx()
@@ -3891,7 +3891,6 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > ### ** Examples
 > 
 > setClass("testclass", representation(a = "numeric", b = "character"))
-[1] "testclass"
 > standardMethods("testclass")
 if(!isGeneric("a")) setGeneric("a", function(object) standardGeneric("a"))
 if(!isGeneric("b")) setGeneric("b", function(object) standardGeneric("b"))
@@ -3907,7 +3906,7 @@ setReplaceMethod("b", "testclass", function(object, value){ object@b <- value; o
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  108.282 0.684 109.389 0.008 0.004 
+Time elapsed:  110.874 0.616 112.279 0.004 0.004 
 > grDevices::dev.off()
 pdf 
   2 

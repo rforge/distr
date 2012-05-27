@@ -1,6 +1,6 @@
 
-R version 2.14.0 Patched (2011-11-28 r57759)
-Copyright (C) 2011 The R Foundation for Statistical Computing
+R version 2.15.0 Patched (2012-05-26 r59450) -- "Easter Beagle"
+Copyright (C) 2012 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
 
@@ -33,7 +33,7 @@ Loading required package: sfsmisc
 Loading required package: SweaveListingUtils
 :SweaveListingUtils>  Utilities for Sweave together with
 :SweaveListingUtils>  TeX listings package (version
-:SweaveListingUtils>  0.5.4)
+:SweaveListingUtils>  0.5.5)
 :SweaveListingUtils> 
 :SweaveListingUtils>  Some functions from package 'base'
 :SweaveListingUtils>  are intentionally masked ---see
@@ -1105,7 +1105,7 @@ function (n, cond, ...)
     }
     0 + cond %*% 1 + 1 * r(n, ...)
 }
-<environment: 0x5e68250>
+<environment: 0x59114e0>
 > d(D1)
 function (x, cond, log = FALSE, ...) 
 {
@@ -1127,7 +1127,7 @@ function (x, cond, log = FALSE, ...)
     else d0 <- d0/1
     return(d0)
 }
-<environment: 0x5e68250>
+<environment: 0x59114e0>
 > p(D1)
 function (q, cond, lower.tail = TRUE, log.p = FALSE, ...) 
 {
@@ -1154,7 +1154,7 @@ function (q, cond, lower.tail = TRUE, log.p = FALSE, ...)
             p0 <- log(p0)
     return(p0)
 }
-<environment: 0x5e68250>
+<environment: 0x59114e0>
 > q(D1)
 function (p, cond, lower.tail = TRUE, log.p = FALSE, ...) 
 {
@@ -1178,7 +1178,7 @@ function (p, cond, lower.tail = TRUE, log.p = FALSE, ...)
         argList <- c(argList, dots)
     1 * do.call(q, argList) + 0 + as.vector(cond %*% 1)
 }
-<environment: 0x5e68250>
+<environment: 0x59114e0>
 > param(D1)
 name:	parameter of a linear regression model
 theta:	1
@@ -2004,7 +2004,7 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  12.828 0.116 13.001 0 0 
+Time elapsed:  11.636 0.148 11.832 0 0 
 > grDevices::dev.off()
 null device 
           1 
