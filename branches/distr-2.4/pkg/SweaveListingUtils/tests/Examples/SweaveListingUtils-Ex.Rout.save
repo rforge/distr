@@ -1,7 +1,8 @@
 
-R version 2.10.0 Patched (2009-11-02 r50295)
-Copyright (C) 2009 The R Foundation for Statistical Computing
+R version 2.15.0 Patched (2012-05-26 r59450) -- "Easter Beagle"
+Copyright (C) 2012 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
+Platform: x86_64-unknown-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -17,83 +18,18 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
 
-> ### * <HEADER>
-> ###
-> attach(NULL, name = "CheckExEnv")
-> assign("nameEx",
-+        local({
-+ 	   s <- "__{must remake R-ex/*.R}__"
-+            function(new) {
-+                if(!missing(new)) s <<- new else s
-+            }
-+        }),
-+        pos = "CheckExEnv")
-> ## Add some hooks to label plot pages for base and grid graphics
-> assign("base_plot_hook",
-+        function() {
-+            pp <- par(c("mfg","mfcol","oma","mar"))
-+            if(all(pp$mfg[1:2] == c(1, pp$mfcol[2]))) {
-+                outer <- (oma4 <- pp$oma[4]) > 0; mar4 <- pp$mar[4]
-+                mtext(sprintf("help(\"%s\")", nameEx()), side = 4,
-+                      line = if(outer)max(1, oma4 - 1) else min(1, mar4 - 1),
-+                outer = outer, adj = 1, cex = .8, col = "orchid", las=3)
-+            }
-+        },
-+        pos = "CheckExEnv")
-> assign("grid_plot_hook",
-+        function() {
-+            grid::pushViewport(grid::viewport(width=grid::unit(1, "npc") -
-+                               grid::unit(1, "lines"), x=0, just="left"))
-+            grid::grid.text(sprintf("help(\"%s\")", nameEx()),
-+                            x=grid::unit(1, "npc") + grid::unit(0.5, "lines"),
-+                            y=grid::unit(0.8, "npc"), rot=90,
-+                            gp=grid::gpar(col="orchid"))
-+        },
-+        pos = "CheckExEnv")
-> setHook("plot.new",     get("base_plot_hook", pos = "CheckExEnv"))
-> setHook("persp",        get("base_plot_hook", pos = "CheckExEnv"))
-> setHook("grid.newpage", get("grid_plot_hook", pos = "CheckExEnv"))
-> assign("cleanEx",
-+        function(env = .GlobalEnv) {
-+ 	   rm(list = ls(envir = env, all.names = TRUE), envir = env)
-+            RNGkind("default", "default")
-+ 	   set.seed(1)
-+    	   options(warn = 1)
-+ 	   .CheckExEnv <- as.environment("CheckExEnv")
-+ 	   delayedAssign("T", stop("T used instead of TRUE"),
-+ 		  assign.env = .CheckExEnv)
-+ 	   delayedAssign("F", stop("F used instead of FALSE"),
-+ 		  assign.env = .CheckExEnv)
-+ 	   sch <- search()
-+ 	   newitems <- sch[! sch %in% .oldSearch]
-+ 	   for(item in rev(newitems))
-+                eval(substitute(detach(item), list(item=item)))
-+ 	   missitems <- .oldSearch[! .oldSearch %in% sch]
-+ 	   if(length(missitems))
-+ 	       warning("items ", paste(missitems, collapse=", "),
-+ 		       " have been removed from the search path")
-+        },
-+        pos = "CheckExEnv")
-> assign("ptime", proc.time(), pos = "CheckExEnv")
-> ## at least one package changes these via ps.options(), so do this
-> ## before loading the package.
-> ## Use postscript as incomplete files may be viewable, unlike PDF.
-> ## Choose a size that is close to on-screen devices, fix paper
-> grDevices::ps.options(width = 7, height = 7, paper = "a4", reset = TRUE)
-> grDevices::postscript("SweaveListingUtils-Ex.ps")
-> 
-> assign("par.postscript", graphics::par(no.readonly = TRUE), pos = "CheckExEnv")
-> options(contrasts = c(unordered = "contr.treatment", ordered = "contr.poly"))
+> pkgname <- "SweaveListingUtils"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
 > options(warn = 1)
 > library('SweaveListingUtils')
 Loading required package: startupmsg
-:startupmsg>  Utilities for start-up messages (version 0.7)
+:startupmsg>  Utilities for start-up messages (version 0.8)
 :startupmsg> 
 :startupmsg>  For more information see ?"startupmsg",
 :startupmsg>  NEWS("startupmsg")
 
 :SweaveListingUtils>  Utilities for Sweave together with
-:SweaveListingUtils>  TeX listings package (version 0.4)
+:SweaveListingUtils>  TeX listings package (version 0.6)
 :SweaveListingUtils> 
 :SweaveListingUtils>  Some functions from package 'base'
 :SweaveListingUtils>  are intentionally masked ---see
@@ -112,18 +48,16 @@ Loading required package: startupmsg
 :SweaveListingUtils>  vignette("ExampleSweaveListingUtils").
 
 
-Attaching package: 'SweaveListingUtils'
+Attaching package: ‘SweaveListingUtils’
 
+The following object(s) are masked from ‘package:base’:
 
-	The following object(s) are masked from package:base :
-
-	 library,
-	 require 
+    library, require
 
 > 
 > assign(".oldSearch", search(), pos = 'CheckExEnv')
-> assign(".oldNS", loadedNamespaces(), pos = 'CheckExEnv')
-> cleanEx(); nameEx("SweaveListingMASK")
+> cleanEx()
+> nameEx("SweaveListingMASK")
 > ### * SweaveListingMASK
 > 
 > flush(stderr()); flush(stdout())
@@ -168,14 +102,15 @@ unloadNamespace("SweaveListingUtils")
 > 
 > 
 > 
-> cleanEx(); nameEx("SweaveListingOptions")
+> cleanEx()
+> nameEx("SweaveListingOptions")
 > ### * SweaveListingOptions
 > 
 > flush(stderr()); flush(stdout())
 > 
 > ### Name: SweaveListingOptions
 > ### Title: Function to change the global options of the package
-> ###   `SweaveListingUtils'
+> ###   'SweaveListingUtils'
 > ### Aliases: SweaveListingOptions SweaveListingoptions
 > ###   getSweaveListingOption Rset Rdset Rin Rout Rcode Rcolor Rbcolor
 > ###   Routcolor RRecomdcolor Rcommentcolor pkg pkv Keywordstyle
@@ -209,7 +144,7 @@ $Rset$commentstyle
 [1] "{\\color{Rcommentcolor}\\ttfamily\\itshape}"
 
 $Rset$literate
-[1] "{<-}{{$\\leftarrow$}}2{<<-}{{$\\twoheadleftarrow$}}2{~}{{$\\sim$}}1{<=}{{$\\leq$}}2{>=}{{$\\geq$}}2{^}{{$\\scriptstyle\\wedge$}}1"
+[1] "{\"}{\\texttt{\"}}1{<-}{{$\\leftarrow$}}2{<<-}{{$\\twoheadleftarrow$}}2{~}{{$\\sim$}}1{<=}{{$\\leq$}}2{>=}{{$\\geq$}}2{^}{{$\\scriptstyle\\wedge$}}1"
 
 $Rset$alsoother
 [1] "{$}"
@@ -320,7 +255,7 @@ $fromRForge
 [1] TRUE
 
 $base.url
-[1] "http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/*checkout*/pkg/"
+[1] "http://r-forge.r-project.org/scm/viewvc.php/*checkout*/pkg/"
 
 $addRset
 [1] TRUE
@@ -360,7 +295,8 @@ $Rout$basicstyle
 > 
 > 
 > 
-> cleanEx(); nameEx("SweaveListingPreparations")
+> cleanEx()
+> nameEx("SweaveListingPreparations")
 > ### * SweaveListingPreparations
 > 
 > flush(stderr()); flush(stdout())
@@ -390,12 +326,12 @@ $Rout$basicstyle
           description,details,dfn,doctype,dots,%
           dontrun,dontshow,donttest,dQuote,%
           email,emph,enc,encoding,enumerate,env,eqn,%
-          examples,file,format,item,itemize,kbd,keyword,%
+          examples,file,format,if,ifelse,item,itemize,kbd,keyword,%
           ldots,link,linkS4class,method,name,note,%
-          option,pkg,preformatted,R,Rdopts,Rdversion,%
+          option,out,pkg,preformatted,R,Rdopts,Rdversion,%
           references,S3method,S4method,Sexpr,samp,section,%
-          seealso,source,sp,special,%
-          sQuote,strong,synopsis,tab,tabular,testonly,%
+          seealso,source,sp,special,sQuote,strong,%
+          subsection,synopsis,tab,tabular,testonly,%
           title,url,usage,value,var,verb},
    sensitive=true,%
    morecomment=[l]\%% 2008/9 Peter Ruckdeschel
@@ -406,9 +342,11 @@ $Rout$basicstyle
 \lstdefinestyle{RstyleO1}{fancyvrb=true,escapechar=`,extendedchars=false,%
                           language=R,%
                           basicstyle={\color{Rcolor}\small},%
-                          keywordstyle={\bf\color{Rcolor}},%
+                          keywordstyle={\bf\color{Rcolor}},%Warning in print.taglist(taglist, LineLength = LineLength, offset.start = nchar(startS),  :
+  Some elements of taglist are too long
+
                           commentstyle={\color{Rcommentcolor}\ttfamily\itshape},%
-                          literate={<-}{{$\leftarrow$}}2{<<-}{{$\twoheadleftarrow$}}2{~}{{$\sim$}}1{<=}{{$\leq$}}2{>=}{{$\geq$}}2{^}{{$\scriptstyle\wedge$}}1,%
+                          literate={"}{\texttt{"}}1{<-}{{$\leftarrow$}}2{<<-}{{$\twoheadleftarrow$}}2{~}{{$\sim$}}1{<=}{{$\leq$}}2{>=}{{$\geq$}}2{^}{{$\scriptstyle\wedge$}}1,%
                           alsoother={$},%
                           alsoletter={.<-},%
                           otherkeywords={!,!=,~,$,*,\&,\%/\%,\%*\%,\%\%,<-,<<-,/},%
@@ -482,30 +420,30 @@ V1=0,V2=1,V3=0}%
 \def\Code#1{{\tt\color{Rcolor} #1}}
 \def\file#1{{\tt #1}} 
 \def\pkg#1{{\tt "#1"}} 
-\newcommand{\pkgversion}{{\tt 2.2}}
+\newcommand{\pkgversion}{{\tt 2.3.4}}
 %------------------------------------------------------------------------------%
-Warning in kws[idxRec] <- rep(getSweaveListingOption("Recomd.Keywordstyle"),  :
+Warning in setBaseOrRecommended(pkgs = pkgs) :
   number of items to replace is not a multiple of replacement length
 
 \lstdefinestyle{RstyleO2}{style=RstyleO1,%
 % --------------------------
 % Registration of package SweaveListingUtils
 % --------------------------
-morekeywords={[2]taglist,SweaveListingPreparations,SweaveListingOptions,SweaveListingoptions,SweaveListingMASK,%
-setToBeDefinedPkgs,setBaseOrRecommended,readSourceFromRForge,readPkgVersion,lstsetRout,%
-lstsetRin,lstsetRd,lstsetRcode,lstsetRall,lstsetR,%
-lstsetLanguage,lstset,lstinputSourceFromRForge,lstdefRstyle,isBaseOrRecommended,%
-getSweaveListingOption,copySourceFromRForge,changeKeywordstyles%
+morekeywords={[2]taglist,setToBeDefinedPkgs,setBaseOrRecommended,readSourceFromRForge,readPkgVersion,%
+lstsetRout,lstsetRin,lstsetRd,lstsetRcode,lstsetRall,%
+lstsetR,lstsetLanguage,lstset,lstinputSourceFromRForge,lstdefRstyle,%
+isBaseOrRecommended,getSweaveListingOption,copySourceFromRForge,changeKeywordstyles,SweaveListingoptions,%
+SweaveListingPreparations,SweaveListingOptions,SweaveListingMASK%
 },%
 keywordstyle={[2]{\bf}},%
 %
 % --------------------------
 % Registration of package startupmsg
 % --------------------------
-morekeywords={[3]TOBEDONE,suppressStartupMessages,startupType,startupPackage,StartupMessage,%
-startupMessage,startupEndline,readVersionInformation,readURLInformation,pointertoNEWS,%
-onlytypeStartupMessages,NEWS,mystartupMessage,mySMHandler,infoShow,%
-buildStartupMessage%
+morekeywords={[3]suppressStartupMessages,startupType,startupPackage,startupMessage,startupEndline,%
+readVersionInformation,readURLInformation,pointertoNEWS,onlytypeStartupMessages,mystartupMessage,%
+mySMHandler,infoShow,buildStartupMessage,TOBEDONE,StartupMessage,%
+NEWS%
 },%
 keywordstyle={[3]{\bf}},%
 %
@@ -513,71 +451,72 @@ keywordstyle={[3]{\bf}},%
 % Registration of package stats [recommended or base] 
 % --------------------------
 morekeywords={[4]xtabs,write.ftable,window<-,wilcox.test,weighted.residuals,%
-weighted.mean,vcov,var.test,varimax,variable.names,%
-update.formula,update.default,TukeyHSD.aov,TukeyHSD,t.test,%
-ts.union,tsSmooth,ts.plot,tsp<-,ts.intersect,%
-tsdiag,toeplitz,terms.terms,terms.formula,terms.default,%
-terms.aovlist,termplot,supsmu,summary.stepfun,summary.mlm,%
-summary.manova,summary.lm,summary.infl,summary.glm,summary.aovlist,%
-summary.aov,StructTS,stl,stepfun,stat.anova,%
-SSweibull,SSmicmen,SSlogis,SSgompertz,SSfpl,%
-SSfol,SSD,SSbiexp,SSasympOrig,SSasympOff,%
-SSasymp,splinefunH,spectrum,spec.taper,spec.pgram,%
-spec.ar,sortedXyData,smooth.spline,smoothEnds,smooth,%
-simulate,shapiro.test,setNames,selfStart,se.contrast,%
-screeplot,scatter.smooth,runmed,rstudent.lm,rstudent.glm,%
-rstandard.lm,rstandard.glm,rmultinom,residuals.lm,residuals.glm,%
-residuals.default,reshapeWide,reshapeLong,reshape,reorder,%
-rect.hclust,read.ftable,r2dtable,quasipoisson,quasibinomial,%
-quantile.default,quade.test,qqnorm.default,qbirthday,prop.trend.test,%
-prop.test,promax,print.ts,print.terms,print.logLik,%
-print.lm,print.integrate,print.infl,print.glm,print.ftable,%
-print.formula,print.family,print.density,printCoefmat,print.coefmat,%
-print.anova,princomp,predict.poly,predict.mlm,predict.lm,%
-predict.glm,prcomp,PP.test,ppr,power.t.test,%
-power.prop.test,power.anova.test,polym,poisson.test,plot.TukeyHSD,%
+weighted.mean,vcov,varimax,variable.names,var.test,%
+update.formula,update.default,tsp<-,tsdiag,tsSmooth,%
+ts.union,ts.plot,ts.intersect,toeplitz,terms.terms,%
+terms.formula,terms.default,terms.aovlist,termplot,t.test,%
+supsmu,summary.stepfun,summary.mlm,summary.manova,summary.lm,%
+summary.infl,summary.glm,summary.aovlist,summary.aov,stl,%
+stepfun,stat.anova,splinefunH,spectrum,spec.taper,%
+spec.pgram,spec.ar,sortedXyData,smoothEnds,smooth.spline,%
+smooth,simulate,shapiro.test,setNames,selfStart,%
+se.contrast,screeplot,scatter.smooth,runmed,rstudent.lm,%
+rstudent.glm,rstandard.lm,rstandard.glm,rmultinom,residuals.lm,%
+residuals.glm,residuals.default,reshapeWide,reshapeLong,reshape,%
+reorder,rect.hclust,read.ftable,rWishart,r2dtable,%
+quasipoisson,quasibinomial,quantile.default,quade.test,qqnorm.default,%
+qbirthday,prop.trend.test,prop.test,promax,printCoefmat,%
+print.ts,print.terms,print.logLik,print.lm,print.integrate,%
+print.infl,print.glm,print.ftable,print.formula,print.family,%
+print.density,print.coefmat,print.anova,princomp,predict.poly,%
+predict.mlm,predict.lm,predict.glm,prcomp,ppr,%
+power.t.test,power.prop.test,power.anova.test,polym,poisson.test,%
 plot.ts,plot.stepfun,plot.spec.phase,plot.spec.coherency,plot.spec,%
-plot.mlm,plot.lm,plot.ecdf,plot.density,plclust,%
-pbirthday,pairwise.wilcox.test,pairwise.t.test,pairwise.table,pairwise.prop.test,%
-p.adjust.methods,p.adjust,pacf,order.dendrogram,oneway.test,%
-numericDeriv,NLSstRtAsymptote,NLSstLfAsymptote,NLSstClosestX,NLSstAsymptotic,%
-nls.control,nls,nlminb,naresid,naprint,%
-napredict,na.pass,na.omit,na.fail,na.exclude,%
-na.contiguous,na.action,mood.test,monthplot,model.weights,%
-model.tables,model.response,model.offset,model.matrix.lm,model.matrix.default,%
-model.matrix,model.frame.lm,model.frame.glm,model.frame.default,model.frame.aovlist,%
-model.frame,model.extract,medpolish,median.default,mcnemar.test,%
-mauchly.test,mauchley.test,mantelhaen.test,manova,makepredictcall,%
-make.link,makeARIMA,ls.print,ls.diag,logLik,%
-loess.smooth,loess.control,loess,loadings,lm.wfit.null,%
-lm.wfit,lm.influence,lm.fit.null,lm.fit,lines.ts,%
-line,lag.plot,lag,ks.test,ksmooth,%
-kruskal.test,knots,kmeans,kernel,kernapply,%
-KalmanSmooth,KalmanRun,KalmanLike,KalmanForecast,is.tskernel,%
-is.ts,is.stepfun,isoreg,is.mts,is.leaf,%
+plot.mlm,plot.lm,plot.ecdf,plot.density,plot.TukeyHSD,%
+plclust,pbirthday,pairwise.wilcox.test,pairwise.table,pairwise.t.test,%
+pairwise.prop.test,pacf,p.adjust.methods,p.adjust,order.dendrogram,%
+optimHess,oneway.test,numericDeriv,nobs,nls.control,%
+nls,nlminb,naresid,naprint,napredict,%
+na.pass,na.omit,na.fail,na.exclude,na.contiguous,%
+na.action,mood.test,monthplot,model.weights,model.tables,%
+model.response,model.offset,model.matrix.lm,model.matrix.default,model.matrix,%
+model.frame.lm,model.frame.glm,model.frame.default,model.frame.aovlist,model.frame,%
+model.extract,medpolish,median.default,mcnemar.test,mauchly.test,%
+mauchley.test,mantelhaen.test,manova,makepredictcall,makeARIMA,%
+make.link,ls.print,ls.diag,logLik,loess.smooth,%
+loess.control,loess,loadings,lm.wfit.null,lm.wfit,%
+lm.influence,lm.fit.null,lm.fit,lines.ts,line,%
+lag.plot,lag,ksmooth,ks.test,kruskal.test,%
+knots,kmeans,kernel,kernapply,isoreg,%
+is.tskernel,is.ts,is.stepfun,is.mts,is.leaf,%
 is.empty.model,inverse.gaussian,interaction.plot,integrate,influence.measures,%
-HoltWinters,heatmap,hclust,hatvalues.lm,hatvalues,%
-glm.fit.null,glm.fit,glm.control,getInitial,get_all_vars,%
+heatmap,hclust,hatvalues.lm,hatvalues,glm.fit.null,%
+glm.fit,glm.control,get_all_vars,getInitial,getCall,%
 friedman.test,fligner.test,fitted.values,fisher.test,filter,%
 factor.scope,factanal,expand.model.frame,estVar,embed,%
 eff.aovlist,ecdf,dummy.coef,drop.terms,drop.scope,%
-dmultinom,dist,diff.ts,diffinv,df.residual,%
-df.kernel,dfbeta,deriv.formula,deriv.default,deriv3.formula,%
-deriv3.default,deriv3,density.default,dendrapply,delete.response,%
-decompose,cutree,cpgram,cov.wt,cov2cor,%
-cor.test,cophenetic,cooks.distance,contr.treatment,contr.sum,%
-contr.SAS,contr.poly,contr.helmert,contrasts<-,constrOptim,%
+dmultinom,dist,diffinv,diff.ts,dfbeta,%
+df.residual,df.kernel,deriv3.formula,deriv3.default,deriv3,%
+deriv.formula,deriv.default,density.default,dendrapply,delete.response,%
+decompose,cutree,cpgram,cov2cor,cov.wt,%
+cor.test,cophenetic,cooks.distance,contrasts<-,contr.treatment,%
+contr.sum,contr.poly,contr.helmert,contr.SAS,constrOptim,%
 confint.default,confint,complete.cases,cmdscale,clearNames,%
 chisq.test,ccf,case.names,cancor,bw.ucv,%
-bw.SJ,bw.nrd0,bw.nrd,bw.bcv,Box.test,%
-biplot,binom.test,bartlett.test,bandwidth.kernel,as.ts,%
-as.stepfun,asOneSidedFormula,as.hclust,as.formula,as.dist,%
-as.dendrogram,ar.yw,ar.ols,ar.mle,ARMAtoMA,%
-ARMAacf,arima.sim,arima0.diag,arima0,arima,%
-ar.burg,ar,ansari.test,anova.mlm,anova.lmlist,%
-anova.lm,anovalist.lm,anova.glmlist,anova.glm,AIC,%
-aggregate.ts,aggregate.default,aggregate.data.frame,add.scope,addmargins,%
-acf2AR,acf%
+bw.nrd0,bw.nrd,bw.bcv,bw.SJ,biplot,%
+binom.test,bartlett.test,bandwidth.kernel,asOneSidedFormula,as.ts,%
+as.stepfun,as.hclust,as.formula,as.dist,as.dendrogram,%
+arima0.diag,arima0,arima.sim,arima,ar.yw,%
+ar.ols,ar.mle,ar.burg,ar,ansari.test,%
+anovalist.lm,anova.mlm,anova.lmlist,anova.lm,anova.glmlist,%
+anova.glm,aggregate.ts,aggregate.default,aggregate.data.frame,addmargins,%
+add.scope,acf2AR,acf,TukeyHSD.aov,TukeyHSD,%
+StructTS,SSweibull,SSmicmen,SSlogis,SSgompertz,%
+SSfpl,SSfol,SSbiexp,SSasympOrig,SSasympOff,%
+SSasymp,SSD,PP.test,NLSstRtAsymptote,NLSstLfAsymptote,%
+NLSstClosestX,NLSstAsymptotic,KalmanSmooth,KalmanRun,KalmanLike,%
+KalmanForecast,HoltWinters,Box.test,BIC,ARMAtoMA,%
+ARMAacf,AIC%
 },%
 keywordstyle={[4]{\bf\color{RRecomdcolor}}},%
 %
@@ -585,35 +524,39 @@ keywordstyle={[4]{\bf\color{RRecomdcolor}}},%
 % Registration of package graphics [recommended or base] 
 % --------------------------
 morekeywords={[5]xspline,text.default,stripchart,strheight,split.screen,%
-spineplot,smoothScatter,points.default,plot.xy,plot.window,%
-plot.new,plot.design,plot.default,pie,panel.smooth,%
-pairs.default,lines.default,layout.show,image.default,hist.default,%
-grconvertY,grconvertX,fourfoldplot,filled.contour,erase.screen,%
-dotchart,contour.default,co.intervals,close.screen,clip,%
-cdplot,boxplot.matrix,boxplot.default,barplot.default,axTicks,%
-axis.POSIXct,axis.Date,Axis,assocplot%
+spineplot,smoothScatter,rasterImage,polypath,points.default,%
+plot.xy,plot.window,plot.new,plot.function,plot.design,%
+plot.default,pie,panel.smooth,pairs.default,lines.default,%
+layout.show,image.default,hist.default,grconvertY,grconvertX,%
+fourfoldplot,filled.contour,erase.screen,dotchart,contour.default,%
+co.intervals,close.screen,clip,cdplot,boxplot.matrix,%
+boxplot.default,barplot.default,axis.POSIXct,axis.Date,axTicks,%
+assocplot,Axis%
 },%
 keywordstyle={[5]{\bf\color{RRecomdcolor}}},%
 %
 % --------------------------
 % Registration of package grDevices [recommended or base] 
 % --------------------------
-morekeywords={[6]xyz.coords,xyTable,xy.coords,xfig,X11.options,%
-X11Fonts,X11Font,Type1Font,trans3d,topo.colors,%
-tiff,terrain.colors,svg,setPS,setEPS,%
-savePlot,rgb2hsv,replayPlot,recordPlot,recordGraphics,%
-quartz.options,quartzFonts,quartzFont,quartz,ps.options,%
-postscriptFonts,postscriptFont,png,pdf.options,pdfFonts,%
-pdf,nclass.Sturges,nclass.scott,nclass.FD,n2mfrow,%
-make.rgb,jpeg,Hershey,heat.colors,hcl,%
-grey.colors,gray.colors,graphics.off,getGraphicsEvent,extendrange,%
-embedFonts,dev.size,dev.set,dev.print,dev.prev,%
-dev.off,dev.next,dev.new,dev.list,dev.interactive,%
-deviceIsInteractive,dev.cur,dev.copy2pdf,dev.copy2eps,dev.copy,%
-dev.control,devAskNewPage,densCols,convertColor,contourLines,%
-colorspaces,colorRampPalette,colorRamp,colorConverter,col2rgb,%
-cm.colors,CIDFont,check.options,cairo_ps,cairo_pdf,%
-boxplot.stats,bmp,blues9,bitmap,as.graphicsAnnot%
+morekeywords={[6]xyz.coords,xyTable,xy.coords,xfig,trans3d,%
+topo.colors,tiff,terrain.colors,svg,setPS,%
+setGraphicsEventHandlers,setGraphicsEventEnv,setEPS,savePlot,rgb2hsv,%
+replayPlot,recordPlot,recordGraphics,quartzFonts,quartzFont,%
+quartz.options,quartz,ps.options,postscriptFonts,postscriptFont,%
+png,pdfFonts,pdf.options,pdf,nclass.scott,%
+nclass.Sturges,nclass.FD,n2mfrow,make.rgb,jpeg,%
+is.raster,heat.colors,hcl,grey.colors,gray.colors,%
+graphics.off,getGraphicsEventEnv,getGraphicsEvent,extendrange,embedFonts,%
+deviceIsInteractive,devAskNewPage,dev.size,dev.set,dev.print,%
+dev.prev,dev.off,dev.next,dev.new,dev.list,%
+dev.interactive,dev.hold,dev.flush,dev.cur,dev.copy2pdf,%
+dev.copy2eps,dev.copy,dev.control,dev.capture,dev.capabilities,%
+densCols,convertColor,contourLines,colorspaces,colorRampPalette,%
+colorRamp,colorConverter,col2rgb,cm.colors,check.options,%
+cairo_ps,cairo_pdf,boxplot.stats,bmp,blues9,%
+bitmap,axisTicks,as.raster,as.graphicsAnnot,adjustcolor,%
+X11Fonts,X11Font,X11.options,Type1Font,Hershey,%
+CIDFont%
 },%
 keywordstyle={[6]{\bf\color{RRecomdcolor}}},%
 %
@@ -621,64 +564,67 @@ keywordstyle={[6]{\bf\color{RRecomdcolor}}},%
 % Registration of package utils [recommended or base] 
 % --------------------------
 morekeywords={[7]zip.file.extract,wsbrowser,write.table,write.socket,write.csv2,%
-write.csv,vignette,View,url.show,URLencode,%
-URLdecode,upgrade,update.packageStatus,update.packages,unzip,%
-untar,unstack,type.convert,txtProgressBar,toLatex,%
-toBibtex,timestamp,tar,tail.matrix,tail,%
-SweaveSyntConv,SweaveSyntaxNoweb,SweaveSyntaxLatex,SweaveHooks,Sweave,%
-summaryRprof,strOptions,str,Stangle,stack,%
-setTxtProgressBar,setRepositories,setBreakpoint,sessionInfo,select.list,%
-savehistory,RweaveTryStop,RweaveLatexWritedoc,RweaveLatexSetup,RweaveLatexOptions,%
-RweaveLatexFinish,RweaveLatex,RweaveEvalWithOpt,RweaveChunkPrefix,RtangleWritedoc,%
-RtangleSetup,Rtangle,rtags,RSiteSearch,RShowDoc,%
-Rprofmem,Rprof,remove.packages,relist,recover,%
-read.table,read.socket,read.fwf,read.fortran,read.DIF,%
-read.delim2,read.delim,read.csv2,read.csv,readCitationFile,%
-rc.status,rc.settings,rc.options,rc.getOption,promptPackage,%
-promptData,personList,person,packageStatus,package.skeleton,%
-packageDescription,package.contents,old.packages,object.size,nsl,%
-normalizePath,news,new.packages,modifyList,mirror2html,%
-memory.size,memory.limit,make.socket,makeRweaveLatexCodeRunner,make.packages.html,%
-ls.str,lsf.str,localeToCharset,loadhistory,limitedLabels,%
-is.relistable,install.packages,installed.packages,index.search,history,%
-help.start,help.search,help.request,head.matrix,head,%
-glob2rx,getTxtProgressBar,getS3method,getFromNamespace,getCRANmirrors,%
-getAnywhere,formatUL,formatOL,flush.console,fixInNamespace,%
-findLineNum,file_test,file.edit,dump.frames,download.packages,%
-download.file,de.setup,de.restore,de.ncols,data.entry,%
-CRAN.packages,count.fields,contrib.url,compareVersion,combn,%
-close.socket,citHeader,citFooter,citEntry,citation,%
-chooseCRANmirror,checkCRAN,capture.output,bug.report,browseVignettes,%
-browseURL,browseEnv,available.packages,assignInNamespace,as.roman,%
-as.relistable,as.personList,as.person,aspell,argsAnywhere,%
-alarm%
+write.csv,vignette,url.show,upgrade,update.packages,%
+update.packageStatus,unzip,untar,unstack,type.convert,%
+txtProgressBar,toLatex,toBibtex,timestamp,tar,%
+tail.matrix,tail,summaryRprof,strOptions,str,%
+stack,setTxtProgressBar,setRepositories,setBreakpoint,sessionInfo,%
+select.list,savehistory,rtags,removeSource,remove.packages,%
+relist,recover,readCitationFile,read.table,read.socket,%
+read.fwf,read.fortran,read.delim2,read.delim,read.csv2,%
+read.csv,read.DIF,rc.status,rc.settings,rc.options,%
+rc.getOption,promptPackage,promptData,personList,person,%
+packageVersion,packageStatus,packageDescription,package.skeleton,package.contents,%
+old.packages,object.size,nsl,news,new.packages,%
+modifyList,mirror2html,memory.size,memory.limit,makeRweaveLatexCodeRunner,%
+make.socket,make.packages.html,maintainer,lsf.str,ls.str,%
+localeToCharset,loadhistory,limitedLabels,is.relistable,installed.packages,%
+install.packages,history,help.start,help.search,help.request,%
+head.matrix,head,globalVariables,glob2rx,getTxtProgressBar,%
+getSrcref,getSrcLocation,getSrcFilename,getSrcDirectory,getS3method,%
+getFromNamespace,getCRANmirrors,getAnywhere,formatUL,formatOL,%
+flush.console,fixInNamespace,findLineNum,file_test,file.edit,%
+dump.frames,download.packages,download.file,de.setup,de.restore,%
+de.ncols,data.entry,create.post,count.fields,contrib.url,%
+compareVersion,combn,close.socket,citation,citHeader,%
+citFooter,citEntry,chooseCRANmirror,chooseBioCmirror,checkCRAN,%
+capture.output,bug.report,browseVignettes,browseURL,browseEnv,%
+bibentry,available.packages,assignInNamespace,assignInMyNamespace,aspell_write_personal_dictionary_file,%
+aspell_package_vignettes,aspell_package_Rd_files,aspell,as.roman,as.relistable,%
+as.personList,as.person,argsAnywhere,aregexec,alarm,%
+adist,View,URLencode,URLdecode,SweaveSyntaxNoweb,%
+SweaveSyntaxLatex,SweaveSyntConv,SweaveHooks,Sweave,Stangle,%
+RweaveTryStop,RweaveLatexWritedoc,RweaveLatexSetup,RweaveLatexOptions,RweaveLatexFinish,%
+RweaveLatex,RweaveEvalWithOpt,RweaveChunkPrefix,RtangleWritedoc,RtangleSetup,%
+Rtangle,Rprofmem,Rprof,RSiteSearch,RShowDoc,%
+CRAN.packages%
 },%
 keywordstyle={[7]{\bf\color{RRecomdcolor}}},%
 %
 % --------------------------
 % Registration of package datasets [recommended or base] 
 % --------------------------
-morekeywords={[8]WWWusage,WorldPhones,women,warpbreaks,volcano,%
-VADeaths,uspop,USPersonalExpenditure,USJudgeRatings,USArrests,%
-USAccDeaths,UKgas,UKDriverDeaths,UCBAdmissions,trees,%
-treering,ToothGrowth,Titanic,Theoph,swiss,%
-sunspot.year,sunspots,sunspot.month,state.x77,state.region,%
-state.name,state.division,state.center,state.area,state.abb,%
-stack.x,stackloss,stack.loss,sleep,Seatbelts,%
-rock,rivers,randu,quakes,Puromycin,%
-pressure,presidents,precip,PlantGrowth,OrchardSprays,%
-Orange,occupationalStatus,nottem,Nile,nhtemp,%
-mtcars,morley,mdeaths,lynx,longley,%
-Loblolly,LifeCycleSavings,lh,ldeaths,LakeHuron,%
-JohnsonJohnson,islands,iris3,iris,InsectSprays,%
-infert,Indometh,Harman74.cor,Harman23.cor,HairEyeColor,%
-freeny.y,freeny.x,freeny,Formaldehyde,fdeaths,%
-faithful,EuStockMarkets,eurodist,euro.cross,euro,%
-esoph,DNase,discoveries,crimtab,CO2,%
-co2,chickwts,ChickWeight,cars,BOD,%
-BJsales.lead,BJsales,beaver2,beaver1,austres,%
-attitude,attenu,anscombe,airquality,AirPassengers,%
-airmiles,ability.cov%
+morekeywords={[8]women,warpbreaks,volcano,uspop,trees,%
+treering,swiss,sunspots,sunspot.year,sunspot.month,%
+state.x77,state.region,state.name,state.division,state.center,%
+state.area,state.abb,stackloss,stack.x,stack.loss,%
+sleep,rock,rivers,randu,quakes,%
+pressure,presidents,precip,occupationalStatus,nottem,%
+nhtemp,mtcars,morley,mdeaths,lynx,%
+longley,lh,ldeaths,islands,iris3,%
+iris,infert,freeny.y,freeny.x,freeny,%
+fdeaths,faithful,eurodist,euro.cross,euro,%
+esoph,discoveries,crimtab,co2,chickwts,%
+cars,beaver2,beaver1,austres,attitude,%
+attenu,anscombe,airquality,airmiles,ability.cov,%
+WorldPhones,WWWusage,VADeaths,USPersonalExpenditure,USJudgeRatings,%
+USArrests,USAccDeaths,UKgas,UKDriverDeaths,UCBAdmissions,%
+ToothGrowth,Titanic,Theoph,Seatbelts,Puromycin,%
+PlantGrowth,OrchardSprays,Orange,Nile,Loblolly,%
+LifeCycleSavings,LakeHuron,JohnsonJohnson,InsectSprays,Indometh,%
+Harman74.cor,Harman23.cor,HairEyeColor,Formaldehyde,EuStockMarkets,%
+DNase,ChickWeight,CO2,BOD,BJsales.lead,%
+BJsales,AirPassengers%
 },%
 keywordstyle={[8]{\bf\color{RRecomdcolor}}},%
 %
@@ -687,205 +633,215 @@ keywordstyle={[8]{\bf\color{RRecomdcolor}}},%
 % --------------------------
 morekeywords={[9]validSlotNames,validObject,unRematchDefinition,trySilent,tryNew,%
 traceOn,traceOff,testVirtual,testInheritedMethods,superClassDepth,%
-Summary,substituteFunctionArgs,substituteDirect,slotsFromS3,slotNames,%
-slot<-,slot,sigToEnv,SignatureMethod,signature,%
-showMlist,showMethods,showExtends,showDefault,showClass,%
-setValidity,setReplaceMethod,setPrimitiveMethods,setPackageName,setOldClass,%
-setMethod,setIs,setGroupGeneric,setGenericImplicit,setGeneric,%
-setDataPart,setClassUnion,setClass,setAs,sessionData,%
-selectSuperClasses,selectMethod,seemsS4Object,sealClass,S3Part<-,%
-S3Part,S3Class<-,S3Class,resetGeneric,resetClass,%
-requireMethods,representation,removeMethodsObject,removeMethods,removeMethod,%
-removeGeneric,removeClass,rematchDefinition,registerImplicitGenerics,reconcilePropertiesAndPrototype,%
-rbind2,Quote,prototype,promptMethods,promptClass,%
-prohibitGeneric,possibleExtends,packageSlot<-,packageSlot,newEmptyObject,%
-newClassRepresentation,newBasic,mlistMetaName,missingArg,methodsPackageMetaName,%
-MethodsListSelect,MethodsList,method.skeleton,methodSignatureMatrix,MethodAddCoerce,%
-metaNameUndo,mergeMethods,Math2,matchSignature,makeStandardGeneric,%
-makePrototypeFromClassDef,makeMethodsList,makeGeneric,makeExtends,makeClassRepresentation,%
-Logic,loadMethod,listFromMlist,listFromMethods,linearizeMlist,%
-languageEl<-,languageEl,isXS3Class,isVirtualClass,isSealedMethod,%
-isSealedClass,isGroup,isGrammarSymbol,isGeneric,isClassUnion,%
-isClassDef,isClass,insertMethod,initialize,inheritedSlotNames,%
-implicitGeneric,hasMethods,hasMethod,hasArg,getVirtual,%
-getValidity,getSubclasses,getSlots,getPrototype,getProperties,%
-getPackageName,getMethodsMetaData,getMethodsForDispatch,getMethods,getMethod,%
-getGroupMembers,getGroup,getGenerics,getGeneric,getFunction,%
-getExtends,getDataPart,getClassPackage,getClassName,getClasses,%
-getClassDef,getClass,getAllSuperClasses,getAllMethods,getAccess,%
-generic.skeleton,functionBody<-,functionBody,formalArgs,fixPre1.8,%
-findUnique,findMethodSignatures,findMethods,findMethod,findFunction,%
-findClass,finalDefaultMethod,extends,existsMethod,existsFunction,%
-emptyMethodsList,empty.dump,elNamed<-,elNamed,el<-,%
-el,dumpMethods,dumpMethod,doPrimitiveMethod,defaultPrototype,%
-defaultDumpName,conformMethod,Complex,completeSubclasses,completeExtends,%
-completeClassDefinition,Compare,coerce<-,coerce,classMetaName,%
-classesToAM,checkSlotAssignment,cbind2,canCoerce,callNextMethod,%
-callGeneric,cacheMethod,cacheMetaData,cacheGenericsMetaData,body<-,%
-balanceMethodsList,assignMethodsMetaData,assignClassDef,asMethodDefinition,as<-,%
-Arith,allNames,allGenerics,addNextMethod%
+substituteFunctionArgs,substituteDirect,slotsFromS3,slotNames,slot<-,%
+slot,signature,sigToEnv,showMlist,showMethods,%
+showExtends,showDefault,showClass,setValidity,setReplaceMethod,%
+setRefClass,setPrimitiveMethods,setPackageName,setOldClass,setMethod,%
+setLoadActions,setLoadAction,setIs,setGroupGeneric,setGenericImplicit,%
+setGeneric,setDataPart,setClassUnion,setClass,setAs,%
+sessionData,selectSuperClasses,selectMethod,seemsS4Object,sealClass,%
+resetGeneric,resetClass,requireMethods,representation,removeMethodsObject,%
+removeMethods,removeMethod,removeGeneric,removeClass,rematchDefinition,%
+registerImplicitGenerics,reconcilePropertiesAndPrototype,rbind2,prototype,promptMethods,%
+promptClass,prohibitGeneric,possibleExtends,packageSlot<-,packageSlot,%
+newEmptyObject,newClassRepresentation,newBasic,multipleClasses,mlistMetaName,%
+missingArg,methodsPackageMetaName,methodSignatureMatrix,method.skeleton,metaNameUndo,%
+mergeMethods,matchSignature,makeStandardGeneric,makePrototypeFromClassDef,makeMethodsList,%
+makeGeneric,makeExtends,makeClassRepresentation,loadMethod,listFromMlist,%
+listFromMethods,linearizeMlist,languageEl<-,languageEl,isXS3Class,%
+isVirtualClass,isSealedMethod,isSealedClass,isGroup,isGrammarSymbol,%
+isGeneric,isClassUnion,isClassDef,isClass,insertSource,%
+insertMethod,initialize,initRefFields,initFieldArgs,inheritedSlotNames,%
+implicitGeneric,hasMethods,hasMethod,hasLoadAction,hasArg,%
+getVirtual,getValidity,getSubclasses,getSlots,getRefClass,%
+getPrototype,getProperties,getPackageName,getMethodsMetaData,getMethodsForDispatch,%
+getMethods,getMethod,getLoadActions,getGroupMembers,getGroup,%
+getGenerics,getGeneric,getFunction,getExtends,getDataPart,%
+getClasses,getClassPackage,getClassName,getClassDef,getClass,%
+getAllSuperClasses,getAllMethods,getAccess,generic.skeleton,functionBody<-,%
+functionBody,formalArgs,fixPre1.8,findUnique,findMethods,%
+findMethodSignatures,findMethod,findFunction,findClass,finalDefaultMethod,%
+extends,existsMethod,existsFunction,evalqOnLoad,evalSource,%
+evalOnLoad,emptyMethodsList,empty.dump,elNamed<-,elNamed,%
+el<-,el,dumpMethods,dumpMethod,doPrimitiveMethod,%
+defaultPrototype,defaultDumpName,conformMethod,completeSubclasses,completeExtends,%
+completeClassDefinition,coerce<-,coerce,classesToAM,className,%
+classMetaName,classLabel,checkSlotAssignment,cbind2,canCoerce,%
+callNextMethod,callGeneric,cacheMethod,cacheMetaData,cacheGenericsMetaData,%
+body<-,balanceMethodsList,assignMethodsMetaData,assignClassDef,asMethodDefinition,%
+as<-,allNames,allGenerics,addNextMethod,Summary,%
+SignatureMethod,S3Part<-,S3Part,S3Class<-,S3Class,%
+Quote,MethodsListSelect,MethodsList,MethodAddCoerce,Math2,%
+Logic,Complex,Compare,Arith%
 },%
 keywordstyle={[9]{\bf\color{RRecomdcolor}}},%
 %
 % --------------------------
 % Registration of package base [recommended or base] 
 % --------------------------
-morekeywords={[10]xzfile,xtfrm.Surv,xtfrm.POSIXlt,xtfrm.POSIXct,xtfrm.numeric_version,%
-xtfrm.factor,xtfrm.default,xtfrm.Date,xtfrm,xpdrows.data.frame,%
-write.table0,writeLines,write.dcf,writeChar,writeBin,%
-withVisible,withRestarts,within.list,within.data.frame,within,%
-with.default,withCallingHandlers,with,which.min,which.max,%
-weekdays.POSIXt,weekdays.Date,weekdays,version,Vectorize,%
-utf8ToInt,upper.tri,unz,untracemem,unsplit,%
-unserialize,unlockBinding,unloadNamespace,unix.time,units.difftime,%
-units<-.difftime,units<-,units,unique.POSIXlt,unique.numeric_version,%
-unique.matrix,unique.default,unique.data.frame,unique.array,tryCatch,%
-trunc.POSIXt,trunc.Date,truncate.connection,truncate,transform.default,%
-transform.data.frame,tracingState,tracemem,toupper,toString.default,%
-toString,topenv,tolower,textConnectionValue,textConnection,%
-testPlatformEquivalence,tempdir,t.default,t.data.frame,tcrossprod,%
-taskCallbackManager,T,Sys.which,Sys.unsetenv,Sys.umask,%
-Sys.timezone,Sys.time,system.time,system.file,sys.status,%
-sys.source,Sys.sleep,Sys.setlocale,Sys.setenv,sys.save.image,%
-Sys.readlink,Sys.putenv,sys.parents,sys.parent,sys.on.exit,%
-sys.nframe,Sys.localeconv,sys.load.image,Sys.info,Sys.glob,%
-Sys.getpid,Sys.getlocale,Sys.getenv,sys.function,sys.frames,%
-sys.frame,Sys.Date,Sys.chmod,sys.calls,sys.call,%
-symbol.For,symbol.C,suppressWarnings,suppressPackageStartupMessages,suppressMessages,%
-summary.table,Summary.POSIXlt,summary.POSIXlt,Summary.POSIXct,summary.POSIXct,%
-Summary.numeric_version,summary.matrix,Summary.factor,summary.factor,Summary.difftime,%
-summary.default,Summary.Date,summary.Date,Summary.data.frame,summary.data.frame,%
-summary.connection,substring<-,substr<-,subset.matrix,subset.default,%
-subset.data.frame,strwrap,strtrim,strptime,strftime,%
-storage.mode<-,storage.mode,stopifnot,stdout,stdin,%
-stderr,standardGeneric,srcref,srcfilecopy,srcfile,%
-sQuote,sprintf,split.POSIXct,split.default,split<-.default,%
-split.Date,split.data.frame,split<-.data.frame,split<-,source.url,%
-sort.POSIXlt,sort.list,sort.int,sort.default,solve.qr,%
-solve.default,socketSelect,socketConnection,slice.index,sink.number,%
-simpleWarning,simpleMessage,simpleError,simpleCondition,signalCondition,%
-shQuote,showConnections,setTimeLimit,setSessionTimeLimit,set.seed,%
-setNamespaceInfo,setHook,setCConverterStatus,serialize,seq.POSIXt,%
-seq_len,seq.int,seq.default,seq.Date,seq_along,%
-seek.connection,seek,scan.url,scale.default,saveNamespaceImage,%
-save.image,sample.int,R.version.string,R.Version,R.version,%
-R_system_version,rowSums,rowsum.default,rowsum.data.frame,row.names.default,%
-row.names<-.default,row.names.data.frame,row.names<-.data.frame,rownames<-,row.names<-,%
-row.names,rowMeans,round.POSIXt,round.Date,RNGversion,%
-R.home,rev.default,retracemem,restartFormals,restartDescription,%
-rep.POSIXlt,rep.POSIXct,rep.numeric_version,replicate,rep.int,%
-rep.factor,rep.Date,removeTaskCallback,removeCConverter,registerS3methods,%
-registerS3method,reg.finalizer,Reduce,read.table.url,readLines,%
-read.dcf,readChar,readBin,rcond,rbind.data.frame,%
-rawToChar,rawToBits,rawShift,rawConnectionValue,rawConnection,%
-raw,rapply,range.default,quarters.POSIXt,quarters.Date,%
-quarters,qr.X,qr.solve,qr.resid,qr.R,%
-qr.qy,qr.qty,qr.Q,qr.fitted,qr.default,%
-qr.coef,pushBackLength,pushBack,psigamma,prop.table,%
-proc.time,print.warnings,print.table,print.summary.table,print.srcref,%
-print.srcfile,print.simple.list,print.rle,print.restart,print.proc_time,%
-print.POSIXlt,print.POSIXct,print.packageInfo,print.octmode,print.numeric_version,%
-print.noquote,printNoClass,print.NativeRoutineList,print.listof,print.libraryIQR,%
-print.hexmode,print.function,print.factor,print.DLLRegisteredRoutines,print.DLLInfoList,%
-print.DLLInfo,print.difftime,print.default,print.Date,print.data.frame,%
-print.connection,print.condition,print.by,print.AsIs,prettyNum,%
-pos.to.env,Position,pmin.int,pmax.int,pipe,%
-pi,path.expand,parseNamespaceFile,parse.dcf,parent.frame,%
-parent.env<-,parent.env,packBits,package_version,packageStartupMessage,%
-packageHasNamespace,packageEvent,package.description,Ops.POSIXt,Ops.ordered,%
-Ops.numeric_version,Ops.factor,Ops.difftime,Ops.Date,Ops.data.frame,%
-open.srcfilecopy,open.srcfile,open.connection,open,on.exit,%
-oldClass<-,oldClass,nzchar,numeric_version,ngettext,%
-new.env,Negate,namespaceImportMethods,namespaceImportFrom,namespaceImportClasses,%
-namespaceImport,namespaceExport,names<-,mostattributes<-,months.POSIXt,%
-months.Date,months,month.name,month.abb,mode<-,%
-mget,message,merge.default,merge.data.frame,memory.profile,%
-mem.limits,memDecompress,memCompress,mean.POSIXlt,mean.POSIXct,%
-mean.difftime,mean.default,mean.Date,mean.data.frame,max.col,%
-mat.or.vec,Math.POSIXt,Math.factor,Math.difftime,Math.Date,%
-Math.data.frame,match.fun,match.call,match.arg,margin.table,%
-mapply,Map,manglePackageName,make.unique,make.names,%
-makeActiveBinding,lower.tri,logb,lockEnvironment,lockBinding,%
-loadURL,loadNamespace,loadingNamespaceInfo,loadedNamespaces,list.files,%
-library.dynam.unload,library.dynam,lfactorial,levels<-.factor,levels.default,%
-levels<-,LETTERS,letters,length<-.factor,length<-,%
-lazyLoadDBfetch,lazyLoad,La.svd,La.eigen,La.chol2inv,%
-La.chol,labels.default,l10n_info,kappa.tri,kappa.qr,%
-kappa.lm,kappa.default,julian.POSIXt,julian.Date,julian,%
-is.vector,is.unsorted,isTRUE,is.table,isSymmetric.matrix,%
-isSymmetric,is.symbol,is.single,isSeekable,isS4,%
-isRestart,is.recursive,is.real,is.raw,is.R,%
-is.qr,is.primitive,is.pairlist,is.package_version,is.ordered,%
-isOpen,ISOdatetime,ISOdate,is.object,is.numeric_version,%
-is.numeric.POSIXt,is.numeric.Date,is.numeric,is.null,is.na.POSIXlt,%
-is.na.numeric_version,is.nan,isNamespace,is.name,is.na<-.factor,%
-is.na<-.default,is.na.data.frame,is.na<-,is.na,is.matrix,%
-is.logical,is.loaded,is.list,is.language,is.integer,%
-is.infinite,isIncomplete,is.function,is.finite,is.factor,%
-is.expression,is.environment,is.element,is.double,isdebugged,%
-is.data.frame,is.complex,is.character,is.call,isBaseNamespace,%
-is.atomic,is.array,invokeRestartInteractively,invokeRestart,inverse.rle,%
-intToUtf8,intToBits,importIntoEnv,identity,identical,%
-icuSetCollate,iconvlist,iconv,gzfile,gzcon,%
-grepl,gregexpr,gettextf,gettext,getTaskCallbackNames,%
-getSrcLines,getRversion,getNumCConverters,getNativeSymbolInfo,getNamespaceVersion,%
-getNamespaceUsers,getNamespaceName,getNamespaceInfo,getNamespaceImports,getNamespaceExports,%
-getNamespace,getLoadedDLLs,getHook,getExportedValue,getDLLRegisteredRoutines.DLLInfo,%
-getDLLRegisteredRoutines.character,getDLLRegisteredRoutines,getConnection,getCConverterStatus,getCConverterDescriptions,%
-getCallingDLLe,getCallingDLL,getAllConnections,gc.time,format.pval,%
-format.POSIXlt,format.POSIXct,format.octmode,format.info,format.hexmode,%
-format.factor,formatDL,format.difftime,format.default,format.Date,%
-format.data.frame,format.char,format.AsIs,formals<-,force,%
-flush.connection,flush,findRestart,findPackageEnv,findInterval,%
-Find,Filter,file.symlink,file.show,file.rename,%
-file.remove,file.path,file.info,file.exists,file.create,%
-file.copy,file.choose,file.append,file.access,fifo,%
-factorial,F,expm1,expand.grid,eval.parent,%
-env.profile,environmentName,environmentIsLocked,environment<-,Encoding<-,%
-Encoding,encodeString,emptyenv,eapply,dyn.unload,%
-dyn.load,duplicated.POSIXlt,duplicated.numeric_version,duplicated.matrix,duplicated.default,%
-duplicated.data.frame,duplicated.array,dQuote,do.call,dir.create,%
-dimnames.data.frame,dimnames<-.data.frame,dimnames<-,dim.data.frame,dim<-,%
-difftime,diff.POSIXt,diff.default,diff.Date,diag<-,%
-determinant.matrix,determinant,det,delayedAssign,default.stringsAsFactors,%
-debugonce,data.matrix,data.frame,data.class,cut.POSIXt,%
-cut.default,cut.Date,Cstack_info,c.POSIXlt,c.POSIXct,%
-contributors,conditionMessage.condition,conditionMessage,conditionCall.condition,conditionCall,%
-computeRestarts,comment<-,colSums,colnames<-,colMeans,%
-codes.ordered,codes.factor,codes<-,c.numeric_version,c.noquote,%
-close.srcfile,close.connection,closeAllConnections,class<-,chol.default,%
-check_tzones,chartr,charToRaw,char.expand,c.Date,%
-cbind.data.frame,casefold,capabilities,callCC,bzfile,%
-by.default,by.data.frame,browserText,browserSetDebug,browserCondition,%
-bquote,body<-,bindtextdomain,bindingIsLocked,bindingIsActive,%
-baseenv,attributes<-,attr.all.equal,attr<-,attachNamespace,%
-as.vector.factor,as.vector,as.table.default,as.table,as.symbol,%
-as.single.default,as.single,assign,asS4,as.real,%
-as.raw,as.qr,as.POSIXlt.POSIXct,as.POSIXlt.numeric,as.POSIXlt.factor,%
-as.POSIXlt.default,as.POSIXlt.dates,as.POSIXlt.Date,as.POSIXlt.date,as.POSIXlt.character,%
-as.POSIXlt,as.POSIXct.POSIXlt,as.POSIXct.numeric,as.POSIXct.default,as.POSIXct.dates,%
-as.POSIXct.Date,as.POSIXct.date,as.POSIXct,as.pairlist,as.package_version,%
-as.ordered,as.octmode,as.numeric_version,as.numeric,as.null.default,%
-as.null,asNamespace,as.name,as.matrix.POSIXlt,as.matrix.noquote,%
-as.matrix.default,as.matrix.data.frame,as.matrix,as.logical,as.list.numeric_version,%
-as.list.function,as.list.factor,as.list.environment,as.list.default,as.list.data.frame,%
+morekeywords={[10]xzfile,xtfrm.numeric_version,xtfrm.factor,xtfrm.difftime,xtfrm.default,%
+xtfrm.Surv,xtfrm.POSIXlt,xtfrm.POSIXct,xtfrm.Date,xtfrm.AsIs,%
+xtfrm,xpdrows.data.frame,xor.octmode,xor.hexmode,writeLines,%
+writeChar,writeBin,write.dcf,within.list,within.data.frame,%
+within,withVisible,withRestarts,withCallingHandlers,with.default,%
+with,which.min,which.max,weekdays.POSIXt,weekdays.Date,%
+weekdays,version,vapply,utf8ToInt,upper.tri,%
+unz,untracemem,unsplit,unserialize,unlockBinding,%
+unloadNamespace,unix.time,units<-.difftime,units<-,units.difftime,%
+units,unique.numeric_version,unique.matrix,unique.default,unique.data.frame,%
+unique.array,unique.POSIXlt,tryCatch,truncate.connection,truncate,%
+trunc.POSIXt,trunc.Date,transform.default,transform.data.frame,tracingState,%
+tracemem,toupper,topenv,tolower,toString.default,%
+toString,textConnectionValue,textConnection,testPlatformEquivalence,tempdir,%
+tcrossprod,taskCallbackManager,t.default,t.data.frame,system2,%
+system.time,system.file,sys.status,sys.source,sys.save.image,%
+sys.parents,sys.parent,sys.on.exit,sys.nframe,sys.load.image,%
+sys.function,sys.frames,sys.frame,sys.calls,sys.call,%
+suppressWarnings,suppressPackageStartupMessages,suppressMessages,summary.table,summary.srcref,%
+summary.srcfile,summary.matrix,summary.factor,summary.default,summary.data.frame,%
+summary.connection,summary.POSIXlt,summary.POSIXct,summary.Date,substring<-,%
+substr<-,subset.matrix,subset.default,subset.data.frame,strwrap,%
+strtrim,strtoi,strptime,strftime,storage.mode<-,%
+storage.mode,stopifnot,stdout,stdin,stderr,%
+standardGeneric,srcref,srcfilecopy,srcfilealias,srcfile,%
+sprintf,split<-.default,split<-.data.frame,split<-,split.default,%
+split.data.frame,split.POSIXct,split.Date,sort.list,sort.int,%
+sort.default,sort.POSIXlt,solve.qr,solve.default,socketSelect,%
+socketConnection,slice.index,sink.number,simplify2array,simpleWarning,%
+simpleMessage,simpleError,simpleCondition,signalCondition,showConnections,%
+shQuote,setTimeLimit,setSessionTimeLimit,setNamespaceInfo,setHook,%
+setCConverterStatus,set.seed,serialize,seq_len,seq_along,%
+seq.int,seq.default,seq.POSIXt,seq.Date,seek.connection,%
+seek,scale.default,saveRDS,save.image,sample.int,%
+sQuote,rowsum.default,rowsum.data.frame,rownames<-,rowSums,%
+rowMeans,row.names<-.default,row.names<-.data.frame,row.names<-,row.names.default,%
+row.names.data.frame,row.names,round.POSIXt,round.Date,rev.default,%
+retracemem,restartFormals,restartDescription,requireNamespace,replicate,%
+rep.numeric_version,rep.int,rep.factor,rep.POSIXlt,rep.POSIXct,%
+rep.Date,removeTaskCallback,removeCConverter,regmatches<-,regmatches,%
+registerS3methods,registerS3method,regexec,reg.finalizer,readRenviron,%
+readRDS,readLines,readChar,readBin,read.dcf,%
+rcond,rbind.data.frame,rawToChar,rawToBits,rawShift,%
+rawConnectionValue,rawConnection,raw,rapply,range.default,%
+quarters.POSIXt,quarters.Date,quarters,qr.solve,qr.resid,%
+qr.qy,qr.qty,qr.fitted,qr.default,qr.coef,%
+qr.X,qr.R,qr.Q,pushBackLength,pushBack,%
+psigamma,prop.table,proc.time,print.warnings,print.table,%
+print.summaryDefault,print.summary.table,print.srcref,print.srcfile,print.simple.list,%
+print.rle,print.restart,print.proc_time,print.packageInfo,print.octmode,%
+print.numeric_version,print.noquote,print.listof,print.libraryIQR,print.hexmode,%
+print.function,print.factor,print.difftime,print.default,print.data.frame,%
+print.connection,print.condition,print.by,print.POSIXlt,print.POSIXct,%
+print.NativeRoutineList,print.Date,print.DLLRegisteredRoutines,print.DLLInfoList,print.DLLInfo,%
+print.AsIs,prettyNum,pretty.default,pos.to.env,pmin.int,%
+pmax.int,pipe,pi,path.package,path.expand,%
+paste0,parseNamespaceFile,parent.frame,parent.env<-,parent.env,%
+package_version,packageStartupMessage,packageHasNamespace,packageEvent,packBits,%
+open.srcfilecopy,open.srcfilealias,open.srcfile,open.connection,open,%
+on.exit,oldClass<-,oldClass,nzchar,numeric_version,%
+normalizePath,norm,ngettext,new.env,namespaceImportMethods,%
+namespaceImportFrom,namespaceImportClasses,namespaceImport,namespaceExport,names<-.POSIXlt,%
+names<-,names.POSIXlt,mostattributes<-,months.POSIXt,months.Date,%
+months,month.name,month.abb,mode<-,mget,%
+message,merge.default,merge.data.frame,memory.profile,memDecompress,%
+memCompress,mem.limits,mean.difftime,mean.default,mean.data.frame,%
+mean.POSIXlt,mean.POSIXct,mean.Date,max.col,match.fun,%
+match.call,match.arg,mat.or.vec,margin.table,mapply,%
+manglePackageName,makeActiveBinding,make.unique,make.names,lower.tri,%
+logb,lockEnvironment,lockBinding,loadingNamespaceInfo,loadedNamespaces,%
+loadNamespace,list2env,list.files,list.dirs,library.dynam.unload,%
+library.dynam,lfactorial,levels<-.factor,levels<-,levels.default,%
+letters,length<-.factor,length<-,length.POSIXlt,lazyLoadDBfetch,%
+lazyLoadDBexec,lazyLoad,labels.default,l10n_info,kappa.tri,%
+kappa.qr,kappa.lm,kappa.default,julian.POSIXt,julian.Date,%
+julian,isdebugged,isatty,isTRUE,isSymmetric.matrix,%
+isSymmetric,isSeekable,isS4,isRestart,isOpen,%
+isNamespace,isIncomplete,isBaseNamespace,is.vector,is.unsorted,%
+is.table,is.symbol,is.single,is.recursive,is.real,%
+is.raw,is.qr,is.primitive,is.pairlist,is.package_version,%
+is.ordered,is.object,is.numeric_version,is.numeric.difftime,is.numeric.POSIXt,%
+is.numeric.Date,is.numeric,is.null,is.nan,is.name,%
+is.na<-.factor,is.na<-.default,is.na<-,is.na.numeric_version,is.na.data.frame,%
+is.na.POSIXlt,is.na,is.matrix,is.logical,is.loaded,%
+is.list,is.language,is.integer,is.infinite,is.function,%
+is.finite,is.factor,is.expression,is.environment,is.element,%
+is.double,is.data.frame,is.complex,is.character,is.call,%
+is.atomic,is.array,is.R,invokeRestartInteractively,invokeRestart,%
+inverse.rle,intToUtf8,intToBits,importIntoEnv,identity,%
+identical,icuSetCollate,iconvlist,iconv,gzfile,%
+gzcon,grepl,grepRaw,gregexpr,gettextf,%
+gettext,getTaskCallbackNames,getSrcLines,getRversion,getNumCConverters,%
+getNativeSymbolInfo,getNamespaceVersion,getNamespaceUsers,getNamespaceName,getNamespaceInfo,%
+getNamespaceImports,getNamespaceExports,getNamespace,getLoadedDLLs,getHook,%
+getExportedValue,getElement,getDLLRegisteredRoutines.character,getDLLRegisteredRoutines.DLLInfo,getDLLRegisteredRoutines,%
+getConnection,getCallingDLLe,getCallingDLL,getCConverterStatus,getCConverterDescriptions,%
+getAllConnections,gctorture2,gc.time,formatDL,format.summaryDefault,%
+format.pval,format.packageInfo,format.octmode,format.numeric_version,format.libraryIQR,%
+format.info,format.hexmode,format.factor,format.difftime,format.default,%
+format.data.frame,format.POSIXlt,format.POSIXct,format.Date,format.AsIs,%
+formals<-,force,flush.connection,flush,findRestart,%
+findPackageEnv,findInterval,find.package,file.symlink,file.show,%
+file.rename,file.remove,file.path,file.link,file.info,%
+file.exists,file.create,file.copy,file.choose,file.append,%
+file.access,fifo,factorial,expm1,expand.grid,%
+eval.parent,environmentName,environmentIsLocked,environment<-,env.profile,%
+enquote,encodeString,enc2utf8,enc2native,emptyenv,%
+eapply,dyn.unload,dyn.load,duplicated.numeric_version,duplicated.matrix,%
+duplicated.default,duplicated.data.frame,duplicated.array,duplicated.POSIXlt,droplevels.factor,%
+droplevels.data.frame,droplevels,do.call,dir.create,dimnames<-.data.frame,%
+dimnames<-,dimnames.data.frame,dim<-,dim.data.frame,difftime,%
+diff.default,diff.POSIXt,diff.Date,diag<-,determinant.matrix,%
+determinant,det,delayedAssign,default.stringsAsFactors,debugonce,%
+data.matrix,data.frame,data.class,dQuote,cut.default,%
+cut.POSIXt,cut.Date,contributors,conditionMessage.condition,conditionMessage,%
+conditionCall.condition,conditionCall,computeRestarts,comment<-,colnames<-,%
+colSums,colMeans,closeAllConnections,close.srcfilealias,close.srcfile,%
+close.connection,class<-,chol.default,check_tzones,chartr,%
+charToRaw,char.expand,cbind.data.frame,casefold,capabilities,%
+callCC,c.numeric_version,c.noquote,c.POSIXlt,c.POSIXct,%
+c.Date,bzfile,by.default,by.data.frame,browserText,%
+browserSetDebug,browserCondition,bquote,body<-,bindtextdomain,%
+bindingIsLocked,bindingIsActive,baseenv,attributes<-,attr<-,%
+attr.all.equal,attachNamespace,assign,asS4,asS3,%
+asNamespace,as.vector.factor,as.vector,as.table.default,as.table,%
+as.symbol,as.single.default,as.single,as.real,as.raw,%
+as.qr,as.pairlist,as.package_version,as.ordered,as.octmode,%
+as.numeric_version,as.numeric,as.null.default,as.null,as.name,%
+as.matrix.noquote,as.matrix.default,as.matrix.data.frame,as.matrix.POSIXlt,as.matrix,%
+as.logical.factor,as.logical,as.list.numeric_version,as.list.function,as.list.factor,%
+as.list.environment,as.list.default,as.list.data.frame,as.list.POSIXct,as.list.Date,%
 as.list,as.integer,as.hexmode,as.function.default,as.function,%
-as.factor,as.expression.default,as.expression,as.environment,as.double.POSIXlt,%
-as.double.difftime,as.double,as.difftime,as.Date.POSIXlt,as.Date.POSIXct,%
-as.Date.numeric,as.Date.factor,as.Date.default,as.Date.dates,as.Date.date,%
-as.Date.character,as.Date,as.data.frame.vector,as.data.frame.ts,as.data.frame.table,%
-as.data.frame.raw,as.data.frame.POSIXlt,as.data.frame.POSIXct,as.data.frame.ordered,as.data.frame.numeric_version,%
-as.data.frame.numeric,as.data.frame.model.matrix,as.data.frame.matrix,as.data.frame.logical,as.data.frame.list,%
-as.data.frame.integer,as.data.frame.factor,as.data.frame.difftime,as.data.frame.default,as.data.frame.Date,%
-as.data.frame.data.frame,as.data.frame.complex,as.data.frame.character,as.data.frame.AsIs,as.data.frame.array,%
-as.data.frame,as.complex,as.character.srcref,as.character.POSIXt,as.character.octmode,%
+as.factor,as.expression.default,as.expression,as.environment,as.double.difftime,%
+as.double.POSIXlt,as.double,as.difftime,as.data.frame.vector,as.data.frame.ts,%
+as.data.frame.table,as.data.frame.raw,as.data.frame.ordered,as.data.frame.numeric_version,as.data.frame.numeric,%
+as.data.frame.model.matrix,as.data.frame.matrix,as.data.frame.logical,as.data.frame.list,as.data.frame.integer,%
+as.data.frame.factor,as.data.frame.difftime,as.data.frame.default,as.data.frame.data.frame,as.data.frame.complex,%
+as.data.frame.character,as.data.frame.array,as.data.frame.POSIXlt,as.data.frame.POSIXct,as.data.frame.Date,%
+as.data.frame.AsIs,as.data.frame,as.complex,as.character.srcref,as.character.octmode,%
 as.character.numeric_version,as.character.hexmode,as.character.factor,as.character.error,as.character.default,%
-as.character.Date,as.character.condition,as.character,as.call,as.array.default,%
-as.array,anyDuplicated.matrix,anyDuplicated.default,anyDuplicated.data.frame,anyDuplicated.array,%
-anyDuplicated,all.vars,all.names,all.equal.raw,all.equal.POSIXct,%
-all.equal.numeric,all.equal.list,all.equal.language,all.equal.formula,all.equal.factor,%
-all.equal.default,all.equal.character,all.equal,agrep,addTaskCallback,%
-addNA%
+as.character.condition,as.character.POSIXt,as.character.Date,as.character,as.call,%
+as.array.default,as.array,as.POSIXlt.numeric,as.POSIXlt.factor,as.POSIXlt.default,%
+as.POSIXlt.dates,as.POSIXlt.date,as.POSIXlt.character,as.POSIXlt.POSIXct,as.POSIXlt.Date,%
+as.POSIXlt,as.POSIXct.numeric,as.POSIXct.default,as.POSIXct.dates,as.POSIXct.date,%
+as.POSIXct.POSIXlt,as.POSIXct.Date,as.POSIXct,as.Date.numeric,as.Date.factor,%
+as.Date.default,as.Date.dates,as.Date.date,as.Date.character,as.Date.POSIXlt,%
+as.Date.POSIXct,as.Date,arrayInd,aperm.table,aperm.default,%
+anyDuplicated.matrix,anyDuplicated.default,anyDuplicated.data.frame,anyDuplicated.array,anyDuplicated,%
+all.vars,all.names,all.equal.raw,all.equal.numeric,all.equal.list,%
+all.equal.language,all.equal.formula,all.equal.factor,all.equal.default,all.equal.character,%
+all.equal.POSIXct,all.equal,agrep,addTaskCallback,addNA,%
+Vectorize,T,Sys.which,Sys.unsetenv,Sys.umask,%
+Sys.timezone,Sys.time,Sys.sleep,Sys.setlocale,Sys.setenv,%
+Sys.setFileTime,Sys.readlink,Sys.localeconv,Sys.info,Sys.glob,%
+Sys.getpid,Sys.getlocale,Sys.getenv,Sys.chmod,Sys.Date,%
+Summary.ordered,Summary.numeric_version,Summary.factor,Summary.difftime,Summary.data.frame,%
+Summary.POSIXlt,Summary.POSIXct,Summary.Date,Reduce,R_system_version,%
+RNGversion,R.version.string,R.version,R.home,R.Version,%
+Position,Ops.ordered,Ops.numeric_version,Ops.factor,Ops.difftime,%
+Ops.data.frame,Ops.POSIXt,Ops.Date,Negate,Math.factor,%
+Math.difftime,Math.data.frame,Math.POSIXt,Math.Date,Map,%
+La.svd,LETTERS,ISOdatetime,ISOdate,Find,%
+Filter,F,Encoding<-,Encoding,Cstack_info%
 },%
 keywordstyle={[10]{\bf\color{RRecomdcolor}}}%
 %
@@ -914,12 +870,12 @@ keywordstyle={[10]{\bf\color{RRecomdcolor}}}%
           description,details,dfn,doctype,dots,%
           dontrun,dontshow,donttest,dQuote,%
           email,emph,enc,encoding,enumerate,env,eqn,%
-          examples,file,format,item,itemize,kbd,keyword,%
+          examples,file,format,if,ifelse,item,itemize,kbd,keyword,%
           ldots,link,linkS4class,method,name,note,%
-          option,pkg,preformatted,R,Rdopts,Rdversion,%
+          option,out,pkg,preformatted,R,Rdopts,Rdversion,%
           references,S3method,S4method,Sexpr,samp,section,%
-          seealso,source,sp,special,%
-          sQuote,strong,synopsis,tab,tabular,testonly,%
+          seealso,source,sp,special,sQuote,strong,%
+          subsection,synopsis,tab,tabular,testonly,%
           title,url,usage,value,var,verb},
    sensitive=true,%
    morecomment=[l]\%% 2008/9 Peter Ruckdeschel
@@ -930,9 +886,11 @@ keywordstyle={[10]{\bf\color{RRecomdcolor}}}%
 \lstdefinestyle{RstyleO1}{fancyvrb=true,escapechar=`,extendedchars=false,%
                           language=R,%
                           basicstyle={\color{Rcolor}\small},%
-                          keywordstyle={\bf\color{Rcolor}},%
+                          keywordstyle={\bf\color{Rcolor}},%Warning in print.taglist(taglist, LineLength = LineLength, offset.start = nchar(startS),  :
+  Some elements of taglist are too long
+
                           commentstyle={\color{Rcommentcolor}\ttfamily\itshape},%
-                          literate={<-}{{$\leftarrow$}}2{<<-}{{$\twoheadleftarrow$}}2{~}{{$\sim$}}1{<=}{{$\leq$}}2{>=}{{$\geq$}}2{^}{{$\scriptstyle\wedge$}}1,%
+                          literate={"}{\texttt{"}}1{<-}{{$\leftarrow$}}2{<<-}{{$\twoheadleftarrow$}}2{~}{{$\sim$}}1{<=}{{$\leq$}}2{>=}{{$\geq$}}2{^}{{$\scriptstyle\wedge$}}1,%
                           alsoother={$},%
                           alsoletter={.<-},%
                           otherkeywords={!,!=,~,$,*,\&,\%/\%,\%*\%,\%\%,<-,<<-,/},%
@@ -1015,7 +973,8 @@ V1=0,V2=1,V3=0}%
 > 
 > 
 > 
-> cleanEx(); nameEx("changeKeywordstyles")
+> cleanEx()
+> nameEx("changeKeywordstyles")
 > ### * changeKeywordstyles
 > 
 > flush(stderr()); flush(stdout())
@@ -1034,39 +993,39 @@ V1=0,V2=1,V3=0}%
 % Registration of package MASS [recommended or base] 
 % --------------------------
 morekeywords={[11]wtloss,write.matrix,width.SJ,whiteside,waders,%
-VA,UScrime,UScereal,ucv,truehist,%
-Traffic,theta.mm,theta.ml,theta.md,synth.tr,%
-synth.te,survey,studres,stormer,stepAIC,%
-steam,stdres,SP500,snails,Skye,%
-Sitka89,Sitka,shuttle,shrimp,shoes,%
-ships,Shepard,select,sammon,Rubber,%
+ucv,truehist,theta.mm,theta.ml,theta.md,%
+synth.tr,synth.te,survey,studres,stormer,%
+stepAIC,steam,stdres,snails,shuttle,%
+shrimp,shoes,ships,select,sammon,%
 rotifer,road,rnegbin,rms.curv,rlm,%
-renumerate.formula,renumerate,rational,Rabbit,quine,%
-qda,psi.huber,psi.hampel,psi.bisquare,polr,%
-Pima.tr2,Pima.tr,Pima.te,phones,petrol,%
-parcoord,painters,OME,oats,Null,%
-npr1,npk,nlschools,newcomb,negexp.SSival,%
-neg.bin,negative.binomial,nclass.freq,mvrnorm,muscle,%
-motors,minn38,michelson,menarche,Melanoma,%
-mcycle,mca,mammals,ltsreg,lqs.formula,%
-lqs,logtrans,loglm1,loglm,lmwork,%
-lmsreg,lm.ridge,lm.gls,leuk,ldahist,%
-lda,kde2d,isoMDS,is.fractions,Insurance,%
-immer,hubers,huber,housing,hist.scott,%
-hist.FD,hills,glm.nb,glmmPQL,glm.convert,%
-ginv,gilgais,geyser,genotype,gehan,%
-gamma.shape,gamma.dispersion,galaxies,GAGurine,frequency.polygon,%
-fractions,forbes,fitdistr,fgl,fbeta,%
-farms,eqscplot,epil,enlist,eagles,%
-dropterm,drivers,dose.p,denumerate.formula,denumerate,%
-deaths,DDT,Cushings,crabs,cpus,%
-cov.trob,cov.rob,cov.mve,cov.mcd,corresp,%
-coop,contr.sdif,con2tr,chem,cement,%
-cats,Cars93,caith,cabbages,boxcox,%
-Boston,birthwt,biopsy,beav2,beav1,%
-bcv,bandwidth.nrd,bacteria,as.fractions,area,%
-anorexia,Animals,Aids2,addterm,accdeaths,%
-abbey%
+renumerate.formula,renumerate,rational,quine,qda,%
+psi.huber,psi.hampel,psi.bisquare,polr,phones,%
+petrol,parcoord,painters,oats,npr1,%
+npk,nlschools,newcomb,negexp.SSival,negative.binomial,%
+neg.bin,nclass.freq,mvrnorm,muscle,motors,%
+minn38,michelson,menarche,mcycle,mca,%
+mammals,ltsreg,lqs.formula,lqs,logtrans,%
+loglm1,loglm,lmwork,lmsreg,lm.ridge,%
+lm.gls,leuk,ldahist,lda,kde2d,%
+isoMDS,is.fractions,immer,hubers,huber,%
+housing,hist.scott,hist.FD,hills,glmmPQL,%
+glm.nb,glm.convert,ginv,gilgais,geyser,%
+genotype,gehan,gamma.shape,gamma.dispersion,galaxies,%
+frequency.polygon,fractions,forbes,fitdistr,fgl,%
+fbeta,farms,eqscplot,epil,enlist,%
+eagles,dropterm,drivers,dose.p,denumerate.formula,%
+denumerate,deaths,crabs,cpus,cov.trob,%
+cov.rob,cov.mve,cov.mcd,corresp,coop,%
+contr.sdif,con2tr,chem,cement,cats,%
+caith,cabbages,boxcox,birthwt,biopsy,%
+beav2,beav1,bcv,bandwidth.nrd,bacteria,%
+as.fractions,area,anorexia,addterm,accdeaths,%
+abbey,VA,UScrime,UScereal,Traffic,%
+Skye,Sitka89,Sitka,Shepard,SP500,%
+Rubber,Rabbit,Pima.tr2,Pima.tr,Pima.te,%
+OME,Null,Melanoma,Insurance,GAGurine,%
+DDT,Cushings,Cars93,Boston,Animals,%
+Aids2%
 },%
 keywordstyle={[11]{\bf\color{RRecomdcolor}}}%
 %
@@ -1082,7 +1041,11 @@ keywordstyle={[11]{\bf\color{RRecomdcolor}}}%
 > 
 > 
 > 
-> cleanEx(); nameEx("copySourceFromRForge")
+> cleanEx()
+
+detaching ‘package:MASS’
+
+> nameEx("copySourceFromRForge")
 > ### * copySourceFromRForge
 > 
 > flush(stderr()); flush(stdout())
@@ -1097,18 +1060,16 @@ keywordstyle={[11]{\bf\color{RRecomdcolor}}}%
 > copySourceFromRForge("distr","R","AllClasses.R","distr", from =2, to =3,
 +                      offset.after=2)
 $text
-[1] "# (.onload, .onattach ...)"                                
-[2] ".onLoad <- function(lib, pkg) { # extended 03-28-06: P.R. "
-[3] "    require(\"methods\", character = TRUE, quietly = TRUE)"
-[4] "}"                                                         
+[1] "# (.onload, .onattach ...)"                                  
+[2] ".onLoad <- function(lib, pkg) { # extended 03-28-06: P.R. "  
+[3] "##    require(\"methods\", character = TRUE, quietly = TRUE)"
+[4] "}"                                                           
 
 $lines
 [1] 2 5
 
 > copySourceFromRForge("distr","R","AllClasses.R","distr", from ="setClass",
-+                       to ="\}")
-Warning: '\}' is an unrecognized escape in a character string
-Warning: unrecognized escape removed from "\}"
++                       to ="\\}")
 $text
   [1] "setClassUnion(\"OptionalMatrix\", "                                                   
   [2] "               c(\"matrix\",\"NULL\")"                                                
@@ -1404,7 +1365,8 @@ $lines
 > 
 > 
 > 
-> cleanEx(); nameEx("isBaseOrRecommended")
+> cleanEx()
+> nameEx("isBaseOrRecommended")
 > ### * isBaseOrRecommended
 > 
 > flush(stderr()); flush(stdout())
@@ -1421,7 +1383,8 @@ SweaveListingUtils             Matrix            splines
              FALSE               TRUE               TRUE 
 > 
 > 
-> cleanEx(); nameEx("library")
+> cleanEx()
+> nameEx("library")
 > ### * library
 > 
 > flush(stderr()); flush(stdout())
@@ -1435,27 +1398,27 @@ SweaveListingUtils             Matrix            splines
 > ### ** Examples
 > 
 > require(survival)
-Warning: closing unused connection 3 (http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/*checkout*/pkg/distr/R/AllClasses.R?root=distr)
 
 \lstdefinestyle{RstyleO4}{style=RstyleO3,%
 % --------------------------
 % Registration of package survival [recommended or base] 
 % --------------------------
-morekeywords={[12]veteran,untangle.specials,tobin,tcut,survSplit,%
-survreg.fit,survregDtest,survreg.distributions,survreg.control,survreg,%
-survobrien,survfit,survexp.usr,survexp.us,survexp.mnwhite,%
-survexp.mn,survexp,survdiff,survConcordance,Surv,%
-strata,stanford2,ridge,rats,ratetable,%
-qsurvreg,pyears,psurvreg,pspline,pbcseq,%
-pbc,ovarian,nwtco,mgus2,mgus1,%
-mgus,match.ratetable,lung,leukemia,labels.survreg,%
-kidney,jasa1,jasa,is.Surv,is.ratetable,%
-is.na.Surv,is.na.ratetable,is.na.coxph.penalty,heart,frailty.t,%
-frailty.gaussian,frailty.gamma,frailty,format.Surv,dsurvreg,%
-cox.zph,coxph.fit,coxph.detail,coxph.control,coxph,%
-colon,cluster,clogit,cgd,cch,%
-cancer,bladder2,bladder1,bladder,basehaz,%
-attrassign,aml,aareg%
+morekeywords={[12]veteran,untangle.specials,tt,tobin,tcut,%
+survregDtest,survreg.fit,survreg.distributions,survreg.control,survreg,%
+survobrien,survfitcoxph.fit,survfit,survexp.usr,survexp.us,%
+survexp.mn,survexp,survdiff,survSplit,survConcordance,%
+strata,stanford2,ridge,rats,ratetableDate,%
+ratetable,qsurvreg,pyears,psurvreg,pspline,%
+pbcseq,pbc,ovarian,nwtco,mgus2,%
+mgus1,mgus,match.ratetable,lung,logan,%
+leukemia,labels.survreg,kidney,jasa1,jasa,%
+is.ratetable,is.na.ratetable,is.na.coxph.penalty,is.na.Surv,is.Surv,%
+heart,frailty.t,frailty.gaussian,frailty.gamma,frailty,%
+format.Surv,dsurvreg,coxph.fit,coxph.detail,coxph.control,%
+coxph,cox.zph,colon,cluster,clogit,%
+cgd,cch,cancer,bladder2,bladder1,%
+bladder,basehaz,attrassign,aml,aareg,%
+Surv%
 },%
 keywordstyle={[12]{\bf\color{RRecomdcolor}}},%
 %
@@ -1474,7 +1437,11 @@ keywordstyle={[13]{\bf\color{RRecomdcolor}}}%
 > 
 > 
 > 
-> cleanEx(); nameEx("lstinputSourceFromRForge")
+> cleanEx()
+
+detaching ‘package:survival’, ‘package:splines’
+
+> nameEx("lstinputSourceFromRForge")
 > ### * lstinputSourceFromRForge
 > 
 > flush(stderr()); flush(stdout())
@@ -1804,7 +1771,8 @@ setMethod("size<-", "Binom",
 > 
 > 
 > 
-> cleanEx(); nameEx("lstset")
+> cleanEx()
+> nameEx("lstset")
 > ### * lstset
 > 
 > flush(stderr()); flush(stdout())
@@ -1839,7 +1807,8 @@ NULL
 > 
 > 
 > 
-> cleanEx(); nameEx("lstsetLanguage")
+> cleanEx()
+> nameEx("lstsetLanguage")
 > ### * lstsetLanguage
 > 
 > flush(stderr()); flush(stdout())
@@ -1852,8 +1821,6 @@ NULL
 > ### ** Examples
 > 
 > require(MASS)
-Warning: closing unused connection 4 (http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/*checkout*/pkg/distr/R/BinomialDistribution.R?root=distr)
-Warning: closing unused connection 3 (http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/*checkout*/pkg/distr/man/Binom-class.Rd?root=distr)
 > lstsetLanguage(pkgs = c("MASS","stats"),
 +                keywordstyles  = paste("\\bfseries\\color{",c("blue","red"),"}",
 +                          sep="", collapse=""))
@@ -2092,7 +2059,11 @@ Warning: closing unused connection 3 (http://r-forge.r-project.org/plugins/scmsv
 > 
 > 
 > 
-> cleanEx(); nameEx("readPackageVersion")
+> cleanEx()
+
+detaching ‘package:MASS’
+
+> nameEx("readPackageVersion")
 > ### * readPackageVersion
 > 
 > flush(stderr()); flush(stdout())
@@ -2106,11 +2077,12 @@ Warning: closing unused connection 3 (http://r-forge.r-project.org/plugins/scmsv
 > 
 > readPkgVersion(package = "distr")
      Version
-[1,] "2.2"  
+[1,] "2.3.4"
 > 
 > 
 > 
-> cleanEx(); nameEx("readSourceFromRForge")
+> cleanEx()
+> nameEx("readSourceFromRForge")
 > ### * readSourceFromRForge
 > 
 > flush(stderr()); flush(stdout())
@@ -2126,7 +2098,7 @@ Warning: closing unused connection 3 (http://r-forge.r-project.org/plugins/scmsv
    [1] "############# preparations ################"                                                                                            
    [2] "# (.onload, .onattach ...)"                                                                                                             
    [3] ".onLoad <- function(lib, pkg) { # extended 03-28-06: P.R. "                                                                             
-   [4] "    require(\"methods\", character = TRUE, quietly = TRUE)"                                                                             
+   [4] "##    require(\"methods\", character = TRUE, quietly = TRUE)"                                                                           
    [5] "}"                                                                                                                                      
    [6] ""                                                                                                                                       
    [7] ""                                                                                                                                       
@@ -2847,7 +2819,7 @@ Warning: closing unused connection 3 (http://r-forge.r-project.org/plugins/scmsv
  [722] "                                     },"                                                                                                
  [723] "                      d = function(x, log = FALSE){"                                                                                    
  [724] "                              dbeta(x,  shape1 = 1, shape2 = 1, ncp = 0,"                                                               
- [725] "                                    lower.tail = lower.tail, log.p = log.p)"                                                            
+ [725] "                                    log = log)"                                                                                         
  [726] "                                          },"                                                                                           
  [727] "                      p = function(q, lower.tail = TRUE, log.p = FALSE ){"                                                              
  [728] "                              pbeta(q,  shape1 = 1, shape2 = 1, ncp = 0,"                                                               
@@ -3295,7 +3267,8 @@ Warning: closing unused connection 3 (http://r-forge.r-project.org/plugins/scmsv
 > 
 > 
 > 
-> cleanEx(); nameEx("setToBeDefinedPkgs")
+> cleanEx()
+> nameEx("setToBeDefinedPkgs")
 > ### * setToBeDefinedPkgs
 > 
 > flush(stderr()); flush(stdout())
@@ -3308,19 +3281,18 @@ Warning: closing unused connection 3 (http://r-forge.r-project.org/plugins/scmsv
 > ### ** Examples
 > 
 > setToBeDefinedPkgs(pkgs = c("distr","distrEx"),
-+                    keywordstyles = paste("\bfseries\color{",c("blue","red"),"}",
++                    keywordstyles = paste("\\bfseries\\color{",c("blue","red"),"}",
 +                          sep="", collapse=""))
-Warning: '\c' is an unrecognized escape in a character string
-Warning: unrecognized escape removed from "\bfseries\color{"
 > ### not to be used:
 > print(SweaveListingUtils:::.tobeDefinedPkgs)
-     [,1]      [,2]                                     
-[1,] "distr"   "\bfseriescolor{blue}\bfseriescolor{red}"
-[2,] "distrEx" "\bfseriescolor{blue}\bfseriescolor{red}"
+     [,1]      [,2]                                           
+[1,] "distr"   "\\bfseries\\color{blue}\\bfseries\\color{red}"
+[2,] "distrEx" "\\bfseries\\color{blue}\\bfseries\\color{red}"
 > 
 > 
 > 
-> cleanEx(); nameEx("taglist")
+> cleanEx()
+> nameEx("taglist")
 > ### * taglist
 > 
 > flush(stderr()); flush(stdout())
@@ -3349,7 +3321,7 @@ myList=HU=AHAL,%
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  0.36 0.02 4.046 0 0 
+Time elapsed:  0.336 0.012 1.873 0 0 
 > grDevices::dev.off()
 null device 
           1 

@@ -1,6 +1,6 @@
 Package: distr
 Version: 2.4
-Date: 2011-11-18
+Date: 2012-05-22
 Title: Object oriented implementation of distributions
 Description: S4 Classes and Methods for distributions
 Author: Florian Camphausen, Matthias Kohl, Peter Ruckdeschel, Thomas Stabla
