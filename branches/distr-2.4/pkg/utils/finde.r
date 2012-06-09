@@ -20,8 +20,12 @@ finde <- function(x = "nchar", dir="C:/rtest/distr/pkg/distr/R", ext = "R", rec 
   }
 infind(dir)   
 }
+#finde(x="Wow6432Node", dir ="C:/R/devel/src/gnuwin32", rec=TRUE, ext="")
 
-
+#finde(x="getPos", dir ="C:/rtest/distr/branches/distr-2.4/pkg/distrMod/", rec=TRUE)
+finde(x="roptest\\(", dir ="C:/rtest/robast/branches/robast-0.9/pkg/ROptEst/", rec=TRUE)
+finde(x="getSlots\\(", dir ="C:/rtest/distr/branches/distr-2.4/pkg/distrMod/", rec=TRUE)
+finde(x="\"loc\"", dir ="C:/rtest/distr/branches/distr-2.4/pkg/distrEx/", rec=TRUE)
 finde(x=".makeQNew", dir ="C:/rtest/distr/pkg/distr/R")
 finde(x="http://distr\\.r-forge\\.r-project\\.org/distr\\.pdf", dir ="C:/rtest/distr/", rec=TRUE)
 

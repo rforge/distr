@@ -4,8 +4,14 @@
 
 to be done beforehand: 
    install   batch-utils   by Gabor Grothendiek (see CRAN)
+you also need el.js to elevate the priviledges on Win 7 / Vista.
 
 provided Utilities: (all to be called in devel dir)
+
+
+## revised batch utils:
+## R.bat and Rversions.bat (to cover 32 and 64bit simultaneously)
+## and RRversions.bat (with elevation, otherwise as Rversions.bat)
 
 ################################################
 #   pmake.bat
@@ -26,6 +32,8 @@ provided Utilities: (all to be called in devel dir)
 #                        (else just against R-ver2 if given or R-ver if given or preset R-version)
 #
 #   all args are positional, i.e. they only apply if all preceding args are given
+## with elevation: ppmake.bat (Syntax as above)
+
 
 ################################################
 #   pmakeDoc.bat
@@ -34,10 +42,11 @@ provided Utilities: (all to be called in devel dir)
 # pmakeDoc makes package distrDoc ...
 #
 #  SYNTAX: pmakeDoc [R-ver] [Rver2] [+]
-#   * performs R CMD check, R CMD build, R CMD build --binary --no-vignette, R CMD INSTALL to distrDoc,
+#   * performs R CMD check, R CMD build, R CMD INSTALL --build, R CMD INSTALL to distrDoc,
 #
 #   args: as pmake 
 #   
+## with elevation: ppmakeDoc.bat (Syntax as above)
 
 ################################################
 #   rebuild.bat
@@ -50,3 +59,8 @@ provided Utilities: (all to be called in devel dir)
 #
 #   args: as pmake 
 
+# I also provide shortcuts for R CMD xxx commands with default options
+# R CMD check           -> RCheck  [with 2 remaining args, 1 ^= package 1(optional)^= outdir]
+# R CMD build           -> RBuild
+# R CMD INSTALL --build -> RZip
+# R CMD INSTALL         -> RInstall
