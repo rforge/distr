@@ -630,8 +630,9 @@ return(outC)
                  trY <- try(
                  if(is.null(e1@gaps))
                     gapsnew <- NULL
-                 else {gapsnew <- e1@gaps * e2
-                       if (e2 < 0) gapsnew <- 
+                 else {gapsnew <- e1@gaps
+                       if(is.numeric(gapsold)) gapsnew <- matrix(gapsnew * e2, ncol=2)
+                       if (e2 < 0) gapsnew <-
                              gapsnew[rev(seq(nrow(gapsnew))),c(2,1),drop = FALSE] }
                  , silent=TRUE)
                  if(is(trY,"try-error")) gapsnew <- NULL
@@ -653,9 +654,10 @@ return(outC)
                  trY <- try(
                  if(is.null(e1@gaps))
                     gapsnew <- NULL
-                 else {gapsnew <- e1@gaps * e2
-                       if (e2 < 0) gapsnew <- 
-                            gapsnew[rev(seq(nrow(gapsnew))),c(2,1), drop = FALSE] }
+                 else {gapsold <- e1@gaps
+                       if(is.numeric(gapsold)) gapsnew <- matrix(gapsnew * e2, ncol=2)
+                       if (e2 < 0) gapsnew <-
+                             gapsnew[rev(seq(nrow(gapsnew))),c(2,1),drop = FALSE] }
                  , silent=TRUE)
                  if(is(trY,"try-error")) gapsnew <- NULL
 
@@ -1005,7 +1007,7 @@ return(f)
                            q = qnew, gaps = gapsnew,
                           .withSim = FALSE, .withArith = TRUE,
                     .logExact = .logExact(e1), .lowerExact = .lowerExact(e1))
-            rm(gapsnew)
+            if(exists("gapsnew")) rm(gapsnew)
             rm(pnew, qnew, dnew, rnew)
             object
           }
