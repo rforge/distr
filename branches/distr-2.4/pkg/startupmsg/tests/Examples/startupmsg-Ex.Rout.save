@@ -1,5 +1,5 @@
 
-R version 2.15.0 Patched (2012-05-26 r59450) -- "Easter Beagle"
+R version 2.15.1 Patched (2012-06-29 r59688) -- "Roasted Marshmallows"
 Copyright (C) 2012 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
@@ -95,7 +95,7 @@ this is an ordinary message
 > ### reading information file utilities
 > readVersionInformation("stats")
 $ver
-[1] "2.15.0"
+[1] "2.15.1"
 
 $title
 [1] "The R Stats Package"
@@ -131,7 +131,7 @@ Cannot open file '/home/kohlm/RTOP/Rbranch/library/stats/NEWS': No such file or 
 > 
 > ## issuing of messages controlled by options()
 > buildStartupMessage(pkg="stats", msg) 
-:stats>  The R Stats Package (version 2.15.0)
+:stats>  The R Stats Package (version 2.15.1)
 :stats> 
 :stats>  Note that you may set global options by options() --- cf.
 :stats>  ?"options".
@@ -140,13 +140,13 @@ Cannot open file '/home/kohlm/RTOP/Rbranch/library/stats/NEWS': No such file or 
 > suppressMessages(buildStartupMessage(pkg="stats", msg))
 > onlytypeStartupMessages(buildStartupMessage(pkg="stats", msg),
 +           atypes="version")
-The R Stats Package (version 2.15.0)
+The R Stats Package (version 2.15.1)
 
 > 
 > getOption("StartupBanner")
 NULL
 > buildStartupMessage(pkg="stats", msg)
-:stats>  The R Stats Package (version 2.15.0)
+:stats>  The R Stats Package (version 2.15.1)
 :stats> 
 :stats>  Note that you may set global options by options() --- cf.
 :stats>  ?"options".
@@ -159,7 +159,7 @@ NULL
 > options("StartupBanner"="complete");getOption("StartupBanner")
 [1] "complete"
 > buildStartupMessage(pkg="stats", msg)
-:stats>  The R Stats Package (version 2.15.0)
+:stats>  The R Stats Package (version 2.15.1)
 :stats> 
 :stats>  Note that you may set global options by options() --- cf.
 :stats>  ?"options".
@@ -168,13 +168,13 @@ NULL
 > options("StartupBanner"="something else");getOption("StartupBanner")
 [1] "something else"
 > buildStartupMessage(pkg="stats", msg)
-:stats>  The R Stats Package (version 2.15.0)
+:stats>  The R Stats Package (version 2.15.1)
 :stats> 
 > 
 > options("StartupBanner"=NULL);getOption("StartupBanner")
 NULL
 > buildStartupMessage(pkg="stats", msg)
-:stats>  The R Stats Package (version 2.15.0)
+:stats>  The R Stats Package (version 2.15.1)
 :stats> 
 :stats>  Note that you may set global options by options() --- cf.
 :stats>  ?"options".
@@ -183,7 +183,7 @@ NULL
 > 
 > MNH <- "http://www.r-project.org/"
 > buildStartupMessage(pkg="stats", msg, packageHelp=TRUE, MANUAL=MNH)
-:stats>  The R Stats Package (version 2.15.0)
+:stats>  The R Stats Package (version 2.15.1)
 :stats> 
 :stats>  Note that you may set global options by options() --- cf.
 :stats>  ?"options".
@@ -195,7 +195,7 @@ NULL
 > ## "demo/nlm.R" as a "manual": to be system-independent the 
 > ## first call is to be preferred 
 > buildStartupMessage(pkg="stats", msg, packageHelp=TRUE, MANUAL=c("demo","nlm.R"))
-:stats>  The R Stats Package (version 2.15.0)
+:stats>  The R Stats Package (version 2.15.1)
 :stats> 
 :stats>  Note that you may set global options by options() --- cf.
 :stats>  ?"options".
@@ -204,7 +204,7 @@ NULL
 
 > ###  works, too, (i.e. is equivalent) under Linux and Windows (at least):
 > buildStartupMessage(pkg="stats", msg, packageHelp=TRUE, MANUAL="demo/nlm.R")
-:stats>  The R Stats Package (version 2.15.0)
+:stats>  The R Stats Package (version 2.15.1)
 :stats> 
 :stats>  Note that you may set global options by options() --- cf.
 :stats>  ?"options".
@@ -218,7 +218,7 @@ NULL
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  0.116 0.008 0.126 0 0 
+Time elapsed:  0.132 0 0.136 0 0 
 > grDevices::dev.off()
 null device 
           1 

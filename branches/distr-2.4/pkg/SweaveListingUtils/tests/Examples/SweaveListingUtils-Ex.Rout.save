@@ -1,5 +1,5 @@
 
-R version 2.15.0 Patched (2012-05-26 r59450) -- "Easter Beagle"
+R version 2.15.1 Patched (2012-06-29 r59688) -- "Roasted Marshmallows"
 Copyright (C) 2012 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
@@ -420,7 +420,7 @@ V1=0,V2=1,V3=0}%
 \def\Code#1{{\tt\color{Rcolor} #1}}
 \def\file#1{{\tt #1}} 
 \def\pkg#1{{\tt "#1"}} 
-\newcommand{\pkgversion}{{\tt 2.3.4}}
+\newcommand{\pkgversion}{{\tt 2.4}}
 %------------------------------------------------------------------------------%
 Warning in setBaseOrRecommended(pkgs = pkgs) :
   number of items to replace is not a multiple of replacement length
@@ -651,28 +651,28 @@ makeGeneric,makeExtends,makeClassRepresentation,loadMethod,listFromMlist,%
 listFromMethods,linearizeMlist,languageEl<-,languageEl,isXS3Class,%
 isVirtualClass,isSealedMethod,isSealedClass,isGroup,isGrammarSymbol,%
 isGeneric,isClassUnion,isClassDef,isClass,insertSource,%
-insertMethod,initialize,initRefFields,initFieldArgs,inheritedSlotNames,%
-implicitGeneric,hasMethods,hasMethod,hasLoadAction,hasArg,%
-getVirtual,getValidity,getSubclasses,getSlots,getRefClass,%
-getPrototype,getProperties,getPackageName,getMethodsMetaData,getMethodsForDispatch,%
-getMethods,getMethod,getLoadActions,getGroupMembers,getGroup,%
-getGenerics,getGeneric,getFunction,getExtends,getDataPart,%
-getClasses,getClassPackage,getClassName,getClassDef,getClass,%
-getAllSuperClasses,getAllMethods,getAccess,generic.skeleton,functionBody<-,%
-functionBody,formalArgs,fixPre1.8,findUnique,findMethods,%
-findMethodSignatures,findMethod,findFunction,findClass,finalDefaultMethod,%
-extends,existsMethod,existsFunction,evalqOnLoad,evalSource,%
-evalOnLoad,emptyMethodsList,empty.dump,elNamed<-,elNamed,%
-el<-,el,dumpMethods,dumpMethod,doPrimitiveMethod,%
-defaultPrototype,defaultDumpName,conformMethod,completeSubclasses,completeExtends,%
-completeClassDefinition,coerce<-,coerce,classesToAM,className,%
-classMetaName,classLabel,checkSlotAssignment,cbind2,canCoerce,%
-callNextMethod,callGeneric,cacheMethod,cacheMetaData,cacheGenericsMetaData,%
-body<-,balanceMethodsList,assignMethodsMetaData,assignClassDef,asMethodDefinition,%
-as<-,allNames,allGenerics,addNextMethod,Summary,%
-SignatureMethod,S3Part<-,S3Part,S3Class<-,S3Class,%
-Quote,MethodsListSelect,MethodsList,MethodAddCoerce,Math2,%
-Logic,Complex,Compare,Arith%
+insertMethod,insertClassMethods,initialize,initRefFields,initFieldArgs,%
+inheritedSlotNames,implicitGeneric,hasMethods,hasMethod,hasLoadAction,%
+hasArg,getVirtual,getValidity,getSubclasses,getSlots,%
+getRefClass,getPrototype,getProperties,getPackageName,getMethodsMetaData,%
+getMethodsForDispatch,getMethods,getMethod,getLoadActions,getGroupMembers,%
+getGroup,getGenerics,getGeneric,getFunction,getExtends,%
+getDataPart,getClasses,getClassPackage,getClassName,getClassDef,%
+getClass,getAllSuperClasses,getAllMethods,getAccess,generic.skeleton,%
+functionBody<-,functionBody,formalArgs,fixPre1.8,findUnique,%
+findMethods,findMethodSignatures,findMethod,findFunction,findClass,%
+finalDefaultMethod,extends,existsMethod,existsFunction,evalqOnLoad,%
+evalSource,evalOnLoad,emptyMethodsList,empty.dump,elNamed<-,%
+elNamed,el<-,el,dumpMethods,dumpMethod,%
+doPrimitiveMethod,defaultPrototype,defaultDumpName,conformMethod,completeSubclasses,%
+completeExtends,completeClassDefinition,coerce<-,coerce,classesToAM,%
+className,classMetaName,classLabel,checkSlotAssignment,cbind2,%
+canCoerce,callNextMethod,callGeneric,cacheMethod,cacheMetaData,%
+cacheGenericsMetaData,body<-,balanceMethodsList,assignMethodsMetaData,assignClassDef,%
+asMethodDefinition,as<-,allNames,allGenerics,addNextMethod,%
+Summary,SignatureMethod,S3Part<-,S3Part,S3Class<-,%
+S3Class,Quote,MethodsListSelect,MethodsList,MethodAddCoerce,%
+Math2,Logic,Complex,Compare,Arith%
 },%
 keywordstyle={[9]{\bf\color{RRecomdcolor}}},%
 %
@@ -2077,7 +2077,7 @@ detaching ‘package:MASS’
 > 
 > readPkgVersion(package = "distr")
      Version
-[1,] "2.3.4"
+[1,] "2.4"  
 > 
 > 
 > 
@@ -3321,7 +3321,7 @@ myList=HU=AHAL,%
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  0.336 0.012 1.873 0 0 
+Time elapsed:  0.308 0.04 2.315 0 0 
 > grDevices::dev.off()
 null device 
           1 
