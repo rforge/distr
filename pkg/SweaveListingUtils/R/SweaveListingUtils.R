@@ -19,13 +19,16 @@
      unlockBinding(".CacheLength", asNamespace("SweaveListingUtils"))
      unlockBinding(".SweaveListingOptions", asNamespace("SweaveListingUtils"))
      msga <- gettext(
+    "NOTE: Support for this package will stop soon.\nPackage 'knitr' is providing the same functionality in a better way.\n"
+                   )
+     msgb <- gettext(
     "Some functions from package 'base' are intentionally masked ---see SweaveListingMASK().\n"
                    )
-    msgb <- gettext(
+    msgc <- gettext(
     "Note that global options are controlled by SweaveListingoptions() ---c.f. ?\"SweaveListingoptions\"."
                    )
 
-     buildStartupMessage(pkg = "SweaveListingUtils", msga, msgb,  
+     buildStartupMessage(pkg = "SweaveListingUtils", msga, msgb, msgc,
                          library = library, packageHelp = TRUE,
                     VIGNETTE = gettext(
 "There is a vignette to this package; try vignette(\"ExampleSweaveListingUtils\")."
