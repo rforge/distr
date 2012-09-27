@@ -81,6 +81,21 @@
    x[ord]
 }
 
+
+.pk2 <- if(getRversion()<"2.16.0") function(p0, n){
+                 .C("pkolmogorov2x", p = as.double(p0),
+                     as.integer(n), PACKAGE = "stats")$p
+        }else function(p0,n){
+                 .Call(stats:::C_pKolmogorov2x, p0, n) #, PACKAGE = "stats")
+        }
+.pks2 <- if(getRversion()<"2.16.0") function(x, tol){
+                 .C("pkstwo", as.integer(1),
+                    p = as.double(x), as.double(tol), PACKAGE = "stats")$p
+        }else function(x, tol){
+                 .Call(stats:::C_pKS2, p = x, tol) #, PACKAGE = "stats")
+        }
+
+
 .q2kolmogorov <- function(alpha,n,exact=(n<100)){ ## Kolmogorovstat
  if(is.numeric(alpha)) alpha <- as.vector(alpha)
  else stop("Level alpha must be numeric.")
@@ -88,8 +103,7 @@
  if(exact){
  fct <- function(p0){
  ### from ks.test from package stats:
-    .C("pkolmogorov2x", p = as.double(p0),
-       as.integer(n), PACKAGE = "stats")$p -alpha
+    .pk2(p0,n) -alpha
   }
  res <- uniroot(fct,lower=0,upper=1)$root*sqrt(n)
  }else{
@@ -102,8 +116,7 @@
         #p[is.na(x)] <- NA
         #IND <- which(!is.na(x) & (x > 0))
         #if (length(IND)) {
-            p <- .C("pkstwo", as.integer(1),
-                    p = as.double(x), as.double(tol), PACKAGE = "stats")$p
+            .pks2(x,tol) -alpha
         #}
         # return(p)
     }
@@ -290,7 +303,8 @@
     mcl$col.IdL <- mcl$alpha.CI <- mcl$lty.IdL <-  NULL
     mcl$col.NotInSupport <- mcl$check.NotInSupport <- NULL
     mcl$exact.sCI <- mcl$exact.pCI <- NULL
-    mcl$withConf <- mcl$withIdLine <- mcl$distance <- NULL
+    mcl$withConf <- mcl$withConf.sim <- mcl$withConf.pw <- NULL
+    mcl$withIdLine <- mcl$distance <- NULL
     mcl$col.pCI <- mcl$lty.pCI <- mcl$col.sCI <- mcl$lty.sCI <- NULL
     mcl$lwd.IdL <- mcl$lwd.pCI <- mcl$lwd.sCI <- NULL
     mcl$withLab <- mcl$lab.pts <- mcl$which.lbs <- NULL

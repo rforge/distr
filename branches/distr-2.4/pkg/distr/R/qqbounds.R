@@ -18,11 +18,8 @@ qqbounds <- function(x,D,alpha,n,withConf.pw, withConf.sim,
    p.l <- p.l(D)(x.in)
    l.x <- length(x.in)
    
-   if(withConf.sim)
-        c.crit <- try(.q2kolmogorov(alpha,n,exact.sCI), silent=TRUE)
-   if(withConf.pw)
-        c.crit.i <- try(
-            .q2pw(x.in,p.r,D,n,alpha,exact.pCI,nosym.pCI),silent=TRUE)
+   c.crit <- if(withConf.sim) try(.q2kolmogorov(alpha,n,exact.sCI), silent=TRUE) else NULL
+   c.crit.i <- if(withConf.pw) try(.q2pw(x.in,p.r,D,n,alpha,exact.pCI,nosym.pCI),silent=TRUE) else NULL
 
    te.i <- withConf.pw  & !is(c.crit.i,"try-error")
    te.s <- withConf.sim & !is(c.crit,  "try-error")
