@@ -169,7 +169,7 @@ changeKeywordstyles <- function(pkgs, keywordstyles){
 require <- function(package, lib.loc = NULL, quietly = FALSE,
              warn.conflicts = TRUE,
              keep.source = getOption("keep.source.pkgs"),
-             character.only = FALSE, version, save = TRUE, inSweave,
+             character.only = FALSE, save = TRUE, inSweave,
              keywordstyles, interm.keywordstyles, overwrite, intermediate){
              pkg <- as.character(substitute(package))
              mc <- as.list(match.call(expand.dots = FALSE))[-1]
@@ -180,8 +180,8 @@ require <- function(package, lib.loc = NULL, quietly = FALSE,
 library <- function(package, help, pos = 2, lib.loc = NULL,
     character.only = FALSE,
     logical.return = FALSE, warn.conflicts = TRUE,
-    keep.source = getOption("keep.source.pkgs"),
-    verbose = getOption("verbose"), version, inSweave,
+    quietly = FALSE, keep.source = getOption("keep.source.pkgs"),
+    verbose = getOption("verbose"), inSweave,
     keywordstyles, interm.keywordstyles, overwrite, intermediate){
              pkg <- as.character(substitute(package))
              mc <- as.list(match.call(expand.dots = FALSE))[-1]
