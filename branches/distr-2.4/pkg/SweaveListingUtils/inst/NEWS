@@ -16,6 +16,12 @@ under the hood:
 + removed lazyload tag in DESCRIPTION
 + deleted inst/doc folder
 + argument kws in setBaseOrRecommended() gains default value
++ changed assignment from assignInNamespace to assignInMyNamespace
++ alerted by Kurt Hornik: added several packages to "suggests" tag in DESCRIPTION (trunk)
++ wrapped calls to readLines in SourceFromRForge in try() in order to avoid errors when R-forge site is down (triggered by B. Ripley's mail from Feb 1, 2012).
++ removed obsolete base-argument "version" of library, require 
++ NOTE included in starting message that support will stop soon and that rather pkg knitr is to be used
++ fixed wrong argument structure for library() 
 
 BUGFIXES:
 + fixed strip.white issue in pkg SweaveListingUtils

@@ -13,7 +13,7 @@ v 2.4
 
 under the hood:
 + removed lazyload tag in DESCRIPTION
-
++ fixed request by B.Ripley as to installed.packages in branch 2.4
 
 ##############
 v 2.3

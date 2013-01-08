@@ -26,6 +26,9 @@ under the hood:
 + distrDoc no longer uses require() in .onAttach
 + added DESCRIPTION tag "ByteCompile" to all our packages
 + updating maintainer email address and URL.
++ shrinking inst/doc in order to prevent  B. Ripley from archiving distrDoc
++ tried to get the imports in NAMESPACE files in the right order
++ For some strange reason, examle CIex in vignette threw an error; have changed seed; now it works again.
 
 BUGFIXES:
 

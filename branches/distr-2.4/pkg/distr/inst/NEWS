@@ -19,6 +19,9 @@ GENERAL ENHANCEMENTS:
 LatticeDistribution:::
 + revised initialize and convolution methods, and generating function
 -> new routine to determine the smallest common grid for convolution
++ Taking up proposal by Baoyue Li, b.li@erasmusmc.nl,  
+   plot methods for distribution objects gain functionality to modify xlab and ylab
+
 
 under the hood:
 + introduce .Rbuildignore files 
@@ -40,6 +43,16 @@ BUGFIXES:
 + error in definition of Beta() --- d slot was wrong
 + corrected typo (inifinite...)
 + typo in Beta-class.Rd (only in TeX mode) discovered by Thomas Kirschenmann, thk3421@gmail.com
++ fixed some issue with X^a, X distribution, a a number ...
++ tried to fix gaps issue as mentioned by Dirk Surmann, surmann@statistik.uni-dortmund.de
++ corrected a bug noticed by frank1828@gmail.com
++ fixed a bug within internals-qqplot : withConf.sim, withConf.pw had not been removed from call with 
+  .deleteItemsMCL; 
++ fixed request by B.Ripley as to installed.packages in branch 2.4
++ fixed gaps issue with .multm
+  
+  and: BDR has changed calls to .C in 2.16.0 to calls to .Call; we used this in qqbounds, 
+  respectively in .q2kolmogorov; now have branching functions .pk2 and .pks2 between ante 2.16. and from 2.16 on
 
 
 ##############

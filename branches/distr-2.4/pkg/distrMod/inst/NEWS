@@ -15,6 +15,7 @@ user-visible CHANGES:
 + moved GumbelLocationFamily to new package "RobExtremes"
 
 under the hood:
++ added modifyModel method for ParamFamily, some minor corrections due to more strict checking in R devel
 + created folder vignettes and moved content of inst/doc/ to it
 + removed lazyload tag in DESCRIPTION
 + updated affiliation info in newDistributions.Rnw
@@ -26,6 +27,12 @@ under the hood:
 + added DESCRIPTION tag "ByteCompile" to all our packages
 + updating maintainer email address and URL.
 + added argument no.readonly = TRUE to assignments of form opar <- par()
++ new intermediate classes/ class unions for scale families and scale shape families; 
++ consequent use of argument validity.check in MCE estimators.
++ removed relics of ancient L2Fam-slot withPos (was introduced in a try)
++ introduced slot scaleshapename for L2ScaleShapeUnion and methods scalename und scaleshapename (accessor/replacers)
++ after change of @<- semantics by J. Chambers moved from  class(M) <- class(model)  to slotwise copying
+
 
 BUGFIXES:
 
