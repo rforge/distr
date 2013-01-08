@@ -1,0 +1,10 @@
+import("methods")
+import("startupmsg")
+import("distr")
+import("fBasics")
+import("fGarch")
+
+exportClasses("SNormParameter", "SStdParameter", "SNorm", "SSTd")
+export("SNorm", "SSTd")
+exportMethods("xi","mean","sd","nu")
+exportMethods("xi<-","mean<-","sd<-","nu<-")

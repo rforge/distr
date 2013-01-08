@@ -1,6 +1,6 @@
 ### some utils for unified treatment of DESCRIPTION files from R
 
-source("C:/rtest/distr/branches/distr-2.3/pkg/utils/getRevNr.R")
+source("C:/rtest/distr/branches/distr-2.4/pkg/utils/getRevNr.R")
 
 updatePackageHelp <- function(package){
   if(file.exists(file.path(package, "DESCRIPTION"))){
@@ -16,7 +16,7 @@ updatePackageHelp <- function(package){
      df0 <- gsub(liS, reS,dfile)
      return(df0)}
   PFc    <-  PF
-  s <- sapply(c("Package","Version","Date","Depends","LazyLoad","License","SVNRevision"),
+  s <- sapply(c("Package","Version","Date","Depends","License","SVNRevision"),
               function(x){ PFca <- replaceField(field=x,dfile=PFc)
                            PFc <<- PFca
                            return(NA)})

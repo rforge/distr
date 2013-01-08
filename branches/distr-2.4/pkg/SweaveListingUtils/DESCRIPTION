@@ -7,13 +7,11 @@ Suggests: distr, MASS, survival, distrEx, Matrix, splines
 Imports: stats
 ByteCompile: yes
 Author: Peter Ruckdeschel
-Description: provides utilities for defining R / Rd as Tex-package-listings "language" and
-        including R / Rd source file (sniplets) copied from R-forge in its most recent version
-        (or another url) thereby avoiding inconsistencies between vignette and documented
-        source code
+Description: provides utilities for defining R / Rd as Tex-package-listings "language" and including R / Rd source file (sniplets) copied from R-forge in its most
+             recent version (or another url) thereby avoiding inconsistencies between vignette and documented source code
 Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
 License: LGPL-3
-Date: 2012-02-06
+Date: 2013-01-09
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
-SVNRevision: 786
+SVNRevision: 834
