@@ -239,6 +239,8 @@ inCx <- sapply(inp,
          }
       return(inC)
     })
+if(length(grep("expression",inCx))>0)
+   inCx <- gsub("expression\\(", "", gsub("\\)$","",inCx))
 if (length(inCx) > 1) {
    inCx <- paste(inCx, c(rep(",", length(inCx)-1), ""),
                  sep = "", collapse = "\"\\n\",")
