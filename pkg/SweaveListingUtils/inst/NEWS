@@ -3,6 +3,31 @@
 ######################################################################
  
 ##############
+v 0.6
+##############
+
+under the hood:
+
++ added DESCRIPTION tag "ByteCompile" to all our packages
++ updating maintainer email address and URL.
++ added argument no.readonly = TRUE to assignments of form opar <- par()
++ .Rbuildignore  as a reaction to B. Ripley's mail on r-devel, "CRAN package sizes",  Feb-14-2011, 
++ created folder vignettes and moved content of inst/doc/ to it
++ removed lazyload tag in DESCRIPTION
++ deleted inst/doc folder
++ argument kws in setBaseOrRecommended() gains default value
++ changed assignment from assignInNamespace to assignInMyNamespace
++ alerted by Kurt Hornik: added several packages to "suggests" tag in DESCRIPTION (trunk)
++ wrapped calls to readLines in SourceFromRForge in try() in order to avoid errors when R-forge site is down (triggered by B. Ripley's mail from Feb 1, 2012).
++ removed obsolete base-argument "version" of library, require 
++ NOTE included in starting message that support will stop soon and that rather pkg knitr is to be used
++ fixed wrong argument structure for library() 
+
+BUGFIXES:
++ fixed strip.white issue in pkg SweaveListingUtils
++ changed chunk option strip.white from FALSE to false
+
+##############
 v 0.5
 ##############
 

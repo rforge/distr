@@ -67,7 +67,7 @@ Estimator <- function(x, estimator, name, Infos, asvar = NULL, nuis.idx,
              res@trafo <- list(fct = trafo, mat = trafo(main(param))$mat)           
          } 
 
-    res@estimate <- estimate[idx]
+    res@estimate <- estimate[idm]
     
     asvar <- NULL
     if(!missing(asvar.fct))
@@ -78,7 +78,7 @@ Estimator <- function(x, estimator, name, Infos, asvar = NULL, nuis.idx,
     if(!.isUnitMatrix(res@trafo$mat)){
        res@estimate <- res@trafo$fct(estimate)
        if(!is.null(asvar))
-           res@asvar <- res@trafo$mat%*%asvar[idx,idx]%*%t(res@trafo$mat)
+           res@asvar <- res@trafo$mat%*%asvar[idm,idm]%*%t(res@trafo$mat)
     }
 
 

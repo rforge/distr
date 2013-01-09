@@ -239,6 +239,8 @@ inCx <- sapply(inp,
          }
       return(inC)
     })
+if(length(grep("expression",inCx))>0)
+   inCx <- gsub("expression\\(", "", gsub("\\)$","",inCx))
 if (length(inCx) > 1) {
    inCx <- paste(inCx, c(rep(",", length(inCx)-1), ""),
                  sep = "", collapse = "\"\\n\",")
@@ -630,11 +632,12 @@ return(outC)
                  trY <- try(
                  if(is.null(e1@gaps))
                     gapsnew <- NULL
-                 else {gapsnew <- e1@gaps * e2
-                       if (e2 < 0) gapsnew <- 
+                 else {gapsnew <- e1@gaps
+                       if(is.numeric(gapsold)) gapsnew <- matrix(gapsnew * e2, ncol=2)
+                       if (e2 < 0) gapsnew <-
                              gapsnew[rev(seq(nrow(gapsnew))),c(2,1),drop = FALSE] }
                  , silent=TRUE)
-
+                 if(is(trY,"try-error")) gapsnew <- NULL
                  dnew <- .makeD(substitute(e1, list(e1 = e1)),
                                 substitute(alist(x = x / e2), list(e2 = e2)),
                                 stand = abs(e2))
@@ -653,10 +656,12 @@ return(outC)
                  trY <- try(
                  if(is.null(e1@gaps))
                     gapsnew <- NULL
-                 else {gapsnew <- e1@gaps * e2
-                       if (e2 < 0) gapsnew <- 
-                            gapsnew[rev(seq(nrow(gapsnew))),c(2,1), drop = FALSE] }
+                 else {gapsold <- e1@gaps
+                       if(is.numeric(gapsold)) gapsnew <- matrix(gapsnew * e2, ncol=2)
+                       if (e2 < 0) gapsnew <-
+                             gapsnew[rev(seq(nrow(gapsnew))),c(2,1),drop = FALSE] }
                  , silent=TRUE)
+                 if(is(trY,"try-error")) gapsnew <- NULL
 
                  dnew <- .makeD(substitute(e1, list(e1 = e1)),
                                 substitute(alist(x = x / e2), list(e2 = e2)),
@@ -1004,7 +1009,7 @@ return(f)
                            q = qnew, gaps = gapsnew,
                           .withSim = FALSE, .withArith = TRUE,
                     .logExact = .logExact(e1), .lowerExact = .lowerExact(e1))
-            rm(gapsnew)
+            if(exists("gapsnew")) rm(gapsnew)
             rm(pnew, qnew, dnew, rnew)
             object
           }

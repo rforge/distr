@@ -75,10 +75,6 @@ if(!isGeneric("mad")){
    setGeneric("mad", function(x, ...) standardGeneric("mad"))
 }
 
-if(!isGeneric("kMAD")){ 
-   setGeneric("kMAD", function(x, k, ...) standardGeneric("kMAD"))
-}
-
 
 if(!isGeneric("skewness")){ 
    setGeneric("skewness", function(x, ...) standardGeneric("skewness"))
@@ -100,17 +96,7 @@ if(!isGeneric("Range")){
    setGeneric("Range", function(object, ...) standardGeneric("Range"))
 }
 
-if(!isGeneric("loc")){
-   setGeneric("loc", function(object) standardGeneric("loc"))
-}
 
-############################################################################
-# Replacement methods
-############################################################################
-
-if(!isGeneric("loc<-")){ 
-   setGeneric("loc<-", function(object, value) standardGeneric("loc<-"))
-}
 
 ############################################################################
 # generics to  "usual"  methods
@@ -166,8 +152,7 @@ if(!isGeneric("m2df")){
 #   setGeneric("illustrateCLT", function(Distr, ...) 
 #      standardGeneric("illustrateCLT"))
 #}
-if(!isGeneric("plotCLT")){
-  setGeneric("plotCLT", function(Tn, ...) standardGeneric("plotCLT"))
-}
-
+#if(!isGeneric("plotCLT")){
+#  setGeneric("plotCLT", function(Tn, ...) standardGeneric("plotCLT"))
+#}
 

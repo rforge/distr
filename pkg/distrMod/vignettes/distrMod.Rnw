@@ -22,7 +22,7 @@
 %\VignettePackage{distrMod} 
 
 %% almost as usual
-\author{Matthias Kohl\\FH Furthwangen\And
+\author{Matthias Kohl\\FH Furtwangen\And
         Peter Ruckdeschel\\Fraunhofer ITWM Kaiserslautern}
 \title{\proglang{R} Package~\pkg{distrMod}: \proglang{S}4 Classes and Methods for Probability Models}
 
@@ -466,7 +466,6 @@ generating functions as displayed in Table~\ref{TabPF}.
       \code{GammaFamily} & gamma family\\
       \code{PoisFamily} & Poisson family\\
       \code{ExpScaleFamily} & exponential scale family\\
-      \code{GumbelLocationFamily} & Gumbel location family\\
       \code{LnormScaleFamily} & log-normal scale family\\
       \code{NormLocationFamily} & normal location family\\
       \code{NormLocationUnknownScaleFamily} & normal location family with\\

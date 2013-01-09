@@ -167,7 +167,8 @@ OAsymTotalVarDist(e1, e2, ...)
     \code{\link{KolmogorovDist}}, \code{\link{HellingerDist}}, 
     \code{\link[distr]{Distribution-class}}}
 \examples{
-OAsymTotalVarDist(Norm(), Gumbel())
+OAsymTotalVarDist(Norm(), UnivarMixingDistribution(Norm(1,2),Norm(0.5,3),
+                 mixCoeff=c(0.2,0.8)))
 OAsymTotalVarDist(Norm(), Td(10))
 OAsymTotalVarDist(Norm(mean = 50, sd = sqrt(25)), Binom(size = 100)) # mutually singular
 OAsymTotalVarDist(Pois(10), Binom(size = 20)) 

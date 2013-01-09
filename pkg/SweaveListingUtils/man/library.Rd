@@ -14,20 +14,21 @@
   also register corresponding symbols. Besides this registration, they
   behave identically to the original versions of package \pkg{base}.
   Hence much of this help is also just copied from the original help page.
+  As the original may have changed in the mean time in doubt please rely
+  on the original help page.
 }
 \usage{
 library(package, help, pos = 2, lib.loc = NULL,
         character.only = FALSE, logical.return = FALSE,
-        warn.conflicts = TRUE,
+        warn.conflicts = TRUE, quietly = FALSE,
         keep.source = getOption("keep.source.pkgs"),
-        verbose = getOption("verbose"),
-        version, inSweave,
+        verbose = getOption("verbose"), inSweave,
         keywordstyles, interm.keywordstyles, overwrite, intermediate)
 
 require(package, lib.loc = NULL, quietly = FALSE,
         warn.conflicts = TRUE,
         keep.source = getOption("keep.source.pkgs"),
-        character.only = FALSE, version, save = TRUE, inSweave,
+        character.only = FALSE, save = TRUE, inSweave,
         keywordstyles, interm.keywordstyles, overwrite, intermediate)
 }
 \arguments{
@@ -46,9 +47,6 @@ require(package, lib.loc = NULL, quietly = FALSE,
     Non-existent library trees are silently ignored.}
   \item{character.only}{a logical indicating whether \code{package} or
     \code{help} can be assumed to be character strings.}
-  \item{version}{A character string denoting a version number of the
-     package to be loaded, for use with \emph{versioned installs}: see
-     the section later in this document.}
   \item{logical.return}{logical.  If it is \code{TRUE},  \code{FALSE} or
     \code{TRUE} is returned to indicate success.}
   \item{warn.conflicts}{logical.  If \code{TRUE}, warnings are
@@ -128,8 +126,8 @@ require(package, lib.loc = NULL, quietly = FALSE,
   \code{library} and \code{require} are masked versions of the original
   versions in package \pkg{base}. This masking is necessary to allow for
   extra arguments \code{keywordstyles}, \code{interm.keywordstyles},
-  \code{overwrite}, \code{intermediate}. Hence please confer
-  \code{\link[base]{library}}, \code{\link[base:library]{require}}.\cr
+  \code{overwrite}, \code{intermediate}. Hence please in case of doubt
+  see \code{\link[base]{library}}, \code{\link[base:library]{require}}.\cr
 
   If argument \code{inSweave} is \code{FALSE} or if argument
   \code{inSweave} is missing and the corresponding global

@@ -1,6 +1,6 @@
 
-R version 2.14.0 Patched (2011-11-28 r57759)
-Copyright (C) 2011 The R Foundation for Statistical Computing
+R version 2.15.0 Patched (2012-05-26 r59450) -- "Easter Beagle"
+Copyright (C) 2012 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
 
@@ -24,7 +24,7 @@ Type 'q()' to quit R.
 > library('distrTeach')
 Loading required package: distr
 Loading required package: startupmsg
-:startupmsg>  Utilities for start-up messages (version 0.7.3)
+:startupmsg>  Utilities for start-up messages (version 0.8)
 :startupmsg> 
 :startupmsg>  For more information see ?"startupmsg",
 :startupmsg>  NEWS("startupmsg")
@@ -32,8 +32,7 @@ Loading required package: startupmsg
 Loading required package: sfsmisc
 Loading required package: SweaveListingUtils
 :SweaveListingUtils>  Utilities for Sweave together with
-:SweaveListingUtils>  TeX listings package (version
-:SweaveListingUtils>  0.5.4)
+:SweaveListingUtils>  TeX listings package (version 0.6)
 :SweaveListingUtils> 
 :SweaveListingUtils>  Some functions from package 'base'
 :SweaveListingUtils>  are intentionally masked ---see
@@ -59,7 +58,7 @@ The following object(s) are masked from ‘package:base’:
     library, require
 
 :distr>  Object oriented implementation of distributions (version
-:distr>  2.3.4)
+:distr>  2.4)
 :distr> 
 :distr>  Attention: Arithmetics on distribution objects are
 :distr>  understood as operations on corresponding random variables
@@ -85,19 +84,14 @@ The following object(s) are masked from ‘package:stats’:
     df, qqplot, sd
 
 Loading required package: distrEx
-Loading required package: evd
-Loading required package: actuar
-
-Attaching package: ‘actuar’
-
-The following object(s) are masked from ‘package:grDevices’:
-
-    cm
-
-:distrEx>  Extensions of package distr (version 2.3.2)
+:distrEx>  Extensions of package distr (version 2.4)
 :distrEx> 
 :distrEx>  Note: Packages "e1071", "moments", "fBasics" should be
-:distrEx>  attached /before/ package "distrEx". See distrExMASK().
+:distrEx>  attached /before/ package "distrEx". See
+:distrEx>  distrExMASK().Note: Extreme value distribution
+:distrEx>  functionality has been moved to
+:distrEx> 
+:distrEx>        package "RobExtremes". See distrExMOVED().
 :distrEx> 
 :distrEx>  For more information see ?"distrEx", NEWS("distrEx"), as
 :distrEx>  well as
@@ -116,7 +110,7 @@ The following object(s) are masked from ‘package:stats’:
 :distrTeach>  Extensions of package distr for teaching
 :distrTeach>  Stochastics/Statistics
 :distrTeach> 
-:distrTeach>  in secondary school (version 2.3.2)
+:distrTeach>  in secondary school (version 2.4)
 :distrTeach> 
 :distrTeach>  For more information see ?"distrTeach",
 :distrTeach>  NEWS("distrTeach"), as well as
@@ -194,7 +188,7 @@ The following object(s) are masked from ‘package:stats’:
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  16.369 0.108 16.541 0 0 
+Time elapsed:  15.508 0.128 15.69 0 0 
 > grDevices::dev.off()
 null device 
           1 

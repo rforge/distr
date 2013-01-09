@@ -1,6 +1,6 @@
 %\VignetteIndexEntry{distr - manual}
 %\VignetteDepends{startupmsg,distr}
-%\VignetteKeywords{probability distribution,simulation,estimation}
+%\VignetteKeyword{probability distribution,simulation,estimation}
 %\VignettePackage{distr}
 %
 \documentclass[11pt]{article}
@@ -8,9 +8,9 @@
 \usepackage{svn-multi}
 % Version control information:
 \svnidlong
-{$HeadURL: svn+ssh://ruckdeschel@svn.r-forge.r-project.org/svnroot/distr/pkg/distrDoc/inst/doc/distr.Rnw $}
-{$LastChangedDate: 2010-12-02 16:05:48 +0100 (Do, 02 Dez 2010) $}
-{$LastChangedRevision: 695 $}
+{$HeadURL: svn+ssh://ruckdeschel@svn.r-forge.r-project.org/svnroot/distr/branches/distr-2.4/pkg/distrDoc/vignettes/distr.Rnw $}
+{$LastChangedDate: 2012-05-22 14:40:14 +0200 (Di, 22 Mai 2012) $}
+{$LastChangedRevision: 816 $}
 {$LastChangedBy: ruckdeschel $}
 %\svnid{$Id: example_main.tex 146 2008-12-03 13:29:19Z martin $}
 % Don't forget to set the svn property 'svn:keywords' to
@@ -26,6 +26,24 @@
 \svnRegisterAuthor{ifrin}{Eleonara Feist}
 \svnRegisterAuthor{jdospina}{Juan David Ospina}
 \svnRegisterAuthor{kowzar}{Kouros Owzar}
+%
+%borrowed from doc/manual/refman.top
+%
+%% Set PDF 1.5 and compression, including object compression
+%% Needed for MiKTeX -- most other distributions default to this
+\ifx\pdfoutput\undefined
+\else
+  \ifx\pdfoutput\relax
+  \else
+    \ifnum\pdfoutput>0
+      % PDF output
+      \pdfminorversion=5
+      \pdfcompresslevel=9
+      \pdfobjcompresslevel=2
+    \fi
+  \fi
+\fi
+%
 %
 \usepackage{geometry}
 \usepackage{ifpdf}
@@ -63,16 +81,17 @@ setToBeDefinedPkgs(pkgs = c("distr","distrEx","distrTEst","distrSim",
 @
 %
 % -------------------------------------------------------------------------------
-\newcommand{\pkgExversion}{{\tt 2.1}}
+%\newcommand{\pkgversion}{{\tt 2.4}}
+\newcommand{\pkgExversion}{{\tt 2.4}}
 \newcommand{\Reals}{\mathbb{R}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 % -------------------------------------------------------------------------------
 %
 \markboth{\sl Packages ``{\tt distr}'', ``{\tt distrSim}'', ``{\tt distrTEst}'', 
-``{\tt distrEx}'', ``{\tt distrTeach}'', ``{\tt distrMod}''}%
+``{\tt distrEx}'', ``{\tt distrEllipse}'', ``{\tt distrTeach}'', ``{\tt distrMod}''}%
 {\sl Packages ``{\tt distr}'', ``{\tt distrSim}'', ``{\tt distrTEst}'',  
-``{\tt distrEx}'', ``{\tt distrTeach}'', ``{\tt distrMod}''}
+``{\tt distrEx}'', ``{\tt distrEllipse}'', ``{\tt distrTeach}'', ``{\tt distrMod}''}
 %
 % -------------------------------------------------------------------------------
 %
@@ -80,7 +99,8 @@ setToBeDefinedPkgs(pkgs = c("distr","distrEx","distrTEst","distrSim",
 \begin{document}
 % -------------------------------------------------------------------------------
 \title{{\tt S4} Classes for Distributions---a manual for packages \pkg{distr}, 
-        \pkg{distrEx}, \pkg{distrMod}, \pkg{distrSim}, \pkg{distrTEst}, \pkg{distrTeach}, 
+        \pkg{distrEx}, \pkg{distrEllipse}, \pkg{distrMod}, \pkg{distrSim},
+        \pkg{distrTEst}, \pkg{distrTeach},
         version \pkgversion}
 %,version \pkgExversion}
 \author{\small Peter Ruckdeschel\thanks{Fraunhofer ITWM, Kaiserslautern}
@@ -2403,7 +2423,7 @@ mtrafo <- function(x){
                      dimnames = list(nms,nms0))                          
      list(fval = fval0, mat = mat0)}
 
-set.seed(123)
+set.seed(124)
 x <- rgamma(50, scale = 0.5, shape = 3)
 
 ## parametric family of probability measures

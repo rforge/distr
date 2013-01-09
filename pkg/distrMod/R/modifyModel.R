@@ -147,10 +147,12 @@ setMethod("modifyModel", signature(model = "L2LocationFamily",
                 names(cl)[cl.l+1] <- loc.name
              }
              M@fam.call <- cl
-             class(M) <- class(model)
-             M@locscalename <- locscalename(model)
-             M@LogDeriv <- LogDeriv(model)
-             return(M)
+             slots.from <- slotNames(class(M))
+             M1 <- new(class(model))
+             for(slot.s in slots.from) slot(M1,slot.s) <- slot(M,slot.s)
+             M1@locscalename <- locscalename(model)
+             M1@LogDeriv <- LogDeriv(model)
+             return(M1)
           })
 
 setMethod("modifyModel", signature(model = "L2ScaleFamily",
@@ -189,10 +191,12 @@ setMethod("modifyModel", signature(model = "L2ScaleFamily",
                 names(cl)[cl.l] <- scale.name
              }
              M@fam.call <- cl
-             class(M) <- class(model)
-             M@locscalename <- locscalename(model)
-             M@LogDeriv <- LogDeriv(model)
-             return(M)
+             slots.from <- slotNames(class(M))
+             M1 <- new(class(model))
+             for(slot.s in slots.from) slot(M1,slot.s) <- slot(M,slot.s)
+             M1@locscalename <- locscalename(model)
+             M1@LogDeriv <- LogDeriv(model)
+             return(M1)
           })
 
 setMethod("modifyModel", signature(model = "L2LocationScaleFamily",
@@ -249,10 +253,12 @@ setMethod("modifyModel", signature(model = "L2LocationScaleFamily",
                 names(cl)[cl.l] <- scale.name
              }
              M@fam.call <- cl
-             class(M) <- class(model)
-             M@locscalename <- locscalename(model)
-             M@LogDeriv <- LogDeriv(model)
-             return(M)
+             slots.from <- slotNames(class(M))
+             M1 <- new(class(model))
+             for(slot.s in slots.from) slot(M1,slot.s) <- slot(M,slot.s)
+             M1@locscalename <- locscalename(model)
+             M1@LogDeriv <- LogDeriv(model)
+             return(M1)
           })
 
 setMethod("modifyModel", signature(model = "GammaFamily",
@@ -260,11 +266,13 @@ setMethod("modifyModel", signature(model = "GammaFamily",
           function(model, param, ...){
              M <- modifyModel(as(model, "L2ParamFamily"), param = param,
                               .withCall = FALSE)
-             M@L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter = 
+             slots.from <- slotNames(class(M))
+             M1 <- new(class(model))
+             for(slot.s in slots.from) slot(M1,slot.s) <- slot(M,slot.s)
+             M1@L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter =
                                                        prod(main(param))),
                                           NonSymmetric())
-             class(M) <- class(model)
-             return(M)
+             return(M1)
           })
 setMethod("modifyModel", signature(model = "ExpScaleFamily",
            param = "ParamFamParameter"),
@@ -272,10 +280,12 @@ setMethod("modifyModel", signature(model = "ExpScaleFamily",
              M <- modifyModel(as(model, "L2ParamFamily"), param = param,
                               .withCall = FALSE)
              scale <- main(param)
-             M@L2derivDistr <- UnivarDistrList((Exp(rate = 1)-1)/scale)
-             M@L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter = main(param)))
-             class(M) <- class(model)
-             M@locscalename <- locscalename(model)
-             M@LogDeriv <- LogDeriv(model)
-             return(M)
+             slots.from <- slotNames(class(M))
+             M1 <- new(class(model))
+             for(slot.s in slots.from) slot(M1,slot.s) <- slot(M,slot.s)
+             M1@L2derivDistr <- UnivarDistrList((Exp(rate = 1)-1)/scale)
+             M1@L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter = main(param)))
+             M1@locscalename <- locscalename(model)
+             M1@LogDeriv <- LogDeriv(model)
+             return(M1)
           })

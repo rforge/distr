@@ -8,6 +8,26 @@
  information)
  
 ##############
+v 2.4
+##############
+
+user-visible CHANGES:
++ moved functionality for extreme value distribution to package RobExtremes
+-> concerns distributions Gumbel, GEVD, GPareto, and Pareto
++ moved functional and estimator kMAD to package RobExtremes
+
+under the hood:
++ added DESCRIPTION tag "ByteCompile" to all our packages
++ updating maintainer email address and URL.
++ added argument no.readonly = TRUE to assignments of form opar <- par()
+
+
+
+BUGFIXES:
+
++ corrected bug in var() (with argument fun in case of symmetry)
+
+##############
 v 2.3
 ##############
 

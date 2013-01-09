@@ -1,5 +1,5 @@
 
-R Under development (unstable) (2012-02-25 r58490)
+R version 2.15.0 Patched (2012-05-26 r59450) -- "Easter Beagle"
 Copyright (C) 2012 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
@@ -23,7 +23,7 @@ Type 'q()' to quit R.
 > options(warn = 1)
 > library('distr')
 Loading required package: startupmsg
-:startupmsg>  Utilities for start-up messages (version 0.7.3)
+:startupmsg>  Utilities for start-up messages (version 0.8)
 :startupmsg> 
 :startupmsg>  For more information see ?"startupmsg",
 :startupmsg>  NEWS("startupmsg")
@@ -31,8 +31,7 @@ Loading required package: startupmsg
 Loading required package: sfsmisc
 Loading required package: SweaveListingUtils
 :SweaveListingUtils>  Utilities for Sweave together with
-:SweaveListingUtils>  TeX listings package (version
-:SweaveListingUtils>  0.5.5)
+:SweaveListingUtils>  TeX listings package (version 0.6)
 :SweaveListingUtils> 
 :SweaveListingUtils>  Some functions from package 'base'
 :SweaveListingUtils>  are intentionally masked ---see
@@ -58,7 +57,7 @@ The following object(s) are masked from ‘package:base’:
     library, require
 
 :distr>  Object oriented implementation of distributions (version
-:distr>  2.3.4)
+:distr>  2.4)
 :distr> 
 :distr>  Attention: Arithmetics on distribution objects are
 :distr>  understood as operations on corresponding random variables
@@ -276,11 +275,11 @@ Warning in .makeDNew(x, dpn, h = 1, standM = "int") :
 > A3 <- N*0.9 + E*0.1 # a new absolutely continuous distribution with approximated slots d, p, q
 > r(A3)(1) # one random number generated from this distribution, e.g. -0.7150937
 [1] -0.5492378
-> d(A3)(0) # The (approximated) density for x=0 is 0.43799.
+> d(A3)(0) # The (approximated) density for x=0 is 0.4379882.
 [1] 0.4379965
-> p(A3)(0) # The (approximated) probability that x <= 0 is 0.45620.
+> p(A3)(0) # The (approximated) probability that x <= 0 is 0.4562021.
 [1] 0.4561991
-> q(A3)(.1) # The (approximated) 10 percent quantile is -1.06015.
+> q(A3)(.1) # The (approximated) 10 percent quantile is 0.1.
 [1] -1.060145
 > 
 > 
@@ -2018,8 +2017,8 @@ function (x, log = FALSE)
     else d0 <- df1(x)/stand
     return(d0)
 }
-<bytecode: 0x46a7bb0>
-<environment: 0x4109340>
+<bytecode: 0x4170258>
+<environment: 0x574e698>
 
 $pfun
 function (q, lower.tail = TRUE, log.p = FALSE) 
@@ -2040,7 +2039,7 @@ function (q, lower.tail = TRUE, log.p = FALSE)
     else p0/nm
     return(p0)
 }
-<environment: 0x6022948>
+<environment: 0x6478c38>
 
 $qfun
 function (p, lower.tail = TRUE, log.p = FALSE) 
@@ -2058,7 +2057,7 @@ function (p, lower.tail = TRUE, log.p = FALSE)
     else q.l(1 - p01)
     return(as.numeric(q0))
 }
-<environment: 0x4df1718>
+<environment: 0x644c4f8>
 
 > 
 > rp2 <- function(n){rpois(n, lambda = 1)^2}
@@ -2100,8 +2099,8 @@ function (x, log = FALSE)
     else d0 <- df1(x)/stand
     return(d0)
 }
-<bytecode: 0x46a7bb0>
-<environment: 0x6e0d720>
+<bytecode: 0x4170258>
+<environment: 0x6c656c0>
 
 $pfun
 function (q, lower.tail = TRUE, log.p = FALSE) 
@@ -2122,7 +2121,7 @@ function (q, lower.tail = TRUE, log.p = FALSE)
     else p0/nm
     return(p0)
 }
-<environment: 0x5d5cb18>
+<environment: 0x5ab9000>
 
 $qfun
 function (p, lower.tail = TRUE, log.p = FALSE) 
@@ -2140,7 +2139,7 @@ function (p, lower.tail = TRUE, log.p = FALSE)
     else q.l(1 - p01)
     return(as.numeric(q0))
 }
-<environment: 0x5562998>
+<environment: 0x624ef18>
 
 > 
 > rp2 <- function(n){rpois(n, lambda = 1)^2}
@@ -3536,41 +3535,41 @@ TRUE TRUE
 +         exact.sCI=FALSE ,exact.pCI= FALSE,
 +         nosym.pCI = FALSE)
 $crit
-         sim.left sim.right     pw.left   pw.right
- [1,] 0.002829761  1.137748 -0.17992340  0.9644015
- [2,] 0.002829761  1.211608 -0.06987765  1.1192553
- [3,] 0.002829761  1.243264 -0.02805790  1.1781644
- [4,] 0.002829761  1.459659  0.21758339  1.5251510
- [5,] 0.866278510  1.979070  0.69889246  2.2122824
- [6,] 0.981404559  2.070123  0.77625753  2.3239269
- [7,] 1.063258891  2.138420  0.83340990  2.4066552
- [8,] 1.470581788  2.514171  1.13688816  2.8499458
- [9,] 1.519153354  2.562366  1.17466419  2.9056414
-[10,] 1.630010323  2.674699  1.26182304  3.0346230
-[11,] 2.068834195  3.148061  1.61671662  3.5674033
-[12,] 2.086637456  3.168164  1.63137488  3.5896954
-[13,] 2.151673001  3.242171  1.68506016  3.6715499
-[14,] 2.202072876  3.300138  1.72680626  3.7354336
-[15,] 2.223361771  3.324783  1.74447525  3.7625351
-[16,] 2.429944351  3.568875  1.91692198  4.0290884
-[17,] 2.519105042  3.677009  1.99184783  4.1461183
-[18,] 3.039769852  4.343959  2.43407284  4.8539351
-[19,] 3.078090765  4.395623  2.46688549  4.9077451
-[20,] 3.259054547  4.644933  2.62224862  5.1652524
-[21,] 3.789577217  5.435111  3.08115703  5.9557985
-[22,] 3.822100046  5.486965  3.10943980  6.0061854
-[23,] 3.943244764  5.684253  3.21493261  6.1960534
-[24,] 4.122355878  5.989142  3.37130226  6.4834571
-[25,] 4.306746830  6.322230  3.53276372  6.7884558
-[26,] 4.320203525  6.347404  3.54456576  6.8111041
-[27,] 4.879536207  7.535747  4.03724746  7.8077080
-[28,] 5.145027657  8.245189  4.27238525  8.3266723
-[29,] 5.756700165 10.847671  4.81521851  9.6869349
-[30,] 5.994361035 13.316055  5.02483153 10.3027427
+      sim.left sim.right     pw.left   pw.right
+ [1,]       NA        NA -0.17992340  0.9644015
+ [2,]       NA        NA -0.06987765  1.1192553
+ [3,]       NA        NA -0.02805790  1.1781644
+ [4,]       NA        NA  0.21758339  1.5251510
+ [5,]       NA        NA  0.69889246  2.2122824
+ [6,]       NA        NA  0.77625753  2.3239269
+ [7,]       NA        NA  0.83340990  2.4066552
+ [8,]       NA        NA  1.13688816  2.8499458
+ [9,]       NA        NA  1.17466419  2.9056414
+[10,]       NA        NA  1.26182304  3.0346230
+[11,]       NA        NA  1.61671662  3.5674033
+[12,]       NA        NA  1.63137488  3.5896954
+[13,]       NA        NA  1.68506016  3.6715499
+[14,]       NA        NA  1.72680626  3.7354336
+[15,]       NA        NA  1.74447525  3.7625351
+[16,]       NA        NA  1.91692198  4.0290884
+[17,]       NA        NA  1.99184783  4.1461183
+[18,]       NA        NA  2.43407284  4.8539351
+[19,]       NA        NA  2.46688549  4.9077451
+[20,]       NA        NA  2.62224862  5.1652524
+[21,]       NA        NA  3.08115703  5.9557985
+[22,]       NA        NA  3.10943980  6.0061854
+[23,]       NA        NA  3.21493261  6.1960534
+[24,]       NA        NA  3.37130226  6.4834571
+[25,]       NA        NA  3.53276372  6.7884558
+[26,]       NA        NA  3.54456576  6.8111041
+[27,]       NA        NA  4.03724746  7.8077080
+[28,]       NA        NA  4.27238525  8.3266723
+[29,]       NA        NA  4.81521851  9.6869349
+[30,]       NA        NA  5.02483153 10.3027427
 
 $err
- sim   pw 
-TRUE TRUE 
+  sim    pw 
+FALSE  TRUE 
 
 > qqbounds(x = rchisq(30,df=4),Chisq(df=4),alpha=0.95,n=30,
 +         withConf.pw = TRUE, withConf.sim  = TRUE,
@@ -3869,11 +3868,11 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > F <- ( Norm() + Binom() + Pois() + Exp() ) * 2 - 10
 > system.time(r(F)(10^6))
    user  system elapsed 
-  0.776   0.008   0.786 
+  0.904   0.028   0.934 
 > simplifyr(F, size = 10^6)
 > system.time(r(F)(10^6))
    user  system elapsed 
-  0.044   0.000   0.043 
+  0.044   0.000   0.042 
 > 
 > 
 > cleanEx()
@@ -3906,7 +3905,7 @@ setReplaceMethod("b", "testclass", function(object, value){ object@b <- value; o
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  110.874 0.616 112.279 0.004 0.004 
+Time elapsed:  114.959 0.468 115.867 0 0 
 > grDevices::dev.off()
 pdf 
   2 

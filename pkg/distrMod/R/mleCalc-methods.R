@@ -64,12 +64,13 @@ get.criterion.fct <- function(theta, Data, ParamFam, criterion.ff, fun, ...){
 
 
 setMethod("mleCalc", signature(x = "numeric", PFam = "ParamFamily"),
-           function(x, PFam, startPar = NULL, penalty = 1e20, Infos  = NULL, ...){
+           function(x, PFam, startPar = NULL, penalty = 1e20, Infos  = NULL,
+                    validity.check = TRUE, ...){
 
            res <- mceCalc(x = x, PFam = PFam, 
                           criterion = .negLoglikelihood, startPar = startPar, 
                           penalty = penalty, crit.name = "neg.Loglikelihood",
-                          Infos = Infos, ...)
+                          Infos = Infos, validity.check = validity.check, ...)
            names(res$criterion) <- "neg.Loglikelihood"
            return(res) 
 })
@@ -80,7 +81,8 @@ setMethod("mleCalc", signature(x = "numeric", PFam = "ParamFamily"),
 
 setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
            function(x, PFam, criterion, startPar = NULL, penalty = 1e20,
-           crit.name = "", Infos = NULL, withthetaPar = FALSE, ...){
+           crit.name = "", Infos = NULL, validity.check = TRUE,
+           withthetaPar = FALSE, ...){
 
 
        if(is.null(startPar)) startPar <- startPar(PFam)(x,...)
@@ -91,7 +93,8 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
 
        allwarns <<- character(0)
        fun <- function(theta, Data, ParamFamily, criterionF, ...){
-               vP <- validParameter(ParamFamily, theta)
+               vP <- TRUE
+               if(validity.check) vP <- validParameter(ParamFamily, theta)
                dots <- list(...)
                dots$trafo <- NULL
                dots$penalty <- NULL
@@ -147,19 +150,19 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
         crit <- res$value
     }
 
-    vP <- validParameter(PFam, theta)
+    vP <- TRUE
+    if(validity.check) vP <- validParameter(PFam, theta)
     if(!vP) theta <- makeOKPar(PFam)(theta)
 
     idx <-      if(lnx) lmx + 1:lnx else 1:(lmx+lnx)
     nuis.idx <- if(lnx) idx else NULL
     nuis <- if(lnx) theta[-idx] else NULL
-    param <- ParamFamParameter(name = names(theta), 
-                               main = theta[idx],
-                               nuisance = nuis,
-                               fixed = fixed)    
+
+    param <- .callParamFamParameter(PFam, theta, idx, nuis, fixed)
 
     fun2 <- function(theta, Data, ParamFamily, criterion, ...){
-               vP <- validParameter(ParamFamily, theta)
+               vP <- TRUE
+               if(validity.check) vP <- validParameter(ParamFamily, theta)
                if(!vP) theta <- makeOKPar(ParamFamily)(theta)
                if(lnx)
                      names(theta) <- c(names(main(ParamFamily)),

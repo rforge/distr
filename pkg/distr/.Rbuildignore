@@ -1,2 +1,2 @@
 inst/doc/Rplots.pdf
-^.*\.svn.*
+^.*\.svn.+

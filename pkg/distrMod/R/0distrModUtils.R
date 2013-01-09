@@ -18,7 +18,7 @@
   upp1 <- me + IQR.fac * s1 
   low <- max(low0,low1); upp <- min(upp0, upp1)
   xs <- seq(low, upp, length = getdistrOption("DefaultNrGridPoints"))
-  m <- getdistrOption("DefaultNrGridPoints")%/%100
+  m <- getdistrOption("DefaultNrGridPoints")%/%100+1
   dxs<- -d(distr)(xs, log = TRUE)
 #  plot(xs, dxs,type="l")
   x1 <- xs[1]; xn <- (rev(xs)[1])
@@ -110,8 +110,9 @@
    param0 <- L2Fam@param
    dim0 <- dimension(param0)
 #   print(param0)
-   paramP <- ParamFamParameter(name = name(param0), main = main(param),
-                               trafo = diag(dim0))
+   paramP <- param0
+   paramP@main <- main(param)
+   paramP@trafo <- diag(dim0)
 #   print(paramP)
    L2Fam <- modifyModel(L2Fam, paramP)
 
