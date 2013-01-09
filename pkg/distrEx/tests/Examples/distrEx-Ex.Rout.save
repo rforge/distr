@@ -1,5 +1,5 @@
 
-R version 2.15.0 Patched (2012-05-26 r59450) -- "Easter Beagle"
+R version 2.15.1 Patched (2012-06-29 r59688) -- "Roasted Marshmallows"
 Copyright (C) 2012 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
@@ -24,7 +24,7 @@ Type 'q()' to quit R.
 > library('distrEx')
 Loading required package: distr
 Loading required package: startupmsg
-:startupmsg>  Utilities for start-up messages (version 0.7.3)
+:startupmsg>  Utilities for start-up messages (version 0.8)
 :startupmsg> 
 :startupmsg>  For more information see ?"startupmsg",
 :startupmsg>  NEWS("startupmsg")
@@ -32,8 +32,7 @@ Loading required package: startupmsg
 Loading required package: sfsmisc
 Loading required package: SweaveListingUtils
 :SweaveListingUtils>  Utilities for Sweave together with
-:SweaveListingUtils>  TeX listings package (version
-:SweaveListingUtils>  0.5.5)
+:SweaveListingUtils>  TeX listings package (version 0.6)
 :SweaveListingUtils> 
 :SweaveListingUtils>  Some functions from package 'base'
 :SweaveListingUtils>  are intentionally masked ---see
@@ -59,7 +58,7 @@ The following object(s) are masked from ‘package:base’:
     library, require
 
 :distr>  Object oriented implementation of distributions (version
-:distr>  2.3.4)
+:distr>  2.4)
 :distr> 
 :distr>  Attention: Arithmetics on distribution objects are
 :distr>  understood as operations on corresponding random variables
@@ -84,19 +83,14 @@ The following object(s) are masked from ‘package:stats’:
 
     df, qqplot, sd
 
-Loading required package: evd
-Loading required package: actuar
-
-Attaching package: ‘actuar’
-
-The following object(s) are masked from ‘package:grDevices’:
-
-    cm
-
-:distrEx>  Extensions of package distr (version 2.3.2)
+:distrEx>  Extensions of package distr (version 2.4)
 :distrEx> 
 :distrEx>  Note: Packages "e1071", "moments", "fBasics" should be
-:distrEx>  attached /before/ package "distrEx". See distrExMASK().
+:distrEx>  attached /before/ package "distrEx". See
+:distrEx>  distrExMASK().Note: Extreme value distribution
+:distrEx>  functionality has been moved to
+:distrEx> 
+:distrEx>        package "RobExtremes". See distrExMOVED().
 :distrEx> 
 :distrEx>  For more information see ?"distrEx", NEWS("distrEx"), as
 :distrEx>  well as
@@ -161,9 +155,10 @@ Slot "name":
 > 
 > ### ** Examples
 > 
-> AsymTotalVarDist(Norm(), Gumbel(), rho=0.3)
+> AsymTotalVarDist(Norm(), UnivarMixingDistribution(Norm(1,2),Norm(0.5,3),
++                  mixCoeff=c(0.2,0.8)), rho=0.3)
 asym. total variation distance 
-                      0.231687 
+                     0.5311789 
 > AsymTotalVarDist(Norm(), Td(10), rho=0.3)
 asym. total variation distance 
                     0.03412603 
@@ -307,12 +302,14 @@ $size.of.contamination
 > 
 > ### ** Examples
 > 
-> CvMDist(Norm(), Gumbel())
+> CvMDist(Norm(), UnivarMixingDistribution(Norm(1,2),Norm(0.5,3),
++                  mixCoeff=c(0.2,0.8)))
 CvM distance 
-   0.1227136 
-> CvMDist(Norm(), Gumbel(), mu = Norm())
+   0.1812994 
+> CvMDist(Norm(), UnivarMixingDistribution(Norm(1,2),Norm(0.5,3),
++                  mixCoeff=c(0.2,0.8)),mu=Norm())
 CvM distance 
-   0.1227136 
+   0.1812994 
 > CvMDist(Norm(), Td(10))
 CvM distance 
   0.00933072 
@@ -652,100 +649,6 @@ function (dimension)
 > 
 > 
 > cleanEx()
-> nameEx("GEV-class")
-> ### * GEV-class
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: GEV-class
-> ### Title: Generalized EV distribution
-> ### Aliases: GEV-class initialize,GEV-method loc,GEV-method
-> ###   loc<-,GEV-method location,GEV-method location<-,GEV-method
-> ###   scale,GEV-method scale<-,GEV-method shape,GEV-method
-> ###   shape<-,GEV-method +,GEV,numeric-method *,GEV,numeric-method
-> ### Keywords: distribution
-> 
-> ### ** Examples
-> 
-> (P1 <- new("GEV", loc = 0, scale = 1,shape = 0))
-Distribution Object of Class: GEV
- loc: 0
- scale: 1
- shape: 0
-> plot(P1)
-> shape(P1)
-[1] 0
-> loc(P1)
-[1] 0
-> scale(P1) <- 4
-> loc(P1) <- 2
-> plot(P1)
-> 
-> 
-> 
-> cleanEx()
-> nameEx("GEV")
-> ### * GEV
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: GEV
-> ### Title: Generating function for GEV-class
-> ### Aliases: GEV
-> ### Keywords: distribution
-> 
-> ### ** Examples
-> 
-> (P1 <- GEV(loc = 0, scale = 1, shape = 0))
-Distribution Object of Class: GEV
- loc: 0
- scale: 1
- shape: 0
-> plot(P1)
-> 
-> E(GEV()) 
-[1] 0.5772157
-> E(P1, function(x){x^2})
-[1] 1.97792
-> 
-> 
-> 
-> 
-> cleanEx()
-> nameEx("GEVParameter-class")
-> ### * GEVParameter-class
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: GEVParameter-class
-> ### Title: Parameter of generalized Pareto distributions
-> ### Aliases: GEVParameter-class loc,GEVParameter-method
-> ###   loc<-,GEVParameter-method location,GEVParameter-method
-> ###   location<-,GEVParameter-method scale,GEVParameter-method
-> ###   scale<-,GEVParameter-method shape,GEVParameter-method
-> ###   shape<-,GEVParameter-method
-> ### Keywords: distribution models
-> 
-> ### ** Examples
-> 
-> new("GEVParameter")
-An object of class "GEVParameter"
-Slot "loc":
-[1] 0
-
-Slot "scale":
-[1] 1
-
-Slot "shape":
-[1] 0.5
-
-Slot "name":
-[1] "Parameter of a generalized extreme value distribution"
-
-> 
-> 
-> 
-> cleanEx()
 > nameEx("GLIntegrate")
 > ### * GLIntegrate
 > 
@@ -762,200 +665,6 @@ Slot "name":
 0.9500042 with absolute error < 1e-11
 > GLIntegrate(dnorm, -1.96, 1.96)
 [1] 0.9500042
-> 
-> 
-> 
-> cleanEx()
-> nameEx("GPareto-class")
-> ### * GPareto-class
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: GPareto-class
-> ### Title: Generalized Pareto distribution
-> ### Aliases: GPareto-class initialize,GPareto-method loc,GPareto-method
-> ###   loc<-,GPareto-method location,GPareto-method
-> ###   location<-,GPareto-method scale,GPareto-method scale<-,GPareto-method
-> ###   shape,GPareto-method shape<-,GPareto-method +,GPareto,numeric-method
-> ###   *,GPareto,numeric-method
-> ### Keywords: distribution
-> 
-> ### ** Examples
-> 
-> (P1 <- new("GPareto", loc = 0, scale = 1,shape = 0))
-Distribution Object of Class: GPareto
- loc: 0
- scale: 1
- shape: 0
-> plot(P1)
-> shape(P1)
-[1] 0
-> loc(P1)
-[1] 0
-> scale(P1) <- 4
-> loc(P1) <- 2
-> plot(P1)
-> 
-> 
-> 
-> cleanEx()
-> nameEx("GPareto")
-> ### * GPareto
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: GPareto
-> ### Title: Generating function for GPareto-class
-> ### Aliases: GPareto
-> ### Keywords: distribution
-> 
-> ### ** Examples
-> 
-> (P1 <- GPareto(loc = 0, scale = 1, shape = 0))
-Distribution Object of Class: Exp
- rate: 1
-> plot(P1)
-> 
-> E(GPareto()) 
-[1] 1
-> E(P1, function(x){x^2})
-[1] 1.999971
-> 
-> 
-> 
-> 
-> cleanEx()
-> nameEx("GParetoParameter-class")
-> ### * GParetoParameter-class
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: GParetoParameter-class
-> ### Title: Parameter of generalized Pareto distributions
-> ### Aliases: GParetoParameter-class loc,GParetoParameter-method
-> ###   loc<-,GParetoParameter-method location,GParetoParameter-method
-> ###   location<-,GParetoParameter-method scale,GParetoParameter-method
-> ###   scale<-,GParetoParameter-method shape,GParetoParameter-method
-> ###   shape<-,GParetoParameter-method
-> ### Keywords: distribution models
-> 
-> ### ** Examples
-> 
-> new("GParetoParameter")
-An object of class "GParetoParameter"
-Slot "loc":
-[1] 0
-
-Slot "scale":
-[1] 1
-
-Slot "shape":
-[1] 0
-
-Slot "name":
-[1] "Parameter of a generalized Pareto distribution"
-
-> 
-> 
-> 
-> cleanEx()
-> nameEx("Gumbel-class")
-> ### * Gumbel-class
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: Gumbel-class
-> ### Title: Gumbel distribution
-> ### Aliases: Gumbel-class initialize,Gumbel-method loc,Gumbel-method
-> ###   loc<-,Gumbel-method scale,Gumbel-method scale<-,Gumbel-method
-> ###   +,Gumbel,numeric-method *,Gumbel,numeric-method
-> ### Keywords: distribution
-> 
-> ### ** Examples
-> 
-> (G1 <- new("Gumbel", loc = 1, scale = 2))
-Distribution Object of Class: Gumbel
- loc: 1
- scale: 2
-> plot(G1)
-> loc(G1)
-[1] 1
-> scale(G1)
-[1] 2
-> loc(G1) <- -1
-> scale(G1) <- 2
-> plot(G1)
-> 
-> 
-> 
-> cleanEx()
-> nameEx("Gumbel")
-> ### * Gumbel
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: Gumbel
-> ### Title: Generating function for Gumbel-class
-> ### Aliases: Gumbel
-> ### Keywords: distribution
-> 
-> ### ** Examples
-> 
-> (G1 <- Gumbel(loc = 1, scale = 2))
-Distribution Object of Class: Gumbel
- loc: 1
- scale: 2
-> plot(G1)
-> loc(G1)
-[1] 1
-> scale(G1)
-[1] 2
-> loc(G1) <- -1
-> scale(G1) <- 2
-> plot(G1)
-> 
-> E(Gumbel()) # Euler's constant
-[1] -0.5772157
-> E(G1, function(x){x^2})
-[1] 6.60347
-> 
-> ## The function is currently defined as
-> function(loc = 0, scale = 1){ 
-+   new("Gumbel", loc = loc, scale = scale)
-+ }
-function (loc = 0, scale = 1) 
-{
-    new("Gumbel", loc = loc, scale = scale)
-}
-> 
-> 
-> 
-> cleanEx()
-> nameEx("GumbelParameter-class")
-> ### * GumbelParameter-class
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: GumbelParameter-class
-> ### Title: Paramter of Gumbel distributions
-> ### Aliases: GumbelParameter-class loc loc,GumbelParameter-method loc<-
-> ###   loc<-,GumbelParameter-method scale,GumbelParameter-method
-> ###   scale<-,GumbelParameter-method
-> ### Keywords: distribution models
-> 
-> ### ** Examples
-> 
-> new("GumbelParameter")
-An object of class "GumbelParameter"
-Slot "loc":
-[1] 0
-
-Slot "scale":
-[1] 1
-
-Slot "name":
-[1] "parameter of a Gumbel distribution"
-
 > 
 > 
 > 
@@ -985,9 +694,10 @@ Slot "name":
 > 
 > ### ** Examples
 > 
-> HellingerDist(Norm(), Gumbel())
+> HellingerDist(Norm(), UnivarMixingDistribution(Norm(1,2),Norm(0.5,3),
++                  mixCoeff=c(0.2,0.8)))
 Hellinger distance 
-         0.2204792 
+         0.4604849 
 > HellingerDist(Norm(), Td(10))
 Hellinger distance 
          0.0598968 
@@ -1044,9 +754,10 @@ Hellinger distance
 > 
 > ### ** Examples
 > 
-> KolmogorovDist(Norm(), Gumbel())
+> KolmogorovDist(Norm(), UnivarMixingDistribution(Norm(1,2),Norm(0.5,3),
++                  mixCoeff=c(0.2,0.8)))
 Kolmogorov distance 
-          0.1501485 
+          0.3092684 
 > KolmogorovDist(Norm(), Td(10))
 Kolmogorov distance 
          0.01554215 
@@ -1058,13 +769,13 @@ Kolmogorov distance
          0.08863266 
 > KolmogorovDist(Norm(), rnorm(100))
 Kolmogorov distance 
-          0.0659914 
+          0.1149486 
 > KolmogorovDist((rbinom(50, size = 20, prob = 0.5)-10)/sqrt(5), Norm())
 Kolmogorov distance 
-               0.14 
+          0.1673604 
 > KolmogorovDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5))
 Kolmogorov distance 
-          0.1282777 
+         0.03172234 
 > 
 > 
 > 
@@ -1105,7 +816,7 @@ function (n, cond, ...)
     }
     0 + cond %*% 1 + 1 * r(n, ...)
 }
-<environment: 0x59114e0>
+<environment: 0x451b408>
 > d(D1)
 function (x, cond, log = FALSE, ...) 
 {
@@ -1127,7 +838,7 @@ function (x, cond, log = FALSE, ...)
     else d0 <- d0/1
     return(d0)
 }
-<environment: 0x59114e0>
+<environment: 0x451b408>
 > p(D1)
 function (q, cond, lower.tail = TRUE, log.p = FALSE, ...) 
 {
@@ -1154,7 +865,7 @@ function (q, cond, lower.tail = TRUE, log.p = FALSE, ...)
             p0 <- log(p0)
     return(p0)
 }
-<environment: 0x59114e0>
+<environment: 0x451b408>
 > q(D1)
 function (p, cond, lower.tail = TRUE, log.p = FALSE, ...) 
 {
@@ -1178,7 +889,7 @@ function (p, cond, lower.tail = TRUE, log.p = FALSE, ...)
         argList <- c(argList, dots)
     1 * do.call(q, argList) + 0 + as.vector(cond %*% 1)
 }
-<environment: 0x59114e0>
+<environment: 0x451b408>
 > param(D1)
 name:	parameter of a linear regression model
 theta:	1
@@ -1301,9 +1012,10 @@ function (theta = 0, intercept = 0, scale = 1)
 > 
 > ### ** Examples
 > 
-> OAsymTotalVarDist(Norm(), Gumbel())
+> OAsymTotalVarDist(Norm(), UnivarMixingDistribution(Norm(1,2),Norm(0.5,3),
++                  mixCoeff=c(0.2,0.8)))
 minimal asym. total variation distance 
-                             0.2642218 
+                             0.6278316 
 > OAsymTotalVarDist(Norm(), Td(10))
 minimal asym. total variation distance 
                             0.04191508 
@@ -1333,96 +1045,6 @@ minimal asym. total variation distance
 > OAsymTotalVarDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5))
 minimal asym. total variation distance 
                              0.3742073 
-> 
-> 
-> 
-> cleanEx()
-> nameEx("Pareto-class")
-> ### * Pareto-class
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: Pareto-class
-> ### Title: Pareto distribution
-> ### Aliases: Pareto-class initialize,Pareto-method shape,Pareto-method
-> ###   shape<-,Pareto-method Min,Pareto-method Min<-,Pareto-method
-> ### Keywords: distribution
-> 
-> ### ** Examples
-> 
-> (P1 <- new("Pareto", shape = 1, Min = 2))
-Distribution Object of Class: Pareto
- shape: 1
- Min: 2
-> plot(P1)
-> shape(P1)
-[1] 1
-> Min(P1)
-[1] 2
-> shape(P1) <- 4
-> Min(P1) <- 2
-> plot(P1)
-> 
-> 
-> 
-> cleanEx()
-> nameEx("Pareto")
-> ### * Pareto
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: Pareto
-> ### Title: Generating function for Pareto-class
-> ### Aliases: Pareto
-> ### Keywords: distribution
-> 
-> ### ** Examples
-> 
-> (P1 <- Pareto(shape = 1, Min = 1))
-Distribution Object of Class: Pareto
- shape: 1
- Min: 1
-> plot(P1)
-> 
-> E(Pareto()) 
-[1] Inf
-> E(P1, function(x){x^2})
-[1] 41
-> 
-> ## The function is currently defined as
-> function(shape = 1, Min = 1) 
-+                new("Pareto", shape = shape, Min = Min)
-function (shape = 1, Min = 1) 
-new("Pareto", shape = shape, Min = Min)
-> 
-> 
-> 
-> cleanEx()
-> nameEx("ParetoParameter-class")
-> ### * ParetoParameter-class
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: ParetoParameter-class
-> ### Title: Paramter of Pareto distributions
-> ### Aliases: ParetoParameter-class shape shape,ParetoParameter-method
-> ###   shape<- shape<-,ParetoParameter-method Min,ParetoParameter-method
-> ###   Min<-,ParetoParameter-method
-> ### Keywords: distribution models
-> 
-> ### ** Examples
-> 
-> new("ParetoParameter")
-An object of class "ParetoParameter"
-Slot "shape":
-[1] 1
-
-Slot "Min":
-[1] 1
-
-Slot "name":
-[1] "Parameter of a Pareto distribution"
-
 > 
 > 
 > 
@@ -1509,9 +1131,10 @@ Range:	Euclidean Space with dimension 1
 > 
 > ### ** Examples
 > 
-> TotalVarDist(Norm(), Gumbel())
+> TotalVarDist(Norm(), UnivarMixingDistribution(Norm(1,2),Norm(0.5,3),
++                  mixCoeff=c(0.2,0.8)))
 total variation distance 
-               0.1501365 
+               0.4677806 
 > TotalVarDist(Norm(), Td(10))
 total variation distance 
               0.03107182 
@@ -1583,9 +1206,8 @@ Slot "name":
 > ###   var,AffLinLatticeDistribution-method var,CompoundDistribution-method
 > ###   var,Arcsine-method var,Beta-method var,Binom-method var,Cauchy-method
 > ###   var,Chisq-method var,Dirac-method var,DExp-method var,Exp-method
-> ###   var,Fd-method var,Gammad-method var,Geom-method var,Gumbel-method
-> ###   var,GPareto-method var,GEV-method var,Hyper-method var,Logis-method
-> ###   var,Lnorm-method var,Nbinom-method var,Norm-method var,Pareto-method
+> ###   var,Fd-method var,Gammad-method var,Geom-method var,Hyper-method
+> ###   var,Logis-method var,Lnorm-method var,Nbinom-method var,Norm-method
 > ###   var,Pois-method var,Unif-method var,Weibull-method var,Td-method sd
 > ###   sd-methods sd,UnivariateDistribution-method sd,Norm-method median
 > ###   median,ANY-method median-methods median,UnivariateDistribution-method
@@ -1595,18 +1217,15 @@ Slot "name":
 > ###   median,AffLinDiscreteDistribution-method
 > ###   median,AffLinLatticeDistribution-method median,Arcsine-method
 > ###   median,Cauchy-method median,Dirac-method median,DExp-method
-> ###   median,Exp-method median,Geom-method median,Gumbel-method
-> ###   median,GEV-method median,GPareto-method median,Logis-method
-> ###   median,Lnorm-method median,Norm-method median,Pareto-method
-> ###   median,Unif-method IQR IQR-methods IQR,ANY-method
-> ###   IQR,UnivariateDistribution-method
+> ###   median,Exp-method median,Geom-method median,Logis-method
+> ###   median,Lnorm-method median,Norm-method median,Unif-method IQR
+> ###   IQR-methods IQR,ANY-method IQR,UnivariateDistribution-method
 > ###   IQR,UnivariateCondDistribution-method IQR,AffLinDistribution-method
 > ###   IQR,AffLinAbscontDistribution-method
 > ###   IQR,AffLinDiscreteDistribution-method
 > ###   IQR,AffLinLatticeDistribution-method IQR,DiscreteDistribution-method
 > ###   IQR,Arcsine-method IQR,Cauchy-method IQR,Dirac-method IQR,DExp-method
-> ###   IQR,Exp-method IQR,Geom-method IQR,Gumbel-method IQR,GPareto-method
-> ###   IQR,GEV-method IQR,Logis-method IQR,Norm-method IQR,Pareto-method
+> ###   IQR,Exp-method IQR,Geom-method IQR,Logis-method IQR,Norm-method
 > ###   IQR,Unif-method mad mad,ANY-method mad-methods
 > ###   mad,UnivariateDistribution-method mad,AffLinDistribution-method
 > ###   mad,AffLinAbscontDistribution-method
@@ -1623,12 +1242,11 @@ Slot "name":
 > ###   skewness,Beta-method skewness,Binom-method skewness,Cauchy-method
 > ###   skewness,Chisq-method skewness,Dirac-method skewness,DExp-method
 > ###   skewness,Exp-method skewness,Fd-method skewness,Gammad-method
-> ###   skewness,Geom-method skewness,Gumbel-method skewness,GEV-method
-> ###   skewness,GPareto-method skewness,Hyper-method skewness,Logis-method
+> ###   skewness,Geom-method skewness,Hyper-method skewness,Logis-method
 > ###   skewness,Lnorm-method skewness,Nbinom-method skewness,Norm-method
-> ###   skewness,Pareto-method skewness,Pois-method skewness,Unif-method
-> ###   skewness,Weibull-method skewness,Td-method kurtosis kurtosis-methods
-> ###   kurtosis,ANY-method kurtosis,UnivariateDistribution-method
+> ###   skewness,Pois-method skewness,Unif-method skewness,Weibull-method
+> ###   skewness,Td-method kurtosis kurtosis-methods kurtosis,ANY-method
+> ###   kurtosis,UnivariateDistribution-method
 > ###   kurtosis,AffLinDistribution-method
 > ###   kurtosis,AffLinAbscontDistribution-method
 > ###   kurtosis,AffLinDiscreteDistribution-method
@@ -1636,11 +1254,10 @@ Slot "name":
 > ###   kurtosis,Beta-method kurtosis,Binom-method kurtosis,Cauchy-method
 > ###   kurtosis,Chisq-method kurtosis,Dirac-method kurtosis,DExp-method
 > ###   kurtosis,Exp-method kurtosis,Fd-method kurtosis,Gammad-method
-> ###   kurtosis,Geom-method kurtosis,Gumbel-method kurtosis,GEV-method
-> ###   kurtosis,GPareto-method kurtosis,Hyper-method kurtosis,Logis-method
+> ###   kurtosis,Geom-method kurtosis,Hyper-method kurtosis,Logis-method
 > ###   kurtosis,Lnorm-method kurtosis,Nbinom-method kurtosis,Norm-method
-> ###   kurtosis,Pareto-method kurtosis,Pois-method kurtosis,Unif-method
-> ###   kurtosis,Weibull-method kurtosis,Td-method
+> ###   kurtosis,Pois-method kurtosis,Unif-method kurtosis,Weibull-method
+> ###   kurtosis,Td-method
 > ### Keywords: methods distribution
 > 
 > ### ** Examples
@@ -1673,26 +1290,6 @@ Slot "name":
 > #
 > mad(sin(exp(Norm()+2*Pois()))) ## weird
 [1] 0.499821
-> 
-> 
-> 
-> cleanEx()
-> nameEx("distrExConstants")
-> ### * distrExConstants
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: distrExConstants
-> ### Title: Built-in Constants in package distrEx
-> ### Aliases: EULERMASCHERONICONSTANT APERYCONSTANT
-> ### Keywords: sysdata
-> 
-> ### ** Examples
-> 
-> EULERMASCHERONICONSTANT
-[1] 0.5772157
-> APERYCONSTANT
-[1] 1.202057
 > 
 > 
 > 
@@ -1782,6 +1379,39 @@ To re-mask, you may use
 > 
 > 
 > cleanEx()
+> nameEx("distrExMOVED")
+> ### * distrExMOVED
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: distrExMOVED
+> ### Title: Functionality of package "distrEx" which has moved to other
+> ###   packages
+> ### Aliases: distrExMOVED MOVED
+> ### Keywords: programming distribution documentation
+> 
+> ### ** Examples
+> 
+> distrExMOVED()
+#############################################################################
+#  On moving of functionality from package "distrEx" to package "RobExtremes"
+#############################################################################
+
+Attention:
+
+From package version 2.4 on, we have moved the functionality for extreme 
+value theory distributions to the new package "RobExtremes".
+
+This concerns:
+the GEV, GPareto, Gumbel, Pareto classes and functional kMAD.
+
+To keep using this functionality install and load/attach package
+"RobExtremes".
+
+> 
+> 
+> 
+> cleanEx()
 > nameEx("distrExOptions")
 > ### * distrExOptions
 > 
@@ -1847,29 +1477,6 @@ $ElowerTruncQuantile
 > distrExOptions(ElowerTruncQuantile = 1e-6)
 > getdistrExOption("ElowerTruncQuantile")
 [1] 1e-06
-> 
-> 
-> 
-> cleanEx()
-> nameEx("kMAD")
-> ### * kMAD
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: kMAD
-> ### Title: Asymmetric Median of Absolute Deviations for Skewed
-> ###   Distributions
-> ### Aliases: kMAD kMAD-methods kMAD,UnivariateDistribution,numeric-method
-> ###   kMAD,numeric,numeric-method
-> ### Keywords: scale estimator
-> 
-> ### ** Examples
-> 
-> x <- rnorm(100)
-> kMAD(x,k=10)
-[1] 0.1351646
-> kMAD(Norm(),k=10)
-[1] 0.1543645
 > 
 > 
 > 
@@ -2004,7 +1611,7 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  11.636 0.148 11.832 0 0 
+Time elapsed:  11.58 0.152 11.798 0 0 
 > grDevices::dev.off()
 null device 
           1 

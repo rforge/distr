@@ -34,8 +34,7 @@ changeDescription <- function(startDir, names, values,
   on.exit(setwd(oldDir))
   setwd(startDir)
   if(withSVNread){
-      svn <- getAllRevNr(startDir,list="max")
-      svnrev <- svn[[1]]
+      svnrev <- getRevNr(startDir)[[1]]
       print(svnrev)
       if("SVNRevision" %in% names){
          values[which(names=="SVNRevision"),] <- svnrev
