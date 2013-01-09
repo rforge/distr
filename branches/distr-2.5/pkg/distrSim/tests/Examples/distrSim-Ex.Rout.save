@@ -1,0 +1,943 @@
+
+R version 2.15.0 Patched (2012-05-26 r59450) -- "Easter Beagle"
+Copyright (C) 2012 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: x86_64-unknown-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "distrSim"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('distrSim')
+Loading required package: setRNG
+Loading required package: distr
+Loading required package: startupmsg
+:startupmsg>  Utilities for start-up messages (version 0.8)
+:startupmsg> 
+:startupmsg>  For more information see ?"startupmsg",
+:startupmsg>  NEWS("startupmsg")
+
+Loading required package: sfsmisc
+Loading required package: SweaveListingUtils
+:SweaveListingUtils>  Utilities for Sweave together with
+:SweaveListingUtils>  TeX listings package (version 0.6)
+:SweaveListingUtils> 
+:SweaveListingUtils>  Some functions from package 'base'
+:SweaveListingUtils>  are intentionally masked ---see
+:SweaveListingUtils>  SweaveListingMASK().
+:SweaveListingUtils> 
+:SweaveListingUtils>  Note that global options are
+:SweaveListingUtils>  controlled by
+:SweaveListingUtils>  SweaveListingoptions() ---c.f.
+:SweaveListingUtils>  ?"SweaveListingoptions".
+:SweaveListingUtils> 
+:SweaveListingUtils>  For more information see
+:SweaveListingUtils>  ?"SweaveListingUtils",
+:SweaveListingUtils>  NEWS("SweaveListingUtils")
+:SweaveListingUtils>  There is a vignette to this
+:SweaveListingUtils>  package; try
+:SweaveListingUtils>  vignette("ExampleSweaveListingUtils").
+
+
+Attaching package: ‘SweaveListingUtils’
+
+The following object(s) are masked from ‘package:base’:
+
+    library, require
+
+:distr>  Object oriented implementation of distributions (version
+:distr>  2.4)
+:distr> 
+:distr>  Attention: Arithmetics on distribution objects are
+:distr>  understood as operations on corresponding random variables
+:distr>  (r.v.s); see distrARITH().
+:distr> 
+:distr>  Some functions from package 'stats' are intentionally masked
+:distr>  ---see distrMASK().
+:distr> 
+:distr>  Note that global options are controlled by distroptions()
+:distr>  ---c.f. ?"distroptions".
+:distr> 
+:distr>  For more information see ?"distr", NEWS("distr"), as well as
+:distr>    http://distr.r-forge.r-project.org/
+:distr>  Package "distrDoc" provides a vignette to this package as
+:distr>  well as to several extension packages; try
+:distr>  vignette("distr").
+
+
+Attaching package: ‘distr’
+
+The following object(s) are masked from ‘package:stats’:
+
+    df, qqplot, sd
+
+:distrSim>  Simulation classes based on package distr (version
+:distrSim>  2.4)
+:distrSim> 
+:distrSim>  Some functions from package 'stats' are intentionally
+:distrSim>  masked ---see distrSimMASK().
+:distrSim> 
+:distrSim> 
+:distrSim>  For more information see ?"distrSim",
+:distrSim>  NEWS("distrSim"), as well as
+:distrSim>    http://distr.r-forge.r-project.org/
+:distrSim>  Package "distrDoc" provides a vignette to this package
+:distrSim>  as well as to several related packages; try
+:distrSim>  vignette("distr").
+
+
+Attaching package: ‘distrSim’
+
+The following object(s) are masked from ‘package:stats’:
+
+    simulate
+
+The following object(s) are masked from ‘package:base’:
+
+    rbind
+
+> 
+> assign(".oldSearch", search(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("Contsimulation-class")
+> ### * Contsimulation-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: Contsimulation-class
+> ### Title: Class "Contsimulation"
+> ### Aliases: Contsimulation-class Contsimulation
+> ###   initialize,Contsimulation-method
+> ### Keywords: manip
+> 
+> ### ** Examples
+> 
+> N <- Norm() # N is a standard normal distribution.
+> C <- Cauchy() # C is a Cauchy distribution
+> cs <- Contsimulation(filename = "csim",
++                      runs = 10,
++                      samplesize = 3,
++                      seed = setRNG(),
++                      distribution.id = N,
++                      distribution.c = C,
++                      rate = 0.1)
+> simulate(cs)
+> # Each of the 30 random numbers is ideal (N-distributed) with
+> # probability 0.9 and contaminated (C-distributed) with
+> # probability = 0.1
+> Data(cs)
+, , 1
+
+           [,1]
+[1,] -0.6264538
+[2,]  0.1836433
+[3,] -0.8356286
+
+, , 2
+
+           [,1]
+[1,]  1.5952808
+[2,]  0.3295078
+[3,] -0.8204684
+
+, , 3
+
+          [,1]
+[1,] 0.4874291
+[2,] 0.7383247
+[3,] 0.5757814
+
+, , 4
+
+           [,1]
+[1,] -0.3053884
+[2,]  1.5117812
+[3,]  0.3898432
+
+, , 5
+
+           [,1]
+[1,] -0.6212406
+[2,]  1.7376135
+[3,]  1.1249309
+
+, , 6
+
+            [,1]
+[1,] -0.04493361
+[2,] -0.01619026
+[3,]  0.94383621
+
+, , 7
+
+           [,1]
+[1,] -0.8415496
+[2,]  0.5939013
+[3,]  4.8029372
+
+, , 8
+
+            [,1]
+[1,]  0.78213630
+[2,]  0.07456498
+[3,] -1.98935170
+
+, , 9
+
+            [,1]
+[1,]  0.61982575
+[2,] -0.05612874
+[3,] -0.15579551
+
+, , 10
+
+           [,1]
+[1,] -1.4707524
+[2,] -0.4781501
+[3,]  0.4179416
+
+> Data.id(cs)
+, , 1
+
+           [,1]
+[1,] -0.6264538
+[2,]  0.1836433
+[3,] -0.8356286
+
+, , 2
+
+           [,1]
+[1,]  1.5952808
+[2,]  0.3295078
+[3,] -0.8204684
+
+, , 3
+
+          [,1]
+[1,] 0.4874291
+[2,] 0.7383247
+[3,] 0.5757814
+
+, , 4
+
+           [,1]
+[1,] -0.3053884
+[2,]  1.5117812
+[3,]  0.3898432
+
+, , 5
+
+           [,1]
+[1,] -0.6212406
+[2,] -2.2146999
+[3,]  1.1249309
+
+, , 6
+
+            [,1]
+[1,] -0.04493361
+[2,] -0.01619026
+[3,]  0.94383621
+
+, , 7
+
+          [,1]
+[1,] 0.8212212
+[2,] 0.5939013
+[3,] 0.9189774
+
+, , 8
+
+            [,1]
+[1,]  0.78213630
+[2,]  0.07456498
+[3,] -1.98935170
+
+, , 9
+
+            [,1]
+[1,]  0.61982575
+[2,] -0.05612874
+[3,] -0.15579551
+
+, , 10
+
+           [,1]
+[1,] -1.4707524
+[2,] -0.4781501
+[3,]  0.4179416
+
+> Data.c(cs)
+, , 1
+
+           [,1]
+[1,] -0.2807547
+[2,]  1.3197748
+[3,]  7.7332079
+
+, , 2
+
+          [,1]
+[1,]  1.720315
+[2,] -1.949413
+[3,]  1.051684
+
+, , 3
+
+           [,1]
+[1,] 14.8138609
+[2,] -0.9024312
+[3,]  0.2710277
+
+, , 4
+
+           [,1]
+[1,] -0.4130314
+[2,]  1.8065104
+[3,] -0.5520464
+
+, , 5
+
+          [,1]
+[1,]  1.913070
+[2,]  1.737613
+[3,] 13.435126
+
+, , 6
+
+           [,1]
+[1,] -0.3522399
+[2,] -0.4540178
+[3,]  2.7773206
+
+, , 7
+
+           [,1]
+[1,] -0.8415496
+[2,] -0.1243574
+[3,]  4.8029372
+
+, , 8
+
+          [,1]
+[1,] -1.268374
+[2,]  3.077498
+[3,]  1.635911
+
+, , 9
+
+           [,1]
+[1,] -0.9564330
+[2,]  0.7395454
+[3,] -1.2798578
+
+, , 10
+
+          [,1]
+[1,] 0.4020896
+[2,] 0.9720478
+[3,] 0.4833067
+
+> ind(cs)
+     [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+[1,]    0    0    0    0    0    0    1    0    0     0
+[2,]    0    0    0    0    1    0    0    0    0     0
+[3,]    0    0    0    0    0    0    1    0    0     0
+> summary(cs)
+name of simulation: csim
+rate of contamination: 0.100000
+real Data:
+dimension of the observations: 1
+number of runs: 10
+size of sample: 3
+, , 1
+
+           [,1]
+Min.    -0.8356
+1st Qu. -0.7310
+Median  -0.6265
+Mean    -0.4261
+3rd Qu. -0.2214
+Max.     0.1836
+
+, , 2
+
+           [,1]
+Min.    -0.8205
+1st Qu. -0.2455
+Median   0.3295
+Mean     0.3681
+3rd Qu.  0.9624
+Max.     1.5950
+
+, , 3
+
+          [,1]
+Min.    0.4874
+1st Qu. 0.5316
+Median  0.5758
+Mean    0.6005
+3rd Qu. 0.6571
+Max.    0.7383
+
+, , 4
+
+            [,1]
+Min.    -0.30540
+1st Qu.  0.04223
+Median   0.38980
+Mean     0.53210
+3rd Qu.  0.95080
+Max.     1.51200
+
+, , 5
+
+           [,1]
+Min.    -0.6212
+1st Qu.  0.2518
+Median   1.1250
+Mean     0.7471
+3rd Qu.  1.4310
+Max.     1.7380
+
+, , 6
+
+            [,1]
+Min.    -0.04493
+1st Qu. -0.03056
+Median  -0.01619
+Mean     0.29420
+3rd Qu.  0.46380
+Max.     0.94380
+
+> Data(cs) # different data
+, , 1
+
+           [,1]
+[1,] -0.6264538
+[2,]  0.1836433
+[3,] -0.8356286
+
+, , 2
+
+           [,1]
+[1,]  1.5952808
+[2,]  0.3295078
+[3,] -0.8204684
+
+, , 3
+
+          [,1]
+[1,] 0.4874291
+[2,] 0.7383247
+[3,] 0.5757814
+
+, , 4
+
+           [,1]
+[1,] -0.3053884
+[2,]  1.5117812
+[3,]  0.3898432
+
+, , 5
+
+           [,1]
+[1,] -0.6212406
+[2,]  1.7376135
+[3,]  1.1249309
+
+, , 6
+
+            [,1]
+[1,] -0.04493361
+[2,] -0.01619026
+[3,]  0.94383621
+
+, , 7
+
+           [,1]
+[1,] -0.8415496
+[2,]  0.5939013
+[3,]  4.8029372
+
+, , 8
+
+            [,1]
+[1,]  0.78213630
+[2,]  0.07456498
+[3,] -1.98935170
+
+, , 9
+
+            [,1]
+[1,]  0.61982575
+[2,] -0.05612874
+[3,] -0.15579551
+
+, , 10
+
+           [,1]
+[1,] -1.4707524
+[2,] -0.4781501
+[3,]  0.4179416
+
+> savedata(cs) # saves the object in the working directory of R...
+> load("csim") # loads it again...
+> Data(cs) # ...without the data - use simulate to return it!
+NULL
+> 
+> 
+> 
+> cleanEx()
+> nameEx("Dataclass-class")
+> ### * Dataclass-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: Dataclass-class
+> ### Title: Class "Dataclass"
+> ### Aliases: Dataclass-class initialize,Dataclass-method
+> ### Keywords: manip
+> 
+> ### ** Examples
+> 
+> D66 <- Dataclass(filename="N74", Data = matrix(1:36,6))
+> D66
+name of Dataclass: Data-Set
+filename of Dataclass: N74
+number of runs: 1
+dimension of the observations: 6
+size of sample: 6
+object was generated by version: 2.4
+> #
+> D <- Dataclass(Data = array(c(1,2,3,4,5,6),c(samplesize=2,obsdim=3,Runs=1)),
++                filename = "xyz.sav")
+> # A new object of type "Dataclass" is created.
+> #
+> isOldVersion(D) ##NO!
+[1] FALSE
+> #
+> savedata(D)
+> # creates a file called "xyz.sav" where the information is saved and a
+> # copy "xyz.sav.comment" without data
+> Data(D) <- array(c(11,12,13,14,15,16),c(samplesize=2,obsdim=3,Runs=1)) # changes the data of D
+> cload("xyz.sav") # loads the object without data - it is called "D.comment"
+> D.comment
+name of Dataclass: Data-Set
+filename of Dataclass: xyz.sav
+number of runs: 1
+dimension of the observations: 3
+size of sample: 2
+object was generated by version: 2.4
+> load("xyz.sav") # loads the original object "D"
+> Data(D) # the original data: matrix(c(1,2,3,4,5,6),2)
+, , 1
+
+     [,1] [,2] [,3]
+[1,]    1    3    5
+[2,]    2    4    6
+
+> #if you have distrTEst available:
+> #evaluate(object = D, estimator = mean) # returns the mean of each variable
+> 
+> 
+> 
+> cleanEx()
+> nameEx("Simulation-class")
+> ### * Simulation-class
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: Simulation-class
+> ### Title: Class "Simulation"
+> ### Aliases: Simulation-class Simulation initialize,Simulation-method
+> ### Keywords: manip
+> 
+> ### ** Examples
+> 
+> N=Norm() # N is a standard normal distribution.
+> S=Simulation(filename="xyz",runs=10,samplesize=3,seed=setRNG(),distribution=N)
+> Data(S) # no data yet
+NULL
+> simulate(S)
+> Data(S) # now there are random numbers
+, , 1
+
+           [,1]
+[1,] -0.6264538
+[2,]  0.1836433
+[3,] -0.8356286
+
+, , 2
+
+           [,1]
+[1,]  1.5952808
+[2,]  0.3295078
+[3,] -0.8204684
+
+, , 3
+
+          [,1]
+[1,] 0.4874291
+[2,] 0.7383247
+[3,] 0.5757814
+
+, , 4
+
+           [,1]
+[1,] -0.3053884
+[2,]  1.5117812
+[3,]  0.3898432
+
+, , 5
+
+           [,1]
+[1,] -0.6212406
+[2,] -2.2146999
+[3,]  1.1249309
+
+, , 6
+
+            [,1]
+[1,] -0.04493361
+[2,] -0.01619026
+[3,]  0.94383621
+
+, , 7
+
+          [,1]
+[1,] 0.8212212
+[2,] 0.5939013
+[3,] 0.9189774
+
+, , 8
+
+            [,1]
+[1,]  0.78213630
+[2,]  0.07456498
+[3,] -1.98935170
+
+, , 9
+
+            [,1]
+[1,]  0.61982575
+[2,] -0.05612874
+[3,] -0.15579551
+
+, , 10
+
+           [,1]
+[1,] -1.4707524
+[2,] -0.4781501
+[3,]  0.4179416
+
+> Data(S) # the same data as before because the seed has not changed
+, , 1
+
+           [,1]
+[1,] -0.6264538
+[2,]  0.1836433
+[3,] -0.8356286
+
+, , 2
+
+           [,1]
+[1,]  1.5952808
+[2,]  0.3295078
+[3,] -0.8204684
+
+, , 3
+
+          [,1]
+[1,] 0.4874291
+[2,] 0.7383247
+[3,] 0.5757814
+
+, , 4
+
+           [,1]
+[1,] -0.3053884
+[2,]  1.5117812
+[3,]  0.3898432
+
+, , 5
+
+           [,1]
+[1,] -0.6212406
+[2,] -2.2146999
+[3,]  1.1249309
+
+, , 6
+
+            [,1]
+[1,] -0.04493361
+[2,] -0.01619026
+[3,]  0.94383621
+
+, , 7
+
+          [,1]
+[1,] 0.8212212
+[2,] 0.5939013
+[3,] 0.9189774
+
+, , 8
+
+            [,1]
+[1,]  0.78213630
+[2,]  0.07456498
+[3,] -1.98935170
+
+, , 9
+
+            [,1]
+[1,]  0.61982575
+[2,] -0.05612874
+[3,] -0.15579551
+
+, , 10
+
+           [,1]
+[1,] -1.4707524
+[2,] -0.4781501
+[3,]  0.4179416
+
+> seed(S)=setRNG()
+> simulate(S)
+> Data(S) # different data
+, , 1
+
+           [,1]
+[1,]  1.3586796
+[2,] -0.1027877
+[3,]  0.3876716
+
+, , 2
+
+            [,1]
+[1,] -0.05380504
+[2,] -1.37705956
+[3,] -0.41499456
+
+, , 3
+
+           [,1]
+[1,] -0.3942900
+[2,] -0.0593134
+[3,]  1.1000254
+
+, , 4
+
+           [,1]
+[1,]  0.7631757
+[2,] -0.1645236
+[3,] -0.2533617
+
+, , 5
+
+           [,1]
+[1,]  0.6969634
+[2,]  0.5566632
+[3,] -0.6887557
+
+, , 6
+
+           [,1]
+[1,] -0.7074952
+[2,]  0.3645820
+[3,]  0.7685329
+
+, , 7
+
+           [,1]
+[1,] -0.1123462
+[2,]  0.8811077
+[3,]  0.3981059
+
+, , 8
+
+           [,1]
+[1,] -0.6120264
+[2,]  0.3411197
+[3,] -1.1293631
+
+, , 9
+
+           [,1]
+[1,]  1.4330237
+[2,]  1.9803999
+[3,] -0.3672215
+
+, , 10
+
+           [,1]
+[1,] -1.0441346
+[2,]  0.5697196
+[3,] -0.1350546
+
+> savedata(S) # saves the object in the directory of R...
+> load("xyz") # loads it again...
+> Data(S) # ...without the data - use simulate to return it!
+NULL
+> 
+> 
+> 
+> cleanEx()
+> nameEx("cload")
+> ### * cload
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: cload
+> ### Title: cload
+> ### Aliases: cload
+> ### Keywords: methods file
+> 
+> ### ** Examples
+> 
+> # see Dataclass and Evaluation for examples
+> ## The function is currently defined as
+> function(filename){
++   eval.parent(parse(text=paste("load(\"",filename,".comment\")", sep = "")))
++   }
+function (filename) 
+{
+    eval.parent(parse(text = paste("load(\"", filename, ".comment\")", 
+        sep = "")))
+}
+> 
+> 
+> 
+> cleanEx()
+> nameEx("distrSimMASK")
+> ### * distrSimMASK
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: distrSimMASK
+> ### Title: Masking of/by other functions in package "distrSim"
+> ### Aliases: distrSimMASK MASKING
+> ### Keywords: programming distribution documentation
+> 
+> ### ** Examples
+> 
+> distrSimMASK()
+######################################################################
+#  On masking of and by other functions in package "distrSim"       
+######################################################################
+
+Attention:
+
+*** intentional masking: ***
+
+To be able to use "rbind" as an S4 method for SeqDataFrames,
+we intentionally mask the base function "rbind"
+however "rbind" may still be used in exactly the same way 
+as before masking.
+
+> 
+> 
+> 
+> cleanEx()
+> nameEx("distrSimoptions")
+> ### * distrSimoptions
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: distrSimoptions
+> ### Title: functions to change the global variables of the package
+> ###   'distrSim'
+> ### Aliases: distrSimoptions getdistrSimOption MaxNumberofPlottedObsDims
+> ###   MaxNumberofPlottedRuns MaxNumberofSummarizedObsDims
+> ###   MaxNumberofSummarizedRuns
+> ### Keywords: misc
+> 
+> ### ** Examples
+> 
+> distrSimoptions()
+$MaxNumberofPlottedObs
+[1] 4000
+
+$MaxNumberofPlottedObsDims
+[1] 6
+
+$MaxNumberofPlottedRuns
+[1] 6
+
+$MaxNumberofSummarizedObsDims
+[1] 6
+
+$MaxNumberofSummarizedRuns
+[1] 6
+
+$MaxNumberofPrintedObsDims
+[1] 10
+
+$MaxNumberofPrintedObs
+[1] 10
+
+$MaxNumberofPrintedRuns
+[1] 100
+
+> distrSimoptions("MaxNumberofPlottedObsDims")
+$MaxNumberofPlottedObsDims
+[1] 6
+
+> distrSimoptions("MaxNumberofPlottedObsDims" = 5)
+> # or
+> getdistrSimOption("MaxNumberofPlottedObsDims")
+[1] 5
+> 
+> 
+> 
+> cleanEx()
+> nameEx("subsetting-methods")
+> ### * subsetting-methods
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: Subsetting-methods
+> ### Title: Subsetting/Indexing methods for SeqDataFrames objects in Package
+> ###   'distrSim'
+> ### Aliases: [-methods [<--methods [,SeqDataFrames-method
+> ###   [<-,SeqDataFrames-method
+> ### Keywords: methods
+> 
+> ### ** Examples
+> 
+> s0 <- matrix(1:6,3,2)
+> d0 <- data.frame(s0)
+> d1 <- data.frame(s0 + 3)
+> SF <- SeqDataFrames(d0, d1)
+> SF[1,2,1]
+ :
+[1] 4
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  2.144 0.036 2.191 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

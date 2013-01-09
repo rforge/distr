@@ -1,0 +1,3 @@
+^.*\.svn.+
+inst/doc/Rplots.pdf
+inst/doc/Rplots.ps

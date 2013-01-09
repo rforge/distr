@@ -1,0 +1,8 @@
+import("startupmsg")
+import("distr")
+import("distrEx")
+
+exportMethods("plotCLT") 
+export("illustrateLLN")
+export("illustrateCLT")
+export("illustrateCLT.tcl")

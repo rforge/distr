@@ -1,0 +1,16 @@
+Package: distrEx
+Version: 2.4
+Date: 2013-01-09
+Title: Extensions of package distr
+Description: Extensions of package distr and some additional functionality
+Depends: R(>= 2.6.0), methods, distr(>= 2.2), startupmsg
+Suggests: tcltk
+Author: Matthias Kohl, Peter Ruckdeschel, Nataliya Horbenko
+Maintainer: Matthias Kohl <Matthias.Kohl@stamats.de>
+ByteCompile: yes
+License: LGPL-3
+Encoding: latin1
+URL: http://distr.r-forge.r-project.org/
+LastChangedDate: {$LastChangedDate: 2013-01-09 00:32:51 +0100 (Mi, 09 Jan 2013) $}
+LastChangedRevision: {$LastChangedRevision: 835 $}
+SVNRevision: 834
