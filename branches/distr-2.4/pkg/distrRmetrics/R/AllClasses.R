@@ -23,7 +23,7 @@ setClass("SNormParameter",
           )
 
 ## Class: STParameter
-setClass("SSTParameter",
+setClass("SSTdParameter",
           representation = representation(mean = "numeric", sd = "vector", nu="numeric", xi="numeric"),
           prototype = prototype(mean = 0, sd = 1, nu=5, xi=1.5, name =
                       gettext("Parameter of a Skewed-T-distribution")
