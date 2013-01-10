@@ -1,6 +1,6 @@
 
-R version 2.15.0 Patched (2012-05-26 r59450) -- "Easter Beagle"
-Copyright (C) 2012 The R Foundation for Statistical Computing
+R Under development (unstable) (2013-01-09 r61595) -- "Unsuffered Consequences"
+Copyright (C) 2013 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
 
@@ -35,6 +35,13 @@ Loading required package: SweaveListingUtils
 :SweaveListingUtils>  Utilities for Sweave together with
 :SweaveListingUtils>  TeX listings package (version 0.6)
 :SweaveListingUtils> 
+:SweaveListingUtils>  NOTE: Support for this package
+:SweaveListingUtils>  will stop soon.
+:SweaveListingUtils> 
+:SweaveListingUtils>  Package 'knitr' is providing the
+:SweaveListingUtils>  same functionality in a better
+:SweaveListingUtils>  way.
+:SweaveListingUtils> 
 :SweaveListingUtils>  Some functions from package 'base'
 :SweaveListingUtils>  are intentionally masked ---see
 :SweaveListingUtils>  SweaveListingMASK().
@@ -54,7 +61,7 @@ Loading required package: SweaveListingUtils
 
 Attaching package: ‘SweaveListingUtils’
 
-The following object(s) are masked from ‘package:base’:
+The following object is masked from ‘package:base’:
 
     library, require
 
@@ -80,7 +87,7 @@ The following object(s) are masked from ‘package:base’:
 
 Attaching package: ‘distr’
 
-The following object(s) are masked from ‘package:stats’:
+The following object is masked from ‘package:stats’:
 
     df, qqplot, sd
 
@@ -102,11 +109,11 @@ Loading required package: distrSim
 
 Attaching package: ‘distrSim’
 
-The following object(s) are masked from ‘package:stats’:
+The following object is masked from ‘package:stats’:
 
     simulate
 
-The following object(s) are masked from ‘package:base’:
+The following object is masked from ‘package:base’:
 
     rbind
 
@@ -122,12 +129,23 @@ The following object(s) are masked from ‘package:base’:
 
 > 
 > assign(".oldSearch", search(), pos = 'CheckExEnv')
+> assign(".ExTimings", "distrTEst-Ex.timings", pos = 'CheckExEnv')
+> cat("name\tuser\tsystem\telapsed\n", file=get(".ExTimings", pos = 'CheckExEnv'))
+> assign(".format_ptime",
++ function(x) {
++   if(!is.na(x[4L])) x[1L] <- x[1L] + x[4L]
++   if(!is.na(x[5L])) x[2L] <- x[2L] + x[5L]
++   format(x[1L:3L])
++ },
++ pos = 'CheckExEnv')
+> 
 > cleanEx()
 > nameEx("Evaluation-class")
 > ### * Evaluation-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Evaluation-class
 > ### Title: Class "Evaluation"
 > ### Aliases: Evaluation-class initialize,Evaluation-method
@@ -257,12 +275,16 @@ Result: 'data.frame':	5 obs. of  2 variables:
 > 
 > 
 > 
+> 
+> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> cat("Evaluation-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("EvaluationList-class")
 > ### * EvaluationList-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: EvaluationList-class
 > ### Title: Class "EvaluationList"
 > ### Aliases: Elist EvaluationList EvaluationList-class
@@ -444,12 +466,16 @@ Result:
 > 
 > 
 > 
+> 
+> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> cat("EvaluationList-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("distrTEstoptions")
 > ### * distrTEstoptions
 > 
 > flush(stderr()); flush(stdout())
 > 
+> assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: distrTEstoptions
 > ### Title: functions to change the global variables of the package
 > ###   'distrTEst'
@@ -484,10 +510,13 @@ $MaxNumberofPlottedEvaluationDims
 > 
 > 
 > 
+> 
+> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> cat("distrTEstoptions", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  2.812 0.04 2.94 0 0 
+Time elapsed:  3.06 0.028 3.101 0 0 
 > grDevices::dev.off()
 null device 
           1 
