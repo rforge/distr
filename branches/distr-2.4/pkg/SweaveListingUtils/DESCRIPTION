@@ -11,7 +11,7 @@ Description: provides utilities for defining R / Rd as Tex-package-listings "lan
              recent version (or another url) thereby avoiding inconsistencies between vignette and documented source code
 Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
 License: LGPL-3
-Date: 2013-01-09
+Date: 2013-01-10
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
 SVNRevision: 834
