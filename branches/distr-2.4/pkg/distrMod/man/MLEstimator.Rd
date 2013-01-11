@@ -124,6 +124,8 @@ res1$loglik
 criterion(res)
 
 
+## don't run to reduce check time on CRAN
+\dontrun{
 ## explicitely transforming to
 ## MASS parametrization:
 mtrafo <- function(x){
@@ -148,6 +150,7 @@ res2
 par(mfrow=c(1,2))
 plot(profile(res2))
 par(mfrow=c(1,1))
+}
 
 #############################
 ## 5. Cauchy Location Scale model
