@@ -84,6 +84,8 @@ MDEstimator(x = x, ParamFamily = G, distance = KolmogorovDist)
 ## von Mises minimum distance estimator with default mu
 MDEstimator(x = x, ParamFamily = G, distance = CvMDist)
 
+## don't run to reduce check time on CRAN
+\dontrun{
 ## von Mises minimum distance estimator with default mu
 MDEstimator(x = x, ParamFamily = G, distance = CvMDist,
             asvar.fct = distrMod:::.CvMMDCovariance)
@@ -105,6 +107,7 @@ MDEstimator(x = x, ParamFamily = G, distance = HellingerDist, startPar = c(1,2))
 distroptions(DistrResolution = 1e-6) # default
 ## or smoothing of emprical distribution (takes some time!)
 #MDEstimator(x = x, ParamFamily = G, distance = HellingerDist, asis.smooth.discretize = "smooth")
+}
 }
 \keyword{univar}
 \keyword{robust}

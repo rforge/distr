@@ -2279,8 +2279,8 @@ function (x, log = FALSE)
     else d0 <- df1(x)/stand
     return(d0)
 }
-<bytecode: 0x3a97850>
-<environment: 0x4f3daf8>
+<bytecode: 0x3f8e9b0>
+<environment: 0x4ee6850>
 
 $pfun
 function (q, lower.tail = TRUE, log.p = FALSE) 
@@ -2295,7 +2295,7 @@ function (q, lower.tail = TRUE, log.p = FALSE)
     else p0/nm
     return(p0)
 }
-<environment: 0x52b8678>
+<environment: 0x537e520>
 
 $qfun
 function (p, lower.tail = TRUE, log.p = FALSE) 
@@ -2313,7 +2313,7 @@ function (p, lower.tail = TRUE, log.p = FALSE)
     else q.l(1 - p01)
     return(as.numeric(q0))
 }
-<environment: 0x510df50>
+<environment: 0x48b1180>
 
 > 
 > rp2 <- function(n){rpois(n, lambda = 1)^2}
@@ -2359,8 +2359,8 @@ function (x, log = FALSE)
     else d0 <- df1(x)/stand
     return(d0)
 }
-<bytecode: 0x3a97850>
-<environment: 0x5e0ab00>
+<bytecode: 0x3f8e9b0>
+<environment: 0x68d2c88>
 
 $pfun
 function (q, lower.tail = TRUE, log.p = FALSE) 
@@ -2375,7 +2375,7 @@ function (q, lower.tail = TRUE, log.p = FALSE)
     else p0/nm
     return(p0)
 }
-<environment: 0x52b8a80>
+<environment: 0x537f900>
 
 $qfun
 function (p, lower.tail = TRUE, log.p = FALSE) 
@@ -2393,7 +2393,7 @@ function (p, lower.tail = TRUE, log.p = FALSE)
     else q.l(1 - p01)
     return(as.numeric(q0))
 }
-<environment: 0x4f4e198>
+<environment: 0x5dc29f8>
 
 > 
 > rp2 <- function(n){rpois(n, lambda = 1)^2}
@@ -4122,11 +4122,11 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > F <- ( Norm() + Binom() + Pois() + Exp() ) * 2 - 10
 > system.time(r(F)(10^6))
    user  system elapsed 
-  0.708   0.028   0.739 
+  0.712   0.016   0.732 
 > simplifyr(F, size = 10^6)
 > system.time(r(F)(10^6))
    user  system elapsed 
-  0.048   0.000   0.048 
+  0.040   0.008   0.048 
 > 
 > 
 > 
@@ -4166,7 +4166,7 @@ setReplaceMethod("b", "testclass", function(object, value){ object@b <- value; o
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  33.75 0.204 34.238 0 0 
+Time elapsed:  29.229 0.22 29.643 0.004 0 
 > grDevices::dev.off()
 pdf 
   2 
