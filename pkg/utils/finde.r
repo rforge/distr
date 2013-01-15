@@ -28,6 +28,7 @@ finde(x="getSlots\\(", dir ="C:/rtest/distr/branches/distr-2.4/pkg/distrMod/", r
 finde(x="\"loc\"", dir ="C:/rtest/distr/branches/distr-2.4/pkg/distrEx/", rec=TRUE)
 finde(x=".makeQNew", dir ="C:/rtest/distr/pkg/distr/R")
 finde(x="http://distr\\.r-forge\\.r-project\\.org/distr\\.pdf", dir ="C:/rtest/distr/", rec=TRUE)
+finde(x="cniper.+\\(", dir ="C:/rtest/robast/branches/robast-0.9/pkg", rec=TRUE)
 
 ersetze <- function(x0 = "nchar", x1="nchar", dir="C:/rtest/distr/pkg/distr/R", ext = "R", rec = FALSE){
   ow <- getwd()
