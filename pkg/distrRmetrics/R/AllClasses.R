@@ -1,7 +1,7 @@
 
 .onAttach <- function(library, pkg)
 {
-buildStartupMessage(pkg = "distrRMetrics", "",  library = library,
+buildStartupMessage(pkg = "distrRmetrics", "",  library = library,
                     packageHelp = TRUE, 
                     VIGNETTE = gettext(
 "Package \"distrDoc\" provides a vignette to this package as well as to several extension packages; try vignette(\"distr\")."
