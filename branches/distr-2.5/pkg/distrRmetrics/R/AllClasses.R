@@ -1,10 +1,8 @@
 
-
 .onAttach <- function(library, pkg)
 {
 buildStartupMessage(pkg = "distrRMetrics", "",  library = library,
                     packageHelp = TRUE, 
-# MANUAL = "http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/distr.pdf",
                     VIGNETTE = gettext(
 "Package \"distrDoc\" provides a vignette to this package as well as to several extension packages; try vignette(\"distr\")."
                                       )
@@ -15,15 +13,15 @@ buildStartupMessage(pkg = "distrRMetrics", "",  library = library,
 
 ## Class: SkewNormParameter
 setClass("SNormParameter",
-          representation = representation(mean = "numeric", sd = "vector", xi="numeric"),
-          prototype = prototype(mean = 0, sd = 1, xi=1.5, name =
-                      gettext("Parameter of a Skewed Normal distribution")
-                      ), 
+          representation = representation(xi="numeric"),
+          prototype = prototype(name =
+                      gettext("Parameter of a Skewed Normal distribution"),
+                       xi=1.5),
           contains = "UniNormParameter"
           )
 
 ## Class: STParameter
-setClass("SSTParameter",
+setClass("SSTdParameter",
           representation = representation(mean = "numeric", sd = "vector", nu="numeric", xi="numeric"),
           prototype = prototype(mean = 0, sd = 1, nu=5, xi=1.5, name =
                       gettext("Parameter of a Skewed-T-distribution")
@@ -50,6 +48,8 @@ setClass("SNorm",
                           return(qsnorm(p0,mean=0,sd=1,xi=1.5))
                           },
                       param = new("SNormParameter"),
+                     .withArith = FALSE,
+                     .withSim = FALSE,
                      .logExact = FALSE,
                      .lowerExact = FALSE),
           contains = "AbscontDistribution"
@@ -75,6 +75,8 @@ setClass("SSTd",
                           return(qsstd(p0,mean=0,sd=1,nu=5,xi=1.5))
                           },
                       param = new("SSTdParameter"),
+                     .withArith = FALSE,
+                     .withSim = FALSE,
                      .logExact = FALSE,
                      .lowerExact = FALSE
                       ),
