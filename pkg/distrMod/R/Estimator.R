@@ -2,10 +2,12 @@
 ## Function to compute estimates
 ###############################################################################
 Estimator <- function(x, estimator, name, Infos, asvar = NULL, nuis.idx,
-                      trafo = NULL, fixed = NULL, asvar.fct, na.rm = TRUE, ...){
+                      trafo = NULL, fixed = NULL, asvar.fct, na.rm = TRUE, ...,
+                      ParamFamily = NULL){
 
     name.est <- paste(deparse(substitute(estimator)),sep="",collapse="")     
     es.call <- match.call()
+
     if(missing(name))
         name <- "Some estimator"
     
@@ -70,9 +72,11 @@ Estimator <- function(x, estimator, name, Infos, asvar = NULL, nuis.idx,
     res@estimate <- estimate[idm]
     
     asvar <- NULL
-    if(!missing(asvar.fct))
-       asvar <- asvar.fct(L2Fam = ParamFamily, param = param, ...)
-
+    if(!missing(asvar.fct)){
+       asvar.try <- try(asvar.fct(L2Fam = ParamFamily, param = param, ...),
+                         silent=TRUE)
+       if(!is(asvar.try,"try-error")) asvar <- asvar.try
+    }
     res@untransformed.asvar <- asvar
 
     if(!.isUnitMatrix(res@trafo$mat)){
