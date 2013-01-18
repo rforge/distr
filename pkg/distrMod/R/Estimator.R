@@ -73,7 +73,9 @@ Estimator <- function(x, estimator, name, Infos, asvar = NULL, nuis.idx,
     
     asvar <- NULL
     if(!missing(asvar.fct)){
-       asvar.try <- try(asvar.fct(L2Fam = ParamFamily, param = param, ...),
+       PFam <- NULL
+       if(!is.null(ParamFamily)) PFam <- modifyModel(ParamFamily, param)
+       asvar.try <- try(asvar.fct(L2Fam = PFam, param = param, ...),
                          silent=TRUE)
        if(!is(asvar.try,"try-error")) asvar <- asvar.try
     }
