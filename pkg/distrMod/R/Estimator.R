@@ -51,7 +51,7 @@ Estimator <- function(x, estimator, name, Infos, asvar = NULL, nuis.idx,
     
     if(is.null(names(estimate))) names(estimate) <- name.est
     
-    param <- ParamFamParameter(name = names(estimate), 
+    param <- ParamFamParameter(name = names(estimate),
                                main = estimate[idm],
                                nuisance = estimate[idx],
                                fixed = fixed)
@@ -71,6 +71,7 @@ Estimator <- function(x, estimator, name, Infos, asvar = NULL, nuis.idx,
     res@estimate <- estimate[idm]
     
     asvar <- NULL
+
     if(!missing(asvar.fct)){
        PFam <- NULL
        if(!is.null(ParamFamily)) PFam <- modifyModel(ParamFamily, param)
@@ -78,6 +79,7 @@ Estimator <- function(x, estimator, name, Infos, asvar = NULL, nuis.idx,
                          silent=TRUE)
        if(!is(asvar.try,"try-error")) asvar <- asvar.try
     }
+    res@asvar <- asvar
     res@untransformed.asvar <- asvar
 
     if(!.isUnitMatrix(res@trafo$mat)){
