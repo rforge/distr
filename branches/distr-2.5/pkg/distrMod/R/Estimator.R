@@ -35,7 +35,6 @@ Estimator <- function(x, estimator, name, Infos, asvar = NULL, nuis.idx,
     name.est <- paste(name.est,idm, sep="")     
 
     res <- new("Estimate")
-
     res@samplesize <- samplesize
     res@untransformed.estimate <- estimate
     res@estimate.call <- es.call
@@ -53,10 +52,10 @@ Estimator <- function(x, estimator, name, Infos, asvar = NULL, nuis.idx,
     if(is.null(names(estimate))) names(estimate) <- name.est
     
     param <- ParamFamParameter(name = names(estimate), 
-                               main = res@estimate[idm],
-                               nuisance = res@estimate[idx],
+                               main = estimate[idm],
+                               nuisance = estimate[idx],
                                fixed = fixed)
-    
+
     if(missing(trafo)||is.null(trafo)) 
        res@trafo <- list(fct = function(x) 
                                list(fval = x, mat = mat), 
