@@ -84,8 +84,10 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
            crit.name = "", Infos = NULL, validity.check = TRUE,
            withthetaPar = FALSE, ...){
 
-
-       if(is.null(startPar)) startPar <- startPar(PFam)(x,...)
+       mO <- NULL
+       if("makeOkPar" %in% slotNames(class(PFam))) mO <- PFam@makeOKPar
+       if(is.null(mO)) mO <-  function(param)param
+       if(is.null(startPar)) startPar <- mO(startPar(PFam)(x,...))
 
         lmx <- length(main(PFam))
         lnx <- length(nuisance(PFam))
@@ -100,8 +102,8 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
                dots$penalty <- NULL
                dots$withBiasC <- NULL
                if(is.function(penalty)) penalty <- penalty(theta)
-               if(!vP) crit0 <- penalty
-               else{
+               if(!vP) {crit0 <- penalty; theta <- mO(theta)
+               }else{
                   if(lnx)
                      names(theta) <- c(names(main(ParamFamily)),
                                        names(nuisance(ParamFamily)))
