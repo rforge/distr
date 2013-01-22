@@ -89,7 +89,7 @@
           }
           if(length(param)>2||length(param)<1) return(FALSE)
           if("shape"%in%names(param))
-             if(param["shape"] <= tol && object@withPosRestr) return(FALSE)
+             if(param["shape"] <= tol && object@param@withPosRestr) return(FALSE)
           return(TRUE)
           })
 
