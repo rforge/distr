@@ -1,5 +1,5 @@
 
-R Under development (unstable) (2013-01-09 r61595) -- "Unsuffered Consequences"
+R Under development (unstable) (2013-01-26 r61749) -- "Unsuffered Consequences"
 Copyright (C) 2013 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
@@ -156,9 +156,13 @@ The following object is masked from ‘package:stats’:
 > illustrateCLT(Distr = Unif(), len = 20)
 > distroptions("DefaultNrFFTGridPointsExponent" = 12)
 > illustrateCLT(Distr = Pois(lambda = 2), len = 20)
-> distroptions("DefaultNrFFTGridPointsExponent" = 13)
-> illustrateCLT(Distr = Pois(lambda = 2)+Unif(), len = 20)
-> illustrateCLT.tcl(Distr = Unif(), k = 4, "Unif()")
+> 
+> ## don't run to reduce check time on CRAN
+> ## Not run: 
+> ##D distroptions("DefaultNrFFTGridPointsExponent" = 13)
+> ##D illustrateCLT(Distr = Pois(lambda = 2)+Unif(), len = 20
+> ##D illustrateCLT.tcl(Distr = Unif(), k = 4, "Unif()")
+> ## End(Not run)
 > 
 > 
 > 
@@ -217,7 +221,7 @@ The following object is masked from ‘package:stats’:
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  15.068 0.244 15.377 0 0 
+Time elapsed:  10.448 0.144 10.634 0 0 
 > grDevices::dev.off()
 null device 
           1 
