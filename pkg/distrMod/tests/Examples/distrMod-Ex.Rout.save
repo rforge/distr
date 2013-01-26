@@ -1,5 +1,5 @@
 
-R Under development (unstable) (2013-01-09 r61595) -- "Unsuffered Consequences"
+R Under development (unstable) (2013-01-26 r61749) -- "Unsuffered Consequences"
 Copyright (C) 2013 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 Platform: x86_64-unknown-linux-gnu (64-bit)
@@ -115,7 +115,7 @@ The following object is masked from ‘package:stats’:
     IQR, mad, median, var
 
 Loading required package: RandVar
-:RandVar>  Implementation of random variables (version 0.8.1)
+:RandVar>  Implementation of random variables (version 0.9)
 :RandVar> 
 :RandVar>  For more information see ?"RandVar", NEWS("RandVar"), as
 :RandVar>  well as
@@ -647,7 +647,7 @@ function (x)
 {
     ((x - 0)/1 * LogDeriv((x - 0)/1) - 1)/1
 }
-<environment: 0x6fb3190>
+<environment: 0x7932d20>
 
 > checkL2deriv(E1)
 precision of centering:	 -1.51181e-06 
@@ -835,8 +835,8 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A)
-<bytecode: 0x6a7b620>
-<environment: 0x6a4b590>
+<bytecode: 0x7efe6a0>
+<environment: 0x7efe898>
 
 > 
 > ## The function is currently defined as
@@ -1162,7 +1162,7 @@ function (x)
 {
     ((x - 0)/1 * LogDeriv((x - 0)/1) - 1)/1
 }
-<environment: 0x7d3a840>
+<environment: 0x9cc5fe8>
 
 > checkL2deriv(L1)
 precision of centering:	 -0.003003394 
@@ -2235,7 +2235,7 @@ function (x)
         return(abs(x))
     else return(sqrt(colSums(x^2)))
 }
-<bytecode: 0x7f30e70>
+<bytecode: 0xa7e4d80>
 <environment: namespace:distrMod>
 > name(EuclNorm)
 [1] "EuclideanNorm"
@@ -2271,7 +2271,7 @@ function (x)
         return(abs(x))
     else return(sqrt(colSums(x^2)))
 }
-<bytecode: 0x7f30e70>
+<bytecode: 0xa7e4d80>
 <environment: namespace:distrMod>
 
 > 
@@ -2766,8 +2766,8 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A0)
-<bytecode: 0x69be940>
-<environment: 0x69be358>
+<bytecode: 0x49e4658>
+<environment: 0x4a01700>
 
 > 
 > ## The function is currently defined as
@@ -2809,8 +2809,8 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A)
-<bytecode: 0x9642ca8>
-<environment: 0x96417b0>
+<bytecode: 0x6bc62a0>
+<environment: 0x6babd48>
 
 > 
 > ## The function is currently defined as
@@ -4472,7 +4472,7 @@ sig^2  3.6698685 11.189719
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  33.286 0.26 33.72 0 0.004 
+Time elapsed:  33.198 0.1 33.429 0 0.004 
 > grDevices::dev.off()
 null device 
           1 
