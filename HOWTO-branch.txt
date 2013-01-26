@@ -1,0 +1,23 @@
+Merging a branch into the trunk (resp. pkg) folder
+
+(1) Preparations:
+
+update the local chechout by svn update 
+
+(2) Note Starting and ending revision number 
+   (e.g. for branch dist-2.4, it is 693 to 836)
+   
+(3) make a merge to reintegrate a branch e.g.
+    specify the branch as
+svn+ssh://<r-forge-login>@svn.r-forge.r-project.org/svnroot/distr/branches/dist-2.4/pkg
+    to <head file of your svn checkout>, e.g. C:\rtest\distr
+	
+(4) edit conflicts 
+
+(5) create a new branch
+    mark head of trunk (i.e. pkg folder immediately under your checkout head,
+	  ie. eg. C:\rtest\distr\pkg)
+    choose branch
+    to path e.g. /branches/dist-2.5/pkg	
+	
+(6) do the same with www ... (destination eg. /branches/dist-2.5/www)

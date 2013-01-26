@@ -1,0 +1,1381 @@
+********************************************
+short:
+********************************************
+------------------------------------------------------------------------
+r830 | ruckdeschel | 2013-01-07 18:16:30 +0100 (Mo, 07 Jan 2013) | 1 line
+------------------------------------------------------------------------
+
+SweaveListingUtils: falsche Argumentstruktur in library() gefixt
+
+------------------------------------------------------------------------
+r831 | ruckdeschel | 2013-01-08 21:53:52 +0100 (Di, 08 Jan 2013) | 1 line
+------------------------------------------------------------------------
+
+Taking up proposal by Baoyue Li, plot methods for distribution objects gain functionality to modify xlab and ylab
+
+------------------------------------------------------------------------
+r832 | ruckdeschel | 2013-01-08 22:06:35 +0100 (Di, 08 Jan 2013) | 1 line
+------------------------------------------------------------------------
+
+distrEx: collected functions moved to RobExtremes to issue notification
+
+------------------------------------------------------------------------
+r833 | ruckdeschel | 2013-01-08 23:13:39 +0100 (Di, 08 Jan 2013) | 6 lines
+------------------------------------------------------------------------
+
+distrMod: after change of @<- semantics by J. Chambers moved from
+ class(M) <- class(model) 
+to 
+  slots.from <- slotNames(class(M))
+  M1 <- new(class(model))
+  for(slot.s in slots.from) slot(M1,slot.s) <- slot(M,slot.s)
+
+------------------------------------------------------------------------
+r834 | ruckdeschel | 2013-01-08 23:26:28 +0100 (Di, 08 Jan 2013) | 1 line
+------------------------------------------------------------------------
+
+updated NEWS files
+
+------------------------------------------------------------------------
+r835 | ruckdeschel | 2013-01-09 00:32:51 +0100 (Mi, 09 Jan 2013) | 1 line
+------------------------------------------------------------------------
+
+in branch 2.4: updated DESCRIPTION and package-help files
+
+------------------------------------------------------------------------
+r836 | ruckdeschel | 2013-01-09 01:39:27 +0100 (Mi, 09 Jan 2013) | 2 lines
+------------------------------------------------------------------------
+
+created branch-2.5
+
+
+------------------------------------------------------------------------
+r837 | ruckdeschel | 2013-01-09 01:40:25 +0100 (Mi, 09 Jan 2013) | 1 line
+------------------------------------------------------------------------
+
+updated version information in branch 2.5
+
+------------------------------------------------------------------------
+r838 | ruckdeschel | 2013-01-09 02:00:00 +0100 (Mi, 09 Jan 2013) | 1 line
+------------------------------------------------------------------------
+
+merged branch 2.4 into pkg (trunk)
+
+------------------------------------------------------------------------
+r839 | ruckdeschel | 2013-01-09 02:01:41 +0100 (Mi, 09 Jan 2013) | 1 line
+------------------------------------------------------------------------
+
+minor changes for update to 2.5
+
+------------------------------------------------------------------------
+r840 | ruckdeschel | 2013-01-09 02:03:42 +0100 (Mi, 09 Jan 2013) | 1 line
+------------------------------------------------------------------------
+
+finished update to 2.4
+
+------------------------------------------------------------------------
+r841 | stamats | 2013-01-10 06:10:36 +0100 (Do, 10 Jan 2013) | 1 line
+------------------------------------------------------------------------
+
+update of Rout.save and date in DESCRIPTION file
+
+------------------------------------------------------------------------
+r842 | stamats | 2013-01-10 06:16:26 +0100 (Do, 10 Jan 2013) | 1 line
+------------------------------------------------------------------------
+
+update of Rout.save and date in DESCRIPTION file, compressed vignette
+
+------------------------------------------------------------------------
+r843 | stamats | 2013-01-10 06:57:16 +0100 (Do, 10 Jan 2013) | 2 lines
+------------------------------------------------------------------------
+
+update of Rout.save and date in DESCRIPTION file
+put some examples in "\dontrun" to reduce check time on CRAN
+
+------------------------------------------------------------------------
+r844 | stamats | 2013-01-10 07:19:39 +0100 (Do, 10 Jan 2013) | 1 line
+------------------------------------------------------------------------
+
+update of Rout.save and date in DESCRIPTION file
+
+------------------------------------------------------------------------
+r845 | stamats | 2013-01-10 07:33:14 +0100 (Do, 10 Jan 2013) | 1 line
+------------------------------------------------------------------------
+
+some corrections but still error in R CMD check
+
+------------------------------------------------------------------------
+r846 | stamats | 2013-01-10 07:33:57 +0100 (Do, 10 Jan 2013) | 1 line
+------------------------------------------------------------------------
+
+update of Rout.save and date in DESCRIPTION file
+
+------------------------------------------------------------------------
+r847 | stamats | 2013-01-10 07:34:41 +0100 (Do, 10 Jan 2013) | 1 line
+------------------------------------------------------------------------
+
+update of Rout.save and date in DESCRIPTION file
+
+------------------------------------------------------------------------
+r848 | stamats | 2013-01-10 08:41:05 +0100 (Do, 10 Jan 2013) | 2 lines
+------------------------------------------------------------------------
+
+update of Rout.save and date in DESCRIPTION file
+compressed vignette
+
+
+********************************************
+complete:
+********************************************
+------------------------------------------------------------------------
+r830 | ruckdeschel | 2013-01-07 18:16:30 +0100 (Mo, 07 Jan 2013) | 1 line
+Changed paths:
+   M /branches/distr-2.4/pkg/SweaveListingUtils/R/keywordsStyle.R
+
+SweaveListingUtils: falsche Argumentstruktur in library() gefixt
+------------------------------------------------------------------------
+r831 | ruckdeschel | 2013-01-08 21:53:52 +0100 (Di, 08 Jan 2013) | 1 line
+Changed paths:
+   M /branches/distr-2.4/pkg/distr/R/internalUtils.R
+   M /branches/distr-2.4/pkg/distr/R/plot-methods.R
+   M /branches/distr-2.4/pkg/distr/R/plot-methods_LebDec.R
+   M /branches/distr-2.4/pkg/distr/man/plot-methods.Rd
+
+Taking up proposal by Baoyue Li, plot methods for distribution objects gain functionality to modify xlab and ylab
+------------------------------------------------------------------------
+r832 | ruckdeschel | 2013-01-08 22:06:35 +0100 (Di, 08 Jan 2013) | 1 line
+Changed paths:
+   A /branches/distr-2.4/pkg/distrEx/R/moved2RobExtremes.R
+
+distrEx: collected functions moved to RobExtremes to issue notification
+------------------------------------------------------------------------
+r833 | ruckdeschel | 2013-01-08 23:13:39 +0100 (Di, 08 Jan 2013) | 6 lines
+Changed paths:
+   M /branches/distr-2.4/pkg/distrMod/R/modifyModel.R
+
+distrMod: after change of @<- semantics by J. Chambers moved from
+ class(M) <- class(model) 
+to 
+  slots.from <- slotNames(class(M))
+  M1 <- new(class(model))
+  for(slot.s in slots.from) slot(M1,slot.s) <- slot(M,slot.s)
+------------------------------------------------------------------------
+r834 | ruckdeschel | 2013-01-08 23:26:28 +0100 (Di, 08 Jan 2013) | 1 line
+Changed paths:
+   M /branches/distr-2.4/pkg/SweaveListingUtils/inst/NEWS
+   M /branches/distr-2.4/pkg/distr/inst/NEWS
+   M /branches/distr-2.4/pkg/distrDoc/inst/NEWS
+   M /branches/distr-2.4/pkg/distrMod/inst/NEWS
+   M /branches/distr-2.4/pkg/distrSim/inst/NEWS
+   M /branches/distr-2.4/pkg/utils/ladealles.R
+
+updated NEWS files
+------------------------------------------------------------------------
+r835 | ruckdeschel | 2013-01-09 00:32:51 +0100 (Mi, 09 Jan 2013) | 1 line
+Changed paths:
+   M /branches/distr-2.4/pkg/SweaveListingUtils/DESCRIPTION
+   M /branches/distr-2.4/pkg/SweaveListingUtils/man/0SweaveListingUtils-package.Rd
+   M /branches/distr-2.4/pkg/distr/DESCRIPTION
+   M /branches/distr-2.4/pkg/distr/man/0distr-package.Rd
+   M /branches/distr-2.4/pkg/distrDoc/DESCRIPTION
+   M /branches/distr-2.4/pkg/distrDoc/man/0distrDoc-package.Rd
+   M /branches/distr-2.4/pkg/distrEllipse/DESCRIPTION
+   M /branches/distr-2.4/pkg/distrEllipse/man/0distrEllipse-package.Rd
+   M /branches/distr-2.4/pkg/distrEx/DESCRIPTION
+   M /branches/distr-2.4/pkg/distrEx/man/0distrEx-package.Rd
+   M /branches/distr-2.4/pkg/distrMod/DESCRIPTION
+   M /branches/distr-2.4/pkg/distrMod/man/0distrMod-package.Rd
+   A /branches/distr-2.4/pkg/distrRmetrics
+   A /branches/distr-2.4/pkg/distrRmetrics/DESCRIPTION
+   A /branches/distr-2.4/pkg/distrRmetrics/NAMESPACE
+   A /branches/distr-2.4/pkg/distrRmetrics/R
+   A /branches/distr-2.4/pkg/distrRmetrics/R/AllClasses.R
+   A /branches/distr-2.4/pkg/distrRmetrics/R/AllGenerics.R
+   A /branches/distr-2.4/pkg/distrRmetrics/R/fGarchDistr.R
+   A /branches/distr-2.4/pkg/distrRmetrics/inst
+   A /branches/distr-2.4/pkg/distrRmetrics/inst/CITATION
+   A /branches/distr-2.4/pkg/distrRmetrics/inst/NEWS
+   A /branches/distr-2.4/pkg/distrRmetrics/inst/TOBEDONE
+   A /branches/distr-2.4/pkg/distrRmetrics/man
+   M /branches/distr-2.4/pkg/distrSim/DESCRIPTION
+   M /branches/distr-2.4/pkg/distrSim/man/0distrSim-package.Rd
+   M /branches/distr-2.4/pkg/distrTEst/DESCRIPTION
+   M /branches/distr-2.4/pkg/distrTEst/man/0distrTEst-package.Rd
+   M /branches/distr-2.4/pkg/distrTeach/DESCRIPTION
+   M /branches/distr-2.4/pkg/distrTeach/man/0distrTeach-package.Rd
+   M /branches/distr-2.4/pkg/utils/DESCRIPTIONutils.R
+   M /branches/distr-2.4/pkg/utils/getRevNr.R
+
+in branch 2.4: updated DESCRIPTION and package-help files
+------------------------------------------------------------------------
+r836 | ruckdeschel | 2013-01-09 01:39:27 +0100 (Mi, 09 Jan 2013) | 2 lines
+Changed paths:
+   A /branches/distr-2.5
+   A /branches/distr-2.5/README
+   A /branches/distr-2.5/pkg
+   A /branches/distr-2.5/pkg/Mail
+   A /branches/distr-2.5/pkg/Mail/New versions for the distr-family of packages and of package startupmsg.txt
+   A /branches/distr-2.5/pkg/Mail/new_versions_packages_distr-distrEx-distrSim-distrTEst.txt
+   A /branches/distr-2.5/pkg/SweaveListingUtils
+   A /branches/distr-2.5/pkg/SweaveListingUtils/.Rbuildignore
+   A /branches/distr-2.5/pkg/SweaveListingUtils/DESCRIPTION
+   A /branches/distr-2.5/pkg/SweaveListingUtils/NAMESPACE
+   A /branches/distr-2.5/pkg/SweaveListingUtils/R
+   A /branches/distr-2.5/pkg/SweaveListingUtils/R/SweaveListingOptions.R
+   A /branches/distr-2.5/pkg/SweaveListingUtils/R/SweaveListingUtils.R
+   A /branches/distr-2.5/pkg/SweaveListingUtils/R/keywordsRbyRobertDenham.R
+   A /branches/distr-2.5/pkg/SweaveListingUtils/R/keywordsStyle.R
+   A /branches/distr-2.5/pkg/SweaveListingUtils/R/lstset.R
+   A /branches/distr-2.5/pkg/SweaveListingUtils/R/taglist.R
+   A /branches/distr-2.5/pkg/SweaveListingUtils/inst
+   A /branches/distr-2.5/pkg/SweaveListingUtils/inst/MASKING
+   A /branches/distr-2.5/pkg/SweaveListingUtils/inst/NEWS
+   A /branches/distr-2.5/pkg/SweaveListingUtils/inst/TOBEDONE
+   A /branches/distr-2.5/pkg/SweaveListingUtils/inst/TeX
+   A /branches/distr-2.5/pkg/SweaveListingUtils/inst/TeX/Rdlisting.sty
+   A /branches/distr-2.5/pkg/SweaveListingUtils/inst/doc
+   A /branches/distr-2.5/pkg/SweaveListingUtils/inst/doc/ExampleSweaveListingUtils.pdf
+   A /branches/distr-2.5/pkg/SweaveListingUtils/inst/try
+   A /branches/distr-2.5/pkg/SweaveListingUtils/inst/try/algorithm2e.sty
+   A /branches/distr-2.5/pkg/SweaveListingUtils/inst/try/fancyhdr.sty
+   A /branches/distr-2.5/pkg/SweaveListingUtils/inst/try/lastpage.sty
+   A /branches/distr-2.5/pkg/SweaveListingUtils/inst/try/test.Rnw
+   A /branches/distr-2.5/pkg/SweaveListingUtils/inst/try/try.Rnw
+   A /branches/distr-2.5/pkg/SweaveListingUtils/inst/try/try.Rtex
+   A /branches/distr-2.5/pkg/SweaveListingUtils/inst/try/try.tex
+   A /branches/distr-2.5/pkg/SweaveListingUtils/inst/try/try2.Rnw
+   A /branches/distr-2.5/pkg/SweaveListingUtils/inst/try/try2.tex
+   A /branches/distr-2.5/pkg/SweaveListingUtils/inst/try/try_Hausman.tex
+   A /branches/distr-2.5/pkg/SweaveListingUtils/inst/try/try_Hausmann.Rnw
+   A /branches/distr-2.5/pkg/SweaveListingUtils/man
+   A /branches/distr-2.5/pkg/SweaveListingUtils/man/0SweaveListingUtils-package.Rd
+   A /branches/distr-2.5/pkg/SweaveListingUtils/man/SweaveListingMASK.Rd
+   A /branches/distr-2.5/pkg/SweaveListingUtils/man/SweaveListingOptions.Rd
+   A /branches/distr-2.5/pkg/SweaveListingUtils/man/SweaveListingPreparations.Rd
+   A /branches/distr-2.5/pkg/SweaveListingUtils/man/changeKeywordstyles.Rd
+   A /branches/distr-2.5/pkg/SweaveListingUtils/man/copySourceFromRForge.Rd
+   A /branches/distr-2.5/pkg/SweaveListingUtils/man/isBaseOrRecommended.Rd
+   A /branches/distr-2.5/pkg/SweaveListingUtils/man/library.Rd
+   A /branches/distr-2.5/pkg/SweaveListingUtils/man/lstinputSourceFromRForge.Rd
+   A /branches/distr-2.5/pkg/SweaveListingUtils/man/lstset.Rd
+   A /branches/distr-2.5/pkg/SweaveListingUtils/man/lstsetLanguage.Rd
+   A /branches/distr-2.5/pkg/SweaveListingUtils/man/readPackageVersion.Rd
+   A /branches/distr-2.5/pkg/SweaveListingUtils/man/readSourceFromRForge.Rd
+   A /branches/distr-2.5/pkg/SweaveListingUtils/man/setBaseOrRecommended.Rd
+   A /branches/distr-2.5/pkg/SweaveListingUtils/man/setToBeDefinedPkgs.Rd
+   A /branches/distr-2.5/pkg/SweaveListingUtils/man/taglist.Rd
+   A /branches/distr-2.5/pkg/SweaveListingUtils/tests
+   A /branches/distr-2.5/pkg/SweaveListingUtils/tests/Examples
+   A /branches/distr-2.5/pkg/SweaveListingUtils/tests/Examples/SweaveListingUtils-Ex.Rout.save
+   A /branches/distr-2.5/pkg/SweaveListingUtils/vignettes
+   A /branches/distr-2.5/pkg/SweaveListingUtils/vignettes/AllClass.tex
+   A /branches/distr-2.5/pkg/SweaveListingUtils/vignettes/BinomParam.tex
+   A /branches/distr-2.5/pkg/SweaveListingUtils/vignettes/ExampleSweaveListingUtils.Rnw
+   A /branches/distr-2.5/pkg/SweaveListingUtils/vignettes/altPrep.tex
+   A /branches/distr-2.5/pkg/SweaveListingUtils/vignettes/cleanup.tex
+   A /branches/distr-2.5/pkg/SweaveListingUtils/vignettes/exam00.tex
+   A /branches/distr-2.5/pkg/SweaveListingUtils/vignettes/exam1.tex
+   A /branches/distr-2.5/pkg/SweaveListingUtils/vignettes/locChange.tex
+   A /branches/distr-2.5/pkg/SweaveListingUtils/vignettes/preamble.tex
+   A /branches/distr-2.5/pkg/SweaveListingUtils/vignettes/preamble2.tex
+   A /branches/distr-2.5/pkg/SweaveListingUtils/vignettes/preambleExp.tex
+   A /branches/distr-2.5/pkg/SweaveListingUtils/vignettes/reqdistr.tex
+   A /branches/distr-2.5/pkg/SweaveListingUtils/vignettes/svn-multi.sty
+   A /branches/distr-2.5/pkg/SweaveListingUtils/vignettes/svnkw.sty
+   A /branches/distr-2.5/pkg/distr
+   A /branches/distr-2.5/pkg/distr/.Rbuildignore
+   A /branches/distr-2.5/pkg/distr/DESCRIPTION
+   A /branches/distr-2.5/pkg/distr/NAMESPACE
+   A /branches/distr-2.5/pkg/distr/R
+   A /branches/distr-2.5/pkg/distr/R/0distrOptions.R
+   A /branches/distr-2.5/pkg/distr/R/0pre230.R
+   A /branches/distr-2.5/pkg/distr/R/0pre270.R
+   A /branches/distr-2.5/pkg/distr/R/AllClasses.R
+   A /branches/distr-2.5/pkg/distr/R/AllGenerics.R
+   A /branches/distr-2.5/pkg/distr/R/AllInitialize.R
+   A /branches/distr-2.5/pkg/distr/R/ArcsineDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/BetaDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/BinomialDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/CauchyDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/ChisquaredDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/CompoundDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/ContDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/Convpow.R
+   A /branches/distr-2.5/pkg/distr/R/DiracDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/DiscreteDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/DistrList.R
+   A /branches/distr-2.5/pkg/distr/R/DistrSymmList.R
+   A /branches/distr-2.5/pkg/distr/R/Distribution.R
+   A /branches/distr-2.5/pkg/distr/R/ExpOrdGammaOrChisq.R
+   A /branches/distr-2.5/pkg/distr/R/ExponentialDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/ExtraConvolutionMethods.R
+   A /branches/distr-2.5/pkg/distr/R/FDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/GammaDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/GeometricDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/Huberize.R
+   A /branches/distr-2.5/pkg/distr/R/HypergeomDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/Infoshow.r
+   A /branches/distr-2.5/pkg/distr/R/LaplaceDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/Lattice.R
+   A /branches/distr-2.5/pkg/distr/R/LatticeDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/LogisticDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/LognormalDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/MinMaximum.R
+   A /branches/distr-2.5/pkg/distr/R/NegbinomDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/NormalDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/Parameter.R
+   A /branches/distr-2.5/pkg/distr/R/PoissonDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/PosDefSymmMatrix.R
+   A /branches/distr-2.5/pkg/distr/R/SimplifyD.R
+   A /branches/distr-2.5/pkg/distr/R/Spaces.r
+   A /branches/distr-2.5/pkg/distr/R/StudentDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/Symmetry.R
+   A /branches/distr-2.5/pkg/distr/R/Truncate.R
+   A /branches/distr-2.5/pkg/distr/R/UniformDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/UnivarLebDecDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/UnivarMixingDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/UtilitiesDistributions.R
+   A /branches/distr-2.5/pkg/distr/R/WeibullDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/bAcDcLcDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/bAffLinUnivarLebDecDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/decomposePM.R
+   A /branches/distr-2.5/pkg/distr/R/flat.R
+   A /branches/distr-2.5/pkg/distr/R/getLabel.R
+   A /branches/distr-2.5/pkg/distr/R/getLow.R
+   A /branches/distr-2.5/pkg/distr/R/igamma.R
+   A /branches/distr-2.5/pkg/distr/R/internalUtils.R
+   A /branches/distr-2.5/pkg/distr/R/internalUtils_LCD.R
+   A /branches/distr-2.5/pkg/distr/R/internalUtils_trunc.R
+   A /branches/distr-2.5/pkg/distr/R/internals-qqplot.R
+   A /branches/distr-2.5/pkg/distr/R/liesInSupport.R
+   A /branches/distr-2.5/pkg/distr/R/makeAbscontDistribution.R
+   A /branches/distr-2.5/pkg/distr/R/plot-methods.R
+   A /branches/distr-2.5/pkg/distr/R/plot-methods_LebDec.R
+   A /branches/distr-2.5/pkg/distr/R/print-show-methods.R
+   A /branches/distr-2.5/pkg/distr/R/qqbounds.R
+   A /branches/distr-2.5/pkg/distr/R/qqplot.R
+   A /branches/distr-2.5/pkg/distr/R/setIsRelations.R
+   A /branches/distr-2.5/pkg/distr/R/solve.R
+   A /branches/distr-2.5/pkg/distr/R/sqrt.R
+   A /branches/distr-2.5/pkg/distr/R/standardMethods.R
+   A /branches/distr-2.5/pkg/distr/R/versionManagement.R
+   A /branches/distr-2.5/pkg/distr/demo
+   A /branches/distr-2.5/pkg/distr/demo/00Index
+   A /branches/distr-2.5/pkg/distr/demo/ComparisonFFTandRtoDPQ.R
+   A /branches/distr-2.5/pkg/distr/demo/ConvolutionNormalDistr.R
+   A /branches/distr-2.5/pkg/distr/demo/Expectation.R
+   A /branches/distr-2.5/pkg/distr/demo/NormApprox.R
+   A /branches/distr-2.5/pkg/distr/demo/StationaryRegressorDistr.R
+   A /branches/distr-2.5/pkg/distr/demo/destructive.R
+   A /branches/distr-2.5/pkg/distr/demo/nFoldConvolution.R
+   A /branches/distr-2.5/pkg/distr/demo/range.R
+   A /branches/distr-2.5/pkg/distr/inst
+   A /branches/distr-2.5/pkg/distr/inst/ARITHMETICS
+   A /branches/distr-2.5/pkg/distr/inst/CITATION
+   A /branches/distr-2.5/pkg/distr/inst/MASKING
+   A /branches/distr-2.5/pkg/distr/inst/NEWS
+   A /branches/distr-2.5/pkg/distr/inst/TOBEDONE
+   A /branches/distr-2.5/pkg/distr/inst/doc
+   A /branches/distr-2.5/pkg/distr/inst/doc/newDistributions.pdf
+   A /branches/distr-2.5/pkg/distr/man
+   A /branches/distr-2.5/pkg/distr/man/0distr-package.Rd
+   A /branches/distr-2.5/pkg/distr/man/AbscontDistribution-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/AbscontDistribution.Rd
+   A /branches/distr-2.5/pkg/distr/man/Arcsine-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/Beta-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/BetaParameter-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/Binom-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/BinomParameter-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/Cauchy-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/CauchyParameter-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/Chisq-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/ChisqParameter-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/CompoundDistribution-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/CompoundDistribution.Rd
+   A /branches/distr-2.5/pkg/distr/man/ConvPow.Rd
+   A /branches/distr-2.5/pkg/distr/man/DExp-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/Dirac-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/DiracParameter-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/DiscreteDistribution-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/DiscreteDistribution.Rd
+   A /branches/distr-2.5/pkg/distr/man/DistrList-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/DistrList.Rd
+   A /branches/distr-2.5/pkg/distr/man/DistrSymmList-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/DistrSymmList.Rd
+   A /branches/distr-2.5/pkg/distr/man/Distribution-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/DistributionSymmetry-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/EllipticalSymmetry-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/EllipticalSymmetry.Rd
+   A /branches/distr-2.5/pkg/distr/man/EuclideanSpace-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/Exp-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/ExpOrGammaOrChisq-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/ExpParameter-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/FParameter-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/Fd-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/GammaParameter-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/Gammad-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/Geom-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/GeomParameter-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/Huberize-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/Hyper-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/HyperParameter-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/Integer-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/Lattice-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/LatticeDistribution-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/LatticeDistribution.Rd
+   A /branches/distr-2.5/pkg/distr/man/Length-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/Lnorm-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/LnormParameter-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/Logis-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/LogisParameter-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/MakeAbscontDistribution.Rd
+   A /branches/distr-2.5/pkg/distr/man/Math-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/Max-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/Min-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/MinMaximum-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/Naturals-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/Nbinom-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/NbinomParameter-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/NoSymmetry-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/NoSymmetry.Rd
+   A /branches/distr-2.5/pkg/distr/man/Norm-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/NormParameter-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/OptionalParameter-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/Parameter-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/Pois-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/PoisParameter-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/PosDefSymmMatrix-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/PosDefSymmMatrix.Rd
+   A /branches/distr-2.5/pkg/distr/man/Reals-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/RtoDPQ.LC.Rd
+   A /branches/distr-2.5/pkg/distr/man/RtoDPQ.Rd
+   A /branches/distr-2.5/pkg/distr/man/RtoDPQ.d.Rd
+   A /branches/distr-2.5/pkg/distr/man/SphericalSymmetry-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/SphericalSymmetry.Rd
+   A /branches/distr-2.5/pkg/distr/man/Symmetry-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/TParameter-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/Td-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/Truncate-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/UniNormParameter-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/Unif-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/UnifParameter-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/UnivarDistrList-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/UnivarDistrList.Rd
+   A /branches/distr-2.5/pkg/distr/man/UnivarLebDecDistribution-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/UnivarLebDecDistribution.Rd
+   A /branches/distr-2.5/pkg/distr/man/UnivarMixingDistribution-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/UnivarMixingDistribution.Rd
+   A /branches/distr-2.5/pkg/distr/man/UnivariateDistribution-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/Weibull-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/WeibullParameter-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/d-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/decomposePM-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/df-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/df1-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/df2-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/dim-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/dimension-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/distrARITH.Rd
+   A /branches/distr-2.5/pkg/distr/man/distrMASK.Rd
+   A /branches/distr-2.5/pkg/distr/man/distroptions.Rd
+   A /branches/distr-2.5/pkg/distr/man/flat.LCD.Rd
+   A /branches/distr-2.5/pkg/distr/man/flat.mix.Rd
+   A /branches/distr-2.5/pkg/distr/man/gap-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/getLabel.Rd
+   A /branches/distr-2.5/pkg/distr/man/getLow.Rd
+   A /branches/distr-2.5/pkg/distr/man/igamma.Rd
+   A /branches/distr-2.5/pkg/distr/man/img-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/internalClassUnions-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/internals-qqplot.Rd
+   A /branches/distr-2.5/pkg/distr/man/internals.Rd
+   A /branches/distr-2.5/pkg/distr/man/k-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/lambda-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/liesIn-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/liesInSupport.Rd
+   A /branches/distr-2.5/pkg/distr/man/location-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/m-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/mean-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/meanlog-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/n-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/name-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/ncp-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/operators-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/options.Rd
+   A /branches/distr-2.5/pkg/distr/man/p-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/p.l-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/param-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/pivot-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/plot-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/print-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/prob-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/q-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/q.r-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/qqbounds.Rd
+   A /branches/distr-2.5/pkg/distr/man/qqplot.Rd
+   A /branches/distr-2.5/pkg/distr/man/r-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/rSpace-class.Rd
+   A /branches/distr-2.5/pkg/distr/man/rate-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/scale-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/sd-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/sdlog-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/shape-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/shape1-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/shape2-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/showobj-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/simplifyD-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/simplifyr-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/size-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/solve-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/sqrt-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/standardMethods.Rd
+   A /branches/distr-2.5/pkg/distr/man/support-methods.Rd
+   A /branches/distr-2.5/pkg/distr/man/versionmanagement.Rd
+   A /branches/distr-2.5/pkg/distr/man/width-methods.Rd
+   A /branches/distr-2.5/pkg/distr/tests
+   A /branches/distr-2.5/pkg/distr/tests/Examples
+   A /branches/distr-2.5/pkg/distr/tests/Examples/distr-Ex.Rout.save
+   A /branches/distr-2.5/pkg/distr/vignettes
+   A /branches/distr-2.5/pkg/distr/vignettes/newDistributions.Rnw
+   A /branches/distr-2.5/pkg/distr/vignettes/svn-multi.sty
+   A /branches/distr-2.5/pkg/distr/vignettes/svnkw.sty
+   A /branches/distr-2.5/pkg/distrDoc
+   A /branches/distr-2.5/pkg/distrDoc/.Rbuildignore
+   A /branches/distr-2.5/pkg/distrDoc/.Rinstignore
+   A /branches/distr-2.5/pkg/distrDoc/DESCRIPTION
+   A /branches/distr-2.5/pkg/distrDoc/NAMESPACE
+   A /branches/distr-2.5/pkg/distrDoc/R
+   A /branches/distr-2.5/pkg/distrDoc/R/distrDoc.R
+   A /branches/distr-2.5/pkg/distrDoc/inst
+   A /branches/distr-2.5/pkg/distrDoc/inst/CITATION
+   A /branches/distr-2.5/pkg/distrDoc/inst/NEWS
+   A /branches/distr-2.5/pkg/distrDoc/inst/TOBEDONE
+   A /branches/distr-2.5/pkg/distrDoc/inst/doc
+   A /branches/distr-2.5/pkg/distrDoc/inst/doc/distr.pdf
+   A /branches/distr-2.5/pkg/distrDoc/man
+   A /branches/distr-2.5/pkg/distrDoc/man/0distrDoc-package.Rd
+   A /branches/distr-2.5/pkg/distrDoc/vignettes
+   A /branches/distr-2.5/pkg/distrDoc/vignettes/BiasType.pdf
+   A /branches/distr-2.5/pkg/distrDoc/vignettes/Confint.pdf
+   A /branches/distr-2.5/pkg/distrDoc/vignettes/Estimate.pdf
+   A /branches/distr-2.5/pkg/distrDoc/vignettes/EvaluationList.pdf
+   A /branches/distr-2.5/pkg/distrDoc/vignettes/NormType.pdf
+   A /branches/distr-2.5/pkg/distrDoc/vignettes/ParamFamParameter.pdf
+   A /branches/distr-2.5/pkg/distrDoc/vignettes/ProbFamily.pdf
+   A /branches/distr-2.5/pkg/distrDoc/vignettes/RiskType.pdf
+   A /branches/distr-2.5/pkg/distrDoc/vignettes/Symmetry.pdf
+   A /branches/distr-2.5/pkg/distrDoc/vignettes/dataclass.pdf
+   A /branches/distr-2.5/pkg/distrDoc/vignettes/distr.Rnw
+   A /branches/distr-2.5/pkg/distrDoc/vignettes/distribution.pdf
+   A /branches/distr-2.5/pkg/distrDoc/vignettes/evaluation.pdf
+   A /branches/distr-2.5/pkg/distrDoc/vignettes/parameter.pdf
+   A /branches/distr-2.5/pkg/distrDoc/vignettes/rspace.pdf
+   A /branches/distr-2.5/pkg/distrDoc/vignettes/svn-multi.sty
+   A /branches/distr-2.5/pkg/distrDoc/vignettes/svnkw.sty
+   A /branches/distr-2.5/pkg/distrEllipse
+   A /branches/distr-2.5/pkg/distrEllipse/DESCRIPTION
+   A /branches/distr-2.5/pkg/distrEllipse/NAMESPACE
+   A /branches/distr-2.5/pkg/distrEllipse/R
+   A /branches/distr-2.5/pkg/distrEllipse/R/01.R
+   A /branches/distr-2.5/pkg/distrEllipse/R/AllClasses.R
+   A /branches/distr-2.5/pkg/distrEllipse/R/AllGenerics.R
+   A /branches/distr-2.5/pkg/distrEllipse/R/AllShow.R
+   A /branches/distr-2.5/pkg/distrEllipse/R/EllipticalDistribution.R
+   A /branches/distr-2.5/pkg/distrEllipse/R/MVMixingDistribution.R
+   A /branches/distr-2.5/pkg/distrEllipse/R/MVNorm.R
+   A /branches/distr-2.5/pkg/distrEllipse/R/MVt.R
+   A /branches/distr-2.5/pkg/distrEllipse/R/MultivariateDistrList.R
+   A /branches/distr-2.5/pkg/distrEllipse/R/SphericalDistribution.R
+   A /branches/distr-2.5/pkg/distrEllipse/R/distrEllipseOptions.R
+   A /branches/distr-2.5/pkg/distrEllipse/inst
+   A /branches/distr-2.5/pkg/distrEllipse/inst/CITATION
+   A /branches/distr-2.5/pkg/distrEllipse/inst/MASKING
+   A /branches/distr-2.5/pkg/distrEllipse/inst/NEWS
+   A /branches/distr-2.5/pkg/distrEllipse/inst/TOBEDONE
+   A /branches/distr-2.5/pkg/distrEllipse/man
+   A /branches/distr-2.5/pkg/distrEllipse/man/0distrEllipse-package.Rd
+   A /branches/distr-2.5/pkg/distrEllipse/man/EllipticalDistribution-class.Rd
+   A /branches/distr-2.5/pkg/distrEllipse/man/EllipticalDistribution.Rd
+   A /branches/distr-2.5/pkg/distrEllipse/man/EllipticalParameter-class.Rd
+   A /branches/distr-2.5/pkg/distrEllipse/man/MVnormDistribution-class.Rd
+   A /branches/distr-2.5/pkg/distrEllipse/man/MVnormDistribution.Rd
+   A /branches/distr-2.5/pkg/distrEllipse/man/MVnormParameter-class.Rd
+   A /branches/distr-2.5/pkg/distrEllipse/man/MVtDistribution-class.Rd
+   A /branches/distr-2.5/pkg/distrEllipse/man/MVtDistribution.Rd
+   A /branches/distr-2.5/pkg/distrEllipse/man/MVtParameter-class.Rd
+   A /branches/distr-2.5/pkg/distrEllipse/man/MultivarDistrList-class.Rd
+   A /branches/distr-2.5/pkg/distrEllipse/man/MultivarDistrList.Rd
+   A /branches/distr-2.5/pkg/distrEllipse/man/MultivarMixingDistribution-class.Rd
+   A /branches/distr-2.5/pkg/distrEllipse/man/MultivarMixingDistribution.Rd
+   A /branches/distr-2.5/pkg/distrEllipse/man/SphericalDistribution-class.Rd
+   A /branches/distr-2.5/pkg/distrEllipse/man/SphericalDistribution.Rd
+   A /branches/distr-2.5/pkg/distrEllipse/man/distrEllipseMASK.Rd
+   A /branches/distr-2.5/pkg/distrEllipse/man/distrEllipseoptions.Rd
+   A /branches/distr-2.5/pkg/distrEllipse/man/plot-methods.Rd
+   A /branches/distr-2.5/pkg/distrEllipse/tests
+   A /branches/distr-2.5/pkg/distrEllipse/tests/Examples
+   A /branches/distr-2.5/pkg/distrEllipse/tests/Examples/distrEllipse-Ex.Rout.save
+   A /branches/distr-2.5/pkg/distrEx
+   A /branches/distr-2.5/pkg/distrEx/DESCRIPTION
+   A /branches/distr-2.5/pkg/distrEx/NAMESPACE
+   A /branches/distr-2.5/pkg/distrEx/R
+   A /branches/distr-2.5/pkg/distrEx/R/AllClass.R
+   A /branches/distr-2.5/pkg/distrEx/R/AllGeneric.R
+   A /branches/distr-2.5/pkg/distrEx/R/AllMaskedMethods.R
+   A /branches/distr-2.5/pkg/distrEx/R/AllPlot.R
+   A /branches/distr-2.5/pkg/distrEx/R/AllShow.R
+   A /branches/distr-2.5/pkg/distrEx/R/AsymTotalVarDist.R
+   A /branches/distr-2.5/pkg/distrEx/R/ClippedMoments.R
+   A /branches/distr-2.5/pkg/distrEx/R/ContaminationSize.R
+   A /branches/distr-2.5/pkg/distrEx/R/ConvexContamination.R
+   A /branches/distr-2.5/pkg/distrEx/R/CvMDist.R
+   A /branches/distr-2.5/pkg/distrEx/R/DiscreteMVDistribution.R
+   A /branches/distr-2.5/pkg/distrEx/R/Expectation.R
+   A /branches/distr-2.5/pkg/distrEx/R/Functionals.R
+   A /branches/distr-2.5/pkg/distrEx/R/HellingerDist.R
+   A /branches/distr-2.5/pkg/distrEx/R/Internalfunctions.R
+   A /branches/distr-2.5/pkg/distrEx/R/KolmogorovDist.R
+   A /branches/distr-2.5/pkg/distrEx/R/Kurtosis.R
+   A /branches/distr-2.5/pkg/distrEx/R/LMCondDistribution.R
+   A /branches/distr-2.5/pkg/distrEx/R/OAsymTotalVarDist.R
+   A /branches/distr-2.5/pkg/distrEx/R/PrognCondDistribution.R
+   A /branches/distr-2.5/pkg/distrEx/R/Skewness.R
+   A /branches/distr-2.5/pkg/distrEx/R/TotalVarDist.R
+   A /branches/distr-2.5/pkg/distrEx/R/UnivariateCondDistribution.R
+   A /branches/distr-2.5/pkg/distrEx/R/distrExIntegrate.R
+   A /branches/distr-2.5/pkg/distrEx/R/distrExOptions.R
+   A /branches/distr-2.5/pkg/distrEx/R/liesInSupport.R
+   A /branches/distr-2.5/pkg/distrEx/R/moved2RobExtremes.R
+   A /branches/distr-2.5/pkg/distrEx/R/sysdata.rda
+   A /branches/distr-2.5/pkg/distrEx/demo
+   A /branches/distr-2.5/pkg/distrEx/demo/00Index
+   A /branches/distr-2.5/pkg/distrEx/demo/Prognose.R
+   A /branches/distr-2.5/pkg/distrEx/demo/distrExUse.R
+   A /branches/distr-2.5/pkg/distrEx/inst
+   A /branches/distr-2.5/pkg/distrEx/inst/CITATION
+   A /branches/distr-2.5/pkg/distrEx/inst/MASKING
+   A /branches/distr-2.5/pkg/distrEx/inst/MOVED
+   A /branches/distr-2.5/pkg/distrEx/inst/NEWS
+   A /branches/distr-2.5/pkg/distrEx/inst/TOBEDONE
+   A /branches/distr-2.5/pkg/distrEx/inst/tests
+   A /branches/distr-2.5/pkg/distrEx/inst/tests/Tests.r
+   A /branches/distr-2.5/pkg/distrEx/man
+   A /branches/distr-2.5/pkg/distrEx/man/0distrEx-package.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/AbscontCondDistribution-class.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/AsymTotalVarDist.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/Condition-class.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/ContaminationSize.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/ConvexContamination.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/CvMDist.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/DiscreteCondDistribution-class.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/DiscreteMVDistribution-class.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/DiscreteMVDistribution.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/E.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/EuclCondition-class.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/EuclCondition.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/GLIntegrate.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/HellingerDist.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/KolmogorovDist.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/LMCondDistribution.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/LMParameter-class.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/LMParameter.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/MultivariateDistribution-class.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/OAsymTotalVarDist.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/PrognCondDistribution-class.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/PrognCondDistribution.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/PrognCondition-class.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/TotalVarDist.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/UnivariateCondDistribution-class.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/Var.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/dim-methods.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/distrExIntegrate.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/distrExMASK.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/distrExMOVED.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/distrExOptions.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/internals.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/liesInSupport.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/m1df.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/m2df.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/make01.Rd
+   A /branches/distr-2.5/pkg/distrEx/man/plot-methods.Rd
+   A /branches/distr-2.5/pkg/distrEx/src
+   A /branches/distr-2.5/pkg/distrEx/src/GLaw.c
+   A /branches/distr-2.5/pkg/distrEx/tests
+   A /branches/distr-2.5/pkg/distrEx/tests/Examples
+   A /branches/distr-2.5/pkg/distrEx/tests/Examples/distrEx-Ex.Rout.save
+   A /branches/distr-2.5/pkg/distrMod
+   A /branches/distr-2.5/pkg/distrMod/.Rbuildignore
+   A /branches/distr-2.5/pkg/distrMod/DESCRIPTION
+   A /branches/distr-2.5/pkg/distrMod/NAMESPACE
+   A /branches/distr-2.5/pkg/distrMod/R
+   A /branches/distr-2.5/pkg/distrMod/R/0distrModOptions.R
+   A /branches/distr-2.5/pkg/distrMod/R/0distrModUtils.R
+   A /branches/distr-2.5/pkg/distrMod/R/AllClass.R
+   A /branches/distr-2.5/pkg/distrMod/R/AllGeneric.R
+   A /branches/distr-2.5/pkg/distrMod/R/AllPlot.R
+   A /branches/distr-2.5/pkg/distrMod/R/AllReturnClasses.R
+   A /branches/distr-2.5/pkg/distrMod/R/AllShow.R
+   A /branches/distr-2.5/pkg/distrMod/R/BiasType.R
+   A /branches/distr-2.5/pkg/distrMod/R/Confint-class.R
+   A /branches/distr-2.5/pkg/distrMod/R/Estimate.R
+   A /branches/distr-2.5/pkg/distrMod/R/Estimator.R
+   A /branches/distr-2.5/pkg/distrMod/R/Expectation.R
+   A /branches/distr-2.5/pkg/distrMod/R/FunSymmList.R
+   A /branches/distr-2.5/pkg/distrMod/R/L2GroupFamilies-methods.R
+   A /branches/distr-2.5/pkg/distrMod/R/L2GroupFamilies.R
+   A /branches/distr-2.5/pkg/distrMod/R/L2ParamFamily.R
+   A /branches/distr-2.5/pkg/distrMod/R/MCEstimate.R
+   A /branches/distr-2.5/pkg/distrMod/R/MCEstimator.R
+   A /branches/distr-2.5/pkg/distrMod/R/MDEstimator.R
+   A /branches/distr-2.5/pkg/distrMod/R/MLEstimator.R
+   A /branches/distr-2.5/pkg/distrMod/R/ParamFamParameter.R
+   A /branches/distr-2.5/pkg/distrMod/R/ParamFamily.R
+   A /branches/distr-2.5/pkg/distrMod/R/ProbFamily.R
+   A /branches/distr-2.5/pkg/distrMod/R/RiskType.R
+   A /branches/distr-2.5/pkg/distrMod/R/SimpleL2ParamFamilies.R
+   A /branches/distr-2.5/pkg/distrMod/R/Symmetry.R
+   A /branches/distr-2.5/pkg/distrMod/R/confint.R
+   A /branches/distr-2.5/pkg/distrMod/R/existsPIC.R
+   A /branches/distr-2.5/pkg/distrMod/R/internalMleCalc.R
+   A /branches/distr-2.5/pkg/distrMod/R/mleCalc-methods.R
+   A /branches/distr-2.5/pkg/distrMod/R/modifyModel.R
+   A /branches/distr-2.5/pkg/distrMod/R/norms.R
+   A /branches/distr-2.5/pkg/distrMod/R/qqplot.R
+   A /branches/distr-2.5/pkg/distrMod/R/setAs.R
+   A /branches/distr-2.5/pkg/distrMod/R/validParameter.R
+   A /branches/distr-2.5/pkg/distrMod/demo
+   A /branches/distr-2.5/pkg/distrMod/demo/00Index
+   A /branches/distr-2.5/pkg/distrMod/demo/censoredPois.R
+   A /branches/distr-2.5/pkg/distrMod/demo/modelExp3.R
+   A /branches/distr-2.5/pkg/distrMod/inst
+   A /branches/distr-2.5/pkg/distrMod/inst/CITATION
+   A /branches/distr-2.5/pkg/distrMod/inst/MASKING
+   A /branches/distr-2.5/pkg/distrMod/inst/NEWS
+   A /branches/distr-2.5/pkg/distrMod/inst/TOBEDONE
+   A /branches/distr-2.5/pkg/distrMod/inst/doc
+   A /branches/distr-2.5/pkg/distrMod/inst/doc/distrMod.pdf
+   A /branches/distr-2.5/pkg/distrMod/inst/scripts
+   A /branches/distr-2.5/pkg/distrMod/inst/scripts/BetaFam.R
+   A /branches/distr-2.5/pkg/distrMod/inst/scripts/PoisFam.R
+   A /branches/distr-2.5/pkg/distrMod/inst/scripts/censoredPois.R
+   A /branches/distr-2.5/pkg/distrMod/inst/scripts/distrModExample.R
+   A /branches/distr-2.5/pkg/distrMod/inst/scripts/distrModExample1.R
+   A /branches/distr-2.5/pkg/distrMod/inst/scripts/example_CvMMDE.R
+   A /branches/distr-2.5/pkg/distrMod/inst/scripts/examples2.R
+   A /branches/distr-2.5/pkg/distrMod/inst/scripts/modelExp3.R
+   A /branches/distr-2.5/pkg/distrMod/man
+   A /branches/distr-2.5/pkg/distrMod/man/0distrMod-package.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/BetaFamily.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/BiasType-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/BinomFamily.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/CauchyLocationScaleFamily.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/Confint-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/Estimate-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/Estimator.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/EvenSymmetric-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/EvenSymmetric.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/ExpScaleFamily.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/FunSymmList-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/FunSymmList.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/FunctionSymmetry-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/GammaFamily.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/InfoNorm.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/InternalReturnClasses-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/L2GroupFamily-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/L2LocationFamily-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/L2LocationFamily.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/L2LocationScaleFamily-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/L2LocationScaleFamily.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/L2LocationUnknownScaleFamily.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/L2ParamFamily-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/L2ParamFamily.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/L2ScaleFamily-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/L2ScaleFamily.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/L2ScaleUnknownLocationFamily.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/LnormScaleFamily.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/MCEstimate-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/MCEstimator.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/MDEstimator.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/MLEstimator.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/NBinomFamily.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/NonSymmetric-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/NonSymmetric.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/NormLocationFamily.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/NormLocationScaleFamily.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/NormLocationUnknownScaleFamily.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/NormScaleFamily.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/NormScaleUnknownLocationFamily.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/NormType-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/NormType.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/OddSymmetric-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/OddSymmetric.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/ParamFamParameter-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/ParamFamParameter.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/ParamFamily-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/ParamFamily.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/PoisFamily.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/ProbFamily-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/QFNorm.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/QFnorm-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/RiskType-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/SelfNorm.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/asBias-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/asBias.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/asCov-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/asCov.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/asGRisk-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/asHampel-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/asHampel.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/asMSE-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/asMSE.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/asRisk-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/asRiskwithBias-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/asSemivar-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/asSemivar.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/asUnOvShoot-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/asUnOvShoot.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/asymmetricBias-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/asymmetricBias.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/checkL2deriv.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/confint-methods.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/distrModMASK.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/distrModOptions.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/existsPIC.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/fiBias-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/fiBias.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/fiCov-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/fiCov.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/fiHampel-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/fiHampel.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/fiMSE-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/fiMSE.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/fiRisk-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/fiUnOvShoot-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/fiUnOvShoot.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/internalClassUnions-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/internalmleHelpers.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/internals-qqplot.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/internals.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/isKerAinKerB.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/meRes.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/mleCalc-methods.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/modifyModel-methods.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/negativeBias.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/norms.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/onesidedBias-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/positiveBias.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/print-methods.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/qqplot.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/symmetricBias-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/symmetricBias.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/trAsCov-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/trAsCov.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/trFiCov-class.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/trFiCov.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/trafo-methods.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/trafoEst.Rd
+   A /branches/distr-2.5/pkg/distrMod/man/validParameter-methods.Rd
+   A /branches/distr-2.5/pkg/distrMod/tests
+   A /branches/distr-2.5/pkg/distrMod/tests/Examples
+   A /branches/distr-2.5/pkg/distrMod/tests/Examples/distrMod-Ex.Rout.save
+   A /branches/distr-2.5/pkg/distrMod/vignettes
+   A /branches/distr-2.5/pkg/distrMod/vignettes/Estimate.pdf
+   A /branches/distr-2.5/pkg/distrMod/vignettes/ParamFamParameter.pdf
+   A /branches/distr-2.5/pkg/distrMod/vignettes/ProbFamily.pdf
+   A /branches/distr-2.5/pkg/distrMod/vignettes/distrMod.Rnw
+   A /branches/distr-2.5/pkg/distrMod/vignettes/distrMod.bib
+   A /branches/distr-2.5/pkg/distrRmetrics
+   A /branches/distr-2.5/pkg/distrRmetrics/DESCRIPTION
+   A /branches/distr-2.5/pkg/distrRmetrics/NAMESPACE
+   A /branches/distr-2.5/pkg/distrRmetrics/R
+   A /branches/distr-2.5/pkg/distrRmetrics/R/AllClasses.R
+   A /branches/distr-2.5/pkg/distrRmetrics/R/AllGenerics.R
+   A /branches/distr-2.5/pkg/distrRmetrics/R/fGarchDistr.R
+   A /branches/distr-2.5/pkg/distrRmetrics/inst
+   A /branches/distr-2.5/pkg/distrRmetrics/inst/CITATION
+   A /branches/distr-2.5/pkg/distrRmetrics/inst/NEWS
+   A /branches/distr-2.5/pkg/distrRmetrics/inst/TOBEDONE
+   A /branches/distr-2.5/pkg/distrRmetrics/man
+   A /branches/distr-2.5/pkg/distrSim
+   A /branches/distr-2.5/pkg/distrSim/DESCRIPTION
+   A /branches/distr-2.5/pkg/distrSim/NAMESPACE
+   A /branches/distr-2.5/pkg/distrSim/R
+   A /branches/distr-2.5/pkg/distrSim/R/01.R
+   A /branches/distr-2.5/pkg/distrSim/R/AllClasses.R
+   A /branches/distr-2.5/pkg/distrSim/R/AllGenerics.R
+   A /branches/distr-2.5/pkg/distrSim/R/AllInitialize.R
+   A /branches/distr-2.5/pkg/distrSim/R/Contsimulation-Class.R
+   A /branches/distr-2.5/pkg/distrSim/R/Data-Class.R
+   A /branches/distr-2.5/pkg/distrSim/R/SeqDataFrames-Class.R
+   A /branches/distr-2.5/pkg/distrSim/R/Simulation-Class.R
+   A /branches/distr-2.5/pkg/distrSim/R/distrSimOptions.R
+   A /branches/distr-2.5/pkg/distrSim/R/plot-methods.R
+   A /branches/distr-2.5/pkg/distrSim/R/print-show-methods.R
+   A /branches/distr-2.5/pkg/distrSim/R/rbind-methods.R
+   A /branches/distr-2.5/pkg/distrSim/R/savedata-methods.R
+   A /branches/distr-2.5/pkg/distrSim/R/simulation.R
+   A /branches/distr-2.5/pkg/distrSim/R/subsetting-methods.R
+   A /branches/distr-2.5/pkg/distrSim/R/summary-methods.R
+   A /branches/distr-2.5/pkg/distrSim/R/versionManagement.R
+   A /branches/distr-2.5/pkg/distrSim/demo
+   A /branches/distr-2.5/pkg/distrSim/demo/00Index
+   A /branches/distr-2.5/pkg/distrSim/demo/Simulate.R
+   A /branches/distr-2.5/pkg/distrSim/inst
+   A /branches/distr-2.5/pkg/distrSim/inst/CITATION
+   A /branches/distr-2.5/pkg/distrSim/inst/MASKING
+   A /branches/distr-2.5/pkg/distrSim/inst/NEWS
+   A /branches/distr-2.5/pkg/distrSim/inst/TOBEDONE
+   A /branches/distr-2.5/pkg/distrSim/man
+   A /branches/distr-2.5/pkg/distrSim/man/0distrSim-package.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/Contsimulation-class.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/Data-methods.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/Data.c-methods.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/Data.id-methods.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/Dataclass-class.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/Dataclass.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/SeqDataFrame-class.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/Simulation-class.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/cload.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/distrSimMASK.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/distrSimoptions.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/distribution-methods.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/distribution.c-methods.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/distribution.id-methods.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/filename-methods.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/ind-methods.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/name-methods.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/obsDim-methods.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/plot-methods.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/print-methods.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/rate-methods.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/runs-methods.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/samplesize-methods.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/savedata-methods.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/seed-methods.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/simulate-methods.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/subsetting-methods.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/summary-methods.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/vectororNULL-class.Rd
+   A /branches/distr-2.5/pkg/distrSim/man/versionmanagement.Rd
+   A /branches/distr-2.5/pkg/distrSim/tests
+   A /branches/distr-2.5/pkg/distrSim/tests/Examples
+   A /branches/distr-2.5/pkg/distrSim/tests/Examples/distrSim-Ex.Rout.save
+   A /branches/distr-2.5/pkg/distrTEst
+   A /branches/distr-2.5/pkg/distrTEst/DESCRIPTION
+   A /branches/distr-2.5/pkg/distrTEst/NAMESPACE
+   A /branches/distr-2.5/pkg/distrTEst/R
+   A /branches/distr-2.5/pkg/distrTEst/R/AllClasses.R
+   A /branches/distr-2.5/pkg/distrTEst/R/AllGenerics.R
+   A /branches/distr-2.5/pkg/distrTEst/R/AllInitialize.R
+   A /branches/distr-2.5/pkg/distrTEst/R/EvaluationClass.R
+   A /branches/distr-2.5/pkg/distrTEst/R/EvaluationListClass.R
+   A /branches/distr-2.5/pkg/distrTEst/R/Utility.R
+   A /branches/distr-2.5/pkg/distrTEst/R/distrTEstOptions.R
+   A /branches/distr-2.5/pkg/distrTEst/R/evaluation.R
+   A /branches/distr-2.5/pkg/distrTEst/R/plot-methods.R
+   A /branches/distr-2.5/pkg/distrTEst/R/print-show-methods.R
+   A /branches/distr-2.5/pkg/distrTEst/R/summary-methods.R
+   A /branches/distr-2.5/pkg/distrTEst/demo
+   A /branches/distr-2.5/pkg/distrTEst/demo/00Index
+   A /branches/distr-2.5/pkg/distrTEst/demo/SimulateandEstimate.R
+   A /branches/distr-2.5/pkg/distrTEst/inst
+   A /branches/distr-2.5/pkg/distrTEst/inst/CITATION
+   A /branches/distr-2.5/pkg/distrTEst/inst/NEWS
+   A /branches/distr-2.5/pkg/distrTEst/inst/TOBEDONE
+   A /branches/distr-2.5/pkg/distrTEst/man
+   A /branches/distr-2.5/pkg/distrTEst/man/0distrTEst-package.Rd
+   A /branches/distr-2.5/pkg/distrTEst/man/Data-methods.Rd
+   A /branches/distr-2.5/pkg/distrTEst/man/Evaluation-class.Rd
+   A /branches/distr-2.5/pkg/distrTEst/man/EvaluationList-class.Rd
+   A /branches/distr-2.5/pkg/distrTEst/man/call.ev-methods.Rd
+   A /branches/distr-2.5/pkg/distrTEst/man/distrTEst-internals.Rd
+   A /branches/distr-2.5/pkg/distrTEst/man/distrTEstoptions.Rd
+   A /branches/distr-2.5/pkg/distrTEst/man/estimator-methods.Rd
+   A /branches/distr-2.5/pkg/distrTEst/man/evaluate-methods.Rd
+   A /branches/distr-2.5/pkg/distrTEst/man/filename-methods.Rd
+   A /branches/distr-2.5/pkg/distrTEst/man/name-methods.Rd
+   A /branches/distr-2.5/pkg/distrTEst/man/numericorNULL-class.Rd
+   A /branches/distr-2.5/pkg/distrTEst/man/plot-methods.Rd
+   A /branches/distr-2.5/pkg/distrTEst/man/print-methods.Rd
+   A /branches/distr-2.5/pkg/distrTEst/man/result-methods.Rd
+   A /branches/distr-2.5/pkg/distrTEst/man/savedata-methods.Rd
+   A /branches/distr-2.5/pkg/distrTEst/man/summary-methods.Rd
+   A /branches/distr-2.5/pkg/distrTEst/tests
+   A /branches/distr-2.5/pkg/distrTEst/tests/Examples
+   A /branches/distr-2.5/pkg/distrTEst/tests/Examples/distrTEst-Ex.Rout.save
+   A /branches/distr-2.5/pkg/distrTeach
+   A /branches/distr-2.5/pkg/distrTeach/DESCRIPTION
+   A /branches/distr-2.5/pkg/distrTeach/NAMESPACE
+   A /branches/distr-2.5/pkg/distrTeach/R
+   A /branches/distr-2.5/pkg/distrTeach/R/AllClass.R
+   A /branches/distr-2.5/pkg/distrTeach/R/AllGeneric.R
+   A /branches/distr-2.5/pkg/distrTeach/R/illustCLT.R
+   A /branches/distr-2.5/pkg/distrTeach/R/illustLLN.R
+   A /branches/distr-2.5/pkg/distrTeach/demo
+   A /branches/distr-2.5/pkg/distrTeach/demo/00Index
+   A /branches/distr-2.5/pkg/distrTeach/demo/illustCLT.R
+   A /branches/distr-2.5/pkg/distrTeach/demo/illustCLT_tcl.R
+   A /branches/distr-2.5/pkg/distrTeach/demo/illustLLN.R
+   A /branches/distr-2.5/pkg/distrTeach/inst
+   A /branches/distr-2.5/pkg/distrTeach/inst/CITATION
+   A /branches/distr-2.5/pkg/distrTeach/inst/NEWS
+   A /branches/distr-2.5/pkg/distrTeach/inst/TOBEDONE
+   A /branches/distr-2.5/pkg/distrTeach/man
+   A /branches/distr-2.5/pkg/distrTeach/man/0distrTeach-package.Rd
+   A /branches/distr-2.5/pkg/distrTeach/man/IllustCLT.Rd
+   A /branches/distr-2.5/pkg/distrTeach/man/IllustLLN.Rd
+   A /branches/distr-2.5/pkg/distrTeach/man/plotCLT.Rd
+   A /branches/distr-2.5/pkg/distrTeach/tests
+   A /branches/distr-2.5/pkg/distrTeach/tests/Examples
+   A /branches/distr-2.5/pkg/distrTeach/tests/Examples/distrTeach-Ex.Rout.save
+   A /branches/distr-2.5/pkg/startupmsg
+   A /branches/distr-2.5/pkg/startupmsg/DESCRIPTION
+   A /branches/distr-2.5/pkg/startupmsg/NAMESPACE
+   A /branches/distr-2.5/pkg/startupmsg/R
+   A /branches/distr-2.5/pkg/startupmsg/R/00.r
+   A /branches/distr-2.5/pkg/startupmsg/R/illustration.R
+   A /branches/distr-2.5/pkg/startupmsg/R/mySMHandler.R
+   A /branches/distr-2.5/pkg/startupmsg/R/startUpMessage.R
+   A /branches/distr-2.5/pkg/startupmsg/inst
+   A /branches/distr-2.5/pkg/startupmsg/inst/NEWS
+   A /branches/distr-2.5/pkg/startupmsg/inst/TOBEDONE
+   A /branches/distr-2.5/pkg/startupmsg/man
+   A /branches/distr-2.5/pkg/startupmsg/man/StartupUtilities.Rd
+   A /branches/distr-2.5/pkg/startupmsg/man/myStartupUtilities.Rd
+   A /branches/distr-2.5/pkg/startupmsg/tests
+   A /branches/distr-2.5/pkg/startupmsg/tests/Examples
+   A /branches/distr-2.5/pkg/startupmsg/tests/Examples/startupmsg-Ex.Rout.save
+   A /branches/distr-2.5/pkg/utils
+   A /branches/distr-2.5/pkg/utils/DESCRIPTIONutils.R
+   A /branches/distr-2.5/pkg/utils/NEWS
+   A /branches/distr-2.5/pkg/utils/R.bat
+   A /branches/distr-2.5/pkg/utils/RBuild.bat
+   A /branches/distr-2.5/pkg/utils/RCheck.bat
+   A /branches/distr-2.5/pkg/utils/README-R-utils
+   A /branches/distr-2.5/pkg/utils/README-batchfiles
+   A /branches/distr-2.5/pkg/utils/RInstall.bat
+   A /branches/distr-2.5/pkg/utils/RRversions.bat
+   A /branches/distr-2.5/pkg/utils/RZip.bat
+   A /branches/distr-2.5/pkg/utils/Rversions.bat
+   A /branches/distr-2.5/pkg/utils/TOBEDONE
+   A /branches/distr-2.5/pkg/utils/compare.R
+   A /branches/distr-2.5/pkg/utils/copyToBranch.R
+   A /branches/distr-2.5/pkg/utils/finde.r
+   A /branches/distr-2.5/pkg/utils/getRevNr.R
+   A /branches/distr-2.5/pkg/utils/ladealles.R
+   A /branches/distr-2.5/pkg/utils/pmake
+   A /branches/distr-2.5/pkg/utils/pmake.bat
+   A /branches/distr-2.5/pkg/utils/pmakeDoc.bat
+   A /branches/distr-2.5/pkg/utils/ppmake.bat
+   A /branches/distr-2.5/pkg/utils/ppmakeDoc.bat
+   A /branches/distr-2.5/pkg/utils/readsvnlog.sh
+   A /branches/distr-2.5/pkg/utils/rebuild.bat
+   A /branches/distr-2.5/pkg/utils/setNewEmail.R
+   A /branches/distr-2.5/pkg/utils/setNewVersion.r
+   A /branches/distr-2.5/pkg/utils/showAllFiles.R
+   A /branches/distr-2.5/pkg/utils/showsvnlog.R
+   A /branches/distr-2.5/pkg/utils/update-after-merge.R
+   A /branches/distr-2.5/pkg/utils/updateTo203.R
+   A /branches/distr-2.5/pkg/utils/updateTo2_2.R
+   A /branches/distr-2.5/pkg/utils/updateTo2_3.R
+   A /branches/distr-2.5/pkg/utils/updateTo2_4.R
+   A /branches/distr-2.5/pkg/utils/updateTo2_5.R
+   A /branches/distr-2.5/www
+   A /branches/distr-2.5/www/ConvolutionNormalDistr.R
+   A /branches/distr-2.5/www/Expectation.R
+   A /branches/distr-2.5/www/HOWTO-collaborate.txt
+   A /branches/distr-2.5/www/Huberize.R
+   A /branches/distr-2.5/www/NEWS
+   A /branches/distr-2.5/www/NormApprox.R
+   A /branches/distr-2.5/www/NumFun.R
+   A /branches/distr-2.5/www/Prognose.R
+   A /branches/distr-2.5/www/RLOGO.jpg
+   A /branches/distr-2.5/www/RandVar.html
+   A /branches/distr-2.5/www/SimulateandEstimate.R
+   A /branches/distr-2.5/www/StationaryRegressorDistr.R
+   A /branches/distr-2.5/www/TOBEDONE-PROJEKTE
+   A /branches/distr-2.5/www/Truncate.R
+   A /branches/distr-2.5/www/WISHLIST
+   A /branches/distr-2.5/www/comparisonFFTandRtoDPQ.R
+   A /branches/distr-2.5/www/destructive.R
+   A /branches/distr-2.5/www/distr-Familie.html
+   A /branches/distr-2.5/www/distr.html
+   A /branches/distr-2.5/www/distrDoc.html
+   A /branches/distr-2.5/www/distrEx.html
+   A /branches/distr-2.5/www/distrExUse.R
+   A /branches/distr-2.5/www/distrMod.html
+   A /branches/distr-2.5/www/distrSim.html
+   A /branches/distr-2.5/www/distrTEst.html
+   A /branches/distr-2.5/www/distrTeach.html
+   A /branches/distr-2.5/www/illustCLT.R
+   A /branches/distr-2.5/www/illustCLT_tcl.R
+   A /branches/distr-2.5/www/index.php
+   A /branches/distr-2.5/www/logo.gif
+   A /branches/distr-2.5/www/minandmax.R
+   A /branches/distr-2.5/www/nFoldConvolution.R
+   A /branches/distr-2.5/www/papier.gif
+
+created branch-2.5
+
+------------------------------------------------------------------------
+r837 | ruckdeschel | 2013-01-09 01:40:25 +0100 (Mi, 09 Jan 2013) | 1 line
+Changed paths:
+   M /branches/distr-2.5/pkg/distr/DESCRIPTION
+   M /branches/distr-2.5/pkg/distr/man/0distr-package.Rd
+   M /branches/distr-2.5/pkg/distrDoc/DESCRIPTION
+   M /branches/distr-2.5/pkg/distrDoc/man/0distrDoc-package.Rd
+   M /branches/distr-2.5/pkg/distrEllipse/DESCRIPTION
+   M /branches/distr-2.5/pkg/distrEllipse/man/0distrEllipse-package.Rd
+   M /branches/distr-2.5/pkg/distrEx/DESCRIPTION
+   M /branches/distr-2.5/pkg/distrEx/man/0distrEx-package.Rd
+   M /branches/distr-2.5/pkg/distrMod/DESCRIPTION
+   M /branches/distr-2.5/pkg/distrMod/man/0distrMod-package.Rd
+   M /branches/distr-2.5/pkg/distrSim/DESCRIPTION
+   M /branches/distr-2.5/pkg/distrSim/man/0distrSim-package.Rd
+   M /branches/distr-2.5/pkg/distrTEst/DESCRIPTION
+   M /branches/distr-2.5/pkg/distrTEst/man/0distrTEst-package.Rd
+   M /branches/distr-2.5/pkg/distrTeach/DESCRIPTION
+   M /branches/distr-2.5/pkg/distrTeach/man/0distrTeach-package.Rd
+
+updated version information in branch 2.5
+------------------------------------------------------------------------
+r838 | ruckdeschel | 2013-01-09 02:00:00 +0100 (Mi, 09 Jan 2013) | 1 line
+Changed paths:
+   M /pkg/SweaveListingUtils/DESCRIPTION
+   M /pkg/SweaveListingUtils/R/SweaveListingUtils.R
+   M /pkg/SweaveListingUtils/R/keywordsStyle.R
+   M /pkg/SweaveListingUtils/inst/NEWS
+   M /pkg/SweaveListingUtils/man/0SweaveListingUtils-package.Rd
+   M /pkg/SweaveListingUtils/man/library.Rd
+   M /pkg/SweaveListingUtils/tests/Examples/SweaveListingUtils-Ex.Rout.save
+   M /pkg/distr/.Rbuildignore
+   M /pkg/distr/DESCRIPTION
+   M /pkg/distr/R/0distrOptions.R
+   M /pkg/distr/R/AllClasses.R
+   M /pkg/distr/R/AllInitialize.R
+   M /pkg/distr/R/DiscreteDistribution.R
+   M /pkg/distr/R/LatticeDistribution.R
+   M /pkg/distr/R/bAcDcLcDistribution.R
+   M /pkg/distr/R/internalUtils.R
+   M /pkg/distr/R/internals-qqplot.R
+   M /pkg/distr/R/plot-methods.R
+   M /pkg/distr/R/plot-methods_LebDec.R
+   M /pkg/distr/R/qqbounds.R
+   M /pkg/distr/R/qqplot.R
+   M /pkg/distr/demo/nFoldConvolution.R
+   M /pkg/distr/inst/NEWS
+   M /pkg/distr/man/0distr-package.Rd
+   M /pkg/distr/man/plot-methods.Rd
+   M /pkg/distr/tests/Examples/distr-Ex.Rout.save
+   M /pkg/distrDoc/DESCRIPTION
+   M /pkg/distrDoc/NAMESPACE
+   M /pkg/distrDoc/inst/NEWS
+   M /pkg/distrDoc/man/0distrDoc-package.Rd
+   M /pkg/distrDoc/vignettes/distr.Rnw
+   M /pkg/distrEllipse/DESCRIPTION
+   M /pkg/distrEllipse/NAMESPACE
+   M /pkg/distrEllipse/man/0distrEllipse-package.Rd
+   M /pkg/distrEx/DESCRIPTION
+   M /pkg/distrEx/NAMESPACE
+   M /pkg/distrEx/R/AllClass.R
+   M /pkg/distrEx/R/AllGeneric.R
+   D /pkg/distrEx/R/AllInitialize.R
+   M /pkg/distrEx/R/Expectation.R
+   M /pkg/distrEx/R/Functionals.R
+   D /pkg/distrEx/R/GEV.R
+   D /pkg/distrEx/R/GPareto.R
+   D /pkg/distrEx/R/Gumbel.R
+   M /pkg/distrEx/R/Kurtosis.R
+   D /pkg/distrEx/R/Pareto.R
+   M /pkg/distrEx/R/Skewness.R
+   D /pkg/distrEx/R/kMAD.R
+   A /pkg/distrEx/R/moved2RobExtremes.R
+   A /pkg/distrEx/inst/MOVED
+   M /pkg/distrEx/inst/NEWS
+   M /pkg/distrEx/man/0distrEx-package.Rd
+   M /pkg/distrEx/man/AsymTotalVarDist.Rd
+   M /pkg/distrEx/man/CvMDist.Rd
+   D /pkg/distrEx/man/GEV-class.Rd
+   D /pkg/distrEx/man/GEV.Rd
+   D /pkg/distrEx/man/GEVParameter-class.Rd
+   D /pkg/distrEx/man/GPareto-class.Rd
+   D /pkg/distrEx/man/GPareto.Rd
+   D /pkg/distrEx/man/GParetoParameter-class.Rd
+   D /pkg/distrEx/man/Gumbel-class.Rd
+   D /pkg/distrEx/man/Gumbel.Rd
+   D /pkg/distrEx/man/GumbelParameter-class.Rd
+   M /pkg/distrEx/man/HellingerDist.Rd
+   M /pkg/distrEx/man/KolmogorovDist.Rd
+   M /pkg/distrEx/man/OAsymTotalVarDist.Rd
+   D /pkg/distrEx/man/Pareto-class.Rd
+   D /pkg/distrEx/man/Pareto.Rd
+   D /pkg/distrEx/man/ParetoParameter-class.Rd
+   M /pkg/distrEx/man/TotalVarDist.Rd
+   M /pkg/distrEx/man/Var.Rd
+   D /pkg/distrEx/man/distrExConstants.Rd
+   A /pkg/distrEx/man/distrExMOVED.Rd
+   D /pkg/distrEx/man/kMAD.Rd
+   D /pkg/distrEx/src/kMad.c
+   M /pkg/distrMod/.Rbuildignore
+   M /pkg/distrMod/DESCRIPTION
+   M /pkg/distrMod/NAMESPACE
+   M /pkg/distrMod/R/0distrModOptions.R
+   M /pkg/distrMod/R/0distrModUtils.R
+   M /pkg/distrMod/R/AllClass.R
+   M /pkg/distrMod/R/AllGeneric.R
+   M /pkg/distrMod/R/AllReturnClasses.R
+   M /pkg/distrMod/R/AllShow.R
+   M /pkg/distrMod/R/Estimator.R
+   M /pkg/distrMod/R/L2GroupFamilies-methods.R
+   M /pkg/distrMod/R/L2GroupFamilies.R
+   M /pkg/distrMod/R/MCEstimator.R
+   M /pkg/distrMod/R/MDEstimator.R
+   M /pkg/distrMod/R/MLEstimator.R
+   M /pkg/distrMod/R/ParamFamParameter.R
+   M /pkg/distrMod/R/SimpleL2ParamFamilies.R
+   M /pkg/distrMod/R/confint.R
+   M /pkg/distrMod/R/internalMleCalc.R
+   M /pkg/distrMod/R/mleCalc-methods.R
+   M /pkg/distrMod/R/modifyModel.R
+   M /pkg/distrMod/R/setAs.R
+   M /pkg/distrMod/R/validParameter.R
+   M /pkg/distrMod/inst/NEWS
+   M /pkg/distrMod/inst/scripts/example_CvMMDE.R
+   M /pkg/distrMod/inst/scripts/examples2.R
+   M /pkg/distrMod/inst/scripts/modelExp3.R
+   M /pkg/distrMod/man/0distrMod-package.Rd
+   M /pkg/distrMod/man/InternalReturnClasses-class.Rd
+   M /pkg/distrMod/man/L2LocationFamily-class.Rd
+   M /pkg/distrMod/man/L2LocationFamily.Rd
+   M /pkg/distrMod/man/MCEstimate-class.Rd
+   M /pkg/distrMod/man/MDEstimator.Rd
+   M /pkg/distrMod/man/MLEstimator.Rd
+   M /pkg/distrMod/man/ParamFamParameter-class.Rd
+   M /pkg/distrMod/man/ParamFamParameter.Rd
+   M /pkg/distrMod/man/ParamFamily.Rd
+   M /pkg/distrMod/man/internalClassUnions-class.Rd
+   M /pkg/distrMod/man/internalmleHelpers.Rd
+   M /pkg/distrMod/man/internals.Rd
+   M /pkg/distrMod/man/mleCalc-methods.Rd
+   M /pkg/distrMod/man/trafo-methods.Rd
+   M /pkg/distrMod/man/validParameter-methods.Rd
+   M /pkg/distrMod/tests/Examples/distrMod-Ex.Rout.save
+   M /pkg/distrMod/vignettes/distrMod.Rnw
+   M /pkg/distrSim/DESCRIPTION
+   M /pkg/distrSim/NAMESPACE
+   M /pkg/distrSim/R/AllClasses.R
+   M /pkg/distrSim/inst/NEWS
+   M /pkg/distrSim/man/0distrSim-package.Rd
+   M /pkg/distrSim/tests/Examples/distrSim-Ex.Rout.save
+   M /pkg/distrTEst/DESCRIPTION
+   M /pkg/distrTEst/NAMESPACE
+   M /pkg/distrTEst/inst/NEWS
+   M /pkg/distrTEst/man/0distrTEst-package.Rd
+   M /pkg/distrTEst/tests/Examples/distrTEst-Ex.Rout.save
+   M /pkg/distrTeach/DESCRIPTION
+   M /pkg/distrTeach/NAMESPACE
+   M /pkg/distrTeach/inst/NEWS
+   M /pkg/distrTeach/man/0distrTeach-package.Rd
+   M /pkg/distrTeach/tests/Examples/distrTeach-Ex.Rout.save
+   M /pkg/startupmsg/DESCRIPTION
+   M /pkg/startupmsg/inst/NEWS
+   M /pkg/startupmsg/tests/Examples/startupmsg-Ex.Rout.save
+   M /pkg/utils/DESCRIPTIONutils.R
+   M /pkg/utils/NEWS
+   A /pkg/utils/R.bat
+   A /pkg/utils/RBuild.bat
+   A /pkg/utils/RCheck.bat
+   M /pkg/utils/README-batchfiles
+   A /pkg/utils/RInstall.bat
+   A /pkg/utils/RRversions.bat
+   A /pkg/utils/RZip.bat
+   A /pkg/utils/Rversions.bat
+   M /pkg/utils/finde.r
+   M /pkg/utils/getRevNr.R
+   M /pkg/utils/ladealles.R
+   A /pkg/utils/pmake
+   M /pkg/utils/pmake.bat
+   M /pkg/utils/pmakeDoc.bat
+   A /pkg/utils/ppmake.bat
+   A /pkg/utils/ppmakeDoc.bat
+   M /pkg/utils/showsvnlog.R
+   A /pkg/utils/updateTo2_4.R
+
+merged branch 2.4 into pkg (trunk)
+------------------------------------------------------------------------
+r839 | ruckdeschel | 2013-01-09 02:01:41 +0100 (Mi, 09 Jan 2013) | 1 line
+Changed paths:
+   M /branches/distr-2.5/pkg/utils/updateTo2_5.R
+
+minor changes for update to 2.5
+------------------------------------------------------------------------
+r840 | ruckdeschel | 2013-01-09 02:03:42 +0100 (Mi, 09 Jan 2013) | 1 line
+Changed paths:
+   M /branches/distr-2.4/pkg/utils/DESCRIPTIONutils.R
+   M /pkg/distrEx/tests/Examples/distrEx-Ex.Rout.save
+
+finished update to 2.4
+------------------------------------------------------------------------
+r841 | stamats | 2013-01-10 06:10:36 +0100 (Do, 10 Jan 2013) | 1 line
+Changed paths:
+   M /branches/distr-2.4/pkg/startupmsg/DESCRIPTION
+   M /branches/distr-2.4/pkg/startupmsg/tests/Examples/startupmsg-Ex.Rout.save
+
+update of Rout.save and date in DESCRIPTION file
+------------------------------------------------------------------------
+r842 | stamats | 2013-01-10 06:16:26 +0100 (Do, 10 Jan 2013) | 1 line
+Changed paths:
+   M /branches/distr-2.4/pkg/SweaveListingUtils/DESCRIPTION
+   M /branches/distr-2.4/pkg/SweaveListingUtils/inst/doc/ExampleSweaveListingUtils.pdf
+   M /branches/distr-2.4/pkg/SweaveListingUtils/tests/Examples/SweaveListingUtils-Ex.Rout.save
+
+update of Rout.save and date in DESCRIPTION file, compressed vignette
+------------------------------------------------------------------------
+r843 | stamats | 2013-01-10 06:57:16 +0100 (Do, 10 Jan 2013) | 2 lines
+Changed paths:
+   M /branches/distr-2.4/pkg/distr/DESCRIPTION
+   M /branches/distr-2.4/pkg/distr/man/operators-methods.Rd
+   M /branches/distr-2.4/pkg/distr/man/qqplot.Rd
+   M /branches/distr-2.4/pkg/distr/tests/Examples/distr-Ex.Rout.save
+
+update of Rout.save and date in DESCRIPTION file
+put some examples in "\dontrun" to reduce check time on CRAN
+------------------------------------------------------------------------
+r844 | stamats | 2013-01-10 07:19:39 +0100 (Do, 10 Jan 2013) | 1 line
+Changed paths:
+   M /branches/distr-2.4/pkg/distrEx/DESCRIPTION
+   M /branches/distr-2.4/pkg/distrEx/tests/Examples/distrEx-Ex.Rout.save
+
+update of Rout.save and date in DESCRIPTION file
+------------------------------------------------------------------------
+r845 | stamats | 2013-01-10 07:33:14 +0100 (Do, 10 Jan 2013) | 1 line
+Changed paths:
+   M /branches/distr-2.4/pkg/distrRmetrics/DESCRIPTION
+   M /branches/distr-2.4/pkg/distrRmetrics/NAMESPACE
+   M /branches/distr-2.4/pkg/distrRmetrics/R/AllClasses.R
+   M /branches/distr-2.4/pkg/distrRmetrics/R/fGarchDistr.R
+
+some corrections but still error in R CMD check
+------------------------------------------------------------------------
+r846 | stamats | 2013-01-10 07:33:57 +0100 (Do, 10 Jan 2013) | 1 line
+Changed paths:
+   M /branches/distr-2.4/pkg/distrSim/DESCRIPTION
+   M /branches/distr-2.4/pkg/distrSim/tests/Examples/distrSim-Ex.Rout.save
+
+update of Rout.save and date in DESCRIPTION file
+------------------------------------------------------------------------
+r847 | stamats | 2013-01-10 07:34:41 +0100 (Do, 10 Jan 2013) | 1 line
+Changed paths:
+   M /branches/distr-2.4/pkg/distrTEst/DESCRIPTION
+   M /branches/distr-2.4/pkg/distrTEst/tests/Examples/distrTEst-Ex.Rout.save
+
+update of Rout.save and date in DESCRIPTION file
+------------------------------------------------------------------------
+r848 | stamats | 2013-01-10 08:41:05 +0100 (Do, 10 Jan 2013) | 2 lines
+Changed paths:
+   M /branches/distr-2.4/pkg/distrDoc/inst/doc/distr.pdf
+   M /branches/distr-2.4/pkg/distrTeach/DESCRIPTION
+   M /branches/distr-2.4/pkg/distrTeach/man/IllustCLT.Rd
+   M /branches/distr-2.4/pkg/distrTeach/tests/Examples/distrTeach-Ex.Rout.save
+
+update of Rout.save and date in DESCRIPTION file
+compressed vignette

@@ -32,6 +32,7 @@ showsvnlog <- function(
                         ## results temporarily; is deleted afterwords
     con = stdout(),     ### results are written to con; by default screen, but
                         ### may also be a file
+    withrmtmp = TRUE,   ### should the tempfile be deleted afterwards?
     withChPaths = FALSE ### shall changed files be reported?
     ){
 
@@ -46,6 +47,7 @@ showsvnlog <- function(
                   inQuotes(pathRepo), fromRev, toRev, limit,
                   inQuotes(tmpfile), ifelse(withChPaths,1,0))
     cat(comd,"\n")
+    on.exit(if(file.exists(tmpfile) && withrmtmp) file.remove(tmpfile) )
     system(comd,intern=FALSE,ignore.stdout=TRUE,ignore.stderr=TRUE,wait=TRUE)
     zz<-readLines(tmpfile)
     zz<-gsub("(-{50}.*)", "\n\\1",zz)
@@ -55,7 +57,6 @@ showsvnlog <- function(
       zz <- zz[-grep("^   [A,M,D,R] ",zz)]
     }
     writeLines(zz,sep="\n", con= con)
-    file.remove(tmpfile)
     return(invisible())
     }
 
