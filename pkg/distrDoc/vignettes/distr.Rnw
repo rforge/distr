@@ -170,6 +170,9 @@ procedures on such simulations. Finally, from version 2.0 on, there is package
 \pkg{distrTeach} to embody illustrations for basic stats courses using
 our distribution classes.
 
+From version 2.4 on, we have moved support for extreme value distributions,
+as well as for certain scale-shape distributions to the new package
+\pkg{RobExtremes}. This concerns the Gumbel, Weibull, Pareto distributions.
 %\noindent The latter two of them require package \pkg{setRNG} by 
 %\href{mailto:pgilbert@bank-banque-canada.ca}{Paul Gilbert}
 %to be installed from \href{http://cran.r-project.org/mirrors.html}{\tt CRAN}. 
@@ -264,7 +267,8 @@ by any volunteer in the {\sf R} community to provide more complex classes of
 distributions as multivariate distributions, times series distributions, 
 conditional distributions. As an exercise, the reader is encouraged to implement 
 extrem value  distributions from the package \pkg{evd}\footnote{a solution to 
-this ``homework''  may be found in the sources to \pkg{distrEx}}. The largest 
+this ``homework''  may be found in the sources to \pkg{distrEx},
+resp.\ from version 2.4 on, in the sources to \pkg{RobExtremes}}. The largest
 effort will in fact be the documentation\ldots\\
 We also wanted to preserve naming and notation from {\sf R}-\pkg{stats}
 as far as possible so that any programmer used to {\tt S} could quickly
@@ -567,9 +571,9 @@ expectation and variance methods.
 \subsubsection{Classes for multivariate distributions and for conditional 
 distributions}
 
-In \pkg{distrEx}, besides providing particular distribution classes
-for the Gumbel distribution (see \code{?Gumbel}) and the Pareto 
-distribution (see \code{?Pareto}), 
+In \pkg{distrEx}, %besides providing particular distribution classes
+%for the Gumbel distribution (see \code{?Gumbel}) and the Pareto
+%distribution (see \code{?Pareto}),  -> moved to RobExtremes
 we provide the following classes for handling multivariate 
 distributions:
 
@@ -1729,8 +1733,10 @@ argument \code{cond}.
 \paragraph{exact evaluation}
 is available for \code{X} of class \code{Arcsine}, \code{Beta} (for noncentrality $0$), 
 \code{Binom}, \code{Cauchy}, \code{Chisq}, \code{Dirac}, \code{Exp}, \code{Fd}, 
-\code{Gammad}, \code{Geom}, \code{Gumbel}, \code{Hyper}, \code{Logis}, \code{Lnorm}, 
-\code{Nbinom}, \code{Norm}, \code{Pareto}, \code{Pois}, \code{Td}, \code{Unif}, \code{Weibull}.
+\code{Gammad}, \code{Geom}, %\code{Gumbel}, -> moved to RobExtremes
+\code{Hyper}, \code{Logis}, \code{Lnorm},
+\code{Nbinom}, \code{Norm}, %\code{Pareto},  -> moved to RobExtremes
+\code{Pois}, \code{Td}, \code{Unif}.  % \code{Weibull}  -> moved to RobExtremes
 \paragraph{examples} $ \mbox{ }$\newline
 %<<expectationPrep, eval = TRUE, echo=FALSE>>=
 %SweaveListingOptions("inSweave"=TRUE)
@@ -1842,8 +1848,11 @@ available.
 function and no condition argument is given:
 this is available for \code{X} of class \code{Arcsine}, \code{Beta} (for noncentrality $0$), 
 \code{Binom}, \code{Cauchy}, \code{Chisq}, \code{Dirac}, \code{Exp}, \code{Fd}, 
-\code{Gammad}, \code{Geom}, \code{Gumbel}, \code{Hyper}, \code{Logis}, \code{Lnorm}, 
-\code{Nbinom}, \code{Norm}, \code{Pareto}, \code{Pois}, \code{Unif}, \code{Td}, \code{Weibull}.
+\code{Gammad}, \code{Geom}, %\code{Gumbel},  -> moved to RobExtremes
+\code{Hyper}, \code{Logis}, \code{Lnorm},
+\code{Nbinom}, \code{Norm}, % \code{Pareto},  -> moved to RobExtremes
+\code{Pois}, \code{Unif}, \code{Td}.
+%, \code{Weibull}.  -> moved to RobExtremes
 \subsubsection{Further functionals}
 By the same techniques we provide the following functionals for univariate 
 distributions:
@@ -2730,13 +2739,14 @@ onwards are only supplied for {\sf R} Version {\tt 2.2.0 patched} and later.
 \subsection{Dependencies}
 In package \pkg{distr}, from version 2.0, we make use of \code{D1ss} from
 \href{mailto:maechler@stat.math.ethz.ch}{Martin M\"achler's} package \pkg{sfsmisc}.
-In package \pkg{distrEx}, we need 
+In package \pkg{distrEx}, up to version 2.4, we needed
 \href{mailto:alec_stephenson@hotmail.com}{Alec Stephenson's} package \pkg{evd} 
 for the extreme  value distributions implemented therein, as well as 
 \href{mailto:Vincent.Goulet@act.ulaval.ca}{Vincent Goulet}'s and Mathieu Pigeon's
 package \pkg{actuar} for the (single parameter) Pareto distribution (from
 \pkg{distrEx} version 2.1 on) which has been ported to our framework by
-\href{mailto:Nataliya.Horbenko@itwm.fraunhofer.de}{Nataliya Horbenko}. 
+\href{mailto:nhorbenko@kpmg.de}{Nataliya Horbenko}.
+From version 2.4 on, this infrastructure has moved to package \pkg{RobExtremes}.
 
 In package \pkg{distrSim}, and conseqently also in package \pkg{distrTEst} we 
 use \href{mailto:pgilbert@bank-banque-canada.ca}{Paul Gilbert's}  
