@@ -784,7 +784,8 @@ return(f)
             else   {
             stand <- try(integrate(df1, -Inf, Inf)$value, TRUE)
             if (is(stand,"try-error")){
-               warning("'integrate()' threw an error ---result may be inaccurate.")
+               if(getdistrOption("warn.makeDNew"))
+                  warning("'integrate()' threw an error ---result may be inaccurate.")
                stand <- sum(df1(x))*h*(x[2]-x[1])
                }
             }
