@@ -28,7 +28,7 @@ Support for  extreme value distributions has moved to package \pkg{RobExtremes}
 \tabular{ll}{
 Package: \tab distrEx \cr
 Version: \tab 2.4 \cr
-Date: \tab 2013-01-09 \cr
+Date: \tab 2013-01-30 \cr
 Depends: \tab R(>= 2.6.0), methods, distr(>= 2.2), startupmsg \cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr

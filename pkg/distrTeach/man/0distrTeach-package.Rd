@@ -21,7 +21,7 @@ as well as a Tcl/Tk based demo for\code{illustrateCLT}
 \tabular{ll}{
 Package: \tab distrTeach \cr
 Version: \tab 2.4 \cr
-Date: \tab 2013-01-09 \cr
+Date: \tab 2013-01-30 \cr
 Depends: \tab R(>= 2.2.0), methods, distr(>= 2.0), distrEx(>= 2.0),
 startupmsg\cr
 LazyLoad: \tab yes \cr

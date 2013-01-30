@@ -14,7 +14,7 @@ as introduced there to describe the distributions under which simulations are pe
 \tabular{ll}{
 Package: \tab distrSim \cr
 Version: \tab 2.4 \cr
-Date: \tab 2013-01-09 \cr
+Date: \tab 2013-01-30 \cr
 Depends: \tab R(>= 2.6.0), methods, graphics, setRNG(>= 2006.2-1), distr(>=
 2.0), startupmsg\cr
 LazyLoad: \tab yes \cr
