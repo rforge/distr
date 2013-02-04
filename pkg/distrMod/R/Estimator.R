@@ -15,7 +15,7 @@ Estimator <- function(x, estimator, name, Infos, asvar = NULL, nuis.idx,
         Infos <- matrix(c(character(0),character(0)), ncol=2,
                         dimnames=list(character(0), c("method", "message")))
     else{
-        Infos <- matrix(c(rep("MCEstimator", length(Infos)), Infos), ncol = 2)
+        Infos <- matrix(c(rep("Estimator", length(Infos)), Infos), ncol = 2)
         colnames(Infos) <- c("method", "message")
     }
 

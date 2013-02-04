@@ -633,10 +633,12 @@ return(outC)
                  if(is.null(e1@gaps))
                     gapsnew <- NULL
                  else {gapsnew <- e1@gaps
-                       if(is.numeric(gapsold)) gapsnew <- matrix(gapsnew * e2, ncol=2)
-                       if (e2 < 0) gapsnew <-
-                             gapsnew[rev(seq(nrow(gapsnew))),c(2,1),drop = FALSE] }
-                 , silent=TRUE)
+                       if(is.numeric(gapsnew)&&length(gapsnew)>0){
+                          gapsnew <- matrix(gapsnew * e2, ncol=2)
+                          if (e2 < 0) gapsnew <-
+                             gapsnew[rev(seq(nrow(gapsnew))),c(2,1),drop = FALSE]
+                       }
+                 }, silent=TRUE)
                  if(is(trY,"try-error")) gapsnew <- NULL
                  dnew <- .makeD(substitute(e1, list(e1 = e1)),
                                 substitute(alist(x = x / e2), list(e2 = e2)),
@@ -656,11 +658,14 @@ return(outC)
                  trY <- try(
                  if(is.null(e1@gaps))
                     gapsnew <- NULL
-                 else {gapsold <- e1@gaps
-                       if(is.numeric(gapsold)) gapsnew <- matrix(gapsnew * e2, ncol=2)
-                       if (e2 < 0) gapsnew <-
-                             gapsnew[rev(seq(nrow(gapsnew))),c(2,1),drop = FALSE] }
-                 , silent=TRUE)
+                 else {gapsnew <- e1@gaps
+                       if(is.numeric(gapsnew)&&length(gapsnew)>0){
+                             gapsnew <- matrix(gapsnew * e2, ncol=2)
+                             if (e2 < 0) gapsnew <-
+                                    gapsnew[rev(seq(nrow(gapsnew))),
+                                            c(2,1),drop = FALSE]
+                             }
+                 }, silent=TRUE)
                  if(is(trY,"try-error")) gapsnew <- NULL
 
                  dnew <- .makeD(substitute(e1, list(e1 = e1)),
@@ -1131,6 +1136,7 @@ return(function(q, lower.tail = TRUE, log.p = FALSE){
 # modify slot q for AbscontDistribution if there are gaps
 #------------------------------------------------------------------------------
 .modifyqgaps <- function(pfun, qfun, gaps, leftright = "left"){
+  if(length(gaps)==0) return(qfun)
   p.gaps <- pfun(gaps[,1]) 
   p.gaps.l <- pfun(gaps[,1], lower.tail = FALSE)
   dP <- deparse(body(qfun))
