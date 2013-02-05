@@ -29,6 +29,7 @@ under the hood:
 + shrinking inst/doc in order to prevent  B. Ripley from archiving distrDoc
 + tried to get the imports in NAMESPACE files in the right order
 + For some strange reason, examle CIex in vignette threw an error; have changed seed; now it works again.
++ deleted no longer needed chm folders
 
 BUGFIXES:
 

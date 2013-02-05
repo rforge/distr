@@ -33,7 +33,10 @@ under the hood:
 + added DESCRIPTION tag "ByteCompile" to all our packages
 + updating maintainer email address and URL.
 + added argument no.readonly = TRUE to assignments of form opar <- par()
-
++ unified dots-manipulations
++ put some examples in "\dontrun" to reduce check time on CRAN
++ introduced new option warn.makeDNew to suppress annoying warnings when dealing with GEVD
++ deleted no longer needed chm folders
 
 BUGFIXES:
 
@@ -50,6 +53,7 @@ BUGFIXES:
   .deleteItemsMCL; 
 + fixed request by B.Ripley as to installed.packages in branch 2.4
 + fixed gaps issue with .multm
++ fixed issue with gaps (in case length(gaps)==0)
   
   and: BDR has changed calls to .C in 2.16.0 to calls to .Call; we used this in qqbounds, 
   respectively in .q2kolmogorov; now have branching functions .pk2 and .pks2 between ante 2.16. and from 2.16 on

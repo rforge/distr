@@ -1,0 +1,374 @@
+notes, warnings:
+R-3.0.0dev:  obtain note
+Possibly mis-spelled fields in DESCRIPTION:
+  'SVNRevision'
+... do not know why?
+
+
+In R-2.15.2pat, we obtain the following warning in distr:
+* checking foreign function calls ... WARNING
+Foreign function calls with 'PACKAGE' argument in a base package:
+  .C("pkolmogorov2x", ..., PACKAGE = "stats")
+  .C("pkstwo", ..., PACKAGE = "stats")
+Packages should not make .C/.Call/.Fortran calls to base packages. They
+are not part of the API, for use only by R itself and subject to change
+without notice.
+
+We are aware of it and know that it is related to NEWS entry
+
+"
+‘R CMD check’ now checks for ‘.C()’, ‘.Call()’, ‘.External()’ and
+‘.Fortran()’ calls in other packages, and gives a warning on those 
+found from R itself (which are not part of the API and change 
+without notice: many will changed for R 3.0.0).
+"
+
+Oct, 09 2012 we contacted Brian Ripley in this issue:
+
+>Up to now, in package distr, in our function qqbounds, we
+>used pkg stats C-functions pkolmogorov2x, pkstwo to construct
+>simultaneous confidence bands for our distr-S4-methods for
+>qqplot (code to call pkolmogorov2x, pkstwo taken from
+>ks.test from pkg stats and mentioned so in our Rd's since
+>~ 3yrs).
+
+[ We cannot use the API return value of ks.test in this case, as 
+  we have to be able to evaluate pkolmogorov2x, pkstwo at 
+  arbitrary input values not just at the ks.test statistics. ]
+
+>We did notice that just recently you/R-core switched from
+>using .C to .Call in R-devel and from pkolmogorov2x, pkstwo
+>to C_pKS2, C_pKolmogorov2x .
+
+>Hence, in our devel versions, we now have a corresponding
+>if-switch according to (getRversion()<"2.16.0") for
+>defining the interface.
+
+>Still, according to the changes in R CMD check mentioned
+>above our code will nevertheless produce warnings and hence
+>get problems on CRAN.
+
+>Could you/R-core please help us avoid this, providing us
+>with API-function wrappers for C_pKS2, C_pKolmogorov2x
+>then?
+
+This is perhaps not necessary; and, in R-3.0.0dev we
+no longer get any warnings on this, anyway.
+
+
+######################################################################
+#  News: to package startupmsg
+######################################################################
+
+##############
+v 0.8
+##############
+
+under the hood: 
++ startupmsg gains a namespace
++ added DESCRIPTION tag "ByteCompile" to all our packages
++ updating maintainer email address and URL.
++ deleted no longer needed chm folders
+
+######################################################################
+#  News: to package SweaveListingUtils
+######################################################################
+ 
+##############
+v 0.6
+##############
+
+under the hood:
+
++ added DESCRIPTION tag "ByteCompile" to all our packages
++ updating maintainer email address and URL.
++ added argument no.readonly = TRUE to assignments of form opar <- par()
++ .Rbuildignore  as a reaction to B. Ripley's mail on r-devel, "CRAN package sizes",  Feb-14-2011, 
++ created folder vignettes and moved content of inst/doc/ to it
++ removed lazyload tag in DESCRIPTION
++ deleted inst/doc folder
++ argument kws in setBaseOrRecommended() gains default value
++ changed assignment from assignInNamespace to assignInMyNamespace
++ alerted by Kurt Hornik: added several packages to "suggests" tag in DESCRIPTION (trunk)
++ wrapped calls to readLines in SourceFromRForge in try() in order to avoid errors when R-forge site is down (triggered by B. Ripley's mail from Feb 1, 2012).
++ removed obsolete base-argument "version" of library, require 
++ NOTE included in starting message that support will stop soon and that rather pkg knitr is to be used
++ fixed wrong argument structure for library() 
++ deleted no longer needed chm folders
+
+BUGFIXES:
++ fixed strip.white issue in pkg SweaveListingUtils
++ changed chunk option strip.white from FALSE to false
+
+
+######################################################################
+#  News: to package distr 
+######################################################################
+
+(first two numbers of package versions do not necessarily reflect 
+ package-individual development, but rather are chosen for the 
+ distrXXX family as a whole in order to ease updating "depends" 
+ information)
+ 
+##############
+v 2.4
+##############
+
+user-visible CHANGES:
++ introduced new option warn.makeDNew to suppress annoying warnings when dealing with GEVD
+
+GENERAL ENHANCEMENTS:
+
+LatticeDistribution:::
++ revised initialize and convolution methods, and generating function
+-> new routine to determine the smallest common grid for convolution
++ Taking up proposal by Baoyue Li, b.li@erasmusmc.nl,  
+   plot methods for distribution objects gain functionality to modify xlab and ylab
+
+
+under the hood:
++ introduce .Rbuildignore files 
++ require no longer called in .onAttach
++ created folder vignettes and moved content of inst/doc/ to it
++ removed lazyload tag in DESCRIPTION
++ updated affiliation info in newDistributions.Rnw
++ deleted inst/doc folder
++ added DESCRIPTION tag "ByteCompile" to all our packages
++ updating maintainer email address and URL.
++ added argument no.readonly = TRUE to assignments of form opar <- par()
++ unified dots-manipulations
++ put some examples in "\dontrun" to reduce check time on CRAN
++ introduced new option warn.makeDNew to suppress annoying warnings when dealing with GEVD
++ deleted no longer needed chm folders
+
+BUGFIXES:
+
++ fixed an error in show method for UnivarLebDecDistribution: 
+  match.call() threw an error
++ fixed problems with .makeDNew - as .makeDNew is not exported
++ error in definition of Beta() --- d slot was wrong
++ corrected typo (inifinite...)
++ typo in Beta-class.Rd (only in TeX mode) discovered by Thomas Kirschenmann, thk3421@gmail.com
++ fixed some issue with X^a, X distribution, a a number ...
++ tried to fix gaps issue as mentioned by Dirk Surmann, surmann@statistik.uni-dortmund.de
++ corrected a bug noticed by frank1828@gmail.com
++ fixed a bug within internals-qqplot : withConf.sim, withConf.pw had not been removed from call with 
+  .deleteItemsMCL; 
++ fixed request by B.Ripley as to installed.packages in branch 2.4
++ fixed gaps issue with .multm
++ fixed gaps handling if length(gaps)==0
+  
+  and: BDR has changed calls to .C in 2.16.0 to calls to .Call; we used this in qqbounds, 
+  respectively in .q2kolmogorov; now have branching functions .pk2 and .pks2 between ante 2.16. and from 2.16 on
+
+######################################################################
+#  News: to package distrEx
+######################################################################
+
+(first two numbers of package versions do not necessarily reflect 
+ package-individual development, but rather are chosen for the 
+ distrXXX family as a whole in order to ease updating "depends" 
+ information)
+ 
+##############
+v 2.4
+##############
+
+user-visible CHANGES:
++ moved functionality for extreme value distribution to package RobExtremes
+-> concerns distributions Gumbel, GEVD, GPareto, and Pareto
++ moved functional and estimator kMAD to package RobExtremes
+
+under the hood:
++ added DESCRIPTION tag "ByteCompile" to all our packages
++ updating maintainer email address and URL.
++ added argument no.readonly = TRUE to assignments of form opar <- par()
++ deleted no longer needed chm folders
+
+
+
+BUGFIXES:
+
++ corrected bug in var() (with argument fun in case of symmetry)
+
+######################################################################
+#  News: to package distrTeach
+######################################################################
+
+(first two numbers of package versions do not necessarily reflect 
+ package-individual development, but rather are chosen for the 
+ distrXXX family as a whole in order to ease updating "depends" 
+ information)
+ 
+##############
+v 2.4
+##############
+
+under the hood:
++ removed lazyload tag in DESCRIPTION
++ added DESCRIPTION tag "ByteCompile" to all our packages
++ updating maintainer email address and URL.
++ added argument no.readonly = TRUE to assignments of form opar <- par()
++ deleted no longer needed chm folders
+
+
+######################################################################
+#  News: to package distrEllipse 
+######################################################################
+
+(first two numbers of package versions do not necessarily reflect 
+ package-individual development, but rather are chosen for the 
+ distrXXX family as a whole in order to ease updating "depends" 
+ information)
+
+##############
+v 2.4
+##############
+
+under the hood:
++ removed lazyload tag in DESCRIPTION
++ added DESCRIPTION tag "ByteCompile" to all our packages
++ updating maintainer email address and URL.
++ added argument no.readonly = TRUE to assignments of form opar <- par()
++ deleted no longer needed chm folders
+
+######################################################################
+#  News: to package distrSim 
+######################################################################
+
+(first two numbers of package versions do not necessarily reflect 
+ package-individual development, but rather are chosen for the 
+ distrXXX family as a whole in order to ease updating "depends" 
+ information)
+
+##############
+v 2.4
+##############
+
+under the hood:
++ removed lazyload tag in DESCRIPTION
++ fixed request by B.Ripley as to installed.packages in branch 2.4
++ deleted no longer needed chm folders
+
+
+######################################################################
+#  News: to package distrTEst 
+######################################################################
+
+##############
+v 2.4
+##############
+
+under the hood:
++ some coercings to logical forced, e.g. AllClasses.R 
++ fixed (new discovered) error in distrTEst (sd no longer applies to matrices).
++ removed lazyload tag in DESCRIPTION
++ added DESCRIPTION tag "ByteCompile" to all our packages
++ updating maintainer email address and URL.
++ deleted no longer needed chm folders
+
+
+######################################################################
+#  News: to package distrMod 
+######################################################################
+
+(first two numbers of package versions do not necessarily reflect 
+ package-individual development, but rather are chosen for the 
+ distrXXX family as a whole in order to ease updating "depends" 
+ information)
+
+##############
+v 2.4
+##############
+
+user-visible CHANGES:
++ moved GumbelLocationFamily to new package "RobExtremes"
++ new function addAlphTrsp2col to add alpha transparency to a 
+  given color; qqplot gains argument alpha.trsp to control for alpha transparency
+
+
+under the hood:
++ added modifyModel method for ParamFamily, some minor corrections due to more strict checking in R devel
++ created folder vignettes and moved content of inst/doc/ to it
++ removed lazyload tag in DESCRIPTION
++ updated affiliation info in newDistributions.Rnw
++ deleted inst/doc folder
++ .Rbuildignore file as a reaction to B. Ripley's mail on r-devel, 
+   "CRAN package sizes",  Feb-14-2011
++ added computation of relative error in checkL2deriv - 
+  maybe there is a better idea avoiding division by zero, 
++ added DESCRIPTION tag "ByteCompile" to all our packages
++ updating maintainer email address and URL.
++ added argument no.readonly = TRUE to assignments of form opar <- par()
++ new intermediate classes/ class unions for scale families and scale shape families; 
++ consequent use of argument validity.check in MCE estimators.
++ removed relics of ancient L2Fam-slot withPos (was introduced in a try)
++ introduced slot scaleshapename for L2ScaleShapeUnion and methods scalename und scaleshapename (accessor/replacers)
++ after change of @<- semantics by J. Chambers moved from  class(M) <- class(model)  to slotwise copying
++ S4Method "mceCalc", signature(x = "numeric", PFam = "ParamFamily") gains additional 
+  calls to makeOKPar() to warrant admissible parameter values
++ Estimator can now deal with asymptotic variances if given; to this end 
+  gains optional argument ParamFamily 
++ put some examples in \dontrun to reduce check time on CRAN
++ Default name of Estimator is now "Estimator"
++ deleted no longer needed chm folders
+
+BUGFIXES:
+
++ bugfixes in NbinomMeanSizeFamily 
+                 and NbinomwithSizeFamily (detected by Matthias!)
++ digamma instead of trigamma
++ validparameter: fixed a bug with slot withPosRestr (which is not a member of 
+                  L2ParamFamily but of the respective parameter!) 
+
+######################################################################
+#  News: to package distrRmetrics
+######################################################################
+
+(first two numbers of package versions do not necessarily reflect 
+ package-individual development, but rather are chosen for the 
+ distrXXX family as a whole in order to ease updating "depends" 
+ information)
+
+##############
+v 2.4
+##############
++ created new package 'distrRmetrics' with support for skew t and normal
+  distributions from package fGarch
+
+######################################################################
+#  News: to package distrDoc 
+######################################################################
+
+(first two numbers of package versions do not necessarily reflect 
+ package-individual development, but rather are chosen for the 
+ distrXXX family as a whole in order to ease updating "depends" 
+ information)
+
+##############
+v 2.4
+##############
+
+user-visible CHANGES:
++ changed affiliations in vignette
++ vignette has shrunken in size from > 5MB to < 3MB
++ mentioned that we have moved evd support, and Gumbel, Weibull, Pareto distribution to RobExtremes
+
+GENERAL ENHANCEMENTS:
+
+under the hood:
++ as a reaction to B. Ripley's mail on r-devel, "CRAN package sizes", 
+  Feb-14-2011, we introduce .Rbuildignore files
++ pkg distrDoc gains a NAMESPACE
++ created folder vignettes and moved content of inst/doc/ to it
++ removed lazyload tag in DESCRIPTION
++ distrDoc no longer uses require() in .onAttach
++ added DESCRIPTION tag "ByteCompile" to all our packages
++ updating maintainer email address and URL.
++ shrinking inst/doc in order to prevent  B. Ripley from archiving distrDoc
++ tried to get the imports in NAMESPACE files in the right order
++ For some strange reason, examle CIex in vignette threw an error; have changed seed; now it works again.
++ deleted no longer needed chm folders
+
+BUGFIXES:
+

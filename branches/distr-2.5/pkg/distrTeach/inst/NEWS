@@ -8,6 +8,18 @@
  information)
  
 ##############
+v 2.5
+##############
+
+user-visible CHANGES:
+
+GENERAL ENHANCEMENTS:
+
+under the hood:
+
+BUGFIXES:
+
+##############
 v 2.4
 ##############
 
@@ -16,6 +28,7 @@ under the hood:
 + added DESCRIPTION tag "ByteCompile" to all our packages
 + updating maintainer email address and URL.
 + added argument no.readonly = TRUE to assignments of form opar <- par()
++ deleted no longer needed chm folders
 
 ##############
 v 2.3

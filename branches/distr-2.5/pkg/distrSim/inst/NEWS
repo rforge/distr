@@ -8,12 +8,25 @@
  information)
 
 ##############
+v 2.5
+##############
+
+user-visible CHANGES:
+
+GENERAL ENHANCEMENTS:
+
+under the hood:
+
+BUGFIXES:
+
+##############
 v 2.4
 ##############
 
 under the hood:
 + removed lazyload tag in DESCRIPTION
 + fixed request by B.Ripley as to installed.packages in branch 2.4
++ deleted no longer needed chm folders
 
 ##############
 v 2.3

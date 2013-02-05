@@ -15,7 +15,7 @@ packages.
 \tabular{ll}{
 Package: \tab distrRmetrics \cr
 Version: \tab 2.4 \cr
-Date: \tab 2013-01-30 \cr
+Date: \tab 2013-02-05 \cr
 Depends: \tab R(>= 2.6.0), methods, fBasics(>= 270.73), fGarch(>= 270.73),
               distr(>= 2.4), startupmsg\cr
 LazyLoad: \tab yes \cr
