@@ -8,6 +8,17 @@
  information)
 
 ##############
+v 2.4
+##############
+
+under the hood
++ removed lazyload tag in DESCRIPTION
++ added DESCRIPTION tag "ByteCompile" to all our packages
++ updating maintainer email address and URL.
++ added argument no.readonly = TRUE to assignments of form opar <- par()
++ deleted no longer needed chm folders
+
+##############
 v 2.3
 ##############
 

@@ -2,6 +2,466 @@
 short:
 ********************************************
 ------------------------------------------------------------------------
+r1 | stefan7th | 2007-06-25 12:38:44 +0200 (Mo, 25 Jun 2007) | 1 line
+------------------------------------------------------------------------
+
+Email in Readme changed
+
+------------------------------------------------------------------------
+r2 | ruckdeschel | 2007-11-07 18:14:08 +0100 (Mi, 07 Nov 2007) | 1 line
+------------------------------------------------------------------------
+
+first upload to R-forge
+
+------------------------------------------------------------------------
+r3 | stamats | 2008-01-03 19:45:07 +0100 (Do, 03 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+The entries for demos 'huberize' and 'truncate' were changed to 'Huberize' and 'Truncate' due to a warning form R CMD check (R 2.7.0 r43747).
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+r4 | stamats | 2008-01-03 19:51:30 +0100 (Do, 03 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+added section 'description' due to a warning form R CMD check (R 2.7.0 r43747)
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+r5 | ruckdeschel | 2008-01-15 19:13:39 +0100 (Di, 15 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+
+
+------------------------------------------------------------------------
+r6 | ruckdeschel | 2008-01-15 21:34:45 +0100 (Di, 15 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+edited the Web-pages and project home page
+
+------------------------------------------------------------------------
+r7 | ruckdeschel | 2008-01-15 21:46:31 +0100 (Di, 15 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+modified links to files on web-pages
+
+------------------------------------------------------------------------
+r8 | ruckdeschel | 2008-01-15 23:21:07 +0100 (Di, 15 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+Rcheck gelöscht
+
+------------------------------------------------------------------------
+r9 | ruckdeschel | 2008-01-16 21:27:52 +0100 (Mi, 16 Jan 2008) | 2 lines
+------------------------------------------------------------------------
+
+tried to include package distr:
+locally on my computer I created a new local working copy of project distr and then copied some (svn-freed) copy of package distr to it; seems to work; keep fingers crossed...
+
+------------------------------------------------------------------------
+r10 | ruckdeschel | 2008-01-16 21:28:57 +0100 (Mi, 16 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+wrong spelling for Rlogo.jpg
+
+------------------------------------------------------------------------
+r11 | ruckdeschel | 2008-01-16 21:29:55 +0100 (Mi, 16 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+spelling correction step 2
+
+------------------------------------------------------------------------
+r12 | ruckdeschel | 2008-01-16 21:33:34 +0100 (Mi, 16 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+update DESCRIPTION file to version 2.0
+
+------------------------------------------------------------------------
+r13 | ruckdeschel | 2008-01-16 21:58:59 +0100 (Mi, 16 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+Moved in package/project distrMod (as of revision 37)
+
+------------------------------------------------------------------------
+r14 | ruckdeschel | 2008-01-17 21:13:15 +0100 (Do, 17 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+web-pages now mentioning distrMod; new webpage for distrMod
+
+------------------------------------------------------------------------
+r15 | ruckdeschel | 2008-01-17 21:14:34 +0100 (Do, 17 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+delete Rlogo0.jpg (no longer needed)
+
+------------------------------------------------------------------------
+r16 | ruckdeschel | 2008-01-17 22:39:54 +0100 (Do, 17 Jan 2008) | 3 lines
+------------------------------------------------------------------------
+
+fixed some bugs in setNewVersion.r;
+in particular all arguments are now supported vectorwise,
+hence easily extended...
+
+------------------------------------------------------------------------
+r17 | ruckdeschel | 2008-01-17 22:41:21 +0100 (Do, 17 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+after an application of setNewversion()
+
+------------------------------------------------------------------------
+r18 | ruckdeschel | 2008-01-18 17:33:17 +0100 (Fr, 18 Jan 2008) | 2 lines
+------------------------------------------------------------------------
+
+News should be NEWS Part 1
+News -> News0
+
+------------------------------------------------------------------------
+r19 | ruckdeschel | 2008-01-18 17:34:15 +0100 (Fr, 18 Jan 2008) | 2 lines
+------------------------------------------------------------------------
+
+News should be NEWS Part 2
+News0 -> NEWS
+
+------------------------------------------------------------------------
+r20 | ruckdeschel | 2008-01-18 17:36:59 +0100 (Fr, 18 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+Corrected umlaut of Anja Hueller
+
+------------------------------------------------------------------------
+r21 | ruckdeschel | 2008-01-18 18:44:01 +0100 (Fr, 18 Jan 2008) | 2 lines
+------------------------------------------------------------------------
+
+Modified the URL tags in the DESCRIPTION file to
+http://distr.r-forge.r-project.org/
+
+------------------------------------------------------------------------
+r22 | ruckdeschel | 2008-01-18 19:16:08 +0100 (Fr, 18 Jan 2008) | 2 lines
+------------------------------------------------------------------------
+
+wrong spelling for sysdata.rda part 1
+Sysdata.rda -> Sysdata0.rda
+
+------------------------------------------------------------------------
+r23 | ruckdeschel | 2008-01-18 19:17:15 +0100 (Fr, 18 Jan 2008) | 3 lines
+------------------------------------------------------------------------
+
+wrong spelling for sysdata.rda part 2
+Sysdata0.rda -> sysdata.rda
+
+
+------------------------------------------------------------------------
+r24 | ruckdeschel | 2008-01-22 18:06:50 +0100 (Di, 22 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+some chm-Files; but most importantly: introduction of getLabel() as in mail to/from Kouros Owzar
+
+------------------------------------------------------------------------
+r25 | ruckdeschel | 2008-01-23 23:43:32 +0100 (Mi, 23 Jan 2008) | 5 lines
+------------------------------------------------------------------------
+
+have fixed feature request 
+
+http://r-forge.r-project.org/tracker/index.php?func=detail&aid=97&group_id=87&atid=403
+
+(was in fact a bug) 
+
+------------------------------------------------------------------------
+r26 | ruckdeschel | 2008-01-24 00:49:25 +0100 (Do, 24 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+changed spelling to Linux type (ie .../src instead of .../Src [what WinXP made out of it])
+
+------------------------------------------------------------------------
+r27 | ruckdeschel | 2008-01-24 01:21:01 +0100 (Do, 24 Jan 2008) | 2 lines
+------------------------------------------------------------------------
+
+tried to rename folder without telling svn in version 26, bad idea!!!
+now all capitalized folders on level 1 are svn-renamed to <Name>0
+
+------------------------------------------------------------------------
+r28 | ruckdeschel | 2008-01-24 01:25:26 +0100 (Do, 24 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+old <Name> folders deleted
+
+------------------------------------------------------------------------
+r29 | ruckdeschel | 2008-01-24 01:25:57 +0100 (Do, 24 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+old <Name> folders deleted
+
+------------------------------------------------------------------------
+r30 | ruckdeschel | 2008-01-24 01:29:08 +0100 (Do, 24 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+<Name>0 -> <name>
+
+------------------------------------------------------------------------
+r31 | ruckdeschel | 2008-01-24 01:33:09 +0100 (Do, 24 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+<Name0> -> <name>   2nd part
+
+------------------------------------------------------------------------
+r32 | ruckdeschel | 2008-01-24 01:40:45 +0100 (Do, 24 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+next spelling changes
+
+------------------------------------------------------------------------
+r33 | ruckdeschel | 2008-01-24 01:47:57 +0100 (Do, 24 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+next capitalization steps
+
+------------------------------------------------------------------------
+r34 | ruckdeschel | 2008-01-24 01:49:27 +0100 (Do, 24 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+next capitalization
+
+------------------------------------------------------------------------
+r35 | ruckdeschel | 2008-01-24 01:50:16 +0100 (Do, 24 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+last thing: DOC0 -> doc
+
+------------------------------------------------------------------------
+r36 | stamats | 2008-01-25 06:41:05 +0100 (Fr, 25 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+Problem with "_" in email address of Anja Hueller, changed to "\_"
+
+------------------------------------------------------------------------
+r37 | stamats | 2008-01-25 06:54:20 +0100 (Fr, 25 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+added a short description entry due to a warning from R CMD check
+
+------------------------------------------------------------------------
+r38 | stamats | 2008-01-25 06:56:21 +0100 (Fr, 25 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+added a short details entry due to a warning of R CMD INSTALL
+
+------------------------------------------------------------------------
+r39 | stamats | 2008-01-25 07:18:50 +0100 (Fr, 25 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+problems with lower and upper case ...
+
+------------------------------------------------------------------------
+r40 | stamats | 2008-01-25 07:34:28 +0100 (Fr, 25 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+problems to build vignette. Will further investigate ...
+
+------------------------------------------------------------------------
+r41 | stamats | 2008-01-25 10:10:48 +0100 (Fr, 25 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+was upper case, but needs to be lower case
+
+------------------------------------------------------------------------
+r42 | stamats | 2008-01-25 10:14:47 +0100 (Fr, 25 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+vignette did not build, since there was a wrong call to "E". Method with signature "UnivariateCondDistribution", "missing", "numeric" has no argument "withApply".
+
+------------------------------------------------------------------------
+r43 | stamats | 2008-01-25 10:20:08 +0100 (Fr, 25 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+changed my address
+
+------------------------------------------------------------------------
+r44 | ruckdeschel | 2008-01-25 17:43:01 +0100 (Fr, 25 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+lower/upper case again... now in /inst folders
+
+------------------------------------------------------------------------
+r45 | ruckdeschel | 2008-01-25 17:44:54 +0100 (Fr, 25 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+lower / upper case II in /inst folders
+
+------------------------------------------------------------------------
+r46 | ruckdeschel | 2008-01-25 22:20:44 +0100 (Fr, 25 Jan 2008) | 1 line
+------------------------------------------------------------------------
+
+removed local folder change and instead require that /utils folder is on PATH
+
+------------------------------------------------------------------------
+r47 | stamats | 2008-02-11 14:55:27 +0100 (Mo, 11 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+keyword "package" added
+
+------------------------------------------------------------------------
+r48 | stamats | 2008-02-11 15:04:24 +0100 (Mo, 11 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+test run with R version 2.6.2 Patched (2008-02-10 r44423)
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+r49 | stamats | 2008-02-12 12:22:25 +0100 (Di, 12 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+changed umlaut
+
+------------------------------------------------------------------------
+r50 | stamats | 2008-02-13 07:16:54 +0100 (Mi, 13 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+moved "L2ParamFamily" associated classes and functions/methods from ROptEst to distrMod
+
+------------------------------------------------------------------------
+r51 | stamats | 2008-02-13 09:08:21 +0100 (Mi, 13 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+adapted implementation to new version of class "ParamFamily"
+
+------------------------------------------------------------------------
+r52 | stamats | 2008-02-13 09:15:25 +0100 (Mi, 13 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+forgot to add symmetry classes for distributions
+
+------------------------------------------------------------------------
+r53 | stamats | 2008-02-13 09:32:10 +0100 (Mi, 13 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+further Rd-Files moved from ROptEst to distrMod
+
+------------------------------------------------------------------------
+r54 | stamats | 2008-02-13 09:32:48 +0100 (Mi, 13 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+distrMod now also depends on package RandVar
+
+------------------------------------------------------------------------
+r55 | stamats | 2008-02-13 09:39:36 +0100 (Mi, 13 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+required "distr", "distrEx" and "RandVar" on load - necessary?
+
+------------------------------------------------------------------------
+r56 | stamats | 2008-02-13 09:40:31 +0100 (Mi, 13 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+added forgotten exports
+
+------------------------------------------------------------------------
+r57 | stamats | 2008-02-13 10:12:36 +0100 (Mi, 13 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+distrMod now checks and installs without an error or warning on R version 2.6.2 Patched (2008-02-10 r44423)
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+r58 | stamats | 2008-02-13 10:38:15 +0100 (Mi, 13 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+moved Hellinger, Kolmogorov and total variation distance to package "distrEx"
+
+------------------------------------------------------------------------
+r59 | stamats | 2008-02-13 10:39:58 +0100 (Mi, 13 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+added methods for Hellinger, Kolmogorov and total variation distance from package "distrMod"
+
+------------------------------------------------------------------------
+r60 | stamats | 2008-02-13 12:18:16 +0100 (Mi, 13 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+distrEx checks and installs without any errors or warnings on R version 2.6.2 Patched (2008-02-10 r44423)
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+r61 | stamats | 2008-02-13 12:56:21 +0100 (Mi, 13 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+simplified return value of distances -> for use in distrMod
+
+------------------------------------------------------------------------
+r62 | stamats | 2008-02-13 12:59:34 +0100 (Mi, 13 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+moved to distrEx
+
+------------------------------------------------------------------------
+r63 | stamats | 2008-02-13 13:00:19 +0100 (Mi, 13 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+distrMod checks and installs without any errors or warnings on R version 2.6.2 Patched (2008-02-10 r44423)
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+r64 | stamats | 2008-02-13 19:31:25 +0100 (Mi, 13 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+additional argument crit.name and dist.name as well as slight changes on the return value
+
+------------------------------------------------------------------------
+r65 | stamats | 2008-02-14 06:06:21 +0100 (Do, 14 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+changed Date
+
+------------------------------------------------------------------------
+r66 | stamats | 2008-02-14 06:56:40 +0100 (Do, 14 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+moved risk classes from ROptEst to distrMod
+
+------------------------------------------------------------------------
+r67 | stamats | 2008-02-14 06:57:59 +0100 (Do, 14 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+changed Date
+
+------------------------------------------------------------------------
+r68 | stamats | 2008-02-14 07:02:59 +0100 (Do, 14 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+updated
+
+------------------------------------------------------------------------
+r69 | stamats | 2008-02-14 09:51:25 +0100 (Do, 14 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+Rd-Files are still missing ...
+
+------------------------------------------------------------------------
+r70 | ruckdeschel | 2008-02-15 15:54:03 +0100 (Fr, 15 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+included onesided/asymmetric bias classes (with .Rd-Files)
+
+------------------------------------------------------------------------
+r71 | stamats | 2008-02-15 19:26:45 +0100 (Fr, 15 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+corrected missing links. Now, the package checks and installs without any errors or warnings using R version 2.6.2 Patched (2008-02-10 r44423)
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+r72 | ruckdeschel | 2008-02-16 01:14:15 +0100 (Sa, 16 Feb 2008) | 1 line
+------------------------------------------------------------------------
+
+new risk asSemivar and some minor changes
+
+------------------------------------------------------------------------
+r73 | ruckdeschel | 2008-02-16 01:36:12 +0100 (Sa, 16 Feb 2008) | 2 lines
+------------------------------------------------------------------------
+
+minor error in documentation to asSemivar... and the 
+vignette disclaimer in the startup message is reinserted
+
+------------------------------------------------------------------------
 r830 | ruckdeschel | 2013-01-07 18:16:30 +0100 (Mo, 07 Jan 2013) | 1 line
 ------------------------------------------------------------------------
 
@@ -127,6 +587,2242 @@ compressed vignette
 ********************************************
 complete:
 ********************************************
+------------------------------------------------------------------------
+r1 | stefan7th | 2007-06-25 12:38:44 +0200 (Mo, 25 Jun 2007) | 1 line
+Changed paths:
+   A /README
+   A /pkg
+   A /pkg/R
+   A /pkg/man
+   A /www
+   A /www/index.php
+
+Email in Readme changed
+------------------------------------------------------------------------
+r2 | ruckdeschel | 2007-11-07 18:14:08 +0100 (Mi, 07 Nov 2007) | 1 line
+Changed paths:
+   A /pkg/DESCRIPTION
+   A /pkg/NAMESPACE
+   A /pkg/R/01.r
+   A /pkg/R/0pre230.r
+   A /pkg/R/99.r
+   A /pkg/R/AllClasses.R
+   A /pkg/R/AllGenerics.R
+   A /pkg/R/AllInitialize.R
+   A /pkg/R/BetaDistribution.R
+   A /pkg/R/BinomialDistribution.R
+   A /pkg/R/CauchyDistribution.R
+   A /pkg/R/ChisquaredDistribution.R
+   A /pkg/R/ContinuousDistribution.R
+   A /pkg/R/Convpow.r
+   A /pkg/R/DiracDistribution.R
+   A /pkg/R/DiscreteDistribution.R
+   A /pkg/R/DistrList.R
+   A /pkg/R/Distribution.R
+   A /pkg/R/ExpOrdGammaOrChisq.R
+   A /pkg/R/ExponentialDistribution.R
+   A /pkg/R/ExtraConvolutionMethods.R
+   A /pkg/R/FDistribution.R
+   A /pkg/R/GammaDistribution.R
+   A /pkg/R/GeometricDistribution.R
+   A /pkg/R/HypergeomDistribution.R
+   A /pkg/R/Infoshow.r
+   A /pkg/R/LaplaceDistribution.R
+   A /pkg/R/LatticeDistribution.R
+   A /pkg/R/LogisticDistribution.R
+   A /pkg/R/LognormalDistribution.R
+   A /pkg/R/NegbinomDistribution.R
+   A /pkg/R/NormalDistribution.R
+   A /pkg/R/Parameter.R
+   A /pkg/R/PoissonDistribution.R
+   A /pkg/R/Spaces.r
+   A /pkg/R/StudentDistribution.R
+   A /pkg/R/UniformDistribution.R
+   A /pkg/R/UtilitiesDistributions.R
+   A /pkg/R/WeibullDistribution.R
+   A /pkg/R/getLow.R
+   A /pkg/R/internalUtils.R
+   A /pkg/R/liesInSupport.R
+   A /pkg/R/plot-methods.R
+   A /pkg/R/print-show-methods.R
+   A /pkg/R/setIsRelations.R
+   A /pkg/R/standardMethods.R
+   A /pkg/R/versionManagement.R
+   A /pkg/chm
+   A /pkg/chm/00Index.html
+   A /pkg/chm/0distr-package.html
+   A /pkg/chm/AbscontDistribution-class.html
+   A /pkg/chm/Beta-class.html
+   A /pkg/chm/BetaParameter-class.html
+   A /pkg/chm/Binom-class.html
+   A /pkg/chm/BinomParameter-class.html
+   A /pkg/chm/Cauchy-class.html
+   A /pkg/chm/CauchyParameter-class.html
+   A /pkg/chm/Chisq-class.html
+   A /pkg/chm/ChisqParameter-class.html
+   A /pkg/chm/ConvPow.html
+   A /pkg/chm/DExp-class.html
+   A /pkg/chm/Dirac-class.html
+   A /pkg/chm/DiracParameter-class.html
+   A /pkg/chm/DiscreteDistribution-class.html
+   A /pkg/chm/Distr.chm
+   A /pkg/chm/Distr.hhp
+   A /pkg/chm/Distr.toc
+   A /pkg/chm/DistrList-class.html
+   A /pkg/chm/DistrList.html
+   A /pkg/chm/Distribution-class.html
+   A /pkg/chm/EuclideanSpace-class.html
+   A /pkg/chm/Exp-class.html
+   A /pkg/chm/ExpOrGammaOrChisq-class.html
+   A /pkg/chm/ExpParameter-class.html
+   A /pkg/chm/FParameter-class.html
+   A /pkg/chm/Fd-class.html
+   A /pkg/chm/GammaParameter-class.html
+   A /pkg/chm/Gammad-class.html
+   A /pkg/chm/Geom-class.html
+   A /pkg/chm/GeomParameter-class.html
+   A /pkg/chm/Hyper-class.html
+   A /pkg/chm/HyperParameter-class.html
+   A /pkg/chm/Lattice-class.html
+   A /pkg/chm/LatticeDistribution-class.html
+   A /pkg/chm/Length-methods.html
+   A /pkg/chm/Lnorm-class.html
+   A /pkg/chm/LnormParameter-class.html
+   A /pkg/chm/Logis-class.html
+   A /pkg/chm/LogisParameter-class.html
+   A /pkg/chm/Logo.jpg
+   A /pkg/chm/Math-methods.html
+   A /pkg/chm/Max-methods.html
+   A /pkg/chm/Min-methods.html
+   A /pkg/chm/Naturals-class.html
+   A /pkg/chm/Nbinom-class.html
+   A /pkg/chm/NbinomParameter-class.html
+   A /pkg/chm/Norm-class.html
+   A /pkg/chm/NormParameter-class.html
+   A /pkg/chm/OptionalParameter-class.html
+   A /pkg/chm/Parameter-class.html
+   A /pkg/chm/Pois-class.html
+   A /pkg/chm/PoisParameter-class.html
+   A /pkg/chm/Rchm.css
+   A /pkg/chm/Reals-class.html
+   A /pkg/chm/RtoDPQ.d.html
+   A /pkg/chm/RtoDPQ.html
+   A /pkg/chm/TParameter-class.html
+   A /pkg/chm/Td-class.html
+   A /pkg/chm/UniNormParameter-class.html
+   A /pkg/chm/Unif-class.html
+   A /pkg/chm/UnifParameter-class.html
+   A /pkg/chm/UnivarDistrList-class.html
+   A /pkg/chm/UnivarDistrList.html
+   A /pkg/chm/UnivariateDistribution-class.html
+   A /pkg/chm/Weibull-class.html
+   A /pkg/chm/WeibullParameter-class.html
+   A /pkg/chm/d-methods.html
+   A /pkg/chm/df-methods.html
+   A /pkg/chm/df1-methods.html
+   A /pkg/chm/df2-methods.html
+   A /pkg/chm/dim-methods.html
+   A /pkg/chm/dimension-methods.html
+   A /pkg/chm/distrARITH.html
+   A /pkg/chm/distrMASK.html
+   A /pkg/chm/distroptions.html
+   A /pkg/chm/gap-methods.html
+   A /pkg/chm/getLow.html
+   A /pkg/chm/img-methods.html
+   A /pkg/chm/internals.html
+   A /pkg/chm/k-methods.html
+   A /pkg/chm/lambda-methods.html
+   A /pkg/chm/liesIn-methods.html
+   A /pkg/chm/liesInSupport.html
+   A /pkg/chm/location-methods.html
+   A /pkg/chm/m-methods.html
+   A /pkg/chm/mean-methods.html
+   A /pkg/chm/meanlog-methods.html
+   A /pkg/chm/n-methods.html
+   A /pkg/chm/name-methods.html
+   A /pkg/chm/ncp-methods.html
+   A /pkg/chm/operators-methods.html
+   A /pkg/chm/p-methods.html
+   A /pkg/chm/p.l-methods.html
+   A /pkg/chm/param-methods.html
+   A /pkg/chm/pivot-methods.html
+   A /pkg/chm/plot-methods.html
+   A /pkg/chm/print-methods.html
+   A /pkg/chm/prob-methods.html
+   A /pkg/chm/q-methods.html
+   A /pkg/chm/q.r-methods.html
+   A /pkg/chm/r-methods.html
+   A /pkg/chm/rSpace-class.html
+   A /pkg/chm/rate-methods.html
+   A /pkg/chm/scale-methods.html
+   A /pkg/chm/sd-methods.html
+   A /pkg/chm/sdlog-methods.html
+   A /pkg/chm/shape-methods.html
+   A /pkg/chm/shape1-methods.html
+   A /pkg/chm/shape2-methods.html
+   A /pkg/chm/simplifyr-methods.html
+   A /pkg/chm/size-methods.html
+   A /pkg/chm/standardMethods.html
+   A /pkg/chm/support-methods.html
+   A /pkg/chm/versionmanagement.html
+   A /pkg/chm/width-methods.html
+   A /pkg/demo
+   A /pkg/demo/00Index
+   A /pkg/demo/ComparisonFFTandRtoDPQ.R
+   A /pkg/demo/ConvolutionNormalDistr.R
+   A /pkg/demo/Expectation.R
+   A /pkg/demo/Huberize.r
+   A /pkg/demo/NormApprox.R
+   A /pkg/demo/StationaryRegressorDistr.R
+   A /pkg/demo/Truncate.r
+   A /pkg/demo/destructive.R
+   A /pkg/demo/minandmax.R
+   A /pkg/demo/nFoldConvolution.R
+   A /pkg/inst
+   A /pkg/inst/ARITHMETICS
+   A /pkg/inst/Citation
+   A /pkg/inst/Masking
+   A /pkg/inst/News
+   A /pkg/man/0distr-package.Rd
+   A /pkg/man/AbscontDistribution-class.Rd
+   A /pkg/man/Beta-class.Rd
+   A /pkg/man/BetaParameter-class.Rd
+   A /pkg/man/Binom-class.Rd
+   A /pkg/man/BinomParameter-class.Rd
+   A /pkg/man/Cauchy-class.Rd
+   A /pkg/man/CauchyParameter-class.Rd
+   A /pkg/man/Chisq-class.Rd
+   A /pkg/man/ChisqParameter-class.Rd
+   A /pkg/man/ConvPow.Rd
+   A /pkg/man/DExp-class.Rd
+   A /pkg/man/Dirac-class.Rd
+   A /pkg/man/DiracParameter-class.Rd
+   A /pkg/man/DiscreteDistribution-class.Rd
+   A /pkg/man/DistrList-class.Rd
+   A /pkg/man/DistrList.Rd
+   A /pkg/man/Distribution-class.Rd
+   A /pkg/man/EuclideanSpace-class.Rd
+   A /pkg/man/Exp-class.Rd
+   A /pkg/man/ExpOrGammaOrChisq-class.Rd
+   A /pkg/man/ExpParameter-class.Rd
+   A /pkg/man/FParameter-class.Rd
+   A /pkg/man/Fd-class.Rd
+   A /pkg/man/GammaParameter-class.Rd
+   A /pkg/man/Gammad-class.Rd
+   A /pkg/man/Geom-class.Rd
+   A /pkg/man/GeomParameter-class.Rd
+   A /pkg/man/Hyper-class.Rd
+   A /pkg/man/HyperParameter-class.Rd
+   A /pkg/man/Lattice-class.Rd
+   A /pkg/man/LatticeDistribution-class.Rd
+   A /pkg/man/Length-methods.Rd
+   A /pkg/man/Lnorm-class.Rd
+   A /pkg/man/LnormParameter-class.Rd
+   A /pkg/man/Logis-class.Rd
+   A /pkg/man/LogisParameter-class.Rd
+   A /pkg/man/Math-methods.Rd
+   A /pkg/man/Max-methods.Rd
+   A /pkg/man/Min-methods.Rd
+   A /pkg/man/Naturals-class.Rd
+   A /pkg/man/Nbinom-class.Rd
+   A /pkg/man/NbinomParameter-class.Rd
+   A /pkg/man/Norm-class.Rd
+   A /pkg/man/NormParameter-class.Rd
+   A /pkg/man/OptionalParameter-class.Rd
+   A /pkg/man/Parameter-class.Rd
+   A /pkg/man/Pois-class.Rd
+   A /pkg/man/PoisParameter-class.Rd
+   A /pkg/man/Reals-class.Rd
+   A /pkg/man/RtoDPQ.Rd
+   A /pkg/man/RtoDPQ.d.Rd
+   A /pkg/man/TParameter-class.Rd
+   A /pkg/man/Td-class.Rd
+   A /pkg/man/UniNormParameter-class.Rd
+   A /pkg/man/Unif-class.Rd
+   A /pkg/man/UnifParameter-class.Rd
+   A /pkg/man/UnivarDistrList-class.Rd
+   A /pkg/man/UnivarDistrList.Rd
+   A /pkg/man/UnivariateDistribution-class.Rd
+   A /pkg/man/Weibull-class.Rd
+   A /pkg/man/WeibullParameter-class.Rd
+   A /pkg/man/d-methods.Rd
+   A /pkg/man/df-methods.Rd
+   A /pkg/man/df1-methods.Rd
+   A /pkg/man/df2-methods.Rd
+   A /pkg/man/dim-methods.Rd
+   A /pkg/man/dimension-methods.Rd
+   A /pkg/man/distrARITH.Rd
+   A /pkg/man/distrMASK.Rd
+   A /pkg/man/distroptions.Rd
+   A /pkg/man/gap-methods.Rd
+   A /pkg/man/getLow.Rd
+   A /pkg/man/img-methods.Rd
+   A /pkg/man/internals.Rd
+   A /pkg/man/k-methods.Rd
+   A /pkg/man/lambda-methods.Rd
+   A /pkg/man/liesIn-methods.Rd
+   A /pkg/man/liesInSupport.Rd
+   A /pkg/man/location-methods.Rd
+   A /pkg/man/m-methods.Rd
+   A /pkg/man/mean-methods.Rd
+   A /pkg/man/meanlog-methods.Rd
+   A /pkg/man/n-methods.Rd
+   A /pkg/man/name-methods.Rd
+   A /pkg/man/ncp-methods.Rd
+   A /pkg/man/operators-methods.Rd
+   A /pkg/man/p-methods.Rd
+   A /pkg/man/p.l-methods.Rd
+   A /pkg/man/param-methods.Rd
+   A /pkg/man/pivot-methods.Rd
+   A /pkg/man/plot-methods.Rd
+   A /pkg/man/print-methods.Rd
+   A /pkg/man/prob-methods.Rd
+   A /pkg/man/q-methods.Rd
+   A /pkg/man/q.r-methods.Rd
+   A /pkg/man/r-methods.Rd
+   A /pkg/man/rSpace-class.Rd
+   A /pkg/man/rate-methods.Rd
+   A /pkg/man/scale-methods.Rd
+   A /pkg/man/sd-methods.Rd
+   A /pkg/man/sdlog-methods.Rd
+   A /pkg/man/shape-methods.Rd
+   A /pkg/man/shape1-methods.Rd
+   A /pkg/man/shape2-methods.Rd
+   A /pkg/man/simplifyr-methods.Rd
+   A /pkg/man/size-methods.Rd
+   A /pkg/man/standardMethods.Rd
+   A /pkg/man/support-methods.Rd
+   A /pkg/man/versionmanagement.Rd
+   A /pkg/man/width-methods.Rd
+
+first upload to R-forge
+------------------------------------------------------------------------
+r3 | stamats | 2008-01-03 19:45:07 +0100 (Do, 03 Jan 2008) | 1 line
+Changed paths:
+   M /pkg/demo/00Index
+
+The entries for demos 'huberize' and 'truncate' were changed to 'Huberize' and 'Truncate' due to a warning form R CMD check (R 2.7.0 r43747).
+------------------------------------------------------------------------
+r4 | stamats | 2008-01-03 19:51:30 +0100 (Do, 03 Jan 2008) | 1 line
+Changed paths:
+   M /pkg/man/sdlog-methods.Rd
+
+added section 'description' due to a warning form R CMD check (R 2.7.0 r43747)
+------------------------------------------------------------------------
+r5 | ruckdeschel | 2008-01-15 19:13:39 +0100 (Di, 15 Jan 2008) | 1 line
+Changed paths:
+   D /pkg/DESCRIPTION
+   A /pkg/Mail
+   A /pkg/Mail/New versions for the distr-family of packages and of package startupmsg.txt
+   A /pkg/Mail/new_versions_packages_distr-distrEx-distrSim-distrTEst.txt
+   D /pkg/NAMESPACE
+   D /pkg/R
+   D /pkg/chm
+   D /pkg/demo
+   A /pkg/distrDoc
+   A /pkg/distrDoc/Chm
+   A /pkg/distrDoc/Chm/00Index.html
+   A /pkg/distrDoc/Chm/0distrDoc-package.html
+   A /pkg/distrDoc/Chm/Logo.jpg
+   A /pkg/distrDoc/Chm/Rchm.css
+   A /pkg/distrDoc/Chm/distrDoc.chm
+   A /pkg/distrDoc/Chm/distrDoc.hhp
+   A /pkg/distrDoc/Chm/distrDoc.toc
+   A /pkg/distrDoc/DESCRIPTION
+   A /pkg/distrDoc/Inst
+   A /pkg/distrDoc/Inst/Citation
+   A /pkg/distrDoc/Inst/Doc
+   A /pkg/distrDoc/Inst/Doc/Distr.aux
+   A /pkg/distrDoc/Inst/Doc/Distr.brf
+   A /pkg/distrDoc/Inst/Doc/Distr.log
+   A /pkg/distrDoc/Inst/Doc/Distr.out
+   A /pkg/distrDoc/Inst/Doc/Distr.pdf
+   A /pkg/distrDoc/Inst/Doc/Distr.tex
+   A /pkg/distrDoc/Inst/Doc/Distr.toc
+   A /pkg/distrDoc/Inst/Doc/EvaluationList.pdf
+   A /pkg/distrDoc/Inst/Doc/EvaluationList.ps
+   A /pkg/distrDoc/Inst/Doc/Rplots.ps
+   A /pkg/distrDoc/Inst/Doc/Rspace.pdf
+   A /pkg/distrDoc/Inst/Doc/Rspace.ps
+   A /pkg/distrDoc/Inst/Doc/dataclass.pdf
+   A /pkg/distrDoc/Inst/Doc/dataclass.ps
+   A /pkg/distrDoc/Inst/Doc/distr-ComparisonFFTandRtoDPQ.eps
+   A /pkg/distrDoc/Inst/Doc/distr-ComparisonFFTandRtoDPQ.pdf
+   A /pkg/distrDoc/Inst/Doc/distr-ConvolutionNormalDistr.eps
+   A /pkg/distrDoc/Inst/Doc/distr-ConvolutionNormalDistr.pdf
+   A /pkg/distrDoc/Inst/Doc/distr-NormApprox.eps
+   A /pkg/distrDoc/Inst/Doc/distr-NormApprox.pdf
+   A /pkg/distrDoc/Inst/Doc/distr-SimulateandEstimate.eps
+   A /pkg/distrDoc/Inst/Doc/distr-SimulateandEstimate.pdf
+   A /pkg/distrDoc/Inst/Doc/distr-StationaryRegressorDistr.eps
+   A /pkg/distrDoc/Inst/Doc/distr-StationaryRegressorDistr.pdf
+   A /pkg/distrDoc/Inst/Doc/distr-cauchy1.eps
+   A /pkg/distrDoc/Inst/Doc/distr-cauchy1.pdf
+   A /pkg/distrDoc/Inst/Doc/distr-cauchy2.eps
+   A /pkg/distrDoc/Inst/Doc/distr-cauchy2.pdf
+   A /pkg/distrDoc/Inst/Doc/distr-destructive.eps
+   A /pkg/distrDoc/Inst/Doc/distr-destructive.pdf
+   A /pkg/distrDoc/Inst/Doc/distr-elist.eps
+   A /pkg/distrDoc/Inst/Doc/distr-elist.pdf
+   A /pkg/distrDoc/Inst/Doc/distr-exam1.eps
+   A /pkg/distrDoc/Inst/Doc/distr-exam1.pdf
+   A /pkg/distrDoc/Inst/Doc/distr-huberize.eps
+   A /pkg/distrDoc/Inst/Doc/distr-huberize.pdf
+   A /pkg/distrDoc/Inst/Doc/distr-min.eps
+   A /pkg/distrDoc/Inst/Doc/distr-min.pdf
+   A /pkg/distrDoc/Inst/Doc/distr-minandmax.eps
+   A /pkg/distrDoc/Inst/Doc/distr-minandmax.pdf
+   A /pkg/distrDoc/Inst/Doc/distr-nFoldConvolution.eps
+   A /pkg/distrDoc/Inst/Doc/distr-nFoldConvolution.pdf
+   A /pkg/distrDoc/Inst/Doc/distr-plotex1.eps
+   A /pkg/distrDoc/Inst/Doc/distr-plotex1.pdf
+   A /pkg/distrDoc/Inst/Doc/distr-plotex10.eps
+   A /pkg/distrDoc/Inst/Doc/distr-plotex10.pdf
+   A /pkg/distrDoc/Inst/Doc/distr-plotex2.eps
+   A /pkg/distrDoc/Inst/Doc/distr-plotex2.pdf
+   A /pkg/distrDoc/Inst/Doc/distr-plotex3.eps
+   A /pkg/distrDoc/Inst/Doc/distr-plotex3.pdf
+   A /pkg/distrDoc/Inst/Doc/distr-plotex4.eps
+   A /pkg/distrDoc/Inst/Doc/distr-plotex4.pdf
+   A /pkg/distrDoc/Inst/Doc/distr-plotex5.eps
+   A /pkg/distrDoc/Inst/Doc/distr-plotex5.pdf
+   A /pkg/distrDoc/Inst/Doc/distr-plotex6.eps
+   A /pkg/distrDoc/Inst/Doc/distr-plotex6.pdf
+   A /pkg/distrDoc/Inst/Doc/distr-plotex7.eps
+   A /pkg/distrDoc/Inst/Doc/distr-plotex7.pdf
+   A /pkg/distrDoc/Inst/Doc/distr-plotex8.eps
+   A /pkg/distrDoc/Inst/Doc/distr-plotex8.pdf
+   A /pkg/distrDoc/Inst/Doc/distr-plotex9.eps
+   A /pkg/distrDoc/Inst/Doc/distr-plotex9.pdf
+   A /pkg/distrDoc/Inst/Doc/distr-truncate.eps
+   A /pkg/distrDoc/Inst/Doc/distr-truncate.pdf
+   A /pkg/distrDoc/Inst/Doc/distr.Rnw
+   A /pkg/distrDoc/Inst/Doc/distr.tex.bak
+   A /pkg/distrDoc/Inst/Doc/distribution.pdf
+   A /pkg/distrDoc/Inst/Doc/distribution.ps
+   A /pkg/distrDoc/Inst/Doc/evaluation.pdf
+   A /pkg/distrDoc/Inst/Doc/evaluation.ps
+   A /pkg/distrDoc/Inst/Doc/parameter.pdf
+   A /pkg/distrDoc/Inst/Doc/parameter.ps
+   A /pkg/distrDoc/Inst/News
+   A /pkg/distrDoc/Man
+   A /pkg/distrDoc/Man/0distrDoc-package.Rd
+   A /pkg/distrDoc/R
+   A /pkg/distrDoc/R/99.r
+   A /pkg/distrEx
+   A /pkg/distrEx/Chm
+   A /pkg/distrEx/Chm/00Index.html
+   A /pkg/distrEx/Chm/0distrEx-package.html
+   A /pkg/distrEx/Chm/AbscontCondDistribution-class.html
+   A /pkg/distrEx/Chm/Condition-class.html
+   A /pkg/distrEx/Chm/ContaminationSize.html
+   A /pkg/distrEx/Chm/ConvexContamination.html
+   A /pkg/distrEx/Chm/DiscreteCondDistribution-class.html
+   A /pkg/distrEx/Chm/DiscreteMVDistribution-class.html
+   A /pkg/distrEx/Chm/DiscreteMVDistribution.html
+   A /pkg/distrEx/Chm/E.html
+   A /pkg/distrEx/Chm/EuclCondition-class.html
+   A /pkg/distrEx/Chm/EuclCondition.html
+   A /pkg/distrEx/Chm/GLIntegrate.html
+   A /pkg/distrEx/Chm/Gumbel-class.html
+   A /pkg/distrEx/Chm/Gumbel.html
+   A /pkg/distrEx/Chm/GumbelParameter-class.html
+   A /pkg/distrEx/Chm/HellingerDist.html
+   A /pkg/distrEx/Chm/KolmogorovDist.html
+   A /pkg/distrEx/Chm/LMCondDistribution.html
+   A /pkg/distrEx/Chm/LMParameter-class.html
+   A /pkg/distrEx/Chm/LMParameter.html
+   A /pkg/distrEx/Chm/Logo.jpg
+   A /pkg/distrEx/Chm/MultivariateDistribution-class.html
+   A /pkg/distrEx/Chm/PrognCondDistribution-class.html
+   A /pkg/distrEx/Chm/PrognCondition-class.html
+   A /pkg/distrEx/Chm/Rchm.css
+   A /pkg/distrEx/Chm/TotalVarDist.html
+   A /pkg/distrEx/Chm/UnivariateCondDistribution-class.html
+   A /pkg/distrEx/Chm/Var.html
+   A /pkg/distrEx/Chm/dim-methods.html
+   A /pkg/distrEx/Chm/distrEx.chm
+   A /pkg/distrEx/Chm/distrEx.hhp
+   A /pkg/distrEx/Chm/distrEx.toc
+   A /pkg/distrEx/Chm/distrExIntegrate.html
+   A /pkg/distrEx/Chm/distrExMASK.html
+   A /pkg/distrEx/Chm/distrExOptions.html
+   A /pkg/distrEx/Chm/liesInSupport.html
+   A /pkg/distrEx/Chm/m1df.html
+   A /pkg/distrEx/Chm/m2df.html
+   A /pkg/distrEx/Chm/make01.html
+   A /pkg/distrEx/DESCRIPTION
+   A /pkg/distrEx/Demo
+   A /pkg/distrEx/Demo/00Index
+   A /pkg/distrEx/Demo/Prognose.R
+   A /pkg/distrEx/Demo/distrExUse.R
+   A /pkg/distrEx/Inst
+   A /pkg/distrEx/Inst/Citation
+   A /pkg/distrEx/Inst/Masking
+   A /pkg/distrEx/Inst/News
+   A /pkg/distrEx/Inst/Tests
+   A /pkg/distrEx/Inst/Tests/Tests.r
+   A /pkg/distrEx/Man
+   A /pkg/distrEx/Man/0distrEx-package.Rd
+   A /pkg/distrEx/Man/AbscontCondDistribution-class.Rd
+   A /pkg/distrEx/Man/Condition-class.Rd
+   A /pkg/distrEx/Man/ContaminationSize.Rd
+   A /pkg/distrEx/Man/ConvexContamination.Rd
+   A /pkg/distrEx/Man/DiscreteCondDistribution-class.Rd
+   A /pkg/distrEx/Man/DiscreteMVDistribution-class.Rd
+   A /pkg/distrEx/Man/DiscreteMVDistribution.Rd
+   A /pkg/distrEx/Man/E.Rd
+   A /pkg/distrEx/Man/EuclCondition-class.Rd
+   A /pkg/distrEx/Man/EuclCondition.Rd
+   A /pkg/distrEx/Man/GLIntegrate.Rd
+   A /pkg/distrEx/Man/Gumbel-class.Rd
+   A /pkg/distrEx/Man/Gumbel.Rd
+   A /pkg/distrEx/Man/GumbelParameter-class.Rd
+   A /pkg/distrEx/Man/HellingerDist.Rd
+   A /pkg/distrEx/Man/KolmogorovDist.Rd
+   A /pkg/distrEx/Man/LMCondDistribution.Rd
+   A /pkg/distrEx/Man/LMParameter-class.Rd
+   A /pkg/distrEx/Man/LMParameter.Rd
+   A /pkg/distrEx/Man/MultivariateDistribution-class.Rd
+   A /pkg/distrEx/Man/PrognCondDistribution-class.Rd
+   A /pkg/distrEx/Man/PrognCondition-class.Rd
+   A /pkg/distrEx/Man/TotalVarDist.Rd
+   A /pkg/distrEx/Man/UnivariateCondDistribution-class.Rd
+   A /pkg/distrEx/Man/Var.Rd
+   A /pkg/distrEx/Man/dim-methods.Rd
+   A /pkg/distrEx/Man/distrExIntegrate.Rd
+   A /pkg/distrEx/Man/distrExMASK.Rd
+   A /pkg/distrEx/Man/distrExOptions.Rd
+   A /pkg/distrEx/Man/liesInSupport.Rd
+   A /pkg/distrEx/Man/m1df.Rd
+   A /pkg/distrEx/Man/m2df.Rd
+   A /pkg/distrEx/Man/make01.Rd
+   A /pkg/distrEx/NAMESPACE
+   A /pkg/distrEx/R
+   A /pkg/distrEx/R/AllClass.R
+   A /pkg/distrEx/R/AllGeneric.R
+   A /pkg/distrEx/R/AllInitialize.R
+   A /pkg/distrEx/R/AllMaskedMethods.R
+   A /pkg/distrEx/R/AllPlot.R
+   A /pkg/distrEx/R/AllShow.R
+   A /pkg/distrEx/R/ClippedMoments.R
+   A /pkg/distrEx/R/ContaminationSize.R
+   A /pkg/distrEx/R/ConvexContamination.R
+   A /pkg/distrEx/R/DiscreteMVDistribution.R
+   A /pkg/distrEx/R/Expectation.R
+   A /pkg/distrEx/R/Functionals.R
+   A /pkg/distrEx/R/Gumbel.R
+   A /pkg/distrEx/R/HellingerDist.R
+   A /pkg/distrEx/R/KolmogorovDist.R
+   A /pkg/distrEx/R/Kurtosis.R
+   A /pkg/distrEx/R/LMCondDistribution.R
+   A /pkg/distrEx/R/PrognCondDistribution.R
+   A /pkg/distrEx/R/Skewness.R
+   A /pkg/distrEx/R/Sysdata.rda
+   A /pkg/distrEx/R/TotalVarDist.R
+   A /pkg/distrEx/R/UnivariateCondDistribution.R
+   A /pkg/distrEx/R/distrExIntegrate.R
+   A /pkg/distrEx/R/distrExOptions.R
+   A /pkg/distrEx/R/liesInSupport.R
+   A /pkg/distrEx/Src
+   A /pkg/distrEx/Src/GLaw.c
+   A /pkg/distrEx/Src/GLaw.d
+   A /pkg/distrEx/Src/Makedeps
+   A /pkg/distrEx/Src/distrEx.dll
+   A /pkg/distrEx/Src/distrEx_res.rc
+   A /pkg/distrSim
+   A /pkg/distrSim/Chm
+   A /pkg/distrSim/Chm/00Index.html
+   A /pkg/distrSim/Chm/0distrSim-package.html
+   A /pkg/distrSim/Chm/Contsimulation-class.html
+   A /pkg/distrSim/Chm/Data-methods.html
+   A /pkg/distrSim/Chm/Data.c-methods.html
+   A /pkg/distrSim/Chm/Data.id-methods.html
+   A /pkg/distrSim/Chm/Dataclass-class.html
+   A /pkg/distrSim/Chm/Logo.jpg
+   A /pkg/distrSim/Chm/Rchm.css
+   A /pkg/distrSim/Chm/Simulation-class.html
+   A /pkg/distrSim/Chm/cload.html
+   A /pkg/distrSim/Chm/distrSim.chm
+   A /pkg/distrSim/Chm/distrSim.hhp
+   A /pkg/distrSim/Chm/distrSim.toc
+   A /pkg/distrSim/Chm/distrSimOptions.html
+   A /pkg/distrSim/Chm/distribution-methods.html
+   A /pkg/distrSim/Chm/distribution.c-methods.html
+   A /pkg/distrSim/Chm/distribution.id-methods.html
+   A /pkg/distrSim/Chm/filename-methods.html
+   A /pkg/distrSim/Chm/ind-methods.html
+   A /pkg/distrSim/Chm/name-methods.html
+   A /pkg/distrSim/Chm/obsDim-methods.html
+   A /pkg/distrSim/Chm/plot-methods.html
+   A /pkg/distrSim/Chm/print-methods.html
+   A /pkg/distrSim/Chm/rate-methods.html
+   A /pkg/distrSim/Chm/runs-methods.html
+   A /pkg/distrSim/Chm/samplesize-methods.html
+   A /pkg/distrSim/Chm/savedata-methods.html
+   A /pkg/distrSim/Chm/seed-methods.html
+   A /pkg/distrSim/Chm/simulate-methods.html
+   A /pkg/distrSim/Chm/summary-methods.html
+   A /pkg/distrSim/Chm/vectororNULL-class.html
+   A /pkg/distrSim/Chm/versionmanagement.html
+   A /pkg/distrSim/DESCRIPTION
+   A /pkg/distrSim/Demo
+   A /pkg/distrSim/Demo/00Index
+   A /pkg/distrSim/Demo/Simulate.R
+   A /pkg/distrSim/Inst
+   A /pkg/distrSim/Inst/Citation
+   A /pkg/distrSim/Inst/News
+   A /pkg/distrSim/Man
+   A /pkg/distrSim/Man/0distrSim-package.Rd
+   A /pkg/distrSim/Man/Contsimulation-class.Rd
+   A /pkg/distrSim/Man/Data-methods.Rd
+   A /pkg/distrSim/Man/Data.c-methods.Rd
+   A /pkg/distrSim/Man/Data.id-methods.Rd
+   A /pkg/distrSim/Man/Dataclass-class.Rd
+   A /pkg/distrSim/Man/Simulation-class.Rd
+   A /pkg/distrSim/Man/cload.Rd
+   A /pkg/distrSim/Man/distrSimOptions.Rd
+   A /pkg/distrSim/Man/distribution-methods.Rd
+   A /pkg/distrSim/Man/distribution.c-methods.Rd
+   A /pkg/distrSim/Man/distribution.id-methods.Rd
+   A /pkg/distrSim/Man/filename-methods.Rd
+   A /pkg/distrSim/Man/ind-methods.Rd
+   A /pkg/distrSim/Man/name-methods.Rd
+   A /pkg/distrSim/Man/obsDim-methods.Rd
+   A /pkg/distrSim/Man/plot-methods.Rd
+   A /pkg/distrSim/Man/print-methods.Rd
+   A /pkg/distrSim/Man/rate-methods.Rd
+   A /pkg/distrSim/Man/runs-methods.Rd
+   A /pkg/distrSim/Man/samplesize-methods.Rd
+   A /pkg/distrSim/Man/savedata-methods.Rd
+   A /pkg/distrSim/Man/seed-methods.Rd
+   A /pkg/distrSim/Man/simulate-methods.Rd
+   A /pkg/distrSim/Man/summary-methods.Rd
+   A /pkg/distrSim/Man/vectororNULL-class.Rd
+   A /pkg/distrSim/Man/versionmanagement.Rd
+   A /pkg/distrSim/NAMESPACE
+   A /pkg/distrSim/R
+   A /pkg/distrSim/R/01.r
+   A /pkg/distrSim/R/AllClasses.R
+   A /pkg/distrSim/R/AllGenerics.R
+   A /pkg/distrSim/R/AllInitialize.R
+   A /pkg/distrSim/R/Contsimulation-Class.R
+   A /pkg/distrSim/R/Data-Class.R
+   A /pkg/distrSim/R/Simulation-Class.R
+   A /pkg/distrSim/R/distrSimOptions.R
+   A /pkg/distrSim/R/plot-methods.R
+   A /pkg/distrSim/R/print-show-methods.R
+   A /pkg/distrSim/R/savedata-methods.R
+   A /pkg/distrSim/R/simulation.R
+   A /pkg/distrSim/R/summary-methods.R
+   A /pkg/distrSim/R/versionManagement.R
+   A /pkg/distrTEst
+   A /pkg/distrTEst/Chm
+   A /pkg/distrTEst/Chm/00Index.html
+   A /pkg/distrTEst/Chm/0distrTEst-package.html
+   A /pkg/distrTEst/Chm/Data-methods.html
+   A /pkg/distrTEst/Chm/Evaluation-class.html
+   A /pkg/distrTEst/Chm/EvaluationList-class.html
+   A /pkg/distrTEst/Chm/Logo.jpg
+   A /pkg/distrTEst/Chm/Rchm.css
+   A /pkg/distrTEst/Chm/call.ev-methods.html
+   A /pkg/distrTEst/Chm/distrTEst-internals.html
+   A /pkg/distrTEst/Chm/distrTEst.chm
+   A /pkg/distrTEst/Chm/distrTEst.hhp
+   A /pkg/distrTEst/Chm/distrTEst.toc
+   A /pkg/distrTEst/Chm/distrTEstOptions.html
+   A /pkg/distrTEst/Chm/estimator-methods.html
+   A /pkg/distrTEst/Chm/evaluate-methods.html
+   A /pkg/distrTEst/Chm/filename-methods.html
+   A /pkg/distrTEst/Chm/name-methods.html
+   A /pkg/distrTEst/Chm/numericorNULL-class.html
+   A /pkg/distrTEst/Chm/plot-methods.html
+   A /pkg/distrTEst/Chm/print-methods.html
+   A /pkg/distrTEst/Chm/result-methods.html
+   A /pkg/distrTEst/Chm/savedata-methods.html
+   A /pkg/distrTEst/Chm/summary-methods.html
+   A /pkg/distrTEst/DESCRIPTION
+   A /pkg/distrTEst/Demo
+   A /pkg/distrTEst/Demo/00Index
+   A /pkg/distrTEst/Demo/SimulateandEstimate.R
+   A /pkg/distrTEst/Inst
+   A /pkg/distrTEst/Inst/Citation
+   A /pkg/distrTEst/Inst/News
+   A /pkg/distrTEst/Man
+   A /pkg/distrTEst/Man/0distrTEst-package.Rd
+   A /pkg/distrTEst/Man/Data-methods.Rd
+   A /pkg/distrTEst/Man/Evaluation-class.Rd
+   A /pkg/distrTEst/Man/EvaluationList-class.Rd
+   A /pkg/distrTEst/Man/call.ev-methods.Rd
+   A /pkg/distrTEst/Man/distrTEst-internals.Rd
+   A /pkg/distrTEst/Man/distrTEstOptions.Rd
+   A /pkg/distrTEst/Man/estimator-methods.Rd
+   A /pkg/distrTEst/Man/evaluate-methods.Rd
+   A /pkg/distrTEst/Man/filename-methods.Rd
+   A /pkg/distrTEst/Man/name-methods.Rd
+   A /pkg/distrTEst/Man/numericorNULL-class.Rd
+   A /pkg/distrTEst/Man/plot-methods.Rd
+   A /pkg/distrTEst/Man/print-methods.Rd
+   A /pkg/distrTEst/Man/result-methods.Rd
+   A /pkg/distrTEst/Man/savedata-methods.Rd
+   A /pkg/distrTEst/Man/summary-methods.Rd
+   A /pkg/distrTEst/NAMESPACE
+   A /pkg/distrTEst/R
+   A /pkg/distrTEst/R/01.r
+   A /pkg/distrTEst/R/AllClasses.R
+   A /pkg/distrTEst/R/AllGenerics.R
+   A /pkg/distrTEst/R/AllInitialize.R
+   A /pkg/distrTEst/R/EvaluationClass.R
+   A /pkg/distrTEst/R/EvaluationListClass.R
+   A /pkg/distrTEst/R/Utility.r
+   A /pkg/distrTEst/R/distrTEstOptions.R
+   A /pkg/distrTEst/R/evaluation.R
+   A /pkg/distrTEst/R/plot-methods.R
+   A /pkg/distrTEst/R/print-show-methods.R
+   A /pkg/distrTEst/R/summary-methods.R
+   A /pkg/distrTeach
+   A /pkg/distrTeach/Chm
+   A /pkg/distrTeach/Chm/00Index.html
+   A /pkg/distrTeach/Chm/0distrTeach-package.html
+   A /pkg/distrTeach/Chm/IllustCLT.html
+   A /pkg/distrTeach/Chm/IllustLLN.html
+   A /pkg/distrTeach/Chm/Logo.jpg
+   A /pkg/distrTeach/Chm/Rchm.css
+   A /pkg/distrTeach/Chm/distrEx.chm
+   A /pkg/distrTeach/Chm/distrEx.hhp
+   A /pkg/distrTeach/Chm/distrEx.toc
+   A /pkg/distrTeach/Chm/distrTeach.chm
+   A /pkg/distrTeach/Chm/distrTeach.hhp
+   A /pkg/distrTeach/Chm/distrTeach.toc
+   A /pkg/distrTeach/Chm/plotCLT.html
+   A /pkg/distrTeach/DESCRIPTION
+   A /pkg/distrTeach/Demo
+   A /pkg/distrTeach/Demo/00Index
+   A /pkg/distrTeach/Demo/illustCLT.R
+   A /pkg/distrTeach/Demo/illustCLT_tcl.R
+   A /pkg/distrTeach/Demo/illustLLN.R
+   A /pkg/distrTeach/Inst
+   A /pkg/distrTeach/Inst/Citation
+   A /pkg/distrTeach/Inst/News
+   A /pkg/distrTeach/Man
+   A /pkg/distrTeach/Man/0distrTeach-package.Rd
+   A /pkg/distrTeach/Man/IllustCLT.Rd
+   A /pkg/distrTeach/Man/IllustLLN.Rd
+   A /pkg/distrTeach/Man/plotCLT.Rd
+   A /pkg/distrTeach/NAMESPACE
+   A /pkg/distrTeach/R
+   A /pkg/distrTeach/R/AllClass.R
+   A /pkg/distrTeach/R/AllGeneric.R
+   A /pkg/distrTeach/R/illustCLT.R
+   A /pkg/distrTeach/R/illustLLN.R
+   A /pkg/distrTeach.Rcheck
+   A /pkg/distrTeach.Rcheck/00check.log
+   A /pkg/distrTeach.Rcheck/00install.out
+   A /pkg/distrTeach.Rcheck/R.css
+   A /pkg/distrTeach.Rcheck/Rplots.ps
+   A /pkg/distrTeach.Rcheck/distrTeach
+   A /pkg/distrTeach.Rcheck/distrTeach/CONTENTS
+   A /pkg/distrTeach.Rcheck/distrTeach/Citation
+   A /pkg/distrTeach.Rcheck/distrTeach/DESCRIPTION
+   A /pkg/distrTeach.Rcheck/distrTeach/INDEX
+   A /pkg/distrTeach.Rcheck/distrTeach/MD5
+   A /pkg/distrTeach.Rcheck/distrTeach/Meta
+   A /pkg/distrTeach.Rcheck/distrTeach/Meta/Rd.rds
+   A /pkg/distrTeach.Rcheck/distrTeach/Meta/demo.rds
+   A /pkg/distrTeach.Rcheck/distrTeach/Meta/hsearch.rds
+   A /pkg/distrTeach.Rcheck/distrTeach/Meta/nsInfo.rds
+   A /pkg/distrTeach.Rcheck/distrTeach/Meta/package.rds
+   A /pkg/distrTeach.Rcheck/distrTeach/NAMESPACE
+   A /pkg/distrTeach.Rcheck/distrTeach/News
+   A /pkg/distrTeach.Rcheck/distrTeach/R
+   A /pkg/distrTeach.Rcheck/distrTeach/R/distrTeach
+   A /pkg/distrTeach.Rcheck/distrTeach/R/distrTeach.rdb
+   A /pkg/distrTeach.Rcheck/distrTeach/R/distrTeach.rdx
+   A /pkg/distrTeach.Rcheck/distrTeach/R-ex
+   A /pkg/distrTeach.Rcheck/distrTeach/R-ex/IllustCLT.R
+   A /pkg/distrTeach.Rcheck/distrTeach/R-ex/IllustLLN.R
+   A /pkg/distrTeach.Rcheck/distrTeach/R-ex/plotCLT.R
+   A /pkg/distrTeach.Rcheck/distrTeach/chtml
+   A /pkg/distrTeach.Rcheck/distrTeach/chtml/distrTeach.chm
+   A /pkg/distrTeach.Rcheck/distrTeach/demo
+   A /pkg/distrTeach.Rcheck/distrTeach/demo/illustCLT.R
+   A /pkg/distrTeach.Rcheck/distrTeach/demo/illustCLT_tcl.R
+   A /pkg/distrTeach.Rcheck/distrTeach/demo/illustLLN.R
+   A /pkg/distrTeach.Rcheck/distrTeach/help
+   A /pkg/distrTeach.Rcheck/distrTeach/help/0distrTeach-package
+   A /pkg/distrTeach.Rcheck/distrTeach/help/AnIndex
+   A /pkg/distrTeach.Rcheck/distrTeach/help/IllustCLT
+   A /pkg/distrTeach.Rcheck/distrTeach/help/IllustLLN
+   A /pkg/distrTeach.Rcheck/distrTeach/help/plotCLT
+   A /pkg/distrTeach.Rcheck/distrTeach/html
+   A /pkg/distrTeach.Rcheck/distrTeach/html/00Index.html
+   A /pkg/distrTeach.Rcheck/distrTeach/html/0distrTeach-package.html
+   A /pkg/distrTeach.Rcheck/distrTeach/html/IllustCLT.html
+   A /pkg/distrTeach.Rcheck/distrTeach/html/IllustLLN.html
+   A /pkg/distrTeach.Rcheck/distrTeach/html/plotCLT.html
+   A /pkg/distrTeach.Rcheck/distrTeach/latex
+   A /pkg/distrTeach.Rcheck/distrTeach/latex/0distrTeach-package.tex
+   A /pkg/distrTeach.Rcheck/distrTeach/latex/IllustCLT.tex
+   A /pkg/distrTeach.Rcheck/distrTeach/latex/IllustLLN.tex
+   A /pkg/distrTeach.Rcheck/distrTeach/latex/plotCLT.tex
+   A /pkg/distrTeach.Rcheck/distrTeach/man
+   A /pkg/distrTeach.Rcheck/distrTeach/man/distrTeach.Rd.gz
+   A /pkg/distrTeach.Rcheck/distrTeach-Ex.R
+   A /pkg/distrTeach.Rcheck/distrTeach-Ex.Rout
+   A /pkg/distrTeach.Rcheck/distrTeach-Ex.ps
+   A /pkg/distrTeach.Rcheck/distrTeach-manual.aux
+   A /pkg/distrTeach.Rcheck/distrTeach-manual.dvi
+   A /pkg/distrTeach.Rcheck/distrTeach-manual.log
+   A /pkg/distrTeach.Rcheck/distrTeach-manual.out
+   A /pkg/distrTeach.Rcheck/distrTeach-manual.tex
+   D /pkg/inst
+   D /pkg/man
+   A /pkg/startupmsg
+   A /pkg/startupmsg/Chm
+   A /pkg/startupmsg/Chm/00Index.html
+   A /pkg/startupmsg/Chm/Logo.jpg
+   A /pkg/startupmsg/Chm/Rchm.css
+   A /pkg/startupmsg/Chm/StartupUtilities.html
+   A /pkg/startupmsg/Chm/myStartupUtilities.html
+   A /pkg/startupmsg/Chm/startupmsg.chm
+   A /pkg/startupmsg/Chm/startupmsg.hhp
+   A /pkg/startupmsg/Chm/startupmsg.toc
+   A /pkg/startupmsg/DESCRIPTION
+   A /pkg/startupmsg/Inst
+   A /pkg/startupmsg/Inst/News
+   A /pkg/startupmsg/Man
+   A /pkg/startupmsg/Man/StartupUtilities.Rd
+   A /pkg/startupmsg/Man/myStartupUtilities.Rd
+   A /pkg/startupmsg/NAMESPACE
+   A /pkg/startupmsg/R
+   A /pkg/startupmsg/R/00.r
+   A /pkg/startupmsg/R/illustration.R
+   A /pkg/startupmsg/R/startUpMessage.R
+   A /pkg/utils
+   A /pkg/utils/README-R-utils
+   A /pkg/utils/README-batchfiles
+   A /pkg/utils/finde.r
+   A /pkg/utils/ladealles.R
+   A /pkg/utils/pmake.bat
+   A /pkg/utils/pmakeDoc.bat
+   A /pkg/utils/rebuild.bat
+   A /pkg/utils/rebuildv.bat
+   A /pkg/utils/rebuildvall.bat
+   A /pkg/utils/setNewVersion.r
+
+
+------------------------------------------------------------------------
+r6 | ruckdeschel | 2008-01-15 21:34:45 +0100 (Di, 15 Jan 2008) | 1 line
+Changed paths:
+   A /www/ConvolutionNormalDistr.R
+   A /www/Expectation.R
+   A /www/Huberize.R
+   A /www/News
+   A /www/NormApprox.R
+   A /www/NumFun.R
+   A /www/Prognose.R
+   A /www/RandVar.html
+   A /www/Rlogo.jpg
+   A /www/SimulateandEstimate.R
+   A /www/StationaryRegressorDistr.R
+   A /www/TOBEDONE-PROJEKTE
+   A /www/Truncate.R
+   A /www/WISHLIST
+   A /www/comparisonFFTandRtoDPQ.R
+   A /www/destructive.R
+   A /www/distr-Familie.html
+   A /www/distr.html
+   A /www/distrDoc.html
+   A /www/distrEx.html
+   A /www/distrExUse.R
+   A /www/distrSim.html
+   A /www/distrTEst.html
+   A /www/distrTeach.html
+   A /www/illustCLT.R
+   A /www/illustCLT_tcl.R
+   M /www/index.php
+   A /www/logo.gif
+   A /www/minandmax.R
+   A /www/nFoldConvolution.R
+   A /www/papier.gif
+
+edited the Web-pages and project home page
+------------------------------------------------------------------------
+r7 | ruckdeschel | 2008-01-15 21:46:31 +0100 (Di, 15 Jan 2008) | 1 line
+Changed paths:
+   M /www/distr-Familie.html
+   M /www/index.php
+
+modified links to files on web-pages
+------------------------------------------------------------------------
+r8 | ruckdeschel | 2008-01-15 23:21:07 +0100 (Di, 15 Jan 2008) | 1 line
+Changed paths:
+   D /pkg/distrTeach.Rcheck
+
+Rcheck gelöscht
+------------------------------------------------------------------------
+r9 | ruckdeschel | 2008-01-16 21:27:52 +0100 (Mi, 16 Jan 2008) | 2 lines
+Changed paths:
+   A /pkg/distr
+   A /pkg/distr/DESCRIPTION
+   A /pkg/distr/NAMESPACE
+   A /pkg/distr/R
+   A /pkg/distr/R/01.r
+   A /pkg/distr/R/0pre230.r
+   A /pkg/distr/R/99.r
+   A /pkg/distr/R/AllClasses.R
+   A /pkg/distr/R/AllGenerics.R
+   A /pkg/distr/R/AllInitialize.R
+   A /pkg/distr/R/BetaDistribution.R
+   A /pkg/distr/R/BinomialDistribution.R
+   A /pkg/distr/R/CauchyDistribution.R
+   A /pkg/distr/R/ChisquaredDistribution.R
+   A /pkg/distr/R/ContinuousDistribution.R
+   A /pkg/distr/R/Convpow.r
+   A /pkg/distr/R/DiracDistribution.R
+   A /pkg/distr/R/DiscreteDistribution.R
+   A /pkg/distr/R/DistrList.R
+   A /pkg/distr/R/Distribution.R
+   A /pkg/distr/R/ExpOrdGammaOrChisq.R
+   A /pkg/distr/R/ExponentialDistribution.R
+   A /pkg/distr/R/ExtraConvolutionMethods.R
+   A /pkg/distr/R/FDistribution.R
+   A /pkg/distr/R/GammaDistribution.R
+   A /pkg/distr/R/GeometricDistribution.R
+   A /pkg/distr/R/HypergeomDistribution.R
+   A /pkg/distr/R/Infoshow.r
+   A /pkg/distr/R/LaplaceDistribution.R
+   A /pkg/distr/R/LatticeDistribution.R
+   A /pkg/distr/R/LogisticDistribution.R
+   A /pkg/distr/R/LognormalDistribution.R
+   A /pkg/distr/R/NegbinomDistribution.R
+   A /pkg/distr/R/NormalDistribution.R
+   A /pkg/distr/R/Parameter.R
+   A /pkg/distr/R/PoissonDistribution.R
+   A /pkg/distr/R/Spaces.r
+   A /pkg/distr/R/StudentDistribution.R
+   A /pkg/distr/R/UniformDistribution.R
+   A /pkg/distr/R/UtilitiesDistributions.R
+   A /pkg/distr/R/WeibullDistribution.R
+   A /pkg/distr/R/getLow.R
+   A /pkg/distr/R/internalUtils.R
+   A /pkg/distr/R/liesInSupport.R
+   A /pkg/distr/R/plot-methods.R
+   A /pkg/distr/R/print-show-methods.R
+   A /pkg/distr/R/setIsRelations.R
+   A /pkg/distr/R/standardMethods.R
+   A /pkg/distr/R/versionManagement.R
+   A /pkg/distr/chm
+   A /pkg/distr/chm/00Index.html
+   A /pkg/distr/chm/0distr-package.html
+   A /pkg/distr/chm/AbscontDistribution-class.html
+   A /pkg/distr/chm/Beta-class.html
+   A /pkg/distr/chm/BetaParameter-class.html
+   A /pkg/distr/chm/Binom-class.html
+   A /pkg/distr/chm/BinomParameter-class.html
+   A /pkg/distr/chm/Cauchy-class.html
+   A /pkg/distr/chm/CauchyParameter-class.html
+   A /pkg/distr/chm/Chisq-class.html
+   A /pkg/distr/chm/ChisqParameter-class.html
+   A /pkg/distr/chm/ConvPow.html
+   A /pkg/distr/chm/DExp-class.html
+   A /pkg/distr/chm/Dirac-class.html
+   A /pkg/distr/chm/DiracParameter-class.html
+   A /pkg/distr/chm/DiscreteDistribution-class.html
+   A /pkg/distr/chm/Distr.chm
+   A /pkg/distr/chm/Distr.hhp
+   A /pkg/distr/chm/Distr.toc
+   A /pkg/distr/chm/DistrList-class.html
+   A /pkg/distr/chm/DistrList.html
+   A /pkg/distr/chm/Distribution-class.html
+   A /pkg/distr/chm/EuclideanSpace-class.html
+   A /pkg/distr/chm/Exp-class.html
+   A /pkg/distr/chm/ExpOrGammaOrChisq-class.html
+   A /pkg/distr/chm/ExpParameter-class.html
+   A /pkg/distr/chm/FParameter-class.html
+   A /pkg/distr/chm/Fd-class.html
+   A /pkg/distr/chm/GammaParameter-class.html
+   A /pkg/distr/chm/Gammad-class.html
+   A /pkg/distr/chm/Geom-class.html
+   A /pkg/distr/chm/GeomParameter-class.html
+   A /pkg/distr/chm/Hyper-class.html
+   A /pkg/distr/chm/HyperParameter-class.html
+   A /pkg/distr/chm/Lattice-class.html
+   A /pkg/distr/chm/LatticeDistribution-class.html
+   A /pkg/distr/chm/Length-methods.html
+   A /pkg/distr/chm/Lnorm-class.html
+   A /pkg/distr/chm/LnormParameter-class.html
+   A /pkg/distr/chm/Logis-class.html
+   A /pkg/distr/chm/LogisParameter-class.html
+   A /pkg/distr/chm/Logo.jpg
+   A /pkg/distr/chm/Math-methods.html
+   A /pkg/distr/chm/Max-methods.html
+   A /pkg/distr/chm/Min-methods.html
+   A /pkg/distr/chm/Naturals-class.html
+   A /pkg/distr/chm/Nbinom-class.html
+   A /pkg/distr/chm/NbinomParameter-class.html
+   A /pkg/distr/chm/Norm-class.html
+   A /pkg/distr/chm/NormParameter-class.html
+   A /pkg/distr/chm/OptionalParameter-class.html
+   A /pkg/distr/chm/Parameter-class.html
+   A /pkg/distr/chm/Pois-class.html
+   A /pkg/distr/chm/PoisParameter-class.html
+   A /pkg/distr/chm/Rchm.css
+   A /pkg/distr/chm/Reals-class.html
+   A /pkg/distr/chm/RtoDPQ.d.html
+   A /pkg/distr/chm/RtoDPQ.html
+   A /pkg/distr/chm/TParameter-class.html
+   A /pkg/distr/chm/Td-class.html
+   A /pkg/distr/chm/UniNormParameter-class.html
+   A /pkg/distr/chm/Unif-class.html
+   A /pkg/distr/chm/UnifParameter-class.html
+   A /pkg/distr/chm/UnivarDistrList-class.html
+   A /pkg/distr/chm/UnivarDistrList.html
+   A /pkg/distr/chm/UnivariateDistribution-class.html
+   A /pkg/distr/chm/Weibull-class.html
+   A /pkg/distr/chm/WeibullParameter-class.html
+   A /pkg/distr/chm/d-methods.html
+   A /pkg/distr/chm/df-methods.html
+   A /pkg/distr/chm/df1-methods.html
+   A /pkg/distr/chm/df2-methods.html
+   A /pkg/distr/chm/dim-methods.html
+   A /pkg/distr/chm/dimension-methods.html
+   A /pkg/distr/chm/distrARITH.html
+   A /pkg/distr/chm/distrMASK.html
+   A /pkg/distr/chm/distroptions.html
+   A /pkg/distr/chm/gap-methods.html
+   A /pkg/distr/chm/getLow.html
+   A /pkg/distr/chm/img-methods.html
+   A /pkg/distr/chm/internals.html
+   A /pkg/distr/chm/k-methods.html
+   A /pkg/distr/chm/lambda-methods.html
+   A /pkg/distr/chm/liesIn-methods.html
+   A /pkg/distr/chm/liesInSupport.html
+   A /pkg/distr/chm/location-methods.html
+   A /pkg/distr/chm/m-methods.html
+   A /pkg/distr/chm/mean-methods.html
+   A /pkg/distr/chm/meanlog-methods.html
+   A /pkg/distr/chm/n-methods.html
+   A /pkg/distr/chm/name-methods.html
+   A /pkg/distr/chm/ncp-methods.html
+   A /pkg/distr/chm/operators-methods.html
+   A /pkg/distr/chm/p-methods.html
+   A /pkg/distr/chm/p.l-methods.html
+   A /pkg/distr/chm/param-methods.html
+   A /pkg/distr/chm/pivot-methods.html
+   A /pkg/distr/chm/plot-methods.html
+   A /pkg/distr/chm/print-methods.html
+   A /pkg/distr/chm/prob-methods.html
+   A /pkg/distr/chm/q-methods.html
+   A /pkg/distr/chm/q.r-methods.html
+   A /pkg/distr/chm/r-methods.html
+   A /pkg/distr/chm/rSpace-class.html
+   A /pkg/distr/chm/rate-methods.html
+   A /pkg/distr/chm/scale-methods.html
+   A /pkg/distr/chm/sd-methods.html
+   A /pkg/distr/chm/sdlog-methods.html
+   A /pkg/distr/chm/shape-methods.html
+   A /pkg/distr/chm/shape1-methods.html
+   A /pkg/distr/chm/shape2-methods.html
+   A /pkg/distr/chm/simplifyr-methods.html
+   A /pkg/distr/chm/size-methods.html
+   A /pkg/distr/chm/standardMethods.html
+   A /pkg/distr/chm/support-methods.html
+   A /pkg/distr/chm/versionmanagement.html
+   A /pkg/distr/chm/width-methods.html
+   A /pkg/distr/demo
+   A /pkg/distr/demo/00Index
+   A /pkg/distr/demo/ComparisonFFTandRtoDPQ.R
+   A /pkg/distr/demo/ConvolutionNormalDistr.R
+   A /pkg/distr/demo/Expectation.R
+   A /pkg/distr/demo/Huberize.r
+   A /pkg/distr/demo/NormApprox.R
+   A /pkg/distr/demo/StationaryRegressorDistr.R
+   A /pkg/distr/demo/Truncate.r
+   A /pkg/distr/demo/destructive.R
+   A /pkg/distr/demo/minandmax.R
+   A /pkg/distr/demo/nFoldConvolution.R
+   A /pkg/distr/inst
+   A /pkg/distr/inst/ARITHMETICS
+   A /pkg/distr/inst/Citation
+   A /pkg/distr/inst/Masking
+   A /pkg/distr/inst/News
+   A /pkg/distr/man
+   A /pkg/distr/man/0distr-package.Rd
+   A /pkg/distr/man/AbscontDistribution-class.Rd
+   A /pkg/distr/man/Beta-class.Rd
+   A /pkg/distr/man/BetaParameter-class.Rd
+   A /pkg/distr/man/Binom-class.Rd
+   A /pkg/distr/man/BinomParameter-class.Rd
+   A /pkg/distr/man/Cauchy-class.Rd
+   A /pkg/distr/man/CauchyParameter-class.Rd
+   A /pkg/distr/man/Chisq-class.Rd
+   A /pkg/distr/man/ChisqParameter-class.Rd
+   A /pkg/distr/man/ConvPow.Rd
+   A /pkg/distr/man/DExp-class.Rd
+   A /pkg/distr/man/Dirac-class.Rd
+   A /pkg/distr/man/DiracParameter-class.Rd
+   A /pkg/distr/man/DiscreteDistribution-class.Rd
+   A /pkg/distr/man/DistrList-class.Rd
+   A /pkg/distr/man/DistrList.Rd
+   A /pkg/distr/man/Distribution-class.Rd
+   A /pkg/distr/man/EuclideanSpace-class.Rd
+   A /pkg/distr/man/Exp-class.Rd
+   A /pkg/distr/man/ExpOrGammaOrChisq-class.Rd
+   A /pkg/distr/man/ExpParameter-class.Rd
+   A /pkg/distr/man/FParameter-class.Rd
+   A /pkg/distr/man/Fd-class.Rd
+   A /pkg/distr/man/GammaParameter-class.Rd
+   A /pkg/distr/man/Gammad-class.Rd
+   A /pkg/distr/man/Geom-class.Rd
+   A /pkg/distr/man/GeomParameter-class.Rd
+   A /pkg/distr/man/Hyper-class.Rd
+   A /pkg/distr/man/HyperParameter-class.Rd
+   A /pkg/distr/man/Lattice-class.Rd
+   A /pkg/distr/man/LatticeDistribution-class.Rd
+   A /pkg/distr/man/Length-methods.Rd
+   A /pkg/distr/man/Lnorm-class.Rd
+   A /pkg/distr/man/LnormParameter-class.Rd
+   A /pkg/distr/man/Logis-class.Rd
+   A /pkg/distr/man/LogisParameter-class.Rd
+   A /pkg/distr/man/Math-methods.Rd
+   A /pkg/distr/man/Max-methods.Rd
+   A /pkg/distr/man/Min-methods.Rd
+   A /pkg/distr/man/Naturals-class.Rd
+   A /pkg/distr/man/Nbinom-class.Rd
+   A /pkg/distr/man/NbinomParameter-class.Rd
+   A /pkg/distr/man/Norm-class.Rd
+   A /pkg/distr/man/NormParameter-class.Rd
+   A /pkg/distr/man/OptionalParameter-class.Rd
+   A /pkg/distr/man/Parameter-class.Rd
+   A /pkg/distr/man/Pois-class.Rd
+   A /pkg/distr/man/PoisParameter-class.Rd
+   A /pkg/distr/man/Reals-class.Rd
+   A /pkg/distr/man/RtoDPQ.Rd
+   A /pkg/distr/man/RtoDPQ.d.Rd
+   A /pkg/distr/man/TParameter-class.Rd
+   A /pkg/distr/man/Td-class.Rd
+   A /pkg/distr/man/UniNormParameter-class.Rd
+   A /pkg/distr/man/Unif-class.Rd
+   A /pkg/distr/man/UnifParameter-class.Rd
+   A /pkg/distr/man/UnivarDistrList-class.Rd
+   A /pkg/distr/man/UnivarDistrList.Rd
+   A /pkg/distr/man/UnivariateDistribution-class.Rd
+   A /pkg/distr/man/Weibull-class.Rd
+   A /pkg/distr/man/WeibullParameter-class.Rd
+   A /pkg/distr/man/d-methods.Rd
+   A /pkg/distr/man/df-methods.Rd
+   A /pkg/distr/man/df1-methods.Rd
+   A /pkg/distr/man/df2-methods.Rd
+   A /pkg/distr/man/dim-methods.Rd
+   A /pkg/distr/man/dimension-methods.Rd
+   A /pkg/distr/man/distrARITH.Rd
+   A /pkg/distr/man/distrMASK.Rd
+   A /pkg/distr/man/distroptions.Rd
+   A /pkg/distr/man/gap-methods.Rd
+   A /pkg/distr/man/getLow.Rd
+   A /pkg/distr/man/img-methods.Rd
+   A /pkg/distr/man/internals.Rd
+   A /pkg/distr/man/k-methods.Rd
+   A /pkg/distr/man/lambda-methods.Rd
+   A /pkg/distr/man/liesIn-methods.Rd
+   A /pkg/distr/man/liesInSupport.Rd
+   A /pkg/distr/man/location-methods.Rd
+   A /pkg/distr/man/m-methods.Rd
+   A /pkg/distr/man/mean-methods.Rd
+   A /pkg/distr/man/meanlog-methods.Rd
+   A /pkg/distr/man/n-methods.Rd
+   A /pkg/distr/man/name-methods.Rd
+   A /pkg/distr/man/ncp-methods.Rd
+   A /pkg/distr/man/operators-methods.Rd
+   A /pkg/distr/man/p-methods.Rd
+   A /pkg/distr/man/p.l-methods.Rd
+   A /pkg/distr/man/param-methods.Rd
+   A /pkg/distr/man/pivot-methods.Rd
+   A /pkg/distr/man/plot-methods.Rd
+   A /pkg/distr/man/print-methods.Rd
+   A /pkg/distr/man/prob-methods.Rd
+   A /pkg/distr/man/q-methods.Rd
+   A /pkg/distr/man/q.r-methods.Rd
+   A /pkg/distr/man/r-methods.Rd
+   A /pkg/distr/man/rSpace-class.Rd
+   A /pkg/distr/man/rate-methods.Rd
+   A /pkg/distr/man/scale-methods.Rd
+   A /pkg/distr/man/sd-methods.Rd
+   A /pkg/distr/man/sdlog-methods.Rd
+   A /pkg/distr/man/shape-methods.Rd
+   A /pkg/distr/man/shape1-methods.Rd
+   A /pkg/distr/man/shape2-methods.Rd
+   A /pkg/distr/man/simplifyr-methods.Rd
+   A /pkg/distr/man/size-methods.Rd
+   A /pkg/distr/man/standardMethods.Rd
+   A /pkg/distr/man/support-methods.Rd
+   A /pkg/distr/man/versionmanagement.Rd
+   A /pkg/distr/man/width-methods.Rd
+
+tried to include package distr:
+locally on my computer I created a new local working copy of project distr and then copied some (svn-freed) copy of package distr to it; seems to work; keep fingers crossed...
+------------------------------------------------------------------------
+r10 | ruckdeschel | 2008-01-16 21:28:57 +0100 (Mi, 16 Jan 2008) | 1 line
+Changed paths:
+   D /www/Rlogo.jpg
+   A /www/Rlogo0.jpg
+
+wrong spelling for Rlogo.jpg
+------------------------------------------------------------------------
+r11 | ruckdeschel | 2008-01-16 21:29:55 +0100 (Mi, 16 Jan 2008) | 1 line
+Changed paths:
+   A /www/RLOGO.jpg
+   D /www/Rlogo0.jpg
+
+spelling correction step 2
+------------------------------------------------------------------------
+r12 | ruckdeschel | 2008-01-16 21:33:34 +0100 (Mi, 16 Jan 2008) | 1 line
+Changed paths:
+   M /pkg/distr/DESCRIPTION
+
+update DESCRIPTION file to version 2.0
+------------------------------------------------------------------------
+r13 | ruckdeschel | 2008-01-16 21:58:59 +0100 (Mi, 16 Jan 2008) | 1 line
+Changed paths:
+   A /pkg/distrMod
+   A /pkg/distrMod/DESCRIPTION
+   A /pkg/distrMod/NAMESPACE
+   A /pkg/distrMod/R
+   A /pkg/distrMod/R/AllClass.R
+   A /pkg/distrMod/R/AllGeneric.R
+   A /pkg/distrMod/R/AllPlot.R
+   A /pkg/distrMod/R/AllShow.R
+   A /pkg/distrMod/R/Distances.R
+   A /pkg/distrMod/R/Internalfunctions.R
+   A /pkg/distrMod/R/MCEstimator.R
+   A /pkg/distrMod/R/MDEstimator.R
+   A /pkg/distrMod/R/MLEstimator.R
+   A /pkg/distrMod/R/ParamFamParameter.R
+   A /pkg/distrMod/R/ParamFamily.R
+   A /pkg/distrMod/R/ProbFamily.R
+   A /pkg/distrMod/R/Symmetry.R
+   A /pkg/distrMod/R/distrModOptions.R
+   A /pkg/distrMod/man
+   A /pkg/distrMod/man/0distrMod-package.Rd
+   A /pkg/distrMod/man/DistributionSymmetry-class.Rd
+   A /pkg/distrMod/man/EllipticalSymmetry-class.Rd
+   A /pkg/distrMod/man/EllipticalSymmetry.Rd
+   A /pkg/distrMod/man/HellingerDist.Rd
+   A /pkg/distrMod/man/KolmogorovDist.Rd
+   A /pkg/distrMod/man/MCEstimator.Rd
+   A /pkg/distrMod/man/MDEstimator.Rd
+   A /pkg/distrMod/man/MLEstimator.Rd
+   A /pkg/distrMod/man/NoSymmetry-class.Rd
+   A /pkg/distrMod/man/NoSymmetry.Rd
+   A /pkg/distrMod/man/OptionalNumeric-class.Rd
+   A /pkg/distrMod/man/ParamFamParameter-class.Rd
+   A /pkg/distrMod/man/ParamFamParameter.Rd
+   A /pkg/distrMod/man/ParamFamily-class.Rd
+   A /pkg/distrMod/man/ParamFamily.Rd
+   A /pkg/distrMod/man/ProbFamily-class.Rd
+   A /pkg/distrMod/man/SphericalSymmetry-class.Rd
+   A /pkg/distrMod/man/SphericalSymmetry.Rd
+   A /pkg/distrMod/man/Symmetry-class.Rd
+   A /pkg/distrMod/man/TotalVarDist.Rd
+   A /pkg/distrMod/man/distrModOptions.Rd
+   A /www/Rlogo0.jpg
+
+Moved in package/project distrMod (as of revision 37)
+------------------------------------------------------------------------
+r14 | ruckdeschel | 2008-01-17 21:13:15 +0100 (Do, 17 Jan 2008) | 1 line
+Changed paths:
+   M /www/distr-Familie.html
+   M /www/distr.html
+   M /www/distrDoc.html
+   M /www/distrEx.html
+   A /www/distrMod.html
+   M /www/distrSim.html
+   M /www/distrTEst.html
+   M /www/distrTeach.html
+   M /www/index.php
+
+web-pages now mentioning distrMod; new webpage for distrMod
+------------------------------------------------------------------------
+r15 | ruckdeschel | 2008-01-17 21:14:34 +0100 (Do, 17 Jan 2008) | 1 line
+Changed paths:
+   D /www/Rlogo0.jpg
+
+delete Rlogo0.jpg (no longer needed)
+------------------------------------------------------------------------
+r16 | ruckdeschel | 2008-01-17 22:39:54 +0100 (Do, 17 Jan 2008) | 3 lines
+Changed paths:
+   M /pkg/utils/README-R-utils
+   M /pkg/utils/README-batchfiles
+   M /pkg/utils/rebuild.bat
+   M /pkg/utils/setNewVersion.r
+
+fixed some bugs in setNewVersion.r;
+in particular all arguments are now supported vectorwise,
+hence easily extended...
+------------------------------------------------------------------------
+r17 | ruckdeschel | 2008-01-17 22:41:21 +0100 (Do, 17 Jan 2008) | 1 line
+Changed paths:
+   M /pkg/distr/DESCRIPTION
+   M /pkg/distr/man/0distr-package.Rd
+   M /pkg/distrDoc/DESCRIPTION
+   M /pkg/distrDoc/Man/0distrDoc-package.Rd
+   M /pkg/distrEx/DESCRIPTION
+   M /pkg/distrEx/Man/0distrEx-package.Rd
+   M /pkg/distrMod/DESCRIPTION
+   M /pkg/distrMod/man/0distrMod-package.Rd
+   M /pkg/distrSim/DESCRIPTION
+   M /pkg/distrSim/Man/0distrSim-package.Rd
+   M /pkg/distrTEst/DESCRIPTION
+   M /pkg/distrTEst/Man/0distrTEst-package.Rd
+   M /pkg/distrTeach/DESCRIPTION
+   M /pkg/distrTeach/Man/0distrTeach-package.Rd
+   M /pkg/startupmsg/DESCRIPTION
+   D /pkg/utils/rebuildv.bat
+   D /pkg/utils/rebuildvall.bat
+   M /www/distr-Familie.html
+   M /www/distr.html
+   M /www/distrDoc.html
+   M /www/distrEx.html
+   M /www/distrMod.html
+   M /www/distrSim.html
+   M /www/distrTEst.html
+   M /www/distrTeach.html
+   M /www/index.php
+   A /www/~$strMod.html
+
+after an application of setNewversion()
+------------------------------------------------------------------------
+r18 | ruckdeschel | 2008-01-18 17:33:17 +0100 (Fr, 18 Jan 2008) | 2 lines
+Changed paths:
+   D /www/News
+   A /www/News0
+
+News should be NEWS Part 1
+News -> News0
+------------------------------------------------------------------------
+r19 | ruckdeschel | 2008-01-18 17:34:15 +0100 (Fr, 18 Jan 2008) | 2 lines
+Changed paths:
+   A /www/NEWS
+   D /www/News0
+
+News should be NEWS Part 2
+News0 -> NEWS
+------------------------------------------------------------------------
+r20 | ruckdeschel | 2008-01-18 17:36:59 +0100 (Fr, 18 Jan 2008) | 1 line
+Changed paths:
+   M /www/distrTeach.html
+
+Corrected umlaut of Anja Hueller
+------------------------------------------------------------------------
+r21 | ruckdeschel | 2008-01-18 18:44:01 +0100 (Fr, 18 Jan 2008) | 2 lines
+Changed paths:
+   M /pkg/distr/DESCRIPTION
+   M /pkg/distrDoc/DESCRIPTION
+   M /pkg/distrEx/DESCRIPTION
+   M /pkg/distrMod/DESCRIPTION
+   M /pkg/distrSim/DESCRIPTION
+   M /pkg/distrTEst/DESCRIPTION
+   M /pkg/distrTeach/DESCRIPTION
+
+Modified the URL tags in the DESCRIPTION file to
+http://distr.r-forge.r-project.org/
+------------------------------------------------------------------------
+r22 | ruckdeschel | 2008-01-18 19:16:08 +0100 (Fr, 18 Jan 2008) | 2 lines
+Changed paths:
+   D /pkg/distrEx/R/Sysdata.rda
+   A /pkg/distrEx/R/Sysdata0.rda
+
+wrong spelling for sysdata.rda part 1
+Sysdata.rda -> Sysdata0.rda
+------------------------------------------------------------------------
+r23 | ruckdeschel | 2008-01-18 19:17:15 +0100 (Fr, 18 Jan 2008) | 3 lines
+Changed paths:
+   D /pkg/distrEx/R/Sysdata0.rda
+   A /pkg/distrEx/R/sysdata.rda
+
+wrong spelling for sysdata.rda part 2
+Sysdata0.rda -> sysdata.rda
+
+------------------------------------------------------------------------
+r24 | ruckdeschel | 2008-01-22 18:06:50 +0100 (Di, 22 Jan 2008) | 1 line
+Changed paths:
+   M /pkg/distr/NAMESPACE
+   A /pkg/distr/R/getLabel.R
+   A /pkg/distr/man/getLabel.Rd
+   M /pkg/distrEx/Chm/0distrEx-package.html
+   M /pkg/distrEx/Chm/AbscontCondDistribution-class.html
+   M /pkg/distrEx/Chm/Condition-class.html
+   M /pkg/distrEx/Chm/ContaminationSize.html
+   M /pkg/distrEx/Chm/ConvexContamination.html
+   M /pkg/distrEx/Chm/DiscreteCondDistribution-class.html
+   M /pkg/distrEx/Chm/DiscreteMVDistribution-class.html
+   M /pkg/distrEx/Chm/DiscreteMVDistribution.html
+   M /pkg/distrEx/Chm/E.html
+   M /pkg/distrEx/Chm/EuclCondition-class.html
+   M /pkg/distrEx/Chm/EuclCondition.html
+   M /pkg/distrEx/Chm/GLIntegrate.html
+   M /pkg/distrEx/Chm/Gumbel-class.html
+   M /pkg/distrEx/Chm/Gumbel.html
+   M /pkg/distrEx/Chm/GumbelParameter-class.html
+   M /pkg/distrEx/Chm/HellingerDist.html
+   M /pkg/distrEx/Chm/KolmogorovDist.html
+   M /pkg/distrEx/Chm/LMCondDistribution.html
+   M /pkg/distrEx/Chm/LMParameter-class.html
+   M /pkg/distrEx/Chm/LMParameter.html
+   M /pkg/distrEx/Chm/MultivariateDistribution-class.html
+   M /pkg/distrEx/Chm/PrognCondDistribution-class.html
+   M /pkg/distrEx/Chm/PrognCondition-class.html
+   M /pkg/distrEx/Chm/TotalVarDist.html
+   M /pkg/distrEx/Chm/UnivariateCondDistribution-class.html
+   M /pkg/distrEx/Chm/Var.html
+   M /pkg/distrEx/Chm/dim-methods.html
+   M /pkg/distrEx/Chm/distrEx.chm
+   M /pkg/distrEx/Chm/distrExIntegrate.html
+   M /pkg/distrEx/Chm/distrExMASK.html
+   M /pkg/distrEx/Chm/distrExOptions.html
+   M /pkg/distrEx/Chm/liesInSupport.html
+   M /pkg/distrEx/Chm/m1df.html
+   M /pkg/distrEx/Chm/m2df.html
+   M /pkg/distrEx/Chm/make01.html
+   M /pkg/distrEx/Src/distrEx.dll
+   M /pkg/distrMod/DESCRIPTION
+   A /pkg/distrMod/chm
+   A /pkg/distrMod/chm/00Index.html
+   A /pkg/distrMod/chm/0distrMod-package.html
+   A /pkg/distrMod/chm/DistributionSymmetry-class.html
+   A /pkg/distrMod/chm/EllipticalSymmetry-class.html
+   A /pkg/distrMod/chm/EllipticalSymmetry.html
+   A /pkg/distrMod/chm/HellingerDist.html
+   A /pkg/distrMod/chm/KolmogorovDist.html
+   A /pkg/distrMod/chm/MCEstimator.html
+   A /pkg/distrMod/chm/MDEstimator.html
+   A /pkg/distrMod/chm/MLEstimator.html
+   A /pkg/distrMod/chm/NoSymmetry-class.html
+   A /pkg/distrMod/chm/NoSymmetry.html
+   A /pkg/distrMod/chm/OptionalNumeric-class.html
+   A /pkg/distrMod/chm/ParamFamParameter-class.html
+   A /pkg/distrMod/chm/ParamFamParameter.html
+   A /pkg/distrMod/chm/ParamFamily-class.html
+   A /pkg/distrMod/chm/ParamFamily.html
+   A /pkg/distrMod/chm/ProbFamily-class.html
+   A /pkg/distrMod/chm/Rchm.css
+   A /pkg/distrMod/chm/SphericalSymmetry-class.html
+   A /pkg/distrMod/chm/SphericalSymmetry.html
+   A /pkg/distrMod/chm/Symmetry-class.html
+   A /pkg/distrMod/chm/TotalVarDist.html
+   A /pkg/distrMod/chm/distrMod.chm
+   A /pkg/distrMod/chm/distrMod.hhp
+   A /pkg/distrMod/chm/distrMod.toc
+   A /pkg/distrMod/chm/distrModOptions.html
+   A /pkg/distrMod/chm/logo.jpg
+
+some chm-Files; but most importantly: introduction of getLabel() as in mail to/from Kouros Owzar
+------------------------------------------------------------------------
+r25 | ruckdeschel | 2008-01-23 23:43:32 +0100 (Mi, 23 Jan 2008) | 5 lines
+Changed paths:
+   M /pkg/distr/R/internalUtils.R
+   M /pkg/distr/chm/00Index.html
+   M /pkg/distr/chm/0distr-package.html
+   M /pkg/distr/chm/Distr.chm
+   M /pkg/distr/chm/Distr.hhp
+   M /pkg/distr/chm/Distr.toc
+   A /pkg/distr/chm/getLabel.html
+   M /pkg/utils/finde.r
+   M /pkg/utils/ladealles.R
+
+have fixed feature request 
+
+http://r-forge.r-project.org/tracker/index.php?func=detail&aid=97&group_id=87&atid=403
+
+(was in fact a bug) 
+------------------------------------------------------------------------
+r26 | ruckdeschel | 2008-01-24 00:49:25 +0100 (Do, 24 Jan 2008) | 1 line
+Changed paths:
+   D /pkg/distrDoc/Chm
+   D /pkg/distrDoc/Inst
+   D /pkg/distrDoc/Man
+   D /pkg/distrEx/Chm
+   D /pkg/distrEx/Demo
+   D /pkg/distrEx/Inst
+   D /pkg/distrEx/Man
+   D /pkg/distrEx/Src
+   D /pkg/distrSim/Chm
+   D /pkg/distrSim/Demo
+   D /pkg/distrSim/Inst
+   D /pkg/distrSim/Man
+   D /pkg/distrTEst/Chm
+   D /pkg/distrTEst/Demo
+   D /pkg/distrTEst/Inst
+   D /pkg/distrTEst/Man
+   D /pkg/distrTeach/Chm
+   D /pkg/distrTeach/Demo
+   D /pkg/distrTeach/Inst
+   D /pkg/distrTeach/Man
+   D /pkg/startupmsg/Chm
+   D /pkg/startupmsg/Inst
+   D /pkg/startupmsg/Man
+
+changed spelling to Linux type (ie .../src instead of .../Src [what WinXP made out of it])
+------------------------------------------------------------------------
+r27 | ruckdeschel | 2008-01-24 01:21:01 +0100 (Do, 24 Jan 2008) | 2 lines
+Changed paths:
+   A /pkg/distrDoc/Chm0 (from /pkg/distrDoc/Chm:25)
+   A /pkg/distrDoc/Inst0 (from /pkg/distrDoc/Inst:25)
+   A /pkg/distrDoc/Man0 (from /pkg/distrDoc/Man:25)
+   A /pkg/distrEx/Chm0 (from /pkg/distrEx/Chm:25)
+   A /pkg/distrEx/Demo0 (from /pkg/distrEx/Demo:25)
+   A /pkg/distrEx/Inst0 (from /pkg/distrEx/Inst:25)
+   A /pkg/distrEx/Man0 (from /pkg/distrEx/Man:25)
+   A /pkg/distrEx/Src0 (from /pkg/distrEx/Src:25)
+   A /pkg/distrSim/Chm0 (from /pkg/distrSim/Chm:25)
+   A /pkg/distrSim/Demo0 (from /pkg/distrSim/Demo:25)
+   A /pkg/distrSim/Inst0 (from /pkg/distrSim/Inst:25)
+   A /pkg/distrSim/Man0 (from /pkg/distrSim/Man:25)
+   A /pkg/distrTEst/Chm0 (from /pkg/distrTEst/Chm:25)
+   A /pkg/distrTEst/Demo0 (from /pkg/distrTEst/Demo:25)
+   A /pkg/distrTEst/Inst0 (from /pkg/distrTEst/Inst:25)
+   A /pkg/distrTEst/Man0 (from /pkg/distrTEst/Man:25)
+   A /pkg/distrTeach/Chm0 (from /pkg/distrTeach/Chm:25)
+   A /pkg/distrTeach/Demo0 (from /pkg/distrTeach/Demo:25)
+   A /pkg/distrTeach/Inst0 (from /pkg/distrTeach/Inst:25)
+   A /pkg/distrTeach/Man0 (from /pkg/distrTeach/Man:25)
+   A /pkg/startupmsg/Chm0 (from /pkg/startupmsg/Chm:25)
+   A /pkg/startupmsg/Inst0 (from /pkg/startupmsg/Inst:25)
+   A /pkg/startupmsg/Man0 (from /pkg/startupmsg/Man:25)
+
+tried to rename folder without telling svn in version 26, bad idea!!!
+now all capitalized folders on level 1 are svn-renamed to <Name>0
+------------------------------------------------------------------------
+r28 | ruckdeschel | 2008-01-24 01:25:26 +0100 (Do, 24 Jan 2008) | 1 line
+
+old <Name> folders deleted
+------------------------------------------------------------------------
+r29 | ruckdeschel | 2008-01-24 01:25:57 +0100 (Do, 24 Jan 2008) | 1 line
+
+old <Name> folders deleted
+------------------------------------------------------------------------
+r30 | ruckdeschel | 2008-01-24 01:29:08 +0100 (Do, 24 Jan 2008) | 1 line
+Changed paths:
+   D /pkg/distrDoc/Chm0
+   D /pkg/distrDoc/Inst0
+   D /pkg/distrDoc/Man0
+   A /pkg/distrDoc/chm (from /pkg/distrDoc/Chm0:27)
+   A /pkg/distrDoc/inst (from /pkg/distrDoc/Inst0:27)
+   A /pkg/distrDoc/man (from /pkg/distrDoc/Man0:27)
+   D /pkg/distrEx/Chm0
+   D /pkg/distrEx/Demo0
+   D /pkg/distrEx/Inst0
+   D /pkg/distrEx/Man0
+   D /pkg/distrEx/Src0
+   A /pkg/distrEx/chm (from /pkg/distrEx/Chm0:27)
+   A /pkg/distrEx/demo (from /pkg/distrEx/Demo0:27)
+   A /pkg/distrEx/inst (from /pkg/distrEx/Inst0:27)
+   A /pkg/distrEx/man (from /pkg/distrEx/Man0:27)
+   A /pkg/distrEx/src (from /pkg/distrEx/Src0:27)
+
+<Name>0 -> <name>
+------------------------------------------------------------------------
+r31 | ruckdeschel | 2008-01-24 01:33:09 +0100 (Do, 24 Jan 2008) | 1 line
+Changed paths:
+   D /pkg/distrSim/Chm0
+   D /pkg/distrSim/Demo0
+   D /pkg/distrSim/Inst0
+   D /pkg/distrSim/Man0
+   A /pkg/distrSim/chm (from /pkg/distrSim/Chm0:29)
+   A /pkg/distrSim/demo (from /pkg/distrSim/Demo0:29)
+   A /pkg/distrSim/inst (from /pkg/distrSim/Inst0:29)
+   A /pkg/distrSim/man (from /pkg/distrSim/Man0:29)
+   D /pkg/distrTEst/Chm0
+   D /pkg/distrTEst/Demo0
+   D /pkg/distrTEst/Inst0
+   D /pkg/distrTEst/Man0
+   A /pkg/distrTEst/chm (from /pkg/distrTEst/Chm0:29)
+   A /pkg/distrTEst/demo (from /pkg/distrTEst/Demo0:29)
+   A /pkg/distrTEst/inst (from /pkg/distrTEst/Inst0:29)
+   A /pkg/distrTEst/man (from /pkg/distrTEst/Man0:29)
+   D /pkg/distrTeach/Chm0
+   D /pkg/distrTeach/Demo0
+   D /pkg/distrTeach/Inst0
+   D /pkg/distrTeach/Man0
+   A /pkg/distrTeach/chm (from /pkg/distrTeach/Chm0:29)
+   A /pkg/distrTeach/demo (from /pkg/distrTeach/Demo0:29)
+   A /pkg/distrTeach/inst (from /pkg/distrTeach/Inst0:29)
+   A /pkg/distrTeach/man (from /pkg/distrTeach/Man0:29)
+   D /pkg/startupmsg/Chm0
+   D /pkg/startupmsg/Inst0
+   D /pkg/startupmsg/Man0
+   A /pkg/startupmsg/chm (from /pkg/startupmsg/Chm0:29)
+   A /pkg/startupmsg/inst (from /pkg/startupmsg/Inst0:29)
+   A /pkg/startupmsg/man (from /pkg/startupmsg/Man0:29)
+
+<Name0> -> <name>   2nd part
+------------------------------------------------------------------------
+r32 | ruckdeschel | 2008-01-24 01:40:45 +0100 (Do, 24 Jan 2008) | 1 line
+Changed paths:
+   D /pkg/distrDoc/inst/Doc
+   A /pkg/distrDoc/inst/Doc0 (from /pkg/distrDoc/inst/Doc:30)
+   D /pkg/distrSim/inst/Citation
+   A /pkg/distrSim/inst/Citation0 (from /pkg/distrSim/inst/Citation:31)
+   D /pkg/distrSim/inst/News
+   A /pkg/distrSim/inst/News0 (from /pkg/distrSim/inst/News:31)
+   D /pkg/distrTEst/inst/Citation
+   A /pkg/distrTEst/inst/NEWS0 (from /pkg/distrTEst/inst/News:31)
+   D /pkg/distrTEst/inst/News
+   A /pkg/distrTEst/inst/citation0 (from /pkg/distrTEst/inst/Citation:31)
+   D /pkg/distrTeach/inst/Citation
+   A /pkg/distrTeach/inst/Citation0 (from /pkg/distrTeach/inst/Citation:31)
+   D /pkg/distrTeach/inst/News
+   A /pkg/distrTeach/inst/News0 (from /pkg/distrTeach/inst/News:31)
+   D /pkg/startupmsg/inst/News
+   A /pkg/startupmsg/inst/News0 (from /pkg/startupmsg/inst/News:31)
+
+next spelling changes
+------------------------------------------------------------------------
+r33 | ruckdeschel | 2008-01-24 01:47:57 +0100 (Do, 24 Jan 2008) | 1 line
+Changed paths:
+   A /pkg/distrDoc/inst/Doc (from /pkg/distrDoc/inst/Doc0:32)
+   D /pkg/distrDoc/inst/Doc0
+   D /pkg/distrEx/inst/Tests
+   A /pkg/distrEx/inst/Tests0 (from /pkg/distrEx/inst/Tests:32)
+   A /pkg/distrSim/inst/CITATION (from /pkg/distrSim/inst/Citation0:32)
+   D /pkg/distrSim/inst/Citation0
+   A /pkg/distrSim/inst/NEWS (from /pkg/distrSim/inst/News0:32)
+   D /pkg/distrSim/inst/News0
+   A /pkg/distrTEst/inst/CITATION (from /pkg/distrTEst/inst/citation0:32)
+   A /pkg/distrTEst/inst/NEWS (from /pkg/distrTEst/inst/NEWS0:32)
+   D /pkg/distrTEst/inst/NEWS0
+   D /pkg/distrTEst/inst/citation0
+   A /pkg/distrTeach/inst/CITATION (from /pkg/distrTeach/inst/Citation0:32)
+   D /pkg/distrTeach/inst/Citation0
+   A /pkg/distrTeach/inst/NEWS (from /pkg/distrTeach/inst/News0:32)
+   D /pkg/distrTeach/inst/News0
+   A /pkg/startupmsg/inst/NEWS (from /pkg/startupmsg/inst/News0:32)
+   D /pkg/startupmsg/inst/News0
+
+next capitalization steps
+------------------------------------------------------------------------
+r34 | ruckdeschel | 2008-01-24 01:49:27 +0100 (Do, 24 Jan 2008) | 1 line
+Changed paths:
+   A /pkg/distrDoc/inst/DOC0 (from /pkg/distrDoc/inst/Doc:33)
+   D /pkg/distrDoc/inst/Doc
+   D /pkg/distrEx/inst/Tests0
+   A /pkg/distrEx/inst/tests (from /pkg/distrEx/inst/Tests0:33)
+
+next capitalization
+------------------------------------------------------------------------
+r35 | ruckdeschel | 2008-01-24 01:50:16 +0100 (Do, 24 Jan 2008) | 1 line
+Changed paths:
+   D /pkg/distrDoc/inst/DOC0
+   A /pkg/distrDoc/inst/doc (from /pkg/distrDoc/inst/DOC0:34)
+
+last thing: DOC0 -> doc
+------------------------------------------------------------------------
+r36 | stamats | 2008-01-25 06:41:05 +0100 (Fr, 25 Jan 2008) | 1 line
+Changed paths:
+   M /pkg/distrTeach/man/0distrTeach-package.Rd
+
+Problem with "_" in email address of Anja Hueller, changed to "\_"
+------------------------------------------------------------------------
+r37 | stamats | 2008-01-25 06:54:20 +0100 (Fr, 25 Jan 2008) | 1 line
+Changed paths:
+   M /pkg/distrSim/man/Data-methods.Rd
+
+added a short description entry due to a warning from R CMD check
+------------------------------------------------------------------------
+r38 | stamats | 2008-01-25 06:56:21 +0100 (Fr, 25 Jan 2008) | 1 line
+Changed paths:
+   M /pkg/distrSim/man/cload.Rd
+
+added a short details entry due to a warning of R CMD INSTALL
+------------------------------------------------------------------------
+r39 | stamats | 2008-01-25 07:18:50 +0100 (Fr, 25 Jan 2008) | 1 line
+Changed paths:
+   D /pkg/distrDoc/inst/doc/Distr.aux
+   D /pkg/distrDoc/inst/doc/Distr.brf
+   D /pkg/distrDoc/inst/doc/Distr.log
+   D /pkg/distrDoc/inst/doc/Distr.out
+   D /pkg/distrDoc/inst/doc/Distr.pdf
+   D /pkg/distrDoc/inst/doc/Distr.tex
+   D /pkg/distrDoc/inst/doc/Distr.toc
+   A /pkg/distrDoc/inst/doc/Rplots.pdf
+   M /pkg/distrDoc/inst/doc/distr-cauchy1.eps
+   M /pkg/distrDoc/inst/doc/distr-cauchy1.pdf
+   M /pkg/distrDoc/inst/doc/distr-cauchy2.eps
+   M /pkg/distrDoc/inst/doc/distr-cauchy2.pdf
+   M /pkg/distrDoc/inst/doc/distr-exam1.eps
+   M /pkg/distrDoc/inst/doc/distr-exam1.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex1.eps
+   M /pkg/distrDoc/inst/doc/distr-plotex1.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex10.eps
+   M /pkg/distrDoc/inst/doc/distr-plotex10.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex2.eps
+   M /pkg/distrDoc/inst/doc/distr-plotex2.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex3.eps
+   M /pkg/distrDoc/inst/doc/distr-plotex3.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex4.eps
+   M /pkg/distrDoc/inst/doc/distr-plotex4.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex5.eps
+   M /pkg/distrDoc/inst/doc/distr-plotex5.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex6.eps
+   M /pkg/distrDoc/inst/doc/distr-plotex6.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex7.eps
+   M /pkg/distrDoc/inst/doc/distr-plotex7.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex8.eps
+   M /pkg/distrDoc/inst/doc/distr-plotex8.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex9.eps
+   M /pkg/distrDoc/inst/doc/distr-plotex9.pdf
+   A /pkg/distrDoc/inst/doc/distr.tex
+   D /pkg/distrDoc/inst/doc/distr.tex.bak
+
+problems with lower and upper case ...
+------------------------------------------------------------------------
+r40 | stamats | 2008-01-25 07:34:28 +0100 (Fr, 25 Jan 2008) | 1 line
+Changed paths:
+   M /pkg/distrDoc/inst/doc/Rplots.pdf
+   M /pkg/distrDoc/inst/doc/distr-cauchy1.pdf
+   M /pkg/distrDoc/inst/doc/distr-cauchy2.pdf
+   M /pkg/distrDoc/inst/doc/distr-exam1.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex1.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex10.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex2.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex3.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex4.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex5.eps
+   M /pkg/distrDoc/inst/doc/distr-plotex5.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex6.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex7.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex8.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex9.eps
+   M /pkg/distrDoc/inst/doc/distr-plotex9.pdf
+   M /pkg/distrDoc/inst/doc/distr.tex
+
+problems to build vignette. Will further investigate ...
+------------------------------------------------------------------------
+r41 | stamats | 2008-01-25 10:10:48 +0100 (Fr, 25 Jan 2008) | 1 line
+Changed paths:
+   D /pkg/distrDoc/inst/doc/Rspace.pdf
+   D /pkg/distrDoc/inst/doc/Rspace.ps
+   A /pkg/distrDoc/inst/doc/rspace.pdf
+   A /pkg/distrDoc/inst/doc/rspace.ps
+
+was upper case, but needs to be lower case
+------------------------------------------------------------------------
+r42 | stamats | 2008-01-25 10:14:47 +0100 (Fr, 25 Jan 2008) | 1 line
+Changed paths:
+   M /pkg/distrDoc/inst/doc/Rplots.pdf
+   M /pkg/distrDoc/inst/doc/distr-ComparisonFFTandRtoDPQ.eps
+   M /pkg/distrDoc/inst/doc/distr-ComparisonFFTandRtoDPQ.pdf
+   M /pkg/distrDoc/inst/doc/distr-ConvolutionNormalDistr.eps
+   M /pkg/distrDoc/inst/doc/distr-ConvolutionNormalDistr.pdf
+   M /pkg/distrDoc/inst/doc/distr-NormApprox.eps
+   M /pkg/distrDoc/inst/doc/distr-NormApprox.pdf
+   M /pkg/distrDoc/inst/doc/distr-SimulateandEstimate.eps
+   M /pkg/distrDoc/inst/doc/distr-SimulateandEstimate.pdf
+   M /pkg/distrDoc/inst/doc/distr-StationaryRegressorDistr.eps
+   M /pkg/distrDoc/inst/doc/distr-StationaryRegressorDistr.pdf
+   M /pkg/distrDoc/inst/doc/distr-cauchy1.pdf
+   M /pkg/distrDoc/inst/doc/distr-cauchy2.pdf
+   M /pkg/distrDoc/inst/doc/distr-destructive.eps
+   M /pkg/distrDoc/inst/doc/distr-destructive.pdf
+   M /pkg/distrDoc/inst/doc/distr-elist.eps
+   M /pkg/distrDoc/inst/doc/distr-elist.pdf
+   M /pkg/distrDoc/inst/doc/distr-exam1.pdf
+   M /pkg/distrDoc/inst/doc/distr-huberize.eps
+   M /pkg/distrDoc/inst/doc/distr-huberize.pdf
+   M /pkg/distrDoc/inst/doc/distr-min.eps
+   M /pkg/distrDoc/inst/doc/distr-min.pdf
+   M /pkg/distrDoc/inst/doc/distr-minandmax.eps
+   M /pkg/distrDoc/inst/doc/distr-minandmax.pdf
+   M /pkg/distrDoc/inst/doc/distr-nFoldConvolution.eps
+   M /pkg/distrDoc/inst/doc/distr-nFoldConvolution.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex1.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex10.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex2.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex3.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex4.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex5.eps
+   M /pkg/distrDoc/inst/doc/distr-plotex5.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex6.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex7.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex8.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex9.eps
+   M /pkg/distrDoc/inst/doc/distr-plotex9.pdf
+   M /pkg/distrDoc/inst/doc/distr-truncate.eps
+   M /pkg/distrDoc/inst/doc/distr-truncate.pdf
+   M /pkg/distrDoc/inst/doc/distr.Rnw
+   A /pkg/distrDoc/inst/doc/distr.aux
+   A /pkg/distrDoc/inst/doc/distr.log
+   A /pkg/distrDoc/inst/doc/distr.out
+   A /pkg/distrDoc/inst/doc/distr.pdf
+   M /pkg/distrDoc/inst/doc/distr.tex
+   A /pkg/distrDoc/inst/doc/distr.toc
+
+vignette did not build, since there was a wrong call to "E". Method with signature "UnivariateCondDistribution", "missing", "numeric" has no argument "withApply".
+------------------------------------------------------------------------
+r43 | stamats | 2008-01-25 10:20:08 +0100 (Fr, 25 Jan 2008) | 1 line
+Changed paths:
+   M /pkg/distrDoc/inst/doc/distr.Rnw
+
+changed my address
+------------------------------------------------------------------------
+r44 | ruckdeschel | 2008-01-25 17:43:01 +0100 (Fr, 25 Jan 2008) | 1 line
+Changed paths:
+   A /pkg/distr/inst/CITATION0 (from /pkg/distr/inst/Citation:43)
+   D /pkg/distr/inst/Citation
+   A /pkg/distr/inst/MASKING0 (from /pkg/distr/inst/Masking:43)
+   D /pkg/distr/inst/Masking
+   A /pkg/distr/inst/NEWS0 (from /pkg/distr/inst/News:43)
+   D /pkg/distr/inst/News
+   A /pkg/distrDoc/inst/CITATION0 (from /pkg/distrDoc/inst/Citation:43)
+   D /pkg/distrDoc/inst/Citation
+   A /pkg/distrDoc/inst/NEWS0 (from /pkg/distrDoc/inst/News:43)
+   D /pkg/distrDoc/inst/News
+   A /pkg/distrEx/inst/CITATION0 (from /pkg/distrEx/inst/Citation:43)
+   D /pkg/distrEx/inst/Citation
+   A /pkg/distrEx/inst/MASKING0 (from /pkg/distrEx/inst/Masking:43)
+   D /pkg/distrEx/inst/Masking
+   A /pkg/distrEx/inst/NEWS0 (from /pkg/distrEx/inst/News:43)
+   D /pkg/distrEx/inst/News
+
+lower/upper case again... now in /inst folders
+------------------------------------------------------------------------
+r45 | ruckdeschel | 2008-01-25 17:44:54 +0100 (Fr, 25 Jan 2008) | 1 line
+Changed paths:
+   A /pkg/distr/inst/CITATION (from /pkg/distr/inst/CITATION0:44)
+   D /pkg/distr/inst/CITATION0
+   A /pkg/distr/inst/MASKING (from /pkg/distr/inst/MASKING0:44)
+   D /pkg/distr/inst/MASKING0
+   A /pkg/distr/inst/NEWS (from /pkg/distr/inst/NEWS0:44)
+   D /pkg/distr/inst/NEWS0
+   A /pkg/distrDoc/inst/CITATION (from /pkg/distrDoc/inst/CITATION0:44)
+   D /pkg/distrDoc/inst/CITATION0
+   A /pkg/distrDoc/inst/NEWS (from /pkg/distrDoc/inst/NEWS0:44)
+   D /pkg/distrDoc/inst/NEWS0
+   A /pkg/distrEx/inst/CITATION (from /pkg/distrEx/inst/CITATION0:44)
+   D /pkg/distrEx/inst/CITATION0
+   A /pkg/distrEx/inst/MASKING (from /pkg/distrEx/inst/MASKING0:44)
+   D /pkg/distrEx/inst/MASKING0
+   A /pkg/distrEx/inst/NEWS (from /pkg/distrEx/inst/NEWS0:44)
+   D /pkg/distrEx/inst/NEWS0
+
+lower / upper case II in /inst folders
+------------------------------------------------------------------------
+r46 | ruckdeschel | 2008-01-25 22:20:44 +0100 (Fr, 25 Jan 2008) | 1 line
+Changed paths:
+   M /pkg/utils/pmake.bat
+
+removed local folder change and instead require that /utils folder is on PATH
+------------------------------------------------------------------------
+r47 | stamats | 2008-02-11 14:55:27 +0100 (Mo, 11 Feb 2008) | 1 line
+Changed paths:
+   M /pkg/distrMod/man/0distrMod-package.Rd
+
+keyword "package" added
+------------------------------------------------------------------------
+r48 | stamats | 2008-02-11 15:04:24 +0100 (Mo, 11 Feb 2008) | 1 line
+Changed paths:
+   M /pkg/distrDoc/inst/doc/Rplots.ps
+   M /pkg/distrDoc/inst/doc/distr-ComparisonFFTandRtoDPQ.eps
+   M /pkg/distrDoc/inst/doc/distr-ComparisonFFTandRtoDPQ.pdf
+   M /pkg/distrDoc/inst/doc/distr-ConvolutionNormalDistr.pdf
+   M /pkg/distrDoc/inst/doc/distr-NormApprox.pdf
+   M /pkg/distrDoc/inst/doc/distr-SimulateandEstimate.eps
+   M /pkg/distrDoc/inst/doc/distr-SimulateandEstimate.pdf
+   M /pkg/distrDoc/inst/doc/distr-StationaryRegressorDistr.pdf
+   M /pkg/distrDoc/inst/doc/distr-cauchy1.pdf
+   M /pkg/distrDoc/inst/doc/distr-cauchy2.pdf
+   M /pkg/distrDoc/inst/doc/distr-destructive.pdf
+   M /pkg/distrDoc/inst/doc/distr-elist.eps
+   M /pkg/distrDoc/inst/doc/distr-elist.pdf
+   M /pkg/distrDoc/inst/doc/distr-exam1.pdf
+   M /pkg/distrDoc/inst/doc/distr-huberize.pdf
+   M /pkg/distrDoc/inst/doc/distr-min.pdf
+   M /pkg/distrDoc/inst/doc/distr-minandmax.pdf
+   M /pkg/distrDoc/inst/doc/distr-nFoldConvolution.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex1.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex10.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex2.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex3.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex4.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex5.eps
+   M /pkg/distrDoc/inst/doc/distr-plotex5.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex6.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex7.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex8.pdf
+   M /pkg/distrDoc/inst/doc/distr-plotex9.eps
+   M /pkg/distrDoc/inst/doc/distr-plotex9.pdf
+   M /pkg/distrDoc/inst/doc/distr-truncate.pdf
+   M /pkg/distrDoc/inst/doc/distr.log
+   M /pkg/distrDoc/inst/doc/distr.pdf
+   M /pkg/distrDoc/inst/doc/distr.tex
+
+test run with R version 2.6.2 Patched (2008-02-10 r44423)
+------------------------------------------------------------------------
+r49 | stamats | 2008-02-12 12:22:25 +0100 (Di, 12 Feb 2008) | 1 line
+Changed paths:
+   M /www/distr-Familie.html
+   M /www/index.php
+
+changed umlaut
+------------------------------------------------------------------------
+r50 | stamats | 2008-02-13 07:16:54 +0100 (Mi, 13 Feb 2008) | 1 line
+Changed paths:
+   M /pkg/distrMod/DESCRIPTION
+   M /pkg/distrMod/NAMESPACE
+   M /pkg/distrMod/R/AllClass.R
+   M /pkg/distrMod/R/AllGeneric.R
+   M /pkg/distrMod/R/AllPlot.R
+   A /pkg/distrMod/R/DistrSymmList.R
+   A /pkg/distrMod/R/Expectation.R
+   A /pkg/distrMod/R/FunSymmList.R
+   A /pkg/distrMod/R/L2ParamFamily.R
+   A /pkg/distrMod/R/PosDefSymmMatrix.R
+   A /pkg/distrMod/R/SimpleL2ParamFamilies.R
+   A /pkg/distrMod/man/DistrSymmList-class.Rd
+   A /pkg/distrMod/man/DistrSymmList.Rd
+   A /pkg/distrMod/man/ExpScaleFamily.Rd
+   A /pkg/distrMod/man/FunSymmList-class.Rd
+   A /pkg/distrMod/man/FunSymmList.Rd
+   A /pkg/distrMod/man/GammaFamily.Rd
+   A /pkg/distrMod/man/GumbelLocationFamily.Rd
+   A /pkg/distrMod/man/L2ParamFamily-class.Rd
+   A /pkg/distrMod/man/L2ParamFamily.Rd
+   A /pkg/distrMod/man/LnormScaleFamily.Rd
+   A /pkg/distrMod/man/NormLocationFamily.Rd
+   A /pkg/distrMod/man/NormLocationScaleFamily.Rd
+   A /pkg/distrMod/man/NormScaleFamily.Rd
+   A /pkg/distrMod/man/PoisFamily.Rd
+   A /pkg/distrMod/man/PosDefSymmMatrix-class.Rd
+   A /pkg/distrMod/man/PosDefSymmMatrix.Rd
+   A /pkg/distrMod/man/checkL2deriv.Rd
+
+moved "L2ParamFamily" associated classes and functions/methods from ROptEst to distrMod
+------------------------------------------------------------------------
+r51 | stamats | 2008-02-13 09:08:21 +0100 (Mi, 13 Feb 2008) | 1 line
+Changed paths:
+   M /pkg/distrMod/R/AllClass.R
+   M /pkg/distrMod/R/Expectation.R
+   M /pkg/distrMod/R/L2ParamFamily.R
+   M /pkg/distrMod/R/SimpleL2ParamFamilies.R
+   M /pkg/distrMod/man/L2ParamFamily-class.Rd
+   M /pkg/distrMod/man/L2ParamFamily.Rd
+
+adapted implementation to new version of class "ParamFamily"
+------------------------------------------------------------------------
+r52 | stamats | 2008-02-13 09:15:25 +0100 (Mi, 13 Feb 2008) | 1 line
+Changed paths:
+   M /pkg/distrMod/NAMESPACE
+   M /pkg/distrMod/R/AllClass.R
+   M /pkg/distrMod/R/Symmetry.R
+
+forgot to add symmetry classes for distributions
+------------------------------------------------------------------------
+r53 | stamats | 2008-02-13 09:32:10 +0100 (Mi, 13 Feb 2008) | 1 line
+Changed paths:
+   A /pkg/distrMod/man/BinomFamily.Rd
+   A /pkg/distrMod/man/EvenSymmetric-class.Rd
+   A /pkg/distrMod/man/EvenSymmetric.Rd
+   A /pkg/distrMod/man/FunctionSymmetry-class.Rd
+   A /pkg/distrMod/man/NonSymmetric-class.Rd
+   A /pkg/distrMod/man/NonSymmetric.Rd
+   A /pkg/distrMod/man/OddSymmetric-class.Rd
+   A /pkg/distrMod/man/OddSymmetric.Rd
+
+further Rd-Files moved from ROptEst to distrMod
+------------------------------------------------------------------------
+r54 | stamats | 2008-02-13 09:32:48 +0100 (Mi, 13 Feb 2008) | 1 line
+Changed paths:
+   M /pkg/distrMod/DESCRIPTION
+
+distrMod now also depends on package RandVar
+------------------------------------------------------------------------
+r55 | stamats | 2008-02-13 09:39:36 +0100 (Mi, 13 Feb 2008) | 1 line
+Changed paths:
+   M /pkg/distrMod/R/AllClass.R
+
+required "distr", "distrEx" and "RandVar" on load - necessary?
+------------------------------------------------------------------------
+r56 | stamats | 2008-02-13 09:40:31 +0100 (Mi, 13 Feb 2008) | 1 line
+Changed paths:
+   M /pkg/distrMod/NAMESPACE
+
+added forgotten exports
+------------------------------------------------------------------------
+r57 | stamats | 2008-02-13 10:12:36 +0100 (Mi, 13 Feb 2008) | 1 line
+Changed paths:
+   M /pkg/distrMod/NAMESPACE
+
+distrMod now checks and installs without an error or warning on R version 2.6.2 Patched (2008-02-10 r44423)
+------------------------------------------------------------------------
+r58 | stamats | 2008-02-13 10:38:15 +0100 (Mi, 13 Feb 2008) | 1 line
+Changed paths:
+   D /pkg/distrMod/R/Distances.R
+   D /pkg/distrMod/man/HellingerDist.Rd
+   D /pkg/distrMod/man/KolmogorovDist.Rd
+   D /pkg/distrMod/man/TotalVarDist.Rd
+
+moved Hellinger, Kolmogorov and total variation distance to package "distrEx"
+------------------------------------------------------------------------
+r59 | stamats | 2008-02-13 10:39:58 +0100 (Mi, 13 Feb 2008) | 1 line
+Changed paths:
+   M /pkg/distrEx/R/HellingerDist.R
+   M /pkg/distrEx/R/KolmogorovDist.R
+   M /pkg/distrEx/R/TotalVarDist.R
+   M /pkg/distrEx/man/HellingerDist.Rd
+   M /pkg/distrEx/man/KolmogorovDist.Rd
+   M /pkg/distrEx/man/TotalVarDist.Rd
+
+added methods for Hellinger, Kolmogorov and total variation distance from package "distrMod"
+------------------------------------------------------------------------
+r60 | stamats | 2008-02-13 12:18:16 +0100 (Mi, 13 Feb 2008) | 1 line
+Changed paths:
+   M /pkg/distrEx/R/HellingerDist.R
+   A /pkg/distrEx/R/Internalfunctions.R
+   M /pkg/distrEx/R/KolmogorovDist.R
+   M /pkg/distrEx/R/TotalVarDist.R
+   M /pkg/distrEx/R/distrExOptions.R
+   M /pkg/distrEx/man/distrExOptions.Rd
+
+distrEx checks and installs without any errors or warnings on R version 2.6.2 Patched (2008-02-10 r44423)
+------------------------------------------------------------------------
+r61 | stamats | 2008-02-13 12:56:21 +0100 (Mi, 13 Feb 2008) | 1 line
+Changed paths:
+   M /pkg/distrEx/R/HellingerDist.R
+   M /pkg/distrEx/R/Internalfunctions.R
+   M /pkg/distrEx/R/KolmogorovDist.R
+   M /pkg/distrEx/R/TotalVarDist.R
+   M /pkg/distrEx/man/HellingerDist.Rd
+   M /pkg/distrEx/man/KolmogorovDist.Rd
+   M /pkg/distrEx/man/TotalVarDist.Rd
+
+simplified return value of distances -> for use in distrMod
+------------------------------------------------------------------------
+r62 | stamats | 2008-02-13 12:59:34 +0100 (Mi, 13 Feb 2008) | 1 line
+Changed paths:
+   D /pkg/distrMod/R/Internalfunctions.R
+
+moved to distrEx
+------------------------------------------------------------------------
+r63 | stamats | 2008-02-13 13:00:19 +0100 (Mi, 13 Feb 2008) | 1 line
+Changed paths:
+   M /pkg/distrMod/NAMESPACE
+   M /pkg/distrMod/R/distrModOptions.R
+   M /pkg/distrMod/man/distrModOptions.Rd
+
+distrMod checks and installs without any errors or warnings on R version 2.6.2 Patched (2008-02-10 r44423)
+------------------------------------------------------------------------
+r64 | stamats | 2008-02-13 19:31:25 +0100 (Mi, 13 Feb 2008) | 1 line
+Changed paths:
+   M /pkg/distrMod/R/MCEstimator.R
+   M /pkg/distrMod/R/MDEstimator.R
+   M /pkg/distrMod/R/MLEstimator.R
+   M /pkg/distrMod/man/MCEstimator.Rd
+   M /pkg/distrMod/man/MDEstimator.Rd
+
+additional argument crit.name and dist.name as well as slight changes on the return value
+------------------------------------------------------------------------
+r65 | stamats | 2008-02-14 06:06:21 +0100 (Do, 14 Feb 2008) | 1 line
+Changed paths:
+   M /pkg/distrEx/DESCRIPTION
+
+changed Date
+------------------------------------------------------------------------
+r66 | stamats | 2008-02-14 06:56:40 +0100 (Do, 14 Feb 2008) | 1 line
+Changed paths:
+   M /pkg/distrMod/R/AllClass.R
+   M /pkg/distrMod/R/AllGeneric.R
+   M /pkg/distrMod/R/AllShow.R
+   A /pkg/distrMod/R/RiskType.R
+   A /pkg/distrMod/man/RiskType-class.Rd
+   A /pkg/distrMod/man/asBias-class.Rd
+   A /pkg/distrMod/man/asBias.Rd
+   A /pkg/distrMod/man/asCov-class.Rd
+   A /pkg/distrMod/man/asCov.Rd
+   A /pkg/distrMod/man/asGRisk-class.Rd
+   A /pkg/distrMod/man/asHampel-class.Rd
+   A /pkg/distrMod/man/asHampel.Rd
+   A /pkg/distrMod/man/asMSE-class.Rd
+   A /pkg/distrMod/man/asMSE.Rd
+   A /pkg/distrMod/man/asRisk-class.Rd
+   A /pkg/distrMod/man/asUnOvShoot-class.Rd
+   A /pkg/distrMod/man/asUnOvShoot.Rd
+   A /pkg/distrMod/man/fiBias-class.Rd
+   A /pkg/distrMod/man/fiBias.Rd
+   A /pkg/distrMod/man/fiCov-class.Rd
+   A /pkg/distrMod/man/fiCov.Rd
+   A /pkg/distrMod/man/fiHampel-class.Rd
+   A /pkg/distrMod/man/fiHampel.Rd
+   A /pkg/distrMod/man/fiMSE-class.Rd
+   A /pkg/distrMod/man/fiMSE.Rd
+   A /pkg/distrMod/man/fiRisk-class.Rd
+   A /pkg/distrMod/man/fiUnOvShoot-class.Rd
+   A /pkg/distrMod/man/fiUnOvShoot.Rd
+   A /pkg/distrMod/man/trAsCov-class.Rd
+   A /pkg/distrMod/man/trAsCov.Rd
+   A /pkg/distrMod/man/trFiCov-class.Rd
+   A /pkg/distrMod/man/trFiCov.Rd
+
+moved risk classes from ROptEst to distrMod
+------------------------------------------------------------------------
+r67 | stamats | 2008-02-14 06:57:59 +0100 (Do, 14 Feb 2008) | 1 line
+Changed paths:
+   M /pkg/distrMod/DESCRIPTION
+
+changed Date
+------------------------------------------------------------------------
+r68 | stamats | 2008-02-14 07:02:59 +0100 (Do, 14 Feb 2008) | 1 line
+Changed paths:
+   M /pkg/distrMod/NAMESPACE
+
+updated
+------------------------------------------------------------------------
+r69 | stamats | 2008-02-14 09:51:25 +0100 (Do, 14 Feb 2008) | 1 line
+Changed paths:
+   M /pkg/distrMod/NAMESPACE
+   M /pkg/distrMod/R/AllClass.R
+   M /pkg/distrMod/R/AllGeneric.R
+   A /pkg/distrMod/R/BiasType.R
+
+Rd-Files are still missing ...
+------------------------------------------------------------------------
+r70 | ruckdeschel | 2008-02-15 15:54:03 +0100 (Fr, 15 Feb 2008) | 1 line
+Changed paths:
+   M /pkg/distrMod/NAMESPACE
+   M /pkg/distrMod/R/AllClass.R
+   M /pkg/distrMod/R/AllGeneric.R
+   M /pkg/distrMod/R/BiasType.R
+   M /pkg/distrMod/chm/00Index.html
+   A /pkg/distrMod/chm/BiasType-class.html
+   A /pkg/distrMod/chm/BinomFamily.html
+   A /pkg/distrMod/chm/DistrSymmList-class.html
+   A /pkg/distrMod/chm/DistrSymmList.html
+   A /pkg/distrMod/chm/EvenSymmetric-class.html
+   A /pkg/distrMod/chm/EvenSymmetric.html
+   A /pkg/distrMod/chm/ExpScaleFamily.html
+   A /pkg/distrMod/chm/FunSymmList-class.html
+   A /pkg/distrMod/chm/FunSymmList.html
+   A /pkg/distrMod/chm/FunctionSymmetry-class.html
+   A /pkg/distrMod/chm/GammaFamily.html
+   A /pkg/distrMod/chm/GumbelLocationFamily.html
+   D /pkg/distrMod/chm/HellingerDist.html
+   D /pkg/distrMod/chm/KolmogorovDist.html
+   A /pkg/distrMod/chm/L2ParamFamily-class.html
+   A /pkg/distrMod/chm/L2ParamFamily.html
+   A /pkg/distrMod/chm/LnormScaleFamily.html
+   M /pkg/distrMod/chm/MCEstimator.html
+   M /pkg/distrMod/chm/MDEstimator.html
+   A /pkg/distrMod/chm/NonSymmetric-class.html
+   A /pkg/distrMod/chm/NonSymmetric.html
+   A /pkg/distrMod/chm/NormLocationFamily.html
+   A /pkg/distrMod/chm/NormLocationScaleFamily.html
+   A /pkg/distrMod/chm/NormScaleFamily.html
+   A /pkg/distrMod/chm/OddSymmetric-class.html
+   A /pkg/distrMod/chm/OddSymmetric.html
+   A /pkg/distrMod/chm/PoisFamily.html
+   A /pkg/distrMod/chm/PosDefSymmMatrix-class.html
+   A /pkg/distrMod/chm/PosDefSymmMatrix.html
+   A /pkg/distrMod/chm/RiskType-class.html
+   D /pkg/distrMod/chm/TotalVarDist.html
+   A /pkg/distrMod/chm/asBias-class.html
+   A /pkg/distrMod/chm/asBias.html
+   A /pkg/distrMod/chm/asCov-class.html
+   A /pkg/distrMod/chm/asCov.html
+   A /pkg/distrMod/chm/asGRisk-class.html
+   A /pkg/distrMod/chm/asHampel-class.html
+   A /pkg/distrMod/chm/asHampel.html
+   A /pkg/distrMod/chm/asMSE-class.html
+   A /pkg/distrMod/chm/asMSE.html
+   A /pkg/distrMod/chm/asRisk-class.html
+   A /pkg/distrMod/chm/asUnOvShoot-class.html
+   A /pkg/distrMod/chm/asUnOvShoot.html
+   A /pkg/distrMod/chm/asymmetricBias-class.html
+   A /pkg/distrMod/chm/asymmetricBias.html
+   A /pkg/distrMod/chm/checkL2deriv.html
+   M /pkg/distrMod/chm/distrMod.chm
+   M /pkg/distrMod/chm/distrMod.hhp
+   M /pkg/distrMod/chm/distrMod.toc
+   M /pkg/distrMod/chm/distrModOptions.html
+   A /pkg/distrMod/chm/fiBias-class.html
+   A /pkg/distrMod/chm/fiBias.html
+   A /pkg/distrMod/chm/fiCov-class.html
+   A /pkg/distrMod/chm/fiCov.html
+   A /pkg/distrMod/chm/fiHampel-class.html
+   A /pkg/distrMod/chm/fiHampel.html
+   A /pkg/distrMod/chm/fiMSE-class.html
+   A /pkg/distrMod/chm/fiMSE.html
+   A /pkg/distrMod/chm/fiRisk-class.html
+   A /pkg/distrMod/chm/fiUnOvShoot-class.html
+   A /pkg/distrMod/chm/fiUnOvShoot.html
+   A /pkg/distrMod/chm/negativeBias.html
+   A /pkg/distrMod/chm/onesidedBias-class.html
+   A /pkg/distrMod/chm/positiveBias.html
+   A /pkg/distrMod/chm/symmetricBias-class.html
+   A /pkg/distrMod/chm/symmetricBias.html
+   A /pkg/distrMod/chm/trAsCov-class.html
+   A /pkg/distrMod/chm/trAsCov.html
+   A /pkg/distrMod/chm/trFiCov-class.html
+   A /pkg/distrMod/chm/trFiCov.html
+   A /pkg/distrMod/man/BiasType-class.Rd
+   A /pkg/distrMod/man/asymmetricBias-class.Rd
+   A /pkg/distrMod/man/asymmetricBias.Rd
+   A /pkg/distrMod/man/negativeBias.Rd
+   A /pkg/distrMod/man/onesidedBias-class.Rd
+   A /pkg/distrMod/man/positiveBias.Rd
+   A /pkg/distrMod/man/symmetricBias-class.Rd
+   A /pkg/distrMod/man/symmetricBias.Rd
+
+included onesided/asymmetric bias classes (with .Rd-Files)
+------------------------------------------------------------------------
+r71 | stamats | 2008-02-15 19:26:45 +0100 (Fr, 15 Feb 2008) | 1 line
+Changed paths:
+   M /pkg/distrMod/man/negativeBias.Rd
+   M /pkg/distrMod/man/symmetricBias.Rd
+
+corrected missing links. Now, the package checks and installs without any errors or warnings using R version 2.6.2 Patched (2008-02-10 r44423)
+------------------------------------------------------------------------
+r72 | ruckdeschel | 2008-02-16 01:14:15 +0100 (Sa, 16 Feb 2008) | 1 line
+Changed paths:
+   M /pkg/distrEx/chm/00Index.html
+   M /pkg/distrEx/chm/HellingerDist.html
+   M /pkg/distrEx/chm/KolmogorovDist.html
+   M /pkg/distrEx/chm/TotalVarDist.html
+   M /pkg/distrEx/chm/distrEx.chm
+   M /pkg/distrEx/chm/distrEx.toc
+   M /pkg/distrEx/chm/distrExOptions.html
+   M /pkg/distrEx/src/distrEx.dll
+   M /pkg/distrMod/NAMESPACE
+   M /pkg/distrMod/R/AllClass.R
+   M /pkg/distrMod/R/BiasType.R
+   A /pkg/distrMod/R/semivar.R
+   M /pkg/distrMod/chm/00Index.html
+   A /pkg/distrMod/chm/asSemivar-class.html
+   A /pkg/distrMod/chm/asSemivar.html
+   M /pkg/distrMod/chm/distrMod.chm
+   M /pkg/distrMod/chm/distrMod.hhp
+   M /pkg/distrMod/chm/distrMod.toc
+   M /pkg/distrMod/chm/negativeBias.html
+   A /pkg/distrMod/man/asSemivar-class.Rd
+   A /pkg/distrMod/man/asSemivar.Rd
+   M /pkg/distrMod/man/negativeBias.Rd
+
+new risk asSemivar and some minor changes
+------------------------------------------------------------------------
+r73 | ruckdeschel | 2008-02-16 01:36:12 +0100 (Sa, 16 Feb 2008) | 2 lines
+Changed paths:
+   M /pkg/distrMod/R/AllClass.R
+   M /pkg/distrMod/chm/00Index.html
+   M /pkg/distrMod/chm/asSemivar-class.html
+   M /pkg/distrMod/chm/asSemivar.html
+   M /pkg/distrMod/chm/distrMod.chm
+   M /pkg/distrMod/chm/distrMod.toc
+   M /pkg/distrMod/chm/symmetricBias.html
+   M /pkg/distrMod/man/asSemivar-class.Rd
+
+minor error in documentation to asSemivar... and the 
+vignette disclaimer in the startup message is reinserted
+------------------------------------------------------------------------
+
 ------------------------------------------------------------------------
 r830 | ruckdeschel | 2013-01-07 18:16:30 +0100 (Mo, 07 Jan 2013) | 1 line
 Changed paths:
