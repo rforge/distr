@@ -1,0 +1,12 @@
+startupmsg
+SweaveListingUtils
+distr 
+distrEx
+distrSim   distrTeach   distrRmetrics
+distrTEst  distrEllipse 
+RandVar
+distrMod
+distrDoc RobAStBase               ROptEstOld
+         ROptEst                  ROptRegTS  
+         RobExtremes  RobLox      RobRex
+         ROptReg      RobLoxBioC		 
