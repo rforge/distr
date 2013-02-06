@@ -25,4 +25,4 @@ $1 CMD INSTALL $2
 echo ---------------------------------------------
 echo check
 echo ---------------------------------------------
-$1 CMD check $2
+$1 CMD check --as-cran --timings $2
