@@ -33,7 +33,7 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
      dots.for.points <- .makedotsPt(dots)
 
      dots.lowlevel <- .makedotsLowLevel(dots)
-     dots.without.pch <- dots.lowlevel[! (names(dots.lowlevel) %in% c("pch"))]
+     dots.without.pch <- dots.lowlevel[! (names(dots.lowlevel) %in% c("col", "pch"))]
      if(!is(x,"AbscontDistribution"))
          x <- .ULC.cast(x)     
      ###
@@ -361,8 +361,9 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
       dots$ngrid <- NULL
 
       dots.for.points <- .makedotsPt(dots)
+      print(dots.for.points)
       dots.lowlevel <- .makedotsLowLevel(dots)
-      dots.without.pch <- dots.lowlevel[! (names(dots.lowlevel) %in% c("pch"))]
+      dots.without.pch <- dots.lowlevel[! (names(dots.lowlevel) %in% c("col", "pch"))]
       ###
      if(!is(x,"DiscreteDistribution"))
          x <- .ULC.cast(x)     
@@ -636,7 +637,7 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
              col.main = col.inner)
 
        dots.without.pch0 <- dots.without.pch
-       dots.without.pch0 $col <- NULL
+       dots.without.pch0$col <- NULL
 
        do.call(lines, c(list(x = c(0,p(x)(supp[1])), y = rep(supp[1],2),  
                   col = col.vert), dots.without.pch0))           
@@ -650,7 +651,7 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
         
        if(verticals && ngrid>1)
           {dots.without.pch0 <- dots.without.pch
-           dots.without.pch0 $col <- NULL
+           dots.without.pch0$col <- NULL
 
            do.call(lines, c(list(x = rep(p(x)(supp[1]),2), y = c(supp[1],supp[2]),  
                   col = col.vert), dots.without.pch0))

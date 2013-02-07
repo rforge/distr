@@ -128,7 +128,7 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
       dots.for.points <- .makedotsPt(dots)
 
       dots.lowlevel <- .makedotsLowLevel(dots)
-      dots.without.pch <- dots.lowlevel[! (names(dots.lowlevel) %in% c("pch"))]
+      dots.without.pch <- dots.lowlevel[! (names(dots.lowlevel) %in% c("pch", "col"))]
       dots.for.lines <- .makedotsL(dots)
       dots.v <- dots.for.lines
       dots.v$col <- NULL
