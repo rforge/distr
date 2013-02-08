@@ -1,8 +1,8 @@
 Package: SweaveListingUtils
 Title: Utilities for Sweave together with TeX listings package
 Encoding: latin1
-Version: 0.6.1
-Depends: R(>= 2.10.0), startupmsg
+Version: 0.6.2
+Depends: R(> 2.13.2), startupmsg
 Suggests: distr, MASS, survival, distrEx, Matrix, splines
 Imports: stats
 ByteCompile: yes
@@ -16,4 +16,4 @@ License: LGPL-3
 Date: 2013-02-08
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
-SVNRevision: 879
+SVNRevision: 881

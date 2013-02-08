@@ -76,8 +76,11 @@ SweaveListingPreparations <- function(
 
    sws <- .SweaveListingOptions
    sws$inSweave <- TRUE
-   assignInMyNamespace(".SweaveListingOptions", sws)
-
+   if(getRversion()>"2.15.1")
+      assignInMyNamespace(".SweaveListingOptions", sws) else{
+   assignInNamespace(".SweaveListingOptions", sws, "SweaveListingUtils")
+   }
+   
    withVerbatim <- rep(withVerbatim, length.out=3)
    if(is.null(names(withVerbatim)))
       names(withVerbatim) <- c("Sinput", "Soutput", "Scode")
