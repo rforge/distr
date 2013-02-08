@@ -29,16 +29,33 @@ updatePackageHelp <- function(package){
 changeDescription <- function(startDir, names, values, 
                               pkgs = NULL, 
                               withSVNread = TRUE,
-                              withPackageHelpUpdate = TRUE){
+                              withPackageHelpUpdate = TRUE,
+                              pathRepo = NULL,
+                              withDate = TRUE){
   oldDir <- getwd()
   on.exit(setwd(oldDir))
   setwd(startDir)
+  if(is.null(pathRepo)) pathRepo <- gsub(".*/([^/]+)/*$","\\1", startDir)
   if(withSVNread){
-      svnrev <- getRevNr(startDir)[[1]]
+      svnrev <- getRevNr(startDir, pathRepo)[[1]]
       print(svnrev)
       if("SVNRevision" %in% names){
          values[which(names=="SVNRevision"),] <- svnrev
+      }else{
+         nr <- nrow(values)
+         names <- c(names,"SVNRevision")
+         values <- rbind(values,rep(svnrev,ncol(values)))
+         rownames(values)[nr+1] <- "SVNRevision"
       }
+  }
+  if(withDate){
+     if(!"Date" %in% names){
+         nr <- nrow(values)
+         dat <- format(Sys.time(), format="%Y-%m-%d")
+         names <- c(names,"Date")
+         values <- rbind(values,rep(dat,ncol(values)))
+         rownames(values)[nr+1] <- "Date"
+     }
   }
 #  print(names)
 #  print(values)
@@ -86,31 +103,59 @@ return(sapply(pkgs,function(x){
    ff[1,"Version"]}))}
 
 
+##############################################################################
+# EXAMPLES
+##############################################################################
+if(FALSE){## Example 1
 Pkgs <- c("startupmsg", "SweaveListingUtils",
                       "distr", "distrEx", "distrDoc",
                       "distrMod", "distrTeach", "distrSim", "distrTEst")
 Names <- c("Version", "License", "Date")
-Values <- matrix(c("2.0.2","LGPL-3",
-                             format(Sys.time(), format="%Y-%m-%d")),3,length(Pkgs))
+Values <- matrix(c("2.0.2","LGPL-3"),3,length(Pkgs))
 colnames(Values) <- Pkgs
 rownames(Values) <- Names
 Values["Version",] <- c("0.5.2", "0.1.1", "2.0.3", "2.0.2", "2.0.3",
                          rep("2.0.2",4))
 changeDescription(startDir = "C:/rtest/distr",names=Names,
                   pkgs=Pkgs, values=Values)
+}
 
-
+if(FALSE){## Example 2
 Pkgs <- c("SweaveListingUtils", "distr", "distrEx",
                       "distrMod", "distrTeach", "distrSim", "distrTEst")
 Names <- c("Date")
 Values <- matrix((format(Sys.time(), format="%Y-%m-%d")),1,length(Pkgs))
 colnames(Values) <- Pkgs
 rownames(Values) <- Names
-
-
-changeDescription(startDir = "C:/rtest/distr",names="Date", 
+changeDescription(startDir = "C:/rtest/distr",names="Date",
                   pkgs=Pkgs, values=format(Sys.time(), format="%Y-%m-%d"))
-                   
+}
+
+if(FALSE){### Version 2.4.1
+Pkgs <- c("startupmsg", "SweaveListingUtils",
+          "distr", "distrEx", "distrDoc",
+          "distrMod", "distrTeach", "distrSim",
+          "distrTEst", "distrEllipse", "distrRmetrics")
+Names <- c("Version")
+Values <- matrix(c("2.4.1",1,length(Pkgs))
+colnames(Values) <- Pkgs
+rownames(Values) <- Names
+Values["Version",,drop=FALSE] <- c("0.8.1", "0.6.1", rep("2.4.1",9))
+changeDescription(startDir = "C:/rtest/distr",names=Names,
+                  pkgs=Pkgs, values=Values)
+}
+if(FALSE){### Version 0.9.1
+Pkgs <- c("RandVar", "ROptEstOld")
+Names <- c("Version")
+Values <- matrix("0.9.1",1,length(Pkgs))
+colnames(Values) <- Pkgs
+rownames(Values) <- Names
+changeDescription(startDir = "C:/rtest/robast",names=Names,
+                  pkgs=Pkgs, values=Values)
+}
+##############################################################################
+
+
 copyDescription <- function(startDir){
   oldDir <- getwd()
   on.exit(setwd(oldDir))
