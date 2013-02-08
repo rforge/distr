@@ -1,6 +1,6 @@
 Package: distrTEst
-Version: 2.4
-Date: 2013-02-05
+Version: 2.4.1
+Date: 2013-02-08
 Title: Estimation and Testing classes based on package distr
 Depends: R(>= 2.6.0), methods, graphics, setRNG(>= 2006.2-1), distr(>= 2.2), distrSim(>= 2.2),
         startupmsg
@@ -16,4 +16,4 @@ License: LGPL-3
 URL: http://distr.r-forge.r-project.org/
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
-SVNRevision: 834
+SVNRevision: 879

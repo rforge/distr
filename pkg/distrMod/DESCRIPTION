@@ -1,6 +1,6 @@
 Package: distrMod
-Version: 2.4
-Date: 2013-02-05
+Version: 2.4.1
+Date: 2013-02-08
 Title: Object oriented implementation of probability models
 Description: Object oriented implementation of probability models based on packages 'distr' and
         'distrEx'
@@ -14,4 +14,4 @@ Encoding: latin1
 URL: http://distr.r-forge.r-project.org/
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
-SVNRevision: 834
+SVNRevision: 879

@@ -13,14 +13,14 @@ as introduced there to describe the distributions under which simulations are pe
 \details{
 \tabular{ll}{
 Package: \tab distrSim \cr
-Version: \tab 2.4 \cr
-Date: \tab 2013-02-05 \cr
+Version: \tab 2.4.1 \cr
+Date: \tab 2013-02-08 \cr
 Depends: \tab R(>= 2.6.0), methods, graphics, setRNG(>= 2006.2-1), distr(>=
 2.0), startupmsg\cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-SVNRevision: \tab 834 \cr
+SVNRevision: \tab 879 \cr
 }
 }
 \section{Classes}{
