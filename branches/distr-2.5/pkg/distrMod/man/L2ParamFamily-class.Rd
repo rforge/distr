@@ -82,7 +82,8 @@
       object of class \code{"FunSymmList"}:
       symmetry of the maps included in \code{L2deriv}. }
     \item{\code{L2derivDistr}}{
-      object of class \code{"UnivarDistrList"}:
+      object of class \code{"OptionalDistrList"} (i.e., \code{NULL} or
+      an object of class \code{"DistrList"}): if non-null, a
       list which includes the distribution of \code{L2deriv}. }
     \item{\code{L2derivDistrSymm}}{
       object of class \code{"DistrSymmList"}:

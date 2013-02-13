@@ -51,6 +51,8 @@ QuadFormNorm <- function(x, A) sqrt(colSums(x*(A %*% x)))
 setClassUnion("MatrixorFunction", c("matrix", "OptionalFunction"))
 ## matrix, numeric or NULL -- a class for covariance slots
 setClassUnion("OptionalNumericOrMatrix", c("OptionalNumeric", "matrix"))
+## DistrList or NULL -- a class for slot L2DerivDistr below
+setClassUnion("OptionalDistrList", c("DistrList", "NULL"))
 
 ################################
 ##
@@ -163,7 +165,7 @@ setClass("L2ParamFamily",
             representation(L2deriv = "EuclRandVarList",
                            L2deriv.fct = "function", ## new: a function in theta which produces L2deriv
                            L2derivSymm = "FunSymmList",
-                           L2derivDistr = "DistrList",
+                           L2derivDistr = "OptionalDistrList",
                            L2derivDistrSymm = "DistrSymmList",
                            FisherInfo = "PosSemDefSymmMatrix",
                            FisherInfo.fct = "function" ## new: a function in theta which produces FisherInfo
