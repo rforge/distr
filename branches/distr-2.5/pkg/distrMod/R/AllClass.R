@@ -51,8 +51,9 @@ QuadFormNorm <- function(x, A) sqrt(colSums(x*(A %*% x)))
 setClassUnion("MatrixorFunction", c("matrix", "OptionalFunction"))
 ## matrix, numeric or NULL -- a class for covariance slots
 setClassUnion("OptionalNumericOrMatrix", c("OptionalNumeric", "matrix"))
+setClassUnion("OptionalNumericOrMatrixOrCall", c("OptionalNumericOrMatrix", "call"))
 ## DistrList or NULL -- a class for slot L2DerivDistr below
-setClassUnion("OptionalDistrList", c("DistrList", "NULL"))
+setClassUnion("OptionalDistrListOrCall", c("DistrList", "NULL", "call"))
 
 ################################
 ##
@@ -165,7 +166,7 @@ setClass("L2ParamFamily",
             representation(L2deriv = "EuclRandVarList",
                            L2deriv.fct = "function", ## new: a function in theta which produces L2deriv
                            L2derivSymm = "FunSymmList",
-                           L2derivDistr = "OptionalDistrList",
+                           L2derivDistr = "OptionalDistrListOrCall",
                            L2derivDistrSymm = "DistrSymmList",
                            FisherInfo = "PosSemDefSymmMatrix",
                            FisherInfo.fct = "function" ## new: a function in theta which produces FisherInfo
@@ -409,14 +410,14 @@ setClass("Estimate",
                         estimate = "ANY",
                         samplesize = "numeric",
                         completecases = "logical",
-                        asvar = "OptionalNumericOrMatrix",
+                        asvar = "OptionalNumericOrMatrixOrCall",
                         Infos = "matrix",
                         estimate.call = "call",
                         nuis.idx = "OptionalNumeric",
                         fixed = "OptionalNumeric",
                         trafo = "list",
                         untransformed.estimate = "ANY",
-                        untransformed.asvar = "OptionalNumericOrMatrix"),
+                        untransformed.asvar = "OptionalNumericOrMatrixOrCall"),
          prototype(name = "Estimate",
                    estimate = numeric(0),
                    samplesize = numeric(0),

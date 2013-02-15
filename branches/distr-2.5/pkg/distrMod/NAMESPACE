@@ -6,8 +6,9 @@ import("distrEx")
 import("RandVar")
 
 importFrom("stats4","profile")
-exportClasses("MatrixorFunction",
-              "OptionalNumericOrMatrix", "ShowDetails",
+exportClasses("MatrixorFunction", "OptionalNumericOrMatrixOrCall",
+              "OptionalDistrListOrCall", "OptionalNumericOrMatrix", 
+			  "ShowDetails",
               "FunctionSymmetry", "NonSymmetric", "EvenSymmetric", "OddSymmetric",
               "FunSymmList",
               "ParamFamParameter",

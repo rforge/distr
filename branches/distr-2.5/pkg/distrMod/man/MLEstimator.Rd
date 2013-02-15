@@ -11,7 +11,8 @@
 \usage{
 MLEstimator(x, ParamFamily, startPar = NULL, 
             Infos, trafo = NULL, penalty = 1e20,
-            validity.check = TRUE, na.rm = TRUE, ...)
+            validity.check = TRUE, na.rm = TRUE, ...,
+            .withEvalAsVar = TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -32,6 +33,9 @@ MLEstimator(x, ParamFamily, startPar = NULL,
   \item{na.rm}{logical: if  \code{TRUE}, the estimator is evaluated at \code{complete.cases(x)}.}
   \item{\dots}{ further arguments to \code{criterion} or \code{optimize}
     or \code{optim}, respectively. }
+  \item{.withEvalAsVar}{logical: shall slot \code{asVar} be evaluated
+                   (if \code{asvar.fct} is given) or
+                   just the call be returned?}
 }
 \details{
   The function uses \code{\link{mleCalc}}

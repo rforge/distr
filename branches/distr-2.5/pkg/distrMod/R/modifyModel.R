@@ -68,10 +68,11 @@ setMethod("modifyModel", signature(model = "L2ParamFamily", param = "ParamFamPar
           #did not work
           #lapply(M@L2derivSymm, function(x) assign("x",NonSymmetric()))
           #lapply(M@L2derivDistrSymm, function(x) assign("x",NoSymmetry()))
-          if(.withL2derivDistr)
-             M@L2derivDistr <- imageDistr(RandVar = M@L2deriv,
-                                          distr = M@distribution)      
-          
+          callIm <- substitute(imageDistr(RandVar = M1l, distr = M2l),
+                                          list(M1l=M@L2deriv, M2l=M@distribution)
+                                       )
+          M@L2derivDistr <- if(.withL2derivDistr) eval(callIm) else callIm
+
           M1 <- existsPIC(M)
 
           if(paste(M@fam.call[1]) == "L2ParamFamily")
