@@ -143,7 +143,8 @@ setClass("ParamFamily",
                            modifyParam = "function",
                            fam.call = "call",
                            startPar = "function",
-                           makeOKPar = "function"
+                           makeOKPar = "function",
+                           .withMDE = "logical"
                            ### <- new !!! (not in thesis!)
                            ### a function with argument theta
                            ###  returning distribution P_theta
@@ -156,7 +157,8 @@ setClass("ParamFamily",
                       props = character(0),
                       makeOKPar = function(param)param,
                       startPar = function(x) {},
-                      param = new("ParamFamParameter", main = 0, trafo = matrix(1))),
+                      param = new("ParamFamParameter", main = 0, trafo = matrix(1)),
+                      .withMDE = TRUE),
             contains = "ProbFamily")
 
 
