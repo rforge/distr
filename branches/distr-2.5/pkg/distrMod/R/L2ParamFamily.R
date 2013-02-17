@@ -186,6 +186,8 @@ setMethod("checkL2deriv", "L2ParamFamily",
         if(out){
             cat("precision of Fisher information:\n")
             print(consist)
+            cat("precision of Fisher information - relativ error [%]:\n")
+            print(100*consist/FI)
         }
 
         prec <- max(abs(cent), abs(consist))
