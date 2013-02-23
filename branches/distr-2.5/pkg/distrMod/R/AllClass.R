@@ -144,7 +144,8 @@ setClass("ParamFamily",
                            fam.call = "call",
                            startPar = "function",
                            makeOKPar = "function",
-                           .withMDE = "logical"
+                           .withMDE = "logical",
+                           .withEvalAsVar = "logical"
                            ### <- new !!! (not in thesis!)
                            ### a function with argument theta
                            ###  returning distribution P_theta
@@ -158,7 +159,7 @@ setClass("ParamFamily",
                       makeOKPar = function(param)param,
                       startPar = function(x) {},
                       param = new("ParamFamParameter", main = 0, trafo = matrix(1)),
-                      .withMDE = TRUE),
+                      .withMDE = TRUE, .withEvalAsVar = TRUE),
             contains = "ProbFamily")
 
 
@@ -171,7 +172,8 @@ setClass("L2ParamFamily",
                            L2derivDistr = "OptionalDistrListOrCall",
                            L2derivDistrSymm = "DistrSymmList",
                            FisherInfo = "PosSemDefSymmMatrix",
-                           FisherInfo.fct = "function" ## new: a function in theta which produces FisherInfo
+                           FisherInfo.fct = "function", ## new: a function in theta which produces FisherInfo
+                           .withEvalL2derivDistr = "logical"
                            ),
             prototype(name = "L_2 differentiable parametric family of probability measures",
                       distribution = new("Norm"),
@@ -189,7 +191,8 @@ setClass("L2ParamFamily",
                       L2derivDistr = UnivarDistrList(new("Norm")),
                       L2derivDistrSymm = new("DistrSymmList"),
                       FisherInfo.fct = function(theta)return(1),
-                      FisherInfo = new("PosDefSymmMatrix")),
+                      FisherInfo = new("PosDefSymmMatrix"),
+                      .withEvalL2derivDistr = TRUE),
             contains = "ParamFamily",
             validity = function(object){
                 if(is(object@distribution, "UnivariateCondDistribution"))

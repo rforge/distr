@@ -165,7 +165,14 @@ setMethod("L2deriv", signature(object = "L2ParamFamily",
            param = "ParamFamParameter"), 
            function(object, param) object@L2deriv.fct(param))
 setMethod("L2derivSymm", "L2ParamFamily", function(object) object@L2derivSymm)
-setMethod("L2derivDistr", "L2ParamFamily", function(object) object@L2derivDistr)
+setMethod("L2derivDistr", "L2ParamFamily", function(object){
+                             ob <- object@L2derivDistr
+                             if(is.call(ob)){
+                                   ob <- eval(ob)
+                                   eval.parent(object@L2derivDistr <- ob)
+                             }
+                             return(ob)
+                             })
 setMethod("L2derivDistrSymm", "L2ParamFamily", function(object) object@L2derivDistrSymm)
 setMethod("FisherInfo", signature(object = "L2ParamFamily", param = "missing"),
            function(object) object@FisherInfo)
@@ -182,7 +189,8 @@ setMethod("checkL2deriv", "L2ParamFamily",
         if(out) cat("precision of centering:\t", cent, "\n")
 
         consist <- E(object = L2Fam, fun = L2deriv %*% t(L2deriv))
-        consist <- consist - as(L2Fam@FisherInfo, "matrix")
+        FI <- as(L2Fam@FisherInfo, "matrix")
+        consist <- consist - FI
         if(out){
             cat("precision of Fisher information:\n")
             print(consist)

@@ -69,6 +69,10 @@
            (from package \pkg{ROptEst}). If
            \code{TRUE} (default) the latter alternative is used.
            Ignored if \pkg{ROptEst} is not used.}
+    \item{\code{.withEvalAsVar}}{
+           object of class \code{"logical"} (of length 1):
+           Tells R whether in determining \code{kStepEstimator}s one
+           evaluates the asymptotic variance or just produces a call to do so.}
 }}
 \section{Extends}{
 Class \code{"ProbFamily"}, directly.

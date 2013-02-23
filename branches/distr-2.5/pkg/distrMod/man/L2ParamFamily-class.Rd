@@ -98,6 +98,9 @@
     \item{\code{FisherInfo}}{
       object of class \code{"PosDefSymmMatrix"}:
       Fisher information of the family. }
+    \item{\code{.withEvalL2derivDistr}}{
+      logical  of length one: if \code{TRUE} slot \code{L2derivDistr} gets
+      evaluated, otherwise it is only kept as call. }
 }}
 \section{Extends}{
 Class \code{"ParamFamily"}, directly.\cr

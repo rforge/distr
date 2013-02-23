@@ -69,14 +69,12 @@ L2ParamFamily(name, distribution = Norm(), distrSymm,
    \code{L2ParamFamily}; but, internally, this generating function is also 
    used to e.g. produce objects of class \code{BinomialFamily}, \code{PoisFamily}
    \code{GammaFamily}, \code{BetaFamily}.}
-    \item{.withMDE}{ logical of length 1:
-           Tells R how to use the function from slot \code{startPar} in case
-           of a \code{kStepEstimator} --- use it as is or to compute the
-           starting point for a minimum distance estimator which in turn then
-           serves as starting point for \code{roptest} / \code{robest}
-           (from package \pkg{ROptEst}). If
-           \code{TRUE} (default) the latter alternative is used.
-           Ignored if \pkg{ROptEst} is not used.}
+    \item{.withMDE}{ logical of length 1: Tells R how to use the function from
+    slot \code{startPar} in case of a \code{kStepEstimator}---use it as is or
+    to compute the starting point for a minimum distance estimator which in
+    turn then serves as starting point for \code{roptest} / \code{robest}
+    (from package \pkg{ROptEst}). If \code{TRUE} (default) the latter
+    alternative is used. Ignored if \pkg{ROptEst} is not used.}
 }
 \details{
   If \code{name} is missing, the default 
