@@ -73,7 +73,10 @@ setMethod("modifyModel", signature(model = "L2ParamFamily", param = "ParamFamPar
                                        )
           if(missing(.withL2derivDistr))
                      .withL2derivDistr <- M@.withEvalL2derivDistr
-          M@L2derivDistr <- if(.withL2derivDistr) eval(callIm) else callIm
+          if(.withL2derivDistr && M@.withEvalL2derivDistr)
+                    M@L2derivDistr <- eval(callIm)
+          if(!.withL2derivDistr && !M@.withEvalL2derivDistr)
+                    M@L2derivDistr <- callIm
 
           M1 <- existsPIC(M)
 
