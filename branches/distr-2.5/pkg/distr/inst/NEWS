@@ -18,6 +18,7 @@ GENERAL ENHANCEMENTS:
 under the hood:
 
 BUGFIXES:
++ fixed .makedotsPt -issue discovered by Gerald --> thx
 
 
 ##############
