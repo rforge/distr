@@ -199,7 +199,7 @@ setMethod("checkL2deriv", "L2ParamFamily",
         }
 
         if(out){
-           cat("condition of Fisher information:\n"
+           cat("condition of Fisher information:\n")
            print(kappa(FI))
         }
 
