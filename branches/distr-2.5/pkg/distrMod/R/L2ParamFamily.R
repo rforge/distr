@@ -198,6 +198,11 @@ setMethod("checkL2deriv", "L2ParamFamily",
             print(100*consist/FI)
         }
 
+        if(out){
+           cat("condition of Fisher information:\n"
+           print(kappa(FI))
+        }
+
         prec <- max(abs(cent), abs(consist))
  
         return(list(maximum.deviation = prec))
