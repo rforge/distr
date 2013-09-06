@@ -1,3 +1,9 @@
+.isUnitMatrix <- function(m){
+### checks whether m is unit matrix
+              m.row <- nrow(m)
+              isTRUE(all.equal(m, diag(m.row), check.attributes = FALSE))
+              }
+
 .deleteDim <- function(x){
      attribs <- attributes(x)
      attribs$dim <- NULL
@@ -63,12 +69,6 @@
         }
  ### end of borrowed code  
 
-
-.isUnitMatrix <- function(m){                                                                  
-### checks whether m is unit matrix
-              m.row <- nrow(m)
-              isTRUE(all.equal(m, diag(m.row), check.attributes = FALSE))
-              }
 
 .validTrafo <- function(trafo, dimension, dimensionwithN){
 ##checks whether trafo is valid
