@@ -2,84 +2,61 @@ import("methods")
 import("MASS")
 import("distr")
 import("distrEx")
+import("distrSim")
+import("distrTEst")
+import("distrTeach")
 import("RandVar")
-
-importFrom("stats4","profile")
-exportClasses("MatrixorFunction", "OptionalNumericOrMatrixOrCall",
-              "OptionalDistrListOrCall", "OptionalNumericOrMatrix", 
-			  "ShowDetails",
-              "FunctionSymmetry", "NonSymmetric", "EvenSymmetric", "OddSymmetric",
-              "FunSymmList",
-              "ParamFamParameter",
-              "ProbFamily", "ParamFamily", "L2ParamFamily")
-exportClasses("RiskType", 
-              "asRisk", "asCov", "trAsCov", "asHampel", "asBias", "asGRisk",
-              "asMSE", "asUnOvShoot",
-              "fiRisk", "fiCov", "trFiCov", "fiHampel", "fiMSE", "fiBias",
-              "fiUnOvShoot")
-exportClasses("BiasType", "onesidedBias", "asymmetricBias", "symmetricBias")
-exportClasses("asSemivar", "asRiskwithBias")
-exportClasses("L2GroupParamFamily", "L2LocationFamily", 
-              "L2ScaleFamily", "L2LocationScaleFamily")
-exportClasses("L2LocationScaleUnion")
-exportClasses("L2ScaleShapeUnion", "L2ScaleUnion")
-exportClasses("ParamWithScaleFamParameter", "ParamWithShapeFamParameter", 
-              "ParamWithScaleAndShapeFamParameter")
-exportClasses("BinomFamily","PoisFamily", "NormLocationFamily",
-       "NormScaleFamily", "ExpScaleFamily",
-       "LnormScaleFamily", "GammaFamily", "BetaFamily", "NormLocationScaleFamily",
-       "CauchyLocationScaleFamily")
-exportClasses("NormType", "QFNorm", "InfoNorm", "SelfNorm")
-exportClasses("Estimate", "MCEstimate")
-exportClasses("Confint")
-exportMethods("distrSymm")
-exportMethods("distribution", "props", "props<-", "addProp<-", "main", "main<-",
-              "nuisance", "nuisance<-", "trafo", "trafo<-", "trafo.fct", 
-              "fixed", "fixed<-", "modifyParam",
-              "dimension", "show", "print", "plot", "param", "E", "name",
-              "L2deriv", "L2derivSymm", "L2derivDistr", "L2derivDistrSymm",
-              "FisherInfo", "checkL2deriv", "fam.call")
-exportMethods("completecases")
-exportMethods("bound", "width")
-exportMethods("nu", "name", "sign", "nu<-", "name<-", "sign<-", "biastype", "biastype<-")
-exportMethods("existsPIC")
-exportMethods("modifyModel")
-exportMethods("norm",  "QuadForm<-", "QuadForm", "fct", 
-              "fct<-", "normtype", "normtype<-")
-exportMethods("r", "d", "p", "q", 
-              "estimate", "estimate.call", "samplesize.estimate", "call.estimate",
-              "name.estimate", "trafo.estimate", "nuisance.estimate", 
-              "fixed.estimate", "Infos", "Infos<-", "addInfo<-",
-              "criterion", "criterion<-", "criterion.fct", "method",
-              "samplesize", "asvar", "asvar<-", "optimwarn",
-			  "withPosRestr", "withPosRestr<-")
-exportMethods("untransformed.estimate", "untransformed.asvar")
-exportMethods("confint")
-exportMethods("validParameter")
-exportMethods("startPar", "makeOKPar")
-exportMethods("scaleshapename", "scalename", "LogDeriv")
-exportMethods("coerce", "profile", "locscalename", "scaleshapename<-")
-exportMethods("mleCalc", "mceCalc")
-exportMethods("qqplot")
-export("distrModMASK")
-export("trafoEst")
-export("distrModOptions", "distrModoptions", "getdistrModOption",
-       "Estimator", "MCEstimator", "MLEstimator", "MDEstimator")
-export("NonSymmetric", "EvenSymmetric", "OddSymmetric", "FunSymmList") 
-export("ParamFamParameter", "ParamFamily", "L2ParamFamily",
-       "BinomFamily", "PoisFamily", "NbinomFamily", "NormLocationFamily",
-       "NormScaleFamily", "ExpScaleFamily",
-       "LnormScaleFamily", "GammaFamily", "BetaFamily", "NormLocationScaleFamily",
-       "CauchyLocationScaleFamily", "NbinomwithSizeFamily", "NbinomMeanSizeFamily")
-export("asCov", "trAsCov", "asHampel", "asBias", "asMSE", "asUnOvShoot", 
-       "fiCov", "trFiCov", "fiHampel", "fiMSE", "fiBias", "fiUnOvShoot")
-export("positiveBias", "negativeBias", "symmetricBias", 
-       "asymmetricBias", "asSemivar")
-export("isKerAinKerB")
-export("L2LocationFamily", "L2ScaleFamily", "L2LocationScaleFamily")
-export("EuclideanNorm", "QuadFormNorm")
-export("NormType", "QFNorm", "InfoNorm", "SelfNorm")
-export("NormScaleUnknownLocationFamily", "NormLocationUnknownScaleFamily")
-export("L2LocationUnknownScaleFamily", "L2ScaleUnknownLocationFamily")
-export("meRes", "get.criterion.fct")
-export("addAlphTrsp2col")
+importMethodsFrom("distrMod", "addInfo<-","addProp<-","asvar","asvar<-",
+                  "biastype","biastype<-","bound","call.estimate",
+				  "checkL2deriv","coerce","completecases","confint",
+				  "criterion","criterion.fct","criterion<-","d",
+				  "dimension","distrSymm","E","estimate","estimate.call",
+				  "existsPIC","fam.call","fct","fct<-","FisherInfo",
+				  "fixed","fixed.estimate","fixed<-","Infos","Infos<-",
+				  "L2deriv","L2derivDistr","L2derivDistrSymm","L2derivSymm",
+				  "locscalename","LogDeriv",
+				  "main","main<-","makeOKPar","mceCalc","method","mleCalc",
+				  "modifyModel","modifyParam","name","name.estimate","name<-","norm",
+				  "normtype","normtype<-","nu","nu<-","nuisance",
+				  "nuisance.estimate","nuisance<-","optimwarn","p","param",
+				  "plot","print","profile","props",
+				  "props<-","q","qqplot","QuadForm","QuadForm<-","r",
+				  "samplesize.estimate","scalename","scaleshapename",
+				  "scaleshapename<-","show","sign",
+				  "sign<-","startPar","trafo","trafo.estimate",
+				  "trafo.fct","trafo<-","untransformed.asvar",
+				  "untransformed.estimate","validParameter","width",
+				  "withPosRestr","withPosRestr<-")
+importFrom("distrMod","addAlphTrsp2col","asBias","asCov","asHampel","asMSE",
+           "asSemivar","asUnOvShoot","asymmetricBias","BetaFamily","BinomFamily",
+		   "CauchyLocationScaleFamily","distrModMASK",
+		   "distrModoptions","distrModOptions","Estimator","EuclideanNorm",
+		   "EvenSymmetric","ExpScaleFamily","fiBias","fiCov","fiHampel","fiMSE",
+		   "fiUnOvShoot","FunSymmList","GammaFamily","get.criterion.fct",
+		   "getdistrModOption","InfoNorm","isKerAinKerB","L2LocationFamily",
+		   "L2LocationScaleFamily","L2LocationUnknownScaleFamily",
+		   "L2ParamFamily","L2ScaleFamily","L2ScaleUnknownLocationFamily",
+		   "LnormScaleFamily","MCEstimator","MDEstimator","meRes",
+		   "MLEstimator","NbinomFamily","NbinomMeanSizeFamily",
+		   "NbinomwithSizeFamily","negativeBias","NonSymmetric",
+		   "NormLocationFamily","NormLocationScaleFamily",
+		   "NormLocationUnknownScaleFamily","NormScaleFamily",
+		   "NormScaleUnknownLocationFamily","NormType","OddSymmetric",
+		   "ParamFamily","ParamFamParameter","PoisFamily",
+		   "positiveBias","QFNorm",
+		   "QuadFormNorm","SelfNorm","symmetricBias","trafoEst")
+importClassesFrom("distrMod","asBias","asCov","asGRisk","asHampel","asMSE",
+           "asRisk","asRiskwithBias","asSemivar","asUnOvShoot","asymmetricBias",
+		   "BetaFamily","BiasType","BinomFamily","CauchyLocationScaleFamily",
+		   "Confint","Estimate","EvenSymmetric","ExpScaleFamily","fiBias","fiCov",
+		   "fiHampel","fiMSE","fiRisk","fiUnOvShoot","FunctionSymmetry","FunSymmList",
+		   "GammaFamily","InfoNorm","L2GroupParamFamily","L2LocationFamily",
+		   "L2LocationScaleFamily","L2LocationScaleUnion","L2ParamFamily",
+		   "L2ScaleFamily","L2ScaleShapeUnion","L2ScaleUnion","LnormScaleFamily",
+		   "MatrixorFunction","MCEstimate","NonSymmetric","NormLocationFamily",
+		   "NormLocationScaleFamily","NormScaleFamily","NormType","OddSymmetric",
+		   "onesidedBias","OptionalDistrListOrCall","OptionalNumericOrMatrix",
+		   "OptionalNumericOrMatrixOrCall","ParamFamily","ParamFamParameter",
+		   "ParamWithScaleAndShapeFamParameter","ParamWithScaleFamParameter",
+		   "ParamWithShapeFamParameter","PoisFamily","ProbFamily","QFNorm",
+		   "RiskType","SelfNorm","ShowDetails","symmetricBias","trAsCov","trFiCov")
