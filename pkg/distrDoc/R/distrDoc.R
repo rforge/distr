@@ -1,5 +1,5 @@
 .onLoad <- function(lib, pkg) { # extended 03-28-06: P.R.
- #   require("methods", character = TRUE, quietly = TRUE)
+#    require("methods", character = TRUE, quietly = TRUE)
 }
 
 .onAttach <- function(libname, pkgname)

@@ -1,15 +1,12 @@
 Package: distrDoc
 Version: 2.4.1
-Date: 2013-02-08
-Title: Documentation for packages distr, distrEx, distrSim, distrTEst, distrTeach, distrMod,
-        and distrEllipse
-Description: provides documentation in form of a common vignette to packages distr, distrEx,
-        distrMod, distrSim, distrTEst, distrTeach, and distrEllipse
+Date: 2013-09-06
+Title: Documentation for packages distr, distrEx, distrSim, distrTEst, distrTeach, distrMod, and distrEllipse
+Description: provides documentation in form of a common vignette to packages distr, distrEx, distrMod, distrSim, distrTEst, distrTeach, and distrEllipse
 Author: Florian Camphausen, Matthias Kohl, Peter Ruckdeschel, Thomas Stabla
 Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
-Depends: R(>= 2.14.0), tools, startupmsg, distr(>= 2.2.0), distrEx(>= 2.2.0), distrSim(>=
-        2.2.0), distrTEst(>= 2.2.0), distrTeach(>= 2.2.0), RandVar(>= 0.7), distrMod(>= 2.2.0),
-        MASS, methods
+Depends: R(>= 2.6.0), tools, distr(>= 2.2.0), distrEx(>= 2.2.0), distrSim(>= 2.2.0), distrTEst(>= 2.2.0), distrTeach(>= 2.2.0), RandVar(>= 0.7),
+             distrMod(>= 2.2.0), MASS, methods
 Suggests: Biobase, SweaveListingUtils
 ByteCompile: yes
 Encoding: latin1
@@ -17,4 +14,4 @@ License: LGPL-3
 URL: http://distr.r-forge.r-project.org/
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
-SVNRevision: 879
+SVNRevision: 896
