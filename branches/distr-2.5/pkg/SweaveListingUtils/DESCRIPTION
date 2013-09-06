@@ -4,7 +4,6 @@ Encoding: latin1
 Version: 0.7
 Depends: R(>= 2.14.0), startupmsg
 Suggests: distr, MASS, survival, distrEx, Matrix, splines
-Imports: stats
 ByteCompile: yes
 Author: Peter Ruckdeschel
 Description: provides utilities for defining R / Rd as Tex-package-listings "language" and including R / Rd source file (sniplets) copied from R-forge in its most

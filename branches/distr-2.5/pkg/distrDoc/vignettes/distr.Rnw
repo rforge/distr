@@ -1,5 +1,5 @@
 %\VignetteIndexEntry{distr - manual}
-%\VignetteDepends{startupmsg,distr}
+%\VignetteDepends{distr}
 %\VignetteKeyword{probability distribution,simulation,estimation}
 %\VignettePackage{distr}
 %

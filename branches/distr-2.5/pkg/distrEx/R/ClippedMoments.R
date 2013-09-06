@@ -1,8 +1,6 @@
 ###############################################################################
 ## Clipped first and second moments
 ###############################################################################
-.inArgs <- distr:::.inArgs
-
 setMethod("m1df", "UnivariateDistribution",
     function(object, upper, ... ){
         mc <- match.call()

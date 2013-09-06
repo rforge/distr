@@ -20,7 +20,7 @@
 \author{Peter Ruckdeschel \email{peter.ruckdeschel@itwm.fraunhofer.de}}
 \note{This class is based on the code provided by the package \pkg{fGarch}
 by  Diethelm Wuertz}
-\seealso{\code{\link[fGarch:snorm]{dsnorm}}, \code{\link[distr]{AbscontDistribution-class}}}
+\seealso{\code{\link[fGarch:dist-snorm]{dsnorm}}, \code{\link[distr]{AbscontDistribution-class}}}
 \examples{
 (SN <- SNorm(mean = 1, sd = 1, xi = 0.5))
 plot(SN)

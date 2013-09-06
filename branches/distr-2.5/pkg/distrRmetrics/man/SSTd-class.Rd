@@ -75,7 +75,7 @@ Class \code{"Distribution"}, by class \code{"AbscontDistribution"}.
 \author{Peter Ruckdeschel \email{peter.ruckdeschel@itwm.fraunhofer.de}}
 \note{This class is based on the code provided by the package \pkg{fGarch}
 by  Diethelm Wuertz}
-\seealso{\code{\link[fGarch:sstd]{dsstd}}, \code{\link[distr]{AbscontDistribution-class}}}
+\seealso{\code{\link[fGarch:dist-sstd]{dsstd}}, \code{\link[distr]{AbscontDistribution-class}}}
 \examples{
 (ST <- SSTd(xi=2, nu = 3)) # ST is a skewed t distribution with xi = 2 and nu = 3.
 set.seed(1)

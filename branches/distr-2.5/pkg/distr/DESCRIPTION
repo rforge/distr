@@ -6,7 +6,7 @@ Description: S4 Classes and Methods for distributions
 Author: Florian Camphausen, Matthias Kohl, Peter Ruckdeschel, Thomas Stabla
 Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
 Depends: R(>= 2.14.0), methods, graphics, startupmsg, sfsmisc, SweaveListingUtils
-Suggests: distrEx, SweaveListingUtils
+Suggests: distrEx
 Imports: stats
 ByteCompile: yes
 Encoding: latin1

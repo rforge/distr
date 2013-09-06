@@ -1,6 +1,5 @@
 import("methods")
 importFrom("setRNG", "setRNG")
-import("startupmsg")
 import("mvtnorm")
 import("distr")
 import("distrEx")

@@ -1,5 +1,4 @@
 import("methods")
-import("startupmsg")
 import("MASS")
 import("distr")
 import("distrEx")
@@ -47,7 +46,7 @@ exportMethods("existsPIC")
 exportMethods("modifyModel")
 exportMethods("norm",  "QuadForm<-", "QuadForm", "fct", 
               "fct<-", "normtype", "normtype<-")
-exportMethods("name", "name<-", "r", "d", "p", "q", 
+exportMethods("r", "d", "p", "q", 
               "estimate", "estimate.call", "samplesize.estimate", "call.estimate",
               "name.estimate", "trafo.estimate", "nuisance.estimate", 
               "fixed.estimate", "Infos", "Infos<-", "addInfo<-",
@@ -56,10 +55,9 @@ exportMethods("name", "name<-", "r", "d", "p", "q",
 			  "withPosRestr", "withPosRestr<-")
 exportMethods("untransformed.estimate", "untransformed.asvar")
 exportMethods("confint")
-exportMethods("nuisance", "main") 
 exportMethods("validParameter")
 exportMethods("startPar", "makeOKPar")
-exportMethods("locscalename", "scaleshapename", "scalename", "LogDeriv")
+exportMethods("scaleshapename", "scalename", "LogDeriv")
 exportMethods("coerce", "profile", "locscalename", "scaleshapename<-")
 exportMethods("mleCalc", "mceCalc")
 exportMethods("qqplot")

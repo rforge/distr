@@ -2,6 +2,7 @@ import("methods")
 import("startupmsg")
 import("distr")
 import("distrSim")
+import("setRNG")
 
 export("EvaluationList", "distrTEstoptions", "getdistrTEstOption")
 exportClasses("numericorNULL", "Evaluation", "EvaluationList",

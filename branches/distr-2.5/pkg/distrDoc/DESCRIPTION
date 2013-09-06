@@ -7,7 +7,7 @@ Description: provides documentation in form of a common vignette to packages dis
         distrMod, distrSim, distrTEst, distrTeach, and distrEllipse
 Author: Florian Camphausen, Matthias Kohl, Peter Ruckdeschel, Thomas Stabla
 Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
-Depends: R(>= 2.14.0), tools, startupmsg, distr(>= 2.2.0), distrEx(>= 2.2.0), distrSim(>=
+Depends: R(>= 2.14.0), tools, distr(>= 2.2.0), distrEx(>= 2.2.0), distrSim(>=
         2.2.0), distrTEst(>= 2.2.0), distrTeach(>= 2.2.0), RandVar(>= 0.7), distrMod(>= 2.2.0),
         MASS, methods
 Suggests: Biobase, SweaveListingUtils
