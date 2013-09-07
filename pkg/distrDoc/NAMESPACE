@@ -1,4 +1,6 @@
 import("methods")
+import("SweaveListingUtils")
+importFrom("startupmsg","buildStartupMessage")
 import("MASS")
 import("distr")
 import("distrEx")
@@ -55,8 +57,8 @@ importClassesFrom("distrMod","asBias","asCov","asGRisk","asHampel","asMSE",
 		   "L2ScaleFamily","L2ScaleShapeUnion","L2ScaleUnion","LnormScaleFamily",
 		   "MatrixorFunction","MCEstimate","NonSymmetric","NormLocationFamily",
 		   "NormLocationScaleFamily","NormScaleFamily","NormType","OddSymmetric",
-		   "onesidedBias","OptionalDistrListOrCall","OptionalNumericOrMatrix",
-		   "OptionalNumericOrMatrixOrCall","ParamFamily","ParamFamParameter",
+		   "onesidedBias","OptionalNumericOrMatrix",
+		   "ParamFamily","ParamFamParameter",
 		   "ParamWithScaleAndShapeFamParameter","ParamWithScaleFamParameter",
 		   "ParamWithShapeFamParameter","PoisFamily","ProbFamily","QFNorm",
 		   "RiskType","SelfNorm","ShowDetails","symmetricBias","trAsCov","trFiCov")
