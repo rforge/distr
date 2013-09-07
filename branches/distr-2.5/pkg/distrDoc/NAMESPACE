@@ -1,4 +1,6 @@
 import("methods")
+import("SweaveListingUtils")
+importFrom("startupmsg","buildStartupMessage")
 import("MASS")
 import("distr")
 import("distrEx")
