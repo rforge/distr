@@ -133,6 +133,8 @@ mylist <- UnivarLebDecDistribution(discretePart=Binom(3,.3), acPart=Norm(2,2),
 mylist2 <- mylist+0.1
 qqplot(mylist,mylist2)
 qqplot(mylist,mylist2,exact.pCI=FALSE,exact.sCI=FALSE)
+\dontrun{
+## takes time
 qqplot(mylist,mylist2,nosym.pCI=TRUE)
 ## some ac. distribution with a gap
 mylist3 <- UnivarMixingDistribution(Unif(0,0.3),Unif(0.6,1),mixCoeff=c(0.8,0.2))
@@ -140,6 +142,7 @@ gaps(mylist3)
 mylist4 <- UnivarMixingDistribution(Unif(0,0.3),Unif(0.6,1),mixCoeff=c(0.6,0.4))
 qqplot(mylist3,mylist4)
 qqplot(mylist3,mylist4,nosym.pCI=TRUE)
+}
 }
 \keyword{hplot}
 \keyword{distribution}

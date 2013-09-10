@@ -328,7 +328,10 @@ a * P
 N / a + sin( a * P - N)
 N * P
 N / N
+\dontrun{
+## takes a little time
 N ^ P
+}
 1.2 ^ N
 abs(N) ^ 1.3
 }
