@@ -1,3 +1,4 @@
+useDynLib("distr")
 import("methods")
 import("stats")
 importFrom("graphics", "plot")
