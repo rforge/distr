@@ -20,7 +20,11 @@ under the hood:
 + added .Rbuildignore
 + exported some routines which had been internal so far to
   avoid calls by :::
-
++ in order to avoid calls to non-exported C-Code from pkg stats
+  (for Kolmogorov-distribution) we integrated R-Core's C-code from  
+            /src/library/stats/src/ks.c rev60573
+   (with small changes to make it self-contained) to src folder of this pkg;
+    in addition, we now use the shakier .C - interface again...
 BUGFIXES:
 + fixed .makedotsPt -issue discovered by Gerald --> thx
 + moved generics to "distribution" and "samplesize" to pkg distr to avoid 
