@@ -1,5 +1,4 @@
 import("methods")
-import("startupmsg")
 importFrom("stats", "simulate")
 importFrom("setRNG", "setRNG")
 import("distr")

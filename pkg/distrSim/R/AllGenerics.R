@@ -12,9 +12,7 @@ if(!isGeneric("Data"))
    setGeneric("Data", function(object) standardGeneric("Data"))
 if(!isGeneric("runs")) 
    setGeneric("runs", function(object) standardGeneric("runs"))
-if(!isGeneric("samplesize")) 
-   setGeneric("samplesize", function(object) standardGeneric("samplesize")) 
-if(!isGeneric("obsDim")) 
+if(!isGeneric("obsDim"))
    setGeneric("obsDim", 
                function(object) standardGeneric("obsDim")) ### new v.1.8
 if(!isGeneric("name")) 
@@ -95,8 +93,6 @@ if(!isGeneric("savedata"))
 ## Access Methods
 if(!isGeneric("seed")) 
    setGeneric("seed", function(object) standardGeneric("seed"))
-if(!isGeneric("distribution")) 
-   setGeneric("distribution", function(object) standardGeneric("distribution"))
 
 ## Replace Methoden
 if(!isGeneric("seed<-")) 

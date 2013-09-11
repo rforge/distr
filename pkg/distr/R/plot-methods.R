@@ -30,10 +30,10 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
      
      dots$col.hor <- NULL
 
-     dots.for.points <- dots[names(dots) %in% c("bg", "lwd", "lty")]
-     if (length(dots.for.points) == 0 ) dots.for.points <- NULL
+     dots.for.points <- .makedotsPt(dots)
 
-     dots.without.pch <- dots[! (names(dots) %in% c("pch", "log", "xlab", "ylab"))]
+     dots.lowlevel <- .makedotsLowLevel(dots)
+     dots.without.pch <- dots.lowlevel[! (names(dots.lowlevel) %in% c("col", "pch"))]
      if(!is(x,"AbscontDistribution"))
          x <- .ULC.cast(x)     
      ###
@@ -360,11 +360,10 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
 
       dots$ngrid <- NULL
 
-      dots.for.points <- dots[names(dots) %in% c("bg", "lwd", "lty")]
-      if (length(dots.for.points) == 0 ) dots.for.points <- NULL
-
-      dots.without.pch <- dots[! (names(dots) %in% c("pch", 
-                                  "main", "sub", "log", "xlab", "ylab"))]
+      dots.for.points <- .makedotsPt(dots)
+      print(dots.for.points)
+      dots.lowlevel <- .makedotsLowLevel(dots)
+      dots.without.pch <- dots.lowlevel[! (names(dots.lowlevel) %in% c("col", "pch"))]
       ###
      if(!is(x,"DiscreteDistribution"))
          x <- .ULC.cast(x)     

@@ -1,8 +1,7 @@
 
-R Under development (unstable) (2013-01-09 r61595) -- "Unsuffered Consequences"
+R version 3.0.1 Patched (2013-09-02 r63805) -- "Good Sport"
 Copyright (C) 2013 The R Foundation for Statistical Computing
-ISBN 3-900051-07-0
-Platform: x86_64-unknown-linux-gnu (64-bit)
+Platform: i386-w64-mingw32/i386 (32-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -21,6 +20,19 @@ Type 'q()' to quit R.
 > pkgname <- "distrSim"
 > source(file.path(R.home("share"), "R", "examples-header.R"))
 > options(warn = 1)
+> options(pager = "console")
+> base::assign(".ExTimings", "distrSim-Ex.timings", pos = 'CheckExEnv')
+> base::cat("name\tuser\tsystem\telapsed\n", file=base::get(".ExTimings", pos = 'CheckExEnv'))
+> base::assign(".format_ptime",
++ function(x) {
++   if(!is.na(x[4L])) x[1L] <- x[1L] + x[4L]
++   if(!is.na(x[5L])) x[2L] <- x[2L] + x[5L]
++   options(OutDec = '.')
++   format(x[1L:3L], digits = 7L)
++ },
++ pos = 'CheckExEnv')
+> 
+> ### * </HEADER>
 > library('distrSim')
 Loading required package: setRNG
 Loading required package: distr
@@ -33,7 +45,8 @@ Loading required package: startupmsg
 Loading required package: sfsmisc
 Loading required package: SweaveListingUtils
 :SweaveListingUtils>  Utilities for Sweave together with
-:SweaveListingUtils>  TeX listings package (version 0.6)
+:SweaveListingUtils>  TeX listings package (version
+:SweaveListingUtils>  0.6.1)
 :SweaveListingUtils> 
 :SweaveListingUtils>  NOTE: Support for this package
 :SweaveListingUtils>  will stop soon.
@@ -59,14 +72,14 @@ Loading required package: SweaveListingUtils
 :SweaveListingUtils>  vignette("ExampleSweaveListingUtils").
 
 
-Attaching package: ‘SweaveListingUtils’
+Attaching package: 'SweaveListingUtils'
 
-The following object is masked from ‘package:base’:
+The following objects are masked from 'package:base':
 
     library, require
 
 :distr>  Object oriented implementation of distributions (version
-:distr>  2.4)
+:distr>  2.5)
 :distr> 
 :distr>  Attention: Arithmetics on distribution objects are
 :distr>  understood as operations on corresponding random variables
@@ -85,14 +98,14 @@ The following object is masked from ‘package:base’:
 :distr>  vignette("distr").
 
 
-Attaching package: ‘distr’
+Attaching package: 'distr'
 
-The following object is masked from ‘package:stats’:
+The following objects are masked from 'package:stats':
 
     df, qqplot, sd
 
 :distrSim>  Simulation classes based on package distr (version
-:distrSim>  2.4)
+:distrSim>  2.5)
 :distrSim> 
 :distrSim>  Some functions from package 'stats' are intentionally
 :distrSim>  masked ---see distrSimMASK().
@@ -106,35 +119,25 @@ The following object is masked from ‘package:stats’:
 :distrSim>  vignette("distr").
 
 
-Attaching package: ‘distrSim’
+Attaching package: 'distrSim'
 
-The following object is masked from ‘package:stats’:
+The following object is masked from 'package:stats':
 
     simulate
 
-The following object is masked from ‘package:base’:
+The following object is masked from 'package:base':
 
     rbind
 
 > 
-> assign(".oldSearch", search(), pos = 'CheckExEnv')
-> assign(".ExTimings", "distrSim-Ex.timings", pos = 'CheckExEnv')
-> cat("name\tuser\tsystem\telapsed\n", file=get(".ExTimings", pos = 'CheckExEnv'))
-> assign(".format_ptime",
-+ function(x) {
-+   if(!is.na(x[4L])) x[1L] <- x[1L] + x[4L]
-+   if(!is.na(x[5L])) x[2L] <- x[2L] + x[5L]
-+   format(x[1L:3L])
-+ },
-+ pos = 'CheckExEnv')
-> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 > cleanEx()
 > nameEx("Contsimulation-class")
 > ### * Contsimulation-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Contsimulation-class
 > ### Title: Class "Contsimulation"
 > ### Aliases: Contsimulation-class Contsimulation
@@ -519,16 +522,15 @@ NULL
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Contsimulation-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Contsimulation-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Dataclass-class")
 > ### * Dataclass-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Dataclass-class
 > ### Title: Class "Dataclass"
 > ### Aliases: Dataclass-class initialize,Dataclass-method
@@ -543,7 +545,7 @@ filename of Dataclass: N74
 number of runs: 1
 dimension of the observations: 6
 size of sample: 6
-object was generated by version: 2.4
+object was generated by version: 2.5
 > #
 > D <- Dataclass(Data = array(c(1,2,3,4,5,6),c(samplesize=2,obsdim=3,Runs=1)),
 +                filename = "xyz.sav")
@@ -563,7 +565,7 @@ filename of Dataclass: xyz.sav
 number of runs: 1
 dimension of the observations: 3
 size of sample: 2
-object was generated by version: 2.4
+object was generated by version: 2.5
 > load("xyz.sav") # loads the original object "D"
 > Data(D) # the original data: matrix(c(1,2,3,4,5,6),2)
 , , 1
@@ -577,16 +579,15 @@ object was generated by version: 2.4
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Dataclass-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Dataclass-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Simulation-class")
 > ### * Simulation-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Simulation-class
 > ### Title: Class "Simulation"
 > ### Aliases: Simulation-class Simulation initialize,Simulation-method
@@ -821,16 +822,15 @@ NULL
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Simulation-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Simulation-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("cload")
 > ### * cload
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: cload
 > ### Title: cload
 > ### Aliases: cload
@@ -851,16 +851,15 @@ function (filename)
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("cload", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("cload", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("distrSimMASK")
 > ### * distrSimMASK
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: distrSimMASK
 > ### Title: Masking of/by other functions in package "distrSim"
 > ### Aliases: distrSimMASK MASKING
@@ -881,20 +880,18 @@ To be able to use "rbind" as an S4 method for SeqDataFrames,
 we intentionally mask the base function "rbind"
 however "rbind" may still be used in exactly the same way 
 as before masking.
-
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("distrSimMASK", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("distrSimMASK", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("distrSimoptions")
 > ### * distrSimoptions
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: distrSimoptions
 > ### Title: functions to change the global variables of the package
 > ###   'distrSim'
@@ -941,16 +938,15 @@ $MaxNumberofPlottedObsDims
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("distrSimoptions", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("distrSimoptions", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("subsetting-methods")
 > ### * subsetting-methods
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Subsetting-methods
 > ### Title: Subsetting/Indexing methods for SeqDataFrames objects in Package
 > ###   'distrSim'
@@ -970,13 +966,13 @@ $MaxNumberofPlottedObsDims
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("subsetting-methods", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("subsetting-methods", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > ### * <FOOTER>
 > ###
-> cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  2.288 0.032 2.337 0.004 0 
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  2.7 0.12 3.06 NA NA 
 > grDevices::dev.off()
 null device 
           1 

@@ -1,4 +1,3 @@
 inst/doc/Rplots.pdf
 ^.*\.svn.+
 .*-Ex\.R
-build

@@ -1,8 +1,7 @@
 
-R Under development (unstable) (2013-01-09 r61595) -- "Unsuffered Consequences"
+R version 3.0.1 Patched (2013-09-02 r63805) -- "Good Sport"
 Copyright (C) 2013 The R Foundation for Statistical Computing
-ISBN 3-900051-07-0
-Platform: x86_64-unknown-linux-gnu (64-bit)
+Platform: i386-w64-mingw32/i386 (32-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -21,6 +20,19 @@ Type 'q()' to quit R.
 > pkgname <- "distr"
 > source(file.path(R.home("share"), "R", "examples-header.R"))
 > options(warn = 1)
+> options(pager = "console")
+> base::assign(".ExTimings", "distr-Ex.timings", pos = 'CheckExEnv')
+> base::cat("name\tuser\tsystem\telapsed\n", file=base::get(".ExTimings", pos = 'CheckExEnv'))
+> base::assign(".format_ptime",
++ function(x) {
++   if(!is.na(x[4L])) x[1L] <- x[1L] + x[4L]
++   if(!is.na(x[5L])) x[2L] <- x[2L] + x[5L]
++   options(OutDec = '.')
++   format(x[1L:3L], digits = 7L)
++ },
++ pos = 'CheckExEnv')
+> 
+> ### * </HEADER>
 > library('distr')
 Loading required package: startupmsg
 :startupmsg>  Utilities for start-up messages (version 0.8)
@@ -31,7 +43,8 @@ Loading required package: startupmsg
 Loading required package: sfsmisc
 Loading required package: SweaveListingUtils
 :SweaveListingUtils>  Utilities for Sweave together with
-:SweaveListingUtils>  TeX listings package (version 0.6)
+:SweaveListingUtils>  TeX listings package (version
+:SweaveListingUtils>  0.6.1)
 :SweaveListingUtils> 
 :SweaveListingUtils>  NOTE: Support for this package
 :SweaveListingUtils>  will stop soon.
@@ -57,14 +70,14 @@ Loading required package: SweaveListingUtils
 :SweaveListingUtils>  vignette("ExampleSweaveListingUtils").
 
 
-Attaching package: ‘SweaveListingUtils’
+Attaching package: 'SweaveListingUtils'
 
-The following object is masked from ‘package:base’:
+The following objects are masked from 'package:base':
 
     library, require
 
 :distr>  Object oriented implementation of distributions (version
-:distr>  2.4)
+:distr>  2.5)
 :distr> 
 :distr>  Attention: Arithmetics on distribution objects are
 :distr>  understood as operations on corresponding random variables
@@ -83,31 +96,21 @@ The following object is masked from ‘package:base’:
 :distr>  vignette("distr").
 
 
-Attaching package: ‘distr’
+Attaching package: 'distr'
 
-The following object is masked from ‘package:stats’:
+The following objects are masked from 'package:stats':
 
     df, qqplot, sd
 
 > 
-> assign(".oldSearch", search(), pos = 'CheckExEnv')
-> assign(".ExTimings", "distr-Ex.timings", pos = 'CheckExEnv')
-> cat("name\tuser\tsystem\telapsed\n", file=get(".ExTimings", pos = 'CheckExEnv'))
-> assign(".format_ptime",
-+ function(x) {
-+   if(!is.na(x[4L])) x[1L] <- x[1L] + x[4L]
-+   if(!is.na(x[5L])) x[2L] <- x[2L] + x[5L]
-+   format(x[1L:3L])
-+ },
-+ pos = 'CheckExEnv')
-> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 > cleanEx()
 > nameEx("0distr-package")
 > ### * 0distr-package
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: distr-package
 > ### Title: distr - object orientated implementation of distributions
 > ### Aliases: distr-package distr
@@ -118,8 +121,6 @@ The following object is masked from ‘package:stats’:
 > X <- Unif(2,3)
 > Y <- Pois(lambda = 3)
 > Z <- X+Y  # generates Law of corresponding independent variables
-Warning in .makeDNew(x, dpn, h = 1, standM = "int") :
-  'integrate()' threw an error ---result may be inaccurate.
 > p(Z)(0.2)
 [1] 0
 > r(Z)(1000)
@@ -269,16 +270,15 @@ Warning in .makeDNew(x, dpn, h = 1, standM = "int") :
 > plot(Z+sin(Norm()))
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("0distr-package", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("0distr-package", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("AbscontDistribution-class")
 > ### * AbscontDistribution-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: AbscontDistribution-class
 > ### Title: Class "AbscontDistribution"
 > ### Aliases: AbscontDistribution-class AffLinDistribution-class
@@ -297,25 +297,24 @@ Warning in .makeDNew(x, dpn, h = 1, standM = "int") :
 > A3 <- N*0.9 + E*0.1 # a new absolutely continuous distribution with approximated slots d, p, q
 > r(A3)(1) # one random number generated from this distribution, e.g. -0.7150937
 [1] -0.5492378
-> d(A3)(0) # The (approximated) density for x=0 is 0.43799.
+> d(A3)(0) # The (approximated) density for x=0 is 0.4379882.
 [1] 0.4379965
-> p(A3)(0) # The (approximated) probability that x <= 0 is 0.45620.
+> p(A3)(0) # The (approximated) probability that x <= 0 is 0.4562021.
 [1] 0.4561991
-> q(A3)(.1) # The (approximated) 10 percent quantile is -1.06015.
+> q(A3)(.1) # The (approximated) 10 percent quantile is 0.1.
 [1] -1.060145
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("AbscontDistribution-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("AbscontDistribution-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("AbscontDistribution")
 > ### * AbscontDistribution
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: AbscontDistribution
 > ### Title: Generating function "AbscontDistribution"
 > ### Aliases: AbscontDistribution
@@ -337,16 +336,15 @@ Warning in .makeDNew(x, dpn, h = 1, standM = "int") :
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("AbscontDistribution", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("AbscontDistribution", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Arcsine-class")
 > ### * Arcsine-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Arcsine-class
 > ### Title: Class "Arcsine"
 > ### Aliases: Arcsine-class Arcsine initialize,Arcsine-method
@@ -367,16 +365,15 @@ Warning in .makeDNew(x, dpn, h = 1, standM = "int") :
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Arcsine-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Arcsine-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Beta-class")
 > ### * Beta-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Beta-class
 > ### Title: Class "Beta"
 > ### Aliases: Beta-class Beta initialize,Beta-method
@@ -408,16 +405,15 @@ Warning in .makeDNew(x, dpn, h = 1, standM = "int") :
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Beta-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Beta-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("BetaParameter-class")
 > ### * BetaParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: BetaParameter-class
 > ### Title: Class "BetaParameter"
 > ### Aliases: BetaParameter-class initialize,BetaParameter-method
@@ -432,16 +428,15 @@ Warning in .makeDNew(x, dpn, h = 1, standM = "int") :
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("BetaParameter-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("BetaParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Binom-class")
 > ### * Binom-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Binom-class
 > ### Title: Class "Binom"
 > ### Aliases: Binom-class Binom initialize,Binom-method
@@ -469,16 +464,15 @@ Warning in .makeDNew(x, dpn, h = 1, standM = "int") :
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Binom-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Binom-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("BinomParameter-class")
 > ### * BinomParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: BinomParameter-class
 > ### Title: Class "BinomParameter"
 > ### Aliases: BinomParameter-class initialize,BinomParameter-method
@@ -493,16 +487,15 @@ Warning in .makeDNew(x, dpn, h = 1, standM = "int") :
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("BinomParameter-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("BinomParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Cauchy-class")
 > ### * Cauchy-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Cauchy-class
 > ### Title: Class "Cauchy"
 > ### Aliases: Cauchy-class Cauchy initialize,Cauchy-method
@@ -534,16 +527,15 @@ Distribution Object of Class: Td
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Cauchy-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Cauchy-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("CauchyParameter-class")
 > ### * CauchyParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: CauchyParameter-class
 > ### Title: Class "CauchyParameter"
 > ### Aliases: CauchyParameter-class initialize,CauchyParameter-method
@@ -558,16 +550,15 @@ Distribution Object of Class: Td
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("CauchyParameter-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("CauchyParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Chisq-class")
 > ### * Chisq-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Chisq-class
 > ### Title: Class "Chisq"
 > ### Aliases: Chisq-class Chisq initialize,Chisq-method
@@ -599,16 +590,15 @@ Distribution Object of Class: Gammad
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Chisq-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Chisq-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("ChisqParameter-class")
 > ### * ChisqParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: ChisqParameter-class
 > ### Title: Class "ChisqParameter"
 > ### Aliases: ChisqParameter-class initialize,ChisqParameter-method
@@ -623,16 +613,15 @@ Distribution Object of Class: Gammad
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("ChisqParameter-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("ChisqParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("CompoundDistribution-class")
 > ### * CompoundDistribution-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: CompoundDistribution-class
 > ### Title: Class "CompoundDistribution"
 > ### Aliases: CompoundDistribution-class NumbOfSummandsDistr SummandsDistr
@@ -675,19 +664,19 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > p(CP)(0.3)          
 [1] 0.7436411
 > plot(CP)
+NULL
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("CompoundDistribution-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("CompoundDistribution-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("CompoundDistribution")
 > ### * CompoundDistribution
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: CompoundDistribution
 > ### Title: Generating function for Class "CompoundDistribution"
 > ### Aliases: CompoundDistribution
@@ -748,16 +737,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("CompoundDistribution", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("CompoundDistribution", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("ConvPow")
 > ### * ConvPow
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: convpow-methods
 > ### Title: Distribution of the sum of univariate i.i.d r.v's
 > ### Aliases: convpow convpow-methods convpow,AcDcLcDistribution-method
@@ -778,16 +766,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("ConvPow", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("ConvPow", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("DExp-class")
 > ### * DExp-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: DExp-class
 > ### Title: Class "DExp"
 > ### Aliases: DExp-class DExp Laplace DoubleExponential
@@ -817,16 +804,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("DExp-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("DExp-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Dirac-class")
 > ### * Dirac-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Dirac-class
 > ### Title: Class "Dirac"
 > ### Aliases: Dirac-class Dirac initialize,Dirac-method log,Dirac-method
@@ -853,16 +839,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Dirac-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Dirac-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("DiracParameter-class")
 > ### * DiracParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: DiracParameter-class
 > ### Title: Class "DiracParameter"
 > ### Aliases: DiracParameter-class initialize,DiracParameter-method
@@ -877,16 +862,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("DiracParameter-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("DiracParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("DiscreteDistribution-class")
 > ### * DiscreteDistribution-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: DiscreteDistribution-class
 > ### Title: Class "DiscreteDistribution"
 > ### Aliases: DiscreteDistribution-class AffLinDiscreteDistribution-class
@@ -906,6 +890,7 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > # simple discrete distribution
 > D2 <- DiscreteDistribution(supp = c(1:5), prob = c(0.1, 0.2, 0.3, 0.2, 0.2))
 > plot(D2)
+NULL
 > (pp <- p(D2)(support(D2)))
 [1] 0.1 0.3 0.6 0.8 1.0
 > p(D2)(support(D2)-1e-5)
@@ -935,16 +920,15 @@ Warning in q.r(D2)(pp + 1e-05) : NaN's produced
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("DiscreteDistribution-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("DiscreteDistribution-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("DiscreteDistribution")
 > ### * DiscreteDistribution
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: DiscreteDistribution
 > ### Title: Generating function "DiscreteDistribution"
 > ### Aliases: DiscreteDistribution
@@ -962,19 +946,19 @@ Distribution Object of Class: DiscreteDistribution
 Distribution Object of Class: DiscreteDistribution
 > 
 > plot(D2)
+NULL
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("DiscreteDistribution", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("DiscreteDistribution", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("DistrList-class")
 > ### * DistrList-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: DistrList-class
 > ### Title: List of distributions
 > ### Aliases: DistrList-class coerce,Distribution,DistrList-method
@@ -999,16 +983,15 @@ An object of class "DistrList"
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("DistrList-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("DistrList-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("DistrList")
 > ### * DistrList
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: DistrList
 > ### Title: Generating function for DistrList-class
 > ### Aliases: DistrList
@@ -1026,6 +1009,7 @@ An object of class "DistrList"
  [[3]] Distribution Object of Class: Pois
        :lambda: 1
 > plot(DL)
+NULL
 > as(Norm(), "DistrList")
 An object of class "DistrList"
  [[1]] Distribution Object of Class: Norm
@@ -1043,16 +1027,15 @@ function (...)
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("DistrList", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("DistrList", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("DistrSymmList-class")
 > ### * DistrSymmList-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: DistrSymmList-class
 > ### Title: List of Symmetries for a List of Distributions
 > ### Aliases: DistrSymmList-class
@@ -1080,16 +1063,15 @@ center of symmetry:
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("DistrSymmList-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("DistrSymmList-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("DistrSymmList")
 > ### * DistrSymmList
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: DistrSymmList
 > ### Title: Generating function for DistrSymmList-class
 > ### Aliases: DistrSymmList
@@ -1126,16 +1108,15 @@ function (...)
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("DistrSymmList", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("DistrSymmList", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("EllipticalSymmetry-class")
 > ### * EllipticalSymmetry-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: EllipticalSymmetry-class
 > ### Title: Class for Elliptically Symmetric Distributions
 > ### Aliases: EllipticalSymmetry-class
@@ -1150,16 +1131,15 @@ numeric(0)
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("EllipticalSymmetry-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("EllipticalSymmetry-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("EllipticalSymmetry")
 > ### * EllipticalSymmetry
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: EllipticalSymmetry
 > ### Title: Generating function for EllipticalSymmetry-class
 > ### Aliases: EllipticalSymmetry
@@ -1183,16 +1163,15 @@ function (SymmCenter = 0)
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("EllipticalSymmetry", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("EllipticalSymmetry", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("EuclideanSpace-class")
 > ### * EuclideanSpace-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: EuclideanSpace-class
 > ### Title: Class "EuclideanSpace"
 > ### Aliases: EuclideanSpace EuclideanSpace-class
@@ -1212,16 +1191,15 @@ function (SymmCenter = 0)
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("EuclideanSpace-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("EuclideanSpace-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Exp-class")
 > ### * Exp-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Exp-class
 > ### Title: Class "Exp"
 > ### Aliases: Exp-class Exp initialize,Exp-method
@@ -1266,16 +1244,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Exp-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Exp-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("ExpOrGammaOrChisq-class")
 > ### * ExpOrGammaOrChisq-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: ExpOrGammaOrChisq-class
 > ### Title: Class "ExpOrGammaOrChisq"
 > ### Aliases: ExpOrGammaOrChisq-class
@@ -1287,16 +1264,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("ExpOrGammaOrChisq-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("ExpOrGammaOrChisq-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("ExpParameter-class")
 > ### * ExpParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: ExpParameter-class
 > ### Title: Class "ExpParameter"
 > ### Aliases: ExpParameter-class initialize,ExpParameter-method
@@ -1311,16 +1287,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("ExpParameter-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("ExpParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("FParameter-class")
 > ### * FParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: FParameter-class
 > ### Title: Class "FParameter"
 > ### Aliases: FParameter-class initialize,FParameter-method
@@ -1335,16 +1310,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("FParameter-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("FParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Fd-class")
 > ### * Fd-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Fd-class
 > ### Title: Class "Fd"
 > ### Aliases: Fd-class Fd initialize,Fd-method
@@ -1371,16 +1345,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Fd-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Fd-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("GammaParameter-class")
 > ### * GammaParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: GammaParameter-class
 > ### Title: Class "GammaParameter"
 > ### Aliases: GammaParameter-class initialize,GammaParameter-method
@@ -1395,16 +1368,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("GammaParameter-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("GammaParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Gammad-class")
 > ### * Gammad-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Gammad-class
 > ### Title: Class "Gammad"
 > ### Aliases: Gammad-class Gammad initialize,Gammad-method
@@ -1427,16 +1399,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Gammad-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Gammad-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Geom-class")
 > ### * Geom-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Geom-class
 > ### Title: Class "Geom"
 > ### Aliases: Geom-class Geom initialize,Geom-method
@@ -1470,16 +1441,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Geom-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Geom-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("GeomParameter-class")
 > ### * GeomParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: GeomParameter-class
 > ### Title: Class "GeomParameter"
 > ### Aliases: GeomParameter-class initialize,GeomParameter-method
@@ -1501,16 +1471,15 @@ class 'NbinomParameter' soon.
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("GeomParameter-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("GeomParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Huberize-methods")
 > ### * Huberize-methods
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Huberize-methods
 > ### Title: Methods for function Huberize in Package 'distr'
 > ### Aliases: Huberize-methods Huberize Huberize,AcDcLcDistribution-method
@@ -1534,19 +1503,19 @@ Warning in function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > plot(Hub)
+NULL
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Huberize-methods", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Huberize-methods", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Hyper-class")
 > ### * Hyper-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Hyper-class
 > ### Title: Class "Hyper"
 > ### Aliases: Hyper-class Hyper initialize,Hyper-method
@@ -1569,16 +1538,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Hyper-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Hyper-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("HyperParameter-class")
 > ### * HyperParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: HyperParameter-class
 > ### Title: Class "HyperParameter"
 > ### Aliases: HyperParameter-class initialize,HyperParameter-method
@@ -1593,16 +1561,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("HyperParameter-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("HyperParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Lattice-class")
 > ### * Lattice-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Lattice-class
 > ### Title: Class "Lattice"
 > ### Aliases: Lattice-class Lattice
@@ -1617,16 +1584,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Lattice-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Lattice-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("LatticeDistribution-class")
 > ### * LatticeDistribution-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: LatticeDistribution-class
 > ### Title: Class "LatticeDistribution"
 > ### Aliases: AffLinLatticeDistribution-class LatticeDistribution-class
@@ -1659,16 +1625,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("LatticeDistribution-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("LatticeDistribution-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("LatticeDistribution")
 > ### * LatticeDistribution
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: LatticeDistribution
 > ### Title: Class "LatticeDistribution"
 > ### Aliases: LatticeDistribution
@@ -1684,16 +1649,15 @@ Distribution Object of Class: LatticeDistribution
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("LatticeDistribution", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("LatticeDistribution", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Lnorm-class")
 > ### * Lnorm-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Lnorm-class
 > ### Title: Class "Lnorm"
 > ### Aliases: Lnorm-class Lnorm initialize,Lnorm-method
@@ -1716,16 +1680,15 @@ Distribution Object of Class: LatticeDistribution
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Lnorm-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Lnorm-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("LnormParameter-class")
 > ### * LnormParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: LnormParameter-class
 > ### Title: Class "LnormParameter"
 > ### Aliases: LnormParameter-class initialize,LnormParameter-method
@@ -1740,16 +1703,15 @@ Distribution Object of Class: LatticeDistribution
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("LnormParameter-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("LnormParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Logis-class")
 > ### * Logis-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Logis-class
 > ### Title: Class "Logis"
 > ### Aliases: Logis-class Logis initialize,Logis-method
@@ -1773,16 +1735,15 @@ Distribution Object of Class: LatticeDistribution
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Logis-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Logis-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("LogisParameter-class")
 > ### * LogisParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: LogisParameter-class
 > ### Title: Class "LogisParameter"
 > ### Aliases: LogisParameter-class initialize,LogisParameter-method
@@ -1797,16 +1758,15 @@ Distribution Object of Class: LatticeDistribution
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("LogisParameter-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("LogisParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("MakeAbscontDistribution")
 > ### * MakeAbscontDistribution
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: makeAbscontDistribution
 > ### Title: "makeAbscontDistribution"
 > ### Aliases: makeAbscontDistribution
@@ -1830,7 +1790,10 @@ Warning in function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 >   plot(Hu)
+NULL
 >   Hu0 <- makeAbscontDistribution(Hu)
+Warning in .makeDNew(xx, dx, h = NULL, Cont = TRUE, standM = "integrate") :
+  'integrate()' threw an error ---result may be inaccurate.
 >   Hu0
 Distribution Object of Class: AbscontDistribution
 Warning in function (object)  :
@@ -1842,16 +1805,15 @@ Warning in function (object)  :
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("MakeAbscontDistribution", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("MakeAbscontDistribution", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("MinMaximum-methods")
 > ### * MinMaximum-methods
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Minimum-methods
 > ### Title: Methods for functions Minimum and Maximum in Package 'distr'
 > ### Aliases: Minimum-methods Minimum Maximum-methods Maximum
@@ -1875,16 +1837,15 @@ Warning in function (object)  :
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("MinMaximum-methods", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("MinMaximum-methods", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Naturals-class")
 > ### * Naturals-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Naturals-class
 > ### Title: Class "Naturals"
 > ### Aliases: Naturals Naturals-class initialize,Naturals-method
@@ -1902,16 +1863,15 @@ Warning in function (object)  :
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Naturals-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Naturals-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Nbinom-class")
 > ### * Nbinom-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Nbinom-class
 > ### Title: Class "Nbinom"
 > ### Aliases: Nbinom-class Nbinom initialize,Nbinom-method
@@ -1934,16 +1894,15 @@ Warning in function (object)  :
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Nbinom-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Nbinom-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("NbinomParameter-class")
 > ### * NbinomParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: NbinomParameter-class
 > ### Title: Class "NbinomParameter"
 > ### Aliases: NbinomParameter-class initialize,NbinomParameter-method
@@ -1958,16 +1917,15 @@ Warning in function (object)  :
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("NbinomParameter-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("NbinomParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("NoSymmetry-class")
 > ### * NoSymmetry-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: NoSymmetry-class
 > ### Title: Class for Non-symmetric Distributions
 > ### Aliases: NoSymmetry-class
@@ -1981,16 +1939,15 @@ NULL
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("NoSymmetry-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("NoSymmetry-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("NoSymmetry")
 > ### * NoSymmetry
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: NoSymmetry
 > ### Title: Generating function for NoSymmetry-class
 > ### Aliases: NoSymmetry
@@ -2011,16 +1968,15 @@ function ()
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("NoSymmetry", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("NoSymmetry", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Norm-class")
 > ### * Norm-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Norm-class
 > ### Title: Class "Norm"
 > ### Aliases: Norm-class Norm initialize,Norm-method
@@ -2045,16 +2001,15 @@ function ()
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Norm-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Norm-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("NormParameter-class")
 > ### * NormParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: NormParameter-class
 > ### Title: Class "NormParameter"
 > ### Aliases: NormParameter-class initialize,NormParameter-method
@@ -2069,16 +2024,15 @@ function ()
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("NormParameter-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("NormParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Pois-class")
 > ### * Pois-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Pois-class
 > ### Title: Class "Pois"
 > ### Aliases: Pois-class Pois initialize,Pois-method
@@ -2103,16 +2057,15 @@ function ()
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Pois-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Pois-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("PoisParameter-class")
 > ### * PoisParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: PoisParameter-class
 > ### Title: Class "PoisParameter"
 > ### Aliases: PoisParameter-class initialize,PoisParameter-method
@@ -2127,16 +2080,15 @@ function ()
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("PoisParameter-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("PoisParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("PosDefSymmMatrix-class")
 > ### * PosDefSymmMatrix-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: PosDefSymmMatrix-class
 > ### Title: Positive-[Semi-]definite, symmetric matrices
 > ### Aliases: PosDefSymmMatrix-class PosSemDefSymmMatrix-class
@@ -2152,16 +2104,15 @@ An object of class "PosDefSymmMatrix"
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("PosDefSymmMatrix-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("PosDefSymmMatrix-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("PosDefSymmMatrix")
 > ### * PosDefSymmMatrix
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: PosDefSymmMatrix
 > ### Title: Generating functions for PosSemDefSymmMatrix-class resp.
 > ###   PosDefSymmMatrix-class
@@ -2191,16 +2142,15 @@ An object of class "PosDefSymmMatrix"
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("PosDefSymmMatrix", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("PosDefSymmMatrix", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Reals-class")
 > ### * Reals-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Reals-class
 > ### Title: Class "Reals"
 > ### Aliases: Reals Reals-class initialize,Reals-method
@@ -2214,16 +2164,15 @@ An object of class "PosDefSymmMatrix"
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Reals-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Reals-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("RtoDPQ.LC")
 > ### * RtoDPQ.LC
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: RtoDPQ.LC
 > ### Title: Default procedure to fill slots d,p,q given r for Lebesgue
 > ###   decomposed distributions
@@ -2234,26 +2183,29 @@ An object of class "PosDefSymmMatrix"
 > 
 > rn2 <- function(n)ifelse(rbinom(n,1,0.3),rnorm(n)^2,rbinom(n,4,.3))
 > x <- RtoDPQ.LC(r = rn2, e = 4, n = 512)
+Warning in .makeDNew(dxy$x, dxy$y, standM = "int") :
+  'integrate()' threw an error ---result may be inaccurate.
 > plot(x)
+NULL
 > # returns density, cumulative distribution and quantile function of
 > # squared standard normal distribution
 > d.discrete(x)(4)
 [1] 0.009477312
 > x2 <- RtoDPQ.LC(r = rn2, e = 5, n = 1024) # for a better result
 > plot(x2)
+NULL
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("RtoDPQ.LC", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("RtoDPQ.LC", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("RtoDPQ")
 > ### * RtoDPQ
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: RtoDPQ
 > ### Title: Default procedure to fill slots d,p,q given r for a.c.
 > ###   distributions
@@ -2264,10 +2216,12 @@ An object of class "PosDefSymmMatrix"
 > 
 > rn2 <- function(n){rnorm(n)^2}
 > x <- RtoDPQ(r = rn2, e = 4, n = 512)
+Warning in .makeDNew(dxy$x, dxy$y, standM = "int") :
+  'integrate()' threw an error ---result may be inaccurate.
 > # returns density, cumulative distribution and quantile function of
 > # squared standard normal distribution
 > x$dfun(4)
-[1] 0.02970328
+[1] 0.02970112
 > RtoDPQ(r = rn2, e = 5, n = 1024) # for a better result
 Warning in .makeDNew(dxy$x, dxy$y, standM = "int") :
   'integrate()' threw an error ---result may be inaccurate.
@@ -2279,23 +2233,23 @@ function (x, log = FALSE)
     else d0 <- df1(x)/stand
     return(d0)
 }
-<bytecode: 0x38361d0>
-<environment: 0x46ccab0>
+<bytecode: 0x04ee813c>
+<environment: 0x06370ff0>
 
 $pfun
 function (q, lower.tail = TRUE, log.p = FALSE) 
 {
     p0 <- if (lower.tail) 
-        function (v) 
-        .approxfun(x, y, v, method, yleft, yright, f)(q)
-    else 1 - function (v) 
-    .approxfun(x, y, v, method, yleft, yright, f)(q)
+        (function (v) 
+        .approxfun(x, y, v, method, yleft, yright, f))(q)
+    else 1 - (function (v) 
+    .approxfun(x, y, v, method, yleft, yright, f))(q)
     p0 <- if (log.p) 
         log(p0) - log(nm)
     else p0/nm
     return(p0)
 }
-<environment: 0x4be5630>
+<environment: 0x05b663cc>
 
 $qfun
 function (p, lower.tail = TRUE, log.p = FALSE) 
@@ -2313,7 +2267,7 @@ function (p, lower.tail = TRUE, log.p = FALSE)
     else q.l(1 - p01)
     return(as.numeric(q0))
 }
-<environment: 0x4922c00>
+<environment: 0x06d57c64>
 
 > 
 > rp2 <- function(n){rpois(n, lambda = 1)^2}
@@ -2323,16 +2277,15 @@ function (p, lower.tail = TRUE, log.p = FALSE)
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("RtoDPQ", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("RtoDPQ", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("RtoDPQ.d")
 > ### * RtoDPQ.d
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: RtoDPQ.d
 > ### Title: Default procedure to fill slots d,p,q given r for discrete
 > ###   distributions
@@ -2343,11 +2296,13 @@ function (p, lower.tail = TRUE, log.p = FALSE)
 > 
 > rn2 <- function(n){rnorm(n)^2}
 > x <- RtoDPQ(r = rn2, e = 4, n = 512)
+Warning in .makeDNew(dxy$x, dxy$y, standM = "int") :
+  'integrate()' threw an error ---result may be inaccurate.
 > # returns density, cumulative distribution and quantile function of
 > # squared standard  normal distribution
 > 
 > x$dfun(4)
-[1] 0.02970328
+[1] 0.02970112
 > RtoDPQ(r = rn2, e = 5, n = 1024) # for a better result
 Warning in .makeDNew(dxy$x, dxy$y, standM = "int") :
   'integrate()' threw an error ---result may be inaccurate.
@@ -2359,23 +2314,23 @@ function (x, log = FALSE)
     else d0 <- df1(x)/stand
     return(d0)
 }
-<bytecode: 0x38361d0>
-<environment: 0x616c368>
+<bytecode: 0x04ee813c>
+<environment: 0x05ee6b64>
 
 $pfun
 function (q, lower.tail = TRUE, log.p = FALSE) 
 {
     p0 <- if (lower.tail) 
-        function (v) 
-        .approxfun(x, y, v, method, yleft, yright, f)(q)
-    else 1 - function (v) 
-    .approxfun(x, y, v, method, yleft, yright, f)(q)
+        (function (v) 
+        .approxfun(x, y, v, method, yleft, yright, f))(q)
+    else 1 - (function (v) 
+    .approxfun(x, y, v, method, yleft, yright, f))(q)
     p0 <- if (log.p) 
         log(p0) - log(nm)
     else p0/nm
     return(p0)
 }
-<environment: 0x4be5ae0>
+<environment: 0x05cc67bc>
 
 $qfun
 function (p, lower.tail = TRUE, log.p = FALSE) 
@@ -2393,7 +2348,7 @@ function (p, lower.tail = TRUE, log.p = FALSE)
     else q.l(1 - p01)
     return(as.numeric(q0))
 }
-<environment: 0x4d17678>
+<environment: 0x064a18ac>
 
 > 
 > rp2 <- function(n){rpois(n, lambda = 1)^2}
@@ -2403,16 +2358,15 @@ function (p, lower.tail = TRUE, log.p = FALSE)
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("RtoDPQ.d", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("RtoDPQ.d", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("SphericalSymmetry-class")
 > ### * SphericalSymmetry-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: SphericalSymmetry-class
 > ### Title: Class for Spherical Symmetric Distributions
 > ### Aliases: SphericalSymmetry-class
@@ -2427,16 +2381,15 @@ numeric(0)
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("SphericalSymmetry-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("SphericalSymmetry-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("SphericalSymmetry")
 > ### * SphericalSymmetry
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: SphericalSymmetry
 > ### Title: Generating function for SphericalSymmetry-class
 > ### Aliases: SphericalSymmetry
@@ -2460,16 +2413,15 @@ function (SymmCenter = 0)
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("SphericalSymmetry", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("SphericalSymmetry", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("TParameter-class")
 > ### * TParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: TParameter-class
 > ### Title: Class "TParameter"
 > ### Aliases: TParameter-class initialize,TParameter-method
@@ -2484,16 +2436,15 @@ function (SymmCenter = 0)
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("TParameter-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("TParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Td-class")
 > ### * Td-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Td-class
 > ### Title: Class "Td"
 > ### Aliases: Td-class Td initialize,Td-method
@@ -2520,16 +2471,15 @@ function (SymmCenter = 0)
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Td-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Td-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Truncate-methods")
 > ### * Truncate-methods
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Truncate-methods
 > ### Title: Methods for function Truncate in Package 'distr'
 > ### Aliases: Truncate-methods Truncate Truncate,AbscontDistribution-method
@@ -2550,19 +2500,19 @@ function (SymmCenter = 0)
 [25] 15.15164 15.18813 15.05449 15.00128 15.02455 15.03054
 > TNG <- Truncate(Geom(prob=0.05),lower=325,upper=329) ### remarkably right!
 > plot(TNG)
+NULL
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Truncate-methods", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Truncate-methods", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("UniNormParameter-class")
 > ### * UniNormParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: UniNormParameter-class
 > ### Title: Class "UniNormParameter"
 > ### Aliases: UniNormParameter-class initialize,UniNormParameter-method
@@ -2577,16 +2527,15 @@ function (SymmCenter = 0)
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("UniNormParameter-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("UniNormParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Unif-class")
 > ### * Unif-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Unif-class
 > ### Title: Class "Unif"
 > ### Aliases: Unif-class Unif initialize,Unif-method
@@ -2619,16 +2568,15 @@ Distribution Object of Class: Beta
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Unif-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Unif-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("UnifParameter-class")
 > ### * UnifParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: UnifParameter-class
 > ### Title: Class "UnifParameter"
 > ### Aliases: UnifParameter-class initialize,UnifParameter-method
@@ -2643,16 +2591,15 @@ Distribution Object of Class: Beta
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("UnifParameter-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("UnifParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("UnivarDistrList-class")
 > ### * UnivarDistrList-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: UnivarDistrList-class
 > ### Title: List of univariate distributions
 > ### Aliases: UnivarDistrList-class
@@ -2677,16 +2624,15 @@ An object of class "UnivarDistrList"
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("UnivarDistrList-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("UnivarDistrList-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("UnivarDistrList")
 > ### * UnivarDistrList
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: UnivarDistrList
 > ### Title: Generating function for UnivarDistrList-class
 > ### Aliases: UnivarDistrList
@@ -2704,6 +2650,7 @@ An object of class "UnivarDistrList"
  [[3]] Distribution Object of Class: Pois
        :lambda: 1
 > plot(DL)
+NULL
 > as(Norm(), "UnivarDistrList")
 An object of class "UnivarDistrList"
  [[1]] Distribution Object of Class: Norm
@@ -2721,16 +2668,15 @@ function (...)
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("UnivarDistrList", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("UnivarDistrList", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("UnivarLebDecDistribution-class")
 > ### * UnivarLebDecDistribution-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: UnivarLebDecDistribution-class
 > ### Title: Class "UnivarLebDecDistribution"
 > ### Aliases: UnivarLebDecDistribution-class
@@ -2808,6 +2754,7 @@ Warning in function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > plot(myLC)
+NULL
 > d.discrete(myLC)(2)
 [1] 0.189
 > p.ac(myLC)(0)
@@ -2817,6 +2764,7 @@ acWeight
      0.8 
 > plot(acPart(myLC))
 > plot(discretePart(myLC))
+NULL
 > gaps(myLC)
          [,1]     [,2]
 [1,] 1.000026 2.000000
@@ -2828,16 +2776,15 @@ acWeight
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("UnivarLebDecDistribution-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("UnivarLebDecDistribution-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("UnivarLebDecDistribution")
 > ### * UnivarLebDecDistribution
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: UnivarLebDecDistribution
 > ### Title: Generating function for Class "UnivarLebDecDistribution"
 > ### Aliases: UnivarLebDecDistribution
@@ -2865,16 +2812,15 @@ An object of class "UnivarLebDecDistribution"
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("UnivarLebDecDistribution", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("UnivarLebDecDistribution", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("UnivarMixingDistribution-class")
 > ### * UnivarMixingDistribution-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: UnivarMixingDistribution-class
 > ### Title: Class "UnivarMixingDistribution"
 > ### Aliases: UnivarMixingDistribution-class mixCoeff mixDistr mixCoeff<-
@@ -2922,16 +2868,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("UnivarMixingDistribution-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("UnivarMixingDistribution-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("UnivarMixingDistribution")
 > ### * UnivarMixingDistribution
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: UnivarMixingDistribution
 > ### Title: Generating function for Class "UnivarMixingDistribution"
 > ### Aliases: UnivarMixingDistribution
@@ -2944,16 +2889,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("UnivarMixingDistribution", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("UnivarMixingDistribution", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Weibull-class")
 > ### * Weibull-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Weibull-class
 > ### Title: Class "Weibull"
 > ### Aliases: Weibull-class Weibull initialize,Weibull-method
@@ -2976,16 +2920,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("Weibull-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Weibull-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("WeibullParameter-class")
 > ### * WeibullParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: WeibullParameter-class
 > ### Title: Class "WeibullParameter"
 > ### Aliases: WeibullParameter-class initialize,WeibullParameter-method
@@ -3000,16 +2943,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("WeibullParameter-class", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("WeibullParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("decomposePM-methods")
 > ### * decomposePM-methods
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: decomposePM-methods
 > ### Title: Methods for function decomposePM in Package 'distr'
 > ### Aliases: decomposePM-methods decomposePM
@@ -3114,16 +3056,15 @@ discreteWeight
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("decomposePM-methods", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("decomposePM-methods", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("distrARITH")
 > ### * distrARITH
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: distrARITH
 > ### Title: Arithmetics on Distributions
 > ### Aliases: distrARITH ARITHMETICS
@@ -3206,20 +3147,18 @@ filled by simulating a large number of random variables, hence they are
 stochastic estimates. 
 
 So don't be surprised if they will change from call to call.
-
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("distrARITH", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("distrARITH", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("distrMASK")
 > ### * distrMASK
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: distrMASK
 > ### Title: Masking of/by other functions in package "distr"
 > ### Aliases: distrMASK MASKING
@@ -3263,26 +3202,24 @@ matrices and an adapted eigen decomposition for 'PosSemDefSymmMatrix'.
 
 *** non-intentional masking: ***
 
-... nothing discovered so far ...
+... nothing discovered so far ...> 
 > 
 > 
-> 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("distrMASK", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("distrMASK", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("distroptions")
 > ### * distroptions
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: distroptions
 > ### Title: functions to change the global variables of the package 'distr'
 > ### Aliases: distroptions getdistrOption DefaultNrGridPoints
 > ###   DistrResolution DistrCollapse TruncQuantile WarningSim WarningArith
 > ###   DefaultNrFFTGridPointsExponent RtoDPQ.e WarningArith WarningSim
-> ###   withSweave withgaps use.generalized.inverse.by.default
+> ###   withSweave warn.makeDNew withgaps use.generalized.inverse.by.default
 > ###   DistributionAggregate.Unique.Warn
 > ### Keywords: distribution
 > 
@@ -3317,16 +3254,15 @@ $WarningArith
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("distroptions", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("distroptions", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("flat.LCD")
 > ### * flat.LCD
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: flat.LCD
 > ### Title: Flattening a list of Lebesgue decomposed distributions
 > ### Aliases: flat.LCD
@@ -3354,16 +3290,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("flat.LCD", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("flat.LCD", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("flat.mix")
 > ### * flat.mix
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: flat.mix
 > ### Title: Default procedure to fill slots d,p,q given r for Lebesgue
 > ###   decomposed distributions
@@ -3428,19 +3363,19 @@ Warning in function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > plot(D0)
+NULL
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("flat.mix", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("flat.mix", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("getLabel")
 > ### * getLabel
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: getLabel
 > ### Title: Labels for distribution objects
 > ### Aliases: getLabel
@@ -3468,16 +3403,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("getLabel", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("getLabel", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("igamma")
 > ### * igamma
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: igamma
 > ### Title: Inverse of the digamma function
 > ### Aliases: igamma
@@ -3490,16 +3424,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("igamma", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("igamma", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("liesInSupport")
 > ### * liesInSupport
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: liesInSupport
 > ### Title: Generic Function for Testing the Support of a Distribution
 > ### Aliases: liesInSupport liesInSupport-methods
@@ -3527,16 +3460,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("liesInSupport", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("liesInSupport", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("operators-methods")
 > ### * operators-methods
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: operators-methods
 > ### Title: Methods for operators +,-,*,/,... in Package distr
 > ### Aliases: operators-methods operators
@@ -3633,31 +3565,66 @@ Distribution Object of Class: Norm
 Warning in function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
-> 
-> ## don't run: to reduce check time on CRAN
+> a * N
+Distribution Object of Class: Norm
+ mean: 0
+ sd: 9
+Warning in function (object)  :
+  arithmetics on distributions are understood as operations on r.v.'s
+see 'distrARITH()'; for switching off this warning see '?distroptions'
+> a * P
+Distribution Object of Class: AffLinLatticeDistribution
+> N / a + sin( a * P - N)
+Distribution Object of Class: AbscontDistribution
+Warning in function (object)  :
+  arithmetics on distributions are understood as operations on r.v.'s
+see 'distrARITH()'; for switching off this warning see '?distroptions'
+> N * P
+An object of class "UnivarLebDecDistribution"
+ --- a Lebesgue decomposed distribution:
+
+    Its discrete part (with weight 0.018000) is a
+ Distribution Object of Class: Dirac
+ location: 0
+ This part is accessible with 'discretePart(<obj>)'.
+
+    Its absolutely continuous part (with weight 0.982000) is a
+ Distribution Object of Class: AbscontDistribution
+ This part is accessible with 'acPart(<obj>)'.
+Warning in function (object)  :
+  arithmetics on distributions are understood as operations on r.v.'s
+see 'distrARITH()'; for switching off this warning see '?distroptions'
+> N / N
+Distribution Object of Class: AbscontDistribution
+Warning in function (object)  :
+  arithmetics on distributions are understood as operations on r.v.'s
+see 'distrARITH()'; for switching off this warning see '?distroptions'
 > ## Not run: 
-> ##D a * N
-> ##D a * P
-> ##D N / a + sin( a * P - N)
-> ##D N * P
-> ##D N / N
+> ##D ## takes a little time
 > ##D N ^ P
-> ##D 1.2 ^ N
-> ##D abs(N) ^ 1.3
 > ## End(Not run)
+> 1.2 ^ N
+Distribution Object of Class: AbscontDistribution
+Warning in function (object)  :
+  arithmetics on distributions are understood as operations on r.v.'s
+see 'distrARITH()'; for switching off this warning see '?distroptions'
+> abs(N) ^ 1.3
+Distribution Object of Class: AbscontDistribution
+Warning in function (object)  :
+  arithmetics on distributions are understood as operations on r.v.'s
+see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("operators-methods", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("operators-methods", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("options")
 > ### * options
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: options
 > ### Title: additional options in package 'distr'
 > ### Aliases: options newDevice
@@ -3671,16 +3638,15 @@ NULL
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("options", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("options", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("plot-methods")
 > ### * plot-methods
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: plot-methods
 > ### Title: Methods for Function plot in Package 'distr'
 > ### Aliases: plot plot-methods
@@ -3695,27 +3661,37 @@ NULL
 > ### ** Examples
 > 
 > plot(Binom(size = 4, prob = 0.3))
+NULL
 > plot(Binom(size = 4, prob = 0.3), do.points = FALSE)
+NULL
 dev.new(): using pdf(file="Rplots1.pdf")
 > plot(Binom(size = 4, prob = 0.3), verticals = FALSE)
+NULL
 dev.new(): using pdf(file="Rplots2.pdf")
 > plot(Binom(size = 4, prob = 0.3), main = TRUE)
+NULL
 dev.new(): using pdf(file="Rplots3.pdf")
 > plot(Binom(size = 4, prob = 0.3), main = FALSE)
+NULL
 dev.new(): using pdf(file="Rplots4.pdf")
 > plot(Binom(size = 4, prob = 0.3), cex.points = 1.2, pch = 20)
+NULL
 dev.new(): using pdf(file="Rplots5.pdf")
 > plot(Binom(size = 4, prob = 0.3), xlab = list("a1","a2", "a3"),
 +            ylab=list("p"="U","q"="V","d"="W"))
+NULL
 dev.new(): using pdf(file="Rplots6.pdf")
 > B <- Binom(size = 4, prob = 0.3)
 > plot(B, col = "red", col.points = "green", main = TRUE, col.main = "blue", 
 +      col.sub = "orange", sub = TRUE, cex.sub = 0.6, col.inner = "brown")
+NULL
 dev.new(): using pdf(file="Rplots7.pdf")
 > plot(Nbinom(size = 4,prob = 0.3), cex.points = 1.2, col = "red", 
 +      col.points = "green")
+NULL
 dev.new(): using pdf(file="Rplots8.pdf")
 > plot(Nbinom(size = 4,prob = 0.3), cex.points = 1.2, pch.u = 20, pch.a = 10)
+NULL
 dev.new(): using pdf(file="Rplots9.pdf")
 > plot(Norm(), main = TRUE, cex.main = 3, tmar = 6)
 dev.new(): using pdf(file="Rplots10.pdf")
@@ -3757,6 +3733,7 @@ dev.new(): using pdf(file="Rplots21.pdf")
 +          acWeight = 0.4)
 > plot(mymix)         
 dev.new(): using pdf(file="Rplots22.pdf")
+NULL
 > #
 > ## selection of subpanels for plotting
 > N <- Norm()
@@ -3776,21 +3753,23 @@ dev.new(): using pdf(file="Rplots24.pdf")
 > plot(myLC,mfColRow = FALSE,
 +      to.draw.arg=c("p","d.c","p.c","q.c", "p.d","q.d"))
 dev.new(): using pdf(file="Rplots25.pdf")
+NULL
 > 
 > P <- Pois(2)
 > plot(as(P,"UnivarLebDecDistribution"),mfColRow = FALSE,to.draw.arg=c("d.d"))
+NULL
 dev.new(): using pdf(file="Rplots26.pdf")
 > ### the next ylab argument is just for illustration purposes
 > plot(as(P,"UnivarLebDecDistribution"),mfColRow = FALSE,to.draw.arg=c("d.d"),
 +      xlab="x",ylab=list(expression(paste(lambda,"-density of %C(%P)"))))
+NULL
 dev.new(): using pdf(file="Rplots27.pdf")
 > 
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("plot-methods", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("plot-methods", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > graphics::par(get("par.postscript", pos = 'CheckExEnv'))
 > cleanEx()
 > nameEx("qqbounds")
@@ -3798,7 +3777,7 @@ dev.new(): using pdf(file="Rplots27.pdf")
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: qqbounds
 > ### Title: Computation of confidence intervals for qqplot
 > ### Aliases: qqbounds
@@ -3938,9 +3917,9 @@ $crit
 [25,] 3.836600224 33.376842 4.3395390  8.265854
 [26,] 4.003668413 33.376842 4.6697545  9.002701
 [27,] 4.156222688 33.376842 4.6697545  9.002701
-[28,] 4.226775194 33.376842 4.6697544  9.002701
+[28,] 4.226775194 33.376842 4.6697545  9.002701
 [29,] 4.624151368 33.376842 5.5034154 11.218259
-[30,] 5.151685324 33.376842 6.8356099 17.736666
+[30,] 5.151685324 33.376842 6.8356101 17.736666
 
 $err
  sim   pw 
@@ -3949,16 +3928,15 @@ TRUE TRUE
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("qqbounds", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("qqbounds", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("qqplot")
 > ### * qqplot
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: qqplot
 > ### Title: Methods for Function qqplot in Package 'distr'
 > ### Aliases: qqplot qqplot-methods qqplot,ANY,ANY-method
@@ -3983,23 +3961,64 @@ $y
 [22] 17.617045 18.245086 18.935608 19.710213 20.603008 21.673093 23.038145
 [29] 24.995790 28.879970
 
-> 
-> ## don't run: to reduce check time on CRAN
+> ## some discrete Distributions:
+> P <- Pois(5)
+> B <- Binom(size=2000,prob=5/2000)
+> qqplot(B,P)
+dev.new(): using pdf(file="Rplots30.pdf")
+$x
+ [1]  1  2  2  2  3  3  3  3  4  4  4  4  4  5  5  5  5  5  6  6  6  6  6  7  7
+[26]  7  8  8  9 10
+
+$y
+ [1]  1  2  2  2  3  3  3  3  4  4  4  4  4  5  5  5  5  5  6  6  6  6  6  7  7
+[26]  7  8  8  9 10
+
 > ## Not run: 
-> ##D ## some discrete Distributions:
-> ##D P <- Pois(5)
-> ##D B <- Binom(size=2000,prob=5/2000)
-> ##D qqplot(B,P)
+> ##D ## takes too much time for R CMD check --as-cran
 > ##D qqplot(B,P, nosym.pCI=TRUE)
-> ##D 
-> ##D ## some Lebesgue-Decomposed distributions:
-> ##D mylist <- UnivarLebDecDistribution(discretePart=Binom(3,.3), acPart=Norm(2,2),
-> ##D                acWeight=11/20)
-> ##D mylist2 <- mylist+0.1
-> ##D qqplot(mylist,mylist2)
-> ##D qqplot(mylist,mylist2,exact.pCI=FALSE,exact.sCI=FALSE)
+> ## End(Not run)
+> ## some Lebesgue-Decomposed distributions:
+> mylist <- UnivarLebDecDistribution(discretePart=Binom(3,.3), acPart=Norm(2,2),
++                acWeight=11/20)
+> mylist2 <- mylist+0.1
+> qqplot(mylist,mylist2)
+dev.new(): using pdf(file="Rplots31.pdf")
+$x
+ [1] -1.752717e+00 -6.703562e-01 -5.991461e-02 -8.094828e-07 -5.935235e-07
+ [6] -3.775642e-07 -1.616049e-07  1.223400e-01  5.518839e-01  9.230299e-01
+[11]  9.999991e-01  9.999993e-01  9.999995e-01  9.999996e-01  9.999998e-01
+[16]  1.000000e+00  1.275301e+00  1.591871e+00  1.898476e+00  1.999999e+00
+[21]  2.000000e+00  2.034791e+00  2.340257e+00  2.653923e+00  2.984664e+00
+[26]  3.209171e+00  3.598166e+00  4.059915e+00  4.670356e+00  5.752717e+00
+
+$y
+ [1] -1.65271734 -0.57035622  0.04008539  0.09999919  0.09999941  0.09999962
+ [7]  0.09999984  0.22233999  0.65188390  1.02302991  1.09999913  1.09999930
+[13]  1.09999947  1.09999963  1.09999980  1.09999997  1.37530110  1.69187083
+[19]  1.99847590  2.09999926  2.09999965  2.13479073  2.44025713  2.75392310
+[25]  3.08466399  3.30917127  3.69816622  4.15991461  4.77035622  5.85271734
+
+> qqplot(mylist,mylist2,exact.pCI=FALSE,exact.sCI=FALSE)
+dev.new(): using pdf(file="Rplots32.pdf")
+$x
+ [1] -1.752717e+00 -6.703562e-01 -5.991461e-02 -8.094828e-07 -5.935235e-07
+ [6] -3.775642e-07 -1.616049e-07  1.223400e-01  5.518839e-01  9.230299e-01
+[11]  9.999991e-01  9.999993e-01  9.999995e-01  9.999996e-01  9.999998e-01
+[16]  1.000000e+00  1.275301e+00  1.591871e+00  1.898476e+00  1.999999e+00
+[21]  2.000000e+00  2.034791e+00  2.340257e+00  2.653923e+00  2.984664e+00
+[26]  3.209171e+00  3.598166e+00  4.059915e+00  4.670356e+00  5.752717e+00
+
+$y
+ [1] -1.65271734 -0.57035622  0.04008539  0.09999919  0.09999941  0.09999962
+ [7]  0.09999984  0.22233999  0.65188390  1.02302991  1.09999913  1.09999930
+[13]  1.09999947  1.09999963  1.09999980  1.09999997  1.37530110  1.69187083
+[19]  1.99847590  2.09999926  2.09999965  2.13479073  2.44025713  2.75392310
+[25]  3.08466399  3.30917127  3.69816622  4.15991461  4.77035622  5.85271734
+
+> ## Not run: 
+> ##D ## takes too much time for R CMD check --as-cran
 > ##D qqplot(mylist,mylist2,nosym.pCI=TRUE)
-> ##D 
 > ##D ## some ac. distribution with a gap
 > ##D mylist3 <- UnivarMixingDistribution(Unif(0,0.3),Unif(0.6,1),mixCoeff=c(0.8,0.2))
 > ##D gaps(mylist3)
@@ -4010,16 +4029,15 @@ $y
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("qqplot", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("qqplot", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("simplifyD-methods")
 > ### * simplifyD-methods
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: simplifyD-methods
 > ### Title: Methods for function simplifyD in Package 'distr'
 > ### Aliases: simplifyD-methods simplifyD
@@ -4101,16 +4119,15 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("simplifyD-methods", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("simplifyD-methods", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("simplifyr-methods")
 > ### * simplifyr-methods
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: simplifyr-methods
 > ### Title: Methods for Function simplifyr in Package 'distr'
 > ### Aliases: simplifyr-methods simplifyr
@@ -4122,23 +4139,22 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > F <- ( Norm() + Binom() + Pois() + Exp() ) * 2 - 10
 > system.time(r(F)(10^6))
    user  system elapsed 
-  0.716   0.016   0.734 
+   0.65    0.01    0.67 
 > simplifyr(F, size = 10^6)
 > system.time(r(F)(10^6))
    user  system elapsed 
-  0.044   0.004   0.048 
+   0.06    0.00    0.07 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("simplifyr-methods", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("simplifyr-methods", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("standardMethods")
 > ### * standardMethods
 > 
 > flush(stderr()); flush(stdout())
 > 
-> assign(".ptime", proc.time(), pos = "CheckExEnv")
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: standardMethods
 > ### Title: Utility to automatically generate accessor and replacement
 > ###   functions
@@ -4160,13 +4176,13 @@ setReplaceMethod("b", "testclass", function(object, value){ object@b <- value; o
 > 
 > 
 > 
-> 
-> assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> cat("standardMethods", get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("standardMethods", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > ### * <FOOTER>
 > ###
-> cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  28.873 0.2 29.192 0 0.008 
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  31.12 2.94 34.37 NA NA 
 > grDevices::dev.off()
 pdf 
   2 
