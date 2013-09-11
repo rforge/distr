@@ -7,7 +7,7 @@ Description: SetRNG provides utilities to help set and record the setting of
 	necessary information for reproducibility. 
 	See the vignette and reference manual for examples.
 Depends:   R (>= 2.5.0)
-Version: 2011.11-2
+Version: 2013.9-1
 LazyLoad: yes
 License: GPL-2 | file LICENSE
 Author: Paul Gilbert <pgilbert.ttv9z@ncf.ca>

@@ -1,3 +1,7 @@
+Changes in setRNG version 2013.9-1
+
+   o	adjusted .Rbuildignore to exclude S/ directory.
+
 Changes in setRNG version 2011.11-1
 
    o	updated maintainer email address.

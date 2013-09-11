@@ -15,3 +15,4 @@ inst/doc/(^|.*)\.log$
 inst/doc/(^|.*)\.stdout$
 .Rd2dvi(^|.*)
 (^|.*)\.ps$
+^S$
