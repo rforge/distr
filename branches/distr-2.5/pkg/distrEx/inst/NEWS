@@ -14,8 +14,12 @@ v 2.5
 user-visible CHANGES:
 
 GENERAL ENHANCEMENTS:
++ cleaned DESCRIPTION and NAMESPACE file as to Imports/Depends
 
 under the hood:
++ use some newly exmported routines which had been internal so far to
+  avoid calls by :::
++ added .Rbuildignore
 
 BUGFIXES:
 

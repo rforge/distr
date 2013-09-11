@@ -14,11 +14,17 @@ v 2.5
 user-visible CHANGES:
 
 GENERAL ENHANCEMENTS:
++ cleaned DESCRIPTION and NAMESPACE file as to Imports/Depends
 
 under the hood:
++ added .Rbuildignore
++ exported some routines which had been internal so far to
+  avoid calls by :::
 
 BUGFIXES:
 + fixed .makedotsPt -issue discovered by Gerald --> thx
++ moved generics to "distribution" and "samplesize" to pkg distr to avoid 
+   conflict with pkg distrMod
 
 
 ##############

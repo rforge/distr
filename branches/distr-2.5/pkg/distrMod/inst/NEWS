@@ -14,6 +14,7 @@ v 2.5
 user-visible CHANGES:
 
 GENERAL ENHANCEMENTS:
++ cleaned DESCRIPTION and NAMESPACE file as to Imports/Depends
 
 under the hood:
 + For speeding up things, we now have an option withL2derivDistr = TRUE which
@@ -46,8 +47,14 @@ under the hood:
   cases we do neither want to produce a call nor an evaluated call to
   imageDistr...
 
++ added .Rbuildignore
 
-BUGFIXES:
++ exported some routines which had been internal so far to
+  avoid calls by :::
+
+  BUGFIXES:
++ moved generics to "distribution" and "samplesize" to pkg distr to avoid 
+   conflict with pkg distrSim
 
 ##############
 v 2.4

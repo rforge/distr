@@ -6,7 +6,23 @@
  package-individual development, but rather are chosen for the 
  distrXXX family as a whole in order to ease updating "depends" 
  information)
+ 
+##############
+v 2.5
+##############
 
+user-visible CHANGES:
+
+GENERAL ENHANCEMENTS:
++ cleaned DESCRIPTION and NAMESPACE file as to Imports/Depends
+
+under the hood:
+
++ added .Rbuildignore
+ 
+BUGFIXES
++ fixed some links in html-man pages
+ 
 ##############
 v 2.4
 ##############

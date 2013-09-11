@@ -11,6 +11,20 @@
 v 2.5
 ##############
 
+user-visible CHANGES:
+
+GENERAL ENHANCEMENTS:
++ cleaned DESCRIPTION and NAMESPACE file as to Imports/Depends
+
+under the hood:
+
++ added .Rbuildignore
++ used some recently exported routines which had been internal so far to
+  avoid calls by :::
+ 
+BUGFIXES
++ fixed some links in html-man pages
+
 
 ##############
 v 2.4

@@ -14,8 +14,11 @@ v 2.5
 user-visible CHANGES:
 
 GENERAL ENHANCEMENTS:
+cleaned DESCRIPTION file
+except for R itself moved all Depends to Imports in DESCRIPTION file
 
 under the hood:
+added .Rbuildignore
 
 BUGFIXES:
 
