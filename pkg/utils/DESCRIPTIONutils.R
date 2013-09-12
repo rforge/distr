@@ -35,9 +35,10 @@ changeDescription <- function(startDir, names, values,
   oldDir <- getwd()
   on.exit(setwd(oldDir))
   setwd(startDir)
-  if(is.null(pathRepo)) pathRepo <- gsub(".*/([^/]+)/*$","\\1", startDir)
   if(withSVNread){
-      svnrev <- getRevNr(startDir, pathRepo)[[1]]
+      startD <- gsub("/branches/[^/]+","",startDir)
+      if(is.null(pathRepo)) pathRepo <- gsub(".*/([^/]+)/*$","\\1", startD)
+      svnrev <- getRevNr(startD, pathRepo)[[1]]
       print(svnrev)
       if("SVNRevision" %in% names){
          values[which(names=="SVNRevision"),] <- svnrev
@@ -177,11 +178,19 @@ Pkgs <- c("startupmsg", "SweaveListingUtils",
           "distrTeach",
           "distrTEst", "distrEllipse", "distrRmetrics")
 Names <- c("Version")
-Values <- matrix(c("2.5",1,length(Pkgs))
+Values <- matrix(c("2.5"),1,length(Pkgs))
 colnames(Values) <- Pkgs
 rownames(Values) <- Names
 Values["Version",,drop=FALSE] <- c("0.9", "0.7", rep("2.5",6))
 changeDescription(startDir = "C:/rtest/distr",names=Names,
+                  pkgs=Pkgs, values=Values)
+
+Pkgs <- c("distr", "distrSim","distrMod")
+Names <- c("Version")
+Values <- matrix(c("2.6"),1,length(Pkgs))
+colnames(Values) <- Pkgs
+rownames(Values) <- Names
+changeDescription(startDir = "C:/rtest/distr/branches/distr-2.6",names=Names,
                   pkgs=Pkgs, values=Values)
 }
 ##############################################################################
