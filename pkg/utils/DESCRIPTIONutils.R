@@ -162,6 +162,13 @@ rownames(Values) <- Names
 changeDescription(startDir = "C:/rtest/robast",names=Names,
                   pkgs=Pkgs, values=Values)
 
+Pkgs <- c("RandVar", "ROptEstOld", "RobAStBase", "RobAStRDA", "RobLox", "RobRex", "RobLoxBioC", "ROptEst", "RobExtremes", "ROptRegTS")
+Names <- c("Version")
+Values <- matrix(c("1.0"),1,length(Pkgs))
+colnames(Values) <- Pkgs
+rownames(Values) <- Names
+changeDescription(startDir = "C:/rtest/robast/branches/robast-1.0",names=Names,
+                  pkgs=Pkgs, values=Values)
 }
 
 ##############################################################################
