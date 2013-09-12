@@ -97,4 +97,4 @@ export("qqbounds","igamma")
 exportMethods("qqplot")
 export(".isEqual",".isEqual01", ".inArgs", ".fillList", 
        ".presubs", ".makeLenAndOrder", ".DistrCollapse")
-export("samplesize", "distribution")	   
+export("samplesize", "distribution", "samplesize<-")	   
