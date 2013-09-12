@@ -145,14 +145,25 @@ changeDescription(startDir = "C:/rtest/distr",names=Names,
                   pkgs=Pkgs, values=Values)
 }
 if(FALSE){### Version 0.9.1
-Pkgs <- c("RandVar", "ROptEstOld")
-Names <- c("Version")
-Values <- matrix("0.9.1",1,length(Pkgs))
+Pkgs <- c("RobLox", "RobLoxBioC", "RobRex", "ROptRegTS")
+Names <- c("Version","License")
+Values <- matrix(c("0.9","LGPL-3"),2,length(Pkgs))
 colnames(Values) <- Pkgs
 rownames(Values) <- Names
 changeDescription(startDir = "C:/rtest/robast",names=Names,
                   pkgs=Pkgs, values=Values)
 }
+if(FALSE){
+Pkgs <- c("RandVar", "ROptEstOld")
+Names <- c("Version","License")
+Values <- matrix(c("0.9.1","LGPL-3"),2,length(Pkgs))
+colnames(Values) <- Pkgs
+rownames(Values) <- Names
+changeDescription(startDir = "C:/rtest/robast",names=Names,
+                  pkgs=Pkgs, values=Values)
+
+}
+
 ##############################################################################
 
 
