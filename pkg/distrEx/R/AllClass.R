@@ -1,7 +1,14 @@
-.isEqual01 <- distr:::.isEqual01 ## for faster access due to local caching in package namespace
-
 .onLoad <- function(lib, pkg){
 #    require("methods", character = TRUE, quietly = TRUE)
+}
+.ULC.cast <- function(x){
+         if( is(x,"AbscontDistribution"))
+             x <- as(as(x,"AbscontDistribution"), "UnivarLebDecDistribution")
+         if(is(x,"DiscreteDistribution"))
+             x <- as(as(x,"DiscreteDistribution"), "UnivarLebDecDistribution")
+         if(!is(x,"UnivarLebDecDistribution"))
+            x <- as(x,"UnivarLebDecDistribution")
+         return(x)
 }
 
 

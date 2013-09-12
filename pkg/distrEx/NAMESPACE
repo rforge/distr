@@ -1,6 +1,5 @@
 useDynLib("distrEx")
 
-import("startupmsg")
 import("methods")
 import("distr")
 

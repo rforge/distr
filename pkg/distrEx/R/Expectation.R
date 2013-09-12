@@ -844,7 +844,7 @@ setMethod("E", signature(object = "AcDcLcDistribution",
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
              IQR.fac = getdistrExOption("IQR.fac"), ... ){
-        object <- distr:::.ULC.cast(object)
+        object <- .ULC.cast(object)
         I.ac <- E(acPart(object), fun = fun, cond = cond, low = low, upp = upp, 
                   rel.tol = rel.tol, 
                   lowerTruncQuantile = lowerTruncQuantile,

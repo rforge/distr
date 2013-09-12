@@ -73,7 +73,7 @@ setMethod("ConvexContamination", signature(e1 = "AbscontDistribution",
         Symmetry <- NoSymmetry()
         if(is(e1@Symmetry,"SphericalSymmetry")&& 
            is(e2@Symmetry,"SphericalSymmetry"))
-           if(distr:::.isEqual(SymmCenter(e1@Symmetry),SymmCenter(e2@Symmetry)))
+           if(.isEqual(SymmCenter(e1@Symmetry),SymmCenter(e2@Symmetry)))
               Symmetry <- SphericalSymmetry(SymmCenter(e1@Symmetry))   
 
         return(new("AbscontDistribution", r = rfun, d = dfun, p = pfun, 
@@ -157,7 +157,7 @@ setMethod("ConvexContamination", signature(e1 = "DiscreteDistribution",
         Symmetry <- NoSymmetry()
         if(is(e1@Symmetry,"SphericalSymmetry")&& 
            is(e2@Symmetry,"SphericalSymmetry"))
-           if(distr:::.isEqual(SymmCenter(e1@Symmetry),SymmCenter(e2@Symmetry)))
+           if(.isEqual(SymmCenter(e1@Symmetry),SymmCenter(e2@Symmetry)))
               Symmetry <- SphericalSymmetry(SymmCenter(e1@Symmetry))   
 
         return(new("DiscreteDistribution", r = rfun, d = dfun, p = pfun, q = qfun, 
@@ -230,7 +230,7 @@ setMethod("ConvexContamination", signature(e1 = "UnivariateDistribution",
         Symmetry <- NoSymmetry()
         if(is(e1@Symmetry,"SphericalSymmetry")&& 
            is(e2@Symmetry,"SphericalSymmetry"))
-           if(distr:::.isEqual(SymmCenter(e1@Symmetry),SymmCenter(e2@Symmetry)))
+           if(.isEqual(SymmCenter(e1@Symmetry),SymmCenter(e2@Symmetry)))
               Symmetry <- SphericalSymmetry(SymmCenter(e1@Symmetry))   
 
         return(new("UnivariateDistribution", img = img(e1), r = rfun, d = NULL, 

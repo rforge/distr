@@ -171,6 +171,19 @@ changeDescription(startDir = "C:/rtest/robast/branches/robast-1.0",names=Names,
                   pkgs=Pkgs, values=Values)
 }
 
+if(FALSE){### Version 2.5
+Pkgs <- c("startupmsg", "SweaveListingUtils",
+          "distrEx", "distrDoc",
+          "distrTeach",
+          "distrTEst", "distrEllipse", "distrRmetrics")
+Names <- c("Version")
+Values <- matrix(c("2.5",1,length(Pkgs))
+colnames(Values) <- Pkgs
+rownames(Values) <- Names
+Values["Version",,drop=FALSE] <- c("0.9", "0.7", rep("2.5",6))
+changeDescription(startDir = "C:/rtest/distr",names=Names,
+                  pkgs=Pkgs, values=Values)
+}
 ##############################################################################
 
 

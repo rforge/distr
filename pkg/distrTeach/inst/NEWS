@@ -8,6 +8,21 @@
  information)
  
 ##############
+v 2.5
+##############
+
+user-visible CHANGES:
+
+GENERAL ENHANCEMENTS:
++ cleaned DESCRIPTION and NAMESPACE file as to Imports/Depends
+
+under the hood:
+
++ added .Rbuildignore
+ 
+BUGFIXES
+
+##############
 v 2.4
 ##############
 

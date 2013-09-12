@@ -1,7 +1,6 @@
 
-R Under development (unstable) (2013-01-05 r61562) -- "Unsuffered Consequences"
+R version 3.0.1 Patched (2013-09-02 r63805) -- "Good Sport"
 Copyright (C) 2013 The R Foundation for Statistical Computing
-ISBN 3-900051-07-0
 Platform: i386-w64-mingw32/i386 (32-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -22,16 +21,27 @@ Type 'q()' to quit R.
 > source(file.path(R.home("share"), "R", "examples-header.R"))
 > options(warn = 1)
 > options(pager = "console")
+> base::assign(".ExTimings", "SweaveListingUtils-Ex.timings", pos = 'CheckExEnv')
+> base::cat("name\tuser\tsystem\telapsed\n", file=base::get(".ExTimings", pos = 'CheckExEnv'))
+> base::assign(".format_ptime",
++ function(x) {
++   if(!is.na(x[4L])) x[1L] <- x[1L] + x[4L]
++   if(!is.na(x[5L])) x[2L] <- x[2L] + x[5L]
++   options(OutDec = '.')
++   format(x[1L:3L], digits = 7L)
++ },
++ pos = 'CheckExEnv')
+> 
+> ### * </HEADER>
 > library('SweaveListingUtils')
 Loading required package: startupmsg
-:startupmsg>  Utilities for start-up messages (version 0.8)
+:startupmsg>  Utilities for start-up messages (version 0.9)
 :startupmsg> 
 :startupmsg>  For more information see ?"startupmsg",
 :startupmsg>  NEWS("startupmsg")
 
 :SweaveListingUtils>  Utilities for Sweave together with
-:SweaveListingUtils>  TeX listings package (version
-:SweaveListingUtils>  0.6.1)
+:SweaveListingUtils>  TeX listings package (version 0.7)
 :SweaveListingUtils> 
 :SweaveListingUtils>  NOTE: Support for this package
 :SweaveListingUtils>  will stop soon.
@@ -59,18 +69,19 @@ Loading required package: startupmsg
 
 Attaching package: 'SweaveListingUtils'
 
-The following object is masked from 'package:base':
+The following objects are masked from 'package:base':
 
     library, require
 
 > 
-> assign(".oldSearch", search(), pos = 'CheckExEnv')
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 > cleanEx()
 > nameEx("SweaveListingMASK")
 > ### * SweaveListingMASK
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: SweaveListingMASK
 > ### Title: Masking of/by other functions in package "SweaveListingUtils"
 > ### Aliases: SweaveListingMASK MASKING
@@ -110,12 +121,15 @@ unloadNamespace("SweaveListingUtils")
 ... nothing discovered so far ...> 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("SweaveListingMASK", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("SweaveListingOptions")
 > ### * SweaveListingOptions
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: SweaveListingOptions
 > ### Title: Function to change the global options of the package
 > ###   'SweaveListingUtils'
@@ -236,7 +250,7 @@ $Rcommentcolor
 [1] 0.101 0.043 0.432
 
 $pkv
-[1] "2.1.4"
+[1] "2.5"
 
 $pkg
 [1] "distr"
@@ -303,12 +317,15 @@ $Rout$basicstyle
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("SweaveListingOptions", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("SweaveListingPreparations")
 > ### * SweaveListingPreparations
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: SweaveListingPreparations
 > ### Title: SweaveListingPreparations
 > ### Aliases: SweaveListingPreparations
@@ -428,7 +445,7 @@ V1=0,V2=1,V3=0}%
 \def\Code#1{{\tt\color{Rcolor} #1}}
 \def\file#1{{\tt #1}} 
 \def\pkg#1{{\tt "#1"}} 
-\newcommand{\pkgversion}{{\tt 2.4}}
+\newcommand{\pkgversion}{{\tt 2.5.2}}
 %------------------------------------------------------------------------------%
 Warning in setBaseOrRecommended(pkgs = pkgs) :
   number of items to replace is not a multiple of replacement length
@@ -549,20 +566,20 @@ windowsFont,windows.options,windows,win.print,win.metafile,%
 win.graph,trans3d,topo.colors,tiff,terrain.colors,%
 svg,setPS,setGraphicsEventHandlers,setGraphicsEventEnv,setEPS,%
 savePlot,rgb2hsv,replayPlot,recordPlot,recordGraphics,%
-ps.options,postscriptFonts,postscriptFont,png,pdfFonts,%
-pdf.options,pdf,nclass.scott,nclass.Sturges,nclass.FD,%
-n2mfrow,msgWindow,make.rgb,jpeg,is.raster,%
-heat.colors,hcl,grey.colors,gray.colors,graphics.off,%
-getGraphicsEventEnv,getGraphicsEvent,extendrange,embedFonts,deviceIsInteractive,%
-devAskNewPage,dev.size,dev.set,dev.print,dev.prev,%
-dev.off,dev.next,dev.new,dev.list,dev.interactive,%
-dev.hold,dev.flush,dev.cur,dev.copy2pdf,dev.copy2eps,%
-dev.copy,dev.control,dev.capture,dev.capabilities,densCols,%
-convertColor,contourLines,colorspaces,colorRampPalette,colorRamp,%
-colorConverter,col2rgb,cm.colors,check.options,cairo_ps,%
-cairo_pdf,bringToTop,boxplot.stats,bmp,blues9,%
-bitmap,axisTicks,as.raster,as.graphicsAnnot,adjustcolor,%
-Type1Font,Hershey,CIDFont%
+ps.options,postscriptFonts,png,pdfFonts,pdf.options,%
+pdf,nclass.scott,nclass.Sturges,nclass.FD,n2mfrow,%
+msgWindow,make.rgb,jpeg,is.raster,heat.colors,%
+hcl,grey.colors,gray.colors,graphics.off,getGraphicsEventEnv,%
+getGraphicsEvent,extendrange,embedFonts,deviceIsInteractive,devAskNewPage,%
+dev.size,dev.set,dev.print,dev.prev,dev.off,%
+dev.next,dev.new,dev.list,dev.interactive,dev.hold,%
+dev.flush,dev.cur,dev.copy2pdf,dev.copy2eps,dev.copy,%
+dev.control,dev.capture,dev.capabilities,densCols,convertColor,%
+contourLines,colorspaces,colorRampPalette,colorRamp,colorConverter,%
+col2rgb,cm.colors,check.options,cairo_ps,cairo_pdf,%
+bringToTop,boxplot.stats,bmp,blues9,bitmap,%
+axisTicks,as.raster,as.graphicsAnnot,adjustcolor,Type1Font,%
+Hershey,CIDFont%
 },%
 keywordstyle={[6]{\bf\color{RRecomdcolor}}},%
 %
@@ -584,32 +601,33 @@ read.table,read.socket,read.fwf,read.fortran,read.delim2,%
 read.delim,read.csv2,read.csv,read.DIF,rc.status,%
 rc.settings,rc.options,rc.getOption,promptPackage,promptData,%
 process.events,personList,person,packageVersion,packageStatus,%
-packageDescription,package.skeleton,old.packages,object.size,news,%
-new.packages,modifyList,mirror2html,memory.size,memory.limit,%
-makeRweaveLatexCodeRunner,make.socket,make.packages.html,maintainer,lsf.str,%
-ls.str,localeToCharset,loadhistory,loadRconsole,limitedLabels,%
-is.relistable,installed.packages,install.packages,history,help.start,%
-help.search,help.request,head.matrix,head,globalVariables,%
-glob2rx,getWindowsHandles,getWindowsHandle,getWindowTitle,getWinProgressBar,%
-getTxtProgressBar,getSrcref,getSrcLocation,getSrcFilename,getSrcDirectory,%
-getS3method,getParseText,getParseData,getIdentification,getFromNamespace,%
-getClipboardFormats,getCRANmirrors,getAnywhere,formatUL,formatOL,%
-flush.console,fixInNamespace,findLineNum,file_test,file.edit,%
-dump.frames,download.packages,download.file,de.setup,de.restore,%
-de.ncols,data.entry,create.post,count.fields,contrib.url,%
-compareVersion,combn,close.socket,citeNatbib,cite,%
-citation,citHeader,citFooter,citEntry,chooseCRANmirror,%
-chooseBioCmirror,choose.files,choose.dir,checkCRAN,capture.output,%
-bug.report,browseVignettes,browseURL,browseEnv,bibentry,%
-available.packages,assignInNamespace,assignInMyNamespace,aspell_write_personal_dictionary_file,aspell_package_vignettes,%
-aspell_package_Rd_files,aspell_package_R_files,aspell_package_C_files,aspell,as.roman,%
-as.relistable,as.personList,as.person,arrangeWindows,argsAnywhere,%
-aregexec,alarm,adist,View,URLencode,%
-URLdecode,SweaveSyntaxNoweb,SweaveSyntaxLatex,SweaveSyntConv,SweaveHooks,%
-Sweave,Stangle,RweaveTryStop,RweaveLatexWritedoc,RweaveLatexSetup,%
-RweaveLatexOptions,RweaveLatexFinish,RweaveLatex,RweaveEvalWithOpt,RweaveChunkPrefix,%
-RtangleWritedoc,RtangleSetup,Rtangle,Rprofmem,Rprof,%
-RSiteSearch,RShowDoc,Filters,DLL.version,CRAN.packages%
+packageName,packageDescription,package.skeleton,old.packages,object.size,%
+news,new.packages,modifyList,mirror2html,memory.size,%
+memory.limit,makeRweaveLatexCodeRunner,make.socket,make.packages.html,maintainer,%
+lsf.str,ls.str,localeToCharset,loadhistory,loadRconsole,%
+limitedLabels,is.relistable,installed.packages,install.packages,history,%
+help.start,help.search,help.request,head.matrix,head,%
+globalVariables,glob2rx,getWindowsHandles,getWindowsHandle,getWindowTitle,%
+getWinProgressBar,getTxtProgressBar,getSrcref,getSrcLocation,getSrcFilename,%
+getSrcDirectory,getS3method,getParseText,getParseData,getIdentification,%
+getFromNamespace,getClipboardFormats,getCRANmirrors,getAnywhere,formatUL,%
+formatOL,flush.console,fixInNamespace,findLineNum,file_test,%
+file.edit,dump.frames,download.packages,download.file,de.setup,%
+de.restore,de.ncols,data.entry,create.post,count.fields,%
+contrib.url,compareVersion,combn,close.socket,citeNatbib,%
+cite,citation,citHeader,citFooter,citEntry,%
+chooseCRANmirror,chooseBioCmirror,choose.files,choose.dir,checkCRAN,%
+capture.output,bug.report,browseVignettes,browseURL,browseEnv,%
+bibentry,available.packages,assignInNamespace,assignInMyNamespace,aspell_write_personal_dictionary_file,%
+aspell_package_vignettes,aspell_package_Rd_files,aspell_package_R_files,aspell_package_C_files,aspell,%
+as.roman,as.relistable,as.personList,as.person,arrangeWindows,%
+argsAnywhere,aregexec,alarm,adist,View,%
+URLencode,URLdecode,SweaveSyntaxNoweb,SweaveSyntaxLatex,SweaveSyntConv,%
+SweaveHooks,Sweave,Stangle,RweaveTryStop,RweaveLatexWritedoc,%
+RweaveLatexSetup,RweaveLatexOptions,RweaveLatexFinish,RweaveLatex,RweaveEvalWithOpt,%
+RweaveChunkPrefix,RtangleWritedoc,RtangleSetup,Rtangle,Rprofmem,%
+Rprof,RSiteSearch,RShowDoc,Filters,DLL.version,%
+CRAN.packages%
 },%
 keywordstyle={[7]{\bf\color{RRecomdcolor}}},%
 %
@@ -621,22 +639,22 @@ treering,swiss,sunspots,sunspot.year,sunspot.month,%
 state.x77,state.region,state.name,state.division,state.center,%
 state.area,state.abb,stackloss,stack.x,stack.loss,%
 sleep,rock,rivers,randu,quakes,%
-pressure,presidents,precip,occupationalStatus,nottem,%
-nhtemp,mtcars,morley,mdeaths,lynx,%
-longley,lh,ldeaths,islands,iris3,%
-iris,infert,freeny.y,freeny.x,freeny,%
-fdeaths,faithful,eurodist,euro.cross,euro,%
-esoph,discoveries,crimtab,co2,chickwts,%
-cars,beaver2,beaver1,austres,attitude,%
-attenu,anscombe,airquality,airmiles,ability.cov,%
-WorldPhones,WWWusage,VADeaths,USPersonalExpenditure,USJudgeRatings,%
-USArrests,USAccDeaths,UKgas,UKDriverDeaths,UCBAdmissions,%
-ToothGrowth,Titanic,Theoph,Seatbelts,Puromycin,%
-PlantGrowth,OrchardSprays,Orange,Nile,Loblolly,%
-LifeCycleSavings,LakeHuron,JohnsonJohnson,InsectSprays,Indometh,%
-Harman74.cor,Harman23.cor,HairEyeColor,Formaldehyde,EuStockMarkets,%
-DNase,ChickWeight,CO2,BOD,BJsales.lead,%
-BJsales,AirPassengers%
+pressure,presidents,precip,occupationalStatus,npk,%
+nottem,nhtemp,mtcars,morley,mdeaths,%
+lynx,longley,lh,ldeaths,islands,%
+iris3,iris,infert,freeny.y,freeny.x,%
+freeny,fdeaths,faithful,eurodist,euro.cross,%
+euro,esoph,discoveries,crimtab,co2,%
+chickwts,cars,beaver2,beaver1,austres,%
+attitude,attenu,anscombe,airquality,airmiles,%
+ability.cov,WorldPhones,WWWusage,VADeaths,USPersonalExpenditure,%
+USJudgeRatings,USArrests,USAccDeaths,UKgas,UKDriverDeaths,%
+UCBAdmissions,ToothGrowth,Titanic,Theoph,Seatbelts,%
+Puromycin,PlantGrowth,OrchardSprays,Orange,Nile,%
+Loblolly,LifeCycleSavings,LakeHuron,JohnsonJohnson,InsectSprays,%
+Indometh,Harman74.cor,Harman23.cor,HairEyeColor,Formaldehyde,%
+EuStockMarkets,DNase,ChickWeight,CO2,BOD,%
+BJsales.lead,BJsales,AirPassengers%
 },%
 keywordstyle={[8]{\bf\color{RRecomdcolor}}},%
 %
@@ -678,13 +696,13 @@ emptyMethodsList,empty.dump,elNamed<-,elNamed,el<-,%
 el,dumpMethods,dumpMethod,doPrimitiveMethod,defaultPrototype,%
 defaultDumpName,conformMethod,completeSubclasses,completeExtends,completeClassDefinition,%
 coerce<-,coerce,classesToAM,className,classMetaName,%
-classLabel,checkSlotAssignment,cbind2,canCoerce,callNextMethod,%
-callGeneric,cacheMethod,cacheMetaData,cacheGenericsMetaData,body<-,%
-balanceMethodsList,assignMethodsMetaData,assignClassDef,asMethodDefinition,as<-,%
-allNames,allGenerics,addNextMethod,Summary,SignatureMethod,%
-S3Part<-,S3Part,S3Class<-,S3Class,Quote,%
-MethodsListSelect,MethodsList,MethodAddCoerce,Math2,Logic,%
-Complex,Compare,Arith%
+classLabel,checkSlotAssignment,checkAtAssignment,cbind2,canCoerce,%
+callNextMethod,callGeneric,cacheMethod,cacheMetaData,cacheGenericsMetaData,%
+body<-,balanceMethodsList,assignMethodsMetaData,assignClassDef,asMethodDefinition,%
+as<-,allNames,allGenerics,addNextMethod,Summary,%
+SignatureMethod,S3Part<-,S3Part,S3Class<-,S3Class,%
+Quote,MethodsListSelect,MethodsList,MethodAddCoerce,Math2,%
+Logic,Complex,Compare,Arith%
 },%
 keywordstyle={[9]{\bf\color{RRecomdcolor}}},%
 %
@@ -710,152 +728,151 @@ system.time,system.file,sys.status,sys.source,sys.save.image,%
 sys.parents,sys.parent,sys.on.exit,sys.nframe,sys.load.image,%
 sys.function,sys.frames,sys.frame,sys.calls,sys.call,%
 suppressWarnings,suppressPackageStartupMessages,suppressMessages,summary.table,summary.srcref,%
-summary.srcfile,summary.matrix,summary.factor,summary.default,summary.data.frame,%
-summary.connection,summary.POSIXlt,summary.POSIXct,summary.Date,substring<-,%
-substr<-,subset.matrix,subset.default,subset.data.frame,strwrap,%
-strtrim,strtoi,strptime,strftime,storage.mode<-,%
-storage.mode,stopifnot,stdout,stdin,stderr,%
-standardGeneric,srcref,srcfilecopy,srcfilealias,srcfile,%
-sprintf,split<-.default,split<-.data.frame,split<-,split.default,%
-split.data.frame,split.POSIXct,split.Date,sort.list,sort.int,%
-sort.default,sort.POSIXlt,solve.qr,solve.default,socketSelect,%
-socketConnection,slice.index,sink.number,simplify2array,simpleWarning,%
-simpleMessage,simpleError,simpleCondition,signalCondition,showConnections,%
-shell.exec,shell,shQuote,setTimeLimit,setSessionTimeLimit,%
-setNamespaceInfo,setHook,set.seed,serialize,seq_len,%
-seq_along,seq.int,seq.default,seq.POSIXt,seq.Date,%
-seek.connection,seek,scale.default,saveRDS,save.image,%
-sample.int,sQuote,rowsum.default,rowsum.data.frame,rownames<-,%
-rowSums,rowMeans,row.names<-.default,row.names<-.data.frame,row.names<-,%
-row.names.default,row.names.data.frame,row.names,round.POSIXt,round.Date,%
-rev.default,retracemem,restartFormals,restartDescription,requireNamespace,%
-replicate,rep_len,rep.numeric_version,rep.int,rep.factor,%
-rep.POSIXlt,rep.POSIXct,rep.Date,removeTaskCallback,regmatches<-,%
-regmatches,registerS3methods,registerS3method,regexec,reg.finalizer,%
-readRenviron,readRDS,readLines,readChar,readBin,%
-read.dcf,rcond,rbind.data.frame,rawToChar,rawToBits,%
-rawShift,rawConnectionValue,rawConnection,raw,rapply,%
-range.default,quarters.POSIXt,quarters.Date,quarters,qr.solve,%
-qr.resid,qr.qy,qr.qty,qr.fitted,qr.default,%
-qr.coef,qr.X,qr.R,qr.Q,pushBackLength,%
-pushBack,psigamma,provideDimnames,prop.table,proc.time,%
-print.warnings,print.table,print.summaryDefault,print.summary.table,print.srcref,%
-print.srcfile,print.simple.list,print.rle,print.restart,print.proc_time,%
-print.packageInfo,print.octmode,print.numeric_version,print.noquote,print.listof,%
-print.libraryIQR,print.hexmode,print.function,print.factor,print.difftime,%
-print.default,print.data.frame,print.connection,print.condition,print.by,%
-print.POSIXlt,print.POSIXct,print.NativeRoutineList,print.Date,print.DLLRegisteredRoutines,%
-print.DLLInfoList,print.DLLInfo,print.AsIs,prettyNum,pretty.default,%
-pos.to.env,pmin.int,pmax.int,pipe,pi,%
-path.package,path.expand,paste0,parseNamespaceFile,parent.frame,%
-parent.env<-,parent.env,package_version,packageStartupMessage,packageHasNamespace,%
-packageEvent,packBits,open.srcfilecopy,open.srcfilealias,open.srcfile,%
-open.connection,open,on.exit,oldClass<-,oldClass,%
-nzchar,numeric_version,normalizePath,norm,ngettext,%
-new.env,namespaceImportMethods,namespaceImportFrom,namespaceImportClasses,namespaceImport,%
-namespaceExport,names<-.POSIXlt,names<-,names.POSIXlt,mostattributes<-,%
-months.POSIXt,months.Date,months,month.name,month.abb,%
-mode<-,mget,message,merge.default,merge.data.frame,%
-memory.profile,memDecompress,memCompress,mem.limits,mean.difftime,%
-mean.default,mean.data.frame,mean.POSIXlt,mean.POSIXct,mean.Date,%
+summary.srcfile,summary.proc_time,summary.matrix,summary.factor,summary.default,%
+summary.data.frame,summary.connection,summary.POSIXlt,summary.POSIXct,summary.Date,%
+substring<-,substr<-,subset.matrix,subset.default,subset.data.frame,%
+strwrap,strtrim,strtoi,strptime,strftime,%
+storage.mode<-,storage.mode,stopifnot,stdout,stdin,%
+stderr,standardGeneric,srcref,srcfilecopy,srcfilealias,%
+srcfile,sprintf,split<-.default,split<-.data.frame,split<-,%
+split.default,split.data.frame,split.POSIXct,split.Date,sort.list,%
+sort.int,sort.default,sort.POSIXlt,solve.qr,solve.default,%
+socketSelect,socketConnection,slice.index,sink.number,simplify2array,%
+simpleWarning,simpleMessage,simpleError,simpleCondition,signalCondition,%
+showConnections,shell.exec,shell,shQuote,setTimeLimit,%
+setSessionTimeLimit,setNamespaceInfo,setHook,set.seed,serialize,%
+seq_len,seq_along,seq.int,seq.default,seq.POSIXt,%
+seq.Date,seek.connection,seek,scale.default,saveRDS,%
+save.image,sample.int,sQuote,rowsum.default,rowsum.data.frame,%
+rownames<-,rowSums,rowMeans,row.names<-.default,row.names<-.data.frame,%
+row.names<-,row.names.default,row.names.data.frame,row.names,round.POSIXt,%
+round.Date,rev.default,retracemem,restartFormals,restartDescription,%
+requireNamespace,replicate,rep_len,rep.numeric_version,rep.int,%
+rep.factor,rep.POSIXlt,rep.POSIXct,rep.Date,removeTaskCallback,%
+regmatches<-,regmatches,registerS3methods,registerS3method,regexec,%
+reg.finalizer,readRenviron,readRDS,readLines,readChar,%
+readBin,read.dcf,rcond,rbind.data.frame,rawToChar,%
+rawToBits,rawShift,rawConnectionValue,rawConnection,raw,%
+rapply,range.default,quarters.POSIXt,quarters.Date,quarters,%
+qr.solve,qr.resid,qr.qy,qr.qty,qr.fitted,%
+qr.default,qr.coef,qr.X,qr.R,qr.Q,%
+pushBackLength,pushBack,psigamma,provideDimnames,prop.table,%
+proc.time,print.warnings,print.table,print.summaryDefault,print.summary.table,%
+print.srcref,print.srcfile,print.simple.list,print.rle,print.restart,%
+print.proc_time,print.packageInfo,print.octmode,print.numeric_version,print.noquote,%
+print.listof,print.libraryIQR,print.hexmode,print.function,print.factor,%
+print.difftime,print.default,print.data.frame,print.connection,print.condition,%
+print.by,print.POSIXlt,print.POSIXct,print.NativeRoutineList,print.Date,%
+print.DLLRegisteredRoutines,print.DLLInfoList,print.DLLInfo,print.AsIs,prettyNum,%
+pretty.default,pos.to.env,pmin.int,pmax.int,pipe,%
+pi,path.package,path.expand,paste0,parseNamespaceFile,%
+parent.frame,parent.env<-,parent.env,package_version,packageStartupMessage,%
+packageHasNamespace,packageEvent,packBits,open.srcfilecopy,open.srcfilealias,%
+open.srcfile,open.connection,open,on.exit,oldClass<-,%
+oldClass,nzchar,numeric_version,normalizePath,norm,%
+ngettext,new.env,namespaceImportMethods,namespaceImportFrom,namespaceImportClasses,%
+namespaceImport,namespaceExport,names<-.POSIXlt,names<-,names.POSIXlt,%
+mostattributes<-,months.POSIXt,months.Date,months,month.name,%
+month.abb,mode<-,mget,message,merge.default,%
+merge.data.frame,memory.profile,memDecompress,memCompress,mem.limits,%
+mean.difftime,mean.default,mean.POSIXlt,mean.POSIXct,mean.Date,%
 max.col,match.fun,match.call,match.arg,mat.or.vec,%
-margin.table,mapply,manglePackageName,makeActiveBinding,make.unique,%
-make.names,lower.tri,logb,lockEnvironment,lockBinding,%
-loadingNamespaceInfo,loadedNamespaces,loadNamespace,list2env,list.files,%
-list.dirs,library.dynam.unload,library.dynam,lfactorial,levels<-.factor,%
-levels<-,levels.default,letters,length<-.factor,length<-,%
-length.POSIXlt,lazyLoadDBfetch,lazyLoadDBexec,lazyLoad,labels.default,%
-l10n_info,kappa.qr,kappa.lm,kappa.default,julian.POSIXt,%
-julian.Date,julian,isdebugged,isatty,isTRUE,%
-isSymmetric.matrix,isSymmetric,isSeekable,isS4,isRestart,%
-isOpen,isNamespace,isIncomplete,isBaseNamespace,is.vector,%
-is.unsorted,is.table,is.symbol,is.single,is.recursive,%
-is.real,is.raw,is.qr,is.primitive,is.pairlist,%
-is.package_version,is.ordered,is.object,is.numeric_version,is.numeric.difftime,%
-is.numeric.POSIXt,is.numeric.Date,is.numeric,is.null,is.nan,%
-is.name,is.na<-.factor,is.na<-.default,is.na<-,is.na.numeric_version,%
-is.na.data.frame,is.na.POSIXlt,is.na,is.matrix,is.logical,%
-is.loaded,is.list,is.language,is.integer,is.infinite,%
-is.function,is.finite,is.factor,is.expression,is.environment,%
-is.element,is.double,is.data.frame,is.complex,is.character,%
-is.call,is.atomic,is.array,is.R,invokeRestartInteractively,%
-invokeRestart,inverse.rle,intToUtf8,intToBits,importIntoEnv,%
-identity,identical,icuSetCollate,iconvlist,iconv,%
-gzfile,gzcon,grepl,grepRaw,gregexpr,%
-gettextf,gettext,getTaskCallbackNames,getSrcLines,getRversion,%
-getNativeSymbolInfo,getNamespaceVersion,getNamespaceUsers,getNamespaceName,getNamespaceInfo,%
-getNamespaceImports,getNamespaceExports,getNamespace,getLoadedDLLs,getHook,%
-getExportedValue,getElement,getDLLRegisteredRoutines.character,getDLLRegisteredRoutines.DLLInfo,getDLLRegisteredRoutines,%
-getConnection,getCallingDLLe,getCallingDLL,getAllConnections,gctorture2,%
-gc.time,formatDL,format.summaryDefault,format.pval,format.packageInfo,%
-format.octmode,format.numeric_version,format.libraryIQR,format.info,format.hexmode,%
-format.factor,format.difftime,format.default,format.data.frame,format.POSIXlt,%
-format.POSIXct,format.Date,format.AsIs,formals<-,force,%
-flush.connection,flush,findRestart,findPackageEnv,findInterval,%
-find.package,file.symlink,file.show,file.rename,file.remove,%
-file.path,file.link,file.info,file.exists,file.create,%
-file.copy,file.choose,file.append,file.access,fifo,%
-factorial,expm1,expand.grid,eval.parent,environmentName,%
-environmentIsLocked,environment<-,env.profile,enquote,encodeString,%
-enc2utf8,enc2native,emptyenv,eapply,dyn.unload,%
-dyn.load,duplicated.numeric_version,duplicated.matrix,duplicated.default,duplicated.data.frame,%
-duplicated.array,duplicated.POSIXlt,droplevels.factor,droplevels.data.frame,droplevels,%
-do.call,dir.create,dimnames<-.data.frame,dimnames<-,dimnames.data.frame,%
-dim<-,dim.data.frame,difftime,diff.default,diff.POSIXt,%
-diff.Date,diag<-,determinant.matrix,determinant,det,%
-delayedAssign,default.stringsAsFactors,debugonce,data.matrix,data.frame,%
-data.class,dQuote,cut.default,cut.POSIXt,cut.Date,%
-contributors,conditionMessage.condition,conditionMessage,conditionCall.condition,conditionCall,%
-computeRestarts,comment<-,colnames<-,colSums,colMeans,%
-closeAllConnections,close.srcfilealias,close.srcfile,close.connection,clearPushBack,%
-class<-,chol.default,check_tzones,chartr,charToRaw,%
-char.expand,cbind.data.frame,casefold,capabilities,callCC,%
-c.numeric_version,c.noquote,c.POSIXlt,c.POSIXct,c.Date,%
-bzfile,by.default,by.data.frame,browserText,browserSetDebug,%
-browserCondition,bquote,body<-,bitwXor,bitwShiftR,%
-bitwShiftL,bitwOr,bitwNot,bitwAnd,bindtextdomain,%
-bindingIsLocked,bindingIsActive,baseenv,attributes<-,attr<-,%
-attr.all.equal,attachNamespace,assign,asS4,asS3,%
-asNamespace,as.vector.factor,as.vector,as.table.default,as.table,%
-as.symbol,as.single.default,as.single,as.real,as.raw,%
-as.qr,as.pairlist,as.package_version,as.ordered,as.octmode,%
-as.numeric_version,as.numeric,as.null.default,as.null,as.name,%
-as.matrix.noquote,as.matrix.default,as.matrix.data.frame,as.matrix.POSIXlt,as.matrix,%
-as.logical.factor,as.logical,as.list.numeric_version,as.list.function,as.list.factor,%
-as.list.environment,as.list.default,as.list.data.frame,as.list.POSIXct,as.list.Date,%
-as.list,as.integer,as.hexmode,as.function.default,as.function,%
-as.factor,as.expression.default,as.expression,as.environment,as.double.difftime,%
-as.double.POSIXlt,as.double,as.difftime,as.data.frame.vector,as.data.frame.ts,%
-as.data.frame.table,as.data.frame.raw,as.data.frame.ordered,as.data.frame.numeric_version,as.data.frame.numeric,%
-as.data.frame.model.matrix,as.data.frame.matrix,as.data.frame.logical,as.data.frame.list,as.data.frame.integer,%
-as.data.frame.factor,as.data.frame.difftime,as.data.frame.default,as.data.frame.data.frame,as.data.frame.complex,%
-as.data.frame.character,as.data.frame.array,as.data.frame.POSIXlt,as.data.frame.POSIXct,as.data.frame.Date,%
-as.data.frame.AsIs,as.data.frame,as.complex,as.character.srcref,as.character.octmode,%
-as.character.numeric_version,as.character.hexmode,as.character.factor,as.character.error,as.character.default,%
-as.character.condition,as.character.POSIXt,as.character.Date,as.character,as.call,%
-as.array.default,as.array,as.POSIXlt.numeric,as.POSIXlt.factor,as.POSIXlt.default,%
-as.POSIXlt.dates,as.POSIXlt.date,as.POSIXlt.character,as.POSIXlt.POSIXct,as.POSIXlt.Date,%
-as.POSIXlt,as.POSIXct.numeric,as.POSIXct.default,as.POSIXct.dates,as.POSIXct.date,%
-as.POSIXct.POSIXlt,as.POSIXct.Date,as.POSIXct,as.Date.numeric,as.Date.factor,%
-as.Date.default,as.Date.dates,as.Date.date,as.Date.character,as.Date.POSIXlt,%
-as.Date.POSIXct,as.Date,arrayInd,aperm.table,aperm.default,%
-anyDuplicated.matrix,anyDuplicated.default,anyDuplicated.data.frame,anyDuplicated.array,anyDuplicated,%
-all.vars,all.names,all.equal.raw,all.equal.numeric,all.equal.list,%
-all.equal.language,all.equal.formula,all.equal.factor,all.equal.default,all.equal.character,%
-all.equal.POSIXct,all.equal,agrep,addTaskCallback,addNA,%
-Vectorize,T,Sys.which,Sys.unsetenv,Sys.umask,%
-Sys.timezone,Sys.time,Sys.sleep,Sys.setlocale,Sys.setenv,%
-Sys.setFileTime,Sys.readlink,Sys.localeconv,Sys.junction,Sys.info,%
-Sys.glob,Sys.getpid,Sys.getlocale,Sys.getenv,Sys.chmod,%
-Sys.Date,Summary.ordered,Summary.numeric_version,Summary.factor,Summary.difftime,%
-Summary.data.frame,Summary.POSIXlt,Summary.POSIXct,Summary.Date,Reduce,%
-R_system_version,RNGversion,R.version.string,R.version,R.home,%
-R.Version,Position,Ops.ordered,Ops.numeric_version,Ops.factor,%
-Ops.difftime,Ops.data.frame,Ops.POSIXt,Ops.Date,Negate,%
-Math.factor,Math.difftime,Math.data.frame,Math.POSIXt,Math.Date,%
-Map,La.svd,LETTERS,ISOdatetime,ISOdate,%
-Find,Filter,F,Encoding<-,Encoding,%
-Cstack_info%
+margin.table,mapply,makeActiveBinding,make.unique,make.names,%
+lower.tri,logb,lockEnvironment,lockBinding,loadingNamespaceInfo,%
+loadedNamespaces,loadNamespace,list2env,list.files,list.dirs,%
+library.dynam.unload,library.dynam,lfactorial,levels<-.factor,levels<-,%
+levels.default,letters,length<-.factor,length<-,length.POSIXlt,%
+lazyLoadDBfetch,lazyLoadDBexec,lazyLoad,labels.default,l10n_info,%
+kappa.qr,kappa.lm,kappa.default,julian.POSIXt,julian.Date,%
+julian,isdebugged,isatty,isTRUE,isSymmetric.matrix,%
+isSymmetric,isSeekable,isS4,isRestart,isOpen,%
+isNamespace,isIncomplete,isBaseNamespace,is.vector,is.unsorted,%
+is.table,is.symbol,is.single,is.recursive,is.raw,%
+is.qr,is.primitive,is.pairlist,is.package_version,is.ordered,%
+is.object,is.numeric_version,is.numeric.difftime,is.numeric.POSIXt,is.numeric.Date,%
+is.numeric,is.null,is.nan,is.name,is.na<-.factor,%
+is.na<-.default,is.na<-,is.na.numeric_version,is.na.data.frame,is.na.POSIXlt,%
+is.na,is.matrix,is.logical,is.loaded,is.list,%
+is.language,is.integer,is.infinite,is.function,is.finite,%
+is.factor,is.expression,is.environment,is.element,is.double,%
+is.data.frame,is.complex,is.character,is.call,is.atomic,%
+is.array,is.R,invokeRestartInteractively,invokeRestart,inverse.rle,%
+intToUtf8,intToBits,importIntoEnv,identity,identical,%
+icuSetCollate,iconvlist,iconv,gzfile,gzcon,%
+grepl,grepRaw,gregexpr,gettextf,gettext,%
+getTaskCallbackNames,getSrcLines,getRversion,getNativeSymbolInfo,getNamespaceVersion,%
+getNamespaceUsers,getNamespaceName,getNamespaceInfo,getNamespaceImports,getNamespaceExports,%
+getNamespace,getLoadedDLLs,getHook,getExportedValue,getElement,%
+getDLLRegisteredRoutines.character,getDLLRegisteredRoutines.DLLInfo,getDLLRegisteredRoutines,getConnection,getCallingDLLe,%
+getCallingDLL,getAllConnections,gctorture2,gc.time,formatDL,%
+format.summaryDefault,format.pval,format.packageInfo,format.octmode,format.numeric_version,%
+format.libraryIQR,format.info,format.hexmode,format.factor,format.difftime,%
+format.default,format.data.frame,format.POSIXlt,format.POSIXct,format.Date,%
+format.AsIs,formals<-,force,flush.connection,flush,%
+findRestart,findPackageEnv,findInterval,find.package,file.symlink,%
+file.show,file.rename,file.remove,file.path,file.link,%
+file.info,file.exists,file.create,file.copy,file.choose,%
+file.append,file.access,fifo,factorial,expm1,%
+expand.grid,eval.parent,environmentName,environmentIsLocked,environment<-,%
+env.profile,enquote,encodeString,enc2utf8,enc2native,%
+emptyenv,eapply,dyn.unload,dyn.load,duplicated.numeric_version,%
+duplicated.matrix,duplicated.default,duplicated.data.frame,duplicated.array,duplicated.POSIXlt,%
+droplevels.factor,droplevels.data.frame,droplevels,do.call,dir.create,%
+dimnames<-.data.frame,dimnames<-,dimnames.data.frame,dim<-,dim.data.frame,%
+difftime,diff.default,diff.POSIXt,diff.Date,diag<-,%
+determinant.matrix,determinant,det,delayedAssign,default.stringsAsFactors,%
+debugonce,data.matrix,data.frame,data.class,dQuote,%
+cut.default,cut.POSIXt,cut.Date,contributors,conditionMessage.condition,%
+conditionMessage,conditionCall.condition,conditionCall,computeRestarts,comment<-,%
+colnames<-,colSums,colMeans,closeAllConnections,close.srcfilealias,%
+close.srcfile,close.connection,clearPushBack,class<-,chol.default,%
+check_tzones,chartr,charToRaw,char.expand,cbind.data.frame,%
+casefold,capabilities,callCC,c.numeric_version,c.noquote,%
+c.POSIXlt,c.POSIXct,c.Date,bzfile,by.default,%
+by.data.frame,browserText,browserSetDebug,browserCondition,bquote,%
+body<-,bitwXor,bitwShiftR,bitwShiftL,bitwOr,%
+bitwNot,bitwAnd,bindtextdomain,bindingIsLocked,bindingIsActive,%
+baseenv,attributes<-,attr<-,attr.all.equal,attachNamespace,%
+assign,asS4,asS3,asNamespace,as.vector.factor,%
+as.vector,as.table.default,as.table,as.symbol,as.single.default,%
+as.single,as.raw,as.qr,as.pairlist,as.package_version,%
+as.ordered,as.octmode,as.numeric_version,as.numeric,as.null.default,%
+as.null,as.name,as.matrix.noquote,as.matrix.default,as.matrix.data.frame,%
+as.matrix.POSIXlt,as.matrix,as.logical.factor,as.logical,as.list.numeric_version,%
+as.list.function,as.list.factor,as.list.environment,as.list.default,as.list.data.frame,%
+as.list.POSIXct,as.list.Date,as.list,as.integer,as.hexmode,%
+as.function.default,as.function,as.factor,as.expression.default,as.expression,%
+as.environment,as.double.difftime,as.double.POSIXlt,as.double,as.difftime,%
+as.data.frame.vector,as.data.frame.ts,as.data.frame.table,as.data.frame.raw,as.data.frame.ordered,%
+as.data.frame.numeric_version,as.data.frame.numeric,as.data.frame.model.matrix,as.data.frame.matrix,as.data.frame.logical,%
+as.data.frame.list,as.data.frame.integer,as.data.frame.factor,as.data.frame.difftime,as.data.frame.default,%
+as.data.frame.data.frame,as.data.frame.complex,as.data.frame.character,as.data.frame.array,as.data.frame.POSIXlt,%
+as.data.frame.POSIXct,as.data.frame.Date,as.data.frame.AsIs,as.data.frame,as.complex,%
+as.character.srcref,as.character.octmode,as.character.numeric_version,as.character.hexmode,as.character.factor,%
+as.character.error,as.character.default,as.character.condition,as.character.POSIXt,as.character.Date,%
+as.character,as.call,as.array.default,as.array,as.POSIXlt.numeric,%
+as.POSIXlt.factor,as.POSIXlt.default,as.POSIXlt.dates,as.POSIXlt.date,as.POSIXlt.character,%
+as.POSIXlt.POSIXct,as.POSIXlt.Date,as.POSIXlt,as.POSIXct.numeric,as.POSIXct.default,%
+as.POSIXct.dates,as.POSIXct.date,as.POSIXct.POSIXlt,as.POSIXct.Date,as.POSIXct,%
+as.Date.numeric,as.Date.factor,as.Date.default,as.Date.dates,as.Date.date,%
+as.Date.character,as.Date.POSIXlt,as.Date.POSIXct,as.Date,arrayInd,%
+aperm.table,aperm.default,anyDuplicated.matrix,anyDuplicated.default,anyDuplicated.data.frame,%
+anyDuplicated.array,anyDuplicated,all.vars,all.names,all.equal.raw,%
+all.equal.numeric,all.equal.list,all.equal.language,all.equal.formula,all.equal.factor,%
+all.equal.default,all.equal.character,all.equal.POSIXct,all.equal,agrep,%
+addTaskCallback,addNA,Vectorize,T,Sys.which,%
+Sys.unsetenv,Sys.umask,Sys.timezone,Sys.time,Sys.sleep,%
+Sys.setlocale,Sys.setenv,Sys.setFileTime,Sys.readlink,Sys.localeconv,%
+Sys.junction,Sys.info,Sys.glob,Sys.getpid,Sys.getlocale,%
+Sys.getenv,Sys.chmod,Sys.Date,Summary.ordered,Summary.numeric_version,%
+Summary.factor,Summary.difftime,Summary.data.frame,Summary.POSIXlt,Summary.POSIXct,%
+Summary.Date,Reduce,R_system_version,RNGversion,R.version.string,%
+R.version,R.home,R.Version,Position,Ops.ordered,%
+Ops.numeric_version,Ops.factor,Ops.difftime,Ops.data.frame,Ops.POSIXt,%
+Ops.Date,Negate,Math.factor,Math.difftime,Math.data.frame,%
+Math.POSIXt,Math.Date,Map,La.svd,LETTERS,%
+ISOdatetime,ISOdate,Find,Filter,F,%
+Encoding<-,Encoding,Cstack_info%
 },%
 keywordstyle={[10]{\bf\color{RRecomdcolor}}}%
 %
@@ -987,12 +1004,15 @@ V1=0,V2=1,V3=0}%
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("SweaveListingPreparations", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("changeKeywordstyles")
 > ### * changeKeywordstyles
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: changeKeywordstyles
 > ### Title: changeKeywordstyles
 > ### Aliases: changeKeywordstyles
@@ -1055,6 +1075,8 @@ keywordstyle={[11]{\bf\color{RRecomdcolor}}}%
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("changeKeywordstyles", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 
 detaching 'package:MASS'
@@ -1064,6 +1086,7 @@ detaching 'package:MASS'
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: copySourceFromRForge
 > ### Title: copySourceFromRForge
 > ### Aliases: copySourceFromRForge
@@ -1379,12 +1402,15 @@ $lines
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("copySourceFromRForge", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("isBaseOrRecommended")
 > ### * isBaseOrRecommended
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: isBaseOrRecommended
 > ### Title: isBaseOrRecommended
 > ### Aliases: isBaseOrRecommended
@@ -1397,12 +1423,15 @@ SweaveListingUtils             Matrix            splines
              FALSE               TRUE               TRUE 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("isBaseOrRecommended", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("library")
 > ### * library
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: library
 > ### Title: Loading Packages with registering symbols for TeX package
 > ###   'listing'
@@ -1417,22 +1446,22 @@ SweaveListingUtils             Matrix            splines
 % --------------------------
 % Registration of package survival [recommended or base] 
 % --------------------------
-morekeywords={[12]veteran,untangle.specials,tt,tobin,tcut,%
-survregDtest,survreg.fit,survreg.distributions,survreg.control,survreg,%
-survobrien,survfitcoxph.fit,survfit,survexp.usr,survexp.us,%
-survexp.mn,survexp,survdiff,survSplit,survConcordance,%
-strata,stanford2,ridge,rats2,rats,%
-ratetableDate,ratetable,qsurvreg,pyears,psurvreg,%
-pspline,pbcseq,pbc,ovarian,nwtco,%
-mgus2,mgus1,mgus,match.ratetable,lung,%
-logan,leukemia,labels.survreg,kidney,jasa1,%
-jasa,is.ratetable,is.na.ratetable,is.na.coxph.penalty,is.na.Surv,%
-is.Surv,heart,frailty.t,frailty.gaussian,frailty.gamma,%
-frailty,format.Surv,dsurvreg,coxph.fit,coxph.detail,%
-coxph.control,coxph,cox.zph,colon,cluster,%
-clogit,cgd,cch,cancer,bladder2,%
-bladder1,bladder,basehaz,attrassign,aml,%
-aareg,Surv%
+morekeywords={[12]veteran,uspop2,untangle.specials,tt,tobin,%
+tcut,survregDtest,survreg.fit,survreg.distributions,survreg.control,%
+survreg,survobrien,survfitcoxph.fit,survfit,survexp.usr,%
+survexp.us,survexp.mn,survexp,survdiff,survSplit,%
+survConcordance,strata,stanford2,ridge,rats2,%
+rats,ratetableDate,ratetable,qsurvreg,pyears,%
+psurvreg,pspline,pbcseq,pbc,ovarian,%
+nwtco,mgus2,mgus1,mgus,match.ratetable,%
+lung,logan,leukemia,labels.survreg,kidney,%
+jasa1,jasa,is.ratetable,is.na.ratetable,is.na.coxph.penalty,%
+is.na.Surv,is.Surv,heart,frailty.t,frailty.gaussian,%
+frailty.gamma,frailty,format.Surv,dsurvreg,coxph.fit,%
+coxph.detail,coxph.control,coxph,cox.zph,colon,%
+cluster,clogit,cgd,cch,cancer,%
+bladder2,bladder1,bladder,basehaz,attrassign,%
+aml,aareg,Surv%
 },%
 keywordstyle={[12]{\bf\color{RRecomdcolor}}},%
 %
@@ -1451,6 +1480,8 @@ keywordstyle={[13]{\bf\color{RRecomdcolor}}}%
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("library", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 
 detaching 'package:survival', 'package:splines'
@@ -1460,6 +1491,7 @@ detaching 'package:survival', 'package:splines'
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: lstinputSourceFromRForge
 > ### Title: lstinputSourceFromRForge
 > ### Aliases: lstinputSourceFromRForge
@@ -1785,12 +1817,15 @@ setMethod("size<-", "Binom",
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("lstinputSourceFromRForge", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("lstset")
 > ### * lstset
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: lstset
 > ### Title: lstset and friends
 > ### Aliases: lstset lstsetRd lstsetR lstsetRin lstsetRout lstsetRcode
@@ -1821,12 +1856,15 @@ NULL
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("lstset", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("lstsetLanguage")
 > ### * lstsetLanguage
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: lstsetLanguage
 > ### Title: lstsetLanguage
 > ### Aliases: lstsetLanguage
@@ -2073,6 +2111,8 @@ NULL
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("lstsetLanguage", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 
 detaching 'package:MASS'
@@ -2082,6 +2122,7 @@ detaching 'package:MASS'
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: readPkgVersion
 > ### Title: readPkgVersion
 > ### Aliases: readPkgVersion
@@ -2091,16 +2132,19 @@ detaching 'package:MASS'
 > 
 > readPkgVersion(package = "distr")
      Version
-[1,] "2.4"  
+[1,] "2.5.2"
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("readPackageVersion", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("readSourceFromRForge")
 > ### * readSourceFromRForge
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: readSourceFromRForge
 > ### Title: readSourceFromRForge
 > ### Aliases: readSourceFromRForge
@@ -3282,12 +3326,15 @@ detaching 'package:MASS'
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("readSourceFromRForge", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("setToBeDefinedPkgs")
 > ### * setToBeDefinedPkgs
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: setToBeDefinedPkgs
 > ### Title: setToBeDefinedPkgs
 > ### Aliases: setToBeDefinedPkgs
@@ -3306,12 +3353,15 @@ detaching 'package:MASS'
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("setToBeDefinedPkgs", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("taglist")
 > ### * taglist
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: taglist
 > ### Title: S3 class taglist
 > ### Aliases: print.taglist taglist
@@ -3333,10 +3383,13 @@ myList=HU=AHAL,%
     V6=butzi>  
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("taglist", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > ### * <FOOTER>
 > ###
-> cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  0.53 0.15 2.13 NA NA 
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  0.75 0.13 2.46 NA NA 
 > grDevices::dev.off()
 null device 
           1 

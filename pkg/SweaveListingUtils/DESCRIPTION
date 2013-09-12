@@ -1,10 +1,9 @@
 Package: SweaveListingUtils
 Title: Utilities for Sweave together with TeX listings package
 Encoding: latin1
-Version: 0.6.2
-Depends: R(> 2.13.2), startupmsg
+Version: 0.7
+Depends: R(>= 2.14.0), startupmsg
 Suggests: distr, MASS, survival, distrEx, Matrix, splines
-Imports: stats
 ByteCompile: yes
 Author: Peter Ruckdeschel
 Description: provides utilities for defining R / Rd as Tex-package-listings "language" and
@@ -13,7 +12,7 @@ Description: provides utilities for defining R / Rd as Tex-package-listings "lan
         source code
 Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
 License: LGPL-3
-Date: 2013-02-09
+Date: 2013-09-12
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
-SVNRevision: 882
+SVNRevision: 913

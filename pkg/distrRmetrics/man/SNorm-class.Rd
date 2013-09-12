@@ -67,7 +67,7 @@ Class \code{"Distribution"}, by class \code{"AbscontDistribution"}.
 \author{Peter Ruckdeschel \email{peter.ruckdeschel@itwm.fraunhofer.de}}
 \note{This class is based on the code provided by the package \pkg{fGarch}
 by  Diethelm Wuertz}
-\seealso{\code{\link[fGarch:snorm]{dsnorm}}, \code{\link[distr]{AbscontDistribution-class}}}
+\seealso{\code{\link[fGarch:dist-snorm]{dsnorm}}, \code{\link[distr]{AbscontDistribution-class}}}
 \examples{
 (SN <- SNorm(xi=2)) # SN is a skewed normal distribution with nu = 3.
 set.seed(1)

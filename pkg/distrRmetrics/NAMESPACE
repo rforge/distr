@@ -1,5 +1,4 @@
 import("methods")
-import("startupmsg")
 import("distr")
 import("fBasics")
 import("fGarch")

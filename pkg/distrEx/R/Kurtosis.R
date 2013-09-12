@@ -14,7 +14,7 @@ setMethod("kurtosis", signature(x = "UnivariateDistribution"),
         if(hasArg(low)) low <- dots$low
         if(hasArg(upp)) upp <- dots$upp
         LowIsUpp <- if(low == -Inf) 
-                    low == -upp else distr:::.isEqual(low,upp)
+                    low == -upp else .isEqual(low,upp)
 
         if(LowIsUpp && missing(cond)&&missing(fun)){
            if(is(Symmetry(x),"SphericalSymmetry")){

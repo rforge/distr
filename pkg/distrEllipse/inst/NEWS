@@ -8,6 +8,25 @@
  information)
 
 ##############
+v 2.5
+##############
+
+user-visible CHANGES:
+
+GENERAL ENHANCEMENTS:
++ cleaned DESCRIPTION and NAMESPACE file as to Imports/Depends
+
+under the hood:
+
++ added .Rbuildignore
++ used some recently exported routines which had been internal so far to
+  avoid calls by :::
+ 
+BUGFIXES
++ fixed some links in html-man pages
+
+
+##############
 v 2.4
 ##############
 
@@ -17,6 +36,8 @@ under the hood
 + updating maintainer email address and URL.
 + added argument no.readonly = TRUE to assignments of form opar <- par()
 + deleted no longer needed chm folders
+
+
 
 ##############
 v 2.3

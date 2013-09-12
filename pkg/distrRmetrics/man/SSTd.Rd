@@ -23,7 +23,7 @@
 \author{Peter Ruckdeschel \email{peter.ruckdeschel@itwm.fraunhofer.de}}
 \note{This class is based on the code provided by the package \pkg{fGarch}
 by  Diethelm Wuertz}
-\seealso{\code{\link[fGarch:sstd]{dsstd}}, \code{\link[distr]{AbscontDistribution-class}}}
+\seealso{\code{\link[fGarch:dist-sstd]{dsstd}}, \code{\link[distr]{AbscontDistribution-class}}}
 \examples{
 (ST <- SSTd(mean = 1, sd = 1, xi = 0.5))
 plot(ST)
