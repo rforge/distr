@@ -153,6 +153,18 @@ rownames(Values) <- Names
 changeDescription(startDir = "C:/rtest/robast",names=Names,
                   pkgs=Pkgs, values=Values)
 }
+
+if(FALSE){
+Pkgs <- c("RandVar", "RobAStBase", "RobAStRDA", "ROptEst", "RobExtremes")
+Names <- c("Version", "License")
+Values <- matrix(c(c("0.9.2","LGPL-3"),rep(c("0.9","LGPL-3"),4)),2,length(Pkgs))
+colnames(Values) <- Pkgs
+rownames(Values) <- Names
+changeDescription(startDir = "C:/rtest/robast/",names=Names,
+                  pkgs=Pkgs, values=Values)
+}
+
+}
 ##############################################################################
 
 

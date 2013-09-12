@@ -450,3 +450,7 @@ if(!isGeneric("distribution")){
 if(!isGeneric("samplesize")){
     setGeneric("samplesize", function(object, ...) standardGeneric("samplesize"))
 }
+if(!isGeneric("samplesize<-")){
+    setGeneric("samplesize<-",
+        function(object, value) standardGeneric("samplesize<-"))
+}
