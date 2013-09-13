@@ -26,17 +26,13 @@ echo ---------------------------------------------
 echo check as cran $tarGz
 echo ---------------------------------------------
 $1 CMD check --as-cran --timings $tarGz
-result=$?
 #
 echo ---------------------------------------------
-echo we test that the check of $2 was successful
-echo   i.e. whether the value of check,
-echo     which is $result, is 0
+echo we test that the .tar.gz file of $2 exists
 echo   before removing the old version
 echo   and installing the new version
 echo ---------------------------------------------
-zero=0
-if [ $result -eq $zero ]; then
+if [ -r $tarGz ]; then
   #
   echo ---------------------------------------------
   echo REMOVE $2
