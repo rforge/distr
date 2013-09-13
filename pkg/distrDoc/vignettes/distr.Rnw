@@ -81,7 +81,7 @@ setToBeDefinedPkgs(pkgs = c("distr","distrEx","distrTEst","distrSim",
 @
 %
 % -------------------------------------------------------------------------------
-%\newcommand{\pkgversion}{{\tt 2.4}}
+\renewcommand{\pkgversion}{{\tt 2.5}}
 \newcommand{\pkgExversion}{{\tt 2.5}}
 \newcommand{\Reals}{\mathbb{R}}
 \newcommand{\R}{\mathbb{R}}
@@ -2893,14 +2893,14 @@ until we finally came to a publishable version.
 %
 \section{Examples}
 \subsection{$12$-fold convolution of uniform $(0,1)$ variables}
-\begin{footnotesize}
-  Code also available under\newline %
-  {\href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/NormApprox.R}%
-  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}$%
-  {\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
-  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}%
-  {\tt /mathe7/DISTR/NormApprox.R}}}}}\\[2ex]
-\end{footnotesize}
+%\begin{footnotesize}
+%  Code also available under\newline %
+%  {\href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/NormApprox.R}%
+%  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}$%
+%  {\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
+%  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}%
+%  {\tt /mathe7/DISTR/NormApprox.R}}}}}\\[2ex]
+%\end{footnotesize}
 \begin{small}
   This example shows how easily we may get the distribution of the sum of $12$
   ${\rm i.i.d.}$ ${\rm ufo}(0,1)$--variables minus $6$--- which was used as a 
@@ -2949,11 +2949,11 @@ lines(c(-4,4), c(0,0))
 par(opar)
 @
 \subsection{Comparison of exact convolution to FFT for normal distributions}\label{Convex}
-\begin{footnotesize}
-  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/ConvolutionNormalDistr.R}%
-  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
-  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/ConvolutionNormalDistr.R}}}}\\[2ex]
-\end{footnotesize}
+%\begin{footnotesize}
+%  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/ConvolutionNormalDistr.R}%
+%  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
+%  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/ConvolutionNormalDistr.R}}}}\\[2ex]
+%\end{footnotesize}
 \begin{small}
   This example illustrates the exactness of the numerical algorithm used to 
   compute the convolution: We know that ${\cal L}({\tt A+B})={\cal N}(5,13)$ --- 
@@ -3047,11 +3047,11 @@ distroptions("TruncQuantile" = oldeps)
 
 @
 \subsection{Comparison of FFT to {\tt RtoDPQ}}\label{compex}
-\begin{footnotesize}
-  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/ComparisonFFTandRtoDPQ.R}%
-  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
-  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/ComparisonFFTandRtoDPQ.R}}}}\\[2ex]
-\end{footnotesize}
+%\begin{footnotesize}
+%  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/ComparisonFFTandRtoDPQ.R}%
+%  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
+%  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/ComparisonFFTandRtoDPQ.R}}}}\\[2ex]
+%\end{footnotesize}
 \begin{small}
   This example illustrates the exactness (or rather not--so--exactness) of the 
   simulational default algorithm used to compute the distribution of 
@@ -3123,11 +3123,11 @@ legend("topleft",
        fill = c("black", "red"))
 @
 \subsection{Comparison of exact and approximate stationary regressor distribution}\label{statex}
-\begin{footnotesize}
-  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/StationaryRegressorDistr.R}%
-  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
-  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/StationaryRegressorDistr.R}}}}\\[2ex]
-\end{footnotesize}
+%\begin{footnotesize}
+%  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/StationaryRegressorDistr.R}%
+%  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
+%  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/StationaryRegressorDistr.R}}}}\\[2ex]
+%\end{footnotesize}
 \begin{small}
   Another illustration for the use of package {\tt "distr"}.
   In case of a stationary AR(1)--model, for non--normal innovation distribution, 
@@ -3245,11 +3245,11 @@ has been integrated to the package itself, see section~\ref{TruncMin}
 \subsection{Distribution of minimum and maximum of two independent random variables}\label{minmaxex}
 has been integrated to the package itself, see section~\ref{TruncMin}
 \subsection{Instructive destructive example}\label{destrex}
-\begin{footnotesize}
-  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/destructive.R}%
-  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
-  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/destructive.R}}}}\\[2ex]
-\end{footnotesize}
+%\begin{footnotesize}
+%  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/destructive.R}%
+%  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
+%  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/destructive.R}}}}\\[2ex]
+%\end{footnotesize}
 <<destructive, eval = TRUE, fig = TRUE>>=
 ##########################################################
 ## Demo: Instructive destructive example
@@ -3269,11 +3269,11 @@ plot(N, lwd = 3)
 @
 \subsection{A simulation example}\label{simex}
 {\bf needs packages \pkg{distrSim}/\pkg{distrTEst}}\\[2ex]
-\begin{footnotesize}
-  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/SimulateandEstimate.R}%
-  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
-  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/SimulateandEstimate.R}}}}\\[2ex]
-\end{footnotesize}
+%\begin{footnotesize}
+%  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/SimulateandEstimate.R}%
+%  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
+%  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/SimulateandEstimate.R}}}}\\[2ex]
+%\end{footnotesize}
 <<SimulateandEstimate, eval = TRUE, fig = TRUE, width=8.8,height=3.8>>=
 require(distrTEst)
     ### also loads distrSim
@@ -3351,9 +3351,9 @@ every paper on Robust Statistics. We do this with the tools provided by our pack
 \end{small}
 \subsection{Expectation of a given function under a given distribution}
 \begin{footnotesize}
-  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/Expectation.R}%
-  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
-  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/Expectation.R}}}}\\[2ex]
+%  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/Expectation.R}%
+%  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
+%  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/Expectation.R}}}}\\[2ex]
   This code is for illustration only; in the mean-time, the expectation- and 
   variance operators implemented in this example have been included to package
    \pkg{distrEx} where their functionality has further been extended.
@@ -3380,11 +3380,11 @@ E(N, id)
 E(N, sq) - E(N, id)^2
 @
 \subsection{$n$-fold convolution of absolutely continuous distributions}\label{exe10}
-\begin{footnotesize}
-  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/nFoldConvolution.R}%
-  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
-  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/nFoldConvolution.R}}}}\\[2ex]
-\end{footnotesize}
+%\begin{footnotesize}
+%  Code also available under\newline \href{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/nFoldConvolution.R}%
+%  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
+%  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/nFoldConvolution.R}}}}\\[2ex]
+%\end{footnotesize}
 \begin{small}
 Might be useful for teaching the CLT: a straightforward implementation of the 
 $n$--fold convolution of an
