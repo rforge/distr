@@ -4,7 +4,7 @@ getRevNr <- function(dir="C:/rtest/distr/",
                         ## (otherwise need full URL as arg pathRepo
     withlogin = TRUE,   ### do we need option --login (yes in cygwin, don't know in Linux)
     PathToBash = "C:/cygwin/bin/bash",  ## path to bash
-    PathToUtils="C:/rtest/distr/branches/distr-2.4/pkg/utils",
+    PathToUtils="C:/rtest/distr/pkg/utils",
                     ### path to shell script readsvnlog.sh
     tmpfile = "C:/rtest/tmp-svnlog5.txt", ### some tmpfile to which we write the
                         ## results temporarily; is deleted afterwords
