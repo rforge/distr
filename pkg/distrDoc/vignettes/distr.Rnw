@@ -8,11 +8,11 @@
 \usepackage{svn-multi}
 % Version control information:
 \svnidlong
-{$HeadURL: svn+ssh://ruckdeschel@svn.r-forge.r-project.org/svnroot/distr/branches/distr-2.4/pkg/distrDoc/vignettes/distr.Rnw $}
-{$LastChangedDate: 2012-05-22 14:40:14 +0200 (Di, 22 Mai 2012) $}
-{$LastChangedRevision: 816 $}
-{$LastChangedBy: ruckdeschel $}
-%\svnid{$Id: example_main.tex 146 2008-12-03 13:29:19Z martin $}
+{$HeadURL$}
+{$LastChangedDate$}
+{$LastChangedRevision$}
+{$LastChangedBy$}
+%\svnid{$Id$}
 % Don't forget to set the svn property 'svn:keywords' to
 % 'HeadURL LastChangedDate LastChangedRevision LastChangedBy' or
 % 'Id' or both depending if you use \svnidlong and/or \svnid
