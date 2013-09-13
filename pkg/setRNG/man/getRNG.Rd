@@ -2,7 +2,7 @@
 \alias{getRNG}
 \alias{getRNG.default}
 
-\title{get the RND and seed from an object}
+\title{get the RNG and seed from an object}
 \description{
 Get the random number generator and seed used to generate an object.
 }
