@@ -1,0 +1,44 @@
+Zum Paketbauen etc verwende ich/Peter derzeit die unten genannten Schritte 1-6.
+
+Neu ist seit knapp einem Jahr, dass Schritte 2,5,6 nun auf den tar-ball, also
+<pkg>_<version>.tar.gz und nicht mehr auf den Ordner <pkg> angewendet
+werden; Schritte 1 und 4 hingegen weiter auf den Ordner <pkg>.
+
+1. Paket bauen -> Ergebnis <pkg>_<version>.tar.gz
+2. Checken von <pkg>_<version>.tar.gz
+falls "fehlerfrei" stehen Ergebnisse in Ordner <pkg>.Rcheck
+3. Kopieren von  <pkg>-Ex.Rout aus Ordner <pkg>.Rcheck
+    in Ordner <pkg>/tests/Examples und Umbenennen in
+    <pkg>-Ex.Rout.save / bzw Überschreiben der alten
+      Datei <pkg>-Ex.Rout.save
+4. noch mal Paket bauen
+5. Installieren von <pkg>_<version>.tar.gz
+6. Bauen des Windows Zip Files <pkg>_<version>.tar.gz
+
+Hierzu habe ich die Makros RBuild.bat (Schritte 1 und 4) RCheck.bat 
+(Schritt 2), RInstall.bat (Schritt 5) und RZip.bat (Schritt 6) in 
+distrXXX-svn-Repo unter pkg/utils.
+
+@Matthias: vllt kannst Du die Linux Shell Skripten darin mal
+aktualisieren ;-)
+
+Dieses Verzeichnis liegt bei mir im Pfad so dass ich die Makros einfach 
+in der Kommandozeile aufrufen kann.
+
+Für Schritte 1,4  verwende ich RBuild <pkg>
+Für Schritt 2 verwende ich RCheck <pkg>_<version>.tar.gz
+bzw R CMD check --as-cran <pkg>_<version>.tar.gz
+Für Schritt 5 RInstall <pkg>_<version>.tar.gz
+Für Schritt 6 RZip <pkg>_<version>.tar.gz
+
+im einzelnen:
+
+RBuild: = R CMD build --compact-vignettes="gs+qpdf" --resave-data
+RCheck: = R CMD check --multiarch --timings --install-args="--byte-compile \
+  --with-keep.source --compact-docs --resave-data --install-tests --example \
+  --html --latex --clean --preclean --compile-both"
+RInstall: = R CMD INSTALL --byte-compile --with-keep.source --compact-docs \
+  --resave-data --install-tests --example --html --latex --clean --preclean \
+  --compile-both
+RZip: = R CMD INSTALL --build --byte-compile --with-keep.source --compact-docs \
+  --resave-data --install-tests --example --html --latex --clean --preclean --compile-both
