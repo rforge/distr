@@ -1,0 +1,9 @@
+import("methods")
+import("distr")
+import("fBasics")
+import("fGarch")
+
+exportClasses("SNormParameter", "SSTdParameter", "SNorm", "SSTd")
+export("SNorm", "SSTd", "STd")
+exportMethods("xi","mean","sd","nu")
+exportMethods("xi<-","mean<-","sd<-","nu<-")

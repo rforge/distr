@@ -46,7 +46,7 @@ updatePackageHelp <- function(package){
                     ### path to shell script readsvnlog.sh
     tmpfile = "C:/rtest/tmp-svnlog5.txt", ### some tmpfile to which we write the
                         ## results temporarily; is deleted afterwords
-    verbose = FALSE){
+                                verbose = FALSE){
     oldDir <- getwd()
     on.exit(setwd(oldDir))
     setwd(startDir)
