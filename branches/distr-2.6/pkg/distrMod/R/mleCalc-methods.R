@@ -64,11 +64,22 @@ get.criterion.fct <- function(theta, Data, ParamFam, criterion.ff, fun, ...){
 
 
 setMethod("mleCalc", signature(x = "numeric", PFam = "ParamFamily"),
-           function(x, PFam, startPar = NULL, penalty = 1e20, Infos  = NULL,
+           function(x, PFam, startPar = NULL, penalty = 1e20,
+                    dropZeroDensity = TRUE, Infos  = NULL,
                     validity.check = TRUE, ...){
 
+           if(dropZeroDensity){
+              .negLoglikelihood0 <- function(x, Distribution, ...)
+                          .negLoglikelihood(x, Distribution, ...,
+                                            dropZeroDensity = TRUE)
+           }else{
+              .negLoglikelihood0 <- function(x, Distribution, ...)
+                          .negLoglikelihood(x, Distribution, ...,
+                                            dropZeroDensity = FALSE)
+           }
+
            res <- mceCalc(x = x, PFam = PFam, 
-                          criterion = .negLoglikelihood, startPar = startPar, 
+                          criterion = .negLoglikelihood0, startPar = startPar,
                           penalty = penalty, crit.name = "neg.Loglikelihood",
                           Infos = Infos, validity.check = validity.check, ...)
            names(res$criterion) <- "neg.Loglikelihood"
