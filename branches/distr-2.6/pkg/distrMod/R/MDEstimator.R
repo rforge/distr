@@ -32,7 +32,7 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist,
     if(missing(validity.check)) validity.check <- TRUE
        argList$validity.check <- validity.check
     if(missing(Infos))      Infos <- NULL
-    argList <- c(argList, Infos = Infos)
+    argList <- c(argList, Infos = Infos, check.validity = validity.check )
     if(!is.null(dots))      argList <- c(argList, dots)
     ## call to mceCalc
     res0 <- do.call(mceCalc, argList)
@@ -44,7 +44,8 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist,
                               res.name = paste("Minimum", dist.name, 
                                                "estimate", sep = " "), 
                               call = quote(es.call),
-                              .withEvalAsVar = .withEvalAsVar))
+                              .withEvalAsVar = .withEvalAsVar,
+                              check.validity = validity.check))
 
     if(!missing(asvar.fct))   argList <- c(argList, asvar.fct = asvar.fct)
     if(!is.null(dots))  argList <- c(argList, dots)
