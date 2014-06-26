@@ -3,11 +3,12 @@ Version: 2.6
 Date: 2013-09-13
 Title: Object oriented implementation of distributions
 Description: S4 Classes and Methods for distributions
-Authors@R: c(person("Florian", "Camphausen", role=c("aut")), person("Matthias", "Kohl",
-        role=c("aut", "cph")), person("Peter", "Ruckdeschel", role=c("cre", "cph"),
-        email="Peter.Ruckdeschel@itwm.fraunhofer.de"), person("Thomas", "Stabla", role=c("aut",
-        "cph")), person("R Core Team", role = c("ctb", "cph"), comment="for source file ks.c/
-        routines 'pKS2' and 'pKolmogorov2x'"))
+Authors@R: c(person("Florian", "Camphausen", role=c("aut")),
+        person("Matthias", "Kohl", role=c("aut", "cph")), 
+		person("Peter", "Ruckdeschel", role=c("cre", "cph"), email="Peter.Ruckdeschel@itwm.fraunhofer.de"), 
+		person("Thomas", "Stabla", role=c("aut", "cph")),
+        person("R Core Team", role = c("ctb", "cph"), 
+		comment="for source file ks.c/ routines 'pKS2' and 'pKolmogorov2x'"))
 Depends: R(>= 2.14.0), methods, graphics, startupmsg, sfsmisc, SweaveListingUtils
 Suggests: distrEx, svUnit (>= 0.7-11)
 Imports: stats

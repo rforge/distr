@@ -287,3 +287,6 @@ if(!isGeneric("scaleshapename<-")){
 if(!isGeneric("scalename")){
     setGeneric("scalename", function(object) standardGeneric("scalename"))
 }
+if(!isGeneric("returnlevelplot")){
+    setGeneric("returnlevelplot", function(x, y, ...) standardGeneric("returnlevelplot"))
+}

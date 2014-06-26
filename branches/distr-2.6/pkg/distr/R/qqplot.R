@@ -73,9 +73,9 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
     if(mfColRow) opar1 <- par(mfrow = c(1,1), no.readonly = TRUE)
 
     ret <- do.call(stats::qqplot, args=mcl)
-
-    if(withIdLine&& plot.it){
-       abline(0,1,col=col.IdL,lty=lty.IdL,lwd=lwd.IdL)
+    qqb <- NULL
+    if(withIdLine){
+       if(plot.it)abline(0,1,col=col.IdL,lty=lty.IdL,lwd=lwd.IdL)
        if(#is(y,"AbscontDistribution") &&
        withConf){
           xy <- unique(sort(c(xc.o,yc.o)))
@@ -97,7 +97,8 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
                 xy <- sort(c(xy,xy0,xy1))
              }
           }
-          .confqq(xy, y, withConf.pw, withConf.sim, alpha.CI,
+       if(plot.it){
+           qqb <- .confqq(xy, y, datax=TRUE, withConf.pw, withConf.sim, alpha.CI,
                       col.pCI, lty.pCI, lwd.pCI, pch.pCI, cex.pCI,
                       col.sCI, lty.sCI, lwd.sCI, pch.sCI, cex.sCI,
                   n, exact.sCI = exact.sCI, exact.pCI = exact.pCI,
@@ -105,8 +106,12 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
                   legend.bg = legend.bg, legend.pos = legend.pos,
                   legend.cex = legend.cex, legend.pref = legend.pref,
                   legend.postf = legend.postf, legend.alpha = legend.alpha)
+          }else{
+           qqb <- qqbounds(sort(unique(xy)),y,alpha.CI,n,withConf.pw, withConf.sim,
+                   exact.sCI,exact.pCI,nosym.pCI)
+          }
        }
     }
-    return(ret)
+    return(c(ret,qqb))
     })
     

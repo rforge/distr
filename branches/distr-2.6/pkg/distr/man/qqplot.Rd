@@ -105,6 +105,11 @@ produces a QQ plot for two univariate distributions.}
   \item{x}{The x coordinates of the points that were/would be plotted}
   \item{y}{The corresponding quantiles of the second distribution,
            \emph{including \code{\link{NA}}s}.}
+  \item{crit}{A matrix with the lower and upper confidence bounds
+               (computed by \code{qqbounds}).}
+  \item{err}{logical vector of length 2.}
+  (elements \code{crit} and \code{err} are taken from the return
+   value(s) of \code{qqbounds}).
 }
 \references{
   Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988)

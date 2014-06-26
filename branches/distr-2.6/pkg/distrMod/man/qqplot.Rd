@@ -6,7 +6,8 @@ qqplot(x, y, ...)
 \S4method{qqplot}{ANY,UnivariateDistribution}(x,y,
     n = length(x), withIdLine = TRUE,
     withConf = TRUE, withConf.pw  = withConf, withConf.sim = withConf,
-    plot.it = TRUE, xlab = deparse(substitute(x)),ylab = deparse(substitute(y)),
+    plot.it = TRUE, datax = FALSE, xlab = deparse(substitute(x)),
+    ylab = deparse(substitute(y)),
     ..., width = 10, height = 5.5, withSweave = getdistrOption("withSweave"),
     mfColRow = TRUE, n.CI = n, withLab = FALSE, lab.pts = NULL, which.lbs = NULL,
     which.Order = NULL, order.traf = NULL,
@@ -45,6 +46,7 @@ class \code{"ProbFamily"}.}
 \item{withConf.sim}{logical; shall simultaneous confidence lines be plotted?}
 \item{plot.it}{logical; shall be plotted at all (inherited from
 \code{\link[stats:qqnorm]{qqplot}})?}
+\item{datax}{logical; shall data be plotted on x-axis?}
 \item{xlab}{x-label}
 \item{ylab}{y-label}
 \item{\dots}{further parameters for method \code{qqplot} with signature
@@ -122,6 +124,11 @@ in \code{support(y)}?}
 \item{x}{The x coordinates of the points that were/would be plotted}
   \item{y}{The corresponding quantiles of the second distribution,
            \emph{including \code{\link{NA}}s}.}
+  \item{crit}{A matrix with the lower and upper confidence bounds
+               (computed by \code{qqbounds}).}
+  \item{err}{logical vector of length 2.}
+  (elements \code{crit} and \code{err} are taken from the return
+   value(s) of \code{qqbounds}).
 }
 \details{
 \describe{

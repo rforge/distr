@@ -60,7 +60,7 @@ exportMethods("startPar", "makeOKPar")
 exportMethods("scaleshapename", "scalename", "LogDeriv")
 exportMethods("coerce", "profile", "locscalename", "scaleshapename<-")
 exportMethods("mleCalc", "mceCalc")
-exportMethods("qqplot")
+exportMethods("qqplot", "returnlevelplot")
 export("distrModMASK")
 export("trafoEst")
 export("distrModOptions", "distrModoptions", "getdistrModOption",

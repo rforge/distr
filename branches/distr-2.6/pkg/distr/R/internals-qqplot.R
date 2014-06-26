@@ -205,14 +205,15 @@
 
 
 
-.confqq <- function(x,D, withConf.pw  = TRUE,  withConf.sim = TRUE, alpha,
+.confqq <- function(x,D, datax = TRUE, withConf.pw  = TRUE,
+                    withConf.sim = TRUE, alpha,
                     col.pCI, lty.pCI, lwd.pCI, pch.pCI, cex.pCI,
                     col.sCI, lty.sCI, lwd.sCI, pch.sCI, cex.sCI,
                     n,exact.sCI=(n<100),exact.pCI=(n<100), nosym.pCI = FALSE,
                     with.legend = TRUE, legend.bg = "white",
                     legend.pos = "topleft", legend.cex = 0.8,
                     legend.pref = "", legend.postf = "", 
-                    legend.alpha = alpha){
+                    legend.alpha = alpha, qqb0=NULL){
 
    x <- sort(unique(x))
    if("gaps" %in% names(getSlots(class(D))))
@@ -229,36 +230,65 @@
    x.d <- x.in[!SI.c]        
    
 
-   qqb <- qqbounds(x,D,alpha,n,withConf.pw, withConf.sim,
-                   exact.sCI,exact.pCI,nosym.pCI)
+   qqb <- if(is.null(qqb0)) qqbounds(x,D,alpha,n,withConf.pw, withConf.sim,
+                   exact.sCI,exact.pCI,nosym.pCI) else qqb0
+                   
    qqb$crit <- qqb$crit[SI.in,]
 
    if(qqb$err["pw"]){
       if(sum(SI.c)>0){
-         lines(x.c, qqb$crit[SI.c,"pw.right"],
-            col=col.pCI,lty=lty.pCI,lwd=lwd.pCI)
-         lines(x.c, qqb$crit[SI.c,"pw.left"],
-            col=col.pCI,lty=lty.pCI,lwd=lwd.pCI)
+         if(datax){
+            lines(x.c, qqb$crit[SI.c,"pw.right"],
+               col=col.pCI,lty=lty.pCI,lwd=lwd.pCI)
+            lines(x.c, qqb$crit[SI.c,"pw.left"],
+               col=col.pCI,lty=lty.pCI,lwd=lwd.pCI)
+         }else{
+            lines(qqb$crit[SI.c,"pw.right"], x.c,
+               col=col.pCI,lty=lty.pCI,lwd=lwd.pCI)
+            lines(qqb$crit[SI.c,"pw.left"], x.c,
+               col=col.pCI,lty=lty.pCI,lwd=lwd.pCI)
+         }
       }
       if(sum(!SI.c)>0){
-         points(x.d, qqb$crit[!SI.c,"pw.right"],
-            col=col.pCI, pch=pch.pCI, cex = cex.pCI)
-         points(x.d, qqb$crit[!SI.c,"pw.left"],
-            col=col.pCI, pch=pch.pCI, cex = cex.pCI)
+         if(datax){
+            points(x.d, qqb$crit[!SI.c,"pw.right"],
+               col=col.pCI, pch=pch.pCI, cex = cex.pCI)
+            points(x.d, qqb$crit[!SI.c,"pw.left"],
+               col=col.pCI, pch=pch.pCI, cex = cex.pCI)
+         }else{
+            points(qqb$crit[!SI.c,"pw.right"], x.d,
+               col=col.pCI, pch=pch.pCI, cex = cex.pCI)
+            points(qqb$crit[!SI.c,"pw.left"], x.d,
+               col=col.pCI, pch=pch.pCI, cex = cex.pCI)
+         }
       }
    }
    if(qqb$err["sim"]){
       if(sum(SI.c)>0){
-         lines(x.c, qqb$crit[SI.c,"sim.right"],
+         if(datax){
+            lines(x.c, qqb$crit[SI.c,"sim.right"],
                col=col.sCI,lty=lty.sCI,lwd=lwd.sCI)
-         lines(x.c, qqb$crit[SI.c,"sim.left"],
+            lines(x.c, qqb$crit[SI.c,"sim.left"],
                col=col.sCI,lty=lty.sCI,lwd=lwd.sCI)
+         }else{
+            lines(qqb$crit[SI.c,"sim.right"], x.c,
+               col=col.sCI,lty=lty.sCI,lwd=lwd.sCI)
+            lines(qqb$crit[SI.c,"sim.left"], x.c,
+               col=col.sCI,lty=lty.sCI,lwd=lwd.sCI)
+         }
       }
       if(sum(!SI.c)>0){
-         points(x.d, qqb$crit[!SI.c,"sim.right"],
+         if(datax){
+            points(x.d, qqb$crit[!SI.c,"sim.right"],
                 col=col.sCI, pch=pch.sCI, cex = cex.sCI)
-         points(x.d, qqb$crit[!SI.c,"sim.left"],
+            points(x.d, qqb$crit[!SI.c,"sim.left"],
                 col=col.sCI, pch=pch.sCI, cex = cex.sCI)
+         }else{
+            points(qqb$crit[!SI.c,"sim.right"], x.d,
+                col=col.sCI, pch=pch.sCI, cex = cex.sCI)
+            points(qqb$crit[!SI.c,"sim.left"], x.d,
+                col=col.sCI, pch=pch.sCI, cex = cex.sCI)
+         }
       }
    }
    if(with.legend){
@@ -301,7 +331,7 @@
                                 merge = FALSE, cex = legend.cex), lcl))
       }
    }
-  return(invisible(NULL))
+  return(invisible(qqb))
 }
 
 .deleteItemsMCL <- function(mcl){
