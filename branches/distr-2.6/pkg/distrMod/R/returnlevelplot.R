@@ -97,18 +97,24 @@ setMethod("returnlevelplot", signature(x = "ANY",
     ycl <- p2rl(yc.o)
 
     ### extend range somewhat
-    xyall <- sort(unique(c(yc.o,x,
+#    pyn <- p(y)(10^(seq(-1, 3.75 + log10(npy), by = 0.1)))
+    xyall <- force(sort(unique(c(yc.o,x,
                     q(y)(c(seq(0.01, 0.09, by = 0.01),(1:9)/10,
-                         0.95, 0.99, 0.995, 0.999)),
-                         10^(seq(-1, 3.75 + log10(npy), by = 0.1))
-                         )))
-    rxyall <- (max(xyall)-min(xyall))*0.6
+                         0.95, 0.99, 0.995, 0.999))
+                         ))))
+    rxyall  <- (max(xyall)-min(xyall))*0.6
     rxymean <- (max(xyall)+min(xyall))/2
 
-    xyallc <- seq(rxymean-rxyall,rxymean+rxyall, length.out=300)
+    xyallc  <- seq(from=rxymean-rxyall,to=rxymean+rxyall, length.out=300)
+    print(xyallc)
+    pxyall  <- p(y)(xyallc)
+    print(pxyall)
+
     pxyallc <- p2rl(xyallc)
-    xyallc <- xyallc[pxyallc>0.00001 & pxyallc<0.99999]
-    pxyallc <- pxyallc[pxyallc>0.00001 & pxyallc<0.99999]
+     xyallc <-  xyallc[pxyall>0.00001 & pxyall<0.99999]
+    pxyallc <- pxyallc[pxyall>0.00001 & pxyall<0.99999]
+
+    print(cbind(pxyallc,xyallc))
 
     if("support" %in% names(getSlots(class(y))))
        ycl <- sort(jitter(ycl, factor=jit.fac))
