@@ -40,7 +40,7 @@
                     nosym.pCI = FALSE, with.legend = TRUE,
                     legend.bg = "white", legend.pos = "topleft",
                     legend.cex = 0.8, legend.pref = "", legend.postf = "",
-                    legend.alpha = alpha, qqb0 = NULL)
+                    legend.alpha = alpha, qqb0 = NULL, debug = FALSE)
 
 .deleteItemsMCL(mcl)
 .distrExInstalled
@@ -94,6 +94,7 @@ are \code{x.i+t/sqrt(n)+del.i/sqrt(n)} and \code{x.i-t/sqrt(n)+del.i/sqrt(n)}.}
 \item{legend.alpha}{nominal coverage probability}
 \item{mcl}{arguments in call as a list}
 \item{qqb0}{precomputed return value of \code{qqbounds}}
+\item{debug}{logical; if \code{TRUE} additional output to debug confidence bounds.}
 }
 
 \details{

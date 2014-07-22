@@ -18,7 +18,7 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
     jit.fac = 0, check.NotInSupport = TRUE,
     col.NotInSupport = "red", with.legend = TRUE, legend.bg = "white",
     legend.pos = "topleft", legend.cex = 0.8, legend.pref = "", 
-    legend.postf = "", legend.alpha = alpha.CI){
+    legend.postf = "", legend.alpha = alpha.CI, debug = FALSE){
 
     mc <- match.call(call = sys.call(sys.parent(1)))
     if(missing(xlab)) mc$xlab <- as.character(deparse(mc$x))
@@ -105,10 +105,11 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
                   nosym.pCI = nosym.pCI, with.legend = with.legend,
                   legend.bg = legend.bg, legend.pos = legend.pos,
                   legend.cex = legend.cex, legend.pref = legend.pref,
-                  legend.postf = legend.postf, legend.alpha = legend.alpha)
+                  legend.postf = legend.postf, legend.alpha = legend.alpha,
+                  debug = debug)
           }else{
            qqb <- qqbounds(sort(unique(xy)),y,alpha.CI,n,withConf.pw, withConf.sim,
-                   exact.sCI,exact.pCI,nosym.pCI)
+                   exact.sCI,exact.pCI,nosym.pCI,debug)
           }
        }
     }

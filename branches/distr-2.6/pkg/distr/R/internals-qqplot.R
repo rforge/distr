@@ -86,18 +86,12 @@
                  .C("pkolmogorov2x", p = as.double(p0),
                      as.integer(n), PACKAGE = "stats")$p
         }else function(p0,n){
-#                 .Call(stats:::C_pKolmogorov2x, p0, n) #, PACKAGE = "stats")
-#                 .C("pkolmogorov2x", p = as.double(p0),
-#                     as.integer(n))$p
                  .Call("pKolmogorov2x", p0, n) #, PACKAGE = "stats")
         }
 .pks2 <- if(getRversion()<"2.16.0") function(x, tol){
                  .C("pkstwo", as.integer(1),
                     p = as.double(x), as.double(tol), PACKAGE = "stats")$p
         }else function(x, tol){
-#                 .Call(stats:::C_pKS2, p = x, tol) #, PACKAGE = "stats")
-#                 .C("pkstwo", as.integer(1),
-#                    p = as.double(x), as.double(tol))$p
                  .Call("pKS2", p = x, tol) #, PACKAGE = "stats")
         }
 
@@ -113,23 +107,10 @@
   }
  res <- uniroot(fct,lower=0,upper=1)$root*sqrt(n)
  }else{
- ### from ks.test from package stats:
- pkstwo <- function(x, tol = 1e-09) {
-        #if (is.numeric(x))
-        #    x <- as.vector(x)
-        #else stop("argument 'x' must be numeric")
-        #p <- rep(0, length(x))
-        #p[is.na(x)] <- NA
-        #IND <- which(!is.na(x) & (x > 0))
-        #if (length(IND)) {
-            .pks2(x,tol) -alpha
-        #}
-        # return(p)
-    }
- ###  end of code from package stats
  fct <- function(p0){
-      1 - pkstwo(p0)-alpha  }
- res <- uniroot(fct,lower=0,upper=sqrt(n))$root
+ ### from ks.test from package stats:
+      1 - .pks2(p0,1e-09)-alpha  }
+ res <- uniroot(fct,lower=1e-12,upper=sqrt(n))$root
  }
  return(res)
 }
@@ -184,7 +165,7 @@
  pq <- log(p.b)+log(1-p.b)
  if(is(D,"AbscontDistribution")){
     dp <- d(D)(x,log=TRUE)
-    dsupp.p <- dsupp.m<-1
+    dsupp.p <- dsupp.m <- 1
  }else{ ## have E and sd available ?
     if(!.distrExInstalled) stop("")
     supp.ind <- sapply(x, function(y)
@@ -213,7 +194,7 @@
                     with.legend = TRUE, legend.bg = "white",
                     legend.pos = "topleft", legend.cex = 0.8,
                     legend.pref = "", legend.postf = "", 
-                    legend.alpha = alpha, qqb0=NULL){
+                    legend.alpha = alpha, qqb0=NULL, debug = FALSE){
 
    x <- sort(unique(x))
    if("gaps" %in% names(getSlots(class(D))))
@@ -231,7 +212,7 @@
    
 
    qqb <- if(is.null(qqb0)) qqbounds(x,D,alpha,n,withConf.pw, withConf.sim,
-                   exact.sCI,exact.pCI,nosym.pCI) else qqb0
+                   exact.sCI,exact.pCI,nosym.pCI, debug) else qqb0
                    
    qqb$crit <- qqb$crit[SI.in,]
 
