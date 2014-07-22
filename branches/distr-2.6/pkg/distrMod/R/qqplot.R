@@ -96,7 +96,8 @@ setMethod("qqplot", signature(x = "ANY",
              legend.cex = 0.8,     ## magnification factor for the legend
              legend.pref = "",     ## prefix for legend  text
              legend.postf = "",    ## postfix for legend text
-             legend.alpha = alpha.CI ## nominal level of CI
+             legend.alpha = alpha.CI, ## nominal level of CI
+             debug = FALSE ## shall additional debug output be printed out?
     ){ ## return value as in stats::qqplot
 
     mc <- match.call(call = sys.call(sys.parent(1)))
@@ -214,10 +215,10 @@ setMethod("qqplot", signature(x = "ANY",
                   nosym.pCI = nosym.pCI, with.legend = with.legend,
                   legend.bg = legend.bg, legend.pos = legend.pos,
                   legend.cex = legend.cex, legend.pref = legend.pref,
-                  legend.postf = legend.postf, legend.alpha = legend.alpha)
+                  legend.postf = legend.postf, legend.alpha = legend.alpha, debug = debug)
         }else{
            qqb <- qqbounds(sort(unique(xy)),y,alpha.CI,n,withConf.pw, withConf.sim,
-                           exact.sCI,exact.pCI,nosym.pCI)
+                           exact.sCI,exact.pCI,nosym.pCI, debug = debug)
         }
        }
     }

@@ -23,7 +23,8 @@ qqplot(x, y, ...)
     check.NotInSupport = TRUE, col.NotInSupport = "red",
     with.legend = TRUE, legend.bg = "white",
     legend.pos = "topleft", legend.cex = 0.8, 
-    legend.pref = "", legend.postf = "",  legend.alpha = alpha.CI)
+    legend.pref = "", legend.postf = "",  legend.alpha = alpha.CI,
+    debug = FALSE)
 \S4method{qqplot}{ANY,ProbFamily}(x, y,
    n = length(x), withIdLine = TRUE, withConf = TRUE,
    withConf.pw  = withConf,  withConf.sim = withConf,
@@ -110,6 +111,7 @@ in \code{support(y)}?}
 \item{legend.pref}{character to be prepended to legend text}
 \item{legend.postf}{character to be appended to legend text}
 \item{legend.alpha}{nominal coverage probability}
+\item{debug}{logical; if \code{TRUE} additional output to debug confidence bounds.}
 }
 \description{
   We generalize function \code{\link[stats:qqnorm]{qqplot}} from package \pkg{stats} to
