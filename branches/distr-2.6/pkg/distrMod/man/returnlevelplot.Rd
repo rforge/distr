@@ -51,7 +51,7 @@ class \code{"ProbFamily"}.}
 \item{datax}{logical; shall data be plotted on x-axis?}
 \item{MaxOrPOT}{a character string specifying whether it is used for
                 block maxima ("Max") or for points over threshold ("POT");
-                must be one of ‘"Max"’ (default) or ‘"POT"’.
+                must be one of "Max" (default) or "POT".
                 You can specify just the initial letter.}
 \item{npy}{number of observations per year/block.}
 \item{main}{Main title}
