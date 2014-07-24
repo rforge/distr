@@ -106,6 +106,7 @@ setMethod("qqplot", signature(x = "ANY",
     mcl <- as.list(mc)[-1]
     mcl$withSweave <- NULL
     mcl$mfColRow <- NULL
+    mcl$debug <- NULL
     force(x)
 
 
