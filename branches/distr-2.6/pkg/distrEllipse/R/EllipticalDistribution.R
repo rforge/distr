@@ -17,7 +17,7 @@ EllipticalDistribution <- function(radDistr = sqrt(Chisq(df = length(loc))),
       stop("distr must have pos. support")
 
    dr <- d(radDistr)
-   dlog <- if(distr:::.inArgs("log", dr))
+   dlog <- if(.inArgs("log", dr))
            quote(dr(r, log = TRUE)) else quote(log(dr(r)))
 
    if(is(radDistr,"AbscontDistribution")){

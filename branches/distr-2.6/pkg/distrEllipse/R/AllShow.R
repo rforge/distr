@@ -35,7 +35,7 @@ setMethod("show", "SphericalDistribution",
           function(object){
             cls <- class(object)[1]
             cat(showobj(object, className = cls))
-            ws <- distr:::.IssueWarn(object@.withArith, object@.withSim)
+            ws <- .IssueWarn(object@.withArith, object@.withSim)
             if(!is.null(ws$msgA)) warning(ws$msgA)
             if(!is.null(ws$msgS)) warning(ws$msgS)
             }
