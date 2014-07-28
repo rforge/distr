@@ -47,7 +47,7 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
           iL <- length(to.draw[to.draw <= 3])+length(l2dpl)
           iLD <- (1:iL)[to.draw <= 3]
           iLL <- (1:iL)[to.draw > 3]
-          inner <- distr:::.fillList(inner,iL)          
+          inner <- .fillList(inner,iL)
           innerD <- if(length(iLD)) inner[iLD] else NULL
           innerL <- if(length(iLL)) inner[iLL] else NULL
         }else{innerLog <- innerD <- innerL <- inner}
@@ -115,7 +115,7 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
         lineT <- NA
 
      .mpresubs <- function(inx)
-                    distr:::.presubs(inx, c("%C", "%D", "%A"),
+                    .presubs(inx, c("%C", "%D", "%A"),
                           c(as.character(class(x)[1]),
                             as.character(date()),
                             as.character(deparse(xc))))

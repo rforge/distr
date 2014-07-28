@@ -146,8 +146,6 @@
 
 ##########################################################################
 
-## caching to speed up things:
-.inArgs <- distr:::.inArgs
 
 .callParamFamParameter <- function(PFam, theta, idx, nuis, fixed){
 

@@ -30,14 +30,7 @@
 }
 
 
-### helper functions from distr
 
-.confqq          <- distr:::.confqq
-.isReplicated    <- distr:::.isReplicated
-.makeLenAndOrder <- distr:::.makeLenAndOrder
-.inGaps          <- distr:::.inGaps
-.deleteItemsMCL  <- distr:::.deleteItemsMCL
-.NotInSupport    <- distr:::.NotInSupport
 
 setMethod("qqplot", signature(x = "ANY",
                               y = "UnivariateDistribution"),
