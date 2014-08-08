@@ -1,6 +1,6 @@
 Package: distr
-Version: 2.5.2
-Date: 2013-09-12
+Version: 2.5.3
+Date: 2014-08-08
 Title: Object oriented implementation of distributions
 Description: S4 Classes and Methods for distributions
 Authors@R: c(person("Florian", "Camphausen", role=c("aut")),
@@ -10,7 +10,7 @@ Authors@R: c(person("Florian", "Camphausen", role=c("aut")),
         person("R Core Team", role = c("ctb", "cph"), 
 		comment="for source file ks.c/ routines 'pKS2' and 'pKolmogorov2x'"))
 Depends: R(>= 2.14.0), methods, graphics, startupmsg, sfsmisc, SweaveListingUtils
-Suggests: distrEx
+Suggests: distrEx, svUnit (>= 0.7-11)
 Imports: stats
 ByteCompile: yes
 Encoding: latin1
