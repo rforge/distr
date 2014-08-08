@@ -120,7 +120,9 @@ in \code{support(y)}?}
 \item{legend.alpha}{nominal coverage probability}
 }
 \description{
-  We generalize function \code{\link[stats:qqnorm]{returnlevelplot}} from package \pkg{stats} to
+  We generalize the return level plot (which is one of the diagnostical
+  plots provided package \pkg{ismev}, e.g., in function
+  \code{\link[ismev:gev.diag]{gev.diag}})  to
   be applicable to distribution and probability model objects. In this context,
   \code{returnlevelplot} produces a QQ plot of data (argument \code{x}) against
    a (model) distribution.
