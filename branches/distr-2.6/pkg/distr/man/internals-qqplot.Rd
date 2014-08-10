@@ -27,11 +27,11 @@
 .makeLenAndOrder(x,ord)
 
 .BinomCI.in(t,p.bi,x.i, del.i=0,D.i,n.i,alpha.i)
-.BinomCI(x,p.b,D,n,alpha)
-.BinomCI.nosym(x,p.b,D,n,alpha)
+.BinomCI(x,p.b,D,n,alpha, silent0 = TRUE)
+.BinomCI.nosym(x,p.b,D,n,alpha, silent0 = TRUE)
 
-.q2kolmogorov(alpha,n,exact=(n<100))
-.q2pw(x,p.b,D,n,alpha,exact=(n<100),nosym=FALSE)
+.q2kolmogorov(alpha,n,exact=(n<100), silent0 = TRUE)
+.q2pw(x,p.b,D,n,alpha,exact=(n<100),nosym=FALSE, silent0 = TRUE)
 
 .confqq(x,D, datax=TRUE, withConf.pw  = TRUE,  withConf.sim = TRUE, alpha,
                     col.pCI, lty.pCI, lwd.pCI, pch.pCI, cex.pCI,
@@ -94,7 +94,9 @@ are \code{x.i+t/sqrt(n)+del.i/sqrt(n)} and \code{x.i-t/sqrt(n)+del.i/sqrt(n)}.}
 \item{legend.alpha}{nominal coverage probability}
 \item{mcl}{arguments in call as a list}
 \item{qqb0}{precomputed return value of \code{qqbounds}}
-\item{debug}{logical; if \code{TRUE} additional output to debug confidence bounds.}
+\item{debug}{logical; if \code{TRUE} additional output to debug confidence bounds. }
+\item{silent0}{logical; it is used as argument \code{silent} in \code{try}-catches
+          within this function. }
 }
 
 \details{

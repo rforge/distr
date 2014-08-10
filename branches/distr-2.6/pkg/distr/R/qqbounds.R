@@ -25,8 +25,13 @@ qqbounds <- function(x,D,alpha,n,withConf.pw, withConf.sim,
      print(l.x)
      print(c(alpha,n,exact.sCI))
    }
-   c.crit <- if(withConf.sim) try(.q2kolmogorov(alpha,n,exact.sCI), silent=TRUE) else NULL
-   c.crit.i <- if(withConf.pw) try(.q2pw(x.in,p.r,D,n,alpha,exact.pCI,nosym.pCI),silent=TRUE) else NULL
+
+   silent0 <- !debug
+
+   c.crit <- if(withConf.sim) try(.q2kolmogorov(alpha,n,exact.sCI, silent0),
+                                   silent=silent0) else NULL
+   c.crit.i <- if(withConf.pw) try(.q2pw(x.in,p.r,D,n,alpha,exact.pCI,nosym.pCI,
+                                         silent0),silent=silent0) else NULL
    #print(cbind(c.crit,c.crit.i))
    if(debug){
       print(str(c.crit))
