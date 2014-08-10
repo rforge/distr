@@ -18,12 +18,17 @@ qqbounds <- function(x,D,alpha,n,withConf.pw, withConf.sim,
    p.l <- p.l(D)(x.in)
    l.x <- length(x.in)
    if(debug){
+     cat("the partition into discrete mass points and cont. points gives\n")
      print(SI)
+     cat("x.in is\n")
      print(x.in)
+     cat("number of mass points:\n")
      print(sum(SI.in))
+     cat("p.r and p.l\n")
      print(cbind(p.r,p.l))
+     cat("length of l.x\n")
      print(l.x)
-     print(c(alpha,n,exact.sCI))
+     print(c(alpha=alpha,n=n,exact.sCI=exact.sCI))
    }
 
    silent0 <- !debug
@@ -34,7 +39,9 @@ qqbounds <- function(x,D,alpha,n,withConf.pw, withConf.sim,
                                          silent0),silent=silent0) else NULL
    #print(cbind(c.crit,c.crit.i))
    if(debug){
+      cat("returned c.crit is\n")
       print(str(c.crit))
+      cat("returned c.crit.i is\n")
       print(str(c.crit.i))
    }
    te.i <- withConf.pw  & !is(c.crit.i,"try-error")
