@@ -6,6 +6,16 @@
  package-individual development, but rather are chosen for the 
  distrXXX family as a whole in order to ease updating "depends" 
  information)
+
+##############
+v 2.6
+##############
+
+under the hood:
++ used delayedAssign() for assignment of .mv2RobExtremes() to 
+  former package internal constants EULERMASCHERONICONSTANT and
+  APERYCONSTANT)
+
  
 ##############
 v 2.5

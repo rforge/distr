@@ -8,6 +8,19 @@
  information)
 
 ##############
+v 2.6
+##############
+
+user-visible CHANGES:
+
++ updated CITATION file
++ removed some outdated references from uni-bayreuth
++ updated references in vignette distr.Rnw
+
+under the hood
++ added svn-properties to distr.Rnw
+
+##############
 v 2.5
 ##############
 

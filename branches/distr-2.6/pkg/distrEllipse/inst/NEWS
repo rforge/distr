@@ -8,6 +8,16 @@
  information)
 
 ##############
+v 2.6
+##############
+
+under the hood:
+
++ removed ::: internal dependencies (within distr-Fam of pkgs) by copying 
+  respective routines
+
+
+##############
 v 2.5
 ##############
 

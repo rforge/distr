@@ -8,6 +8,38 @@
  information)
  
 ##############
+v 2.6
+##############
+
+user visible changes
++ added reference to JSS paper in IllustCLT
++ updated references in vignette 'newDistributions'
+
+under the hood:
+
+-qqplot: 
+ + (already there for a while) gains argument 'debug' to be able to
+   trace where computation of confidence bounds fails; this 'debug'
+   argument has now been enhanced in the sense that now more detailed
+   information about which helper function was the culprit and where 
+   (uniroot/optimize) this happens
+-qqbounds:
+ + the respective helper functions .BinomCI.nosym, .BinomCI,
+   .q2kolmogorov capsulate their calls to uniroot / optimize in 
+   individual try-catches (instead of / on top of the one in 
+   qqbounds itself) so that in case of several evaluations (e.g. in
+   pointwise CIs) at least a subset of valid points is produced.
+   In addition the search interval is now more flexible: it is bound
+   away from 0 below and from the upper bound from above, and this
+   bound moves to the respective lower/upper bounds in up to 20 trials.
+   Also, the search interval for .q2kolmogorov if argument 'exact' is
+   TRUE (i.e., if pKolmogorov2x is called) has been refined. This 
+   should make the simultaneous intervals more stable.
+ + re-included faster right-tail approximation in C-code K(int n, double d)  
+   included from R-Core (was commented out there) [ks.c in folder src in
+   tar-ball, ll 153-155]
+
+##############
 v 2.5.3
 ##############
 

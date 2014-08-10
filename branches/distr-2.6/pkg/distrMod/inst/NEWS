@@ -8,6 +8,38 @@
  information)
 
 ##############
+v 2.6
+##############
+
+user-visible CHANGES:
++ introduced dropZeroDensity argument to ML estimators 
+  
+GENERAL ENHANCEMENTS:
+
+under the hood:
++ zero dropping (see argument 'dropZeroDensity' above)
+  --Optimizers like optim require finite values, so get problems when 
+  negative loglikelihood is evaluated, so optionally, and by default,
+  values with density/likelihood 0 are dropped from optimization
++ removed ::: internal dependencies (within distr-Fam of pkgs) by copying 
+  respective routines
++ qqplot:
+   * (already there for a while) gains ability to interchange x- and y-
+      axis by argument 'datax' for compatibility with other qqplots 
+   * gains new methods for object of class "Estimate" (which could also be 
+     seen as "fitted" objects...)
++ returnlevelplot
+   * similar 
++ new  .checkEstClassForParamFamily-method to be able to cast an estimator
+  to a return class specific to the resp. parametric famil  
+  
+  BUGFIXES:
+
++ fixed issue with slot withPosRestr in ParamFamParameter.R 
++ fixed issue with check.validity (reported by B.Spangl)
++ fixed some minor issue in existsPIC (in case we get 0 matrix, and less strict tolerance) 
+ 
+##############
 v 2.5
 ##############
 

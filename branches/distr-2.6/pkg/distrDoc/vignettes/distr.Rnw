@@ -3564,7 +3564,7 @@ legend("topleft",
 \begin{thebibliography}{8}
 
 \bibitem{Beng:03}
-Bengtsson H. 
+Bengtsson H. (2003):
 \newblock The {R.oo} package - object-oriented programming with references using 
 standard {R} code.
 \newblock In: Hornik K., Leisch F. and Zeileis A. (Eds.) {\em
@@ -3573,43 +3573,43 @@ standard {R} code.
 \newblock Published as http://www.ci.tuwien.ac.at/Conferences/DSC-2003/ 
 
 \bibitem{Cham:98}
-Chambers J.M. 
+Chambers J.M.  (1998):
 \newblock {\em {Programming with data. A guide to the S language}\/}.
 \newblock {Springer}.
 \newblock http://cm.bell-labs.com/stat/Sbook/index.html
 
 \bibitem{OOPGent}
-Gentleman R.
+Gentleman R. (2003):
 \newblock {\em Object Orientated Programming. Slides of a Short Course held in 
 Auckland\/}.
 \newblock http://www.stat.auckland.ac.nz/S-Workshop/Gentleman/Methods.pdf
 
 \bibitem{MK:05}
-Kohl M. 
+Kohl M.  (2005):
 \newblock {\em Numerical Contributions to the Asymptotic Theory of Robustness\/}. 
 \newblock {Dissertation}, Universit\"at Bayreuth. 
 \newblock See also http://stamats.de/ThesisMKohl.pdf
 
 \bibitem{K:R:S:04}
-Kohl M., Ruckdeschel P. and Stabla T.
-\newblock {General Purpose Convolution Algorithm for Distributions in S4-Classes 
+Ruckdeschel P. and Kohl, M. (2014):
+\newblock {General Purpose Convolution Algorithm for Distributions in S4-Classes
 by means of FFT}.
-\newblock unpublished manual
+\newblock {\em J. Statist. Software\/}, {\bf 59}(4): 1--25.
 
 \bibitem{NumR:92}
-Press W.H., Teukolsky S.A., Vetterling W.T. and Flannery B.P.
+Press W.H., Teukolsky S.A., Vetterling W.T. and Flannery B.P. (1992):
 \newblock {\em {Numerical recipes in C. The art of scientific computing.}\/}
 \newblock {Cambridge Univ. Press}, 2. Aufl.
 
 \bibitem{Ric:88}
-Rice J.A. 
+Rice J.A. (1988):
 \newblock {\em {Mathematical statistics and data analysis}\/}.
 \newblock The Wadsworth \& Brooks/Cole Statistics/Probability Series.
   {Wadsworth \& Brooks/Cole Advanced Books \& Software}, Pacific Grove,
   California.
 
 \bibitem{R:K:S:C:04}
-Ruckdeschel P., Kohl M., Stabla T., and Camphausen F. 
+Ruckdeschel P., Kohl M., Stabla T., and Camphausen F. (2006):
 \newblock {S4 Classes for Distributions.} 
 \newblock {\em R-News\/}, {\bf 6}(2): 10--13.
 \newblock http://CRAN.R-project.org/doc/Rnews/Rnews\_2006-2.pdf

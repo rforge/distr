@@ -336,6 +336,11 @@ P. Ruckdeschel, M. Kohl, T. Stabla, F. Camphausen (2006):
 S4 Classes for Distributions, \emph{R News}, \emph{6}(2), 2-6. 
 \url{http://CRAN.R-project.org/doc/Rnews/Rnews_2006-2.pdf}
 
+P. Ruckdeschel and M. Kohl (2014):
+   General purpose convolution algorithm for distributions
+  in S4-Classes by means of FFT. \emph{J. Statist. Softw.}
+  \bold{59}(4): 1-25.
+
 a vignette for packages \pkg{distr}, \pkg{distrSim}, \pkg{distrTEst}, and 
 \pkg{distrEx} is included into the mere documentation package \pkg{distrDoc} 
 and may be called by 
