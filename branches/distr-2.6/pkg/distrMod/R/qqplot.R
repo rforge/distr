@@ -74,6 +74,7 @@ setMethod("qqplot", signature(x = "ANY",
              lwd.sCI = 2,         ## line width for the simultaneous CI
              pch.sCI = par("pch"),## symbol for points (for discrete mass points) in simultaneous CI
              cex.sCI = par("cex"),## magnification factor for points (for discrete mass points) in simultaneous CI
+             added.points.CI = TRUE, ## should the CIs be drawn through additional points?
              cex.pch = par("cex"),## magnification factor for the plotted symbols
              col.pch = par("col"),## color for the plotted symbols
              cex.lbl = par("cex"),## magnification factor for the plotted observation labels
@@ -100,6 +101,7 @@ setMethod("qqplot", signature(x = "ANY",
     mcl$withSweave <- NULL
     mcl$mfColRow <- NULL
     mcl$debug <- NULL
+    mcl$added.points.CI <- NULL
     force(x)
 
 
@@ -182,6 +184,13 @@ setMethod("qqplot", signature(x = "ANY",
        if(#is(y,"AbscontDistribution")&&
        withConf){
           xy <- unique(sort(c(x,yc.o)))
+          if(added.points.CI){
+             mxy <- min(xy); Mxy <- max(xy)
+             mnxy <- (mxy+Mxy)/2
+             sxy <- (Mxy-mxy)/2*1.1
+             xyn <- seq(mnxy-sxy,mnxy+sxy,length.out=500)
+             xy <- unique(sort(c(xy,xyn)))
+          }
           xy <- xy[!.NotInSupport(xy,y)]
           lxy <- length(xy)
           if(is(y,"DiscreteDistribution")){

@@ -28,6 +28,8 @@ under the hood:
       axis by argument 'datax' for compatibility with other qqplots 
    * gains new methods for object of class "Estimate" (which could also be 
      seen as "fitted" objects...)
+   * additional argument added.points.CI to allow for  additional evaluation 
+     points for the confidence intervals in the range of the seen data	 
 + returnlevelplot
    * similar 
 + new internal method  .checkEstClassForParamFamily-method to be called 
@@ -44,7 +46,7 @@ under the hood:
 + fixed issue with slot withPosRestr in ParamFamParameter.R 
 + fixed issue with check.validity (reported by B.Spangl)
 + fixed some minor issue in existsPIC (in case we get 0 matrix, and less strict tolerance) 
- 
++ fixed issue with returnlevelplot discovered by B. Spangl -- points had not been ordered 
 ##############
 v 2.5
 ##############

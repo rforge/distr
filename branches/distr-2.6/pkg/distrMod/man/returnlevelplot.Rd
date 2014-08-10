@@ -18,7 +18,7 @@ returnlevelplot(x, y, ...)
     col.pCI = "orange", lty.pCI = 3, lwd.pCI = 2, pch.pCI = par("pch"),
     cex.pCI = par("cex"),
     col.sCI = "tomato2", lty.sCI = 4, lwd.sCI = 2, pch.sCI = par("pch"),
-    cex.sCI = par("cex"),
+    cex.sCI = par("cex"), added.points.CI = TRUE,
     cex.pch = par("cex"), col.pch = par("col"),
     cex.lbl = par("cex"), col.lbl = par("col"), adj.lbl = NULL,
     alpha.trsp = NA, jit.fac = 0,
@@ -101,6 +101,8 @@ pointwise CI}
 \item{pch.sCI}{symbol for points (for discrete mass points) in simultaneous CI}
 \item{cex.sCI}{magnification factor for points (for discrete mass points) in
 simultaneous CI}
+\item{added.points.CI}{logical; should CIs be plotted through additional points
+      (and not only through data points)? }
 \item{cex.pch}{magnification factor for the plotted symbols}
 \item{col.pch}{color for the plotted symbols}
 \item{cex.lbl}{magnification factor for the plotted observation labels}

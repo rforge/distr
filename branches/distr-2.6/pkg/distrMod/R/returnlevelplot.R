@@ -48,6 +48,7 @@ setMethod("returnlevelplot", signature(x = "ANY",
              lwd.sCI = 2,         ## line width for the simultaneous CI
              pch.sCI = par("pch"),## symbol for points (for discrete mass points) in simultaneous CI
              cex.sCI = par("cex"),## magnification factor for points (for discrete mass points) in simultaneous CI
+             added.points.CI = TRUE, ## should the CIs be drawn through additional points?
              cex.pch = par("cex"),## magnification factor for the plotted symbols
              col.pch = par("col"),## color for the plotted symbols
              cex.lbl = par("cex"),## magnification factor for the plotted observation labels
@@ -80,13 +81,15 @@ setMethod("returnlevelplot", signature(x = "ANY",
     mcl$mfColRow <- NULL
     mcl$type <-NULL
     mcl$debug <- NULL
+    mcl$added.points.CI <- NULL
     force(x)
 
 
-    xj <- x
-    if(any(.isReplicated(x)))
+    xj <- sort(x)
+    if(any(.isReplicated(x))&&jit.fac>0)
        xj[.isReplicated(x)] <- jitter(x[.isReplicated(x)], factor=jit.fac)
 
+    xj <- sort(xj)
     ord.x <- order(xj)
 
     p2rl <- function(pp){
@@ -94,7 +97,7 @@ setMethod("returnlevelplot", signature(x = "ANY",
                return(if(MaxOrPOT=="Max") -1/log(pp) else  1/(1-pp)/npy)
     }
 
-    pp <- ppoints(n)
+    pp <- ppoints(length(xj))
     yc.o <- q(y)(pp)
     ycl <- p2rl(yc.o)
 
@@ -108,15 +111,15 @@ setMethod("returnlevelplot", signature(x = "ANY",
     rxymean <- (max(xyall)+min(xyall))/2
 
     xyallc  <- seq(from=rxymean-rxyall,to=rxymean+rxyall, length.out=300)
-    print(xyallc)
+#    print(xyallc)
     pxyall  <- p(y)(xyallc)
-    print(pxyall)
+#    print(pxyall)
 
     pxyallc <- p2rl(xyallc)
      xyallc <-  xyallc[pxyall>0.00001 & pxyall<0.99999]
     pxyallc <- pxyallc[pxyall>0.00001 & pxyall<0.99999]
 
-    print(cbind(pxyallc,xyallc))
+#    print(cbind(pxyallc,xyallc))
 
     if("support" %in% names(getSlots(class(y))))
        ycl <- sort(jitter(ycl, factor=jit.fac))
@@ -208,7 +211,12 @@ setMethod("returnlevelplot", signature(x = "ANY",
        qqb <- NULL
        if(#is(y,"AbscontDistribution")&&
        withConf){
-          xy <- unique(sort(c(x,yc.o)))
+
+          if(added.points.CI){
+             xy <- unique(sort(c(x,xj,xyallc,yc.o)))
+          }else{
+             xy <- unique(sort(c(x,xj,yc.o)))
+          }
           xy <- xy[!.NotInSupport(xy,y)]
           lxy <- length(xy)
           if(is(y,"DiscreteDistribution")){
@@ -243,7 +251,7 @@ setMethod("returnlevelplot", signature(x = "ANY",
                   qqb0=qqb, debug = debug)
        }
     }}
-    return(c(ret,qqb))
+    return(invisible(c(ret,qqb)))
     })
 
 ## into distrMod
@@ -255,16 +263,16 @@ setMethod("returnlevelplot", signature(x = "ANY",
     ylab = deparse(substitute(y)), ...){
 
     mc <- match.call(call = sys.call(sys.parent(1)))
-    if(missing(xlab)) mc$xlab <- as.character(deparse(mc$x))
-    if(missing(ylab)) mc$ylab <- as.character(deparse(mc$y))
+    if(missing(xlab)) mc$xlab <- paste(gettext("Return Level of"), as.character(deparse(mc$x)))
+    if(missing(ylab)) mc$ylab <- paste(gettext("Return Period at"), as.character(deparse(mc$y)))
     mcl <- as.list(mc)[-1]
 
     mcl$y <- yD <- y@distribution
     if(!is(yD,"UnivariateDistribution"))
        stop("Not yet implemented.")
 
-    return(do.call(getMethod("returnlevelplot", signature(x="ANY", y="UnivariateDistribution")),
-            args=mcl))
+    return(invisible(do.call(getMethod("returnlevelplot", signature(x="ANY", y="UnivariateDistribution")),
+            args=mcl)))
     })
 
 setMethod("returnlevelplot", signature(x = "ANY",
@@ -275,8 +283,7 @@ setMethod("returnlevelplot", signature(x = "ANY",
     ylab = deparse(substitute(y)), ...){
 
     mc <- match.call(call = sys.call(sys.parent(1)))
-    if(missing(xlab)) mc$xlab <- as.character(deparse(mc$x))
-    if(missing(ylab)) mc$ylab <- as.character(deparse(mc$y))
+    if(missing(xlab)) mc$xlab <- paste(gettext("Return Level of"), as.character(deparse(mc$x)))
     mcl <- as.list(mc)[-1]
 
     param <- ParamFamParameter(main=untransformed.estimate(y), nuisance=nuisance(y),
@@ -292,6 +299,8 @@ setMethod("returnlevelplot", signature(x = "ANY",
 
     PFam0 <- modifyModel(PFam, param)
     mcl$y <- PFam0
-    return(do.call(getMethod("returnlevelplot", signature(x="ANY", y="ProbFamily")),
-            args=mcl))
+    if(missing(ylab)) mc$ylab <- paste(gettext("Return Period at fitted"), name(PFam0))
+
+    return(invisible(do.call(getMethod("returnlevelplot", signature(x="ANY", y="ProbFamily")),
+            args=mcl)))
     })
