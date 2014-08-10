@@ -57,5 +57,5 @@ MLEstimator <- function(x, ParamFamily, startPar = NULL,
     res@name <- "Maximum likelihood estimate"
     res@completecases <- completecases
     
-    return(res)
+    return(.checkEstClassForParamFamily(ParamFamily,res))
 }

@@ -30,9 +30,15 @@ under the hood:
      seen as "fitted" objects...)
 + returnlevelplot
    * similar 
-+ new  .checkEstClassForParamFamily-method to be able to cast an estimator
-  to a return class specific to the resp. parametric famil  
-  
++ new internal method  .checkEstClassForParamFamily-method to be called 
+  immediately before returning an Estimate object (in functions Estimator(), 
+  MCEstimator(), MDEstimator(), MLEstimator()); this allows to return an
+  object of S4 class specific to the resp. parametric family (by means of
+  S4 method dispatch); this is used in pkg 'RobExtremes' to produce, e.g., 
+  objects of class "GEVMCEstimate", i.e. which inherit from both 
+  "MCEstimate" and "GEVEstimate", so that a diag-method for 
+  "GEVEstimate" becomes available for this class.
+
   BUGFIXES:
 
 + fixed issue with slot withPosRestr in ParamFamParameter.R 

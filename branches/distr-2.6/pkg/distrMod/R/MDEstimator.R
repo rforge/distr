@@ -56,6 +56,6 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist,
     res <- do.call(.process.meCalcRes, argList)
 
     res@completecases <- completecases
-    return(res)
+    return(.checkEstClassForParamFamily(ParamFamily,res))
 }
 

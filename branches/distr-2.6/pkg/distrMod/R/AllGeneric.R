@@ -290,3 +290,7 @@ if(!isGeneric("scalename")){
 if(!isGeneric("returnlevelplot")){
     setGeneric("returnlevelplot", function(x, y, ...) standardGeneric("returnlevelplot"))
 }
+if(!isGeneric(".checkEstClassForParamFamily")){
+   setGeneric(".checkEstClassForParamFamily", function(PFam, estimator)
+               standardGeneric(".checkEstClassForParamFamily"))
+}

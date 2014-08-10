@@ -58,5 +58,5 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name,
     res <- do.call(.process.meCalcRes, argList)
     res@completecases <- completecases
     
-    return(res)
+    return(.checkEstClassForParamFamily(ParamFamily,res))
 }
