@@ -25,17 +25,25 @@ returnlevelplot(x, y, ...)
     check.NotInSupport = TRUE, col.NotInSupport = "red",
     with.legend = TRUE, legend.bg = "white",
     legend.pos = "topleft", legend.cex = 0.8,
-    legend.pref = "", legend.postf = "",  legend.alpha = alpha.CI)
+    legend.pref = "", legend.postf = "",  legend.alpha = alpha.CI,
+    debug = FALSE)
 \S4method{returnlevelplot}{ANY,ProbFamily}(x, y,
    n = length(x), withIdLine = TRUE, withConf = TRUE,
    withConf.pw  = withConf,  withConf.sim = withConf,
     plot.it = TRUE, xlab = deparse(substitute(x)),
     ylab = deparse(substitute(y)), ...)
+\S4method{returnlevelplot}{ANY,Estimate}(x, y,
+   n = length(x), withIdLine = TRUE, withConf = TRUE,
+   withConf.pw  = withConf,  withConf.sim = withConf,
+    plot.it = TRUE, xlab = deparse(substitute(x)),
+    ylab = deparse(substitute(y)), ...)
+
 }
 \alias{returnlevelplot}
 \alias{returnlevelplot-methods}
 \alias{returnlevelplot,ANY,ProbFamily-method}
 \alias{returnlevelplot,ANY,UnivariateDistribution-method}
+\alias{returnlevelplot,ANY,Estimate-method}
 
 \arguments{
 \item{x}{data to be checked for compatibility with distribution/model \code{y}.}
@@ -118,11 +126,12 @@ in \code{support(y)}?}
 \item{legend.pref}{character to be prepended to legend text}
 \item{legend.postf}{character to be appended to legend text}
 \item{legend.alpha}{nominal coverage probability}
+\item{debug}{logical; if \code{TRUE} additional output to debug confidence bounds.}
 }
 \description{
   We generalize the return level plot (which is one of the diagnostical
   plots provided package \pkg{ismev}, e.g., in function
-  \code{\link[ismev:gev.diag]{gev.diag}})  to
+  \code{\link[ismev:gev.diag]{gev.diag}}), see also Coles' book below,  to
   be applicable to distribution and probability model objects. In this context,
   \code{returnlevelplot} produces a QQ plot of data (argument \code{x}) against
    a (model) distribution.
@@ -143,21 +152,37 @@ in \code{support(y)}?}
 \details{
 \describe{
 \item{returnlevelplot}{\code{signature(x = "ANY", y = "UnivariateDistribution")}:
-produces a QQ plot of a dataset \code{x} against the theoretical
+produces a return level plot of a dataset \code{x} against the theoretical
 quantiles of distribution \code{y}.}
 \item{returnlevelplot}{\code{signature(x = "ANY", y = "ProbFamily")}:
-produces a QQ plot of a dataset \code{x} against the theoretical
+produces a return level plot of a dataset \code{x} against the theoretical
 quantiles of the model distribution of model \code{y}. Passed through
 the \code{\dots} argument, all arguments valid for
 \code{signature(x = "ANY", y = "UnivariateDistribution")}
 are also valid for this signature.}
+\item{returnlevelplot}{\code{signature(x = "ANY", y = "Estimate")}:
+produces a return level plot of a dataset \code{x} against the theoretical
+quantiles of the model distribution of the model that can be reconstructed
+from the estimator \code{y}; more specifically, it tries to get hand at the
+argument \code{'ParamFamily'} of the esimator's call; if this is available,
+internally this model is shifted to the estimated parameter by a call to
+\code{modifyModel}, and then this shifted model is used in a call to the
+\code{(x = "ANY", y = "UnivariateDistribution")}-method. Passed through
+the \code{\dots} argument, all arguments valid for
+\code{signature(x = "ANY", y = "UnivariateDistribution")}
+are also valid for this signature.}
+
 }
 }
 
 \references{
-  Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988)
-  \emph{The New S Language}.
-  Wadsworth & Brooks/Cole.
+  ismev: An   Introduction to Statistical Modeling of Extreme Values. R package
+  version 1.39. http://CRAN.R-project.org/package=ismev; original S functions
+  written by Janet E. Heffernan with R port and R documentation provided by
+  Alec G. Stephenson. (2012).
+
+  Coles, S. (2001). \emph{An introduction
+  to statistical modeling of extreme values.} London: Springer.
 }
 \author{
   Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}

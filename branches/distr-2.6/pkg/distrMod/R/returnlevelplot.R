@@ -63,7 +63,8 @@ setMethod("returnlevelplot", signature(x = "ANY",
              legend.cex = 0.8,     ## magnification factor for the legend
              legend.pref = "",     ## prefix for legend  text
              legend.postf = "",    ## postfix for legend text
-             legend.alpha = alpha.CI ## nominal level of CI
+             legend.alpha = alpha.CI, ## nominal level of CI
+             debug = FALSE ## shall additional debug output be printed out?
     ){ ## return value as in stats::qqplot
 
     MaxOrPOT <- match.arg(MaxOrPOT)
@@ -78,6 +79,7 @@ setMethod("returnlevelplot", signature(x = "ANY",
     mcl$withSweave <- NULL
     mcl$mfColRow <- NULL
     mcl$type <-NULL
+    mcl$debug <- NULL
     force(x)
 
 
@@ -227,7 +229,7 @@ setMethod("returnlevelplot", signature(x = "ANY",
           }
 
         qqb <- qqbounds(sort(unique(xy)),y,alpha.CI,n,withConf.pw, withConf.sim,
-                           exact.sCI,exact.pCI,nosym.pCI)
+                           exact.sCI,exact.pCI,nosym.pCI, debug = debug)
         qqb$crit <- p2rl(qqb$crit)
         if(plot.it){
           qqb <- .confqq(xy, y, datax, withConf.pw, withConf.sim, alpha.CI,
@@ -238,7 +240,7 @@ setMethod("returnlevelplot", signature(x = "ANY",
                   legend.bg = legend.bg, legend.pos = legend.pos,
                   legend.cex = legend.cex, legend.pref = legend.pref,
                   legend.postf = legend.postf, legend.alpha = legend.alpha,
-                  qqb0=qqb)
+                  qqb0=qqb, debug = debug)
        }
     }}
     return(c(ret,qqb))
@@ -265,3 +267,31 @@ setMethod("returnlevelplot", signature(x = "ANY",
             args=mcl))
     })
 
+setMethod("returnlevelplot", signature(x = "ANY",
+                              y = "Estimate"), function(x, y,
+                              n = length(x), withIdLine = TRUE, withConf = TRUE,
+    withConf.pw  = withConf,  withConf.sim = withConf,
+    plot.it = TRUE, xlab = deparse(substitute(x)),
+    ylab = deparse(substitute(y)), ...){
+
+    mc <- match.call(call = sys.call(sys.parent(1)))
+    if(missing(xlab)) mc$xlab <- as.character(deparse(mc$x))
+    if(missing(ylab)) mc$ylab <- as.character(deparse(mc$y))
+    mcl <- as.list(mc)[-1]
+
+    param <- ParamFamParameter(main=untransformed.estimate(y), nuisance=nuisance(y),
+                               fixed=fixed(y))
+
+    es.call <- y@estimate.call
+    nm.call <- names(es.call)
+    PFam <- NULL
+    if("ParamFamily" %in% nm.call)
+       PFam <- eval(as.list(es.call)[["ParamFamily"]])
+    if(is.null(PFam))
+       stop("There is no object of class 'ProbFamily' in the call of 'x'")
+
+    PFam0 <- modifyModel(PFam, param)
+    mcl$y <- PFam0
+    return(do.call(getMethod("returnlevelplot", signature(x="ANY", y="ProbFamily")),
+            args=mcl))
+    })
