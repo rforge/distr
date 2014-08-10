@@ -114,6 +114,6 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
           }
        }
     }
-    return(c(ret,qqb))
+    return(invisible(c(ret,qqb)))
     })
     
