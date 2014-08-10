@@ -30,10 +30,16 @@ qqplot(x, y, ...)
    withConf.pw  = withConf,  withConf.sim = withConf,
     plot.it = TRUE, xlab = deparse(substitute(x)),
     ylab = deparse(substitute(y)), ...)
+\S4method{qqplot}{ANY,Estimate}(x, y,
+   n = length(x), withIdLine = TRUE, withConf = TRUE,
+   withConf.pw  = withConf,  withConf.sim = withConf,
+    plot.it = TRUE, xlab = deparse(substitute(x)),
+    ylab = deparse(substitute(y)), ...)
 }
 \alias{qqplot}
 \alias{qqplot-methods}
 \alias{qqplot,ANY,ProbFamily-method}
+\alias{qqplot,ANY,Estimate-method}
 \alias{qqplot,ANY,UnivariateDistribution-method}
 
 \arguments{
@@ -115,10 +121,14 @@ in \code{support(y)}?}
 }
 \description{
   We generalize function \code{\link[stats:qqnorm]{qqplot}} from package \pkg{stats} to
-  be applicable to distribution and probability model objects. In this context,
+  be applicable to distribution and probability model objects, as well as
+  to estimate objects. In this context,
   \code{qqplot} produces a QQ plot of data (argument \code{x}) against
-   a (model) distribution.
-   Graphical parameters may be given as arguments to \code{qqplot}.
+   a (model) distribution. If the second argument is of class \code{'Estimate'},
+   \code{qqplot} looks at the \code{estimate.call}-slot and checks whether
+   it can use an argument \code{ParamFamily} to conclude on the model
+   distribution. Graphical parameters may be given as arguments to
+   \code{qqplot}.
 }
 \value{
     As for function \code{\link[stats:qqnorm]{qqplot}} from package \pkg{stats}: a
@@ -143,6 +153,17 @@ quantiles of the model distribution of model \code{y}. Passed through
 the \code{\dots} argument, all arguments valid for
 \code{signature(x = "ANY", y = "UnivariateDistribution")}
 are also valid for this signature.}
+\item{qqplot}{\code{signature(x = "ANY", y = "Estimate")}:
+produces a QQ plot of a dataset \code{x} against the theoretical
+quantiles of the model distribution of the model that can be reconstructed
+from the estimator \code{y}; more specifically, it tries to get hand at the
+argument \code{'ParamFamily'} of the esimator's call; if this is available,
+internally this model is shifted to the estimated parameter by a call to
+\code{modifyModel}, and then this shifted model is used in a call to the
+\code{(x = "ANY", y = "UnivariateDistribution")}-method. Passed through
+the \code{\dots} argument, all arguments valid for
+\code{signature(x = "ANY", y = "UnivariateDistribution")}
+are also valid for this signature.}
 }
 }
 
@@ -162,8 +183,12 @@ are also valid for this signature.}
    intervals.
 }
 \examples{
-qqplot(r(Norm(15,sqrt(30)))(40), Chisq(df=15))
-qqplot(r(Norm(15,sqrt(30)))(40), NormLocationFamily())
+set.seed(123)
+x <- rnorm(40,mean=15,sd=30)
+qqplot(x, Chisq(df=15))
+qqplot(x, NormLocationScaleFamily())
+mlE <- MLEstimator(x, NormLocationScaleFamily())
+qqplot(x, mlE)
 }
 \keyword{hplot}
 \keyword{distribution}

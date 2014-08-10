@@ -216,7 +216,7 @@ setMethod("qqplot", signature(x = "ANY",
         }
        }
     }
-    return(c(ret,qqb))
+    return(invisible(c(ret,qqb)))
     })
 
 ## into distrMod
@@ -236,7 +236,36 @@ setMethod("qqplot", signature(x = "ANY",
     if(!is(yD,"UnivariateDistribution"))
        stop("Not yet implemented.")
 
-    return(do.call(getMethod("qqplot", signature(x="ANY", y="UnivariateDistribution")),
-            args=mcl))
+    return(invisible(do.call(getMethod("qqplot", signature(x="ANY", y="UnivariateDistribution")),
+            args=mcl)))
+    })
+
+setMethod("qqplot", signature(x = "ANY",
+                              y = "Estimate"), function(x, y,
+                              n = length(x), withIdLine = TRUE, withConf = TRUE,
+    withConf.pw  = withConf,  withConf.sim = withConf,
+    plot.it = TRUE, xlab = deparse(substitute(x)),
+    ylab = deparse(substitute(y)), ...){
+
+    mc <- match.call(call = sys.call(sys.parent(1)))
+    if(missing(xlab)) mc$xlab <- as.character(deparse(mc$x))
+    if(missing(ylab)) mc$ylab <- as.character(deparse(mc$y))
+    mcl <- as.list(mc)[-1]
+
+    param <- ParamFamParameter(main=untransformed.estimate(y), nuisance=nuisance(y),
+                               fixed=fixed(y))
+
+    es.call <- y@estimate.call
+    nm.call <- names(es.call)
+    PFam <- NULL
+    if("ParamFamily" %in% nm.call)
+       PFam <- eval(as.list(es.call)[["ParamFamily"]])
+    if(is.null(PFam))
+       stop("There is no object of class 'ProbFamily' in the call of 'x'")
+
+    PFam0 <- modifyModel(PFam, param)
+    mcl$y <- PFam0
+    return(invisible(do.call(getMethod("qqplot", signature(x="ANY", y="ProbFamily")),
+            args=mcl)))
     })
 
