@@ -12,9 +12,9 @@ v 2.6
 ##############
 
 under the hood:
-+ used delayedAssign() for assignment of .mv2RobExtremes() to 
++ use particular S3-class "moved2RobExtremeClass" for
   former package internal constants EULERMASCHERONICONSTANT and
-  APERYCONSTANT)
+  APERYCONSTANT
 
  
 ##############
