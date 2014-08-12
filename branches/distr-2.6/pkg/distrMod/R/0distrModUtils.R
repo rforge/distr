@@ -430,6 +430,7 @@ system.time(print(.CvMMDCovariance(Els,par=ParamFamParameter("",0:1), N = 100)))
 .List <- function(list0) if(is.list(list0)) list0 else list(list0)
 
 .fillList <- function(list0, len = length(list0)){
+            if(is.null(list0)) return(vector("list",len))
             list0 <- .List(list0)
             if(len == length(list0))
                return(list0)
