@@ -14,6 +14,8 @@ v 2.6
 user visible changes
 + added reference to JSS paper in IllustCLT
 + updated references in vignette 'newDistributions'
++ added generating function "EmpiricalDistribution" which is a simple
+  wrapper to function "DiscreteDistribution"
 
 under the hood:
 
@@ -223,7 +225,7 @@ Changes after changes in R , R-forge
     *** Weave Errors ***
     File /home/hornik/tmp/R.check/r-devel/Work/PKGS/distr.Rcheck/inst/doc/newDistributions.Rnw :
     chunk 20 (label=cleanup) 
-    Error : package ‘SweaveListingUtils’ is required by ‘distr’ so will not be detached
+    Error : package ?SweaveListingUtils? is required by ?distr? so will not be detached
 
 
   => removed tag in distr.Rnw in distrDoc

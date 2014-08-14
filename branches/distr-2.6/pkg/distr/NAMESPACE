@@ -13,6 +13,7 @@ export("Beta", "Binom", "Cauchy", "Chisq",
        "RtoDPQ.d", "Td", "Unif", "Weibull", "Arcsine", 
        "distroptions", "getdistrOption", "simplifyr",
        "Lattice", "DiscreteDistribution",
+       "EmpiricalDistribution",
        "LatticeDistribution", "EuclideanSpace", "Reals", 
        "Naturals", "standardMethods", 
        "distrARITH", "distrMASK", "getLabel", "devNew")
