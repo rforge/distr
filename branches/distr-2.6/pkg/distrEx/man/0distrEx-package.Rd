@@ -29,7 +29,7 @@ Support for  extreme value distributions has moved to package \pkg{RobExtremes}
 Package: \tab distrEx \cr
 Version: \tab 2.6 \cr
 Date: \tab 2013-09-18 \cr
-Depends: \tab R(>= 2.6.0), methods, distr(>= 2.2) \cr
+Depends: \tab R(>= 2.10.0), methods, distr(>= 2.2) \cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr

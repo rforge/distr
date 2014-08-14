@@ -1,5 +1,5 @@
 #include <math.h>
-#define PI 3.141592653589793
+/*#define PI 3.141592653589793*/
 #include <R.h>
 #include <Rinternals.h>
 #include <Rmath.h>		/* constants */

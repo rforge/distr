@@ -39,6 +39,7 @@ exportMethods("support",
 export("EuclCondition") 
 export("LMParameter")
 export("DiscreteMVDistribution",
+       "EmpiricalMVDistribution",
        "LMCondDistribution")
 export("ConvexContamination")
 export("GLIntegrate",
