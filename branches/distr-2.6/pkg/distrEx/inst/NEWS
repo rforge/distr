@@ -11,6 +11,10 @@
 v 2.6
 ##############
 
+user-visible CHANGES:
++ added generating function "EmpiricalMVDistribution" for computing
+  empirical distribution of multivariate data
+
 under the hood:
 + use particular S3-class "moved2RobExtremeClass" for
   former package internal constants EULERMASCHERONICONSTANT and
