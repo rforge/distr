@@ -64,6 +64,7 @@ if(FALSE){
 ### some examples
 showsvnlog(from=500,to=520)
 showsvnlog(from=300,to=Inf,limit=1000)
+showsvnlog(from=912,to=Inf,limit=1000,con="C:/rtest/svnlog-distr-2.6.txt",withChPaths=TRUE)
 showsvnlog(from=833,to=Inf,limit=1000,con="C:/rtest/svnlog-distr-2.4-3.txt")
 showsvnlog(from=1,to=73,limit=1000,con="C:/rtest/svnlog-distr-00.txt",withrmtmp = FALSE,tmpfile = "C:/rtest/svnlog-distr-01.txt")
 showsvnlog("robast",from=1,to=Inf,limit=1000,con="C:/rtest/svnlog-robast.txt")
