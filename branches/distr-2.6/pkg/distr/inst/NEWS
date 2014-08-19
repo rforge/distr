@@ -16,7 +16,8 @@ user visible changes
 + updated references in vignette 'newDistributions'
 + added generating function "EmpiricalDistribution" which is a simple
   wrapper to function "DiscreteDistribution"
-
++ arguments panel.first, panel.last for plot-methods can now be lists
+  
 under the hood:
 
 -qqplot: 

@@ -204,6 +204,13 @@ In these label arguments, the same pattern substitutions are made as
 for titles. If no character substitutions and mathematical expressions
 are needed, character vectors of respective length instead of lists are
 also allowed for arguments \code{xlab}, \code{ylab}.
+
+In addition, argument \code{\dots} may contain arguments \code{panel.first},
+\code{panel.last}, i.e., hook expressions to be evaluated at the very beginning
+and at the very end of each panel (within the then valid coordinates).
+To be able to use these hooks for each panel individually, they may also be
+lists of expressions (of the same length as the number of panels and
+run through in the same order as the panels).
 }
 
 \examples{
@@ -229,6 +236,13 @@ plot(Norm(), main = "my Distribution: \%A",
                   "Pseudo-inverse with param's \%N"), 
      sub = "this plot was correctly generated on \%D", 
      cex.inner = 0.9, cex.sub = 0.8)
+
+plot(Norm(),panel.first=grid(4,4))
+## does not (yet) work as desired:
+plot(Norm(),panel.first=list(grid(5,5),grid(3,3),grid(4,4)))
+li <- list(substitute(grid(5,5)),substitute(grid(3,3)),substitute(grid(4,4)))
+plot(Norm(),panel.first=li)
+
 plot(Cauchy())
 plot(Cauchy(), xlim = c(-4,4))
 plot(Chisq())

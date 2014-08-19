@@ -57,6 +57,19 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
       xlab0.d <- xlab0.c <- list("d"="x", "p"="q", "q"="p")
       ylab0.d <- ylab0.c <- list("d"="d(x)", "p"="p(q)", "q"="q(p)")
 
+      pF <<- expression({})
+      if(!is.null(dots[["panel.first"]])){
+          pF <<- .panel.mingle(dots,"panel.first")
+      }
+      pF <<- .fillList(pF, l.draw)
+      pL <<- expression({})
+      if(!is.null(dots[["panel.last"]])){
+          pL <<- .panel.mingle(dots,"panel.last")
+      }
+      pL <<- .fillList(pL, l.draw)
+      dots$panel.first <- dots$panel.last <- NULL
+
+      plotCount <- 1
       if(!is(x, "UnivarLebDecDistribution"))
           x <- .ULC.cast(x)
 
@@ -64,6 +77,8 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
          mcl <- as.list(mc)
          mcl$to.draw.arg <- (1:3)[( (6:8) %in%to.draw )] 
          mcl$ngrid <- NULL
+         mcl$panel.first <- pF[plotCount+(0:2)]
+         mcl$panel.last  <- pL[plotCount+(0:2)]
          if(is.null(mcl$xlab)) mcl$xlab <- xlab0.d
          if(is.null(mcl$ylab)) mcl$ylab <- ylab0.d
          if(!is.logical(inner)){
@@ -80,6 +95,8 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
          mcl$col.hor <- NULL
          if(is.null(mcl$xlab)) mcl$xlab <- xlab0.c
          if(is.null(mcl$ylab)) mcl$ylab <- ylab0.c
+         mcl$panel.first <- pF[plotCount+(0:2)]
+         mcl$panel.last  <- pL[plotCount+(0:2)]
          mcl$to.draw.arg <- (1:3)[( (3:5) %in%to.draw )]
             if(!is.logical(inner)){
                 if(length(inner)!=3)
@@ -99,6 +116,8 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
          mcl$x <- x
          mcl$to.draw.arg <- (1:3)[( (6:8) %in%to.draw )] 
          mcl$ngrid <- NULL
+         mcl$panel.first <- pF[5+mcl$to.draw.arg]
+         mcl$panel.last  <- pL[5+mcl$to.draw.arg]
             if(!is.logical(inner)){
                 if(length(inner)!=3)
                    {inner <- .fillList(inner, 8)
@@ -116,6 +135,8 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
          mcl$x <- x
          mcl$to.draw.arg <- (1:3)[( (3:5) %in%to.draw )] 
          mcl$col.hor <- NULL
+         mcl$panel.first <- pF[2+mcl$to.draw.arg]
+         mcl$panel.last  <- pL[2+mcl$to.draw.arg]
             if(!is.logical(inner)){
                 if(length(inner)!=3)
                    {inner <- .fillList(inner, 8)
@@ -393,9 +414,13 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
      o.warn <- getOption("warn"); options(warn = -1)
      if(1 %in% to.draw){
         on.exit(options(warn=o.warn))
+        dots.without.pch$panel.first <- pF[[plotCount]]
+        dots.without.pch$panel.last  <- pL[[plotCount]]
         do.call(plot, c(list(x = grid, pxg, type = "l",
              ylim = ylim2, ylab = ylab0[[1]][["p"]], xlab = xlab0[[1]][["p"]], log = logpd),
              dots.without.pch))
+        dots.without.pch$panel.first <- dots.without.pch$panel.last <- NULL
+        plotCount <- plotCount + 1
         options(warn = o.warn)
    
         pxg.d <- p(x)(supp)
@@ -451,9 +476,13 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
 
      if(2 %in% to.draw){
         options(warn = -1)
+        dots.without.pch$panel.first <- pF[[plotCount]]
+        dots.without.pch$panel.last  <- pL[[plotCount]]
         do.call(plot, c(list(x = po, xo, type = "n",
              xlim = ylim2, ylim = xlim, ylab = ylab0[[1]][["q"]], xlab = xlab0[[1]][["q"]],
              log = logq), dots.without.pch), envir = parent.frame(2))
+        plotCount <- plotCount + 1
+        dots.without.pch$panel.first <- dots.without.pch$panel.last <- NULL
         options(warn = o.warn)
    
    
@@ -516,7 +545,10 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
      mc.ac$withSweave <- TRUE 
      mc.ac$to.draw.arg <- (1:3)[( (3:5) %in%to.draw )] 
      if(is.null(mc.ac$cex.inner))  mc.ac$cex.inner <- 0.9
+     mc.ac[["panel.first"]] <- pF[plotCount+(0:2)]
+     mc.ac[["panel.last"]]  <- pL[plotCount+(0:2)]
      do.call(plotC, c(list(acPart(x)),mc.ac), envir = parent.frame(2))
+     plotCount <- plotCount + 3
 
      mc.di <- mc
      if(!is.logical(inner)) 
@@ -534,7 +566,10 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
      mc.di$withSweave <- TRUE 
      mc.di$to.draw.arg <- (1:3)[( (6:8) %in%to.draw )]
      if(is.null(mc.di$cex.inner))  mc.di$cex.inner <- 0.9
+     mc.di[["panel.first"]] <- pF[plotCount+(0:2)]
+     mc.di[["panel.last"]]  <- pL[plotCount+(0:2)]
      do.call(plotD, c(list(discretePart(x)),mc.di), envir = parent.frame(2))
+     plotCount <- plotCount + 3
      return(invisible())
      
    }

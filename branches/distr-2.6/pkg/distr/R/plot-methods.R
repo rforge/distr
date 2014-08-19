@@ -28,6 +28,18 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
       l.draw <- length(to.draw)
 
      
+     pF <- expression({})
+     if(!is.null(dots[["panel.first"]])){
+         pF <- .panel.mingle(dots,"panel.first")
+     }
+     pF <- .fillList(pF, l.draw)
+     pL <- expression({})
+     if(!is.null(dots[["panel.last"]])){
+          pL <- .panel.mingle(dots,"panel.last")
+     }
+     pL <- .fillList(pL, l.draw)
+
+     dots$panel.first <- dots$panel.last <- NULL
      dots$col.hor <- NULL
 
      dots.for.points <- .makedotsPt(dots)
@@ -231,12 +243,17 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
              }
           }
 
+     plotCount <- 1
      o.warn <- getOption("warn"); options(warn = -1)
      if(1%in%to.draw){
          on.exit(options(warn=o.warn))
-         do.call(plot, c(list(x = grid, dxg, type = "l", 
+         dots.without.pch$panel.first <- pF[[plotCount]]
+         dots.without.pch$panel.last  <- pL[[plotCount]]
+         do.call(plot, c(list(x = grid, dxg, type = "l",
              ylim = ylim1,  ylab = ylab0[["d"]], xlab = xlab0[["d"]], log = logpd),
              dots.without.pch))
+         dots.without.pch$panel.first <- dots.without.pch$panel.last <- NULL
+         plotCount <- plotCount + 1
          options(warn = o.warn)
      
          title(main = inner.d, line = lineT, cex.main = cex.inner,
@@ -249,9 +266,13 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
      if(is.finite(q(x)(1))) {grid <- c(grid,q(x)(1)); pxg <- c(pxg,1)}
 
      if(2%in%to.draw){
-        do.call(plot, c(list(x = grid, pxg, type = "l", 
+        dots.without.pch$panel.first <- pF[[plotCount]]
+        dots.without.pch$panel.last  <- pL[[plotCount]]
+        do.call(plot, c(list(x = grid, pxg, type = "l",
              ylim = ylim2, ylab = ylab0[["p"]], xlab = xlab0[["p"]], log = logpd),
              dots.without.pch))
+        dots.without.pch$panel.first <- dots.without.pch$panel.last <- NULL
+        plotCount <- plotCount + 1
         options(warn = o.warn)
       
         title(main = inner.p, line = lineT, cex.main = cex.inner,
@@ -289,9 +310,13 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
      
      if(3%in%to.draw){
         options(warn = -1)
-        do.call(plot, c(list(x = po, xo, type = "n", 
+        dots.without.pch$panel.first <- pF[[plotCount]]
+        dots.without.pch$panel.last  <- pL[[plotCount]]
+        do.call(plot, c(list(x = po, xo, type = "n",
              xlim = ylim2, ylim = xlim, ylab = ylab0[["q"]], xlab = xlab0[["q"]],
              log = logq), dots.without.pch))
+        dots.without.pch$panel.first <- dots.without.pch$panel.last <- NULL
+        plotCount <- plotCount + 1
         options(warn = o.warn)
     
         
@@ -358,10 +383,21 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
       }
       l.draw <- length(to.draw)
 
+      pF <- expression({})
+      if(!is.null(dots[["panel.first"]])){
+         pF <- .panel.mingle(dots,"panel.first")
+      }
+      pF <- .fillList(pF, l.draw)
+      pL <- expression({})
+      if(!is.null(dots[["panel.last"]])){
+          pL <- .panel.mingle(dots,"panel.last")
+      }
+      pL <- .fillList(pL, l.draw)
+      dots$panel.first <- dots$panel.last <- NULL
+
       dots$ngrid <- NULL
 
       dots.for.points <- .makedotsPt(dots)
-      print(dots.for.points)
       dots.lowlevel <- .makedotsLowLevel(dots)
       dots.without.pch <- dots.lowlevel[! (names(dots.lowlevel) %in% c("col", "pch"))]
       ###
@@ -566,10 +602,17 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
        o.warn <- getOption("warn")
        options(warn = -1)
        on.exit(options(warn=o.warn))
+
+     plotCount <- 1
+
      if(1%in%to.draw){
+       dots.without.pch$panel.first <- pF[[plotCount]]
+       dots.without.pch$panel.last  <- pL[[plotCount]]
        do.call(plot, c(list(x = supp, dx, type = "h", pch = pch.a,
             ylim = ylim1, xlim=xlim, ylab = ylab0[["d"]], xlab = xlab0[["d"]],
             log = logpd), dots.without.pch))
+       dots.without.pch$panel.first <- dots.without.pch$panel.last <- NULL
+       plotCount <- plotCount + 1
        options(warn = o.warn)
 
 
@@ -588,12 +631,16 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
      psupp1 <- c(0,p(x)(supp1))
 
      if(2%in%to.draw){
-       do.call(plot, c(list(x = stepfun(x = supp1, y = psupp1), 
+       dots.without.pch$panel.first <- pF[[plotCount]]
+       dots.without.pch$panel.last  <- pL[[plotCount]]
+       do.call(plot, c(list(x = stepfun(x = supp1, y = psupp1),
                      main = "", verticals = verticals, 
                      do.points = FALSE, 
                      ylim = ylim2, ylab = ylab0[["p"]], xlab = xlab0[["p"]],
                      col.hor = col.hor, col.vert = col.vert, 
                      log = logpd), dots.without.pch))
+       dots.without.pch$panel.first <- dots.without.pch$panel.last <- NULL
+       plotCount <- plotCount + 1
        if(do.points)
           {if(ngrid>1){
               do.call(points, c(list(x = supp, y = psupp1[1:ngrid], pch = pch.u, 
@@ -621,7 +668,9 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
 
      if(3%in%to.draw){
        options(warn = -1)
-       do.call(plot, c(list(x = stepfun(c(0,p(x)(supp)), 
+       dots.without.pch$panel.first <- pF[[plotCount]]
+       dots.without.pch$panel.last  <- pL[[plotCount]]
+       do.call(plot, c(list(x = stepfun(c(0,p(x)(supp)),
                             c(NA,supp,NA), right = TRUE), 
             main = "", xlim = ylim2, ylim = c(min(supp),max(supp)),
             ylab = ylab0[["q"]], xlab = xlab0[["q"]],
@@ -630,6 +679,8 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
             col.points = col.points,
             col.hor = col.hor, col.vert = col.vert, 
             log = logq), dots.without.pch))
+       dots.without.pch$panel.first <- dots.without.pch$panel.last <- NULL
+       plotCount <- plotCount + 1
        options(warn = o.warn)
 
       
