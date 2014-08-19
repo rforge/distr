@@ -203,6 +203,13 @@ Class \code{"ProbFamily"}, by class \code{"ParamFamily"}.
       in panels "d.c" and "d.d", and the last
       two elements are the values for \code{ylim} resp. \code{xlim} in panels 
       "p", "p.c", "p.d" and "q", "q.c", "q.d".
+
+In addition, argument \code{\dots} may contain arguments \code{panel.first},
+\code{panel.last}, i.e., hook expressions to be evaluated at the very beginning
+and at the very end of each panel (within the then valid coordinates).
+To be able to use these hooks for each panel individually, they may also be
+lists of expressions (of the same length as the number of panels and
+run through in the same order as the panels).
     }
 
 

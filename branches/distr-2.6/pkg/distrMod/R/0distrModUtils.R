@@ -709,6 +709,23 @@ outC <- eval(parse(text = eval(inCx)))
 return(outC)
 }
 
+.panel.mingle <- function(dots, element){
+  pF <- dots[[element]]
+  if(is.list(pF)) return(pF)
+  pFr <- if(typeof(pF)=="symbol") eval(pF) else{
+     pFc <- as.call(pF)
+     if(as.list(pFc)[[1]] == "list"){
+        lis <- vector("list",length(as.list(pFc))-1)
+        for(i in 1:length(lis)){
+            lis[[i]] <- pFc[[i+1]]
+        }
+        lis
+     }else pF
+  }
+  return(pFr)
+}
+
+
 #---------------------------------------------------
 ### from packages stats:
 #---------------------------------------------------

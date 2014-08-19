@@ -33,12 +33,25 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
             else if(is.numeric(to.draw.arg)) 
                  to.draw <- to.draw.arg
         }
+        l.draw <- length(to.draw)
+
+        pF <- expression({})
+        if(!is.null(dots[["panel.first"]])){
+            pF <- .panel.mingle(dots,"panel.first")
+        }
+        pF <- .fillList(pF, l.draw)
+        pL <- expression({})
+        if(!is.null(dots[["panel.last"]])){
+            pl <- .panel.mingle(dots,"panel.last")
+        }
+        pL <- .fillList(pL, length(to.draw))
+        plotCount <- 1
+
         l2dpl <- to.draw[to.draw > 3]
         dims0 <- length(l2dpl)
         nrows <- trunc(sqrt(dims0))
         ncols <- ceiling(dims0/nrows)
 
-        
         if(!is.logical(inner)){
           if(!is.list(inner))
               inner <-  as.list(inner)
@@ -205,7 +218,10 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
                           col.inner = col.inner, cex.inner = cex.innerD),
                      dots, mfColRow = mfColRow)
            lis0$to.draw.arg  <- todrw 
-           do.call(plot, args = lis0)            
+           lis0[["panel.first"]] <- pF[plotCount+(0:2)]
+           lis0[["panel.last"]]  <- pL[plotCount+(0:2)]
+           do.call(plot, args = lis0)
+           plotCount <- plotCount + 1
         }
         o.warn <- options("warn")
         options(warn = -1)
@@ -229,11 +245,14 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
         for(i in 1:dims0){
             indi <- l2dpl[i]-3
             if(!is.null(ylim)) dots$ylim <- ylim[,d.0+d.1+i]       
+            dots$panel.first <- pF[[plotCount]]
+            dots$panel.last  <- pL[[plotCount]]
             do.call(plot, args=c(list(x=x.vec, y=sapply(x.vec, L2deriv@Map[[indi]]),
                                  type = plty, lty = lty,
                                  xlab = "x",
                                  ylab = expression(paste(L[2], " derivative"))),
                                  dots))
+            plotCount <- plotCount + 1
             if(is(e1, "DiscreteDistribution")){
                 x.vec1 <- seq(from = min(x.vec), to = max(x.vec), length = 1000)
                 do.call(lines, args=c(list(x.vec1, sapply(x.vec1, L2deriv@Map[[indi]]),
