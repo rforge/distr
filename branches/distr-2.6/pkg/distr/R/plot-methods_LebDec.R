@@ -57,16 +57,16 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
       xlab0.d <- xlab0.c <- list("d"="x", "p"="q", "q"="p")
       ylab0.d <- ylab0.c <- list("d"="d(x)", "p"="p(q)", "q"="q(p)")
 
-      pF <<- expression({})
+      pF <- expression({})
       if(!is.null(dots[["panel.first"]])){
-          pF <<- .panel.mingle(dots,"panel.first")
+          pF <- .panel.mingle(dots,"panel.first")
       }
-      pF <<- .fillList(pF, l.draw)
-      pL <<- expression({})
+      pF <- .fillList(pF, l.draw)
+      pL <- expression({})
       if(!is.null(dots[["panel.last"]])){
-          pL <<- .panel.mingle(dots,"panel.last")
+          pL <- .panel.mingle(dots,"panel.last")
       }
-      pL <<- .fillList(pL, l.draw)
+      pL <- .fillList(pL, l.draw)
       dots$panel.first <- dots$panel.last <- NULL
 
       plotCount <- 1
