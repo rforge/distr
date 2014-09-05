@@ -130,6 +130,17 @@ setAs("EllipticalDistribution", "UnivariateDistribution",
 
 ## functionals:
 setMethod("E", signature(object = "EllipticalDistribution",
+                        fun = "function", cond = "missing"),
+           function(object,fun){
+              x <- r(object)(1e5)
+              fx1 <- fun(x[,1])
+              dfx <- dim(fx1)
+              ffun <- function(x) c(fun(x))
+              mfun <-  rowMeans(apply(x,2,ffun))
+              if(is.null(dfx)) return(mfun)
+              return(array(mfun,dim=dfx))             
+           })
+setMethod("E", signature(object = "EllipticalDistribution",
                         fun = "missing", cond = "missing"),
            function(object,...) location(object))
 setMethod("var", signature(x = "EllipticalDistribution"),

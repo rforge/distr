@@ -15,7 +15,7 @@ under the hood:
 
 + removed ::: internal dependencies (within distr-Fam of pkgs) by copying 
   respective routines
-
++ fixed E and var methods for MultivarMixingDistribution
 
 ##############
 v 2.5
