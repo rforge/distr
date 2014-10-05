@@ -120,6 +120,7 @@
         1 - .pks2(p0,1e-09)-alpha  }
    i <- 0
    oK <- FALSE
+   del <- 0.01
    while(!oK && i < 20){
        i <- i + 1
        res <- try(uniroot(fct,lower=del,upper=3*(1-del))$root, silent=silent0)
