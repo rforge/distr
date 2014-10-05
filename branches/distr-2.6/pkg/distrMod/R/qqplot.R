@@ -42,7 +42,7 @@ setMethod("qqplot", signature(x = "ANY",
              withConf.pw  = withConf,   ### shall pointwise confidence lines be plotted
              withConf.sim = withConf,   ### shall simultaneous confidence lines be plotted
              plot.it = TRUE,    ### shall be plotted at all (inherited from stats::qqplot)
-             datax = FALSE,     ### as in qqnorm
+             datax = TRUE,     ### as in qqnorm
              xlab = deparse(substitute(x)), ## x-label
              ylab = deparse(substitute(y)), ## y-label
              ...,                 ## further parameters

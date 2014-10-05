@@ -6,7 +6,7 @@ qqplot(x, y, ...)
 \S4method{qqplot}{ANY,UnivariateDistribution}(x,y,
     n = length(x), withIdLine = TRUE,
     withConf = TRUE, withConf.pw  = withConf, withConf.sim = withConf,
-    plot.it = TRUE, datax = FALSE, xlab = deparse(substitute(x)),
+    plot.it = TRUE, datax = TRUE, xlab = deparse(substitute(x)),
     ylab = deparse(substitute(y)),
     ..., width = 10, height = 5.5, withSweave = getdistrOption("withSweave"),
     mfColRow = TRUE, n.CI = n, withLab = FALSE, lab.pts = NULL, which.lbs = NULL,

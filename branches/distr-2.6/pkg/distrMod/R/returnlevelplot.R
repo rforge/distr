@@ -75,6 +75,7 @@ setMethod("returnlevelplot", signature(x = "ANY",
     if(missing(ylab)) mc$ylab <- gettext("Return period (years)")
     if(missing(main)) mc$main <- gettext("Return level plot")
     mcl <- as.list(mc)[-1]
+    mcl$datax <- NULL
     mcl$MaxOrPOT <- NULL
     mcl$npy <- NULL
     mcl$withSweave <- NULL
@@ -110,7 +111,7 @@ setMethod("returnlevelplot", signature(x = "ANY",
     rxyall  <- (max(xyall)-min(xyall))*0.6
     rxymean <- (max(xyall)+min(xyall))/2
 
-    xyallc  <- seq(from=rxymean-rxyall,to=rxymean+rxyall, length.out=300)
+    xyallc  <- seq(from=rxymean-rxyall,to=rxymean+rxyall, length.out=400)
 #    print(xyallc)
     pxyall  <- p(y)(xyallc)
 #    print(pxyall)
