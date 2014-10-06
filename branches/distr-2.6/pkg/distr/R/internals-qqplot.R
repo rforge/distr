@@ -270,7 +270,7 @@
 
 
 
-.confqq <- function(x,D, datax = TRUE, withConf.pw  = TRUE,
+.confqq <- function(x,D, datax = FALSE, withConf.pw  = TRUE,
                     withConf.sim = TRUE, alpha,
                     col.pCI, lty.pCI, lwd.pCI, pch.pCI, cex.pCI,
                     col.sCI, lty.sCI, lwd.sCI, pch.sCI, cex.sCI,
@@ -278,7 +278,7 @@
                     with.legend = TRUE, legend.bg = "white",
                     legend.pos = "topleft", legend.cex = 0.8,
                     legend.pref = "", legend.postf = "", 
-                    legend.alpha = alpha, qqb0=NULL, debug = FALSE){
+                    legend.alpha = alpha, qqb0=NULL, transf0=NULL, debug = FALSE){
 
    x <- sort(unique(x))
    if("gaps" %in% names(getSlots(class(D))))
@@ -293,37 +293,38 @@
    x.in <- x[SI.in]
    x.c <- x.in[SI.c]
    x.d <- x.in[!SI.c]        
-   
+   tx.c <- if(is.null(transf0)) x.c else transf0(x.c)
+   tx.d <- if(is.null(transf0)) x.d else transf0(x.d)
 
    qqb <- if(is.null(qqb0)) qqbounds(x,D,alpha,n,withConf.pw, withConf.sim,
                    exact.sCI,exact.pCI,nosym.pCI, debug) else qqb0
                    
-   qqb$crit <- qqb$crit[SI.in,]
+   qqb$crit <- if(is.null(qqb0)) qqb$crit[SI.in,]
 
    if(qqb$err["pw"]){
       if(sum(SI.c)>0){
          if(datax){
-            lines(x.c, qqb$crit[SI.c,"pw.right"],
+            lines(tx.c, qqb$crit[SI.c,"pw.right"],
                col=col.pCI,lty=lty.pCI,lwd=lwd.pCI)
-            lines(x.c, qqb$crit[SI.c,"pw.left"],
+            lines(tx.c, qqb$crit[SI.c,"pw.left"],
                col=col.pCI,lty=lty.pCI,lwd=lwd.pCI)
          }else{
-            lines(qqb$crit[SI.c,"pw.right"], x.c,
+            lines(qqb$crit[SI.c,"pw.right"], tx.c,
                col=col.pCI,lty=lty.pCI,lwd=lwd.pCI)
-            lines(qqb$crit[SI.c,"pw.left"], x.c,
+            lines(qqb$crit[SI.c,"pw.left"], tx.c,
                col=col.pCI,lty=lty.pCI,lwd=lwd.pCI)
          }
       }
       if(sum(!SI.c)>0){
          if(datax){
-            points(x.d, qqb$crit[!SI.c,"pw.right"],
+            points(tx.d, qqb$crit[!SI.c,"pw.right"],
                col=col.pCI, pch=pch.pCI, cex = cex.pCI)
-            points(x.d, qqb$crit[!SI.c,"pw.left"],
+            points(tx.d, qqb$crit[!SI.c,"pw.left"],
                col=col.pCI, pch=pch.pCI, cex = cex.pCI)
          }else{
-            points(qqb$crit[!SI.c,"pw.right"], x.d,
+            points(qqb$crit[!SI.c,"pw.right"], tx.d,
                col=col.pCI, pch=pch.pCI, cex = cex.pCI)
-            points(qqb$crit[!SI.c,"pw.left"], x.d,
+            points(qqb$crit[!SI.c,"pw.left"], tx.d,
                col=col.pCI, pch=pch.pCI, cex = cex.pCI)
          }
       }
@@ -331,27 +332,27 @@
    if(qqb$err["sim"]){
       if(sum(SI.c)>0){
          if(datax){
-            lines(x.c, qqb$crit[SI.c,"sim.right"],
+            lines(tx.c, qqb$crit[SI.c,"sim.right"],
                col=col.sCI,lty=lty.sCI,lwd=lwd.sCI)
-            lines(x.c, qqb$crit[SI.c,"sim.left"],
+            lines(tx.c, qqb$crit[SI.c,"sim.left"],
                col=col.sCI,lty=lty.sCI,lwd=lwd.sCI)
          }else{
-            lines(qqb$crit[SI.c,"sim.right"], x.c,
+            lines(qqb$crit[SI.c,"sim.right"], tx.c,
                col=col.sCI,lty=lty.sCI,lwd=lwd.sCI)
-            lines(qqb$crit[SI.c,"sim.left"], x.c,
+            lines(qqb$crit[SI.c,"sim.left"], tx.c,
                col=col.sCI,lty=lty.sCI,lwd=lwd.sCI)
          }
       }
       if(sum(!SI.c)>0){
          if(datax){
-            points(x.d, qqb$crit[!SI.c,"sim.right"],
+            points(tx.d, qqb$crit[!SI.c,"sim.right"],
                 col=col.sCI, pch=pch.sCI, cex = cex.sCI)
-            points(x.d, qqb$crit[!SI.c,"sim.left"],
+            points(tx.d, qqb$crit[!SI.c,"sim.left"],
                 col=col.sCI, pch=pch.sCI, cex = cex.sCI)
          }else{
-            points(qqb$crit[!SI.c,"sim.right"], x.d,
+            points(qqb$crit[!SI.c,"sim.right"], tx.d,
                 col=col.sCI, pch=pch.sCI, cex = cex.sCI)
-            points(qqb$crit[!SI.c,"sim.left"], x.d,
+            points(qqb$crit[!SI.c,"sim.left"], tx.d,
                 col=col.sCI, pch=pch.sCI, cex = cex.sCI)
          }
       }

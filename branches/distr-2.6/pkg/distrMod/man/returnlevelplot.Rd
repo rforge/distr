@@ -7,6 +7,7 @@ returnlevelplot(x, y, ...)
     n = length(x), withIdLine = TRUE,
     withConf = TRUE, withConf.pw  = withConf, withConf.sim = withConf,
     plot.it = TRUE, datax = FALSE, MaxOrPOT = c("Max","POT"), npy = 365,
+    threshold = if(is(y,"GPareto")) NA else 0,    
     xlab = deparse(substitute(x)),
     ylab = deparse(substitute(y)),
     main = "",
@@ -62,6 +63,9 @@ class \code{"ProbFamily"}.}
                 must be one of "Max" (default) or "POT".
                 You can specify just the initial letter.}
 \item{npy}{number of observations per year/block.}
+\item{threshold}{numerical; in case of \code{MaxOrPot=="POT"}, this captures
+                 the (removed) threshold. If it is \code{NA}, it is reconstructed
+                 from the distribution \code{y}.}
 \item{main}{Main title}
 \item{xlab}{x-label}
 \item{ylab}{y-label}
@@ -198,7 +202,23 @@ are also valid for this signature.}
 }
 \examples{
 returnlevelplot(r(Norm(15,sqrt(30)))(40), Chisq(df=15))
-returnlevelplot(r(Norm(15,sqrt(30)))(40), NormLocationFamily())
+### more could be seen after installing RobExtremes and ismev
+#
+# require(RobExtremes)
+# require(ismev)
+#
+# data(portpirie)
+# ppfit <- gev.fit(portpirie[,2])
+# DD2 <- GEVFamily(scale=ppfit$mle[2],shape=ppfit$mle[3],loc=ppfit$mle[1])
+# erg <- returnlevelplot(portpirie[,2], DD2, datax=FALSE)
+# erg <- returnlevelplot(portpirie[,2], DD2, datax=TRUE)
+#
+# data(rain)
+# opfit <- gpd.fit(rain,10)
+# DD1 <- GParetoFamily(scale=opfit$mle[1],shape=opfit$mle[2],loc=10)
+# erg <- returnlevelplot(rain, DD1, datax=FALSE, MaxOrPOT="POT", npy=365, xlim=c(1e-1,1e3))
+# erg <- returnlevelplot(rain, DD1, datax=TRUE, MaxOrPOT="POT", npy=365, xlim=c(1e-1,1e3))
+
 }
 \keyword{hplot}
 \keyword{distribution}

@@ -33,14 +33,14 @@
 .q2kolmogorov(alpha,n,exact=(n<100), silent0 = TRUE)
 .q2pw(x,p.b,D,n,alpha,exact=(n<100),nosym=FALSE, silent0 = TRUE)
 
-.confqq(x,D, datax=TRUE, withConf.pw  = TRUE,  withConf.sim = TRUE, alpha,
+.confqq(x,D, datax=FALSE, withConf.pw  = TRUE,  withConf.sim = TRUE, alpha,
                     col.pCI, lty.pCI, lwd.pCI, pch.pCI, cex.pCI,
                     col.sCI, lty.sCI, lwd.sCI, pch.sCI, cex.sCI,
                     n,exact.sCI=(n<100),exact.pCI=(n<100),
                     nosym.pCI = FALSE, with.legend = TRUE,
                     legend.bg = "white", legend.pos = "topleft",
                     legend.cex = 0.8, legend.pref = "", legend.postf = "",
-                    legend.alpha = alpha, qqb0 = NULL, debug = FALSE)
+                    legend.alpha = alpha, qqb0 = NULL, transf0=NULL, debug = FALSE)
 
 .deleteItemsMCL(mcl)
 .distrExInstalled
@@ -94,6 +94,7 @@ are \code{x.i+t/sqrt(n)+del.i/sqrt(n)} and \code{x.i-t/sqrt(n)+del.i/sqrt(n)}.}
 \item{legend.alpha}{nominal coverage probability}
 \item{mcl}{arguments in call as a list}
 \item{qqb0}{precomputed return value of \code{qqbounds}}
+\item{transf0}{optional transformation of x-values (by default \code{NULL} and then ignored)}
 \item{debug}{logical; if \code{TRUE} additional output to debug confidence bounds. }
 \item{silent0}{logical; it is used as argument \code{silent} in \code{try}-catches
           within this function. }

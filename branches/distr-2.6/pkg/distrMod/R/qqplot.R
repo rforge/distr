@@ -42,7 +42,7 @@ setMethod("qqplot", signature(x = "ANY",
              withConf.pw  = withConf,   ### shall pointwise confidence lines be plotted
              withConf.sim = withConf,   ### shall simultaneous confidence lines be plotted
              plot.it = TRUE,    ### shall be plotted at all (inherited from stats::qqplot)
-             datax = TRUE,     ### as in qqnorm
+             datax = FALSE,     ### as in qqnorm
              xlab = deparse(substitute(x)), ## x-label
              ylab = deparse(substitute(y)), ## y-label
              ...,                 ## further parameters
@@ -211,7 +211,7 @@ setMethod("qqplot", signature(x = "ANY",
           }
 
         if(plot.it){
-          qqb <- .confqq(xy, y, datax, withConf.pw, withConf.sim, alpha.CI,
+          qqb <- .confqq(xy, y, datax=datax, withConf.pw, withConf.sim, alpha.CI,
                       col.pCI, lty.pCI, lwd.pCI, pch.pCI, cex.pCI,
                       col.sCI, lty.sCI, lwd.sCI, pch.sCI, cex.sCI,
                   n, exact.sCI = exact.sCI, exact.pCI = exact.pCI,

@@ -16,6 +16,7 @@ setMethod("returnlevelplot", signature(x = "ANY",
              datax = FALSE,     ### as in qqnorm
              MaxOrPOT = c("Max","POT"), ### used for block maxima or points over threshold
              npy = 365, ### number of observations per year
+             threshold = if(is(y,"GPareto")) NA else 0,
              xlab = deparse(substitute(x)), ## x-label
              ylab = deparse(substitute(y)), ## y-label
              main = "",
@@ -85,6 +86,12 @@ setMethod("returnlevelplot", signature(x = "ANY",
     mcl$added.points.CI <- NULL
     force(x)
 
+    thresh0 <- threshold 
+    if(is(y,"GPareto")){ 
+       if(is.na(threshold)) thresh0 <- location(y)
+       y <- y - thresh0
+       x <- x + thresh0
+    }              
 
     xj <- sort(x)
     if(any(.isReplicated(x))&&jit.fac>0)
@@ -237,9 +244,9 @@ setMethod("returnlevelplot", signature(x = "ANY",
              }
           }
 
-        qqb <- qqbounds(sort(unique(xy)),y,alpha.CI,n,withConf.pw, withConf.sim,
-                           exact.sCI,exact.pCI,nosym.pCI, debug = debug)
-        qqb$crit <- p2rl(qqb$crit)
+        #qqb <- qqbounds(sort(unique(xy)),y,alpha.CI,n,withConf.pw, withConf.sim,
+        #                   exact.sCI,exact.pCI,nosym.pCI, debug = debug)
+        #qqb$crit <- p2rl(qqb$crit)
         if(plot.it){
           qqb <- .confqq(xy, y, datax, withConf.pw, withConf.sim, alpha.CI,
                       col.pCI, lty.pCI, lwd.pCI, pch.pCI, cex.pCI,
@@ -249,7 +256,7 @@ setMethod("returnlevelplot", signature(x = "ANY",
                   legend.bg = legend.bg, legend.pos = legend.pos,
                   legend.cex = legend.cex, legend.pref = legend.pref,
                   legend.postf = legend.postf, legend.alpha = legend.alpha,
-                  qqb0=qqb, debug = debug)
+                  qqb0=NULL, transf0=p2rl, debug = debug)
        }
     }}
     return(invisible(c(ret,qqb)))
