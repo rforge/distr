@@ -139,8 +139,8 @@ in \code{support(y)}?}
   plots provided package \pkg{ismev}, e.g., in function
   \code{\link[ismev:gev.diag]{gev.diag}}), see also Coles' book below,  to
   be applicable to distribution and probability model objects. In this context,
-  \code{returnlevelplot} produces a QQ plot of data (argument \code{x}) against
-   a (model) distribution.
+  \code{returnlevelplot} produces a rescaled QQ plot of data (argument \code{x}) 
+  against a (model) distribution.
    Graphical parameters may be given as arguments to \code{returnlevelplot}.
 }
 \value{
@@ -180,7 +180,13 @@ are also valid for this signature.}
 
 }
 }
-
+\note{
+ The confidence bands given in our version of the return level plot differ
+ from the ones given in package \pkg{ismev}. We use non-parametric bands,
+ hence also allow for non-parametric deviances from the model, whereas in
+ in package \pkg{ismev} they are based on profiling, hence only check for
+ variability within the parametric class.
+}
 \references{
   ismev: An   Introduction to Statistical Modeling of Extreme Values. R package
   version 1.39. http://CRAN.R-project.org/package=ismev; original S functions
@@ -204,21 +210,19 @@ are also valid for this signature.}
 returnlevelplot(r(Norm(15,sqrt(30)))(40), Chisq(df=15))
 ### more could be seen after installing RobExtremes and ismev
 #
-# require(RobExtremes)
-# require(ismev)
-#
-# data(portpirie)
-# ppfit <- gev.fit(portpirie[,2])
-# DD2 <- GEVFamily(scale=ppfit$mle[2],shape=ppfit$mle[3],loc=ppfit$mle[1])
-# erg <- returnlevelplot(portpirie[,2], DD2, datax=FALSE)
-# erg <- returnlevelplot(portpirie[,2], DD2, datax=TRUE)
-#
-# data(rain)
-# opfit <- gpd.fit(rain,10)
-# DD1 <- GParetoFamily(scale=opfit$mle[1],shape=opfit$mle[2],loc=10)
-# erg <- returnlevelplot(rain, DD1, datax=FALSE, MaxOrPOT="POT", npy=365, xlim=c(1e-1,1e3))
-# erg <- returnlevelplot(rain, DD1, datax=TRUE, MaxOrPOT="POT", npy=365, xlim=c(1e-1,1e3))
+if(require(RobExtremes) && require(ismev)){
 
+ data(portpirie)
+ gevfit <- gev.fit(portpirie[,2]) ## taken from example from ismev::gev.fit
+ GEVF <- GEVFamily(scale=gevfit$mle[2],shape=gevfit$mle[3],loc=gevfit$mle[1])
+ erg <- returnlevelplot(portpirie[,2], GEVF)
+ print(erg)
+ returnlevelplot(portpirie[,2], GEVF, datax=TRUE)
+
+ data(rain)
+ gpdfit <- gpd.fit(rain,10) ## taken from example from ismev::gpd.fit
+ GPDF <- GParetoFamily(scale=gpdfit$mle[1],shape=gpdfit$mle[2],loc=10)
+ returnlevelplot(rain, GPDF, MaxOrPOT="POT", xlim=c(1e-1,1e3))
 }
 \keyword{hplot}
 \keyword{distribution}

@@ -14,6 +14,8 @@ v 2.6
 user-visible CHANGES:
 + introduced dropZeroDensity argument to ML estimators 
 + arguments panel.first, panel.last for plot-methods can now be lists
++ introduced returnlevelplot, a generalization of the respective
+  diagnostic plot facility of package ismev
   
 GENERAL ENHANCEMENTS:
 
@@ -32,7 +34,8 @@ under the hood:
    * additional argument added.points.CI to allow for  additional evaluation 
      points for the confidence intervals in the range of the seen data	 
 + returnlevelplot
-   * similar 
+   * similar as qqplot as to additional methods
+   * returnlevelplot now gains an argument threshold for POT
 + new internal method  .checkEstClassForParamFamily-method to be called 
   immediately before returning an Estimate object (in functions Estimator(), 
   MCEstimator(), MDEstimator(), MLEstimator()); this allows to return an
@@ -44,10 +47,13 @@ under the hood:
 
   BUGFIXES:
 
+
 + fixed issue with slot withPosRestr in ParamFamParameter.R 
 + fixed issue with check.validity (reported by B.Spangl)
 + fixed some minor issue in existsPIC (in case we get 0 matrix, and less strict tolerance) 
 + fixed issue with returnlevelplot discovered by B. Spangl -- points had not been ordered 
++ fixed CIs for qqplot and returnlevelplot
+
 ##############
 v 2.5
 ##############
