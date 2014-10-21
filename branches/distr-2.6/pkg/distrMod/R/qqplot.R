@@ -95,15 +95,16 @@ setMethod("qqplot", signature(x = "ANY",
     ){ ## return value as in stats::qqplot
 
     mc <- match.call(call = sys.call(sys.parent(1)))
-    if(missing(xlab)) mc$xlab <- as.character(deparse(mc$x))
-    if(missing(ylab)) mc$ylab <- as.character(deparse(mc$y))
+    if(missing(xlab)){ xlab <- mc$xlab <- as.character(deparse(mc$x))}
+    if(missing(ylab)){ ylab <- mc$ylab <- as.character(deparse(mc$y))}
     mcl <- as.list(mc)[-1]
     mcl$withSweave <- NULL
     mcl$mfColRow <- NULL
     mcl$debug <- NULL
     mcl$added.points.CI <- NULL
     force(x)
-
+    if(is.null(mcl$datax)) datax <- FALSE
+    if(!datax){ mc$ylab <- xlab; mc$xlab <- ylab}
 
     xj <- x
     if(any(.isReplicated(x)))

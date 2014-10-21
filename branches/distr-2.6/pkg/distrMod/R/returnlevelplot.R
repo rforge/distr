@@ -84,6 +84,7 @@ setMethod("returnlevelplot", signature(x = "ANY",
     mcl$type <-NULL
     mcl$debug <- NULL
     mcl$added.points.CI <- NULL
+    if(is.null(mcl$datax)) datax <- FALSE
     force(x)
 
     thresh0 <- threshold 

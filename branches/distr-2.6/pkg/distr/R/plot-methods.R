@@ -247,12 +247,14 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
      o.warn <- getOption("warn"); options(warn = -1)
      if(1%in%to.draw){
          on.exit(options(warn=o.warn))
-         dots.without.pch$panel.first <- pF[[plotCount]]
-         dots.without.pch$panel.last  <- pL[[plotCount]]
+         dots.lowlevel$panel.first <- pF[[plotCount]]
+         dots.lowlevel$panel.last  <- pL[[plotCount]]
+         dots.lowlevel$xlim <- xlim
          do.call(plot, c(list(x = grid, dxg, type = "l",
              ylim = ylim1,  ylab = ylab0[["d"]], xlab = xlab0[["d"]], log = logpd),
-             dots.without.pch))
-         dots.without.pch$panel.first <- dots.without.pch$panel.last <- NULL
+             dots.lowlevel))
+         dots.lowlevel$panel.first <- dots.lowlevel$panel.last <- NULL
+         dots.lowlevel$xlim <- NULL
          plotCount <- plotCount + 1
          options(warn = o.warn)
      
@@ -266,12 +268,14 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
      if(is.finite(q(x)(1))) {grid <- c(grid,q(x)(1)); pxg <- c(pxg,1)}
 
      if(2%in%to.draw){
-        dots.without.pch$panel.first <- pF[[plotCount]]
-        dots.without.pch$panel.last  <- pL[[plotCount]]
+        dots.lowlevel$panel.first <- pF[[plotCount]]
+        dots.lowlevel$panel.last  <- pL[[plotCount]]
+        dots.lowlevel$xlim <- xlim
         do.call(plot, c(list(x = grid, pxg, type = "l",
              ylim = ylim2, ylab = ylab0[["p"]], xlab = xlab0[["p"]], log = logpd),
-             dots.without.pch))
-        dots.without.pch$panel.first <- dots.without.pch$panel.last <- NULL
+             dots.lowlevel))
+        dots.lowlevel$panel.first <- dots.lowlevel$panel.last <- NULL
+        dots.lowlevel$xlim <- NULL
         plotCount <- plotCount + 1
         options(warn = o.warn)
       
@@ -310,12 +314,12 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
      
      if(3%in%to.draw){
         options(warn = -1)
-        dots.without.pch$panel.first <- pF[[plotCount]]
-        dots.without.pch$panel.last  <- pL[[plotCount]]
+        dots.lowlevel$panel.first <- pF[[plotCount]]
+        dots.lowlevel$panel.last  <- pL[[plotCount]]
         do.call(plot, c(list(x = po, xo, type = "n",
              xlim = ylim2, ylim = xlim, ylab = ylab0[["q"]], xlab = xlab0[["q"]],
-             log = logq), dots.without.pch))
-        dots.without.pch$panel.first <- dots.without.pch$panel.last <- NULL
+             log = logq), dots.lowlevel))
+        dots.lowlevel$panel.first <- dots.lowlevel$panel.last <- NULL
         plotCount <- plotCount + 1
         options(warn = o.warn)
     
