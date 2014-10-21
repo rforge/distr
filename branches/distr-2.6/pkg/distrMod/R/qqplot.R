@@ -98,13 +98,9 @@ setMethod("qqplot", signature(x = "ANY",
     if(missing(xlab)){ xlab <- mc$xlab <- as.character(deparse(mc$x))}
     if(missing(ylab)){ ylab <- mc$ylab <- as.character(deparse(mc$y))}
     mcl <- as.list(mc)[-1]
-    mcl$withSweave <- NULL
-    mcl$mfColRow <- NULL
-    mcl$debug <- NULL
-    mcl$added.points.CI <- NULL
     force(x)
     if(is.null(mcl$datax)) datax <- FALSE
-    if(!datax){ mc$ylab <- xlab; mc$xlab <- ylab}
+    if(!datax){ mcl$ylab <- xlab; mcl$xlab <- ylab}
 
     xj <- x
     if(any(.isReplicated(x)))
@@ -154,8 +150,13 @@ setMethod("qqplot", signature(x = "ANY",
 
     if(n!=length(x)) withLab <- FALSE
 
-    mcl$x <- xj
-    mcl$y <- yc
+    if(datax){ 
+      mcl$x <- xj
+      mcl$y <- yc
+    }else{
+      mcl$y <- xj
+      mcl$x <- yc
+    }
     mcl <- .deleteItemsMCL(mcl)
     mcl$cex <- cex.pch
     mcl$col <- col.pch

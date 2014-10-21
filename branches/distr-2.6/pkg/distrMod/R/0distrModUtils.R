@@ -578,7 +578,7 @@ system.time(print(.CvMMDCovariance(Els,par=ParamFamParameter("",0:1), N = 100)))
 }
 
 .deleteItemsMCL <- function(mcl){
-    mcl$n <- NULL
+    mcl$datax <- mcl$n <- NULL
     mcl$col.IdL <- mcl$alpha.CI <- mcl$lty.IdL <-  NULL
     mcl$col.NotInSupport <- mcl$check.NotInSupport <- NULL
     mcl$exact.sCI <- mcl$exact.pCI <- NULL
@@ -596,6 +596,11 @@ system.time(print(.CvMMDCovariance(Els,par=ParamFamParameter("",0:1), N = 100)))
     mcl$legend.cex <- mcl$with.legend <- mcl$legend.bg <- NULL
     mcl$legend.pos <- mcl$legend.pref <- mcl$legend.postf <- NULL
     mcl$legend.alpha <- NULL
+    mcl$withSweave <- NULL
+    mcl$mfColRow <- NULL
+    mcl$debug <- NULL
+    mcl$added.points.CI <- NULL
+
 mcl}
 
 ## helpers
