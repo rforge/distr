@@ -19,6 +19,7 @@ user-visible CHANGES:
 
 under the hood
 + added svn-properties to distr.Rnw
++ enhanced imports in DESCRIPTION by explicating second order imports
 
 ##############
 v 2.5
