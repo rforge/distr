@@ -41,6 +41,9 @@ under the hood:
  + re-included faster right-tail approximation in C-code K(int n, double d)  
    included from R-Core (was commented out there) [ks.c in folder src in
    tar-ball, ll 153-155]
+-plot: 
+ + fixed some issues with plotting of distributions: xlim, ylim were not 
+   correctly passed on, same for col => now use dots.lowlevel ... 
 
 ##############
 v 2.5.3
