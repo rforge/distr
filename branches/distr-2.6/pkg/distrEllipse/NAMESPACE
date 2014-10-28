@@ -4,6 +4,7 @@ import("mvtnorm")
 import("distr")
 import("distrEx")
 import("distrSim")
+importFrom("startupmsg", "buildStartupMessage", "infoShow")
 
 export("SphericalDistribution", "EllipticalDistribution", 
        "MVNorm", "MVt", "MultivarDistrList",

@@ -5,6 +5,7 @@ Title: S4 classes for elliptically contoured distributions
 Depends: R(>= 2.8.0), methods, graphics, mvtnorm, setRNG(>= 2006.2-1), distr(>= 2.2),
         distrEx(>= 2.2), distrSim(>= 2.2)
 Suggests: distrMod(>= 2.2), distrTEst(>= 2.2)
+Imports: startupmsg
 Author: Peter Ruckdeschel
 Description: Distribution (S4-)classes for elliptically contoured distributions (based on
         package distr)

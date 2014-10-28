@@ -1,6 +1,7 @@
 import("distr")
 import("distrEx")
 import("methods")
+importFrom("startupmsg", "buildStartupMessage", "infoShow")
 
 exportMethods("plotCLT") 
 export("illustrateLLN")
