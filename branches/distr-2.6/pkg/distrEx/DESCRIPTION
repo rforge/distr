@@ -4,8 +4,9 @@ Date: 2013-09-18
 Title: Extensions of package distr
 Description: Extensions of package distr and some additional functionality
 Depends: R(>= 2.10.0), methods, distr(>= 2.2)
+Imports: startupmsg
 Suggests: tcltk
-Author: Matthias Kohl, Peter Ruckdeschel, Nataliya Horbenko
+Author: Matthias Kohl, Peter Ruckdeschel
 Maintainer: Matthias Kohl <Matthias.Kohl@stamats.de>
 ByteCompile: yes
 License: LGPL-3

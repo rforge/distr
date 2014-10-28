@@ -2,6 +2,8 @@ useDynLib("distrEx")
 
 import("methods")
 import("distr")
+importFrom("startupmsg", "buildStartupMessage")
+importFrom("startupmsg", "infoShow")
 
 exportClasses("Condition", "EuclCondition") 
 exportClasses("LMParameter")
