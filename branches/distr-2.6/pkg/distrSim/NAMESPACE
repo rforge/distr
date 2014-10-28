@@ -2,6 +2,7 @@ import("methods")
 importFrom("stats", "simulate")
 importFrom("setRNG", "setRNG")
 import("distr")
+importFrom("startupmsg", "buildStartupMessage", "infoShow")
 
 export("cload", "Dataclass", "Simulation", "Contsimulation",
               "distrSimoptions", "getdistrSimOption", "SeqDataFrames", "distrSimMASK")

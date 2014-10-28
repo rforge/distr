@@ -24,6 +24,7 @@ GENERAL ENHANCEMENTS:
 
 under the hood:
 + added .Rbuildignore
++ enhanced imports in DESCRIPTION by explicating second order imports
 
 BUGFIXES:
 + moved generics to "distribution" and "samplesize" to pkg distr to avoid 
