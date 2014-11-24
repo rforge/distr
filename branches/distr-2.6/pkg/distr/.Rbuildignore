@@ -1,4 +1,5 @@
 inst/doc/Rplots.pdf
+vignettes/Rplots.pdf
 ^.*\.svn.+
-.*-Ex\.R
+^.*-Ex\.R$
 build
