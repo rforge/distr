@@ -12,6 +12,7 @@ v 2.6
 ##############
 
 user-visible CHANGES:
++ title changed to title style / capitalization
 + introduced dropZeroDensity argument to ML estimators 
 + arguments panel.first, panel.last for plot-methods can now be lists
 + introduced returnlevelplot, a generalization of the respective

@@ -12,6 +12,7 @@ v 2.6
 ##############
 
 user-visible CHANGES:
++ title changed to title style / capitalization
 + added generating function "EmpiricalMVDistribution" for computing
   empirical distribution of multivariate data
 + removed N. Horbenko from authors in DESCRIPTION; her contribution

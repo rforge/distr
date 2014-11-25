@@ -1,7 +1,7 @@
 Package: distr
 Version: 2.6
 Date: 2013-09-13
-Title: Object oriented implementation of distributions
+Title: Object Oriented Implementation of Distributions
 Description: S4 Classes and Methods for distributions
 Authors@R: c(person("Florian", "Camphausen", role=c("aut")),
         person("Matthias", "Kohl", role=c("aut", "cph")), 

@@ -1,5 +1,5 @@
 Package: SweaveListingUtils
-Title: Utilities for Sweave together with TeX listings package
+Title: Utilities for Sweave Together with TeX listings Package
 Encoding: latin1
 Version: 0.7
 Depends: R(>= 2.14.0), startupmsg

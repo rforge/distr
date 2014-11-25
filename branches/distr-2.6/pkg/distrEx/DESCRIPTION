@@ -1,7 +1,7 @@
 Package: distrEx
 Version: 2.6
 Date: 2013-09-18
-Title: Extensions of package distr
+Title: Extensions of Package distr
 Description: Extensions of package distr and some additional functionality
 Depends: R(>= 2.10.0), methods, distr(>= 2.2)
 Imports: startupmsg

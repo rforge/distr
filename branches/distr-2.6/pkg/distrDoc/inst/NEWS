@@ -12,7 +12,7 @@ v 2.6
 ##############
 
 user-visible CHANGES:
-
++ title changed to title style / capitalization
 + updated CITATION file
 + removed some outdated references from uni-bayreuth
 + updated references in vignette distr.Rnw

@@ -1,7 +1,7 @@
 Package: distrRmetrics
 Version: 2.6
 Date: 2013-09-18
-Title: Package distr classes for distributions from Rmetrics
+Title: Package distr Classes for Distributions from Rmetrics
 Depends: R(>= 2.6.0), methods, distr(>= 2.4), fBasics(>= 270.73), fGarch(>= 270.73)
 Suggests: distrEx(>= 2.4), distrMod(>= 2.4)
 Imports: startupmsg

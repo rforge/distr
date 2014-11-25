@@ -11,6 +11,9 @@
 v 2.6
 ##############
 
+user-visible CHANGES:
++ title changed to title style / capitalization
+
 under the hood:
 
 + removed ::: internal dependencies (within distr-Fam of pkgs) by copying 

@@ -11,8 +11,8 @@
 v 2.6
 ##############
 
-user visible changes:
-
+user-visible CHANGES:
++ title changed to title style / capitalization
 + added reference to JSS-paper in help to IllustCLT
 
 under the hood:

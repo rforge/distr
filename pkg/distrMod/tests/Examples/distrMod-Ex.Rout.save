@@ -1,6 +1,6 @@
 
-R version 3.0.1 Patched (2013-09-02 r63805) -- "Good Sport"
-Copyright (C) 2013 The R Foundation for Statistical Computing
+R Under development (unstable) (2014-11-23 r67046) -- "Unsuffered Consequences"
+Copyright (C) 2014 The R Foundation for Statistical Computing
 Platform: i386-w64-mingw32/i386 (32-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -21,22 +21,10 @@ Type 'q()' to quit R.
 > source(file.path(R.home("share"), "R", "examples-header.R"))
 > options(warn = 1)
 > options(pager = "console")
-> base::assign(".ExTimings", "distrMod-Ex.timings", pos = 'CheckExEnv')
-> base::cat("name\tuser\tsystem\telapsed\n", file=base::get(".ExTimings", pos = 'CheckExEnv'))
-> base::assign(".format_ptime",
-+ function(x) {
-+   if(!is.na(x[4L])) x[1L] <- x[1L] + x[4L]
-+   if(!is.na(x[5L])) x[2L] <- x[2L] + x[5L]
-+   options(OutDec = '.')
-+   format(x[1L:3L], digits = 7L)
-+ },
-+ pos = 'CheckExEnv')
-> 
-> ### * </HEADER>
 > library('distrMod')
 Loading required package: distr
 Loading required package: startupmsg
-:startupmsg>  Utilities for start-up messages (version 0.8)
+:startupmsg>  Utilities for start-up messages (version 0.9)
 :startupmsg> 
 :startupmsg>  For more information see ?"startupmsg",
 :startupmsg>  NEWS("startupmsg")
@@ -44,8 +32,7 @@ Loading required package: startupmsg
 Loading required package: sfsmisc
 Loading required package: SweaveListingUtils
 :SweaveListingUtils>  Utilities for Sweave together with
-:SweaveListingUtils>  TeX listings package (version
-:SweaveListingUtils>  0.6.1)
+:SweaveListingUtils>  TeX listings package (version 0.7)
 :SweaveListingUtils> 
 :SweaveListingUtils>  NOTE: Support for this package
 :SweaveListingUtils>  will stop soon.
@@ -78,7 +65,7 @@ The following objects are masked from 'package:base':
     library, require
 
 :distr>  Object oriented implementation of distributions (version
-:distr>  2.5)
+:distr>  2.5.3)
 :distr> 
 :distr>  Attention: Arithmetics on distribution objects are
 :distr>  understood as operations on corresponding random variables
@@ -104,7 +91,7 @@ The following objects are masked from 'package:stats':
     df, qqplot, sd
 
 Loading required package: distrEx
-:distrEx>  Extensions of package distr (version 2.4)
+:distrEx>  Extensions of package distr (version 2.5)
 :distrEx> 
 :distrEx>  Note: Packages "e1071", "moments", "fBasics" should be
 :distrEx>  attached /before/ package "distrEx". See
@@ -128,7 +115,7 @@ The following objects are masked from 'package:stats':
     IQR, mad, median, var
 
 Loading required package: RandVar
-:RandVar>  Implementation of random variables (version 0.9.2)
+:RandVar>  Implementation of random variables (version 1.0)
 :RandVar> 
 :RandVar>  For more information see ?"RandVar", NEWS("RandVar"), as
 :RandVar>  well as
@@ -138,8 +125,8 @@ Loading required package: RandVar
 
 Loading required package: MASS
 Loading required package: stats4
-:distrMod>  Object oriented implementation of probability models
-:distrMod>  (version 2.5)
+:distrMod>  Object Oriented Implementation of Probability Models
+:distrMod>  (version 2.5.3)
 :distrMod> 
 :distrMod>  Some functions from pkg's 'base' and 'stats' are
 :distrMod>  intentionally masked ---see distrModMASK().
@@ -180,7 +167,6 @@ The following object is masked from 'package:base':
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: BetaFamily
 > ### Title: Generating function for Beta families
 > ### Aliases: BetaFamily
@@ -232,15 +218,12 @@ $maximum.deviation
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("BetaFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("BiasType-class")
 > ### * BiasType-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: BiasType-class
 > ### Title: Bias Type
 > ### Aliases: BiasType-class name,BiasType-method name<-,BiasType-method
@@ -254,15 +237,12 @@ $maximum.deviation
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("BiasType-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("BinomFamily")
 > ### * BinomFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: BinomFamily
 > ### Title: Generating function for Binomial families
 > ### Aliases: BinomFamily
@@ -297,7 +277,7 @@ An object of class "PosSemDefSymmMatrix"
          prob
 prob 133.3333
 > checkL2deriv(B1)
-precision of centering:	 -3.520722e-15 
+precision of centering:	 -2.855253e-15 
 precision of Fisher information:
               prob
 prob -2.842171e-14
@@ -312,15 +292,12 @@ $maximum.deviation
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("BinomFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("CauchyLocationScaleFamily")
 > ### * CauchyLocationScaleFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: CauchyLocationScaleFamily
 > ### Title: Generating function for Cauchy location and scale families
 > ### Aliases: CauchyLocationScaleFamily
@@ -376,15 +353,12 @@ $maximum.deviation
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("CauchyLocationScaleFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Confint-class")
 > ### * Confint-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Confint-class
 > ### Title: Confint-class
 > ### Aliases: Confint-class type,Confint-method call.estimate
@@ -458,15 +432,12 @@ rate  1.751  4.097
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("Confint-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Estimate-class")
 > ### * Estimate-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Estimate-class
 > ### Title: Estimate-class.
 > ### Aliases: Estimate-class name,Estimate-method name<-,Estimate-method
@@ -505,15 +476,12 @@ estimate:
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("Estimate-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Estimator")
 > ### * Estimator
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Estimator
 > ### Title: Function to compute estimates
 > ### Aliases: Estimator
@@ -549,15 +517,12 @@ estimate:
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("Estimator", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("EvenSymmetric-class")
 > ### * EvenSymmetric-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: EvenSymmetric-class
 > ### Title: Class for Even Functions
 > ### Aliases: EvenSymmetric-class
@@ -572,15 +537,12 @@ numeric(0)
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("EvenSymmetric-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("EvenSymmetric")
 > ### * EvenSymmetric
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: EvenSymmetric
 > ### Title: Generating function for EvenSymmetric-class
 > ### Aliases: EvenSymmetric
@@ -604,15 +566,12 @@ function (SymmCenter = 0)
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("EvenSymmetric", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("ExpScaleFamily")
 > ### * ExpScaleFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: ExpScaleFamily
 > ### Title: Generating function for exponential scale families
 > ### Aliases: ExpScaleFamily
@@ -648,7 +607,7 @@ function (x)
 {
     ((x - 0)/1 * LogDeriv((x - 0)/1) - 1)/1
 }
-<environment: 0x07e8bf1c>
+<environment: 0x07e0db18>
 
 > checkL2deriv(E1)
 precision of centering:	 -1.51181e-06 
@@ -666,15 +625,12 @@ $maximum.deviation
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("ExpScaleFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("FunSymmList-class")
 > ### * FunSymmList-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: FunSymmList-class
 > ### Title: List of Symmetries for a List of Functions
 > ### Aliases: FunSymmList-class
@@ -702,15 +658,12 @@ center of symmetry:
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("FunSymmList-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("FunSymmList")
 > ### * FunSymmList
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: FunSymmList
 > ### Title: Generating function for FunSymmList-class
 > ### Aliases: FunSymmList
@@ -747,15 +700,12 @@ function (...)
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("FunSymmList", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("GammaFamily")
 > ### * GammaFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: GammaFamily
 > ### Title: Generating function for Gamma families
 > ### Aliases: GammaFamily
@@ -807,15 +757,12 @@ $maximum.deviation
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("GammaFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("InfoNorm")
 > ### * InfoNorm
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: InfoNorm
 > ### Title: Generating function for InfoNorm-class
 > ### Aliases: InfoNorm
@@ -836,8 +783,8 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A)
-<bytecode: 0x07ce75a0>
-<environment: 0x07ce66ec>
+<bytecode: 0x07121768>
+<environment: 0x0712189c>
 
 > 
 > ## The function is currently defined as
@@ -849,15 +796,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("InfoNorm", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("L2GroupFamily-class")
 > ### * L2GroupFamily-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: L2GroupParamFamily-class
 > ### Title: L2 differentiable parametric group family
 > ### Aliases: L2GroupParamFamily-class LogDeriv
@@ -872,15 +816,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("L2GroupFamily-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("L2LocationFamily-class")
 > ### * L2LocationFamily-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: L2LocationFamily-class
 > ### Title: L2 differentiable parametric group family
 > ### Aliases: L2LocationFamily-class
@@ -893,15 +834,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("L2LocationFamily-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("L2LocationFamily")
 > ### * L2LocationFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: L2LocationFamily
 > ### Title: Generating function for L2LocationFamily-class
 > ### Aliases: L2LocationFamily
@@ -914,15 +852,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("L2LocationFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("L2LocationScaleFamily-class")
 > ### * L2LocationScaleFamily-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: L2LocationScaleFamily-class
 > ### Title: L2 differentiable parametric group family
 > ### Aliases: L2LocationScaleFamily-class
@@ -935,15 +870,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("L2LocationScaleFamily-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("L2LocationScaleFamily")
 > ### * L2LocationScaleFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: L2LocationScaleFamily
 > ### Title: Generating function for L2LocationScaleFamily-class
 > ### Aliases: L2LocationScaleFamily
@@ -956,15 +888,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("L2LocationScaleFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("L2LocationUnknownScaleFamily")
 > ### * L2LocationUnknownScaleFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: L2LocationUnknownScaleFamily
 > ### Title: Generating function for L2LocationScaleFamily-class in nuisance
 > ###   situation
@@ -978,15 +907,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("L2LocationUnknownScaleFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("L2ParamFamily-class")
 > ### * L2ParamFamily-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: L2ParamFamily-class
 > ### Title: L2 differentiable parametric family
 > ### Aliases: plot plot-methods L2ParamFamily-class FisherInfo
@@ -1019,15 +945,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("L2ParamFamily-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("L2ParamFamily")
 > ### * L2ParamFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: L2ParamFamily
 > ### Title: Generating function for L2ParamFamily-class
 > ### Aliases: L2ParamFamily
@@ -1040,15 +963,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("L2ParamFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("L2ScaleFamily-class")
 > ### * L2ScaleFamily-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: L2ScaleFamily-class
 > ### Title: L2 differentiable parametric group family
 > ### Aliases: L2ScaleFamily-class
@@ -1061,15 +981,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("L2ScaleFamily-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("L2ScaleFamily")
 > ### * L2ScaleFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: L2ScaleFamily
 > ### Title: Generating function for L2ScaleFamily-class
 > ### Aliases: L2ScaleFamily
@@ -1082,15 +999,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("L2ScaleFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("L2ScaleUnknownLocationFamily")
 > ### * L2ScaleUnknownLocationFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: L2ScaleUnknownLocationFamily
 > ### Title: Generating function for L2LocationScaleFamily-class in nuisance
 > ###   situation
@@ -1104,15 +1018,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("L2ScaleUnknownLocationFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("LnormScaleFamily")
 > ### * LnormScaleFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: LnormScaleFamily
 > ### Title: Generating function for lognormal scale families
 > ### Aliases: LnormScaleFamily
@@ -1151,7 +1062,7 @@ function (x)
 {
     ((x - 0)/1 * LogDeriv((x - 0)/1) - 1)/1
 }
-<environment: 0x082c5580>
+<environment: 0x090a1848>
 
 > checkL2deriv(L1)
 precision of centering:	 -0.003003394 
@@ -1169,15 +1080,12 @@ $maximum.deviation
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("LnormScaleFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("MCEstimate-class")
 > ### * MCEstimate-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: MCEstimate-class
 > ### Title: MCEstimate-class.
 > ### Aliases: MCEstimate-class criterion criterion,MCEstimate-method
@@ -1234,8 +1142,6 @@ negative log-likelihood
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("MCEstimate-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > graphics::par(get("par.postscript", pos = 'CheckExEnv'))
 > cleanEx()
 > nameEx("MCEstimator")
@@ -1243,7 +1149,6 @@ negative log-likelihood
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: MCEstimator
 > ### Title: Function to compute minimum criterion estimates
 > ### Aliases: MCEstimator
@@ -1346,15 +1251,12 @@ Hellinger Distance
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("MCEstimator", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("MDEstimator")
 > ### * MDEstimator
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: MDEstimator
 > ### Title: Function to compute minimum distance estimates
 > ### Aliases: MDEstimator
@@ -1476,15 +1378,12 @@ Hellinger distance
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("MDEstimator", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("MLEstimator")
 > ### * MLEstimator
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: MLEstimator
 > ### Title: Function to compute maximum likelihood estimates
 > ### Aliases: MLEstimator
@@ -1727,8 +1626,6 @@ scale 0.9945880 2.277044
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("MLEstimator", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > graphics::par(get("par.postscript", pos = 'CheckExEnv'))
 > cleanEx()
 > nameEx("NBinomFamily")
@@ -1736,7 +1633,6 @@ scale 0.9945880 2.277044
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: NbinomFamily
 > ### Title: Generating function for Nbinomial families
 > ### Aliases: NbinomFamily NbinomwithSizeFamily NbinomMeanSizeFamily
@@ -1857,15 +1753,12 @@ $maximum.deviation
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("NBinomFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("NonSymmetric-class")
 > ### * NonSymmetric-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: NonSymmetric-class
 > ### Title: Class for Non-symmetric Functions
 > ### Aliases: NonSymmetric-class
@@ -1879,15 +1772,12 @@ NULL
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("NonSymmetric-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("NonSymmetric")
 > ### * NonSymmetric
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: NonSymmetric
 > ### Title: Generating function for NonSymmetric-class
 > ### Aliases: NonSymmetric
@@ -1908,15 +1798,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("NonSymmetric", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("NormLocationFamily")
 > ### * NormLocationFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: NormLocationFamily
 > ### Title: Generating function for normal location families
 > ### Aliases: NormLocationFamily
@@ -1952,15 +1839,12 @@ An object of class "UnivarDistrList"
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("NormLocationFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("NormLocationScaleFamily")
 > ### * NormLocationScaleFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: NormLocationScaleFamily
 > ### Title: Generating function for normal location and scale families
 > ### Aliases: NormLocationScaleFamily
@@ -2012,15 +1896,12 @@ $maximum.deviation
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("NormLocationScaleFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("NormLocationUnknownScaleFamily")
 > ### * NormLocationUnknownScaleFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: NormLocationUnknownScaleFamily
 > ### Title: Generating function for normal location families with unknown
 > ###   scale as nuisance
@@ -2074,15 +1955,12 @@ $maximum.deviation
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("NormLocationUnknownScaleFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("NormScaleFamily")
 > ### * NormScaleFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: NormScaleFamily
 > ### Title: Generating function for normal scale families
 > ### Aliases: NormScaleFamily
@@ -2132,15 +2010,12 @@ $maximum.deviation
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("NormScaleFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("NormScaleUnknownLocationFamily")
 > ### * NormScaleUnknownLocationFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: NormScaleUnknownLocationFamily
 > ### Title: Generating function for normal scale families with unknown
 > ###   location as nuisance
@@ -2194,15 +2069,12 @@ $maximum.deviation
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("NormScaleUnknownLocationFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("NormType-class")
 > ### * NormType-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: NormType-class
 > ### Title: Norm Type
 > ### Aliases: NormType-class name,NormType-method name<-,NormType-method fct
@@ -2219,22 +2091,19 @@ function (x)
         return(abs(x))
     else return(sqrt(colSums(x^2)))
 }
-<bytecode: 0x08edfc70>
+<bytecode: 0x09769850>
 <environment: namespace:distrMod>
 > name(EuclNorm)
 [1] "EuclideanNorm"
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("NormType-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("NormType")
 > ### * NormType
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: NormType
 > ### Title: Generating function for NormType-class
 > ### Aliases: NormType
@@ -2254,21 +2123,18 @@ function (x)
         return(abs(x))
     else return(sqrt(colSums(x^2)))
 }
-<bytecode: 0x08edfc70>
+<bytecode: 0x09769850>
 <environment: namespace:distrMod>
 
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("NormType", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("OddSymmetric-class")
 > ### * OddSymmetric-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: OddSymmetric-class
 > ### Title: Class for Odd Functions
 > ### Aliases: OddSymmetric-class
@@ -2283,15 +2149,12 @@ numeric(0)
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("OddSymmetric-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("OddSymmetric")
 > ### * OddSymmetric
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: OddSymmetric
 > ### Title: Generating function for OddSymmetric-class
 > ### Aliases: OddSymmetric
@@ -2315,15 +2178,12 @@ function (SymmCenter = 0)
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("OddSymmetric", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("ParamFamParameter-class")
 > ### * ParamFamParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: ParamFamParameter-class
 > ### Title: Parameter of a parametric family of probability measures
 > ### Aliases: ParamFamParameter-class ParamWithScaleFamParameter-class
@@ -2352,15 +2212,12 @@ name:	parameter of a parametric family of probability measures
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("ParamFamParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("ParamFamParameter")
 > ### * ParamFamParameter
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: ParamFamParameter
 > ### Title: Generating function for ParamFamParameter-class
 > ### Aliases: ParamFamParameter
@@ -2381,15 +2238,12 @@ fixed part of param.:	2
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("ParamFamParameter", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("ParamFamily-class")
 > ### * ParamFamily-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: ParamFamily-class
 > ### Title: Parametric family of probability measures.
 > ### Aliases: ParamFamily-class main,ParamFamily-method
@@ -2407,15 +2261,12 @@ fixed part of param.:	2
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("ParamFamily-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("ParamFamily")
 > ### * ParamFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: ParamFamily
 > ### Title: Generating function for ParamFamily-class
 > ### Aliases: ParamFamily
@@ -2661,15 +2512,12 @@ Shape parameter must not be negative.
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("ParamFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("PoisFamily")
 > ### * PoisFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: PoisFamily
 > ### Title: Generating function for Poisson families
 > ### Aliases: PoisFamily
@@ -2709,15 +2557,12 @@ $maximum.deviation
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("PoisFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("QFNorm")
 > ### * QFNorm
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: QFNorm
 > ### Title: Generating function for QFNorm-class
 > ### Aliases: QFNorm
@@ -2738,8 +2583,8 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A0)
-<bytecode: 0x0921cd40>
-<environment: 0x09515118>
+<bytecode: 0x0829ca1c>
+<environment: 0x0829bbbc>
 
 > 
 > ## The function is currently defined as
@@ -2751,15 +2596,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("QFNorm", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("SelfNorm")
 > ### * SelfNorm
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: SelfNorm
 > ### Title: Generating function for SelfNorm-class
 > ### Aliases: SelfNorm
@@ -2780,8 +2622,8 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A)
-<bytecode: 0x08c80880>
-<environment: 0x08c7fc34>
+<bytecode: 0x08202d9c>
+<environment: 0x08201ee8>
 
 > 
 > ## The function is currently defined as
@@ -2793,15 +2635,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("SelfNorm", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("addAlphTrsp2col")
 > ### * addAlphTrsp2col
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: addAlphTrsp2col
 > ### Title: "addAlphTrsp2col"
 > ### Aliases: addAlphTrsp2col
@@ -2821,15 +2660,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("addAlphTrsp2col", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asBias-class")
 > ### * asBias-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asBias-class
 > ### Title: Standardized Asymptotic Bias
 > ### Aliases: asBias-class
@@ -2843,15 +2679,12 @@ risk type:	 asymptotic bias
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("asBias-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asBias")
 > ### * asBias
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asBias
 > ### Title: Generating function for asBias-class
 > ### Aliases: asBias
@@ -2873,15 +2706,12 @@ function (biastype = symmetricBias(), normtype = NormType())
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("asBias", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asCov-class")
 > ### * asCov-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asCov-class
 > ### Title: Asymptotic covariance
 > ### Aliases: asCov-class
@@ -2895,15 +2725,12 @@ risk type:	 asymptotic covariance
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("asCov-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asCov")
 > ### * asCov
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asCov
 > ### Title: Generating function for asCov-class
 > ### Aliases: asCov
@@ -2924,15 +2751,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("asCov", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asHampel-class")
 > ### * asHampel-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asHampel-class
 > ### Title: Asymptotic Hampel risk
 > ### Aliases: asHampel-class bound bound,asHampel-method
@@ -2948,15 +2772,12 @@ bound:	 Inf
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("asHampel-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asHampel")
 > ### * asHampel
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asHampel
 > ### Title: Generating function for asHampel-class
 > ### Aliases: asHampel
@@ -2979,15 +2800,12 @@ function (bound = Inf, biastype = symmetricBias(), normtype = NormType())
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("asHampel", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asMSE-class")
 > ### * asMSE-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asMSE-class
 > ### Title: Asymptotic mean square error
 > ### Aliases: asMSE-class
@@ -3001,15 +2819,12 @@ risk type:	 asymptotic mean square error
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("asMSE-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asMSE")
 > ### * asMSE
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asMSE
 > ### Title: Generating function for asMSE-class
 > ### Aliases: asMSE
@@ -3031,15 +2846,12 @@ function (biastype = symmetricBias(), normtype = NormType())
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("asMSE", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asSemivar-class")
 > ### * asSemivar-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asSemivar-class
 > ### Title: Semivariance Risk Type
 > ### Aliases: asSemivar-class sign,asSemivar-method sign<-,asSemivar-method
@@ -3053,15 +2865,12 @@ risk type:	 asymptotic Semivariance
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("asSemivar-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asSemivar")
 > ### * asSemivar
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asSemivar
 > ### Title: Generating function for asSemivar-class
 > ### Aliases: asSemivar
@@ -3076,15 +2885,12 @@ risk type:	 asymptotic Semivariance
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("asSemivar", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asUnOvShoot-class")
 > ### * asUnOvShoot-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asUnOvShoot-class
 > ### Title: Asymptotic under-/overshoot probability
 > ### Aliases: asUnOvShoot-class width width,asUnOvShoot-method
@@ -3100,15 +2906,12 @@ width:
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("asUnOvShoot-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asUnOvShoot")
 > ### * asUnOvShoot
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asUnOvShoot
 > ### Title: Generating function for asUnOvShoot-class
 > ### Aliases: asUnOvShoot
@@ -3131,15 +2934,12 @@ function (width = 1.96, biastype = symmetricBias())
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("asUnOvShoot", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asymmetricBias-class")
 > ### * asymmetricBias-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asymmetricBias-class
 > ### Title: asymmetric Bias Type
 > ### Aliases: asymmetricBias-class nu,asymmetricBias-method
@@ -3174,15 +2974,12 @@ Error in `nu<-`(`*tmp*`, value = -2) :
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("asymmetricBias-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asymmetricBias")
 > ### * asymmetricBias
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asymmetricBias
 > ### Title: Generating function for asymmetricBias-class
 > ### Aliases: asymmetricBias
@@ -3209,15 +3006,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("asymmetricBias", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("checkL2deriv")
 > ### * checkL2deriv
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: checkL2deriv
 > ### Title: Generic function for checking L2-derivatives
 > ### Aliases: checkL2deriv
@@ -3242,15 +3036,12 @@ $maximum.deviation
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("checkL2deriv", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("confint-methods")
 > ### * confint-methods
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: confint-methods
 > ### Title: Methods for function confint in Package 'distrMod'
 > ### Aliases: confint-methods confint confint,ANY,missing-method
@@ -3350,15 +3141,12 @@ shape 2.0485880 6.0719832
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("confint-methods", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("distrModMASK")
 > ### * distrModMASK
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: distrModMASK
 > ### Title: Masking of/by other functions in package "distrMod"
 > ### Aliases: distrModMASK MASKING
@@ -3386,15 +3174,12 @@ masking:
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("distrModMASK", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("distrModOptions")
 > ### * distrModOptions
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: distrModOptions
 > ### Title: Function to change the global variables of the package
 > ###   'distrMod'
@@ -3419,15 +3204,12 @@ $show.details
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("distrModOptions", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("fiBias-class")
 > ### * fiBias-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: fiBias-class
 > ### Title: Finite-sample Bias
 > ### Aliases: fiBias-class
@@ -3441,15 +3223,12 @@ risk type:	 finite-sample bias
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("fiBias-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("fiBias")
 > ### * fiBias
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: fiBias
 > ### Title: Generating function for fiBias-class
 > ### Aliases: fiBias
@@ -3470,15 +3249,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("fiBias", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("fiCov-class")
 > ### * fiCov-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: fiCov-class
 > ### Title: Finite-sample covariance
 > ### Aliases: fiCov-class
@@ -3492,15 +3268,12 @@ risk type:	 finite-sample covariance
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("fiCov-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("fiCov")
 > ### * fiCov
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: fiCov
 > ### Title: Generating function for fiCov-class
 > ### Aliases: fiCov
@@ -3521,15 +3294,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("fiCov", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("fiHampel-class")
 > ### * fiHampel-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: fiHampel-class
 > ### Title: Finite-sample Hampel risk
 > ### Aliases: fiHampel-class bound,fiHampel-method show,fiHampel-method
@@ -3544,15 +3314,12 @@ bound:	 Inf
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("fiHampel-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("fiHampel")
 > ### * fiHampel
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: fiHampel
 > ### Title: Generating function for fiHampel-class
 > ### Aliases: fiHampel
@@ -3574,15 +3341,12 @@ function (bound = Inf)
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("fiHampel", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("fiMSE-class")
 > ### * fiMSE-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: fiMSE-class
 > ### Title: Finite-sample mean square error
 > ### Aliases: fiMSE-class
@@ -3596,15 +3360,12 @@ risk type:	 finite-sample mean square error
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("fiMSE-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("fiMSE")
 > ### * fiMSE
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: fiMSE
 > ### Title: Generating function for fiMSE-class
 > ### Aliases: fiMSE
@@ -3625,15 +3386,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("fiMSE", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("fiUnOvShoot-class")
 > ### * fiUnOvShoot-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: fiUnOvShoot-class
 > ### Title: Finite-sample under-/overshoot probability
 > ### Aliases: fiUnOvShoot-class width,fiUnOvShoot-method
@@ -3649,15 +3407,12 @@ width:
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("fiUnOvShoot-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("fiUnOvShoot")
 > ### * fiUnOvShoot
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: fiUnOvShoot
 > ### Title: Generating function for fiUnOvShoot-class
 > ### Aliases: fiUnOvShoot
@@ -3679,15 +3434,12 @@ function (width = 1.96)
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("fiUnOvShoot", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("isKerAinKerB")
 > ### * isKerAinKerB
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: isKerAinKerB
 > ### Title: isKerAinKerB
 > ### Aliases: isKerAinKerB
@@ -3704,15 +3456,12 @@ function (width = 1.96)
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("isKerAinKerB", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("negativeBias")
 > ### * negativeBias
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: negativeBias
 > ### Title: Generating function for onesidedBias-class
 > ### Aliases: negativeBias
@@ -3738,15 +3487,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("negativeBias", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("norms")
 > ### * norms
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: norm
 > ### Title: Norm functions
 > ### Aliases: EuclideanNorm QuadFormNorm
@@ -3764,15 +3510,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("norms", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("onesidedBias-class")
 > ### * onesidedBias-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: onesidedBias-class
 > ### Title: onesided Bias Type
 > ### Aliases: onesidedBias-class sign sign<- sign,onesidedBias-method
@@ -3820,15 +3563,12 @@ Error in `sign<-`(`*tmp*`, value = -2) : Left value has to be +-1
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("onesidedBias-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("positiveBias")
 > ### * positiveBias
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: positiveBias
 > ### Title: Generating function for onesidedBias-class
 > ### Aliases: positiveBias
@@ -3854,15 +3594,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("positiveBias", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("print-methods")
 > ### * print-methods
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: print-methods
 > ### Title: Common 'print' Methods for S4 classes in Package 'distrMod'
 > ### Aliases: print-methods print,ShowDetails-method
@@ -4032,15 +3769,12 @@ negative log-likelihood
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("print-methods", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("qqplot")
 > ### * qqplot
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: qqplot
 > ### Title: Methods for Function qqplot in Package 'distrMod'
 > ### Aliases: qqplot qqplot-methods qqplot,ANY,ProbFamily-method
@@ -4087,15 +3821,12 @@ $y
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("qqplot", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("symmetricBias-class")
 > ### * symmetricBias-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: symmetricBias-class
 > ### Title: symmetric Bias Type
 > ### Aliases: symmetricBias-class
@@ -4117,15 +3848,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("symmetricBias-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("symmetricBias")
 > ### * symmetricBias
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: symmetricBias
 > ### Title: Generating function for symmetricBias-class
 > ### Aliases: symmetricBias
@@ -4148,15 +3876,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("symmetricBias", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("trAsCov-class")
 > ### * trAsCov-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: trAsCov-class
 > ### Title: Trace of asymptotic covariance
 > ### Aliases: trAsCov-class
@@ -4170,15 +3895,12 @@ risk type:	 trace of asymptotic covariance
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("trAsCov-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("trAsCov")
 > ### * trAsCov
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: trAsCov
 > ### Title: Generating function for trAsCov-class
 > ### Aliases: trAsCov
@@ -4199,15 +3921,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("trAsCov", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("trFiCov-class")
 > ### * trFiCov-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: trFiCov-class
 > ### Title: Trace of finite-sample covariance
 > ### Aliases: trFiCov-class
@@ -4221,15 +3940,12 @@ risk type:	 trace of finite-sample covariance
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("trFiCov-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("trFiCov")
 > ### * trFiCov
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: trFiCov
 > ### Title: Generating function for trFiCov-class
 > ### Aliases: trFiCov
@@ -4250,15 +3966,12 @@ function ()
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("trFiCov", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("trafo-methods")
 > ### * trafo-methods
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: trafo-methods
 > ### Title: Methods for function trafo in Package 'distrMod'
 > ### Aliases: trafo-methods trafo trafo,Estimate,missing-method
@@ -4308,15 +4021,12 @@ sig^2  3.6698685 11.189719
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("trafo-methods", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("trafoEst")
 > ### * trafoEst
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: trafoEst
 > ### Title: Function trafoEst in Package 'distrMod'
 > ### Aliases: trafoEst
@@ -4355,15 +4065,12 @@ sig^2  3.6698685 11.189719
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("trafoEst", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("validParameter-methods")
 > ### * validParameter-methods
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: validParameter-methods
 > ### Title: Methods for function validParameter in Package 'distrMod'
 > ### Aliases: validParameter-methods validParameter
@@ -4389,13 +4096,11 @@ sig^2  3.6698685 11.189719
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("validParameter-methods", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > ### * <FOOTER>
 > ###
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  39.7 0.35 40.45 NA NA 
+Time elapsed:  31.63 0.41 32.15 NA NA 
 > grDevices::dev.off()
 null device 
           1 

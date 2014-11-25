@@ -12,6 +12,7 @@ v 2.6
 ##############
 
 user-visible CHANGES:
++ title changed to title style / capitalization
 + removed other authors from DESCRIPTION; this was an artefact by cut&paste
 
 under the hood:
