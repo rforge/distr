@@ -3,7 +3,7 @@ Version: 2.6
 Date: 2013-09-13
 Title: Object Oriented Implementation of Distributions
 Description: (S4-)classes and methods for distributions.
-Authors@R: c(person("Florian", "Camphausen", role=c("aut", "cph")),
+Authors@R: c(person("Florian", "Camphausen", role=c("aut", "ctb")),
         person("Matthias", "Kohl", role=c("aut", "cph")), 
 		person("Peter", "Ruckdeschel", role=c("cre", "cph"), email="Peter.Ruckdeschel@itwm.fraunhofer.de"), 
 		person("Thomas", "Stabla", role=c("aut", "cph")),

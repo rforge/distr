@@ -6,10 +6,10 @@ Description: provides flexible examples of LLN and CLT for teaching purposes in 
 Depends: R(>= 2.2.0), methods, distr(>= 2.2), distrEx(>= 2.2)
 Suggests: tcltk
 Imports: startupmsg
-Authors@R: c(person("Eleonora", "Feist", role=c("aut", "cph")),
+Authors@R: c(person("Eleonora", "Feist", role=c("aut", "ctb")),
         person("Matthias", "Kohl", role=c("aut", "cph")), 
 		person("Peter", "Ruckdeschel", role=c("cre", "cph"), email="Peter.Ruckdeschel@itwm.fraunhofer.de"), 
-		person("Anja", "Hueller", role=c("aut", "cph")))
+		person("Anja", "Hueller", role=c("aut", "ctb")))
 ByteCompile: yes
 License: LGPL-3
 Encoding: latin1
