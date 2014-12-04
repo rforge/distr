@@ -2,12 +2,14 @@ Package: distrTeach
 Version: 2.6
 Date: 2013-09-18
 Title: Extensions of Package distr for Teaching Stochastics/Statistics in Secondary School
-Description: Extensions of package distr and some additional functionality
+Description: provides flexible examples of LLN and CLT for teaching purposes in secondary school.
 Depends: R(>= 2.2.0), methods, distr(>= 2.2), distrEx(>= 2.2)
 Suggests: tcltk
 Imports: startupmsg
-Author: Peter Ruckdeschel, Matthias Kohl, Anja Hueller, Eleonara Feist
-Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
+Authors@R: c(person("Eleonora", "Feist", role=c("aut", "cph")),
+        person("Matthias", "Kohl", role=c("aut", "cph")), 
+		person("Peter", "Ruckdeschel", role=c("cre", "cph"), email="Peter.Ruckdeschel@itwm.fraunhofer.de"), 
+		person("Anja", "Hueller", role=c("aut", "cph")))
 ByteCompile: yes
 License: LGPL-3
 Encoding: latin1

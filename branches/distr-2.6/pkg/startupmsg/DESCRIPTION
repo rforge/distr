@@ -3,9 +3,8 @@ Encoding: latin1
 Version: 0.9.1
 Date: 2013-09-18
 Title: Utilities for Start-up Messages
-Description: Utilities for start-up messages
-Author: Peter Ruckdeschel
-Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
+Description: provides utilities to create or suppress start-up messages.
+Authors@R: person("Peter", "Ruckdeschel", role=c("cre", "cph"), email="Peter.Ruckdeschel@itwm.fraunhofer.de")
 Depends: R(>= 1.8.0)
 ByteCompile: yes
 License: LGPL-3

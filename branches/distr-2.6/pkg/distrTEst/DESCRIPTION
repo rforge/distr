@@ -2,13 +2,15 @@ Package: distrTEst
 Version: 2.6
 Date: 2013-09-18
 Title: Estimation and Testing Classes Based on Package distr
+Description: Evaluation (S4-)classes based on package distr for evaluating procedures
+        (estimators/tests) at data/simulation in a unified way.
 Depends: R(>= 2.6.0), methods, graphics, setRNG(>= 2006.2-1), distrSim(>= 2.2)
 Imports: startupmsg
 Suggests: distrEx(>= 2.2)
-Author: Florian Camphausen, Matthias Kohl, Peter Ruckdeschel, Thomas Stabla
-Description: Evaluation (S4-)classes based on package distr for evaluating procedures
-        (estimators/tests) at data/simulation in a unified way.
-Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
+Authors@R: c(person("Florian", "Camphausen", role=c("aut", "cph")),
+        person("Matthias", "Kohl", role=c("aut", "cph")), 
+		person("Peter", "Ruckdeschel", role=c("cre", "cph"), email="Peter.Ruckdeschel@itwm.fraunhofer.de"), 
+		person("Thomas", "Stabla", role=c("aut", "cph")))
 ByteCompile: yes
 Encoding: latin1
 License: LGPL-3

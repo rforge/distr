@@ -2,12 +2,14 @@ Package: distrSim
 Version: 2.6
 Date: 2013-09-13
 Title: Simulation Classes Based on Package distr
+Description: (S4-)classes for setting up a coherent framework for simulation within the distr family of packages.
 Depends: R(>= 2.14.0), methods, graphics, setRNG(>= 2006.2-1), distr(>= 2.5.2)
 Suggests: distrEx(>= 2.2)
 Imports: startupmsg
-Author: Florian Camphausen, Matthias Kohl, Peter Ruckdeschel, Thomas Stabla
-Description: Simulation (S4-)classes based on package distr
-Maintainer: Peter Ruckdeschel <Peter.Ruckdeschel@itwm.fraunhofer.de>
+Authors@R: c(person("Florian", "Camphausen", role=c("aut", "cph")),
+        person("Matthias", "Kohl", role=c("aut", "cph")), 
+		person("Peter", "Ruckdeschel", role=c("cre", "cph"), email="Peter.Ruckdeschel@itwm.fraunhofer.de"), 
+		person("Thomas", "Stabla", role=c("aut", "cph")))
 ByteCompile: yes
 License: LGPL-3
 Encoding: latin1

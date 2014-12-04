@@ -2,12 +2,12 @@ Package: distrEx
 Version: 2.6
 Date: 2013-09-18
 Title: Extensions of Package distr
-Description: Extensions of package distr and some additional functionality
+Description: extends package 'distr' by functionals, distances, and conditional distributions.
 Depends: R(>= 2.10.0), methods, distr(>= 2.2)
 Imports: startupmsg
 Suggests: tcltk
-Author: Matthias Kohl, Peter Ruckdeschel
-Maintainer: Matthias Kohl <Matthias.Kohl@stamats.de>
+Authors@R: c(person("Matthias", "Kohl", role=c("cre", "cph"), email="Matthias.Kohl@stamats.de"), 
+		person("Peter", "Ruckdeschel", role=c("aut", "cph")))
 ByteCompile: yes
 License: LGPL-3
 Encoding: latin1
