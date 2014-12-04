@@ -6,10 +6,10 @@ Title: Documentation for Packages distr, distrEx, distrSim, distrTEst, distrTeac
 Description: provides documentation in form of a common vignette to packages distr, distrEx,
         distrMod, distrSim, distrTEst, distrTeach, and distrEllipse.
 Author: Florian , Matthias Kohl, Peter Ruckdeschel, Thomas 
-Authors@R: c(person("Matthias", "Kohl", role=c("aut", "cph")),
-        person("Thomas", "Stabla",  role=c("aut", "ctb")),
-        person("Florian", "Camphausen", role=c("aut", "ctb")),		
-		person("Peter", "Ruckdeschel", role=c("cre", "cph"), email="Peter.Ruckdeschel@itwm.fraunhofer.de"))
+Authors@R: c(person("Florian", "Camphausen", role="ctb", comment="contributed as student to the documented packages in the initial phase --2005"),
+        person("Matthias", "Kohl", role=c("aut", "cph")), 
+		person("Peter", "Ruckdeschel", role=c("cre", "cph"), email="Peter.Ruckdeschel@itwm.fraunhofer.de"), 
+		person("Thomas", "Stabla", role="ctb", comment="contributed as student to the documented packages in the initial phase --2005"))
 Depends: R(>= 2.14.0)
 Imports: distr(>= 2.2.0), distrEx(>= 2.2.0), distrSim(>= 2.2.0), distrTEst(>= 2.2.0),
         distrTeach(>= 2.2.0), RandVar(>= 0.7), distrMod(>= 2.2.0), MASS, methods,

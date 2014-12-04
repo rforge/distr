@@ -7,10 +7,10 @@ Description: Evaluation (S4-)classes based on package distr for evaluating proce
 Depends: R(>= 2.6.0), methods, graphics, setRNG(>= 2006.2-1), distrSim(>= 2.2)
 Imports: startupmsg
 Suggests: distrEx(>= 2.2)
-Authors@R: c(person("Florian", "Camphausen", role=c("aut", "ctb")),
+Authors@R: c(person("Florian", "Camphausen", role="ctb", comment="contributed as student in the initial phase --2005"),
         person("Matthias", "Kohl", role=c("aut", "cph")), 
 		person("Peter", "Ruckdeschel", role=c("cre", "cph"), email="Peter.Ruckdeschel@itwm.fraunhofer.de"), 
-		person("Thomas", "Stabla", role=c("aut", "ctb")))
+		person("Thomas", "Stabla", role="ctb", comment="contributed as student in the initial phase --2005"))
 ByteCompile: yes
 Encoding: latin1
 License: LGPL-3
