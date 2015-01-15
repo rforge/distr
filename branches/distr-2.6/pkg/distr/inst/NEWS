@@ -18,6 +18,10 @@ user-visible CHANGES:
 + added generating function "EmpiricalDistribution" which is a simple
   wrapper to function "DiscreteDistribution"
 + arguments panel.first, panel.last for plot-methods can now be lists
++ qqplot gains pattern substitution like plot in titles and x/y axis lables
++ pattern substitution can now be switched on and off in all plot 
+  functions according to argument withSubst
+  
   
 under the hood:
 

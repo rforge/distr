@@ -24,7 +24,7 @@ qqplot(x, y, ...)
     jit.fac = 0, check.NotInSupport = TRUE,
     col.NotInSupport = "red", with.legend = TRUE, legend.bg = "white",
     legend.pos = "topleft", legend.cex = 0.8, legend.pref = "", 
-    legend.postf = "", legend.alpha = alpha.CI, debug = FALSE)
+    legend.postf = "", legend.alpha = alpha.CI, debug = FALSE, withSubst = TRUE)
 \S4method{qqplot}{ANY,ANY}(x, y,
     plot.it = TRUE, xlab = deparse(substitute(x)),
     ylab = deparse(substitute(y)), ...)
@@ -80,6 +80,8 @@ of class \code{"UnivariateDistribution"}.}
 \item{legend.postf}{character to be appended to legend text}
 \item{legend.alpha}{nominal coverage probability}
 \item{debug}{logical; if \code{TRUE} additional output to debug confidence bounds.}
+\item{withSubst}{logical; if \code{TRUE} (default) pattern substitution for
+      titles and lables is used; otherwise no substitution is used. }
 }
 
 \description{
@@ -91,6 +93,13 @@ of class \code{"UnivariateDistribution"}.}
    Graphical parameters may be given as arguments to \code{qqplot}.
    The \pkg{stats} function
   is just the method for signature \code{x=ANY,y=ANY}.
+  In all title and axis label arguments, if \code{withSubst} is \code{TRUE},
+  the following patterns are substituted:
+\describe{
+\item{\code{"\%C"}}{class of argument \code{x}}
+\item{\code{"\%A"}}{deparsed argument \code{x}}
+\item{\code{"\%D"}}{time/date-string when the plot was generated}
+}
 }
 \details{
 \describe{

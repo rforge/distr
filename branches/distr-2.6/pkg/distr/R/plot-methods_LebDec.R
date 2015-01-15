@@ -11,7 +11,8 @@ setMethod("plot", signature(x = "AffLinUnivarLebDecDistribution", y = "missing")
              col.hor = par("col"), col.vert = par("col"),
              col.main = par("col.main"), col.inner = par("col.main"),
              col.sub = par("col.sub"),  cex.points = 2.0,
-             pch.u = 21, pch.a = 16, mfColRow = TRUE, to.draw.arg = NULL){
+             pch.u = 21, pch.a = 16, mfColRow = TRUE, to.draw.arg = NULL,
+             withSubst = TRUE){
 
       mc <- as.list(match.call(call = sys.call(sys.parent(1)), expand.dots = TRUE)[-1])
       do.call(getMethod("plot",
@@ -30,7 +31,8 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
              col.hor = par("col"), col.vert = par("col"),
              col.main = par("col.main"), col.inner = par("col.main"),
              col.sub = par("col.sub"),  cex.points = 2.0,
-             pch.u = 21, pch.a = 16, mfColRow = TRUE, to.draw.arg = NULL){
+             pch.u = 21, pch.a = 16, mfColRow = TRUE, to.draw.arg = NULL,
+             withSubst = TRUE){
 
       mc <- match.call(call = sys.call(sys.parent(1)), expand.dots = TRUE)[-1]
       xc <- mc$x
@@ -206,7 +208,9 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
      }
      else paramstring <- qparamstring <- nparamstring <- ""
 
-     .mpresubs <- function(inx)
+
+     .mpresubs <- if(withSubst){ 
+                    function(inx)
                     .presubs(inx, c("%C", "%D", "%N", "%P", "%Q", "%A"),
                           c(as.character(class(x)[1]),
                             as.character(date()),
@@ -214,6 +218,7 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
                             paramstring,
                             qparamstring,
                             as.character(deparse(xc))))
+                  }else function(inx)inx
 
      .mp2 <- function(dlb = dots$xlab, lb0 = list(list("p"="q", "q"="p"),
                           list("d"="x", "p"="q", "q"="p"),

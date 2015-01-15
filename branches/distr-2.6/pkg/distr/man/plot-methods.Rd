@@ -19,7 +19,7 @@
      col.points = par("col"), col.vert = par("col"), col.main = par("col.main"),  
      col.inner = par("col.main"), col.sub = par("col.sub"), cex.points = 2.0, 
      pch.u = 21, pch.a = 16, mfColRow = TRUE,
-     to.draw.arg = NULL)
+     to.draw.arg = NULL, withSubst = TRUE)
 \S4method{plot}{DiscreteDistribution,missing}(x, width = 10, height = 5.5,
      withSweave = getdistrOption("withSweave"), xlim = NULL, ylim = NULL,
      verticals = TRUE, do.points = TRUE, main = FALSE, inner = TRUE, sub = FALSE,
@@ -28,7 +28,7 @@
      col.points = par("col"), col.hor = par("col"), col.vert = par("col"), 
      col.main = par("col.main"), col.inner = par("col.main"), 
      col.sub = par("col.sub"),  cex.points = 2.0, pch.u = 21, pch.a = 16,
-     mfColRow = TRUE, to.draw.arg = NULL)
+     mfColRow = TRUE, to.draw.arg = NULL, withSubst = TRUE)
 \S4method{plot}{AffLinUnivarLebDecDistribution,missing}(x, width = 10, 
      height = 5.5, withSweave = getdistrOption("withSweave"), xlim = NULL,
      ylim = NULL, ngrid = 1000, verticals = TRUE, do.points = TRUE, main = FALSE,
@@ -37,7 +37,7 @@
      col.points = par("col"), col.hor = par("col"), col.vert = par("col"),
      col.main = par("col.main"), col.inner = par("col.main"),
      col.sub = par("col.sub"),  cex.points = 2.0, pch.u = 21, pch.a = 16,
-     mfColRow = TRUE, to.draw.arg = NULL)
+     mfColRow = TRUE, to.draw.arg = NULL, withSubst = TRUE)
 \S4method{plot}{UnivarLebDecDistribution,missing}(x, width = 10, 
      height = 14.5, withSweave = getdistrOption("withSweave"), xlim = NULL,
      ylim = NULL, ngrid = 1000, verticals = TRUE, do.points = TRUE, main = FALSE,
@@ -46,7 +46,7 @@
      col.points = par("col"), col.hor = par("col"), col.vert = par("col"),
      col.main = par("col.main"), col.inner = par("col.main"),
      col.sub = par("col.sub"),  cex.points = 2.0, pch.u = 21, pch.a = 16,
-     mfColRow = TRUE, to.draw.arg = NULL)
+     mfColRow = TRUE, to.draw.arg = NULL, withSubst = TRUE)
 \S4method{plot}{DistrList,missing}(x, y, ...)
 \S4method{plot}{CompoundDistribution,missing}(x, y, ...)
 }
@@ -127,6 +127,8 @@
   for c.d.f. and quantile function of the composed distribution and the respective
   three panels for the absolutely continuous and the discrete part, respectively; 
   }
+  \item{withSubst}{logical; if \code{TRUE} (default) pattern substitution for
+     titles and lables is used; otherwise no substitution is used. }
   \item{\dots}{addtional arguments for \code{plot} --- see 
                \code{\link[graphics]{plot}}, 
                \code{\link[graphics]{plot.default}}, 
@@ -164,7 +166,8 @@ class and (named) parameter slots of argument \code{x} in case of \code{inner},
 and a "generated on <data>"-tag in case of \code{sub}.
 Of course, if \code{main} / \code{inner} / \code{sub} are \code{character}, this
 is used for the title; in case of \code{inner} it is then checked whether it
-has length 3. In all title arguments, the following patterns are substituted:
+has length 3. In all title and axis label arguments, if \code{withSubst} is \code{TRUE},
+the following patterns are substituted:
 \describe{
 \item{\code{"\%C"}}{class of argument \code{x}}
 \item{\code{"\%P"}}{parameters of \code{x} in form of a comma-separated list of 
@@ -249,6 +252,9 @@ plot(Chisq())
 ### the next ylab argument is just for illustration purposes
 plot(Chisq(),mfColRow = FALSE,to.draw.arg="d",
      xlab="x",ylab=list(expression(paste(lambda,"-density of \%C(\%P)"))))
+## substitution can be switched off
+plot(Chisq(),mfColRow = FALSE,to.draw.arg="d",
+     xlab="x",ylab=list(expression(paste(lambda,"-density of \%C(\%P)"))), withSubst=FALSE)
 plot(Chisq(), log = "xy", ngrid = 100)
 Ch <- Chisq(); setgaps(Ch); plot(Ch, do.points = FALSE)
 setgaps(Ch, exactq = 3); plot(Ch, verticals = FALSE)
