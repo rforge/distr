@@ -1341,6 +1341,7 @@ with which \code{plot()} was called)
             slot \code{param} of argument \code{x}
  \item[\%D] time/date at which plot is/was generated
 \end{itemize}
+This substitution can be switched off by means of argument \code{withSubst}.
 As usual you may control title sizes and colors with 
 \code{cex.main} / \code{cex.inner} / \code{cex.sub} respectively with
 \code{col} / \code{col.main} / \code{col.inner} / \code{col.sub}. Additionally

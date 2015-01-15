@@ -16,6 +16,8 @@ user-visible CHANGES:
 + updated CITATION file
 + removed some outdated references from uni-bayreuth
 + updated references in vignette distr.Rnw
++ mention that pattern substitution can now be switched on and off in all plot 
+  functions according to argument withSubst
 
 under the hood
 + added svn-properties to distr.Rnw
