@@ -27,7 +27,7 @@ returnlevelplot(x, y, ...)
     with.legend = TRUE, legend.bg = "white",
     legend.pos = "topleft", legend.cex = 0.8,
     legend.pref = "", legend.postf = "",  legend.alpha = alpha.CI,
-    debug = FALSE)
+    debug = FALSE, withSubst = TRUE)
 \S4method{returnlevelplot}{ANY,ProbFamily}(x, y,
    n = length(x), withIdLine = TRUE, withConf = TRUE,
    withConf.pw  = withConf,  withConf.sim = withConf,
@@ -133,6 +133,8 @@ in \code{support(y)}?}
 \item{legend.postf}{character to be appended to legend text}
 \item{legend.alpha}{nominal coverage probability}
 \item{debug}{logical; if \code{TRUE} additional output to debug confidence bounds.}
+\item{withSubst}{logical; if \code{TRUE} (default) pattern substitution for
+      titles and axis lables is used; otherwise no substitution is used. }
 }
 \description{
   We generalize the return level plot (which is one of the diagnostical
@@ -142,6 +144,14 @@ in \code{support(y)}?}
   \code{returnlevelplot} produces a rescaled QQ plot of data (argument \code{x}) 
   against a (model) distribution.
    Graphical parameters may be given as arguments to \code{returnlevelplot}.
+   In all title and label arguments, if \code{withSubst} is \code{TRUE},
+  the following patterns are substituted:
+\describe{
+\item{\code{"\%C"}}{class of argument \code{x}}
+\item{\code{"\%A"}}{deparsed argument \code{x}}
+\item{\code{"\%D"}}{time/date-string when the plot was generated}
+}
+
 }
 \value{
     As for function \code{\link[stats:qqnorm]{returnlevelplot}} from package \pkg{stats}: a

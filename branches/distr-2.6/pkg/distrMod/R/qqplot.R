@@ -91,17 +91,27 @@ setMethod("qqplot", signature(x = "ANY",
              legend.pref = "",     ## prefix for legend  text
              legend.postf = "",    ## postfix for legend text
              legend.alpha = alpha.CI, ## nominal level of CI
-             debug = FALSE ## shall additional debug output be printed out?
+             debug = FALSE, ## shall additional debug output be printed out?
+             withSubst = TRUE
     ){ ## return value as in stats::qqplot
 
     mc <- match.call(call = sys.call(sys.parent(1)))
-    if(missing(xlab)){ xlab <- mc$xlab <- as.character(deparse(mc$x))}
-    if(missing(ylab)){ ylab <- mc$ylab <- as.character(deparse(mc$y))}
+    xcc <- as.character(deparse(mc$x))
+    ycc <- as.character(deparse(mc$y))
+    if(missing(xlab)){ xlab <- mc$xlab <- xcc}
+    if(missing(ylab)){ ylab <- mc$ylab <- ycc}
     mcl <- as.list(mc)[-1]
     force(x)
     if(is.null(mcl$datax)) datax <- FALSE
     if(!datax){ mcl$ylab <- xlab; mcl$xlab <- ylab}
 
+   .mpresubs <- if(withSubst){
+                   function(inx) 
+                    .presubs(inx, c("%C", "%A", "%D" ),
+                          c(as.character(class(x)[1]), 
+                            as.character(date()), 
+                            xcc))
+               }else function(inx)inx
     xj <- x
     if(any(.isReplicated(x)))
        xj[.isReplicated(x)] <- jitter(x[.isReplicated(x)], factor=jit.fac)
@@ -160,6 +170,14 @@ setMethod("qqplot", signature(x = "ANY",
     mcl <- .deleteItemsMCL(mcl)
     mcl$cex <- cex.pch
     mcl$col <- col.pch
+
+    mcl$xlab <- .mpresubs(mcl$xlab)
+    mcl$ylab <- .mpresubs(mcl$ylab)
+
+    if (!is.null(eval(mcl$main)))
+        mcl$main <- .mpresubs(eval(mcl$main))
+    if (!is.null(eval(mcl$sub)))
+        mcl$sub <- .mpresubs(eval(mcl$sub))
 
     if (!withSweave){
            devNew(width = width, height = height)

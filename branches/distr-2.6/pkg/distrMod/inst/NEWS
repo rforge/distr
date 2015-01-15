@@ -17,6 +17,10 @@ user-visible CHANGES:
 + arguments panel.first, panel.last for plot-methods can now be lists
 + introduced returnlevelplot, a generalization of the respective
   diagnostic plot facility of package ismev
++ qqplot and returnlevelplot gain pattern substitution like plot in 
+  titles and x/y axis lables
++ pattern substitution can now be switched on and off in all plot 
+  functions according to argument withSubst
   
 GENERAL ENHANCEMENTS:
 

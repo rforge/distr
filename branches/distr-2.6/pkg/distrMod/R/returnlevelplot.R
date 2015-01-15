@@ -66,11 +66,22 @@ setMethod("returnlevelplot", signature(x = "ANY",
              legend.pref = "",     ## prefix for legend  text
              legend.postf = "",    ## postfix for legend text
              legend.alpha = alpha.CI, ## nominal level of CI
-             debug = FALSE ## shall additional debug output be printed out?
+             debug = FALSE, ## shall additional debug output be printed out?
+             withSubst = TRUE
     ){ ## return value as in stats::qqplot
 
     MaxOrPOT <- match.arg(MaxOrPOT)
     mc <- match.call(call = sys.call(sys.parent(1)))
+    xcc <- as.character(deparse(mc$x))
+
+   .mpresubs <- if(withSubst){
+                   function(inx) 
+                    .presubs(inx, c("%C", "%A", "%D" ),
+                          c(as.character(class(x)[1]), 
+                            as.character(date()), 
+                            xcc))
+               }else function(inx)inx
+
     if(missing(xlab)) mc$xlab <- paste(gettext("Return level of"),
                                        as.character(deparse(mc$x)))
     if(missing(ylab)) mc$ylab <- gettext("Return period (years)")

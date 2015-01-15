@@ -11,9 +11,18 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
              main = FALSE, inner = TRUE, sub = FALSE, 
              col.inner = par("col.main"), cex.inner = 0.8, 
              bmar = par("mar")[1], tmar = par("mar")[3], ...,
-             mfColRow = TRUE, to.draw.arg = NULL){
+             mfColRow = TRUE, to.draw.arg = NULL, withSubst= TRUE){
 
         xc <- match.call(call = sys.call(sys.parent(1)))$x
+        xcc <- as.character(deparse(xc))
+       .mpresubs <- if(withSubst){
+                   function(inx) 
+                    .presubs(inx, c("%C", "%A", "%D" ),
+                          c(as.character(class(x)[1]), 
+                            as.character(date()), 
+                            xcc))
+               }else function(inx)inx
+    
         dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
         
@@ -127,11 +136,6 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
         subL <- FALSE
         lineT <- NA
 
-     .mpresubs <- function(inx)
-                    .presubs(inx, c("%C", "%D", "%A"),
-                          c(as.character(class(x)[1]),
-                            as.character(date()),
-                            as.character(deparse(xc))))
 
      if (hasArg(main)){
          mainL <- TRUE
