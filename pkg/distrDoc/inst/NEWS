@@ -10,6 +10,9 @@
 ##############
 v 2.5.1
 ##############
+user-visible CHANGES:
++ title changed to title style / capitalization
++ updated CITATION file
 
 + fixed \VignetteKeyword issue detected as in mail by K. Hornik 2015-02-03
 
