@@ -20,6 +20,7 @@ user-visible CHANGES:
   functions according to argument withSubst
 
 under the hood
++ fixed \VignetteKeyword issue detected as in mail by K. Hornik 2015-02-03
 + added svn-properties to distr.Rnw
 + enhanced imports in DESCRIPTION by explicating second order imports
 

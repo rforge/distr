@@ -1,6 +1,6 @@
 Package: distrDoc
-Version: 2.5
-Date: 2013-09-12
+Version: 2.5.1
+Date: 2015-02-04
 Title: Documentation for packages distr, distrEx, distrSim, distrTEst, distrTeach, distrMod,
         and distrEllipse
 Description: provides documentation in form of a common vignette to packages distr, distrEx,

@@ -8,6 +8,12 @@
  information)
 
 ##############
+v 2.5.1
+##############
+
++ fixed \VignetteKeyword issue detected as in mail by K. Hornik 2015-02-03
+
+##############
 v 2.5
 ##############
 

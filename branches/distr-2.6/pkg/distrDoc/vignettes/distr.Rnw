@@ -1,6 +1,8 @@
 %\VignetteIndexEntry{distr - manual}
 %\VignetteDepends{distr}
-%\VignetteKeyword{probability distribution,simulation,estimation}
+%\VignetteKeyword{probability distribution}
+%\VignetteKeyword{simulation}
+%\VignetteKeyword{estimation}
 %\VignettePackage{distr}
 %
 \documentclass[11pt]{article}
