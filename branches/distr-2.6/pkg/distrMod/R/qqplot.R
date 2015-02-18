@@ -22,7 +22,7 @@
           oN <- oN0[which.Order]
       x0 <- xys[oN,1]
       y0 <- xys[oN,2]
-
+      
       col.lbl <- col.lbl[rx]
       lab.pts <- lab.pts[rx]
       cex.lbl <- cex.lbl[rx]
@@ -82,6 +82,8 @@ setMethod("qqplot", signature(x = "ANY",
              adj.lbl = NULL,      ## adj parameter for the plotted observation labels
              alpha.trsp = NA,     ## alpha transparency to be added afterwards
              jit.fac = 0,         ## jittering factor used for discrete distributions
+             jit.tol = .Machine$double.eps, ## tolerance for jittering: if distance 
+                                 #is smaller than jit.tol, points are considered replicates
              check.NotInSupport = TRUE, ## shall we check if all x lie in support(y)
              col.NotInSupport = "red", ## if preceding check TRUE color of x if not in support(y)
              with.legend = TRUE,  ## shall a legend be plotted
@@ -113,8 +115,8 @@ setMethod("qqplot", signature(x = "ANY",
                             xcc))
                }else function(inx)inx
     xj <- x
-    if(any(.isReplicated(x)))
-       xj[.isReplicated(x)] <- jitter(x[.isReplicated(x)], factor=jit.fac)
+    if(any(.isReplicated(x, jit.tol))&&jit.fac>0)
+       xj[.isReplicated(x, jit.tol)] <- jitter(x[.isReplicated(x, jit.tol)], factor=jit.fac)
 
     ord.x <- order(xj)
 

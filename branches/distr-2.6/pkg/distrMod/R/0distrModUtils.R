@@ -610,10 +610,10 @@ mcl}
   sapply(x, function(y) length(which(fct(y,gapm)))>0)
 }
 
-.isReplicated <- function(x){
+.isReplicated <- function(x, tol=.Machine$double.eps){
   tx <- table(x)
   rx <- as.numeric(names(tx[tx>1]))
-  sapply(x, function(y) any(abs(y-rx)<.Machine$double.eps))
+  sapply(x, function(y) any(abs(y-rx)<tol))
 }
 
 .NotInSupport <- function(x,D){

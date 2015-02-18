@@ -10,7 +10,7 @@ qqplot(x, y, ...)
     ylab = deparse(substitute(y)),
     ..., width = 10, height = 5.5, withSweave = getdistrOption("withSweave"),
     mfColRow = TRUE, n.CI = n, withLab = FALSE, lab.pts = NULL, which.lbs = NULL,
-    which.Order = NULL, order.traf = NULL,
+    which.Order = NULL, order.traf = NULL, 
     col.IdL = "red", lty.IdL = 2, lwd.IdL = 2, alpha.CI = .95,
     exact.pCI = (n<100), exact.sCI = (n<100), nosym.pCI = FALSE,
     col.pCI = "orange", lty.pCI = 3, lwd.pCI = 2, pch.pCI = par("pch"),
@@ -19,7 +19,7 @@ qqplot(x, y, ...)
     cex.sCI = par("cex"), added.points.CI = TRUE,
     cex.pch = par("cex"), col.pch = par("col"),
     cex.lbl = par("cex"), col.lbl = par("col"), adj.lbl = NULL,
-    alpha.trsp = NA, jit.fac = 0,
+    alpha.trsp = NA, jit.fac = 0, jit.tol = .Machine$double.eps,
     check.NotInSupport = TRUE, col.NotInSupport = "red",
     with.legend = TRUE, legend.bg = "white",
     legend.pos = "topleft", legend.cex = 0.8, 
@@ -107,7 +107,9 @@ simultaneous CI}
         while for the remaining ones, the alpha channel in rgb space is set
         to the respective coordinate value of \code{alpha.trsp}. The non-NA
         entries must be integers in [0,255] (0 invisible, 255 opaque).}
-\item{jit.fac}{jittering factor used for discrete distributions}
+\item{jit.fac}{jittering factor used for discrete distributions.}
+\item{jit.tol}{threshold for jittering: if distance between points is smaller
+               than \code{jit.tol}, points are considered replicates.}
 \item{check.NotInSupport}{logical; shall we check if all \code{x}-quantiles lie
 in \code{support(y)}?}
 \item{col.NotInSupport}{logical; if preceding check \code{TRUE} color of

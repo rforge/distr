@@ -26,8 +26,9 @@ These functions are used internally by qqplot of package distrMod.}
 
 \details{
 \code{.labelprep} prepares the labels for later output:
-first we (optionally) select some indices among \code{x} according
-to \code{which.lbs}, then orders both \code{x} and \code{y} according to the
+first some indices among \code{x} according
+to \code{which.lbs} are (optionally) selected, 
+then orders both \code{x} and \code{y} according to the
 order of the remaining (optionally transformed by \code{order.traf}) values of
 \code{x} (decreasing); finally only the order statistics (w.r.t. the preceding
 ordering) as specified in \code{which.Order} are returned;

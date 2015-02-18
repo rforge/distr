@@ -57,6 +57,8 @@ setMethod("returnlevelplot", signature(x = "ANY",
              adj.lbl = NULL,      ## adj parameter for the plotted observation labels
              alpha.trsp = NA,     ## alpha transparency to be added afterwards
              jit.fac = 0,         ## jittering factor used for discrete distributions
+             jit.tol = .Machine$double.eps, ## tolerance for jittering: if distance 
+                                 #is smaller than jit.tol, points are considered replicates
              check.NotInSupport = TRUE, ## shall we check if all x lie in support(y)
              col.NotInSupport = "red", ## if preceding check TRUE color of x if not in support(y)
              with.legend = TRUE,  ## shall a legend be plotted
@@ -106,8 +108,8 @@ setMethod("returnlevelplot", signature(x = "ANY",
     }              
 
     xj <- sort(x)
-    if(any(.isReplicated(x))&&jit.fac>0)
-       xj[.isReplicated(x)] <- jitter(x[.isReplicated(x)], factor=jit.fac)
+    if(any(.isReplicated(x, jit.tol))&&jit.fac>0)
+       xj[.isReplicated(x, jit.tol)] <- jitter(x[.isReplicated(x, jit.tol)], factor=jit.fac)
 
     xj <- sort(xj)
     ord.x <- order(xj)
