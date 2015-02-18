@@ -49,7 +49,8 @@ under the hood:
 -plot: 
  + fixed some issues with plotting of distributions: xlim, ylim were not 
    correctly passed on, same for col => now use dots.lowlevel ... 
-
+-helper function .isReplicated gains an optional argument tol
+   
 ##############
 v 2.5.3
 ##############

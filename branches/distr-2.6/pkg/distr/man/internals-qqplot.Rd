@@ -21,7 +21,7 @@
 
 \usage{
 .inGaps(x,gapm)
-.isReplicated(x)
+.isReplicated(x, tol = .Machine$double.eps)
 .NotInSupport(x,D)
 .SingleDiscrete(x,D)
 .makeLenAndOrder(x,ord)
@@ -53,6 +53,7 @@
   an \code{"AbscontDistribution"} or \code{"UnivarLebDecDistribution"}
   object.
   }
+\item{tol}{numeric; tolerance for separating points.}
 \item{D}{object of class \code{"UnivariateDistribution"}}
 \item{datax}{logical; (to be used in \pkg{distrMod}) shall data be plotted on x-axis?}
 \item{ord}{integer; the result of a call to \code{order}}
