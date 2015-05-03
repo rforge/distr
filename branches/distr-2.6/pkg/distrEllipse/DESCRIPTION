@@ -1,6 +1,6 @@
 Package: distrEllipse
 Version: 2.6
-Date: 2013-09-18
+Date: 2015-05-03
 Title: S4 Classes for Elliptically Contoured Distributions
 Description: Distribution (S4-)classes for elliptically contoured distributions (based on
         package 'distr').
