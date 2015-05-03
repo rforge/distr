@@ -3,7 +3,7 @@
 \alias{distrTEst}
 \docType{package}
 \title{
-dsitrTEst -- Estimation and Testing classes based on package distr
+distrTEst -- Estimation and Testing Classes Based on Package distr
 }
 \description{
 \pkg{distrTest} provides
@@ -16,7 +16,7 @@ and simulation classes as introduced there to capture the situation from which t
 \tabular{ll}{
 Package: \tab distrTEst \cr
 Version: \tab 2.6 \cr
-Date: \tab 2013-09-18 \cr
+Date: \tab 2015-05-03 \cr
 Depends: \tab R(>= 2.6.0), methods, graphics, setRNG(>= 2006.2-1), distr(>=
 2.0), distrSim(>= 2.0), startupmsg\cr
 LazyLoad: \tab yes \cr

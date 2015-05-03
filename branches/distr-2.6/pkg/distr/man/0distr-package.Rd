@@ -3,7 +3,7 @@
 \alias{distr}
 \docType{package}
 \title{
-distr -- object orientated implementation of distributions
+distr -- Object Orientated Implementation of Distributions
 }
 \description{
 \pkg{distr} provides a conceptual treatment of distributions by means of S4 
@@ -44,7 +44,7 @@ corresponding image distributions.
 \tabular{ll}{
 Package: \tab distr \cr
 Version: \tab 2.6 \cr
-Date: \tab 2013-09-13 \cr
+Date: \tab 2015-05-03 \cr
 Depends: \tab R(>= 2.2.0), methods, graphics, startupmsg, sfsmisc,
 SweaveListingUtils\cr
 LazyLoad: \tab yes \cr

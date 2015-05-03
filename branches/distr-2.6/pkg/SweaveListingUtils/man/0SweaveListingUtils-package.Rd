@@ -7,7 +7,7 @@ Package SweaveListingUtils
 }
 \description{
 Package \pkg{SweaveListingUtils}  
-provides utilities for defining \R / \file{Rd} as TeX-package-\file{listings}
+Provides utilities for defining \R / \file{Rd} as TeX-package-\file{listings}
 "language" and including \R / \file{.Rd} source file (sniplets) copied
 from an url, by default from svn server at R-forge in its most recent version, 
 thereby avoiding inconsistencies between vignette and documented source code  
@@ -16,7 +16,7 @@ thereby avoiding inconsistencies between vignette and documented source code
 \tabular{ll}{
 Package: \tab SweaveListingUtils \cr
 Version: \tab 0.7 \cr
-Date: \tab 2013-09-18 \cr
+Date: \tab 2015-05-03 \cr
 Depends: \tab R(>= 2.14.0), startupmsg \cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
