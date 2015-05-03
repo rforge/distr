@@ -1,8 +1,8 @@
 Package: distrTeach
 Version: 2.6
-Date: 2013-09-18
-Title: Extensions of Package distr for Teaching Stochastics/Statistics in Secondary School
-Description: provides flexible examples of LLN and CLT for teaching purposes in secondary school.
+Date: 2015-05-03
+Title: Extensions of Package 'distr' for Teaching Stochastics/Statistics in Secondary School
+Description: Provides flexible examples of LLN and CLT for teaching purposes in secondary school.
 Depends: R(>= 2.2.0), methods, distr(>= 2.2), distrEx(>= 2.2)
 Suggests: tcltk
 Imports: startupmsg
