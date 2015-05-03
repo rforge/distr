@@ -1,8 +1,8 @@
 Package: distrRmetrics
 Version: 2.6
-Date: 2013-09-18
+Date: 2015-05-03
 Title:  Distribution Classes for Distributions from Rmetrics
-Description: (S4-)distribution classes based on package distr for distributions from packages
+Description: S4-distribution classes based on package distr for distributions from packages
         'fBasics' and 'fGarch'.
 Depends: R(>= 2.6.0), methods, distr(>= 2.4), fBasics(>= 270.73), fGarch(>= 270.73)
 Suggests: distrEx(>= 2.4), distrMod(>= 2.4)
