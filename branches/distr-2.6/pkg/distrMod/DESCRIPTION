@@ -1,8 +1,8 @@
 Package: distrMod
 Version: 2.6
-Date: 2013-09-13
+Date: 2015-05-03
 Title: Object Oriented Implementation of Probability Models
-Description: implements S4 classes for probability models based on packages 'distr' and
+Description: Implements S4 classes for probability models based on packages 'distr' and
         'distrEx'.
 Authors@R: c(person("Matthias", "Kohl", role=c("aut", "cph")), 
 		person("Peter", "Ruckdeschel", role=c("cre", "cph"), email="Peter.Ruckdeschel@itwm.fraunhofer.de"), 
