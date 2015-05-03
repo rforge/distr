@@ -7,7 +7,7 @@ Package SweaveListingUtils
 }
 \description{
 Package \pkg{SweaveListingUtils}  
-Provides utilities for defining \R / \file{Rd} as TeX-package-\file{listings}
+provides utilities for defining \R / \file{Rd} as TeX-package-\file{listings}
 "language" and including \R / \file{.Rd} source file (sniplets) copied
 from an url, by default from svn server at R-forge in its most recent version, 
 thereby avoiding inconsistencies between vignette and documented source code  
