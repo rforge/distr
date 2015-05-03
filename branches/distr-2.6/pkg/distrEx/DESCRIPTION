@@ -1,8 +1,8 @@
 Package: distrEx
 Version: 2.6
-Date: 2013-09-18
-Title: Extensions of Package distr
-Description: extends package 'distr' by functionals, distances, and conditional distributions.
+Date: 2015-05-03
+Title: Extensions of Package 'distr'
+Description: Extends package 'distr' by functionals, distances, and conditional distributions.
 Depends: R(>= 2.10.0), methods, distr(>= 2.2)
 Imports: startupmsg
 Suggests: tcltk
