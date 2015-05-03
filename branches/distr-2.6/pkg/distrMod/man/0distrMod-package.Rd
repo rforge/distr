@@ -4,7 +4,7 @@
 \docType{package}
 
 \title{
-distrMod -- probability models
+distrMod -- Object Oriented Implementation of Probability Models
 }
 \description{
 Based on the packages \pkg{distr} and \pkg{distrEx} package \pkg{distrMod} 
@@ -16,7 +16,7 @@ maximum likelihood or minimum distance estimators for probability models.
 \tabular{ll}{
 Package: \tab distrMod \cr
 Version: \tab 2.6 \cr
-Date: \tab 2013-09-13 \cr
+Date: \tab 2015-05-03 \cr
 Depends: \tab R(>= 2.6.0), methods, startupmsg, distr(>= 2.2), distrEx(>=
 2.2), RandVar(>= 0.6.3), MASS, stats4 \cr
 LazyLoad: \tab yes \cr
