@@ -39,7 +39,7 @@ would have to be called with non-standard (i.e. package \pkg{base}-) arguments,
 which is \emph{not} the goal of including \R code sniplets by Sweave.
 }
 
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
+\author{Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 \examples{
 setToBeDefinedPkgs(pkgs = c("distr","distrEx"),
                    keywordstyles = paste("\\\\bfseries\\\\color{",c("blue","red"),"}",

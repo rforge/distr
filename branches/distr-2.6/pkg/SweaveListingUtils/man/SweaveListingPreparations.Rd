@@ -125,7 +125,7 @@ The author wants to thank Frank E. Harrel and Andrew Ellis for
 very valuable suggestions to enhance this package.
 }
 
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
+\author{Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 \examples{
 SweaveListingPreparations()
 SweaveListingPreparations(pkv="2.1")

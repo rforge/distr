@@ -33,7 +33,7 @@ the current length of this list is stored in \code{.CacheLength}.
 the character content of the source file
 }
 
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
+\author{Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 \examples{
 readSourceFromRForge("distr","R","AllClasses.R","distr")
 }

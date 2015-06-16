@@ -54,7 +54,7 @@ the character content of the filtered source file,
 if nothing is found   it returns \code{invisible()}.
 }
 
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
+\author{Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 \examples{
 copySourceFromRForge("distr","R","AllClasses.R","distr", from =2, to =3,
                      offset.after=2)

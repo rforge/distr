@@ -53,7 +53,7 @@ as \var{<defname><position number in arglist>}.
 \item{print.default}{\code{invisible()}}
 }
 
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
+\author{Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 \examples{
  TL <- taglist("HA"=8,"JUI"=7,"butzi", list=list("HU"="AHAL","HA"="BETA","BUZ"))
  print(TL)
