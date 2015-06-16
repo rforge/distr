@@ -131,7 +131,7 @@ TeX file.
 \code{invisible()}
 }
 
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
+\author{Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 \examples{
 lstset(taglist(A="H", b=2, 3),30)
 lstset(taglist(A="H", b=2, 3),30, startS = "\\\\lstdefinestyle{Rstyle}{")

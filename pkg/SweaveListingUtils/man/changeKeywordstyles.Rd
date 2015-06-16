@@ -59,7 +59,7 @@ changeKeywordstyles(pkgs = "distr",
 %
 \seealso{\code{\link{lstsetLanguage}}}
 %
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
+\author{Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 %
 \examples{
 require(MASS)

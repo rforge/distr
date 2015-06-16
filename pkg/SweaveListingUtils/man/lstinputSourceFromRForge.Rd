@@ -79,7 +79,7 @@ line numbers in the downloaded source may be printed out
 \code{invisible()}
 }
 
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
+\author{Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 \examples{
 lstinputSourceFromRForge("distr","R","AllClasses.R","distr",
                      "## Class: BinomParameter", "#-")

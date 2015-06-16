@@ -22,7 +22,7 @@ reads out the \file{DESCRIPTION} files of the packages to
 get the information.
 }
 
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
+\author{Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 \examples{
 isBaseOrRecommended(pkgs = c("SweaveListingUtils","Matrix","splines"))}
 \keyword{utilities}

@@ -132,8 +132,8 @@ be found in the \file{doc} folder of this package.
 }
 
 \author{
-Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}\cr
-\emph{Maintainer:} Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}
+Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}\cr
+\emph{Maintainer:} Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}
 }
 \note{This version already uses 'new-style' Rd-format version 1.1.
 For versions installable for \eqn{<}\R-2.10.0, try and get a version
