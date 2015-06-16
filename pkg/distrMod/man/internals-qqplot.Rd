@@ -47,7 +47,7 @@ respectively thinned out.
 }
 
 \author{
-  Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de},
+  Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de},
 }
 
 \seealso{\code{\link[stats]{ks.test}}, \code{\link[distr]{qqplot}}

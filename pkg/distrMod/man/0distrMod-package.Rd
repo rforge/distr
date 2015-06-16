@@ -279,10 +279,10 @@ See also \code{distrModMASK()}
 }
 
 \author{
-Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de},\cr 
+Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de},\cr 
 Matthias Kohl \email{Matthias.Kohl@stamats.de}\cr
 
-\emph{Maintainer:} Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}
+\emph{Maintainer:} Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}
 }
 
 \references{
