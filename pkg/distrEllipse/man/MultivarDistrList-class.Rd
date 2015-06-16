@@ -43,7 +43,7 @@ lists of multivariate distributions, and which together with
 class \code{"MultivarDistrList"}.
 }
 %\references{}
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
+\author{Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 %\note{}
 \seealso{\code{\link{MultivarDistrList}}, \code{\link[distr]{DistrList-class}},
     \code{\link[distrEx]{MultivariateDistribution-class}}}

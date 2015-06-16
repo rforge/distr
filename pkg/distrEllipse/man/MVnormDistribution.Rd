@@ -21,7 +21,7 @@
 %\details{}
 \value{Object of class \code{"MVNormDistribution"}}
 %\references{}
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
+\author{Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 \seealso{\code{\link{MVNormDistribution-class}}}
 \examples{
 E0 <- MVNorm()

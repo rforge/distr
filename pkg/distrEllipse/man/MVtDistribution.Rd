@@ -24,7 +24,7 @@
 %\details{}
 \value{Object of class \code{"MvtDistribution"}}
 %\references{}
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
+\author{Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 \seealso{\code{\link{MVtDistribution-class}}}
 \examples{
 E0 <- MVt()
