@@ -33,7 +33,7 @@ illustrateCLT.tcl(Distr, k, Distrname)
 }
 
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de}\cr
-Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
+Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 \examples{
 distroptions("DefaultNrFFTGridPointsExponent" = 13)
 illustrateCLT(Distr = Unif(), len = 20)

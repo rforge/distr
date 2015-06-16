@@ -93,11 +93,11 @@ Note: The first two numbers of package versions do not necessarily reflect
 
 \author{
 Matthias Kohl \email{Matthias.Kohl@stamats.de} and \cr
-Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de},\cr 
+Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de},\cr 
 Eleonara Feist \email{eleonoragerber@gmx.de}, and, \cr
 Anja Hueller \email{anja\_h86@web.de}\cr  
 
-\emph{Maintainer:}  Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}
+\emph{Maintainer:}  Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}
 }
 \references{
 P. Ruckdeschel, M. Kohl, T. Stabla, F. Camphausen (2006):
