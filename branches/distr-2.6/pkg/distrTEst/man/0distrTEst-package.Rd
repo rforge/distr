@@ -78,10 +78,10 @@ As for general \code{packageStartupMessage}'s, you may also suppress all
 \author{
   Thomas Stabla \email{statho3@web.de},\cr 
   Florian Camphausen \email{fcampi@gmx.de},\cr
-  Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de},\cr 
+  Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de},\cr 
   Matthias Kohl \email{Matthias.Kohl@stamats.de}\cr
 
-\emph{Maintainer:} Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}
+\emph{Maintainer:} Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}
 }
 
 \note{Global options controlling the plots and summaries of Evaluationlist
