@@ -485,7 +485,7 @@ usually invisible \code{NULL}.}
 }
 
 \author{
-  Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de},
+  Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de},
   Matthias Kohl \email{Matthias.Kohl@stamats.de}
 }
 

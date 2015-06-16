@@ -79,7 +79,7 @@
   }
 }
 
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}\cr
+\author{Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}\cr
 Matthias Kohl \email{matthias.kohl@stamats.de}
 Thomas Stabla \email{statho3@web.de}
 }
