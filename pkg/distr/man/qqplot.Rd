@@ -124,7 +124,7 @@ produces a QQ plot for two univariate distributions.}
    intervals.
 }
 \author{
-  Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}
+  Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}
 }
 \examples{
 qqplot(Norm(15,sqrt(30)), Chisq(df=15))
