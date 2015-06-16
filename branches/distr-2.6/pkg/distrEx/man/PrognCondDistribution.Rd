@@ -33,7 +33,7 @@ PrognCondDistribution(Regr, Error,
 \value{Object of class \code{"PrognCondDistribution"}}
 %\references{}
 \author{
-  Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de},
+  Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de},
 }
 %\note{}
 \seealso{\code{PrognCondDistribution-class}; demo(\file{Prognose.R}).}

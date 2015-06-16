@@ -167,7 +167,7 @@ AsymTotalVarDist(e1, e2, ...)
   Agostinelli, C and Ruckdeschel, P. (2009): A simultaneous inlier and outlier model
   by asymmetric total variation distance.
 }
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
+\author{Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 %\note{ ~~further notes~~ }
 \seealso{\code{\link{TotalVarDist-methods}}, \code{\link{ContaminationSize}}, 
     \code{\link{KolmogorovDist}}, \code{\link{HellingerDist}}, 

@@ -36,7 +36,7 @@ and \code{uppB <- min(upp, q(object)(1-uppTQ), median(object)+IQR.fac*IQR(object
 }
 
 \author{
-  Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de},
+  Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de},
 }
 
 \seealso{
