@@ -64,7 +64,7 @@ Class \code{"Distribution"}, by class \code{"AbscontDistribution"}.
 
   }
 }
-\author{Peter Ruckdeschel \email{peter.ruckdeschel@itwm.fraunhofer.de}}
+\author{Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 \note{This class is based on the code provided by the package \pkg{fGarch}
 by  Diethelm Wuertz}
 \seealso{\code{\link[fGarch:dist-snorm]{dsnorm}}, \code{\link[distr]{AbscontDistribution-class}}}

@@ -38,7 +38,7 @@ Class \code{"OptionalParameter"}, by class \code{"Parameter"}.
   }
 }
 %\references{}
-\author{Peter Ruckdeschel \email{peter.ruckdeschel@itwm.fraunhofer.de}}
+\author{Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 %\note{}
 \seealso{\code{\link{SNorm-class}}, \code{\link[distr]{Parameter-class}}}
 \examples{

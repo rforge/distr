@@ -21,7 +21,7 @@
 %\details{}
 \value{Object of class \code{"STd"}}
 %\references{}
-\author{Peter Ruckdeschel \email{peter.ruckdeschel@itwm.fraunhofer.de}}
+\author{Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 \note{This class is based on the code provided by the package \pkg{fGarch}
 by  Diethelm Wuertz}
 \seealso{\code{\link[fGarch:dist-std]{dstd}}, \code{\link[distr]{AbscontDistribution-class}}}
