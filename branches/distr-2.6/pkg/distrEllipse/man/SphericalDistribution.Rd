@@ -20,7 +20,7 @@
 %\details{}
 \value{Object of class \code{"SphericalDistribution"}}
 %\references{}
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
+\author{Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 \seealso{\code{\link{SphericalDistribution-class}}}
 \examples{
 E0 <- SphericalDistribution()

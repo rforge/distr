@@ -49,7 +49,7 @@ Class \code{"Distribution"}, by class \code{"MultivariateDistribution"}.
 
   }
 }
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
+\author{Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 \examples{
 new("MVNormDistribution") ## better use generating function MVNormDistribution()
 }

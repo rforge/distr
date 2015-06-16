@@ -36,7 +36,7 @@ getdistrEllipseOption(x)
 \code{getdistrEllipseOption("Nsim")} the current value set for option \code{Nsim}.
 }
 \author{
-  Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}
+  Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}
   }
 
 \section{Currently available options}{

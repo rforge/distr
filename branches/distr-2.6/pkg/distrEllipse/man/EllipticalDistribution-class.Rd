@@ -111,7 +111,7 @@ Class \code{"Distribution"}, by class \code{"MultivariateDistribution"}.
       univariate distribution. }
   }
 }
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
+\author{Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 \examples{
 new("EllipticalDistribution") ## better use EllipticalDistribution()
 }

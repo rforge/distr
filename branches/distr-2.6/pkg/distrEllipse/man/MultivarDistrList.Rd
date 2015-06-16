@@ -16,7 +16,7 @@
 \value{Object of class \code{"MVDistrList"} or of
 class \code{"UnivarDistrList"}, hence of class union \code{"MultivarDistrList"}}
 %\references{}
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
+\author{Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 %\note{}
 \seealso{\code{\link[distr]{DistrList-class}}, \code{\link{MultivarDistrList-class}},
   \code{\link{MultivarDistrList}}}
