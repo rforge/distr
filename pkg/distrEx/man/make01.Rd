@@ -17,7 +17,7 @@ make01(x)
   a one-liner: \code{(x-E(x))/sd(x)}.
 }
 \value{Object of class \code{"UnivariateDistribution"} with expectation 0 and variance 1.}
-\author{Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}}
+\author{Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 %\note{}
 \seealso{\code{E}, \code{Var}}
 \examples{

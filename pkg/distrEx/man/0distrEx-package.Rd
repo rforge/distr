@@ -213,7 +213,7 @@ Note: The first two numbers of package versions do not necessarily reflect
 
 \author{
 Matthias Kohl \email{Matthias.Kohl@stamats.de} and \cr
-Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de},\cr 
+Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de},\cr 
 
 \emph{Maintainer:}  Matthias Kohl \email{Matthias.Kohl@stamats.de}
 }
