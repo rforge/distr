@@ -27,7 +27,7 @@ a model-specific subclass with particular methods.
 The (default) \code{ANY,ANY}-method returns the estimator unchanged.
 }
 \author{
-  Peter Ruckdeschel \email{Peter.Ruckdeschel@itwm.fraunhofer.de}
+  Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}
   }
 
 \keyword{methods}
