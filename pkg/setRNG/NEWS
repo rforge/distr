@@ -1,3 +1,7 @@
+Changes in setRNG version 2015.7-1
+
+   o	Added default package imports as now required by CRAN.
+
 Changes in setRNG version 2013.9-1
 
    o	adjusted .Rbuildignore to exclude S/ directory.
