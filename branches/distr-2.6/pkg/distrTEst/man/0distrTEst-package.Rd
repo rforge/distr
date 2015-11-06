@@ -17,8 +17,9 @@ and simulation classes as introduced there to capture the situation from which t
 Package: \tab distrTEst \cr
 Version: \tab 2.6 \cr
 Date: \tab 2015-11-06 \cr
-Depends: \tab R(>= 2.6.0), methods, graphics, setRNG(>= 2006.2-1), distr(>=
-2.0), distrSim(>= 2.0), startupmsg\cr
+Depends: \tab R(>= 2.6.0), methods, graphics, setRNG(>= 2006.2-1), distrSim(>= 2.2)\cr
+Imports: \tab startupmsg, utils\cr
+Suggests: \tab distrEx(>= 2.2)\cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr

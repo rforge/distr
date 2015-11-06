@@ -11,7 +11,7 @@ Suggests: distr, MASS, survival, distrEx, Matrix, splines
 Imports: methods
 ByteCompile: yes
 Authors@R: person("Peter", "Ruckdeschel", role=c("cre", "cph"),
-        email="Peter.Ruckdeschel@itwm.fraunhofer.de")
+        email="peter.ruckdeschel@uni-oldenburg.de")
 License: LGPL-3
 Date: 2015-11-06
 LastChangedDate: {$LastChangedDate$}

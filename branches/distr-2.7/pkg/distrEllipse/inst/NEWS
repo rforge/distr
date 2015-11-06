@@ -1,0 +1,77 @@
+######################################################################
+#  News: to package distrEllipse 
+######################################################################
+
+(first two numbers of package versions do not necessarily reflect 
+ package-individual development, but rather are chosen for the 
+ distrXXX family as a whole in order to ease updating "depends" 
+ information)
+
+##############
+v 2.6
+##############
+
+user-visible CHANGES:
++ title changed to title style / capitalization
+
+under the hood:
+
++ removed ::: internal dependencies (within distr-Fam of pkgs) by copying 
+  respective routines
++ fixed E and var methods for MultivarMixingDistribution
++ enhanced imports in DESCRIPTION by explicating second order imports
+
+##############
+v 2.5
+##############
+
+user-visible CHANGES:
+
+GENERAL ENHANCEMENTS:
++ cleaned DESCRIPTION and NAMESPACE file as to Imports/Depends
+
+under the hood:
+
++ added .Rbuildignore
++ used some recently exported routines which had been internal so far to
+  avoid calls by :::
+ 
+BUGFIXES
++ fixed some links in html-man pages
+
+
+##############
+v 2.4
+##############
+
+under the hood
++ removed lazyload tag in DESCRIPTION
++ added DESCRIPTION tag "ByteCompile" to all our packages
++ updating maintainer email address and URL.
++ added argument no.readonly = TRUE to assignments of form opar <- par()
++ deleted no longer needed chm folders
+
+
+
+##############
+v 2.3
+##############
+
+No extra changes this time
+
++ DESCRIPTION files and package-help files gain a tag 
+  SVNRevision to be filled by get[All]RevNr.R from utils in distr
+
+##############
+v 2.2
+##############
+
+* created new package to cover Elliptical Symmetric Distributions
+  
+GENERAL ENHANCEMENTS:
+
++ added tests/Examples folder with file distrEllipse-Ex.Rout.save to have
+  some automatic testing
++ added field "Encoding: latin1" to all DESCRIPTION files in order to avoid problems 
+  with e.g. Windows locale when svn replaces $LastChangedDate
++ added TOBEDONE (sic!) files for each package (by accident also in trunc; these are empty so far)

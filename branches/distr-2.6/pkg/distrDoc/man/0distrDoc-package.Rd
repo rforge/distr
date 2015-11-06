@@ -15,10 +15,10 @@ packages \pkg{distr}, \pkg{distrEx}, \pkg{distrSim}, \pkg{distrTEst},
 Package: \tab distrDoc \cr
 Version: \tab 2.6 \cr
 Date: \tab 2015-11-06 \cr
-Depends: \tab R(>= 2.14.0) \cr
+Depends: \tab R(>= 2.14.0)  \cr
 Imports: \tab distr(>= 2.2.0), distrEx(>= 2.2.0), distrSim(>= 2.2.0), distrTEst(>= 2.2.0),
         distrTeach(>= 2.2.0), RandVar(>= 0.7), distrMod(>= 2.2.0), MASS, methods,
-        SweaveListingUtils, startupmsg \cr
+        SweaveListingUtils, startupmsg  \cr
 Suggests: \tab Biobase \cr
 ByteCompile: \tab yes \cr
 License: \tab LGPL-3 \cr

@@ -19,7 +19,7 @@ Version: \tab 2.6 \cr
 Date: \tab 2015-11-06 \cr
 Depends: \tab R(>= 2.14.0), distr(>= 2.5.2), distrEx(>= 2.4), RandVar(>= 0.6.3), MASS, stats4,
         methods \cr
-Imports: \tab startupmsg, sfsmisc \cr
+Imports: \tab startupmsg, sfsmisc, graphics, stats, grDevices \cr
 Suggests: \tab ismev, evd, RobExtremes \cr
 ByteCompile: \tab yes \cr
 License: \tab LGPL-3 \cr

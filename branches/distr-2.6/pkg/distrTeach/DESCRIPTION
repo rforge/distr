@@ -10,7 +10,7 @@ Imports: startupmsg, grDevices, graphics, stats
 Authors@R: c(person("Eleonora", "Feist", role="ctb", comment = "contributed as student in the
         initial phase --2008"), person("Matthias", "Kohl", role=c("aut", "cph")),
         person("Peter", "Ruckdeschel", role=c("cre", "cph"),
-        email="Peter.Ruckdeschel@itwm.fraunhofer.de"), person("Anja", "Hueller", role="ctb",
+        email="peter.ruckdeschel@uni-oldenburg.de"), person("Anja", "Hueller", role="ctb",
         comment = "contributed as student in the initial phase --2008"))
 ByteCompile: yes
 License: LGPL-3

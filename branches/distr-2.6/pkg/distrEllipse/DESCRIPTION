@@ -9,7 +9,7 @@ Depends: R(>= 2.8.0), methods, graphics, mvtnorm, setRNG(>= 2006.2-1), distr(>= 
 Suggests: distrMod(>= 2.2), distrTEst(>= 2.2)
 Imports: startupmsg, stats
 Authors@R: person("Peter", "Ruckdeschel", role=c("cre", "cph"),
-        email="Peter.Ruckdeschel@itwm.fraunhofer.de")
+        email="peter.ruckdeschel@uni-oldenburg.de")
 ByteCompile: yes
 License: LGPL-3
 URL: http://distr.r-forge.r-project.org/

@@ -8,7 +8,7 @@ Depends: R(>= 2.6.0), methods, distr(>= 2.4), fBasics(>= 270.73), fGarch(>= 270.
 Suggests: distrEx(>= 2.4), distrMod(>= 2.4)
 Imports: startupmsg
 Authors@R: person("Peter", "Ruckdeschel", role=c("cre", "cph"),
-        email="Peter.Ruckdeschel@itwm.fraunhofer.de")
+        email="peter.ruckdeschel@uni-oldenburg.de")
 ByteCompile: yes
 License: LGPL-3
 Encoding: latin1
