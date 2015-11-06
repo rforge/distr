@@ -1,4 +1,6 @@
 import("methods")
+importFrom("graphics", "boxplot", "par")
+importFrom("utils", "str")
 import("distrSim")
 import("setRNG")
 importFrom("startupmsg", "buildStartupMessage", "infoShow")
