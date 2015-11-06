@@ -58,7 +58,7 @@ MVNorm <- function(loc=c(0,0), scale = diag(length(loc))){
 
 ## MVNormParameter
 setMethod("mean", "MVNormParameter",
-           function(x) object@loc)
+           function(x) x@loc)
 setMethod("sigma", "MVNormParameter",
            function(object) object@scale%*%t(object@scale))
 
@@ -68,4 +68,4 @@ setMethod("sigma", "MVNormDistribution",
            function(object) object@param@scale%*%t(object@param@scale))
 
 setMethod("mean", "MVNormDistribution",
-           function(x) object@param@loc)
+           function(x) x@param@loc)

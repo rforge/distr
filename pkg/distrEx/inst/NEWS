@@ -6,6 +6,25 @@
  package-individual development, but rather are chosen for the 
  distrXXX family as a whole in order to ease updating "depends" 
  information)
+
+##############
+v 2.6
+##############
+
+user-visible CHANGES:
++ changed default integration measure from e2 to e1 in CvMdist
++ title changed to title style / capitalization
++ added generating function "EmpiricalMVDistribution" for computing
+  empirical distribution of multivariate data
++ removed N. Horbenko from authors in DESCRIPTION; her contribution
+  was moved to pkg RobExtremes
+  
+under the hood:
++ use particular S3-class "moved2RobExtremeClass" for
+  former package internal constants EULERMASCHERONICONSTANT and
+  APERYCONSTANT
++ enhanced imports in DESCRIPTION by explicating second order imports
+
  
 ##############
 v 2.5

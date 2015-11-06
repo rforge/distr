@@ -2,6 +2,7 @@ import("methods")
 import("distr")
 import("fBasics")
 import("fGarch")
+importFrom("startupmsg", "buildStartupMessage", "infoShow")
 
 exportClasses("SNormParameter", "SSTdParameter", "SNorm", "SSTd")
 export("SNorm", "SSTd", "STd")

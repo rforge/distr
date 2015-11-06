@@ -3,10 +3,10 @@
 \alias{distrEx}
 \docType{package}
 \title{
-distrEx -- Extensions of package distr
+distrEx -- Extensions of Package distr
 }
 \description{
-\pkg{distrEx} proides some extensions of package \pkg{distr}:
+\pkg{distrEx} provides some extensions of package \pkg{distr}:
 \itemize{\item expectations in the form
          \itemize{\item \code{E(X)} for the expectation of a 
                         distribution object \code{X} 
@@ -27,13 +27,15 @@ Support for  extreme value distributions has moved to package \pkg{RobExtremes}
 \details{
 \tabular{ll}{
 Package: \tab distrEx \cr
-Version: \tab 2.5 \cr
-Date: \tab 2013-09-12 \cr
-Depends: \tab R(>= 2.6.0), methods, distr(>= 2.2) \cr
+Version: \tab 2.6 \cr
+Date: \tab 2015-11-06 \cr
+Depends: \tab R(>= 2.10.0), methods, distr(>= 2.2) \cr
+Imports: \tab startupmsg, utils, stats \cr
+Suggests:  \tab tcltk \cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-SVNRevision: \tab 913 \cr
+SVNRevision: \tab 1055 \cr
 }
 }
 \section{Classes}{

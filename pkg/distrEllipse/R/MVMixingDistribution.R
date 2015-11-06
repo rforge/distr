@@ -1,4 +1,3 @@
-.isEqual <- distr:::.isEqual
 
 MultivarMixingDistribution <- function(..., Dlist, mixCoeff #,
 #                                     withSimplify = getdistrOption("simplifyD")
@@ -11,8 +10,6 @@ MultivarMixingDistribution <- function(..., Dlist, mixCoeff #,
             ldots <- c(ldots, Dlist.L)
        }
     l <- length(ldots)
-    print(ldots)
-    print(ldots[[2]])
     mixDistr <- do.call(MultivarDistrList,args=ldots)
     if(is(mixDistr,"UnivarDistrList"))
        return(UnivarMixingDistribution(Dlist = mixDistr, mixCoeff = mixCoeff))
@@ -126,37 +123,44 @@ setMethod("Symmetry", "MultivarMixingDistribution",
          })
 }
 
+
 setMethod("E", signature(object = "MultivarMixingDistribution",
-                        fun = "ANY", cond = "ANY"),
-           function(object, fun, cond, ...) {
-             dots <- match.call(call = sys.call(sys.parent(1)),
-                       expand.dots = FALSE)$"..."
-
+                        fun = "missing", cond = "missing"), function(object, ...) {
              l <- length(object@mixCoeff)
-             argL <- NULL
-             if(!missing(fun)) argL <- list(fun=fun)
-             if(!missing(cond)) argL <- c(argL, list(cond = cond))
-             res <- object@mixCoeff[1]*do.call("E",
-                           args = c(list(object=object@mixDistr[[1]]),
-                           argL, dots))
-             di <- dim(res)
-             lres <- length(res)
-             if(l>1){
-                cdo <- if(lres >1) cbind else c
-                res <- cdo(c(res), sapply(2:l, function(i)
-                           object@mixCoeff[i]*do.call("E",
-                           args = c(list(object=object@mixDistr[[i]]),
-                           argL, dots))))
+             res <- object@mixCoeff[1]*E(object=object@mixDistr[[1]], ...)
+             if(l==1) return(res)
+             for(i in 2:l){
+                 res0 <-  object@mixCoeff[i]*E(object=object@mixDistr[[i]], ...)
+                 res <- res + res0
              }
-             if(!is.null(di))
-                 res <- array(res, dim=c(di,l))
-             di <- dim(res)
-
-             ldi <- if(length(di)>1) 1:(length(di)-1) else 1
-             if(length(di) > 1)
-                return(apply(res,ldi,sum))
-             else return(sum(res))
+             return(res)
            })
+setMethod("E", signature(object = "MultivarMixingDistribution",
+                        fun = "function", cond = "missing"), 
+                        function(object, fun, ...) {
+             l <- length(object@mixCoeff)
+             res <- object@mixCoeff[1]*E(object=object@mixDistr[[1]], fun=fun,...)
+             if(l==1) return(res)
+             for(i in 2:l){
+                 res0 <-  object@mixCoeff[i]*E(object=object@mixDistr[[i]], fun=fun, ...)
+                 res <- res + res0
+             }
+             return(res)
+           })
+
+setMethod("var", signature(x = "MultivarMixingDistribution"),
+           function(x,...){            
+             l <- length(x@mixCoeff)
+             if(l==1L) return(var(x@mixDistr[[1]],...))
+             E1 <- E2 <- 0
+             for(i in 1:l){
+                E10 <- E(x@mixDistr[[i]], ...)
+                E1 <- E1 + x@mixCoeff[i]*E10
+                E2 <- E2 + (E10%*%t(E10)+var(x@mixDistr[[i]],...)) * 
+                            x@mixCoeff[i]
+           }
+           return(E2-E1%*%t(E1))})
+
 
 setMethod("plot", signature(x = "MultivarMixingDistribution", y = "missing"),
       function(x, Nsim = getdistrEllipseOption("Nsim"), ...,
@@ -177,7 +181,7 @@ setMethod("show", "MultivarMixingDistribution",
           function(object){
             cls <- class(object)[1]
             cat(showobj(object, className = cls))
-            ws <- distr:::.IssueWarn(object@.withArith, object@.withSim)
+            ws <- .IssueWarn(object@.withArith, object@.withSim)
             if(!is.null(ws$msgA)) warning(ws$msgA)
             if(!is.null(ws$msgS)) warning(ws$msgS)
           }

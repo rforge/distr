@@ -52,7 +52,6 @@ class \code{"MultivarDistrList"}.
 (DL2 <- MultivarDistrList(MVNorm(),
                           EllipticalDistribution(radDistr=Exp(), loc=c(1,2),
                           scale=diag(c(3,1))),MVt()))
-
 }
 \keyword{distribution}
 \keyword{list}

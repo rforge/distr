@@ -3,8 +3,7 @@
 \alias{distrRmetrics}
 \docType{package}
 \title{
-distrRmetrics -- S4 classes for distributions contributed in the Rmetrics
-packages.
+distrRmetrics -- Distribution Classes for Distributions from Rmetrics.
 }
 \description{
 \pkg{distrRmetrics} provides infrastructure / (S4-)classes
@@ -14,14 +13,15 @@ packages.
 \details{
 \tabular{ll}{
 Package: \tab distrRmetrics \cr
-Version: \tab 2.5 \cr
-Date: \tab 2013-09-12 \cr
-Depends: \tab R(>= 2.6.0), methods, fBasics(>= 270.73), fGarch(>= 270.73),
-              distr(>= 2.4), startupmsg\cr
-LazyLoad: \tab yes \cr
+Version: \tab 2.6 \cr
+Date: \tab 2015-11-06 \cr
+Depends: \tab R(>= 2.6.0), methods, distr(>= 2.4), fBasics(>= 270.73), fGarch(>= 270.73)  \cr
+Suggests: \tab distrEx(>= 2.4), distrMod(>= 2.4)  \cr
+Imports: startupmsg  \cr
+ByteCompile: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-SVNRevision: \tab 913 \cr
+SVNRevision: \tab 1055 \cr
 }
 }
 \section{Classes}{

@@ -90,16 +90,16 @@ setMethod("plot", signature(x = "SphericalDistribution", y = "missing"),
       dots <- match.call(call = sys.call(sys.parent(1)),
                          expand.dots = FALSE)$"..."
       cex <- 0.5
-      if(hasArg(cex)) cex <- dots$cex
+      if(hasArg("cex")) cex <- dots$cex
       col <- "black"
-      if(hasArg(col)) col <- dots$col
+      if(hasArg("col")) col <- dots$col
       
       qchs <- qchisq(.95, df = 2)^.5
       col.Ed <- rep(col.Ed, length.out = 2)
 
       X <- r(x)(2000)
 
-      if(hasArg(panel))
+      if(hasArg("panel"))
          pairs(t(X), ...)
       else
          pairs(t(X), ...,

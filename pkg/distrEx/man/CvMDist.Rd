@@ -17,8 +17,8 @@
 }
 \usage{
 CvMDist(e1, e2, ...)
-\S4method{CvMDist}{UnivariateDistribution,UnivariateDistribution}(e1, e2, mu = e2, useApply = FALSE, ...)
-\S4method{CvMDist}{numeric,UnivariateDistribution}(e1, e2, mu = e2, ...)
+\S4method{CvMDist}{UnivariateDistribution,UnivariateDistribution}(e1, e2, mu = e1, useApply = FALSE, ...)
+\S4method{CvMDist}{numeric,UnivariateDistribution}(e1, e2, mu = e1, ...)
 }
 \arguments{
   \item{e1}{ object of class \code{"Distribution"} or class \code{"numeric"} }

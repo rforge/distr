@@ -44,6 +44,12 @@
              A = as.double(A),W = as.double(W), PACKAGE = "distrEx") 
               ### PACKAGE ARGUMENT added P.R. 270507
 #    dyn.unload("G:/rtest/GLaw.dll")
+#
+# P.R. 20140810: .Call interface instead of .C interface
+#
+#   erg0 <- .Call("Gauleg", n, eps, PACKAGE="distrEx")
+#   erg <- matrix(erg0,n,2); colnames(erg) <- c("A","W")
+#
     cbind(A=erg$A, W=erg$W)         
 }
 

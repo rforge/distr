@@ -8,13 +8,21 @@
  information)
 
 ##############
-v 2.5.1
+v 2.6
 ##############
+
 user-visible CHANGES:
 + title changed to title style / capitalization
 + updated CITATION file
++ removed some outdated references from uni-bayreuth
++ updated references in vignette distr.Rnw
++ mention that pattern substitution can now be switched on and off in all plot 
+  functions according to argument withSubst
 
+under the hood
 + fixed \VignetteKeyword issue detected as in mail by K. Hornik 2015-02-03
++ added svn-properties to distr.Rnw
++ enhanced imports in DESCRIPTION by explicating second order imports
 
 ##############
 v 2.5

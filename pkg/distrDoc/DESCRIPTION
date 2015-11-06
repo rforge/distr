@@ -1,14 +1,15 @@
 Package: distrDoc
-Version: 2.5.1
-Date: 2015-02-04
-Title: Documentation for Packages distr, distrEx, distrSim, distrTEst, distrTeach, distrMod,
-        and distrEllipse
-Description: provides documentation in form of a common vignette to packages distr, distrEx,
-        distrMod, distrSim, distrTEst, distrTeach, and distrEllipse
-Authors@R: c(person("Florian", "Camphausen", role="ctb", comment="contributed as student to the documented packages in the initial phase --2005"),
-        person("Matthias", "Kohl", role=c("aut", "cph")), 
-		person("Peter", "Ruckdeschel", role=c("cre", "cph"), email="Peter.Ruckdeschel@itwm.fraunhofer.de"), 
-		person("Thomas", "Stabla", role="ctb", comment="contributed as student to the documented packages in the initial phase --2005"))
+Version: 2.6
+Date: 2015-11-06
+Title: Documentation for 'distr' Family of R Packages
+Description: Provides documentation in form of a common vignette to packages distr, distrEx,
+        distrMod, distrSim, distrTEst, distrTeach, and distrEllipse.
+Authors@R: c(person("Florian", "Camphausen", role="ctb", comment="contributed as student to the
+        documented packages in the initial phase --2005"), person("Matthias", "Kohl",
+        role=c("aut", "cph")), person("Peter", "Ruckdeschel", role=c("cre", "cph"),
+        email="peter.ruckdeschel@uni-oldenburg.de"), person("Thomas", "Stabla", role="ctb",
+        comment="contributed as student to the documented packages in the initial phase
+        --2005"))
 Depends: R(>= 2.14.0)
 Imports: distr(>= 2.2.0), distrEx(>= 2.2.0), distrSim(>= 2.2.0), distrTEst(>= 2.2.0),
         distrTeach(>= 2.2.0), RandVar(>= 0.7), distrMod(>= 2.2.0), MASS, methods,
@@ -20,4 +21,4 @@ License: LGPL-3
 URL: http://distr.r-forge.r-project.org/
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
-SVNRevision: 993
+SVNRevision: 1055

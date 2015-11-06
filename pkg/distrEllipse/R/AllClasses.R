@@ -37,7 +37,7 @@ setClass("MVtParameter",
             contains = "EllipticalParameter",
             validity = function(object){
                dim0 <- length(object@loc)
-               if(!distr:::.isNatural(object@df)) stop("'df' must be an integer")
+               if(!.isNatural(object@df)) stop("'df' must be an integer")
                if(!length(object@ncp)==1) stop("wrong dimension for ncp")
                if(!nrow(object@scale)==dim0) stop("wrong dimensions")
                else return(TRUE)

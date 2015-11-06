@@ -3,7 +3,7 @@
 \alias{distrEllipse}
 \docType{package}
 \title{
-distrEllipse -- S4 classes for elliptically contoured distributions
+distrEllipse -- S4 Classes for Elliptically Contoured Distributions
 }
 \description{
 \pkg{distrEllipse} provides infrastructure / (S4-)classes for elliptically
@@ -12,14 +12,16 @@ contoured distributions (based on package distr).
 \details{
 \tabular{ll}{
 Package: \tab distrEllipse \cr
-Version: \tab 2.5 \cr
-Date: \tab 2013-09-12 \cr
-Depends: \tab R(>= 2.8.0), methods, graphics, mvtnorm, setRNG(>= 2006.2-1),
-              distr(>= 2.2), distrEx(>= 2.2), distrSim(>= 2.2), startupmsg\cr
-LazyLoad: \tab yes \cr
+Version: \tab 2.6 \cr
+Date: \tab 2015-11-06 \cr
+Depends: \tab R(>= 2.8.0), methods, graphics, mvtnorm, setRNG(>= 2006.2-1), distr(>= 2.2),
+        distrEx(>= 2.2), distrSim(>= 2.2)\cr
+Suggests: \tab distrMod(>= 2.2), distrTEst(>= 2.2)\cr
+Imports: \tab  startupmsg, stats\cr
+ByteCompile: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-SVNRevision: \tab 913 \cr
+SVNRevision: \tab 1055 \cr
 }
 }
 \section{Classes}{

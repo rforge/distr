@@ -20,7 +20,9 @@
 \alias{Symmetry,MultivarMixingDistribution-method}
 \alias{dimension,MultivarMixingDistribution-method}
 \alias{dim,MultivarMixingDistribution-method}
-\alias{E,MultivarMixingDistribution,ANY,ANY-method}
+\alias{E,MultivarMixingDistribution,missing,missing-method}
+\alias{E,MultivarMixingDistribution,function,missing-method}
+\alias{var,MultivarMixingDistribution-method}
 \alias{show,MultivarMixingDistribution-method}
 \alias{showobj,MultivarMixingDistribution-method}
 
@@ -120,6 +122,8 @@ mylist2 <- MultivarMixingDistribution(Binom(3,.3), mylist,
 mylist2
 p(mylist)(0.3)          
 mixDistr(mylist2)
+E(mylist)
+var(mylist)
 
 ##multivariate
 E1 <- diag(1,2)\%*\%EllipticalDistribution(radDistr=Gammad())+c(1,2)
@@ -130,6 +134,8 @@ mylistD2 <- MultivarMixingDistribution(E1+c(-2,2), mylistD,
 mylistD2
 p(mylistD)
 mixDistr(mylistD2)
+E(mylistD2)
+var(mylistD2)
 }
 \keyword{distribution}
 \concept{discrete distribution}

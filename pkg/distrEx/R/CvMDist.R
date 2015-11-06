@@ -4,7 +4,7 @@
 ###############################################################################
 setMethod("CvMDist", signature(e1 = "UnivariateDistribution",
                                     e2 = "UnivariateDistribution"),
-    function(e1, e2, mu = e2, useApply = FALSE, ... ){
+    function(e1, e2, mu = e1, useApply = FALSE, ... ){
         o.warn <- getOption("warn"); options(warn = -1)
         on.exit(options(warn=o.warn))
         if(is.null(e1@p)){
@@ -25,12 +25,13 @@ setMethod("CvMDist", signature(e1 = "UnivariateDistribution",
 ## CvM distance
 setMethod("CvMDist", signature(e1 = "numeric",
                                     e2 = "UnivariateDistribution"),
-    function(e1, e2, mu = e2, ...)
+    function(e1, e2, mu = e1, ...)
         { o.warn <- getOption("warn"); options(warn = -1)
           on.exit(options(warn=o.warn))
           if(identical(mu,e2))
              return(.newCvMDist(e1,e2))
           e10 <- DiscreteDistribution(e1)       
+          if(identical(mu,e1)) mu <- e10
           CvMDist(e1 = e10, e2 = e2, mu = mu, ...)
          }
     )

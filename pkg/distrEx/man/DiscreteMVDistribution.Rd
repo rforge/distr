@@ -1,7 +1,7 @@
 \name{DiscreteMVDistribution}
 \alias{DiscreteMVDistribution}
 
-\title{Generating function for DiscreteMVDistribution-class}
+\title{Generating function for multivariate discrete distribution}
 \description{
   Generates an object of class \code{"DiscreteMVDistribution"}.
 }
@@ -18,11 +18,11 @@ DiscreteMVDistribution(supp, prob, Symmetry = NoSymmetry())
     to a center.}
 }
 \details{
-   Typical usages are
-   \preformatted{
-     DiscreteMVDistribution(supp, prob)
-     DiscreteMVDistribution(supp)
-   }
+  Typical usages are
+  \preformatted{
+    DiscreteMVDistribution(supp, prob)
+    DiscreteMVDistribution(supp)
+  }
   Identical rows are collapsed to unique support values. 
   If \code{prob} is missing, all elements in \code{supp}
   are equally weighted. 
@@ -31,7 +31,7 @@ DiscreteMVDistribution(supp, prob, Symmetry = NoSymmetry())
 %\references{}
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de}}
 %\note{}
-\seealso{\code{DiscreteMVDistribution-class}}
+\seealso{\code{\link{DiscreteMVDistribution-class}}}
 \examples{
 # Dirac-measure at (0,0,0)
 D1 <- DiscreteMVDistribution(supp = c(0,0,0))

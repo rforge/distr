@@ -8,6 +8,20 @@
  information)
 
 ##############
+v 2.6
+##############
+
+user-visible CHANGES:
++ title changed to title style / capitalization
+
+under the hood:
+
++ removed ::: internal dependencies (within distr-Fam of pkgs) by copying 
+  respective routines
++ fixed E and var methods for MultivarMixingDistribution
++ enhanced imports in DESCRIPTION by explicating second order imports
+
+##############
 v 2.5
 ##############
 
