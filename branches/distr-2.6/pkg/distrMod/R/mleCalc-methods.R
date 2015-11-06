@@ -104,7 +104,7 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
         lnx <- length(nuisance(PFam))
         fixed <- fixed(PFam)
 
-       allwarns <<- character(0)
+       allwarns <- character(0)
        fun <- function(theta, Data, ParamFamily, criterionF, ...){
                vP <- TRUE
                if(validity.check) vP <- validParameter(ParamFamily, theta)
@@ -128,7 +128,8 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
                                     paste(round(theta,3),collapse=","),
                                    " threw an error;\n",  "returning starting par;\n",
                                    sep="")
-                      allwarns <<- c(allwarns,warn0)
+                      assign("allwarns", envir=parent.env(), 
+                                  value=c(get("allwarns", envir=parent.env()),warn0))
                       warning(warn0)
                   }else{crit0 <- try(do.call(what = criterionF, args = argList),
                                      silent = TRUE)
@@ -138,7 +139,8 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
                                     paste(round(theta,3),collapse=","),
                                    " threw an error;\n",  "returning starting par;\n",
                                    sep="")
-                         allwarns <<- c(allwarns,warn1)
+                         assign("allwarns", envir=parent.env(), 
+                                  value=c(get("allwarns", envir=parent.env()),warn1))
                          warning(warn1)
                          }
                   }
