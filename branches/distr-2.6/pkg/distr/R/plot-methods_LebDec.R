@@ -162,25 +162,25 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
             #stop("Argument 'inner' must either be 'logical' or a 'list'")
           inner <- .fillList(inner,l.draw)          
          }
-     cex <- if (hasArg(cex)) dots$cex else 1
+     cex <- if (hasArg("cex")) dots$cex else 1
 
-     if (hasArg(cex) && missing(cex.points))
+     if (hasArg("cex") && missing(cex.points))
          cex.points <- 2.0 * cex
 
-     if (hasArg(pch) && missing(pch.u))
+     if (hasArg("pch") && missing(pch.u))
           pch.u <- dots$pch
-     if (hasArg(pch) && missing(pch.a))
+     if (hasArg("pch") && missing(pch.a))
           pch.a <- dots$pch
 
-     if (hasArg(col) && missing(col.points))
+     if (hasArg("col") && missing(col.points))
          col.points <- dots$col
-     if (hasArg(col) && missing(col.vert))
+     if (hasArg("col") && missing(col.vert))
          col.vert <- dots$col
-     if (hasArg(col) && missing(col.main))
+     if (hasArg("col") && missing(col.main))
         col.main <- dots$col
-     if (hasArg(col) && missing(col.inner))
+     if (hasArg("col") && missing(col.inner))
         col.inner <- dots$col
-     if (hasArg(col) && missing(col.sub))
+     if (hasArg("col") && missing(col.sub))
         col.sub <- dots$col
 
      if (!withSweave){
@@ -225,7 +225,7 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
                           list("d"="x", "p"="q", "q"="p"))){
               if (!is.null(dlb)){
               if(is.call(dlb)) dlb <- dlb[-1]
-              .mp <- if(is.list(dlb0)) function(x,i){
+              .mp <- if(is.list(dlb)) function(x,i){
                                 if(is.call(x)) x <- eval(x)
                                 if(length(i)==0) return(NULL)
                                 i <- min(i)
@@ -273,7 +273,7 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
       dots$ylab <- NULL
 
 
-     if (hasArg(main)){
+     if (hasArg("main")){
          mainL <- TRUE
          if (is.logical(main)){
              if (!main) mainL <-  FALSE
@@ -290,7 +290,7 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
              lineT <- 0.6
              }
      }
-     if (hasArg(sub)){
+     if (hasArg("sub")){
          subL <- TRUE
          if (is.logical(sub)){
              if (!sub) subL <-  FALSE
@@ -371,7 +371,7 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
      del <- getdistrOption("DistrResolution")
      supp <- support(x)
 
-     if(hasArg(xlim))
+     if(hasArg("xlim"))
      {  if(length(xlim)!=2) stop("Wrong length of Argument xlim");
            grid <- seq(xlim[1], xlim[2], length = ngrid)
            supp <- supp[(supp >= xlim[1]) & (supp <= xlim[2])]
@@ -385,7 +385,7 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
 
 
      
-     if(hasArg(ylim))
+     if(hasArg("ylim"))
          { if (any(c(2,5,8) %in% to.draw) && any( c(1,3,4,6,7) %in% to.draw)){
                  if(! length(ylim) %in% c(2,4)) 
                      stop("Wrong length of Argument ylim")
@@ -398,7 +398,7 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
            }
      else ylim2 <- c(-0.05,1.05)
 
-     if(hasArg(log))
+     if(hasArg("log"))
          {logpd <- dots$log
           logq <- gsub("u","y",gsub("y","x",gsub("x", "u", logpd)))
           if(length(grep("y",logpd))){

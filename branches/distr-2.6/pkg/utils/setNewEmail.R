@@ -1,6 +1,6 @@
 setNewEmail <- function(
-              Email.old = "Peter.Ruckdeschel@web.de",
-              Email.new = "Peter.Ruckdeschel@itwm.fraunhofer.de",
+              Email.old = "peter.ruckdeschel@uni-oldenburg.de",
+              Email.new = "peter.ruckdeschel@uni-oldenburg.de",
               dev.dir = "C:/rtest/",
               packs = c("startupmsg",
                         "distr",
@@ -83,7 +83,7 @@ for(i in 1:length(packs))
 
 setNewEmail()
 setNewEmail(  Email.old = "Peter.Ruckdeschel@uni-bayreuth.de",
-              Email.new = "Peter.Ruckdeschel@itwm.fraunhofer.de",
+              Email.new = "peter.ruckdeschel@uni-oldenburg.de",
               dev.dir = "C:/rtest/",
               packs = c("", 
                         "RobAStBase",

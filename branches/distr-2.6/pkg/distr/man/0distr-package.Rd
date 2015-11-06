@@ -51,7 +51,7 @@ Imports: \tab stats, grDevices, utils \cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-SVNRevision: \tab 914 \cr
+SVNRevision: \tab 1055 \cr
 }}
 
 

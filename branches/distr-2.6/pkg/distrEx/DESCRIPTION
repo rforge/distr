@@ -6,12 +6,13 @@ Description: Extends package 'distr' by functionals, distances, and conditional 
 Depends: R(>= 2.10.0), methods, distr(>= 2.2)
 Imports: startupmsg, utils, stats
 Suggests: tcltk
-Authors@R: c(person("Matthias", "Kohl", role=c("cre", "cph"), email="Matthias.Kohl@stamats.de"), 
-		person("Peter", "Ruckdeschel", role=c("aut", "cph")))
+Authors@R: c(person("Matthias", "Kohl", role=c("cre", "cph"),
+        email="Matthias.Kohl@stamats.de"), person("Peter", "Ruckdeschel", role=c("aut",
+        "cph")))
 ByteCompile: yes
 License: LGPL-3
 Encoding: latin1
 URL: http://distr.r-forge.r-project.org/
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
-SVNRevision: 926
+SVNRevision: 1055
