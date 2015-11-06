@@ -1,4 +1,6 @@
 import("methods")
+importFrom("graphics", "lines", "pairs", "points")
+importFrom("stats", "qchisq")
 importFrom("setRNG", "setRNG")
 import("mvtnorm")
 import("distr")
