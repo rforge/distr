@@ -128,8 +128,7 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
                                     paste(round(theta,3),collapse=","),
                                    " threw an error;\n",  "returning starting par;\n",
                                    sep="")
-                      assign("allwarns", envir=parent.env(), 
-                                  value=c(get("allwarns", envir=parent.env()),warn0))
+                      allwarns <<- c(allwarns,warn0)
                       warning(warn0)
                   }else{crit0 <- try(do.call(what = criterionF, args = argList),
                                      silent = TRUE)
@@ -139,8 +138,7 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
                                     paste(round(theta,3),collapse=","),
                                    " threw an error;\n",  "returning starting par;\n",
                                    sep="")
-                         assign("allwarns", envir=parent.env(), 
-                                  value=c(get("allwarns", envir=parent.env()),warn1))
+                         allwarns <<- c(allwarns,warn1)
                          warning(warn1)
                          }
                   }
