@@ -44,6 +44,7 @@
   
   Typical usages are
   \preformatted{
+    DiscreteDistribution(supp, prob)
     DiscreteDistribution(supp)
   }
   

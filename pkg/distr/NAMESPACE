@@ -1,7 +1,10 @@
 useDynLib("distr")
 import("methods")
 import("stats")
-importFrom("graphics", "plot")
+importFrom("grDevices", "dev.list", "dev.new", "xy.coords")
+importFrom("graphics", "plot", "abline", "layout", "legend", "lines", "mtext", "par", "points", "title")
+importFrom("MASS", "ginv")
+importFrom("utils", "str")
 importFrom("sfsmisc", "D1ss")
 import("startupmsg")
 import("SweaveListingUtils")
@@ -13,6 +16,7 @@ export("Beta", "Binom", "Cauchy", "Chisq",
        "RtoDPQ.d", "Td", "Unif", "Weibull", "Arcsine", 
        "distroptions", "getdistrOption", "simplifyr",
        "Lattice", "DiscreteDistribution",
+       "EmpiricalDistribution",
        "LatticeDistribution", "EuclideanSpace", "Reals", 
        "Naturals", "standardMethods", 
        "distrARITH", "distrMASK", "getLabel", "devNew")

@@ -18,15 +18,26 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
     jit.fac = 0, check.NotInSupport = TRUE,
     col.NotInSupport = "red", with.legend = TRUE, legend.bg = "white",
     legend.pos = "topleft", legend.cex = 0.8, legend.pref = "", 
-    legend.postf = "", legend.alpha = alpha.CI, debug = FALSE){
+    legend.postf = "", legend.alpha = alpha.CI, debug = FALSE, withSubst = TRUE){
 
     mc <- match.call(call = sys.call(sys.parent(1)))
-    if(missing(xlab)) mc$xlab <- as.character(deparse(mc$x))
-    if(missing(ylab)) mc$ylab <- as.character(deparse(mc$y))
+    xcc <- as.character(deparse(mc$x))
+    ycc <- as.character(deparse(mc$y))
+    if(missing(xlab)) mc$xlab <- xcc
+    if(missing(ylab)) mc$ylab <- ycc
+
     mcl <- as.list(mc)[-1]
     mcl$withSweave <- NULL
     mcl$mfColRow <- NULL
     mcl$debug <- NULL
+
+   .mpresubs <- if(withSubst){
+                 function(inx) 
+                    .presubs(inx, c("%C", "%A", "%D" ),
+                          c(as.character(class(x)[1]), 
+                            as.character(date()), 
+                            xcc))
+                }else function(inx) inx
 
     force(x)
 
@@ -65,6 +76,15 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
     mcl <- .deleteItemsMCL(mcl)
     mcl$cex <- .makeLenAndOrder(cex.pch,ord.x)
     mcl$col <- .makeLenAndOrder(col.pch,ord.x)
+
+    mcl$xlab <- .mpresubs(mcl$xlab)
+    mcl$ylab <- .mpresubs(mcl$ylab)
+
+    if (!is.null(eval(mcl$main)))
+        mcl$main <- .mpresubs(eval(mcl$main))
+    if (!is.null(eval(mcl$sub)))
+        mcl$sub <- .mpresubs(eval(mcl$sub))
+
 
     if (!withSweave){
            devNew(width = width, height = height)
@@ -114,6 +134,6 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
           }
        }
     }
-    return(c(ret,qqb))
+    return(invisible(c(ret,qqb)))
     })
     
