@@ -1,5 +1,7 @@
 import("methods")
-importFrom("stats", "simulate")
+importFrom("grDevices", "colors")
+importFrom("graphics", "par")
+importFrom("stats", "rbinom", "simulate")
 importFrom("setRNG", "setRNG")
 import("distr")
 importFrom("startupmsg", "buildStartupMessage", "infoShow")
