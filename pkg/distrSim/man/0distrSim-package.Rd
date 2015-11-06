@@ -3,7 +3,7 @@
 \alias{distrSim}
 \docType{package}
 \title{
-distrSim -- (S4-) classes for simulations based on package distr
+distrSim -- S4-classes for Simulations Based on Package distr
 }
 \description{
 \pkg{distrSim} is to provide a conceptual treatment of simulations by means of S4 classes.
@@ -13,14 +13,15 @@ as introduced there to describe the distributions under which simulations are pe
 \details{
 \tabular{ll}{
 Package: \tab distrSim \cr
-Version: \tab 2.5 \cr
-Date: \tab 2013-09-11 \cr
-Depends: \tab R(>= 2.6.0), methods, graphics, setRNG(>= 2006.2-1), distr(>=
-2.0), startupmsg\cr
+Version: \tab 2.6 \cr
+Date: \tab 2015-11-06 \cr
+Depends: \tab R(>= 2.14.0), methods, graphics, setRNG(>= 2006.2-1), distr(>= 2.5.2) \cr
+Suggests: \tab distrEx(>= 2.2)  \cr
+Imports: \tab startupmsg, stats, grDevices  \cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-SVNRevision: \tab 904 \cr
+SVNRevision: \tab 1055 \cr
 }
 }
 \section{Classes}{

@@ -3,7 +3,7 @@
 \alias{distrTeach}
 \docType{package}
 \title{
-distrTeach -- Teaching Extensions of package distr
+distrTeach -- Teaching Extensions of Package distr
 }
 \description{
 \pkg{distrTeach} provides some illustrations based on package \pkg{distr}
@@ -20,14 +20,15 @@ as well as a Tcl/Tk based demo for\code{illustrateCLT}
 \details{
 \tabular{ll}{
 Package: \tab distrTeach \cr
-Version: \tab 2.5 \cr
-Date: \tab 2013-09-12 \cr
-Depends: \tab R(>= 2.2.0), methods, distr(>= 2.0), distrEx(>= 2.0),
-startupmsg\cr
+Version: \tab 2.6 \cr
+Date: \tab 2015-11-06 \cr
+Depends: \tab R(>= 2.2.0), methods, distr(>= 2.2), distrEx(>= 2.2)\cr
+Suggests: \tab tcltk\cr
+Imports: \tab startupmsg, grDevices, graphics, stats\cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-SVNRevision: \tab 913 \cr
+SVNRevision: \tab 1055 \cr
 }
 }
 \section{Classes}{

@@ -90,7 +90,7 @@
 
 
   .mpresubs <- function(inx)
-                 distr:::.presubs(inx, c("%C", "%D", "%N", "%P", "%Q", "%A",
+                 .presubs(inx, c("%C", "%D", "%N", "%P", "%Q", "%A",
                                          "%X"),
                        list(as.character(class(Distr)[1]),
                          as.character(date()),
@@ -169,4 +169,37 @@
   }
   
 
+#------------------------------------
+#### utility copied from package distr v.2.6  svn-rev 943
+#------------------------------------
+.presubs <- function(inp, frompat, topat){
+### replaces in an expression or a string all frompat patterns to topat patterns
 
+logic <- FALSE
+inCx <- sapply(inp,
+   function(inpx){
+      inC <- deparse(inpx)
+      l <- length(frompat)
+      for(i in 1:l)
+         { if (is.language(topat[[i]])){
+               totxt <- deparse(topat[[i]])
+               totxt <- gsub("expression\\(", "\", ", gsub("\\)$",", \"",totxt))
+               if (length(grep(frompat[i],inC))) logic <<- TRUE
+               inC <- gsub(frompat[i],totxt,inC)
+           }else inC <- gsub(frompat[i], topat[[i]], inC)
+         }
+      return(inC)
+    })
+if(length(grep("expression",inCx))>0)
+   inCx <- gsub("expression\\(", "", gsub("\\)$","",inCx))
+if (length(inCx) > 1) {
+   inCx <- paste(inCx, c(rep(",", length(inCx)-1), ""),
+                 sep = "", collapse = "\"\\n\",")
+   if ( any(as.logical(c(lapply(inp,is.language)))) | logic )
+      inCx <- paste("expression(paste(", gsub("\\\\n"," ", inCx), "))", sep ="")
+   else
+      inCx <- paste("paste(",inCx,")", sep ="")
+}else inCx <- paste("expression(paste(",inCx,"))",sep="")
+outC <- eval(parse(text = eval(inCx)))
+return(outC)
+}

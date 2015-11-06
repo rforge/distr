@@ -1,6 +1,11 @@
 import("distr")
 import("distrEx")
 import("methods")
+importFrom("grDevices", "graphics.off")
+importFrom("graphics", "abline", "axis", "legend", "lines", "matlines",
+             "matplot", "mtext", "par", "points", "text", "title")
+importFrom("stats", "qnorm", "stepfun")
+importFrom("startupmsg", "buildStartupMessage", "infoShow")
 
 exportMethods("plotCLT") 
 export("illustrateLLN")

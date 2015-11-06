@@ -1,7 +1,7 @@
 
-R version 3.0.1 Patched (2013-09-02 r63805) -- "Good Sport"
-Copyright (C) 2013 The R Foundation for Statistical Computing
-Platform: i386-w64-mingw32/i386 (32-bit)
+R Under development (unstable) (2015-05-02 r68310) -- "Unsuffered Consequences"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-unknown-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -20,31 +20,19 @@ Type 'q()' to quit R.
 > pkgname <- "distrTeach"
 > source(file.path(R.home("share"), "R", "examples-header.R"))
 > options(warn = 1)
-> options(pager = "console")
-> base::assign(".ExTimings", "distrTeach-Ex.timings", pos = 'CheckExEnv')
-> base::cat("name\tuser\tsystem\telapsed\n", file=base::get(".ExTimings", pos = 'CheckExEnv'))
-> base::assign(".format_ptime",
-+ function(x) {
-+   if(!is.na(x[4L])) x[1L] <- x[1L] + x[4L]
-+   if(!is.na(x[5L])) x[2L] <- x[2L] + x[5L]
-+   options(OutDec = '.')
-+   format(x[1L:3L], digits = 7L)
-+ },
-+ pos = 'CheckExEnv')
-> 
-> ### * </HEADER>
 > library('distrTeach')
 Loading required package: distr
 Loading required package: startupmsg
-:startupmsg>  Utilities for start-up messages (version 0.9)
+:startupmsg>  Utilities for Start-Up Messages (version 0.9.1)
 :startupmsg> 
 :startupmsg>  For more information see ?"startupmsg",
 :startupmsg>  NEWS("startupmsg")
 
 Loading required package: sfsmisc
 Loading required package: SweaveListingUtils
-:SweaveListingUtils>  Utilities for Sweave together with
-:SweaveListingUtils>  TeX listings package (version 0.7)
+:SweaveListingUtils>  Utilities for Sweave Together with
+:SweaveListingUtils>  TeX 'listings' Package (version
+:SweaveListingUtils>  0.7)
 :SweaveListingUtils> 
 :SweaveListingUtils>  NOTE: Support for this package
 :SweaveListingUtils>  will stop soon.
@@ -70,14 +58,14 @@ Loading required package: SweaveListingUtils
 :SweaveListingUtils>  vignette("ExampleSweaveListingUtils").
 
 
-Attaching package: 'SweaveListingUtils'
+Attaching package: ‘SweaveListingUtils’
 
-The following objects are masked from 'package:base':
+The following objects are masked from ‘package:base’:
 
     library, require
 
-:distr>  Object oriented implementation of distributions (version
-:distr>  2.5.2)
+:distr>  Object Oriented Implementation of Distributions (version
+:distr>  2.6)
 :distr> 
 :distr>  Attention: Arithmetics on distribution objects are
 :distr>  understood as operations on corresponding random variables
@@ -96,14 +84,14 @@ The following objects are masked from 'package:base':
 :distr>  vignette("distr").
 
 
-Attaching package: 'distr'
+Attaching package: ‘distr’
 
-The following objects are masked from 'package:stats':
+The following objects are masked from ‘package:stats’:
 
     df, qqplot, sd
 
 Loading required package: distrEx
-:distrEx>  Extensions of package distr (version 2.5)
+:distrEx>  Extensions of Package 'distr' (version 2.6)
 :distrEx> 
 :distrEx>  Note: Packages "e1071", "moments", "fBasics" should be
 :distrEx>  attached /before/ package "distrEx". See
@@ -120,16 +108,16 @@ Loading required package: distrEx
 :distrEx>  vignette("distr").
 
 
-Attaching package: 'distrEx'
+Attaching package: ‘distrEx’
 
-The following objects are masked from 'package:stats':
+The following objects are masked from ‘package:stats’:
 
     IQR, mad, median, var
 
-:distrTeach>  Extensions of package distr for teaching
-:distrTeach>  Stochastics/Statistics
+:distrTeach>  Extensions of Package 'distr' for Teaching
 :distrTeach> 
-:distrTeach>  in secondary school (version 2.5)
+:distrTeach>  Stochastics/Statistics in Secondary School
+:distrTeach>  (version 2.6)
 :distrTeach> 
 :distrTeach>  For more information see ?"distrTeach",
 :distrTeach>  NEWS("distrTeach"), as well as
@@ -146,7 +134,6 @@ The following objects are masked from 'package:stats':
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: illustrateCLT
 > ### Title: Functions for Illustrating the CLT
 > ### Aliases: illustrateCLT illustrateCLT.tcl
@@ -164,15 +151,12 @@ The following objects are masked from 'package:stats':
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("IllustCLT", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("IllustLLN")
 > ### * IllustLLN
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: illustrateLLN
 > ### Title: Functions for Illustrating the LLN
 > ### Aliases: illustrateLLN
@@ -190,15 +174,12 @@ The following objects are masked from 'package:stats':
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("IllustLLN", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("plotCLT")
 > ### * plotCLT
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: plotCLT
 > ### Title: Generic Plot Function for Illustrating the CLT
 > ### Aliases: plotCLT plotCLT-methods plotCLT,AbscontDistribution-method
@@ -211,13 +192,11 @@ The following objects are masked from 'package:stats':
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("plotCLT", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > ### * <FOOTER>
 > ###
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  16.32 0.75 17.36 NA NA 
+Time elapsed:  5.786 0.084 5.869 0 0 
 > grDevices::dev.off()
 null device 
           1 
