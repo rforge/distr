@@ -1,4 +1,10 @@
 import("methods")
+importFrom("grDevices", "col2rgb", "dev.new", "rgb")
+importFrom("graphics", "abline", "legend", "lines", "mtext", "par",
+           "points", "text", "title")
+importFrom("stats", "aggregate", "approxfun", "complete.cases",
+           "dbinom", "dnbinom", "dnorm", "dpois", "na.omit", "optim",
+           "optimize", "ppoints", "qchisq", "qnbinom", "qnorm")
 import("MASS")
 import("distr")
 import("distrEx")

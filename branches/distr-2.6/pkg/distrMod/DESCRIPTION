@@ -9,7 +9,7 @@ Authors@R: c(person("Matthias", "Kohl", role=c("aut", "cph")), person("Peter", "
         Team", role = c("ctb", "cph"), comment="for source file 'format.perc'"))
 Depends: R(>= 2.14.0), distr(>= 2.5.2), distrEx(>= 2.4), RandVar(>= 0.6.3), MASS, stats4,
         methods
-Imports: startupmsg, sfsmisc
+Imports: startupmsg, sfsmisc, graphics, stats, grDevices
 Suggests: ismev, evd, RobExtremes
 ByteCompile: yes
 License: LGPL-3
