@@ -1,5 +1,8 @@
 useDynLib("distrEx")
-
+importFrom("stats", "dnorm", "integrate", "optimize", "pbinom",
+             "pchisq", "pexp", "pnorm", "ppois", "qcauchy", "qnorm",
+             "uniroot")
+importFrom("utils", "getFromNamespace")
 import("methods")
 import("distr")
 importFrom("startupmsg", "buildStartupMessage")
