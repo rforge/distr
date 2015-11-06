@@ -6,7 +6,7 @@ Description: Provides flexible examples of LLN and CLT for teaching purposes in 
         school.
 Depends: R(>= 2.2.0), methods, distr(>= 2.2), distrEx(>= 2.2)
 Suggests: tcltk
-Imports: startupmsg
+Imports: startupmsg, grDevices, graphics, stats
 Authors@R: c(person("Eleonora", "Feist", role="ctb", comment = "contributed as student in the
         initial phase --2008"), person("Matthias", "Kohl", role=c("aut", "cph")),
         person("Peter", "Ruckdeschel", role=c("cre", "cph"),
