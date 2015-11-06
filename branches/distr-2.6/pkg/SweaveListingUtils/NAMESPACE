@@ -1,3 +1,5 @@
+importFrom("methods", "is")
+importFrom("utils", "assignInMyNamespace", "assignInNamespace")
 import("startupmsg")
 export("taglist", "lstset", "lstsetR", "lstsetRd",
        "lstsetRin", "lstsetRout", "lstsetRcode", 

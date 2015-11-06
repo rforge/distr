@@ -8,10 +8,11 @@ Encoding: latin1
 Version: 0.7
 Depends: R(>= 2.14.0), startupmsg
 Suggests: distr, MASS, survival, distrEx, Matrix, splines
+Imports: methods
 ByteCompile: yes
 Authors@R: person("Peter", "Ruckdeschel", role=c("cre", "cph"), email="Peter.Ruckdeschel@itwm.fraunhofer.de")
 License: LGPL-3
-Date: 2015-05-03
+Date: 2015-11-06
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
 SVNRevision: 926

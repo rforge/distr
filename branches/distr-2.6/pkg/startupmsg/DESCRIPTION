@@ -1,7 +1,7 @@
 Package: startupmsg
 Encoding: latin1
 Version: 0.9.1
-Date: 2015-05-03
+Date: 2015-11-06
 Title: Utilities for Start-Up Messages
 Description: Provides utilities to create or suppress start-up messages.
 Authors@R: person("Peter", "Ruckdeschel", role=c("cre", "cph"), email="Peter.Ruckdeschel@itwm.fraunhofer.de")
