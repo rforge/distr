@@ -1,8 +1,8 @@
 ####distr:
 ### for uptodate:
-Pkgs <- c("SweaveListingUtils", "distr", "distrEx", "distrDoc",
+Pkgs <- c("startupmsg", "SweaveListingUtils", "distr", "distrEx", "distrDoc",
                       "distrMod", "distrTeach", "distrSim", "distrTEst",
-                      "distrEllipse")
+                      "distrEllipse", "distrRmetrics")
 Names <- c("Version","Date","SVNRevision")
 Values <- matrix(c("2.0.2", format(Sys.time(), format="%Y-%m-%d"),1),3,length(Pkgs))
 colnames(Values) <- Pkgs

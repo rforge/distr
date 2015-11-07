@@ -1,6 +1,6 @@
 Package: distrSim
 Version: 2.7
-Date: 2015-11-06
+Date: 2015-11-07
 Title: Simulation Classes Based on Package 'distr'
 Description: S4-classes for setting up a coherent framework for simulation within the distr
         family of packages.
@@ -18,4 +18,4 @@ Encoding: latin1
 URL: http://distr.r-forge.r-project.org/
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
-SVNRevision: 1055
+SVNRevision: 1080

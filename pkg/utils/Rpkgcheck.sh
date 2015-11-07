@@ -25,7 +25,7 @@ echo ---------------------------------------------
 echo ---------------------------------------------
 echo check as cran $tarGz
 echo ---------------------------------------------
-$1 CMD check --as-cran --run-donttest --timings $tarGz
+$1 CMD check --as-cran --timings $tarGz
 #
 echo ---------------------------------------------
 echo we test that the .tar.gz file of $2 exists

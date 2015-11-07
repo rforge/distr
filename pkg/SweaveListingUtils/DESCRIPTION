@@ -13,7 +13,7 @@ ByteCompile: yes
 Authors@R: person("Peter", "Ruckdeschel", role=c("cre", "cph"),
         email="peter.ruckdeschel@uni-oldenburg.de")
 License: LGPL-3
-Date: 2015-11-06
+Date: 2015-11-07
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
-SVNRevision: 1055
+SVNRevision: 1080

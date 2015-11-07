@@ -1,31 +1,37 @@
 setNewEmail <- function(
-              Email.old = "peter.ruckdeschel@uni-oldenburg.de",
+              Email.old = "peter.ruckdeschel@itwm.fraunhofer.de",
               Email.new = "peter.ruckdeschel@uni-oldenburg.de",
               dev.dir = "C:/rtest/",
               packs = c("startupmsg",
+                        "SweaveListingUtils",
                         "distr",
                         "distrEx",
                         "distrDoc",
                         "distrSim", 
                         "distrTEst", 
                         "distrTeach", 
+                        "distrEllipse", 
+                        "distrRmetrics", 
                         "distrMod", 
-                        "", 
-                        "Benchmark",
+                        "robKalman",
                         "RobAStBase",
+                        "RobAStRDA",
                         "RandVar",
+                        "ROptEstOld",
                         "ROptEst",
                         "RobLox",
+                        "RobExtremes",
+                        "RobLoxBioC",
                         "RobRex",
                         "ROptRegTS"), 
-              packs.dir = paste(dev.dir, c(rep("distr/pkg",8),
-                               "robKalman/pkg","",
-                               rep("RobASt/pkg",6)), sep=""), 
+              packs.dir = paste(dev.dir, c(rep("distr/pkg",11),
+                               "robKalman/pkg",
+                               rep("RobASt/pkg",10)), sep=""), 
               withHTML = TRUE, 
               packs.HTML.dir = c("", paste(dev.dir, 
-                     c(rep("distr/www",7),"robKalman/www"),
-                                      sep=""),rep("",7)), 
-              rkurs = TRUE,
+                     c(rep("distr/www",11),"robKalman/www"),
+                                      sep=""),rep("",10)), 
+              rkurs = FALSE,
               rkursDir = "D:/Eigene Dateien/Arbeit/R-Kurs/",
               exts = c("\\.R$","\\.Rd","\\.Rnw","\\.htm$","\\.html$","\\.tex$")
                            )
@@ -80,6 +86,34 @@ for(i in 1:length(packs))
 
    setwd(oD) 
 }
+mypacks = c("startupmsg",
+                        "SweaveListingUtils",
+                        "distr",
+                        "distrEx",
+                        "distrDoc",
+                        "distrSim", 
+                        "distrTEst", 
+                        "distrTeach", 
+                        "distrEllipse", 
+                        "distrRmetrics", 
+                        "distrMod", 
+                        "robKalman",
+                        "RobAStBase",
+                        "RobAStRDA",
+                        "RandVar",
+                        "ROptEstOld",
+                        "ROptEst",
+                        "RobLox",
+                        "RobExtremes",
+                        "RobLoxBioC",
+                        "RobRex",
+                        "ROptRegTS")
+                        
+dev.dir = "C:/rtest/"
+setNewEmail(packs=mypacks[-12], packs.dir = c(paste(dev.dir, c(rep("distr/branches/distr-2.6/pkg",11),
+                               rep("RobASt/branches/robast-1.0/pkg",10)), sep=""))) 
+setNewEmail(packs=mypacks[1:11], packs.dir = c(paste(dev.dir, rep("distr/branches/distr-2.7/pkg",11), sep=""))) 
+
 
 setNewEmail()
 setNewEmail(  Email.old = "Peter.Ruckdeschel@uni-bayreuth.de",

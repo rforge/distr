@@ -1,6 +1,6 @@
 Package: distrEllipse
 Version: 2.6
-Date: 2015-11-06
+Date: 2015-11-07
 Title: S4 Classes for Elliptically Contoured Distributions
 Description: Distribution (S4-)classes for elliptically contoured distributions (based on
         package 'distr').
@@ -16,4 +16,4 @@ URL: http://distr.r-forge.r-project.org/
 Encoding: latin1
 LastChangedDate: {$LastChangedDate: 2009-03-31 15:31:30 +0200 (Di, 31 Mrz 2009) $}
 LastChangedRevision: {$LastChangedRevision: 447 $}
-SVNRevision: 1055
+SVNRevision: 1080

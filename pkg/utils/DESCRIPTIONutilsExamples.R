@@ -86,5 +86,17 @@ colnames(Values) <- Pkgs
 rownames(Values) <- Names
 changeDescription(startDir = "C:/rtest/distr/branches/distr-2.6",names=Names,
                   pkgs=Pkgs, values=Values)
+
+Pkgs <- c("startupmsg", "SweaveListingUtils",
+          "distrEx", "distrDoc",
+          "distrTeach",
+          "distrTEst", "distrEllipse", "distrRmetrics")
+Names <- c("Version")
+Values <- matrix(c("2.6"),1,length(Pkgs))
+colnames(Values) <- Pkgs
+rownames(Values) <- Names
+Values["Version",,drop=FALSE] <- c("0.9.1", "0.7", rep("2.6",6))
+changeDescription(startDir = "C:/rtest/distr/branches/distr-2.6",names=Names,
+                  pkgs=Pkgs, values=Values)
 }
 ##############################################################################

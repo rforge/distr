@@ -11,7 +11,7 @@ update the local chechout by svn update
     specify the branch as
 svn+ssh://<r-forge-login>@svn.r-forge.r-project.org/svnroot/distr/branches/dist-2.4/pkg
     to <head file of your svn checkout>, e.g. C:\rtest\distr
-	
+	(distr 2.6: ab 915 robast: ab 700)
 (4) edit conflicts 
 
 (5) create a new branch
