@@ -22,7 +22,7 @@ Type 'q()' to quit R.
 > options(warn = 1)
 > library('SweaveListingUtils')
 Loading required package: startupmsg
-:startupmsg>  Utilities for Start-Up Messages (version 0.9)
+:startupmsg>  Utilities for Start-Up Messages (version 0.9.1)
 :startupmsg> 
 :startupmsg>  For more information see ?"startupmsg",
 :startupmsg>  NEWS("startupmsg")
@@ -3322,7 +3322,7 @@ myList=HU=AHAL,%
 > ###
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  0.163 0.026 1.698 0 0.003 
+Time elapsed:  0.176 0.008 1.784 0 0.001 
 > grDevices::dev.off()
 null device 
           1 
