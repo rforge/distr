@@ -1,7 +1,7 @@
 
-R Under development (unstable) (2015-05-02 r68310) -- "Unsuffered Consequences"
+R version 3.2.2 Patched (2015-11-06 r69612) -- "Fire Safety"
 Copyright (C) 2015 The R Foundation for Statistical Computing
-Platform: x86_64-unknown-linux-gnu (64-bit)
+Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -606,7 +606,7 @@ function (x)
 {
     ((x - 0)/1 * LogDeriv((x - 0)/1) - 1)/1
 }
-<environment: 0x9873698>
+<environment: 0xa032130>
 
 > checkL2deriv(E1)
 precision of centering:	 -1.51181e-06 
@@ -782,8 +782,8 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A)
-<bytecode: 0x9731190>
-<environment: 0x9731f38>
+<bytecode: 0x9f1ed08>
+<environment: 0x9f1eb48>
 
 > 
 > ## The function is currently defined as
@@ -1061,7 +1061,7 @@ function (x)
 {
     ((x - 0)/1 * LogDeriv((x - 0)/1) - 1)/1
 }
-<environment: 0xabd01c0>
+<environment: 0x4f49940>
 
 > checkL2deriv(L1)
 precision of centering:	 -0.003003394 
@@ -2111,7 +2111,7 @@ function (x)
         return(abs(x))
     else return(sqrt(colSums(x^2)))
 }
-<bytecode: 0x9cade68>
+<bytecode: 0x9a962d8>
 <environment: namespace:distrMod>
 > name(EuclNorm)
 [1] "EuclideanNorm"
@@ -2143,7 +2143,7 @@ function (x)
         return(abs(x))
     else return(sqrt(colSums(x^2)))
 }
-<bytecode: 0x9cade68>
+<bytecode: 0x9a962d8>
 <environment: namespace:distrMod>
 
 > 
@@ -2602,8 +2602,8 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A0)
-<bytecode: 0xc08c200>
-<environment: 0xc08bfd0>
+<bytecode: 0xc7afa70>
+<environment: 0xc7d4ce8>
 
 > 
 > ## The function is currently defined as
@@ -2641,8 +2641,8 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A)
-<bytecode: 0xd225cf0>
-<environment: 0xd226a98>
+<bytecode: 0xb76d238>
+<environment: 0xb76dfe0>
 
 > 
 > ## The function is currently defined as
@@ -3881,8 +3881,8 @@ The following object is masked from ‘package:grDevices’:
 
     cm
 
-:RobExtremes>  Optimally robust estimation for extreme value
-:RobExtremes>  distributions (version 1.0)
+:RobExtremes>  Optimally Robust Estimation for Extreme Value
+:RobExtremes>  Distributions (version 1.0)
 :RobExtremes> 
 :RobExtremes> 
 :RobExtremes>  For more information see ?"RobExtremes",
@@ -3910,7 +3910,14 @@ The following object is masked from ‘package:RandVar’:
 
     Dim
 
-This is mgcv 1.8-6. For overview type 'help("mgcv-package")'.
+This is mgcv 1.8-9. For overview type 'help("mgcv-package")'.
+
+Attaching package: ‘ismev’
+
+The following objects are masked from ‘package:RobExtremes’:
+
+    gev.diag, gev.prof, gev.profxi, gpd.diag, gpd.prof, gpd.profxi
+
 $conv
 [1] 0
 
@@ -4765,7 +4772,7 @@ sig^2  3.6698685 11.189719
 > ###
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  19.455 0.108 19.554 0 0.004 
+Time elapsed:  19.145 0.132 19.267 0 0.003 
 > grDevices::dev.off()
 null device 
           1 
