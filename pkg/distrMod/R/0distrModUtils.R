@@ -103,6 +103,7 @@
    N1 <- 2*N+1
    odd <- (1:N1)%%2==1
 
+   ## shift L2family to a parameter value as given in main(param)
    param0 <- L2Fam@param
    dim0 <- dimension(param0)
 #   print(param0)
