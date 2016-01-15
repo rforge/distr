@@ -51,6 +51,10 @@ under the hood:
    correctly passed on, same for col => now use dots.lowlevel ... 
 -helper function .isReplicated gains an optional argument tol
    
+- bug fixes:
+  + fixed a bug in plot (q) for LebDec-Distributions (verticals were not plotted correctly)
+  + panel selection mechanism had a bug for LebDec-Distributions 
+
 ##############
 v 2.5.3
 ##############
