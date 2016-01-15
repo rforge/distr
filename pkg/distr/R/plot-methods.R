@@ -129,6 +129,7 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
                                 if(is.call(res)) res <- res[-1]
                                 return(res)}
                                 }else function(x,i){
+                                  if(length(x)==1) return(x[1])
                                   res <- x[i]
                                   if(length(res)==0) return(NULL)
                                   if(is.na(res)) return(NULL)
@@ -495,6 +496,7 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
                                 if(is.call(res)) res <- res[-1]
                                 return(res)}
                                 }else function(x,i){
+                                  if(length(x)==1) return(x[1])
                                   res <- x[i]
                                   if(length(res)==0) return(NULL)
                                   if(is.na(res)) return(NULL)

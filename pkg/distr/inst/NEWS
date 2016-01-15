@@ -53,6 +53,7 @@ under the hood:
 - bug fixes:
   + fixed a bug in plot (q) for LebDec-Distributions (verticals were not plotted correctly)
   + panel selection mechanism had a bug for LebDec-Distributions 
+  + fixed axis annotation: if xlab="" or ylab="" the respective lab are "" for all panels
   
  
 ##############
