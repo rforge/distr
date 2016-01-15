@@ -247,9 +247,6 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
                                   if(is.na(res)) return(NULL)
                                   return(res)}
               iL <- 1:length(to.draw)
-              print(to.draw)
-              print(iL[to.draw==1])
-              print(iL[to.draw==2])
               force(lb0)
               .mp3 <- .mp(dlb,iL[to.draw==1])
               if(1%in%to.draw & !is.null(.mp3)) lb0[[1]][["p"]] <- .mp3
@@ -280,10 +277,6 @@ setMethod("plot", signature(x = "UnivarLebDecDistribution", y = "missing"),
       ylab0.c <- xlab0[[2]]
       ylab0.d <- ylab0[[3]]
       dots$ylab <- NULL
-      cat("\n----------------\nx\n--------------\n")
-      print(xlab0)
-      cat("\n----------------\ny\n--------------\n")
-      print(ylab0)
 
      if (hasArg("main")){
          mainL <- TRUE
