@@ -84,7 +84,7 @@ exportMethods("mixCoeff", "mixCoeff<-", "mixDistr", "mixDistr<-",
               "discretePart", "discretePart<-", "acPart", "acPart<-",
               "discreteWeight", "discreteWeight<-", "acWeight", "acWeight<-",
               "p.discrete", "d.discrete", "q.discrete", "r.discrete",
-              "p.ac", "d.ac", "q.ac", "r.ac")
+              "p.ac", "d.ac", "q.ac", "r.ac", "p.r", "q.l")
 exportMethods("decomposePM", "simplifyD", "showobj")
 exportMethods("Truncate","Minimum","Maximum","Huberize")
 exportMethods("solve", "sqrt")
