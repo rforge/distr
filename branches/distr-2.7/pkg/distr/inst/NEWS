@@ -21,6 +21,12 @@ user-visible CHANGES:
 + qqplot gains pattern substitution like plot in titles and x/y axis lables
 + pattern substitution can now be switched on and off in all plot 
   functions according to argument withSubst
++ new methods q.l and p.r as synonyma for slot accessors q and p --
+  the former one is useful in particular when using RStudio, as they
+  catch calls to q() [quitting an R session] and treat them separately
+  which renders calls to our method q() (with respective signature,
+  i.e., with a distribution as [first] argument) inaccessible from 
+  the console... so far only a call to distr::q was helping...
   
   
 under the hood:
