@@ -28,13 +28,13 @@ package ``distrMod''.}
   \item{mu}{an object of class \code{UnivariateDistribution}; 
             the distribution on the reals at which to integrate the squared
             distance of the cdf's in the CvM-distance}
-  \item{withplot}{logical; defaults to \code{FALSE}; if \code{TRUE} for diagnostic}  
+  \item{withplot}{logical; defaults to \code{FALSE}; if \code{TRUE} for diagnostic  
                   purposes plots the influence function of the CvM-MDE}
   \item{withpreIC}{logical; should corresponding IC of the CvM-MDE be returned?}
   \item{\dots}{currently not used} 
   \item{N}{integer; the number of grid points at which to evaluate the antiderivative
-          in case of an absolutely continuous distribution; more precisely, internally}
-		  this becomes \eq{2N+1}}
+          in case of an absolutely continuous distribution; more precisely, internally
+		  this becomes \eqn{2N+1}}
   \item{rel.tol}{numeric; relative tolerance; currently not used}
   \item{TruncQuantile}{numeric in (0,1); in case of an unbounded support of the 
                        distribution the quantile level at which to cut the distribution}

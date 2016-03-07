@@ -74,7 +74,7 @@ MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name,
 %\note{}
 \seealso{\code{\link{ParamFamily-class}}, \code{\link{ParamFamily}}, 
          \code{\link{MCEstimator}}, \code{\link{MCEstimate-class}},
-          \code{\link[MASS]{fitdistr}}, \code{\link{.CvMMDCovariance} }
+          \code{\link[MASS]{fitdistr}}, \code{\link{.CvMMDCovariance}}}
 \examples{
 ## (empirical) Data
 x <- rgamma(50, scale = 0.5, shape = 3)
