@@ -21,6 +21,7 @@ exportClasses("EllipticalParameter",
 exportMethods("dimension", "radDistr", "scale", "location", "dim",
               "radDistr<-", "scale<-", "location<-",
               "plot.rd", "r.rd", "d.rd", "p.rd", "q.rd",
+              "plotRd", "rRd", "dRd", "pRd", "qRd",
               "E", "var", "mean", "sigma","mixCoeff", "mixDistr")
 exportMethods("plot", "show", "showobj", "Symmetry")
 exportMethods("+", "*", "%*%")

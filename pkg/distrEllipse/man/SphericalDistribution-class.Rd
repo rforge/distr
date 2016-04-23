@@ -7,6 +7,11 @@
 \alias{dim,SphericalDistribution-method}
 \alias{radDistr,SphericalDistribution-method}
 \alias{radDistr<-,SphericalDistribution-method}
+\alias{plotRd,SphericalDistribution-method}
+\alias{rRd,SphericalDistribution-method}
+\alias{dRd,SphericalDistribution-method}
+\alias{pRd,SphericalDistribution-method}
+\alias{qRd,SphericalDistribution-method}
 \alias{plot.rd,SphericalDistribution-method}
 \alias{r.rd,SphericalDistribution-method}
 \alias{d.rd,SphericalDistribution-method}
@@ -19,6 +24,11 @@
 \alias{d.rd}
 \alias{p.rd}
 \alias{q.rd}
+\alias{plotRd}
+\alias{rRd}
+\alias{dRd}
+\alias{pRd}
+\alias{qRd}
 \alias{E,SphericalDistribution,missing,missing-method}
 \alias{var,SphericalDistribution-method}
 \alias{coerce,SphericalDistribution,EllipticalDistribution-method}
@@ -103,18 +113,26 @@ Class \code{"Distribution"}, by class \code{"MultivariateDistribution"}.
     \item{radDistr}{\code{signature(object = "SphericalDistribution")}: access method for
       slot \code{radDistr}. }
     \item{r.rd}{\code{signature(object = "SphericalDistribution")}: wrapped access method for
-      slot \code{r} of slot \code{radDistr}. }
+      slot \code{r} of slot \code{radDistr}. From version 2.6 on, an alias \code{rRd} is
+      introduced to replace \code{r.rd} on the long run in order to avoid clashes with
+      S3-method inheritance. }
     \item{d.rd}{\code{signature(object = "SphericalDistribution")}: wrapped access method for
-      slot \code{d} of slot \code{radDistr}. }
+      slot \code{d} of slot \code{radDistr}. From version 2.6 on, an alias \code{dRd} is
+      introduced to replace \code{d.rd} on the long run in order to avoid clashes with
+      S3-method inheritance. }
     \item{p.rd}{\code{signature(object = "SphericalDistribution")}: wrapped access method for
-      slot \code{p} of slot \code{radDistr}. }
+      slot \code{p} of slot \code{radDistr}. From version 2.6 on, an alias \code{pRd} is
+      introduced to replace \code{p.rd} on the long run in order to avoid clashes with
+      S3-method inheritance. }
     \item{q.rd}{\code{signature(object = "SphericalDistribution")}: wrapped access method for
-      slot \code{q} of slot \code{radDistr}. }
+      slot \code{q} of slot \code{radDistr}. From version 2.6 on, an alias \code{qRd} is
+      introduced to replace \code{q.rd} on the long run in order to avoid clashes with
+      S3-method inheritance. }
     \item{plot.rd}{\code{signature(x = "SphericalDistribution")}: utility; calls \code{plot}
-      for slot \code{radDistr}. }
+      for slot \code{radDistr}. From version 2.6 on, an alias \code{plotRd} is introduced 
+      to replace \code{plot.rd} on the long run in order to avoid clashes with S3-method inheritance.}
     \item{plot}{\code{signature(x = "SphericalDistribution", y = "missing")}:
-      plot for an spherically symmetric distribution; see \code{\link{plot-methods}}.
-    }
+      plot for an spherically symmetric distribution; see \code{\link{plot-methods}}. }
     \item{show}{\code{signature(object = "SphericalDistribution")}: 
       \code{show} method for spherically symmetric distributions.
     }
