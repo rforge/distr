@@ -239,9 +239,9 @@ are also valid for this signature.}
 }
 \examples{
 set.seed(123)
-x <- rnorm(40,mean=15,sd=30)
-qqplot(x, Chisq(df=15))
-NF <- NormLocationScaleFamily(mean=15, sd=30)
+x <- rnorm(40,mean=5,sd=sqrt(10))
+qqplot(x, Chisq(df=5))
+NF <- NormLocationScaleFamily(mean=5, sd=30^.5)
 qqplot(x, NF)
 mlE <- MLEstimator(x, NF)
 qqplot(x, mlE)
