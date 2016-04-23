@@ -16,6 +16,7 @@ getRevNr <- function(dir="C:/rtest/distr/",
   toRev <- "HEAD"
   if(inRforge)
      pathRepo <- paste("svn://svn.r-forge.r-project.org/svnroot/",pathRepo,sep="")
+  print(pathRepo)
   inQuotes <- function(x) paste("\"",x,"\"", sep="")
   comd <- paste(inQuotes(PathToBash), ifelse(withlogin,"--login",""),
                   inQuotes(paste(PathToUtils, "readsvnlog.sh", sep="/")),

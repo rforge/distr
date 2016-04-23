@@ -40,6 +40,7 @@ showsvnlog <- function(
     myline <- paste(rep("-",length.out=72),collapse="",sep="")
     if(inRforge)
        pathRepo <- paste("svn://svn.r-forge.r-project.org/svnroot/",pathRepo,sep="")
+    
     inQuotes <- function(x) paste("\"",x,"\"", sep="")
 
     comd <- paste(inQuotes(PathToBash), ifelse(withlogin,"--login",""),
@@ -69,5 +70,7 @@ showsvnlog(from=1,to=73,limit=1000,con="C:/rtest/svnlog-distr-00.txt",withrmtmp 
 showsvnlog("robast",from=1,to=Inf,limit=1000,con="C:/rtest/svnlog-robast.txt")
 showsvnlog(from=580,to=Inf,limit=1000)
 showsvnlog("robast",from=220,to=Inf,limit=1000,con="C:/rtest/svnlog-robast-ex.txt")
+showsvnlog("robast",from=220,to=Inf,limit=1000)
+getRevNr("C:/rtest/RobASt/", pathRepo="robast", inRforge=TRUE, withlogin=TRUE, PathToBash="C:/cygwin64/bin/bash", "C:/rtest/distr/branches/distr-2.4/pkg/utils")[[1]]
 }
 
