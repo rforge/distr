@@ -44,14 +44,14 @@ corresponding image distributions.
 \tabular{ll}{
 Package: \tab distr \cr
 Version: \tab 2.6 \cr
-Date: \tab 2015-11-07 \cr
+Date: \tab 2016-04-23 \cr
 Depends: \tab R(>= 2.14.0), methods, graphics, startupmsg, sfsmisc, SweaveListingUtils \cr
 Suggests: \tab distrEx, svUnit (>= 0.7-11) \cr
 Imports: \tab stats, grDevices, utils, MASS \cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-SVNRevision: \tab 1080 \cr
+SVNRevision: \tab 1088 \cr
 }}
 
 

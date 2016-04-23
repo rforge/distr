@@ -118,6 +118,24 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
                 xy <- sort(c(xy,xy0,xy1))
              }
           }
+        qqplotInfo <- list(xy.0=xy, y.0=y, 
+                         withConf.pw=withConf.pw, 
+                         withConf.sim=withConf.sim, 
+                         alpha.CI=alpha.CI ,
+                         col.pCI = col.pCI , lty.pCI = lty.pCI , 
+                         lwd.pCI = lwd.pCI , pch.pCI = pch.pCI, 
+                         cex.pCI = cex.pCI , 
+                         col.sCI = col.sCI , lty.sCI = lty.sCI , 
+                         lwd.sCI = lwd.sCI , pch.sCI = pch.sCI, 
+                         cex.sCI = cex.sCI , 
+                         n = n , 
+                         exact.sCI = exact.sCI, exact.pCI = exact.pCI,
+                  nosym.pCI = nosym.pCI, with.legend = with.legend,
+                  legend.bg = legend.bg, legend.pos = legend.pos,
+                  legend.cex = legend.cex, legend.pref = legend.pref,
+                  legend.postf = legend.postf, legend.alpha = legend.alpha, debug = debug,
+                  args.stats.qqplot = mcl
+                  )
        if(plot.it){
            qqb <- .confqq(xy, y, datax=TRUE, withConf.pw, withConf.sim, alpha.CI,
                       col.pCI, lty.pCI, lwd.pCI, pch.pCI, cex.pCI,
@@ -134,6 +152,8 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
           }
        }
     }
-    return(invisible(c(ret,qqb)))
+    qqplotInfo <- c(ret, qqplotInfo, qqb)
+    class(qqplotInfo) <- c("qqplotInfo","DiagnInfo")
+    return(invisible(qqplotInfo))
     })
     
