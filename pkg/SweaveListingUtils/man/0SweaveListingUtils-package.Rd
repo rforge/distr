@@ -16,13 +16,13 @@ thereby avoiding inconsistencies between vignette and documented source code
 \tabular{ll}{
 Package: \tab SweaveListingUtils \cr
 Version: \tab 0.7 \cr
-Date: \tab 2015-11-07 \cr
+Date: \tab 2016-04-23 \cr
 Depends: \tab R(>= 2.14.0), startupmsg \cr
 Suggests: \tab distr, MASS, survival, distrEx, Matrix, splines \cr
 Imports: \tab methods \cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
-SVNRevision: \tab 1080 \cr
+SVNRevision: \tab 1087 \cr
 }
 
 TeX-package \file{listings}, confer \url{http://www.ctan.org/tex-archive/macros/latex/contrib/listings/},

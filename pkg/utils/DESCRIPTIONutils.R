@@ -41,7 +41,7 @@ updatePackageHelp <- function(package){
     inRforge = TRUE,    ### shall we use r-forge as repository
                         ## (otherwise need full URL as arg pathRepo
     withlogin = TRUE,   ### do we need option --login (yes in cygwin, don't know in Linux)
-    PathToBash = "C:/cygwin/bin/bash",  ## path to bash
+    PathToBash = "C:/cygwin64/bin/bash",  ## path to bash
     PathToreadsvnlog.sh="C:/rtest/distr/branches/distr-2.4/pkg/utils",
                     ### path to shell script readsvnlog.sh
     tmpfile = "C:/rtest/tmp-svnlog5.txt", ### some tmpfile to which we write the
@@ -98,10 +98,15 @@ updatePackageHelp <- function(package){
          FN <- file.path("pkg",x,"DESCRIPTION")
          xx <- read.dcf(FN)
          if(verbose){
+          cat("\nxx:\n---\n")
           print(xx)
+          cat("\nvalues:\n-------\n")
           print(values)
+          cat("\nnames:\n------\n")
           print(names)
+          cat("\nvalues[names,x]:\n-----------------\n")
           print(values[names,x])
+          cat("\nxx[names,x]:\n-------------\n")
           print(xx[,names])
          }
          xx[,names] <- values[names,x]
