@@ -30,7 +30,7 @@ Loading required package: startupmsg
 
 :SweaveListingUtils>  Utilities for Sweave Together with
 :SweaveListingUtils>  TeX 'listings' Package (version
-:SweaveListingUtils>  0.7)
+:SweaveListingUtils>  0.7.2)
 :SweaveListingUtils> 
 :SweaveListingUtils>  NOTE: Support for this package
 :SweaveListingUtils>  will stop soon.
@@ -3334,7 +3334,7 @@ myList=HU=AHAL,%
 > ###
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  1.24 0.28 6.36 NA NA 
+Time elapsed:  1.29 0.33 4.95 NA NA 
 > grDevices::dev.off()
 null device 
           1 
