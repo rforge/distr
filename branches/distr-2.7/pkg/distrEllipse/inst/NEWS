@@ -13,6 +13,8 @@ v 2.6
 
 user-visible CHANGES:
 + title changed to title style / capitalization
++ new synonyma plotRd, rRd, dRd, pRd, and qRd for  plot.rd, r.rd, d.rd, p.rd, and q.rd
+  to substitute the old ones on the long run (to avoid clashes with S3 inheritance)  
 
 under the hood:
 

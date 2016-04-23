@@ -24,3 +24,14 @@ if(!isGeneric("plot.rd"))
    setGeneric("plot.rd", function(x, ...) standardGeneric("plot.rd"))
 
 
+if(!isGeneric("rRd")) 
+   setGeneric("rRd", function(object) standardGeneric("rRd"))
+if(!isGeneric("dRd")) 
+   setGeneric("dRd", function(object) standardGeneric("dRd"))
+if(!isGeneric("pRd")) 
+   setGeneric("pRd", function(object) standardGeneric("pRd"))
+if(!isGeneric("qRd")) 
+   setGeneric("qRd", function(object) standardGeneric("qRd"))
+if(!isGeneric("plotRd")) 
+   setGeneric("plotRd", function(x, ...) standardGeneric("plotRd"))
+

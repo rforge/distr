@@ -83,8 +83,8 @@ setToBeDefinedPkgs(pkgs = c("distr","distrEx","distrTEst","distrSim",
 @
 %
 % -------------------------------------------------------------------------------
-\renewcommand{\pkgversion}{{\tt 2.5}}
-\newcommand{\pkgExversion}{{\tt 2.5}}
+\renewcommand{\pkgversion}{{\tt 2.7}}
+\newcommand{\pkgExversion}{{\tt 2.7}}
 \newcommand{\Reals}{\mathbb{R}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
@@ -105,7 +105,7 @@ setToBeDefinedPkgs(pkgs = c("distr","distrEx","distrTEst","distrSim",
         \pkg{distrTEst}, \pkg{distrTeach},
         version \pkgversion}
 %,version \pkgExversion}
-\author{\small Peter Ruckdeschel\thanks{Fraunhofer ITWM, Kaiserslautern}
+\author{\small Peter Ruckdeschel\thanks{Carl von Ossietzky Universit\"at Oldenburg}
 \\[-.5ex]
 \small Matthias Kohl\thanks{FH Furtwangen}
 \\[-.5ex]
@@ -113,9 +113,10 @@ setToBeDefinedPkgs(pkgs = c("distr","distrEx","distrTEst","distrSim",
 \\[-.5ex]
 \small Florian Camphausen\thanks{West-LB, London}
 \smallskip\\
-\small Fraunhofer ITWM\\[-.5ex]
-\small Fraunhofer Platz 1\\[-.5ex]
-\small 67663 Kaiserslautern\\[-.5ex]
+\small Institute for Mathematics\\[-.5ex]
+\small School of Mathematics and Science\\[-.5ex]
+\small PO box 25 03\\[-.5ex]
+\small 26111 Oldenburg (Oldb.)\\[-.5ex]
 \small Germany\\
 \small e-Mail: {\small \tt peter.ruckdeschel@uni-oldenburg.de}\medskip\\
 \parbox[t]{5cm}{
@@ -246,6 +247,16 @@ q(Z)(0.3)
 Zs <- r(Z)(50)
 Zs
 @
+\par
+\begin{small}
+Due to a non-conformal implementation of function \code{q} in \texttt{RStudio},
+our approach to overload function \code{q} by method dispatch does not work
+from an \texttt{RStudio} console (it does work, though within a function 
+environment). To overcome this, from version 2.6 on, we have aliases 
+\code{p.r} and \code{q.l} for functions \code{p} and \code{q}, alluding to
+the right (resp. left) continous form of the cdf and the quantile function.
+these two aliases (in particular \code{q.l}) do work in \texttt{RStudio}.
+\end{small}
 \par
 \begin{small}
 \noindent{\bf Comment:}\\

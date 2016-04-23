@@ -1,11 +1,11 @@
 Package: SweaveListingUtils
 Title: Utilities for Sweave Together with TeX 'listings' Package
-Description: Provides utilities for defining R / Rd as Tex-package-listings "language" and
-        including R / Rd source file (sniplets) copied from R-forge in its most recent version
-        (or another url) thereby avoiding inconsistencies between vignette and documented
-        source code.
+Description: Provides utilities for defining R / Rd as "language" for TeX-package "listings" 
+        and for including R / Rd source file (snippets) copied from R-forge in its most 
+		recent version (or another URL) thereby avoiding inconsistencies between vignette 
+		and documented source code.
 Encoding: latin1
-Version: 0.7.1
+Version: 0.7.4
 Depends: R(>= 2.14.0), startupmsg
 Suggests: distr, MASS, survival, distrEx, Matrix, splines
 Imports: methods
@@ -13,7 +13,7 @@ ByteCompile: yes
 Authors@R: person("Peter", "Ruckdeschel", role=c("cre", "cph"),
         email="peter.ruckdeschel@uni-oldenburg.de")
 License: LGPL-3
-Date: 2015-11-07
+Date: 2016-04-23
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
 SVNRevision: 1080

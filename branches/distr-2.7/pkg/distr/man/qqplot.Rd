@@ -110,8 +110,12 @@ produces a QQ plot for two univariate distributions.}
 }
 }
 \value{
-  As for function \code{\link[stats:qqnorm]{qqplot}} from package \pkg{stats}: a
-  list with components
+  A list of elements containing the information needed to compute the 
+  respective QQ plot, in particular it extends the elements of the 
+  return value of function \code{\link[stats:qqnorm]{qqplot}} 
+  from package \pkg{stats}, i.e., a
+  list with components \code{x} and \code{y} for x and y coordinates
+  of the plotted points; more specifically it contains
   \item{x}{The x coordinates of the points that were/would be plotted}
   \item{y}{The corresponding quantiles of the second distribution,
            \emph{including \code{\link{NA}}s}.}
@@ -120,6 +124,8 @@ produces a QQ plot for two univariate distributions.}
   \item{err}{logical vector of length 2.}
   (elements \code{crit} and \code{err} are taken from the return
    value(s) of \code{qqbounds}).
+   The return value allows to recover all information used to produce the plot
+   for later use in enhanced graphics (e.g. with ggplot).   
 }
 \references{
   Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988)

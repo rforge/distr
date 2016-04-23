@@ -49,6 +49,13 @@ setMethod("d.rd", "SphericalDistribution", function(object) d(object@radDistr))
 setMethod("p.rd", "SphericalDistribution", function(object) p(object@radDistr))
 setMethod("q.rd", "SphericalDistribution", function(object) q(object@radDistr))
 
+setMethod("plotRd", "SphericalDistribution",
+           function(x, ... ) plot(x@radDistr,...))
+setMethod("rRd", "SphericalDistribution", function(object) r(object@radDistr))
+setMethod("dRd", "SphericalDistribution", function(object) d(object@radDistr))
+setMethod("pRd", "SphericalDistribution", function(object) p(object@radDistr))
+setMethod("qRd", "SphericalDistribution", function(object) q(object@radDistr))
+
 ## functionals:
 
 setMethod("E", signature(object = "SphericalDistribution",

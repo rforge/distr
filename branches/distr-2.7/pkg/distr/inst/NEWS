@@ -8,6 +8,10 @@
  information)
  
 ##############
+v 2.7
+##############
+
+##############
 v 2.6
 ##############
 
@@ -37,6 +41,9 @@ under the hood:
    argument has now been enhanced in the sense that now more detailed
    information about which helper function was the culprit and where 
    (uniroot/optimize) this happens
+ + now returns an object of S3-classes "qqplotInfo","DiagnInfo"
+   to be able to recover all information used to produce the plot
+   for later use in enhanced graphics (e.g. with ggplot)   
 -qqbounds:
  + the respective helper functions .BinomCI.nosym, .BinomCI,
    .q2kolmogorov capsulate their calls to uniroot / optimize in 

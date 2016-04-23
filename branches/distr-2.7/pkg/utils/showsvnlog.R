@@ -21,7 +21,7 @@ showsvnlog <- function(
     inRforge = TRUE,    ### shall we use r-forge as repository
                         ## (otherwise need full URL as arg pathRepo
     withlogin = TRUE,   ### do we need option --login (yes in cygwin, don't know in Linux)
-    PathToBash = "C:/cygwin/bin/bash",  ## path to bash
+    PathToBash = "C:/cygwin64/bin/bash",  ## path to bash
     PathToUtils="C:/rtest/distr/branches/distr-2.4/pkg/utils",
                     ### path to shell script readsvnlog.sh
     fromRev = 501,  ## arg for svn log --- first log-listed revision
