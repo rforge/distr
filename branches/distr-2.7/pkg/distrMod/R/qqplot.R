@@ -6,7 +6,7 @@
 
 
 ## helper into distrMod
-.labelprep <- function(x,y,lab.pts,col.lbl,cex.lbl,which.lbs,which.Order,order.traf){
+.labelprep <- function(x,y,lab.pts,col.lbl,cex.lbl,adj.lbl,which.lbs,which.Order,order.traf){
       n <- length(x)
       rx <- rank(x)
       xys <- cbind(x,y[rx])
@@ -26,7 +26,8 @@
       col.lbl <- col.lbl[rx]
       lab.pts <- lab.pts[rx]
       cex.lbl <- cex.lbl[rx]
-      return(list(x0=x0,y0=y0,lab=lab.pts[oN],col=col.lbl[oN],cex=cex.lbl[oN]))
+      adj.lbl <- adj.lbl[rx]
+      return(list(x0=x0,y0=y0,lab=lab.pts[oN],col=col.lbl[oN],cex=cex.lbl[oN],adj=adj.lbl[oN]))
 }
 
 
@@ -79,7 +80,7 @@ setMethod("qqplot", signature(x = "ANY",
              col.pch = par("col"),## color for the plotted symbols
              cex.lbl = par("cex"),## magnification factor for the plotted observation labels
              col.lbl = par("col"),## color for the plotted observation labels
-             adj.lbl = NULL,      ## adj parameter for the plotted observation labels
+             adj.lbl = par("adj"),## adj parameter for the plotted observation labels
              alpha.trsp = NA,     ## alpha transparency to be added afterwards
              jit.fac = 0,         ## jittering factor used for discrete distributions
              jit.tol = .Machine$double.eps, ## tolerance for jittering: if distance 
@@ -134,6 +135,7 @@ setMethod("qqplot", signature(x = "ANY",
              function(x,a) x else function(x,a) mapply(x,alp.t,a1=a)
     cex.pch <- .makeLenAndOrder(cex.pch,ord.x)
     cex.lbl <- .makeLenAndOrder(cex.lbl,ord.x)
+    adj.lbl <- .makeLenAndOrder(adj.lbl,ord.x)
     col.pch <- alp.f(.makeLenAndOrder(col.pch,ord.x),alp.v)
     col.lbl <- alp.f(.makeLenAndOrder(col.lbl,ord.x),alp.v)
 
@@ -190,14 +192,14 @@ setMethod("qqplot", signature(x = "ANY",
     if(mfColRow) opar1 <- par(mfrow = c(1,1), no.readonly = TRUE)
 
     ret <- do.call(stats::qqplot, args=mcl)
-
+    lbprep <- NULL
     if(withLab&& plot.it){
        lbprep <- .labelprep(xj,yc,lab.pts,
-                            col.lbl,cex.lbl,which.lbs,which.Order,order.traf)
+                            col.lbl,cex.lbl, adj.lbl,which.lbs,which.Order,order.traf)
        xlb0 <- if(datax) lbprep$x0 else lbprep$y0
        ylb0 <- if(datax) lbprep$y0 else lbprep$x0
        text(x = xlb0, y = ylb0, labels = lbprep$lab,
-            cex = lbprep$cex, col = lbprep$col, adj = adj.lbl)
+            cex = lbprep$cex, col = lbprep$col, adj = lbprep$adj)
     }
 
     qqb <- NULL
@@ -232,6 +234,27 @@ setMethod("qqplot", signature(x = "ANY",
              }
           }
 
+        qqplotInfo <- list(xy.0=xy, y.0=y, datax = datax, 
+                         withConf.pw=withConf.pw, 
+                         withConf.sim=withConf.sim, 
+                         alpha.CI=alpha.CI ,
+                         col.pCI = col.pCI , lty.pCI = lty.pCI , 
+                         lwd.pCI = lwd.pCI , pch.pCI = pch.pCI, 
+                         cex.pCI = cex.pCI , 
+                         col.sCI = col.sCI , lty.sCI = lty.sCI , 
+                         lwd.sCI = lwd.sCI , pch.sCI = pch.sCI, 
+                         cex.sCI = cex.sCI , 
+                         n = n , 
+                         exact.sCI = exact.sCI, exact.pCI = exact.pCI,
+                  nosym.pCI = nosym.pCI, with.legend = with.legend,
+                  legend.bg = legend.bg, legend.pos = legend.pos,
+                  legend.cex = legend.cex, legend.pref = legend.pref,
+                  legend.postf = legend.postf, legend.alpha = legend.alpha, 
+                  debug = debug,
+                  args.stats.qqplot = mcl,
+                  withLab = withLab,
+                  lbprep = lbprep
+                  )
         if(plot.it){
           qqb <- .confqq(xy, y, datax=datax, withConf.pw, withConf.sim, alpha.CI,
                       col.pCI, lty.pCI, lwd.pCI, pch.pCI, cex.pCI,
@@ -247,7 +270,9 @@ setMethod("qqplot", signature(x = "ANY",
         }
        }
     }
-    return(invisible(c(ret,qqb)))
+    qqplotInfo <- c(ret, qqplotInfo, qqb)
+    class(qqplotInfo) <- c("qqplotInfo","DiagnInfo")
+    return(invisible(qqplotInfo))
     })
 
 ## into distrMod
