@@ -18,6 +18,7 @@ user-visible CHANGES:
 + updated references in vignette distr.Rnw
 + mention that pattern substitution can now be switched on and off in all plot 
   functions according to argument withSubst
++ mention aliases p.r and q.l for RStudio
 
 under the hood
 + fixed \VignetteKeyword issue detected as in mail by K. Hornik 2015-02-03

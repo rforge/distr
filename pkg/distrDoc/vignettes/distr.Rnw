@@ -251,11 +251,11 @@ Zs
 \begin{small}
 Due to a non-conformal implementation of function \code{q} in \texttt{RStudio},
 our approach to overload function \code{q} by method dispatch does not work
-from an \texttt{RStudio} console (it does work, though within a function 
+from an \texttt{RStudio} console (it does work, though, within a function 
 environment). To overcome this, from version 2.6 on, we have aliases 
-\code{p.r} and \code{q.l} for functions \code{p} and \code{q}, alluding to
-the right (resp. left) continous form of the cdf and the quantile function.
-these two aliases (in particular \code{q.l}) do work in \texttt{RStudio}.
+\code{p.r} and \code{q.l} for functions \code{p} and \code{q}, respectively, 
+alluding to the right (resp. left) continous form of the cdf and the quantile 
+function. These two aliases (in particular \code{q.l}) do work in \texttt{RStudio}.
 \end{small}
 \par
 \begin{small}
