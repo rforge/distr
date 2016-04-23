@@ -4,7 +4,7 @@ Description: Provides utilities for defining R / Rd as "language" for TeX-packag
         and for including R / Rd source file (snippets) copied from R-forge in its most 
 		recent version (or another URL) thereby avoiding inconsistencies between vignette 
 		and documented source code.
-Version: 0.7.2
+Version: 0.7.3
 Encoding: latin1
 Date: 2016-04-23
 Depends: R(>= 2.14.0), startupmsg
