@@ -129,7 +129,8 @@ very valuable suggestions to enhance this package.
 \examples{
 \donttest{SweaveListingPreparations()
 SweaveListingPreparations(pkv="2.1")
-}}
+}
+}
 
 \keyword{utilities}
 

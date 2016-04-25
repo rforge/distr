@@ -70,6 +70,7 @@ lstsetLanguage(pkgs = c("MASS","stats"),
 changeKeywordstyles(pkgs = c("distr","distrEx"),
                     keywordstyles = paste("\\\\bfseries\\\\color{",c("green","blue"),"}",
                     collapse="", sep = ""))
-}}
+}
+}
 %
 \keyword{utilities}

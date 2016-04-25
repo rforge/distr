@@ -30,7 +30,7 @@ Loading required package: startupmsg
 
 :SweaveListingUtils>  Utilities for Sweave Together with
 :SweaveListingUtils>  TeX 'listings' Package (version
-:SweaveListingUtils>  0.7.4)
+:SweaveListingUtils>  0.7.5)
 :SweaveListingUtils> 
 :SweaveListingUtils>  NOTE: Support for this package
 :SweaveListingUtils>  will stop soon.
@@ -106,7 +106,8 @@ unloadNamespace("SweaveListingUtils")
 
 *** non-intentional masking: ***
 
-... nothing discovered so far ...> 
+... nothing discovered so far ...
+> 
 > 
 > 
 > cleanEx()
@@ -317,6 +318,7 @@ $Rout$basicstyle
 > 
 > 
 > 
+> 
 > cleanEx()
 > nameEx("changeKeywordstyles")
 > ### * changeKeywordstyles
@@ -332,6 +334,7 @@ $Rout$basicstyle
 > 
 > require(MASS)
 Loading required package: MASS
+> 
 > 
 > 
 > cleanEx()
@@ -2400,7 +2403,7 @@ myList=HU=AHAL,%
 > ###
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  1.23 0.21 2.83 NA NA 
+Time elapsed:  1.23 0.27 2.86 NA NA 
 > grDevices::dev.off()
 null device 
           1 
