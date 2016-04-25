@@ -16,6 +16,9 @@ user-visible CHANGES:
 + new synonyma plotRd, rRd, dRd, pRd, and qRd for  plot.rd, r.rd, d.rd, p.rd, and q.rd
   to substitute the old ones on the long run (to avoid clashes with S3 inheritance)  
 
+deprecated:  
++ plot.rd, r.rd, d.rd, p.rd, and q.rd will soon be replaced by the upper aliases
+  
 under the hood:
 
 + removed ::: internal dependencies (within distr-Fam of pkgs) by copying 

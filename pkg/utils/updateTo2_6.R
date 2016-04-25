@@ -88,3 +88,43 @@ colnames(Values) <- Pkgs
 rownames(Values) <- Names
 changeDescription(startDir = "C:/rtest/distr/",names=Names, verbose=TRUE,
                   pkgs=Pkgs, values=Values)
+
+Values <- matrix(c("0.9.4",format(Sys.time(), format="%Y-%m-%d")),2,1)
+Pkgs  <- "RandVar"
+Names <- c("Version","Date")
+colnames(Values) <- Pkgs
+rownames(Values) <- Names
+changeDescription(startDir = "C:/rtest/RobASt/",names=Names, verbose=TRUE,
+                  pkgs=Pkgs, values=Values, pathRepo="robast")
+
+Values <- matrix(c("2.6",format(Sys.time(), format="%Y-%m-%d")),2,1)
+Pkgs  <- "distrMod"
+Names <- c("Version","Date")
+colnames(Values) <- Pkgs
+rownames(Values) <- Names
+changeDescription(startDir = "C:/rtest/distr/",names=Names, verbose=TRUE,
+                  pkgs=Pkgs, values=Values)
+
+Values <- matrix(c("1.0",format(Sys.time(), format="%Y-%m-%d")),2,1)
+Pkgs  <- "RandVar"
+Names <- c("Version","Date")
+colnames(Values) <- Pkgs
+rownames(Values) <- Names
+changeDescription(startDir = "C:/rtest/RobASt/",names=Names, verbose=TRUE,
+                  pkgs=Pkgs, values=Values, pathRepo="robast")
+
+Values <- matrix(c("1.0",format(Sys.time(), format="%Y-%m-%d")),2,1)
+Pkgs  <- "RobAStRDA"
+Names <- c("Version","Date")
+colnames(Values) <- Pkgs
+rownames(Values) <- Names
+changeDescription(startDir = "C:/rtest/RobASt/",names=Names, verbose=TRUE,
+                  pkgs=Pkgs, values=Values, pathRepo="robast")
+
+Values <- matrix(c("1.0",format(Sys.time(), format="%Y-%m-%d")),2,1)
+Pkgs  <- "RobAStBase"
+Names <- c("Version","Date")
+colnames(Values) <- Pkgs
+rownames(Values) <- Names
+changeDescription(startDir = "C:/rtest/RobASt/branches/robast-1.0",names=Names, verbose=TRUE,
+                  pkgs=Pkgs, values=Values, pathRepo="robast")
