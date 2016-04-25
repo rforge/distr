@@ -58,8 +58,10 @@ if nothing is found   it returns \code{invisible()}.
 \examples{
 copySourceFromRForge("distr","R","AllClasses.R","distr", from =2, to =3,
                      offset.after=2)
+\donttest{
 copySourceFromRForge("distr","R","AllClasses.R","distr", from ="setClass",
                       to ="\\\\}")
+}
 }
 \keyword{utilities}
 

@@ -127,9 +127,9 @@ very valuable suggestions to enhance this package.
 
 \author{Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 \examples{
-SweaveListingPreparations()
+\donttest{SweaveListingPreparations()
 SweaveListingPreparations(pkv="2.1")
-}
+}}
 
 \keyword{utilities}
 

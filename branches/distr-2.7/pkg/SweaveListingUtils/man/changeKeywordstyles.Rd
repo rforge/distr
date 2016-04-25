@@ -63,12 +63,13 @@ changeKeywordstyles(pkgs = "distr",
 %
 \examples{
 require(MASS)
+\donttest{
 lstsetLanguage(pkgs = c("MASS","stats"),
                keywordstyles  = paste("\\\\bfseries\\\\color{",c("blue","red"),"}",
                          sep="", collapse=""))
 changeKeywordstyles(pkgs = c("distr","distrEx"),
                     keywordstyles = paste("\\\\bfseries\\\\color{",c("green","blue"),"}",
                     collapse="", sep = ""))
-}
+}}
 %
 \keyword{utilities}

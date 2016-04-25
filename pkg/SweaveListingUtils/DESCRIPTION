@@ -4,9 +4,9 @@ Description: Provides utilities for defining R / Rd as "language" for TeX-packag
         and for including R / Rd source file (snippets) copied from R-forge in its most 
 		recent version (or another URL) thereby avoiding inconsistencies between vignette 
 		and documented source code.
-Version: 0.7.3
+Version: 0.7.4
 Encoding: latin1
-Date: 2016-04-23
+Date: 2016-04-25
 Depends: R(>= 2.14.0), startupmsg
 Suggests: distr, MASS, survival, distrEx, Matrix, splines
 Imports: methods
@@ -16,4 +16,4 @@ Authors@R: person("Peter", "Ruckdeschel", role=c("cre", "cph"),
 License: LGPL-3
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
-SVNRevision: 1087
+SVNRevision: 1108

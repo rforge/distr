@@ -30,7 +30,7 @@ Loading required package: startupmsg
 
 :SweaveListingUtils>  Utilities for Sweave Together with
 :SweaveListingUtils>  TeX 'listings' Package (version
-:SweaveListingUtils>  0.7.3)
+:SweaveListingUtils>  0.7.4)
 :SweaveListingUtils> 
 :SweaveListingUtils>  NOTE: Support for this package
 :SweaveListingUtils>  will stop soon.
@@ -315,678 +315,6 @@ $Rout$basicstyle
 > 
 > ### ** Examples
 > 
-> SweaveListingPreparations()
-%------------------------------------------------------------------------------%
-%Preparations for Sweave and Listings
-%------------------------------------------------------------------------------%
-%
-\RequirePackage{color}
-\definecolor{Rcolor}{rgb}{0, 0.5, 0.5}
-\definecolor{RRecomdcolor}{rgb}{0, 0.6, 0.4}
-\definecolor{Rbcolor}{rgb}{0, 0.6, 0.6}
-\definecolor{Routcolor}{rgb}{0.461, 0.039, 0.102}
-\definecolor{Rcommentcolor}{rgb}{0.101, 0.043, 0.432}
-%------------------------------------------------------------------------------%
-\lstdefinelanguage{Rd}[common]{TeX}%
-{moretexcs={acronym,alias,arguments,author,bold,cite,%
-          code,command,concept,cr,deqn,describe,%
-          description,details,dfn,doctype,dots,%
-          dontrun,dontshow,donttest,dQuote,%
-          email,emph,enc,encoding,enumerate,env,eqn,%
-          examples,file,format,if,ifelse,item,itemize,kbd,keyword,%
-          ldots,link,linkS4class,method,name,note,%
-          option,out,pkg,preformatted,R,Rdopts,Rdversion,%
-          references,S3method,S4method,Sexpr,samp,section,%
-          seealso,source,sp,special,sQuote,strong,%
-          subsection,synopsis,tab,tabular,testonly,%
-          title,url,usage,value,var,verb},
-   sensitive=true,%
-   morecomment=[l]\%% 2008/9 Peter Ruckdeschel
-}[keywords,comments]%%
-%------------------------------------------------------------------------------%
-
-%----------------
-\lstdefinestyle{RstyleO1}{fancyvrb=true,escapechar=`,extendedchars=false,%
-                          language=R,%
-                          basicstyle={\color{Rcolor}\small},%
-                          keywordstyle={\bf\color{Rcolor}},%Warning in print.taglist(taglist, LineLength = LineLength, offset.start = nchar(startS),  :
-  Some elements of taglist are too long
-
-                          commentstyle={\color{Rcommentcolor}\ttfamily\itshape},%
-                          literate={"}{\texttt{"}}1{<-}{{$\leftarrow$}}2{<<-}{{$\twoheadleftarrow$}}2{~}{{$\sim$}}1{<=}{{$\leq$}}2{>=}{{$\geq$}}2{^}{{$\scriptstyle\wedge$}}1,%
-                          alsoother={$},%
-                          alsoletter={.<-},%
-                          otherkeywords={!,!=,~,$,*,\&,\%/\%,\%*\%,\%\%,<-,<<-,/},%
-                          escapeinside={(*}{*)}}%
-%----------------
-\lstdefinestyle{Rstyle}{style=RstyleO1}
-
-%----------------
-\lstdefinestyle{Rdstyle}{fancyvrb=true,language=Rd,keywordstyle={\bf},%
-                         basicstyle={\color{black}\footnotesize},%
-                         commentstyle={\ttfamily\itshape},%
-                         alsolanguage=R}%
-%----------------
-%------------------------------------------------------------------------------%
-\global\def\Rlstset{\lstset{style=Rstyle}}%
-\global\def\Rdlstset{\lstset{style=Rdstyle}}%
-%------------------------------------------------------------------------------%
-\global\def\Rinlstset{\lstset{style=Rinstyle}}%
-\global\def\Routlstset{\lstset{style=Routstyle}}%
-\global\def\Rcodelstset{\lstset{style=Rcodestyle}}%
-%------------------------------------------------------------------------------%
-\Rlstset
-%------------------------------------------------------------------------------%
-%copying relevant parts of Sweave.sty
-%------------------------------------------------------------------------------%
-%
-\RequirePackage{graphicx,fancyvrb}%
-\IfFileExists{upquote.sty}{\RequirePackage{upquote}}{}%
-
-\RequirePackage{ifthen}%
-\newboolean{Sweave@gin}%
-\setboolean{Sweave@gin}{true}%
-\setkeys{Gin}{width=0.8\textwidth}%
-\newboolean{Sweave@ae}
-\setboolean{Sweave@ae}{true}%
-\RequirePackage[T1]{fontenc}
-\RequirePackage{ae}
-%
-\newenvironment{Schunk}{}{}
-
-\newcommand{\Sconcordance}[1]{% 
-\ifx\pdfoutput\undefined% 
-\csname newcount\endcsname\pdfoutput\fi% 
-\ifcase\pdfoutput\special{#1}% 
-\else\immediate\pdfobj{#1}\fi} 
-
-%------------------------------------------------------------------------------%
-% ---- end of parts of Sweave.sty
-%------------------------------------------------------------------------------%
-%
-% ---- input 
-\lstdefinestyle{RinstyleO}{style=Rstyle,fancyvrb=true,%
-                           basicstyle=\color{Rcolor}\small}%
-\lstdefinestyle{Rinstyle}{style=RinstyleO}
-\lstnewenvironment{Sinput}{\Rinlstset}{\Rlstset}
-%
-% ---- output 
-\lstdefinestyle{RoutstyleO}{
-V1=0,V2=1,V3=0}%
-\lstdefinestyle{Routstyle}{style=RoutstyleO}
-\lstnewenvironment{Soutput}{\Routlstset}{\Rlstset}
-%
-% ---- code 
-\lstdefinestyle{RcodestyleO}{style=Rstyle,fancyvrb=true,fontshape=sl,%
-                             basicstyle=\color{Rcolor}}%
-\lstdefinestyle{Rcodestyle}{style=RcodestyleO}
-\lstnewenvironment{Scode}{\Rcodelstset}{\Rlstset}
-%
-%------------------------------------------------------------------------------%
-\let\code\lstinline
-\def\Code#1{{\tt\color{Rcolor} #1}}
-\def\file#1{{\tt #1}} 
-\def\pkg#1{{\tt "#1"}} 
-\newcommand{\pkgversion}{{\tt 2.6}}
-%------------------------------------------------------------------------------%
-Warning in setBaseOrRecommended(pkgs = pkgs) :
-  number of items to replace is not a multiple of replacement length
-
-\lstdefinestyle{RstyleO2}{style=RstyleO1,%
-% --------------------------
-% Registration of package SweaveListingUtils
-% --------------------------
-morekeywords={[2]taglist,setToBeDefinedPkgs,setBaseOrRecommended,readSourceFromRForge,readPkgVersion,%
-lstsetRout,lstsetRin,lstsetRd,lstsetRcode,lstsetRall,%
-lstsetR,lstsetLanguage,lstset,lstinputSourceFromRForge,lstdefRstyle,%
-isBaseOrRecommended,getSweaveListingOption,copySourceFromRForge,changeKeywordstyles,SweaveListingoptions,%
-SweaveListingPreparations,SweaveListingOptions,SweaveListingMASK%
-},%
-keywordstyle={[2]{\bf}},%
-%
-% --------------------------
-% Registration of package startupmsg
-% --------------------------
-morekeywords={[3]suppressStartupMessages,startupType,startupPackage,startupMessage,startupEndline,%
-readVersionInformation,readURLInformation,pointertoNEWS,onlytypeStartupMessages,mystartupMessage,%
-mySMHandler,infoShow,buildStartupMessage,TOBEDONE,StartupMessage,%
-NEWS%
-},%
-keywordstyle={[3]{\bf}},%
-%
-% --------------------------
-% Registration of package stats [recommended or base] 
-% --------------------------
-morekeywords={[4]xtabs,write.ftable,window<-,wilcox.test,weighted.residuals,%
-weighted.mean,vcov,varimax,variable.names,var.test,%
-update.formula,update.default,tsp<-,tsdiag,tsSmooth,%
-ts.union,ts.plot,ts.intersect,toeplitz,terms.formula,%
-termplot,t.test,supsmu,summary.stepfun,summary.manova,%
-summary.lm,summary.glm,summary.aov,stl,stepfun,%
-stat.anova,splinefunH,spectrum,spec.taper,spec.pgram,%
-spec.ar,sortedXyData,smoothEnds,smooth.spline,smooth,%
-simulate,sigma,shapiro.test,setNames,selfStart,%
-se.contrast,screeplot,scatter.smooth,runmed,rmultinom,%
-residuals.lm,residuals.glm,reshape,reorder,rect.hclust,%
-read.ftable,rWishart,r2dtable,quasipoisson,quasibinomial,%
-quade.test,qbirthday,prop.trend.test,prop.test,promax,%
-printCoefmat,princomp,predict.lm,predict.glm,prcomp,%
-ppr,power.t.test,power.prop.test,power.anova.test,polym,%
-poisson.test,plot.ts,plot.stepfun,plot.spec.phase,plot.spec.coherency,%
-plot.ecdf,plclust,pbirthday,pairwise.wilcox.test,pairwise.table,%
-pairwise.t.test,pairwise.prop.test,pacf,p.adjust.methods,p.adjust,%
-order.dendrogram,optimHess,oneway.test,numericDeriv,nobs,%
-nls.control,nls,nlminb,naresid,naprint,%
-napredict,na.pass,na.omit,na.fail,na.exclude,%
-na.contiguous,na.action,mood.test,monthplot,model.weights,%
-model.tables,model.response,model.offset,model.matrix.lm,model.matrix.default,%
-model.matrix,model.frame.default,model.frame,model.extract,medpolish,%
-median.default,mcnemar.test,mauchly.test,mantelhaen.test,manova,%
-makepredictcall,makeARIMA,make.link,ls.print,ls.diag,%
-logLik,loess.smooth,loess.control,loess,loadings,%
-lm.wfit,lm.influence,lm.fit,line,lag.plot,%
-lag,ksmooth,ks.test,kruskal.test,knots,%
-kmeans,kernel,kernapply,isoreg,is.tskernel,%
-is.ts,is.stepfun,is.mts,is.leaf,is.empty.model,%
-inverse.gaussian,interaction.plot,integrate,influence.measures,heatmap,%
-hclust,hatvalues,glm.fit,glm.control,get_all_vars,%
-getInitial,getCall,friedman.test,fligner.test,fitted.values,%
-fisher.test,filter,factor.scope,factanal,expand.model.frame,%
-estVar,embed,eff.aovlist,ecdf,dummy.coef.lm,%
-dummy.coef,drop.terms,drop.scope,dmultinom,dist,%
-diffinv,dfbeta,df.residual,df.kernel,deriv3,%
-density.default,dendrapply,delete.response,decompose,cutree,%
-cpgram,cov2cor,cov.wt,cor.test,cophenetic,%
-cooks.distance,contrasts<-,contr.treatment,contr.sum,contr.poly,%
-contr.helmert,contr.SAS,constrOptim,confint.lm,confint.default,%
-confint,complete.cases,cmdscale,chisq.test,ccf,%
-case.names,cancor,bw.ucv,bw.nrd0,bw.nrd,%
-bw.bcv,bw.SJ,biplot,binom.test,bartlett.test,%
-bandwidth.kernel,asOneSidedFormula,as.ts,as.stepfun,as.hclust,%
-as.formula,as.dist,as.dendrogram,arima0.diag,arima0,%
-arima.sim,arima,ar.yw,ar.ols,ar.mle,%
-ar.burg,ar,ansari.test,aggregate.ts,aggregate.data.frame,%
-addmargins,add.scope,acf2AR,acf,TukeyHSD,%
-StructTS,SSweibull,SSmicmen,SSlogis,SSgompertz,%
-SSfpl,SSfol,SSbiexp,SSasympOrig,SSasympOff,%
-SSasymp,SSD,PP.test,NLSstRtAsymptote,NLSstLfAsymptote,%
-NLSstClosestX,NLSstAsymptotic,KalmanSmooth,KalmanRun,KalmanLike,%
-KalmanForecast,HoltWinters,Box.test,BIC,ARMAtoMA,%
-ARMAacf,AIC%
-},%
-keywordstyle={[4]{\bf\color{RRecomdcolor}}},%
-%
-% --------------------------
-% Registration of package graphics [recommended or base] 
-% --------------------------
-morekeywords={[5]xspline,text.default,stripchart,strheight,split.screen,%
-spineplot,smoothScatter,rasterImage,polypath,points.default,%
-plot.xy,plot.window,plot.new,plot.function,plot.design,%
-plot.default,pie,panel.smooth,pairs.default,lines.default,%
-layout.show,image.default,hist.default,grconvertY,grconvertX,%
-fourfoldplot,filled.contour,erase.screen,dotchart,contour.default,%
-co.intervals,close.screen,clip,cdplot,boxplot.matrix,%
-boxplot.default,barplot.default,axis.POSIXct,axis.Date,axTicks,%
-assocplot,Axis%
-},%
-keywordstyle={[5]{\bf\color{RRecomdcolor}}},%
-%
-% --------------------------
-% Registration of package grDevices [recommended or base] 
-% --------------------------
-morekeywords={[6]xyz.coords,xyTable,xy.coords,xfig,windowsFonts,%
-windowsFont,windows.options,windows,win.print,win.metafile,%
-win.graph,trans3d,topo.colors,tiff,terrain.colors,%
-svg,setPS,setGraphicsEventHandlers,setGraphicsEventEnv,setEPS,%
-savePlot,rgb2hsv,replayPlot,recordPlot,recordGraphics,%
-ps.options,postscriptFonts,png,pdfFonts,pdf.options,%
-pdf,nclass.scott,nclass.Sturges,nclass.FD,n2mfrow,%
-msgWindow,make.rgb,jpeg,is.raster,heat.colors,%
-hcl,grey.colors,gray.colors,graphics.off,grSoftVersion,%
-getGraphicsEventEnv,getGraphicsEvent,extendrange,embedFonts,deviceIsInteractive,%
-devAskNewPage,dev.size,dev.set,dev.print,dev.prev,%
-dev.off,dev.next,dev.new,dev.list,dev.interactive,%
-dev.hold,dev.flush,dev.cur,dev.copy2pdf,dev.copy2eps,%
-dev.copy,dev.control,dev.capture,dev.capabilities,densCols,%
-convertColor,contourLines,colorspaces,colorRampPalette,colorRamp,%
-colorConverter,col2rgb,cm.colors,check.options,cairo_ps,%
-cairo_pdf,bringToTop,boxplot.stats,bmp,blues9,%
-bitmap,axisTicks,as.raster,as.graphicsAnnot,adjustcolor,%
-Type1Font,Hershey,CIDFont%
-},%
-keywordstyle={[6]{\bf\color{RRecomdcolor}}},%
-%
-% --------------------------
-% Registration of package utils [recommended or base] 
-% --------------------------
-morekeywords={[7]zip.unpack,writeClipboard,write.table,write.socket,write.csv2,%
-write.csv,winProgressBar,winMenuNames,winMenuItems,winMenuDelItem,%
-winMenuDel,winMenuAddItem,winMenuAdd,winDialogString,winDialog,%
-win.version,vignette,url.show,upgrade,update.packages,%
-update.packageStatus,unzip,untar,unstack,undebugcall,%
-type.convert,txtProgressBar,toLatex,toBibtex,timestamp,%
-tar,tail.matrix,tail,suppressForeignCheck,summaryRprof,%
-strcapture,strOptions,str,stack,shortPathName,%
-setWindowTitle,setWinProgressBar,setTxtProgressBar,setStatusBar,setRepositories,%
-setInternet2,setBreakpoint,sessionInfo,select.list,savehistory,%
-rtags,removeSource,remove.packages,relist,recover,%
-readRegistry,readClipboard,readCitationFile,read.table,read.socket,%
-read.fwf,read.fortran,read.delim2,read.delim,read.csv2,%
-read.csv,read.DIF,rc.status,rc.settings,rc.options,%
-rc.getOption,promptPackage,promptImport,promptData,process.events,%
-personList,person,packageVersion,packageStatus,packageName,%
-packageDescription,package.skeleton,old.packages,object.size,news,%
-new.packages,modifyList,mirror2html,memory.size,memory.limit,%
-makeRweaveLatexCodeRunner,make.socket,make.packages.html,maintainer,lsf.str,%
-ls.str,localeToCharset,loadhistory,loadRconsole,limitedLabels,%
-isS3stdGeneric,isS3method,is.relistable,installed.packages,install.packages,%
-hsearch_db_keywords,hsearch_db_concepts,hsearch_db,history,help.start,%
-help.search,help.request,head.matrix,head,globalVariables,%
-glob2rx,getWindowsHandles,getWindowsHandle,getWindowTitle,getWinProgressBar,%
-getTxtProgressBar,getSrcref,getSrcLocation,getSrcFilename,getSrcDirectory,%
-getS3method,getParseText,getParseData,getIdentification,getFromNamespace,%
-getClipboardFormats,getCRANmirrors,getAnywhere,formatUL,formatOL,%
-flush.console,fixInNamespace,findLineNum,file_test,fileSnapshot,%
-file.edit,dump.frames,download.packages,download.file,debugcall,%
-de.setup,de.restore,de.ncols,data.entry,create.post,%
-count.fields,contrib.url,compareVersion,combn,close.socket,%
-citeNatbib,cite,citation,citHeader,citFooter,%
-citEntry,chooseCRANmirror,chooseBioCmirror,choose.files,choose.dir,%
-checkCRAN,changedFiles,capture.output,bug.report,browseVignettes,%
-browseURL,browseEnv,bibentry,available.packages,assignInNamespace,%
-assignInMyNamespace,aspell_write_personal_dictionary_file,aspell_package_vignettes,aspell_package_Rd_files,aspell_package_R_files,%
-aspell_package_C_files,aspell,as.roman,as.relistable,as.personList,%
-as.person,arrangeWindows,argsAnywhere,aregexec,alarm,%
-adist,View,URLencode,URLdecode,SweaveSyntaxNoweb,%
-SweaveSyntaxLatex,SweaveSyntConv,SweaveHooks,Sweave,Stangle,%
-RweaveTryStop,RweaveLatexWritedoc,RweaveLatexSetup,RweaveLatexOptions,RweaveLatexFinish,%
-RweaveLatex,RweaveEvalWithOpt,RweaveChunkPrefix,RtangleWritedoc,RtangleSetup,%
-Rtangle,Rprofmem,Rprof,RSiteSearch,RShowDoc,%
-Filters,DLL.version,CRAN.packages%
-},%
-keywordstyle={[7]{\bf\color{RRecomdcolor}}},%
-%
-% --------------------------
-% Registration of package datasets [recommended or base] 
-% --------------------------
-morekeywords={[8]women,warpbreaks,volcano,uspop,trees,%
-treering,swiss,sunspots,sunspot.year,sunspot.month,%
-state.x77,state.region,state.name,state.division,state.center,%
-state.area,state.abb,stackloss,stack.x,stack.loss,%
-sleep,rock,rivers,randu,quakes,%
-pressure,presidents,precip,occupationalStatus,npk,%
-nottem,nhtemp,mtcars,morley,mdeaths,%
-lynx,longley,lh,ldeaths,islands,%
-iris3,iris,infert,freeny.y,freeny.x,%
-freeny,fdeaths,faithful,eurodist,euro.cross,%
-euro,esoph,discoveries,crimtab,co2,%
-chickwts,cars,beaver2,beaver1,austres,%
-attitude,attenu,anscombe,airquality,airmiles,%
-ability.cov,WorldPhones,WWWusage,VADeaths,UScitiesD,%
-USPersonalExpenditure,USJudgeRatings,USArrests,USAccDeaths,UKgas,%
-UKDriverDeaths,UCBAdmissions,ToothGrowth,Titanic,Theoph,%
-Seatbelts,Puromycin,PlantGrowth,OrchardSprays,Orange,%
-Nile,Loblolly,LifeCycleSavings,LakeHuron,JohnsonJohnson,%
-InsectSprays,Indometh,Harman74.cor,Harman23.cor,HairEyeColor,%
-Formaldehyde,EuStockMarkets,DNase,ChickWeight,CO2,%
-BOD,BJsales.lead,BJsales,AirPassengers%
-},%
-keywordstyle={[8]{\bf\color{RRecomdcolor}}},%
-%
-% --------------------------
-% Registration of package methods [recommended or base] 
-% --------------------------
-morekeywords={[9]validSlotNames,validObject,unRematchDefinition,tryNew,traceOn,%
-traceOff,testVirtual,testInheritedMethods,superClassDepth,substituteFunctionArgs,%
-substituteDirect,slotsFromS3,slotNames,slot<-,slot,%
-signature,sigToEnv,showMlist,showMethods,showExtends,%
-showDefault,showClass,setValidity,setReplaceMethod,setRefClass,%
-setPrimitiveMethods,setPackageName,setOldClass,setMethod,setLoadActions,%
-setLoadAction,setIs,setGroupGeneric,setGenericImplicit,setGeneric,%
-setDataPart,setClassUnion,setClass,setAs,selectSuperClasses,%
-selectMethod,seemsS4Object,sealClass,resetGeneric,resetClass,%
-requireMethods,representation,removeMethodsObject,removeMethods,removeMethod,%
-removeGeneric,removeClass,rematchDefinition,registerImplicitGenerics,reconcilePropertiesAndPrototype,%
-rbind2,prototype,promptMethods,promptClass,prohibitGeneric,%
-possibleExtends,packageSlot<-,packageSlot,newEmptyObject,newClassRepresentation,%
-newBasic,multipleClasses,mlistMetaName,missingArg,methodsPackageMetaName,%
-methodSignatureMatrix,method.skeleton,metaNameUndo,mergeMethods,matchSignature,%
-makeStandardGeneric,makePrototypeFromClassDef,makeMethodsList,makeGeneric,makeExtends,%
-makeClassRepresentation,loadMethod,listFromMlist,listFromMethods,linearizeMlist,%
-languageEl<-,languageEl,isXS3Class,isVirtualClass,isSealedMethod,%
-isSealedClass,isRematched,isGroup,isGrammarSymbol,isGeneric,%
-isClassUnion,isClassDef,isClass,insertSource,insertMethod,%
-insertClassMethods,initialize,initRefFields,initFieldArgs,inheritedSlotNames,%
-implicitGeneric,hasMethods,hasMethod,hasLoadAction,hasArg,%
-getVirtual,getValidity,getSubclasses,getSlots,getRefClass,%
-getPrototype,getProperties,getPackageName,getMethodsMetaData,getMethodsForDispatch,%
-getMethods,getMethod,getLoadActions,getGroupMembers,getGroup,%
-getGenerics,getGeneric,getFunction,getExtends,getDataPart,%
-getClasses,getClassPackage,getClassName,getClassDef,getClass,%
-getAllSuperClasses,getAllMethods,getAccess,generic.skeleton,functionBody<-,%
-functionBody,formalArgs,fixPre1.8,findUnique,findMethods,%
-findMethodSignatures,findMethod,findFunction,findClass,finalDefaultMethod,%
-externalRefMethod,extends,existsMethod,existsFunction,evalqOnLoad,%
-evalSource,evalOnLoad,emptyMethodsList,empty.dump,elNamed<-,%
-elNamed,el<-,el,dumpMethods,dumpMethod,%
-doPrimitiveMethod,defaultPrototype,defaultDumpName,conformMethod,completeSubclasses,%
-completeExtends,completeClassDefinition,coerce<-,coerce,classesToAM,%
-className,classMetaName,classLabel,checkSlotAssignment,checkAtAssignment,%
-cbind2,canCoerce,callNextMethod,callGeneric,cacheMethod,%
-cacheMetaData,cacheGenericsMetaData,body<-,balanceMethodsList,assignMethodsMetaData,%
-assignClassDef,asMethodDefinition,as<-,allNames,allGenerics,%
-addNextMethod,Summary,SignatureMethod,S3Part<-,S3Part,%
-S3Class<-,S3Class,Quote,MethodsListSelect,MethodsList,%
-MethodAddCoerce,Math2,Logic,Complex,Compare,%
-Arith%
-},%
-keywordstyle={[9]{\bf\color{RRecomdcolor}}},%
-%
-% --------------------------
-% Registration of package base [recommended or base] 
-% --------------------------
-morekeywords={[10]xzfile,xtfrm.numeric_version,xtfrm.factor,xtfrm.difftime,xtfrm.default,%
-xtfrm.Surv,xtfrm.POSIXlt,xtfrm.POSIXct,xtfrm.Date,xtfrm.AsIs,%
-xtfrm,xpdrows.data.frame,xor.octmode,xor.hexmode,writeLines,%
-writeChar,writeBin,write.dcf,within.list,within.data.frame,%
-within,withVisible,withRestarts,withCallingHandlers,with.default,%
-with,which.min,which.max,weekdays.POSIXt,weekdays.Date,%
-weekdays,version,vapply,validUTF8,validEnc,%
-utf8ToInt,upper.tri,unz,untracemem,unsplit,%
-unserialize,unlockBinding,unloadNamespace,unix.time,units<-.difftime,%
-units<-,units.difftime,units,unique.warnings,unique.numeric_version,%
-unique.matrix,unique.default,unique.data.frame,unique.array,unique.POSIXlt,%
-tryCatch,truncate.connection,truncate,trunc.POSIXt,trunc.Date,%
-trimws,transform.default,transform.data.frame,tracingState,tracemem,%
-toupper,topenv,tolower,toString.default,toString,%
-textConnectionValue,textConnection,testPlatformEquivalence,tempdir,tcrossprod,%
-taskCallbackManager,tanpi,t.default,t.data.frame,system2,%
-system.time,system.file,sys.status,sys.source,sys.save.image,%
-sys.parents,sys.parent,sys.on.exit,sys.nframe,sys.load.image,%
-sys.function,sys.frames,sys.frame,sys.calls,sys.call,%
-suppressWarnings,suppressPackageStartupMessages,suppressMessages,summary.table,summary.srcref,%
-summary.srcfile,summary.proc_time,summary.matrix,summary.factor,summary.default,%
-summary.data.frame,summary.connection,summary.POSIXlt,summary.POSIXct,summary.Date,%
-substring<-,substr<-,subset.matrix,subset.default,subset.data.frame,%
-strwrap,strtrim,strtoi,strrep,strptime,%
-strftime,storage.mode<-,storage.mode,stopifnot,stdout,%
-stdin,stderr,startsWith,standardGeneric,srcref,%
-srcfilecopy,srcfilealias,srcfile,sprintf,split<-.default,%
-split<-.data.frame,split<-,split.default,split.data.frame,split.POSIXct,%
-split.Date,sort.list,sort.int,sort.default,sort.POSIXlt,%
-solve.qr,solve.default,socketSelect,socketConnection,slice.index,%
-sinpi,sink.number,simplify2array,simpleWarning,simpleMessage,%
-simpleError,simpleCondition,signalCondition,showConnections,shell.exec,%
-shell,shQuote,setTimeLimit,setSessionTimeLimit,setNamespaceInfo,%
-setHook,set.seed,serialize,seq_len,seq_along,%
-seq.int,seq.default,seq.POSIXt,seq.Date,seek.connection,%
-seek,scale.default,saveRDS,save.image,sample.int,%
-sQuote,rowsum.default,rowsum.data.frame,rownames<-,rowSums,%
-rowMeans,row.names<-.default,row.names<-.data.frame,row.names<-,row.names.default,%
-row.names.data.frame,row.names,round.POSIXt,round.Date,rev.default,%
-returnValue,retracemem,restartFormals,restartDescription,requireNamespace,%
-replicate,rep_len,rep.numeric_version,rep.int,rep.factor,%
-rep.POSIXlt,rep.POSIXct,rep.Date,removeTaskCallback,regmatches<-,%
-regmatches,registerS3methods,registerS3method,regexec,reg.finalizer,%
-readRenviron,readRDS,readLines,readChar,readBin,%
-read.dcf,rcond,rbind.data.frame,rawToChar,rawToBits,%
-rawShift,rawConnectionValue,rawConnection,raw,rapply,%
-range.default,quarters.POSIXt,quarters.Date,quarters,qr.solve,%
-qr.resid,qr.qy,qr.qty,qr.fitted,qr.default,%
-qr.coef,qr.X,qr.R,qr.Q,pushBackLength,%
-pushBack,psigamma,provideDimnames,prop.table,proc.time,%
-print.warnings,print.table,print.summaryDefault,print.summary.table,print.srcref,%
-print.srcfile,print.simple.list,print.rle,print.restart,print.proc_time,%
-print.packageInfo,print.octmode,print.numeric_version,print.noquote,print.listof,%
-print.libraryIQR,print.hexmode,print.function,print.factor,print.eigen,%
-print.difftime,print.default,print.data.frame,print.connection,print.condition,%
-print.by,print.POSIXlt,print.POSIXct,print.NativeRoutineList,print.Dlist,%
-print.Date,print.DLLRegisteredRoutines,print.DLLInfoList,print.DLLInfo,print.AsIs,%
-prettyNum,pretty.default,pos.to.env,pmin.int,pmax.int,%
-pipe,pi,pcre_config,path.package,path.expand,%
-paste0,parseNamespaceFile,parent.frame,parent.env<-,parent.env,%
-package_version,packageStartupMessage,packageHasNamespace,packageEvent,packBits,%
-open.srcfilecopy,open.srcfilealias,open.srcfile,open.connection,open,%
-on.exit,oldClass<-,oldClass,nzchar,numeric_version,%
-normalizePath,norm,ngettext,new.env,namespaceImportMethods,%
-namespaceImportFrom,namespaceImportClasses,namespaceImport,namespaceExport,names<-.POSIXlt,%
-names<-,names.POSIXlt,mostattributes<-,months.POSIXt,months.Date,%
-months,month.name,month.abb,mode<-,mget,%
-message,merge.default,merge.data.frame,memory.profile,memDecompress,%
-memCompress,mem.limits,mean.difftime,mean.default,mean.POSIXlt,%
-mean.POSIXct,mean.Date,max.col,match.fun,match.call,%
-match.arg,mat.or.vec,margin.table,mapply,makeActiveBinding,%
-make.unique,make.names,lower.tri,logb,lockEnvironment,%
-lockBinding,loadingNamespaceInfo,loadedNamespaces,loadNamespace,list2env,%
-list.files,list.dirs,library.dynam.unload,library.dynam,libcurlVersion,%
-lfactorial,levels<-.factor,levels<-,levels.default,letters,%
-lengths,length<-.factor,length<-,length.POSIXlt,lazyLoadDBfetch,%
-lazyLoadDBexec,lazyLoad,labels.default,l10n_info,kappa.qr,%
-kappa.lm,kappa.default,julian.POSIXt,julian.Date,julian,%
-isdebugged,isatty,isTRUE,isSymmetric.matrix,isSymmetric,%
-isSeekable,isS4,isRestart,isOpen,isNamespaceLoaded,%
-isNamespace,isIncomplete,isBaseNamespace,is.vector,is.unsorted,%
-is.table,is.symbol,is.single,is.recursive,is.raw,%
-is.qr,is.primitive,is.pairlist,is.package_version,is.ordered,%
-is.object,is.numeric_version,is.numeric.difftime,is.numeric.POSIXt,is.numeric.Date,%
-is.numeric,is.null,is.nan,is.name,is.na<-.numeric_version,%
-is.na<-.factor,is.na<-.default,is.na<-,is.na.numeric_version,is.na.data.frame,%
-is.na.POSIXlt,is.na,is.matrix,is.logical,is.loaded,%
-is.list,is.language,is.integer,is.infinite,is.function,%
-is.finite,is.factor,is.expression,is.environment,is.element,%
-is.double,is.data.frame,is.complex,is.character,is.call,%
-is.atomic,is.array,is.R,invokeRestartInteractively,invokeRestart,%
-inverse.rle,intToUtf8,intToBits,importIntoEnv,identity,%
-identical,icuSetCollate,icuGetCollate,iconvlist,iconv,%
-gzfile,gzcon,grouping,grepl,grepRaw,%
-gregexpr,gettextf,gettext,getTaskCallbackNames,getSrcLines,%
-getRversion,getNativeSymbolInfo,getNamespaceVersion,getNamespaceUsers,getNamespaceName,%
-getNamespaceInfo,getNamespaceImports,getNamespaceExports,getNamespace,getLoadedDLLs,%
-getHook,getExportedValue,getElement,getDLLRegisteredRoutines.character,getDLLRegisteredRoutines.DLLInfo,%
-getDLLRegisteredRoutines,getConnection,getCallingDLLe,getCallingDLL,getAllConnections,%
-get0,gctorture2,gc.time,formatDL,format.summaryDefault,%
-format.pval,format.packageInfo,format.octmode,format.numeric_version,format.libraryIQR,%
-format.info,format.hexmode,format.factor,format.difftime,format.default,%
-format.data.frame,format.POSIXlt,format.POSIXct,format.Date,format.AsIs,%
-formals<-,forceAndCall,force,flush.connection,flush,%
-findRestart,findPackageEnv,findInterval,find.package,file.symlink,%
-file.size,file.show,file.rename,file.remove,file.path,%
-file.mtime,file.mode,file.link,file.info,file.exists,%
-file.create,file.copy,file.choose,file.append,file.access,%
-fifo,factorial,extSoftVersion,expm1,expand.grid,%
-eval.parent,environmentName,environmentIsLocked,environment<-,env.profile,%
-enquote,endsWith,encodeString,enc2utf8,enc2native,%
-emptyenv,eapply,dynGet,dyn.unload,dyn.load,%
-duplicated.numeric_version,duplicated.matrix,duplicated.default,duplicated.data.frame,duplicated.array,%
-duplicated.POSIXlt,droplevels.factor,droplevels.data.frame,droplevels,dontCheck,%
-do.call,dir.exists,dir.create,dimnames<-.data.frame,dimnames<-,%
-dimnames.data.frame,dim<-,dim.data.frame,difftime,diff.default,%
-diff.POSIXt,diff.Date,diag<-,determinant.matrix,determinant,%
-det,delayedAssign,default.stringsAsFactors,debugonce,debuggingState,%
-data.matrix,data.frame,data.class,dQuote,cut.default,%
-cut.POSIXt,cut.Date,curlGetHeaders,cospi,contributors,%
-conditionMessage.condition,conditionMessage,conditionCall.condition,conditionCall,computeRestarts,%
-comment<-,colnames<-,colSums,colMeans,closeAllConnections,%
-close.srcfilealias,close.srcfile,close.connection,clearPushBack,class<-,%
-chol.default,chkDots,check_tzones,chartr,charToRaw,%
-char.expand,cbind.data.frame,casefold,capabilities,callCC,%
-c.warnings,c.numeric_version,c.noquote,c.difftime,c.POSIXlt,%
-c.POSIXct,c.Date,bzfile,by.default,by.data.frame,%
-browserText,browserSetDebug,browserCondition,bquote,body<-,%
-bitwXor,bitwShiftR,bitwShiftL,bitwOr,bitwNot,%
-bitwAnd,bindtextdomain,bindingIsLocked,bindingIsActive,baseenv,%
-attributes<-,attr<-,attr.all.equal,attachNamespace,assign,%
-asS4,asS3,asNamespace,as.vector.factor,as.vector,%
-as.table.default,as.table,as.symbol,as.single.default,as.single,%
-as.raw,as.qr,as.pairlist,as.package_version,as.ordered,%
-as.octmode,as.numeric_version,as.numeric,as.null.default,as.null,%
-as.name,as.matrix.noquote,as.matrix.default,as.matrix.data.frame,as.matrix.POSIXlt,%
-as.matrix,as.logical.factor,as.logical,as.list.numeric_version,as.list.function,%
-as.list.factor,as.list.environment,as.list.default,as.list.data.frame,as.list.POSIXct,%
-as.list.Date,as.list,as.integer,as.hexmode,as.function.default,%
-as.function,as.factor,as.expression.default,as.expression,as.environment,%
-as.double.difftime,as.double.POSIXlt,as.double,as.difftime,as.data.frame.vector,%
-as.data.frame.ts,as.data.frame.table,as.data.frame.raw,as.data.frame.ordered,as.data.frame.numeric_version,%
-as.data.frame.numeric,as.data.frame.noquote,as.data.frame.model.matrix,as.data.frame.matrix,as.data.frame.logical,%
-as.data.frame.list,as.data.frame.integer,as.data.frame.factor,as.data.frame.difftime,as.data.frame.default,%
-as.data.frame.data.frame,as.data.frame.complex,as.data.frame.character,as.data.frame.array,as.data.frame.POSIXlt,%
-as.data.frame.POSIXct,as.data.frame.Date,as.data.frame.AsIs,as.data.frame,as.complex,%
-as.character.srcref,as.character.octmode,as.character.numeric_version,as.character.hexmode,as.character.factor,%
-as.character.error,as.character.default,as.character.condition,as.character.POSIXt,as.character.Date,%
-as.character,as.call,as.array.default,as.array,as.POSIXlt.numeric,%
-as.POSIXlt.factor,as.POSIXlt.default,as.POSIXlt.dates,as.POSIXlt.date,as.POSIXlt.character,%
-as.POSIXlt.POSIXct,as.POSIXlt.Date,as.POSIXlt,as.POSIXct.numeric,as.POSIXct.default,%
-as.POSIXct.dates,as.POSIXct.date,as.POSIXct.POSIXlt,as.POSIXct.Date,as.POSIXct,%
-as.Date.numeric,as.Date.factor,as.Date.default,as.Date.dates,as.Date.date,%
-as.Date.character,as.Date.POSIXlt,as.Date.POSIXct,as.Date,arrayInd,%
-aperm.table,aperm.default,anyNA.numeric_version,anyNA.POSIXlt,anyNA,%
-anyDuplicated.matrix,anyDuplicated.default,anyDuplicated.data.frame,anyDuplicated.array,anyDuplicated,%
-all.vars,all.names,all.equal.raw,all.equal.numeric,all.equal.list,%
-all.equal.language,all.equal.formula,all.equal.factor,all.equal.environment,all.equal.envRefClass,%
-all.equal.default,all.equal.character,all.equal.POSIXt,all.equal,agrepl,%
-agrep,addTaskCallback,addNA,Vectorize,T,%
-Sys.which,Sys.unsetenv,Sys.umask,Sys.timezone,Sys.time,%
-Sys.sleep,Sys.setlocale,Sys.setenv,Sys.setFileTime,Sys.readlink,%
-Sys.localeconv,Sys.junction,Sys.info,Sys.glob,Sys.getpid,%
-Sys.getlocale,Sys.getenv,Sys.chmod,Sys.Date,Summary.ordered,%
-Summary.numeric_version,Summary.factor,Summary.difftime,Summary.data.frame,Summary.POSIXlt,%
-Summary.POSIXct,Summary.Date,Reduce,R_system_version,RNGversion,%
-R.version.string,R.version,R.home,R.Version,Position,%
-Ops.ordered,Ops.numeric_version,Ops.factor,Ops.difftime,Ops.data.frame,%
-Ops.POSIXt,Ops.Date,OlsonNames,Negate,Math.factor,%
-Math.difftime,Math.data.frame,Math.POSIXt,Math.Date,Map,%
-La_version,La.svd,LETTERS,ISOdatetime,ISOdate,%
-Find,Filter,F,Encoding<-,Encoding,%
-Cstack_info%
-},%
-keywordstyle={[10]{\bf\color{RRecomdcolor}}}%
-%
-}%
-\lstdefinestyle{Rstyle}{style=RstyleO2}
-
-%------------------------------------------------------------------------------%
-%
-%
-
-> SweaveListingPreparations(pkv="2.1")
-%------------------------------------------------------------------------------%
-%Preparations for Sweave and Listings
-%------------------------------------------------------------------------------%
-%
-\RequirePackage{color}
-\definecolor{Rcolor}{rgb}{0, 0.5, 0.5}
-\definecolor{RRecomdcolor}{rgb}{0, 0.6, 0.4}
-\definecolor{Rbcolor}{rgb}{0, 0.6, 0.6}
-\definecolor{Routcolor}{rgb}{0.461, 0.039, 0.102}
-\definecolor{Rcommentcolor}{rgb}{0.101, 0.043, 0.432}
-%------------------------------------------------------------------------------%
-\lstdefinelanguage{Rd}[common]{TeX}%
-{moretexcs={acronym,alias,arguments,author,bold,cite,%
-          code,command,concept,cr,deqn,describe,%
-          description,details,dfn,doctype,dots,%
-          dontrun,dontshow,donttest,dQuote,%
-          email,emph,enc,encoding,enumerate,env,eqn,%
-          examples,file,format,if,ifelse,item,itemize,kbd,keyword,%
-          ldots,link,linkS4class,method,name,note,%
-          option,out,pkg,preformatted,R,Rdopts,Rdversion,%
-          references,S3method,S4method,Sexpr,samp,section,%
-          seealso,source,sp,special,sQuote,strong,%
-          subsection,synopsis,tab,tabular,testonly,%
-          title,url,usage,value,var,verb},
-   sensitive=true,%
-   morecomment=[l]\%% 2008/9 Peter Ruckdeschel
-}[keywords,comments]%%
-%------------------------------------------------------------------------------%
-
-%----------------
-\lstdefinestyle{RstyleO1}{fancyvrb=true,escapechar=`,extendedchars=false,%
-                          language=R,%
-                          basicstyle={\color{Rcolor}\small},%
-                          keywordstyle={\bf\color{Rcolor}},%Warning in print.taglist(taglist, LineLength = LineLength, offset.start = nchar(startS),  :
-  Some elements of taglist are too long
-
-                          commentstyle={\color{Rcommentcolor}\ttfamily\itshape},%
-                          literate={"}{\texttt{"}}1{<-}{{$\leftarrow$}}2{<<-}{{$\twoheadleftarrow$}}2{~}{{$\sim$}}1{<=}{{$\leq$}}2{>=}{{$\geq$}}2{^}{{$\scriptstyle\wedge$}}1,%
-                          alsoother={$},%
-                          alsoletter={.<-},%
-                          otherkeywords={!,!=,~,$,*,\&,\%/\%,\%*\%,\%\%,<-,<<-,/},%
-                          escapeinside={(*}{*)}}%
-%----------------
-\lstdefinestyle{Rstyle}{style=RstyleO1}
-
-%----------------
-\lstdefinestyle{Rdstyle}{fancyvrb=true,language=Rd,keywordstyle={\bf},%
-                         basicstyle={\color{black}\footnotesize},%
-                         commentstyle={\ttfamily\itshape},%
-                         alsolanguage=R}%
-%----------------
-%------------------------------------------------------------------------------%
-\global\def\Rlstset{\lstset{style=Rstyle}}%
-\global\def\Rdlstset{\lstset{style=Rdstyle}}%
-%------------------------------------------------------------------------------%
-\global\def\Rinlstset{\lstset{style=Rinstyle}}%
-\global\def\Routlstset{\lstset{style=Routstyle}}%
-\global\def\Rcodelstset{\lstset{style=Rcodestyle}}%
-%------------------------------------------------------------------------------%
-\Rlstset
-%------------------------------------------------------------------------------%
-%copying relevant parts of Sweave.sty
-%------------------------------------------------------------------------------%
-%
-\RequirePackage{graphicx,fancyvrb}%
-\IfFileExists{upquote.sty}{\RequirePackage{upquote}}{}%
-
-\RequirePackage{ifthen}%
-\newboolean{Sweave@gin}%
-\setboolean{Sweave@gin}{true}%
-\setkeys{Gin}{width=0.8\textwidth}%
-\newboolean{Sweave@ae}
-\setboolean{Sweave@ae}{true}%
-\RequirePackage[T1]{fontenc}
-\RequirePackage{ae}
-%
-\newenvironment{Schunk}{}{}
-
-\newcommand{\Sconcordance}[1]{% 
-\ifx\pdfoutput\undefined% 
-\csname newcount\endcsname\pdfoutput\fi% 
-\ifcase\pdfoutput\special{#1}% 
-\else\immediate\pdfobj{#1}\fi} 
-
-%------------------------------------------------------------------------------%
-% ---- end of parts of Sweave.sty
-%------------------------------------------------------------------------------%
-%
-% ---- input 
-\lstdefinestyle{RinstyleO}{style=Rstyle,fancyvrb=true,%
-                           basicstyle=\color{Rcolor}\small}%
-\lstdefinestyle{Rinstyle}{style=RinstyleO}
-\lstnewenvironment{Sinput}{\Rinlstset}{\Rlstset}
-%
-% ---- output 
-\lstdefinestyle{RoutstyleO}{
-V1=0,V2=1,V3=0}%
-\lstdefinestyle{Routstyle}{style=RoutstyleO}
-\lstnewenvironment{Soutput}{\Routlstset}{\Rlstset}
-%
-% ---- code 
-\lstdefinestyle{RcodestyleO}{style=Rstyle,fancyvrb=true,fontshape=sl,%
-                             basicstyle=\color{Rcolor}}%
-\lstdefinestyle{Rcodestyle}{style=RcodestyleO}
-\lstnewenvironment{Scode}{\Rcodelstset}{\Rlstset}
-%
-%------------------------------------------------------------------------------%
-\let\code\lstinline
-\def\Code#1{{\tt\color{Rcolor} #1}}
-\def\file#1{{\tt #1}} 
-\def\pkg#1{{\tt "#1"}} 
-\newcommand{\pkgversion}{{\tt 2.1}}
-%------------------------------------------------------------------------------%
-%------------------------------------------------------------------------------%
-%
-%
-
-> 
 > 
 > 
 > cleanEx()
@@ -1003,57 +331,7 @@ V1=0,V2=1,V3=0}%
 > ### ** Examples
 > 
 > require(MASS)
-
-\lstdefinestyle{RstyleO3}{style=RstyleO2,%
-% --------------------------
-% Registration of package MASS [recommended or base] 
-% --------------------------
-morekeywords={[11]wtloss,write.matrix,width.SJ,whiteside,waders,%
-ucv,truehist,theta.mm,theta.ml,theta.md,%
-synth.tr,synth.te,survey,studres,stormer,%
-stepAIC,steam,stdres,snails,shuttle,%
-shrimp,shoes,ships,select,sammon,%
-rotifer,road,rnegbin,rms.curv,rlm,%
-renumerate,rational,quine,qda,psi.huber,%
-psi.hampel,psi.bisquare,polr,phones,petrol,%
-parcoord,painters,oats,npr1,npk,%
-nlschools,newcomb,negexp.SSival,negative.binomial,neg.bin,%
-nclass.freq,mvrnorm,muscle,motors,minn38,%
-michelson,menarche,mcycle,mca,mammals,%
-ltsreg,lqs.formula,lqs,logtrans,loglm1,%
-loglm,lmwork,lmsreg,lm.ridge,lm.gls,%
-leuk,ldahist,lda,kde2d,isoMDS,%
-is.fractions,immer,hubers,huber,housing,%
-hist.scott,hist.FD,hills,glmmPQL,glm.nb,%
-glm.convert,ginv,gilgais,geyser,genotype,%
-gehan,gamma.shape,gamma.dispersion,galaxies,frequency.polygon,%
-fractions,forbes,fitdistr,fgl,fbeta,%
-farms,eqscplot,epil,enlist,eagles,%
-dropterm,drivers,dose.p,denumerate,deaths,%
-crabs,cpus,cov.trob,cov.rob,cov.mve,%
-cov.mcd,corresp,coop,contr.sdif,con2tr,%
-chem,cement,cats,caith,cabbages,%
-boxcox,birthwt,biopsy,beav2,beav1,%
-bcv,bandwidth.nrd,bacteria,as.fractions,area,%
-anorexia,addterm,accdeaths,abbey,VA,%
-UScrime,UScereal,Traffic,Skye,Sitka89,%
-Sitka,Shepard,SP500,Rubber,Rabbit,%
-Pima.tr2,Pima.tr,Pima.te,OME,Null,%
-Melanoma,Insurance,GAGurine,DDT,Cushings,%
-Cars93,Boston,Animals,Aids2%
-},%
-keywordstyle={[11]{\bf\color{RRecomdcolor}}}%
-%
-}%
-\lstdefinestyle{Rstyle}{style=RstyleO3}
-
-> lstsetLanguage(pkgs = c("MASS","stats"),
-+                keywordstyles  = paste("\\bfseries\\color{",c("blue","red"),"}",
-+                          sep="", collapse=""))
-> changeKeywordstyles(pkgs = c("distr","distrEx"),
-+                     keywordstyles = paste("\\bfseries\\color{",c("green","blue"),"}",
-+                     collapse="", sep = ""))
-> 
+Loading required package: MASS
 > 
 > 
 > cleanEx()
@@ -1082,300 +360,6 @@ $text
 
 $lines
 [1] 2 5
-
-> copySourceFromRForge("distr","R","AllClasses.R","distr", from ="setClass",
-+                       to ="\\}")
-$text
-  [1] "setClassUnion(\"OptionalMatrix\", "                                                   
-  [2] "               c(\"matrix\",\"NULL\")"                                                
-  [3] "               )"                                                                     
-  [4] "### from Matthias' thesis / ROptEst"                                                  
-  [5] "## optional numeric"                                                                  
-  [6] "setClassUnion(\"OptionalNumeric\", c(\"numeric\", \"NULL\"))"                         
-  [7] ""                                                                                     
-  [8] "################################"                                                     
-  [9] "##"                                                                                   
- [10] "## utility classes "                                                                  
- [11] "##"                                                                                   
- [12] "################################"                                                     
- [13] ""                                                                                     
- [14] "setClass(\"Integer\", contains =\"numeric\","                                         
- [15] "          validity = function(object) all(.isInteger(object)))"                       
- [16] ""                                                                                     
- [17] "################################"                                                     
- [18] "##"                                                                                   
- [19] "## space classes "                                                                    
- [20] "##"                                                                                   
- [21] "################################"                                                     
- [22] ""                                                                                     
- [23] "## virtal Class: rSpace"                                                              
- [24] "setClass(\"rSpace\", "                                                                
- [25] "          representation = representation(name = \"character\"), "                    
- [26] "          prototype = prototype(name = gettext(\"a space\")), "                       
- [27] "          contains = \"VIRTUAL\""                                                     
- [28] "          )"                                                                          
- [29] ""                                                                                     
- [30] "## Class: EuclideanSpace"                                                             
- [31] "setClass(\"EuclideanSpace\", "                                                        
- [32] "          representation = representation(dimension = \"numeric\"), "                 
- [33] "          contains = \"rSpace\","                                                     
- [34] "          prototype = prototype(dimension = 1, "                                      
- [35] "                                name = gettext(\"Euclidean Space\")"                  
- [36] "                                )"                                                    
- [37] "         )"                                                                           
- [38] ""                                                                                     
- [39] "## Class: Reals"                                                                      
- [40] "setClass(\"Reals\",  "                                                                
- [41] "          contains = \"EuclideanSpace\""                                              
- [42] "          )"                                                                          
- [43] ""                                                                                     
- [44] ""                                                                                     
- [45] "## Class: Lattice"                                                                    
- [46] "setClass(\"Lattice\", "                                                               
- [47] "          representation = representation(pivot = \"numeric\", width = \"numeric\", " 
- [48] "                                          Length = \"numeric\""                       
- [49] "### masking not possible here -> Length instead of length"                            
- [50] "                                          ),"                                         
- [51] "          prototype = prototype(pivot = 0, width = 1, Length = 2, "                   
- [52] "                                name = gettext(\"a default lattice\")"                
- [53] "                                ),"                                                   
- [54] "          contains = \"rSpace\""                                                      
- [55] "         )"                                                                           
- [56] ""                                                                                     
- [57] "## Class: Naturals"                                                                   
- [58] "setClass(\"Naturals\", "                                                              
- [59] "          contains = \"Reals\""                                                       
- [60] "          )"                                                                          
- [61] ""                                                                                     
- [62] "################################"                                                     
- [63] "##"                                                                                   
- [64] "## parameter classes"                                                                 
- [65] "##"                                                                                   
- [66] "################################"                                                     
- [67] ""                                                                                     
- [68] "setClass(\"Parameter\", "                                                             
- [69] "          representation = representation(name = \"character\"), "                    
- [70] "          prototype = prototype(name = gettext(\"a parameter\"))"                     
- [71] "          )"                                                                          
- [72] ""                                                                                     
- [73] "setClassUnion(\"OptionalParameter\", "                                                
- [74] "               c(\"Parameter\",\"NULL\")"                                             
- [75] "               )"                                                                     
- [76] ""                                                                                     
- [77] ""                                                                                     
- [78] "## Class: ChisqParameter"                                                             
- [79] "setClass(\"ChisqParameter\", "                                                        
- [80] "          representation = representation(df = \"numeric\", ncp = \"numeric\"), "     
- [81] "          prototype = prototype(df = 1, ncp = 0, "                                    
- [82] "                      name = gettext(\"Parameter of a Chisq distribution\")"          
- [83] "                      ), "                                                            
- [84] "          contains = \"Parameter\""                                                   
- [85] "          )"                                                                          
- [86] ""                                                                                     
- [87] "### Class: DiracParameter"                                                            
- [88] "setClass(\"DiracParameter\", "                                                        
- [89] "          representation = representation(location = \"numeric\"), "                  
- [90] "          prototype = prototype(location = 0, "                                       
- [91] "                      name = gettext(\"Parameter of a Dirac distribution\")"          
- [92] "                      ), "                                                            
- [93] "          contains = \"Parameter\""                                                   
- [94] "          )"                                                                          
- [95] ""                                                                                     
- [96] "## Class: ExpParameter"                                                               
- [97] "setClass(\"ExpParameter\", "                                                          
- [98] "          representation = representation(rate = \"numeric\"), "                      
- [99] "          prototype = prototype(rate = 1, name = "                                    
-[100] "                      gettext(\"Parameter of an Exponential distribution\")"          
-[101] "                      ),  "                                                           
-[102] "          contains = \"Parameter\""                                                   
-[103] "          )"                                                                          
-[104] ""                                                                                     
-[105] "## Class: GammaParameter"                                                             
-[106] "setClass(\"GammaParameter\", "                                                        
-[107] "          representation = representation(shape = \"numeric\", scale = \"numeric\"), "
-[108] "          prototype = prototype(shape = 1, scale = 1, "                               
-[109] "                      name = gettext(\"Parameter of a Gamma distribution\")"          
-[110] "                      ), "                                                            
-[111] "          contains = \"Parameter\""                                                   
-[112] "          )"                                                                          
-[113] ""                                                                                     
-[114] "## Class: PoisParameter"                                                              
-[115] "setClass(\"PoisParameter\", "                                                         
-[116] "          representation = representation(lambda = \"numeric\"), "                    
-[117] "          prototype = prototype(lambda = 1, "                                         
-[118] "                      name = gettext(\"Parameter of a Poisson distribution\")"        
-[119] "                      ), "                                                            
-[120] "          contains = \"Parameter\""                                                   
-[121] "          )"                                                                          
-[122] ""                                                                                     
-[123] "## Class: NbinomParameter"                                                            
-[124] "setClass(\"NbinomParameter\", "                                                       
-[125] "          representation = representation(size = \"numeric\", prob = \"numeric\"), "  
-[126] "          prototype = prototype(size = 1, prob = 0.5, name = "                        
-[127] "                      gettext(\"Parameter of a Negative Binomial distribution\")"     
-[128] "                      ), "                                                            
-[129] "          contains = \"Parameter\""                                                   
-[130] "          )"                                                                          
-[131] ""                                                                                     
-[132] "## Class: HyperParameter"                                                             
-[133] "setClass(\"HyperParameter\", "                                                        
-[134] "          representation = representation(m = \"numeric\", n = \"numeric\", "         
-[135] "                                          k = \"numeric\""                            
-[136] "                                          ), "                                        
-[137] "          prototype = prototype(m = 1, n = 1, k = 1, name = "                         
-[138] "                      gettext(\"Parameter of a Hypergeometric distribution\")"        
-[139] "                      ), "                                                            
-[140] "          contains = \"Parameter\""                                                   
-[141] "          )"                                                                          
-[142] ""                                                                                     
-[143] "## Class: BinomParameter"                                                             
-[144] "setClass(\"BinomParameter\", "                                                        
-[145] "          representation = representation(size = \"numeric\", prob = \"numeric\"), "  
-[146] "          prototype = prototype(size = 1, prob = 0.5, name = "                        
-[147] "                      gettext(\"Parameter of a Binomial distribution\")"              
-[148] "                      ), "                                                            
-[149] "          contains = \"Parameter\""                                                   
-[150] "          )"                                                                          
-[151] ""                                                                                     
-[152] "#-"                                                                                   
-[153] "## no longer needed: this is a negBinom with size 1 no longer "                       
-[154] "#-"                                                                                   
-[155] "### !!! deprecated as of version 1.9 !!!"                                             
-[156] "##"                                                                                   
-[157] "## Class: GeomParameter   "                                                           
-[158] "setClass(\"GeomParameter\", "                                                         
-[159] "          representation = representation(prob = \"numeric\"), "                      
-[160] "          prototype = prototype(prob = 0.5, name = "                                  
-[161] "                      gettext(\"Parameter of a Geometric distribution\")"             
-[162] "                      ), "                                                            
-[163] "          contains = \"Parameter\""                                                   
-[164] "          )"                                                                          
-[165] "### !!! end of deprecated !!! "                                                       
-[166] ""                                                                                     
-[167] "## Class: CauchyParameter"                                                            
-[168] "setClass(\"CauchyParameter\", "                                                       
-[169] "          representation = representation(location = \"numeric\", "                   
-[170] "                                          scale = \"numeric\""                        
-[171] "                                          ), "                                        
-[172] "          prototype = prototype(location = 0, scale = 1, name = "                     
-[173] "                      gettext(\"Parameter of a Cauchy distribution\")"                
-[174] "                      ), "                                                            
-[175] "          contains = \"Parameter\""                                                   
-[176] "          )"                                                                          
-[177] ""                                                                                     
-[178] "## Class: NormParameter"                                                              
-[179] "setClass(\"NormParameter\", "                                                         
-[180] "          representation = representation(mean = \"numeric\", sd = \"vector\"), "     
-[181] "          prototype = prototype(mean = 0, sd = 1, name = "                            
-[182] "                      gettext(\"Parameter of a Normal distribution\")"                
-[183] "                      ), "                                                            
-[184] "          contains = \"Parameter\""                                                   
-[185] "          )"                                                                          
-[186] ""                                                                                     
-[187] "## Class: UniNormParameter"                                                           
-[188] "setClass(\"UniNormParameter\", "                                                      
-[189] "          prototype = prototype(name = "                                              
-[190] "                      gettext(\"Parameter of a univariate Normal distribution\")"     
-[191] "                      ), "                                                            
-[192] "          contains = \"NormParameter\""                                               
-[193] "          )"                                                                          
-[194] ""                                                                                     
-[195] "## Class: UnifParameter"                                                              
-[196] "setClass(\"UnifParameter\", "                                                         
-[197] "          representation = representation(Min = \"numeric\", Max = \"numeric\"), "    
-[198] "          prototype = prototype(Min = 0, Max = 1, name =  "                           
-[199] "                      gettext(\"Parameter of a Uniform distribution\")"               
-[200] "                      ), "                                                            
-[201] "          contains = \"Parameter\""                                                   
-[202] "          )"                                                                          
-[203] ""                                                                                     
-[204] "## Class: FParameter"                                                                 
-[205] "setClass(\"FParameter\", "                                                            
-[206] "          representation = representation(df1 = \"numeric\", df2 = \"numeric\", "     
-[207] "                                          ncp = \"numeric\""                          
-[208] "                                          ), "                                        
-[209] "          prototype = prototype(df1 = 1, df2 = 1, ncp = 0, name = "                   
-[210] "                      gettext(\"Parameter of a Fisher-Snedecor/F distribution\")"     
-[211] "                      ), "                                                            
-[212] "          contains = \"Parameter\""                                                   
-[213] "          )"                                                                          
-[214] ""                                                                                     
-[215] "## Class: TParameter"                                                                 
-[216] "setClass(\"TParameter\", "                                                            
-[217] "          representation = representation(df = \"numeric\", ncp = \"numeric\"), "     
-[218] "          prototype = prototype(df = 1, ncp = 0, name = "                             
-[219] "                      gettext(\"Parameter of a Student/T distribution\")"             
-[220] "                      ), "                                                            
-[221] "          contains = \"Parameter\""                                                   
-[222] "          )"                                                                          
-[223] ""                                                                                     
-[224] "## Class: LNormParameter"                                                             
-[225] "setClass(\"LnormParameter\", "                                                        
-[226] "          representation = representation(meanlog = \"numeric\","                     
-[227] "                                          sdlog = \"numeric\""                        
-[228] "                                          ), "                                        
-[229] "          prototype = prototype(meanlog = 0, meansd = 1, name =  "                    
-[230] "                      gettext(\"Parameter of a Log-Normal distribution\")"            
-[231] "                      ), "                                                            
-[232] "          contains = \"Parameter\""                                                   
-[233] "          )"                                                                          
-[234] ""                                                                                     
-[235] "## Class: BetaParameter"                                                              
-[236] "setClass(\"BetaParameter\", "                                                         
-[237] "          representation = representation(shape1 = \"numeric\", "                     
-[238] "                                          shape2 = \"numeric\", ncp = \"numeric\""    
-[239] "                                          ), "                                        
-[240] "          prototype = prototype(shape1 = 1, shape2 = 1, ncp = 0, name = "             
-[241] "                      gettext(\"Parameter of a Beta distribution\")"                  
-[242] "                      ), "                                                            
-[243] "          contains = \"Parameter\""                                                   
-[244] "          )"                                                                          
-[245] ""                                                                                     
-[246] "## Class: LogisParameter"                                                             
-[247] "setClass(\"LogisParameter\", "                                                        
-[248] "          representation = representation(location = \"numeric\", "                   
-[249] "                                          scale = \"numeric\""                        
-[250] "                                          ), "                                        
-[251] "          prototype = prototype(location = 0, scale = 1, name = "                     
-[252] "                      gettext(\"Parameter of a Logistic distribution\")"              
-[253] "                      ), "                                                            
-[254] "          contains = \"Parameter\""                                                   
-[255] "          )"                                                                          
-[256] ""                                                                                     
-[257] "## Class: WeibullParameter"                                                           
-[258] "setClass(\"WeibullParameter\", "                                                      
-[259] "          representation = representation(shape = \"numeric\", "                      
-[260] "                                          scale = \"numeric\""                        
-[261] "                                          ), "                                        
-[262] "          prototype = prototype(shape = 1, scale = 1, name = "                        
-[263] "                      gettext(\"Parameter of a Weibull distribution\")"               
-[264] "                      ), "                                                            
-[265] "          contains = \"Parameter\""                                                   
-[266] "          )"                                                                          
-[267] ""                                                                                     
-[268] "################################"                                                     
-[269] "##"                                                                                   
-[270] "## matrix classes"                                                                    
-[271] "##"                                                                                   
-[272] "################################"                                                     
-[273] "## positive definite, symmetric matrices with finite entries"                         
-[274] "setClass(\"PosSemDefSymmMatrix\", contains = \"matrix\","                             
-[275] "            prototype = prototype(matrix(1)),"                                        
-[276] "            validity = function(object){"                                             
-[277] "                if(nrow(object) != ncol(object))"                                     
-[278] "                    stop(\"no square matrix\")"                                       
-[279] "                if(any(!is.finite(object)))"                                          
-[280] "                    stop(\"inifinite or missing values in matrix\")"                  
-[281] "                if(!isTRUE(all.equal(object, t(object), .Machine$double.eps^0.5,"     
-[282] "                                     check.attributes = FALSE)))"                     
-[283] "                    stop(\"matrix is not symmetric\")"                                
-[284] "                if(!all(eigen(object)$values > -100*.Machine$double.eps))"            
-[285] "                   stop(\"matrix is (numerically) not positive semi - definite\")"    
-[286] "               return(TRUE)"                                                          
-[287] "            })"                                                                       
-
-$lines
-[1]  45 331
 
 > 
 > 
@@ -1413,36 +397,7 @@ SweaveListingUtils             Matrix            splines
 > ### ** Examples
 > 
 > require(survival)
-
-\lstdefinestyle{RstyleO4}{style=RstyleO3,%
-% --------------------------
-% Registration of package survival [recommended or base] 
-% --------------------------
-morekeywords={[12]veteran,uspop2,untangle.specials,transplant,tobin,%
-tmerge,tcut,survregDtest,survreg.fit,survreg.distributions,%
-survreg.control,survreg,survpenal.fit,survobrien,survfitcoxph.fit,%
-survfitKM,survfitCI,survfit.formula,survfit,survexp.usr,%
-survexp.us,survexp.mn,survexp,survdiff,survSplit,%
-survConcordance.fit,survConcordance,strata,stanford2,ridge,%
-retinopathy,rats2,rats,ratetableDate,ratetable,%
-qsurvreg,pyears,psurvreg,pspline,pbcseq,%
-pbc,ovarian,nwtco,neardate,mgus2,%
-mgus1,mgus,match.ratetable,lung,logan,%
-leukemia,labels.survreg,kidney,jasa1,jasa,%
-is.ratetable,is.na.Surv,is.Surv,heart,genfan,%
-frailty.t,frailty.gaussian,frailty.gamma,frailty,format.Surv,%
-flchain,finegray,dsurvreg,coxph.wtest,coxph.fit,%
-coxph.detail,coxph.control,coxph,cox.zph,colon,%
-cluster,clogit,cgd0,cgd,cch,%
-cancer,bladder2,bladder1,bladder,basehaz,%
-attrassign,aml,agreg.fit,agexact.fit,aareg,%
-Surv%
-},%
-keywordstyle={[12]{\bf\color{RRecomdcolor}}}%
-%
-}%
-\lstdefinestyle{Rstyle}{style=RstyleO4}
-
+Loading required package: survival
 > 
 > 
 > 
@@ -1805,14 +760,21 @@ A=H,b=2,V3=3}%
 > lstsetR()
 
 %----------------
-NULL
-}%
+\lstset{fancyvrb=true,escapechar=`,extendedchars=false,language=R,%
+        basicstyle={\color{Rcolor}\small},%
+        keywordstyle={\bf\color{Rcolor}},%
+        commentstyle={\color{Rcommentcolor}\ttfamily\itshape},%
+        literate={"}{\texttt{"}}1{<-}{{$\leftarrow$}}2{<<-}{{$\twoheadleftarrow$}}2{~}{{$\sim$}}1{<=}{{$\leq$}}2{>=}{{$\geq$}}2{^}{{$\scriptstyle\wedge$}}1,%
+        alsoother={$},alsoletter={.<-},%
+        otherkeywords={!,!=,~,$,*,\&,\%/\%,\%*\%,\%\%,<-,<<-,/},%
+        escapeinside={(*}{*)}}%
 %----------------
 > lstsetRd()
 
 %----------------
-NULL
-}%
+\lstset{fancyvrb=true,language=Rd,keywordstyle={\bf},%
+        basicstyle={\color{black}\footnotesize},%
+        commentstyle={\ttfamily\itshape},alsolanguage=R}%
 %----------------
 > 
 > 
@@ -1831,15 +793,119 @@ NULL
 > ### ** Examples
 > 
 > require(MASS)
+Loading required package: MASS
 > lstsetLanguage(pkgs = c("MASS","stats"),
 +                keywordstyles  = paste("\\bfseries\\color{",c("blue","red"),"}",
 +                          sep="", collapse=""))
+
+\lstdefinestyle{RstyleO2}{style=RstyleO1,%
+% --------------------------
+% Registration of package MASS [recommended or base] 
+% --------------------------
+morekeywords={[2]wtloss,write.matrix,width.SJ,whiteside,waders,%
+ucv,truehist,theta.mm,theta.ml,theta.md,%
+synth.tr,synth.te,survey,studres,stormer,%
+stepAIC,steam,stdres,snails,shuttle,%
+shrimp,shoes,ships,select,sammon,%
+rotifer,road,rnegbin,rms.curv,rlm,%
+renumerate,rational,quine,qda,psi.huber,%
+psi.hampel,psi.bisquare,polr,phones,petrol,%
+parcoord,painters,oats,npr1,npk,%
+nlschools,newcomb,negexp.SSival,negative.binomial,neg.bin,%
+nclass.freq,mvrnorm,muscle,motors,minn38,%
+michelson,menarche,mcycle,mca,mammals,%
+ltsreg,lqs.formula,lqs,logtrans,loglm1,%
+loglm,lmwork,lmsreg,lm.ridge,lm.gls,%
+leuk,ldahist,lda,kde2d,isoMDS,%
+is.fractions,immer,hubers,huber,housing,%
+hist.scott,hist.FD,hills,glmmPQL,glm.nb,%
+glm.convert,ginv,gilgais,geyser,genotype,%
+gehan,gamma.shape,gamma.dispersion,galaxies,frequency.polygon,%
+fractions,forbes,fitdistr,fgl,fbeta,%
+farms,eqscplot,epil,enlist,eagles,%
+dropterm,drivers,dose.p,denumerate,deaths,%
+crabs,cpus,cov.trob,cov.rob,cov.mve,%
+cov.mcd,corresp,coop,contr.sdif,con2tr,%
+chem,cement,cats,caith,cabbages,%
+boxcox,birthwt,biopsy,beav2,beav1,%
+bcv,bandwidth.nrd,bacteria,as.fractions,area,%
+anorexia,addterm,accdeaths,abbey,VA,%
+UScrime,UScereal,Traffic,Skye,Sitka89,%
+Sitka,Shepard,SP500,Rubber,Rabbit,%
+Pima.tr2,Pima.tr,Pima.te,OME,Null,%
+Melanoma,Insurance,GAGurine,DDT,Cushings,%
+Cars93,Boston,Animals,Aids2%
+},%
+keywordstyle={[2]\bfseries\color{blue}\bfseries\color{red}},%
+%
+% --------------------------
+% Registration of package stats [recommended or base] 
+% --------------------------
+morekeywords={[3]xtabs,write.ftable,window<-,wilcox.test,weighted.residuals,%
+weighted.mean,vcov,varimax,variable.names,var.test,%
+update.formula,update.default,tsp<-,tsdiag,tsSmooth,%
+ts.union,ts.plot,ts.intersect,toeplitz,terms.formula,%
+termplot,t.test,supsmu,summary.stepfun,summary.manova,%
+summary.lm,summary.glm,summary.aov,stl,stepfun,%
+stat.anova,splinefunH,spectrum,spec.taper,spec.pgram,%
+spec.ar,sortedXyData,smoothEnds,smooth.spline,smooth,%
+simulate,sigma,shapiro.test,setNames,selfStart,%
+se.contrast,screeplot,scatter.smooth,runmed,rmultinom,%
+residuals.lm,residuals.glm,reshape,reorder,rect.hclust,%
+read.ftable,rWishart,r2dtable,quasipoisson,quasibinomial,%
+quade.test,qbirthday,prop.trend.test,prop.test,promax,%
+printCoefmat,princomp,predict.lm,predict.glm,prcomp,%
+ppr,power.t.test,power.prop.test,power.anova.test,polym,%
+poisson.test,plot.ts,plot.stepfun,plot.spec.phase,plot.spec.coherency,%
+plot.ecdf,plclust,pbirthday,pairwise.wilcox.test,pairwise.table,%
+pairwise.t.test,pairwise.prop.test,pacf,p.adjust.methods,p.adjust,%
+order.dendrogram,optimHess,oneway.test,numericDeriv,nobs,%
+nls.control,nls,nlminb,naresid,naprint,%
+napredict,na.pass,na.omit,na.fail,na.exclude,%
+na.contiguous,na.action,mood.test,monthplot,model.weights,%
+model.tables,model.response,model.offset,model.matrix.lm,model.matrix.default,%
+model.matrix,model.frame.default,model.frame,model.extract,medpolish,%
+median.default,mcnemar.test,mauchly.test,mantelhaen.test,manova,%
+makepredictcall,makeARIMA,make.link,ls.print,ls.diag,%
+logLik,loess.smooth,loess.control,loess,loadings,%
+lm.wfit,lm.influence,lm.fit,line,lag.plot,%
+lag,ksmooth,ks.test,kruskal.test,knots,%
+kmeans,kernel,kernapply,isoreg,is.tskernel,%
+is.ts,is.stepfun,is.mts,is.leaf,is.empty.model,%
+inverse.gaussian,interaction.plot,integrate,influence.measures,heatmap,%
+hclust,hatvalues,glm.fit,glm.control,get_all_vars,%
+getInitial,getCall,friedman.test,fligner.test,fitted.values,%
+fisher.test,filter,factor.scope,factanal,expand.model.frame,%
+estVar,embed,eff.aovlist,ecdf,dummy.coef.lm,%
+dummy.coef,drop.terms,drop.scope,dmultinom,dist,%
+diffinv,dfbeta,df.residual,df.kernel,deriv3,%
+density.default,dendrapply,delete.response,decompose,cutree,%
+cpgram,cov2cor,cov.wt,cor.test,cophenetic,%
+cooks.distance,contrasts<-,contr.treatment,contr.sum,contr.poly,%
+contr.helmert,contr.SAS,constrOptim,confint.lm,confint.default,%
+confint,complete.cases,cmdscale,chisq.test,ccf,%
+case.names,cancor,bw.ucv,bw.nrd0,bw.nrd,%
+bw.bcv,bw.SJ,biplot,binom.test,bartlett.test,%
+bandwidth.kernel,asOneSidedFormula,as.ts,as.stepfun,as.hclust,%
+as.formula,as.dist,as.dendrogram,arima0.diag,arima0,%
+arima.sim,arima,ar.yw,ar.ols,ar.mle,%
+ar.burg,ar,ansari.test,aggregate.ts,aggregate.data.frame,%
+addmargins,add.scope,acf2AR,acf,TukeyHSD,%
+StructTS,SSweibull,SSmicmen,SSlogis,SSgompertz,%
+SSfpl,SSfol,SSbiexp,SSasympOrig,SSasympOff,%
+SSasymp,SSD,PP.test,NLSstRtAsymptote,NLSstLfAsymptote,%
+NLSstClosestX,NLSstAsymptotic,KalmanSmooth,KalmanRun,KalmanLike,%
+KalmanForecast,HoltWinters,Box.test,BIC,ARMAtoMA,%
+ARMAacf,AIC%
+},%
+keywordstyle={[3]\bfseries\color{blue}\bfseries\color{red}}%
+%
+}%
+\lstdefinestyle{Rstyle}{style=RstyleO2}
+
 > ### not to be used:
 > print(SweaveListingUtils:::.alreadyDefinedPkgs)
- [1] "SweaveListingUtils" "startupmsg"         "stats"             
- [4] "graphics"           "grDevices"          "utils"             
- [7] "datasets"           "methods"            "base"              
-[10] "MASS"               "survival"          
+[1] "MASS"  "stats"
 > print(SweaveListingUtils:::.keywordsR)
   [1] "abbreviate"        "abline"            "abs"              
   [4] "acos"              "acosh"             "action"           
@@ -3334,7 +2400,7 @@ myList=HU=AHAL,%
 > ###
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  1.16 0.22 3.03 NA NA 
+Time elapsed:  1.23 0.21 2.83 NA NA 
 > grDevices::dev.off()
 null device 
           1 
