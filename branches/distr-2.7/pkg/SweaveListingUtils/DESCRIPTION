@@ -10,7 +10,7 @@ Depends: R(>= 2.14.0), startupmsg
 Suggests: distr, MASS, survival, distrEx, Matrix, splines
 Imports: methods
 ByteCompile: yes
-Authors@R: person("Peter", "Ruckdeschel", role=c("cre", "cph"),
+Authors@R: person("Peter", "Ruckdeschel", role=c("cre", "cph", "aut"),
         email="peter.ruckdeschel@uni-oldenburg.de")
 License: LGPL-3
 Date: 2016-04-23

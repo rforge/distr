@@ -7,7 +7,7 @@ Description: S4-distribution classes based on package distr for distributions fr
 Depends: R(>= 2.6.0), methods, distr(>= 2.4), fBasics(>= 270.73), fGarch(>= 270.73)
 Suggests: distrEx(>= 2.4), distrMod(>= 2.4)
 Imports: startupmsg
-Authors@R: person("Peter", "Ruckdeschel", role=c("cre", "cph"),
+Authors@R: person("Peter", "Ruckdeschel", role=c("cre", "cph", "aut"),
         email="peter.ruckdeschel@uni-oldenburg.de")
 ByteCompile: yes
 License: LGPL-3
