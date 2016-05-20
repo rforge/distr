@@ -270,7 +270,7 @@ setMethod("qqplot", signature(x = "ANY",
         }
        }
     }
-    qqplotInfo <- c(ret, qqplotInfo, qqb)
+    qqplotInfo <- c(call=mc, ret, qqplotInfo, qqb)
     class(qqplotInfo) <- c("qqplotInfo","DiagnInfo")
     return(invisible(qqplotInfo))
     })
@@ -292,8 +292,10 @@ setMethod("qqplot", signature(x = "ANY",
     if(!is(yD,"UnivariateDistribution"))
        stop("Not yet implemented.")
 
-    return(invisible(do.call(getMethod("qqplot", signature(x="ANY", y="UnivariateDistribution")),
-            args=mcl)))
+    retv <- do.call(getMethod("qqplot", signature(x="ANY", y="UnivariateDistribution")),
+            args=mcl)
+    retv$call <- mc        
+    return(invisible(retv))
     })
 
 setMethod("qqplot", signature(x = "ANY",
@@ -321,7 +323,9 @@ setMethod("qqplot", signature(x = "ANY",
 
     PFam0 <- modifyModel(PFam, param)
     mcl$y <- PFam0
-    return(invisible(do.call(getMethod("qqplot", signature(x="ANY", y="ProbFamily")),
-            args=mcl)))
+    retv <- do.call(getMethod("qqplot", signature(x="ANY", y="ProbFamily")),
+            args=mcl)
+    retv$call <- mc        
+    return(invisible(retv))
     })
 
