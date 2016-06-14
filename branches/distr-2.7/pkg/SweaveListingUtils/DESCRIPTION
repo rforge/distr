@@ -5,7 +5,7 @@ Description: Provides utilities for defining R / Rd as "language" for TeX-packag
 		recent version (or another URL) thereby avoiding inconsistencies between vignette 
 		and documented source code.
 Encoding: latin1
-Version: 0.7.4
+Version: 0.7.6
 Depends: R(>= 2.14.0), startupmsg
 Suggests: distr, MASS, survival, distrEx, Matrix, splines
 Imports: methods
@@ -13,7 +13,7 @@ ByteCompile: yes
 Authors@R: person("Peter", "Ruckdeschel", role=c("cre", "cph", "aut"),
         email="peter.ruckdeschel@uni-oldenburg.de")
 License: LGPL-3
-Date: 2016-04-23
+Date: 2016-06-14
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
 SVNRevision: 1080
