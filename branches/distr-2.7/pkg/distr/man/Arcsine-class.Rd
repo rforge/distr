@@ -6,9 +6,9 @@
 \title{Class "Arcsine"}
 \description{
   The Arcsine distribution has density
-  \deqn{f(x)=\frac{1}{\pi \sqrt{1-x^2)}%
+  \deqn{f(x)=\frac{1}{\pi \sqrt{1-x^2}%
   }}{1/sqrt(1+x^2)/pi}
-  for \eqn{-1 \le x \le 1}{-1 <= x <= 1}.
+  for \eqn{-1 < x < 1}{-1 < x < 1}.
 }
 
 \section{Objects from the Class}{
