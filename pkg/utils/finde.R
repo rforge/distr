@@ -23,6 +23,10 @@ infind(dir)
 #finde(x="Wow6432Node", dir ="C:/R/devel/src/gnuwin32", rec=TRUE, ext="")
 
 #finde(x="getPos", dir ="C:/rtest/distr/branches/distr-2.4/pkg/distrMod/", rec=TRUE)
+
+finde(x="\\.LowerCaseMultivariateTV", dir ="C:/rtest/robast/branches/robast-1.0/pkg/RobAStBase/R")
+finde(x="\\.checkEstClassForParamFamily", dir ="C:/rtest/distr/pkg/distrMod/R")
+finde(x="\\.cexscale", dir ="C:/rtest/robast/branches/robast-1.1/pkg/RobAStBase", rec=TRUE)
 finde(x="updatePackageHelp", dir ="C:/rtest/distr/pkg/utils", rec=TRUE)
 finde(x="roptest\\(", dir ="C:/rtest/robast/branches/robast-0.9/pkg/ROptEst/", rec=TRUE)
 finde(x="getSlots\\(", dir ="C:/rtest/distr/branches/distr-2.4/pkg/distrMod/", rec=TRUE)
