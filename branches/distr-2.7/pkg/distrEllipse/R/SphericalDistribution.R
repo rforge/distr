@@ -43,30 +43,20 @@ setReplaceMethod("radDistr", "SphericalDistribution",
 ## wrappers:
 
 setMethod("plot.rd", "SphericalDistribution",
-           function(x, ... ){ .Deprecated("plotRd", package="distrEllipse", 
-            msg = gettext("To avoid clashes with S3 method dispatch,
-             this function will soon be replaced by 'plotRd'"))
+           function(x, ... ){ .Deprecated("plotRd")
                               plot(x@radDistr,...)})
-setMethod("r.rd", "SphericalDistribution", function(object){ 
-.Deprecated("rRd", package="distrEllipse", 
-             msg = gettext("To avoid clashes with S3 method dispatch,
-             this function will soon be replaced by 'rRd'"))
-             r(object@radDistr)})
-setMethod("d.rd", "SphericalDistribution", function(object){ 
-.Deprecated("dRd", package="distrEllipse", 
-             msg = gettext("To avoid clashes with S3 method dispatch,
-             this function will soon be replaced by 'dRd'"))
-d(object@radDistr)})
-setMethod("p.rd", "SphericalDistribution", function(object){
-.Deprecated("pRd", package="distrEllipse", 
-             msg = gettext("To avoid clashes with S3 method dispatch,
-             this function will soon be replaced by 'pRd'"))
- p(object@radDistr)})
-setMethod("q.rd", "SphericalDistribution", function(object){
-.Deprecated("qRd", package="distrEllipse", 
-             msg = gettext("To avoid clashes with S3 method dispatch,
-             this function will soon be replaced by 'qRd'"))
- q(object@radDistr)})
+setMethod("r.rd", "SphericalDistribution", function(object) {
+                                                .Deprecated("rRd")
+                                                r(object@radDistr)})
+setMethod("d.rd", "SphericalDistribution", function(object) {
+                                                .Deprecated("dRd")
+                                                d(object@radDistr)})
+setMethod("p.rd", "SphericalDistribution", function(object) {
+                                                .Deprecated("pRd")
+                                                p(object@radDistr)}
+setMethod("q.rd", "SphericalDistribution", function(object) {
+                                                .Deprecated("qRd")
+                                                q(object@radDistr)}
 
 setMethod("plotRd", "SphericalDistribution",
            function(x, ... ) plot(x@radDistr,...))
