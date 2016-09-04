@@ -28,8 +28,9 @@ setMethod("CvMDist", signature(e1 = "numeric",
     function(e1, e2, mu = e1, ...)
         { o.warn <- getOption("warn"); options(warn = -1)
           on.exit(options(warn=o.warn))
-          if(identical(mu,e2))
-             return(.newCvMDist(e1,e2))
+          if(identical(mu,e2)){
+             if(is(e2, "AbscontDistribution"))
+             return(.newCvMDist(e1,e2)) }   
           e10 <- DiscreteDistribution(e1)       
           if(identical(mu,e1)) mu <- e10
           CvMDist(e1 = e10, e2 = e2, mu = mu, ...)
