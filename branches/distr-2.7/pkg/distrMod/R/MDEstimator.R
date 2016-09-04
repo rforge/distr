@@ -24,8 +24,9 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist,
 
     if(paramDepDist) dots$thetaPar <-NULL
 
+    distanceFctWithoutVal <- function(e1,e2,check.validity=NULL,...) distance(e1,e2,...)
     ## manipulation of the arg list to method mceCalc
-    argList <- c(list(x = x, PFam = ParamFamily, criterion = distance,
+    argList <- c(list(x = x, PFam = ParamFamily, criterion = distanceFctWithoutVal,
                    startPar = startPar, penalty = penalty, 
                    crit.name = dist.name, withthetaPar = paramDepDist))
 
