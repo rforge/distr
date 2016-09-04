@@ -64,6 +64,7 @@ under the hood:
   BUGFIXES:
 
 
++ fixed an issue with MDEstimator and validParameter
 + fixed issue with slot withPosRestr in ParamFamParameter.R 
 + fixed issue with check.validity (reported by B.Spangl)
 + fixed some minor issue in existsPIC (in case we get 0 matrix, and less strict tolerance) 
