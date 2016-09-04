@@ -53,10 +53,10 @@ setMethod("d.rd", "SphericalDistribution", function(object) {
                                                 d(object@radDistr)})
 setMethod("p.rd", "SphericalDistribution", function(object) {
                                                 .Deprecated("pRd")
-                                                p(object@radDistr)}
+                                                p(object@radDistr)})
 setMethod("q.rd", "SphericalDistribution", function(object) {
                                                 .Deprecated("qRd")
-                                                q(object@radDistr)}
+                                                q(object@radDistr)})
 
 setMethod("plotRd", "SphericalDistribution",
            function(x, ... ) plot(x@radDistr,...))
