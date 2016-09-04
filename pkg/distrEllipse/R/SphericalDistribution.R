@@ -43,11 +43,20 @@ setReplaceMethod("radDistr", "SphericalDistribution",
 ## wrappers:
 
 setMethod("plot.rd", "SphericalDistribution",
-           function(x, ... ) plot(x@radDistr,...))
-setMethod("r.rd", "SphericalDistribution", function(object) r(object@radDistr))
-setMethod("d.rd", "SphericalDistribution", function(object) d(object@radDistr))
-setMethod("p.rd", "SphericalDistribution", function(object) p(object@radDistr))
-setMethod("q.rd", "SphericalDistribution", function(object) q(object@radDistr))
+           function(x, ... ){ .Deprecated("plotRd")
+                              plot(x@radDistr,...)})
+setMethod("r.rd", "SphericalDistribution", function(object) {
+                                                .Deprecated("rRd")
+                                                r(object@radDistr)})
+setMethod("d.rd", "SphericalDistribution", function(object) {
+                                                .Deprecated("dRd")
+                                                d(object@radDistr)})
+setMethod("p.rd", "SphericalDistribution", function(object) {
+                                                .Deprecated("pRd")
+                                                p(object@radDistr)}
+setMethod("q.rd", "SphericalDistribution", function(object) {
+                                                .Deprecated("qRd")
+                                                q(object@radDistr)}
 
 setMethod("plotRd", "SphericalDistribution",
            function(x, ... ) plot(x@radDistr,...))
