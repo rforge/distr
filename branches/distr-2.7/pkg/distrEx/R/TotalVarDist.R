@@ -39,6 +39,23 @@ setMethod("TotalVarDist", signature(e1 = "DiscreteDistribution",
 
         return(res)
     })
+
+## new PR 08-09-16
+setMethod("TotalVarDist", signature(e1 = "DiscreteMVDistribution",
+                                    e2 = "DiscreteMVDistribution"),
+    function(e1, e2, ...){
+        o.warn <- getOption("warn"); options(warn = -1)
+        on.exit(options(warn=o.warn))
+        ## replace univariate line  supp <- union(support(e1), support(e2))   by
+
+        supp <- unique(rbind(support(e1), support(e2)))
+
+        res <- 0.5*sum(abs(d(e1)(supp)-d(e2)(supp)))
+        names(res) <- "total variation distance"
+
+        return(res)
+    })
+
 setMethod("TotalVarDist", signature(e1 = "DiscreteDistribution",
                                     e2 = "AbscontDistribution"),
     function(e1, e2, ...){
