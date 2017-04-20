@@ -3,7 +3,7 @@
 \alias{distr}
 \docType{package}
 \title{
-distr -- Object Orientated Implementation of Distributions
+distr -- Object Oriented Implementation of Distributions
 }
 \description{
 \pkg{distr} provides a conceptual treatment of distributions by means of S4
@@ -335,7 +335,7 @@ Matthias Kohl \email{Matthias.Kohl@stamats.de}\cr
 \references{
 P. Ruckdeschel, M. Kohl, T. Stabla, F. Camphausen (2006):
 S4 Classes for Distributions, \emph{R News}, \emph{6}(2), 2-6.
-\url{http://CRAN.R-project.org/doc/Rnews/Rnews_2006-2.pdf}
+\url{https://CRAN.R-project.org/doc/Rnews/Rnews_2006-2.pdf}
 
 P. Ruckdeschel and M. Kohl (2014):
    General purpose convolution algorithm for distributions

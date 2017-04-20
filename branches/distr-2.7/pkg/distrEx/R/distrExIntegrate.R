@@ -40,9 +40,10 @@
     W <- numeric(n)
 
 #    mm<-dyn.load("G:/rtest/GLaw.dll")
-    erg<-.C("gauleg",n = as.integer(n),eps = as.double(.Machine$double.eps),
-             A = as.double(A),W = as.double(W), PACKAGE = "distrEx") 
+    erg<-.C(C_gauleg,n = as.integer(n),eps = as.double(.Machine$double.eps),
+             A = as.double(A),W = as.double(W)) #, PACKAGE = "distrEx")
               ### PACKAGE ARGUMENT added P.R. 270507
+              #### removed again 200417 /  used registered symbol instead
 #    dyn.unload("G:/rtest/GLaw.dll")
 #
 # P.R. 20140810: .Call interface instead of .C interface

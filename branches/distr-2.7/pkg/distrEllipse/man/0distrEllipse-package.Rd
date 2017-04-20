@@ -101,7 +101,7 @@ Note: The first two numbers of package versions do not necessarily reflect
 \references{
 P. Ruckdeschel, M. Kohl, T. Stabla, F. Camphausen (2006):
 S4 Classes for Distributions, \emph{R News}, \emph{6}(2), 2-6. 
-\url{http://CRAN.R-project.org/doc/Rnews/Rnews_2006-2.pdf}
+\url{https://CRAN.R-project.org/doc/Rnews/Rnews_2006-2.pdf}
 
 A vignette for packages \pkg{distr}, \pkg{distrSim}, \pkg{distrTEst}, \pkg{distrEx},
 \pkg{distrTeach}, \pkg{distrMod}, and \pkg{distrEllipse}

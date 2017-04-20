@@ -178,7 +178,7 @@ as well as for certain scale-shape distributions to the new package
 \pkg{RobExtremes}. This concerns the Gumbel, Weibull, Pareto distributions.
 %\noindent The latter two of them require package \pkg{setRNG} by 
 %\href{mailto:pgilbert@bank-banque-canada.ca}{Paul Gilbert}
-%to be installed from \href{http://cran.r-project.org/mirrors.html}{\tt CRAN}. 
+%to be installed from \href{https://cran.r-project.org/mirrors.html}{\tt CRAN}.
 % \\
 
 %\noindent Additionally, mainly contributed by \cite{MK:05}, in \pkg{distrEx} we 
@@ -2765,7 +2765,7 @@ From version 2.4 on, this infrastructure has moved to package \pkg{RobExtremes}.
 In package \pkg{distrSim}, and conseqently also in package \pkg{distrTEst} we 
 use \href{mailto:pgilbert@bank-banque-canada.ca}{Paul Gilbert's}  
 package \pkg{setRNG}
-to be installed from \href{http://cran.r-project.org/mirrors.html}{\tt CRAN}
+to be installed from \href{https://cran.r-project.org/mirrors.html}{\tt CRAN}
 for the control of the seed of the random number generator in our simulation 
 classes.
 More precisely, for our version $\le$ {\tt 1.6}  we need his
@@ -2774,7 +2774,7 @@ and for our version $\ge$ {\tt 1.7} we need his version $\ge$ {\tt 2006.2-1}.
 
 From package version {\tt 1.7}/{\tt 0.4-3} on, we also need package
  \pkg{startupmsg} by the first of the present authors, which also is available 
- on \href{http://cran.r-project.org/mirrors.html}{\tt CRAN}.
+ on \href{https://cran.r-project.org/mirrors.html}{\tt CRAN}.
 
 \subsection{License}
 This software is distributed under the terms of the GNU GENERAL
@@ -3626,7 +3626,7 @@ Rice J.A. (1988):
 Ruckdeschel P., Kohl M., Stabla T., and Camphausen F. (2006):
 \newblock {S4 Classes for Distributions.} 
 \newblock {\em R-News\/}, {\bf 6}(2): 10--13.
-\newblock http://CRAN.R-project.org/doc/Rnews/Rnews\_2006-2.pdf
+\newblock https://CRAN.R-project.org/doc/Rnews/Rnews\_2006-2.pdf
 %\newblock See also {http://www.uni-bayreuth.de/departments/math/org/mathe7/RUCKDESCHEL/pubs/distr.pdf}
 
 \end{thebibliography}

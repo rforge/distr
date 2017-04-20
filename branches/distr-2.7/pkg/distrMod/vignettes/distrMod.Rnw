@@ -160,7 +160,7 @@ see Sections~\ref{modelsec} and \ref{estsec} for more details.
 
 \textbf{Availability } The current version of package~\pkg{distrMod} is 2.2
 and can be found on the Comprehensive \proglang{R} Archive Network at 
-\url{http://CRAN.R-project.org/package=distrMod}. The development version of the distr-family is located at R-Forge; 
+\url{https://CRAN.R-project.org/package=distrMod}. The development version of the distr-family is located at R-Forge;
 see~\citet{RForge}.
 % -----------------------------------------------------------------------------
 \subsection{Running examples}\label{examples}
@@ -350,7 +350,7 @@ interface, but this will hopefully be done in the future.
 
 \textbf{Packages \pkg{distr} and \pkg{distrEx} } Much of our infrastructure
 relies on our \proglang{R} packages \pkg{distr} and \pkg{distrEx} available on
-\href{http://cran.r-project.org/}{\tt CRAN}.
+\href{https://cran.r-project.org/}{\tt CRAN}.
 Package \pkg{distr}, see~\citet{distr,distrTeach}, aims to provide a conceptual
 treatment of distributions by means of \proglang{S}4 classes. A mother class 
 \code{Distribution} is introduced with slots for a parameter and for functions 

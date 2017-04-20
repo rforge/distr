@@ -203,7 +203,7 @@ plot(AC, panel.first = grid(), lwd = 2)
 If you would like to create new parametric distributions, using already 
 implemented {\tt r}, {\tt d}, {\tt p}, and {\tt q} functions
 (e.g.\ implementing additional distributions realized in another 
-\href{http://cran.r-project.org}{\tt CRAN} package), 
+\href{https://cran.r-project.org}{\tt CRAN} package),
 you should probably envisage introducing new distribution {\tt S4} (sub-)classes
 and hence better look at the implementation of some discrete and 
 continuous parametric distribution classes in package \pkg{distr}.
@@ -399,7 +399,7 @@ by means of FFT}.
 Ruckdeschel P., Kohl M., Stabla T., and Camphausen F. (2006):
 \newblock {S4 Classes for Distributions.} 
 \newblock {\em R-News\/}, {\bf 6}(2): 10--13.
-\newblock http://CRAN.R-project.org/doc/Rnews/Rnews\_2006-2.pdf
+\newblock https://CRAN.R-project.org/doc/Rnews/Rnews\_2006-2.pdf
 %\newblock See also {http://www.uni-bayreuth.de/departments/math/org/mathe7/RUCKDESCHEL/pubs/distr.pdf}
 
 \end{thebibliography}

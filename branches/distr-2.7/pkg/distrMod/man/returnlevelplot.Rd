@@ -201,7 +201,7 @@ are also valid for this signature.}
 }
 \references{
   ismev: An   Introduction to Statistical Modeling of Extreme Values. R package
-  version 1.39. http://CRAN.R-project.org/package=ismev; original S functions
+  version 1.39. https://CRAN.R-project.org/package=ismev; original S functions
   written by Janet E. Heffernan with R port and R documentation provided by
   Alec G. Stephenson. (2012).
 
