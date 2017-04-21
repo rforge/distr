@@ -1,4 +1,4 @@
-useDynLib("distrEx")
+useDynLib("distrEx", .registration = TRUE, .fixes = "C_")
 importFrom("stats", "dnorm", "integrate", "optimize", "pbinom",
              "pchisq", "pexp", "pnorm", "ppois", "qcauchy", "qnorm",
              "uniroot")

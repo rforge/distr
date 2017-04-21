@@ -115,6 +115,7 @@ setToBeDefinedPkgs(pkgs = c("distr","distrEx","distrTEst","distrSim",
 \smallskip\\
 \small Institute for Mathematics\\[-.5ex]
 \small School of Mathematics and Science\\[-.5ex]
+\small Oldenburg University\\[-.5ex]
 \small PO box 25 03\\[-.5ex]
 \small 26111 Oldenburg (Oldb.)\\[-.5ex]
 \small Germany\\

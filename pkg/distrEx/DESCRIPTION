@@ -1,6 +1,6 @@
 Package: distrEx
-Version: 2.6
-Date: 2016-04-23
+Version: 2.6.1
+Date: 2017-04-21
 Title: Extensions of Package 'distr'
 Description: Extends package 'distr' by functionals, distances, and conditional distributions.
 Depends: R(>= 2.10.0), methods, distr(>= 2.2)
@@ -15,4 +15,4 @@ Encoding: latin1
 URL: http://distr.r-forge.r-project.org/
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
-SVNRevision: 1089
+SVNRevision: 1133

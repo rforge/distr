@@ -96,9 +96,11 @@ setToBeDefinedPkgs(pkgs = c("SweaveListingUtils","distr"),
 %,version \pkgExversion}
 \author{\small Peter Ruckdeschel\thanks{Fraunhofer ITWM, Kaiserslautern}
 \smallskip\\
-\small Fraunhofer ITWM\\[-.5ex]
-\small Fraunhofer Platz 1\\[-.5ex]
-\small 67663 Kaiserslautern\\[-.5ex]
+\small Institute for Mathematics\\[-.5ex]
+\small School of Mathematics and Science\\[-.5ex]
+\small Oldenburg University\\[-.5ex]
+\small PO box 25 03\\[-.5ex]
+\small 26111 Oldenburg (Oldb.)\\[-.5ex]
 \small Germany\\
 \small e-Mail: \href{mailto:peter.ruckdeschel@uni-oldenburg.de}%
 {\small \tt {peter.ruckdeschel@uni-oldenburg.de}}\medskip\\

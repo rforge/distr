@@ -27,15 +27,15 @@ Support for  extreme value distributions has moved to package \pkg{RobExtremes}
 \details{
 \tabular{ll}{
 Package: \tab distrEx \cr
-Version: \tab 2.6 \cr
-Date: \tab 2016-04-23 \cr
+Version: \tab 2.6.1 \cr
+Date: \tab 2017-04-21 \cr
 Depends: \tab R(>= 2.10.0), methods, distr(>= 2.2) \cr
 Imports: \tab startupmsg, utils, stats \cr
 Suggests:  \tab tcltk \cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-SVNRevision: \tab 1089 \cr
+SVNRevision: \tab 1132 \cr
 }
 }
 \section{Classes}{
@@ -222,7 +222,7 @@ Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de},\cr
 \references{
 P. Ruckdeschel, M. Kohl, T. Stabla, F. Camphausen (2006):
 S4 Classes for Distributions, \emph{R News}, \emph{6}(2), 2-6. 
-\url{http://CRAN.R-project.org/doc/Rnews/Rnews_2006-2.pdf}
+\url{https://CRAN.R-project.org/doc/Rnews/Rnews_2006-2.pdf}
 
 %a more detailed manual for \pkg{distr}, \pkg{distrSim}, \pkg{distrTEst}, and \pkg{distrEx} may be downloaded from  
 %\url{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/distr.pdf}\cr

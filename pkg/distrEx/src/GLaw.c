@@ -3,8 +3,12 @@
 #include <R.h>
 #include <Rinternals.h>
 #include <Rmath.h>		/* constants */
+#include <R_ext/Rdynload.h>
+#include <R_ext/Visibility.h>
 
-void gauleg(int *n, double *eps, double *A, double *W)
+#define C_DEF(name, n)  {#name, (DL_FUNC) &name, n}
+
+void attribute_hidden gauleg(int *n, double *eps, double *A, double *W)
 { int i,j, m=((*n)+1)/2; double z1,z,pp,p1,p2,p3;
       for(i=1;i<=m;i++){
         z=cos(PI*(i-0.25)/((*n)+0.5));
@@ -24,6 +28,21 @@ void gauleg(int *n, double *eps, double *A, double *W)
         W[i-1]=2.0/((1.0-z*z)*pp*pp);
         W[(*n)-i]=W[i-1];
     }
+}
+
+/* P.R. 20170427: register routine */
+
+static const R_CMethodDef R_CDef[]  = {
+    C_DEF(gauleg, 4),
+    {NULL, NULL, 0}
+};
+
+void attribute_visible R_init_distrEx(DllInfo *dll)
+{
+    R_registerRoutines(dll, R_CDef, NULL, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
+    R_forceSymbols(dll, TRUE);
+
 }
 
 /* P.R. 20140810: Yet to be tested: preparation for .Call - interface

@@ -85,13 +85,15 @@ setToBeDefinedPkgs(pkgs = c("distr","distrEx"),
 % -------------------------------------------------------------------------------
 \title{How to generate new distributions in packages \pkg{distr}, \pkg{distrEx}}
 %,version \pkgExversion}
-\author{\small Peter Ruckdeschel\thanks{Fraunhofer ITWM, Kaiserslautern}
+\author{\small Peter Ruckdeschel\thanks{Universit\"at Oldenburg, Oldenburg}
 \\[-.5ex]
 \small Matthias Kohl\thanks{FH Furtwangen}
 \smallskip\\
-\small Fraunhofer ITWM\\[-.5ex]
-\small Fraunhofer Platz 1\\[-.5ex]
-\small 67663 Kaiserslautern\\[-.5ex]
+\small Institut f\"ur Mathematik\\[-0.5ex]
+\small Fakult\"at V - Mathematik und Naturwissenschaften\\[-.5ex]
+\small Carl von Ossietzky Universit\"at Oldenburg\\[-0.5ex]
+\small PObox 2503\\[-.5ex]
+\small 26111 Oldenburg (Oldb)\\[-.5ex]
 \small Germany\\
 \small e-Mail: {\small \tt peter.ruckdeschel@uni-oldenburg.de}\medskip\\
 \parbox[t]{5cm}{
