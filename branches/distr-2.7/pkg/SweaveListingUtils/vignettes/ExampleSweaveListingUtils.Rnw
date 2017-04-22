@@ -489,14 +489,14 @@ Leisch, F  (2002a)
 Leisch, F  (2002b)
 \newblock {Sweave, Part I: Mixing R and \LaTeX.}
 \newblock \emph{R-News\/}, {\bf 2}(3): 28--31.
-\newblock \hreft{http://cran.r-project.org/doc/Rnews/Rnews_2002-3.pdf}.
+\newblock \hreft{https://cran.r-project.org/doc/Rnews/Rnews_2002-3.pdf}.
 %
 
 \bibitem[Leisch (2003)]{Lei:03}
 Leisch, F  (2003)
 \newblock {Sweave, Part II: Package Vignettes.}
 \newblock \emph{R-News\/}, {\bf 3}(2): 21--24.
-\newblock \hreft{http://cran.r-project.org/doc/Rnews/Rnews_2003-2.pdf}.
+\newblock \hreft{https://cran.r-project.org/doc/Rnews/Rnews_2003-2.pdf}.
 %
 
 \bibitem[{Murdoch (2010)}]{Murd:08}
@@ -515,7 +515,7 @@ Murdoch, D (2010)
 Ruckdeschel P, Kohl M, Stabla T, and Camphausen F (2006)
 \newblock {S4 Classes for Distributions.}
 \newblock \emph{R-News\/}, {\bf 6}(2): 10--13.
-\newblock \hreft{http://cran.r-project.org/doc/Rnews/Rnews_2006-2.pdf}.
+\newblock \hreft{https://cran.r-project.org/doc/Rnews/Rnews_2006-2.pdf}.
 %\newblock See also {http://www.uni-bayreuth.de/departments/math/org/mathe7/RUCKDESCHEL/pubs/distr.pdf}
 
 %

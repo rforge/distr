@@ -44,7 +44,7 @@ corresponding image distributions.
 \tabular{ll}{
 Package: \tab distr \cr
 Version: \tab 2.6.2 \cr
-Date: \tab 2017-04-21 \cr
+Date: \tab 2017-04-22 \cr
 Depends: \tab R(>= 2.14.0), methods, graphics, startupmsg, sfsmisc, SweaveListingUtils \cr
 Suggests: \tab distrEx, svUnit (>= 0.7-11) \cr
 Imports: \tab stats, grDevices, utils, MASS \cr

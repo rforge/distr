@@ -28,7 +28,7 @@ Support for  extreme value distributions has moved to package \pkg{RobExtremes}
 \tabular{ll}{
 Package: \tab distrEx \cr
 Version: \tab 2.6.1 \cr
-Date: \tab 2017-04-21 \cr
+Date: \tab 2017-04-22 \cr
 Depends: \tab R(>= 2.10.0), methods, distr(>= 2.2) \cr
 Imports: \tab startupmsg, utils, stats \cr
 Suggests:  \tab tcltk \cr

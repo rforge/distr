@@ -1,15 +1,13 @@
 Package: distr
 Version: 2.6.2
-Date: 2017-04-21
+Date: 2017-04-22
 Title: Object Oriented Implementation of Distributions
 Description: S4-classes and methods for distributions.
-Authors@R: c(person("Florian", "Camphausen", role="ctb", comment="contributed as student in the
-        initial phase --2005"), person("Matthias", "Kohl", role=c("aut", "cph")),
-        person("Peter", "Ruckdeschel", role=c("cre", "cph"),
-        email="peter.ruckdeschel@uni-oldenburg.de"), person("Thomas", "Stabla", role="ctb",
-        comment="contributed as student in the initial phase --2005"), person("R Core Team",
-        role = c("ctb", "cph"), comment="for source file ks.c/ routines 'pKS2' and
-        'pKolmogorov2x'"))
+Authors@R: c(person("Florian", "Camphausen", role="ctb", comment="contributed as student in the initial phase --2005"),
+           person("Matthias", "Kohl", role=c("aut", "cph")), person("Peter", "Ruckdeschel", role=c("cre", "cph"),
+           email="peter.ruckdeschel@uni-oldenburg.de"), person("Thomas", "Stabla", role="ctb", comment="contributed as student in the
+           initial phase --2005"), person("R Core Team", role = c("ctb", "cph"), comment="for source file ks.c/ routines 'pKS2' and
+           'pKolmogorov2x'"))
 Depends: R(>= 2.14.0), methods, graphics, startupmsg, sfsmisc, SweaveListingUtils
 Suggests: distrEx, svUnit (>= 0.7-11)
 Imports: stats, grDevices, utils, MASS

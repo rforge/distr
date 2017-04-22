@@ -1,19 +1,16 @@
 Package: distrDoc
 Version: 2.6.1
-Date: 2017-04-21
+Date: 2017-04-22
 Title: Documentation for 'distr' Family of R Packages
-Description: Provides documentation in form of a common vignette to packages 'distr', 'distrEx',
-        'distrMod', 'distrSim', 'distrTEst', 'distrTeach', and 'distrEllipse'.
-Authors@R: c(person("Florian", "Camphausen", role="ctb", comment="contributed as student to the
-        documented packages in the initial phase --2005"), person("Matthias", "Kohl",
-        role=c("aut", "cph")), person("Peter", "Ruckdeschel", role=c("cre", "cph"),
-        email="peter.ruckdeschel@uni-oldenburg.de"), person("Thomas", "Stabla", role="ctb",
-        comment="contributed as student to the documented packages in the initial phase
-        --2005"))
+Description: Provides documentation in form of a common vignette to packages 'distr', 'distrEx', 'distrMod', 'distrSim', 'distrTEst',
+           'distrTeach', and 'distrEllipse'.
+Authors@R: c(person("Florian", "Camphausen", role="ctb", comment="contributed as student to the documented packages in the initial
+           phase --2005"), person("Matthias", "Kohl", role=c("aut", "cph")), person("Peter", "Ruckdeschel", role=c("cre", "cph"),
+           email="peter.ruckdeschel@uni-oldenburg.de"), person("Thomas", "Stabla", role="ctb", comment="contributed as student to the
+           documented packages in the initial phase --2005"))
 Depends: R(>= 2.14.0)
-Imports: distr(>= 2.2.0), distrEx(>= 2.2.0), distrSim(>= 2.2.0), distrTEst(>= 2.2.0),
-        distrTeach(>= 2.2.0), RandVar(>= 0.7), distrMod(>= 2.2.0), MASS, methods,
-        SweaveListingUtils, startupmsg
+Imports: distr(>= 2.2.0), distrEx(>= 2.2.0), distrSim(>= 2.2.0), distrTEst(>= 2.2.0), distrTeach(>= 2.2.0), RandVar(>= 0.7),
+           distrMod(>= 2.2.0), MASS, methods, SweaveListingUtils, startupmsg
 Suggests: Biobase
 ByteCompile: yes
 Encoding: latin1
