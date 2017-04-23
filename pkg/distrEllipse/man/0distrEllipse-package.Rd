@@ -12,8 +12,8 @@ contoured distributions (based on package distr).
 \details{
 \tabular{ll}{
 Package: \tab distrEllipse \cr
-Version: \tab 2.6 \cr
-Date: \tab 2016-04-23 \cr
+Version: \tab 2.6.3 \cr
+Date: \tab 2017-04-23 \cr
 Depends: \tab R(>= 2.8.0), methods, graphics, mvtnorm, setRNG(>= 2006.2-1), distr(>= 2.2),
         distrEx(>= 2.2), distrSim(>= 2.2)\cr
 Suggests: \tab distrMod(>= 2.2), distrTEst(>= 2.2)\cr
@@ -21,7 +21,7 @@ Imports: \tab  startupmsg, stats\cr
 ByteCompile: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-SVNRevision: \tab 1096 \cr
+SVNRevision: \tab 1138 \cr
 }
 }
 \section{Classes}{
@@ -101,7 +101,7 @@ Note: The first two numbers of package versions do not necessarily reflect
 \references{
 P. Ruckdeschel, M. Kohl, T. Stabla, F. Camphausen (2006):
 S4 Classes for Distributions, \emph{R News}, \emph{6}(2), 2-6. 
-\url{http://CRAN.R-project.org/doc/Rnews/Rnews_2006-2.pdf}
+\url{https://CRAN.R-project.org/doc/Rnews/Rnews_2006-2.pdf}
 
 A vignette for packages \pkg{distr}, \pkg{distrSim}, \pkg{distrTEst}, \pkg{distrEx},
 \pkg{distrTeach}, \pkg{distrMod}, and \pkg{distrEllipse}

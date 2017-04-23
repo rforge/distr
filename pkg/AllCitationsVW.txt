@@ -14,7 +14,7 @@ Autor(en) in CITATION
 To cite package distr in publications use:
 
   Peter Ruckdeschel, Matthias Kohl, Thomas Stabla, Florian Camphausen (2006). S4 Classes for Distributions. R News, 6(2), 2-6. URL
-  http://CRAN.R-project.org/doc/Rnews/
+  https://CRAN.R-project.org/doc/Rnews/
 
 If you employ convolution, please also cite:
 
@@ -50,7 +50,7 @@ A BibTeX entry for LaTeX users is
     number = {2},
     pages = {2--6},
     month = {May},
-    pdf = {http://CRAN.R-project.org/doc/Rnews/Rnews_2006-2.pdf},
+    pdf = {https://CRAN.R-project.org/doc/Rnews/Rnews_2006-2.pdf},
   }
 
 

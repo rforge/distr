@@ -160,7 +160,7 @@ see Sections~\ref{modelsec} and \ref{estsec} for more details.
 
 \textbf{Availability } The current version of package~\pkg{distrMod} is 2.2
 and can be found on the Comprehensive \proglang{R} Archive Network at 
-\url{http://CRAN.R-project.org/package=distrMod}. The development version of the distr-family is located at R-Forge; 
+\url{https://CRAN.R-project.org/package=distrMod}. The development version of the distr-family is located at R-Forge; 
 see~\citet{RForge}.
 % -----------------------------------------------------------------------------
 \subsection{Running examples}\label{examples}
