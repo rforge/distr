@@ -4,7 +4,7 @@ Version: 0.9.3
 Date: 2016-04-23
 Title: Utilities for Start-Up Messages
 Description: Provides utilities to create or suppress start-up messages.
-Authors@R: person("Peter", "Ruckdeschel", role=c("cre", "cph"),
+Authors@R: person("Peter", "Ruckdeschel", role=c("cre", "cph", "aut"),
         email="peter.ruckdeschel@uni-oldenburg.de")
 Depends: R(>= 1.8.0)
 ByteCompile: yes
