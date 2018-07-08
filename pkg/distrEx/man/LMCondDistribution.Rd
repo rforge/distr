@@ -31,6 +31,7 @@ r(D1)
 d(D1)
 p(D1)
 q(D1)
+## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 param(D1)
 cond(D1)
 

@@ -90,7 +90,7 @@ LMCondDistribution <- function(Error = Norm(), theta = 0, intercept = 0,
                              intercept = intercept, theta = theta, 
                              scale = scale))
 
-    qfct <- q(Error)
+    qfct <- q.l(Error)
     qfun <- function(p, cond, lower.tail = TRUE, log.p = FALSE, ...){}
     body(qfun) <- substitute({ if(length(cond) != lth) 
                                     stop("'cond' has wrong dimension")

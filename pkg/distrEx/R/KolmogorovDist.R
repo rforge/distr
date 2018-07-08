@@ -6,18 +6,18 @@ setMethod("KolmogorovDist", signature(e1 = "AbscontDistribution",
                                       e2 = "AbscontDistribution"),
     function(e1, e2){
         TruncQuantile <- getdistrOption("TruncQuantile")  
-        lower1 <- ifelse(!is.finite(q(e1)(0)), q(e1)(TruncQuantile), q(e1)(0))
-        upper1 <- ifelse(!is.finite(q(e1)(1)), 
+        lower1 <- ifelse(!is.finite(q.l(e1)(0)), q.l(e1)(TruncQuantile), q.l(e1)(0))
+        upper1 <- ifelse(!is.finite(q.l(e1)(1)),
                          ifelse("lower.tail" %in% names(formals(e1@q)),
-                                q(e1)(TruncQuantile, lower.tail = FALSE),
-                                q(e1)(1-TruncQuantile)), 
-                         q(e1)(1))
-        lower2 <- ifelse(!is.finite(q(e2)(0)), q(e2)(TruncQuantile), q(e2)(0))
-        upper2 <- ifelse(!is.finite(q(e2)(1)), 
+                                q.l(e1)(TruncQuantile, lower.tail = FALSE),
+                                q.l(e1)(1-TruncQuantile)),
+                         q.l(e1)(1))
+        lower2 <- ifelse(!is.finite(q.l(e2)(0)), q.l(e2)(TruncQuantile), q.l(e2)(0))
+        upper2 <- ifelse(!is.finite(q.l(e2)(1)),
                          ifelse("lower.tail" %in% names(formals(e2@q)),
-                                q(e2)(TruncQuantile, lower.tail = FALSE),
-                                q(e2)(1-TruncQuantile)), 
-                         q(e2)(1))
+                                q.l(e2)(TruncQuantile, lower.tail = FALSE),
+                                q.l(e2)(1-TruncQuantile)),
+                         q.l(e2)(1))
         lower <- min(lower1, lower2)
         upper <- max(upper1, upper2)
 
@@ -103,18 +103,18 @@ setMethod("KolmogorovDist",  signature(e1 = "AcDcLcDistribution",
                    p = e2.erg$pfun, d = e2.erg$dfun, q = e2.erg$qfun,
                    .withSim = TRUE, .withArith = FALSE)}
         TruncQuantile <- getdistrOption("TruncQuantile")
-        lower1 <- ifelse(!is.finite(q(e1)(0)), q(e1)(TruncQuantile), q(e1)(0))
-        upper1 <- ifelse(!is.finite(q(e1)(1)),
+        lower1 <- ifelse(!is.finite(q.l(e1)(0)), q.l(e1)(TruncQuantile), q.l(e1)(0))
+        upper1 <- ifelse(!is.finite(q.l(e1)(1)),
                          ifelse("lower.tail" %in% names(formals(e1@q)),
-                                q(e1)(TruncQuantile, lower.tail = FALSE),
-                                q(e1)(1-TruncQuantile)),
-                         q(e1)(1))
-        lower2 <- ifelse(!is.finite(q(e2)(0)), q(e2)(TruncQuantile), q(e2)(0))
-        upper2 <- ifelse(!is.finite(q(e2)(1)),
+                                q.l(e1)(TruncQuantile, lower.tail = FALSE),
+                                q.l(e1)(1-TruncQuantile)),
+                         q.l(e1)(1))
+        lower2 <- ifelse(!is.finite(q.l(e2)(0)), q.l(e2)(TruncQuantile), q.l(e2)(0))
+        upper2 <- ifelse(!is.finite(q.l(e2)(1)),
                          ifelse("lower.tail" %in% names(formals(e2@q)),
-                                q(e2)(TruncQuantile, lower.tail = FALSE),
-                                q(e2)(1-TruncQuantile)),
-                         q(e2)(1))
+                                q.l(e2)(TruncQuantile, lower.tail = FALSE),
+                                q.l(e2)(1-TruncQuantile)),
+                         q.l(e2)(1))
         lower <- min(lower1, lower2)
         upper <- max(upper1, upper2)
 

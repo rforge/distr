@@ -27,15 +27,15 @@ Support for  extreme value distributions has moved to package \pkg{RobExtremes}
 \details{
 \tabular{ll}{
 Package: \tab distrEx \cr
-Version: \tab 2.6.1 \cr
-Date: \tab 2017-04-22 \cr
+Version: \tab 2.7 \cr
+Date: \tab 2015-11-07 \cr
 Depends: \tab R(>= 2.10.0), methods, distr(>= 2.2) \cr
 Imports: \tab startupmsg, utils, stats \cr
 Suggests:  \tab tcltk \cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-SVNRevision: \tab 1132 \cr
+SVNRevision: \tab 1080 \cr
 }
 }
 \section{Classes}{
@@ -236,7 +236,7 @@ a homepage to this package is available under\cr
 
 M. Kohl (2005): \emph{Numerical Contributions to the Asymptotic 
 Theory of Robustness.} PhD Thesis. Bayreuth. Available as 
-\url{http://www.stamats.de/ThesisMKohl.pdf}
+\url{http://www.stamats.de/wp-content/uploads/2018/04/ThesisMKohl.pdf}
 }
 \keyword{package}
 \concept{S4 condition class}

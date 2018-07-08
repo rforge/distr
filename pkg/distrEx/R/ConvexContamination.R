@@ -48,13 +48,13 @@ setMethod("ConvexContamination", signature(e1 = "AbscontDistribution",
                                  },
                          list(size = size, p1fun = p(e1), p2fun = p(e2)))
 
-        m1 <- min(q(e1)(TruncQuantile), q(e2)(TruncQuantile))
+        m1 <- min(q.l(e1)(TruncQuantile), q.l(e2)(TruncQuantile))
         m21 <- ifelse("lower.tail" %in% names(formals(e1@q)),
-                      q(e1)(TruncQuantile, lower.tail = FALSE),
-                      q(e1)(1-TruncQuantile))
+                      q.l(e1)(TruncQuantile, lower.tail = FALSE),
+                      q.l(e1)(1-TruncQuantile))
         m22 <- ifelse("lower.tail" %in% names(formals(e2@q)),
-                      q(e2)(TruncQuantile, lower.tail = FALSE),
-                      q(e2)(1-TruncQuantile))
+                      q.l(e2)(TruncQuantile, lower.tail = FALSE),
+                      q.l(e2)(1-TruncQuantile))
         m2 <- max(m21,m22); rm(m21,m22)
 
         qfun <- function(p, lower.tail = TRUE, log.p = FALSE){}
@@ -204,13 +204,13 @@ setMethod("ConvexContamination", signature(e1 = "UnivariateDistribution",
                          list(size = size, p1fun = p(e1), p2fun = p(e2)))
 
         TruncQuantile <- getdistrOption("TruncQuantile")
-        m1 <- min(q(e1)(TruncQuantile), q(e2)(TruncQuantile))
+        m1 <- min(q.l(e1)(TruncQuantile), q.l(e2)(TruncQuantile))
         m21 <- ifelse("lower.tail" %in% names(formals(e1@q)),
-                      q(e1)(TruncQuantile, lower.tail = FALSE),
-                      q(e1)(1-TruncQuantile))
+                      q.l(e1)(TruncQuantile, lower.tail = FALSE),
+                      q.l(e1)(1-TruncQuantile))
         m22 <- ifelse("lower.tail" %in% names(formals(e2@q)),
-                      q(e2)(TruncQuantile, lower.tail = FALSE),
-                      q(e2)(1-TruncQuantile))
+                      q.l(e2)(TruncQuantile, lower.tail = FALSE),
+                      q.l(e2)(1-TruncQuantile))
         m2 <- max(m21,m22); rm(m21,m22)
 
 

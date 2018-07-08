@@ -39,6 +39,25 @@ setMethod("HellingerDist", signature(e1 = "DiscreteDistribution",
 
         return(sqrt(res)) # ^.5 added P.R. 19-12-06
     })
+
+## new PR 08-09-16
+setMethod("HellingerDist", signature(e1 = "DiscreteMVDistribution",
+                                     e2 = "DiscreteMVDistribution"),
+    function(e1, e2, ...){
+        o.warn <- getOption("warn"); options(warn = -1)
+        on.exit(options(warn=o.warn))
+        ## replace univariate line  supp <- union(support(e1), support(e2))   by
+
+        supp <- unique(rbind(support(e1), support(e2)))
+       
+
+        res <- 0.5*sum((sqrt(d(e1)(supp))-sqrt(d(e2)(supp)))^2) 
+        names(res) <- "Hellinger distance"
+
+        return(sqrt(res))
+    })
+
+
 setMethod("HellingerDist", signature(e1 = "DiscreteDistribution", 
                                      e2 = "AbscontDistribution"),
     function(e1, e2, ...){

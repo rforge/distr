@@ -91,8 +91,8 @@ OAsymTotalVarDist(e1, e2, ...)
   Again in the absolutely continuous case, to determine the range of the 
   likelihood ratio, we evaluate this ratio on a grid constructed as follows:
   \code{x.range <- c(seq(low, up, length=Ngrid/3),
-                     q(e1)(seq(0,1,length=Ngrid/3)*.999),
-                     q(e2)(seq(0,1,length=Ngrid/3)*.999))}  
+                     q.l(e1)(seq(0,1,length=Ngrid/3)*.999),
+                     q.l(e2)(seq(0,1,length=Ngrid/3)*.999))}
   
   Finally, for both discrete and absolutely continuous case,
   we clip this ratio downwards by \code{1e-10} and upwards by \code{1e10}

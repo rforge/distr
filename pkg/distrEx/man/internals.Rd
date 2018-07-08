@@ -26,8 +26,8 @@ These functions are used internally by package distrEx.}
 
 \details{
 \code{.getIntbounds} integration bounds are obtained
-as \code{lowB <- max(low, q(object)(lowTQ), median(object)-IQR.fac*IQR(object)}
-and \code{uppB <- min(upp, q(object)(1-uppTQ), median(object)+IQR.fac*IQR(object)}
+as \code{lowB <- max(low, q.l(object)(lowTQ), median(object)-IQR.fac*IQR(object)}
+and \code{uppB <- min(upp, q.l(object)(1-uppTQ), median(object)+IQR.fac*IQR(object)}
 }
 
 

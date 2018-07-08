@@ -6,8 +6,6 @@
 #include <R_ext/Rdynload.h>
 #include <R_ext/Visibility.h>
 
-#define C_DEF(name, n)  {#name, (DL_FUNC) &name, n}
-
 void attribute_hidden gauleg(int *n, double *eps, double *A, double *W)
 { int i,j, m=((*n)+1)/2; double z1,z,pp,p1,p2,p3;
       for(i=1;i<=m;i++){
@@ -30,16 +28,23 @@ void attribute_hidden gauleg(int *n, double *eps, double *A, double *W)
     }
 }
 
-/* P.R. 20170427: register routine */
+/* P.R. 20180708: revised register routine */
 
-static const R_CMethodDef R_CDef[]  = {
-    C_DEF(gauleg, 4),
-    {NULL, NULL, 0}
+static R_NativePrimitiveArgType gauleg_t[] = {
+    INTSXP, REALSXP, REALSXP, REALSXP
 };
+
+static const R_CMethodDef c_Methods[]  = {
+    {"gauleg", (DL_FUNC) &gauleg, 4, gauleg_t},
+    {NULL, NULL, 0, NULL}
+};
+
+
+/* P.R. 20170427: register routine */
 
 void attribute_visible R_init_distrEx(DllInfo *dll)
 {
-    R_registerRoutines(dll, R_CDef, NULL, NULL, NULL);
+    R_registerRoutines(dll, c_Methods, NULL, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
     R_forceSymbols(dll, TRUE);
 

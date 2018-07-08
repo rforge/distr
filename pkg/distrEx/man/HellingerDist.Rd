@@ -4,6 +4,7 @@
 \alias{HellingerDist,AbscontDistribution,AbscontDistribution-method}
 \alias{HellingerDist,AbscontDistribution,DiscreteDistribution-method}
 \alias{HellingerDist,DiscreteDistribution,DiscreteDistribution-method}
+\alias{HellingerDist,DiscreteMVDistribution,DiscreteMVDistribution-method}
 \alias{HellingerDist,DiscreteDistribution,AbscontDistribution-method}
 \alias{HellingerDist,LatticeDistribution,DiscreteDistribution-method}
 \alias{HellingerDist,DiscreteDistribution,LatticeDistribution-method}

@@ -1,7 +1,7 @@
 ## Helper function:
 
 .getIntbounds <- function(object, low, upp, lowTQ, uppTQ, IQR.fac, ...){
-        qx <- q(object)
+        qx <- q.l(object)
         low0 <- qx(lowTQ, lower.tail = TRUE, ...) 
         upp0 <- ifelse( "lower.tail" %in% names(formals(qx)),
                        qx(uppTQ, lower.tail = FALSE, ...), 
@@ -440,7 +440,7 @@ setMethod("E", signature(object = "Beta",
         else
           return(shape1(object)/(shape1(object)+shape2(object)))
     })
-## source: http://mathworld.wolfram.com/BetaDistribution.html
+## source: https://mathworld.wolfram.com/BetaDistribution.html
 
 setMethod("E", signature(object = "Binom", 
                          fun = "missing", 
@@ -465,7 +465,7 @@ setMethod("E", signature(object = "Binom",
     }
    })
 
-### source: http://mathworld.wolfram.com/BinomialDistribution.html
+### source: https://mathworld.wolfram.com/BinomialDistribution.html
 
 setMethod("E", signature(object = "Cauchy", 
                          fun = "missing", 
@@ -488,7 +488,7 @@ setMethod("E", signature(object = "Cauchy",
 #        return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
   })
 
-### source http://mathworld.wolfram.com/CauchyDistribution.html
+### source https://mathworld.wolfram.com/CauchyDistribution.html
 
 setMethod("E", signature(object = "Chisq", 
                          fun = "missing", 
@@ -511,7 +511,7 @@ setMethod("E", signature(object = "Chisq",
         }
     }
  })
-### source http://mathworld.wolfram.com/Chi-SquaredDistribution.html
+### source https://mathworld.wolfram.com/Chi-SquaredDistribution.html
 
 setMethod("E", signature(object = "Dirac", 
                          fun = "missing", 
@@ -536,7 +536,7 @@ setMethod("E", signature(object = "DExp",
         return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
     })
 
-### source http://mathworld.wolfram.com/LaplaceDistribution.html
+### source https://mathworld.wolfram.com/LaplaceDistribution.html
 
 setMethod("E", signature(object = "Exp", 
                          fun = "missing", 
@@ -560,7 +560,7 @@ setMethod("E", signature(object = "Exp",
     }
  })
 
- ### source http://mathworld.wolfram.com/ExponentialDistribution.html
+ ### source https://mathworld.wolfram.com/ExponentialDistribution.html
 
 setMethod("E", signature(object = "Fd", 
                          fun = "missing", 
@@ -576,7 +576,7 @@ setMethod("E", signature(object = "Fd",
     else
         return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
     })
-### source (without ncp) http://mathworld.wolfram.com/F-Distribution.html
+### source (without ncp) https://mathworld.wolfram.com/F-Distribution.html
 
 setMethod("E", signature(object = "Gammad", 
                          fun = "missing", 
@@ -589,7 +589,7 @@ setMethod("E", signature(object = "Gammad",
         return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
     })
 
-### source http://mathworld.wolfram.com/GammaDistribution.html
+### source https://mathworld.wolfram.com/GammaDistribution.html
 
 setMethod("E", signature(object = "Gammad",
                          fun = "function",
@@ -644,7 +644,7 @@ setMethod("E", signature(object = "Geom",
         return(E(as(object,"DiscreteDistribution"), low=low, upp=upp, ...))    
     })
 
-### source http://mathworld.wolfram.com/GeometricDistribution.html
+### source https://mathworld.wolfram.com/GeometricDistribution.html
 
 setMethod("E", signature(object = "Hyper", 
                          fun = "missing", 
@@ -657,7 +657,7 @@ setMethod("E", signature(object = "Hyper",
     else
         return(E(as(object,"DiscreteDistribution"), low=low, upp=upp, ...))    
     })
-### source http://mathworld.wolfram.com/HypergeometricDistribution.html
+### source https://mathworld.wolfram.com/HypergeometricDistribution.html
 
 setMethod("E", signature(object = "Logis", 
                          fun = "missing", 
@@ -668,7 +668,7 @@ setMethod("E", signature(object = "Logis",
     else
         return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
     })
-### source http://mathworld.wolfram.com/LogisticDistribution.html
+### source https://mathworld.wolfram.com/LogisticDistribution.html
 
 setMethod("E", signature(object = "Lnorm", 
                          fun = "missing", 
@@ -680,7 +680,7 @@ setMethod("E", signature(object = "Lnorm",
     else
         return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
     })
-### source http://mathworld.wolfram.com/LogNormalDistribution.html
+### source https://mathworld.wolfram.com/LogNormalDistribution.html
 
 setMethod("E", signature(object = "Nbinom", 
                          fun = "missing", 
@@ -693,7 +693,7 @@ setMethod("E", signature(object = "Nbinom",
     else
         return(E(as(object,"DiscreteDistribution"), low=low, upp=upp, ...))    
     })
-### source http://mathworld.wolfram.com/NegativeBinomialDistribution.html
+### source https://mathworld.wolfram.com/NegativeBinomialDistribution.html
 
 setMethod("E", signature(object = "Pois", 
                          fun = "missing", 
@@ -706,7 +706,7 @@ setMethod("E", signature(object = "Pois",
     else
         return(E(as(object,"DiscreteDistribution"), low=low, upp=upp, ...))    
     })
-### source http://mathworld.wolfram.com/PoissonDistribution.html
+### source https://mathworld.wolfram.com/PoissonDistribution.html
 
 setMethod("E", signature(object = "Td", 
                          fun = "missing", 
@@ -721,7 +721,7 @@ setMethod("E", signature(object = "Td",
     else
         return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
     })
-### source http://mathworld.wolfram.com/NoncentralStudentst-Distribution.html
+### source https://mathworld.wolfram.com/NoncentralStudentst-Distribution.html
 setMethod("E", signature(object = "Unif", 
                          fun = "missing", 
                          cond = "missing"),
@@ -733,7 +733,7 @@ setMethod("E", signature(object = "Unif",
     else
         return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
     })
-### source http://mathworld.wolfram.com/UniformDistribution.html
+### source https://mathworld.wolfram.com/UniformDistribution.html
 
 setMethod("E", signature(object = "Weibull", 
                          fun = "missing", 
@@ -745,7 +745,7 @@ setMethod("E", signature(object = "Weibull",
     else
         return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
     })
-### source http://mathworld.wolfram.com/WeibullDistribution.html
+### source https://mathworld.wolfram.com/WeibullDistribution.html
 setMethod("E", signature(object = "Arcsine", 
                          fun = "missing", 
                          cond = "missing"),
@@ -861,8 +861,8 @@ setMethod("E", signature(object = "CompoundDistribution",
     function(object, low = NULL, upp = NULL, ...){
          S <- object@SummandsDistr
          N <- object@NumbOfSummandsDistr
-        if(!is.null(low)) if(low <= q(object)(0)) low <- NULL
-        if(!is.null(upp)) if(upp >= q(object)(1)) upp <- NULL
+        if(!is.null(low)) if(low <= q.l(object)(0)) low <- NULL
+        if(!is.null(upp)) if(upp >= q.l(object)(1)) upp <- NULL
  
        if(is(S,"UnivariateDistribution") && is.null(low) && is.null(upp))
           return(E(S, ...)*E(N))
