@@ -136,7 +136,7 @@
    for(j in seq(1, m, by = step)) 
      {LLNin(Distr, n, j, j+step-1)
       do.call(matplot, args = c(list(Ns, t(da), pch = pch, col=col,  
-              axes = FALSE, ylim = q(Distr)(c(0.02,0.98)), 
+              axes = FALSE, ylim = q.l(Distr)(c(0.02,0.98)),
               xlab = xlab, ylab = "",  main = main), dots.for.matplot ))
  
       title(ylab = ylab, line = 1.7)

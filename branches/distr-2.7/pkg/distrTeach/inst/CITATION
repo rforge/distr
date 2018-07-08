@@ -12,7 +12,7 @@ citEntry(entry = "TechReport",
          month="July",
          year="2008",
          address="{Kaiserslautern, Germany}",
-         URL = "http://cran.r-project.org/web/packages/distrDoc/vignettes/distr.pdf",
+         URL = "https://CRAN.R-project.org/web/packages/distrDoc/vignettes/distr.pdf",
          textVersion = paste("Ruckdeschel, P., Kohl, M., Stabla, T., & Camphausen, F. (2006): ",
                        "S4 Classes for Distributions---a manual for packages distr, distrSim, distrTEst, distrEx, ",
                         "distrMod, and distrTeach")

@@ -117,7 +117,7 @@ a homepage to this package is available under\cr
 
 M. Kohl (2005): \emph{Numerical Contributions to the Asymptotic 
 Theory of Robustness.} PhD Thesis. Bayreuth. Available as 
-\url{http://www.stamats.de/ThesisMKohl.pdf}
+\url{http://www.stamats.de/wp-content/uploads/2018/04/ThesisMKohl.pdf}
 }
 \keyword{package}
 \concept{LLN}

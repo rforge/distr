@@ -36,11 +36,11 @@ illustrateCLT.tcl(Distr, k, Distrname)
 Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 \examples{
 distroptions("DefaultNrFFTGridPointsExponent" = 13)
-illustrateCLT(Distr = Unif(), len = 20)
+illustrateCLT(Distr = Unif(), len = 10)
 distroptions("DefaultNrFFTGridPointsExponent" = 12)
-illustrateCLT(Distr = Pois(lambda = 2), len = 20)
+illustrateCLT(Distr = Pois(lambda = 2), len = 10)
 distroptions("DefaultNrFFTGridPointsExponent" = 13)
-illustrateCLT(Distr = Pois(lambda = 2)+Unif(), len = 20)
+illustrateCLT(Distr = Pois(lambda = 2)+Unif(), len = 10)
 illustrateCLT.tcl(Distr = Unif(), k = 4, "Unif()")
 }
 
