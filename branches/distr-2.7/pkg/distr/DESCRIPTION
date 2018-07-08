@@ -10,9 +10,10 @@ Authors@R: c(person("Florian", "Camphausen", role="ctb", comment="contributed as
         comment="contributed as student in the initial phase --2005"), person("R Core Team",
         role = c("ctb", "cph"), comment="for source file ks.c/ routines 'pKS2' and
         'pKolmogorov2x'"))
-Depends: R(>= 2.14.0), methods, graphics, startupmsg, sfsmisc, SweaveListingUtils
-Suggests: distrEx, svUnit (>= 0.7-11)
+Depends: R(>= 2.14.0), methods, graphics, startupmsg, sfsmisc
+Suggests: distrEx, svUnit (>= 0.7-11), knitr
 Imports: stats, grDevices, utils, MASS
+VignetteBuilder: knitr 
 ByteCompile: yes
 Encoding: latin1
 License: LGPL-3
