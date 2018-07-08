@@ -8,6 +8,20 @@
  information)
 
 ##############
+v 2.7
+##############
+
+user-visible CHANGES:
++ replaced http://CRAN... by https://CRAN... (also in CITATION and similar files) 
++ exported .CvMMDCovariance in distrMod
++ added call to return value of qqplot
+
+under the hood:
++ wherever possible also use q.l internally instead of q to 
+  provide functionality in IRKernel
++ fixed omegahat.net issue (raised by K.Hornik,(24.10.2016, 18:08)
+
+##############
 v 2.6
 ##############
 
