@@ -24,7 +24,7 @@ updatePackageHelp <- function(package){
 }
 
 ## needs: getRevNr() in getRevNr.R in  utils/ e.g.
-## source("C:/rtest/distr/branches/distr-2.4/pkg/utils/getRevNr.R")
+## source("C:/rtest/distr/branches/distr-2.7/pkg/utils/getRevNr.R")
 
   changeDescription <- function(startDir ## folder with pkgs to be updated,
                              ### e.g. "C:/rtest/distr/branches/distr-2.6"

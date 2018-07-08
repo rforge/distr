@@ -20,6 +20,7 @@ finde <- function(x = "nchar", dir="C:/rtest/distr/pkg/distr/R", ext = "R", rec 
   }
 infind(dir)   
 }
+finde(x="q\\(", dir ="C:/rtest/distr/branches/distr-2.7/pkg/", rec=TRUE)
 finde(x="http\\:/", dir ="C:/rtest/distr/branches/distr-2.7/pkg/distr/", rec=TRUE)
 #finde(x="Wow6432Node", dir ="C:/R/devel/src/gnuwin32", rec=TRUE, ext="")
 finde(x="omega", dir ="C:/rtest/distr/branches/distr-2.7/pkg/distrMod/", rec=TRUE)
@@ -55,5 +56,8 @@ ersetze <- function(x0 = "nchar", x1="nchar", dir="C:/rtest/distr/pkg/distr/R", 
   }
 infind(dir)
 }
+ersetze(x0="https://distr.r-forge.r-project.org/",x1="http://distr.r-forge.r-project.org/", dir ="C:/rtest/distr/branches/distr-2.7/pkg", rec=TRUE,ext="Rd")
+
 ersetze(x0="href=\"distr.pdf\"",x1="href=\"http://cran.r-project.org/web/packages/distrDoc/vignettes/distr.pdf\"", dir ="C:/rtest/distr/www", rec=TRUE,ext="html")
 ersetze(x0="peter.ruckdeschel@uni-bayreuth.de",x1="peter.ruckdeschel@uni-oldenburg.de", dir ="C:/rtest/distr/www", rec=TRUE, ext="html")
+ersetze(x0="peter.ruckdeschel@itwm.fraunhofer.de", x1="peter.ruckdeschel@uni-oldenburg.de", dir ="C:/rtest/robast/branches/robast-1.1", rec=TRUE, ext="Rd")
