@@ -20,7 +20,8 @@ Date: \tab 2015-11-07 \cr
 Depends: \tab R(>= 2.14.0), distr(>= 2.5.2), distrEx(>= 2.4), RandVar(>= 0.6.3), MASS, stats4,
         methods \cr
 Imports: \tab startupmsg, sfsmisc, graphics, stats, grDevices \cr
-Suggests: \tab ismev, evd, RobExtremes \cr
+Suggests: \tab ismev, evd\cr
+Enhances: RobExtremes\cr
 ByteCompile: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
@@ -291,7 +292,7 @@ Matthias Kohl \email{Matthias.Kohl@stamats.de}\cr
 M. Kohl and P. Ruckdeschel (2010):
 R Package distrMod: S4 Classes and Methods for Probability Models.
 Journal of Statistical Software, 35(10), 1-27.
-\url{http://www.jstatsoft.org/v35/i10/}
+\url{https://www.jstatsoft.org/v35/i10/}
 (see also \code{vignette("distrMod")})
 
 

@@ -9,7 +9,7 @@
 These functions are used internally by qqplot of package distrMod.}
 
 \usage{
-.labelprep(x,y,lab.pts,col.lbl,cex.lbl,which.lbs,which.Order,order.traf)
+.labelprep(x,y,lab.pts,col.lbl,cex.lbl,adj.lbl,which.lbs,which.Order,order.traf)
 }
 
 
@@ -18,6 +18,7 @@ These functions are used internally by qqplot of package distrMod.}
 \item{y}{a (numeric) vector of same length as \code{x}}
 \item{cex.lbl}{magnification factor for the plotted observation labels}
 \item{col.lbl}{color for the plotted observation labels}
+\item{adj.lbl}{adjustment factor for the plotted observation labels}
 \item{lab.pts}{character or \code{NULL}; observation labels to be used}
 \item{which.lbs}{integer or \code{NULL}; which observations shall be labelled}
 \item{which.Order}{integer or \code{NULL}; which of the ordered (remaining) observations shall be labelled}
