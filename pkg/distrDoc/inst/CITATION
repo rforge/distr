@@ -1,4 +1,4 @@
-citHeader("To cite package distr in publications use:")
+citHeader("To cite package distrDoc (and other packages of the distr family of packages) in publications use:")
 
 citEntry(entry="Article",
          title = "S4 Classes for Distributions",

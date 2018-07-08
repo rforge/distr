@@ -8,6 +8,21 @@
  information)
 
 ##############
+v 2.7
+##############
+
+user-visible CHANGES:
++ more precise formulation of how to use calls to q() for RStudio
+  and Jupyter IRKernel (i.e., use q.l)
++ switch from SweaveListingUtils to knitr in vignettes
++ replaced http://CRAN... by https://CRAN... (also in CITATION and similar files) 
++ updated address (Oldenburg) in several vignettes 
+
+under the hood:
++ fixed CITATION issue (raised by K.Hornik,(12.10., 12:26)
++ fixed omegahat.net issue (raised by K.Hornik,(24.10.2016, 18:08)
+
+##############
 v 2.6
 ##############
 
@@ -18,7 +33,6 @@ user-visible CHANGES:
 + updated references in vignette distr.Rnw
 + mention that pattern substitution can now be switched on and off in all plot 
   functions according to argument withSubst
-+ mention aliases p.r and q.l for RStudio
 
 under the hood
 + fixed \VignetteKeyword issue detected as in mail by K. Hornik 2015-02-03
