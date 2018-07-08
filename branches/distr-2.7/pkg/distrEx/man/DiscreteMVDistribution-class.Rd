@@ -60,6 +60,7 @@ r(D2)(10)
 d(D2)(support(D2))
 p(D2)(lower = c(1,1), upper = c(3,3))
 q(D2)
+## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 param(D2)
 img(D2)
 
