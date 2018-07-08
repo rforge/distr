@@ -55,7 +55,7 @@ exportMethods("existsPIC")
 exportMethods("modifyModel")
 exportMethods("norm",  "QuadForm<-", "QuadForm", "fct", 
               "fct<-", "normtype", "normtype<-")
-exportMethods("r", "d", "p", "q", 
+exportMethods("r", "d", "p", "q", "q.l",
               "estimate", "estimate.call", "samplesize.estimate", "call.estimate",
               "name.estimate", "trafo.estimate", "nuisance.estimate", 
               "fixed.estimate", "Infos", "Infos<-", "addInfo<-",
