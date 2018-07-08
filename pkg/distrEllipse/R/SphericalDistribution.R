@@ -42,28 +42,29 @@ setReplaceMethod("radDistr", "SphericalDistribution",
 
 ## wrappers:
 
-setMethod("plot.rd", "SphericalDistribution",
-           function(x, ... ){ .Deprecated("plotRd")
-                              plot(x@radDistr,...)})
-setMethod("r.rd", "SphericalDistribution", function(object) {
-                                                .Deprecated("rRd")
-                                                r(object@radDistr)})
-setMethod("d.rd", "SphericalDistribution", function(object) {
-                                                .Deprecated("dRd")
-                                                d(object@radDistr)})
-setMethod("p.rd", "SphericalDistribution", function(object) {
-                                                .Deprecated("pRd")
-                                                p(object@radDistr)})
-setMethod("q.rd", "SphericalDistribution", function(object) {
-                                                .Deprecated("qRd")
-                                                q(object@radDistr)})
+## Defunct accessors
+#setMethod("plot.rd", "SphericalDistribution",
+#           function(x, ... ){ .Deprecated("plotRd")
+#                              plot(x@radDistr,...)})
+#setMethod("r.rd", "SphericalDistribution", function(object) {
+#                                                .Deprecated("rRd")
+#                                                r(object@radDistr)})
+#setMethod("d.rd", "SphericalDistribution", function(object) {
+#                                                .Deprecated("dRd")
+#                                                d(object@radDistr)})
+#setMethod("p.rd", "SphericalDistribution", function(object) {
+#                                                .Deprecated("pRd")
+#                                                p(object@radDistr)})
+#setMethod("q.rd", "SphericalDistribution", function(object) {
+#                                                .Deprecated("qRd")
+#                                                q.l(object@radDistr)})
 
 setMethod("plotRd", "SphericalDistribution",
            function(x, ... ) plot(x@radDistr,...))
 setMethod("rRd", "SphericalDistribution", function(object) r(object@radDistr))
 setMethod("dRd", "SphericalDistribution", function(object) d(object@radDistr))
 setMethod("pRd", "SphericalDistribution", function(object) p(object@radDistr))
-setMethod("qRd", "SphericalDistribution", function(object) q(object@radDistr))
+setMethod("qRd", "SphericalDistribution", function(object) q.l(object@radDistr))
 
 ## functionals:
 
