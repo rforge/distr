@@ -27,15 +27,15 @@ Support for  extreme value distributions has moved to package \pkg{RobExtremes}
 \details{
 \tabular{ll}{
 Package: \tab distrEx \cr
-Version: \tab 2.7 \cr
-Date: \tab 2015-11-07 \cr
+Version: \tab 2.7.0 \cr
+Date: \tab 2018-07-08 \cr
 Depends: \tab R(>= 2.10.0), methods, distr(>= 2.2) \cr
 Imports: \tab startupmsg, utils, stats \cr
 Suggests:  \tab tcltk \cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-SVNRevision: \tab 1080 \cr
+SVNRevision: \tab 1186 \cr
 }
 }
 \section{Classes}{

@@ -1,6 +1,6 @@
 Package: distrTEst
-Version: 2.7
-Date: 2015-11-07
+Version: 2.7.0
+Date: 2018-07-08
 Title: Estimation and Testing Classes Based on Package 'distr'
 Description: Evaluation (S4-)classes based on package distr for evaluating procedures
         (estimators/tests) at data/simulation in a unified way.
@@ -18,4 +18,4 @@ License: LGPL-3
 URL: http://distr.r-forge.r-project.org/
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
-SVNRevision: 1080
+SVNRevision: 1186

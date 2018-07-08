@@ -1,6 +1,6 @@
 Package: distrDoc
-Version: 2.7
-Date: 2015-11-07
+Version: 2.7.0
+Date: 2018-07-08
 Title: Documentation for 'distr' Family of R Packages
 Description: Provides documentation in form of a common vignette to packages distr, distrEx,
         distrMod, distrSim, distrTEst, distrTeach, and distrEllipse.
@@ -12,14 +12,13 @@ Authors@R: c(person("Florian", "Camphausen", role="ctb", comment="contributed as
         --2005"))
 Depends: R(>= 2.14.0)
 Imports: distr(>= 2.2.0), distrEx(>= 2.2.0), distrSim(>= 2.2.0), distrTEst(>= 2.2.0),
-        distrTeach(>= 2.2.0), RandVar(>= 0.7), distrMod(>= 2.2.0), MASS, methods,
-        startupmsg
+        distrTeach(>= 2.2.0), RandVar(>= 0.7), distrMod(>= 2.2.0), MASS, methods, startupmsg
 Suggests: Biobase, knitr
-VignetteBuilder: knitr 
+VignetteBuilder: knitr
 ByteCompile: yes
 Encoding: latin1
 License: LGPL-3
 URL: http://distr.r-forge.r-project.org/
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
-SVNRevision: 1080
+SVNRevision: 1186
