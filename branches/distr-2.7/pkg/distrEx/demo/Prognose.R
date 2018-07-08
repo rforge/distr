@@ -30,8 +30,8 @@ system.time(erg5 <- sapply(y, f, D5)) # ca. 80 sec.
 
 ## posterior modus
 post.mod <- function(cond, e1) {
-    optimize(f = d(e1), interval = c(q(e1)(1e-3, cond), 
-                        q(e1)(1e-3, cond, lower.tail = FALSE)), 
+    optimize(f = d(e1), interval = c(q.l(e1)(1e-3, cond),
+                        q.l(e1)(1e-3, cond, lower.tail = FALSE)),
         tol = .Machine$double.eps^0.25, maximum = TRUE, cond = cond)$maximum
 }
 
