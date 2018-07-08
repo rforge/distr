@@ -8,6 +8,20 @@
  information)
 
 ##############
+v 2.7
+##############
+
+user-visible CHANGES:
+
+defunct:  
++ plot.rd, r.rd, d.rd, p.rd, and q.rd are replaced by 
+  plotRd, rRd, dRd, pRd, and qRd (to avoid clashes with S3 inheritance)  
+
+under the hood:
++ wherever possible also use q.l internally instead of q to 
+  provide functionality in IRKernel
+
+##############
 v 2.6
 ##############
 
