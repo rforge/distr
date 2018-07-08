@@ -1,8 +1,8 @@
 ########## compactify all vignettes
 compactVignettes <- function(startDir="C:/rtest",rforgeproject="distr",
-                      qpdf = "C:/R/qpdf-4.0.0/bin/qpdf",
-                      gs = "C:/Program Files (x86)/Ghostscript/gs9.00/bin/gswin32",
-                      select = "distr-2.5", invert = FALSE){
+                      qpdf = "C:/R/qpdf-7.0.0/bin/qpdf",
+                      gs = "C:/Program Files (x86)/gs/gs9.22/bin/gswin32",
+                      select = "distr-2.7", invert = FALSE){
      startD <- file.path(startDir,rforgeproject)
      dir0 <- paste(startD,dir(startD, recursive=TRUE),sep="/")
      dir1 <- grep("inst/doc/.+\\.pdf",dir0,value=TRUE)

@@ -24,7 +24,7 @@ updatePackageHelp <- function(package){
 }
 
 ## needs: getRevNr() in getRevNr.R in  utils/ e.g.
-## source("C:/rtest/distr/branches/distr-2.4/pkg/utils/getRevNr.R")
+## source("C:/rtest/distr/branches/distr-2.7/pkg/utils/getRevNr.R")
 
   changeDescription <- function(startDir ## folder with pkgs to be updated,
                              ### e.g. "C:/rtest/distr/branches/distr-2.6"
@@ -54,14 +54,16 @@ updatePackageHelp <- function(package){
         startD <- gsub("/branches/[^/]+","",startDir)
         if(is.null(pathRepo)) pathRepo <- gsub(".*/([^/]+)/*$","\\1", startD)
         svnrev <- getRevNr(startD, pathRepo, inRforge, withlogin,
-                           PathToBash, PathToreadsvnlog.sh)[[1]]
+                           PathToBash, PathToreadsvnlog.sh)
         print(svnrev)
+
         if("SVNRevision" %in% names){
-           values[which(names=="SVNRevision"),] <- svnrev
+           values[which(names=="SVNRevision"),] <- c(svnrev[[1]])
         }else{
            nr <- nrow(values)
            names <- c(names,"SVNRevision")
-           values <- rbind(values,rep(svnrev,ncol(values)))
+           vlsvn <- rep(c(svnrev[[1]]),ncol(values))
+           values <- base::rbind(values,vlsvn)
            rownames(values)[nr+1] <- "SVNRevision"
         }
     }
@@ -70,7 +72,7 @@ updatePackageHelp <- function(package){
            nr <- nrow(values)
            dat <- format(Sys.time(), format="%Y-%m-%d")
            names <- c(names,"Date")
-           values <- rbind(values,rep(dat,ncol(values)))
+           values <- base::rbind(values,rep(dat,ncol(values)))
            rownames(values)[nr+1] <- "Date"
        }
     }
@@ -85,6 +87,7 @@ updatePackageHelp <- function(package){
        if(length(idx)) idx <- -idx else idx <- TRUE
        pkgs <- pkgs[idx]
     }
+    print(values)
     if (length(pkgs) && length(names) && length(values)){
        pkgs <- pkgs[sapply(pkgs, function(x)
                    file.exists(file.path("pkg",x,"DESCRIPTION")))]

@@ -20,18 +20,12 @@ finde <- function(x = "nchar", dir="C:/rtest/distr/pkg/distr/R", ext = "R", rec 
   }
 infind(dir)   
 }
+finde(x="q\\(", dir ="C:/rtest/distr/branches/distr-2.7/pkg/", rec=TRUE)
+finde(x="http\\:/", dir ="C:/rtest/distr/branches/distr-2.7/pkg/distr/", rec=TRUE)
 #finde(x="Wow6432Node", dir ="C:/R/devel/src/gnuwin32", rec=TRUE, ext="")
+finde(x="omega", dir ="C:/rtest/distr/branches/distr-2.7/pkg/distrMod/", rec=TRUE)
 
 #finde(x="getPos", dir ="C:/rtest/distr/branches/distr-2.4/pkg/distrMod/", rec=TRUE)
-finde(x="\\.rd", dir ="C:/rtest/distr/pkg/distrEllipse/R")
-finde(x="RobExtremes", dir ="C:/rtest/distr/pkg/distrMod/man")
-finde(x="getFromNamespace", dir ="C:/rtest/robast/branches/robast-1.0/pkg/RobAStBase/",rec=TRUE)
-
-finde(x="getFiRisk", dir ="C:/rtest/robast/pkg/RobAStBase/",rec=TRUE)
-finde(x="\\.LowerCaseMultivariateTV", dir ="C:/rtest/robast/branches/robast-1.0/pkg/RobAStBase/R")
-finde(x="\\.checkEstClassForParamFamily", dir ="C:/rtest/distr/pkg/distrMod/R")
-finde(x="\\.cexscale", dir ="C:/rtest/robast/branches/robast-1.1/pkg/RobAStBase", rec=TRUE)
-finde(x="updatePackageHelp", dir ="C:/rtest/distr/pkg/utils", rec=TRUE)
 finde(x="roptest\\(", dir ="C:/rtest/robast/branches/robast-0.9/pkg/ROptEst/", rec=TRUE)
 finde(x="getSlots\\(", dir ="C:/rtest/distr/branches/distr-2.4/pkg/distrMod/", rec=TRUE)
 finde(x="\"loc\"", dir ="C:/rtest/distr/branches/distr-2.4/pkg/distrEx/", rec=TRUE)
@@ -62,5 +56,8 @@ ersetze <- function(x0 = "nchar", x1="nchar", dir="C:/rtest/distr/pkg/distr/R", 
   }
 infind(dir)
 }
+ersetze(x0="https://distr.r-forge.r-project.org/",x1="http://distr.r-forge.r-project.org/", dir ="C:/rtest/distr/branches/distr-2.7/pkg", rec=TRUE,ext="Rd")
+
 ersetze(x0="href=\"distr.pdf\"",x1="href=\"http://cran.r-project.org/web/packages/distrDoc/vignettes/distr.pdf\"", dir ="C:/rtest/distr/www", rec=TRUE,ext="html")
 ersetze(x0="peter.ruckdeschel@uni-bayreuth.de",x1="peter.ruckdeschel@uni-oldenburg.de", dir ="C:/rtest/distr/www", rec=TRUE, ext="html")
+ersetze(x0="peter.ruckdeschel@itwm.fraunhofer.de", x1="peter.ruckdeschel@uni-oldenburg.de", dir ="C:/rtest/robast/branches/robast-1.1", rec=TRUE, ext="Rd")
