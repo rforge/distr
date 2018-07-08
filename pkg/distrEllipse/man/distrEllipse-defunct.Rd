@@ -1,19 +1,19 @@
-\name{distrEllipse-deprecated}
-\alias{distrEllipse-deprecated}
+\name{distrEllipse-defunct}
+\alias{distrEllipse-defunct}
 \alias{plot.rd}
 \alias{r.rd}
 \alias{d.rd}
 \alias{p.rd}
 \alias{q.rd}
-\title{Deprecated Functions in Package \pkg{distrEllipse}}
+\title{Defunct Functions in Package \pkg{distrEllipse}}
 \description{
-  These functions are provided for compatibility with older versions of
-  \pkg{distrEllipse} only, and may be defunct as soon as the next release.
-}
+  Functions which are no longer provided in  \pkg{distrEllipse} due to
+  clashes with S3-method inheritance.
+ }
 \section{Methods}{
-  From version 2.6 on, we deprecate former versions of S4-methods
+  From version 2.7 on, former versions of S4-methods
   \code{rRd}, \code{dRd}, \code{pRd}, \code{qRd}, and \code{plotRd} of style
-  <name>.rd due to clashes with S3-method inheritance. 
+  <name>.rd are defunct due to clashes with S3-method inheritance.
   More specifically, this concerns the following methods:
   \describe{
     \item{r.rd}{\code{signature(object = "SphericalDistribution")}: wrapped access method for
@@ -30,6 +30,6 @@
 }
 
 \seealso{
-  \code{\link{Deprecated}}
+  \code{\link{Defunct}}
 }
 \keyword{misc}
