@@ -8,7 +8,7 @@ Depends: R(>= 2.8.0), methods, graphics, mvtnorm, setRNG(>= 2006.2-1), distr(>= 
         distrEx(>= 2.2), distrSim(>= 2.2)
 Suggests: distrMod(>= 2.2), distrTEst(>= 2.2)
 Imports: startupmsg, stats
-Authors@R: person("Peter", "Ruckdeschel", role=c("cre", "cph"),
+Authors@R: person("Peter", "Ruckdeschel", role=c("aut", "cre", "cph"),
         email="peter.ruckdeschel@uni-oldenburg.de")
 ByteCompile: yes
 License: LGPL-3
