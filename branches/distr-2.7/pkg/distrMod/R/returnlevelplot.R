@@ -54,7 +54,7 @@ setMethod("returnlevelplot", signature(x = "ANY",
              col.pch = par("col"),## color for the plotted symbols
              cex.lbl = par("cex"),## magnification factor for the plotted observation labels
              col.lbl = par("col"),## color for the plotted observation labels
-             adj.lbl = NULL,      ## adj parameter for the plotted observation labels
+             adj.lbl = par("adj"),## adj parameter for the plotted observation labels
              alpha.trsp = NA,     ## alpha transparency to be added afterwards
              jit.fac = 0,         ## jittering factor used for discrete distributions
              jit.tol = .Machine$double.eps, ## tolerance for jittering: if distance 
@@ -120,13 +120,13 @@ setMethod("returnlevelplot", signature(x = "ANY",
     }
 
     pp <- ppoints(length(xj))
-    yc.o <- q(y)(pp)
+    yc.o <- q.l(y)(pp)
     ycl <- p2rl(yc.o)
 
     ### extend range somewhat
 #    pyn <- p(y)(10^(seq(-1, 3.75 + log10(npy), by = 0.1)))
     xyall <- force(sort(unique(c(yc.o,x,
-                    q(y)(c(seq(0.01, 0.09, by = 0.01),(1:9)/10,
+                    q.l(y)(c(seq(0.01, 0.09, by = 0.01),(1:9)/10,
                          0.95, 0.99, 0.995, 0.999))
                          ))))
     rxyall  <- (max(xyall)-min(xyall))*0.6
@@ -162,9 +162,9 @@ setMethod("returnlevelplot", signature(x = "ANY",
 
     if(check.NotInSupport){
        xo <- x[ord.x]
-       nInSupp <- which(xo < q(y)(0))
+       nInSupp <- which(xo < q.l(y)(0))
 
-       nInSupp <- unique(sort(c(nInSupp,which( xo > q(y)(1)))))
+       nInSupp <- unique(sort(c(nInSupp,which( xo > q.l(y)(1)))))
        if("support" %in% names(getSlots(class(y))))
           nInSupp <- unique(sort(c(nInSupp,which( ! xo %in% support(y)))))
        if("gaps" %in% names(getSlots(class(y))))

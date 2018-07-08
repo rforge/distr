@@ -16,8 +16,8 @@
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"), 
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"), 
                          IQR.fac = getdistrExOption("IQR.fac")){
-  low0 <- q(distr)(lowerTruncQuantile)
-  upp0 <- q(distr)(upperTruncQuantile,lower.tail=FALSE)
+  low0 <- q.l(distr)(lowerTruncQuantile)
+  upp0 <- q.l(distr)(upperTruncQuantile,lower.tail=FALSE)
   me <- median(distr)
   s1 <- IQR(distr)
   low1 <- me - IQR.fac * s1 
@@ -116,8 +116,8 @@
    distr <- L2Fam@distribution
    
    ### get a sensible integration range:
-   low0 <- q(distr)(TruncQuantile) 
-   up0 <- q(distr)(TruncQuantile, lower.tail = FALSE) 
+   low0 <- q.l(distr)(TruncQuantile)
+   up0 <- q.l(distr)(TruncQuantile, lower.tail = FALSE)
    m0 <- median(distr); s0 <- IQR(distr)
    low1 <- m0 - IQR.fac * s0
    up1  <- m0 + IQR.fac * s0
@@ -125,8 +125,8 @@
 
    ### get a sensible integration range:
    if(missing(mu)) mu <- distr
-   low0.mu <- q(mu)(TruncQuantile) 
-   up0.mu <- q(mu)(TruncQuantile, lower.tail = FALSE) 
+   low0.mu <- q.l(mu)(TruncQuantile)
+   up0.mu <- q.l(mu)(TruncQuantile, lower.tail = FALSE)
    m0.mu <- median(mu); s0.mu <- IQR(mu)
    low1.mu <- m0.mu - IQR.fac * s0.mu
    up1.mu  <- m0.mu + IQR.fac * s0.mu
@@ -138,7 +138,7 @@
    else
        {if(is(distr,"AbscontDistribution")){
            x.seq0 <- seq(low, up, length = N1)
-           h0 <- x.seq0[1:2]%*%c(-1,1)
+           h0 <- diff(x.seq0[2:1])
            x.seq <- x.seq0[odd]
           }else{ 
            x.seq <- seq(low,up, length = N)
@@ -149,7 +149,7 @@
    else
        {if(is(mu,"AbscontDistribution")){
            x.mu.seq0 <- seq(low.mu, up.mu, length = N1)
-           h0.mu <- x.mu.seq0[1:2]%*%c(-1,1)
+           h0.mu <- diff(x.mu.seq0[2:1])
            x.mu.seq <- x.mu.seq0[odd]
           }else{ 
            x.mu.seq <- seq(low.mu, up.mu, length = N)
@@ -618,8 +618,8 @@ mcl}
 
 .NotInSupport <- function(x,D){
   if(length(x)==0) return(logical(0))
-  nInSupp <- which(x < q(D)(0))
-  nInSupp <- unique(sort(c(nInSupp,which(x > q(D)(1)))))
+  nInSupp <- which(x < q.l(D)(0))
+  nInSupp <- unique(sort(c(nInSupp,which(x > q.l(D)(1)))))
 
   nInSuppo <-
       if("support" %in% names(getSlots(class(D))))
@@ -647,7 +647,7 @@ mcl}
 
   lx[.NotInSupport(x,D)] <- 4
 
-  idx.0 <- ((x>q(D)(1)) | (x<q(D)(0)))
+  idx.0 <- ((x>q.l(D)(1)) | (x<q.l(D)(0)))
   iG <- rep(FALSE,length(x))
 
   if(is(D, "DiscreteDistribution")){
