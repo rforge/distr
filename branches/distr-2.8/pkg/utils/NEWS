@@ -1,0 +1,33 @@
+######################################################################
+#  News: to utilities in folder 'utils'
+######################################################################
+
+### distrXXX family version 2.4
++ minor changes in utils 
++ changed line ending due to a warning
+
+### distrXXX family version 2.3
+
++ new utils getRevNr, getAllRevNr  to obtain SVN Revision Nr
++ DESCRIPTION files and package-help files gain a tag 
+  SVNRevision to be filled by get[All]RevNr.R from utils in distr
++ correspondingly DESCRIPTIONutils and setNewVersion.r from utils are extended for this purpose
+
++ showsvnlog now works with new system() syntax
+
+### distrXXX family version 2.2
+
++ ladealles.R now loads both .r and .R files
++ new util in compare.R: compare() to compare two objects slot-wise, recursively... 
++ new util in showAllFiles.R:  
+  showAllFiles() concatenates all files of same kind in one output (like NEWS, TOBEDONE)
++ new util in showsvnlog.R:  
+  using bash-script readsvnlog.sh , showsvnlog() reads out svn log information 
+  / works with bash shell (@Matthias: pls check Linux!) 
++ modified DESCRIPTIONutils.R  --- now uses gsub()
++ updated README-R-utils
+
+
+
+
+

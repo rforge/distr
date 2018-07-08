@@ -1,0 +1,33 @@
+#! /bin/sh
+#
+# ***pmake*** makes a package...
+#
+#  SYNTAX: pmake <packagename> 
+#   * performs R CMD check, R CMD build, R CMD INSTALL to package <packagename>,
+# 
+# 
+echo.
+echo ##########################################
+echo This is pmake --- making package %1
+echo ##########################################
+cd ..
+echo ----------------------------------------------------------------
+echo R CMD REMOVE
+echo ----------------------------------------------------------------
+R CMD REMOVE %1
+echo ----------------------------------------------------------------
+echo R CMD check
+echo ----------------------------------------------------------------
+R CMD check --timings --install-args="--byte-compile --with-keep.source --compact-docs --resave-data --install-tests --example --html --latex --clean --preclean" %1
+echo ----------------------------------------------------------------
+echo R CMD build
+echo ----------------------------------------------------------------
+R CMD build --compact-vignettes --resave-data %1
+echo ----------------------------------------------------------------
+echo R CMD INSTALL
+echo ----------------------------------------------------------------
+R CMD INSTALL --byte-compile --with-keep.source --compact-docs --resave-data --install-tests --example --html --latex --clean --preclean %1
+echo ----------------------------------------------------------------
+echo FERTIG!!!
+echo ----------------------------------------------------------------
+cd utils

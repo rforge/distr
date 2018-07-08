@@ -1,0 +1,66 @@
+# HOWTO to BATCH-utils
+#
+################################
+
+to be done beforehand: 
+   install   batch-utils   by Gabor Grothendiek (see CRAN)
+you also need el.js to elevate the priviledges on Win 7 / Vista.
+
+provided Utilities: (all to be called in devel dir)
+
+
+## revised batch utils:
+## R.bat and Rversions.bat (to cover 32 and 64bit simultaneously)
+## and RRversions.bat (with elevation, otherwise as Rversions.bat)
+
+################################################
+#   pmake.bat
+################################################
+
+# pmake makes a package...
+#
+#  SYNTAX: pmake <packagename> [R-ver] [Rver2] [+]
+#   * performs R CMD check, R CMD build, R CMD build --binary, R CMD INSTALL to package <packagename>,
+#
+#   args:
+#          R-ver    the R-version under which the package is to be made; i.e. Rversion is changed
+#                        [if no R-ver arg is given no Rversion change is made]
+#          R-ver2   the R-version under which the package is to be checked,
+#                        i.e. Rversion is changed before and after check
+#                        if given installs to R-ver & R-ver2  
+#          +        package is checked agaist R-ver and R-ver2 
+#                        (else just against R-ver2 if given or R-ver if given or preset R-version)
+#
+#   all args are positional, i.e. they only apply if all preceding args are given
+## with elevation: ppmake.bat (Syntax as above)
+
+
+################################################
+#   pmakeDoc.bat
+################################################
+
+# pmakeDoc makes package distrDoc ...
+#
+#  SYNTAX: pmakeDoc [R-ver] [Rver2] [+]
+#   * performs R CMD check, R CMD build, R CMD INSTALL --build, R CMD INSTALL to distrDoc,
+#
+#   args: as pmake 
+#   
+## with elevation: ppmakeDoc.bat (Syntax as above)
+
+################################################
+#   rebuild.bat
+################################################
+
+#  SYNTAX: rebuild [R-ver] [Rver2] [+]
+#   * performs pmake <pkgname> [R-ver] [Rver2] [+]  / pmakeDoc [R-ver] [Rver2] [+]
+#     to packages startupmsg, distr, distrEx, distrTeach, distrMod,
+#                 distrSim, distrTEst, distrDoc (in this order)
+#
+#   args: as pmake 
+
+# I also provide shortcuts for R CMD xxx commands with default options
+# R CMD check           -> RCheck  [with 2 remaining args, 1 ^= package 1(optional)^= outdir]
+# R CMD build           -> RBuild
+# R CMD INSTALL --build -> RZip
+# R CMD INSTALL         -> RInstall

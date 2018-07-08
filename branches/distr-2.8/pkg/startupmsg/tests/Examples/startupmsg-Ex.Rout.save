@@ -1,0 +1,249 @@
+
+R version 3.0.1 Patched (2013-09-02 r63805) -- "Good Sport"
+Copyright (C) 2013 The R Foundation for Statistical Computing
+Platform: i386-w64-mingw32/i386 (32-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "startupmsg"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> options(pager = "console")
+> base::assign(".ExTimings", "startupmsg-Ex.timings", pos = 'CheckExEnv')
+> base::cat("name\tuser\tsystem\telapsed\n", file=base::get(".ExTimings", pos = 'CheckExEnv'))
+> base::assign(".format_ptime",
++ function(x) {
++   if(!is.na(x[4L])) x[1L] <- x[1L] + x[4L]
++   if(!is.na(x[5L])) x[2L] <- x[2L] + x[5L]
++   options(OutDec = '.')
++   format(x[1L:3L], digits = 7L)
++ },
++ pos = 'CheckExEnv')
+> 
+> ### * </HEADER>
+> library('startupmsg')
+:startupmsg>  Utilities for start-up messages (version 0.9)
+:startupmsg> 
+:startupmsg>  For more information see ?"startupmsg",
+:startupmsg>  NEWS("startupmsg")
+
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("StartupUtilities")
+> ### * StartupUtilities
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: StartupUtilities
+> ### Title: Utilities for start-up messages
+> ### Aliases: startupmsg infoShow TOBEDONE NEWS readVersionInformation
+> ###   readURLInformation pointertoNEWS StartupMessage startupPackage
+> ###   startupType startupEndline startupMessage suppressStartupMessages
+> ###   onlytypeStartupMessages
+> ### Keywords: utilities
+> 
+> ### ** Examples
+> 
+> ## a set of test messages
+> several.messages<-function() {
++ startupMessage("this is a type 'version' startup message", pkg="PKG")
++ startupMessage("this is a type 'information' startup message", 
++                 pkg="PKG", type="information")
++ message("this is an ordinary message")}
+> 
+> ## issuing of messages with different wrappers
+> several.messages()
+this is a type 'version' startup message
+this is a type 'information' startup message
+this is an ordinary message
+> suppressStartupMessages(several.messages())
+this is an ordinary message
+> suppressMessages(several.messages())
+> onlytypeStartupMessages(several.messages(),atypes=c("version","notabene"))
+this is a type 'version' startup message
+
+this is an ordinary message
+> 
+> ##Example by Seth Falcon:
+> ## Here is a test function
+> doit <- function() {
++     several.messages()
++     return(123)
++ }
+> 
+> ## Here is an example message handler.  Here, you could write messages
+> ## to a file, send them as email to your friends or enemies, etc.
+> ## For the example, we'll just prepend 'MSG:'
+> msgLogger <- function(m) {
++              types<-paste("(", startupType(m),"):", sep="")
++              cat(paste("MSG: ",types, conditionMessage(m)), "\n")
++              }
+> 
+> ## Finally, call the doit function and customize how messages are
+> ## handled.
+> withCallingHandlers(doit(),
++                     StartupMessage=function(m) {
++                         invokeRestart("custom", m, msgLogger)
++                     })
+MSG:  (version): this is a type 'version' startup message
+ 
+MSG:  (information): this is a type 'information' startup message
+ 
+this is an ordinary message
+[1] 123
+> ### reading information file utilities
+> readVersionInformation("stats")
+$ver
+[1] "3.0.1"
+
+$title
+[1] "The R Stats Package"
+
+> readURLInformation("stats")
+NULL
+> ## for packages with URL file see e.g. dse1
+> pointertoNEWS("stats") ## no NEWS file;
+NULL
+> NEWS("stats") ## no NEWS file; 
+Warning in file.show(file.path(system.file(package = pkg, lib.loc = library),  :
+  file.show(): file 'C:/PROGRA~1/R/R-30~1.1PA/library/stats/NEWS' does not exist
+> ## for packages with NEWS file see e.g. randomForest, distr
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("StartupUtilities", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("myStartupUtilities")
+> ### * myStartupUtilities
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: myStartupUtilities
+> ### Title: Example functions to utilities for start-up messages
+> ### Aliases: mystartupMessage mySMHandler buildStartupMessage
+> ### Keywords: utilities
+> 
+> ### ** Examples
+> 
+> ## a set of test messages
+> 
+> msg <- "Note that you may set global options by options() --- cf. ?\"options\"."
+> 
+> ## issuing of messages controlled by options()
+> buildStartupMessage(pkg="stats", msg) 
+:stats>  The R Stats Package (version 3.0.1)
+:stats> 
+:stats>  Note that you may set global options by options() --- cf.
+:stats>  ?"options".
+
+> suppressStartupMessages(buildStartupMessage(pkg="stats", msg) )
+> suppressMessages(buildStartupMessage(pkg="stats", msg))
+> onlytypeStartupMessages(buildStartupMessage(pkg="stats", msg),
++           atypes="version")
+The R Stats Package (version 3.0.1)
+
+> 
+> getOption("StartupBanner")
+NULL
+> buildStartupMessage(pkg="stats", msg)
+:stats>  The R Stats Package (version 3.0.1)
+:stats> 
+:stats>  Note that you may set global options by options() --- cf.
+:stats>  ?"options".
+
+> 
+> options("StartupBanner"="off");getOption("StartupBanner")
+[1] "off"
+> buildStartupMessage(pkg="stats", msg)
+> 
+> options("StartupBanner"="complete");getOption("StartupBanner")
+[1] "complete"
+> buildStartupMessage(pkg="stats", msg)
+:stats>  The R Stats Package (version 3.0.1)
+:stats> 
+:stats>  Note that you may set global options by options() --- cf.
+:stats>  ?"options".
+
+> 
+> options("StartupBanner"="something else");getOption("StartupBanner")
+[1] "something else"
+> buildStartupMessage(pkg="stats", msg)
+:stats>  The R Stats Package (version 3.0.1)
+:stats> 
+> 
+> options("StartupBanner"=NULL);getOption("StartupBanner")
+NULL
+> buildStartupMessage(pkg="stats", msg)
+:stats>  The R Stats Package (version 3.0.1)
+:stats> 
+:stats>  Note that you may set global options by options() --- cf.
+:stats>  ?"options".
+
+> 
+> 
+> MNH <- "http://www.r-project.org/"
+> buildStartupMessage(pkg="stats", msg, packageHelp=TRUE, MANUAL=MNH)
+:stats>  The R Stats Package (version 3.0.1)
+:stats> 
+:stats>  Note that you may set global options by options() --- cf.
+:stats>  ?"options".
+:stats> 
+:stats>  For more information see ?"stats", as well as
+:stats>    http://www.r-project.org/
+
+> ## not quite a manual, but to illustrate the principle:
+> ## "demo/nlm.R" as a "manual": to be system-independent the 
+> ## first call is to be preferred 
+> buildStartupMessage(pkg="stats", msg, packageHelp=TRUE, MANUAL=c("demo","nlm.R"))
+:stats>  The R Stats Package (version 3.0.1)
+:stats> 
+:stats>  Note that you may set global options by options() --- cf.
+:stats>  ?"options".
+:stats> 
+:stats>  For more information see ?"stats"
+
+> ###  works, too, (i.e. is equivalent) under Linux and Windows (at least):
+> buildStartupMessage(pkg="stats", msg, packageHelp=TRUE, MANUAL="demo/nlm.R")
+:stats>  The R Stats Package (version 3.0.1)
+:stats> 
+:stats>  Note that you may set global options by options() --- cf.
+:stats>  ?"options".
+:stats> 
+:stats>  For more information see ?"stats"
+
+> 
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("myStartupUtilities", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> ### * <FOOTER>
+> ###
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  0.27 0.06 0.34 NA NA 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

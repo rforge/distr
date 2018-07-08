@@ -1,0 +1,51 @@
+######################################################################
+#  News: to package distrRmetrics
+######################################################################
+
+(first two numbers of package versions do not necessarily reflect 
+ package-individual development, but rather are chosen for the 
+ distrXXX family as a whole in order to ease updating "depends" 
+ information)
+ 
+##############
+v 2.7
+##############
+
+user-visible CHANGES:
+
+under the hood:
++ wherever possible also use q.l internally instead of q to 
+  provide functionality in IRKernel
+
+##############
+v 2.6
+##############
+
+user-visible CHANGES:
++ title changed to title style / capitalization
++ removed other authors from DESCRIPTION; this was an artefact by cut&paste
+
+under the hood:
++ enhanced imports in DESCRIPTION by explicating second order imports
+
+##############
+v 2.5
+##############
+
+user-visible CHANGES:
+
+GENERAL ENHANCEMENTS:
++ cleaned DESCRIPTION and NAMESPACE file as to Imports/Depends
+
+under the hood:
+
++ added .Rbuildignore
+ 
+BUGFIXES
++ fixed some links in html-man pages
+ 
+##############
+v 2.4
+##############
+
+package distrRmetrics created anew.
