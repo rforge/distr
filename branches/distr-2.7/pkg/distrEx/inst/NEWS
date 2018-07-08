@@ -8,6 +8,27 @@
  information)
 
 ##############
+v 2.7
+##############
+
+user-visible CHANGES:
++ triggered by mail from Peng Rui, larodarchillwind@aliyun.com, implemented 
+  Hellinger and TotalVariation distance for DiscreteMVDistributions
++ alias q.l(X) for q(X) to provide functionality in RStudio / Jupyter IRKernel
++ fixed some URLs in https style
+
+under the hood:
++ added more detailed author information in DESCRIPTION 
++ registered native code for GL integration
++ recreated sysdata.rda file with new tables 
+  .AW.5000, .AW.10000, .AW.50000, .AW.100000
++ changed defaults in distrExIntegrate / GLIntegrateOrder (with finer grids)
+
+bug fixes:
++ fixed a bug in CvMDist
+
+
+##############
 v 2.6
 ##############
 
@@ -308,7 +329,7 @@ v 1.9
     used wherever possible;
     but backwards compatibility: 
         always checked whether lowert.tail / log / log.p are formals
-
+		
  * some exact formulas for mad, median, and IQR  
  * new method for IQR for DiscreteDistributions taking care that between upper and lower
    quartile there is 50% probability 
