@@ -235,7 +235,7 @@ setMethod("p.l", "UnivarLebDecDistribution", function(object){
 
 setMethod("q.r", "UnivarLebDecDistribution", function(object){
     ep <- getdistrOption("TruncQuantile")
-    if(discreteWeight(object)<ep) return(q(object))
+    if(discreteWeight(object)<ep) return(q.l(object))
     supp <- support(object)
     gaps <- gaps(object)
     aP <- acPart(object)
