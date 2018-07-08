@@ -1,6 +1,6 @@
 Package: startupmsg
 Encoding: latin1
-Version: 0.9.1
+Version: 0.9.6
 Date: 2018-07-08
 Title: Utilities for Start-Up Messages
 Description: Provides utilities to create or suppress start-up messages.
