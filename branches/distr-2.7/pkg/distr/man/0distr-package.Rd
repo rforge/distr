@@ -33,6 +33,14 @@ For the arguments of these function slots see e.g. \code{\link{rnorm}}.
 Note that, as usual, slots \code{d}, \code{p}, and \code{q} are vectorized
 in their first argument, but are not on the subsequent ones.
 
+In the environments of RStudio, see \url{https://www.rstudio.com/} and
+Jupyter IRKernel, see \url{https://github.com/IRkernel/IRkernel},
+calls to \code{q} are caught away from standard R evaluation and are treated
+in a non-standard way. This non-standard evaluation in particular throws
+errors at calls to our accessor methods \code{q} to slot \code{q} of the
+respective distribution object. To amend this, we provide function \code{q.l}
+as alias to our accessors \code{q}, so that our packages also become available
+ in these environments.
 
 Arithmetics and unary mathematical transformations for distributions are
 available: For \code{Distribution} objects \code{X} and \code{Y} expressions
