@@ -8,6 +8,16 @@
  information)
  
 ##############
+v 2.7
+##############
+
+user-visible CHANGES:
+
+under the hood:
++ wherever possible also use q.l internally instead of q to 
+  provide functionality in IRKernel
+
+##############
 v 2.6
 ##############
 
