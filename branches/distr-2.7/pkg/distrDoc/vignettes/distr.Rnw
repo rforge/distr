@@ -4,6 +4,7 @@
 %\VignetteKeyword{simulation}
 %\VignetteKeyword{estimation}
 %\VignettePackage{distr}
+%\VignetteEngine{knitr::knitr}
 %
 \documentclass[11pt]{article}
 %
@@ -57,7 +58,7 @@
 \usepackage{amssymb}
 \usepackage{url}
 \usepackage[%
-baseurl={http://www.bioconductor.org},%
+baseurl={https://www.bioconductor.org},%
 pdftitle={S4 Classes for Distributions---a manual for packages distr, distrSim, distrTEst, distrEx,
 distrMod, and distrTeach},%
 pdfauthor={Peter Ruckdeschel, Matthias Kohl, Thomas Stabla, Florian Camphausen},%
@@ -71,19 +72,24 @@ pagecolor=darkblue,raiselinks,plainpages,pdftex]{hyperref}
 \RequirePackage{listings}
 %\usepackage{Sweave} no longer needed
 % -------------------------------------------------------------------------------
-\SweaveOpts{keep.source=TRUE}
-% -------------------------------------------------------------------------------
 \definecolor{distrCol}{rgb}{0.0,0.4,0.4}
-<<SweaveListingsPreparations, results=tex, echo=FALSE>>=
-require(SweaveListingUtils)
-SweaveListingPreparations()
-setToBeDefinedPkgs(pkgs = c("distr","distrEx","distrTEst","distrSim",
-                            "distrDoc","distrTeach","distrMod","RandVar"),
-                   keywordstyles = "\\bf\\color{distrCol}")
-@
+%%
+%% ------------------------------------------------------------------------------
+%% before version 2.7, we used package SweaveListingUtils for syntax highlighting
+%% from version 2.7 on, we switch to knitR
+%% ------------------------------------------------------------------------------
+%%
+%%#(ll)SweaveListingsPreparations, results="asis", echo=FALSE(ggeq)
+%%#require(SweaveListingUtils)
+%%#SweaveListingPreparations()
+%%#setToBeDefinedPkgs(pkgs = c("distr","distrEx","distrTEst","distrSim",
+%%#                           "distrDoc","distrTeach","distrMod","RandVar"),
+%%#                   keywordstyles = "\\bf\\color{distrCol}")
+%%#(at)
+%%
+%% ------------------------------------------------------------------------------
 %
 % -------------------------------------------------------------------------------
-\renewcommand{\pkgversion}{{\tt 2.7}}
 \newcommand{\pkgExversion}{{\tt 2.7}}
 \newcommand{\Reals}{\mathbb{R}}
 \newcommand{\R}{\mathbb{R}}
@@ -100,18 +106,52 @@ setToBeDefinedPkgs(pkgs = c("distr","distrEx","distrTEst","distrSim",
 % -------------------------------------------------------------------------------
 \begin{document}
 % -------------------------------------------------------------------------------
-\title{{\tt S4} Classes for Distributions---a manual for packages \pkg{distr}, 
+<<knitRPreparations,include=FALSE>>=
+library(knitr)
+opts_chunk$set(tidy=FALSE)
+@
+% -------------------------------------------------------------------------------
+\lstdefinelanguage{Rd}[common]{TeX}%
+{moretexcs={acronym,alias,arguments,author,bold,cite,%
+          code,command,concept,cr,deqn,describe,%
+          description,details,dfn,doctype,dots,%
+          dontrun,dontshow,donttest,dQuote,%
+          email,emph,enc,encoding,enumerate,env,eqn,%
+          examples,file,format,if,ifelse,item,itemize,kbd,keyword,%
+          ldots,link,linkS4class,method,name,note,%
+          option,out,pkg,preformatted,R,Rdopts,Rdversion,%
+          references,S3method,S4method,Sexpr,samp,section,%
+          seealso,source,sp,special,sQuote,strong,%
+          subsection,synopsis,tab,tabular,testonly,%
+          title,url,usage,value,var,verb},
+   sensitive=true,%
+   morecomment=[l]\%% 2008/9 Peter Ruckdeschel
+}[keywords,comments]%%
+\lstdefinestyle{Rdstyle}{fancyvrb=TRUE,language=Rd, keywordstyle={\bf},%
+         basicstyle={\color{black}\footnotesize},%
+         commentstyle={\ttfamily\itshape},%
+         alsolanguage=R}%
+\global\def\Rdlstset{\lstset{style=Rdstyle}}%
+% -------------------------------------------------------------------------------
+\lstset{language=R,basicstyle={\color{Rcolor}\footnotesize},keywordstyle={\bf}}
+\let\code\lstinline
+\def\Code#1{{\tt\color{Rcolor} #1}}
+\def\file#1{{\tt #1}}
+\def\pkg#1{{\tt"#1"}}
+\newcommand{\pkgversion}{{\tt 2.7}}
+% -------------------------------------------------------------------------------
+\title{{\tt S4} Classes for Distributions---a manual for packages \pkg{distr},
         \pkg{distrEx}, \pkg{distrEllipse}, \pkg{distrMod}, \pkg{distrSim},
         \pkg{distrTEst}, \pkg{distrTeach},
         version \pkgversion}
 %,version \pkgExversion}
 \author{\small Peter Ruckdeschel\thanks{Carl von Ossietzky Universit\"at Oldenburg}
 \\[-.5ex]
-\small Matthias Kohl\thanks{FH Furtwangen}
+\small Matthias Kohl\thanks{Hochschule Furtwangen}
 \\[-.5ex]
 \small Thomas Stabla\thanks{Graf-M\"unster-Gymnasium, Bayreuth}
 \\[-.5ex]
-\small Florian Camphausen\thanks{West-LB, London}
+\small Florian Camphausen\thanks{European Central Bank, Frankfurt}
 \smallskip\\
 \small Institute for Mathematics\\[-.5ex]
 \small School of Mathematics and Science\\[-.5ex]
@@ -227,8 +267,9 @@ of expressions like \code{X+3Y} for objects \code{X} and \code{Y} of class
 function $f\colon \Reals^2 \to \Reals$ which is already realized as a function 
 in {\sf R}.\\
 This is possible with package \pkg{distr}. As an example, try
-<<echo=false,results=hide>>=
-## preparation: set option withSweave to true
+
+<<echo = FALSE, results = "hide">>=
+## preparation: set option withSweave to TRUE
 require(distrTEst)
 require(distrEx)
 require(distrTeach)
@@ -236,7 +277,8 @@ require(distrMod)
 distroptions(withSweave = TRUE)
 options("newDevice" = TRUE)
 @
-<<exam1, eval = TRUE, fig = TRUE>>=
+
+<<exam1, eval = TRUE, fig.width=8.0, fig.height=4.5>>=
 require(distr)
 N <- Norm(mean = 2, sd = 1.3)
 P <- Pois(lambda = 1.2)
@@ -245,18 +287,27 @@ Z
 plot(Z)
 p(Z)(0.4)
 q(Z)(0.3)
+## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 Zs <- r(Z)(50)
 Zs
 @
 \par
 \begin{small}
-Due to a non-conformal implementation of function \code{q} in \texttt{RStudio},
-our approach to overload function \code{q} by method dispatch does not work
-from an \texttt{RStudio} console (it does work, though within a function 
-environment). To overcome this, from version 2.6 on, we have aliases 
-\code{p.r} and \code{q.l} for functions \code{p} and \code{q}, alluding to
-the right (resp. left) continous form of the cdf and the quantile function.
-these two aliases (in particular \code{q.l}) do work in \texttt{RStudio}.
+In the environments of \texttt{RStudio}, see \url{https://www.rstudio.com/} and
+\texttt{Jupyter IRKernel}, see \url{https://github.com/IRkernel/IRkernel},
+calls to \code{q} are caught away from standard {\sf R} evaluation and are treated
+in a non-standard way. This non-standard evaluation in particular throws
+errors at calls to our accessor methods \code{q} to slot \code{q} of the
+respective distribution object. For \texttt{RStudio}, this holds for calls from the
+console (i.e., in the \code{.GlobalEnv} environment) only, while calls
+to our accessor \code{q} in different environment are not affected. This
+is not true in \texttt{IRKernel}, where all calls to our accessor \code{q} are
+affected. To amend this, from version 2.6 on, we provide function \code{q.l}
+(for left-continuous quantile function) as alias to our accessors \code{q}, so
+that all our package functionality also becomes available in \texttt{RStudio}
+and \texttt{IRKernel}. The same holds, albeit with less consequences in
+\texttt{RStudio} and \texttt{IRKernel} for accessor \code{p}: Here we have an
+alias \code{p.r} (for the right-continuous cdf) for it.\\
 \end{small}
 \par
 \begin{small}
@@ -386,9 +437,9 @@ probabilities.
 % -------------------------------------------------------------------------------
 \subsubsection{Subclasses}
 % -------------------------------------------------------------------------------
-To begin with, we have considered univariate distributions giving the 
+To begin with, we consider univariate distributions giving
 {\tt S4}-class \code{UnivariateDistribution}, and as typical subclasses, we 
-have introduced classes for absolutely continuous and discrete distributions 
+introduce classes for absolutely continuous and discrete distributions
 ---\code{AbscontDistribution} and \code{DiscreteDistribution}.\\
 
 The former, from version 1.9 on, has a slot \code{gaps} of class 
@@ -443,20 +494,20 @@ resp.\ \code{AbscontDistribution()}; see also
 the corresponding help. E.g., to produce a discrete distribution with
 support $(1,5,7,21)$ with corresponding probabilities $(0.1,0.1,0.6,0.2)$
 we may write
-<<DiscrDist, eval = TRUE, fig = TRUE>>=
+<<DiscrDist, eval = TRUE>>=
 D <- DiscreteDistribution(supp = c(1,5,7,21), prob = c(0.1,0.1,0.6,0.2))
 D
 plot(D)
 @                 
-\newline
+%\newline
 and to generate an absolutely continuos distribution with density proportional
 to $e^{-|x|^3}$, we write
-<<AbscDist, eval = TRUE, fig = TRUE>>=
+<<AbscDist, eval = TRUE>>=
 AC <- AbscontDistribution(d = function(x) exp(-abs(x)^3), withStand = TRUE)
 AC
 plot(AC)
 @                 
-\newline
+%\newline
 As subclasses of these absolutely continuous and discrete classes, we have 
 implemented all parametric families which already exist in the  \pkg{stats} 
 package of {\sf R} in form of 
@@ -1142,24 +1193,24 @@ objects of class \code{UnivariateDistribution} and corresponding subclasses.
 Having implemented a class for Lebesgue decomposed distributions, we have been
 able to realize further binary operators, in particular we have exact
 analytical constructions for multiplication, division, exponentiation:
-<<arith2v1, eval = TRUE, fig = TRUE>>=
+<<arith2v1, eval = TRUE>>=
   A1 <- Norm(); A2 <- Unif()
   A1A2 <- A1*A2
   plot(A1A2)
 @
-<<arith2v2, eval = TRUE, fig = TRUE>>=
+<<arith2v2, eval = TRUE>>=
   A12 <- 1/(A2 + .3)
   plot(A12) 
 @
-<<arith2v3, eval = TRUE, fig = TRUE>>=
+<<arith2v3, eval = TRUE>>=
   B <- Binom(5,.2)+1
   A1B <- A1^B
   plot(A1B, xlim=c(-3,3))
 @
-<<arith2V4, fig = TRUE>>=
+<<arith2v4>>=
   plot(1.2^A1)
 @
-<<arith2v5, fig = TRUE>>=
+<<arith2v5>>=
   plot(B^A1)
 @
 %
@@ -1170,23 +1221,23 @@ and maximum of random variables as illustrating demos; in particular
 the last three could not be realized in a completely satisfactory manour,
 as Lebesgue decomposed distributions had not been available before.
 Now these illustrations have moved into the package itself:
-<<Hub, eval = TRUE, fig = TRUE>>=
+<<Hub, eval = TRUE>>=
 H <- Huberize(Norm(),lower=-1,upper=2)
 plot(H)
 @
-<<Trun, eval = TRUE, fig = TRUE>>=
+<<Trun, eval = TRUE>>=
 T <- Truncate(Norm(),lower=-1,upper=2)
 plot(T)
 @
-<<Min1, eval = TRUE, fig = TRUE>>=
+<<Min1, eval = TRUE>>=
 M1 <- Maximum(Unif(0,1), Minimum(Unif(0,1), Unif(0,1)))
 plot(M1)
 @
-<<Min2, eval = TRUE, fig = TRUE>>=
+<<Min2, eval = TRUE>>=
 M2 <- Minimum(Exp(4),4)
 plot(M2)
 @
-<<Min3, eval = TRUE, fig = TRUE>>=
+<<Min3, eval = TRUE>>=
 M3 <- Minimum(Norm(2,2), Pois(3))
 plot(M3)
 @
@@ -1271,7 +1322,7 @@ of the support, these upper and lower bounds are somewhat enlarged.
 Note that in the result, slots \code{p} and \code{q} are not replaced but
 rather taken unchanged from the argument:
 
-<<makeAC, eval = TRUE, fig = TRUE>>=
+<<makeAC, eval = TRUE>>=
 par(mfrow=c(2,3))
 plot(makeAbscontDistribution(Nbinom(5,.5)),mfColRow=FALSE)
 plot(makeAbscontDistribution(HN),mfColRow=FALSE)
@@ -1323,10 +1374,10 @@ and so on. \code{plot()} can also cope with \code{log}-arguments.
 
 \paragraph{\code{xlim} argument:} More importantly, you may also 
 override the automatically chosen $x$-region by passing an \code{xlim} argument:
-<<cauchy1, eval = TRUE, fig = TRUE>>=
+<<cauchy1, eval = TRUE>>=
   plot(Cauchy())
 @
-<<cauchy2, eval = TRUE, fig = TRUE>>=
+<<cauchy2, eval = TRUE>>=
   plot(Cauchy(),xlim=c(-4,4))
 @
 From version 2.1, the automatic choice of the x-range of \code{plot}
@@ -1383,7 +1434,7 @@ a discrete distribution is shown in Figure~\ref{plotexPic1}.
 
 \begin{figure}[p] 
 \begin{center}
-<<plotex1, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
+<<plotex1, eval = TRUE, fig.width=8.0, fig.height=4.5>>=
 plot(Binom(size = 4, prob = 0.3))
 @
     \caption{\label{plotexPic1}{Standard plot for discrete distributions
@@ -1397,7 +1448,7 @@ in the \code{p} and \code{q} panels
 gives  Figure~\ref{plotexPic2}.
 \begin{figure}[p] 
 \begin{center}
-<<plotex2, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
+<<plotex2, eval = TRUE, fig.width=8.0, fig.height=4.5>>=
 plot(Binom(size = 4, prob = 0.3), do.points = FALSE, verticals = FALSE)
 @
     \caption{\label{plotexPic2}{Plot for discrete distributions without
@@ -1414,7 +1465,7 @@ is shown in Figure~\ref{plotexPic3}.
 
 \begin{figure}[p] 
 \begin{center}
-<<plotex3, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
+<<plotex3, eval = TRUE, fig.width=8.0, fig.height=4.5>>=
 plot(Binom(size = 4, prob = 0.3), main = TRUE, inner = FALSE, cex.main = 1.6,
      tmar = 6)
 @
@@ -1431,7 +1482,7 @@ as in Figure~\ref{plotexPic4}.
      
 \begin{figure}[p]
 \begin{center}
-<<plotex4, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
+<<plotex4, eval = TRUE, fig.width=8.0, fig.height=4.5>>=
 plot(Binom(size = 4, prob = 0.3), cex.points = 1.2, pch = 20, lwd = 2)
 @
     \caption{\label{plotexPic4}{Plot for discrete distributions using panel 
@@ -1450,7 +1501,7 @@ using the default titles respectively.
      
 \begin{figure}[p]
 \begin{center}
-<<plotex5, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
+<<plotex5, eval = TRUE, fig.width=8.0, fig.height=4.5>>=
 B <- Binom(size = 4, prob = 0.3)
 plot(B, col="red", col.points = "green", main = TRUE, col.main="blue",
      col.sub = "orange", sub = TRUE, cex.sub = 0.6, col.inner = "brown")
@@ -1468,7 +1519,7 @@ Figure~\ref{plotexPic6}.
 
 \begin{figure}[p]
 \begin{center}
-<<plotex6, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
+<<plotex6, eval = TRUE, fig.width=8.0, fig.height=4.5>>=
 plot(Nbinom(size = 4,prob = 0.3), cex.points = 1.2, pch.u = 20, pch.a = 10)
 @
     \caption{\label{plotexPic6}{Plot for discrete distributions with different
@@ -1483,7 +1534,7 @@ Figure~\ref{plotexPic7}.
 
 \begin{figure}[p]
 \begin{center}
-<<plotex7, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
+<<plotex7, eval = TRUE, fig.width=8.0, fig.height=4.5>>=
 plot(Chisq(), log = "xy", ngrid = 100)
 @
     \caption{\label{plotexPic7}{Plot for absolutely continuous distributions 
@@ -1498,7 +1549,7 @@ points used for plotting by \code{ngrid = 200} is shown in
 Figure~\ref{plotexPic8}.
 \begin{figure}[p] 
 \begin{center}
-<<plotex8, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
+<<plotex8, eval = TRUE, fig.width=8.0, fig.height=4.5>>=
 plot(Norm(), lwd=3, col = "red", ngrid = 200, lty = 3, las = 2)
 @
     \caption{\label{plotexPic8}{Plot for absolutely continuous distributions 
@@ -1514,7 +1565,7 @@ preset strings substitutions (\%N, \%C, \%P, \%A, \%D).
 
 \begin{figure}[p]
 \begin{center}
-<<plotex9, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
+<<plotex9, eval = TRUE, fig.width=8.0, fig.height=4.5>>=
 plot(Norm(), panel.first = grid(), main = "my Distribution: %A",
      inner = list(expression(paste(lambda, "-density of %C(%P)")), "CDF",
                   "Pseudo-inverse with param's %N"),
@@ -1535,7 +1586,7 @@ as shown for the $\chi^2$ distribution in Figure~\ref{plotexPic10}
 
 \begin{figure}[p] 
 \begin{center}
-<<plotex10, eval = TRUE, fig = TRUE, width=8.0,height=4.5>>=
+<<plotex10, eval = TRUE, fig.width=8.0, fig.height=4.5>>=
 Ch <- Chisq(); setgaps(Ch, exactq = 3)
 plot(Ch, cex = 1.2, pch.u = 20, pch.a = 10, col.points = "green", 
      col.vert = "red")
@@ -1552,7 +1603,7 @@ configuration using argument \code{mfColRow=FALSE}
 
 \begin{figure}[p]
 \begin{center}
-<<plotex11, eval = TRUE, fig = TRUE, width=8.0,height=8.0>>=
+<<plotex11, eval = TRUE, fig.width=8.0, fig.height=8.0>>=
 layout(matrix(c(1,3,2,3), nrow=2))
 plot(N, mfColRow = FALSE)
 @
@@ -1572,7 +1623,7 @@ Figure~\ref{plotexPic12}.
 
 \begin{figure}[p] 
 \begin{center}
-<<plotex12, eval = TRUE, fig = TRUE, width=8.0,height=8.0>>=
+<<plotex12, eval = TRUE, fig.width=8.0, fig.height=8.0>>=
 layout(matrix(c(rep(1,6),2,2,3,3,4,4,5,5,5,6,6,6), 
                    nrow=3, byrow=TRUE))
 plot(HN, mfColRow = FALSE,
@@ -1753,9 +1804,9 @@ is available for \code{X} of class \code{Arcsine}, \code{Beta} (for noncentralit
 \code{Nbinom}, \code{Norm}, %\code{Pareto},  -> moved to RobExtremes
 \code{Pois}, \code{Td}, \code{Unif}.  % \code{Weibull}  -> moved to RobExtremes
 \paragraph{examples} $ \mbox{ }$\newline
-%<<expectationPrep, eval = TRUE, echo=FALSE>>=
+%(ll)expectationPrep, eval = TRUE, echo=FALSE(ggeq)
 %SweaveListingOptions("inSweave"=TRUE)
-%@
+%(at)
 <<expectation, eval = TRUE>>=
 D4 <- LMCondDistribution(theta = 1)
 D4  # corresponds to Norm(cond, 1)
@@ -1806,9 +1857,13 @@ lower and upper quantiles $l_0$, $u_0$. In addition, we determine scale based
 bounds as ${\rm median} \pm s_f \,{\rm IQR}$ where $s_f$ is a scaling factor
 to be passed on as argument \code{IQR.fac} which defaults to global option
 \code{IQR.fac}.
-%<<expectationPrep, eval = TRUE, echo=FALSE>>=
-%SweaveListingOptions("inSweave"=TRUE)
-%@
+%
+%% no longer needed in knitr:
+%%
+%%(ll)expectationPrep, eval = TRUE, echo = FALSE(ggeg)
+%%SweaveListingOptions("inSweave"=TRUE)
+%%(at)
+%
 <<expectation2, eval = TRUE>>=
 E(N, function(x)x^2) 
 E(N, function(x)x^2,  lowerTruncQuantile = 1e-5)
@@ -2435,7 +2490,7 @@ particular \code{show} and \code{print} methods where you may scale the
 output by setting global options with \code{distrModOptions}, see also 
 subsection~\ref{distrModO}.
 As example consider the following:
-<<CIex, eval = TRUE, fig = TRUE>>=
+<<CIex, eval = TRUE>>=
 require(distrMod)
 ## some transformation
 mtrafo <- function(x){
@@ -2783,10 +2838,10 @@ PUBLIC LICENSE Version 2, June 1991, more specifically under {\tt LGPL-3}
 confer\newline
 %\href{http://www.gnu.org/copyleft/gpl.html}%
 %{\tt http://www.gnu.org/copyleft/gpl.html}
-\href{http://www.gnu.org/copyleft/gpl.html}%
-{\footnotesize \tt http://www.gnu.org/copyleft/gpl.html},
-\href{http://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License}%
-{\footnotesize\tt \url{http://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License}}
+\href{https://www.gnu.org/copyleft/gpl.html}%
+{\footnotesize \tt https://www.gnu.org/copyleft/gpl.html},
+\href{https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License}%
+{\footnotesize\tt \url{https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License}}
 
 \section{Details to the implementation}
 \begin{itemize}
@@ -2926,7 +2981,7 @@ until we finally came to a publishable version.
   but rather convolution of two independent identically distributed 
   random variables.
 \end{small}
-<<NormApprox, eval = TRUE, fig = TRUE>>=
+<<NormApprox, eval = TRUE>>=
 require(distr)
 
 N <- Norm(0,1)
@@ -2974,7 +3029,7 @@ par(opar)
   compute the convolution: We know that ${\cal L}({\tt A+B})={\cal N}(5,13)$ --- 
   if the second argument of ${\cal N}$ is the variance
 \end{small}
-<<ConvolutionNormalDistr, eval = TRUE, fig = TRUE>>=
+<<ConvolutionNormalDistr, eval = TRUE>>=
 require(distr)
 
 ## initialize two normal distributions
@@ -3072,7 +3127,7 @@ distroptions("TruncQuantile" = oldeps)
   simulational default algorithm used to compute the distribution of 
   transformations of group {\tt math}.
 \end{small}
-<<ComparisonFFTandRtoDPQ.R, eval = TRUE, fig = TRUE>>=
+<<ComparisonFFTandRtoDPQ.R, eval = TRUE>>=
 require(distr)
 
 ################################
@@ -3151,7 +3206,7 @@ legend("topleft",
   approximations down to small orders is exemplified by the Gaussian case where 
   we may compare the approximation to the exact stationary distribution.
 \end{small}
-<<StationaryRegressorDistr, eval = TRUE, fig = TRUE>>=
+<<StationaryRegressorDistr, eval = TRUE>>=
 require(distr)
 
 ## Approximation of the stationary regressor 
@@ -3265,7 +3320,7 @@ has been integrated to the package itself, see section~\ref{TruncMin}
 %  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
 %  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/destructive.R}}}}\\[2ex]
 %\end{footnotesize}
-<<destructive, eval = TRUE, fig = TRUE>>=
+<<destructive, eval = TRUE>>=
 ##########################################################
 ## Demo: Instructive destructive example
 ##########################################################
@@ -3289,7 +3344,7 @@ plot(N, lwd = 3)
 %  {\parbox[t]{12cm}{$\mbox{\hspace{2cm}}${\tt http://www.uni-bayreuth.de/departments/math/org/}\\%
 %  {$\mbox{\hspace{2cm}}$\hphantom{\tt http:/}{\tt /mathe7/DISTR/SimulateandEstimate.R}}}}\\[2ex]
 %\end{footnotesize}
-<<SimulateandEstimate, eval = TRUE, fig = TRUE, width=8.8,height=3.8>>=
+<<SimulateandEstimate, eval = TRUE, fig.width=8.8, fig.height=3.8>>=
 require(distrTEst)
     ### also loads distrSim
 sim <- new("Simulation",
@@ -3315,7 +3370,7 @@ sim
 summary(contsim)
 plot(contsim)
 @
-<<elist, eval = TRUE, fig = TRUE>>=
+<<elist, eval = TRUE>>=
 require(distrTEst)
 psim <- function(theta,y,m0){
   mean(pmin(pmax(-m0, y - theta), m0))
@@ -3408,7 +3463,7 @@ of our method we compare it to the
 exact formula valid for $n$-fold convolution of normal distributions.\\
 From version 1.9 this is integrated to package \pkg{distr}.
 \end{small}
-<<nFoldConvolution, eval = TRUE, fig = TRUE>>=
+<<nFoldConvolution, eval = TRUE>>=
 ##########################################################
 ## Demo: n-fold convolution of absolutely continuous 
 ##       probability distributions
@@ -3585,13 +3640,13 @@ standard {R} code.
 \newblock In: Hornik K., Leisch F. and Zeileis A. (Eds.) {\em
   Proceedings of the 3rd International Workshop on Distributed Statistical
   Computing (DSC 2003)\/}. Vienna, Austria.
-\newblock Published as http://www.ci.tuwien.ac.at/Conferences/DSC-2003/ 
+\newblock Published as http://www.ci.tuwien.ac.at/Conferences/DSC-2003/
 
 \bibitem{Cham:98}
 Chambers J.M.  (1998):
 \newblock {\em {Programming with data. A guide to the S language}\/}.
 \newblock {Springer}.
-\newblock http://cm.bell-labs.com/stat/Sbook/index.html
+\newblock https://statweb.stanford.edu/~jmc4/Sbook/
 
 \bibitem{OOPGent}
 Gentleman R. (2003):

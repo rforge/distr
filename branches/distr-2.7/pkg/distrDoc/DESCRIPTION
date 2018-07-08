@@ -13,8 +13,9 @@ Authors@R: c(person("Florian", "Camphausen", role="ctb", comment="contributed as
 Depends: R(>= 2.14.0)
 Imports: distr(>= 2.2.0), distrEx(>= 2.2.0), distrSim(>= 2.2.0), distrTEst(>= 2.2.0),
         distrTeach(>= 2.2.0), RandVar(>= 0.7), distrMod(>= 2.2.0), MASS, methods,
-        SweaveListingUtils, startupmsg
-Suggests: Biobase
+        startupmsg
+Suggests: Biobase, knitr
+VignetteBuilder: knitr 
 ByteCompile: yes
 Encoding: latin1
 License: LGPL-3

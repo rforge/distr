@@ -8,6 +8,21 @@
  information)
 
 ##############
+v 2.7
+##############
+
+user-visible CHANGES:
++ more precise formulation of how to use calls to q() for RStudio
+  and Jupyter IRKernel (i.e., use q.l)
++ switch from SweaveListingUtils to knitr in vignettes
++ replaced http://CRAN... by https://CRAN... (also in CITATION and similar files) 
++ updated address (Oldenburg) in several vignettes 
+
+under the hood:
++ fixed CITATION issue (raised by K.Hornik,(12.10., 12:26)
++ fixed omegahat.net issue (raised by K.Hornik,(24.10.2016, 18:08)
+
+##############
 v 2.6
 ##############
 
