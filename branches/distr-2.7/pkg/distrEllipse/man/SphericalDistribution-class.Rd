@@ -12,11 +12,6 @@
 \alias{dRd,SphericalDistribution-method}
 \alias{pRd,SphericalDistribution-method}
 \alias{qRd,SphericalDistribution-method}
-\alias{plot.rd,SphericalDistribution-method}
-\alias{r.rd,SphericalDistribution-method}
-\alias{d.rd,SphericalDistribution-method}
-\alias{p.rd,SphericalDistribution-method}
-\alias{q.rd,SphericalDistribution-method}
 \alias{radDistr}
 \alias{radDistr<-}
 \alias{plotRd}
@@ -108,16 +103,16 @@ Class \code{"Distribution"}, by class \code{"MultivariateDistribution"}.
     \item{radDistr}{\code{signature(object = "SphericalDistribution")}: access method for
       slot \code{radDistr}. }
     \item{rRd}{\code{signature(object = "SphericalDistribution")}: wrapped access method for
-      slot \code{r} of slot \code{radDistr}. From version 2.6 on, replaces deprecated 
+      slot \code{r} of slot \code{radDistr}. From version 2.7 on, replaces defunct
       \code{r.Rd} to avoid clashes with S3-method inheritance. }
     \item{dRd}{\code{signature(object = "SphericalDistribution")}: wrapped access method for
-      slot \code{d} of slot \code{radDistr}. From version 2.6 on, replaces deprecated 
+      slot \code{d} of slot \code{radDistr}. From version 2.7 on, replaces defunct
       \code{d.Rd} to avoid clashes with S3-method inheritance.  }
     \item{pRd}{\code{signature(object = "SphericalDistribution")}: wrapped access method for
-      slot \code{p} of slot \code{radDistr}. From version 2.6 on, replaces deprecated 
+      slot \code{p} of slot \code{radDistr}. From version 2.7 on, replaces defunct
       \code{p.Rd} to avoid clashes with S3-method inheritance.  }
     \item{qRd}{\code{signature(object = "SphericalDistribution")}: wrapped access method for
-      slot \code{q} of slot \code{radDistr}. From version 2.6 on, replaces deprecated 
+      slot \code{q} of slot \code{radDistr}. From version 2.7 on, replaces defunct
       \code{q.Rd} to avoid clashes with S3-method inheritance.  }
     \item{plotRd}{\code{signature(x = "SphericalDistribution")}: utility; calls \code{plot}
       for slot \code{radDistr}. From version 2.6 on, replaces deprecated 
