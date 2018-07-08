@@ -144,54 +144,12 @@ in \code{support(y)}?}
 }
 }
 \value{
-  A list of elements containing the information needed to compute the 
-  respective QQ plot, in particular it extends the elements of the 
-  return value of function \code{\link[stats:qqnorm]{qqplot}} 
-  from package \pkg{stats}, i.e., a
-  list with components \code{x} and \code{y} for x and y coordinates
-  of the plotted points; this list is of S3 class 
-  \code{c("qqplotInfo","DiagnInfo")}, and more specifically it contains
+    As for function \code{\link[stats:qqnorm]{qqplot}} from package \pkg{stats}: a
+  list with components
 \item{x}{The x coordinates of the points that were/would be plotted}
   \item{y}{The corresponding quantiles of the second distribution,
            \emph{including \code{\link{NA}}s}.}
-           
- \item{xy.0}{xy} 
- \item{y.0}{y}
- \item{datax}{argument \code{datax} from the call.} 
- \item{withConf.pw}{argument \code{withConf.pw} from the call.} 
- \item{withConf.sim}{argument \code{withConf.sim} from the call.} 
- \item{alpha.CI}{argument \code{alpha.CI } from the call.}
- \item{col.pCI}{argument \code{col.pCI} from the call.} 
- \item{lty.pCI}{argument \code{lty.pCI} from the call.} 
- \item{lwd.pCI}{argument \code{lwd.pCI} from the call.} 
- \item{pch.pCI}{argument \code{pch.pCI} from the call.} 
- \item{cex.pCI}{argument \code{cex.pCI} from the call.} 
- \item{col.sCI}{argument \code{col.sCI} from the call.} 
- \item{lty.sCI}{argument \code{lty.sCI} from the call.} 
- \item{lwd.sCI}{argument \code{lwd.sCI} from the call.} 
- \item{pch.sCI}{argument \code{pch.sCI} from the call.} 
- \item{cex.sCI}{argument \code{cex.sCI} from the call.} 
- \item{n}{argument \code{n} from the call.} 
- \item{exact.sCI}{argument \code{exact.sCI} from the call.}
- \item{exact.pCI}{argument \code{exact.pCI} from the call.}
- \item{nosym.pCI}{argument \code{nosym.pCI} from the call.}
- \item{with.legend}{argument \code{with.legend} from the call.}
- \item{legend.bg}{argument \code{legend.bg} from the call.}
- \item{legend.pos}{argument \code{legend.pos} from the call.}
- \item{legend.cex}{argument \code{legend.cex} from the call.} 
- \item{legend.pref}{argument \code{legend.pref} from the call.}
- \item{legend.postf}{argument \code{legend.postf} from the call.} 
- \item{legend.alpha}{argument \code{legend.alpha} from the call.} 
- \item{debug}{argument \code{debug} from the call.}
- \item{args.stats.qqplot}{the arguments of the call to \code{mcl} from the call.}
- \item{withLab}{argument \code{withLab} from the call to
- \code{stats::qqplot} from within this QQ plot method.}
- \item{lbprep}{the return value of the label preparation from within
-               this function, i.e., a list with elements 
-      \code{x0}, \code{y0}, \code{lab}, \code{col}, \code{cex}, 
-      \code{adj}.}
-
- \item{crit}{A matrix with the lower and upper confidence bounds
+  \item{crit}{A matrix with the lower and upper confidence bounds
                (computed by \code{qqbounds}).}
   \item{err}{logical vector of length 2.}
   (elements \code{crit} and \code{err} are taken from the return
@@ -239,9 +197,9 @@ are also valid for this signature.}
 }
 \examples{
 set.seed(123)
-x <- rnorm(40,mean=5,sd=sqrt(10))
-qqplot(x, Chisq(df=5))
-NF <- NormLocationScaleFamily(mean=5, sd=30^.5)
+x <- rnorm(40,mean=15,sd=30)
+qqplot(x, Chisq(df=15))
+NF <- NormLocationScaleFamily(mean=15, sd=30)
 qqplot(x, NF)
 mlE <- MLEstimator(x, NF)
 qqplot(x, mlE)

@@ -122,7 +122,7 @@ setMethod("qqplot", signature(x = "ANY",
     ord.x <- order(xj)
 
     pp <- ppoints(n)
-    yc <- q(y)(pp)
+    yc <- q.l(y)(pp)
 
     yc.o <- yc
 
@@ -146,9 +146,9 @@ setMethod("qqplot", signature(x = "ANY",
 
     if(check.NotInSupport){
        xo <- x[ord.x]
-       nInSupp <- which(xo < q(y)(0))
+       nInSupp <- which(xo < q.l(y)(0))
 
-       nInSupp <- unique(sort(c(nInSupp,which( xo > q(y)(1)))))
+       nInSupp <- unique(sort(c(nInSupp,which( xo > q.l(y)(1)))))
        if("support" %in% names(getSlots(class(y))))
           nInSupp <- unique(sort(c(nInSupp,which( ! xo %in% support(y)))))
        if("gaps" %in% names(getSlots(class(y))))
@@ -270,7 +270,7 @@ setMethod("qqplot", signature(x = "ANY",
         }
        }
     }
-    qqplotInfo <- c(ret, qqplotInfo, qqb)
+    qqplotInfo <- c(call=mc, ret, qqplotInfo, qqb)
     class(qqplotInfo) <- c("qqplotInfo","DiagnInfo")
     return(invisible(qqplotInfo))
     })
@@ -292,8 +292,10 @@ setMethod("qqplot", signature(x = "ANY",
     if(!is(yD,"UnivariateDistribution"))
        stop("Not yet implemented.")
 
-    return(invisible(do.call(getMethod("qqplot", signature(x="ANY", y="UnivariateDistribution")),
-            args=mcl)))
+    retv <- do.call(getMethod("qqplot", signature(x="ANY", y="UnivariateDistribution")),
+            args=mcl)
+    retv$call <- mc        
+    return(invisible(retv))
     })
 
 setMethod("qqplot", signature(x = "ANY",
@@ -321,7 +323,9 @@ setMethod("qqplot", signature(x = "ANY",
 
     PFam0 <- modifyModel(PFam, param)
     mcl$y <- PFam0
-    return(invisible(do.call(getMethod("qqplot", signature(x="ANY", y="ProbFamily")),
-            args=mcl)))
+    retv <- do.call(getMethod("qqplot", signature(x="ANY", y="ProbFamily")),
+            args=mcl)
+    retv$call <- mc        
+    return(invisible(retv))
     })
 

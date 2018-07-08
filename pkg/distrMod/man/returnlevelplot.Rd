@@ -21,7 +21,7 @@ returnlevelplot(x, y, ...)
     col.sCI = "tomato2", lty.sCI = 4, lwd.sCI = 2, pch.sCI = par("pch"),
     cex.sCI = par("cex"), added.points.CI = TRUE,
     cex.pch = par("cex"), col.pch = par("col"),
-    cex.lbl = par("cex"), col.lbl = par("col"), adj.lbl = NULL,
+    cex.lbl = par("cex"), col.lbl = par("col"), adj.lbl = par("adj"),
     alpha.trsp = NA, jit.fac = 0,  jit.tol = .Machine$double.eps,
     check.NotInSupport = TRUE, col.NotInSupport = "red",
     with.legend = TRUE, legend.bg = "white",
