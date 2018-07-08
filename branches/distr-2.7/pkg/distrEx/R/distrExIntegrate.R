@@ -56,7 +56,7 @@
 
 
 GLIntegrate <- function(f, lower, upper, order = 500, ...){
-    if(order %in% c(100, 500, 1000))
+    if(order %in% c(100, 500, 1000, 5000, 10000, 50000, 100000))
         AW <- getFromNamespace(paste(".AW", as.character(order), 
                                      sep = "."), ns = "distrEx")
     else
@@ -94,10 +94,10 @@ distrExIntegrate <- function(f, lower, upper, subdivisions = 100,
         else{
             value <- c(...)
             if(is(distr, "UnivariateCondDistribution"))
-                lower <- q(distr)(.distrExOptions$GLIntegrateTruncQuantile, 
+                lower <- q.l(distr)(.distrExOptions$GLIntegrateTruncQuantile,
                                    cond = value$cond)
             else
-                lower <- q(distr)(.distrExOptions$GLIntegrateTruncQuantile)
+                lower <- q.l(distr)(.distrExOptions$GLIntegrateTruncQuantile)
         }
         if(!is.finite(upper))
             if(missing(distr)) stop(res)
@@ -105,17 +105,17 @@ distrExIntegrate <- function(f, lower, upper, subdivisions = 100,
             value <- c(...)
             if(is(distr, "UnivariateCondDistribution")){
                 if("lower.tail" %in% names(formals(distr@q)))
-                  upper <- q(distr)(.distrExOptions$GLIntegrateTruncQuantile, 
+                  upper <- q.l(distr)(.distrExOptions$GLIntegrateTruncQuantile,
                                       cond = value$cond, lower.tail = FALSE)  
                 else    
-                  upper <- q(distr)(1 - .distrExOptions$GLIntegrateTruncQuantile, 
+                  upper <- q.l(distr)(1 - .distrExOptions$GLIntegrateTruncQuantile,
                                       cond = value$cond)                                      
             }else{
                 if("lower.tail" %in% names(formals(distr@q)))
-                  upper <- q(distr)(.distrExOptions$GLIntegrateTruncQuantile, 
+                  upper <- q.l(distr)(.distrExOptions$GLIntegrateTruncQuantile,
                                      lower.tail = FALSE)  
                 else    
-                  upper <- q(distr)(1 - .distrExOptions$GLIntegrateTruncQuantile)
+                  upper <- q.l(distr)(1 - .distrExOptions$GLIntegrateTruncQuantile)
             }
         }
         res <- Zi*GLIntegrate(f = f, lower = lower, upper = upper, 

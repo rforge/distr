@@ -99,7 +99,7 @@ setMethod("kurtosis", signature(x = "Binom"),
         p <- prob(x)
         return((1-6*p*(1-p))/(size(x)*p*(1-p)))
     })
-### source: http://mathworld.wolfram.com/BinomialDistribution.html
+### source: https://mathworld.wolfram.com/BinomialDistribution.html
 
 #
 setMethod("kurtosis", signature(x = "Cauchy"),
@@ -114,7 +114,7 @@ setMethod("kurtosis", signature(x = "Cauchy"),
     else
         return(NA)
     })
-### source http://mathworld.wolfram.com/CauchyDistribution.html
+### source https://mathworld.wolfram.com/CauchyDistribution.html
 
 #
 setMethod("kurtosis", signature(x = "Chisq"),
@@ -129,7 +129,7 @@ setMethod("kurtosis", signature(x = "Chisq"),
     else
         return(12*(df(x)+4*ncp(x))/(df(x)+2*ncp(x))^2)
     })
-### source http://mathworld.wolfram.com/Chi-SquaredDistribution.html
+### source https://mathworld.wolfram.com/Chi-SquaredDistribution.html
 
 #
 setMethod("kurtosis", signature(x = "Dirac"),
@@ -209,7 +209,7 @@ setMethod("kurtosis", signature(x = "Fd"),
         }
     }
     })
-### source (without ncp) http://mathworld.wolfram.com/F-Distribution.html
+### source (without ncp) https://mathworld.wolfram.com/F-Distribution.html
 #
 setMethod("kurtosis", signature(x = "Gammad"),
     function(x, ...){    
@@ -224,7 +224,7 @@ setMethod("kurtosis", signature(x = "Gammad"),
         return(6/shape(x))
     })
 
-### source http://mathworld.wolfram.com/GammaDistribution.html
+### source https://mathworld.wolfram.com/GammaDistribution.html
 #
 setMethod("kurtosis", signature(x = "Geom"),
     function(x, ...){    
@@ -238,7 +238,7 @@ setMethod("kurtosis", signature(x = "Geom"),
     else
         return(6+ prob(x)^2/(1-prob(x)))
     })
-### source http://mathworld.wolfram.com/GeometricDistribution.html
+### source https://mathworld.wolfram.com/GeometricDistribution.html
 #
 setMethod("kurtosis", signature(x = "Hyper"),
     function(x, ...){    
@@ -260,7 +260,7 @@ setMethod("kurtosis", signature(x = "Hyper"),
               )
         }
     })
-### source http://mathworld.wolfram.com/HypergeometricDistribution.html
+### source https://mathworld.wolfram.com/HypergeometricDistribution.html
 #
 setMethod("kurtosis", signature(x = "Logis"),
     function(x, ...){
@@ -274,7 +274,7 @@ setMethod("kurtosis", signature(x = "Logis"),
     else
         return(6/5)
     })
-### source http://mathworld.wolfram.com/LogisticDistribution.html
+### source https://mathworld.wolfram.com/LogisticDistribution.html
 #
 setMethod("kurtosis", signature(x = "Lnorm"),
     function(x, ...){
@@ -290,7 +290,7 @@ setMethod("kurtosis", signature(x = "Lnorm"),
         return( w^4+2*w^3+3*w^2-6)
     }
     })
-### source http://mathworld.wolfram.com/LogNormalDistribution.html
+### source https://mathworld.wolfram.com/LogNormalDistribution.html
 #
 setMethod("kurtosis", signature(x = "Nbinom"),
     function(x, ...){    
@@ -304,7 +304,7 @@ setMethod("kurtosis", signature(x = "Nbinom"),
     else
         return(6/size(x)+prob(x)^2/(size(x)*(1-prob(x))))
     })
-### source http://mathworld.wolfram.com/NegativeBinomialDistribution.html
+### source https://mathworld.wolfram.com/NegativeBinomialDistribution.html
 #
 setMethod("kurtosis", signature(x = "Pois"),
     function(x, ...){
@@ -318,7 +318,7 @@ setMethod("kurtosis", signature(x = "Pois"),
     else
         return(1/lambda(x))
     })
-### source http://mathworld.wolfram.com/PoissonDistribution.html
+### source https://mathworld.wolfram.com/PoissonDistribution.html
 #
 setMethod("kurtosis", signature(x = "Td"),
     function(x, ...){
@@ -343,7 +343,7 @@ setMethod("kurtosis", signature(x = "Td"),
         }
     }
     })
-### source http://mathworld.wolfram.com/NoncentralStudentst-Distribution.html
+### source https://mathworld.wolfram.com/NoncentralStudentst-Distribution.html
 
 #
 setMethod("kurtosis", signature(x = "Unif"),
@@ -358,7 +358,7 @@ setMethod("kurtosis", signature(x = "Unif"),
     else
         return(-6/5)
     })
-### source http://mathworld.wolfram.com/UniformDistribution.html
+### source https://mathworld.wolfram.com/UniformDistribution.html
 #
 setMethod("kurtosis", signature(x = "Weibull"),
     function(x, ...){
@@ -377,7 +377,7 @@ setMethod("kurtosis", signature(x = "Weibull"),
         v <- (g2-g1^2)^2
         return( (g4-4*g3*g1+6*g2*g1^2-3*g1^4)/v - 3 )
     })
-### source http://mathworld.wolfram.com/WeibullDistribution.html
+### source https://mathworld.wolfram.com/WeibullDistribution.html
 #    
 setMethod("kurtosis", signature(x = "Beta"),
     function(x, ...){
@@ -392,7 +392,7 @@ setMethod("kurtosis", signature(x = "Beta"),
         {a<-shape1(x); b<- shape2(x)
         return(6*(a^3-a^2*(2*b-1)+b^2*(b+1)-2*a*b*(b+2))/(a*b*(a+b+2)*(a+b+3)) )}
     })
-## source: http://mathworld.wolfram.com/BetaDistribution.html
+## source: https://mathworld.wolfram.com/BetaDistribution.html
 
 ###################################################################################
 #kurtosis --- code P.R.:

@@ -128,12 +128,12 @@ setMethod("median", signature(x = "UnivariateDistribution"),
     function(x){
         if(is(Symmetry(x),"SphericalSymmetry"))
            return(SymmCenter(Symmetry(x)))
-        return(q(x)(1/2))
+        return(q.l(x)(1/2))
     })
 
 setMethod("median", signature(x = "UnivariateCondDistribution"),
     function(x, cond){
-        return(q(x)(1/2, cond = cond))
+        return(q.l(x)(1/2, cond = cond))
     })
 
 setMethod("median", signature(x = "AffLinDistribution"),
@@ -149,10 +149,10 @@ setMethod("median", signature(x = "AffLinLatticeDistribution"),
 setMethod("mad", signature(x = "UnivariateDistribution"),
     function(x){
         if(is(Symmetry(x),"SphericalSymmetry"))
-           return(q(x)(3/4))
+           return(q.l(x)(3/4))
         m <- median(x)
         y <- abs(x-m) 
-        return(q(y)(1/2))
+        return(q.l(y)(1/2))
     })
 
 setMethod("mad", signature(x = "AffLinDistribution"),
@@ -168,17 +168,17 @@ setMethod("mad", signature(x = "AffLinLatticeDistribution"),
 setMethod("IQR", signature(x = "UnivariateDistribution"),
     function(x){
         if(is(Symmetry(x),"SphericalSymmetry"))
-           return(2*q(x)(3/4))
-        return(q(x)(3/4)-q(x)(1/4))
+           return(2*q.l(x)(3/4))
+        return(q.l(x)(3/4)-q.l(x)(1/4))
     })
 
 setMethod("IQR", signature(x = "UnivariateCondDistribution"),
     function(x, cond){
-        return(q(x)(3/4, cond = cond)-q(x)(1/4, cond = cond))
+        return(q.l(x)(3/4, cond = cond)-q.l(x)(1/4, cond = cond))
     })
 
 setMethod("IQR", signature(x = "DiscreteDistribution"),
-    function(x) q.r(x)(3/4)-q(x)(1/4)
+    function(x) q.r(x)(3/4)-q.l(x)(1/4)
 )
 
 setMethod("IQR", signature(x = "AffLinDistribution"),
@@ -227,7 +227,7 @@ setMethod("var", signature(x = "Binom"),
     else
         return(size(x)*prob(x)*(1-prob(x)))
     })
-### source: http://mathworld.wolfram.com/BinomialDistribution.html
+### source: https://mathworld.wolfram.com/BinomialDistribution.html
 
 
 setMethod("var", signature(x = "Cauchy"),
@@ -242,7 +242,7 @@ setMethod("var", signature(x = "Cauchy"),
     else
         return(NA)
     })
-### source http://mathworld.wolfram.com/CauchyDistribution.html
+### source https://mathworld.wolfram.com/CauchyDistribution.html
 
 setMethod("var", signature(x = "Chisq"),
     function(x,...){    
@@ -256,7 +256,7 @@ setMethod("var", signature(x = "Chisq"),
     else
         return(2*(df(x)+2*ncp(x)))
     })
-### source http://mathworld.wolfram.com/Chi-SquaredDistribution.html
+### source https://mathworld.wolfram.com/Chi-SquaredDistribution.html
 
 setMethod("var", signature(x = "Dirac"),
     function(x, ...){return(0)})
@@ -274,7 +274,7 @@ setMethod("var", signature(x = "DExp"),
     else
         return(2)
     })
-### source http://mathworld.wolfram.com/LaplaceDistribution.html
+### source https://mathworld.wolfram.com/LaplaceDistribution.html
 
 setMethod("var", signature(x = "Exp"),
     function(x, ...){    
@@ -289,7 +289,7 @@ setMethod("var", signature(x = "Exp"),
         return(1/rate(x)^2)
     })
 
- ### source http://mathworld.wolfram.com/ExponentialDistribution.html
+ ### source https://mathworld.wolfram.com/ExponentialDistribution.html
 
 setMethod("var", signature(x = "Fd"),
     function(x, ...){
@@ -308,7 +308,7 @@ setMethod("var", signature(x = "Fd"),
          Exx <- df2^2/(df2-2)/(df2-4)*((df1+d)^2+2*df1+4*d)/df1^2
         return(ifelse(df2>4,Exx-Ex2, NA ))}
     })
-### source (without ncp) http://mathworld.wolfram.com/F-Distribution.html
+### source (without ncp) https://mathworld.wolfram.com/F-Distribution.html
 
 setMethod("var", signature(x = "Gammad"),
     function(x, ...){    
@@ -322,7 +322,7 @@ setMethod("var", signature(x = "Gammad"),
     else
         return(shape(x)*scale(x)^2)
     })
-### source http://mathworld.wolfram.com/GammaDistribution.html
+### source https://mathworld.wolfram.com/GammaDistribution.html
 
 setMethod("var", signature(x = "Geom"),
     function(x, ...){    
@@ -335,7 +335,7 @@ setMethod("var", signature(x = "Geom"),
          return(var(as(x,"DiscreteDistribution"),...))
     else {p <- prob(x); e <- 1/p-1; return(e+e^2)}
     })
-### source http://mathworld.wolfram.com/GeometricDistribution.html
+### source https://mathworld.wolfram.com/GeometricDistribution.html
 
 setMethod("var", signature(x = "Hyper"),
     function(x, ...){    
@@ -352,7 +352,7 @@ setMethod("var", signature(x = "Hyper"),
         n <- n(x);
         return(k*n/(m+n)*m/(m+n)*(m+n-k)/(m+n-1))}
     })
-### source http://mathworld.wolfram.com/HypergeometricDistribution.html
+### source https://mathworld.wolfram.com/HypergeometricDistribution.html
 
 setMethod("var", signature(x = "Logis"),
     function(x, ...){
@@ -366,7 +366,7 @@ setMethod("var", signature(x = "Logis"),
     else
         return(pi^2/3*scale(x)^2)
     })
-### source http://mathworld.wolfram.com/LogisticDistribution.html
+### source https://mathworld.wolfram.com/LogisticDistribution.html
 
 setMethod("var", signature(x = "Lnorm"),
     function(x, ...){
@@ -380,7 +380,7 @@ setMethod("var", signature(x = "Lnorm"),
     else
         return(exp(2*meanlog(x)+sdlog(x)^2)*(exp(sdlog(x)^2)-1))
     })
-### source http://mathworld.wolfram.com/LogNormalDistribution.html
+### source https://mathworld.wolfram.com/LogNormalDistribution.html
 
 setMethod("var", signature(x = "Nbinom"),
     function(x, ...){    
@@ -393,7 +393,7 @@ setMethod("var", signature(x = "Nbinom"),
          return(var(as(x,"DiscreteDistribution"),...))
     else {p <- prob(x); e <- 1/p-1; return(size(x)*(e+e^2))}
     })
-### source http://mathworld.wolfram.com/NegativeBinomialDistribution.html
+### source https://mathworld.wolfram.com/NegativeBinomialDistribution.html
 
 setMethod("var", signature(x = "Pois"),
     function(x, ...){
@@ -407,7 +407,7 @@ setMethod("var", signature(x = "Pois"),
     else
         return(lambda(x))
     })
-### source http://mathworld.wolfram.com/PoissonDistribution.html
+### source https://mathworld.wolfram.com/PoissonDistribution.html
 
 setMethod("var", signature(x = "Td"),
     function(x, ...){
@@ -426,7 +426,7 @@ setMethod("var", signature(x = "Td"),
        }
     })
 
-### source http://mathworld.wolfram.com/NoncentralStudentst-Distribution.html
+### source https://mathworld.wolfram.com/NoncentralStudentst-Distribution.html
 
 setMethod("var", signature(x = "Unif"),
     function(x, ...){
@@ -440,7 +440,7 @@ setMethod("var", signature(x = "Unif"),
     else
         return((Max(x)-Min(x))^2/12)
     })
-### source http://mathworld.wolfram.com/UniformDistribution.html
+### source https://mathworld.wolfram.com/UniformDistribution.html
 
 setMethod("var", signature(x = "Weibull"),
     function(x, ...){
@@ -454,7 +454,7 @@ setMethod("var", signature(x = "Weibull"),
     else
         return(scale(x)^2*(gamma(1+2/shape(x))- (gamma(1 + 1/shape(x)))^2))
     })
-### source http://mathworld.wolfram.com/WeibullDistribution.html
+### source https://mathworld.wolfram.com/WeibullDistribution.html
     
 setMethod("var", signature(x = "Beta"),
     function(x, ...){
@@ -469,7 +469,7 @@ setMethod("var", signature(x = "Beta"),
         {a<-shape1(x); b<- shape2(x)
         return(a*b/(a+b)^2/(a+b+1))}
     })
-## source: http://mathworld.wolfram.com/BetaDistribution.html
+## source: https://mathworld.wolfram.com/BetaDistribution.html
 
 setMethod("var", signature(x = "Arcsine"),
     function(x, ...){

@@ -1,6 +1,6 @@
 .distrExOptions <- list(
     GLIntegrateTruncQuantile = 10*.Machine$double.eps,
-    GLIntegrateOrder = 500,
+    GLIntegrateOrder = 5000,
     MCIterations = 1e5,
     ElowerTruncQuantile = 1e-7,
     EupperTruncQuantile = 1e-7,

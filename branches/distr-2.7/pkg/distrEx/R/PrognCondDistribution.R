@@ -38,7 +38,7 @@ PrognCondDistribution <- function(Regr = Norm(), Error = Norm(),
                         
     dxfun <- d(Regr)
     dufun <- d(Error)
-    qxfun <- q(Regr)
+    qxfun <- q.l(Regr)
 
     Ib <- .getIntbounds(Error, low=-Inf, upp=Inf, lowerTruncQuantile, 
                        upperTruncQuantile, IQR.fac)
@@ -84,7 +84,7 @@ PrognCondDistribution <- function(Regr = Norm(), Error = Norm(),
                                },
                         list(dfun = dfun, qxfun = qxfun))
 
-    qufun <- q(Error)
+    qufun <- q.l(Error)
     qfun <- function(p, cond, lower.tail = TRUE, log.p = FALSE){}
     body(qfun) <- substitute({ qu <- qufun 
                                if (log.p) p <- exp(p)

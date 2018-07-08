@@ -6,8 +6,8 @@ setMethod("ContaminationSize", signature(e1 = "AbscontDistribution",
                                          e2 = "AbscontDistribution"),
     function(e1, e2){
         ep <- getdistrOption("TruncQuantile")
-        lower <- min(q(e1)(ep), q(e2)(ep))
-        upper <- max(q(e1)(1-ep), q(e2)(1-ep))
+        lower <- min(q.l(e1)(ep), q.l(e2)(ep))
+        upper <- max(q.l(e1)(1-ep), q.l(e2)(1-ep))
         x <- seq(from = lower, to = upper, length = 1e5)
         
         d10  <- d(e1)(x); d1 <- d10[ d10>0 ]
