@@ -192,6 +192,7 @@ setMethod("qqplot", signature(x = "ANY",
     if(mfColRow) opar1 <- par(mfrow = c(1,1), no.readonly = TRUE)
 
     ret <- do.call(stats::qqplot, args=mcl)
+    qq.usr <- par("usr")
     lbprep <- NULL
     if(withLab&& plot.it){
        lbprep <- .labelprep(xj,yc,lab.pts,
@@ -270,7 +271,7 @@ setMethod("qqplot", signature(x = "ANY",
         }
        }
     }
-    qqplotInfo <- c(call=mc, ret, qqplotInfo, qqb)
+    qqplotInfo <- c(call=mc, ret, usr=qq.usr, qqplotInfo, qqb)
     class(qqplotInfo) <- c("qqplotInfo","DiagnInfo")
     return(invisible(qqplotInfo))
     })

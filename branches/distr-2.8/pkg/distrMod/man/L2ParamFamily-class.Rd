@@ -214,14 +214,21 @@ Class \code{"ProbFamily"}, by class \code{"ParamFamily"}.
          \item{\code{"\%D"}}{time/date-string when the plot was generated}
       }
 
-In addition, argument \code{\dots} may contain arguments \code{panel.first},
-\code{panel.last}, i.e., hook expressions to be evaluated at the very beginning
-and at the very end of each panel (within the then valid coordinates).
-To be able to use these hooks for each panel individually, they may also be
-lists of expressions (of the same length as the number of panels and
-run through in the same order as the panels).
-    }
+      In addition, argument \code{\dots} may contain arguments \code{panel.first},
+      \code{panel.last}, i.e., hook expressions to be evaluated at the very beginning
+      and at the very end of each panel (within the then valid coordinates).
+      To be able to use these hooks for each panel individually, they may also be
+     lists of expressions (of the same length as the number of panels and
+     run through in the same order as the panels).
 
+     The return value of the plot methods is an S3 object of class
+     \code{c("plotInfo","DiagnInfo")}, i.e., a list
+     containing the information needed to produce the
+     respective plot, which at a later stage could be used by different
+     graphic engines (like, e.g. \code{ggplot}) to produce the plot
+     in a different framework. A more detailed description will follow in
+     a subsequent version.
+}
 
     \item{modifyModel}{\code{signature(model = "L2ParamFamily", param = "ParamFamParameter")}:
       moves the L2-parametric Family \code{model} to parameter \code{param} }
