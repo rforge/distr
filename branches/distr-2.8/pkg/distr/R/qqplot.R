@@ -94,6 +94,7 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
     if(mfColRow) opar1 <- par(mfrow = c(1,1), no.readonly = TRUE)
 
     ret <- do.call(stats::qqplot, args=mcl)
+    qq.usr <- par("usr")
     qqb <- NULL
     if(withIdLine){
        if(plot.it)abline(0,1,col=col.IdL,lty=lty.IdL,lwd=lwd.IdL)
@@ -152,7 +153,7 @@ setMethod("qqplot", signature(x = "UnivariateDistribution",
           }
        }
     }
-    qqplotInfo <- c(ret, qqplotInfo, qqb)
+    qqplotInfo <- c(ret, usr=qq.usr, qqplotInfo, qqb)
     class(qqplotInfo) <- c("qqplotInfo","DiagnInfo")
     return(invisible(qqplotInfo))
     })

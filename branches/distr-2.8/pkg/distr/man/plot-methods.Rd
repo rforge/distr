@@ -216,6 +216,14 @@ lists of expressions (of the same length as the number of panels and
 run through in the same order as the panels).
 }
 
+\value{An S3 object of class \code{c("plotInfo","DiagnInfo")}, i.e., a list
+  containing the information needed to produce the
+  respective plot, which at a later stage could be used by different
+  graphic engines (like, e.g. \code{ggplot}) to produce the plot
+  in a different framework. A more detailed description will follow in
+  a subsequent version.
+}
+
 \examples{
 plot(Binom(size = 4, prob = 0.3))
 plot(Binom(size = 4, prob = 0.3), do.points = FALSE)
