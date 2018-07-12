@@ -41,6 +41,14 @@ typical plot arguments may be passed; some have slightly different meaning (comp
 }
  }
 }}
+\value{An S3 object of class \code{c("plotInfo","DiagnInfo")}, i.e., a list
+  containing the information needed to produce the
+  respective plot, which at a later stage could be used by different
+  graphic engines (like, e.g. \code{ggplot}) to produce the plot
+  in a different framework. A more detailed description will follow in
+  a subsequent version.
+}
+
 \keyword{methods}
 \keyword{hplot}
 \concept{simulation}
