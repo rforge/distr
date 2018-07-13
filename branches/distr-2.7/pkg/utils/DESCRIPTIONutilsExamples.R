@@ -107,9 +107,18 @@ Names <- c("Version")
 Values <- matrix(c("2.8"),1,length(Pkgs))
 colnames(Values) <- Pkgs
 rownames(Values) <- Names
-Values["Version",] <- matrix(c("0.9.1", rep("2.8.0",9)),1,10)
-changeDescription(startDir = "C:/rtest/distr/branches/distr-2.8",names=Names,
+Values["Version",] <- matrix(c("0.9.1", rep("2.7.0",9)),1,10)
+changeDescription(startDir = "C:/rtest/distr",names=Names,
                   pkgs=Pkgs, values=Values, verbose=TRUE)
 }
+Pkgs <- c("RandVar", "RobAStBase", "ROptEst", "RobExtremes", "RobAStRDA",
+          "ROptEstOld", "RobLox",
+          "ROptRegTS", "RobRex", "RobLoxBioC")
+Values <- matrix(c("2.8"),1,length(Pkgs))
+colnames(Values) <- Pkgs
+rownames(Values) <- Names
+Values["Version",] <- matrix(c(rep("1.1.0",10)),1,10)
+changeDescription(startDir = "C:/rtest/robast/branches/robast-1.1",names=Names,
+                  pkgs=Pkgs, values=Values, verbose=TRUE)
 
 ##############################################################################
