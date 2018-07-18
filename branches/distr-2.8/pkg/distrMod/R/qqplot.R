@@ -98,7 +98,32 @@ setMethod("qqplot", signature(x = "ANY",
              withSubst = TRUE
     ){ ## return value as in stats::qqplot
 
+    args0 <- list(x = x, y = y, n = n, withIdLine = withIdLine,
+             withConf = withConf, withConf.pw  = withConf.pw,
+             withConf.sim = withConf.sim, plot.it = plot.it, datax = datax,
+             xlab = xlab, ylab = ylab, width = width, height = height,
+             withSweave = withSweave, mfColRow = mfColRow,
+             n.CI = n.CI, withLab = withLab, lab.pts = lab.pts,
+             which.lbs = which.lbs, which.Order = which.Order,
+             order.traf = order.traf, col.IdL = col.IdL, lty.IdL = lty.IdL,
+             lwd.IdL = lwd.IdL, alpha.CI = alpha.CI, exact.pCI = exact.pCI,
+             exact.sCI = exact.sCI, nosym.pCI = nosym.pCI, col.pCI = col.pCI,
+             lty.pCI = lty.pCI, lwd.pCI = lwd.pCI, pch.pCI = pch.pCI,
+             cex.pCI = cex.pCI, col.sCI = col.sCI, lty.sCI = lty.sCI,
+             lwd.sCI = lwd.sCI, pch.sCI = pch.sCI, cex.sCI = cex.sCI,
+             added.points.CI = added.points.CI, cex.pch = cex.pch,
+             col.pch = col.pch, cex.lbl = cex.lbl, col.lbl = col.lbl,
+             adj.lbl = adj.lbl, alpha.trsp = alpha.trsp, jit.fac = jit.fac,
+             jit.tol = jit.tol, check.NotInSupport = check.NotInSupport,
+             col.NotInSupport = col.NotInSupport, with.legend = with.legend,
+             legend.bg = legend.bg, legend.pos = legend.pos,
+             legend.cex = legend.cex, legend.pref = legend.pref,
+             legend.postf = legend.postf, legend.alpha = legend.alpha,
+             debug = debug, withSubst = withSubst)
     mc <- match.call(call = sys.call(sys.parent(1)))
+    dots <- match.call(call = sys.call(sys.parent(1)),
+                       expand.dots = FALSE)$"..."
+    plotInfo <- list(call = mc, dots=dots, args=args0)
     xcc <- as.character(deparse(mc$x))
     ycc <- as.character(deparse(mc$y))
     if(missing(xlab)){ xlab <- mc$xlab <- xcc}
@@ -271,7 +296,7 @@ setMethod("qqplot", signature(x = "ANY",
         }
        }
     }
-    qqplotInfo <- c(call=mc, ret, usr=qq.usr, qqplotInfo, qqb)
+    qqplotInfo <- c(plotInfo, ret, usr=qq.usr, qqplotInfo, qqb)
     class(qqplotInfo) <- c("qqplotInfo","DiagnInfo")
     return(invisible(qqplotInfo))
     })
