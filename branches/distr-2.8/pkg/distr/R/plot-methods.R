@@ -40,6 +40,26 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
      }
      pL <- .fillList(pL, l.draw)
 
+     plotInfo <- list(call = mc, dots=dots,
+                      args = list(width = width, height = height,
+                      withSweave = withSweave,
+                      xlim = xlim, ylim = ylim, ngrid = ngrid,
+                      verticals = verticals, do.points = do.points,
+                      main = main, inner = inner, sub = sub,
+                      bmar = bmar, tmar = tmar, cex.main = cex.main,
+                      cex.inner = cex.inner, cex.sub = cex.sub,
+                      col.points = col.points, col.vert = col.vert,
+                      col.main = col.main, col.inner = col.inner,
+                      col.sub = col.sub, cex.points = cex.points,
+                      pch.u = pch.u, pch.a = pch.a, mfColRow = mfColRow,
+                      to.draw.arg = to.draw.arg, withSubst = withSubst),
+                      to.draw=to.draw, panelFirst = pF,
+                      panelLast = pL)
+
+     plotInfo$to.draw <- to.draw
+     plotInfo$panelFirst <- pF
+     plotInfo$panelLast <- pL
+
      dots$panel.first <- dots$panel.last <- NULL
      dots$col.hor <- NULL
 
@@ -246,23 +266,6 @@ setMethod("plot", signature(x = "AbscontDistribution", y = "missing"),
                              ylim2[2])
              }
           }
-
-     plotInfo <- list(call = mc, dots=dots,
-                      args = list(width = width, height = height,
-                      withSweave = withSweave,
-                      xlim = xlim, ylim = ylim, ngrid = ngrid,
-                      verticals = verticals, do.points = do.points,
-                      main = main, inner = inner, sub = sub,
-                      bmar = bmar, tmar = tmar, cex.main = cex.main,
-                      cex.inner = cex.inner, cex.sub = cex.sub,
-                      col.points = col.points, col.vert = col.vert,
-                      col.main = col.main, col.inner = col.inner,
-                      col.sub = col.sub, cex.points = cex.points,
-                      pch.u = pch.u, pch.a = pch.a, mfColRow = mfColRow,
-                      to.draw.arg = to.draw.arg, withSubst = withSubst),
-                      to.draw=to.draw, panelFirst = pF,
-                      panelLast = pL)
-
 
      plotCount <- 1
      o.warn <- getOption("warn"); options(warn = -1)
@@ -705,12 +708,12 @@ setMethod("plot", signature(x = "DiscreteDistribution", y = "missing"),
        plotInfo$dplot$title <- list(main = inner.d, line = lineT,
              cex.main = cex.inner, col.main = col.inner)
 
-       if(do.points)
+       if(do.points){
           do.call(points, c(list(x = supp, y = dx, pch = pch.a,
                   cex = cex.points, col = col.points), dots.for.points))
        plotInfo$dplot$points <- c(list(x = supp, y = dx, pch = pch.a,
                   cex = cex.points, col = col.points), dots.for.points)
-
+       }
        options(warn = -1)
        }
      ngrid <- length(supp)
