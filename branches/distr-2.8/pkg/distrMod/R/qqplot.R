@@ -318,6 +318,7 @@ setMethod("qqplot", signature(x = "ANY",
     withConf.pw  = if(!missing(withConf.pw)) withConf.pw else if(!missing(withConf)) withConf else NULL,
     withConf.sim = if(!missing(withConf.sim)) withConf.sim else if(!missing(withConf)) withConf else NULL,
                   plot.it = plot.it, xlab = xlab, ylab = ylab)
+    plotInfo <- list(call=mc, dots=dots, args=args0)
 
     if(missing(xlab)) mc$xlab <- as.character(deparse(mc$x))
     if(missing(ylab)) mc$ylab <- as.character(deparse(mc$y))
@@ -329,10 +330,10 @@ setMethod("qqplot", signature(x = "ANY",
 
     retv <- do.call(getMethod("qqplot", signature(x="ANY", y="UnivariateDistribution")),
             args=mcl)
-    retv$call <- mc        
-    retv$args <- args0
-    retv$dots <- dots
-    return(invisible(retv))
+    retv$call <- retv$dots <- retv$args <- NULL
+    plotInfo <- c(plotInfo,retv)
+    class(plotInfo) <- c("qqplotInfo","DiagnInfo")
+    return(invisible(plotInfo))
     })
 
 setMethod("qqplot", signature(x = "ANY",
@@ -342,15 +343,15 @@ setMethod("qqplot", signature(x = "ANY",
     plot.it = TRUE, xlab = deparse(substitute(x)),
     ylab = deparse(substitute(y)), ...){
 
+    args0 <- list(x=x,y=y,n=n,withIdLine=withIdLine, withConf=withConf,
+        withConf.pw  = if(!missing(withConf.pw)) withConf.pw else if(!missing(withConf)) withConf else NULL,
+        withConf.sim = if(!missing(withConf.sim)) withConf.sim else if(!missing(withConf)) withConf else NULL,
+        plot.it = plot.it, xlab = xlab, ylab = ylab)
+
     mc <- match.call(call = sys.call(sys.parent(1)))
-    dots <- match.call(call = sys.call(sys.parent(1)),
-                       expand.dots = FALSE)$"..."
-    args0 <- list(x = x, y = y,
-                  n = if(!missing(n)) n else length(x),
-                  withIdLine = withIdLine, withConf = withConf,
-    withConf.pw  = if(!missing(withConf.pw)) withConf.pw else if(!missing(withConf)) withConf else NULL,
-    withConf.sim = if(!missing(withConf.sim)) withConf.sim else if(!missing(withConf)) withConf else NULL,
-                  plot.it = plot.it, xlab = xlab, ylab = ylab)
+    mc1 <- match.call(call = sys.call(sys.parent(1)), expand.dots=FALSE)
+    dots <- mc1$"..."
+    plotInfo <- list(call=mc, dots=dots, args=args0)
 
     if(missing(xlab)) mc$xlab <- as.character(deparse(mc$x))
     if(missing(ylab)) mc$ylab <- as.character(deparse(mc$y))
@@ -371,9 +372,9 @@ setMethod("qqplot", signature(x = "ANY",
     mcl$y <- PFam0
     retv <- do.call(getMethod("qqplot", signature(x="ANY", y="ProbFamily")),
             args=mcl)
-    retv$call <- mc
-    retv$args <- args0
-    retv$dots <- dots
-    return(invisible(retv))
+    retv$call <- retv$dots <- retv$args <- NULL
+    plotInfo <- c(plotInfo,retv)
+    class(plotInfo) <- c("qqplotInfo","DiagnInfo")
+    return(invisible(plotInfo))
     })
 
