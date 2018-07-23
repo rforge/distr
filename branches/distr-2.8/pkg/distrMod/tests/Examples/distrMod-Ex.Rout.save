@@ -1,7 +1,7 @@
 
-R Under development (unstable) (2015-05-02 r68310) -- "Unsuffered Consequences"
-Copyright (C) 2015 The R Foundation for Statistical Computing
-Platform: x86_64-unknown-linux-gnu (64-bit)
+R version 3.5.1 RC (2018-06-24 r74935) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: i386-w64-mingw32/i386 (32-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -20,52 +20,30 @@ Type 'q()' to quit R.
 > pkgname <- "distrMod"
 > source(file.path(R.home("share"), "R", "examples-header.R"))
 > options(warn = 1)
+> options(pager = "console")
+> base::assign(".ExTimings", "distrMod-Ex.timings", pos = 'CheckExEnv')
+> base::cat("name\tuser\tsystem\telapsed\n", file=base::get(".ExTimings", pos = 'CheckExEnv'))
+> base::assign(".format_ptime",
++ function(x) {
++   if(!is.na(x[4L])) x[1L] <- x[1L] + x[4L]
++   if(!is.na(x[5L])) x[2L] <- x[2L] + x[5L]
++   options(OutDec = '.')
++   format(x[1L:3L], digits = 7L)
++ },
++ pos = 'CheckExEnv')
+> 
+> ### * </HEADER>
 > library('distrMod')
 Loading required package: distr
 Loading required package: startupmsg
-:startupmsg>  Utilities for Start-Up Messages (version 0.9.1)
+:startupmsg>  Utilities for Start-Up Messages (version 0.9.6)
 :startupmsg> 
 :startupmsg>  For more information see ?"startupmsg",
 :startupmsg>  NEWS("startupmsg")
 
 Loading required package: sfsmisc
-Loading required package: SweaveListingUtils
-:SweaveListingUtils>  Utilities for Sweave Together with
-:SweaveListingUtils>  TeX 'listings' Package (version
-:SweaveListingUtils>  0.7)
-:SweaveListingUtils> 
-:SweaveListingUtils>  NOTE: Support for this package
-:SweaveListingUtils>  will stop soon.
-:SweaveListingUtils> 
-:SweaveListingUtils>  Package 'knitr' is providing the
-:SweaveListingUtils>  same functionality in a better
-:SweaveListingUtils>  way.
-:SweaveListingUtils> 
-:SweaveListingUtils>  Some functions from package 'base'
-:SweaveListingUtils>  are intentionally masked ---see
-:SweaveListingUtils>  SweaveListingMASK().
-:SweaveListingUtils> 
-:SweaveListingUtils>  Note that global options are
-:SweaveListingUtils>  controlled by
-:SweaveListingUtils>  SweaveListingoptions() ---c.f.
-:SweaveListingUtils>  ?"SweaveListingoptions".
-:SweaveListingUtils> 
-:SweaveListingUtils>  For more information see
-:SweaveListingUtils>  ?"SweaveListingUtils",
-:SweaveListingUtils>  NEWS("SweaveListingUtils")
-:SweaveListingUtils>  There is a vignette to this
-:SweaveListingUtils>  package; try
-:SweaveListingUtils>  vignette("ExampleSweaveListingUtils").
-
-
-Attaching package: ‘SweaveListingUtils’
-
-The following objects are masked from ‘package:base’:
-
-    library, require
-
 :distr>  Object Oriented Implementation of Distributions (version
-:distr>  2.6)
+:distr>  2.8.0)
 :distr> 
 :distr>  Attention: Arithmetics on distribution objects are
 :distr>  understood as operations on corresponding random variables
@@ -84,14 +62,14 @@ The following objects are masked from ‘package:base’:
 :distr>  vignette("distr").
 
 
-Attaching package: ‘distr’
+Attaching package: 'distr'
 
-The following objects are masked from ‘package:stats’:
+The following objects are masked from 'package:stats':
 
     df, qqplot, sd
 
 Loading required package: distrEx
-:distrEx>  Extensions of Package 'distr' (version 2.6)
+:distrEx>  Extensions of Package 'distr' (version 2.8.0)
 :distrEx> 
 :distrEx>  Note: Packages "e1071", "moments", "fBasics" should be
 :distrEx>  attached /before/ package "distrEx". See
@@ -108,14 +86,14 @@ Loading required package: distrEx
 :distrEx>  vignette("distr").
 
 
-Attaching package: ‘distrEx’
+Attaching package: 'distrEx'
 
-The following objects are masked from ‘package:stats’:
+The following objects are masked from 'package:stats':
 
     IQR, mad, median, var
 
 Loading required package: RandVar
-:RandVar>  Implementation of random variables (version 0.9.2)
+:RandVar>  Implementation of Random Variables (version 1.1.0)
 :RandVar> 
 :RandVar>  For more information see ?"RandVar", NEWS("RandVar"), as
 :RandVar>  well as
@@ -126,7 +104,7 @@ Loading required package: RandVar
 Loading required package: MASS
 Loading required package: stats4
 :distrMod>  Object Oriented Implementation of Probability Models
-:distrMod>  (version 2.6)
+:distrMod>  (version 2.8.0)
 :distrMod> 
 :distrMod>  Some functions from pkg's 'base' and 'stats' are
 :distrMod>  intentionally masked ---see distrModMASK().
@@ -145,28 +123,30 @@ Loading required package: stats4
 :distrMod>  vignette("distr").
 
 
-Attaching package: ‘distrMod’
+Attaching package: 'distrMod'
 
-The following object is masked from ‘package:stats4’:
-
-    confint
-
-The following object is masked from ‘package:stats’:
+The following object is masked from 'package:stats4':
 
     confint
 
-The following object is masked from ‘package:base’:
+The following object is masked from 'package:stats':
+
+    confint
+
+The following object is masked from 'package:base':
 
     norm
 
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
 > cleanEx()
 > nameEx("BetaFamily")
 > ### * BetaFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: BetaFamily
 > ### Title: Generating function for Beta families
 > ### Aliases: BetaFamily
@@ -201,7 +181,7 @@ An object of class "PosSemDefSymmMatrix"
 shape1  1.0000000 -0.6449341
 shape2 -0.6449341  1.0000000
 > checkL2deriv(B1)
-precision of centering:	 3.96327e-05 3.963591e-05 
+precision of centering:	 3.963281e-05 3.963334e-05 
 precision of Fisher information:
               shape1        shape2
 shape1 -1.851068e-05  1.648326e-06
@@ -213,17 +193,20 @@ shape2 -0.0002555806 -0.0018510679
 condition of Fisher information:
 [1] 5.277691
 $maximum.deviation
-[1] 3.963591e-05
+[1] 3.963334e-05
 
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("BetaFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("BiasType-class")
 > ### * BiasType-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: BiasType-class
 > ### Title: Bias Type
 > ### Aliases: BiasType-class name,BiasType-method name<-,BiasType-method
@@ -237,12 +220,15 @@ $maximum.deviation
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("BiasType-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("BinomFamily")
 > ### * BinomFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: BinomFamily
 > ### Title: Generating function for Binomial families
 > ### Aliases: BinomFamily
@@ -276,13 +262,13 @@ An object of class "PosSemDefSymmMatrix"
          prob
 prob 133.3333
 > checkL2deriv(B1)
-precision of centering:	 -1.099042e-15 
+precision of centering:	 -2.855253e-15 
 precision of Fisher information:
-             prob
-prob 2.842171e-14
+              prob
+prob -2.842171e-14
 precision of Fisher information - relativ error [%]:
-             prob
-prob 2.131628e-14
+              prob
+prob -2.131628e-14
 condition of Fisher information:
 [1] 1
 $maximum.deviation
@@ -291,12 +277,15 @@ $maximum.deviation
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("BinomFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("CauchyLocationScaleFamily")
 > ### * CauchyLocationScaleFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: CauchyLocationScaleFamily
 > ### Title: Generating function for Cauchy location and scale families
 > ### Aliases: CauchyLocationScaleFamily
@@ -352,12 +341,15 @@ $maximum.deviation
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("CauchyLocationScaleFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Confint-class")
 > ### * Confint-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Confint-class
 > ### Title: Confint-class
 > ### Aliases: Confint-class type,Confint-method call.estimate
@@ -410,6 +402,7 @@ function (x)
         dimnames = list(nms, nms0))
     list(fval = fval0, mat = mat0)
 }
+<bytecode: 0x08241ff8>
 Trafo / derivative matrix at which estimate was produced:
        scale shape
 shape  0.000     1
@@ -431,12 +424,15 @@ rate  1.751  4.097
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Confint-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Estimate-class")
 > ### * Estimate-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Estimate-class
 > ### Title: Estimate-class.
 > ### Aliases: Estimate-class name,Estimate-method name<-,Estimate-method
@@ -458,7 +454,7 @@ rate  1.751  4.097
 > Estimator(x, estimator = mean, name = "mean")
 Evaluations of mean:
 --------------------
-An object of class “Estimate” 
+An object of class "Estimate" 
 generated by call
   Estimator(x = x, estimator = mean, name = "mean")
 samplesize:   100
@@ -475,12 +471,15 @@ estimate:
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Estimate-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("Estimator")
 > ### * Estimator
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Estimator
 > ### Title: Function to compute estimates
 > ### Aliases: Estimator
@@ -492,7 +491,7 @@ estimate:
 > Estimator(x, estimator = mean, name = "mean")
 Evaluations of mean:
 --------------------
-An object of class “Estimate” 
+An object of class "Estimate" 
 generated by call
   Estimator(x = x, estimator = mean, name = "mean")
 samplesize:   100
@@ -504,7 +503,7 @@ estimate:
 > Estimator(X, estimator = rowMeans, name = "mean")
 Evaluations of mean:
 --------------------
-An object of class “Estimate” 
+An object of class "Estimate" 
 generated by call
   Estimator(x = X, estimator = rowMeans, name = "mean")
 samplesize:   100
@@ -516,12 +515,15 @@ estimate:
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("Estimator", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("EvenSymmetric-class")
 > ### * EvenSymmetric-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: EvenSymmetric-class
 > ### Title: Class for Even Functions
 > ### Aliases: EvenSymmetric-class
@@ -536,12 +538,15 @@ numeric(0)
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("EvenSymmetric-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("EvenSymmetric")
 > ### * EvenSymmetric
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: EvenSymmetric
 > ### Title: Generating function for EvenSymmetric-class
 > ### Aliases: EvenSymmetric
@@ -565,12 +570,15 @@ function (SymmCenter = 0)
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("EvenSymmetric", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("ExpScaleFamily")
 > ### * ExpScaleFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: ExpScaleFamily
 > ### Title: Generating function for exponential scale families
 > ### Aliases: ExpScaleFamily
@@ -604,9 +612,10 @@ scale     1
 [[1]]
 function (x) 
 {
-    ((x - 0)/1 * LogDeriv((x - 0)/1) - 1)/1
+    ((x - 0)/c(scale = 1) * LogDeriv((x - 0)/c(scale = 1)) - 
+        1)/c(scale = 1)
 }
-<environment: 0x9873698>
+<environment: 0x0c3937c0>
 
 > checkL2deriv(E1)
 precision of centering:	 -1.51181e-06 
@@ -624,12 +633,15 @@ $maximum.deviation
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("ExpScaleFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("FunSymmList-class")
 > ### * FunSymmList-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: FunSymmList-class
 > ### Title: List of Symmetries for a List of Functions
 > ### Aliases: FunSymmList-class
@@ -657,12 +669,15 @@ center of symmetry:
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("FunSymmList-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("FunSymmList")
 > ### * FunSymmList
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: FunSymmList
 > ### Title: Generating function for FunSymmList-class
 > ### Aliases: FunSymmList
@@ -699,12 +714,15 @@ function (...)
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("FunSymmList", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("GammaFamily")
 > ### * GammaFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: GammaFamily
 > ### Title: Generating function for Gamma families
 > ### Aliases: GammaFamily
@@ -756,12 +774,15 @@ $maximum.deviation
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("GammaFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("InfoNorm")
 > ### * InfoNorm
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: InfoNorm
 > ### Title: Generating function for InfoNorm-class
 > ### Aliases: InfoNorm
@@ -782,8 +803,8 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A)
-<bytecode: 0x9731190>
-<environment: 0x9731f38>
+<bytecode: 0x0d06f378>
+<environment: 0x0d070918>
 
 > 
 > ## The function is currently defined as
@@ -795,12 +816,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("InfoNorm", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("L2GroupFamily-class")
 > ### * L2GroupFamily-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: L2GroupParamFamily-class
 > ### Title: L2 differentiable parametric group family
 > ### Aliases: L2GroupParamFamily-class LogDeriv
@@ -815,12 +839,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("L2GroupFamily-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("L2LocationFamily-class")
 > ### * L2LocationFamily-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: L2LocationFamily-class
 > ### Title: L2 differentiable parametric group family
 > ### Aliases: L2LocationFamily-class
@@ -833,12 +860,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("L2LocationFamily-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("L2LocationFamily")
 > ### * L2LocationFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: L2LocationFamily
 > ### Title: Generating function for L2LocationFamily-class
 > ### Aliases: L2LocationFamily
@@ -851,12 +881,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("L2LocationFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("L2LocationScaleFamily-class")
 > ### * L2LocationScaleFamily-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: L2LocationScaleFamily-class
 > ### Title: L2 differentiable parametric group family
 > ### Aliases: L2LocationScaleFamily-class
@@ -869,12 +902,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("L2LocationScaleFamily-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("L2LocationScaleFamily")
 > ### * L2LocationScaleFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: L2LocationScaleFamily
 > ### Title: Generating function for L2LocationScaleFamily-class
 > ### Aliases: L2LocationScaleFamily
@@ -887,12 +923,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("L2LocationScaleFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("L2LocationUnknownScaleFamily")
 > ### * L2LocationUnknownScaleFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: L2LocationUnknownScaleFamily
 > ### Title: Generating function for L2LocationScaleFamily-class in nuisance
 > ###   situation
@@ -906,12 +945,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("L2LocationUnknownScaleFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("L2ParamFamily-class")
 > ### * L2ParamFamily-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: L2ParamFamily-class
 > ### Title: L2 differentiable parametric family
 > ### Aliases: plot plot-methods L2ParamFamily-class FisherInfo
@@ -944,12 +986,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("L2ParamFamily-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("L2ParamFamily")
 > ### * L2ParamFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: L2ParamFamily
 > ### Title: Generating function for L2ParamFamily-class
 > ### Aliases: L2ParamFamily
@@ -962,12 +1007,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("L2ParamFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("L2ScaleFamily-class")
 > ### * L2ScaleFamily-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: L2ScaleFamily-class
 > ### Title: L2 differentiable parametric group family
 > ### Aliases: L2ScaleFamily-class
@@ -980,12 +1028,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("L2ScaleFamily-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("L2ScaleFamily")
 > ### * L2ScaleFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: L2ScaleFamily
 > ### Title: Generating function for L2ScaleFamily-class
 > ### Aliases: L2ScaleFamily
@@ -998,12 +1049,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("L2ScaleFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("L2ScaleUnknownLocationFamily")
 > ### * L2ScaleUnknownLocationFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: L2ScaleUnknownLocationFamily
 > ### Title: Generating function for L2LocationScaleFamily-class in nuisance
 > ###   situation
@@ -1017,12 +1071,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("L2ScaleUnknownLocationFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("LnormScaleFamily")
 > ### * LnormScaleFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: LnormScaleFamily
 > ### Title: Generating function for lognormal scale families
 > ### Aliases: LnormScaleFamily
@@ -1059,9 +1116,10 @@ scale     1
 [[1]]
 function (x) 
 {
-    ((x - 0)/1 * LogDeriv((x - 0)/1) - 1)/1
+    ((x - 0)/c(meanlog = 1) * LogDeriv((x - 0)/c(meanlog = 1)) - 
+        1)/c(meanlog = 1)
 }
-<environment: 0xabd01c0>
+<environment: 0x0e876ce0>
 
 > checkL2deriv(L1)
 precision of centering:	 -0.003003394 
@@ -1079,12 +1137,15 @@ $maximum.deviation
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("LnormScaleFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("MCEstimate-class")
 > ### * MCEstimate-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: MCEstimate-class
 > ### Title: MCEstimate-class.
 > ### Aliases: MCEstimate-class criterion criterion,MCEstimate-method
@@ -1106,20 +1167,20 @@ $maximum.deviation
 > MDEstimator(x, G)
 Evaluations of Minimum Kolmogorov distance estimate:
 ----------------------------------------------------
-An object of class “Estimate” 
+An object of class "Estimate" 
 generated by call
   MDEstimator(x = x, ParamFamily = G)
 samplesize:   50
 estimate:
     scale     shape 
-0.2983286 4.6547001 
+0.3398645 4.2654569 
 Criterion:
 Kolmogorov distance 
-              1e+20 
+         0.06350364 
 > (m <- MLEstimator(x, G))
 Evaluations of Maximum likelihood estimate:
 -------------------------------------------
-An object of class “Estimate” 
+An object of class "Estimate" 
 generated by call
   MLEstimator(x = x, ParamFamily = G)
 samplesize:   50
@@ -1141,6 +1202,8 @@ negative log-likelihood
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("MCEstimate-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > graphics::par(get("par.postscript", pos = 'CheckExEnv'))
 > cleanEx()
 > nameEx("MCEstimator")
@@ -1148,6 +1211,7 @@ negative log-likelihood
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: MCEstimator
 > ### Title: Function to compute minimum criterion estimates
 > ### Aliases: MCEstimator
@@ -1183,7 +1247,7 @@ returning starting par;
 
 Evaluations of Minimum criterion estimate:
 ------------------------------------------
-An object of class “Estimate” 
+An object of class "Estimate" 
 generated by call
   MCEstimator(x = x, ParamFamily = G, criterion = negLoglikelihood)
 samplesize:   50
@@ -1212,7 +1276,7 @@ returning starting par;
 
 Evaluations of Minimum Kolmogorov distance estimate:
 ----------------------------------------------------
-An object of class “Estimate” 
+An object of class "Estimate" 
 generated by call
   MCEstimator(x = x, ParamFamily = G, criterion = KolmogorovDist, 
     crit.name = "Kolmogorov distance")
@@ -1231,17 +1295,17 @@ Kolmogorov distance
 +             crit.name = "Total variation distance")
 Evaluations of Minimum Total variation distance estimate:
 ---------------------------------------------------------
-An object of class “Estimate” 
+An object of class "Estimate" 
 generated by call
   MCEstimator(x = x, ParamFamily = G, criterion = TotalVarDist, 
     crit.name = "Total variation distance")
 samplesize:   50
 estimate:
     scale     shape 
-0.2829687 5.0197306 
+0.2829625 5.0197311 
 Criterion:
 Total variation distance 
-               0.4866141 
+               0.4819868 
 > 
 > ## or smooth empirical distribution (takes some time!)
 > #MCEstimator(x = x, ParamFamily = G, criterion = TotalVarDist, 
@@ -1255,7 +1319,7 @@ Total variation distance
 +             crit.name = "Hellinger Distance", startPar = c(1,2))
 Evaluations of Minimum Hellinger Distance estimate:
 ---------------------------------------------------
-An object of class “Estimate” 
+An object of class "Estimate" 
 generated by call
   MCEstimator(x = x, ParamFamily = G, criterion = HellingerDist, 
     crit.name = "Hellinger Distance", startPar = c(1, 2))
@@ -1274,12 +1338,15 @@ Hellinger Distance
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("MCEstimator", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("MDEstimator")
 > ### * MDEstimator
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: MDEstimator
 > ### Title: Function to compute minimum distance estimates
 > ### Aliases: MDEstimator
@@ -1297,116 +1364,44 @@ Hellinger Distance
 > MDEstimator(x = x, ParamFamily = G, distance = KolmogorovDist)
 Evaluations of Minimum Kolmogorov distance estimate:
 ----------------------------------------------------
-An object of class “Estimate” 
+An object of class "Estimate" 
 generated by call
   MDEstimator(x = x, ParamFamily = G, distance = KolmogorovDist)
 samplesize:   50
 estimate:
     scale     shape 
-0.2983286 4.6547001 
+0.3398645 4.2654569 
 Criterion:
 Kolmogorov distance 
-              1e+20 
+         0.06350364 
 > 
 > ## von Mises minimum distance estimator with default mu
 > MDEstimator(x = x, ParamFamily = G, distance = CvMDist)
 Evaluations of Minimum CvM distance estimate:
 ---------------------------------------------
-An object of class “Estimate” 
+An object of class "Estimate" 
 generated by call
   MDEstimator(x = x, ParamFamily = G, distance = CvMDist)
 samplesize:   50
 estimate:
     scale     shape 
-0.2983286 4.6547001 
+0.3401751 4.1262425 
 Criterion:
 CvM distance 
-       1e+20 
-> 
-> ## von Mises minimum distance estimator with default mu
-> MDEstimator(x = x, ParamFamily = G, distance = CvMDist,
-+             asvar.fct = distrMod:::.CvMMDCovariance)
-Evaluations of Minimum CvM distance estimate:
----------------------------------------------
-An object of class “Estimate” 
-generated by call
-  MDEstimator(x = x, ParamFamily = G, distance = CvMDist, asvar.fct = distrMod:::.CvMMDCovariance)
-samplesize:   50
-estimate:
-     scale        shape   
-  0.29832855   4.65470009 
- (0.07558202) (1.12072166)
-asymptotic (co)variance (multiplied with samplesize):
-           scale     shape
-scale  0.2856321 -3.958779
-shape -3.9587793 62.800852
-Criterion:
-CvM distance 
-       1e+20 
-> #*** variance routine is still in testing phase so not yet
-> #*** exported to namespace
-> ## von Mises minimum distance estimator with mu = N(0,1)
-> MDEstimator(x = x, ParamFamily = G, distance = CvMDist, mu = Norm())
-Evaluations of Minimum CvM distance estimate:
----------------------------------------------
-An object of class “Estimate” 
-generated by call
-  MDEstimator(x = x, ParamFamily = G, distance = CvMDist, mu = Norm())
-samplesize:   50
-estimate:
-    scale     shape 
-0.2983286 4.6547001 
-Criterion:
-CvM distance 
-       1e+20 
-> 
-> ## Total variation minimum distance estimator
-> ## gamma distributions are discretized
-> MDEstimator(x = x, ParamFamily = G, distance = TotalVarDist)
-Evaluations of Minimum total variation distance estimate:
----------------------------------------------------------
-An object of class “Estimate” 
-generated by call
-  MDEstimator(x = x, ParamFamily = G, distance = TotalVarDist)
-samplesize:   50
-estimate:
-    scale     shape 
-0.2829687 5.0197306 
-Criterion:
-total variation distance 
-               0.4866141 
-> ## or smoothing of emprical distribution (takes some time!)
-> #MDEstimator(x = x, ParamFamily = G, distance = TotalVarDist, asis.smooth.discretize = "smooth")
-> 
-> ## Hellinger minimum distance estimator
-> ## gamma distributions are discretized
-> distroptions(DistrResolution = 1e-10)
-> MDEstimator(x = x, ParamFamily = G, distance = HellingerDist, startPar = c(1,2))
-Evaluations of Minimum Hellinger distance estimate:
----------------------------------------------------
-An object of class “Estimate” 
-generated by call
-  MDEstimator(x = x, ParamFamily = G, distance = HellingerDist, 
-    startPar = c(1, 2))
-samplesize:   50
-estimate:
-   scale    shape 
-1.057442 1.683644 
-Criterion:
-Hellinger distance 
-         0.3782642 
-> distroptions(DistrResolution = 1e-6) # default
-> ## or smoothing of emprical distribution (takes some time!)
-> #MDEstimator(x = x, ParamFamily = G, distance = HellingerDist, asis.smooth.discretize = "smooth")
+  0.02931495 
 > 
 > 
 > 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("MDEstimator", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("MLEstimator")
 > ### * MLEstimator
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: MLEstimator
 > ### Title: Function to compute maximum likelihood estimates
 > ### Aliases: MLEstimator
@@ -1424,7 +1419,7 @@ Hellinger distance
 > MLEstimator(x, BinomFamily(size = 25))
 Evaluations of Maximum likelihood estimate:
 -------------------------------------------
-An object of class “Estimate” 
+An object of class "Estimate" 
 generated by call
   MLEstimator(x = x, ParamFamily = BinomFamily(size = 25))
 samplesize:   100
@@ -1454,7 +1449,7 @@ negative log-likelihood
 > MLEstimator(x, PoisFamily())
 Evaluations of Maximum likelihood estimate:
 -------------------------------------------
-An object of class “Estimate” 
+An object of class "Estimate" 
 generated by call
   MLEstimator(x = x, ParamFamily = PoisFamily())
 samplesize:   2608
@@ -1479,7 +1474,7 @@ negative log-likelihood
 > MLEstimator(x, NormLocationScaleFamily())
 Evaluations of Maximum likelihood estimate:
 -------------------------------------------
-An object of class “Estimate” 
+An object of class "Estimate" 
 generated by call
   MLEstimator(x = x, ParamFamily = NormLocationScaleFamily())
 samplesize:   100
@@ -1512,7 +1507,7 @@ negative log-likelihood
 > (res <- MLEstimator(x = x, ParamFamily = G))
 Evaluations of Maximum likelihood estimate:
 -------------------------------------------
-An object of class “Estimate” 
+An object of class "Estimate" 
 generated by call
   MLEstimator(x = x, ParamFamily = G)
 samplesize:   50
@@ -1649,6 +1644,8 @@ scale 0.9945880 2.277044
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("MLEstimator", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > graphics::par(get("par.postscript", pos = 'CheckExEnv'))
 > cleanEx()
 > nameEx("NBinomFamily")
@@ -1656,6 +1653,7 @@ scale 0.9945880 2.277044
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: NbinomFamily
 > ### Title: Generating function for Nbinomial families
 > ### Aliases: NbinomFamily NbinomwithSizeFamily NbinomMeanSizeFamily
@@ -1773,12 +1771,15 @@ $maximum.deviation
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("NBinomFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("NonSymmetric-class")
 > ### * NonSymmetric-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: NonSymmetric-class
 > ### Title: Class for Non-symmetric Functions
 > ### Aliases: NonSymmetric-class
@@ -1792,12 +1793,15 @@ NULL
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("NonSymmetric-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("NonSymmetric")
 > ### * NonSymmetric
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: NonSymmetric
 > ### Title: Generating function for NonSymmetric-class
 > ### Aliases: NonSymmetric
@@ -1818,12 +1822,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("NonSymmetric", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("NormLocationFamily")
 > ### * NormLocationFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: NormLocationFamily
 > ### Title: Generating function for normal location families
 > ### Aliases: NormLocationFamily
@@ -1859,12 +1866,15 @@ An object of class "UnivarDistrList"
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("NormLocationFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("NormLocationScaleFamily")
 > ### * NormLocationScaleFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: NormLocationScaleFamily
 > ### Title: Generating function for normal location and scale families
 > ### Aliases: NormLocationScaleFamily
@@ -1916,12 +1926,15 @@ $maximum.deviation
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("NormLocationScaleFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("NormLocationUnknownScaleFamily")
 > ### * NormLocationUnknownScaleFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: NormLocationUnknownScaleFamily
 > ### Title: Generating function for normal location families with unknown
 > ###   scale as nuisance
@@ -1975,12 +1988,15 @@ $maximum.deviation
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("NormLocationUnknownScaleFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("NormScaleFamily")
 > ### * NormScaleFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: NormScaleFamily
 > ### Title: Generating function for normal scale families
 > ### Aliases: NormScaleFamily
@@ -2030,12 +2046,15 @@ $maximum.deviation
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("NormScaleFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("NormScaleUnknownLocationFamily")
 > ### * NormScaleUnknownLocationFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: NormScaleUnknownLocationFamily
 > ### Title: Generating function for normal scale families with unknown
 > ###   location as nuisance
@@ -2089,12 +2108,15 @@ $maximum.deviation
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("NormScaleUnknownLocationFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("NormType-class")
 > ### * NormType-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: NormType-class
 > ### Title: Norm Type
 > ### Aliases: NormType-class name,NormType-method name<-,NormType-method fct
@@ -2111,19 +2133,22 @@ function (x)
         return(abs(x))
     else return(sqrt(colSums(x^2)))
 }
-<bytecode: 0x9cade68>
+<bytecode: 0x089fc548>
 <environment: namespace:distrMod>
 > name(EuclNorm)
 [1] "EuclideanNorm"
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("NormType-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("NormType")
 > ### * NormType
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: NormType
 > ### Title: Generating function for NormType-class
 > ### Aliases: NormType
@@ -2143,18 +2168,21 @@ function (x)
         return(abs(x))
     else return(sqrt(colSums(x^2)))
 }
-<bytecode: 0x9cade68>
+<bytecode: 0x089fc548>
 <environment: namespace:distrMod>
 
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("NormType", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("OddSymmetric-class")
 > ### * OddSymmetric-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: OddSymmetric-class
 > ### Title: Class for Odd Functions
 > ### Aliases: OddSymmetric-class
@@ -2169,12 +2197,15 @@ numeric(0)
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("OddSymmetric-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("OddSymmetric")
 > ### * OddSymmetric
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: OddSymmetric
 > ### Title: Generating function for OddSymmetric-class
 > ### Aliases: OddSymmetric
@@ -2198,12 +2229,15 @@ function (SymmCenter = 0)
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("OddSymmetric", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("ParamFamParameter-class")
 > ### * ParamFamParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: ParamFamParameter-class
 > ### Title: Parameter of a parametric family of probability measures
 > ### Aliases: ParamFamParameter-class ParamWithScaleFamParameter-class
@@ -2232,12 +2266,15 @@ name:	parameter of a parametric family of probability measures
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("ParamFamParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("ParamFamParameter")
 > ### * ParamFamParameter
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: ParamFamParameter
 > ### Title: Generating function for ParamFamParameter-class
 > ### Aliases: ParamFamParameter
@@ -2258,12 +2295,15 @@ fixed part of param.:	2
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("ParamFamParameter", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("ParamFamily-class")
 > ### * ParamFamily-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: ParamFamily-class
 > ### Title: Parametric family of probability measures.
 > ### Aliases: ParamFamily-class main,ParamFamily-method
@@ -2281,12 +2321,15 @@ fixed part of param.:	2
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("ParamFamily-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("ParamFamily")
 > ### * ParamFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: ParamFamily
 > ### Title: Generating function for ParamFamily-class
 > ### Aliases: ParamFamily
@@ -2532,12 +2575,15 @@ Shape parameter must not be negative.
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("ParamFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("PoisFamily")
 > ### * PoisFamily
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: PoisFamily
 > ### Title: Generating function for Poisson families
 > ### Aliases: PoisFamily
@@ -2576,12 +2622,15 @@ $maximum.deviation
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("PoisFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("QFNorm")
 > ### * QFNorm
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: QFNorm
 > ### Title: Generating function for QFNorm-class
 > ### Aliases: QFNorm
@@ -2602,8 +2651,8 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A0)
-<bytecode: 0xc08c200>
-<environment: 0xc08bfd0>
+<bytecode: 0x0ecda6d0>
+<environment: 0x0ea872a8>
 
 > 
 > ## The function is currently defined as
@@ -2615,12 +2664,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("QFNorm", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("SelfNorm")
 > ### * SelfNorm
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: SelfNorm
 > ### Title: Generating function for SelfNorm-class
 > ### Aliases: SelfNorm
@@ -2641,8 +2693,8 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A)
-<bytecode: 0xd225cf0>
-<environment: 0xd226a98>
+<bytecode: 0x0f95a3f0>
+<environment: 0x0f95a230>
 
 > 
 > ## The function is currently defined as
@@ -2654,12 +2706,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("SelfNorm", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("addAlphTrsp2col")
 > ### * addAlphTrsp2col
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: addAlphTrsp2col
 > ### Title: "addAlphTrsp2col"
 > ### Aliases: addAlphTrsp2col
@@ -2668,7 +2723,7 @@ function ()
 > ### ** Examples
 > 
 >   addAlphTrsp2col(rgb(1,0.3,0.03), 25)
-[1] "#FF4D0819"
+[1] "#FF4C0819"
 >   addAlphTrsp2col("darkblue", 25)
 [1] "#00008B19"
 >   addAlphTrsp2col("#AAAAAAAA",25)
@@ -2679,12 +2734,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("addAlphTrsp2col", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asBias-class")
 > ### * asBias-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asBias-class
 > ### Title: Standardized Asymptotic Bias
 > ### Aliases: asBias-class
@@ -2693,17 +2751,20 @@ function ()
 > ### ** Examples
 > 
 > new("asBias")
-An object of class “asBias” 
+An object of class "asBias" 
 risk type:	 asymptotic bias 
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("asBias-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asBias")
 > ### * asBias
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asBias
 > ### Title: Generating function for asBias-class
 > ### Aliases: asBias
@@ -2712,7 +2773,7 @@ risk type:	 asymptotic bias
 > ### ** Examples
 > 
 > asBias()
-An object of class “asBias” 
+An object of class "asBias" 
 risk type:	 asymptotic bias 
 > 
 > ## The function is currently defined as
@@ -2725,12 +2786,15 @@ function (biastype = symmetricBias(), normtype = NormType())
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("asBias", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asCov-class")
 > ### * asCov-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asCov-class
 > ### Title: Asymptotic covariance
 > ### Aliases: asCov-class
@@ -2739,17 +2803,20 @@ function (biastype = symmetricBias(), normtype = NormType())
 > ### ** Examples
 > 
 > new("asCov")
-An object of class “asCov” 
+An object of class "asCov" 
 risk type:	 asymptotic covariance 
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("asCov-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asCov")
 > ### * asCov
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asCov
 > ### Title: Generating function for asCov-class
 > ### Aliases: asCov
@@ -2758,7 +2825,7 @@ risk type:	 asymptotic covariance
 > ### ** Examples
 > 
 > asCov()
-An object of class “asCov” 
+An object of class "asCov" 
 risk type:	 asymptotic covariance 
 > 
 > ## The function is currently defined as
@@ -2770,12 +2837,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("asCov", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asHampel-class")
 > ### * asHampel-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asHampel-class
 > ### Title: Asymptotic Hampel risk
 > ### Aliases: asHampel-class bound bound,asHampel-method
@@ -2785,18 +2855,21 @@ function ()
 > ### ** Examples
 > 
 > new("asHampel")
-An object of class “asHampel” 
+An object of class "asHampel" 
 risk type:	 trace of asymptotic covariance for given bias bound 
 bound:	 Inf 
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("asHampel-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asHampel")
 > ### * asHampel
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asHampel
 > ### Title: Generating function for asHampel-class
 > ### Aliases: asHampel
@@ -2805,7 +2878,7 @@ bound:	 Inf
 > ### ** Examples
 > 
 > asHampel()
-An object of class “asHampel” 
+An object of class "asHampel" 
 risk type:	 trace of asymptotic covariance for given bias bound 
 bound:	 Inf 
 > 
@@ -2819,12 +2892,15 @@ function (bound = Inf, biastype = symmetricBias(), normtype = NormType())
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("asHampel", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asMSE-class")
 > ### * asMSE-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asMSE-class
 > ### Title: Asymptotic mean square error
 > ### Aliases: asMSE-class
@@ -2833,17 +2909,20 @@ function (bound = Inf, biastype = symmetricBias(), normtype = NormType())
 > ### ** Examples
 > 
 > new("asMSE")
-An object of class “asMSE” 
+An object of class "asMSE" 
 risk type:	 asymptotic mean square error 
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("asMSE-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asMSE")
 > ### * asMSE
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asMSE
 > ### Title: Generating function for asMSE-class
 > ### Aliases: asMSE
@@ -2852,7 +2931,7 @@ risk type:	 asymptotic mean square error
 > ### ** Examples
 > 
 > asMSE()
-An object of class “asMSE” 
+An object of class "asMSE" 
 risk type:	 asymptotic mean square error 
 > 
 > ## The function is currently defined as
@@ -2865,12 +2944,15 @@ function (biastype = symmetricBias(), normtype = NormType())
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("asMSE", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asSemivar-class")
 > ### * asSemivar-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asSemivar-class
 > ### Title: Semivariance Risk Type
 > ### Aliases: asSemivar-class sign,asSemivar-method sign<-,asSemivar-method
@@ -2879,17 +2961,20 @@ function (biastype = symmetricBias(), normtype = NormType())
 > ### ** Examples
 > 
 > asSemivar()
-An object of class “asSemivar” 
+An object of class "asSemivar" 
 risk type:	 asymptotic Semivariance 
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("asSemivar-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asSemivar")
 > ### * asSemivar
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asSemivar
 > ### Title: Generating function for asSemivar-class
 > ### Aliases: asSemivar
@@ -2898,18 +2983,21 @@ risk type:	 asymptotic Semivariance
 > ### ** Examples
 > 
 > asSemivar()
-An object of class “asSemivar” 
+An object of class "asSemivar" 
 risk type:	 asymptotic Semivariance 
 > 
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("asSemivar", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asUnOvShoot-class")
 > ### * asUnOvShoot-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asUnOvShoot-class
 > ### Title: Asymptotic under-/overshoot probability
 > ### Aliases: asUnOvShoot-class width width,asUnOvShoot-method
@@ -2919,18 +3007,21 @@ risk type:	 asymptotic Semivariance
 > ### ** Examples
 > 
 > new("asUnOvShoot")
-An object of class “asUnOvShoot” 
+An object of class "asUnOvShoot" 
 risk type:	 asymptotic under-/overshoot probability 
 width:	  
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("asUnOvShoot-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asUnOvShoot")
 > ### * asUnOvShoot
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asUnOvShoot
 > ### Title: Generating function for asUnOvShoot-class
 > ### Aliases: asUnOvShoot
@@ -2939,7 +3030,7 @@ width:
 > ### ** Examples
 > 
 > asUnOvShoot()
-An object of class “asUnOvShoot” 
+An object of class "asUnOvShoot" 
 risk type:	 asymptotic under-/overshoot probability 
 width:	 1.96 
 > 
@@ -2953,12 +3044,15 @@ function (width = 1.96, biastype = symmetricBias())
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("asUnOvShoot", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asymmetricBias-class")
 > ### * asymmetricBias-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asymmetricBias-class
 > ### Title: asymmetric Bias Type
 > ### Aliases: asymmetricBias-class nu,asymmetricBias-method
@@ -2993,12 +3087,15 @@ Error in `nu<-`(`*tmp*`, value = -2) :
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("asymmetricBias-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("asymmetricBias")
 > ### * asymmetricBias
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: asymmetricBias
 > ### Title: Generating function for asymmetricBias-class
 > ### Aliases: asymmetricBias
@@ -3025,12 +3122,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("asymmetricBias", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("checkL2deriv")
 > ### * checkL2deriv
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: checkL2deriv
 > ### Title: Generic function for checking L2-derivatives
 > ### Aliases: checkL2deriv
@@ -3055,12 +3155,15 @@ $maximum.deviation
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("checkL2deriv", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("confint-methods")
 > ### * confint-methods
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: confint-methods
 > ### Title: Methods for function confint in Package 'distrMod'
 > ### Aliases: confint-methods confint confint,ANY,missing-method
@@ -3160,12 +3263,15 @@ shape 2.0485880 6.0719832
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("confint-methods", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("distrModMASK")
 > ### * distrModMASK
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: distrModMASK
 > ### Title: Masking of/by other functions in package "distrMod"
 > ### Aliases: distrModMASK MASKING
@@ -3190,16 +3296,18 @@ masking:
 +confint()    (package "stats")
  
  
-
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("distrModMASK", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("distrModOptions")
 > ### * distrModOptions
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: distrModOptions
 > ### Title: Function to change the global variables of the package
 > ###   'distrMod'
@@ -3224,12 +3332,15 @@ $show.details
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("distrModOptions", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("fiBias-class")
 > ### * fiBias-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: fiBias-class
 > ### Title: Finite-sample Bias
 > ### Aliases: fiBias-class
@@ -3238,17 +3349,20 @@ $show.details
 > ### ** Examples
 > 
 > new("fiBias")
-An object of class “fiBias” 
+An object of class "fiBias" 
 risk type:	 finite-sample bias 
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("fiBias-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("fiBias")
 > ### * fiBias
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: fiBias
 > ### Title: Generating function for fiBias-class
 > ### Aliases: fiBias
@@ -3257,7 +3371,7 @@ risk type:	 finite-sample bias
 > ### ** Examples
 > 
 > fiBias()
-An object of class “fiBias” 
+An object of class "fiBias" 
 risk type:	 finite-sample bias 
 > 
 > ## The function is currently defined as
@@ -3269,12 +3383,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("fiBias", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("fiCov-class")
 > ### * fiCov-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: fiCov-class
 > ### Title: Finite-sample covariance
 > ### Aliases: fiCov-class
@@ -3283,17 +3400,20 @@ function ()
 > ### ** Examples
 > 
 > new("fiCov")
-An object of class “fiCov” 
+An object of class "fiCov" 
 risk type:	 finite-sample covariance 
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("fiCov-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("fiCov")
 > ### * fiCov
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: fiCov
 > ### Title: Generating function for fiCov-class
 > ### Aliases: fiCov
@@ -3302,7 +3422,7 @@ risk type:	 finite-sample covariance
 > ### ** Examples
 > 
 > fiCov()
-An object of class “fiCov” 
+An object of class "fiCov" 
 risk type:	 finite-sample covariance 
 > 
 > ## The function is currently defined as
@@ -3314,12 +3434,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("fiCov", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("fiHampel-class")
 > ### * fiHampel-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: fiHampel-class
 > ### Title: Finite-sample Hampel risk
 > ### Aliases: fiHampel-class bound,fiHampel-method show,fiHampel-method
@@ -3328,18 +3451,21 @@ function ()
 > ### ** Examples
 > 
 > new("fiHampel")
-An object of class “fiHampel” 
+An object of class "fiHampel" 
 risk type:	 finite-sample variance for given bias bound 
 bound:	 Inf 
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("fiHampel-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("fiHampel")
 > ### * fiHampel
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: fiHampel
 > ### Title: Generating function for fiHampel-class
 > ### Aliases: fiHampel
@@ -3348,7 +3474,7 @@ bound:	 Inf
 > ### ** Examples
 > 
 > fiHampel()
-An object of class “fiHampel” 
+An object of class "fiHampel" 
 risk type:	 finite-sample variance for given bias bound 
 bound:	 Inf 
 > 
@@ -3361,12 +3487,15 @@ function (bound = Inf)
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("fiHampel", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("fiMSE-class")
 > ### * fiMSE-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: fiMSE-class
 > ### Title: Finite-sample mean square error
 > ### Aliases: fiMSE-class
@@ -3375,17 +3504,20 @@ function (bound = Inf)
 > ### ** Examples
 > 
 > new("fiMSE")
-An object of class “fiMSE” 
+An object of class "fiMSE" 
 risk type:	 finite-sample mean square error 
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("fiMSE-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("fiMSE")
 > ### * fiMSE
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: fiMSE
 > ### Title: Generating function for fiMSE-class
 > ### Aliases: fiMSE
@@ -3394,7 +3526,7 @@ risk type:	 finite-sample mean square error
 > ### ** Examples
 > 
 > fiMSE()
-An object of class “fiMSE” 
+An object of class "fiMSE" 
 risk type:	 finite-sample mean square error 
 > 
 > ## The function is currently defined as
@@ -3406,12 +3538,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("fiMSE", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("fiUnOvShoot-class")
 > ### * fiUnOvShoot-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: fiUnOvShoot-class
 > ### Title: Finite-sample under-/overshoot probability
 > ### Aliases: fiUnOvShoot-class width,fiUnOvShoot-method
@@ -3421,18 +3556,21 @@ function ()
 > ### ** Examples
 > 
 > new("fiUnOvShoot")
-An object of class “fiUnOvShoot” 
+An object of class "fiUnOvShoot" 
 risk type:	 finite-sample under-/overshoot probability 
 width:	  
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("fiUnOvShoot-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("fiUnOvShoot")
 > ### * fiUnOvShoot
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: fiUnOvShoot
 > ### Title: Generating function for fiUnOvShoot-class
 > ### Aliases: fiUnOvShoot
@@ -3441,7 +3579,7 @@ width:
 > ### ** Examples
 > 
 > fiUnOvShoot()
-An object of class “fiUnOvShoot” 
+An object of class "fiUnOvShoot" 
 risk type:	 finite-sample under-/overshoot probability 
 width:	 1.96 
 > 
@@ -3454,12 +3592,15 @@ function (width = 1.96)
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("fiUnOvShoot", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("isKerAinKerB")
 > ### * isKerAinKerB
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: isKerAinKerB
 > ### Title: isKerAinKerB
 > ### Aliases: isKerAinKerB
@@ -3476,12 +3617,15 @@ function (width = 1.96)
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("isKerAinKerB", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("negativeBias")
 > ### * negativeBias
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: negativeBias
 > ### Title: Generating function for onesidedBias-class
 > ### Aliases: negativeBias
@@ -3507,12 +3651,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("negativeBias", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("norms")
 > ### * norms
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: norm
 > ### Title: Norm functions
 > ### Aliases: EuclideanNorm QuadFormNorm
@@ -3530,12 +3677,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("norms", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("onesidedBias-class")
 > ### * onesidedBias-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: onesidedBias-class
 > ### Title: onesided Bias Type
 > ### Aliases: onesidedBias-class sign sign<- sign,onesidedBias-method
@@ -3583,12 +3733,15 @@ Error in `sign<-`(`*tmp*`, value = -2) : Left value has to be +-1
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("onesidedBias-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("positiveBias")
 > ### * positiveBias
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: positiveBias
 > ### Title: Generating function for onesidedBias-class
 > ### Aliases: positiveBias
@@ -3614,12 +3767,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("positiveBias", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("print-methods")
 > ### * print-methods
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: print-methods
 > ### Title: Common 'print' Methods for S4 classes in Package 'distrMod'
 > ### Aliases: print-methods print,ShowDetails-method
@@ -3664,6 +3820,7 @@ function (param)
     dimnames(mat) <- list(nfval, c("mean", "sd"))
     return(list(fval = fval, mat = mat))
 }
+<bytecode: 0x0d4d9ab0>
 > print(param(NS), show.details = "minimal")
 An object of class "ParamWithScaleFamParameter"
 name:	location and scale
@@ -3680,7 +3837,7 @@ slot trafo is a non-trivial function
 > print(res) #equivalent to 'show(res)' or 'res'
 Evaluations of Maximum likelihood estimate:
 -------------------------------------------
-An object of class “Estimate” 
+An object of class "Estimate" 
 generated by call
   MLEstimator(x = x, ParamFamily = NS)
 samplesize:   30
@@ -3712,6 +3869,7 @@ function (param)
     dimnames(mat) <- list(nfval, c("mean", "sd"))
     return(list(fval = fval, mat = mat))
 }
+<bytecode: 0x0d4d9ab0>
 Trafo / derivative matrix:
             mean         sd
 mu/sig 0.3668695 -0.3024814
@@ -3722,7 +3880,7 @@ negative log-likelihood
 > print(res, digits = 4)
 Evaluations of Maximum likelihood estimate:
 -------------------------------------------
-An object of class “Estimate” 
+An object of class "Estimate" 
 generated by call
   MLEstimator(x = x, ParamFamily = NS)
 samplesize:   30
@@ -3754,6 +3912,7 @@ function (param)
     dimnames(mat) <- list(nfval, c("mean", "sd"))
     return(list(fval = fval, mat = mat))
 }
+<bytecode: 0x0d4d9ab0>
 Trafo / derivative matrix:
          mean      sd
 mu/sig 0.3669 -0.3025
@@ -3770,7 +3929,7 @@ Evaluations of Maximum likelihood estimate:
 > print(res, show.details = "medium")
 Evaluations of Maximum likelihood estimate:
 -------------------------------------------
-An object of class “Estimate” 
+An object of class "Estimate" 
 generated by call
   MLEstimator(x = x, ParamFamily = NS)
 samplesize:   30
@@ -3789,12 +3948,15 @@ negative log-likelihood
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("print-methods", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("qqplot")
 > ### * qqplot
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: qqplot
 > ### Title: Methods for Function qqplot in Package 'distrMod'
 > ### Aliases: qqplot qqplot-methods qqplot,ANY,ProbFamily-method
@@ -3813,12 +3975,15 @@ negative log-likelihood
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("qqplot", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("returnlevelplot")
 > ### * returnlevelplot
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: returnlevelplot
 > ### Title: Methods for Function returnlevelplot in Package 'distrMod'
 > ### Aliases: returnlevelplot returnlevelplot-methods
@@ -3851,647 +4016,23 @@ Loading required package: ROptEst
 Loading required package: RobAStBase
 Loading required package: rrcov
 Loading required package: robustbase
-Scalable Robust Estimators with High Breakdown Point (version 1.3-8)
-
-:RobAStBase>  Robust Asymptotic Statistics (version 0.9)
-:RobAStBase> 
-:RobAStBase>  Some functions from pkg's 'stats' and 'graphics'
-:RobAStBase>  are intentionally masked ---see RobAStBaseMASK().
-:RobAStBase> 
-:RobAStBase>  Note that global options are controlled by
-:RobAStBase>  RobAStBaseoptions() ---c.f. ?"RobAStBaseoptions".
-:RobAStBase> 
-:RobAStBase>  For more information see ?"RobAStBase",
-:RobAStBase>  NEWS("RobAStBase"), as well as
-:RobAStBase>    http://robast.r-forge.r-project.org/
-
-
-Attaching package: ‘RobAStBase’
-
-The following object is masked from ‘package:graphics’:
-
-    clip
-
-Loading required package: evd
-Loading required package: actuar
-
-Attaching package: ‘actuar’
-
-The following object is masked from ‘package:grDevices’:
-
-    cm
-
-:RobExtremes>  Optimally robust estimation for extreme value
-:RobExtremes>  distributions (version 1.0)
-:RobExtremes> 
-:RobExtremes> 
-:RobExtremes>  For more information see ?"RobExtremes",
-:RobExtremes>  NEWS("RobExtremes"), as well as
-:RobExtremes>    http://robast.r-forge.r-project.org/
-
-
-Attaching package: ‘RobExtremes’
-
-The following objects are masked from ‘package:robustbase’:
-
-    Qn, Sn
-
-Loading required package: ismev
-Loading required package: mgcv
-Loading required package: nlme
-
-Attaching package: ‘nlme’
-
-The following object is masked from ‘package:rrcov’:
-
-    getData
-
-The following object is masked from ‘package:RandVar’:
-
-    Dim
-
-This is mgcv 1.8-6. For overview type 'help("mgcv-package")'.
-$conv
-[1] 0
-
-$nllh
-[1] -4.339058
-
-$mle
-[1]  3.87474692  0.19804120 -0.05008773
-
-$se
-[1] 0.02793211 0.02024610 0.09825633
-
-$x
- [1] 3.57 3.62 3.63 3.65 3.66 3.66 3.71 3.71 3.72 3.73 3.74 3.75 3.75 3.78 3.79
-[16] 3.80 3.83 3.85 3.85 3.85 3.85 3.86 3.86 3.88 3.88 3.88 3.89 3.90 3.90 3.91
-[31] 3.93 3.94 3.96 3.96 3.96 3.96 3.97 3.98 4.00 4.01 4.01 4.03 4.05 4.06 4.06
-[46] 4.08 4.08 4.11 4.11 4.11 4.18 4.18 4.21 4.21 4.22 4.24 4.24 4.25 4.33 4.33
-[61] 4.36 4.37 4.55 4.55 4.69
-
-$y
- [1]   0.2054428   0.2653278   0.3069277   0.3422754   0.3744884   0.4049175
- [7]   0.4342945   0.4630735   0.4915645   0.5199950   0.5485427   0.5773538
-[13]   0.6065537   0.6362547   0.6665606   0.6975703   0.7293803   0.7620869
-[19]   0.7957877   0.8305835   0.8665794   0.9038859   0.9426208   0.9829103
-[25]   1.0248903   1.0687085   1.1145258   1.1625186   1.2128810   1.2658276
-[31]   1.3215965   1.3804533   1.4426950   1.5086555   1.5787115   1.6532900
-[37]   1.7328770   1.8180287   1.9093843   2.0076830   2.1137837   2.2286912
-[43]   2.3535880   2.4898766   2.6392322   2.8036733   2.9856543   3.1881903
-[49]   3.4150268   3.6708752   3.9617464   4.2954319   4.6822157   5.1359587
-[55]   5.6758016   6.3289437   7.1353838   8.1564524   9.4912216  11.3108152
-[61]  13.9384663  18.0668163  25.4967317  42.8313877 129.4993565
-
-$crit
-       sim.left sim.right  pw.left pw.right
-  [1,] 3.318986  3.756929 3.156433 3.644202
-  [2,] 3.318986  3.756939 3.165351 3.644202
-  [3,] 3.318986  3.756950 3.174269 3.644202
-  [4,] 3.318986  3.756964 3.183186 3.644202
-  [5,] 3.318986  3.756980 3.192104 3.644202
-  [6,] 3.318986  3.756999 3.201021 3.644202
-  [7,] 3.318986  3.757021 3.209939 3.644202
-  [8,] 3.318986  3.757046 3.218856 3.644202
-  [9,] 3.318986  3.757076 3.227774 3.644202
- [10,] 3.318986  3.757110 3.236692 3.644202
- [11,] 3.318986  3.757150 3.245609 3.644202
- [12,] 3.318986  3.757196 3.254527 3.644202
- [13,] 3.318986  3.757248 3.263444 3.644202
- [14,] 3.318986  3.757308 3.272361 3.644203
- [15,] 3.318986  3.757376 3.281277 3.644204
- [16,] 3.318986  3.757453 3.290193 3.644206
- [17,] 3.318986  3.757541 3.299107 3.644210
- [18,] 3.318986  3.757640 3.308018 3.644216
- [19,] 3.318986  3.757752 3.316925 3.644227
- [20,] 3.318986  3.757877 3.325824 3.644245
- [21,] 3.318986  3.758018 3.334712 3.644275
- [22,] 3.318986  3.758175 3.343583 3.644322
- [23,] 3.318986  3.758351 3.352427 3.644396
- [24,] 3.318986  3.758545 3.361231 3.644509
- [25,] 3.318986  3.758761 3.369978 3.644680
- [26,] 3.318986  3.759000 3.378643 3.644932
- [27,] 3.318986  3.759264 3.387196 3.645296
- [28,] 3.318986  3.759554 3.395598 3.645812
- [29,] 3.318986  3.759873 3.403799 3.646528
- [30,] 3.318986  3.760222 3.411744 3.647501
- [31,] 3.318986  3.760604 3.419369 3.648794
- [32,] 3.318986  3.761020 3.426603 3.650478
- [33,] 3.318986  3.761473 3.433372 3.652626
- [34,] 3.318986  3.761965 3.439604 3.655312
- [35,] 3.318986  3.762094 3.441069 3.656076
- [36,] 3.318986  3.762498 3.445223 3.658610
- [37,] 3.318986  3.763073 3.450164 3.662587
- [38,] 3.318986  3.763694 3.454370 3.667298
- [39,] 3.318986  3.764363 3.457806 3.672780
- [40,] 3.318986  3.765080 3.460470 3.679033
- [41,] 3.318986  3.765122 3.460597 3.679403
- [42,] 3.318986  3.765850 3.462410 3.686011
- [43,] 3.318986  3.766673 3.463721 3.693617
- [44,] 3.318986  3.767552 3.487130 3.679126
- [45,] 3.318986  3.768489 3.494941 3.680233
- [46,] 3.318986  3.769485 3.502262 3.681829
- [47,] 3.318986  3.770542 3.508971 3.684038
- [48,] 3.318986  3.771662 3.514953 3.686974
- [49,] 3.318986  3.772211 3.517487 3.688634
- [50,] 3.318986  3.772847 3.520113 3.690732
- [51,] 3.318986  3.774098 3.524386 3.695375
- [52,] 3.318986  3.775416 3.527750 3.700930
- [53,] 3.318986  3.776803 3.530234 3.707363
- [54,] 3.318986  3.777189 3.537081 3.702919
- [55,] 3.318986  3.778260 3.542439 3.704076
- [56,] 3.318986  3.779788 3.549158 3.706274
- [57,] 3.318986  3.780598 3.552283 3.707717
- [58,] 3.318986  3.781388 3.555040 3.709310
- [59,] 3.318986  3.781979 3.556924 3.710624
- [60,] 3.318986  3.783060 3.559981 3.713286
- [61,] 3.318986  3.784805 3.563931 3.718254
- [62,] 3.318986  3.786623 3.566897 3.724205
- [63,] 3.318986  3.788511 3.576078 3.723922
- [64,] 3.318986  3.788515 3.576093 3.723927
- [65,] 3.318986  3.790482 3.582111 3.726827
- [66,] 3.318986  3.791455 3.584654 3.728575
- [67,] 3.318986  3.792522 3.587126 3.730730
- [68,] 3.318986  3.793024 3.588175 3.731825
- [69,] 3.318986  3.794637 3.591085 3.735688
- [70,] 3.318986  3.796826 3.596612 3.739079
- [71,] 3.318986  3.799088 3.602859 3.741749
- [72,] 3.318986  3.800685 3.606557 3.744179
- [73,] 3.318986  3.801423 3.608070 3.745455
- [74,] 3.318986  3.803832 3.612182 3.750262
- [75,] 3.318986  3.806312 3.617380 3.753981
- [76,] 3.318986  3.808865 3.623280 3.756999
- [77,] 3.318986  3.809709 3.624961 3.758215
- [78,] 3.318986  3.811488 3.628070 3.761126
- [79,] 3.318986  3.814181 3.631803 3.766310
- [80,] 3.318986  3.816943 3.637982 3.769049
- [81,] 3.318986  3.818560 3.641030 3.771121
- [82,] 3.318986  3.819774 3.643044 3.772905
- [83,] 3.318986  3.821083 3.644957 3.775043
- [84,] 3.318986  3.822672 3.646938 3.777928
- [85,] 3.318986  3.825637 3.652575 3.781209
- [86,] 3.318986  3.827268 3.655432 3.783174
- [87,] 3.318986  3.827742 3.656194 3.783806
- [88,] 3.318986  3.828667 3.657586 3.785115
- [89,] 3.318986  3.831761 3.661195 3.790424
- [90,] 3.318986  3.834727 3.666761 3.793239
- [91,] 3.318986  3.834919 3.667083 3.793454
- [92,] 3.318986  3.835855 3.668586 3.794563
- [93,] 3.318986  3.838139 3.671786 3.797669
- [94,] 3.318986  3.841420 3.675970 3.802402
- [95,] 3.318986  3.842025 3.677045 3.802955
- [96,] 3.318986  3.844346 3.680771 3.805421
- [97,] 3.318986  3.844760 3.681370 3.805919
- [98,] 3.318986  3.848160 3.685553 3.810655
- [99,] 3.318986  3.849624 3.687243 3.812757
-[100,] 3.318986  3.851618 3.690509 3.814616
-[101,] 3.318986  3.852760 3.692187 3.815850
-[102,] 3.427176  3.855133 3.695230 3.818812
-[103,] 3.543063  3.858704 3.699418 3.823542
-[104,] 3.565870  3.861115 3.702978 3.825927
-[105,] 3.574706  3.862329 3.704552 3.827326
-[106,] 3.595911  3.866008 3.708226 3.832569
-[107,] 3.611210  3.869427 3.713255 3.835712
-[108,] 3.612474  3.869741 3.713662 3.836050
-[109,] 3.626358  3.873525 3.717856 3.840774
-[110,] 3.628318  3.874111 3.717951 3.842049
-[111,] 3.638482  3.877360 3.722651 3.844897
-[112,] 3.639517  3.877712 3.723103 3.845256
-[113,] 3.649355  3.881246 3.727053 3.849413
-[114,] 3.653392  3.882800 3.728228 3.851772
-[115,] 3.659290  3.885182 3.731570 3.853813
-[116,] 3.661209  3.885985 3.732590 3.854600
-[117,] 3.668494  3.889166 3.736105 3.858196
-[118,] 3.674062  3.891737 3.738478 3.861522
-[119,] 3.677112  3.893198 3.740447 3.862771
-[120,] 3.679281  3.894260 3.741772 3.863778
-[121,] 3.685247  3.897277 3.745049 3.867087
-[122,] 3.692978  3.901403 3.749294 3.871759
-[123,] 3.695048  3.902550 3.750693 3.872820
-[124,] 3.700367  3.905576 3.753909 3.876062
-[125,] 3.707460  3.909794 3.758114 3.880775
-[126,] 3.709213  3.910868 3.759392 3.881753
-[127,] 3.714296  3.914057 3.762695 3.885111
-[128,] 3.720906  3.918365 3.766903 3.889820
-[129,] 3.722198  3.919228 3.767901 3.890599
-[130,] 3.723283  3.919959 3.768705 3.891295
-[131,] 3.727316  3.922717 3.771413 3.894228
-[132,] 3.733546  3.927113 3.775656 3.898903
-[133,] 3.734281  3.927643 3.776250 3.899378
-[134,] 3.739615  3.931553 3.780063 3.903413
-[135,] 3.745538  3.936036 3.784364 3.908030
-[136,] 3.745654  3.936125 3.784461 3.908109
-[137,] 3.750485  3.939894 3.788093 3.911907
-[138,] 3.751329  3.940563 3.787653 3.913659
-[139,] 3.756455  3.944689 3.792557 3.916811
-[140,] 3.756998  3.945133 3.793022 3.917208
-[141,] 3.762556  3.949746 3.796418 3.922729
-[142,] 3.763082  3.950189 3.796968 3.923032
-[143,] 3.766790  3.953348 3.800557 3.925497
-[144,] 3.768011  3.954402 3.801623 3.926442
-[145,] 3.773371  3.959101 3.805131 3.931851
-[146,] 3.776738  3.962117 3.808478 3.934185
-[147,] 3.778642  3.963843 3.810162 3.935737
-[148,] 3.783830  3.968628 3.813786 3.941031
-[149,] 3.786366  3.971010 3.816337 3.942888
-[150,] 3.786809  3.971430 3.816755 3.943245
-[151,] 3.788940  3.973457 3.818639 3.945096
-[152,] 3.793978  3.978330 3.822377 3.950275
-[153,] 3.795723  3.980044 3.824149 3.951621
-[154,] 3.798077  3.982378 3.826316 3.953684
-[155,] 3.798948  3.983247 3.827051 3.954519
-[156,] 3.803852  3.988209 3.830902 3.959586
-[157,] 3.804854  3.989236 3.831927 3.960398
-[158,] 3.808695  3.993215 3.835402 3.964004
-[159,] 3.809016  3.993551 3.835660 3.964340
-[160,] 3.813480  3.998267 3.839359 3.968964
-[161,] 3.813795  3.998605 3.839684 3.969231
-[162,] 3.818209  4.003366 3.842393 3.974848
-[163,] 3.819661  4.004953 3.844176 3.975824
-[164,] 3.822577  4.008169 3.847433 3.978136
-[165,] 3.822884  4.008511 3.847750 3.978408
-[166,] 3.827509  4.013703 3.850871 3.984205
-[167,] 3.831226  4.017952 3.855186 3.987126
-[168,] 3.832086  4.018944 3.856078 3.987916
-[169,] 3.836615  4.024234 3.859272 3.993639
-[170,] 3.839767  4.027977 3.862954 3.996216
-[171,] 3.840184  4.028475 3.863400 3.996600
-[172,] 3.841099  4.029574 3.864345 3.997483
-[173,] 3.845540  4.034966 3.867596 4.003150
-[174,] 3.848220  4.038271 3.870750 4.005419
-[175,] 3.849938  4.040410 3.872557 4.007107
-[176,] 3.850104  4.040616 3.872721 4.007279
-[177,] 3.854296  4.045907 3.875845 4.012736
-[178,] 3.856605  4.048863 3.878586 4.014753
-[179,] 3.858614  4.051460 3.880717 4.016782
-[180,] 3.862893  4.057069 3.884019 4.022397
-[181,] 3.864938  4.059787 3.886472 4.024232
-[182,] 3.867135  4.062736 3.888828 4.026506
-[183,] 3.869340  4.065725 3.889448 4.030552
-[184,] 3.871340  4.068463 3.892117 4.032135
-[185,] 3.873236  4.071081 3.894421 4.033875
-[186,] 3.875509  4.074252 3.896894 4.036276
-[187,] 3.878679  4.078728 3.898859 4.041141
-[188,] 3.879644  4.080104 3.900136 4.041951
-[189,] 3.881513  4.082788 3.902446 4.043699
-[190,] 3.883743  4.086021 3.904912 4.046092
-[191,] 3.887809  4.092007 3.908070 4.051852
-[192,] 3.887845  4.092060 3.908116 4.051884
-[193,] 3.889786  4.094959 3.910558 4.053724
-[194,] 3.891842  4.098063 3.912881 4.055958
-[195,] 3.895843  4.104191 3.915907 4.061850
-[196,] 3.898066  4.107652 3.918771 4.063973
-[197,] 3.899811  4.110396 3.920792 4.065882
-[198,] 3.903747  4.116679 3.923634 4.071959
-[199,] 3.905681  4.119815 3.926237 4.073763
-[200,] 3.906367  4.120934 3.927100 4.074467
-[201,] 3.907652  4.123044 3.928633 4.075877
-[202,] 3.911526  4.129495 3.931225 4.082203
-[203,] 3.914362  4.134306 3.935127 4.084873
-[204,] 3.914703  4.134889 3.935559 4.085234
-[205,] 3.915370  4.136034 3.936382 4.085963
-[206,] 3.919183  4.142667 3.938648 4.092614
-[207,] 3.922966  4.149397 3.944010 4.096170
-[208,] 3.923087  4.149614 3.944165 4.096300
-[209,] 3.926720  4.156230 3.948351 4.100747
-[210,] 3.930443  4.163170 3.951477 4.106538
-[211,] 3.931268  4.164730 3.952589 4.107411
-[212,] 3.931531  4.165229 3.952934 4.107699
-[213,] 3.934137  4.170223 3.956085 4.110848
-[214,] 3.937802  4.177394 3.958727 4.117123
-[215,] 3.940049  4.181881 3.961886 4.119466
-[216,] 3.941438  4.184691 3.963657 4.121111
-[217,] 3.945045  4.192121 3.965690 4.127996
-[218,] 3.947581  4.197465 3.969550 4.130450
-[219,] 3.948623  4.199690 3.970999 4.131604
-[220,] 3.948655  4.199758 3.971042 4.131641
-[221,] 3.952172  4.207408 3.975338 4.136183
-[222,] 3.955520  4.214893 3.977759 4.142241
-[223,] 3.955692  4.215284 3.978020 4.142419
-[224,] 3.957362  4.219101 3.980425 4.144269
-[225,] 3.959184  4.223328 3.982810 4.146546
-[226,] 3.962647  4.231551 3.984603 4.153671
-[227,] 3.966082  4.239965 3.989913 4.157279
-[228,] 3.966186  4.240226 3.990060 4.157404
-[229,] 3.969488  4.248585 3.994289 4.161820
-[230,] 3.970965  4.252415 3.993287 4.166713
-[231,] 3.972865  4.257426 3.996498 4.168529
-[232,] 3.975142  4.263563 3.999977 4.171105
-[233,] 3.976214  4.266504 4.001474 4.172470
-[234,] 3.979534  4.275839 4.005546 4.177316
-[235,] 3.982826  4.285452 4.008034 4.183745
-[236,] 3.984247  4.289721 4.010209 4.185444
-[237,] 3.986089  4.295369 4.012788 4.187909
-[238,] 3.989324  4.305615 4.013734 4.195880
-[239,] 3.992530  4.316224 4.019259 4.199273
-[240,] 3.993055  4.318008 4.020084 4.199916
-[241,] 3.993517  4.319591 4.020792 4.200503
-[242,] 3.995707  4.327232 4.023906 4.203544
-[243,] 3.998855  4.338681 4.024660 4.211708
-[244,] 4.001975  4.350620 4.030179 4.215106
-[245,] 4.002973  4.354576 4.031772 4.216383
-[246,] 4.005066  4.363109 4.034841 4.219361
-[247,] 4.008129  4.376215 4.035101 4.228019
-[248,] 4.011162  4.390023 4.040743 4.231294
-[249,] 4.012635  4.397063 4.043198 4.233201
-[250,] 4.014167  4.404635 4.045550 4.235405
-[251,] 4.017142  4.420174 4.049544 4.240329
-[252,] 4.020089  4.436799 4.050826 4.247965
-[253,] 4.022526  4.451653 4.055131 4.251104
-[254,] 4.023006  4.454711 4.055915 4.251793
-[255,] 4.025894  4.474170 4.060203 4.256422
-[256,] 4.028754  4.495531 4.060195 4.265348
-[257,] 4.031584  4.519283 4.065716 4.268745
-[258,] 4.032671  4.529258 4.067640 4.270271
-[259,] 4.034384  4.546132 4.070449 4.272929
-[260,] 4.037156  4.577160 4.074420 4.277876
-[261,] 4.039527  4.608666 4.073798 4.286202
-[262,] 4.039898  4.614144 4.074585 4.286629
-[263,] 4.042611  4.660321 4.079929 4.290202
-[264,] 4.043098  4.670083 4.080814 4.290929
-[265,] 4.045294  4.722665 4.084515 4.294534
-[266,] 4.047948  4.821654 4.088370 4.299596
-[267,] 4.050572  5.135052 4.088084 4.308800
-[268,] 4.053167  5.849396 4.093474 4.312327
-[269,] 4.053838  5.849396 4.094757 4.313367
-[270,] 4.055733  5.849396 4.098131 4.316588
-[271,] 4.057238  5.849396 4.100553 4.319447
-[272,] 4.058269  5.849396 4.102081 4.321556
-[273,] 4.060775  5.849396 4.100454 4.332100
-[274,] 4.062845  5.849396 4.105243 4.334757
-[275,] 4.063252  5.849396 4.106131 4.335341
-[276,] 4.064927  5.849396 4.109600 4.337964
-[277,] 4.065699  5.849396 4.111097 4.339292
-[278,] 4.068117  5.849396 4.115371 4.343936
-[279,] 4.070505  5.849396 4.118987 4.349237
-[280,] 4.072864  5.849396 4.117330 4.359812
-[281,] 4.073614  5.849396 4.119180 4.360820
-[282,] 4.075193  5.849396 4.122872 4.363187
-[283,] 4.076405  5.849396 4.125511 4.365233
-[284,] 4.077493  5.849396 4.127736 4.367241
-[285,] 4.078776  5.849396 4.130183 4.369817
-[286,] 4.079764  5.849396 4.131940 4.371955
-[287,] 4.082005  5.849396 4.135521 4.377291
-[288,] 4.084217  5.849396 4.132365 4.389365
-[289,] 4.086399  5.849396 4.138125 4.392523
-[290,] 4.088319  5.849396 4.142707 4.395885
-[291,] 4.088553  5.849396 4.143234 4.396332
-[292,] 4.090677  5.849396 4.147705 4.400778
-[293,] 4.092772  5.849396 4.151569 4.405832
-[294,] 4.094838  5.849396 4.144586 4.421732
-[295,] 4.096875  5.849396 4.150946 4.424290
-[296,] 4.098884  5.849396 4.156696 4.427458
-[297,] 4.100722  5.849396 4.161478 4.430949
-[298,] 4.100864  5.849396 4.161828 4.431243
-[299,] 4.102815  5.849396 4.166357 4.435632
-[300,] 4.104738  5.849396 4.170307 4.440599
-[301,] 4.106632  5.849396 4.173717 4.446107
-[302,] 4.108498  5.849396 4.165892 4.462849
-[303,] 4.110337  5.849396 4.172146 4.465513
-[304,] 4.112147  5.849396 4.177822 4.468754
-[305,] 4.113676  5.849396 4.182224 4.471995
-[306,] 4.113929  5.849396 4.182917 4.472577
-[307,] 4.114819  5.849396 4.185275 4.474725
-[308,] 4.115684  5.849396 4.187446 4.476966
-[309,] 4.117411  5.849396 4.191433 4.481896
-[310,] 4.119112  5.849396 4.194913 4.487334
-[311,] 4.120785  5.849396 4.181341 4.509823
-[312,] 4.122431  5.849396 4.188145 4.511937
-[313,] 4.124050  5.849396 4.194428 4.514571
-[314,] 4.125642  5.849396 4.200170 4.517747
-[315,] 4.126011  5.849396 4.201433 4.518567
-[316,] 4.127209  5.849396 4.205370 4.521464
-[317,] 4.127257  5.849396 4.205522 4.521588
-[318,] 4.128749  5.849396 4.210040 4.525712
-[319,] 4.129473  5.849396 4.212084 4.527916
-[320,] 4.130263  5.849396 4.214201 4.530469
-[321,] 4.131752  5.849396 4.217883 4.535705
-[322,] 4.133215  5.849396 4.221117 4.541388
-[323,] 4.134652  5.849396 4.200867 4.570556
-[324,] 4.136065  5.849396 4.208039 4.572301
-[325,] 4.137453  5.849396 4.214754 4.574504
-[326,] 4.138816  5.849396 4.220982 4.577194
-[327,] 4.140155  5.849396 4.226709 4.580384
-[328,] 4.141469  5.849396 4.231937 4.584074
-[329,] 4.141552  5.849396 4.232253 4.584325
-[330,] 4.142760  5.849396 4.236678 4.588250
-[331,] 4.144027  5.849396 4.240952 4.592894
-[332,] 4.145271  5.849396 4.244784 4.597979
-[333,] 4.146492  5.849396 4.248201 4.603480
-[334,] 4.147689  5.849396 4.251233 4.609365
-[335,] 4.148865  5.849396 4.253910 4.615606
-[336,] 4.150018  5.849396 4.224468 4.653966
-[337,] 4.151148  5.849396 4.231938 4.655413
-[338,] 4.152257  5.849396 4.239017 4.657252
-[339,] 4.153345  5.849396 4.245672 4.659515
-[340,] 4.154411  5.849396 4.251880 4.662224
-[341,] 4.155457  5.849396 4.257636 4.665386
-[342,] 4.156481  5.849396 4.262941 4.668999
-[343,] 4.156669  5.849396 4.263876 4.669718
-[344,] 4.157486  5.849396 4.267806 4.673051
-[345,] 4.158470  5.849396 4.272249 4.677525
-[346,] 4.159434  5.849396 4.276292 4.682400
-[347,] 4.160379  5.849396 4.279956 4.687653
-[348,] 4.161304  5.849396 4.283267 4.693260
-[349,] 4.162210  5.849396 4.286249 4.699196
-[350,] 4.163098  5.849396 4.288926 4.705436
-[351,] 4.163967  5.849396 4.291322 4.711958
-[352,] 4.164818  5.849396 4.229653 4.782544
-[353,] 4.165651  5.849396 4.238073 4.783042
-[354,] 4.166466  5.849396 4.246300 4.783733
-[355,] 4.167264  5.849396 4.254288 4.784662
-[356,] 4.168045  5.849396 4.261993 4.785875
-[357,] 4.168810  5.849396 4.269374 4.787412
-[358,] 4.169557  5.849396 4.276398 4.789305
-[359,] 4.170289  5.849396 4.283041 4.791579
-[360,] 4.171004  5.849396 4.289291 4.794248
-[361,] 4.171704  5.849396 4.295141 4.797314
-[362,] 4.172284  5.849396 4.299782 4.800218
-[363,] 4.172388  5.849396 4.300597 4.800776
-[364,] 4.172740  5.849396 4.303295 4.802740
-[365,] 4.173057  5.849396 4.305668 4.804623
-[366,] 4.173712  5.849396 4.310367 4.808842
-[367,] 4.174351  5.849396 4.314713 4.813414
-[368,] 4.174977  5.849396 4.318723 4.818321
-[369,] 4.175588  5.849396 4.322417 4.823545
-[370,] 4.176185  5.849396 4.325814 4.829065
-[371,] 4.176769  5.849396 4.328935 4.834862
-[372,] 4.177339  5.849396 4.331796 4.840918
-[373,] 4.177896  5.849396 4.334417 4.847215
-[374,] 4.178440  5.849396 4.336814 4.853735
-[375,] 4.178972  5.849396 4.339003 4.860464
-[376,] 4.179491  5.849396 4.341000 4.867385
-[377,] 4.179998  5.849396 4.342818 4.874484
-[378,] 4.180494  5.849396 4.344472 4.881748
-[379,] 4.180977  5.849396 4.345974 4.889163
-[380,] 4.181449  5.849396 4.179869 5.064186
-[381,] 4.181910  5.849396 4.188782 5.064191
-[382,] 4.182360  5.849396 4.197690 5.064200
-[383,] 4.182799  5.849396 4.206593 5.064215
-[384,] 4.183228  5.849396 4.215485 5.064240
-[385,] 4.183646  5.849396 4.224361 5.064281
-[386,] 4.184055  5.849396 4.233215 5.064346
-[387,] 4.184453  5.849396 4.242033 5.064445
-[388,] 4.184841  5.849396 4.250803 5.064593
-[389,] 4.185220  5.849396 4.259505 5.064808
-[390,] 4.185590  5.849396 4.268116 5.065115
-[391,] 4.185951  5.849396 4.276608 5.065540
-[392,] 4.186303  5.849396 4.284950 5.066115
-[393,] 4.186646  5.849396 4.293109 5.066874
-[394,] 4.186980  5.849396 4.301051 5.067850
-[395,] 4.187307  5.849396 4.308743 5.069076
-[396,] 4.187385  5.849396 4.310583 5.069417
-[397,] 4.187625  5.849396 4.316156 5.070580
-[398,] 4.187935  5.849396 4.323269 5.072385
-[399,] 4.188237  5.849396 4.330064 5.074507
-[400,] 4.188532  5.849396 4.336532 5.076957
-[401,] 4.188819  5.849396 4.342669 5.079737
-[402,] 4.189099  5.849396 4.348478 5.082846
-[403,] 4.189372  5.849396 4.353965 5.086277
-[404,] 4.189638  5.849396 4.359141 5.090019
-[405,] 4.189897  5.849396 4.364016 5.094061
-[406,] 4.189929  5.849396 4.364615 5.094595
-[407,] 4.190149  5.849396 4.368606 5.098388
-[408,] 4.190395  5.849396 4.372925 5.102987
-[409,] 4.190635  5.849396 4.376988 5.107842
-[410,] 4.190868  5.849396 4.380808 5.112939
-[411,] 4.191095  5.849396 4.384401 5.118264
-[412,] 4.191317  5.849396 4.387779 5.123804
-[413,] 4.191532  5.849396 4.390956 5.129545
-[414,] 4.191742  5.849396 4.393943 5.135475
-[415,] 4.191947  5.849396 4.396753 5.141583
-[416,] 4.192146  5.849396 4.399395 5.147858
-[417,] 4.192340  5.849396 4.401881 5.154290
-[418,] 4.192529  5.849396 4.404218 5.160870
-[419,] 4.192712  5.849396 4.406417 5.167589
-[420,] 4.192891  5.849396 4.408485 5.174438
-[421,] 4.193065  5.849396 4.410430 5.181411
-[422,] 4.193235  5.849396 4.412259 5.188499
-[423,] 4.193400  5.849396 4.413979 5.195697
-[424,] 4.193560  5.849396 4.415596 5.202997
-[425,] 4.193717  5.849396 4.417116 5.210395
-[426,] 4.193869  5.849396 4.418545 5.217884
-[427,] 4.194017  5.849396 4.419888 5.225458
-[428,] 4.194161  5.849396 4.421150 5.233114
-[429,] 4.194301  5.849396 4.422335 5.240847
-[430,] 4.194437  5.849396 4.423448 5.248651
-[431,] 4.194569  5.849396 4.424493 5.256524
-[432,] 4.194698  5.849396 4.425474 5.264460
-[433,] 4.194824  5.849396 4.426395 5.272457
-[434,] 4.194946  5.849396 4.427259 5.280511
-[435,] 4.195064  5.849396 4.428069 5.288618
-[436,] 4.195180  5.849396 4.428829 5.296776
-[437,] 4.195292  5.849396 4.429542 5.304981
-[438,] 4.195401  5.849396 4.430209 5.313231
-[439,] 4.195507  5.849396 4.430835 5.321523
-[440,] 4.195610  5.849396 4.431421 5.329855
-[441,] 4.195710  5.849396 4.431969 5.338224
-[442,] 4.195808  5.849396 4.432483 5.346628
-[443,] 4.195903  5.849396 4.432963 5.355065
-[444,] 4.195995  5.849396 4.433413 5.363533
-[445,] 4.196084  5.849396 4.433833 5.372030
-[446,] 4.196171  5.849396 4.434226 5.380555
-[447,] 4.196256  5.849396 4.434593 5.389105
-[448,] 4.196338  5.849396 4.434937 5.397679
-[449,] 4.196418  5.849396 4.435257 5.406276
-[450,] 4.196495  5.849396 4.435557 5.414894
-[451,] 4.196571  5.849396 4.435836 5.423533
-[452,] 4.196644  5.849396 4.436097 5.432189
-[453,] 4.196715  5.849396 4.436340 5.440864
-[454,] 4.196784  5.849396 4.436567 5.449554
-[455,] 4.196852  5.849396 4.436779 5.458260
-[456,] 4.196917  5.849396 4.436976 5.466981
-[457,] 4.196980  5.849396 4.437159 5.475715
-[458,] 4.197042  5.849396 4.437330 5.484461
-[459,] 4.197102  5.849396 4.437490 5.493220
-[460,] 4.197160  5.849396 4.437638 5.501989
-[461,] 4.197216  5.849396 4.437776 5.510769
-[462,] 4.197271  5.849396 4.437904 5.519558
-[463,] 4.197324  5.849396 4.438024 5.528356
-[464,] 4.197376  5.849396 4.438135 5.537163
-[465,] 4.197426  5.849396 4.438238 5.545977
-[466,] 4.197475  5.849396 4.438334 5.554799
-[467,] 4.197522  5.849396 4.438423 5.563627
-[468,] 4.197568  5.849396 4.438505 5.572462
-[469,] 4.197612  5.849396 4.438582 5.581303
-[470,] 4.197655  5.849396 4.438653 5.590150
-[471,] 4.197697  5.849396 4.438719 5.599001
-[472,] 4.197738  5.849396 4.438780 5.607858
-[473,] 4.197778  5.849396 4.438837 5.616718
-[474,] 4.197816  5.849396 4.438890 5.625583
-[475,] 4.197853  5.849396 4.438939 5.634452
-[476,] 4.197889  5.849396 4.438984 5.643325
-[477,] 4.197924  5.849396 4.439025 5.652201
-[478,] 4.197958  5.849396 4.439064 5.661079
-[479,] 4.197991  5.849396 4.439100 5.669961
-[480,] 4.198023  5.849396 4.439133 5.678846
-[481,] 4.198054  5.849396 4.439163 5.687733
-[482,] 4.198084  5.849396 4.439192 5.696622
-[483,] 4.198114  5.849396 4.439218 5.705514
-[484,] 4.198142  5.849396 4.439242 5.714407
-[485,] 4.198169  5.849396 4.439264 5.723302
-[486,] 4.198196  5.849396 4.439285 5.732199
-[487,] 4.198222  5.849396 4.439304 5.741098
-[488,] 4.198247  5.849396 4.439321 5.749998
-[489,] 4.198271  5.849396 4.439337 5.758900
-[490,] 4.198295  5.849396 4.439352 5.767802
-[491,] 4.198318  5.849396 4.439366 5.776706
-[492,] 4.198340  5.849396 4.439379 5.785611
-[493,] 4.198361  5.849396 4.439390 5.794517
-[494,] 4.198382  5.849396 4.439401 5.803424
-[495,] 4.198402  5.849396 4.439411 5.812332
-[496,] 4.198422  5.849396 4.439420 5.821240
-[497,] 4.198441  5.849396 4.439428 5.830150
-[498,] 4.198459  5.849396 4.439436 5.839060
-[499,] 4.198477  5.849396 4.439443 5.847970
-[500,] 4.198494  5.849396 4.439449 5.856881
-[501,] 4.198511  5.849396 4.439455 5.865793
-[502,] 4.198527  5.849396 4.439460 5.874705
-[503,] 4.198543  5.849396 4.439465 5.883618
-[504,] 4.198558  5.849396 4.439470 5.892531
-[505,] 4.198573  5.849396 4.439474 5.901444
-[506,] 4.198587  5.849396 4.439478 5.910358
-[507,] 4.198601  5.849396 4.439481 5.919272
-
-$err
- sim   pw 
-TRUE TRUE 
-
-$threshold
-[1] 10
-
-$nexc
-[1] 2003
-
-$conv
-[1] 0
-
-$nllh
-[1] 6123.465
-
-$mle
-[1] 7.43768624 0.05045225
-
-$rate
-[1] 0.1142547
-
-$se
-[1] 0.23606472 0.02256649
-
+Error: package or namespace load failed for 'rrcov' in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
+ there is no package called 'cluster'
+Failed with error:  'package 'rrcov' could not be loaded'
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("returnlevelplot", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 
-detaching ‘package:ismev’, ‘package:mgcv’, ‘package:nlme’,
-  ‘package:RobExtremes’, ‘package:actuar’, ‘package:evd’,
-  ‘package:ROptEst’, ‘package:RobAStBase’, ‘package:rrcov’,
-  ‘package:robustbase’
+detaching 'package:robustbase'
 
 > nameEx("symmetricBias-class")
 > ### * symmetricBias-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: symmetricBias-class
 > ### Title: symmetric Bias Type
 > ### Aliases: symmetricBias-class
@@ -4513,12 +4054,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("symmetricBias-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("symmetricBias")
 > ### * symmetricBias
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: symmetricBias
 > ### Title: Generating function for symmetricBias-class
 > ### Aliases: symmetricBias
@@ -4541,12 +4085,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("symmetricBias", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("trAsCov-class")
 > ### * trAsCov-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: trAsCov-class
 > ### Title: Trace of asymptotic covariance
 > ### Aliases: trAsCov-class
@@ -4555,17 +4102,20 @@ function ()
 > ### ** Examples
 > 
 > new("trAsCov")
-An object of class “trAsCov” 
+An object of class "trAsCov" 
 risk type:	 trace of asymptotic covariance 
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("trAsCov-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("trAsCov")
 > ### * trAsCov
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: trAsCov
 > ### Title: Generating function for trAsCov-class
 > ### Aliases: trAsCov
@@ -4574,7 +4124,7 @@ risk type:	 trace of asymptotic covariance
 > ### ** Examples
 > 
 > trAsCov()
-An object of class “trAsCov” 
+An object of class "trAsCov" 
 risk type:	 trace of asymptotic covariance 
 > 
 > ## The function is currently defined as
@@ -4586,12 +4136,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("trAsCov", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("trFiCov-class")
 > ### * trFiCov-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: trFiCov-class
 > ### Title: Trace of finite-sample covariance
 > ### Aliases: trFiCov-class
@@ -4600,17 +4153,20 @@ function ()
 > ### ** Examples
 > 
 > new("trFiCov")
-An object of class “trFiCov” 
+An object of class "trFiCov" 
 risk type:	 trace of finite-sample covariance 
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("trFiCov-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("trFiCov")
 > ### * trFiCov
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: trFiCov
 > ### Title: Generating function for trFiCov-class
 > ### Aliases: trFiCov
@@ -4619,7 +4175,7 @@ risk type:	 trace of finite-sample covariance
 > ### ** Examples
 > 
 > trFiCov()
-An object of class “trFiCov” 
+An object of class "trFiCov" 
 risk type:	 trace of finite-sample covariance 
 > 
 > ## The function is currently defined as
@@ -4631,12 +4187,15 @@ function ()
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("trFiCov", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("trafo-methods")
 > ### * trafo-methods
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: trafo-methods
 > ### Title: Methods for function trafo in Package 'distrMod'
 > ### Aliases: trafo-methods trafo trafo,Estimate,missing-method
@@ -4686,12 +4245,15 @@ sig^2  3.6698685 11.189719
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("trafo-methods", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("trafoEst")
 > ### * trafoEst
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: trafoEst
 > ### Title: Function trafoEst in Package 'distrMod'
 > ### Aliases: trafoEst
@@ -4730,12 +4292,15 @@ sig^2  3.6698685 11.189719
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("trafoEst", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("validParameter-methods")
 > ### * validParameter-methods
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: validParameter-methods
 > ### Title: Methods for function validParameter in Package 'distrMod'
 > ### Aliases: validParameter-methods validParameter
@@ -4761,11 +4326,14 @@ sig^2  3.6698685 11.189719
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("validParameter-methods", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > ### * <FOOTER>
 > ###
+> cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  19.455 0.108 19.554 0 0.004 
+Time elapsed:  38.54 0.81 41.47 NA NA 
 > grDevices::dev.off()
 null device 
           1 
