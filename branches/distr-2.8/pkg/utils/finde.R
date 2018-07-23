@@ -33,7 +33,7 @@ finde(x=".makeQNew", dir ="C:/rtest/distr/pkg/distr/R")
 finde(x="http://distr\\.r-forge\\.r-project\\.org/distr\\.pdf", dir ="C:/rtest/distr/", rec=TRUE)
 finde(x="cniper.+\\(", dir ="C:/rtest/robast/branches/robast-0.9/pkg", rec=TRUE)
 
-ersetze <- function(x0 = "nchar", x1="nchar", dir="C:/rtest/distr/pkg/distr/R", ext = "R", rec = FALSE){
+ersetze <- function(x0 = "nchar", x1="nchar", dir="C:/rtest/distr/pkg/distr/R", ext = "R", rec = FALSE, withEmpty=FALSE){
   ow <- getwd()
   on.exit(setwd(ow))
   infind <- function(dir0){
@@ -51,7 +51,8 @@ ersetze <- function(x0 = "nchar", x1="nchar", dir="C:/rtest/distr/pkg/distr/R", 
        invisible()
     }
   ext0 <- if(ext=="") "" else paste("\\.", ext, sep="")
-  DIR <- grep(ext0, dir(, rec = rec), value=TRUE)
+  DIR <- dir(, rec = rec)
+  if(!withEmpty) DIR <- grep(ext0, DIR, value=TRUE)
   s <- lapply(DIR,findL)
   }
 infind(dir)

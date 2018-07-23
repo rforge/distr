@@ -14,7 +14,7 @@ updatePackageHelp <- function(package){
      df0 <- gsub(liS, reS,dfile)
      return(df0)}
   PFc    <-  PF
-  s <- sapply(c("Package","Version","Date","Depends","License","SVNRevision"),
+  s <- sapply(c("Package","Version","Date","Depends","License","VCS/SVNRevision"),
               function(x){ PFca <- replaceField(field=x,dfile=PFc)
                            PFc <<- PFca
                            return(NA)})
@@ -32,7 +32,7 @@ updatePackageHelp <- function(package){
              ,values ### values of the DESCRIPTION tags to be updated
                      ## (a matrix, columns = pkgs and row = tags see examples)
              ,pkgs = NULL ## pkgs to be updated; if NULL all pkgs in startfolder
-             ,withSVNread = TRUE  ### should SVNRevision be updated
+             ,withSVNread = TRUE  ### should VCS/SVNRevision be updated
              ,withPackageHelpUpdate = TRUE ### should file <pkg>-package.Rd in man
                                  ## be updated
              ,pathRepo = NULL  ### path to svn repo; if NULL deduced from startDir
@@ -57,14 +57,14 @@ updatePackageHelp <- function(package){
                            PathToBash, PathToreadsvnlog.sh)
         print(svnrev)
 
-        if("SVNRevision" %in% names){
-           values[which(names=="SVNRevision"),] <- c(svnrev[[1]])
+        if("VCS/SVNRevision" %in% names){
+           values[which(names=="VCS/SVNRevision"),] <- c(svnrev[[1]])
         }else{
            nr <- nrow(values)
-           names <- c(names,"SVNRevision")
+           names <- c(names,"VCS/SVNRevision")
            vlsvn <- rep(c(svnrev[[1]]),ncol(values))
            values <- base::rbind(values,vlsvn)
-           rownames(values)[nr+1] <- "SVNRevision"
+           rownames(values)[nr+1] <- "VCS/SVNRevision"
         }
     }
     if(withDate){

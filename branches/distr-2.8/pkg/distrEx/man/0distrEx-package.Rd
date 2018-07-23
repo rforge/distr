@@ -35,7 +35,7 @@ Suggests:  \tab tcltk \cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-SVNRevision: \tab 1171 \cr
+VCS/SVNRevision: \tab 1171 \cr
 }
 }
 \section{Classes}{
