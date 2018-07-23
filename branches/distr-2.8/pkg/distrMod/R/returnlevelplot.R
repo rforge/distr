@@ -125,7 +125,9 @@ setMethod("returnlevelplot", signature(x = "ANY",
     if(is.null(mcl$datax)) datax <- FALSE
     force(x)
 
-    thresh0 <- threshold 
+#    if(!is.function(order.traf)) order.traf <- mcl$order.traf
+
+    thresh0 <- threshold
     if(is(y,"GPareto")){ 
        if(is.na(threshold)) thresh0 <- location(y)
        y <- y - thresh0
@@ -241,8 +243,10 @@ setMethod("returnlevelplot", signature(x = "ANY",
     }
 
     if(withLab&& plot.it){
-       lbprep <- .labelprep(xj,yc.o,lab.pts,
-                            col.lbl,cex.lbl,which.lbs,which.Order,order.traf)
+       lbprep <- .labelprep(x=xj,y=yc.o,lab.pts=lab.pts,
+                            col.lbl=col.lbl,cex.lbl=cex.lbl,
+                            adj.lbl=adj.lbl, which.lbs=which.lbs,
+                            which.Order=which.Order,order.traf=order.traf)
        lbprep$y0 <- p2rl(lbprep$y0)
        xlb0 <- if(datax) lbprep$x0 else lbprep$y0
        ylb0 <- if(datax) lbprep$y0 else lbprep$x0
@@ -334,7 +338,6 @@ setMethod("returnlevelplot", signature(x = "ANY",
     if(missing(xlab)) mc$xlab <- paste(gettext("Return Level of"), as.character(deparse(mc$x)))
     if(missing(ylab)) mc$ylab <- paste(gettext("Return Period at"), as.character(deparse(mc$y)))
     mcl <- as.list(mc)[-1]
-
     mcl$y <- yD <- y@distribution
     if(!is(yD,"UnivariateDistribution"))
        stop("Not yet implemented.")
