@@ -1,7 +1,7 @@
 
-R Under development (unstable) (2015-05-02 r68310) -- "Unsuffered Consequences"
-Copyright (C) 2015 The R Foundation for Statistical Computing
-Platform: x86_64-unknown-linux-gnu (64-bit)
+R version 3.5.1 RC (2018-06-24 r74935) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: i386-w64-mingw32/i386 (32-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -20,52 +20,30 @@ Type 'q()' to quit R.
 > pkgname <- "distrRmetrics"
 > source(file.path(R.home("share"), "R", "examples-header.R"))
 > options(warn = 1)
+> options(pager = "console")
+> base::assign(".ExTimings", "distrRmetrics-Ex.timings", pos = 'CheckExEnv')
+> base::cat("name\tuser\tsystem\telapsed\n", file=base::get(".ExTimings", pos = 'CheckExEnv'))
+> base::assign(".format_ptime",
++ function(x) {
++   if(!is.na(x[4L])) x[1L] <- x[1L] + x[4L]
++   if(!is.na(x[5L])) x[2L] <- x[2L] + x[5L]
++   options(OutDec = '.')
++   format(x[1L:3L], digits = 7L)
++ },
++ pos = 'CheckExEnv')
+> 
+> ### * </HEADER>
 > library('distrRmetrics')
 Loading required package: distr
 Loading required package: startupmsg
-:startupmsg>  Utilities for Start-Up Messages (version 0.9.1)
+:startupmsg>  Utilities for Start-Up Messages (version 0.9.5)
 :startupmsg> 
 :startupmsg>  For more information see ?"startupmsg",
 :startupmsg>  NEWS("startupmsg")
 
 Loading required package: sfsmisc
-Loading required package: SweaveListingUtils
-:SweaveListingUtils>  Utilities for Sweave Together with
-:SweaveListingUtils>  TeX 'listings' Package (version
-:SweaveListingUtils>  0.7)
-:SweaveListingUtils> 
-:SweaveListingUtils>  NOTE: Support for this package
-:SweaveListingUtils>  will stop soon.
-:SweaveListingUtils> 
-:SweaveListingUtils>  Package 'knitr' is providing the
-:SweaveListingUtils>  same functionality in a better
-:SweaveListingUtils>  way.
-:SweaveListingUtils> 
-:SweaveListingUtils>  Some functions from package 'base'
-:SweaveListingUtils>  are intentionally masked ---see
-:SweaveListingUtils>  SweaveListingMASK().
-:SweaveListingUtils> 
-:SweaveListingUtils>  Note that global options are
-:SweaveListingUtils>  controlled by
-:SweaveListingUtils>  SweaveListingoptions() ---c.f.
-:SweaveListingUtils>  ?"SweaveListingoptions".
-:SweaveListingUtils> 
-:SweaveListingUtils>  For more information see
-:SweaveListingUtils>  ?"SweaveListingUtils",
-:SweaveListingUtils>  NEWS("SweaveListingUtils")
-:SweaveListingUtils>  There is a vignette to this
-:SweaveListingUtils>  package; try
-:SweaveListingUtils>  vignette("ExampleSweaveListingUtils").
-
-
-Attaching package: ‘SweaveListingUtils’
-
-The following objects are masked from ‘package:base’:
-
-    library, require
-
 :distr>  Object Oriented Implementation of Distributions (version
-:distr>  2.6)
+:distr>  2.8.0)
 :distr> 
 :distr>  Attention: Arithmetics on distribution objects are
 :distr>  understood as operations on corresponding random variables
@@ -84,26 +62,18 @@ The following objects are masked from ‘package:base’:
 :distr>  vignette("distr").
 
 
-Attaching package: ‘distr’
+Attaching package: 'distr'
 
-The following objects are masked from ‘package:stats’:
+The following objects are masked from 'package:stats':
 
     df, qqplot, sd
 
 Loading required package: fBasics
 Loading required package: timeDate
 Loading required package: timeSeries
-
-
-Rmetrics Package fBasics
-Analysing Markets and calculating Basic Statistics
-Copyright (C) 2005-2014 Rmetrics Association Zurich
-Educational Software for Financial Engineering and Computational Science
-Rmetrics is free software and comes with ABSOLUTELY NO WARRANTY.
-https://www.rmetrics.org --- Mail to: info@rmetrics.org
 Loading required package: fGarch
 :distrRmetrics>  Distribution Classes for Distributions from
-:distrRmetrics>  Rmetrics (version 2.6)
+:distrRmetrics>  Rmetrics (version 2.7.0)
 :distrRmetrics> 
 :distrRmetrics> 
 :distrRmetrics>  For more information see ?"distrRmetrics",
@@ -115,12 +85,14 @@ Loading required package: fGarch
 
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
 > cleanEx()
 > nameEx("SNorm-class")
 > ### * SNorm-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: SNorm-class
 > ### Title: SNorm distribution
 > ### Aliases: SNorm-class mean,SNorm-method mean<-,SNorm-method
@@ -144,6 +116,7 @@ Distribution Object of Class: SNorm
 [1] 0.8374454
 > q(SN)(.1) # Probability that x < -1.137878 is 0.1.
 [1] -1.137878
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > xi(SN) # shape of this distribution is 2.
 [1] 2
 > xi(SN) <- 2.5 # shape of this distribution is now 2.5.
@@ -151,12 +124,15 @@ Distribution Object of Class: SNorm
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("SNorm-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("SNorm")
 > ### * SNorm
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: SNorm
 > ### Title: Generating function for skewed normal class
 > ### Aliases: SNorm
@@ -173,12 +149,15 @@ Distribution Object of Class: SNorm
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("SNorm", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("SNormParameter-class")
 > ### * SNormParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: SNormParameter-class
 > ### Title: Parameter of an SNorm distributions
 > ### Aliases: SNormParameter-class mean,SNormParameter-method
@@ -211,12 +190,15 @@ Slot "name":
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("SNormParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("SSTd-class")
 > ### * SSTd-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: SSTd-class
 > ### Title: SSTd distribution
 > ### Aliases: SSTd-class mean,SSTd-method mean<-,SSTd-method nu nu-methods
@@ -242,6 +224,7 @@ Distribution Object of Class: SSTd
 [1] 0.9035449
 > q(ST)(.1) # Probability that x < -0.4432824 is 0.1.
 [1] -0.7689127
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > nu(ST) # df of this distribution is 3.
 [1] 3
 > nu(ST) <- 4 # df of this distribution is now 4.
@@ -249,12 +232,15 @@ Distribution Object of Class: SSTd
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("SSTd-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("SSTd")
 > ### * SSTd
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: SSTd
 > ### Title: Generating function for SSTd-class
 > ### Aliases: SSTd
@@ -272,12 +258,15 @@ Distribution Object of Class: SSTd
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("SSTd", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("SSTdParameter-class")
 > ### * SSTdParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: SSTdParameter-class
 > ### Title: Parameter of an SSTd distributions
 > ### Aliases: SSTdParameter-class mean,SSTdParameter-method
@@ -316,12 +305,15 @@ Slot "name":
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("SSTdParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("STd")
 > ### * STd
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: STd
 > ### Title: Generating function for standardized T distribution class
 > ### Aliases: STd
@@ -331,18 +323,21 @@ Slot "name":
 > 
 > (ST <- STd(mean = 1, sd = 1, nu = 3))
 Distribution Object of Class: AffLinAbscontDistribution
-Warning in function (object)  :
+Warning in new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > plot(ST)
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("STd", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > ### * <FOOTER>
 > ###
+> cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  1.495 0.02 1.515 0 0 
+Time elapsed:  2.39 0.2 2.61 NA NA 
 > grDevices::dev.off()
 null device 
           1 

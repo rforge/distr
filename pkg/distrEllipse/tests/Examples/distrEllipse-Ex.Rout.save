@@ -1,6 +1,6 @@
 
-R Under development (unstable) (2016-04-22 r70532) -- "Unsuffered Consequences"
-Copyright (C) 2016 The R Foundation for Statistical Computing
+R version 3.5.1 RC (2018-06-24 r74935) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
 Platform: i386-w64-mingw32/i386 (32-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -21,54 +21,31 @@ Type 'q()' to quit R.
 > source(file.path(R.home("share"), "R", "examples-header.R"))
 > options(warn = 1)
 > options(pager = "console")
+> base::assign(".ExTimings", "distrEllipse-Ex.timings", pos = 'CheckExEnv')
+> base::cat("name\tuser\tsystem\telapsed\n", file=base::get(".ExTimings", pos = 'CheckExEnv'))
+> base::assign(".format_ptime",
++ function(x) {
++   if(!is.na(x[4L])) x[1L] <- x[1L] + x[4L]
++   if(!is.na(x[5L])) x[2L] <- x[2L] + x[5L]
++   options(OutDec = '.')
++   format(x[1L:3L], digits = 7L)
++ },
++ pos = 'CheckExEnv')
+> 
+> ### * </HEADER>
 > library('distrEllipse')
 Loading required package: mvtnorm
 Loading required package: setRNG
 Loading required package: distr
 Loading required package: startupmsg
-:startupmsg>  Utilities for Start-Up Messages (version 0.9.3)
+:startupmsg>  Utilities for Start-Up Messages (version 0.9.5)
 :startupmsg> 
 :startupmsg>  For more information see ?"startupmsg",
 :startupmsg>  NEWS("startupmsg")
 
 Loading required package: sfsmisc
-Loading required package: SweaveListingUtils
-:SweaveListingUtils>  Utilities for Sweave Together with
-:SweaveListingUtils>  TeX 'listings' Package (version
-:SweaveListingUtils>  0.7.3)
-:SweaveListingUtils> 
-:SweaveListingUtils>  NOTE: Support for this package
-:SweaveListingUtils>  will stop soon.
-:SweaveListingUtils> 
-:SweaveListingUtils>  Package 'knitr' is providing the
-:SweaveListingUtils>  same functionality in a better
-:SweaveListingUtils>  way.
-:SweaveListingUtils> 
-:SweaveListingUtils>  Some functions from package 'base'
-:SweaveListingUtils>  are intentionally masked ---see
-:SweaveListingUtils>  SweaveListingMASK().
-:SweaveListingUtils> 
-:SweaveListingUtils>  Note that global options are
-:SweaveListingUtils>  controlled by
-:SweaveListingUtils>  SweaveListingoptions() ---c.f.
-:SweaveListingUtils>  ?"SweaveListingoptions".
-:SweaveListingUtils> 
-:SweaveListingUtils>  For more information see
-:SweaveListingUtils>  ?"SweaveListingUtils",
-:SweaveListingUtils>  NEWS("SweaveListingUtils")
-:SweaveListingUtils>  There is a vignette to this
-:SweaveListingUtils>  package; try
-:SweaveListingUtils>  vignette("ExampleSweaveListingUtils").
-
-
-Attaching package: 'SweaveListingUtils'
-
-The following objects are masked from 'package:base':
-
-    library, require
-
 :distr>  Object Oriented Implementation of Distributions (version
-:distr>  2.6)
+:distr>  2.8.0)
 :distr> 
 :distr>  Attention: Arithmetics on distribution objects are
 :distr>  understood as operations on corresponding random variables
@@ -94,7 +71,7 @@ The following objects are masked from 'package:stats':
     df, qqplot, sd
 
 Loading required package: distrEx
-:distrEx>  Extensions of Package 'distr' (version 2.6)
+:distrEx>  Extensions of Package 'distr' (version 2.7.0)
 :distrEx> 
 :distrEx>  Note: Packages "e1071", "moments", "fBasics" should be
 :distrEx>  attached /before/ package "distrEx". See
@@ -119,7 +96,7 @@ The following objects are masked from 'package:stats':
 
 Loading required package: distrSim
 :distrSim>  Simulation Classes Based on Package 'distr' (version
-:distrSim>  2.6)
+:distrSim>  2.7.0)
 :distrSim> 
 :distrSim>  Some functions from package 'stats' are intentionally
 :distrSim>  masked ---see distrSimMASK().
@@ -144,7 +121,7 @@ The following object is masked from 'package:base':
     rbind
 
 :distrEllipse>  S4 Classes for Elliptically Contoured
-:distrEllipse>  Distributions (version 2.6.1)
+:distrEllipse>  Distributions (version 2.7.0)
 :distrEllipse> 
 :distrEllipse>  Some functions from package 'stats' are
 :distrEllipse>  intentionally masked ---see
@@ -160,12 +137,14 @@ The following object is masked from 'package:base':
 
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
 > cleanEx()
 > nameEx("EllipticalDistribution-class")
 > ### * EllipticalDistribution-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: EllipticalDistribution-class
 > ### Title: Elliptical distribution class
 > ### Aliases: EllipticalDistribution-class
@@ -198,12 +177,15 @@ Distribution Object of Class: EllipticalDistribution
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("EllipticalDistribution-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("EllipticalDistribution")
 > ### * EllipticalDistribution
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: EllipticalDistribution
 > ### Title: Generating function for EllipticalDistribution-class
 > ### Aliases: EllipticalDistribution
@@ -224,12 +206,15 @@ Distribution Object of Class: EllipticalDistribution
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("EllipticalDistribution", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("EllipticalParameter-class")
 > ### * EllipticalParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: EllipticalParameter-class
 > ### Title: Paramter of an Elliptical distributions
 > ### Aliases: EllipticalParameter-class location
@@ -257,12 +242,15 @@ Slot "name":
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("EllipticalParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("MVnormDistribution-class")
 > ### * MVnormDistribution-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: MVNormDistribution-class
 > ### Title: MVNorm distribution class
 > ### Aliases: MVNormDistribution-class sigma,MVNormDistribution-method
@@ -284,12 +272,15 @@ Distribution Object of Class: MVNormDistribution
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("MVnormDistribution-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("MVnormDistribution")
 > ### * MVnormDistribution
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: MVNormDistribution
 > ### Title: Generating function for MVNormDistribution-class
 > ### Aliases: MVNormDistribution MVNorm
@@ -310,12 +301,15 @@ Distribution Object of Class: MVNormDistribution
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("MVnormDistribution", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("MVnormParameter-class")
 > ### * MVnormParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: MVNormParameter-class
 > ### Title: Paramter of a multivariate normal distribution
 > ### Aliases: MVNormParameter-class mean mean,MVNormParameter-method sigma
@@ -340,12 +334,15 @@ Slot "name":
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("MVnormParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("MVtDistribution-class")
 > ### * MVtDistribution-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: MVtDistribution-class
 > ### Title: MVt distribution class
 > ### Aliases: MVtDistribution-class sigma,MVtDistribution-method
@@ -369,12 +366,15 @@ Distribution Object of Class: MVtDistribution
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("MVtDistribution-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("MVtDistribution")
 > ### * MVtDistribution
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: MVtDistribution
 > ### Title: Generating function for MvtDistribution-class
 > ### Aliases: MVtDistribution MVt
@@ -402,12 +402,15 @@ Warning in log(x) : NaNs produced
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("MVtDistribution", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("MVtParameter-class")
 > ### * MVtParameter-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: MVtParameter-class
 > ### Title: Paramter of a multivariate t distribution
 > ### Aliases: MVtParameter-class sigma,MVtParameter-method
@@ -438,12 +441,15 @@ Slot "name":
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("MVtParameter-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("MultivarDistrList-class")
 > ### * MultivarDistrList-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: MultivarDistrList-class
 > ### Title: List of multivariate distributions
 > ### Aliases: MultivarDistrList-class MVDistrList-class
@@ -502,12 +508,15 @@ An object of class "MVDistrList"
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("MultivarDistrList-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("MultivarDistrList")
 > ### * MultivarDistrList
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: MultivarDistrList
 > ### Title: Generating function for MultivarDistrList-class
 > ### Aliases: MultivarDistrList
@@ -564,12 +573,15 @@ An object of class "MVDistrList"
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("MultivarDistrList", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("MultivarMixingDistribution-class")
 > ### * MultivarMixingDistribution-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: MultivarMixingDistribution-class
 > ### Title: Class "MultivarMixingDistribution"
 > ### Aliases: MultivarMixingDistribution-class mixCoeff mixDistr mixCoeff<-
@@ -596,18 +608,8 @@ An object of class "MVDistrList"
 > 
 > mylist <- MultivarMixingDistribution(Binom(3,.3), Dirac(2), Norm(), 
 +           mixCoeff=c(1/4,1/5,11/20))
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
 > mylist2 <- MultivarMixingDistribution(Binom(3,.3), mylist, 
 +           mixCoeff=c(.3,.7))
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
 > mylist2
 An object of class "UnivarLebDecDistribution"
  --- a Lebesgue decomposed distribution:
@@ -619,7 +621,7 @@ An object of class "UnivarLebDecDistribution"
     Its absolutely continuous part (with weight 0.385000) is a
  Distribution Object of Class: AbscontDistribution
  This part is accessible with 'acPart(<obj>)'.
-Warning in function (object)  :
+Warning in new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > p(mylist)(0.3)          
@@ -628,7 +630,7 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 An object of class "UnivarDistrList"
  [[1]] Distribution Object of Class: AbscontDistribution
  [[2]] Distribution Object of Class: DiscreteDistribution
-Warning in function (object)  :
+Warning in new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > E(mylist)
@@ -771,12 +773,15 @@ Warning in log(x) : NaNs produced
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("MultivarMixingDistribution-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("MultivarMixingDistribution")
 > ### * MultivarMixingDistribution
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: MultivarMixingDistribution
 > ### Title: Generating function for Class "MultivarMixingDistribution"
 > ### Aliases: MultivarMixingDistribution
@@ -786,21 +791,18 @@ Warning in log(x) : NaNs produced
 > 
 > mylist <- MultivarMixingDistribution(Binom(3,.3), Dirac(2), Norm(), 
 +           mixCoeff=c(1/4,1/5,11/20))
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("MultivarMixingDistribution", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("SphericalDistribution-class")
 > ### * SphericalDistribution-class
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: SphericalDistribution-class
 > ### Title: Spherical distribution class
 > ### Aliases: SphericalDistribution-class scale,SphericalDistribution-method
@@ -811,11 +813,8 @@ Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution
 > ###   radDistr<-,SphericalDistribution-method
 > ###   plotRd,SphericalDistribution-method rRd,SphericalDistribution-method
 > ###   dRd,SphericalDistribution-method pRd,SphericalDistribution-method
-> ###   qRd,SphericalDistribution-method plot.rd,SphericalDistribution-method
-> ###   r.rd,SphericalDistribution-method d.rd,SphericalDistribution-method
-> ###   p.rd,SphericalDistribution-method q.rd,SphericalDistribution-method
-> ###   radDistr radDistr<- plot.rd r.rd d.rd p.rd q.rd plotRd rRd dRd pRd
-> ###   qRd E,SphericalDistribution,missing,missing-method
+> ###   qRd,SphericalDistribution-method radDistr radDistr<- plotRd rRd dRd
+> ###   pRd qRd E,SphericalDistribution,missing,missing-method
 > ###   var,SphericalDistribution-method
 > ###   coerce,SphericalDistribution,EllipticalDistribution-method
 > ###   show,SphericalDistribution-method
@@ -840,12 +839,15 @@ Distribution Object of Class: SphericalDistribution
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("SphericalDistribution-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("SphericalDistribution")
 > ### * SphericalDistribution
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: SphericalDistribution
 > ### Title: Generating function for SphericalDistribution-class
 > ### Aliases: SphericalDistribution
@@ -866,12 +868,15 @@ Distribution Object of Class: SphericalDistribution
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("SphericalDistribution", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("distrEllipseMASK")
 > ### * distrEllipseMASK
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: distrEllipseMASK
 > ### Title: Masking of/by other functions in package "distrEllipse"
 > ### Aliases: distrEllipseMASK MASKING
@@ -891,12 +896,15 @@ Attention:
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("distrEllipseMASK", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("distrEllipseoptions")
 > ### * distrEllipseoptions
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: distrEllipseoptions
 > ### Title: functions to change the global variables of the package
 > ###   'distrEllipse'
@@ -928,12 +936,15 @@ $withED
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("distrEllipseoptions", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("plot-methods")
 > ### * plot-methods
 > 
 > flush(stderr()); flush(stdout())
 > 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: plot-methods
 > ### Title: Methods for Function plot in Package 'distrEllipse'
 > ### Aliases: plot plot-methods plot,SphericalDistribution,missing-method
@@ -951,11 +962,14 @@ $withED
 > 
 > 
 > 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("plot-methods", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > ### * <FOOTER>
 > ###
+> cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  4.68 0.13 4.8 NA NA 
+Time elapsed:  6.74 0.31 7.07 NA NA 
 > grDevices::dev.off()
 null device 
           1 
