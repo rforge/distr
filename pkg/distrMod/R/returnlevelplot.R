@@ -213,8 +213,10 @@ setMethod("returnlevelplot", signature(x = "ANY",
     }
 
     if(withLab&& plot.it){
-       lbprep <- .labelprep(xj,yc.o,lab.pts,
-                            col.lbl,cex.lbl,which.lbs,which.Order,order.traf)
+       lbprep <- .labelprep(x=xj,y=yc.o,lab.pts=lab.pts,
+                            col.lbl=col.lbl,cex.lbl=cex.lbl,
+                            adj.lbl=adj.lbl, which.lbs=which.lbs,
+                            which.Order=which.Order,order.traf=order.traf)
        lbprep$y0 <- p2rl(lbprep$y0)
        xlb0 <- if(datax) lbprep$x0 else lbprep$y0
        ylb0 <- if(datax) lbprep$y0 else lbprep$x0
