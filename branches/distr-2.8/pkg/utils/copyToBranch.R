@@ -25,3 +25,7 @@ copyToBranch(FILE="^pkg/[^/]*/inst/NEWS",fromDir="C:/rtest/distr",
              
 copyToBranch(FILE="^pkg/utils/c.*",fromDir="C:/rtest/distr",
              toDir="C:/rtest/distr/branches/distr-2.1",rec=TRUE)
+
+## should no longer be used:
+##     use svn branch instead for a new branch
+##     use svn merge to integrate a devel branch back into trunk
