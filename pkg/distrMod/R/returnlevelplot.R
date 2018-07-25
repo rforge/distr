@@ -31,6 +31,8 @@ setMethod("returnlevelplot", signature(x = "ANY",
              lab.pts = NULL,      ## observation labels to be used
              which.lbs = NULL,    ## which observations shall be labelled
              which.Order = NULL,  ## which of the ordered (remaining) observations shall be labelled
+             which.nonlbs = NULL, ## which of the non-labelled observations shall be plotted
+             attr.pre = FALSE,    ## do indices refer to order pre or post ordering
              order.traf = NULL,   ## an optional trafo; by which the observations are ordered (as order(trafo(obs))
              col.IdL = "red",     ## color for the identity line
              lty.IdL = 2,         ## line type for the identity line
@@ -50,11 +52,17 @@ setMethod("returnlevelplot", signature(x = "ANY",
              pch.sCI = par("pch"),## symbol for points (for discrete mass points) in simultaneous CI
              cex.sCI = par("cex"),## magnification factor for points (for discrete mass points) in simultaneous CI
              added.points.CI = TRUE, ## should the CIs be drawn through additional points?
-             cex.pch = par("cex"),## magnification factor for the plotted symbols
-             col.pch = par("col"),## color for the plotted symbols
-             cex.lbl = par("cex"),## magnification factor for the plotted observation labels
-             col.lbl = par("col"),## color for the plotted observation labels
-             adj.lbl = par("adj"),## adj parameter for the plotted observation labels
+             cex.pch = par("cex"),## magnification factor for the plotted symbols (for backward compatibility only, cex.pts in the sequel)
+             col.pch = par("col"),## color for the plotted symbols (for backward compatibility only, col.pts in the sequel)
+             cex.pts = 1,         ## magnification factor for labelled shown observations
+             col.pts = par("col"),## color for labelled shown observations
+             pch.pts = 19,        ## symbol for labelled shown observations
+             cex.npts = 1,        ## magnification factor for non-labelled shown observations
+             col.npts = grey(.5), ## color for non-labelled shown observations
+             pch.npts = 20,       ## symbol for non-labelled shown observations
+             cex.lbs = par("cex"),## magnification factor for the plotted observation labels
+             col.lbs = par("col"),## color for the plotted observation labels
+             adj.lbs = par("adj"),## adj parameter for the plotted observation labels
              alpha.trsp = NA,     ## alpha transparency to be added afterwards
              jit.fac = 0,         ## jittering factor used for discrete distributions
              jit.tol = .Machine$double.eps, ## tolerance for jittering: if distance 
@@ -107,9 +115,17 @@ setMethod("returnlevelplot", signature(x = "ANY",
        x <- x + thresh0
     }              
 
+    ord0x <- order(x)
+    rank0x <- rank(x)
+
+
     xj <- sort(x)
+
     if(any(.isReplicated(x, jit.tol))&&jit.fac>0)
        xj[.isReplicated(x, jit.tol)] <- jitter(x[.isReplicated(x, jit.tol)], factor=jit.fac)
+
+    ord1x <- ord0x[order(xj)]
+    rank1x <- rank(xj)[rank0x]
 
     xj <- sort(xj)
     ord.x <- order(xj)
@@ -146,14 +162,57 @@ setMethod("returnlevelplot", signature(x = "ANY",
     if("support" %in% names(getSlots(class(y))))
        ycl <- sort(jitter(ycl, factor=jit.fac))
 
+#-------------------------------------------------------------------------------
     alp.v <- .makeLenAndOrder(alpha.trsp,ord.x)
     alp.t <- function(x,a1) if(is.na(x)) x else addAlphTrsp2col(x,a1)
     alp.f <- if(length(alpha.trsp)==1L && is.na(alpha.trsp))
              function(x,a) x else function(x,a) mapply(x,alp.t,a1=a)
-    cex.pch <- .makeLenAndOrder(cex.pch,ord.x)
-    cex.lbl <- .makeLenAndOrder(cex.lbl,ord.x)
-    col.pch <- alp.f(.makeLenAndOrder(col.pch,ord.x),alp.v)
-    col.lbl <- alp.f(.makeLenAndOrder(col.lbl,ord.x),alp.v)
+    cex.lbs <- .makeLenAndOrder(cex.lbs,ord.x)
+    adj.lbs <- .makeLenAndOrder(adj.lbs,ord.x)
+    col.lbs <- alp.f(.makeLenAndOrder(col.lbs,ord.x),alp.v)
+
+    lbprep <- .labelprep(x = xj, y = yc.o, lab.pts = lab.pts,
+                         col.lbs = col.lbs, cex.lbs = cex.lbs,
+                         adj.lbs = adj.lbs, which.lbs = which.lbs,
+                         which.Order = which.Order, order.traf = order.traf,
+                         which.nonlbs = which.nonlbs)
+
+    n.ns <- length(lbprep$ns)
+    n.s <- length(lbprep$ord)
+
+    shown <- c(lbprep$ord,lbprep$ns)
+
+    if(attr.pre){
+       cex.pch <- .makeLenAndOrder(cex.pch,ord.x)
+       col.pch <- alp.f(.makeLenAndOrder(col.pch,ord.x),alp.v)
+       cex.pts <- if(missing(cex.pts)) cex.pch else .makeLenAndOrder(cex.pts,ord.x)
+       col.pts <- if(missing(col.pts)) col.pch else alp.f(.makeLenAndOrder(col.pts,ord.x),alp.v)
+       pch.pts <- .makeLenAndOrder(pch.pts,ord.x)
+       cex.pts <- cex.pts[shown]
+       col.pts <- col.pts[shown]
+       pch.pts <- pch.pts[shown]
+    }else{
+       cex.pch <- rep(cex.pch,length.out=n.s)
+       col.pch <- alp.f(rep(col.pch,length.out=n.s),alp.v)
+       cex.pts <- if(missing(cex.pts)) cex.pch else rep(cex.pts,length.out=n.s)
+       col.pts <- if(missing(col.pts)) col.pch else alp.f(rep(cex.pts,length.out=n.s),alp.v[lbprep$ord])
+       pch.pts <- rep(pch.pts,length.out=n.s)
+       cex.npts <- rep(cex.pts,length.out=n.ns)
+       col.npts <- alp.f(rep(cex.pts,length.out=n.ns),alp.v[lbprep$ns])
+       pch.npts <- rep(pch.pts,length.out=n.ns)
+       col.pts <- c(col.pts,col.npts)
+       cex.pts <- c(cex.pts,cex.npts)
+       pch.pts <- c(pch.pts,pch.npts)
+    }
+    xs <- x[shown]
+    ycs <- (ycl[rank1x])[shown]
+    ordx <- order(xs)
+    xso <- xs[ordx]
+    ycso <- ycs[ordx]
+    cex.pts <- cex.pts[ordx]
+    col.pts <- col.pts[ordx]
+    pch.pts <- pch.pts[ordx]
+#-------------------------------------------------------------------------------
 
     if(withLab){
       if(is.null(lab.pts)) lab.pts <- paste(ord.x)
@@ -161,7 +220,7 @@ setMethod("returnlevelplot", signature(x = "ANY",
     }
 
     if(check.NotInSupport){
-       xo <- x[ord.x]
+       xo <- xso #x[ord.x]
        nInSupp <- which(xo < q.l(y)(0))
 
        nInSupp <- unique(sort(c(nInSupp,which( xo > q.l(y)(1)))))
@@ -170,13 +229,13 @@ setMethod("returnlevelplot", signature(x = "ANY",
        if("gaps" %in% names(getSlots(class(y))))
           nInSupp <- unique(sort(c(nInSupp,which( .inGaps(xo,gaps(y))))))
        if(length(nInSupp)){
-          col.pch[nInSupp] <- col.NotInSupport
+#          col.pch[nInSupp] <- col.NotInSupport
+          col.pts[nInSupp] <- col.NotInSupport
           if(withLab)
-#             col.lbl[ord.x[nInSupp]] <- col.NotInSupport
-             col.lbl[nInSupp] <- col.NotInSupport
+#             col.lbs[ord.x[nInSupp]] <- col.NotInSupport
+             col.lbs[nInSupp] <- col.NotInSupport
        }
     }
-
 
     if(n!=length(x)) withLab <- FALSE
 
@@ -202,26 +261,23 @@ setMethod("returnlevelplot", signature(x = "ANY",
           mcl$xlab <- xlab
           mcl$ylab <- ylab
           do.call(plot, c(list(x=xallc1, y=yallc1, log="y",type="n"),mcl))
-          do.call(points, c(list(x=xj, y=ycl), mcl))
-    #       ret <- do.call(stats::qqplot, args=mcl0, log="y", ylim = c(0.1,1000))
+          do.call(points, c(list(x=xso, y=ycso), mcl))
+#                         c(list(x=xj, y=ycl), mcl)
        }else{
           mcl$ylab <- xlab
           mcl$xlab <- ylab
-          do.call(plot, c(list(x=yallc1, y=xallc1, log="x",type="n"),mcl))
-          do.call(points, c(list(x=ycl, y=xj),mcl))
+          do.call(plot,  c(list(x=yallc1, y=xallc1, log="x",type="n"),mcl))
+          do.call(points, c(list(x=ycso, y=xso), mcl))
+#                         c(list(x=ycl, y=xj), mcl)
        }
     }
 
     if(withLab&& plot.it){
-       lbprep <- .labelprep(x=xj,y=yc.o,lab.pts=lab.pts,
-                            col.lbl=col.lbl,cex.lbl=cex.lbl,
-                            adj.lbl=adj.lbl, which.lbs=which.lbs,
-                            which.Order=which.Order,order.traf=order.traf)
        lbprep$y0 <- p2rl(lbprep$y0)
        xlb0 <- if(datax) lbprep$x0 else lbprep$y0
        ylb0 <- if(datax) lbprep$y0 else lbprep$x0
        text(x = xlb0, y = ylb0, labels = lbprep$lab,
-            cex = lbprep$cex, col = lbprep$col, adj = adj.lbl)
+            cex = lbprep$cex, col = lbprep$col, adj = adj.lbs)
     }
 
     if(withIdLine){

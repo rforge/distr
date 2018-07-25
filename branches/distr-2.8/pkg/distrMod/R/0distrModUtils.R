@@ -590,8 +590,9 @@ system.time(print(.CvMMDCovariance(Els,par=ParamFamParameter("",0:1), N = 100)))
     mcl$which.Order <- mcl$order.traf  <- NULL
     mcl$col.pch <- mcl$cex.pch  <- mcl$jit.fac <- NULL
     mcl$col.lbl <- mcl$cex.lbl  <- mcl$adj.lbl <- NULL
-    mcl$exp.cex2.pch <- mcl$exp.cex2.lbl <- NULL
-    mcl$exp.fadcol.pch <- mcl$exp.fadcol.lbl <- NULL
+    mcl$col.lbs <- mcl$cex.lbs  <- mcl$adj.lbs <- NULL
+    mcl$exp.cex2.pch <- mcl$exp.cex2.lbl <- mcl$exp.cex2.lbs <- NULL
+    mcl$exp.fadcol.pch <- mcl$exp.fadcol.lbl <- mcl$exp.fadcol.lbs <- NULL
     mcl$nosym.pCI <- mcl$n.CI <- mcl$n.adj <- NULL
     mcl$legend.cex <- mcl$with.legend <- mcl$legend.bg <- NULL
     mcl$legend.pos <- mcl$legend.pref <- mcl$legend.postf <- NULL
@@ -600,7 +601,8 @@ system.time(print(.CvMMDCovariance(Els,par=ParamFamParameter("",0:1), N = 100)))
     mcl$mfColRow <- NULL
     mcl$debug <- NULL
     mcl$added.points.CI <- NULL
-
+    mcl$pch.pts <- mcl$pch.npts <- mcl$cex.pts <- mcl$cex.npts <- NULL
+    mcl$col.pts <- mcl$col.npts <- mcl$which.nonlbs <- mcl$attr.pre <- NULL
 mcl}
 
 ## helpers

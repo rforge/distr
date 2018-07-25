@@ -1,5 +1,5 @@
 import("methods")
-importFrom("grDevices", "col2rgb", "dev.new", "rgb")
+importFrom("grDevices", "col2rgb", "dev.new", "rgb", "grey")
 importFrom("graphics", "abline", "legend", "lines", "mtext", "par",
            "points", "text", "title")
 importFrom("stats", "aggregate", "approxfun", "complete.cases",
