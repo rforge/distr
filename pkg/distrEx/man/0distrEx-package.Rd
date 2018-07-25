@@ -167,8 +167,6 @@ Demos are available --- see \code{demo(package="distrEx")}.}
 \section{Acknowledgement}{
 G. Jay Kerns, \email{gkerns@ysu.edu}, has provided a major contribution,
 in particular the functionals \code{skewness} and \code{kurtosis} are due to him.
-Natalyia Horbenko, \email{natalyia.horbenko@itwm.fraunhofer.de} has ported
-the \pkg{actuar} code for the Pareto distribution to this setup. 
 }
 
 \note{
