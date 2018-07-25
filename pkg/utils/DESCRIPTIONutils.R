@@ -1,3 +1,24 @@
+if(FALSE) {
+   ## use this to source this file / have finde() and ersetze() available
+
+   ## change svncheckout suitably...
+   svncheckout <- file.path("C:/rtest/distr")
+   trunk <- FALSE
+   ## if the version from devel
+   branches <- dir(file.path(svncheckout,"branches"))
+   branches <- grep("distr-",branches,value=TRUE)
+   branches <- branches[!grepl("\\.[[:alpha:]]+",branches)]
+   thisbranch <- max(branches)
+   thisdir <- file.path(svncheckout,"branches", thisbranch)
+   print(thisdir)
+   ## or in trunk
+   if(trunk) thisdir <- ""
+   print(file.path(thisdir,"pkg/utils/DESCRIPTIONutils.R"))
+   source(file.path(thisdir,"pkg/utils/DESCRIPTIONutils.R"))
+   source(file.path(thisdir,"pkg/utils/getRevNr.R"))
+}
+#
+
 ### some utils for unified treatment of DESCRIPTION files from R
 
 updatePackageHelp <- function(package){
@@ -14,7 +35,7 @@ updatePackageHelp <- function(package){
      df0 <- gsub(liS, reS,dfile)
      return(df0)}
   PFc    <-  PF
-  s <- sapply(c("Package","Version","Date","Depends","License","SVNRevision"),
+  s <- sapply(c("Package","Version","Date","Depends","License","VCS/SVNRevision"),
               function(x){ PFca <- replaceField(field=x,dfile=PFc)
                            PFc <<- PFca
                            return(NA)})
@@ -32,7 +53,7 @@ updatePackageHelp <- function(package){
              ,values ### values of the DESCRIPTION tags to be updated
                      ## (a matrix, columns = pkgs and row = tags see examples)
              ,pkgs = NULL ## pkgs to be updated; if NULL all pkgs in startfolder
-             ,withSVNread = TRUE  ### should SVNRevision be updated
+             ,withSVNread = TRUE  ### should VCS/SVNRevision be updated
              ,withPackageHelpUpdate = TRUE ### should file <pkg>-package.Rd in man
                                  ## be updated
              ,pathRepo = NULL  ### path to svn repo; if NULL deduced from startDir
@@ -57,14 +78,14 @@ updatePackageHelp <- function(package){
                            PathToBash, PathToreadsvnlog.sh)
         print(svnrev)
 
-        if("SVNRevision" %in% names){
-           values[which(names=="SVNRevision"),] <- c(svnrev[[1]])
+        if("VCS/SVNRevision" %in% names){
+           values[which(names=="VCS/SVNRevision"),] <- c(svnrev[[1]])
         }else{
            nr <- nrow(values)
-           names <- c(names,"SVNRevision")
+           names <- c(names,"VCS/SVNRevision")
            vlsvn <- rep(c(svnrev[[1]]),ncol(values))
            values <- base::rbind(values,vlsvn)
-           rownames(values)[nr+1] <- "SVNRevision"
+           rownames(values)[nr+1] <- "VCS/SVNRevision"
         }
     }
     if(withDate){
@@ -148,7 +169,7 @@ copyDescription <- function(startDir){
     file.copy(from=FN2, to =FN, over=TRUE)
   })
 }
-copyDescription(startDir = "C:/rtest/distr")
+if(FALSE) copyDescription(startDir = "C:/rtest/distr")
 
 rmDescription2 <- function(startDir){
   oldDir <- getwd()
@@ -165,4 +186,4 @@ rmDescription2 <- function(startDir){
   })
 }
 
-rmDescription2(startDir = "C:/rtest/distr")
+if(FALSE) rmDescription2(startDir = "C:/rtest/distr")

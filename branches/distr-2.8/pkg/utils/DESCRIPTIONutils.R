@@ -1,3 +1,24 @@
+if(FALSE) {
+   ## use this to source this file / have finde() and ersetze() available
+
+   ## change svncheckout suitably...
+   svncheckout <- file.path("C:/rtest/distr")
+   trunk <- FALSE
+   ## if the version from devel
+   branches <- dir(file.path(svncheckout,"branches"))
+   branches <- grep("distr-",branches,value=TRUE)
+   branches <- branches[!grepl("\\.[[:alpha:]]+",branches)]
+   thisbranch <- max(branches)
+   thisdir <- file.path(svncheckout,"branches", thisbranch)
+   print(thisdir)
+   ## or in trunk
+   if(trunk) thisdir <- ""
+   print(file.path(thisdir,"pkg/utils/DESCRIPTIONutils.R"))
+   source(file.path(thisdir,"pkg/utils/DESCRIPTIONutils.R"))
+   source(file.path(thisdir,"pkg/utils/getRevNr.R"))
+}
+#
+
 ### some utils for unified treatment of DESCRIPTION files from R
 
 updatePackageHelp <- function(package){
@@ -148,7 +169,7 @@ copyDescription <- function(startDir){
     file.copy(from=FN2, to =FN, over=TRUE)
   })
 }
-copyDescription(startDir = "C:/rtest/distr")
+if(FALSE) copyDescription(startDir = "C:/rtest/distr")
 
 rmDescription2 <- function(startDir){
   oldDir <- getwd()
@@ -165,4 +186,4 @@ rmDescription2 <- function(startDir){
   })
 }
 
-rmDescription2(startDir = "C:/rtest/distr")
+if(FALSE) rmDescription2(startDir = "C:/rtest/distr")
