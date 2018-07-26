@@ -8,29 +8,42 @@
 ## helper into distrMod
 .labelprep <- function(x,y,lab.pts,col.lbs,cex.lbs,adj.lbs,which.lbs,which.Order,order.traf, which.nonlbs){
       n <- length(x)
-      rx <- rank(x)
-      xys <- cbind(x,y[rx])
-      if(is.null(which.lbs)) which.lbs <- 1:n
-      oN0 <- order(x,decreasing=TRUE)
-      if(!is.null(order.traf)){
-          oN0 <- order(order.traf(x),decreasing=TRUE)
-      }
-      oN0b <- oN0 %in% which.lbs
-      oN0 <- oN0[oN0b]
-      oN <- oN0
-      if(!is.null(which.Order))
-          oN <- oN0[which.Order]
-      x0 <- xys[oN,1]
-      y0 <- xys[oN,2]
+      ind0 <- 1:n
+      # first selection  with which.lbs
+      ind1 <- ind0
+      if(!is.null(which.lbs)) ind1 <- ind0[ind0%in%which.lbs]
+
+      # second selection with which.Order
+      n1 <- length(ind1)
+      x1 <- x[ind1]
+      rk1.0 <- rank(x1)
+      if(!is.null(order.traf)) rk1 <- rank(order.traf(x1))
+      rk1 <- n1+1-rk1.0
+      #
+      ind2 <- ind1
+      if(!is.null(which.Order)) ind2 <- ind1[rk1 %in% which.Order]
+      #
+      n2 <- length(ind2)
+      #
+      x2 <- x[ind2]
+      or2.0 <- order(x2, decreasing = TRUE)
+      #
+      ind.s <- ind2[or2.0]
+      #
+      ind.ns <- ind0[-ind2]
+      if(length(ind.ns) && !is.null(which.nonlbs))
+         ind.ns <- ind.ns[ind.ns%in%which.nonlbs]
+      #
+      #------------------------------------------------------------------------
+      x0 <- x[ind.s]
+      y0 <- x[ind.s]
       
-      col.lbs <- col.lbs[rx]
-      lab.pts <- lab.pts[rx]
-      cex.lbs <- cex.lbs[rx]
-      adj.lbs <- adj.lbs[rx]
-      ind <- 1:n
-      ind.ns <- ind[-oN]
-      if(!is.null(which.nonlbs)) ind.ns <- ind.ns[ind.ns %in% which.nonlbs]
-      return(list(x0=x0,y0=y0,lab=lab.pts[oN],col=col.lbs[oN],cex=cex.lbs[oN],adj=adj.lbs[oN], ord=oN, ns=ind.ns))
+      col.lbs <- col.lbs[ind.s]
+      lab.pts <- lab.pts[ind.s]
+      cex.lbs <- cex.lbs[ind.s]
+      adj.lbs <- adj.lbs[ind.s]
+
+      return(list(x0=x0,y0=y0,lab=lab.pts,col=col.lbs,cex=cex.lbs,adj=adj.lbs,ord=ind.s, ns=ind.ns))
 }
 
 
@@ -56,7 +69,7 @@ setMethod("qqplot", signature(x = "ANY",
              ##               (for working with \command{Sweave}) no extra device is opened and height/width are not set
              mfColRow = TRUE,     ## shall we use panel partition mfrow=c(1,1)?
              n.CI = n,            ## number of points to be used for CI
-             withLab = FALSE,     ## shall observation labels be plotted in
+             with.lab = FALSE,     ## shall observation labels be plotted in
              lab.pts = NULL,      ## observation labels to be used
              which.lbs = NULL,    ## which observations shall be labelled
              which.Order = NULL,  ## which of the ordered (remaining) observations shall be labelled
@@ -126,11 +139,16 @@ setMethod("qqplot", signature(x = "ANY",
                             as.character(date()), 
                             xcc))
                }else function(inx)inx
-    xj <- x
+
+    rank0x <- rank(x)
+    xj <- sort(x)
+
     if(any(.isReplicated(x, jit.tol))&&jit.fac>0)
        xj[.isReplicated(x, jit.tol)] <- jitter(x[.isReplicated(x, jit.tol)], factor=jit.fac)
 
-    ord.x <- order(xj)
+    rank1x <- rank(xj)[rank0x]
+    ind.x <- seq(along=x)
+    xj <- sort(xj)
 
     pp <- ppoints(n)
     yc <- q.l(y)(pp)
@@ -140,59 +158,87 @@ setMethod("qqplot", signature(x = "ANY",
     if("support" %in% names(getSlots(class(y))))
        yc <- sort(jitter(yc, factor=jit.fac))
 
-    alp.v <- .makeLenAndOrder(alpha.trsp,ord.x)
+    alp.v <- .makeLenAndOrder(alpha.trsp,ind.x)
     alp.t <- function(x,a1) if(is.na(x)) x else addAlphTrsp2col(x,a1)
     alp.f <- if(length(alpha.trsp)==1L && is.na(alpha.trsp))
              function(x,a) x else function(x,a) mapply(x,alp.t,a1=a)
-    cex.lbs <- .makeLenAndOrder(cex.lbs,ord.x)
-    adj.lbs <- .makeLenAndOrder(adj.lbs,ord.x)
-    col.lbs <- alp.f(.makeLenAndOrder(col.lbs,ord.x),alp.v)
 
-    lbprep <- .labelprep(x = xj, y = yc.o, lab.pts = lab.pts,
-                         col.lbs = col.lbs, cex.lbs = cex.lbs,
-                         adj.lbs = adj.lbs, which.lbs = which.lbs,
+    if(missing(cex.lbs)) cex0.lbs <- par("cex")
+    cex0.lbs <- .makeLenAndOrder(cex.lbs,ind.x)
+    if(missing(adj.lbs)) adj0.lbs <- par("adj")
+    adj0.lbs <- .makeLenAndOrder(adj.lbs,ind.x)
+    if(missing(col.lbs)) col0.lbs <- par("col")
+    col0.lbs <- alp.f(.makeLenAndOrder(col.lbs,ind.x),alp.v)
+    if(missing(lab.pts)||is.null(lab.pts)) lab0.pts <- ind.x else
+      lab0.pts <- .makeLenAndOrder(lab.pts,ind.x)
+
+    lbprep <- .labelprep(x = x, y = yc.o[rank1x], lab.pts = lab0.pts,
+                         col.lbs = col0.lbs, cex.lbs = cex0.lbs,
+                         adj.lbs = adj0.lbs, which.lbs = which.lbs,
                          which.Order = which.Order, order.traf = order.traf,
                          which.nonlbs = which.nonlbs)
+
     n.ns <- length(lbprep$ns)
     n.s <- length(lbprep$ord)
 
     shown <- c(lbprep$ord,lbprep$ns)
 
+    xs <- xj[shown]
+    ycs <- yc.o[shown]
+
+    ordx <- order(xs)
+    xso <- xs[ordx]
+    ycso <- ycs[ordx]
+
+    if(missing(cex.pch)) cex.pch <- par("cex")
+    if(missing(col.pch)) col.pch <- par("col")
+    if(missing(cex.pts)) cex.pts <- if(missing(cex.pch)) 1 else cex.pch
+    if(missing(col.pts)) col.pts <- if(missing(col.pch)) par("col") else col.pch
+    if(missing(pch.pts)) pch.pts <- 19
+    if(missing(cex.npts)) cex.npts <- 1
+    if(missing(col.npts)) col.npts <- par("col")
+    if(missing(pch.npts)) pch.npts <- 20
+
     if(attr.pre){
-       cex.pch <- .makeLenAndOrder(cex.pch,ord.x)
-       col.pch <- alp.f(.makeLenAndOrder(col.pch,ord.x),alp.v)
-       cex.pts <- if(missing(cex.pts)) cex.pch else .makeLenAndOrder(cex.pts,ord.x)
-       col.pts <- if(missing(col.pts)) col.pch else alp.f(.makeLenAndOrder(col.pts,ord.x),alp.v)
-       pch.pts <- .makeLenAndOrder(pch.pts,ord.x)
+       if(with.lab){
+          lab.pts <- lbprep$lab.pts
+          col.lbs <- lbprep$col.lbs
+          cex.lbs <- lbprep$cex.lbs
+          adj.lbs <- lbprep$adj.lbs
+       }
+       cex.pts <- .makeLenAndOrder(cex.pts,ind.x)
+       col.pts <- alp.f(.makeLenAndOrder(col.pts,ind.x),alp.v)
+       pch.pts <- .makeLenAndOrder(pch.pts,ind.x)
        cex.pts <- cex.pts[shown]
        col.pts <- col.pts[shown]
        pch.pts <- pch.pts[shown]
     }else{
-       cex.pch <- rep(cex.pch,length.out=n.s)
-       col.pch <- alp.f(rep(col.pch,length.out=n.s),alp.v)
-       cex.pts <- if(missing(cex.pts)) cex.pch else rep(cex.pts,length.out=n.s)
-       col.pts <- if(missing(col.pts)) col.pch else alp.f(rep(col.pts,length.out=n.s),alp.v[lbprep$ord])
-       pch.pts <- rep(pch.pts,length.out=n.s)
-       cex.npts <- rep(cex.pts,length.out=n.ns)
-       col.npts <- alp.f(rep(cex.pts,length.out=n.ns),alp.v[lbprep$ns])
-       pch.npts <- rep(pch.pts,length.out=n.ns)
+       ind.s <- 1:n.s
+       ind.ns <- 1:n.ns
+       if(with.lab){
+          if(missing(lab.pts)||is.null(lab.pts)) lab.pts <- ind.ns else
+             lab.pts <- .makeLenAndOrder(lab.pts,ind.ns)
+          if(missing(cex.lbs)) cex.lbs <- par("cex")
+          cex.lbs <- (.makeLenAndOrder(cex.lbs,ind.s))
+          if(missing(adj.lbs)) adj.lbs <- par("adj")
+          adj.lbs <- (.makeLenAndOrder(adj.lbs,ind.s))
+          if(missing(col.lbs)) col.lbs <- par("col")
+          col.lbs <- (alp.f(.makeLenAndOrder(col.lbs,ind.s),alp.v[lbprep$ord]))
+       }
+       cex.pts <- .makeLenAndOrder(cex.pts,ind.s)
+       col.pts <- alp.f(.makeLenAndOrder(col.pts,ind.s),alp.v[lbprep$ord])
+       pch.pts <- .makeLenAndOrder(pch.pts,ind.s)
+       cex.npts <- .makeLenAndOrder(cex.npts,ind.ns)
+       col.npts <- alp.f(.makeLenAndOrder(col.npts,ind.ns),alp.v[lbprep$ns])
+       pch.npts <- .makeLenAndOrder(pch.npts,ind.ns)
        col.pts <- c(col.pts,col.npts)
        cex.pts <- c(cex.pts,cex.npts)
        pch.pts <- c(pch.pts,pch.npts)
     }
-    xs <- x[shown]
-    ycs <- yc.o[shown]
-    ordx <- order(xs)
-    xso <- xs[ordx]
-    ycso <- ycs[ordx]
     cex.pts <- cex.pts[ordx]
     col.pts <- col.pts[ordx]
     pch.pts <- pch.pts[ordx]
 
-    if(withLab){
-      if(is.null(lab.pts)) lab.pts <- paste(ord.x)
-      else lab.pts <- .makeLenAndOrder(lab.pts,ord.x)
-    }
 
     if(check.NotInSupport){
        xo <- xso #x[ord.x]
@@ -206,14 +252,24 @@ setMethod("qqplot", signature(x = "ANY",
        if(length(nInSupp)){
 #          col.pch[nInSupp] <- col.NotInSupport
           col.pts[nInSupp] <- col.NotInSupport
-          if(withLab)
+          if(with.lab)
 #             col.lbs[ord.x[nInSupp]] <- col.NotInSupport
              col.lbs[nInSupp] <- col.NotInSupport
        }
     }
 
+    if(n < length(x)){
+       with.lab <- FALSE
+       nos <- length(shown)
+       idx <- sample(1:nos,size=n,replace=FALSE)
+       cex.pts <- cex.pts[idx]
+       col.pts <- col.pts[idx]
+       pch.pts <- pch.pts[idx]
+       xso <- xso[idx]
+       ycso <- ycso[idx]
+    }
 
-    if(n!=length(x)) withLab <- FALSE
+
 
     if(datax){ 
       mcl$x <- xso#xj
@@ -246,7 +302,7 @@ setMethod("qqplot", signature(x = "ANY",
 
     ret <- do.call(stats::qqplot, args=mcl)
 
-    if(withLab&& plot.it){
+    if(with.lab&& plot.it){
        xlb0 <- if(datax) lbprep$x0 else lbprep$y0
        ylb0 <- if(datax) lbprep$y0 else lbprep$x0
        text(x = xlb0, y = ylb0, labels = lbprep$lab,
@@ -303,7 +359,7 @@ setMethod("qqplot", signature(x = "ANY",
                   legend.postf = legend.postf, legend.alpha = legend.alpha, 
                   debug = debug,
                   args.stats.qqplot = mcl,
-                  withLab = withLab,
+                  with.lab = with.lab,
                   lbprep = lbprep
                   )
         if(plot.it){

@@ -29,6 +29,7 @@ user-visible CHANGES:
 + qqplot and returnlevelplot have adopted the same argument naming (and selection paradigm) 
   as the other diagnostic plots (IC-plot, comparePlot, infoPlot) in pkg RobAStBase:
     the suffix is .lbs instead of .lbl, 
+	changed argument name withLab to with.lab
 	the attributes of shown points have ending .pts
 	the observations are classed into three groups:
 	  - the labelled observations selected through which.lbs and which.Order

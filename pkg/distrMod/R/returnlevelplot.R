@@ -27,7 +27,7 @@ setMethod("returnlevelplot", signature(x = "ANY",
              ##               (for working with \command{Sweave}) no extra device is opened and height/width are not set
              mfColRow = TRUE,     ## shall we use panel partition mfrow=c(1,1)?
              n.CI = n,            ## number of points to be used for CI
-             withLab = FALSE,     ## shall observation labels be plotted in
+             with.lab = FALSE,     ## shall observation labels be plotted in
              lab.pts = NULL,      ## observation labels to be used
              which.lbs = NULL,    ## which observations shall be labelled
              which.Order = NULL,  ## which of the ordered (remaining) observations shall be labelled
@@ -115,20 +115,16 @@ setMethod("returnlevelplot", signature(x = "ANY",
        x <- x + thresh0
     }              
 
-    ord0x <- order(x)
     rank0x <- rank(x)
-
 
     xj <- sort(x)
 
     if(any(.isReplicated(x, jit.tol))&&jit.fac>0)
        xj[.isReplicated(x, jit.tol)] <- jitter(x[.isReplicated(x, jit.tol)], factor=jit.fac)
 
-    ord1x <- ord0x[order(xj)]
     rank1x <- rank(xj)[rank0x]
-
+    ind.x <- order(xj)
     xj <- sort(xj)
-    ord.x <- order(xj)
 
     p2rl <- function(pp){
                pp <- p(y)(pp)
@@ -163,17 +159,23 @@ setMethod("returnlevelplot", signature(x = "ANY",
        ycl <- sort(jitter(ycl, factor=jit.fac))
 
 #-------------------------------------------------------------------------------
-    alp.v <- .makeLenAndOrder(alpha.trsp,ord.x)
+    alp.v <- .makeLenAndOrder(alpha.trsp,ind.x)
     alp.t <- function(x,a1) if(is.na(x)) x else addAlphTrsp2col(x,a1)
     alp.f <- if(length(alpha.trsp)==1L && is.na(alpha.trsp))
              function(x,a) x else function(x,a) mapply(x,alp.t,a1=a)
-    cex.lbs <- .makeLenAndOrder(cex.lbs,ord.x)
-    adj.lbs <- .makeLenAndOrder(adj.lbs,ord.x)
-    col.lbs <- alp.f(.makeLenAndOrder(col.lbs,ord.x),alp.v)
 
-    lbprep <- .labelprep(x = xj, y = yc.o, lab.pts = lab.pts,
-                         col.lbs = col.lbs, cex.lbs = cex.lbs,
-                         adj.lbs = adj.lbs, which.lbs = which.lbs,
+    if(missing(cex.lbs)) cex0.lbs <- par("cex")
+    cex0.lbs <- .makeLenAndOrder(cex.lbs,ind.x)
+    if(missing(adj.lbs)) adj0.lbs <- par("adj")
+    adj0.lbs <- .makeLenAndOrder(adj.lbs,ind.x)
+    if(missing(col.lbs)) col0.lbs <- par("col")
+    col0.lbs <- alp.f(.makeLenAndOrder(col.lbs,ind.x),alp.v)
+    if(missing(lab.pts)||is.null(lab.pts)) lab0.pts <- ind.x else
+      lab0.pts <- .makeLenAndOrder(lab.pts,ind.x)
+
+    lbprep <- .labelprep(x = x, y = yc.o[rank1x], lab.pts = lab0.pts,
+                         col.lbs = col0.lbs, cex.lbs = cex0.lbs,
+                         adj.lbs = adj0.lbs, which.lbs = which.lbs,
                          which.Order = which.Order, order.traf = order.traf,
                          which.nonlbs = which.nonlbs)
 
@@ -182,42 +184,63 @@ setMethod("returnlevelplot", signature(x = "ANY",
 
     shown <- c(lbprep$ord,lbprep$ns)
 
+    xs <- xj[shown]
+    ycs <- ycl[shown]
+
+    ordx <- order(xs)
+    xso <- xs[ordx]
+    ycso <- ycs[ordx]
+
+    if(missing(cex.pch)) cex.pch <- par("cex")
+    if(missing(col.pch)) col.pch <- par("col")
+    if(missing(cex.pts)) cex.pts <- if(missing(cex.pch)) 1 else cex.pch
+    if(missing(col.pts)) col.pts <- if(missing(col.pch)) par("col") else col.pch
+    if(missing(pch.pts)) pch.pts <- 19
+    if(missing(cex.npts)) cex.npts <- 1
+    if(missing(col.npts)) col.npts <- par("col")
+    if(missing(pch.npts)) pch.npts <- 20
+
     if(attr.pre){
-       cex.pch <- .makeLenAndOrder(cex.pch,ord.x)
-       col.pch <- alp.f(.makeLenAndOrder(col.pch,ord.x),alp.v)
-       cex.pts <- if(missing(cex.pts)) cex.pch else .makeLenAndOrder(cex.pts,ord.x)
-       col.pts <- if(missing(col.pts)) col.pch else alp.f(.makeLenAndOrder(col.pts,ord.x),alp.v)
-       pch.pts <- .makeLenAndOrder(pch.pts,ord.x)
+       if(with.lab){
+          lab.pts <- lbprep$lab.pts
+          col.lbs <- lbprep$col.lbs
+          cex.lbs <- lbprep$cex.lbs
+          adj.lbs <- lbprep$adj.lbs
+       }
+       cex.pts <- .makeLenAndOrder(cex.pts,ind.x)
+       col.pts <- alp.f(.makeLenAndOrder(col.pts,ind.x),alp.v)
+       pch.pts <- .makeLenAndOrder(pch.pts,ind.x)
        cex.pts <- cex.pts[shown]
        col.pts <- col.pts[shown]
        pch.pts <- pch.pts[shown]
     }else{
-       cex.pch <- rep(cex.pch,length.out=n.s)
-       col.pch <- alp.f(rep(col.pch,length.out=n.s),alp.v)
-       cex.pts <- if(missing(cex.pts)) cex.pch else rep(cex.pts,length.out=n.s)
-       col.pts <- if(missing(col.pts)) col.pch else alp.f(rep(col.pts,length.out=n.s),alp.v[lbprep$ord])
-       pch.pts <- rep(pch.pts,length.out=n.s)
-       cex.npts <- rep(cex.pts,length.out=n.ns)
-       col.npts <- alp.f(rep(cex.pts,length.out=n.ns),alp.v[lbprep$ns])
-       pch.npts <- rep(pch.pts,length.out=n.ns)
+       ind.s <- 1:n.s
+       ind.ns <- 1:n.ns
+       if(with.lab){
+          if(missing(lab.pts)||is.null(lab.pts)) lab.pts <- ind.ns else
+             lab.pts <- .makeLenAndOrder(lab.pts,ind.ns)
+          if(missing(cex.lbs)) cex.lbs <- par("cex")
+          cex.lbs <- (.makeLenAndOrder(cex.lbs,ind.s))
+          if(missing(adj.lbs)) adj.lbs <- par("adj")
+          adj.lbs <- (.makeLenAndOrder(adj.lbs,ind.s))
+          if(missing(col.lbs)) col.lbs <- par("col")
+          col.lbs <- (alp.f(.makeLenAndOrder(col.lbs,ind.s),alp.v[lbprep$ord]))
+       }
+       cex.pts <- .makeLenAndOrder(cex.pts,ind.s)
+       col.pts <- alp.f(.makeLenAndOrder(col.pts,ind.s),alp.v[lbprep$ord])
+       pch.pts <- .makeLenAndOrder(pch.pts,ind.s)
+       cex.npts <- .makeLenAndOrder(cex.npts,ind.ns)
+       col.npts <- alp.f(.makeLenAndOrder(col.npts,ind.ns),alp.v[lbprep$ns])
+       pch.npts <- .makeLenAndOrder(pch.npts,ind.ns)
        col.pts <- c(col.pts,col.npts)
        cex.pts <- c(cex.pts,cex.npts)
        pch.pts <- c(pch.pts,pch.npts)
     }
-    xs <- x[shown]
-    ycs <- (ycl[rank1x])[shown]
-    ordx <- order(xs)
-    xso <- xs[ordx]
-    ycso <- ycs[ordx]
     cex.pts <- cex.pts[ordx]
     col.pts <- col.pts[ordx]
     pch.pts <- pch.pts[ordx]
-#-------------------------------------------------------------------------------
 
-    if(withLab){
-      if(is.null(lab.pts)) lab.pts <- paste(ord.x)
-      else lab.pts <- .makeLenAndOrder(lab.pts,ord.x)
-    }
+#-------------------------------------------------------------------------------
 
     if(check.NotInSupport){
        xo <- xso #x[ord.x]
@@ -231,17 +254,30 @@ setMethod("returnlevelplot", signature(x = "ANY",
        if(length(nInSupp)){
 #          col.pch[nInSupp] <- col.NotInSupport
           col.pts[nInSupp] <- col.NotInSupport
-          if(withLab)
+          if(with.lab)
 #             col.lbs[ord.x[nInSupp]] <- col.NotInSupport
              col.lbs[nInSupp] <- col.NotInSupport
        }
     }
 
-    if(n!=length(x)) withLab <- FALSE
+    if(n < length(x)){
+       with.lab <- FALSE
+       nos <- length(shown)
+       idx <- sample(1:nos,size=n,replace=FALSE)
+       cex.pts <- cex.pts[idx]
+       col.pts <- col.pts[idx]
+       pch.pts <- pch.pts[idx]
+       xso <- xso[idx]
+       ycso <- ycso[idx]
+    }
 
     mcl <- .deleteItemsMCL(mcl)
-    mcl$cex <- cex.pch
-    mcl$col <- col.pch
+    mcl$pch <- pch.pts
+    mcl$cex <- cex.pts
+    mcl$col <- col.pts
+
+    mcl$xlab <- .mpresubs(mcl$xlab)
+    mcl$ylab <- .mpresubs(mcl$ylab)
 
     if (!withSweave){
            devNew(width = width, height = height)
@@ -272,7 +308,7 @@ setMethod("returnlevelplot", signature(x = "ANY",
        }
     }
 
-    if(withLab&& plot.it){
+    if(with.lab&& plot.it){
        lbprep$y0 <- p2rl(lbprep$y0)
        xlb0 <- if(datax) lbprep$x0 else lbprep$y0
        ylb0 <- if(datax) lbprep$y0 else lbprep$x0

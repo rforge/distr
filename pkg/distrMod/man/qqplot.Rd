@@ -9,7 +9,7 @@ qqplot(x, y, ...)
     plot.it = TRUE, datax = FALSE, xlab = deparse(substitute(x)),
     ylab = deparse(substitute(y)),
     ..., width = 10, height = 5.5, withSweave = getdistrOption("withSweave"),
-    mfColRow = TRUE, n.CI = n, withLab = FALSE, lab.pts = NULL, which.lbs = NULL,
+    mfColRow = TRUE, n.CI = n, with.lab = FALSE, lab.pts = NULL, which.lbs = NULL,
     which.Order = NULL, which.nonlbs = NULL, attr.pre = FALSE, order.traf = NULL,
     col.IdL = "red", lty.IdL = 2, lwd.IdL = 2, alpha.CI = .95,
     exact.pCI = (n<100), exact.sCI = (n<100), nosym.pCI = FALSE,
@@ -66,7 +66,7 @@ class \code{"ProbFamily"}.}
         no extra device is opened and height/width are not set}
 \item{mfColRow}{shall default partition in panels be used --- defaults to \code{TRUE}}
 \item{n.CI}{numeric; number of points to be used for confidence interval}
-\item{withLab}{logical; shall observation labels be plotted in?}
+\item{with.lab}{logical; shall observation labels be plotted in?}
 \item{lab.pts}{character or \code{NULL}; observation labels to be used}
 \item{attr.pre}{logical; do graphical attributes for plotted data refer
                   to indices prior (\code{TRUE}) or posterior to selection
@@ -232,7 +232,7 @@ set.seed(123)
 x <- rnorm(40,mean=15,sd=30)
 qqplot(x, Chisq(df=15))
 NF <- NormLocationScaleFamily(mean=15, sd=30)
-qqplot(x, NF)
+qqplot(x, NF, with.lab=TRUE, which.Order=1:5, cex.lbs=1.3)
 mlE <- MLEstimator(x, NF)
 qqplot(x, mlE)
 }
