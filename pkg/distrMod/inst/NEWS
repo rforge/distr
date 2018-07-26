@@ -27,12 +27,16 @@ user-visible CHANGES:
 	  - the non-shown observations (the remaining ones not contained in the former 2 grps)
 	-> point attributes may either refer to prior selection or to post-selection in
        which case we have .npts variants	
++ returnlevelplot now accepts a log argument for the y axis (helpful for Pareto distributions, see script...)
 	 
-
 under the hood:
 + wherever possible also use q.l internally instead of q to 
   provide functionality in IRKernel
 + fixed omegahat.net issue (raised by K.Hornik,(24.10.2016, 18:08)
+
+bug fixes:
++ Estimate method for returnlevelplot was passing the wrong xlab
++ the selection mechanism had to be revised (lacked a passage through ranks)
 
 ##############
 v 2.6

@@ -211,8 +211,8 @@ setMethod("returnlevelplot", signature(x = "ANY",
 
     shown <- c(lbprep$ord,lbprep$ns)
 
-    xs <- xj[shown]
-    ycs <- ycl[shown]
+    xs <- x[shown]
+    ycs <- (ycl[rank1x])[shown]
 
     ordx <- order(xs)
     xso <- xs[ordx]
@@ -302,6 +302,7 @@ setMethod("returnlevelplot", signature(x = "ANY",
     mcl <- .deleteItemsMCL(mcl)
     mcl$cex <- cex.pch
     mcl$col <- col.pch
+    mcl$MaxOrPOT <- NULL
 
     if (!withSweave){
            devNew(width = width, height = height)
@@ -317,18 +318,22 @@ setMethod("returnlevelplot", signature(x = "ANY",
        xallc1 <- sort(c(xj,xyallc))
        yallc1 <- sort(c(ycl,pxyallc))
        mcl$x <- mcl$y <- NULL
+       logs <- if(datax) "y" else "x"
+       if(!is.null(mcl$log)){
+           if(grepl("y", eval(mcl$log))) logs <- "xy"
+           if(grepl("x",eval(mcl$log)))
+              warning("The x axis is logarithmic anyway.")
+           mcl$log <- NULL
+       }
        if(datax){
           mcl$xlab <- xlab
           mcl$ylab <- ylab
-          plotInfo$plotArgs <- c(list(x=xallc1, y=yallc1, log="y",type="n"),mcl)
-#          plotInfo$pointArgs <- c(list(x=xj, y=ycl), mcl)
+          plotInfo$plotArgs <- c(list(x=xallc1, y=yallc1, log=logs, type="n"),mcl)
           plotInfo$pointArgs <- c(list(x=xso, y=ycso), mcl)
-    #       ret <- do.call(stats::qqplot, args=mcl0, log="y", ylim = c(0.1,1000))
        }else{
           mcl$ylab <- xlab
           mcl$xlab <- ylab
-          plotInfo$plotArgs <- c(list(x=yallc1, y=xallc1, log="x",type="n"),mcl)
-#          plotInfo$pointArgs <- c(list(x=ycl, y=xj), mcl)
+          plotInfo$plotArgs <- c(list(x=yallc1, y=xallc1, log=logs,type="n"),mcl)
           plotInfo$pointArgs <- c(list(x=ycso, y=xso), mcl)
        }
        do.call(plot, plotInfo$plotArgs)
@@ -428,6 +433,7 @@ setMethod("returnlevelplot", signature(x = "ANY",
     if(missing(xlab)) mc$xlab <- paste(gettext("Return Level of"), as.character(deparse(mc$x)))
     if(missing(ylab)) mc$ylab <- paste(gettext("Return Period at"), as.character(deparse(mc$y)))
     mcl <- as.list(mc)[-1]
+
     mcl$y <- yD <- y@distribution
     if(!is(yD,"UnivariateDistribution"))
        stop("Not yet implemented.")
@@ -447,6 +453,7 @@ setMethod("returnlevelplot", signature(x = "ANY",
     plot.it = TRUE, xlab = deparse(substitute(x)),
     ylab = deparse(substitute(y)), ...){
 
+
     mc <- match.call(call = sys.call(sys.parent(1)))
     dots <- match.call(call = sys.call(sys.parent(1)),
                        expand.dots = FALSE)$"..."
@@ -456,6 +463,8 @@ setMethod("returnlevelplot", signature(x = "ANY",
     withConf.pw  = if(!missing(withConf.pw)) withConf.pw else if(!missing(withConf)) withConf else NULL,
     withConf.sim = if(!missing(withConf.sim)) withConf.sim else if(!missing(withConf)) withConf else NULL,
                   plot.it = plot.it, xlab = xlab, ylab = ylab)
+
+    plotInfo <- list(call=mc, dots=dots, args=args0)
 
     if(missing(xlab)) mc$xlab <- paste(gettext("Return Level of"), as.character(deparse(mc$x)))
     mcl <- as.list(mc)[-1]
@@ -473,7 +482,7 @@ setMethod("returnlevelplot", signature(x = "ANY",
 
     PFam0 <- modifyModel(PFam, param)
     mcl$y <- PFam0
-    if(missing(ylab)) mc$ylab <- paste(gettext("Return Period at fitted"), name(PFam0))
+    if(missing(ylab)) mcl$ylab <- paste(gettext("Return Period at fitted"), name(PFam0))
 
     retv <- do.call(getMethod("returnlevelplot", signature(x="ANY", y="ProbFamily")),
             args=mcl)

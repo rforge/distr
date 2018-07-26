@@ -184,8 +184,8 @@ setMethod("returnlevelplot", signature(x = "ANY",
 
     shown <- c(lbprep$ord,lbprep$ns)
 
-    xs <- xj[shown]
-    ycs <- ycl[shown]
+    xs <- x[shown]
+    ycs <- (ycl[rank1x])[shown]
 
     ordx <- order(xs)
     xso <- xs[ordx]
@@ -293,18 +293,23 @@ setMethod("returnlevelplot", signature(x = "ANY",
        xallc1 <- sort(c(xj,xyallc))
        yallc1 <- sort(c(ycl,pxyallc))
        mcl$x <- mcl$y <- NULL
+       logs <- if(datax) "y" else "x"
+       if(!is.null(mcl$log)){
+           if(grepl("y", eval(mcl$log))) logs <- "xy"
+           if(grepl("x",eval(mcl$log)))
+              warning("The x axis is logarithmic anyway.")
+           mcl$log <- NULL
+       }
        if(datax){
           mcl$xlab <- xlab
           mcl$ylab <- ylab
-          do.call(plot, c(list(x=xallc1, y=yallc1, log="y",type="n"),mcl))
+          do.call(plot, c(list(x=xallc1, y=yallc1, log=logs,type="n"),mcl))
           do.call(points, c(list(x=xso, y=ycso), mcl))
-#                         c(list(x=xj, y=ycl), mcl)
        }else{
           mcl$ylab <- xlab
           mcl$xlab <- ylab
-          do.call(plot,  c(list(x=yallc1, y=xallc1, log="x",type="n"),mcl))
+          do.call(plot,  c(list(x=yallc1, y=xallc1, log=logs,type="n"),mcl))
           do.call(points, c(list(x=ycso, y=xso), mcl))
-#                         c(list(x=ycl, y=xj), mcl)
        }
     }
 
@@ -415,7 +420,7 @@ setMethod("returnlevelplot", signature(x = "ANY",
 
     PFam0 <- modifyModel(PFam, param)
     mcl$y <- PFam0
-    if(missing(ylab)) mc$ylab <- paste(gettext("Return Period at fitted"), name(PFam0))
+    if(missing(ylab)) mcl$ylab <- paste(gettext("Return Period at fitted"), name(PFam0))
 
     return(invisible(do.call(getMethod("returnlevelplot", signature(x="ANY", y="ProbFamily")),
             args=mcl)))

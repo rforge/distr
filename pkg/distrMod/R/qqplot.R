@@ -183,8 +183,8 @@ setMethod("qqplot", signature(x = "ANY",
 
     shown <- c(lbprep$ord,lbprep$ns)
 
-    xs <- xj[shown]
-    ycs <- yc.o[shown]
+    xs <- x[shown]
+    ycs <- (yc.o[rank1x])[shown]
 
     ordx <- order(xs)
     xso <- xs[ordx]
