@@ -301,7 +301,6 @@ setMethod("returnlevelplot", signature(x = "ANY",
     mcl$pch <- pch.pts
     mcl$cex <- cex.pts
     mcl$col <- col.pts
-    mcl$MaxOrPOT <- NULL
 
     mcl$xlab <- .mpresubs(mcl$xlab)
     mcl$ylab <- .mpresubs(mcl$ylab)
