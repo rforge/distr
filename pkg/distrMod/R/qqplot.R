@@ -23,8 +23,6 @@
       ind2 <- ind1
       if(!is.null(which.Order)) ind2 <- ind1[rk1 %in% which.Order]
       #
-      n2 <- length(ind2)
-      #
       x2 <- x[ind2]
       or2.0 <- order(x2, decreasing = TRUE)
       #
@@ -199,9 +197,10 @@ setMethod("qqplot", signature(x = "ANY",
     if(missing(col.npts)) col.npts <- par("col")
     if(missing(pch.npts)) pch.npts <- 20
 
+    if(with.lab) lab.pts <- lbprep$lab.pts
+
     if(attr.pre){
        if(with.lab){
-          lab.pts <- lbprep$lab.pts
           col.lbs <- lbprep$col.lbs
           cex.lbs <- lbprep$cex.lbs
           adj.lbs <- lbprep$adj.lbs
@@ -216,8 +215,6 @@ setMethod("qqplot", signature(x = "ANY",
        ind.s <- 1:n.s
        ind.ns <- 1:n.ns
        if(with.lab){
-          if(missing(lab.pts)||is.null(lab.pts)) lab.pts <- ind.ns else
-             lab.pts <- .makeLenAndOrder(lab.pts,ind.ns)
           if(missing(cex.lbs)) cex.lbs <- par("cex")
           cex.lbs <- (.makeLenAndOrder(cex.lbs,ind.s))
           if(missing(adj.lbs)) adj.lbs <- par("adj")

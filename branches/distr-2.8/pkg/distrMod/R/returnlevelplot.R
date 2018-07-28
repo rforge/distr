@@ -107,6 +107,7 @@ setMethod("returnlevelplot", signature(x = "ANY",
     plotInfo <- list(call = mc, dots=dots, args=args0)
 
     MaxOrPOT <- match.arg(MaxOrPOT)
+
     xcc <- as.character(deparse(mc$x))
 
    .mpresubs <- if(withSubst){
@@ -133,9 +134,7 @@ setMethod("returnlevelplot", signature(x = "ANY",
     if(is.null(mcl$datax)) datax <- FALSE
     force(x)
 
-#    if(!is.function(order.traf)) order.traf <- mcl$order.traf
-
-    thresh0 <- threshold
+    thresh0 <- threshold 
     if(is(y,"GPareto")){ 
        if(is.na(threshold)) thresh0 <- location(y)
        y <- y - thresh0
@@ -227,9 +226,9 @@ setMethod("returnlevelplot", signature(x = "ANY",
     if(missing(col.npts)) col.npts <- par("col")
     if(missing(pch.npts)) pch.npts <- 20
 
+    if(with.lab) lab.pts <- lbprep$lab.pts
     if(attr.pre){
        if(with.lab){
-          lab.pts <- lbprep$lab.pts
           col.lbs <- lbprep$col.lbs
           cex.lbs <- lbprep$cex.lbs
           adj.lbs <- lbprep$adj.lbs
@@ -298,11 +297,14 @@ setMethod("returnlevelplot", signature(x = "ANY",
        ycso <- ycso[idx]
     }
 
-
     mcl <- .deleteItemsMCL(mcl)
-    mcl$cex <- cex.pch
-    mcl$col <- col.pch
+    mcl$pch <- pch.pts
+    mcl$cex <- cex.pts
+    mcl$col <- col.pts
     mcl$MaxOrPOT <- NULL
+
+    mcl$xlab <- .mpresubs(mcl$xlab)
+    mcl$ylab <- .mpresubs(mcl$ylab)
 
     if (!withSweave){
            devNew(width = width, height = height)
@@ -452,7 +454,6 @@ setMethod("returnlevelplot", signature(x = "ANY",
     withConf.pw  = withConf,  withConf.sim = withConf,
     plot.it = TRUE, xlab = deparse(substitute(x)),
     ylab = deparse(substitute(y)), ...){
-
 
     mc <- match.call(call = sys.call(sys.parent(1)))
     dots <- match.call(call = sys.call(sys.parent(1)),

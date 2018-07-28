@@ -23,8 +23,6 @@
       ind2 <- ind1
       if(!is.null(which.Order)) ind2 <- ind1[rk1 %in% which.Order]
       #
-      n2 <- length(ind2)
-      #
       x2 <- x[ind2]
       or2.0 <- order(x2, decreasing = TRUE)
       #
@@ -37,7 +35,7 @@
       #------------------------------------------------------------------------
       x0 <- x[ind.s]
       y0 <- x[ind.s]
-
+      
       col.lbs <- col.lbs[ind.s]
       lab.pts <- lab.pts[ind.s]
       cex.lbs <- cex.lbs[ind.s]
@@ -164,6 +162,7 @@ setMethod("qqplot", signature(x = "ANY",
                             as.character(date()), 
                             xcc))
                }else function(inx)inx
+
     rank0x <- rank(x)
     xj <- sort(x)
 
@@ -181,7 +180,7 @@ setMethod("qqplot", signature(x = "ANY",
 
     if("support" %in% names(getSlots(class(y))))
        yc <- sort(jitter(yc, factor=jit.fac))
-#-------------------------------------------------------------------------------
+
     alp.v <- .makeLenAndOrder(alpha.trsp,ind.x)
     alp.t <- function(x,a1) if(is.na(x)) x else addAlphTrsp2col(x,a1)
     alp.f <- if(length(alpha.trsp)==1L && is.na(alpha.trsp))
@@ -223,9 +222,10 @@ setMethod("qqplot", signature(x = "ANY",
     if(missing(col.npts)) col.npts <- par("col")
     if(missing(pch.npts)) pch.npts <- 20
 
+    if(with.lab) lab.pts <- lbprep$lab.pts
+
     if(attr.pre){
        if(with.lab){
-          lab.pts <- lbprep$lab.pts
           col.lbs <- lbprep$col.lbs
           cex.lbs <- lbprep$cex.lbs
           adj.lbs <- lbprep$adj.lbs
@@ -240,8 +240,6 @@ setMethod("qqplot", signature(x = "ANY",
        ind.s <- 1:n.s
        ind.ns <- 1:n.ns
        if(with.lab){
-          if(missing(lab.pts)||is.null(lab.pts)) lab.pts <- ind.ns else
-             lab.pts <- .makeLenAndOrder(lab.pts,ind.ns)
           if(missing(cex.lbs)) cex.lbs <- par("cex")
           cex.lbs <- (.makeLenAndOrder(cex.lbs,ind.s))
           if(missing(adj.lbs)) adj.lbs <- par("adj")
@@ -293,7 +291,9 @@ setMethod("qqplot", signature(x = "ANY",
        ycso <- ycso[idx]
     }
 
-    if(datax){
+
+
+    if(datax){ 
       mcl$x <- xso#xj
       mcl$y <- ycso #yc
     }else{
@@ -307,6 +307,7 @@ setMethod("qqplot", signature(x = "ANY",
 
     mcl$xlab <- .mpresubs(mcl$xlab)
     mcl$ylab <- .mpresubs(mcl$ylab)
+
 
     if (!is.null(eval(mcl$main)))
         mcl$main <- .mpresubs(eval(mcl$main))

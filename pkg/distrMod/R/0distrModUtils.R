@@ -599,7 +599,7 @@ system.time(print(.CvMMDCovariance(Els,par=ParamFamParameter("",0:1), N = 100)))
     mcl$legend.alpha <- NULL
     mcl$withSweave <- NULL
     mcl$mfColRow <- NULL
-    mcl$debug <- NULL
+    mcl$debug <- mcl$with.lab <- mcl$MaxOrPOT <- NULL
     mcl$added.points.CI <- NULL
     mcl$pch.pts <- mcl$pch.npts <- mcl$cex.pts <- mcl$cex.npts <- NULL
     mcl$col.pts <- mcl$col.npts <- mcl$which.nonlbs <- mcl$attr.pre <- NULL
