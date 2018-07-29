@@ -92,9 +92,8 @@ setMethod("returnlevelplot", signature(x = "ANY",
                             xcc))
                }else function(inx)inx
 
-    if(missing(xlab)) mc$xlab <- paste(gettext("Return level of"),
-                                       as.character(deparse(mc$x)))
-    if(missing(ylab)) mc$ylab <- gettext("Return period (years)")
+    if(missing(xlab)){mc$xlab <-  paste(gettext("Return level of"), xcc)}
+    if(missing(ylab)){mc$ylab <-  gettext("Return period (years)")}
     if(missing(main)) mc$main <- gettext("Return level plot")
     mcl <- as.list(mc)[-1]
     mcl$datax <- NULL
@@ -276,8 +275,8 @@ setMethod("returnlevelplot", signature(x = "ANY",
     mcl$cex <- cex.pts
     mcl$col <- col.pts
 
-    mcl$xlab <- .mpresubs(mcl$xlab)
-    mcl$ylab <- .mpresubs(mcl$ylab)
+    mc$xlab <- .mpresubs(mcl$xlab)
+    mc$ylab <- .mpresubs(mcl$ylab)
 
     if (!withSweave){
            devNew(width = width, height = height)
@@ -301,13 +300,13 @@ setMethod("returnlevelplot", signature(x = "ANY",
            mcl$log <- NULL
        }
        if(datax){
-          mcl$xlab <- xlab
-          mcl$ylab <- ylab
+          mcl$xlab <- mc$xlab
+          mcl$ylab <- mc$ylab
           do.call(plot, c(list(x=xallc1, y=yallc1, log=logs,type="n"),mcl))
           do.call(points, c(list(x=xso, y=ycso), mcl))
        }else{
-          mcl$ylab <- xlab
-          mcl$xlab <- ylab
+          mcl$ylab <- mc$xlab
+          mcl$xlab <- mc$ylab
           do.call(plot,  c(list(x=yallc1, y=xallc1, log=logs,type="n"),mcl))
           do.call(points, c(list(x=ycso, y=xso), mcl))
        }
@@ -384,8 +383,10 @@ setMethod("returnlevelplot", signature(x = "ANY",
     ylab = deparse(substitute(y)), ...){
 
     mc <- match.call(call = sys.call(sys.parent(1)))
-    if(missing(xlab)) mc$xlab <- paste(gettext("Return Level of"), as.character(deparse(mc$x)))
-    if(missing(ylab)) mc$ylab <- paste(gettext("Return Period at"), as.character(deparse(mc$y)))
+    mcx <- as.character(deparse(mc$x))
+    mcy <- as.character(deparse(mc$y))
+    if(missing(xlab)) mc$xlab <- paste(gettext("Return Level of"), mcx)
+    if(missing(ylab)) mc$ylab <- paste(gettext("Return Period at"), mcy)
     mcl <- as.list(mc)[-1]
 
     mcl$y <- yD <- y@distribution
@@ -404,6 +405,9 @@ setMethod("returnlevelplot", signature(x = "ANY",
     ylab = deparse(substitute(y)), ...){
 
     mc <- match.call(call = sys.call(sys.parent(1)))
+    mc1 <- match.call(call = sys.call(sys.parent(1)), expand.dots=FALSE)
+    mcx <- as.character(deparse(mc$x))
+    mcy <- as.character(deparse(mc$y))
     if(missing(xlab)) mc$xlab <- paste(gettext("Return Level of"), as.character(deparse(mc$x)))
     mcl <- as.list(mc)[-1]
 
@@ -420,7 +424,7 @@ setMethod("returnlevelplot", signature(x = "ANY",
 
     PFam0 <- modifyModel(PFam, param)
     mcl$y <- PFam0
-    if(missing(ylab)) mcl$ylab <- paste(gettext("Return Period at fitted"), name(PFam0))
+    if(missing(ylab)) mcl$ylab <- paste(gettext("Return Period at fitted"), name(PFam0), "\n -- fit by ", mcy)
 
     return(invisible(do.call(getMethod("returnlevelplot", signature(x="ANY", y="ProbFamily")),
             args=mcl)))

@@ -120,6 +120,15 @@ setMethod("qqplot", signature(x = "ANY",
              withSubst = TRUE
     ){ ## return value as in stats::qqplot
 
+    mc <- match.call(call = sys.call(sys.parent(1)))
+    xcc <- as.character(deparse(mc$x))
+    ycc <- as.character(deparse(mc$y))
+
+    if(missing(xlab)){ xlab <- mc$xlab <- xcc}
+    if(missing(ylab)){ ylab <- mc$ylab <- ycc}
+
+    dots <- match.call(call = sys.call(sys.parent(1)),
+                       expand.dots = FALSE)$"..."
     args0 <- list(x = x, y = y, n = n, withIdLine = withIdLine,
              withConf = withConf, withConf.pw  = withConf.pw,
              withConf.sim = withConf.sim, plot.it = plot.it, datax = datax,
@@ -142,14 +151,8 @@ setMethod("qqplot", signature(x = "ANY",
              legend.cex = legend.cex, legend.pref = legend.pref,
              legend.postf = legend.postf, legend.alpha = legend.alpha,
              debug = debug, withSubst = withSubst)
-    mc <- match.call(call = sys.call(sys.parent(1)))
-    dots <- match.call(call = sys.call(sys.parent(1)),
-                       expand.dots = FALSE)$"..."
     plotInfo <- list(call = mc, dots=dots, args=args0)
-    xcc <- as.character(deparse(mc$x))
-    ycc <- as.character(deparse(mc$y))
-    if(missing(xlab)){ xlab <- mc$xlab <- xcc}
-    if(missing(ylab)){ ylab <- mc$ylab <- ycc}
+
     mcl <- as.list(mc)[-1]
     force(x)
     if(is.null(mcl$datax)) datax <- FALSE
@@ -414,8 +417,10 @@ setMethod("qqplot", signature(x = "ANY",
     ylab = deparse(substitute(y)), ...){
 
     mc <- match.call(call = sys.call(sys.parent(1)))
-    dots <- match.call(call = sys.call(sys.parent(1)),
-                       expand.dots = FALSE)$"..."
+    mc1 <- match.call(call = sys.call(sys.parent(1)), expand.dots=FALSE)
+    mcx <- as.character(deparse(mc$x))
+    mcy <- as.character(deparse(mc$y))
+    dots <- mc1$"..."
     args0 <- list(x = x, y = y,
                   n = if(!missing(n)) n else length(x),
                   withIdLine = withIdLine, withConf = withConf,
@@ -424,8 +429,8 @@ setMethod("qqplot", signature(x = "ANY",
                   plot.it = plot.it, xlab = xlab, ylab = ylab)
     plotInfo <- list(call=mc, dots=dots, args=args0)
 
-    if(missing(xlab)) mc$xlab <- as.character(deparse(mc$x))
-    if(missing(ylab)) mc$ylab <- as.character(deparse(mc$y))
+    if(missing(xlab)) mc$xlab <- mcx
+    if(missing(ylab)) mc$ylab <- mcy
     mcl <- as.list(mc)[-1]
 
     mcl$y <- yD <- y@distribution
@@ -447,18 +452,20 @@ setMethod("qqplot", signature(x = "ANY",
     plot.it = TRUE, xlab = deparse(substitute(x)),
     ylab = deparse(substitute(y)), ...){
 
+    mc <- match.call(call = sys.call(sys.parent(1)))
+    mc1 <- match.call(call = sys.call(sys.parent(1)), expand.dots=FALSE)
+    mcx <- as.character(deparse(mc$x))
+    mcy <- as.character(deparse(mc$y))
+
     args0 <- list(x=x,y=y,n=n,withIdLine=withIdLine, withConf=withConf,
         withConf.pw  = if(!missing(withConf.pw)) withConf.pw else if(!missing(withConf)) withConf else NULL,
         withConf.sim = if(!missing(withConf.sim)) withConf.sim else if(!missing(withConf)) withConf else NULL,
         plot.it = plot.it, xlab = xlab, ylab = ylab)
 
-    mc <- match.call(call = sys.call(sys.parent(1)))
-    mc1 <- match.call(call = sys.call(sys.parent(1)), expand.dots=FALSE)
     dots <- mc1$"..."
     plotInfo <- list(call=mc, dots=dots, args=args0)
 
-    if(missing(xlab)) mc$xlab <- as.character(deparse(mc$x))
-    if(missing(ylab)) mc$ylab <- as.character(deparse(mc$y))
+    if(missing(xlab)) mc$xlab <- mcx
     mcl <- as.list(mc)[-1]
 
     param <- ParamFamParameter(main=untransformed.estimate(y), nuisance=nuisance(y),
@@ -474,6 +481,7 @@ setMethod("qqplot", signature(x = "ANY",
 
     PFam0 <- modifyModel(PFam, param)
     mcl$y <- PFam0
+    if(missing(ylab)) mcl$ylab <- paste(name(PFam0),gettext("fitted by"), mcy)
     retv <- do.call(getMethod("qqplot", signature(x="ANY", y="ProbFamily")),
             args=mcl)
     retv$call <- retv$dots <- retv$args <- NULL

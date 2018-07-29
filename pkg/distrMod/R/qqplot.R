@@ -388,8 +388,10 @@ setMethod("qqplot", signature(x = "ANY",
     ylab = deparse(substitute(y)), ...){
 
     mc <- match.call(call = sys.call(sys.parent(1)))
-    if(missing(xlab)) mc$xlab <- as.character(deparse(mc$x))
-    if(missing(ylab)) mc$ylab <- as.character(deparse(mc$y))
+    mcx <- as.character(deparse(mc$x))
+    mcy <- as.character(deparse(mc$y))
+    if(missing(xlab)) mc$xlab <- mcx
+    if(missing(ylab)) mc$ylab <- mcy
     mcl <- as.list(mc)[-1]
 
     mcl$y <- yD <- y@distribution
@@ -410,8 +412,10 @@ setMethod("qqplot", signature(x = "ANY",
     ylab = deparse(substitute(y)), ...){
 
     mc <- match.call(call = sys.call(sys.parent(1)))
-    if(missing(xlab)) mc$xlab <- as.character(deparse(mc$x))
-    if(missing(ylab)) mc$ylab <- as.character(deparse(mc$y))
+    mc1 <- match.call(call = sys.call(sys.parent(1)), expand.dots=FALSE)
+    mcx <- as.character(deparse(mc$x))
+    mcy <- as.character(deparse(mc$y))
+    if(missing(xlab)) mc$xlab <- mcx
     mcl <- as.list(mc)[-1]
 
     param <- ParamFamParameter(main=untransformed.estimate(y), nuisance=nuisance(y),
@@ -427,6 +431,7 @@ setMethod("qqplot", signature(x = "ANY",
 
     PFam0 <- modifyModel(PFam, param)
     mcl$y <- PFam0
+    if(missing(ylab)) mcl$ylab <- paste(name(PFam0),gettext("fitted by"), mcy)
     retv <- do.call(getMethod("qqplot", signature(x="ANY", y="ProbFamily")),
             args=mcl)
     retv$call <- mc        
