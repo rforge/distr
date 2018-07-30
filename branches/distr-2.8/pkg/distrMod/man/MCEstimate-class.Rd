@@ -10,6 +10,8 @@
 \alias{method,MCEstimate-method}
 \alias{optimwarn}
 \alias{optimwarn,MCEstimate-method}
+\alias{optimReturn}
+\alias{optimReturn,MCEstimate-method}
 \alias{criterion<-}
 \alias{criterion<-,MCEstimate-method}
 \alias{coerce,MCEstimate,mle-method}
@@ -49,6 +51,9 @@
       additional informations. }
     \item{\code{optimwarn}}{ object of class \code{"character"}
       warnings issued during optimization. }
+    \item{\code{optimReturn}}{ object of class \code{"ANY"}
+      the return value of the optimizer (or \code{NULL} if, e.g.,
+      closed form solutions are used). }
     \item{\code{startPar}}{ --- object of class \code{"ANY"}; filled either
      with \code{NULL} (no starting value used) or with \code{"numeric"}
       --- the value of the starting parameter. }
@@ -87,6 +92,9 @@ Class \code{"Estimate"}, directly.
 
     \item{optimwarn}{\code{signature(object = "MCEstimate")}:
       accessor function for slot \code{optimwarn}. }
+
+    \item{optimReturn}{\code{signature(object = "MCEstimate")}:
+      accessor function for slot \code{optimReturn}. }
 
     \item{startPar}{\code{signature(object = "MCEstimate")}:
       accessor function for slot \code{startPar}. }

@@ -140,6 +140,7 @@
                   untransformed.asvar = untransformed.asvar,
                   criterion.fct = res$crit.fct, method = res$method,
                   fixed = fixed(param), optimwarn = res$warns,
+                  optimReturn = res$optReturn,
                   startPar = res$startPar)
     return(res.me)
 }

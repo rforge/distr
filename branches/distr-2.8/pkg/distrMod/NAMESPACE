@@ -60,7 +60,7 @@ exportMethods("r", "d", "p", "q", "q.l",
               "name.estimate", "trafo.estimate", "nuisance.estimate", 
               "fixed.estimate", "Infos", "Infos<-", "addInfo<-",
               "criterion", "criterion<-", "criterion.fct", "method",
-              "samplesize", "asvar", "asvar<-", "optimwarn",
+              "samplesize", "asvar", "asvar<-", "optimwarn", "optimReturn",
 			  "withPosRestr", "withPosRestr<-")
 exportMethods("untransformed.estimate", "untransformed.asvar")
 exportMethods("confint")
