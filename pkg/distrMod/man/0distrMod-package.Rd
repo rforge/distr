@@ -16,7 +16,7 @@ maximum likelihood or minimum distance estimators for probability models.
 \tabular{ll}{
 Package: \tab distrMod \cr
 Version: \tab 2.7.0 \cr
-Date: \tab 2018-07-08 \cr
+Date: \tab 2018-07-30 \cr
 Depends: \tab R(>= 2.14.0), distr(>= 2.5.2), distrEx(>= 2.4), RandVar(>= 0.6.3), MASS, stats4,
         methods \cr
 Imports: \tab startupmsg, sfsmisc, graphics, stats, grDevices \cr
@@ -25,7 +25,7 @@ Enhances: RobExtremes\cr
 ByteCompile: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-SVNRevision: \tab 1186 \cr
+VCS/SVNRevision: \tab 1186 \cr
 }}
 
 \section{Classes}{

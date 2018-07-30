@@ -73,7 +73,9 @@ exportMethods("qqplot", "returnlevelplot", ".checkEstClassForParamFamily")
 export("distrModMASK")
 export("trafoEst")
 export("distrModOptions", "distrModoptions", "getdistrModOption",
-       "Estimator", "MCEstimator", "MLEstimator", "MDEstimator")
+       "Estimator", "MCEstimator", "MLEstimator", "MDEstimator",
+       "CvMMDEstimator", "KolmogorovMDEstimator", "TotalVarMDEstimator", 
+       "HellingerMDEstimator")
 export("NonSymmetric", "EvenSymmetric", "OddSymmetric", "FunSymmList") 
 export("ParamFamParameter", "ParamFamily", "L2ParamFamily",
        "BinomFamily", "PoisFamily", "NbinomFamily", "NormLocationFamily",

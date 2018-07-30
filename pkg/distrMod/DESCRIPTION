@@ -1,6 +1,6 @@
 Package: distrMod
 Version: 2.7.0
-Date: 2018-07-25
+Date: 2018-07-30
 Title: Object Oriented Implementation of Probability Models
 Description: Implements S4 classes for probability models based on packages 'distr' and
         'distrEx'.
