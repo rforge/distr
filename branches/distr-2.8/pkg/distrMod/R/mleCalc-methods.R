@@ -291,6 +291,19 @@ re2
 optimReturn(re2)
 MCEstimator(x = x, ParamFamily = nF, criterion = negLoglikelihood3)
 MCEstimator(x = x, ParamFamily = nF, criterion = negLoglikelihood3, fn="LU")
+
+## this shows how to do validity checks every fourth evaluation
+count <- 0
+negLoglikelihood4 <- function(x, Distribution, check.validity){
+  count <<- count +1
+  if(count %% 4==0)print(c(chk=check.validity))
+  print(count)
+  res <- -sum(log(Distribution@d(x)))
+  names(res) <- "Negative Log-Likelihood"
+  return(res)
+}
+MCEstimator(x = x, ParamFamily = nF, criterion = negLoglikelihood4)
+
 }
 ##########################################################################
 # end added 2018 07 30

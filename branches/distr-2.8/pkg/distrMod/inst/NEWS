@@ -17,6 +17,21 @@ user-visible CHANGES:
   information needed to produce the respective plot, which at a later stage could be used by different graphic engines (like, e.g. 
   \code{ggplot}) to produce the plot in a different framework. A more detailed description will follow in a subsequent version.
 + DESCRIPTION tag SVNRevision changed to VCS/SVNRevision
++ "cleverer parsing of dots" in M[L,C,D]Estimator:
+  Triggered by an error observed by Kornelius Rohmeyer, we now parse the dots (...) argument 
+  of M[L,C,D]Estimator a  little more closely and filter out obvious clashes: We filter out taboo arguments 
+  (causing clashes with formals in optim/optimize and calling arguments); from the remaining ones only 
+  [exactly] _named_ arguments of the optimizer (optim/optimize) and those matching either exactly arguments 
+  of the criterion or all remaining ones (if ... is a formal of the criterion) are passed on: 
+  This way, one can, if desired, do evaluation-wise validity checks in the criterion. 
++ For diagnostic purposes, MCEstimate-class gains a slot optimReturn (of class "ANY" and filled by
+  NULL by default) which is filled by the return value of the optimizer in "mceCalc" -- it has a
+  corresponding accessor
+
+under the hood:
+
+As this is more for internal purposes, example code for the parsing of dots argument 
+is in lines ll 256--294 in mleCalc-methods.R (wrapped in a if(FALSE){ }).  
 
 ##############
 v 2.7
@@ -24,6 +39,8 @@ v 2.7
 
 user-visible CHANGES:
 + replaced http://CRAN... by https://CRAN... (also in CITATION and similar files) 
++ new wrapper to MDEstimator: CvMMDEstimator, KolmogorovMDEstimator, TotalVarMDEstimator, 
+  HellingerMDEstimator
 + exported .CvMMDCovariance in distrMod
 + added call to return value of qqplot
 + qqplot and returnlevelplot have adopted the same argument naming (and selection paradigm) 
