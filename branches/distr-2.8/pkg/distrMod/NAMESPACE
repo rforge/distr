@@ -75,7 +75,7 @@ export("trafoEst")
 export("distrModOptions", "distrModoptions", "getdistrModOption",
        "Estimator", "MCEstimator", "MLEstimator", "MDEstimator",
        "CvMMDEstimator", "KolmogorovMDEstimator", "TotalVarMDEstimator", 
-       "HellingerMDEstimator"))
+       "HellingerMDEstimator")
 export("NonSymmetric", "EvenSymmetric", "OddSymmetric", "FunSymmList") 
 export("ParamFamParameter", "ParamFamily", "L2ParamFamily",
        "BinomFamily", "PoisFamily", "NbinomFamily", "NormLocationFamily",
