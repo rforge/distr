@@ -1,5 +1,5 @@
 #####################################################
-# Howto to R - utils -- version 2.2 (040909)
+# Howto to R - utils -- version 2.8 (020818)
 #####################################################
 
 ########### R - Utils
@@ -9,14 +9,42 @@
 # searches for a given pattern (possibly with regular expressions)
 # in all files with a given file extension in a given folder
 # similarly replaces patterns
-# Syntax
+# Syntax (as of branch >= distr-2.8 and trunk from 2018-08-02)
 
-finde(x = "nchar", dir="C:/rtest/distrEx/R", ext = "R", rec = FALSE)
-## args: x : pattern; dir: folder; ext: file extension, rec: recursive in subfolders?
+finde(x = "nchar", dir = "C:/rtest/distr/pkg/distr/R",
+                  ext = "R", restrictFilepattern = "", excludeFilepattern = "",
+                  excludeext = "", withEmpty = FALSE, rec = FALSE)
+## args: x : pattern to be found (may be a regexp; 
+##       dir: folder to be searched; 
+##       ext: file extension[s] to which the search is restricted (can be a vector) 
+##            here: ext = all that comes after the last "." 
+##       restrictFilePattern: pattern[s] in file name to which the search is restricted 
+##                            (can be a vector) 
+##       excludeFilePattern: pattern[s] in file name to be excluded from the search  
+##                            (can be a vector) 
+##       excludeext: file extension[s] to be excluded from the search (can be a vector)
+##       withEmpty: logical should empty extensions be included in the search
+##       rec: recursive in subfolders?
+##  semantics: if any of the restrictFilePattern, excludeFilepattern, excludeext is 
+##             a vector of length 1 and == "", no restriction is done through this arg
+##             if length of arg ext is 1 and == "" and withEmpty is TRUE, only empty
+##                restrictions are searched; if in the same case withEmpty is FALSE
+##                no restrictions based on ext are done 
+##             otherwise whenever withEmpty is TRUE the empty extensions are included
+##                in the search 
 
-ersetze(x0 = "nchar", x1="nchar", dir="C:/rtest/distr/pkg/distr/R", ext = "R", rec = FALSE)
-## args: x0 : pattern to be replaced; x1= replacing text; dir: folder; 
-##       ext: file extension, rec: recursive in subfolders?
+ersetze(x0 = "nchar", x1 = "nchar", dir = "C:/rtest/distr/pkg/distr/R",
+                    ext = "R", restrictFilepattern = "", excludeFilepattern = "",
+                    excludeext = "", rec = FALSE, withEmpty = FALSE,
+                    withoverwrite = FALSE)
+## args: x0: pattern to be replaced
+##       x1: replacing text
+##       withoverwrite: if FALSE only found items are shown (to check this first before
+##                       going "real" ..) from 2.8 on, only files with found items are
+##                       overwritten in case of withoverwrite == TRUE (was a bug before)  
+##       all other args as with finde()  
+##  semantics: as with finde(); in fact, finde now calls ersetze() with args 
+##             x1="" and withoverwrite = FALSE 
 
 ### ladealles.R
 #
@@ -27,6 +55,40 @@ ladeall(DIR="distr", develDir = "C:/rtest", pattern = "")
 ## args: DIR :     relative path to folder starting from develDir
 ##       develDir: development folder (absolute path)
 ##       pattern:  regexpr. for files to be sourced in
+
+### DESCRIPTIONutils.R :
+#
+# sources in some utils to update DESCRIPTION files and connected/linked
+#    other information files
+
+changeDescription(startDir ,names, values, pkgs = NULL ,withSVNread = TRUE,
+                  withPackageHelpUpdate = TRUE, pathRepo = NULL, 
+				  withDate = TRUE, inRforge = TRUE, withlogin = TRUE,   
+                  PathToBash = "C:/cygwin64/bin/bash",  
+				  PathToreadsvnlog.sh="C:/rtest/distr/branches/distr-2.4/pkg/utils",
+                  tmpfile = "C:/rtest/tmp-svnlog5.txt", verbose = FALSE)
+## args: startDir: folder with pkgs to be updated,
+##                  e.g. "C:/rtest/distr/branches/distr-2.6"
+##         names: names of the DESCRIPTION tags to be updated
+##         values: values of the DESCRIPTION tags to be updated
+##               (a matrix, columns = pkgs and row = tags see examples)
+##         pkgs: pkgs to be updated; if NULL all pkgs in startfolder
+##         withSVNread: should VCS/SVNRevision be updated
+##         withPackageHelpUpdate: should file <pkg>-package.Rd in man be updated
+##         pathRepo: path to svn repo; if NULL deduced from startDir assuming r-forge
+##         withDate: shall date be updated?
+##         inRforge: shall we use r-forge as repository
+##                  (otherwise need full URL as arg pathRepo
+##         withlogin: do we need option --login (yes in cygwin, don't know in Linux)
+##         PathToBash: path to bash
+##         PathToreadsvnlog.sh:  path to shell script readsvnlog.sh
+##         tmpfile: some tmpfile to which we write the results temporarily; 
+##                  is deleted afterwords
+##         verbose: how verbose should we be?
+##
+## uses getRevNr() in getRevNr.R in  utils
+## for examples see DESCRIPTIONutilsExamples.R 
+
 
 ### compare.R :
 #

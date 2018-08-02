@@ -72,7 +72,7 @@ ersetze <- function(x0 = "nchar", x1 = "nchar", dir = "C:/rtest/distr/pkg/distr/
        invisible()
     }
   DIR <- dir(rec=rec)
-  if(! ((ext=="")&&(withEmpty))){
+  if(! (all(ext=="")&&(withEmpty))){
      ext0 <- sapply(ext, function(ext1) if(ext=="") "" else paste("\\.", ext, sep=""))
      extL <- sapply(ext0, function(ers) grepl(ers,DIR))
      if(withEmpty){
