@@ -52,6 +52,7 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist,
     if(!is.null(dots))  argList <- c(argList, dots)
     if(!validity.check %in% names(argList))
        argList$validity.check <- TRUE
+    argList <- c(argList, x = x)
 
     ## digesting the results of mceCalc
     res <- do.call(.process.meCalcRes, argList)
@@ -60,16 +61,32 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist,
     return(.checkEstClassForParamFamily(ParamFamily,res))
 }
 
-CvMMDEstimator <- function(x, ParamFamily, paramDepDist = FALSE,
+CvMMDEstimator <- function(x, ParamFamily, muDatOrMod = c("Dat","Mod"),
+                           paramDepDist = FALSE,
                            startPar = NULL, Infos,
                            trafo = NULL, penalty = 1e20,
                            validity.check = TRUE, asvar.fct = .CvMMDCovariance, 
                            na.rm = TRUE, ..., .withEvalAsVar = TRUE){
-  MDEstimator(x = x, ParamFamily = ParamFamily, distance = CvMDist,
+
+  muDatOrMod <- match.arg(muDatOrMod)
+  if(muDatOrMod=="Dat") {
+     distance0 <- CvMDist
+     estnsffx <- "(mu = emp. cdf)"
+     if(missing(asvar.fct)) asvar.fct <- .CvMMDCovarianceWithMux
+  }else{
+     distance0 <- CvMDist2
+     estnsffx <- "(mu = model distr.)"
+     if(missing(asvar.fct)) asvar.fct <- .CvMMDCovariance
+  }
+
+  res <- MDEstimator(x = x, ParamFamily = ParamFamily, distance = distance0,
               paramDepDist = paramDepDist, startPar = startPar,  Infos = Infos,
               trafo = trafo, penalty = penalty, validity.check = validity.check,
               asvar.fct = asvar.fct, na.rm = na.rm,
               ..., .withEvalAsVar = .withEvalAsVar)
+  res@name <- paste("Minimum CvM distance estimate", estnsffx)
+  res@estimate.call <- match.call()
+  return(res)
 }
 
 KolmogorovMDEstimator <- function(x, ParamFamily, paramDepDist = FALSE,
@@ -77,11 +94,13 @@ KolmogorovMDEstimator <- function(x, ParamFamily, paramDepDist = FALSE,
                            trafo = NULL, penalty = 1e20,
                            validity.check = TRUE, asvar.fct, na.rm = TRUE, ...,
                            .withEvalAsVar = TRUE){
-  MDEstimator(x = x, ParamFamily = ParamFamily, distance = KolmogorovDist,
+  res <- MDEstimator(x = x, ParamFamily = ParamFamily, distance = KolmogorovDist,
               paramDepDist = paramDepDist, startPar = startPar,  Infos = Infos,
               trafo = trafo, penalty = penalty, validity.check = validity.check,
               asvar.fct = asvar.fct, na.rm = na.rm,
               ..., .withEvalAsVar = .withEvalAsVar)
+  res@estimate.call <- match.call()
+  return(res)
 }
 
 TotalVarMDEstimator <- function(x, ParamFamily, paramDepDist = FALSE,
@@ -89,11 +108,13 @@ TotalVarMDEstimator <- function(x, ParamFamily, paramDepDist = FALSE,
                            trafo = NULL, penalty = 1e20,
                            validity.check = TRUE, asvar.fct, na.rm = TRUE, ...,
                            .withEvalAsVar = TRUE){
-  MDEstimator(x = x, ParamFamily = ParamFamily, distance = TotalVarDist,
+  res <- MDEstimator(x = x, ParamFamily = ParamFamily, distance = TotalVarDist,
               paramDepDist = paramDepDist, startPar = startPar,  Infos = Infos,
               trafo = trafo, penalty = penalty, validity.check = validity.check,
               asvar.fct = asvar.fct, na.rm = na.rm,
               ..., .withEvalAsVar = .withEvalAsVar)
+  res@estimate.call <- match.call()
+  return(res)
 }
 
 HellingerMDEstimator <- function(x, ParamFamily, paramDepDist = FALSE,
@@ -101,10 +122,12 @@ HellingerMDEstimator <- function(x, ParamFamily, paramDepDist = FALSE,
                            trafo = NULL, penalty = 1e20,
                            validity.check = TRUE, asvar.fct, na.rm = TRUE, ...,
                            .withEvalAsVar = TRUE){
-  MDEstimator(x = x, ParamFamily = ParamFamily, distance = HellingerDist,
+  res <- MDEstimator(x = x, ParamFamily = ParamFamily, distance = HellingerDist,
               paramDepDist = paramDepDist, startPar = startPar,  Infos = Infos,
               trafo = trafo, penalty = penalty, validity.check = validity.check,
               asvar.fct = asvar.fct, na.rm = na.rm,
               ..., .withEvalAsVar = .withEvalAsVar)
+  res@estimate.call <- match.call()
+  return(res)
 }
 

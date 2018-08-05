@@ -30,7 +30,7 @@ BinomFamily <- function(size = 1, prob = 0.5, trafo){
                    prob.0 <- main(param)
                    fct <- function(x){}
                    body(fct) <- substitute({ (x-size*prob.1)/(prob.1*(1-prob.1)) },
-                                list(size = size, prob.0 = prob.1))
+                                list(size = size, prob.1 = prob.0))
                    return(fct)}
     L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter = size*prob))
     L2derivDistr <- UnivarDistrList((distribution - size*prob)/(prob*(1-prob)))
@@ -45,7 +45,7 @@ BinomFamily <- function(size = 1, prob = 0.5, trafo){
 
     FisherInfo <- FisherInfo.fct(param.0)
     res <- L2ParamFamily(name = name, distribution = distribution, 
-        distrSymm = distrSymm, param = param, modifyParam = modifyParam,
+        distrSymm = distrSymm, param = param.0, modifyParam = modifyParam,
         props = props, L2deriv.fct = L2deriv.fct, L2derivSymm = L2derivSymm,
         L2derivDistr = L2derivDistr, L2derivDistrSymm = L2derivDistrSymm,
         FisherInfo.fct = FisherInfo.fct, FisherInfo = FisherInfo,
@@ -97,7 +97,7 @@ PoisFamily <- function(lambda = 1, trafo){
 
     FisherInfo <- FisherInfo.fct(param.0)
     res <- L2ParamFamily(name = name, distribution = distribution, 
-        distrSymm = distrSymm, param = param, modifyParam = modifyParam,
+        distrSymm = distrSymm, param = param.0, modifyParam = modifyParam,
         props = props, L2deriv.fct = L2deriv.fct, L2derivSymm = L2derivSymm,
         L2derivDistr = L2derivDistr, L2derivDistrSymm = L2derivDistrSymm,
         FisherInfo.fct = FisherInfo.fct, FisherInfo = FisherInfo,
@@ -155,7 +155,7 @@ NbinomFamily <- function(size = 1, prob = 0.5, trafo){
 
     FisherInfo <- FisherInfo.fct(param.0)
     res <- L2ParamFamily(name = name, distribution = distribution, 
-        distrSymm = distrSymm, param = param, modifyParam = modifyParam,
+        distrSymm = distrSymm, param = param.0, modifyParam = modifyParam,
         props = props, L2deriv.fct = L2deriv.fct, L2derivSymm = L2derivSymm,
         L2derivDistr = L2derivDistr, L2derivDistrSymm = L2derivDistrSymm,
         FisherInfo.fct = FisherInfo.fct, FisherInfo = FisherInfo,
@@ -229,7 +229,7 @@ NbinomwithSizeFamily <- function(size = 1, prob = 0.5, trafo,
 
     FisherInfo <- FisherInfo.fct(param.0)
     res <- L2ParamFamily(name = name, distribution = distribution, 
-        distrSymm = distrSymm, param = param, modifyParam = modifyParam,
+        distrSymm = distrSymm, param = param.0, modifyParam = modifyParam,
         props = props, L2deriv.fct = L2deriv.fct, L2derivSymm = L2derivSymm,
         L2derivDistr = L2derivDistr, L2derivDistrSymm = L2derivDistrSymm,
         FisherInfo.fct = FisherInfo.fct, FisherInfo = FisherInfo,
@@ -318,7 +318,7 @@ NbinomMeanSizeFamily <- function(size = 1, mean = .5, trafo,
 
     FisherInfo <- FisherInfo.fct(param.0)
     res <- L2ParamFamily(name = name, distribution = distribution, 
-        distrSymm = distrSymm, param = param, modifyParam = modifyParam,
+        distrSymm = distrSymm, param = param.0, modifyParam = modifyParam,
         props = props, L2deriv.fct = L2deriv.fct, L2derivSymm = L2derivSymm,
         L2derivDistr = L2derivDistr, L2derivDistrSymm = L2derivDistrSymm,
         FisherInfo.fct = FisherInfo.fct, FisherInfo = FisherInfo,
@@ -394,7 +394,7 @@ GammaFamily <- function(scale = 1, shape = 1, trafo, withL2derivDistr = TRUE){
     L2Fam@name <- name
     L2Fam@distribution <- distribution
     L2Fam@distrSymm <- distrSymm
-    L2Fam@param <- param
+    L2Fam@param <- param.0
     L2Fam@modifyParam <- modifyParam
     L2Fam@props <- props
     L2Fam@L2deriv.fct <- L2deriv.fct
@@ -406,7 +406,7 @@ GammaFamily <- function(scale = 1, shape = 1, trafo, withL2derivDistr = TRUE){
     L2Fam@startPar <- startPar
     L2Fam@makeOKPar <- makeOKPar
     L2Fam@scaleshapename <- c("scale"="scale","shape"="shape")
-    
+
     L2deriv <- EuclRandVarList(RealRandVariable(L2deriv.fct(param.0),
                                Domain = Reals()))
 
@@ -427,7 +427,6 @@ GammaFamily <- function(scale = 1, shape = 1, trafo, withL2derivDistr = TRUE){
 
     return(L2Fam)
 }
-(G1 <- GammaFamily())
 
 ##################################################################
 ## Beta family   :: new  08/08 P.R.
@@ -483,7 +482,7 @@ BetaFamily <- function(shape1 = 1, shape2 = 1, trafo, withL2derivDistr = TRUE){
 
     FisherInfo <- FisherInfo.fct(param.0)
     res <- L2ParamFamily(name = name, distribution = distribution, 
-        distrSymm = distrSymm, param = param, modifyParam = modifyParam,
+        distrSymm = distrSymm, param = param.0, modifyParam = modifyParam,
         props = props, L2deriv.fct = L2deriv.fct, L2derivSymm = L2derivSymm,
         L2derivDistr = L2derivDistr, L2derivDistrSymm = L2derivDistrSymm,
         FisherInfo.fct = FisherInfo.fct, FisherInfo = FisherInfo,

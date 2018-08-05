@@ -15,7 +15,7 @@ These functions are used internally by functions \code{MCEstimator} and
 \usage{
 .negLoglikelihood(x, Distribution, ..., dropZeroDensity = TRUE)
 .process.meCalcRes(res, PFam, trafo, res.name, call, asvar.fct, check.validity,
-                   ..., .withEvalAsVar = TRUE)
+                   ..., .withEvalAsVar = TRUE, x = NULL)
 .callParamFamParameter(PFam, theta, idx, nuis, fixed)
 }
 

@@ -48,6 +48,7 @@ MLEstimator <- function(x, ParamFamily, startPar = NULL,
 
     if(!is.null(asv))   argList <- c(argList, asvar.fct = asv)
     if(!is.null(dots))  argList <- c(argList, dots)
+    argList <- c(argList, x = x)
 
     ## digesting the results of mceCalc
     res <- do.call(what = ".process.meCalcRes", args = argList)

@@ -24,7 +24,8 @@
 ##########################################################################
 .process.meCalcRes <- function(res, PFam, trafo, res.name, call,
                                asvar.fct, check.validity, ...,
-                               .withEvalAsVar = TRUE){
+                               .withEvalAsVar = TRUE, x = NULL){
+
     lmx <- length(main(PFam))
     lnx <- length(nuisance(PFam))
     idx <- 1:lmx
@@ -93,8 +94,11 @@
     if(!missing(asvar.fct))
        if(!is.null(asvar.fct)){
            asvar.tfct <- function(PFam, param, ...){
-              asvar.try <- try(asvar.fct(L2Fam = PFam, param = param, ...),
-                                         silent = TRUE)
+              lcdots <- list(...)
+              asvarArgList <- c(list(L2Fam = PFam, param = param), lcdots)
+              if("x" %in% names(formals(asvar.fct)))
+                 asvarArgList <- c(asvarArgList, x=x)
+              asvar.try <- try(do.call(asvar.fct, asvarArgList), silent = TRUE)
               as0 <- if(is(asvar.try,"try-error")) NULL else asvar.try
               return(as0)
            }

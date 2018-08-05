@@ -53,6 +53,7 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name,
 
     if(!is.null(asv))   argList <- c(argList, asvar.fct = asv)
     if(!is.null(dots))  argList <- c(argList, dots)
+    argList <- c(argList, x = x)
 
     ## digesting the results of mceCalc
     res <- do.call(.process.meCalcRes, argList)

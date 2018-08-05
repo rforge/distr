@@ -27,11 +27,38 @@ user-visible CHANGES:
 + For diagnostic purposes, MCEstimate-class gains a slot optimReturn (of class "ANY" and filled by
   NULL by default) which is filled by the return value of the optimizer in "mceCalc" -- it has a
   corresponding accessor
++ distinguish two cases for CvMMDEstimator: mu = emp. cdf (default) and mu = current best fit model distribution 
+  (controlled by argument muDatOrMod = c("Dat","Mod")) => consistency between estimate and asyCov
++ added some theory/references to help file to MD estimators
+  
+bug fixes
++ discovered some issues with local variables in L2Families (global values were used instead...)  
++ default for asCov of CvMMDEstimator was inconsistent: the estimator was using emp.cdf, but
+  the asyCov was using mu the current best fit model distribution 
++ in the wrappers to MDEstimator: CvMMDEstimator, KolmogorovMDEstimator, TotalVarMDEstimator, 
+  HellingerMDEstimator, we had the "wrong" call in slot estimate.call
 
 under the hood:
 
-As this is more for internal purposes, example code for the parsing of dots argument 
-is in lines ll 256--294 in mleCalc-methods.R (wrapped in a if(FALSE){ }).  
++ As this is more for internal purposes, example code for the parsing of dots argument 
+  is in lines ll 256--294 in mleCalc-methods.R (wrapped in a if(FALSE){ }).
++ in code in SimpleL2ParamFamilies.R: 
+   + param.0 denotes the local current parameter of the L2Family  
+   + param is used as function argument
+   + <paramname>.0 is used in .fct - functions as local variant (intern to fct) of the current parameter
+   + in the substituted L2deriv.fct, we use <paramname>.1 which is substituted for <paramname>.0
+   + in case <paramname>.0 is already used otherwise (as in NbinomMeanSizeFamily) we use <paramname>.00 instead
++ replaced integration for AbscontDistribution(s) in .CvMMDCovariance by integration on quantile scale
+   => CvMMDEstimator now works with variances even for Gamma distributions for shape < 1 ...   
++ .process.meCalcRes gains arg "x" to be able to pass on emp.CDF for mu in CvMMDEstimator
+   if arg asvar.fct of MCEstimator has "x" in formals the observations x are passed on to asvar.fct, 
+   otherwise they are not; correspondingly "x" is passed on to .process.meCalcRes in
+   MCEstimator(), MDEstimator(), MLEstimator(). 
++ old .CvMMDCovariance() becomes .oldCvMMDCovariance
++ new wrapper .CvMMDCovarianceWithMux which uses emp cdf as mu
++ new wrappe CvMDist2 which by default uses model distribution as mu
++ CvMMDEstimator gains argument muDatOrMod = c("Dat","Mod") to distinguish two cases
++ moved code to .[old]CvMMDCovariance from 0distrModUtils.R to new file asCvMVarianceQtl.R
 
 ##############
 v 2.7

@@ -4,6 +4,7 @@
 \alias{KolmogorovMDEstimator}
 \alias{TotalVarMDEstimator}
 \alias{HellingerMDEstimator}
+\alias{CvMDist2}
 
 \title{ Function to compute minimum distance estimates }
 \description{
@@ -15,7 +16,8 @@ MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name,
             paramDepDist = FALSE, startPar = NULL, Infos, trafo = NULL,
             penalty = 1e20, validity.check = TRUE, asvar.fct, na.rm = TRUE,
             ..., .withEvalAsVar = TRUE)
-CvMMDEstimator(x, ParamFamily, paramDepDist = FALSE, startPar = NULL, Infos, 
+CvMMDEstimator(x, ParamFamily, muDatOrMod = c("Dat","Mod"),
+            paramDepDist = FALSE, startPar = NULL, Infos,
             trafo = NULL, penalty = 1e20, validity.check = TRUE, 
             asvar.fct = .CvMMDCovariance, na.rm = TRUE, ..., .withEvalAsVar = TRUE)
 KolmogorovMDEstimator(x, ParamFamily, paramDepDist = FALSE, startPar = NULL, Infos, 
@@ -27,6 +29,7 @@ TotalVarMDEstimator(x, ParamFamily, paramDepDist = FALSE, startPar = NULL, Infos
 HellingerMDEstimator(x, ParamFamily, paramDepDist = FALSE, startPar = NULL, Infos, 
             trafo = NULL, penalty = 1e20, validity.check = TRUE, asvar.fct, 
             na.rm = TRUE, ..., .withEvalAsVar = TRUE)
+CvMDist2(e1,e2,... )
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -35,6 +38,13 @@ HellingerMDEstimator(x, ParamFamily, paramDepDist = FALSE, startPar = NULL, Info
   \item{distance}{ (generic) function: to compute distance beetween (emprical)
   data and objects of class \code{"Distribution"}. }
   \item{dist.name}{ optional name of distance }
+  \item{muDatOrMod}{ a character string specifying whether
+        as integration measure \eqn{mu} in Cramer-von-Mises distance,
+        the empirical cdf (corresponding to argument value
+        \code{"Dat"}) or the current model distribution
+        (corresponding to argument value \code{"Mod"}) is to be used;
+         must be one of "Dat" (default) or "Mod".
+         You can specify just the initial letter.}
   \item{paramDepDist}{logical; will computation of distance be parameter
                       dependent (see also note below)? if \code{TRUE}, distance function
                       must be able to digest a parameter \code{thetaPar}; otherwise
@@ -58,11 +68,14 @@ HellingerMDEstimator(x, ParamFamily, paramDepDist = FALSE, startPar = NULL, Info
     \code{ParamFamParameter}); arguments are called by name; \code{asvar.fct}
      may also process further arguments passed through the \code{\dots} argument}              
   \item{na.rm}{logical: if  \code{TRUE}, the estimator is evaluated at \code{complete.cases(x)}.}
-  \item{\dots}{ further arguments to \code{criterion} or \code{optimize}
-    or \code{optim}, respectively. }
+  \item{\dots}{ for the estimators: further arguments to \code{criterion} or \code{optimize}
+    or \code{optim}, respectively; for \code{CvMDist2},
+     these can be used e.g. by \code{E()}. }
   \item{.withEvalAsVar}{logical: shall slot \code{asVar} be evaluated
                    (if \code{asvar.fct} is given) or
                    just the call be returned?}
+  \item{e1}{object of class \code{"Distribution"} or class \code{"numeric"} }
+  \item{e2}{object of class \code{"Distribution"} }
 }
 \details{
   The argument \code{distance} has to be a (generic) function with arguments 
@@ -71,23 +84,76 @@ HellingerMDEstimator(x, ParamFamily, paramDepDist = FALSE, startPar = NULL, Info
   \code{TotalVarDist} or \code{HellingerDist}. Uses \code{\link{mceCalc}}
   for method dispatch.
 
-  The functions \code{CvMMDEstimator}, \code{KolmogorovMDEstimator}, \code{TotalVarMDEstimator}, 
-  and \code{HellingerMDEstimator} are aliases where the distance is fixed.
+  The functions \code{CvMMDEstimator}, \code{KolmogorovMDEstimator},
+  \code{TotalVarMDEstimator}, and \code{HellingerMDEstimator} are aliases
+  where the distance is fixed. More specifically, \code{CvMMDEstimator}
+  uses Cramer-von-Mises distance, see \code{\link[distrEx]{CvMDist}}
+  with integration measure \eqn{mu} either
+  equal to the empirical cdf or to the current best fitting model distribution;
+  the alternative is selected by argument \code{muDatOrMod}).
+  As it is asymptotically linear, asymptotic variances are available.
+  In case of alternative \code{"Dat"}, this variance is computed by means
+  of helper function \code{.CvMMDCovarianceWithMux}, case of alternative
+  \code{"Mod"} we use helper function \code{.CvMMDCovariance}. In both
+  case one may use these helper function to get hand on the respective
+  influence function.
+  \code{KolmogorovMDEstimator} uses Kolmogorov distance, see
+  \code{\link[distrEx]{KolmogorovDist}}, \code{TotalVarMDEstimator},
+  uses total variation distance, see \code{\link[distrEx]{TotalVarDist}}
+  and \code{HellingerMDEstimator}
+  uses Hellinger distance, see \code{\link[distrEx]{HellingerDist}}.
+
+  Function \code{CvMDist2} calls \code{\link[distrEx]{CvMDist}} and
+  computes the Cramer-von-Mises distance between
+  distributions \code{e1} and \code{e2} with integration
+  measure \code{mu} equal to \code{e2}; it is used in alternative
+  \code{"Mod"} in \code{CvMMDEstimator}.
 }
 \value{
-  An object of S4-class \code{"MCEstimate"} which inherits from class 
-  \code{"Estimate"}.
+  The estimators return an object of S4-class \code{"MCEstimate"} which inherits from class
+  \code{"Estimate"}. \code{CvMDist2} returns the respective distance.
 }
 \note{The distance function may be called together with a parameter \code{thetaPar}
  which is the current parameter value under consideration, i.e.; the value
  under which the model distribution is considered. Hence, if desired,
  particular distance functions could make use of this information, by, say
  computing the distance differently for different parameter values.}
+
+\section{Theoretical Background}{It should be noted that \code{CvMMDEstimator}
+  results in an asymptotically linear (hence asymptotically normal) estimator
+  with an influence function which is always bounded;
+  \code{HellingerMDEstimator} adapts, for growing sample size,
+  the MLE estimator, hence is asymptotically efficient, while for finite
+  sample size is bias robust. \code{KolmogorovMDEstimator} is square-root-n
+  consistent but, due to the facetted level sets of the distance fails to
+  be asymptotically normal. In the terminology of Donoho/Liu,
+  \code{TotalVarMDEstimator} and \code{HellingerMDEstimator} rely on
+  strong distances, while \code{CvMMDEstimator} and
+  \code{KolmogorovMDEstimator} use weak distances, so the latter ensure
+  protection against larger classes of contamination (simply because the
+  distribution balls based on the respective distances contain more elements).
+ }
+
 \references{
+    Beran, R. (1977). Minimum Hellinger distance estimates for parametric models.
+    \emph{Annals of Statistics}, \bold{5}(3), 445-463.
+
+    Donoho, D.L. and Liu, R.C. (1988). The "automatic" robustness of minimum
+    distance functionals. \emph{Annals of Statistics}, \bold{16}(2), 552-586.
+
     Huber, P.J. (1981) \emph{Robust Statistics}. New York: Wiley.
+
+    Parr, W.C. and Schucany, W.R. (1980). Minimum distance and robust estimation.
+    \emph{Journal of the American Statistical Association}, \bold{75}(371),
+    616-624.
+
+    Rao, P.V., Schuster, E.F., and Littell, R.C. (1975).
+    Estimation of Shift and Center of Symmetry Based on Kolmogorov-Smirnov
+    Statistics. \emph{Annals of Statistics}, \bold{3}, 862-873.
 
     Rieder, H. (1994) \emph{Robust Asymptotic Statistics}. New York: Springer.
 }
+
 \author{Matthias Kohl \email{Matthias.Kohl@stamats.de},\cr
         Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}}
 %\note{}
@@ -112,7 +178,7 @@ MDEstimator(x = x, ParamFamily = G, distance = CvMDist)
 \dontrun{
 ## von Mises minimum distance estimator with default mu
 MDEstimator(x = x, ParamFamily = G, distance = CvMDist,
-            asvar.fct = .CvMMDCovariance)
+            asvar.fct = .CvMMDCovarianceWithMux)
 ## or
 CvMMDEstimator(x = x, ParamFamily = G)
 
