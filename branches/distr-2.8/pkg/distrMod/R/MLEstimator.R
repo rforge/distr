@@ -8,7 +8,8 @@ MLEstimator <- function(x, ParamFamily, startPar = NULL,
                         Infos, trafo = NULL, penalty = 1e20,
                         validity.check = TRUE, na.rm = TRUE,
                         ..., .withEvalAsVar = TRUE,
-                        dropZeroDensity = TRUE){
+                        dropZeroDensity = TRUE,
+                        nmsffx = ""){
 
     ## preparation: getting the matched call
     es.call <- match.call()
@@ -49,6 +50,7 @@ MLEstimator <- function(x, ParamFamily, startPar = NULL,
     if(!is.null(asv))   argList <- c(argList, asvar.fct = asv)
     if(!is.null(dots))  argList <- c(argList, dots)
     argList <- c(argList, x = x)
+    if(any(nmsffx!="")) argList <- c(argList, nmsffx = nmsffx)
 
     ## digesting the results of mceCalc
     res <- do.call(what = ".process.meCalcRes", args = argList)

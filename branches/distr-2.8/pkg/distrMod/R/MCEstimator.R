@@ -4,7 +4,8 @@
 MCEstimator <- function(x, ParamFamily, criterion, crit.name, 
                         startPar = NULL, 
                         Infos, trafo = NULL, penalty = 1e20, validity.check = TRUE,
-                        asvar.fct, na.rm = TRUE, ..., .withEvalAsVar = TRUE){
+                        asvar.fct, na.rm = TRUE, ..., .withEvalAsVar = TRUE,
+                        nmsffx = ""){
 
     ## preparation: getting the matched call
     es.call <- match.call()
@@ -33,7 +34,7 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name,
     if(missing(crit.name)) crit.name <- ""
     argList <- c(argList, crit.name = crit.name)               
     if(!is.null(dots))      argList <- c(argList, dots)
-
+#    print(argList)
 
     ## call to mceCalc
     res0 <- do.call(mceCalc, argList)
@@ -54,6 +55,7 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name,
     if(!is.null(asv))   argList <- c(argList, asvar.fct = asv)
     if(!is.null(dots))  argList <- c(argList, dots)
     argList <- c(argList, x = x)
+    if(any(nmsffx!="")) argList <- c(argList, nmsffx = nmsffx)
 
     ## digesting the results of mceCalc
     res <- do.call(.process.meCalcRes, argList)

@@ -12,7 +12,7 @@
 MLEstimator(x, ParamFamily, startPar = NULL, 
             Infos, trafo = NULL, penalty = 1e20,
             validity.check = TRUE, na.rm = TRUE, ...,
-            .withEvalAsVar = TRUE, dropZeroDensity = TRUE)
+            .withEvalAsVar = TRUE, dropZeroDensity = TRUE, nmsffx = "")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -39,6 +39,7 @@ MLEstimator(x, ParamFamily, startPar = NULL,
   \item{dropZeroDensity}{logical of length 1; shall observations with
      density zero be dropped? Optimizers like \code{optim} require finite
      values, so get problems when negative loglikelihood is evaluated. }
+  \item{nmsffx}{character: a potential suffix to be appended to the estimator name.}
 }
 \details{
   The function uses \code{\link{mleCalc}}

@@ -24,7 +24,7 @@
 ##########################################################################
 .process.meCalcRes <- function(res, PFam, trafo, res.name, call,
                                asvar.fct, check.validity, ...,
-                               .withEvalAsVar = TRUE, x = NULL){
+                               .withEvalAsVar = TRUE, x = NULL, nmsffx = ""){
 
     lmx <- length(main(PFam))
     lnx <- length(nuisance(PFam))
@@ -51,6 +51,7 @@
     est.name <-  if(crit.name=="") "Minimum criterion estimate"  else
                     paste("Minimum", crit.name, "estimate", sep = " ") 
 
+    if(any(nmsffx != "")) est.name <- paste(est.name, nmsffx, collapse=" ")
     if(is.null(res$Infos))
         Infos <- matrix(c(character(0),character(0)), ncol=2,
                         dimnames=list(character(0), c("method", "message")))
@@ -99,12 +100,14 @@
               if("x" %in% names(formals(asvar.fct)))
                  asvarArgList <- c(asvarArgList, x=x)
               asvar.try <- try(do.call(asvar.fct, asvarArgList), silent = TRUE)
+#              print(asvar.try)
               as0 <- if(is(asvar.try,"try-error")) NULL else asvar.try
               return(as0)
            }
            asvar <- substitute(do.call(asfct, args=c(list(PFam0, param0, ...))),
                                list(asfct=asvar.tfct, PFam0=PFam, param0=param))
        }
+#    print(eval(asvar))
     if(.withEvalAsVar) asvar <- eval(asvar)
     
     untransformed.estimate <- theta

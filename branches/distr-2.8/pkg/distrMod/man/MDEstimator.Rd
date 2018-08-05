@@ -15,20 +15,21 @@
 MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name, 
             paramDepDist = FALSE, startPar = NULL, Infos, trafo = NULL,
             penalty = 1e20, validity.check = TRUE, asvar.fct, na.rm = TRUE,
-            ..., .withEvalAsVar = TRUE)
-CvMMDEstimator(x, ParamFamily, muDatOrMod = c("Dat","Mod"),
-            paramDepDist = FALSE, startPar = NULL, Infos,
+            ..., .withEvalAsVar = TRUE, nmsffx = "")
+CvMMDEstimator(x, ParamFamily, muDatOrMod = c("Dat","Mod", "Other"),
+            mu = NULL, paramDepDist = FALSE, startPar = NULL, Infos,
             trafo = NULL, penalty = 1e20, validity.check = TRUE, 
-            asvar.fct = .CvMMDCovariance, na.rm = TRUE, ..., .withEvalAsVar = TRUE)
+            asvar.fct = .CvMMDCovariance, na.rm = TRUE, ...,
+            .withEvalAsVar = TRUE, nmsffx = "")
 KolmogorovMDEstimator(x, ParamFamily, paramDepDist = FALSE, startPar = NULL, Infos, 
             trafo = NULL, penalty = 1e20, validity.check = TRUE, asvar.fct, 
-            na.rm = TRUE, ..., .withEvalAsVar = TRUE)
+            na.rm = TRUE, ..., .withEvalAsVar = TRUE, nmsffx = "")
 TotalVarMDEstimator(x, ParamFamily, paramDepDist = FALSE, startPar = NULL, Infos, 
             trafo = NULL, penalty = 1e20, validity.check = TRUE, asvar.fct, 
-            na.rm = TRUE, ..., .withEvalAsVar = TRUE)
+            na.rm = TRUE, ..., .withEvalAsVar = TRUE, nmsffx = "")
 HellingerMDEstimator(x, ParamFamily, paramDepDist = FALSE, startPar = NULL, Infos, 
             trafo = NULL, penalty = 1e20, validity.check = TRUE, asvar.fct, 
-            na.rm = TRUE, ..., .withEvalAsVar = TRUE)
+            na.rm = TRUE, ..., .withEvalAsVar = TRUE, nmsffx = "")
 CvMDist2(e1,e2,... )
 }
 %- maybe also 'usage' for other objects documented here.
@@ -42,9 +43,16 @@ CvMDist2(e1,e2,... )
         as integration measure \eqn{mu} in Cramer-von-Mises distance,
         the empirical cdf (corresponding to argument value
         \code{"Dat"}) or the current model distribution
-        (corresponding to argument value \code{"Mod"}) is to be used;
-         must be one of "Dat" (default) or "Mod".
+        (corresponding to argument value \code{"Mod"}) or a given
+        integration (probability) measure / distribution \code{mu}
+        (corresponding to argument value \code{"Other"}) is to be used;
+         must be one of "Dat" (default) or "Mod" or "Other".
          You can specify just the initial letter.}
+  \item{mu}{ optional integration (probability) measure for CvM MDE.
+             defaults to \code{NULL} and is ignored in options
+             \code{muDatOrMod} in \code{"Dat"} and \code{"Mod"};
+             in case \code{"Other"}, it must be of class
+             \code{UnivariateDistribution}. }
   \item{paramDepDist}{logical; will computation of distance be parameter
                       dependent (see also note below)? if \code{TRUE}, distance function
                       must be able to digest a parameter \code{thetaPar}; otherwise
@@ -74,6 +82,7 @@ CvMDist2(e1,e2,... )
   \item{.withEvalAsVar}{logical: shall slot \code{asVar} be evaluated
                    (if \code{asvar.fct} is given) or
                    just the call be returned?}
+  \item{nmsffx}{character: a potential suffix to be appended to the estimator name.}
   \item{e1}{object of class \code{"Distribution"} or class \code{"numeric"} }
   \item{e2}{object of class \code{"Distribution"} }
 }
@@ -162,6 +171,7 @@ CvMDist2(e1,e2,... )
           \code{\link[MASS]{fitdistr}} }
 \examples{
 ## (empirical) Data
+set.seed(123)
 x <- rgamma(50, scale = 0.5, shape = 3)
 
 ## parametric family of probability measures
@@ -175,15 +185,22 @@ KolmogorovMDEstimator(x = x, ParamFamily = G)
 ## von Mises minimum distance estimator with default mu
 MDEstimator(x = x, ParamFamily = G, distance = CvMDist)
 
-\dontrun{
+\donttest{
 ## von Mises minimum distance estimator with default mu
 MDEstimator(x = x, ParamFamily = G, distance = CvMDist,
             asvar.fct = .CvMMDCovarianceWithMux)
 ## or
 CvMMDEstimator(x = x, ParamFamily = G)
+## or
+CvMMDEstimator(x = x, ParamFamily = G, muDatOrMod="Dat")
+
+## or
+CvMMDEstimator(x = x, ParamFamily = G, muDatOrMod="Mod")
 
 ## von Mises minimum distance estimator with mu = N(0,1)
 MDEstimator(x = x, ParamFamily = G, distance = CvMDist, mu = Norm())
+## or
+CvMMDEstimator(x = x, ParamFamily = G, muDatOrMod="Other", mu = Norm())
 
 ## Total variation minimum distance estimator
 ## gamma distributions are discretized

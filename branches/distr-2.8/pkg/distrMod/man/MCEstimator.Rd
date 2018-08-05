@@ -14,7 +14,7 @@
 MCEstimator(x, ParamFamily, criterion, crit.name, 
             startPar = NULL, Infos, trafo = NULL, 
             penalty = 1e20, validity.check = TRUE, asvar.fct, na.rm = TRUE,
-            ..., .withEvalAsVar = TRUE)
+            ..., .withEvalAsVar = TRUE, nmsffx = "")
 }
 \arguments{
   \item{x}{ (empirical) data }
@@ -45,6 +45,7 @@ MCEstimator(x, ParamFamily, criterion, crit.name,
   \item{.withEvalAsVar}{logical: shall slot \code{asVar} be evaluated
                    (if \code{asvar.fct} is given) or
                    just the call be returned?}
+  \item{nmsffx}{character: a potential suffix to be appended to the estimator name.}
 }
 \details{
   The argument \code{criterion} has to be a function with arguments the 

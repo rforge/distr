@@ -6,11 +6,13 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist,
                         startPar = NULL,  Infos, 
                         trafo = NULL, penalty = 1e20,
                         validity.check = TRUE, asvar.fct, na.rm = TRUE,
-                        ..., .withEvalAsVar = TRUE){
+                        ..., .withEvalAsVar = TRUE, nmsffx = ""){
 
     ## preparation: getting the matched call
     es.call <- match.call()
     dots <- match.call(expand.dots = FALSE)$"..."
+
+    distfc <- paste(substitute(distance))
 
     completecases <- complete.cases(x)
     if(na.rm) x <- na.omit(x)
@@ -19,12 +21,35 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist,
     if(!is.numeric(x))
       stop(gettext("'x' has to be a numeric vector"))   
     if(is.null(startPar)) startPar <- startPar(ParamFamily)(x,...)
-    if(missing(dist.name))
-      dist.name <- names(distance(x, ParamFamily@distribution))
+
+    if(missing(dist.name)){
+       dist.name0 <- names(distance(x, ParamFamily@distribution))
+#       print(dist.name0)
+#       print(str(dist.name0))
+       dist.name <- gsub("(.+distance).+","\\1", dist.name0)
+       nmsffx <- paste(
+           gsub(".+distance","",gsub("(.+distance) (.+)","\\2", dist.name0)),
+           nmsffx, collapse=" ")
+       if(distfc=="CvMDist2"){
+          dist.name <- "CvM distance"
+          nmsffx <- paste("( mu = model distr. )",nmsffx, collapse=" ")
+       }
+       if(distfc=="CvMDist"&&is.null(dots$mu)){
+          dist.name <- "CvM distance"
+          nmsffx <- paste("( mu = emp. cdf )",nmsffx, collapse=" ")
+       }
+       if(distfc=="CvMDist"&&!is.null(dots$mu)){
+          muc <- paste(deparse((dots$mu)))
+          dots$mu <- eval(dots$mu)
+          dist.name <- "CvM distance"
+          nmsffx <- paste("( mu = ", muc, ")", nmsffx, collapse=" ")
+       }
+    }
 
     if(paramDepDist) dots$thetaPar <-NULL
 
-    distanceFctWithoutVal <- function(e1,e2,check.validity=NULL,...) distance(e1,e2,...)
+    distanceFctWithoutVal <- function(e1,e2,check.validity=NULL,...)
+                     distance(e1,e2,...)
     ## manipulation of the arg list to method mceCalc
     argList <- c(list(x = x, PFam = ParamFamily, criterion = distanceFctWithoutVal,
                    startPar = startPar, penalty = penalty, 
@@ -53,6 +78,7 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist,
     if(!validity.check %in% names(argList))
        argList$validity.check <- TRUE
     argList <- c(argList, x = x)
+    if(any(nmsffx!="")) argList <- c(argList, nmsffx = nmsffx)
 
     ## digesting the results of mceCalc
     res <- do.call(.process.meCalcRes, argList)
@@ -61,22 +87,40 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist,
     return(.checkEstClassForParamFamily(ParamFamily,res))
 }
 
-CvMMDEstimator <- function(x, ParamFamily, muDatOrMod = c("Dat","Mod"),
+CvMMDEstimator <- function(x, ParamFamily, muDatOrMod = c("Dat","Mod", "Other"),
+                           mu = NULL,
                            paramDepDist = FALSE,
                            startPar = NULL, Infos,
                            trafo = NULL, penalty = 1e20,
                            validity.check = TRUE, asvar.fct = .CvMMDCovariance, 
-                           na.rm = TRUE, ..., .withEvalAsVar = TRUE){
+                           na.rm = TRUE, ..., .withEvalAsVar = TRUE,
+                           nmsffx = ""){
 
   muDatOrMod <- match.arg(muDatOrMod)
   if(muDatOrMod=="Dat") {
      distance0 <- CvMDist
-     estnsffx <- "(mu = emp. cdf)"
+     estnsffx <- "( mu = emp. cdf )"
      if(missing(asvar.fct)) asvar.fct <- .CvMMDCovarianceWithMux
   }else{
-     distance0 <- CvMDist2
-     estnsffx <- "(mu = model distr.)"
-     if(missing(asvar.fct)) asvar.fct <- .CvMMDCovariance
+     if(muDatOrMod=="Mod") {
+        distance0 <- CvMDist2
+        estnsffx <- "( mu = model distr. )"
+        if(missing(asvar.fct)) asvar.fct <- .CvMMDCovariance
+     }else{
+        if(missing(mu)||is.null(mu))
+           stop(gettextf("This choice of 'muDatOrMod' requires a non-null 'mu'"))
+        muc <- paste(deparse(substitute(mu)))
+        distance0 <- function(e1,e2,... ) CvMDist(e1, e2, mu = mu, ...)
+        estnsffx <- paste("( mu = ", muc, ")")
+        if(missing(asvar.fct))
+            asvar.fct <- function(L2Fam, param, N = 400, rel.tol=.Machine$double.eps^0.3,
+                            TruncQuantile = getdistrOption("TruncQuantile"),
+                            IQR.fac = 15, ...){
+               .CvMMDCovariance(L2Fam=L2Fam, param=param, mu=eval(mu),
+                                withplot = FALSE, withpreIC = FALSE,
+                                N = N, rel.tol=rel.tol, TruncQuantile = TruncQuantile,
+                                IQR.fac = IQR.fac, ...)}
+     }
   }
 
   res <- MDEstimator(x = x, ParamFamily = ParamFamily, distance = distance0,
@@ -84,7 +128,8 @@ CvMMDEstimator <- function(x, ParamFamily, muDatOrMod = c("Dat","Mod"),
               trafo = trafo, penalty = penalty, validity.check = validity.check,
               asvar.fct = asvar.fct, na.rm = na.rm,
               ..., .withEvalAsVar = .withEvalAsVar)
-  res@name <- paste("Minimum CvM distance estimate", estnsffx)
+#  print(list(estnsffx, nmsffx))
+  res@name <- paste("Minimum CvM distance estimate", estnsffx, nmsffx, collapse="")
   res@estimate.call <- match.call()
   return(res)
 }
@@ -93,12 +138,12 @@ KolmogorovMDEstimator <- function(x, ParamFamily, paramDepDist = FALSE,
                            startPar = NULL, Infos,
                            trafo = NULL, penalty = 1e20,
                            validity.check = TRUE, asvar.fct, na.rm = TRUE, ...,
-                           .withEvalAsVar = TRUE){
+                           .withEvalAsVar = TRUE, nmsffx = ""){
   res <- MDEstimator(x = x, ParamFamily = ParamFamily, distance = KolmogorovDist,
               paramDepDist = paramDepDist, startPar = startPar,  Infos = Infos,
               trafo = trafo, penalty = penalty, validity.check = validity.check,
               asvar.fct = asvar.fct, na.rm = na.rm,
-              ..., .withEvalAsVar = .withEvalAsVar)
+              ..., .withEvalAsVar = .withEvalAsVar, nmsffx = nmsffx)
   res@estimate.call <- match.call()
   return(res)
 }
@@ -107,12 +152,12 @@ TotalVarMDEstimator <- function(x, ParamFamily, paramDepDist = FALSE,
                            startPar = NULL, Infos,
                            trafo = NULL, penalty = 1e20,
                            validity.check = TRUE, asvar.fct, na.rm = TRUE, ...,
-                           .withEvalAsVar = TRUE){
+                           .withEvalAsVar = TRUE, nmsffx = ""){
   res <- MDEstimator(x = x, ParamFamily = ParamFamily, distance = TotalVarDist,
               paramDepDist = paramDepDist, startPar = startPar,  Infos = Infos,
               trafo = trafo, penalty = penalty, validity.check = validity.check,
               asvar.fct = asvar.fct, na.rm = na.rm,
-              ..., .withEvalAsVar = .withEvalAsVar)
+              ..., .withEvalAsVar = .withEvalAsVar, nmsffx = nmsffx)
   res@estimate.call <- match.call()
   return(res)
 }
@@ -121,12 +166,12 @@ HellingerMDEstimator <- function(x, ParamFamily, paramDepDist = FALSE,
                            startPar = NULL, Infos,
                            trafo = NULL, penalty = 1e20,
                            validity.check = TRUE, asvar.fct, na.rm = TRUE, ...,
-                           .withEvalAsVar = TRUE){
+                           .withEvalAsVar = TRUE, nmsffx = ""){
   res <- MDEstimator(x = x, ParamFamily = ParamFamily, distance = HellingerDist,
               paramDepDist = paramDepDist, startPar = startPar,  Infos = Infos,
               trafo = trafo, penalty = penalty, validity.check = validity.check,
               asvar.fct = asvar.fct, na.rm = na.rm,
-              ..., .withEvalAsVar = .withEvalAsVar)
+              ..., .withEvalAsVar = .withEvalAsVar, nmsffx = nmsffx)
   res@estimate.call <- match.call()
   return(res)
 }

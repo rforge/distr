@@ -10,7 +10,11 @@
                     IQR.fac = IQR.fac, ...)
 }
 
-CvMDist2 <- function(e1,e2,... ) CvMDist(e1, e2, mu = e2, ...)
+CvMDist2 <- function(e1,e2,... ) {res <- CvMDist(e1, e2, mu = e2, ...)
+  e2c <- paste(deparse(substitute(e2)))
+  if(length(e2c) == 1)
+     names(res) <- paste("CvM distance ( mu =", e2c,")")
+  return(res)}
 
 ### 20180805: new function to compute asCov of CvM-MDE
 #             which for the primitive functions uses integration on [0,1]

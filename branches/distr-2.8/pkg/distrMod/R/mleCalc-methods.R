@@ -114,7 +114,9 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
 
 #       mceCalcDots1 <- match.call(call = sys.call(sys.parent(1)),
 #                                 expand.dots = FALSE)$"..."
-       mceCalcDots <- match.call(expand.dots = FALSE)$"..."
+       mceCalcDots <- list(...)
+#       cat("------------\n");print(mceCalcDots);cat("------------\n");
+
        filterDots <- function(dots){
           if(length(dots)){
                dotsOptIz <- NULL
@@ -155,14 +157,25 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
                   if(length(dotsForCrit)==0) dotsForCrit <- NULL
                }
                dotsForOpt <- c(dotsOptIz,dotsForCrit[!names(dotsForCrit)%in% nOptProh])
-               return(list(dotsForOpt=dotsForOpt, dotsCrit=dotsForCrit))
+               return(list(dotsForOpt=dotsForOpt, dotsCrit=dotsForCrit, dotsOnlyOpt=dotsOptIz))
           }else return(NULL)
        }
 
        dotsToPass <- do.call(filterDots, list(mceCalcDots))
+#       print(dotsToPass)
+#       print(names(dotsToPass$dotsCrit))
        allwarns <- character(0)
        fun <- function(theta, Data, ParamFamily, criterionF, ...){
                vP <- TRUE
+               dotsfun <- list(...)
+               names(dotsfun) <- gsub("dotsForC\\.","",names(dotsfun))
+#               cat(".....\n");print(dotsfun);cat(".....\n")
+#               cat("!!!!\n")
+#               print(names(dotsfun))
+#               print(names(dotsToPass$dotsCrit))
+#               cat("!!!!\n")
+               dotsForC0 <- dotsfun[names(dotsfun)%in%names(dotsToPass$dotsCrit)]
+#               print(dotsForC0)
                if(validity.check) vP <- validParameter(ParamFamily, theta)
                if(is.function(penalty)) penalty <- penalty(theta)
                if(!vP) {crit0 <- penalty; theta <- mO(theta)
@@ -172,7 +185,8 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
                                        names(nuisance(ParamFamily)))
                   else  names(theta) <- names(main(ParamFamily))
                   distr.new <- try(ParamFamily@modifyParam(theta), silent = TRUE)
-                  argList <- c(list(Data, distr.new), ... )
+                  argList <- list(Data, distr.new)
+                  if(!is.null(dotsForC0)) argList <- c(argList, dotsForC0)
                   if(withthetaPar) argList <- c(argList, list(thetaPar = theta))
                   if(is(distr.new,"try.error")){
                       crit0 <- penalty
@@ -199,18 +213,26 @@ setMethod("mceCalc", signature(x = "numeric", PFam = "ParamFamily"),
                return(critP)}
 
     if(length(param(PFam)) == 1){
-        optres <- do.call(optimize, c(list(f = fun, interval = startPar, Data = x,
-                      ParamFamily = PFam, criterionF = criterion),
-                      dotsToPass$dotsForOpt))
+        argsOptimize <- list(f = fun, interval = startPar, Data = x,
+                             ParamFamily = PFam, criterionF = criterion)
+        if(!is.null(dotsToPass$dotsOnlyOpt))
+            argsOptimize <- c(argsOptimize, dotsToPass$dotsOnlyOpt)
+        if(!is.null(dotsToPass$dotsCrit))
+            argsOptimize <- c(argsOptimize, dotsForC=dotsToPass$dotsCrit)
+        optres <- do.call(optimize, argsOptimize)
         theta <- optres$minimum
         names(theta) <- names(main(PFam))
         crit <- optres$objective
         method <- "optimize"
     }else{
         if(is(startPar,"Estimate")) startPar <- untransformed.estimate(startPar)
-        optres <- do.call(optim, c(list(par = startPar, fn = fun, Data = x,
-                   ParamFamily = PFam, criterionF = criterion),
-                   dotsToPass$dotsForOpt))
+        argsOptim <- list(par = startPar, fn = fun, Data = x,
+                          ParamFamily = PFam, criterionF = criterion)
+        if(!is.null(dotsToPass$dotsOnlyOpt))
+            argsOptim <- c(argsOptim, dotsToPass$dotsOnlyOpt)
+        if(!is.null(dotsToPass$dotsCrit))
+            argsOptim <- c(argsOptim, dotsForC=dotsToPass$dotsCrit)
+        optres <- do.call(optim, argsOptim)
         theta <- as.numeric(optres$par)
         names(theta) <- c(names(main(PFam)),names(nuisance(PFam)))
         method <- "optim"
@@ -285,6 +307,11 @@ optimReturn(re)
 
 MCEstimator(x = x, ParamFamily = nF, criterion = negLoglikelihood2,
             fups="fu")
+fo <- list(a="fu",c=list(b="e",3))
+refo <- MCEstimator(x = x, ParamFamily = nF, criterion = negLoglikelihood2,
+            fups=fo)
+optimReturn(refo)
+
 re2 <- MCEstimator(x = x, ParamFamily = nF, criterion = negLoglikelihood2,
             fups="fu", hessian = TRUE, fn="LU")
 re2
