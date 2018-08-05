@@ -743,13 +743,11 @@ Nb <- NbinomwithSizeFamily()
 .oldCvMMDCovariance(Nb,par=ParamFamParameter(main=c(size=2.3,prob=0.3)), withplot=TRUE, N = 100)
 .CvMMDCovariance(Nb,par=ParamFamParameter(main=c(size=2.3,prob=0.3)), withplot=TRUE, N = 100)
 
-## even better results with special E() method for Gamma in pkg RobExtremes
 GF <- GammaFamily()
 .oldCvMMDCovariance(GF,par=ParamFamParameter(main=c(scale=2.3,shape=4.3)), withplot=TRUE, N = 100)
 .CvMMDCovariance(GF,par=ParamFamParameter(main=c(scale=2.3,shape=4.3)), withplot=TRUE, N = 100)
 .oldCvMMDCovariance(GF,par=ParamFamParameter(main=c(scale=2.3,shape=0.3)), withplot=TRUE, N = 100)
 .CvMMDCovariance(GF,par=ParamFamParameter(main=c(scale=2.3,shape=0.3)), withplot=TRUE, N = 100)
-
 
 system.time(print(.oldCvMMDCovariance(P0,par=ParamFamParameter("lambda",1))))
 system.time(print(.CvMMDCovariance(P0,par=ParamFamParameter("lambda",1))))
