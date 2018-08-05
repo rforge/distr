@@ -43,7 +43,7 @@
             upp.m <- min(upp,0.98)
             if(upp>0.98){
                intV.u <- do.call(distrExIntegrate, c(list(f = integrand,
-                    lower = 0.98,
+                    lower = max(0.98,low),
                     upper = upp,
                     rel.tol = rel.tol, stop.on.error = FALSE,
                     distr = object, dfun = dunif), dots.withoutUseApply))
@@ -54,7 +54,7 @@
             if(low<0.02){
                intV.l <- do.call(distrExIntegrate, c(list(f = integrand,
                     lower = low,
-                    upper = 0.02,
+                    upper = min(0.02, upp),
                     rel.tol = rel.tol, stop.on.error = FALSE,
                     distr = object, dfun = dunif), dots.withoutUseApply))
             }
