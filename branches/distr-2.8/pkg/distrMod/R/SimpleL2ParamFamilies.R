@@ -28,8 +28,12 @@ BinomFamily <- function(size = 1, prob = 0.5, trafo){
                                   return(param)}
     L2deriv.fct <- function(param){
                    prob.0 <- main(param)
+                   distr.0 <- Binom(size = size, prob = prob.0)
                    fct <- function(x){}
-                   body(fct) <- substitute({ (x-size*prob.1)/(prob.1*(1-prob.1)) },
+                   body(fct) <- substitute({y <- 0*x
+                                 inS <- liesInSupport(distr.0, x)
+                                 y[inS] <- (x[inS]-size*prob.1)/(prob.1*(1-prob.1))
+                                 return(y)},
                                 list(size = size, prob.1 = prob.0))
                    return(fct)}
     L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter = size*prob))
@@ -83,8 +87,12 @@ PoisFamily <- function(lambda = 1, trafo){
                                   return(param)}
     L2deriv.fct <- function(param){
                    lambda.0 <- main(param)
+                   distr.0 <- Pois(lambda=lambda.0)
                    fct <- function(x){}
-                   body(fct) <- substitute({ x/lambda.1-1 },
+                   body(fct) <- substitute({y <- 0*x
+                                 inS <- liesInSupport(distr.0, x)
+                                 y[inS] <- x[inS]/lambda.1-1
+                                 return(y)},
                                 list(lambda.1 = lambda.0))
                    return(fct)}
     L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter = lambda))
@@ -141,8 +149,13 @@ NbinomFamily <- function(size = 1, prob = 0.5, trafo){
                                   return(param)}
     L2deriv.fct <- function(param){
                    prob.0 <- main(param)
+                   distr.0 <- Nbinom(size=size, prob=prob.0)
                    fct <- function(x){}
-                   body(fct) <- substitute({ (size/prob.1- x/(1-prob.1)) },
+                   body(fct) <- substitute({
+                                 y <- 0*x
+                                 inS <- liesInSupport(distr.0, x)
+                                 y[inS] <- (size/prob.1- x[inS]/(1-prob.1))
+                                 return(y)},
                                 list(size = size, prob.1 = prob.0))
                    return(fct)}
     L2derivSymm <- FunSymmList(NonSymmetric()) 
@@ -199,11 +212,20 @@ NbinomwithSizeFamily <- function(size = 1, prob = 0.5, trafo,
     L2deriv.fct <- function(param){
                    prob.0 <- main(param)["prob"]
                    size.0 <- main(param)["size"]
+                   distr.0 <- Nbinom(size=size.0, prob=prob.0)
                    fct1 <- function(x){}
                    fct2 <- function(x){}
-                   body(fct2) <- substitute({ (size.1/prob.1- x/(1-prob.1)) },
+                   body(fct2) <- substitute({
+                                y <- 0*x
+                                inS <- liesInSupport(distr.0, x)
+                                y[inS] <- (size.1/prob.1- x[inS]/(1-prob.1))
+                                return(y)},
                                 list(size.1 = size.0, prob.1 = prob.0))
-                   body(fct1) <- substitute({ digamma(x+size.1)-digamma(size.1)+log(prob.1)},
+                   body(fct1) <- substitute({
+                                 y <- 0*x
+                                 inS <- liesInSupport(distr.0, x)
+                                 y[inS] <- digamma(x[inS]+size.1)-digamma(size.1)+log(prob.1)
+                                 return(y)},
                                 list(size.1 = size.0, prob.1 = prob.0))
                    return(list(fct1, fct2))}
 
@@ -275,15 +297,26 @@ NbinomMeanSizeFamily <- function(size = 1, mean = .5, trafo,
                    size.00 <- main(param)["size"]
                    mean.00 <- main(param)["mean"]
                    prob.00 <- size.00/(size.00+mean.00)
-                   
+                   distr.0 <- Nbinom(size=size.00, prob=prob.00)
+
                    fct1 <- function(x){}
                    fct1.2 <- function(x){}
                    fct2 <- function(x){}
-                   body(fct1) <- substitute({ digamma(x+size.1)-digamma(size.1)+log(prob.1)},
+                   body(fct1) <- substitute({y <- 0*x
+                                    inS <- liesInSupport(distr.0, x)
+                                    y[inS] <- digamma(x[inS]+size.1)-digamma(size.1)+log(prob.1)
+                                    return(y)},
                                 list(size.1 = size.00, prob.1 = prob.00))
-                   body(fct1.2)<- substitute({ (size.1/prob.1- x/(1-prob.1)) },
+                   body(fct1.2)<- substitute({y <- 0*x
+                                    inS <- liesInSupport(distr.0, x)
+                                    y[inS] <-  (size.1/prob.1- x[inS]/(1-prob.1))
+                                    return(y)},
                                 list(size.1 = size.00, prob.1 = prob.00))
-                   body(fct2)  <- substitute({ (1/prob.1-1)* fct1(x) - size.1/prob.1^2 * fct1.2(x)},
+                   body(fct2)  <- substitute({y <- 0*x
+                                    inS <- liesInSupport(distr.0, x)
+                                    y[inS] <-   (1/prob.1-1)* fct1(x[inS]) -
+                                                 size.1/prob.1^2 * fct1.2(x[inS])
+                                    return(y)},
                                 list(size.1 = size.00, prob.1 = prob.00))
                    return(list(fct1, fct2))}
     L2derivSymm <- FunSymmList(NonSymmetric(), NonSymmetric())
@@ -366,11 +399,18 @@ GammaFamily <- function(scale = 1, shape = 1, trafo, withL2derivDistr = TRUE){
     L2deriv.fct <- function(param){
                    scale.0 <- main(param)[1]
                    shape.0 <- main(param)[2]
+                   distr.0 <- Gammad(scale = scale.0, shape = shape.0)
                    fct1 <- function(x){}
                    fct2 <- function(x){}
-                   body(fct1) <- substitute({ (x/scale.1 - shape.1)/scale.1 },
+                   body(fct1) <- substitute({y <- 0*x
+                                    inS <- liesInSupport(distr.0, x)
+                                    y[inS] <- (x[inS]/scale.1 - shape.1)/scale.1
+                                    return(y)},
                         list(scale.1 = scale.0, shape.1 = shape.0))
-                   body(fct2) <- substitute({ log(x/scale.1) - digamma(shape.1) },
+                   body(fct2) <- substitute({y <- 0*x
+                                    inS <- liesInSupport(distr.0, x)
+                                    y[inS] <-  log(x[inS]/scale.1) - digamma(shape.1)
+                                    return(y)},
                         list(scale.1 = scale.0, shape.1 = shape.0))
                    return(list(fct1, fct2))}
     L2derivSymm <- FunSymmList(OddSymmetric(SymmCenter = scale*shape),
@@ -456,13 +496,20 @@ BetaFamily <- function(shape1 = 1, shape2 = 1, trafo, withL2derivDistr = TRUE){
     L2deriv.fct <- function(param){
                    shape1.0 <- main(param)[1]
                    shape2.0 <- main(param)[2]
+                   distr.0 <- Beta(shape1=shape1.0, shape2 = shape2.0)
                    fct1 <- function(x){}
                    fct2 <- function(x){}
-                   body(fct1) <- substitute({log(x)-digamma(shape1.1)+
-                                             digamma(shape1.1+shape2.1)},
+                   body(fct1) <- substitute({y <- 0*x
+                                    inS <- liesInSupport(distr.0, x)
+                                    y[inS] <- log(x[inS])-digamma(shape1.1)+
+                                              digamma(shape1.1+shape2.1)
+                                    return(y)},
                         list(shape1.1 = shape1.0, shape2.1 = shape2.0))
-                   body(fct2) <- substitute({log(1-x)-digamma(shape2.1)+
-                                             digamma(shape1.1+shape2.1)},
+                   body(fct2) <- substitute({y <- 0*x
+                                    inS <- liesInSupport(distr.0, x)
+                                    y[inS] <- log(1-x[inS])-digamma(shape2.1)+
+                                             digamma(shape1.1+shape2.1)
+                                    return(y)},
                         list(shape1.1 = shape1.0, shape2.1 = shape2.0))
                    return(list(fct1, fct2))}
     L2derivSymm <- FunSymmList(NonSymmetric(), NonSymmetric())
