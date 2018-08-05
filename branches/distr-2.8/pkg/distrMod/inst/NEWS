@@ -32,6 +32,9 @@ user-visible CHANGES:
   and in case "Other" one has to supply an integration  probability mu. 
   => consistency between estimate and asyCov
 + added some theory/references to help file to MD estimators
++ the L2derivatives of the SimpleL2ParamFamilies and the L2GroupFamilies now respect 
+  restrictions in the support of the underlying distribution: the L2derivatives are 0
+  whenever the argument x has liesInSupport(distribution,x) == FALSE
   
 bug fixes
 + discovered some issues with local variables in L2Families (global values were used instead...)  
