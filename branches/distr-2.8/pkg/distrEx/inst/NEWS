@@ -14,6 +14,15 @@ v 2.8
 user-visible CHANGES:
 + DESCRIPTION tag SVNRevision changed to VCS/SVNRevision
 
+under the hood:
++ moved quantile integration methods for expectation for Weibull and
+  Gamma distribution from pkg RobExtremes to distrEx 
++ introduce exported helper function .qtlIntegrate  to achieve this
+  (is reused in RobExtremes for the GEV methods there)
++ cleaned .Rd file E.Rd: It contained still some references to methods
+  for extreme value distributions which are now in RobExtremes
+  and some old mail reference peter.ruckdeschel@uni-bayreuth.de
+  
 ##############
 v 2.7
 ##############

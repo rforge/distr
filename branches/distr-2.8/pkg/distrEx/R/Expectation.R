@@ -591,49 +591,52 @@ setMethod("E", signature(object = "Gammad",
 
 ### source https://mathworld.wolfram.com/GammaDistribution.html
 
-setMethod("E", signature(object = "Gammad",
-                         fun = "function",
-                         cond = "missing"),
-    function(object, fun, low = NULL, upp = NULL,
-             rel.tol= getdistrExOption("ErelativeTolerance"),
-             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"),
-             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"),
-             IQR.fac = getdistrExOption("IQR.fac"), ...
-             ){
+## replaced by quantile method in file GammaWeibullExpectation.R from distrEx 2.8.0
+#  on
+#
+#setMethod("E", signature(object = "Gammad",
+#                         fun = "function",
+#                         cond = "missing"),
+#    function(object, fun, low = NULL, upp = NULL,
+#             rel.tol= getdistrExOption("ErelativeTolerance"),
+#             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"),
+#             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"),
+#            IQR.fac = getdistrExOption("IQR.fac"), ...
+#             ){
+#
+#        dots <- list(...)
+#        dots.withoutUseApply <- dots
+#        useApply <- TRUE
+#        if(!is.null(dots$useApply)) useApply <- dots$useApply
+#        dots.withoutUseApply$useApply <- NULL
+#        integrand <- function(x, dfun, ...){   di <- dim(x)
+#                                               y <- exp(x)
+#                                               if(useApply){
+#                                                    funy <- sapply(y,fun, ...)
+#                                                    dim(y) <- di
+#                                                    dim(funy) <- di
+#                                               }else funy <- fun(y,...)
+#                                        return(funy * y * dfun(y)) }
+#
+#        if(is.null(low)) low <- -Inf
+#        if(is.null(upp)) upp <- Inf
+#
+#        Ib <- .getIntbounds(object, low, upp, lowerTruncQuantile,
+#              upperTruncQuantile, IQR.fac)
+#        low <- if(Ib["low"]<=0) -Inf else log(Ib["low"])
+#        upp <- log(Ib["upp"])
+#
+#        return(do.call(distrExIntegrate, c(list(f = integrand,
+#                    lower = low,
+#                    upper = upp,
+#                    rel.tol = rel.tol,
+#                    distr = object, dfun = d(object)), dots.withoutUseApply)))
+#
+#    })
 
-        dots <- list(...)
-        dots.withoutUseApply <- dots
-        useApply <- TRUE
-        if(!is.null(dots$useApply)) useApply <- dots$useApply
-        dots.withoutUseApply$useApply <- NULL
-        integrand <- function(x, dfun, ...){   di <- dim(x)
-                                               y <- exp(x)
-                                               if(useApply){
-                                                    funy <- sapply(y,fun, ...)
-                                                    dim(y) <- di
-                                                    dim(funy) <- di
-                                               }else funy <- fun(y,...)
-                                        return(funy * y * dfun(y)) }
 
-        if(is.null(low)) low <- -Inf
-        if(is.null(upp)) upp <- Inf
-
-        Ib <- .getIntbounds(object, low, upp, lowerTruncQuantile,
-              upperTruncQuantile, IQR.fac)
-        low <- if(Ib["low"]<=0) -Inf else log(Ib["low"])
-        upp <- log(Ib["upp"])
-
-        return(do.call(distrExIntegrate, c(list(f = integrand,
-                    lower = low,
-                    upper = upp,
-                    rel.tol = rel.tol,
-                    distr = object, dfun = d(object)), dots.withoutUseApply)))
-
-    })
-
-
-setMethod("E", signature(object = "Geom", 
-                         fun = "missing", 
+setMethod("E", signature(object = "Geom",
+                         fun = "missing",
                          cond = "missing"),
     function(object, low = NULL, upp = NULL, ...){
     if(!is.null(low)) if(low <= min(support(object))) low <- NULL

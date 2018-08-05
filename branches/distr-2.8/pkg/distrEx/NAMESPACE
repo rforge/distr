@@ -1,7 +1,7 @@
 useDynLib("distrEx", .registration = TRUE, .fixes = "C_")
 importFrom("stats", "dnorm", "integrate", "optimize", "pbinom",
              "pchisq", "pexp", "pnorm", "ppois", "qcauchy", "qnorm",
-             "uniroot")
+             "uniroot", "dunif")
 importFrom("utils", "getFromNamespace")
 import("methods")
 import("distr")
@@ -53,4 +53,4 @@ export("distrExOptions", "getdistrExOption",
        "distrExMASK", "distrExoptions", "distrExMOVED")
 export("make01","PrognCondDistribution",
        "PrognCondition")
-export(".getIntbounds")
+export(".getIntbounds", ".qtlIntegrate")
