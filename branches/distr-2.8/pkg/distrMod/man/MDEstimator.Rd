@@ -194,12 +194,17 @@ CvMMDEstimator(x = x, ParamFamily = G)
 ## or
 CvMMDEstimator(x = x, ParamFamily = G, muDatOrMod="Dat")
 
-## or
+## or with model based integration measure:
 CvMMDEstimator(x = x, ParamFamily = G, muDatOrMod="Mod")
 
 ## von Mises minimum distance estimator with mu = N(0,1)
 MDEstimator(x = x, ParamFamily = G, distance = CvMDist, mu = Norm())
-## or
+## or, with asy Var
+MDEstimator(x = x, ParamFamily = G, distance = CvMDist, mu = Norm(),
+            asvar.fct = function(L2Fam, param, ...){
+            .CvMMDCovariance(L2Fam=L2Fam, param=param, mu=Norm(), N = 400)
+            } )
+## synomymous to
 CvMMDEstimator(x = x, ParamFamily = G, muDatOrMod="Other", mu = Norm())
 
 ## Total variation minimum distance estimator
