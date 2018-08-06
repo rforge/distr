@@ -53,6 +53,9 @@ FisherInfo.fct(function)
 |>|>|>"BinomFamily" [*]
 |>|>|>"PoisFamily"  [*]
 |>|>|>"BetaFamily"  [*]
+|>|>|>"NbinomFamily" [*]
+|>|>|>"NbinomwithSizeFamily" [*]
+|>|>|>"NbinomMeanSizeFamily" [*]
 |>|>|>"L2GroupParamFamily"
 additional slots:
 LogDeriv(function)
@@ -61,15 +64,16 @@ LogDeriv(function)
 |>|>|>|>"L2LocationScaleUnion"  /VIRTUAL/
 additional slots:
 locscalename(character)
-|>|>|>|>|>"L2LocationFamily"            [*]
-|>|>|>|>|>|>"NormLocationFamily"        [*]
-|>|>|>|>|>"L2ScaleFamily"               [*]
-|>|>|>|>|>|>"NormScaleFamily"           [*]
-|>|>|>|>|>|>"ExpScaleFamily"            [*]
-|>|>|>|>|>|>"LnormScaleFamily"          [*]
-|>|>|>|>|>"L2LocationScaleFamily"       [*]
-|>|>|>|>|>|>"NormLocationScaleFamily"   [*]
-|>|>|>|>|>|>"CauchyLocationScaleFamily" [*]
+|>|>|>|>|>"L2LocationFamily"              [*]
+|>|>|>|>|>|>"NormLocationFamily"          [*]
+|>|>|>|>|>"L2ScaleFamily"                 [*]
+|>|>|>|>|>|>"NormScaleFamily"             [*]
+|>|>|>|>|>|>"ExpScaleFamily"              [*]
+|>|>|>|>|>|>"LnormScaleFamily"            [*]
+|>|>|>|>|>"L2LocationScaleFamily"         [*]
+|>|>|>|>|>|>"NormLocationScaleFamily"     [*]
+|>|>|>|>|>|>"CauchyLocationScaleFamily"   [*]
+|>|>|>|>|>|>"LogisticLocationScaleFamily" [*]
 
 and a (virtual) class union "L2ScaleUnion"  between
    "L2LocationScaleUnion"  and "L2ScaleShapeUnion"

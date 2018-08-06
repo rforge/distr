@@ -759,6 +759,42 @@ CauchyLocationScaleFamily <- function(loc = 0, scale = 1, trafo){
 }
 
 
+
+##################################################################
+## Logistic location scale family
+##################################################################
+LOGISTINT2 <- integrate(function(x){qx <- qlogis(x); (tanh(qx/2)*qx-1)^2}, 0,1, subdivisions=1000,rel.tol=1e-10)$value
+
+LogisticLocationScaleFamily <- function(location = 0, scale = 1, trafo){
+    lsname <- c("loc"="location", "scale"="scale")
+    if(missing(trafo)) {trafo <- diag(2)
+                        dimnames(trafo) <- list(lsname,lsname)}
+    res <- L2LocationScaleFamily(loc = location, scale = scale,
+              name = "normal location and scale family",
+              locscalename = lsname,
+              modParam = function(theta) Logis(location = theta[1], scale = theta[2]),
+              LogDeriv = function(x) (1-exp(x))/(1+exp(x)),
+              FisherInfo.0 = matrix(c(1/3,0,0,LOGISTINT2),2,2,
+                                      dimnames = list(lsname, lsname)),
+              distrSymm = SphericalSymmetry(SymmCenter = location),
+              L2derivSymm = FunSymmList(OddSymmetric(SymmCenter = location),
+                                        EvenSymmetric(SymmCenter = location)),
+              L2derivDistrSymm = DistrSymmList(SphericalSymmetry(),
+                                               NoSymmetry()),
+              trafo = trafo, .returnClsName = "LogisticLocationScaleFamily")
+    if(!is.function(trafo))
+       f.call <- substitute(LogisticLocationScaleFamily(location = m, scale = s,
+  	                               trafo = matrix(Tr, ncol = 2, dimnames = DN)),
+  	                   list(m = location, s = scale, Tr = trafo, DN = dimnames(trafo)))
+    else
+       f.call <- substitute(LogisticLocationScaleFamily(location = m, scale = s, trafo = Tr),
+  	                   list(m = location, s = scale, Tr = trafo))
+    res@fam.call <- f.call
+    return(res)
+}
+
+
+
 #####################################
 #####################################
 #### normal models with nuisance
@@ -832,3 +868,4 @@ NormScaleUnknownLocationFamily <- function(sd = 1, mean = 0, trafo){
     res@fam.call <- f.call
     return(res)
 }
+

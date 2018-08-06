@@ -60,4 +60,7 @@ setClass("NormLocationScaleFamily",
 setClass("CauchyLocationScaleFamily",
           contains = "L2LocationScaleFamily")
 
+## Logistic location scale family
+setClass("LogisticLocationScaleFamily",
+          contains = "L2LocationScaleFamily")
 

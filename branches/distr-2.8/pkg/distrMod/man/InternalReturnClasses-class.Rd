@@ -13,6 +13,7 @@
 \alias{BetaFamily-class}
 \alias{NormLocationScaleFamily-class}
 \alias{CauchyLocationScaleFamily-class}
+\alias{LogisticLocationScaleFamily-class}
 
 \title{Internal return classes for generating functions}
 \description{internal return classes for generating functions 'L2ParamFamily' and 
@@ -27,8 +28,9 @@ class \code{NormLocationFamily},
 ``extending'' (no new slots!) class \code{"L2LocationFamily"}, classes
 \code{NormScaleFamily}, \code{ExpScaleFamily}, and \code{LnormScaleFamily} 
 ``extending'' (no new slots!) class \code{"L2ScaleFamily"}, and classes
-\code{CauchyLocationScaleFamily} and \code{NormLocationScaleFamily},
-``extending'' (no new slots!) class \code{"L2LocationScaleFamily"}.
+\code{CauchyLocationScaleFamily}, \code{LogisticLocationScaleFamily} and
+\code{NormLocationScaleFamily}, ``extending'' (no new slots!)
+class \code{"L2LocationScaleFamily"}.
 }
 \section{Objects from these classes}{
   Objects are only generated internally by the mentioned generating functions. 
@@ -135,7 +137,8 @@ Class \code{"L2ParamFamily"},  directly.\cr
 Class \code{"ParamFamily"}, by class \code{"L2ParamFamily"}.\cr
 Class \code{"ProbFamily"}, by class \code{"ParamFamily"}.
 \cr
-\code{CauchyLocationScaleFamily} and \code{NormLocationScaleFamily}
+\code{CauchyLocationScaleFamily}, \code{LogisticLocationScaleFamily},
+and \code{NormLocationScaleFamily}
 ``extend'' (no new slots!):\cr
 Class \code{"L2LocationScaleFamily"}, directly.\cr
 Class \code{"L2LocationScaleUnion"}, by class \code{"L2LocationScaleFamily"}.\cr
