@@ -22,7 +22,7 @@ LOGISTINT2
   parameteric family are filled.
   \code{LOGISTINT2} is a constant used for the scale part of the Fisher information.
   More precisely \code{LOGISTINT2} equals to
-  \eqn{\int_{-\infty}^{\infty} (\tanh(x/2)\,x-1)^2\,{\rm dlogis}(x)\,dx)}{%
+  \eqn{\int_{-\infty}^{\infty} (\tanh(x/2)\,x-1)^2\,{\rm dlogis}(x)\,dx}{%
   integral_{-Inf}^{Inf} (tanh(x/2)x-1)^2 dlogis(x) dx}.
 }
 \value{Object of class \code{"L2LocationScaleFamily"}}

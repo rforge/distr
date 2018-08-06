@@ -47,7 +47,7 @@ bug fixes
 under the hood:
 
 + As this is more for internal purposes, example code for the parsing of dots argument 
-  is in lines ll 256--294 in mleCalc-methods.R (wrapped in a if(FALSE){ }).
+  is in lines ll 275--334 in mleCalc-methods.R (wrapped in a if(FALSE){ }).
 + in code in SimpleL2ParamFamilies.R: 
    + param.0 denotes the local current parameter of the L2Family  
    + param is used as function argument
