@@ -13,7 +13,7 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist,
     es.call <- match.call()
     dots <- match.call(expand.dots = FALSE)$"..."
 
-    distfc <- paste(substitute(distance))
+    #distfc <- paste(deparse(substitute(distance)))
 
     completecases <- complete.cases(x)
     if(na.rm) x <- na.omit(x)
@@ -23,6 +23,7 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist,
       stop(gettext("'x' has to be a numeric vector"))   
     if(is.null(startPar)) startPar <- startPar(ParamFamily)(x,...)
 
+    isCvM <- FALSE
     if(missing(dist.name)){
        dist.name0 <- names(distance(x, ParamFamily@distribution))
 #       print(dist.name0)
@@ -31,24 +32,29 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist,
        nmsffx <- paste(
            gsub(".+distance","",gsub("(.+distance) (.+)","\\2", dist.name0)),
            nmsffx, collapse=" ")
-       if(distfc=="CvMDist2"){
+       if(isTRUE(all.equal(distance, CvMDist2))){
           dist.name <- "CvM distance"
           nmsffx <- paste("( mu = model distr. )",nmsffx, collapse=" ")
+          isCvM <- TRUE
        }
-       if(distfc=="CvMDist"&&is.null(dots$mu)){
+       if(isTRUE(all.equal(distance,CvMDist))&&is.null(dots$mu)){
           dist.name <- "CvM distance"
           nmsffx <- paste("( mu = emp. cdf )",nmsffx, collapse=" ")
+          isCvM <- TRUE
        }
-       if(distfc=="CvMDist"&&!is.null(dots$mu)){
+       if(isTRUE(all.equal(distance,CvMDist))&&!is.null(dots$mu)){
           muc <- paste(deparse((dots$mu)))
           dots$mu <- eval(dots$mu)
           dist.name <- "CvM distance"
           nmsffx <- paste("( mu = ", muc, ")", nmsffx, collapse=" ")
+          isCvM <- TRUE
        }
     }
 
     toClass <- "MDEstimate"
-    if(distfc %in% c("CvMDist", "CvMDist2", "CvMDist0")) toClass <- "CvMMDEstimate"
+    if(any(grepl("CvMDist", paste(deparse(substitute(distance)))))) isCvM <- TRUE
+
+    if(isCvM) toClass <- "CvMMDEstimate"
 
     if(paramDepDist) dots$thetaPar <-NULL
 
