@@ -15,21 +15,26 @@
 MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name, 
             paramDepDist = FALSE, startPar = NULL, Infos, trafo = NULL,
             penalty = 1e20, validity.check = TRUE, asvar.fct, na.rm = TRUE,
-            ..., .withEvalAsVar = TRUE, nmsffx = "")
+            ..., .withEvalAsVar = TRUE, nmsffx = "",
+            .with.checkEstClassForParamFamily = TRUE)
 CvMMDEstimator(x, ParamFamily, muDatOrMod = c("Dat","Mod", "Other"),
             mu = NULL, paramDepDist = FALSE, startPar = NULL, Infos,
             trafo = NULL, penalty = 1e20, validity.check = TRUE, 
             asvar.fct = .CvMMDCovariance, na.rm = TRUE, ...,
-            .withEvalAsVar = TRUE, nmsffx = "")
+            .withEvalAsVar = TRUE, nmsffx = "",
+            .with.checkEstClassForParamFamily = TRUE)
 KolmogorovMDEstimator(x, ParamFamily, paramDepDist = FALSE, startPar = NULL, Infos, 
             trafo = NULL, penalty = 1e20, validity.check = TRUE, asvar.fct, 
-            na.rm = TRUE, ..., .withEvalAsVar = TRUE, nmsffx = "")
+            na.rm = TRUE, ..., .withEvalAsVar = TRUE, nmsffx = "",
+            .with.checkEstClassForParamFamily = TRUE)
 TotalVarMDEstimator(x, ParamFamily, paramDepDist = FALSE, startPar = NULL, Infos, 
             trafo = NULL, penalty = 1e20, validity.check = TRUE, asvar.fct, 
-            na.rm = TRUE, ..., .withEvalAsVar = TRUE, nmsffx = "")
+            na.rm = TRUE, ..., .withEvalAsVar = TRUE, nmsffx = "",
+            .with.checkEstClassForParamFamily = TRUE)
 HellingerMDEstimator(x, ParamFamily, paramDepDist = FALSE, startPar = NULL, Infos, 
             trafo = NULL, penalty = 1e20, validity.check = TRUE, asvar.fct, 
-            na.rm = TRUE, ..., .withEvalAsVar = TRUE, nmsffx = "")
+            na.rm = TRUE, ..., .withEvalAsVar = TRUE, nmsffx = "",
+            .with.checkEstClassForParamFamily = TRUE)
 CvMDist2(e1,e2,... )
 }
 %- maybe also 'usage' for other objects documented here.
@@ -85,6 +90,10 @@ CvMDist2(e1,e2,... )
   \item{nmsffx}{character: a potential suffix to be appended to the estimator name.}
   \item{e1}{object of class \code{"Distribution"} or class \code{"numeric"} }
   \item{e2}{object of class \code{"Distribution"} }
+  \item{.with.checkEstClassForParamFamily}{logical: Should a the end of the
+     function \code{.checkEstClassForParamFamily}; defaults to \code{TRUE};
+     can be switched off for computational time or because this is already
+     checked in a calling wrapper function.}
 }
 \details{
   The argument \code{distance} has to be a (generic) function with arguments 

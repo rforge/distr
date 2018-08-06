@@ -14,7 +14,8 @@
 MCEstimator(x, ParamFamily, criterion, crit.name, 
             startPar = NULL, Infos, trafo = NULL, 
             penalty = 1e20, validity.check = TRUE, asvar.fct, na.rm = TRUE,
-            ..., .withEvalAsVar = TRUE, nmsffx = "")
+            ..., .withEvalAsVar = TRUE, nmsffx = "",
+            .with.checkEstClassForParamFamily = TRUE)
 }
 \arguments{
   \item{x}{ (empirical) data }
@@ -46,6 +47,10 @@ MCEstimator(x, ParamFamily, criterion, crit.name,
                    (if \code{asvar.fct} is given) or
                    just the call be returned?}
   \item{nmsffx}{character: a potential suffix to be appended to the estimator name.}
+  \item{.with.checkEstClassForParamFamily}{logical: Should a the end of the
+     function \code{.checkEstClassForParamFamily}; defaults to \code{TRUE};
+     can be switched off for computational time or because this is already
+     checked in a calling wrapper function.}
 }
 \details{
   The argument \code{criterion} has to be a function with arguments the 

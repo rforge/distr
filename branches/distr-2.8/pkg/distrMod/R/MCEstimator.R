@@ -5,7 +5,7 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name,
                         startPar = NULL, 
                         Infos, trafo = NULL, penalty = 1e20, validity.check = TRUE,
                         asvar.fct, na.rm = TRUE, ..., .withEvalAsVar = TRUE,
-                        nmsffx = ""){
+                        nmsffx = "", .with.checkEstClassForParamFamily = TRUE){
 
     ## preparation: getting the matched call
     es.call <- match.call()
@@ -60,6 +60,7 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name,
     ## digesting the results of mceCalc
     res <- do.call(.process.meCalcRes, argList)
     res@completecases <- completecases
-    
-    return(.checkEstClassForParamFamily(ParamFamily,res))
+    if(.with.checkEstClassForParamFamily)
+       res <- .checkEstClassForParamFamily(ParamFamily,res)
+    return(res)
 }

@@ -9,7 +9,7 @@ MLEstimator <- function(x, ParamFamily, startPar = NULL,
                         validity.check = TRUE, na.rm = TRUE,
                         ..., .withEvalAsVar = TRUE,
                         dropZeroDensity = TRUE,
-                        nmsffx = ""){
+                        nmsffx = "", .with.checkEstClassForParamFamily = TRUE){
 
     ## preparation: getting the matched call
     es.call <- match.call()
@@ -61,5 +61,8 @@ MLEstimator <- function(x, ParamFamily, startPar = NULL,
     res@name <- "Maximum likelihood estimate"
     res@completecases <- completecases
     
-    return(.checkEstClassForParamFamily(ParamFamily,res))
+    if(.with.checkEstClassForParamFamily)
+         res <- .checkEstClassForParamFamily(ParamFamily,res)
+
+    return(res)
 }

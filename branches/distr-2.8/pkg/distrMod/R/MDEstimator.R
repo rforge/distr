@@ -6,7 +6,8 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist,
                         startPar = NULL,  Infos, 
                         trafo = NULL, penalty = 1e20,
                         validity.check = TRUE, asvar.fct, na.rm = TRUE,
-                        ..., .withEvalAsVar = TRUE, nmsffx = ""){
+                        ..., .withEvalAsVar = TRUE, nmsffx = "",
+                        .with.checkEstClassForParamFamily = TRUE){
 
     ## preparation: getting the matched call
     es.call <- match.call()
@@ -47,7 +48,7 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist,
     }
 
     toClass <- "MDEstimate"
-    if(distfc %in% c("CvMDist", "CvMDist2")) toClass <- "CvMMDEstimate"
+    if(distfc %in% c("CvMDist", "CvMDist2", "CvMDist0")) toClass <- "CvMMDEstimate"
 
     if(paramDepDist) dots$thetaPar <-NULL
 
@@ -88,7 +89,9 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist,
     res <- do.call(.process.meCalcRes, argList)
 
     res@completecases <- completecases
-    return(.checkEstClassForParamFamily(ParamFamily,res))
+    if(.with.checkEstClassForParamFamily)
+         res <- .checkEstClassForParamFamily(ParamFamily,res)
+    return(res)
 }
 
 CvMMDEstimator <- function(x, ParamFamily, muDatOrMod = c("Dat","Mod", "Other"),
@@ -98,23 +101,23 @@ CvMMDEstimator <- function(x, ParamFamily, muDatOrMod = c("Dat","Mod", "Other"),
                            trafo = NULL, penalty = 1e20,
                            validity.check = TRUE, asvar.fct = .CvMMDCovariance, 
                            na.rm = TRUE, ..., .withEvalAsVar = TRUE,
-                           nmsffx = ""){
+                           nmsffx = "", .with.checkEstClassForParamFamily = TRUE){
 
   muDatOrMod <- match.arg(muDatOrMod)
   if(muDatOrMod=="Dat") {
-     distance0 <- CvMDist
+     CvMDist0 <- CvMDist
      estnsffx <- "( mu = emp. cdf )"
      if(missing(asvar.fct)) asvar.fct <- .CvMMDCovarianceWithMux
   }else{
      if(muDatOrMod=="Mod") {
-        distance0 <- CvMDist2
+        CvMDist0 <- CvMDist2
         estnsffx <- "( mu = model distr. )"
         if(missing(asvar.fct)) asvar.fct <- .CvMMDCovariance
      }else{
         if(missing(mu)||is.null(mu))
            stop(gettextf("This choice of 'muDatOrMod' requires a non-null 'mu'"))
         muc <- paste(deparse(substitute(mu)))
-        distance0 <- function(e1,e2,... ) CvMDist(e1, e2, mu = mu, ...)
+        CvMDist0 <- function(e1,e2,... ) CvMDist(e1, e2, mu = mu, ...)
         estnsffx <- paste("( mu = ", muc, ")")
         if(missing(asvar.fct))
             asvar.fct <- function(L2Fam, param, N = 400, rel.tol=.Machine$double.eps^0.3,
@@ -127,14 +130,17 @@ CvMMDEstimator <- function(x, ParamFamily, muDatOrMod = c("Dat","Mod", "Other"),
      }
   }
 
-  res <- MDEstimator(x = x, ParamFamily = ParamFamily, distance = distance0,
+  res <- MDEstimator(x = x, ParamFamily = ParamFamily, distance = CvMDist0,
               paramDepDist = paramDepDist, startPar = startPar,  Infos = Infos,
               trafo = trafo, penalty = penalty, validity.check = validity.check,
               asvar.fct = asvar.fct, na.rm = na.rm,
-              ..., .withEvalAsVar = .withEvalAsVar)
+              ..., .withEvalAsVar = .withEvalAsVar,
+              .with.checkEstClassForParamFamily = FALSE)
 #  print(list(estnsffx, nmsffx))
   res@name <- paste("Minimum CvM distance estimate", estnsffx, nmsffx, collapse="")
   res@estimate.call <- match.call()
+  if(.with.checkEstClassForParamFamily)
+         res <- .checkEstClassForParamFamily(ParamFamily,res)
   return(res)
 }
 
@@ -142,13 +148,17 @@ KolmogorovMDEstimator <- function(x, ParamFamily, paramDepDist = FALSE,
                            startPar = NULL, Infos,
                            trafo = NULL, penalty = 1e20,
                            validity.check = TRUE, asvar.fct, na.rm = TRUE, ...,
-                           .withEvalAsVar = TRUE, nmsffx = ""){
+                           .withEvalAsVar = TRUE, nmsffx = "",
+                           .with.checkEstClassForParamFamily = TRUE){
   res <- MDEstimator(x = x, ParamFamily = ParamFamily, distance = KolmogorovDist,
               paramDepDist = paramDepDist, startPar = startPar,  Infos = Infos,
               trafo = trafo, penalty = penalty, validity.check = validity.check,
               asvar.fct = asvar.fct, na.rm = na.rm,
-              ..., .withEvalAsVar = .withEvalAsVar, nmsffx = nmsffx)
+              ..., .withEvalAsVar = .withEvalAsVar, nmsffx = nmsffx,
+              .with.checkEstClassForParamFamily = FALSE)
   res@estimate.call <- match.call()
+  if(.with.checkEstClassForParamFamily)
+         res <- .checkEstClassForParamFamily(ParamFamily,res)
   return(res)
 }
 
@@ -156,13 +166,17 @@ TotalVarMDEstimator <- function(x, ParamFamily, paramDepDist = FALSE,
                            startPar = NULL, Infos,
                            trafo = NULL, penalty = 1e20,
                            validity.check = TRUE, asvar.fct, na.rm = TRUE, ...,
-                           .withEvalAsVar = TRUE, nmsffx = ""){
+                           .withEvalAsVar = TRUE, nmsffx = "",
+                           .with.checkEstClassForParamFamily = TRUE){
   res <- MDEstimator(x = x, ParamFamily = ParamFamily, distance = TotalVarDist,
               paramDepDist = paramDepDist, startPar = startPar,  Infos = Infos,
               trafo = trafo, penalty = penalty, validity.check = validity.check,
               asvar.fct = asvar.fct, na.rm = na.rm,
-              ..., .withEvalAsVar = .withEvalAsVar, nmsffx = nmsffx)
+              ..., .withEvalAsVar = .withEvalAsVar, nmsffx = nmsffx,
+              .with.checkEstClassForParamFamily = FALSE)
   res@estimate.call <- match.call()
+  if(.with.checkEstClassForParamFamily)
+         res <- .checkEstClassForParamFamily(ParamFamily,res)
   return(res)
 }
 
@@ -170,13 +184,17 @@ HellingerMDEstimator <- function(x, ParamFamily, paramDepDist = FALSE,
                            startPar = NULL, Infos,
                            trafo = NULL, penalty = 1e20,
                            validity.check = TRUE, asvar.fct, na.rm = TRUE, ...,
-                           .withEvalAsVar = TRUE, nmsffx = ""){
+                           .withEvalAsVar = TRUE, nmsffx = "",
+                           .with.checkEstClassForParamFamily = TRUE){
   res <- MDEstimator(x = x, ParamFamily = ParamFamily, distance = HellingerDist,
               paramDepDist = paramDepDist, startPar = startPar,  Infos = Infos,
               trafo = trafo, penalty = penalty, validity.check = validity.check,
               asvar.fct = asvar.fct, na.rm = na.rm,
-              ..., .withEvalAsVar = .withEvalAsVar, nmsffx = nmsffx)
+              ..., .withEvalAsVar = .withEvalAsVar, nmsffx = nmsffx,
+              .with.checkEstClassForParamFamily = FALSE)
   res@estimate.call <- match.call()
+  if(.with.checkEstClassForParamFamily)
+         res <- .checkEstClassForParamFamily(ParamFamily,res)
   return(res)
 }
 

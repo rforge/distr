@@ -43,7 +43,12 @@ bug fixes
   the asyCov was using mu the current best fit model distribution 
 + in the wrappers to MDEstimator: CvMMDEstimator, KolmogorovMDEstimator, TotalVarMDEstimator, 
   HellingerMDEstimator, we had the "wrong" call in slot estimate.call
-
++ show-method for ParamWithShapeFamParameter and MCEstimate did unnecessary casting to superclasses
+  hence hid the true class
++ argument distance did not show it came from CvMDist, CvMDist2 via CvMMDEstiamtor when unparsed -- 
+  now the unparsed argument in CvMMDEstimator is called CvMDist0 so shows that it is related to 
+  CvMDist 
+  
 under the hood:
 
 + As this is more for internal purposes, example code for the parsing of dots argument 
