@@ -773,7 +773,7 @@ LogisticLocationScaleFamily <- function(location = 0, scale = 1, trafo){
               name = "normal location and scale family",
               locscalename = lsname,
               modParam = function(theta) Logis(location = theta[1], scale = theta[2]),
-              LogDeriv = function(x) (1-exp(x))/(1+exp(x)),
+              LogDeriv = function(x) (exp(x)-1)/(1+exp(x)),
               FisherInfo.0 = matrix(c(1/3,0,0,LOGISTINT2),2,2,
                                       dimnames = list(lsname, lsname)),
               distrSymm = SphericalSymmetry(SymmCenter = location),
