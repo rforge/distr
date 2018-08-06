@@ -51,6 +51,7 @@ MLEstimator <- function(x, ParamFamily, startPar = NULL,
     if(!is.null(dots))  argList <- c(argList, dots)
     argList <- c(argList, x = x)
     if(any(nmsffx!="")) argList <- c(argList, nmsffx = nmsffx)
+    argList$toClass <- "MLEstimate"
 
     ## digesting the results of mceCalc
     res <- do.call(what = ".process.meCalcRes", args = argList)

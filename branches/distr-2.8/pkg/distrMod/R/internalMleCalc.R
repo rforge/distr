@@ -23,7 +23,7 @@
 #internal helper
 ##########################################################################
 .process.meCalcRes <- function(res, PFam, trafo, res.name, call,
-                               asvar.fct, check.validity, ...,
+                               asvar.fct, check.validity, ..., toClass = "",
                                .withEvalAsVar = TRUE, x = NULL, nmsffx = ""){
 
     lmx <- length(main(PFam))
@@ -139,7 +139,8 @@
     if(hasnodim.main & hasnodim.nuis)
         untransformed.estimate <- .deleteDim(untransformed.estimate)
 
-    res.me <- new("MCEstimate", name = est.name, estimate = estimate, 
+    if(missing(toClass)||toClass == "") toClass <- "MCEstimate"
+    res.me <- new(toClass, name = est.name, estimate = estimate,
                   criterion = crit, asvar = asvar, Infos = Infos, 
                   samplesize = res$samplesize, nuis.idx = nuis.idx, 
                   estimate.call = call, trafo = traf0,

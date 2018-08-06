@@ -46,6 +46,9 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist,
        }
     }
 
+    toClass <- "MDEstimate"
+    if(distfc %in% c("CvMDist", "CvMDist2")) toClass <- "CvMMDEstimate"
+
     if(paramDepDist) dots$thetaPar <-NULL
 
     distanceFctWithoutVal <- function(e1,e2,check.validity=NULL,...)
@@ -79,6 +82,7 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist,
        argList$validity.check <- TRUE
     argList <- c(argList, x = x)
     if(any(nmsffx!="")) argList <- c(argList, nmsffx = nmsffx)
+    argList$toClass <- toClass
 
     ## digesting the results of mceCalc
     res <- do.call(.process.meCalcRes, argList)

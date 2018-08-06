@@ -488,6 +488,11 @@ setClass("MCEstimate",
                    ),
          contains = "Estimate")
 
+
+setClass("MLEstimate", contains="MCEstimate")
+setClass("MDEstimate", contains="MCEstimate")
+setClass("CvMMDEstimate", contains="MCEstimate")
+
 ## To Do: class MLEstimate which is compatible with class
 ## mle or maybe class summary.mle of package "stats4"
 

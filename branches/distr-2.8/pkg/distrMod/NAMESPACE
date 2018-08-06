@@ -39,7 +39,7 @@ exportClasses("BinomFamily","PoisFamily", "NormLocationFamily",
        "LnormScaleFamily", "GammaFamily", "BetaFamily", "NormLocationScaleFamily",
        "CauchyLocationScaleFamily", "LogisticLocationScaleFamily")
 exportClasses("NormType", "QFNorm", "InfoNorm", "SelfNorm")
-exportClasses("Estimate", "MCEstimate")
+exportClasses("Estimate", "MCEstimate", "MLEstimate", "MDEstimate", "CvMMDEstimate")
 exportClasses("Confint")
 exportMethods("distrSymm")
 exportMethods("distribution", "props", "props<-", "addProp<-", "main", "main<-",

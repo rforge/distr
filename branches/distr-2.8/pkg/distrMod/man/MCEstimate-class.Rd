@@ -1,6 +1,9 @@
 \name{MCEstimate-class}
 \docType{class}
 \alias{MCEstimate-class}
+\alias{MDEstimate-class}
+\alias{MLEstimate-class}
+\alias{CvMMDEstimate-class}
 \alias{criterion}
 \alias{criterion,MCEstimate-method}
 \alias{criterion.fct}
@@ -23,7 +26,12 @@
 \section{Objects from the Class}{
   Objects can be created by calls of the form \code{new("MCEstimate", ...)}.
   More frequently they are created via the generating functions
-  \code{MCEstimator}, \code{MDEstimator} or \code{MLEstimator}. 
+  \code{MCEstimator}, \code{MDEstimator} or \code{MLEstimator}.
+  More specifically, \code{MDEstimator}, \code{CvMMDEstimator},
+  and \code{MLEstimator} return objects of classes \code{MDEstimate},
+  \code{CvMMDEstimate}, and \code{MLEstimate} respectively, which each
+  are immediate subclasses of \code{MCEstimate} (without further slots,
+  for internal use in method dispatch).
 }
 \section{Slots}{
   \describe{

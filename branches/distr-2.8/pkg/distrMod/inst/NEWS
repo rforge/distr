@@ -81,7 +81,7 @@ under the hood:
   is appended to the default estimator name 
 + based on this tag "( mu = ... )" later on, in pkg RobAStBase, a (conditional) 
   coerce method produces the pIC of the MDE by means of .CvMMDCovariance[WithMux]
-  
++ new subclasses "MLEstimate", "MDEstimate", "CvMMDEstimate" for internal method dispatch  
 ##############
 v 2.7
 ##############
