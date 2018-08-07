@@ -38,7 +38,7 @@ This generating function, from version 1.9 on, has been moved to this package fr
     function}
     \item{\code{.finSupport}}{logical: used internally to check whether the
      true support is finite; in case \code{img} is one-dimensional, it is
-     of length 2 (left and right end), otherwise it is of length 1.}
+     of length 2 (left and right end).}
     \item{\code{Symmetry}}{object of class \code{"DistributionSymmetry"};
      used internally to avoid unnecessary calculations.}
   }
