@@ -22,6 +22,13 @@ under the hood:
 + cleaned .Rd file E.Rd: It contained still some references to methods
   for extreme value distributions which are now in RobExtremes
   and some old mail reference peter.ruckdeschel@uni-bayreuth.de
++ DiscreteMVDistribution gains a (matrix valued) slot .FinSupport in analogy to the 
+  univariate DiscreteDistribution (idea: coordinatewise checking whether a multivariate 
+   observation could, in principle, lie in the support -- the 1st row states
+   whether the ith marginal distribution has a finite left endpoint, and the
+   2nd row if it is has a finite right endpoint); not yet further used
++ for consistency to the univariate methods, the liesInSupport() method for
+  DiscreteMVDistribution gains an argument checkFin, which is not yet used.
   
 ##############
 v 2.7

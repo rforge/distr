@@ -8,12 +8,16 @@
   distribution \code{object}.
 }
 \usage{
-\S4method{liesInSupport}{DiscreteMVDistribution,numeric}(object, x)
-\S4method{liesInSupport}{DiscreteMVDistribution,matrix}(object, x)
+\S4method{liesInSupport}{DiscreteMVDistribution,numeric}(object, x, checkFin = FALSE)
+\S4method{liesInSupport}{DiscreteMVDistribution,matrix}(object, x, checkFin = FALSE)
 }
 \arguments{
   \item{object}{ object of class \code{"Distribution"} }
   \item{x}{ numeric vector or matrix }
+  \item{checkFin}{ logical: in case \code{FALSE}, we simply check whether
+  \code{x} lies exactly in the \emph{numerical} support (of finitely many
+  support points); later on we might try to mimick the univariate case
+  more closely in case \code{TRUE}, but so far this is not yet used.}
 }
 %\details{}
 \value{logical vector}

@@ -50,11 +50,12 @@ setClass("MultivariateDistribution",
             contains = "Distribution")
 
 # discrete mulitvariate distribution
-setClass("DiscreteMVDistribution", representation(support = "matrix"),
+setClass("DiscreteMVDistribution", representation(support = "matrix", .finSupport = "matrix"),
             prototype(r = function(n){ matrix(rep(c(0,0), n), ncol=2) }, 
                       d = NULL, p = NULL, q = NULL, param = NULL,
                       img = new("EuclideanSpace", dimension = 2),
-                      support = matrix(c(0,0), ncol = 2)),
+                      support = matrix(c(0,0), ncol = 2),
+                      .finSupport = matrix(TRUE, nrow=2, ncol = 2)),
             contains = "MultivariateDistribution")
 
 # condition

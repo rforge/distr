@@ -27,6 +27,11 @@
       optional quantile function }
     \item{\code{support}}{ numeric matrix whose rows form the
       support of the distribution}
+    \item{\code{.finSupport}}{logical: (later on to be) used internally to check
+     whether the true support is finite; the element in the 1st row and ith column
+     indicates whether the ith marginal distribution has a finite left endpoint,
+     and the element in the  2nd row and ith column if it is has a finite right
+     endpoint); not yet further used.}
     \item{\code{.withArith}}{logical: used internally to issue warnings as to interpretation of arithmetics}
     \item{\code{.withSim}}{logical: used internally to issue warnings as to accuracy}
     \item{\code{.logExact}}{logical: used internally to flag the case where there are explicit formulae for the

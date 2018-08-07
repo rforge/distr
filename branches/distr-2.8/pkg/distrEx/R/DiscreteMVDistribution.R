@@ -77,7 +77,10 @@ DiscreteMVDistribution <- function(supp, prob, Symmetry = NoSymmetry()){
         ind <- ind1 & ind2
         sum(prob[ind])
     }
-        
+
+    lB <- apply(supp,2,function(x) all(x> (-Inf)))
+    uB <- apply(supp,2,function(x) all(x< Inf))
+
     MVD <- new("DiscreteMVDistribution")
     MVD@r <- rfun
     MVD@d <- dfun
@@ -91,7 +94,8 @@ DiscreteMVDistribution <- function(supp, prob, Symmetry = NoSymmetry()){
     MVD@.logExact <- TRUE 
     MVD@.lowerExact <- FALSE
     MVD@Symmetry <- Symmetry
-    
+    MVD@.finSupport <- rbind(lB,uB)
+
     return(MVD)
 }
 
