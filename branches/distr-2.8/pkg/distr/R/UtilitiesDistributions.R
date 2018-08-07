@@ -92,6 +92,7 @@ RtoDPQ.LC <- function(r, e = getdistrOption("RtoDPQ.e"),
    f.d <- DiscreteDistribution(supp = zz.replic, prob = d.r,
                      .withSim = TRUE, .withArith = TRUE,
                      .lowerExact = FALSE, .logExact = FALSE)
+   f.d@.finSupport <- c(TRUE,TRUE)
    rm(d.r,zz.replic,zz.T1)
   }
   rm(zz)

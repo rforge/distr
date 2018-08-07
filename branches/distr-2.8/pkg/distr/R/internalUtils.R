@@ -152,6 +152,7 @@ setAs("numeric","Integer",function(from) new("Integer",as.integer(from)))
                object@Symmetry <- SphericalSymmetry(SymmCenter(e1@Symmetry)+
                                                      SymmCenter(e2@Symmetry))   
 
+            object@.finSupport <- e1@.finSupport & e2@.finSupport
             object
           }
 
@@ -313,7 +314,7 @@ return(outC)
       return(diff(p(D)(x)))
 #      return((diff(p(D)(x))+diff(rev(p(D)(x,lower=FALSE))))/2)
    }else{
-      M <- q(D)(0.5);   L <- length(x)
+      M <- q.l(D)(0.5);   L <- length(x)
       x.l <- x [ x <= M ];  x.u <- x [ x >= M ]
       L.l <- length(x.l);   L.u <- length(x.u)
       if(L.u+L.l-L>0)
@@ -516,13 +517,16 @@ return(outC)
             pnew <- .makeP(e1, substitute(alist(q = q - e2), list(e2 = e2)))
             qnew <- .makeQ(e1, substitute(q0 + e2, list(e2 = e2)))
 
+            isfe2 <- c((e2>(-Inf)),(e2<Inf))
+
             if (Dclass == "AffLinDiscreteDistribution"){
                 object <- new("AffLinDiscreteDistribution", 
                               r = rnew, d = dnew, p = pnew,
                               q = qnew, support = supportnew,
                               a = e1@a, b = e1@b + e2, X0 = e1@X0,
                              .withSim = FALSE, .withArith = TRUE,
-                    .logExact = .logExact(e1), .lowerExact = .lowerExact(e1))
+                    .logExact = .logExact(e1), .lowerExact = .lowerExact(e1),
+                    .finSupport = e1@.finSupport& isfe2)
                 rm(supportnew)
 
             }else if (Dclass == "DiscreteDistribution"){
@@ -531,7 +535,8 @@ return(outC)
                               q = qnew, support = supportnew,
                               a = 1, b = e2, X0 = e1,
                              .withSim = FALSE, .withArith = TRUE,
-                    .logExact = .logExact(e1), .lowerExact = .lowerExact(e1))
+                    .logExact = .logExact(e1), .lowerExact = .lowerExact(e1),
+                    .finSupport = e1@.finSupport&isfe2)
                 rm(supportnew)
 
             }else if (Dclass == "AffLinAbscontDistribution"){
@@ -571,7 +576,15 @@ return(outC)
             body(rnew) <- substitute({ f(n, ...) * g },
                                          list(f = e1@r, g = e2))
 
+
             if (Dclass == "AffLinDiscreteDistribution"){
+                  if(is.finite(e2)){
+                     .finS <- e1@.finSupport
+                  }else{
+                     ep <- .Machine$double.eps
+                    .finS <- c(p(e1)(0)<ep,p(e1)(0)>1-ep)
+                  }
+            if(e2<0) .finS <- rev(.finS)
                  supportnew <- e1@support * e2
                  if (e2 < 0) supportnew <- rev(supportnew)
 
@@ -596,14 +609,22 @@ return(outC)
                  qnew <- .makeQ(substitute(e1, list(e1 = e1)),
                                 substitute(q0 * e2, list(e2 = e2)),
                                 sign = e2>0, Cont = FALSE)
+
                  object <- new(Dclass, r = rnew, d = dnew, p = pnew,
                                q = qnew, support = supportnew,
                                a = e1@a * e2, b = e2 * e1@b, X0 = e1@X0,                              
                               .withSim = FALSE, .withArith = TRUE,
-                    .logExact = .logExact(e1), .lowerExact = .lowerExact(e1))
+                    .logExact = .logExact(e1), .lowerExact = .lowerExact(e1),
+                    .finSupport = .finS)
                  rm(supportnew)
 
             }else if (Dclass == "DiscreteDistribution"){
+                  if(is.finite(e2)){
+                     .finS <- e1@.finSupport
+                  }else{
+                     ep <- .Machine$double.eps
+                    .finS <- c(p(e1)(0)<ep,p(e1)(0)>1-ep)
+                  }
                  supportnew <- e1@support * e2
                  if (e2 < 0) supportnew <- rev(supportnew)
 
@@ -625,11 +646,12 @@ return(outC)
                  qnew <- .makeQ(substitute(e1, list(e1 = e1)),
                                 substitute(q0 * e2, list(e2 = e2)),
                                 sign = e2>0, Cont = FALSE)
-                 object <- new("AffLinDiscreteDistribution", r = rnew, d = dnew, 
+                 object <- new("AffLinDiscreteDistribution", r = rnew, d = dnew,
                                p = pnew, q = qnew, support = supportnew,
                                a = e2, b = 0, X0 = e1,                              
                               .withSim = FALSE, .withArith = TRUE,
-                    .logExact = .logExact(e1), .lowerExact = .lowerExact(e1))
+                    .logExact = .logExact(e1), .lowerExact = .lowerExact(e1),
+                    .finSupport = .finS)
                  rm(supportnew)
 
             }else if (Dclass == "AffLinAbscontDistribution"){
@@ -637,11 +659,12 @@ return(outC)
                  if(is.null(e1@gaps))
                     gapsnew <- NULL
                  else {gapsnew <- e1@gaps
+                       if(nrow(gapsnew)){
                        if(is.numeric(gapsnew)&&length(gapsnew)>0){
                           gapsnew <- matrix(gapsnew * e2, ncol=2)
                           if (e2 < 0) gapsnew <-
                              gapsnew[rev(seq(nrow(gapsnew))),c(2,1),drop = FALSE]
-                       }
+                       }}
                  }, silent=TRUE)
                  if(is(trY,"try-error")) gapsnew <- NULL
                  dnew <- .makeD(substitute(e1, list(e1 = e1)),
@@ -915,10 +938,10 @@ return(f)
      {xx <- px.l[!ix]; yy <- x[!ix]}
   else  
      {xx <- px.l; yy <- x}
-  q.l <- mfun(x = xx, y = yy, yleft = yL, yright = yR)
+  q.l0 <- mfun(x = xx, y = yy, yleft = yL, yright = yR)
   rm(xx,yy)
   if(notwithLLarg){
-     ifElseQS <- quote(if (lower.tail) q.l(p01) else q.l(1-p01))
+     ifElseQS <- quote(if (lower.tail) q.l0(p01) else q.l0(1-p01))
   }else{
 #         px.u <- rev(px.u);
          x <- rev(x)
@@ -928,7 +951,7 @@ return(f)
          yy <- if (Cont) x[!ix] else x[rev(!ix)]
          q.u <- mfun(x = xx, y = yy, yleft = yR, yright = yL)
          rm(xx,yy)
-     ifElseQS <- quote(if (lower.tail) q.l(p01) else q.u(p01))
+     ifElseQS <- quote(if (lower.tail) q.l0(p01) else q.u(p01))
   }
   options(warn = o.warn)
   qfun <- function(p, lower.tail = TRUE, log.p = FALSE){}
@@ -976,7 +999,8 @@ return(f)
                            r = rnew, d = dnew, p = pnew,
                            q = qnew, support = supportnew,
                           .withSim = FALSE, .withArith = TRUE,
-                    .logExact = .logExact(e1), .lowerExact = .lowerExact(e1))
+                    .logExact = .logExact(e1), .lowerExact = .lowerExact(e1),
+                    .finSupport = c(TRUE,e1@.finSupport[2]))
             rm(supportnew)
             rm(pnew, qnew, dnew, rnew)
             object
@@ -1041,7 +1065,8 @@ return(f)
                            r = rnew, d = dnew, p = pnew,
                            q = qnew, support = supportnew,
                           .withSim = FALSE, .withArith = TRUE,
-                    .logExact = .logExact(e1), .lowerExact = .lowerExact(e1))
+                    .logExact = .logExact(e1), .lowerExact = .lowerExact(e1),
+                    .finSupport = c(TRUE,e1@.finSupport[2]))
             rm(supportnew)
             rm(pnew, qnew, dnew, rnew)
             object
@@ -1115,9 +1140,10 @@ return(.makeQNew(xx + 0.5*h, px.l, px.u, FALSE, qL, qU))
 #determines slot p from q
 
 .Q2P <- function(q, ngrid = getdistrOption("DefaultNrGridPoints")){
+q.l <- q
 ep <- getdistrOption("TruncQuantile")^2
 xx0 <- seq(ep, 1-ep, length = ngrid)
-qx0 <- q(xx0)
+qx0 <- q.l(xx0)
 qx1 <- unique(qx0)
 x1 <- tapply(xx0, qx0, max)
 p0 <- approxfun(x = qx1, y = x1, yleft = 0, yright = 1, rule = 2)

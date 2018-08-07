@@ -16,6 +16,16 @@ user-visible CHANGES:
 + plot methods now return an S3 object of class \code{c("plotInfo","DiagnInfo")}, i.e., a list containing the 
   information needed to produce the respective plot, which at a later stage could be used by different graphic engines (like, e.g. 
   \code{ggplot}) to produce the plot in a different framework. A more detailed description will follow in a subsequent version.
++ accessor & replacer for prob, GeomParameter are finally Defunct
++ liesInSupport gains an argument checkFin; in case of DiscreteDistributions, it tries to use 
+  additional information from internal slot .finSupport, and e.g. if there is a lattice.  
++ liesInSupport now also is available for UnivarLebDecDistribution, LatticeDistribution, and UnivarMixingDistribution
+
+under the hood:
++ DiscreteDistribution(s) gain a logical slot .finSupport to better control whether the 
+  "true" support (not the possibly truncated one in slot support) is infinite (more precisely
+  it is of length 2 -- first coordinate if the lower bound of the support is finite, second if 
+  the upper bound is finite)
 
 ##############
 v 2.7

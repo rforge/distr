@@ -300,7 +300,7 @@ if(!isGeneric("liesIn"))
    setGeneric("liesIn", function(object, x) standardGeneric("liesIn"))
 
 if(!isGeneric("liesInSupport")) 
-   setGeneric("liesInSupport", function(object, x) 
+   setGeneric("liesInSupport", function(object, x, checkFin = FALSE)
                                standardGeneric("liesInSupport"))
 if(!isGeneric("convpow")) 
     setGeneric("convpow", function(D1, ...) standardGeneric("convpow"))
