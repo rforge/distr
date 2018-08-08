@@ -13,6 +13,7 @@ v 2.8
 
 user-visible CHANGES:
 + DESCRIPTION tag SVNRevision changed to VCS/SVNRevision
++ mention the more refined version of liesInSupport in the vignette 
 
 ##############
 v 2.7

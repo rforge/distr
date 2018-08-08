@@ -465,7 +465,10 @@ to convert such an object to the new format, respectively.\\
 Class \code{DiscreteDistribution} has a slot \code{support}, a vector containing 
 the support of the distribution, which is truncated to the lower/upper 
 \code{TruncQuantile} in case of an infinite support. \code{TruncQuantile} is a 
-global option of  \pkg{distr} described in section~{\ref{options}}. 
+global option of  \pkg{distr} described in section~{\ref{options}}. For version
+2.8.0 on, it has an additional internal slot \code{.finSupport} which is a
+logical of length 2. The first entry says if the left endpoint of the distribution
+is finite, the second if the right endpoint is finite.
 
 
 Also from version 1.9 on, class \code{DiscreteDistribution} has a subclass 
@@ -1674,7 +1677,10 @@ produce a grid behind the panel.
 \subsection[liesInSupport]{\code{liesInSupport}}
 For all discrete distribution classes, we have methods \code{liesInSupport} to 
 check whether a given vector/ a matrix of points lies in the support of the 
-distribution.
+distribution. From version 2.8.0 on, we have better control on situations
+where the true support of the distribution is large/infinite to one or both
+sides---before it used \code{support}, which in this case is truncated to
+the relevant support points.
 
 \subsection[Simulation (in package distrSim)]%
 {Simulation (in package \pkg{distrSim})}
