@@ -13,6 +13,7 @@ v 2.8
 
 user-visible CHANGES:
 
++ require more recent versions of distr, distrEx
 + plot methods now return an S3 object of class \code{c("plotInfo","DiagnInfo")}, i.e., a list containing the 
   information needed to produce the respective plot, which at a later stage could be used by different graphic engines (like, e.g. 
   \code{ggplot}) to produce the plot in a different framework. A more detailed description will follow in a subsequent version.
@@ -34,7 +35,9 @@ user-visible CHANGES:
 + added some theory/references to help file to MD estimators
 + the L2derivatives of the SimpleL2ParamFamilies and the L2GroupFamilies now respect 
   restrictions in the support of the underlying distribution: the L2derivatives are 0
-  whenever the argument x has liesInSupport(distribution,x) == FALSE
+  whenever the argument x has liesInSupport(distribution,x, checkFin = TRUE) == FALSE
+  (i.e., in discrete distiributions, with a more refined version, extending the checking
+  of the numerically truncated support).
 + new model class / generator LogisticLocationScaleFamily
   
 bug fixes
