@@ -187,7 +187,7 @@ NbinomFamily <- function(size = 1, prob = 0.5, trafo){
 }
 
 
-NbinomwithSizeFamily <- function(size = 1, prob = 0.5, trafo,
+ NbinomwithSizeFamily <- function(size = 1, prob = 0.5, trafo,
                 withL2derivDistr = TRUE){
     name <- "Negative Binomial family"
     distribution <- Nbinom(size = size, prob = prob)
@@ -240,8 +240,8 @@ NbinomwithSizeFamily <- function(size = 1, prob = 0.5, trafo,
     FisherInfo.fct <- function(param){
                    prob.0 <- main(param)["prob"]
                    size.0 <- main(param)["size"]
-                   xn <- 0:min(max(support(Nbinom(size = size.0, prob = prob.0))),
-                               qnbinom(1e-6,size=size.0,prob=prob.0,lower.tail=FALSE),
+                   xn <- 1:min(max(max(support(Nbinom(size = size.0, prob = prob.0))),
+                               qnbinom(1e-6,size=size.0,prob=prob.0,lower.tail=FALSE)),
                                1e5)
                    I11 <- -sum((trigamma(xn+size.0)-trigamma(size.0))*dnbinom(xn,size=size.0,prob=prob.0))
                    I12 <- -1/prob.0
@@ -338,8 +338,8 @@ NbinomMeanSizeFamily <- function(size = 1, mean = .5, trafo,
                    mean.0 <- main(param)["mean"]
                    size.0 <- main(param)["size"]
                    prob.00 <- size.0/(size.0+mean.0)
-                   xn <- 0:min(max(support(Nbinom(size = size.0, prob = prob.00))),
-                               qnbinom(1e-6,size=size.0,prob=prob.00,lower.tail=FALSE),
+                   xn <- 1:min(max(max(support(Nbinom(size = size.0, prob = prob.0))),
+                               qnbinom(1e-6,size=size.0,prob=prob.0,lower.tail=FALSE)),
                                1e5)
                    I11 <- -sum((trigamma(xn+size.0)-trigamma(size.0))*dnbinom(xn,size=size.0,prob=prob.00))
                    I12 <- -1/prob.00
