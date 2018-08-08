@@ -200,7 +200,7 @@ L2ScaleFamily <- function(scale = 1, loc = 0, name, centraldistribution = Norm()
                    distr.0 <- scale.0*centraldistribution + loc
                    fct <- function(x){}
                    body(fct) <- substitute({y <- 0*x
-                                 inS <- liesInSupport(distr.0, x)
+                                 inS <- liesInSupport(distr.0, x, checkFin = TRUE)
                                  y[inS] <- ((x[inS] - loc.1)/scale*LogDeriv((x[inS] - loc.1)/scale.1)-1)/scale.1
                                  return(y)},
                                  list(loc.1 = loc, scale.1 = scale.0))
@@ -744,12 +744,12 @@ L2ScaleUnknownLocationFamily <- function(loc = 0, scale = 1, name,
                    fct1 <- function(x){}
                    fct2 <- function(x){}
                    body(fct1) <- substitute({y <- 0*x
-                                   inS <- liesInSupport(distr.0, x)
+                                   inS <- liesInSupport(distr.0, x, checkFin = TRUE)
                                    y[inS] <-  LogDeriv((x[inS] - loc.1)/scale.1)/scale.1
                                    return(y)},
                                    list(loc.1 = mean.0, scale.1 = sd.0))
                    body(fct2) <- substitute({y <- 0*x
-                                   inS <- liesInSupport(distr.0, x)
+                                   inS <- liesInSupport(distr.0, x, checkFin = TRUE)
                                    y[inS] <- ((x[inS] - loc.1)/scale.1 *
                                       LogDeriv((x[inS] - loc.1)/scale.1)-1)/scale.1
                                    return(y)},

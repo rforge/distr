@@ -31,7 +31,7 @@ BinomFamily <- function(size = 1, prob = 0.5, trafo){
                    distr.0 <- Binom(size = size, prob = prob.0)
                    fct <- function(x){}
                    body(fct) <- substitute({y <- 0*x
-                                 inS <- liesInSupport(distr.0, x)
+                                 inS <- liesInSupport(distr.0, x, checkFin = TRUE)
                                  y[inS] <- (x[inS]-size*prob.1)/(prob.1*(1-prob.1))
                                  return(y)},
                                 list(size = size, prob.1 = prob.0))
@@ -90,7 +90,7 @@ PoisFamily <- function(lambda = 1, trafo){
                    distr.0 <- Pois(lambda=lambda.0)
                    fct <- function(x){}
                    body(fct) <- substitute({y <- 0*x
-                                 inS <- liesInSupport(distr.0, x)
+                                 inS <- liesInSupport(distr.0, x, checkFin = TRUE)
                                  y[inS] <- x[inS]/lambda.1-1
                                  return(y)},
                                 list(lambda.1 = lambda.0))
@@ -153,7 +153,7 @@ NbinomFamily <- function(size = 1, prob = 0.5, trafo){
                    fct <- function(x){}
                    body(fct) <- substitute({
                                  y <- 0*x
-                                 inS <- liesInSupport(distr.0, x)
+                                 inS <- liesInSupport(distr.0, x, checkFin = TRUE)
                                  y[inS] <- (size/prob.1- x[inS]/(1-prob.1))
                                  return(y)},
                                 list(size = size, prob.1 = prob.0))
@@ -217,13 +217,13 @@ NbinomwithSizeFamily <- function(size = 1, prob = 0.5, trafo,
                    fct2 <- function(x){}
                    body(fct2) <- substitute({
                                 y <- 0*x
-                                inS <- liesInSupport(distr.0, x)
+                                inS <- liesInSupport(distr.0, x, checkFin = TRUE)
                                 y[inS] <- (size.1/prob.1- x[inS]/(1-prob.1))
                                 return(y)},
                                 list(size.1 = size.0, prob.1 = prob.0))
                    body(fct1) <- substitute({
                                  y <- 0*x
-                                 inS <- liesInSupport(distr.0, x)
+                                 inS <- liesInSupport(distr.0, x, checkFin = TRUE)
                                  y[inS] <- digamma(x[inS]+size.1)-digamma(size.1)+log(prob.1)
                                  return(y)},
                                 list(size.1 = size.0, prob.1 = prob.0))
@@ -303,17 +303,17 @@ NbinomMeanSizeFamily <- function(size = 1, mean = .5, trafo,
                    fct1.2 <- function(x){}
                    fct2 <- function(x){}
                    body(fct1) <- substitute({y <- 0*x
-                                    inS <- liesInSupport(distr.0, x)
+                                    inS <- liesInSupport(distr.0, x, checkFin = TRUE)
                                     y[inS] <- digamma(x[inS]+size.1)-digamma(size.1)+log(prob.1)
                                     return(y)},
                                 list(size.1 = size.00, prob.1 = prob.00))
                    body(fct1.2)<- substitute({y <- 0*x
-                                    inS <- liesInSupport(distr.0, x)
+                                    inS <- liesInSupport(distr.0, x, checkFin = TRUE)
                                     y[inS] <-  (size.1/prob.1- x[inS]/(1-prob.1))
                                     return(y)},
                                 list(size.1 = size.00, prob.1 = prob.00))
                    body(fct2)  <- substitute({y <- 0*x
-                                    inS <- liesInSupport(distr.0, x)
+                                    inS <- liesInSupport(distr.0, x, checkFin = TRUE)
                                     y[inS] <-   (1/prob.1-1)* fct1(x[inS]) -
                                                  size.1/prob.1^2 * fct1.2(x[inS])
                                     return(y)},
@@ -403,12 +403,12 @@ GammaFamily <- function(scale = 1, shape = 1, trafo, withL2derivDistr = TRUE){
                    fct1 <- function(x){}
                    fct2 <- function(x){}
                    body(fct1) <- substitute({y <- 0*x
-                                    inS <- liesInSupport(distr.0, x)
+                                    inS <- liesInSupport(distr.0, x, checkFin = TRUE)
                                     y[inS] <- (x[inS]/scale.1 - shape.1)/scale.1
                                     return(y)},
                         list(scale.1 = scale.0, shape.1 = shape.0))
                    body(fct2) <- substitute({y <- 0*x
-                                    inS <- liesInSupport(distr.0, x)
+                                    inS <- liesInSupport(distr.0, x, checkFin = TRUE)
                                     y[inS] <-  log(x[inS]/scale.1) - digamma(shape.1)
                                     return(y)},
                         list(scale.1 = scale.0, shape.1 = shape.0))
@@ -500,13 +500,13 @@ BetaFamily <- function(shape1 = 1, shape2 = 1, trafo, withL2derivDistr = TRUE){
                    fct1 <- function(x){}
                    fct2 <- function(x){}
                    body(fct1) <- substitute({y <- 0*x
-                                    inS <- liesInSupport(distr.0, x)
+                                    inS <- liesInSupport(distr.0, x, checkFin = TRUE)
                                     y[inS] <- log(x[inS])-digamma(shape1.1)+
                                               digamma(shape1.1+shape2.1)
                                     return(y)},
                         list(shape1.1 = shape1.0, shape2.1 = shape2.0))
                    body(fct2) <- substitute({y <- 0*x
-                                    inS <- liesInSupport(distr.0, x)
+                                    inS <- liesInSupport(distr.0, x, checkFin = TRUE)
                                     y[inS] <- log(1-x[inS])-digamma(shape2.1)+
                                              digamma(shape1.1+shape2.1)
                                     return(y)},
