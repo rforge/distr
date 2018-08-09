@@ -100,7 +100,7 @@ MDEstimator <- function(x, ParamFamily, distance = KolmogorovDist,
     return(res)
 }
 
-CvMMDEstimator <- function(x, ParamFamily, muDatOrMod = c("Dat","Mod", "Other"),
+CvMMDEstimator <- function(x, ParamFamily, muDatOrMod = c("Mod", "Dat", "Other"),
                            mu = NULL,
                            paramDepDist = FALSE,
                            startPar = NULL, Infos,

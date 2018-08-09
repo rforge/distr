@@ -39,6 +39,7 @@ user-visible CHANGES:
   (i.e., in discrete distiributions, with a more refined version, extending the checking
   of the numerically truncated support).
 + new model class / generator LogisticLocationScaleFamily
++ changed default for CvMMDEstiamtor to variant "Mod" (consistent to fitdistrplus)
   
 bug fixes
 + discovered some issues with local variables in L2Families (global values were used instead...)  
@@ -90,6 +91,7 @@ under the hood:
 + based on this tag "( mu = ... )" later on, in pkg RobAStBase, a (conditional) 
   coerce method produces the pIC of the MDE by means of .CvMMDCovariance[WithMux]
 + new subclasses "MLEstimate", "MDEstimate", "CvMMDEstimate" for internal method dispatch  
+
 ##############
 v 2.7
 ##############

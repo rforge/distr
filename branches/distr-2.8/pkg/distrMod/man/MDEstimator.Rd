@@ -17,7 +17,7 @@ MDEstimator(x, ParamFamily, distance = KolmogorovDist, dist.name,
             penalty = 1e20, validity.check = TRUE, asvar.fct, na.rm = TRUE,
             ..., .withEvalAsVar = TRUE, nmsffx = "",
             .with.checkEstClassForParamFamily = TRUE)
-CvMMDEstimator(x, ParamFamily, muDatOrMod = c("Dat","Mod", "Other"),
+CvMMDEstimator(x, ParamFamily, muDatOrMod = c("Mod","Dat", "Other"),
             mu = NULL, paramDepDist = FALSE, startPar = NULL, Infos,
             trafo = NULL, penalty = 1e20, validity.check = TRUE, 
             asvar.fct = .CvMMDCovariance, na.rm = TRUE, ...,
@@ -52,7 +52,7 @@ CvMDist2(e1,e2,... )
         integration (probability) measure / distribution \code{mu}
         (corresponding to argument value \code{"Other"}) is to be used;
          must be one of "Dat" (default) or "Mod" or "Other".
-         You can specify just the initial letter.}
+         You can specify just the initial letter; the default is \code{"Mod"}.}
   \item{mu}{ optional integration (probability) measure for CvM MDE.
              defaults to \code{NULL} and is ignored in options
              \code{muDatOrMod} in \code{"Dat"} and \code{"Mod"};
@@ -191,20 +191,20 @@ MDEstimator(x = x, ParamFamily = G, distance = KolmogorovDist)
 ## or
 KolmogorovMDEstimator(x = x, ParamFamily = G)
 
-## von Mises minimum distance estimator with default mu
+## von Mises minimum distance estimator with default mu = Mod
 MDEstimator(x = x, ParamFamily = G, distance = CvMDist)
 
 \donttest{
-## von Mises minimum distance estimator with default mu
+## von Mises minimum distance estimator with default mu = Mod
 MDEstimator(x = x, ParamFamily = G, distance = CvMDist,
             asvar.fct = .CvMMDCovarianceWithMux)
 ## or
 CvMMDEstimator(x = x, ParamFamily = G)
 ## or
-CvMMDEstimator(x = x, ParamFamily = G, muDatOrMod="Dat")
-
-## or with model based integration measure:
 CvMMDEstimator(x = x, ParamFamily = G, muDatOrMod="Mod")
+
+## or with data based integration measure:
+CvMMDEstimator(x = x, ParamFamily = G, muDatOrMod="Dat")
 
 ## von Mises minimum distance estimator with mu = N(0,1)
 MDEstimator(x = x, ParamFamily = G, distance = CvMDist, mu = Norm())
