@@ -104,8 +104,10 @@
               as0 <- if(is(asvar.try,"try-error")) NULL else asvar.try
               return(as0)
            }
-           asvar <- substitute(do.call(asfct, args=c(list(PFam0, param0, ...))),
-                               list(asfct=asvar.tfct, PFam0=PFam, param0=param))
+           dots.now <- list(...)
+           asvar <- substitute(do.call(asfct, args=c(list(PFam0, param0),dots.s)),
+                               list(asfct=asvar.tfct, PFam0=PFam, param0=param,
+                                    dots.s = dots.now))
        }
 #    print(eval(asvar))
     if(.withEvalAsVar) asvar <- eval(asvar)
