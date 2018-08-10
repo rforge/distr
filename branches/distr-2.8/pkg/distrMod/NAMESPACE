@@ -82,7 +82,7 @@ export("ParamFamParameter", "ParamFamily", "L2ParamFamily",
        "NormScaleFamily", "ExpScaleFamily",
        "LnormScaleFamily", "GammaFamily", "BetaFamily", "NormLocationScaleFamily",
        "CauchyLocationScaleFamily", "NbinomwithSizeFamily", "NbinomMeanSizeFamily",
-	   "LogisticLocationScaleFamily")
+	   "LogisticLocationScaleFamily", "CauchyLocationFamily")
 export("asCov", "trAsCov", "asHampel", "asBias", "asMSE", "asUnOvShoot", 
        "fiCov", "trFiCov", "fiHampel", "fiMSE", "fiBias", "fiUnOvShoot")
 export("positiveBias", "negativeBias", "symmetricBias", 

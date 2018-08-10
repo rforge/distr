@@ -14,7 +14,7 @@ packages \pkg{distr}, \pkg{distrEx}, \pkg{distrSim}, \pkg{distrTEst},
 \tabular{ll}{
 Package: \tab distrDoc \cr
 Version: \tab 2.8.0 \cr
-Date: \tab 2018-07-08 \cr
+Date: \tab 2018-08-10 \cr
 Depends: \tab R(>= 2.14.0) \cr
 Imports: \tab distr(>= 2.2.0), distrEx(>= 2.2.0), distrSim(>= 2.2.0), distrTEst(>= 2.2.0),
         distrTeach(>= 2.2.0), RandVar(>= 0.7), distrMod(>= 2.2.0), MASS, methods,
@@ -23,7 +23,7 @@ Suggests: \tab Biobase \cr
 ByteCompile: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-VCS/SVNRevision: \tab 1171 \cr
+VCS/SVNRevision: \tab 1265 \cr
 }}
 
 
