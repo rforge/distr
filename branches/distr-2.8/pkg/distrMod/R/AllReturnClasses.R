@@ -39,6 +39,9 @@ setClass("BetaFamily",
 ## Normal location family
 setClass("NormLocationFamily",
           contains = "L2LocationFamily")
+## Cauchy location family
+setClass("CauchyLocationFamily",
+          contains = "L2LocationFamily")
 
 ## Normal scale family
 setClass("NormScaleFamily",

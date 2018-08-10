@@ -623,7 +623,7 @@ NormLocationScaleFamily <- function(mean = 0, sd = 1, trafo){
     if(missing(trafo)) {trafo <- diag(2) 
                         dimnames(trafo) <- list(lsname,lsname)}
     res <- L2LocationScaleFamily(loc = mean, scale = sd, 
-              name = "normal location and scale family", 
+              name = "normal location and scale family",
               locscalename = lsname, 
               modParam = function(theta) Norm(mean = theta[1], sd = theta[2]),
               LogDeriv = function(x) x,
@@ -727,6 +727,35 @@ LnormScaleFamily <- function(meanlog = 0, sdlog = 1, trafo){
 }
 
 
+##################################################################
+## Cauchy location family
+##################################################################
+CauchyLocationFamily <- function(loc = 0, scale = 1, trafo){
+    if(missing(trafo)) trafo <- matrix(1, dimnames=list("loc","loc"))
+    modParam <- function(theta){}
+    body(modParam) <- substitute({ Cauchy(loc = theta, scale = scale0) },
+                                 list(scale0 = scale))
+    res <- L2LocationFamily(loc = loc, name = "Cauchy location family",
+                     locname = c("loc"="loc"),
+                     centraldistribution = Cauchy(location = 0, scale = scale),
+                     modParam = modParam,
+                     LogDeriv = function(x)  2*x/(x^2+1),
+                     L2derivDistr.0 = Arcsine(),
+                     distrSymm = SphericalSymmetry(SymmCenter = loc),
+                     L2derivSymm = FunSymmList(OddSymmetric(SymmCenter = loc)),
+                     L2derivDistrSymm = DistrSymmList(SphericalSymmetry()),
+                     FisherInfo.0 = matrix(1/2/scale^2, dimnames = list("loc","loc")),
+                     trafo = trafo, .returnClsName = "CauchyLocationFamily")
+    if(!is.function(trafo))
+       f.call <- substitute(CauchyLocationFamily(loc = m, scale = s,
+                                trafo = matrix(Tr, dimnames=list("mean","mean"))),
+                         list(m = loc, s = scale, Tr = trafo))
+    else
+       f.call <- substitute(NormLocationFamily(loc = m, scale = s, trafo = Tr),
+                         list(m = loc, s = scale, Tr = trafo))
+    res@fam.call <- f.call
+    return(res)
+}
 
 
 ##################################################################

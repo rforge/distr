@@ -38,7 +38,7 @@ user-visible CHANGES:
   whenever the argument x has liesInSupport(distribution,x, checkFin = TRUE) == FALSE
   (i.e., in discrete distiributions, with a more refined version, extending the checking
   of the numerically truncated support).
-+ new model class / generator LogisticLocationScaleFamily
++ new model classes / generators LogisticLocationScaleFamily, CauchyLocationFamily
 + changed default for CvMMDEstiamtor to variant "Mod" (consistent to fitdistrplus)
   
 bug fixes
@@ -70,6 +70,11 @@ under the hood:
    otherwise they are not; correspondingly "x" is passed on to .process.meCalcRes in
    MCEstimator(), MDEstimator(), MLEstimator(). 
 + old .CvMMDCovariance() becomes .oldCvMMDCovariance
++ revised .CvMMDCovariance() to get more performant for discrete distributions / 
+   -> thereby corrected an error in the intermediate formulae, which by
+  centering/standarizing of the IC in the end already cancelled out beforehand...
+  but now we are more accurate as to differences in the integration measure mu 
+  and the model distribution (important for integration w.r.t. emp. measure)
 + new wrapper .CvMMDCovarianceWithMux which uses emp cdf as mu
 + new wrappe CvMDist2 which by default uses model distribution as mu
 + CvMMDEstimator gains argument muDatOrMod = c("Dat","Mod") to distinguish two cases

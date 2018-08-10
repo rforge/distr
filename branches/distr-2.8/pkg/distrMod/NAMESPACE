@@ -37,7 +37,7 @@ exportClasses("ParamWithScaleFamParameter", "ParamWithShapeFamParameter",
 exportClasses("BinomFamily","PoisFamily", "NormLocationFamily",
        "NormScaleFamily", "ExpScaleFamily",
        "LnormScaleFamily", "GammaFamily", "BetaFamily", "NormLocationScaleFamily",
-       "CauchyLocationScaleFamily", "LogisticLocationScaleFamily")
+       "CauchyLocationScaleFamily", "LogisticLocationScaleFamily", "CauchyLocationFamily")
 exportClasses("NormType", "QFNorm", "InfoNorm", "SelfNorm")
 exportClasses("Estimate", "MCEstimate", "MLEstimate", "MDEstimate", "CvMMDEstimate")
 exportClasses("Confint")
