@@ -82,7 +82,7 @@ PoisFamily <- function(lambda = 1, trafo){
                                trafo = trafo)
     modifyParam <- function(theta){ Pois(lambda = theta) }
     props <- character(0)
-    startPar <- function(x,...) c(.Machine$double.eps,max(x))
+    startPar <- function(x,...) c(.Machine$double.eps,median(x)+10*max(mad(x),1))
     makeOKPar <- function(param) {if(param<=0) return(.Machine$double.eps)
                                   return(param)}
     L2deriv.fct <- function(param){

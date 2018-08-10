@@ -102,6 +102,7 @@ under the hood:
   coerce method produces the pIC of the MDE by means of .CvMMDCovariance[WithMux]
 + new subclasses "MLEstimate", "MDEstimate", "CvMMDEstimate" for internal method dispatch  
 + (robust) start parameters for Nbinom family with two parameters
++ (robust) start (search) parameters for Poisson family 
 
 
 ##############
