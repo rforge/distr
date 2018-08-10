@@ -202,7 +202,11 @@ NbinomFamily <- function(size = 1, prob = 0.5, trafo){
     body(modifyParam) <- substitute({ Nbinom(size = theta[1], prob = theta[2]) })
     props <- ""
     
-    startPar <- function(x,...){ param1 <- c(1,0.5)
+    startPar <- function(x,...){ m0 <- median(x)
+                                 s0 <- mad(x)
+                                 p0 <- min(0.99,max(m0/s0^2,0.01))
+                                 n0 <- m0^2/max(s0^2-m0,0.1)
+                                 param1 <- c(n0,p0)
                                  names(param1) <- c("size","prob")
                                  return(param1)}
     makeOKPar <- function(param) {if(param["prob"]<=0) param["prob"] <- .Machine$double.eps
@@ -259,7 +263,7 @@ NbinomFamily <- function(size = 1, prob = 0.5, trafo){
         .returnClsName = "NbinomwithSizeFamily")
     if(!is.function(trafo))
        f.call <- substitute(NbinomwithSizeFamily(size = s, prob = p,
-  	                     trafo = matrix(Tr, dimnames = DN)),
+  	                     trafo = matrix(Tr, 2,2, dimnames = DN)),
   	                     list(s = size, p = prob, Tr = trafo,
                          DN = list(nms,nms)))    
     else
@@ -290,7 +294,10 @@ NbinomMeanSizeFamily <- function(size = 1, mean = .5, trafo,
     body(modifyParam) <- substitute({ Nbinom(size = theta[1], prob = theta[1]/(theta[1]+theta[2])) })
     props <- ""
     
-    startPar <- function(x,...){ param1 <- c(1,0.5)
+    startPar <- function(x,...){ m0 <- median(x)
+                                 s0 <- mad(x)
+                                 n0 <- m0^2/max(s0^2-m0,0.1)
+                                 param1 <- c(n0,m0)
                                  names(param1) <- c("size","mean")
                                  return(param1)}
     makeOKPar <- function(param) {if(param["mean"]<=0) param["mean"] <- .Machine$double.eps
@@ -363,7 +370,7 @@ NbinomMeanSizeFamily <- function(size = 1, mean = .5, trafo,
         .returnClsName = "NbinomMeanSizeFamily")
     if(!is.function(trafo)){
        f.call <- substitute(NbinomMeanSizeFamily(size = s, mean = m,
-  	                     trafo = matrix(Tr, dimnames = DN)),
+  	                     trafo = matrix(Tr, 2,2, dimnames = DN)),
   	                     list(s = size, m = mean, Tr = trafo, DN = list(nms,nms)))    
     }else{
        f.call <- substitute(NbinomMeanSizeFamily(size = s, mean = m,

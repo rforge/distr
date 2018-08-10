@@ -52,6 +52,8 @@ bug fixes
 + argument distance did not show it came from CvMDist, CvMDist2 via CvMMDEstiamtor when unparsed -- 
   now the unparsed argument in CvMMDEstimator is called CvMDist0 so shows that it is related to 
   CvMDist 
++ in fam.fall to NbinomFamily (with two parameters ) we had matrix(Tr, dimnames = DN) without
+  specifying nrow and ncol 
   
 under the hood:
 
@@ -65,16 +67,19 @@ under the hood:
    + in case <paramname>.0 is already used otherwise (as in NbinomMeanSizeFamily) we use <paramname>.00 instead
 + replaced integration for AbscontDistribution(s) in .CvMMDCovariance by integration on quantile scale
    => CvMMDEstimator now works with variances even for Gamma distributions for shape < 1 ...   
-+ .process.meCalcRes gains arg "x" to be able to pass on emp.CDF for mu in CvMMDEstimator
-   if arg asvar.fct of MCEstimator has "x" in formals the observations x are passed on to asvar.fct, 
-   otherwise they are not; correspondingly "x" is passed on to .process.meCalcRes in
-   MCEstimator(), MDEstimator(), MLEstimator(). 
-+ old .CvMMDCovariance() becomes .oldCvMMDCovariance
++ tuned .CvMMDCovariance() in asCvMVarianceQtl.R for speed (like with kStepEstimator timings are 
+   taken in comment ##-t-##) as the function .CvMMDCovariance was much slower than 
+   .oldCvMMDCovariance for Generalized EVD with Mu Unknown... / now they are at equal there 
 + revised .CvMMDCovariance() to get more performant for discrete distributions / 
    -> thereby corrected an error in the intermediate formulae, which by
   centering/standarizing of the IC in the end already cancelled out beforehand...
   but now we are more accurate as to differences in the integration measure mu 
   and the model distribution (important for integration w.r.t. emp. measure)
++ .process.meCalcRes gains arg "x" to be able to pass on emp.CDF for mu in CvMMDEstimator
+   if arg asvar.fct of MCEstimator has "x" in formals the observations x are passed on to asvar.fct, 
+   otherwise they are not; correspondingly "x" is passed on to .process.meCalcRes in
+   MCEstimator(), MDEstimator(), MLEstimator(). 
++ old .CvMMDCovariance() becomes .oldCvMMDCovariance
 + new wrapper .CvMMDCovarianceWithMux which uses emp cdf as mu
 + new wrappe CvMDist2 which by default uses model distribution as mu
 + CvMMDEstimator gains argument muDatOrMod = c("Dat","Mod") to distinguish two cases
@@ -96,6 +101,8 @@ under the hood:
 + based on this tag "( mu = ... )" later on, in pkg RobAStBase, a (conditional) 
   coerce method produces the pIC of the MDE by means of .CvMMDCovariance[WithMux]
 + new subclasses "MLEstimate", "MDEstimate", "CvMMDEstimate" for internal method dispatch  
++ (robust) start parameters for Nbinom family with two parameters
+
 
 ##############
 v 2.7
