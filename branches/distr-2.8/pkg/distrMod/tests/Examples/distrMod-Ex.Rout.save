@@ -280,6 +280,63 @@ $maximum.deviation
 > base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 > base::cat("BinomFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
+> nameEx("CauchyLocationFamily")
+> ### * CauchyLocationFamily
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: CauchyLocationFamily
+> ### Title: Generating function for Cauchy location families
+> ### Aliases: CauchyLocationFamily
+> ### Keywords: models
+> 
+> ### ** Examples
+> 
+> (C1 <- CauchyLocationFamily())
+An object of class "CauchyLocationFamily"
+### name:	Cauchy location family
+
+### distribution:	Distribution Object of Class: Cauchy
+ location: 0
+ scale: 1
+
+### param:	An object of class "ParamFamParameter"
+name:	loc
+loc:	0
+trafo:
+    loc
+loc   1
+
+### props:
+[1] "The Cauchy location family is invariant under"
+[2] "the group of transformations 'g(x) = x + loc'"
+[3] "with location parameter 'loc'"                
+> plot(C1)
+> FisherInfo(C1)
+An object of class "PosDefSymmMatrix"
+    loc
+loc 0.5
+> ### need smaller integration range:
+> checkL2deriv(C1)
+precision of centering:	 9.75782e-18 
+precision of Fisher information:
+              loc
+loc -1.061373e-13
+precision of Fisher information - relativ error [%]:
+              loc
+loc -2.122746e-11
+condition of Fisher information:
+[1] 1
+$maximum.deviation
+[1] 1.061373e-13
+
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("CauchyLocationFamily", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
 > nameEx("CauchyLocationScaleFamily")
 > ### * CauchyLocationScaleFamily
 > 
@@ -323,19 +380,19 @@ scale 0.0   0.5
 > ### need smaller integration range:
 > distrExoptions("ElowerTruncQuantile"=1e-4,"EupperTruncQuantile"=1e-4)
 > checkL2deriv(C1)
-precision of centering:	 0 -0.02119711 
+precision of centering:	 9.97466e-18 -2e-04 
 precision of Fisher information:
-                loc       scale
-loc   -3.137524e-05  0.00000000
-scale  0.000000e+00 -0.02118143
+                loc         scale
+loc   -2.631895e-11 -3.577867e-17
+scale -3.577867e-17 -2.000000e-04
 precision of Fisher information - relativ error [%]:
-               loc     scale
-loc   -0.006275047       NaN
-scale          NaN -4.236286
+                loc       scale
+loc   -5.263789e-09        -Inf
+scale          -Inf -0.03999999
 condition of Fisher information:
 [1] 1
 $maximum.deviation
-[1] 0.02119711
+[1] 2e-04
 
 > distrExoptions("ElowerTruncQuantile"=1e-7,"EupperTruncQuantile"=1e-7)
 > 
@@ -402,7 +459,7 @@ function (x)
         dimnames = list(nms, nms0))
     list(fval = fval0, mat = mat0)
 }
-<bytecode: 0x10138e10>
+<bytecode: 0x0e596b80>
 Trafo / derivative matrix at which estimate was produced:
        scale shape
 shape  0.000     1
@@ -613,12 +670,12 @@ scale     1
 function (x) 
 {
     y <- 0 * x
-    inS <- liesInSupport(distr.0, x)
+    inS <- liesInSupport(distr.0, x, checkFin = TRUE)
     y[inS] <- ((x[inS] - 0)/scale * LogDeriv((x[inS] - 0)/c(scale = 1)) - 
         1)/c(scale = 1)
     return(y)
 }
-<environment: 0x0b361f70>
+<environment: 0x0ed32a30>
 
 > checkL2deriv(E1)
 precision of centering:	 -2.04266e-06 
@@ -741,7 +798,7 @@ An object of class "GammaFamily"
  shape: 1
  scale: 1
 
-### param:	An object of class "ParamFamParameter"
+### param:	An object of class "ParamWithScaleAndShapeFamParameter"
 name:	scale and shape
 scale:	1
 shape:	1
@@ -806,8 +863,8 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A)
-<bytecode: 0x0b47c878>
-<environment: 0x0b47cab8>
+<bytecode: 0x0f550478>
+<environment: 0x0f5502b8>
 
 > 
 > ## The function is currently defined as
@@ -1120,12 +1177,12 @@ scale     1
 function (x) 
 {
     y <- 0 * x
-    inS <- liesInSupport(distr.0, x)
+    inS <- liesInSupport(distr.0, x, checkFin = TRUE)
     y[inS] <- ((x[inS] - 0)/scale * LogDeriv((x[inS] - 0)/c(meanlog = 1)) - 
         1)/c(meanlog = 1)
     return(y)
 }
-<environment: 0x0ecb2318>
+<environment: 0x109f06e8>
 
 > checkL2deriv(L1)
 precision of centering:	 -0.003003394 
@@ -1192,42 +1249,42 @@ scale    0.0000000 1.429956
 > ### need smaller integration range:
 > distrExoptions("ElowerTruncQuantile"=1e-4,"EupperTruncQuantile"=1e-4)
 > checkL2deriv(L1)
-precision of centering:	 -2.264121e-17 -1.41228 
+precision of centering:	 2.264121e-17 -0.5873198 
 precision of Fisher information:
-              location        scale
-location -1.600022e-01 4.454916e-17
-scale     4.454916e-17 8.149930e-01
+              location         scale
+location -1.600022e-01 -6.600106e-18
+scale    -6.600106e-18 -8.349279e-01
 precision of Fisher information - relativ error [%]:
-          location    scale
-location -48.00065      Inf
-scale          Inf 56.99427
+          location     scale
+location -48.00065      -Inf
+scale         -Inf -58.38836
 condition of Fisher information:
 [1] 3.667949
 $maximum.deviation
-[1] 1.41228
+[1] 0.8349279
 
 > distrExoptions("ElowerTruncQuantile"=1e-7,"EupperTruncQuantile"=1e-7)
 > ##
 > set.seed(123)
 > x <- rlogis(100,location=1,scale=2)
 > CvMMDEstimator(x, L1)
-Evaluations of Minimum CvM distance estimate ( mu = emp. cdf ) :
-----------------------------------------------------------------
-An object of class "Estimate" 
+Evaluations of Minimum CvM distance estimate ( mu = model distr. ) :
+--------------------------------------------------------------------
+An object of class "CvMMDEstimate" 
 generated by call
   CvMMDEstimator(x = x, ParamFamily = L1)
 samplesize:   100
 estimate:
    location      scale  
-  0.9199612   1.9512792 
- (2.2045470) (0.6064406)
+  0.9691129   1.9522622 
+ (0.4035840) (0.1868609)
 asymptotic (co)variance (multiplied with samplesize):
-         location     scale
-location 486.0028 130.60897
-scale    130.6090  36.77702
+              location         scale
+location  1.628800e+01 -3.750942e-06
+scale    -3.750942e-06  3.491701e+00
 Criterion:
 CvM distance 
-  0.01414319 
+  0.01469024 
 > 
 > 
 > 
@@ -1242,7 +1299,8 @@ CvM distance
 > base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: MCEstimate-class
 > ### Title: MCEstimate-class.
-> ### Aliases: MCEstimate-class criterion criterion,MCEstimate-method
+> ### Aliases: MCEstimate-class MDEstimate-class MLEstimate-class
+> ###   CvMMDEstimate-class criterion criterion,MCEstimate-method
 > ###   criterion.fct criterion.fct,MCEstimate-method
 > ###   startPar,MCEstimate-method method method,MCEstimate-method optimwarn
 > ###   optimwarn,MCEstimate-method optimReturn optimReturn,MCEstimate-method
@@ -1262,7 +1320,7 @@ CvM distance
 > MDEstimator(x, G)
 Evaluations of Minimum Kolmogorov distance estimate  :
 ------------------------------------------------------
-An object of class "Estimate" 
+An object of class "MDEstimate" 
 generated by call
   MDEstimator(x = x, ParamFamily = G)
 samplesize:   50
@@ -1275,7 +1333,7 @@ Kolmogorov distance
 > (m <- MLEstimator(x, G))
 Evaluations of Maximum likelihood estimate:
 -------------------------------------------
-An object of class "Estimate" 
+An object of class "MLEstimate" 
 generated by call
   MLEstimator(x = x, ParamFamily = G)
 samplesize:   50
@@ -1330,7 +1388,7 @@ negative log-likelihood
 > MCEstimator(x = x, ParamFamily = G, criterion = negLoglikelihood)
 Evaluations of Minimum criterion estimate:
 ------------------------------------------
-An object of class "Estimate" 
+An object of class "MCEstimate" 
 generated by call
   MCEstimator(x = x, ParamFamily = G, criterion = negLoglikelihood)
 samplesize:   50
@@ -1359,7 +1417,7 @@ returning starting par;
 
 Evaluations of Minimum Kolmogorov distance estimate:
 ----------------------------------------------------
-An object of class "Estimate" 
+An object of class "MCEstimate" 
 generated by call
   MCEstimator(x = x, ParamFamily = G, criterion = KolmogorovDist, 
     crit.name = "Kolmogorov distance")
@@ -1378,7 +1436,7 @@ Kolmogorov distance
 +             crit.name = "Total variation distance")
 Evaluations of Minimum Total variation distance estimate:
 ---------------------------------------------------------
-An object of class "Estimate" 
+An object of class "MCEstimate" 
 generated by call
   MCEstimator(x = x, ParamFamily = G, criterion = TotalVarDist, 
     crit.name = "Total variation distance")
@@ -1402,7 +1460,7 @@ Total variation distance
 +             crit.name = "Hellinger Distance", startPar = c(1,2))
 Evaluations of Minimum Hellinger Distance estimate:
 ---------------------------------------------------
-An object of class "Estimate" 
+An object of class "MCEstimate" 
 generated by call
   MCEstimator(x = x, ParamFamily = G, criterion = HellingerDist, 
     crit.name = "Hellinger Distance", startPar = c(1, 2))
@@ -1449,7 +1507,7 @@ Hellinger Distance
 > MDEstimator(x = x, ParamFamily = G, distance = KolmogorovDist)
 Evaluations of Minimum Kolmogorov distance estimate  :
 ------------------------------------------------------
-An object of class "Estimate" 
+An object of class "MDEstimate" 
 generated by call
   MDEstimator(x = x, ParamFamily = G, distance = KolmogorovDist)
 samplesize:   50
@@ -1463,7 +1521,7 @@ Kolmogorov distance
 > KolmogorovMDEstimator(x = x, ParamFamily = G)
 Evaluations of Minimum Kolmogorov distance estimate  :
 ------------------------------------------------------
-An object of class "Estimate" 
+An object of class "MDEstimate" 
 generated by call
   KolmogorovMDEstimator(x = x, ParamFamily = G)
 samplesize:   50
@@ -1474,11 +1532,11 @@ Criterion:
 Kolmogorov distance 
          0.07111522 
 > 
-> ## von Mises minimum distance estimator with default mu
+> ## von Mises minimum distance estimator with default mu = Mod
 > MDEstimator(x = x, ParamFamily = G, distance = CvMDist)
 Evaluations of Minimum CvM distance estimate ( mu = emp. cdf )  :
 -----------------------------------------------------------------
-An object of class "Estimate" 
+An object of class "CvMMDEstimate" 
 generated by call
   MDEstimator(x = x, ParamFamily = G, distance = CvMDist)
 samplesize:   50
@@ -1518,7 +1576,7 @@ CvM distance
 > MLEstimator(x, BinomFamily(size = 25))
 Evaluations of Maximum likelihood estimate:
 -------------------------------------------
-An object of class "Estimate" 
+An object of class "MLEstimate" 
 generated by call
   MLEstimator(x = x, ParamFamily = BinomFamily(size = 25))
 samplesize:   100
@@ -1548,7 +1606,7 @@ negative log-likelihood
 > MLEstimator(x, PoisFamily())
 Evaluations of Maximum likelihood estimate:
 -------------------------------------------
-An object of class "Estimate" 
+An object of class "MLEstimate" 
 generated by call
   MLEstimator(x = x, ParamFamily = PoisFamily())
 samplesize:   2608
@@ -1573,7 +1631,7 @@ negative log-likelihood
 > MLEstimator(x, NormLocationScaleFamily())
 Evaluations of Maximum likelihood estimate:
 -------------------------------------------
-An object of class "Estimate" 
+An object of class "MLEstimate" 
 generated by call
   MLEstimator(x = x, ParamFamily = NormLocationScaleFamily())
 samplesize:   100
@@ -1606,7 +1664,7 @@ negative log-likelihood
 > (res <- MLEstimator(x = x, ParamFamily = G))
 Evaluations of Maximum likelihood estimate:
 -------------------------------------------
-An object of class "Estimate" 
+An object of class "MLEstimate" 
 generated by call
   MLEstimator(x = x, ParamFamily = G)
 samplesize:   50
@@ -1813,20 +1871,20 @@ prob:	0.25
 > FisherInfo(N1.w)
 An object of class "PosSemDefSymmMatrix"
             size     prob
-size  0.03044946  -4.0000
+size  0.03044974  -4.0000
 prob -4.00000000 533.3333
 > checkL2deriv(N1.w)
 precision of centering:	 -6.245978e-06 0.001177892 
 precision of Fisher information:
               size          prob
-size -4.182531e-06  0.0008481424
+size -4.462854e-06  0.0008481424
 prob  8.481424e-04 -0.1601189384
 precision of Fisher information - relativ error [%]:
             size        prob
-size -0.01373598 -0.02120356
+size -0.01465646 -0.02120356
 prob -0.02120356 -0.03002230
 condition of Fisher information:
-[1] 1195572
+[1] 1194827
 $maximum.deviation
 [1] 0.1601189
 
@@ -1849,20 +1907,20 @@ mean:	75
 > FisherInfo(N2.w)
 An object of class "PosSemDefSymmMatrix"
              size         mean
-size 3.044946e-02     1600.091
+size 3.044974e-02     1600.091
 mean 1.600091e+03 85342933.607
 > checkL2deriv(N2.w)
 precision of centering:	 -6.245978e-06 -0.4711755 
 precision of Fisher information:
               size          mean
-size -4.182531e-06 -3.392695e-01
-mean -3.392695e-01 -2.562107e+04
+size -4.462854e-06 -3.392704e-01
+mean -3.392704e-01 -2.562107e+04
 precision of Fisher information - relativ error [%]:
             size        mean
-size -0.01373598 -0.02120313
-mean -0.02120313 -0.03002131
+size -0.01465646 -0.02120319
+mean -0.02120319 -0.03002131
 condition of Fisher information:
-[1] 1.89903e+11
+[1] 189784664099
 $maximum.deviation
 [1] 25621.07
 
@@ -2232,7 +2290,7 @@ function (x)
         return(abs(x))
     else return(sqrt(colSums(x^2)))
 }
-<bytecode: 0x0d2cc2c0>
+<bytecode: 0x0c5c3cf0>
 <environment: namespace:distrMod>
 > name(EuclNorm)
 [1] "EuclideanNorm"
@@ -2267,7 +2325,7 @@ function (x)
         return(abs(x))
     else return(sqrt(colSums(x^2)))
 }
-<bytecode: 0x0d2cc2c0>
+<bytecode: 0x0c5c3cf0>
 <environment: namespace:distrMod>
 
 > 
@@ -2663,7 +2721,7 @@ An object of class "ParamFamily"
  shape: 2
  scale: 1
 
-### param:	An object of class "ParamFamParameter"
+### param:	An object of class "ParamWithScaleAndShapeFamParameter"
 name:	scale and shape
 scale:	1
 shape:	2
@@ -2750,8 +2808,8 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A0)
-<bytecode: 0x0ef13a38>
-<environment: 0x0ef13c38>
+<bytecode: 0x0ab62598>
+<environment: 0x0ab61968>
 
 > 
 > ## The function is currently defined as
@@ -2792,8 +2850,8 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A)
-<bytecode: 0x0eed2848>
-<environment: 0x0eed2ca8>
+<bytecode: 0x0a8f7558>
+<environment: 0x0a8f7838>
 
 > 
 > ## The function is currently defined as
@@ -3919,7 +3977,7 @@ function (param)
     dimnames(mat) <- list(nfval, c("mean", "sd"))
     return(list(fval = fval, mat = mat))
 }
-<bytecode: 0x0e9bc5a0>
+<bytecode: 0x0d7bc198>
 > print(param(NS), show.details = "minimal")
 An object of class "ParamWithScaleFamParameter"
 name:	location and scale
@@ -3936,7 +3994,7 @@ slot trafo is a non-trivial function
 > print(res) #equivalent to 'show(res)' or 'res'
 Evaluations of Maximum likelihood estimate:
 -------------------------------------------
-An object of class "Estimate" 
+An object of class "MLEstimate" 
 generated by call
   MLEstimator(x = x, ParamFamily = NS)
 samplesize:   30
@@ -3968,7 +4026,7 @@ function (param)
     dimnames(mat) <- list(nfval, c("mean", "sd"))
     return(list(fval = fval, mat = mat))
 }
-<bytecode: 0x0e9bc5a0>
+<bytecode: 0x0d7bc198>
 Trafo / derivative matrix:
             mean         sd
 mu/sig 0.3668695 -0.3024814
@@ -3979,7 +4037,7 @@ negative log-likelihood
 > print(res, digits = 4)
 Evaluations of Maximum likelihood estimate:
 -------------------------------------------
-An object of class "Estimate" 
+An object of class "MLEstimate" 
 generated by call
   MLEstimator(x = x, ParamFamily = NS)
 samplesize:   30
@@ -4011,7 +4069,7 @@ function (param)
     dimnames(mat) <- list(nfval, c("mean", "sd"))
     return(list(fval = fval, mat = mat))
 }
-<bytecode: 0x0e9bc5a0>
+<bytecode: 0x0d7bc198>
 Trafo / derivative matrix:
          mean      sd
 mu/sig 0.3669 -0.3025
@@ -4028,7 +4086,7 @@ Evaluations of Maximum likelihood estimate:
 > print(res, show.details = "medium")
 Evaluations of Maximum likelihood estimate:
 -------------------------------------------
-An object of class "Estimate" 
+An object of class "MLEstimate" 
 generated by call
   MLEstimator(x = x, ParamFamily = NS)
 samplesize:   30
@@ -4432,7 +4490,7 @@ sig^2  3.6698685 11.189719
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  34.67 0.58 37.27 NA NA 
+Time elapsed:  33.45 0.5 33.98 NA NA 
 > grDevices::dev.off()
 null device 
           1 

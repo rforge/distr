@@ -23,7 +23,7 @@ These functions are used internally by package ``distrMod''.}
 
 .CvMMDCovariance(L2Fam, param, mu = distribution(L2Fam),
                  withplot = FALSE, withpreIC = FALSE,
-                 N = 400, rel.tol=.Machine$double.eps^0.3,
+                 N = 1021, rel.tol=.Machine$double.eps^0.3,
                  TruncQuantile = getdistrOption("TruncQuantile"), 
                  IQR.fac = 15, ...)
 .oldCvMMDCovariance(L2Fam, param, mu = distribution(L2Fam),
@@ -33,7 +33,7 @@ These functions are used internally by package ``distrMod''.}
                  TruncQuantile = getdistrOption("TruncQuantile"),
                  IQR.fac = 15, ...)
 .CvMMDCovarianceWithMux(L2Fam, param, withplot = FALSE, withpreIC = FALSE,
-                        N = 400, rel.tol=.Machine$double.eps^0.3,
+                        N = 1021, rel.tol=.Machine$double.eps^0.3,
                         TruncQuantile = getdistrOption("TruncQuantile"),
                         IQR.fac = 15, ..., x=NULL)
 
