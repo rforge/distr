@@ -26,7 +26,9 @@ under the hood:
   "true" support (not the possibly truncated one in slot support) is infinite (more precisely
   it is of length 2 -- first coordinate if the lower bound of the support is finite, second if 
   the upper bound is finite)
-
++ changed definition of q(DExp(..)) in initialize method in AllInitialize.R 
+  from ifelse expressions to index operations  to avoid warnings 
+  
 ##############
 v 2.7
 ##############

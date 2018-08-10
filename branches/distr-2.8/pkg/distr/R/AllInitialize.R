@@ -909,17 +909,12 @@ setMethod("initialize", "DExp",
             body(.Object@q) <- substitute(
                            {  if (log.p) p <- exp(p)
                               if (!lower.tail) p <- 1-p
-                              ifelse( p <= 0.25,          
-                                  -qexp(2*p, rate = rateSub, lower.tail =FALSE),
-                                  ifelse( p <= 0.5,
-                                      -qexp(1-2*p, rate = rateSub),
-                                      ifelse( p <= 0.75   ,
-                                          qexp(2*p - 1, rate = rateSub),
-                                          qexp(2*(1-p), rate = rateSub, 
-                                               lower.tail = FALSE) 
-                                            ) 
-                                         ) 
-                                     )
+                              q0 <- p
+                              q0[p <=0.25] <- -qexp(2*p[p <=0.25], rate = rateSub, lower.tail =FALSE)
+                              q0[p>0.25&p<=.50] <- -qexp(1-2*p[p>0.25&p<=.50], rate = rateSub)
+                              q0[p>0.5&p<=.75] <- qexp(2*p[p>0.5&p<=.75] - 1, rate = rateSub)
+                              q0[p>0.75] <- qexp(2*(1-p[p>0.75]), rate = rateSub, lower.tail = FALSE)
+                              return(q0)
                            }, list(rateSub = rate)
                                           )
             .Object@.withSim   <- FALSE
