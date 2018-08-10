@@ -98,3 +98,18 @@ setMethod("E", signature(object = "Gammad", fun = "function", cond = "missing"),
              IQR.fac = IQR.fac, ...,
              .withLeftTail = TRUE, .withRightTail = TRUE)
     })
+
+
+setMethod("E", signature(object = "Cauchy", fun = "function", cond = "missing"),
+    function(object, fun, low = NULL, upp = NULL,
+             rel.tol= getdistrExOption("ErelativeTolerance"),
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"),
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"),
+             IQR.fac = max(1e4,getdistrExOption("IQR.fac")), ...
+             ){
+    .qtlIntegrate(object = object, fun = fun, low = low, upp = upp,
+             rel.tol= rel.tol, lowerTruncQuantile = lowerTruncQuantile,
+             upperTruncQuantile = upperTruncQuantile,
+             IQR.fac = IQR.fac, ...,
+             .withLeftTail = TRUE, .withRightTail = TRUE)
+    })

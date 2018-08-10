@@ -467,8 +467,8 @@ setMethod("E", signature(object = "Binom",
 
 ### source: https://mathworld.wolfram.com/BinomialDistribution.html
 
-setMethod("E", signature(object = "Cauchy", 
-                         fun = "missing", 
+setMethod("E", signature(object = "Cauchy",
+                         fun = "missing",
                          cond = "missing"),
     function(object, low = NULL, upp = NULL, ...){
     if(is.null(low) && is.null(upp))
@@ -476,16 +476,16 @@ setMethod("E", signature(object = "Cauchy",
     else{
         if(is.null(low)) low <- -Inf
         if(is.null(upp)) upp <- Inf
-        if(low == -Inf){  
+        if(low == -Inf){
            if(upp == Inf) return(NA)
            else return(-Inf)
         }else{
-           return(if(upp == Inf) 
-                    Inf else 
-                    E(as(object,"AbscontDistribution"), low=low, upp=upp,...))
+           return(if(upp == Inf) Inf else{
+                    getMethod("E", signature(object = "Cauchy",
+                                     fun = "function", cond = "missing"))(object,
+                                          fun=function(x)(x<upp & x>low)*1.0,...)})
         }
     }
-#        return(E(as(object,"AbscontDistribution"), low=low, upp=upp, ...))    
   })
 
 ### source https://mathworld.wolfram.com/CauchyDistribution.html

@@ -62,6 +62,7 @@
 \alias{E,Weibull,missing,missing-method}
 \alias{E,Gammad,function,missing-method}
 \alias{E,Weibull,function,missing-method}
+\alias{E,Cauchy,function,missing-method}
 \alias{.qtlIntegrate}
 
 \title{Generic Function for the Computation of (Conditional) Expectations}
@@ -194,6 +195,11 @@ E(object, fun, cond, ...)
 \S4method{E}{Beta,missing,missing}(object, low = NULL, upp = NULL, ...)
 \S4method{E}{Binom,missing,missing}(object, low = NULL, upp = NULL, ...)
 \S4method{E}{Cauchy,missing,missing}(object, low = NULL, upp = NULL, ...)
+\S4method{E}{Weibull,function,missing}(object, fun, low = NULL, upp = NULL,
+             rel.tol = getdistrExOption("ErelativeTolerance"),
+             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"),
+             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"),
+             IQR.fac = max(1e4,getdistrExOption("IQR.fac")), ...)
 \S4method{E}{Chisq,missing,missing}(object, low = NULL, upp = NULL, ...)
 \S4method{E}{Dirac,missing,missing}(object, low = NULL, upp = NULL, ...)
 \S4method{E}{DExp,missing,missing}(object, low = NULL, upp = NULL, ...)
@@ -267,11 +273,12 @@ E(object, fun, cond, ...)
   expectation; no conditioning with respect to \code{low <= object <= upp}
   is done.
 
-  For the Gamma and Weibull distribution for integration with missing argument
-  \code{cond} but given argument \code{fun}, we use integration on [0,1]
-  (i.e, via the respective probability transformation). This done via helper
+  For the Cauchy, the Gamma and Weibull distribution for integration with
+  missing argument \code{cond} but given argument \code{fun}, we use
+  integration on [0,1]  (i.e, via the respective probability transformation).
+  This done via helper
   function \code{.qtlIntegrate}, where both arguments \code{.withLeftTail}
-  and \code{.withRightTail} are \code{TRUE} for the Gamma distribution,
+  and \code{.withRightTail} are \code{TRUE} for the Cauchy and Gamma distributions,
   and only \code{.withRightTail} ist \code{TRUE} for the Weibull distribution.
   }
 
