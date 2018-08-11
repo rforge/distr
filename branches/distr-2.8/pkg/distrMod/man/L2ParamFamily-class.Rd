@@ -69,7 +69,10 @@
       properties of the family. }
     \item{\code{L2deriv}}{
       object of class \code{"EuclRandVariable"}:
-      L2 derivative of the family. }
+      L2 derivative of the family. Its map slot must contain a list of functions.
+      Each function in this list must have just one argument \code{x},
+      which is vectorized, (i.e., callable for a vector-valued \code{x}),
+      and has a one-dimensional, numeric return value.}
     \item{\code{L2deriv.fct}}{
       object of class \code{"function"}: mapping from 
       the parameter space (argument \code{param} of class 
@@ -77,18 +80,32 @@
       value of the L2derivative; \code{L2deriv.fct} is then used from observation
       \code{x} to value of the L2derivative; \code{L2deriv.fct} is used by 
       \code{modifyModel} to  move the L2deriv according to a change in the 
-      parameter }
-    \item{\code{L2derivSymm}}{[
-      object of class \code{"FunSymmList"}:
-      symmetry of the maps included in \code{L2deriv}. }
-    \item{\code{L2derivDistr}}{
-      object of class \code{"OptionalDistrListOrCall"} (i.e., \code{NULL} or
-      an object of class \code{"DistrList"} or the respective call to generate
-      the latter object): if non-null and non-call, a
-      list which includes the distribution of \code{L2deriv}. }
-    \item{\code{L2derivDistrSymm}}{
-      object of class \code{"DistrSymmList"}:
-      symmetry of the distributions included in \code{L2derivDistr}. }
+      parameter.
+    More specifically, let us call the parts \code{main} and \code{nuisance}
+    of the parameter the \emph{unknown} parameter. If this unknown parameter is
+    one-dimensional, the return value of \code{L2deriv.fct} must be a function
+    in argument \code{x}, which is vectorized, (i.e.,
+    callable for a vector-valued \code{x}), and has a one-dimensional, numeric
+    return value. In case the dimension of the unknown parameter is larger
+    than one, the return value must be a list of functions, each of which
+    satisfies the conditions formulated for the case of a one-dimensional
+    parameter of interest. The order of the components of this list is
+    the same as the order of the parameter coordinates in \code{main}, followed
+    by the ones in \code{nuisance}.}
+  \item{L2derivSymm}{ object of class \code{"FunSymmList"}:
+    symmetry of the maps contained in \code{L2deriv}; a list
+    of symmetry properties of the same length as the return value of
+    \code{ L2deriv.fct }.}
+  \item{L2derivDistr}{object of class \code{"OptionalDistrListOrCall"}
+     (i.e., \code{NULL} or an object of class \code{"DistrList"} or
+     the respective call to generate the latter object): if non-null
+     and non-call, a list which includes the distribution of \code{L2deriv};
+     the length of this list of univariate distributions must be of the same
+     length as the return value of \code{ L2deriv.fct }.}
+  \item{L2derivDistrSymm}{ object of class \code{"DistrSymmList"}:
+    symmetry of the distributions contained in \code{L2derivDistr};
+    the length of this list of symmetry properties must be
+    of the same length as the  return value of \code{ L2deriv.fct }. }
     \item{\code{FisherInfo.fct}}{
       object of class \code{"function"}: 
       mapping from the parameter space (argument  \code{param} of class 
