@@ -39,7 +39,7 @@ MLEstimator <- function(x, ParamFamily, startPar = NULL,
 
     asv <- if("FisherInfo" %in% slotNames(ParamFamily)){
               function(PFam = ParamFamily, param, ...)
-                                  solve(FisherInfo(PFam, param = param))
+                                  distr::solve(FisherInfo(PFam, param = param))
            }else NULL
     
     argList <- list(res0, PFam = ParamFamily, trafo = trafo,

@@ -358,7 +358,7 @@ CvMDist2 <- function(e1,e2,... ) {res <- CvMDist(e1, e2, mu = e2, ...)
    J <- E(object=distr, fun = Delta.0 %*%t(Delta.0))
 ##-t-## }))
    ### CvM-IC phi
-   phi <- as(solve(J)%*%Delta.0,"EuclRandVariable")
+   phi <- as(distr::solve(J)%*%Delta.0,"EuclRandVariable")
 
    ## integrand phi x Ptheta in formula (51) [ibid]
 
@@ -453,7 +453,7 @@ CvMDist2 <- function(e1,e2,... ) {res <- CvMDist(e1, e2, mu = e2, ...)
    E3 <- E(object=distr, fun = psi %*%t(L2deriv.0))
 ##-t-##  }))
    psi.0 <- psi - E1
-   psi.01 <- as(solve(E3)%*%psi.0,"EuclRandVariable")
+   psi.01 <- as(distr::solve(E3)%*%psi.0,"EuclRandVariable")
    if(withplot)
       { for(i in 1:Dim)
          { dev.new()
@@ -711,7 +711,7 @@ CvMDist2 <- function(e1,e2,... ) {res <- CvMDist(e1, e2, mu = e2, ...)
    J <- E(object=distr, fun = Delta.0 %*%t(Delta.0))
 ##-t-##  }))
    ### CvM-IC phi
-   phi <- as(solve(J)%*%Delta.0,"EuclRandVariable")
+   phi <- as(distr::solve(J)%*%Delta.0,"EuclRandVariable")
 
    ## integrand phi x Ptheta in formula (51) [ibid]
 
@@ -778,7 +778,7 @@ CvMDist2 <- function(e1,e2,... ) {res <- CvMDist(e1, e2, mu = e2, ...)
    E3 <- E(object=distr, fun = psi %*%t(L2deriv))
 ##-t-##  }))
    psi.0 <- psi - E1
-   psi.01 <- as(solve(E3)%*%psi.0,"EuclRandVariable")
+   psi.01 <- as(distr::solve(E3)%*%psi.0,"EuclRandVariable")
    if(withplot)
       { for(i in 1:Dim)
          { dev.new()

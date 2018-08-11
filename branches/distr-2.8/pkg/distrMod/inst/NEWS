@@ -103,6 +103,7 @@ under the hood:
 + new subclasses "MLEstimate", "MDEstimate", "CvMMDEstimate" for internal method dispatch  
 + (robust) start parameters for Nbinom family with two parameters
 + (robust) start (search) parameters for Poisson family 
++ now specified that we want to use distr::solve
 
 
 ##############

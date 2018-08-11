@@ -41,7 +41,7 @@ MCEstimator <- function(x, ParamFamily, criterion, crit.name,
     
     asv <- if("FisherInfo" %in% slotNames(ParamFamily)){
               function(ParamFamily, param)
-                                  solve(FisherInfo(ParamFamily, param = param))
+                                  distr::solve(FisherInfo(ParamFamily, param = param))
            }else NULL
     
     argList <- c(list(res0, PFam = ParamFamily, 
