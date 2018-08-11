@@ -28,6 +28,8 @@ under the hood:
   the upper bound is finite)
 + changed definition of q(DExp(..)) in initialize method in AllInitialize.R 
   from ifelse expressions to index operations  to avoid warnings 
++ in distr::solve only try base::solve if arg "a" has no dim or if it has then 
+  if nrow(a)==nrow(b); otherwise directly use MASS::ginv
 
 bug fixes
 + fixed a (newly introduced) bug in exp() for DiscreteDistribution -- forgot to return obj ...
