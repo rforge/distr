@@ -452,6 +452,7 @@ setMethod("abs", "DiscreteDistribution",function(x){
 setMethod("exp", "DiscreteDistribution",
            function(x){ obj <- .expm.d(x)
                         obj@.finSupport <- c(TRUE, x@.finSupport[2])
+                        obj 
            }
            )
 

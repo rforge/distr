@@ -144,7 +144,7 @@ function(e1,e2){
          dP <- discretePart(e2D)
          dP@.finSupport <- c(TRUE,TRUE) # as both pos&neg part are bounded away from 0
          discretePart(e2D) <- dP
-         ## obj@.finSupport <-
+
 
          if(getdistrOption("simplifyD"))
             e2D <- simplifyD(e2D)
