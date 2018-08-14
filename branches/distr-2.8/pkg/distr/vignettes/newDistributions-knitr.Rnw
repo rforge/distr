@@ -617,7 +617,7 @@ G <- B + as(D,"DiscreteDistribution") ## DiscreteDistribution
 \item {\footnotesize you could have: \file{man/Binom.Rd}
       for the generating function; in the Binomial case, documentation is in
       \file{Binom-class.Rd}; but in case of the Gumbel distribution,
-      in package \pkg{distrEx}, there is such an extra {\tt .Rd} file}
+      in package \pkg{RobExtremes}, there is such an extra {\tt .Rd} file}
 %
 \end{itemize}
 %
@@ -712,7 +712,7 @@ The procedure will be similar for \textit{any} new class of distributions.\medsk
   \item[Comment] In the classes in package \pkg{distr} (historically the ``oldest''
   in the development of this project), we still use \code{initialize} methods;
   this is no longer needed, if you provide generating functions; for this ``more
-  recent'' approach, confer the realization of class \code{Gumbel} in package \pkg{distrEx}.
+  recent'' approach, confer the realization of class \code{Gumbel} in package \pkg{RobExtremes}.
 \end{itemize}
 
 % -------------------------------------------------------------------------------

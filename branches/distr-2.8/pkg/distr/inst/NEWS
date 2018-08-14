@@ -20,7 +20,10 @@ user-visible CHANGES:
 + liesInSupport gains an argument checkFin; in case of DiscreteDistributions, it tries to use 
   additional information from internal slot .finSupport, and e.g. if there is a lattice.  
 + liesInSupport now also is available for UnivarLebDecDistribution, LatticeDistribution, and UnivarMixingDistribution
-
++ clarified that the Gumbel distribution has been moved to RobExtremes in vignette newDistributions-knitr.Rnw
++ modified devNew(): in interactive mode it now asks the user to shut some devices first when 
+  length(dev.list())>20; and in non-interactive mode, when length(dev.list())>20, it shuts 
+  the first 15 open devices first; this is documented now in ?devNew
 under the hood:
 + DiscreteDistribution(s) gain a logical slot .finSupport to better control whether the 
   "true" support (not the possibly truncated one in slot support) is infinite (more precisely

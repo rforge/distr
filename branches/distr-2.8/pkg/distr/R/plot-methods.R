@@ -870,7 +870,7 @@ setMethod("plot", signature(x =  "DistrList", y = "missing"),
         plotInfoList <- vector("list",length(x))
         plotInfoList$call <- mc
         for(i in 1:length(x)){
-            devNew()
+            #devNew()
             plotInfoList[[i]] <- plot(x[[i]],...)
         }
         class(plotInfoList) <- c("plotInfo","DiagnInfo")
