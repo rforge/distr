@@ -40,6 +40,10 @@ user-visible CHANGES:
   of the numerically truncated support).
 + new model classes / generators LogisticLocationScaleFamily, CauchyLocationFamily
 + changed default for CvMMDEstiamtor to variant "Mod" (consistent to fitdistrplus)
++ more precise / explicit description of the requirements of slots L2deriv and L2deriv.fct in 
+  the help files to generator L2ParamFamily and to L2ParamFamily-class.
++ E() methods with signature(object = "L2ParamFamily" , ...) gain argument diagnostic
+  (like E()-methods in distrEx v 2.8.0)
   
 bug fixes
 + discovered some issues with local variables in L2Families (global values were used instead...)  
@@ -75,6 +79,11 @@ under the hood:
   centering/standarizing of the IC in the end already cancelled out beforehand...
   but now we are more accurate as to differences in the integration measure mu 
   and the model distribution (important for integration w.r.t. emp. measure)
+  the revised .CvMMDCovariance()  uses vectorization in evaluation of random variables
+  and, wherever possible in integration; for the latter, this can be suppressed by
+  an argument useApply=TRUE through the ... argument  
+  in addition .CvMMDCovariance() now has argument "diagnostic" (like E())
+  and in calls to E(), the "..." argument is filtered
 + .process.meCalcRes gains arg "x" to be able to pass on emp.CDF for mu in CvMMDEstimator
    if arg asvar.fct of MCEstimator has "x" in formals the observations x are passed on to asvar.fct, 
    otherwise they are not; correspondingly "x" is passed on to .process.meCalcRes in
@@ -104,6 +113,8 @@ under the hood:
 + (robust) start parameters for Nbinom family with two parameters
 + (robust) start (search) parameters for Poisson family 
 + now specified that we want to use distr::solve
++ E() methods with signature(object = "L2ParamFamily" , ...) use filtering of dots arguments
+  (like E()-methods in distrEx v 2.8.0)
 
 
 ##############

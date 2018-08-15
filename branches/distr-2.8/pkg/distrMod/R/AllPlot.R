@@ -255,9 +255,12 @@ setMethod("plot", signature(x = "L2ParamFamily", y = "missing"),
    #     opar$cin <- opar$cra <- opar$csi <- opar$cxy <-  opar$din <- NULL
         on.exit(par(opar, no.readonly = TRUE))
         
-        if (!withSweave)
-             devNew()
-        
+        if (!withSweave){
+             devNewArgs <- list()
+             if(!is.null(dots$width)) devNewArgs[["width"]] <- dots[["width"]]
+             if(!is.null(dots$height)) devNewArgs[["height"]] <- dots[["height"]]
+             do.call(devNew, devNewArgs)
+        }
         parArgs <- NULL
         if(mfColRow)
            parArgs <- list(mfrow = c(nrows, ncols))

@@ -24,17 +24,21 @@ CvMDist2 <- function(e1,e2,... ) {res <- CvMDist(e1, e2, mu = e2, ...)
                             N = 1021, rel.tol=.Machine$double.eps^0.3,
                             TruncQuantile = getdistrOption("TruncQuantile"),
                             IQR.fac = 15,
-                            ...){
+                            ..., diagnostic = FALSE){
    # preparations:
+   dots <- list(...)
 
-   dotsInt <- list(...)
+   dotsInt <- .filterEargs(dots)
    dotsInt[["f"]] <- NULL
    dotsInt[["lower"]] <- NULL
    dotsInt[["upper"]] <- NULL
    dotsInt[["stop.on.error"]] <- NULL
    dotsInt[["distr"]] <- NULL
+   dotsInt[["diagnostic"]] <- NULL
+   dotsInt[["useApply"]] <- NULL
+
    .useApply <- FALSE
-   if(!is.null(dotsInt$useApply)) .useApply <- dotsInt$useApply
+   if(!is.null(dots$useApply)) .useApply <- dots$useApply
 
    if(missing(TruncQuantile)||TruncQuantile>1e-7) TruncQuantile <- 1e-8
 
@@ -59,6 +63,7 @@ CvMDist2 <- function(e1,e2,... ) {res <- CvMDist(e1, e2, mu = e2, ...)
    paramP@trafo <- diag(dim0)
    L2Fam <- modifyModel(L2Fam, paramP)
 
+   diagn <- if(diagnostic) list(call=match.call()) else NULL
    distr <- L2Fam@distribution
 
    ### get a sensible integration range:
@@ -136,9 +141,12 @@ CvMDist2 <- function(e1,e2,... ) {res <- CvMDist(e1, e2, mu = e2, ...)
    onedim <- (length(L2deriv.0@Map)==1)
 
 
-   myint <- function(f,...){
-      distrExIntegrate(f=f, lower=0, upper=1,
-                       stop.on.error=FALSE, distr=Unif(), ...)
+   myint <- function(f,...,diagnostic0 = FALSE){
+      dotsFun <- .filterFunargs(dots,f)
+      fwD <- function(x) do.call(f, c(list(x),dotsFun))
+      do.call(distrExIntegrate, c(list(f=fwD, lower=0, upper=1,
+                       stop.on.error=FALSE, distr=Unif(), diagnostic=diagnostic0,
+                       dotsInt)))
    }
 
    if(onedim){
@@ -159,9 +167,11 @@ CvMDist2 <- function(e1,e2,... ) {res <- CvMDist(e1, e2, mu = e2, ...)
       Delta0.3 <-  rev(Delta0.2)[1]+h0/100*.csimpsum(Delta0x.3)
       Delta0 <- c(Delta0.1,Delta0.2,Delta0.3)
       Delta1.q <- approxfun(x.seq.a, Delta0, yleft = 0, yright = 0)
-      J1 <- do.call(myint, c(list(f=Delta1.q), dotsInt))
+      J1 <- myint(f=Delta1.q, diagnostic0=diagnostic)
+      if(diagnostic) diagn$J1 <- attr(J1,"diagnostic")
       Delta.0 <- function(x) Delta1.q(p(distr)(x))-J1
-      J <- do.call(myint, c(list(f=function(x) (Delta1.q(x)-J1)^2),dotsInt))
+      J <- myint(f=function(x) (Delta1.q(x)-J1)^2, diagnostic0=diagnostic)
+      if(diagnostic) diagn$J <- attr(J,"diagnostic")
   }else{
       if(is(distr,"DiscreteDistribution")){
          L2x <- evalRandVar(L2deriv.0, as.matrix(x.seq))[,,1]
@@ -174,13 +184,25 @@ CvMDist2 <- function(e1,e2,... ) {res <- CvMDist(e1, e2, mu = e2, ...)
          Delta <- Delta/J
       }else{
          L2x  <- function(x,y)  (x<=y)*evalRandVar(L2deriv.0, as.matrix(x))[,,1]
-         Delta0 <- sapply(x.seq, function(Y){ fct <- function(x) L2x(x,y=Y)
-                                        return(E(object=distr, fun = fct, useApply = .useApply))})
+         diagn0 <- list()
+         xseq.i <- quantile(seq(x.seq),c(0,0.25,.5,.75,1))
+         Delta0 <- sapply(seq(x.seq), function(Y){
+                     res <- do.call(E, c(list(object=distr,
+                                         fun = function(x) L2x(x,y=x.seq[Y]),
+                                         useApply = .useApply,
+                                         diagnostic=diagnostic),dotsInt))
+                     if(diagnostic) if(Y %in% xseq.i) diagn0[[paste(Y)]] <<- attr(res,"diagnostic")
+                     })
+         if(diagnostic) diagn$Delta0 <- diagn0
          Delta1 <- approxfun(x.seq, Delta0, yleft = 0, yright = 0)
          Delta <- Delta1
-         J1 <- E(object=distr, fun = Delta, useApply = .useApply)
+         J1 <- do.call(E, c(list(object=distr, fun = Delta, useApply = .useApply,
+                            diagnostic=diagnostic), dotsInt))
+         if(diagnostic) diagn$J1 <- attr(J1,"diagnostic")
          Delta.0 <- function(x) Delta(x) - J1
-         J <- E(object=distr, fun = function(x) Delta.0(x)^2, useApply = .useApply )
+         J <- do.call(E, c(list(object=distr, fun = function(x) Delta.0(x)^2, useApply = .useApply,
+                            diagnostic=diagnostic), dotsInt))
+         if(diagnostic) diagn$J <- attr(J,"diagnostic")
       }
    }
 
@@ -193,7 +215,8 @@ CvMDist2 <- function(e1,e2,... ) {res <- CvMDist(e1, e2, mu = e2, ...)
    ## integrand phi x Ptheta in formula (51) [ibid]
       phi1.q <- function(s){qs <- q.l(mu)(s)
                             return(phi(qs)*p(distr)(qs)) }
-      psi1 <- do.call(myint, c(list(f=phi1.q),dotsInt))
+      psi1 <- myint(f=phi1.q, diagnostic0=diagnostic)
+      if(diagnostic) diagn$psi1 <- attr(psi1,"diagnostic")
 
       phiqx <- function(x){qx <- q.l(mu)(x)
                           return(phi(qx))}
@@ -223,11 +246,21 @@ CvMDist2 <- function(e1,e2,... ) {res <- CvMDist(e1, e2, mu = e2, ...)
       }else{
    ## integrand phi x Ptheta in formula (51) [ibid]
          phi1 <- function(x) phi(x) * p(distr)(x)
-         psi1 <- E(object = mu, fun = phi1, useApply = .useApply)
+         psi1 <- do.call(E,c(list(object = mu, fun = phi1, useApply = .useApply,
+                             diagnostic = diagnostic),dotsInt))
+         if(diagnostic) diagn$psi1 <- attr(psi1,"diagnostic")
 
          phixy  <- function(x,y)  (x<=y)*phi(y)
-         psi0 <- sapply(x.mu.seq, function(X){ fct <- function(y) phixy(x=X,y=y)
-                                        return(E(object=mu, fun = fct, useApply = .useApply))})
+         diagn1 <- list()
+         x.mu.seq.i <- quantile(seq(x.mu.seq),c(0,0.25,.5,.75,1))
+         psi0 <- sapply(seq(x.mu.seq), function(X){
+                   fct <- function(y) phixy(x=x.mu.seq[X],y=y)
+                   res <- do.call(E,c(list(object=mu, fun = fct,
+                                    useApply = .useApply), dotsInt))
+                   if(diagnostic) if(X %in% x.mu.seq.i)
+                       diagn1[[paste(X)]] <<- attr(res,"diagnostic")
+                   return(res)})
+
          psi.1 <- approxfun(x.mu.seq, psi0, yleft = 0, yright = rev(psi0)[1])
          psi.fct <- function(x) psi.1(x)-psi1
       }
@@ -237,14 +270,17 @@ CvMDist2 <- function(e1,e2,... ) {res <- CvMDist(e1, e2, mu = e2, ...)
       psi.q <- function(x){qx <- q.l(distr)(x); return(psi.fct(qx))}
    ## E2 = Cov_mu (psi)
 #      E2 <- do.call(myint, c(list(f=function(x)psi.q(x)^2),dotsInt))
-      E1 <- do.call(myint, c(list(f=psi.q),dotsInt))
-      E3 <- do.call(myint, c(list(f=function(x){
-                                     qx <- q.l(distr)(x)
-                                     L2qx <- evalRandVar(L2deriv.0,as.matrix(qx))[,,1]
-                                     return(psi.fct(qx)*L2qx)
-                                    }), dotsInt))
+      E1 <- myint(f=psi.q, diagnostic0=diagnostic)
+         if(diagnostic) diagn$E1 <- attr(E1,"diagnostic")
+      E3 <- myint(f=function(x){
+                       qx <- q.l(distr)(x)
+                       L2qx <- evalRandVar(L2deriv.0,as.matrix(qx))[,,1]
+                       return(psi.fct(qx)*L2qx)
+                      }, diagnostic0=diagnostic)
+         if(diagnostic) diagn$E3 <- attr(E3,"diagnostic")
       psi.01.f <- function(x) (psi.fct(x)-E1)/E3
-      E4 <- do.call(myint, c(list(f=function(x) (psi.q(x)-E1)^2/E3^2),dotsInt))
+      E4 <- myint(f=function(x) (psi.q(x)-E1)^2/E3^2, diagnostic0=diagnostic)
+         if(diagnostic) diagn$E4 <- attr(E4,"diagnostic")
   }else{
       if(is(distr,"DiscreteDistribution")){
    ## E2 = Cov_mu (psi)
@@ -259,17 +295,23 @@ CvMDist2 <- function(e1,e2,... ) {res <- CvMDist(e1, e2, mu = e2, ...)
    ## E2 = Cov_mu (psi)
 #         E2 <- E(object=distr, fun = function(x) psi(x)^2, useApply = .useApply)
          L2x  <- function(x,y)  (x<=y)*evalRandVar(L2deriv.0, as.matrix(x))[,,1]
-         E1 <- E(object=distr, fun = psi.fct, useApply = .useApply )
-         E3 <- E(object=distr, fun = function(x)
-                 psi.fct(x)*evalRandVar(L2deriv.0, as.matrix(x))[,,1], useApply = .useApply)
+         E1 <- do.call(E, c(list(object=distr, fun = psi.fct,
+                           useApply = .useApply, diagnostic=diagnostic), dotsInt))
+         if(diagnostic) diagn$E1 <- attr(E1,"diagnostic")
+         E3 <- do.call(E, c(list(object=distr, fun = function(x)
+                 psi.fct(x)*evalRandVar(L2deriv.0, as.matrix(x))[,,1],
+                 diagnostic=diagnostic, useApply = .useApply),dotsInt))
+         if(diagnostic) diagn$E3 <- attr(E3,"diagnostic")
          psi.01.f <- function(x) (psi.fct(x) - E1)/E3
-         E4 <- E(object=distr, fun = function(x) psi.01.f(x)^2, useApply = .useApply)
+         E4 <- do.call(E, c(list(object=distr, fun = function(x) psi.01.f(x)^2,
+                       diagnostic=diagnostic, useApply = .useApply),dotsInt))
+         if(diagnostic) diagn$E4 <- attr(E4,"diagnostic")
       }
    }
 
 #   ### control: centering & standardization
    if(withplot)
-       { dev.new() #windows()
+       { devNew() #windows()
          x0.seq <- x.seq
          if(is(distr,"AbscontDistribution")) x0.seq <- q.l(distr)(x.seq)
          plot(x0.seq, psi.01.f(x0.seq),
@@ -289,6 +331,11 @@ CvMDist2 <- function(e1,e2,... ) {res <- CvMDist(e1, e2, mu = e2, ...)
    ##        Ptheta- primitive function for Lambda
 
    Map.Delta <- vector("list",Dim)
+   if(diagnostic) diagn <- list()
+   if(!is(distr,"AbscontDistribution") &&
+      !is(distr,"DiscreteDistribution") ) diagn$Delta0 <- vector("list",Dim)
+   if(!is(mu,"AbscontDistribution") &&
+      !is(mu,"DiscreteDistribution") ) diagn$phi0 <- vector("list",Dim)
 
    for(i in 1:Dim)
        { if(is(distr,"AbscontDistribution")){
@@ -317,8 +364,18 @@ CvMDist2 <- function(e1,e2,... ) {res <- CvMDist(e1, e2, mu = e2, ...)
                assign("Delta.0", Delta.0, envir=env.i)
             }else{
                fct0 <- function(x,y) L2deriv.0@Map[[i]](x)*(x<=y)
-               Delta0 <- sapply(x.seq, function(Y){ fct <- function(x) fct0(x,y=Y)
-                                               return(E(object=distr, fun = fct, useApply=.useApply))})
+               diagn0 <- list()
+               xseq.i <- quantile(seq(x.seq),c(0,0.25,.5,.75,1))
+               Delta0 <- sapply(seq(x.seq),
+                           function(Y){
+                              fct <- function(x) fct0(x,y=x.seq[Y])
+                              res <- do.call(E,c(list(object=distr, fun = fct,
+                                                 useApply=.useApply),dotsInt))
+                              if(diagnostic) if(Y %in% xseq.i)
+                                    diagn0[[paste(Y)]] <<- attr(res,"diagnostic")
+                              return(res)
+                              })
+               if(diagnostic) diagn[["Delta0"]][[i]] <- diagn0
                Delta1 <- approxfun(x.seq, Delta0, yleft = 0, yright = 0)
                if(is(distr,"DiscreteDistribution"))
                      Delta <- function(x) Delta1(x) * (x %in% support(distr))
@@ -350,12 +407,14 @@ CvMDist2 <- function(e1,e2,... ) {res <- CvMDist(e1, e2, mu = e2, ...)
 
    ## J = Var_Ptheta Delta
 ##-t-## print(system.time({
-   J1 <- E(object=distr, fun = Delta)#, useApply = .useApply)
+   J1 <- E(object=distr, fun = Delta, diagnostic=diagnostic)#, useApply = .useApply)
+         if(diagnostic) diagn$J1 <- attr(J1,"diagnostic")
 ##-t-## }))
    Delta.0 <- Delta - J1
 
 ##-t-## print(system.time({
-   J <- E(object=distr, fun = Delta.0 %*%t(Delta.0))#, useApply = .useApply)
+   J <- E(object=distr, fun = Delta.0 %*%t(Delta.0), diagnostic=diagnostic)#, useApply = .useApply)
+         if(diagnostic) diagn$J <- attr(J,"diagnostic")
 ##-t-## }))
    ### CvM-IC phi
    phi <- as(distr::solve(J)%*%Delta.0,"EuclRandVariable")
@@ -371,7 +430,8 @@ CvMDist2 <- function(e1,e2,... ) {res <- CvMDist(e1, e2, mu = e2, ...)
 
    phi1 <- EuclRandVariable(Map = Map.phi1, Domain = Reals())
 ##-t-## print(system.time({
-   psi1 <- E(object=mu, fun = phi1)#, useApply = .useApply)
+   psi1 <- E(object=mu, fun = phi1, diagnostic=diagnostic)#, useApply = .useApply)
+         if(diagnostic) diagn$psi1 <- attr(psi1,"diagnostic")
 ##-t-## }))
 
    ## obtaining IC psi  (formula (51))
@@ -414,12 +474,21 @@ CvMDist2 <- function(e1,e2,... ) {res <- CvMDist(e1, e2, mu = e2, ...)
                assign("psi0.d", psi0.d, envir=env.i)
                assign("psi0", psi0, envir=env.i)
             }else{
+
                fct0 <- function(x,y) evalRandVar(phi, as.matrix(y))[i,,1]*(x<=y)
-               phi0 <- sapply(x.mu.seq,
-                              function(X){
-                                  fct <- function(y) fct0(x = X, y)
-                                  return(E(object = mu, fun = fct, useApply = .useApply))
-                                  })
+               diagn1 <- list()
+               x.mu.seq.i <- quantile(seq(x.mu.seq),c(0,0.25,.5,.75,1))
+               phi0 <- sapply(seq(x.mu.seq),
+                           function(X){
+                              fct <- function(y) fct0(x=x.mu.seq[X],y)
+                              res <- do.call(E,c(list(object=mu, fun = fct,
+                                                 useApply=.useApply),dotsInt))
+                              if(diagnostic) if(X %in% x.mu.seq.i)
+                                    diagn1[[paste(X)]] <<- attr(res,"diagnostic")
+                              return(res)
+                              })
+               if(diagnostic) diagn[["phi0"]][[i]] <- diagn1
+
                phi0a <- approxfun(x.mu.seq, phi0, yleft = 0, yright = rev(phi0)[1])
                if(is(distr,"DiscreteDistribution"))
                      psi0 <- function(x) phi0a(x) * (x %in% support(mu))
@@ -447,10 +516,13 @@ CvMDist2 <- function(e1,e2,... ) {res <- CvMDist(e1, e2, mu = e2, ...)
    ### control: centering & standardization
    L2deriv.0 <- L2Fam@L2deriv[[1]]
 ##-t-##  print(system.time({
-   E1 <- E(object=distr, fun = psi)
+   E1 <- E(object=distr, fun = psi, diagnostic=diagnostic)
+         if(diagnostic) diagn$E1 <- attr(E1,"diagnostic")
+
 ##-t-##  }))
 ##-t-##  print(system.time({
-   E3 <- E(object=distr, fun = psi %*%t(L2deriv.0))
+   E3 <- E(object=distr, fun = psi %*%t(L2deriv.0), diagnostic=diagnostic)
+         if(diagnostic) diagn$E3 <- attr(E3,"diagnostic")
 ##-t-##  }))
    psi.0 <- psi - E1
    psi.01 <- as(distr::solve(E3)%*%psi.0,"EuclRandVariable")
@@ -463,7 +535,8 @@ CvMDist2 <- function(e1,e2,... ) {res <- CvMDist(e1, e2, mu = e2, ...)
                      type = if(is(distr,"DiscreteDistribution")) "p" else "l")
          }}
 ##-t-##  print(system.time({
-   E4 <- E(object=distr, fun = psi.01 %*%t(psi.01))
+   E4 <- E(object=distr, fun = psi.01 %*%t(psi.01), diagnostic=diagnostic)
+         if(diagnostic) diagn$E4 <- attr(E4,"diagnostic")
 ##-t-##  }))
    }
   E4 <- PosSemDefSymmMatrix(E4)
@@ -493,7 +566,8 @@ CvMDist2 <- function(e1,e2,... ) {res <- CvMDist(e1, e2, mu = e2, ...)
   }
   nms <- names(c(main(param(L2Fam)),nuisance(param(L2Fam))))
   dimnames(E4) = list(nms,nms)
-  if(withpreIC) return(list(preIC=psi, Var=E4))
+  if(diagnostic &&! withpreIC) attr(E4,"diagnostic") <- diagn
+  if(withpreIC) return(list(preIC=psi, Var=E4, diagnostic = diagn))
   else return(E4)
 }
 
@@ -779,7 +853,7 @@ CvMDist2 <- function(e1,e2,... ) {res <- CvMDist(e1, e2, mu = e2, ...)
    psi.01 <- as(distr::solve(E3)%*%psi.0,"EuclRandVariable")
    if(withplot)
       { for(i in 1:Dim)
-         { dev.new()
+         { devNew()
            plot(x.mu.seq, sapply(x.mu.seq,psi.01@Map[[i]]),
                      type = if(is(distr,"DiscreteDistribution")) "p" else "l")
          }}

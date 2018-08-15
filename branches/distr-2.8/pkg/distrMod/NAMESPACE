@@ -4,7 +4,7 @@ importFrom("graphics", "abline", "legend", "lines", "mtext", "par",
            "points", "text", "title")
 importFrom("stats", "aggregate", "approxfun", "complete.cases",
            "dbinom", "dnbinom", "dnorm", "dpois", "na.omit", "optim",
-           "optimize", "ppoints", "qchisq", "qnbinom", "qnorm")
+           "optimize", "ppoints", "qchisq", "qnbinom", "qnorm", "quantile")
 import("MASS")
 import("distr")
 import("distrEx")

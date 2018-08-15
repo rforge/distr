@@ -25,7 +25,7 @@ These functions are used internally by package ``distrMod''.}
                  withplot = FALSE, withpreIC = FALSE,
                  N = 1021, rel.tol=.Machine$double.eps^0.3,
                  TruncQuantile = getdistrOption("TruncQuantile"), 
-                 IQR.fac = 15, ...)
+                 IQR.fac = 15, ..., diagnostic = FALSE)
 .oldCvMMDCovariance(L2Fam, param, mu = distribution(L2Fam),
                  withplot = FALSE, withpreIC = FALSE,
                  N = getdistrOption("DefaultNrGridPoints")+1,
@@ -86,6 +86,15 @@ These functions are used internally by package ``distrMod''.}
            \code{dim} attribute; in \code{.CvMMDCovarianceWithMux}: \code{NULL}
            (default) or the vector with observations to build integration
            measure \eqn{mu} as the empirical cdf.  }
+  \item{diagnostic}{ logical; if \code{TRUE}, the return value of \code{.CvMMDCovariance}
+  obtains an attribute \code{"diagnostic"} (usually a lengthy list)
+  with diagnostic information on the call and on the integration, the latter
+  inherited from the calls to \code{distrExIntegrate} and \code{E} in this function.
+  Depending on the actually used \code{E} method, this comprises entries
+  \code{method} (\code{"integrate"} or \code{"GLIntegrate"}),
+  \code{result} (the complete return value of the integration method),
+  \code{args} (the args with which the integration method was called),
+  and \code{time} (the time to compute the integral). }
 }
 
 \details{
