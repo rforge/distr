@@ -17,8 +17,8 @@
 }
 \usage{
 CvMDist(e1, e2, ...)
-\S4method{CvMDist}{UnivariateDistribution,UnivariateDistribution}(e1, e2, mu = e1, useApply = FALSE, ...)
-\S4method{CvMDist}{numeric,UnivariateDistribution}(e1, e2, mu = e1, ...)
+\S4method{CvMDist}{UnivariateDistribution,UnivariateDistribution}(e1, e2, mu = e1, useApply = FALSE, ..., diagnostic = FALSE)
+\S4method{CvMDist}{numeric,UnivariateDistribution}(e1, e2, mu = e1, ..., diagnostic = FALSE)
 }
 \arguments{
   \item{e1}{ object of class \code{"Distribution"} or class \code{"numeric"} }
@@ -26,6 +26,12 @@ CvMDist(e1, e2, ...)
   \item{\dots}{ further arguments to be used e.g. by \code{E()}}
   \item{useApply}{ logical; to be passed to \code{\link{E}()}}
   \item{mu}{ object of class \code{"Distribution"}; integration measure; defaulting to \code{e2} }
+  \item{diagnostic}{ logical; if \code{TRUE}, the return value obtains
+    an attribute \code{"diagnostic"} with diagnostic information on the
+    integration, i.e., a list with entries \code{method} (\code{"integrate"}
+    or \code{"GLIntegrate"}), \code{call}, \code{result} (the complete return
+    value of the method),  \code{args} (the args with which the
+    method was called), and \code{time} (the time to compute the integral). }
 }
 %\details{}
 \value{ Cramer - von Mises  distance of \code{e1} and \code{e2} }

@@ -11,11 +11,15 @@ setMethod("OAsymTotalVarDist", signature(e1 = "AbscontDistribution",
     function(e1, e2,  
              rel.tol = .Machine$double.eps^0.3, Ngrid = 10000,
              TruncQuantile = getdistrOption("TruncQuantile"),
-             IQR.fac = 15){ 
+             IQR.fac = 15,..., diagnostic = FALSE){
 
         ## if we have to recall this method with a smaller TruncQuantile arg:
         mc <-  as.list(match.call(call = sys.call(sys.parent(1)))[-1])
         mc$TruncQuantile <- TruncQuantile * 1.8
+
+        dots <- list(...)
+        dotsn <- names(dots)
+        dotsI <- dots[dotsn %in% c("order","subdivisions", "stop.on.error")]
 
         #block warnings:
         o.warn <- getOption("warn"); options(warn = -1)
@@ -36,12 +40,13 @@ setMethod("OAsymTotalVarDist", signature(e1 = "AbscontDistribution",
         d1 <- d(e1); d2 <- d(e2)
         #
         ### integration as a function of c:
-        Eip <- function(f, c00)
-                distrExIntegrate(f, lower = low, upper = up, 
-                                    rel.tol = rel.tol, c00 = c00)
-       integ <- function(x,c00)  abs(d2(x)-c00*d1(x))
+        Eip <- function(f, c00, diagnostic0 = FALSE)
+                do.call(distrExIntegrate,c(list(f, lower = low, upper = up,
+                                    rel.tol = rel.tol, c00 = c00,
+                                    diagnostic = diagnostic0),dotsI))
+        integ <- function(x,c00)  abs(d2(x)-c00*d1(x))
 
-       fct <- function(c0) Eip(f=integ, c00=c0)
+        fct <- function(c0) Eip(f=integ, c00=c0, diagnostic0 = FALSE)
        
        ## find sensible search range for c-values
        ## goal: range of density quotient d2(x)/d1(x)
@@ -71,8 +76,13 @@ setMethod("OAsymTotalVarDist", signature(e1 = "AbscontDistribution",
                                         e2 = "AbscontDistribution")), 
                               args = mc))             
        ## else:
-       res <- Eip(f=integ, c00=c.opt)
+       res <- Eip(f=integ, c00=c.opt, diagnostic0=diagnostic)
        names(res) <- "minimal asym. total variation distance"
+       if(diagnostic){
+          diagn <- attr(res,"diagnostic")
+          diagn[["call"]] <- match.call()
+          attr(res,"diagnostic") <- diagn
+       }
        return(res)
     })
 
@@ -149,11 +159,18 @@ setMethod("OAsymTotalVarDist", signature(e1 = "numeric",
              up.discr = getUp(e2), h.smooth = getdistrExOption("hSmooth"),
              rel.tol = .Machine$double.eps^0.3,  Ngrid = 10000,
              TruncQuantile = getdistrOption("TruncQuantile"),
-             IQR.fac = 15){
-        .asis.smooth.discretize.distance(e1, e2, asis.smooth.discretize, n.discr,
+             IQR.fac = 15, ..., diagnostic = FALSE){
+       res <- .asis.smooth.discretize.distance(e1, e2, asis.smooth.discretize, n.discr,
                  low.discr, up.discr, h.smooth, OAsymTotalVarDist, 
                  rel.tol = rel.tol, Ngrid = Ngrid,
-                 TruncQuantile = TruncQuantile, IQR.fac = IQR.fac)
+                 TruncQuantile = TruncQuantile, IQR.fac = IQR.fac,
+                  ..., diagnostic = diagnostic)
+       if(diagnostic){
+          diagn <- attr(res,"diagnostic")
+          diagn[["call"]] <- match.call()
+          attr(res,"diagnostic") <- diagn
+       }
+        return(res)
      })
 setMethod("OAsymTotalVarDist", signature(e1 = "AbscontDistribution",
                                      e2 = "numeric"),
@@ -162,12 +179,19 @@ setMethod("OAsymTotalVarDist", signature(e1 = "AbscontDistribution",
              up.discr = getUp(e1), h.smooth = getdistrExOption("hSmooth"),
              rel.tol = .Machine$double.eps^0.3,  Ngrid = 10000,
              TruncQuantile = getdistrOption("TruncQuantile"),
-             IQR.fac = 15){
-        return(OAsymTotalVarDist(e2, e1,
+             IQR.fac = 15, ..., diagnostic = FALSE){
+        res <- OAsymTotalVarDist(e2, e1,
                   asis.smooth.discretize = asis.smooth.discretize, 
                   low.discr = low.discr, up.discr = up.discr, h.smooth = h.smooth,
                   rel.tol = rel.tol, Ngrid = Ngrid,
-                  TruncQuantile = TruncQuantile, IQR.fac = IQR.fac))
+                  TruncQuantile = TruncQuantile, IQR.fac = IQR.fac,
+                   ..., diagnostic = diagnostic)
+       if(diagnostic){
+          diagn <- attr(res,"diagnostic")
+          diagn[["call"]] <- match.call()
+          attr(res,"diagnostic") <- diagn
+       }
+        return(res)
     })
 
 setMethod("OAsymTotalVarDist",  signature(e1 = "AcDcLcDistribution",
@@ -175,10 +199,14 @@ setMethod("OAsymTotalVarDist",  signature(e1 = "AcDcLcDistribution",
            function(e1, e2, 
              rel.tol = .Machine$double.eps^0.3, Ngrid = 10000,
              TruncQuantile = getdistrOption("TruncQuantile"),
-             IQR.fac = 15){
+             IQR.fac = 15, ..., diagnostic = FALSE){
         ## if we have to recall this method with a smaller TruncQuantile arg:
         mc <-  as.list(match.call(call = sys.call(sys.parent(1)))[-1])
         mc$TruncQuantile <- TruncQuantile * 1.8
+
+        dots <- list(...)
+        dotsn <- names(dots)
+        dotsI <- dots[dotsn %in% c("order","subdivisions", "stop.on.error")]
 
         #block warnings:
         o.warn <- getOption("warn"); options(warn = -1)
@@ -217,14 +245,16 @@ setMethod("OAsymTotalVarDist",  signature(e1 = "AcDcLcDistribution",
         low <- max(low,low0); up <- min(up,up0)
         #
         ### integration as a function of c:
-        Eip <- function(f, c00)
-                distrExIntegrate(f, lower = low, upper = up, 
-                                    rel.tol = rel.tol, c00 = c00)
-       integ.c <- function(x,c00)  abs(ac2.d(x)-c00*ac1.d(x))
+        Eip <- function(f, c00, diagnostic0 = FALSE)
+                do.call(distrExIntegrate, c(list(f, lower = low, upper = up,
+                                    rel.tol = rel.tol, c00 = c00,
+                                    diagnostic = diagnostic0),dotsI))
+
+        integ.c <- function(x,c00)  abs(ac2.d(x)-c00*ac1.d(x))
 
        ### discrete part
 
-       supp <- union(support(dc1), support(dc2))
+        supp <- union(support(dc1), support(dc2))
 
         d2.range <- dc2.d(supp)
         d1.range <- dc1.d(supp)
@@ -232,7 +262,7 @@ setMethod("OAsymTotalVarDist",  signature(e1 = "AcDcLcDistribution",
         integ.d <- function(c00) abs(d2.range-c00*d1.range)
 
 
-       fct <- function(c0){
+        fct <- function(c0){
            e.c <- Eip(f=integ.c, c00=c0)
            e.d <- sum(integ.d(c0))
            return(e.d+e.c)
@@ -275,8 +305,18 @@ setMethod("OAsymTotalVarDist",  signature(e1 = "AcDcLcDistribution",
                                      e2 = "AcDcLcDistribution")), 
                               args = mc))             
        }
-       res <- Eip(f=integ.c, c00=c.opt)+sum(integ.d(c.opt))
+       res <- Eip(f=integ.c, c00=c.opt, diagnostic0 = diagnostic)
+       if(diagnostic){
+          diagn <- attr(res, "diagnostic")
+          diagn[["call"]] <-  match.call()
+       }
+       res <- res +sum(integ.d(c.opt))
        names(res) <- "minimal asym. total variation distance"
+       if(diagnostic){
+          diagn <- attr(res,"diagnostic")
+          diagn[["call"]] <- match.call()
+          attr(res,"diagnostic") <- diagn
+       }
        return(res)
               })
 

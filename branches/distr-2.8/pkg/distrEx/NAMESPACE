@@ -53,4 +53,4 @@ export("distrExOptions", "getdistrExOption",
        "distrExMASK", "distrExoptions", "distrExMOVED")
 export("make01","PrognCondDistribution",
        "PrognCondition")
-export(".getIntbounds", ".qtlIntegrate")
+export(".getIntbounds", ".qtlIntegrate", ".filterEargs", ".filterFunargs")

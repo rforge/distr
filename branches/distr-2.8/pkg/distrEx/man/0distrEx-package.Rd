@@ -46,9 +46,9 @@ Distribution Classes
 "Distribution" (from distr)
 |>"UnivariateDistribution" (from distr)
 |>|>"AbscontDistribution" (from distr)
-|>|>|>"Gumbel"
-|>|>|>"Pareto"
-|>|>|>"GPareto"
+|>|>|>"Gumbel"  (moved to package 'RobExtremes')
+|>|>|>"Pareto"  (moved to package 'RobExtremes')
+|>|>|>"GPareto" (moved to package 'RobExtremes')
 |>"MultivariateDistribution"
 |>|>"DiscreteMVDistribution-class"
 |>"UnivariateCondDistribution"

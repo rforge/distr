@@ -6,7 +6,7 @@ setMethod("HellingerDist", signature(e1 = "AbscontDistribution",
                                      e2 = "AbscontDistribution"),
     function(e1, e2, rel.tol=.Machine$double.eps^0.3, 
              TruncQuantile = getdistrOption("TruncQuantile"), 
-             IQR.fac = 15, ...){
+             IQR.fac = 15, ..., diagnostic = FALSE){
         ## find sensible lower and upper bounds for integration 
         # (a) quantile based
         low <- min(getLow(e1, eps = TruncQuantile), getLow(e2, eps = TruncQuantile))
@@ -20,12 +20,15 @@ setMethod("HellingerDist", signature(e1 = "AbscontDistribution",
 
         o.warn <- getOption("warn"); options(warn = -1)
         on.exit(options(warn=o.warn))
-        integrand <- function(x, dfun1, dfun2){ 0.5*(sqrt(dfun1(x))-sqrt(dfun2(x)))^2 }
-        res <- distrExIntegrate(integrand, lower = lower, upper = upper, 
-                    dfun1 = d(e1), dfun2 = d(e2), rel.tol = rel.tol)
+        integrand <- function(x){ 0.5*(sqrt(d(e1)(x))-sqrt(d(e2)(x)))^2 }
+        res <- distrExIntegrate(integrand, lower = lower, upper = upper,
+                   rel.tol = rel.tol, diagnostic = diagnostic)
         names(res) <- "Hellinger distance"
-
-        return(sqrt(res))  # ^.5 added P.R. 19-12-06
+        if(diagnostic){
+           diagn <- attr(res,"diagnostic")
+           diagn[["call"]] <- match.call()
+        }
+        return(res)
     })
 setMethod("HellingerDist", signature(e1 = "DiscreteDistribution", 
                                      e2 = "DiscreteDistribution"),
@@ -104,11 +107,17 @@ setMethod("HellingerDist", signature(e1 = "numeric",
              up.discr = getUp(e2), h.smooth = getdistrExOption("hSmooth"),
              rel.tol=.Machine$double.eps^0.3, 
              TruncQuantile = getdistrOption("TruncQuantile"), 
-             IQR.fac = 15, ...){
-        .asis.smooth.discretize.distance(e1, e2, asis.smooth.discretize, n.discr,
+             IQR.fac = 15, ..., diagnostic = FALSE){
+        res <- .asis.smooth.discretize.distance(e1, e2, asis.smooth.discretize, n.discr,
                  low.discr, up.discr, h.smooth, HellingerDist,
                  rel.tol = rel.tol, TruncQuantile = TruncQuantile, 
-                 IQR.fac = IQR.fac, ...)
+                 IQR.fac = IQR.fac, ..., diagnostic = diagnostic)
+        if(diagnostic){
+           diagn <- attr(res,"diagnostic")
+           diagn[["call"]] <- match.call()
+           attr(res,"diagnostic") <- diagn
+        }
+        return(res)
     })
 setMethod("HellingerDist", signature(e1 = "AbscontDistribution",
                                      e2 = "numeric"),
@@ -117,11 +126,17 @@ setMethod("HellingerDist", signature(e1 = "AbscontDistribution",
              up.discr = getUp(e1), h.smooth = getdistrExOption("hSmooth"),
              rel.tol=.Machine$double.eps^0.3, 
              TruncQuantile = getdistrOption("TruncQuantile"), 
-             IQR.fac = 15, ...){
-        return(HellingerDist(e2, e1, asis.smooth.discretize = asis.smooth.discretize, 
+             IQR.fac = 15, ..., diagnostic = FALSE){
+        res <- HellingerDist(e2, e1, asis.smooth.discretize = asis.smooth.discretize,
                   low.discr = low.discr, up.discr = up.discr, h.smooth = h.smooth,
                   rel.tol = rel.tol, TruncQuantile = TruncQuantile, 
-                  IQR.fac = IQR.fac, ...))
+                  IQR.fac = IQR.fac, ..., diagnostic = diagnostic)
+        if(diagnostic){
+           diagn <- attr(res,"diagnostic")
+           diagn[["call"]] <- match.call()
+           attr(res,"diagnostic") <- diagn
+        }
+        return(res)
     })
 
 #### new from version 2.0 on: Distance for Mixing Distributions
@@ -129,7 +144,7 @@ setMethod("HellingerDist", signature(e1 = "AcDcLcDistribution",
                                      e2 = "AcDcLcDistribution"),
            function(e1, e2, rel.tol=.Machine$double.eps^0.3, 
              TruncQuantile = getdistrOption("TruncQuantile"), 
-             IQR.fac = 15, ...){
+             IQR.fac = 15, ..., diagnostic = FALSE){
            if( is(e1,"AbscontDistribution"))
                e1 <- as(as(e1,"AbscontDistribution"), "UnivarLebDecDistribution")
            if( is(e2,"AbscontDistribution"))
@@ -147,11 +162,16 @@ setMethod("HellingerDist", signature(e1 = "AcDcLcDistribution",
               dc1@d <- function(x) dc1d(x)*discreteWeight(e1)
               dc2@d <- function(x) dc2d(x)*discreteWeight(e2)
               da2 <- HellingerDist(ac1,ac2, rel.tol = rel.tol, 
-                        TruncQuantile = TruncQuantile, IQR.fac = IQR.fac, ...)^2
-              dd2 <- HellingerDist(dc1,dc2)^2
-              res <- (da2+dd2)^.5
+                        TruncQuantile = TruncQuantile, IQR.fac = IQR.fac, ..., diagnostic = diagnostic)
+              dd2 <- HellingerDist(dc1,dc2)
+              res <- (da2^2+dd2^2)^.5
               names(res) <- "Hellinger distance"
-              res
+              if(diagnostic){
+                 diagn <- attr(da2,"diagnostic")
+                 diagn[["call"]] <- match.call()
+                 attr(res,"diagnostic") <- diagn
+              }
+              return(res)
 })
 
 setMethod("HellingerDist", signature(e1 = "LatticeDistribution", 

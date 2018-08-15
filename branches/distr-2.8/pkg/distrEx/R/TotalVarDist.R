@@ -6,7 +6,7 @@ setMethod("TotalVarDist", signature(e1 = "AbscontDistribution",
                                     e2 = "AbscontDistribution"),
     function(e1, e2, rel.tol=.Machine$double.eps^0.3, 
              TruncQuantile = getdistrOption("TruncQuantile"), 
-             IQR.fac = 15, ...){
+             IQR.fac = 15, ..., diagnostic = FALSE){
         ## find sensible lower and upper bounds for integration 
         # (a) quantile based
         low <- min(getLow(e1, eps = TruncQuantile), getLow(e2, eps = TruncQuantile))
@@ -22,8 +22,14 @@ setMethod("TotalVarDist", signature(e1 = "AbscontDistribution",
         on.exit(options(warn=o.warn))
         integrand <- function(x, dfun1, dfun2){ 0.5*abs(dfun1(x)-dfun2(x)) }
         res <- distrExIntegrate(integrand, lower = low, upper = up, 
-                    dfun1 = d(e1), dfun2 = d(e2), rel.tol = rel.tol)
+                    dfun1 = d(e1), dfun2 = d(e2), rel.tol = rel.tol, ...,
+                    diagnostic = diagnostic)
         names(res) <- "total variation distance"
+        if(diagnostic){
+           diagn <- attr(res,"diagnostic")
+           diagn[["call"]] <- match.call()
+           attr(res,"diagnostic") <- diagn
+        }
 
         return(res)
     })
@@ -98,11 +104,17 @@ setMethod("TotalVarDist", signature(e1 = "numeric",
              up.discr = getUp(e2), h.smooth = getdistrExOption("hSmooth"),
              rel.tol=.Machine$double.eps^0.3, 
              TruncQuantile = getdistrOption("TruncQuantile"), 
-             IQR.fac = 15, ...){
-        .asis.smooth.discretize.distance(e1, e2, asis.smooth.discretize, n.discr,
+             IQR.fac = 15, ..., diagnostic = FALSE){
+     res <- .asis.smooth.discretize.distance(e1, e2, asis.smooth.discretize, n.discr,
                  low.discr, up.discr, h.smooth, TotalVarDist, 
                  rel.tol = rel.tol, TruncQuantile = TruncQuantile, 
-                 IQR.fac = IQR.fac, ...)
+                 IQR.fac = IQR.fac, ..., diagnostic = diagnostic)
+     if(diagnostic){
+           diagn <- attr(res,"diagnostic")
+           diagn[["call"]] <- match.call()
+           attr(res,"diagnostic") <- diagn
+     }
+     return(res)
      })
 setMethod("TotalVarDist", signature(e1 = "AbscontDistribution",
                                      e2 = "numeric"),
@@ -111,19 +123,19 @@ setMethod("TotalVarDist", signature(e1 = "AbscontDistribution",
              up.discr = getUp(e1), h.smooth = getdistrExOption("hSmooth"),
              rel.tol=.Machine$double.eps^0.3, 
              TruncQuantile = getdistrOption("TruncQuantile"), 
-             IQR.fac = 15, ...){
+             IQR.fac = 15, ..., diagnostic = FALSE){
         return(TotalVarDist(e2, e1, asis.smooth.discretize = asis.smooth.discretize, 
                   low.discr = low.discr, up.discr = up.discr, h.smooth = h.smooth,
                   rel.tol=rel.tol, 
                   TruncQuantile = TruncQuantile, 
-                 IQR.fac = IQR.fac, ... ))
+                 IQR.fac = IQR.fac, ..., diagnostic = diagnostic ))
     })
 #### new from version 2.0 on: Distance for Mixing Distributions
 setMethod("TotalVarDist",  signature(e1 = "AcDcLcDistribution",
                                      e2 = "AcDcLcDistribution"),
            function(e1, e2, rel.tol=.Machine$double.eps^0.3, 
                         TruncQuantile = getdistrOption("TruncQuantile"), 
-                        IQR.fac = 15, ...){
+                        IQR.fac = 15, ..., diagnostic = FALSE){
            if( is(e1,"AbscontDistribution"))
                e1 <- as(as(e1,"AbscontDistribution"), "UnivarLebDecDistribution")
            if( is(e2,"AbscontDistribution"))
@@ -142,10 +154,16 @@ setMethod("TotalVarDist",  signature(e1 = "AcDcLcDistribution",
               dc2@d <- function(x) dc2d(x)*discreteWeight(e2)
               res <- TotalVarDist(ac1,ac2, rel.tol = rel.tol, 
                         TruncQuantile = TruncQuantile, IQR.fac = IQR.fac, ...) + 
-                     TotalVarDist(dc1,dc2, ...)
+                     TotalVarDist(dc1,dc2, ..., diagnostic = diagnostic)
               names(res) <- "total variation distance"
+              if(diagnostic){
+                 diagn <- attr(res,"diagnostic")
+                 diagn[["call"]] <- match.call()
+                 attr(res,"diagnostic") <- diagn
+              }
               res
               })
+
 setMethod("TotalVarDist", signature(e1 = "LatticeDistribution", 
                                          e2 = "LatticeDistribution"),
     getMethod("TotalVarDist", signature(e1 = "DiscreteDistribution", 

@@ -13,6 +13,10 @@ v 2.8
 
 user-visible CHANGES:
 + DESCRIPTION tag SVNRevision changed to VCS/SVNRevision
++ the return values of distrExIntegrate and all E()-methods gain an 
+  optional attribute "diagnostic" which is filled if argument
+  diagnostic is TRUE (the E()-methods whenever they use distrExIntegrate
+  in (parts of) their computation.
 
 under the hood:
 + moved quantile integration methods for expectation for Weibull and
@@ -30,6 +34,10 @@ under the hood:
    2nd row if it is has a finite right endpoint); not yet further used
 + for consistency to the univariate methods, the liesInSupport() method for
   DiscreteMVDistribution gains an argument checkFin, which is not yet used.
++ introduced filter functions to warrant some safety that only those args from
+  "..." become arguments of the integrand, of distrExIntegrate, of E(),
+   of integrate, of GLIntegrate, of quantiles and IQR, which are within
+   the formals of the respective function...
   
 ##############
 v 2.7

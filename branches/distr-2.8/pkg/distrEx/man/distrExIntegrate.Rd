@@ -10,7 +10,7 @@
 distrExIntegrate(f, lower, upper, subdivisions = 100, 
                  rel.tol = .Machine$double.eps^0.25, 
                  abs.tol = rel.tol, stop.on.error = TRUE, 
-                 distr, order, ...)
+                 distr, order, ..., diagnostic = FALSE)
 }
 
 \arguments{
@@ -30,6 +30,12 @@ distrExIntegrate(f, lower, upper, subdivisions = 100,
   \item{\dots}{ additional arguments to be passed to \code{f}. Remember 
     to use argument names not matching those of \code{integrate}
     and \code{GLIntegrate}! }
+  \item{diagnostic}{ logical; if \code{TRUE}, the return value obtains
+    an attribute \code{"diagnostic"} with diagnostic information on the
+    integration, i.e., a list with entries \code{method} (\code{"integrate"}
+    or \code{"GLIntegrate"}), \code{call}, \code{result} (the complete return
+    value of the method),  \code{args} (the args with which the
+    method was called), and \code{time} (the time to compute the integral). }
 }
 \details{
   This function calls \code{integrate}. In case \code{integrate}
