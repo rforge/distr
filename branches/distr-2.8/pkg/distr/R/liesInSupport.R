@@ -99,3 +99,34 @@ setMethod("liesInSupport", signature(object = "UnivarMixingDistribution",
        obj <- flat.mix(object)
        return(liesInSupport(obj,x,checkFin))
        })
+
+.alwaysInSupp <- function(object, x, checkFin = TRUE) is.finite(x)
+.posInSupp <- function(object, x, checkFin = TRUE) (x>=0)
+.stricposInSupp <- function(object, x, checkFin = TRUE) (x>0)
+
+setMethod("liesInSupport", signature(object = "ExpOrGammaOrChisq",
+                                     x = "numeric"),.posInSupp)
+setMethod("liesInSupport", signature(object = "Lnorm",
+                                     x = "numeric"),.posInSupp)
+setMethod("liesInSupport", signature(object = "Fd",
+                                     x = "numeric"),.posInSupp)
+
+setMethod("liesInSupport", signature(object = "Norm",
+                                     x = "numeric"),.alwaysInSupp)
+setMethod("liesInSupport", signature(object = "DExp",
+                                     x = "numeric"),.alwaysInSupp)
+setMethod("liesInSupport", signature(object = "Cauchy",
+                                     x = "numeric"),.alwaysInSupp)
+setMethod("liesInSupport", signature(object = "Td",
+                                     x = "numeric"),.alwaysInSupp)
+setMethod("liesInSupport", signature(object = "Logis",
+                                     x = "numeric"),.alwaysInSupp)
+setMethod("liesInSupport", signature(object = "Weibull",
+                                     x = "numeric"),.alwaysInSupp)
+
+setMethod("liesInSupport", signature(object = "Unif",
+                                     x = "numeric"),
+  function(object, x, checkFin = TRUE){(x>=Min(object))&(x<=Max(object))})
+setMethod("liesInSupport", signature(object = "Beta",
+                                     x = "numeric"),
+  function(object, x, checkFin = TRUE){(x>=0)&(x<=1)})

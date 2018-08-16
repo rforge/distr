@@ -7,6 +7,18 @@
 \alias{liesInSupport,DiscreteDistribution,numeric-method}
 \alias{liesInSupport,Distribution,matrix-method}
 \alias{liesInSupport,AbscontDistribution,numeric-method}
+\alias{liesInSupport,ExpOrGammaOrChisq,numeric-method}
+\alias{liesInSupport,Lnorm,numeric-method}
+\alias{liesInSupport,Fd,numeric-method}
+\alias{liesInSupport,Norm,numeric-method}
+\alias{liesInSupport,DExp,numeric-method}
+\alias{liesInSupport,Cauchy,numeric-method}
+\alias{liesInSupport,Td,numeric-method}
+\alias{liesInSupport,Logis,numeric-method}
+\alias{liesInSupport,Weibull,numeric-method}
+\alias{liesInSupport,Unif,numeric-method}
+\alias{liesInSupport,Beta,numeric-method}
+
 
 \title{Generic Function for Testing the Support of a Distribution }
 \description{
@@ -14,7 +26,24 @@
   distribution \code{object}.
 }
 \usage{
-liesInSupport(object, x, checkFin = FALSE)
+liesInSupport(object, x, ...)
+\S4method{liesInSupport}{UnivarLebDecDistribution,numeric}(object,x, checkFin = FALSE)
+\S4method{liesInSupport}{UnivarMixingDistribution,numeric}(object,x, checkFin = FALSE)
+\S4method{liesInSupport}{LatticeDistribution,numeric}(object,x, checkFin = FALSE)
+\S4method{liesInSupport}{DiscreteDistribution,numeric}(object,x, checkFin = FALSE)
+\S4method{liesInSupport}{AbscontDistribution,numeric}(object,x, checkFin = FALSE)
+\S4method{liesInSupport}{Distribution,matrix}(object,x, checkFin = FALSE)
+\S4method{liesInSupport}{ExpOrGammaOrChisq,numeric}(object,x, checkFin = TRUE)
+\S4method{liesInSupport}{Lnorm,numeric}(object,x, checkFin = TRUE)
+\S4method{liesInSupport}{Fd,numeric}(object,x, checkFin = TRUE)
+\S4method{liesInSupport}{Norm,numeric}(object,x, checkFin = TRUE)
+\S4method{liesInSupport}{DExp,numeric}(object,x, checkFin = TRUE)
+\S4method{liesInSupport}{Cauchy,numeric}(object,x, checkFin = TRUE)
+\S4method{liesInSupport}{Td,numeric}(object,x, checkFin = TRUE)
+\S4method{liesInSupport}{Logis,numeric}(object,x, checkFin = TRUE)
+\S4method{liesInSupport}{Weibull,numeric}(object,x, checkFin = TRUE)
+\S4method{liesInSupport}{Unif,numeric}(object,x, checkFin = TRUE)
+\S4method{liesInSupport}{Beta,numeric}(object,x, checkFin = TRUE)
 }
 \arguments{
   \item{object}{ object of class \code{"Distribution"} }
@@ -26,6 +55,7 @@ liesInSupport(object, x, checkFin = FALSE)
   and by using slot \code{.finSupport} / the return values of \code{q.l(object)}
   in \code{0} and \code{1}. This is only used on discrete (parts of)
   distributions).}
+  \item{\dots}{ used for specific arguments to particular methods. }
 }
 %\details{}
 \value{logical vector}

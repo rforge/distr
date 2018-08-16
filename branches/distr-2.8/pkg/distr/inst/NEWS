@@ -33,7 +33,8 @@ under the hood:
   from ifelse expressions to index operations  to avoid warnings 
 + in distr::solve only try base::solve if arg "a" has no dim or if it has then 
   if nrow(a)==nrow(b); otherwise directly use MASS::ginv
-
++ introduced particular liesInSupport methods for all specific abs.cont distributions in distr
+  
 bug fixes
 + fixed a (newly introduced) bug in exp() for DiscreteDistribution -- forgot to return obj ...
   
