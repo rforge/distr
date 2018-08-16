@@ -24,7 +24,6 @@
         integrand <- function(x){ y <- ql(x)##quantile transformation
                                   if(useApply){
                                      funy <- sapply(y,funwD)
-                                     # dim(y) <- di
                                      dim(funy) <- dim(x)
                                   }else funy <- fun(y)
                                   return(funy) }
@@ -44,14 +43,23 @@
          low.m <- low
          upp.m <- upp
 
+         .order <- if(!is.null(dots$order)) dots$order else .distrExOptions$GLIntegrateOrder
+         .subdivisions <- if(!is.null(dots$subdivisions)) dots$subdivisions else 100
+         dots.withoutUseApply$order <- dots.withoutUseApply$subdivisions <- NULL
+
+         if( .withRightTail &&  .withLeftTail){fac.R <- fac.L <- 0.1; fac.M <- 0.8}
+         if( .withRightTail && !.withLeftTail){fac.R <- 0.2; fac.M <- 0.8}
+         if(!.withRightTail &&  .withLeftTail){fac.L <- 0.2; fac.M <- 0.8}
+         if(!.withRightTail && !.withLeftTail){fac.M <- 1.0}
+
          if(diagnostic) diagn <- list(call = mc)
 
          if(.withRightTail){
             upp.m <- min(upp,0.98)
             if(upp>0.98){
                intV.u <- do.call(distrExIntegrate, c(list(f = integrand,
-                    lower = max(0.98,low),
-                    upper = upp,
+                    lower = max(0.98,low), upper = upp,
+                    order = fac.R * .order, subdivisions = fac.R * .subdivisions,
                     rel.tol = rel.tol, stop.on.error = FALSE,
                     distr = object, dfun = dunif, diagnostic = diagnostic), dots.withoutUseApply))
                if(diagnostic) diagn$rightTail <- attr(intV.u,"diagnostic")
@@ -61,16 +69,16 @@
             low.m <- max(low,0.02)
             if(low<0.02){
                intV.l <- do.call(distrExIntegrate, c(list(f = integrand,
-                    lower = low,
-                    upper = min(0.02, upp),
+                    lower = low, upper = min(0.02, upp),
+                    order = fac.L * .order, subdivisions = fac.L * .subdivisions,
                     rel.tol = rel.tol, stop.on.error = FALSE,
                     distr = object, dfun = dunif), dots.withoutUseApply))
                if(diagnostic) diagn$leftTail <- attr(intV.l,"diagnostic")
             }
          }
          intV.m <- do.call(distrExIntegrate, c(list(f = integrand,
-                    lower = low.m,
-                    upper = upp.m,
+                    lower = low.m, upper = upp.m,
+                    order = fac.M * .order, subdivisions = fac.M * .subdivisions,
                     rel.tol = rel.tol, stop.on.error = FALSE,
                     distr = object, dfun = dunif), dots.withoutUseApply))
          if(diagnostic) diagn$main <- attr(intV.m,"diagnostic")
