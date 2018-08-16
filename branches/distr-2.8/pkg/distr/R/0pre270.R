@@ -26,8 +26,8 @@ if(getRversion()<'2.8.0'){
                              grDevices::dev.off(which=grDevices::dev.list()[2])
                       }
                   }
+                  dev.new(...)
                }
-               dev.new(...)
            }
         }
     }
