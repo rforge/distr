@@ -72,7 +72,7 @@
                     lower = low, upper = min(0.02, upp),
                     order = fac.L * .order, subdivisions = fac.L * .subdivisions,
                     rel.tol = rel.tol, stop.on.error = FALSE,
-                    distr = object, dfun = dunif), dots.withoutUseApply))
+                    distr = object, dfun = dunif, diagnostic = diagnostic), dots.withoutUseApply))
                if(diagnostic) diagn$leftTail <- attr(intV.l,"diagnostic")
             }
          }
@@ -80,7 +80,7 @@
                     lower = low.m, upper = upp.m,
                     order = fac.M * .order, subdivisions = fac.M * .subdivisions,
                     rel.tol = rel.tol, stop.on.error = FALSE,
-                    distr = object, dfun = dunif), dots.withoutUseApply))
+                    distr = object, dfun = dunif, diagnostic = diagnostic), dots.withoutUseApply))
          if(diagnostic) diagn$main <- attr(intV.m,"diagnostic")
 
          int <- intV.l+intV.m+intV.u
