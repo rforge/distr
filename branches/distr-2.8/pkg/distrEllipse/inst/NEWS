@@ -20,6 +20,8 @@ under the hood:
 + now specified that we want to use distr::solve
 + E methods for MultivarMixingDistribution use filtering of dots arguments
   (like E()-methods in distrEx v 2.8.0)
++ E methods for MultivarMixingDistribution if (diagnostic==TRUE) return 
+  diagnostic attributes of S3 class  "DiagnosticClass"
 
 ##############
 v 2.7

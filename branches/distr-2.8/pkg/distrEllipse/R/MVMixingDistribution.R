@@ -141,7 +141,10 @@ setMethod("E", signature(object = "MultivarMixingDistribution",
                  diagn[[i]] <- attr(res0,"diagnostic")
                  res <- res + object@mixCoeff[i]*res0
              }
-             if(diagnostic) attr(res,"diagnostic") <- diagn
+             if(diagnostic){
+                attr(res,"diagnostic") <- diagn
+                class(attr(res,"diagnostic"))<- "DiagnosticClass"
+             }
              return(res)
            })
 setMethod("E", signature(object = "MultivarMixingDistribution",
@@ -164,7 +167,10 @@ setMethod("E", signature(object = "MultivarMixingDistribution",
                  diagn[[i]] <- attr(res0,"diagnostic")
                  res <- res + object@mixCoeff[i]*res0
              }
-             if(diagnostic) attr(res,"diagnostic") <- diagn
+             if(diagnostic){
+                attr(res,"diagnostic") <- diagn
+                class(attr(res,"diagnostic"))<- "DiagnosticClass"
+             }
              return(res)
            })
 
