@@ -109,6 +109,12 @@ HellingerDist(e1, e2, ...)
   which leads to an abs. cont. distribution. Afterwards the distance 
   between the smoothed empirical distribution and the provided abs. cont.
   distribution is computed.
+
+  Diagnostics on the involved integrations are available if argument
+  \code{diagnostic} is \code{TRUE}. Then there is attribute \code{diagnostic}
+  attached to the return value, which may be inspected
+  and assessed through \code{\link[distrEx]{showDiagnostic}} and
+  \code{\link[distrEx]{getDiagnostic}}.
 }
 \value{ Hellinger distance of \code{e1} and \code{e2} }
 \section{Methods}{

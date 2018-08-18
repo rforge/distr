@@ -87,6 +87,7 @@
          if(diagnostic){
             diagn[["call"]] <- mc
             attr(int,"diagnostic") <- diagn
+            class(attr(int,"diagnostic"))<- "DiagnosticClass"
          }
          return(int)
 
@@ -108,6 +109,7 @@ setMethod("E", signature(object = "Weibull", fun = "function", cond = "missing")
        diagn <- attr(res,"diagnostic")
        diagn[["call"]] <- match.call()
        attr(res,"diagnostic") <- diagn
+       class(attr(res,"diagnostic"))<- "DiagnosticClass"
     }
     return(res)
     })
@@ -129,6 +131,7 @@ setMethod("E", signature(object = "Gammad", fun = "function", cond = "missing"),
        diagn <- attr(res,"diagnostic")
        diagn[["call"]] <- match.call()
        attr(res,"diagnostic") <- diagn
+       class(attr(res,"diagnostic"))<- "DiagnosticClass"
     }
     return(res)
     })
@@ -150,6 +153,7 @@ setMethod("E", signature(object = "Cauchy", fun = "function", cond = "missing"),
        diagn <- attr(res,"diagnostic")
        diagn[["call"]] <- match.call()
        attr(res,"diagnostic") <- diagn
+       class(attr(res,"diagnostic"))<- "DiagnosticClass"
     }
     return(res)
     })

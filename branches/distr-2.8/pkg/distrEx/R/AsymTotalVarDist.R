@@ -84,6 +84,7 @@ setMethod("AsymTotalVarDist", signature(e1 = "AbscontDistribution",
              diagn <- attr(res,"diagnostic")
              diagn[["call"]] <- match.call()
              attr(res,"diagnostic") <- diagn
+             class(attr(res,"diagnostic"))<- "DiagnosticClass"
           }
           return(res)
        }   
@@ -108,6 +109,7 @@ setMethod("AsymTotalVarDist", signature(e1 = "AbscontDistribution",
           diagn <- attr(res,"diagnostic")
           diagn[["call"]] <- match.call()
           attr(res,"diagnostic") <- diagn
+          class(attr(res,"diagnostic"))<- "DiagnosticClass"
        }
        names(res) <- "asym. total variation distance"
        return(res)
@@ -212,6 +214,7 @@ setMethod("AsymTotalVarDist", signature(e1 = "numeric",
           diagn <- attr(res,"diagnostic")
           diagn[["call"]] <- match.call()
           attr(res,"diagnostic") <- diagn
+          class(attr(res,"diagnostic"))<- "DiagnosticClass"
        }
         return(res)
      })
@@ -232,6 +235,7 @@ setMethod("AsymTotalVarDist", signature(e1 = "AbscontDistribution",
           diagn <- attr(res,"diagnostic")
           diagn[["call"]] <- match.call()
           attr(res,"diagnostic") <- diagn
+          class(attr(res,"diagnostic"))<- "DiagnosticClass"
        }
         return(res)
     })
@@ -353,7 +357,10 @@ setMethod("AsymTotalVarDist",  signature(e1 = "AcDcLcDistribution",
           }
           res <- res +sum(integ.p.d(1))
           names(res) <- "asym. total variation distance"
-          if(diagnostic) attr(res, "diagnostic") <- diagn
+          if(diagnostic){
+             attr(res, "diagnostic") <- diagn
+             class(attr(res, "diagnostic"))<- "DiagnosticClass"
+          }
           return(res)
        }   
        # else: only have to search in c in [low1;1] resp [1;up1]
@@ -380,9 +387,8 @@ setMethod("AsymTotalVarDist",  signature(e1 = "AcDcLcDistribution",
        res <- res +sum(integ.p.d(c.rho))
        names(res) <- "asym. total variation distance"
        if(diagnostic){
-          diagn <- attr(res,"diagnostic")
-          diagn[["call"]] <- match.call()
           attr(res,"diagnostic") <- diagn
+          class(attr(res,"diagnostic"))<- "DiagnosticClass"
        }
        return(res)
     })

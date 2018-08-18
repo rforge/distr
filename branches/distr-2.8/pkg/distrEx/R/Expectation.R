@@ -88,6 +88,7 @@ setMethod("E", signature(object = "AbscontDistribution",
            diagn <- attr(res, "diagnostic")
            diagn[["call"]] <- mc
            attr(res, "diagnostic") <- diagn
+           class(attr(res, "diagnostic"))<- "DiagnosticClass"
         }
         return(res)
     })
@@ -137,6 +138,7 @@ setMethod("E", signature(object = "AffLinDistribution",
                 diagn <- attr(res0, "diagnostic")
                 diagn[["call"]] <- mc
                 attr(res1, "diagnostic") <- diagn
+                class(attr(res1, "diagnostic"))<- "DiagnosticClass"
              }
              return(res1)
     })
@@ -245,6 +247,7 @@ setMethod("E", signature(object = "AbscontDistribution",
            diagn <- attr(res, "diagnostic")
            diagn[["call"]] <- mc
            attr(res, "diagnostic") <- diagn
+           class(attr(res, "diagnostic"))<- "DiagnosticClass"
         }
 
         return(res)
@@ -364,6 +367,7 @@ setMethod("E", signature(object = "AbscontCondDistribution",
            diagn <- attr(res, "diagnostic")
            diagn[["call"]] <- mc
            attr(res, "diagnostic") <- diagn
+           class(attr(res, "diagnostic"))<- "DiagnosticClass"
         }
 
         return(res)
@@ -446,6 +450,7 @@ setMethod("E", signature(object = "AbscontCondDistribution",
            diagn <- attr(res, "diagnostic")
            diagn[["call"]] <- mc
            attr(res, "diagnostic") <- diagn
+           class(attr(res, "diagnostic"))<- "DiagnosticClass"
         }
 
         return(res)
@@ -513,6 +518,7 @@ setMethod("E", signature(object = "Beta",
              diagn <- attr(res, "diagnostic")
              diagn[["call"]] <- mc
              attr(res, "diagnostic") <- diagn
+             class(attr(res, "diagnostic"))<- "DiagnosticClass"
           }
 
           return(res)
@@ -567,6 +573,7 @@ setMethod("E", signature(object = "Cauchy",
                 diagn <- attr(res, "diagnostic")
                 diagn[["call"]] <- mc
                 attr(res, "diagnostic") <- diagn
+                class(attr(res, "diagnostic"))<- "DiagnosticClass"
              }
 
              return(res)
@@ -626,6 +633,7 @@ setMethod("E", signature(object = "DExp",
              diagn <- attr(res, "diagnostic")
              diagn[["call"]] <- mc
              attr(res, "diagnostic") <- diagn
+             class(attr(res, "diagnostic"))<- "DiagnosticClass"
           }
 
         return(res)
@@ -677,6 +685,7 @@ setMethod("E", signature(object = "Fd",
          diagn <- attr(res, "diagnostic")
          diagn[["call"]] <- mc
          attr(res, "diagnostic") <- diagn
+         class(attr(res, "diagnostic"))<- "DiagnosticClass"
       }
 
     return(res)
@@ -699,6 +708,7 @@ setMethod("E", signature(object = "Gammad",
          diagn <- attr(res, "diagnostic")
          diagn[["call"]] <- mc
          attr(res, "diagnostic") <- diagn
+         class(attr(res, "diagnostic"))<- "DiagnosticClass"
       }
 
     return(res)
@@ -792,6 +802,7 @@ setMethod("E", signature(object = "Logis",
          diagn <- attr(res, "diagnostic")
          diagn[["call"]] <- mc
          attr(res, "diagnostic") <- diagn
+         class(attr(res, "diagnostic"))<- "DiagnosticClass"
       }
 
     return(res)
@@ -816,6 +827,7 @@ setMethod("E", signature(object = "Lnorm",
            diagn <- attr(res, "diagnostic")
            diagn[["call"]] <- mc
            attr(res, "diagnostic") <- diagn
+           class(attr(res, "diagnostic"))<- "DiagnosticClass"
         }
 
       return(res)
@@ -867,6 +879,7 @@ setMethod("E", signature(object = "Td",
          diagn <- attr(res, "diagnostic")
          diagn[["call"]] <- mc
          attr(res, "diagnostic") <- diagn
+         class(attr(res, "diagnostic")) <- "DiagnosticClass"
       }
 
     return(res)
@@ -889,6 +902,7 @@ setMethod("E", signature(object = "Unif",
          diagn <- attr(res, "diagnostic")
          diagn[["call"]] <- mc
          attr(res, "diagnostic") <- diagn
+         class(attr(res, "diagnostic"))<- "DiagnosticClass"
       }
 
     return(res)
@@ -911,6 +925,7 @@ setMethod("E", signature(object = "Weibull",
          diagn <- attr(res, "diagnostic")
          diagn[["call"]] <- mc
          attr(res, "diagnostic") <- diagn
+         class(attr(res, "diagnostic"))<- "DiagnosticClass"
       }
 
     return(res)
@@ -931,6 +946,7 @@ setMethod("E", signature(object = "Arcsine",
          diagn <- attr(res, "diagnostic")
          diagn[["call"]] <- mc
          attr(res, "diagnostic") <- diagn
+         class(attr(res, "diagnostic"))<- "DiagnosticClass"
       }
 
     return(res)
@@ -956,9 +972,12 @@ setMethod("E", signature(object = "UnivarLebDecDistribution",
                   IQR.fac = IQR.fac, ..., diagnostic = diagnostic )
         I.dc <- E(discretePart(object), low = low, upp = upp )
         res <- as.vector(object@mixCoeff %*% c(I.ac, I.dc))
-        diagn <- attr(I.ac, "diagnostic")
-        diagn[["call"]] <- mc
-        if(diagnostic) attr(res,"diagnostic") <- diagn
+        if(diagnostic){
+           diagn <- attr(I.ac, "diagnostic")
+           diagn[["call"]] <- mc
+           attr(res,"diagnostic") <- diagn
+           class(attr(res,"diagnostic"))<- "DiagnosticClass"
+        }
         return(res)
     })
 setMethod("E", signature(object = "UnivarLebDecDistribution",
@@ -978,9 +997,12 @@ setMethod("E", signature(object = "UnivarLebDecDistribution",
         I.dc <- E(discretePart(object), fun = fun, useApply = useApply,
                   low = low, upp = upp, ... )
         res <- as.vector(object@mixCoeff %*% c(I.ac, I.dc))
-        diagn <- attr(I.ac, "diagnostic")
-        diagn[["call"]] <- mc
-        if(diagnostic) attr(res,"diagnostic") <- diagn
+        if(diagnostic){
+           diagn <- attr(I.ac, "diagnostic")
+           diagn[["call"]] <- mc
+           attr(res,"diagnostic") <- diagn
+           class(attr(res,"diagnostic"))<- "DiagnosticClass"
+        }
         return(res)
     })
 setMethod("E", signature(object = "UnivarLebDecDistribution",
@@ -999,9 +1021,12 @@ setMethod("E", signature(object = "UnivarLebDecDistribution",
                   IQR.fac = IQR.fac, ... , diagnostic = diagnostic)
         I.dc <- E(discretePart(object), cond = cond, low = low, upp = upp, ... )
         res <- as.vector(object@mixCoeff %*% c(I.ac, I.dc))
-        diagn <- attr(I.ac, "diagnostic")
-        diagn[["call"]] <- mc
-        if(diagnostic) attr(res,"diagnostic") <- diagn
+        if(diagnostic){
+           diagn <- attr(I.ac, "diagnostic")
+           diagn[["call"]] <- mc
+           attr(res,"diagnostic") <- diagn
+           class(attr(res,"diagnostic"))<- "DiagnosticClass"
+        }
         return(res)
     })
 
@@ -1022,9 +1047,12 @@ setMethod("E", signature(object = "UnivarLebDecDistribution",
         I.dc <- E(discretePart(object), fun = fun, cond = cond, 
                   useApply = useApply, low = low, upp = upp, ... )
         res <- as.vector(object@mixCoeff %*% c(I.ac, I.dc))
-        diagn <- attr(I.ac, "diagnostic")
-        diagn[["call"]] <- mc
-        if(diagnostic) attr(res,"diagnostic") <- diagn
+        if(diagnostic){
+           diagn <- attr(I.ac, "diagnostic")
+           diagn[["call"]] <- mc
+           attr(res,"diagnostic") <- diagn
+           class(attr(res,"diagnostic"))<- "DiagnosticClass"
+        }
         return(res)
     })
 
@@ -1053,9 +1081,12 @@ setMethod("E", signature(object = "AcDcLcDistribution",
         I.dc <- E(discretePart(object), fun = fun, cond = cond, low = low, 
                   upp = upp, ... )
         res <- as.vector(object@mixCoeff %*% c(I.ac, I.dc))
-        diagn <- attr(I.ac, "diagnostic")
-        diagn[["call"]] <- mc
-        if(diagnostic) attr(res,"diagnostic") <- diagn
+        if(diagnostic){
+           diagn <- attr(I.ac, "diagnostic")
+           diagn[["call"]] <- mc
+           attr(res,"diagnostic") <- diagn
+           class(attr(res,"diagnostic"))<- "DiagnosticClass"
+        }
         return(res)
     })
 
@@ -1073,9 +1104,12 @@ setMethod("E", signature(object = "CompoundDistribution",
           resS <- E(S, ..., diagnostic = diagnostic)
           resN <- E(N)
           res <- resS*resN
-          diagn <- attr(resS, "diagnostic")
-          diagn[["call"]] <- mc
-          if(diagnostic) attr(res,"diagnostic") <- diagn
+          if(diagnostic){
+             diagn <- attr(resS, "diagnostic")
+             diagn[["call"]] <- mc
+             attr(res,"diagnostic") <- diagn
+             class(attr(res,"diagnostic"))<- "DiagnosticClass"
+          }
           return(res)
        }else{
           res <- E(simplifyD(object), low = low, upp = upp, ..., diagnostic = diagnostic)
@@ -1083,6 +1117,7 @@ setMethod("E", signature(object = "CompoundDistribution",
              diagn <- attr(res, "diagnostic")
              diagn[["call"]] <- mc
              attr(res, "diagnostic") <- diagn
+             class(attr(res,"diagnostic"))<- "DiagnosticClass"
           }
           return(res)
        }
@@ -1111,6 +1146,7 @@ setMethod("E", signature(object = "UnivarMixingDistribution",
         if(diagnostic){
           diagn[["call"]] <- mc
           attr(res, "diagnostic") <- diagn
+          class(attr(res,"diagnostic"))<- "DiagnosticClass"
         }
         return(res)
     })
@@ -1139,6 +1175,7 @@ setMethod("E", signature(object = "UnivarMixingDistribution",
         if(diagnostic){
           diagn[["call"]] <- mc
           attr(res, "diagnostic") <- diagn
+          class(attr(res,"diagnostic"))<- "DiagnosticClass"
         }
         return(res)
     })
@@ -1167,6 +1204,7 @@ setMethod("E", signature(object = "UnivarMixingDistribution",
         if(diagnostic){
           diagn[["call"]] <- mc
           attr(res, "diagnostic") <- diagn
+          class(attr(res,"diagnostic"))<- "DiagnosticClass"
         }
         return(res)
     })
@@ -1196,6 +1234,7 @@ setMethod("E", signature(object = "UnivarMixingDistribution",
         if(diagnostic){
           diagn[["call"]] <- mc
           attr(res, "diagnostic") <- diagn
+          class(attr(res,"diagnostic"))<- "DiagnosticClass"
         }
         return(res)
     })

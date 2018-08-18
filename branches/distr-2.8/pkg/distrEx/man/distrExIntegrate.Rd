@@ -1,5 +1,8 @@
 \name{distrExIntegrate}
 \alias{distrExIntegrate}
+\alias{print.DiagnosticClass}
+\alias{showDiagnostic}
+\alias{getDiagnostic}
 
 \title{Integration of One-Dimensional Functions}
 \description{
@@ -11,6 +14,9 @@ distrExIntegrate(f, lower, upper, subdivisions = 100,
                  rel.tol = .Machine$double.eps^0.25, 
                  abs.tol = rel.tol, stop.on.error = TRUE, 
                  distr, order, ..., diagnostic = FALSE)
+showDiagnostic(x, what, withNonShows = FALSE, ...)
+getDiagnostic(x, what, reorganized=TRUE)
+\method{print}{DiagnosticClass}(x, what, withNonShows = FALSE, ...)
 }
 
 \arguments{
@@ -27,25 +33,64 @@ distrExIntegrate(f, lower, upper, subdivisions = 100,
     warning in the \code{message} component. }
   \item{distr}{ object of class \code{UnivariateDistribution}. }
   \item{order}{ order of Gauss-Legendre quadrature. }
-  \item{\dots}{ additional arguments to be passed to \code{f}. Remember 
-    to use argument names not matching those of \code{integrate}
-    and \code{GLIntegrate}! }
   \item{diagnostic}{ logical; if \code{TRUE}, the return value obtains
     an attribute \code{"diagnostic"} with diagnostic information on the
     integration, i.e., a list with entries \code{method} (\code{"integrate"}
     or \code{"GLIntegrate"}), \code{call}, \code{result} (the complete return
     value of the method),  \code{args} (the args with which the
     method was called), and \code{time} (the time to compute the integral). }
+  \item{\dots}{ In case of integrators: additional arguments to be passed to \code{f}. Remember
+    to use argument names not matching those of \code{integrate}
+    and \code{GLIntegrate}! In case of \code{showDiagnostic}, \code{print.DiagnosticClass}:
+    additional arguments to be passed on to print methods called for particular
+    items in the diagnostic list. }
+   \item{x}{ the item for which the diagnostic is to be shown. }
+   \item{what}{ a character vector with all the diagnostic items to be
+     selected/shown. If empty or missing all items are selected/shown. }
+   \item{withNonShows}{ internally we distinguish items which are easily
+     printed (first kind) (numeric, logical, character)
+     and more difficult ones (second kind), e.g., calls, functions, lists. The
+     distinction is made according to the list item name. If
+     \code{withNonShows==TRUE} one also attempts to show the selected items
+     of the second kind, otherwise they are not shown (but returned). }
+   \item{reorganized}{should the diagnostic information be reorganized
+   (using internal function \code{\link{.reorganizeDiagnosticList}}? }
 }
 \details{
-  This function calls \code{integrate}. In case \code{integrate}
+  \code{distrExIntegrate} calls \code{integrate}. In case \code{integrate}
   returns an error a Gauss-Legendre integration is performed using
   \code{GLIntegrate}. If \code{lower} or (and) \code{upper} are infinite
   the \code{GLIntegrateTruncQuantile}, respectively the 
   \code{1-GLIntegrateTruncQuantile} quantile of \code{distr} is used 
   instead.
+
+  \code{distrExIntegrate} is called from many places in the distr and robast
+  families of packages. At every such instance, diagnostic information can
+  be collected (setting a corresponding argument \code{diagnostic} to \code{TRUE}
+  in the calling function. This diagnostic information is originally stored in
+  a tree like list structure of S3 class \code{DiagnosticClass} which is then
+  attached as attribute \code{diagnostic} to the respective object. It can be
+  inspected and accessed through \code{showDiagnostic} and  \code{getDiagnostic}.
+  More specifically, for any object with attribute \code{diagnostic},
+  \code{showDiagnostic} shows the diagnostic collected during integration, and
+  \code{getDiagnostic} returns the diagnostic collected during integration.
+  To this end, \code{print.DiagnosticClass} is an S3 method for \code{print}
+  for objects of S3 class \code{DiagnosticClass}.
 }
-\value{Estimate of the integral.}
+
+\value{
+
+The value of \code{distrExIntegrate} is a numeric approximation of the integral.
+If argument \code{diagnostic==TRUE} in \code{distrExIntegrate}, the return
+value has an attribute \code{diagnostic} of S3 class \code{DiagnosticClass}
+containing diagnostic information on the integration.
+
+\code{showDiagnostic}, \code{getDiagnostic}, \code{print.DiagnosticClass} all
+return (invisibly) a list with the selected items, reorganized by internal
+function \code{.reorganizeDiagnosticList}, respectively, in case
+of argument \code{reorganized==FALSE}, \code{getDiagnostic} returns (invisibly)
+the diagnostic information as is.
+}
 \references{ 
   Based on QUADPACK routines \code{dqags} and \code{dqagi} by
   R. Piessens and E. deDoncker-Kapenga, available from Netlib.

@@ -28,6 +28,7 @@ setMethod("TotalVarDist", signature(e1 = "AbscontDistribution",
         if(diagnostic){
            diagn <- attr(res,"diagnostic")
            diagn[["call"]] <- match.call()
+           class(diagn)<- "DiagnosticClass"
            attr(res,"diagnostic") <- diagn
         }
 
@@ -112,6 +113,7 @@ setMethod("TotalVarDist", signature(e1 = "numeric",
      if(diagnostic){
            diagn <- attr(res,"diagnostic")
            diagn[["call"]] <- match.call()
+           class(diagn)<- "DiagnosticClass"
            attr(res,"diagnostic") <- diagn
      }
      return(res)
@@ -159,6 +161,7 @@ setMethod("TotalVarDist",  signature(e1 = "AcDcLcDistribution",
               if(diagnostic){
                  diagn <- attr(res,"diagnostic")
                  diagn[["call"]] <- match.call()
+                 class(diagn)<- "DiagnosticClass"
                  attr(res,"diagnostic") <- diagn
               }
               res

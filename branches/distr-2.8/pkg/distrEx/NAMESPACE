@@ -2,7 +2,7 @@ useDynLib("distrEx", .registration = TRUE, .fixes = "C_")
 importFrom("stats", "dnorm", "integrate", "optimize", "pbinom",
              "pchisq", "pexp", "pnorm", "ppois", "qcauchy", "qnorm",
              "uniroot", "dunif")
-importFrom("utils", "getFromNamespace")
+importFrom("utils", "getFromNamespace", "object.size")
 import("methods")
 import("distr")
 importFrom("startupmsg", "buildStartupMessage")
@@ -54,3 +54,6 @@ export("distrExOptions", "getdistrExOption",
 export("make01","PrognCondDistribution",
        "PrognCondition")
 export(".getIntbounds", ".qtlIntegrate", ".filterEargs", ".filterFunargs")
+export("print.DiagnosticClass", "showDiagnostic", "getDiagnostic", 
+      ".nmsToGather", ".showallNamesDiagnosticList", ".reorganizeDiagnosticList")
+S3method(print,"DiagnosticClass")

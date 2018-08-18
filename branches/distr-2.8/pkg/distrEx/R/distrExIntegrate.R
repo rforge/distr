@@ -162,9 +162,9 @@ distrExIntegrate <- function(f, lower, upper, subdivisions = 100,
                                       stop.on.error = stop.on.error),list(...)),
                        result = res)
           res <- val
-          attr(res,"diagnostic") <- diagn
        }else res <- val
     }else{
+        errmess <- res
         Zi <- 1
         if(lower >= upper){
             lo <- lower
@@ -224,7 +224,7 @@ distrExIntegrate <- function(f, lower, upper, subdivisions = 100,
           diagn <- list(call = mc, method = "GLIntegrate",
                         args = c(list(lower=lower, upper=upper, order=order),
                                list(...)),
-                        result = res,
+                        result = list(GLIresult = res, errorMessage = errmess),
                         distrExOptions = .distrExOptions)
         }
     }
@@ -234,6 +234,7 @@ distrExIntegrate <- function(f, lower, upper, subdivisions = 100,
     if(diagnostic){
       diagn$time <- structure(new.time - time, class = "proc_time")
       attr(res,"diagnostic") <- diagn
+      class(attr(res,"diagnostic"))<- "DiagnosticClass"
     }
     return(res)
 }

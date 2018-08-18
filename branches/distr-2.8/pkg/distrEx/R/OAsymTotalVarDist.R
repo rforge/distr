@@ -82,6 +82,7 @@ setMethod("OAsymTotalVarDist", signature(e1 = "AbscontDistribution",
           diagn <- attr(res,"diagnostic")
           diagn[["call"]] <- match.call()
           attr(res,"diagnostic") <- diagn
+          class(attr(res,"diagnostic"))<- "DiagnosticClass"
        }
        return(res)
     })
@@ -169,6 +170,7 @@ setMethod("OAsymTotalVarDist", signature(e1 = "numeric",
           diagn <- attr(res,"diagnostic")
           diagn[["call"]] <- match.call()
           attr(res,"diagnostic") <- diagn
+          class(attr(res,"diagnostic"))<- "DiagnosticClass"
        }
         return(res)
      })
@@ -190,6 +192,7 @@ setMethod("OAsymTotalVarDist", signature(e1 = "AbscontDistribution",
           diagn <- attr(res,"diagnostic")
           diagn[["call"]] <- match.call()
           attr(res,"diagnostic") <- diagn
+          class(attr(res,"diagnostic"))<- "DiagnosticClass"
        }
         return(res)
     })
@@ -313,9 +316,8 @@ setMethod("OAsymTotalVarDist",  signature(e1 = "AcDcLcDistribution",
        res <- res +sum(integ.d(c.opt))
        names(res) <- "minimal asym. total variation distance"
        if(diagnostic){
-          diagn <- attr(res,"diagnostic")
-          diagn[["call"]] <- match.call()
           attr(res,"diagnostic") <- diagn
+          class(attr(res,"diagnostic"))<- "DiagnosticClass"
        }
        return(res)
               })

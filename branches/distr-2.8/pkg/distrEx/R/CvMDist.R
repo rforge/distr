@@ -21,6 +21,7 @@ setMethod("CvMDist", signature(e1 = "UnivariateDistribution",
         if(diagnostic){
            diagn <- attr(res,"diagnostic")
            diagn[["call"]] <- match.call()
+           class(diagn)<- "DiagnosticClass"
            attr(res,"diagnostic") <- diagn
         }
         names(res) <- "CvM distance"
@@ -42,6 +43,7 @@ setMethod("CvMDist", signature(e1 = "numeric",
           if(diagnostic){
              diagn <- attr(res,"diagnostic")
              diagn[["call"]] <- match.call()
+             class(diagn)<- "DiagnosticClass"
              attr(res,"diagnostic") <- diagn
           }
           return(res)

@@ -289,6 +289,13 @@ E(object, fun, cond, ...)
   function \code{.qtlIntegrate}, where both arguments \code{.withLeftTail}
   and \code{.withRightTail} are \code{TRUE} for the Cauchy and Gamma distributions,
   and only \code{.withRightTail} ist \code{TRUE} for the Weibull distribution.
+
+  Diagnostics on the involved integrations are available if argument
+  \code{diagnostic} is \code{TRUE}. Then there is attribute \code{diagnostic}
+  attached to the return value, which may be inspected
+  and assessed through \code{\link[distrEx]{showDiagnostic}} and
+  \code{\link[distrEx]{getDiagnostic}}.
+
   }
 
 \value{

@@ -17,7 +17,10 @@ user-visible CHANGES:
   optional attribute "diagnostic" which is filled if argument
   diagnostic is TRUE (the E()-methods whenever they use distrExIntegrate
   in (parts of) their computation.
-
++ particular functionality to inspect/access this diagnostic
+  information through showDiagnostic, getDiagnostic and the S3method 
+  for print for class DiagnosticClass 
+ 
 under the hood:
 + moved quantile integration methods for expectation for Weibull and
   Gamma distribution from pkg RobExtremes to distrEx; this is now also used
@@ -76,6 +79,14 @@ under the hood:
   .AW.1e5 instead to .AW.100000 
 + code to produce the grid values .AW.xxx in sysdata.rda is now contained
   in distrExIntegrate.R in an if(FALSE) { <block> }
++ new S3 class DiagnosticClass and helper functions .showallNamesDiagnosticList, 
+  .reorganizeDiagnosticList to ease inspection of the diagnostic information; 
+  exported constant .nmsToGather captures the names of items in diagnostic attributes
+  which are "easily" shown (numeric, logical, character)
++ Expectations, .qtlIntegrate and distances based on integration (i.e., TotalVarDist, 
+  OAsymTotalVarDist, AsymTotalVarDist, HellingerDist, CvMDist) if (diagnostic==TRUE) 
+  return diagnostic attributes of S3 class  "DiagnosticClass"
+  
 ##############
 v 2.7
 ##############
