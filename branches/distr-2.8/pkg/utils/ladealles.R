@@ -9,7 +9,7 @@
 }
 
 #ladeall(DIR="distr", develDir = "C:/rtest/distr/branches/distr-2.1/pkg")
-#ladeall(DIR="distrEx", develDir = "C:/rtest/distr/pkg")
+#ladeall(DIR="distrMod", develDir = "C:/rtest/distr/branches/distr-2.8/pkg")
 #ladeall(DIR="distrMod", develDir = "C:/rtest/distr/branches/distr-2.4/pkg",withPrint=FALSE)
-ladeall(DIR="RobAstbase", develDir = "C:/rtest/robast/branches/robast-0.9/pkg")
+ladeall(DIR="RobExtremes", develDir = "C:/rtest/robast/branches/robast-1.2/pkg")
 
