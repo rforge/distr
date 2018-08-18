@@ -16,7 +16,7 @@ distrExIntegrate(f, lower, upper, subdivisions = 100,
                  distr, order, ..., diagnostic = FALSE)
 showDiagnostic(x, what, withNonShows = FALSE, ...)
 getDiagnostic(x, what, reorganized=TRUE)
-\method{print}{DiagnosticClass}(x, what, withNonShows = FALSE, ...)
+\method{print}{DiagnosticClass}(x, what, withNonShows = FALSE, xname, ...)
 }
 
 \arguments{
@@ -53,6 +53,7 @@ getDiagnostic(x, what, reorganized=TRUE)
      distinction is made according to the list item name. If
      \code{withNonShows==TRUE} one also attempts to show the selected items
      of the second kind, otherwise they are not shown (but returned). }
+   \item{xname}{ an optional name for the diagnostic object to be shown. }
    \item{reorganized}{should the diagnostic information be reorganized
    (using internal function \code{\link{.reorganizeDiagnosticList}}? }
 }

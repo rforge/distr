@@ -124,9 +124,9 @@
 ############################################################################
 
 
-print.DiagnosticClass <- function(x, what, withNonShows = FALSE, ...){
+print.DiagnosticClass <- function(x, what, withNonShows = FALSE, xname, ...){
    if(missing(what)) what <- .showallNamesDiagnosticList(x)
-   xn <- paste(deparse(substitute(x)))
+   xn <- if(missing(xname)) paste(deparse(substitute(x))) else xname
    Diagtitle <- gettext("Diagnostic Information to Integrations in Object ")
    underl <- paste(rep("=",nchar(Diagtitle)+3+nchar(xn)),collapse="")
    cat("\n", underl,"\n", Diagtitle, "\"", xn,"\"\n", underl, "\n\n", sep="")
@@ -144,7 +144,15 @@ print.DiagnosticClass <- function(x, what, withNonShows = FALSE, ...){
       if(names(diaglistsShow)[item]=="call"){
          cat("Calls: \n")
          print(names(diaglistsShow[[item]]),...)
-      }else print(diaglistsShow[[item]], ...)
+      }else{
+         toShow <- diaglistsShow[[item]]
+         clItem <- class(toShow)
+         if("DiagnosticClass" %in% clItem){
+            if(length(clItem) == 1) class(toShow) <- "list"
+            class(toShow) <- clItem[clItem != "DiagnosticClass"]
+         }
+         print(toShow, ...)
+      }
       cat("\n")
    }
    if(withNonShows){
@@ -174,6 +182,7 @@ print.DiagnosticClass <- function(x, what, withNonShows = FALSE, ...){
 
 showDiagnostic <- function(x, what, withNonShows = FALSE, ...){
    diagn <- attr(x,"diagnostic")
+   xn <- paste(deparse(substitute(x)))
    diagnKStep <- attr(x,"kStepDiagnostic")
    if(!is.null(diagnKStep)){
       if(is.null(diagn)){
@@ -186,7 +195,7 @@ showDiagnostic <- function(x, what, withNonShows = FALSE, ...){
    }
    if(is.null(diagn)) return(invisible(NULL))
    if(missing(what)) what <- .showallNamesDiagnosticList(diagn)
-   res <- print(diagn, what = what, withNonShows=withNonShows, ...)
+   res <- print(diagn, what = what, withNonShows=withNonShows, xname=xn, ...)
    return(invisible(res))
 }
 

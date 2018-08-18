@@ -130,8 +130,8 @@ AsymTotalVarDist(e1, e2, ...)
   Diagnostics on the involved integrations are available if argument
   \code{diagnostic} is \code{TRUE}. Then there is attribute \code{diagnostic}
   attached to the return value, which may be inspected
-  and accessed through \code{\link[distrExIntegrate]{showDiagnostic}} and
-  \code{\link[distrExIntegrate]{getDiagnostic}}.
+  and accessed through \code{\link[distrEx:distrExIntegrate]{showDiagnostic}} and
+  \code{\link[distrEx:distrExIntegrate]{getDiagnostic}}.
 }
 \value{ Asymmetric Total variation distance of \code{e1} and \code{e2} }
 \section{Methods}{
