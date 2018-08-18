@@ -16,7 +16,10 @@ setMethod("E", signature(object = "L2ParamFamily",
            diagn[["call"]] <- match.call()
         }
         res <- matrix(res, nrow = nrow(fun))
-        if(diagnostic) attr(res, "diagnostic") <- diagn
+        if(diagnostic){
+           attr(res, "diagnostic") <- diagn
+           class(attr(res,"diagnostic"))<- "DiagnosticClass"
+        }
         return(res)
     })
 setMethod("E", signature(object = "L2ParamFamily", 
@@ -34,6 +37,8 @@ setMethod("E", signature(object = "L2ParamFamily",
         if(diagnostic){
            diagn <- attr(res,"diagnostic")
            diagn[["call"]] <- match.call()
-        }
+           attr(res, "diagnostic") <- diagn
+           class(attr(res,"diagnostic"))<- "DiagnosticClass"
+       }
         return(res)
     })

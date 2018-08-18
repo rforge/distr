@@ -115,6 +115,10 @@ under the hood:
 + now specified that we want to use distr::solve
 + E() methods with signature(object = "L2ParamFamily" , ...) use filtering of dots arguments
   (like E()-methods in distrEx v 2.8.0)
++ E methods with signature(object = "L2ParamFamily" , ...) if (diagnostic==TRUE) return 
+  diagnostic attributes of S3 class  "DiagnosticClass"
++ .CvMMDCovariance() if (diagnostic==TRUE) returns diagnostic attributes of S3 class  
+  "DiagnosticClass"
 
 
 ##############

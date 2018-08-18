@@ -114,7 +114,14 @@ CvMDist2(e1,e2,... )
   of helper function \code{.CvMMDCovarianceWithMux}, case of alternative
   \code{"Mod"} we use helper function \code{.CvMMDCovariance}. In both
   case one may use these helper function to get hand on the respective
-  influence function.
+  influence function. For covariances computed by \code{.CvMMDCovariance},
+  diagnostics on the involved integrations are available if argument
+  \code{diagnostic} is \code{TRUE}. Then there is attribute \code{diagnostic}
+  attached to the return value, which may be inspected
+  and accessed through \code{\link[distrEx:distrExIntegrate]{showDiagnostic}} and
+  \code{\link[distrEx:distrExIntegrate]{getDiagnostic}}.
+
+
   \code{KolmogorovMDEstimator} uses Kolmogorov distance, see
   \code{\link[distrEx]{KolmogorovDist}}, \code{TotalVarMDEstimator},
   uses total variation distance, see \code{\link[distrEx]{TotalVarDist}}

@@ -251,6 +251,16 @@ Class \code{"ProbFamily"}, by class \code{"ParamFamily"}.
       moves the L2-parametric Family \code{model} to parameter \code{param} }
   }
 }
+
+\details{
+In the \code{E}-methods, diagnostics on the involved integrations are available
+if argument   \code{diagnostic} is \code{TRUE}. Then there is attribute
+\code{diagnostic} attached to the return value, which may be inspected
+  and accessed through \code{\link[distrEx:distrExIntegrate]{showDiagnostic}} and
+  \code{\link[distrEx:distrExIntegrate]{getDiagnostic}}.
+
+}
+
 \references{
   Rieder, H. (1994) \emph{Robust Asymptotic Statistics}. New York: Springer.
 
