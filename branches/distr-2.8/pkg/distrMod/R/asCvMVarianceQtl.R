@@ -566,10 +566,10 @@ CvMDist2 <- function(e1,e2,... ) {res <- CvMDist(e1, e2, mu = e2, ...)
   }
   nms <- names(c(main(param(L2Fam)),nuisance(param(L2Fam))))
   dimnames(E4) = list(nms,nms)
-  if(diagnostic) class(diagn) <- "DiagnosticClass"
+  if(diagnostic && !is.null(diagn)) class(diagn) <- "DiagnosticClass"
   if(diagnostic &&! withpreIC){
      attr(E4,"diagnostic") <- diagn
-     class(attr(E4,"diagnostic"))<- "DiagnosticClass"
+     if(!is.null(diagn)) class(attr(E4,"diagnostic"))<- "DiagnosticClass"
   }
   if(withpreIC) return(list(preIC=psi, Var=E4, diagnostic = diagn))
   else return(E4)
