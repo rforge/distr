@@ -38,6 +38,8 @@ under the hood:
 bug fixes
 + fixed a (newly introduced) bug in exp() for DiscreteDistribution -- forgot to return obj ...
 + Bernhard discovered a bug in devNew() -- it opened new devices even if option("newDevice"==FALSE)  
++ detected that the initialize method of Weibull lacked a .withArith argument to capture the scale structure
+
 ##############
 v 2.7
 ##############

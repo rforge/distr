@@ -1034,7 +1034,7 @@ setMethod("initialize", "Logis",
 
 ## Class: Weibull distribution
 setMethod("initialize", "Weibull",
-          function(.Object, shape = 1, scale = 1) {
+          function(.Object, shape = 1, scale = 1, .withArith = FALSE) {
             .Object@img <- new("Reals")
             .Object@param <- new("WeibullParameter", 
                                   shape = shape, scale = scale
@@ -1062,7 +1062,7 @@ setMethod("initialize", "Weibull",
                                       lower.tail = lower.tail, log.p = log.p) },
                              list(shapeSub = shape, scaleSub = scale)
                                          )
-            .Object@.withArith <- FALSE
+            .Object@.withArith <- .withArith
             .Object
           })
 
