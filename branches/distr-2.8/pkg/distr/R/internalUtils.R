@@ -1166,6 +1166,70 @@ return(function(q, lower.tail = TRUE, log.p = FALSE){
 # modify slot q for AbscontDistribution if there are gaps
 #------------------------------------------------------------------------------
 .modifyqgaps <- function(pfun, qfun, gaps, leftright = "left"){
+  ## no modification needed if gaps have no length
+
+  if(length(gaps)==0) return(qfun)
+  if(is.null(dim(gaps))) return(qfun)
+
+  finit <- apply(gaps, 1, function(x) all(is.finite(x)&is.numeric(x)))
+  if(sum(finit)==0) return(qfun)
+
+  gaps <- gaps[finit,,drop=FALSE]
+#  print(gaps)
+  ## p-level of constancy region
+  lp.gaps <- matrix(pfun(gaps,log.p=TRUE),nrow=nrow(gaps),ncol=2)
+  lp.gaps.l <- matrix(pfun(gaps,log.p=TRUE, lower.tail = FALSE),nrow=nrow(gaps),ncol=2)
+#  print(lp.gaps)
+#  print(lp.gaps.l)
+
+  ## are we heading for left or right continuous quantile fct?
+  lrpmatch <- pmatch(leftright, table = c("left","right"), nomatch = 1)
+
+  ## in order to avoid chaining of qgaps modifications:
+  ## place a variable ..q0fun into modified quantile function (after modification)
+  ##      which stores the unmodified quantile function
+  ## in the first modification round ..q0fun will not yet exist
+  ##    in this situation use qfun instead
+
+  qfunE <- environment(qfun)
+  qnew <- function(p, lower.tail = TRUE, log.p = FALSE) {}
+  qnewE <- environment(qnew) <- new.env()
+  body(qnew) <- substitute({
+          ## .q0fun is the (gaps-)unmodified quantile function
+          .q0fun <- if(exists("..q0fun", envir=qfunE.)){
+                       get("..q0fun", envir=qfunE.) } else qfun.
+          q0 <- .q0fun(p, lower.tail = lower.tail, log.p = log.p)
+          ## the gaps-modification: find out which args p coincide
+          ##     (numerically, on log scale) with gaps-plevels;
+          ##     depending on "leftright" and lower.tail
+          ##     set these return values to left or right endpoit of the gap
+          if(length(lp.gaps.)>0){
+              i0 <- seq(length=length(p))
+              lg <- round(3/2-(2*lower.tail-1)*(2*(lrpmatch.==1)-1)/2)
+                   ## ==1 if(lower.tail&&leftright==1) or (!lower.tail&&leftright!=1)
+                   ## and == 2 otherwise
+              lpgaps0 <- if(lg==1L) lp.gaps. else lp.gaps.l.
+              for(i in 1:nrow(lpgaps0)){
+                  i0 <- (log(p)>=lpgaps0[i,1])&(log(p)<=lpgaps0[i,2])
+                  if(length(i0)) q0[i0] <- gaps.[i,lg]
+              }
+          }
+          return(q0)
+  },list(qfunE. = qfunE, qfun.=qfun, lp.gaps.=lp.gaps,
+         lp.gaps.l. = lp.gaps.l[,2:1,drop=FALSE],
+         lrpmatch. = lrpmatch, gaps. = gaps, ..isEqual = .isEqual)
+  )
+  if(exists("..q0fun", envir=qfunE)){
+     .q0fun <- get("..q0fun", envir=qfunE)
+     assign("..q0fun", .q0fun, envir = qnewE)
+  }else{
+     assign("..q0fun", qfun, envir = qnewE)
+  }
+  return(qnew)
+}
+
+if(FALSE){ ## old code
+.modifyqgaps <- function(pfun, qfun, gaps, leftright = "left"){
   if(length(gaps)==0) return(qfun)
   p.gaps <- pfun(gaps[,1]) 
   p.gaps.l <- pfun(gaps[,1], lower.tail = FALSE)
@@ -1239,7 +1303,7 @@ return(function(q, lower.tail = TRUE, log.p = FALSE){
   }
   return(qnew)           
 }
-
+}
 #------------------------------------------------------------------------------
 # issue warnings in show / print as to Arith or print
 #------------------------------------------------------------------------------

@@ -19,7 +19,7 @@ setMethod("Minimum",
               p1 <- p(e1)(q, lower.tail = FALSE)
               p2 <- p(e2)(q, lower.tail = FALSE)
               p0 <- if(lower.tail) 1 - p1 * p2  else p1 * p2
-              if (log.p) p0 <- log(p)
+              if (log.p) p0 <- log(p0)
               return(p0)
             }
 
