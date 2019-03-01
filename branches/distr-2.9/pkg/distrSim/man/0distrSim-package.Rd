@@ -13,7 +13,7 @@ as introduced there to describe the distributions under which simulations are pe
 \details{
 \tabular{ll}{
 Package: \tab distrSim \cr
-Version: \tab 2.8.0 \cr
+Version: \tab 2.9.0 \cr
 Date: \tab 2019-03-01 \cr
 Depends: \tab R(>= 2.14.0), methods, graphics, setRNG(>= 2006.2-1), distr(>= 2.5.2) \cr
 Suggests: \tab distrEx(>= 2.2)  \cr
@@ -21,7 +21,7 @@ Imports: \tab startupmsg, stats, grDevices  \cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-VCS/SVNRevision: \tab 1295 \cr
+VCS/SVNRevision: \tab 1301 \cr
 }
 }
 \section{Classes}{

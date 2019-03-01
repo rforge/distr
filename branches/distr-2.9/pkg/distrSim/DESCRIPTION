@@ -1,21 +1,23 @@
 Package: distrSim
-Version: 2.8.0
+Version: 2.9.0
 Date: 2019-03-01
 Title: Simulation Classes Based on Package 'distr'
-Description: S4-classes for setting up a coherent framework for simulation within the distr
-        family of packages.
+Description: S4-classes for setting up a coherent framework for simulation
+      within the distr family of packages.
 Depends: R(>= 2.14.0), methods, graphics, setRNG(>= 2006.2-1), distr(>= 2.5.2)
 Suggests: distrEx(>= 2.2)
 Imports: startupmsg, stats, grDevices
-Authors@R: c(person("Florian", "Camphausen", role="ctb", comment="contributed as student in the
-        initial phase --2005"), person("Matthias", "Kohl", role=c("aut", "cph")),
-        person("Peter", "Ruckdeschel", role=c("cre", "cph"),
-        email="peter.ruckdeschel@uni-oldenburg.de"), person("Thomas", "Stabla", role="ctb",
-        comment="contributed as student in the initial phase --2005"))
+Authors@R: c(person("Florian", "Camphausen", role="ctb", comment="contributed
+      as student in the initial phase --2005"), person("Matthias", "Kohl",
+      role=c("aut", "cph")), person("Peter", "Ruckdeschel", role=c("cre",
+      "cph"), email="peter.ruckdeschel@uni-oldenburg.de"), person("Thomas",
+      "Stabla", role="ctb", comment="contributed as student in the initial
+      phase --2005"))
 ByteCompile: yes
 License: LGPL-3
 Encoding: latin1
 URL: http://distr.r-forge.r-project.org/
-LastChangedDate: {$LastChangedDate$}
+LastChangedDate: {$LastChangedDate: 2019-03-01 17:00:34 +0100 (Fr, 01 Mrz
+      2019) $}
 LastChangedRevision: {$LastChangedRevision$}
-VCS/SVNRevision: 1295
+VCS/SVNRevision: 1301
