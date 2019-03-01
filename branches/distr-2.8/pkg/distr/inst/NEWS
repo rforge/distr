@@ -39,6 +39,17 @@ bug fixes
 + fixed a (newly introduced) bug in exp() for DiscreteDistribution -- forgot to return obj ...
 + Bernhard discovered a bug in devNew() -- it opened new devices even if option("newDevice"==FALSE)  
 + detected that the initialize method of Weibull lacked a .withArith argument to capture the scale structure
++ unknown variable p in S4method to Minimum(absCont,absCont)
+
+under the hood:
++ in reaction to mail by B.Ripley Feb 20, 19/ explanation by T. Kalibera, that our code to 
+  look into system.call() stack was buggy and failed in staged installation, we revised code to .modifyqgaps completely;
+  we now compute p(obj)(gaps) and check if any argument p of q(obj) falls within the gap range and then shift it to either 
+  the left or right endpoint of the gap acc. to args lower.tail and leftright. To avoid redoing this whenever slot gaps 
+  is changed, we store the unmodified q(obj) function in an internal variable ..q0fun which can also be used 
+  (if existant in the env() of q(obj)) to revert the gaps modification, and any gaps modification, instead of starting 
+  from q(obj) starts with ..q0fun (if this exists); otherwise, i.e., if ..q0fun does not exist, it uses q(obj) and 
+  afterwords stores the old q(obj) as ..q0fun ... 
 
 ##############
 v 2.7

@@ -44,6 +44,9 @@ user-visible CHANGES:
   the help files to generator L2ParamFamily and to L2ParamFamily-class.
 + E() methods with signature(object = "L2ParamFamily" , ...) gain argument diagnostic
   (like E()-methods in distrEx v 2.8.0)
++ triggered by a mail by K. Hornik who spotted output in checking the centering of L2deriv varying from 
+  architecture to architecture, (which is below machine accuracy hence to be ignored) we now delete 
+  non-significant digits in centering 
   
 bug fixes
 + discovered some issues with local variables in L2Families (global values were used instead...)  
