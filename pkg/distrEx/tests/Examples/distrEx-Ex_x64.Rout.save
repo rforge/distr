@@ -833,7 +833,7 @@ function (n, cond, ...)
     }
     0 + cond %*% 1 + 1 * r(n, ...)
 }
-<environment: 0x000000000ac31090>
+<environment: 0x000000000b437af8>
 > d(D1)
 function (x, cond, log = FALSE, ...) 
 {
@@ -855,7 +855,7 @@ function (x, cond, log = FALSE, ...)
     else d0 <- d0/1
     return(d0)
 }
-<environment: 0x000000000ac31090>
+<environment: 0x000000000b437af8>
 > p(D1)
 function (q, cond, lower.tail = TRUE, log.p = FALSE, ...) 
 {
@@ -882,7 +882,7 @@ function (q, cond, lower.tail = TRUE, log.p = FALSE, ...)
             p0 <- log(p0)
     return(p0)
 }
-<environment: 0x000000000ac31090>
+<environment: 0x000000000b437af8>
 > q(D1)
 function (p, cond, lower.tail = TRUE, log.p = FALSE, ...) 
 {
@@ -906,7 +906,7 @@ function (p, cond, lower.tail = TRUE, log.p = FALSE, ...)
         argList <- c(argList, dots)
     1 * do.call(q, argList) + 0 + as.vector(cond %*% 1)
 }
-<environment: 0x000000000ac31090>
+<environment: 0x000000000b437af8>
 > ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > param(D1)
 name:	parameter of a linear regression model
@@ -1630,7 +1630,7 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  15.76 0.66 21.89 NA NA 
+Time elapsed:  10.74 0.39 12.53 NA NA 
 > grDevices::dev.off()
 null device 
           1 

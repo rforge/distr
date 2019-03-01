@@ -62,6 +62,9 @@ under the hood:
 		i.e., in case of random variables, argument "cond" is suitably attached 
 		to argument "x" of the Map of the random variable -- something like c(x,cond)
 		
+       in expectation for signature(object = "...Distribution", fun = "function",  
+	            cond = "numeric"), we explicitely push through argument f1 through filtering
+
 + .qtlIntegrate now uses smaller values for args subdivisions and order 
    in case partitioning into left/middle/right is used: they are multiplied
    by factors fac.L/fac.R/fac.M according to

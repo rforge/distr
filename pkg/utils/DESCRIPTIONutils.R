@@ -3,7 +3,7 @@ if(FALSE) {
 
    ## change svncheckout suitably...
    svncheckout <- file.path("C:/rtest/distr")
-   trunk <- FALSE
+   trunk <- TRUE
    ## if the version from devel
    branches <- dir(file.path(svncheckout,"branches"))
    branches <- grep("distr-",branches,value=TRUE)

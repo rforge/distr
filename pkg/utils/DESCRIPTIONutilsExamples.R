@@ -148,7 +148,7 @@ Pkgs <- c("startupmsg",
           "distr", "distrEx", "distrDoc", "distrEllipse", "distrRmetrics",
           "distrMod", "distrTeach", "distrSim", "distrTEst")
 Names <- c("Version", "License")
-Values <- matrix(c("2.8.0","LGPL-3"),2,length(Pkgs))
+Values <- matrix(c("2.9.0","LGPL-3"),2,length(Pkgs))
 colnames(Values) <- Pkgs
 rownames(Values) <- Names
 Values["Version",1] <- "0.9.7"
