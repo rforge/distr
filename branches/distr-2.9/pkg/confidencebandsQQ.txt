@@ -1,0 +1,98 @@
+%-----------------------------------------------------------------
+CIs for QQ Plot zum Niveau beta (zB beta 0.95) 
+P. Ruckdeschel 20160304
+%-----------------------------------------------------------------
+
+notation: 
+qn: empirical a-quantile = order statistics
+q: population a-quantile
+
+let F be a cdf, F^-(a) the quantile fct, i.e. 
+    F^-(a) = inf{t in R| F(t)>= a}
+F_n empirical cdf, F_n^- empirical quantile fct.
+
+basic fact  (*)
+{s in R| F(s)>= a} = {s in R| s >= F^-(a)}
+
+
+Two distinct approaches
+*********************************************
+(a) pointwise: 
+*********************************************
+
+On a grid of a values a_j j=1..m in (0,1) do  
+
+(a1) exact, i.e., with binomial probabilities:
+
+P(qn - q <= t) = P(qn <= t+q ) = P(F_n^-(a) <= t+q) =(*)
+P(a <= F_n(t+q)) = P (sum I(X_i<=t+q) >= an) =
+P(Binom(n,F(t+q))>=na) = [in R] 
+  pbinom(n*a,size=n,prob=F(t+q),lower=FALSE)+dbinom(n*a,size=n,prob=F(t+q))
+
++++++ (a11) "symmetric on P-level"
+
+=> search
+t1<0 minimal so that P(Binom(n,F(t1+q)) >=na) <= (1-beta)/2
+t2>0 minimal so that P(Binom(n,F(t2+q)) >=na) <= (1+beta)/2
+=> Intervall [t1+qn,qn+t2]
+
+(a12) "minimal length"
+=>  on a a grid a_i i=1..m of a-values from a=0 (or almost 0 for finite values) to a=1-beta
+for i in 1.. m
+
+find ti1<0 minimal so that P(Binom(n,F(ti1+q)) >=na) <= a_i
+find ti2>0 minimal so that P(Binom(n,F(ti2+q)) >=na) <= a_i+beta
+use Intervall [ti01+qn,qn+ti02] where i0 is such that ti02-ti01 = min_i ti2-ti1
+
+in R 
+
+invF sei die Quantilsfunktion zu F
+
+fsearch <- function(level)
+   uniroot(function(t)qbinom(level,size=n,prob=F(t+q))-n*a,interval=c(-q+0.0001,invF(.9999)-q))$root
+   
+ti1 <- fsearch((1-beta)/2)   
+ti1 <- fsearch((1+beta)/2)   
+
+
++++++ (a2) pointwise CLT based
+
++ set t=s/sqrt(n) then 
+
+P( qn - q <= t) = P(qn <= t+q )=P(F^-(a) <= t+q)=(*)
+P(a <= F_n(t+q)) = P (sum I(X_i<=t+q)/n >= a) = P (sum I(X_i<=t+q)/n -F(t+q) >= a -F(t+q)) = 
+P (sqrt(n/(F(t+q)(1-F(t+q)))) (sum I(X_i<=t+q)/n - F(t+q)) >= sqrt(n)(a-F(t+q))/sqrt(F(t+q)(1-F(t+q)))) =
+   LHS is asymptoticall N(0,1) for RHS do Taylor approximations 
+   => assume F differentiable in q with deriv f(q)>0 
+   => F(q+t) = a+f(q)s/sqrt(n) + o(1/sqrt(n)) 
+   => sqrt(n)(a-F(t+q)) = f(q)s + o(1), F(t+q)(1-F(t+q)) = a(1-a) + o(1)
+=> P( qn - q <= t) =. P(N(0,1)>= f(q) s /sqrt(a(1-a))) 
+
+=> Interval [qn - c sqrt(a(1-a))/f(q), qn + c sqrt(a(1-a))/f(q)], 
+   for c = Phi^(-1)((1+beta)/2)  (in R: qnorm() ...)
+
+-----------------------------------------------------------------------
+for all possiblilities (a11),(a12),(a2) we now have lower and upper 
+  confidence bounds t1j resp t2j 
+
+  link the points (x=F^-(aj),y=q+t1j) j=1..m by lines -> lower CI bound
+  link the points (x=F^-(aj),y=q+t2j) j=1..m by lines -> upper CI bound
+-----------------------------------------------------------------------
+  
+*********************************************
+(b) simultaneously
+*********************************************
+
+let c the beta-quantile of the statistic of the Kolmogorov Smirnoff test, i.e.
+
+ P( sup_t sqrt(n) |F_n(t)-F(t)| <= c ) = beta 
+ 
+ then P( F_n(t)-c/sqrt(n) <= F(t) <= F_n(t)+c/sqrt(n) simultaneously for all t)
+ <=> (*) P(F^-(F_n(t)-c/sqrt(n)) <= t <= F^-(F_n(t)+c/sqrt(n)) for all t in R)
+ 
+evaluate this on a t grid t_j j=1..m in R
+
+we now have lower and upper confidence bounds
+  link the points (x=tj,y=F^-(F_n(tj)-c/sqrt(n))) j=1..m by lines -> lower CI bound
+  link the points (x=tj,y=F^-(F_n(tj)+c/sqrt(n)) j=1..m by lines -> upper CI bound
+

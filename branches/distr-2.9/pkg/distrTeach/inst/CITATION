@@ -1,0 +1,21 @@
+citHeader("To cite package distrTeach in publications use:")
+
+citEntry(entry = "TechReport",
+         author = personList(as.person("P. Ruckdeschel"),
+                        as.person("M. Kohl"),
+                        as.person("T. Stabla"),
+                        as.person("F. Camphausen")),
+         title = "{S4 Classes for Distributions---a manual for packages distr, distrSim, distrTEst, distrEx,
+                 distrMod, and distrTeach}",
+         language = "English",
+         institution="{Fraunhofer ITWM}",
+         month="July",
+         year="2008",
+         address="{Kaiserslautern, Germany}",
+         URL = "https://CRAN.R-project.org/package=distrDoc",
+         Vignette = "https://CRAN.R-project.org/web/packages/distrDoc/vignettes/distr.pdf",
+         textVersion = paste("Ruckdeschel, P., Kohl, M., Stabla, T., & Camphausen, F. (2006): ",
+                       "S4 Classes for Distributions---a manual for packages distr, distrSim, distrTEst, distrEx, ",
+                        "distrMod, and distrTeach")
+         )
+

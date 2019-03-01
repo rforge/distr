@@ -1,0 +1,202 @@
+######################################################################
+#  News: to package distrDoc 
+######################################################################
+
+(first two numbers of package versions do not necessarily reflect 
+ package-individual development, but rather are chosen for the 
+ distrXXX family as a whole in order to ease updating "depends" 
+ information)
+
+##############
+v 2.8
+##############
+
+user-visible CHANGES:
++ DESCRIPTION tag SVNRevision changed to VCS/SVNRevision
++ mention the more refined version of liesInSupport in the vignette 
+
+##############
+v 2.7
+##############
+
+user-visible CHANGES:
++ more precise formulation of how to use calls to q() for RStudio
+  and Jupyter IRKernel (i.e., use q.l)
++ switch from SweaveListingUtils to knitr in vignettes
++ replaced http://CRAN... by https://CRAN... (also in CITATION and similar files) 
++ updated address (Oldenburg) in several vignettes 
+
+under the hood:
++ fixed CITATION issue (raised by K.Hornik,(12.10., 12:26)
++ fixed omegahat.net issue (raised by K.Hornik,(24.10.2016, 18:08)
+
+##############
+v 2.6
+##############
+
+user-visible CHANGES:
++ title changed to title style / capitalization
++ updated CITATION file
++ removed some outdated references from uni-bayreuth
++ updated references in vignette distr.Rnw
++ mention that pattern substitution can now be switched on and off in all plot 
+  functions according to argument withSubst
+
+under the hood
++ fixed \VignetteKeyword issue detected as in mail by K. Hornik 2015-02-03
++ added svn-properties to distr.Rnw
++ enhanced imports in DESCRIPTION by explicating second order imports
+
+##############
+v 2.5
+##############
+
+user-visible CHANGES:
+
+GENERAL ENHANCEMENTS:
+cleaned DESCRIPTION file
+except for R itself moved all Depends to Imports in DESCRIPTION file
+
+under the hood:
+added .Rbuildignore
+
+BUGFIXES:
+
+##############
+v 2.4
+##############
+
+user-visible CHANGES:
++ changed affiliations in vignette
++ vignette has shrunken in size from > 5MB to < 3MB
+
+GENERAL ENHANCEMENTS:
+
+under the hood:
++ as a reaction to B. Ripley's mail on r-devel, "CRAN package sizes", 
+  Feb-14-2011, we introduce .Rbuildignore files
++ pkg distrDoc gains a NAMESPACE
++ created folder vignettes and moved content of inst/doc/ to it
++ removed lazyload tag in DESCRIPTION
++ distrDoc no longer uses require() in .onAttach
++ added DESCRIPTION tag "ByteCompile" to all our packages
++ updating maintainer email address and URL.
++ shrinking inst/doc in order to prevent  B. Ripley from archiving distrDoc
++ tried to get the imports in NAMESPACE files in the right order
++ For some strange reason, examle CIex in vignette threw an error; have changed seed; now it works again.
++ deleted no longer needed chm folders
+
+BUGFIXES:
+
+
+##############
+v 2.3
+##############
+
+under the hood:
++ DESCRIPTION files and package-help files gain a tag 
+  SVNRevision to be filled by get[All]RevNr.R from utils in distr
+
+
+BUGFIXES:
+
++ changed mail address:
+  triggered by mail by Sven Sewitz sas69@cam.ac.uk, replaced all dead links 
+  to distr.pdf in www files by url to vignette of distrDoc on CRAN;
+  also replaced uni-bayreuth.de mail address by itwm.fraunhofer.de one
+
+----------------
+Changes after changes in R , R-forge
+----------------
+
++ cleanup issues:
+
+   -Package: distrDoc Version: 2.2 Flavor: r-devel-linux-ix86
+    Check: package vignettes ... WARNING
+    *** Weave Errors ***
+    File /home/hornik/tmp/R.check/r-devel/Work/PKGS/distrDoc.Rcheck/inst/doc/distr.Rnw :
+    chunk 36 (label=plotex9) 
+    Error : '\%' is an unrecognized escape in character string starting "my Distribution: \%"
+
+  => removed tag in distr.Rnw in distrDoc
+     <<cleanup, echo=FALSE>>=
+       unloadNamespace("SweaveListingUtils")
+     @
+     similarly in newDistributions.Rnw 
+
+  => small changes in SweaveListingUtils in order to pass R CMD check again...
+
+
+
+##############
+v 2.2
+##############
+
+GENERAL ENHANCEMENTS:
+
++ removed NAMESPACE - we do not need it so far
++ added field "Encoding: latin1" to all DESCRIPTION files in order to avoid problems 
+  with e.g. Windows locale when svn replaces $LastChangedDate
++ added TOBEDONE (sic!) files for each package (by accident also in trunc; these are empty so far)
++ vignette: 
+  * included svn-multi style files to /inst/doc folders for upload on CRAN
+
+##############
+v 2.1
+##############
+
+ * description of new class "CompoundDistribution"
+ * use of new helper package SweaveListingUtils
+ * Rd-style:
+  + several buglets detected with the fuzzier checking mechanism
+    cf [Rd] More intensive checking of R help files, Prof Brian Ripley, 09.01.2009 10:25) 
+       [Rd] Warning: missing text for item ... in \describe? , Prof Brian Ripley,
+
+##############
+v 2.0.3
+##############
+  
+  * under the hood: 
+     + enhanced plotting (correct dispatch; opening of new device is controlled
+       by option("newDevice") )
+     + after JMC's changes: gone through setIs relations to ensure 
+       "correct" inheritance
+  * moved license to LGPL-3
+  * typos fixed (Skewness.R, Kurtosis.R) instead of (skewness.R, kurtosis.R)
+
+
+##############
+v 2.0   
+##############
+ * description for new classes "UnivarMixingDistribution", 
+   "UnivarLebDecDistribution"
+ * description of new arithmetic Trunc-Min/Maximiz-Huberization methods
+ * description of new packages distrMod distrTeach
+
+##############
+v 1.9   
+##############
+
+ * registration of the vignette with Windows gui according to  
+   https://stat.ethz.ch/pipermail/bioc-devel/2007-June/001171.html
+ * in the R-code of the vignette, made calls to uniroot(), integrate(), optim(ize)() 
+   compliant to 
+   https://stat.ethz.ch/pipermail/r-devel/2007-May/045791.html
+ * modified example nFoldConvolution.R (taking care of the new generic 'convpow()'
+   in package 'distr' from version 1.9 on
+ * some linebreaks added to avoid overly long lines
+ * added chunk \SweaveOpts{keep.source=TRUE} to keep comments and linebreaks in source
+ * mentioned in package-help: startup messages may now also be suppressed by
+   suppressPackageStartupMessages() (from package 'base')
+ * a lot of demo plots...
+ * description of how plot may be called
+ 
+
+##############
+v 1.8   (starting version to be in line with distr, distrSim, distrTEst)
+##############
+
+
+* distrDoc packaged to gather documentation for distr, distrEx, distrSim, distrTEst in form of 
+  a common vignette
+

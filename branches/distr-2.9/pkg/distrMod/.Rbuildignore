@@ -1,0 +1,8 @@
+^.*\.svn.+
+inst/doc/Rplots.pdf
+vignettes/Rplots.pdf
+^.*-Ex\.R$
+vignettes/jss.bst
+vignettes/jss.cls
+vignettes/distrMod.bbl
+vignettes/distrMod.blg

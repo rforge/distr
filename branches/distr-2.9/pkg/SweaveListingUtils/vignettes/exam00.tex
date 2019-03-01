@@ -1,0 +1,22 @@
+\lstdefinestyle{Rinstyle}{style=RinstyleO,frame=trBL,backgroundcolor=\color{gray90},%
+        numbers=left,numberstyle=\tiny,stepnumber=1,numbersep=7pt}
+\lstdefinestyle{Routstyle}{style=RoutstyleO,frame=trBL,frameround=fttt,%
+        backgroundcolor=\color{gray95},numbers=left,numberstyle=\tiny,%
+        stepnumber=1,numbersep=7pt}
+\begin{quotation}
+<<exam00, eval = TRUE>>=
+x <- rnorm(3) # define random numbers -> insert a label <here> (*\label{comment}*)
+print(round(x,2))
+f <- function(x) sin(x) ## here is a ref: section(*~\ref{PrepSec}*)
+a <- 2; b <- 3
+# compute (*$\int_a^b f(x)\,dx$*)
+integrate(f, lower=a, upper=b)$value
+@
+Note that line~\ref{comment} contains a comment.
+\end{quotation}
+\lstdefinestyle{Rinstyle}{style=RinstyleO,frame=none,backgroundcolor=\color{white},%
+        numbers=none}
+\lstdefinestyle{Routstyle}{style=RoutstyleO,frame=none,backgroundcolor=\color{white},%
+        numbers=none}
+
+ 

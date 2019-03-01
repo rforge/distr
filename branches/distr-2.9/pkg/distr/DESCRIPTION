@@ -1,0 +1,23 @@
+Package: distr
+Version: 2.8.0
+Date: 2019-03-01
+Title: Object Oriented Implementation of Distributions
+Description: S4-classes and methods for distributions.
+Authors@R: c(person("Florian", "Camphausen", role="ctb", comment="contributed as student in the
+        initial phase --2005"), person("Matthias", "Kohl", role=c("aut", "cph")),
+        person("Peter", "Ruckdeschel", role=c("cre", "cph"),
+        email="peter.ruckdeschel@uni-oldenburg.de"), person("Thomas", "Stabla", role="ctb",
+        comment="contributed as student in the initial phase --2005"), person("R Core Team",
+        role = c("ctb", "cph"), comment="for source file ks.c/ routines 'pKS2' and
+        'pKolmogorov2x'"))
+Depends: R(>= 2.14.0), methods, graphics, startupmsg, sfsmisc
+Suggests: distrEx, svUnit (>= 0.7-11), knitr
+Imports: stats, grDevices, utils, MASS
+VignetteBuilder: knitr
+ByteCompile: yes
+Encoding: latin1
+License: LGPL-3
+URL: http://distr.r-forge.r-project.org/
+LastChangedDate: {$LastChangedDate$}
+LastChangedRevision: {$LastChangedRevision$}
+VCS/SVNRevision: 1295

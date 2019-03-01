@@ -1,0 +1,146 @@
+######################################################################
+#  News: to package distrTEst 
+######################################################################
+
+(first two numbers of package versions do not necessarily reflect 
+ package-individual development, but rather are chosen for the 
+ distrXXX family as a whole in order to ease updating "depends" 
+ information)
+
+##############
+v 2.8
+##############
+
+user-visible CHANGES:
+
++ plot methods now return an S3 object of class \code{c("plotInfo","DiagnInfo")}, i.e., a list containing the 
+  information needed to produce the respective plot, which at a later stage could be used by different graphic engines (like, e.g. 
+  \code{ggplot}) to produce the plot in a different framework. A more detailed description will follow in a subsequent version.
++ DESCRIPTION tag SVNRevision changed to VCS/SVNRevision
+ 
+##############
+v 2.7
+##############
+
+no changes in this version
+
+##############
+v 2.6
+##############
+
+user-visible CHANGES:
++ title changed to title style / capitalization
+
+
+##############
+v 2.5
+##############
+
+user-visible CHANGES:
+
+GENERAL ENHANCEMENTS:
++ cleaned DESCRIPTION and NAMESPACE file as to Imports/Depends
++ enhanced imports in DESCRIPTION by explicating second order imports
+
+under the hood:
+added .Rbuildignore
+
+BUGFIXES:
+
+##############
+v 2.4
+##############
+
+under the hood:
++ some coercings to logical forced, e.g. AllClasses.R 
++ fixed (new discovered) error in distrTEst (sd no longer applies to matrices).
++ removed lazyload tag in DESCRIPTION
++ added DESCRIPTION tag "ByteCompile" to all our packages
++ updating maintainer email address and URL.
++ deleted no longer needed chm folders
+
+##############
+v 2.3
+##############
+
+No extra changes this time
+
++ DESCRIPTION files and package-help files gain a tag 
+  SVNRevision to be filled by get[All]RevNr.R from utils in distr
+
+##############
+v 2.2
+##############
+
+GENERAL ENHANCEMENTS:
+
++ added tests/Examples folder with file distrTEst-Ex.Rout.save to have
+  some automatic testing
++ added field "Encoding: latin1" to all DESCRIPTION files in order to avoid problems 
+  with e.g. Windows locale when svn replaces $LastChangedDate
++ added TOBEDONE (sic!) files for each package (by accident also in trunc; these are empty so far)
+
+##############
+v 2.1
+##############
+
+* Rd-style:
+  + several buglets detected with the fuzzier checking mechanism
+    cf [Rd] More intensive checking of R help files, Prof Brian Ripley, 09.01.2009 10:25) 
+       [Rd] Warning: missing text for item ... in \describe? , Prof Brian Ripley,
+
+##############
+v 2.0.3
+##############
+  
+  * under the hood: 
+     + enhanced plotting (correct dispatch; opening of new device is controlled
+       by option("newDevice") )
+     + after JMC's changes: gone through setIs relations to ensure 
+       "correct" inheritance
+  * moved license to LGPL-3
+
+##############
+v 1.9 
+##############
+
+* in demo: made calls to uniroot(), integrate(), optim(ize)() compliant to 
+  https://stat.ethz.ch/pipermail/r-devel/2007-May/045791.html
+* adapted the naming of the .R files to the use of the (later written)
+  extension packages 
+  (and according to http://tolstoy.newcastle.edu.au/R/help/06/03/22558.html)
+* checked all source file to adhere to the 80char's-per-line rule
+* mentioned in package-help: startup messages may now also be suppressed by
+  suppressPackageStartupMessages() (from package 'base')
+
+##############
+v 1.8
+##############
+
+* plot, print and summary are now more flexible for objects of class Evaluation or EvaluationList
+* global conrols by new distrTEstoptions()
+* now suggests distrEx in description
+* updated citation file
+* evaluation method  for Contsimulation 
+* slot result in Evaluation class now of class "DataframeorNULL"
+* slot call.ev in Evaluation class now of class "CallorNULL"
+* new slot Data of class Dataclass, but which in turn, in case of simulations,
+  has an empty "Data"-slot (to be able to check whether all Data sets of an
+  Evaluation List coincide)
+* new class EvaluationList with slots name ("character") and Elist ("list") 
+  to gather the results of several Evaluations on the same data set
+* revised plot method  for class Evaluation to account for multivariate results
+* print,plot,summary,show methods for EvaluationList 
+* Data as an accessor to slot Data for Evaluation class and 
+  to the common Data slot of EvaluationList class 
+* savedata now allows for more flexible filenames, but retains the old convention
+  by default
+
+##############
+v 1.7
+##############
+
+* additional "..." included into function evaluate 
+* NEWS file
+* citation file
+* distrTEst-package.Rd file
