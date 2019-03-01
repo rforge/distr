@@ -1,6 +1,6 @@
 
-R version 3.5.1 RC (2018-06-24 r74935) -- "Feather Spray"
-Copyright (C) 2018 The R Foundation for Statistical Computing
+R Under development (unstable) (2019-02-27 r76167) -- "Unsuffered Consequences"
+Copyright (C) 2019 The R Foundation for Statistical Computing
 Platform: i386-w64-mingw32/i386 (32-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -21,24 +21,12 @@ Type 'q()' to quit R.
 > source(file.path(R.home("share"), "R", "examples-header.R"))
 > options(warn = 1)
 > options(pager = "console")
-> base::assign(".ExTimings", "distrTEst-Ex.timings", pos = 'CheckExEnv')
-> base::cat("name\tuser\tsystem\telapsed\n", file=base::get(".ExTimings", pos = 'CheckExEnv'))
-> base::assign(".format_ptime",
-+ function(x) {
-+   if(!is.na(x[4L])) x[1L] <- x[1L] + x[4L]
-+   if(!is.na(x[5L])) x[2L] <- x[2L] + x[5L]
-+   options(OutDec = '.')
-+   format(x[1L:3L], digits = 7L)
-+ },
-+ pos = 'CheckExEnv')
-> 
-> ### * </HEADER>
 > library('distrTEst')
 Loading required package: setRNG
 Loading required package: distrSim
 Loading required package: distr
 Loading required package: startupmsg
-:startupmsg>  Utilities for Start-Up Messages (version 0.9.5)
+:startupmsg>  Utilities for Start-Up Messages (version 0.9.6)
 :startupmsg> 
 :startupmsg>  For more information see ?"startupmsg",
 :startupmsg>  NEWS("startupmsg")
@@ -71,7 +59,7 @@ The following objects are masked from 'package:stats':
     df, qqplot, sd
 
 :distrSim>  Simulation Classes Based on Package 'distr' (version
-:distrSim>  2.7.0)
+:distrSim>  2.8.0)
 :distrSim> 
 :distrSim>  Some functions from package 'stats' are intentionally
 :distrSim>  masked ---see distrSimMASK().
@@ -96,7 +84,7 @@ The following object is masked from 'package:base':
     rbind
 
 :distrTEst>  Estimation and Testing Classes Based on Package
-:distrTEst>  'distr' (version 2.7.0)
+:distrTEst>  'distr' (version 2.8.0)
 :distrTEst> 
 :distrTEst>  For more information see ?"distrTEst",
 :distrTEst>  NEWS("distrTEst"), as well as
@@ -114,7 +102,6 @@ The following object is masked from 'package:base':
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: Evaluation-class
 > ### Title: Class "Evaluation"
 > ### Aliases: Evaluation-class initialize,Evaluation-method
@@ -244,15 +231,12 @@ Result: 'data.frame':	5 obs. of  2 variables:
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("Evaluation-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("EvaluationList-class")
 > ### * EvaluationList-class
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: EvaluationList-class
 > ### Title: Class "EvaluationList"
 > ### Aliases: Elist EvaluationList EvaluationList-class
@@ -434,15 +418,12 @@ Result:
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("EvaluationList-class", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 > nameEx("distrTEstoptions")
 > ### * distrTEstoptions
 > 
 > flush(stderr()); flush(stdout())
 > 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 > ### Name: distrTEstoptions
 > ### Title: functions to change the global variables of the package
 > ###   'distrTEst'
@@ -477,14 +458,12 @@ $MaxNumberofPlottedEvaluationDims
 > 
 > 
 > 
-> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
-> base::cat("distrTEstoptions", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > ### * <FOOTER>
 > ###
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  2.64 0.22 2.92 NA NA 
+Time elapsed:  22.15 0.47 24.64 NA NA 
 > grDevices::dev.off()
 null device 
           1 

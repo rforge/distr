@@ -1,6 +1,6 @@
 
-R Under development (unstable) (2016-04-22 r70532) -- "Unsuffered Consequences"
-Copyright (C) 2016 The R Foundation for Statistical Computing
+R Under development (unstable) (2019-02-27 r76167) -- "Unsuffered Consequences"
+Copyright (C) 2019 The R Foundation for Statistical Computing
 Platform: i386-w64-mingw32/i386 (32-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -21,49 +21,14 @@ Type 'q()' to quit R.
 > options(pager = "console")
 > library('distr')
 Loading required package: startupmsg
-:startupmsg>  Utilities for Start-Up Messages (version 0.9.2)
+:startupmsg>  Utilities for Start-Up Messages (version 0.9.6)
 :startupmsg> 
 :startupmsg>  For more information see ?"startupmsg",
 :startupmsg>  NEWS("startupmsg")
 
 Loading required package: sfsmisc
-Loading required package: SweaveListingUtils
-:SweaveListingUtils>  Utilities for Sweave Together with
-:SweaveListingUtils>  TeX 'listings' Package (version
-:SweaveListingUtils>  0.7)
-:SweaveListingUtils> 
-:SweaveListingUtils>  NOTE: Support for this package
-:SweaveListingUtils>  will stop soon.
-:SweaveListingUtils> 
-:SweaveListingUtils>  Package 'knitr' is providing the
-:SweaveListingUtils>  same functionality in a better
-:SweaveListingUtils>  way.
-:SweaveListingUtils> 
-:SweaveListingUtils>  Some functions from package 'base'
-:SweaveListingUtils>  are intentionally masked ---see
-:SweaveListingUtils>  SweaveListingMASK().
-:SweaveListingUtils> 
-:SweaveListingUtils>  Note that global options are
-:SweaveListingUtils>  controlled by
-:SweaveListingUtils>  SweaveListingoptions() ---c.f.
-:SweaveListingUtils>  ?"SweaveListingoptions".
-:SweaveListingUtils> 
-:SweaveListingUtils>  For more information see
-:SweaveListingUtils>  ?"SweaveListingUtils",
-:SweaveListingUtils>  NEWS("SweaveListingUtils")
-:SweaveListingUtils>  There is a vignette to this
-:SweaveListingUtils>  package; try
-:SweaveListingUtils>  vignette("ExampleSweaveListingUtils").
-
-
-Attaching package: 'SweaveListingUtils'
-
-The following objects are masked from 'package:base':
-
-    library, require
-
 :distr>  Object Oriented Implementation of Distributions (version
-:distr>  2.6)
+:distr>  2.8.0)
 :distr> 
 :distr>  Attention: Arithmetics on distribution objects are
 :distr>  understood as operations on corresponding random variables
@@ -90,6 +55,7 @@ The following objects are masked from 'package:stats':
 
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
 > cleanEx()
 > nameEx("0distr-package")
 > ### * 0distr-package
@@ -97,7 +63,7 @@ The following objects are masked from 'package:stats':
 > flush(stderr()); flush(stdout())
 > 
 > ### Name: distr-package
-> ### Title: distr - Object Orientated Implementation of Distributions
+> ### Title: distr - Object Oriented Implementation of Distributions
 > ### Aliases: distr-package distr
 > ### Keywords: package distribution
 > 
@@ -285,6 +251,7 @@ The following objects are masked from 'package:stats':
 [1] 0.4561991
 > q(A3)(.1) # The (approximated) 10 percent quantile is -1.06015.
 [1] -1.060145
+> ## in RStudio or Jupytier IRKernel, use q.l(.)(.) instead of q(.)(.)
 > 
 > 
 > 
@@ -338,6 +305,7 @@ The following objects are masked from 'package:stats':
 [1] 0.0000000 0.0000000 0.4359058 0.5000000 0.5640942 1.0000000 1.0000000
 > q(A)(c(0,0.2,1,2)) # quantile function at at x=c(0,0.2,1).
 [1] -1.000000 -0.809017  1.000000        NA
+> ## in RStudio or Jupyter IRKernel, use q.l(A)(c(0,0.2,1,2)) instead
 > 
 > 
 > 
@@ -357,7 +325,7 @@ The following objects are masked from 'package:stats':
 > B <- Beta(shape1 = 1, shape2 = 1)
 > # B is a beta distribution with shape1 = 1 and shape2 = 1.
 > r(B)(1) # one random number generated from this distribution, e.g. 0.6979795
-[1] 0.7344913
+[1] 0.07614139
 > d(B)(1) # Density of this distribution is 1 for x=1.
 [1] 1
 > p(B)(1) # Probability that x < 1 is 1.
@@ -375,6 +343,7 @@ The following objects are masked from 'package:stats':
 [1] 0.03451062
 > q(Bn)(0.1) ## => from R 2.3.0 on ncp no longer ignored...
 [1] 0.2047932
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > 
 > 
 > 
@@ -420,6 +389,7 @@ The following objects are masked from 'package:stats':
 [1] 0.5
 > q(B)(.1) # x=0 is the smallest value x such that p(B)(x)>=0.1.
 [1] 0
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > size(B) # size of this distribution is 1.
 [1] 1
 > size(B) <- 2 # size of this distribution is now 2.
@@ -473,6 +443,7 @@ The following objects are masked from 'package:stats':
 [1] 0.5
 > q(C)(.1) # Probability that x<-2.077684 is 0.1.
 [1] -2.077684
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > location(C) # location of this distribution is 1.
 [1] 1
 > location(C) <- 2 # location of this distribution is now 2.
@@ -530,6 +501,7 @@ Distribution Object of Class: Td
 [1] 0.4772499
 > q(C)(.1) # Probability that x < 0.04270125 is 0.1.
 [1] 0.04270125
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > df(C) # df of this distribution is 1.
 [1] 1
 > df(C) <- 2 # df of this distribution is now 2.
@@ -585,22 +557,6 @@ Distribution Object of Class: Gammad
 > 
 > CP <- CompoundDistribution(Pois(),Norm())
 > CP
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
 An object of class "CompoundDistribution"
 
  The frequency distribution is:
@@ -623,28 +579,12 @@ This part is accessible with 'discretePart(<obj>)'.
    Its absolutely continuous part (with weight 0.632000) is a
 Distribution Object of Class: AbscontDistribution
 This part is accessible with 'acPart(<obj>)'.
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > p(CP)(0.3)          
-[1] 0.7436411
+[1] 0.7480891
 > plot(CP)
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
 > 
 > 
 > 
@@ -663,22 +603,6 @@ Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution
 > 
 > CP0 <- CompoundDistribution(Pois(), Norm())
 > CP0
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
 An object of class "CompoundDistribution"
 
  The frequency distribution is:
@@ -701,20 +625,12 @@ This part is accessible with 'discretePart(<obj>)'.
    Its absolutely continuous part (with weight 0.632000) is a
 Distribution Object of Class: AbscontDistribution
 This part is accessible with 'acPart(<obj>)'.
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > CP1 <- CompoundDistribution(DiscreteDistribution(supp = c(1,5,9,11),
 +                             prob = dbinom(0:3, size = 3,prob = 0.3)),Norm())
 > CP1
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
 An object of class "CompoundDistribution"
 
  The frequency distribution is:
@@ -726,7 +642,7 @@ sd: 1
  
 This Distribution is:
 Distribution Object of Class: AbscontDistribution
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > UL <- UnivarDistrList(Norm(), Binom(10,0.3), Chisq(df=4), Norm(),
@@ -735,22 +651,6 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > CP2 <- CompoundDistribution(DiscreteDistribution(supp = c(1,5,9,11),
 +                       prob = dbinom(0:3, size = 3, prob = 0.3)),UL)
 > plot(CP2)
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
 > 
 > 
 > 
@@ -774,7 +674,7 @@ Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution
 > 
 > convpow(Exp()+Pois(),4)
 Distribution Object of Class: AbscontDistribution
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
@@ -803,13 +703,14 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 [1] 0.8160603
 > q(D)(.1) # Probability that x < -1.609438 is 0.1.
 [1] -1.609438
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > rate(D) # rate of this distribution is 1.
 [1] 1
 > rate(D) <- 2 # rate of this distribution is now 2.
 > 3*D ###  still a DExp -distribution
 Distribution Object of Class: DExp
  rate: 0.666666666666667
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
@@ -841,6 +742,7 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 [1] 1
 > q(D)(.1) # q(D)(x) is always 0 (= location).
 [1] 0
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > location(D) # location of this distribution is 0.
 [1] 0
 > location(D) <- 2 # location of this distribution is now 2.
@@ -912,6 +814,7 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > q(D2)(pp+1e-5)
 Warning in q(D2)(pp + 1e-05) : q method of D2 produced NaN's 
 [1]   2   3   4   5 NaN
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > q.r(D2)(pp)
 [1] 2 3 4 5 5
 > q.r(D2)(pp-1e-5)
@@ -1211,6 +1114,7 @@ Distribution Object of Class: DiscreteDistribution
 [1] 0.6321206
 > q(E)(.1) # Probability that x < 0.1053605 is 0.1.
 [1] 0.1053605
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > rate(E) # rate of this distribution is 1.
 [1] 1
 > rate(E) <- 2 # rate of this distribution is now 2.
@@ -1226,14 +1130,14 @@ Distribution Object of Class: Gammad
 Distribution Object of Class: Gammad
  shape: 3
  scale: 0.5
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 2*E+Gammad(scale=1)
 Distribution Object of Class: Gammad
  shape: 2
  scale: 1
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
@@ -1318,6 +1222,7 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 [1] 0.5
 > q(F)(.1) # Probability that x<0.02508563 is 0.1.
 [1] 0.02508563
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > df1(F) # df1 of this distribution is 1.
 [1] 1
 > df1(F) <- 2 # df1 of this distribution is now 2.
@@ -1370,6 +1275,7 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 [1] 0.6321206
 > q(G)(.1) # Probability that x<0.1053605 is 0.1.
 [1] 0.1053605
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > scale(G) # scale of this distribution is 1.
 [1] 1
 > scale(G) <- 2 # scale of this distribution is now 2.
@@ -1398,6 +1304,7 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 [1] 0.75
 > q(G)(.1) # x = 0 is the smallest value x such that p(G)(x) >= 0.1.
 [1] 0
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > prob(G) # prob of this distribution is 0.5.
 [1] 0.5
 > prob(G) <- 0.6 # prob of this distribution is now 0.6.
@@ -1409,36 +1316,9 @@ Distribution Object of Class: Nbinom
 Distribution Object of Class: Nbinom
  size: 3
  prob: 0.6
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
-> 
-> 
-> 
-> cleanEx()
-> nameEx("GeomParameter-class")
-> ### * GeomParameter-class
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: GeomParameter-class
-> ### Title: Class "GeomParameter"
-> ### Aliases: GeomParameter-class initialize,GeomParameter-method
-> ### Keywords: distribution
-> 
-> ### ** Examples
-> 
-> ## deprecated from 1.9 on 
->  W <- new("GeomParameter",prob=0.5)
-Warning: Class 'GeomParameter' is no longer needed and will be replaced by 
-class 'NbinomParameter' soon.
->  prob(W) # prob of this distribution is 0.5.
-Warning: Class 'GeomParameter' is no longer needed and will be replaced by 
-class 'NbinomParameter' soon.
-[1] 0.5
->  prob(W) <- 0.4 # prob of this distribution is now 0.4.
-Warning: Class 'GeomParameter' is no longer needed and will be replaced by 
-class 'NbinomParameter' soon.
 > 
 > 
 > 
@@ -1467,7 +1347,7 @@ An object of class "AffLinUnivarLebDecDistribution"
     Its absolutely continuous part (with weight 0.819000) is a
  Distribution Object of Class: AffLinAbscontDistribution
  This part is accessible with 'acPart(<obj>)'.
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > plot(Hub)
@@ -1496,6 +1376,7 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 [1] 0.5
 > q(H)(.1) # x=1 is the smallest value x such that p(H)(x)>=0.1.
 [1] 1
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > m(H) # m of this distribution is 3.
 [1] 3
 > m(H) <- 2 # m of this distribution is now 2.
@@ -1577,6 +1458,7 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 [1] 0.1282716
 > q(D4)(.5) # The (approximated) 50 percent quantile is 3.
 [1] 3
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > 
 > 
 > 
@@ -1623,6 +1505,7 @@ Distribution Object of Class: LatticeDistribution
 [1] 0.1586553
 > q(L)(.1) # Probability that x<0.754612 is 0.1.
 [1] 0.754612
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > meanlog(L) # meanlog of this distribution is 1.
 [1] 1
 > meanlog(L) <- 2 # meanlog of this distribution is now 2.
@@ -1672,6 +1555,7 @@ Distribution Object of Class: LatticeDistribution
 [1] 0.5
 > q(L)(.1) # Probability that x < -1.197225 is 0.1.
 [1] -1.197225
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > location(L) # location of this distribution is 1.
 [1] 1
 > location(L) <- 2 # location of this distribution is now 2.
@@ -1723,7 +1607,7 @@ An object of class "AffLinUnivarLebDecDistribution"
     Its absolutely continuous part (with weight 0.819000) is a
  Distribution Object of Class: AffLinAbscontDistribution
  This part is accessible with 'acPart(<obj>)'.
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 >   plot(Hu)
@@ -1732,10 +1616,10 @@ Warning in .makeDNew(xx, dx, h = NULL, Cont = TRUE, standM = "integrate") :
   'integrate()' threw an error ---result may be inaccurate.
 >   Hu0
 Distribution Object of Class: AbscontDistribution
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   slots d,p,q have been filled using simulations; for switching off this warning see '?distroptions'
 >   plot(Hu0)
 > 
@@ -1766,7 +1650,9 @@ Warning in function (object)  :
 > plot(Maximum(Unif(0,1), Minimum(Unif(0,1), Unif(0,1))))
 > plot(Minimum(Exp(4),4))
 > ## a sometimes lengthy example...
-> ## Not run: plot(Minimum(Norm(),Pois()))
+> ## No test: 
+> plot(Minimum(Norm(),Pois()))
+> ## End(No test)
 > 
 > 
 > 
@@ -1815,6 +1701,7 @@ Warning in function (object)  :
 [1] 0.5
 > q(N)(.1) # x=0 is the smallest value x such that p(B)(x)>=0.1.
 [1] 0
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > size(N) # size of this distribution is 1.
 [1] 1
 > size(N) <- 2 # size of this distribution is now 2.
@@ -1908,6 +1795,7 @@ function ()
 [1] 0.5
 > q(N)(.1) # Probability that x<-0.2815516 is 0.1.
 [1] -0.2815516
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > mean(N) # mean of this distribution is 1.
 [1] 1
 > sd(N) <- 2 # sd of this distribution is now 2.
@@ -1958,6 +1846,7 @@ function ()
 [1] 0.3678794
 > q(P)(.1) # x = 0 is the smallest value x such that p(B)(x) >= 0.1.
 [1] 0
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > lambda(P) # lambda of this distribution is 1.
 [1] 1
 > lambda(P) <- 2 # lambda of this distribution is now 2.
@@ -2115,15 +2004,13 @@ Warning in .makeDNew(dxy$x, dxy$y, standM = "int") :
 Warning in .makeDNew(dxy$x, dxy$y, standM = "int") :
   'integrate()' threw an error ---result may be inaccurate.
 $dfun
-function (x, log = FALSE) 
-{
-    if (log) 
-        d0 <- log(df1(x)) - log(stand)
-    else d0 <- df1(x)/stand
-    return(d0)
-}
-<bytecode: 0x08fd3dbc>
-<environment: 0x08d60454>
+function(x, log = FALSE)
+                    {if (log)
+                          d0 <-    log(df1(x))-log(stand)
+                     else d0 <- df1(x) / stand
+                     return (d0)}
+<bytecode: 0x02f53030>
+<environment: 0x05f4acf8>
 
 $pfun
 function (q, lower.tail = TRUE, log.p = FALSE) 
@@ -2138,7 +2025,7 @@ function (q, lower.tail = TRUE, log.p = FALSE)
     else p0/nm
     return(p0)
 }
-<environment: 0x088a5618>
+<environment: 0x0586e8f0>
 
 $qfun
 function (p, lower.tail = TRUE, log.p = FALSE) 
@@ -2152,11 +2039,11 @@ function (p, lower.tail = TRUE, log.p = FALSE)
     q0 <- p * 0
     q0[!i01] <- NaN
     q0[i01] <- if (lower.tail) 
-        q.l(p01)
-    else q.l(1 - p01)
+        q.l0(p01)
+    else q.l0(1 - p01)
     return(as.numeric(q0))
 }
-<environment: 0x0a0ec684>
+<environment: 0x0580c3b0>
 
 > 
 > rp2 <- function(n){rpois(n, lambda = 1)^2}
@@ -2193,15 +2080,13 @@ Warning in .makeDNew(dxy$x, dxy$y, standM = "int") :
 Warning in .makeDNew(dxy$x, dxy$y, standM = "int") :
   'integrate()' threw an error ---result may be inaccurate.
 $dfun
-function (x, log = FALSE) 
-{
-    if (log) 
-        d0 <- log(df1(x)) - log(stand)
-    else d0 <- df1(x)/stand
-    return(d0)
-}
-<bytecode: 0x08fd3dbc>
-<environment: 0x0a0eafbc>
+function(x, log = FALSE)
+                    {if (log)
+                          d0 <-    log(df1(x))-log(stand)
+                     else d0 <- df1(x) / stand
+                     return (d0)}
+<bytecode: 0x02f53030>
+<environment: 0x07f66dd0>
 
 $pfun
 function (q, lower.tail = TRUE, log.p = FALSE) 
@@ -2216,7 +2101,7 @@ function (q, lower.tail = TRUE, log.p = FALSE)
     else p0/nm
     return(p0)
 }
-<environment: 0x09bcd8d0>
+<environment: 0x086f2300>
 
 $qfun
 function (p, lower.tail = TRUE, log.p = FALSE) 
@@ -2230,11 +2115,11 @@ function (p, lower.tail = TRUE, log.p = FALSE)
     q0 <- p * 0
     q0[!i01] <- NaN
     q0[i01] <- if (lower.tail) 
-        q.l(p01)
-    else q.l(1 - p01)
+        q.l0(p01)
+    else q.l0(1 - p01)
     return(as.numeric(q0))
 }
-<environment: 0x099b43b4>
+<environment: 0x08c59f70>
 
 > 
 > rp2 <- function(n){rpois(n, lambda = 1)^2}
@@ -2335,6 +2220,7 @@ function (SymmCenter = 0)
 [1] 0.75
 > q(T)(.1) # Probability that x < -3.077684 is 0.1.
 [1] -3.077684
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > df(T) # df of this distribution is 1.
 [1] 1
 > df(T) <- 2 # df of this distribution is now 2.
@@ -2416,6 +2302,7 @@ function (SymmCenter = 0)
 [1] 0.5
 > q(U)(.1) # Probability that x<0.2 is 0.1.
 [1] 0.2
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > Min(U) # Min of this distribution is 0.
 [1] 0
 > Min(U) <- 1 # Min of this distribution is now 1.
@@ -2571,10 +2458,6 @@ function (...)
 > 
 > wg <- flat.mix(UnivarMixingDistribution(Unif(0,1),Unif(4,5),
 +                withSimplify=FALSE))
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
 > myLC <- UnivarLebDecDistribution(discretePart=Binom(3,.3), acPart = wg,
 +           discreteWeight=.2)
 > myLC
@@ -2590,7 +2473,7 @@ An object of class "UnivarLebDecDistribution"
     Its absolutely continuous part (with weight 0.800000) is a
  Distribution Object of Class: AbscontDistribution
  This part is accessible with 'acPart(<obj>)'.
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > p(myLC)(0.3)
@@ -2603,9 +2486,10 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 [25] 4.14821156 4.01307758 4.71556607 0.12169192 0.00000000 4.64010105
 > q(myLC)(0.9)
 [1] 4.75
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > acPart(myLC)
 Distribution Object of Class: AbscontDistribution
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > plot(myLC)
@@ -2687,18 +2571,8 @@ An object of class "UnivarLebDecDistribution"
 > 
 > mylist <- UnivarMixingDistribution(Binom(3,.3), Dirac(2), Norm(), 
 +           mixCoeff=c(1/4,1/5,11/20))
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
 > mylist2 <- UnivarMixingDistribution(Binom(3,.3), mylist, 
 +           mixCoeff=c(.3,.7))
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
 > mylist2
 An object of class "UnivarLebDecDistribution"
  --- a Lebesgue decomposed distribution:
@@ -2710,7 +2584,7 @@ An object of class "UnivarLebDecDistribution"
     Its absolutely continuous part (with weight 0.385000) is a
  Distribution Object of Class: AbscontDistribution
  This part is accessible with 'acPart(<obj>)'.
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > p(mylist)(0.3)          
@@ -2719,7 +2593,7 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 An object of class "UnivarDistrList"
  [[1]] Distribution Object of Class: AbscontDistribution
  [[2]] Distribution Object of Class: DiscreteDistribution
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
@@ -2740,12 +2614,6 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > mylist <- UnivarMixingDistribution(Binom(3,.3), Dirac(2), Norm(), 
 +           mixCoeff=c(1/4,1/5,11/20))
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
 > 
 > 
 > 
@@ -2771,6 +2639,7 @@ Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution
 [1] 0.6321206
 > q(W)(.1) # Probability that x<0.1053605 is 0.1.
 [1] 0.1053605
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > shape(W) # shape of this distribution is 1.
 [1] 1
 > shape(W) <- 2 # shape of this distribution is now 2.
@@ -3047,7 +2916,8 @@ matrices and an adapted eigen decomposition for 'PosSemDefSymmMatrix'.
 
 *** non-intentional masking: ***
 
-... nothing discovered so far ...> 
+... nothing discovered so far ...
+> 
 > 
 > 
 > cleanEx()
@@ -3123,7 +2993,7 @@ An object of class "UnivarLebDecDistribution"
     Its absolutely continuous part (with weight 0.400000) is a
  Distribution Object of Class: AbscontDistribution
  This part is accessible with 'acPart(<obj>)'.
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
@@ -3184,20 +3054,6 @@ An object of class "UnivarMixingDistribution"
  0.400000 0.300000 0.100000 0.200000 
  ---------------------------------------------
 > D0<-flat.mix(D)
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = flat.mix(mixDistr[[i]])) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
 > D0
 An object of class "UnivarLebDecDistribution"
  --- a Lebesgue decomposed distribution:
@@ -3209,7 +3065,7 @@ An object of class "UnivarLebDecDistribution"
     Its absolutely continuous part (with weight 0.620000) is a
  Distribution Object of Class: AbscontDistribution
  This part is accessible with 'acPart(<obj>)'.
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > plot(D0)
@@ -3276,10 +3132,19 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > ### Name: liesInSupport
 > ### Title: Generic Function for Testing the Support of a Distribution
 > ### Aliases: liesInSupport liesInSupport-methods
+> ###   liesInSupport,UnivarLebDecDistribution,numeric-method
+> ###   liesInSupport,UnivarMixingDistribution,numeric-method
+> ###   liesInSupport,LatticeDistribution,numeric-method
 > ###   liesInSupport,DiscreteDistribution,numeric-method
-> ###   liesInSupport,DiscreteDistribution,matrix-method
+> ###   liesInSupport,Distribution,matrix-method
 > ###   liesInSupport,AbscontDistribution,numeric-method
-> ###   liesInSupport,AbscontDistribution,matrix-method
+> ###   liesInSupport,ExpOrGammaOrChisq,numeric-method
+> ###   liesInSupport,Lnorm,numeric-method liesInSupport,Fd,numeric-method
+> ###   liesInSupport,Norm,numeric-method liesInSupport,DExp,numeric-method
+> ###   liesInSupport,Cauchy,numeric-method liesInSupport,Td,numeric-method
+> ###   liesInSupport,Logis,numeric-method
+> ###   liesInSupport,Weibull,numeric-method
+> ###   liesInSupport,Unif,numeric-method liesInSupport,Beta,numeric-method
 > ### Keywords: distribution methods
 > 
 > ### ** Examples
@@ -3288,14 +3153,22 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
  [1] FALSE  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE FALSE
 > 
 > # note
-> x <- rpois(10, lam = 10)
+> x <- rpois(10, lambda = 10)
 > liesInSupport(Pois(1), x)
  [1] FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE
 > # better
-> distroptions("TruncQuantile"=1e-15)
-> liesInSupport(Pois(1), x)
+> liesInSupport(Pois(1), x, checkFin = TRUE)
  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
-> distroptions("TruncQuantile"=1e-05) # default
+> liesInSupport(Pois(1), 1000*x, checkFin = TRUE)
+ [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+> liesInSupport(-10*Pois(1), -10*x+1, checkFin = TRUE)
+ [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+> 
+> xs = c(1000*x,runif(10))
+> D <- UnivarMixingDistribution(Pois(1),Unif())
+> liesInSupport(D, xs)
+ [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE
+[13]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
 > 
 > 
 > 
@@ -3387,33 +3260,33 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 Distribution Object of Class: Norm
  mean: 3
  sd: 3
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > N + P
 Distribution Object of Class: AbscontDistribution
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > N - a
 Distribution Object of Class: Norm
  mean: -3
  sd: 3
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > a * N
 Distribution Object of Class: Norm
  mean: 0
  sd: 9
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > a * P
 Distribution Object of Class: AffLinLatticeDistribution
 > N / a + sin( a * P - N)
 Distribution Object of Class: AbscontDistribution
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > N * P
@@ -3428,26 +3301,40 @@ An object of class "UnivarLebDecDistribution"
     Its absolutely continuous part (with weight 0.982000) is a
  Distribution Object of Class: AbscontDistribution
  This part is accessible with 'acPart(<obj>)'.
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > N / N
 Distribution Object of Class: AbscontDistribution
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
-> ## Not run: 
-> ##D ## takes a little time
-> ##D N ^ P
-> ## End(Not run)
+> ## No test: 
+> ## takes a little time
+> N ^ P
+An object of class "UnivarLebDecDistribution"
+ --- a Lebesgue decomposed distribution:
+
+    Its discrete part (with weight 0.018000) is a
+ Distribution Object of Class: Dirac
+ location: 1
+ This part is accessible with 'discretePart(<obj>)'.
+
+    Its absolutely continuous part (with weight 0.982000) is a
+ Distribution Object of Class: AbscontDistribution
+ This part is accessible with 'acPart(<obj>)'.
+Warning in (new("standardGeneric", .Data = function (object)  :
+  arithmetics on distributions are understood as operations on r.v.'s
+see 'distrARITH()'; for switching off this warning see '?distroptions'
+> ## End(No test)
 > 1.2 ^ N
 Distribution Object of Class: AbscontDistribution
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > abs(N) ^ 1.3
 Distribution Object of Class: AbscontDistribution
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
@@ -3583,54 +3470,41 @@ dev.new(): using pdf(file="Rplots24.pdf")
 +      col.vert = "red")
 dev.new(): using pdf(file="Rplots25.pdf")
 > 
-> ## some distribution with gaps
-> wg <- flat.mix(UnivarMixingDistribution(Unif(0,1),Unif(4,5), 
-+                withSimplify=FALSE))
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-> # some Lebesgue decomposed distribution 
-> mymix <- UnivarLebDecDistribution(acPart = wg, discretePart = Binom(4,.4),
-+          acWeight = 0.4)
-> plot(mymix)         
-dev.new(): using pdf(file="Rplots26.pdf")
-> #
-> ## selection of subpanels for plotting
-> N <- Norm()
-> par(mfrow=c(1,2))
-> plot(N, mfColRow = FALSE, to.draw.arg=c("d","q"))
-dev.new(): using pdf(file="Rplots27.pdf")
-> plot(N, mfColRow = FALSE, to.draw.arg=c(2,3))
-dev.new(): using pdf(file="Rplots28.pdf")
-> par(mfrow=c(1,1))
-> 
-> wg <- flat.mix(UnivarMixingDistribution(Unif(0,1),Unif(4,5),
-+                withSimplify=FALSE))
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-> myLC <- UnivarLebDecDistribution(discretePart=Binom(3,.3), acPart = wg,
-+           discreteWeight=.2)
-> layout(matrix(c(rep(1,6),2,2,3,3,4,4,5,5,5,6,6,6), 
-+               nrow=3, byrow=TRUE))
-> plot(myLC,mfColRow = FALSE,
-+      to.draw.arg=c("p","d.c","p.c","q.c", "p.d","q.d"))
-dev.new(): using pdf(file="Rplots29.pdf")
-> 
-> P <- Pois(2)
-> plot(as(P,"UnivarLebDecDistribution"),mfColRow = FALSE,to.draw.arg=c("d.d"))
-dev.new(): using pdf(file="Rplots30.pdf")
-> ### the next ylab argument is just for illustration purposes
-> plot(as(P,"UnivarLebDecDistribution"),mfColRow = FALSE,to.draw.arg=c("d.d"),
-+      xlab="x",ylab=list(expression(paste(lambda,"-density of %C(%P)"))))
-dev.new(): using pdf(file="Rplots31.pdf")
+> ## Not run: 
+> ##D  # to save time 
+> ##D ## some distribution with gaps
+> ##D wg <- flat.mix(UnivarMixingDistribution(Unif(0,1),Unif(4,5), 
+> ##D                withSimplify=FALSE))
+> ##D # some Lebesgue decomposed distribution 
+> ##D mymix <- UnivarLebDecDistribution(acPart = wg, discretePart = Binom(4,.4),
+> ##D          acWeight = 0.4)
+> ##D plot(mymix)         
+> ##D #
+> ##D ## selection of subpanels for plotting
+> ##D N <- Norm()
+> ##D par(mfrow=c(1,2))
+> ##D plot(N, mfColRow = FALSE, to.draw.arg=c("d","q"))
+> ##D plot(N, mfColRow = FALSE, to.draw.arg=c(2,3))
+> ##D par(mfrow=c(1,1))
+> ##D 
+> ##D wg <- flat.mix(UnivarMixingDistribution(Unif(0,1),Unif(4,5),
+> ##D                withSimplify=FALSE))
+> ##D myLC <- UnivarLebDecDistribution(discretePart=Binom(3,.3), acPart = wg,
+> ##D           discreteWeight=.2)
+> ##D layout(matrix(c(rep(1,6),2,2,3,3,4,4,5,5,5,6,6,6), 
+> ##D               nrow=3, byrow=TRUE))
+> ##D plot(myLC,mfColRow = FALSE,
+> ##D      to.draw.arg=c("p","d.c","p.c","q.c", "p.d","q.d"))
+> ##D 
+> ##D P <- Pois(2)
+> ##D plot(as(P,"UnivarLebDecDistribution"),mfColRow = FALSE,to.draw.arg=c("d.d"))
+> ##D ### the next ylab argument is just for illustration purposes
+> ##D plot(as(P,"UnivarLebDecDistribution"),mfColRow = FALSE,to.draw.arg=c("d.d"),
+> ##D      xlab="x",ylab=list(expression(paste(lambda,"-density of %C(%P)"))))
+> ## End(Not run)
 > 
 > 
 > 
-> 
-> graphics::par(get("par.postscript", pos = 'CheckExEnv'))
 > cleanEx()
 > nameEx("q-methods")
 > ### * q-methods
@@ -3649,6 +3523,7 @@ dev.new(): using pdf(file="Rplots31.pdf")
 > N <- Norm()
 > q(N)(0.3)
 [1] -0.5244005
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > q.l(N)(0.3)
 [1] -0.5244005
 > 
@@ -3668,7 +3543,7 @@ dev.new(): using pdf(file="Rplots31.pdf")
 > ### ** Examples
 > 
 > qqplot(Norm(15,sqrt(30)), Chisq(df=15))
-dev.new(): using pdf(file="Rplots32.pdf")
+dev.new(): using pdf(file="Rplots26.pdf")
 > ## uses:
 > qqbounds(x = rnorm(30),Norm(),alpha=0.95,n=30,
 +         withConf.pw = TRUE, withConf.sim  = TRUE,
@@ -3811,34 +3686,40 @@ TRUE TRUE
 > ### ** Examples
 > 
 > qqplot(Norm(15,sqrt(30)), Chisq(df=15))
-dev.new(): using pdf(file="Rplots33.pdf")
+dev.new(): using pdf(file="Rplots27.pdf")
 > ## some discrete Distributions:
 > P <- Pois(5)
 > B <- Binom(size=2000,prob=5/2000)
 > qqplot(B,P)
-dev.new(): using pdf(file="Rplots34.pdf")
-> ## Not run: 
-> ##D ## takes too much time for R CMD check --as-cran
-> ##D qqplot(B,P, nosym.pCI=TRUE)
-> ## End(Not run)
+dev.new(): using pdf(file="Rplots28.pdf")
+> ## No test: 
+> ## takes too much time for R CMD check --as-cran
+> qqplot(B,P, nosym.pCI=TRUE)
+dev.new(): using pdf(file="Rplots29.pdf")
+> ## End(No test)
 > ## some Lebesgue-Decomposed distributions:
 > mylist <- UnivarLebDecDistribution(discretePart=Binom(3,.3), acPart=Norm(2,2),
 +                acWeight=11/20)
 > mylist2 <- mylist+0.1
 > qqplot(mylist,mylist2)
-dev.new(): using pdf(file="Rplots35.pdf")
+dev.new(): using pdf(file="Rplots30.pdf")
 > qqplot(mylist,mylist2,exact.pCI=FALSE,exact.sCI=FALSE)
-dev.new(): using pdf(file="Rplots36.pdf")
-> ## Not run: 
-> ##D ## takes too much time for R CMD check --as-cran
-> ##D qqplot(mylist,mylist2,nosym.pCI=TRUE)
-> ##D ## some ac. distribution with a gap
-> ##D mylist3 <- UnivarMixingDistribution(Unif(0,0.3),Unif(0.6,1),mixCoeff=c(0.8,0.2))
-> ##D gaps(mylist3)
-> ##D mylist4 <- UnivarMixingDistribution(Unif(0,0.3),Unif(0.6,1),mixCoeff=c(0.6,0.4))
-> ##D qqplot(mylist3,mylist4)
-> ##D qqplot(mylist3,mylist4,nosym.pCI=TRUE)
-> ## End(Not run)
+dev.new(): using pdf(file="Rplots31.pdf")
+> ## No test: 
+> ## takes too much time for R CMD check --as-cran
+> qqplot(mylist,mylist2,nosym.pCI=TRUE)
+dev.new(): using pdf(file="Rplots32.pdf")
+> ## some ac. distribution with a gap
+> mylist3 <- UnivarMixingDistribution(Unif(0,0.3),Unif(0.6,1),mixCoeff=c(0.8,0.2))
+> gaps(mylist3)
+          [,1]      [,2]
+[1,] 0.3000069 0.5999908
+> mylist4 <- UnivarMixingDistribution(Unif(0,0.3),Unif(0.6,1),mixCoeff=c(0.6,0.4))
+> qqplot(mylist3,mylist4)
+dev.new(): using pdf(file="Rplots33.pdf")
+> qqplot(mylist3,mylist4,nosym.pCI=TRUE)
+dev.new(): using pdf(file="Rplots34.pdf")
+> ## End(No test)
 > 
 > 
 > 
@@ -3909,22 +3790,10 @@ An object of class "UnivarMixingDistribution"
  Weights: 
  0.000000 0.200000 0.800000 
  ---------------------------------------------
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > simplifyD(Mix2)
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = flat.mix(mixDistr[[i]])) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
 An object of class "UnivarLebDecDistribution"
  --- a Lebesgue decomposed distribution:
 
@@ -3935,7 +3804,7 @@ An object of class "UnivarLebDecDistribution"
     Its absolutely continuous part (with weight 0.972000) is a
  Distribution Object of Class: AbscontDistribution
  This part is accessible with 'acPart(<obj>)'.
-Warning in function (object)  :
+Warning in (new("standardGeneric", .Data = function (object)  :
   arithmetics on distributions are understood as operations on r.v.'s
 see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
@@ -3958,11 +3827,11 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > F <- ( Norm() + Binom() + Pois() + Exp() ) * 2 - 10
 > system.time(r(F)(10^6))
    user  system elapsed 
-   0.39    0.00    0.39 
+   0.56    0.01    0.78 
 > simplifyr(F, size = 10^6)
 > system.time(r(F)(10^6))
    user  system elapsed 
-   0.05    0.00    0.04 
+   0.23    0.02    0.32 
 > 
 > 
 > cleanEx()
@@ -3994,12 +3863,13 @@ setReplaceMethod("b", "testclass", function(object, value){ object@b <- value; o
 > 
 > ### * <FOOTER>
 > ###
+> cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  15.65 1.25 16.9 NA NA 
+Time elapsed:  115.12 9.2 149.97 NA NA 
 > grDevices::dev.off()
 pdf 
-  2 
+ 19 
 > ###
 > ### Local variables: ***
 > ### mode: outline-minor ***

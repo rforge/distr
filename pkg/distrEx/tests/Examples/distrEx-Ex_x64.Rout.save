@@ -1,6 +1,6 @@
 
-R Under development (unstable) (2016-04-22 r70532) -- "Unsuffered Consequences"
-Copyright (C) 2016 The R Foundation for Statistical Computing
+R Under development (unstable) (2019-02-27 r76167) -- "Unsuffered Consequences"
+Copyright (C) 2019 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64 (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
@@ -22,49 +22,14 @@ Type 'q()' to quit R.
 > library('distrEx')
 Loading required package: distr
 Loading required package: startupmsg
-:startupmsg>  Utilities for Start-Up Messages (version 0.9.2)
+:startupmsg>  Utilities for Start-Up Messages (version 0.9.6)
 :startupmsg> 
 :startupmsg>  For more information see ?"startupmsg",
 :startupmsg>  NEWS("startupmsg")
 
 Loading required package: sfsmisc
-Loading required package: SweaveListingUtils
-:SweaveListingUtils>  Utilities for Sweave Together with
-:SweaveListingUtils>  TeX 'listings' Package (version
-:SweaveListingUtils>  0.7)
-:SweaveListingUtils> 
-:SweaveListingUtils>  NOTE: Support for this package
-:SweaveListingUtils>  will stop soon.
-:SweaveListingUtils> 
-:SweaveListingUtils>  Package 'knitr' is providing the
-:SweaveListingUtils>  same functionality in a better
-:SweaveListingUtils>  way.
-:SweaveListingUtils> 
-:SweaveListingUtils>  Some functions from package 'base'
-:SweaveListingUtils>  are intentionally masked ---see
-:SweaveListingUtils>  SweaveListingMASK().
-:SweaveListingUtils> 
-:SweaveListingUtils>  Note that global options are
-:SweaveListingUtils>  controlled by
-:SweaveListingUtils>  SweaveListingoptions() ---c.f.
-:SweaveListingUtils>  ?"SweaveListingoptions".
-:SweaveListingUtils> 
-:SweaveListingUtils>  For more information see
-:SweaveListingUtils>  ?"SweaveListingUtils",
-:SweaveListingUtils>  NEWS("SweaveListingUtils")
-:SweaveListingUtils>  There is a vignette to this
-:SweaveListingUtils>  package; try
-:SweaveListingUtils>  vignette("ExampleSweaveListingUtils").
-
-
-Attaching package: 'SweaveListingUtils'
-
-The following objects are masked from 'package:base':
-
-    library, require
-
 :distr>  Object Oriented Implementation of Distributions (version
-:distr>  2.6)
+:distr>  2.8.0)
 :distr> 
 :distr>  Attention: Arithmetics on distribution objects are
 :distr>  understood as operations on corresponding random variables
@@ -89,7 +54,7 @@ The following objects are masked from 'package:stats':
 
     df, qqplot, sd
 
-:distrEx>  Extensions of Package 'distr' (version 2.6)
+:distrEx>  Extensions of Package 'distr' (version 2.8.0)
 :distrEx> 
 :distrEx>  Note: Packages "e1071", "moments", "fBasics" should be
 :distrEx>  attached /before/ package "distrEx". See
@@ -114,6 +79,7 @@ The following objects are masked from 'package:stats':
 
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
 > cleanEx()
 > nameEx("AbscontCondDistribution-class")
 > ### * AbscontCondDistribution-class
@@ -163,10 +129,6 @@ Slot "name":
 > 
 > AsymTotalVarDist(Norm(), UnivarMixingDistribution(Norm(1,2),Norm(0.5,3),
 +                  mixCoeff=c(0.2,0.8)), rho=0.3)
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
 asym. total variation distance 
                      0.5311789 
 > AsymTotalVarDist(Norm(), Td(10), rho=0.3)
@@ -185,7 +147,7 @@ asym. total variation distance
                      0.3140162 
 > AsymTotalVarDist(x, Norm(), asis.smooth.discretize = "smooth", rho=0.3)
 asym. total variation distance 
-                     0.2658876 
+                     0.2663399 
 > 
 > y <- (rbinom(50, size = 20, prob = 0.5)-10)/sqrt(5)
 > AsymTotalVarDist(y, Norm(), rho=0.3)
@@ -193,7 +155,7 @@ asym. total variation distance
                      0.8343428 
 > AsymTotalVarDist(y, Norm(), asis.smooth.discretize = "smooth", rho=0.3)
 asym. total variation distance 
-                     0.6326863 
+                     0.6324715 
 > 
 > AsymTotalVarDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5), rho=0.3)
 asym. total variation distance 
@@ -314,18 +276,10 @@ $size.of.contamination
 > 
 > CvMDist(Norm(), UnivarMixingDistribution(Norm(1,2),Norm(0.5,3),
 +                  mixCoeff=c(0.2,0.8)))
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
 CvM distance 
    0.1812994 
 > CvMDist(Norm(), UnivarMixingDistribution(Norm(1,2),Norm(0.5,3),
 +                  mixCoeff=c(0.2,0.8)),mu=Norm())
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
 CvM distance 
    0.1812994 
 > CvMDist(Norm(), Td(10))
@@ -423,6 +377,7 @@ Warning in DiscreteMVDistribution(supp = matrix(c(1:5, rep(3, 5)), ncol = 2,  :
 [1] 0.6
 > q(D2)
 NULL
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > param(D2)
 NULL
 > img(D2)
@@ -528,15 +483,13 @@ Slot "name":
 > ###   E,Chisq,missing,missing-method E,Dirac,missing,missing-method
 > ###   E,DExp,missing,missing-method E,Exp,missing,missing-method
 > ###   E,Fd,missing,missing-method E,Gammad,missing,missing-method
-> ###   E,Gammad,function,missing-method E,Geom,missing,missing-method
-> ###   E,Gumbel,missing,missing-method E,GPareto,missing,missing-method
-> ###   E,GPareto,function,missing-method E,GEV,missing,missing-method
-> ###   E,GEV,function,missing-method E,Hyper,missing,missing-method
+> ###   E,Geom,missing,missing-method E,Hyper,missing,missing-method
 > ###   E,Logis,missing,missing-method E,Lnorm,missing,missing-method
 > ###   E,Nbinom,missing,missing-method E,Norm,missing,missing-method
-> ###   E,Pareto,missing,missing-method E,Pois,missing,missing-method
-> ###   E,Td,missing,missing-method E,Unif,missing,missing-method
-> ###   E,Weibull,missing,missing-method
+> ###   E,Pois,missing,missing-method E,Td,missing,missing-method
+> ###   E,Unif,missing,missing-method E,Weibull,missing,missing-method
+> ###   E,Gammad,function,missing-method E,Weibull,function,missing-method
+> ###   E,Cauchy,function,missing-method .qtlIntegrate
 > ### Keywords: methods distribution
 > 
 > ### ** Examples
@@ -551,7 +504,7 @@ Slot "name":
 > E(as(E,"UnivariateDistribution")) ## uses simulations
 [1] 1.002698
 > E(E, fun = function(x){2*x^2}) ## uses simulations
-[1] 3.999941
+[1] 3.999918
 > 
 > # the same operator for discrete distributions:
 > P <- Pois(lambda=2)
@@ -609,7 +562,7 @@ Slot "name":
 > E(Cauchy())
 [1] NA
 > E(Cauchy(),upp=3,low=-2)
-[1] 0
+[1] 0.75
 > # some Lebesgue decomposed distribution 
 > mymix <- UnivarLebDecDistribution(acPart = Norm(), discretePart = Binom(4,.4),
 +          acWeight = 0.4)
@@ -744,6 +697,7 @@ function (dimension)
 > ###   HellingerDist,AbscontDistribution,AbscontDistribution-method
 > ###   HellingerDist,AbscontDistribution,DiscreteDistribution-method
 > ###   HellingerDist,DiscreteDistribution,DiscreteDistribution-method
+> ###   HellingerDist,DiscreteMVDistribution,DiscreteMVDistribution-method
 > ###   HellingerDist,DiscreteDistribution,AbscontDistribution-method
 > ###   HellingerDist,LatticeDistribution,DiscreteDistribution-method
 > ###   HellingerDist,DiscreteDistribution,LatticeDistribution-method
@@ -759,15 +713,11 @@ function (dimension)
 > 
 > HellingerDist(Norm(), UnivarMixingDistribution(Norm(1,2),Norm(0.5,3),
 +                  mixCoeff=c(0.2,0.8)))
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
 Hellinger distance 
-         0.4604849 
+         0.2120463 
 > HellingerDist(Norm(), Td(10))
 Hellinger distance 
-         0.0598968 
+       0.003587627 
 > HellingerDist(Norm(mean = 50, sd = sqrt(25)), Binom(size = 100)) # mutually singular
 Hellinger distance 
                  1 
@@ -781,7 +731,7 @@ Hellinger distance
          0.3287617 
 > HellingerDist(x, Norm(), asis.smooth.discretize = "smooth")
 Hellinger distance 
-         0.1904838 
+        0.03628406 
 > 
 > y <- (rbinom(50, size = 20, prob = 0.5)-10)/sqrt(5)
 > HellingerDist(y, Norm())
@@ -789,7 +739,7 @@ Hellinger distance
          0.7596996 
 > HellingerDist(y, Norm(), asis.smooth.discretize = "smooth")
 Hellinger distance 
-         0.5283272 
+         0.2791296 
 > 
 > HellingerDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5))
 Hellinger distance 
@@ -823,10 +773,6 @@ Hellinger distance
 > 
 > KolmogorovDist(Norm(), UnivarMixingDistribution(Norm(1,2),Norm(0.5,3),
 +                  mixCoeff=c(0.2,0.8)))
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
 Kolmogorov distance 
           0.3092684 
 > KolmogorovDist(Norm(), Td(10))
@@ -887,7 +833,7 @@ function (n, cond, ...)
     }
     0 + cond %*% 1 + 1 * r(n, ...)
 }
-<environment: 0x00000000184d4f08>
+<environment: 0x000000000ac31090>
 > d(D1)
 function (x, cond, log = FALSE, ...) 
 {
@@ -909,7 +855,7 @@ function (x, cond, log = FALSE, ...)
     else d0 <- d0/1
     return(d0)
 }
-<environment: 0x00000000184d4f08>
+<environment: 0x000000000ac31090>
 > p(D1)
 function (q, cond, lower.tail = TRUE, log.p = FALSE, ...) 
 {
@@ -936,7 +882,7 @@ function (q, cond, lower.tail = TRUE, log.p = FALSE, ...)
             p0 <- log(p0)
     return(p0)
 }
-<environment: 0x00000000184d4f08>
+<environment: 0x000000000ac31090>
 > q(D1)
 function (p, cond, lower.tail = TRUE, log.p = FALSE, ...) 
 {
@@ -960,7 +906,8 @@ function (p, cond, lower.tail = TRUE, log.p = FALSE, ...)
         argList <- c(argList, dots)
     1 * do.call(q, argList) + 0 + as.vector(cond %*% 1)
 }
-<environment: 0x00000000184d4f08>
+<environment: 0x000000000ac31090>
+> ## in RStudio or Jupyter IRKernel, use q.l(.)(.) instead of q(.)(.)
 > param(D1)
 name:	parameter of a linear regression model
 theta:	1
@@ -1085,10 +1032,6 @@ function (theta = 0, intercept = 0, scale = 1)
 > 
 > OAsymTotalVarDist(Norm(), UnivarMixingDistribution(Norm(1,2),Norm(0.5,3),
 +                  mixCoeff=c(0.2,0.8)))
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
 minimal asym. total variation distance 
                              0.6278288 
 > OAsymTotalVarDist(Norm(), Td(10))
@@ -1107,7 +1050,7 @@ minimal asym. total variation distance
                              0.8150567 
 > OAsymTotalVarDist(x, Norm(), asis.smooth.discretize = "smooth")
 minimal asym. total variation distance 
-                              0.345616 
+                             0.3462409 
 > 
 > y <- (rbinom(50, size = 20, prob = 0.5)-10)/sqrt(5)
 > OAsymTotalVarDist(y, Norm())
@@ -1115,7 +1058,7 @@ minimal asym. total variation distance
                              0.9201529 
 > OAsymTotalVarDist(y, Norm(), asis.smooth.discretize = "smooth")
 minimal asym. total variation distance 
-                             0.7539696 
+                             0.7541313 
 > 
 > OAsymTotalVarDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5))
 minimal asym. total variation distance 
@@ -1193,6 +1136,7 @@ Range:	Euclidean Space with dimension 1
 > ###   TotalVarDist,AbscontDistribution,AbscontDistribution-method
 > ###   TotalVarDist,AbscontDistribution,DiscreteDistribution-method
 > ###   TotalVarDist,DiscreteDistribution,DiscreteDistribution-method
+> ###   TotalVarDist,DiscreteMVDistribution,DiscreteMVDistribution-method
 > ###   TotalVarDist,DiscreteDistribution,AbscontDistribution-method
 > ###   TotalVarDist,LatticeDistribution,DiscreteDistribution-method
 > ###   TotalVarDist,DiscreteDistribution,LatticeDistribution-method
@@ -1208,10 +1152,6 @@ Range:	Euclidean Space with dimension 1
 > 
 > TotalVarDist(Norm(), UnivarMixingDistribution(Norm(1,2),Norm(0.5,3),
 +                  mixCoeff=c(0.2,0.8)))
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
-Warning in `[<-`(`*tmp*`, i, value = as(mixDistr[[i]], "UnivarLebDecDistribution")) :
-  implicit list embedding of S4 objects is deprecated
 total variation distance 
                0.4677808 
 > TotalVarDist(Norm(), Td(10))
@@ -1230,7 +1170,7 @@ total variation distance
                0.5056648 
 > TotalVarDist(x, Norm(), asis.smooth.discretize = "smooth")
 total variation distance 
-               0.1869429 
+                0.187476 
 > 
 > y <- (rbinom(50, size = 20, prob = 0.5)-10)/sqrt(5)
 > TotalVarDist(y, Norm())
@@ -1238,7 +1178,7 @@ total variation distance
                 1.156205 
 > TotalVarDist(y, Norm(), asis.smooth.discretize = "smooth")
 total variation distance 
-               0.5563187 
+                0.556554 
 > 
 > TotalVarDist(rbinom(50, size = 20, prob = 0.5), Binom(size = 20, prob = 0.5))
 total variation distance 
@@ -1368,7 +1308,7 @@ Slot "name":
 [1] 8.485224
 > #
 > mad(sin(exp(Norm()+2*Pois()))) ## weird
-[1] 0.499821
+[1] 0.5147668
 > 
 > 
 > 
@@ -1380,7 +1320,8 @@ Slot "name":
 > 
 > ### Name: distrExIntegrate
 > ### Title: Integration of One-Dimensional Functions
-> ### Aliases: distrExIntegrate
+> ### Aliases: distrExIntegrate print.DiagnosticClass showDiagnostic
+> ###   getDiagnostic
 > ### Keywords: math utilities
 > 
 > ### ** Examples
@@ -1394,7 +1335,7 @@ Slot "name":
 Error in integrate(fkt, lower = -1, upper = 5) : 
   the integral is probably divergent
 > distrExIntegrate(fkt, lower = -1, upper = 5)
-[1] -0.09560435
+[1] -0.0971342
 > 
 > 
 > 
@@ -1509,7 +1450,7 @@ $GLIntegrateTruncQuantile
 [1] 2.220446e-15
 
 $GLIntegrateOrder
-[1] 500
+[1] 5000
 
 $MCIterations
 [1] 1e+05
@@ -1686,9 +1627,10 @@ see 'distrARITH()'; for switching off this warning see '?distroptions'
 > 
 > ### * <FOOTER>
 > ###
+> cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  5.1 0.25 5.34 NA NA 
+Time elapsed:  15.76 0.66 21.89 NA NA 
 > grDevices::dev.off()
 null device 
           1 
