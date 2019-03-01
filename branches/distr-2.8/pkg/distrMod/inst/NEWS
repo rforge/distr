@@ -61,7 +61,8 @@ bug fixes
   CvMDist 
 + in fam.fall to NbinomFamily (with two parameters ) we had matrix(Tr, dimnames = DN) without
   specifying nrow and ncol 
-  
++ logical of length>1 in if-clause in trafoEst()   
+
 under the hood:
 
 + As this is more for internal purposes, example code for the parsing of dots argument 
