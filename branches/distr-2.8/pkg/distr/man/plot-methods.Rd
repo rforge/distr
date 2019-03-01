@@ -269,6 +269,7 @@ setgaps(Ch, exactq = 3); plot(Ch, verticals = FALSE)
 plot(Ch, cex = 1.2, pch.u = 20, pch.a = 10, col.points = "green", 
      col.vert = "red")
 
+\dontrun{ # to save time 
 ## some distribution with gaps
 wg <- flat.mix(UnivarMixingDistribution(Unif(0,1),Unif(4,5), 
                withSimplify=FALSE))
@@ -298,7 +299,7 @@ plot(as(P,"UnivarLebDecDistribution"),mfColRow = FALSE,to.draw.arg=c("d.d"))
 ### the next ylab argument is just for illustration purposes
 plot(as(P,"UnivarLebDecDistribution"),mfColRow = FALSE,to.draw.arg=c("d.d"),
      xlab="x",ylab=list(expression(paste(lambda,"-density of \%C(\%P)"))))
-
+}
 }
 \seealso{\code{\link[graphics]{plot}},\code{\link[graphics]{plot.default}}, 
          \code{\link[stats]{plot.stepfun}},  \code{\link[graphics]{par}}}
