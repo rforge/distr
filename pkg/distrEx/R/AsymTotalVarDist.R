@@ -11,11 +11,14 @@ setMethod("AsymTotalVarDist", signature(e1 = "AbscontDistribution",
     function(e1, e2, rho = 1,  
              rel.tol = .Machine$double.eps^0.3, maxiter=1000, Ngrid = 10000,
              TruncQuantile = getdistrOption("TruncQuantile"),
-             IQR.fac = 15){ 
+             IQR.fac = 15, ..., diagnostic = FALSE){
 
         ## if we have to recall this method with a smaller TruncQuantile arg:
         mc <-  as.list(match.call(call = sys.call(sys.parent(1)))[-1])
         mc$TruncQuantile <- TruncQuantile * 1.8
+        dots <- list(...)
+        dotsn <- names(dots)
+        dotsI <- dots[dotsn %in% c("order","subdivisions", "stop.on.error")]
 
         #block warnings:
         o.warn <- getOption("warn"); options(warn = -1)
@@ -36,9 +39,11 @@ setMethod("AsymTotalVarDist", signature(e1 = "AbscontDistribution",
         d1 <- d(e1); d2 <- d(e2)
         #
         ### integration as a function of c:
-        Eip <- function(f, c00)
-                distrExIntegrate(f, lower = low, upper = up, 
-                                    rel.tol = rel.tol, c00 = c00)
+        Eip <- function(f, c00, diagnostic0 = FALSE)
+                do.call(distrExIntegrate,c(list(f, lower = low, upper = up,
+                                    rel.tol = rel.tol, c00 = c00,
+                                    diagnostic = diagnostic0),dotsI))
+
        # positive part
        integ.p <- function(x,c00)  pmax(d2(x)-c00*d1(x),0)
        # negative part
@@ -46,8 +51,8 @@ setMethod("AsymTotalVarDist", signature(e1 = "AbscontDistribution",
 
        ## function zero c(rho) of which is to be found 
        fct <- function(c0, rho = rho){
-           e.p <- Eip(f=integ.p, c00=c0)
-           e.m <- Eip(f=integ.m, c00=c0)
+           e.p <- Eip(f=integ.p, c00=c0, diagnostic0 = FALSE)
+           e.m <- Eip(f=integ.m, c00=c0, diagnostic0 = FALSE)
            e.p*rho - e.m
            } 
        
@@ -73,8 +78,14 @@ setMethod("AsymTotalVarDist", signature(e1 = "AbscontDistribution",
        tef <- fct(1, rho = rho)
        ### if c=1 is already a zero:
        if(tef == 0){
-          res <- Eip(f=integ.p,c00=1)
+          res <- Eip(f=integ.p,c00=1, diagnostic0 = diagnostic)
           names(res) <- "asym. total variation distance"
+          if(diagnostic){
+             diagn <- attr(res,"diagnostic")
+             diagn[["call"]] <- match.call()
+             attr(res,"diagnostic") <- diagn
+             class(attr(res,"diagnostic"))<- "DiagnosticClass"
+          }
           return(res)
        }   
        # else: only have to search in c in [low1;1] resp [1;up1]
@@ -82,7 +93,7 @@ setMethod("AsymTotalVarDist", signature(e1 = "AbscontDistribution",
 
        c.rho <- try(uniroot(fct, lower = low1, upper = up1, 
                             rho = rho, tol = rel.tol,
-                            maxiter = maxiter)$root, 
+                            maxiter = maxiter)$root,
                     silent = TRUE)
 
        ## if does not give reasonable solution recall function with 
@@ -93,7 +104,13 @@ setMethod("AsymTotalVarDist", signature(e1 = "AbscontDistribution",
                                         e2 = "AbscontDistribution")), 
                               args = mc))             
        ## else:
-       res <- Eip(f=integ.p, c00=c.rho)
+       res <- Eip(f=integ.p, c00=c.rho, diagnostic0=diagnostic)
+       if(diagnostic){
+          diagn <- attr(res,"diagnostic")
+          diagn[["call"]] <- match.call()
+          attr(res,"diagnostic") <- diagn
+          class(attr(res,"diagnostic"))<- "DiagnosticClass"
+       }
        names(res) <- "asym. total variation distance"
        return(res)
     })
@@ -186,11 +203,20 @@ setMethod("AsymTotalVarDist", signature(e1 = "numeric",
              up.discr = getUp(e2), h.smooth = getdistrExOption("hSmooth"),
              rel.tol = .Machine$double.eps^0.3, maxiter=1000, Ngrid = 10000,
              TruncQuantile = getdistrOption("TruncQuantile"),
-             IQR.fac = 15){
-        .asis.smooth.discretize.distance(e1, e2, asis.smooth.discretize, n.discr,
-                 low.discr, up.discr, h.smooth, AsymTotalVarDist, rho = rho,
+             IQR.fac = 15, ..., diagnostic = FALSE){
+        res <- .asis.smooth.discretize.distance(x = e1, Distribution = e2,
+                asis.smooth.discretize=asis.smooth.discretize, n.discr = n.discr,
+                 low.discr= low.discr, up.discr = up.discr, h.smooth = h.smooth,
+                 distance = AsymTotalVarDist, rho = rho,
                  rel.tol = rel.tol, maxiter = maxiter, Ngrid = Ngrid,
-                 TruncQuantile = TruncQuantile, IQR.fac = IQR.fac)
+                 TruncQuantile = TruncQuantile, IQR.fac = IQR.fac, ..., diagnostic = diagnostic)
+       if(diagnostic){
+          diagn <- attr(res,"diagnostic")
+          diagn[["call"]] <- match.call()
+          attr(res,"diagnostic") <- diagn
+          class(attr(res,"diagnostic"))<- "DiagnosticClass"
+       }
+        return(res)
      })
 setMethod("AsymTotalVarDist", signature(e1 = "AbscontDistribution",
                                      e2 = "numeric"),
@@ -199,12 +225,19 @@ setMethod("AsymTotalVarDist", signature(e1 = "AbscontDistribution",
              up.discr = getUp(e1), h.smooth = getdistrExOption("hSmooth"),
              rel.tol = .Machine$double.eps^0.3, maxiter=1000, Ngrid = 10000,
              TruncQuantile = getdistrOption("TruncQuantile"),
-             IQR.fac = 15){
-        return(AsymTotalVarDist(e2, e1, rho= 1/rho, 
+             IQR.fac = 15, ..., diagnostic = FALSE){
+        res <- AsymTotalVarDist(e1=e2, e2=e1, rho= 1/rho,
                   asis.smooth.discretize = asis.smooth.discretize, 
                   low.discr = low.discr, up.discr = up.discr, h.smooth = h.smooth,
                   rel.tol = rel.tol, maxiter = maxiter, Ngrid = Ngrid,
-                  TruncQuantile = TruncQuantile, IQR.fac = IQR.fac))
+                  TruncQuantile = TruncQuantile, IQR.fac = IQR.fac, ..., diagnostic = diagnostic)
+       if(diagnostic){
+          diagn <- attr(res,"diagnostic")
+          diagn[["call"]] <- match.call()
+          attr(res,"diagnostic") <- diagn
+          class(attr(res,"diagnostic"))<- "DiagnosticClass"
+       }
+        return(res)
     })
 
 setMethod("AsymTotalVarDist",  signature(e1 = "AcDcLcDistribution",
@@ -212,12 +245,15 @@ setMethod("AsymTotalVarDist",  signature(e1 = "AcDcLcDistribution",
            function(e1, e2, rho = 1,  
              rel.tol = .Machine$double.eps^0.3, maxiter=1000, Ngrid = 10000,
              TruncQuantile = getdistrOption("TruncQuantile"),
-             IQR.fac = 15){
+             IQR.fac = 15, ..., diagnostic = FALSE){
         ## if we have to recall this method with a smaller TruncQuantile arg:
         mc <-  as.list(match.call(call = sys.call(sys.parent(1)))[-1])
         mc$TruncQuantile <- TruncQuantile * 1.8
-
+        dots <- list(...)
+        dotsn <- names(dots)
+        dotsI <- dots[dotsn %in% c("order","subdivisions", "stop.on.error")]
         #block warnings:
+
         o.warn <- getOption("warn"); options(warn = -1)
         on.exit(options(warn=o.warn))
 
@@ -254,9 +290,10 @@ setMethod("AsymTotalVarDist",  signature(e1 = "AcDcLcDistribution",
         low <- max(low,low0); up <- min(up,up0)
         #
         ### integration as a function of c:
-        Eip <- function(f, c00)
-                distrExIntegrate(f, lower = low, upper = up, 
-                                    rel.tol = rel.tol, c00 = c00)
+        Eip <- function(f, c00, diagnostic0 = FALSE)
+                do.call(distrExIntegrate, c(list(f, lower = low, upper = up,
+                                    rel.tol = rel.tol, c00 = c00,
+                                    diagnostic = diagnostic0),dotsI))
        # positive part
        integ.p.c <- function(x,c00)  pmax(ac2.d(x)-c00*ac1.d(x),0)
        # negative part
@@ -275,8 +312,8 @@ setMethod("AsymTotalVarDist",  signature(e1 = "AcDcLcDistribution",
 
        ## function zero c(rho) of which is to be found 
        fct <- function(c0, rho = rho){
-           e.p.c <- Eip(f=integ.p.c, c00=c0)
-           e.m.c <- Eip(f=integ.m.c, c00=c0)
+           e.p.c <- Eip(f=integ.p.c, c00=c0, diagnostic0 = FALSE)
+           e.m.c <- Eip(f=integ.m.c, c00=c0, diagnostic0 = FALSE)
            e.p.d <- sum(integ.p.d(c0))
            e.m.d <- sum(integ.m.d(c0))
            e.p <- e.p.c + e.p.d
@@ -310,11 +347,20 @@ setMethod("AsymTotalVarDist",  signature(e1 = "AcDcLcDistribution",
        ## gives range for c:
        low1 <- min(d.range,dx.range); up1 <- max(d.range,dx.range)
        ## in any case compare with c=1
-       tef <- fct(1, rho = rho)
+       tef <- fct(1, rho = rho, ...)
        ### if c=1 is already a zero:
        if(tef == 0){
-          res <- Eip(f=integ.p.c,c00=1)+sum(integ.p.d(1))
+          res <- Eip(f=integ.p.c,c00=1, diagnostic0 = diagnostic)
+          if(diagnostic){
+             diagn <- attr(res, "diagnostic")
+             diagn[["call"]] <-  match.call()
+          }
+          res <- res +sum(integ.p.d(1))
           names(res) <- "asym. total variation distance"
+          if(diagnostic){
+             attr(res, "diagnostic") <- diagn
+             class(attr(res, "diagnostic"))<- "DiagnosticClass"
+          }
           return(res)
        }   
        # else: only have to search in c in [low1;1] resp [1;up1]
@@ -322,7 +368,7 @@ setMethod("AsymTotalVarDist",  signature(e1 = "AcDcLcDistribution",
 
        c.rho <- try(uniroot(fct, lower = low1, upper = up1, 
                             rho = rho, tol = rel.tol,
-                            maxiter = maxiter)$root, 
+                            maxiter = maxiter)$root,
                     silent = TRUE)
 
        ## if does not give reasonable solution recall function with 
@@ -331,12 +377,21 @@ setMethod("AsymTotalVarDist",  signature(e1 = "AcDcLcDistribution",
            return(do.call(getMethod("AsymTotalVarDist", 
                            signature(e1 = "AcDcLcDistribution",
                                      e2 = "AcDcLcDistribution")), 
-                              args = mc))             
+                           args = mc))
        }
-       res <- Eip(f=integ.p.c, c00=c.rho)+sum(integ.p.d(c.rho))
+       res <- Eip(f=integ.p.c, c00=c.rho, diagnostic0 = diagnostic)
+       if(diagnostic){
+          diagn <- attr(res, "diagnostic")
+          diagn[["call"]] <-  match.call()
+       }
+       res <- res +sum(integ.p.d(c.rho))
        names(res) <- "asym. total variation distance"
+       if(diagnostic){
+          attr(res,"diagnostic") <- diagn
+          class(attr(res,"diagnostic"))<- "DiagnosticClass"
+       }
        return(res)
-              })
+    })
 
 setMethod("AsymTotalVarDist", signature(e1 = "LatticeDistribution", 
                                          e2 = "LatticeDistribution"),

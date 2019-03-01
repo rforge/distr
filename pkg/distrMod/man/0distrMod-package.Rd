@@ -15,8 +15,8 @@ maximum likelihood or minimum distance estimators for probability models.
 \details{
 \tabular{ll}{
 Package: \tab distrMod \cr
-Version: \tab 2.7.0 \cr
-Date: \tab 2018-07-30 \cr
+Version: \tab 2.8.0 \cr
+Date: \tab 2019-03-01 \cr
 Depends: \tab R(>= 2.14.0), distr(>= 2.5.2), distrEx(>= 2.4), RandVar(>= 0.6.3), MASS, stats4,
         methods \cr
 Imports: \tab startupmsg, sfsmisc, graphics, stats, grDevices \cr
@@ -25,7 +25,7 @@ Enhances: RobExtremes\cr
 ByteCompile: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-VCS/SVNRevision: \tab 1186 \cr
+VCS/SVNRevision: \tab 1295 \cr
 }}
 
 \section{Classes}{
@@ -53,6 +53,9 @@ FisherInfo.fct(function)
 |>|>|>"BinomFamily" [*]
 |>|>|>"PoisFamily"  [*]
 |>|>|>"BetaFamily"  [*]
+|>|>|>"NbinomFamily" [*]
+|>|>|>"NbinomwithSizeFamily" [*]
+|>|>|>"NbinomMeanSizeFamily" [*]
 |>|>|>"L2GroupParamFamily"
 additional slots:
 LogDeriv(function)
@@ -61,15 +64,16 @@ LogDeriv(function)
 |>|>|>|>"L2LocationScaleUnion"  /VIRTUAL/
 additional slots:
 locscalename(character)
-|>|>|>|>|>"L2LocationFamily"            [*]
-|>|>|>|>|>|>"NormLocationFamily"        [*]
-|>|>|>|>|>"L2ScaleFamily"               [*]
-|>|>|>|>|>|>"NormScaleFamily"           [*]
-|>|>|>|>|>|>"ExpScaleFamily"            [*]
-|>|>|>|>|>|>"LnormScaleFamily"          [*]
-|>|>|>|>|>"L2LocationScaleFamily"       [*]
-|>|>|>|>|>|>"NormLocationScaleFamily"   [*]
-|>|>|>|>|>|>"CauchyLocationScaleFamily" [*]
+|>|>|>|>|>"L2LocationFamily"              [*]
+|>|>|>|>|>|>"NormLocationFamily"          [*]
+|>|>|>|>|>"L2ScaleFamily"                 [*]
+|>|>|>|>|>|>"NormScaleFamily"             [*]
+|>|>|>|>|>|>"ExpScaleFamily"              [*]
+|>|>|>|>|>|>"LnormScaleFamily"            [*]
+|>|>|>|>|>"L2LocationScaleFamily"         [*]
+|>|>|>|>|>|>"NormLocationScaleFamily"     [*]
+|>|>|>|>|>|>"CauchyLocationScaleFamily"   [*]
+|>|>|>|>|>|>"LogisticLocationScaleFamily" [*]
 
 and a (virtual) class union "L2ScaleUnion"  between
    "L2LocationScaleUnion"  and "L2ScaleShapeUnion"

@@ -1,6 +1,6 @@
 Package: distr
-Version: 2.7.0
-Date: 2018-07-08
+Version: 2.8.0
+Date: 2019-03-01
 Title: Object Oriented Implementation of Distributions
 Description: S4-classes and methods for distributions.
 Authors@R: c(person("Florian", "Camphausen", role="ctb", comment="contributed as student in the
@@ -20,4 +20,4 @@ License: LGPL-3
 URL: http://distr.r-forge.r-project.org/
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
-SVNRevision: 1186
+VCS/SVNRevision: 1295

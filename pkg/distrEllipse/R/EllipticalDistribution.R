@@ -5,7 +5,7 @@ EllipticalDistribution <- function(radDistr = sqrt(Chisq(df = length(loc))),
 
    ldscale <- as.numeric(determinant(as.matrix(scale),
                          logarithm = TRUE)$modulus)
-   Iscale <- solve(scale)
+   Iscale <- distr::solve(scale)
 
    dim0 <- length(loc)
 

@@ -1,6 +1,6 @@
 setMethod("liesInSupport", signature(object = "DiscreteMVDistribution",
                                      x = "numeric"),
-    function(object, x){
+    function(object, x, checkFin = FALSE){
         k <- dimension(img(object))
         if(length(x) != k)
             stop("'x' has wrong dimension") 
@@ -11,12 +11,12 @@ setMethod("liesInSupport", signature(object = "DiscreteMVDistribution",
     })
 setMethod("liesInSupport", signature(object = "DiscreteMVDistribution",
                                      x = "matrix"),
-    function(object, x){ 
+    function(object, x, checkFin = FALSE){
         if(ncol(x) != dimension(img(object)))
             stop("'x' has wrong dimension") 
 
         res <- logical(nrow(x))
-        for(i in 1:nrow(x)) res[i] <- liesInSupport(object, x[i,])
+        for(i in 1:nrow(x)) res[i] <- liesInSupport(object, x[i,], checkFin)
 
         return(res)
     })

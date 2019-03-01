@@ -86,12 +86,12 @@ class \code{"ProbFamily"}.}
                   via arguments \code{which.lbs}, \code{which.Order}, \code{which.nonlbs}
                   (\code{FALSE})? }
 \item{which.lbs}{integer or \code{NULL}; which observations shall be labelled}
-\item{which.Order}{integer or \code{NULL}; which of the ordered (remaining)
-observations shall be labelled}
 \item{which.nonlbs}{indices of the observations which should be plotted but
         not labelled; either an integer vector with the indices of the observations
           to be plotted into graph or \code{NULL} --- then all non-labelled
           observations are plotted.}
+\item{which.Order}{integer or \code{NULL}; which of the ordered (remaining)
+observations shall be labelled}
 \item{order.traf}{function or \code{NULL}; an optional trafo by which the
 observations are ordered (as order(trafo(obs)).}
 \item{col.IdL}{color for the identity line}

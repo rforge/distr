@@ -1,13 +1,13 @@
 Package: distrMod
-Version: 2.7.0
-Date: 2018-07-30
+Version: 2.8.0
+Date: 2019-03-01
 Title: Object Oriented Implementation of Probability Models
 Description: Implements S4 classes for probability models based on packages 'distr' and
         'distrEx'.
 Authors@R: c(person("Matthias", "Kohl", role=c("aut", "cph")), person("Peter", "Ruckdeschel",
         role=c("cre", "cph"), email="peter.ruckdeschel@uni-oldenburg.de"), person("R Core
         Team", role = c("ctb", "cph"), comment="for source file 'format.perc'"))
-Depends: R(>= 2.14.0), distr(>= 2.5.2), distrEx(>= 2.4), RandVar(>= 0.6.3), MASS, stats4,
+Depends: R(>= 2.14.0), distr(>= 2.8.0), distrEx(>= 2.8.0), RandVar(>= 0.6.3), MASS, stats4,
         methods
 Imports: startupmsg, sfsmisc, graphics, stats, grDevices
 Suggests: ismev, evd,
@@ -18,4 +18,4 @@ Encoding: latin1
 URL: http://distr.r-forge.r-project.org/
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
-VCS/SVNRevision: 1186
+VCS/SVNRevision: 1295

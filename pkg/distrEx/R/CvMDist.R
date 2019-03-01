@@ -4,7 +4,7 @@
 ###############################################################################
 setMethod("CvMDist", signature(e1 = "UnivariateDistribution",
                                     e2 = "UnivariateDistribution"),
-    function(e1, e2, mu = e1, useApply = FALSE, ... ){
+    function(e1, e2, mu = e1, useApply = FALSE, ..., diagnostic = FALSE){
         o.warn <- getOption("warn"); options(warn = -1)
         on.exit(options(warn=o.warn))
         if(is.null(e1@p)){
@@ -17,7 +17,13 @@ setMethod("CvMDist", signature(e1 = "UnivariateDistribution",
         e2 <- new("UnivariateDistribution", r=e2@r, 
                    p = e2.erg$pfun, d = e2.erg$dfun, q = e2.erg$qfun,  
                    .withSim = TRUE, .withArith = FALSE)}
-        res <- E(mu, fun = function(t) {(p(e1)(t)-p(e2)(t))^2}, useApply = useApply, ...)^.5
+        res <- E(mu, fun = function(t) {(p(e1)(t)-p(e2)(t))^2}, useApply = useApply, ..., diagnostic = diagnostic)^.5
+        if(diagnostic){
+           diagn <- attr(res,"diagnostic")
+           diagn[["call"]] <- match.call()
+           class(diagn)<- "DiagnosticClass"
+           attr(res,"diagnostic") <- diagn
+        }
         names(res) <- "CvM distance"
         return(res)
     })
@@ -25,15 +31,22 @@ setMethod("CvMDist", signature(e1 = "UnivariateDistribution",
 ## CvM distance
 setMethod("CvMDist", signature(e1 = "numeric",
                                     e2 = "UnivariateDistribution"),
-    function(e1, e2, mu = e1, ...)
+    function(e1, e2, mu = e1, ..., diagnostic = FALSE)
         { o.warn <- getOption("warn"); options(warn = -1)
           on.exit(options(warn=o.warn))
           if(identical(mu,e2)){
              if(is(e2, "AbscontDistribution"))
-             return(.newCvMDist(e1,e2)) }   
+             return(.newCvMDist(e1,e2)) }
           e10 <- DiscreteDistribution(e1)       
           if(identical(mu,e1)) mu <- e10
-          CvMDist(e1 = e10, e2 = e2, mu = mu, ...)
+          res <- CvMDist(e1 = e10, e2 = e2, mu = mu, ..., diagnostic = diagnostic)
+          if(diagnostic){
+             diagn <- attr(res,"diagnostic")
+             diagn[["call"]] <- match.call()
+             class(diagn)<- "DiagnosticClass"
+             attr(res,"diagnostic") <- diagn
+          }
+          return(res)
          }
     )
 

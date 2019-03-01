@@ -125,25 +125,51 @@ setMethod("Symmetry", "MultivarMixingDistribution",
 
 
 setMethod("E", signature(object = "MultivarMixingDistribution",
-                        fun = "missing", cond = "missing"), function(object, ...) {
+                        fun = "missing", cond = "missing"),
+                        function(object, ..., diagnostic=FALSE) {
              l <- length(object@mixCoeff)
-             res <- object@mixCoeff[1]*E(object=object@mixDistr[[1]], ...)
+             dotsI <- .filterEargs(list(...))
+             diagn <- vector("list",l)
+             res0 <- do.call(E, c(list(object=object@mixDistr[[1]], diagnostic=diagnostic), dotsI))
+             diagn[[1]] <- attr(res0,"diagnostic")
+             res <- object@mixCoeff[1]*res0
+             diagn[["call"]] <- match.call()
+             if(diagnostic) attr(res,"diagnostic") <- diagn
              if(l==1) return(res)
              for(i in 2:l){
-                 res0 <-  object@mixCoeff[i]*E(object=object@mixDistr[[i]], ...)
-                 res <- res + res0
+                 res0 <-  do.call(E, c(list(object=object@mixDistr[[i]], diagnostic=diagnostic), dotsI))
+                 diagn[[i]] <- attr(res0,"diagnostic")
+                 res <- res + object@mixCoeff[i]*res0
+             }
+             if(diagnostic){
+                attr(res,"diagnostic") <- diagn
+                class(attr(res,"diagnostic"))<- "DiagnosticClass"
              }
              return(res)
            })
 setMethod("E", signature(object = "MultivarMixingDistribution",
                         fun = "function", cond = "missing"), 
-                        function(object, fun, ...) {
+                        function(object, fun, ..., diagnostic=FALSE) {
              l <- length(object@mixCoeff)
-             res <- object@mixCoeff[1]*E(object=object@mixDistr[[1]], fun=fun,...)
+             dots <- list(...)
+             dotsI <- .filterEargs(dots)
+             dotsFun <- .filterFunargs(dots,fun)
+             funwD <- function(x) do.call(fun, c(list(x), dotsFun))
+             diagn <- vector("list",l)
+             res0 <-  do.call(E, c(list(object=object@mixDistr[[1]], fun = funwD, diagnostic=diagnostic), dotsI))
+             diagn[[1]] <- attr(res0,"diagnostic")
+             res <- object@mixCoeff[1]*res0
+             diagn[["call"]] <- match.call()
+             if(diagnostic) attr(res,"diagnostic") <- diagn
              if(l==1) return(res)
              for(i in 2:l){
-                 res0 <-  object@mixCoeff[i]*E(object=object@mixDistr[[i]], fun=fun, ...)
-                 res <- res + res0
+                 res0 <-  do.call(E, c(list(object=object@mixDistr[[i]], fun = funwD, diagnostic=diagnostic), dotsI))
+                 diagn[[i]] <- attr(res0,"diagnostic")
+                 res <- res + object@mixCoeff[i]*res0
+             }
+             if(diagnostic){
+                attr(res,"diagnostic") <- diagn
+                class(attr(res,"diagnostic"))<- "DiagnosticClass"
              }
              return(res)
            })

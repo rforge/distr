@@ -12,8 +12,11 @@ setMethod("plot",signature(x = "Dataclass", y="missing"),
            function(x, obs0=1:samplesize(x), dims0=1:obsDim(x), 
                     runs0=1:runs(x), ...){
 
-            dots <- match.call(call = sys.call(sys.parent(1)), 
+            args0 <- list(x=x, obs0=obs0, dims0=dims0, runs0=runs0)
+            mc <- match.call(call = sys.call(sys.parent(1)))
+            dots <- match.call(call = sys.call(sys.parent(1)),
                                expand.dots = FALSE)$"..."
+            plotInfo <- list(call = mc, dots=dots, args=args0)
             doEnd <- FALSE
             if(!is.null(dots[["panel.first"]])) 
                 {doEnd<- TRUE
@@ -91,18 +94,28 @@ setMethod("plot",signature(x = "Dataclass", y="missing"),
             dots[["pch"]] <- pch0
             dots[["col"]] <- col0
             
+            plotInfo$dotsMatplot <- vector("list",lrun0)
+            plotInfo$usrMatplot <- vector("list",lrun0)
+
             for( i in 1: lrun0)
                    { if (wylim) dots[["ylim"]] <- ylim0[,i]
                      dots[["y"]] <- Data(x)[, dims0[1:ldim0], runs0[i]]                     
+                     plotInfo$dotsMatplot[[i]] <- dots
                      do.call("matplot", args = dots)
-                    }                  
+                     plotInfo$usrMatplot[[i]] <- par("usr")
+                    }
             #   }        
-            if(doEnd)
-               {dots[["add"]] <- TRUE;
+            if(doEnd){
+                dots[["add"]] <- TRUE;
                 par(new=T)
-                do.call("matplot", args = dots)}
+                do.call("matplot", args = dots)
+                plotInfo$dotsEnd <- dots
+                plotInfo$usrEnd[[i]] <- par("usr")
+                }
             
-            
+          class(plotInfo) <- c("plotInfo","DiagnInfo")
+          return(invisible(plotInfo))
+
           })
 
 
@@ -123,11 +136,19 @@ setMethod("plot",signature(x="Simulation", y="missing"),
            function(x, obs0=1:samplesize(x), dims0=1:obsDim(x), 
                     runs0 = 1:runs(x), ...){
 
+            args0 <- list(x=x, obs0=obs0, dims0=dims0, runs0=runs0)
+            mc <- match.call(call = sys.call(sys.parent(1)))
+            dots <- match.call(call = sys.call(sys.parent(1)),
+                               expand.dots = FALSE)$"..."
             if(is.null(Data(x)))
                stop("No Data found -> simulate first")
   
-           plot(as(x,"Dataclass"), y = NULL, obs0 = obs0, dims0 = dims0, 
-                runs0 = runs0, ...)            
+            ret <- plot(as(x,"Dataclass"), y = NULL, obs0 = obs0, dims0 = dims0,
+                runs0 = runs0, ...)
+            ret$call <- mc
+            ret$dots <- dots
+            ret$args <- args0
+            return(invisible(ret))
           })
 
 
@@ -138,8 +159,12 @@ setMethod("plot",signature(x="Contsimulation", y="missing"),
            function(x, obs0=1:samplesize(x), dims0=1:obsDim(x), 
                     runs0=1:runs(x), ...){
 
-            dots <- match.call(call = sys.call(sys.parent(1)), 
+            args0 <- list(x=x, obs0=obs0, dims0=dims0, runs0=runs0)
+            mc <- match.call(call = sys.call(sys.parent(1)))
+            dots <- match.call(call = sys.call(sys.parent(1)),
                                expand.dots = FALSE)$"..."
+            plotInfo <- list(call = mc, dots=dots, args=args0)
+
             doEnd <- FALSE
             if(!is.null(dots[["panel.first"]])) 
                 {doEnd<- TRUE
@@ -246,6 +271,10 @@ setMethod("plot",signature(x="Contsimulation", y="missing"),
             } else dots[["add"]] <- TRUE
             
 #            plot.new()
+            plotInfo$dotsMatplot <- vector("list",lrun0)
+            plotInfo$usrMatplot <- vector("list",lrun0)
+            plotInfo$dotsCMatpoints <- vector("list",lrun0)
+
             for( i in 1: lrun0)
                    { ### if(wylim) 
                      dots[["ylim"]] <- ylim0[,i]
@@ -253,21 +282,28 @@ setMethod("plot",signature(x="Contsimulation", y="missing"),
                      dots[["cex"]] <- cex.id0
                      dots[["pch"]] <- pch.id0
                      dots[["col"]] <- col.id0
+                     plotInfo$dotsMatplot[[i]] <- dots
                      do.call("matplot", args = dots)
-                   
+                     plotInfo$usrMatplot[[i]] <- par("usr")
+
                     if(any(x.c[,dims0[1:ldim0],runs0[i]] != Inf)) 
                        { dots[["cex"]] <- cex.c0
                          dots[["pch"]] <- pch.c0
                          dots[["col"]] <- col.c0
                          dots[["y"]] <- x.c[, dims0[1:ldim0], runs0[i]]
-                         do.call("matpoints", args = dots)                                              
+                         plotInfo$dotsMatpoints[[i]] <- dots
+                         do.call("matpoints", args = dots)
                        }   
                    }                  
             #   }        
-            if(doEnd)
-               {dots[["add"]] <- TRUE;
+            if(doEnd){
+                dots[["add"]] <- TRUE;
                 par(new=T)
-                do.call("matplot", args = dots)}
-            
+                do.call("matplot", args = dots)
+                plotInfo$dotsEnd <- dots
+                plotInfo$usrEnd[[i]] <- par("usr")
+                }
+          class(plotInfo) <- c("plotInfo","DiagnInfo")
+          return(invisible(plotInfo))
           })
 

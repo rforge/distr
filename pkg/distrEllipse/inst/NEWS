@@ -8,6 +8,22 @@
  information)
 
 ##############
+v 2.8
+##############
+
+user-visible CHANGES:
++ DESCRIPTION tag SVNRevision changed to VCS/SVNRevision
++ E methods for MultivarMixingDistribution gain argument diagnostic
+  (like E()-methods in distrEx v 2.8.0)
+
+under the hood:
++ now specified that we want to use distr::solve
++ E methods for MultivarMixingDistribution use filtering of dots arguments
+  (like E()-methods in distrEx v 2.8.0)
++ E methods for MultivarMixingDistribution if (diagnostic==TRUE) return 
+  diagnostic attributes of S3 class  "DiagnosticClass"
+
+##############
 v 2.7
 ##############
 

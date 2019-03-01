@@ -67,15 +67,26 @@
 
 ## modify distributions to avoid trivial distances
 .asis.smooth.discretize.distance <- function(x, Distribution, asis.smooth.discretize, 
-        n.discr, low.discr, up.discr, h.smooth, distance, ...){
+        n.discr, low.discr, up.discr, h.smooth, distance, ..., diagnostic = FALSE){
     ASD <- pmatch(asis.smooth.discretize, c("asis", "smooth", "discretize"), nomatch = 3)
-    if (ASD == 1) return(distance(x, Distribution, ...))
+    dots <- list(...)
+    dotsn <- names(dots)
+    dotsD <- list()
+    formalsD <- names(formals(distance))
+    for(item in dotsn) if(item %in% formalsD) dotsD[[item]] <- dots[[item]]
+    dotsD <- c(dotsD,dots[!dotsn %in% formalsD])
+    if (ASD == 1){
+       res <- do.call(distance,c(list(e1=x, e2=Distribution),dotsD))
+       return(res)
+    }
     if (ASD == 2){
         Dx <- .smoothDistr(.empiricalDistribution(x), h = h.smooth)
-        return(distance(Dx, Distribution, ...))
+        distArgs <- c(list(e1=Dx,e2=Distribution),dotsD,list(diagnostic=diagnostic))
+        return(do.call(distance,distArgs))
     }
     if (ASD == 3){
         DD <- .discretizeDistr(D = Distribution, x = x, n = n.discr, lower = low.discr, upper = up.discr)
-        return(distance(x, DD, ...))
+        res <- do.call(distance,c(list(e1=x, e2=DD),dotsD))
+       return(res)
     }
 }

@@ -8,6 +8,13 @@
  information)
  
 ##############
+v 2.8
+##############
+
+user-visible CHANGES:
++ DESCRIPTION tag SVNRevision changed to VCS/SVNRevision
+
+##############
 v 2.7
 ##############
 

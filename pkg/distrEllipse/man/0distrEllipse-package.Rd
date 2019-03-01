@@ -12,8 +12,8 @@ contoured distributions (based on package distr).
 \details{
 \tabular{ll}{
 Package: \tab distrEllipse \cr
-Version: \tab 2.7.0 \cr
-Date: \tab 2018-07-08 \cr
+Version: \tab 2.8.0 \cr
+Date: \tab 2019-03-01 \cr
 Depends: \tab R(>= 2.8.0), methods, graphics, mvtnorm, setRNG(>= 2006.2-1), distr(>= 2.2),
         distrEx(>= 2.2), distrSim(>= 2.2)\cr
 Suggests: \tab distrMod(>= 2.2), distrTEst(>= 2.2)\cr
@@ -21,7 +21,7 @@ Imports: \tab  startupmsg, stats\cr
 ByteCompile: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-SVNRevision: \tab 1186 \cr
+VCS/SVNRevision: \tab 1295 \cr
 }
 }
 \section{Classes}{

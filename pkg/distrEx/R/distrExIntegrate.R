@@ -55,8 +55,61 @@
 }
 
 
+if(FALSE){
+#   code to produce the AW values stored in the namespace of distrEx
+##
+
+## timing code borrowed from base::system.time
+
+    ppt <- function(y) {
+        if (!is.na(y[4L]))
+            y[1L] <- y[1L] + y[4L]
+        if (!is.na(y[5L]))
+            y[2L] <- y[2L] + y[5L]
+        paste(formatC(y[1L:3L]), collapse = " ")
+    }
+
+
+
+todo <- c(50, 100, 400, 500, 800, 1000, 4000, 5000, 8000, 10000, 40000, 50000, 80000, 100000)
+l <- length(todo)
+nE <- new.env()
+svncheckout <- "C:/rtest/distr"
+pkg <- file.path(svncheckout, "branches/distr-2.8/pkg/distrEx")
+sysdataFilename <- file.path(pkg, "R/sysdata.rda")
+load(sysdataFilename,envir=nE)
+
+gc()
+starttime <- proc.time()
+on.exit(message("Timing stopped at: ", ppt(proc.time() - starttime)))
+
+lasttime <- starttime
+for(gridsize.i in seq(todo)){
+   cat("Gridpoint i =", gridsize.i, ", order = ", todo[gridsize.i],", time needed: ")
+   res <- distrEx:::.GLaw(todo[gridsize.i])
+   newtime <- proc.time()
+   timN <- structure(newtime - lasttime, class = "proc_time")
+   lasttime <- newtime
+   cat(paste(round(timN,3)), "\n")
+   nam <- paste(".AW",as.character(todo[gridsize.i]), sep = ".")
+   assign(x=nam, value=res, envir=nE)
+}
+
+   timN <- structure(proc.time() - starttime, class = "proc_time")
+   cat("Time altogether:", paste(round(timN,3)), "\n")
+
+rm(".AW.100000", envir=nE)
+what <- ls(all=TRUE, env=nE)
+for(item in what) {cat(item, ":\n");print(object.size(get(item, envir=nE)))}
+on.exit()
+
+save(list=what,file=sysdataFilename,envir=nE)
+rm(nE)
+}
+
 GLIntegrate <- function(f, lower, upper, order = 500, ...){
-    if(order %in% c(100, 500, 1000, 5000, 10000, 50000, 100000))
+    if(order %in% c(50, 100, 400, 500, 800, 1000, 4000, 5000, 8000, 10000,
+                    40000, 50000, 80000, 100000))
         AW <- getFromNamespace(paste(".AW", as.character(order), 
                                      sep = "."), ns = "distrEx")
     else
@@ -67,7 +120,7 @@ GLIntegrate <- function(f, lower, upper, order = 500, ...){
     W <- xl*AW[,2]
     A <- xl*AW[,1] + (lower + upper)/2
 
-    res <- W*f(A, ...)
+    res <- W*c(f(A, ...))
     sum(res)
 }
 
@@ -75,13 +128,43 @@ distrExIntegrate <- function(f, lower, upper, subdivisions = 100,
                              rel.tol = .Machine$double.eps^0.25, 
                              abs.tol = rel.tol, stop.on.error = TRUE, 
                              distr, order = .distrExOptions$GLIntegrateOrder, 
-                             ...){
-    res <- try(integrate(f, lower = lower, upper = upper, rel.tol = rel.tol, 
-                  abs.tol = abs.tol, stop.on.error = stop.on.error, ...)$value, 
+                             ..., diagnostic = FALSE){
+    mc <- match.call()
+    time <- proc.time()
+
+    ## taken from base::system.time
+    ppt <- function(y) {
+        if (!is.na(y[4L]))
+            y[1L] <- y[1L] + y[4L]
+        if (!is.na(y[5L]))
+            y[2L] <- y[2L] + y[5L]
+        paste(formatC(y[1L:3L]), collapse = " ")
+    }
+
+    dots <- list(...)
+    dotsFun <- .filterFunargs(dots,f)
+    funwD <- function(x) do.call(f,c(list(x), dotsFun))
+
+    on.exit(message("Timing stopped at: ", ppt(proc.time() -
+        time)))
+    dotsInt <- if(length(names(dots))) dots[names(dots)%in% names(formals(integrate))] else NULL
+    res <- try(do.call(integrate, c(list(funwD, lower = lower, upper = upper, rel.tol = rel.tol,
+                  abs.tol = abs.tol, stop.on.error = stop.on.error), dotsInt)),
                   silent = TRUE)
 
     # if integrate fails => Gauﬂ-Legendre integration
-    if(!is.numeric(res)){
+    if(!is(res,"try-error")){
+       val <- res$value
+       if(diagnostic){
+          diagn <- list(call = mc, method = "integrate",
+                        args = c(list(lower=lower, upper = upper, rel.tol = rel.tol,
+                                      abs.tol = abs.tol,
+                                      stop.on.error = stop.on.error),list(...)),
+                       result = res)
+          res <- val
+       }else res <- val
+    }else{
+        errmess <- res
         Zi <- 1
         if(lower >= upper){
             lo <- lower
@@ -89,38 +172,69 @@ distrExIntegrate <- function(f, lower, upper, subdivisions = 100,
             upper <- lo
             Zi <- -1
         }
+        if(!missing(distr)){
+            q.lDots <- NULL
+            if(length(names(dots))) {
+               q.lDots <- dots[names(dots) %in% names(formals(q.l(distr)))]
+               q.lDots[["p"]] <- q.lDots[["lower.tail"]] <- NULL
+            }
+        }
+
         if(!is.finite(lower))
             if(missing(distr)) stop(res)
         else{
-            value <- c(...)
-            if(is(distr, "UnivariateCondDistribution"))
-                lower <- q.l(distr)(.distrExOptions$GLIntegrateTruncQuantile,
-                                   cond = value$cond)
-            else
-                lower <- q.l(distr)(.distrExOptions$GLIntegrateTruncQuantile)
+            lower <- do.call(q.l(distr),
+                       c(list(.distrExOptions$GLIntegrateTruncQuantile),q.lDots))
+#            value <- c(...)
+#            if(is(distr, "UnivariateCondDistribution"))
+#                lower <- q.l(distr)(.distrExOptions$GLIntegrateTruncQuantile,
+#                                   cond = value$cond)
+#            else
+#                lower <- q.l(distr)(.distrExOptions$GLIntegrateTruncQuantile)
         }
         if(!is.finite(upper))
             if(missing(distr)) stop(res)
         else{
-            value <- c(...)
-            if(is(distr, "UnivariateCondDistribution")){
-                if("lower.tail" %in% names(formals(distr@q)))
-                  upper <- q.l(distr)(.distrExOptions$GLIntegrateTruncQuantile,
-                                      cond = value$cond, lower.tail = FALSE)  
-                else    
-                  upper <- q.l(distr)(1 - .distrExOptions$GLIntegrateTruncQuantile,
-                                      cond = value$cond)                                      
-            }else{
-                if("lower.tail" %in% names(formals(distr@q)))
-                  upper <- q.l(distr)(.distrExOptions$GLIntegrateTruncQuantile,
-                                     lower.tail = FALSE)  
-                else    
-                  upper <- q.l(distr)(1 - .distrExOptions$GLIntegrateTruncQuantile)
-            }
+           q.lArgs <-  if("lower.tail" %in% names(formals(distr@q)))
+               list(p=.distrExOptions$GLIntegrateTruncQuantile, lower.tail=FALSE) else
+               list(p=1-.distrExOptions$GLIntegrateTruncQuantile)
+           q.lArgs <- c(q.lArgs, q.lDots)
+           upper <- do.call(q.l(distr),q.lArgs)
+#            value <- c(...)
+#            if(is(distr, "UnivariateCondDistribution")){
+#                if("lower.tail" %in% names(formals(distr@q)))
+#                  upper <- q.l(distr)(.distrExOptions$GLIntegrateTruncQuantile,
+#                                      cond = value$cond, lower.tail = FALSE)
+#                else
+#                  upper <- q.l(distr)(1 - .distrExOptions$GLIntegrateTruncQuantile,
+#                                      cond = value$cond)
+#            }else{
+#                if("lower.tail" %in% names(formals(distr@q)))
+#                  upper <- q.l(distr)(.distrExOptions$GLIntegrateTruncQuantile,
+#                                     lower.tail = FALSE)
+#                else
+#                  upper <- q.l(distr)(1 - .distrExOptions$GLIntegrateTruncQuantile)
+#            }
         }
-        res <- Zi*GLIntegrate(f = f, lower = lower, upper = upper, 
-                              order = order, ...)
+        dotsGLInt  <- NULL
+        if(length(names(dots))) dotsGLInt <- dots[names(dots)%in% names(formals(GLIntegrate))]
+        res <- Zi* do.call(GLIntegrate,c(list(f = funwD, lower = lower, upper = upper,
+                              order = order),dotsGLInt))
+       if(diagnostic){
+          diagn <- list(call = mc, method = "GLIntegrate",
+                        args = c(list(lower=lower, upper=upper, order=order),
+                               list(...)),
+                        result = list(GLIresult = res, errorMessage = errmess),
+                        distrExOptions = .distrExOptions)
+        }
     }
-    
+
+    new.time <- proc.time()
+    on.exit()
+    if(diagnostic){
+      diagn$time <- structure(new.time - time, class = "proc_time")
+      attr(res,"diagnostic") <- diagn
+      class(attr(res,"diagnostic"))<- "DiagnosticClass"
+    }
     return(res)
 }

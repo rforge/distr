@@ -1,6 +1,6 @@
 Package: distrTeach
-Version: 2.7.0
-Date: 2018-07-08
+Version: 2.8.0
+Date: 2019-03-01
 Title: Extensions of Package 'distr' for Teaching Stochastics/Statistics in Secondary School
 Description: Provides flexible examples of LLN and CLT for teaching purposes in secondary
         school.
@@ -19,4 +19,4 @@ URL: http://distr.r-forge.r-project.org/
 Packaged: Fri Jun 8 00:12:57 2007; Peter
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
-SVNRevision: 1186
+VCS/SVNRevision: 1295

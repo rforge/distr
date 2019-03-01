@@ -27,15 +27,15 @@ Support for  extreme value distributions has moved to package \pkg{RobExtremes}
 \details{
 \tabular{ll}{
 Package: \tab distrEx \cr
-Version: \tab 2.7.0 \cr
-Date: \tab 2018-07-08 \cr
+Version: \tab 2.8.0 \cr
+Date: \tab 2019-03-01 \cr
 Depends: \tab R(>= 2.10.0), methods, distr(>= 2.2) \cr
 Imports: \tab startupmsg, utils, stats \cr
 Suggests:  \tab tcltk \cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-SVNRevision: \tab 1186 \cr
+VCS/SVNRevision: \tab 1295 \cr
 }
 }
 \section{Classes}{
@@ -46,9 +46,9 @@ Distribution Classes
 "Distribution" (from distr)
 |>"UnivariateDistribution" (from distr)
 |>|>"AbscontDistribution" (from distr)
-|>|>|>"Gumbel"
-|>|>|>"Pareto"
-|>|>|>"GPareto"
+|>|>|>"Gumbel"  (moved to package 'RobExtremes')
+|>|>|>"Pareto"  (moved to package 'RobExtremes')
+|>|>|>"GPareto" (moved to package 'RobExtremes')
 |>"MultivariateDistribution"
 |>|>"DiscreteMVDistribution-class"
 |>"UnivariateCondDistribution"

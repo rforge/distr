@@ -1,6 +1,7 @@
 ##############################################################################
 # EXAMPLES
 ##############################################################################
+
 if(FALSE){## Example 1
 Pkgs <- c("startupmsg", "SweaveListingUtils",
                       "distr", "distrEx", "distrDoc",
@@ -128,3 +129,47 @@ changeDescription(startDir = "C:/rtest/distr/branches/distr-2.8",names=Names,
 }
 
 ##############################################################################
+
+if(FALSE){## Version 2.8 in trunk
+Pkgs <- c("startupmsg",
+          "distr", "distrEx", "distrDoc", "distrEllipse", "distrRmetrics",
+          "distrMod", "distrTeach", "distrSim", "distrTEst")
+Names <- c("Version", "License")
+Values <- matrix(c("2.8.0","LGPL-3"),2,length(Pkgs))
+colnames(Values) <- Pkgs
+rownames(Values) <- Names
+Values["Version",1] <- "0.9.6"
+changeDescription(startDir = "C:/rtest/distr",names=Names,
+                  pkgs=Pkgs, values=Values)
+}
+
+if(FALSE){## Version 2.9 in branch
+Pkgs <- c("startupmsg",
+          "distr", "distrEx", "distrDoc", "distrEllipse", "distrRmetrics",
+          "distrMod", "distrTeach", "distrSim", "distrTEst")
+Names <- c("Version", "License")
+Values <- matrix(c("2.8.0","LGPL-3"),2,length(Pkgs))
+colnames(Values) <- Pkgs
+rownames(Values) <- Names
+Values["Version",1] <- "0.9.7"
+changeDescription(startDir = "C:/rtest/distr/branches/distr-2.9",names=Names,
+                  pkgs=Pkgs, values=Values)
+}
+
+if(FALSE){## Version 1.2 in trunk
+Pkgs <- c("RandVar", "ROptEstOld", "RobAStBase", "RobAStRDA", "RobLox", "RobRex", "RobLoxBioC", "ROptEst", "RobExtremes", "ROptRegTS")
+Names <- c("Version")
+Values <- matrix(c("1.2.0"),1,length(Pkgs))
+colnames(Values) <- Pkgs
+rownames(Values) <- Names
+changeDescription(startDir = "C:/rtest/robast/",names=Names,pkgs=Pkgs, values=Values)
+}
+
+if(FALSE){## Version 1.3 in branch
+Pkgs <- c("RandVar", "ROptEstOld", "RobAStBase", "RobAStRDA", "RobLox", "RobRex", "RobLoxBioC", "ROptEst", "RobExtremes", "ROptRegTS")
+Names <- c("Version")
+Values <- matrix(c("1.3.0"),1,length(Pkgs))
+colnames(Values) <- Pkgs
+rownames(Values) <- Names
+changeDescription(startDir = "C:/rtest/robast/branches/robast-1.3",names=Names,pkgs=Pkgs, values=Values)
+}

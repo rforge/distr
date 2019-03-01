@@ -29,7 +29,7 @@ HellingerDist(e1, e2, ...)
 \S4method{HellingerDist}{AbscontDistribution,AbscontDistribution}(e1,e2, 
                         rel.tol=.Machine$double.eps^0.3, 
                         TruncQuantile = getdistrOption("TruncQuantile"), 
-                        IQR.fac = 15, ...)
+                        IQR.fac = 15, ..., diagnostic = FALSE)
 \S4method{HellingerDist}{AbscontDistribution,DiscreteDistribution}(e1,e2, ...)
 \S4method{HellingerDist}{DiscreteDistribution,AbscontDistribution}(e1,e2, ...)
 \S4method{HellingerDist}{DiscreteDistribution,DiscreteDistribution}(e1,e2, ...)
@@ -40,17 +40,17 @@ HellingerDist(e1, e2, ...)
             up.discr = getUp(e2), h.smooth = getdistrExOption("hSmooth"),
                         rel.tol=.Machine$double.eps^0.3, 
                         TruncQuantile = getdistrOption("TruncQuantile"), 
-                        IQR.fac = 15, ...)
+                        IQR.fac = 15, ..., diagnostic = FALSE)
 \S4method{HellingerDist}{AbscontDistribution,numeric}(e1, e2, asis.smooth.discretize = "discretize", 
             n.discr = getdistrExOption("nDiscretize"), low.discr = getLow(e1),
             up.discr = getUp(e1), h.smooth = getdistrExOption("hSmooth"), 
                         rel.tol=.Machine$double.eps^0.3, 
                         TruncQuantile = getdistrOption("TruncQuantile"), 
-                        IQR.fac = 15, ...)
+                        IQR.fac = 15, ..., diagnostic = FALSE)
 \S4method{HellingerDist}{AcDcLcDistribution,AcDcLcDistribution}(e1,e2, 
                         rel.tol=.Machine$double.eps^0.3, 
                         TruncQuantile = getdistrOption("TruncQuantile"), 
-                        IQR.fac = 15, ...)
+                        IQR.fac = 15, ..., diagnostic = FALSE)
 }
 \arguments{
   \item{e1}{ object of class \code{"Distribution"} or class \code{"numeric"} }
@@ -72,7 +72,15 @@ HellingerDist(e1, e2, ...)
   \item{rel.tol}{ relative accuracy requested in integration }
   \item{TruncQuantile}{Quantile the quantile based integration bounds (see details)}
   \item{IQR.fac}{Factor for the scale based integration bounds (see details)}
-  \item{\dots}{ further arguments to be used in particular methods (not in package \pkg{distrEx})}
+  \item{\dots}{ further arguments to be used in particular methods -- (in package \pkg{distrEx}: just
+     used for distributions with a.c. parts, where it is used to pass on arguments
+     to \code{distrExIntegrate}). }
+  \item{diagnostic}{ logical; if \code{TRUE}, the return value obtains
+    an attribute \code{"diagnostic"} with diagnostic information on the
+    integration, i.e., a list with entries \code{method} (\code{"integrate"}
+    or \code{"GLIntegrate"}), \code{call}, \code{result} (the complete return
+    value of the method),  \code{args} (the args with which the
+    method was called), and \code{time} (the time to compute the integral). }
 }
 \details{
   For distances between absolutely continuous distributions, we use numerical
@@ -101,6 +109,12 @@ HellingerDist(e1, e2, ...)
   which leads to an abs. cont. distribution. Afterwards the distance 
   between the smoothed empirical distribution and the provided abs. cont.
   distribution is computed.
+
+  Diagnostics on the involved integrations are available if argument
+  \code{diagnostic} is \code{TRUE}. Then there is attribute \code{diagnostic}
+  attached to the return value, which may be inspected
+  and accessed through \code{\link[distrEx:distrExIntegrate]{showDiagnostic}} and
+  \code{\link[distrEx:distrExIntegrate]{getDiagnostic}}.
 }
 \value{ Hellinger distance of \code{e1} and \code{e2} }
 \section{Methods}{

@@ -204,7 +204,14 @@ setMethod("checkL2deriv", "L2ParamFamily",
         }
 
         prec <- max(abs(cent), abs(consist))
- 
+
+        ## PR 20190222:
+		## deleting all digits beyond 1e-12 (as numeric fuzz) -- 
+		## but check for relative accuracy by means of the "size" of the Fisher information 
+		## measured in by the sqrt(max(FI))
+		relPrec <- 12-round(log(max(FI),10)/2)
+		prec <- round(prec*10^relPrec)/10^relPrec
+		
         return(list(maximum.deviation = prec))
     })
 
