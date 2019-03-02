@@ -25,9 +25,8 @@
                                   if(useApply){
                                      funy <- sapply(y,funwD)
                                      dim(funy) <- dim(x)
-                                  }else funy <- fun(y)
+                                  }else funy <- funwD(y)
                                   return(funy) }
-         mc <- match.call()
 
          if(is.null(low)) low <- -Inf
          if(is.null(upp)) upp <- Inf

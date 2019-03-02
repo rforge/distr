@@ -393,11 +393,7 @@ setMethod("E", signature(object = "UnivariateCondDistribution",
                          cond = "numeric"),
     function(object, fun, cond, withCond = FALSE, useApply = TRUE, 
              low = NULL, upp = NULL, Nsim = getdistrExOption("MCIterations"), ...){
-
-        dots <- list(...)
-        dotsFun <- .filterFunargs(dots, fun, neg=FALSE)
-        if("f1"%in% names(dots)) dotsFun[["f1"]] <- dots[["f1"]]
-
+        dotsFun <- .filterFunargs(list(...), fun, neg=FALSE)
         funwD <- function(x) do.call(fun,c(list(x),dotsFun))
         xsim <- r(object)(Nsim, cond)
         if(is.null(low)) low <- -Inf
@@ -427,10 +423,7 @@ setMethod("E", signature(object = "AbscontCondDistribution",
              IQR.fac = getdistrExOption("IQR.fac"), ..., diagnostic = FALSE){
 
         mc <- match.call()
-
-        dots <- list(...)
-        dotsFun <- .filterFunargs(dots, fun, neg=FALSE)
-        if("f1"%in% names(dots)) dotsFun[["f1"]] <- dots[["f1"]]
+        dotsFun <- .filterFunargs(list(...), fun, neg=FALSE)
 
         CondArg <- if(withCond) list(cond=cond) else NULL
         funwD <- function(x) do.call(fun,c(list(x), CondArg,dotsFun))
@@ -467,9 +460,7 @@ setMethod("E", signature(object = "DiscreteCondDistribution",
                          cond = "numeric"),
     function(object, fun, cond, withCond = FALSE, useApply = TRUE, low = NULL, upp = NULL, ...){
 
-        dots <- list(...)
-        dotsFun <- .filterFunargs(dots, fun, neg=FALSE)
-        if("f1"%in% names(dots)) dotsFun[["f1"]] <- dots[["f1"]]
+        dotsFun <- .filterFunargs(list(...), fun, neg=FALSE)
 
         CondArg <- if(withCond) list(cond=cond) else NULL
         funwD <- function(x) do.call(fun,c(list(x), CondArg,dotsFun))

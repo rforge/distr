@@ -62,9 +62,6 @@ under the hood:
 		i.e., in case of random variables, argument "cond" is suitably attached 
 		to argument "x" of the Map of the random variable -- something like c(x,cond)
 		
-       in expectation for signature(object = "...Distribution", fun = "function",  
-	            cond = "numeric"), we explicitely push through argument f1 through filtering
-
 + .qtlIntegrate now uses smaller values for args subdivisions and order 
    in case partitioning into left/middle/right is used: they are multiplied
    by factors fac.L/fac.R/fac.M according to
@@ -73,7 +70,8 @@ under the hood:
          if(!.withRightTail &&  .withLeftTail){fac.L <- 0.2; fac.M <- 0.8}
          if(!.withRightTail && !.withLeftTail){fac.M <- 1.0}
    => so at order 5000 we come up with orders in L/M/R of 500 / 4000  / 500 
-      instead of 5000 / 5000 / 5000    
+      instead of 5000 / 5000 / 5000	  
++ fixed a bug in .qtlIntegrate: forgot to call funwD (instead of fun) in case useApply = FALSE
 + additional .AW-grid values into sysdata.rda for orders 
       50, 400, 800, 4000, 8000, 40000, 80000
   as these grid values are needed in the partitioned integration in 
