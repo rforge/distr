@@ -12,7 +12,7 @@ if(FALSE) {
    thisdir <- file.path(svncheckout,"branches", thisbranch)
    print(thisdir)
    ## or in trunk
-   if(trunk) thisdir <- ""
+   if(trunk) thisdir <- svncheckout #""
    print(file.path(thisdir,"pkg/utils/finde.R"))
    source(file.path(thisdir,"pkg/utils/finde.R"))
 }
