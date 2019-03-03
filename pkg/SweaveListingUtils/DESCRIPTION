@@ -2,7 +2,7 @@ Package: SweaveListingUtils
 Title: Utilities for Sweave Together with TeX 'listings' Package
 Description: Provides utilities for defining R / Rd as "language" for TeX-package "listings" and for including R / Rd source file
            (snippets) copied from R-forge in its most recent version (or another URL) thereby avoiding inconsistencies between
-           vignette and documented source code.
+           vignette and documented source code. Stopped maintenance in favor of pkg "knitr" as of Aug, 2018.
 Version: 0.7.7
 Encoding: latin1
 Date: 2017-04-22
