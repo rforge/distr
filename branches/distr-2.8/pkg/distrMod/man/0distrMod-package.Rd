@@ -16,7 +16,7 @@ maximum likelihood or minimum distance estimators for probability models.
 \tabular{ll}{
 Package: \tab distrMod \cr
 Version: \tab 2.8.0 \cr
-Date: \tab 2018-08-10 \cr
+Date: \tab 2019-03-10 \cr
 Depends: \tab R(>= 2.14.0), distr(>= 2.5.2), distrEx(>= 2.4), RandVar(>= 0.6.3), MASS, stats4,
         methods \cr
 Imports: \tab startupmsg, sfsmisc, graphics, stats, grDevices \cr

@@ -8,17 +8,17 @@ distrEx -- Extensions of Package distr
 \description{
 \pkg{distrEx} provides some extensions of package \pkg{distr}:
 \itemize{\item expectations in the form
-         \itemize{\item \code{E(X)} for the expectation of a 
-                        distribution object \code{X} 
-                  \item \code{E(X,f)} for the expectation of \code{f(X)} 
-                         where \code{X} is some distribution object and 
+         \itemize{\item \code{E(X)} for the expectation of a
+                        distribution object \code{X}
+                  \item \code{E(X,f)} for the expectation of \code{f(X)}
+                         where \code{X} is some distribution object and
                          \code{f} some function in \code{X} }
 \item further functionals: var, sd, IQR, mad, median, skewness, kurtosis
 \item truncated moments,
 \item distances between distributions
      (Hellinger, Cramer von Mises, Kolmogorov, total variation, "convex contamination")
 \item lists of distributions,
-\item conditional distributions in factorized form 
+\item conditional distributions in factorized form
 \item conditional expectations in factorized form
 }
 Support for  extreme value distributions has moved to package \pkg{RobExtremes}
@@ -28,7 +28,7 @@ Support for  extreme value distributions has moved to package \pkg{RobExtremes}
 \tabular{ll}{
 Package: \tab distrEx \cr
 Version: \tab 2.8.0 \cr
-Date: \tab 2018-08-10 \cr
+Date: \tab 2019-03-10 \cr
 Depends: \tab R(>= 2.10.0), methods, distr(>= 2.2) \cr
 Imports: \tab startupmsg, utils, stats \cr
 Suggests:  \tab tcltk \cr
@@ -170,37 +170,37 @@ in particular the functionals \code{skewness} and \code{kurtosis} are due to him
 }
 
 \note{
-Some functions of package \pkg{stats} have intentionally been masked, but 
+Some functions of package \pkg{stats} have intentionally been masked, but
 completely retain their functionality --- see \code{distrExMASK()}.
 
-If any of the packages \pkg{e1071}, \pkg{moments}, \pkg{fBasics} is to be used 
-together with \pkg{distrEx} the latter must be attached \emph{after} any of the 
+If any of the packages \pkg{e1071}, \pkg{moments}, \pkg{fBasics} is to be used
+together with \pkg{distrEx} the latter must be attached \emph{after} any of the
 first mentioned. Otherwise \code{kurtosis()} and \code{skewness()}
-defined as \emph{methods} in \pkg{distrEx} may get masked.\cr  To re-mask, you 
-may use  \code{kurtosis <- distrEx::kurtosis; skewness <- distrEx::skewness}. 
+defined as \emph{methods} in \pkg{distrEx} may get masked.\cr  To re-mask, you
+may use  \code{kurtosis <- distrEx::kurtosis; skewness <- distrEx::skewness}.
 See also \code{distrExMASK()}
 }
 
 \section{Start-up-Banner}{
-You may suppress the start-up banner/message completely by setting 
-\code{options("StartupBanner"="off")} somewhere before loading this package by 
+You may suppress the start-up banner/message completely by setting
+\code{options("StartupBanner"="off")} somewhere before loading this package by
 \code{library} or \code{require} in your R-code / R-session.
 
-If option \code{"StartupBanner"} is not defined (default) or setting    
-\code{options("StartupBanner"=NULL)} or 
-\code{options("StartupBanner"="complete")} the complete start-up banner is 
+If option \code{"StartupBanner"} is not defined (default) or setting
+\code{options("StartupBanner"=NULL)} or
+\code{options("StartupBanner"="complete")} the complete start-up banner is
 displayed.
 
-For any other value of option \code{"StartupBanner"} (i.e., not in 
+For any other value of option \code{"StartupBanner"} (i.e., not in
 \code{c(NULL,"off","complete")}) only the version information is displayed.
 
-The same can be achieved by wrapping the \code{library} or \code{require}  call 
-into either \code{suppressStartupMessages()} or 
-\code{onlytypeStartupMessages(.,atypes="version")}.  
- 
+The same can be achieved by wrapping the \code{library} or \code{require}  call
+into either \code{suppressStartupMessages()} or
+\code{onlytypeStartupMessages(.,atypes="version")}.
+
 As for general \code{packageStartupMessage}'s, you may also suppress all
- the start-up banner by wrapping the \code{library} or \code{require} 
- call into \code{suppressPackageStartupMessages()} from 
+ the start-up banner by wrapping the \code{library} or \code{require}
+ call into \code{suppressPackageStartupMessages()} from
  \pkg{startupmsg}-version 0.5 on.
  }
 
@@ -213,27 +213,27 @@ Note: The first two numbers of package versions do not necessarily reflect
 
 \author{
 Matthias Kohl \email{Matthias.Kohl@stamats.de} and \cr
-Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de},\cr 
+Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de},\cr
 
 \emph{Maintainer:}  Matthias Kohl \email{Matthias.Kohl@stamats.de}
 }
 \references{
 P. Ruckdeschel, M. Kohl, T. Stabla, F. Camphausen (2006):
-S4 Classes for Distributions, \emph{R News}, \emph{6}(2), 2-6. 
+S4 Classes for Distributions, \emph{R News}, \emph{6}(2), 2-6.
 \url{https://CRAN.R-project.org/doc/Rnews/Rnews_2006-2.pdf}
 
-%a more detailed manual for \pkg{distr}, \pkg{distrSim}, \pkg{distrTEst}, and \pkg{distrEx} may be downloaded from  
+%a more detailed manual for \pkg{distr}, \pkg{distrSim}, \pkg{distrTEst}, and \pkg{distrEx} may be downloaded from
 %\url{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/distr.pdf}\cr
 
-a vignette for packages \pkg{distr}, \pkg{distrSim}, \pkg{distrTEst}, 
-and \pkg{distrEx} is included into the mere documentation package \pkg{distrDoc} 
+a vignette for packages \pkg{distr}, \pkg{distrSim}, \pkg{distrTEst},
+and \pkg{distrEx} is included into the mere documentation package \pkg{distrDoc}
 and may be called by \code{require("distrDoc");vignette("distr")}
 
 a homepage to this package is available under\cr
 \url{http://distr.r-forge.r-project.org/}
 
-M. Kohl (2005): \emph{Numerical Contributions to the Asymptotic 
-Theory of Robustness.} PhD Thesis. Bayreuth. Available as 
+M. Kohl (2005): \emph{Numerical Contributions to the Asymptotic
+Theory of Robustness.} PhD Thesis. Bayreuth. Available as
 \url{http://www.stamats.de/wp-content/uploads/2018/04/ThesisMKohl.pdf}
 }
 \keyword{package}
@@ -251,5 +251,5 @@ Theory of Robustness.} PhD Thesis. Bayreuth. Available as
 \concept{multivariate distribution}
 \concept{conditional distribution}
 \seealso{
-\code{\link[distr:0distr-package]{distr-package}} 
+\code{\link[distr:0distr-package]{distr-package}}
 }

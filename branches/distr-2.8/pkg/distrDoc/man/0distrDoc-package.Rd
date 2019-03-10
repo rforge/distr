@@ -6,7 +6,7 @@
 distrDoc -- Documentation for 'distr' Family of R Packages
 }
 \description{
-\pkg{distrDoc} provides documentation in form of a common vignette to 
+\pkg{distrDoc} provides documentation in form of a common vignette to
 packages \pkg{distr}, \pkg{distrEx}, \pkg{distrSim}, \pkg{distrTEst},
 \pkg{distrTeach}, \pkg{distrMod}, and \pkg{distrEllipse}.
 }
@@ -14,7 +14,7 @@ packages \pkg{distr}, \pkg{distrEx}, \pkg{distrSim}, \pkg{distrTEst},
 \tabular{ll}{
 Package: \tab distrDoc \cr
 Version: \tab 2.8.0 \cr
-Date: \tab 2018-08-10 \cr
+Date: \tab 2019-03-10 \cr
 Depends: \tab R(>= 2.14.0) \cr
 Imports: \tab distr(>= 2.2.0), distrEx(>= 2.2.0), distrSim(>= 2.2.0), distrTEst(>= 2.2.0),
         distrTeach(>= 2.2.0), RandVar(>= 0.7), distrMod(>= 2.2.0), MASS, methods,
@@ -28,11 +28,11 @@ VCS/SVNRevision: \tab 1265 \cr
 
 
 \section{Acknowledgement}{
-The idea to split off a common vignette for a set of packages 
+The idea to split off a common vignette for a set of packages
  in a particular documentation package is due to Seth Falcon.}
 \author{
-Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de},\cr 
-Thomas Stabla \email{statho3@web.de},\cr 
+Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de},\cr
+Thomas Stabla \email{statho3@web.de},\cr
 Florian Camphausen \email{fcampi@gmx.de},\cr
 Matthias Kohl \email{Matthias.Kohl@stamats.de}\cr
 
@@ -43,7 +43,7 @@ Matthias Kohl \email{Matthias.Kohl@stamats.de}\cr
          on r-devel by Seth Falcon,\cr
          \url{https://stat.ethz.ch/pipermail/r-devel/2006-November/043702.html},\cr
          \url{https://stat.ethz.ch/pipermail/r-devel/2006-November/043705.html},\cr
-         and by the author,\cr  
+         and by the author,\cr
          \url{https://stat.ethz.ch/pipermail/r-devel/2006-November/043700.html},\cr
          \url{https://stat.ethz.ch/pipermail/r-devel/2006-November/043703.html}\cr
          }
@@ -54,19 +54,19 @@ Matthias Kohl \email{Matthias.Kohl@stamats.de}\cr
 You may suppress the start-up banner/message completely by setting \code{options("StartupBanner"="off")}
 somewhere before loading this package by \code{library} or \code{require} in your R-code / R-session.
 
-If option \code{"StartupBanner"} is not defined (default) or setting    
-\code{options("StartupBanner"=NULL)} or  \code{options("StartupBanner"="complete")} 
+If option \code{"StartupBanner"} is not defined (default) or setting
+\code{options("StartupBanner"=NULL)} or  \code{options("StartupBanner"="complete")}
 the complete start-up banner is displayed.
 
 For any other value of option \code{"StartupBanner"} (i.e., not in \code{c(NULL,"off","complete")})
 only the version information is displayed.
 
 The same can be achieved by wrapping the \code{library} or \code{require}  call into
-either \code{suppressStartupMessages()} or \code{onlytypeStartupMessages(.,atypes="version")}.  
- 
+either \code{suppressStartupMessages()} or \code{onlytypeStartupMessages(.,atypes="version")}.
+
 As for general \code{packageStartupMessage}'s, you may also suppress all
- the start-up banner by wrapping the \code{library} or \code{require} 
- call into \code{suppressPackageStartupMessages()} from 
+ the start-up banner by wrapping the \code{library} or \code{require}
+ call into \code{suppressPackageStartupMessages()} from
  \pkg{startupmsg}-version 0.5 on.
   }
 

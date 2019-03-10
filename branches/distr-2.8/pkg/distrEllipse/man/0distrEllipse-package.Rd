@@ -13,7 +13,7 @@ contoured distributions (based on package distr).
 \tabular{ll}{
 Package: \tab distrEllipse \cr
 Version: \tab 2.8.0 \cr
-Date: \tab 2018-07-08 \cr
+Date: \tab 2019-03-10 \cr
 Depends: \tab R(>= 2.8.0), methods, graphics, mvtnorm, setRNG(>= 2006.2-1), distr(>= 2.2),
         distrEx(>= 2.2), distrSim(>= 2.2)\cr
 Suggests: \tab distrMod(>= 2.2), distrTEst(>= 2.2)\cr
@@ -60,7 +60,7 @@ distrEllipseoptions            Functions to change the global variables of the
 }}
 
 \section{Slot accessors / -replacement functions}{
-All slots are inspected / modified by corresponding 
+All slots are inspected / modified by corresponding
 accessors / -replacement functions.
 }
 
@@ -73,20 +73,20 @@ accessors / -replacement functions.
 You may suppress the start-up banner/message completely by setting \code{options("StartupBanner"="off")}
 somewhere before loading this package by \code{library} or \code{require} in your R-code / R-session.
 
-If option \code{"StartupBanner"} is not defined (default) or setting    
-\code{options("StartupBanner"=NULL)} or  \code{options("StartupBanner"="complete")} 
+If option \code{"StartupBanner"} is not defined (default) or setting
+\code{options("StartupBanner"=NULL)} or  \code{options("StartupBanner"="complete")}
 the complete start-up banner is displayed.
 
 For any other value of option \code{"StartupBanner"} (i.e., not in \code{c(NULL,"off","complete")})
 only the version information is displayed.
 
 The same can be achieved by wrapping the \code{library} or \code{require}  call into
-either \code{\link[startupmsg:StartupUtilities]{suppressStartupMessages}()} or 
-\code{\link[startupmsg:StartupUtilities]{onlytypeStartupMessages}(.,atypes="version")}. 
+either \code{\link[startupmsg:StartupUtilities]{suppressStartupMessages}()} or
+\code{\link[startupmsg:StartupUtilities]{onlytypeStartupMessages}(.,atypes="version")}.
 }
 
 
-\note{Global options controlling the plots and summaries of Dataclass and Simulation/Contsimulation 
+\note{Global options controlling the plots and summaries of Dataclass and Simulation/Contsimulation
 objects may be inspected / set by \code{\link{distrEllipseoptions}()}
 and \code{\link{getdistrEllipseOption}()}.
 }
@@ -100,12 +100,12 @@ Note: The first two numbers of package versions do not necessarily reflect
 
 \references{
 P. Ruckdeschel, M. Kohl, T. Stabla, F. Camphausen (2006):
-S4 Classes for Distributions, \emph{R News}, \emph{6}(2), 2-6. 
+S4 Classes for Distributions, \emph{R News}, \emph{6}(2), 2-6.
 \url{https://CRAN.R-project.org/doc/Rnews/Rnews_2006-2.pdf}
 
 A vignette for packages \pkg{distr}, \pkg{distrSim}, \pkg{distrTEst}, \pkg{distrEx},
 \pkg{distrTeach}, \pkg{distrMod}, and \pkg{distrEllipse}
-is included into the mere documentation package \pkg{distrDoc} and may be called by 
+is included into the mere documentation package \pkg{distrDoc} and may be called by
 \code{require("distrDoc");vignette("distr")}.
 
 %A more detailed manual for \pkg{distr}, \pkg{distrEllipse}, \pkg{distrTEst}, and \pkg{distrEx} may be downloaded from
@@ -118,16 +118,16 @@ A homepage to this package is available under\cr
 You may suppress the start-up banner/message completely by setting \code{options("StartupBanner"="off")}
 somewhere before loading this package by \code{library} or \code{require} in your R-code / R-session.
 
-If option \code{"StartupBanner"} is not defined (default) or setting    
-\code{options("StartupBanner"=NULL)} or  \code{options("StartupBanner"="complete")} 
+If option \code{"StartupBanner"} is not defined (default) or setting
+\code{options("StartupBanner"=NULL)} or  \code{options("StartupBanner"="complete")}
 the complete start-up banner is displayed.
 
 For any other value of option \code{"StartupBanner"} (i.e., not in \code{c(NULL,"off","complete")})
 only the version information is displayed.
 
 As for general \code{packageStartupMessage}'s, you may also suppress all
- the start-up banner by wrapping the \code{library} or \code{require} 
- call into \code{suppressPackageStartupMessages()} from 
+ the start-up banner by wrapping the \code{library} or \code{require}
+ call into \code{suppressPackageStartupMessages()} from
  \pkg{startupmsg}-version 0.5 on.
  }
 

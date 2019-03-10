@@ -1,6 +1,6 @@
 Package: distrTEst
 Version: 2.8.0
-Date: 2018-07-08
+Date: 2019-03-10
 Title: Estimation and Testing Classes Based on Package 'distr'
 Description: Evaluation (S4-)classes based on package distr for evaluating procedures
         (estimators/tests) at data/simulation in a unified way.

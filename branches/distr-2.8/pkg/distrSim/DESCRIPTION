@@ -1,6 +1,6 @@
 Package: distrSim
 Version: 2.8.0
-Date: 2018-07-08
+Date: 2019-03-10
 Title: Simulation Classes Based on Package 'distr'
 Description: S4-classes for setting up a coherent framework for simulation within the distr
         family of packages.

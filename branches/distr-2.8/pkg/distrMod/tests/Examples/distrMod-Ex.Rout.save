@@ -1,7 +1,7 @@
 
-R version 3.5.1 RC (2018-06-24 r74935) -- "Feather Spray"
-Copyright (C) 2018 The R Foundation for Statistical Computing
-Platform: i386-w64-mingw32/i386 (32-bit)
+R version 3.5.3 RC (2019-03-04 r76204) -- "Great Truth"
+Copyright (C) 2019 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -20,7 +20,6 @@ Type 'q()' to quit R.
 > pkgname <- "distrMod"
 > source(file.path(R.home("share"), "R", "examples-header.R"))
 > options(warn = 1)
-> options(pager = "console")
 > base::assign(".ExTimings", "distrMod-Ex.timings", pos = 'CheckExEnv')
 > base::cat("name\tuser\tsystem\telapsed\n", file=base::get(".ExTimings", pos = 'CheckExEnv'))
 > base::assign(".format_ptime",
@@ -62,9 +61,9 @@ Loading required package: sfsmisc
 :distr>  vignette("distr").
 
 
-Attaching package: 'distr'
+Attaching package: ‘distr’
 
-The following objects are masked from 'package:stats':
+The following objects are masked from ‘package:stats’:
 
     df, qqplot, sd
 
@@ -86,14 +85,14 @@ Loading required package: distrEx
 :distrEx>  vignette("distr").
 
 
-Attaching package: 'distrEx'
+Attaching package: ‘distrEx’
 
-The following objects are masked from 'package:stats':
+The following objects are masked from ‘package:stats’:
 
     IQR, mad, median, var
 
 Loading required package: RandVar
-:RandVar>  Implementation of Random Variables (version 1.2.0)
+:RandVar>  Implementation of Random Variables (version 1.1.0)
 :RandVar> 
 :RandVar>  For more information see ?"RandVar", NEWS("RandVar"), as
 :RandVar>  well as
@@ -123,17 +122,17 @@ Loading required package: stats4
 :distrMod>  vignette("distr").
 
 
-Attaching package: 'distrMod'
+Attaching package: ‘distrMod’
 
-The following object is masked from 'package:stats4':
-
-    confint
-
-The following object is masked from 'package:stats':
+The following object is masked from ‘package:stats4’:
 
     confint
 
-The following object is masked from 'package:base':
+The following object is masked from ‘package:stats’:
+
+    confint
+
+The following object is masked from ‘package:base’:
 
     norm
 
@@ -181,7 +180,7 @@ An object of class "PosSemDefSymmMatrix"
 shape1  1.0000000 -0.6449341
 shape2 -0.6449341  1.0000000
 > checkL2deriv(B1)
-precision of centering:	 3.963281e-05 3.963334e-05 
+precision of centering:	 3.96327e-05 3.963591e-05 
 precision of Fisher information:
               shape1        shape2
 shape1 -1.851068e-05  1.648326e-06
@@ -193,7 +192,7 @@ shape2 -0.0002555806 -0.0018510679
 condition of Fisher information:
 [1] 5.277691
 $maximum.deviation
-[1] 3.963334e-05
+[1] 3.963591e-05
 
 > 
 > 
@@ -262,17 +261,17 @@ An object of class "PosSemDefSymmMatrix"
          prob
 prob 133.3333
 > checkL2deriv(B1)
-precision of centering:	 -2.855253e-15 
+precision of centering:	 -1.099042e-15 
 precision of Fisher information:
-              prob
-prob -2.842171e-14
+             prob
+prob 2.842171e-14
 precision of Fisher information - relativ error [%]:
-              prob
-prob -2.131628e-14
+             prob
+prob 2.131628e-14
 condition of Fisher information:
 [1] 1
 $maximum.deviation
-[1] 2.842171e-14
+[1] 0
 
 > 
 > 
@@ -319,17 +318,17 @@ An object of class "PosDefSymmMatrix"
 loc 0.5
 > ### need smaller integration range:
 > checkL2deriv(C1)
-precision of centering:	 9.75782e-18 
+precision of centering:	 1.843144e-17 
 precision of Fisher information:
               loc
-loc -1.061373e-13
+loc -1.060263e-13
 precision of Fisher information - relativ error [%]:
               loc
-loc -2.122746e-11
+loc -2.120526e-11
 condition of Fisher information:
 [1] 1
 $maximum.deviation
-[1] 1.061373e-13
+[1] 0
 
 > 
 > 
@@ -380,15 +379,15 @@ scale 0.0   0.5
 > ### need smaller integration range:
 > distrExoptions("ElowerTruncQuantile"=1e-4,"EupperTruncQuantile"=1e-4)
 > checkL2deriv(C1)
-precision of centering:	 9.97466e-18 -2e-04 
+precision of centering:	 2.537033e-17 -2e-04 
 precision of Fisher information:
                 loc         scale
-loc   -2.631895e-11 -3.577867e-17
-scale -3.577867e-17 -2.000000e-04
+loc   -2.631884e-11  3.642919e-17
+scale  3.642919e-17 -2.000000e-04
 precision of Fisher information - relativ error [%]:
                 loc       scale
-loc   -5.263789e-09        -Inf
-scale          -Inf -0.03999999
+loc   -5.263767e-09         Inf
+scale           Inf -0.03999999
 condition of Fisher information:
 [1] 1
 $maximum.deviation
@@ -459,7 +458,7 @@ function (x)
         dimnames = list(nms, nms0))
     list(fval = fval0, mat = mat0)
 }
-<bytecode: 0x0e0c24c8>
+<bytecode: 0xf1b7758>
 Trafo / derivative matrix at which estimate was produced:
        scale shape
 shape  0.000     1
@@ -511,7 +510,7 @@ rate  1.751  4.097
 > Estimator(x, estimator = mean, name = "mean")
 Evaluations of mean:
 --------------------
-An object of class "Estimate" 
+An object of class “Estimate” 
 generated by call
   Estimator(x = x, estimator = mean, name = "mean")
 samplesize:   100
@@ -548,7 +547,7 @@ estimate:
 > Estimator(x, estimator = mean, name = "mean")
 Evaluations of mean:
 --------------------
-An object of class "Estimate" 
+An object of class “Estimate” 
 generated by call
   Estimator(x = x, estimator = mean, name = "mean")
 samplesize:   100
@@ -560,7 +559,7 @@ estimate:
 > Estimator(X, estimator = rowMeans, name = "mean")
 Evaluations of mean:
 --------------------
-An object of class "Estimate" 
+An object of class “Estimate” 
 generated by call
   Estimator(x = X, estimator = rowMeans, name = "mean")
 samplesize:   100
@@ -675,20 +674,20 @@ function (x)
         1)/c(scale = 1)
     return(y)
 }
-<environment: 0x0e862ca0>
+<environment: 0xfedf758>
 
 > checkL2deriv(E1)
-precision of centering:	 -2.04266e-06 
+precision of centering:	 -2.042661e-06 
 precision of Fisher information:
               scale
-scale -3.598621e-05
+scale -3.598622e-05
 precision of Fisher information - relativ error [%]:
              scale
-scale -0.003598621
+scale -0.003598622
 condition of Fisher information:
 [1] 1
 $maximum.deviation
-[1] 3.598621e-05
+[1] 3.598622e-05
 
 > 
 > 
@@ -817,15 +816,15 @@ An object of class "PosDefSymmMatrix"
 scale     1 1.000000
 shape     1 1.644934
 > checkL2deriv(G1)
-precision of centering:	 -2.04266e-06 1.791171e-06 
+precision of centering:	 -2.042661e-06 1.791171e-06 
 precision of Fisher information:
               scale         shape
-scale -3.598621e-05 -9.503625e-06
-shape -9.503625e-06 -3.944425e-05
+scale -3.598622e-05 -9.503627e-06
+shape -9.503627e-06 -3.944425e-05
 precision of Fisher information - relativ error [%]:
               scale         shape
-scale -0.0035986209 -0.0009503625
-shape -0.0009503625 -0.0023979229
+scale -0.0035986216 -0.0009503627
+shape -0.0009503627 -0.0023979230
 condition of Fisher information:
 [1] 10.60328
 $maximum.deviation
@@ -863,8 +862,8 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A)
-<bytecode: 0x0f3eac18>
-<environment: 0x0f3eaa58>
+<bytecode: 0xef44690>
+<environment: 0xef44380>
 
 > 
 > ## The function is currently defined as
@@ -1182,7 +1181,7 @@ function (x)
         1)/c(meanlog = 1)
     return(y)
 }
-<environment: 0x0ccc67b0>
+<environment: 0x12e4fac8>
 
 > checkL2deriv(L1)
 precision of centering:	 -0.003003394 
@@ -1270,7 +1269,7 @@ $maximum.deviation
 > CvMMDEstimator(x, L1)
 Evaluations of Minimum CvM distance estimate ( mu = model distr. ) :
 --------------------------------------------------------------------
-An object of class "CvMMDEstimate" 
+An object of class “CvMMDEstimate” 
 generated by call
   CvMMDEstimator(x = x, ParamFamily = L1)
 samplesize:   100
@@ -1320,7 +1319,7 @@ CvM distance
 > MDEstimator(x, G)
 Evaluations of Minimum Kolmogorov distance estimate  :
 ------------------------------------------------------
-An object of class "MDEstimate" 
+An object of class “MDEstimate” 
 generated by call
   MDEstimator(x = x, ParamFamily = G)
 samplesize:   50
@@ -1333,7 +1332,7 @@ Kolmogorov distance
 > (m <- MLEstimator(x, G))
 Evaluations of Maximum likelihood estimate:
 -------------------------------------------
-An object of class "MLEstimate" 
+An object of class “MLEstimate” 
 generated by call
   MLEstimator(x = x, ParamFamily = G)
 samplesize:   50
@@ -1388,7 +1387,7 @@ negative log-likelihood
 > MCEstimator(x = x, ParamFamily = G, criterion = negLoglikelihood)
 Evaluations of Minimum criterion estimate:
 ------------------------------------------
-An object of class "MCEstimate" 
+An object of class “MCEstimate” 
 generated by call
   MCEstimator(x = x, ParamFamily = G, criterion = negLoglikelihood)
 samplesize:   50
@@ -1417,7 +1416,7 @@ returning starting par;
 
 Evaluations of Minimum Kolmogorov distance estimate:
 ----------------------------------------------------
-An object of class "MCEstimate" 
+An object of class “MCEstimate” 
 generated by call
   MCEstimator(x = x, ParamFamily = G, criterion = KolmogorovDist, 
     crit.name = "Kolmogorov distance")
@@ -1436,17 +1435,17 @@ Kolmogorov distance
 +             crit.name = "Total variation distance")
 Evaluations of Minimum Total variation distance estimate:
 ---------------------------------------------------------
-An object of class "MCEstimate" 
+An object of class “MCEstimate” 
 generated by call
   MCEstimator(x = x, ParamFamily = G, criterion = TotalVarDist, 
     crit.name = "Total variation distance")
 samplesize:   50
 estimate:
     scale     shape 
-0.2829625 5.0197311 
+0.2829687 5.0197306 
 Criterion:
 Total variation distance 
-               0.4819868 
+               0.4866141 
 > 
 > ## or smooth empirical distribution (takes some time!)
 > #MCEstimator(x = x, ParamFamily = G, criterion = TotalVarDist, 
@@ -1460,7 +1459,7 @@ Total variation distance
 +             crit.name = "Hellinger Distance", startPar = c(1,2))
 Evaluations of Minimum Hellinger Distance estimate:
 ---------------------------------------------------
-An object of class "MCEstimate" 
+An object of class “MCEstimate” 
 generated by call
   MCEstimator(x = x, ParamFamily = G, criterion = HellingerDist, 
     crit.name = "Hellinger Distance", startPar = c(1, 2))
@@ -1507,7 +1506,7 @@ Hellinger Distance
 > MDEstimator(x = x, ParamFamily = G, distance = KolmogorovDist)
 Evaluations of Minimum Kolmogorov distance estimate  :
 ------------------------------------------------------
-An object of class "MDEstimate" 
+An object of class “MDEstimate” 
 generated by call
   MDEstimator(x = x, ParamFamily = G, distance = KolmogorovDist)
 samplesize:   50
@@ -1521,7 +1520,7 @@ Kolmogorov distance
 > KolmogorovMDEstimator(x = x, ParamFamily = G)
 Evaluations of Minimum Kolmogorov distance estimate  :
 ------------------------------------------------------
-An object of class "MDEstimate" 
+An object of class “MDEstimate” 
 generated by call
   KolmogorovMDEstimator(x = x, ParamFamily = G)
 samplesize:   50
@@ -1536,7 +1535,7 @@ Kolmogorov distance
 > MDEstimator(x = x, ParamFamily = G, distance = CvMDist)
 Evaluations of Minimum CvM distance estimate ( mu = emp. cdf )  :
 -----------------------------------------------------------------
-An object of class "CvMMDEstimate" 
+An object of class “CvMMDEstimate” 
 generated by call
   MDEstimator(x = x, ParamFamily = G, distance = CvMDist)
 samplesize:   50
@@ -1576,7 +1575,7 @@ CvM distance
 > MLEstimator(x, BinomFamily(size = 25))
 Evaluations of Maximum likelihood estimate:
 -------------------------------------------
-An object of class "MLEstimate" 
+An object of class “MLEstimate” 
 generated by call
   MLEstimator(x = x, ParamFamily = BinomFamily(size = 25))
 samplesize:   100
@@ -1606,7 +1605,7 @@ negative log-likelihood
 > MLEstimator(x, PoisFamily())
 Evaluations of Maximum likelihood estimate:
 -------------------------------------------
-An object of class "MLEstimate" 
+An object of class “MLEstimate” 
 generated by call
   MLEstimator(x = x, ParamFamily = PoisFamily())
 samplesize:   2608
@@ -1631,7 +1630,7 @@ negative log-likelihood
 > MLEstimator(x, NormLocationScaleFamily())
 Evaluations of Maximum likelihood estimate:
 -------------------------------------------
-An object of class "MLEstimate" 
+An object of class “MLEstimate” 
 generated by call
   MLEstimator(x = x, ParamFamily = NormLocationScaleFamily())
 samplesize:   100
@@ -1664,7 +1663,7 @@ negative log-likelihood
 > (res <- MLEstimator(x = x, ParamFamily = G))
 Evaluations of Maximum likelihood estimate:
 -------------------------------------------
-An object of class "MLEstimate" 
+An object of class “MLEstimate” 
 generated by call
   MLEstimator(x = x, ParamFamily = G)
 samplesize:   50
@@ -1920,7 +1919,7 @@ precision of Fisher information - relativ error [%]:
 size -0.01465646 -0.02120319
 mean -0.02120319 -0.03002131
 condition of Fisher information:
-[1] 189784664099
+[1] 189784664078
 $maximum.deviation
 [1] 25621.07
 
@@ -2290,7 +2289,7 @@ function (x)
         return(abs(x))
     else return(sqrt(colSums(x^2)))
 }
-<bytecode: 0x0dd6b0a0>
+<bytecode: 0x1497bc60>
 <environment: namespace:distrMod>
 > name(EuclNorm)
 [1] "EuclideanNorm"
@@ -2325,7 +2324,7 @@ function (x)
         return(abs(x))
     else return(sqrt(colSums(x^2)))
 }
-<bytecode: 0x0dd6b0a0>
+<bytecode: 0x1497bc60>
 <environment: namespace:distrMod>
 
 > 
@@ -2808,8 +2807,8 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A0)
-<bytecode: 0x0ad449a0>
-<environment: 0x0ad44ba0>
+<bytecode: 0xc40ca68>
+<environment: 0xc40cf00>
 
 > 
 > ## The function is currently defined as
@@ -2850,8 +2849,8 @@ Slot "name":
 Slot "fct":
 function (x) 
 QuadFormNorm(x, A = A)
-<bytecode: 0x0ac8fb50>
-<environment: 0x0ac8ed80>
+<bytecode: 0xbf04c20>
+<environment: 0xbf05278>
 
 > 
 > ## The function is currently defined as
@@ -2880,7 +2879,7 @@ function ()
 > ### ** Examples
 > 
 >   addAlphTrsp2col(rgb(1,0.3,0.03), 25)
-[1] "#FF4C0819"
+[1] "#FF4D0819"
 >   addAlphTrsp2col("darkblue", 25)
 [1] "#00008B19"
 >   addAlphTrsp2col("#AAAAAAAA",25)
@@ -2908,7 +2907,7 @@ function ()
 > ### ** Examples
 > 
 > new("asBias")
-An object of class "asBias" 
+An object of class “asBias” 
 risk type:	 asymptotic bias 
 > 
 > 
@@ -2930,7 +2929,7 @@ risk type:	 asymptotic bias
 > ### ** Examples
 > 
 > asBias()
-An object of class "asBias" 
+An object of class “asBias” 
 risk type:	 asymptotic bias 
 > 
 > ## The function is currently defined as
@@ -2960,7 +2959,7 @@ function (biastype = symmetricBias(), normtype = NormType())
 > ### ** Examples
 > 
 > new("asCov")
-An object of class "asCov" 
+An object of class “asCov” 
 risk type:	 asymptotic covariance 
 > 
 > 
@@ -2982,7 +2981,7 @@ risk type:	 asymptotic covariance
 > ### ** Examples
 > 
 > asCov()
-An object of class "asCov" 
+An object of class “asCov” 
 risk type:	 asymptotic covariance 
 > 
 > ## The function is currently defined as
@@ -3012,7 +3011,7 @@ function ()
 > ### ** Examples
 > 
 > new("asHampel")
-An object of class "asHampel" 
+An object of class “asHampel” 
 risk type:	 trace of asymptotic covariance for given bias bound 
 bound:	 Inf 
 > 
@@ -3035,7 +3034,7 @@ bound:	 Inf
 > ### ** Examples
 > 
 > asHampel()
-An object of class "asHampel" 
+An object of class “asHampel” 
 risk type:	 trace of asymptotic covariance for given bias bound 
 bound:	 Inf 
 > 
@@ -3066,7 +3065,7 @@ function (bound = Inf, biastype = symmetricBias(), normtype = NormType())
 > ### ** Examples
 > 
 > new("asMSE")
-An object of class "asMSE" 
+An object of class “asMSE” 
 risk type:	 asymptotic mean square error 
 > 
 > 
@@ -3088,7 +3087,7 @@ risk type:	 asymptotic mean square error
 > ### ** Examples
 > 
 > asMSE()
-An object of class "asMSE" 
+An object of class “asMSE” 
 risk type:	 asymptotic mean square error 
 > 
 > ## The function is currently defined as
@@ -3118,7 +3117,7 @@ function (biastype = symmetricBias(), normtype = NormType())
 > ### ** Examples
 > 
 > asSemivar()
-An object of class "asSemivar" 
+An object of class “asSemivar” 
 risk type:	 asymptotic Semivariance 
 > 
 > 
@@ -3140,7 +3139,7 @@ risk type:	 asymptotic Semivariance
 > ### ** Examples
 > 
 > asSemivar()
-An object of class "asSemivar" 
+An object of class “asSemivar” 
 risk type:	 asymptotic Semivariance 
 > 
 > 
@@ -3164,7 +3163,7 @@ risk type:	 asymptotic Semivariance
 > ### ** Examples
 > 
 > new("asUnOvShoot")
-An object of class "asUnOvShoot" 
+An object of class “asUnOvShoot” 
 risk type:	 asymptotic under-/overshoot probability 
 width:	  
 > 
@@ -3187,7 +3186,7 @@ width:
 > ### ** Examples
 > 
 > asUnOvShoot()
-An object of class "asUnOvShoot" 
+An object of class “asUnOvShoot” 
 risk type:	 asymptotic under-/overshoot probability 
 width:	 1.96 
 > 
@@ -3453,6 +3452,7 @@ masking:
 +confint()    (package "stats")
  
  
+
 > 
 > 
 > 
@@ -3506,7 +3506,7 @@ $show.details
 > ### ** Examples
 > 
 > new("fiBias")
-An object of class "fiBias" 
+An object of class “fiBias” 
 risk type:	 finite-sample bias 
 > 
 > 
@@ -3528,7 +3528,7 @@ risk type:	 finite-sample bias
 > ### ** Examples
 > 
 > fiBias()
-An object of class "fiBias" 
+An object of class “fiBias” 
 risk type:	 finite-sample bias 
 > 
 > ## The function is currently defined as
@@ -3557,7 +3557,7 @@ function ()
 > ### ** Examples
 > 
 > new("fiCov")
-An object of class "fiCov" 
+An object of class “fiCov” 
 risk type:	 finite-sample covariance 
 > 
 > 
@@ -3579,7 +3579,7 @@ risk type:	 finite-sample covariance
 > ### ** Examples
 > 
 > fiCov()
-An object of class "fiCov" 
+An object of class “fiCov” 
 risk type:	 finite-sample covariance 
 > 
 > ## The function is currently defined as
@@ -3608,7 +3608,7 @@ function ()
 > ### ** Examples
 > 
 > new("fiHampel")
-An object of class "fiHampel" 
+An object of class “fiHampel” 
 risk type:	 finite-sample variance for given bias bound 
 bound:	 Inf 
 > 
@@ -3631,7 +3631,7 @@ bound:	 Inf
 > ### ** Examples
 > 
 > fiHampel()
-An object of class "fiHampel" 
+An object of class “fiHampel” 
 risk type:	 finite-sample variance for given bias bound 
 bound:	 Inf 
 > 
@@ -3661,7 +3661,7 @@ function (bound = Inf)
 > ### ** Examples
 > 
 > new("fiMSE")
-An object of class "fiMSE" 
+An object of class “fiMSE” 
 risk type:	 finite-sample mean square error 
 > 
 > 
@@ -3683,7 +3683,7 @@ risk type:	 finite-sample mean square error
 > ### ** Examples
 > 
 > fiMSE()
-An object of class "fiMSE" 
+An object of class “fiMSE” 
 risk type:	 finite-sample mean square error 
 > 
 > ## The function is currently defined as
@@ -3713,7 +3713,7 @@ function ()
 > ### ** Examples
 > 
 > new("fiUnOvShoot")
-An object of class "fiUnOvShoot" 
+An object of class “fiUnOvShoot” 
 risk type:	 finite-sample under-/overshoot probability 
 width:	  
 > 
@@ -3736,7 +3736,7 @@ width:
 > ### ** Examples
 > 
 > fiUnOvShoot()
-An object of class "fiUnOvShoot" 
+An object of class “fiUnOvShoot” 
 risk type:	 finite-sample under-/overshoot probability 
 width:	 1.96 
 > 
@@ -3977,7 +3977,7 @@ function (param)
     dimnames(mat) <- list(nfval, c("mean", "sd"))
     return(list(fval = fval, mat = mat))
 }
-<bytecode: 0x0e17bbb0>
+<bytecode: 0x18f82f50>
 > print(param(NS), show.details = "minimal")
 An object of class "ParamWithScaleFamParameter"
 name:	location and scale
@@ -3994,7 +3994,7 @@ slot trafo is a non-trivial function
 > print(res) #equivalent to 'show(res)' or 'res'
 Evaluations of Maximum likelihood estimate:
 -------------------------------------------
-An object of class "MLEstimate" 
+An object of class “MLEstimate” 
 generated by call
   MLEstimator(x = x, ParamFamily = NS)
 samplesize:   30
@@ -4026,7 +4026,7 @@ function (param)
     dimnames(mat) <- list(nfval, c("mean", "sd"))
     return(list(fval = fval, mat = mat))
 }
-<bytecode: 0x0e17bbb0>
+<bytecode: 0x18f82f50>
 Trafo / derivative matrix:
             mean         sd
 mu/sig 0.3668695 -0.3024814
@@ -4037,7 +4037,7 @@ negative log-likelihood
 > print(res, digits = 4)
 Evaluations of Maximum likelihood estimate:
 -------------------------------------------
-An object of class "MLEstimate" 
+An object of class “MLEstimate” 
 generated by call
   MLEstimator(x = x, ParamFamily = NS)
 samplesize:   30
@@ -4069,7 +4069,7 @@ function (param)
     dimnames(mat) <- list(nfval, c("mean", "sd"))
     return(list(fval = fval, mat = mat))
 }
-<bytecode: 0x0e17bbb0>
+<bytecode: 0x18f82f50>
 Trafo / derivative matrix:
          mean      sd
 mu/sig 0.3669 -0.3025
@@ -4086,7 +4086,7 @@ Evaluations of Maximum likelihood estimate:
 > print(res, show.details = "medium")
 Evaluations of Maximum likelihood estimate:
 -------------------------------------------
-An object of class "MLEstimate" 
+An object of class “MLEstimate” 
 generated by call
   MLEstimator(x = x, ParamFamily = NS)
 samplesize:   30
@@ -4173,16 +4173,16 @@ Loading required package: ROptEst
 Loading required package: RobAStBase
 Loading required package: rrcov
 Loading required package: robustbase
-Error: package or namespace load failed for 'rrcov' in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
- there is no package called 'cluster'
-Failed with error:  'package 'rrcov' could not be loaded'
+Error: package or namespace load failed for ‘rrcov’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
+ there is no package called ‘cluster’
+Failed with error:  ‘package ‘rrcov’ could not be loaded’
 > 
 > 
 > base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 > base::cat("returnlevelplot", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
 
-detaching 'package:robustbase'
+detaching ‘package:robustbase’
 
 > nameEx("symmetricBias-class")
 > ### * symmetricBias-class
@@ -4259,7 +4259,7 @@ function ()
 > ### ** Examples
 > 
 > new("trAsCov")
-An object of class "trAsCov" 
+An object of class “trAsCov” 
 risk type:	 trace of asymptotic covariance 
 > 
 > 
@@ -4281,7 +4281,7 @@ risk type:	 trace of asymptotic covariance
 > ### ** Examples
 > 
 > trAsCov()
-An object of class "trAsCov" 
+An object of class “trAsCov” 
 risk type:	 trace of asymptotic covariance 
 > 
 > ## The function is currently defined as
@@ -4310,7 +4310,7 @@ function ()
 > ### ** Examples
 > 
 > new("trFiCov")
-An object of class "trFiCov" 
+An object of class “trFiCov” 
 risk type:	 trace of finite-sample covariance 
 > 
 > 
@@ -4332,7 +4332,7 @@ risk type:	 trace of finite-sample covariance
 > ### ** Examples
 > 
 > trFiCov()
-An object of class "trFiCov" 
+An object of class “trFiCov” 
 risk type:	 trace of finite-sample covariance 
 > 
 > ## The function is currently defined as
@@ -4490,7 +4490,7 @@ sig^2  3.6698685 11.189719
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  52.66 0.75 55.35 NA NA 
+Time elapsed:  22.038 0.176 22.225 0 0.008 
 > grDevices::dev.off()
 null device 
           1 

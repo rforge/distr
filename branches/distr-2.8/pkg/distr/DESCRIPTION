@@ -1,6 +1,6 @@
 Package: distr
 Version: 2.8.0
-Date: 2018-08-10
+Date: 2019-03-10
 Title: Object Oriented Implementation of Distributions
 Description: S4-classes and methods for distributions.
 Authors@R: c(person("Florian", "Camphausen", role="ctb", comment="contributed as student in the
