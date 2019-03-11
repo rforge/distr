@@ -34,14 +34,6 @@ under the hood:
 + in distr::solve only try base::solve if arg "a" has no dim or if it has then 
   if nrow(a)==nrow(b); otherwise directly use MASS::ginv
 + introduced particular liesInSupport methods for all specific abs.cont distributions in distr
-  
-bug fixes
-+ fixed a (newly introduced) bug in exp() for DiscreteDistribution -- forgot to return obj ...
-+ Bernhard discovered a bug in devNew() -- it opened new devices even if option("newDevice"==FALSE)  
-+ detected that the initialize method of Weibull lacked a .withArith argument to capture the scale structure
-+ unknown variable p in S4method to Minimum(absCont,absCont)
-
-under the hood:
 + in reaction to mail by B.Ripley Feb 20, 19/ explanation by T. Kalibera, that our code to 
   look into system.call() stack was buggy and failed in staged installation, we revised code to .modifyqgaps completely;
   we now compute p(obj)(gaps) and check if any argument p of q(obj) falls within the gap range and then shift it to either 
@@ -50,6 +42,14 @@ under the hood:
   (if existant in the env() of q(obj)) to revert the gaps modification, and any gaps modification, instead of starting 
   from q(obj) starts with ..q0fun (if this exists); otherwise, i.e., if ..q0fun does not exist, it uses q(obj) and 
   afterwords stores the old q(obj) as ..q0fun ... 
++ .modifyqgaps can now digest args pfun and qfun with or without arguments log.p and lower.tail
+  
+bug fixes
++ fixed a (newly introduced) bug in exp() for DiscreteDistribution -- forgot to return obj ...
++ Bernhard discovered a bug in devNew() -- it opened new devices even if option("newDevice"==FALSE)  
++ detected that the initialize method of Weibull lacked a .withArith argument to capture the scale structure
++ unknown variable p in S4method to Minimum(absCont,absCont)
+
 
 ##############
 v 2.7

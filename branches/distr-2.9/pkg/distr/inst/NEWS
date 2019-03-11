@@ -50,6 +50,7 @@ under the hood:
   (if existant in the env() of q(obj)) to revert the gaps modification, and any gaps modification, instead of starting 
   from q(obj) starts with ..q0fun (if this exists); otherwise, i.e., if ..q0fun does not exist, it uses q(obj) and 
   afterwords stores the old q(obj) as ..q0fun ... 
++ .modifyqgaps can now digest args pfun and qfun with or without arguments log.p and lower.tail
 
 ##############
 v 2.7

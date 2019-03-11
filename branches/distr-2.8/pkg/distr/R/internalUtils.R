@@ -1177,8 +1177,20 @@ return(function(q, lower.tail = TRUE, log.p = FALSE){
   gaps <- gaps[finit,,drop=FALSE]
 #  print(gaps)
   ## p-level of constancy region
-  lp.gaps <- matrix(pfun(gaps,log.p=TRUE),nrow=nrow(gaps),ncol=2)
-  lp.gaps.l <- matrix(pfun(gaps,log.p=TRUE, lower.tail = FALSE),nrow=nrow(gaps),ncol=2)
+
+  if(.inArgs("log.p", pfun)){
+       lp.gaps <- matrix(pfun(gaps,log.p=TRUE),nrow=nrow(gaps),ncol=2)
+       if(.inArgs("lower.tail", pfun))
+          lp.gaps.l <- matrix(pfun(gaps,log.p=TRUE, lower.tail = FALSE),nrow=nrow(gaps),ncol=2)
+       else
+          lp.gaps.l <- 1-matrix(pfun(gaps,log.p=TRUE),nrow=nrow(gaps),ncol=2)
+  }else{
+       lp.gaps <- log(matrix(pfun(gaps),nrow=nrow(gaps),ncol=2))
+       if(.inArgs("lower.tail", pfun))
+          lp.gaps.l <- log(matrix(pfun(gaps,lower.tail = FALSE),nrow=nrow(gaps),ncol=2))
+       else
+          lp.gaps.l <- log1p(-matrix(pfun(gaps),nrow=nrow(gaps),ncol=2))
+  }
 #  print(lp.gaps)
 #  print(lp.gaps.l)
 
@@ -1190,8 +1202,26 @@ return(function(q, lower.tail = TRUE, log.p = FALSE){
   ##      which stores the unmodified quantile function
   ## in the first modification round ..q0fun will not yet exist
   ##    in this situation use qfun instead
+  qfunN <- qfun
+  if(!.inArgs("log.p", qfun) || !.inArgs("lower.tail", qfun)){
+    qfunN <- function(p, lower.tail = TRUE, log.p = FALSE){
+        if(.inArgs("lower.tail",qfun)) if(log.p) p <- exp(p)
+        if(.inArgs("log.p", qfun)){
+              p1 <- if(log.p) exp(p) else p
+              qval <- if(lower.tail) qfun(p, log.p) else qfun(1-p1, log.p=FALSE)
+        }else{
+           if(!.inArgs("lower.tail",qfun)){
+              qval <- if(lower.tail) qfun(p) else qfun(1-p)
+           }else{
+              qval <- qfun(p,lower.tail)
+           }
+        }
+    return(qval)
+    }
+  }
 
-  qfunE <- environment(qfun)
+
+  qfunE <- environment(qfunN)
   qnew <- function(p, lower.tail = TRUE, log.p = FALSE) {}
   qnewE <- environment(qnew) <- new.env()
   body(qnew) <- substitute({
@@ -1215,7 +1245,7 @@ return(function(q, lower.tail = TRUE, log.p = FALSE){
               }
           }
           return(q0)
-  },list(qfunE. = qfunE, qfun.=qfun, lp.gaps.=lp.gaps,
+  },list(qfunE. = qfunE, qfun.=qfunN, lp.gaps.=lp.gaps,
          lp.gaps.l. = lp.gaps.l[,2:1,drop=FALSE],
          lrpmatch. = lrpmatch, gaps. = gaps, ..isEqual = .isEqual)
   )
