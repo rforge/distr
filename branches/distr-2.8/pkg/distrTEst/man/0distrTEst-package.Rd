@@ -16,14 +16,14 @@ and simulation classes as introduced there to capture the situation from which t
 \tabular{ll}{
 Package: \tab distrTEst \cr
 Version: \tab 2.8.0 \cr
-Date: \tab 2019-03-10 \cr
+Date: \tab 2019-03-12 \cr
 Depends: \tab R(>= 2.14.0), methods, graphics, setRNG(>= 2006.2-1), distrSim(>= 2.8.0) \cr
 Imports: \tab startupmsg, utils\cr
 Suggests: \tab distrEx(>= 2.8.0)\cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-VCS/SVNRevision: \tab 1171 \cr
+VCS/SVNRevision: \tab 1320 \cr
 }}
 \section{Classes}{
 \preformatted{

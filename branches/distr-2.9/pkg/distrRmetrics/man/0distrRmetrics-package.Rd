@@ -14,7 +14,7 @@ packages.
 \tabular{ll}{
 Package: \tab distrRmetrics \cr
 Version: \tab 2.9.0 \cr
-Date: \tab 2019-03-01 \cr
+Date: \tab 2019-03-12 \cr
 Depends: \tab R(>= 2.6.0), methods, distr(>= 2.4), fBasics(>= 270.73), fGarch(>=
 270.73) \cr
 Suggests: \tab distrEx(>= 2.4), distrMod(>= 2.4)  \cr
@@ -22,7 +22,7 @@ Imports: startupmsg  \cr
 ByteCompile: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-VCS/SVNRevision: \tab 1301 \cr
+VCS/SVNRevision: \tab 1320 \cr
 }
 }
 \section{Classes}{

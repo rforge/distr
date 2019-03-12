@@ -52,14 +52,14 @@ corresponding image distributions.
 \tabular{ll}{
 Package: \tab distr \cr
 Version: \tab 2.9.0 \cr
-Date: \tab 2019-03-01 \cr
+Date: \tab 2019-03-12 \cr
 Depends: \tab R(>= 2.14.0), methods, graphics, startupmsg, sfsmisc \cr
 Suggests: \tab distrEx, svUnit (>= 0.7-11) \cr
 Imports: \tab stats, grDevices, utils, MASS \cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-VCS/SVNRevision: \tab 1301 \cr
+VCS/SVNRevision: \tab 1320 \cr
 }}
 
 
