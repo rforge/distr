@@ -134,42 +134,71 @@ if(FALSE){## Version 2.8 in trunk
 Pkgs <- c("startupmsg",
           "distr", "distrEx", "distrDoc", "distrEllipse", "distrRmetrics",
           "distrMod", "distrTeach", "distrSim", "distrTEst")
-Names <- c("Version", "License")
-Values <- matrix(c("2.8.0","LGPL-3"),2,length(Pkgs))
-colnames(Values) <- Pkgs
+Names <- c("Version")
+Values <- matrix(c("2.8.0"),1,length(Pkgs))
+ReqRVersion0 <- c(NA,rep("R(>= 3.4)",length(Pkgs)-1))
+colnames(Values) <- names(ReqRVersion0) <- Pkgs
 rownames(Values) <- Names
 Values["Version",1] <- "0.9.6"
 changeDescription(startDir = "C:/rtest/distr",names=Names,
-                  pkgs=Pkgs, values=Values)
+                  pkgs=Pkgs, values=Values,ReqRVersion =ReqRVersion0)
+}
+
+if(FALSE){## Version 2.8 in branch
+Pkgs <- c("startupmsg",
+          "distr", "distrEx", "distrDoc", "distrEllipse", "distrRmetrics",
+          "distrMod", "distrTeach", "distrSim", "distrTEst")
+Names <- c("Version")
+Values <- matrix(c("2.8.0"),1,length(Pkgs))
+ReqRVersion0 <- c(NA,rep("R(>= 3.4)",length(Pkgs)-1))
+colnames(Values) <- Pkgs
+rownames(Values) <- names(ReqRVersion0) <- Names
+Values["Version",1] <- "0.9.6"
+changeDescription(startDir = "C:/rtest/distr/branches/distr-2.8",names=Names,
+                  pkgs=Pkgs, values=Values,ReqRVersion =ReqRVersion0)
 }
 
 if(FALSE){## Version 2.9 in branch
 Pkgs <- c("startupmsg",
           "distr", "distrEx", "distrDoc", "distrEllipse", "distrRmetrics",
           "distrMod", "distrTeach", "distrSim", "distrTEst")
-Names <- c("Version", "License")
-Values <- matrix(c("2.9.0","LGPL-3"),2,length(Pkgs))
+Names <- c("Version")
+Values <- matrix(c("2.9.0"),1,length(Pkgs))
+ReqRVersion0 <- c(NA,rep("R(>= 3.4)",length(Pkgs)-1))
 colnames(Values) <- Pkgs
-rownames(Values) <- Names
+rownames(Values) <- names(ReqRVersion0) <- Names
 Values["Version",1] <- "0.9.7"
 changeDescription(startDir = "C:/rtest/distr/branches/distr-2.9",names=Names,
-                  pkgs=Pkgs, values=Values)
+                  pkgs=Pkgs, values=Values,ReqRVersion =ReqRVersion0)
 }
 
 if(FALSE){## Version 1.2 in trunk
 Pkgs <- c("RandVar", "ROptEstOld", "RobAStBase", "RobAStRDA", "RobLox", "RobRex", "RobLoxBioC", "ROptEst", "RobExtremes", "ROptRegTS")
 Names <- c("Version")
 Values <- matrix(c("1.2.0"),1,length(Pkgs))
+ReqRVersion0 <- <- rep("R(>= 3.4)",length(Pkgs))
 colnames(Values) <- Pkgs
-rownames(Values) <- Names
-changeDescription(startDir = "C:/rtest/robast/",names=Names,pkgs=Pkgs, values=Values)
+rownames(Values) <- names(ReqRVersion0) <- Names
+
+changeDescription(startDir = "C:/rtest/robast/",names=Names,pkgs=Pkgs, values=Values,ReqRVersion =ReqRVersion0)
+}
+
+if(FALSE){## Version 1.2 in branch
+Pkgs <- c("RandVar", "ROptEstOld", "RobAStBase", "RobAStRDA", "RobLox", "RobRex", "RobLoxBioC", "ROptEst", "RobExtremes", "ROptRegTS")
+Names <- c("Version")
+Values <- matrix(c("1.2.0"),1,length(Pkgs))
+ReqRVersion0 <- <- rep("R(>= 3.4)",length(Pkgs))
+colnames(Values) <- Pkgs
+rownames(Values) <- names(ReqRVersion0) <- Names
+changeDescription(startDir = "C:/rtest/robast/branches/robast-1.2",names=Names,pkgs=Pkgs, values=Values,ReqRVersion =ReqRVersion0)
 }
 
 if(FALSE){## Version 1.3 in branch
 Pkgs <- c("RandVar", "ROptEstOld", "RobAStBase", "RobAStRDA", "RobLox", "RobRex", "RobLoxBioC", "ROptEst", "RobExtremes", "ROptRegTS")
 Names <- c("Version")
 Values <- matrix(c("1.3.0"),1,length(Pkgs))
+ReqRVersion0 <- <- rep("R(>= 3.4)",length(Pkgs))
 colnames(Values) <- Pkgs
-rownames(Values) <- Names
-changeDescription(startDir = "C:/rtest/robast/branches/robast-1.3",names=Names,pkgs=Pkgs, values=Values)
+rownames(Values) <- names(ReqRVersion0) <- Names
+changeDescription(startDir = "C:/rtest/robast/branches/robast-1.3",names=Names,pkgs=Pkgs, values=Values,ReqRVersion =ReqRVersion0)
 }

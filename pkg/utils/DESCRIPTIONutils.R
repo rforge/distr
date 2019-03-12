@@ -44,6 +44,11 @@ updatePackageHelp <- function(package){
   }}
 }
 
+
+replaceReqRversion <- function(text,version){
+     if(!is.na(version)) gsub("^R\\([^\\)]+\\)",version,text)
+  }
+
 ## needs: getRevNr() in getRevNr.R in  utils/ e.g.
 ## source("C:/rtest/distr/branches/distr-2.7/pkg/utils/getRevNr.R")
 
@@ -62,6 +67,7 @@ updatePackageHelp <- function(package){
     inRforge = TRUE,    ### shall we use r-forge as repository
                         ## (otherwise need full URL as arg pathRepo
     withlogin = TRUE,   ### do we need option --login (yes in cygwin, don't know in Linux)
+    ReqRVersion = NA, ## do we change required R-versions?
     PathToBash = "C:/cygwin64/bin/bash",  ## path to bash
     PathToreadsvnlog.sh="C:/rtest/distr/branches/distr-2.4/pkg/utils",
                     ### path to shell script readsvnlog.sh
@@ -134,7 +140,11 @@ updatePackageHelp <- function(package){
           print(xx[,names])
          }
          xx[,names] <- values[names,x]
+         if(!is.na(ReqRVersion[x])){
+            xx[,"Depends"] <- replaceReqRversion(xx[,"Depends"],ReqRVersion[x])
+         }
          print(xx[,names])
+
          write.dcf(xx, file=FN,width=1.2*getOption("width"))
          if(withPackageHelpUpdate)
             updatePackageHelp(package=file.path("pkg",x))
@@ -142,6 +152,8 @@ updatePackageHelp <- function(package){
     }
     return(invisible())
   }
+
+
 ### Examples see DESCRIPTIONutilsExamples.R in same folder
 
 getVersions <- function(startDir = "C:/rtest/robast/branches/robast-0.7",
