@@ -1,9 +1,9 @@
 Package: distrEx
 Version: 2.8.0
-Date: 2019-03-11
+Date: 2019-03-12
 Title: Extensions of Package 'distr'
 Description: Extends package 'distr' by functionals, distances, and conditional distributions.
-Depends: R(>= 2.10.0), methods, distr(>= 2.2)
+Depends: R(>= 2.10.0), methods, distr(>= 2.8.0)
 Imports: startupmsg, utils, stats
 Suggests: tcltk
 Authors@R: c(person("Matthias", "Kohl", role=c("cre", "cph"),
