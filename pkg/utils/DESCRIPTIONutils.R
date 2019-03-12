@@ -46,7 +46,7 @@ updatePackageHelp <- function(package){
 
 
 replaceReqRversion <- function(text,version){
-     if(!is.na(version)) gsub("^R\\([^\\)]+\\)",version,text)
+     if(!is.na(version)) gsub("^R[ ]+\\([^\\)]+\\)",version,text)
   }
 
 ## needs: getRevNr() in getRevNr.R in  utils/ e.g.
