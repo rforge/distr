@@ -90,6 +90,19 @@ changeDescription(startDir ,names, values, pkgs = NULL ,withSVNread = TRUE,
 ## for examples see DESCRIPTIONutilsExamples.R 
 
 
+## updateHTMLpages(startDir = "C:/rtest/distr",
+##                 pkgNames = c("distr", "distrEx", "distrSim", "distrTEst", 
+## 							    "distrEllipse", "distr-Familie", "distrTeach",
+## 							    "distrMod", "distrDoc", "RandVar"),
+##                 pkgVersions = c(rep("2.8.0",9),"1.2.0")
+## 				   )
+## args: startDir: folder with checkout to distr svn repo,
+##                  e.g. "C:/rtest/distr/"
+## pkgNames: character -- names of HTML files to be updated (without extension ".html")
+## pkgVersions: charchter vector of length(pkgNames); if unnamed in same order;
+##              otherwise names have to coincide with pkgNames
+## updates HTML pages (i.e., updates date information and version information)
+
 ### compare.R :
 #
 # compares (recursively over all slots / list elements)

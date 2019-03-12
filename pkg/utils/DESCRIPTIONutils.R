@@ -46,7 +46,7 @@ updatePackageHelp <- function(package){
 
 
 replaceReqRversion <- function(text,version){
-     if(!is.na(version)) gsub("^R[ ]+\\([^\\)]+\\)",version,text)
+     if(!is.na(version)) gsub("^R[ ]*\\([^\\)]+\\)",version,text)
   }
 
 ## needs: getRevNr() in getRevNr.R in  utils/ e.g.
@@ -155,6 +155,37 @@ replaceReqRversion <- function(text,version){
 
 
 ### Examples see DESCRIPTIONutilsExamples.R in same folder
+
+updateHTMLpages <- function(startDir = "C:/rtest/distr",
+                            pkgNames = c("distr", "distrEx","distrSim",
+							             "distrTEst", "distrEllipse",
+										 "distr-Familie", "distrTeach",
+										 "distrMod", "distrDoc", "RandVar"),
+                             pkgVersions = c(rep("2.8.0",9),"1.2.0")
+							 ){
+   if(is.null(names(pkgVersions))) names(pkgVersions) <- pkgNames
+   for(pkg in pkgNames){
+       File <- file.path(startDir, "www", paste(pkg,".html",sep=""))
+       xx <- suppressWarnings(readLines(con = File))
+	   if(length(xx)){
+	      xx <- gsub("Release Date: .+<br>", paste("Release Date:",
+		            format(Sys.time(), format="%Y-%m-%d"), "<br>"),xx)
+          xx <- gsub("> Version: .+<br>", paste("> Version:",
+		            pkgVersions[pkg], "<br>"),xx)
+          xx <- gsub("last updated on .+<br>", paste("last updated on ",
+		            format(Sys.time(), format="%Y-%m-%d"), ". <br>",
+					sep=""),xx)
+          writeLines(xx, con = File)
+       }
+    }
+    return(invisible())
+}
+
+if(FALSE){
+   updateHTMLpages()
+}
+
+
 
 getVersions <- function(startDir = "C:/rtest/robast/branches/robast-0.7",
                         pkgs){
