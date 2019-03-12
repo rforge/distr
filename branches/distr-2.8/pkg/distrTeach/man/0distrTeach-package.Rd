@@ -22,7 +22,7 @@ as well as a Tcl/Tk based demo for\code{illustrateCLT}
 Package: \tab distrTeach \cr
 Version: \tab 2.8.0 \cr
 Date: \tab 2019-03-10 \cr
-Depends: \tab R(>= 2.2.0), methods, distr(>= 2.2), distrEx(>= 2.2) \cr
+Depends: \tab R(>= 2.14.0), methods, distr(>= 2.8.0), distrEx(>= 2.8.0) \cr
 Suggests: \tab tcltk\cr
 Imports: \tab startupmsg, grDevices, graphics, stats\cr
 LazyLoad: \tab yes \cr

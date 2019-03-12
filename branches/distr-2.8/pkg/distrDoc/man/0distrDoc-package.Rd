@@ -16,8 +16,8 @@ Package: \tab distrDoc \cr
 Version: \tab 2.8.0 \cr
 Date: \tab 2019-03-10 \cr
 Depends: \tab R(>= 2.14.0) \cr
-Imports: \tab distr(>= 2.2.0), distrEx(>= 2.2.0), distrSim(>= 2.2.0), distrTEst(>= 2.2.0),
-        distrTeach(>= 2.2.0), RandVar(>= 0.7), distrMod(>= 2.2.0), MASS, methods,
+Imports: \tab distr(>= 2.8.0), distrEx(>= 2.8.0), distrSim(>= 2.8.0), distrTEst(>= 2.8.0),
+        distrTeach(>= 2.8.0), RandVar(>= 1.2.0), distrMod(>= 2.8.0), MASS, methods,
         SweaveListingUtils, startupmsg  \cr
 Suggests: \tab Biobase \cr
 ByteCompile: \tab yes \cr

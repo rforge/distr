@@ -4,8 +4,8 @@ Date: 2019-03-10
 Title: Distribution Classes for Distributions from Rmetrics
 Description: S4-distribution classes based on package distr for distributions from packages
         'fBasics' and 'fGarch'.
-Depends: R(>= 2.6.0), methods, distr(>= 2.4), fBasics(>= 270.73), fGarch(>= 270.73)
-Suggests: distrEx(>= 2.4), distrMod(>= 2.4)
+Depends: R(>= 2.14.0), methods, distr(>= 2.8.0), fBasics(>= 270.73), fGarch(>= 270.73)
+Suggests: distrEx(>= 2.8.0), distrMod(>= 2.8.0)
 Imports: startupmsg
 Authors@R: person("Peter", "Ruckdeschel", role=c("cre", "cph", "aut"),
         email="peter.ruckdeschel@uni-oldenburg.de")

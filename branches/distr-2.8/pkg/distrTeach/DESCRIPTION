@@ -4,7 +4,7 @@ Date: 2019-03-10
 Title: Extensions of Package 'distr' for Teaching Stochastics/Statistics in Secondary School
 Description: Provides flexible examples of LLN and CLT for teaching purposes in secondary
         school.
-Depends: R(>= 2.2.0), methods, distr(>= 2.2), distrEx(>= 2.2)
+Depends: R(>= 2.14.0), methods, distr(>= 2.8.0), distrEx(>= 2.8.0)
 Suggests: tcltk
 Imports: startupmsg, grDevices, graphics, stats
 Authors@R: c(person("Eleonora", "Feist", role="ctb", comment = "contributed as student in the

@@ -11,8 +11,8 @@ Authors@R: c(person("Florian", "Camphausen", role="ctb", comment="contributed as
         comment="contributed as student to the documented packages in the initial phase
         --2005"))
 Depends: R(>= 2.14.0)
-Imports: distr(>= 2.2.0), distrEx(>= 2.2.0), distrSim(>= 2.2.0), distrTEst(>= 2.2.0),
-        distrTeach(>= 2.2.0), RandVar(>= 0.7), distrMod(>= 2.2.0), MASS, methods, startupmsg
+Imports: distr(>= 2.8.0), distrEx(>= 2.8.0), distrSim(>= 2.8.0), distrTEst(>= 2.8.0),
+        distrTeach(>= 2.8.0), RandVar(>= 1.2.0), distrMod(>= 2.8.0), MASS, methods, startupmsg
 Suggests: Biobase, knitr
 VignetteBuilder: knitr
 ByteCompile: yes
