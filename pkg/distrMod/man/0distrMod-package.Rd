@@ -16,16 +16,16 @@ maximum likelihood or minimum distance estimators for probability models.
 \tabular{ll}{
 Package: \tab distrMod \cr
 Version: \tab 2.8.0 \cr
-Date: \tab 2019-03-12 \cr
-Depends: \tab R(>= 2.14.0), distr(>= 2.5.2), distrEx(>= 2.4), RandVar(>= 0.6.3), MASS, stats4,
-        methods \cr
+Date: \tab 2019-03-13 \cr
+Depends: \tab R(>= 3.4), distr(>= 2.8.0), distrEx(>= 2.8.0), RandVar(>= 1.2.0),
+    MASS, stats4,methods \cr
 Imports: \tab startupmsg, sfsmisc, graphics, stats, grDevices \cr
-Suggests: \tab ismev, evd\cr
+Suggests: \tab ismev, evd, \cr
 Enhances: RobExtremes\cr
 ByteCompile: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-VCS/SVNRevision: \tab 1319 \cr
+VCS/SVNRevision: \tab 1324 \cr
 }}
 
 \section{Classes}{
@@ -288,7 +288,6 @@ See also \code{distrModMASK()}
 \author{
 Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de},\cr
 Matthias Kohl \email{Matthias.Kohl@stamats.de}\cr
-
 \emph{Maintainer:} Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}
 }
 
