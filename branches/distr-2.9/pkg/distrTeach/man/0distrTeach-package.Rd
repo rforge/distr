@@ -21,14 +21,14 @@ as well as a Tcl/Tk based demo for\code{illustrateCLT}
 \tabular{ll}{
 Package: \tab distrTeach \cr
 Version: \tab 2.9.0 \cr
-Date: \tab 2019-03-12 \cr
-Depends: \tab R(>= 2.2.0), methods, distr(>= 2.2), distrEx(>= 2.2) \cr
-Suggests: \tab tcltk\cr
-Imports: \tab startupmsg, grDevices, graphics, stats\cr
+Date: \tab 2019-03-13 \cr
+Depends: \tab R(>= 3.4), methods, distr(>= 2.8.0), distrEx(>= 2.8.0) \cr
+Suggests: \tab tcltk \cr
+Imports: \tab startupmsg, grDevices, graphics, stats \cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-VCS/SVNRevision: \tab 1320 \cr
+VCS/SVNRevision: \tab 1324 \cr
 }
 }
 \section{Classes}{
@@ -97,7 +97,6 @@ Matthias Kohl \email{Matthias.Kohl@stamats.de} and \cr
 Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de},\cr 
 Eleonara Feist \email{eleonoragerber@gmx.de}, and, \cr
 Anja Hueller \email{anja\_h86@web.de}\cr  
-
 \emph{Maintainer:}  Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}
 }
 \references{
@@ -107,8 +106,10 @@ S4 Classes for Distributions, \emph{R News}, \emph{6}(2), 2-6.
 
 %a more detailed manual for \pkg{distr}, \pkg{distrSim}, \pkg{distrTEst}, and \pkg{distrTeach} may be downloaded from  
 %\url{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/distr.pdf}\cr
-
-a vignette for packages \pkg{distr}, \pkg{distrSim}, \pkg{distrTEst}, 
+a vignette for packages \pkg{distr}, \pkg{distrSim}, \pkg{distrTEst},
+    
+    
+    
 and \pkg{distrTeach} is included into the mere documentation package \pkg{distrDoc} 
 and may be called by \code{require("distrDoc");vignette("distr")}
 

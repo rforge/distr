@@ -16,14 +16,15 @@ and simulation classes as introduced there to capture the situation from which t
 \tabular{ll}{
 Package: \tab distrTEst \cr
 Version: \tab 2.9.0 \cr
-Date: \tab 2019-03-12 \cr
-Depends: \tab R(>= 2.6.0), methods, graphics, setRNG(>= 2006.2-1), distrSim(>= 2.2) \cr
-Imports: \tab startupmsg, utils\cr
-Suggests: \tab distrEx(>= 2.2)\cr
+Date: \tab 2019-03-13 \cr
+Depends: \tab R(>= 3.4), methods, graphics, setRNG(>= 2006.2-1),
+    distrSim(>= 2.2) \cr
+Imports: \tab startupmsg, utils \cr
+Suggests: \tab distrEx(>= 2.8.0) \cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-VCS/SVNRevision: \tab 1320 \cr
+VCS/SVNRevision: \tab 1324 \cr
 }}
 \section{Classes}{
 \preformatted{
@@ -81,7 +82,6 @@ As for general \code{packageStartupMessage}'s, you may also suppress all
   Florian Camphausen \email{fcampi@gmx.de},\cr
   Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de},\cr 
   Matthias Kohl \email{Matthias.Kohl@stamats.de}\cr
-
 \emph{Maintainer:} Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}
 }
 
@@ -115,4 +115,3 @@ A homepage to this package is available under\cr
 \code{\link[distr:0distr-package]{distr-package}}, \code{\link[distrSim:0distrSim-package]{distrSim-package}}, 
 \code{\link[setRNG]{setRNG}}
 }
-

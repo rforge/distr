@@ -14,16 +14,16 @@ packages \pkg{distr}, \pkg{distrEx}, \pkg{distrSim}, \pkg{distrTEst},
 \tabular{ll}{
 Package: \tab distrDoc \cr
 Version: \tab 2.9.0 \cr
-Date: \tab 2019-03-12 \cr
-Depends: \tab R(>= 2.14.0) \cr
-Imports: \tab distr(>= 2.2.0), distrEx(>= 2.2.0), distrSim(>= 2.2.0), distrTEst(>= 2.2.0),
-        distrTeach(>= 2.2.0), RandVar(>= 0.7), distrMod(>= 2.2.0), MASS, methods,
-        SweaveListingUtils, startupmsg  \cr
-Suggests: \tab Biobase \cr
+Date: \tab 2019-03-13 \cr
+Depends: \tab R(>= 3.4) \cr
+Imports: \tab distr(>= 2.8.0), distrEx(>= 2.8.0), distrSim(>= 2.2.0),
+    distrTEst(>= 2.2.0),distrTeach(>= 2.2.0), RandVar(>= 1.2.0), distrMod(>= 2.8.0), MASS, methods,
+startupmsg \cr
+Suggests: \tab Biobase, knitr \cr
 ByteCompile: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-VCS/SVNRevision: \tab 1320 \cr
+VCS/SVNRevision: \tab 1324 \cr
 }}
 
 
@@ -35,16 +35,24 @@ Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de},\cr
 Thomas Stabla \email{statho3@web.de},\cr 
 Florian Camphausen \email{fcampi@gmx.de},\cr
 Matthias Kohl \email{Matthias.Kohl@stamats.de}\cr
-
 \emph{Maintainer:} Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de}
 }
 
 \seealso{see mails "[Rd] package vignettes, suggests and R CMD check"
          on r-devel by Seth Falcon,\cr
-         \url{https://stat.ethz.ch/pipermail/r-devel/2006-November/043702.html},\cr
-         \url{https://stat.ethz.ch/pipermail/r-devel/2006-November/043705.html},\cr
+         \url{https://stat.ethz.ch/pipermail/r-devel/2006-November/043702.html},
+    
+    
+    \cr
+         \url{https://stat.ethz.ch/pipermail/r-devel/2006-November/043705.html},
+    
+    
+    \cr
          and by the author,\cr  
-         \url{https://stat.ethz.ch/pipermail/r-devel/2006-November/043700.html},\cr
+         \url{https://stat.ethz.ch/pipermail/r-devel/2006-November/043700.html},
+    
+    
+    \cr
          \url{https://stat.ethz.ch/pipermail/r-devel/2006-November/043703.html}\cr
          }
 

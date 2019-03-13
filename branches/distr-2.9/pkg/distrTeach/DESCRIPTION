@@ -1,17 +1,17 @@
 Package: distrTeach
 Version: 2.9.0
-Date: 2019-03-12
+Date: 2019-03-13
 Title: Extensions of Package 'distr' for Teaching Stochastics/Statistics in Secondary School
 Description: Provides flexible examples of LLN and CLT for teaching purposes in secondary
-        school.
-Depends: R(>= 2.2.0), methods, distr(>= 2.2), distrEx(>= 2.2)
+            school.
+Depends: R(>= 3.4), methods, distr(>= 2.8.0), distrEx(>= 2.8.0)
 Suggests: tcltk
 Imports: startupmsg, grDevices, graphics, stats
 Authors@R: c(person("Eleonora", "Feist", role="ctb", comment = "contributed as student in the
-        initial phase --2008"), person("Matthias", "Kohl", role=c("aut", "cph")),
-        person("Peter", "Ruckdeschel", role=c("cre", "cph"),
-        email="peter.ruckdeschel@uni-oldenburg.de"), person("Anja", "Hueller", role="ctb",
-        comment = "contributed as student in the initial phase --2008"))
+            initial phase --2008"), person("Matthias", "Kohl", role=c("aut", "cph")),
+            person("Peter", "Ruckdeschel", role=c("cre", "cph"),
+            email="peter.ruckdeschel@uni-oldenburg.de"), person("Anja", "Hueller", role="ctb",
+            comment = "contributed as student in the initial phase --2008"))
 ByteCompile: yes
 License: LGPL-3
 Encoding: latin1
@@ -19,4 +19,4 @@ URL: http://distr.r-forge.r-project.org/
 Packaged: Fri Jun 8 00:12:57 2007; Peter
 LastChangedDate: {$LastChangedDate$}
 LastChangedRevision: {$LastChangedRevision$}
-VCS/SVNRevision: 1320
+VCS/SVNRevision: 1324

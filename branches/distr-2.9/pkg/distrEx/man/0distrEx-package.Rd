@@ -28,14 +28,14 @@ Support for  extreme value distributions has moved to package \pkg{RobExtremes}
 \tabular{ll}{
 Package: \tab distrEx \cr
 Version: \tab 2.9.0 \cr
-Date: \tab 2019-03-12 \cr
-Depends: \tab R(>= 2.10.0), methods, distr(>= 2.8.0) \cr
+Date: \tab 2019-03-13 \cr
+Depends: \tab R(>= 3.4), methods, distr(>= 2.8.0) \cr
 Imports: \tab startupmsg, utils, stats \cr
 Suggests:  \tab tcltk \cr
 LazyLoad: \tab yes \cr
 License: \tab LGPL-3 \cr
 URL: \tab http://distr.r-forge.r-project.org/\cr
-VCS/SVNRevision: \tab 1320 \cr
+VCS/SVNRevision: \tab 1324 \cr
 }
 }
 \section{Classes}{
@@ -214,7 +214,6 @@ Note: The first two numbers of package versions do not necessarily reflect
 \author{
 Matthias Kohl \email{Matthias.Kohl@stamats.de} and \cr
 Peter Ruckdeschel \email{peter.ruckdeschel@uni-oldenburg.de},\cr 
-
 \emph{Maintainer:}  Matthias Kohl \email{Matthias.Kohl@stamats.de}
 }
 \references{
@@ -224,8 +223,10 @@ S4 Classes for Distributions, \emph{R News}, \emph{6}(2), 2-6.
 
 %a more detailed manual for \pkg{distr}, \pkg{distrSim}, \pkg{distrTEst}, and \pkg{distrEx} may be downloaded from  
 %\url{http://www.uni-bayreuth.de/departments/math/org/mathe7/DISTR/distr.pdf}\cr
-
-a vignette for packages \pkg{distr}, \pkg{distrSim}, \pkg{distrTEst}, 
+a vignette for packages \pkg{distr}, \pkg{distrSim}, \pkg{distrTEst},
+    
+    
+    
 and \pkg{distrEx} is included into the mere documentation package \pkg{distrDoc} 
 and may be called by \code{require("distrDoc");vignette("distr")}
 
