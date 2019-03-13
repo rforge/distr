@@ -80,6 +80,12 @@ changeDescription(startDir ,names, values, pkgs = NULL ,withSVNread = TRUE,
 ##         inRforge: shall we use r-forge as repository
 ##                  (otherwise need full URL as arg pathRepo
 ##         withlogin: do we need option --login (yes in cygwin, don't know in Linux)
+##         ReqRVersion = NA, if not NA a (named) vector of length(pkgs) with the required
+##                       R-versions per package in Syntax R(>=...)
+##         ReqDistrPkgVersion = NA, if not NA a (named) list of length(pkgs) with an entry
+##                       for each package; for each package the entry is a named character 
+##                       vector with the required versions of packages of form 
+##                       "<pkg>"="<pkg>(>=..)"
 ##         PathToBash: path to bash
 ##         PathToreadsvnlog.sh:  path to shell script readsvnlog.sh
 ##         tmpfile: some tmpfile to which we write the results temporarily; 
