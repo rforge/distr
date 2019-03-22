@@ -1,0 +1,57 @@
+%--------------------------------------------------------------------------
+           Reverse-Dependencies of distr family as of 20190322
+%--------------------------------------------------------------------------
+
+%----------------------------
+GJRM 
+%----------------------------
+Maintainer: giampiero.marra@ucl.ac.uk 
+uses: distrExIntegrate()
+
+%----------------------------
+nanop 
+%----------------------------
+Maintainer: av.gagin@gmail.com  
+uses: distrEx::GLIntegrate
+
+%----------------------------
+genlogis
+%----------------------------
+Maintainer: ehellas@gmail.com
+uses: 
+  cont_dist <- distr::AbscontDistribution(d = dgen_log)
+  pdist <- distr::p(cont_dist)
+
+
+%----------------------------
+logcondens.mode 
+%----------------------------
+Maintainer: cdoss@stat.washington.edu, 
+uses: LCTLLRdistn ist ein distr::DiscreteDistribution objekt
+
+%----------------------------
+meteR
+%----------------------------
+Maintainer: cory.merow@gmail.com
+uses: distr::AbscontDistribution
+
+%----------------------------
+miCoPTCM
+%----------------------------
+Maintainer: aurelie.bertrand@uclouvain.be 
+uses: Laplace....
+
+%----------------------------
+IPSur 
+%----------------------------
+Maintainer: gkerns@ysu.edu 
+uses: nur Erwähnung in Vignette
+
+%----------------------------
+geoCount 
+%----------------------------
+Maintainer: ljing918@gmail.com
+uses: 
+  distrEx::HellingerDist(distr::Norm(), x), 
+  distrEx::HellingerDist(x, distr::Norm(), asis.smooth.discretize = "smooth"), 
+  distrEx::KolmogorovDist(distr::Norm(),x) 
