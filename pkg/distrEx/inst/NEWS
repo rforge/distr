@@ -73,7 +73,7 @@ under the hood:
       instead of 5000 / 5000 / 5000	  
 + fixed a bug in .qtlIntegrate: forgot to call funwD (instead of fun) in case useApply = FALSE
 + additional .AW-grid values into sysdata.rda for orders 
-      50, 400, 800, 4000, 8000, 40000, 80000
+      50, 400, 800, 4000, 8000, 40000, 80000, 100000
   as these grid values are needed in the partitioned integration in 
   .qtlIntegrate
 + in addition grid value 100000 so far was not used as it is parsed to 
