@@ -28,8 +28,8 @@ Support for  extreme value distributions has moved to package \pkg{RobExtremes}
 \tabular{ll}{
 Package: \tab distrEx \cr
 Version: \tab 2.8.0 \cr
-Date: \tab 2019-03-12 \cr
-Depends: \tab R(>= 2.10.0), methods, distr(>= 2.8) \cr
+Date: \tab 2019-03-29 \cr
+Depends: \tab R(>= 3.4), methods, distr(>= 2.8) \cr
 Imports: \tab startupmsg, utils, stats \cr
 Suggests:  \tab tcltk \cr
 LazyLoad: \tab yes \cr
