@@ -72,8 +72,10 @@ skipLineFeeds <- function(x, withMark=TRUE){
      if(aktblock!="")
           aktblock <- paste(aktblock,mark,x[i],sep="")
      else aktblock <- x[i]
+     aktblock <- gsub("(;;;)+",";;;",aktblock)
      if(grepl("\\\\cr",aktblock)){
         j <- j + 1
+        aktblock <- gsub("(;;;)+\\\\cr","\\\\cr",aktblock)
         x.0[j] <- aktblock
         aktblock <- ""
      }
@@ -82,17 +84,19 @@ skipLineFeeds <- function(x, withMark=TRUE){
 }
 
 revertLineSkips <- function(x){
+    x<- gsub("(;;;)+",";;;",x)
    ## undoes the binding
     return(c(unlist(strsplit(x,";;;"))))
 }
 
 ## we also have to introduce linebreaks at 80
-## getKommaPos80 finds the last comma before the 80th sign
+## getKommaPos80 finds the last comma or \cr before the 80th sign
 getKommaPos80 <- function(x){
   nx <- nchar(x)
   npos <- numeric(nx)
   ind <- 1:nx
   for(i in 1:nx) npos[i] <- substr(x,i,i)==","
+  if(nx>2) for(i in 1:(nx-2)) npos[i] <- substr(x,i,i+2)=="\\cr"
   if(sum(npos)==0) return(NA)
   lc <- rev(ind[ind<=80 & npos])
   if(length(lc)==0) return(NA)

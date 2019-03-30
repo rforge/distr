@@ -152,7 +152,7 @@ changeDescription(startDir = "C:/rtest/distr",names=Names,
 updateHTMLpages(pkgVersions = c(rep("2.8.0",9),"1.2.0"))
 }
 
-if(FALSE){## Version 2.8 in trunk second shift 20190327
+if(FALSE){## Version 2.8 in trunk second shift 20190328
 Pkgs <- c("distrEx", "distrEllipse", "distrMod")
 Names <- c("Version")
 Values <- matrix(c("2.8.0"),1,length(Pkgs))
@@ -233,7 +233,7 @@ changeDescription(startDir = "C:/rtest/robast/",names=Names,pkgs=Pkgs,
                   ReqDistrPkgVersion =ReqDistrPkgVersion0)
 }
 
-if(FALSE){## Version 1.2 in trunk second shift 20190327
+if(FALSE){## Version 1.2 in trunk second shift 20190329
 Pkgs <- c("RandVar", "ROptEstOld", "RobAStBase", "RobLox", "RobRex", "RobLoxBioC", "ROptEst", "RobExtremes", "ROptRegTS")
 Names <- c("Version")
 Values <- matrix(c("1.2.0"),1,length(Pkgs))
