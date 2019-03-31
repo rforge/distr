@@ -34,6 +34,15 @@ Für Schritt 6 RZip <pkg>_<version>.tar.gz
 im einzelnen:
 
 RBuild: = R CMD build --compact-vignettes="gs+qpdf" --resave-data
+RCRAN:= R CMD check --multiarch --as-cran --install-args="--byte-compile \
+  --with-keep.source --compact-docs --resave-data --install-tests --example \
+  --html --latex --clean --preclean --compile-both --force-biarch" --output=%2  
+RCheckOT:= R CMD check --multiarch --run-donttest --output=%2 --install-args="--byte-compile \ 
+  --with-keep.source --compact-docs --resave-data --install-tests --example \
+  --html --latex --clean --preclean --compile-both --force-biarch" %1
+RCheckOTnoTest:= R CMD check --multiarch --output=%2 --install-args="--byte-compile \ 
+  --with-keep.source --compact-docs --resave-data --install-tests --example \
+  --html --latex --clean --preclean --compile-both --force-biarch" %1
 RCheck: = R CMD check --multiarch --timings --install-args="--byte-compile \
   --with-keep.source --compact-docs --resave-data --install-tests --example \
   --html --latex --clean --preclean --compile-both"
