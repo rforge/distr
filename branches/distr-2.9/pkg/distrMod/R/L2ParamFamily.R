@@ -186,32 +186,33 @@ setMethod("checkL2deriv", "L2ParamFamily",
         L2deriv <- as(diag(dims) %*% L2Fam@L2deriv, "EuclRandVariable")
 
         cent <- E(object = L2Fam, fun = L2deriv)
-        if(out) cat("precision of centering:\t", cent, "\n")
 
+        if(out){
+     	     PrecCent <- 12-round(max(log(abs(cent)+1e-14)),10)
+           cent.out <- round(cent*10^PrecCent)/10^PrecCent
+           cat("precision of centering:\t", cent.out, "\n")
+        }
         consist <- E(object = L2Fam, fun = L2deriv %*% t(L2deriv))
         FI <- as(L2Fam@FisherInfo, "matrix")
         consist <- consist - FI
         if(out){
+            oldOps <- options()
+            on.exit(do.call(options,oldOps))
+            options(digits=5,scipen=-2)
             cat("precision of Fisher information:\n")
             print(consist)
             cat("precision of Fisher information - relativ error [%]:\n")
             print(100*consist/FI)
-        }
 
-        if(out){
-           cat("condition of Fisher information:\n")
-           print(kappa(FI))
+            cat("condition of Fisher information:\n")
+            print(kappa(FI))
         }
 
         prec <- max(abs(cent), abs(consist))
 
-        ## PR 20190222:
-		## deleting all digits beyond 1e-12 (as numeric fuzz) -- 
-		## but check for relative accuracy by means of the "size" of the Fisher information 
-		## measured in by the sqrt(max(FI))
-		relPrec <- 12-round(log(max(FI),10)/2)
-		prec <- round(prec*10^relPrec)/10^relPrec
-		
-        return(list(maximum.deviation = prec))
+        ret.value <- list(maximum.deviation = prec, cent=cent, consist=consist,
+                          condition=kappa(FI))
+
+        return(invisible(ret.value))
     })
 

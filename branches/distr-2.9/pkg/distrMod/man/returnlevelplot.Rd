@@ -251,6 +251,7 @@ are also valid for this signature.}
    intervals.
 }
 \examples{
+set.seed(20190331)
 returnlevelplot(r(Norm(15,sqrt(30)))(40), Chisq(df=15))
 ### more could be seen after installing RobExtremes and ismev
 #
@@ -260,7 +261,9 @@ if(require(RobExtremes) && require(ismev)){
  gevfit <- gev.fit(portpirie[,2]) ## taken from example from ismev::gev.fit
  GEVF <- GEVFamily(scale=gevfit$mle[2],shape=gevfit$mle[3],loc=gevfit$mle[1])
  erg <- returnlevelplot(portpirie[,2], GEVF)
- print(erg)
+ print(names(erg))
+ print(names(erg$plotArgs))
+ print(names(erg$IdLineArgs))
  returnlevelplot(portpirie[,2], GEVF, datax=TRUE)
 
  data(rain)
