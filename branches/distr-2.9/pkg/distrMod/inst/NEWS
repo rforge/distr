@@ -8,6 +8,22 @@
  information)
 
 ##############
+v 2.9
+##############
+
+##############
+v 2.8.1
+##############
+user-visible CHANGES:
++ revised code to delete fuzz when checking the centering/consistency of L2deriv varying from 
+  -- relative accuracy is now determined by the size of FI 
+under the hood:
++ introduce S3 class "relMatrix" (and S3 method print.relMatrix) to capture the fact that when 
+  computing relative differences in consistency matrices, some entries in the denominator may 
+  be 0; in order to avoid output of Inf / NaN we catch the output and replace such entries 
+  by "."
+
+##############
 v 2.8
 ##############
 
