@@ -273,7 +273,26 @@ changeDescription(startDir = "C:/rtest/robast/",names=Names,pkgs=Pkgs,
 }
 
 if(FALSE){## Version 1.2 in trunk third shift 20190407
-Pkgs <- c("RobAStBase")
+Pkgs <- c("RobAStBase","ROptEst")
+Names <- c("Version")
+Values <- matrix(c("1.2.1"),1,length(Pkgs))
+ReqRVersion0 <- rep("R(>= 3.4)",length(Pkgs))
+ReqDistrPkgVersion0 <- vector("list",length(Pkgs))
+names(ReqDistrPkgVersion0) <- Pkgs
+ReqDistrPkgVersion0[["RandVar"]] <- NA
+for(pk in Pkgs) ReqDistrPkgVersion0[[pk]] <- c("distr"="distr(>= 2.8.0)",
+            "distrEx"="distrEx(>= 2.8.0)","distrMod"="distrMod(>= 2.8.1)",
+            "RandVar"="RandVar(>= 1.2.0)", "RobAStBase"="RobAStBase(>= 1.2.0)",
+            "ROptEst"="ROptEst(>= 1.2.0)", "ROptEstOld"="ROptEstOld(>= 1.2.0)",
+            "RobAStRDA"="RobAStRDA(>= 1.2.0)")
+colnames(Values) <- names(ReqRVersion0)<- Pkgs
+rownames(Values)  <- Names
+
+changeDescription(startDir = "C:/rtest/robast/",names=Names,pkgs=Pkgs,
+                  values=Values,ReqRVersion =ReqRVersion0,
+                  ReqDistrPkgVersion =ReqDistrPkgVersion0)
+
+Pkgs <- c("RobExtremes")
 Names <- c("Version")
 Values <- matrix(c("1.2.0"),1,length(Pkgs))
 ReqRVersion0 <- rep("R(>= 3.4)",length(Pkgs))
@@ -281,7 +300,7 @@ ReqDistrPkgVersion0 <- vector("list",length(Pkgs))
 names(ReqDistrPkgVersion0) <- Pkgs
 ReqDistrPkgVersion0[["RandVar"]] <- NA
 for(pk in Pkgs) ReqDistrPkgVersion0[[pk]] <- c("distr"="distr(>= 2.8.0)",
-            "distrEx"="distrEx(>= 2.8.0)","distrMod"="distrMod(>= 2.8.0)",
+            "distrEx"="distrEx(>= 2.8.0)","distrMod"="distrMod(>= 2.8.1)",
             "RandVar"="RandVar(>= 1.2.0)", "RobAStBase"="RobAStBase(>= 1.2.0)",
             "ROptEst"="ROptEst(>= 1.2.0)", "ROptEstOld"="ROptEstOld(>= 1.2.0)",
             "RobAStRDA"="RobAStRDA(>= 1.2.0)")
