@@ -10,6 +10,9 @@
 ##############
 v 2.9
 ##############
+under the hood:
++ inserted some ## IGNORE_RDIFF_BEGIN comments to prevent NOTES when comparing R.out.save to 
+  R.out on varying architectures, e.g. Rblas/ATLAS
 
 ##############
 v 2.8.1
