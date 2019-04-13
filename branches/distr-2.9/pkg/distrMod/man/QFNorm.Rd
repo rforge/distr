@@ -27,7 +27,9 @@
 QFNorm()
 
 ## The function is currently defined as
+ ## IGNORE_RDIFF_BEGIN
 function(){ new("QFNorm") }
+ ## IGNORE_RDIFF_END
 }
 \concept{asymptotic covariance}
 \concept{risk}
