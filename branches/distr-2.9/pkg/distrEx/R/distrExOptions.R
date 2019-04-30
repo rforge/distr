@@ -11,7 +11,8 @@
     m2dfRelativeTolerance = .Machine$double.eps^0.25,
     nDiscretize = 100,
     hSmooth = 0.05,
-    IQR.fac = 15
+    IQR.fac = 15,
+    propagate.names.functionals = TRUE
 )
 
 distrExOptions <- function(...) {

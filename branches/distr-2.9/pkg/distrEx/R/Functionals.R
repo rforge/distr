@@ -86,29 +86,37 @@ setMethod("var", signature(x = "CompoundDistribution"),
 #sd
 ################################################################################
 setMethod("sd", signature(x = "UnivariateDistribution"), 
-    function(x, fun, cond, withCond = FALSE, useApply = TRUE, ...){
+    function(x, fun, cond, withCond = FALSE, useApply = TRUE,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...){
+      propagate.names0 <- propagate.names
+      dots <- list(...)
+      dots$propagate.names <- NULL
       if(missing(fun))
         {if(missing(cond))
-           return(sqrt(var(x, useApply = useApply, ...)))
+           return(sqrt(do.call(var,c(list(x, useApply = useApply,
+                                      propagate.names=propagate.names0),dots))))
         else
-           return(sqrt(var(x, cond = cond, withCond = FALSE, useApply = useApply, 
-                  ...)))
+           return(sqrt(do.call(var,c(list(x, cond =cond, withCond = FALSE,
+                                          useApply = useApply, dots)))))
       }else{
         if(missing(cond))
-           return(sqrt(var(x, fun = fun, useApply = useApply, ...)))
+           return(sqrt(do.call(var,c(list(x, fun = fun, useApply = useApply, dots)))))
         else
-           return(sqrt(var(x, fun = fun, cond = cond, withCond = FALSE, 
-                  useApply = useApply,...)))
-           }           
+           return(sqrt(do.call(var,c(list(x, fun = fun, cond =cond, withCond = FALSE,
+                                          useApply = useApply, dots)))))
+           }
     })
 
 ### overload "sd" method for "Norm" ...
 setMethod("sd", signature(x = "Norm"), 
-    function(x, fun, cond, withCond = FALSE, useApply = TRUE, ...){
+    function(x, fun, cond, withCond = FALSE, useApply = TRUE,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...){
       if(missing(fun))
-        {if(missing(cond))
-           return(sd(param(x)))
-        else
+        {if(missing(cond)){
+           ret.v <- sd(param(x))
+           if(!propagate.names){names(ret.v) <- NULL}
+           return(ret.v)
+        }else
            return(sqrt(var(x, cond = cond, withCond = FALSE, useApply = useApply, 
                   ...)))}
       else
@@ -116,7 +124,7 @@ setMethod("sd", signature(x = "Norm"),
            return(sqrt(var(x, fun = fun, useApply = useApply, ...)))
         else
            return(sqrt(var(x, fun = fun, cond = cond, withCond = FALSE, 
-                  useApply = useApply,...)))}           
+                  useApply = useApply,...)))}
     }) 
     
 
@@ -203,7 +211,7 @@ make01 <- function(x){
 # some exact variances:
 #################################################################
 setMethod("var", signature(x = "Norm"),
-    function(x,...){ 
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"),...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -211,12 +219,14 @@ setMethod("var", signature(x = "Norm"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))
        return(var(as(x,"AbscontDistribution"),...))
-    else
-        return(sd(x)^2)
+    else{
+        ret.v <- sd(x)^2
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)}
     })
 
 setMethod("var", signature(x = "Binom"),
-    function(x,...){
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"),...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -224,8 +234,10 @@ setMethod("var", signature(x = "Binom"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))
         return(var(as(x,"DiscreteDistribution"),...))
-    else
-        return(size(x)*prob(x)*(1-prob(x)))
+    else{
+        ret.v <- size(x)*prob(x)*(1-prob(x))
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)}
     })
 ### source: https://mathworld.wolfram.com/BinomialDistribution.html
 
@@ -245,7 +257,7 @@ setMethod("var", signature(x = "Cauchy"),
 ### source https://mathworld.wolfram.com/CauchyDistribution.html
 
 setMethod("var", signature(x = "Chisq"),
-    function(x,...){    
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"),...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -253,8 +265,10 @@ setMethod("var", signature(x = "Chisq"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))
        return(var(as(x,"AbscontDistribution"),...))
-    else
-        return(2*(df(x)+2*ncp(x)))
+    else{
+        ret.v <- 2*(df(x)+2*ncp(x))
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)}
     })
 ### source https://mathworld.wolfram.com/Chi-SquaredDistribution.html
 
@@ -277,7 +291,7 @@ setMethod("var", signature(x = "DExp"),
 ### source https://mathworld.wolfram.com/LaplaceDistribution.html
 
 setMethod("var", signature(x = "Exp"),
-    function(x, ...){    
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -285,14 +299,16 @@ setMethod("var", signature(x = "Exp"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
          return(var(as(x,"AbscontDistribution"),...))
-    else
-        return(1/rate(x)^2)
+    else{
+        ret.v <- 1/rate(x)^2
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)}
     })
 
  ### source https://mathworld.wolfram.com/ExponentialDistribution.html
 
 setMethod("var", signature(x = "Fd"),
-    function(x, ...){
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -300,18 +316,19 @@ setMethod("var", signature(x = "Fd"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
          return(var(as(x,"AbscontDistribution"),...))
-    else
-        {df1 <- df1(x)
+    else{df1 <- df1(x)
          df2 <- df2(x)
          d <- ncp(x)
          Ex2 <- (E(x))^2 
          Exx <- df2^2/(df2-2)/(df2-4)*((df1+d)^2+2*df1+4*d)/df1^2
-        return(ifelse(df2>4,Exx-Ex2, NA ))}
+         ret.v <- if(df2>4) Exx-Ex2 else NA
+         if(!propagate.names){names(ret.v) <- NULL}
+         return(ret.v)}
     })
 ### source (without ncp) https://mathworld.wolfram.com/F-Distribution.html
 
 setMethod("var", signature(x = "Gammad"),
-    function(x, ...){    
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -319,13 +336,15 @@ setMethod("var", signature(x = "Gammad"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
          return(var(as(x,"AbscontDistribution"),...))
-    else
-        return(shape(x)*scale(x)^2)
+    else{
+        ret.v <- shape(x)*scale(x)^2
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)}
     })
 ### source https://mathworld.wolfram.com/GammaDistribution.html
 
 setMethod("var", signature(x = "Geom"),
-    function(x, ...){    
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -333,12 +352,17 @@ setMethod("var", signature(x = "Geom"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
          return(var(as(x,"DiscreteDistribution"),...))
-    else {p <- prob(x); e <- 1/p-1; return(e+e^2)}
+    else{
+        p <- prob(x)
+        e0 <- 1/p-1
+        ret.v <- e0+e0^2
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)}
     })
 ### source https://mathworld.wolfram.com/GeometricDistribution.html
 
 setMethod("var", signature(x = "Hyper"),
-    function(x, ...){    
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -346,16 +370,18 @@ setMethod("var", signature(x = "Hyper"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
          return(var(as(x,"DiscreteDistribution"),...))
-    else
-       {k <- k(x);
-        m <- m(x); 
-        n <- n(x);
-        return(k*n/(m+n)*m/(m+n)*(m+n-k)/(m+n-1))}
+    else{
+        k <- k(x)
+        m <- m(x)
+        n <- n(x)
+        ret.v <- k*n/(m+n)*m/(m+n)*(m+n-k)/(m+n-1)
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)}
     })
 ### source https://mathworld.wolfram.com/HypergeometricDistribution.html
 
 setMethod("var", signature(x = "Logis"),
-    function(x, ...){
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -363,13 +389,16 @@ setMethod("var", signature(x = "Logis"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
         return(var(as(x,"AbscontDistribution"),...))
-    else
-        return(pi^2/3*scale(x)^2)
+    else{
+         ret.v <- pi^2/3*scale(x)^2
+         if(!propagate.names){names(ret.v) <- NULL}
+         return(ret.v)
+    }
     })
 ### source https://mathworld.wolfram.com/LogisticDistribution.html
 
 setMethod("var", signature(x = "Lnorm"),
-    function(x, ...){
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -377,13 +406,16 @@ setMethod("var", signature(x = "Lnorm"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
         return(var(as(x,"AbscontDistribution"),...))
-    else
-        return(exp(2*meanlog(x)+sdlog(x)^2)*(exp(sdlog(x)^2)-1))
+    else{
+         ret.v <- exp(2*meanlog(x)+sdlog(x)^2)*(exp(sdlog(x)^2)-1)
+         if(!propagate.names){names(ret.v) <- NULL}
+         return(ret.v)
+    }
     })
 ### source https://mathworld.wolfram.com/LogNormalDistribution.html
 
 setMethod("var", signature(x = "Nbinom"),
-    function(x, ...){    
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -391,12 +423,17 @@ setMethod("var", signature(x = "Nbinom"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
          return(var(as(x,"DiscreteDistribution"),...))
-    else {p <- prob(x); e <- 1/p-1; return(size(x)*(e+e^2))}
+    else{
+         p <- prob(x); e0 <- 1/p-1
+         ret.v <- size(x)*(e0+e0^2)
+         if(!propagate.names){names(ret.v) <- NULL}
+         return(ret.v)
+    }
     })
 ### source https://mathworld.wolfram.com/NegativeBinomialDistribution.html
 
 setMethod("var", signature(x = "Pois"),
-    function(x, ...){
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -404,13 +441,16 @@ setMethod("var", signature(x = "Pois"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
         return(var(as(x,"DiscreteDistribution"),...))
-    else
-        return(lambda(x))
+    else{
+         ret.v <- lambda(x)
+         if(!propagate.names){names(ret.v) <- NULL}
+         return(ret.v)
+    }
     })
 ### source https://mathworld.wolfram.com/PoissonDistribution.html
 
 setMethod("var", signature(x = "Td"),
-    function(x, ...){
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -421,15 +461,17 @@ setMethod("var", signature(x = "Td"),
     else
         {n <- df(x); d<- ncp(x)
         ## correction thanks to G.Jay Kerns ### corrected again P.R.
-        return(ifelse( n>2, n/(n-2)*(1+d^2)
-                           -d^2*n/2*exp(2*(lgamma((n-1)/2)-lgamma(n/2))), NA))
+         ret.v <- ifelse( n>2, n/(n-2)*(1+d^2)
+                           -d^2*n/2*exp(2*(lgamma((n-1)/2)-lgamma(n/2))), NA)
+         if(!propagate.names){names(ret.v) <- NULL}
+         return(ret.v)
        }
     })
 
 ### source https://mathworld.wolfram.com/NoncentralStudentst-Distribution.html
 
 setMethod("var", signature(x = "Unif"),
-    function(x, ...){
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -437,13 +479,16 @@ setMethod("var", signature(x = "Unif"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
         return(var(as(x,"AbscontDistribution"),...))
-    else
-        return((Max(x)-Min(x))^2/12)
+    else{
+         ret.v <- (Max(x)-Min(x))^2/12
+         if(!propagate.names){names(ret.v) <- NULL}
+         return(ret.v)
+    }
     })
 ### source https://mathworld.wolfram.com/UniformDistribution.html
 
 setMethod("var", signature(x = "Weibull"),
-    function(x, ...){
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -451,13 +496,17 @@ setMethod("var", signature(x = "Weibull"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
         return(var(as(x,"AbscontDistribution"),...))
-    else
-        return(scale(x)^2*(gamma(1+2/shape(x))- (gamma(1 + 1/shape(x)))^2))
+    else{
+         ret.v <- scale(x)^2*(gamma(1+2/shape(x))- (gamma(1 + 1/shape(x)))^2)
+         if(!propagate.names){names(ret.v) <- NULL}
+         return(ret.v)
+
+    }
     })
 ### source https://mathworld.wolfram.com/WeibullDistribution.html
     
 setMethod("var", signature(x = "Beta"),
-    function(x, ...){
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -465,9 +514,12 @@ setMethod("var", signature(x = "Beta"),
     if(hasArg(upp)) upp <- dots$upp
     if((hasArg(fun))||(hasArg(cond))||(!isTRUE(all.equal(ncp(x),0)))) 
         return(var(as(x,"AbscontDistribution"),...))
-    else
-        {a<-shape1(x); b<- shape2(x)
-        return(a*b/(a+b)^2/(a+b+1))}
+    else{
+         a<-shape1(x); b<- shape2(x)
+         ret.v <- a*b/(a+b)^2/(a+b+1)
+         if(!propagate.names){names(ret.v) <- NULL}
+         return(ret.v)
+    }
     })
 ## source: https://mathworld.wolfram.com/BetaDistribution.html
 
@@ -489,31 +541,71 @@ setMethod("var", signature(x = "Arcsine"),
 #################################################################
 
 setMethod("median", signature(x = "Norm"),
-    function(x) mean(x))
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals")){
+    ret.v <- mean(x)
+    if(!propagate.names){names(ret.v) <- NULL}
+    return(ret.v)
+    }
+    )
 
 setMethod("median", signature(x = "Cauchy"),
-    function(x) location(x))
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals")){
+    ret.v <- location(x)
+    if(!propagate.names){names(ret.v) <- NULL}
+    return(ret.v)
+    }
+    )
 
 setMethod("median", signature(x = "Dirac"),
-    function(x) location(x))
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals")){
+    ret.v <- location(x)
+    if(!propagate.names){names(ret.v) <- NULL}
+    return(ret.v)
+    }
+    )
 
 setMethod("median", signature(x = "DExp"),
     function(x) 0)
 
 setMethod("median", signature(x = "Exp"),
-    function(x) log(2)/rate(x))
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals")){
+    ret.v <- log(2)/rate(x)
+    if(!propagate.names){names(ret.v) <- NULL}
+    return(ret.v)
+    }
+    )
 
 setMethod("median", signature(x = "Geom"),
-    function(x) ceiling(-log(2)/log(1-prob(x))-1))
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals")){
+    ret.v <- ceiling(-log(2)/log(1-prob(x))-1)
+    if(!propagate.names){names(ret.v) <- NULL}
+    return(ret.v)
+    }
+    )
 
 setMethod("median", signature(x = "Logis"),
-    function(x) location(x))
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals")){
+    ret.v <- location(x)
+    if(!propagate.names){names(ret.v) <- NULL}
+    return(ret.v)
+    }
+    )
 
 setMethod("median", signature(x = "Lnorm"),
-    function(x) exp(meanlog(x)))
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals")){
+    ret.v <- exp(meanlog(x))
+    if(!propagate.names){names(ret.v) <- NULL}
+    return(ret.v)
+    }
+    )
 
 setMethod("median", signature(x = "Unif"),
-    function(x) (Min(x)+Max(x))/2)
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals")){
+    ret.v <- (Max(x)+Min(x))/2
+    if(!propagate.names){names(ret.v) <- NULL}
+    return(ret.v)
+    }
+    )
 
 setMethod("median", signature(x = "Arcsine"),
     function(x) 0)
@@ -524,10 +616,20 @@ setMethod("median", signature(x = "Arcsine"),
 #################################################################
 
 setMethod("IQR", signature(x = "Norm"),
-    function(x) 2*qnorm(3/4)*sd(x))
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals")){
+    ret.v <- 2*qnorm(3/4)*sd(x)
+    if(!propagate.names){names(ret.v) <- NULL}
+    return(ret.v)
+    }
+    )
 
 setMethod("IQR", signature(x = "Cauchy"),
-    function(x) 2*scale(x)*qcauchy(3/4))
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals")){
+    ret.v <- 2*scale(x)*qcauchy(3/4)
+    if(!propagate.names){names(ret.v) <- NULL}
+    return(ret.v)
+    }
+    )
 
 setMethod("IQR", signature(x = "Dirac"),
     function(x) 0)
@@ -536,17 +638,37 @@ setMethod("IQR", signature(x = "DExp"),
     function(x) 2*log(2))
 
 setMethod("IQR", signature(x = "Exp"),
-    function(x) (log(4)-log(4/3))/rate(x))
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals")){
+    ret.v <- (log(4)-log(4/3))/rate(x)
+    if(!propagate.names){names(ret.v) <- NULL}
+    return(ret.v)
+    }
+    )
 
 setMethod("IQR", signature(x = "Geom"),
-    function(x) ceiling(log(1/4)/log(1-prob(x)))-
-                max(floor(log(3/4)/log(1-prob(x))),0))
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals")){
+    ret.v <- ceiling(log(1/4)/log(1-prob(x)))-
+                max(floor(log(3/4)/log(1-prob(x))),0)
+    if(!propagate.names){names(ret.v) <- NULL}
+    return(ret.v)
+    }
+    )
 
 setMethod("IQR", signature(x = "Logis"),
-    function(x) 2*log(3)*scale(x))
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals")){
+    ret.v <- 2*log(3)*scale(x)
+    if(!propagate.names){names(ret.v) <- NULL}
+    return(ret.v)
+    }
+    )
 
 setMethod("IQR", signature(x = "Unif"),
-    function(x) (Max(x)-Min(x))/2)
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals")){
+    ret.v <- (Max(x)-Min(x))/2
+    if(!propagate.names){names(ret.v) <- NULL}
+    return(ret.v)
+    }
+    )
 
 setMethod("IQR", signature(x = "Arcsine"),
     function(x) sqrt(2))
@@ -556,10 +678,20 @@ setMethod("IQR", signature(x = "Arcsine"),
 #################################################################
 
 setMethod("mad", signature(x = "Norm"),
-    function(x) qnorm(3/4)*sd(x))
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals")){
+    ret.v <- qnorm(3/4)*sd(x)
+    if(!propagate.names){names(ret.v) <- NULL}
+    return(ret.v)
+    }
+    )
 
 setMethod("mad", signature(x = "Cauchy"),
-    function(x)  scale(x)*qcauchy(3/4))
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals")){
+    ret.v <- scale(x)*qcauchy(3/4)
+    if(!propagate.names){names(ret.v) <- NULL}
+    return(ret.v)
+    }
+    )
 
 setMethod("mad", signature(x = "Dirac"),
     function(x) 0)
@@ -568,19 +700,37 @@ setMethod("mad", signature(x = "DExp"),
     function(x) log(2))
 
 setMethod("mad", signature(x = "Exp"),
-    function(x) log((1+sqrt(5))/2)/rate(x))
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals")){
+    ret.v <- log((1+sqrt(5))/2)/rate(x)
+    if(!propagate.names){names(ret.v) <- NULL}
+    return(ret.v)
+    }
+    )
 
 setMethod("mad", signature(x = "Geom"),
-    function(x) {p <- prob(x); pq <-  1-p
-                 m <- median(x); rho <- 1/2*pq^(-m)
-                 max(ceiling(-log(rho/2+sqrt(pq+rho^2/4))/log(pq)),0)
-                 })
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals")) {
+         p <- prob(x); pq <-  1-p
+         m <- median(x); rho <- 1/2*pq^(-m)
+         ret.v <- max(ceiling(-log(rho/2+sqrt(pq+rho^2/4))/log(pq)),0)
+         if(!propagate.names){names(ret.v) <- NULL}
+         return(ret.v)
+         })
 
 setMethod("mad", signature(x = "Logis"),
-    function(x) log(3)*scale(x))
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals")){
+    ret.v <- log(3)*scale(x)
+    if(!propagate.names){names(ret.v) <- NULL}
+    return(ret.v)
+    }
+    )
 
 setMethod("mad", signature(x = "Unif"),
-    function(x) (Max(x)-Min(x))/4)
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals")){
+    ret.v <- (Max(x)-Min(x))/4
+    if(!propagate.names){names(ret.v) <- NULL}
+    return(ret.v)
+    }
+    )
 
 setMethod("mad", signature(x = "Arcsine"),
     function(x) sqrt(1/2))

@@ -12,6 +12,13 @@ v 2.9
 ##############
 
 user-visible CHANGES:
++  taking up a suggestion by Andreas.Scheidegger@eawag.ch, we introduced new 
+   argument propagate.names in our functionals controlling whether names 
+   obtained from parameter coordinates should be propagated to return values 
+   of specific S4 methods for functionals 
++  to this end there is a new distrExoption propagate.names.functionals 
+   used as default in the functionals 
+   
 under the hood:
 
 ##############

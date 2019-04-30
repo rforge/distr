@@ -484,10 +484,13 @@ setMethod("E", signature(object = "DiscreteCondDistribution",
 setMethod("E", signature(object = "Norm", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object, low = NULL, upp = NULL,...){
-    if(is.null(low) && is.null(upp))
-        return(mean(object))
-    else{
+    function(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...){
+    if(is.null(low) && is.null(upp)){
+        ret.v <- mean(object)
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)
+    }else{
         if(is.null(low)) low <- -Inf
         if(is.null(upp)) upp <- Inf
         if(low == -Inf){  
@@ -505,7 +508,9 @@ setMethod("E", signature(object = "Norm",
 setMethod("E", signature(object = "Beta", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object, low = NULL, upp = NULL, ..., diagnostic = FALSE){
+    function(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...,
+             diagnostic = FALSE){
         mc <- match.call()
 
         if(!is.null(low)) if(low <= 0) low <- NULL
@@ -522,19 +527,26 @@ setMethod("E", signature(object = "Beta",
           }
 
           return(res)
-        }else return(shape1(object)/(shape1(object)+shape2(object)))
+        }else{
+          ret.v <- shape1(object)/(shape1(object)+shape2(object))
+          if(!propagate.names){names(ret.v) <- NULL}
+          return(ret.v)
+        }
     })
 ## source: https://mathworld.wolfram.com/BetaDistribution.html
 
 setMethod("E", signature(object = "Binom", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object, low = NULL, upp = NULL, ...){
+    function(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     if(!is.null(low)) if(low <= min(support(object))) low <- NULL
     if(!is.null(upp)) if(upp >= max(support(object))) upp <- NULL
-    if(is.null(low) && is.null(upp))
-        return(size(object)*prob(object))
-    else{
+    if(is.null(low) && is.null(upp)){
+        ret.v <- size(object)*prob(object)
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)
+    }else{
         if(is.null(low)) low <- -Inf
         if(is.null(upp)) upp <- Inf
         if(low == -Inf){  
@@ -588,11 +600,14 @@ setMethod("E", signature(object = "Cauchy",
 setMethod("E", signature(object = "Chisq", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object, low = NULL, upp = NULL, ...){
+    function(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     if(!is.null(low)) if(low <= 0) low <- NULL
-    if(is.null(low) && is.null(upp))
-        return(df(object)+ncp(object))
-    else{
+    if(is.null(low) && is.null(upp)){
+        ret.v <- df(object)+ncp(object)
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)
+    }else{
         if(is.null(low)) low <- -Inf
         if(is.null(upp)) upp <- Inf
         if(low == -Inf){  
@@ -611,10 +626,13 @@ setMethod("E", signature(object = "Chisq",
 setMethod("E", signature(object = "Dirac", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object, low = NULL, upp = NULL, ...){
-    if(is.null(low) && is.null(upp))
-        return(location(object))
-    else{ 
+    function(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...){
+    if(is.null(low) && is.null(upp)){
+        ret.v <- location(object)
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)
+    }else{
      if(is.null(low)) low <- -Inf
      if(is.null(upp)) upp <- Inf
      return(location(object)*(location(object)>=low & location(object) <=upp))
@@ -645,11 +663,14 @@ setMethod("E", signature(object = "DExp",
 setMethod("E", signature(object = "Exp", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object, low = NULL, upp = NULL, ...){
+    function(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     if(!is.null(low)) if(low <= 0) low <- NULL
-    if(is.null(low) && is.null(upp))
-        return(1/rate(object))
-    else{
+    if(is.null(low) && is.null(upp)){
+        ret.v <- 1/rate(object)
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)
+    }else{
         if(is.null(low)) low <- -Inf
         if(is.null(upp)) upp <- Inf
         if(low == -Inf){  
@@ -669,15 +690,18 @@ setMethod("E", signature(object = "Exp",
 setMethod("E", signature(object = "Fd", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object, low = NULL, upp = NULL, ..., diagnostic = FALSE){
+    function(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...,
+             diagnostic = FALSE){
     if(!is.null(low)) if(low <= 0) low <- NULL
     if(is.null(low) && is.null(upp)){
         df1 <- df1(object)
         df2 <- df2(object)
         d <- ncp(object)
-        return(ifelse(df2>2,df2/(df2-2)*(df1+d)/df1,Inf))
-     }   
-    else{
+        ret.v <- ifelse(df2>2,df2/(df2-2)*(df1+d)/df1,Inf)
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)
+    }else{
       mc <- match.call()
       res <- E(as(object,"AbscontDistribution"), low=low, upp=upp, ..., diagnostic = diagnostic)
 
@@ -696,11 +720,15 @@ setMethod("E", signature(object = "Fd",
 setMethod("E", signature(object = "Gammad", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object, low = NULL, upp = NULL, ..., diagnostic = FALSE){
+    function(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...,
+             diagnostic = FALSE){
     if(!is.null(low)) if(low <= 0) low <- NULL
-    if(is.null(low) && is.null(upp))
-        return(shape(object)*scale(object))
-    else{
+    if(is.null(low) && is.null(upp)){
+        ret.v <- shape(object)*scale(object)
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)
+    }else{
       mc <- match.call()
       res <- E(object, fun = function(x)1, low=low, upp=upp, ..., diagnostic = diagnostic)
 
@@ -764,37 +792,47 @@ setMethod("E", signature(object = "Gammad",
 setMethod("E", signature(object = "Geom",
                          fun = "missing",
                          cond = "missing"),
-    function(object, low = NULL, upp = NULL, ...){
+    function(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     if(!is.null(low)) if(low <= min(support(object))) low <- NULL
     if(!is.null(upp)) if(upp >= max(support(object))) upp <- NULL
-    if(is.null(low) && is.null(upp))
-        return(1/ prob(object) -1)
-    else
-        return(E(as(object,"DiscreteDistribution"), low=low, upp=upp, ...))    
-    })
+    if(is.null(low) && is.null(upp)){
+        ret.v <- 1/ prob(object) -1
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)
+    }else{
+        return(E(as(object,"DiscreteDistribution"), low=low, upp=upp, ...))
+    }})
 
 ### source https://mathworld.wolfram.com/GeometricDistribution.html
 
 setMethod("E", signature(object = "Hyper", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object, low = NULL, upp = NULL, ...){
+    function(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     if(!is.null(low)) if(low <= min(support(object))) low <- NULL
     if(!is.null(upp)) if(upp >= max(support(object))) upp <- NULL
-    if(is.null(low) && is.null(upp))
-        return(k(object)*m(object)/(m(object)+n(object)))
-    else
-        return(E(as(object,"DiscreteDistribution"), low=low, upp=upp, ...))    
-    })
+    if(is.null(low) && is.null(upp)){
+        ret.v <- k(object)*m(object)/(m(object)+n(object))
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)
+    }else{
+        return(E(as(object,"DiscreteDistribution"), low=low, upp=upp, ...))
+    }})
 ### source https://mathworld.wolfram.com/HypergeometricDistribution.html
 
 setMethod("E", signature(object = "Logis", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object, low = NULL, upp = NULL, ..., diagnostic = FALSE){
-    if(is.null(low) && is.null(upp))
-        return(location(object))
-    else{
+    function(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"),
+             ..., diagnostic = FALSE){
+    if(is.null(low) && is.null(upp)){
+        ret.v <- location(object)
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)
+    }else{
       mc <- match.call()
       res <- E(as(object,"AbscontDistribution"), low=low, upp=upp, ..., diagnostic = diagnostic)
 
@@ -813,11 +851,15 @@ setMethod("E", signature(object = "Logis",
 setMethod("E", signature(object = "Lnorm", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object, low = NULL, upp = NULL, ..., diagnostic = FALSE){
+    function(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...,
+             diagnostic = FALSE){
     if(!is.null(low)) if(low <= 0) low <- NULL
-    if(is.null(low) && is.null(upp))
-        return(exp(meanlog(object)+sdlog(object)^2/2))
-    else{
+    if(is.null(low) && is.null(upp)){
+        ret.v <- exp(meanlog(object)+sdlog(object)^2/2)
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)
+    }else{
       mc <- match.call()
       if(is.null(low) && is.null(upp)) return(0) else{
         mc <- match.call()
@@ -838,25 +880,32 @@ setMethod("E", signature(object = "Lnorm",
 setMethod("E", signature(object = "Nbinom", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object, low = NULL, upp = NULL, ...){
+    function(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"),
+             ...){
     if(!is.null(low)) if(low <= min(support(object))) low <- NULL
     if(!is.null(upp)) if(upp >= max(support(object))) upp <- NULL
-    if(is.null(low) && is.null(upp))
-        return(size(object)*(1-prob(object))/prob(object))
-    else
-        return(E(as(object,"DiscreteDistribution"), low=low, upp=upp, ...))    
-    })
+    if(is.null(low) && is.null(upp)){
+        ret.v <- size(object)*(1-prob(object))/prob(object)
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)
+    }else{
+        return(E(as(object,"DiscreteDistribution"), low=low, upp=upp, ...))
+    }})
 ### source https://mathworld.wolfram.com/NegativeBinomialDistribution.html
 
 setMethod("E", signature(object = "Pois", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object, low = NULL, upp = NULL, ...){
+    function(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     if(!is.null(low)) if(low <= min(support(object))) low <- NULL
     if(!is.null(upp)) if(upp >= max(support(object))) upp <- NULL
-    if(is.null(low) && is.null(upp))
-        return(lambda(object))
-    else
+    if(is.null(low) && is.null(upp)){
+        ret.v <- (lambda(object))
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)
+    }else
         return(E(as(object,"DiscreteDistribution"), low=low, upp=upp, ...))    
     })
 ### source https://mathworld.wolfram.com/PoissonDistribution.html
@@ -864,14 +913,18 @@ setMethod("E", signature(object = "Pois",
 setMethod("E", signature(object = "Td", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object, low = NULL, upp = NULL, ..., diagnostic = FALSE){
+    function(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"),
+             ..., diagnostic = FALSE){
         ## correction thanks to G.Jay Kerns
-    if(is.null(low) && is.null(upp))
-        return(ifelse( df(object)>1, 
+    if(is.null(low) && is.null(upp)){
+        ret.v <- ifelse( df(object)>1,
                        ncp(object)*sqrt(df(object)/2)*
-                         exp(lgamma((df(object)-1)/2)-lgamma(df(object)/2)), 
-                       NA))
-    else{
+                         exp(lgamma((df(object)-1)/2)-lgamma(df(object)/2)),
+                       NA)
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)
+    }else{
       mc <- match.call()
       res <- E(as(object,"AbscontDistribution"), low=low, upp=upp, ..., diagnostic = diagnostic)
 
@@ -889,12 +942,16 @@ setMethod("E", signature(object = "Td",
 setMethod("E", signature(object = "Unif", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object, low = NULL, upp = NULL, ..., diagnostic = FALSE){
+    function(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"),
+             ..., diagnostic = FALSE){
     if(!is.null(low)) if(low <= Min(object)) low <- NULL
     if(!is.null(upp)) if(upp >= Max(object)) upp <- NULL
-    if(is.null(low) && is.null(upp))
-        return((Max(object)+Min(object))/2)
-    else{
+    if(is.null(low) && is.null(upp)){
+        ret.v <- (Max(object)+Min(object))/2
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)
+    }else{
       mc <- match.call()
       res <- E(as(object,"AbscontDistribution"), low=low, upp=upp, ..., diagnostic = diagnostic)
 
@@ -913,11 +970,15 @@ setMethod("E", signature(object = "Unif",
 setMethod("E", signature(object = "Weibull", 
                          fun = "missing", 
                          cond = "missing"),
-    function(object, low = NULL, upp = NULL, ..., diagnostic = FALSE){
+    function(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"),
+             ..., diagnostic = FALSE){
     if(!is.null(low)) if(low <= 0) low <- NULL
-    if(is.null(low) && is.null(upp))
-        return(scale(object)*gamma(1+1/shape(object)))
-    else{
+    if(is.null(low) && is.null(upp)){
+        ret.v <- scale(object)*gamma(1+1/shape(object))
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)
+    }else{
       mc <- match.call()
       res <- E(object, fun = function(x)1, low=low, upp=upp, ..., diagnostic = diagnostic)
 

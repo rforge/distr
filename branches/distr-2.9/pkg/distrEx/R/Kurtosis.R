@@ -87,7 +87,7 @@ setMethod("kurtosis", signature(x = "Norm"),
     })
 #
 setMethod("kurtosis", signature(x = "Binom"),
-    function(x,  ...){
+    function(x,  propagate.names=getdistrExOption("propagate.names.functionals"),  ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -95,9 +95,11 @@ setMethod("kurtosis", signature(x = "Binom"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))
        return(kurtosis(as(x,"DiscreteDistribution"),...))
-    else
+    else{
         p <- prob(x)
-        return((1-6*p*(1-p))/(size(x)*p*(1-p)))
+        ret.v <- (1-6*p*(1-p))/(size(x)*p*(1-p))
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)}
     })
 ### source: https://mathworld.wolfram.com/BinomialDistribution.html
 
@@ -118,7 +120,7 @@ setMethod("kurtosis", signature(x = "Cauchy"),
 
 #
 setMethod("kurtosis", signature(x = "Chisq"),
-    function(x,...){    
+    function(x,  propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -126,8 +128,10 @@ setMethod("kurtosis", signature(x = "Chisq"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))
        return(kurtosis(as(x,"AbscontDistribution"),...))
-    else
-        return(12*(df(x)+4*ncp(x))/(df(x)+2*ncp(x))^2)
+    else{
+        ret.v <- 12*(df(x)+4*ncp(x))/(df(x)+2*ncp(x))^2
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)}
     })
 ### source https://mathworld.wolfram.com/Chi-SquaredDistribution.html
 
@@ -152,7 +156,7 @@ setMethod("kurtosis", signature(x = "DExp"),
 
 #
 setMethod("kurtosis", signature(x = "Exp"),
-    function(x, ...){    
+    function(x, ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -167,7 +171,7 @@ setMethod("kurtosis", signature(x = "Exp"),
 
 #
 setMethod("kurtosis", signature(x = "Fd"),
-    function(x, ...){
+    function(x,  propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -194,7 +198,9 @@ setMethod("kurtosis", signature(x = "Fd"),
           mmd4 <- 105 + 420*d + 210*d^2 + 28*d^3 + d^4
           mm <- mm4 + 4*mm3*mmd1 + 6*mm2*mmd2 + 4*mm1*mmd3+ mmd4          
           m4 <- (n/m)^4/(n-2)/(n-4)/(n-6)/(n-8)*mm
-          return((m4-4*m3*m1+6*m2*m1^2+3*m1^4)/m2^2-3)
+          ret.v <- (m4-4*m3*m1+6*m2*m1^2+3*m1^4)/m2^2-3
+          if(!propagate.names){names(ret.v) <- NULL}
+          return(ret.v)
 #          L <- d/m
 #          m2 <- 2*n^2*(m+n-2)/m/(n-2)^2/(n-4)*(1+2*L+m*L^2/(m+n-2))
 #          a <-  12*n^4*(m+n-2)/m^3/(n-2)^4/(n-4)/(n-6)/(n-8)
@@ -207,12 +213,11 @@ setMethod("kurtosis", signature(x = "Fd"),
         } else {
           return(NA)
         }
-    }
-    })
+    }})
 ### source (without ncp) https://mathworld.wolfram.com/F-Distribution.html
 #
 setMethod("kurtosis", signature(x = "Gammad"),
-    function(x, ...){    
+    function(x,  propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -220,14 +225,16 @@ setMethod("kurtosis", signature(x = "Gammad"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
          return(kurtosis(as(x,"AbscontDistribution"),...))
-    else
-        return(6/shape(x))
+    else{
+        ret.v <- 6/shape(x)
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)}
     })
 
 ### source https://mathworld.wolfram.com/GammaDistribution.html
 #
 setMethod("kurtosis", signature(x = "Geom"),
-    function(x, ...){    
+    function(x,  propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -235,13 +242,15 @@ setMethod("kurtosis", signature(x = "Geom"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
          return(kurtosis(as(x,"DiscreteDistribution"),...))
-    else
-        return(6+ prob(x)^2/(1-prob(x)))
+    else{
+        ret.v <- 6+ prob(x)^2/(1-prob(x))
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)}
     })
 ### source https://mathworld.wolfram.com/GeometricDistribution.html
 #
 setMethod("kurtosis", signature(x = "Hyper"),
-    function(x, ...){    
+    function(x,  propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -249,16 +258,15 @@ setMethod("kurtosis", signature(x = "Hyper"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
          return(kurtosis(as(x,"DiscreteDistribution"),...))
-    else
-       {k <- k(x);
-        m <- m(x); 
-        n <- n(x);
-        a <- (m+n)^2*(m+n-1)/(k*m*n*(m+n-k)*(m+n-2)*(m+n-3));
-        return(
-                a*((m+n)*(m+n+1-6*k)+3*m*n*(k-2)+6*k^2+3*m*n*k*(6-k)/(m+n)
-                -18*m*n*k^2/(m+n)^2)-3
-              )
-        }
+    else{
+        k <- k(x)
+        m <- m(x)
+        n <- n(x)
+        a <- (m+n)^2*(m+n-1)/(k*m*n*(m+n-k)*(m+n-2)*(m+n-3))
+        ret.v <- a*((m+n)*(m+n+1-6*k)+3*m*n*(k-2)+6*k^2+3*m*n*k*(6-k)/(m+n))
+        ret.v <- ret.v -a*(18*m*n*k^2/(m+n)^2)-3
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)}
     })
 ### source https://mathworld.wolfram.com/HypergeometricDistribution.html
 #
@@ -277,7 +285,7 @@ setMethod("kurtosis", signature(x = "Logis"),
 ### source https://mathworld.wolfram.com/LogisticDistribution.html
 #
 setMethod("kurtosis", signature(x = "Lnorm"),
-    function(x, ...){
+    function(x,  propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -287,13 +295,14 @@ setMethod("kurtosis", signature(x = "Lnorm"),
         return(kurtosis(as(x,"AbscontDistribution"),...))
     } else {
         w <- exp(sdlog(x)^2)
-        return( w^4+2*w^3+3*w^2-6)
-    }
+        ret.v <- w^4+2*w^3+3*w^2-6
+          if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)}
     })
 ### source https://mathworld.wolfram.com/LogNormalDistribution.html
 #
 setMethod("kurtosis", signature(x = "Nbinom"),
-    function(x, ...){    
+    function(x,  propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -301,13 +310,16 @@ setMethod("kurtosis", signature(x = "Nbinom"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
          return(kurtosis(as(x,"DiscreteDistribution"),...))
-    else
-        return(6/size(x)+prob(x)^2/(size(x)*(1-prob(x))))
+    else{
+          ret.v <- 6/size(x)+prob(x)^2/(size(x)*(1-prob(x)))
+          if(!propagate.names){names(ret.v) <- NULL}
+          return(ret.v)
+    }
     })
 ### source https://mathworld.wolfram.com/NegativeBinomialDistribution.html
 #
 setMethod("kurtosis", signature(x = "Pois"),
-    function(x, ...){
+    function(x,  propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -315,13 +327,15 @@ setMethod("kurtosis", signature(x = "Pois"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
         return(kurtosis(as(x,"DiscreteDistribution"),...))
-    else
-        return(1/lambda(x))
+    else{
+        ret.v <- 1/lambda(x)
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)}
     })
 ### source https://mathworld.wolfram.com/PoissonDistribution.html
 #
 setMethod("kurtosis", signature(x = "Td"),
-    function(x, ...){
+    function(x,  propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -337,7 +351,9 @@ setMethod("kurtosis", signature(x = "Td"),
           m1 <- E(x)
           m3 <- (n/2)^1.5*(3*d+d^3)*exp(lgamma((n-3)/2)-lgamma(n/2))
           m4 <- n^2*(3+6*d^2+d^4)/(n-2)/(n-4)
-          return((m4-4*m3*m1+6*m2*m1^2+3*m1^4)/m2^2-3)
+          ret.v <- (m4-4*m3*m1+6*m2*m1^2+3*m1^4)/m2^2-3
+          if(!propagate.names){names(ret.v) <- NULL}
+          return(ret.v)
         } else {
           return(NA)
         }
@@ -361,7 +377,7 @@ setMethod("kurtosis", signature(x = "Unif"),
 ### source https://mathworld.wolfram.com/UniformDistribution.html
 #
 setMethod("kurtosis", signature(x = "Weibull"),
-    function(x, ...){
+    function(x,  propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -369,18 +385,20 @@ setMethod("kurtosis", signature(x = "Weibull"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
         return(kurtosis(as(x,"AbscontDistribution"),...))
-    else
+    else{
         g1 <- gamma(1+1/shape(x))
         g2 <- gamma(1+2/shape(x))
         g3 <- gamma(1+3/shape(x))
         g4 <- gamma(1+4/shape(x))
         v <- (g2-g1^2)^2
-        return( (g4-4*g3*g1+6*g2*g1^2-3*g1^4)/v - 3 )
+        ret.v <- (g4-4*g3*g1+6*g2*g1^2-3*g1^4)/v - 3
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)}
     })
 ### source https://mathworld.wolfram.com/WeibullDistribution.html
 #    
 setMethod("kurtosis", signature(x = "Beta"),
-    function(x, ...){
+    function(x,  propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -390,7 +408,9 @@ setMethod("kurtosis", signature(x = "Beta"),
         return(kurtosis(as(x,"AbscontDistribution"),...))
     else
         {a<-shape1(x); b<- shape2(x)
-        return(6*(a^3-a^2*(2*b-1)+b^2*(b+1)-2*a*b*(b+2))/(a*b*(a+b+2)*(a+b+3)) )}
+        ret.v <- 6*(a^3-a^2*(2*b-1)+b^2*(b+1)-2*a*b*(b+2))/(a*b*(a+b+2)*(a+b+3))
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)}
     })
 ## source: https://mathworld.wolfram.com/BetaDistribution.html
 

@@ -195,26 +195,38 @@ E(object, fun, cond, ...)
              upp = NULL, ..., diagnostic = FALSE)
 
 \S4method{E}{Arcsine,missing,missing}(object, low = NULL, upp = NULL, ..., diagnostic = FALSE)
-\S4method{E}{Beta,missing,missing}(object, low = NULL, upp = NULL, ..., diagnostic = FALSE)
-\S4method{E}{Binom,missing,missing}(object, low = NULL, upp = NULL, ...)
+\S4method{E}{Beta,missing,missing}(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...,
+             diagnostic = FALSE)
+\S4method{E}{Binom,missing,missing}(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...)
 \S4method{E}{Cauchy,missing,missing}(object, low = NULL, upp = NULL, ..., diagnostic = FALSE)
 \S4method{E}{Cauchy,function,missing}(object, fun, low = NULL, upp = NULL,
              rel.tol = getdistrExOption("ErelativeTolerance"),
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"),
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"),
-             IQR.fac = max(1e4,getdistrExOption("IQR.fac")), ..., diagnostic = FALSE)
-\S4method{E}{Chisq,missing,missing}(object, low = NULL, upp = NULL, ...)
-\S4method{E}{Dirac,missing,missing}(object, low = NULL, upp = NULL, ...)
+             IQR.fac = max(1e4,getdistrExOption("IQR.fac")),
+             ..., diagnostic = FALSE)
+\S4method{E}{Chisq,missing,missing}(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...)
+\S4method{E}{Dirac,missing,missing}(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...)
 \S4method{E}{DExp,missing,missing}(object, low = NULL, upp = NULL, ..., diagnostic = FALSE)
-\S4method{E}{Exp,missing,missing}(object, low = NULL, upp = NULL, ...)
-\S4method{E}{Fd,missing,missing}(object, low = NULL, upp = NULL, ..., diagnostic = FALSE)
-\S4method{E}{Gammad,missing,missing}(object, low = NULL, upp = NULL, ..., diagnostic = FALSE)
-\S4method{E}{Gammad,function,missing}(object, fun, low = NULL, upp = NULL, 
+\S4method{E}{Exp,missing,missing}(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...)
+\S4method{E}{Fd,missing,missing}(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...,
+             diagnostic = FALSE)
+\S4method{E}{Gammad,missing,missing}(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...,
+             diagnostic = FALSE)
+\S4method{E}{Gammad,function,missing}(object, fun, low = NULL, upp = NULL,
              rel.tol = getdistrExOption("ErelativeTolerance"),
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"),
              upperTruncQuantile = getdistrExOption("EupperTruncQuantile"),
              IQR.fac = max(1e4,getdistrExOption("IQR.fac")), ..., diagnostic = FALSE)
-\S4method{E}{Geom,missing,missing}(object, low = NULL, upp = NULL, ...)
+\S4method{E}{Geom,missing,missing}(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...)
 %\S4method{E}{Gumbel,missing,missing}(object, low = NULL, upp = NULL, ...)
 %\S4method{E}{GPareto,missing,missing}(object, low = NULL, upp = NULL, ...)
 %\S4method{E}{GPareto,function,missing}(object, fun, low = NULL, upp = NULL,
@@ -222,16 +234,30 @@ E(object, fun, cond, ...)
 %             lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"),
 %             upperTruncQuantile = getdistrExOption("EupperTruncQuantile"),
 %             IQR.fac = max(1e4,getdistrExOption("IQR.fac")), ...)
-\S4method{E}{Hyper,missing,missing}(object, low = NULL, upp = NULL, ...)
-\S4method{E}{Logis,missing,missing}(object, low = NULL, upp = NULL, ..., diagnostic = FALSE)
-\S4method{E}{Lnorm,missing,missing}(object, low = NULL, upp = NULL, ..., diagnostic = FALSE)
-\S4method{E}{Nbinom,missing,missing}(object, low = NULL, upp = NULL, ...)
-\S4method{E}{Norm,missing,missing}(object, low = NULL, upp = NULL, ...)
+\S4method{E}{Hyper,missing,missing}(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...)
+\S4method{E}{Logis,missing,missing}(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...,
+             diagnostic = FALSE)
+\S4method{E}{Lnorm,missing,missing}(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...,
+             diagnostic = FALSE)
+\S4method{E}{Nbinom,missing,missing}(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...)
+\S4method{E}{Norm,missing,missing}(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...)
 %\S4method{E}{Pareto,missing,missing}(object, low = NULL, upp = NULL, ...)
-\S4method{E}{Pois,missing,missing}(object, low = NULL, upp = NULL, ...)
-\S4method{E}{Unif,missing,missing}(object, low = NULL, upp = NULL, ..., diagnostic = FALSE)
-\S4method{E}{Td,missing,missing}(object, low = NULL, upp = NULL, ..., diagnostic = FALSE)
-\S4method{E}{Weibull,missing,missing}(object, low = NULL, upp = NULL, ..., diagnostic = FALSE)
+\S4method{E}{Pois,missing,missing}(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...)
+\S4method{E}{Unif,missing,missing}(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...,
+             diagnostic = FALSE)
+\S4method{E}{Td,missing,missing}(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...,
+             diagnostic = FALSE)
+\S4method{E}{Weibull,missing,missing}(object, low = NULL, upp = NULL,
+             propagate.names=getdistrExOption("propagate.names.functionals"), ...,
+             diagnostic = FALSE)
 \S4method{E}{Weibull,function,missing}(object, fun, low = NULL, upp = NULL,
              rel.tol = getdistrExOption("ErelativeTolerance"),
              lowerTruncQuantile = getdistrExOption("ElowerTruncQuantile"),
@@ -272,6 +298,10 @@ E(object, fun, cond, ...)
     or \code{"GLIntegrate"}), \code{call}, \code{result} (the complete return
     value of the method),  \code{args} (the args with which the
     method was called), and \code{time} (the time to compute the integral). }
+  \item{propagate.names}{ logical: should names obtained from parameter
+     coordinates be propagated to return values of specific S4 methods
+     for functionals; defaults to the value of the respective
+     \code{distrExoption} \code{propagate.names.functionals}. }
 }
 \details{The precision of the computations can be controlled via 
   certain global options; cf. \code{\link{distrExOptions}}. 

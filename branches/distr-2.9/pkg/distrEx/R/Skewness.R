@@ -54,7 +54,7 @@ setMethod("skewness", signature(x = "AffLinLatticeDistribution"),
 ###
 #
 setMethod("skewness", signature(x = "Norm"),
-    function(x,...){ 
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -67,7 +67,7 @@ setMethod("skewness", signature(x = "Norm"),
     })
 #
 setMethod("skewness", signature(x = "Binom"),
-    function(x,  ...){
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"),  ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -75,14 +75,17 @@ setMethod("skewness", signature(x = "Binom"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
        return(skewness(as(x,"DiscreteDistribution"),...))
-    else
-        return((1-2*prob(x))/sqrt(size(x)*prob(x)*(1-prob(x))))
+    else{
+          ret.v <- (1-2*prob(x))/sqrt(size(x)*prob(x)*(1-prob(x)))
+          if(!propagate.names){names(ret.v) <- NULL}
+          return(ret.v)
+    }
     })
 ### source: https://mathworld.wolfram.com/BinomialDistribution.html
 
 #
 setMethod("skewness", signature(x = "Cauchy"),
-    function(x,...){    
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -97,7 +100,7 @@ setMethod("skewness", signature(x = "Cauchy"),
 
 #
 setMethod("skewness", signature(x = "Chisq"),
-    function(x,...){    
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -105,8 +108,11 @@ setMethod("skewness", signature(x = "Chisq"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp)) 
        return(skewness(as(x,"AbscontDistribution"),...))
-    else
-        return( sqrt(8)*(df(x)+3*ncp(x))/(df(x)+2*ncp(x))^1.5)
+    else{
+          ret.v <- sqrt(8)*(df(x)+3*ncp(x))/(df(x)+2*ncp(x))^1.5
+          if(!propagate.names){names(ret.v) <- NULL}
+          return(ret.v)
+    }
     })
 ### source https://mathworld.wolfram.com/Chi-SquaredDistribution.html
 
@@ -116,7 +122,7 @@ setMethod("skewness", signature(x = "Dirac"),
 
 #
 setMethod("skewness", signature(x = "DExp"),
-    function(x, ...){    
+    function(x, ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -131,7 +137,7 @@ setMethod("skewness", signature(x = "DExp"),
 
 #
 setMethod("skewness", signature(x = "Exp"),
-    function(x, ...){    
+    function(x, ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -146,7 +152,7 @@ setMethod("skewness", signature(x = "Exp"),
 
 #
 setMethod("skewness", signature(x = "Fd"),
-    function(x, ...){
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -167,7 +173,9 @@ setMethod("skewness", signature(x = "Fd"),
                   (m^3+6*m^2+8*m+3*d*(m^2+6*m+8)+3*d^2*(m+4)+d^3)
 #          a <-  8*n^3*(m+n-2)*(2*m+n-2)/m^2/(n-2)^3/(n-4)/(n-6)
 #          b <-  1+3*L+6*m*L^2/(2*m+n-2)+2*m^2*L^3/(m+n-2)/(2*m+n-2)
-          return((m3-3*m2*m1-m1^3)/m2^1.5)
+          ret.v <- (m3-3*m2*m1-m1^3)/m2^1.5
+          if(!propagate.names){names(ret.v) <- NULL}
+          return(ret.v)
         } else {
           return(NA)
         }
@@ -176,7 +184,7 @@ setMethod("skewness", signature(x = "Fd"),
 ### source (without ncp) https://mathworld.wolfram.com/F-Distribution.html
 #
 setMethod("skewness", signature(x = "Gammad"),
-    function(x, ...){    
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -184,13 +192,15 @@ setMethod("skewness", signature(x = "Gammad"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))  
          return(skewness(as(x,"AbscontDistribution"),...))
-    else
-        return(2/sqrt(shape(x)))
-    })
+    else{
+        ret.v <- 2/sqrt(shape(x))
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)
+    }})
 ### source https://mathworld.wolfram.com/GammaDistribution.html
 #
 setMethod("skewness", signature(x = "Geom"),
-    function(x, ...){    
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -200,13 +210,15 @@ setMethod("skewness", signature(x = "Geom"),
          return(skewness(as(x,"DiscreteDistribution"),...))
     else{
         p <- prob(x)
-        return((2-p)/sqrt(1-p))
+        ret.v <- (2-p)/sqrt(1-p)
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)
     }
     })
 ### source https://mathworld.wolfram.com/GeometricDistribution.html
 #
 setMethod("skewness", signature(x = "Hyper"),
-    function(x, ...){    
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -215,10 +227,12 @@ setMethod("skewness", signature(x = "Hyper"),
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))  
          return(skewness(as(x,"DiscreteDistribution"),...))
     else
-       {k <- k(x);
-        m <- m(x); 
-        n <- n(x);
-        return( sqrt((m+n-1)/(k*m*n)/(m+n-k))*(n-m)*(m+n-2*k)/(m+n-2) )
+       {k <- k(x)
+        m <- m(x)
+        n <- n(x)
+        ret.v <- sqrt((m+n-1)/(k*m*n)/(m+n-k))*(n-m)*(m+n-2*k)/(m+n-2)
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)
         }
     })
 ### source https://mathworld.wolfram.com/HypergeometricDistribution.html
@@ -238,7 +252,7 @@ setMethod("skewness", signature(x = "Logis"),
 ### source https://mathworld.wolfram.com/LogisticDistribution.html
 #
 setMethod("skewness", signature(x = "Lnorm"),
-    function(x, ...){
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -248,13 +262,15 @@ setMethod("skewness", signature(x = "Lnorm"),
         return(skewness(as(x,"AbscontDistribution"),...))
     } else {
         w <- exp(sdlog(x)^2)
-        return( sqrt(w-1)*(w+2) )
+        ret.v <-  sqrt(w-1)*(w+2)
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)
     }
     })
 ### source https://mathworld.wolfram.com/LogNormalDistribution.html
 #
 setMethod("skewness", signature(x = "Nbinom"),
-    function(x, ...){    
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -262,16 +278,17 @@ setMethod("skewness", signature(x = "Nbinom"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))  
          return(skewness(as(x,"DiscreteDistribution"),...))
-    else
-        {
+    else{
         p <- prob(x)
-        return((2-p)/sqrt((1-p)*size(x)))
+        ret.v <- (2-p)/sqrt((1-p)*size(x))
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)
     }
     })
 ### source https://mathworld.wolfram.com/NegativeBinomialDistribution.html
 #
 setMethod("skewness", signature(x = "Pois"),
-    function(x, ...){
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -279,13 +296,16 @@ setMethod("skewness", signature(x = "Pois"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))  
         return(skewness(as(x,"DiscreteDistribution"),...))
-    else
-        return(1/sqrt(lambda(x)))
+    else{
+        ret.v <- 1/sqrt(lambda(x))
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)
+    }
     })
 ### source https://mathworld.wolfram.com/PoissonDistribution.html
 #
 setMethod("skewness", signature(x = "Td"),
-    function(x, ...){
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -299,7 +319,9 @@ setMethod("skewness", signature(x = "Td"),
         m1 <- E(x)
         m2 <- var(x)
         m3 <- (n/2)^1.5*(3*d+d^3)*exp(lgamma((n-3)/2)-lgamma(n/2))
-         return((m3-3*m2*m1-m1^3)/m2^1.5)
+        ret.v <- (m3-3*m2*m1-m1^3)/m2^1.5
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v)
         } else {
          return(NA)
         }
@@ -323,7 +345,7 @@ setMethod("skewness", signature(x = "Unif"),
 ### source https://mathworld.wolfram.com/UniformDistribution.html
 #
 setMethod("skewness", signature(x = "Weibull"),
-    function(x, ...){
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -331,16 +353,18 @@ setMethod("skewness", signature(x = "Weibull"),
     if(hasArg(upp)) upp <- dots$upp
     if(hasArg(fun)||hasArg(cond)||!is.null(low)||!is.null(upp))  
         return(skewness(as(x,"AbscontDistribution"),...))
-    else
+    else{
         g1 <- gamma(1+1/shape(x))
         g2 <- gamma(1+2/shape(x))
         g3 <- gamma(1+3/shape(x))
-        return( (g3-3*g1*(g2-g1^2)-g1^3)/(g2-g1^2)^1.5 )
+        ret.v <-  (g3-3*g1*(g2-g1^2)-g1^3)/(g2-g1^2)^1.5
+        if(!propagate.names){names(ret.v) <- NULL}
+        return(ret.v) }
     })
 ### source https://mathworld.wolfram.com/WeibullDistribution.html
 #    
 setMethod("skewness", signature(x = "Beta"),
-    function(x, ...){
+    function(x, propagate.names=getdistrExOption("propagate.names.functionals"), ...){
     dots <- match.call(call = sys.call(sys.parent(1)), 
                        expand.dots = FALSE)$"..."
     fun <- NULL; cond <- NULL; low <- NULL; upp <- NULL
@@ -350,7 +374,9 @@ setMethod("skewness", signature(x = "Beta"),
         return(skewness(as(x,"AbscontDistribution"),...))
     else
         {a<-shape1(x); b<- shape2(x)
-        return( 2*(b-a)*sqrt(a+b+1)/(a+b+2)/sqrt(a*b) ) }
+         ret.v <- 2*(b-a)*sqrt(a+b+1)/(a+b+2)/sqrt(a*b)
+         if(!propagate.names){names(ret.v) <- NULL}
+         return(ret.v) }
     })
 ## source: https://mathworld.wolfram.com/BetaDistribution.html
 

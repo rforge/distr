@@ -8,7 +8,11 @@
  information)
 
 ##############
-v 2.9
+v 2.9.0
+##############
+
+##############
+v 2.8.2
 ##############
 under the hood:
 + inserted some ## IGNORE_RDIFF_BEGIN comments to prevent NOTES when comparing R.out.save to 

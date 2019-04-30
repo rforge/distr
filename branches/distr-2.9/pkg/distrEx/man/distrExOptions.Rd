@@ -15,6 +15,7 @@
 \alias{nDiscretize}
 \alias{hSmooth}
 \alias{IQR.fac}
+\alias{propagate.names.functionals}
 
 \title{Function to change the global variables of the package `distrEx' }
 \description{With \code{distrExOptions} you can inspect and change 
@@ -77,6 +78,9 @@ just a synonym to \code{distrExOptions}.
                   both quantile and scale based methods; for the scale based
                   method we use the median of the distribution \eqn{\pm}{+-}
                   \code{IQR.fac}\eqn{\times}{*} the IQR; defaults to 15.}
+  \item{propagate.names.functionals}{should names obtained from parameter
+     coordinates be propagated to return values of specific S4 methods
+     for functionals; defaults to \code{TRUE}. }
 }
 }
 %\references{}
