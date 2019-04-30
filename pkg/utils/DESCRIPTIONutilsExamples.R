@@ -188,6 +188,24 @@ changeDescription(startDir = "C:/rtest/distr",names=Names,
                   ReqDistrPkgVersion =ReqDistrPkgVersion0)
 }
 
+if(FALSE){## Version 2.8 in trunk fourth shift 20190430
+Pkgs <- c("distrMod")
+Names <- c("Version")
+Values <- matrix(c("2.8.2"),1,length(Pkgs))
+ReqRVersion0 <- c(rep("R(>= 3.4)",length(Pkgs)))
+ReqDistrPkgVersion0 <- vector("list",length(Pkgs))
+names(ReqDistrPkgVersion0) <- Pkgs
+ReqDistrPkgVersion0[["RandVar"]] <- NA
+for(pk in Pkgs) ReqDistrPkgVersion0[[pk]] <- c("distr"="distr(>= 2.8.0)",
+            "distrEx"="distrEx(>= 2.8.0)","distrMod"="distrMod(>= 2.8.2)",
+            "RandVar"="RandVar(>= 1.2.0)")
+colnames(Values) <- names(ReqRVersion0) <- Pkgs
+rownames(Values)  <- Names
+changeDescription(startDir = "C:/rtest/distr",names=Names,
+                  pkgs=Pkgs, values=Values,ReqRVersion =ReqRVersion0,
+                  ReqDistrPkgVersion =ReqDistrPkgVersion0)
+}
+
 if(FALSE){## Version 2.8 in branch
 Pkgs <- c("startupmsg",
           "distr", "distrEx", "distrDoc", "distrEllipse", "distrRmetrics",
