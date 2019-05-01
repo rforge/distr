@@ -277,7 +277,7 @@ if(require(RobExtremes) && require(ismev)){
  returnlevelplot(rain, GPDF, MaxOrPOT="POT", xlim=c(1e-1,1e3))
 }
 }
- ## IGNORE_RDIFF_END
+## IGNORE_RDIFF_END
 }
 \keyword{hplot}
 \keyword{distribution}
