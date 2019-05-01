@@ -22,9 +22,9 @@
 %\note{}
 \seealso{\code{\link{NormType-class}}}
 \examples{
- ## IGNORE_RDIFF_BEGIN
+## IGNORE_RDIFF_BEGIN
 NormType()
- ## IGNORE_RDIFF_END
+## IGNORE_RDIFF_END
 }
 \concept{asymptotic covariance}
 \concept{risk}
