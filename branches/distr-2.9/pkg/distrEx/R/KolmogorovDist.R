@@ -4,7 +4,7 @@
 ###############################################################################
 setMethod("KolmogorovDist", signature(e1 = "AbscontDistribution",
                                       e2 = "AbscontDistribution"),
-    function(e1, e2){
+    function(e1, e2, ...){
         TruncQuantile <- getdistrOption("TruncQuantile")  
         lower1 <- ifelse(!is.finite(q.l(e1)(0)), q.l(e1)(TruncQuantile), q.l(e1)(0))
         upper1 <- ifelse(!is.finite(q.l(e1)(1)),
@@ -36,7 +36,7 @@ setMethod("KolmogorovDist", signature(e1 = "AbscontDistribution",
 
 setMethod("KolmogorovDist", signature(e1 = "DiscreteDistribution",
                                       e2 = "DiscreteDistribution"),
-    function(e1, e2){
+    function(e1, e2, ...){
         o.warn <- getOption("warn"); options(warn = -1)
         on.exit(options(warn=o.warn))
         supp <- union(support(e1), support(e2))
@@ -49,7 +49,7 @@ setMethod("KolmogorovDist", signature(e1 = "DiscreteDistribution",
 
 setMethod("KolmogorovDist", signature(e1 = "DiscreteDistribution",
                                       e2 = "AbscontDistribution"),
-    function(e1, e2){
+    function(e1, e2, ...){
         o.warn <- getOption("warn"); options(warn = -1)
         on.exit(options(warn=o.warn))
         x <- support(e1)
@@ -61,13 +61,13 @@ setMethod("KolmogorovDist", signature(e1 = "DiscreteDistribution",
 
 setMethod("KolmogorovDist", signature(e1 = "AbscontDistribution",
                                       e2 = "DiscreteDistribution"),
-    function(e1, e2){
-        KolmogorovDist(e2, e1)
+    function(e1, e2, ...){
+        KolmogorovDist(e2, e1, ...)
     })
 ## Kolmogorov distance
 setMethod("KolmogorovDist", signature(e1 = "numeric",
                                       e2 = "UnivariateDistribution"),
-    function(e1, e2){
+    function(e1, e2, ...){
         o.warn <- getOption("warn")
         options(warn = -1)
         emp <- DiscreteDistribution(e1)
@@ -76,14 +76,14 @@ setMethod("KolmogorovDist", signature(e1 = "numeric",
 
 setMethod("KolmogorovDist", signature(e1 = "UnivariateDistribution",
                                       e2 = "numeric"),
-    function(e1, e2){
-        return(KolmogorovDist(e2, e1))
+    function(e1, e2, ...){
+        return(KolmogorovDist(e2, e1, ...))
     })
 
 #### new from version 2.0 on: Distance for Mixing Distributions
 setMethod("KolmogorovDist",  signature(e1 = "AcDcLcDistribution",
                                      e2 = "AcDcLcDistribution"),
-    function(e1, e2){
+    function(e1, e2, ...){
            if( is(e1,"AbscontDistribution"))
                e1 <- as(as(e1,"AbscontDistribution"), "UnivarLebDecDistribution")
            if( is(e2,"AbscontDistribution"))

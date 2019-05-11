@@ -25,13 +25,13 @@
 }
 \usage{
 KolmogorovDist(e1, e2, ...)
-\S4method{KolmogorovDist}{AbscontDistribution,AbscontDistribution}(e1,e2)
-\S4method{KolmogorovDist}{AbscontDistribution,DiscreteDistribution}(e1,e2)
-\S4method{KolmogorovDist}{DiscreteDistribution,AbscontDistribution}(e1,e2)
-\S4method{KolmogorovDist}{DiscreteDistribution,DiscreteDistribution}(e1,e2)
-\S4method{KolmogorovDist}{numeric,UnivariateDistribution}(e1, e2)
-\S4method{KolmogorovDist}{UnivariateDistribution,numeric}(e1, e2)
-\S4method{KolmogorovDist}{AcDcLcDistribution,AcDcLcDistribution}(e1, e2)
+\S4method{KolmogorovDist}{AbscontDistribution,AbscontDistribution}(e1,e2, ...)
+\S4method{KolmogorovDist}{AbscontDistribution,DiscreteDistribution}(e1,e2, ...)
+\S4method{KolmogorovDist}{DiscreteDistribution,AbscontDistribution}(e1,e2, ...)
+\S4method{KolmogorovDist}{DiscreteDistribution,DiscreteDistribution}(e1,e2, ...)
+\S4method{KolmogorovDist}{numeric,UnivariateDistribution}(e1, e2, ...)
+\S4method{KolmogorovDist}{UnivariateDistribution,numeric}(e1, e2, ...)
+\S4method{KolmogorovDist}{AcDcLcDistribution,AcDcLcDistribution}(e1, e2, ...)
 }
 \arguments{
   \item{e1}{ object of class \code{"Distribution"} or class \code{"numeric"} }

@@ -20,7 +20,9 @@ user-visible CHANGES:
    used as default in the functionals 
    
 under the hood:
-
++  KolmogorovDist methods gain argument "..." in order to enable them to
+   digest argument validity.check in MCEstimator 
+   
 ##############
 v 2.8
 ##############
