@@ -104,8 +104,8 @@ function(e1,e2){
 setMethod("/", c("numeric",
                  "AcDcLcDistribution"),
 function(e1,e2){
-  if (is((e2s <- as.character(deparse(match.call(
-                call = sys.call(sys.parent(1)))$e2))), "try-error"))
+  if (is(try(e2s <- as.character(deparse(match.call(
+                call = sys.call(sys.parent(1)))$e2)),silent =TRUE), "try-error"))
       e2s <- "e2"
 
  e2 <- .ULC.cast(e2)
@@ -168,8 +168,8 @@ function(e1,e2){
 setMethod("/", c("AcDcLcDistribution",
                  "AcDcLcDistribution"),
 function(e1,e2){
-  if (is((e2s <- as.character(deparse(match.call(
-                call = sys.call(sys.parent(1)))$e2))), "try-error"))
+  if (is(try(e2s <- as.character(deparse(match.call(
+                call = sys.call(sys.parent(1)))$e2)),silent =TRUE), "try-error"))
       e2s <- "e2"
 
 #         if( is(e2,"AbscontDistribution"))
@@ -369,11 +369,11 @@ function(e1,e2)e1^location(e2))
 setMethod("^", c("AcDcLcDistribution","AcDcLcDistribution"),
 function(e1,e2){
  ### check if there are problems
-  if (is((e1s <- as.character(deparse(match.call(
-                call = sys.call(sys.parent(1)))$e1))), "try-error"))
+  if (is(try(e1s <- as.character(deparse(match.call(
+                call = sys.call(sys.parent(1)))$e1)),silent =TRUE), "try-error"))
       e1s <- "e1"
-  if (is((e2s <- as.character(deparse(match.call(
-                call = sys.call(sys.parent(1)))$e2))), "try-error"))
+  if (is(try(e2s <- as.character(deparse(match.call(
+                call = sys.call(sys.parent(1)))$e2)),silent =TRUE), "try-error"))
       e2s <- "e2"
 
 # if( is(e1,"AffLinUnivarLebDecDistribution"))
@@ -456,11 +456,11 @@ function(e1,e2){
 setMethod("^", c("numeric","AcDcLcDistribution"),
 function(e1,e2){
  ### check if there are problems
-  if (is((e1s <- as.character(deparse(match.call(
-                call = sys.call(sys.parent(1)))$e1))), "try-error"))
+  if (is(try(e1s <- as.character(deparse(match.call(
+                call = sys.call(sys.parent(1)))$e1)),silent =TRUE), "try-error"))
       e1s <- "e1"
-  if (is((e2s <- as.character(deparse(match.call(
-                call = sys.call(sys.parent(1)))$e2))), "try-error"))
+  if (is(try(e2s <- as.character(deparse(match.call(
+                call = sys.call(sys.parent(1)))$e2)),silent =TRUE), "try-error"))
       e2s <- "e2"
 
  e2 <- .ULC.cast(e2)

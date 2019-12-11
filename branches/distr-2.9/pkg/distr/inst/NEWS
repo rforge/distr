@@ -8,6 +8,17 @@
  information)
  
 ##############
+v 2.9
+##############
+user-visible CHANGES:
+  
+bug fixes
++ fixed a glitch in catching argument names in bAcDcLcDistribution.R 
+  detected by Elio Campitelli <elio.campitelli@cima.fcen.uba.ar>
+
+under the hood:
+
+##############
 v 2.8
 ##############
 
