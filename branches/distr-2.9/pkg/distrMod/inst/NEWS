@@ -11,6 +11,11 @@
 v 2.9.0
 ##############
 under the hood:
+
+##############
+v 2.8.3
+##############
+under the hood:
 + inserted another ## IGNORE_RDIFF_BEGIN comment to prevent NOTES when comparing R.out.save to 
   R.out on varying architectures, e.g. Rblas/ATLAS in isKerAinKerB
 

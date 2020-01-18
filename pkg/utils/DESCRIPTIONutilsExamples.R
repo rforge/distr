@@ -368,3 +368,63 @@ changeDescription(startDir = "C:/rtest/robast/branches/robast-1.3",names=Names,
                   pkgs=Pkgs, values=Values,ReqRVersion =ReqRVersion0,
                   ReqDistrPkgVersion =ReqDistrPkgVersion0)
 }
+
+if(FALSE){## nur RandVar Version 1.2.1 in trunk
+Pkgs <- c("RandVar")
+Names <- c("Version")
+Values <- matrix(c("1.2.1"),1,length(Pkgs))
+ReqRVersion0 <- rep("R(>= 3.4)",length(Pkgs))
+ReqDistrPkgVersion0 <- vector("list",length(Pkgs))
+names(ReqDistrPkgVersion0) <- Pkgs
+ReqDistrPkgVersion0[["RandVar"]] <- NA
+for(pk in Pkgs[-1]) ReqDistrPkgVersion0[[pk]] <- c("distr"="distr(>= 2.8.0)",
+            "distrEx"="distrEx(>= 2.8.0)","distrMod"="distrMod(>= 2.8.0)",
+            "RandVar"="RandVar(>= 1.2.0)", "RobAStBase"="RobAStBase(>= 1.2.0)",
+            "ROptEst"="ROptEst(>= 1.2.0)", "ROptEstOld"="ROptEstOld(>= 1.2.0)",
+            "RobAStRDA"="RobAStRDA(>= 1.2.0)", "ROptRegTS"="ROptRegTS(>= 1.2.0)")
+colnames(Values) <- names(ReqRVersion0)<- Pkgs
+rownames(Values)  <- Names
+changeDescription(startDir = "C:/rtest/robast/",names=Names,
+                  pkgs=Pkgs, values=Values,ReqRVersion =ReqRVersion0,
+                  ReqDistrPkgVersion =ReqDistrPkgVersion0)
+}
+
+if(FALSE){## nur RandVar Version 1.3.0 in branch
+Pkgs <- c("RandVar")
+Names <- c("Version")
+Values <- matrix(c("1.3.0"),1,length(Pkgs))
+ReqRVersion0 <- rep("R(>= 3.4)",length(Pkgs))
+ReqDistrPkgVersion0 <- vector("list",length(Pkgs))
+names(ReqDistrPkgVersion0) <- Pkgs
+ReqDistrPkgVersion0[["RandVar"]] <- NA
+for(pk in Pkgs[-1]) ReqDistrPkgVersion0[[pk]] <- c("distr"="distr(>= 2.8.0)",
+            "distrEx"="distrEx(>= 2.8.0)","distrMod"="distrMod(>= 2.8.0)",
+            "RandVar"="RandVar(>= 1.2.0)", "RobAStBase"="RobAStBase(>= 1.2.0)",
+            "ROptEst"="ROptEst(>= 1.2.0)", "ROptEstOld"="ROptEstOld(>= 1.2.0)",
+            "RobAStRDA"="RobAStRDA(>= 1.2.0)", "ROptRegTS"="ROptRegTS(>= 1.2.0)")
+colnames(Values) <- names(ReqRVersion0)<- Pkgs
+rownames(Values)  <- Names
+changeDescription(startDir = "C:/rtest/robast/branches/robast-1.3",names=Names,
+                  pkgs=Pkgs, values=Values,ReqRVersion =ReqRVersion0,
+                  ReqDistrPkgVersion =ReqDistrPkgVersion0)
+}
+
+if(FALSE){## nur distrMod Version 2.8.3 in trunk
+Pkgs <- c("distrMod")
+Names <- c("Version")
+Values <- matrix(c("2.8.3"),1,length(Pkgs))
+ReqRVersion0 <- c(NA,rep("R(>= 3.4)",length(Pkgs)-1))
+ReqDistrPkgVersion0 <- vector("list",length(Pkgs))
+names(ReqDistrPkgVersion0) <- Pkgs
+ReqDistrPkgVersion0[["RandVar"]] <- NA
+for(pk in Pkgs[-1]) ReqDistrPkgVersion0[[pk]] <- c("distr"="distr(>= 2.8.0)",
+            "distrEx"="distrEx(>= 2.8.0)","distrMod"="distrMod(>= 2.8.0)",
+            "RandVar"="RandVar(>= 1.2.0)")
+colnames(Values) <- names(ReqRVersion0) <- Pkgs
+rownames(Values)  <- Names
+changeDescription(startDir = "C:/rtest/distr",names=Names,
+                  pkgs=Pkgs, values=Values,ReqRVersion =ReqRVersion0,
+                  ReqDistrPkgVersion =ReqDistrPkgVersion0)
+updateHTMLpages(pkgNames ="distrMod", pkgVersions = "2.8.3")
+}
+
