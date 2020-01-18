@@ -27,7 +27,7 @@ finde <- function(x = "nchar", dir = "C:/rtest/distr/pkg/distr/R",
 }
 
 if(FALSE){
-finde(x="q\\(", dir ="C:/rtest/distr/branches/distr-2.7/pkg/", rec=TRUE)
+finde(x="\\(CLT-based\\) confidence interval", dir ="C:/rtest/distr/pkg/", rec=TRUE)
 finde(x="http\\:/", dir ="C:/rtest/distr/branches/distr-2.7/pkg/distr/", rec=TRUE)
 #finde(x="Wow6432Node", dir ="C:/R/devel/src/gnuwin32", rec=TRUE, ext="")
 finde(x="omega", dir ="C:/rtest/distr/branches/distr-2.7/pkg/distrMod/", rec=TRUE)

@@ -421,7 +421,7 @@ function (x)
         dimnames = list(nms, nms0))
     list(fval = fval0, mat = mat0)
 }
-<bytecode: 0x087a1e50>
+<bytecode: 0x065e9eb0>
 Trafo / derivative matrix at which estimate was produced:
        scale shape
 shape  0.000     1
@@ -622,7 +622,7 @@ function (x)
         1)/c(scale = 1)
     return(y)
 }
-<environment: 0x075876b0>
+<environment: 0x0adb3bf0>
 
 > ## IGNORE_RDIFF_BEGIN
 > checkL2deriv(E1)
@@ -796,8 +796,8 @@ Slot "name":
 
 Slot "fct":
 function(x) QuadFormNorm(x, A = A)
-<bytecode: 0x0d4dd040>
-<environment: 0x0d4debf0>
+<bytecode: 0x083c6bd0>
+<environment: 0x083c2300>
 
 > 
 > ## The function is currently defined as
@@ -1080,7 +1080,7 @@ function (x)
         1)/c(meanlog = 1)
     return(y)
 }
-<environment: 0x0ce04940>
+<environment: 0x0773a0e0>
 
 > checkL2deriv(L1)
 precision of centering:	 -0.003003394 
@@ -2123,7 +2123,7 @@ function(x){
     else 
         return(sqrt(colSums(x^2)))
 }
-<bytecode: 0x0b2ed500>
+<bytecode: 0x0bfb1e38>
 <environment: namespace:distrMod>
 > name(EuclNorm)
 [1] "EuclideanNorm"
@@ -2157,7 +2157,7 @@ function(x){
     else 
         return(sqrt(colSums(x^2)))
 }
-<bytecode: 0x0b2ed500>
+<bytecode: 0x0bfb1e38>
 <environment: namespace:distrMod>
 
 > ## IGNORE_RDIFF_END
@@ -2614,8 +2614,8 @@ Slot "name":
 
 Slot "fct":
 function(x) QuadFormNorm(x, A= A0)
-<bytecode: 0x09f24d80>
-<environment: 0x09f23a10>
+<bytecode: 0x09408548>
+<environment: 0x09406db8>
 
 > 
 > ## The function is currently defined as
@@ -2654,8 +2654,8 @@ Slot "name":
 
 Slot "fct":
 function(x) QuadFormNorm(x, A = A)
-<bytecode: 0x09be5248>
-<environment: 0x09be2ec8>
+<bytecode: 0x0926fd98>
+<environment: 0x0926f178>
 
 > 
 > ## The function is currently defined as
@@ -3202,8 +3202,6 @@ function[s] may still be used in exactly the same way as before
 masking:
 
 +confint()    (package "stats")
- 
- 
 > 
 > 
 > 
@@ -3680,7 +3678,7 @@ function (param)
     dimnames(mat) <- list(nfval, c("mean", "sd"))
     return(list(fval = fval, mat = mat))
 }
-<bytecode: 0x0716a5a0>
+<bytecode: 0x06616820>
 > print(param(NS), show.details = "minimal")
 An object of class "ParamWithScaleFamParameter"
 name:	location and scale
@@ -3729,7 +3727,7 @@ function (param)
     dimnames(mat) <- list(nfval, c("mean", "sd"))
     return(list(fval = fval, mat = mat))
 }
-<bytecode: 0x0716a5a0>
+<bytecode: 0x06616820>
 Trafo / derivative matrix:
             mean         sd
 mu/sig 0.3668695 -0.3024814
@@ -3772,7 +3770,7 @@ function (param)
     dimnames(mat) <- list(nfval, c("mean", "sd"))
     return(list(fval = fval, mat = mat))
 }
-<bytecode: 0x0716a5a0>
+<bytecode: 0x06616820>
 Trafo / derivative matrix:
          mean      sd
 mu/sig 0.3669 -0.3025
@@ -4138,7 +4136,7 @@ sig^2  3.6698685 11.189719
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  51.19 1.93 83.46 NA NA 
+Time elapsed:  44.57 1.22 73.66 NA NA 
 > grDevices::dev.off()
 null device 
           1 
