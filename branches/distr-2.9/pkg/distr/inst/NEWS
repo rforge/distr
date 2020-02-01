@@ -17,6 +17,8 @@ bug fixes
   detected by Elio Campitelli <elio.campitelli@cima.fcen.uba.ar>
 
 under the hood:
++ triggered by an email by Santhosh V <Santhosh.V@se.com>, we added a patch to be more careful when producing
+  slot q for compound and mixing distributions
 
 ##############
 v 2.8
