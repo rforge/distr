@@ -411,8 +411,8 @@ changeDescription(startDir = "C:/rtest/robast/branches/robast-1.3",names=Names,
 
 if(FALSE){## nur distrMod Version 2.8.3 in trunk
 Pkgs <- c("distrMod")
-Names <- c("Version")
-Values <- matrix(c("2.8.3"),1,length(Pkgs))
+Names <- c("Version")    ## 20200306
+Values <- matrix(c("2.8.4"),1,length(Pkgs))
 ReqRVersion0 <- c(NA,rep("R(>= 3.4)",length(Pkgs)-1))
 ReqDistrPkgVersion0 <- vector("list",length(Pkgs))
 names(ReqDistrPkgVersion0) <- Pkgs
@@ -425,6 +425,6 @@ rownames(Values)  <- Names
 changeDescription(startDir = "C:/rtest/distr",names=Names,
                   pkgs=Pkgs, values=Values,ReqRVersion =ReqRVersion0,
                   ReqDistrPkgVersion =ReqDistrPkgVersion0)
-updateHTMLpages(pkgNames ="distrMod", pkgVersions = "2.8.3")
+updateHTMLpages(pkgNames ="distrMod", pkgVersions = "2.8.4")
 }
 
