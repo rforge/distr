@@ -19,6 +19,9 @@ bug fixes
 under the hood:
 + triggered by an email by Santhosh V <Santhosh.V@se.com>, we added a patch to be more careful when producing
   slot q for compound and mixing distributions
++ detected by Vlada Milchevskaya vmilchev@uni-koeln.de:
+  CompoundDistribution(): special treatment of case that NumbOfSummandsDistr is a Dirac distribution
+  (and detect that for prob in {0,1} Binom(size, prob) is in fact a Dirac distribution)
 
 ##############
 v 2.8

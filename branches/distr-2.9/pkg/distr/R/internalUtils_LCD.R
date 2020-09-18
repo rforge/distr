@@ -205,7 +205,7 @@
 ## start patch 20200131 : in the last line added na.rm=TRUE
     qL1[!is.finite(qL1)] <- NA
     if(all(is.na(qL1))) qL1[1] <- Inf
-    if(all(is.na(qL))) qL[1] <- Inf
+    if(all(is.na(qL0))) qL0[1] <- Inf
     qL  <- min(qL0, na.rm = TRUE); ql <- min(qL1, na.rm = TRUE)
 ## end patch 20200131
 
@@ -218,7 +218,7 @@
 ## start patch 20200131 : in the last line added na.rm=TRUE
     qU1[!is.finite(qU1)] <- NA
     if(all(is.na(qU1))) qU1[1] <- -Inf
-    if(all(is.na(qU))) qU[1] <- -Inf
+    if(all(is.na(qU0))) qU0[1] <- -Inf
     qU  <- max(qU0, na.rm = TRUE); qu <- max(qU1, na.rm = TRUE)
 ## end patch 20200131
 
